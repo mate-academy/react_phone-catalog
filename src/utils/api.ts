@@ -1,6 +1,11 @@
 import { Product, ProductDetails } from '../types';
 
-const API_BASE = '/api';
+const API_BASE = './api';
+
+const fixImagePath = (imagePath: string): string => {
+  // Remove leading slash and prepend with base URL
+  return `${import.meta.env.BASE_URL}${imagePath.slice(1)}`;
+};
 
 export const getProducts = async (): Promise<Product[]> => {
   const response = await fetch(`${API_BASE}/products.json`);
@@ -9,7 +14,11 @@ export const getProducts = async (): Promise<Product[]> => {
     throw new Error('Failed to fetch products');
   }
 
-  return response.json();
+  const products = await response.json();
+  return products.map((product: Product) => ({
+    ...product,
+    image: fixImagePath(product.image),
+  }));
 };
 
 export const getPhones = async (): Promise<ProductDetails[]> => {
@@ -19,7 +28,11 @@ export const getPhones = async (): Promise<ProductDetails[]> => {
     throw new Error('Failed to fetch phones');
   }
 
-  return response.json();
+  const phones = await response.json();
+  return phones.map((phone: ProductDetails) => ({
+    ...phone,
+    images: phone.images?.map(fixImagePath) || [],
+  }));
 };
 
 export const getTablets = async (): Promise<ProductDetails[]> => {
@@ -29,7 +42,11 @@ export const getTablets = async (): Promise<ProductDetails[]> => {
     throw new Error('Failed to fetch tablets');
   }
 
-  return response.json();
+  const tablets = await response.json();
+  return tablets.map((tablet: ProductDetails) => ({
+    ...tablet,
+    images: tablet.images?.map(fixImagePath) || [],
+  }));
 };
 
 export const getAccessories = async (): Promise<ProductDetails[]> => {
@@ -39,7 +56,11 @@ export const getAccessories = async (): Promise<ProductDetails[]> => {
     throw new Error('Failed to fetch accessories');
   }
 
-  return response.json();
+  const accessories = await response.json();
+  return accessories.map((accessory: ProductDetails) => ({
+    ...accessory,
+    images: accessory.images?.map(fixImagePath) || [],
+  }));
 };
 
 export const getProductDetails = async (
