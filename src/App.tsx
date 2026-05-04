@@ -11,10 +11,15 @@ import { CartPage } from './modules/CartPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 
+const basename = (() => {
+  const base = import.meta.env.BASE_URL || '/';
+  return base.startsWith('http') ? new URL(base).pathname : base;
+})();
+
 export const App = () => (
   <CartProvider>
     <FavoritesProvider>
-      <Router basename={import.meta.env.BASE_URL}>
+      <Router basename={basename}>
         <div className="App">
           <Header />
           <main>
