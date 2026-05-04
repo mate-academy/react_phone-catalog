@@ -1,0 +1,12 @@
+.top-bar {
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 50px;
+
+  &__logo {
+    height: 28px;
+  }
+}

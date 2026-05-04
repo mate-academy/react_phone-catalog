@@ -1,0 +1,72 @@
+@use '../../utils/mixins.scss' as *;
+
+.footer {
+  width: 100%;
+  height: 96px;
+
+  &__navs {
+    display: flex;
+    gap: 106px;
+  }
+
+  &__line {
+    margin: 0;
+    border: 0.5px solid #323542;
+  }
+
+  &__container {
+    @include content-padding-inline;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: space-between;
+
+    &-link {
+      font-family: 'Mont semibold', sans-serif;
+      color: #F1F2F9;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    &-list {
+      list-style: none;
+      display: flex;
+    }
+  }
+
+  &__back {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    &-text {
+      color: #75767F;
+      font-family: 'Mont regular', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-align: right;
+    }
+
+    &-button {
+      cursor: pointer;
+      border: 0;
+      height: 32px;
+      width: 32px;
+      background-color: #323542;
+
+
+      &-img {
+        height: 16px;
+      }
+    }
+  }
+}

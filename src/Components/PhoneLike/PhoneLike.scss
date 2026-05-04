@@ -1,0 +1,44 @@
+.phone__like {
+  &-container {
+    display: flex;
+
+    justify-content: space-between;
+  }
+
+  &-title {
+    color: #f1f2f9;
+
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+
+  &-buttons {
+    display: flex;
+    gap: 8px;
+
+    padding-bottom: 32px;
+  }
+
+  &-arr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-arrows {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &-arrow {
+    cursor: pointer;
+    border: 0;
+    height: 32px;
+    width: 32px;
+    background-color: #323542;
+  }
+}

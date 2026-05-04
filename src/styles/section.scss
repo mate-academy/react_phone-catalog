@@ -1,0 +1,18 @@
+@use '../utils/mixins.scss' as *;
+
+.section {
+  margin-bottom: 80px;
+
+  &-title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 140%;
+    letter-spacing: -1%;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+}

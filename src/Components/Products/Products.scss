@@ -1,0 +1,200 @@
+.products {
+  &-phones {
+    display: flex;
+    gap: 16px;
+  }
+
+  &-container {
+    padding-top: 32px;
+    padding-inline: 32px;
+    min-width: 208px;
+  }
+
+  &-phone {
+    background-color: #161827;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.5s;
+
+    &:hover {
+      border: 1px solid #323542;
+
+      transition: 0.7s;
+    }
+  }
+
+  &-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+
+    margin-bottom: 8px;
+  }
+
+  &-image {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &-title {
+    font-family: 'Mont Regular', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &-price {
+    display: flex;
+
+    align-items: center;
+
+    font-family: 'Mont SemiBold', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+
+    gap: 8px;
+
+    &-span {
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 100%;
+      text-decoration: line-through;
+      color: #89939A;
+    }
+  }
+
+  &-string {
+    margin-top: 10px;
+    width: 100%;
+    height: 1px;
+    background-color: #3B3E4A;
+  }
+
+  &-text {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    color: #75767F;
+    font-family: 'Mont Regular', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+
+    &__first {
+      margin-top: 16px;
+    }
+  }
+
+  &-info {
+    margin-bottom: 16px;
+  }
+
+  &-span {
+    color: #F1F2F9;
+  }
+
+  &-buttons {
+    display: flex;
+    gap: 8px;
+
+    padding-bottom: 32px;
+  }
+
+  &__link {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  &-fav {
+    display: flex;
+    border: none;
+    height: 40px;
+    width: 54px;
+
+    background-color: #323542;
+
+    justify-content: center;
+
+    text-decoration: none;
+    align-items: center;
+
+    &__img {
+      height: 16px;
+    }
+
+    &__button {
+      border: none;
+
+      background-color: inherit;
+    }
+  }
+
+  &-cart {
+    border: none;
+    height: 40px;
+    width: 100%;
+    background-color: #905BFF;
+
+    &__text {
+      margin: 0;
+      font-family: Mont, sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+      color: #F1F2F9;
+    }
+
+    &-active {
+      background-color: #323542;
+    }
+
+    &__link {
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      text-decoration: none;
+
+      width: 100%;
+      height: 40px;
+    }
+  }
+
+  &-arr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-arrows {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &-arrow {
+    cursor: pointer;
+    border: 0;
+    height: 32px;
+    width: 32px;
+    background-color: #323542;
+  }
+}

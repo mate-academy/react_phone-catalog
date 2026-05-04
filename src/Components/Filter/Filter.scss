@@ -1,0 +1,43 @@
+.filter {
+  display: flex;
+  gap: 16px;
+
+  margin-bottom: 24px;
+
+  &__newest {
+    &-title {
+      color: #75767F;
+      margin-bottom: 4px;
+
+      font-family: "Mont Regular", sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+    }
+
+    &-checkbox {
+      height: 40px;
+      width: 176px;
+      border: none;
+
+      cursor: pointer;
+
+      color: #F1F2F9;
+
+      font-family: "Mont Regular", sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+
+      background-color: #323542;
+    }
+
+    &-option {
+      display: flex;
+
+      justify-content: space-between;
+
+      margin-inline: 12px;
+    }
+  }
+}

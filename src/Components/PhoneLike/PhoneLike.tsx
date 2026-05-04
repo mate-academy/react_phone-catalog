@@ -1,0 +1,87 @@
+import { Link } from 'react-router-dom';
+import arrowLeft from '../../images/icons/Chevron (Arrow Left).svg';
+import arrowRight from '../../images/icons/Chevron (Arrow Right).svg';
+import { useCallback, useEffect, useState } from 'react';
+import { Products } from '../../types/Products';
+import { Product } from '../Products/Products';
+import './PhoneLike.scss';
+import { getProducts } from '../../api/api';
+
+export const PhoneLike = () => {
+  const [products, setProducts] = useState<Products[]>([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const productsPerSlide = 4;
+  const [, setLoading] = useState(true);
+  const [, setErrorMessage] = useState('');
+
+  const currentProducts = products.slice(
+    activeIndex,
+    activeIndex + productsPerSlide,
+  );
+
+  const handleProductChange = useCallback(
+    (direction: 'next' | 'prev') => {
+      setActiveIndex(prev => {
+        if (direction === 'next') {
+          return prev + productsPerSlide < products.length
+            ? prev + productsPerSlide
+            : 0;
+        }
+
+        // prev logic: move back by productsPerSlide or wrap to last full page
+        const next = prev - productsPerSlide;
+
+        if (next >= 0) {
+          return next;
+        }
+
+        // wrap to last page start index
+        const remainder = products.length % productsPerSlide;
+
+        return remainder === 0
+          ? products.length - productsPerSlide
+          : products.length - remainder;
+      });
+    },
+    [products.length],
+  );
+
+  useEffect(() => {
+    setLoading(true);
+    setErrorMessage('');
+
+    getProducts()
+      .then(setProducts)
+      .catch(() => setErrorMessage(`Couldn't load any tablets`))
+      .finally(() => setLoading(false));
+  }, []);
+
+  return (
+    <>
+      <section className="phone__like">
+        <div className="phone__like-container">
+          <h1 className="phone__like-title">You may also like</h1>
+          <div className="phone__like-arrows">
+            <Link to="" className="phone__like-arrow-left">
+              <button
+                className="phone__like-arrow"
+                onClick={() => handleProductChange('prev')}
+              >
+                <img src={arrowLeft} alt="" className="icon-arrow" />
+              </button>
+            </Link>
+            <Link to="" className="phone__like-arrow-right">
+              <button
+                className="phone__like-arrow"
+                onClick={() => handleProductChange('next')}
+              >
+                <img src={arrowRight} alt="" className="icon-arrow" />
+              </button>
+            </Link>
+          </div>
+        </div>
+        <Product currentProducts={currentProducts} />
+      </section>
+    </>
+  );
+};

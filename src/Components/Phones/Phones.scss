@@ -1,0 +1,30 @@
+.phones {
+  &__grid {
+    display: grid;
+
+    --columns: 4;
+
+    column-gap: 20px;
+    grid-template-columns: repeat(var(--columns), 1fr);
+  }
+
+  &__path {
+    display: flex;
+
+    gap: 8px;
+
+    align-items: center;
+
+    margin-top: 25px;
+
+
+    &-phones {
+      font-family: "Mont SemiBold", sans-serif;
+
+      color: #75767F;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+    }
+  }
+}

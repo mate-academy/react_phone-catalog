@@ -1,1 +1,27 @@
-// not empty
+@use './Components/Home/Home.scss' as *;
+@use './Components/TopBar/top-bar.scss' as *;
+@use './Components/TopBar/nav.scss' as *;
+@use './utils/vars.scss' as *;
+@use './utils/mixins.scss' as *;
+@use './fonts/fonts.scss' as *;
+@use '../src/Components/Header/header.scss' as *;
+@use './styles/section.scss' as *;
+@use './styles/WelcomeBlock.scss' as *;
+@use './styles/icon.scss' as *;
+@use './styles/categories.scss' as *;
+@use './styles/Page.scss' as *;
+@use '../src/Components/Footer/Footer.scss' as *;
+@use './Components/ErrorNotification/ErrorNotification.scss' as *;
+@use './Components/Aside/Aside.scss' as *;
+
+
+body {
+  margin: 0;
+  background-color: #0F1121;
+  color: #F1F2F9;
+  font-family: Mont, sans-serif;
+}
+
+.container {
+  @include content-padding-inline;
+}

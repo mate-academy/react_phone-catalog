@@ -1,0 +1,77 @@
+@use '../../utils/mixins.scss' as *;
+
+.header {
+  box-shadow: 0 1px #323542;
+  padding-left: 16px;
+
+  align-content: center;
+
+  @include on-tablet {
+    padding-left: 24px;
+  }
+
+  @include on-desktop {
+    margin-inline: auto;
+    padding-left: 24px;
+  }
+
+  &__vectors {
+    display: flex;
+  }
+
+  &__fav {
+    &-img {
+      height: 16px;
+    }
+  }
+
+  &__button {
+    height: 64px;
+    width: 64px;
+
+    cursor: pointer;
+    background-color: #0F1121;
+
+    border: none;
+
+    align-content: center;
+    box-shadow: -1px 0 #323542;
+  }
+
+  &__basket {
+    &-img {
+      height: 16px;
+    }
+
+    &-count {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      align-items: center;
+
+      top: 18px;
+      right: 18px;
+
+
+      border: 1px #0F1121 solid;
+      text-align: center;
+
+      border-radius: 50%;
+
+      width: 14px;
+      height: 14px;
+      background-color: #EB5757;
+
+
+      &-number {
+        color: #F1F2F9;
+
+        font-family: 'Mont regular', sans-serif;
+        font-weight: 700;
+        font-size: 9px;
+        line-height: 100%;
+        text-align: center;
+      }
+    }
+  }
+}
