@@ -13,7 +13,7 @@ const ProductGallery = ({ currentProduct }: ProductGalleryProps) => {
     if (currentProduct.images.length > 0) {
       setActiveImg(currentProduct.images[0]);
     }
-  }, [currentProduct.id]);
+  }, [currentProduct.images]);
 
   return (
     <>

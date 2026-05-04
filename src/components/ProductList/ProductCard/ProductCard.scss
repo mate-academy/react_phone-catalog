@@ -56,10 +56,11 @@
   justify-content: space-between;
 
   width: 100%;
-  font-weight: 800;
+
+  font-family: Mont, sans-serif;
   font-size: 22px;
+  font-weight: 800;
   line-height: 140%;
-  font-family: 'Mont', sans-serif;
 }
 
 .card__price::after {
@@ -76,7 +77,7 @@
 }
 
 .card__price--regular {
-  font-family: 'Mont', sans-serif;
+font-family: Mont, sans-serif;
   font-size: 22px;
   font-weight: 800;
   line-height: 140%;
@@ -84,7 +85,7 @@
 }
 
 .card__fullprice {
-  font-family: 'Mont', sans-serif;
+font-family: Mont, sans-serif;
   font-size: 22px;
   font-weight: 800;
   line-height: 140%;
@@ -92,7 +93,7 @@
 }
 
 .card__price--discount {
-  font-family: 'Mont', sans-serif;
+font-family: Mont, sans-serif;
   font-size: 22px;
   font-weight: 600;
   color: #b4bdc3;
@@ -118,14 +119,14 @@
 }
 
 .card__label {
-  font-family: 'Mont', sans-serif;
+font-family: Mont, sans-serif;
   font-size: 12px;
   font-weight: 700;
   color: #89939A;
 }
 
 .card__value {
-  font-family: 'Mont', sans-serif;
+font-family: Mont, sans-serif;
   font-size: 12px;
   font-weight: 700;
   color: #313237;
@@ -151,14 +152,14 @@
   border: none;
   border-radius: 10px;
 
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 150%;
   color: white;
   text-decoration: none;
 
   background-color: #313237;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 150%;
-  font-family: 'Mont', sans-serif;
 }
 
 .card__button--add-to-cart.active {
@@ -189,8 +190,8 @@
 }
 
 .card__name {
-  font-family: 'Mont', sans-serif;
-  font-weight: 600;
+font-family: Mont, sans-serif;
 font-size: 14px;
+font-weight: 600;
 line-height: 150%;
 }

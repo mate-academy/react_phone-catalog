@@ -5,10 +5,10 @@
 }
 
 .prduct-info__color--title {
-  color: #B4BDC3;
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
   font-weight: 600;
-font-size: 12px;
+  color: #B4BDC3;
 }
 
 .product-info__color {
@@ -16,18 +16,19 @@ font-size: 12px;
 
   width: 35px;
   height: 35px;
-  border-radius: 50%;
-  padding: 1px;
-  background-clip: content-box;
-  border: 2px solid transparent;
   margin-bottom: 24px;
+  padding: 1px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+
+  background-clip: content-box;
 
   transition: transform 0.2s, border-color 0.2s;
 }
 
 .product-info__color.active {
-  border-color: black;
   transform: scale(1.1);
+  border-color: black;
 }
 
 .product-info__color--silver {
@@ -63,8 +64,8 @@ font-size: 12px;
 }
 
 .product-info__color--white {
-  background-color: #f9f9f9;
   border: 1px solid #d2d2d7;
+  background-color: #f9f9f9;
 }
 
 .product-info__color--midnight {

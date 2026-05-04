@@ -1,21 +1,21 @@
 .product-slider {
-  grid-column: 1 / -1;
+   grid-column: 1 / -1;
   margin-top: 56px;
   margin-bottom: 64px;
-  @media (min-width: 640px) {
-    margin-top: 80px;
-  }
+
   &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 24px;
   }
+
   &__title {
     margin: 0;
-    font-family: 'Mont', sans-serif;
+
+    font-family: Mont, sans-serif;
+    font-size: 20px;
     font-weight: 600;
-   font-size: 20px;
     color: #313237;
 
     @media (min-width: 640px) {
@@ -31,6 +31,7 @@
     display: flex;
     gap: 8px;
   }
+
   &__nav-btn {
     cursor: pointer;
 
@@ -67,5 +68,13 @@
   }
   &__slide {
     height: 506px;
+  }
+
+  @media (min-width: 640px) {
+    margin-top: 80px;
+  }
+
+  @media (min-width: 1200px) {
+     margin-top: 80px;
   }
 }

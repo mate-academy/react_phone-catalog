@@ -24,7 +24,6 @@
   display: flex;
   flex-direction: row;
   gap: 8px;
-
   text-decoration: none;
 }
 
@@ -50,14 +49,15 @@
 
 .catalog__top--text {
   margin: 0;
-  font-family: 'Mont', sans-serif;
+
+  font-family: Mont, sans-serif;
   font-size: 12px;
   font-weight: 600;
   color: #b4bdc3;
 }
 
 .catalog__models--counter {
-  font-family: 'Mont', sans-serif;
+font-family: Mont, sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 150%;
@@ -89,9 +89,9 @@
 }
 
 .catalog__sort {
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
   font-weight: 700;
-font-size: 12px;
 }
 
 .catalog__sort--1 {

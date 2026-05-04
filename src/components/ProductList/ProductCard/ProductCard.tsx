@@ -1,6 +1,6 @@
 import { Product } from '../../../types/Product';
 import './ProductCard.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FavoriteProduct } from '../../../types/FavoriteProduct';
 import { ProductColor } from '../../../types/ProductColor';
 import { BasketProduct } from '../../../types/BasketProduct';
@@ -26,7 +26,6 @@ const ProductCard = ({ product }: ProductCardProps) => {
   };
   const isFavorite = favorites.some(p => p.itemId === stateProduct.itemId);
   const isBasket = baskets.some(p => p.itemId === stateProduct.itemId);
-  const navigate = useNavigate();
   const handleToggleFavorite = () => {
     setFavorites(prev => {
       const exists = prev.some(p => p.itemId === stateProduct.itemId);

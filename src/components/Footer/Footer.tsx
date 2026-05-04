@@ -10,6 +10,9 @@ const Footer = () => {
     });
   };
 
+  const linkedInUrl =
+    'https://www.linkedin.com/in/yaroslav-tabachuk-0391232b3/';
+
   return (
     <>
       {' '}
@@ -33,10 +36,7 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li className="footer__item">
-                  <Link
-                    to="https://www.linkedin.com/in/yaroslav-tabachuk-0391232b3/"
-                    className="footer__link"
-                  >
+                  <Link to={linkedInUrl} className="footer__link">
                     CONTACTS
                   </Link>
                 </li>

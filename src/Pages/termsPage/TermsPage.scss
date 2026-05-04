@@ -6,17 +6,17 @@
 }
 
 .terms-page__title {
-  font-family: 'Mont', sans-serif;
+  margin-bottom: 24px;
+  font-family: Mont, sans-serif;
   font-size: 32px;
   font-weight: 700;
-  margin-bottom: 24px;
 }
 
 .terms-page__container--text {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  width: 100%;
   column-gap: 16px;
+  width: 100%;
 
   @media (min-width: 640px) {
     column-gap: 16px;
@@ -28,17 +28,19 @@
 }
 
 .terms-page__title--paragraph {
-  font-family: 'Mont', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 100%;
   margin-bottom: 16px;
+
+  font-family: Mont, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 100%;
   color: black;
 }
 
 .terms-page__paragraph {
   grid-column: span 12;
-  font-family: 'Mont', sans-serif;
+
+  font-family: Mont, sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #89939A;
