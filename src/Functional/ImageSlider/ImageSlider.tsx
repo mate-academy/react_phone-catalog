@@ -1,12 +1,11 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 import { MainSlider } from './MainSlider';
 import bannerAccessories from '/img/banner-accessories.png';
 import bannerPhones from '/img/banner-phones.png';
 import bannerTablets from '/img/banner-tablets.png';
 
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './ImageSlider.scss';
 
@@ -22,31 +21,29 @@ export default function SliderSwiper() {
           {'<'}
         </button>
 
-        <Swiper
-          modules={[Autoplay, Navigation, Pagination]}
-          spaceBetween={30}
-          slidesPerView={1}
-          navigation={{
-            nextEl: '.swiper--top-button-next',
-            prevEl: '.swiper--top-button-prev',
-          }}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          pagination={{ clickable: true }}
-          effect="fade"
-          className="swiper--top__images"
-          onSwiper={onSwiperInit}
-          loop={true}
-        >
-          {images.map((image, index) => (
-            <SwiperSlide key={index}>
-              <img
-                src={image}
-                alt={`Slide ${index}`}
-                className="swiper--top__banner"
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <div className="swiper--top__images">
+          <Swiper
+            modules={[Autoplay, Pagination]}
+            spaceBetween={0}
+            slidesPerView={1}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            pagination={{ clickable: true }}
+            onSwiper={onSwiperInit}
+            loop={true}
+            style={{ height: '100%' }}
+          >
+            {images.map((image, index) => (
+              <SwiperSlide key={index} style={{ height: '100%' }}>
+                <img
+                  src={image}
+                  alt={`Slide ${index}`}
+                  className="swiper--top__banner"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
         <button className="swiper--top-button-next" onClick={handleNextSlide}>
           {'>'}
         </button>
