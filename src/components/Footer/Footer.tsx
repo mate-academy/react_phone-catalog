@@ -28,17 +28,24 @@ const Footer = () => {
             <div className="nav__footer menu__nav">
               <ul className="footer__list">
                 <li className="footer__item">
-                  <Link
-                    to="https://github.com/Yar14k/react_phone-catalog"
+                  <a
+                    href="https://github.com/Yar14k/react_phone-catalog"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="footer__link"
                   >
                     GITHUB
-                  </Link>
+                  </a>
                 </li>
                 <li className="footer__item">
-                  <Link to={linkedInUrl} className="footer__link">
+                  <a
+                    href={linkedInUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="footer__link"
+                  >
                     CONTACTS
-                  </Link>
+                  </a>
                 </li>
                 <li className="footer__item">
                   <Link to="/terms" className="footer__link">

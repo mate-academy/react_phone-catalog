@@ -1,5 +1,4 @@
 .main-basket {
-  min-height: 100vh;
   padding-block: 41px;
   padding-inline: 16px;
 
@@ -16,7 +15,6 @@
   position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  min-height: 820px;
 
   @media (min-width: 640px) {
     grid-template-columns: repeat(12, 1fr);
@@ -71,8 +69,7 @@
   grid-column: 1 / -1;
   place-self: center;
 
-  max-width: 50%;
-  height: 50%;
+  max-width: 320px;
 
   @media (min-width: 640px) {
     grid-column: 1 / 12;
@@ -84,8 +81,9 @@
 }
 
 .main-basket__zero--baskets {
+  display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 .main-basket__title--zero {
