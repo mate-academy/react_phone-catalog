@@ -1,13 +1,6 @@
 {
   "extends": "@mate-academy/students-ts-config",
-  "rules": {
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "ts": "never",
-        "tsx": "never"
-      }
-    ]
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0"
   }
 }
