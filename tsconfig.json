@@ -3,12 +3,7 @@
   "rules": {
     "import/extensions": "off"
   },
-  "include": [
-    "src"
-  ],
   "compilerOptions": {
-    "sourceMap": false,
-    "types": ["node", "cypress"],
-    "jsx": "react-jsx"
+    "ignoreDeprecations": "6.0"
   }
 }
