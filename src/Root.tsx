@@ -9,6 +9,7 @@ import { Accessories } from './Components/Accessories/Accessories';
 import { PhoneSpec } from './Components/Phone Spec/PhoneSpec';
 import { CartProvider } from './Context/Context';
 import { FavProvider } from './Context/FavouritesContext';
+import React from 'react';
 
 export const Root = () => (
   <Router>

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useCart } from '../../Context/Context';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/header';

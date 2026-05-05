@@ -16,6 +16,7 @@ import { PhoneLike } from '../PhoneLike/PhoneLike';
 import { Footer } from '../Footer/Footer';
 import { Phone } from '../../types/Phone';
 import { Products } from '../../types/Products';
+import React from 'react';
 
 enum Image {
   first = 'first',

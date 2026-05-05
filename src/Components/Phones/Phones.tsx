@@ -15,6 +15,7 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { useCart } from '../../Context/Context';
 import { Phone } from '../../types/Phone';
 import { Products } from '../../types/Products';
+import React from 'react';
 
 export const Phones = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
