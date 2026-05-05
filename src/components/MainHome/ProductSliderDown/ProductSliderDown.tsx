@@ -28,6 +28,7 @@ const ProductSliderDown = ({ title, products }: ProductSliderDownProps) => {
         </div>
       </div>
       <Swiper
+        loop={products.length > 4}
         slidesPerView={1}
         spaceBetween={16}
         breakpoints={{
