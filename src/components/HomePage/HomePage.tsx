@@ -26,6 +26,7 @@ export const HomePage: React.FC = () => {
         title={'Brand new models'}
         category={'phones'}
         sortBy={'year-desc'}
+        showNoSale
       />
 
       <section className={styles.categories}>

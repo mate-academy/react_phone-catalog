@@ -12,12 +12,14 @@ type Props = {
   title: string;
   category: string;
   sortBy: SortBy;
+  showNoSale?: boolean;
 };
 
 export const ProductsSlider: React.FC<Props> = ({
   title,
   category,
   sortBy,
+  showNoSale,
 }) => {
   const { products } = useContext(ProductsContext);
 
@@ -71,7 +73,7 @@ export const ProductsSlider: React.FC<Props> = ({
             className={styles.ProductsSlider__slide}
             key={product.id}
           >
-            <ProductCard product={product} />
+            <ProductCard product={product} showNoSale={showNoSale} />
           </SwiperSlide>
         ))}
       </Swiper>

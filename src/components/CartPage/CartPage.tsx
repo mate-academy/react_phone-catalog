@@ -12,7 +12,7 @@ export const CartPage: React.FC = () => {
   const navigate = useNavigate();
 
   const { clearCart } = useCart();
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, totalQuantityDiff } = useContext(CartContext);
 
   const total = cartItems.reduce((sum, item) => {
     return sum + item.product.price * item.quantity;
@@ -74,7 +74,7 @@ export const CartPage: React.FC = () => {
             <div className={styles.cart__checkoutBunner}>
               <h2 className={styles.cart__totalPrice}>${total}</h2>
               <p className={styles.cart__checkoutText}>
-                Total for {cartItems.length} items
+                Total for {totalQuantityDiff + cartItems.length} items
               </p>
               <button
                 className={styles.cart__checkoutBtn}

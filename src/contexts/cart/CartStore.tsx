@@ -21,6 +21,10 @@ interface State {
   cartItems: CartItem[];
 }
 
+interface CartContextValue extends State {
+  totalQuantityDiff: number;
+}
+
 function reducer(state: State, action: Action): State {
   switch (action.type) {
     case 'add':
@@ -62,7 +66,10 @@ const initialState: State = {
   cartItems: JSON.parse(localStorage.getItem('products') || '[]'),
 };
 
-export const CartContext = React.createContext<State>(initialState);
+export const CartContext = React.createContext<CartContextValue>({
+  ...initialState,
+  totalQuantityDiff: 0,
+});
 export const CartDispatchContext = React.createContext<React.Dispatch<Action>>(
   () => {},
 );
@@ -74,13 +81,31 @@ type Props = {
 export const CartProvider: React.FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const totalQuantityDiff = React.useMemo(() => {
+    const addons = state.cartItems.map(item => item.quantity);
+
+    const calculation =
+      addons.reduce((sum, item) => {
+        return sum + item;
+      }, 0) - state.cartItems.length;
+
+    return calculation;
+  }, [state.cartItems]);
+
+  const contextValue = {
+    ...state,
+    totalQuantityDiff,
+  };
+
   useEffect(() => {
     localStorage.setItem('products', JSON.stringify(state.cartItems));
   }, [state.cartItems]);
 
   return (
     <CartDispatchContext.Provider value={dispatch}>
-      <CartContext.Provider value={state}>{children}</CartContext.Provider>
+      <CartContext.Provider value={contextValue}>
+        {children}
+      </CartContext.Provider>
     </CartDispatchContext.Provider>
   );
 };

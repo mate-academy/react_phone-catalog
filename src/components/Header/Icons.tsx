@@ -8,7 +8,7 @@ import cart from '../../images/Icons/Cart.svg';
 import heart from '../../images/Icons/Heart.svg';
 
 export const Icons: React.FC = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, totalQuantityDiff } = useContext(CartContext);
   const { favorites } = useContext(FavContext);
 
   const getLinkClass = getClassLink({
@@ -29,7 +29,9 @@ export const Icons: React.FC = () => {
       <div className={styles.icons__iconBlockLeft}>
         <NavLink className={getLinkClass} to="/cart">
           {!!cartItems.length && (
-            <div className={styles.icons__iconCounter}>{cartItems.length}</div>
+            <div className={styles.icons__iconCounter}>
+              {totalQuantityDiff + cartItems.length}
+            </div>
           )}
           <img className={styles.icons__cartImg} src={cart} />
         </NavLink>

@@ -16,6 +16,8 @@ export const Footer: React.FC = () => {
           <a
             className={styles.footer__link}
             href="https://github.com/OwlDevcUA"
+            target="_blank"
+            rel="noreferrer"
           >
             GITHUB
           </a>
@@ -23,6 +25,8 @@ export const Footer: React.FC = () => {
             className={styles.footer__link}
             // eslint-disable-next-line max-len
             href="https://www.linkedin.com/in/kyryl-kostiuk-515b05315/?locale=uk"
+            target="_blank"
+            rel="noreferrer"
           >
             CONTACTS
           </a>

@@ -12,9 +12,10 @@ import { useFav } from '../../hooks/useFav';
 
 type Props = {
   product: ProductPreview;
+  showNoSale?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product, showNoSale }) => {
   const { cartItems } = useContext(CartContext);
   const { favorites } = useContext(FavContext);
 
@@ -54,10 +55,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           {'$'}
           {isOnSale ? product.price : product.fullPrice}
         </h3>
-        <h3 className={styles.productCard__oldPrice}>
-          {'$'}
-          {isOnSale ? product.fullPrice : ''}
-        </h3>
+        {!showNoSale && (
+          <h3 className={styles.productCard__oldPrice}>
+            {'$'}
+            {isOnSale ? product.fullPrice : ''}
+          </h3>
+        )}
       </div>
 
       <div className={styles.productCard__line}></div>
