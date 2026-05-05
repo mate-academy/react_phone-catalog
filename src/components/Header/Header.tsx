@@ -13,7 +13,7 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) =>
 
 export const Header: React.FC<Props> = ({
   cartCount = 0,
-  favoritesCount = 0,
+  // favoritesCount = 0,
 }) => {
   return (
     <header className={styles.header} role="banner">
@@ -50,11 +50,11 @@ export const Header: React.FC<Props> = ({
           </div>
         </nav>
         <div className={styles.actions}>
-          <FavoritesIcon count={favoritesCount} />
+          <FavoritesIcon count={0} />
 
           <NavLink to="/cart" className={styles.icon} aria-label="Card">
             <img src="/img/cart.png" alt="Cart" />
-            {/* <i className="fas fa-shopping-cart" /> */}
+            <i className="fas fa-shopping-cart" />
             {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
           </NavLink>
         </div>

@@ -8,7 +8,7 @@ import { App } from './App';
 import 'bulma/css/bulma.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import './App.scss';
-import { Home } from './pages/Home';
+import { HomePage } from './components/HomePage/Home';
 import { Phones } from './pages/Phones';
 import { Tablets } from './pages/Tablets';
 import { Accessories } from './pages/Accessories';
@@ -18,7 +18,7 @@ export const Root = () => (
   <Router>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route index element={<Home />} />
+        <Route index element={<HomePage />} />
 
         <Route path="phones">
           <Route index element={<Phones />} />

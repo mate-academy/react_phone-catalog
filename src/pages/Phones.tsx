@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ProductCarts } from '../components/ProductCart/ProductCarts';
-import { PropsPhone } from '../types/PropsPhone';
-import { getPhone } from '../fetch/fetchPhone';
+import { PropsPhone } from '../types/Products';
+import { getData } from '../fetch/httpClient';
 
 type Props = {
   phones?: PropsPhone[] | null;
@@ -13,7 +13,7 @@ export const Phones: React.FC<Props> = ({ phones }) => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    getPhone()
+    getData('/phones')
       .then(data => setPhonesState(data))
       .catch(() => setError('Something went wrong'))
       .finally(() => setLoading(false));

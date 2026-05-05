@@ -1,5 +1,10 @@
 .footer {
   padding: 0;
+  color: #89939A;
+
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
 }
 
 .container {
@@ -9,6 +14,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 
 .logo {
