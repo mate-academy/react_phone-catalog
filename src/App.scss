@@ -15,14 +15,14 @@ html {
   max-width: 100%;
 }
 
-/* 🔥 основной контейнер страницы (как сказал ментор) */
+
 .main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 16px;
 }
 
-/* скрытые элементы */
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -35,7 +35,7 @@ html {
   white-space: nowrap;
 }
 
-/* swiper / brand */
+
 .brand {
   &__swiper {
     width: 100%;
