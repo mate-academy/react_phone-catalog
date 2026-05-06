@@ -40,6 +40,7 @@
 
     .link {
       @include font-uppercase;
+
       color: $text-white__hover;
       text-transform: uppercase;
       text-decoration: none;

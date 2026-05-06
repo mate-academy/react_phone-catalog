@@ -1,6 +1,6 @@
 @use '/src/modules/shared/styles/variables.scss' as *;
 
-@mixin font-H1 ($size: 48px, $line-height: 56px) {
+@mixin font-h1($size: 48px, $line-height: 56px) {
   font-family: $font-family;
   font-weight: 800;
   font-size: $size;
@@ -8,7 +8,7 @@
   letter-spacing: -0.01em;
 }
 
-@mixin font-H2 ($size: 32px, $line-height: 41px) {
+@mixin font-h2($size: 32px, $line-height: 41px) {
   font-family: $font-family;
   font-weight: 800;
   font-size: $size;
@@ -16,7 +16,7 @@
   letter-spacing: -0.01em;
 }
 
-@mixin font-H3 ($size: 22px, $line-height: 31px) {
+@mixin font-h3($size: 22px, $line-height: 31px) {
   font-family: $font-family;
   font-weight: 800;
   font-size: $size;
@@ -24,7 +24,7 @@
   letter-spacing: 0;
 }
 
-@mixin font-H4 ($size: 20px, $line-height: 26px) {
+@mixin font-h4($size: 20px, $line-height: 26px) {
   font-family: $font-family;
   font-weight: 600;
   font-size: $size;
@@ -48,7 +48,7 @@
   letter-spacing: 0;
 }
 
-@mixin font-body_text {
+@mixin font-body-text {
   font-family: $font-family;
   font-weight: 400;
   font-size: 14px;
@@ -57,7 +57,7 @@
 }
 
 
-@mixin font-small_text {
+@mixin font-small-text {
   font-family: $font-family;
   font-weight: 600;
   font-size: 12px;

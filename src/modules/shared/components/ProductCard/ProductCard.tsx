@@ -14,17 +14,13 @@ export const ProductCard = ({ product }: Props) => {
   const { favoritesItems, addToFavorites, removeFromFavorites } =
     useContext(FavoritesContext);
 
-  const isInCart = cartItems.some(item => item.id === product.id);
+  const isInCart = cartItems.some(item => item.product.id === product.id);
   const isInFavorites = favoritesItems.some(item => item.id === product.id);
 
   return (
     <article className={styles.productCard}>
-      <Link to={`/product/${product.itemId}`}>
-        <img
-          className={styles.productImage}
-          src={product.image}
-          alt={product.name}
-        />
+      <Link className={styles.productImage} to={`/product/${product.itemId}`}>
+        <img className={styles.image} src={product.image} alt={product.name} />
       </Link>
 
       <Link to={`/product/${product.itemId}`} className={styles.title}>
@@ -63,7 +59,7 @@ export const ProductCard = ({ product }: Props) => {
           </button>
         ) : (
           <button
-            className={styles.addToCart}
+            className={styles['add-to-cart']}
             onClick={() => {
               addToCart(product);
             }}
@@ -85,7 +81,7 @@ export const ProductCard = ({ product }: Props) => {
           </button>
         ) : (
           <button
-            className={styles.addToFav}
+            className={styles['add-to-fav']}
             onClick={() => {
               addToFavorites(product);
             }}

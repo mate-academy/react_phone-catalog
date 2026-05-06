@@ -9,19 +9,19 @@
 
 @mixin grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
   padding-inline: 16px;
 
 
 
   @media (min-width: $tablet-breakpoint) {
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
     padding-inline: 24px;
   }
 
   @media (min-width: $desktop-breakpoint) {
-    grid-template-columns: repeat(24, 32px);
+    grid-template-columns: repeat(24, minmax(0, 32px))  ;
     justify-content: center
   }
 }

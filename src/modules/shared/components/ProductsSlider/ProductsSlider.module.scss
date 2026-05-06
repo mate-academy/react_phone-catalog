@@ -1,0 +1,74 @@
+@use "/src/modules/shared/styles/variables.scss" as *;
+@use "/src/modules/shared/styles/mixins.scss" as *;
+
+
+%icon {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: $icons-def;
+  @include flex-center;
+
+  img {
+    width: 16px;
+    height: 16px;
+    filter: invert(1);
+  }
+}
+
+.productsSlider {
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
+
+  .header {
+    @include flex-center;
+    @include font-h2($size: 22px, $line-height: 140%);
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    .headerButtons {
+      display: flex;
+      gap: 8px;
+
+      .icon {
+        @extend %icon;
+      }
+
+
+      .iconDisabled {
+        @extend %icon;
+
+        border: $border-default;
+        background-color: $bg-color-card;
+        pointer-events: none;
+
+        img {
+          filter: brightness(0.5);
+        }
+      }
+    }
+
+  }
+
+  .windowSlider {
+    box-sizing: border-box;
+    overflow-x: auto;
+
+
+    .slider {
+      display: flex;
+      gap: 16px;
+
+      .card {
+        flex-shrink: 0;
+      }
+    }
+
+    scrollbar-width: none; // для Firefox
+
+    &::-webkit-scrollbar {
+      display: none; // для Chrome/Safari
+    }
+  }
+}

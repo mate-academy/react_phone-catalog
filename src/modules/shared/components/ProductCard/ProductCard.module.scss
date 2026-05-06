@@ -2,31 +2,58 @@
 @use '/src/modules/shared/styles/mixins.scss' as *;
 
 
+%add-to-cart {
+  height: 40px;
+  flex: 1;
+  border: none;
+
+  @include font-buttons;
+
+  color: $text-white__hover;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background-color: $color-accent-hover;
+  }
+}
+
+%add-to-fav {
+
+  width: 40px;
+  height: 40px;
+}
+
+
 .productCard {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
   overflow: hidden;
 
   background-color: $bg-color-card;
 
-  max-width: 272px;
+  width: 212px;
+  height: 439px;
   padding: 32px;
 
   .productImage {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
 
-    @include scale-img;
+    flex: 1;
+    min-height: 0;
+
+    .image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+
+      @include scale-img;
+    }
   }
 
   .title {
     text-decoration: none;
-    @include font-body_text;
-
+    @include font-body-text;
     margin-top: 8px;
-
     color: $text-white__hover;
   }
 
@@ -38,7 +65,7 @@
     margin: 8px 0;
 
     p {
-     @include font-H3;
+      @include font-h3;
     }
 
     :last-child {
@@ -58,7 +85,7 @@
     padding: 16px 0;
 
     p {
-      @include font-small_text;
+      @include font-small-text;
     }
 
     .info {
@@ -78,39 +105,38 @@
     text-decoration: none;
     gap: 8px;
 
-    .addToCart {
-      height: 40px;
+
+
+    .add-to-cart {
+      @extend %add-to-cart;
       background-color: $color-accent;
-      flex: 1;
-      border: none;
-
-      @include font-buttons;
-      color: $text-white__hover;
-
-      transition: all 0.25s ease;
-
-      &:hover {
-        background-color: $color-accent-hover;
-      }
     }
 
     .addedToCart {
-      @extend .addToCart;
+      @extend %add-to-cart;
+
       background-color: $button-selected;
+
+      &:hover {
+        background-color: $icons-hover;
+      }
     }
 
-    .addToFav {
+    .add-to-fav {
+      @extend %add-to-cart;
+      @extend %add-to-fav;
+      flex: none;
+
       background-color: $icons-def;
       border: none;
-      width: 40px;
-      height: 40px;
 
     }
 
     .addedToFav {
-      @extend .addToFav;
+      @extend %add-to-fav;
       border: $border-default;
       background-color: $bg-color;
+
 
     }
 

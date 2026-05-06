@@ -20,23 +20,7 @@
     align-items: center;
     gap: 16px;
 
-    .close {
-      border: none;
-      width: 16px;
-      height: 16px;
-      background-color: $bg-color-card;
 
-      @include scale-img(1.2);
-
-      img {
-        filter: brightness(0.3);
-        transition: all 0.2s ease;
-
-        &:hover {
-          filter: brightness(1);
-        }
-      }
-    }
 
     .product_img {
       display: flex;
@@ -47,13 +31,33 @@
       height: 80px;
       width: 80px;
 
-      @include scale-img(1.1);
 
       img {
         width: 100%;
         height: auto;
         object-fit: contain;
       }
+
+      @include scale-img(1.1);
+    }
+
+    .close {
+      border: none;
+      width: 16px;
+      height: 16px;
+      background-color: $bg-color-card;
+
+
+      img {
+        filter: brightness(0.3);
+        transition: all 0.2s ease;
+
+        &:hover {
+          filter: brightness(1);
+        }
+      }
+
+      @include scale-img(1.2);
     }
 
     .product_link {
@@ -67,7 +71,7 @@
       }
 
       .product_name {
-        @include font-H3;
+        @include font-h3;
       }
     }
 
@@ -78,18 +82,16 @@
     align-items: center;
     justify-content: space-between;
 
-    width: 100% ;
+    width: 100%;
 
     .block_quantity {
       display: flex;
       align-items: center;
       gap: 13px;
 
-      .icon {
+      %icon {
         width: 32px;
         height: 32px;
-        border: none;
-        background-color: $icons-def;
 
         img {
           width: 16px;
@@ -101,11 +103,20 @@
         }
       }
 
+      .icon {
+        @extend %icon;
+        border: none;
+        background-color: $icons-def;
+
+      }
+
       .iconDisabled {
-        @extend .icon;
+        @extend %icon;
+
         border: $border-default;
         background-color: $bg-color-card;
         pointer-events: none;
+
         img {
           filter: brightness(0.5);
         }
@@ -113,7 +124,7 @@
     }
 
     .price {
-      @include font-H3;
+      @include font-h3;
     }
   }
 }
