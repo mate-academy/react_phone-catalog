@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { Product } from '../../../../types';
 import { ProductCard } from '../../../shared/components/ProductCard';
-import { getImageUrl } from '../../../../utils';
+import { ICONS } from '../../../../constants';
 import styles from './ProductsSlider.module.scss';
 
 const CARD_WIDTH = 272;
@@ -58,7 +58,7 @@ export const ProductsSlider = ({ title, products }: Props) => {
             aria-label="Previous products"
           >
             <img
-              src={getImageUrl('/img/icons/arrow-down.svg')}
+              src={ICONS.ARROW_DOWN}
               alt=""
               aria-hidden="true"
               className={`${styles.arrowIcon} ${styles.arrowIconLeft}`}
@@ -72,7 +72,7 @@ export const ProductsSlider = ({ title, products }: Props) => {
             aria-label="Next products"
           >
             <img
-              src={getImageUrl('/img/icons/arrow-down.svg')}
+              src={ICONS.ARROW_DOWN}
               alt=""
               aria-hidden="true"
               className={`${styles.arrowIcon} ${styles.arrowIconRight}`}

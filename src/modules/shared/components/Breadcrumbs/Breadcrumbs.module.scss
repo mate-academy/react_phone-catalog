@@ -1,0 +1,50 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.breadcrumbs {
+  @include page-container;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+
+  @include on-tablet {
+    margin-bottom: 16px;
+  }
+}
+
+.breadcrumbLink {
+  display: flex;
+  align-items: center;
+  @include small-text;
+  color: $color-secondary;
+  text-decoration: none;
+  @include hover-transition(color);
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.homeIcon {
+  width: 16px;
+  height: 16px;
+  @include hover-transition(filter);
+
+  .breadcrumbLink:hover & {
+    filter: brightness(0) saturate(100%) invert(19%) sepia(8%) saturate(1059%) hue-rotate(202deg) brightness(95%) contrast(89%);
+  }
+}
+
+.breadcrumbArrow {
+  width: 16px;
+  height: 16px;
+  transform: rotate(-90deg);
+}
+
+.breadcrumbCurrent {
+  @include small-text;
+  color: $color-primary;
+}

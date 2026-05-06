@@ -1,6 +1,7 @@
 import { CartItem as CartItemType } from '../../../../types';
 import { useCart } from '../../../../context';
 import { getImageUrl } from '../../../../utils';
+import { ICONS } from '../../../../constants';
 import styles from './CartItem.module.scss';
 
 type Props = {
@@ -20,11 +21,7 @@ export const CartItem = ({ item }: Props) => {
           onClick={() => removeFromCart(product.id)}
           aria-label={`Remove ${product.name} from cart`}
         >
-          <img
-            src={getImageUrl('/img/icons/Close.svg')}
-            alt=""
-            aria-hidden="true"
-          />
+          <img src={ICONS.CLOSE} alt="" aria-hidden="true" />
         </button>
 
         <img

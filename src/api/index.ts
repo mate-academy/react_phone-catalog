@@ -1,6 +1,10 @@
 import { Product, ProductDetails, Category } from '../types';
 
-const BASE_URL = `${import.meta.env.BASE_URL}api`;
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+const BASE_URL = `${base}api`;
 
 async function get<T>(endpoint: string): Promise<T> {
   const response = await fetch(`${BASE_URL}/${endpoint}`);
@@ -48,7 +52,7 @@ export const getSuggestedProducts = (
   count = 10,
 ): Promise<Product[]> =>
   getProducts().then(all => {
-    const pool = all.filter(p => p.itemId !== excludeId);
+    const pool = all.filter(product => product.itemId !== excludeId);
     const shuffled = [...pool].sort(() => Math.random() - 0.5);
 
     return shuffled.slice(0, count);

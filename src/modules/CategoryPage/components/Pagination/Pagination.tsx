@@ -16,12 +16,7 @@ export const Pagination: React.FC<Props> = ({
 }) => {
   const totalPages = Math.ceil(total / perPage);
 
-  const handleClick = (
-    page: number,
-    event: React.MouseEvent<HTMLAnchorElement>,
-  ) => {
-    event.preventDefault();
-
+  const handleClick = (page: number) => {
     if (page < 1 || page > totalPages || page === currentPage) {
       return;
     }
@@ -29,54 +24,90 @@ export const Pagination: React.FC<Props> = ({
     onPageChange(page);
   };
 
+  const getVisiblePages = () => {
+    const maxVisible = 5;
+
+    if (totalPages <= maxVisible) {
+      return Array.from({ length: totalPages }, (_, index) => index + 1);
+    }
+
+    // Keep current page in the middle (position 3 of 5)
+    // but clamp so we never go below 1 or above totalPages
+    const half = Math.floor(maxVisible / 2); // 2
+
+    let start = currentPage - half; // want current in center
+    let end = currentPage + half; // 2 pages on each side
+
+    if (start < 1) {
+      // Too close to the beginning — pin left
+      start = 1;
+      end = maxVisible;
+    }
+
+    if (end > totalPages) {
+      // Too close to the end — pin right
+      end = totalPages;
+      start = totalPages - maxVisible + 1;
+    }
+
+    return Array.from({ length: end - start + 1 }, (_, index) => start + index);
+  };
+
+  const visiblePages = getVisiblePages();
+
   return (
     <ul className={styles.pagination}>
       <li
-        className={`${styles.pageItem} ${currentPage === 1 ? styles.disabled : ''}`}
+        className={`${styles.pageItem} ${styles.arrow} ${
+          currentPage === 1 ? styles.disabled : ''
+        }`}
       >
-        <a
+        <button
           data-cy="prevLink"
           className={styles.pageLink}
-          href="#prev"
-          aria-disabled={currentPage === 1}
-          onClick={e => handleClick(currentPage - 1, e)}
+          aria-label="Previous page"
+          disabled={currentPage === 1}
+          onClick={() => handleClick(currentPage - 1)}
         >
           «
-        </a>
+        </button>
       </li>
 
-      {[...Array(totalPages)].map((_, index) => {
-        const page = index + 1;
-
+      {visiblePages.map(page => {
         return (
           <li
             key={page}
-            className={`${styles.pageItem} ${currentPage === page ? styles.active : ''}`}
+            className={`${styles.pageItem} ${
+              currentPage === page ? styles.active : ''
+            }`}
           >
-            <a
+            <button
               data-cy="pageLink"
               className={styles.pageLink}
-              href={`#${page}`}
-              onClick={e => handleClick(page, e)}
+              aria-label={`Go to page ${page}`}
+              aria-current={currentPage === page ? 'page' : undefined}
+              onClick={() => handleClick(page)}
             >
               {page}
-            </a>
+            </button>
           </li>
         );
       })}
 
       <li
-        className={`${styles.pageItem} ${currentPage === totalPages ? styles.disabled : ''}`}
+        className={`${styles.pageItem} ${styles.arrow} ${
+          currentPage === totalPages ? styles.disabled : ''
+        }`}
       >
-        <a
+        <button
           data-cy="nextLink"
           className={styles.pageLink}
-          href="#next"
-          aria-disabled={currentPage === totalPages}
-          onClick={event => handleClick(currentPage + 1, event)}
+          aria-label="Next page"
+          disabled={currentPage === totalPages}
+          onClick={() => handleClick(currentPage + 1)}
         >
           »
-        </a>
+        </button>
       </li>
     </ul>
   );

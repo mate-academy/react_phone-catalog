@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import React, { useEffect, useState, useRef } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import {
   getProductDetails,
   getProducts,
@@ -7,6 +7,7 @@ import {
 } from '../../api';
 import { Product, ProductDetails } from '../../types';
 import { Category, CATEGORIES } from '../../types';
+import { ICONS } from '../../constants';
 import { useCart } from '../../context';
 import { useProducts } from '../../context';
 import { getImageUrl } from '../../utils';
@@ -28,6 +29,7 @@ export const ProductDetailsPage = () => {
   const [loading, setLoading] = useState(false);
   const [notFound, setNotFound] = useState(false);
   const [error, setError] = useState(false);
+  const touchStartX = useRef<number>(0);
 
   const { addToCart, isInCart } = useCart();
   const { isFavorite, toggleFavorite } = useProducts();
@@ -54,17 +56,18 @@ export const ProductDetailsPage = () => {
       getProducts(),
       getSuggestedProducts(productId),
     ])
-      .then(([det, allProducts, sugg]) => {
-        if (!det) {
+      .then(([detail, allProducts, suggest]) => {
+        if (!detail) {
           setNotFound(true);
 
           return;
         }
 
-        setDetails(det);
-        setSuggested(sugg);
+        setDetails(detail);
+        setSuggested(suggest);
 
-        const match = allProducts.find(p => p.itemId === productId) ?? null;
+        const match =
+          allProducts.find(prod => prod.itemId === productId) ?? null;
 
         setProduct(match);
       })
@@ -85,6 +88,34 @@ export const ProductDetailsPage = () => {
     const newId = `${details.namespaceId}-${newCapacity}-${newColor}`;
 
     navigate(`/${category}/${newId}`);
+  };
+
+  // Touch swipe handlers for image gallery
+  const handleTouchStart = (event: React.TouchEvent) => {
+    touchStartX.current = event.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (event: React.TouchEvent) => {
+    if (!details) {
+      return;
+    }
+
+    const SWIPE_THRESHOLD = 50;
+    const diff = touchStartX.current - event.changedTouches[0].clientX;
+
+    if (Math.abs(diff) < SWIPE_THRESHOLD) {
+      return;
+    }
+
+    if (diff > 0) {
+      // Swipe left - next image
+      setActiveImage(prev => (prev + 1) % details.images.length);
+    } else {
+      // Swipe right - previous image
+      setActiveImage(prev =>
+        prev === 0 ? details.images.length - 1 : prev - 1,
+      );
+    }
   };
 
   if (loading) {
@@ -114,38 +145,15 @@ export const ProductDetailsPage = () => {
   const inCart = product ? isInCart(product.id) : false;
   const inFav = product ? isFavorite(product.id) : false;
 
-  const categoryLabel =
-    category === 'phones'
-      ? 'Phones'
-      : category === 'tablets'
-        ? 'Tablets'
-        : 'Accessories';
-
   return (
     <div className={styles.page}>
-      {/* Breadcrumbs */}
-      <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
-        <Link to="/" className={styles.breadcrumbLink}>
-          Home
-        </Link>
-        <span className={styles.breadcrumbSep}>/</span>
-        <Link to={`/${category}`} className={styles.breadcrumbLink}>
-          {categoryLabel}
-        </Link>
-        <span className={styles.breadcrumbSep}>/</span>
-        <span className={styles.breadcrumbCurrent}>{details.name}</span>
-      </nav>
-
-      {/* Back button */}
       <button className={styles.back} onClick={() => navigate(-1)}>
         ← Back
       </button>
 
       <h1 className={styles.title}>{details.name}</h1>
 
-      {/* Main section */}
       <div className={styles.main}>
-        {/* Image gallery */}
         <div className={styles.gallery}>
           <ul className={styles.thumbnails}>
             {details.images.map((src, i) => (
@@ -168,24 +176,24 @@ export const ProductDetailsPage = () => {
               src={getImageUrl(details.images[activeImage])}
               alt={details.name}
               className={styles.mainImg}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
             />
           </div>
         </div>
 
-        {/* Controls */}
         <div className={styles.controls}>
-          {/* Colors */}
           <div className={styles.optionGroup}>
             <p className={styles.optionLabel}>Available colors</p>
             <ul className={styles.colorList}>
-              {details.colorsAvailable.map(c => (
-                <li key={c}>
+              {details.colorsAvailable.map(color => (
+                <li key={color}>
                   <button
-                    className={`${styles.colorBtn} ${c === details.color ? styles.colorBtnActive : ''}`}
-                    style={{ backgroundColor: c }}
-                    onClick={() => goToVariant(c, undefined)}
-                    aria-label={c}
-                    title={c}
+                    className={`${styles.colorBtn} ${color === details.color ? styles.colorBtnActive : ''}`}
+                    style={{ backgroundColor: color }}
+                    onClick={() => goToVariant(color, undefined)}
+                    aria-label={color}
+                    title={color}
                   />
                 </li>
               ))}
@@ -194,7 +202,6 @@ export const ProductDetailsPage = () => {
 
           <div className={styles.divider} />
 
-          {/* Capacity */}
           <div className={styles.optionGroup}>
             <p className={styles.optionLabel}>Select capacity</p>
             <ul className={styles.capacityList}>
@@ -221,7 +228,6 @@ export const ProductDetailsPage = () => {
             <span className={styles.priceRegular}>${details.priceRegular}</span>
           </div>
 
-          {/* Actions */}
           <div className={styles.actions}>
             <button
               className={`${styles.cartBtn} ${inCart ? styles.cartBtnAdded : ''}`}
@@ -237,11 +243,13 @@ export const ProductDetailsPage = () => {
               aria-label={inFav ? 'Remove from favorites' : 'Add to favorites'}
               disabled={!product}
             >
-              {inFav ? '♥' : '♡'}
+              <img
+                src={inFav ? ICONS.FAVOURITES_ACTIVE : ICONS.FAVOURITES}
+                alt="Favourites"
+              />
             </button>
           </div>
 
-          {/* Short specs */}
           <ul className={styles.shortSpecs}>
             <li>
               <span>Screen</span>
@@ -263,7 +271,6 @@ export const ProductDetailsPage = () => {
         </div>
       </div>
 
-      {/* About + Tech Specs */}
       <div className={styles.details}>
         <section className={styles.about}>
           <h2 className={styles.sectionTitle}>About</h2>
@@ -271,9 +278,9 @@ export const ProductDetailsPage = () => {
           {details.description.map(block => (
             <div key={block.title} className={styles.descBlock}>
               <h3 className={styles.descTitle}>{block.title}</h3>
-              {block.text.map(t => (
-                <p key={t} className={styles.descText}>
-                  {t}
+              {block.text.map(text => (
+                <p key={text} className={styles.descText}>
+                  {text}
                 </p>
               ))}
             </div>
@@ -324,7 +331,6 @@ export const ProductDetailsPage = () => {
         </section>
       </div>
 
-      {/* You may also like */}
       {suggested.length > 0 && (
         <section className={styles.suggestedSection}>
           <ProductsSlider title="You may also like" products={suggested} />

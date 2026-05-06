@@ -16,28 +16,28 @@
 
 // Page container
 @mixin page-container {
-  max-width: var(--content-max-width);
+  max-width: $content-max-width;
   margin: 0 auto;
-  padding-inline: var(--page-padding-mobile);
+  padding-inline: $page-padding-mobile;
 
   @include on-tablet {
-    padding-inline: var(--page-padding-tablet);
+    padding-inline: $page-padding-tablet;
   }
 
   @include on-desktop {
-    padding-inline: var(--page-padding-desktop);
+    padding-inline: $page-padding-desktop;
   }
 }
 
 // Smooth hover transition
 @mixin hover-transition($property: all) {
-  transition: $property var(--transition);
+  transition: $property $transition;
 }
 
 // Scale image links by 10% on hover (scales the img inside, not the container)
 @mixin hover-scale {
   img {
-    transition: transform var(--transition);
+    transition: transform $transition;
   }
 
   &:hover img {
@@ -48,74 +48,104 @@
 // Typography mixins
 @mixin h1 {
   font-weight: 700;
-  font-size: var(--font-size-h1-mobile);
-  line-height: var(--line-height-h1-mobile);
-  letter-spacing: var(--letter-spacing-h1-mobile);
+  font-size: $font-size-h1-mobile;
+  line-height: $line-height-h1-mobile;
+  letter-spacing: $letter-spacing-h1-mobile;
 
   @include on-tablet {
-    font-size: var(--font-size-h1);
-    line-height: var(--line-height-h1);
+    font-size: $font-size-h1;
+    line-height: $line-height-h1;
   }
 }
 
 @mixin h2 {
   font-weight: 700;
-  font-size: var(--font-size-h2-mobile);
-  line-height: var(--line-height-h2-mobile);
+  font-size: $font-size-h2-mobile;
+  line-height: $line-height-h2-mobile;
 
   @include on-tablet {
-    font-size: var(--font-size-h2);
-    line-height: var(--line-height-h2);
-    letter-spacing: var(--letter-spacing-h2);
+    font-size: $font-size-h2;
+    line-height: $line-height-h2;
+    letter-spacing: $letter-spacing-h2;
   }
 }
 
 @mixin h3 {
   font-weight: 600;
-  font-size: var(--font-size-h3-mobile);
-  line-height: var(--line-height-h3-mobile);
+  font-size: $font-size-h3-mobile;
+  line-height: $line-height-h3-mobile;
 
   @include on-tablet {
     font-weight: 700;
-    font-size: var(--font-size-h3);
-    line-height: var(--line-height-h3);
+    font-size: $font-size-h3;
+    line-height: $line-height-h3;
   }
 }
 
 @mixin h4 {
   font-weight: 600;
-  font-size: var(--font-size-h4-mobile);
-  line-height: var(--line-height-h4-mobile);
+  font-size: $font-size-h4-mobile;
+  line-height: $line-height-h4-mobile;
 
   @include on-tablet {
-    font-size: var(--font-size-h4);
-    line-height: var(--line-height-h4);
+    font-size: $font-size-h4;
+    line-height: $line-height-h4;
   }
 }
 
 @mixin uppercase {
   font-weight: 700;
-  font-size: var(--font-size-uppercase);
-  line-height: var(--line-height-uppercase);
-  letter-spacing: var(--letter-spacing-uppercase);
+  font-size: $font-size-uppercase;
+  line-height: $line-height-uppercase;
+  letter-spacing: $letter-spacing-uppercase;
   text-transform: uppercase;
 }
 
 @mixin button-text {
   font-weight: 600;
-  font-size: var(--font-size-button);
-  line-height: var(--line-height-button);
+  font-size: $font-size-button;
+  line-height: $line-height-button;
 }
 
 @mixin body-text {
   font-weight: 400;
-  font-size: var(--font-size-body);
-  line-height: var(--line-height-body);
+  font-size: $font-size-body;
+  line-height: $line-height-body;
 }
 
 @mixin small-text {
   font-weight: 600;
-  font-size: var(--font-size-small);
-  line-height: var(--line-height-small);
+  font-size: $font-size-small;
+  line-height: $line-height-small;
 }
 
+@mixin nav-link {
+  font-family: $font-family;
+  font-size: $font-size-uppercase;
+  font-weight: 800;
+  line-height: $line-height-uppercase;
+  letter-spacing: $letter-spacing-uppercase;
+  text-transform: uppercase;
+  color: $color-secondary;
+  text-decoration: none;
+  position: relative;
+  @include hover-transition(color);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: $color-primary;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $transition;
+  }
+
+  &:hover {
+    color: $color-primary;
+    &::after { transform: scaleX(1); }
+  }
+}

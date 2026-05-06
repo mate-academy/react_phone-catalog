@@ -1,4 +1,5 @@
 @use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
 
 .card {
   width: 100%;
@@ -7,8 +8,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  border: 1px solid var(--color-elements);
-  background-color: var(--color-white);
+  border: 1px solid $color-elements;
+  background-color: $color-white;
 }
 
 .linkContainer {
@@ -21,7 +22,7 @@
   @include hover-scale();
 
   &:hover .name {
-    color: var(--color-secondary);
+    color: $color-secondary;
   }
 }
 
@@ -45,7 +46,7 @@
 
 .name {
   @include button-text();
-  color: var(--color-primary);
+  color: $color-primary;
 }
 
 .prices {
@@ -55,23 +56,23 @@
 }
 
 .price {
-  font-size: var(--font-size-h3);
-  line-height: var(--line-height-h3);
+  font-size: $font-size-h3;
+  line-height: $line-height-h3;
   font-weight: 700;
-  color: var(--color-primary);
+  color: $color-primary;
 }
 
 .fullPrice {
-  font-size: var(--font-size-h3);
-  line-height: var(--line-height-h3);
+  font-size: $font-size-h3;
+  line-height: $line-height-h3;
   font-weight: 500;
-  color: var(--color-secondary);
+  color: $color-secondary;
   text-decoration: line-through;
 }
 
 .divider {
   border: none;
-  border-top: 1px solid var(--color-elements);
+  border-top: 1px solid $color-elements;
   margin: 0;
 }
 
@@ -91,17 +92,17 @@
 }
 
 .specLabel {
-  font-size: var(--font-size-small);
-  line-height: var(--line-height-small);
+  font-size: $font-size-small;
+  line-height: $line-height-small;
   font-weight: 600;
-  color: var(--color-secondary);
+  color: $color-secondary;
 }
 
 .specValue {
-  font-size: var(--font-size-small);
-  line-height: var(--line-height-small);
+  font-size: $font-size-small;
+  line-height: $line-height-small;
   font-weight: 600;
-  color: var(--color-primary);
+  color: $color-primary;
 }
 
 .buttons {
@@ -113,10 +114,10 @@
 .addToCart {
   flex: 1;
   height: 40px;
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  font-size: var(--font-size-button);
-  line-height: var(--line-height-button);
+  background-color: $color-primary;
+  color: $color-white;
+  font-size: $font-size-button;
+  line-height: $line-height-button;
   font-weight: 700;
   border: none;
   cursor: pointer;
@@ -129,9 +130,9 @@
 }
 
 .addToCartActive {
-  background-color: var(--color-white);
-  color: var(--color-green);
-  border: 1px solid var(--color-green);
+  background-color: $color-white;
+  color: $color-green;
+  border: 1px solid $color-green;
 }
 
 .favourites {
@@ -140,8 +141,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-white);
-  border: 1px solid var(--color-icons);
+  background-color: $color-white;
+  border: 1px solid $color-icons;
   cursor: pointer;
   flex-shrink: 0;
 
@@ -153,7 +154,7 @@
   }
 
   &:hover {
-    border-color: var(--color-primary);
+    border-color: $color-primary;
     box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
   }
 

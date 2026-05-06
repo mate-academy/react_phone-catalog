@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { AppRoutes } from '../../../../utils/routes';
-import { getImageUrl } from '../../../../utils';
+import { CATEGORY_IMAGES } from '../../../../constants';
 import styles from './ShopByCategory.module.scss';
 
 interface ProductCounts {
@@ -13,23 +13,23 @@ type Props = {
   counts: ProductCounts;
 };
 
-const categories = [
+const CATEGORIES = [
   {
     title: 'Mobile phones',
     route: AppRoutes.PHONES,
-    image: getImageUrl('/img/category-phones.png'),
+    image: CATEGORY_IMAGES.PHONES,
     countKey: 'phones' as const,
   },
   {
     title: 'Tablets',
     route: AppRoutes.TABLETS,
-    image: getImageUrl('/img/category-tablets.png'),
+    image: CATEGORY_IMAGES.TABLETS,
     countKey: 'tablets' as const,
   },
   {
     title: 'Accessories',
     route: AppRoutes.ACCESSORIES,
-    image: getImageUrl('/img/category-accessories.png'),
+    image: CATEGORY_IMAGES.ACCESSORIES,
     countKey: 'accessories' as const,
   },
 ];
@@ -37,7 +37,7 @@ const categories = [
 export const ShopByCategory = ({ counts }: Props) => {
   return (
     <ul className={styles.list}>
-      {categories.map(({ title, route, image, countKey }) => (
+      {CATEGORIES.map(({ title, route, image, countKey }) => (
         <li key={route} className={styles.item}>
           <Link to={route} className={styles.link}>
             <div className={styles.imageWrapper}>

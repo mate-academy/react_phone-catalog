@@ -1,4 +1,5 @@
 @use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
 
 .slider {
   display: flex;
@@ -27,13 +28,13 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  border: 1px solid var(--color-icons);
+  border: 1px solid $color-icons;
   background: transparent;
   cursor: pointer;
-  transition: border-color var(--transition);
+  transition: border-color $transition;
 
   &:hover:not(:disabled) {
-    border-color: var(--color-primary);
+    border-color: $color-primary;
   }
 }
 
@@ -72,4 +73,3 @@
   flex: 0 0 272px;
   width: 272px;
 }
-

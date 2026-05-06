@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getProducts } from '../../api';
 import { Product } from '../../types';
 import { useProductCounts } from '../../hooks';
-import { getImageUrl } from '../../utils';
+import { BANNER_IMAGES } from '../../constants';
 import styles from './HomePage.module.scss';
 import { Loader } from '../shared/components/Loader';
 import { ShopByCategory } from './components/ShopByCategory';
@@ -12,17 +12,17 @@ import { ProductsSlider } from './components/ProductsSlider';
 const BANNER_SLIDES = [
   {
     id: 1,
-    image: getImageUrl('/img/banner-phones.png'),
+    image: BANNER_IMAGES.PHONES,
     alt: 'New phones — latest models',
   },
   {
     id: 2,
-    image: getImageUrl('/img/banner-tablets.png'),
+    image: BANNER_IMAGES.TABLETS,
     alt: 'New tablets — power and portability',
   },
   {
     id: 3,
-    image: getImageUrl('/img/banner-accessories.png'),
+    image: BANNER_IMAGES.ACCESSORIES,
     alt: 'Accessories — complete your setup',
   },
 ];
@@ -44,12 +44,19 @@ export const HomePage = () => {
       .then(all => {
         setAllProducts(all);
 
-        setBrandNew([...all].sort((a, b) => b.year - a.year));
+        setBrandNew(
+          [...all].sort((productA, productB) => productB.year - productA.year),
+        );
 
         setHotPrices(
           [...all]
-            .filter(p => p.fullPrice > p.price)
-            .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price)),
+            .filter(product => product.fullPrice > product.price)
+            .sort(
+              (productA, productB) =>
+                productB.fullPrice -
+                productB.price -
+                (productA.fullPrice - productA.price),
+            ),
         );
       })
       .catch(() => setError(true))

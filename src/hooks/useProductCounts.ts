@@ -10,9 +10,12 @@ interface ProductCounts {
 export const useProductCounts = (products: Product[]): ProductCounts => {
   return useMemo(
     () => ({
-      phones: products.filter(p => p.category === 'phones').length,
-      tablets: products.filter(p => p.category === 'tablets').length,
-      accessories: products.filter(p => p.category === 'accessories').length,
+      phones: products.filter(product => product.category === 'phones').length,
+      tablets: products.filter(product => product.category === 'tablets')
+        .length,
+      accessories: products.filter(
+        product => product.category === 'accessories',
+      ).length,
     }),
     [products],
   );

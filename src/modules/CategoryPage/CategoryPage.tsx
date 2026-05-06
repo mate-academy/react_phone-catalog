@@ -60,15 +60,15 @@ export const CategoryPage = () => {
 
   const title = categoryTitles[category as Category];
 
-  const sorted = [...products].sort((a, b) => {
+  const sorted = [...products].sort((productA, productB) => {
     switch (sortBy) {
       case 'alphabetically':
-        return a.name.localeCompare(b.name);
+        return productA.name.localeCompare(productB.name);
       case 'cheapest':
-        return a.price - b.price;
+        return productA.price - productB.price;
       case 'newest':
       default:
-        return b.year - a.year;
+        return productB.year - productA.year;
     }
   });
 

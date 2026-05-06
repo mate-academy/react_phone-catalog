@@ -1,11 +1,12 @@
 @use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
 
 .item {
   display: flex;
   flex-direction: column;
   gap: 16px;
   padding: 16px;
-  border: 1px solid var(--color-elements);
+  border: 1px solid $color-elements;
 
   @include on-tablet {
     flex-direction: row;
@@ -48,7 +49,7 @@
 
 .name {
   @include body-text;
-  color: var(--color-primary);
+  color: $color-primary;
   flex: 1;
   min-width: 120px; // ← wraps on mobile but stays readable
 }
@@ -76,17 +77,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--color-icons);
+  border: 1px solid $color-icons;
   @include button-text;
-  color: var(--color-primary);
+  color: $color-primary;
   @include hover-transition(border-color);
 
   &:hover:not(:disabled) {
-    border-color: var(--color-primary);
+    border-color: $color-primary;
   }
 
   &:disabled {
-    color: var(--color-icons);
+    color: $color-icons;
     cursor: not-allowed;
   }
 }
@@ -99,7 +100,7 @@
 
 .price {
   @include h3;
-  color: var(--color-primary);
+  color: $color-primary;
   min-width: 80px;
   text-align: right;
 }

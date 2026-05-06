@@ -1,4 +1,5 @@
 @use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
 
 .pagination {
   display: flex;
@@ -12,6 +13,17 @@
 
 .pageItem {
   // styling lives on .pageLink inside
+
+  &.arrow {
+    // Add 8px extra margin to create 16px total gap (8px base + 8px extra)
+    &:first-child {
+      margin-right: 8px;
+    }
+
+    &:last-child {
+      margin-left: 8px;
+    }
+  }
 }
 
 .pageLink {
@@ -20,44 +32,39 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  border: 1px solid var(--color-elements);
-  margin-left: -1px;
-  background: var(--color-white);
+  border: 1px solid $color-elements;
+  background: $color-white;
   @include button-text;
-  color: var(--color-primary);
+  color: $color-primary;
   text-decoration: none;
   cursor: pointer;
   position: relative;
-  @include hover-transition(border-color); // ← only 1 arg, matches your mixin
-
-  &:first-child {
-    margin-left: 0;
-  }
+  @include hover-transition(border-color);
 
   &:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
+    border-color: $color-primary;
+    color: $color-primary;
     z-index: 1;
   }
 }
 
 .pageItem.active .pageLink {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: var(--color-white);
+  background: $color-primary;
+  border-color: $color-primary;
+  color: $color-white;
   z-index: 1;
   cursor: default;
   pointer-events: none;
 }
 
 .pageItem.disabled .pageLink {
-  color: var(--color-icons);
-  border-color: var(--color-elements);
+  color: $color-icons;
+  border-color: $color-elements;
   cursor: default;
   pointer-events: none;
 
   &:hover {
-    border-color: var(--color-elements);
-    color: var(--color-icons);
+    border-color: $color-elements;
+    color: $color-icons;
   }
 }

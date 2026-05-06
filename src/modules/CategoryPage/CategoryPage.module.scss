@@ -1,21 +1,20 @@
 @use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
 
 .page {
   @include page-container;
   display: flex;
   flex-direction: column;
-  padding-top: 24px;
   padding-bottom: 64px;
 }
 
 .title {
   @include h1;
-  padding-top: 24px;
 }
 
 .count {
   @include button-text;
-  color: var(--color-secondary);
+  color: $color-secondary;
   padding-top: 8px;
 }
 
@@ -56,7 +55,7 @@
   }
 }
 
-// ── Tablet ──────────────────────────────────────────────────────────────────
+// ── Tablet ──
 @include on-tablet {
   .page {
     padding-top: 0;
@@ -72,10 +71,9 @@
   }
 }
 
-// ── Desktop ──────────────────────────────────────────────────────────────────
+// ── Desktop ──
 @include on-desktop {
   .page {
     padding-bottom: 40px;
   }
 }
-

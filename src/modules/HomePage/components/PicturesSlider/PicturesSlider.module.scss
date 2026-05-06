@@ -1,4 +1,5 @@
 @use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
 
 // Outer wrapper — column: image row on top, dots below
 .slider {
@@ -10,7 +11,7 @@
 .main {
   display: flex;
   align-items: center;
-  margin-inline: calc(-1 * var(--page-padding-mobile));
+  margin-inline: calc(-1 * $page-padding-mobile);
 
   @include on-tablet {
     margin-inline: 0;
@@ -32,13 +33,13 @@
     justify-content: center;
     width: 32px;
     height: 189px;
-    background: var(--color-white);
-    border: 1px solid var(--color-elements);
+    background: $color-white;
+    border: 1px solid $color-elements;
     cursor: pointer;
     @include hover-transition(border-color);
 
     &:hover {
-      border-color: var(--color-primary);
+      border-color: $color-primary;
     }
 
     img {
@@ -111,17 +112,17 @@
 .dot {
   width: 14px;
   height: 4px;
-  background: var(--color-elements);
+  background: $color-elements;
   border: none;
   cursor: pointer;
   padding: 0;
   @include hover-transition(background-color);
 
   &:hover {
-    background: var(--color-secondary);
+    background: $color-secondary;
   }
 }
 
 .dotActive {
-  background: var(--color-primary);
+  background: $color-primary;
 }

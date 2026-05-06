@@ -1,7 +1,8 @@
 @use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
 
 .footer {
-  box-shadow: 0px -1px 0px 0px var(--color-elements);
+  box-shadow: 0px -1px 0px 0px $color-elements;
   margin-top: auto;
 
 }
@@ -68,19 +69,19 @@
 
 .navLink {
   display: block;
-  font-family: var(--font-family);
-  font-size: var(--font-size-uppercase);
+  font-family: $font-family;
+  font-size: $font-size-uppercase;
   font-weight: 800;
-  line-height: var(--line-height-uppercase);
-  letter-spacing: var(--letter-spacing-uppercase);
+  line-height: $line-height-uppercase;
+  letter-spacing: $letter-spacing-uppercase;
   text-transform: uppercase;
-  color: var(--color-secondary);
+  color: $color-secondary;
   text-decoration: none;
   @include hover-transition(color);
 
 
   &:hover {
-    color: var(--color-primary);
+    color: $color-primary;
   }
 }
 
@@ -92,27 +93,27 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-family: var(--font-family);
-  font-size: var(--font-size-uppercase);
+  font-family: $font-family;
+  font-size: $font-size-uppercase;
   font-weight: 800;
-  line-height: var(--line-height-uppercase);
-  letter-spacing: var(--letter-spacing-uppercase);
+  line-height: $line-height-uppercase;
+  letter-spacing: $letter-spacing-uppercase;
   text-transform: uppercase;
-  color: var(--color-secondary);
+  color: $color-secondary;
   @include hover-transition(color);
 
   &:hover {
-    color: var(--color-primary);
+    color: $color-primary;
 
     .backToTopArrow {
-      border-color: var(--color-primary);
+      border-color: $color-primary;
     }
   }
 
   &:active {
     .backToTopArrow {
-      background-color: var(--color-primary);
-      border-color: var(--color-primary);
+      background-color: $color-primary;
+      border-color: $color-primary;
 
       img {
         filter: invert(1);
@@ -131,14 +132,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--color-icons);
+  border: 1px solid $color-icons;
   flex-shrink: 0;
-  transition: border-color var(--transition), background-color var(--transition);
+  transition: border-color $transition, background-color $transition;
 
   img {
     width: 16px;
     height: 16px;
     transform: rotate(180deg);
-    transition: filter var(--transition);
+    transition: filter $transition;
   }
 }

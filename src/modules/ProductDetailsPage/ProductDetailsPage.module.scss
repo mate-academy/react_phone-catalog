@@ -1,38 +1,9 @@
 @use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
 
 .page {
   @include page-container;
-  padding-top: 24px;
   padding-bottom: 64px;
-
-  @include on-tablet { padding-top: 32px; }
-  @include on-desktop { padding-top: 56px; }
-}
-
-// Breadcrumbs
-.breadcrumbs {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 24px;
-  font-size: var(--font-size-small);
-  line-height: var(--line-height-small);
-}
-
-.breadcrumbLink {
-  color: var(--color-secondary);
-  text-decoration: none;
-  transition: color var(--transition);
-
-  &:hover { color: var(--color-primary); }
-}
-
-.breadcrumbSep {
-  color: var(--color-icons);
-}
-
-.breadcrumbCurrent {
-  color: var(--color-primary);
 }
 
 // Back button
@@ -44,11 +15,11 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-size: var(--font-size-small);
-  color: var(--color-secondary);
-  transition: color var(--transition);
+  font-size: $font-size-small;
+  color: $color-secondary;
+  transition: color $transition;
 
-  &:hover { color: var(--color-primary); }
+  &:hover { color: $color-primary; }
 }
 
 .title {
@@ -108,11 +79,11 @@
   width: 50px;
   height: 50px;
   padding: 4px;
-  border: 1px solid var(--color-elements);
+  border: 1px solid $color-elements;
   border-radius: 4px;
-  background: var(--color-white);
+  background: $color-white;
   cursor: pointer;
-  transition: border-color var(--transition);
+  transition: border-color $transition;
 
   img {
     width: 100%;
@@ -121,12 +92,12 @@
   }
 
   &:hover {
-    border-color: var(--color-primary);
+    border-color: $color-primary;
   }
 }
 
 .thumbActive {
-  border-color: var(--color-primary);
+  border-color: $color-primary;
 }
 
 .mainImage {
@@ -165,8 +136,8 @@
 }
 
 .optionLabel {
-  font-size: var(--font-size-small);
-  color: var(--color-secondary);
+  font-size: $font-size-small;
+  color: $color-secondary;
 }
 
 // Color buttons
@@ -182,16 +153,16 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 2px solid var(--color-white);
-  outline: 1px solid var(--color-elements);
+  border: 2px solid $color-white;
+  outline: 1px solid $color-elements;
   cursor: pointer;
-  transition: outline-color var(--transition);
+  transition: outline-color $transition;
 
-  &:hover { outline-color: var(--color-secondary); }
+  &:hover { outline-color: $color-secondary; }
 }
 
 .colorBtnActive {
-  outline-color: var(--color-primary);
+  outline-color: $color-primary;
 }
 
 // Capacity buttons
@@ -205,28 +176,28 @@
 
 .capacityBtn {
   padding: 4px 8px;
-  border: 1px solid var(--color-icons);
-  background: var(--color-white);
+  border: 1px solid $color-icons;
+  background: $color-white;
   cursor: pointer;
-  font-size: var(--font-size-button);
+  font-size: $font-size-button;
   font-weight: 600;
-  transition: border-color var(--transition), background var(--transition), color var(--transition);
+  transition: border-color $transition, background $transition, color $transition;
 
   &:hover {
-    border-color: var(--color-primary);
+    border-color: $color-primary;
   }
 }
 
 .capacityBtnActive {
-  background: var(--color-primary);
-  color: var(--color-white);
-  border-color: var(--color-primary);
+  background: $color-primary;
+  color: $color-white;
+  border-color: $color-primary;
 }
 
 // Divider
 .divider {
   height: 1px;
-  background: var(--color-elements);
+  background: $color-elements;
 }
 
 // Price
@@ -237,14 +208,14 @@
 }
 
 .priceDiscount {
-  font-size: var(--font-size-h3);
+  font-size: $font-size-h3;
   font-weight: 700;
-  color: var(--color-primary);
+  color: $color-primary;
 }
 
 .priceRegular {
-  font-size: var(--font-size-body);
-  color: var(--color-secondary);
+  font-size: $font-size-body;
+  color: $color-secondary;
   text-decoration: line-through;
 }
 
@@ -257,46 +228,46 @@
 .cartBtn {
   flex: 1;
   height: 48px;
-  background: var(--color-primary);
-  color: var(--color-white);
+  background: $color-primary;
+  color: $color-white;
   border: none;
   cursor: pointer;
-  font-size: var(--font-size-button);
+  font-size: $font-size-button;
   font-weight: 700;
-  transition: background var(--transition);
+  transition: background $transition;
 
-  &:hover:not(:disabled) { background: var(--color-secondary); }
+  &:hover:not(:disabled) { background: $color-secondary; }
 
   &:disabled { opacity: 0.5; cursor: not-allowed; }
 }
 
 .cartBtnAdded {
-  background: var(--color-white);
-  color: var(--color-green);
-  border: 1px solid var(--color-elements);
+  background: $color-white;
+  color: $color-green;
+  border: 1px solid $color-elements;
 
-  &:hover:not(:disabled) { background: var(--color-white); }
+  &:hover:not(:disabled) { background: $color-white; }
 }
 
 .favBtn {
   width: 48px;
   height: 48px;
-  border: 1px solid var(--color-icons);
-  background: var(--color-white);
+  border: 1px solid $color-icons;
+  background: $color-white;
   cursor: pointer;
   font-size: 20px;
-  color: var(--color-primary);
+  color: $color-primary;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: border-color var(--transition);
+  transition: border-color $transition;
 
-  &:hover:not(:disabled) { border-color: var(--color-primary); }
+  &:hover:not(:disabled) { border-color: $color-primary; }
   &:disabled { opacity: 0.5; cursor: not-allowed; }
 }
 
 .favBtnActive {
-  color: var(--color-red);
+  color: $color-red;
 }
 
 // Short specs under actions
@@ -311,10 +282,10 @@
   li {
     display: flex;
     justify-content: space-between;
-    font-size: var(--font-size-small);
+    font-size: $font-size-small;
 
-    span:first-child { color: var(--color-secondary); }
-    span:last-child  { color: var(--color-primary); font-weight: 700; }
+    span:first-child { color: $color-secondary; }
+    span:last-child  { color: $color-primary; font-weight: 700; }
   }
 }
 
@@ -343,38 +314,41 @@
 }
 
 .descTitle {
-  font-size: var(--font-size-h4);
+  font-size: $font-size-h4;
   font-weight: 700;
   margin-bottom: 16px;
 }
 
 .descText {
-  font-size: var(--font-size-body);
-  line-height: var(--line-height-body);
-  color: var(--color-secondary);
+  font-size: $font-size-body;
+  line-height: $line-height-body;
+  color: $color-secondary;
 
   & + & { margin-top: 8px; }
 }
 
 .specsList {
+  margin-top: 30px;
   list-style: none;
   padding: 0;
-  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
 
+  @include on-tablet {
+    margin-top: 25pxpx;
+  }
+
   li {
     display: flex;
     justify-content: space-between;
-    font-size: var(--font-size-body);
+    font-size: $font-size-body;
 
-    span:first-child { color: var(--color-secondary); }
-    span:last-child  { color: var(--color-primary); font-weight: 700; text-align: right; }
+    span:first-child { color: $color-secondary; }
+    span:last-child  { color: $color-primary; font-weight: 700; text-align: right; }
   }
 }
 
 .suggestedSection {
   margin-top: 56px;
 }
-
