@@ -9,15 +9,15 @@ type Props = {
 };
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-  `navbar-item  ${isActive ? 'has-background-white' : ''}`;
+  `navbar-item  ${isActive ? 'isActive' : ''}`;
 
 export const Header: React.FC<Props> = ({
   cartCount = 0,
   // favoritesCount = 0,
 }) => {
   return (
-    <header className={styles.header} role="banner">
-      <div className={styles.container}>
+    <header className="header">
+      <div className="container">
         <nav
           data-cy="nav"
           className="navbar is-fixed-top has-shadow"
@@ -26,7 +26,7 @@ export const Header: React.FC<Props> = ({
         >
           <div className="navbar-brand">
             <NavLink to="/" className="navbar-item">
-              <img src="/img/logo.png" alt="Logo" className={styles.logo} />
+              <img src="/img/logo.svg" alt="Logo" className={styles.logo} />
             </NavLink>
             <NavLink to="/" className={getLinkClass}>
               HOME
@@ -47,15 +47,12 @@ export const Header: React.FC<Props> = ({
             >
               ACCESSORIES
             </NavLink>
-            <div className={styles.actions}>
+            <div className="actions">
               <FavoritesIcon count={0} />
 
-              <NavLink to="/cart" className={styles.icon} aria-label="Card">
-                <img src="/img/cart.png" alt="Cart" />
-                <i className="fas fa-shopping-cart" />
-                {cartCount > 0 && (
-                  <span className={styles.badge}>{cartCount}</span>
-                )}
+              <NavLink to="/cart" className="icon" aria-label="Card">
+                <img src="/img/cart.svg" alt="Cart" />
+                {cartCount > 0 && <span className="badge">{cartCount}</span>}
               </NavLink>
             </div>
           </div>

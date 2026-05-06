@@ -1,4 +1,5 @@
 .header {
+  box-sizing: border-box;
   position: sticky;
   padding-inline: 50px;
   display: flex;
@@ -6,28 +7,39 @@
   justify-content: space-between;
   /* height: 100vh; */
 
-  }
+}
 
-  .navbar-brand {
+.navbar-brand {
   /* padding: 20px; */
   text-transform: uppercase;
-  text-decoration: underline;
+  /* text-decoration: underline; */
+}
+
+.text:hover {
+  color: #313237;
+}
+
+.navbar-item {
+  color: #89939A;
+
 }
 
 .logo {
   display: inline-block;
-  width: 89px;
-  height: 32px;
+
 }
 
 
 .actions {
   display: flex;
+  margin-left: auto;
   justify-content: space-between;
   gap: 0.5rem;
   /* align-items: center; */
 }
 
 .icon {
-justify-content:space-between;
+height: 16px;
+/* stylelint-disable-next-line declaration-empty-line-before */
+width: 16px;
 }

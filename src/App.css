@@ -1,4 +1,4 @@
-html{
+
   @font-face {
       font-family: Mont;
       src: url(fonts/Mont-Regular.ttf);
@@ -9,9 +9,9 @@ html{
       src: url(fonts/Mont-Regular.ttf);
       font-weight: bold;
     }
-}
 
-body {
-  margin: 0;
-}
 
+    body {
+      margin: 0;
+      font-family: Mont, sans-serif;
+    }
