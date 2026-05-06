@@ -133,7 +133,7 @@ export default function NewBrand() {
                     onClick={() => toggleFavorite(phone.itemId)}
                   >
                     <img
-                      src={favorites.includes(phone.itemId) ? '/icons/heart-active.svg' : '/icons/heart.svg'}
+                      src={favorites.includes(phone.itemId) ? './icons/heart-active.svg' : './icons/heart.svg'}
                       alt="Favorite"
                       className="brand__card-btn-icon"
                     />
