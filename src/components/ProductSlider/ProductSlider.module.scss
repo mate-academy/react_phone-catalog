@@ -1,0 +1,80 @@
+@use '../../styles' as s;
+
+.productSlider {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin: 0;
+    color: var(--text-main-color);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border-color);
+    background: var(--border-color);
+    color: var(--text-main-color);
+    cursor: pointer;
+    line-height: 1;
+    transition:
+      background s.$effect-duration ease,
+      color s.$effect-duration ease,
+      border-color s.$effect-duration ease;
+
+    &:disabled {
+      background: transparent;
+      color: var(--icons-hover);
+      cursor: default;
+    }
+  }
+
+  &__track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__slide {
+    flex: 0 0 calc(100% - 48px);
+    scroll-snap-align: start;
+
+    @include s.on-tablet {
+      flex-basis: calc((100% - 40px) / 2.2);
+    }
+
+    @include s.on-laptop {
+      flex-basis: calc((100% - 48px) / 4);
+    }
+  }
+
+  &__empty {
+    color: var(--text-color-secondary);
+    font-size: 14px;
+    font-weight: 600;
+  }
+}

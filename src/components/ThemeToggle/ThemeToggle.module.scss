@@ -1,0 +1,35 @@
+@use '../../styles' as s;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px;
+  transition:
+    background s.$effect-duration ease,
+    color s.$effect-duration ease,
+    transform s.$effect-duration ease;
+  color: var(--text-main-color);
+  background-color: transparent;
+
+  &:hover,
+  &:focus {
+    transform: translateY(-1px);
+    background: var(--theme-toggle-hover, rgba(0, 0, 0, 0.04));
+    outline: none;
+  }
+}
+
+.icon {
+  display: inline-flex;
+  line-height: 0;
+  svg {
+    display: block;
+  }
+}

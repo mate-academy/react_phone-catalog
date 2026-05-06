@@ -1,0 +1,68 @@
+@use './vars' as v;
+@use './mixins' as m;
+
+h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: 0;
+
+  @include m.on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+  letter-spacing: 0;
+
+  @include m.on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 0;
+
+  @include m.on-tablet {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0;
+
+  @include m.on-tablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+button {
+  font-family: v.$font-family;
+  line-height: 21px;
+  height: 40px;
+  cursor: pointer;
+}

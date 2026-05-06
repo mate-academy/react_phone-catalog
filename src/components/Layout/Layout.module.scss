@@ -1,0 +1,9 @@
+@use '../../styles' as s;
+
+.main {
+  min-height: 100vh;
+}
+
+.container {
+  @include s.page-container;
+}

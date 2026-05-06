@@ -1,0 +1,36 @@
+@use '../../styles' as s;
+
+.notFoundPage {
+  padding: 40px 0;
+
+  &__title {
+    margin: 0 0 16px;
+    color: var(--text-main-color);
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.28;
+  }
+
+  &__image {
+    display: block;
+    width: min(100%, 520px);
+    margin: 40px auto 0;
+  }
+
+  &__text {
+    margin: 0;
+    color: var(--text-color-secondary);
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &__link {
+    color: var(--text-main-color);
+    font-weight: 700;
+    transition: color s.$effect-duration ease;
+
+    &:hover {
+      color: var(--button-main-color);
+    }
+  }
+}

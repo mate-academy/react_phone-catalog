@@ -1,0 +1,41 @@
+@use '../../styles' as s;
+
+.grid {
+  align-items: start;
+
+  @include s.page-grid;
+}
+
+.itemWrapper {
+  grid-column: span 4;
+  display: flex;
+  align-items: stretch;
+
+
+  @include s.on-tablet {
+    grid-column: span 6;
+  }
+
+  @include s.on-desktop {
+    grid-column: span 6;
+  }
+}
+
+.empty {
+  padding: 48px 0;
+  text-align: center;
+  color: var(--text-color-secondary);
+  font-weight: 600;
+
+  @include s.content-padding-inline;
+}
+
+
+.sectionTitle {
+  margin: 8px 0 16px;
+  color: var(--text-main-color);
+  font-size: 20px;
+  font-weight: 800;
+
+  @include s.content-padding-inline;
+}
