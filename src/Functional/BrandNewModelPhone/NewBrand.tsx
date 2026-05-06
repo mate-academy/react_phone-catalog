@@ -6,38 +6,40 @@ import './NewBrand.scss';
 import { Link } from 'react-router-dom';
 import { useCart } from '../CartContext/CartContext';
 
-interface Phone {
-  id: string;
+interface Product {
+  id: number;
   category: string;
-  itemId?: string;
+  itemId: string;
   name: string;
-  priceRegular: number;
-  priceDiscount: number;
+  fullPrice: number;
+  price: number;
   screen: string;
   capacity: string;
   color: string;
   ram: string;
-  year?: number;
-  images: string[];
+  year: number;
+  image: string;
 }
 
 export default function NewBrand() {
-  const [phones, setPhones] = useState<Phone[]>([]);
+  const [phones, setPhones] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { addToCart, toggleFavorite, cart, favorites } = useCart();
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${import.meta.env.BASE_URL}api/phones.json`)
+    fetch(`${import.meta.env.BASE_URL}api/products.json`)
       .then(response => {
         if (!response.ok) throw new Error(`Failed to fetch: ${response.status}`);
         return response.json();
       })
-      .then(data => {
-        const sorted = [...data].sort(
-          (a: Phone, b: Phone) => (b.year ?? 0) - (a.year ?? 0),
-        );
+      .then((data: Product[]) => {
+        const phonesOnly = data.filter((p: Product) => p.category === 'phones');
+        const sorted = [...phonesOnly].sort((a, b) => {
+          if (b.year !== a.year) return b.year - a.year;
+          return b.price - a.price;
+        });
         setPhones(sorted);
         setLoading(false);
       })
@@ -79,9 +81,9 @@ export default function NewBrand() {
           {phones.slice(0, 20).map(phone => (
             <SwiperSlide key={phone.id} className="brand__slide">
               <div className="brand__card">
-                <Link to={`/products/${phone.id}`}>
+                <Link to={`/products/${phone.itemId}`}>
                   <img
-                    src={phone.images[0]}
+                    src={`${import.meta.env.BASE_URL}${phone.image}`}
                     alt={phone.name}
                     className="brand__card-image"
                     onError={e =>
@@ -90,9 +92,9 @@ export default function NewBrand() {
                   />
                   <h3 className="brand__card-title">{phone.name}</h3>
                   <div className="brand__card-prices">
-                    <span className="brand__card-price">${phone.priceDiscount}</span>
-                    {phone.priceRegular !== phone.priceDiscount && (
-                      <span className="brand__card-old-price">${phone.priceRegular}</span>
+                    <span className="brand__card-price">${phone.price}</span>
+                    {phone.fullPrice !== phone.price && (
+                      <span className="brand__card-old-price">${phone.fullPrice}</span>
                     )}
                   </div>
                   <div className="brand__card-specs">
@@ -114,24 +116,24 @@ export default function NewBrand() {
                   <button
                     className="brand__card-btn brand__card-btn--add"
                     onClick={() => addToCart({
-                      id: phone.id,
+                      id: phone.itemId,
                       name: phone.name,
-                      price: phone.priceDiscount,
-                      image: phone.images[0],
+                      price: phone.price,
+                      image: phone.image,
                       color: phone.color,
                       capacity: phone.capacity,
                       quantity: 1,
                     })}
-                    disabled={cart.some(item => item.id === phone.id)}
+                    disabled={cart.some(item => item.id === phone.itemId)}
                   >
-                    {cart.some(item => item.id === phone.id) ? 'Added to cart' : 'Add to cart'}
+                    {cart.some(item => item.id === phone.itemId) ? 'Added to cart' : 'Add to cart'}
                   </button>
                   <button
                     className="brand__card-btn brand__card-btn--favorite"
-                    onClick={() => toggleFavorite(phone.id)}
+                    onClick={() => toggleFavorite(phone.itemId)}
                   >
                     <img
-                      src={favorites.includes(phone.id) ? '/icons/heart-active.svg' : '/icons/heart.svg'}
+                      src={favorites.includes(phone.itemId) ? '/icons/heart-active.svg' : '/icons/heart.svg'}
                       alt="Favorite"
                       className="brand__card-btn-icon"
                     />

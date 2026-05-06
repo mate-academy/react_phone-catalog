@@ -3,6 +3,7 @@
 .swiper--top {
   padding: 0 32px;
   margin-top: 24px;
+  overflow: hidden;
 
   @include on-tablet {
     padding: 0 24px;
