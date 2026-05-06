@@ -41,7 +41,6 @@ export const PhonePage = () => {
             `Failed to fetch phones.json: ${response.status} ${response.statusText}`,
           );
         }
-
         return response.json();
       })
       .then(data => {
@@ -65,18 +64,9 @@ export const PhonePage = () => {
     );
 
     const sorted = filtered.sort((a, b) => {
-      if (sortBy === 'newest') {
-        return b.year - a.year;
-      }
-
-      if (sortBy === 'priceLow') {
-        return a.priceDiscount - b.priceDiscount;
-      }
-
-      if (sortBy === 'priceHigh') {
-        return b.priceDiscount - a.priceDiscount;
-      }
-
+      if (sortBy === 'newest') return b.year - a.year;
+      if (sortBy === 'priceLow') return a.priceDiscount - b.priceDiscount;
+      if (sortBy === 'priceHigh') return b.priceDiscount - a.priceDiscount;
       return 0;
     });
 
@@ -90,39 +80,28 @@ export const PhonePage = () => {
     const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
 
     pages.push(1);
-    if (startPage > 2) {
-      pages.push('...');
-    }
+    if (startPage > 2) pages.push('...');
 
     for (let i = startPage; i <= endPage; i++) {
-      if (i !== 1 && i !== totalPages) {
-        pages.push(i);
-      }
+      if (i !== 1 && i !== totalPages) pages.push(i);
     }
 
-    if (endPage < totalPages - 1) {
-      pages.push('...');
-    }
-
-    if (totalPages !== 1) {
-      pages.push(totalPages);
-    }
+    if (endPage < totalPages - 1) pages.push('...');
+    if (totalPages !== 1) pages.push(totalPages);
 
     return pages;
   };
 
   const handleAddToCart = (phone: Phone) => {
-    const selectedColor = phone.color || 'default';
     const cartItem: CartItem = {
       id: phone.id,
       name: phone.name,
       price: phone.priceDiscount,
       image: `${phone.images[0]}`,
-      color: selectedColor,
+      color: phone.color || 'default',
       capacity: phone.capacity,
       quantity: 1,
     };
-
     addToCart(cartItem);
   };
 
@@ -154,7 +133,7 @@ export const PhonePage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="figmaLogo/Home.svg" alt="home_nav" />
+          <img src="./icons/home.svg" alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <p className="home--nav-top">Phones</p>
@@ -199,15 +178,11 @@ export const PhonePage = () => {
                 <div className="phone__card-specs">
                   <div className="phone__card-spec">
                     <span className="phone__card-spec-label">Screen</span>
-                    <span className="phone__card-spec-value">
-                      {phone.screen}
-                    </span>
+                    <span className="phone__card-spec-value">{phone.screen}</span>
                   </div>
                   <div className="phone__card-spec">
                     <span className="phone__card-spec-label">Capacity</span>
-                    <span className="phone__card-spec-value">
-                      {phone.capacity}
-                    </span>
+                    <span className="phone__card-spec-value">{phone.capacity}</span>
                   </div>
                   <div className="phone__card-spec">
                     <span className="phone__card-spec-label">RAM</span>
@@ -259,8 +234,8 @@ export const PhonePage = () => {
                   <img
                     src={
                       favorites.includes(phone.id)
-                        ? 'figmaLogo/ActiveHeart.svg'
-                        : 'figmaLogo/HeartLove.svg'
+                        ? './icons/heart-active.svg'
+                        : './icons/heart.svg'
                     }
                     alt="Favorite"
                     className="phone__card-btn-icon"

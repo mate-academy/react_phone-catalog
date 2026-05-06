@@ -29,18 +29,10 @@ export const Header = () => {
         </div>
 
         <nav className="header__nav">
-          <NavLink to="/" className={getLinkClass}>
-            HOME
-          </NavLink>
-          <NavLink to="/phones" className={getLinkClass}>
-            PHONES
-          </NavLink>
-          <NavLink to="/tablets" className={getLinkClass}>
-            TABLETS
-          </NavLink>
-          <NavLink to="/accessories" className={getLinkClass}>
-            ACCESSORIES
-          </NavLink>
+          <NavLink to="/" className={getLinkClass}>HOME</NavLink>
+          <NavLink to="/phones" className={getLinkClass}>PHONES</NavLink>
+          <NavLink to="/tablets" className={getLinkClass}>TABLETS</NavLink>
+          <NavLink to="/accessories" className={getLinkClass}>ACCESSORIES</NavLink>
         </nav>
 
         <div className="header__head--logo">
