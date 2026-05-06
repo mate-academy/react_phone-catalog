@@ -1,69 +1,4 @@
-@use '../../mixins.scss' as *;
-
-.section {
-  position: relative;
-}
-
 .brand {
-  margin-top: 40px;
-  padding: 0 32px;
-  box-sizing: border-box;
-
-  @include on-tablet {
-    padding: 0 24px;
-  }
-
-  @include on-phone {
-    padding: 0 16px;
-  }
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-    height: 41px;
-  }
-
-  &__title {
-    color: #F1F2F9;
-    font-family: 'Mont', Montserrat, sans-serif;
-    font-weight: 800;
-    font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -0.01em;
-    margin: 0;
-    white-space: nowrap;
-  }
-
-  &__nav {
-    display: flex;
-    gap: 8px;
-  }
-
-  &__nav-btn {
-    width: 32px;
-    height: 32px;
-    background-color: transparent;
-    border: 1px solid #3B3E4A;
-    color: #F1F2F9;
-    font-size: 14px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: border-color 0.3s ease;
-    border-radius: 0;
-
-    &:hover {
-      border-color: #F1F2F9;
-    }
-
-    &.swiper-button-disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-  }
 
   &__swiper {
     width: 100%;
@@ -71,26 +6,26 @@
 
   &__slide {
     height: auto;
+    display: flex;
+    flex: 1;
   }
 
   &__card {
     display: flex;
     flex-direction: column;
+    align-items: center; // центрирование контента
+    text-align: center;
+
     background-color: #161827;
     border: 1px solid #3B3E4A;
     padding: 32px;
     height: 506px;
     box-sizing: border-box;
-    width: 272px;
+
+    width: 100%; // ✅ вместо фиксированной ширины
+    flex: 1; // ✅ растягивание
+
     gap: 8px;
-
-    @include on-tablet {
-      width: 100%;
-    }
-
-    @include on-phone {
-      width: 100%;
-    }
 
     transition: box-shadow 0.3s ease;
 
@@ -101,156 +36,37 @@
     a {
       display: flex;
       flex-direction: column;
-      text-decoration: none;
       gap: 8px;
-    }
-  }
-
-  &__card-image {
-    width: 100%;
-    height: 196px;
-    object-fit: contain;
-    display: block;
-    transition: transform 0.3s ease;
-
-    &:hover {
-      transform: scale(1.05);
+      text-decoration: none;
+      align-items: center;
     }
   }
 
   &__card-title {
-    font-family: 'Mont', Montserrat, sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    margin: 0;
-    color: #F1F2F9;
-    line-height: 21px;
-
-    width: 208px;
+    width: 100%;
     min-height: 42px;
-
-    @include on-tablet {
-      width: 100%;
-    }
-
-    @include on-phone {
-      width: 100%;
-    }
-  }
-
-  &__card-prices {
-    display: flex;
-    gap: 8px;
-    align-items: baseline;
-    margin: 0;
-  }
-
-  &__card-price {
-    font-family: 'Mont', Montserrat, sans-serif;
-    font-size: 22px;
-    font-weight: 800;
-    color: #F1F2F9;
-    line-height: 140%;
-    letter-spacing: 0%;
-  }
-
-  &__card-old-price {
-    font-family: 'Mont', Montserrat, sans-serif;
-    font-size: 14px;
-    color: #75767F;
-    text-decoration: line-through;
-    font-weight: 600;
-    line-height: 21px;
   }
 
   &__card-specs {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 16px 0;
-    border-top: 1px solid #3B3E4A;
-    margin: 0;
+    width: 100%;
   }
 
   &__card-spec {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-
-  &__card-spec-label {
-    color: #75767F;
-    font-family: 'Mont', Montserrat, sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 100%;
-    letter-spacing: 0%;
-  }
-
-  &__card-spec-value {
-    color: #F1F2F9;
-    font-family: 'Mont', Montserrat, sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 100%;
-    letter-spacing: 0%;
-    text-align: right;
   }
 
   &__card-actions {
     margin-top: auto;
     display: flex;
     gap: 8px;
+    width: 100%;
   }
+}
 
-  &__card-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    font-family: 'Mont', Montserrat, sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 21px;
-    letter-spacing: 0%;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-
-  &__card-btn--add {
-    flex: 1;
-    width: 160px; 
-    background-color: #905BFF;
-    color: white;
-
-    &:hover {
-      background-color: #A378FF;
-    }
-
-    &:disabled {
-      background-color: transparent;
-      border: 1px solid #905BFF;
-      color: #905BFF;
-      cursor: not-allowed;
-    }
-  }
-
-  &__card-btn--favorite {
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
-    border: 1px solid #3B3E4A;
-    color: white;
-    flex-shrink: 0;
-
-    &:hover {
-      border-color: #F1F2F9;
-    }
-  }
-
-  &__card-btn-icon {
-    width: 16px;
-    height: 16px;
-  }
+.brand .swiper-slide {
+  display: flex;
+  flex: 1;
 }
