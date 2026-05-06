@@ -9,7 +9,7 @@ type Props = {
 };
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-  `navbar-item  ${isActive ? 'has-background-white-lighter' : ''}`;
+  `navbar-item  ${isActive ? 'has-background-white' : ''}`;
 
 export const Header: React.FC<Props> = ({
   cartCount = 0,
@@ -47,17 +47,19 @@ export const Header: React.FC<Props> = ({
             >
               ACCESSORIES
             </NavLink>
+            <div className={styles.actions}>
+              <FavoritesIcon count={0} />
+
+              <NavLink to="/cart" className={styles.icon} aria-label="Card">
+                <img src="/img/cart.png" alt="Cart" />
+                <i className="fas fa-shopping-cart" />
+                {cartCount > 0 && (
+                  <span className={styles.badge}>{cartCount}</span>
+                )}
+              </NavLink>
+            </div>
           </div>
         </nav>
-        <div className={styles.actions}>
-          <FavoritesIcon count={0} />
-
-          <NavLink to="/cart" className={styles.icon} aria-label="Card">
-            <img src="/img/cart.png" alt="Cart" />
-            <i className="fas fa-shopping-cart" />
-            {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
-          </NavLink>
-        </div>
       </div>
     </header>
   );
