@@ -13,6 +13,7 @@ import { NotFoundPage } from './modules/NotFoundPage';
 
 const basename = (() => {
   const base = import.meta.env.BASE_URL || '/';
+
   return base.startsWith('http') ? new URL(base).pathname : base;
 })();
 

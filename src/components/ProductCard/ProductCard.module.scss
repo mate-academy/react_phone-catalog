@@ -45,7 +45,7 @@
     transition: color 0.3s;
 
     .titleLink:hover & {
-      color: #007bff;
+      color: Gray / Primary;
     }
   }
 
@@ -58,7 +58,7 @@
     .currentPrice {
       font-size: 18px;
       font-weight: bold;
-      color: #007bff;
+      color: Gray / Primary;
     }
 
     .oldPrice {
@@ -103,7 +103,7 @@
 
     .cartButton {
       flex: 1;
-      background: #007bff;
+      background: #313237;
       color: white;
       border: none;
       padding: 10px;
@@ -113,7 +113,7 @@
       transition: background 0.3s;
 
       &:hover {
-        background: #0056b3;
+        background: #313237;
       }
     }
 

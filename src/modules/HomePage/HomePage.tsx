@@ -37,7 +37,10 @@ export const HomePage: React.FC = () => {
       <PicturesSlider />
 
       {hotPriceProducts.length > 0 && (
-        <ProductsSlider title="Hot prices" products={hotPriceProducts} />
+        <ProductsSlider
+          title="Welcome to Nice Gadgets store!"
+          products={hotPriceProducts}
+        />
       )}
 
       <section className={styles.shopByCategory}>

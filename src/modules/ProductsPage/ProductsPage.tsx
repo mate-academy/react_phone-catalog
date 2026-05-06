@@ -102,7 +102,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ category }) => {
 
   const debouncedSearchChange = useMemo(
     () =>
-      debounce((newQuery: string) => {
+      debounce((...args: unknown[]) => {
+        const newQuery = args[0] as string;
         const params = new URLSearchParams(searchParams);
 
         if (newQuery) {
@@ -142,7 +143,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ category }) => {
 
   return (
     <div className={styles.productsPage}>
-      <h1>{categoryTitles[category]} page</h1>
+      <h1>{categoryTitles[category]} </h1>
 
       {query && (
         <p className={styles.searchResults}>

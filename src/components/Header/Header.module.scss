@@ -4,6 +4,7 @@
   background: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  font-family: montserrat, sans-serif;
 
   .container {
     max-width: 1200px;
@@ -19,18 +20,20 @@
     font-size: 24px;
     font-weight: bold;
     text-decoration: none;
-    color: #000;
+    color: #313237;
     display: flex;
     align-items: center;
     gap: 8px;
 
     i {
       font-size: 28px;
-      color: #007bff;
+      color: #313237;
+
     }
 
     span {
       font-size: 20px;
+      text-align: end;
     }
   }
 
@@ -47,7 +50,7 @@
 
       &:hover,
       &.active {
-        color: #007bff;
+        color: #313237;
       }
     }
   }

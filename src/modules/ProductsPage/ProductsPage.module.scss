@@ -15,7 +15,7 @@
   }
 
   .error button {
-    background: #007bff;
+    background: #313237;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -33,7 +33,7 @@
   }
 
   .pagination button {
-    background: #007bff;
+    background: #313237;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -48,11 +48,11 @@
   }
 
   .error button:hover {
-    background: #0056b3;
+    background: #313237;
   }
 
   .pagination button:hover:not(:disabled) {
-    background: #0056b3;
+    background: #313237;
   }
 
   .pagination span {

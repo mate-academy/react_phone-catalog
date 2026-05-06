@@ -15,8 +15,9 @@ export const Header: React.FC = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <Link to="/" className={styles.logo} aria-label="Phone Catalog home">
-          <i className="fas fa-mobile-alt" aria-hidden="true"></i>
-          <span>Phone Catalog</span>
+          {/* <i className="fas fa-mobile-alt" aria-hidden="true"></i> */}
+          {/* <span>NICE GADGETS</span> */}
+          <img src="img/Logo.png" />
         </Link>
 
         <nav className={styles.nav}>
