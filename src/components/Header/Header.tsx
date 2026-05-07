@@ -155,10 +155,31 @@ export const Header: React.FC = () => {
                 className={styles.header__searchInput}
                 type="search"
                 value={searchValue}
-                placeholder={searchPlaceholder}
                 aria-label={searchPlaceholder}
                 onChange={event => setSearchValue(event.target.value)}
               />
+
+              {!searchValue && (
+                <>
+                  <span
+                    className={cn(
+                      styles.header__searchPlaceholder,
+                      styles['header__searchPlaceholder--full'],
+                    )}
+                  >
+                    {searchPlaceholder}
+                  </span>
+
+                  <span
+                    className={cn(
+                      styles.header__searchPlaceholder,
+                      styles['header__searchPlaceholder--compact'],
+                    )}
+                  >
+                    Search in...
+                  </span>
+                </>
+              )}
 
               {searchValue && (
                 <button

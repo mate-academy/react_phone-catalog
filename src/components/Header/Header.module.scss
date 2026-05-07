@@ -184,6 +184,40 @@
     }
   }
 
+  &__searchPlaceholder {
+    position: absolute;
+    left: 26px;
+    right: 28px;
+    overflow: hidden;
+    color: var(--text-color-secondary);
+    font-size: 12px;
+    line-height: 1;
+    pointer-events: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include s.on-desktop {
+      left: 44px;
+      right: 44px;
+    }
+
+    &--full {
+      display: none;
+
+      @include s.on-tablet {
+        display: block;
+      }
+    }
+
+    &--compact {
+      display: block;
+
+      @include s.on-tablet {
+        display: none;
+      }
+    }
+  }
+
   &__searchClear {
     position: absolute;
     right: 1px;
