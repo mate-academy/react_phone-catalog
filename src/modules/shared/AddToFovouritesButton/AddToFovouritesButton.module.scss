@@ -1,0 +1,19 @@
+.button {
+  all: unset;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-image: url('/img/icons/favourites.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid var(--color-icons);
+  box-sizing: border-box;
+
+  &:hover {
+    border: 1px solid var(--color-primary-dark);
+  }
+
+  &--selected {
+    background-image: url('/img/icons/favourites-filled.svg');
+  }
+}

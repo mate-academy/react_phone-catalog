@@ -1,0 +1,118 @@
+@import './../../styles/variables';
+@import './../../styles/mixins';
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 2;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-elements);
+    height: 48px;
+
+    @include on-desktop {
+      height: 64px;
+    }
+  }
+
+  &__logo {
+    padding: 13px 16px;
+
+    @include on-desktop {
+      padding: 18px 24px;
+    }
+  }
+
+  &__logo-img {
+    height: 22px;
+    width: 64px;
+
+    @include on-desktop {
+      height: 28px;
+      width: 80px;
+    }
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 16px;
+    border-left: 1px solid var(--color-elements);
+    height: 100%;
+  }
+
+  &__nav {
+    margin-top: 24px;
+  }
+
+  &__favorites-cart {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid var(--color-elements);
+  }
+
+  &__favorites,
+  &__cart {
+    padding-block: 24px;
+    box-sizing: border-box;
+    position: relative;
+    width: 50%;
+
+    &--active {
+      &::after {
+        content: '';
+        height: 2px;
+        width: 100%;
+        background: var(--color-primary-dark);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+
+  &__cart {
+    border-left: 1px solid var(--color-elements);
+  }
+
+  &__iconWrap {
+    position: relative;
+    display: flex;
+    margin: auto;
+  }
+
+  &__counter {
+    position: absolute;
+    top: -6px;
+    left: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-red);
+    box-sizing: border-box;
+    border: 1px solid white;
+    border-radius: 50%;
+    color: white;
+    height: 14px;
+    width: 14px;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+
+  &--open {
+    transform: translateX(0);
+  }
+}

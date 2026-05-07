@@ -1,0 +1,26 @@
+@import './../../../styles/typography';
+
+.button {
+  display: flex;
+  flex: 1;
+  height: 40px;
+  max-height: 48px;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: var(--color-primary-dark);
+  border: none;
+
+  @include button-text;
+
+  &--selected {
+    box-sizing: border-box;
+    color: var(--color-green);
+    border: 1px solid var(--color-elements);
+    background-color: white;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+}

@@ -1,0 +1,58 @@
+@import './../../../../styles/mixins';
+@import './../../../../styles/typography';
+
+.categories {
+  &__title {
+    color: var(--color-primary-dark);
+    margin-block: 0 24px;
+
+    @include h2;
+  }
+
+  &__content {
+    @include page-grid;
+
+    row-gap: 32px;
+  }
+
+  &__item {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__link {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  &__img {
+    position: absolute;
+    height: 90%;
+    bottom: 0;
+    right: 0;
+  }
+
+  &__name {
+    text-decoration: none;
+    margin-block: 16px 4px;
+    color: var(--color-primary-dark);
+
+    @include h4;
+  }
+
+  &__amount {
+    color: var(--color-secondary);
+
+    @include body-text;
+  }
+}
