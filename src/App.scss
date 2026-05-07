@@ -15,13 +15,11 @@ html {
   max-width: 100%;
 }
 
-
 .main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 16px;
 }
-
 
 .visually-hidden {
   position: absolute;
@@ -33,74 +31,4 @@ html {
   clip: rect(0, 0, 0, 0);
   border: 0;
   white-space: nowrap;
-}
-
-
-.brand {
-  &__swiper {
-    width: 100%;
-  }
-
-  &__slide {
-    height: auto;
-    display: flex;
-  }
-
-  &__card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-
-    background-color: #161827;
-    border: 1px solid #3B3E4A;
-    padding: 32px;
-    height: 506px;
-    box-sizing: border-box;
-
-    width: 100%;
-    gap: 8px;
-
-    transition: box-shadow 0.3s ease;
-
-    &:hover {
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-    }
-
-    a {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      text-decoration: none;
-      align-items: center;
-    }
-  }
-
-  &__card-title {
-    width: 100%;
-    min-height: 42px;
-  }
-
-  &__card-specs {
-    width: 100%;
-  }
-
-  &__card-spec {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__card-actions {
-    margin-top: auto;
-    display: flex;
-    gap: 8px;
-    width: 100%;
-  }
-}
-
-/* swiper fix */
-.brand .swiper-slide {
-  display: flex;
 }
