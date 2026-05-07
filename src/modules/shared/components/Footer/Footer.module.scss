@@ -2,9 +2,8 @@
 @use '../../../../styles/variables' as *;
 
 .footer {
-  box-shadow: 0px -1px 0px 0px $color-elements;
+  box-shadow: 0 -1px 0 0 $color-elements;
   margin-top: auto;
-
 }
 
 .container {
@@ -49,7 +48,7 @@
 .navList {
   list-style: none;
   padding: 0;
-  margin: 0 0 32px 0;
+  margin: 0 0 32px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -77,11 +76,29 @@
   text-transform: uppercase;
   color: $color-secondary;
   text-decoration: none;
-  @include hover-transition(color);
 
+  @include hover-transition(color);
 
   &:hover {
     color: $color-primary;
+  }
+}
+
+.backToTopArrow {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-icons;
+  flex-shrink: 0;
+  transition: border-color $transition, background-color $transition;
+
+  img {
+    width: 16px;
+    height: 16px;
+    transform: rotate(180deg);
+    transition: filter $transition;
   }
 }
 
@@ -100,6 +117,7 @@
   letter-spacing: $letter-spacing-uppercase;
   text-transform: uppercase;
   color: $color-secondary;
+
   @include hover-transition(color);
 
   &:hover {
@@ -123,23 +141,5 @@
 
   @include on-tablet {
     flex-shrink: 0;
-  }
-}
-
-.backToTopArrow {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid $color-icons;
-  flex-shrink: 0;
-  transition: border-color $transition, background-color $transition;
-
-  img {
-    width: 16px;
-    height: 16px;
-    transform: rotate(180deg);
-    transition: filter $transition;
   }
 }

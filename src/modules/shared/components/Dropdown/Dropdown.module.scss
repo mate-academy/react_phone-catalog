@@ -11,6 +11,7 @@
 
 .label {
   @include button-text;
+
   color: $color-secondary;
 }
 
@@ -29,9 +30,12 @@
   background: $color-white;
   border: 1px solid $color-elements;
   border-radius: 0;
+
   @include button-text;
+
   color: $color-primary;
   cursor: pointer;
+
   @include hover-transition(border-color);
 
   &:hover {
@@ -52,6 +56,7 @@
 .arrow {
   flex-shrink: 0;
   color: $color-secondary;
+
   @include hover-transition(transform);
 }
 
@@ -77,11 +82,14 @@
   background: transparent;
   border: none;
   border-radius: 0;
+
   @include button-text;
+
   font-weight: 500;
   color: $color-secondary;
   cursor: pointer;
   text-align: left;
+
   @include hover-transition(background-color);
 
   &:hover {

@@ -18,10 +18,12 @@
     // Add 8px extra margin to create 16px total gap (8px base + 8px extra)
     &:first-child {
       margin-right: 8px;
+      rotate: 90deg;
     }
 
     &:last-child {
       margin-left: 8px;
+      rotate: -90deg;
     }
   }
 }
@@ -34,11 +36,14 @@
   height: 32px;
   border: 1px solid $color-elements;
   background: $color-white;
+
   @include button-text;
+
   color: $color-primary;
   text-decoration: none;
   cursor: pointer;
   position: relative;
+
   @include hover-transition(border-color);
 
   &:hover {
@@ -48,6 +53,12 @@
   }
 }
 
+.disabled .pageLink {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .pageItem.active .pageLink {
   background: $color-primary;
   border-color: $color-primary;
@@ -55,16 +66,4 @@
   z-index: 1;
   cursor: default;
   pointer-events: none;
-}
-
-.pageItem.disabled .pageLink {
-  color: $color-icons;
-  border-color: $color-elements;
-  cursor: default;
-  pointer-events: none;
-
-  &:hover {
-    border-color: $color-elements;
-    color: $color-icons;
-  }
 }

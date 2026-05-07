@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Pagination.module.scss';
+import { ICONS } from '../../../../constants';
 
 type Props = {
   total: number;
@@ -31,11 +32,11 @@ export const Pagination: React.FC<Props> = ({
       return Array.from({ length: totalPages }, (_, index) => index + 1);
     }
 
-    // Keep current page in the middle (position 3 of 5)
+    // Keep the current page in the middle (position 3 of 5)
     // but clamp so we never go below 1 or above totalPages
     const half = Math.floor(maxVisible / 2); // 2
 
-    let start = currentPage - half; // want current in center
+    let start = currentPage - half; // want current in a center
     let end = currentPage + half; // 2 pages on each side
 
     if (start < 1) {
@@ -69,7 +70,7 @@ export const Pagination: React.FC<Props> = ({
           disabled={currentPage === 1}
           onClick={() => handleClick(currentPage - 1)}
         >
-          «
+          <img src={ICONS.ARROW_DOWN} alt="Previous" />
         </button>
       </li>
 
@@ -106,7 +107,7 @@ export const Pagination: React.FC<Props> = ({
           disabled={currentPage === totalPages}
           onClick={() => handleClick(currentPage + 1)}
         >
-          »
+          <img src={ICONS.ARROW_DOWN} alt="Next" />
         </button>
       </li>
     </ul>

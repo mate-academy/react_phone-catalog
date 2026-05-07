@@ -25,7 +25,7 @@ export const Breadcrumbs: React.FC<Props> = ({ links }) => {
         return (
           <React.Fragment key={index}>
             <img
-              src={ICONS.ARROW_DOWN}
+              src={ICONS.ARROW_BREADCRUMB}
               alt=""
               className={styles.breadcrumbArrow}
             />

@@ -3,6 +3,7 @@
 
 .page {
   @include page-container;
+
   display: flex;
   flex-direction: column;
   padding-top: 24px;
@@ -12,16 +13,19 @@
 
 .title {
   @include h1;
+
   padding-top: 24px;
 }
 
 .count {
   @include button-text;
+
   color: $color-secondary;
 }
 
 .empty {
   @include h2;
+
   color: $color-secondary;
   text-align: center;
   padding: 40px 0;
@@ -44,13 +48,12 @@
   }
 
   .grid {
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     gap: 16px;
     row-gap: 40px;
 
     & > * {
-      width: 272px
+      width: 272px;
     }
   }
 }

@@ -2,18 +2,11 @@
 
 .grid {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   gap: 16px;
   padding-top: 24px;
 
-  @include on-tablet {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 16px;
-
-    & > * {
-      width: 272px;
-    }
+  & > * {
+    width: 272px;
   }
 }
-

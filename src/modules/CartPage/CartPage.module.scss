@@ -3,12 +3,14 @@
 
 .page {
   @include page-container;
+
   padding-bottom: 64px;
 }
 
 .title {
   padding-top: 24px;
-  @include h1();
+
+  @include h1;
 
   @include on-tablet {
     padding-top: 16px;
@@ -51,6 +53,7 @@
 
 .total {
   @include h2;
+
   color: $color-primary;
 }
 
@@ -87,6 +90,7 @@
 
 .empty {
   @include h2;
+
   color: $color-secondary;
   text-align: center;
   padding: 40px 0;

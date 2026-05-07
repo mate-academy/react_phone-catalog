@@ -18,10 +18,16 @@
 
 .title {
   @include h1;
+
   padding-top: 24px;
 
-  @include on-tablet { padding-top: 32px; }
-  @include on-desktop { padding-top: 56px; }
+  @include on-tablet {
+    padding-top: 32px;
+  }
+
+  @include on-desktop {
+    padding-top: 56px;
+  }
 }
 
 .sections {
@@ -60,12 +66,11 @@
   gap: 30px;
 
   @include on-tablet {
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     gap: 16px;
 
     & > * {
-      width: 272px; // ← card width lives HERE, not in the card
+      width: 272px;
     }
   }
 }

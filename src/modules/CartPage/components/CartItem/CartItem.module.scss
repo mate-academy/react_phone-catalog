@@ -28,6 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   @include hover-transition(opacity);
 
   &:hover {
@@ -49,12 +50,13 @@
 
 .name {
   @include body-text;
+
   color: $color-primary;
   flex: 1;
-  min-width: 120px; // ← wraps on mobile but stays readable
+  min-width: 120px;
 }
 
-// Right side: quantity controls + price
+
 .controls {
   display: flex;
   align-items: center;
@@ -78,28 +80,33 @@
   align-items: center;
   justify-content: center;
   border: 1px solid $color-icons;
-  @include button-text;
-  color: $color-primary;
-  @include hover-transition(border-color);
 
-  &:hover:not(:disabled) {
-    border-color: $color-primary;
-  }
+  @include button-text;
+
+  color: $color-primary;
+
+  @include hover-transition(border-color);
 
   &:disabled {
     color: $color-icons;
     cursor: not-allowed;
   }
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
 }
 
 .quantityValue {
   @include h4;
+
   min-width: 24px;
   text-align: center;
 }
 
 .price {
   @include h3;
+
   color: $color-primary;
   min-width: 80px;
   text-align: right;

@@ -78,6 +78,7 @@
   display: flex;
   align-items: center;
   height: 100%;
+
   @include nav-link;
 }
 
@@ -111,6 +112,7 @@
     border-bottom: 2px solid transparent;
     flex-shrink: 0;
     position: relative;
+
     @include hover-transition(border-color);
 
     &:hover {
@@ -155,6 +157,7 @@
     top: 25%;
     right: 25%;
   }
+
   @include on-desktop {
     top: 30%;
     right: 25%;
@@ -172,6 +175,7 @@
   border: 1px solid $color-elements;
   cursor: pointer;
   flex-shrink: 0;
+
   @include hover-transition(border-color);
 
   &:hover {
@@ -225,6 +229,7 @@
 .mobileNavLink {
   display: block;
   padding-bottom: 8px;
+
   @include nav-link;
 }
 
@@ -255,6 +260,7 @@
   border: 1px solid $color-elements;
   border-bottom: 2px solid transparent;
   position: relative;
+
   @include hover-transition(border-color);
 
   &:hover {

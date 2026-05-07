@@ -8,6 +8,7 @@ export const ICONS = {
   FAVOURITES: getImageUrl('/img/icons/Favourites.svg'),
   FAVOURITES_ACTIVE: getImageUrl('/img/icons/FavouritesHilight.svg'),
   ARROW_DOWN: getImageUrl('/img/icons/arrow-down.svg'),
+  ARROW_BREADCRUMB: getImageUrl('/img/icons/arrow-breadcrumb.svg'),
   CLOSE: getImageUrl('/img/icons/Close.svg'),
   MENU: getImageUrl('/img/icons/Menu.svg'),
 } as const;

@@ -36,6 +36,7 @@
     background: $color-white;
     border: 1px solid $color-elements;
     cursor: pointer;
+
     @include hover-transition(border-color);
 
     &:hover {
@@ -116,6 +117,7 @@
   border: none;
   cursor: pointer;
   padding: 0;
+
   @include hover-transition(background-color);
 
   &:hover {

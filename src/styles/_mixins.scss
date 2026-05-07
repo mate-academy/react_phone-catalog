@@ -129,6 +129,7 @@
   color: $color-secondary;
   text-decoration: none;
   position: relative;
+
   @include hover-transition(color);
 
   &::after {

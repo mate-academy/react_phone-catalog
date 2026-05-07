@@ -39,11 +39,13 @@
   height: 100%;
   object-fit: cover;
   display: block;
+
   @include hover-transition(transform);
 }
 
 .title {
   @include button-text;
+
   font-weight: 600;
   color: $color-primary;
   padding-bottom: 4px;
@@ -51,6 +53,7 @@
 
 .count {
   @include body-text;
+
   font-weight: 500;
   color: $color-secondary;
 }

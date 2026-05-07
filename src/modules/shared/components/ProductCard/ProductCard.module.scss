@@ -12,6 +12,12 @@
   background-color: $color-white;
 }
 
+.name {
+  @include button-text;
+
+  color: $color-primary;
+}
+
 .linkContainer {
   display: flex;
   flex-direction: column;
@@ -19,7 +25,8 @@
   text-decoration: none;
   color: inherit;
   gap: 8px;
-  @include hover-scale();
+
+  @include hover-scale;
 
   &:hover .name {
     color: $color-secondary;
@@ -43,11 +50,6 @@
   object-fit: contain;
 }
 
-
-.name {
-  @include button-text();
-  color: $color-primary;
-}
 
 .prices {
   display: flex;
@@ -147,11 +149,6 @@
   flex-shrink: 0;
 
   @include hover-transition(border-color);
-  @include hover-transition(box-shadow);
-
-  &:hover {
-    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
-  }
 
   &:hover {
     border-color: $color-primary;

@@ -3,6 +3,7 @@
 
 .breadcrumbs {
   @include page-container;
+
   display: flex;
   align-items: center;
   gap: 8px;
@@ -18,33 +19,31 @@
 .breadcrumbLink {
   display: flex;
   align-items: center;
-  @include small-text;
-  color: $color-secondary;
   text-decoration: none;
+
+  @include small-text;
+
+  color: $color-primary;
+
   @include hover-transition(color);
 
   &:hover {
-    color: $color-primary;
+    color: $color-secondary;
   }
 }
 
 .homeIcon {
   width: 16px;
   height: 16px;
-  @include hover-transition(filter);
-
-  .breadcrumbLink:hover & {
-    filter: brightness(0) saturate(100%) invert(19%) sepia(8%) saturate(1059%) hue-rotate(202deg) brightness(95%) contrast(89%);
-  }
 }
 
 .breadcrumbArrow {
   width: 16px;
   height: 16px;
-  transform: rotate(-90deg);
 }
 
 .breadcrumbCurrent {
   @include small-text;
-  color: $color-primary;
+
+  color: $color-secondary;
 }

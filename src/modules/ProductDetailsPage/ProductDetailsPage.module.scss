@@ -3,6 +3,7 @@
 
 .page {
   @include page-container;
+
   padding-bottom: 64px;
 }
 
@@ -24,11 +25,13 @@
 
 .title {
   @include h2;
+
   margin-bottom: 32px;
 }
 
 .notFound {
   @include h2;
+
   text-align: center;
   padding: 80px 0;
 }
@@ -236,9 +239,12 @@
   font-weight: 700;
   transition: background $transition;
 
-  &:hover:not(:disabled) { background: $color-secondary; }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 
-  &:disabled { opacity: 0.5; cursor: not-allowed; }
+  &:hover:not(:disabled) { background: $color-secondary; }
 }
 
 .cartBtnAdded {
@@ -262,8 +268,14 @@
   justify-content: center;
   transition: border-color $transition;
 
-  &:hover:not(:disabled) { border-color: $color-primary; }
-  &:disabled { opacity: 0.5; cursor: not-allowed; }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
 }
 
 .favBtnActive {
@@ -284,8 +296,14 @@
     justify-content: space-between;
     font-size: $font-size-small;
 
-    span:first-child { color: $color-secondary; }
-    span:last-child  { color: $color-primary; font-weight: 700; }
+    span:first-child {
+      color: $color-secondary;
+    }
+
+    span:last-child {
+      color: $color-primary;
+      font-weight: 700;
+    }
   }
 }
 
@@ -306,6 +324,7 @@
 
 .sectionTitle {
   @include h2;
+
   margin-bottom: 16px;
 }
 
@@ -336,7 +355,7 @@
   gap: 8px;
 
   @include on-tablet {
-    margin-top: 25pxpx;
+    margin-top: 25px;
   }
 
   li {
@@ -344,8 +363,15 @@
     justify-content: space-between;
     font-size: $font-size-body;
 
-    span:first-child { color: $color-secondary; }
-    span:last-child  { color: $color-primary; font-weight: 700; text-align: right; }
+    span:first-child {
+      color: $color-secondary;
+    }
+
+    span:last-child {
+      color: $color-primary;
+      font-weight: 700;
+      text-align: right;
+    }
   }
 }
 
