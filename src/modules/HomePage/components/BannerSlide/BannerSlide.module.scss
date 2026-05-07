@@ -153,6 +153,17 @@
   letter-spacing: 0.05em;
 }
 
+.orange .btn {
+  border-color: rgba(251, 146, 60, 0.5);
+  color: #fb923c;
+}
+
+.cyan .btn {
+  border-color: rgba(34, 211, 238, 0.5);
+  color: #22d3ee;
+}
+
+
 .purple {
   background: radial-gradient(
     ellipse at 62% 50%,
@@ -227,10 +238,7 @@
   border: 1px solid rgba(251, 146, 60, 0.35);
 }
 
-.orange .btn {
-  border-color: rgba(251, 146, 60, 0.5);
-  color: #fb923c;
-}
+
 
 .orange .btn:hover {
   background: rgba(251, 146, 60, 0.1);
@@ -275,10 +283,7 @@
   border: 1px solid rgba(34, 211, 238, 0.35);
 }
 
-.cyan .btn {
-  border-color: rgba(34, 211, 238, 0.5);
-  color: #22d3ee;
-}
+
 
 .cyan .btn:hover {
   background: rgba(34, 211, 238, 0.1);
