@@ -1,0 +1,93 @@
+.page {
+  margin-top: 72px;
+  margin-inline: 16px;
+  padding-bottom: 56px;
+  height: 100%;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.breadcrumbHome {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.breadcrumbIcon {
+  width: 14px;
+  height: 14px;
+}
+
+.breadcrumbSeparator {
+  width: 16px;
+  height: 16px;
+  opacity: 0.65;
+}
+
+.breadcrumbCurrent {
+  min-width: 0;
+  color: #75767f;
+}
+
+.title {
+  margin: 0;
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-style: Bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  color: #f1f2f9;
+}
+
+.desctiption {
+  margin-top: 8px;
+  margin-bottom: 32px;
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: #75767f;
+}
+
+.emptyState {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #75767f;
+}
+
+@media (min-width: 640px) {
+  .page {
+    margin-inline: 24px;
+    padding-bottom: 64px;
+  }
+}
+
+@media (width: 1200px) {
+  .page {
+    margin-top: 89px;
+    margin-inline: 32px;
+    padding-bottom: 80px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .page {
+    margin-top: 89px;
+    margin-inline: 152px;
+    padding-bottom: 80px;
+  }
+}
