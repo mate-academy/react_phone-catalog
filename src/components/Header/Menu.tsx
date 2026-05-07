@@ -8,7 +8,9 @@ import { useLockBodyScroll } from '../../hooks/useLockBodyScroll';
 import styles from './Menu.module.scss';
 
 import logo from '../../assets/icons/logo.png';
+import logoLight from '../../assets/icons/logo-light.png';
 import { CartIcon, CloseIcon, HeartIcon } from '../iconsSVG';
+import { useTheme } from '../../context/ThemeContext';
 
 interface Props {
   isOpen: boolean;
@@ -18,6 +20,7 @@ interface Props {
 export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
   const cartCount = useAppSelector(selectCartTotalQuantity);
   const favCount = useAppSelector(selectFavoritesCount);
+  const { theme } = useTheme();
 
   useLockBodyScroll(isOpen);
 
@@ -30,7 +33,7 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
     >
       <div className={styles.menu__top}>
         <Link to="/" className={styles.menu__logo} onClick={onClose}>
-          <img src={logo} alt="Logo" />
+          <img src={theme === 'light' ? logoLight : logo} alt="Logo" />
         </Link>
 
         <button

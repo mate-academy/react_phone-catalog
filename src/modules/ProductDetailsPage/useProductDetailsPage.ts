@@ -136,16 +136,17 @@ export const useProductDetailsPage = () => {
       const variant = findVariant(capacity, color);
 
       if (variant && variant.itemId !== currentItemId) {
-        navigate(
-          `/product/${variant.itemId}`,
-          hideDiscount ? { state: { hideDiscount: true } } : undefined,
-        );
+        navigate(`/product/${variant.itemId}`, {
+          replace: true,
+          ...(hideDiscount ? { state: { hideDiscount: true } } : {}),
+        });
       }
     },
     [currentItemId, findVariant, hideDiscount, navigate],
   );
 
   const price = display ? getProductPrice(display, hideDiscount) : null;
+  const categoryPath = `/${display?.category ?? product?.category ?? 'phones'}`;
 
   return {
     state: {
@@ -156,7 +157,7 @@ export const useProductDetailsPage = () => {
       productId,
     },
     navigation: {
-      navigateBack: () => navigate(-1),
+      navigateBack: () => navigate(categoryPath),
     },
     gallery: {
       images: (display?.images ?? [display?.image]).filter(isString),

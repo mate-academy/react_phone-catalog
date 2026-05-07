@@ -4,7 +4,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
   height: 36px;
   border-radius: 8px;
   border: 1px solid transparent;
@@ -21,8 +20,11 @@
   &:hover,
   &:focus {
     transform: translateY(-1px);
-    background: var(--theme-toggle-hover, rgba(0, 0, 0, 0.04));
     outline: none;
+  }
+
+  @include s.on-tablet {
+    width: 40px;
   }
 }
 

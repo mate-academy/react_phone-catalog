@@ -4,14 +4,15 @@ import { useAppSelector } from '../../app/hooks';
 import { selectFavoritesItems } from '../../features/favorites/favoritesSlice';
 import { ProductList } from '../../components/ProductList/ProductList';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
+import { productMatchesQuery } from '../../utils/productSearch';
 import styles from './FavoritesPage.module.scss';
 
 export const FavoritesPage: React.FC = () => {
   const favorites = useAppSelector(selectFavoritesItems);
   const [searchParams] = useSearchParams();
-  const query = searchParams.get('query')?.trim().toLowerCase() ?? '';
+  const query = searchParams.get('query') ?? '';
   const visibleFavorites = query
-    ? favorites.filter(product => product.name.toLowerCase().includes(query))
+    ? favorites.filter(product => productMatchesQuery(product, query))
     : favorites;
 
   return (

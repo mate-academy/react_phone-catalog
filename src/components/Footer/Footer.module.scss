@@ -72,9 +72,8 @@
 
     transition: color s.$effect-duration ease;
 
-    &--disabled {
-      pointer-events: none;
-      cursor: default;
+    &:hover {
+      color: var(--button-main-color);
     }
   }
 

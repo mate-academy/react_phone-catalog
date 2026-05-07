@@ -75,7 +75,9 @@
   &__emptyImage {
     display: block;
     width: min(100%, 420px);
+    max-height: min(36vh, 320px);
     height: auto;
+    object-fit: contain;
   }
 }
 

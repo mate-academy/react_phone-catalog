@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
                 styles.footer__link,
                 styles['footer__link--disabled'],
               )}
-              href="/contacts"
+              href="https://github.com/opalahecha"
             >
               Contacts
             </a>
@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
                 styles.footer__link,
                 styles['footer__link--disabled'],
               )}
-              href="/rights"
+              href="https://github.com/opalahecha"
             >
               Rights
             </a>

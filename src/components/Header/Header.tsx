@@ -50,7 +50,21 @@ export const Header: React.FC = () => {
   const clearSearch = () => setSearchValue('');
 
   useEffect(() => {
-    setSearchValue(isProductListPage ? (searchParams.get('query') ?? '') : '');
+    const queryFromUrl = isProductListPage
+      ? (searchParams.get('query') ?? '')
+      : '';
+
+    setSearchValue(currentValue => {
+      if (!isProductListPage) {
+        return currentValue ? '' : currentValue;
+      }
+
+      if (currentValue.trim() === queryFromUrl.trim()) {
+        return currentValue;
+      }
+
+      return queryFromUrl;
+    });
   }, [isProductListPage, location.pathname, searchParams, searchParamsKey]);
 
   useEffect(() => {

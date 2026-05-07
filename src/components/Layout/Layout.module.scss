@@ -1,7 +1,14 @@
 @use '../../styles' as s;
 
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
 .main {
-  min-height: 100vh;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .container {

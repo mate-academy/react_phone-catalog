@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useFetchProducts } from '../../../features/products/useFetchProducts';
 import type { Product } from '../../../types/product';
+import { productMatchesQuery } from '../../../utils/productSearch';
 
 export type CategoryType = 'phones' | 'tablets' | 'accessories';
 export type SortKey = 'age' | 'title' | 'price' | '';
@@ -158,11 +159,7 @@ export function useProductsForCategory(
       return byCategory;
     }
 
-    const normalizedQuery = query.trim().toLowerCase();
-
-    return byCategory.filter(product =>
-      product.name.toLowerCase().includes(normalizedQuery),
-    );
+    return byCategory.filter(product => productMatchesQuery(product, query));
   }, [byCategory, query]);
 
   const sorted = useMemo(() => {
