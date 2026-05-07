@@ -2,18 +2,13 @@
 
 .section {
   position: relative;
-
   @include padding-inline-category;
 
   &__text {
-    color: white;
+    color: #F1F2F9;
     font-size: 48px;
     line-height: 56px;
     font-weight: 800;
-  }
-
-  &__texts {
-    color: white;
   }
 
   &__top-bar {
@@ -35,46 +30,21 @@
 .phone {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 24px;
+  gap: 16px;
   margin-top: 56px;
-
-  @include on-phone {
-    justify-items: center;
-  }
-
-  @include on-tablet {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-  }
-
-  @include on-desktop {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 24px;
-  }
 
   &__card {
     position: relative;
-    background-color: #2a2a3e;
-    border-radius: 10px;
-    padding: 16px;
-    max-width: 272px;
-    max-height: 506px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: #161827;
+    border: 1px solid #3B3E4A;
+    border-radius: 0;
+    padding: 32px;
+    text-align: left;
+    transition: box-shadow 0.3s ease;
+    box-sizing: border-box;
 
     &:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    @include on-tablet {
-      padding: 16px;
-      max-width: 272px;
-    }
-
-    @include on-desktop {
-      max-width: 272px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     }
   }
 
@@ -82,28 +52,33 @@
     width: 100%;
     height: 200px;
     object-fit: contain;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__card-title {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     margin-bottom: 8px;
-    color: white;
-    line-height: 1.4;
+    color: #F1F2F9;
+    line-height: 21px;
   }
 
   &__card-prices {
     display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 12px;
+    gap: 8px;
+    margin-bottom: 16px;
+    align-items: baseline;
   }
 
   &__card-price {
-    font-size: 16px;
-    font-weight: 600;
-    color: white;
+    font-size: 22px;
+    font-weight: 800;
+    color: #F1F2F9;
   }
 
   &__card-specs {
@@ -111,26 +86,31 @@
     flex-direction: column;
     gap: 8px;
     margin-bottom: 16px;
+    border-top: 1px solid #3B3E4A;
+    padding-top: 16px;
   }
 
   &__card-spec {
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
+    font-size: 12px;
+    line-height: 15px;
   }
 
   &__card-spec-label {
     color: #75767F;
+    font-weight: 700;
   }
 
   &__card-spec-value {
-    color: white;
+    color: #F1F2F9;
+    font-weight: 700;
   }
 
   &__card-actions {
     display: flex;
-    justify-content: center;
-    gap: 12px;
+    gap: 8px;
+    margin-top: 16px;
   }
 
   &__card-btn {
@@ -139,26 +119,25 @@
     justify-content: center;
     height: 40px;
     font-size: 14px;
+    font-weight: 700;
     border: none;
-    border-radius: 5px;
+    border-radius: 0;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    text-align: center;
   }
 
   &__card-btn--add {
     flex: 1;
-    background-color: #a855f7;
+    background-color: #905BFF;
     color: white;
-    padding: 0 16px;
 
     &.added {
-      background-color: #75767F;
+      background-color: #3B3E4A;
       cursor: not-allowed;
     }
 
     &:hover:not(.added) {
-      background-color: #905BFF;
+      background-color: #A378FF;
     }
   }
 
@@ -166,18 +145,20 @@
     width: 40px;
     height: 40px;
     background-color: transparent;
-    border: none;
+    border: 1px solid #3B3E4A;
+    border-radius: 0;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    // &.favorite--active {
-    // }
+    &:hover {
+      border-color: #F1F2F9;
+    }
   }
 
   &__card-btn-icon {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
   }
 
   &__no-results {
@@ -201,20 +182,21 @@
   &__button {
     width: 32px;
     height: 32px;
-    background-color: #323542;
-    border: none;
-    border-radius: 4px;
-    color: white;
+    background-color: transparent;
+    border: 1px solid #3B3E4A;
+    border-radius: 0;
+    color: #F1F2F9;
     font-size: 14px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s ease;
+    transition: border-color 0.3s ease;
 
     &.active {
-      background-color: #a855f7;
-      color: white;
+      background-color: #F1F2F9;
+      color: #0F1121;
+      border-color: #F1F2F9;
     }
 
     &:disabled {
@@ -222,8 +204,8 @@
       cursor: not-allowed;
     }
 
-    &:hover:not(:disabled) {
-      background-color: #75767F;
+    &:hover:not(:disabled):not(.active) {
+      border-color: #F1F2F9;
     }
   }
 }
