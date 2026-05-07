@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@cypress/react18": "^2.0.1",
-    "@eslint/js": "^10.0.1",
+    "@eslint/js": "^8.57.1",
     "@mate-academy/scripts": "^1.8.5",
     "@mate-academy/students-ts-config": "*",
     "@mate-academy/stylelint-config": "*",
