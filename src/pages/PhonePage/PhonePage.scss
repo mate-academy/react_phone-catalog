@@ -11,6 +11,14 @@
     font-weight: 800;
   }
 
+  &__models {
+    color: #75767F;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    margin-bottom: 24px;
+  }
+
   &__top-bar {
     max-width: 400px;
   }
@@ -24,6 +32,18 @@
 
   &-top {
     color: #F1F2F9;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &-arrow {
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -212,4 +232,5 @@
 
 a {
   text-decoration: none;
+  color: inherit;
 }

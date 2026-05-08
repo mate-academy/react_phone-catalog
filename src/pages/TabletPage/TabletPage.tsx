@@ -42,7 +42,6 @@ export const TabletPage = () => {
             `Failed to fetch tablets.json: ${response.status} ${response.statusText}`,
           );
         }
-
         return response.json();
       })
       .then(data => {
@@ -58,13 +57,11 @@ export const TabletPage = () => {
 
   useEffect(() => {
     let updated = [...tablets];
-
     if (searchTerm) {
       updated = updated.filter(item =>
         item.name.toLowerCase().includes(searchTerm.toLowerCase()),
       );
     }
-
     if (sortBy === 'priceLow') {
       updated.sort((a, b) => a.priceDiscount - b.priceDiscount);
     } else if (sortBy === 'priceHigh') {
@@ -72,7 +69,6 @@ export const TabletPage = () => {
     } else if (sortBy === 'newest') {
       updated.sort((a, b) => b.year - a.year);
     }
-
     setFilteredTablets(updated);
     setCurrentPage(1);
   }, [searchTerm, sortBy, tablets]);
@@ -82,41 +78,26 @@ export const TabletPage = () => {
     const pages = [];
     const startPage = Math.max(1, currentPage - 2);
     const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
-
     pages.push(1);
-    if (startPage > 2) {
-      pages.push('...');
-    }
-
+    if (startPage > 2) pages.push('...');
     for (let i = startPage; i <= endPage; i++) {
-      if (i !== 1 && i !== totalPages) {
-        pages.push(i);
-      }
+      if (i !== 1 && i !== totalPages) pages.push(i);
     }
-
-    if (endPage < totalPages - 1) {
-      pages.push('...');
-    }
-
-    if (totalPages !== 1) {
-      pages.push(totalPages);
-    }
-
+    if (endPage < totalPages - 1) pages.push('...');
+    if (totalPages !== 1) pages.push(totalPages);
     return pages;
   };
 
   const handleAddToCart = (tablet: Tablet) => {
-    const selectedColor = tablet.color || 'default';
     const cartItem: CartItem = {
       id: tablet.id,
       name: tablet.name,
       price: tablet.priceDiscount,
       image: `${tablet.images[0]}`,
-      color: selectedColor,
+      color: tablet.color || 'default',
       capacity: tablet.capacity,
       quantity: 1,
     };
-
     addToCart(cartItem);
   };
 
@@ -148,12 +129,15 @@ export const TabletPage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="figmaLogo/Home.svg" alt="home_nav" />
+          <img src="./icons/home.svg" alt="home_nav" className="home--nav-icon" />
         </a>
-        <p className="home--nav-top">{'>'}</p>
+        <img src="./icons/arrow-right.svg" alt="arrow-right" className="home--nav-arrow" />
         <p className="home--nav-top">Tablets</p>
       </div>
+
       <p className="section__text">Tablets</p>
+      <p className="section__models">{filteredTablets.length} models</p>
+
       <div className="section__top-bar">
         <SortForm<Tablet>
           items={tablets}
@@ -165,6 +149,7 @@ export const TabletPage = () => {
           onItemsPerPageChange={setItemsPerPage}
         />
       </div>
+
       <div className="tablets">
         {filteredTablets.length === 0 ? (
           <p className="tablets__no-results">No tablets found.</p>
@@ -191,21 +176,15 @@ export const TabletPage = () => {
                 <div className="tablets__card-specs">
                   <div className="tablets__card-spec">
                     <span className="tablets__card-spec-label">Screen</span>
-                    <span className="tablets__card-spec-value">
-                      {tablet.screen}
-                    </span>
+                    <span className="tablets__card-spec-value">{tablet.screen}</span>
                   </div>
                   <div className="tablets__card-spec">
                     <span className="tablets__card-spec-label">Capacity</span>
-                    <span className="tablets__card-spec-value">
-                      {tablet.capacity}
-                    </span>
+                    <span className="tablets__card-spec-value">{tablet.capacity}</span>
                   </div>
                   <div className="tablets__card-spec">
                     <span className="tablets__card-spec-label">RAM</span>
-                    <span className="tablets__card-spec-value">
-                      {tablet.ram}
-                    </span>
+                    <span className="tablets__card-spec-value">{tablet.ram}</span>
                   </div>
                 </div>
               </Link>
@@ -253,8 +232,8 @@ export const TabletPage = () => {
                   <img
                     src={
                       favorites.includes(tablet.id)
-                        ? 'figmaLogo/ActiveHeart.svg'
-                        : 'figmaLogo/HeartLove.svg'
+                        ? './icons/heart-active.svg'
+                        : './icons/heart.svg'
                     }
                     alt="Favorite"
                     className="tablets__card-btn-icon"
@@ -265,6 +244,7 @@ export const TabletPage = () => {
           ))
         )}
       </div>
+
       <div className="pagination">
         <button
           onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}

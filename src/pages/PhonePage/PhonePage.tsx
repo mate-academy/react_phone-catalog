@@ -62,14 +62,12 @@ export const PhonePage = () => {
     const filtered = phones.filter(item =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase()),
     );
-
     const sorted = filtered.sort((a, b) => {
       if (sortBy === 'newest') return b.year - a.year;
       if (sortBy === 'priceLow') return a.priceDiscount - b.priceDiscount;
       if (sortBy === 'priceHigh') return b.priceDiscount - a.priceDiscount;
       return 0;
     });
-
     setFilteredPhones(sorted);
   }, [phones, searchTerm, sortBy]);
 
@@ -78,17 +76,13 @@ export const PhonePage = () => {
     const pages = [];
     const startPage = Math.max(1, currentPage - 2);
     const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
-
     pages.push(1);
     if (startPage > 2) pages.push('...');
-
     for (let i = startPage; i <= endPage; i++) {
       if (i !== 1 && i !== totalPages) pages.push(i);
     }
-
     if (endPage < totalPages - 1) pages.push('...');
     if (totalPages !== 1) pages.push(totalPages);
-
     return pages;
   };
 
@@ -133,13 +127,15 @@ export const PhonePage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="./icons/home.svg" alt="home_nav" />
+          <img src="./icons/home.svg" alt="home_nav" className="home--nav-icon" />
         </a>
-        <p className="home--nav-top">{'>'}</p>
+        <img src="./icons/arrow-right.svg" alt="arrow-right" className="home--nav-arrow" />
         <p className="home--nav-top">Phones</p>
       </div>
 
       <p className="section__text">Mobile phones</p>
+      <p className="section__models">{filteredPhones.length} models</p>
+
       <div className="section__top-bar">
         <SortForm<Phone>
           items={phones}

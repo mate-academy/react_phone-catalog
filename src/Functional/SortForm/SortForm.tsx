@@ -65,7 +65,7 @@ export function SortForm<T extends BaseItem>({
 
         <div className="sort-form__group">
           <label htmlFor="perPage" className="sort-form__label">
-            Items per page
+          Items on page
           </label>
           <select
             id="perPage"

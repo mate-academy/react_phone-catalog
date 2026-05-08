@@ -9,9 +9,7 @@ import { useCart } from '../../Functional/CartContext/CartContext';
 export const AccessoriesPage = () => {
   const { addToCart, toggleFavorite, cart, favorites } = useCart();
   const [accessories, setAccessories] = useState<Accessories[]>([]);
-  const [filteredAccessories, setFilteredAccessories] = useState<Accessories[]>(
-    [],
-  );
+  const [filteredAccessories, setFilteredAccessories] = useState<Accessories[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -22,10 +20,7 @@ export const AccessoriesPage = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredAccessories.slice(
-    indexOfFirstItem,
-    indexOfLastItem,
-  );
+  const currentItems = filteredAccessories.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(filteredAccessories.length / itemsPerPage);
 
   useEffect(() => {
@@ -33,11 +28,8 @@ export const AccessoriesPage = () => {
     fetch(`${import.meta.env.BASE_URL}api/accessories.json`)
       .then(response => {
         if (!response.ok) {
-          throw new Error(
-            `Failed to fetch accessories.json: ${response.status}`,
-          );
+          throw new Error(`Failed to fetch accessories.json: ${response.status}`);
         }
-
         return response.json();
       })
       .then(data => {
@@ -59,23 +51,12 @@ export const AccessoriesPage = () => {
     const filtered = accessories.filter(item =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase()),
     );
-
     const sorted = filtered.sort((a, b) => {
-      if (sortBy === 'newest') {
-        return b.year - a.year;
-      }
-
-      if (sortBy === 'priceLow') {
-        return a.priceDiscount - b.priceDiscount;
-      }
-
-      if (sortBy === 'priceHigh') {
-        return b.priceDiscount - a.priceDiscount;
-      }
-
+      if (sortBy === 'newest') return b.year - a.year;
+      if (sortBy === 'priceLow') return a.priceDiscount - b.priceDiscount;
+      if (sortBy === 'priceHigh') return b.priceDiscount - a.priceDiscount;
       return 0;
     });
-
     setFilteredAccessories(sorted);
   }, [accessories, searchTerm, sortBy]);
 
@@ -84,26 +65,13 @@ export const AccessoriesPage = () => {
     const pages = [];
     const startPage = Math.max(1, currentPage - 2);
     const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
-
     pages.push(1);
-    if (startPage > 2) {
-      pages.push('...');
-    }
-
+    if (startPage > 2) pages.push('...');
     for (let i = startPage; i <= endPage; i++) {
-      if (i !== 1 && i !== totalPages) {
-        pages.push(i);
-      }
+      if (i !== 1 && i !== totalPages) pages.push(i);
     }
-
-    if (endPage < totalPages - 1) {
-      pages.push('...');
-    }
-
-    if (totalPages !== 1) {
-      pages.push(totalPages);
-    }
-
+    if (endPage < totalPages - 1) pages.push('...');
+    if (totalPages !== 1) pages.push(totalPages);
     return pages;
   };
 
@@ -146,13 +114,15 @@ export const AccessoriesPage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="figmaLogo/Home.svg" alt="home_nav" />
+          <img src="./icons/home.svg" alt="home_nav" className="home--nav-icon" />
         </a>
-        <p className="home--nav-top">{'>'}</p>
+        <img src="./icons/arrow-right.svg" alt="arrow-right" className="home--nav-arrow" />
         <p className="home--nav-top">Accessories</p>
       </div>
 
       <p className="section__text">Accessories</p>
+      <p className="section__models">{filteredAccessories.length} models</p>
+
       <div className="section__top-bar">
         <SortForm<Accessories>
           items={accessories}
@@ -191,9 +161,7 @@ export const AccessoriesPage = () => {
                 <div className="accessories__card-specs">
                   <div className="accessories__card-spec">
                     <span className="accessories__card-spec-label">Color</span>
-                    <span className="accessories__card-spec-value">
-                      {accessory.color}
-                    </span>
+                    <span className="accessories__card-spec-value">{accessory.color}</span>
                   </div>
                 </div>
               </Link>
@@ -238,8 +206,8 @@ export const AccessoriesPage = () => {
                   <img
                     src={
                       favorites.includes(accessory.id)
-                        ? 'figmaLogo/ActiveHeart.svg'
-                        : 'figmaLogo/HeartLove.svg'
+                        ? './icons/heart-active.svg'
+                        : './icons/heart.svg'
                     }
                     alt="Favorite"
                     className="accessories__card-btn-icon"
