@@ -431,6 +431,11 @@
   border: 1px solid #3b3e4a;
   background: #323542;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.slider__arrow:hover {
+  background-color: #4a4d58;
 }
 
 .slider__arrow:disabled {

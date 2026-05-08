@@ -6,6 +6,7 @@ import favouritesIcon from '../Header/components/img/favourites.png';
 import favoritedActive from './components/img/favorited-active.png';
 import { useFavorites } from '../../context/FavoritesContext';
 import { useCart } from '../../context/CartContext';
+import { getAssetUrl } from '../../utils/getAssetUrl';
 
 interface Props {
   product: Product;
@@ -29,7 +30,7 @@ export const ProductCard: React.FC<Props> = ({ product, variant }) => {
       <Link to={`/product/${product.itemId}`} className={styles.imageLink}>
         <img
           className={styles.image}
-          src={`/${product.image}`}
+          src={getAssetUrl(product.image)}
           alt={product.name}
         />
       </Link>

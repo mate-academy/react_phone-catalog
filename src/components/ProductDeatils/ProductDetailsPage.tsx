@@ -22,6 +22,7 @@ import { useFavorites } from '../../context/FavoritesContext';
 // eslint-disable-next-line max-len
 import favoritedActive from '../ProductCard/components/img/favorited-active.png';
 import { Loader } from '../Loader/Loader';
+import { getAssetUrl } from '../../utils/getAssetUrl';
 
 const colorMap: Record<string, string> = {
   black: '#111111',
@@ -240,7 +241,7 @@ export const ProductDetailsPage = () => {
         <div className={styles.gallery}>
           <div className={styles.mainImageWrap}>
             <img
-              src={`/${currentImage}`}
+              src={getAssetUrl(currentImage)}
               alt={product.name}
               className={styles.mainImage}
             />
@@ -255,7 +256,7 @@ export const ProductDetailsPage = () => {
                 onClick={() => setSelectedImage(image)}
               >
                 <img
-                  src={`/${image}`}
+                  src={getAssetUrl(image)}
                   alt={product.name}
                   className={styles.thumbnailImage}
                 />

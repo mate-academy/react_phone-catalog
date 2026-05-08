@@ -9,7 +9,7 @@ import { FavoritesPage } from './components/FavoritesPage/FavoritesPage';
 import { CartPage } from './components/CartPage/CartPage';
 // eslint-disable-next-line max-len
 import { ProductDetailsPage } from './components/ProductDeatils/ProductDetailsPage';
-import { NotFoundPage } from './pages/NotFoundPage';
+import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
 import { Footer } from './components/Footer/Footer';
 
 export const App = () => (

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import styles from './CartPage.module.scss';
 import arrowLeft from './components/img/arrow-left.png';
+import { getAssetUrl } from '../../utils/getAssetUrl';
 
 export const CartPage = () => {
   const navigate = useNavigate();
@@ -55,7 +56,7 @@ export const CartPage = () => {
                     className={styles.imageLink}
                   >
                     <img
-                      src={`/${product.image}`}
+                      src={getAssetUrl(product.image)}
                       alt={product.name}
                       className={styles.image}
                     />

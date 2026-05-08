@@ -1,13 +1,15 @@
 import { Product } from './types/Product';
 import { ProductDetails } from './types/ProductDetails';
 
+const BASE_URL = import.meta.env.BASE_URL;
+
 const getProductDetailsByPath = (path: string): Promise<ProductDetails[]> =>
-  fetch(path).then(response => response.json());
+  fetch(`${BASE_URL}/${path}`).then(response => response.json());
 
 const getProductsByCategory = (
   category: Product['category'],
 ): Promise<Product[]> => {
-  return fetch('/api/products.json')
+  return fetch(`${BASE_URL}/api/products.json`)
     .then(response => response.json())
     .then((products: Product[]) =>
       products.filter(product => product.category === category),
@@ -15,7 +17,9 @@ const getProductsByCategory = (
 };
 
 export const getAllProducts = (): Promise<Product[]> => {
-  return fetch('/api/products.json').then(response => response.json());
+  return fetch(`${BASE_URL}/api/products.json`).then(response =>
+    response.json(),
+  );
 };
 
 export const getPhones = (): Promise<Product[]> =>
@@ -31,7 +35,7 @@ export const getProductVariants = async (
   category: ProductDetails['category'],
   namespaceId: string,
 ): Promise<ProductDetails[]> => {
-  const products = await getProductDetailsByPath(`/api/${category}.json`);
+  const products = await getProductDetailsByPath(`api/${category}.json`);
 
   return products.filter(product => product.namespaceId === namespaceId);
 };
@@ -40,9 +44,9 @@ export const getProductById = async (
   productId: string,
 ): Promise<ProductDetails | undefined> => {
   const [phones, tablets, accessories] = await Promise.all([
-    getProductDetailsByPath('/api/phones.json'),
-    getProductDetailsByPath('/api/tablets.json'),
-    getProductDetailsByPath('/api/accessories.json'),
+    getProductDetailsByPath('api/phones.json'),
+    getProductDetailsByPath('api/tablets.json'),
+    getProductDetailsByPath('api/accessories.json'),
   ]);
 
   const allProducts: ProductDetails[] = [...phones, ...tablets, ...accessories];

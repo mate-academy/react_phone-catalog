@@ -14,6 +14,7 @@ import arrowLeft from '../ProductDeatils/components/img/arrow-left.png';
 import bannerTablet from './components/img/banner-tablets.png';
 import bannerDekstop from './components/img/banner-desktop.png';
 import { Link } from 'react-router-dom';
+import { getAssetUrl } from '../../utils/getAssetUrl';
 
 export const HomePage = () => {
   const slides = [
@@ -24,16 +25,16 @@ export const HomePage = () => {
       imageDesktop: bannerDekstop,
     },
     {
-      image: '/img/banner-accessories.png',
-      imageTablet: '/img/banner-accessories.png',
+      image: getAssetUrl('img/banner-accessories.png'),
+      imageTablet: getAssetUrl('img/banner-accessories.png'),
       link: '/accessories',
-      imageDesktop: '/img/banner-accessories.png',
+      imageDesktop: getAssetUrl('img/banner-accessories.png'),
     },
     {
-      image: '/img/banner-tablets.png',
-      imageTablet: '/img/banner-tablets.png',
+      image: getAssetUrl('img/banner-tablets.png'),
+      imageTablet: getAssetUrl('img/banner-tablets.png'),
       link: '/tablets',
-      imageDesktop: '/img/banner-tablets.png',
+      imageDesktop: getAssetUrl('img/banner-tablets.png'),
     },
   ];
 

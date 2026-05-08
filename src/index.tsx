@@ -6,7 +6,7 @@ import { FavoritesProvider } from './context/FavoritesContext';
 import { CartProvider } from './context/CartContext';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <BrowserRouter>
+  <BrowserRouter basename="/react_phone-catalog">
     <FavoritesProvider>
       <CartProvider>
         <App />

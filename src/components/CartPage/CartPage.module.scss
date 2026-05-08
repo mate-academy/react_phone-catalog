@@ -205,6 +205,11 @@
   font-weight: 700;
   line-height: 21px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.checkoutButton:hover {
+  background-color: #A378FF;
 }
 
 @media (min-width: 640px) {

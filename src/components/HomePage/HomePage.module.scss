@@ -114,8 +114,13 @@
   width: 32px;
   height: 32px;
   border: 1px solid #3b3e4a;
-  background: #323542;
+  background-color: #323542;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.slider__arrow:hover {
+  background-color: #4a4d58;
 }
 
 .slider__arrow:disabled {
@@ -298,6 +303,11 @@
     flex: 0 0 32px;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .banner__button:hover {
+    background-color: #4a4d58;
   }
 
   .banner__button_img {
