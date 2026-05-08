@@ -7,7 +7,7 @@ import {
 } from '../../api';
 import { Product, ProductDetails } from '../../types';
 import { Category, CATEGORIES } from '../../types';
-import { ICONS } from '../../constants';
+import { ICONS, NOTFOUND_IMAGES } from '../../constants';
 import { useCart } from '../../context';
 import { useProducts } from '../../context';
 import { getImageUrl } from '../../utils';
@@ -128,8 +128,13 @@ export const ProductDetailsPage = () => {
 
   if (notFound || !details) {
     return (
-      <div className={styles.page}>
+      <div className={`${styles.page} ${styles.pageNotFound}`}>
         <p className={styles.notFound}>Product was not found</p>
+        <img
+          src={NOTFOUND_IMAGES.PRODUCT_NOT_FOUND}
+          alt="Product not found"
+          className={styles.notFoundImage}
+        />
       </div>
     );
   }

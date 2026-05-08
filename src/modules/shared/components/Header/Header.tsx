@@ -26,6 +26,7 @@ export const Header = () => {
             to={AppRoutes.HOME}
             className={styles.logo}
             aria-label="Go to home"
+            onClick={() => setMenuOpen(false)}
           >
             <img src={ICONS.LOGO} alt="Nice Gadgets logo" />
           </Link>

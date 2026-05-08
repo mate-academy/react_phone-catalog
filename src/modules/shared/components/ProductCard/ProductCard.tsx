@@ -7,9 +7,10 @@ import styles from './ProductCard.module.scss';
 
 interface Props {
   product: Product;
+  showDiscount?: boolean;
 }
 
-export const ProductCard = ({ product }: Props) => {
+export const ProductCard = ({ product, showDiscount = true }: Props) => {
   const {
     name,
     price,
@@ -21,7 +22,7 @@ export const ProductCard = ({ product }: Props) => {
     category,
     itemId,
   } = product;
-  const hasDiscount = price !== fullPrice;
+  const hasDiscount = showDiscount && price !== fullPrice;
   const { isFavorite, toggleFavorite } = useProducts();
   const isInFavorites = isFavorite(product.id);
   const { isInCart, addToCart } = useCart();

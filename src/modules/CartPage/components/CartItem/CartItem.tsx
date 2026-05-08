@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { CartItem as CartItemType } from '../../../../types';
 import { useCart } from '../../../../context';
 import { getImageUrl } from '../../../../utils';
@@ -24,13 +25,18 @@ export const CartItem = ({ item }: Props) => {
           <img src={ICONS.CLOSE} alt="" aria-hidden="true" />
         </button>
 
-        <img
-          src={getImageUrl(product.image)}
-          alt={product.name}
-          className={styles.image}
-        />
+        <Link
+          to={`/${product.category}/${product.itemId}`}
+          className={styles.link}
+        >
+          <img
+            src={getImageUrl(product.image)}
+            alt={product.name}
+            className={styles.image}
+          />
 
-        <p className={styles.name}>{product.name}</p>
+          <p className={styles.name}>{product.name}</p>
+        </Link>
       </div>
 
       {/* Quantity controls + price */}

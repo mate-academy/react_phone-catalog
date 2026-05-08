@@ -41,19 +41,32 @@
   }
 }
 
-.image {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
+.link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
 
-.name {
-  @include body-text;
+  .image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
 
-  color: $color-primary;
-  flex: 1;
-  min-width: 120px;
+  .name {
+    @include body-text;
+
+    color: $color-primary;
+    flex: 1;
+    min-width: 120px;
+  }
+
+  @include hover-scale;
+
+  &:hover .name {
+    color: $color-secondary;
+  }
 }
 
 

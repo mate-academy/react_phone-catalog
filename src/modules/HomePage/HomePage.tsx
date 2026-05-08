@@ -78,7 +78,11 @@ export const HomePage = () => {
           {loading && <Loader />}
           {!loading && error && <p>Something went wrong. Please try again.</p>}
           {!loading && !error && (
-            <ProductsSlider title="Brand new models" products={brandNew} />
+            <ProductsSlider
+              title="Brand new models"
+              products={brandNew}
+              showDiscount={false}
+            />
           )}
         </section>
 

@@ -11,9 +11,14 @@ const STEP = CARD_WIDTH + GAP;
 interface Props {
   title: string;
   products: Product[];
+  showDiscount?: boolean;
 }
 
-export const ProductsSlider = ({ title, products }: Props) => {
+export const ProductsSlider = ({
+  title,
+  products,
+  showDiscount = true,
+}: Props) => {
   const trackRef = useRef<HTMLUListElement>(null);
   const [offset, setOffset] = useState(0);
   const [maxOffset, setMaxOffset] = useState(0);
@@ -89,7 +94,7 @@ export const ProductsSlider = ({ title, products }: Props) => {
         >
           {products.map(product => (
             <li key={product.id} className={styles.item}>
-              <ProductCard product={product} />
+              <ProductCard product={product} showDiscount={showDiscount} />
             </li>
           ))}
         </ul>

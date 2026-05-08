@@ -26,3 +26,8 @@ export const CATEGORY_IMAGES = {
   TABLETS: getImageUrl('/img/category-tablets.png'),
   ACCESSORIES: getImageUrl('/img/category-accessories.png'),
 } as const;
+
+export const NOTFOUND_IMAGES = {
+  PAGE_NOT_FOUND: getImageUrl('/img/page-not-found.png'),
+  PRODUCT_NOT_FOUND: getImageUrl('/img/product-not-found.png'),
+} as const;
