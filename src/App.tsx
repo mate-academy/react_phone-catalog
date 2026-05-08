@@ -8,12 +8,12 @@ import { BannerSlider } from './components/BannerSlider';
 export const App: React.FC = () => {
   return (
     <div data-cy="app">
+      <Header />
       <div className="section">
         <div className="container">
           <Outlet />
         </div>
       </div>
-      <Header />
       <BannerSlider />
       <ProductCarts
         id={'id'}

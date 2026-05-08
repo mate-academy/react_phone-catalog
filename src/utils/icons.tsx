@@ -10,7 +10,7 @@ export const FavoritesIcon: React.FC<{ count: string | number }> = ({
   return (
     <div className="actions">
       <NavLink to="/favorites" className="icon" aria-label="Favorites">
-        <img src="/img/favorites.svg" alt="Favourites" />
+        <img src="/img/favorites.svg" className="img-icon" alt="Favourites" />
         {num > 0 && <span className="badge">{count}</span>}
       </NavLink>
     </div>
