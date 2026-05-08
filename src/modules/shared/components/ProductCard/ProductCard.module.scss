@@ -123,6 +123,7 @@
   font-weight: 700;
   border: none;
   cursor: pointer;
+  transition: box-shadow $transition;
 
   @include hover-transition(box-shadow);
 
@@ -147,8 +148,10 @@
   border: 1px solid $color-icons;
   cursor: pointer;
   flex-shrink: 0;
+  transition: box-shadow $transition;
 
-  @include hover-transition(border-color);
+  @include hover-transition(box-shadow);
+
 
   &:hover {
     border-color: $color-primary;
