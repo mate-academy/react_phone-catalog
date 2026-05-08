@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Product, ProductDetails } from '../../types';
-import { getProductDetailsById, getSuggestedProducts } from '../../utils/api';
+import {
+  getProductDetailsById,
+  getProductVariant,
+  getSuggestedProducts,
+} from '../../utils/api';
 import { ProductCard } from '../../components/ProductCard';
 import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoritesContext';
@@ -51,9 +55,9 @@ export const ProductDetailsPage: React.FC = () => {
     fetchProduct();
   }, [productId]);
 
-  const handleBack = () => {
-    navigate(-1);
-  };
+  // const handleBack = () => {
+  //   navigate(-1);
+  // };
 
   const handleAddToCart = () => {
     if (product) {
@@ -74,6 +78,28 @@ export const ProductDetailsPage: React.FC = () => {
       };
 
       addToCart(cartProduct);
+    }
+  };
+
+  const handleColorSelect = async (color: string) => {
+    if (!product) {
+      return;
+    }
+
+    if (product.color === color) {
+      return;
+    }
+
+    const capacity = selectedCapacity || product.capacity;
+    const variant = await getProductVariant(
+      product.category,
+      product.namespaceId,
+      capacity,
+      color,
+    );
+
+    if (variant) {
+      navigate(`/product/${variant.id}`);
     }
   };
 
@@ -118,9 +144,9 @@ export const ProductDetailsPage: React.FC = () => {
   return (
     <div className={styles.productDetailsPage}>
       <nav className={styles.breadcrumbs}>
-        <button onClick={handleBack} className={styles.backButton}>
+        {/* <button onClick={handleBack} className={styles.backButton}>
           Back
-        </button>
+        </button> */}
         <span>Home</span>
         <span>&gt;</span>
         <span>{product.category}</span>
@@ -160,27 +186,15 @@ export const ProductDetailsPage: React.FC = () => {
             <div className={styles.option}>
               <span>Color:</span>
               <div className={styles.colorOptions}>
-                {product.colorsAvailable.map(color => {
-                  const colorInputId = `color-${product.id}-${color}`;
-
-                  return (
-                    <label
-                      key={color}
-                      htmlFor={colorInputId}
-                      className={styles.colorOption}
-                    >
-                      <input
-                        id={colorInputId}
-                        type="radio"
-                        name="color"
-                        value={color}
-                        checked={selectedColor === color}
-                        onChange={e => setSelectedColor(e.target.value)}
-                      />
-                      <span>{color}</span>
-                    </label>
-                  );
-                })}
+                {product.colorsAvailable.map(color => (
+                  <button
+                    key={color}
+                    type="button"
+                    className={`${styles.colorOption} ${selectedColor === color ? styles.active : ''}`}
+                    title={color}
+                    onClick={() => handleColorSelect(color)}
+                  />
+                ))}
               </div>
             </div>
 

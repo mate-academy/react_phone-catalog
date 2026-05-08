@@ -6,6 +6,8 @@ import { PicturesSlider } from '../../components/PicturesSlider';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import styles from './HomePage.module.scss';
 
+const imageBase = import.meta.env.BASE_URL || '/';
+
 export const HomePage: React.FC = () => {
   const [hotPriceProducts, setHotPriceProducts] = useState<Product[]>([]);
   const [brandNewProducts, setBrandNewProducts] = useState<Product[]>([]);
@@ -46,23 +48,50 @@ export const HomePage: React.FC = () => {
       <section className={styles.shopByCategory}>
         <h2>Shop by category</h2>
         <div className={styles.categories}>
-          <Link to="/phones" className={styles.category}>
-            <div className={styles.categoryIcon}>
-              <i className="fas fa-mobile-alt"></i>
+          <Link
+            to="/phones"
+            className={`${styles.category} ${styles.categoryPhones}`}
+          >
+            <div className={styles.categoryMedia}>
+              <img
+                src={`${imageBase}img/category-phones.webp`}
+                alt="Phones category"
+              />
             </div>
-            <h3>Phones</h3>
+            <div className={styles.categoryDetails}>
+              <h3>Mobile phones</h3>
+              <p>95 models</p>
+            </div>
           </Link>
-          <Link to="/tablets" className={styles.category}>
-            <div className={styles.categoryIcon}>
-              <i className="fas fa-tablet-alt"></i>
+          <Link
+            to="/tablets"
+            className={`${styles.category} ${styles.categoryTablets}`}
+          >
+            <div className={styles.categoryMedia}>
+              <img
+                src={`${imageBase}img/category-tablets.webp`}
+                alt="Tablets category"
+              />
             </div>
-            <h3>Tablets</h3>
+            <div className={styles.categoryDetails}>
+              <h3>Tablets</h3>
+              <p>24 models</p>
+            </div>
           </Link>
-          <Link to="/accessories" className={styles.category}>
-            <div className={styles.categoryIcon}>
-              <i className="fas fa-headphones"></i>
+          <Link
+            to="/accessories"
+            className={`${styles.category} ${styles.categoryAccessories}`}
+          >
+            <div className={styles.categoryMedia}>
+              <img
+                src={`${imageBase}img/category-accessories.webp`}
+                alt="Accessories category"
+              />
             </div>
-            <h3>Accessories</h3>
+            <div className={styles.categoryDetails}>
+              <h3>Accessories</h3>
+              <p>100 models</p>
+            </div>
           </Link>
         </div>
       </section>

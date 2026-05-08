@@ -91,6 +91,41 @@ export const getProductDetails = async (
   return products.find(product => product.id === productId) || null;
 };
 
+export const getProductVariant = async (
+  category: string,
+  namespaceId: string,
+  capacity: string,
+  color: string,
+): Promise<ProductDetails | null> => {
+  let products: ProductDetails[];
+
+  switch (category) {
+    case 'phones':
+      products = await getPhones();
+      break;
+    case 'tablets':
+      products = await getTablets();
+      break;
+    case 'accessories':
+      products = await getAccessories();
+      break;
+    default:
+      return null;
+  }
+
+  const normalizedCapacity = capacity.toLowerCase();
+  const normalizedColor = color.toLowerCase();
+
+  return (
+    products.find(
+      product =>
+        product.namespaceId === namespaceId &&
+        product.capacity.toLowerCase() === normalizedCapacity &&
+        product.color.toLowerCase() === normalizedColor,
+    ) || null
+  );
+};
+
 export const getSuggestedProducts = async (
   currentProductId: string,
   limit: number = 8,

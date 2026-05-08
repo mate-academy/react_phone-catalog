@@ -2,7 +2,8 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-
+  color: #313237;
+  font: monserrat, sans-serif;
   h1 {
     text-align: center;
     margin-bottom: 30px;
@@ -67,8 +68,8 @@
 
   .controls {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: start;
+    align-items: flex-start;
     margin-bottom: 30px;
     flex-wrap: wrap;
     gap: 20px;
@@ -84,7 +85,7 @@
         border-radius: 4px;
         font-size: 16px;
       }
-    }
+   }
 
     .sort,
     .perPage {

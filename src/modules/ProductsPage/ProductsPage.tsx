@@ -1,9 +1,15 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useMemo,
+  // useCallback,
+  // useRef,
+} from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Product, SortOption, PerPageOption } from '../../types';
 import { getProducts } from '../../utils/api';
 import { ProductCard } from '../../components/ProductCard';
-import { debounce } from '../../utils/debounce';
+// import { debounce } from '../../utils/debounce';
 import styles from './ProductsPage.module.scss';
 
 interface ProductsPageProps {
@@ -17,8 +23,13 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ category }) => {
   const [error, setError] = useState<string | null>(null);
 
   const sort = (searchParams.get('sort') as SortOption) || 'age';
-  const perPage = (searchParams.get('perPage') as PerPageOption) || 16;
-  const page = parseInt(searchParams.get('page') || '1', 10);
+  const perPageParam = searchParams.get('perPage');
+  const perPage: PerPageOption =
+    perPageParam === 'all'
+      ? 'all'
+      : (parseInt(perPageParam || '16', 10) as 4 | 8 | 16);
+  const pageParam = searchParams.get('page') || '1';
+  const page = parseInt(pageParam, 10) || 1;
   const query = searchParams.get('query') || '';
 
   useEffect(() => {
@@ -69,13 +80,27 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ category }) => {
     perPage === 'all'
       ? 1
       : Math.ceil(sortedAndFilteredProducts.length / perPage);
-  const startIndex = perPage === 'all' ? 0 : (page - 1) * perPage;
+
+  // Validate page: if current page > totalPages, reset to 1
+  const validPage = page > totalPages ? 1 : page;
+
+  const startIndex = perPage === 'all' ? 0 : (validPage - 1) * perPage;
   const endIndex =
     perPage === 'all' ? sortedAndFilteredProducts.length : startIndex + perPage;
   const displayedProducts = sortedAndFilteredProducts.slice(
     startIndex,
     endIndex,
   );
+
+  // Reset page if it became invalid
+  useEffect(() => {
+    if (page !== validPage) {
+      const params = new URLSearchParams(searchParams);
+
+      params.set('page', validPage.toString());
+      setSearchParams(params, { replace: true });
+    }
+  }, [page, validPage, searchParams, setSearchParams]);
 
   const handleSortChange = (newSort: SortOption) => {
     const params = new URLSearchParams(searchParams);
@@ -100,27 +125,24 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ category }) => {
     setSearchParams(params);
   };
 
-  const debouncedSearchChange = useMemo(
-    () =>
-      debounce((...args: unknown[]) => {
-        const newQuery = args[0] as string;
-        const params = new URLSearchParams(searchParams);
+  // const debouncedSearchRef = useRef(
+  //   debounce((newQuery: string) => {
+  //     const params = new URLSearchParams(searchParams);
 
-        if (newQuery) {
-          params.set('query', newQuery);
-        } else {
-          params.delete('query');
-        }
+  //     if (newQuery) {
+  //       params.set('query', newQuery);
+  //     } else {
+  //       params.delete('query');
+  //     }
 
-        params.set('page', '1');
-        setSearchParams(params);
-      }, 500),
-    [searchParams, setSearchParams],
-  );
+  //     params.set('page', '1');
+  //     setSearchParams(params);
+  //   }, 500),
+  // );
 
-  const handleSearchChange = (newQuery: string) => {
-    debouncedSearchChange(newQuery);
-  };
+  // const handleSearchChange = useCallback((newQuery: string) => {
+  //   debouncedSearchRef.current(newQuery);
+  // }, []);
 
   if (loading) {
     return <div className={styles.loader}>Loading...</div>;
@@ -160,14 +182,14 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ category }) => {
       {sortedAndFilteredProducts.length > 0 && (
         <>
           <div className={styles.controls}>
-            <div className={styles.search}>
+            {/* <div className={styles.search}>
               <input
                 type="search"
                 placeholder={`Search ${category}...`}
                 value={query}
                 onChange={e => handleSearchChange(e.target.value)}
               />
-            </div>
+            </div> */}
 
             <div className={styles.sort}>
               <label htmlFor="sort">Sort by:</label>
@@ -208,17 +230,17 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ category }) => {
           {perPage !== 'all' && totalPages > 1 && (
             <div className={styles.pagination}>
               <button
-                disabled={page === 1}
-                onClick={() => handlePageChange(page - 1)}
+                disabled={validPage === 1}
+                onClick={() => handlePageChange(validPage - 1)}
               >
                 Previous
               </button>
               <span>
-                Page {page} of {totalPages}
+                Page {validPage} of {totalPages}
               </span>
               <button
-                disabled={page === totalPages}
-                onClick={() => handlePageChange(page + 1)}
+                disabled={validPage === totalPages}
+                onClick={() => handlePageChange(validPage + 1)}
               >
                 Next
               </button>
