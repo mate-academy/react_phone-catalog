@@ -1,20 +1,41 @@
 // main
 $header-height: 48px;
 $border-default: 1px solid #3B3E4A;
-$bg-color: #0f1121;
-$bg-color-card: #161827;
-$color-accent: #905BFF;
-$color-accent-hover: #A378FF;
-$text-white__hover: #F1F2F9;
-$text-color: #75767F;
-$button-selected: #323542;
 $font-family: Mont, sans-serif;
-$grayElements: #3B3E4A;
 
-// icons
-$icons-def: #323542;
-$icons-hover: #4A4D58;
-$icons-dis: #0F1121;
+//colors
+$graySecondary: #75767F;
+$icons: #4A4D58;
+$grayElements: #3B3E4A;
+$surface_2: #323542;
+$surface_1: #161827;
+$black: #0f1121;
+
+$white: #F1F2F9;
+$color-accent: #905BFF;
+$green: #27AE60;
+$red: #EB5757;
+
+// Buttons
+$btn-bg-default: #161827;
+$btn-bg-hover: #3B3E4A;
+$btn-bg-selected: #905BFF;
+$btn-bg-disabled: #0F1121;
+
+$btn-text-default: #905BFF;
+$btn-text-hover: #A378FF;
+$btn-text-selected: #323542;
+
+// Icons (серці, стрілки)
+$icon-bg-default: #323542;
+$icon-bg-hover: #4A4D58;
+$icon-bg-selected: #0F1121;
+
+// Slider dots (кружечки в банері)
+$dot-color: #FCDBC1;
+$dot-border-def: #3B3E4A;
+$dot-border-selected: #75767F;
+$dot-border-hover: #F1F2F9;
 
 // tablet
 $tablet-breakpoint: 640px;

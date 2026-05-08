@@ -10,13 +10,13 @@
     bottom: $bottom;
     width: 0;
     height: 2px;
-    background-color: $text-white__hover;
+    background-color: $white;
     transition: all 0.3s ease;
     transform: translateX(-50%);
   }
 
   &:hover {
-    color: $text-white__hover;
+    color: $white;
     transition: color 0.3s ease;
 
     &::after {

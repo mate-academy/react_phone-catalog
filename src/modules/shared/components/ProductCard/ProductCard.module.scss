@@ -9,18 +9,18 @@
 
   @include font-buttons;
 
-  color: $text-white__hover;
+  color: $white;
   transition: all 0.25s ease;
 
   &:hover {
-    background-color: $color-accent-hover;
+    background-color: $btn-text-hover;
   }
 }
 
 %add-to-fav {
-
   width: 40px;
   height: 40px;
+  @include flex-center;
 }
 
 
@@ -30,14 +30,13 @@
   flex-direction: column;
   overflow: hidden;
 
-  background-color: $bg-color-card;
+  background-color: $surface_1;
 
   width: 212px;
   height: 439px;
   padding: 32px;
 
   .productImage {
-
     flex: 1;
     min-height: 0;
 
@@ -52,9 +51,12 @@
 
   .title {
     text-decoration: none;
+
     @include font-body-text;
+
     margin-top: 8px;
-    color: $text-white__hover;
+
+    color: $white;
   }
 
   .prices {
@@ -69,7 +71,7 @@
     }
 
     :last-child {
-      color: $text-color;
+      color: $graySecondary;
       text-decoration: line-through;
       font-weight: 600;
       line-height: 100%;
@@ -93,7 +95,7 @@
       justify-content: space-between;
 
       :first-child {
-        color: $text-color;
+        color: $graySecondary;
       }
     }
   }
@@ -109,33 +111,36 @@
 
     .add-to-cart {
       @extend %add-to-cart;
+
       background-color: $color-accent;
     }
 
     .addedToCart {
       @extend %add-to-cart;
 
-      background-color: $button-selected;
+      background-color: $icon-bg-selected;
 
       &:hover {
-        background-color: $icons-hover;
+        background-color: $icon-bg-hover;
       }
     }
 
     .add-to-fav {
       @extend %add-to-cart;
       @extend %add-to-fav;
+
       flex: none;
 
-      background-color: $icons-def;
+      background-color: $icon-bg-default;
       border: none;
 
     }
 
     .addedToFav {
       @extend %add-to-fav;
+
       border: $border-default;
-      background-color: $bg-color;
+      background-color: $black;
 
 
     }

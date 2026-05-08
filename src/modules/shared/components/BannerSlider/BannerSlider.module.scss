@@ -19,24 +19,27 @@
 
   .buttons {
     @include flex-center;
+
     gap: 4px;
     padding: 16px 0;
 
     .button {
       @include flex-center;
+
       width: 24px;
       height: 24px;
 
       button {
         @include flex-center;
+
         width: 14px;
         height: 4px;
-        background-color: $grayElements;
+        background-color: $graySecondary;
         border: none;
         cursor: pointer;
 
         &.active {
-          background-color: $text-white__hover;
+          background-color: $white;
         }
       }
     }

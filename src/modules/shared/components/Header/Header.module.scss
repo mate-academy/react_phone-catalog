@@ -11,7 +11,7 @@
   align-items: center;
   height: $header-height;
   width: 100%;
-  background-color: $bg-color;
+  background-color: $black;
   border-bottom: $border-default;
   justify-content: space-between;
 
@@ -55,13 +55,13 @@
 
       text-transform: uppercase;
       position: relative;
-      color: $text-color;
+      color: $graySecondary;
       text-decoration: none;
 
       @include hover-underline(0);
 
       &.active {
-        color: $text-white__hover;
+        color: $white;
       }
 
 

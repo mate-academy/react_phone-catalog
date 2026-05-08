@@ -1,0 +1,103 @@
+@use '../../../styles/variables.scss' as *;
+@use '../../../styles/mixins.scss' as *;
+
+.isloading {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 212px;
+  height: 430px;
+
+  .image {
+    width: 100%;
+    height: 60%;
+    background-size: 250px;
+    background-image: -webkit-linear-gradient(left, $grayElements 0px, $graySecondary 40px, $grayElements 80px);
+    background-image: -o-linear-gradient(left, $grayElements 0px, $graySecondary 40px, $grayElements 80px);
+    background-image: linear-gradient(90deg, $grayElements 0px, $graySecondary 40px, $grayElements 80px);
+    animation: shimmer 2s infinite linear;
+  }
+
+  .content {
+    width: 100%;
+    height: 70%;
+    background: $grayElements;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .text_container {
+    @include flex-center;
+    flex-direction: column;
+    gap: 20px;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+
+    .main_text {
+      height: 20px;
+      width: 90%;
+      background: $graySecondary;
+      background-image: -webkit-linear-gradient(left, $grayElements 0px, $graySecondary 40px, $grayElements 80px);
+      background-image: -o-linear-gradient(left, $grayElements 0px, $graySecondary 40px, $grayElements 80px);
+      background-image: linear-gradient(90deg, $grayElements 0px, $graySecondary 40px, $grayElements 80px);
+      background-size: 250px;
+      border-radius: 10px;
+      -webkit-animation: shine-loading-container-items 2s infinite ease-out;
+      animation: shimmer 2s infinite linear;
+    }
+
+
+    .sub_text {
+      width: 90%;
+      height: 10px;
+      background: $graySecondary;
+      background-image: -webkit-linear-gradient(left, $grayElements 0px, $graySecondary 40px, $grayElements 80px);
+      background-image: -o-linear-gradient(left, $grayElements 0px, $graySecondary 40px, $grayElements 80px);
+      background-image: linear-gradient(90deg, $grayElements 0px, $graySecondary 40px, $grayElements 80px);
+      background-size: 250px;
+      border-radius: 10px;
+      animation: shimmer 2s infinite linear;
+    }
+  }
+
+  .btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 32px;
+    width: 100%;
+
+
+    .btn {
+      width: 60px;
+      height: 25px;
+      background: $graySecondary;
+      background-image: -webkit-linear-gradient(left, $grayElements 0px, $graySecondary 40px, $grayElements 80px);
+      background-image: -o-linear-gradient(left, $grayElements 0px, $graySecondary 40px, $grayElements 80px);
+      background-image: linear-gradient(90deg, $grayElements 0px, $graySecondary 40px, $grayElements 80px);
+      background-size: 250px;
+      border-radius: 3px;
+      animation: shimmer 2s infinite linear;
+
+    }
+  }
+
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -250px;
+  }
+
+  100% {
+    background-position: 250px;
+  }
+}

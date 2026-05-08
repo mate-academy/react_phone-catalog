@@ -2,14 +2,21 @@ import React, { useState } from 'react';
 import styles from './ProductsSlider.module.scss';
 import { ProductCard } from '../ProductCard';
 import { Product } from '../../../../types';
+import { ProductCardLoading } from '../ProductCard/Loading/ProductCardLoading';
 
 type Props = {
   title: string;
   count: number;
   products: Product[];
+  isLoading: boolean;
 };
 
-export const ProductsSlider = ({ title, count, products }: Props) => {
+export const ProductsSlider = ({
+  title,
+  count,
+  products,
+  isLoading,
+}: Props) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
@@ -43,11 +50,15 @@ export const ProductsSlider = ({ title, count, products }: Props) => {
       </header>
       <div className={styles.windowSlider}>
         <div className={styles.slider}>
-          {products.slice(currentSlide, currentSlide + count).map(product => (
-            <div key={product.id} className={styles.card}>
-              <ProductCard product={product} />
-            </div>
-          ))}
+          {!isLoading ? (
+            <ProductCardLoading count={count} />
+          ) : (
+            products.slice(currentSlide, currentSlide + count).map(product => (
+              <div key={product.id} className={styles.card}>
+                <ProductCard product={product} />
+              </div>
+            ))
+          )}
         </div>
       </div>
     </article>

@@ -3,20 +3,22 @@
 
 
 .homepage {
-
-  @include grid;
   overflow-x: hidden;
+  @include grid;
+
 
   .title {
-      min-width: 0;
+    min-width: 0;
 
     grid-column: 1 / -1;
+
     @include font-h1($size: 48px, $line-height: 56px);
+
     margin: 24px 0;
   }
 
   .banner {
-      min-width: 0;
+    min-width: 0;
 
     grid-column: 1 / -1;
     margin-inline: -16px;
@@ -24,10 +26,34 @@
   }
 
   .brand_new_slider {
-          min-width: 0;
+    min-width: 0;
 
     grid-column: 1 / -1;
     margin: 24px 0;
 
+  }
+
+  .categories {
+
+    grid-column: 1 / -1;
+
+    .categorties_title {
+
+      @include font-h2($size: 22px, $line-height: 140%)
+    }
+
+    .categories_cards {
+      margin-top: 34px;
+
+      @include flex-center;
+      flex-direction: column;
+      gap: 32px;
+
+    }
+  }
+
+  .hot_prices_slider {
+    grid-column: 1 / -1;
+    margin-block: 30px 60px ;
   }
 }

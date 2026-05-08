@@ -41,7 +41,7 @@
     .link {
       @include font-uppercase;
 
-      color: $text-white__hover;
+      color: $white;
       text-transform: uppercase;
       text-decoration: none;
 
@@ -56,9 +56,9 @@
 
     margin: 32px 0;
     gap: $tablet-gap-footer-item;
-    background-color: $bg-color;
+    background-color: $black;
     height: 40px;
-    color: $text-color;
+    color: $graySecondary;
     border: none;
     cursor: pointer;
 
@@ -67,7 +67,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: $icons-def;
+      background-color: $icon-bg-default;
       width: 32px;
       height: 32px;
 
@@ -75,14 +75,12 @@
         width: 16px;
         height: 16px;
 
-        &:hover {
-          color: $text-white__hover;
-        }
+        filter: invert(1);
 
       }
 
       &:hover {
-        background-color: $icons-hover;
+        background-color: $icon-bg-hover;
 
       }
     }
