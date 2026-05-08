@@ -1,5 +1,5 @@
-.header .container {
-  box-sizing: border-box;
+.header {
+  /* box-sizing: border-box; */
   width: 100%;
   top: 0;
   z-index: 100;
@@ -9,6 +9,12 @@
   align-items: center;
 
   position: sticky;
+}
+
+.nav {
+display: inline-block;
+padding: 68px;
+background-color: white;
 }
 
 .logo {
