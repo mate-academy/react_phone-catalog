@@ -93,6 +93,11 @@
     margin: 0 0 8px 0;
     color: #f1f2f9;
     line-height: 21px;
+    height: 42px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
   &__card-prices {
     display: flex;
