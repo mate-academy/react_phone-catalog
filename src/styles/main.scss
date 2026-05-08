@@ -1,0 +1,45 @@
+@import './fonts';
+@import './variables';
+@import './mixins';
+
+html,
+body{
+  font-family: Mont, sans-serif;
+  color: $primary-color;
+  scroll-behavior: smooth;
+  margin: 0;
+  overflow-x: hidden;
+  height: auto;
+  min-height: 100%;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-color;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+
+  margin: auto;
+
+  > *:last-child {
+    margin-bottom: 64px;
+  }
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    max-width: $main-max-width;
+    padding: 0;
+    gap: 80px;
+
+    > *:last-child {
+      margin-bottom: 80px;
+    }
+  }
+}

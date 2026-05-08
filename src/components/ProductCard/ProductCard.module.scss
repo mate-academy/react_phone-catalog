@@ -1,0 +1,169 @@
+@import '../../styles/main.scss';
+
+$mobile-card-height: 439px;
+
+$tablet-card-height: 512px;
+
+$desktop-card-height: 506px;
+
+$card-background-color: #FFF;
+$card-border-color: #E2E6E9;
+$info-color: #89939A;
+
+$accent: #216CFF;
+
+
+.card {
+  background-color: $card-background-color;
+  border: 1px solid $card-border-color;
+  border-radius: 8px;
+  display: flex;
+  box-sizing: border-box;
+
+  width: 100%;
+  height: $mobile-card-height;
+
+  @include on-tablet {
+    height: $tablet-card-height;
+  }
+
+  @include on-desktop {
+    height: $desktop-card-height;
+  }
+
+  &__container {
+
+
+    margin: 32px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px
+  }
+
+  &__image {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    justify-content: center;
+    align-items: center;
+    min-height: 0;
+
+    .image {
+      width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+  &__title {
+    font-family: Mont;
+    font-weight: 400;
+    line-height: 21px;
+    font-size: 14px;
+    padding-top: 16px;
+  }
+  &__price {
+    display: flex;
+    flex-direction: row;
+    line-height: 140%;
+    letter-spacing: 0;
+    font-weight: 700;
+    font-size: 22px;
+    gap: 8px;
+
+    .normal {
+      color: $primary-color;
+    }
+    .discount {
+      color: $info-color;
+      text-decoration-line: line-through; // To Change ALL
+    }
+  }
+  &__divider {
+    border-top: 1px solid $card-border-color;
+  }
+  &__info {
+    .screen {
+      display: flex;
+      justify-content: space-between;
+    }
+    .capacity {
+      display: flex;
+      justify-content: space-between;
+    }
+    .ram {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &__buttons {
+    display: flex;
+    border: none;
+    flex-direction: row;
+    gap: 8px;
+
+    .button_cart {
+      display: flex;
+      cursor: pointer;
+      height: 40px;
+      width: -moz-available;
+      border-radius: 8px;
+      background-color: $accent;
+      color: #FFF; //To Change
+      border: none;
+
+      font-family: Mont;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0;
+      font-weight: 600;
+      align-items: center;
+      justify-content: center;
+
+      &__added {
+        border: 1px solid #E2E6E9; //To Change
+        color: $accent;
+        background-color: transparent;
+      }
+
+      &:hover {
+        box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4); //To Change
+      }
+    }
+    .button_fovourite {
+      display: flex;
+      cursor: pointer;
+      height: 40px;
+      aspect-ratio: 1 / 1;
+      border-radius: 20px;
+      border: 1px solid #B4BDC3; //To Change
+      background-color: transparent;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+    }
+  }
+}
+
+.spec {
+  &__name {
+    line-height: auto;
+    letter-spacing: 0;
+    font-family: Mont;
+    font-size: 12px;
+    font-weight: 700;
+    color: $info-color;
+  }
+  &__value {
+    line-height: auto;
+    letter-spacing: 0;
+    font-family: Mont;
+    font-size: 12px;
+    font-weight: 700;
+    color: $primary-color;
+    right: 0;
+  }
+}

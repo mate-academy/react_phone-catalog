@@ -1,0 +1,9 @@
+@import '../../styles/main';
+
+.icon {
+  object-fit: contain;
+}
+
+.active {
+  filter: invert(1);
+}

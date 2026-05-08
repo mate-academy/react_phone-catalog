@@ -1,0 +1,71 @@
+@import '../../styles/main.scss';
+
+$header-height-desktop: 64px;
+$header-height-tablets: 48px;
+
+.header {
+  display: flex;
+  position: sticky;
+  height: $header-height-tablet;
+  background-color: $bg-color;
+  box-shadow: 0 1px 0 0 $elements-color;
+  border: none;
+
+  @include on-desktop {
+    height: $header-height-desktop;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+
+    @include on-tablet {
+      padding: 0px 32px 0px 16px;
+    }
+
+    @include on-desktop {
+      padding: 0px 24px;
+      margin-right: 24px;
+    }
+  }
+
+  &__burger {
+    display: none;
+
+    @include on-mobile {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      height: 100%;
+    }
+
+    &__menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      box-shadow: -1.1px 0 0 0 $elements-color;
+      box-sizing: border-box;
+      border: none;
+      aspect-ratio: 1 / 1;
+    }
+  }
+}
+
+.logo {
+  width: 64px;
+  height: 22px;
+
+  @include on-desktop {
+    width: 80px;
+    height: 28px;
+  }
+}

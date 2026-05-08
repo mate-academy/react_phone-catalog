@@ -1,0 +1,109 @@
+@import '../../styles/main';
+
+.footer {
+  border-top: 1px solid $elements-color;
+  box-sizing: border-box;
+  height: 96px;
+
+  @include on-mobile {
+    height: 257px;
+  }
+
+  &__container {
+    margin: 32px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+
+    @include on-mobile {
+      gap: 32px;
+      flex-direction: column;
+      padding: 32px 16px;
+      margin: 0;
+      align-items: normal;
+      height: 193px;
+    }
+
+    @include on-tablet {
+      max-width: 592px; // To Change
+    }
+
+    @include on-desktop {
+      max-width: 1136px; // To Change
+    }
+  }
+
+  &__logo {
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 64px;
+    padding: 0;
+    margin: 0;
+
+    @include on-tablet {
+      gap: 14px;
+    }
+
+    @include on-mobile {
+      gap: 16px;
+      flex-direction: column;
+    }
+  }
+
+  &__link {
+    display: flex;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $secondary-color;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+  }
+
+  &__totop {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+    cursor: default;
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      cursor: pointer;
+
+      width: 32px;
+      height: 32px;
+      box-sizing: border-box;
+
+      border-radius: 20px;
+      border: 1px solid $elements-color;
+
+      &:hover {
+        border-color: black; //To Change
+      }
+    }
+
+    .text {
+      color: #89939A; //To Change
+      font-family: Mont;
+      font-size: 12px;
+      letter-spacing: 0%;
+    }
+  }
+}
+
+.logo {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}

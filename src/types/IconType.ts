@@ -1,0 +1,15 @@
+export type IconName =
+  | 'favourites'
+  | 'cart'
+  | 'menu'
+  | 'close'
+  | 'logo'
+  | 'home'
+  | 'plus'
+  | 'minus'
+  | 'arrowdown'
+  | 'arrowleft'
+  | 'search'
+  | 'arrowright'
+  | 'favouritesfilled'
+  | 'arrowup';

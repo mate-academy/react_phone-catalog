@@ -1,0 +1,78 @@
+@import '../../styles/main.scss';
+
+$icon-height: 64px;
+
+.menu {
+  &__nav {
+    height: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: $header-height-tablet;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__container {
+    margin-top: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: calc(100vh - #{$icon-height});
+  }
+
+  &__list {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+
+    list-style: none;
+  }
+
+  &__link {
+    width: fit-content;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: all .3s ease-in-out .1s;
+    text-decoration: none;
+    padding: 8px 0;
+    font-size: 12px;
+    font-family: Mont;
+    font-weight: bold;
+    color: #89939a; //To Change
+  }
+
+  &__active {
+    width: fit-content;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: all .3s ease-in-out .1s;
+  }
+}
+
+.icons {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  border-top: 1px solid #e2e6e9; //To Change
+  bottom: 0;
+  margin-top: auto;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $icon-height;
+  box-shadow: -1.1px 0 0 0 $elements-color;
+  box-sizing: border-box;
+  width: 50%;
+}

@@ -1,0 +1,150 @@
+@import '../../styles/main.scss';
+
+.category {
+
+  &__container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-tablet {
+      max-width: 592px; // To Change
+    }
+
+    @include on-desktop {
+      max-width: 1136px; // To Change
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover, &:focus, &:active {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  &__title {
+    font-family: Mont;
+    font-weight: 800;
+    letter-spacing: -1%;
+    line-height: 41px;
+    font-size: 32px;
+
+    @include on-mobile {
+    letter-spacing: 0%;
+    line-height: 140%;
+    font-size: 22px;
+    padding: 0 16px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    @include on-mobile {
+      flex-direction: column;
+      gap: 32px;
+      margin: 0 auto;
+    }
+
+    &__block {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      .image__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 368px;
+        height: 368px;
+        background-color: #6D6474; //To Change
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+
+        @include on-tablet {
+          width: 187px;
+          height: 187px;
+        }
+
+        @include on-mobile {
+          width: 288px;
+          height: 288px;
+        }
+
+        .image {
+          object-fit: contain;
+        }
+
+        .phones {
+          width: 386px;
+          transform: translate(25%, 25%);
+
+          @include on-mobile {
+            width: 302px;
+          }
+
+          @include on-tablet {
+            width: 196px;
+          }
+        }
+
+        .tablets {
+          width: 546px;
+          transform: translate(20%, 20%);
+
+          @include on-mobile {
+            width: 427px;
+          }
+
+          @include on-tablet {
+            width: 277px;
+          }
+        }
+
+        .accessories {
+          width: 687px;
+          transform: translate(32%, 8%);
+
+          @include on-mobile {
+            width: 537px;
+          }
+
+          @include on-tablet {
+            width: 349px;
+          }
+        }
+      }
+
+      .text {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        .name {
+          font-family: Mont;
+          font-weight: 700;
+          letter-spacing: 0%;
+          font-size: 20px;
+          color: #0F0F11; //To Change
+        }
+
+        .count {
+          font-family: Mont;
+          font-weight: 400;
+          letter-spacing: 0%;
+          line-height: 21px;
+          font-size: 14px;
+          color: #89939A; //To Change
+        }
+      }
+    }
+  }
+}

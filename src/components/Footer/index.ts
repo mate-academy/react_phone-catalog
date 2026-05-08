@@ -1,0 +1,1 @@
+export { Footes } from './Footer';

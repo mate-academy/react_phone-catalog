@@ -1,0 +1,66 @@
+@import '../../styles/main.scss';
+
+
+.dropdown {
+  &__container {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+    @include on-tablet {
+    }
+
+    @include on-tablet {
+    }
+  }
+
+  &__text {
+    font-family: Mont;
+    font-size: 12px;
+    letter-spacing: 0;
+    font-weight: 600;
+    color: #89939A; //To Change
+  }
+
+  &__select {
+    &_menu {
+      display: flex;
+      justify-content: space-between;
+
+      .text {
+        font-family: Mont;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0;
+
+        padding-left: 12px;
+      }
+
+      .icon {
+        padding-right: 12px;
+      }
+
+      display: flex;
+
+      border: 1px solid #B4BDC3; //To Change
+      border-radius: 8px;
+      background-color: transparent;
+      box-sizing: border-box;
+
+      width: 176px;
+      height: 40px;
+
+      align-items: center;
+
+      &:hover {
+        border-color: #0F0F11; //To Chnage
+      }
+    }
+  }
+
+  &__perpagebox, &__sortbox {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+}
