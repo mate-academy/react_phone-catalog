@@ -210,10 +210,12 @@
       font-weight: 700;
       color: var(--text-color);
       margin: 16px 0 8px;
+      line-height: 100%;
     }
 
     & p {
       font-size: 14px;
+      font-weight: 600;
       line-height: 21px;
       color: var(--text-muted);
       margin-bottom: 12px;
