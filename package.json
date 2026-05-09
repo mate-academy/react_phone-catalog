@@ -20,6 +20,7 @@
     "swiper": "^11.1.14"
   },
   "devDependencies": {
+    "@types/node": "^25.6.2",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",

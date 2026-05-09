@@ -12,3 +12,6 @@ dist-ssr
 *.swp
 .cache
 .vite
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
