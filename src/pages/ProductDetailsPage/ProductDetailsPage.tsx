@@ -10,7 +10,7 @@ import { YourComponent } from './YourComponent';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react'; // Use Swiper from swiper/react
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 
 export const ProductDetailsPage = () => {
@@ -19,20 +19,14 @@ export const ProductDetailsPage = () => {
   const { pathname, search } = useLocation();
   const { addToCart, toggleFavorite, cart, favorites } = useCart();
 
-  const [product, setProduct] = useState<Phone | Tablet | Accessories | null>(
-    null,
-  );
+  const [product, setProduct] = useState<Phone | Tablet | Accessories | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
-  const [allProducts, setAllProducts] = useState<
-    (Phone | Tablet | Accessories)[]
-  >([]);
+  const [allProducts, setAllProducts] = useState<(Phone | Tablet | Accessories)[]>([]);
   const [imageError, setImageError] = useState<{ [key: string]: boolean }>({});
 
-  const isPhoneOrTablet = (
-    item: Phone | Tablet | Accessories,
-  ): item is Phone | Tablet => {
+  const isPhoneOrTablet = (item: Phone | Tablet | Accessories): item is Phone | Tablet => {
     return 'capacityAvailable' in item && !!item.capacityAvailable;
   };
 
@@ -42,64 +36,41 @@ export const ProductDetailsPage = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const urls = [
-        './api/phones.json',
-        './api/tablets.json',
-        './api/accessories.json',
-      ];
+      const urls = ['./api/phones.json', './api/tablets.json', './api/accessories.json'];
       const allData: (Phone | Tablet | Accessories)[] = [];
 
       try {
         for (const url of urls) {
           const res = await fetch(url);
-
-          if (!res.ok) {
-            throw new Error(`Failed to fetch ${url}`);
-          }
-
+          if (!res.ok) throw new Error(`Failed to fetch ${url}`);
           const data = await res.json();
-
           allData.push(...data);
         }
 
         setAllProducts(allData);
-
         const found = allData.find(item => item.id === productId);
 
         if (found) {
           const params = new URLSearchParams(search);
-          const urlColor =
-            params.get('color')?.replace('-', ' ') || found.color;
-          const urlCapacity =
-            params.get('capacity') ||
-            (isPhoneOrTablet(found) ? found.capacityAvailable[0] : null);
+          const urlColor = params.get('color')?.replace('-', ' ') || found.color;
+          const urlCapacity = params.get('capacity') || (isPhoneOrTablet(found) ? found.capacityAvailable[0] : null);
 
-          const newProduct =
-            allData.find(
-              p =>
-                p.id === productId &&
-                p.color === urlColor &&
-                ('capacity' in p ? p.capacity === urlCapacity : true),
-            ) || found;
+          const newProduct = allData.find(
+            p => p.id === productId && p.color === urlColor && ('capacity' in p ? p.capacity === urlCapacity : true),
+          ) || found;
 
           setProduct(newProduct);
           setSelectedColor(urlColor);
-          setSelectedImage(
-            newProduct.images?.[0]
-              ? `${newProduct.images[0]}`
-              : 'img/page-not-found.png',
-          );
+          setSelectedImage(newProduct.images?.[0] ? `${newProduct.images[0]}` : 'img/page-not-found.png');
           setSelectedCapacity(urlCapacity);
 
           const newParams = new URLSearchParams();
-
           newParams.set('color', urlColor.toLowerCase().replace(' ', '-'));
           if (isPhoneOrTablet(newProduct) && urlCapacity) {
             newParams.set('capacity', urlCapacity);
           }
 
           const newUrl = `${pathname}?${newParams.toString()}`;
-
           if (newUrl !== `${pathname}${search}`) {
             navigate(newUrl, { replace: true });
           }
@@ -115,58 +86,33 @@ export const ProductDetailsPage = () => {
   }, [productId]);
 
   const handleColorChange = (color: string) => {
-    if (!product) {
-      return;
-    }
-
+    if (!product) return;
     const newProduct = allProducts.find(
-      p =>
-        p.namespaceId === product.namespaceId &&
-        p.color === color &&
-        ('capacity' in p ? p.capacity === selectedCapacity : true),
+      p => p.namespaceId === product.namespaceId && p.color === color && ('capacity' in p ? p.capacity === selectedCapacity : true),
     );
-
     if (newProduct) {
       setProduct(newProduct);
       setSelectedColor(color);
-      setSelectedImage(
-        newProduct.images?.[0]
-          ? `${newProduct.images[0]}`
-          : 'img/page-not-found.png',
-      );
+      setSelectedImage(newProduct.images?.[0] ? `${newProduct.images[0]}` : 'img/page-not-found.png');
       navigate(`/products/${newProduct.id}`);
     }
   };
 
   const handleMemoryChange = (capacity: string) => {
-    if (!product) {
-      return;
-    }
-
+    if (!product) return;
     const newProduct = allProducts.find(
-      p =>
-        p.namespaceId === product.namespaceId &&
-        p.color === selectedColor &&
-        ('capacity' in p ? p.capacity === capacity : true),
+      p => p.namespaceId === product.namespaceId && p.color === selectedColor && ('capacity' in p ? p.capacity === capacity : true),
     );
-
     if (newProduct) {
       setSelectedCapacity(capacity);
       setProduct(newProduct);
-      setSelectedImage(
-        newProduct.images?.[0]
-          ? `${newProduct.images[0]}`
-          : 'img/page-not-found.png',
-      );
+      setSelectedImage(newProduct.images?.[0] ? `${newProduct.images[0]}` : 'img/page-not-found.png');
       navigate(`/products/${newProduct.id}`);
     }
   };
 
   const handleAddToCart = () => {
-    if (!product) {
-      return;
-    }
-
+    if (!product) return;
     addToCart({
       id: product.id,
       name: product.name,
@@ -179,10 +125,7 @@ export const ProductDetailsPage = () => {
   };
 
   const handleToggleFavorite = () => {
-    if (!product) {
-      return;
-    }
-
+    if (!product) return;
     toggleFavorite(product.id);
   };
 
@@ -191,25 +134,13 @@ export const ProductDetailsPage = () => {
   };
 
   const isInCart = cart.some(
-    item =>
-      item.id === product?.id &&
-      item.color === selectedColor &&
-      item.capacity === selectedCapacity,
+    item => item.id === product?.id && item.color === selectedColor && item.capacity === selectedCapacity,
   );
 
   const getCategoryLink = () => {
-    if (!product) {
-      return '#/phones';
-    }
-
-    if (product.category === 'phones') {
-      return '#/phones';
-    }
-
-    if (product.category === 'tablets') {
-      return '#/tablets';
-    }
-
+    if (!product) return '#/phones';
+    if (product.category === 'phones') return '#/phones';
+    if (product.category === 'tablets') return '#/tablets';
     return '#/accessories';
   };
 
@@ -225,14 +156,14 @@ export const ProductDetailsPage = () => {
     <section className="product-details section">
       <div className="home--nav">
         <a href="#">
-          <img src="figmaLogo/Home.svg" alt="home_nav" />
+          <img src="./icons/home.svg" alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <a href={getCategoryLink()}>
           <YourComponent product={product} />
         </a>
         <p className="home--nav-top">{'>'}</p>
-        <span className="product-details__id">ID: {product.id}</span>
+        <span className="product-details__id">{product.name}</span>
       </div>
       <div className="product-details--back">
         <a href={getCategoryLink()}>
@@ -246,11 +177,7 @@ export const ProductDetailsPage = () => {
         <div className="product-details__gallery">
           <div className="gallery__main-image">
             <img
-              src={
-                imageError[selectedImage || '']
-                  ? 'img/page-not-found.png'
-                  : selectedImage || 'img/page-not-found.png'
-              }
+              src={imageError[selectedImage || ''] ? 'img/page-not-found.png' : selectedImage || 'img/page-not-found.png'}
               alt={product.name || 'No image available'}
               loading="lazy"
               onError={() => handleImageError(selectedImage || '')}
@@ -260,9 +187,7 @@ export const ProductDetailsPage = () => {
             {product.images?.map((image, index) => (
               <img
                 key={index}
-                src={
-                  imageError[`${image}`] ? 'img/page-not-found.png' : `${image}`
-                }
+                src={imageError[`${image}`] ? 'img/page-not-found.png' : `${image}`}
                 alt={`${product.name} thumbnail ${index + 1}`}
                 className={`thumbnail ${selectedImage === `${image}` ? 'thumbnail--active' : ''}`}
                 onClick={() => setSelectedImage(`${image}`)}
@@ -309,12 +234,8 @@ export const ProductDetailsPage = () => {
           )}
 
           <div className="product-details__prices">
-            <span className="product-details__price">
-              ${product.priceDiscount}
-            </span>
-            <span className="product-details__price--old">
-              ${product.priceRegular}
-            </span>
+            <span className="product-details__price">${product.priceDiscount}</span>
+            <span className="product-details__price--old">${product.priceRegular}</span>
           </div>
 
           <div className="product-details__actions">
@@ -326,25 +247,17 @@ export const ProductDetailsPage = () => {
               {isInCart ? 'Added to cart' : 'Add to cart'}
             </button>
             <button
-              className={`product-details__favorite ${favorites.includes(product.id) ? 'favorite--active' : ''}`}
+              className={`product-details__favorite ${favorites.includes(product.id) ? 'product-details__favorite--active' : ''}`}
               onClick={handleToggleFavorite}
-              aria-label={
-                favorites.includes(product.id)
-                  ? 'Remove from favorites'
-                  : 'Add to favorites'
-              }
             >
               <img
-                src={
-                  favorites.includes(product.id)
-                    ? 'figmaLogo/ActiveHeart.svg'
-                    : 'figmaLogo/HeartLove.svg'
-                }
+                src={favorites.includes(product.id) ? './icons/heart-active.svg' : './icons/heart.svg'}
                 alt="Favorite"
                 className="product-details__favorite-icon"
               />
             </button>
           </div>
+
           {product && isPhoneOrTablet(product) && (
             <div className="product__tech-specs">
               <h2 className="product__section-title">Tech specs</h2>
@@ -355,15 +268,11 @@ export const ProductDetailsPage = () => {
                 </div>
                 <div className="product__spec">
                   <span className="product__spec-title">Resolution</span>
-                  <span className="product__spec-value">
-                    {product.resolution}
-                  </span>
+                  <span className="product__spec-value">{product.resolution}</span>
                 </div>
                 <div className="product__spec">
                   <span className="product__spec-title">Processor</span>
-                  <span className="product__spec-value">
-                    {product.processor}
-                  </span>
+                  <span className="product__spec-value">{product.processor}</span>
                 </div>
                 <div className="product__spec">
                   <span className="product__spec-title">RAM</span>
@@ -389,27 +298,21 @@ export const ProductDetailsPage = () => {
 
       <div className="product-details__tech-specs">
         <h2>Tech specs</h2>
-        {'screen' in product && <p>Screen: {product.screen}</p>}
-        {'resolution' in product && <p>Resolution: {product.resolution}</p>}
-        {'processor' in product && <p>Processor: {product.processor}</p>}
-        {'ram' in product && <p>RAM: {product.ram}</p>}
-        {'capacity' in product && <p>Capacity: {product.capacity}</p>}
-        {'camera' in product && <p>Camera: {product.camera}</p>}
-        {'zoom' in product && <p>Zoom: {product.zoom}</p>}
-        {'cell' in product && product.cell && (
-          <p>Cell: {product.cell.join(', ')}</p>
-        )}
+        {'screen' in product && <p><span>Screen</span><span>{product.screen}</span></p>}
+        {'resolution' in product && <p><span>Resolution</span><span>{product.resolution}</span></p>}
+        {'processor' in product && <p><span>Processor</span><span>{product.processor}</span></p>}
+        {'ram' in product && <p><span>RAM</span><span>{product.ram}</span></p>}
+        {'capacity' in product && <p><span>Capacity</span><span>{product.capacity}</span></p>}
+        {'camera' in product && <p><span>Camera</span><span>{product.camera}</span></p>}
+        {'zoom' in product && <p><span>Zoom</span><span>{product.zoom}</span></p>}
+        {'cell' in product && product.cell && <p><span>Cell</span><span>{product.cell.join(', ')}</span></p>}
       </div>
 
       <div className="related-products">
         <h2>You may also like</h2>
         <div className="related-products__nav">
-          <button className="brand__nav-btn brand__nav-btn--prev swiper-button-p">
-            {'<'}
-          </button>
-          <button className="brand__nav-btn brand__nav-btn--next swiper-button-n">
-            {'>'}
-          </button>
+          <button className="brand__nav-btn swiper-button-p">{'<'}</button>
+          <button className="brand__nav-btn swiper-button-n">{'>'}</button>
         </div>
         <div className="related-products__grid">
           {relatedProducts.length === 0 ? (
@@ -418,147 +321,88 @@ export const ProductDetailsPage = () => {
             <Swiper
               modules={[Navigation]}
               spaceBetween={16}
+              slidesPerView={4}
               navigation={{
                 nextEl: '.swiper-button-n',
                 prevEl: '.swiper-button-p',
               }}
               breakpoints={{
-                320: { slidesPerView: 2, spaceBetween: 8 },
-                480: { slidesPerView: 3, spaceBetween: 12 },
-                768: { slidesPerView: 4, spaceBetween: 16 },
-                1024: { slidesPerView: 4, spaceBetween: 16 },
+                320: { slidesPerView: 1, spaceBetween: 16 },
+                640: { slidesPerView: 2, spaceBetween: 16 },
+                1200: { slidesPerView: 4, spaceBetween: 16 },
               }}
-              className="brand__swiper"
             >
-              {relatedProducts.slice(10, 18).map(relatedItem => (
-                <SwiperSlide key={relatedItem.id} className="brand__card">
-                  <Link to={`/products/${relatedItem.id}`}>
-                    <img
-                      src={
-                        imageError[`${relatedItem.images[0]}`]
-                          ? 'img/page-not-found.png'
-                          : `${relatedItem.images[0]}`
-                      }
-                      alt={relatedItem.name}
-                      className="related-products__card-image"
-                      onError={() =>
-                        handleImageError(`${relatedItem.images[0]}`)
-                      }
-                    />
-                    <h3 className="related-products__card-title">
-                      {relatedItem.name}
-                    </h3>
-                    <div className="related-products__card-prices">
-                      <span className="related-products__card-price">
-                        ${relatedItem.priceDiscount}
-                      </span>
-                      <span className="related-products__card-price--old">
-                        ${relatedItem.priceRegular}
-                      </span>
-                    </div>
-                    <div className="related-products__card-specs">
-                      {'screen' in relatedItem && (
-                        <p>
-                          <span className="related-products__card-spec-label">
-                            Screen:
-                          </span>
-                          <span className="related-products__card-spec-value">
-                            {relatedItem.screen}
-                          </span>
-                        </p>
-                      )}
-                      {'ram' in relatedItem && (
-                        <p>
-                          <span className="related-products__card-spec-label">
-                            RAM:
-                          </span>
-                          <span className="related-products__card-spec-value">
-                            {relatedItem.ram}
-                          </span>
-                        </p>
-                      )}
-                      {'capacity' in relatedItem && (
-                        <p>
-                          <span className="related-products__card-spec-label">
-                            Capacity:
-                          </span>
-                          <span className="related-products__card-spec-value">
-                            {relatedItem.capacity}
-                          </span>
-                        </p>
-                      )}
-                    </div>
-                  </Link>
-                  <div className="related-products__card-actions">
-                    <button
-                      className={`related-products__card-btn related-products__card-btn--add ${
-                        cart.some(
-                          cartItem =>
-                            cartItem.id === relatedItem.id &&
-                            cartItem.color === relatedItem.color &&
-                            ('capacity' in relatedItem
-                              ? cartItem.capacity === relatedItem.capacity
-                              : true),
-                        )
-                          ? 'added'
-                          : ''
-                      }`}
-                      onClick={e => {
-                        e.stopPropagation();
-                        addToCart({
-                          id: relatedItem.id,
-                          name: relatedItem.name,
-                          price: relatedItem.priceDiscount,
-                          image: `${relatedItem.images[0]}`,
-                          color: relatedItem.color,
-                          capacity:
-                            'capacity' in relatedItem
-                              ? relatedItem.capacity
-                              : undefined,
-                          quantity: 1,
-                        });
-                      }}
-                      disabled={cart.some(
-                        cartItem =>
-                          cartItem.id === relatedItem.id &&
-                          cartItem.color === relatedItem.color &&
-                          ('capacity' in relatedItem
-                            ? cartItem.capacity === relatedItem.capacity
-                            : true),
-                      )}
-                    >
-                      {cart.some(
-                        cartItem =>
-                          cartItem.id === relatedItem.id &&
-                          cartItem.color === relatedItem.color &&
-                          ('capacity' in relatedItem
-                            ? cartItem.capacity === relatedItem.capacity
-                            : true),
-                      )
-                        ? 'Added to cart'
-                        : 'Add to cart'}
-                    </button>
-                    <button
-                      className={`related-products__card-btn related-products__card-btn--favorite ${
-                        favorites.includes(relatedItem.id)
-                          ? 'favorite--active'
-                          : ''
-                      }`}
-                      onClick={e => {
-                        e.stopPropagation();
-                        toggleFavorite(relatedItem.id);
-                      }}
-                    >
+              {relatedProducts.slice(0, 20).map(relatedItem => (
+                <SwiperSlide key={relatedItem.id}>
+                  <div className="related-products__card">
+                    <Link to={`/products/${relatedItem.id}`}>
                       <img
-                        src={
-                          favorites.includes(relatedItem.id)
-                            ? 'figmaLogo/ActiveHeart.svg'
-                            : 'figmaLogo/HeartLove.svg'
-                        }
-                        alt="Favorite"
-                        className="related-products__card-btn-icon"
+                        src={imageError[`${relatedItem.images[0]}`] ? 'img/page-not-found.png' : `${relatedItem.images[0]}`}
+                        alt={relatedItem.name}
+                        className="related-products__card-image"
+                        onError={() => handleImageError(`${relatedItem.images[0]}`)}
                       />
-                    </button>
+                      <h3 className="related-products__card-title">{relatedItem.name}</h3>
+                      <div className="related-products__card-prices">
+                        <span className="related-products__card-price">${relatedItem.priceDiscount}</span>
+                        <span className="related-products__card-price--old">${relatedItem.priceRegular}</span>
+                      </div>
+                      <div className="related-products__card-specs">
+                        {'screen' in relatedItem && (
+                          <p>
+                            <span className="related-products__card-spec-label">Screen</span>
+                            <span className="related-products__card-spec-value">{relatedItem.screen}</span>
+                          </p>
+                        )}
+                        {'ram' in relatedItem && (
+                          <p>
+                            <span className="related-products__card-spec-label">RAM</span>
+                            <span className="related-products__card-spec-value">{relatedItem.ram}</span>
+                          </p>
+                        )}
+                        {'capacity' in relatedItem && (
+                          <p>
+                            <span className="related-products__card-spec-label">Capacity</span>
+                            <span className="related-products__card-spec-value">{relatedItem.capacity}</span>
+                          </p>
+                        )}
+                      </div>
+                    </Link>
+                    <div className="related-products__card-actions">
+                      <button
+                        className={`related-products__card-btn related-products__card-btn--add ${
+                          cart.some(cartItem => cartItem.id === relatedItem.id) ? 'added' : ''
+                        }`}
+                        onClick={e => {
+                          e.stopPropagation();
+                          addToCart({
+                            id: relatedItem.id,
+                            name: relatedItem.name,
+                            price: relatedItem.priceDiscount,
+                            image: `${relatedItem.images[0]}`,
+                            color: relatedItem.color,
+                            capacity: 'capacity' in relatedItem ? relatedItem.capacity : undefined,
+                            quantity: 1,
+                          });
+                        }}
+                        disabled={cart.some(cartItem => cartItem.id === relatedItem.id)}
+                      >
+                        {cart.some(cartItem => cartItem.id === relatedItem.id) ? 'Added to cart' : 'Add to cart'}
+                      </button>
+                      <button
+                        className="related-products__card-btn related-products__card-btn--favorite"
+                        onClick={e => {
+                          e.stopPropagation();
+                          toggleFavorite(relatedItem.id);
+                        }}
+                      >
+                        <img
+                          src={favorites.includes(relatedItem.id) ? './icons/heart-active.svg' : './icons/heart.svg'}
+                          alt="Favorite"
+                          className="related-products__card-btn-icon"
+                        />
+                      </button>
+                    </div>
                   </div>
                 </SwiperSlide>
               ))}
