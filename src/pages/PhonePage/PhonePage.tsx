@@ -24,7 +24,7 @@ export const PhonePage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(8);
+  const [itemsPerPage, setItemsPerPage] = useState(16);
   const [imageError, setImageError] = useState<{ [key: string]: boolean }>({});
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -36,11 +36,7 @@ export const PhonePage = () => {
     setLoading(true);
     fetch(`${import.meta.env.BASE_URL}./api/phones.json`)
       .then(response => {
-        if (!response.ok) {
-          throw new Error(
-            `Failed to fetch phones.json: ${response.status} ${response.statusText}`,
-          );
-        }
+        if (!response.ok) throw new Error(`Failed to fetch: ${response.status}`);
         return response.json();
       })
       .then(data => {
@@ -56,13 +52,13 @@ export const PhonePage = () => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [filteredPhones, sortBy]);
+  }, [filteredPhones, sortBy, itemsPerPage]);
 
   useEffect(() => {
     const filtered = phones.filter(item =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase()),
     );
-    const sorted = filtered.sort((a, b) => {
+    const sorted = [...filtered].sort((a, b) => {
       if (sortBy === 'newest') return b.year - a.year;
       if (sortBy === 'priceLow') return a.priceDiscount - b.priceDiscount;
       if (sortBy === 'priceHigh') return b.priceDiscount - a.priceDiscount;
@@ -73,7 +69,7 @@ export const PhonePage = () => {
 
   const getPageNumbers = () => {
     const maxPagesToShow = 5;
-    const pages = [];
+    const pages: (number | string)[] = [];
     const startPage = Math.max(1, currentPage - 2);
     const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
     pages.push(1);
@@ -106,9 +102,7 @@ export const PhonePage = () => {
   if (loading) {
     return (
       <section className="section">
-        <div className="phone">
-          <div>Loading phones...</div>
-        </div>
+        <p style={{ color: 'white', padding: '32px' }}>Loading phones...</p>
       </section>
     );
   }
@@ -116,9 +110,7 @@ export const PhonePage = () => {
   if (error) {
     return (
       <section className="section">
-        <div className="phone">
-          <div className="error">Error: {error}</div>
-        </div>
+        <p style={{ color: 'red', padding: '32px' }}>Error: {error}</p>
       </section>
     );
   }
@@ -144,7 +136,8 @@ export const PhonePage = () => {
           sortBy={sortBy}
           onSortChange={setSortBy}
           onResultChange={setFilteredPhones}
-          onItemsPerPageChange={setItemsPerPage}
+          onItemsPerPageChange={(val) => setItemsPerPage(val)}
+          itemsPerPage={itemsPerPage}
         />
       </div>
 
@@ -156,20 +149,14 @@ export const PhonePage = () => {
             <div key={phone.id} className="phone__card">
               <Link to={`/products/${phone.id}`}>
                 <img
-                  src={
-                    imageError[`${phone.images[0]}`]
-                      ? 'img/page-not-found.png'
-                      : `${phone.images[0]}`
-                  }
+                  src={imageError[`${phone.images[0]}`] ? 'img/page-not-found.png' : `${phone.images[0]}`}
                   alt={phone.name}
                   className="phone__card-image"
                   onError={() => handleImageError(`${phone.images[0]}`)}
                 />
                 <h3 className="phone__card-title">{phone.name}</h3>
                 <div className="phone__card-prices">
-                  <span className="phone__card-price">
-                    ${phone.priceDiscount}
-                  </span>
+                  <span className="phone__card-price">${phone.priceDiscount}</span>
                 </div>
                 <div className="phone__card-specs">
                   <div className="phone__card-spec">
@@ -189,50 +176,20 @@ export const PhonePage = () => {
               <div className="phone__card-actions">
                 <button
                   className={`phone__card-btn phone__card-btn--add ${
-                    cart.some(
-                      item =>
-                        item.id === phone.id &&
-                        item.color === phone.color &&
-                        item.capacity === phone.capacity,
-                    )
-                      ? 'added'
-                      : ''
+                    cart.some(item => item.id === phone.id && item.color === phone.color && item.capacity === phone.capacity) ? 'added' : ''
                   }`}
-                  onClick={e => {
-                    e.preventDefault();
-                    handleAddToCart(phone);
-                  }}
-                  disabled={cart.some(
-                    item =>
-                      item.id === phone.id &&
-                      item.color === phone.color &&
-                      item.capacity === phone.capacity,
-                  )}
+                  onClick={e => { e.preventDefault(); handleAddToCart(phone); }}
+                  disabled={cart.some(item => item.id === phone.id && item.color === phone.color && item.capacity === phone.capacity)}
                 >
-                  {cart.some(
-                    item =>
-                      item.id === phone.id &&
-                      item.color === phone.color &&
-                      item.capacity === phone.capacity,
-                  )
-                    ? 'Added to cart'
-                    : 'Add to cart'}
+                  {cart.some(item => item.id === phone.id && item.color === phone.color && item.capacity === phone.capacity)
+                    ? 'Added to cart' : 'Add to cart'}
                 </button>
                 <button
-                  className={`phone__card-btn phone__card-btn--favorite ${
-                    favorites.includes(phone.id) ? 'favorite--active' : ''
-                  }`}
-                  onClick={e => {
-                    e.preventDefault();
-                    toggleFavorite(phone.id);
-                  }}
+                  className={`phone__card-btn phone__card-btn--favorite ${favorites.includes(phone.id) ? 'favorite--active' : ''}`}
+                  onClick={e => { e.preventDefault(); toggleFavorite(phone.id); }}
                 >
                   <img
-                    src={
-                      favorites.includes(phone.id)
-                        ? './icons/heart-active.svg'
-                        : './icons/heart.svg'
-                    }
+                    src={favorites.includes(phone.id) ? './icons/heart-active.svg' : './icons/heart.svg'}
                     alt="Favorite"
                     className="phone__card-btn-icon"
                   />
@@ -243,32 +200,34 @@ export const PhonePage = () => {
         )}
       </div>
 
-      <div className="pagination">
-        <button
-          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-          className="pagination__button"
-        >
-          {'<'}
-        </button>
-        {getPageNumbers().map((page, index) => (
+      {totalPages > 1 && (
+        <div className="pagination">
           <button
-            key={index}
-            className={`pagination__button ${currentPage === page ? 'active' : ''}`}
-            onClick={() => typeof page === 'number' && setCurrentPage(page)}
-            disabled={typeof page !== 'number'}
+            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className="pagination__button"
           >
-            {page}
+            {'<'}
           </button>
-        ))}
-        <button
-          onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-          disabled={currentPage === totalPages}
-          className="pagination__button"
-        >
-          {'>'}
-        </button>
-      </div>
+          {getPageNumbers().map((page, index) => (
+            <button
+              key={index}
+              className={`pagination__button ${currentPage === page ? 'active' : ''}`}
+              onClick={() => typeof page === 'number' && setCurrentPage(page)}
+              disabled={typeof page !== 'number'}
+            >
+              {page}
+            </button>
+          ))}
+          <button
+            onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+            disabled={currentPage === totalPages}
+            className="pagination__button"
+          >
+            {'>'}
+          </button>
+        </div>
+      )}
     </section>
   );
 };
