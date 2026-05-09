@@ -1,0 +1,73 @@
+@import '../../styles/utils/variables';
+
+.section {
+  margin-bottom: 56px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  color: $color-text;
+
+  @media (max-width: 640px) {
+    font-size: 22px;
+    line-height: 32px;
+  }
+}
+
+.arrows {
+  display: flex;
+  gap: 16px;
+}
+
+.arrow {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-separator;
+  border-radius: $border-radius-small;
+  font-size: 14px;
+  color: $color-text;
+  transition: border-color $transition-duration ease,
+    background $transition-duration ease,
+    color $transition-duration ease;
+
+  &:hover:not(:disabled) {
+    border-color: $color-text;
+  }
+
+  &:disabled {
+    color: $color-secondary;
+    cursor: not-allowed;
+  }
+}
+
+.track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.cardWrap {
+  flex: 0 0 auto;
+  width: 272px;
+  scroll-snap-align: start;
+
+  @media (max-width: 640px) {
+    width: 240px;
+  }
+}

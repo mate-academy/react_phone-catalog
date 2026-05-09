@@ -1,0 +1,73 @@
+@import '../../styles/utils/variables';
+
+.section {
+  margin-bottom: 56px;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  color: $color-text;
+  margin-bottom: 24px;
+
+  @media (max-width: 640px) {
+    font-size: 22px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform $transition-duration ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.thumb {
+  aspect-ratio: 1;
+  border-radius: $border-radius-medium;
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow $transition-duration ease;
+
+  .card:hover & {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.thumbImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform $transition-duration ease;
+
+  .card:hover & {
+    transform: scale(1.05);
+  }
+}
+
+.label {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  color: $color-text;
+}
+
+.count {
+  font-size: 14px;
+  color: $color-secondary;
+}

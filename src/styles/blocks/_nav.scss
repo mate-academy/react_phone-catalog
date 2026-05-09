@@ -1,0 +1,44 @@
+.nav {
+  height: 100%;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  column-gap: $nav-column-gap;
+}
+
+.nav__item {
+  display: flex;
+  height: 100%;
+}
+
+.nav__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: $font-size-small;
+  line-height: $line-height-tiny;
+  font-weight: 500;
+  color: $color-text;
+  text-transform: uppercase;
+  transition: color $transition-duration;
+}
+
+.nav__link:hover,
+.nav__link.is-active {
+  color: $color-accent;
+}
+
+.nav__link.is-active::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: $space-small;
+  content: '';
+  background-color: $color-accent;
+  border-radius: $border-radius-medium;
+}

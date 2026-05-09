@@ -1,0 +1,358 @@
+@import '../../styles/utils/variables';
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px 0;
+
+  @media (max-width: 640px) {
+    padding-inline: 16px;
+  }
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-secondary;
+  margin-bottom: 16px;
+  transition: color $transition-duration ease;
+
+  &:hover {
+    color: $color-text;
+  }
+}
+
+.h1 {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  color: $color-text;
+  margin-bottom: 32px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 80px 1fr 320px;
+  grid-template-areas: 'thumbs main options';
+  gap: 16px;
+  margin-bottom: 80px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'main'
+      'thumbs'
+      'options';
+  }
+}
+
+.thumbs {
+  grid-area: thumbs;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @media (max-width: 1024px) {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+}
+
+.thumb {
+  width: 80px;
+  height: 80px;
+  padding: 8px;
+  border: 1px solid $color-separator;
+  border-radius: $border-radius-small;
+  background: $color-image-bg;
+  flex: 0 0 auto;
+  transition: border-color $transition-duration ease;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &:hover {
+    border-color: $color-text;
+  }
+}
+
+.thumbActive {
+  border-color: $color-text;
+}
+
+.mainImage {
+  grid-area: main;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  min-height: 460px;
+  background: $color-image-bg;
+  border-radius: $border-radius-medium;
+
+  img {
+    max-width: 100%;
+    max-height: 460px;
+    object-fit: contain;
+  }
+}
+
+.options {
+  grid-area: options;
+}
+
+.optionGroup {
+  margin-bottom: 24px;
+}
+
+.optionTitle {
+  font-weight: 600;
+  font-size: 12px;
+  color: $color-secondary;
+  margin-bottom: 8px;
+}
+
+.colors {
+  display: flex;
+  gap: 8px;
+}
+
+.colorBtn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-separator;
+  border-radius: 50%;
+  padding: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color $transition-duration ease;
+
+  &:hover {
+    border-color: $color-text;
+  }
+}
+
+.colorBtnActive {
+  border-color: $color-text;
+}
+
+.colorSwatch {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.capacities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.capacityBtn {
+  height: 32px;
+  padding-inline: 12px;
+  border: 1px solid $color-separator;
+  border-radius: $border-radius-small;
+  font-size: 14px;
+  font-weight: 500;
+  color: $color-text;
+  background: $color-surface;
+  transition: border-color $transition-duration ease,
+    background $transition-duration ease,
+    color $transition-duration ease;
+
+  &:hover {
+    border-color: $color-text;
+  }
+}
+
+.capacityBtnActive {
+  background: $color-button-primary-bg;
+  color: $color-button-primary-text;
+  border-color: $color-button-primary-bg;
+}
+
+.divider {
+  height: 1px;
+  background: $color-separator;
+  margin-block: 16px;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.priceCurrent {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  color: $color-text;
+}
+
+.priceOld {
+  font-size: 22px;
+  color: $color-secondary;
+  text-decoration: line-through;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.addBtn {
+  flex: 1;
+  height: 48px;
+  background: $color-button-primary-bg;
+  color: $color-button-primary-text;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: $border-radius-medium;
+  transition: box-shadow $transition-duration ease,
+    background $transition-duration ease;
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 3px 13px $color-shadow;
+  }
+
+  &:disabled {
+    background: $color-surface-2;
+    color: $color-secondary;
+    cursor: not-allowed;
+  }
+}
+
+.addBtnAdded {
+  background: $color-surface;
+  color: $color-accent;
+  border: 1px solid $color-separator;
+}
+
+.favBtn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid $color-separator;
+  border-radius: $border-radius-medium;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text;
+  transition: border-color $transition-duration ease,
+    color $transition-duration ease;
+
+  &:hover {
+    border-color: $color-text;
+  }
+}
+
+.favBtnActive {
+  color: #eb5757;
+
+  &:hover {
+    border-color: #eb5757;
+  }
+}
+
+.miniSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+
+    span:first-child {
+      color: $color-secondary;
+      font-weight: 600;
+    }
+
+    span:last-child {
+      color: $color-text;
+      font-weight: 700;
+    }
+  }
+}
+
+.section {
+  margin-bottom: 56px;
+}
+
+.h2 {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  color: $color-text;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $color-separator;
+}
+
+.about {
+  margin-bottom: 32px;
+}
+
+.aboutTitle {
+  font-weight: 700;
+  font-size: 20px;
+  color: $color-text;
+  margin-bottom: 16px;
+}
+
+.aboutText {
+  font-size: 14px;
+  line-height: 21px;
+  color: $color-secondary;
+  margin-bottom: 12px;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 4px;
+
+    span:first-child {
+      color: $color-secondary;
+      font-weight: 600;
+    }
+
+    span:last-child {
+      color: $color-text;
+      font-weight: 600;
+      text-align: right;
+    }
+  }
+}
+
+.error {
+  text-align: center;
+  font-size: 18px;
+  color: $color-secondary;
+  padding-block: 80px 16px;
+}
+
+.backLink {
+  display: block;
+  text-align: center;
+  color: $color-accent;
+  font-weight: 700;
+}

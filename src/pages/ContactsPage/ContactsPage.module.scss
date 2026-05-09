@@ -1,0 +1,217 @@
+@import '../../styles/utils/variables';
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px 0;
+
+  @media (max-width: 640px) {
+    padding-inline: 16px;
+  }
+}
+
+.hero {
+  position: relative;
+  padding: 56px 56px 64px;
+  margin-bottom: 32px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 85% 25%, rgba(0, 172, 220, 0.22), transparent 55%),
+    radial-gradient(circle at 15% 100%, rgba(118, 76, 244, 0.2), transparent 55%),
+    linear-gradient(135deg, #0c1430 0%, #1a1d3e 60%, #0c1430 100%);
+  color: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 12px 40px $color-shadow;
+
+  @media (max-width: 640px) {
+    padding: 40px 24px 48px;
+    border-radius: 16px;
+  }
+}
+
+.heroDot {
+  position: absolute;
+  top: 24px;
+  left: 56px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4dc8eb;
+  box-shadow: 0 0 16px #4dc8eb, 0 0 0 6px rgba(77, 200, 235, 0.18);
+
+  @media (max-width: 640px) {
+    left: 24px;
+  }
+}
+
+.h1 {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+  background: linear-gradient(120deg, #ffffff, #c8d2ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  font-size: clamp(14px, 1.6vw, 18px);
+  line-height: 1.5;
+  max-width: 56ch;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.channels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 56px;
+}
+
+.channel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background: $color-surface;
+  border: 1px solid $color-separator;
+  border-radius: 16px;
+  transition: transform $transition-duration ease,
+    border-color $transition-duration ease,
+    box-shadow $transition-duration ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: $color-accent;
+    box-shadow: 0 8px 24px $color-shadow;
+  }
+}
+
+.channelIcon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, $color-accent, rgba(0, 172, 220, 0.4));
+  color: $color-white;
+  border-radius: 12px;
+}
+
+.channelText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.channelLabel {
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $color-secondary;
+}
+
+.channelValue {
+  font-weight: 600;
+  font-size: 15px;
+  color: $color-text;
+  word-break: break-word;
+}
+
+.formSection {
+  margin-bottom: 80px;
+}
+
+.formTitle {
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 36px;
+  color: $color-text;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $color-separator;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 720px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: $color-secondary;
+  text-transform: uppercase;
+}
+
+.input,
+.textarea {
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 14px;
+  color: $color-text;
+  background: $color-surface;
+  border: 1px solid $color-separator;
+  border-radius: $border-radius-medium;
+  resize: vertical;
+  transition: border-color $transition-duration ease,
+    box-shadow $transition-duration ease;
+
+  &:focus {
+    border-color: $color-accent;
+    box-shadow: 0 0 0 3px rgba(0, 172, 220, 0.12);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+  }
+}
+
+.submit {
+  align-self: flex-start;
+  height: 48px;
+  padding-inline: 32px;
+  background: $color-button-primary-bg;
+  color: $color-button-primary-text;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: $border-radius-medium;
+  transition: box-shadow $transition-duration ease,
+    transform $transition-duration ease,
+    background $transition-duration ease;
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 6px 20px $color-shadow;
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    background: $color-accent;
+    color: $color-white;
+    cursor: default;
+  }
+}

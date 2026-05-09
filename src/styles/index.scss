@@ -1,0 +1,99 @@
+@import './utils/variables';
+
+:root,
+:root[data-theme='light'] {
+  --color-accent: #00acdc;
+  --color-text: #060b35;
+  --color-title-hover: #34568b;
+  --color-secondary: #616070;
+  --color-border: #f3f3f3;
+  --color-separator: #e1e7ed;
+  --color-page: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-2: #f3f3f3;
+  --color-image-bg: #ffffff;
+  --color-button-primary-bg: #060b35;
+  --color-button-primary-text: #ffffff;
+  --color-on-accent: #ffffff;
+  --color-shadow: rgba(23, 32, 49, 0.1);
+  --color-overlay: rgba(0, 0, 0, 0.5);
+  --icon-filter: none;
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --color-accent: #4dc8eb;
+  --color-text: #f0f1f5;
+  --color-title-hover: #93b6ff;
+  --color-secondary: #9ca0aa;
+  --color-border: #2a2a30;
+  --color-separator: #2a2a30;
+  --color-page: #0f0f12;
+  --color-surface: #1c1c20;
+  --color-surface-2: #2a2a30;
+  // Image plate stays light in dark mode so dark/black products keep contrast.
+  --color-image-bg: #f5f5f7;
+  // Primary buttons invert: white in dark mode so dark text on light reads.
+  --color-button-primary-bg: #f0f1f5;
+  --color-button-primary-text: #0f0f12;
+  --color-on-accent: #0f0f12;
+  --color-shadow: rgba(0, 0, 0, 0.5);
+  --color-overlay: rgba(0, 0, 0, 0.7);
+  --icon-filter: invert(1) brightness(1.6);
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Mont', 'Roboto', sans-serif;
+  font-size: $font-size-medium;
+  line-height: $line-height-small;
+  color: $color-text;
+  background: $color-page;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color $transition-duration ease,
+    color $transition-duration ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+input,
+select {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: inherit;
+}

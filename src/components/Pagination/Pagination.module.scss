@@ -1,0 +1,43 @@
+@import '../../styles/utils/variables';
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-separator;
+  border-radius: $border-radius-small;
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-text;
+  background: $color-surface;
+  transition: border-color $transition-duration ease,
+    background $transition-duration ease,
+    color $transition-duration ease;
+
+  &:hover:not(:disabled):not(.btnActive) {
+    border-color: $color-text;
+  }
+
+  &:disabled {
+    color: $color-secondary;
+    cursor: not-allowed;
+  }
+}
+
+.btnActive {
+  background: $color-button-primary-bg;
+  color: $color-button-primary-text;
+  border-color: $color-button-primary-bg;
+}
+
+.dots {
+  color: $color-secondary;
+  user-select: none;
+}

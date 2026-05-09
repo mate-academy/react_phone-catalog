@@ -1,0 +1,99 @@
+.card {
+  width: $card-width;
+  padding: 32px 16px 16px;
+  background-color: $color-white;
+  border: 1px solid $color-border;
+  border-radius: $border-radius-small;
+  transition: transform $transition-duration;
+}
+
+.card:hover {
+  transform: scale(1.2);
+  z-index: 1;
+}
+
+.card__image {
+  display: block;
+  width: $card-image-width;
+  height: $card-image-height;
+  margin: 0 auto $space-xl;
+  object-fit: contain;
+}
+
+.card__title {
+  min-height: 36px;
+  margin-bottom: $space-small;
+  font-size: $font-size-small;
+  line-height: $line-height-small;
+  font-weight: 500;
+  color: $color-text;
+  transition: color $transition-duration;
+}
+
+.card:hover .card__title {
+  color: $color-title-hover;
+}
+
+.card__code {
+  margin-bottom: $space-base;
+  font-size: $font-size-tiny;
+  line-height: $line-height-tiny;
+  color: $color-secondary;
+}
+
+.card__rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: $space-large;
+}
+
+.card__reviews {
+  margin-left: 16px;
+  font-size: $font-size-tiny;
+  line-height: $line-height-tiny;
+}
+
+.card__price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $space-base;
+}
+
+.card__price-label {
+  font-size: $font-size-small;
+  line-height: $line-height-small;
+  color: $color-secondary;
+}
+
+.card__price-value {
+  font-size: $font-size-large;
+  line-height: $line-height-small;
+  font-weight: 700;
+}
+
+.card__buy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: $space-xl;
+  font-size: $font-size-medium;
+  line-height: $line-height-medium;
+  font-weight: 700;
+  color: $color-white;
+  text-transform: uppercase;
+  background-color: $color-accent;
+  border: 1px solid transparent;
+  border-radius: $border-radius-small;
+  transition:
+    background-color $transition-duration,
+    color $transition-duration,
+    border-color $transition-duration;
+}
+
+.card__buy:hover {
+  color: $color-accent;
+  background-color: $color-white;
+  border-color: $color-accent;
+}

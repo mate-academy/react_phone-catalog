@@ -1,0 +1,48 @@
+@import '../../styles/utils/variables';
+
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: $color-secondary;
+  margin-bottom: 16px;
+}
+
+.home {
+  color: $color-secondary;
+  display: inline-flex;
+  align-items: center;
+  transition: color $transition-duration ease;
+
+  img {
+    filter: var(--icon-filter);
+  }
+
+  &:hover {
+    color: $color-text;
+  }
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sep {
+  color: $color-secondary;
+}
+
+.link {
+  color: $color-secondary;
+  transition: color $transition-duration ease;
+
+  &:hover {
+    color: $color-text;
+  }
+}
+
+.current {
+  color: $color-text;
+}

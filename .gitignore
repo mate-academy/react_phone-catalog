@@ -1,0 +1,14 @@
+node_modules
+dist
+dist-ssr
+.claude
+.DS_Store
+.env
+.env.local
+.env.*.local
+*.log
+.vscode
+.idea
+*.swp
+.cache
+.vite

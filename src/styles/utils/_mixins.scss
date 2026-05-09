@@ -1,0 +1,63 @@
+@import './variables';
+
+@mixin container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 32px;
+
+  @media (max-width: 640px) {
+    padding-inline: 16px;
+  }
+}
+
+@mixin section-title {
+  font-family: 'Mont', 'Roboto', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  color: $color-text;
+}
+
+@mixin button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding-inline: 24px;
+  background: $color-accent;
+  color: $color-white;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: $border-radius-medium;
+  transition: opacity $transition-duration ease,
+    transform $transition-duration ease,
+    box-shadow $transition-duration ease;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+  }
+
+  &:disabled {
+    background: #e2e6e9;
+    color: $color-secondary;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+@mixin icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-separator;
+  border-radius: 50%;
+  transition: border-color $transition-duration ease,
+    background-color $transition-duration ease;
+
+  &:hover {
+    border-color: $color-text;
+  }
+}
