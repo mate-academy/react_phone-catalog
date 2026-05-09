@@ -176,10 +176,25 @@
     }
   }
 
+  &__bottom {
+    display: flex;
+    gap: 64px;
+    margin-bottom: 48px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+
+    @include on-phone {
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
+
   &__description,
   &__tech-specs {
+    flex: 1;
     max-width: 560px;
-    margin-bottom: 48px;
 
     & h2 {
       font-size: 22px;
@@ -213,6 +228,7 @@
       color: var(--text-muted);
       border-bottom: 1px solid var(--border-color);
       padding: 8px 0;
+      margin-bottom: 0;
 
       & span:last-child {
         color: var(--text-color);
@@ -404,6 +420,11 @@
     color: #F1F2F9;
     line-height: 21px;
     margin-bottom: 8px;
+    height: 42px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   &__card-prices {
@@ -467,6 +488,7 @@
     border-radius: 0;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    color: white;
 
     &--add {
       flex: 1;
@@ -519,7 +541,12 @@
     }
   }
 
-  & img {
+  &-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &-arrow {
     width: 16px;
     height: 16px;
   }
@@ -531,19 +558,11 @@
 }
 
 .product__tech-specs {
-  margin-top: 16px;
-
-  .product__section-title {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 16px;
-    color: var(--text-color);
-  }
+  margin-top: 8px;
 
   .product__specs-list {
     display: flex;
     flex-direction: column;
-    gap: 0;
   }
 
   .product__spec {

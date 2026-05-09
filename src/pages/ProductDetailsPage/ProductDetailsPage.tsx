@@ -156,15 +156,16 @@ export const ProductDetailsPage = () => {
     <section className="product-details section">
       <div className="home--nav">
         <a href="#">
-          <img src="./icons/home.svg" alt="home_nav" />
+          <img src="./icons/home.svg" alt="home_nav" className="home--nav-icon" />
         </a>
-        <p className="home--nav-top">{'>'}</p>
+        <img src="./icons/arrow-right.svg" alt="arrow-right" className="home--nav-arrow" />
         <a href={getCategoryLink()}>
           <YourComponent product={product} />
         </a>
-        <p className="home--nav-top">{'>'}</p>
+        <img src="./icons/arrow-right.svg" alt="arrow-right" className="home--nav-arrow" />
         <span className="product-details__id">{product.name}</span>
       </div>
+
       <div className="product-details--back">
         <a href={getCategoryLink()}>
           <p className="home--nav-top">{'<'} Back</p>
@@ -258,9 +259,8 @@ export const ProductDetailsPage = () => {
             </button>
           </div>
 
-          {product && isPhoneOrTablet(product) && (
+          {isPhoneOrTablet(product) && (
             <div className="product__tech-specs">
-              <h2 className="product__section-title">Tech specs</h2>
               <div className="product__specs-list">
                 <div className="product__spec">
                   <span className="product__spec-title">Screen</span>
@@ -284,28 +284,30 @@ export const ProductDetailsPage = () => {
         </div>
       </div>
 
-      <div className="product-details__description">
-        <h2>About</h2>
-        {product.description?.map((desc, index) => (
-          <div key={index}>
-            <h3>{desc.title}</h3>
-            {desc.text.map((text, i) => (
-              <p key={i}>{text}</p>
-            ))}
-          </div>
-        ))}
-      </div>
+      <div className="product-details__bottom">
+        <div className="product-details__description">
+          <h2>About</h2>
+          {product.description?.map((desc, index) => (
+            <div key={index}>
+              <h3>{desc.title}</h3>
+              {desc.text.map((text, i) => (
+                <p key={i}>{text}</p>
+              ))}
+            </div>
+          ))}
+        </div>
 
-      <div className="product-details__tech-specs">
-        <h2>Tech specs</h2>
-        {'screen' in product && <p><span>Screen</span><span>{product.screen}</span></p>}
-        {'resolution' in product && <p><span>Resolution</span><span>{product.resolution}</span></p>}
-        {'processor' in product && <p><span>Processor</span><span>{product.processor}</span></p>}
-        {'ram' in product && <p><span>RAM</span><span>{product.ram}</span></p>}
-        {'capacity' in product && <p><span>Capacity</span><span>{product.capacity}</span></p>}
-        {'camera' in product && <p><span>Camera</span><span>{product.camera}</span></p>}
-        {'zoom' in product && <p><span>Zoom</span><span>{product.zoom}</span></p>}
-        {'cell' in product && product.cell && <p><span>Cell</span><span>{product.cell.join(', ')}</span></p>}
+        <div className="product-details__tech-specs">
+          <h2>Tech specs</h2>
+          {'screen' in product && <p><span>Screen</span><span>{product.screen}</span></p>}
+          {'resolution' in product && <p><span>Resolution</span><span>{product.resolution}</span></p>}
+          {'processor' in product && <p><span>Processor</span><span>{product.processor}</span></p>}
+          {'ram' in product && <p><span>RAM</span><span>{product.ram}</span></p>}
+          {'capacity' in product && <p><span>Capacity</span><span>{product.capacity}</span></p>}
+          {'camera' in product && <p><span>Camera</span><span>{product.camera}</span></p>}
+          {'zoom' in product && <p><span>Zoom</span><span>{product.zoom}</span></p>}
+          {'cell' in product && product.cell && <p><span>Cell</span><span>{product.cell.join(', ')}</span></p>}
+        </div>
       </div>
 
       <div className="related-products">
