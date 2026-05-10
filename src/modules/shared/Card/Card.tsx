@@ -11,9 +11,14 @@ import { FavouritesContext } from '../../../FavouritesContext';
 type Props = {
   product: Product;
   grid?: boolean;
+  withoutDiscount?: boolean;
 };
 
-export const Card = ({ product, grid = false }: Props) => {
+export const Card = ({
+  product,
+  grid = false,
+  withoutDiscount = false,
+}: Props) => {
   const { cart, setCart } = useContext(CartContext);
   const { favourites, setFavourites } = useContext(FavouritesContext);
 
@@ -41,8 +46,12 @@ export const Card = ({ product, grid = false }: Props) => {
         </Link>
 
         <div className={s.card__prices}>
-          <div className={s.card__price}>${product.price}</div>
-          <div className={s.card__fullPrice}>${product.fullPrice}</div>
+          <div className={s.card__price}>
+            ${withoutDiscount ? product.fullPrice : product.price}
+          </div>
+          <div className={s.card__fullPrice}>
+            {!withoutDiscount && '$' + product.fullPrice}
+          </div>
         </div>
 
         <div className={s.card__divider} />

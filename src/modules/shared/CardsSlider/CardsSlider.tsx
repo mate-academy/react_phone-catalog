@@ -1,20 +1,17 @@
-import type { Product } from '../../../types/Product';
 import { SliderButton } from '../SliderButton';
 import s from './CardsSlider.module.scss';
-import { Card } from '../Card/Card';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper } from 'swiper/react';
 import type { SwiperRef } from 'swiper/react';
 
 import { useRef, useState } from 'react';
 import 'swiper/css';
 
 type Props = {
-  products: Product[];
+  children: React.ReactNode;
   name: string;
 };
 
-export const CardsSlider = ({ products, name }: Props) => {
+export const CardsSlider = ({ children, name }: Props) => {
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
   const swiperRef = useRef<SwiperRef>(null);
@@ -64,11 +61,7 @@ export const CardsSlider = ({ products, name }: Props) => {
             },
           }}
         >
-          {products.map(product => (
-            <SwiperSlide key={product.id} className={s.cardsSlider__slide}>
-              <Card product={product} />
-            </SwiperSlide>
-          ))}
+          {children}
         </Swiper>
       </div>
     </div>

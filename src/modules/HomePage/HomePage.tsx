@@ -4,7 +4,9 @@ import { Categories } from './components/Categories';
 import type { Product } from '../../types/Product';
 import { getProducts } from '../../api';
 import { CardsSlider } from '../shared/CardsSlider';
+import { SwiperSlide } from 'swiper/react';
 import s from './HomePage.module.scss';
+import { Card } from '../shared/Card';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -33,9 +35,23 @@ export const HomePage = () => {
       <Banner />
 
       <div className={s.homePage__content}>
-        <CardsSlider products={newModel} name="Brand new models" />
+        <CardsSlider name="Brand new models">
+          {newModel.map(product => (
+            <SwiperSlide key={product.id} className={s.cardsSlider__slide}>
+              <Card product={product} withoutDiscount />
+            </SwiperSlide>
+          ))}
+        </CardsSlider>
+
         <Categories />
-        <CardsSlider products={hotPrices} name="Hot prices" />
+
+        <CardsSlider name="Hot prices">
+          {hotPrices.map(product => (
+            <SwiperSlide key={product.id} className={s.cardsSlider__slide}>
+              <Card product={product} />
+            </SwiperSlide>
+          ))}
+        </CardsSlider>
       </div>
     </>
   );
