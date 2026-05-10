@@ -132,6 +132,7 @@ export const AccessoriesPage = () => {
           onSortChange={setSortBy}
           onResultChange={setFilteredAccessories}
           onItemsPerPageChange={setItemsPerPage}
+          itemsPerPage={itemsPerPage}
         />
       </div>
 

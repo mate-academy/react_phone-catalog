@@ -147,6 +147,7 @@ export const TabletPage = () => {
           onSortChange={setSortBy}
           onResultChange={setFilteredTablets}
           onItemsPerPageChange={setItemsPerPage}
+          itemsPerPage={itemsPerPage}
         />
       </div>
 
