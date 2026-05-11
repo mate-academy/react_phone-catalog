@@ -1,4 +1,4 @@
-import styles from './BrandNewModelsmodule.css';
+import styles from './BrandNewModelsmodule.scss';
 import { BannerSlider } from '../BannerSlider/BannerSlider';
 
 export const BrandNewModelsSlider = () => {

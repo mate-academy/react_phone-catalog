@@ -1,0 +1,21 @@
+
+@font-face {
+  font-family: Mont;
+  src: url(fonts/Mont-Bold.otf);
+  font-weight: bold;
+  // font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url(fonts/Mont-Regular.otf);
+}
+
+body {
+  margin: 0;
+  font-family: Mont;
+}
+
+html {
+  scroll-behavior: smooth;
+}

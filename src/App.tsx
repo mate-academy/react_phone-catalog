@@ -1,4 +1,4 @@
-import './App.css';
+import './App.module.scss';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { ProductCarts } from './components/ProductCart/ProductCarts';

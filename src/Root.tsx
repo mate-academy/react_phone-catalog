@@ -5,14 +5,16 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { App } from './App';
-import 'bulma/css/bulma.css';
-import '@fortawesome/fontawesome-free/css/all.css';
-import './App.css';
+// import 'bulma/css/bulma.css';
+// import '@fortawesome/fontawesome-free/css/all.css';
+import './App.module.scss';
 import { HomePage } from './components/HomePage/Home';
 import { Phones } from './pages/Phones';
 import { Tablets } from './pages/Tablets';
 import { Accessories } from './pages/Accessories';
 import { NotFound } from './pages/NotFound';
+import { Favorites } from './pages/Favorites';
+import { Cart } from './pages/Cart';
 
 export const Root = () => (
   <Router>
@@ -33,6 +35,16 @@ export const Root = () => (
         <Route path="accessories">
           <Route index element={<Accessories />} />
           <Route path=":slug" element={<Accessories />} />
+        </Route>
+
+        <Route path="favorites">
+          <Route index element={<Favorites />} />
+          <Route path=":slug" element={<Favorites />} />
+        </Route>
+
+        <Route path="cart">
+          <Route index element={<Cart />} />
+          <Route path=":slug" element={<Cart />} />
         </Route>
 
         <Route path="home" element={<Navigate to="/" replace />} />

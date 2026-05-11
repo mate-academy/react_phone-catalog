@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styles from './BannerSlider.module.css';
+import styles from './BannerSlider.module.scss';
 
 const images = [
   '/img/banner-phones.png',

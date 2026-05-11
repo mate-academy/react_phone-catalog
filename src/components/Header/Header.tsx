@@ -1,5 +1,7 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import React from 'react';
+import styles from './Header.module.scss';
+import cn from 'classnames';
 
 type Props = {
   cartCount?: number;
@@ -14,44 +16,64 @@ export const Header: React.FC<Props> = ({
   favoritesCount = 0,
 }) => {
   return (
-    <header className="header">
-      <div className="container">
-        <div className="navbar-item">
-          <NavLink to="/">
-            <img src="/img/logo.svg" alt="Logo" className="logo" />
-          </NavLink>
-          <nav className="nav">
-            <NavLink to="/" className={getLinkClass}>
+    <header className={styles.container}>
+      <NavLink to="/" className={styles.logo}>
+        <img src="/img/logo.svg" alt="Logo" className="logo" />
+      </NavLink>
+      <nav>
+        <ul className={styles.navList}>
+          <li className={styles.navItem}>
+            <NavLink to="/" className={cn(styles.navItem, getLinkClass)}>
               HOME
             </NavLink>
-            <NavLink to="/phones" className={getLinkClass}>
+          </li>
+          <li className={styles.navItem}>
+            <NavLink to="/phones" className={cn(styles.navItem, getLinkClass)}>
               PHONES
             </NavLink>
-            <NavLink to="/tablets" className={getLinkClass}>
+          </li>
+          <li className={styles.navItem}>
+            <NavLink to="/tablets" className={cn(styles.navItem, getLinkClass)}>
               TABLETS
             </NavLink>
-            <NavLink to="/accessories" className={getLinkClass}>
+          </li>
+          <li className={styles.navItem}>
+            <NavLink
+              to="/accessories"
+              className={cn(styles.navItem, getLinkClass)}
+            >
               ACCESSORIES
             </NavLink>
-          </nav>
-          <div className="actions-icon">
-            <NavLink to="/favorites" className="icon" aria-label="Favorites">
-              <img
-                src="/img/favorites.svg"
-                className="img-icon"
-                alt="Favourites"
-              />
-              {favoritesCount > 0 && (
-                <span className="badge">{favoritesCount}</span>
-              )}
-            </NavLink>
+          </li>
+        </ul>
+      </nav>
 
-            <NavLink to="/cart" className="icon" aria-label="Card">
-              <img src="/img/cart.svg" className="img-icon" alt="Cart" />
-              {cartCount > 0 && <span className="badge">{cartCount}</span>}
-            </NavLink>
-          </div>
-        </div>
+      <button className={styles.actionsIconMob}>
+        <Link to="/">
+          <img
+            src="/img/burger-mob.svg"
+            className={styles.iconImgBurgerMob}
+            alt="BurgerMob"
+          />
+        </Link>
+      </button>
+
+      <div className={styles.actionsIcon}>
+        <NavLink to="/favorites" className={styles.icon} aria-label="Favorites">
+          <img
+            src="/img/favorites.svg"
+            className={styles.iconImgFavorites}
+            alt="Favourites"
+          />
+          {favoritesCount > 0 && (
+            <span className="badge">{favoritesCount}</span>
+          )}
+        </NavLink>
+
+        <NavLink to="/cart" className={styles.icon} aria-label="Cart">
+          <img src="/img/cart.svg" className={styles.iconImgCart} alt="Cart" />
+          {cartCount > 0 && <span className="badge">{cartCount}</span>}
+        </NavLink>
       </div>
     </header>
   );

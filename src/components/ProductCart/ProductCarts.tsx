@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import styles from './ProductCarts.module.css';
+import styles from './ProductCarts.module.scss';
 import { FavoritesIcon } from '../../utils/icons';
 
 type Props = {
