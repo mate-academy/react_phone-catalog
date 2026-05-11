@@ -11,14 +11,27 @@ export const Footer = () => {
             <img src="./img/logo.svg" alt="Logo" />
           </Link>
           <div className={s.footer__items}>
-            <Link to="" className={s.footer__item}>
+            <Link
+              to="https://github.com/dimon2202/react_phone-catalog/tree/develop"
+              className={s.footer__item}
+              target="_blank"
+            >
               Github
             </Link>
-            <Link to="" className={s.footer__item}>
+            <Link
+              to="https://github.com/dimon2202"
+              className={s.footer__item}
+              target="_blank"
+            >
               Contacts
             </Link>
-            <Link to="" className={s.footer__item}>
-              rights
+            <Link
+              // eslint-disable-next-line max-len
+              to="https://github.com/dimon2202/react_phone-catalog/blob/develop/LICENSE"
+              className={s.footer__item}
+              target="_blank"
+            >
+              Rights
             </Link>
           </div>
           <div className={s.footer__toTop}>
