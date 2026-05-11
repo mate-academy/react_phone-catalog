@@ -51,15 +51,13 @@
     border-radius: 0;
     height: 128px;
     box-sizing: border-box;
-    position: relative;
     width: 100%;
   }
 
   &__item-close {
     background: transparent;
-    border: none;
+    border: 1px solid #3B3E4A;
     color: #75767F;
-    font-size: 14px;
     cursor: pointer;
     padding: 0;
     flex-shrink: 0;
@@ -68,9 +66,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 0;
 
     &:hover {
       color: #F1F2F9;
+      border-color: #F1F2F9;
     }
   }
 
@@ -100,7 +100,7 @@
   &__item-qty-btn {
     width: 32px;
     height: 32px;
-    background-color: transparent;
+    background-color: #323542;
     border: 1px solid #3B3E4A;
     border-radius: 0;
     color: #F1F2F9;
@@ -169,7 +169,10 @@
     font-size: 14px;
     color: #75767F;
     font-weight: 600;
-    margin-bottom: 16px;
+    line-height: 21px;
+    text-align: center;
+    margin-top: 4px;
+    margin-bottom: 24px;
   }
 
   &__divider {

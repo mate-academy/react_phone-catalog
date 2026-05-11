@@ -32,7 +32,7 @@ export const CartPage = () => {
                 className="cart__item-close"
                 onClick={() => removeFromCart(item.id)}
               >
-                ✕
+                <img src="./icons/close.svg" alt="close" />
               </button>
               <img
                 src={item.image}
