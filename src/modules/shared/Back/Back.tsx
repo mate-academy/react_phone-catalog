@@ -1,11 +1,13 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import s from './Back.module.scss';
 
 export const Back = () => {
+  const navigate = useNavigate();
+
   return (
-    <Link to=".." className={s.back}>
+    <button className={s.back} onClick={() => navigate(-1)}>
       <img className={s.back__chevron} src="./img/icons/chevron-right.svg" />
-      <div>Back</div>
-    </Link>
+      <div className={s.back__title}>Back</div>
+    </button>
   );
 };

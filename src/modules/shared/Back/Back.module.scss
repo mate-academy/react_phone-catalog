@@ -1,19 +1,24 @@
 @import './../../../styles/typography';
 
 .back {
+  all: unset;
   display: flex;
   gap: 8px;
-  text-decoration: none;
   color: var(--color-secondary);
   margin-top: 24px;
-  align-items: end;
-
-  @include small-text;
+  align-items: center;
+  cursor: pointer;
 
   &__chevron {
     height: 16px;
     width: 16px;
     margin-block: auto;
     transform: rotate(180deg);
+  }
+
+  &__title {
+    @include small-text;
+
+    line-height: 12px;
   }
 }
