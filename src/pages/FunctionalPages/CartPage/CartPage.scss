@@ -6,6 +6,34 @@
   padding: 24px 32px;
   color: #F1F2F9;
 
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    margin-bottom: 16px;
+    width: fit-content;
+
+    &:hover span {
+      color: #F1F2F9;
+    }
+
+    span {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 100%;
+      color: #75767F;
+      font-family: 'Mont', Montserrat, sans-serif;
+      transition: color 0.3s ease;
+    }
+  }
+
+  &__back-arrow {
+    width: 16px;
+    height: 16px;
+    transform: rotate(180deg);
+  }
+
   &__title {
     font-size: 48px;
     font-weight: 800;
@@ -56,7 +84,7 @@
 
   &__item-close {
     background: transparent;
-    border: 1px solid #3B3E4A;
+    border: none;
     color: #75767F;
     cursor: pointer;
     padding: 0;
@@ -66,11 +94,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 0;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
 
     &:hover {
-      color: #F1F2F9;
-      border-color: #F1F2F9;
+      opacity: 0.7;
     }
   }
 
@@ -100,7 +131,7 @@
   &__item-qty-btn {
     width: 32px;
     height: 32px;
-    background-color: #323542;
+    background-color: transparent;
     border: 1px solid #3B3E4A;
     border-radius: 0;
     color: #F1F2F9;
@@ -167,8 +198,8 @@
 
   &__total-label {
     font-size: 14px;
-    color: #75767F;
     font-weight: 600;
+    color: #75767F;
     line-height: 21px;
     text-align: center;
     margin-top: 4px;

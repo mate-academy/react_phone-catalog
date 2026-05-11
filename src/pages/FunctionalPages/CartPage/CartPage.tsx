@@ -12,6 +12,14 @@ export const CartPage = () => {
   if (cart.length === 0) {
     return (
       <section className="cart section">
+        <div className="cart__back" onClick={() => window.history.back()}>
+          <img
+            src={`${import.meta.env.BASE_URL}icons/arrow-right.svg`}
+            alt="back"
+            className="cart__back-arrow"
+          />
+          <span>Back</span>
+        </div>
         <h1 className="cart__title">Cart</h1>
         <p className="cart__empty">Your cart is empty.</p>
       </section>
@@ -20,6 +28,14 @@ export const CartPage = () => {
 
   return (
     <section className="cart section">
+      <div className="cart__back" onClick={() => window.history.back()}>
+        <img
+          src={`${import.meta.env.BASE_URL}icons/arrow-right.svg`}
+          alt="back"
+          className="cart__back-arrow"
+        />
+        <span>Back</span>
+      </div>
       <h1 className="cart__title">Cart</h1>
       <div className="cart__content">
         <div className="cart__items">
@@ -32,7 +48,10 @@ export const CartPage = () => {
                 className="cart__item-close"
                 onClick={() => removeFromCart(item.id)}
               >
-                <img src="./icons/close.svg" alt="close" />
+                <img
+                  src={`${import.meta.env.BASE_URL}icons/close.svg`}
+                  alt="close"
+                />
               </button>
               <img
                 src={item.image}
