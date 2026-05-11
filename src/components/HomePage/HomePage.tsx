@@ -276,6 +276,7 @@ export const HomePage = () => {
                   key={recommendedProduct.id}
                   product={recommendedProduct}
                   variant="slider"
+                  showDiscount={false}
                 />
               ))}
             </div>

@@ -170,6 +170,13 @@
 .category__card {
   display: block;
   text-decoration: none;
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease;
+}
+
+.category__card:hover {
+  transform: translateY(-8px);
 }
 
 .category__imageWrap {
@@ -179,6 +186,19 @@
   overflow: hidden;
   background-color: #6d6475;
   position: relative;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background-color 0.35s ease;
+}
+
+.category__card:hover .category__imageWrap {
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.45),
+    0 0 20px rgba(144, 91, 255, 0.25);
+
+  background-color: #7a7184;
 }
 
 .category__imageWrapPhones {
@@ -198,6 +218,15 @@
   bottom: 0;
   width: 100%;
   height: 100%;
+
+  transition:
+    transform 0.45s ease,
+    filter 0.35s ease;
+}
+
+.category__card:hover .category__image {
+  transform: scale(1.08);
+  filter: brightness(1.08);
 }
 
 .category__name {
@@ -208,6 +237,11 @@
   line-height: 100%;
   letter-spacing: 0%;
   color: #f1f2f9;
+  transition: color 0.3s ease;
+}
+
+.category__card:hover .category__name {
+  color: #905bff;
 }
 
 .category__count {

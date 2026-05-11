@@ -15,15 +15,22 @@ export const Footer = () => {
         <nav className={styles.nav}>
           <a
             className={styles.nav__link}
+            target="_blank"
             href="https://github.com/qlaudy/react_phone-catalog"
+            rel="noopener noreferrer"
           >
             Github
           </a>
-          <a className={styles.nav__link} href="/">
+          <a className={styles.nav__link} href="mailto:dkuz6323@gmail.com">
             Contacts
           </a>
-          <a className={styles.nav__link} href="/">
-            Rights
+          <a
+            className={styles.nav__link}
+            href="https://www.linkedin.com/in/qlaudy/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Linkedin
           </a>
         </nav>
 

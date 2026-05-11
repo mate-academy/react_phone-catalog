@@ -11,9 +11,14 @@ import { getAssetUrl } from '../../utils/getAssetUrl';
 interface Props {
   product: Product;
   variant?: 'default' | 'slider';
+  showDiscount?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ product, variant }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  variant,
+  showDiscount = true,
+}) => {
   const { toggleFavorite, isFavorite } = useFavorites();
 
   const isProductFavorite = isFavorite(product.itemId);
@@ -23,9 +28,8 @@ export const ProductCard: React.FC<Props> = ({ product, variant }) => {
 
   return (
     <div
-      className={`${styles.card} ${
-        variant === 'slider' ? styles.sliderCard : ''
-      }`}
+      className={`${styles.card} ${variant === 'slider' ? styles.sliderCard : ''
+        }`}
     >
       <Link to={`/product/${product.itemId}`} className={styles.imageLink}>
         <img
@@ -40,8 +44,12 @@ export const ProductCard: React.FC<Props> = ({ product, variant }) => {
       </Link>
 
       <div className={styles.prices}>
-        <p className={styles.price}>${product.price}</p>
-        <p className={styles.fullPrice}>${product.fullPrice}</p>
+        <p className={styles.price}>
+          ${showDiscount ? product.price : product.fullPrice}
+        </p>
+        {showDiscount && (
+          <p className={styles.fullPrice}>${product.fullPrice}</p>
+        )}
       </div>
 
       <div className={styles.specs}>
@@ -64,9 +72,8 @@ export const ProductCard: React.FC<Props> = ({ product, variant }) => {
       <div className={styles.actions}>
         <button
           type="button"
-          className={`${styles.addToCart} ${
-            isProductInCart ? styles.addToCartActive : ''
-          }`}
+          className={`${styles.addToCart} ${isProductInCart ? styles.addToCartActive : ''
+            }`}
           onClick={() => addToCart(product)}
           disabled={isProductInCart}
         >
@@ -75,9 +82,8 @@ export const ProductCard: React.FC<Props> = ({ product, variant }) => {
 
         <button
           type="button"
-          className={`${styles.favoriteButton} ${
-            isProductFavorite ? styles.favoriteButtonActive : ''
-          }`}
+          className={`${styles.favoriteButton} ${isProductFavorite ? styles.favoriteButtonActive : ''
+            }`}
           aria-label="Add to favourites"
           onClick={() => toggleFavorite(product)}
         >
