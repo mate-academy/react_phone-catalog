@@ -23,7 +23,10 @@ export const Footer = () => {
           </div>
           <div className={s.footer__toTop}>
             <div className={s.footer__back}>Back to top</div>
-            <SliderButton direction="up" />
+            <SliderButton
+              direction="up"
+              onClick={() => window.scrollTo({ top: 0 })}
+            />
           </div>
         </div>
       </div>
