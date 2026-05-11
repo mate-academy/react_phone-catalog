@@ -4,6 +4,7 @@ import s from './MobileMenu.module.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../../CartContext';
+import { FavouritesContext } from '../../FavouritesContext';
 
 type Props = {
   isOpen: boolean;
@@ -12,8 +13,11 @@ type Props = {
 
 export const MobileMenu = ({ isOpen, onClose }: Props) => {
   const { cart } = useContext(CartContext);
-
+  const { favourites } = useContext(FavouritesContext);
   const { pathname } = useLocation();
+
+  const favouritesAmount = favourites.length;
+  const cartAmount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <div
@@ -47,9 +51,9 @@ export const MobileMenu = ({ isOpen, onClose }: Props) => {
           onClick={() => onClose(false)}
         >
           <div className={s.menu__iconWrap}>
-            <img src="./img/icons/cart.svg" alt="Cart" />
-            {cart.length > 0 && (
-              <span className={s.menu__counter}>{cart.length}</span>
+            <img src="./img/icons/favourites.svg" alt="Cart" />
+            {favouritesAmount > 0 && (
+              <span className={s.menu__counter}>{favouritesAmount}</span>
             )}
           </div>
         </Link>
@@ -59,7 +63,14 @@ export const MobileMenu = ({ isOpen, onClose }: Props) => {
             [s['menu__cart--active']]: pathname === '/cart',
           })}
           onClick={() => onClose(false)}
-        ></Link>
+        >
+          <div className={s.menu__iconWrap}>
+            <img src="./img/icons/cart.svg" alt="Cart" />
+            {cartAmount > 0 && (
+              <span className={s.menu__counter}>{cartAmount}</span>
+            )}
+          </div>
+        </Link>
       </div>
     </div>
   );

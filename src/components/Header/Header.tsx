@@ -13,6 +13,8 @@ export const Header = () => {
   const { favourites } = useContext(FavouritesContext);
   const { pathname } = useLocation();
 
+  const cartAmount = cart.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <header className={s.header}>
       <Link to="/" className={s['header__logo-link']}>
@@ -45,8 +47,8 @@ export const Header = () => {
         >
           <div className={s.header__iconWrap}>
             <img src="./img/icons/cart.svg" alt="Cart" />
-            {cart.length > 0 && (
-              <span className={s.header__counter}>{cart.length}</span>
+            {cartAmount > 0 && (
+              <span className={s.header__counter}>{cartAmount}</span>
             )}
           </div>
         </Link>
