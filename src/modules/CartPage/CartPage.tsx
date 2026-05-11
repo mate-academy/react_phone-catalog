@@ -59,6 +59,10 @@ export const CartPage: React.FC = () => {
 
               <div className={styles.itemDetails}>
                 <h3>{item.product.name}</h3>
+                <div className={styles.itemMeta}>
+                  <span>{item.product.capacity}</span>
+                  <span>{item.product.color}</span>
+                </div>
               </div>
 
               <div className={styles.quantityControls}>

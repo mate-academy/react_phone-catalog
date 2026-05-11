@@ -103,6 +103,28 @@ export const ProductDetailsPage: React.FC = () => {
     }
   };
 
+  const handleCapacitySelect = async (capacity: string) => {
+    if (!product) {
+      return;
+    }
+
+    if (product.capacity === capacity) {
+      return;
+    }
+
+    const color = selectedColor || product.color;
+    const variant = await getProductVariant(
+      product.category,
+      product.namespaceId,
+      capacity,
+      color,
+    );
+
+    if (variant) {
+      navigate(`/product/${variant.id}`);
+    }
+  };
+
   const handleToggleFavorite = () => {
     if (product) {
       if (isFavorite(product.id)) {
@@ -216,7 +238,7 @@ export const ProductDetailsPage: React.FC = () => {
                         name="capacity"
                         value={capacity}
                         checked={selectedCapacity === capacity}
-                        onChange={e => setSelectedCapacity(e.target.value)}
+                        onChange={e => handleCapacitySelect(e.target.value)}
                       />
                       <span>{capacity}</span>
                     </label>
