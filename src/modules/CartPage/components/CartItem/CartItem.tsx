@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import type { Cart } from '../../../types/Cart';
+import type { Cart } from '../../../../types/Cart';
 import s from './CartItem.module.scss';
 import { useContext } from 'react';
-import { CartContext } from '../../../CartContext';
-import { SliderButton } from '../../shared/SliderButton';
+import { CartContext } from '../../../../CartContext';
+import { SliderButton } from '../../../shared/SliderButton';
 
 type Props = {
   cartItem: Cart;
