@@ -273,13 +273,12 @@
   }
 
   .slider__banner {
-    overflow: hidden;
     display: flex;
     height: 189px;
-    margin-inline: 24px;
-    aspect-ratio: auto;
+    margin-inline: auto;
     gap: 19px;
     background-color: transparent;
+    min-width: 590px;
   }
 
   .banner__viewport {
@@ -399,7 +398,8 @@
     display: flex;
     height: 400px;
     margin-inline: 32px;
-    gap: 19px;
+    aspect-ratio: auto;
+    gap: 16px;
     background-color: transparent;
   }
 
@@ -483,13 +483,21 @@
 }
 
 @media (min-width: 1201px) {
+  .page {
+    max-width: 1136px;
+    margin: auto;
+  }
+
   .content {
-    padding: 80px 152px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    padding-inline: 0;
   }
 
   .title {
     font-size: 48px;
-    padding: 120px 152px 56px;
+    padding: 120px 0 56px;
+    padding-top: 120px;
   }
 
   .slider__banner {
@@ -499,6 +507,7 @@
     max-height: 432px;
     gap: 19px;
     background-color: transparent;
+    margin: 0;
   }
 
   .banner__viewport {

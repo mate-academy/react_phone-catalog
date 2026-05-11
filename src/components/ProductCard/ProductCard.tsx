@@ -28,8 +28,9 @@ export const ProductCard: React.FC<Props> = ({
 
   return (
     <div
-      className={`${styles.card} ${variant === 'slider' ? styles.sliderCard : ''
-        }`}
+      className={`${styles.card} ${
+        variant === 'slider' ? styles.sliderCard : ''
+      }`}
     >
       <Link to={`/product/${product.itemId}`} className={styles.imageLink}>
         <img
@@ -72,8 +73,9 @@ export const ProductCard: React.FC<Props> = ({
       <div className={styles.actions}>
         <button
           type="button"
-          className={`${styles.addToCart} ${isProductInCart ? styles.addToCartActive : ''
-            }`}
+          className={`${styles.addToCart} ${
+            isProductInCart ? styles.addToCartActive : ''
+          }`}
           onClick={() => addToCart(product)}
           disabled={isProductInCart}
         >
@@ -82,8 +84,9 @@ export const ProductCard: React.FC<Props> = ({
 
         <button
           type="button"
-          className={`${styles.favoriteButton} ${isProductFavorite ? styles.favoriteButtonActive : ''
-            }`}
+          className={`${styles.favoriteButton} ${
+            isProductFavorite ? styles.favoriteButtonActive : ''
+          }`}
           aria-label="Add to favourites"
           onClick={() => toggleFavorite(product)}
         >

@@ -209,7 +209,7 @@
 }
 
 .checkoutButton:hover {
-  background-color: #A378FF;
+  background-color: #a378ff;
 }
 
 @media (min-width: 640px) {
@@ -230,7 +230,12 @@
 
 @media (min-width: 1200px) {
   .page {
-    padding: 88px 152px 80px;
+    // padding: 88px 152px 80px;
+    max-width: 1136px;
+    padding-bottom: 80px;
+    padding-top: 88px;
+    padding-inline: 0;
+    margin: auto;
   }
 
   .content {

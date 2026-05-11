@@ -254,8 +254,7 @@
 }
 
 .actions {
-  display: grid;
-  grid-template-columns: 1fr 48px;
+  display: flex;
   gap: 8px;
   margin-bottom: 32px;
 }
@@ -270,6 +269,7 @@
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .favoriteButton {
@@ -281,6 +281,7 @@
   border: 1px solid #313237;
   background: #323542;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .favoriteButtonIcon {
@@ -556,7 +557,7 @@
 
   .productInfo {
     grid-row: 1;
-    grid-column: 14 / 20;
+    grid-column: 14 / 21;
   }
 
   .productId {
@@ -621,7 +622,12 @@
 
 @media (min-width: 1201px) {
   .page {
-    padding: 88px 152px 81px;
+    // padding: 88px 152px 81px;
+    max-width: 1136px;
+    margin: auto;
+    padding-top: 88px;
+    padding-bottom: 81px;
+    padding-inline: 0;
   }
 
   .addToCart {
@@ -644,7 +650,7 @@
 
   .productInfo {
     grid-row: 1;
-    grid-column: 14 / 20;
+    grid-column: 14 / 23;
   }
 
   .productId {

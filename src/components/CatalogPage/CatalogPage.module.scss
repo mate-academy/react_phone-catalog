@@ -1,5 +1,4 @@
 .page {
-  max-width: 1136px;
   margin-top: 72px;
   margin-inline: 16px;
   padding-bottom: 64px;
@@ -186,7 +185,10 @@
 
 @media (min-width: 640px) {
   .page {
-    margin-inline: calc(24px + (100vw - 640px) / 2);
+    padding-top: 72px;
+    max-width: 592px;
+    margin: auto;
+    padding-bottom: 64px;
   }
 
   .field__one {
@@ -202,6 +204,15 @@
   .pagination {
     gap: 8px;
     margin-top: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .page {
+    padding-top: 72px;
+    max-width: 720px;
+    margin: auto;
+    padding-bottom: 64px;
   }
 }
 
@@ -225,8 +236,9 @@
 
 @media (min-width: 1201px) {
   .page {
-    margin-top: 88px;
-    margin-inline: calc(152px + (100vw - 1201px) / 2);
+    padding-top: 88px;
+    max-width: 1136px;
+    margin: auto;
     padding-bottom: 80px;
   }
 }

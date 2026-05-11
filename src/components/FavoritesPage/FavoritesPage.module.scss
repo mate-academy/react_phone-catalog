@@ -86,8 +86,10 @@
 
 @media (min-width: 1201px) {
   .page {
-    margin-top: 89px;
-    margin-inline: calc(152px + (100vw - 1201px) / 2);
+    max-width: 1136px;
     padding-bottom: 80px;
+    padding-top: 89px;
+    margin-inline: 0;
+    margin: auto;
   }
 }
