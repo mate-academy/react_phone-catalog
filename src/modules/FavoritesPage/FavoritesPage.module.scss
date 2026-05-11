@@ -1,0 +1,56 @@
+@import '../../styles/main.scss';
+
+.section {
+  margin: 0 auto 64px;
+  padding: 0 16px;
+
+  @include on-tablet {
+    max-width: 1136px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+    padding: 0;
+  }
+}
+
+.top {
+  padding: 24px 0;
+}
+
+.title {
+  padding: 32px 0;
+
+  @include on-desktop {
+    padding: 56px 0;
+  }
+
+  &__text {
+    font: 800 32px/41px Mont;
+    letter-spacing: -0.01em;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__count {
+    font: 400 14px/21px Mont;
+    color: #89939a;
+  }
+}
+
+.items {
+  display: grid;
+  gap: 40px 16px;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  justify-items: center;
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1136px;
+  }
+}
+
+

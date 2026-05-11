@@ -1,9 +1,7 @@
 import React from 'react';
 import styles from './ProductSlider.module.scss';
-import classNames from 'classnames';
 
 import { ProductCard } from '../ProductCard';
-import { Product } from '../../types/ProductType';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -43,6 +41,8 @@ export const ProductSlider: React.FC<SliderType> = ({
             loop={true}
             observer={true}
             observeParents={true}
+            autoHeight={false}
+            setWrapperSize={true}
             resizeObserver={true}
             modules={[Navigation]}
             navigation={{

@@ -35,8 +35,10 @@ $desktop-card-width: 272px;
     }
 
     .card {
+      height: auto !important;
+      display: flex;
+
       width: $mobile-card-width !important;
-      flex-shrink: 0;
 
       @include on-tablet {
         width: $tablet-card-width !important;
@@ -45,11 +47,16 @@ $desktop-card-width: 272px;
       @include on-desktop {
         width: $desktop-card-width !important;
       }
+
+      & > div {
+        height: 100%;
+        width: 100%;
+      }
     }
   }
 
   &__title {
-    font-family: Mont;
+    font-family: Mont, serif;
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -1%;
@@ -57,7 +64,7 @@ $desktop-card-width: 272px;
     color: #0F0F11; // To Change
 
     @include on-mobile {
-      font-family: Mont;
+      font-family: Mont, serif;
       font-size: 22px;
       line-height: 140%;
       letter-spacing: 0;
@@ -76,6 +83,7 @@ $desktop-card-width: 272px;
     gap: 24px;
     overflow: visible;
     padding: 0 16px;
+    height: 100%;
 
     @include on-tablet {
       padding: 0;

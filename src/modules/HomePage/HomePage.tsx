@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './HomePage.module.scss';
 import { PicturesSlider } from '../../components/PicturesSlider';
-import { ProductSlider } from '../../components/ProductSlider/ProductSlider';
+import { ProductSlider } from '../../components/ProductSlider';
 
 import { Product } from '../../types/ProductType';
 import { CategoryBox } from '../../components/CategoryBox/CategoryBox';
@@ -59,7 +59,7 @@ export const HomePage = () => {
       {loader ? (
         <Loader />
       ) : (
-        <div className="section">
+        <div className={styles.section}>
           <div className={styles.title}>
             <div className={styles.title__text}>
               Welcome to Nice Gadgets store!

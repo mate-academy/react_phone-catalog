@@ -9,7 +9,7 @@ export const HeaderNav = () => {
     classNames(styles.nav__link, { [styles['nav__link--active']]: isActive });
 
   const getActiveTab = ({ isActive }: { isActive: boolean }) =>
-    classNames(styles.nav__icon, { 'nav__icon--active': isActive });
+    classNames(styles.nav__icon, { [styles['nav__icon--active']]: isActive });
 
   return (
     <>

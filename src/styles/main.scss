@@ -25,10 +25,6 @@ body{
 
   margin: auto;
 
-  > *:last-child {
-    margin-bottom: 64px;
-  }
-
   @include on-tablet {
     gap: 64px;
   }
@@ -37,9 +33,5 @@ body{
     max-width: $main-max-width;
     padding: 0;
     gap: 80px;
-
-    > *:last-child {
-      margin-bottom: 80px;
-    }
   }
 }

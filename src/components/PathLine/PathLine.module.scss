@@ -1,0 +1,35 @@
+@import '../../styles/main.scss';
+
+.path {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+
+  align-items: center;
+
+  &__icon {
+    display: flex;
+    align-items: center;
+  }
+
+  &__text {
+    box-sizing: border-box;
+    align-items: center;
+    color: #0F0F11; //To change
+    text-transform: capitalize;
+    text-decoration: none;
+
+    font-family: Mont, serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0;
+
+    &-last {
+      color: #89939A;
+    }
+  }
+}
+
+.home {
+  display: flex;
+}
