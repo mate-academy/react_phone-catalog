@@ -141,12 +141,16 @@
     }
 
     &--favorite {
-      flex: 0;
+      flex: 0 0 40px;
       width: 40px;
       height: 40px;
+      min-width: 40px;
+      max-width: 40px;
+      padding: 0;
       background-color: transparent;
       border: 1px solid #3B3E4A;
       border-radius: 0;
+      box-sizing: border-box;
 
       &:hover {
         border-color: #F1F2F9;
@@ -157,5 +161,7 @@
   &__item-btn-icon {
     width: 16px;
     height: 16px;
+    display: block;
+    pointer-events: none;
   }
 }
