@@ -12,12 +12,47 @@
     padding: 16px;
   }
 
+  &__breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__breadcrumbs-home {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  &__breadcrumbs-arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__breadcrumbs-current {
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Mont', Montserrat, sans-serif;
+    color: #75767F;
+    line-height: 1;
+  }
+
   &__title {
     font-size: 48px;
     font-weight: 800;
     line-height: 56px;
-    margin-bottom: 32px;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
     color: #F1F2F9;
+    font-family: 'Mont', Montserrat, sans-serif;
+  }
+
+  &__count {
+    font-size: 14px;
+    font-weight: 600;
+    color: #75767F;
+    margin-bottom: 32px;
   }
 
   &__empty {

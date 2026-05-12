@@ -8,9 +8,7 @@ import { Accessories, Phone, Tablet } from '../../../Interface';
 
 export const FavoritesPage = () => {
   const { favorites, toggleFavorite, cart, addToCart } = useCart();
-  const [allProducts, setAllProducts] = useState<
-    (Phone | Tablet | Accessories)[]
-  >([]);
+  const [allProducts, setAllProducts] = useState<(Phone | Tablet | Accessories)[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [imageError, setImageError] = useState<{ [key: string]: boolean }>({});
   const [loading, setLoading] = useState<boolean>(true);
@@ -70,7 +68,14 @@ export const FavoritesPage = () => {
   if (loading) {
     return (
       <section className="favorites section">
-        <h1 className="favorites__title">Your Favorites</h1>
+        <nav className="favorites__breadcrumbs">
+          <Link to="/">
+            <img src="./icons/home.svg" alt="Home" className="favorites__breadcrumbs-home" />
+          </Link>
+          <img src="./icons/arrow-right.svg" alt="arrow" className="favorites__breadcrumbs-arrow" />
+          <span className="favorites__breadcrumbs-current">Favourites</span>
+        </nav>
+        <h1 className="favorites__title">Favourites</h1>
         <p className="favorites__empty">Loading...</p>
       </section>
     );
@@ -79,7 +84,14 @@ export const FavoritesPage = () => {
   if (error) {
     return (
       <section className="favorites section">
-        <h1 className="favorites__title">Your Favorites</h1>
+        <nav className="favorites__breadcrumbs">
+          <Link to="/">
+            <img src="./icons/home.svg" alt="Home" className="favorites__breadcrumbs-home" />
+          </Link>
+          <img src="./icons/arrow-right.svg" alt="arrow" className="favorites__breadcrumbs-arrow" />
+          <span className="favorites__breadcrumbs-current">Favourites</span>
+        </nav>
+        <h1 className="favorites__title">Favourites</h1>
         <p className="favorites__empty">{error}</p>
       </section>
     );
@@ -88,7 +100,15 @@ export const FavoritesPage = () => {
   if (favoriteProducts.length === 0) {
     return (
       <section className="favorites section">
-        <h1 className="favorites__title">Your Favorites</h1>
+        <nav className="favorites__breadcrumbs">
+          <Link to="/">
+            <img src="./icons/home.svg" alt="Home" className="favorites__breadcrumbs-home" />
+          </Link>
+          <img src="./icons/arrow-right.svg" alt="arrow" className="favorites__breadcrumbs-arrow" />
+          <span className="favorites__breadcrumbs-current">Favourites</span>
+        </nav>
+        <h1 className="favorites__title">Favourites</h1>
+        <p className="favorites__count">0 items</p>
         <p className="favorites__empty">Your favorites list is empty.</p>
       </section>
     );
@@ -96,7 +116,17 @@ export const FavoritesPage = () => {
 
   return (
     <section className="favorites section">
-      <h1 className="favorites__title">Your Favorites</h1>
+      <nav className="favorites__breadcrumbs">
+        <Link to="/">
+          <img src="./icons/home.svg" alt="Home" className="favorites__breadcrumbs-home" />
+        </Link>
+        <img src="./icons/arrow-right.svg" alt="arrow" className="favorites__breadcrumbs-arrow" />
+        <span className="favorites__breadcrumbs-current">Favourites</span>
+      </nav>
+
+      <h1 className="favorites__title">Favourites</h1>
+      <p className="favorites__count">{favoriteProducts.length} items</p>
+
       <div className="favorites__items">
         {favoriteProducts.map(product => (
           <div key={product.id} className="favorites__item">
@@ -158,7 +188,7 @@ export const FavoritesPage = () => {
                 onClick={() => toggleFavorite(product.id)}
               >
                 <img
-                  src="/figmaLogo/ActiveHeart.svg"
+                  src="./icons/heart-active.svg"
                   alt="Remove from favorites"
                   className="favorites__item-btn-icon"
                 />
