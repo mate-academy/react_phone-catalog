@@ -1,0 +1,65 @@
+import { Link, NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import styles from './Asaid.module.scss';
+import '../../mixin.scss';
+
+const links = [
+  { to: '/', label: 'HOME' },
+  { to: '/phones', label: 'PHONES' },
+  { to: '/tablets', label: 'TABLETS' },
+  { to: '/accessories', label: 'ACCESSORIES' },
+];
+
+export const Asaid = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  return (
+    <aside className={styles.menuTop}>
+      <div className={styles.menuTopLogo}>
+        <Link to="/" className={styles.logoMenu}>
+          <img src="/img/logo.svg" alt="Logo" className="logo" />
+        </Link>
+      </div>
+
+      <link
+        className={styles.actionsIconMob}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        <img src="/img/burger-mob.svg" alt="BurgerMenu" />
+      </link>
+      {isMenuOpen && (
+        <div className={styles.mobileMenu}>
+          <nav>
+            <ul className={styles.navList}>
+              {links.map(link => (
+                <li key={link.to} className={styles.navItem}>
+                  <NavLink
+                    to={link.to}
+                    className={({ isActive }) =>
+                      `${styles.navLink} ${isActive ? styles.isActive : ''}`
+                    }
+                  >
+                    {link.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      )}
+      <div className={styles.actionsIcon}>
+        <Link to="/favorites" className={styles.icon} aria-label="Favorites">
+          <img
+            src="/img/favorites.svg"
+            className={styles.iconImgFavorites}
+            alt="Favourites"
+          />
+        </Link>
+
+        <Link to="/cart" className={styles.icon} aria-label="Cart">
+          <img src="/img/cart.svg" className={styles.iconImgCart} alt="Cart" />
+        </Link>
+      </div>
+    </aside>
+  );
+};

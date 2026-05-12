@@ -1,7 +1,9 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import React from 'react';
 import styles from './Header.module.scss';
 import cn from 'classnames';
+import '../../mixin.scss';
+import { Asaid } from '../Asaid/Asaid';
 
 type Props = {
   cartCount?: number;
@@ -48,16 +50,6 @@ export const Header: React.FC<Props> = ({
         </ul>
       </nav>
 
-      <button className={styles.actionsIconMob}>
-        <Link to="/">
-          <img
-            src="/img/burger-mob.svg"
-            className={styles.iconImgBurgerMob}
-            alt="BurgerMob"
-          />
-        </Link>
-      </button>
-
       <div className={styles.actionsIcon}>
         <NavLink to="/favorites" className={styles.icon} aria-label="Favorites">
           <img
@@ -75,6 +67,7 @@ export const Header: React.FC<Props> = ({
           {cartCount > 0 && <span className="badge">{cartCount}</span>}
         </NavLink>
       </div>
+      <Asaid />
     </header>
   );
 };
