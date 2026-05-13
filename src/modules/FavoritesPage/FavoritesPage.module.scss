@@ -1,0 +1,33 @@
+@import '../../styles/global';
+
+.favoritesPage {
+  margin-top: 24px;
+
+  @include pageGrid;
+
+  &__wrapper {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__textBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    margin: 0;
+    color: $colors-primary;
+
+    @include h1-text;
+  }
+
+  &__count {
+    @include body-text;
+
+    color: $colors-secondary;
+  }
+}

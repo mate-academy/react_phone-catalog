@@ -1,0 +1,28 @@
+.icon {
+  width: 6px;
+  height: 10px;
+
+  path {
+    fill: none;
+    stroke: inherit;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+.right {
+  transform: rotate(0deg);
+}
+
+.left {
+  transform: rotate(180deg);
+}
+
+.up {
+  transform: rotate(-90deg);
+}
+
+.down {
+  transform: rotate(90deg);
+}

@@ -1,0 +1,13 @@
+@import './fonts';
+@import './utils/vars';
+@import './utils/mixins';
+@import './utils/typography';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: Mont, sans-serif;
+  margin: 0;
+}

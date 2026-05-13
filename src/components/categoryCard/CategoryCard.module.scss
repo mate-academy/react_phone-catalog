@@ -1,0 +1,99 @@
+@import '../../styles/global';
+
+.categoryCard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+  gap: 24px;
+
+  transition: transform 0.3s ease;
+
+  @include onTablet {
+    width: auto;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  &__square {
+    width: 100%;
+    aspect-ratio: 1;
+    max-width: none;
+    overflow: hidden;
+    position: relative;
+    transition: box-shadow 0.3s ease;
+  }
+
+  &__image {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    display: block;
+    pointer-events: none;
+    max-width: none;
+  }
+
+  &__textBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__title {
+    color: $colors-primary;
+    margin: 0;
+
+    @include h4-text;
+  }
+
+  &__count {
+    margin: 0;
+
+    @include body-text;
+
+    color: $colors-secondary;
+  }
+}
+
+.phones {
+  .categoryCard__square {
+    background-color: #6D6474;
+  }
+
+  .categoryCard__image {
+    height: 100%;
+    transform: translate(20%, 10%);
+  }
+}
+
+.tablets {
+  .categoryCard__square {
+    background-color: #8D8D92;
+  }
+
+  .categoryCard__image {
+    height: 140%;
+    transform: translate(40%, 30%);
+  }
+}
+
+.accessories {
+  .categoryCard__square {
+    background-color: #973D5F;
+  }
+
+  .categoryCard__image {
+    height: 85%;
+    transform: translate(50%, 0%);
+  }
+}
+
+.categoryCard:hover {
+  transform: translateY(-2px) scale(1.01);
+}
+
+.categoryCard:hover .categoryCard__square {
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+}

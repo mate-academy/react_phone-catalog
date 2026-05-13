@@ -1,0 +1,45 @@
+@import '../../styles/global';
+
+.button {
+  background: none;
+  border: 1px solid $colors-icons;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $colors-primary;
+  stroke: currentColor;
+  padding: 0;
+
+  &:disabled {
+    color: $colors-icons;
+    border-color: $colors-elements;
+    cursor: auto;
+    stroke: currentColor;
+  }
+
+  &:hover:not(:disabled, .active) {
+    border: 1px solid $colors-primary;
+    cursor: pointer;
+  }
+}
+
+.active {
+  color: $colors-white;
+  background-color: $colors-primary;
+  border-color: $colors-primary;
+}
+
+.s {
+  width: 32px;
+  height: 32px;
+}
+
+.m {
+  width: 40px;
+  height: 40px;
+}
+
+.l {
+  width: 48px;
+  height: 48px;
+}
