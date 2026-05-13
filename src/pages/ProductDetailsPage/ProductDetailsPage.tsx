@@ -286,9 +286,6 @@ export const ProductDetailsPage = () => {
 
       <section className={styles.section}>
         <h2 className={styles.h2}>{t('product.about')}</h2>
-        {locale !== 'en' && t('product.aboutNote') && (
-          <p className={styles.aboutNote}>{t('product.aboutNote')}</p>
-        )}
         {details.description.map(d => (
           <article key={d.title} className={styles.about}>
             <h3 className={styles.aboutTitle}>
