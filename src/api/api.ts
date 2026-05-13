@@ -1,8 +1,5 @@
 import { Category, Product, ProductDetails } from '../types/Product';
 
-const IMAGE_BASE =
-  'https://cdn.jsdelivr.net/gh/mate-academy/react_phone-catalog@master/public/';
-
 const get = async <T>(path: string): Promise<T> => {
   const response = await fetch(`${import.meta.env.BASE_URL}${path}`);
 
@@ -47,4 +44,4 @@ export const getProductDetails = async (
 };
 
 export const buildImageUrl = (path: string) =>
-  path.startsWith('http') ? path : `${IMAGE_BASE}${path}`;
+  path.startsWith('http') ? path : `${import.meta.env.BASE_URL}${path}`;

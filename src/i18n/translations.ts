@@ -58,6 +58,8 @@ const en: Dict = {
   'product.availableColors': 'Available colors',
   'product.selectCapacity': 'Select capacity',
   'product.about': 'About',
+  'product.aboutNote':
+    '',
   'product.techSpecs': 'Tech specs',
   'product.youMayAlsoLike': 'You may also like',
   'product.notFound': 'Product not found',
@@ -183,6 +185,8 @@ const ru: Dict = {
   'product.availableColors': 'Доступные цвета',
   'product.selectCapacity': 'Выберите память',
   'product.about': 'Об устройстве',
+  'product.aboutNote':
+    'Заголовки разделов переведены; основной текст приведён в оригинале (на английском).',
   'product.techSpecs': 'Характеристики',
   'product.youMayAlsoLike': 'Вам также может понравиться',
   'product.notFound': 'Товар не найден',
@@ -308,6 +312,8 @@ const uk: Dict = {
   'product.availableColors': 'Доступні кольори',
   'product.selectCapacity': "Оберіть пам'ять",
   'product.about': 'Про пристрій',
+  'product.aboutNote':
+    'Заголовки розділів перекладено; основний текст наведено в оригіналі (англійською).',
   'product.techSpecs': 'Характеристики',
   'product.youMayAlsoLike': 'Вам може сподобатись',
   'product.notFound': 'Товар не знайдено',
