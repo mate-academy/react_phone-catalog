@@ -2,6 +2,7 @@ node_modules
 dist
 dist-ssr
 .claude
+.commit-msg
 .DS_Store
 .env
 .env.local

@@ -1,9 +1,0 @@
-feat: restore About section translation for non-English locales
-
-- Bring back the descriptionTitles dictionary that maps the 44 known
-  section headings from the API to RU and UA.
-- ProductDetailsPage uses it to translate h3 titles whenever locale
-  is not English; unknown headings fall back to the original.
-- Italic aboutNote (under the section h2) explains that paragraph
-  body stays in the original language because the source data is
-  English-only.
