@@ -15,12 +15,17 @@ import { Accessories } from './pages/Accessories';
 import { NotFound } from './pages/NotFound';
 import { Favorites } from './pages/Favorites';
 import { Cart } from './pages/Cart';
+import { Asaid } from './components/Asaid/Asaid';
 
 export const Root = () => (
   <Router>
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
+
+        <Route path="asaid">
+          <Route index element={<Asaid />} />
+        </Route>
 
         <Route path="phones">
           <Route index element={<Phones />} />
