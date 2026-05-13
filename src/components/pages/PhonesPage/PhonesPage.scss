@@ -1,0 +1,69 @@
+.phones-page {
+  padding-bottom: 40px;
+  padding-top: 48px;
+
+  @media (min-width: 640px) {
+    padding-top: 0;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #f1f2f9;
+
+    margin: 24px 0 8px;
+
+    @media (min-width: 640px) {
+      font-size: 48px;
+      line-height: 56px;
+      margin-top: 24px;
+    }
+  }
+
+  &__count {
+    font-size: 14px;
+    color: #89939a;
+    margin-bottom: 40px;
+  }
+
+  &__filters {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 288px;
+    row-gap: 40px;
+    justify-content: center;
+
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(2, 288px);
+      gap: 40px 16px;
+      justify-content: start;
+    }
+
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(4, 272px);
+      column-gap: 16px;
+    }
+
+    .product-card {
+      @media (min-width: 640px) {
+        height: 506px;
+        width: 288px;
+      }
+
+      @media (min-width: 1200px) {
+        height: auto;
+        width: 272px;
+      }
+    }
+  }
+}

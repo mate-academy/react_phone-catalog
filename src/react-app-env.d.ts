@@ -1,4 +1,4 @@
 declare module '*.json' {
-  const value: Record<string, unknown>[];
+  const value: unknown[];
   export default value;
 }

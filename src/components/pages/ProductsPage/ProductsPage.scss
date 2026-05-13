@@ -1,0 +1,48 @@
+.products-page {
+  padding: 24px;
+
+  &__title {
+    margin: 0 0 8px;
+    font-size: 32px;
+    line-height: 41px;
+    color: #313237;
+  }
+
+  &__count {
+    margin: 0 0 32px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+
+  &__filters {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__filter {
+    &-sort {
+      width: 176px;
+    }
+
+    &-per-page {
+      width: 128px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 16px;
+    row-gap: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+.products-page__pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}

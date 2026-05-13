@@ -1,0 +1,48 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  &__home {
+    width: 16px;
+    height: 16px;
+    display: block;
+    background: url('/img/icons/home.svg') no-repeat center;
+    background-size: contain;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__separator {
+    width: 16px;
+    height: 16px;
+    background: url('/img/icons/arrow-right.svg') no-repeat center;
+    background-size: contain;
+    opacity: 0.5;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #f1f2f9;
+    font-weight: 700;
+    font-size: 12px;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  &__current {
+    font-weight: 700;
+    font-size: 12px;
+    color: #89939a;
+    cursor: default;
+    text-transform: capitalize;
+  }
+}

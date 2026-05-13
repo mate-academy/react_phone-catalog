@@ -1,0 +1,110 @@
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #3b3e44;
+  background: #161827;
+
+  @media (min-width: 640px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__remove {
+    border: none;
+    background: none;
+    color: #89939a;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  &__image {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+  }
+
+  &__name {
+    font-size: 14px;
+    line-height: 21px;
+    color: #fff;
+    max-width: 180px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    @media (min-width: 640px) {
+      justify-content: flex-end;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    &-btn {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #3b3e44;
+      border-radius: 0;
+      background: #323542;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.3s ease;
+
+      // Исправленный порядок: сначала специфичное состояние :disabled
+      &:disabled {
+        background: #161827;
+        border-color: #21232e;
+        color: #4a4d58;
+        opacity: 0.6;
+        cursor: default;
+      }
+
+      &:hover:not(:disabled) {
+        border-color: #fff;
+        background: #4a4d58;
+      }
+    }
+
+    &-val {
+      min-width: 20px;
+      text-align: center;
+      font-weight: 600;
+      color: #fff;
+    }
+  }
+
+  &__price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    min-width: 80px;
+    text-align: right;
+  }
+}
