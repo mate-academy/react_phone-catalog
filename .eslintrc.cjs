@@ -37,12 +37,13 @@ module.exports = {
     'prettier'
   ],
   rules: {
-    // JS
+    // JS & General
     'semi': 'off',
     '@typescript-eslint/semi': ['error', 'always'],
     'prefer-const': 2,
     curly: [2, 'all'],
     'max-len': ['error', {
+      'code': 120,
       ignoreTemplateLiterals: true,
       ignoreComments: true,
     }],
@@ -63,10 +64,13 @@ module.exports = {
     ],
     'implicit-arrow-linebreak:': 0,
 
+    // Imports
+    'import/extensions': 'off',
+    'import/prefer-default-export': 0,
+
     // React
     'react/prop-types': 0,
     'react/require-default-props': 0,
-    'import/prefer-default-export': 0,
     'standard/no-callback-literal': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
     'react/destructuring-assignment': 0,
@@ -74,7 +78,11 @@ module.exports = {
     'react/state-in-constructor': [2, 'never'],
     'react-hooks/rules-of-hooks': 2,
     'jsx-a11y/label-has-associated-control': ["error", {
+      labelComponents: [],
+      labelAttributes: [],
+      controlComponents: [],
       assert: "either",
+      depth: 25,
     }],
     'jsx-a11y/label-has-for': [2, {
       components: ['Label'],
@@ -90,6 +98,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
+    '@typescript-eslint/no-unused-expressions': 'warn',
     '@typescript-eslint/indent': ['error', 2],
     '@typescript-eslint/ban-types': ['error', {
         extendDefaults: true,
