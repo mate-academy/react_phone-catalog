@@ -57,6 +57,11 @@
     &:hover {
       border-color: #F1F2F9;
     }
+
+    &:active {
+      background-color: #323242;
+      border-color: #F1F2F9;
+    }
   }
 
   &__swiper {
