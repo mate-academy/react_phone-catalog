@@ -23,12 +23,14 @@ export const FavoritesPage = () => {
     <div className={styles.page}>
       <Breadcrumbs crumbs={[{ label: t('favorites.title') }]} />
       <h1 className={styles.h1}>{t('favorites.title')}</h1>
-      <p className={styles.count}>
-        {favorites.length}{' '}
-        {favorites.length === 1
-          ? t('count.items_one')
-          : t('count.items_many')}
-      </p>
+      {favorites.length > 0 && (
+        <p className={styles.count}>
+          {favorites.length}{' '}
+          {favorites.length === 1
+            ? t('count.items_one')
+            : t('count.items_many')}
+        </p>
+      )}
 
       {favorites.length === 0 ? (
         <div className={styles.empty}>

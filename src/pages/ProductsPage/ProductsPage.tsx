@@ -126,9 +126,11 @@ export const ProductsPage = ({ category }: Props) => {
       <Breadcrumbs crumbs={[{ label: t(crumbKey) }]} />
 
       <h1 className={styles.h1}>{t(titleKey)}</h1>
-      <p className={styles.count}>
-        {loading ? '...' : `${filtered.length} ${t('count.models')}`}
-      </p>
+      {(loading || filtered.length > 0) && (
+        <p className={styles.count}>
+          {loading ? '...' : `${filtered.length} ${t('count.models')}`}
+        </p>
+      )}
 
       <div className={styles.controls}>
         <label className={styles.field}>

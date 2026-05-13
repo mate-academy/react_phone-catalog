@@ -6,9 +6,8 @@ import { buildImageUrl, getProductDetails } from '../../api/api';
 import { useProducts } from '../../context/ProductsContext';
 import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoritesContext';
-import { useLanguage, useT } from '../../context/LanguageContext';
+import { useT } from '../../context/LanguageContext';
 import { TranslationKey } from '../../i18n/translations';
-import { translateDescriptionTitle } from '../../i18n/descriptionTitles';
 import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { ProductsSlider } from '../../components/ProductsSlider';
@@ -59,7 +58,6 @@ export const ProductDetailsPage = () => {
   const { isInCart, add } = useCart();
   const { isFavorite, toggleFavorite } = useFavorites();
   const t = useT();
-  const { locale } = useLanguage();
 
   const [details, setDetails] = useState<ProductDetails | null>(null);
   const [loading, setLoading] = useState(true);
@@ -286,14 +284,9 @@ export const ProductDetailsPage = () => {
 
       <section className={styles.section}>
         <h2 className={styles.h2}>{t('product.about')}</h2>
-        {locale !== 'en' && t('product.aboutNote') && (
-          <p className={styles.aboutNote}>{t('product.aboutNote')}</p>
-        )}
         {details.description.map(d => (
           <article key={d.title} className={styles.about}>
-            <h3 className={styles.aboutTitle}>
-              {translateDescriptionTitle(d.title, locale)}
-            </h3>
+            <h3 className={styles.aboutTitle}>{d.title}</h3>
             {d.text.map((paragraph, i) => (
               <p key={i} className={styles.aboutText}>
                 {paragraph}
