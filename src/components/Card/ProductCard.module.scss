@@ -1,0 +1,158 @@
+.product_img {
+  width: 148px;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.product_card {
+  display: flex;
+  flex-direction: column;
+  background-color: #161827;
+  width: 100%;
+  height: 439px;
+  padding: 0 16px 16px;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+
+    .product_img {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.product_img_container {
+  width: 100%;
+  height: 129px;
+  padding: 32px 0 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product_title {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #f1f2f9;
+  margin: 0 0 8px;
+  height: 42px;
+  overflow: hidden;
+}
+
+.product_price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+
+  .price_new {
+    font-weight: 800;
+    font-size: 22px;
+    color: #f1f2f9;
+  }
+
+  .price_old {
+    font-weight: 500;
+    font-size: 14px;
+    color: #75767f;
+    text-decoration: line-through;
+  }
+}
+
+.product_hr {
+  border: none;
+  border-top: 1px solid #323542;
+  margin: 8px 0;
+  width: 100%;
+}
+
+.product_properties {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+
+  .property_row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .property_label {
+      font-size: 12px;
+      color: #75767f;
+    }
+
+    .property_value {
+      font-size: 12px;
+      font-weight: 700;
+      color: #f1f2f9;
+    }
+  }
+}
+
+.product_buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.btn_cart {
+  flex: 1;
+  background-color: #905bff;
+  color: white;
+  border: none;
+  height: 40px;
+  cursor: pointer;
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #a378ff;
+  }
+
+  &.is_in_cart {
+    background-color: #323542;
+    border: 1px solid #323542;
+    color: #f1f2f9;
+  }
+}
+
+.btn_favorite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #323542;
+  border: 1px solid #3b3e4a;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #4a4d58;
+    border-color: #4a4d58;
+  }
+
+  &.btn_favorite_active {
+    background-color: #161827;
+    border-color: #3b3e4a;
+  }
+
+  &:active {
+    background-color: #161827;
+    border-color: #3b3e4a;
+  }
+}
+
+.btn_favorite_img {
+  height: 13px;
+  width: 15px;
+}
