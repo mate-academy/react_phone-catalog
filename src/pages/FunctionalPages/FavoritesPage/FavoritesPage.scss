@@ -103,11 +103,52 @@
     margin-bottom: 8px;
   }
 
+  &__item-prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
   &__item-price {
     font-size: 22px;
     font-weight: 800;
     color: #F1F2F9;
+  }
+
+  &__item-price--old {
+    font-size: 14px;
+    font-weight: 600;
+    color: #75767F;
+    text-decoration: line-through;
+  }
+
+  &__item-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     margin-bottom: 16px;
+    border-top: 1px solid #3B3E4A;
+    padding-top: 16px;
+  }
+
+  &__item-spec {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__item-spec-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #75767F;
+  }
+
+  &__item-spec-value {
+    font-size: 12px;
+    font-weight: 700;
+    color: #F1F2F9;
+    text-align: right;
   }
 
   &__item-actions {

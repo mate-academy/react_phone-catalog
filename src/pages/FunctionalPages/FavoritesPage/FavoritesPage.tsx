@@ -65,16 +65,20 @@ export const FavoritesPage = () => {
     setImageError(prev => ({ ...prev, [imageSrc]: true }));
   };
 
+  const breadcrumbs = (
+    <nav className="favorites__breadcrumbs">
+      <Link to="/">
+        <img src="./icons/home.svg" alt="Home" className="favorites__breadcrumbs-home" />
+      </Link>
+      <img src="./icons/arrow-right.svg" alt="arrow" className="favorites__breadcrumbs-arrow" />
+      <span className="favorites__breadcrumbs-current">Favourites</span>
+    </nav>
+  );
+
   if (loading) {
     return (
       <section className="favorites section">
-        <nav className="favorites__breadcrumbs">
-          <Link to="/">
-            <img src="./icons/home.svg" alt="Home" className="favorites__breadcrumbs-home" />
-          </Link>
-          <img src="./icons/arrow-right.svg" alt="arrow" className="favorites__breadcrumbs-arrow" />
-          <span className="favorites__breadcrumbs-current">Favourites</span>
-        </nav>
+        {breadcrumbs}
         <h1 className="favorites__title">Favourites</h1>
         <p className="favorites__empty">Loading...</p>
       </section>
@@ -84,13 +88,7 @@ export const FavoritesPage = () => {
   if (error) {
     return (
       <section className="favorites section">
-        <nav className="favorites__breadcrumbs">
-          <Link to="/">
-            <img src="./icons/home.svg" alt="Home" className="favorites__breadcrumbs-home" />
-          </Link>
-          <img src="./icons/arrow-right.svg" alt="arrow" className="favorites__breadcrumbs-arrow" />
-          <span className="favorites__breadcrumbs-current">Favourites</span>
-        </nav>
+        {breadcrumbs}
         <h1 className="favorites__title">Favourites</h1>
         <p className="favorites__empty">{error}</p>
       </section>
@@ -100,13 +98,7 @@ export const FavoritesPage = () => {
   if (favoriteProducts.length === 0) {
     return (
       <section className="favorites section">
-        <nav className="favorites__breadcrumbs">
-          <Link to="/">
-            <img src="./icons/home.svg" alt="Home" className="favorites__breadcrumbs-home" />
-          </Link>
-          <img src="./icons/arrow-right.svg" alt="arrow" className="favorites__breadcrumbs-arrow" />
-          <span className="favorites__breadcrumbs-current">Favourites</span>
-        </nav>
+        {breadcrumbs}
         <h1 className="favorites__title">Favourites</h1>
         <p className="favorites__count">0 items</p>
         <p className="favorites__empty">Your favorites list is empty.</p>
@@ -116,13 +108,7 @@ export const FavoritesPage = () => {
 
   return (
     <section className="favorites section">
-      <nav className="favorites__breadcrumbs">
-        <Link to="/">
-          <img src="./icons/home.svg" alt="Home" className="favorites__breadcrumbs-home" />
-        </Link>
-        <img src="./icons/arrow-right.svg" alt="arrow" className="favorites__breadcrumbs-arrow" />
-        <span className="favorites__breadcrumbs-current">Favourites</span>
-      </nav>
+      {breadcrumbs}
 
       <h1 className="favorites__title">Favourites</h1>
       <p className="favorites__count">{favoriteProducts.length} items</p>
@@ -144,7 +130,35 @@ export const FavoritesPage = () => {
                 }
               />
               <h3 className="favorites__item-name">{product.name}</h3>
-              <p className="favorites__item-price">${product.priceDiscount}</p>
+              <div className="favorites__item-prices">
+                <span className="favorites__item-price">${product.priceDiscount}</span>
+                {product.priceRegular !== product.priceDiscount && (
+                  <span className="favorites__item-price--old">${product.priceRegular}</span>
+                )}
+              </div>
+              <div className="favorites__item-specs">
+                {isPhoneOrTablet(product) ? (
+                  <>
+                    <div className="favorites__item-spec">
+                      <span className="favorites__item-spec-label">Screen</span>
+                      <span className="favorites__item-spec-value">{product.screen}</span>
+                    </div>
+                    <div className="favorites__item-spec">
+                      <span className="favorites__item-spec-label">Capacity</span>
+                      <span className="favorites__item-spec-value">{product.capacity}</span>
+                    </div>
+                    <div className="favorites__item-spec">
+                      <span className="favorites__item-spec-label">RAM</span>
+                      <span className="favorites__item-spec-value">{product.ram}</span>
+                    </div>
+                  </>
+                ) : (
+                  <div className="favorites__item-spec">
+                    <span className="favorites__item-spec-label">Color</span>
+                    <span className="favorites__item-spec-value">{product.color}</span>
+                  </div>
+                )}
+              </div>
             </Link>
             <div className="favorites__item-actions">
               <button
