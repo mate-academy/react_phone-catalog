@@ -63,6 +63,17 @@ export const ProductsPage = ({ category }: Props) => {
   const [queryInput, setQueryInput] = useState(queryParam);
   const debouncedQuery = useDebounce(queryInput, 300);
 
+  // Reset scroll when category changes (navigating between /phones, /tablets, etc.)
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [category]);
+
+  // Smoothly scroll back to the catalog top whenever sort/page/perPage/query
+  // changes, so users always see the updated list from the start.
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [sort, perPageRaw, page, queryParam]);
+
   useEffect(() => {
     setQueryInput(queryParam);
   }, [queryParam]);

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Product } from '../../types/Product';
+import { useT } from '../../context/LanguageContext';
 import { ProductCard } from '../ProductCard';
 import styles from './ProductsSlider.module.scss';
 
@@ -10,6 +11,7 @@ interface Props {
 }
 
 export const ProductsSlider = ({ title, products, showDiscount }: Props) => {
+  const t = useT();
   const trackRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
@@ -51,7 +53,7 @@ export const ProductsSlider = ({ title, products, showDiscount }: Props) => {
             className={styles.arrow}
             onClick={() => scrollBy(-1)}
             disabled={!canPrev}
-            aria-label="Previous"
+            aria-label={t('aria.prev')}
           >
             ‹
           </button>
@@ -60,7 +62,7 @@ export const ProductsSlider = ({ title, products, showDiscount }: Props) => {
             className={styles.arrow}
             onClick={() => scrollBy(1)}
             disabled={!canNext}
-            aria-label="Next"
+            aria-label={t('aria.next')}
           >
             ›
           </button>

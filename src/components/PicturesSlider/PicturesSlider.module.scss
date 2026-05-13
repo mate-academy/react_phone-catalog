@@ -37,35 +37,30 @@
 }
 
 // ===== ORDER NOW overlay =====
-// Coordinates correspond to the baked-in pill button on banner.jpg (1040x400).
-// Slightly larger than the visual so it fully covers the underlying text and
-// the CTA can be translated without ghosting.
+// The banner image has the "ORDER NOW" pill baked-in. Rather than rendering
+// translated text on top (which would either overflow or hide the artwork),
+// we place a transparent click target precisely over the visual button.
+// Coordinates correspond to the baked-in pill on banner.jpg (1040x400).
 .orderNow {
   position: absolute;
   left: 4.5%;
   top: 69%;
   width: 22%;
   height: 16%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(34, 34, 38, 0.92);
-  color: #ffffff;
-  font-weight: 600;
-  font-size: clamp(10px, 1.3vw, 14px);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 999px;
   z-index: 2;
+  cursor: pointer;
   transition: background $transition-duration ease,
-    border-color $transition-duration ease,
     transform $transition-duration ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.08);
     transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.7);
+    outline-offset: 2px;
   }
 
   @media (max-width: 640px) {

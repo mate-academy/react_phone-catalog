@@ -145,7 +145,7 @@ export const ProductDetailsPage = () => {
       <button
         type="button"
         className={styles.back}
-        onClick={() => navigate(-1)}
+        onClick={() => navigate(categoryPath)}
       >
         ‹ {t('common.back')}
       </button>

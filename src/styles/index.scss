@@ -53,6 +53,8 @@
 
 html {
   scroll-behavior: smooth;
+  background: $color-page;
+  color: $color-text;
 }
 
 body {
@@ -64,6 +66,10 @@ body {
   -webkit-font-smoothing: antialiased;
   transition: background-color $transition-duration ease,
     color $transition-duration ease;
+}
+
+#root {
+  background: $color-page;
 }
 
 a {

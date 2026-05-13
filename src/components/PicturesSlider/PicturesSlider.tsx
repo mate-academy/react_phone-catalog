@@ -111,9 +111,11 @@ export const PicturesSlider = () => {
                       className={styles.slideImage}
                     />
                   </picture>
-                  <Link to={slide.to} className={styles.orderNow}>
-                    {t(slide.ctaKey)}
-                  </Link>
+                  <Link
+                    to={slide.to}
+                    className={styles.orderNow}
+                    aria-label={t(slide.ctaKey)}
+                  />
                   <Link
                     to={slide.to}
                     className={styles.orderNowMobile}
@@ -132,7 +134,7 @@ export const PicturesSlider = () => {
           type="button"
           className={classNames(styles.arrow, styles.arrowPrev)}
           onClick={() => goto(active - 1)}
-          aria-label="Previous slide"
+          aria-label={t('aria.prevSlide')}
         >
           ‹
         </button>
@@ -140,7 +142,7 @@ export const PicturesSlider = () => {
           type="button"
           className={classNames(styles.arrow, styles.arrowNext)}
           onClick={() => goto(active + 1)}
-          aria-label="Next slide"
+          aria-label={t('aria.nextSlide')}
         >
           ›
         </button>
@@ -155,7 +157,7 @@ export const PicturesSlider = () => {
                 [styles.dotActive]: i === active,
               })}
               onClick={() => goto(i)}
-              aria-label={`Go to slide ${i + 1}`}
+              aria-label={`${t('aria.nextSlide')} ${i + 1}`}
             />
           </li>
         ))}

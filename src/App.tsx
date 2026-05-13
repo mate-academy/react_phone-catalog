@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { ScrollToTop } from './components/ScrollToTop';
 import { HomePage } from './pages/HomePage';
 import { ProductsPage } from './pages/ProductsPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
@@ -13,6 +14,7 @@ import styles from './App.module.scss';
 
 export const App = () => (
   <div className={styles.app}>
+    <ScrollToTop />
     <Header />
     <main className={styles.main}>
       <Routes>

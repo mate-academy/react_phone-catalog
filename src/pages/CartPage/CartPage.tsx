@@ -60,7 +60,7 @@ export const CartPage = () => {
                   type="button"
                   className={styles.removeBtn}
                   onClick={() => remove(product.id)}
-                  aria-label="Remove from cart"
+                  aria-label={t('aria.removeFromCart')}
                 >
                   ×
                 </button>
@@ -88,7 +88,7 @@ export const CartPage = () => {
                     className={styles.qtyBtn}
                     onClick={() => decrement(product.id)}
                     disabled={quantity === 1}
-                    aria-label="Decrease quantity"
+                    aria-label={t('aria.decrease')}
                   >
                     −
                   </button>
@@ -97,7 +97,7 @@ export const CartPage = () => {
                     type="button"
                     className={styles.qtyBtn}
                     onClick={() => increment(product.id)}
-                    aria-label="Increase quantity"
+                    aria-label={t('aria.increase')}
                   >
                     +
                   </button>
