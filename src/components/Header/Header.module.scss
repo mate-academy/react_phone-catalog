@@ -78,33 +78,19 @@
       display: none;
 }
 }
-.mobileMenu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #fff;
-  padding: 20px;
-  z-index: 100;
 
-  nav {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-top: 40px;
+.BurgerMenu {
+  // position: relative;
+  // z-index: 100;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  .iconImgBurgerMob {
+    display: block;
+    height: 16px;
+    width: 16px;
   }
-}
-
-
-
-.iconImgBurgerMob {
-  /* display: flex;
-  justify-content: space-between;
-  align-items: center; */
-
-  height: 16px;
-  width: 16px;
 }
 
 .is-active {

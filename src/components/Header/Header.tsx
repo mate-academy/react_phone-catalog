@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 import styles from './Header.module.scss';
+import { useState } from 'react';
 import cn from 'classnames';
 import '../../mixin.scss';
 import { Asaid } from '../Asaid/Asaid';
@@ -17,6 +18,8 @@ export const Header: React.FC<Props> = ({
   cartCount = 0,
   favoritesCount = 0,
 }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <header className={styles.container}>
       <NavLink to="/" className={styles.logo}>
@@ -67,7 +70,13 @@ export const Header: React.FC<Props> = ({
           {cartCount > 0 && <span className="badge">{cartCount}</span>}
         </NavLink>
       </div>
-      <Asaid />
+      <button
+        className={styles.BurgerMenu}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        <img src="/img/burger-mob.svg" alt="BurgerMenu" />
+      </button>
+      <Asaid onClose={() => setIsMenuOpen(false)} />
     </header>
   );
 };
