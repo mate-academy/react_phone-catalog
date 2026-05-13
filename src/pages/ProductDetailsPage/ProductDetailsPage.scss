@@ -9,6 +9,11 @@
   --border-color: #3B3E4A;
 }
 
+.swiper-button-next,
+.swiper-button-prev {
+  display: none !important;
+}
+
 .product-details {
   padding: 24px 32px;
   max-width: 100%;
@@ -360,6 +365,34 @@
   }
 }
 
+.brand__nav-btn {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: 1px solid #3B3E4A;
+  border-radius: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+
+  & img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    background-color: #3B3E4A;
+    border-color: #F1F2F9;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
 .related-products {
   margin-bottom: 48px;
 
@@ -456,6 +489,8 @@
     & p {
       display: flex;
       justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
       font-size: 12px;
       line-height: 15px;
       margin-bottom: 8px;
@@ -465,11 +500,17 @@
   &__card-spec-label {
     color: #75767F;
     font-weight: 700;
+    flex-shrink: 0;
   }
 
   &__card-spec-value {
     color: #F1F2F9;
     font-weight: 700;
+    text-align: right;
+    max-width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &__card-actions {
