@@ -30,9 +30,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     toggleFavorite(product);
   };
 
-  const imagePath = product.image.startsWith('/')
-    ? product.image
-    : `/${product.image}`;
+  const imagePath = product.image;
 
   return (
     <article className="product-card" data-cy="cardsContainer">

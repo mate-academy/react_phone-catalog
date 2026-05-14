@@ -115,11 +115,11 @@ export const ProductDetailsPage: React.FC<Props> = ({ products, details }) => {
     <div className="details container" data-cy="productDetails">
       <nav className="details__top-nav" aria-label="Breadcrumb">
         <Link to="/" className="details__home-icon" aria-label="Home" />
-        <span className="details__arrow">{' > '}</span>
+        <span className="details__arrow"></span>
         <Link to={categoryPath} className="details__category-link">
           {categoryName}
         </Link>
-        <span className="details__arrow">{' > '}</span>
+        <span className="details__arrow"></span>
         <span className="details__model-name">{product.name}</span>
       </nav>
 
@@ -136,9 +136,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ products, details }) => {
       <div className="details__content">
         <div className="details__gallery">
           <div className="details__main-img">
-            {selectedImage && (
-              <img src={`/${selectedImage}`} alt={product.name} />
-            )}
+            {selectedImage && <img src={selectedImage} alt={product.name} />}
           </div>
 
           <div className="details__thumbnails">
@@ -149,7 +147,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ products, details }) => {
                 className={`details__thumb ${img === selectedImage ? 'is-active' : ''}`}
                 onClick={() => setSelectedImage(img)}
               >
-                <img src={`/${img}`} alt="thumbnail" />
+                <img src={img} alt="thumbnail" />
               </button>
             ))}
           </div>
