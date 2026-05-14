@@ -1,16 +1,10 @@
 ## How to setup the project
 There are different ways to set up a brand-new React project. The most common methods are:
 
-### 1. Create React App _vs_ React + Vite
-> Instruction link for CRA: https://create-react-app.dev/docs/getting-started.
+### 1. React + Vite
 
 > Instruction link for React + Vite: https://vitejs.dev/guide/
 
-It is recommended to select the TypeScript template (`my-app` should be the **real name** of your project app):
-```
-npx create-react-app my-app --template typescript
-```
-OR
 ```
 npm create vite my-app -- --template react-ts
 ```
@@ -161,7 +155,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: "12.x"
+          node-version: [20.x]
       - run: npm ci
       - run: npm run build
       - name: Deploy
