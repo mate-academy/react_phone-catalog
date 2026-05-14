@@ -8,6 +8,7 @@ import { useCart } from '../../Functional/CartContext/CartContext';
 
 export const AccessoriesPage = () => {
   const { addToCart, toggleFavorite, cart, favorites } = useCart();
+
   const [accessories, setAccessories] = useState<Accessories[]>([]);
   const [filteredAccessories, setFilteredAccessories] = useState<Accessories[]>([]);
   const [loading, setLoading] = useState(true);
@@ -25,6 +26,7 @@ export const AccessoriesPage = () => {
 
   useEffect(() => {
     setLoading(true);
+
     fetch(`${import.meta.env.BASE_URL}/api/accessories.json`)
       .then(response => {
         if (!response.ok) {
@@ -51,36 +53,45 @@ export const AccessoriesPage = () => {
     const filtered = accessories.filter(item =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase()),
     );
+
     const sorted = filtered.sort((a, b) => {
       if (sortBy === 'newest') return b.year - a.year;
       if (sortBy === 'priceLow') return a.priceDiscount - b.priceDiscount;
       if (sortBy === 'priceHigh') return b.priceDiscount - a.priceDiscount;
       return 0;
     });
+
     setFilteredAccessories(sorted);
   }, [accessories, searchTerm, sortBy]);
 
   const getPageNumbers = () => {
     const maxPagesToShow = 5;
     const pages = [];
+
     const startPage = Math.max(1, currentPage - 2);
     const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+
     pages.push(1);
+
     if (startPage > 2) pages.push('...');
+
     for (let i = startPage; i <= endPage; i++) {
       if (i !== 1 && i !== totalPages) pages.push(i);
     }
+
     if (endPage < totalPages - 1) pages.push('...');
+
     if (totalPages !== 1) pages.push(totalPages);
+
     return pages;
   };
 
   const handleAddToCart = (accessory: Accessories) => {
     addToCart({
-      id: accessory.id,
+      id: accessory.itemId ?? accessory.id, // fallback
       name: accessory.name,
       price: accessory.priceDiscount,
-      image: `${accessory.images[0]}`,
+      image: accessory.images[0],
       color: accessory.color,
       quantity: 1,
     });
@@ -116,7 +127,9 @@ export const AccessoriesPage = () => {
         <a href="#">
           <img src="./icons/home.svg" alt="home_nav" className="home--nav-icon" />
         </a>
+
         <img src="./icons/arrow-right.svg" alt="arrow-right" className="home--nav-arrow" />
+
         <p className="home--nav-top">Accessories</p>
       </div>
 
@@ -142,31 +155,44 @@ export const AccessoriesPage = () => {
         ) : (
           currentItems.map(accessory => (
             <div key={accessory.id} className="accessories__card">
-              <Link to={`/products/${accessory.id}`}>
+
+              {/* ✅ FIX */}
+              <Link to={`/${accessory.category}/${accessory.itemId ?? accessory.id}`}>
                 <img
                   src={
-                    imageError[`${accessory.images[0]}`]
+                    imageError[accessory.images[0]]
                       ? 'img/page-not-found.png'
-                      : `${accessory.images[0]}`
+                      : accessory.images[0]
                   }
                   alt={accessory.name}
                   className="accessories__card-image"
-                  onError={() => handleImageError(`${accessory.images[0]}`)}
+                  onError={() => handleImageError(accessory.images[0])}
                 />
-                <h3 className="accessories__card-title">{accessory.name}</h3>
+
+                <h3 className="accessories__card-title">
+                  {accessory.name}
+                </h3>
+
                 <div className="accessories__card-prices">
                   <span className="accessories__card-price">
                     ${accessory.priceDiscount}
                   </span>
                 </div>
+
                 <div className="accessories__card-specs">
                   <div className="accessories__card-spec">
-                    <span className="accessories__card-spec-label">Color</span>
-                    <span className="accessories__card-spec-value">{accessory.color}</span>
+                    <span className="accessories__card-spec-label">
+                      Color
+                    </span>
+                    <span className="accessories__card-spec-value">
+                      {accessory.color}
+                    </span>
                   </div>
                 </div>
               </Link>
+
               <div className="accessories__card-actions">
+
                 <button
                   className={`accessories__card-btn accessories__card-btn--add ${
                     cart.some(
@@ -195,9 +221,12 @@ export const AccessoriesPage = () => {
                     ? 'Added to cart'
                     : 'Add to cart'}
                 </button>
+
                 <button
                   className={`accessories__card-btn accessories__card-btn--favorite ${
-                    favorites.includes(accessory.id) ? 'favorite--active' : ''
+                    favorites.includes(accessory.id)
+                      ? 'favorite--active'
+                      : ''
                   }`}
                   onClick={e => {
                     e.preventDefault();
@@ -214,6 +243,7 @@ export const AccessoriesPage = () => {
                     className="accessories__card-btn-icon"
                   />
                 </button>
+
               </div>
             </div>
           ))
@@ -228,6 +258,7 @@ export const AccessoriesPage = () => {
         >
           {'<'}
         </button>
+
         {getPageNumbers().map((page, index) => (
           <button
             key={index}
@@ -238,6 +269,7 @@ export const AccessoriesPage = () => {
             {page}
           </button>
         ))}
+
         <button
           onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
           disabled={currentPage === totalPages}

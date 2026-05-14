@@ -57,11 +57,13 @@ export const TabletPage = () => {
 
   useEffect(() => {
     let updated = [...tablets];
+
     if (searchTerm) {
       updated = updated.filter(item =>
         item.name.toLowerCase().includes(searchTerm.toLowerCase()),
       );
     }
+
     if (sortBy === 'priceLow') {
       updated.sort((a, b) => a.priceDiscount - b.priceDiscount);
     } else if (sortBy === 'priceHigh') {
@@ -69,28 +71,33 @@ export const TabletPage = () => {
     } else if (sortBy === 'newest') {
       updated.sort((a, b) => b.year - a.year);
     }
+
     setFilteredTablets(updated);
     setCurrentPage(1);
   }, [searchTerm, sortBy, tablets]);
 
   const getPageNumbers = () => {
     const maxPagesToShow = 5;
-    const pages = [];
+    const pages: (number | string)[] = [];
     const startPage = Math.max(1, currentPage - 2);
     const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+
     pages.push(1);
     if (startPage > 2) pages.push('...');
+
     for (let i = startPage; i <= endPage; i++) {
       if (i !== 1 && i !== totalPages) pages.push(i);
     }
+
     if (endPage < totalPages - 1) pages.push('...');
     if (totalPages !== 1) pages.push(totalPages);
+
     return pages;
   };
 
   const handleAddToCart = (tablet: Tablet) => {
     const cartItem: CartItem = {
-      id: tablet.id,
+      id: tablet.itemId, // ✅ ВАЖНО
       name: tablet.name,
       price: tablet.priceDiscount,
       image: `${tablet.images[0]}`,
@@ -98,6 +105,7 @@ export const TabletPage = () => {
       capacity: tablet.capacity,
       quantity: 1,
     };
+
     addToCart(cartItem);
   };
 
@@ -157,7 +165,8 @@ export const TabletPage = () => {
         ) : (
           currentItems.map(tablet => (
             <div key={tablet.id} className="tablets__card">
-              <Link to={`/products/${tablet.id}`}>
+              {/* ✅ FIX HERE */}
+              <Link to={`/${tablet.category}/${tablet.itemId}`}>
                 <img
                   src={
                     imageError[`${tablet.images[0]}`]
@@ -169,11 +178,13 @@ export const TabletPage = () => {
                   onError={() => handleImageError(`${tablet.images[0]}`)}
                 />
                 <h3 className="tablets__card-title">{tablet.name}</h3>
+
                 <div className="tablets__card-prices">
                   <span className="tablets__card-price">
                     ${tablet.priceDiscount}
                   </span>
                 </div>
+
                 <div className="tablets__card-specs">
                   <div className="tablets__card-spec">
                     <span className="tablets__card-spec-label">Screen</span>
@@ -189,12 +200,13 @@ export const TabletPage = () => {
                   </div>
                 </div>
               </Link>
+
               <div className="tablets__card-actions">
                 <button
                   className={`tablets__card-btn tablets__card-btn--add ${
                     cart.some(
                       item =>
-                        item.id === tablet.id &&
+                        item.id === tablet.itemId &&
                         item.color === tablet.color &&
                         item.capacity === tablet.capacity,
                     )
@@ -207,32 +219,33 @@ export const TabletPage = () => {
                   }}
                   disabled={cart.some(
                     item =>
-                      item.id === tablet.id &&
+                      item.id === tablet.itemId &&
                       item.color === tablet.color &&
                       item.capacity === tablet.capacity,
                   )}
                 >
                   {cart.some(
                     item =>
-                      item.id === tablet.id &&
+                      item.id === tablet.itemId &&
                       item.color === tablet.color &&
                       item.capacity === tablet.capacity,
                   )
                     ? 'Added to cart'
                     : 'Add to cart'}
                 </button>
+
                 <button
                   className={`tablets__card-btn tablets__card-btn--favorite ${
-                    favorites.includes(tablet.id) ? 'favorite--active' : ''
+                    favorites.includes(tablet.itemId) ? 'favorite--active' : ''
                   }`}
                   onClick={e => {
                     e.preventDefault();
-                    toggleFavorite(tablet.id);
+                    toggleFavorite(tablet.itemId);
                   }}
                 >
                   <img
                     src={
-                      favorites.includes(tablet.id)
+                      favorites.includes(tablet.itemId)
                         ? './icons/heart-active.svg'
                         : './icons/heart.svg'
                     }
@@ -254,6 +267,7 @@ export const TabletPage = () => {
         >
           {'<'}
         </button>
+
         {getPageNumbers().map((page, index) => (
           <button
             key={index}
@@ -264,6 +278,7 @@ export const TabletPage = () => {
             {page}
           </button>
         ))}
+
         <button
           onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
           disabled={currentPage === totalPages}

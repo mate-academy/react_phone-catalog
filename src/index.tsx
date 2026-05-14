@@ -12,7 +12,6 @@ import { ProductDetailsPage } from './Pages/ProductDetailsPage/ProductDetailsPag
 import { CartPage } from './Pages/FunctionalPages/CartPage/CartPage';
 import { FavoritesPage } from './Pages/FunctionalPages/FavoritesPage/FavoritesPage';
 import { NotFoundPage } from './Pages/NotFoundPage/NotFoundPage';
-
 const Root = () => (
   <Router>
     <CartProvider>
@@ -23,7 +22,7 @@ const Root = () => (
           <Route path="phones" element={<PhonePage />} />
           <Route path="tablets" element={<TabletPage />} />
           <Route path="accessories" element={<AccessoriesPage />} />
-          <Route path="products/:productId" element={<ProductDetailsPage />} />
+          <Route path=":category/:productId" element={<ProductDetailsPage />} />
           <Route path="cart" element={<CartPage />} />
           <Route path="favorites" element={<FavoritesPage />} />
           <Route path="*" element={<NotFoundPage />} />
@@ -32,5 +31,4 @@ const Root = () => (
     </CartProvider>
   </Router>
 );
-
 createRoot(document.getElementById('root') as HTMLElement).render(<Root />);

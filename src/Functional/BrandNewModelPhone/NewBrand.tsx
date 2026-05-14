@@ -25,7 +25,13 @@ export default function NewBrand() {
   const [phones, setPhones] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const { addToCart, toggleFavorite, cart, favorites } = useCart();
+
+  const {
+    addToCart,
+    toggleFavorite,
+    cart,
+    favorites,
+  } = useCart();
 
   useEffect(() => {
     setLoading(true);
@@ -35,13 +41,19 @@ export default function NewBrand() {
         if (!response.ok) {
           throw new Error(`Failed to fetch: ${response.status}`);
         }
+
         return response.json();
       })
       .then((data: Product[]) => {
-        const phonesOnly = data.filter(p => p.category === 'phones');
+        const phonesOnly = data.filter(
+          p => p.category === 'phones',
+        );
 
         const sorted = [...phonesOnly].sort((a, b) => {
-          if (b.year !== a.year) return b.year - a.year;
+          if (b.year !== a.year) {
+            return b.year - a.year;
+          }
+
           return b.price - a.price;
         });
 
@@ -58,7 +70,9 @@ export default function NewBrand() {
     return (
       <section className="section">
         <div className="new-brand">
-          <p style={{ color: 'white' }}>Loading...</p>
+          <p style={{ color: 'white' }}>
+            Loading...
+          </p>
         </div>
       </section>
     );
@@ -68,7 +82,9 @@ export default function NewBrand() {
     return (
       <section className="section">
         <div className="new-brand">
-          <p style={{ color: 'red' }}>{error}</p>
+          <p style={{ color: 'red' }}>
+            {error}
+          </p>
         </div>
       </section>
     );
@@ -78,12 +94,15 @@ export default function NewBrand() {
     <section className="section">
       <div className="new-brand">
         <div className="new-brand__header">
-          <h2 className="new-brand__title">Brand new models</h2>
+          <h2 className="new-brand__title">
+            Brand new models
+          </h2>
 
           <div className="new-brand__nav">
             <button className="new-brand__nav-btn swiper-new-prev">
               {'<'}
             </button>
+
             <button className="new-brand__nav-btn swiper-new-next">
               {'>'}
             </button>
@@ -99,16 +118,34 @@ export default function NewBrand() {
             prevEl: '.swiper-new-prev',
           }}
           breakpoints={{
-            320: { slidesPerView: 1, spaceBetween: 16 },
-            640: { slidesPerView: 2, spaceBetween: 16 },
-            1200: { slidesPerView: 4, spaceBetween: 16 },
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 16,
+            },
+
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 16,
+            },
+
+            1200: {
+              slidesPerView: 4,
+              spaceBetween: 16,
+            },
           }}
           className="new-brand__swiper"
         >
           {phones.slice(0, 20).map(phone => (
-            <SwiperSlide key={phone.id} className="new-brand__slide">
+            <SwiperSlide
+              key={phone.id}
+              className="new-brand__slide"
+            >
               <div className="new-brand__card">
-                <Link to={`/products/${phone.itemId}`}>
+
+                {/* ✅ FIX */}
+                <Link
+                  to={`/${phone.category}/${phone.itemId}`}
+                >
                   <img
                     src={`${import.meta.env.BASE_URL}${phone.image}`}
                     alt={phone.name}
@@ -121,7 +158,9 @@ export default function NewBrand() {
                     }
                   />
 
-                  <h3 className="new-brand__card-title">{phone.name}</h3>
+                  <h3 className="new-brand__card-title">
+                    {phone.name}
+                  </h3>
 
                   <div className="new-brand__card-prices">
                     <span className="new-brand__card-price">
@@ -136,10 +175,12 @@ export default function NewBrand() {
                   </div>
 
                   <div className="new-brand__card-specs">
+
                     <div className="new-brand__card-spec">
                       <span className="new-brand__card-spec-label">
                         Screen
                       </span>
+
                       <span className="new-brand__card-spec-value">
                         {phone.screen}
                       </span>
@@ -149,6 +190,7 @@ export default function NewBrand() {
                       <span className="new-brand__card-spec-label">
                         Capacity
                       </span>
+
                       <span className="new-brand__card-spec-value">
                         {phone.capacity}
                       </span>
@@ -158,6 +200,7 @@ export default function NewBrand() {
                       <span className="new-brand__card-spec-label">
                         RAM
                       </span>
+
                       <span className="new-brand__card-spec-value">
                         {phone.ram}
                       </span>
@@ -166,6 +209,7 @@ export default function NewBrand() {
                 </Link>
 
                 <div className="new-brand__card-actions">
+
                   <button
                     className="new-brand__card-btn new-brand__card-btn--add"
                     onClick={() =>
@@ -179,16 +223,22 @@ export default function NewBrand() {
                         quantity: 1,
                       })
                     }
-                    disabled={cart.some(item => item.id === phone.itemId)}
+                    disabled={cart.some(
+                      item => item.id === phone.itemId,
+                    )}
                   >
-                    {cart.some(item => item.id === phone.itemId)
+                    {cart.some(
+                      item => item.id === phone.itemId,
+                    )
                       ? 'Added to cart'
                       : 'Add to cart'}
                   </button>
 
                   <button
                     className="new-brand__card-btn new-brand__card-btn--favorite"
-                    onClick={() => toggleFavorite(phone.itemId)}
+                    onClick={() =>
+                      toggleFavorite(phone.itemId)
+                    }
                   >
                     <img
                       src={
@@ -200,6 +250,7 @@ export default function NewBrand() {
                       className="new-brand__card-btn-icon"
                     />
                   </button>
+
                 </div>
               </div>
             </SwiperSlide>

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/indent */
 /* eslint-disable max-len */
+
 import { useCart } from '../../../Functional/CartContext/CartContext';
 import { Link } from 'react-router-dom';
 import './FavoritesPage.scss';
@@ -8,6 +9,7 @@ import { Accessories, Phone, Tablet } from '../../../Interface';
 
 export const FavoritesPage = () => {
   const { favorites, toggleFavorite, cart, addToCart } = useCart();
+
   const [allProducts, setAllProducts] = useState<(Phone | Tablet | Accessories)[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [imageError, setImageError] = useState<{ [key: string]: boolean }>({});
@@ -26,6 +28,7 @@ export const FavoritesPage = () => {
         './api/tablets.json',
         './api/accessories.json',
       ];
+
       const allData: (Phone | Tablet | Accessories)[] = [];
 
       try {
@@ -37,7 +40,6 @@ export const FavoritesPage = () => {
           }
 
           const data = await res.json();
-
           allData.push(...data);
         }
 
@@ -70,8 +72,12 @@ export const FavoritesPage = () => {
       <Link to="/">
         <img src="./icons/home.svg" alt="Home" className="favorites__breadcrumbs-home" />
       </Link>
+
       <img src="./icons/arrow-right.svg" alt="arrow" className="favorites__breadcrumbs-arrow" />
-      <span className="favorites__breadcrumbs-current">Favourites</span>
+
+      <span className="favorites__breadcrumbs-current">
+        Favourites
+      </span>
     </nav>
   );
 
@@ -101,7 +107,9 @@ export const FavoritesPage = () => {
         {breadcrumbs}
         <h1 className="favorites__title">Favourites</h1>
         <p className="favorites__count">0 items</p>
-        <p className="favorites__empty">Your favorites list is empty.</p>
+        <p className="favorites__empty">
+          Your favorites list is empty.
+        </p>
       </section>
     );
   }
@@ -110,62 +118,103 @@ export const FavoritesPage = () => {
     <section className="favorites section">
       {breadcrumbs}
 
-      <h1 className="favorites__title">Favourites</h1>
-      <p className="favorites__count">{favoriteProducts.length} items</p>
+      <h1 className="favorites__title">
+        Favourites
+      </h1>
+
+      <p className="favorites__count">
+        {favoriteProducts.length} items
+      </p>
 
       <div className="favorites__items">
         {favoriteProducts.map(product => (
           <div key={product.id} className="favorites__item">
-            <Link to={`/products/${product.id}`}>
+
+            {/* ✅ FIX */}
+            <Link
+              to={`/${product.category}/${product.itemId ?? product.id}`}
+            >
               <img
                 src={
-                  imageError[`${product.images[0]}`] || !product.images[0]
+                  imageError[product.images?.[0]] || !product.images?.[0]
                     ? 'img/page-not-found.png'
-                    : `${product.images[0]}`
+                    : product.images[0]
                 }
                 alt={product.name}
                 className="favorites__item-image"
                 onError={() =>
-                  product.images[0] && handleImageError(`${product.images[0]}`)
+                  product.images?.[0] &&
+                  handleImageError(product.images[0])
                 }
               />
-              <h3 className="favorites__item-name">{product.name}</h3>
+
+              <h3 className="favorites__item-name">
+                {product.name}
+              </h3>
+
               <div className="favorites__item-prices">
-                <span className="favorites__item-price">${product.priceDiscount}</span>
+                <span className="favorites__item-price">
+                  ${product.priceDiscount}
+                </span>
+
                 {product.priceRegular !== product.priceDiscount && (
-                  <span className="favorites__item-price--old">${product.priceRegular}</span>
+                  <span className="favorites__item-price--old">
+                    ${product.priceRegular}
+                  </span>
                 )}
               </div>
+
               <div className="favorites__item-specs">
                 {isPhoneOrTablet(product) ? (
                   <>
                     <div className="favorites__item-spec">
-                      <span className="favorites__item-spec-label">Screen</span>
-                      <span className="favorites__item-spec-value">{product.screen}</span>
+                      <span className="favorites__item-spec-label">
+                        Screen
+                      </span>
+                      <span className="favorites__item-spec-value">
+                        {product.screen}
+                      </span>
                     </div>
+
                     <div className="favorites__item-spec">
-                      <span className="favorites__item-spec-label">Capacity</span>
-                      <span className="favorites__item-spec-value">{product.capacity}</span>
+                      <span className="favorites__item-spec-label">
+                        Capacity
+                      </span>
+                      <span className="favorites__item-spec-value">
+                        {product.capacity}
+                      </span>
                     </div>
+
                     <div className="favorites__item-spec">
-                      <span className="favorites__item-spec-label">RAM</span>
-                      <span className="favorites__item-spec-value">{product.ram}</span>
+                      <span className="favorites__item-spec-label">
+                        RAM
+                      </span>
+                      <span className="favorites__item-spec-value">
+                        {product.ram}
+                      </span>
                     </div>
                   </>
                 ) : (
                   <div className="favorites__item-spec">
-                    <span className="favorites__item-spec-label">Color</span>
-                    <span className="favorites__item-spec-value">{product.color}</span>
+                    <span className="favorites__item-spec-label">
+                      Color
+                    </span>
+                    <span className="favorites__item-spec-value">
+                      {product.color}
+                    </span>
                   </div>
                 )}
               </div>
             </Link>
+
             <div className="favorites__item-actions">
+
               <button
                 className={`favorites__item-btn ${
                   cart.some(
                     item =>
-                      item.id === product.id && item.color === product.color,
+                      item.id === product.id &&
+                      item.color === product.color,
                   )
                     ? 'added'
                     : ''
@@ -175,9 +224,7 @@ export const FavoritesPage = () => {
                     id: product.id,
                     name: product.name,
                     price: product.priceDiscount,
-                    image: product.images[0]
-                      ? `${product.images[0]}`
-                      : 'img/page-not-found.png',
+                    image: product.images[0] || 'img/page-not-found.png',
                     color: product.color,
                     quantity: 1,
                     ...(isPhoneOrTablet(product) && {
@@ -187,16 +234,19 @@ export const FavoritesPage = () => {
                 }
                 disabled={cart.some(
                   item =>
-                    item.id === product.id && item.color === product.color,
+                    item.id === product.id &&
+                    item.color === product.color,
                 )}
               >
                 {cart.some(
                   item =>
-                    item.id === product.id && item.color === product.color,
+                    item.id === product.id &&
+                    item.color === product.color,
                 )
                   ? 'Added to cart'
                   : 'Add to cart'}
               </button>
+
               <button
                 className="favorites__item-btn favorites__item-btn--favorite favorite--active"
                 onClick={() => toggleFavorite(product.id)}
@@ -207,7 +257,9 @@ export const FavoritesPage = () => {
                   className="favorites__item-btn-icon"
                 />
               </button>
+
             </div>
+
           </div>
         ))}
       </div>
