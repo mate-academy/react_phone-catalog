@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import React from 'react';
+import { useContext } from 'react';
 import styles from './Header.module.scss';
-import { useState } from 'react';
 import cn from 'classnames';
 import '../../mixin.scss';
 import { Asaid } from '../Asaid/Asaid';
+import { MenuContext } from '../../context/MenuContext';
 
 type Props = {
   cartCount?: number;
@@ -18,7 +19,11 @@ export const Header: React.FC<Props> = ({
   cartCount = 0,
   favoritesCount = 0,
 }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menu = useContext(MenuContext);
+
+  if (!menu) {
+    return null;
+  }
 
   return (
     <header className={styles.container}>
@@ -52,7 +57,6 @@ export const Header: React.FC<Props> = ({
           </li>
         </ul>
       </nav>
-
       <div className={styles.actionsIcon}>
         <NavLink to="/favorites" className={styles.icon} aria-label="Favorites">
           <img
@@ -70,13 +74,10 @@ export const Header: React.FC<Props> = ({
           {cartCount > 0 && <span className="badge">{cartCount}</span>}
         </NavLink>
       </div>
-      <button
-        className={styles.BurgerMenu}
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-      >
+      <button className={styles.BurgerMenu} onClick={menu.toggleMenu}>
         <img src="/img/burger-mob.svg" alt="BurgerMenu" />
       </button>
-      <Asaid onClose={() => setIsMenuOpen(false)} />
+      {menu.isMenuOpen && <Asaid onClose={menu.closeMenu} />}{' '}
     </header>
   );
 };

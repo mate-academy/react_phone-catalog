@@ -1,6 +1,8 @@
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Asaid.module.scss';
 import '../../mixin.scss';
+import { MenuContext } from '../../context/MenuContext';
+import { useContext } from 'react';
 
 type Props = {
   onClose: () => void;
@@ -14,6 +16,18 @@ const links = [
 ];
 
 export const Asaid: React.FC<Props> = ({ onClose: onClose }) => {
+  const menuContext = useContext(MenuContext);
+
+  if (!menuContext) {
+    return null;
+  }
+
+  const { isMenuOpen, closeMenu } = menuContext;
+
+  if (!isMenuOpen) {
+    return null;
+  }
+
   return (
     <aside className={styles.menuTop}>
       <div className={styles.menuTopLogo}>
@@ -21,7 +35,7 @@ export const Asaid: React.FC<Props> = ({ onClose: onClose }) => {
           <img src="/img/logo.svg" alt="Logo" className="logo" />
         </Link>
 
-        <button className={styles.close} onClick={onClose}>
+        <button className={styles.close} onClick={closeMenu}>
           <img src="/img/close.svg" alt="Close" />
         </button>
       </div>

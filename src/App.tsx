@@ -4,26 +4,29 @@ import { Header } from './components/Header/Header';
 import { ProductCarts } from './components/ProductCart/ProductCarts';
 import { Outlet } from 'react-router-dom';
 import { BannerSlider } from './components/BannerSlider';
+import { MenuProvider } from './context/MenuContext';
 
 export const App: React.FC = () => {
   return (
-    <div data-cy="app">
-      <Header />
-      <div className="section">
-        <div className="container">
-          <Outlet />
+    <MenuProvider>
+      <div data-cy="app">
+        <Header />
+        <div className="section">
+          <div className="container">
+            <Outlet />
+          </div>
         </div>
+        <BannerSlider />
+        <ProductCarts
+          id={'id'}
+          title={'title'}
+          price={0}
+          screen={'screen'}
+          capacity={'capacity'}
+          ram={'ram'}
+        />
+        <Footer />
       </div>
-      <BannerSlider />
-      <ProductCarts
-        id={'id'}
-        title={'title'}
-        price={0}
-        screen={'screen'}
-        capacity={'capacity'}
-        ram={'ram'}
-      />
-      <Footer />
-    </div>
+    </MenuProvider>
   );
 };
