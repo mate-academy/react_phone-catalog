@@ -9,6 +9,7 @@ import { useFavorites } from '../../context/FavoritesContext';
 import { useLanguage, useT } from '../../context/LanguageContext';
 import { TranslationKey } from '../../i18n/translations';
 import { translateDescriptionTitle } from '../../i18n/descriptionTitles';
+import { translateDescriptionParagraph } from '../../i18n/descriptionParagraphs';
 import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { ProductsSlider } from '../../components/ProductsSlider';
@@ -293,7 +294,7 @@ export const ProductDetailsPage = () => {
             </h3>
             {d.text.map((paragraph, i) => (
               <p key={i} className={styles.aboutText}>
-                {paragraph}
+                {translateDescriptionParagraph(paragraph, locale)}
               </p>
             ))}
           </article>
