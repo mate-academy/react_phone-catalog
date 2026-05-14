@@ -1,0 +1,85 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/typography';
+
+.slider {
+  width: 100%;
+  margin: 65px 0;
+
+  overflow: visible;
+
+  @include respond-to('tablet') {
+    margin: 64px 0;
+  }
+
+  @include respond-to('desktop') {
+    margin: 80px 0;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    color: var(--text-main);
+
+    @include h2;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-main);
+
+    @include hover-transition(border-color);
+
+    @include hover {
+      border-color: var(--text-main);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      border-color: var(--border);
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    overflow: auto visible;
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__item {
+    flex-shrink: 0;
+
+    width: 212px;
+
+    @include respond-to('tablet') {
+      width: 237px;
+    }
+
+    @include respond-to('desktop') {
+      width: 272px;
+    }
+  }
+}

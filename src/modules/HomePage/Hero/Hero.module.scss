@@ -1,0 +1,98 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  grid-column: 1 / -1;
+
+  &__main {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+
+    @include respond-to('tablet') {
+      grid-template-columns: 32px 1fr 32px;
+      gap: 19px;
+    }
+
+    @include respond-to('desktop') {
+      gap: 16px;
+    }
+  }
+
+  &__viewport {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+
+    @include respond-to('desktop') {
+      height: 400px;
+    }
+  }
+
+  &__track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+  }
+
+  &__image {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__button {
+    display: none;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+
+    cursor: pointer;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+    @include hover-transition(all, 0.3s);
+
+    @include respond-to('tablet') {
+      display: flex;
+    }
+
+    @include hover {
+      border-color: var(--text-main);
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 18px;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    padding: 0;
+    border: none;
+    background-color: var(--border);
+    cursor: pointer;
+
+    @include hover-transition(all, 0.3s);
+
+    &--active {
+      background-color: var(--text-main);
+      width: 14px;
+    }
+  }
+}
