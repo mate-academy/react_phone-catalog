@@ -2,15 +2,17 @@
 import React, { useState, useEffect } from 'react';
 import './Banner.scss';
 
-const BASE_URL = import.meta.env.BASE_URL;
+const BASE = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 
 const images = [
-  `${BASE_URL}img/banner-iphone.svg`,
-  `${BASE_URL}img/banner-tablets.png`,
-  `${BASE_URL}img/banner-accessories.png`,
+  `${BASE}img/banner-iphone.svg`,
+  `${BASE}img/banner-tablets.png`,
+  `${BASE}img/banner-accessories.png`,
 ];
 
-const firstBannerMobile = `${BASE_URL}img/banner-iphone-mobile.svg`;
+const firstBannerMobile = `${BASE}img/banner-iphone-mobile.svg`;
 
 export const Banner: React.FC = () => {
   const [index, setIndex] = useState(0);
