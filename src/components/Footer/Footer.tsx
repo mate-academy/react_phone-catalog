@@ -1,57 +1,64 @@
+import React from 'react';
+import cn from 'classnames';
+import styles from './Footer.module.scss';
+import { scrollToTop } from '../../utils/scrollToTop';
 import { Link } from 'react-router-dom';
-import './Footer.scss';
-import { useEffect, useState } from 'react';
+
+import logo from '../../assets/icons/logo.png';
+import logoLight from '../../assets/icons/logo-light.png';
+import { useTheme } from '../../context/ThemeContext';
+import { ChevronIcon } from '../iconsSVG';
 
 export const Footer: React.FC = () => {
-  const [showButton, setShowButton] = useState(false);
-
-  // Функція, яка показує/ховає кнопку при скролі
-  const handleScroll = () => {
-    if (window.scrollY > 200) {
-      setShowButton(true);
-    } else {
-      setShowButton(false);
-    }
-  };
-
-  // Функція для прокрутки до верху сторінки
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const { theme } = useTheme();
 
   return (
-    <footer className="footer">
-      <Link to="/" className="footer__link-logo">
-        <img src="./img/icons/Logo.png" alt="Nice gadgets" className="footer__logo" />
-      </Link>
-      <nav className="nav_bar footer__nav-bar">
-        <a href="https://github.com/GTXtab" className="nav-bar__link">
-          GitHub
-        </a>
-        <a href="https://www.instagram.com/gtxtab/" className="nav-bar__link">
-          Contacts
-        </a>
-        <a href="#" className="nav-bar__link">
-          Rights
-        </a>
-      </nav>
-      {showButton && (
-        <div className="footer__nav-up" onClick={scrollToTop}>
-          <p className="footer__nav-up--subtitle">Back to top</p>
-          <button className="footer__button"></button>
+    <footer className={styles.footer}>
+      <div className={styles.footer__container}>
+        <div className={styles.footer__content}>
+          <Link to="/" className={styles.footer__logo} aria-label="Home">
+            <img src={theme === 'light' ? logoLight : logo} alt="Logo" />
+          </Link>
+
+          <nav className={styles.footer__nav} aria-label="Footer navigation">
+            <a
+              className={styles.footer__link}
+              href="https://github.com/GTXtab/react_phone-catalog"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+
+            <a
+              className={cn(styles.footer__link, styles['footer__link--disabled'])}
+              href="https://github.com/GTXtab"
+            >
+              Contacts
+            </a>
+
+            <a
+              className={cn(styles.footer__link, styles['footer__link--disabled'])}
+              href="https://github.com/GTXtab"
+            >
+              Rights
+            </a>
+          </nav>
+
+          <div className={styles.footer__top}>
+            <span className={styles['footer__top-text']}>Back to top</span>
+
+            <button
+              type="button"
+              className={styles['footer__top-btn']}
+              onClick={scrollToTop}
+              aria-label="Back to top"
+            >
+              <ChevronIcon direction="up" />
+            </button>
+          </div>
         </div>
-      )}
+      </div>
     </footer>
   );
 };

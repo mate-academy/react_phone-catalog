@@ -1,0 +1,87 @@
+@use '../../styles' as s;
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  margin: 40px 0 0;
+
+  &__pages {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__button {
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid var(--pagination-border-color);
+
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--text-main-color);
+
+    background: var(--pagination-bg);
+
+    transition:
+      background-color s.$effect-duration ease,
+      border-color s.$effect-duration ease,
+      color s.$effect-duration ease;
+
+    &:disabled {
+      cursor: default;
+      border-color: var(--pagination-disabled-border-color);
+      color: var(--pagination-disabled-text-color);
+      background: var(--pagination-disabled-bg);
+    }
+
+    &:not(:disabled):hover {
+      border-color: var(--pagination-hover-border-color);
+      background: var(--pagination-hover-bg);
+    }
+
+    &--active {
+      cursor: default;
+      border-color: var(--pagination-selected-border-color);
+      color: var(--pagination-selected-text-color);
+      background: var(--pagination-selected-bg);
+
+      &:hover {
+        border-color: var(--pagination-selected-border-color);
+        background: var(--pagination-selected-bg);
+      }
+    }
+  }
+
+  &__button--prev,
+  &__button--next {
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__ellipsis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color-secondary);
+  }
+}
