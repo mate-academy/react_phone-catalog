@@ -54,7 +54,7 @@ export const Banner: React.FC = () => {
               <div key={img} className="banner__slide">
                 {i === 0 ? (
                   <picture>
-                    <source media="(min-width: 640px)" srcSet={img} />
+                    <source media="(min-width: 641px)" srcSet={img} />
                     <img
                       src={firstBannerMobile}
                       alt="Promo"
