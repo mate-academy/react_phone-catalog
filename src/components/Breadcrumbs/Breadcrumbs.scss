@@ -11,6 +11,7 @@
     display: block;
     background: url('/img/icons/home.svg') no-repeat center;
     background-size: contain;
+    filter: brightness(0) invert(1);
     transition: opacity 0.3s;
 
     &:hover {
@@ -23,18 +24,23 @@
     height: 16px;
     background: url('/img/icons/arrow-right.svg') no-repeat center;
     background-size: contain;
-    opacity: 0.5;
+    filter: brightness(0) invert(0.6);
+    opacity: 1;
   }
 
   &__link {
     text-decoration: none;
-    color: #f1f2f9;
+    color: #fff !important;
     font-weight: 700;
     font-size: 12px;
-    transition: color 0.3s;
+    transition: opacity 0.3s;
+
+    &:visited {
+      color: #fff;
+    }
 
     &:hover {
-      color: #fff;
+      opacity: 0.7;
     }
   }
 
@@ -43,6 +49,10 @@
     font-size: 12px;
     color: #89939a;
     cursor: default;
-    text-transform: capitalize;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
   }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import './PhonesPage.scss';
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -10,17 +11,16 @@ import { Breadcrumbs } from '../../Breadcrumbs/Breadcrumbs';
 
 interface Props {
   products: Product[];
+  title: string;
 }
 
-export const PhonesPage: React.FC<Props> = ({ products }) => {
+export const PhonesPage: React.FC<Props> = ({ products, title }) => {
   const [searchParams] = useSearchParams();
   const sortBy = searchParams.get('sort') || 'age';
   const perPage = searchParams.get('perPage') || '16';
   const currentPage = Number(searchParams.get('page')) || 1;
 
-  const phones = products.filter(p => p.category === 'phones');
-
-  const sortedPhones = [...phones].sort((a, b) => {
+  const sortedProducts = [...products].sort((a, b) => {
     switch (sortBy) {
       case 'name':
         return a.name.localeCompare(b.name);
@@ -31,35 +31,43 @@ export const PhonesPage: React.FC<Props> = ({ products }) => {
     }
   });
 
-  const total = sortedPhones.length;
+  const total = sortedProducts.length;
   const isAll = perPage === 'all';
   const itemsCount = isAll ? total : Number(perPage);
 
   const start = (currentPage - 1) * itemsCount;
   const end = isAll ? total : start + itemsCount;
-  const visiblePhones = sortedPhones.slice(start, end);
+  const visibleProducts = sortedProducts.slice(start, end);
 
   return (
     <div className="phones-page container">
       <Breadcrumbs />
 
-      <h1 className="phones-page__title">Mobile phones</h1>
+      <h1 className="phones-page__title">{title}</h1>
       <p className="phones-page__count">{`${total} models`}</p>
 
-      <div className="phones-page__filters">
-        <SortSelector />
-        <ItemsPerPage />
-      </div>
+      {total > 0 ? (
+        <>
+          <div className="phones-page__filters">
+            <SortSelector />
+            <ItemsPerPage />
+          </div>
 
-      <div className="phones-page__list">
-        {visiblePhones.map(phone => (
-          <ProductCard key={phone.id} product={phone} />
-        ))}
-      </div>
+          <div className="phones-page__list">
+            {visibleProducts.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
 
-      {total === 0 && <p className="phones-page__empty">No phones found</p>}
-
-      {!isAll && <Pagination total={total} perPage={itemsCount} />}
+          {!isAll && total > itemsCount && (
+            <Pagination total={total} perPage={itemsCount} />
+          )}
+        </>
+      ) : (
+        <p className="phones-page__empty">
+          {`No ${title.toLowerCase()} found`}
+        </p>
+      )}
     </div>
   );
 };

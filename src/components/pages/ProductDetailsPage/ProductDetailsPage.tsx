@@ -23,7 +23,6 @@ export const ProductDetailsPage: React.FC<Props> = ({ products, details }) => {
 
   const [selectedImage, setSelectedImage] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
-
   const [step, setStep] = useState(288);
   const visibleCards = 4;
 
@@ -49,30 +48,31 @@ export const ProductDetailsPage: React.FC<Props> = ({ products, details }) => {
     }
   }, [product]);
 
+  if (!product || !baseProduct) {
+    return (
+      <div className="details container">
+        <h1 className="details__title">Product not found</h1>
+      </div>
+    );
+  }
+
+  const categoryPath = `/${baseProduct.category}`;
+  const categoryName =
+    baseProduct.category.charAt(0).toUpperCase() +
+    baseProduct.category.slice(1);
+
   const recommendedProducts = products
-    .filter(p => p.category === baseProduct?.category && p.itemId !== productId)
+    .filter(p => p.category === baseProduct.category && p.itemId !== productId)
     .slice(0, 12);
 
-  const isInCart = cart.some(item => item.itemId === productId);
-  const isInFavorites = favorites.some(item => item.id === baseProduct?.id);
+  const isInCart = cart.some(item => item.id === baseProduct.id);
+  const isInFavorites = favorites.some(item => item.id === baseProduct.id);
 
   const handleCartClick = () => {
-    if (baseProduct && isInCart) {
+    if (isInCart) {
       removeFromCart(baseProduct.id);
-    } else if (baseProduct) {
+    } else {
       addToCart(baseProduct);
-    }
-  };
-
-  const handleFavoritesClick = () => {
-    if (baseProduct) {
-      toggleFavorite(baseProduct);
-    }
-  };
-
-  const handleNext = () => {
-    if (currentIndex < recommendedProducts.length - visibleCards) {
-      setCurrentIndex(prev => prev + 1);
     }
   };
 
@@ -82,9 +82,11 @@ export const ProductDetailsPage: React.FC<Props> = ({ products, details }) => {
     }
   };
 
-  const isPrevDisabled = currentIndex === 0;
-  const isNextDisabled =
-    currentIndex >= recommendedProducts.length - visibleCards;
+  const handleNext = () => {
+    if (currentIndex < recommendedProducts.length - visibleCards) {
+      setCurrentIndex(prev => prev + 1);
+    }
+  };
 
   const getColorHex = (colorName: string) => {
     const normalizedName = colorName.toLowerCase().replace(/\s+/g, '');
@@ -92,6 +94,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ products, details }) => {
       gold: '#FCDBC1',
       grey: '#3B3E4A',
       spacegray: '#3B3E4A',
+      spacegrey: '#3B3E4A',
       black: '#0F1121',
       white: '#FFFFFF',
       midnightgreen: '#004953',
@@ -99,32 +102,32 @@ export const ProductDetailsPage: React.FC<Props> = ({ products, details }) => {
       graphite: '#41424C',
       sierrablue: '#9BB5CE',
       blue: '#215E7C',
+      silver: '#E2E3E4',
+      pink: '#FAE3E3',
+      midnight: '#191970',
+      starlight: '#F8F9EC',
     };
 
     return colors[normalizedName] || colorName;
   };
 
-  if (!product || !baseProduct) {
-    return (
-      <div className="details container">
-        <h1 className="details__title">Product not found</h1>
-      </div>
-    );
-  }
-
   return (
-    <div className="details container">
+    <div className="details container" data-cy="productDetails">
       <nav className="details__top-nav" aria-label="Breadcrumb">
         <Link to="/" className="details__home-icon" aria-label="Home" />
         <span className="details__arrow">{' > '}</span>
-        <Link to="/phones" className="details__model-name">
-          Phones
+        <Link to={categoryPath} className="details__category-link">
+          {categoryName}
         </Link>
         <span className="details__arrow">{' > '}</span>
         <span className="details__model-name">{product.name}</span>
       </nav>
 
-      <Link to="/phones" className="details__back-link">
+      <Link
+        to={categoryPath}
+        className="details__back-link"
+        data-cy="backButton"
+      >
         Back
       </Link>
 
@@ -159,7 +162,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ products, details }) => {
               {product.colorsAvailable.map(color => (
                 <Link
                   key={color}
-                  to={`/phones/${product.namespaceId}-${product.capacity.toLowerCase()}-${color}`}
+                  to={`${categoryPath}/${product.namespaceId}-${product.capacity.toLowerCase()}-${color.replace(/\s+/g, '-')}`}
                   className={`details__color ${color === product.color ? 'is-active' : ''}`}
                   style={{ backgroundColor: getColorHex(color) }}
                 />
@@ -173,7 +176,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ products, details }) => {
               {product.capacityAvailable.map(cap => (
                 <Link
                   key={cap}
-                  to={`/phones/${product.namespaceId}-${cap.toLowerCase()}-${product.color}`}
+                  to={`${categoryPath}/${product.namespaceId}-${cap.toLowerCase()}-${product.color.replace(/\s+/g, '-')}`}
                   className={`details__capacity-btn ${cap === product.capacity ? 'is-active' : ''}`}
                 >
                   {cap}
@@ -199,7 +202,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ products, details }) => {
               type="button"
               className={`details__favorite-btn ${isInFavorites ? 'is-active' : ''}`}
               aria-label="Add to favorite"
-              onClick={handleFavoritesClick}
+              onClick={() => toggleFavorite(baseProduct)}
             />
           </div>
 
@@ -220,12 +223,16 @@ export const ProductDetailsPage: React.FC<Props> = ({ products, details }) => {
       </div>
 
       <div className="details__description">
-        <section>
+        <section className="details__about">
           <h2 className="details__subtitle">About</h2>
           {product.description.map(item => (
             <div key={item.title} className="details__text-block">
               <h3 className="details__section-title">{item.title}</h3>
-              <p className="details__paragraph">{item.text}</p>
+              {item.text.map(paragraph => (
+                <p key={paragraph} className="details__paragraph">
+                  {paragraph}
+                </p>
+              ))}
             </div>
           ))}
         </section>
@@ -242,12 +249,14 @@ export const ProductDetailsPage: React.FC<Props> = ({ products, details }) => {
               { label: 'Camera', value: product.camera },
               { label: 'Zoom', value: product.zoom },
               { label: 'Cell', value: product.cell.join(', ') },
-            ].map(spec => (
-              <div key={spec.label} className="details__specs-row">
-                <span className="details__specs-label">{spec.label}</span>
-                <span className="details__specs-value">{spec.value}</span>
-              </div>
-            ))}
+            ]
+              .filter(spec => spec.value && spec.value.length > 0)
+              .map(spec => (
+                <div key={spec.label} className="details__specs-row">
+                  <span className="details__specs-label">{spec.label}</span>
+                  <span className="details__specs-value">{spec.value}</span>
+                </div>
+              ))}
           </div>
         </section>
       </div>
@@ -258,15 +267,21 @@ export const ProductDetailsPage: React.FC<Props> = ({ products, details }) => {
           <div className="details__suggested-arrows">
             <button
               type="button"
-              className={`details__suggested-arrow details__suggested-arrow--left ${isPrevDisabled ? 'is-disabled' : ''}`}
+              className={`details__suggested-arrow details__suggested-arrow--left ${currentIndex === 0 ? 'is-disabled' : ''}`}
               onClick={handlePrev}
-              disabled={isPrevDisabled}
+              disabled={currentIndex === 0}
             />
             <button
               type="button"
-              className={`details__suggested-arrow details__suggested-arrow--right ${isNextDisabled ? 'is-disabled' : ''}`}
+              className={`details__suggested-arrow details__suggested-arrow--right ${
+                currentIndex >= recommendedProducts.length - visibleCards
+                  ? 'is-disabled'
+                  : ''
+              }`}
               onClick={handleNext}
-              disabled={isNextDisabled}
+              disabled={
+                currentIndex >= recommendedProducts.length - visibleCards
+              }
             />
           </div>
         </div>

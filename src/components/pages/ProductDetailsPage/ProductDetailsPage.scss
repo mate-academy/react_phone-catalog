@@ -37,12 +37,27 @@
   }
 
   &__arrow {
-    display: flex;
-    align-items: center;
+    display: block;
     width: 16px;
     height: 16px;
     background: url('/img/icons/arrow-right.svg') no-repeat center;
     background-size: contain;
+    filter: brightness(0) invert(0.6);
+  }
+
+  &__category-link {
+    color: #fff !important;
+    text-decoration: none;
+    font-weight: 700;
+    transition: opacity 0.3s;
+
+    &:visited {
+      color: #fff !important;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   &__model-name {
@@ -52,10 +67,7 @@
     text-decoration: none;
     height: 16px;
     white-space: nowrap;
-
-    &:last-child {
-      color: #fff;
-    }
+    font-weight: 700;
   }
 
   &__back-link {

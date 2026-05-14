@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './Banner.scss';
 
+const BASE_URL =
+  window.location.hostname === 'localhost' ? '' : '/react_phone-catalog';
+
 const images = [
-  '/img/banner-iphone.svg',
-  '/img/banner-tablets.png',
-  '/img/banner-accessories.png',
+  `${BASE_URL}/img/banner-iphone.svg`,
+  `${BASE_URL}/img/banner-tablets.png`,
+  `${BASE_URL}/img/banner-accessories.png`,
 ];
 
-const firstBannerMobile = '/img/banner-iphone-mobile.svg.svg';
+const firstBannerMobile = `${BASE_URL}/img/banner-iphone-mobile.svg`;
 
 export const Banner: React.FC = () => {
   const [index, setIndex] = useState(0);

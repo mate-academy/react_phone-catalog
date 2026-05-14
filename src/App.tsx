@@ -16,18 +16,28 @@ import { FavoritesPage } from './components/pages/FavoritesPage/FavoritesPage';
 import './App.scss';
 
 export const App: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [phones, setPhones] = useState<Product[]>([]);
+  const [tablets, setTablets] = useState<Product[]>([]);
+  const [accessories, setAccessories] = useState<Product[]>([]);
   const [details, setDetails] = useState<ProductDetails[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     Promise.all([api.getProducts(), api.getProductsDetails()])
       .then(([productsData, detailsData]) => {
-        setProducts(productsData);
+        setAllProducts(productsData);
+        setPhones(productsData.filter(item => item.category === 'phones'));
+        setTablets(productsData.filter(item => item.category === 'tablets'));
+        setAccessories(
+          productsData.filter(item => item.category === 'accessories'),
+        );
         setDetails(detailsData);
       })
       .catch(() => {})
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   if (loading) {
@@ -40,18 +50,30 @@ export const App: React.FC = () => {
 
       <main className="app__main">
         <Routes>
-          <Route path="/" element={<HomePage products={products} />} />
+          <Route path="/" element={<HomePage products={phones} />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
 
-          <Route path="/phones">
-            <Route index element={<PhonesPage products={products} />} />
-            <Route
-              path=":productId"
-              element={
-                <ProductDetailsPage products={products} details={details} />
-              }
-            />
-          </Route>
+          <Route
+            path="/phones"
+            element={<PhonesPage products={phones} title="Mobile phones" />}
+          />
+
+          <Route
+            path="/tablets"
+            element={<PhonesPage products={tablets} title="Tablets" />}
+          />
+
+          <Route
+            path="/accessories"
+            element={<PhonesPage products={accessories} title="Accessories" />}
+          />
+
+          <Route
+            path="/:category/:productId"
+            element={
+              <ProductDetailsPage products={allProducts} details={details} />
+            }
+          />
 
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/cart" element={<CartPage />} />

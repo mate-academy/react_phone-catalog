@@ -9,6 +9,10 @@ interface Props {
 export const CartItem: React.FC<Props> = ({ item }) => {
   const { removeFromCart, changeQuantity } = useCart();
 
+  const imagePath = item.image.startsWith('/')
+    ? item.image.slice(1)
+    : item.image;
+
   return (
     <div className="cart-item">
       <div className="cart-item__info">
@@ -20,7 +24,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           ×
         </button>
 
-        <img src={item.image} alt={item.name} className="cart-item__image" />
+        <img src={imagePath} alt={item.name} className="cart-item__image" />
 
         <p className="cart-item__name">{item.name}</p>
       </div>
@@ -45,7 +49,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           </button>
         </div>
 
-        <p className="cart-item__price">{`$${item.price}`}</p>
+        <p className="cart-item__price">{`$${item.price * item.quantity}`}</p>
       </div>
     </div>
   );

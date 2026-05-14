@@ -30,12 +30,19 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     toggleFavorite(product);
   };
 
+  const imagePath = product.image.startsWith('/')
+    ? product.image
+    : `/${product.image}`;
+
   return (
-    <article className="product-card">
-      <Link to={`/phones/${product.itemId}`} className="product-card__link">
+    <article className="product-card" data-cy="cardsContainer">
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        className="product-card__link"
+      >
         <div className="product-card__image-container">
           <img
-            src={`/${product.image}`}
+            src={imagePath}
             alt={product.name}
             className="product-card__image"
           />
@@ -58,7 +65,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <span className="product-card__spec-value">{product.screen}</span>
         </div>
         <div className="product-card__spec">
-          <span className="product-card__spec-label">Capacity</span>
+          <span className="product-card__spec-label">
+            {product.category === 'accessories' ? 'Size' : 'Capacity'}
+          </span>
           <span className="product-card__spec-value">{product.capacity}</span>
         </div>
         <div className="product-card__spec">
