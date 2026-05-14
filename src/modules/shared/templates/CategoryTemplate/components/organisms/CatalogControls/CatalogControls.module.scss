@@ -1,0 +1,21 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.controls {
+  @include page-grid;
+
+  &__sort {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+  }
+
+  &__quantity {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+  }
+}

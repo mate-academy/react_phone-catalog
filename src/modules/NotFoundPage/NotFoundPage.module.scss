@@ -1,0 +1,11 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.notfoundpage {
+  &__back {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 16px;
+    }
+  }
+}
