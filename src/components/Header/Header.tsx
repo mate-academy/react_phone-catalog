@@ -12,13 +12,12 @@ type Props = {
   favoritesCount?: number;
 };
 
-const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-  `navbar-item  ${isActive ? 'isActive' : ''}`;
-
 export const Header: React.FC<Props> = ({
   cartCount = 0,
   favoritesCount = 0,
 }) => {
+  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `navbar-item  ${isActive ? 'isActive' : ''}`;
   const menu = useContext(MenuContext);
 
   if (!menu) {
@@ -77,7 +76,7 @@ export const Header: React.FC<Props> = ({
       <button className={styles.BurgerMenu} onClick={menu.toggleMenu}>
         <img src="/img/burger-mob.svg" alt="BurgerMenu" />
       </button>
-      {menu.isMenuOpen && <Asaid onClose={menu.closeMenu} />}{' '}
+      {menu.isMenuOpen && <Asaid onClose={menu.closeMenu} />}
     </header>
   );
 };
