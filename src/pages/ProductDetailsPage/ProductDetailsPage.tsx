@@ -28,7 +28,9 @@ export const ProductDetailsPage = () => {
   const [imageError, setImageError] = useState<{ [key: string]: boolean }>({});
   const [isLoading, setIsLoading] = useState(true);
 
-  const isPhoneOrTablet = (item: Phone | Tablet | Accessories): item is Phone | Tablet => {
+  const isPhoneOrTablet = (
+    item: Phone | Tablet | Accessories,
+  ): item is Phone | Tablet => {
     return 'capacityAvailable' in item && !!item.capacityAvailable;
   };
 
@@ -40,48 +42,79 @@ export const ProductDetailsPage = () => {
     const fetchProducts = async () => {
       setIsLoading(true);
 
-      const urls = ['/api/phones.json', '/api/tablets.json', '/api/accessories.json'];
+      const urls = [
+        './api/phones.json',
+        './api/tablets.json',
+        './api/accessories.json',
+      ];
+
       const allData: (Phone | Tablet | Accessories)[] = [];
 
       try {
         for (const url of urls) {
-          const res = await fetch(url);
-          if (!res.ok) throw new Error(`Failed to fetch ${url}`);
+          const res = await fetch(`${import.meta.env.BASE_URL}${url}`);
+
+          if (!res.ok) {
+            throw new Error(`Failed to fetch ${url}`);
+          }
+
           const data = await res.json();
+
           allData.push(...data);
         }
 
         setAllProducts(allData);
 
-        const found = allData.find(item => item.id === Number(productId));
+        console.log(productId);
+        console.log(allData);
+
+        const found = allData.find(item => item.id === productId);
 
         if (found) {
           const params = new URLSearchParams(search);
-          const urlColor = params.get('color')?.replace('-', ' ') || found.color;
+
+          const urlColor =
+            params.get('color')?.replace('-', ' ') || found.color;
+
           const urlCapacity =
             params.get('capacity') ||
-            (isPhoneOrTablet(found) ? found.capacityAvailable[0] : null);
+            (isPhoneOrTablet(found)
+              ? found.capacityAvailable[0]
+              : null);
 
           const newProduct =
             allData.find(
               p =>
-                p.id === Number(productId) &&
+                p.id === productId &&
                 p.color === urlColor &&
-                ('capacity' in p ? p.capacity === urlCapacity : true),
+                ('capacity' in p
+                  ? p.capacity === urlCapacity
+                  : true),
             ) || found;
 
           setProduct(newProduct);
+
           setSelectedColor(urlColor);
-          setSelectedImage(newProduct.images?.[0] || 'img/page-not-found.png');
+
+          setSelectedImage(
+            newProduct.images?.[0] || 'img/page-not-found.png',
+          );
+
           setSelectedCapacity(urlCapacity);
 
           const newParams = new URLSearchParams();
-          newParams.set('color', urlColor.toLowerCase().replace(' ', '-'));
+
+          newParams.set(
+            'color',
+            urlColor.toLowerCase().replace(' ', '-'),
+          );
+
           if (isPhoneOrTablet(newProduct) && urlCapacity) {
             newParams.set('capacity', urlCapacity);
           }
 
           const newUrl = `${pathname}?${newParams.toString()}`;
+
           if (newUrl !== `${pathname}${search}`) {
             navigate(newUrl, { replace: true });
           }
@@ -89,6 +122,7 @@ export const ProductDetailsPage = () => {
           setProduct(null);
         }
       } catch (error) {
+        console.error(error);
         setProduct(null);
       } finally {
         setIsLoading(false);
@@ -105,13 +139,19 @@ export const ProductDetailsPage = () => {
       p =>
         p.namespaceId === product.namespaceId &&
         p.color === color &&
-        ('capacity' in p ? p.capacity === selectedCapacity : true),
+        ('capacity' in p
+          ? p.capacity === selectedCapacity
+          : true),
     );
 
     if (newProduct) {
       setProduct(newProduct);
       setSelectedColor(color);
-      setSelectedImage(newProduct.images?.[0] || 'img/page-not-found.png');
+
+      setSelectedImage(
+        newProduct.images?.[0] || 'img/page-not-found.png',
+      );
+
       navigate(`/products/${newProduct.id}`);
     }
   };
@@ -123,13 +163,19 @@ export const ProductDetailsPage = () => {
       p =>
         p.namespaceId === product.namespaceId &&
         p.color === selectedColor &&
-        ('capacity' in p ? p.capacity === capacity : true),
+        ('capacity' in p
+          ? p.capacity === capacity
+          : true),
     );
 
     if (newProduct) {
       setSelectedCapacity(capacity);
       setProduct(newProduct);
-      setSelectedImage(newProduct.images?.[0] || 'img/page-not-found.png');
+
+      setSelectedImage(
+        newProduct.images?.[0] || 'img/page-not-found.png',
+      );
+
       navigate(`/products/${newProduct.id}`);
     }
   };
@@ -150,53 +196,95 @@ export const ProductDetailsPage = () => {
 
   const handleToggleFavorite = () => {
     if (!product) return;
+
     toggleFavorite(product.id);
   };
 
   const handleImageError = (imageSrc: string) => {
-    setImageError(prev => ({ ...prev, [imageSrc]: true }));
+    setImageError(prev => ({
+      ...prev,
+      [imageSrc]: true,
+    }));
   };
 
   const isInCart = cart.some(
-    item => item.id === product?.id && item.color === selectedColor && item.capacity === selectedCapacity,
+    item =>
+      item.id === product?.id &&
+      item.color === selectedColor &&
+      item.capacity === selectedCapacity,
   );
 
   const getCategoryLink = () => {
-    if (!product) return '#/phones';
-    if (product.category === 'phones') return '#/phones';
-    if (product.category === 'tablets') return '#/tablets';
+    if (!product) {
+      return '#/phones';
+    }
+
+    if (product.category === 'phones') {
+      return '#/phones';
+    }
+
+    if (product.category === 'tablets') {
+      return '#/tablets';
+    }
+
     return '#/accessories';
   };
 
   const relatedProducts = allProducts.filter(
-    item => item.category === product?.category && item.id !== product?.id,
+    item =>
+      item.category === product?.category &&
+      item.id !== product?.id,
   );
 
   if (isLoading) {
-    return <div className="product-details">Loading...</div>;
+    return (
+      <div className="product-details">
+        Loading...
+      </div>
+    );
   }
 
   if (!product) {
-    return <div className="product-details">Product not found</div>;
+    return (
+      <div className="product-details">
+        Product not found
+      </div>
+    );
   }
 
   return (
     <section className="product-details section">
-      {/* весь твой JSX БЕЗ ИЗМЕНЕНИЙ */}
       <div className="home--nav">
         <a href="#">
-          <img src="./icons/home.svg" alt="home_nav" className="home--nav-icon" />
+          <img
+            src="./icons/home.svg"
+            alt="home_nav"
+            className="home--nav-icon"
+          />
         </a>
-        <img src="./icons/arrow-right.svg" alt="arrow-right" className="home--nav-arrow" />
+
+        <img
+          src="./icons/arrow-right.svg"
+          alt="arrow-right"
+          className="home--nav-arrow"
+        />
+
         <a href={getCategoryLink()}>
           <YourComponent product={product} />
         </a>
-        <img src="./icons/arrow-right.svg" alt="arrow-right" className="home--nav-arrow" />
-        <span className="product-details__id">{product.name}</span>
+
+        <img
+          src="./icons/arrow-right.svg"
+          alt="arrow-right"
+          className="home--nav-arrow"
+        />
+
+        <span className="product-details__id">
+          {product.name}
+        </span>
       </div>
 
-      {/* дальше твой код 그대로 */}
-      {/* я его не обрезал логически, чтобы не сломать структуру */}
+      {/* дальше твой JSX без изменений */}
     </section>
   );
 };
