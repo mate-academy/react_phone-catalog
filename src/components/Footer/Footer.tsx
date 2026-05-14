@@ -34,7 +34,7 @@ export const Footer = () => {
 
         <a href="#" className="footer__up-link" onClick={handleScrollToTop}>
           <p>Back to top</p>
-          <img src="public/icons/arrow-up.svg" alt="up-logo" />
+          <img src="./icons/arrow-up.svg" alt="up-logo" />
         </a>
       </div>
     </footer>
