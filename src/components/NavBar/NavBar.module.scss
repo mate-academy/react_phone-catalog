@@ -1,0 +1,56 @@
+@import './../../styles/mixins';
+@import './../../styles/typography';
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+  }
+
+  &__link {
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    align-items: center;
+    position: relative;
+    width: fit-content;
+    height: 100%;
+    padding-bottom: 8px;
+    color: var(--color-secondary);
+
+    @include uppercase;
+
+    @include on-tablet {
+      display: flex;
+      padding-bottom: 0;
+    }
+
+    &--active {
+      color: var(--color-primary-dark);
+
+      &::after {
+        content: '';
+        height: 2px;
+        width: 100%;
+        background: var(--color-primary-dark);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        @include on-tablet {
+          height: 3px;
+        }
+      }
+    }
+  }
+}

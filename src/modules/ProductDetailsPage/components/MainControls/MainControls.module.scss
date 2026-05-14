@@ -1,0 +1,96 @@
+@import './../../../../styles/typography';
+
+.controls {
+  &__title {
+    color: var(--color-secondary);
+    margin-block: 0 8px;
+
+    @include small-text;
+  }
+
+  &__colorsBlock {
+    margin-bottom: 24px;
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__colorButton {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 1px solid var(--color-elements);
+    cursor: pointer;
+
+    &--active {
+      border: 1px solid var(--color-primary-dark);
+    }
+  }
+
+  &__color {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 2px solid white;
+  }
+
+  &__capacitiesBlock {
+    margin-block: 24px;
+  }
+
+  &__capacities {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__capacity {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding-inline: 8px;
+    box-sizing: border-box;
+    border: 1px solid var(--color-elements);
+    cursor: pointer;
+
+    &--active {
+      background-color: var(--color-primary-dark);
+      color: white;
+      border: 1px solid var(--color-primary-dark);
+    }
+  }
+
+  &__prises {
+    display: flex;
+    gap: 8px;
+    margin-block: 32px 16px;
+  }
+
+  &__priceDiscount {
+    color: var(--color-primary-dark);
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+
+  &__priceRegular {
+    color: var(--color-secondary);
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-decoration: line-through;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+}

@@ -1,0 +1,73 @@
+@import './../../../styles/mixins';
+@import './../../../styles/typography';
+
+.cardsSlider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__name {
+    margin-block: 0;
+    color: var(--color-primary-dark);
+
+    @include h2;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__list {
+    overflow: hidden;
+    width: calc(100%);
+    padding: 16px;
+    margin: -16px;
+
+    :global {
+      .swiper-wrapper {
+        display: flex;
+        align-items: stretch; // 👈 ключевая строка
+      }
+
+      .swiper-slide {
+        height: auto !important;
+        display: flex;
+      }
+    }
+
+    @include on-tablet {
+      padding: 24px;
+      margin: -24px;
+    }
+
+    @include on-desktop {
+      padding: 10px;
+      margin: -10px;
+    }
+
+    // &__swiper {
+    //   :global {
+    //     .swiper-wrapper {
+    //       display: flex;
+    //       align-items: stretch; // 👈 ключевая строка
+    //     }
+
+    //     .swiper-slide {
+    //       height: 0 !important;
+    //       display: flex;
+    //     }
+    //   }
+    // }
+
+    &__slide {
+      height: auto !important;
+      display: flex;
+    }
+  }
+}

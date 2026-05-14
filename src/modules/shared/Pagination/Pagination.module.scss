@@ -1,0 +1,33 @@
+.pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__page {
+    box-sizing: border-box;
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1px solid var(--color-icons);
+    color: var(--color-primary-dark);
+
+    &--active {
+      background-color: var(--color-primary-dark);
+      color: white;
+    }
+
+    &--disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      pointer-events: no;
+    }
+  }
+}

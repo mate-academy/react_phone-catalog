@@ -1,0 +1,15 @@
+@import './../../styles/mixins';
+
+.productDetailsPage {
+  &__slider {
+    margin-block: 56px;
+
+    @include on-tablet {
+      margin-block: 64px;
+    }
+
+    @include on-desktop {
+      margin-block: 80px;
+    }
+  }
+}

@@ -1,0 +1,86 @@
+@import './../../../../styles/mixins';
+@import './../../../../styles/typography';
+
+.product {
+  @include page-grid;
+
+  &__title {
+    grid-column: 1 / -1;
+    margin-block: 16px 32px;
+
+    @include h2;
+
+    @include on-tablet {
+      margin-block: 16px 40px;
+    }
+  }
+
+  &__photo {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+
+    @include on-tablet {
+      grid-column: 2 / 8;
+      grid-row: 2 / 3;
+    }
+
+    @include on-desktop {
+      grid-column: 3 / 13;
+    }
+  }
+
+  &__photoPreviews {
+    grid-column: 1 / -1;
+    margin-top: 16px;
+
+    @include on-tablet {
+      grid-column: 1 / 2;
+      margin-top: 0;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 3;
+    }
+  }
+
+  &__mainControls {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 8 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / 21;
+    }
+  }
+
+  &__about {
+    grid-column: 1 / -1;
+    margin-top: 56px;
+
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+      margin-top: 80px;
+    }
+  }
+
+  &__techSpecs {
+    grid-column: 1 / -1;
+    margin-top: 56px;
+
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / -1;
+      margin-top: 80px;
+    }
+  }
+}
