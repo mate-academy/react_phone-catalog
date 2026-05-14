@@ -1,16 +1,16 @@
+/* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import './Banner.scss';
 
-const BASE_URL =
-  window.location.hostname === 'localhost' ? '' : '/react_phone-catalog';
+const BASE_URL = import.meta.env.BASE_URL;
 
 const images = [
-  `${BASE_URL}/img/banner-iphone.svg`,
-  `${BASE_URL}/img/banner-tablets.png`,
-  `${BASE_URL}/img/banner-accessories.png`,
+  `${BASE_URL}img/banner-iphone.svg`,
+  `${BASE_URL}img/banner-tablets.png`,
+  `${BASE_URL}img/banner-accessories.png`,
 ];
 
-const firstBannerMobile = `${BASE_URL}/img/banner-iphone-mobile.svg`;
+const firstBannerMobile = `${BASE_URL}img/banner-iphone-mobile.svg`;
 
 export const Banner: React.FC = () => {
   const [index, setIndex] = useState(0);
@@ -38,6 +38,7 @@ export const Banner: React.FC = () => {
           type="button"
           className="banner__btn banner__btn--prev"
           onClick={prevSlide}
+          aria-label="Previous slide"
         >
           <span className="banner__arrow" />
         </button>
@@ -70,6 +71,7 @@ export const Banner: React.FC = () => {
           type="button"
           className="banner__btn banner__btn--next"
           onClick={nextSlide}
+          aria-label="Next slide"
         >
           <span className="banner__arrow" />
         </button>
@@ -82,6 +84,7 @@ export const Banner: React.FC = () => {
             type="button"
             className={`banner__dot ${i === index ? 'is-active' : ''}`}
             onClick={() => setIndex(i)}
+            aria-label={`Go to slide ${i + 1}`}
           />
         ))}
       </div>
