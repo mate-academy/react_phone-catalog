@@ -15,7 +15,12 @@ export const HomePage: React.FC = () => {
     () =>
       products
         .filter(p => p.fullPrice !== undefined && p.fullPrice > p.price)
-        .sort((a, b) => b.fullPrice! - b.price - (a.fullPrice! - a.price))
+        .sort((a, b) => {
+          const discountA = (a.fullPrice || 0) - a.price;
+          const discountB = (b.fullPrice || 0) - b.price;
+
+          return discountB - discountA;
+        })
         .slice(0, 8),
     [products],
   );
