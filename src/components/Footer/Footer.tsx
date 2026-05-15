@@ -19,7 +19,7 @@ export const Footer = () => {
 
         <div className="footer__links">
           <a
-            href="https://github.com/DavidKuznets?tab=repositories"
+            href="https://github.com/AlexanderBarkar/react_phone-catalog"
             className="footer__link"
           >
             Github
