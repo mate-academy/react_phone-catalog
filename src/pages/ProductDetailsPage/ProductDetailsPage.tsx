@@ -50,23 +50,25 @@ export const ProductDetailsPage = () => {
       setIsLoading(true);
 
       const categoryUrlMap: Record<string, string> = {
-        phones: './api/phones.json',
-        tablets: './api/tablets.json',
-        accessories: './api/accessories.json',
+        phones: 'api/phones.json',
+        tablets: 'api/tablets.json',
+        accessories: 'api/accessories.json',
       };
 
       const urls =
         category && categoryUrlMap[category]
           ? [categoryUrlMap[category]]
           : [
-              './api/phones.json',
-              './api/tablets.json',
-              './api/accessories.json',
+              'api/phones.json',
+              'api/tablets.json',
+              'api/accessories.json',
             ];
 
       try {
         const responses = await Promise.all(
-          urls.map(url => fetch(`${import.meta.env.BASE_URL}${url}`)),
+          urls.map(url =>
+            fetch(`${import.meta.env.BASE_URL}/${url}`),
+          ),
         );
 
         const datasets = await Promise.all(
