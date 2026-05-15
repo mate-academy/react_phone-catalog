@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import './HomePage.scss';
 import { Product } from '../../../types/Product';
@@ -11,7 +12,9 @@ interface Props {
 
 export const HomePage: React.FC<Props> = ({ products }) => {
   const brandNew = products
-    .filter(product => product.year >= 2022)
+    .filter(
+      product => product.year >= 2022 && product.fullPrice > product.price,
+    )
     .sort((a, b) => b.price - a.price);
 
   const hotPrices = products

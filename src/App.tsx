@@ -12,6 +12,7 @@ import { PhonesPage } from './components/pages/PhonesPage/PhonesPage';
 import { ProductDetailsPage } from './components/pages/ProductDetailsPage/ProductDetailsPage';
 import { CartPage } from './components/pages/CartPage/CartPage';
 import { FavoritesPage } from './components/pages/FavoritesPage/FavoritesPage';
+import { ScrollToTop } from './utils/ScrollToTop';
 
 import './App.scss';
 
@@ -46,11 +47,13 @@ export const App: React.FC = () => {
 
   return (
     <div className="app">
+      <ScrollToTop />
+
       <Header />
 
       <main className="app__main">
         <Routes>
-          <Route path="/" element={<HomePage products={phones} />} />
+          <Route path="/" element={<HomePage products={allProducts} />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
 
           <Route

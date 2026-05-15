@@ -6,19 +6,28 @@
   box-sizing: border-box;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .container {
   width: 100%;
   max-width: none;
   margin: 0;
 
   @media screen and (min-width: 1200px) {
-    padding-left: 32px;
     padding-right: 32px;
+    padding-left: 32px;
   }
 
   @media screen and (min-width: 1440px) {
-    padding-left: 152px;
     padding-right: 152px;
+    padding-left: 152px;
   }
 }
 
@@ -42,8 +51,8 @@ body {
   min-height: 100vh;
 
   &__main {
-    flex: 1 0 auto;
     display: flex;
+    flex: 1 0 auto;
     flex-direction: column;
   }
 }

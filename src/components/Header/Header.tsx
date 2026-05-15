@@ -11,6 +11,8 @@ export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
+  const totalItemsInCart = cart.reduce((sum, item) => sum + item.quantity, 0);
+
   useEffect(() => {
     if (isMenuOpen) {
       document.body.classList.add('is-menu-open');
@@ -96,8 +98,8 @@ export const Header: React.FC = () => {
 
           <NavLink to="/cart" className={getActiveIconClass}>
             <img src="img/icons/cart.svg" alt="Cart" className="header__icon" />
-            {cart.length > 0 && (
-              <span className="header__count">{cart.length}</span>
+            {totalItemsInCart > 0 && (
+              <span className="header__count">{totalItemsInCart}</span>
             )}
           </NavLink>
         </div>
@@ -154,8 +156,8 @@ export const Header: React.FC = () => {
             }
           >
             <img src="img/icons/cart.svg" alt="Cart" className="header__icon" />
-            {cart.length > 0 && (
-              <span className="header__count">{cart.length}</span>
+            {totalItemsInCart > 0 && (
+              <span className="header__count">{totalItemsInCart}</span>
             )}
           </NavLink>
         </div>
