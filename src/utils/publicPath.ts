@@ -5,5 +5,7 @@ export const getPublicUrl = (url: string) => {
 
   const cleanUrl = url.replace(/^\/+/, '');
 
-  return `${cleanBase}/${cleanUrl}`;
+  const finalUrl = `${cleanBase}/${cleanUrl}`;
+
+  return finalUrl;
 };
