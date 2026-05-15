@@ -11,11 +11,15 @@
   src: url(fonts/Mont-Regular.otf);
 }
 
+html,
 body {
+  height: 100%;
   margin: 0;
   font-family: Mont;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+// #root {
+//   min-height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+// }

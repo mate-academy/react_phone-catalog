@@ -1,14 +1,15 @@
 @import '../../mixin.scss';
 
 .menuTop {
+  // height: 100vh;
+  // background-size: cover;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 100;
-  background-color: #fff;
-  padding: 16px;
+  background-color: #FAFBFC;
   box-sizing: border-box;
 
   transform: translateX(100%);
@@ -19,11 +20,17 @@
   }
 }
 
+.close {
+  border-left: 1px solid #E2E6E9;
+}
+
 .menuTopLogo {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #E2E6E9;
 }
 
 .navList {
@@ -34,15 +41,17 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  text-transform: uppercase;
 }
 
 .navItem {
   padding: 16px 0;
-  border-bottom: 1px solid #e2e6e9;
 
-  a {
+
+
+  .navLink {
     display: block;
-    color: #89939A;
+    color: #89939a;
     text-transform: uppercase;
     text-decoration: none;
     font-weight: 800;
@@ -50,13 +59,14 @@
     line-height: 11px;
     letter-spacing: 1px;
 
-    &.isActive {
+
+    .navLinkisActive {
       color: #313237;
     }
   }
 }
 
-.close {
+.closeBtn {
   background: none;
   border: none;
   padding: 8px;
@@ -67,7 +77,7 @@
   }
 }
 
-.actionsIcon {
+.actionsIconMenu {
   display: flex;
   gap: 16px;
   margin-top: auto;

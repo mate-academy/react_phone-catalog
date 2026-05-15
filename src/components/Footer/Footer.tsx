@@ -2,37 +2,51 @@ import styles from './Footer.module.scss';
 import { NavLink } from 'react-router-dom';
 
 export const Footer = () => {
+  const handleScrollTo = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <a href="#" className={styles.logoLink}>
-          <img src="img/logo.svg" alt="Logo" className={styles.logo} />
-        </a>
+        <div className="logoLink">
+          <a href="#">
+            <img src="img/logo.svg" alt="Logo" className={styles.logo} />
+          </a>
+        </div>
+        <div className={styles.footerNavLink}>
+          <a
+            href="https://github.com/adadiada"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.footerNav}
+          >
+            GITHUB
+          </a>
+
+          <NavLink to="/contacts" className={styles.footerNav}>
+            CONTACTS
+          </NavLink>
+
+          <NavLink to="/rights" className={styles.footerNav}>
+            RIGHTS
+          </NavLink>
+        </div>
 
         <a
-          href="https://github.com/adadiada"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.github}
-        >
-          GITHUB
-        </a>
-
-        <NavLink to="/contacts" className={styles.contact}>
-          CONTACTS
-        </NavLink>
-
-        <NavLink to="/rights" className={styles.rights}>
-          RIGHTS
-        </NavLink>
-        <button
-          type="button"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          href="#"
+          onClick={handleScrollTo}
           className={styles.topBtn}
           aria-label="Back to top"
         >
-          Back to top ↑
-        </button>
+          <p className={styles.topBackToTop}>Back to top</p>
+          <img src="img/vector.svg" alt="vector" className={styles.vector} />
+        </a>
       </div>
     </footer>
   );

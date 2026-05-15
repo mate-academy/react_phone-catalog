@@ -3,6 +3,7 @@ import styles from './Asaid.module.scss';
 import '../../mixin.scss';
 import { MenuContext } from '../../context/MenuContext';
 import { useContext } from 'react';
+import cn from 'classnames';
 
 type Props = {
   onClose: () => void;
@@ -29,15 +30,16 @@ export const Asaid: React.FC<Props> = ({ onClose: onClose }) => {
   }
 
   return (
-    <aside className={styles.menuTop}>
+    <aside className={`${styles.menuTop} ${styles.isOpen}`}>
       <div className={styles.menuTopLogo}>
         <Link to="/" className={styles.logoMenu}>
           <img src="/img/logo.svg" alt="Logo" className="logo" />
         </Link>
-
-        <button className={styles.close} onClick={closeMenu}>
-          <img src="/img/close.svg" alt="Close" />
-        </button>
+        <div className={styles.close}>
+          <button className={styles.closeBtn} onClick={closeMenu}>
+            <img src="/img/close.svg" alt="Close" />
+          </button>
+        </div>
       </div>
       <nav className={styles.navList}>
         <ul className={styles.navUlList}>
@@ -46,7 +48,7 @@ export const Asaid: React.FC<Props> = ({ onClose: onClose }) => {
               <NavLink
                 to={link.to}
                 className={({ isActive }) =>
-                  `${styles.navLink} ${isActive ? styles.isActive : ''}`
+                  cn(styles.navLink, isActive && styles.navLinkisActive)
                 }
               >
                 {link.label}
@@ -55,7 +57,7 @@ export const Asaid: React.FC<Props> = ({ onClose: onClose }) => {
           ))}
         </ul>
       </nav>
-      <div className={styles.actionsIcon}>
+      <div className={styles.actionsIconMenu}>
         <Link to="/favorites" className={styles.icon} aria-label="Favorites">
           <img
             src="/img/favorites.svg"
