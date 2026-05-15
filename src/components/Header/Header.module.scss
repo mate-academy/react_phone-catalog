@@ -66,7 +66,7 @@
     color: var(--text-color-secondary);
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: .04em;
+    letter-spacing: 0.04em;
 
     transition: color s.$effect-duration ease;
 
@@ -88,17 +88,8 @@
       background: var(--text-main-color);
 
       transition:
-        transform s.$effect-duration cubic-bezier(.2, .9, .3, 1),
+        transform s.$effect-duration cubic-bezier(0.2, 0.9, 0.3, 1),
         opacity s.$effect-duration linear;
-    }
-
-    &:hover,
-    &:focus {
-      color: var(--text-main-color);
-
-      &::after {
-        transform: scaleX(1);
-      }
     }
 
     &--active {
@@ -108,6 +99,15 @@
         transform: scaleX(1);
         opacity: 1;
         background: var(--text-main-color);
+      }
+    }
+
+    &:hover,
+    &:focus {
+      color: var(--text-main-color);
+
+      &::after {
+        transform: scaleX(1);
       }
     }
   }
@@ -349,6 +349,15 @@
         opacity s.$effect-duration ease;
     }
 
+    &--active {
+      color: var(--text-main-color);
+
+      &::after {
+        opacity: 1;
+        background: var(--text-main-color);
+      }
+    }
+
     &:hover {
       &::after {
         opacity: 1;
@@ -380,17 +389,7 @@
       width: 63px;
       height: 64px;
     }
-
-    &--active {
-      color: var(--text-main-color);
-
-      &::after {
-        opacity: 1;
-        background: var(--text-main-color);
-      }
-    }
   }
-
   &__badge {
     pointer-events: none;
 

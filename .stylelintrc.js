@@ -1,6 +1,6 @@
 module.exports = {
   extends: "@mate-academy/stylelint-config",
   rules: {
-    "lightness-notation": "percentage"
+    "lightness-notation": null
   }
 };

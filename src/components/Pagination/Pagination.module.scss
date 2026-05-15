@@ -39,6 +39,13 @@
       border-color s.$effect-duration ease,
       color s.$effect-duration ease;
 
+    &--active {
+      cursor: default;
+      border-color: var(--pagination-selected-border-color);
+      color: var(--pagination-selected-text-color);
+      background: var(--pagination-selected-bg);
+    }
+
     &:disabled {
       cursor: default;
       border-color: var(--pagination-disabled-border-color);
@@ -46,21 +53,14 @@
       background: var(--pagination-disabled-bg);
     }
 
+    &--active:hover {
+      border-color: var(--pagination-selected-border-color);
+      background: var(--pagination-selected-bg);
+    }
+
     &:not(:disabled):hover {
       border-color: var(--pagination-hover-border-color);
       background: var(--pagination-hover-bg);
-    }
-
-    &--active {
-      cursor: default;
-      border-color: var(--pagination-selected-border-color);
-      color: var(--pagination-selected-text-color);
-      background: var(--pagination-selected-bg);
-
-      &:hover {
-        border-color: var(--pagination-selected-border-color);
-        background: var(--pagination-selected-bg);
-      }
     }
   }
 

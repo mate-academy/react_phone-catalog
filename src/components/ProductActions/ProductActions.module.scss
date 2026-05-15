@@ -7,7 +7,7 @@
     transition:
       background-color s.$effect-duration ease,
       border-color s.$effect-duration ease,
-      color s.$effect-duration ease,
+      color s.$effect-duration ease;
   }
 
   &__cartButton {
@@ -16,15 +16,15 @@
     color: var(--button-text-color);
     background: var(--button-main-color);
 
-    &:hover {
-      color: var(--hover-text-color);
-      background: var(--button-main-color-hover);
-    }
-
     &--added {
       border: 1px solid var(--border-color);
       color: var(--added-text-color);
       background: var(--added-button);
+    }
+
+    &:hover {
+      color: var(--hover-text-color);
+      background: var(--button-main-color-hover);
     }
   }
 
@@ -40,12 +40,12 @@
 
     background: var(--fav-btn-bg);
 
-    &:hover {
-      border-color: var(--border-color);
-    }
-
     &--selected {
       background: var(--fav-btn-bg-active);
+    }
+
+    &:hover {
+      border-color: var(--border-color);
     }
 
     &:active {
