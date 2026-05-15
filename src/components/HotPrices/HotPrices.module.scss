@@ -1,0 +1,9 @@
+@import '../../styles/utils';
+
+.hot-prices {
+  padding-bottom: 80px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+}

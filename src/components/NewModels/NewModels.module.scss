@@ -1,0 +1,19 @@
+@import '../../styles/utils';
+
+.new-models {
+  padding-bottom: 80px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-phone {
+    padding-bottom: 56px;
+  }
+
+  &__title {
+    @include on-phone {
+      max-width: 136px;
+    }
+  }
+}

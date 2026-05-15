@@ -1,0 +1,76 @@
+@import '../../styles/utils';
+
+.breadcrumbs {
+  padding: 24px 0 40px;
+
+  @include on-phone {
+    padding: 24px 0;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    color: $nav-color;
+    font-size: 12px;
+    line-height: 100%;
+  }
+
+  &__item {
+    position: relative;
+    padding-right: 32px;
+
+    &:first-child::after {
+      position: absolute;
+      content: '';
+      background-image: url('../img/icons/arrow-right-disabled.svg');
+      width: 16px;
+      height: 16px;
+      top: 0;
+      right: 8px;
+
+      @media (max-width: 360px) {
+        top: -2px;
+      }
+    }
+
+    &:nth-child(2):not(:last-child) .breadcrumbs__link {
+      color: $main-color;
+    }
+  }
+
+
+  &__img {
+    @include on-phone {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__item-id {
+    font-size: 12px;
+    line-height: 100%;
+    color: $nav-color;
+    position: relative;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+
+    &::before {
+      position: absolute;
+      content: '';
+      background-image: url('../img/icons/arrow-right-disabled.svg');
+      width: 16px;
+      height: 16px;
+      bottom: -2px;
+      left: -24px;
+
+      @include on-phone {
+        bottom: 4px;
+      }
+    }
+  }
+}

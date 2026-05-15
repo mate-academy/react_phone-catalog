@@ -1,0 +1,469 @@
+@import '../../styles/utils';
+
+.product-details {
+
+  &__back-btn {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: $main-color;
+    font-size: 12px;
+    line-height: 100%;
+    padding-left: 20px;
+
+    @include hover(color, $accent-color);
+
+    &::before {
+      position: absolute;
+      content: '';
+      background-image: url('../img/icons/arrow-left.svg');
+      width: 16px;
+      height: 16px;
+      left: 0;
+      bottom: 0;
+      transition: all .3s;
+    }
+
+    &:hover::before {
+      background-image: url('../img/icons/arrow-left-hover.svg');
+    }
+  }
+
+  &__img-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__img {
+    max-width: 50%;
+    height: 50%;
+
+    @media (max-width: 720px) {
+      max-width: 85%;
+    }
+  }
+
+  &__content {
+    padding: 16px 0 80px;
+
+    @include on-tablet {
+      padding: 16px 0 64px;
+    }
+  }
+
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 80px;
+    margin-top: 40px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-phone {
+      margin-top: 32px;
+      margin-bottom: 56px;
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+
+  &__slider-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 545px;
+    height: 545px;
+
+    @include on-tablet {
+      width: 287px;
+      height: 287px;
+    }
+
+    @include on-phone {
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__slider-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding-right: 64px;
+
+    @include on-tablet {
+      padding-right: 17px;
+    }
+
+    @include on-phone {
+      padding-right: 0;
+      height: auto;
+      max-height: 60vh;
+    }
+  }
+
+  &__characteristics {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+
+    @include on-tablet {
+      width: 237px;
+    }
+
+    @include on-phone {
+      width: 100%;
+    }
+  }
+
+  &__characteristics-box {
+    margin-bottom: 24px;
+  }
+
+  &__characteristics-content {
+    @include on-phone {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+    }
+  }
+
+  &__id {
+    display: none;
+
+    @include on-phone {
+      display: block;
+      font-size: 12px;
+      line-height: 100%;
+      color: $hover-btn-color;
+    }
+  }
+
+  &__characteristics-title {
+    font-size: 12px;
+    line-height: 100%;
+    color: $nav-color;
+  }
+
+  &__characteristics-color {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  &__characteristics-color-link {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #3B3E4A;
+    padding: 2px;
+    background-clip: content-box;
+    border-radius: 36px;
+
+    @include hover(border-color, $nav-color)
+  }
+
+  &__characteristics-color-link--active {
+    border: 1px solid $main-color;
+    pointer-events: none;
+    cursor: none;
+  }
+
+  &__characteristics-divider {
+    height: 1px;
+    background-color: #3B3E4A;
+    margin-bottom: 24px;
+  }
+
+  &__characteristics-capacity {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  &__characteristics-capacity-link {
+    @extend %mont-600;
+
+    color: $main-color;
+    padding: 7px 8px 4px;
+    border: 1px solid $hover-btn-color;
+    text-align: center;
+
+    @include hover(border-color, $nav-color)
+  }
+
+  &__characteristics-capacity-link--active {
+    border: none;
+    background-color: $main-color;
+    color: $background-color;
+    pointer-events: none;
+    cursor: none;
+  }
+
+  &__characteristics-price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__characteristics-new-price {
+    @extend %mont-800;
+
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &__characteristics-old-price {
+    @extend %mont-600;
+
+    font-size: 22px;
+    line-height: 100%;
+    color: $nav-color;
+    text-decoration: line-through;
+    padding-bottom: 2px;
+  }
+
+  &__characteristics-link-box {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+
+    @include on-phone {
+      justify-content: space-between;
+    }
+  }
+
+  &__characteristics-link {
+    background-color: $accent-color;
+    color: $main-color;
+    width: 263px;
+    padding-inline: 13px;
+    border: none;
+    cursor: pointer;
+
+    @include hover(background-color, $hover-main-btn-color);
+  }
+
+  &__characteristics-link--selected {
+    background-color: $btn-color;
+  }
+
+  &__characteristics-link-favourite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    background-color: $btn-color;
+    border: none;
+    cursor: pointer;
+    background-image: url('../img/icons/heart.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include hover(background-color, $hover-btn-color);
+  }
+
+  &__characteristics-link-favourite--selected {
+    background-color: transparent;
+    border: 1px solid #3B3E4A;
+    background-image: url('../img/icons/heart-selected.svg');
+  }
+
+  &__characteristics-descr {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__characteristics-descr-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__characteristics-descr-title {
+    font-size: 12px;
+    line-height: 100%;
+    color: $nav-color;
+  }
+
+  &__characteristics-descr-text {
+    font-size: 12px;
+    line-height: 100%;
+  }
+
+  &__identifier {
+    font-size: 12px;
+    line-height: 100%;
+    color: $hover-btn-color;
+
+    @include on-phone {
+      display: none;
+    }
+  }
+
+  &__description {
+    display: flex;
+    justify-content: space-between;
+    gap: 64px;
+    margin-bottom: 80px;
+
+    @include on-tablet {
+      flex-direction: column;
+      margin-bottom: 64px;
+    }
+
+    @include on-phone {
+      margin-bottom: 56px;
+      gap: 56px;
+    }
+  }
+
+  &__description-title {
+    @extend %mont-800;
+
+    font-size: 22px;
+    line-height: 140%;
+    margin-bottom: 16px;
+
+    @include on-phone {
+      font-size: 20px;
+      line-height: 100%;
+    }
+  }
+
+  &__description-divider {
+    height: 1px;
+    background-color: #3B3E4A;
+    margin-bottom: 32px;
+  }
+
+  &__about {
+    width: 560px;
+
+    @include on-tablet {
+      width: 100%;
+    }
+  }
+
+  &__about-box {
+    margin-bottom: 32px;
+  }
+
+  &__about-title {
+    font-size: 20px;
+    line-height: 100%;
+    margin-bottom: 16px;
+
+    @include on-phone {
+      font-size: 16px;
+    }
+  }
+
+  &__about-text {
+    @extend %mont-600;
+
+    color: $nav-color;
+  }
+
+  &__techspecs {
+    width: 512px;
+
+    @include on-tablet {
+      width: 100%;
+    }
+  }
+
+  &__techspecs-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__techspecs-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__techspecs-title {
+    @extend %mont-600;
+
+    color: $nav-color;
+  }
+
+  &__techspecs-text {
+    @extend %mont-600;
+  }
+
+  &__title-slider {
+    @media (max-width: 340px) {
+      max-width: 136px;
+    }
+  }
+}
+
+.pagination {
+  position: static;
+  order: -1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 80px;
+  transform: none !important;
+
+  @include on-tablet {
+    max-width: 35px;
+    gap: 8px;
+  }
+
+  @include on-phone {
+    order: 2;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+    max-width: 100%;
+    gap: 8px;
+  }
+}
+
+.bullet {
+  border: 1px solid #3B3E4A;
+  width: 80px;
+  height: 80px;
+  background: transparent;
+  padding: 8px;
+  transition: border-color 0.3s ease;
+  cursor: pointer;
+
+  @include on-tablet {
+    width: 35px;
+    height: 35px;
+    padding: 4px;
+  }
+
+  & img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.activeBullet {
+  border: 1px solid $main-color;
+  pointer-events: none;
+  cursor: auto;
+}

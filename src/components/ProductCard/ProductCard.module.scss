@@ -1,0 +1,136 @@
+@import '../../styles/utils';
+
+.product-card {
+  max-width: 272px;
+  height: 100%;
+  padding: 32px;
+  background-color: $card-color;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all .3s;
+
+  &:hover {
+    border: 1px solid $btn-color;
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 1199px) {
+    max-width: 100%;
+  }
+
+  &__img {
+    height: 196px;
+    display: block;
+    margin: 0 auto 16px;
+  }
+
+  &__link-title {
+    color: $main-color
+  }
+
+  &__title {
+    @extend %mont-600;
+
+    height: 42px;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__new-price {
+    @extend %mont-800;
+
+    font-size: 22px;
+    line-height: 140%;
+  }
+
+  &__old-price {
+    @extend %mont-600;
+
+    font-size: 20px;
+    line-height: 100%;
+    color: $nav-color;
+    text-decoration: line-through;
+    padding-bottom: 2px;
+  }
+
+  &__divider {
+    border: 1px solid #3B3E4A;
+    margin-bottom: 8px;
+  }
+
+  &__descr {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-block: 8px;
+  }
+
+  &__descr-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__descr-title {
+    font-size: 12px;
+    line-height: 100%;
+    color: $nav-color;
+  }
+
+  &__descr-text {
+    font-size: 12px;
+    line-height: 100%;
+  }
+
+  &__link-box {
+    display: flex;
+    gap: 8px;
+
+    @include on-tablet {
+      justify-content: space-between;
+    }
+  }
+
+  &__link {
+    border: none;
+    cursor: pointer;
+
+    @extend %btn;
+    @include hover(background-color, $hover-main-btn-color);
+  }
+
+  &__link--selected {
+    background-color: $btn-color;
+  }
+
+  &__link-favourite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    color: $main-color;
+    background-color: $btn-color;
+    border: none;
+    cursor: pointer;
+    background-image: url('../img/icons/heart.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include hover(background-color, $hover-btn-color);
+  }
+
+  &__link-favourite--selected {
+    background-color: transparent;
+    border: 1px solid #3B3E4A;
+    background-image: url('../img/icons/heart-selected.svg');
+  }
+}
