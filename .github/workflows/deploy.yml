@@ -26,7 +26,7 @@ jobs:
       - name: Build project
         run: npm run build
         env:
-          PUBLIC_URL: https://gtxtab.github.io/react_phone-catalog/
+          PUBLIC_URL: /react_phone-catalog/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
