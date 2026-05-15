@@ -5,6 +5,7 @@
     "declarations.d.ts"
   ],
   "compilerOptions": {
+    "baseUrl": ".",
     "sourceMap": false,
     "types": ["node", "cypress"]
   }
