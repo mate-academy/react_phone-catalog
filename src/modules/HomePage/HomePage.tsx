@@ -31,9 +31,7 @@ export const HomePage: React.FC = () => {
 
       {isLoading && <Loader />}
 
-      {!isLoading && error && (
-        <div className={styles.error}>{error}</div>
-      )}
+      {!isLoading && error && <div className={styles.error}>{error}</div>}
 
       {!isLoading && !error && (
         <>
@@ -44,11 +42,7 @@ export const HomePage: React.FC = () => {
           </section>
 
           <section>
-            <ProductSlider
-              title="Brand new models"
-              products={brandNew}
-              hideDiscount
-            />
+            <ProductSlider title="Brand new models" products={brandNew} hideDiscount />
           </section>
 
           <section className={styles.section}>
@@ -57,10 +51,7 @@ export const HomePage: React.FC = () => {
           </section>
 
           <section>
-            <ProductSlider
-              title="Hot Prices"
-              products={hotPrices}
-            />
+            <ProductSlider title="Hot Prices" products={hotPrices} />
           </section>
         </>
       )}
