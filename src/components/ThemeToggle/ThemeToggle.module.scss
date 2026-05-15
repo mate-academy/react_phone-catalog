@@ -1,0 +1,41 @@
+@use '../../styles' as s;
+
+.button {
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 36px;
+  padding: 4px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+
+  color: var(--text-main-color);
+
+  background: transparent;
+
+  transition:
+    background s.$effect-duration ease,
+    color s.$effect-duration ease,
+    transform s.$effect-duration ease;
+
+  &:hover,
+  &:focus {
+    transform: translateY(-1px);
+    outline: none;
+  }
+
+  @include s.on-tablet {
+    width: 40px;
+  }
+}
+
+.icon {
+  display: inline-flex;
+  line-height: 0;
+  svg {
+    display: block;
+  }
+}

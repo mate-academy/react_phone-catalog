@@ -1,0 +1,60 @@
+@use './vars.scss' as v;
+
+html[data-theme='dark'] {
+  --theme-background: #0F1121;
+  --border-color: #323542;
+  --text-main-color: #F1F2F9;
+  --text-color-secondary: #75767F;
+  --icons-hover: #4A4D58;
+  --button-main-color: #905BFF;
+  --button-main-color-hover: #A378FF;
+  --button-text-color: #F1F2F9;
+  --bg-card-color: #161827;
+  --border-card: #161827;
+  --card-btn-border-radius: 4px;
+  --hover-text-color: #{v.$white};
+  --added-text-color: #{v.$white};
+  --pagination-bg: var(--bg-card-color);
+  --pagination-border-color: var(--bg-card-color);
+  --pagination-hover-bg: var(--icons-hover);
+  --pagination-hover-border-color: var(--icons-hover);
+  --pagination-selected-bg: var(--button-main-color);
+  --pagination-selected-border-color: var(--button-main-color);
+  --pagination-selected-text-color: var(--button-text-color);
+  --pagination-disabled-bg: transparent;
+  --pagination-disabled-border-color: var(--border-color);
+  --pagination-disabled-text-color: var(--icons-hover);
+  --added-button: var(--border-color);
+  --fav-btn-bg: var(--border-color);
+  --fav-btn-bg-active: var(--bg-card-color);
+  --fav-btn-border: var(--border-color);
+}
+
+html[data-theme="light"] {
+  --theme-background: #{v.$white};
+  --border-color: #E2E6E9;
+  --text-main-color: #313237;
+  --text-color-secondary: #89939A;
+  --icons-hover: #B4BDC3;
+  --button-main-color: #313237;
+  --button-main-color-hover: #17203166;
+  --button-text-color:#F1F2F9;
+  --border-card: #E2E6E9;
+  --card-btn-border-radius: 8px;
+  --added-text-color: #27AE60;
+  --hover-text-color: var(--theme-background);
+  --pagination-bg: var(--theme-background);
+  --pagination-border-color: var(--border-color);
+  --pagination-hover-bg: var(--theme-background);
+  --pagination-hover-border-color: var(--text-main-color);
+  --pagination-selected-bg: var(--button-main-color);
+  --pagination-selected-border-color: var(--button-main-color);
+  --pagination-selected-text-color: var(--button-text-color);
+  --pagination-disabled-bg: var(--theme-background);
+  --pagination-disabled-border-color: var(--border-color);
+  --pagination-disabled-text-color: var(--icons-hover);
+  --added-button: var(--theme-background);
+  --fav-btn-bg: var(--theme-background);
+  --fav-btn-bg-active: var(--theme-background);
+  --fav-btn-border: var(--icons-hover);
+}
