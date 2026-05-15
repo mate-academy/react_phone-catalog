@@ -1,1 +1,34 @@
-// not empty
+
+:root {
+  --color-primary: #{$color-primary};
+  --color-secondary: #{$color-secondary};
+  --color-accent: #{$color-accent};
+  --color-hover-bg: #{$color-hover-bg};
+  --color-white: #{$color-white};
+  --color-elements: #{$color-elements};
+  --color-icons: #{$color-icons};
+  --color-red: #{$color-red};
+  --color-green: #{$color-green};
+  --color-border: #{$color-elements};
+  --color-border-active-selector: #{$color-icons};
+  --color-border-selector: #{$color-elements};
+  --border-width-selected: #{$border-width-selected};
+}
+
+body.dark {
+  --color-primary: #F1F2F9;
+  --color-secondary: #75767F;
+  --color-hover-bg: #0F1111;
+  --color-white: #161A1D;
+  --color-elements: #161A1D;
+  --color-icons: #B4BDC3;
+  --color-border-active-selector: #{$color-white};
+  --color-border-selector: #{$color-icons};
+  --border-width-selected: 2px;
+}
+
+@import './modules/shared/assets/styles/fonts';
+@import './modules/shared/assets/styles/layout';
+@import './modules/shared/assets/styles/typography';
+
+

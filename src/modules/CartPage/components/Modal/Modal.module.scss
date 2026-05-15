@@ -1,0 +1,77 @@
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+
+  @include flex-center;
+
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  animation: fade-in 0.3s ease;
+}
+
+.modal {
+  background: var(--color-white);
+  padding: 24px;
+  border-radius: 16px;
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @include shadow('modal');
+
+  animation: slide-up 0.3s ease;
+
+  .text {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0;
+  }
+}
+
+.buttonBlock {
+  @include flex-center;
+
+  gap: 12px;
+
+ .clearBtn {
+   background-color: var(--color-white);
+   color: var(--color-red);
+   border: 1px solid var(--color-red);
+ }
+
+ .keepBtn {
+  background-color: var(--color-white);
+  color: var(--color-green);
+  border: 1px solid var(--color-green);
+ }
+}
+
+h3 {
+  margin: 0;
+}
+
+
+@keyframes fade-in {
+  from {
+     opacity: 0;
+    }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,19 @@
+.productCard {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--color-elements);
+  padding: 32px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  box-sizing: border-box;
+  transition: transform $transition-base;
+
+  &:hover {
+    @include shadow('card');
+
+    z-index: 10;
+    transform: scale(1.02);
+  }
+}

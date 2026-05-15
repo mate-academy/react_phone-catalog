@@ -1,0 +1,18 @@
+.imageWrapper {
+  @include flex-center;
+
+  height: 196px;
+  margin-bottom: 24px;
+}
+
+.image {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.imageLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}

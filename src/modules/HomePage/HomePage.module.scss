@@ -1,0 +1,68 @@
+.home {
+  grid-column: span 24;
+
+  @include respond-to('mobile') {
+    grid-column: span 12;
+  }
+
+  @include respond-to('tablet') {
+    grid-column: span 6;
+  }
+}
+
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.title {
+  @include typography(48px, 800, 56px, -0.01em);
+
+  color: var(--color-primary);
+  margin-bottom: 32px;
+
+  @include respond-to('mobile') {
+    @include typography(32px, 800, 41px);
+  }
+}
+
+
+.homeSection {
+  margin-bottom: 56px;
+
+  &:first-child {
+    margin-top: 56px;
+
+    @include respond-to('tablet') {
+      margin-top: 32px;
+      margin-bottom: 32px;
+    }
+
+    @include respond-to('mobile') {
+     margin-top: 24px;
+     margin-bottom: 24px;
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 80px;
+
+    @include respond-to('tablet') {
+      margin-bottom: 64px;
+    }
+  }
+}
+
+h2 {
+  margin: 0;
+  margin-bottom: 24px;
+}
+

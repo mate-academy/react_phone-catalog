@@ -1,0 +1,119 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0 40px;
+
+  @include respond-to('mobile') {
+    margin-bottom: 24px;
+  }
+}
+
+.breadcrumbCurrent {
+  align-items: center;
+  font-size: 12px;
+}
+
+.breadcrumbArrow {
+  @include flex-center;
+
+  color: var(--color-icons);
+  flex-shrink: 0;
+}
+
+.title {
+  margin-bottom: 12px;
+
+  @include respond-to('mobile') {
+    margin-bottom: 8px;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0 24px;
+  gap: 4px;
+
+  grid-column: span 4;
+
+  @include respond-to('tablet') {
+    grid-column: span 4;
+  }
+
+  @include respond-to('mobile') {
+    grid-column: span 2;
+    margin-top: 32px;
+  }
+}
+
+.fieldItems {
+  grid-column: span 3;
+
+  @include respond-to('tablet') {
+    grid-column: span 2;
+  }
+
+  @include respond-to('mobile') {
+    grid-column: span 2;
+  }
+}
+
+.productSection {
+  margin-bottom: 80px;
+}
+
+.paginationWrapper {
+  @include flex-center;
+
+  margin-top: 40px;
+  gap: 8px;
+
+  width: 100%;
+  max-width: 248px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.paginationViewport {
+  overflow: hidden;
+  height: 32px;
+  margin: 0 8px;
+}
+
+.paginationTrack {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.5s ease-in-out;
+  width: max-content;
+
+  span {
+    color: var(--color-primary);
+  }
+}
+
+.selected {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+
+  span {
+    color: inherit;
+  }
+}
+
+.noProducts {
+  @include flex-center;
+
+  min-height: 200px;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--color-secondary);
+  text-align: center;
+
+  @include respond-to('mobile') {
+    font-size: 16px;
+    min-height: 100px;
+  }
+}

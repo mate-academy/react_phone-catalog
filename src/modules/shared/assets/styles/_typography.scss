@@ -1,0 +1,74 @@
+h1 {
+  @include typography(48px, 800, 56px, -0.01em);
+
+  color: var(--color-primary);
+  margin: 0 0 32px;
+
+  @include respond-to('mobile') {
+    @include typography(32px, 800, 41px);
+  }
+}
+
+h2 {
+  @include typography(32px, 800, 41px, -0.01em);
+
+  margin: 0;
+  color: var(--color-primary);
+
+
+  @include respond-to('mobile') {
+    @include typography(22px, 800, 31px, 0);
+  }
+}
+
+h3 {
+  @include typography(22px, 800, 31px, 0);
+
+  color: var(--color-primary);
+  margin: 0;
+
+  @include respond-to('mobile') {
+    @include typography(20px, 600, 26px, 0);
+  }
+}
+
+h4 {
+  @include typography(20px, 600, 26px, 0);
+
+  color: var(--color-primary);
+  margin: 0;
+
+  @include respond-to('mobile') {
+    @include typography(16px, 600, 20px, 0);
+  }
+}
+
+.body-text {
+  @include typography(14px, 400, 21px);
+
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+.buttons {
+  @include typography(14px, 600, 21px);
+}
+
+.uppercase {
+ @include typography(12px, 800, 11px, 0.04em);
+
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.small-text {
+ @include typography(12px, 600, 15px);
+
+  color: var(--color-secondary);
+}

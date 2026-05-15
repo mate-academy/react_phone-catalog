@@ -1,0 +1,170 @@
+.bunnerWrapper {
+  display: flex;
+  gap: 16px;
+  max-width: 1136px;
+  margin: 0 auto 16px;
+  min-height: 200px;
+
+  @include respond-to('mobile') {
+    gap: 0;
+    height: 352px;
+  }
+}
+
+.sliderButton {
+  flex: 0 0 32px;
+  align-items: stretch;
+  border: 1px solid var(--color-icons);
+  height: auto;
+
+  @include respond-to('mobile') {
+    display: none;
+  }
+}
+
+.imgContainer {
+  flex: 1;
+  position: relative;
+  aspect-ratio: 1040 / 400;
+  background-color: var(--color-primary);
+  overflow: hidden;
+  border-radius: 8px;
+
+  @include respond-to('tablet') {
+    aspect-ratio: 592 / 221;
+  }
+
+  @include respond-to('mobile') {
+    aspect-ratio: 288 / 352;
+  }
+
+}
+
+.imagesTrack {
+  display: flex;
+  height: 100%;
+  will-change: transform;
+}
+
+.slide {
+  flex: 0 0 100%;
+  min-height: 100%;
+
+  @include flex-center;
+
+  flex-direction: row;
+
+  @include respond-to('mobile') {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+
+.bannerInfo {
+  flex: 1;
+  padding: 20px 64px;
+
+  @include flex-center;
+
+  flex-direction: column;
+
+  @include respond-to('tablet') {
+    padding: 12px 24px;
+  }
+
+  @include respond-to('mobile') {
+    width: 100%;
+    padding: 0 24px;
+  }
+}
+
+.textGroup {
+  margin-bottom: 24px;
+
+  .title {
+    font-size: clamp(24px, 5vw, 56px);
+    margin-bottom: 16px;
+    color: var(--color-white);
+    line-height: 48px;
+
+     @include respond-to('tablet') {
+     font-size: 32px;
+     line-height: 36px;
+    }
+  }
+
+  .subtitle {
+    color: var(--color-icons);
+    line-height: 26px;
+
+    @include respond-to('tablet') {
+    display: none;
+    }
+  }
+
+   @include respond-to('mobile') {
+     margin-top: 32px;
+    }
+}
+
+.bannerBtn {
+  height: 56px;
+  max-width: 350px;
+  font-size: 18px;
+  padding: 16px;
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  letter-spacing: 1px;
+  transition: all $transition-base;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @include respond-to('tablet') {
+    height: 42px;
+    font-size: 12px;
+    max-width: 200px;
+  }
+}
+
+.img {
+  flex: 1;
+  width: 60%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: right center;
+
+  @include respond-to('mobile') {
+    width: 100%;
+    height: 180px;
+    object-position: center bottom;
+    margin-top: auto;
+  }
+}
+
+
+.dots {
+  @include flex-center;
+
+  gap: 12px;
+  margin-bottom: 80px;
+
+  @include respond-to('tablet') {
+    margin-bottom: 56px;
+  }
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  background-color: var(--color-elements);
+  cursor: pointer;
+  transition: background-color $transition-base;
+
+  &_active {
+    background-color: var(--color-primary);
+  }
+}
+

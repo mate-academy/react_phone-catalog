@@ -1,0 +1,54 @@
+.searchField {
+  grid-column: auto / span 13;
+  justify-self: end;
+  width: 100%;
+  max-width: 400px;
+  min-width: 100px;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: 1px solid #E2E6E9;
+  border-radius: 8px;
+  padding: 8px 12px;
+
+  &:focus-within {
+    border-color: var(--color-secondary);
+  }
+
+  :global(body.dark) & {
+    border-color: var(--color-secondary);
+
+      &:focus-within {
+        border-color: #E2E6E9;
+      }
+  }
+
+
+  .input {
+    flex-grow: 1;
+    width: 0;
+    min-width: 0;
+    background-color: var(--color-white);
+    border: none;
+    outline: none;
+    color: var(--color-primary);
+    padding-right: 16px;
+
+    &::placeholder {
+      color: var(--color-secondary);
+    }
+  }
+
+  .iconWrapper {
+    position: absolute;
+    right: 8px;
+
+    @include flex-center;
+  }
+
+  @include respond-to('tablet') {
+    grid-column: auto / span 10;
+  }
+
+}

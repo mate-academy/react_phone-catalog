@@ -1,0 +1,38 @@
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 24px 0 0;
+  gap: 8px;
+
+  a {
+    text-decoration: none;
+    color: var(--color-primary);
+    transition: color 0.3s;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.categoryLink {
+  text-transform: capitalize;
+}
+
+.breadcrumbArrow {
+  display: flex;
+  align-items: center;
+  color: var(--color-icons);
+  flex-shrink: 0;
+}
+
+
+.breadcrumbCurrent {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @include respond-to('mobile') {
+     max-width: 120px;
+  }
+}
