@@ -157,9 +157,9 @@
   &__favorite {
     width: 48px;
     height: 48px;
-    background-color: transparent;
+    min-width: 48px;
+    background-color: #323542;
     border: 1px solid var(--border-color);
-    border-radius: 0;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -304,25 +304,25 @@
     outline: 2px solid var(--card-bg);
     outline-offset: 1px;
 
-    &--black { background-color: #1F2020; }
-    &--green { background-color: #AEE0C8; }
-    &--yellow { background-color: #FFE681; }
-    &--white { background-color: #F9F6EF; }
-    &--purple { background-color: #CDC1D8; }
-    &--red { background-color: #BA0C2E; }
-    &--spacegray { background-color: #535150; }
-    &--spaceblack { background-color: #403E3D; }
-    &--midnight { background-color: #232A31; }
-    &--starlight { background-color: #FAF6F2; }
-    &--blue { background-color: #2F5170; }
-    &--pink { background-color: #FADADD; }
+    &--black       { background-color: #1F2020; }
+    &--green       { background-color: #AEE0C8; }
+    &--yellow      { background-color: #FFE681; }
+    &--white       { background-color: #F9F6EF; }
+    &--purple      { background-color: #CDC1D8; }
+    &--red         { background-color: #BA0C2E; }
+    &--spacegray   { background-color: #535150; }
+    &--spaceblack  { background-color: #403E3D; }
+    &--midnight    { background-color: #232A31; }
+    &--starlight   { background-color: #FAF6F2; }
+    &--blue        { background-color: #2F5170; }
+    &--pink        { background-color: #FADADD; }
     &--midnightgreen { background-color: #004953; }
-    &--gold { background-color: #F9E4C8; }
-    &--silver { background-color: #E2E3E4; }
-    &--graphite { background-color: #4E4E4E; }
-    &--sierrablue { background-color: #69ABCE; }
+    &--gold        { background-color: #F9E4C8; }
+    &--silver      { background-color: #E2E3E4; }
+    &--graphite    { background-color: #4E4E4E; }
+    &--sierrablue  { background-color: #69ABCE; }
     &--alpinegreen { background-color: #576856; }
-    &--deepPurple { background-color: #594F63; }
+    &--deepPurple  { background-color: #594F63; }
 
     &[aria-selected='true'] {
       border-color: var(--text-color);
@@ -396,22 +396,23 @@
 .related-products {
   margin-bottom: 48px;
 
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
   & h2 {
     font-size: 22px;
     font-weight: 800;
     color: var(--text-color);
-    margin-bottom: 24px;
+    margin: 0;
   }
 
   &__nav {
     display: flex;
-    justify-content: flex-end;
     gap: 8px;
-    margin-bottom: 16px;
-  }
-
-  &__grid {
-    width: 100%;
   }
 
   &__card {
@@ -419,7 +420,6 @@
     flex-direction: column;
     background-color: #161827;
     border: 1px solid #3B3E4A;
-    border-radius: 0;
     padding: 32px;
     height: 506px;
     box-sizing: border-box;
@@ -428,12 +428,12 @@
     &:hover {
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     }
+  }
 
-    & a {
-      display: flex;
-      flex-direction: column;
-      text-decoration: none;
-    }
+  &__card-link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
   }
 
   &__card-image {
@@ -444,7 +444,7 @@
     transition: transform 0.3s ease;
 
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
   }
 
@@ -485,6 +485,7 @@
     border-top: 1px solid #3B3E4A;
     padding-top: 16px;
     margin-bottom: 16px;
+    flex: 1;
 
     & p {
       display: flex;
@@ -514,9 +515,9 @@
   }
 
   &__card-actions {
-    margin-top: auto;
     display: flex;
     gap: 8px;
+    margin-top: auto;
   }
 
   &__card-btn {
@@ -527,10 +528,8 @@
     font-size: 14px;
     font-weight: 700;
     border: none;
-    border-radius: 0;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    color: white;
 
     &--add {
       flex: 1;
@@ -550,19 +549,15 @@
     &--favorite {
       width: 40px;
       height: 40px;
-      background-color: transparent;
+      min-width: 40px;
+      background-color: #323542;
       border: 1px solid #3B3E4A;
-      border-radius: 0;
+      transition: border-color 0.3s ease;
 
       &:hover {
         border-color: #F1F2F9;
       }
     }
-  }
-
-  &__card-btn-icon {
-    width: 16px;
-    height: 16px;
   }
 }
 

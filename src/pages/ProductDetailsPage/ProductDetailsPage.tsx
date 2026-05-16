@@ -111,17 +111,12 @@ export const ProductDetailsPage = () => {
 
         if (found) {
           setProduct(found);
-
           setSelectedColor(found.color);
-
           setSelectedImage(
             found.images?.[0] || 'img/page-not-found.png',
           );
-
           setSelectedCapacity(
-            isPhoneOrTablet(found)
-              ? found.capacity
-              : null,
+            isPhoneOrTablet(found) ? found.capacity : null,
           );
         } else {
           setProduct(null);
@@ -155,8 +150,7 @@ export const ProductDetailsPage = () => {
       id: product.itemId!,
       name: product.name,
       price: product.priceDiscount,
-      image:
-        selectedImage || 'img/page-not-found.png',
+      image: selectedImage || 'img/page-not-found.png',
       color: selectedColor || product.color,
       capacity: selectedCapacity || undefined,
       quantity: 1,
@@ -250,9 +244,7 @@ export const ProductDetailsPage = () => {
 
       <div className="product-details--back">
         <a href={getCategoryLink()}>
-          <p className="home--nav-top">
-            {'<'} Back
-          </p>
+          <p className="home--nav-top">{'<'} Back</p>
         </a>
       </div>
 
@@ -267,13 +259,9 @@ export const ProductDetailsPage = () => {
               src={
                 imageError[selectedImage || '']
                   ? 'img/page-not-found.png'
-                  : selectedImage ||
-                    'img/page-not-found.png'
+                  : selectedImage || 'img/page-not-found.png'
               }
-              alt={
-                product.name ||
-                'No image available'
-              }
+              alt={product.name || 'No image available'}
               loading="lazy"
               onError={() =>
                 setImageError(prev => ({
@@ -285,99 +273,72 @@ export const ProductDetailsPage = () => {
           </div>
 
           <div className="gallery__thumbnails">
-            {product.images?.map(
-              (image, index) => (
-                <img
-                  key={index}
-                  src={
-                    imageError[image]
-                      ? 'img/page-not-found.png'
-                      : image
-                  }
-                  alt={`${product.name} thumbnail ${
-                    index + 1
-                  }`}
-                  className={`thumbnail ${
-                    selectedImage === image
-                      ? 'thumbnail--active'
-                      : ''
-                  }`}
-                  onClick={() =>
-                    setSelectedImage(image)
-                  }
-                  loading="lazy"
-                  onError={() =>
-                    setImageError(prev => ({
-                      ...prev,
-                      [image]: true,
-                    }))
-                  }
-                />
-              ),
-            )}
+            {product.images?.map((image, index) => (
+              <img
+                key={index}
+                src={imageError[image] ? 'img/page-not-found.png' : image}
+                alt={`${product.name} thumbnail ${index + 1}`}
+                className={`thumbnail ${
+                  selectedImage === image ? 'thumbnail--active' : ''
+                }`}
+                onClick={() => setSelectedImage(image)}
+                loading="lazy"
+                onError={() =>
+                  setImageError(prev => ({ ...prev, [image]: true }))
+                }
+              />
+            ))}
           </div>
         </div>
 
         <div className="product-details__info">
           <div className="product-details__colors">
-            <p className="product-details__label">
-              Available colors
-            </p>
+            <p className="product-details__label">Available colors</p>
 
             <div className="color-options">
-              {product.colorsAvailable?.map(
-                color => (
-                  <Link
-                    key={color}
-                    to={`/${category}/${buildProductId(
-                      product,
-                      color,
-                      selectedCapacity,
-                    )}`}
-                    className={`color-option color-option--${color
-                      .toLowerCase()
-                      .replace(' ', '')} ${
-                      selectedColor === color
-                        ? 'color-option--active'
-                        : ''
-                    }`}
-                  />
-                ),
-              )}
+              {product.colorsAvailable?.map(color => (
+                <Link
+                  key={color}
+                  to={`/${category}/${buildProductId(
+                    product,
+                    color,
+                    selectedCapacity,
+                  )}`}
+                  className={`color-option color-option--${color
+                    .toLowerCase()
+                    .replace(' ', '')} ${
+                    selectedColor === color ? 'color-option--active' : ''
+                  }`}
+                />
+              ))}
             </div>
           </div>
 
-          {isPhoneOrTablet(product) &&
-            product.capacityAvailable && (
-              <div className="product-details__capacities">
-                <p className="product-details__label">
-                  Select capacity
-                </p>
+          {isPhoneOrTablet(product) && product.capacityAvailable && (
+            <div className="product-details__capacities">
+              <p className="product-details__label">Select capacity</p>
 
-                <div className="capacity-options">
-                  {product.capacityAvailable.map(
-                    capacity => (
-                      <Link
-                        key={capacity}
-                        to={`/${category}/${buildProductId(
-                          product,
-                          selectedColor,
-                          capacity,
-                        )}`}
-                        className={`capacity-option ${
-                          selectedCapacity ===
-                          capacity
-                            ? 'capacity-option--active'
-                            : ''
-                        }`}
-                      >
-                        {capacity}
-                      </Link>
-                    ),
-                  )}
-                </div>
+              <div className="capacity-options">
+                {product.capacityAvailable.map(capacity => (
+                  <Link
+                    key={capacity}
+                    to={`/${category}/${buildProductId(
+                      product,
+                      selectedColor,
+                      capacity,
+                    )}`}
+                    className={`capacity-option ${
+                      selectedCapacity === capacity
+                        ? 'capacity-option--active'
+                        : ''
+                    }`}
+                  >
+                    {capacity}
+                  </Link>
+                ))}
               </div>
-            )}
+            </div>
+          )}
 
           <div className="product-details__prices">
             <span className="product-details__price">
@@ -397,23 +358,25 @@ export const ProductDetailsPage = () => {
               onClick={handleAddToCart}
               disabled={isInCart}
             >
-              {isInCart
-                ? 'Added to cart'
-                : 'Add to cart'}
+              {isInCart ? 'Added to cart' : 'Add to cart'}
             </button>
 
-            <button
+            <div
               className={`product-details__favorite ${
-                favorites.includes(
-                  product.itemId,
-                )
-                  ? 'favorite--active'
-                  : ''
+                favorites.includes(product.itemId) ? 'favorite--active' : ''
               }`}
               onClick={handleToggleFavorite}
             >
-              ❤️
-            </button>
+              <img
+                src={
+                  favorites.includes(product.itemId)
+                    ? './icons/heart-active.svg'
+                    : './icons/heart.svg'
+                }
+                alt="favorite"
+                className="product-details__favorite-icon"
+              />
+            </div>
           </div>
 
           {/* Мини-спеки справа от фото */}
@@ -450,91 +413,178 @@ export const ProductDetailsPage = () => {
 
       {/* About + Tech specs */}
       <div className="product-details__bottom">
-        {'description' in product &&
-          Array.isArray(product.description) && (
-            <div className="product-details__description">
-              <h2>About</h2>
-              {(product.description as { title: string; text: string[] }[]).map(
-                (section, i) => (
-                  <div key={i}>
-                    <h3>{section.title}</h3>
-                    {section.text.map((paragraph, j) => (
-                      <p key={j}>{paragraph}</p>
-                    ))}
-                  </div>
-                ),
-              )}
-            </div>
-          )}
+        {'description' in product && Array.isArray(product.description) && (
+          <div className="product-details__description">
+            <h2>About</h2>
+            {(
+              product.description as { title: string; text: string[] }[]
+            ).map((section, i) => (
+              <div key={i}>
+                <h3>{section.title}</h3>
+                {section.text.map((paragraph, j) => (
+                  <p key={j}>{paragraph}</p>
+                ))}
+              </div>
+            ))}
+          </div>
+        )}
 
         <div className="product-details__tech-specs">
           <h2>Tech specs</h2>
           <div>
             {'screen' in product && product.screen && (
-              <p>
-                <span>Screen</span>
-                <span>{product.screen}</span>
-              </p>
+              <p><span>Screen</span><span>{product.screen}</span></p>
             )}
             {'resolution' in product && product.resolution && (
-              <p>
-                <span>Resolution</span>
-                <span>{product.resolution}</span>
-              </p>
+              <p><span>Resolution</span><span>{product.resolution}</span></p>
             )}
             {'processor' in product && product.processor && (
-              <p>
-                <span>Processor</span>
-                <span>{product.processor}</span>
-              </p>
+              <p><span>Processor</span><span>{product.processor}</span></p>
             )}
             {'ram' in product && product.ram && (
-              <p>
-                <span>RAM</span>
-                <span>{product.ram}</span>
-              </p>
+              <p><span>RAM</span><span>{product.ram}</span></p>
             )}
             {'camera' in product && product.camera && (
-              <p>
-                <span>Camera</span>
-                <span>{product.camera}</span>
-              </p>
+              <p><span>Camera</span><span>{product.camera}</span></p>
             )}
             {'zoom' in product && product.zoom && (
-              <p>
-                <span>Zoom</span>
-                <span>{product.zoom}</span>
-              </p>
+              <p><span>Zoom</span><span>{product.zoom}</span></p>
             )}
-            {'cell' in product &&
-              Array.isArray(product.cell) && (
-                <p>
-                  <span>Cell</span>
-                  <span>{product.cell.join(', ')}</span>
-                </p>
-              )}
+            {'cell' in product && Array.isArray(product.cell) && (
+              <p><span>Cell</span><span>{product.cell.join(', ')}</span></p>
+            )}
           </div>
         </div>
       </div>
 
+      {/* You may also like */}
       <div className="related-products">
-        <h2>You may also like</h2>
+        <div className="related-products__header">
+          <h2>You may also like</h2>
 
-        <Swiper modules={[Navigation]} navigation>
-          {relatedProducts.map(item => (
-            <SwiperSlide key={item.itemId}>
-              <Link
-                to={`/${item.category}/${item.itemId}`}
-              >
-                <img
-                  src={item.images[0]}
-                  alt={item.name}
-                />
+          <div className="related-products__nav">
+            <button className="brand__nav-btn swiper-prev-btn">
+              <img src="./icons/arrow-left.svg" alt="prev" />
+            </button>
 
-                <p>{item.name}</p>
-              </Link>
-            </SwiperSlide>
-          ))}
+            <button className="brand__nav-btn swiper-next-btn">
+              <img src="./icons/arrow-right.svg" alt="next" />
+            </button>
+          </div>
+        </div>
+
+        <Swiper
+          modules={[Navigation]}
+          navigation={{
+            prevEl: '.swiper-prev-btn',
+            nextEl: '.swiper-next-btn',
+          }}
+          spaceBetween={16}
+          breakpoints={{
+            320:  { slidesPerView: 1.2 },
+            640:  { slidesPerView: 2.2 },
+            1024: { slidesPerView: 4 },
+          }}
+        >
+          {relatedProducts.map(item => {
+            const itemInCart = cart.some(c => c.id === item.itemId);
+            const itemIsFav = favorites.includes(item.itemId);
+
+            return (
+              <SwiperSlide key={item.itemId}>
+                <div className="related-products__card">
+                  <Link
+                    to={`/${item.category}/${item.itemId}`}
+                    className="related-products__card-link"
+                  >
+                    <img
+                      src={item.images[0]}
+                      alt={item.name}
+                      className="related-products__card-image"
+                    />
+
+                    <p className="related-products__card-title">
+                      {item.name}
+                    </p>
+                  </Link>
+
+                  <div className="related-products__card-prices">
+                    <span className="related-products__card-price">
+                      ${item.priceDiscount}
+                    </span>
+
+                    <span className="related-products__card-price--old">
+                      ${item.priceRegular}
+                    </span>
+                  </div>
+
+                  <div className="related-products__card-specs">
+                    {'screen' in item && item.screen && (
+                      <p>
+                        <span className="related-products__card-spec-label">Screen</span>
+                        <span className="related-products__card-spec-value">{item.screen}</span>
+                      </p>
+                    )}
+
+                    {isPhoneOrTablet(item) && item.capacity && (
+                      <p>
+                        <span className="related-products__card-spec-label">Capacity</span>
+                        <span className="related-products__card-spec-value">{item.capacity}</span>
+                      </p>
+                    )}
+
+                    {'ram' in item && item.ram && (
+                      <p>
+                        <span className="related-products__card-spec-label">RAM</span>
+                        <span className="related-products__card-spec-value">{item.ram}</span>
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="related-products__card-actions">
+                    <button
+                      className={`related-products__card-btn related-products__card-btn--add ${
+                        itemInCart ? 'added' : ''
+                      }`}
+                      onClick={() =>
+                        addToCart({
+                          id: item.itemId!,
+                          name: item.name,
+                          price: item.priceDiscount,
+                          image: item.images[0],
+                          color: item.color,
+                          capacity: isPhoneOrTablet(item)
+                            ? item.capacity
+                            : undefined,
+                          quantity: 1,
+                        })
+                      }
+                      disabled={itemInCart}
+                    >
+                      {itemInCart ? 'Added' : 'Add to cart'}
+                    </button>
+
+                    <div
+                      className={`related-products__card-btn related-products__card-btn--favorite ${
+                        itemIsFav ? 'favorite--active' : ''
+                      }`}
+                      onClick={() => toggleFavorite(item.itemId!)}
+                    >
+                      <img
+                        src={
+                          itemIsFav
+                            ? './icons/heart-active.svg'
+                            : './icons/heart.svg'
+                        }
+                        alt="favorite"
+                        className="related-products__card-btn-icon"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </div>
     </section>
