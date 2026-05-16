@@ -1,3 +1,5 @@
+// ProductDetailsPage.tsx
+
 import { useParams, useLocation, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Phone, Tablet, Accessories } from '../../Interface';
@@ -17,18 +19,48 @@ export const ProductDetailsPage = () => {
 
   const { addToCart, toggleFavorite, cart, favorites } = useCart();
 
-  const [product, setProduct] = useState<Phone | Tablet | Accessories | null>(null);
+  const [product, setProduct] = useState<
+    Phone | Tablet | Accessories | null
+  >(null);
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
 
-  const [allProducts, setAllProducts] = useState<(Phone | Tablet | Accessories)[]>([]);
-  const [imageError, setImageError] = useState<{ [key: string]: boolean }>({});
+  const [allProducts, setAllProducts] = useState<
+    (Phone | Tablet | Accessories)[]
+  >([]);
+
+  const [imageError, setImageError] = useState<{
+    [key: string]: boolean;
+  }>({});
+
   const [isLoading, setIsLoading] = useState(true);
 
-  const isPhoneOrTablet = (item: Phone | Tablet | Accessories): item is Phone | Tablet => {
+  const isPhoneOrTablet = (
+    item: Phone | Tablet | Accessories,
+  ): item is Phone | Tablet => {
     return 'capacityAvailable' in item && !!item.capacityAvailable;
+  };
+
+  const buildProductId = (
+    product: Phone | Tablet | Accessories,
+    color?: string | null,
+    capacity?: string | null,
+  ) => {
+    const parts = product.id!.split('-');
+
+    parts.splice(-2, 2);
+
+    if (capacity) {
+      parts.push(capacity.toLowerCase());
+    }
+
+    if (color) {
+      parts.push(color.toLowerCase());
+    }
+
+    return parts.join('-');
   };
 
   useEffect(() => {
@@ -37,6 +69,12 @@ export const ProductDetailsPage = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
+      if (!category || !productId) {
+        setProduct(null);
+
+        return;
+      }
+
       setIsLoading(true);
 
       const categoryUrlMap: Record<string, string> = {
@@ -45,40 +83,46 @@ export const ProductDetailsPage = () => {
         accessories: 'api/accessories.json',
       };
 
-      const urls =
-        category && categoryUrlMap[category]
-          ? [categoryUrlMap[category]]
-          : [
-              'api/phones.json',
-              'api/tablets.json',
-              'api/accessories.json',
-            ];
-
       try {
-        const responses = await Promise.all(
-          urls.map(url =>
-            fetch(`${import.meta.env.BASE_URL}/${url}`)
-          ),
+        const productsFile = categoryUrlMap[category];
+
+        if (!productsFile) {
+          setProduct(null);
+
+          return;
+        }
+
+        const response = await fetch(
+          `${import.meta.env.BASE_URL}${productsFile}`,
         );
 
-        const datasets = await Promise.all(
-          responses.map(res => res.json()),
-        );
+        if (!response.ok) {
+          throw new Error(`Failed to fetch ${productsFile}`);
+        }
 
-        const allData: (Phone | Tablet | Accessories)[] = datasets.flat();
+        const data: (Phone | Tablet | Accessories)[] =
+          await response.json();
 
-        setAllProducts(allData);
+        setAllProducts(data);
 
-  
-        const found = allData.find(
-          item => item.itemId === productId
+        const found = data.find(
+          item => item.id === productId,
         );
 
         if (found) {
           setProduct(found);
+
           setSelectedColor(found.color);
-          setSelectedImage(found.images?.[0] || 'img/page-not-found.png');
-          setSelectedCapacity(isPhoneOrTablet(found) ? found.capacity : null);
+
+          setSelectedImage(
+            found.images?.[0] || 'img/page-not-found.png',
+          );
+
+          setSelectedCapacity(
+            isPhoneOrTablet(found)
+              ? found.capacity
+              : null,
+          );
         } else {
           setProduct(null);
         }
@@ -93,14 +137,26 @@ export const ProductDetailsPage = () => {
     fetchProducts();
   }, [productId, category]);
 
+  useEffect(() => {
+    const [capacity, color] = productId
+      ? productId.split('-').slice(-2)
+      : [null, null];
+
+    setSelectedColor(color || null);
+    setSelectedCapacity(capacity || null);
+  }, [productId]);
+
   const handleAddToCart = () => {
-    if (!product) return;
+    if (!product) {
+      return;
+    }
 
     addToCart({
-      id: product.itemId,
+      id: product.itemId!,
       name: product.name,
       price: product.priceDiscount,
-      image: selectedImage || 'img/page-not-found.png',
+      image:
+        selectedImage || 'img/page-not-found.png',
       color: selectedColor || product.color,
       capacity: selectedCapacity || undefined,
       quantity: 1,
@@ -108,8 +164,11 @@ export const ProductDetailsPage = () => {
   };
 
   const handleToggleFavorite = () => {
-    if (!product) return;
-    toggleFavorite(product.itemId);
+    if (!product) {
+      return;
+    }
+
+    toggleFavorite(product.itemId!);
   };
 
   const isInCart = cart.some(
@@ -120,99 +179,343 @@ export const ProductDetailsPage = () => {
   );
 
   const getCategoryLink = () => {
-    if (!product) return '#/phones';
+    if (!product) {
+      return '#/phones';
+    }
 
-    if (product.category === 'phones') return '#/phones';
-    if (product.category === 'tablets') return '#/tablets';
+    if (product.category === 'phones') {
+      return '#/phones';
+    }
+
+    if (product.category === 'tablets') {
+      return '#/tablets';
+    }
+
     return '#/accessories';
   };
 
   const relatedProducts = allProducts.filter(
     item =>
       item.category === product?.category &&
-      item.itemId !== product?.itemId,
+      item.id !== product?.itemId,
   );
 
+  if (isLoading) {
+    return (
+      <div className="product-details">
+        Loading...
+      </div>
+    );
+  }
 
-  const buildVariantLink = (color?: string, capacity?: string | null) => {
-    if (!product) return '#';
-
-    const parts = [
-      product.category,
-      product.itemId,
-    ];
-
-    if (color) parts.push(color);
-    if (capacity) parts.push(capacity);
-
-    return `/${parts.join('-')}`;
-  };
-
-  if (isLoading) return <div className="product-details">Loading...</div>;
-  if (!product) return <div className="product-details">Product not found</div>;
+  if (!product) {
+    return (
+      <div className="product-details">
+        Product not found
+      </div>
+    );
+  }
 
   return (
     <section className="product-details section">
-
       <div className="home--nav">
         <a href="#">
-          <img src="./icons/home.svg" alt="home" />
+          <img
+            src="./icons/home.svg"
+            alt="home_nav"
+            className="home--nav-icon"
+          />
         </a>
 
-        <img src="./icons/arrow-right.svg" alt="arrow" />
+        <img
+          src="./icons/arrow-right.svg"
+          alt="arrow-right"
+          className="home--nav-arrow"
+        />
 
         <a href={getCategoryLink()}>
           <YourComponent product={product} />
         </a>
 
-        <img src="./icons/arrow-right.svg" alt="arrow" />
+        <img
+          src="./icons/arrow-right.svg"
+          alt="arrow-right"
+          className="home--nav-arrow"
+        />
 
-        <span>{product.name}</span>
+        <span className="product-details__id">
+          {product.name}
+        </span>
       </div>
 
-      <h1>{product.name}</h1>
+      <div className="product-details--back">
+        <a href={getCategoryLink()}>
+          <p className="home--nav-top">
+            {'<'} Back
+          </p>
+        </a>
+      </div>
 
+      <h1 className="product-details__title">
+        {product.name}
+      </h1>
 
-      <div className="color-options">
-        {product.colorsAvailable?.map(color => (
-          <Link
-            key={color}
-            to={buildVariantLink(color, selectedCapacity)}
-            onClick={() => setSelectedColor(color)}
-            className={selectedColor === color ? 'active' : ''}
-          >
-            <div
-              className={`color-circle color-${color
-                .toLowerCase()
-                .replace(' ', '-')}`}
+      <div className="product-details__main">
+        <div className="product-details__gallery">
+          <div className="gallery__main-image">
+            <img
+              src={
+                imageError[selectedImage || '']
+                  ? 'img/page-not-found.png'
+                  : selectedImage ||
+                    'img/page-not-found.png'
+              }
+              alt={
+                product.name ||
+                'No image available'
+              }
+              loading="lazy"
+              onError={() =>
+                setImageError(prev => ({
+                  ...prev,
+                  [selectedImage || '']: true,
+                }))
+              }
             />
-          </Link>
-        ))}
+          </div>
+
+          <div className="gallery__thumbnails">
+            {product.images?.map(
+              (image, index) => (
+                <img
+                  key={index}
+                  src={
+                    imageError[image]
+                      ? 'img/page-not-found.png'
+                      : image
+                  }
+                  alt={`${product.name} thumbnail ${
+                    index + 1
+                  }`}
+                  className={`thumbnail ${
+                    selectedImage === image
+                      ? 'thumbnail--active'
+                      : ''
+                  }`}
+                  onClick={() =>
+                    setSelectedImage(image)
+                  }
+                  loading="lazy"
+                  onError={() =>
+                    setImageError(prev => ({
+                      ...prev,
+                      [image]: true,
+                    }))
+                  }
+                />
+              ),
+            )}
+          </div>
+        </div>
+
+        <div className="product-details__info">
+          <div className="product-details__colors">
+            <p className="product-details__label">
+              Available colors
+            </p>
+
+            <div className="color-options">
+              {product.colorsAvailable?.map(
+                color => (
+                  <Link
+                    key={color}
+                    to={`/${category}/${buildProductId(
+                      product,
+                      color,
+                      selectedCapacity,
+                    )}`}
+                    className={`color-option color-option--${color
+                      .toLowerCase()
+                      .replace(' ', '')} ${
+                      selectedColor === color
+                        ? 'color-option--active'
+                        : ''
+                    }`}
+                  />
+                ),
+              )}
+            </div>
+          </div>
+
+          {isPhoneOrTablet(product) &&
+            product.capacityAvailable && (
+              <div className="product-details__capacities">
+                <p className="product-details__label">
+                  Select capacity
+                </p>
+
+                <div className="capacity-options">
+                  {product.capacityAvailable.map(
+                    capacity => (
+                      <Link
+                        key={capacity}
+                        to={`/${category}/${buildProductId(
+                          product,
+                          selectedColor,
+                          capacity,
+                        )}`}
+                        className={`capacity-option ${
+                          selectedCapacity ===
+                          capacity
+                            ? 'capacity-option--active'
+                            : ''
+                        }`}
+                      >
+                        {capacity}
+                      </Link>
+                    ),
+                  )}
+                </div>
+              </div>
+            )}
+
+          <div className="product-details__prices">
+            <span className="product-details__price">
+              ${product.priceDiscount}
+            </span>
+
+            <span className="product-details__price--old">
+              ${product.priceRegular}
+            </span>
+          </div>
+
+          <div className="product-details__actions">
+            <button
+              className={`product-details__add-to-cart ${
+                isInCart ? 'added' : ''
+              }`}
+              onClick={handleAddToCart}
+              disabled={isInCart}
+            >
+              {isInCart
+                ? 'Added to cart'
+                : 'Add to cart'}
+            </button>
+
+            <button
+              className={`product-details__favorite ${
+                favorites.includes(
+                  product.itemId,
+                )
+                  ? 'favorite--active'
+                  : ''
+              }`}
+              onClick={handleToggleFavorite}
+            >
+              ❤️
+            </button>
+          </div>
+
+          {/* Мини-спеки справа от фото */}
+          <div className="product__tech-specs">
+            <div className="product__specs-list">
+              {'screen' in product && product.screen && (
+                <div className="product__spec">
+                  <span className="product__spec-title">Screen</span>
+                  <span className="product__spec-value">{product.screen}</span>
+                </div>
+              )}
+              {'resolution' in product && product.resolution && (
+                <div className="product__spec">
+                  <span className="product__spec-title">Resolution</span>
+                  <span className="product__spec-value">{product.resolution}</span>
+                </div>
+              )}
+              {'processor' in product && product.processor && (
+                <div className="product__spec">
+                  <span className="product__spec-title">Processor</span>
+                  <span className="product__spec-value">{product.processor}</span>
+                </div>
+              )}
+              {'ram' in product && product.ram && (
+                <div className="product__spec">
+                  <span className="product__spec-title">RAM</span>
+                  <span className="product__spec-value">{product.ram}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
 
+      {/* About + Tech specs */}
+      <div className="product-details__bottom">
+        {'description' in product &&
+          Array.isArray(product.description) && (
+            <div className="product-details__description">
+              <h2>About</h2>
+              {(product.description as { title: string; text: string[] }[]).map(
+                (section, i) => (
+                  <div key={i}>
+                    <h3>{section.title}</h3>
+                    {section.text.map((paragraph, j) => (
+                      <p key={j}>{paragraph}</p>
+                    ))}
+                  </div>
+                ),
+              )}
+            </div>
+          )}
 
-      {isPhoneOrTablet(product) && (
-        <div className="capacity-options">
-          {product.capacityAvailable?.map(cap => (
-            <Link
-              key={cap}
-              to={buildVariantLink(selectedColor || undefined, cap)}
-              onClick={() => setSelectedCapacity(cap)}
-              className={selectedCapacity === cap ? 'active' : ''}
-            >
-              {cap}
-            </Link>
-          ))}
+        <div className="product-details__tech-specs">
+          <h2>Tech specs</h2>
+          <div>
+            {'screen' in product && product.screen && (
+              <p>
+                <span>Screen</span>
+                <span>{product.screen}</span>
+              </p>
+            )}
+            {'resolution' in product && product.resolution && (
+              <p>
+                <span>Resolution</span>
+                <span>{product.resolution}</span>
+              </p>
+            )}
+            {'processor' in product && product.processor && (
+              <p>
+                <span>Processor</span>
+                <span>{product.processor}</span>
+              </p>
+            )}
+            {'ram' in product && product.ram && (
+              <p>
+                <span>RAM</span>
+                <span>{product.ram}</span>
+              </p>
+            )}
+            {'camera' in product && product.camera && (
+              <p>
+                <span>Camera</span>
+                <span>{product.camera}</span>
+              </p>
+            )}
+            {'zoom' in product && product.zoom && (
+              <p>
+                <span>Zoom</span>
+                <span>{product.zoom}</span>
+              </p>
+            )}
+            {'cell' in product &&
+              Array.isArray(product.cell) && (
+                <p>
+                  <span>Cell</span>
+                  <span>{product.cell.join(', ')}</span>
+                </p>
+              )}
+          </div>
         </div>
-      )}
-
-      <button onClick={handleAddToCart}>
-        Add to cart
-      </button>
-
-      <button onClick={handleToggleFavorite}>
-        ❤️
-      </button>
+      </div>
 
       <div className="related-products">
         <h2>You may also like</h2>
@@ -220,8 +523,14 @@ export const ProductDetailsPage = () => {
         <Swiper modules={[Navigation]} navigation>
           {relatedProducts.map(item => (
             <SwiperSlide key={item.itemId}>
-              <Link to={`/${item.category}/${item.itemId}`}>
-                <img src={item.images[0]} alt={item.name} />
+              <Link
+                to={`/${item.category}/${item.itemId}`}
+              >
+                <img
+                  src={item.images[0]}
+                  alt={item.name}
+                />
+
                 <p>{item.name}</p>
               </Link>
             </SwiperSlide>
