@@ -93,7 +93,7 @@ export const ProductDetailsPage = () => {
         }
 
         const response = await fetch(
-          `${import.meta.env.BASE_URL}${productsFile}`,
+          `${import.meta.env.BASE_URL}/${productsFile}`,
         );
 
         if (!response.ok) {
