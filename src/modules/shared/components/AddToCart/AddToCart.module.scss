@@ -1,0 +1,30 @@
+@use './../../../../styles/variables.scss' as *;
+
+.cart {
+  height: 40px;
+  width: 100%;
+  background-color: $accent__color;
+  color: $primary__text-color;
+  font-size: 14px;
+  line-height: 21px;
+
+  transition: background-color 0.3s ease;
+}
+
+.cartAdded {
+  height: 40px;
+  width: 100%;
+  background-color: $secondary__element-color;
+  color: $primary__text-color;
+  font-size: 14px;
+  line-height: 21px;
+
+  transition: background-color 0.3s ease;
+}
+
+.cart:hover {
+  background-color: $accent__color-hover;
+}
+.cart:active {
+  background-color: $secondary__element-color;
+}

@@ -1,0 +1,75 @@
+@use './../../../../styles/global.scss' as *;
+@use './../../../../styles/variables.scss' as *;
+
+.path {
+  margin: 24px 0 20px;
+  display: flex;
+  gap: 8px;
+}
+
+.pathName {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: capitalize;
+}
+
+.home {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.pathArrow {
+  width: 16px;
+  height: 16px;
+  color: $secondary__text-color;
+}
+
+.link {
+  color: $secondary__text-color;
+  pointer-events: none;
+}
+
+.pathLink {
+  color: $primary__text-color;
+}
+
+.pathArrowBack {
+  color: $primary__text-color;
+  margin-bottom: 15px;
+  margin-top: 30px;
+}
+
+.linkBack {
+  color: $primary__text-color;
+  margin-bottom: 15px;
+  margin-top: 30px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.linkBack:hover {
+  color: $accent__color;
+}
+
+.active {
+  color: $secondary__text-color;
+  pointer-events: none;
+}
+
+@media (max-width: 639px) {
+  .path {
+    margin-bottom: 0;
+    margin-top: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .linkBack {
+    margin-top: 30px;
+  }
+  .pathArrowBack {
+    margin-top: 30px;
+  }
+}

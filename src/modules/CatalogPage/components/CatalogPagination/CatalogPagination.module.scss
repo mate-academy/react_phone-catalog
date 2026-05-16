@@ -1,0 +1,64 @@
+@use './../../../../styles/global.scss' as *;
+@use './../../../../styles/variables.scss' as *;
+
+.pagination {
+  display: flex;
+  align-self: center;
+  gap: 16px;
+  padding: 0px 0 40px 0;
+}
+
+.arrow {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: $primary__text-color;
+  background-color: $secondary__element-color;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $accent__color;
+  }
+  &:disabled {
+    pointer-events: none;
+    border: 1px solid $secondary__element-color;
+    background-color: $primary__background-color;
+  }
+}
+
+.pages__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  background-color: $secondary__background-color;
+  color: $primary__text-color;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $secondary__element-color;
+  }
+
+  &__active {
+    background-color: $accent__color;
+
+    &:hover {
+      background-color: $accent__color;
+    }
+  }
+}

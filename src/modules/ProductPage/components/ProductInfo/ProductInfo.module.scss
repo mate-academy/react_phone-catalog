@@ -1,0 +1,99 @@
+@use './../../../../styles/variables.scss' as *;
+
+.product__info {
+  padding: 40px 0;
+
+  display: flex;
+  gap: 64px;
+}
+.about {
+  max-width: 560px;
+}
+
+.label {
+  color: $primary__text-color;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+}
+
+.line {
+  width: 100%;
+  background-color: $secondary__element-color;
+  height: 1px;
+  margin: 16px 0 32px 0;
+}
+
+.paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.paragraph__title {
+  color: $primary__text-color;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.paragraph_texts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.paragraph__text {
+  color: $secondary__text-color;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 500;
+}
+
+.tech {
+  width: 100%;
+}
+
+.desc {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.text__content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.desc__name {
+  font-size: 14px;
+  color: $secondary__text-color;
+  line-height: 21px;
+  font-weight: 500;
+}
+
+.desc__text {
+  color: $primary__text-color;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 500;
+}
+
+@media (max-width: 899px) {
+  .product__info {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 639px) {
+  .desc {
+    gap: 20px;
+  }
+  .desc__text {
+    font-size: 12px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+}

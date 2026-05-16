@@ -1,0 +1,46 @@
+@use './../../../../styles/variables.scss' as *;
+
+.card__favorites {
+  background-color: $secondary__element-color;
+  padding: 12px;
+
+  position: relative;
+  width: 40px;
+  height: 40px;
+
+  transition: background-color 0.3s ease;
+}
+
+.card__favorites:hover {
+  background-color: $secondary__text-color;
+  padding: 12px;
+}
+
+.favorites__img {
+  position: absolute;
+  content: url('./../../../../../public/img/favourites.svg');
+
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card__favorites:active {
+  background-color: $secondary__element-color;
+  border: 1px solid $secondary__text-color;
+
+  .favorites__img {
+    content: url('./../../../../../public/img/favouritesActive.svg');
+  }
+}
+
+.isFavorite {
+  background-color: $secondary__element-color;
+  border: 1px solid $secondary__text-color;
+
+  .favorites__img {
+    content: url('./../../../../../public/img/favouritesActive.svg');
+  }
+}
