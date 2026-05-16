@@ -1,0 +1,21 @@
+@use '@/styles/index' as *;
+
+.products-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+    gap: 16px;
+    row-gap: 40px;
+    justify-items: center;
+  }
+
+  @include on-desctop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  // .
+}

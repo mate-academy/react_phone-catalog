@@ -1,0 +1,139 @@
+@use '@/styles/index' as *;
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $elements;
+  padding: 32px;
+  margin-top: 24px;
+  width: 212px;
+  transition: box-shadow 0.3s;
+
+  @include on-tablet {
+    width: 237px;
+  }
+
+  @include on-desctop{
+    width: 100%;
+  }
+
+  @include hover(transform, scale(1.03));
+
+  &:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  img {
+    width: 100%;
+    object-fit: contain;
+    height: 129px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      height: 202px;
+    }
+
+    @include on-desctop {
+      height: 196px;
+    }
+  }
+
+  .title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $primary;
+    margin-bottom: 8px;
+    min-height: 42px;
+  }
+
+  .prices {
+    display: flex;
+    gap: 8px;
+    font-size: 22px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid $elements;
+
+    .price {
+      font-weight: 800;
+      line-height: 140%;
+    }
+
+    .fullPrice {
+      font-weight: 600;
+      line-height: 140%;
+      color: $secondary;
+      text-decoration: line-through;
+    }
+  }
+
+
+  .option-list {
+    padding: 8px 0;
+    .option-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+
+      .option {
+        color: $secondary;
+        font-size: 12px;
+        line-height: 100%;
+      }
+
+      .value {
+        color: $primary;
+        font-size: 12px;
+        line-height: 100%;
+      }
+    }
+  }
+
+
+  .buttons-wrapper {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+  }
+  .add-to-cart {
+    background-color: $primary;
+    color: $white;
+    border: none;
+    padding: 0 10px;
+    height: 40px;
+    flex-grow: 1;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+
+    @include hover(box-shadow, 0 3px 13px rgba(23, 32, 49, 0.4));
+  }
+
+  .added {
+    background-color: $white;
+    color: $green;
+    border: 1px solid $elements;
+    // pointer-events: none;
+  }
+
+  .add-to-favorite {
+    background-color: $white;
+    border: 1px solid $icons;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    transition: border-color 0.3s ease-in-out;
+
+    &:hover {
+      border-color: $primary;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+      margin: auto;
+    }
+  }
+}

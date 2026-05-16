@@ -1,0 +1,22 @@
+@use '@/styles/index' as *;
+
+.title {
+  margin-top: 24px;
+  margin-bottom: 8px;
+  color: $primary;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  @include on-tablet {
+    margin-top: 40px;
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.favourites-qnt {
+  font-size: 14px;
+  line-height: 21px;
+  color: $secondary;
+  margin-bottom: 32px;
+}
