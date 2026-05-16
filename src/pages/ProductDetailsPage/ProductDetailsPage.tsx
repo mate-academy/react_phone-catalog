@@ -383,7 +383,6 @@ export const ProductDetailsPage = () => {
             </div>
           </div>
 
-          {/* Мини-спеки справа от фото */}
           <div className="product__tech-specs">
             <div className="product__specs-list">
               {'screen' in product && product.screen && (
@@ -415,7 +414,6 @@ export const ProductDetailsPage = () => {
         </div>
       </div>
 
-      {/* About + Tech specs */}
       <div className="product-details__bottom">
         {'description' in product && Array.isArray(product.description) && (
           <div className="product-details__description">
@@ -461,7 +459,6 @@ export const ProductDetailsPage = () => {
         </div>
       </div>
 
-      {/* You may also like */}
       <div className="related-products">
         <div className="related-products__header">
           <h2>You may also like</h2>
