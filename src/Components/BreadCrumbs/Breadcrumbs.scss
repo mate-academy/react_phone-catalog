@@ -1,0 +1,30 @@
+@import '../../utils/';
+
+.breadcrumbs {
+  display: flex;
+  margin-top: 24px;
+  text-transform: capitalize;
+  width: 100%;
+  height: 16px;
+}
+
+.breadcrumb {
+  font-family: $font-family;
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-primary;
+  text-decoration: none;
+
+  margin-left: 8px;
+  margin-right: 8px;
+
+  &--not-active {
+    color: $color-secondary;
+  }
+
+  &__slider {
+    width: 100%;
+    height: 10px;
+    padding-top: 3px;
+  }
+}

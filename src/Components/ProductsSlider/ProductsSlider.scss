@@ -1,0 +1,31 @@
+@import '../../utils/';
+
+.products-slider {
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-bottom: 28px;
+    margin-top: -40px; // подумати
+    transition: all 0.3s ease;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: $color-white;
+    border: 1px solid $color-icons;
+    cursor: pointer;
+
+    &--disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      border: 1px solid $color-elements;
+    }
+
+    &:not(&--disabled):hover {
+      border: 1px solid $color-primary;
+    }
+  }
+}

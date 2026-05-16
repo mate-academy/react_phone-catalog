@@ -1,0 +1,39 @@
+@import '../../utils/';
+
+.menu {
+  @media (max-width: $mobile) {
+    display: none;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    list-style: none;
+
+    @media (max-width: $tablet) {
+      gap: 32px;
+    }
+  }
+
+  &__link {
+    @include menu-list;
+
+    padding-bottom: 20px;
+    border-bottom: 3px solid transparent;
+    text-decoration: none;
+
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: $color-primary;
+      color: $color-primary;
+    }
+  }
+
+  &__link--active {
+    padding-bottom: 20px;
+    border-bottom: 3px solid $color-primary;
+    color: $color-primary;
+  }
+}
