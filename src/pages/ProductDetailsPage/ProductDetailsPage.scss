@@ -16,7 +16,7 @@
 
 .product-details {
   padding: 24px 32px;
-  max-width: 100%;
+  max-width: 1200px;
   color: var(--text-color);
 
   @include on-tablet {
@@ -44,38 +44,78 @@
     margin-bottom: 16px;
   }
 
+  // 1. Заголовок: 1136x41, font 32px/800/41px
   &__title {
+    width: 1136px;
+    max-width: 100%;
     margin: 0 0 32px 0;
     font-size: 32px;
     font-weight: 800;
     line-height: 41px;
+    letter-spacing: -0.01em;
     color: var(--text-color);
+
+    @include on-tablet {
+      width: 100%;
+      font-size: 22px;
+      line-height: 30px;
+    }
+
+    @include on-phone {
+      width: 100%;
+      font-size: 20px;
+      line-height: 28px;
+    }
   }
 
+  // Название в breadcrumb (серый мелкий текст)
   &__id {
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
     color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+  }
+
+  // ID товара: 176x15, right align, справа вверху
+  &__item-id {
+    width: 176px;
+    height: 15px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0;
+    color: var(--text-muted);
+    text-align: right;
+    margin-left: auto;
   }
 
   &__main {
     display: flex;
     gap: 64px;
-    margin-bottom: 48px;
+    margin-bottom: 80px;
+
+    @include on-tablet {
+      gap: 32px;
+      margin-bottom: 48px;
+    }
 
     @include on-phone {
       flex-direction: column;
       gap: 24px;
-    }
-
-    @include on-tablet {
-      gap: 32px;
+      margin-bottom: 32px;
     }
   }
 
+  // 3. Галерея: thumbnails 80x464, gap 16px
   &__gallery {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     gap: 16px;
+    align-items: flex-start;
 
     @include on-phone {
       flex-direction: column;
@@ -85,26 +125,54 @@
 
   &__info {
     flex: 1;
-    max-width: 50%;
+    max-width: 320px;
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include on-desktop {
+      max-width: 320px;
+    }
+
+    @include on-tablet {
+      max-width: 100%;
+      flex: 1;
+    }
 
     @include on-phone {
       max-width: 100%;
     }
   }
 
-  &__colors,
-  &__capacities {
-    margin-bottom: 16px;
+  // 4. Цвета: контейнер 320x55 (полоса 320px)
+  &__colors {
+    width: 320px;
+    min-height: 55px;
     padding-bottom: 16px;
     border-bottom: 1px solid var(--border-color);
+
+    @include on-phone {
+      width: 100%;
+    }
   }
 
+  &__capacities {
+    width: 320px;
+    min-height: 55px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+
+    @include on-phone {
+      width: 100%;
+    }
+  }
+
+  // Available colors label: 98x15, font 12px/700
   &__label {
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0;
     color: var(--text-muted);
     margin-bottom: 8px;
   }
@@ -138,7 +206,6 @@
     background-color: #905BFF;
     color: white;
     border: none;
-    border-radius: 0;
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
@@ -244,42 +311,76 @@
   }
 }
 
+// 3. Галерея - thumbnails контейнер: 80x464, gap 16px
 .gallery {
   &__thumbnails {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
+    width: 80px;
+    min-height: 464px;
 
     @include on-phone {
       flex-direction: row;
+      width: 100%;
+      min-height: auto;
     }
   }
 
+  // Большое фото: 464x464
   &__main-image {
-    & img {
+    width: 464px;
+    height: 464px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+
+    @include on-tablet {
       width: 288px;
       height: 288px;
+    }
+
+    @include on-phone {
+      width: 100%;
+      height: 280px;
+    }
+
+    & img {
+      // Само фото: 442x442
+      width: 442px;
+      height: 442px;
       object-fit: contain;
-      border-radius: 0;
       transition: opacity 0.3s ease;
 
-      @include on-desktop {
-        width: 464px;
-        height: 464px;
+      @include on-tablet {
+        width: 268px;
+        height: 268px;
+      }
+
+      @include on-phone {
+        width: 100%;
+        height: 260px;
       }
     }
   }
 }
 
+// Одна миниатюра: 78x78
 .thumbnail {
-  width: 64px;
-  height: 64px;
+  width: 78px;
+  height: 78px;
   object-fit: contain;
   cursor: pointer;
   border: 1px solid var(--border-color);
-  border-radius: 0;
   padding: 4px;
   transition: border-color 0.3s;
+  flex-shrink: 0;
+
+  @include on-phone {
+    width: 50px;
+    height: 50px;
+  }
 
   &--active {
     border-color: var(--text-color);
@@ -290,13 +391,15 @@
   }
 }
 
+// 4. Кружки цветов: 32x32
 .color-options {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 
   & .color-option {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     border: 2px solid var(--border-color);
     cursor: pointer;
@@ -324,6 +427,7 @@
     &--alpinegreen { background-color: #576856; }
     &--deepPurple  { background-color: #594F63; }
 
+    &--active,
     &[aria-selected='true'] {
       border-color: var(--text-color);
       outline-color: var(--text-color);
@@ -341,17 +445,21 @@
   flex-wrap: wrap;
 
   & .capacity-option {
-    padding: 4px 8px;
+    width: 56px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background-color: transparent;
     color: var(--text-color);
     border: 1px solid var(--border-color);
-    border-radius: 0;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    min-width: 48px;
     text-align: center;
+    text-decoration: none;
 
     &--active {
       background-color: var(--text-color);
@@ -370,7 +478,6 @@
   height: 32px;
   background-color: transparent;
   border: 1px solid #3B3E4A;
-  border-radius: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -559,6 +666,11 @@
       }
     }
   }
+
+  &__card-btn-icon {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 .home--nav {
@@ -566,6 +678,7 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 16px;
+  width: 100%;
 
   & a {
     color: var(--text-muted);
@@ -596,6 +709,8 @@
 
 .product__tech-specs {
   margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-color);
 
   .product__specs-list {
     display: flex;
@@ -609,6 +724,11 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
+    border-bottom: 1px solid var(--border-color);
+
+    &:last-child {
+      border-bottom: none;
+    }
 
     .product__spec-title {
       color: var(--text-muted);

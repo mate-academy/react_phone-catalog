@@ -240,6 +240,10 @@ export const ProductDetailsPage = () => {
         <span className="product-details__id">
           {product.name}
         </span>
+
+        <span className="product-details__item-id">
+          ID: {product.id}
+        </span>
       </div>
 
       <div className="product-details--back">
@@ -254,24 +258,6 @@ export const ProductDetailsPage = () => {
 
       <div className="product-details__main">
         <div className="product-details__gallery">
-          <div className="gallery__main-image">
-            <img
-              src={
-                imageError[selectedImage || '']
-                  ? 'img/page-not-found.png'
-                  : selectedImage || 'img/page-not-found.png'
-              }
-              alt={product.name || 'No image available'}
-              loading="lazy"
-              onError={() =>
-                setImageError(prev => ({
-                  ...prev,
-                  [selectedImage || '']: true,
-                }))
-              }
-            />
-          </div>
-
           <div className="gallery__thumbnails">
             {product.images?.map((image, index) => (
               <img
@@ -288,6 +274,24 @@ export const ProductDetailsPage = () => {
                 }
               />
             ))}
+          </div>
+
+          <div className="gallery__main-image">
+            <img
+              src={
+                imageError[selectedImage || '']
+                  ? 'img/page-not-found.png'
+                  : selectedImage || 'img/page-not-found.png'
+              }
+              alt={product.name || 'No image available'}
+              loading="lazy"
+              onError={() =>
+                setImageError(prev => ({
+                  ...prev,
+                  [selectedImage || '']: true,
+                }))
+              }
+            />
           </div>
         </div>
 
