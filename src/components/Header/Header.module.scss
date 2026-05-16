@@ -1,0 +1,165 @@
+@use '../../mixins.scss' as *;
+
+.header {
+  position: sticky;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 48px;
+  border-bottom: 1px solid #e2e6e9;
+
+  @include on-desktop {
+    height: 64px;
+  }
+}
+
+.logoMobile {
+  display: block;
+  padding: 13px 16px;
+
+  @include on-desktop {
+    display: none;
+  }
+}
+
+.logoDesktop {
+  display: none;
+
+  @include on-desktop {
+    display: block;
+    padding: 18px 24px;
+  }
+}
+
+.close_menu {
+  all: unset;
+  border-left: 1px solid #e2e6e9;
+  padding: 16px;
+  margin-left: auto;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.burger_menu {
+  all: unset;
+  border-left: 1px solid #e2e6e9;
+  padding: 16px;
+  margin-left: auto;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.menu {
+  display: none;
+
+  @include on-tablet {
+    display: block;
+    margin-left: 16px;
+  }
+
+  @include on-desktop {
+    margin-left: 24px;
+  }
+
+  &Items {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    align-items: center;
+    list-style: none;
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &Item {
+    text-decoration: none;
+    color: #89939a;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 48px;
+    font-size: 12px;
+    font-weight: 800;
+
+    @include on-desktop {
+      line-height: 64px;
+    }
+
+    &Active {
+      color: #313237;
+      border-bottom: 3px solid #313237;
+    }
+  }
+}
+
+.icon {
+  display: none;
+  margin-left: auto;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.iconLeft,
+.iconRight {
+  border-left: 1px solid #e2e6e9;
+  padding: 16px 16px 9px;
+  position: relative;
+
+  @include on-desktop {
+    padding: 23px;
+    height: 64px;
+    width: 64px;
+  }
+}
+
+.iconRightBag,
+.iconLeftHeart {
+  position: relative;
+  display: block;
+}
+
+.badge{
+  position: absolute;
+  top: 7px;
+  right: 7px;
+
+  min-width: 15px;
+  height: 15px;
+  padding: 0 4px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #eb5757;
+  color: #fff;
+
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 100%;
+
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #fff;
+
+  @include on-desktop {
+    top: 15px;
+    right: 15px;
+  }
+}
+
+.iconLeftHeartActive {
+  color: #313237;
+  border-bottom: 3px solid #313237;
+  bottom: -2px;
+}

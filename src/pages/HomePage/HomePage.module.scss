@@ -1,0 +1,98 @@
+@use '../../mixins.scss' as *;
+
+.sect {
+  padding: 56px 16px;
+
+  @include on-tablet {
+    padding: 0 24px 64px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px 80px;
+  }
+}
+
+.title {
+  font-weight: 800;
+  font-size: 22px;
+  font-size: bold;
+  margin: 0;
+
+  padding: 0 16px;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px;
+  }
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  margin: 0;
+  list-style: none;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 16px;
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px;
+  }
+}
+
+.partImg {
+  width: 100%;
+  height: auto;
+  max-width: 368px;
+
+  transition: transform 0.2s ease;
+}
+
+.partImg:hover {
+  transform: scale(1.05);
+}
+
+.linkCategory {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  margin: 0;
+  padding-top: 24px;
+
+  &Text {
+    padding-top: 24px;
+    margin: 0;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 100%;
+    color: #313237;
+  }
+}
+
+.paragraph {
+  margin: 0;
+  padding-top: 4px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+}
+
+.sectionFooter {
+  padding: 56px 16px 64px;
+
+  @include on-tablet {
+    padding: 64px 24px;
+  }
+
+  @include on-desktop {
+    padding: 80px 32px;
+  }
+}

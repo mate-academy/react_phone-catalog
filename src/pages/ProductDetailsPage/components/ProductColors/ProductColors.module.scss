@@ -1,0 +1,74 @@
+@use '../../../../mixins.scss' as *;
+
+.available {
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  align-items: center;
+
+  @include on-tablet {
+    padding-top: 0;
+  }
+
+  @include on-desktop {
+    width: 320px;
+  }
+
+  &H {
+    margin: 0;
+    color: #89939a;
+  }
+}
+
+.availableP {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  margin: 0;
+  color: #b4bdc3;
+
+  @include on-desktop {
+    display: none;
+  }
+}
+
+.colorWrapper {
+  display: flex;
+  gap: 8px;
+  margin-bottom:24px;
+}
+
+.colorLabel {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  padding-top: 8px;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.colorRation {
+  width: 32px;
+  height: 32px;
+  border-radius: 50px;
+  border: 2px solid #e2e6e9;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+    border: 2px solid #313237;
+  }
+}
+
+.colorRationActive {
+  border: 2px solid #313237;
+  transform: scale(1.1);
+}
