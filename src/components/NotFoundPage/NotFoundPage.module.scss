@@ -1,0 +1,34 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.not-found-page {
+  background-color: $bg-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  height: 75vh;
+  background-image: url('../img/page-not-found.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-bottom: 50px;
+
+  &__text {
+    @include typography-body-text;
+
+    text-align: center;
+  }
+
+  &__link {
+    @include typography-body-text;
+
+    color: $color-primary;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-icons;
+    }
+  }
+}

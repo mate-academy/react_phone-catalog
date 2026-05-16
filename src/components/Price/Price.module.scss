@@ -1,0 +1,9 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.price {
+  @include typography-h3;
+
+  color: $color-primary;
+}

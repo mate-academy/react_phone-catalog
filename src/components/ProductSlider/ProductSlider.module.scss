@@ -1,0 +1,45 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.product-slider {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $color-icons;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &:disabled {
+      border-color: $color-elements;
+      cursor: not-allowed;
+    }
+  }
+
+  &__bottom {
+    box-sizing: border-box;
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overflow-x: auto;
+  }
+}
