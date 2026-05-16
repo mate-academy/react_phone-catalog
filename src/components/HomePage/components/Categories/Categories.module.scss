@@ -1,0 +1,144 @@
+@import '/src/utils/styles/colors';
+@import '/src/utils/styles/typography';
+@import '/src/utils/styles/mixins';
+
+.categories {
+  grid-column: 1 / 25;
+  margin-bottom: 80px;
+  font-size: 32px;
+
+  @include on-tablet {
+    grid-column: 1 / 13;
+  }
+
+  @include on-mobile {
+    grid-column: 1 / 5;
+  }
+
+  &__links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 16px;
+    row-gap: 32px;
+
+    margin-top: 24px;
+    width: 100%;
+
+    @include on-mobile {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  &__phones {
+    grid-column: 1;
+    text-decoration: none;
+
+    @include on-mobile {
+      grid-column: 1;
+    }
+
+    &__image {
+      width: 100%;
+
+      aspect-ratio: 1 / 1;
+      background-color: #6d6474;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease;
+
+      img {
+        position: absolute;
+        right: -15%;
+        top: 50%;
+        transform: translateY(-25%);
+        height: 120%;
+        width: auto;
+        object-fit: cover;
+      }
+
+      &:hover {
+        transform: scale(105%);
+      }
+    }
+  }
+
+  &__tablets {
+    grid-column: 2;
+    text-decoration: none;
+
+    @include on-mobile {
+      grid-column: 1;
+    }
+
+    &__image {
+      width: 100%;
+
+      aspect-ratio: 1 / 1;
+      background-color: #8d8d92;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+
+      img {
+        position: absolute;
+        right: -25%;
+        top: 50%;
+        transform: translateY(-33%);
+        height: 120%;
+        width: auto;
+        object-fit: cover;
+      }
+
+      &:hover {
+        transform: scale(105%);
+      }
+    }
+  }
+
+  &__accessories {
+    grid-column: 3;
+    text-decoration: none;
+
+    @include on-mobile {
+      grid-column: 1;
+    }
+
+    &__image {
+      width: 100%;
+
+      aspect-ratio: 1 / 1;
+      background-color: #d53c51;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+
+      img {
+        position: absolute;
+        right: -85%;
+        top: 50%;
+        transform: translateY(-40%);
+        height: 85%;
+        width: auto;
+        object-fit: cover;
+      }
+
+      &:hover {
+        transform: scale(105%);
+      }
+    }
+  }
+
+  &__title {
+    @include text-h4;
+
+    color: var(--white);
+
+    margin-top: 24px;
+  }
+
+  &__modelsLeft {
+    @include text-body;
+
+    color: var(--secondary);
+  }
+}

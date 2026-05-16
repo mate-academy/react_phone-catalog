@@ -1,0 +1,143 @@
+@import '/src/utils/styles/colors';
+@import '/src/utils/styles/typography';
+@import '/src/utils/styles/mixins';
+
+.cartItem {
+  width: 100%;
+  background-color: var(--surface-bg);
+  margin-bottom: 16px;
+
+  padding: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-mobile {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  &__leftSide {
+    display: flex;
+    align-items: center;
+
+    @include on-mobile {
+      width: 100%;
+    }
+  }
+
+  &__rightSide {
+    display: flex;
+    align-items: center;
+
+    @include on-mobile {
+      width: 100%;
+      flex-grow: 1;
+      justify-content: space-between;
+      margin-top: 16px;
+    }
+  }
+
+  &__removeButton {
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0.5;
+
+    background-image: url('/img/icons/close.svg');
+    background-repeat: no-repeat;
+
+    filter: var(--icon-filter);
+    transition: filter 0.3s ease;
+  }
+
+  &__image {
+    margin: 0 24px;
+    img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+  }
+
+  &__title {
+    @include text-body;
+
+    color: var(--white);
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__minusButton {
+    width: 32px;
+    height: 32px;
+    background-color: var(--surface2-bg);
+    border: 1px solid transparent;
+    background-position: center;
+    cursor: pointer;
+
+    background-image: url('/img/icons/minus.svg');
+    background-repeat: no-repeat;
+
+    filter: var(--icon-filter);
+    transition: filter 0.3s ease;
+
+    &:hover {
+      background-color: var(--icons);
+    }
+
+    &:disabled {
+      background-color: transparent;
+      border: var(--black-border);
+      cursor: not-allowed;
+    }
+  }
+
+  &__plusButton {
+    width: 32px;
+    height: 32px;
+    background-color: var(--surface2-bg);
+    border: 1px solid transparent;
+    background-position: center;
+    cursor: pointer;
+
+    background-image: url('/img/icons/plus.svg');
+    background-repeat: no-repeat;
+
+    filter: var(--icon-filter);
+    transition: filter 0.3s ease;
+
+    &:hover {
+      background-color: var(--icons);
+    }
+
+    &:disabled {
+      background-color: transparent;
+      border: var(--black-border);
+      cursor: not-allowed;
+    }
+  }
+
+  &__quantity {
+    @include text-body;
+
+    color: var(--white);
+    margin: 14px;
+  }
+
+  &__price {
+    @include text-h3;
+
+    color: var(--white);
+    width: 80px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

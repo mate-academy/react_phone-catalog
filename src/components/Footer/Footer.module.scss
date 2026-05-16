@@ -1,0 +1,159 @@
+@import '/src/utils/styles/colors';
+@import '/src/utils/styles/typography';
+@import '/src/utils/styles/mixins';
+
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  box-shadow: 0 -1px 0 0 #323542;
+  height: 96px;
+
+  @include on-mobile {
+    justify-content: flex-start;
+  }
+
+  &__content {
+    width: 1136px;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 16px;
+      margin: 0 16px;
+    }
+
+    @include on-mobile {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+    }
+  }
+
+  &__logo {
+    grid-column: 1 / 3;
+
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    img {
+      display: block;
+
+      filter: var(--icon-filter);
+      transition: filter 0.3s ease;
+    }
+
+    @include on-mobile {
+      margin: 32px 16px;
+    }
+  }
+
+  &__links {
+    grid-column: 8 / 17;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 100%;
+
+    @include on-tablet {
+      grid-column: 4 / 8;
+    }
+
+    @include on-mobile {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 16px;
+    }
+  }
+
+  &__link {
+    @include text-uppercase;
+
+    color: var(--white);
+    text-decoration: none;
+    box-sizing: border-box;
+
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+
+    transition: color 0.3s ease;
+
+    @include on-mobile {
+      padding-left: 16px;
+    }
+
+    &:hover {
+      color: #f1f2f9af;
+      cursor: pointer;
+    }
+
+    &.active {
+      color: var(--white);
+      border-bottom: 3px solid var(--white);
+    }
+  }
+
+  &__toTop {
+    grid-column: 22 / 25;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    height: 100%;
+
+    @include on-tablet {
+      grid-column: 10 / 13;
+    }
+
+    @include on-mobile {
+      justify-content: center;
+      padding: 32px 16px;
+    }
+
+    &__text {
+      @include text-small;
+
+      text-transform: none;
+      color: var(--secondary);
+      margin-right: 16px;
+
+      &:hover {
+        color: var(--icons);
+      }
+    }
+
+    img {
+      display: block;
+
+      width: 16px;
+      height: 16px;
+    }
+
+    &__button {
+      width: 32px;
+      height: 32px;
+      background-color: #323542;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: var(--icons);
+      }
+    }
+  }
+}
