@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "@supabase/functions-js/": "https://esm.sh/@supabase/functions-js@2.4.1/"
+  },
+  "tasks": {
+    "start": "deno run -A --watch supabase/functions/create-payment-intent/index.ts"
+  }
+}

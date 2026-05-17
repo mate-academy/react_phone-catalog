@@ -1,0 +1,31 @@
+@use '@/styles/variables' as *;
+
+.purchase {
+  &-price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+
+    &__current {
+      font-family: 'Mont', 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 41px;
+      color: $color-light-1;
+    }
+
+    &__full {
+      font-family: 'Mont', 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 100%;
+      color: $color-secondary;
+      text-decoration: line-through;
+    }
+  }
+
+  &__buttons {
+    margin-top: 16px;
+  }
+}

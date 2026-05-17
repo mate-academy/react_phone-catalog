@@ -1,0 +1,27 @@
+@use '@styles/variables' as *;
+
+.emptyOrders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 80px 24px;
+  text-align: center;
+
+  &__icon {
+    font-size: 56px;
+    opacity: 0.35;
+  }
+
+  &__text {
+    color: $color-light-1;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  &__sub {
+    color: #75778b;
+    font-size: 14px;
+  }
+}

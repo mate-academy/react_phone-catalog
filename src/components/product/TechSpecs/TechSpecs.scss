@@ -1,0 +1,43 @@
+@use '@/styles/variables' as *;
+
+.TechSpecs {
+  &__title {
+    font-size: 20px;
+    color: $color-light-1;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0%;
+    margin-top: 10px;
+
+    &::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $color-elements;
+      margin-top: 16px;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-family: 'Mont', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__value {
+    color: $color-light-1;
+    font-weight: 600;
+    letter-spacing: 0%;
+  }
+
+  &__name {
+    color: $color-secondary;
+  }
+}

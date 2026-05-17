@@ -1,0 +1,92 @@
+@use '@styles/variables' as *;
+
+.product-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  &__add-to-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+
+    width: 175px;
+    height: 40px;
+
+    border: none;
+    border-radius: 8px;
+
+    font-family: 'Mont', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: $btn-primary-text;
+    background-color: $color-accent;
+
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+
+    transition: background-color $transition-default;
+
+    &:hover:not(:disabled):not(.in-cart) {
+      background-color: $btn-primary-hover;
+    }
+
+    &:disabled,
+    &.in-cart {
+      background-color: $color-surface-2;
+      cursor: default;
+    }
+  }
+
+  &__favorites {
+    position: relative;
+    box-sizing: border-box;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 8px;
+    border: 1px solid $favorites-border;
+    background-color: $bg-card;
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+
+      background-image: url(../../../assets/icons/heart.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+
+      filter: $icon-filter;
+    }
+
+    &:hover {
+      background-color: $btn-secondary-hover;
+    }
+
+    &:focus {
+      outline: 2px solid $color-accent;
+      outline-offset: 2px;
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    &--active {
+      background-color: $color-surface-1;
+      border: 1px solid $color-elements;
+
+      &::before {
+        background-image: url(../../../assets/icons/heart-red.svg);
+        filter: none;
+      }
+    }
+  }
+}

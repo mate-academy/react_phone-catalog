@@ -1,0 +1,68 @@
+@use '@styles/variables' as *;
+@use '@styles/utils' as *;
+.block {
+  border: 1px solid $color-border;
+  padding: 24px;
+  width: 100%;
+  background-color: $bg-main;
+  border-radius: 8px; // ← аккуратное скругление всего блока
+
+  .price {
+    color: $color-light-1;
+    font-size: 32px;
+    font-weight: 800;
+    font-family: Mont;
+    display: flex;
+    justify-content: center;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  .info {
+    color: $color-secondary;
+    font-size: 14px;
+    text-align: center;
+    line-height: 21px;
+    margin-top: 8px;
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid $color-border;
+  }
+
+  .buttonCheck {
+    color: $color-light-1;
+    background-color: $color-accent;
+    border: none;
+    line-height: 21px;
+    padding: 10px 24px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+    letter-spacing: 0;
+    transition:
+      background-color $transition-default,
+      transform 0.15s ease;
+
+    border-radius: 8px; // ← скругление кнопки
+
+    &:hover {
+      background-color: $color-accent-hover;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    &:disabled {
+      background-color: $color-icons;
+      cursor: not-allowed;
+    }
+  }
+}

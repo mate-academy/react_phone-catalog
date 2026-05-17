@@ -1,0 +1,27 @@
+@use '@styles/variables' as *;
+
+.product-price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  margin-top: 8px;
+  margin-bottom: 8px;
+
+  &__current {
+    font-family: 'Mont', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    color: $color-light-1;
+  }
+
+  &__full {
+    font-family: 'Mont', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 28px;
+    color: $color-secondary;
+    text-decoration: line-through;
+  }
+}

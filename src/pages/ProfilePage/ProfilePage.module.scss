@@ -1,0 +1,107 @@
+@use '@styles/utils.scss' as *;
+@use '@styles/variables.scss' as *;
+
+.profilePage {
+  min-height: 100vh;
+  color: $color-light-1;
+
+  &__container {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 1280px;
+    padding: 0 16px;
+
+    @include on-tablet {
+      padding: 0 24px;
+    }
+
+    @include on-desktop {
+      padding: 0 32px;
+    }
+  }
+
+  &__layout {
+    display: block;
+
+    @media (min-width: 640px) {
+      display: flex;
+      gap: 60px;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    padding-bottom: 60px;
+  }
+
+  &__title {
+    margin: 24px 0;
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+  }
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  &__photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #313237;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    @media (min-width: 640px) {
+      text-align: left;
+    }
+  }
+
+  &__label {
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0 0 4px 0;
+  }
+
+  &__value {
+    font-size: 14px;
+    color: $color-secondary;
+    margin-bottom: 16px;
+  }
+}
+
+.logoutButton {
+  margin-top: 16px;
+  padding: 12px 32px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #c0392b;
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+}

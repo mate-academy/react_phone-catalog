@@ -1,0 +1,124 @@
+@use '@styles/utils' as *;
+@use '@styles/variables' as *;
+
+.contacts {
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 0 16px;
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding: 0 24px;
+    padding-top: 24px;
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px;
+    padding-top: 24px;
+    padding-bottom: 80px;
+  }
+
+  h1 {
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 32px;
+    color: $color-light-1;
+    letter-spacing: -0.01em;
+  }
+}
+
+.subtitle {
+  font-size: 16px;
+  line-height: 24px;
+  color: $color-secondary;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.team {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  border: 1px solid $color-elements;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  transition: $transition-default;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: $bg-surface;
+
+  &:hover {
+    border-color: $color-accent;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.photo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid $color-elements;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  h3 {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+    color: $color-light-1;
+  }
+}
+
+.role {
+  font-size: 13px;
+  line-height: 1.4;
+  color: $color-accent;
+  font-weight: 500;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: $color-secondary;
+  font-size: 14px;
+  transition: $transition-default;
+  word-break: break-all;
+
+  &:hover {
+    color: $color-light-1;
+  }
+}

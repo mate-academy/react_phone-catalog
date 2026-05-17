@@ -1,0 +1,213 @@
+@use '@styles/variables' as *;
+
+.write-review {
+  font-family: 'Mont', Arial, sans-serif;
+  background: $color-black;
+  min-height: 100vh;
+  padding: 16px;
+
+  &__inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid $color-elements;
+    padding-bottom: 14px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    color: $color-white;
+    @media (max-width: 480px) {
+      font-size: 17px;
+    }
+  }
+
+  &__back {
+    font-size: 12px;
+    font-weight: 700;
+    color: $color-light-1;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: color $transition-default;
+    &:hover {
+      color: $color-accent;
+      text-decoration: none;
+    }
+  }
+
+  &__product {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 12px;
+    background: $color-surface-1;
+    border: 1px solid $color-elements;
+    border-radius: 8px;
+    flex-wrap: wrap;
+  }
+
+  &__product-img {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, $color-accent, #6c63ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    flex-shrink: 0;
+  }
+
+  &__product-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-white;
+  }
+  &__product-sub {
+    font-size: 12px;
+    color: $color-secondary;
+    margin-top: 2px;
+  }
+  &__section {
+    margin-bottom: 24px;
+  }
+  &__section-hover {
+    font-size: 13px;
+    color: $color-accent-hover;
+    margin-top: 6px;
+  }
+  &__section-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: $color-white;
+    margin-bottom: 10px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 15px;
+    background: $color-surface-2;
+    border: 1px solid $color-elements;
+    border-radius: 6px;
+    outline: none;
+    box-sizing: border-box;
+    color: $color-white;
+    -webkit-appearance: none;
+    transition:
+      border-color $transition-default,
+      box-shadow $transition-default;
+    &::placeholder {
+      color: $color-secondary;
+    }
+    &:focus {
+      border-color: $color-accent;
+      box-shadow: 0 0 0 3px rgba(144, 91, 255, 0.25);
+    }
+  }
+
+  &__textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 15px;
+    background: $color-surface-2;
+    border: 1px solid $color-elements;
+    border-radius: 6px;
+    outline: none;
+    box-sizing: border-box;
+    resize: vertical;
+    min-height: 120px;
+    font-family: 'Mont', Arial, sans-serif;
+    color: $color-white;
+    -webkit-appearance: none;
+    transition:
+      border-color $transition-default,
+      box-shadow $transition-default;
+    &::placeholder {
+      color: $color-secondary;
+    }
+    &:focus {
+      border-color: $color-accent;
+      box-shadow: 0 0 0 3px rgba(144, 91, 255, 0.25);
+    }
+  }
+
+  &__hint {
+    font-size: 12px;
+    color: $color-secondary;
+    margin-top: 5px;
+  }
+  &__actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+
+  &__submit {
+    padding: 11px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    background: $color-accent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: $color-white;
+    -webkit-appearance: none;
+    transition: background $transition-default;
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    &:not(:disabled):hover {
+      background: $color-accent-hover;
+    }
+  }
+
+  &__cancel {
+    padding: 11px 28px;
+    font-size: 14px;
+    background: $color-surface-2;
+    border: 1px solid $color-elements;
+    border-radius: 6px;
+    cursor: pointer;
+    color: $color-white;
+    -webkit-appearance: none;
+    transition: background $transition-default;
+    &:hover {
+      background: $color-icons;
+    }
+  }
+
+  &__success {
+    text-align: center;
+    padding: 48px 16px;
+  }
+  &__success-icon {
+    font-size: 52px;
+    margin-bottom: 16px;
+  }
+  &__success-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: $color-white;
+    margin-bottom: 8px;
+  }
+  &__success-sub {
+    font-size: 14px;
+    color: $color-secondary;
+    margin-bottom: 24px;
+  }
+}

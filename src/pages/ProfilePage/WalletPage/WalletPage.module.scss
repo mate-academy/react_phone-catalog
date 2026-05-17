@@ -1,0 +1,48 @@
+@use '@styles/utils.scss' as *;
+
+.walletPage {
+  min-height: 100vh;
+  color: #f1f2f9;
+
+  &__container {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 1280px;
+    padding: 0 16px;
+
+    @include on-tablet {
+      padding: 0 24px;
+    }
+
+    @include on-desktop {
+      padding: 0 32px;
+    }
+  }
+
+  &__layout {
+    display: block;
+
+    @media (min-width: 640px) {
+      display: flex;
+      gap: 60px;
+    }
+  }
+
+  &__sidebar {
+    flex-shrink: 0;
+    width: 280px;
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+    padding-bottom: 60px;
+  }
+
+  &__title {
+    margin: 24px 0;
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+  }
+}

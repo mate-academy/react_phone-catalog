@@ -1,0 +1,50 @@
+@use '@styles/variables' as *;
+
+.review-card {
+  border-bottom: 1px solid $color-elements;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  &__name {
+    font-size: 14px;
+    font-weight: 700;
+    color: $color-white;
+  }
+  &__title-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+  &__title {
+    font-size: 14px;
+    font-weight: 700;
+    color: $color-white;
+  }
+  &__date {
+    font-size: 12px;
+    color: $color-secondary;
+    margin-bottom: 3px;
+  }
+  &__meta {
+    font-size: 12px;
+    color: $color-secondary;
+    margin-bottom: 10px;
+  }
+  &__verified {
+    color: $color-green;
+  }
+  &__body {
+    font-size: 14px;
+    color: $color-light-2;
+    line-height: 1.65;
+    word-break: break-word;
+  }
+}

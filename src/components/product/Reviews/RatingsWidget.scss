@@ -1,0 +1,166 @@
+@use '@styles/variables' as *;
+* {
+  box-sizing: border-box;
+}
+
+.ratings-widget {
+  font-family: 'Mont', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+
+  &__score {
+    font-family: 'Mont', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: $color-white;
+    line-height: 1;
+  }
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+  }
+
+  &__chevron {
+    color: $color-secondary;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__count {
+    font-size: 13px;
+    font-weight: 600;
+    color: $color-white;
+  }
+}
+
+// ─── Summary Panel ───────────────────────────────────────
+.summary-panel {
+  width: 100%;
+  max-width: 280px;
+  flex-shrink: 0;
+
+  @media (max-width: 600px) {
+    max-width: 100%;
+  }
+
+  &__score-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+
+  &__score-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-white;
+  }
+  &__count {
+    font-size: 13px;
+    color: $color-secondary;
+    margin-bottom: 14px;
+  }
+
+  &__bar-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  &__bar-label {
+    font-size: 13px;
+    color: $color-accent;
+    min-width: 38px;
+    white-space: nowrap;
+    transition: color $transition-default;
+  }
+  &__bar-track {
+    flex: 1;
+    height: 16px;
+    background: $color-elements;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  &__bar-fill {
+    height: 100%;
+    background: $color-accent;
+    border-radius: 4px;
+  }
+  &__bar-pct {
+    font-size: 13px;
+    color: $color-secondary;
+    min-width: 28px;
+    text-align: right;
+  }
+
+  &__write-section {
+    border-top: 1px solid $color-elements;
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+
+  &__write-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: $color-white;
+    margin-bottom: 6px;
+  }
+  &__write-sub {
+    font-size: 13px;
+    color: $color-secondary;
+    margin-bottom: 12px;
+  }
+
+  &__write-btn {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 13px;
+    border: 1px solid $color-elements;
+    border-radius: 8px;
+    background: $color-surface-2;
+    cursor: pointer;
+    color: $color-white;
+    transition: background $transition-default;
+    &:hover {
+      background: $color-icons;
+    }
+  }
+}
+
+// ─── Star Picker ─────────────────────────────────────────
+.star-picker {
+  display: flex;
+  gap: 4px;
+
+  &__star {
+    font-size: 36px;
+    cursor: pointer;
+    color: $color-elements;
+    background: none;
+    border: none;
+    padding: 2px;
+    line-height: 1;
+    transition: color 0.15s;
+    -webkit-tap-highlight-color: transparent;
+
+    @media (max-width: 360px) {
+      font-size: 28px;
+    }
+    &--active {
+      color: $color-accent;
+    }
+  }
+}

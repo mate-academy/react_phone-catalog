@@ -1,0 +1,132 @@
+@use '@styles/utils' as *;
+@use '@styles/variables' as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Mont;
+}
+
+.cart {
+  box-sizing: border-box;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px 56px;
+
+  @include on-tablet {
+    padding: 0 24px 64px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px 80px;
+  }
+
+  .emptyCart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 0 auto;
+    flex-grow: 1;
+  }
+  .imgWrapper {
+    width: 320px;
+    height: 280px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      object-fit: cover;
+      transform: translate(0, 10%);
+    }
+  }
+
+  .addToCart {
+    display: flex;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    width: 175px;
+    height: 40px;
+    font-family: 'Mont', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    color: $color-light-1;
+    background-color: $color-accent;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+  }
+
+  .title {
+    color: $color-light-1;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    margin-top: 24px;
+    margin-bottom: 32px;
+    letter-spacing: -0.01em;
+
+    h1 {
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+    }
+  }
+
+  .cartContent {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-desktop {
+      @include page-grid;
+      align-items: start;
+    }
+
+    .products {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      @include on-desktop {
+        grid-column: 1 / 17;
+      }
+
+      button[class*='remove'],
+      .remove,
+      .remove-btn {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+      }
+
+      button[class*='minus'],
+      button[class*='plus'],
+      .quantity-btn,
+      .minus,
+      .plus {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+      }
+    }
+
+    .summary {
+      @include on-desktop {
+        grid-column: 17 / 25;
+        position: sticky;
+        top: 24px;
+      }
+    }
+  }
+}

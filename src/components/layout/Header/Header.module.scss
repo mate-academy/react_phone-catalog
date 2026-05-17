@@ -1,0 +1,238 @@
+@use '@styles/variables' as *;
+@use '@styles/utils' as *;
+
+.header {
+  height: 48px;
+  background-color: $bg-main;
+  border-bottom: 1px solid $color-border;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  @include on-desktop() {
+    height: 64px;
+  }
+
+  &__theme {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    border-left: 1px solid $color-border;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__left,
+  &__right {
+    display: flex;
+    align-items: stretch;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    text-decoration: none;
+
+    img {
+      width: 140px;
+      height: 30px;
+      object-fit: contain;
+
+      @include on-desktop() {
+        width: 100px;
+        height: 40px;
+      }
+    }
+  }
+
+  &__nav {
+    display: none;
+    @include on-tablet() {
+      display: flex;
+      height: 100%;
+      margin-left: 32px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: stretch;
+  }
+
+  &__burger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    background: transparent;
+    border: none;
+    border-left: 1px solid $color-border;
+    cursor: pointer;
+
+    @include on-tablet() {
+      display: none;
+    }
+  }
+}
+
+.lang_switcher {
+  display: none;
+  align-items: center;
+  gap: 4px;
+  margin-right: 16px;
+
+  @include on-tablet() {
+    display: flex;
+  }
+}
+
+.lang_btn {
+  background: none;
+  border: none;
+  color: $color-secondary;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $color-light-1;
+  }
+
+  &--active {
+    color: $color-light-1;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+.lang_divider {
+  color: $color-border;
+  font-size: 12px;
+  user-select: none;
+}
+
+.nav_list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  height: 100%;
+  @include on-tablet() {
+    gap: 32px;
+  }
+  @include on-desktop() {
+    gap: 64px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: $color-secondary;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    position: relative;
+
+    &--active {
+      color: $color-light-1;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: $color-light-1;
+      }
+    }
+  }
+}
+
+.icon_btn {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 100%;
+  border-left: 1px solid $color-border;
+  text-decoration: none;
+  position: relative;
+
+  @include on-tablet() {
+    display: flex;
+  }
+
+  @include on-desktop() {
+    width: 64px;
+  }
+
+  &--user {
+    display: flex;
+  }
+
+  &:last-child {
+    border-right: 1px solid $color-border;
+  }
+
+  &--active {
+    background-color: rgba($color-light-1, 0.1);
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: $color-light-1;
+    }
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    transition: filter 0.2s ease;
+    filter: $icon-filter;
+  }
+}
+
+.burger_icon {
+  width: 16px;
+  height: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: $color-light-1;
+    transition: transform 0.3s;
+  }
+
+  &--active {
+    span:nth-child(1) {
+      transform: translateY(3.5px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-3.5px) rotate(-45deg);
+    }
+  }
+}

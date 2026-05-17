@@ -1,0 +1,64 @@
+@use '../../../../styles/variables' as *;
+
+.switch {
+  position: relative;
+  width: 46px;
+  height: 18px;
+  border-radius: 20px;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 6px;
+  cursor: pointer;
+
+  transition: background 0.3s ease;
+}
+
+.light {
+  background: #d6d6d6;
+}
+
+.dark {
+  background: #2b2d3a;
+}
+
+.icon {
+  font-size: 8px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.icon img {
+  width: 12px;
+  height: 12px;
+  filter: $icon-filter;
+}
+
+.thumb {
+  position: absolute;
+  left: 1px;
+
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.left {
+  transform: translateX(3px);
+  background: #ffd54f;
+}
+
+.right {
+  transform: translateX(25px);
+  background: #7b7b7b;
+}

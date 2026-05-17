@@ -1,0 +1,76 @@
+@use '@styles/variables' as *;
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  background: $color-surface-1;
+  border: 1px solid $color-elements;
+  border-radius: 8px;
+  padding: 16px 16px 12px;
+  width: 280px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media (max-width: 360px) {
+    width: calc(100vw - 32px);
+  }
+
+  &--open {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &__title {
+    font-size: 13px;
+    font-weight: 700;
+    color: $color-white;
+    margin: 0;
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: $color-secondary;
+    line-height: 1;
+    padding: 0 0 0 8px;
+    transition: color $transition-default;
+    &:hover {
+      color: $color-white;
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    background: $color-elements;
+    margin: 10px 0 8px;
+  }
+
+  &__link {
+    display: block;
+    font-size: 13px;
+    color: $color-accent;
+    text-decoration: none;
+    transition: color $transition-default;
+    &:hover {
+      color: $color-accent-hover;
+      text-decoration: underline;
+    }
+  }
+}

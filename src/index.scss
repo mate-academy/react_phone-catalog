@@ -1,0 +1,117 @@
+@use 'styles/variables' as *;
+@use 'styles/utils.scss' as *;
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-SemiBold.otf');
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-SemiBold.otf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-SemiBold.otf');
+  font-weight: 500;
+}
+
+html {
+  font-family: 'Mont', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  scroll-behavior: smooth;
+  font-weight: 400;
+  overflow-y: scroll;
+}
+
+body {
+  margin: 0;
+  background-color: $bg-main;
+  color: $color-text-primary;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+p {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+h4 {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+a {
+  text-decoration: none;
+}
+
+hr {
+  border: none;
+  margin: 0;
+}
+
+.text-s-12 {
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 400;
+}
+
+.text-m-22 {
+  font-size: 22px;
+  line-height: 31px;
+}
+
+.text-l-32 {
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s cubic-bezier(0.2, 0, 0.2, 1),
+    transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}

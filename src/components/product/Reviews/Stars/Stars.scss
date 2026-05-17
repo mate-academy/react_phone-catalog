@@ -1,0 +1,41 @@
+@use '@styles/variables' as *;
+
+.stars {
+  display: flex;
+  gap: 4px;
+  font-size: 24px;
+}
+
+.stars__item {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    $color-accent var(--fill-percent, 0%),
+    $color-light-1 var(--fill-percent, 0%)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+  font-size: 24px;
+}
+
+.stars__item {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    $color-accent var(--fill-percent, 0%),
+    $color-light-1 var(--fill-percent, 0%)
+  );
+
+  /* Для Safari / Chrome / Edge на MacBook */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Стандарт для Firefox */
+  background-clip: text;
+  color: transparent;
+}

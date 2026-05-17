@@ -1,0 +1,91 @@
+@use '@styles/variables' as *;
+@use '@styles/utils' as *;
+
+.sidebar {
+  display: none;
+
+  @media (min-width: 640px) {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    min-width: 280px;
+    padding-top: 40px;
+  }
+
+  .profileSection {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 20px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #313237;
+
+    .avatarPlaceholder {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color-accent;
+      font-weight: 700;
+    }
+
+    .name {
+      font-size: 14px;
+      font-weight: 600;
+      color: $color-accent;
+      margin: 0;
+    }
+
+    .email {
+      font-size: 12px;
+      color: $color-secondary;
+      margin: 0;
+    }
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+
+    .navItem {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      text-decoration: none;
+      color: $color-light-1;
+      font-size: 14px;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $color-accent-hover;
+      }
+
+      &.active {
+        color: $color-accent;
+        font-weight: 700;
+      }
+
+      .badge {
+        background: $color-accent;
+        color: $color-white;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 800;
+      }
+
+      .count {
+        color: $color-secondary;
+      }
+    }
+
+    .divider {
+      height: 1px;
+      background: #313237;
+      margin: 8px 0;
+    }
+  }
+}

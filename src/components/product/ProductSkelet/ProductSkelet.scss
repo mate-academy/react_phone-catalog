@@ -1,0 +1,107 @@
+@use '@/styles/utils' as *;
+@use '@/styles/variables' as v;
+
+.skeleton {
+  // Базовий колір для "заглушок" у вашій темній темі
+  background: color-surface-2;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+
+  // Ефект переливання
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.card-skeleton {
+  // Копіюємо розміри вашої оригінальної картки
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 440px;
+  padding: 32px;
+  background-color: color-surface-1; // ваш колір фону
+
+  @include on-tablet {
+    height: 506px;
+  }
+  @include on-desktop {
+    height: 506px;
+  }
+
+  &__img {
+    @extend .skeleton;
+    height: 130px;
+    margin-bottom: 8px;
+    @include on-tablet {
+      height: 196px;
+    }
+  }
+
+  &__title {
+    @extend .skeleton;
+    height: 21px;
+    width: 90%;
+    margin-top: 24px;
+  }
+
+  &__price {
+    @extend .skeleton;
+    height: 31px;
+    width: 60%;
+    margin-top: 8px;
+  }
+
+  &__features {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &-line {
+      @extend .skeleton;
+      height: 12px;
+      width: 100%;
+    }
+  }
+
+  &__actions {
+    margin-top: auto; // притискаємо до низу
+    display: flex;
+    gap: 8px;
+    height: 40px;
+
+    &-btn {
+      @extend .skeleton;
+      flex: 1;
+      height: 100%;
+    }
+
+    &-fav {
+      @extend .skeleton;
+      width: 40px;
+      height: 40px;
+    }
+  }
+}

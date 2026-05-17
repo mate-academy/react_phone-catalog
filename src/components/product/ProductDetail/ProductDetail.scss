@@ -1,0 +1,42 @@
+@use '@/styles/variables' as *;
+
+.ProductDetail {
+  &__about {
+    &-title {
+      color: $color-light-1;
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0;
+      padding: 0;
+
+      &::after {
+        content: '';
+        display: block;
+        height: 1px;
+        width: 100%;
+        background-color: $color-elements;
+        margin-top: 16px;
+      }
+    }
+
+    &-main {
+      margin-top: 32px;
+
+      &-title {
+        color: $color-light-1;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 100%;
+        letter-spacing: 0;
+        margin-bottom: 16px;
+      }
+
+      &-second {
+        color: $color-secondary-1;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+      }
+    }
+  }
+}
