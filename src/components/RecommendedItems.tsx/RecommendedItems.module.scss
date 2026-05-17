@@ -1,0 +1,111 @@
+@import '../../styles/common';
+
+.recommendedItems {
+  @include page-grid;
+
+  max-width: 1136px;
+  padding: 56px 0 56px $padding-phone;
+
+  @include on-tablet {
+    padding: 64px 0 64px $padding-tablet;
+  }
+
+  @include on-desktop-small {
+    padding: 80px 0;
+    margin: 0 32px;
+  }
+
+  @include on-desktop {
+    margin: 0 auto;
+  }
+
+  &__header {
+    @include page-grid;
+
+    grid-column: -1 / 1;
+
+    display: flex;
+    justify-content: space-between;
+
+    &--buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-right: 16px;
+
+      @include on-desktop-small {
+        margin-right: 0;
+      }
+    }
+
+    &--title {
+      font-size: 22px;
+      line-height: 31px;
+      letter-spacing: 0;
+      font-weight: 700;
+      color: $main-white-color;
+      margin-bottom: 24px;
+      box-sizing: border-box;
+      text-align: left;
+
+      @include on-tablet {
+        font-size: 32px;
+        line-height: 41px;
+        letter-spacing: -0.01em;
+      }
+    }
+  }
+
+  &__slider--btn {
+    width: 32px;
+    height: 32px;
+    background-color: $button-grey-color;
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
+    transition: background-image 0.5s ease-in-out;
+
+    &-prev {
+      background-image: url('/img/arrowRightDefault.svg');
+      transform: rotate(180deg);
+
+      &:hover {
+        background-image: url('/img/arrowRightHover.svg');
+      }
+    }
+
+    &-next {
+      background-image: url('/img/arrowRightDefault.svg');
+
+      &:hover {
+        background-image: url('/img/arrowRightHover.svg');
+      }
+    }
+
+    &:disabled {
+      background-color: transparent;
+      background-image: url('/img/arrowRightDisabled.svg');
+    }
+  }
+
+  &__list {
+    &--card {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      background-color: $main-card-color;
+    }
+  }
+
+  &__swiper {
+    grid-column:  -1 / 1;
+  }
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid $dark-grey-color;
+}

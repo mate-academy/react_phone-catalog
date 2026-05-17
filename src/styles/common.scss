@@ -1,0 +1,120 @@
+@import './mixins';
+@import './variables';
+@import './fonts';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $main-font-family;
+  scroll-behavior: smooth;
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-text-fill-color: $main-white-color;
+    -webkit-box-shadow: 0 0 0 1000px $main-color inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+body,
+html {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  min-width: 320px;
+  background-color: $main-color;
+}
+
+main {
+  min-height: calc(100vh - 257px);
+
+  @include on-tablet {
+    min-height: calc(100vh - 96px);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  padding: 0 $padding-phone;
+
+  @include on-tablet {
+    padding: 0 $padding-tablet;
+  }
+
+  @include on-desktop-small {
+    padding: 0 $padding-desktop-small;
+  }
+
+  @include on-desktop {
+    margin: auto;
+    padding: 0 $padding-desktop;
+    max-width: 1440px;
+  }
+}
+
+.is-active {
+  color: $main-white-color !important;
+  border-bottom: 2px solid $main-white-color;
+}
+
+.icon {
+  &-user {
+    fill: $main-white-color;
+    width: 16px;
+    height: 15px;
+
+    @include on-desktop-small {
+      width: 20px;
+      height: 19px;
+    }
+  }
+
+  &-menu {
+    fill: $main-white-color;
+    width: 14px;
+    height: 8.5px;
+  }
+}

@@ -1,0 +1,51 @@
+@import '../../styles/common';
+
+
+.breadcrumbs {
+  @include page-grid;
+
+  display: flex;
+  gap: 8px;
+  max-width: 1136px;
+  grid-column: span 24;
+  padding-top: 72px;
+  margin: 0 16px;
+
+  @include on-tablet {
+    margin: 0 24px;
+  }
+
+  @include on-desktop-small {
+    padding-top: 88px;
+    margin: 0 32px;
+  }
+
+  @include on-desktop {
+    margin: 0 auto;
+  }
+
+
+  &__home {
+    background-image: url('/img/Home.svg');
+    width: 16px;
+    height: 16px;
+  }
+
+  &__arrow {
+    background-image: url('/img/arrowRightDisabled.svg');
+    width: 16px;
+    height: 16px;
+  }
+
+  &__route {
+    color: $light-grey-color;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 15px;
+    letter-spacing: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

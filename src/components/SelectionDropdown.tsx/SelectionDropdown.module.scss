@@ -1,0 +1,68 @@
+@import '../../styles/common';
+
+.selectionDropdown {
+  margin-top: 40px;
+  position: relative;
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $main-white-color;
+
+  &__title {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0;
+    color: $light-grey-color;
+  }
+
+  &__main {
+    cursor: pointer;
+    margin-top: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $button-grey-color;
+    padding: 10px 12px;
+    width: 136px;
+
+    &--icon {
+      width: 16px;
+      height: 16px;
+      background-image: url('/img/arrow-down.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &:hover {
+      box-shadow: 0 0 0 1px $icon-grey-color;
+    }
+  }
+
+  &__list {
+    position: absolute;
+    background-color: $icon-grey-color;
+    width: 136px;
+    border: 1px solid $dark-grey-color;
+    margin-top: 4px;
+    list-style-type: none;
+    z-index: 1;
+
+    &--option {
+      color: $main-white-color;
+      font-weight: 400;
+      padding: 10px;
+    }
+
+    &--option:hover {
+      color: $main-white-color;
+      background-color: $button-grey-color;
+    }
+  }
+}
+
+.iconActive {
+  transform: rotate(180deg);
+}
