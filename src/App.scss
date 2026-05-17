@@ -1,1 +1,59 @@
-// not empty
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf');
+  font-weight: 700;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Mont, Arial, sans-serif;
+  color: #313237;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.appRoot {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+a,
+button,
+img {
+  transition: all 0.3s;
+}
