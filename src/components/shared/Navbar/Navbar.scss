@@ -25,6 +25,11 @@
   &__menu {
     display: flex;
     height: 100%;
+    padding: 0 30px;
+
+    @include tablet {
+      padding: 0;
+    }
 
     @include mobile {
       display: none;

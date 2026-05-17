@@ -2,7 +2,9 @@
 @import '@/styles/mixins';
 
 .product-card {
-  // max-width: 272px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   border: $color-elements 1px solid;
   padding: 32px;
   border: 1px solid $color-elements;

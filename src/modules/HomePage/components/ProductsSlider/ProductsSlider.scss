@@ -1,21 +1,16 @@
 @import '@/styles/variables';
 @import '@/styles/mixins';
-
 .products-slider {
   margin-top: 80px;
-
   @include tablet {
     margin-top: 64px;
   }
-
   @include mobile {
-    margin: 56px -16px 0 0;
+    margin: 56px -16px 0 -16px;
   }
-
   &__title {
     @include h2;
   }
-
   &__container {
     width: 100%;
     display: flex;
@@ -25,80 +20,67 @@
     @include tablet {
       gap: 20px;
     }
-
     @include mobile {
       gap: 20px;
       width: 100%;
     }
-
     &--header {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: flex-start;
-    }
 
+      @include mobile {
+        margin: 0 16px;
+      }
+    }
     &--buttons {
       display: flex;
       gap: 16px;
-
       @include mobile {
         margin-right: 16px;
       }
     }
   }
-
   &__window {
+    padding: 9px 10px 10px 3px;
     flex-grow: 1;
     overflow: hidden;
     border-radius: 0;
     position: relative;
     touch-action: pan-y;
-
     overflow: hidden;
-
     @include mobile {
-      overflow: visible;
+      overflow: hidden;
     }
   }
-
   &__cards {
     display: flex;
     flex-direction: row;
     gap: 16px;
     box-sizing: border-box;
     width: 100%;
-
+    @include mobile {
+      padding: 0 16px;
+    }
     @include animation-transition;
     transform: translateX(
-      calc(var(--current-index) * ((-100% - 48px) / 4 - 16px))
+      calc(var(--current-index) * -1 * (100% + 16px) / var(--visible-cards))
     );
-
     @include mobile {
-      transform: translateX(calc(var(--current-index) * (-100% / 4 - 16px)));
-      // overflow: hidden;
-      // transform: none;
-      // overflow-x: auto;
-      // scroll-snap-type: x mandatory;
+      transform: translateX(calc(var(--current-index) * -1 * (100% - 16px)));
     }
   }
-
   &__card-wrapper {
     flex-shrink: 0;
-
-    width: calc((100% - 48px) / 4);
-
+    width: calc((100% + 16px) / var(--visible-cards) - 16px);
     @include mobile {
-      scroll-snap-align: start;
-      width: 212px;
+      width: 100%;
     }
-
     @include tablet {
-      scroll-snap-align: start;
-      width: 212px;
+      width: calc((100% + 16px) / var(--visible-cards) - 16px);
     }
   }
-
   &__image {
     width: 100%;
     flex-shrink: 0;
@@ -107,40 +89,33 @@
     margin: 0 auto;
     object-position: 87.5% 50%;
   }
-
   &__button {
     border: 1px solid $color-elements;
     @include animation-transition;
     cursor: pointer;
-
     &--left,
     &--right {
       width: 48px;
       height: 48px;
     }
-
     &:hover:not(:disabled) {
       box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
       border-color: $color-primary;
     }
-
     &:disabled {
       opacity: 0.5;
       border-color: $color-secondary;
       cursor: default;
       pointer-events: none;
     }
-
     &--left,
     &--right {
       width: 48px;
       height: 48px;
     }
-
     &--left::before {
       content: '❮';
     }
-
     &--right::before {
       content: '❯';
     }

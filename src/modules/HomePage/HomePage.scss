@@ -4,7 +4,15 @@
 .products {
   max-width: 1800px;
   margin: auto;
+  padding: 0 152px;
 
+  @include tablet {
+    padding: 0 25px;
+  }
+
+  @include mobile {
+    padding: 0;
+  }
   &__content {
     max-width: 1440px;
     margin: 0 auto;
