@@ -1,0 +1,45 @@
+@import '../../../../assets/global';
+
+.aboutProduct {
+  padding-top: 56px;
+
+  @include on-desctop {
+    width: 50%;
+  }
+}
+
+.sectionTitle {
+  font-family: Mont-SemitBold, sans-serif;
+  font-size: 20px;
+  color: $light-color;
+
+  padding-bottom: 16px;
+  border-bottom: 1px solid $midle-gray-color;
+
+  @include on-tablet {
+    font-size: 22px;
+  }
+}
+
+.article {
+  padding-top: 32px;
+}
+
+.articleTitle {
+  font-family: Mont-SemitBold, sans-serif;
+  font-size: 16px;
+  color: $light-color;
+
+  @include on-tablet {
+    font-size: 16px;
+  }
+}
+
+.articleDescription {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: $light-gray-color;
+
+  padding-top: 16px;
+}

@@ -1,0 +1,21 @@
+@import '../../assets/global';
+
+.page {
+  height: calc(100vh - 99px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  width: 100%;
+
+  @include on-tablet {
+    width: 60%;
+  }
+
+  @include on-large-desctop {
+    width: 40%;
+    margin: 0 auto;
+  }
+}
