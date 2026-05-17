@@ -1,0 +1,21 @@
+@import '../src/components/variables';
+
+body {
+  font-family: $font-main;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  margin: 0;
+  padding: 0;
+  height: 100%;
+
+  color: $text-primary;
+  background-color: $bg-main;
+
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

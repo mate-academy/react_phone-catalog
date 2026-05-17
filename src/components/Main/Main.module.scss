@@ -1,0 +1,438 @@
+@import '../variables';
+@import '../mixins';
+
+.lang-switcher {
+  display: flex;
+  gap: 8px;
+
+  &__btn {
+    background: transparent;
+    border: 1px solid $color-elements;
+    padding: 4px 8px;
+    cursor: pointer;
+    color: $text-secondary;
+    font-family: $font-main;
+    font-size: 12px;
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: $text-primary;
+      color: $text-primary;
+    }
+
+    &--active {
+      background-color: $color-accent;
+      border-color: $color-accent;
+      color: #fff;
+    }
+  }
+}
+
+.main {
+  &__container {
+    @include main;
+
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding-inline: 16px;
+    width: 100%;
+    overflow-x: hidden;
+
+    @include onScreen640 {
+      padding-inline: 24px;
+    }
+
+    @include onScreen1200 {
+      max-width: 1136px;
+      padding-inline: 0;
+    }
+  }
+
+  &__title {
+    margin: 32px 0;
+    color: $color-white;
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    @include onScreen640 {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__section {
+    margin-bottom: 56px;
+
+    @include onScreen1200 {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    min-height: 48px;
+    gap: 16px;
+
+    @include onScreen1200 {
+      margin-inline: auto;
+    }
+  }
+
+  &__nav-buttons {
+    display: flex;
+    margin-left: auto;
+    flex-shrink: 0;
+    gap: 8px;
+  }
+
+  &__nav-btn {
+    @include navBtnBase;
+
+    --btn-rotate: 0deg;
+    --btn-scale: 1;
+
+    background-image: url('/images/button-icon/default.svg');
+    transform: rotate(var(--btn-rotate)) scale(var(--btn-scale));
+
+    &--left {
+      --btn-rotate: 180deg;
+
+      background-color: transparent;
+      border-color: $color-elements;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      border-color: $color-elements;
+      background-color: transparent;
+      background-image: url('/images/button-icon/disabled.svg');
+      cursor: default;
+    }
+
+    &:hover:not(:disabled) {
+      background-image: url('/images/button-icon/hover.svg');
+    }
+
+    &:active:not(:disabled) {
+      --btn-scale: 0.95;
+    }
+  }
+
+  &__slider {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__track {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    gap: 16px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    & > * {
+      flex: 0 0 212px;
+      min-width: 212px;
+
+      @include onScreen640 {
+        flex: 0 0 237px;
+      }
+
+      @include onScreen1200 {
+        flex: 0 0 calc((100% - (16px * 3)) / 4);
+      }
+    }
+  }
+}
+
+.banner {
+  &__main-row {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 16px;
+  }
+
+  &__content {
+    position: relative;
+    margin: 0 auto;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    min-width: 0;
+    flex: 1;
+
+    @include onScreen640 {
+      margin: 0;
+      height: 200px;
+      max-width: none;
+      aspect-ratio: auto;
+    }
+
+    @include onScreen1200 {
+      height: 400px;
+    }
+  }
+
+  &__promo {
+    display: none;
+
+    @include onScreen640 {
+      display: flex;
+      position: absolute;
+      top: 50%;
+      left: 32px;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 10;
+      transform: translateY(-50%);
+      border-radius: 16px;
+      background: rgba(22, 25, 27, 0.85);
+      padding: 20px;
+      width: 40%;
+      pointer-events: none;
+      backdrop-filter: blur(6px);
+    }
+
+    @include onScreen1200 {
+      left: 64px;
+      padding: 32px;
+      width: 360px;
+    }
+
+    &-title {
+      display: -webkit-box;
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(90deg, #6a4dff, #a855f7, #c084fc);
+      background-clip: text;
+      color: transparent;
+      font-family: Mont, sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.2;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      -webkit-text-fill-color: transparent;
+
+      @include onScreen1200 {
+        font-size: 40px;
+        line-height: 1.1;
+      }
+    }
+
+    &-text {
+      margin-top: 8px;
+      color: $text-secondary;
+      font-size: 13px;
+
+      @include onScreen1200 {
+        margin-top: 12px;
+        font-size: 14px;
+      }
+    }
+
+    &-btn {
+      align-self: flex-start;
+      margin-top: 16px;
+      border: 1px solid $color-white;
+      border-radius: 20px;
+      background: transparent;
+      padding: 10px 18px;
+      cursor: pointer;
+      color: $text-primary;
+      transition: all 0.2s ease;
+      pointer-events: auto;
+
+      @include onScreen1200 {
+        margin-top: 24px;
+        padding: 12px 22px;
+      }
+
+      &:hover {
+        background-color: $color-surface1;
+      }
+    }
+  }
+
+  &__track {
+    display: flex;
+    z-index: 1;
+    height: 100%;
+    transition: transform 0.5s ease;
+  }
+
+  &__slide {
+    min-width: 100%;
+    height: 100%;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__arrow {
+    @include navBtnBase;
+
+    display: none;
+
+    @include onScreen640 {
+      display: flex;
+      z-index: 10;
+      border: none;
+      width: 32px;
+      height: 200px;
+      flex-shrink: 0;
+      background-color: $color-surface2;
+      background-image: url('/images/button-icon/Arrow-Rigth.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 16px 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    @include onScreen1200 {
+      height: 400px;
+    }
+
+    &--left {
+      transform: rotate(180deg);
+    }
+
+    &:disabled {
+      opacity: 0.3;
+      border-color: rgba(255, 255, 255, 0.1);
+      background-color: transparent;
+      cursor: default;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: $color-icons;
+      background-image: url('/images/button-icon/Arrow-Rigth.svg');
+      background-size: 16px 16px;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+    height: 4px;
+    gap: 12px;
+  }
+
+  &__dot {
+    display: block;
+    flex-shrink: 0;
+    padding: 0;
+    width: 14px;
+    height: 4px;
+    background-color: $color-elements;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &--active {
+      height: 4px;
+      background-color: $text-primary;
+    }
+
+    &:hover {
+      background-color: $color-icons;
+    }
+  }
+}
+
+.categories {
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    @include onScreen640 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__item {
+    display: block;
+    border-radius: 12px;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
+    text-decoration: none;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &__img-wrapper {
+    display: flex;
+    align-items: flex-end;
+    justify-content: right;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      transition: transform 0.3s;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__name {
+    display: block;
+    margin-bottom: 4px;
+    overflow: hidden;
+    color: $text-primary;
+    font-family: $font-main;
+    font-size: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__count {
+    display: block;
+    min-height: 20px;
+    color: $text-secondary;
+    font-family: $font-main;
+    font-size: 14px;
+  }
+}
+
+.is-hidden {
+  position: absolute;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}

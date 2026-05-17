@@ -1,0 +1,89 @@
+{
+  "main": {
+    "title": "Welcome to Nice Gadgets store!",
+    "promo_title": "Now available in our store!👌",
+    "promo_text": "Be the first!",
+    "checkout": "Checkout",
+    "brand_new": "Brand new models",
+    "hot_prices": "Hot prices",
+    "categories_title": "Shop by category",
+    "category_phones": "Mobile phones",
+    "category_tablets": "Tablets",
+    "category_accessories": "Accessories",
+    "models_count_one": "{{count}} model",
+    "models_count_other": "{{count}} models"
+  },
+
+  "nav": {
+    "home": "Home",
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "cart": "Cart",
+    "favorites": "Favorites"
+  },
+
+  "categories": {
+    "title": "Shop by category",
+    "phones": "Mobile phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "models": "{{count}} models"
+  },
+
+  "cart": {
+    "checkout_confirm": "Checkout is not implemented yet. Do you want to clear the Cart?",
+    "total_items_one": "Total for {{count}} item",
+    "total_items_other": "Total for {{count}} items"
+  },
+
+  "not_found": {
+    "title": "Page not found",
+    "back_home": "Back to home"
+  },
+
+  "catalog": {
+    "loading": "Loading...",
+    "page_title": "Phones",
+    "main_title": "Mobile phones",
+    "models_count": "{{count}} models",
+    "sort_label": "Sort by",
+    "sort_newest": "Newest",
+    "sort_alpha": "Alphabetically",
+    "sort_cheap": "Cheapest",
+    "per_page_label": "Items per page",
+    "per_page_all": "All",
+    "no_results": "No phones found in this category.",
+    "error_title": "Something went wrong",
+    "retry_button": "Reload"
+  },
+
+  "product": {
+    "back": "Back",
+    "add_to_cart": "Add to cart",
+    "added": "Added",
+    "about": "About",
+    "tech_specs": "Tech specs",
+    "screen": "Screen",
+    "resolution": "Resolution",
+    "processor": "Processor",
+    "ram": "RAM",
+    "built_in_memory": "Built in memory",
+    "camera": "Camera",
+    "zoom": "Zoom",
+    "cell": "Cell",
+    "available_colors": "Available colors",
+    "select_capacity": "Select capacity",
+    "related_title": "You may also like",
+    "not_found": "Product not found",
+    "back_to_catalog": "Back to catalog",
+    "loading": "Loading..."
+  },
+
+  "footer": {
+    "github": "GITHUB",
+    "contacts": "CONTACTS",
+    "rights": "RIGHTS",
+    "back_to_top": "Back to top"
+  }
+}

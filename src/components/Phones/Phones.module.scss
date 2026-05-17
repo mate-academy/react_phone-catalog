@@ -1,0 +1,242 @@
+@import '../variables';
+@import '../mixins';
+
+.phones {
+  padding-bottom: 64px;
+
+  @include onScreen1200 {
+    padding-bottom: 80px;
+  }
+
+  &__container {
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 100%;
+    padding-inline: 16px;
+
+    @include onScreen640 {
+      padding-inline: 24px;
+    }
+
+    @include onScreen1200 {
+      max-width: 1136px;
+      padding-inline: 0;
+    }
+  }
+
+  &__breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 24px;
+
+    .breadcrumbs__link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .breadcrumbs__arrow {
+      width: 16px;
+      height: 16px;
+    }
+
+    .breadcrumbs__current {
+      color: $text-secondary;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  &__title {
+    margin: 24px 0 8px;
+    font-size: 32px;
+    line-height: 41px;
+    font-family: $font-main;
+    color: $text-primary;
+
+    @include onScreen640 {
+      font-size: 48px;
+      line-height: 56px;
+      margin: 40px 0 8px;
+    }
+  }
+
+  &__count {
+    color: $text-secondary;
+    font-size: 14px;
+    margin-bottom: 32px;
+    font-family: $font-main;
+  }
+
+  &__dropdowns {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    @media (max-width: 639px) {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__dropdown-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__label {
+    font-size: 12px;
+    font-weight: 700;
+    color: $text-secondary;
+  }
+
+  &__select {
+    height: 40px;
+    padding: 0 12px;
+    background-color: $color-surface2;
+    border: 1px solid $color-elements;
+    color: $text-primary;
+    font-family: $font-main;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    box-sizing: border-box;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-image: url('/images/icons/arrow-down.png');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+    width: 136px;
+
+    @include onScreen640 {
+      width: 187px;
+    }
+
+    @include onScreen1200 {
+      width: 176px;
+    }
+
+    &:hover {
+      border-color: $text-primary;
+    }
+
+    &--short {
+      width: 128px;
+
+      @include onScreen640 {
+        width: 136px;
+      }
+      @include onScreen1200 {
+        width: 128px;
+      }
+    }
+  }
+
+  &__grid {
+    display: grid;
+    gap: 40px 16px;
+    margin-top: 24px;
+    grid-template-columns: repeat(1, 1fr);
+
+    justify-items: center;
+
+    @include onScreen640 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include onScreen1200 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__no-results {
+    text-align: center;
+    padding: 40px;
+    color: $text-secondary;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  gap: 16px;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $color-elements;
+    width: 32px;
+    height: 32px;
+    background-color: $color-surface2;
+    cursor: pointer;
+    color: $text-primary;
+    font-family: $font-main;
+    font-size: 14px;
+    transition: all 0.2s;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: default;
+      background-color: $bg-main;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: $color-icons;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    color: $text-primary;
+    font-family: $font-main;
+    font-size: 14px;
+    transition: all 0.2s;
+
+    border: none;
+    background-color: $color-surface1;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: default;
+      background-color: $bg-main;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: $color-icons;
+    }
+
+    &--active {
+      border: 1px solid $color-accent;
+      background-color: $color-accent;
+      cursor: default;
+      color: #fff;
+
+      &:hover {
+        border-color: $color-accent;
+      }
+    }
+  }
+}

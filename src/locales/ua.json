@@ -1,0 +1,93 @@
+{
+  "main": {
+    "title": "Вітаємо в магазині Nice Gadgets!",
+    "promo_title": "Вже в наявності!👌",
+    "promo_text": "Будь першим!",
+    "checkout": "Оформлення замовлення",
+    "brand_new": "Нові моделі",
+    "hot_prices": "Гарячі ціни",
+    "categories_title": "Категорії",
+    "category_phones": "Мобільні телефони",
+    "category_tablets": "Планшети",
+    "category_accessories": "Аксесуари",
+    "models_count_one": "{{count}} модель",
+    "models_count_few": "{{count}} моделі",
+    "models_count_many": "{{count}} моделей",
+    "models_count_other": "{{count}} моделей"
+  },
+
+  "nav": {
+    "home": "Головна",
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари",
+    "cart": "Кошик",
+    "favorites": "Улюблені"
+  },
+
+  "categories": {
+    "title": "Категорії",
+    "phones": "Мобільні телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари",
+    "models": "{{count}} моделей"
+  },
+
+  "cart": {
+    "checkout_confirm": "Оформлення замовлення ще не реалізовано. Бажаєте очистити кошик?",
+    "total_items_one": "Разом за {{count}} товар",
+    "total_items_few": "Разом за {{count}} товари",
+    "total_items_many": "Разом за {{count}} товарів",
+    "total_items_other": "Разом за {{count}} товарів"
+  },
+
+  "not_found": {
+    "title": "Сторінку не знайдено",
+    "back_home": "На головну"
+  },
+
+  "catalog": {
+    "loading": "Завантаження...",
+    "page_title": "Телефони",
+    "main_title": "Мобільні телефони",
+    "models_count": "{{count}} моделей",
+    "sort_label": "Сортувати за",
+    "sort_newest": "Нові",
+    "sort_alpha": "Алфавітом",
+    "sort_cheap": "Найдешевші",
+    "per_page_label": "Товарів на сторінці",
+    "per_page_all": "Всі",
+    "no_results": "Телефонів у цій категорії не знайдено.",
+    "error_title": "Щось пішло не так",
+    "retry_button": "Оновити"
+  },
+
+  "product": {
+    "back": "Назад",
+    "add_to_cart": "Додати в кошик",
+    "added": "Додано",
+    "about": "Про пристрій",
+    "tech_specs": "Технічні характеристики",
+    "screen": "Екран",
+    "resolution": "Роздільна здатність",
+    "processor": "Процесор",
+    "ram": "Оперативна пам'ять",
+    "built_in_memory": "Вбудована пам'ять",
+    "camera": "Камера",
+    "zoom": "Зум",
+    "cell": "Зв'язок",
+    "available_colors": "Доступні кольори",
+    "select_capacity": "Оберіть пам'ять",
+    "related_title": "Вам також може сподобатися",
+    "not_found": "Товар не знайдено",
+    "back_to_catalog": "Назад до каталогу",
+    "loading": "Завантаження..."
+  },
+
+  "footer": {
+    "github": "ГІТХАБ",
+    "contacts": "КОНТАКТИ",
+    "rights": "ПРАВА",
+    "back_to_top": "Нагору"
+  }
+}

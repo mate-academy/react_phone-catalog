@@ -1,0 +1,97 @@
+{
+  "main": {
+    "title": "Witamy w sklepie Nice Gadgets!",
+    "promo_title": "Już dostępne w naszym sklepie!👌",
+    "promo_text": "Bądź pierwszy!",
+    "checkout": "Wymeldować się",
+    "brand_new": "Nowe modele",
+    "hot_prices": "Gorące ceny",
+    "categories_title": "Kategorie",
+    "category_phones": "Telefony komórkowe",
+    "category_tablets": "Tablety",
+    "category_accessories": "Akcesoria",
+    "models_count_one": "{{count}} model",
+    "models_count_few": "{{count}} modele",
+    "models_count_many": "{{count}} modeli",
+    "models_count_other": "{{count}} modeli"
+  },
+
+  "nav": {
+    "home": "Główna",
+    "phones": "Telefony",
+    "tablets": "Tablety",
+    "accessories": "Akcesoria",
+    "cart": "Koszyk",
+    "favorites": "Ulubione"
+  },
+
+  "categories": {
+    "title": "Kategorie",
+    "phones": "Telefony komórkowe",
+    "tablets": "Tablety",
+    "accessories": "Akcesoria",
+    "models": "{{count}} modeli"
+  },
+
+  "cart": {
+    "checkout_confirm": "Twoje zamówienie nie zostało jeszcze przetworzone. Czy chcesz wyczyścić koszyk?",
+    "total_items_one": "Łącznie за {{count}} produkt",
+    "total_items_few": "Łącznie за {{count}} produkty",
+    "total_items_many": "Łącznie за {{count}} produktów",
+    "total_items_other": "Łącznie за {{count}} produktów"
+  },
+
+  "not_found": {
+    "title": "Nie znaleziono strony",
+    "back_home": "Wróć do strony głównej"
+  },
+
+  "catalog": {
+    "loading": "Ładowanie...",
+    "page_title": "Telefony",
+    "main_title": "Telefony komórkowe",
+    "models_count_one": "{{count}} model",
+    "models_count_few": "{{count}} modele",
+    "models_count_many": "{{count}} modeli",
+    "models_count_other": "{{count}} modeli",
+    "sort_label": "Sortuj według",
+    "sort_newest": "Najnowsze",
+    "sort_alpha": "Alfabetycznie",
+    "sort_cheap": "Najtańsze",
+    "per_page_label": "Produktów na stronie",
+    "per_page_all": "Wszystkie",
+    "no_results": "W tej kategorii nie ma jeszcze produktów.",
+    "error_title": "Coś poszło nie tak",
+    "error_message": "Nie udało się załadować produktów.",
+    "retry_button": "Spróbuj ponownie"
+  },
+
+  "product": {
+    "available_colors": "Dostępne kolory",
+    "select_capacity": "Wybierz pojemność",
+    "add_to_cart": "Dodaj do koszyka",
+    "added": "Dodano",
+    "about": "O produkcie",
+    "tech_specs": "Specyfikacja techniczna",
+    "screen": "Ekran",
+    "resolution": "Rozdzielczość",
+    "processor": "Procesor",
+    "ram": "Pamięć RAM",
+    "built_in_memory": "Pamięć wbudowana",
+    "camera": "Aparat",
+    "zoom": "Zoom",
+    "cell": "Standard sieci",
+    "back": "Powrót",
+    "related_title": "Może Cię również zainteresować",
+    "not_found": "Nie znaleziono produktu",
+    "back_to_catalog": "Wróć do katalogu",
+    "loading": "Ładowanie..."
+  },
+
+  "footer": {
+    "github": "GITHUB",
+    "contacts": "KONTAKT",
+    "rights": "PRAWA",
+    "back_to_top": "Wróć na górę"
+  }
+}

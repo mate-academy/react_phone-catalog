@@ -1,0 +1,260 @@
+@import '../variables';
+@import '../mixins';
+
+.tablets {
+  padding: 0 16px 64px;
+
+  @include onScreen640 {
+    padding: 0 32px 64px;
+  }
+
+  @include onScreen1200 {
+    padding: 0 32px 80px;
+  }
+
+  .container {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    margin: 24px 0 8px;
+    font-family: $font-main;
+    font-size: 32px;
+    line-height: 41px;
+    color: $text-primary;
+
+    @include onScreen640 {
+      margin: 40px 0 8px;
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__count {
+    margin-bottom: 32px;
+    font-family: $font-main;
+    font-size: 14px;
+    color: $text-secondary;
+  }
+
+  &__filters {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    @media (max-width: 639px) {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__filter-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__label {
+    font-size: 12px;
+    font-weight: 700;
+    color: $text-secondary;
+  }
+
+  &__select {
+    box-sizing: border-box;
+    width: 136px;
+    height: 40px;
+    padding: 0 12px;
+
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-color: $color-surface2;
+    background-image: url('/images/icons/arrow-down.png');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    border: 1px solid $color-elements;
+    outline: none;
+    padding-right: 32px;
+    font-family: $font-main;
+    font-size: 14px;
+    color: $text-primary;
+
+    @include onScreen640 {
+      width: 187px;
+    }
+
+    @include onScreen1200 {
+      width: 176px;
+    }
+
+    @include hover(border-color, $text-primary);
+
+    &--short {
+      width: 136px;
+
+      @include onScreen1200 {
+        width: 128px;
+      }
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 40px 16px;
+    margin-top: 24px;
+    justify-items: center;
+
+    @include onScreen640 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include onScreen1200 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__no-results {
+    padding: 40px 0;
+    font-family: $font-main;
+    color: $text-secondary;
+    text-align: center;
+  }
+
+  .error-notification {
+    padding: 40px 0;
+    text-align: center;
+
+    h2 {
+      margin-bottom: 16px;
+      color: $text-primary;
+    }
+
+    .retry-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+
+      cursor: pointer;
+      background-color: $color-accent;
+      border: none;
+      font-weight: 600;
+      color: #fff;
+
+      @include hover(opacity, 0.8);
+    }
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 24px;
+
+  &__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__current {
+    font-size: 12px;
+    font-weight: 600;
+    color: $text-secondary;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  gap: 16px;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $color-elements;
+    width: 32px;
+    height: 32px;
+    background-color: $color-surface2;
+    cursor: pointer;
+    color: $text-primary;
+    font-family: $font-main;
+    font-size: 14px;
+    transition: all 0.2s;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: default;
+      background-color: $bg-main;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: $color-icons;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    color: $text-primary;
+    font-family: $font-main;
+    font-size: 14px;
+    transition: all 0.2s;
+
+    border: none;
+    background-color: $color-surface1;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: default;
+      background-color: $bg-main;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: $color-icons;
+    }
+
+    &--active {
+      border: 1px solid $color-accent;
+      background-color: $color-accent;
+      cursor: default;
+      color: #fff;
+
+      &:hover {
+        border-color: $color-accent;
+      }
+    }
+  }
+}
