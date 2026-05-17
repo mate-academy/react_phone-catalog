@@ -1,5 +1,5 @@
 
-@import '../utils/mixins.scss';
+@import '../utils/mixins';
 
 .categories {
   @include on-desktop {
@@ -10,7 +10,6 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
-    flex-wrap: wrap;
 
     @include on-tablet {
       flex-direction: row;
@@ -29,7 +28,7 @@
 }
 
 .category {
-  flex: 0 0 calc(33.333% - 11px);
+  flex: 0 0 calc(33.33% - 11px);
   transition: transform 0.3s ease;
 
   &:hover {

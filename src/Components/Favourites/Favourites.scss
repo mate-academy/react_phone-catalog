@@ -1,4 +1,4 @@
-@import '../../utils/mixins.scss';
+@import '../../utils/mixins';
 
 .favourites {
   display: flex;
@@ -10,9 +10,11 @@
 
   &__content {
     @include content-padding-inline;
+
     width: 100%;
 
     margin-inline: 16px;
+
     @include on-tablet {
       margin-inline: 24px;
     }
@@ -37,7 +39,7 @@
 
     &-name {
       color: #75767F;
-      font-family: 'Mont', sans-serif;
+      font-family: Mont, sans-serif;
       font-weight: 700;
       font-size: 12px;
       line-height: 100%;

@@ -1,5 +1,5 @@
 
-@import '../../utils/mixins.scss';
+@import '../../utils/mixins';
 
 .header {
   display: grid;
@@ -16,7 +16,6 @@
 
   @include on-desktop {
     height: 64px;
-    // margin-inline: auto;
     padding-left: 24px;
   }
 
@@ -72,8 +71,9 @@
 
         @include on-tablet {
           position: relative;
-          top: 0px;
+          top: 0;
         }
+
         @include on-desktop {
           position: static;
           left: 0;

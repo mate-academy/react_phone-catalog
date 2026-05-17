@@ -1,5 +1,4 @@
 import { Discounted } from '../../types/Discounted';
-import './Discounted.scss';
 import { ProductCard } from '../ProductCard/ProductCard';
 import React from 'react';
 import { Link } from 'react-router-dom';

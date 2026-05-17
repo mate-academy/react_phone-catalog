@@ -1,4 +1,4 @@
-@import '../../utils/mixins.scss';
+@import '../../utils/mixins';
 
 .products {
   &-phones {
@@ -7,7 +7,6 @@
     gap: 24px;
     overflow: hidden;
     width: 100%;
-    /* allow rows to wrap and let items grow to fill the row */
     flex-wrap: wrap;
     justify-content: flex-start;
   }
@@ -29,7 +28,6 @@
 
   &-phone {
     cursor: pointer;
-    /* allow items to grow so fewer items expand to fill available space */
     flex: 1 1 calc((100% - 48px) / 3);
 
     color: #F1F2F9;
@@ -156,7 +154,6 @@
   &-fav {
     cursor: pointer;
     display: flex;
-    border: none;
     height: 40px;
     width: 54px;
 

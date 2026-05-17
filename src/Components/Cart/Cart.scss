@@ -1,4 +1,4 @@
-@import '../../utils/mixins.scss';
+@import '../../utils/mixins';
 
 .cart {
   min-height: 100vh;
@@ -7,6 +7,12 @@
 
   &__items {
     width: 100%;
+    flex: 2 1 0;
+    min-width: 0;
+
+    &-empty {
+      font-size: 38px;
+    }
   }
 
   &__header {
@@ -15,6 +21,7 @@
 
   &__content {
     @include content-padding-inline;
+
     width: 100%;
 
     margin-bottom: 56px;
@@ -43,7 +50,7 @@
 
     &-name {
       color: #75767F;
-      font-family: 'Mont', sans-serif;
+      font-family: Mont, sans-serif;
       font-weight: 700;
       font-size: 12px;
       line-height: 100%;
@@ -156,14 +163,7 @@
     line-height: 21px;
     letter-spacing: 0%;
 
-    min-width: 0;
     flex: 1 1 auto;
-  }
-
-  &__items {
-    &-empty {
-      font-size: 38px;
-    }
   }
 
   &__quantity {
@@ -202,7 +202,7 @@
   &__price {
     margin-inline: 0;
 
-    font-family: 'Mont', sans-serif;
+    font-family: Mont, sans-serif;
     font-weight: 800;
     font-size: 22px;
     line-height: 140%;
@@ -240,19 +240,12 @@
   }
 
   &__container {
-
-
     @include on-desktop {
       display: flex;
       align-items: top;
       gap: 16px;
     }
 
-  }
-
-  &__items {
-    flex: 2 1 0;
-    min-width: 0;
   }
 
   &__total {
@@ -269,7 +262,7 @@
 
     display: flex;
     flex-direction: column;
-    font-family: 'Mont', sans-serif;
+    font-family: Mont, sans-serif;
     font-weight: 800;
     font-size: 32px;
     line-height: 41px;

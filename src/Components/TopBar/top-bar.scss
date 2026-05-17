@@ -1,4 +1,4 @@
-@import '../../utils/mixins.scss';
+@import '../../utils/mixins';
 
 .top-bar {
   display: flex;
@@ -11,6 +11,7 @@
 
   &__logo {
     width: 64px;
+
     @include on-desktop {
       width: 80px;
     }
