@@ -1,0 +1,92 @@
+@import '../../../../style/main';
+
+.select {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__label {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $secondary-color;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__content {
+    position: relative;
+  }
+
+  &__button {
+    position: relative;
+    display: flex;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    font-family: Mont, sans-serif;
+    width: 176px;
+    height: 40px;
+    padding: 10px 12px;
+    align-items: center;
+    border: 1px solid $button-border-color;
+    border-radius: 8px;
+    background-color: $header-footer-bg-color;
+    cursor: pointer;
+
+    @include on-mobile {
+      width: 136px;
+    }
+
+    @include hover(border-color, $secondary-color);
+    @include action(border-color, $main-color);
+  }
+
+  &__arrow {
+    position: absolute;
+    right: 12px;
+  }
+
+  &__dropdown {
+    position: absolute;
+    padding-block: 8px;
+    top: 44px;
+    width: 176px;
+    border: 1px solid $shadow-color;
+    box-shadow: 0 2px 15px 0 #0000000d;
+    border-radius: 8px;
+    background-color: $header-footer-bg-color;
+    z-index: 10;
+
+    @include on-mobile {
+      width: 136px;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__option {
+    font-family: Mont, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 32px;
+    width: 100%;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $secondary-color;
+    background-color: $header-footer-bg-color;
+    border: none;
+    cursor: pointer;
+
+    @include hover(color, $main-color);
+  }
+}
