@@ -1,12 +1,13 @@
-@use '../utils/mixins.scss' as *;
+@import '../utils/mixins.scss';
 
 .section {
   margin-bottom: 80px;
 
   &-title {
+    margin: 0;
     font-family: Mont, sans-serif;
     font-weight: 800;
-    font-size: 32px;
+    font-size: 22px;
     line-height: 140%;
     letter-spacing: -1%;
 

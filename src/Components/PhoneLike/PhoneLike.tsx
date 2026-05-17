@@ -1,18 +1,40 @@
 import { Link } from 'react-router-dom';
 import arrowLeft from '../../images/icons/Chevron (Arrow Left).svg';
 import arrowRight from '../../images/icons/Chevron (Arrow Right).svg';
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Products } from '../../types/Products';
-import { Product } from '../Products/Products';
 import './PhoneLike.scss';
 import { getProducts } from '../../api/api';
+import { ProductSpecs } from '../ProductsSpec/ProductsSpec';
 
 export const PhoneLike = () => {
   const [products, setProducts] = useState<Products[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
-  const productsPerSlide = 4;
+  const [productsPerSlide, setProductsPerSlide] = useState(4);
   const [, setLoading] = useState(true);
   const [, setErrorMessage] = useState('');
+
+  const getProductsPerSlide = (width: number) =>
+    width >= 1200 ? 4 : width >= 768 ? 3 : width >= 480 ? 2 : 1;
+
+  useEffect(() => {
+    const handleResize = () => {
+      setProductsPerSlide(getProductsPerSlide(window.innerWidth));
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    setActiveIndex(prev => {
+      const maxStart = Math.max(0, products.length - productsPerSlide);
+
+      return prev > maxStart ? maxStart : prev;
+    });
+  }, [products.length, productsPerSlide]);
 
   const currentProducts = products.slice(
     activeIndex,
@@ -43,7 +65,7 @@ export const PhoneLike = () => {
           : products.length - remainder;
       });
     },
-    [products.length],
+    [products.length, productsPerSlide],
   );
 
   useEffect(() => {
@@ -60,7 +82,7 @@ export const PhoneLike = () => {
     <>
       <section className="phone__like">
         <div className="phone__like-container">
-          <h1 className="phone__like-title">You may also like</h1>
+          <h1 className="section-title">You may also like</h1>
           <div className="phone__like-arrows">
             <Link to="" className="phone__like-arrow-left">
               <button
@@ -80,7 +102,7 @@ export const PhoneLike = () => {
             </Link>
           </div>
         </div>
-        <Product currentProducts={currentProducts} />
+        <ProductSpecs currentProducts={currentProducts} />
       </section>
     </>
   );

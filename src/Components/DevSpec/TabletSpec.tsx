@@ -1,9 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-console */
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-no-comment-textnodes */
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import { Header } from '../Header/header';
 import { useEffect, useState } from 'react';
-import { getProductById } from '../../api/api';
+import { getTabletById } from '../../api/api';
 import home from '../../images/icons/Home.svg';
 import arr from '../../images/icons/Chevron (Arrow Right) grey.png';
 import backArr from '../../images/icons/Chevron (Arrow Left).svg';
@@ -14,9 +16,13 @@ import { useCart } from '../../Context/Context';
 import { useFav } from '../../Context/FavouritesContext';
 import { PhoneLike } from '../PhoneLike/PhoneLike';
 import { Footer } from '../Footer/Footer';
-import { Phone } from '../../types/Phone';
 import { Products } from '../../types/Products';
 import React from 'react';
+import { Tablet } from '../../types/Tablets';
+
+// type Props = {
+//   favouritesCount: number;
+// };
 
 enum Image {
   first = 'first',
@@ -33,50 +39,61 @@ enum Color {
   fourth = 'fourth',
 }
 
-export const PhoneSpec: React.FC = () => {
+export const TabletSpec: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
-  const [phone, setPhone] = useState<Phone | undefined>(undefined);
+  const { pathname } = useLocation();
+  const [tablet, setTablet] = useState<Tablet>();
   const { totalQuantity, addToCart, removeFromCart, isInCart } = useCart();
-  const { addToFav, removeFromFav, isInFav } = useFav();
+  const { addToFav, removeFromFav, isInFav, totalFavourites } = useFav();
 
-  const mapPhoneToProduct = (item: Phone): Products => ({
-    id: String(item.id),
-    itemId: String(item.id),
-    name: item.name ?? 'Unknown',
-    category: 'phones',
-    fullPrice: Number(item.priceRegular ?? 0),
-    price: Number(item.priceDiscount || item.priceRegular || 0),
-    screen: item.screen ?? '—',
-    capacity: Array.isArray(item.capacity)
-      ? item.capacity[0]
-      : (item.capacity ?? '—'),
-    color: item.color ?? '—',
-    ram: item.ram ?? '—',
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  const mapTabletToProduct = (t: Tablet): Products => ({
+    id: String(t.id),
+    itemId: String(t.id),
+    name: t.name ?? 'Unknown',
+    category: 'tablets',
+    fullPrice: Number(t.priceRegular ?? 0),
+    price: Number(t.priceDiscount ?? t.priceRegular ?? 0),
+    screen: t.screen ?? '—',
+    capacity: t.capacity ?? '—',
+    color: t.color ?? t.colorsAvailable ?? '—',
+    ram: t.ram ?? '—',
     year: new Date().getFullYear(),
-    image: item.images?.[0] ?? '/img/placeholder.png',
+    image: t.images ?? '',
   });
   const [, setErrorMessage] = useState(false);
   const [, setLoading] = useState(false);
   const [image, setImage] = useState<Image>(Image.first);
-  const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
   const [color, setColor] = useState<Color>(Color.first);
-  const images = phone?.images ?? [];
-  const capacitiesRaw = phone?.capacity ?? [];
-  const capacities: string[] = Array.isArray(capacitiesRaw)
-    ? capacitiesRaw
-    : capacitiesRaw
-      ? [capacitiesRaw]
+  const images = tablet?.images || [];
+  // const capacitiesRaw = tablet?.capacity ?? [];
+  const capacities: string[] = Array.isArray(tablet?.capacity)
+    ? tablet.capacity
+    : tablet?.capacity
+      ? [tablet.capacity]
       : [];
-  const indexByImage = {
-    [Image.first]: 0,
-    [Image.second]: 1,
-    [Image.third]: 2,
-    [Image.fourth]: 3,
-    [Image.fifth]: 4,
-  } as const;
-  const imageByIndex = (i: number) =>
-    Object.keys(indexByImage)[i] as unknown as Image; // small helper to map back
-  const mainIndex = indexByImage[image];
+
+  const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (capacities.length) {
+      setSelectedCapacity(capacities[0]);
+    }
+  }, [capacities]);
+  const imageKeys: Image[] = [
+    Image.first,
+    Image.second,
+    Image.third,
+    Image.fourth,
+    Image.fifth,
+  ];
+
+  const mainIndex =
+    imageKeys.indexOf(image) === -1 ? 0 : imageKeys.indexOf(image);
+  const imageByIndex = (i: number): Image => imageKeys[i];
 
   useEffect(() => {
     if (images.length <= 1) {
@@ -93,7 +110,8 @@ export const PhoneSpec: React.FC = () => {
     const id = setInterval(() => {
       setImage(prev => {
         const idx = enums.indexOf(prev);
-        const next = enums[(idx + 1) % images.length];
+        const safeIdx = idx === -1 ? 0 : idx;
+        const next = enums[(safeIdx + 1) % images.length];
 
         return next;
       });
@@ -102,11 +120,15 @@ export const PhoneSpec: React.FC = () => {
     return () => clearInterval(id);
   }, [images.length]);
 
-  // useEffect(() => {
-  //   if (capacities.length) {
-  //     setSelectedCapacity(capacities[0]);
-  //   }
-  // }, [phone?.capacity]);
+  useEffect(() => {
+    if (tablet?.capacity) {
+      const caps = Array.isArray(tablet.capacity)
+        ? tablet.capacity
+        : [tablet.capacity];
+
+      setSelectedCapacity(caps[0]);
+    }
+  }, [tablet?.capacity]);
 
   useEffect(() => {
     if (!productId) {
@@ -114,19 +136,24 @@ export const PhoneSpec: React.FC = () => {
     }
 
     setLoading(true);
-    getProductById(productId)
+    getTabletById(productId)
       .then(product => {
         if (product) {
-          setPhone(product);
+          setTablet(product);
+          console.log(product);
         }
       })
       .catch(() => setErrorMessage(true))
       .finally(() => setLoading(false));
   }, [productId]);
+  console.log('productId from params:', productId);
 
   return (
     <div className="phone">
-      <Header cartItemsCount={totalQuantity} />
+      <Header
+        cartItemsCount={totalQuantity}
+        favouritesCount={totalFavourites}
+      />
       <div className="phone__container container">
         <div className="phone__path">
           <Link to="/" className="phone__path-home">
@@ -135,19 +162,19 @@ export const PhoneSpec: React.FC = () => {
           <div className="phone__path-arr">
             <img src={arr} alt="" />
           </div>
-          <Link to="../phones" className="phone__path-phones">
-            Phones
+          <Link to="../tablets" className="phone__path-phones">
+            Tablets
           </Link>
           <div className="phone__path-arr">
             <img src={arr} alt="" />
           </div>
-          <p className="phone__path-name">{phone?.name}</p>
+          <p className="phone__path-name">{tablet?.name}</p>
         </div>
-        <Link to="../phones" className="phone__back">
+        <Link to="../tablets" className="phone__back">
           <img src={backArr} alt="" className="phone__back-arr" />
           <p className="phone__back-back">Back</p>
         </Link>
-        <div className="phone__title">{phone?.name}</div>
+        <div className="phone__title">{tablet?.name}</div>
         <div className="phone__main">
           <div className="phone__image">
             <div className="phone__images">
@@ -234,40 +261,42 @@ export const PhoneSpec: React.FC = () => {
             </div>
             <div className="phone__specs-border"></div>
             <div className="phone__prices">
-              <p className="phone__price">
-                <div className="phone__price-full">{phone?.priceRegular}$</div>
+              <div className="phone__price">
+                <div className="phone__price-full">{tablet?.priceRegular}$</div>
                 <span className="phone__price-discount">
-                  {phone?.priceDiscount}$
+                  {tablet?.priceDiscount}$
                 </span>
-              </p>
+              </div>
             </div>
             <div className="phone__buttons">
               <button
-                className="phone__add"
+                className={`phone__add ${tablet && isInCart(String(tablet.id)) ? 'phone__add-added' : ''}`}
                 type="button"
                 onClick={() => {
-                  if (phone) {
-                    const product = mapPhoneToProduct(phone);
+                  if (tablet) {
+                    const product = mapTabletToProduct(tablet);
 
-                    if (isInCart(product.id)) {
-                      removeFromCart(product.id);
+                    if (isInCart(String(product.id))) {
+                      removeFromCart(String(product.id));
                     } else {
                       addToCart(product);
                     }
                   }
                 }}
               >
-                {phone && isInCart(String(phone.id)) ? 'Added' : 'Add to cart'}
+                {tablet && isInCart(String(tablet.id))
+                  ? 'Added'
+                  : 'Add to cart'}
               </button>
               <button
-                className="phone__fav"
+                className={`phone__fav ${tablet && isInFav(String(tablet.id)) ? 'phone__fav-added' : ''}`}
                 type="button"
                 onClick={() => {
-                  if (phone) {
-                    const product = mapPhoneToProduct(phone);
+                  if (tablet) {
+                    const product = mapTabletToProduct(tablet);
 
-                    if (isInFav(product.id)) {
-                      removeFromFav(product.id);
+                    if (isInFav(String(product.id))) {
+                      removeFromFav(String(product.id));
                     } else {
                       addToFav(product);
                     }
@@ -275,7 +304,7 @@ export const PhoneSpec: React.FC = () => {
                 }}
               >
                 <img
-                  src={phone && isInFav(String(phone.id)) ? activeFav : fav}
+                  src={tablet && isInFav(String(tablet.id)) ? activeFav : fav}
                   alt=""
                   className="phone__fav-img"
                 />
@@ -285,24 +314,26 @@ export const PhoneSpec: React.FC = () => {
               <p className="phone__specifications-text phone__specifications-text__first">
                 Screen{' '}
                 <span className="phone__specifications-span">
-                  {phone?.screen}
+                  {tablet?.screen}
                 </span>
               </p>
               <p className="phone__specifications-text">
                 Capacity{' '}
                 <span className="phone__specifications-span">
-                  {phone?.capacity}
+                  {tablet?.capacity}
                 </span>
               </p>
               <p className="phone__specifications-text">
                 Processor{' '}
                 <span className="phone__specifications-span">
-                  {phone?.processor}
+                  {tablet?.processor}
                 </span>
               </p>
               <p className="phone__specifications-text">
                 RAM{' '}
-                <span className="phone__specifications-span">{phone?.ram}</span>
+                <span className="phone__specifications-span">
+                  {tablet?.ram}
+                </span>
               </p>
             </div>
           </div>
@@ -361,31 +392,31 @@ export const PhoneSpec: React.FC = () => {
             <div className="phone__tech-title">Tech specs</div>
             <div className="phone__tech-border"></div>
             <p className="phone__tech-text phone__tech-text__first">
-              Screen <span className="phone__tech-span">{phone?.screen}</span>
+              Screen <span className="phone__tech-span">{tablet?.screen}</span>
             </p>
             <p className="phone__tech-text phone__tech-text__first">
               Resolution{' '}
-              <span className="phone__tech-span">{phone?.resolution}</span>
+              <span className="phone__tech-span">{tablet?.resolution}</span>
             </p>
             <p className="phone__tech-text">
               Processor{' '}
-              <span className="phone__tech-span">{phone?.processor}</span>
+              <span className="phone__tech-span">{tablet?.processor}</span>
             </p>
             <p className="phone__tech-text">
-              RAM <span className="phone__tech-span">{phone?.ram}</span>
+              RAM <span className="phone__tech-span">{tablet?.ram}</span>
             </p>
             <p className="phone__tech-text">
               Built in memory{' '}
-              <span className="phone__tech-span">{phone?.capacity}</span>
+              <span className="phone__tech-span">{tablet?.capacity}</span>
             </p>
             <p className="phone__tech-text">
-              Camera <span className="phone__tech-span">{phone?.camera}</span>
+              Camera <span className="phone__tech-span">{tablet?.camera}</span>
             </p>
             <p className="phone__tech-text">
-              Zoom <span className="phone__tech-span">{phone?.zoom}</span>
+              Zoom <span className="phone__tech-span">{tablet?.zoom}</span>
             </p>
             <p className="phone__tech-text">
-              Cell <span className="phone__tech-span">{phone?.cell}</span>
+              Cell <span className="phone__tech-span">{tablet?.cell}</span>
             </p>
           </div>
         </div>

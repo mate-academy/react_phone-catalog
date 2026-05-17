@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
 import fav from '../../images/fav/Icons/Favourites (Heart Like).svg';
 import { useCart } from '../../Context/Context';
 import { Products } from '../../types/Products';
 import classNames from 'classnames';
 import { useFav } from '../../Context/FavouritesContext';
 import activeFav from '../../images/icons/ActiveFav.svg';
+import React from 'react';
 
 type Props = {
   product: Products;
@@ -23,23 +23,36 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className="page__models-buttons">
       <button
+        type="button"
         className={buttonClass}
-        onClick={() =>
-          added ? removeFromCart(String(product.id)) : addToCart(product)
-        }
+        onClick={e => {
+          e.preventDefault();
+          if (added) {
+            removeFromCart(String(product.id));
+          } else {
+            addToCart(product);
+          }
+        }}
       >
-        <Link to={`/product/${product.id}`} className="products-cart__link">
+        <span className="products-cart__link">
           <p className="products-cart__text">
             {added ? 'Added' : 'Add to cart'}
           </p>
-        </Link>
+        </span>
       </button>
 
       <button
-        className="products-fav"
-        onClick={() =>
-          addedFav ? removeFromFav(String(product.id)) : addToFav(product)
+        className={
+          addedFav ? `products-fav-active products-fav` : `products-fav`
         }
+        onClick={e => {
+          e.preventDefault();
+          if (addedFav) {
+            removeFromFav(String(product.id));
+          } else {
+            addToFav(product);
+          }
+        }}
       >
         {addedFav ? (
           <img className="products-fav__img" src={activeFav} alt="Favourites" />

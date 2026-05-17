@@ -1,4 +1,5 @@
-@use '../../utils/mixins.scss' as *;
+
+@import '../../utils/mixins.scss';
 
 .footer {
   width: 100%;
@@ -6,7 +7,20 @@
 
   &__navs {
     display: flex;
-    gap: 106px;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+
+    @include on-tablet {
+      display: flex;
+      width: auto;
+      flex-direction: row;
+      gap: 13.5px;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
   }
 
   &__line {
@@ -20,9 +34,18 @@
 
   &__nav {
     display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    margin-top: 30px;
     align-items: center;
     height: 100%;
     justify-content: space-between;
+
+    @include on-tablet {
+      flex-direction: row;
+      display: flex;
+    }
 
     &-link {
       font-family: 'Mont semibold', sans-serif;
@@ -41,11 +64,30 @@
     }
   }
 
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+
+    @include on-tablet {
+      width: auto;
+    }
+
+    &-img {
+      height: 32px;
+    }
+  }
+
   &__back {
     display: flex;
     gap: 16px;
     align-items: center;
+    margin-bottom: 32px;
 
+    @include on-tablet {
+      margin-bottom: 0;
+    }
     &-text {
       color: #75767F;
       font-family: 'Mont regular', sans-serif;
@@ -57,15 +99,24 @@
     }
 
     &-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       cursor: pointer;
       border: 0;
       height: 32px;
       width: 32px;
       background-color: #323542;
-
+      transition: 0.3s;
 
       &-img {
         height: 16px;
+      }
+
+      &:hover {
+        background-color: #4A4D58;
+        transition: 0.3s;
       }
     }
   }

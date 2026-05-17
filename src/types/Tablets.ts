@@ -1,14 +1,14 @@
 export interface Tablet {
-  id: number;
+  id: string;
   category: string;
   namespaceId: string;
   capacityAvailable: string;
   colorsAvailable: string;
   description: [title: string, text: string];
-  images: string;
+  images: string[];
   name: string;
-  priceRegular: string;
-  priceDiscount: string;
+  priceRegular: number;
+  priceDiscount: number;
   screen: string;
   capacity: string;
   resolution: string;

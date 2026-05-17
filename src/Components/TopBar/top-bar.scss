@@ -1,12 +1,18 @@
+@import '../../utils/mixins.scss';
+
 .top-bar {
   display: flex;
   align-items: center;
 
   justify-content: space-between;
+  width: 100%;
 
   gap: 50px;
 
   &__logo {
-    height: 28px;
+    width: 64px;
+    @include on-desktop {
+      width: 80px;
+    }
   }
 }

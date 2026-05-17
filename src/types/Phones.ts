@@ -13,6 +13,7 @@ export interface Phones {
   capacity: string;
   resolution: string;
   processor: string;
+  year: number;
   ram: string;
   camera: string;
   zoom: string;

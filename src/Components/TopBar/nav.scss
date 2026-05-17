@@ -1,10 +1,12 @@
-@use '../../utils/mixins' as *;
+
+@import '../../utils/mixins.scss';
 
 .nav {
   display: flex;
   align-items: center;
 
   @include on-tablet {
+    // display: flex;
     gap: 34px;
   }
 
@@ -13,10 +15,16 @@
   }
 
   &__list {
+    display: none;
+
     list-style: none;
     margin: 0;
     padding: 0;
     flex-direction: column;
+
+    @include on-tablet {
+      display: flex;
+    }
   }
   &__link {
     font-weight: 800;
@@ -36,15 +44,23 @@
     color: #F1F2F9;
 
     &::after {
+
       content: '';
       display: block;
       position: relative;
       left: 0;
-      top: 18px;
       bottom: 0;
       width: 100%;
       height: 3px;
       background: #F1F2F9;
+
+      @include on-tablet {
+        top: 12px;
+      }
+
+      @include on-desktop {
+        top: 18px;
+      }
     }
   }
  }

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {
+import React, {
   createContext,
   useCallback,
   useContext,
@@ -10,10 +10,11 @@ import {
   FavState,
   FavAction,
   FavContextType,
+  FavItem,
 } from '../types/ContextFavourites';
 import { Products } from '../types/Products';
 
-type Props = { someFlag?: boolean } & React.PropsWithChildren<{}>;
+type Props = React.PropsWithChildren<{ someFlag?: boolean }>;
 
 const STORAGE_KEY = 'favourites';
 
@@ -62,8 +63,6 @@ function FavReducer(state: FavState, action: FavAction): FavState {
 
     case 'CLEAR':
       return { items: [] };
-    default:
-      return state;
 
     case 'TOGGLE': {
       if (state.items.some(i => i.id === action.payload)) {
@@ -72,19 +71,16 @@ function FavReducer(state: FavState, action: FavAction): FavState {
 
       return state;
     }
-    // you’ll need product to add — toggle by id only works if you have cached product
+
+    default:
+      return state;
   }
 }
 
 const FavContext = createContext<FavContextType | null>(null);
 
 export const FavProvider = ({ children }: Props) => {
-  const init = (_arg: undefined): FavState => readFav();
-  const [state, dispatch] = useReducer<React.Reducer<FavState, FavAction>>(
-    FavReducer,
-    undefined,
-    init,
-  );
+  const [state, dispatch] = useReducer(FavReducer, readFav());
 
   useEffect(() => {
     try {
@@ -95,16 +91,13 @@ export const FavProvider = ({ children }: Props) => {
   }, [state]);
   const addToFav = useCallback(
     (product: Products) => {
-      (dispatch as React.Dispatch<FavAction>)({
-        type: 'ADD',
-        payload: product,
-      });
+      dispatch({ type: 'ADD', payload: product });
     },
     [dispatch],
   );
   const removeFromFav = useCallback(
     (id: string) => {
-      (dispatch as React.Dispatch<FavAction>)({ type: 'REMOVE', payload: id });
+      dispatch({ type: 'REMOVE', payload: id });
     },
     [dispatch],
   );
@@ -117,14 +110,20 @@ export const FavProvider = ({ children }: Props) => {
     [state.items],
   );
   const clearFav = useCallback(() => {
-    (dispatch as React.Dispatch<FavAction>)({ type: 'CLEAR' });
+    dispatch({ type: 'CLEAR' });
   }, [dispatch]);
+  const totalFavourites = state.items.reduce(
+    (s: number, it: FavItem) => s + it.quantity,
+    0,
+  );
+
   const value: FavContextType = {
     items: state.items,
     addToFav,
     removeFromFav,
     clearFav,
     isInFav,
+    totalFavourites,
   };
 
   return <FavContext.Provider value={value}>{children}</FavContext.Provider>;

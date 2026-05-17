@@ -4,27 +4,38 @@ import { Header } from '../Header/header';
 import './Phones.scss';
 import ArrowGray from '../../images/icons/ChevronGray.svg';
 import Home from '../../images/icons/Home.svg';
-import { Filter } from '../Filter/Filter';
+import { Filter, FilterValue, ItemQuantity } from '../Filter/Filter';
 
 import { getPhones } from '../../api/api';
 
 // import { phones } from '../../api/api';
 
 import { useEffect, useState } from 'react';
-import { ProductCard } from '../ProductCard/ProductCard';
 import { useCart } from '../../Context/Context';
 import { Phone } from '../../types/Phone';
 import { Products } from '../../types/Products';
 import React from 'react';
+import { useFav } from '../../Context/FavouritesContext';
+
+import { PageSlider } from '../Page__Slider/PageSlider';
+import { ActiveQuantity16 } from '../ActiveQuantity/ActiveQuantity16';
+import { ActiveQuantity32 } from '../ActiveQuantity/ActiveQuantity32';
+import { ActiveQuantity64 } from '../ActiveQuantity/ActiveQuantity64';
+import { Footer } from '../Footer/Footer';
+import { Aside } from '../Aside/Aside';
 
 export const Phones = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [phones, setPhones] = useState<Phone[]>([]);
+  const [activeQuantity, setActiveQuantity] = useState<ItemQuantity>(16);
+  const [activeFilter, setActiveFilter] = useState<FilterValue>('Newest');
+  const [activePage, setActivePage] = useState(0);
   const { productId } = useParams();
   const [, setLoading] = useState(true);
   const [, setErrorMessage] = useState('');
 
   const normalize = (src?: string) =>
-    src ? `(src.startsWith('/') ? src : /${src})` : '/img/placeholder.png';
+    src ? (src.startsWith('/') ? src : `/${src}`) : '/img/placeholder.png';
 
   const mapPhoneToProduct = (p: Phone): Products => ({
     id: String(p.id),
@@ -41,7 +52,47 @@ export const Phones = () => {
     image: normalize(p.images?.[0]),
   });
 
+  const getIphoneOrder = (name: string) => {
+    if (name.includes('XS')) {
+      return 10.2;
+    }
+
+    if (name.includes('XR')) {
+      return 10.1;
+    }
+
+    if (name.includes('X')) {
+      return 10;
+    }
+
+    const match = name.match(/\d+/);
+
+    return match ? parseInt(match[0], 10) : 0;
+  };
+
+  const sortedPhones = [...phones].sort((a, b) => {
+    return getIphoneOrder(b.name) - getIphoneOrder(a.name);
+  });
+
+  const sortedPhonesLowToHigh = [...phones].sort(
+    (a, b) => a.priceRegular - b.priceRegular,
+  );
+
+  const sortedPhonesHighToLow = [...phones].sort(
+    (a, b) => b.priceRegular - a.priceRegular,
+  );
+
+  const filteredPhones =
+    activeFilter === 'Newest'
+      ? sortedPhones
+      : activeFilter === 'Price: Low to High'
+        ? sortedPhonesLowToHigh
+        : activeFilter === 'Price: High to Low'
+          ? sortedPhonesHighToLow
+          : phones;
+
   const { totalQuantity } = useCart();
+  const { totalFavourites } = useFav();
 
   useEffect(() => {
     setLoading(true);
@@ -79,8 +130,13 @@ export const Phones = () => {
   }, [productId]);
 
   return (
-    <div className="phones">
-      <Header cartItemsCount={totalQuantity} />
+    <div className="page phones">
+      <Header
+        cartItemsCount={totalQuantity}
+        favouritesCount={totalFavourites}
+        setMenuOpen={setMenuOpen}
+      />
+      {menuOpen && <Aside setMenuOpen={setMenuOpen} />}
       <div className="container">
         <div className="phones__path page__path">
           <div className="phones__path-icon">
@@ -103,55 +159,50 @@ export const Phones = () => {
           <p className="phones__title page__title">Mobile phones</p>
           <span className="phones__subtitle page__subtitle">95 models</span>
         </div>
-        <Filter />
+        <Filter
+          activeQuantity={activeQuantity}
+          setActiveQuantity={setActiveQuantity}
+          activeFilter={activeFilter}
+          setActiveFilter={setActiveFilter}
+        />
         <div className="phones__content page__content">
           <section className="page__models section">
-            <div className="page__models-phones phones__grid">
-              {phones.map(phone => (
-                <article key={phone.id} className="page__models-phone">
-                  <div className="page__models-container">
-                    <div className="page__models-img">
-                      <img
-                        src={phone.images?.[0] ?? '/img/placeholder.png'}
-                        alt=""
-                        className="page__models-image"
-                      />
-                    </div>
-                    <p className="page__models-title">{phone.name}</p>
-                    <span className="page__models-price">
-                      {phone.priceRegular}$
-                    </span>
-                    <div className="page__models-string"></div>
-                    <div className="page__models-info">
-                      <p className="page_models-text page__models-text__first">
-                        Screen{' '}
-                        <span className="page__models-span">
-                          {phone.screen}
-                        </span>
-                      </p>
-                      <p className="page__models-text">
-                        Capacity{' '}
-                        <span className="page__models-span">
-                          {phone.capacity}
-                        </span>
-                      </p>
-                      <p className="page__models-text">
-                        RAM{' '}
-                        <span className="page__models-span">{phone.ram}</span>
-                      </p>
-                    </div>
-                    <ProductCard product={mapPhoneToProduct(phone)} />
-                  </div>
-                </article>
-              ))}
-            </div>
+            {activeQuantity === 16 && (
+              <ActiveQuantity16
+                phones={filteredPhones}
+                activeQuantity={activeQuantity}
+                activePage={activePage}
+                mapPhoneToProduct={mapPhoneToProduct}
+              />
+            )}
+            {activeQuantity === 32 && (
+              <ActiveQuantity32
+                phones={filteredPhones}
+                activeQuantity={activeQuantity}
+                activePage={activePage}
+                mapPhoneToProduct={mapPhoneToProduct}
+              />
+            )}
+            {activeQuantity === 64 && (
+              <ActiveQuantity64
+                phones={filteredPhones}
+                activeQuantity={activeQuantity}
+                activePage={activePage}
+                mapPhoneToProduct={mapPhoneToProduct}
+              />
+            )}
+            <PageSlider
+              setActivePage={setActivePage}
+              activePage={activePage}
+              activeQuantity={activeQuantity}
+            />
           </section>
         </div>
       </div>
 
-      {/* <div className="page__footer">
+      <div className="page__footer">
         <Footer />
-      </div> */}
+      </div>
     </div>
   );
 };

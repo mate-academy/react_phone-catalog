@@ -6,6 +6,7 @@
   "compilerOptions": {
     "jsx": "react",
     "sourceMap": false,
-    "types": ["node", "cypress"]
+    "types": ["node", "cypress"],
+    "ignoreDeprecations": "6.0"
   }
 }

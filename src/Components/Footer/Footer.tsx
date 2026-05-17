@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 export const Footer = () => {
@@ -6,6 +7,11 @@ export const Footer = () => {
     '../../images/icons/Chevron Arrow up.svg',
     import.meta.url,
   ).href;
+
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const navLink = [
     { id: '/', title: 'Github' },
     { id: '/phones', title: 'Contacts' },
@@ -18,8 +24,8 @@ export const Footer = () => {
       <div className="footer__container">
         <nav className="footer__nav">
           <div className="footer__logo">
-            <Link to="/Home">
-              <img className="top-bar__logo" src={logo} alt="Logo" />
+            <Link to="/">
+              <img className="footer__logo-img" src={logo} alt="Logo" />
             </Link>
           </div>
           <div className="footer__navs">
@@ -36,11 +42,13 @@ export const Footer = () => {
 
           <div className="footer__back">
             <p className="footer__back-text">Back to top</p>
-            <Link to="/Home">
-              <button className="footer__back-button">
-                <img src={arrowUp} alt="" className="footer__back-button-img" />
-              </button>
-            </Link>
+            <button
+              type="button"
+              className="footer__back-button"
+              onClick={handleScrollToTop}
+            >
+              <img src={arrowUp} alt="" className="footer__back-button-img" />
+            </button>
           </div>
         </nav>
       </div>

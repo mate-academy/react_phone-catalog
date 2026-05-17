@@ -1,12 +1,10 @@
 /* eslint-disable max-len */
 import { Link } from 'react-router-dom';
-import { Filter } from '../Filter/Filter';
+import { Filter, FilterValue, ItemQuantity } from '../Filter/Filter';
 import { Header } from '../Header/header';
 import ArrowGray from '../../images/icons/ChevronGray.svg';
 import Home from '../../images/icons/Home.svg';
 import './Tablets.scss';
-import fav from '../../images/fav/Icons/Favourites (Heart Like).svg';
-import activeFav from '../../images/icons/ActiveFav.svg';
 import { useEffect, useState } from 'react';
 import { getTablets } from '../../api/api';
 import { Tablet } from '../../types/Tablets';
@@ -14,13 +12,65 @@ import { Products } from '../../types/Products';
 import { useCart } from '../../Context/Context';
 import { useFav } from '../../Context/FavouritesContext';
 import React from 'react';
+import { ActiveQuantity16 } from '../ActiveQuantity/ActiveQuantityTablets/ActiveQuantity16';
+import { ActiveQuantity32 } from '../ActiveQuantity/ActiveQuantityTablets/ActiveQuantity32';
+import { ActiveQuantity64 } from '../ActiveQuantity/ActiveQuantityTablets/ActiveQuantity64';
+import { PageSliderTablet } from '../Page__Slider/PageSliderTablet';
+import { Footer } from '../Footer/Footer';
+import { Aside } from '../Aside/Aside';
 
 export const Tablets = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const [tablets, setTablets] = useState<Tablet[]>([]);
   const [, setLoading] = useState(true);
   const [, setErrorMessage] = useState('');
-  const { totalQuantity, addToCart, removeFromCart, isInCart } = useCart();
-  const { addToFav, removeFromFav, isInFav } = useFav();
+  const { totalQuantity } = useCart();
+  const { totalFavourites } = useFav();
+
+  const getIphoneOrder = (name: string) => {
+    if (name.includes('XS')) {
+      return 10.2;
+    }
+
+    if (name.includes('XR')) {
+      return 10.1;
+    }
+
+    if (name.includes('X')) {
+      return 10;
+    }
+
+    const match = name.match(/\d+/);
+
+    return match ? parseInt(match[0], 10) : 0;
+  };
+
+  const sortedTablets = [...tablets].sort((a, b) => {
+    return getIphoneOrder(b.name) - getIphoneOrder(a.name);
+  });
+
+  const [activeQuantity, setActiveQuantity] = useState<ItemQuantity>(16);
+  const [activeFilter, setActiveFilter] = useState<FilterValue>('Newest');
+
+  const sortedTabletsLowToHigh = [...tablets].sort(
+    (a, b) => a.priceRegular - b.priceRegular,
+  );
+
+  const sortedTabletsHighToLow = [...tablets].sort(
+    (a, b) => b.priceRegular - a.priceRegular,
+  );
+
+  const filteredTablets =
+    activeFilter === 'Newest'
+      ? sortedTablets
+      : activeFilter === 'Price: Low to High'
+        ? sortedTabletsLowToHigh
+        : activeFilter === 'Price: High to Low'
+          ? sortedTabletsHighToLow
+          : tablets;
+
+  const [activePage, setActivePage] = useState(0);
 
   const mapTabletToProduct = (tablet: Tablet): Products => ({
     id: String(tablet.id),
@@ -51,8 +101,13 @@ export const Tablets = () => {
   }, []);
 
   return (
-    <div className="tablets">
-      <Header cartItemsCount={totalQuantity} />
+    <div className="page tablets">
+      <Header
+        cartItemsCount={totalQuantity}
+        favouritesCount={totalFavourites}
+        setMenuOpen={setMenuOpen}
+      />
+      {menuOpen && <Aside setMenuOpen={setMenuOpen} />}
       <div className="container">
         <div className="tablets__path page__path">
           <div className="tablets__path-icon">
@@ -75,92 +130,50 @@ export const Tablets = () => {
           <p className="tablets__title page__title">Tablets</p>
           <span className="tablets__subtitle page__subtitle">24 models</span>
         </div>
-        <Filter />
+        <Filter
+          activeQuantity={activeQuantity}
+          setActiveQuantity={setActiveQuantity}
+          activeFilter={activeFilter}
+          setActiveFilter={setActiveFilter}
+        />
         <div className="tablets__content">
           <section className="page__models section">
-            <div className="page__models-tablet tablet__articles page__grid">
-              {tablets.map(tablet => {
-                const product = mapTabletToProduct(tablet);
-                const added = isInCart(product.id);
-                const addedFav = isInFav(product.id);
-
-                return (
-                  <article key={tablet.id} className="page__models-phone">
-                    <div className="page__models-container">
-                      <div className="page__models-img">
-                        <img
-                          src={product.image}
-                          alt=""
-                          className="page__models-image"
-                        />
-                      </div>
-                      <p className="page__models-title">{tablet.name}</p>
-                      <span className="page__models-price">
-                        {tablet.priceRegular}$
-                      </span>
-                      <div className="page__models-string"></div>
-                      <div className="page__models-info">
-                        <p className="page_models-text page__models-text__first">
-                          Screen{' '}
-                          <span className="page__models-span">
-                            {tablet.screen}
-                          </span>
-                        </p>
-                        <p className="page__models-text">
-                          Capacity{' '}
-                          <span className="page__models-span">
-                            {tablet.capacity}
-                          </span>
-                        </p>
-                        <p className="page__models-text">
-                          RAM{' '}
-                          <span className="page__models-span">
-                            {tablet.ram}
-                          </span>
-                        </p>
-                      </div>
-                      <div className="page__models-buttons">
-                        <button
-                          className={`page__models-cart ${added ? 'page__models-cart-active' : ''}`}
-                          type="button"
-                          onClick={() =>
-                            added
-                              ? removeFromCart(product.id)
-                              : addToCart(product)
-                          }
-                        >
-                          <p className="page__models-cart__text">
-                            {added ? 'Added' : 'Add to cart'}
-                          </p>
-                        </button>
-                        <button
-                          className="page__models-fav"
-                          type="button"
-                          onClick={() =>
-                            addedFav
-                              ? removeFromFav(product.id)
-                              : addToFav(product)
-                          }
-                        >
-                          <img
-                            className="page__models-fav__img"
-                            src={addedFav ? activeFav : fav}
-                            alt="Favourites"
-                          />
-                        </button>
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
+            {activeQuantity === 16 && (
+              <ActiveQuantity16
+                phones={filteredTablets}
+                activeQuantity={activeQuantity}
+                activePage={activePage}
+                mapTabletToProduct={mapTabletToProduct}
+              />
+            )}
+            {activeQuantity === 32 && (
+              <ActiveQuantity32
+                phones={filteredTablets}
+                activeQuantity={activeQuantity}
+                activePage={activePage}
+                mapTabletToProduct={mapTabletToProduct}
+              />
+            )}
+            {activeQuantity === 64 && (
+              <ActiveQuantity64
+                phones={filteredTablets}
+                activeQuantity={activeQuantity}
+                activePage={activePage}
+                mapTabletToProduct={mapTabletToProduct}
+              />
+            )}
+            <PageSliderTablet
+              setActivePage={setActivePage}
+              activePage={activePage}
+              activeQuantity={activeQuantity}
+            />
           </section>
         </div>
       </div>
 
-      {/* <div className="page__footer">
+      <div className="page__footer">
         <Footer />
-      </div> */}
+      </div>
     </div>
   );
 };

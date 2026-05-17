@@ -16,7 +16,7 @@ import React, {
 } from 'react';
 import { Products } from '../types/Products';
 
-type Props = { someFlag?: boolean } & React.PropsWithChildren<{}>;
+type Props = React.PropsWithChildren<{ someFlag?: boolean }>;
 
 const STORAGE_KEY = 'cart';
 
@@ -24,7 +24,20 @@ function readCart() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
 
-    return raw ? JSON.parse(raw) : { items: [] };
+    if (!raw) {
+      return { items: [] };
+    }
+
+    const parsed = JSON.parse(raw);
+
+    return {
+      items: Array.isArray(parsed.items)
+        ? parsed.items.map((item: CartItem) => ({
+            ...item,
+            id: String(item.id),
+          }))
+        : [],
+    };
   } catch {
     return { items: [] };
   }
@@ -33,10 +46,11 @@ function readCart() {
 function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
     case 'ADD': {
-      const payloadId =
-        typeof action.payload.id === 'number'
-          ? String(action.payload.id)
-          : action.payload.id;
+      const payloadId = String(action.payload.id);
+      const normalizedPayload = {
+        ...action.payload,
+        id: payloadId,
+      };
       const exists = state.items.find(i => i.id === payloadId);
 
       if (exists) {
@@ -47,7 +61,11 @@ function cartReducer(state: CartState, action: CartAction): CartState {
         ...state,
         items: [
           ...state.items,
-          { id: action.payload.id, product: action.payload, quantity: 1 },
+          {
+            id: payloadId,
+            product: normalizedPayload,
+            quantity: 1,
+          },
         ],
       };
     }
@@ -76,13 +94,7 @@ function cartReducer(state: CartState, action: CartAction): CartState {
 const CartContext = createContext<CartContextType | null>(null);
 
 export const CartProvider = ({ children }: Props) => {
-  const init = () => readCart() as CartState;
-
-  const [state, dispatch] = useReducer<React.Reducer<CartState, CartAction>>(
-    cartReducer,
-    undefined,
-    init,
-  );
+  const [state, dispatch] = useReducer(cartReducer, readCart());
 
   useEffect(() => {
     try {
@@ -93,7 +105,7 @@ export const CartProvider = ({ children }: Props) => {
   }, [state]);
   const addToCart = useCallback(
     (product: Products) =>
-      (dispatch as React.Dispatch<CartAction>)({
+      dispatch({
         type: 'ADD',
         payload: product,
       }),
@@ -101,13 +113,12 @@ export const CartProvider = ({ children }: Props) => {
   );
 
   const removeFromCart = useCallback(
-    (id: string) =>
-      (dispatch as React.Dispatch<CartAction>)({ type: 'REMOVE', payload: id }),
+    (id: string) => dispatch({ type: 'REMOVE', payload: id }),
     [dispatch],
   );
   const changeQuantity = useCallback(
     (id: string, quantity: number) =>
-      (dispatch as React.Dispatch<CartAction>)({
+      dispatch({
         type: 'CHANGE_QTY',
         payload: { id, quantity },
       }),
@@ -123,10 +134,7 @@ export const CartProvider = ({ children }: Props) => {
     [state.items],
   );
 
-  const clearCart = useCallback(
-    () => (dispatch as React.Dispatch<CartAction>)({ type: 'CLEAR' }),
-    [dispatch],
-  );
+  const clearCart = useCallback(() => dispatch({ type: 'CLEAR' }), [dispatch]);
 
   const totalQuantity = state.items.reduce(
     (s: number, it: CartItem) => s + it.quantity,

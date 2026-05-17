@@ -1,12 +1,25 @@
-@use '../utils/mixins.scss' as *;
+
+@import '../utils/mixins.scss';
 
 .categories {
+  @include on-desktop {
+    margin-bottom: 0;
+  }
+
   &__blocks {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    flex-wrap: wrap;
 
     @include on-tablet {
+      flex-direction: row;
       display: flex;
-      justify-content: space-between;
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      display: flex;
       gap: 16px;
     }
   }
@@ -16,6 +29,13 @@
 }
 
 .category {
+  flex: 0 0 calc(33.333% - 11px);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transition: transform 0.3s ease;
+    transform: scale(1.01);
+  }
 
   &__title {
     margin: 0;
@@ -36,8 +56,9 @@
   }
 
   &__image {
-    width: 228px;
-    height: 228px;
+    aspect-ratio: 1 / 1;
+    height: 100%;
+
     overflow: hidden;
     position: relative;
     display: flex;
@@ -46,13 +67,9 @@
     margin-bottom: 24px;
 
     @include on-tablet {
-      width: 187px;
-      height: 187px;
-    }
-
-    @include on-desktop {
-      width: 368px;
-      height: 368px;
+      aspect-ratio: 0;
+      width: 100%;
+      height: 61.5%;
     }
   }
 
@@ -63,6 +80,12 @@
     max-width: 100%;
     max-height: 100%;
     object-fit: scale-down; // or 'cover' if you want to fill the block
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transition: transform 0.3s ease;
+      transform: scale(1.05);
+    }
   }
 
   &-pink {

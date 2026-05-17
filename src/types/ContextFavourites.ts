@@ -13,4 +13,5 @@ export type FavContextType = {
   removeFromFav: (id: string) => void;
   clearFav: () => void;
   isInFav: (id: string) => boolean;
+  totalFavourites: number;
 };

@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import { Link } from 'react-router-dom';
-import { Filter } from '../Filter/Filter';
+import { Filter, FilterValue, ItemQuantity } from '../Filter/Filter';
 import { Header } from '../Header/header';
 import ArrowGray from '../../images/icons/ChevronGray.svg';
 import Home from '../../images/icons/Home.svg';
@@ -8,19 +8,27 @@ import './Accessories.scss';
 import { getAccessories } from '../../api/api';
 import { useEffect, useState } from 'react';
 import { Accessorie } from '../../types/Accessories';
-import fav from '../../images/fav/Icons/Favourites (Heart Like).svg';
-import activeFav from '../../images/icons/ActiveFav.svg';
 import { Products } from '../../types/Products';
 import { useCart } from '../../Context/Context';
 import { useFav } from '../../Context/FavouritesContext';
+import React from 'react';
+import { ActiveQuantity16 } from '../ActiveQuantity/ActiveQuantityAcc/ActiveQuantity16';
+import { PageSliderAcc } from '../Page__Slider/PageSliderAcc';
+import { ActiveQuantity32 } from '../ActiveQuantity/ActiveQuantityAcc/ActiveQuantity32';
+import { ActiveQuantity64 } from '../ActiveQuantity/ActiveQuantityAcc/ActiveQuantity64';
+import { Footer } from '../Footer/Footer';
+import { Aside } from '../Aside/Aside';
 
 export const Accessories = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [accessories, setAccessories] = useState<Accessorie[]>([]);
   const [, setLoading] = useState(true);
   const [, setErrorMessage] = useState('');
-  const { totalQuantity, addToCart, removeFromCart, isInCart } = useCart();
-  const { addToFav, removeFromFav, isInFav } = useFav();
-
+  const { totalQuantity } = useCart();
+  const { totalFavourites } = useFav();
+  const [activeQuantity, setActiveQuantity] = useState<ItemQuantity>(16);
+  const [activeFilter, setActiveFilter] = useState<FilterValue>('Newest');
+  const [activePage, setActivePage] = useState(0);
   const mapAccessorieToProduct = (accessorie: Accessorie): Products => ({
     id: String(accessorie.id),
     itemId: String(accessorie.id),
@@ -39,19 +47,56 @@ export const Accessories = () => {
         : (accessorie.images?.[0] ?? '/img/placeholder.png'),
   });
 
+  const getAccessoryOrder = (name: string) => {
+    if (name.includes('XS')) {
+      return 10.2;
+    }
+
+    if (name.includes('XR')) {
+      return 10.1;
+    }
+
+    if (name.includes('X')) {
+      return 10;
+    }
+
+    const match = name.match(/\d+/);
+
+    return match ? parseInt(match[0], 10) : 0;
+  };
+
+  const sortedAcc = [...accessories].sort((a, b) => {
+    return getAccessoryOrder(b.name) - getAccessoryOrder(a.name);
+  });
+
+  const sortedAccLowToHigh =
+    activeFilter === 'Price: Low to High'
+      ? [...accessories].sort((a, b) => a.priceRegular - b.priceRegular)
+      : accessories;
+
+  const sortedAccHighToLow =
+    activeFilter === 'Price: High to Low'
+      ? [...accessories].sort((a, b) => b.priceRegular - a.priceRegular)
+      : accessories;
+
   useEffect(() => {
     setLoading(true);
     setErrorMessage('');
 
     getAccessories()
       .then(setAccessories)
-      .catch(() => setErrorMessage(`Couldn't load any tablets`))
+      .catch(() => setErrorMessage(`Couldn't load any accessories`))
       .finally(() => setLoading(false));
   }, []);
 
   return (
-    <div className="tablets">
-      <Header cartItemsCount={totalQuantity} />
+    <div className="page tablets">
+      <Header
+        cartItemsCount={totalQuantity}
+        favouritesCount={totalFavourites}
+        setMenuOpen={setMenuOpen}
+      />
+      {menuOpen && <Aside setMenuOpen={setMenuOpen} />}
       <div className="container">
         <div className="accessories__path page__path">
           <div className="accessories__path-icon">
@@ -78,92 +123,74 @@ export const Accessories = () => {
             100 models
           </span>
         </div>
-        <Filter />
+        <Filter
+          activeQuantity={activeQuantity}
+          setActiveQuantity={setActiveQuantity}
+          activeFilter={activeFilter}
+          setActiveFilter={setActiveFilter}
+        />
         <div className="tablets__content">
           <section className="page__models section">
-            <div className="page__models-tablet tablet__articles page__grid">
-              {accessories.map(accessorie => {
-                const product = mapAccessorieToProduct(accessorie);
-                const added = isInCart(product.id);
-                const addedFav = isInFav(product.id);
-
-                return (
-                  <article key={accessorie.id} className="page__models-phone">
-                    <div className="page__models-container">
-                      <div className="page__models-img">
-                        <img
-                          src={product.image}
-                          alt=""
-                          className="page__models-image"
-                        />
-                      </div>
-                      <p className="page__models-title">{accessorie.name}</p>
-                      <span className="page__models-price">
-                        {accessorie.priceRegular}$
-                      </span>
-                      <div className="page__models-string"></div>
-                      <div className="page__models-info">
-                        <p className="page_models-text page__models-text__first">
-                          Screen{' '}
-                          <span className="page__models-span">
-                            {accessorie.screen}
-                          </span>
-                        </p>
-                        <p className="page__models-text">
-                          Capacity{' '}
-                          <span className="page__models-span">
-                            {accessorie.capacity}
-                          </span>
-                        </p>
-                        <p className="page__models-text">
-                          RAM{' '}
-                          <span className="page__models-span">
-                            {accessorie.ram}
-                          </span>
-                        </p>
-                      </div>
-                      <div className="page__models-buttons">
-                        <button
-                          className={`page__models-cart ${added ? 'page__models-cart-active' : ''}`}
-                          type="button"
-                          onClick={() =>
-                            added
-                              ? removeFromCart(product.id)
-                              : addToCart(product)
-                          }
-                        >
-                          <p className="page__models-cart__text">
-                            {added ? 'Added' : 'Add to cart'}
-                          </p>
-                        </button>
-                        <button
-                          className="page__models-fav"
-                          type="button"
-                          onClick={() =>
-                            addedFav
-                              ? removeFromFav(product.id)
-                              : addToFav(product)
-                          }
-                        >
-                          <img
-                            className="page__models-fav__img"
-                            src={addedFav ? activeFav : fav}
-                            alt="Favourites"
-                          />
-                        </button>
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
+            {activeQuantity === 16 && (
+              <ActiveQuantity16
+                phones={
+                  activeFilter === 'Newest'
+                    ? sortedAcc
+                    : accessories || activeFilter === 'Price: Low to High'
+                      ? sortedAccLowToHigh
+                      : accessories || activeFilter === 'Price: High to Low'
+                        ? sortedAccHighToLow
+                        : accessories
+                }
+                activeQuantity={activeQuantity}
+                activePage={activePage}
+                mapAccessorieToProduct={mapAccessorieToProduct}
+              />
+            )}
+            {activeQuantity === 32 && (
+              <ActiveQuantity32
+                phones={
+                  activeFilter === 'Newest'
+                    ? sortedAcc
+                    : accessories || activeFilter === 'Price: Low to High'
+                      ? sortedAccLowToHigh
+                      : accessories || activeFilter === 'Price: High to Low'
+                        ? sortedAccHighToLow
+                        : accessories
+                }
+                activeQuantity={activeQuantity}
+                activePage={activePage}
+                mapAccessorieToProduct={mapAccessorieToProduct}
+              />
+            )}
+            {activeQuantity === 64 && (
+              <ActiveQuantity64
+                phones={
+                  activeFilter === 'Newest'
+                    ? sortedAcc
+                    : accessories || activeFilter === 'Price: Low to High'
+                      ? sortedAccLowToHigh
+                      : accessories || activeFilter === 'Price: High to Low'
+                        ? sortedAccHighToLow
+                        : accessories
+                }
+                activeQuantity={activeQuantity}
+                activePage={activePage}
+                mapAccessorieToProduct={mapAccessorieToProduct}
+              />
+            )}
+            <PageSliderAcc
+              setActivePage={setActivePage}
+              activePage={activePage}
+              activeQuantity={activeQuantity}
+            />
           </section>
         </div>
       </div>
 
-      {/* <div className="page__footer">
+      <div className="page__footer">
         <Footer />
-      </div> */}
+      </div>
     </div>
   );
 };

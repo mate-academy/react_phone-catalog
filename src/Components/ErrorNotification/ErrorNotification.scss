@@ -1,4 +1,5 @@
-@use '../../utils/mixins.scss' as *;
+
+@import '../../utils/mixins.scss';
 
 .error-notification {
   @include content-padding-inline;

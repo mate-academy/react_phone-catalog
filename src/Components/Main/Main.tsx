@@ -4,8 +4,14 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Products } from '../../types/Products';
-import { getProducts } from '../../api/api';
+import { getDiscountedProducts, getProducts } from '../../api/api';
 import { Product } from '../Products/Products';
+import React from 'react';
+import { Discount } from '../Discouned/Discounted';
+import { Discounted } from '../../types/Discounted';
+
+import welcomeTablet from '../../images/Banner-tablet.png';
+import welcomePhone from '../../images/banner-phone.png';
 
 enum Rectangles {
   first = 'first',
@@ -20,6 +26,9 @@ export const Main: React.FC = () => {
   const [picIndex, setPicIndex] = useState(0);
 
   const [products, setProducts] = useState<Products[]>([]);
+  const [discountedProducts, setDiscountedProducts] = useState<Discounted[]>(
+    [],
+  );
   const [, setLoading] = useState(true);
   const [, setErrorMessage] = useState('');
 
@@ -30,6 +39,11 @@ export const Main: React.FC = () => {
     getProducts()
       .then(setProducts)
       .catch(() => setErrorMessage(`Couldn't load any tablets`))
+      .finally(() => setLoading(false));
+
+    getDiscountedProducts()
+      .then(setDiscountedProducts)
+      .catch(() => setErrorMessage(`Couldn't load any discounted products`))
       .finally(() => setLoading(false));
   }, []);
 
@@ -61,9 +75,43 @@ export const Main: React.FC = () => {
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
-  const productsPerSlide = 4;
-
+  const [productsPerSlide, setProductsPerSlide] = useState(4);
   const activeRect = pics[picIndex];
+
+  const [discountedActiveIndex, setDiscountedActiveIndex] = useState(0);
+
+  const getProductsPerSlide = (width: number) =>
+    width >= 1200 ? 4 : width >= 768 ? 3 : width >= 480 ? 2 : 1;
+
+  useEffect(() => {
+    const handleResize = () => {
+      setProductsPerSlide(getProductsPerSlide(window.innerWidth));
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    setActiveIndex(prev => {
+      const maxStart = Math.max(0, products.length - productsPerSlide);
+
+      return prev > maxStart ? maxStart : prev;
+    });
+  }, [products.length, productsPerSlide]);
+
+  useEffect(() => {
+    setDiscountedActiveIndex(prev => {
+      const maxStart = Math.max(
+        0,
+        discountedProducts.length - productsPerSlide,
+      );
+
+      return prev > maxStart ? maxStart : prev;
+    });
+  }, [discountedProducts.length, productsPerSlide]);
 
   const handlePicChange = useCallback(
     (direction: 'next' | 'prev') => {
@@ -83,32 +131,48 @@ export const Main: React.FC = () => {
     (direction: 'next' | 'prev') => {
       setActiveIndex(prev => {
         if (direction === 'next') {
-          return prev + productsPerSlide < products.length
-            ? prev + productsPerSlide
-            : 0;
+          return prev + 1 < products.length ? prev + 1 : 0;
         }
 
-        // prev logic: move back by productsPerSlide or wrap to last full page
-        const next = prev - productsPerSlide;
+        const next = prev - 1;
 
         if (next >= 0) {
           return next;
         }
 
-        // wrap to last page start index
-        const remainder = products.length % productsPerSlide;
-
-        return remainder === 0
-          ? products.length - productsPerSlide
-          : products.length - remainder;
+        return Math.max(0, products.length - productsPerSlide);
       });
     },
-    [products.length],
+    [products.length, productsPerSlide],
+  );
+
+  const handleDiscountedChange = useCallback(
+    (direction: 'next' | 'prev') => {
+      setDiscountedActiveIndex(prev => {
+        if (direction === 'next') {
+          return prev + 1 < discountedProducts.length ? prev + 1 : 0;
+        }
+
+        const next = prev - 1;
+
+        if (next >= 0) {
+          return next;
+        }
+
+        return Math.max(0, discountedProducts.length - productsPerSlide);
+      });
+    },
+    [discountedProducts.length, productsPerSlide],
   );
 
   const currentProducts = products.slice(
     activeIndex,
     activeIndex + productsPerSlide,
+  );
+
+  const currentDiscountedProducts = discountedProducts.slice(
+    discountedActiveIndex,
+    discountedActiveIndex + productsPerSlide,
   );
 
   const arrowLeft = new URL(
@@ -145,53 +209,55 @@ export const Main: React.FC = () => {
             </div>
 
             <div className="welcome__block-sliders">
-              <Link
-                to=""
-                className="welcome__block-slider-link"
-                onClick={event => {
-                  event.preventDefault();
-                  handlePicChange('prev');
-                }}
+              <button
+                type="button"
+                className="welcome__block-slider"
+                onClick={() => handlePicChange('prev')}
               >
-                <button className="welcome__block-slider">
-                  <img src={arrowLeft} className="icon-slider" alt="" />
-                </button>
-              </Link>
+                <img src={arrowLeft} className="icon-slider" alt="" />
+              </button>
               <div className="welcome__block-img">
                 {activePic === Rectangles.first && (
-                  <img
-                    className="welcome__block-image"
-                    src={welcomeImage}
-                    alt="Welcome Image"
-                  />
+                  <picture>
+                    <source media="(min-width: 1200px)" srcSet={welcomeImage} />
+                    <source media="(min-width: 640px)" srcSet={welcomeTablet} />
+                    <img
+                      className="welcome__block-image"
+                      src={welcomePhone}
+                      alt="Welcome Image"
+                    />
+                  </picture>
                 )}
                 {activePic === Rectangles.second && (
-                  <img
-                    className="welcome__block-image"
-                    src={welcomeImage2}
-                    alt="Welcome Image"
-                  />
+                  <picture>
+                    <source media="(min-width: 1200px)" srcSet={welcomeImage} />
+                    <source media="(min-width: 640px)" srcSet={welcomeTablet} />
+                    <img
+                      className="welcome__block-image"
+                      src={welcomePhone}
+                      alt="Welcome Image"
+                    />
+                  </picture>
                 )}
                 {activePic === Rectangles.third && (
-                  <img
-                    className="welcome__block-image"
-                    src={welcomeImage3}
-                    alt="Welcome Image"
-                  />
+                  <picture>
+                    <source media="(min-width: 1200px)" srcSet={welcomeImage} />
+                    <source media="(min-width: 640px)" srcSet={welcomeTablet} />
+                    <img
+                      className="welcome__block-image"
+                      src={welcomePhone}
+                      alt="Welcome Image"
+                    />
+                  </picture>
                 )}
               </div>
-              <Link
-                to=""
-                className="welcome__block-slider-link"
-                onClick={event => {
-                  event.preventDefault();
-                  handlePicChange('next');
-                }}
+              <button
+                type="button"
+                className="welcome__block-slider"
+                onClick={() => handlePicChange('next')}
               >
-                <button className="welcome__block-slider">
-                  <img src={arrowRight} className="icon-slider" alt="" />
-                </button>
-              </Link>
+                <img src={arrowRight} className="icon-slider" alt="" />
+              </button>
             </div>
             <div className="welcome__block-rectangles">
               {activeRect === Rectangles.first ? (
@@ -229,20 +295,24 @@ export const Main: React.FC = () => {
           </section>
           <section className="new__models section">
             <div className="new__models-arr">
-              <p className="section-title">Brand new models</p>
+              <p className="section-title new__models-title">
+                Brand new models
+              </p>
               <div className="new__models-arrows">
                 <Link to="" className="new__models-arrow-left">
                   <button
-                    className="new__models-arrow"
+                    className={`new__models-arrow ${activeIndex === 0 ? 'new__models-arrow-disabled' : ''}`}
                     onClick={() => handleProductChange('prev')}
+                    disabled={activeIndex === 0}
                   >
                     <img src={arrowLeft} alt="" className="icon-arrow" />
                   </button>
                 </Link>
                 <Link to="" className="new__models-arrow-right">
                   <button
-                    className="new__models-arrow"
+                    className={`new__models-arrow ${activeIndex + productsPerSlide >= products.length ? 'new__models-arrow-disabled' : ''}`}
                     onClick={() => handleProductChange('next')}
+                    disabled={activeIndex + productsPerSlide >= products.length}
                   >
                     <img src={arrowRight} alt="" className="icon-arrow" />
                   </button>
@@ -281,25 +351,30 @@ export const Main: React.FC = () => {
             <div className="new__models-arr">
               <p className="section-title">Hot prices</p>
               <div className="new__models-arrows">
-                <Link to="" className="new__models-arrow-left">
+                <Link to="" className="new__models-arrow-link">
                   <button
-                    className="new__models-arrow"
-                    onClick={() => handleProductChange('prev')}
+                    className={`new__models-arrow ${discountedActiveIndex === 0 ? 'new__models-arrow-disabled' : ''}`}
+                    onClick={() => handleDiscountedChange('prev')}
+                    disabled={discountedActiveIndex === 0}
                   >
                     <img src={arrowLeft} alt="" className="icon-arrow" />
                   </button>
                 </Link>
-                <Link to="" className="new__models-arrow-right">
+                <Link to="" className="new__models-arrow-link">
                   <button
-                    className="new__models-arrow"
-                    onClick={() => handleProductChange('next')}
+                    className={`new__models-arrow ${discountedActiveIndex + productsPerSlide >= discountedProducts.length ? 'new__models-arrow-disabled' : ''}`}
+                    onClick={() => handleDiscountedChange('next')}
+                    disabled={
+                      discountedActiveIndex + productsPerSlide >=
+                      discountedProducts.length
+                    }
                   >
                     <img src={arrowRight} alt="" className="icon-arrow" />
                   </button>
                 </Link>
               </div>
             </div>
-            <Product currentProducts={currentProducts} />
+            <Discount DiscountedProducts={currentDiscountedProducts} />
           </section>
         </div>
       </div>

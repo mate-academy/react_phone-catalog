@@ -1,22 +1,48 @@
-@use './Components/Home/Home.scss' as *;
-@use './Components/TopBar/top-bar.scss' as *;
-@use './Components/TopBar/nav.scss' as *;
-@use './utils/vars.scss' as *;
-@use './utils/mixins.scss' as *;
-@use './fonts/fonts.scss' as *;
-@use '../src/Components/Header/header.scss' as *;
-@use './styles/section.scss' as *;
-@use './styles/WelcomeBlock.scss' as *;
-@use './styles/icon.scss' as *;
-@use './styles/categories.scss' as *;
-@use './styles/Page.scss' as *;
-@use '../src/Components/Footer/Footer.scss' as *;
-@use './Components/ErrorNotification/ErrorNotification.scss' as *;
-@use './Components/Aside/Aside.scss' as *;
+@import './Components/Home/Home.scss';
+@import './Components/TopBar/top-bar.scss';
+@import './Components/TopBar/nav.scss';
+@import './utils/vars.scss';
+@import './utils/mixins.scss';
+@import './fonts/fonts.scss';
+@import './Components/Header/header.scss';
+@import './styles/section.scss';
+@import './styles/WelcomeBlock.scss';
+@import './styles/icon.scss';
+@import './styles/categories.scss';
+@import './styles/Page.scss';
+@import './Components/Footer/Footer.scss';
+@import './Components/ErrorNotification/ErrorNotification.scss';
+@import './styles/newModels.scss';
+@import './Components/Discouned/Discounted.scss';
+@import './styles/Aside.scss';
 
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  min-width: 0;
+}
+
+img,
+svg,
+button,
+a {
+  max-width: 100%;
+}
 
 body {
   margin: 0;
+  min-height: 100vh;
   background-color: #0F1121;
   color: #F1F2F9;
   font-family: Mont, sans-serif;
