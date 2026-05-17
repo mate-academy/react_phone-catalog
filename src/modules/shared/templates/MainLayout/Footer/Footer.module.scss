@@ -1,0 +1,94 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.footer {
+  box-sizing: border-box;
+  padding-block: 32px;
+
+  @include content-padding-inline;
+
+  background-color: var(--main-background-color);
+  border-top: 1px solid var(--elements-color);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 32px;
+
+    height: 100%;
+    width: min(1200px, 100%);
+
+    @include on-tablet {
+      flex-direction: row;
+      height: 96px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 32px;
+    color: var(--main-text-color-primary);
+  }
+
+  &__img {
+    display: block;
+    width: 89px;
+    height: 32px;
+  }
+
+  &__nav {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 16px;
+    width: 100%;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__link {
+    width: fit-content;
+  }
+
+  &__item {
+    flex-grow: 1;
+    width: 100%;
+    min-height: 50%;
+
+    display: flex;
+    align-items: center;
+
+    &:first-child {
+      justify-content: flex-start;
+    }
+
+    &:last-child {
+      justify-content: center;
+
+      @include on-tablet {
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+}
