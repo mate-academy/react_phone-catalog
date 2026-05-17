@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 4px;
+}
+
+.selectTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--text-color);
+  padding-inline: 12px;
+  height: 40px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid;
+  border-color: var(--dropdown-border);
+  background-color: var(--slider-btn-bg);
+  outline: none;
+  transition: all $transition-duration ease;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--btn-border-hover);
+  }
+}
+
+.selectTitle.active {
+  border-color: var(--breadcrumbs-hover);
+}
+
+.selectIcon {
+  width: 16px;
+  height: 16px;
+  transition: all $transition-duration ease;
+}
+
+.selectIconActive {
+  transition: all $transition-duration ease;
+  transform: rotate(90deg);
+}
+
+.select {
+  display: block;
+  padding-block: 8px;
+  list-style: none;
+  border: 1px solid;
+  border-color: var(--border-color);
+  border-radius: 8px;
+  background-color: var(--background-color);
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: calc(100% + 4px);
+  z-index: 100;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+.option {
+  cursor: pointer;
+  color: var(--card-specs-text);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background-color: var(--background-color);
+  padding: 10px 12px;
+  transition: all $transition-duration ease-in-out;
+
+  &:hover {
+    color: var(--text-color);
+    background-color: var(--option-hover);
+  }
+}

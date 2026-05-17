@@ -1,0 +1,18 @@
+.pageTitile {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  color: var(--text-color);
+}
+
+.itemsCount {
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+
+  margin-top: 8px;
+  margin-bottom: 32px;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--card-specs-text);
+}

@@ -1,0 +1,7 @@
+.container {
+  @include content-padding-inline;
+
+  overflow: hidden;
+  flex: 1;
+  width: 100%;
+}

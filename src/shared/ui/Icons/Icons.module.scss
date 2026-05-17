@@ -1,0 +1,55 @@
+%icon {
+  fill: var(--icon-color);
+  width: 16px;
+  height: 16px;
+  transform: rotate(0)
+}
+
+.icon {
+  @extend %icon;
+}
+
+.heartFilled {
+  @extend %icon;
+
+  fill: var(--icon-color-filled);
+}
+
+.closeCart {
+  @extend %icon;
+
+  fill: var(--icon-close-cart);
+  transition: all $transition-duration ease;
+
+  &:hover {
+    fill: var(--icon-close-hover);
+  }
+}
+
+.iconDisabled {
+  fill: var(--icon-close-cart);
+}
+
+.left {
+  @extend %icon;
+
+  transform: rotate(0deg);
+}
+
+.up {
+  @extend %icon;
+
+  transform: rotate(90deg);
+}
+
+.right {
+  @extend %icon;
+
+  transform: rotate(180deg);
+}
+
+.down {
+  @extend %icon;
+
+  transform: rotate(270deg);
+}

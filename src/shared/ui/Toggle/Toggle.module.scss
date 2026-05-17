@@ -1,0 +1,67 @@
+.toggleContainer {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  min-width: 60px;
+  height: 30px;
+  position: relative;
+}
+
+.toggle {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.slider {
+  min-width: 60px;
+  height: 30px;
+  background-color: var(--toggle-bg);
+  border-radius: 999px;
+  position: relative;
+  cursor: pointer;
+  transition: all $transition-duration ease-in-out;
+}
+
+.iconWrapper {
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--toggle-btn);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all $transition-duration ease-in-out;
+}
+
+.sun,
+.moon {
+  width: 20px;
+  height: 20px;
+  fill: $dark-background;
+  transition: all $transition-duration ease-in-out;
+}
+
+.moon {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+  fill: #f5b301;
+}
+
+.toggle:checked + .slider .iconWrapper {
+  transform: translateX(28px);
+}
+
+.toggle:checked + .slider .sun {
+  opacity: 0;
+}
+
+.toggle:checked + .slider .moon {
+  opacity: 1;
+}

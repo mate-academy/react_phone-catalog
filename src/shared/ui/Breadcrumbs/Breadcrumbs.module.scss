@@ -1,0 +1,43 @@
+.breadcrumbs {
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+
+  display: flex;
+  align-items: center;
+  height: 16px;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.chevron {
+  fill: var(--breadcrumbs-chevron);
+}
+
+.iconLink {
+  display: flex;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.text {
+  margin-top: 1px;
+  color: var(--card-specs-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.iconText {
+  margin-top: 1px;
+  color: var(--card-specs-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all $transition-duration ease;
+}
+
+.iconText:hover {
+  color: var(--breadcrumbs-hover);
+}

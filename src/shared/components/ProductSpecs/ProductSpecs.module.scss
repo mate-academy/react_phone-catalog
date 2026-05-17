@@ -1,0 +1,22 @@
+.cardDescription {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  justify-content: space-between;
+  font-size: 12px;
+  padding-bottom: 8px;
+}
+
+.specs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.specsName {
+  color: var(--card-specs-text);
+}
+
+.value {
+  text-align: end;
+}
