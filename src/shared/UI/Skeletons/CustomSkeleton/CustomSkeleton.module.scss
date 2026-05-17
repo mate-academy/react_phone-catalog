@@ -1,0 +1,11 @@
+@import '../../../styles/variables/colors';
+@import '../../../styles/mixins/skeleton';
+
+.block {
+  background-color: $color-elements;
+
+}
+
+.pulsate {
+  @include skeleton-pulse;
+}

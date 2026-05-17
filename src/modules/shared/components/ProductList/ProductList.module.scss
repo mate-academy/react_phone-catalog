@@ -1,0 +1,24 @@
+@import '../../../../shared/styles/variables/colors';
+@import '../../../../shared/styles/variables/typography';
+@import '../../../../shared/styles/mixins/typography';
+
+.errorMessage {
+  color: $color-primary;
+  display: flex;
+  justify-content: center;
+  grid-column: 1 / -1;
+  padding-top: 100px;
+  width: 100%;
+
+  @include text-style($body-size, $body-line, $body-weigth, $spacing: 0);
+}
+
+.list {
+  grid-column: 1 / -1;
+
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+  gap: 40px 16px;
+}

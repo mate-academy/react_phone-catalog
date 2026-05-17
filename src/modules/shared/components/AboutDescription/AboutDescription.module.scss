@@ -1,0 +1,27 @@
+@import '../../../../shared/styles/variables/colors';
+@import '../../../../shared/styles/variables/typography';
+@import '../../../../shared/styles/mixins/typography';
+
+
+
+.about__item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about__subtitle {
+  color: $color-primary;
+
+  @include text-style($h4-size, $h4-line, $h4-weigth);
+
+  @media (max-width: 639px) {
+    @include text-style($h4-size-mobile, $h4-line-mobile, $h4-weigth-mobile);
+  }
+}
+
+.about__text {
+  color: $color-secondary;
+
+    @include text-style($body-size, $body-line, $body-weigth);
+}

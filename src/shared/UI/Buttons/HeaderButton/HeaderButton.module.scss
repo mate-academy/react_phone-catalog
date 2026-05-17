@@ -1,0 +1,63 @@
+@import '../../../styles/variables/colors';
+@import '../../../styles/variables/typography';
+@import '../../../styles/mixins/typography';
+
+.button {
+  box-shadow: -1px 0 0 0 $color-elements;
+  width: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: $color-primary;
+
+  @media (max-width: 1199px) {
+    width: 48px;
+  }
+
+  &:hover svg {
+    transform: scale(1.1);
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+}
+
+.active {
+  border-bottom: 2px solid $color-primary;
+}
+
+.bagCounter {
+  width: 14px;
+  height: 14px;
+  padding: 4px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include text-style(9px, 100%, 700);
+
+  color: $color-white;
+  background-color: $color-accent;
+  position: absolute;
+
+  border: 1px solid $color-white;
+  border-radius: 50%;
+
+  right: 18px;
+  top: 18px;
+  z-index: 100;
+
+  @media (max-width: 1199px) {
+    right: 10px;
+    top: 10px;
+  }
+
+  @media (max-width: 639px) {
+    display: none;
+  }
+
+
+}

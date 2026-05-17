@@ -1,0 +1,85 @@
+@import '../../../styles/variables/colors';
+@import '../../../styles/mixins/skeleton';
+
+.card {
+  height: 506px;
+  width: 100%;
+  background-color: $color-white;
+  border: 1px solid $color-elements;
+  border-radius: 8px;
+  padding: 32px;
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.img {
+  color: $color-icons;
+  width: 208px;
+  height: 196px;
+}
+
+.title {
+  height: 30px;
+  width: 100%;
+  background-color: $color-icons;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: $color-icons;
+}
+
+.description {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  &__name {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__value {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__item {
+    width: 45px;
+    height: 15px;
+    background-color: $color-icons;
+  }
+}
+
+
+.buttons_container {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+}
+
+.primary_button {
+  width: 100%;
+  height: 40px;
+  background-color: $color-icons;
+  border-radius: 48px;
+}
+
+.favorites__button {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: $color-icons;
+}
+
+.pulsate{
+  @include skeleton-pulse;
+}
+
+

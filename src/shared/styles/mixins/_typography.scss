@@ -1,0 +1,7 @@
+@mixin text-style($size, $line, $weith, $spacing: 0) {
+  font-family: Mont, sans-serif;
+  font-size: $size;
+  line-height: $line;
+  font-weight: $weith;
+  letter-spacing: $spacing;
+}

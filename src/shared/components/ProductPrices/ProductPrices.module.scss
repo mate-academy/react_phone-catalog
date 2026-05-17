@@ -1,0 +1,31 @@
+@import '../../styles/variables/colors';
+@import '../../styles/variables/typography';
+@import '../../styles/mixins/typography';
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.prices {
+  @include text-style ($h3-size, $h3-line, $h3-weigth);
+
+  &::before {
+    content: '$';
+  }
+
+  @media (max-width: 639px) {
+    @include text-style ($h3-size-mobile, $h3-line-mobile, $h3-weigth-mobile);
+  }
+
+  &__price {
+    color: $color-primary;
+  }
+
+  &__fullPrice {
+    color:  $color-secondary;
+    text-decoration: line-through;
+  }
+}

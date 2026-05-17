@@ -1,0 +1,1 @@
+export { AboutDescs } from './AboutDesc';

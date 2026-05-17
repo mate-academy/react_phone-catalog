@@ -1,0 +1,36 @@
+@import '../../../styles/variables/colors';
+@import '../../../styles/variables/typography';
+@import '../../../styles/mixins/typography';
+
+.radio {
+  display: inline-flex;
+}
+
+.realRadio {
+  display: none;
+}
+
+.customRadio{
+ width: 62px;
+ height: 32px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ color: $color-primary;
+
+
+ border: 2px solid $color-elements;
+ border-radius: 4px;
+
+ @include text-style($body-size, $body-line, $body-weigth);
+
+ &:hover {
+  border-color: $color-icons;
+ }
+}
+
+.realRadio:checked + .customRadio {
+  color: $color-white;
+  border: none;
+  background-color: $color-primary;
+}

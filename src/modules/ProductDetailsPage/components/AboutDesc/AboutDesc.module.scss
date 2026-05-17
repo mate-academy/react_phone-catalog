@@ -1,0 +1,10 @@
+@import '../../../../shared/styles/variables/colors';
+@import '../../../../shared/styles/variables/typography';
+@import '../../../../shared/styles/mixins/typography';
+
+.about__container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+

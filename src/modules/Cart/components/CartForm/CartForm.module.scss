@@ -1,0 +1,61 @@
+@import '../../../../shared/styles/mixins/typography';
+@import '../../../../shared/styles/variables/colors';
+@import '../../../../shared/styles/variables/typography';
+
+
+
+.title {
+  color: $color-primary;
+
+  @include text-style($h2-size, $h2-line, $h2-weigth, $h2-leter);
+}
+
+.line {
+  height: 1px;
+  width: 100%;
+  background-color: $color-icons;
+  margin-bottom: 16px;
+  margin-top: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px
+}
+
+.form__item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: $color-primary;
+
+  @include text-style($uppercase-size, $uppercase-line, $uppercase-weigth);
+}
+
+.form__checkbox {
+  color: $color-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  @include text-style($body-size, $body-line, $body-weigth);
+}
+
+.message {
+  display: flex;
+  justify-content: center;
+  color: $color-primary;
+
+  @include text-style($smal-size, $smal-line, $smal-weigth);
+}
+
+.error__message {
+  color: $color-red;
+
+  @include text-style($body-size, $body-line, $body-weigth)
+}
+
+

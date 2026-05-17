@@ -1,0 +1,26 @@
+@import '../../../styles/variables/colors';
+
+.input {
+  width: 64px;
+  height: 32px;
+  position: relative;
+  background-color: $color-white;
+  transition: 0.3s;
+
+  appearance: none;
+  border: 1px solid $color-icons;
+  border-radius: 64px;
+  cursor: pointer;
+
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: left 6px center;
+  background-image: url('/src/assets/icons/Sone.svg');
+
+}
+
+.input:checked {
+  background-image: url('/src/assets/icons/Moon.svg');
+  background-position: right 6px center;
+}
+

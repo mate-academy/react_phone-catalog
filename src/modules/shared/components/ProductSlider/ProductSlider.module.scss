@@ -1,0 +1,44 @@
+@import '../../../../shared/styles/mixins/typography';
+@import '../../../../shared/styles/variables/colors';
+@import '../../../../shared/styles/variables/typography';
+
+.container {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  max-width: 70%;
+
+  @include text-style($h2-size, $h2-line, $h2-weigth, $h2-leter);
+
+  color: $color-primary;
+
+  @media (max-width: 639px) {
+    @include text-style($h2-size-mobile, $h2-line, $h2-weigth);
+  }
+}
+
+.slider {
+  width: 100%;
+
+  @media (max-width: 1199px) {
+    width: calc(100% + 24px);
+  }
+
+  @media (max-width: 639px) {
+    width: calc(100% + 16px);
+  }
+}
+
+.buttons {
+  position: absolute;
+  top: -56px;
+  right: 24px;
+  display: flex;
+  gap: 16px;
+}

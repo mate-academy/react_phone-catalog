@@ -1,0 +1,30 @@
+@import '../../../styles/variables/colors';
+@import '../../../styles/variables/typography';
+@import '../../../styles/mixins/typography';
+
+
+
+.input {
+  height: 40px;
+  width: 100%;
+  padding-left: 12px;
+  color: $color-primary;
+
+  border: 1px solid $color-icons;
+  border-radius: 8px;
+
+  @include text-style($buttons-size, $buttons-line, $body-weigth);
+
+  &:hover {
+    border-color: $color-secondary;
+  }
+
+  &:focus {
+    border-color: $color-primary;
+  }
+}
+
+.error {
+  border-color: $color-red;
+  color: $color-red;
+}

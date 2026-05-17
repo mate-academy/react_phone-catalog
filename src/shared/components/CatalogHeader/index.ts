@@ -1,0 +1,1 @@
+export { CatalogHeader } from './CatalogHeader';

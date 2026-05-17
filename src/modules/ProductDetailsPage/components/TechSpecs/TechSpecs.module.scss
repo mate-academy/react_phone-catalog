@@ -1,0 +1,27 @@
+@import '../../../../shared/styles/variables/colors';
+@import '../../../../shared/styles/variables/typography';
+@import '../../../../shared/styles/mixins/typography';
+
+.product__techSpecs {
+  flex: 1;
+}
+
+.subtitle {
+  color: $color-primary;
+  padding-bottom: 16px;
+
+  @include text-style($h3-size, $h3-line, $h3-weigth);
+
+  @media (max-width: 639px) {
+    @include text-style($h3-size-mobile, $h3-line-mobile, $h3-weigth-mobile);
+  }
+}
+
+.line {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: $color-elements;
+  margin-bottom: 25px;
+}
+

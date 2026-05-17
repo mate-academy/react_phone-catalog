@@ -1,0 +1,24 @@
+@import '../../../../shared/styles/variables/colors';
+@import '../../../../shared/styles/variables/typography';
+@import '../../../../shared/styles/mixins/typography';
+
+.product {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding-bottom: 80px;
+
+  @media (max-width: 1199px) {
+    gap: 64px;
+    padding-bottom: 64px;
+  }
+
+  @media (max-width: 639px) {
+    gap: 56px;
+    padding-bottom: 56px;
+  }
+}
+
+
+

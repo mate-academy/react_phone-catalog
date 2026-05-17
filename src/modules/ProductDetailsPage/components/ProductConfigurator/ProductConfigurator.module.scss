@@ -1,0 +1,15 @@
+@import '../../../../shared/styles/variables/colors';
+
+
+.redactor {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.line {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: $color-elements;
+}

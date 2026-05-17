@@ -1,0 +1,1 @@
+export { NewModelSlider } from './NewModelSlider';

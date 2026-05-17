@@ -1,0 +1,17 @@
+.switcher {
+  position: absolute;
+  padding: 8px;
+  right: 0;
+  top: 64px;
+
+  @media (max-width: 1199px) {
+    top: 48px;
+  }
+
+  @media (max-width: 639px) {
+    top: auto;
+    right: 96px;
+
+  }
+
+}

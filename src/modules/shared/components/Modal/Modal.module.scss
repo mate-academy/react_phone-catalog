@@ -1,0 +1,37 @@
+@import '../../../../shared/styles/variables/colors';
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba($color-primary, 0.5);
+  z-index: 1000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.overlay.open {
+  opacity: 1;
+}
+
+.content {
+  background-color: $color-white;
+  max-width: 700px;
+  max-height: 700px;
+  overflow: auto;
+  padding: 20px;
+  border: 1px solid $color-elements;
+  border-radius: 8px;
+  transform: scale(0);
+  transition: transform 0.5s;
+
+}
+
+.content.open {
+  transform: scale(1);
+}
+

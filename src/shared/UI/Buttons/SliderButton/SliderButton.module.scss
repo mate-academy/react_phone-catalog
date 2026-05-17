@@ -1,0 +1,46 @@
+@import '../../../styles/variables/colors';
+
+.button {
+  height: 32px;
+  width: 32px;
+  border: 1px solid $color-icons;
+  border-radius: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &__arrow {
+    width: 7px;
+    height: 7px;
+
+    border-left: 2px solid $color-primary;
+    border-bottom: 2px solid $color-primary;
+    transform: rotate(45deg);
+  }
+
+  &__up {
+    transform: rotate(90deg);
+  }
+
+  &__down {
+    transform: rotate(270deg);
+  }
+
+  &__left {
+    transform: rotate(0deg);
+  }
+
+  &__right {
+    transform: rotate(180deg);
+  }
+
+  &__disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}

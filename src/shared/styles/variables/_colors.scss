@@ -1,0 +1,49 @@
+:root {
+  --color-white: #FFF;
+  --color-main: #FAFBFC;
+  --color-elements: #E2E6E9;
+  --color-icons: #B4BDC3;
+  --color-secondary: #89939A;
+  --color-primary: #0F0F11;
+  --color-accent: #4219D0;
+  --color-secondary-accent: #F4BA47;
+  --color-green: #27AE60;
+  --color-red: #EB5757;
+  --color-skeleton-first: #eee;
+  --color-skeleton-secondary: #f6f6f6;
+  --color-skeleton-third: #e0e0e0;
+}
+
+html[data-theme='dark'] {
+  --color-white: #0F0F11;
+  --color-main: #0B0B0C;
+  --color-elements: #1A1A1C;
+  --color-icons: #6C7277;
+  --color-secondary: #9FA6AD;
+  --color-primary: #FFF;
+  --color-accent: #7C5CFF;
+  --color-secondary-accent: #FFD166;
+  --color-green: #2ECC71;
+  --color-red: #FF6B6B;
+  --color-skeleton-first: #FFFCFC;
+  --color-skeleton-secondary: #5E5E5E;
+  --color-skeleton-third: #262626;
+}
+
+
+$color-white: var(--color-white);
+$color-main: var(--color-main);
+$color-elements: var(--color-elements);
+$color-icons: var(--color-icons);
+$color-secondary: var(--color-secondary);
+$color-primary: var(--color-primary);
+$color-accent: var(--color-accent);
+$color-secondary-accent: var(--color-secondary-accent);
+$color-green: var(--color-green);
+$color-red: var(--color-red);
+$color-skeleton--first: var(--color-skeleton-first);
+$color-skeleton--secondary: var(--color-skeleton-secondary);
+$color-skeleton--third: var(--color-skeleton-third);
+
+
+

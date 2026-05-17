@@ -1,0 +1,13 @@
+.breadcrumbs {
+  grid-column: 1 / -1;
+  padding-bottom: 40px;
+
+  @media (max-width: 1199px) {
+    padding-top: 24px;
+  }
+
+  @media (max-width: 639px) {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}
