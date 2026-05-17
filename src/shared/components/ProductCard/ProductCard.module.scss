@@ -1,0 +1,142 @@
+@import '../../../assets/styles/main';
+
+.productCard {
+  padding: 32px;
+  border: 1px solid $color-elements;
+  transition:
+    border 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    border: 1px solid $color-elements;
+    box-shadow: 0 2px 16px 0 #0000001a;
+  }
+
+  &__mainImage {
+    width: 100%;
+    height: 129px;
+    margin-bottom: 24px;
+    object-fit: contain;
+
+    @include on-tablet {
+      height: 202px;
+    }
+
+    @include on-desktop {
+      height: 196px;
+    }
+
+    @include on-desktop-extra {
+      height: 196px;
+    }
+  }
+
+  &__description {
+    height: 2.8em;
+    margin-bottom: 8px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  &__priceContainer {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__price {
+    margin-bottom: 8px;
+  }
+
+  &__fullPrice {
+    font-weight: 400;
+    color: #89939a;
+    text-decoration: line-through;
+  }
+
+  &__line {
+    display: block;
+
+    width: 100%;
+    height: 1px;
+    margin-bottom: 8px;
+
+    background-color: $color-elements;
+  }
+
+  &__featureWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+  }
+
+  &__feature {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 8px;
+  }
+
+  &__featureTitle {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 100%;
+    color: #89939a;
+  }
+
+  &__featureValue {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 100%;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__addToCart {
+    cursor: pointer;
+
+    flex-grow: 1;
+
+    padding-block: 10px;
+    border: 1px solid $color-primary;
+
+    color: $color-white;
+
+    background-color: $color-primary;
+
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+
+    &:disabled {
+      border: 1px solid $color-elements;
+      color: $color-green;
+      background-color: $color-white;
+      box-shadow: 0 0 0 0;
+    }
+  }
+
+  &__addToFavorites {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+    border: 1px solid $color-icons;
+
+    background-color: $color-white;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+  }
+}
