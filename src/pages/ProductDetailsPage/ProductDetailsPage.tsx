@@ -93,7 +93,7 @@ export const ProductDetailsPage = () => {
         }
 
         const response = await fetch(
-          `${import.meta.env.BASE_URL}/${productsFile}`,
+          `${import.meta.env.BASE_URL}${productsFile}`,
         );
 
         if (!response.ok) {
@@ -344,45 +344,48 @@ export const ProductDetailsPage = () => {
             </div>
           )}
 
-          <div className="product-details__prices">
-            <span className="product-details__price">
-              ${product.priceDiscount}
-            </span>
+          <div className="product-details__price-block">
+            <div className="product-details__prices">
+              <span className="product-details__price">
+                ${product.priceDiscount}
+              </span>
 
-            <span className="product-details__price--old">
-              ${product.priceRegular}
-            </span>
-          </div>
+              <span className="product-details__price--old">
+                ${product.priceRegular}
+              </span>
+            </div>
 
-          <div className="product-details__actions">
-            <button
-              className={`product-details__add-to-cart ${
-                isInCart ? 'added' : ''
-              }`}
-              onClick={handleAddToCart}
-              disabled={isInCart}
-            >
-              {isInCart ? 'Added to cart' : 'Add to cart'}
-            </button>
+            <div className="product-details__actions">
+              <button
+                className={`product-details__add-to-cart ${
+                  isInCart ? 'added' : ''
+                }`}
+                onClick={handleAddToCart}
+                disabled={isInCart}
+              >
+                {isInCart ? 'Added to cart' : 'Add to cart'}
+              </button>
 
-            <div
-              className={`product-details__favorite ${
-                favorites.includes(product.itemId) ? 'favorite--active' : ''
-              }`}
-              onClick={handleToggleFavorite}
-            >
-              <img
-                src={
-                  favorites.includes(product.itemId)
-                    ? './icons/heart-active.svg'
-                    : './icons/heart.svg'
-                }
-                alt="favorite"
-                className="product-details__favorite-icon"
-              />
+              <div
+                className={`product-details__favorite ${
+                  favorites.includes(product.itemId) ? 'favorite--active' : ''
+                }`}
+                onClick={handleToggleFavorite}
+              >
+                <img
+                  src={
+                    favorites.includes(product.itemId)
+                      ? './icons/heart-active.svg'
+                      : './icons/heart.svg'
+                  }
+                  alt="favorite"
+                  className="product-details__favorite-icon"
+                />
+              </div>
             </div>
           </div>
 
+          {/* Мини-спеки справа от фото */}
           <div className="product__tech-specs">
             <div className="product__specs-list">
               {'screen' in product && product.screen && (
@@ -414,6 +417,7 @@ export const ProductDetailsPage = () => {
         </div>
       </div>
 
+      {/* About + Tech specs */}
       <div className="product-details__bottom">
         {'description' in product && Array.isArray(product.description) && (
           <div className="product-details__description">
@@ -459,6 +463,7 @@ export const ProductDetailsPage = () => {
         </div>
       </div>
 
+      {/* You may also like */}
       <div className="related-products">
         <div className="related-products__header">
           <h2>You may also like</h2>

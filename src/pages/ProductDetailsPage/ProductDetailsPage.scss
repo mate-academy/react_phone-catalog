@@ -44,6 +44,7 @@
     margin-bottom: 16px;
   }
 
+  // 1. Заголовок: 1136x41, font 32px/800/41px
   &__title {
     width: 1136px;
     max-width: 100%;
@@ -67,6 +68,7 @@
     }
   }
 
+  // Название в breadcrumb (серый мелкий текст)
   &__id {
     font-size: 12px;
     font-weight: 700;
@@ -78,6 +80,7 @@
     max-width: 200px;
   }
 
+  // ID товара: 176x15, right align, справа вверху
   &__item-id {
     width: 176px;
     height: 15px;
@@ -107,6 +110,7 @@
     }
   }
 
+  // 3. Галерея: thumbnails 80x464, gap 16px
   &__gallery {
     display: flex;
     flex-direction: row;
@@ -140,6 +144,7 @@
     }
   }
 
+  // 4. Цвета: контейнер 320x55 (полоса 320px)
   &__colors {
     width: 320px;
     min-height: 55px;
@@ -162,6 +167,7 @@
     }
   }
 
+  // Available colors label: 98x15, font 12px/700
   &__label {
     font-size: 12px;
     font-weight: 700;
@@ -171,39 +177,59 @@
     margin-bottom: 8px;
   }
 
+  &__price-block {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-phone {
+      width: 100%;
+    }
+  }
+
   &__prices {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 16px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--border-color);
+
+    @include on-phone {
+      width: 100%;
+    }
   }
 
   &__price {
     font-size: 32px;
     font-weight: 800;
-    color: var(--text-color);
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #F1F2F9;
 
     &--old {
       font-size: 22px;
-      color: var(--text-muted);
-      text-decoration: line-through;
       font-weight: 600;
+      line-height: 100%;
+      letter-spacing: 0;
+      color: #75767F;
+      text-decoration: line-through;
     }
   }
 
   &__add-to-cart {
-    flex: 1;
-    padding: 0 16px;
+    width: 263px;
     height: 48px;
+    padding: 0;
     background-color: #905BFF;
-    color: white;
+    color: #F1F2F9;
     border: none;
     font-size: 14px;
     font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0;
+    text-align: center;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    flex-shrink: 0;
 
     &.added {
       background-color: #3B3E4A;
@@ -261,12 +287,15 @@
   &__tech-specs {
     flex: 1;
     max-width: 560px;
+  }
 
+  &__description {
     & h2 {
       font-size: 22px;
       font-weight: 800;
-      color: var(--text-color);
-      margin-bottom: 16px;
+      line-height: 140%;
+      color: #F1F2F9;
+      margin: 0 0 16px 0;
       padding-bottom: 16px;
       border-bottom: 1px solid var(--border-color);
     }
@@ -274,37 +303,67 @@
     & h3 {
       font-size: 20px;
       font-weight: 700;
-      color: var(--text-color);
-      margin: 16px 0 8px;
-      line-height: 100%;
+      color: #F1F2F9;
+      margin: 32px 0 16px;
+      line-height: 26px;
     }
 
     & p {
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 500;
       line-height: 21px;
-      color: var(--text-muted);
-      margin-bottom: 12px;
+      color: #75767F;
+      margin: 0 0 16px 0;
     }
   }
 
   &__tech-specs {
+    flex: 1;
+    max-width: 512px;
+    box-sizing: border-box;
+
+    & h2 {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 140%;
+      letter-spacing: 0;
+      color: #F1F2F9;
+      margin: 0 0 16px 0;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    & > div {
+      padding: 0;
+    }
+
     & p {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       font-size: 14px;
-      color: var(--text-muted);
+      font-weight: 600;
+      line-height: 21px;
+      letter-spacing: 0;
       padding: 8px 0;
-      margin-bottom: 0;
+      margin: 0;
+
+      & span:first-child {
+        color: #75767F;
+        flex-shrink: 0;
+      }
 
       & span:last-child {
-        color: var(--text-color);
+        color: #F1F2F9;
         font-weight: 600;
+        text-align: right;
+        margin-left: 16px;
       }
     }
   }
 }
 
+// 3. Галерея - thumbnails контейнер: 80x464, gap 16px
 .gallery {
   &__thumbnails {
     display: flex;
@@ -320,6 +379,7 @@
     }
   }
 
+  // Большое фото: 464x464
   &__main-image {
     width: 464px;
     height: 464px;
@@ -339,6 +399,7 @@
     }
 
     & img {
+      // Само фото: 442x442
       width: 442px;
       height: 442px;
       object-fit: contain;
@@ -357,6 +418,7 @@
   }
 }
 
+// Одна миниатюра: 78x78
 .thumbnail {
   width: 78px;
   height: 78px;
@@ -381,6 +443,7 @@
   }
 }
 
+// 4. Кружки цветов: 32x32
 .color-options {
   display: flex;
   gap: 8px;
@@ -697,9 +760,12 @@
 }
 
 .product__tech-specs {
-  margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px solid var(--border-color);
+  width: 320px;
+  margin-top: 0;
+
+  @include on-phone {
+    width: 100%;
+  }
 
   .product__specs-list {
     display: flex;
@@ -709,22 +775,27 @@
   .product__spec {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 8px 0;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
-    border-bottom: 1px solid var(--border-color);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0;
+
+    &:first-child {
+      padding-top: 0;
+    }
 
     &:last-child {
-      border-bottom: none;
+      padding-bottom: 0;
     }
 
     .product__spec-title {
-      color: var(--text-muted);
+      color: #75767F;
     }
 
     .product__spec-value {
-      color: var(--text-color);
+      color: #F1F2F9;
       text-align: right;
     }
   }
