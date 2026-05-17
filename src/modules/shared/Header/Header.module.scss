@@ -1,0 +1,243 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  min-height: $header-height-mobile;
+  background-color: $color-white;
+
+  border-bottom: 1px solid $color-elements;
+
+  @include media-down($breakpoint-tablet) {
+    justify-content: space-between;
+  }
+
+  @include media-up($breakpoint-desktop) {
+    min-height: $header-height-desktop;
+  }
+}
+
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+  padding-inline: $spacing-md;
+  margin-right: $spacing-md;
+
+  @include media-up($breakpoint-desktop) {
+    padding-inline: $spacing-lg;
+    margin-right: $spacing-lg;
+  }
+}
+
+.logo {
+  display: block;
+  width: $logo-width-mobile;
+  height: auto;
+
+  @include media-up($breakpoint-desktop) {
+    width: $logo-width-desktop;
+  }
+}
+
+.menuButton {
+  width: $spacing-2xl;
+  height: $spacing-2xl;
+  background: none;
+
+  border: none;
+  border-left: 1px solid $color-elements;
+  cursor: pointer;
+
+  @include flex-center;
+
+  @include media-up($breakpoint-tablet) {
+    display: none;
+  }
+}
+
+.nav {
+  position: absolute;
+  top: $header-height-mobile + 1px; // 1px for border
+  right: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - #{$header-height-mobile} - 1px);
+
+  background-color: $color-white;
+  transition: transform $transition-base;
+  transform: translateX(-100%);
+
+  @include media-up($breakpoint-tablet) {
+    position: static;
+    flex: 1;
+    flex-direction: row;
+    align-self: stretch;
+    height: auto;
+
+    transform: translateX(0);
+  }
+}
+
+.navMobileOpen {
+  transform: translateX(0);
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  padding: $spacing-md 0;
+  margin: 0;
+  list-style: none;
+
+  @include media-up($breakpoint-tablet) {
+    flex-direction: row;
+    gap: $spacing-xl;
+    padding: 0;
+  }
+
+  @include media-up($breakpoint-desktop) {
+    gap: $spacing-3xl;
+  }
+}
+
+.navItem {
+  @include flex-center;
+}
+
+.navLink {
+  display: block;
+  padding-top: $spacing-sm;
+  padding-bottom: $spacing-sm;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $color-secondary;
+
+  @include media-up($breakpoint-tablet) {
+    height: 100%;
+
+    @include flex-center;
+  }
+}
+
+.navLinkActive {
+  position: relative;
+  color: $color-primary;
+
+  @include media-up($breakpoint-tablet) {
+    &::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background-color: $color-primary;
+      content: '';
+    }
+  }
+}
+
+.headerActionsList {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  margin: auto 0 0;
+  border-top: 1px solid $color-elements;
+  list-style: none;
+
+  @include media-up($breakpoint-tablet) {
+    width: auto;
+    margin-top: 0;
+    margin-left: auto;
+    border: none;
+  }
+}
+
+.headerActionsItem {
+  flex: 1 1 0;
+
+  @include flex-center;
+
+  @include media-down($breakpoint-tablet) {
+    min-height: $spacing-3xl;
+
+    &:not(:first-child) {
+      border-left: 1px solid $color-elements;
+    }
+  }
+
+  @include media-up($breakpoint-tablet) {
+    width: $spacing-2xl;
+    border-left: 1px solid $color-elements;
+  }
+
+  @include media-up($breakpoint-desktop) {
+    width: $spacing-3xl;
+  }
+}
+
+.headerActionsLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: $color-primary;
+
+  > span:first-child {
+    @include visually-hidden;
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 $spacing-xs;
+  background: $color-error;
+  border: 1px solid $color-white;
+  border-radius: 8px;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 14px;
+  text-align: center;
+  color: $color-white;
+  box-sizing: border-box;
+}
+
+.headerActionsLinkActive {
+  position: relative;
+  color: $color-primary;
+
+  &::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background-color: $color-primary;
+    content: '';
+
+    @include media-up($breakpoint-tablet) {
+      height: 3px;
+    }
+  }
+}

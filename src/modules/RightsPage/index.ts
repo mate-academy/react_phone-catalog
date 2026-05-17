@@ -1,0 +1,1 @@
+export { RightsPage } from './RightsPage';

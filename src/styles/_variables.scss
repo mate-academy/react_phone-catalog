@@ -1,0 +1,55 @@
+// Colors
+$color-primary: #313237;
+$color-secondary: #89939a;
+$color-icons: #b4bdc3;
+$color-elements: #e2e6e9;
+$color-bg: #fafbfc;
+$color-white: #fff;
+$color-border: #e2e6e9;
+$color-hover: #dcdfe1;
+$color-error: #eb5757;
+$color-success: #27ae60;
+
+// Typography
+$font-family-base: 'Mont', 'Helvetica Neue', Arial, sans-serif;
+$font-size-base: 16px;
+$line-height-base: 1.5;
+
+// Breakpoints
+$breakpoint-mobile: 320px;
+$breakpoint-tablet: 640px;
+$breakpoint-desktop: 1200px;
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-2xl: 48px;
+$spacing-3xl: 64px;
+
+// Layout
+$content-max-width: 1200px;
+$content-padding-mobile: 16px;
+$content-padding-tablet: 24px;
+$content-padding-desktop: 32px;
+
+// Transitions
+$transition-base: 0.3s ease;
+
+// Grid
+$grid-gutter: 16px;
+$grid-columns-mobile: 4;
+$grid-columns-tablet: 12;
+$grid-columns-desktop: 24;
+$grid-padding-mobile: 16px;
+$grid-padding-tablet: 24px;
+$grid-desktop-container: 1200px;
+$grid-desktop-column-width: 32px;
+
+// Elements
+$header-height-mobile: 48px;
+$header-height-desktop: 64px;
+$logo-width-mobile: 64px;
+$logo-width-desktop: 80px;

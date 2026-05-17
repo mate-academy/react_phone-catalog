@@ -1,0 +1,31 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.container {
+  padding-bottom: $spacing-3xl;
+
+  @include content-width;
+}
+
+.title {
+  margin-bottom: $spacing-xl;
+}
+
+.section {
+  margin-bottom: $spacing-xl;
+}
+
+.sectionTitle {
+  margin-bottom: $spacing-sm;
+  color: $color-primary;
+}
+
+.link {
+  text-decoration: underline;
+  color: $color-primary;
+  transition: opacity $transition-base;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
