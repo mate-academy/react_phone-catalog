@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { Pagination } from '../Pagination';
 import { ProductCard } from '../ProductCard';
 import { Breadcrumbs } from './Breadcrumbs';
@@ -71,22 +71,8 @@ export const Catalog: FC<Props> = ({
   // Pagination logic can be added here in the future
 
   const perPage = +(searchParams.get('sortPage') || '16');
-
   const currentPage = +(searchParams.get('currentPage') || 1);
-
   const sortByName = searchParams.get('sortBy') || SortBy.Newest;
-
-  useEffect(() => {
-    setSearchParams(prev => {
-      const params = new URLSearchParams(prev);
-
-      params.set('currentPage', currentPage.toString());
-
-      return params;
-    });
-  }, [currentPage]);
-
-  /* eslint-disable @typescript-eslint/indent */
 
   const sortedProducts = sortBy(sortByName, products);
   const firstItemIndex = (currentPage - 1) * perPage;
