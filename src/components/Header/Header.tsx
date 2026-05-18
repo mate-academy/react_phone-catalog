@@ -54,7 +54,7 @@ export const Header: React.FC = () => {
     <header className="header">
       <div className="header__left">
         <Link to="/" className="header__logo">
-          <img src="img/icons/logo.svg" alt="Logo" />
+          <img src="img/logo.png" alt="Logo" className="header__logo-img" />
         </Link>
 
         <nav className="nav">

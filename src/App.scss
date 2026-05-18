@@ -18,16 +18,24 @@ a {
 .container {
   width: 100%;
   max-width: none;
-  margin: 0;
+  margin: 0 auto;
+
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @media screen and (min-width: 640px) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 
   @media screen and (min-width: 1200px) {
-    padding-right: 32px;
     padding-left: 32px;
+    padding-right: 32px;
   }
 
   @media screen and (min-width: 1440px) {
-    padding-right: 152px;
     padding-left: 152px;
+    padding-right: 152px;
   }
 }
 
@@ -38,6 +46,11 @@ body {
   background-color: #0f1117;
   color: #f1f2f9;
   font-family: Mont, sans-serif;
+}
+
+body.is-menu-open {
+  overflow: hidden;
+  height: 100vh;
 }
 
 /* stylelint-disable-next-line selector-max-id */
