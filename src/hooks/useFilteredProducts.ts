@@ -9,10 +9,7 @@ export function useFilteredProducts(
   sortBy: string,
 ): Product[] {
   return useMemo(() => {
-    const queryTerms = query
-      .toLowerCase()
-      .split(/\s+/)
-      .filter(Boolean);
+    const queryTerms = query.toLowerCase().split(/\s+/).filter(Boolean);
 
     const result = products.filter(p => {
       if (category !== '' && p.category !== category) {
