@@ -1,0 +1,126 @@
+@use "../../../shared/utils/mixins" as mix;
+@use "../../../shared/utils/vars" as vars;
+
+.cart {
+  &__item {
+    color: vars.$c-grayPrimary;
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    border-bottom: 1px solid vars.$c-grayElements;
+    margin-bottom: 16px;
+
+
+    @include mix.on-tablette {
+      grid-column: span 12;
+      flex-direction: row;
+    }
+
+    @include mix.on-desktop {
+      grid-column: 1 / 17;
+    }
+  }
+
+  &__items_container {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    width: 100%;
+    justify-content: start;
+
+    &--2 {
+      justify-content: space-between;
+    }
+  }
+
+  &__qnty_container {
+    height: 32px;
+    width: 96px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__item_price {
+    font-weight: 800;
+    font-size: 22px;
+  }
+
+  &__checkout {
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    @include mix.on-tablette {
+      grid-column: span 12;
+    }
+
+    @include mix.on-desktop {
+      grid-column: 17 / 25;
+      grid-row: 3 / 6;
+    }
+  }
+
+  &__checkout_btn {
+    width: 90%;
+    height: 48px;
+    background-color: vars.$c-grayPrimary;
+    color: vars.$c-white;
+  }
+
+  &__checkout_amnt {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    text-align: center;
+   margin-bottom: 16px;
+  }
+
+  &__remove_btn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  &__image_container {
+    padding: 5px;
+    width: 80px;
+    border: 1px solid vars.$c-green;
+    aspect-ratio: 1 / 1;
+
+    @include mix.photo-container;
+  }
+
+  &__image {
+    @include mix.photo;
+
+    transition: transform vars.$transitionDuration;
+
+    &:hover {
+      transform: scale(vars.$hoverScaleSize);
+    }
+  }
+
+  &__checkout_amnt_text {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: vars.$c-graySecondary;
+    padding-bottom: 16px;
+    border-bottom: 1px solid vars.$c-grayElements;
+  }
+
+  &__btn_container {
+    border: 1px solid vars.$c-grayElements;
+    width: 32px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: vars.$c-graySecondary;
+  }
+}
