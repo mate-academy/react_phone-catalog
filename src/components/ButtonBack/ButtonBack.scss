@@ -1,0 +1,17 @@
+@use '../../styles/main' as *;
+
+.back {
+  padding-bottom: 24px;
+  display: flex;
+  column-gap: 10px;
+  padding-inline: 10px;
+  cursor: pointer;
+
+  @include tablet-above {
+    padding-bottom: 16px;
+  }
+
+
+
+
+}
