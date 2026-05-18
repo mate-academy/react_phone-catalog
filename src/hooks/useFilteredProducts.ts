@@ -9,11 +9,24 @@ export function useFilteredProducts(
   sortBy: string,
 ): Product[] {
   return useMemo(() => {
-    const result = products.filter(
-      p =>
-        (category === '' || p.category === category) &&
-        (query === '' || p.name.toLowerCase().includes(query.toLowerCase())),
-    );
+    const queryTerms = query
+      .toLowerCase()
+      .split(/\s+/)
+      .filter(Boolean);
+
+    const result = products.filter(p => {
+      if (category !== '' && p.category !== category) {
+        return false;
+      }
+
+      if (queryTerms.length === 0) {
+        return true;
+      }
+
+      const name = p.name.toLowerCase();
+
+      return queryTerms.every(term => name.includes(term));
+    });
 
     switch (sortBy) {
       case SortBy.Alpha:

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import styles from './MainSlider.module.scss';
 import { ArrowButton } from '../../../../shared/atoms/ArrowButton';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -7,6 +8,9 @@ import { ResponsiveImage } from '../../../../shared/atoms/ResponsiveImage';
 import classNames from 'classnames';
 
 export const MainSlider: React.FC = () => {
+  const { t } = useTranslation();
+  const bannerAlt = t('alt.banner');
+
   return (
     <div className={styles.slider}>
       <ArrowButton
@@ -41,7 +45,7 @@ export const MainSlider: React.FC = () => {
         >
           <SwiperSlide>
             <ResponsiveImage
-              alt="Phone advertisement"
+              alt={bannerAlt}
               desktopSrc="images/banner-slider-1-desktop.png"
               tabletSrc="images/banner-slider-1-desktop.png"
               mobileSrc="images/banner-slider-1-mobile.png"
@@ -49,7 +53,7 @@ export const MainSlider: React.FC = () => {
           </SwiperSlide>
           <SwiperSlide>
             <ResponsiveImage
-              alt="Phone advertisement"
+              alt={bannerAlt}
               desktopSrc="images/banner-slider-2-desktop.png"
               tabletSrc="images/banner-slider-2-desktop.png"
               mobileSrc="images/banner-slider-2-mobile.png"
@@ -57,7 +61,7 @@ export const MainSlider: React.FC = () => {
           </SwiperSlide>
           <SwiperSlide>
             <ResponsiveImage
-              alt="Phone advertisement"
+              alt={bannerAlt}
               desktopSrc="images/banner-slider-3-desktop.png"
               tabletSrc="images/banner-slider-3-desktop.png"
               mobileSrc="images/banner-slider-3-mobile.png"

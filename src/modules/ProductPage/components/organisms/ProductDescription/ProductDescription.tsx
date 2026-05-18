@@ -5,13 +5,19 @@ import { Divider } from '../../../../shared/atoms/Divider';
 import { Typography } from '../../../../shared/atoms/Typography';
 import { ProductDetails } from '../../../../../types/ProductDetails';
 import { useTranslation } from 'react-i18next';
+import { descriptionsUa } from '../../../../../i18n/descriptions.ua';
 
 type Props = {
   productDetails: ProductDetails;
 };
 
 const ProductDescriptionComponent: React.FC<Props> = ({ productDetails }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const localizedDescription =
+    i18n.language === 'ua' && descriptionsUa[productDetails?.namespaceId]
+      ? descriptionsUa[productDetails.namespaceId]
+      : productDetails?.description;
 
   return (
     <div
@@ -28,7 +34,7 @@ const ProductDescriptionComponent: React.FC<Props> = ({ productDetails }) => {
       <div className={styles.about__body}>
         <Divider />
 
-        {productDetails?.description.map(article => (
+        {localizedDescription?.map(article => (
           <article key={article.title} className={styles.article}>
             <Typography variant="h4" tag="h4" className={styles.article__title}>
               {article.title}

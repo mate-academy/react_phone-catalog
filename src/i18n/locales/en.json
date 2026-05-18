@@ -73,7 +73,15 @@
     },
     "about": {
       "title": "About this product"
-    }
+    },
+    "notFound": "Product not found"
+  },
+  "homePage": {
+    "title": "Product Catalog"
+  },
+  "loading": "Loading...",
+  "alt": {
+    "banner": "Phone advertisement"
   },
   "home": {
     "title": "Welcome to Nice Gadgets store!",

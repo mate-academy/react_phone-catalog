@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import styles from './ProductPage.module.scss';
 import { useParams } from 'react-router-dom';
 import { generateDeviceModel } from '../../helpers/generateDeviceModel';
@@ -20,6 +21,7 @@ import { PageMessage } from '../shared/molecules/PageMessage';
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams();
+  const { t } = useTranslation();
 
   const { products, error } = useAppSelector(state => state.products);
 
@@ -38,7 +40,7 @@ export const ProductPage: React.FC = () => {
   const productModel = generateDeviceModel(productId!);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [productId]);
 
   if (error) {
@@ -61,7 +63,7 @@ export const ProductPage: React.FC = () => {
       </Typography>
 
       {!productDetails ? (
-        <PageMessage title={'Product not found'} />
+        <PageMessage title={t('product.notFound')} />
       ) : (
         <div className={styles.product}>
           <ProductGallery productDetails={productDetails} />

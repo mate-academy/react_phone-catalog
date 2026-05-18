@@ -26,7 +26,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className={styles.page}>
-      <h1 className={styles.hidden}>Product Catalog</h1>
+      <h1 className={styles.hidden}>{t('homePage.title')}</h1>
       <div className={styles.page__content}>
         <Typography variant="h1" tag="h2" className={styles.page__title}>
           {t('home.title')}
