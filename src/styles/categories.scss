@@ -1,0 +1,99 @@
+
+@import '../utils/mixins';
+
+.categories {
+  @include on-desktop {
+    margin-bottom: 0;
+  }
+
+  &__blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      display: flex;
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      display: flex;
+      gap: 16px;
+    }
+  }
+  &__title {
+    margin-bottom: 25px;
+  }
+}
+
+.category {
+  flex: 0 0 calc(33.33% - 11px);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transition: transform 0.3s ease;
+    transform: scale(1.01);
+  }
+
+  &__title {
+    margin: 0;
+    font-family: 'Mont regular', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    margin-bottom: 4px;
+  }
+
+  &__sub-title {
+    margin: 0;
+    color: #75767F;
+    font-family: 'Mont regular', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__image {
+    aspect-ratio: 1 / 1;
+    height: 100%;
+
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: left;
+    justify-content: right;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      aspect-ratio: 0;
+      width: 100%;
+      height: 61.5%;
+    }
+  }
+
+  &__img {
+    margin-left: 100px;
+    margin-top: 60px;
+
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: scale-down; // or 'cover' if you want to fill the block
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transition: transform 0.3s ease;
+      transform: scale(1.05);
+    }
+  }
+
+  &-pink {
+    background-color: #6D6474;
+  }
+  &-grey {
+    background-color: #8D8D92;
+  }
+  &-purple {
+    background-color: #973D5F;
+  }
+}

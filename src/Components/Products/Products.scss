@@ -1,0 +1,259 @@
+@import '../../utils/mixins';
+
+.products {
+  &-phones {
+    position: relative;
+    display: flex;
+    gap: 24px;
+    overflow: hidden;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  &__bottom {
+    position: relative;
+    bottom: 0;
+  }
+
+  &-container {
+    padding-top: 32px;
+    padding-inline: 32px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 100%;
+  }
+
+  &-phone {
+    cursor: pointer;
+    flex: 1 1 calc((100% - 48px) / 3);
+
+    color: #F1F2F9;
+    text-decoration: none;
+
+    @include on-desktop {
+      flex: 1 1 calc((100% - 72px) / 4);
+    }
+
+    background-color: #161827;
+    border: 1px solid #161827;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.5s;
+
+    &:hover {
+      border: 1px solid #323542;
+      transition: 0.7s;
+    }
+  }
+
+  &-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+
+    margin-bottom: 16px;
+  }
+
+  &-image {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &-title {
+    margin: 0;
+    margin-bottom: 8px;
+
+    font-family: 'Mont Regular', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    width: 180px;
+  }
+
+  &-price {
+    display: flex;
+
+    align-items: center;
+
+    font-family: 'Mont SemiBold', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+
+    gap: 8px;
+
+    &-span {
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 100%;
+      text-decoration: line-through;
+      color: #89939A;
+    }
+  }
+
+  &-string {
+    margin-top: 10px;
+    width: 100%;
+    height: 1px;
+    background-color: #3B3E4A;
+  }
+
+  &-text {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    color: #75767F;
+    font-family: 'Mont Regular', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+
+    &__first {
+      margin-top: 16px;
+    }
+  }
+
+  &-info {
+    margin-bottom: 16px;
+  }
+
+  &-span {
+    color: #F1F2F9;
+  }
+
+  &-buttons {
+    display: flex;
+    gap: 8px;
+
+    padding-bottom: 32px;
+  }
+
+  &__link {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  &-fav {
+    cursor: pointer;
+    display: flex;
+    height: 40px;
+    width: 54px;
+
+    background-color: #323542;
+    border: 1px solid #3B3E4A;
+
+    justify-content: center;
+
+    text-decoration: none;
+    align-items: center;
+
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #4A4D58;
+      transition: 0.3s;
+    }
+
+    &-active {
+      background-color: transparent;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+
+    &__img {
+      height: 16px;
+    }
+
+    &__button {
+      border: none;
+
+      background-color: inherit;
+    }
+  }
+
+  &-cart {
+    border: none;
+    height: 40px;
+    width: 100%;
+    background-color: #905BFF;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #A378FF;
+      transition: 0.3s;
+    }
+
+    &__text {
+      margin: 0;
+      font-family: Mont, sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+      color: #F1F2F9;
+    }
+
+    &-active {
+      background-color: #323542;
+
+      &:hover {
+        background-color: #323542;
+      }
+    }
+
+    &__link {
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      text-decoration: none;
+
+      width: 100%;
+      height: 40px;
+    }
+  }
+
+  &-arr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-arrows {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &-arrow {
+    cursor: pointer;
+    border: 0;
+    height: 32px;
+    width: 32px;
+    background-color: #323542;
+  }
+}
