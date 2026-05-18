@@ -25,11 +25,10 @@
 }
 
 .navList {
-  margin-right: auto;
   display: flex;
   list-style: none;
-  margin: 0;
-  // gap: 24px;
+  margin: 0 auto 0;
+  gap: 40px;
   align-items: center;
 }
 
@@ -41,24 +40,26 @@
   text-transform: uppercase;
   text-decoration: none;
   font-weight: 800;
-  line-height: 11px;
+  line-height: 64px;
   letter-spacing: 4%;
+  cursor: pointer;
 }
 
 .actionsIcon {
   // box-sizing: border-box;
   display: flex;
   margin-left: auto;
-  border-left: 1px solid #E2E6E9;
 }
 
 .icon {
-  margin: 32px 24px;
-  color: #313237;
+  cursor: pointer;
+  padding: 32px 24px;
+  // color: #313237;
   position: relative;
   display: block;
   height: 16px;
   width: 16px;
+  border-left: 1px solid #E2E6E9;
 }
 
 .iconImgCart,
@@ -69,26 +70,36 @@
 
 }
 
-.actionsIconMob {
-    @include on-tablet {
-      display: none;
-}
-    @include on-desktop {
-      display: none;
-}
-}
+// .actionsIconMob {
+//     @include on-tablet {
+//       display: none;
+// }
+//     @include on-desktop {
+//       display: none;
+// }
+// }
 
-.BurgerMenu {
-  // position: relative;
-  // z-index: 100;
+.burgerMenu {
+  position: relative;
+  z-index: 100;
   background: none;
   border: none;
   padding: 8px;
   cursor: pointer;
+
   .iconImgBurgerMob {
     display: block;
     height: 16px;
     width: 16px;
+  }
+}
+
+.burgerMenuMaxWidth {
+  display: none;
+@media (max-width: 639px) {
+    .menu {
+      display: block;
+    }
   }
 }
 

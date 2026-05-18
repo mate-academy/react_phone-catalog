@@ -73,9 +73,11 @@ export const Header: React.FC<Props> = ({
           {cartCount > 0 && <span className="badge">{cartCount}</span>}
         </NavLink>
       </div>
-      <button className={styles.BurgerMenu} onClick={menu.toggleMenu}>
-        <img src="/img/burger-mob.svg" alt="BurgerMenu" />
-      </button>
+      <div className={styles.burgerMenuMaxWidth}>
+        <button className={styles.burgerMenu} onClick={menu.toggleMenu}>
+          <img src="/img/burger-mob.svg" alt="BurgerMenu" />
+        </button>
+      </div>
       {menu.isMenuOpen && <Asaid onClose={menu.closeMenu} />}
     </header>
   );

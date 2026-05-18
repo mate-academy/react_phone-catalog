@@ -42,14 +42,14 @@
   padding: 0;
   margin: 0;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .navItem {
   padding: 16px 0;
+    }
 
-
-
-  .navLink {
+ .navLink {
     display: block;
     color: #89939a;
     text-transform: uppercase;
@@ -59,12 +59,11 @@
     line-height: 11px;
     letter-spacing: 1px;
 
-
-    .navLinkisActive {
-      color: #313237;
-    }
   }
-}
+    // .navLinkisActive {
+    //   color: #313237;
+    // }
+
 
 .closeBtn {
   background: none;
@@ -79,6 +78,9 @@
 
 .actionsIconMenu {
   display: flex;
+  position: absolute;
+  bottom: 0;
+
   gap: 16px;
   margin-top: auto;
 }
@@ -86,4 +88,31 @@
 .icon {
   display: block;
   padding: 8px;
+    height: 16px;
+      width: 16px;
+      border-left: 1px solid #E2E6E9;
+
+      // padding: 32px 24px;
+      // color: #313237;
+      // position: relative;
+
+}
+
+.is-active {
+  position: relative;
+  color: #313237;
+  }
+
+a:hover {
+  color: #313237;
+  }
+
+.is-active::after {
+  content: ' ';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  border-radius: 8px;
 }
