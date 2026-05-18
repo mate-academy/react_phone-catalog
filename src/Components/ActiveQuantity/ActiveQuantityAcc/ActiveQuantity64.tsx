@@ -2,6 +2,7 @@ import React from 'react';
 import { ProductCard } from '../../ProductCard/ProductCard';
 import { Products } from '../../../types/Products';
 import { Accessorie } from '../../../types/Accessories';
+import { getImagePath } from '../../../utils/paths';
 
 type ActiveQuantity64Props = {
   activeQuantity: number;
@@ -23,7 +24,7 @@ export const ActiveQuantity64: React.FC<ActiveQuantity64Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={phone.images?.[0] ?? '/img/placeholder.png'}
+                  src={getImagePath(phone.images?.[0])}
                   alt=""
                   className="page__models-image"
                 />
@@ -54,7 +55,7 @@ export const ActiveQuantity64: React.FC<ActiveQuantity64Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={phone.images?.[0] ?? '/img/placeholder.png'}
+                  src={getImagePath(phone.images?.[0])}
                   alt=""
                   className="page__models-image"
                 />
@@ -85,7 +86,7 @@ export const ActiveQuantity64: React.FC<ActiveQuantity64Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={phone.images?.[0] ?? '/img/placeholder.png'}
+                  src={getImagePath(phone.images?.[0])}
                   alt=""
                   className="page__models-image"
                 />
@@ -116,7 +117,7 @@ export const ActiveQuantity64: React.FC<ActiveQuantity64Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={phone.images?.[0] ?? '/img/placeholder.png'}
+                  src={getImagePath(phone.images?.[0])}
                   alt=""
                   className="page__models-image"
                 />

@@ -2,6 +2,7 @@ import React from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Phone } from '../../types/Phone';
 import { Products } from '../../types/Products';
+import { getImagePath } from '../../utils/paths';
 
 type ActiveQuantity32Props = {
   activeQuantity: number;
@@ -23,7 +24,7 @@ export const ActiveQuantity32: React.FC<ActiveQuantity32Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={phone.images?.[0] ?? '/img/placeholder.png'}
+                  src={getImagePath(phone.images?.[0])}
                   alt=""
                   className="page__models-image"
                 />
@@ -54,7 +55,7 @@ export const ActiveQuantity32: React.FC<ActiveQuantity32Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={phone.images?.[0] ?? '/img/placeholder.png'}
+                  src={getImagePath(phone.images?.[0])}
                   alt=""
                   className="page__models-image"
                 />
@@ -85,7 +86,7 @@ export const ActiveQuantity32: React.FC<ActiveQuantity32Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={phone.images?.[0] ?? '/img/placeholder.png'}
+                  src={getImagePath(phone.images?.[0])}
                   alt=""
                   className="page__models-image"
                 />
@@ -116,7 +117,7 @@ export const ActiveQuantity32: React.FC<ActiveQuantity32Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={phone.images?.[0] ?? '/img/placeholder.png'}
+                  src={getImagePath(phone.images?.[0])}
                   alt=""
                   className="page__models-image"
                 />

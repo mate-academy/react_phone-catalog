@@ -7,6 +7,7 @@ import Home from '../../images/icons/Home.svg';
 import { Filter, FilterValue, ItemQuantity } from '../Filter/Filter';
 
 import { getPhones } from '../../api/api';
+import { getImagePath } from '../../utils/paths';
 
 // import { phones } from '../../api/api';
 
@@ -34,8 +35,7 @@ export const Phones = () => {
   const [, setLoading] = useState(true);
   const [, setErrorMessage] = useState('');
 
-  const normalize = (src?: string) =>
-    src ? (src.startsWith('/') ? src : `/${src}`) : '/img/placeholder.png';
+  const normalize = (src?: string) => getImagePath(src);
 
   const mapPhoneToProduct = (p: Phone): Products => ({
     id: String(p.id),

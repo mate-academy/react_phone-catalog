@@ -3,6 +3,7 @@ import { ProductCard } from '../../ProductCard/ProductCard';
 import { Products } from '../../../types/Products';
 import { Accessorie } from '../../../types/Accessories';
 import { Link } from 'react-router-dom';
+import { getImagePath } from '../../../utils/paths';
 
 type ActiveQuantity16Props = {
   activeQuantity: number;
@@ -28,7 +29,7 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={phone.images?.[0] ?? '/img/placeholder.png'}
+                  src={getImagePath(phone.images?.[0])}
                   alt=""
                   className="page__models-image"
                 />
@@ -63,7 +64,7 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={phone.images?.[0] ?? '/img/placeholder.png'}
+                  src={getImagePath(phone.images?.[0])}
                   alt=""
                   className="page__models-image"
                 />
@@ -98,7 +99,7 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={phone.images?.[0] ?? '/img/placeholder.png'}
+                  src={getImagePath(phone.images?.[0])}
                   alt=""
                   className="page__models-image"
                 />
@@ -133,7 +134,7 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={phone.images?.[0] ?? '/img/placeholder.png'}
+                  src={getImagePath(phone.images?.[0])}
                   alt=""
                   className="page__models-image"
                 />

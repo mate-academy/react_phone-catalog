@@ -9,6 +9,7 @@ import './Favourites.scss';
 import { Link } from 'react-router-dom';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Aside } from '../Aside/Aside';
+import { getImagePath } from '../../utils/paths';
 
 export const Favourites = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -51,7 +52,7 @@ export const Favourites = () => {
                 <div className="page__models-container">
                   <div className="page__models-img">
                     <img
-                      src={item.product.image ?? '/img/placeholder.png'}
+                      src={getImagePath(item.product.image)}
                       alt=""
                       className="page__models-image"
                     />

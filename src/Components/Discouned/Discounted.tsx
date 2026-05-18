@@ -2,6 +2,7 @@ import { Discounted } from '../../types/Discounted';
 import { ProductCard } from '../ProductCard/ProductCard';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getImagePath } from '../../utils/paths';
 
 type Props = {
   DiscountedProducts: Discounted[];
@@ -18,7 +19,7 @@ export const Discount: React.FC<Props> = ({ DiscountedProducts }) => {
         >
           <div className="products-container">
             <div className="products-img">
-              <img src={product.image} alt="" className="products-image" />
+              <img src={getImagePath(product.image)} alt="" className="products-image" />
             </div>
             <p className="products-title">{product.name} (MQ0G3)</p>
             <span className="products-price">
