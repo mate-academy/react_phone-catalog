@@ -28,7 +28,7 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={`img/${phone.images?.[0]}`}
+                  src={`${phone.images?.[0]}`}
                   alt=""
                   className="page__models-image"
                 />
@@ -63,7 +63,7 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={`img/${phone.images?.[0]}`}
+                  src={`${phone.images?.[0]}`}
                   alt=""
                   className="page__models-image"
                 />
@@ -98,7 +98,7 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={`img/${phone.images?.[0]}`}
+                  src={`${phone.images?.[0]}`}
                   alt=""
                   className="page__models-image"
                 />
@@ -133,7 +133,7 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={`img/${phone.images?.[0]}`}
+                  src={`${phone.images?.[0]}`}
                   alt=""
                   className="page__models-image"
                 />
