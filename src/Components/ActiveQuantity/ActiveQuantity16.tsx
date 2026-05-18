@@ -17,12 +17,16 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
   phones,
   mapPhoneToProduct,
 }) => {
-  const normalizeImage = (path: string) => {
-    const cleanPath = path
-      .replace(/^\/?react_phone-catalog\/?/, '')
-      .replace(/^\/+/, '');
+  const normalizeImage = (image: string | undefined) => {
+    if (!image) {
+      return '';
+    }
 
-    return `${import.meta.env.BASE_URL}${cleanPath}`;
+    if (image.startsWith('http')) {
+      return image;
+    }
+
+    return getImagePath(image);
   };
 
   return (
