@@ -51,7 +51,7 @@ export const Favourites = () => {
                 <div className="page__models-container">
                   <div className="page__models-img">
                     <img
-                      src={import.meta.env.BASE_URL + item.product.image}
+                      src={item.product.image}
                       alt=""
                       className="page__models-image"
                     />

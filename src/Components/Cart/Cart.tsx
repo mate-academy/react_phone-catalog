@@ -68,7 +68,7 @@ export const Cart = () => {
                     <div className="cart__img">
                       <img
                         className="cart__image"
-                        src={import.meta.env.BASE_URL + item.product.image}
+                        src={item.product.image}
                         alt=""
                       />
                     </div>
