@@ -3,7 +3,6 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { Phone } from '../../types/Phone';
 import { Products } from '../../types/Products';
 import { Link } from 'react-router-dom';
-import { getImagePath } from '../../utils/paths';
 
 type ActiveQuantity16Props = {
   activeQuantity: number;
@@ -17,18 +16,6 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
   phones,
   mapPhoneToProduct,
 }) => {
-  const normalizeImage = (image: string | undefined) => {
-    if (!image) {
-      return '';
-    }
-
-    if (image.startsWith('http')) {
-      return image;
-    }
-
-    return getImagePath(image);
-  };
-
   return (
     <div className="page__models-phones phones__grid">
       {activePage === 0 &&
@@ -41,7 +28,7 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={`${import.meta.env.BASE_URL}img/${phone.images?.[0]}`}
+                  src={`${import.meta.env.BASE_URL}/img/${phone.images?.[0]}`}
                   alt=""
                   className="page__models-image"
                 />
