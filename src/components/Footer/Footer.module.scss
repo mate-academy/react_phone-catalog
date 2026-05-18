@@ -1,0 +1,10 @@
+// src/components/Footer/Footer.module.scss - Styles for the footer component
+@use '../../styles/app' as *;
+
+.root {
+  @extend %footer;
+}
+
+.inner {
+  @extend %footer-inner;
+}
