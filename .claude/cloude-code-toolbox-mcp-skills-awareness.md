@@ -1,6 +1,6 @@
 # Cloude Code ToolBox — MCP & Skills awareness
 
-_Generated: 2026-05-18T09:50:26.214Z_
+_Generated: 2026-05-18T10:04:17.979Z_
 
 ## How to use this report
 
@@ -15,7 +15,7 @@ _Generated: 2026-05-18T09:50:26.214Z_
 
 Workspace `mcp.json` _(folder: react_phone-catalog)_
 
-- **d:\DEWELOP_NEW\DEWELOP_NEW\react_phone-catalog\.mcp.json** — _File missing_
+- **c:\CODEX__\react_phone-catalog\.mcp.json** — _File missing_
 
 _No active workspace servers in mcp.json._
 

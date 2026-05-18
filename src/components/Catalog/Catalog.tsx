@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 import { Pagination } from '../Pagination';
 import { ProductCard } from '../ProductCard';
 import { Breadcrumbs } from './Breadcrumbs';
@@ -24,19 +24,19 @@ export const Catalog: FC<Props> = ({
   categoryName,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams('');
-  const sortByParam = searchParams.get('sortBy');
-  const sortPageParam = searchParams.get('sortPage');
 
   function sortBy(parametrs: string, sortItems: ProductAllType[]) {
+    const productsToSort = [...sortItems];
+
     switch (parametrs) {
       case 'name':
-        return sortItems.sort((a, b) => a.name.localeCompare(b.name));
+        return productsToSort.sort((a, b) => a.name.localeCompare(b.name));
       case 'cheaper':
-        return sortItems.sort((a, b) => a.price - b.price);
+        return productsToSort.sort((a, b) => a.price - b.price);
       case 'newest':
-        return sortItems.sort((a, b) => b.year - a.year);
+        return productsToSort.sort((a, b) => b.year - a.year);
       default:
-        return sortItems;
+        return productsToSort;
     }
   }
 
@@ -70,45 +70,37 @@ export const Catalog: FC<Props> = ({
 
   // Pagination logic can be added here in the future
 
-  const [perPage, setPerPage] = useState<number>(
-    +(searchParams.get('sortPage') || '16'),
-  );
-  const [currentPage, setCurrentPage] = useState(
-    +(searchParams.get('currentPage') || 1),
-  );
+  const perPage = +(searchParams.get('sortPage') || '16');
 
-  const [sortByName, setSortByName] = useState(
-    searchParams.get('sortBy') || SortBy.Newest,
-  );
+  const currentPage = +(searchParams.get('currentPage') || 1);
 
-  useEffect(() => {
-    setCurrentPage(+(searchParams.get('currentPage') || 1));
-    setPerPage(+(searchParams.get('sortPage') || '16'));
-    setSortByName(searchParams.get('sortBy') || SortBy.Newest);
-  }, [sortPageParam, sortByParam]);
+  const sortByName = searchParams.get('sortBy') || SortBy.Newest;
+
   useEffect(() => {
     setSearchParams(prev => {
       const params = new URLSearchParams(prev);
+
       params.set('currentPage', currentPage.toString());
+
       return params;
     });
   }, [currentPage]);
 
   /* eslint-disable @typescript-eslint/indent */
 
-  const filteredPage =
-    currentPage === 1
-      ? sortBy(sortByName, products.slice(0, perPage))
-      : sortBy(
-          sortByName,
-          products.slice(
-            perPage * currentPage - perPage,
-            perPage * currentPage,
-          ),
-        );
+  const sortedProducts = sortBy(sortByName, products);
+  const firstItemIndex = (currentPage - 1) * perPage;
+  const lastItemIndex = firstItemIndex + perPage;
+  const filteredPage = sortedProducts.slice(firstItemIndex, lastItemIndex);
 
   const onPageChange = (page: number) => {
-    setCurrentPage(page);
+    setSearchParams(prev => {
+      const params = new URLSearchParams(prev);
+
+      params.set('currentPage', page.toString());
+
+      return params;
+    });
     scrollToTop();
   };
 
