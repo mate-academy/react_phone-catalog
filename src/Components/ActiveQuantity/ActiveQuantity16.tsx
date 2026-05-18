@@ -17,6 +17,14 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
   phones,
   mapPhoneToProduct,
 }) => {
+  const normalizeImage = (path: string) => {
+    const cleanPath = path
+      .replace(/^\/?react_phone-catalog\/?/, '')
+      .replace(/^\/+/, '');
+
+    return `${import.meta.env.BASE_URL}${cleanPath}`;
+  };
+
   return (
     <div className="page__models-phones phones__grid">
       {activePage === 0 &&
@@ -29,7 +37,7 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={getImagePath(phone.images?.[0])}
+                  src={normalizeImage(phone.images?.[0])}
                   alt=""
                   className="page__models-image"
                 />
@@ -64,7 +72,7 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={getImagePath(phone.images?.[0])}
+                  src={normalizeImage(phone.images?.[0])}
                   alt=""
                   className="page__models-image"
                 />
@@ -99,7 +107,7 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={getImagePath(phone.images?.[0])}
+                  src={normalizeImage(phone.images?.[0])}
                   alt=""
                   className="page__models-image"
                 />
@@ -134,7 +142,7 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={getImagePath(phone.images?.[0])}
+                  src={normalizeImage(phone.images?.[0])}
                   alt=""
                   className="page__models-image"
                 />
