@@ -40,17 +40,18 @@
       transition: opacity 0.3s;
     }
 
-    &:hover:not(:disabled) {
-      background-color: #4A4D58;
-      border-color: $c-border;
-    }
-
     &:disabled {
       opacity: 0.3;
       cursor: not-allowed;
       border-color: $c-border;
       background-color: transparent;
     }
+
+    &:hover:not(:disabled) {
+      background-color: #4A4D58;
+      border-color: $c-border;
+    }
+
   }
 
   &__track_container {
@@ -66,6 +67,7 @@
     padding-bottom: 16px;
 
     &::-webkit-scrollbar { display: none; }
+    
     -ms-overflow-style: none;
     scrollbar-width: none;
   }

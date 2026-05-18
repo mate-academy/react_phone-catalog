@@ -76,7 +76,7 @@
     }
 
     &:hover {
-      background-color: lighten($c-bg-dark, 5%);
+      background-color: $c-selected;
     }
 
     &--active {

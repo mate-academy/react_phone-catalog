@@ -28,6 +28,11 @@
     cursor: pointer;
     transition: all 0.3s ease;
 
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
     &:hover:not(:disabled) {
       border-color: $c-text-secondary;
     }
@@ -38,10 +43,7 @@
       border-color: $c-text-primary;
     }
 
-    &:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
+
   }
 
   &__arrow {
@@ -56,13 +58,14 @@
     cursor: pointer;
     transition: border-color 0.3s;
 
-    &:hover:not(:disabled) {
-      border-color: $c-text-secondary;
-    }
-
     &:disabled {
       opacity: 0.5;
       cursor: not-allowed;
     }
+    
+    &:hover:not(:disabled) {
+      border-color: $c-text-secondary;
+    }
+
   }
 }

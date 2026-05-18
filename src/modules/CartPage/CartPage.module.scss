@@ -136,10 +136,6 @@
       opacity: 0.5;
       transition: opacity 0.3s;
     }
-
-    &:hover img {
-      opacity: 1;
-    }
   }
 
   &__image_link {
@@ -160,10 +156,6 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
 
   &__action {
@@ -209,14 +201,6 @@
       transition: opacity 0.3s;
     }
 
-    &:hover:not(:disabled) {
-      border-color: $c-text-secondary;
-
-      img {
-        opacity: 1;
-      }
-    }
-
     &:disabled {
       opacity: 0.3;
       cursor: not-allowed;
@@ -231,6 +215,22 @@
     @include tablet {
       width: 100px;
       text-align: right;
+    }
+  }
+
+  &__remove:hover img {
+    opacity: 1;
+  }
+
+  &__title:hover {
+    text-decoration: underline;
+  }
+
+  &__btn:hover:not(:disabled) {
+    border-color: $c-text-secondary;
+
+    img {
+      opacity: 1;
     }
   }
 }

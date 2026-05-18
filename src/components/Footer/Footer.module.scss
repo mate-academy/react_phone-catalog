@@ -60,31 +60,6 @@
   }
 }
 
-.back {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  cursor: pointer;
-  align-self: center;
-
-  @include tablet {
-    align-self: auto;
-  }
-
-  &:hover .back_btn {
-    background-color: #4A4D58;
-    border-color: $c-border;
-
-    img {
-      opacity: 1;
-    }
-  }
-
-  &:hover .back_text {
-    color: $c-text-primary;
-  }
-}
-
 .back_text {
   font-family: inherit;
   font-size: 12px;
@@ -109,5 +84,30 @@
     height: 16px;
     opacity: 0.5;
     transition: opacity 0.3s ease;
+  }
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  align-self: center;
+
+  @include tablet {
+    align-self: auto;
+  }
+
+  &:hover .back_btn {
+    background-color: #4A4D58;
+    border-color: $c-border;
+
+    img {
+      opacity: 1;
+    }
+  }
+
+  &:hover .back_text {
+    color: $c-text-primary;
   }
 }
