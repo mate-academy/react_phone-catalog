@@ -19,7 +19,11 @@ export const Discount: React.FC<Props> = ({ DiscountedProducts }) => {
         >
           <div className="products-container">
             <div className="products-img">
-              <img src={getImagePath(product.image)} alt="" className="products-image" />
+              <img
+                src={getImagePath(product.image)}
+                alt=""
+                className="products-image"
+              />
             </div>
             <p className="products-title">{product.name} (MQ0G3)</p>
             <span className="products-price">

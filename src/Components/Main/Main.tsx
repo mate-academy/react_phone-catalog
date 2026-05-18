@@ -50,7 +50,7 @@ export const Main: React.FC = () => {
   const categories = [
     {
       id: '/phones',
-      img: '/public/img/category-phones.webp',
+      img: '/img/category-phones.webp',
       title: 'Mobile phones',
       subTitle: '95 models',
       categoryClass: 'category-pink',
@@ -58,7 +58,7 @@ export const Main: React.FC = () => {
     },
     {
       id: '/tablets',
-      img: '/public/img/category-tablets.webp',
+      img: '/img/category-tablets.webp',
       title: 'Tablets',
       subTitle: '24 models',
       categoryClass: 'category-grey',
@@ -66,7 +66,7 @@ export const Main: React.FC = () => {
     },
     {
       id: '/accessories',
-      img: '/public/img/category-accessories.webp',
+      img: '/img/category-accessories.webp',
       title: 'Accessories',
       subTitle: '100 models',
       categoryClass: 'category-purple',
@@ -186,10 +186,6 @@ export const Main: React.FC = () => {
   ).href;
 
   const welcomeImage = new URL('../../images/Banner.png', import.meta.url).href;
-  const welcomeImage2 = new URL('../../images/Banner.png', import.meta.url)
-    .href;
-  const welcomeImage3 = new URL('../../images/Banner.png', import.meta.url)
-    .href;
 
   useEffect(() => {
     const id = setInterval(() => setPicIndex(p => (p + 1) % pics.length), 5000);

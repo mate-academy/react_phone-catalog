@@ -1,4 +1,4 @@
-@import '../../utils/mixins.scss';
+@import '../../utils/mixins';
 
 .phone {
   &__container {
@@ -75,7 +75,6 @@
 
   &__images {
     display: flex;
-    // width: 100%;
     gap: 8px;
     justify-content: space-between;
     flex-direction: row;
@@ -146,6 +145,7 @@
       }
     }
   }
+
     @include on-tablet {
       min-width: 0;
       flex-direction: row;
@@ -465,8 +465,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    border: none;
 
     height: 48px;
     width: 48px;
