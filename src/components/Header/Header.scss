@@ -1,0 +1,212 @@
+@use '../../mixins.scss' as *;
+
+.header {
+  box-sizing: border-box;
+  width: 100%;
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+  background-color: #1F1F2B;
+
+  &__burger-wrapper {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid #3B3E4A;
+    padding: 0 16px;
+
+    @include on-tablet {
+      display: none;
+    }
+
+    @include on-desktop {
+      display: none;
+    }
+  }
+
+  &__burger-menu {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    span {
+      width: 24px;
+      height: 2px;
+      background-color: white;
+      transition: all 0.3s ease;
+    }
+
+    &:hover span {
+      background-color: #75767F;
+    }
+
+    @include on-tablet {
+      display: none;
+    }
+
+    @include on-desktop {
+      display: none;
+    }
+  }
+
+  &__top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-bottom: 1px solid #3B3E4A;
+    height: 64px;
+    box-sizing: border-box;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    height: 100%;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 0;
+
+    @include on-phone {
+      display: none;
+    }
+
+    @include on-tablet {
+      display: flex;
+      flex: 1;
+    }
+
+    @include on-desktop {
+      display: flex;
+      flex: 1;
+    }
+  }
+
+  &__head--logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-left: auto;
+  }
+
+  &__heart,
+  &__packet {
+    position: relative;
+    border-left: 1px solid #3B3E4A;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+
+    @include on-phone {
+      display: none;
+    }
+  }
+
+  &__heart {
+    &__top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+
+      img {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  &__packet {
+    &__top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+
+      img {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}
+
+.navbar-item {
+  color: #75767F;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  font-family: 'Mont', Montserrat, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  transition: color 0.2s ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: #fff;
+    transition: width 0.3s ease-in-out;
+  }
+
+  &:hover {
+    color: #fff;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+.is-active {
+  color: #fff;
+
+  &::after {
+    width: 100%;
+  }
+}
+
+.cart-count {
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  width: 14px;
+  height: 14px;
+  background-color: #EB5757;
+  color: white;
+  font-size: 8px;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  pointer-events: none;
+}
