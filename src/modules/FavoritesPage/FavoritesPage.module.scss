@@ -1,0 +1,32 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+
+  &__breadcrumbs {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: $c-text-primary;
+  }
+
+  &__count {
+    color: $c-text-secondary;
+    font-size: 14px;
+    margin-bottom: 32px;
+    display: block;
+  }
+
+  &__empty {
+    font-size: 20px;
+    color: $c-text-secondary;
+    padding: 40px 0;
+  }
+}

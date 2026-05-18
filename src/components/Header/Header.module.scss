@@ -1,0 +1,164 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: $c-bg-dark;
+  height: 48px;
+  border-bottom: 1px solid $c-border;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include desktop {
+    height: 64px;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-left: 16px;
+
+    @include tablet {
+      padding-left: 24px;
+    }
+
+    @include desktop {
+      padding-left: 32px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-right: 32px;
+
+    @include desktop {
+      margin-right: 64px;
+    }
+
+    img {
+      height: 28px;
+    }
+  }
+
+  &__nav {
+    display: none;
+    height: 100%;
+
+    @include tablet {
+      display: flex;
+      gap: 32px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $c-text-secondary;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border-bottom: 3px solid transparent;
+    padding-top: 3px;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $c-text-primary;
+    }
+
+    &--active {
+      color: $c-text-primary;
+      border-bottom: 3px solid $c-text-primary;
+    }
+  }
+
+  &__right {
+    display: none;
+    height: 100%;
+
+    @include tablet {
+      display: flex;
+    }
+  }
+
+  &__icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 100%;
+    border-left: 1px solid $c-border;
+    color: $c-text-primary;
+    text-decoration: none;
+    transition: background-color 0.3s;
+
+    @include desktop {
+      width: 64px;
+    }
+
+    &:hover {
+      background-color: $c-selected;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: $c-accent-red;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include desktop {
+      top: 16px;
+      right: 16px;
+    }
+  }
+
+  &__menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 100%;
+    background: transparent;
+    border: none;
+    border-left: 1px solid $c-border;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    @include tablet {
+      display: none;
+    }
+
+    &:hover {
+      background-color: $c-selected;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

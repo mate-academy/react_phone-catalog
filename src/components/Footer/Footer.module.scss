@@ -1,0 +1,113 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.footer {
+  border-top: 1px solid $c-border;
+  background-color: $c-bg-dark;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+
+  @include tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 96px;
+    padding: 0 16px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+
+  @include tablet {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @include desktop {
+    gap: 100px;
+  }
+}
+
+.link {
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $c-text-secondary;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $c-text-primary;
+  }
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  align-self: center;
+
+  @include tablet {
+    align-self: auto;
+  }
+
+  &:hover .back_btn {
+    background-color: #4A4D58;
+    border-color: $c-border;
+
+    img {
+      opacity: 1;
+    }
+  }
+
+  &:hover .back_text {
+    color: $c-text-primary;
+  }
+}
+
+.back_text {
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: $c-text-secondary;
+  transition: color 0.3s ease;
+}
+
+.back_btn {
+  width: 32px;
+  height: 32px;
+  background-color: #323542;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+
+  img {
+    width: 16px;
+    height: 16px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+  }
+}

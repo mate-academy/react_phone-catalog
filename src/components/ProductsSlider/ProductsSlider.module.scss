@@ -1,0 +1,79 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.slider {
+  margin-bottom: 80px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    color: $c-text-primary;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    background-color: #323542;
+    border: 1px solid $c-border;
+    border-radius: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    img {
+      width: 16px;
+      height: 16px;
+      transition: opacity 0.3s;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: #4A4D58;
+      border-color: $c-border;
+    }
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      border-color: $c-border;
+      background-color: transparent;
+    }
+  }
+
+  &__track_container {
+    overflow: hidden;
+  }
+
+  &__track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 16px;
+
+    &::-webkit-scrollbar { display: none; }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  &__item {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: 272px;
+    max-width: 100%;
+  }
+}
