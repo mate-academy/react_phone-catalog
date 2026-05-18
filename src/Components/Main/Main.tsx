@@ -50,7 +50,7 @@ export const Main: React.FC = () => {
   const categories = [
     {
       id: '/phones',
-      img: '/img/category-phones.webp',
+      img: './img/category-phones.webp',
       title: 'Mobile phones',
       subTitle: '95 models',
       categoryClass: 'category-pink',
@@ -58,7 +58,7 @@ export const Main: React.FC = () => {
     },
     {
       id: '/tablets',
-      img: '/img/category-tablets.webp',
+      img: './img/category-tablets.webp',
       title: 'Tablets',
       subTitle: '24 models',
       categoryClass: 'category-grey',
@@ -66,7 +66,7 @@ export const Main: React.FC = () => {
     },
     {
       id: '/accessories',
-      img: '/img/category-accessories.webp',
+      img: './img/category-accessories.webp',
       title: 'Accessories',
       subTitle: '100 models',
       categoryClass: 'category-purple',
