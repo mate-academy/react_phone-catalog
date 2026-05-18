@@ -3,7 +3,6 @@ import { Products } from '../../../types/Products';
 import { Tablet } from '../../../types/Tablets';
 import { ProductCard } from '../../ProductCard/ProductCard';
 import { Link } from 'react-router-dom';
-import { getImagePath } from '../../../utils/paths';
 
 type ActiveQuantity16Props = {
   activeQuantity: number;
@@ -29,7 +28,7 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={getImagePath(phone.images?.[0])}
+                  src={phone.images?.[0]}
                   alt=""
                   className="page__models-image"
                 />
@@ -64,7 +63,7 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={getImagePath(phone.images?.[0])}
+                  src={phone.images?.[0]}
                   alt=""
                   className="page__models-image"
                 />
@@ -99,7 +98,7 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={getImagePath(phone.images?.[0])}
+                  src={phone.images?.[0]}
                   alt=""
                   className="page__models-image"
                 />
@@ -134,7 +133,7 @@ export const ActiveQuantity16: React.FC<ActiveQuantity16Props> = ({
             <div className="page__models-container">
               <div className="page__models-img">
                 <img
-                  src={getImagePath(phone.images?.[0])}
+                  src={phone.images?.[0]}
                   alt=""
                   className="page__models-image"
                 />
