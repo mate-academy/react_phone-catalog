@@ -32,9 +32,7 @@ export const ProductCard = ({ product, hideOldPrice }: Props) => {
     product.imageUrl ||
     (product.images ? product.images[0] : '');
 
-  const imageSrc = currentImage.startsWith('/')
-    ? currentImage
-    : `/${currentImage}`;
+  const imageSrc = `${import.meta.env.BASE_URL}${currentImage.startsWith('/') ? currentImage.slice(1) : currentImage}`;
 
   return (
     <div className={styles.card}>
