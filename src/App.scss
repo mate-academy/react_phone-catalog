@@ -1,1 +1,46 @@
-// not empty
+@import './GeneralStyles/fonts';
+@import './GeneralStyles/nav';
+@import './GeneralStyles/title';
+@import './GeneralStyles/variables';
+
+* {
+  box-sizing: border-box;
+}
+
+html::-webkit-scrollbar {
+  width: 3px;
+}
+
+html::-webkit-scrollbar-track {
+  background: $white-color;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: $primary-color;
+}
+
+body {
+  margin: 0;
+  font-family: Mont, sans-serif !important;
+  scroll-behavior: smooth;
+}
+
+img {
+  vertical-align: baseline;
+}
+
+.wrapper {
+  width: 1136px;
+  margin: 0 auto;
+}
+
+.App {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: min-content min-content 1fr min-content;
+}
+
+.emptyMessage {
+  font-size: 20px;
+  margin-top: 30px;
+}

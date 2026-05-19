@@ -1,0 +1,7 @@
+.productList {
+  margin-block: 24px 40px;
+  display: grid;
+  grid-template: 1fr / repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 40px 16px;
+}

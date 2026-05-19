@@ -1,0 +1,75 @@
+@import '../../GeneralStyles/variables';
+
+.cartItem {
+  width: 752px;
+  height: 128px;
+  border: 1px solid $elements-color;
+  padding: 24px 0 24px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__delete-btn {
+    background-color: transparent;
+    border: none;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+  }
+
+  &__img {
+    height: 80px;
+    padding: 7px;
+    margin-inline: 30px;
+  }
+
+  &__title {
+    max-width: 295px;
+    color: $primary-color;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__calculation {
+    display: flex;
+    gap: 43px;
+  }
+
+  &__quantity {
+    display: flex;
+    width: 95px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons-color;
+    color: $primary-color;
+    background-color: transparent;
+    font-size: 20px;
+
+    &--disabled {
+      border: 1px solid $elements-color;
+      color: $elements-color;
+    }
+  }
+
+  &__number {
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  &__totalPrice {
+    display: inline-block;
+    width: 100px;
+    color: $primary-color;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+  }
+}
