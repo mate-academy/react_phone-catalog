@@ -5,13 +5,13 @@ import { Phone } from '../types/Phone';
 import { Products } from '../types/Products';
 import { Tablet } from '../types/Tablets';
 
-// const BASE_URL = import.meta.env.BASE_URL;
+const BASE_URL = import.meta.env.BASE_URL;
 
-const API_URL_PHONES = `/api/phones.json`;
-const API_URL_TABLETS = `/api/tablets.json`;
-const API_URL_PRODUCTS = `/api/products.json`;
-const API_URL_DISCOUNTED_PRODUCTS = `/api/products.json`;
-const API_URL_ACCESSORIES = `/api/accessories.json`;
+const API_URL_PHONES = `${BASE_URL}/api/phones.json`;
+const API_URL_TABLETS = `${BASE_URL}/api/tablets.json`;
+const API_URL_PRODUCTS = `${BASE_URL}/api/products.json`;
+const API_URL_DISCOUNTED_PRODUCTS = `${BASE_URL}/api/products.json`;
+const API_URL_ACCESSORIES = `${BASE_URL}/api/accessories.json`;
 
 function wait(delay: number) {
   return new Promise(resolve => setTimeout(resolve, delay));
