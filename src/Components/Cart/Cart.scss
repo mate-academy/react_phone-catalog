@@ -232,10 +232,6 @@
 
     transition: 0.3s;
 
-    @include on-tablet {
-      padding-left: 24px;
-    }
-
     &:hover {
       background-color: #323542;
       transition: 0.3s;
