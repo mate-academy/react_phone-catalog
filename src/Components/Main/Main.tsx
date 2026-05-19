@@ -199,7 +199,9 @@ export const Main: React.FC = () => {
         <div className="main__content">
           <section className="welcome__block">
             <div className="welcome__block-text">
-              <h1 className="welcome__block-title">Product Catalog</h1>
+              <h1 className="welcome__block-title">
+                Welcome to Nice Gadgets store!
+              </h1>
             </div>
 
             <div className="welcome__block-sliders">
