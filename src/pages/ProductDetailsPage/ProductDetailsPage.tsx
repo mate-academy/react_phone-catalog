@@ -37,6 +37,8 @@ export const ProductDetailsPage = () => {
 
   const [isLoading, setIsLoading] = useState(true);
 
+  const [productNumericId, setProductNumericId] = useState<number | null>(null);
+
   const isPhoneOrTablet = (
     item: Phone | Tablet | Accessories,
   ): item is Phone | Tablet => {
@@ -118,6 +120,28 @@ export const ProductDetailsPage = () => {
           setSelectedCapacity(
             isPhoneOrTablet(found) ? found.capacity : null,
           );
+
+          // Ищем числовой id из products.json
+          try {
+            const productsRes = await fetch(
+              `${import.meta.env.BASE_URL}api/products.json`,
+            );
+
+            if (productsRes.ok) {
+              const productsData = await productsRes.json();
+              const matched = productsData.find(
+                (p: { itemId: string; id: number }) => p.itemId === found.id,
+              );
+
+              if (matched) {
+                setProductNumericId(matched.id);
+              } else {
+                setProductNumericId(null);
+              }
+            }
+          } catch {
+            setProductNumericId(null);
+          }
         } else {
           setProduct(null);
         }
@@ -242,7 +266,7 @@ export const ProductDetailsPage = () => {
         </span>
 
         <span className="product-details__item-id">
-          ID: {product.id}
+          ID: {productNumericId ?? product.id}
         </span>
       </div>
 
