@@ -271,8 +271,8 @@ export const PhoneSpec: React.FC = () => {
                       type="button"
                       className={`phone__specs-capacity ${cap === selectedCapacity ? 'phone__specs-capacity-active' : ''}`}
                       onClick={() => {
-                        setSelectedCapacity(cap);
                         navigate(`../phones/${updatedPathCap}`);
+                        setSelectedCapacity(cap);
                       }}
                       onKeyDown={e =>
                         (e.key === 'Enter' || e.key === ' ') &&
