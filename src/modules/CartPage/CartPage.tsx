@@ -52,9 +52,16 @@ export const CartPage = () => {
                 item.product.imageUrl ||
                 item.product.images?.[0] ||
                 '';
-              const finalImage = imageSrc.startsWith('/')
-                ? imageSrc
-                : `/${imageSrc}`;
+              const cleanImageSrc = imageSrc.startsWith('/')
+                ? imageSrc.slice(1)
+                : imageSrc;
+              const finalImage = `${import.meta.env.BASE_URL}${cleanImageSrc}`;
+
+              <img
+                src={finalImage}
+                alt={item.product.name}
+                className={styles.cart_item__image}
+              />;
               const itemPrice =
                 item.product.priceDiscount || item.product.price;
 
