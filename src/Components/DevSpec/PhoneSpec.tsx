@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-no-comment-textnodes */
-import { Link, useParams, useLocation } from 'react-router-dom';
+import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { Header } from '../Header/header';
 import { useEffect, useState } from 'react';
 import { getProductById } from '../../api/api';
@@ -54,6 +54,7 @@ enum Color {
 
 export const PhoneSpec: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
   const { productId } = useParams<{ productId: string }>();
   const { pathname } = useLocation();
   const [phone, setPhone] = useState<Phone>();
@@ -236,7 +237,10 @@ export const PhoneSpec: React.FC = () => {
                   className={`phone__color ${color === c ? 'phone__color-active' : ''}`}
                 >
                   <div
-                    onClick={() => setColor(c)}
+                    onClick={() => {
+                      navigate(`../${c.toLowerCase()}`);
+                      setColor(c);
+                    }}
                     className={`phone__color-color phone__color-${c}`}
                   ></div>
                 </div>
@@ -251,7 +255,10 @@ export const PhoneSpec: React.FC = () => {
                     key={cap}
                     type="button"
                     className={`phone__specs-capacity ${cap === selectedCapacity ? 'phone__specs-capacity-active' : ''}`}
-                    onClick={() => setSelectedCapacity(cap)}
+                    onClick={() => {
+                      setSelectedCapacity(cap);
+                      navigate(`../capacity/${cap.toLowerCase()}`);
+                    }}
                     onKeyDown={e =>
                       (e.key === 'Enter' || e.key === ' ') &&
                       setSelectedCapacity(cap)

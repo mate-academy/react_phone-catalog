@@ -21,6 +21,7 @@ import { ActiveQuantity32 } from '../ActiveQuantity/ActiveQuantity32';
 import { ActiveQuantity64 } from '../ActiveQuantity/ActiveQuantity64';
 import { Footer } from '../Footer/Footer';
 import { Aside } from '../Aside/Aside';
+import { Loader } from '../Loader/Loader';
 
 export const Phones = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -29,7 +30,7 @@ export const Phones = () => {
   const [activeFilter, setActiveFilter] = useState<FilterValue>('Newest');
   const [activePage, setActivePage] = useState(0);
   const { productId } = useParams();
-  const [, setLoading] = useState(true);
+  const [Loading, setLoading] = useState(true);
   const [, setErrorMessage] = useState('');
 
   const mapPhoneToProduct = (p: Phone): Products => ({
@@ -132,68 +133,72 @@ export const Phones = () => {
         setMenuOpen={setMenuOpen}
       />
       {menuOpen && <Aside setMenuOpen={setMenuOpen} />}
-      <div className="container">
-        <div className="phones__path page__path">
-          <div className="phones__path-icon">
-            <Link to="/" className="phones__icon-link page__icon-link">
-              <img
-                className="phones__icon-home page__icon icon-home icon"
-                src={Home}
-                alt="Home"
-              />
-              <img
-                className="phones__icon-home icon-home icon"
-                src={ArrowGray}
-                alt="Arrow"
-              />
-            </Link>
+      {Loading ? (
+        <Loader />
+      ) : (
+        <div className="container">
+          <div className="phones__path page__path">
+            <div className="phones__path-icon">
+              <Link to="/" className="phones__icon-link page__icon-link">
+                <img
+                  className="phones__icon-home page__icon icon-home icon"
+                  src={Home}
+                  alt="Home"
+                />
+                <img
+                  className="phones__icon-home icon-home icon"
+                  src={ArrowGray}
+                  alt="Arrow"
+                />
+              </Link>
+            </div>
+            <span className="phones__path-phones page__paths">Phones</span>
           </div>
-          <span className="phones__path-phones page__paths">Phones</span>
-        </div>
-        <div className="phones__text page__text">
-          <h1 className="phones__title page__title">Mobile phones</h1>
-          <span className="phones__subtitle page__subtitle">95 models</span>
-        </div>
-        <Filter
-          activeQuantity={activeQuantity}
-          setActiveQuantity={setActiveQuantity}
-          activeFilter={activeFilter}
-          setActiveFilter={setActiveFilter}
-        />
-        <div className="phones__content page__content">
-          <section className="page__models section">
-            {activeQuantity === 16 && (
-              <ActiveQuantity16
-                phones={filteredPhones}
-                activeQuantity={activeQuantity}
+          <div className="phones__text page__text">
+            <h1 className="phones__title page__title">Mobile phones</h1>
+            <span className="phones__subtitle page__subtitle">95 models</span>
+          </div>
+          <Filter
+            activeQuantity={activeQuantity}
+            setActiveQuantity={setActiveQuantity}
+            activeFilter={activeFilter}
+            setActiveFilter={setActiveFilter}
+          />
+          <div className="phones__content page__content">
+            <section className="page__models section">
+              {activeQuantity === 16 && (
+                <ActiveQuantity16
+                  phones={filteredPhones}
+                  activeQuantity={activeQuantity}
+                  activePage={activePage}
+                  mapPhoneToProduct={mapPhoneToProduct}
+                />
+              )}
+              {activeQuantity === 32 && (
+                <ActiveQuantity32
+                  phones={filteredPhones}
+                  activeQuantity={activeQuantity}
+                  activePage={activePage}
+                  mapPhoneToProduct={mapPhoneToProduct}
+                />
+              )}
+              {activeQuantity === 64 && (
+                <ActiveQuantity64
+                  phones={filteredPhones}
+                  activeQuantity={activeQuantity}
+                  activePage={activePage}
+                  mapPhoneToProduct={mapPhoneToProduct}
+                />
+              )}
+              <PageSlider
+                setActivePage={setActivePage}
                 activePage={activePage}
-                mapPhoneToProduct={mapPhoneToProduct}
-              />
-            )}
-            {activeQuantity === 32 && (
-              <ActiveQuantity32
-                phones={filteredPhones}
                 activeQuantity={activeQuantity}
-                activePage={activePage}
-                mapPhoneToProduct={mapPhoneToProduct}
               />
-            )}
-            {activeQuantity === 64 && (
-              <ActiveQuantity64
-                phones={filteredPhones}
-                activeQuantity={activeQuantity}
-                activePage={activePage}
-                mapPhoneToProduct={mapPhoneToProduct}
-              />
-            )}
-            <PageSlider
-              setActivePage={setActivePage}
-              activePage={activePage}
-              activeQuantity={activeQuantity}
-            />
-          </section>
+            </section>
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="page__footer">
         <Footer />

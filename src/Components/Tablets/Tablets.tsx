@@ -18,12 +18,12 @@ import { ActiveQuantity64 } from '../ActiveQuantity/ActiveQuantityTablets/Active
 import { PageSliderTablet } from '../Page__Slider/PageSliderTablet';
 import { Footer } from '../Footer/Footer';
 import { Aside } from '../Aside/Aside';
+import { Loader } from '../Loader/Loader';
 
 export const Tablets = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const [Loading, setLoading] = useState(true);
   const [tablets, setTablets] = useState<Tablet[]>([]);
-  const [, setLoading] = useState(true);
   const [, setErrorMessage] = useState('');
   const { totalQuantity } = useCart();
   const { totalFavourites } = useFav();
@@ -106,68 +106,72 @@ export const Tablets = () => {
         setMenuOpen={setMenuOpen}
       />
       {menuOpen && <Aside setMenuOpen={setMenuOpen} />}
-      <div className="container">
-        <div className="tablets__path page__path">
-          <div className="tablets__path-icon">
-            <Link to="/" className="tablets__icon-link page__icon-link">
-              <img
-                className="tablets__icon-home page__icon icon-home icon"
-                src={Home}
-                alt="Home"
-              />
-              <img
-                className="tablets__icon-home icon-home icon"
-                src={ArrowGray}
-                alt="Arrow"
-              />
-            </Link>
+      {Loading ? (
+        <Loader />
+      ) : (
+        <div className="container">
+          <div className="tablets__path page__path">
+            <div className="tablets__path-icon">
+              <Link to="/" className="tablets__icon-link page__icon-link">
+                <img
+                  className="tablets__icon-home page__icon icon-home icon"
+                  src={Home}
+                  alt="Home"
+                />
+                <img
+                  className="tablets__icon-home icon-home icon"
+                  src={ArrowGray}
+                  alt="Arrow"
+                />
+              </Link>
+            </div>
+            <span className="tablets__path-tablet page__paths">Tablets</span>
           </div>
-          <span className="tablets__path-tablet page__paths">Tablets</span>
-        </div>
-        <div className="tablets__text page__text">
-          <h1 className="tablets__title page__title">Tablets</h1>
-          <span className="tablets__subtitle page__subtitle">24 models</span>
-        </div>
-        <Filter
-          activeQuantity={activeQuantity}
-          setActiveQuantity={setActiveQuantity}
-          activeFilter={activeFilter}
-          setActiveFilter={setActiveFilter}
-        />
-        <div className="tablets__content">
-          <section className="page__models section">
-            {activeQuantity === 16 && (
-              <ActiveQuantity16
-                phones={filteredTablets}
-                activeQuantity={activeQuantity}
+          <div className="tablets__text page__text">
+            <h1 className="tablets__title page__title">Tablets</h1>
+            <span className="tablets__subtitle page__subtitle">24 models</span>
+          </div>
+          <Filter
+            activeQuantity={activeQuantity}
+            setActiveQuantity={setActiveQuantity}
+            activeFilter={activeFilter}
+            setActiveFilter={setActiveFilter}
+          />
+          <div className="tablets__content">
+            <section className="page__models section">
+              {activeQuantity === 16 && (
+                <ActiveQuantity16
+                  phones={filteredTablets}
+                  activeQuantity={activeQuantity}
+                  activePage={activePage}
+                  mapTabletToProduct={mapTabletToProduct}
+                />
+              )}
+              {activeQuantity === 32 && (
+                <ActiveQuantity32
+                  phones={filteredTablets}
+                  activeQuantity={activeQuantity}
+                  activePage={activePage}
+                  mapTabletToProduct={mapTabletToProduct}
+                />
+              )}
+              {activeQuantity === 64 && (
+                <ActiveQuantity64
+                  phones={filteredTablets}
+                  activeQuantity={activeQuantity}
+                  activePage={activePage}
+                  mapTabletToProduct={mapTabletToProduct}
+                />
+              )}
+              <PageSliderTablet
+                setActivePage={setActivePage}
                 activePage={activePage}
-                mapTabletToProduct={mapTabletToProduct}
-              />
-            )}
-            {activeQuantity === 32 && (
-              <ActiveQuantity32
-                phones={filteredTablets}
                 activeQuantity={activeQuantity}
-                activePage={activePage}
-                mapTabletToProduct={mapTabletToProduct}
               />
-            )}
-            {activeQuantity === 64 && (
-              <ActiveQuantity64
-                phones={filteredTablets}
-                activeQuantity={activeQuantity}
-                activePage={activePage}
-                mapTabletToProduct={mapTabletToProduct}
-              />
-            )}
-            <PageSliderTablet
-              setActivePage={setActivePage}
-              activePage={activePage}
-              activeQuantity={activeQuantity}
-            />
-          </section>
+            </section>
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="page__footer">
         <Footer />

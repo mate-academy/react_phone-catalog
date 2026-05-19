@@ -18,11 +18,12 @@ import { ActiveQuantity32 } from '../ActiveQuantity/ActiveQuantityAcc/ActiveQuan
 import { ActiveQuantity64 } from '../ActiveQuantity/ActiveQuantityAcc/ActiveQuantity64';
 import { Footer } from '../Footer/Footer';
 import { Aside } from '../Aside/Aside';
+import { Loader } from '../Loader/Loader';
 
 export const Accessories = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [accessories, setAccessories] = useState<Accessorie[]>([]);
-  const [, setLoading] = useState(true);
+  const [Loading, setLoading] = useState(true);
   const [, setErrorMessage] = useState('');
   const { totalQuantity } = useCart();
   const { totalFavourites } = useFav();
@@ -97,96 +98,100 @@ export const Accessories = () => {
         setMenuOpen={setMenuOpen}
       />
       {menuOpen && <Aside setMenuOpen={setMenuOpen} />}
-      <div className="container">
-        <div className="accessories__path page__path">
-          <div className="accessories__path-icon">
-            <Link to="/" className="accessories__icon-link page__icon-link">
-              <img
-                className="accessories__icon-home page__icon icon-home icon"
-                src={Home}
-                alt="Home"
-              />
-              <img
-                className="accessories__icon-home icon-home icon"
-                src={ArrowGray}
-                alt="Arrow"
-              />
-            </Link>
+      {Loading ? (
+        <Loader />
+      ) : (
+        <div className="container">
+          <div className="accessories__path page__path">
+            <div className="accessories__path-icon">
+              <Link to="/" className="accessories__icon-link page__icon-link">
+                <img
+                  className="accessories__icon-home page__icon icon-home icon"
+                  src={Home}
+                  alt="Home"
+                />
+                <img
+                  className="accessories__icon-home icon-home icon"
+                  src={ArrowGray}
+                  alt="Arrow"
+                />
+              </Link>
+            </div>
+            <span className="accessories__path-phones page__paths">
+              Accessories
+            </span>
           </div>
-          <span className="accessories__path-phones page__paths">
-            Accessories
-          </span>
-        </div>
-        <div className="Accessories__text page__text">
-          <h1 className="Accessories__title page__title">Accessories</h1>
-          <span className="accessories__subtitle page__subtitle">
-            100 models
-          </span>
-        </div>
-        <Filter
-          activeQuantity={activeQuantity}
-          setActiveQuantity={setActiveQuantity}
-          activeFilter={activeFilter}
-          setActiveFilter={setActiveFilter}
-        />
-        <div className="tablets__content">
-          <section className="page__models section">
-            {activeQuantity === 16 && (
-              <ActiveQuantity16
-                phones={
-                  activeFilter === 'Newest'
-                    ? sortedAcc
-                    : accessories || activeFilter === 'Price: Low to High'
-                      ? sortedAccLowToHigh
-                      : accessories || activeFilter === 'Price: High to Low'
-                        ? sortedAccHighToLow
-                        : accessories
-                }
-                activeQuantity={activeQuantity}
+          <div className="Accessories__text page__text">
+            <h1 className="Accessories__title page__title">Accessories</h1>
+            <span className="accessories__subtitle page__subtitle">
+              100 models
+            </span>
+          </div>
+          <Filter
+            activeQuantity={activeQuantity}
+            setActiveQuantity={setActiveQuantity}
+            activeFilter={activeFilter}
+            setActiveFilter={setActiveFilter}
+          />
+          <div className="tablets__content">
+            <section className="page__models section">
+              {activeQuantity === 16 && (
+                <ActiveQuantity16
+                  phones={
+                    activeFilter === 'Newest'
+                      ? sortedAcc
+                      : accessories || activeFilter === 'Price: Low to High'
+                        ? sortedAccLowToHigh
+                        : accessories || activeFilter === 'Price: High to Low'
+                          ? sortedAccHighToLow
+                          : accessories
+                  }
+                  activeQuantity={activeQuantity}
+                  activePage={activePage}
+                  mapAccessorieToProduct={mapAccessorieToProduct}
+                />
+              )}
+              {activeQuantity === 32 && (
+                <ActiveQuantity32
+                  phones={
+                    activeFilter === 'Newest'
+                      ? sortedAcc
+                      : accessories || activeFilter === 'Price: Low to High'
+                        ? sortedAccLowToHigh
+                        : accessories || activeFilter === 'Price: High to Low'
+                          ? sortedAccHighToLow
+                          : accessories
+                  }
+                  activeQuantity={activeQuantity}
+                  activePage={activePage}
+                  mapAccessorieToProduct={mapAccessorieToProduct}
+                />
+              )}
+              {activeQuantity === 64 && (
+                <ActiveQuantity64
+                  phones={
+                    activeFilter === 'Newest'
+                      ? sortedAcc
+                      : accessories || activeFilter === 'Price: Low to High'
+                        ? sortedAccLowToHigh
+                        : accessories || activeFilter === 'Price: High to Low'
+                          ? sortedAccHighToLow
+                          : accessories
+                  }
+                  activeQuantity={activeQuantity}
+                  activePage={activePage}
+                  mapAccessorieToProduct={mapAccessorieToProduct}
+                />
+              )}
+              <PageSliderAcc
+                setActivePage={setActivePage}
                 activePage={activePage}
-                mapAccessorieToProduct={mapAccessorieToProduct}
-              />
-            )}
-            {activeQuantity === 32 && (
-              <ActiveQuantity32
-                phones={
-                  activeFilter === 'Newest'
-                    ? sortedAcc
-                    : accessories || activeFilter === 'Price: Low to High'
-                      ? sortedAccLowToHigh
-                      : accessories || activeFilter === 'Price: High to Low'
-                        ? sortedAccHighToLow
-                        : accessories
-                }
                 activeQuantity={activeQuantity}
-                activePage={activePage}
-                mapAccessorieToProduct={mapAccessorieToProduct}
               />
-            )}
-            {activeQuantity === 64 && (
-              <ActiveQuantity64
-                phones={
-                  activeFilter === 'Newest'
-                    ? sortedAcc
-                    : accessories || activeFilter === 'Price: Low to High'
-                      ? sortedAccLowToHigh
-                      : accessories || activeFilter === 'Price: High to Low'
-                        ? sortedAccHighToLow
-                        : accessories
-                }
-                activeQuantity={activeQuantity}
-                activePage={activePage}
-                mapAccessorieToProduct={mapAccessorieToProduct}
-              />
-            )}
-            <PageSliderAcc
-              setActivePage={setActivePage}
-              activePage={activePage}
-              activeQuantity={activeQuantity}
-            />
-          </section>
+            </section>
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="page__footer">
         <Footer />

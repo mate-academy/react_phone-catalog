@@ -1,6 +1,7 @@
 import './Filter.scss';
 import Arrow from '../../images/icons/arrow-down.svg';
 import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 export type FilterValue =
   | 'Newest'
@@ -26,6 +27,27 @@ export const Filter = ({
   const [isOptionsActive, setIsOptionsActive] = React.useState(false);
   const [isNumberOptionsActive, setIsNumberOptionsActive] =
     React.useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const handleQuantityChange = (value: string) => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set('Quantity', value);
+
+    setSearchParams(params);
+
+    setIsNumberOptionsActive(false);
+  };
+
+  const handleFilterChange = (value: string) => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set('Filter', value);
+
+    setSearchParams(params);
+
+    setIsOptionsActive(false);
+  };
 
   return (
     <div className="filter">
@@ -50,27 +72,43 @@ export const Filter = ({
         >
           <button
             type="button"
-            onClick={() => setActiveFilter('Newest')}
+            onClick={() => {
+              setActiveFilter('Newest');
+              setIsOptionsActive(!isOptionsActive);
+              handleFilterChange('Newest');
+            }}
             className="filter__option filter__option-first"
           >
             <span className="filter__option-text">Newest</span>
           </button>
           <button
             type="button"
-            onClick={() => setActiveFilter('Popular')}
+            onClick={() => {
+              setActiveFilter('Popular');
+              setIsOptionsActive(!isOptionsActive);
+              handleFilterChange('Popular');
+            }}
             className="filter__option"
           >
             <span className="filter__option-text">Popular</span>
           </button>
           <button
             type="button"
-            onClick={() => setActiveFilter('Price: Low to High')}
+            onClick={() => {
+              setActiveFilter('Price: Low to High');
+              setIsOptionsActive(!isOptionsActive);
+              handleFilterChange('Price: Low to High');
+            }}
             className="filter__option filter__option-last"
           >
             <span className="filter__option-text">Price: Low to High</span>
           </button>
           <button
-            onClick={() => setActiveFilter('Price: High to Low')}
+            onClick={() => {
+              setActiveFilter('Price: High to Low');
+              setIsOptionsActive(!isOptionsActive);
+              handleFilterChange('Price: High to Low');
+            }}
             type="button"
             className="filter__option filter__option-last"
           >
@@ -101,21 +139,33 @@ export const Filter = ({
           <button
             type="button"
             className="filter__number-option filter__number-option-first"
-            onClick={() => setActiveQuantity(16)}
+            onClick={() => {
+              setActiveQuantity(16);
+              setIsNumberOptionsActive(!isNumberOptionsActive);
+              handleQuantityChange('16');
+            }}
           >
             <span className="filter__number-option-text">16</span>
           </button>
           <button
             type="button"
             className="filter__number-option"
-            onClick={() => setActiveQuantity(32)}
+            onClick={() => {
+              setActiveQuantity(32);
+              setIsNumberOptionsActive(!isNumberOptionsActive);
+              handleQuantityChange('32');
+            }}
           >
             <span className="filter__number-option-text">32</span>
           </button>
           <button
             type="button"
             className="filter__number-option filter__number-option-last"
-            onClick={() => setActiveQuantity(64)}
+            onClick={() => {
+              setActiveQuantity(64);
+              setIsNumberOptionsActive(!isNumberOptionsActive);
+              handleQuantityChange('64');
+            }}
           >
             <span className="filter__number-option-text">64</span>
           </button>

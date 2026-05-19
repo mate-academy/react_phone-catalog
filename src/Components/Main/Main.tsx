@@ -12,6 +12,7 @@ import { Discounted } from '../../types/Discounted';
 
 import welcomeTablet from '../../images/Banner-tablet.png';
 import welcomePhone from '../../images/banner-phone.png';
+import { Loader } from '../Loader/Loader';
 
 enum Rectangles {
   first = 'first',
@@ -20,7 +21,7 @@ enum Rectangles {
 }
 
 export const Main: React.FC = () => {
-  const [, setActiveRec] = useState<Rectangles>(Rectangles.first);
+  const [activeRec, setActiveRec] = useState<Rectangles>(Rectangles.first);
   const [activePic, setActivePic] = useState<Rectangles>(Rectangles.first);
   const pics = [Rectangles.first, Rectangles.second, Rectangles.third];
   const [picIndex, setPicIndex] = useState(0);
@@ -76,7 +77,7 @@ export const Main: React.FC = () => {
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [productsPerSlide, setProductsPerSlide] = useState(4);
-  const activeRect = pics[picIndex];
+  const activeRect = activeRec;
 
   const [discountedActiveIndex, setDiscountedActiveIndex] = useState(0);
 
@@ -262,7 +263,10 @@ export const Main: React.FC = () => {
                   <Link to=""></Link>
                 </div>
               ) : (
-                <div className="welcome__block-rectangle">
+                <div
+                  onClick={() => setActiveRec(Rectangles.first)}
+                  className="welcome__block-rectangle"
+                >
                   <Link to=""></Link>
                 </div>
               )}
@@ -272,7 +276,10 @@ export const Main: React.FC = () => {
                   <Link to=""></Link>
                 </div>
               ) : (
-                <div className="welcome__block-rectangle">
+                <div
+                  onClick={() => setActiveRec(Rectangles.second)}
+                  className="welcome__block-rectangle"
+                >
                   <Link to=""></Link>
                 </div>
               )}
@@ -282,7 +289,10 @@ export const Main: React.FC = () => {
                   <Link to=""></Link>
                 </div>
               ) : (
-                <div className="welcome__block-rectangle ">
+                <div
+                  onClick={() => setActiveRec(Rectangles.third)}
+                  className="welcome__block-rectangle "
+                >
                   <Link to=""></Link>
                 </div>
               )}

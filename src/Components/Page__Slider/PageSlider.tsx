@@ -4,6 +4,7 @@ import React from 'react';
 
 // eslint-disable-next-line max-len
 import arrRightDisabled from '../../images/icons/Chevron (Arrow Right) grey.png';
+import { useSearchParams } from 'react-router-dom';
 
 type Props = {
   activePage: number;
@@ -16,14 +17,28 @@ export const PageSlider: React.FC<Props> = ({
   setActivePage,
   activeQuantity,
 }: Props) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handlePageChange = (value: string) => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set('Page', value);
+
+    setSearchParams(params);
   };
 
   return (
     <div className="page__models-page">
       <button
-        onClick={() => setActivePage(activePage - 1)}
+        onClick={() => {
+          setActivePage(activePage - 1);
+          handlePageChange((activePage - 1 + 1).toString());
+          handleScrollToTop();
+        }}
         disabled={activePage === 0}
         className={`page__models-button page__models-arr ${activePage === 0 ? 'page__models-arr-disabled' : ''}`}
       >
@@ -37,6 +52,7 @@ export const PageSlider: React.FC<Props> = ({
         onClick={() => {
           setActivePage(0);
           handleScrollToTop();
+          handlePageChange('1');
         }}
         className={`page__models-button ${activePage === 0 ? 'page__models-button_active' : ''}`}
       >
@@ -46,6 +62,7 @@ export const PageSlider: React.FC<Props> = ({
         onClick={() => {
           setActivePage(1);
           handleScrollToTop();
+          handlePageChange('2');
         }}
         className={`page__models-button ${activePage === 1 ? 'page__models-button_active' : ''}`}
       >
@@ -55,6 +72,7 @@ export const PageSlider: React.FC<Props> = ({
         onClick={() => {
           setActivePage(2);
           handleScrollToTop();
+          handlePageChange('3');
         }}
         className={`page__models-button ${activePage === 2 ? 'page__models-button_active' : ''} ${activeQuantity === 64 ? 'page__models-disabled' : ''}`}
       >
@@ -64,6 +82,7 @@ export const PageSlider: React.FC<Props> = ({
         onClick={() => {
           setActivePage(3);
           handleScrollToTop();
+          handlePageChange('4');
         }}
         className={`page__models-button ${activePage === 3 ? 'page__models-button_active' : ''} ${activeQuantity === 64 ? 'page__models-disabled' : ''}`}
       >
@@ -72,6 +91,7 @@ export const PageSlider: React.FC<Props> = ({
       <button
         onClick={() => {
           setActivePage(activePage + 1);
+          handlePageChange((activePage + 1 + 1).toString());
           handleScrollToTop();
         }}
         className={`page__models-button page__models-arr ${activePage === 3 ? 'page__models-arr-disabled' : ''} ${activePage === 1 && activeQuantity === 64 ? 'page__models-arr-disabled' : ''}`}
