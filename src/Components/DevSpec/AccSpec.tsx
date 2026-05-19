@@ -431,7 +431,7 @@ export const AccSpec: React.FC = () => {
               <span className="phone__tech-span">{accessorie?.material}</span>
             </p>
             <p className="phone__tech-text">
-              Compatibility{', '}
+              Compatibility{' '}
               <span className="phone__tech-span">
                 {accessorie?.compatibility}
               </span>

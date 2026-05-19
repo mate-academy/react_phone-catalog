@@ -419,7 +419,8 @@ export const PhoneSpec: React.FC = () => {
               Zoom <span className="phone__tech-span">{phone?.zoom}</span>
             </p>
             <p className="phone__tech-text">
-              Cell <span className="phone__tech-span">{phone?.cell}</span>
+              Cell{' '}
+              <span className="phone__tech-span">{phone?.cell.join(', ')}</span>
             </p>
           </div>
         </div>
