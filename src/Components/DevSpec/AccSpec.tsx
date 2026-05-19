@@ -34,12 +34,24 @@ enum Image {
   fifth = 'fifth',
 }
 
-// enum Color {
-//   first = 'first',
-//   second = 'second',
-//   third = 'third',
-//   fourth = 'fourth',
-// }
+enum Color {
+  black = 'black',
+  green = 'green',
+  yellow = 'yellow',
+  white = 'white',
+  purple = 'purple',
+  red = 'red',
+  rosegold = 'rosegold',
+  gold = 'gold',
+  silver = 'silver',
+  spacegray = 'spacegray',
+  coral = 'coral',
+  midnight = 'midnight',
+  graphite = 'graphite',
+  sierrablue = 'sierrablue',
+  pink = 'pink',
+  blue = 'blue',
+}
 
 export const AccSpec: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -71,7 +83,7 @@ export const AccSpec: React.FC = () => {
   const [, setErrorMessage] = useState(false);
   const [, setLoading] = useState(false);
   const [image, setImage] = useState<Image>(Image.first);
-  const [color, setColor] = useState(accessorie?.colorsAvailable[0]);
+  const [color, setColor] = useState<Color | null>(null);
   const images = accessorie?.images || [];
   const path = accessorie?.id;
   // const capacitiesRaw = accessorie?.capacity ?? [];
@@ -225,6 +237,7 @@ export const AccSpec: React.FC = () => {
                   /-[^-]+$/,
                   `-${c.toLowerCase()}`,
                 );
+                // const colorFirst = color === c[0];
 
                 return (
                   <div
@@ -260,7 +273,7 @@ export const AccSpec: React.FC = () => {
                       onClick={() => {
                         setSelectedCapacity(cap);
                         navigate(
-                          `../accessories/${updatedPathCap}-${color.toLowerCase()}`,
+                          `../accessories/${updatedPathCap}-${color?.toLowerCase()}`,
                         );
                       }}
                       onKeyDown={e =>

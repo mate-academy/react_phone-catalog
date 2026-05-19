@@ -34,11 +34,24 @@ enum Image {
 }
 
 enum Color {
-  first = 'first',
-  second = 'second',
-  third = 'third',
-  fourth = 'fourth',
+  black = 'black',
+  green = 'green',
+  yellow = 'yellow',
+  white = 'white',
+  purple = 'purple',
+  red = 'red',
+  rosegold = 'rosegold',
+  gold = 'gold',
+  silver = 'silver',
+  spacegray = 'spacegray',
+  coral = 'coral',
+  midnight = 'midnight',
+  graphite = 'graphite',
+  sierrablue = 'sierrablue',
+  pink = 'pink',
+  blue = 'blue',
 }
+
 
 export const TabletSpec: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -69,9 +82,7 @@ export const TabletSpec: React.FC = () => {
   const [, setErrorMessage] = useState(false);
   const [, setLoading] = useState(false);
   const [image, setImage] = useState<Image>(Image.first);
-  const [color, setColor] = useState<Color>(
-    tablet?.colorsAvailable[0] as Color,
-  );
+  const [color, setColor] = useState<Color | null>(null);
   const images = tablet?.images || [];
   const path = tablet?.id;
   // const capacitiesRaw = tablet?.capacity ?? [];

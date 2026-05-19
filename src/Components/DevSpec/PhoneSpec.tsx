@@ -33,24 +33,24 @@ enum Image {
   fifth = 'fifth',
 }
 
-// enum Color {
-//   black = 'black',
-//   green = 'green',
-//   yellow = 'yellow',
-//   white = 'white',
-//   purple = 'purple',
-//   red = 'red',
-//   rosegold = 'rosegold',
-//   gold = 'gold',
-//   silver = 'silver',
-//   spacegray = 'spacegray',
-//   coral = 'coral',
-//   midnight = 'midnight',
-//   graphite = 'graphite',
-//   sierrablue = 'sierrablue',
-//   pink = 'pink',
-//   blue = 'blue',
-// }
+enum Color {
+  black = 'black',
+  green = 'green',
+  yellow = 'yellow',
+  white = 'white',
+  purple = 'purple',
+  red = 'red',
+  rosegold = 'rosegold',
+  gold = 'gold',
+  silver = 'silver',
+  spacegray = 'spacegray',
+  coral = 'coral',
+  midnight = 'midnight',
+  graphite = 'graphite',
+  sierrablue = 'sierrablue',
+  pink = 'pink',
+  blue = 'blue',
+}
 
 export const PhoneSpec: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -83,7 +83,7 @@ export const PhoneSpec: React.FC = () => {
   const [, setErrorMessage] = useState(false);
   const [, setLoading] = useState(false);
   const [image, setImage] = useState<Image>(Image.first);
-  const [color, setColor] = useState(phone?.colorsAvailable[0]);
+  const [color, setColor] = useState<Color | null>(null);
   const images = phone?.images ?? [];
   // const capacitiesRaw = phone?.capacity ?? [];
   const capacities: string[] = Array.isArray(phone?.capacityAvailable)
@@ -262,7 +262,7 @@ export const PhoneSpec: React.FC = () => {
                 {phone?.capacityAvailable.map(cap => {
                   const updatedPathCap = path?.replace(
                     /-[^-]+-[^-]+$/,
-                    `-${selectedCapacity?.toLowerCase()}-${color?.toLowerCase()}-${color?.toLowerCase()}`,
+                    `-${selectedCapacity?.toLowerCase()}-${color?.toLowerCase()}`,
                   );
 
                   return (
