@@ -60,6 +60,16 @@ export const CartPage = () => {
     changeQuantity(id, command);
   };
 
+  const handleCheckout = () => {
+    const isConfirmed = window.confirm(
+      'Checkout is not implemented yet. Do you want to clear the Cart?',
+    );
+
+    if (isConfirmed) {
+      clearCart();
+    }
+  };
+
   if (cart.length === 0) {
     return (
       <div className={styles.page}>
@@ -145,7 +155,7 @@ export const CartPage = () => {
             Total for {totalCount} items
           </div>
           <div className={styles.separator} />
-          <button className={styles.button} onClick={() => clearCart()}>
+          <button className={styles.button} onClick={() => handleCheckout()}>
             Checkout
           </button>
         </div>
