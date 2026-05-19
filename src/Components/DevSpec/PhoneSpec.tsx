@@ -247,7 +247,7 @@ export const PhoneSpec: React.FC = () => {
                     <div
                       onClick={() => {
                         setColor(c);
-                        navigate(`../${updatedPath}`);
+                        navigate(`./${updatedPath}`);
                       }}
                       className={`phone__color-color phone__color-${c}`}
                     ></div>
@@ -272,7 +272,7 @@ export const PhoneSpec: React.FC = () => {
                       className={`phone__specs-capacity ${cap === selectedCapacity ? 'phone__specs-capacity-active' : ''}`}
                       onClick={() => {
                         setSelectedCapacity(cap);
-                        navigate(`../${updatedPathCap}`);
+                        navigate(`./${updatedPathCap}`);
                       }}
                       onKeyDown={e =>
                         (e.key === 'Enter' || e.key === ' ') &&
