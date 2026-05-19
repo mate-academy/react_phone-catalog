@@ -1,0 +1,92 @@
+@import '../../styles/mixin';
+@import '../../styles/variables';
+
+.pagination {
+    grid-column: -1 / 1;
+    margin-top: 24px;
+
+    @include on-tablet {
+        margin-top: 40px;
+    }
+
+    &_block {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        align-items: center;
+
+        &>button {
+            height: 32px;
+            width: 32px;
+            border: 1px solid $Icons;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+
+            &:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+
+            &:hover:not(:disabled) {
+                border-color: $Primary;
+            }
+
+            &>img {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        &_numbers {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 21px;
+            letter-spacing: 0%;
+            text-align: center;
+        }
+    }
+}
+
+.buttons {
+    height: 32px;
+    width: 32px;
+    border: 1px solid $Elements;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover:not(.selected) {
+        border-color: $Primary;
+    }
+}
+
+.selected {
+    background-color: $Primary;
+    color: $White;
+    height: 32px;
+    width: 32px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: $Primary;
+    }
+}
+
+.ellipsis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    color: $Secondary;
+    font-weight: 600;
+    font-size: 14px;
+    user-select: none;
+}

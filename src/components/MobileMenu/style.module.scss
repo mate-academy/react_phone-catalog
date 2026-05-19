@@ -1,0 +1,134 @@
+@import '../../styles/variables';
+@import '../../styles/mixin';
+
+$header-height: 48px;
+
+.mobileMenu {
+    position: fixed;
+    top: $header-height;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+
+    width: 100vw;
+    height: calc(100vh - $header-height);
+
+    background-color: $White;
+    z-index: 999;
+
+    transform: translateX(100%);
+    transition: transform 0.4s ease-out;
+
+
+    @include on-tablet {
+        display: none;
+    }
+
+    &_content {
+        flex-grow: 1;
+        padding: 0 16px;
+
+        &_links {
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+
+            &>a {
+                display: flex;
+                align-items: center;
+                height: 27px;
+                font-weight: 800;
+                font-size: 12px;
+                line-height: 11px;
+                color: $Secondary;
+                text-decoration: none;
+                transition: color 0.3s ease;
+
+                &.active {
+                    color: $Primary;
+                    border-bottom: 3px solid $Primary;
+                    padding-bottom: 4px;
+                }
+
+                &:hover {
+                    color: $Primary;
+                }
+            }
+        }
+    }
+
+
+    &_icons {
+        display: flex;
+
+        :first-child {
+            border-right: 1px solid $Elements;
+        }
+
+        &_block {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            height: 64px;
+            border-top: 1px solid $Elements;
+            position: relative;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+
+            &>img {
+                height: 16px;
+                width: 16px;
+                transition: transform 0.3s ease;
+            }
+
+            &.active {
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    height: 3px;
+                    background-color: $Primary;
+                }
+            }
+        }
+    }
+
+    &_badgeWrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 14px;
+        width: 14px;
+    }
+
+    &_badge {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        background-color: $Red;
+        color: $White;
+        border-radius: 50%;
+        min-width: 14px;
+        height: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        font-weight: 600;
+        font-family: inherit;
+        line-height: 1;
+        border: 2px solid $White;
+        box-sizing: border-box;
+        z-index: 10;
+    }
+}
+
+.is-open {
+    transform: translateX(0);
+}
