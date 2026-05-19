@@ -34,12 +34,12 @@ enum Image {
   fifth = 'fifth',
 }
 
-enum Color {
-  first = 'first',
-  second = 'second',
-  third = 'third',
-  fourth = 'fourth',
-}
+// enum Color {
+//   first = 'first',
+//   second = 'second',
+//   third = 'third',
+//   fourth = 'fourth',
+// }
 
 export const AccSpec: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -260,7 +260,7 @@ export const AccSpec: React.FC = () => {
                       onClick={() => {
                         setSelectedCapacity(cap);
                         navigate(
-                          `../accessories/${updatedPathCap}/${color.toLowerCase()}1`,
+                          `../accessories/${updatedPathCap}-${color.toLowerCase()}`,
                         );
                       }}
                       onKeyDown={e =>
