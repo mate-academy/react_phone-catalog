@@ -20,7 +20,6 @@ import { Phone } from '../../types/Phone';
 import { Products } from '../../types/Products';
 import React from 'react';
 import { Aside } from '../Aside/Aside';
-import { replace } from 'cypress/types/lodash';
 
 // type Props = {
 //   favouritesCount: number;
@@ -94,6 +93,11 @@ export const PhoneSpec: React.FC = () => {
       : [];
 
   const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
+
+  const handleNavigate = (col: string) => {
+    navigate(`/phones/${productId}../${col.toLowerCase()}`);
+    setSelectedCapacity(col);
+  };
 
   useEffect(() => {
     if (capacities.length) {
@@ -239,10 +243,8 @@ export const PhoneSpec: React.FC = () => {
                 >
                   <div
                     onClick={() => {
-                      navigate(
-                        `/${replace(/\bhello\b/g, '-', c.toLowerCase())}`,
-                      );
                       setColor(c);
+                      handleNavigate(c);
                     }}
                     className={`phone__color-color phone__color-${c}`}
                   ></div>
