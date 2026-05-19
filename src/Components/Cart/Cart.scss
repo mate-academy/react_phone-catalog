@@ -1,9 +1,12 @@
 @import '../../utils/mixins';
 
 .cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  place-items: center;
   min-height: 100vh;
   min-width: 100%;
-  place-items: center;
 
   &__items {
     width: 100%;
@@ -71,7 +74,7 @@
   &__footer {
     position: relative;
     width: 100%;
-    margin-top: 39%;
+    margin-top: auto;
     padding-top: 40px;
   }
 
