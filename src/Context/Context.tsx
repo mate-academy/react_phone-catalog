@@ -21,6 +21,12 @@ type Props = React.PropsWithChildren<{ someFlag?: boolean }>;
 
 const STORAGE_KEY = 'cart';
 
+const normalizeImagePath = (src: string) =>
+  src.replace(/rimg\//g, 'img/');
+
+const normalizeProduct = (product: Products): Products =>
+  product.image ? { ...product, image: normalizeImagePath(product.image) } : product;
+
 function readCart() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -36,6 +42,7 @@ function readCart() {
         ? parsed.items.map((item: CartItem) => ({
             ...item,
             id: String(item.id),
+            product: normalizeProduct(item.product),
           }))
         : [],
     };

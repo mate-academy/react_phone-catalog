@@ -18,6 +18,12 @@ type Props = React.PropsWithChildren<{ someFlag?: boolean }>;
 
 const STORAGE_KEY = 'favourites';
 
+const normalizeImagePath = (src: string) =>
+  src.replace(/rimg\//g, 'img/');
+
+const normalizeProduct = (product: Products): Products =>
+  product.image ? { ...product, image: normalizeImagePath(product.image) } : product;
+
 function readFav(): FavState {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -32,7 +38,12 @@ function readFav(): FavState {
       return { items: [] };
     }
 
-    return { items: parsed.items }; // optionally normalize ids here
+    return {
+      items: parsed.items.map((item: FavItem) => ({
+        ...item,
+        product: normalizeProduct(item.product),
+      })),
+    };
   } catch {
     return { items: [] };
   }
