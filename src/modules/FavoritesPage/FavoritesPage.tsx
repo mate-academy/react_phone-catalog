@@ -52,7 +52,7 @@ export const FavoritesPage = () => {
         </div>
         <div className={styles.empty}>
           <img
-            src="/img/favorite-is-empty.png"
+            src="/src/images/favorite-is-empty.png"
             className={styles.empty__image}
             alt="cart is empty"
           />

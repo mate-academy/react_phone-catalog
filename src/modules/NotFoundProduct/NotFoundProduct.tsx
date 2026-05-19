@@ -8,7 +8,7 @@ export const NotFoundProduct = () => {
 
       <div className={styles.image_box}>
         <img
-          src="/img/product-not-found.png"
+          src="/src/images/product-not-found.png"
           alt="Page not found"
           className={styles.image}
         />
