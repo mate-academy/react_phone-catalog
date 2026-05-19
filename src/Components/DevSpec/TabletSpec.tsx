@@ -230,7 +230,7 @@ export const TabletSpec: React.FC = () => {
                 return (
                   <div
                     key={c}
-                    className={`phone__color ${color === c ? 'phone__color-active' : ''}`}
+                    className={`phone__color ${color === c ? 'phone__color-active' : c === tablet.colorsAvailable[0] ? 'phone__color-active' : ''} phone__color-${c.toLowerCase()}`}
                   >
                     <div
                       onClick={() => {

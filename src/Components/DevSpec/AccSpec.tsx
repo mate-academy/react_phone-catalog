@@ -229,7 +229,7 @@ export const AccSpec: React.FC = () => {
                 return (
                   <div
                     key={c}
-                    className={`phone__color ${color === c ? 'phone__color-active' : color === c[0] ? 'phone__color-active' : ''}`}
+                    className={`phone__color ${color === c ? 'phone__color-active' : color === c[0] ? 'phone__color-active' : c === accessorie.colorsAvailable[0] ? 'phone__color-active' : ''} phone__color-${c.toLowerCase()}`}
                   >
                     <div
                       onClick={() => {
