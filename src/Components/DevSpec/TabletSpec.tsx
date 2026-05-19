@@ -233,7 +233,7 @@ export const TabletSpec: React.FC = () => {
                     <div
                       onClick={() => {
                         setColor(c);
-                        navigate(`../accessories/${updatedPath}`);
+                        navigate(`../tablets/${updatedPath}`);
                       }}
                       className={`phone__color-color phone__color-${c}`}
                     ></div>
@@ -258,7 +258,9 @@ export const TabletSpec: React.FC = () => {
                       className={`phone__specs-capacity ${cap === selectedCapacity ? 'phone__specs-capacity-active' : ''}`}
                       onClick={() => {
                         setSelectedCapacity(cap);
-                        navigate(`../tablets/${updatedPathCap}`);
+                        navigate(
+                          `../tablets/${updatedPathCap}-${color.toLowerCase()}`,
+                        );
                       }}
                       onKeyDown={e =>
                         (e.key === 'Enter' || e.key === ' ') &&
