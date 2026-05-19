@@ -97,6 +97,10 @@ export const PhoneSpec: React.FC = () => {
   const path = phone?.id;
 
   const updatedPath = path?.replace(/-[^-]+$/, `-${color.toLowerCase()}`);
+  const updatedPathCap = path?.replace(
+    /-[^-]+-[^-]+$/,
+    `-${selectedCapacity?.toLowerCase()}-${color.toLowerCase()}`,
+  );
 
   useEffect(() => {
     if (capacities.length) {
@@ -261,7 +265,7 @@ export const PhoneSpec: React.FC = () => {
                     className={`phone__specs-capacity ${cap === selectedCapacity ? 'phone__specs-capacity-active' : ''}`}
                     onClick={() => {
                       setSelectedCapacity(cap);
-                      navigate(`../capacity/${cap.toLowerCase()}`);
+                      navigate(`../${updatedPathCap}`);
                     }}
                     onKeyDown={e =>
                       (e.key === 'Enter' || e.key === ' ') &&
