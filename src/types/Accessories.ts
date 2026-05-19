@@ -18,4 +18,6 @@ export interface Accessorie {
   zoom: string;
   cell: string;
   color: string;
+  compatibility: string;
+  material: string;
 }
