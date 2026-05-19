@@ -33,7 +33,7 @@ export const Favourites = () => {
           <img src={ArrowGray} alt="" />
           <span className="favourites__path-name">Favourites</span>
         </div>
-        <div className="aside__title">Favourites</div>
+        <h1 className="aside__title">Favourites</h1>
         <div className="favourites__sub">{totalFavourites} items</div>
         <div className="favourites__items">
           {totalFavourites === 0 && (

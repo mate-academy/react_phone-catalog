@@ -151,7 +151,7 @@ export const Phones = () => {
           <span className="phones__path-phones page__paths">Phones</span>
         </div>
         <div className="phones__text page__text">
-          <p className="phones__title page__title">Mobile phones</p>
+          <h1 className="phones__title page__title">Mobile phones</h1>
           <span className="phones__subtitle page__subtitle">95 models</span>
         </div>
         <Filter

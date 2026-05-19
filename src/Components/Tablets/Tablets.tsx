@@ -125,7 +125,7 @@ export const Tablets = () => {
           <span className="tablets__path-tablet page__paths">Tablets</span>
         </div>
         <div className="tablets__text page__text">
-          <p className="tablets__title page__title">Tablets</p>
+          <h1 className="tablets__title page__title">Tablets</h1>
           <span className="tablets__subtitle page__subtitle">24 models</span>
         </div>
         <Filter

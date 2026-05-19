@@ -118,7 +118,7 @@ export const Accessories = () => {
           </span>
         </div>
         <div className="Accessories__text page__text">
-          <p className="Accessories__title page__title">Accessories</p>
+          <h1 className="Accessories__title page__title">Accessories</h1>
           <span className="accessories__subtitle page__subtitle">
             100 models
           </span>

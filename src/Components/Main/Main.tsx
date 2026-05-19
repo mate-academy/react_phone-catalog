@@ -199,9 +199,9 @@ export const Main: React.FC = () => {
         <div className="main__content">
           <section className="welcome__block">
             <div className="welcome__block-text">
-              <p className="welcome__block-title">
+              <h1 className="welcome__block-title">
                 Welcome to Nice Gadgets store!
-              </p>
+              </h1>
             </div>
 
             <div className="welcome__block-sliders">
@@ -291,9 +291,9 @@ export const Main: React.FC = () => {
           </section>
           <section className="new__models section">
             <div className="new__models-arr">
-              <p className="section-title new__models-title">
+              <h2 className="section-title new__models-title">
                 Brand new models
-              </p>
+              </h2>
               <div className="new__models-arrows">
                 <Link to="" className="new__models-arrow-left">
                   <button
@@ -345,7 +345,7 @@ export const Main: React.FC = () => {
           </section>
           <section className="new__models section">
             <div className="new__models-arr">
-              <p className="section-title">Hot prices</p>
+              <h2 className="section-title">Hot prices</h2>
               <div className="new__models-arrows">
                 <Link to="" className="new__models-arrow-link">
                   <button

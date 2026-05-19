@@ -40,7 +40,7 @@ export const Cart = () => {
           <img src={ArrowGray} alt="" />
           <span className="cart__path-name">Cart</span>
         </div>
-        <div className="aside__title">Cart</div>
+        <h1 className="aside__title">Cart</h1>
         <div className="cart__sub">{totalQuantity} items</div>
         <div className="cart__container">
           <div className="cart__items">
