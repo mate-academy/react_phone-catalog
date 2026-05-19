@@ -46,12 +46,13 @@
     @media (min-width: 640px) {
       grid-template-columns: repeat(2, 288px);
       gap: 40px 16px;
-      justify-content: start;
+      justify-content: center;
     }
 
     @media (min-width: 1200px) {
       grid-template-columns: repeat(4, 272px);
       column-gap: 16px;
+      justify-content: center;
     }
 
     .product-card {

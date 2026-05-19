@@ -79,11 +79,17 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 
   const handleCheckout = useCallback(() => {
+    if (cart.length === 0) {
+      return;
+    }
+
     setIsCheckout(true);
+    setCart([]);
+
     setTimeout(() => {
       setIsCheckout(false);
     }, 3000);
-  }, []);
+  }, [cart.length, setCart]);
 
   const totalAmount = useMemo(
     () => cart.reduce((acc, item) => acc + item.price * item.quantity, 0),

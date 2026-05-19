@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import './Footer.scss';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -23,7 +24,7 @@ export const Footer: React.FC = () => {
             <ul className="footer__list">
               <li className="footer__item">
                 <a
-                  href="https://github.com/AleksanderChaika/react_phone-catalog"
+                  href="https://github.com/AleksanderChaika"
                   className="footer__link"
                   target="_blank"
                   rel="noreferrer"
@@ -32,9 +33,14 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li className="footer__item">
-                <Link to="/contacts" className="footer__link">
+                <a
+                  href="https://t.me/A_l_e_k_s_a_n_d_e_r_97"
+                  className="footer__link"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Contacts
-                </Link>
+                </a>
               </li>
               <li className="footer__item">
                 <Link to="/rights" className="footer__link">
