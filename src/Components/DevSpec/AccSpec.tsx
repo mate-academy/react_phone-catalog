@@ -259,9 +259,7 @@ export const AccSpec: React.FC = () => {
                       className={`phone__specs-capacity ${cap === selectedCapacity ? 'phone__specs-capacity-active' : ''}`}
                       onClick={() => {
                         setSelectedCapacity(cap);
-                        navigate(
-                          `../accessories/${updatedPathCap}-${color.toLowerCase()}`,
-                        );
+                        navigate(`../accessories/${updatedPathCap}`);
                       }}
                       onKeyDown={e =>
                         (e.key === 'Enter' || e.key === ' ') &&
