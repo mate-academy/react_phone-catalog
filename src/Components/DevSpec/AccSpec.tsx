@@ -71,7 +71,7 @@ export const AccSpec: React.FC = () => {
   const [, setErrorMessage] = useState(false);
   const [, setLoading] = useState(false);
   const [image, setImage] = useState<Image>(Image.first);
-  const [color, setColor] = useState(accessorie?.colorsAvailable[0] || '');
+  const [color, setColor] = useState(accessorie?.colorsAvailable[0]);
   const images = accessorie?.images || [];
   const path = accessorie?.id;
   // const capacitiesRaw = accessorie?.capacity ?? [];
