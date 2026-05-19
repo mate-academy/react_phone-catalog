@@ -6,6 +6,7 @@ import { useCartAndFavContext } from '../shared/context/CartAndFavContext';
 import { Product } from '../../types/ProductType';
 import { getProductData } from '../../api/fetchClient';
 import classNames from 'classnames';
+import emptyCartImg from '../../images/cart-is-empty.png';
 
 type Commands = 'plus' | 'minus' | 'delete';
 
@@ -68,7 +69,7 @@ export const CartPage = () => {
         </div>
         <div className={styles.empty}>
           <img
-            src="/src/images/cart-is-empty.png"
+            src={emptyCartImg}
             className={styles.empty__image}
             alt="cart is empty "
           />

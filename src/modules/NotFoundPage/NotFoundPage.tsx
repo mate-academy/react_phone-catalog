@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './NotFoundPage.module.scss';
+import img from '../../images/page-not-found.png';
 
 export const NotFoundPage = () => {
   return (
@@ -7,11 +8,7 @@ export const NotFoundPage = () => {
       <h1>Not Found Page</h1>
 
       <div className={styles.image_box}>
-        <img
-          src="/src/images/page-not-found.png"
-          alt="Page not found"
-          className={styles.image}
-        />
+        <img src={img} alt="Page not found" className={styles.image} />
       </div>
     </div>
   );

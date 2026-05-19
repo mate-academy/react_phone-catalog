@@ -5,6 +5,7 @@ import styles from '../FavoritesPage/FavoritesPage.module.scss';
 import { ProductCard } from '../../components/ProductCard';
 import { useCartAndFavContext } from '../shared/context/CartAndFavContext';
 import { PathLine } from '../../components/PathLine/indes';
+import emptyFavImg from '../../images/favorite-is-empty.png';
 
 export const FavoritesPage = () => {
   const [counts, setCounts] = useState<number | null>(null);
@@ -52,7 +53,7 @@ export const FavoritesPage = () => {
         </div>
         <div className={styles.empty}>
           <img
-            src="/src/images/favorite-is-empty.png"
+            src={emptyFavImg}
             className={styles.empty__image}
             alt="cart is empty"
           />
