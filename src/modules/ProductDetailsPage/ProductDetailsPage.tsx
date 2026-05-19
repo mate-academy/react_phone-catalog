@@ -9,6 +9,8 @@ import { addToCart } from '../../store/cartSlice';
 import { toggleFavorite } from '../../store/favoritesSlice';
 import cn from 'classnames';
 import styles from './ProductDetailsPage.module.scss';
+// Додаємо імпорт нашої функції (перевір шлях, якщо він відрізняється)
+import { getImageUrl } from '../../api/getImageUrl';
 
 const COLOR_HEX: Record<string, string> = {
   black: '#1F2020',
@@ -119,18 +121,14 @@ export const ProductDetailsPage = () => {
                 })}
                 onClick={() => setMainImage(img)}
               >
-                <img
-                  src={`${import.meta.env.BASE_URL}${img.startsWith('/') ? img.slice(1) : img}`}
-                  alt="thumb"
-                />
+                {/* ВИКОРИСТОВУЄМО getImageUrl */}
+                <img src={getImageUrl(img)} alt="thumb" />
               </div>
             ))}
           </div>
           <div className={styles.main_image}>
-            <img
-              src={`${import.meta.env.BASE_URL}${mainImage.startsWith('/') ? mainImage.slice(1) : mainImage}`}
-              alt={product.name}
-            />
+            {/* ВИКОРИСТОВУЄМО getImageUrl */}
+            <img src={getImageUrl(mainImage)} alt={product.name} />
           </div>
         </div>
 
@@ -205,8 +203,11 @@ export const ProductDetailsPage = () => {
                 dispatch(toggleFavorite(product as unknown as Product))
               }
             >
+              {/* ВИКОРИСТОВУЄМО getImageUrl */}
               <img
-                src={isFavorite ? './img/heart-filled.png' : './img/heart.png'}
+                src={getImageUrl(
+                  isFavorite ? 'img/heart-filled.png' : 'img/heart.png',
+                )}
                 alt="Favorite"
                 className={styles.fav_icon}
               />
