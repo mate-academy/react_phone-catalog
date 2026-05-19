@@ -147,7 +147,7 @@ export const ProductDetailsPage = () => {
     }
 
     addToCart({
-      id: product.itemId!,
+      id: product.id,
       name: product.name,
       price: product.priceDiscount,
       image: selectedImage || 'img/page-not-found.png',
@@ -162,12 +162,12 @@ export const ProductDetailsPage = () => {
       return;
     }
 
-    toggleFavorite(product.itemId!);
+    toggleFavorite(product.id);
   };
 
   const isInCart = cart.some(
     item =>
-      item.id === product?.itemId &&
+      item.id === product?.id &&
       item.color === selectedColor &&
       item.capacity === selectedCapacity,
   );
@@ -191,7 +191,7 @@ export const ProductDetailsPage = () => {
   const relatedProducts = allProducts.filter(
     item =>
       item.category === product?.category &&
-      item.id !== product?.itemId,
+      item.id !== product?.id,
   );
 
   if (isLoading) {
@@ -368,13 +368,13 @@ export const ProductDetailsPage = () => {
 
               <div
                 className={`product-details__favorite ${
-                  favorites.includes(product.itemId) ? 'favorite--active' : ''
+                  favorites.includes(product.id) ? 'favorite--active' : ''
                 }`}
                 onClick={handleToggleFavorite}
               >
                 <img
                   src={
-                    favorites.includes(product.itemId)
+                    favorites.includes(product.id)
                       ? './icons/heart-active.svg'
                       : './icons/heart.svg'
                   }
@@ -493,14 +493,14 @@ export const ProductDetailsPage = () => {
           }}
         >
           {relatedProducts.map(item => {
-            const itemInCart = cart.some(c => c.id === item.itemId);
-            const itemIsFav = favorites.includes(item.itemId);
+            const itemInCart = cart.some(c => c.id === item.id);
+            const itemIsFav = favorites.includes(item.id);
 
             return (
-              <SwiperSlide key={item.itemId}>
+              <SwiperSlide key={item.id}>
                 <div className="related-products__card">
                   <Link
-                    to={`/${item.category}/${item.itemId}`}
+                    to={`/${item.category}/${item.id}`}
                     className="related-products__card-link"
                   >
                     <img
@@ -554,7 +554,7 @@ export const ProductDetailsPage = () => {
                       }`}
                       onClick={() =>
                         addToCart({
-                          id: item.itemId!,
+                          id: item.id,
                           name: item.name,
                           price: item.priceDiscount,
                           image: item.images[0],
@@ -574,7 +574,7 @@ export const ProductDetailsPage = () => {
                       className={`related-products__card-btn related-products__card-btn--favorite ${
                         itemIsFav ? 'favorite--active' : ''
                       }`}
-                      onClick={() => toggleFavorite(item.itemId!)}
+                      onClick={() => toggleFavorite(item.id)}
                     >
                       <img
                         src={
