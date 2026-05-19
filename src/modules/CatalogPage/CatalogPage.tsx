@@ -8,23 +8,34 @@ import { ProductCard } from '../../components/ProductCard';
 import { Dropdown } from '../../components/Dropdown';
 import { PerPageType } from '../../types/PerPageType';
 import { SortType } from '../../types/SortType';
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate, useParams, useSearchParams } from 'react-router-dom';
 import { PathLine } from '../../components/PathLine/PathLine';
 import { Loader } from '../../components/Loader';
-import { useLocalStorage } from '../shared/hooks/useLocalStorage';
 
 export const CatalogPage = () => {
   const { category } = useParams<{ category: string }>();
   const [loader, setLoader] = useState<boolean>(true);
-
+  const [searchParams, setSearchParams] = useSearchParams();
   const [counts, setCounts] = useState<number | null>(null);
   const [products, setProducts] = useState<Product[] | null>(null);
 
-  const [sort, setSort] = useLocalStorage<SortType>('sort_type', 'name');
-  const [perPage, setPerPage] = useLocalStorage<PerPageType>('on_page', 16);
+  const sort = (searchParams.get('sort') as SortType) || 'name';
+  const perPage = Number(searchParams.get('perPage') || 16) as PerPageType;
+  const page = Number(searchParams.get('page') || 1);
 
-  const [page, setPage] = useState<number>(1);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  const updateSearchParam = (key: string, value: string | number) => {
+    const newParams = new URLSearchParams(searchParams);
+
+    newParams.set(key, String(value));
+
+    if (key === 'sort' || key === 'perPage') {
+      newParams.set('page', '1');
+    }
+
+    setSearchParams(newParams);
+  };
 
   useEffect(() => {
     const handleResize = () => setScreenWidth(window.innerWidth);
@@ -103,7 +114,7 @@ export const CatalogPage = () => {
       pageValue > 0 &&
       typeof pageValue === 'number'
     ) {
-      setPage(pageValue);
+      updateSearchParam('page', pageValue);
       window.scrollTo({
         top: 0,
         behavior: 'smooth',
@@ -112,7 +123,7 @@ export const CatalogPage = () => {
   };
 
   useEffect(() => {
-    setPage(1);
+    updateSearchParam('page', 1);
   }, [sort, perPage]);
 
   const pages = useMemo(() => {
@@ -195,9 +206,9 @@ export const CatalogPage = () => {
           </div>
           <Dropdown
             sort={sort}
-            updateSort={setSort}
+            updateSort={val => updateSearchParam('sort', val)}
             perPage={perPage}
-            updatePerPage={setPerPage}
+            updatePerPage={val => updateSearchParam('perPage', val)}
           />
         </div>
 
