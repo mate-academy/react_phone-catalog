@@ -19,6 +19,7 @@ import { Footer } from '../Footer/Footer';
 import { Products } from '../../types/Products';
 import React from 'react';
 import { Tablet } from '../../types/Tablets';
+import { Aside } from '../Aside/Aside';
 
 // type Props = {
 //   favouritesCount: number;
@@ -45,6 +46,7 @@ export const TabletSpec: React.FC = () => {
   const [tablet, setTablet] = useState<Tablet>();
   const { totalQuantity, addToCart, removeFromCart, isInCart } = useCart();
   const { addToFav, removeFromFav, isInFav, totalFavourites } = useFav();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -153,7 +155,9 @@ export const TabletSpec: React.FC = () => {
       <Header
         cartItemsCount={totalQuantity}
         favouritesCount={totalFavourites}
+        setMenuOpen={setMenuOpen}
       />
+      {menuOpen && <Aside setMenuOpen={setMenuOpen} />}
       <div className="phone__container container">
         <div className="phone__path">
           <Link to="/" className="phone__path-home">
@@ -177,6 +181,15 @@ export const TabletSpec: React.FC = () => {
         <div className="phone__title">{tablet?.name}</div>
         <div className="phone__main">
           <div className="phone__image">
+            <div className="phone__image-main phone__image-main__first">
+              {images[mainIndex] && (
+                <img
+                  className="phone__main-image"
+                  src={images[mainIndex]}
+                  alt=""
+                />
+              )}
+            </div>
             <div className="phone__images">
               {images.map((src, i) => (
                 <div
@@ -191,7 +204,7 @@ export const TabletSpec: React.FC = () => {
                 </div>
               ))}
             </div>
-            <div className="phone__image-main">
+            <div className="phone__image-main phone__image-main__second">
               {images[mainIndex] && (
                 <img
                   className="phone__main-image"

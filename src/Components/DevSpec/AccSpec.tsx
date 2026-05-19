@@ -20,6 +20,7 @@ import { Footer } from '../Footer/Footer';
 import { Products } from '../../types/Products';
 import React from 'react';
 import { Accessorie } from '../../types/Accessories';
+import { Aside } from '../Aside/Aside';
 
 // type Props = {
 //   favouritesCount: number;
@@ -46,6 +47,7 @@ export const AccSpec: React.FC = () => {
   const [accessorie, setAccessorie] = useState<Accessorie>();
   const { totalQuantity, addToCart, removeFromCart, isInCart } = useCart();
   const { addToFav, removeFromFav, isInFav, totalFavourites } = useFav();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -154,7 +156,9 @@ export const AccSpec: React.FC = () => {
       <Header
         cartItemsCount={totalQuantity}
         favouritesCount={totalFavourites}
+        setMenuOpen={setMenuOpen}
       />
+      {menuOpen && <Aside setMenuOpen={setMenuOpen} />}
       <div className="phone__container container">
         <div className="phone__path">
           <Link to="/" className="phone__path-home">
@@ -178,6 +182,15 @@ export const AccSpec: React.FC = () => {
         <div className="phone__title">{accessorie?.name}</div>
         <div className="phone__main">
           <div className="phone__image">
+            <div className="phone__image-main phone__image-main__first">
+              {images[mainIndex] && (
+                <img
+                  className="phone__main-image"
+                  src={images[mainIndex]}
+                  alt=""
+                />
+              )}
+            </div>
             <div className="phone__images">
               {images.map((src, i) => (
                 <div
@@ -192,7 +205,7 @@ export const AccSpec: React.FC = () => {
                 </div>
               ))}
             </div>
-            <div className="phone__image-main">
+            <div className="phone__image-main phone__image-main__second">
               {images[mainIndex] && (
                 <img
                   className="phone__main-image"
