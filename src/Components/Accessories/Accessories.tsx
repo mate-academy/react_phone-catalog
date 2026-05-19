@@ -6,7 +6,6 @@ import ArrowGray from '../../images/icons/ChevronGray.svg';
 import Home from '../../images/icons/Home.svg';
 import './Accessories.scss';
 import { getAccessories } from '../../api/api';
-import { getImagePath } from '../../utils/paths';
 import { useEffect, useState } from 'react';
 import { Accessorie } from '../../types/Accessories';
 import { Products } from '../../types/Products';
@@ -44,8 +43,8 @@ export const Accessories = () => {
     year: new Date().getFullYear(),
     image:
       typeof accessorie.images === 'string'
-        ? getImagePath(accessorie.images)
-        : getImagePath(accessorie.images?.[0]),
+        ? accessorie.images
+        : accessorie.images?.[0],
   });
 
   const getAccessoryOrder = (name: string) => {

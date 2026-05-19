@@ -7,9 +7,6 @@ import Home from '../../images/icons/Home.svg';
 import { Filter, FilterValue, ItemQuantity } from '../Filter/Filter';
 
 import { getPhones } from '../../api/api';
-import { getImagePath } from '../../utils/paths';
-
-// import { phones } from '../../api/api';
 
 import { useEffect, useState } from 'react';
 import { useCart } from '../../Context/Context';
@@ -35,8 +32,6 @@ export const Phones = () => {
   const [, setLoading] = useState(true);
   const [, setErrorMessage] = useState('');
 
-  const normalize = (src?: string) => getImagePath(src);
-
   const mapPhoneToProduct = (p: Phone): Products => ({
     id: String(p.id),
     itemId: String(p.id),
@@ -49,7 +44,7 @@ export const Phones = () => {
     color: p.color ?? p.colorsAvailable?.[0] ?? '—',
     ram: p.ram ?? '—',
     year: new Date().getFullYear(),
-    image: normalize(p.images?.[0]),
+    image: p.images?.[0] ?? 'img/placeholder.png',
   });
 
   const getIphoneOrder = (name: string) => {

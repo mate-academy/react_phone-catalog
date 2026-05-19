@@ -7,7 +7,6 @@ import Home from '../../images/icons/Home.svg';
 import './Tablets.scss';
 import { useEffect, useState } from 'react';
 import { getTablets } from '../../api/api';
-import { getImagePath } from '../../utils/paths';
 import { Tablet } from '../../types/Tablets';
 import { Products } from '../../types/Products';
 import { useCart } from '../../Context/Context';
@@ -86,9 +85,7 @@ export const Tablets = () => {
     ram: tablet.ram,
     year: new Date().getFullYear(),
     image:
-      typeof tablet.images === 'string'
-        ? getImagePath(tablet.images)
-        : getImagePath(tablet.images?.[0]),
+      typeof tablet.images === 'string' ? tablet.images : tablet.images?.[0],
   });
 
   useEffect(() => {
