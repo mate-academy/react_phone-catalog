@@ -83,7 +83,7 @@ export const PhoneSpec: React.FC = () => {
   const [, setErrorMessage] = useState(false);
   const [, setLoading] = useState(false);
   const [image, setImage] = useState<Image>(Image.first);
-  const [color, setColor] = useState<Color>(Color.black);
+  const [color, setColor] = useState<Color>(phone?.colorsAvailable[0] as Color);
   const images = phone?.images ?? [];
   // const capacitiesRaw = phone?.capacity ?? [];
   const capacities: string[] = Array.isArray(phone?.capacityAvailable)

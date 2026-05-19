@@ -69,7 +69,9 @@ export const TabletSpec: React.FC = () => {
   const [, setErrorMessage] = useState(false);
   const [, setLoading] = useState(false);
   const [image, setImage] = useState<Image>(Image.first);
-  const [color, setColor] = useState<Color>(Color.first);
+  const [color, setColor] = useState<Color>(
+    tablet?.colorsAvailable[0] as Color,
+  );
   const images = tablet?.images || [];
   const path = tablet?.id;
   // const capacitiesRaw = tablet?.capacity ?? [];
