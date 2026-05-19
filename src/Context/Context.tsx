@@ -21,11 +21,12 @@ type Props = React.PropsWithChildren<{ someFlag?: boolean }>;
 
 const STORAGE_KEY = 'cart';
 
-const normalizeImagePath = (src: string) =>
-  src.replace(/rimg\//g, 'img/');
+const normalizeImagePath = (src: string) => src.replace(/rimg\//g, 'img/');
 
 const normalizeProduct = (product: Products): Products =>
-  product.image ? { ...product, image: normalizeImagePath(product.image) } : product;
+  product.image
+    ? { ...product, image: normalizeImagePath(product.image) }
+    : product;
 
 function readCart() {
   try {
