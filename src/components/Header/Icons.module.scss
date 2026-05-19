@@ -1,0 +1,72 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.icons {
+    display: flex;
+    flex-direction: row;
+
+
+    &__iconBlock,
+    &__iconBlockLeft {
+    display: flex;
+    padding: 0;
+    width: 64px;
+    height: 64px;
+    border-left: $box-shadow-settings;
+
+    @include on-tablet {
+      width: 48px;
+      height: 48px;
+    }
+
+    @include on-mobile {
+      width: 100%;
+      height: 64px;
+      border-left: none;
+    }
+  }
+
+  &__iconBlockLeft {
+    border-left: $box-shadow-settings;
+  }
+
+  &__iconLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    position: relative;
+  }
+
+  &__iconCounter {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+
+    width: 14px;
+    height: 14px;
+
+    border: $box-shadow-settings;
+    border-radius: 50%;
+    background-color: #ff4d4f;
+    color: #fff;
+
+    font-size: 9px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include on-mobile {
+      top: 18px;
+      right: 65px;
+    }
+  }
+  }
+
+  .activeLink {
+  box-shadow: inset 0 -3px 0 0 #F1F2F9;
+  color: #F1F2F9;
+}

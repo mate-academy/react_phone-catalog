@@ -1,0 +1,65 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.pager {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  &__paginationItem {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    background-color: $surface-color-2;
+
+    &:hover {
+      background-color: $gray-icons;
+    }
+  }
+
+  &__paginationLink {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__paginationBulletsList {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__paginationBulletItem {
+    width: 32px;
+    height: 32px;
+    background-color: $surface-color-1;
+
+    &:hover {
+      background-color: #3B3E4A;
+    }
+  }
+
+  &__paginationBulletLink {
+    width: 100%;
+    height: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__paginationBulletActive {
+    background-color: #905BFF;
+  }
+}

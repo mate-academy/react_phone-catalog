@@ -1,0 +1,97 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.footer {
+  width: 100%;
+  padding-block: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: $box-shadow-settings;
+  margin-top: auto;
+
+  @include on-mobile {
+    padding-block: 32px;
+  }
+
+  &__content {
+    max-width: 1200px;
+    width: 100%;
+    padding-inline: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      padding-inline: 32px;
+    }
+
+    @include on-mobile {
+      flex-direction: column;
+      padding-inline: 16px;
+      gap: 32px ;
+    }
+  }
+
+  &__logoLink {
+    flex-shrink: 0;
+    @include on-mobile {
+      margin-right: auto;
+    }
+  }
+
+  &__links {
+    flex: 1;
+    margin: 0 74px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+
+    @include on-mobile {
+      width: 100%;
+      flex-direction: column;
+      gap: 16px;
+      margin: 0;
+      max-width: none;
+    }
+  }
+
+  &__link {
+    color: #F1F2F9;
+  }
+
+  &__backToTopLink {
+    display: flex;
+    justify-content: space-between;
+    flex-shrink: 0;
+    gap: 16px;
+  }
+
+  &__backToTopLinkText {
+    display: flex;
+    align-items: center;
+    color: $secondary-color;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  &__backToTopLinkIcon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $surface-color-2;
+
+    &:hover {
+      background-color: $icons-hover-color;
+    }
+  }
+}

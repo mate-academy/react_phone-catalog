@@ -1,0 +1,93 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.container {
+  margin: 0;
+}
+
+.header {
+  background-color: transparent;
+  border-bottom: $box-shadow-settings;
+
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 64px;
+
+  @include on-tablet {
+    gap: 16px;
+    height: 48px;
+  }
+
+  &__navBar {
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &__logoContainer {
+    padding-inline: 24px;
+
+    @include on-tablet {
+    padding-inline: 16px;
+  }
+  }
+
+  &__logo {
+    height: 26px;
+    width: 80px;
+
+    @include on-tablet {
+    height: 22px;
+    width: 64px;
+  }
+  }
+
+  &__logoLink {
+    display: flex;
+  }
+
+  &__sideOptions {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__icons {
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &__menuBtn {
+    display: none;
+
+    @include on-mobile {
+      display: flex;
+      flex-direction: row;
+      margin-left: auto;
+      border-left: $box-shadow-settings;
+      justify-content: center;
+      align-items: center;
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+}
+
+.activeLink {
+  box-shadow: inset 0 -3px 0 0 #F1F2F9;
+  color: #F1F2F9;
+}

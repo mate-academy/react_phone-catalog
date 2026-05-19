@@ -1,0 +1,49 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/variables';
+
+.navbar {
+  &__navLink {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    color: $secondary-color;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 11px;
+    font-weight: 800;
+
+    @include on-tablet {
+      height: 48px;
+    }
+
+    @include on-mobile {
+      height: 39px;
+    }
+  }
+}
+
+.activeLink {
+  border-bottom: 3px solid #F1F2F9;
+  color: #F1F2F9;
+}
+
+.navbarBrand {
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: row;
+  gap: 64px;
+
+  @include on-tablet {
+    gap: 32px;
+  }
+
+  @include on-mobile {
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-inline: 16px;
+      margin-top: 24px;
+    }
+}

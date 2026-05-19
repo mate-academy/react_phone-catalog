@@ -1,1 +1,17 @@
-// not empty
+@import './styles/utils/mixins';
+@import './styles/utils/variables';
+
+.App {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  @include content-padding-inline;
+}
