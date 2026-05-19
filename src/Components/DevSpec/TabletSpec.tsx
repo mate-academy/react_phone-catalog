@@ -245,7 +245,7 @@ export const TabletSpec: React.FC = () => {
             <div className="phone__specs-cap">
               <p className="phone__specs-cap-text">Select capacity</p>
               <div className="phone__specs-capacities">
-                {capacities.map(cap => {
+                {tablet?.capacityAvailable.map(cap => {
                   const updatedPathCap = path?.replace(
                     /-[^-]+-[^-]+$/,
                     `-${cap.toLowerCase()}`,
