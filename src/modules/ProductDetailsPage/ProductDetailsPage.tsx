@@ -119,13 +119,16 @@ export const ProductDetailsPage = () => {
                 })}
                 onClick={() => setMainImage(img)}
               >
-                <img src={`${import.meta.env.BASE_URL}${img}`} alt="thumb" />
+                <img
+                  src={`./${img.startsWith('/') ? img.slice(1) : img}`}
+                  alt="thumb"
+                />
               </div>
             ))}
           </div>
           <div className={styles.main_image}>
             <img
-              src={`${import.meta.env.BASE_URL}${mainImage}`}
+              src={`./${mainImage.startsWith('/') ? mainImage.slice(1) : mainImage}`}
               alt={product.name}
             />
           </div>

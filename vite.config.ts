@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig(({ command }) => {
   return {
     plugins: [react()],
-    // base: command === 'build' ? '/react_phone-catalog/' : '/',
+    // Якщо ти назвав репозиторій на гітхабі інакше — зміни назву між слешами
+    base: command === 'build' ? '/react_phone-catalog/' : '/',
   };
 });
