@@ -20,6 +20,7 @@ import { Phone } from '../../types/Phone';
 import { Products } from '../../types/Products';
 import React from 'react';
 import { Aside } from '../Aside/Aside';
+import { replace } from 'cypress/types/lodash';
 
 // type Props = {
 //   favouritesCount: number;
@@ -238,7 +239,9 @@ export const PhoneSpec: React.FC = () => {
                 >
                   <div
                     onClick={() => {
-                      navigate(`../${c.toLowerCase()}`);
+                      navigate(
+                        `/${replace(/\bhello\b/g, '-', c.toLowerCase())}`,
+                      );
                       setColor(c);
                     }}
                     className={`phone__color-color phone__color-${c}`}
