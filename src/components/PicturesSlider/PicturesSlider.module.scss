@@ -1,54 +1,41 @@
-@import '../../styles/main.scss';
+@import '../../styles/main';
 
-$button-bg-color: #FFFFFF;
-$button-border-color: #B4BDC3;
-$button-border-color-active: #0F0F11;
 $image-border-radius: 8px;
 
 .slider {
   @include on-tablet {
-    width: 592px; //To Change
-    margin: 0 auto;
+    width: 100%;
+    height: 100%;
   }
 
-  @include on-desktop {
-    width: $main-max-width //To Change
+  @include on-mobile {
+    margin: 0 -18px;
   }
 
-  &__container {
+  .container {
     display: flex;
 
-    @include on-mobile {
-      aspect-ratio: 1 / 1;
-    }
+    @include on-tablet {gap: 20px}
+
+    @include on-desktop {gap: 16px}
 
     button {
-      display: none;
+      cursor: pointer;
 
-      background-color: aliceblue; //Change to var
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      @include on-tablet {
-        display: flex;
-        align-items: center;
-        width: 32px;
-        height: 189px;
-        border-radius: 25px;
-        border: 1px solid $button-border-color; //Change to var
-        background-color: $button-bg-color; //Change to var
-        transition: all 0.3s ease;
-        justify-content: center;
-      }
+      width: 32px;
+      border: 1px solid $icon-color;
+      border-radius: 25px;
 
-      @include on-desktop {
-        display: flex;
-        align-items: center;
-        width: 32px;
-        height: 400px;
-        border-radius: 25px;
-        border: 1px solid $button-border-color; //Change to var
-        background-color: $button-bg-color; //Change to var
-        transition: all 0.3s ease;
-        justify-content: center;
+      background-color: $white-color;
+
+      transition: all 0.3s ease;
+
+      @include on-mobile {
+        display: none;
       }
 
       .icon {
@@ -56,7 +43,7 @@ $image-border-radius: 8px;
       }
 
       &:hover {
-        border-color: $button-border-color-active;
+        border-color: $primary-color;
 
         .icon {
           transform: scale(1.2);
@@ -65,75 +52,73 @@ $image-border-radius: 8px;
     }
   }
 
-  &__swiper {
+  .swiper {
+    overflow: hidden;
+    aspect-ratio: 13 / 5;
     width: 100%;
-    aspect-ratio: 1 / 1;
+
+    @include on-mobile {
+      aspect-ratio: 1 / 1;
+    }
 
     @include on-tablet {
-      height: 189px;
-      margin: 0 19px;
+      height: fit-content;
     }
 
     @include on-desktop {
       height: 400px;
-      margin: 0 16px;
     }
 
-    .card {
+    &-wrapper {
+      height: 100% !important;
+    }
+
+    &-slide {
       display: flex;
-      padding: 0;
+      align-items: center;
+      justify-content: center;
+      height: 100% !important;
+    }
 
-      @include on-mobile {
-        aspect-ratio: 1 / 1;
-      }
+    .img {
+      justify-content: center;
 
-      @include on-tablet {
-        padding: 0 19px;
-        height: 189px;
-      }
+      width: 100%;
+      height: 100%;
 
-      @include on-desktop {
-        padding: 0 16px;
-        height: 400px;
-      }
+      object-fit: cover;
+      object-position: center;
 
-      &__img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+      @include on-tablet { border-radius: $image-border-radius; }
 
-        @include on-tablet {
-          border-radius: $image-border-radius;
-        }
-
-        @include on-desktop {
-          border-radius: $image-border-radius;
-        }
-
-      }
+      @include on-desktop { border-radius: $image-border-radius; }
     }
   }
 }
 
 .pagination {
-  gap: 4px;
   display: flex;
-  justify-content: center;
+  gap: 4px;
   align-items: center;
+  justify-content: center;
+
   height: 24px;
   padding-top: 8px;
 }
 
 .bullet {
+  cursor: pointer;
+
   width: 14px;
   height: 4px;
-  background-color: #E2E6E9; //To Change
-  cursor: pointer;
   border-radius: 0;
+
   opacity: 1;
-  transition: all 0.3;
+  background-color: $elements-color;
+
+  transition: all $transition-time ease;
 
   &Active {
-    background-color: #0F0F11; //To Change
+    background-color: $primary-color;
   }
 }

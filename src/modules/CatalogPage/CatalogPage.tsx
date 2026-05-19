@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import styles from './CatalogPage.module.scss';
 import { getCountByCategorys } from '../shared/constants/Categorys';
-import { getData } from '../../api/fetchClient';
+import { getProductData } from '../../api/fetchClient';
 import { Product } from '../../types/ProductType';
 import { Icon } from '../../components/Icon';
 import { ProductCard } from '../../components/ProductCard';
@@ -10,15 +10,18 @@ import { PerPageType } from '../../types/PerPageType';
 import { SortType } from '../../types/SortType';
 import { Navigate, useParams } from 'react-router-dom';
 import { PathLine } from '../../components/PathLine/PathLine';
+import { Loader } from '../../components/Loader';
+import { useLocalStorage } from '../shared/hooks/useLocalStorage';
 
 export const CatalogPage = () => {
   const { category } = useParams<{ category: string }>();
+  const [loader, setLoader] = useState<boolean>(true);
 
   const [counts, setCounts] = useState<number | null>(null);
   const [products, setProducts] = useState<Product[] | null>(null);
 
-  const [sort, setSort] = useState<SortType>('name');
-  const [perPage, setPerPage] = useState<PerPageType>(16);
+  const [sort, setSort] = useLocalStorage<SortType>('sort_type', 'name');
+  const [perPage, setPerPage] = useLocalStorage<PerPageType>('on_page', 16);
 
   const [page, setPage] = useState<number>(1);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -33,11 +36,13 @@ export const CatalogPage = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const prData = await getData();
+      const prData = await getProductData();
 
       setProducts(prData);
-      setPerPage(16);
+      setLoader(false);
     }
+
+    setLoader(true);
 
     fetchData();
   }, []);
@@ -90,18 +95,6 @@ export const CatalogPage = () => {
     return Math.ceil(totalItems / perPage) || 1;
   }, [products, category, perPage]);
 
-  const handlePagePrev = () => {
-    if (page > 1) {
-      setPage(prev => prev - 1);
-    }
-  };
-
-  const handlePageNext = () => {
-    if (page < pageCount) {
-      setPage(prev => prev + 1);
-    }
-  };
-
   const handlePageSet = (value: number | string) => {
     const pageValue = +value;
 
@@ -111,6 +104,10 @@ export const CatalogPage = () => {
       typeof pageValue === 'number'
     ) {
       setPage(pageValue);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -120,7 +117,7 @@ export const CatalogPage = () => {
 
   const pages = useMemo(() => {
     const mass: (number | string)[] = [];
-    let range = 4;
+    let range;
 
     if (screenWidth >= 1200) {
       range = 8;
@@ -183,18 +180,18 @@ export const CatalogPage = () => {
 
   return (
     <>
-      <div className={styles.section}>
+      <div className={styles.page}>
         <div className={styles.top}>
           <PathLine />
           <div className={styles.title}>
-            <div className={styles.title__text}>
+            <h1>
               {category === 'phones'
                 ? 'Mobile phones'
                 : category === 'tablets'
                   ? 'Tablets'
                   : 'Accessories'}
-            </div>
-            <div className={styles.title__count}>{counts} models</div>
+            </h1>
+            <div className={styles.count}>{counts} models</div>
           </div>
           <Dropdown
             sort={sort}
@@ -205,26 +202,34 @@ export const CatalogPage = () => {
         </div>
 
         <div className={styles.items}>
-          {visibleProducts?.map(product => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              discont={product.year <= lastYear - 3}
-            />
-          ))}
+          {loader ? (
+            <Loader />
+          ) : (
+            visibleProducts?.map(product => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                discount={product.year <= lastYear - 3}
+              />
+            ))
+          )}
         </div>
         <div className={styles.pagination}>
           <div
-            className={`${styles.pagination__prev} ${styles.pagination__button}`}
-            onClick={() => handlePagePrev()}
+            className={`
+              ${styles.button}
+              ${styles['button--control']}
+              ${page !== 1 && [styles['button--control--active']]}
+             `}
+            onClick={() => handlePageSet(page - 1)}
           >
-            <Icon name="arrowleft" className={styles.prev} />
+            <Icon name="arrowleft" className={styles.icon} />
           </div>
-          <div className={styles.pagination__container}>
+          <div className={styles.container}>
             {pages.map(p => (
               <div
                 key={p}
-                className={`${styles.pagination__button} ${page === p && styles.pagination__active}`}
+                className={`${styles.button} ${page === p && styles['button--active']}`}
                 onClick={() => handlePageSet(p)}
               >
                 {p}
@@ -232,10 +237,14 @@ export const CatalogPage = () => {
             ))}
           </div>
           <div
-            className={`${styles.pagination__next} ${styles.pagination__button}`}
-            onClick={() => handlePageNext()}
+            className={`
+              ${styles.button}
+              ${styles['button--control']}
+              ${page < pageCount && [styles['button--control--active']]}
+            `}
+            onClick={() => handlePageSet(page + 1)}
           >
-            <Icon name="arrowright" className={styles.next} />
+            <Icon name="arrowright" className={styles.icon} />
           </div>
         </div>
       </div>

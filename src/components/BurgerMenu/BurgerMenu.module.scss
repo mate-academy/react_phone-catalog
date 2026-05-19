@@ -1,78 +1,200 @@
-@import '../../styles/main.scss';
+@import '../../styles/main';
 
 $icon-height: 64px;
 
-.menu {
-  &__nav {
-    height: 100%;
-    background-color: #fff;
-    position: absolute;
-    top: $header-height-tablet;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 100;
-
-    display: flex;
-    flex-direction: column;
+@keyframes slide-down-fade {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
   }
 
-  &__container {
-    margin-top: 24px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    min-height: calc(100vh - #{$icon-height});
-  }
-
-  &__list {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-
-    list-style: none;
-  }
-
-  &__link {
-    width: fit-content;
-    line-height: 11px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    transition: all .3s ease-in-out .1s;
-    text-decoration: none;
-    padding: 8px 0;
-    font-size: 12px;
-    font-family: Mont;
-    font-weight: bold;
-    color: #89939a; //To Change
-  }
-
-  &__active {
-    width: fit-content;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    transition: all .3s ease-in-out .1s;
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
-.icons {
-  display: flex;
+@keyframes fade-in-right {
+  from {
+    transform: translateX(-15px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.menu {
   position: absolute;
+  z-index: 100;
+  top: 64px;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+
   width: 100%;
-  border-top: 1px solid #e2e6e9; //To Change
-  bottom: 0;
-  margin-top: auto;
+  height: calc(100vh - 64px);
+
+  background-color: $white-color;
+
+  animation: slide-down-fade $transition-time + 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  .container {
+    position: relative;
+
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding-top: 40px;
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
+
+      margin: 0;
+      padding: 0;
+
+      list-style: none;
+
+      li {
+        opacity: 0;
+        animation: fade-in-right $transition-time cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+        &:nth-child(1) { animation-delay: $transition-time + 0.1s * 1; }
+        &:nth-child(2) { animation-delay: $transition-time + 0.1s * 2; }
+        &:nth-child(3) { animation-delay: $transition-time + 0.1s * 3 }
+        &:nth-child(4) { animation-delay: $transition-time + 0.1s * 4 }
+      }
+    }
+
+    .icons {
+      display: flex;
+
+      margin-top: auto;
+      border-top: 1px solid $elements-color;
+
+      opacity: 0;
+      background-color: $white-color;
+
+      animation: slide-down-fade $transition-time cubic-bezier(0.16, 1, 0.3, 1) $transition-time forwards;
+    }
+  }
+}
+
+.link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: fit-content;
+  padding: 8px 0;
+
+  font-weight: 700;
+  color: $secondary-color;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  transition: color $transition-time ease, transform $transition-time ease;
+
+  @include font-dt-uppercase;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform-origin: center;
+    transform: scaleX(0);
+
+    width: 100%;
+    height: 2px;
+
+    background-color: $primary-color;
+
+    transition: transform $transition-time ease-in-out;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    color: $primary-color;
+
+    &::after {
+      transform: scaleX(0.5);
+    }
+  }
+
+  &--active {
+    color: $primary-color;
+
+    &::after {
+      transform: scaleX(1) !important;
+    }
+  }
 }
 
 .icon {
+  position: relative;
+
   display: flex;
-  justify-content: center;
+  flex: 1;
   align-items: center;
-  height: $icon-height;
-  box-shadow: -1.1px 0 0 0 $elements-color;
+  justify-content: center;
+
   box-sizing: border-box;
-  width: 50%;
+  height: $icon-height;
+
+  box-shadow: -1.1px 0 0 0 $elements-color;
+
+  transition: background-color 0.2s ease;
+
+
+  .line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: center;
+    transform: scaleX(0);
+
+    width: 100%;
+    height: 2px;
+
+    background-color: $primary-color;
+
+    transition: transform $transition-time ease-in-out;
+  }
+
+  &--active {
+    .line {
+      transform: scaleX(1) !important;
+    }
+  }
+
+  &:hover {
+    background-color: rgba($primary-color, 0.03);
+
+    .line {
+      transform: scaleX(0.4);
+    }
+  }
+
+  .theme {
+    width: 18px;
+    height: 18px;
+    border: 2px solid $primary-color;
+    border-radius: 50%;
+
+    background-color: $accent-color;
+
+    transition: all $transition-time ease;
+  }
 }

@@ -16,12 +16,14 @@ export const Root = () => {
           <Route index element={<HomePage />} />
           <Route path="favourites" element={<FavoritesPage />} />
           <Route path="cart" element={<CartPage />} />
+
+          <Route path="not-found" element={<NotFoundPage />} />
+
           <Route path=":category">
             <Route index element={<CatalogPage />} />
             <Route path=":itemId" element={<ProductDetailsPage />} />
           </Route>
 
-          <Route path="product/:productId" element={<ProductDetailsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

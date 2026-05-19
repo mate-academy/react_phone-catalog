@@ -1,7 +1,4 @@
-@import '../../styles/main.scss';
-
-$header-height-desktop: 64px;
-$header-height-tablets: 48px;
+@import '../../styles/main';
 
 .nav {
   display: none;
@@ -24,67 +21,74 @@ $header-height-tablets: 48px;
 
   &__list {
     display: flex;
-    list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
+    list-style: none;
 
     @include on-desktop {
       gap: 64px;
     }
 
     @include on-tablet {
-     gap: 32px;
-    }
-  }
-
-  &__icon{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    box-shadow: -1.1px 0 0 0 $elements-color;
-    box-sizing: border-box;
-    border: none;
-    aspect-ratio: 1 / 1;
-
-    &--active {
-      color: $primary-color;
+      gap: 32px;
     }
   }
 }
 
-.nav__link {
-  text-decoration: none;
-  color: $secondary-color;
-  font-weight: 700;
-  font-size: 12px;
-  text-transform: uppercase;
-  height: $header-height-desktop;
+.link {
+  position: relative;
+
   display: flex;
   align-items: center;
-  position: relative;
-  transition: all 0.2s ease;
+
+  height: $header-height-desktop;
+
+  font-size: 12px;
+  font-weight: 700;
+  color: $secondary-color;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition: color $transition-time cubic-bezier(0.16, 1, 0.3, 1),
+  transform $transition-time cubic-bezier(0.16, 1, 0.3, 1);
+
+  @include font-dt-uppercase;
 
   @include on-tablet {
-    height: $header-height-tablets;
+    height: $header-height-tablet;
+  }
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform-origin: center;
+    transform: scaleX(0);
+
+    width: 100%;
+    height: 2px;
+
+    background-color: $primary-color;
+
+    transition: transform $transition-time cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   &:hover {
-    transform: scale(1.1);
-    transition: all 0.2s ease;
+    transform: translateY(-1px);
+    color: $primary-color;
+
+    &::after {
+      transform: scaleX(0.5);
+    }
   }
 
   &--active {
     color: $primary-color;
 
     &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: $primary-color;
+      transform: scaleX(1) !important;
     }
   }
 }
@@ -92,6 +96,67 @@ $header-height-tablets: 48px;
 .icons {
   display: flex;
   align-items: center;
-  margin-left: auto;
   height: 100%;
+  margin-left: auto;
+
+  .line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform-origin: center;
+    transform: scaleX(0);
+
+    width: 100%;
+    height: 2px;
+
+    background-color: $primary-color;
+
+    transition: transform $transition-time cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .icon {
+    cursor: pointer;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    border: none;
+
+    text-decoration: none;
+
+    box-shadow: -1.1px 0 0 0 $elements-color;
+
+    transition: background-color 0.2s ease;
+
+    &--active {
+      .line {
+        transform: scaleX(1) !important;
+      }
+    }
+
+    &:hover {
+      background-color: rgba($primary-color, 0.02);
+
+      .line {
+        transform: scaleX(0.4);
+      }
+    }
+
+    .theme {
+      width: 16px;
+      height: 16px;
+      border: 2px solid $primary-color;
+      border-radius: 50%;
+
+      background-color: $accent-color;
+
+      transition: all $transition-time ease;
+    }
+  }
 }

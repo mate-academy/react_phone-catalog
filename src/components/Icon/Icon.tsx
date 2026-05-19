@@ -14,24 +14,31 @@ import home from '../../images/icons/home.svg';
 import plus from '../../images/icons/plus.svg';
 import menu from '../../images/icons/menu.svg';
 import minus from '../../images/icons/minus.svg';
-import logo from '../../images/logo.svg';
+import logo_purple from '../../images/logo_purple.svg';
+import logo_black from '../../images/logo_black.svg';
 
-import { IconName } from '../../types/IconType';
+import { useThemeContext } from '../../modules/shared/context/ThemeContext';
 
 type Props = {
-  name: IconName;
-  isActive?: boolean;
+  name: string;
+  isDisable?: boolean;
   className?: string;
   onClick?: () => void;
 };
 
-export const Icon: React.FC<Props> = ({ name, isActive, className, onClick }) => {
-  const icons: Record<IconName, string> = {
+export const Icon: React.FC<Props> = ({
+  name,
+  isDisable,
+  className,
+  onClick,
+}) => {
+  const { theme } = useThemeContext();
+
+  const icons: Record<string, string> = {
     favourites,
     cart,
     menu,
     close,
-    logo,
     home,
     plus,
     minus,
@@ -41,14 +48,40 @@ export const Icon: React.FC<Props> = ({ name, isActive, className, onClick }) =>
     arrowright,
     favouritesfilled,
     arrowup,
+    logo_purple,
+    logo_black,
   };
 
+  if (name === 'logo') {
+    const logoKey = theme === 'blue' ? 'logo_purple' : 'logo_black';
+
+    return (
+      <img
+        src={icons[logoKey]}
+        alt={name}
+        className={`${styles.logo} ${className || ''}`}
+        onClick={onClick}
+      />
+    );
+  }
+
+  const iconUrl = icons[name] || '';
+
   return (
-    <img
+    <span
       onClick={onClick}
-      src={icons[name]}
-      alt={`${name} icon`}
-      className={`${styles.icon} ${className ? className : ''} ${isActive ? styles.active : ''}`}
+      role="img"
+      aria-label={`${name} icon`}
+      className={`
+        ${styles.icon}
+        ${className ? className : ''}
+        ${isDisable ? styles.disable : ''}
+        ${name === 'favouritesfilled' ? styles.favouritesfilled : ''}
+      `}
+      style={{
+        WebkitMaskImage: `url("${iconUrl}")`,
+        maskImage: `url("${iconUrl}")`,
+      }}
     />
   );
 };

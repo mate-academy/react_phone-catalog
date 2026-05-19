@@ -1,27 +1,19 @@
-@import '../../styles/main.scss';
+@import '../../styles/main';
 
 $mobile-card-height: 439px;
-
 $tablet-card-height: 512px;
-
 $desktop-card-height: 506px;
 
-$card-background-color: #FFF;
-$card-border-color: #E2E6E9;
-$info-color: #89939A;
-
-$accent: #216CFF;
-
-
 .card {
-  background-color: $card-background-color;
-  border: 1px solid $card-border-color;
-  border-radius: 8px;
   display: flex;
-  box-sizing: border-box;
-
-  width: 100%;
   flex-grow: 1;
+
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid $elements-color;
+  border-radius: 8px;
+
+  background-color: $white-color;
 
   @include on-tablet {
     height: $tablet-card-height;
@@ -31,78 +23,78 @@ $accent: #216CFF;
     height: $desktop-card-height;
   }
 
-  &__container {
-    text-decoration: none;
-    color: inherit;
+  &__title {
+    @include font-dt-body-text;
 
-    padding: 32px;
-    margin: 0;
-    width: 100%;
+    padding-top: 16px;
+  }
+
+  &__container {
     display: flex;
     flex-direction: column;
     gap: 8px;
+
+    width: 100%;
+    margin: 0;
+    padding: 32px;
+
+    color: inherit;
+    text-decoration: none;
   }
 
   &__link {
-    text-decoration: none;
-    color: inherit;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     gap: 8px;
-    flex-grow: 1;    // КЛЮЧОВЕ: посилання заповнює все місце до кнопок
-    min-height: 0;   // Дозволяє внутрішнім елементам (картинці) стискатися
+
+    min-height: 0;
+
+    color: inherit;
+    text-decoration: none;
 
     &:hover {
       .card__title {
-        color: $accent;
+        color: $accent-color;
       }
     }
   }
 
   &__image {
     display: flex;
-    flex-grow: 1;    // КЛЮЧОВЕ: область картинки забирає весь вільний простір
+    flex-grow: 1;
     flex-shrink: 1;
-    justify-content: center;
     align-items: center;
-    min-height: 0;   // Важливо, щоб картинка не "виштовхувала" контент за межі
+    justify-content: center;
+
+    min-height: 0;
 
     .image {
       max-width: 100%;
-      max-height: 100%; // Обмежуємо картинку висотою батьківського контейнера
+      max-height: 100%;
       object-fit: contain;
-      transition: transform 0.3s; // Можна додати легкий зум при ховері
+      transition: transform $transition-time;
     }
-  }
-
-  &__title {
-    font-family: Mont, serif;
-    font-weight: 400;
-    line-height: 21px;
-    font-size: 14px;
-    padding-top: 16px;
   }
 
   &__price {
     display: flex;
     flex-direction: row;
-    line-height: 140%;
-    letter-spacing: 0;
-    font-weight: 700;
-    font-size: 22px;
     gap: 8px;
+
+    @include font-m-h2;
 
     .normal {
       color: $primary-color;
     }
 
     .discount {
-      color: $info-color;
-      text-decoration-line: line-through; // To Change ALL
+      color: $secondary-color;
+      text-decoration-line: line-through;
     }
   }
   &__divider {
-    border-top: 1px solid $card-border-color;
+    border-top: 1px solid $elements-color;
   }
 
   &__info {
@@ -124,49 +116,55 @@ $accent: #216CFF;
 
   &__buttons {
     display: flex;
-    border: none;
     flex-direction: row;
     gap: 8px;
+    border: none;
 
     .button_cart {
-      display: flex;
       cursor: pointer;
-      height: 40px;
-      flex-grow: 1;
-      border-radius: 8px;
-      background-color: $accent;
-      color: #FFF; //To Change
-      border: none;
 
-      font-family: Mont, serif;
-      font-size: 14px;
-      line-height: 21px;
-      letter-spacing: 0;
-      font-weight: 600;
+      display: flex;
+      flex-grow: 1;
       align-items: center;
       justify-content: center;
 
+      height: 40px;
+      border: none;
+      border-radius: 8px;
+
+      font-family: Mont, serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      color: $white-color;
+      letter-spacing: 0;
+
+      background-color: $accent-color;
+
       &__added {
-        border: 1px solid #E2E6E9; //To Change
-        color: $accent;
+        border: 1px solid $elements-color;
+        color: $accent-color;
         background-color: transparent;
       }
 
       &:hover {
-        box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4); //To Change
+        box-shadow: $button-shadow;
       }
     }
 
     .button_fovourite {
-      display: flex;
       cursor: pointer;
-      height: 40px;
-      aspect-ratio: 1 / 1;
-      border-radius: 20px;
-      border: 1px solid #B4BDC3; //To Change
-      background-color: transparent;
+
+      display: flex;
       align-items: center;
       justify-content: center;
+
+      aspect-ratio: 1 / 1;
+      height: 40px;
+      border: 1px solid $icon-color;
+      border-radius: 20px;
+
+      background-color: transparent;
 
       &:hover {
         border-color: $primary-color;
@@ -177,18 +175,19 @@ $accent: #216CFF;
 
 .spec {
   &__name {
-    font-family: Mont, serif;
-    font-size: 12px;
-    font-weight: 700;
-    color: $info-color;
+    @include font-dt-small-text;
+
+    color: $secondary-color;
   }
 
   &__value {
-    letter-spacing: 0;
-    font-family: Mont, serif;
+    @include font-base;
+
+    right: 0;
+
     font-size: 12px;
     font-weight: 700;
     color: $primary-color;
-    right: 0;
+    letter-spacing: 0;
   }
 }

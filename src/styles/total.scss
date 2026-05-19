@@ -1,0 +1,26 @@
+@import './variables';
+@import './typography';
+
+.total {
+  @include font-base;
+
+  position: absolute;
+  transform: translate(50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 14px;
+  height: 14px;
+  border: 1px solid $white-color;
+  border-radius: 100%;
+
+  font-size: 9px;
+  font-weight: 600;
+  color: $white-color;
+  text-decoration: none;
+
+  background-color: $secondary-accent-color;
+}

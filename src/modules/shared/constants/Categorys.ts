@@ -1,4 +1,4 @@
-import { getData } from '../../../api/fetchClient';
+import { getProductData } from '../../../api/fetchClient';
 
 type CategoryCounts = {
   phoneCounts: number;
@@ -7,7 +7,7 @@ type CategoryCounts = {
 };
 
 export const getCountByCategorys = async (): Promise<CategoryCounts> => {
-  const data = await getData();
+  const data = await getProductData();
 
   if (!data) {
     return { phoneCounts: 0, tabletCounts: 0, accessorieCounts: 0 };
@@ -36,7 +36,7 @@ export const getCategorys = async () => {
   const { phoneCounts, tabletCounts, accessorieCounts } =
     await getCountByCategorys();
 
-  const categoriesConfig = [
+  return [
     {
       color: '#6D6474',
       name: 'Mobile phones',
@@ -59,6 +59,4 @@ export const getCategorys = async () => {
       path: '/accessories',
     },
   ];
-
-  return categoriesConfig;
 };

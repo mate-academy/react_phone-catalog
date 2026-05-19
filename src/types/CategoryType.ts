@@ -1,1 +1,1 @@
-export type CategoryType = 'phones' | 'tablets' | 'accessorys';
+export type CategoryType = 'phones' | 'tablets' | 'accessors';

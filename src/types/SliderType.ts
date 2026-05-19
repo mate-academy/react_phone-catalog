@@ -4,5 +4,5 @@ export type SliderType = {
   title: string;
   products: Product[];
   id: number;
-  discont?: boolean;
+  discount?: boolean;
 };

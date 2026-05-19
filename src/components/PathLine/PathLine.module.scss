@@ -1,35 +1,63 @@
-@import '../../styles/main.scss';
+@import '../../styles/main';
 
-.path {
+.section {
   display: flex;
-  flex-direction: row;
-  gap: 8px;
+  flex-direction: column;
+  gap: 40px;
 
-  align-items: center;
-
-  &__icon {
-    display: flex;
-    align-items: center;
+  @include on-mobile {
+    gap: 24px;
   }
 
-  &__text {
-    box-sizing: border-box;
+  .path {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
     align-items: center;
-    color: #0F0F11; //To change
-    text-transform: capitalize;
-    text-decoration: none;
 
-    font-family: Mont, serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0;
-
-    &-last {
-      color: #89939A;
+    &__icon {
+      display: flex;
+      align-items: center;
     }
+
+    &__text-last {
+      color: $secondary-color;
+    }
+  }
+
+  .backbutton {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    text-decoration: none;
   }
 }
 
 .home {
   display: flex;
+}
+
+.text {
+  @include font-dt-small-text;
+
+  align-items: center;
+
+  box-sizing: border-box;
+
+  color: $primary-color;
+  text-decoration: none;
+  text-transform: capitalize;
+
+
+  &_invert {
+    color: $secondary-color;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+.icon {
+  filter: invert(1);
 }

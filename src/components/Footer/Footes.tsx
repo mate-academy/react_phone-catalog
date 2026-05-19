@@ -53,7 +53,7 @@ export const Footer = () => {
         <div className={styles.footer__totop}>
           <div className={styles.text}>Back to top</div>
           <button className={styles.icon} onClick={scrollToTop}>
-            <Icon name="arrowup" isActive={true} />
+            <Icon name="arrowup" />
           </button>
         </div>
       </div>

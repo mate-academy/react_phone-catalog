@@ -5,7 +5,7 @@ import { ProductSlider } from '../../components/ProductSlider';
 
 import { Product } from '../../types/ProductType';
 import { CategoryBox } from '../../components/CategoryBox/CategoryBox';
-import { getData } from '../../api/fetchClient';
+import { getProductData } from '../../api/fetchClient';
 import { getCategorys } from '../shared/constants/Categorys';
 import { CategoryBoxType } from '../../types/CategoryBoxType';
 import { banners } from '../shared/constants/Baners';
@@ -23,7 +23,7 @@ export const HomePage = () => {
       try {
         setLoader(true);
 
-        const data = await getData();
+        const data = await getProductData();
         const categotyData = await getCategorys();
 
         setCategorys(categotyData);
@@ -59,11 +59,9 @@ export const HomePage = () => {
       {loader ? (
         <Loader />
       ) : (
-        <div className={styles.section}>
+        <div className={styles.page}>
           <div className={styles.title}>
-            <div className={styles.title__text}>
-              Welcome to Nice Gadgets store!
-            </div>
+            <h1>Welcome to Nice Gadgets store!</h1>
           </div>
           <div className={styles.content}>
             <PicturesSlider banners={banners} id={1} />
@@ -72,7 +70,7 @@ export const HomePage = () => {
                 products={newModels}
                 title={'Brand new models'}
                 id={0}
-                discont={false}
+                discount={false}
               />
             ) : (
               <Loader />
@@ -83,7 +81,7 @@ export const HomePage = () => {
                 products={hotPrices ?? []}
                 title={'Hot prices'}
                 id={2}
-                discont={true}
+                discount={true}
               />
             ) : (
               <Loader />

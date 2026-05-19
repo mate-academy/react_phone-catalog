@@ -1,124 +1,105 @@
-@import '../../styles/main.scss';
+@import '../../styles/main';
+
+@keyframes fade-up {
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
 .category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
-  &__container {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  width: 100%;
+  margin: 0 auto;
 
-    @include on-tablet {
-      max-width: 592px; // To Change
-    }
+  .title {
+    @include font-dt-h2;
 
-    @include on-desktop {
-      max-width: 1136px; // To Change
-    }
-  }
-
-  &__link {
-    text-decoration: none;
-    color: inherit;
-
-    &:hover, &:focus, &:active {
-      text-decoration: none;
-      color: inherit;
-    }
-  }
-
-  &__title {
-    font-family: Mont;
-    font-weight: 800;
-    letter-spacing: -1%;
-    line-height: 41px;
-    font-size: 32px;
+    color: $primary-color;
 
     @include on-mobile {
-    letter-spacing: 0%;
-    line-height: 140%;
-    font-size: 22px;
-    padding: 0 16px;
+      @include font-m-h2;
     }
   }
 
-  &__list {
+  .list {
     display: flex;
+    flex: 3;
     flex-direction: row;
     gap: 16px;
+
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
 
     @include on-mobile {
       flex-direction: column;
       gap: 32px;
-      margin: 0 auto;
     }
 
-    &__block {
+    .link {
+      flex: 1;
+      color: inherit;
+      text-decoration: none;
+      outline: none;
+    }
+
+    .block {
       display: flex;
       flex-direction: column;
       gap: 24px;
+      height: 100%;
 
-      .image__container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 368px;
-        height: 368px;
-        background-color: #6D6474; //To Change
-        border-radius: 8px;
-        overflow: hidden;
+      .image_box {
         position: relative;
 
-        @include on-tablet {
-          width: 187px;
-          height: 187px;
-        }
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-        @include on-mobile {
-          width: 288px;
-          height: 288px;
-        }
+        aspect-ratio: 1 / 1;
+        width: 100%;
+        border-radius: 8px;
+
+        background-color: $elements-color;
 
         .image {
+          position: absolute;
           object-fit: contain;
+          transition: transform $transition-time cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .phones {
-          width: 386px;
-          transform: translate(25%, 25%);
-
-          @include on-mobile {
-            width: 302px;
-          }
-
-          @include on-tablet {
-            width: 196px;
+        .phones{
+          transform: translate(25%, 25%) scale(1);
+          width: 105%;
+          &:hover {
+            transform: translate(25%, 25%) scale(1.1);
           }
         }
 
         .tablets {
-          width: 546px;
-          transform: translate(20%, 20%);
-
-          @include on-mobile {
-            width: 427px;
-          }
-
-          @include on-tablet {
-            width: 277px;
+          transform: translate(20%, 20%) scale(1);
+          width: 148%;
+          &:hover {
+            transform: translate(20%, 20%) scale(1.1);
           }
         }
 
         .accessories {
-          width: 687px;
-          transform: translate(32%, 8%);
-
-          @include on-mobile {
-            width: 537px;
-          }
-
-          @include on-tablet {
-            width: 349px;
+          transform: translate(32%, 9%) scale(1);
+          width: 186%;
+          &:hover {
+            transform: translate(32%, 9%) scale(1.1);
           }
         }
       }
@@ -129,20 +110,16 @@
         gap: 4px;
 
         .name {
-          font-family: Mont;
-          font-weight: 700;
-          letter-spacing: 0%;
-          font-size: 20px;
-          color: #0F0F11; //To Change
+          @include font-dt-h4;
+
+          color: $primary-color;
+          transition: color $transition-time ease;
         }
 
         .count {
-          font-family: Mont;
-          font-weight: 400;
-          letter-spacing: 0%;
-          line-height: 21px;
-          font-size: 14px;
-          color: #89939A; //To Change
+          @include font-dt-body-text;
+
+          color: $secondary-color;
         }
       }
     }

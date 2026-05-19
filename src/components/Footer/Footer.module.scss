@@ -1,109 +1,132 @@
 @import '../../styles/main';
 
 .footer {
-  border-top: 1px solid $elements-color;
   box-sizing: border-box;
-  height: 96px;
+  padding: 32px 0;
+  border-top: 1px solid $elements-color;
+  background-color: $white-color;
 
   @include on-mobile {
-    height: 257px;
+    padding: 48px 16px;
   }
 
   &__container {
-    margin: 32px auto;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    height: 32px;
+    justify-content: space-between;
+
+    width: 100%;
+    margin: 0 auto;
 
     @include on-mobile {
-      gap: 32px;
       flex-direction: column;
-      padding: 32px 16px;
-      margin: 0;
-      align-items: normal;
-      height: 193px;
+      gap: 32px;
+      align-items: unset;
+      text-align: unset;
+
     }
 
     @include on-tablet {
-      max-width: 592px; // To Change
+      max-width: $tablet-content-max-width;
+      padding: 0 24px;
     }
 
     @include on-desktop {
-      max-width: 1136px; // To Change
+      max-width: $desktop-content-max-width;
+      padding: 0 32px;
     }
   }
 
   &__logo {
+    display: flex;
+    align-items: center;
   }
 
   &__list {
     display: flex;
     flex-direction: row;
-    list-style: none;
     gap: 64px;
-    padding: 0;
+
     margin: 0;
+    padding: 0;
+
+    list-style: none;
 
     @include on-tablet {
-      gap: 14px;
+      gap: 32px;
     }
 
     @include on-mobile {
-      gap: 16px;
       flex-direction: column;
+      gap: 16px;
     }
   }
 
   &__link {
-    display: flex;
+    display: inline-flex;
+
+    color: $secondary-color;
     text-decoration: none;
     text-transform: uppercase;
-    color: $secondary-color;
-    font-weight: 800;
-    font-size: 12px;
-    line-height: 11px;
-    letter-spacing: 4%;
+
+    transition: color $transition-time ease, transform $transition-time ease;
+
+    @include font-dt-uppercase;
+
+    &:hover, &:focus-visible {
+      transform: translateY(-1px);
+      color: $primary-color;
+    }
   }
 
   &__totop {
+    cursor: pointer;
+    user-select: none;
+
     display: flex;
-    align-items: center;
     gap: 16px;
+    align-items: center;
     justify-content: center;
-    cursor: default;
+
+    .text {
+      color: $secondary-color;
+
+      @include font-dt-small-text;
+
+      transition: color $transition-time ease;
+    }
 
     .icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: transparent;
-      cursor: pointer;
 
+      box-sizing: border-box;
       width: 32px;
       height: 32px;
-      box-sizing: border-box;
-
-      border-radius: 20px;
       border: 1px solid $elements-color;
+      border-radius: 50%;
 
-      &:hover {
-        border-color: black; //To Change
-      }
+      background-color: transparent;
+
+      transition: border-color $transition-time ease,
+      background-color $transition-time ease,
+      transform $transition-time ease;
     }
 
-    .text {
-      color: #89939A; //To Change
-      font-family: Mont;
-      font-size: 12px;
-      letter-spacing: 0%;
+    &:hover {
+      .icon {
+        transform: translateY(-2px);
+        border-color: $primary-color;
+        background-color: rgba($primary-color, 0.02);
+      }
     }
   }
 }
 
 .logo {
+  display: flex;
   align-items: center;
   justify-content: center;
-  display: flex;
 }

@@ -8,10 +8,10 @@ import { Link } from 'react-router-dom';
 
 interface Props {
   product: Product;
-  discont: boolean;
+  discount?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ product, discont }) => {
+export const ProductCard: React.FC<Props> = ({ product, discount }) => {
   const context = useCartAndFavContext();
   const { isFavorite, toggleFavorite, isCart, toggleCart } = context;
 
@@ -32,7 +32,7 @@ export const ProductCard: React.FC<Props> = ({ product, discont }) => {
           <div className={styles.card__title}>{product.name}</div>
           <div className={styles.card__price}>
             <div className={styles.normal}>{`$${product.fullPrice}`}</div>
-            {product.price && discont && (
+            {product.price && discount && (
               <div className={styles.discount}>{`$${product.price}`}</div>
             )}
           </div>
@@ -54,17 +54,19 @@ export const ProductCard: React.FC<Props> = ({ product, discont }) => {
         </Link>
         <div className={styles.card__buttons}>
           <button
-            className={`${styles.button_cart} ${isCart(product.id) && styles.button_cart__added}`}
-            onClick={() => toggleCart(product.id)}
+            className={`${styles.button_cart} ${isCart(product.itemId) && styles.button_cart__added}`}
+            onClick={() => toggleCart(product.itemId)}
           >
-            {isCart(product.id) ? 'Added' : 'Add to cart'}
+            {isCart(product.itemId) ? 'Added' : 'Add to cart'}
           </button>
           <button
             className={styles.button_fovourite}
-            onClick={() => toggleFavorite(product.id)}
+            onClick={() => toggleFavorite(product.itemId)}
           >
             <Icon
-              name={isFavorite(product.id) ? 'favouritesfilled' : 'favourites'}
+              name={
+                isFavorite(product.itemId) ? 'favouritesfilled' : 'favourites'
+              }
               className={styles.fovourite_icon}
             />
           </button>

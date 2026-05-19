@@ -1,9 +1,30 @@
 @import '../../styles/main';
 
 .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+
   object-fit: contain;
+  background-color: $primary-color;
+
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }
 
-.active {
-  filter: invert(1);
+.disable {
+  filter: invert(0);
+}
+
+.favouritesfilled {
+  background-color: $secondary-accent-color;
+  filter: invert(0);
 }

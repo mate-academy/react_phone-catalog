@@ -1,9 +1,9 @@
 import React, { createContext, useContext } from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
-type Id = number;
+type Id = string;
 
-type CartType = { id: number; quantity: number };
+type CartType = { id: string; quantity: number };
 
 type Commands = 'plus' | 'minus' | 'delete';
 

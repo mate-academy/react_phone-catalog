@@ -1,44 +1,39 @@
-@import '../../styles/main.scss';
+@import '../../styles/main';
 
-$button-bg-color: #FFFFFF;
-$button-border-color: #B4BDC3;
-$button-border-color-active: #0F0F11;
 $image-border-radius: 8px;
-
 $mobile-card-width: 212px;
 $tablet-card-width: 237px;
 $desktop-card-width: 272px;
 
 .slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
 
   @include on-tablet {
-    max-width: 592px; // To Change
+    width: calc(100vw - 24px);
   }
 
-  @include on-desktop {
-    max-width: 1136px; // To Change
+  @include on-mobile {
+    width: calc(100vw - 18px);
   }
 
-
-  &__swiper {
-    overflow: visible;
-
-    clip-path: inset(-100px -100vw -100px 0px);
-
-    margin: 0;
-    padding: 4px;
+  .swiper {
     margin: -4px;
+    padding: 4px;
 
-    @include on-desktop {
-      overflow: hidden;
-    }
+    @include on-tablet {padding-right: -24px}
+
+    @include on-mobile {padding-right: -18px}
 
     .card {
-      height: auto !important;
       display: flex;
-
       width: $mobile-card-width !important;
+      height: auto !important;
 
       @include on-tablet {
         width: $tablet-card-width !important;
@@ -49,8 +44,8 @@ $desktop-card-width: 272px;
       }
 
       & > div {
-        height: 100%;
         width: 100%;
+        height: 100%;
       }
     }
   }
@@ -58,39 +53,23 @@ $desktop-card-width: 272px;
   &__title {
     font-family: Mont, serif;
     font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -1%;
     font-weight: 800;
-    color: #0F0F11; // To Change
+    line-height: 41px;
+    color: $primary-color;
+    letter-spacing: -1%;
 
     @include on-mobile {
+      padding-right: 16px;
+
       font-family: Mont, serif;
       font-size: 22px;
+      font-weight: 800;
       line-height: 140%;
       letter-spacing: 0;
-      font-weight: 800;
-      padding-right: 16px;
     }
 
     @include on-tablet {
       padding-right: 16px;
-    }
-  }
-
-  &__container {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    overflow: visible;
-    padding: 0 16px;
-    height: 100%;
-
-    @include on-tablet {
-      padding: 0;
-    }
-
-    @include on-desktop {
-      padding: 0;
     }
   }
 
@@ -98,6 +77,10 @@ $desktop-card-width: 272px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    @include on-tablet {padding-right: 24px}
+
+    @include on-mobile {padding-right: 18px;}
   }
 
   &__buttons {
@@ -106,15 +89,24 @@ $desktop-card-width: 272px;
     gap: 16px;
 
     button {
-      display: flex;
       cursor: pointer;
-      height: 32px;
-      aspect-ratio: 1 / 1;
-      border-radius: 20px;
-      border: 1px solid #B4BDC3; //To Change
-      background-color: transparent;
+
+      display: flex;
       align-items: center;
       justify-content: center;
+
+      aspect-ratio: 1 / 1;
+      height: 32px;
+      border: 1px solid $icon-color;
+      border-radius: 20px;
+
+      background-color: transparent;
+
+      &:disabled {
+        cursor: not-allowed;
+        border-color: $icon-color;
+        opacity: 0.5;
+      }
 
       &:hover {
         border-color: $primary-color;

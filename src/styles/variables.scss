@@ -1,13 +1,42 @@
-$elements-color: #E2E6E9;
-$secondary-color: #89939A;
-$primary-color: #0F0F11;
-$bg-color: #FAFBFC;
-$main-bg-color: #FFF;
-
 $header-height-desktop: 64px;
 $header-height-tablet: 48px;
 $desktop-min-width: 1200px;
 $tablet-min-width: 640px;
+$desktop-content-max-width: 1136px;
+$tablet-content-max-width: 592px;
 $transition-time: 0.2s;
+$button-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
 
-$main-max-width: 1136px;
+:root {
+  --accent-color: #4219D0;
+  --secondary-accent-color: #F4BA47;
+  --primary-color: #0F0F11;
+  --secondary-color: #89939A;
+  --icon-color: #B4BDC3;
+  --elements-color: #E2E6E9;
+  --bg-hover-color: #FAFBFC;
+  --white-color: #FFF;
+  --green-color: #27AE60;
+  --red-color: #EB5757;
+}
+
+[data-theme="blue"] {
+  --accent-color: #216CFF;
+  --secondary-accent-color: #F447AF;
+}
+
+[data-theme="purple"] {
+  --accent-color: #F86800;
+  --secondary-accent-color: #476DF4;
+}
+
+$accent-color: var(--accent-color);
+$secondary-accent-color: var(--secondary-accent-color);
+$primary-color: var(--primary-color);
+$secondary-color: var(--secondary-color);
+$icon-color: var(--icon-color);
+$elements-color: var(--elements-color);
+$bg-hover-color: var(--bg-hover-color);
+$white-color: var(--white-color);
+$green-color: var(--green-color);
+$red-color: var(--red-color);

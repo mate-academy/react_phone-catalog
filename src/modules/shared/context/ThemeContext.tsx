@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext } from 'react';
+import React, { createContext, ReactNode, useContext, useEffect } from 'react';
 import { Theme } from '../../../types/ThemeType';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
@@ -7,16 +7,27 @@ type ThemeContextType = {
   toggleTheme: () => void;
 };
 
-export const ThemeContext = createContext<ThemeContextType | undefined>(
-  undefined,
-);
+export const ThemeContext = createContext<ThemeContextType>({
+  theme: 'orange',
+  toggleTheme: () => {},
+});
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useLocalStorage<Theme>('theme', 'light');
+  const [theme, setTheme] = useLocalStorage<Theme>('theme', 'orange');
 
   const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
+    if (theme === 'orange') {
+      setTheme('blue');
+    } else if (theme === 'blue') {
+      setTheme('purple');
+    } else {
+      setTheme('orange');
+    }
   };
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

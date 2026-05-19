@@ -1,101 +1,95 @@
-@import '../../styles/main.scss';
+@import '../../styles/main';
 
-.section {
-  margin: 0 auto 64px;
-  padding: 0 16px;
-
-  @include on-tablet {
-    max-width: 1136px;
-  }
-
-  @include on-desktop {
-    margin-bottom: 80px;
-    padding: 0;
-  }
+.page {
+  @include page-default;
 }
 
 .title {
-  padding: 32px 0;
+  padding: 40px 0;
 
   @include on-desktop {
-    padding: 56px 0;
+    padding: 24px 0 32px
   }
 
-  &__text {
-    font: 800 32px/41px Mont;
-    letter-spacing: -0.01em;
+  .count {
+    @include font-dt-body-text;
 
-    @include on-tablet {
-      font-size: 48px;
-      line-height: 56px;
-    }
-  }
-
-  &__count {
-    font: 400 14px/21px Mont;
-    color: #89939a;
+    color: $secondary-color;
   }
 }
 
 .items {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   gap: 40px 16px;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   justify-items: center;
+
+  padding-top: 24px;
 
   @include on-desktop {
     grid-template-columns: repeat(4, 1fr);
-    max-width: 1136px;
+    max-width: $desktop-content-max-width;
   }
-}
-
-.top {
-  padding: 24px 0;
 }
 
 .pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  padding-top: 24px;
   user-select: none;
 
-  @include on-tablet {
-    padding-top: 40px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  padding-top: 40px;
+
+  @include on-mobile {
+    padding-top: 24px;
   }
 
-  &__container {
+  .container {
     display: flex;
     gap: 8px;
   }
+}
 
-  &__button {
-    width: 32px;
-    aspect-ratio: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #e2e6e9;
-    border-radius: 50%;
-    font: 14px/21px Mont;
-    color: #0f0f11;
-    cursor: pointer;
-    transition: 0.3s;
+.button {
+  cursor: pointer;
 
-    &.pagination__active {
-      background-color: #0f0f11;
-      color: #fff;
-      border-color: #0f0f11;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $elements-color;
+  border-radius: 100%;
+
+  color: $primary-color;
+
+  transition: 0.5s;
+
+  @include font-dt-body-text;
+
+  &--control {
+    cursor: default;
+    border-color: $icon-color;
+    opacity: 0.5;
+
+    &:hover {
+      border-color: $primary-color;
+      transition: $transition-time;
+    }
+
+    &--active {
+      cursor: pointer;
+      border-color: $icon-color;
+      opacity: 1;
     }
   }
 
-  &__next, &__prev {
-    border-color: #0f0f11;
+  &--active {
+    border-color: $primary-color;
+    color: $white-color;
+    background-color: $primary-color;
   }
-}
-
-.next, .prev {
-  width: 16px;
-  aspect-ratio: 1;
 }

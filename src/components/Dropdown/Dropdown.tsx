@@ -71,20 +71,17 @@ export const Dropdown: React.FC<Props> = ({
   return (
     <div className={styles.dropdown}>
       <div className={styles.dropdown__container}>
-        <div className={styles.dropdown__sortbox}>
+        <div className={styles.dropdown__sortbox} ref={sortRef}>
           <div className={styles.dropdown__text}>Sort by</div>
           <div
             className={styles.dropdown__select_menu}
             onClick={() => setIsOpenSort(prev => !prev)}
           >
             <div className={styles.text}>{currentSortLabel}</div>
-            <Icon
-              name={isOpenSort ? 'arrowup' : 'arrowdown'}
-              className={styles.icon}
-            />
+            <Icon name="arrowdown" className={styles.icon} />
           </div>
           {isOpenSort && (
-            <ul className={styles.dropdown__list} ref={sortRef}>
+            <ul className={styles.dropdown__list}>
               {sortOptions.map(option => (
                 <li
                   key={option.value}
@@ -100,20 +97,17 @@ export const Dropdown: React.FC<Props> = ({
             </ul>
           )}
         </div>
-        <div className={styles.dropdown__perpagebox}>
+        <div className={styles.dropdown__perpagebox} ref={perPageRef}>
           <div className={styles.dropdown__text}>Item on page</div>
           <div
             className={styles.dropdown__select_menu}
             onClick={() => setIsOpenPerPage(prev => !prev)}
           >
             <div className={styles.text}>{perPage}</div>
-            <Icon
-              name={isOpenPerPage ? 'arrowup' : 'arrowdown'}
-              className={styles.icon}
-            />
+            <Icon name="arrowdown" className={styles.icon} />
           </div>
           {isOpenPerPage && (
-            <ul className={styles.dropdown__list} ref={perPageRef}>
+            <ul className={styles.dropdown__list}>
               {perPageOpt.map(option => (
                 <li
                   key={option}
