@@ -5,7 +5,6 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { addToCart } from '../../store/cartSlice';
 import { toggleFavorite } from '../../store/favoritesSlice';
 import styles from './ProductCard.module.scss';
-import { getImageUrl } from '../../api/getImage';
 
 interface Props {
   product: Product;
@@ -32,7 +31,10 @@ export const ProductCard = ({ product, hideOldPrice }: Props) => {
     product.image ||
     product.imageUrl ||
     (product.images ? product.images[0] : '');
-  const imageSrc = getImageUrl(currentImage);
+
+  const imageSrc = currentImage.startsWith('/')
+    ? currentImage
+    : `/${currentImage}`;
 
   return (
     <div className={styles.card}>
@@ -92,9 +94,11 @@ export const ProductCard = ({ product, hideOldPrice }: Props) => {
           onClick={() => dispatch(toggleFavorite(product))}
         >
           <img
-            src={getImageUrl(
-              isFavorite ? 'img/heart-filled.png' : 'img/heart.png',
-            )}
+            src={
+              isFavorite
+                ? `${import.meta.env.BASE_URL}/img/heart-filled.png`
+                : `${import.meta.env.BASE_URL}/img/heart.png`
+            }
             alt="Favorite"
             className={styles.card__fav_icon}
           />
