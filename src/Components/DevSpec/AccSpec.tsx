@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-console */
@@ -72,6 +71,7 @@ export const AccSpec: React.FC = () => {
   const [, setErrorMessage] = useState(false);
   const [, setLoading] = useState(false);
   const [image, setImage] = useState<Image>(Image.first);
+  const [color, setColor] = useState<Color>(Color.first);
   const images = accessorie?.images || [];
   const path = accessorie?.id;
   // const capacitiesRaw = accessorie?.capacity ?? [];
@@ -225,7 +225,6 @@ export const AccSpec: React.FC = () => {
                   /-[^-]+-[^-]+$/,
                   `-${c.toLowerCase()}`,
                 );
-                const [color, setColor] = useState<Color>(c[0] as Color);
 
                 return (
                   <div
@@ -250,7 +249,7 @@ export const AccSpec: React.FC = () => {
                 {accessorie?.capacityAvailable.map(cap => {
                   const updatedPathCap = path?.replace(
                     /-[^-]+$/,
-                    `-${selectedCapacity?.toLowerCase()}`,
+                    `-${selectedCapacity?.toLowerCase()}-${color.toLowerCase()}`,
                   );
 
                   return (
