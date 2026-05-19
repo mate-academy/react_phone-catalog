@@ -32,7 +32,7 @@ export const ProductCard = ({ product, hideOldPrice }: Props) => {
     product.imageUrl ||
     (product.images ? product.images[0] : '');
 
-  const imageSrc = `${import.meta.env.BASE_URL}${currentImage.startsWith('/') ? currentImage.slice(1) : currentImage}`;
+  const imageSrc = `./${currentImage.startsWith('/') ? currentImage.slice(1) : currentImage}`;
 
   return (
     <div className={styles.card}>
@@ -92,11 +92,7 @@ export const ProductCard = ({ product, hideOldPrice }: Props) => {
           onClick={() => dispatch(toggleFavorite(product))}
         >
           <img
-            src={
-              isFavorite
-                ? `${import.meta.env.BASE_URL}/img/heart-filled.png`
-                : `${import.meta.env.BASE_URL}/img/heart.png`
-            }
+            src={isFavorite ? './img/heart-filled.png' : './img/heart.png'}
             alt="Favorite"
             className={styles.card__fav_icon}
           />
