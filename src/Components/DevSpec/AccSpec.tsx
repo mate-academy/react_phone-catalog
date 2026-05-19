@@ -3,7 +3,7 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-no-comment-textnodes */
-import { Link, useParams, useLocation } from 'react-router-dom';
+import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { Header } from '../Header/header';
 import { useEffect, useState } from 'react';
 import { getAccessorieById } from '../../api/api';
@@ -67,11 +67,13 @@ export const AccSpec: React.FC = () => {
     year: new Date().getFullYear(),
     image: a.images ?? '',
   });
+  const navigate = useNavigate();
   const [, setErrorMessage] = useState(false);
   const [, setLoading] = useState(false);
   const [image, setImage] = useState<Image>(Image.first);
   const [color, setColor] = useState<Color>(Color.first);
   const images = accessorie?.images || [];
+  const path = accessorie?.id;
   // const capacitiesRaw = accessorie?.capacity ?? [];
   const capacities: string[] = Array.isArray(accessorie?.capacity)
     ? accessorie.capacity
@@ -218,58 +220,57 @@ export const AccSpec: React.FC = () => {
           <div className="phone__specs">
             <p className="phone__colors-text">Available colors</p>
             <div className="phone__colors">
-              <div
-                className={`phone__color ${color === Color.first ? 'phone__color-active' : ''}`}
-              >
-                <div
-                  onClick={() => setColor(Color.first)}
-                  className={`phone__color-color phone__color-beige`}
-                ></div>
-              </div>
-              <div
-                className={`phone__color ${color === Color.second ? 'phone__color-active' : ''}`}
-              >
-                <div
-                  onClick={() => setColor(Color.second)}
-                  className={`phone__color-color phone__color-green`}
-                ></div>
-              </div>
-              <div
-                className={`phone__color ${color === Color.third ? 'phone__color-active' : ''}`}
-              >
-                <div
-                  onClick={() => setColor(Color.third)}
-                  className={`phone__color-color phone__color-gray`}
-                ></div>
-              </div>
-              <div
-                className={`phone__color ${color === Color.fourth ? 'phone__color-active' : ''}`}
-              >
-                <div
-                  onClick={() => setColor(Color.fourth)}
-                  className={`phone__color-color phone__color-white`}
-                ></div>
-              </div>
+              {accessorie?.colorsAvailable.map(c => {
+                const updatedPath = path?.replace(
+                  /-[^-]+$/,
+                  `-${c.toLowerCase()}`,
+                );
+
+                return (
+                  <div
+                    key={c}
+                    className={`phone__color ${color === c ? 'phone__color-active' : ''}`}
+                  >
+                    <div
+                      onClick={() => {
+                        setColor(c);
+                        navigate(`../accessories/${updatedPath}`);
+                      }}
+                      className={`phone__color-color phone__color-${c}`}
+                    ></div>
+                  </div>
+                );
+              })}
             </div>
             <div className="phone__specs-border"></div>
             <div className="phone__specs-cap">
               <p className="phone__specs-cap-text">Select capacity</p>
               <div className="phone__specs-capacities">
-                {capacities.map(cap => (
-                  <button
-                    key={cap}
-                    type="button"
-                    className={`phone__specs-capacity ${cap === selectedCapacity ? 'phone__specs-capacity-active' : ''}`}
-                    onClick={() => setSelectedCapacity(cap)}
-                    onKeyDown={e =>
-                      (e.key === 'Enter' || e.key === ' ') &&
-                      setSelectedCapacity(cap)
-                    }
-                    aria-pressed={cap === selectedCapacity}
-                  >
-                    {cap}
-                  </button>
-                ))}
+                {accessorie?.capacityAvailable.map(cap => {
+                  const updatedPathCap = path?.replace(
+                    /-[^-]+-[^-]+$/,
+                    `-${selectedCapacity?.toLowerCase()}-${color.toLowerCase()}`,
+                  );
+
+                  return (
+                    <button
+                      key={cap}
+                      type="button"
+                      className={`phone__specs-capacity ${cap === selectedCapacity ? 'phone__specs-capacity-active' : ''}`}
+                      onClick={() => {
+                        setSelectedCapacity(cap);
+                        navigate(`../accessories/${updatedPathCap}`);
+                      }}
+                      onKeyDown={e =>
+                        (e.key === 'Enter' || e.key === ' ') &&
+                        setSelectedCapacity(cap)
+                      }
+                      aria-pressed={cap === selectedCapacity}
+                    >
+                      {cap}
+                    </button>
+                  );
+                })}
                 <div />
               </div>
             </div>

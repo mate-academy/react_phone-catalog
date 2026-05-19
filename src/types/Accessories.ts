@@ -2,8 +2,8 @@ export interface Accessorie {
   id: string;
   category: string;
   namespaceId: string;
-  capacityAvailable: string;
-  colorsAvailable: string;
+  capacityAvailable: string[];
+  colorsAvailable: string[];
   description: [title: string, text: string];
   images: string[];
   name: string;
@@ -17,7 +17,7 @@ export interface Accessorie {
   camera: string;
   zoom: string;
   cell: string;
-  color: string;
+  color: string[];
   compatibility: string;
   material: string;
 }

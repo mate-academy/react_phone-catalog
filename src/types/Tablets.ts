@@ -2,8 +2,8 @@ export interface Tablet {
   id: string;
   category: string;
   namespaceId: string;
-  capacityAvailable: string;
-  colorsAvailable: string;
+  capacityAvailable: string[];
+  colorsAvailable: string[];
   description: [title: string, text: string];
   images: string[];
   name: string;
