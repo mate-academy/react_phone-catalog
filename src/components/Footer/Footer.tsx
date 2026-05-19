@@ -10,7 +10,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.content}>
         <Link to="/" className={styles.logo}>
-          <img src="/img/logo.svg" alt="Nice Gadgets Logo" />
+          <img src="./img/logo.svg" alt="Nice Gadgets Logo" />
         </Link>
 
         <nav className={styles.links}>
@@ -37,7 +37,7 @@ export const Footer = () => {
             className={styles.back_btn}
             aria-label="Back to top"
           >
-            <img src="/img/arrow-up.png" alt="Arrow Up" />
+            <img src="./img/arrow-up.png" alt="Arrow Up" />
           </button>
         </div>
       </div>

@@ -1,5 +1,5 @@
 // src/api/fetchClient.ts
-const BASE_URL = '/api';
+const BASE_URL = './api';
 
 export const client = {
   // Дженерик <T> означає, що функція поверне дані того типу, який ми попросимо

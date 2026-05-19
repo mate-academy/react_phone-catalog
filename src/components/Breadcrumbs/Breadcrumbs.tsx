@@ -19,7 +19,7 @@ export const Breadcrumbs = ({ category, productName }: Props) => {
     <nav className={styles.breadcrumbs}>
       <Link to="/" className={styles.breadcrumbs__link}>
         <img
-          src="/img/home.png"
+          src="./img/home.png"
           alt="Home"
           className={styles.breadcrumbs__icon}
         />
@@ -28,7 +28,7 @@ export const Breadcrumbs = ({ category, productName }: Props) => {
       {category && (
         <>
           <img
-            src="/img/arrow-right.png"
+            src="./img/arrow-right.png"
             alt=">"
             className={styles.breadcrumbs__divider}
           />
@@ -50,7 +50,7 @@ export const Breadcrumbs = ({ category, productName }: Props) => {
       {productName && (
         <>
           <img
-            src="/img/arrow-right.png"
+            src="./img/arrow-right.png"
             alt=">"
             className={styles.breadcrumbs__divider}
           />

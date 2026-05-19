@@ -50,7 +50,7 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.header__left}>
         <Link to="/" className={styles.header__logo}>
-          <img src="/img/logo.svg" alt="Nice Gadgets" />
+          <img src="./img/logo.svg" alt="Nice Gadgets" />
         </Link>
 
         <nav className={styles.header__nav}>
@@ -64,14 +64,14 @@ export const Header = () => {
 
       <div className={styles.header__right}>
         <Link to="/favorites" className={styles['header__icon-wrapper']}>
-          <img src="/img/heart.png" alt="Favorites" />
+          <img src="./img/heart.png" alt="Favorites" />
           {favTotalQuantity > 0 && (
             <span className={styles.header__badge}>{favTotalQuantity}</span>
           )}
         </Link>
 
         <Link to="/cart" className={styles['header__icon-wrapper']}>
-          <img src="/img/bag.png" alt="Cart" />
+          <img src="./img/bag.png" alt="Cart" />
           {cartTotalQuantity > 0 && (
             <span className={styles.header__badge}>{cartTotalQuantity}</span>
           )}
@@ -83,7 +83,10 @@ export const Header = () => {
         className={styles['header__menu-btn']}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
-        <img src={isMenuOpen ? '/img/close.png' : '/img/menu.png'} alt="Menu" />
+        <img
+          src={isMenuOpen ? './img/close.png' : './img/menu.png'}
+          alt="Menu"
+        />
       </button>
 
       <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />

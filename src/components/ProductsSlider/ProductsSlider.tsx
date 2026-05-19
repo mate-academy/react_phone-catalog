@@ -53,14 +53,14 @@ export const ProductsSlider = ({ title, products, hideOldPrice }: Props) => {
             onClick={scrollLeft}
             disabled={!canScrollLeft}
           >
-            <img src="/img/arrow-left.png" alt="Left" />
+            <img src="./img/arrow-left.png" alt="Left" />
           </button>
           <button
             className={styles.slider__btn}
             onClick={scrollRight}
             disabled={!canScrollRight}
           >
-            <img src="/img/arrow-right.png" alt="Right" />
+            <img src="./img/arrow-right.png" alt="Right" />
           </button>
         </div>
       </div>

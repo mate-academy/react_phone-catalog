@@ -65,7 +65,7 @@ export const CartPage = () => {
                       className={styles.cart_item__remove}
                       onClick={() => dispatch(removeFromCart(item.id))}
                     >
-                      <img src="/img/close.png" alt="Remove" />
+                      <img src="./img/close.png" alt="Remove" />
                     </button>
 
                     <Link
@@ -101,7 +101,7 @@ export const CartPage = () => {
                           )
                         }
                       >
-                        <img src="/img/minus.png" alt="Minus" />
+                        <img src="./img/minus.png" alt="Minus" />
                       </button>
                       <span className={styles.cart_item__quantity}>
                         {item.quantity}
@@ -117,7 +117,7 @@ export const CartPage = () => {
                           )
                         }
                       >
-                        <img src="/img/plus.png" alt="Plus" />
+                        <img src="./img/plus.png" alt="Plus" />
                       </button>
                     </div>
 

@@ -3,9 +3,9 @@ import cn from 'classnames';
 import styles from './BannerSlider.module.scss';
 
 const BANNERS = [
-  '/img/banner-phones.png',
-  '/img/banner-tablets.png',
-  '/img/banner-accessories.png',
+  './img/banner-phones.png',
+  './img/banner-tablets.png',
+  './img/banner-accessories.png',
 ];
 
 export const BannerSlider = () => {
@@ -29,7 +29,7 @@ export const BannerSlider = () => {
     <div className={styles.banner}>
       <div className={styles.banner__container}>
         <button type="button" className={styles.banner__btn} onClick={goPrev}>
-          <img src="/img/arrow-left.png" alt="Previous" />
+          <img src="./img/arrow-left.png" alt="Previous" />
         </button>
 
         <div className={styles.banner__window}>
@@ -49,7 +49,7 @@ export const BannerSlider = () => {
         </div>
 
         <button type="button" className={styles.banner__btn} onClick={goNext}>
-          <img src="/img/arrow-right.png" alt="Next" />
+          <img src="./img/arrow-right.png" alt="Next" />
         </button>
       </div>
 

@@ -94,7 +94,7 @@ export const ProductCard = ({ product, hideOldPrice }: Props) => {
           onClick={() => dispatch(toggleFavorite(product))}
         >
           <img
-            src={isFavorite ? '/img/heart-filled.png' : '/img/heart.png'}
+            src={isFavorite ? './img/heart-filled.png' : './img/heart.png'}
             alt="Favorite"
             className={styles.card__fav_icon}
           />

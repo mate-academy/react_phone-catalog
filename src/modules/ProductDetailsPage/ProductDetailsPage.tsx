@@ -200,7 +200,7 @@ export const ProductDetailsPage = () => {
               }
             >
               <img
-                src={isFavorite ? '/img/heart-filled.png' : '/img/heart.png'}
+                src={isFavorite ? './img/heart-filled.png' : './img/heart.png'}
                 alt="Favorite"
                 className={styles.fav_icon}
               />

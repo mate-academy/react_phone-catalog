@@ -54,7 +54,7 @@ export const MobileMenu = ({ isOpen, onClose }: Props) => {
             })
           }
         >
-          <img src="/img/heart.png" alt="Favorites" />
+          <img src="./img/heart.png" alt="Favorites" />
           {favTotalQuantity > 0 && (
             <span className={styles.menu__badge}>{favTotalQuantity}</span>
           )}
@@ -69,7 +69,7 @@ export const MobileMenu = ({ isOpen, onClose }: Props) => {
             })
           }
         >
-          <img src="/img/bag.png" alt="Cart" />
+          <img src="./img/bag.png" alt="Cart" />
           {cartTotalQuantity > 0 && (
             <span className={styles.menu__badge}>{cartTotalQuantity}</span>
           )}
