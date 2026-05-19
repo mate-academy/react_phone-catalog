@@ -250,7 +250,7 @@ export const AccSpec: React.FC = () => {
               <div className="phone__specs-capacities">
                 {accessorie?.capacityAvailable.map(cap => {
                   const updatedPathCap = path?.replace(
-                    /-[^-]+-[^-]+$/,
+                    /-[^-]+-[^-]+-[^-]+$/,
                     `-${selectedCapacity?.toLowerCase()}-${color.toLowerCase()}`,
                   );
 
