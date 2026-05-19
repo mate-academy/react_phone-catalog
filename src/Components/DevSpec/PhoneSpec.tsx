@@ -96,12 +96,6 @@ export const PhoneSpec: React.FC = () => {
 
   const path = phone?.id;
 
-  const updatedPath = path?.replace(/-[^-]+$/, `-${color.toLowerCase()}`);
-  const updatedPathCap = path?.replace(
-    /-[^-]+-[^-]+$/,
-    `-${selectedCapacity?.toLowerCase()}-${color.toLowerCase()}`,
-  );
-
   useEffect(() => {
     if (capacities.length) {
       setSelectedCapacity(capacities[0]);
@@ -239,43 +233,57 @@ export const PhoneSpec: React.FC = () => {
           <div className="phone__specs">
             <p className="phone__colors-text">Available colors</p>
             <div className="phone__colors">
-              {phone?.colorsAvailable.map(c => (
-                <div
-                  key={c}
-                  className={`phone__color ${color === c ? 'phone__color-active' : ''}`}
-                >
+              {phone?.colorsAvailable.map(c => {
+                const updatedPath = path?.replace(
+                  /-[^-]+$/,
+                  `-${c.toLowerCase()}`,
+                );
+
+                return (
                   <div
-                    onClick={() => {
-                      setColor(c);
-                      navigate(`../${updatedPath}`);
-                    }}
-                    className={`phone__color-color phone__color-${c}`}
-                  ></div>
-                </div>
-              ))}
+                    key={c}
+                    className={`phone__color ${color === c ? 'phone__color-active' : ''}`}
+                  >
+                    <div
+                      onClick={() => {
+                        setColor(c);
+                        navigate(`../${updatedPath}`);
+                      }}
+                      className={`phone__color-color phone__color-${c}`}
+                    ></div>
+                  </div>
+                );
+              })}
             </div>
             <div className="phone__specs-border"></div>
             <div className="phone__specs-cap">
               <p className="phone__specs-cap-text">Select capacity</p>
               <div className="phone__specs-capacities">
-                {capacities.map(cap => (
-                  <button
-                    key={cap}
-                    type="button"
-                    className={`phone__specs-capacity ${cap === selectedCapacity ? 'phone__specs-capacity-active' : ''}`}
-                    onClick={() => {
-                      setSelectedCapacity(cap);
-                      navigate(`../${updatedPathCap}`);
-                    }}
-                    onKeyDown={e =>
-                      (e.key === 'Enter' || e.key === ' ') &&
-                      setSelectedCapacity(cap)
-                    }
-                    aria-pressed={cap === selectedCapacity}
-                  >
-                    {cap}
-                  </button>
-                ))}
+                {capacities.map(cap => {
+                  const updatedPathCap = path?.replace(
+                    /-[^-]+-[^-]+$/,
+                    `-${selectedCapacity?.toLowerCase()}-${color.toLowerCase()}`,
+                  );
+
+                  return (
+                    <button
+                      key={cap}
+                      type="button"
+                      className={`phone__specs-capacity ${cap === selectedCapacity ? 'phone__specs-capacity-active' : ''}`}
+                      onClick={() => {
+                        setSelectedCapacity(cap);
+                        navigate(`../${updatedPathCap}`);
+                      }}
+                      onKeyDown={e =>
+                        (e.key === 'Enter' || e.key === ' ') &&
+                        setSelectedCapacity(cap)
+                      }
+                      aria-pressed={cap === selectedCapacity}
+                    >
+                      {cap}
+                    </button>
+                  );
+                })}
                 <div />
               </div>
             </div>
