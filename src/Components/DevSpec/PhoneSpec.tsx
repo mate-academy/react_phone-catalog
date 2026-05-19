@@ -94,10 +94,9 @@ export const PhoneSpec: React.FC = () => {
 
   const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
 
-  const handleNavigate = (col: string) => {
-    navigate(`/phones/${productId}../${col.toLowerCase()}`);
-    setSelectedCapacity(col);
-  };
+  const path = phone?.id;
+
+  const updatedPath = path?.replace(/-[^-]+$/, `-${color.toLowerCase()}`);
 
   useEffect(() => {
     if (capacities.length) {
@@ -244,7 +243,7 @@ export const PhoneSpec: React.FC = () => {
                   <div
                     onClick={() => {
                       setColor(c);
-                      handleNavigate(c);
+                      navigate(`${updatedPath}`);
                     }}
                     className={`phone__color-color phone__color-${c}`}
                   ></div>
