@@ -5,6 +5,7 @@ import {
   updateQuantity,
   clearCart,
 } from '../../store/cartSlice';
+import { getImageUrl } from '../../api/getImage';
 import styles from './CartPage.module.scss';
 
 export const CartPage = () => {
@@ -58,9 +59,9 @@ export const CartPage = () => {
               const finalImage = `${import.meta.env.BASE_URL}${cleanImageSrc}`;
 
               <img
-                src={finalImage}
+                src={getImageUrl(item.product.image)} // Просто передаємо сюди рядок з API
                 alt={item.product.name}
-                className={styles.cart_item__image}
+                className={styles.card__image}
               />;
               const itemPrice =
                 item.product.priceDiscount || item.product.price;
