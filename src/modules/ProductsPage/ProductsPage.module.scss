@@ -1,0 +1,128 @@
+.productsPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #313237;
+  font: monserrat, sans-serif;
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .loader,
+  .error {
+    text-align: center;
+    padding: 50px;
+  }
+
+  .error button {
+    background: #313237;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  .pagination button {
+    background: #313237;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .pagination button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+
+  .error button:hover {
+    background: #313237;
+  }
+
+  .pagination button:hover:not(:disabled) {
+    background: #313237;
+  }
+
+  .pagination span {
+    font-weight: 500;
+  }
+
+  .searchResults {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .controls {
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .search {
+      flex: 1;
+      min-width: 200px;
+
+      input {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+   }
+
+    .sort,
+    .perPage {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      label {
+        font-weight: 500;
+      }
+
+      select {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background: white;
+      }
+    }
+  }
+
+  .productsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .productCard {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}

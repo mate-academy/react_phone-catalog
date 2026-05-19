@@ -5,6 +5,7 @@
   ],
   "compilerOptions": {
     "sourceMap": false,
+    "ignoreDeprecations": "6.0",
     "types": ["node", "cypress"]
   }
 }

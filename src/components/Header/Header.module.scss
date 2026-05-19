@@ -1,0 +1,90 @@
+.header {
+  position: sticky;
+  top: 0;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  font-family: montserrat, sans-serif;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #313237;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    i {
+      font-size: 28px;
+      color: #313237;
+
+    }
+
+    span {
+      font-size: 20px;
+      text-align: end;
+    }
+  }
+
+  .nav {
+    display: flex;
+    gap: 30px;
+
+    .navLink {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      padding: 10px 0;
+      transition: color 0.3s;
+
+      &:hover,
+      &.active {
+        color: #313237;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 20px;
+
+    .iconLink {
+      position: relative;
+      text-decoration: none;
+      color: #333;
+      font-size: 20px;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #007bff;
+      }
+
+      .badge {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: #007bff;
+        color: white;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+      }
+    }
+  }
+}
