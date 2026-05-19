@@ -243,7 +243,7 @@ export const PhoneSpec: React.FC = () => {
                   <div
                     onClick={() => {
                       setColor(c);
-                      navigate(`${updatedPath}`);
+                      navigate(`../${updatedPath}`);
                     }}
                     className={`phone__color-color phone__color-${c}`}
                   ></div>
