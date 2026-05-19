@@ -262,7 +262,7 @@ export const PhoneSpec: React.FC = () => {
                 {phone?.capacityAvailable.map(cap => {
                   const updatedPathCap = path?.replace(
                     /-[^-]+-[^-]+$/,
-                    `-${selectedCapacity?.toLowerCase()}-${color?.toLowerCase()}`,
+                    `-${selectedCapacity?.toLowerCase()}-${color?.toLowerCase()}-${color?.toLowerCase()}`,
                   );
 
                   return (
