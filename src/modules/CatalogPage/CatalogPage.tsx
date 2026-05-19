@@ -122,10 +122,6 @@ export const CatalogPage = () => {
     }
   };
 
-  useEffect(() => {
-    updateSearchParam('page', 1);
-  }, [sort, perPage]);
-
   const pages = useMemo(() => {
     const mass: (number | string)[] = [];
     let range;

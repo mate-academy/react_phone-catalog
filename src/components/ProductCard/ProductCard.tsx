@@ -14,11 +14,18 @@ interface Props {
 export const ProductCard: React.FC<Props> = ({ product, discount }) => {
   const context = useCartAndFavContext();
   const { isFavorite, toggleFavorite, isCart, toggleCart } = context;
+  const handleGoToProduct = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <div className={styles.card}>
       <div className={styles.card__container}>
         <Link
+          onClick={() => handleGoToProduct()}
           to={`/${product.category}/${product.itemId}`}
           className={styles.card__link}
         >
