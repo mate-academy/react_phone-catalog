@@ -46,6 +46,16 @@
     }
   }
 
+  &__items {
+    width: 100%;
+    flex: 2 1 0;
+    min-width: 0;
+
+    &-empty {
+      font-size: 38px;
+    }
+  }
+
   &__sub {
     margin-top: 8px;
     font-family: 'Mont Regular', sans-serif;
