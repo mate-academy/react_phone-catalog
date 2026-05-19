@@ -1,0 +1,49 @@
+@import '../../../utils/mixins';
+@import '../../../utils/vars';
+@import '../../../utils/fonts';
+
+.btns {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  gap: 8px;
+  height: 40px;
+  color: $color-text;
+  font-size: 14px;
+
+  &__add {
+    background-color: $color-accent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color $effectDuration;
+
+    &:hover {
+      background-color: $color-accent-hover;
+    }
+
+    &--selected {
+      background-color: $background-color;
+      color: $color-text;
+      border: 1px solid $color-text-gray;
+    }
+  }
+
+  &__favorites {
+    background-color: $background-color;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-image: url('../../../icons/Favourites.png');
+    cursor: pointer;
+    transition: $effectDuration;
+
+    &:hover {
+      background-color: $color-hover;
+    }
+
+    &--selected {
+      background-image: url('../../../icons/FavouritesFilled.svg');
+      border: 1px solid $color-text-gray;
+    }
+  }
+}

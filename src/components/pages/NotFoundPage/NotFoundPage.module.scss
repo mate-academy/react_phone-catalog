@@ -1,0 +1,9 @@
+@import '../../../utils/mixins';
+@import '../../../utils/vars';
+
+.error {
+  display: flex;
+  flex-direction: column;
+  margin: 32px;
+  color: $color-text;
+}

@@ -1,0 +1,42 @@
+@import '../../../../utils/mixins';
+@import '../../../../utils/fonts';
+@import '../../../../utils/vars';
+
+.menu {
+  display: flex;
+  gap: 32px;
+
+  @include on-desktop {
+    gap: 64px;
+  }
+
+  &__item {
+    position: relative;
+  }
+
+  &__link {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: $color-text-gray;
+    padding: 8px 0;
+    position: relative;
+
+    @include on-tablet {
+      padding: 18px 0;
+    }
+
+    &--active {
+      color: $color-text;
+      border-bottom: 3px solid $color-text;
+
+      @include on-tablet {
+        padding-bottom: 18px;
+      }
+
+      @include on-desktop {
+        padding-bottom: 24px;
+      }
+    }
+  }
+}

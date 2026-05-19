@@ -1,0 +1,37 @@
+ @import '../../../utils/vars';
+
+ .btns{
+   display: flex;
+   gap: 16px;
+   flex-direction: row;
+
+   &__btn {
+     display: block;
+     width: 16px;
+     height: 16px;
+     padding: 15px;
+     background-position: center;
+     background-repeat: no-repeat;
+     border: 1px solid $color-hover;
+     cursor: pointer;
+     transition: $effectDuration;
+
+
+     &--prev {
+       background-image: url('../../../icons/Prev.svg');
+       &:hover {
+         background-image: url('../../../icons/Prev-white.svg');
+         background-color: $color-hover;
+       }
+     }
+
+     &--next {
+       background-image: url('../../../icons/Next.svg');
+       &:hover {
+         background-image: url('../../../icons/Next-white.svg');
+         background-color: $color-hover;
+       }
+     }
+
+   }
+ }

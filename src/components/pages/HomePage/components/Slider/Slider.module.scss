@@ -1,0 +1,14 @@
+@import '../../../../../utils/vars';
+
+  .slider {
+    height: 526px;
+    grid-column: 1 / -1;
+    overflow: hidden;
+
+    &__slides {
+      display: flex;
+      transition: $effectDuration;
+      gap: 16px;
+    }
+  }
+
