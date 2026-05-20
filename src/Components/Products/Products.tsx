@@ -15,7 +15,7 @@ export const Product: React.FC<Props> = ({ currentProducts }) => {
     <div
       className="products-phones"
       style={{
-        transform: `translateX(-${currentProducts.indexOf(productMap) * 100}px)`,
+        transform: `translateX(-${currentProducts.indexOf(productMap) * 100}%)`,
       }}
     >
       {currentProducts.map(product => (
