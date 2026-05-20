@@ -25,10 +25,12 @@ export const Product: React.FC<Props> = ({
 
       if (!card) {
         setCardStep(0);
+
         return;
       }
 
       const gap = 24;
+
       setCardStep(card.offsetWidth + gap);
     };
 

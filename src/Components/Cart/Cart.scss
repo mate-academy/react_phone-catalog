@@ -316,6 +316,10 @@
   }
 
   &__check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     &-container {
       display: flex;
       flex-direction: column;
@@ -325,7 +329,7 @@
 
       padding-inline: 24px;
 
-      width: 100%;
+      width: 400px;
       height: 230px;
 
       background-color: transparent;

@@ -145,25 +145,19 @@ export const Main: React.FC = () => {
   const handleDiscountedChange = useCallback(
     (direction: 'next' | 'prev') => {
       setDiscountedActiveIndex(prev => {
+        const lastIndex = Math.max(
+          0,
+          discountedProducts.length - productsPerSlide,
+        );
+
         if (direction === 'next') {
-          return prev + 1 < discountedProducts.length ? prev + 1 : 0;
+          return prev < lastIndex ? prev + 1 : 0;
         }
 
-        const next = prev - 1;
-
-        if (next >= 0) {
-          return next;
-        }
-
-        return Math.max(0, discountedProducts.length - productsPerSlide);
+        return prev > 0 ? prev - 1 : lastIndex;
       });
     },
     [discountedProducts.length, productsPerSlide],
-  );
-
-  const currentDiscountedProducts = discountedProducts.slice(
-    discountedActiveIndex,
-    discountedActiveIndex + productsPerSlide,
   );
 
   const arrowLeft = new URL(
@@ -395,7 +389,8 @@ export const Main: React.FC = () => {
               </div>
             </div>
             <Discount
-              DiscountedProducts={currentDiscountedProducts}
+              DiscountedProducts={discountedProducts}
+              currentSlide={discountedActiveIndex}
               visibleCount={productsPerSlide}
             />
           </section>

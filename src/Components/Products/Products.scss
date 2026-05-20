@@ -3,14 +3,15 @@
 .products {
   &-phones {
     position: relative;
-    display: flex;
-    gap: 24px;
     overflow: hidden;
     width: 100%;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+  }
 
+  &-track {
+    display: flex;
+    gap: 24px;
     transition: transform 0.5s ease-in-out;
+    will-change: transform;
   }
 
   &__bottom {
@@ -30,14 +31,10 @@
 
   &-phone {
     cursor: pointer;
-    flex: 1 1 calc((100% - 48px) / 3);
+    flex: 0 0 auto;
 
     color: #F1F2F9;
     text-decoration: none;
-
-    @include on-desktop {
-      flex: 1 1 calc((100% - 72px) / 4);
-    }
 
     background-color: #161827;
     border: 1px solid #161827;

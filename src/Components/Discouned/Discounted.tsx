@@ -5,75 +5,82 @@ import { Link } from 'react-router-dom';
 
 type Props = {
   DiscountedProducts: Discounted[];
+  currentSlide: number;
   visibleCount: number;
 };
 
 export const Discount: React.FC<Props> = ({
   DiscountedProducts,
+  currentSlide,
   visibleCount,
 }) => {
-  const viewportRef = useRef<HTMLDivElement | null>(null);
-  const [cardWidth, setCardWidth] = useState(0);
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [cardStep, setCardStep] = useState(0);
   const gap = 24;
 
   useEffect(() => {
-    const updateCardWidth = () => {
-      if (!viewportRef.current) {
+    const updateCardStep = () => {
+      const track = trackRef.current;
+      const card = track?.querySelector<HTMLAnchorElement>('.products-phone');
+
+      if (!card) {
+        setCardStep(0);
         return;
       }
 
-      const width = viewportRef.current.offsetWidth;
-      const count = Math.max(1, visibleCount);
-
-      setCardWidth((width - gap * (count - 1)) / count);
+      setCardStep(card.offsetWidth + gap);
     };
 
-    updateCardWidth();
-    window.addEventListener('resize', updateCardWidth);
+    updateCardStep();
+    window.addEventListener('resize', updateCardStep);
 
-    return () => window.removeEventListener('resize', updateCardWidth);
-  }, [visibleCount]);
+    return () => window.removeEventListener('resize', updateCardStep);
+  }, [DiscountedProducts.length, visibleCount]);
 
   return (
     <div className="products-phones">
-      {DiscountedProducts.map(product => (
-        <Link
-          key={product.id}
-          to={`phones/${product.id}`}
-          className="products-phone"
-          style={
-            cardWidth
-              ? { minWidth: `${cardWidth}px`, maxWidth: `${cardWidth}px` }
-              : {}
-          }
-        >
-          <div className="products-container">
-            <div className="products_">
-              <div className="products-img">
-                <img src={product.image} alt="" className="products-image" />
+      <div
+        ref={trackRef}
+        className="products-track"
+        style={{ transform: `translateX(-${currentSlide * cardStep}px)` }}
+      >
+        {DiscountedProducts.map(product => (
+          <Link
+            key={product.id}
+            to={`phones/${product.id}`}
+            className="products-phone"
+            style={{
+              minWidth: `calc((100% - ${(visibleCount - 1) * gap}px) / ${visibleCount})`,
+            }}
+          >
+            <div className="products-container">
+              <div className="products_">
+                <div className="products-img">
+                  <img src={product.image} alt="" className="products-image" />
+                </div>
+                <p className="products-title">{product.name}</p>
+                <span className="products-price">${product.fullPrice}</span>
               </div>
-              <p className="products-title">{product.name}</p>
-              <span className="products-price">${product.fullPrice}</span>
-            </div>
-            <div className="products__bottom">
-              <div className="products-string"></div>
-              <div className="products-info">
-                <p className="products-text products-text__first">
-                  Screen <span className="products-span">{product.screen}</span>
-                </p>
-                <p className="products-text">
-                  Capacity{' '}
-                  <span className="products-span">{product.capacity}</span>
-                </p>
-                <p className="products-text">
-                  RAM <span className="products-span">{product.ram}</span>
-                </p>
+              <div className="products__bottom">
+                <div className="products-string"></div>
+                <div className="products-info">
+                  <p className="products-text products-text__first">
+                    Screen <span className="products-span">{product.screen}</span>
+                  </p>
+                  <p className="products-text">
+                    Capacity{' '}
+                    <span className="products-span">{product.capacity}</span>
+                  </p>
+                  <p className="products-text">
+                    RAM <span className="products-span">{product.ram}</span>
+                  </p>
+                </div>
+                <ProductCard product={product} />
               </div>
-              <ProductCard product={product} />
             </div>
-          </div>
-        </Link>
-      ))}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
