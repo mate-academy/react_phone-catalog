@@ -30,6 +30,11 @@
     @include flex-center;
     @include font-h2($size: 22px, $line-height: 140%);
 
+    @media (min-width: $tablet-breakpoint) {
+      @include font-h2;
+    }
+
+
     justify-content: space-between;
     margin-bottom: 16px;
 
@@ -60,8 +65,12 @@
   .windowSlider {
     box-sizing: border-box;
     overflow-x: auto;
-
     scrollbar-width: none;
+
+    @media (min-width: $tablet-breakpoint) {
+      @include flex-center;
+    }
+
 
     &::-webkit-scrollbar {
       display: none;

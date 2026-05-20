@@ -1,0 +1,87 @@
+@use '../shared/styles/mixins.scss' as *;
+@use '../shared/styles/variables.scss' as *;
+
+.productspage {
+  overflow-x: hidden;
+  box-sizing: border-box;
+
+  @include grid;
+  margin: 24px 0;
+
+  .header {
+    grid-column: 1 / -1;
+    width: 100%;
+
+    .breadcrumb {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+
+      &_icon {
+        @include flex-center;
+
+        width: 16px;
+        height: 16px;
+      }
+
+      &_category {
+        text-transform: capitalize;
+        color: $graySecondary;
+
+        @include font-small-text;
+
+      }
+    }
+
+    .title {
+      margin-block: 24px 8px;
+
+      @include font-h1(32px, 41px)
+    }
+
+    .count {
+      @include font-body-text;
+
+      color: $graySecondary;
+    }
+
+    .filters {
+      display: flex;
+      box-sizing: border-box;
+      width: 100%;
+
+      gap: 16px;
+      margin-block: 32px 8px;
+
+      &_title {
+        @include font-small-text;
+
+        color: $graySecondary;
+      }
+
+      &_select {
+        @include font-buttons;
+
+        width: 135px;
+        margin-top: 4px;
+        appearance: none;
+        box-sizing: border-box;
+        padding: 12px;
+        height: 40px;
+        border: none;
+        background-color: $surface_2;
+        color: $white;
+
+        background-image: url('public/img/icons/Chevron_(Arrow_Down).svg');
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-size: 16px;
+      }
+    }
+  }
+
+  .products {
+    width: 100%;
+  }
+
+}

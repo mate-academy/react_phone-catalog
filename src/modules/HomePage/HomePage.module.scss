@@ -11,15 +11,15 @@
 
   .title {
     min-width: 0;
-    margin: 24px 0;
 
     grid-column: 1 / -1;
 
     @include font-h1($size: 32px, $line-height: 41px);
+    margin: 56px 0;
 
-      @media (min-width: $tablet-breakpoint) {
-        @include font-h1;
-      }
+    @media (min-width: $tablet-breakpoint) {
+      @include font-h1;
+    }
 
   }
 
@@ -39,24 +39,34 @@
     min-width: 0;
 
     grid-column: 1 / -1;
-    margin: 24px 0;
+    @include section-margin;
 
   }
 
   .categories {
     grid-column: 1 / -1;
+    @include section-margin;
 
     .categories_title {
-      @include font-h2($size: 22px, $line-height: 140%)
+      @include font-h2($size: 22px, $line-height: 140%);
+
+      @media (min-width: $tablet-breakpoint) {
+        @include font-h2;
+      }
     }
 
     .categories_cards {
       margin-top: 34px;
 
-      @include flex-center;
+      display: grid;
+      grid-template-columns: 1fr;
 
-      flex-direction: column;
       gap: 32px;
+
+      @media (min-width: $tablet-breakpoint) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
 
     }
   }
@@ -64,5 +74,7 @@
   .hot_prices_slider {
     grid-column: 1 / -1;
     margin-block: 30px 60px;
+
+    @include section-margin;
   }
 }

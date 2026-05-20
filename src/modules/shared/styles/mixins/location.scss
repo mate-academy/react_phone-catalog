@@ -25,3 +25,16 @@
     justify-content: center
   }
 }
+
+@mixin section-margin {
+  margin: 56px 0;
+
+  @media (min-width: $tablet-breakpoint) {
+    margin: 64px 0;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    margin: 80px 0;
+  }
+}
+

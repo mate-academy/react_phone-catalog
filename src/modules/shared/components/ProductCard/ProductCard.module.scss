@@ -20,7 +20,7 @@
 %add-to-fav {
   width: 40px;
   height: 40px;
-  
+
   @include flex-center;
 }
 
@@ -36,6 +36,16 @@
   width: 212px;
   height: 439px;
   padding: 32px;
+
+  @media (min-width: $tablet-breakpoint) {
+    width: 237px;
+    height: 512px;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    width: 272px;
+    height: 506px;
+  }
 
   .productImage {
     flex: 1;
@@ -55,7 +65,7 @@
 
     @include font-body-text;
 
-    margin-top: 8px;
+    margin-top: 16px;
 
     color: $white;
   }

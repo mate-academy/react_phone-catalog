@@ -76,6 +76,7 @@
 
   .icon {
     display: none;
+    transition: all 0.5s ease;
 
     img {
       width: 16px;
@@ -83,6 +84,10 @@
       object-fit: contain;
 
       filter: invert(1);
+    }
+
+    &:hover {
+      background-color: $icon-bg-hover;
     }
 
     @media (min-width: $tablet-breakpoint) {
