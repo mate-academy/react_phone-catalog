@@ -53,7 +53,7 @@
 
   &-slide {
     min-width: 100%;
-    display: flex;
+    // display: flex;
     justify-content: center;
     align-items: center;
   }
@@ -63,7 +63,7 @@
     align-items: center;
     justify-content: center;
     align-self: stretch;
-    width: 32px;
+    min-width: 32px !important;
     min-height: 100%;
     background-color: #323542;
     border: none;
