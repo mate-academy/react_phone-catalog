@@ -398,7 +398,10 @@ export const Main: React.FC = () => {
                 </Link>
               </div>
             </div>
-            <Discount DiscountedProducts={currentDiscountedProducts} />
+            <Discount
+              DiscountedProducts={currentDiscountedProducts}
+              visibleCount={productsPerSlide}
+            />
           </section>
         </div>
       </div>

@@ -35,12 +35,7 @@ export const Product: React.FC<Props> = ({ products, visibleCount }) => {
 
   return (
     <div className="products-viewport" ref={viewportRef}>
-      <div
-        className="products-phones"
-        // style={{
-        //   transform: `translateX(-${currentSlide * (cardWidth + gap)}px)`,
-        // }}
-      >
+      <div className="products-phones">
         {products.map(product => (
           <Link
             key={product.id}

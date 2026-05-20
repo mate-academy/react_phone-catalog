@@ -16,7 +16,8 @@ import { Aside } from '../Aside/Aside';
 export const Cart = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [checkOut, setCheckOut] = useState(false);
-  const { totalQuantity, items, removeFromCart, changeQuantity, clearCart } = useCart();
+  const { totalQuantity, items, removeFromCart, changeQuantity, clearCart } =
+    useCart();
   const { totalFavourites } = useFav();
   const totalPrice = items.reduce(
     (total, item) => total + item.product.fullPrice * item.quantity,
