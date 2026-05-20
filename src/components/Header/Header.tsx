@@ -29,27 +29,35 @@ export const Header = () => {
         </div>
 
         <nav className="header__nav">
-          <NavLink to="/" className={getLinkClass}>HOME</NavLink>
-          <NavLink to="/phones" className={getLinkClass}>PHONES</NavLink>
-          <NavLink to="/tablets" className={getLinkClass}>TABLETS</NavLink>
-          <NavLink to="/accessories" className={getLinkClass}>ACCESSORIES</NavLink>
+          <NavLink to="/" className={getLinkClass}>
+            HOME
+          </NavLink>
+          <NavLink to="/phones" className={getLinkClass}>
+            PHONES
+          </NavLink>
+          <NavLink to="/tablets" className={getLinkClass}>
+            TABLETS
+          </NavLink>
+          <NavLink to="/accessories" className={getLinkClass}>
+            ACCESSORIES
+          </NavLink>
         </nav>
 
         <div className="header__head--logo">
-            <div className="header__heart">
-              <Link to="/favorites" className="header__heart__top">
-                <img
-                  src="./icons/heart.svg"
-                  alt="Favorites"
-                  className="header__heart__top__btn"
-                />
-                {favorites.length > 0 && (
-                  <span className="cart-count cart-count--favorites">
-                    {favorites.length}
-                  </span>
-                )}
-              </Link>
-            </div>
+          <div className="header__heart">
+            <Link to="/favorites" className="header__heart__top">
+              <img
+                src="./icons/heart.svg"
+                alt="Favorites"
+                className="header__heart__top__btn"
+              />
+              {favorites.length > 0 && (
+                <span className="cart-count cart-count--favorites">
+                  {favorites.length}
+                </span>
+              )}
+            </Link>
+          </div>
 
           <div className="header__packet">
             <Link to="/cart" className="header__packet__top">

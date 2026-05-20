@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -35,13 +36,17 @@ export default function NewBrand() {
         if (!response.ok) {
           throw new Error(`Failed to fetch: ${response.status}`);
         }
+
         return response.json();
       })
       .then((data: Product[]) => {
         const phonesOnly = data.filter(p => p.category === 'phones');
 
         const sorted = [...phonesOnly].sort((a, b) => {
-          if (b.year !== a.year) return b.year - a.year;
+          if (b.year !== a.year) {
+            return b.year - a.year;
+          }
+
           return b.price - a.price;
         });
 
@@ -137,9 +142,7 @@ export default function NewBrand() {
 
                   <div className="new-brand__card-specs">
                     <div className="new-brand__card-spec">
-                      <span className="new-brand__card-spec-label">
-                        Screen
-                      </span>
+                      <span className="new-brand__card-spec-label">Screen</span>
                       <span className="new-brand__card-spec-value">
                         {phone.screen}
                       </span>
@@ -155,9 +158,7 @@ export default function NewBrand() {
                     </div>
 
                     <div className="new-brand__card-spec">
-                      <span className="new-brand__card-spec-label">
-                        RAM
-                      </span>
+                      <span className="new-brand__card-spec-label">RAM</span>
                       <span className="new-brand__card-spec-value">
                         {phone.ram}
                       </span>

@@ -31,13 +31,18 @@ export default function HotPrices() {
     setLoading(true);
     fetch(`${import.meta.env.BASE_URL}api/products.json`)
       .then(response => {
-        if (!response.ok) throw new Error(`Failed to fetch: ${response.status}`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch: ${response.status}`);
+        }
+
         return response.json();
       })
+
       .then((data: Product[]) => {
         const withDiscount = data
           .filter(p => p.fullPrice > p.price)
-          .sort((a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price));
+          .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price));
+
         setPhones(withDiscount);
         setLoading(false);
       })
@@ -47,8 +52,25 @@ export default function HotPrices() {
       });
   }, []);
 
-  if (loading) return <section className="hot-section"><div className="hot"><p style={{color:'white'}}>Loading...</p></div></section>;
-  if (error) return <section className="hot-section"><div className="hot"><p style={{color:'red'}}>{error}</p></div></section>;
+  if (loading) {
+    return (
+      <section className="hot-section">
+        <div className="hot">
+          <p style={{ color: 'white' }}>Loading...</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="hot-section">
+        <div className="hot">
+          <p style={{ color: 'red' }}>{error}</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="hot-section">
@@ -85,22 +107,31 @@ export default function HotPrices() {
                     alt={phone.name}
                     className="hot__card-image"
                     onError={e =>
-                      e.currentTarget.setAttribute('src', 'img/page-not-found.png')
+                      e.currentTarget.setAttribute(
+                        'src',
+                        'img/page-not-found.png',
+                      )
                     }
                   />
                   <h3 className="hot__card-title">{phone.name}</h3>
                   <div className="hot__card-prices">
                     <span className="hot__card-price">${phone.price}</span>
-                    <span className="hot__card-old-price">${phone.fullPrice}</span>
+                    <span className="hot__card-old-price">
+                      ${phone.fullPrice}
+                    </span>
                   </div>
                   <div className="hot__card-specs">
                     <div className="hot__card-spec">
                       <span className="hot__card-spec-label">Screen</span>
-                      <span className="hot__card-spec-value">{phone.screen}</span>
+                      <span className="hot__card-spec-value">
+                        {phone.screen}
+                      </span>
                     </div>
                     <div className="hot__card-spec">
                       <span className="hot__card-spec-label">Capacity</span>
-                      <span className="hot__card-spec-value">{phone.capacity}</span>
+                      <span className="hot__card-spec-value">
+                        {phone.capacity}
+                      </span>
                     </div>
                     <div className="hot__card-spec">
                       <span className="hot__card-spec-label">RAM</span>
@@ -111,25 +142,33 @@ export default function HotPrices() {
                 <div className="hot__card-actions">
                   <button
                     className="hot__card-btn hot__card-btn--add"
-                    onClick={() => addToCart({
-                      id: phone.itemId,
-                      name: phone.name,
-                      price: phone.price,
-                      image: phone.image,
-                      color: phone.color,
-                      capacity: phone.capacity,
-                      quantity: 1,
-                    })}
+                    onClick={() =>
+                      addToCart({
+                        id: phone.itemId,
+                        name: phone.name,
+                        price: phone.price,
+                        image: phone.image,
+                        color: phone.color,
+                        capacity: phone.capacity,
+                        quantity: 1,
+                      })
+                    }
                     disabled={cart.some(item => item.id === phone.itemId)}
                   >
-                    {cart.some(item => item.id === phone.itemId) ? 'Added to cart' : 'Add to cart'}
+                    {cart.some(item => item.id === phone.itemId)
+                      ? 'Added to cart'
+                      : 'Add to cart'}
                   </button>
                   <button
                     className="hot__card-btn hot__card-btn--favorite"
                     onClick={() => toggleFavorite(phone.itemId)}
                   >
                     <img
-                      src={favorites.includes(phone.itemId) ? './icons/ActiveHeart.svg' : './icons/heart.svg'}
+                      src={
+                        favorites.includes(phone.itemId)
+                          ? './icons/ActiveHeart.svg'
+                          : './icons/heart.svg'
+                      }
                       alt="Favorite"
                       className="hot__card-btn-icon"
                     />

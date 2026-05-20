@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 
-
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
   const navigate = useNavigate();

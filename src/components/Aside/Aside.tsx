@@ -19,8 +19,7 @@ export const Aside: React.FC<Props> = ({ isMenuOpen, onClose }) => {
               type="button"
               className="menu__closes"
               onClick={onClose}
-            >
-            </button>
+            ></button>
           </div>
         </div>
       </div>
