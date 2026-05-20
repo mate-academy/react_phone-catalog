@@ -15,6 +15,7 @@ import { Aside } from '../Aside/Aside';
 
 export const Cart = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [checkOut, setCheckOut] = useState(false);
   const { totalQuantity, items, removeFromCart, changeQuantity } = useCart();
   const { totalFavourites } = useFav();
   const totalPrice = items.reduce(
@@ -118,9 +119,28 @@ export const Cart = () => {
               Total for {totalQuantity} items
             </span>
             <div className="cart__line"></div>
-            <button className="cart__checkout" disabled={totalQuantity === 0}>
+            <button
+              onClick={() => setCheckOut(true)}
+              className="cart__checkout"
+              disabled={totalQuantity === 0}
+            >
               Checkout
             </button>
+          </div>
+          <div className="cart__checkout">
+            {checkOut && (
+              <div className="cart__checkout-modal">
+                <h1 className="cart__checkout-title section-title">
+                  Thank you for your purchase!
+                </h1>
+                <button
+                  onClick={() => setCheckOut(false)}
+                  className="cart__checkout-close"
+                >
+                  Close
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

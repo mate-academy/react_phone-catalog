@@ -314,4 +314,12 @@
       background-color: #A378FF;
     }
   }
+
+  &__checkout {
+    width: 300px;
+    height: 200px;
+
+    background-color: transparent;
+    border: #3B3E4A solid 1px;
+  }
 }
