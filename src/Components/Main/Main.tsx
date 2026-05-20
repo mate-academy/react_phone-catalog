@@ -74,6 +74,7 @@ export const Main: React.FC = () => {
     },
   ];
 
+  const [currentSlide, setCurrentSlide] = React.useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
   const [productsPerSlide, setProductsPerSlide] = useState(4);
   const activeRect = activeRec;
@@ -320,6 +321,13 @@ export const Main: React.FC = () => {
                     className={`new__models-arrow ${activeIndex === 0 ? 'new__models-arrow-disabled' : ''}`}
                     onClick={() => {
                       handleProductChange('prev');
+                      setCurrentSlide(
+                        prev =>
+                          (prev -
+                            1 +
+                            Math.ceil(products.length / productsPerSlide)) %
+                          Math.ceil(products.length / productsPerSlide),
+                      );
                     }}
                     disabled={activeIndex === 0}
                   >
@@ -331,6 +339,11 @@ export const Main: React.FC = () => {
                     className={`new__models-arrow ${activeIndex + productsPerSlide >= products.length ? 'new__models-arrow-disabled' : ''}`}
                     onClick={() => {
                       handleProductChange('next');
+                      setCurrentSlide(
+                        prev =>
+                          (prev + 1) %
+                          Math.ceil(products.length / productsPerSlide),
+                      );
                     }}
                     disabled={activeIndex + productsPerSlide >= products.length}
                   >
@@ -340,9 +353,11 @@ export const Main: React.FC = () => {
               </div>
             </div>
             <Product
-              currentSlide={activeIndex}
-              products={products}
-              visibleCount={productsPerSlide}
+              currentSlide={currentSlide}
+              currentProducts={products.slice(
+                activeIndex,
+                activeIndex + productsPerSlide,
+              )}
             />
           </section>
           <section className="categories section">

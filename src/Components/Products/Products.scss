@@ -1,21 +1,16 @@
 @import '../../utils/mixins';
 
 .products {
-  &-viewport {
-    width: 100%;
-    overflow: hidden;
-  }
-
   &-phones {
     position: relative;
     display: flex;
     gap: 24px;
+    overflow: hidden;
+    width: 100%;
+    flex-wrap: wrap;
     justify-content: flex-start;
-    flex-wrap: nowrap;
-    will-change: transform;
-    width: max-content;
 
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.5s ease-in-out;
   }
 
   &__bottom {
@@ -35,13 +30,13 @@
 
   &-phone {
     cursor: pointer;
-    flex: 0 0 auto;
+    flex: 1 1 calc((100% - 48px) / 3);
 
     color: #F1F2F9;
     text-decoration: none;
 
     @include on-desktop {
-      flex: 0 0 auto;
+      flex: 1 1 calc((100% - 72px) / 4);
     }
 
     background-color: #161827;
@@ -49,11 +44,11 @@
     align-items: center;
     justify-content: center;
 
-    transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 0.5s;
 
     &:hover {
       border: 1px solid #323542;
-      transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: 0.7s;
     }
   }
 
@@ -70,7 +65,7 @@
     object-fit: contain;
     width: 100%;
     height: 100%;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 0.3s;
 
     &:hover {
       transform: scale(1.1);
@@ -172,14 +167,11 @@
     text-decoration: none;
     align-items: center;
 
-    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 0.3s;
 
     &:hover {
       background-color: #4A4D58;
-      border-color: #525761;
-      transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                  border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: 0.3s;
     }
 
     &-active {
@@ -198,7 +190,6 @@
       border: none;
 
       background-color: inherit;
-      cursor: pointer;
     }
   }
 
@@ -210,11 +201,11 @@
 
     cursor: pointer;
 
-    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 0.3s;
 
     &:hover {
       background-color: #A378FF;
-      transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: 0.3s;
     }
 
     &__text {
@@ -256,15 +247,29 @@
 
   &-arrows {
     display: flex;
-    align-items: center;
     gap: 16px;
   }
 
   &-arrow {
     cursor: pointer;
-    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 32px;
     width: 32px;
     background-color: #323542;
+    border: 1px solid #3B3E4A;
+    transition: 0.3s;
+
+    &-disabled {
+      background-color: transparent;
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    &:hover {
+      background-color: #4A4D58;
+      transition: 0.3s;
+    }
   }
 }
