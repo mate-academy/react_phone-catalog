@@ -52,7 +52,6 @@ enum Color {
   blue = 'blue',
 }
 
-
 export const TabletSpec: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const { pathname } = useLocation();

@@ -262,7 +262,7 @@ export const AccSpec: React.FC = () => {
                 {accessorie?.capacityAvailable.map(cap => {
                   const updatedPathCap = path?.replace(
                     /-[^-]+-[^-]+$/,
-                    `-${selectedCapacity?.toLowerCase()}`,
+                    `-${cap.toLowerCase()}-${color?.toLowerCase()}`,
                   );
 
                   return (
@@ -272,9 +272,7 @@ export const AccSpec: React.FC = () => {
                       className={`phone__specs-capacity ${cap === selectedCapacity ? 'phone__specs-capacity-active' : ''}`}
                       onClick={() => {
                         setSelectedCapacity(cap);
-                        navigate(
-                          `../accessories/${updatedPathCap}-${color?.toLowerCase()}`,
-                        );
+                        navigate(`../accessories/${updatedPathCap}`);
                       }}
                       onKeyDown={e =>
                         (e.key === 'Enter' || e.key === ' ') &&

@@ -13,9 +13,9 @@ export const Footer = () => {
   };
 
   const navLink = [
-    { id: '/', title: 'Github' },
-    { id: '/phones', title: 'Contacts' },
-    { id: '/tablets', title: 'rights' },
+    { id: 'https://github.com/u5135039754-dev/', title: 'Github' },
+    { id: 'https://github.com/u5135039754-dev/', title: 'Contacts' },
+    { id: 'https://github.com/u5135039754-dev/', title: 'rights' },
   ];
 
   return (
