@@ -21,7 +21,6 @@ enum Rectangles {
 
 export const Main: React.FC = () => {
   const [activeRec, setActiveRec] = useState<Rectangles>(Rectangles.first);
-  const [activePic, setActivePic] = useState<Rectangles>(Rectangles.first);
   const pics = [Rectangles.first, Rectangles.second, Rectangles.third];
   const [picIndex, setPicIndex] = useState(0);
 
@@ -115,14 +114,13 @@ export const Main: React.FC = () => {
 
   const handlePicChange = useCallback(
     (direction: 'next' | 'prev') => {
-      setPicIndex(prev =>
+      const nextIndex =
         direction === 'next'
-          ? (prev + 1) % pics.length
-          : (prev - 1 + pics.length) % pics.length,
-      );
+          ? (picIndex + 1) % pics.length
+          : (picIndex - 1 + pics.length) % pics.length;
 
-      setActiveRec(pics[picIndex]);
-      setActivePic(pics[picIndex]);
+      setPicIndex(nextIndex);
+      setActiveRec(pics[nextIndex]);
     },
     [picIndex, pics],
   );
@@ -171,6 +169,7 @@ export const Main: React.FC = () => {
   ).href;
 
   const welcomeImage = new URL('../../images/Banner.png', import.meta.url).href;
+  const welcomeSlides = [welcomeImage, welcomeImage, welcomeImage];
 
   useEffect(() => {
     const id = setInterval(() => setPicIndex(p => (p + 1) % pics.length), 5000);
@@ -199,57 +198,30 @@ export const Main: React.FC = () => {
               </button>
               <Link to="/phones">
                 <div className="welcome__block-img">
-                  {activePic === Rectangles.first && (
-                    <picture>
-                      <source
-                        media="(min-width: 1200px)"
-                        srcSet={welcomeImage}
-                      />
-                      <source
-                        media="(min-width: 640px)"
-                        srcSet={welcomeTablet}
-                      />
-                      <img
-                        className="welcome__block-image"
-                        src={welcomePhone}
-                        alt="Welcome Image"
-                      />
-                    </picture>
-                  )}
-                  {activePic === Rectangles.second && (
-                    <picture>
-                      <source
-                        media="(min-width: 1200px)"
-                        srcSet={welcomeImage}
-                      />
-                      <source
-                        media="(min-width: 640px)"
-                        srcSet={welcomeTablet}
-                      />
-                      <img
-                        className="welcome__block-image"
-                        src={welcomePhone}
-                        alt="Welcome Image"
-                      />
-                    </picture>
-                  )}
-                  {activePic === Rectangles.third && (
-                    <picture>
-                      <source
-                        media="(min-width: 1200px)"
-                        srcSet={welcomeImage}
-                      />
-                      <source
-                        media="(min-width: 640px)"
-                        srcSet={welcomeTablet}
-                      />
-                      <img
-                        className="welcome__block-image"
-                        src={welcomePhone}
-                        alt="Welcome Image"
-                      />
-                    </picture>
-                  )}
+                  <div
+                    className="welcome__block-track"
+                    style={{ transform: `translateX(-${picIndex * 100}%)` }}
+                  >
+                    {welcomeSlides.map((_, index) => (
+                      <div key={index} className="welcome__block-slide">
+                        <picture>
+                          <source
+                            media="(min-width: 1200px)"
+                            srcSet={welcomeImage}
+                          />
+                          <source
+                            media="(min-width: 640px)"
+                            srcSet={welcomeTablet}
+                          />
+                          <img
+                            className="welcome__block-image"
+                            src={welcomePhone}
+                            alt="Welcome Image"
+                          />
+                        </picture>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </Link>
               <button
