@@ -19,9 +19,9 @@ export const PageSlider: React.FC<Props> = ({
 }: Props) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  // const handleScrollToTop = () => {
+  //   window.scrollTo({ top: 0, behavior: 'smooth' });
+  // };
 
   const handlePageChange = (value: string) => {
     const params = new URLSearchParams(searchParams);
@@ -37,7 +37,6 @@ export const PageSlider: React.FC<Props> = ({
         onClick={() => {
           setActivePage(activePage - 1);
           handlePageChange((activePage - 1 + 1).toString());
-          handleScrollToTop();
         }}
         disabled={activePage === 0}
         className={`page__models-button page__models-arr ${activePage === 0 ? 'page__models-arr-disabled' : ''}`}
@@ -51,7 +50,6 @@ export const PageSlider: React.FC<Props> = ({
       <button
         onClick={() => {
           setActivePage(0);
-          handleScrollToTop();
           handlePageChange('1');
         }}
         className={`page__models-button ${activePage === 0 ? 'page__models-button_active' : ''}`}
@@ -61,7 +59,6 @@ export const PageSlider: React.FC<Props> = ({
       <button
         onClick={() => {
           setActivePage(1);
-          handleScrollToTop();
           handlePageChange('2');
         }}
         className={`page__models-button ${activePage === 1 ? 'page__models-button_active' : ''}`}
@@ -71,7 +68,6 @@ export const PageSlider: React.FC<Props> = ({
       <button
         onClick={() => {
           setActivePage(2);
-          handleScrollToTop();
           handlePageChange('3');
         }}
         className={`page__models-button ${activePage === 2 ? 'page__models-button_active' : ''} ${activeQuantity === 64 ? 'page__models-disabled' : ''}`}
@@ -81,7 +77,6 @@ export const PageSlider: React.FC<Props> = ({
       <button
         onClick={() => {
           setActivePage(3);
-          handleScrollToTop();
           handlePageChange('4');
         }}
         className={`page__models-button ${activePage === 3 ? 'page__models-button_active' : ''} ${activeQuantity === 64 ? 'page__models-disabled' : ''}`}
@@ -92,7 +87,6 @@ export const PageSlider: React.FC<Props> = ({
         onClick={() => {
           setActivePage(activePage + 1);
           handlePageChange((activePage + 1 + 1).toString());
-          handleScrollToTop();
         }}
         className={`page__models-button page__models-arr ${activePage === 3 ? 'page__models-arr-disabled' : ''} ${activePage === 1 && activeQuantity === 64 ? 'page__models-arr-disabled' : ''}`}
         disabled={

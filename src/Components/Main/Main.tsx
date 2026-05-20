@@ -213,41 +213,61 @@ export const Main: React.FC = () => {
               >
                 <img src={arrowLeft} className="icon-slider" alt="" />
               </button>
-              <div className="welcome__block-img">
-                {activePic === Rectangles.first && (
-                  <picture>
-                    <source media="(min-width: 1200px)" srcSet={welcomeImage} />
-                    <source media="(min-width: 640px)" srcSet={welcomeTablet} />
-                    <img
-                      className="welcome__block-image"
-                      src={welcomePhone}
-                      alt="Welcome Image"
-                    />
-                  </picture>
-                )}
-                {activePic === Rectangles.second && (
-                  <picture>
-                    <source media="(min-width: 1200px)" srcSet={welcomeImage} />
-                    <source media="(min-width: 640px)" srcSet={welcomeTablet} />
-                    <img
-                      className="welcome__block-image"
-                      src={welcomePhone}
-                      alt="Welcome Image"
-                    />
-                  </picture>
-                )}
-                {activePic === Rectangles.third && (
-                  <picture>
-                    <source media="(min-width: 1200px)" srcSet={welcomeImage} />
-                    <source media="(min-width: 640px)" srcSet={welcomeTablet} />
-                    <img
-                      className="welcome__block-image"
-                      src={welcomePhone}
-                      alt="Welcome Image"
-                    />
-                  </picture>
-                )}
-              </div>
+              <Link to="/phones">
+                <div className="welcome__block-img">
+                  {activePic === Rectangles.first && (
+                    <picture>
+                      <source
+                        media="(min-width: 1200px)"
+                        srcSet={welcomeImage}
+                      />
+                      <source
+                        media="(min-width: 640px)"
+                        srcSet={welcomeTablet}
+                      />
+                      <img
+                        className="welcome__block-image"
+                        src={welcomePhone}
+                        alt="Welcome Image"
+                      />
+                    </picture>
+                  )}
+                  {activePic === Rectangles.second && (
+                    <picture>
+                      <source
+                        media="(min-width: 1200px)"
+                        srcSet={welcomeImage}
+                      />
+                      <source
+                        media="(min-width: 640px)"
+                        srcSet={welcomeTablet}
+                      />
+                      <img
+                        className="welcome__block-image"
+                        src={welcomePhone}
+                        alt="Welcome Image"
+                      />
+                    </picture>
+                  )}
+                  {activePic === Rectangles.third && (
+                    <picture>
+                      <source
+                        media="(min-width: 1200px)"
+                        srcSet={welcomeImage}
+                      />
+                      <source
+                        media="(min-width: 640px)"
+                        srcSet={welcomeTablet}
+                      />
+                      <img
+                        className="welcome__block-image"
+                        src={welcomePhone}
+                        alt="Welcome Image"
+                      />
+                    </picture>
+                  )}
+                </div>
+              </Link>
               <button
                 type="button"
                 className="welcome__block-slider"
