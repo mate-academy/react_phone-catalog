@@ -1,0 +1,32 @@
+@use '../../../styles/variables.scss' as *;
+
+.isLoading {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: $grayElements;
+  gap: 10px;
+
+  .image {
+    width: 100%;
+    height: 100%;
+    background-size: 350px;
+    background-image: linear-gradient(90deg, $grayElements 0, $graySecondary 40px, $grayElements 80px);
+    animation: shimmer 2s infinite linear;
+  }
+
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -250px;
+  }
+
+  100% {
+    background-position: 250px;
+  }
+}
+

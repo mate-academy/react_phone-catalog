@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styles from './BannerSlider.module.scss';
+import { BannerSliderLoading } from './Loading/BannerSliderLoading';
 
-export const BannerSlider = () => {
+export const BannerSlider = ({ isLoading }: { isLoading: boolean }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
@@ -20,7 +21,9 @@ export const BannerSlider = () => {
 
   const [touchStartX, setTouchStartX] = useState(0);
 
-  return (
+  return isLoading ? (
+    <BannerSliderLoading />
+  ) : (
     <div
       className={styles.bannerSlider}
       onTouchStart={event => setTouchStartX(event.touches[0].clientX)}
@@ -40,19 +43,32 @@ export const BannerSlider = () => {
         }
       }}
     >
-      <button
-        className={styles.icon}
-        onClick={() =>
-          setCurrentSlide(
-            currentSlide === 0 ? slides.length - 1 : currentSlide - 1,
-          )
-        }
-      >
-        <img src="/img/icons/Chevron_(Arrow_Left).svg" alt="" />
-      </button>
+      <div className={styles.slider_content}>
+        <button
+          className={styles.icon}
+          onClick={() =>
+            setCurrentSlide(
+              currentSlide === 0 ? slides.length - 1 : currentSlide - 1,
+            )
+          }
+        >
+          <img src="/img/icons/Chevron_(Arrow_Left).svg" alt="" />
+        </button>
 
-      <div className={styles.images}>
-        <img src={slides[currentSlide]} alt="banner" />
+        <div className={styles.images}>
+          <img src={slides[currentSlide]} alt="banner" />
+        </div>
+
+        <button
+          className={styles.icon}
+          onClick={() =>
+            setCurrentSlide(
+              currentSlide === slides.length - 1 ? 0 : currentSlide + 1,
+            )
+          }
+        >
+          <img src="/img/icons/Chevron_(Arrow_Right).svg" alt="next" />
+        </button>
       </div>
 
       <div className={styles.buttons}>
@@ -65,16 +81,6 @@ export const BannerSlider = () => {
           </div>
         ))}
       </div>
-      <button
-        className={styles.icon}
-        onClick={() =>
-          setCurrentSlide(
-            currentSlide === slides.length - 1 ? 0 : currentSlide + 1,
-          )
-        }
-      >
-        <img src="/img/icons/Chevron_(Arrow_Right).svg" alt="next" />
-      </button>
     </div>
   );
 };

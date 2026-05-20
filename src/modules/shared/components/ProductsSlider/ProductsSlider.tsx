@@ -50,7 +50,7 @@ export const ProductsSlider = ({
       </header>
       <div className={styles.windowSlider}>
         <div className={styles.slider}>
-          {!isLoading ? (
+          {isLoading ? (
             <ProductCardLoading count={count} />
           ) : (
             products.slice(currentSlide, currentSlide + count).map(product => (

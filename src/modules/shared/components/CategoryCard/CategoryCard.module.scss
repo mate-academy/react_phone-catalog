@@ -28,7 +28,6 @@
   }
 
   .categories_name {
-
     @include font-h4;
 
     margin-block: 24px 4px;
@@ -38,6 +37,7 @@
 
   .categories_count {
     @include font-body-text;
+
     color: $graySecondary;
   }
 }

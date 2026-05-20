@@ -15,16 +15,14 @@ export const HomePage = () => {
   useEffect(() => {
     getData<Product[]>('products')
       .then(date => {
-        setTimeout(() => {
-          setProducts(date);
-          setIsLoading(false); // ← false коли готово
-        }, 4000);
+        setProducts(date);
+        setIsLoading(true);
       })
       .catch(() => {
         setError(true);
       })
       .finally(() => {
-        setIsLoading(true);
+        setIsLoading(false);
       });
   }, []);
 
@@ -43,7 +41,7 @@ export const HomePage = () => {
     <article className={styles.homepage}>
       <p className={styles.title}>Welcome to Nice Gadgets store!</p>
       <div className={styles.banner}>
-        <BannerSlider />
+        <BannerSlider isLoading={isLoading} />
       </div>
       <div className={styles.brand_new_slider}>
         <ProductsSlider
@@ -63,6 +61,7 @@ export const HomePage = () => {
             countModels={countsPhones}
             bgColor="#6D6474"
             linkTo="/phones"
+            isLoading={isLoading}
           />
           <CategoryCard
             nameCategory="Tablets"
@@ -70,6 +69,7 @@ export const HomePage = () => {
             countModels={countsTablets}
             bgColor="#626262"
             linkTo="/tablets"
+            isLoading={isLoading}
           />
           <CategoryCard
             nameCategory="Accessories"
@@ -77,6 +77,7 @@ export const HomePage = () => {
             countModels={countsAccessories}
             bgColor="#fcdcff"
             linkTo="/accessories"
+            isLoading={isLoading}
           />
         </div>
       </div>

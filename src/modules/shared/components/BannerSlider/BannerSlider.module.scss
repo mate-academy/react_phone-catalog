@@ -3,12 +3,38 @@
 
 .bannerSlider {
   box-sizing: border-box;
-  overflow: hidden;
   width: 100%;
 
+
+  .slider_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    @media (min-width: $tablet-breakpoint) {
+      flex-direction: row;
+      align-items: stretch;
+      gap: 19px;
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+      gap: 16px;
+    }
+  }
+
   .images {
+    flex: 1;
     aspect-ratio: 1/1;
     overflow: hidden;
+
+    @media (min-width: $tablet-breakpoint) {
+      aspect-ratio: 8/3;
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+      aspect-ratio: 13 / 5;
+    }
 
     img {
       width: 100%;
@@ -50,5 +76,21 @@
 
   .icon {
     display: none;
+
+    img {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+
+      filter: invert(1);
+    }
+
+    @media (min-width: $tablet-breakpoint) {
+      width: 32px;
+      border: none;
+      background-color: $surface_2;
+
+      @include flex-center;
+    }
   }
 }

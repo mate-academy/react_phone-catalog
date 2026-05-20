@@ -1,20 +1,26 @@
 @use '/src/modules/shared/styles/mixins.scss' as *;
+@use '/src/modules/shared/styles/variables.scss' as *;
 
 
 
 .homepage {
   overflow-x: hidden;
+
   @include grid;
 
 
   .title {
     min-width: 0;
+    margin: 24px 0;
 
     grid-column: 1 / -1;
 
-    @include font-h1($size: 48px, $line-height: 56px);
+    @include font-h1($size: 32px, $line-height: 41px);
 
-    margin: 24px 0;
+      @media (min-width: $tablet-breakpoint) {
+        @include font-h1;
+      }
+
   }
 
   .banner {
@@ -22,6 +28,10 @@
 
     grid-column: 1 / -1;
     margin-inline: -16px;
+
+    @media (min-width: $tablet-breakpoint) {
+      margin-inline: 0;
+    }
 
   }
 
@@ -34,11 +44,9 @@
   }
 
   .categories {
-
     grid-column: 1 / -1;
 
-    .categorties_title {
-
+    .categories_title {
       @include font-h2($size: 22px, $line-height: 140%)
     }
 
@@ -46,6 +54,7 @@
       margin-top: 34px;
 
       @include flex-center;
+
       flex-direction: column;
       gap: 32px;
 
@@ -54,6 +63,6 @@
 
   .hot_prices_slider {
     grid-column: 1 / -1;
-    margin-block: 30px 60px ;
+    margin-block: 30px 60px;
   }
 }

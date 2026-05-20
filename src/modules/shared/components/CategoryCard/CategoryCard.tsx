@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './CategoryCard.module.scss';
 import { Link } from 'react-router-dom';
+import { CategoryCardLoading } from './Loading/CategoryCardLoading';
 
 type Props = {
   nameCategory: string;
@@ -8,6 +9,7 @@ type Props = {
   imageCategory: string;
   bgColor: string;
   linkTo: string;
+  isLoading: boolean;
 };
 
 export const CategoryCard = ({
@@ -16,8 +18,11 @@ export const CategoryCard = ({
   countModels,
   bgColor,
   linkTo,
+  isLoading,
 }: Props) => {
-  return (
+  return isLoading ? (
+    <CategoryCardLoading />
+  ) : (
     <article className={styles.categories}>
       <div
         className={styles.image_container}
