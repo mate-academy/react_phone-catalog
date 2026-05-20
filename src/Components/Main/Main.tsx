@@ -21,6 +21,7 @@ enum Rectangles {
 }
 
 export const Main: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = React.useState(0);
   const [activeRec, setActiveRec] = useState<Rectangles>(Rectangles.first);
   const [activePic, setActivePic] = useState<Rectangles>(Rectangles.first);
   const pics = [Rectangles.first, Rectangles.second, Rectangles.third];
@@ -328,7 +329,16 @@ export const Main: React.FC = () => {
                 <Link to="" className="new__models-arrow-left">
                   <button
                     className={`new__models-arrow ${activeIndex === 0 ? 'new__models-arrow-disabled' : ''}`}
-                    onClick={() => handleProductChange('prev')}
+                    onClick={() => {
+                      handleProductChange('prev');
+                      setCurrentSlide(
+                        prev =>
+                          (prev -
+                            1 +
+                            Math.ceil(products.length / productsPerSlide)) %
+                          Math.ceil(products.length / productsPerSlide),
+                      );
+                    }}
                     disabled={activeIndex === 0}
                   >
                     <img src={arrowLeft} alt="" className="icon-arrow" />
@@ -337,7 +347,14 @@ export const Main: React.FC = () => {
                 <Link to="" className="new__models-arrow-right">
                   <button
                     className={`new__models-arrow ${activeIndex + productsPerSlide >= products.length ? 'new__models-arrow-disabled' : ''}`}
-                    onClick={() => handleProductChange('next')}
+                    onClick={() => {
+                      handleProductChange('next');
+                      setCurrentSlide(
+                        prev =>
+                          (prev + 1) %
+                          Math.ceil(products.length / productsPerSlide),
+                      );
+                    }}
                     disabled={activeIndex + productsPerSlide >= products.length}
                   >
                     <img src={arrowRight} alt="" className="icon-arrow" />
@@ -345,7 +362,10 @@ export const Main: React.FC = () => {
                 </Link>
               </div>
             </div>
-            <Product currentProducts={currentProducts} />
+            <Product
+              currentSlide={currentSlide}
+              currentProducts={currentProducts}
+            />
           </section>
           <section className="categories section">
             <div className="categories__container">

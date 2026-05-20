@@ -6,16 +6,15 @@ import { Link } from 'react-router-dom';
 
 type Props = {
   currentProducts: Products[];
+  currentSlide: number;
 };
 
-export const Product: React.FC<Props> = ({ currentProducts }) => {
-  const productMap = currentProducts[0];
-
+export const Product: React.FC<Props> = ({ currentSlide, currentProducts }) => {
   return (
     <div
       className="products-phones"
       style={{
-        transform: `translateX(-${currentProducts.indexOf(productMap) * 100}%)`,
+        transform: `translateX(-${currentSlide * 100}%)`,
       }}
     >
       {currentProducts.map(product => (
