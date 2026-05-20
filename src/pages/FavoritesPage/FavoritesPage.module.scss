@@ -1,0 +1,62 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  padding-bottom: 80px;
+
+  @include respond-to('desktop') {
+    padding: 0 $padding-desktop 80px;
+  }
+
+  @include respond-to(800px) {
+    padding-top: 32px;
+  }
+}
+
+.title {
+  padding-bottom: 8px;
+
+  @include title;
+}
+
+.count {
+  font-size: 14px;
+  font-weight: 500;
+  color: $color-secondary;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-content: start center;
+  gap: 40px 16px;
+  margin: 0 0 40px;
+
+  @include respond-to(1150px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond-to(880px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 12px;
+  }
+
+  @include respond-to(620px) {
+    grid-template-columns: minmax(auto, 320px);
+
+    max-width: 280px;
+    margin: 0 auto 40px;
+  }
+}
+
+
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  font-size: 20px;
+  font-weight: 600;
+  color: $color-secondary;
+}

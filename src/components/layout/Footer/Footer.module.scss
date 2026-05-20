@@ -1,0 +1,87 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+.footer {
+  border-top: 1px solid $border-color;
+  background-color: $bg-color-header-footer;
+}
+
+.inner {
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include respond-to('desktop') {
+    padding: 0 $padding-desktop;
+  }
+
+  @include respond-to(530px) {
+    height: 100%;
+    flex-direction: column;
+    align-items: start;
+    padding: 32px $padding-desktop;
+    gap: 32px;
+  }
+}
+
+.linksList {
+  display: flex;
+  align-items: center;
+  gap: 107px;
+
+  @include respond-to(800px) {
+    gap: 60px;
+  }
+
+  @include respond-to('tablet') {
+    gap: 14px;
+  }
+
+  @include respond-to(530px) {
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+  }
+}
+
+.link {
+  height: 100%;
+  font-size: 12px;
+  font-weight: 800;
+  color: $color-secondary;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.backToTop {
+  align-self: center;
+  gap: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $color-primary;
+  transition: color 0.3s;
+
+  span {
+    color: $color-secondary;
+
+    &:hover:not(:disabled) {
+      color: $color-primary;
+    }
+  }
+}
+
+.iconWrap {
+  margin-top: -3px;
+
+  @include arrow-icon-style;
+}

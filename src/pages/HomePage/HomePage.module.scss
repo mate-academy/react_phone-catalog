@@ -1,0 +1,13 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.title {
+  display: block;
+  padding: 56px 0;
+
+  @include title;
+
+  @include respond-to('desktop') {
+    padding: 56px $padding-desktop;
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "notFound": {
+    "title": "Сторінка не знайдена",
+    "description": "Ой, тут нічого немає. Мабуть, кіт щось натиснув.",
+    "button": "Додомки"
+  },
+
+  "productNotFound": {
+    "title": "Продукт не знайдено",
+    "description": "Схоже, цей продукт зник як кіт під ліжком. Повернімося назад.",
+    "button": "Повернутися назад"
+  },
+
+  "nav": {
+    "home": "ГОЛОВНА",
+    "phones": "ТЕЛЕФОНИ",
+    "tablets": "ПЛАНШЕТИ",
+    "accessories": "АКСЕСУАРИ"
+  },
+
+  "footer": {
+    "github": "GITHUB",
+    "contacts": "КОНТАКТИ",
+    "rights": "ПРАВА"
+  },
+
+  "btn": {
+    "back": "Нагору",
+    "backArr": "Назад"
+  },
+
+  "banners": {
+    "iphone": {
+      "subtitle": "Вже доступний у нашому магазині!"
+    },
+
+    "ipad": {
+      "subtitle": "Потужність на базі M2"
+    },
+
+    "watch": {
+      "subtitle": "Розумніші. Яскравіші. Міцніші."
+    }
+  },
+
+  "home": {
+    "orderNow": "ЗАМОВИТИ ЗАРАЗ"
+  },
+
+  "titles": {
+    "homePageTitle": "Ласкаво просимо до «Nice Gadgets»!",
+    "brandNew": "Нові моделі",
+    "hotPrices": "Гарячі знижки",
+    "YML": "Тобі може сподобатися"
+  },
+
+  "products": {
+    "specs": {
+      "screen": "Екран",
+      "capacity": "Пам'ять",
+      "resolution": "Роздільна здатність",
+      "processor": "Процесор",
+      "ram": "Оперативна памʼять",
+      "builtInMemory": "Вбудована памʼять",
+      "camera": "Камера",
+      "zoom": "Зум",
+      "cell": "Мережі"
+    },
+
+    "actions": {
+      "addToCart": "Купити",
+      "added": "У кошику"
+    }
+  },
+
+  "product": {
+    "about": "Про продукт",
+    "techSpecs": "Технічні характеристики",
+    "availableColors": "Доступні кольори",
+    "selectCapacity": "Оберіть обʼєм памʼяті"
+  },
+
+  "categories": {
+    "title": "Купити за категоріями",
+    "phones": "Мобільні телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари",
+    "models_one": "{{count}} модель",
+    "models_few": "{{count}} моделі",
+    "models_many": "{{count}} моделей",
+    "models_other": "{{count}} моделей"
+  },
+  "breadcrumbs": {
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари",
+    "favorites": "Обране"
+  },
+  "catalog": {
+    "controls": {
+      "sortBy": "Сортувати за",
+      "itemsOnPage": "Товарів на сторінці",
+      "all": "Всі"
+    },
+    "sort": {
+      "newest": "Найновіші",
+      "priceDesc": "За спаданням ціни",
+      "priceAsc": "За зростанням ціни"
+    }
+  },
+
+  "favorites": {
+    "title": "Обрані",
+    "count_one": "{{count}} товар",
+    "count_few": "{{count}} товари",
+    "count_many": "{{count}} товарів",
+    "empty": "Немає обраних товарів"
+  },
+  "cart": {
+    "title": "Кошик",
+    "totalFor_one": "Разом за {{count}} товар",
+    "totalFor_few": "Разом за {{count}} товари",
+    "totalFor_many": "Разом за {{count}} товарів",
+    "checkout": "Оформити замовлення",
+    "empty": "Кошик порожній",
+    "checkoutAlert": "Дякуємо за замовлення!"
+  },
+
+  "checkoutPopup": {
+    "title": "Притримай коней! 🐎",
+    "message": "Функція оплати ще вариться. Без паніки, твій гаманець у безпеці!. Але раз ти вже тут, чому б не познайомитися з розробницею цього магазину?",
+    "githubBtn": "Залетіти на GitHub",
+    "clearCartBtn": "Очистити мою уявну корзину"
+  }
+}

@@ -1,0 +1,43 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  @include respond-to('desktop') {
+    padding: 0 $padding-desktop;
+  }
+}
+
+.title {
+  margin-bottom: 40px;
+
+  @include subtitle;
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 75px;
+  margin-bottom: 80px;
+
+  @include respond-to(980px) {
+    gap: 50px;
+  }
+
+  @include respond-to(900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bottomSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 75px;
+
+  @include respond-to(980px) {
+    gap: 50px;
+  }
+
+  @include respond-to(900px) {
+    grid-template-columns: 1fr;
+  }
+}

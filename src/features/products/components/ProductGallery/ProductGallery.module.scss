@@ -1,0 +1,97 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.gallery {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  width: 560px;
+
+  @include respond-to(650px) {
+    width: 100%;
+    flex-direction: column-reverse;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-shrink: 0;
+
+  @include respond-to(650px) {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  padding: 7px;
+  border: 1px solid $border-color;
+  background: $bg-color-card;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &:hover {
+    border-color: $color-secondary;
+  }
+
+  &.active {
+    border-color: $color-primary;
+  }
+
+  @include respond-to(600px) {
+    width: 56px;
+    height: 56px;
+  }
+
+  @include respond-to(420px) {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.mainImage {
+  flex: 1;
+  background: $bg-color-card;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+
+  @include respond-to(650px) {
+    width: 470px;
+    height: 470px;
+    margin: 0 auto;
+  }
+
+  @include respond-to(600px) {
+    width: 300px;
+    height: 300px;
+  }
+
+  @include respond-to(420px) {
+    width: 200px;
+    height: 200px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.2s ease;
+  }
+}

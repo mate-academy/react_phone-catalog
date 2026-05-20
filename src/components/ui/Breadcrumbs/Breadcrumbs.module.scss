@@ -1,0 +1,49 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+.container {
+  padding: 25px 0 40px;
+
+  @include respond-to('desktop') {
+    padding: 25px $padding-desktop 40px;
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  color: $color-primary;
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $bg-accent;
+  }
+}
+
+.separator {
+  margin: 0 8px;
+  color: $color-secondary;
+}
+
+.current {
+  margin-bottom: -2px;
+  color: $color-secondary;
+  text-transform: capitalize;
+  cursor: default;
+}

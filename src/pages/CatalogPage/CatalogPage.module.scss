@@ -1,0 +1,94 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 250px);
+
+  @include respond-to('desktop') {
+    padding: 0 $padding-desktop;
+  }
+
+  @include respond-to(800px) {
+    padding-top: 32px;
+  }
+}
+
+.sceletonWraper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 16px;
+
+  @include respond-to(1150px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond-to(880px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 12px;
+  }
+
+  @include respond-to(620px) {
+    grid-template-columns: minmax(auto, 320px);
+
+    max-width: 280px;
+    margin: 0 auto 40px;
+  }
+}
+
+.title {
+  display: block;
+  padding-bottom: 8px;
+
+  @include title;
+}
+
+.count {
+  font-size: 14px;
+  font-weight: 500;
+  color: $color-secondary;
+  line-height: 21px;
+  margin-bottom: 40px;
+}
+
+.grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-content: start center;
+  gap: 40px 16px;
+  margin: 0 0 40px;
+
+  @include respond-to(1150px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond-to(880px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 12px;
+  }
+
+  @include respond-to(620px) {
+    grid-template-columns: minmax(auto, 320px);
+
+    max-width: 280px;
+    margin: 0 auto 40px;
+  }
+}
+
+.paginationWraper {
+  margin-top: auto;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+
+  p {
+    color: var(--color-secondary);
+    font-size: 16px;
+  }
+}
