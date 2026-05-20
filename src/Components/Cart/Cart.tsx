@@ -113,7 +113,7 @@ export const Cart = () => {
             </div>
           </div>
           <div
-            className={`cart__total ${totalQuantity < 1 && checkOut ? 'cart__total-none' : ''}`}
+            className={`cart__total ${totalQuantity < 1 && !checkOut ? 'cart__total-none' : ''}`}
           >
             <span className="cart__total-price">${totalPrice}</span>
             <span className="cart__total-subtotal">

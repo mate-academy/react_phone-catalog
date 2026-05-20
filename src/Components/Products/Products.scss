@@ -13,8 +13,6 @@
     justify-content: flex-start;
     flex-wrap: nowrap;
     will-change: transform;
-    width: -webkit-max-content;
-    width: -moz-max-content;
     width: max-content;
 
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
