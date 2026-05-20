@@ -12,7 +12,6 @@ import { Discounted } from '../../types/Discounted';
 
 import welcomeTablet from '../../images/Banner-tablet.png';
 import welcomePhone from '../../images/banner-phone.png';
-import { Loader } from '../Loader/Loader';
 
 enum Rectangles {
   first = 'first',
@@ -21,7 +20,6 @@ enum Rectangles {
 }
 
 export const Main: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = React.useState(0);
   const [activeRec, setActiveRec] = useState<Rectangles>(Rectangles.first);
   const [activePic, setActivePic] = useState<Rectangles>(Rectangles.first);
   const pics = [Rectangles.first, Rectangles.second, Rectangles.third];
@@ -132,17 +130,13 @@ export const Main: React.FC = () => {
   const handleProductChange = useCallback(
     (direction: 'next' | 'prev') => {
       setActiveIndex(prev => {
+        const lastIndex = Math.max(0, products.length - productsPerSlide);
+
         if (direction === 'next') {
-          return prev + 1 < products.length ? prev + 1 : 0;
+          return Math.min(prev + 1, lastIndex);
         }
 
-        const next = prev - 1;
-
-        if (next >= 0) {
-          return next;
-        }
-
-        return Math.max(0, products.length - productsPerSlide);
+        return Math.max(0, prev - 1);
       });
     },
     [products.length, productsPerSlide],
@@ -165,11 +159,6 @@ export const Main: React.FC = () => {
       });
     },
     [discountedProducts.length, productsPerSlide],
-  );
-
-  const currentProducts = products.slice(
-    activeIndex,
-    activeIndex + productsPerSlide,
   );
 
   const currentDiscountedProducts = discountedProducts.slice(
@@ -331,13 +320,6 @@ export const Main: React.FC = () => {
                     className={`new__models-arrow ${activeIndex === 0 ? 'new__models-arrow-disabled' : ''}`}
                     onClick={() => {
                       handleProductChange('prev');
-                      setCurrentSlide(
-                        prev =>
-                          (prev -
-                            1 +
-                            Math.ceil(products.length / productsPerSlide)) %
-                          Math.ceil(products.length / productsPerSlide),
-                      );
                     }}
                     disabled={activeIndex === 0}
                   >
@@ -349,11 +331,6 @@ export const Main: React.FC = () => {
                     className={`new__models-arrow ${activeIndex + productsPerSlide >= products.length ? 'new__models-arrow-disabled' : ''}`}
                     onClick={() => {
                       handleProductChange('next');
-                      setCurrentSlide(
-                        prev =>
-                          (prev + 1) %
-                          Math.ceil(products.length / productsPerSlide),
-                      );
                     }}
                     disabled={activeIndex + productsPerSlide >= products.length}
                   >
@@ -363,8 +340,9 @@ export const Main: React.FC = () => {
               </div>
             </div>
             <Product
-              currentSlide={currentSlide}
-              currentProducts={currentProducts}
+              currentSlide={activeIndex}
+              products={products}
+              visibleCount={productsPerSlide}
             />
           </section>
           <section className="categories section">

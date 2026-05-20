@@ -1,11 +1,15 @@
 @import '../../utils/mixins';
 
 .products {
+  &-viewport {
+    width: 100%;
+    overflow: hidden;
+  }
+
   &-phones {
     position: relative;
     display: flex;
     gap: 24px;
-    overflow: hidden;
     width: 100%;
     justify-content: flex-start;
     flex-wrap: nowrap;
@@ -31,13 +35,13 @@
 
   &-phone {
     cursor: pointer;
-    flex: 0 0 calc((100% - 48px) / 3);
+    flex: 0 0 auto;
 
     color: #F1F2F9;
     text-decoration: none;
 
     @include on-desktop {
-      flex: 0 0 calc((100% - 72px) / 4);
+      flex: 0 0 auto;
     }
 
     background-color: #161827;
@@ -168,13 +172,13 @@
     text-decoration: none;
     align-items: center;
 
-    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                 border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
       background-color: #4A4D58;
       border-color: #525761;
-      transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+      transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                   border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 

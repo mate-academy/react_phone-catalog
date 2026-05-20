@@ -120,7 +120,10 @@ export const Cart = () => {
             </span>
             <div className="cart__line"></div>
             <button
-              onClick={() => setCheckOut(true)}
+              onClick={() => {
+                setCheckOut(true);
+                removeFromCart(all => all + 0);
+              }}
               className="cart__checkout"
               disabled={totalQuantity === 0}
             >
