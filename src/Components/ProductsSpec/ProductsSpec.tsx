@@ -26,6 +26,7 @@ export const ProductSpecs: React.FC<Props> = ({
 
       if (!card) {
         setCardStep(0);
+
         return;
       }
 
@@ -66,7 +67,8 @@ export const ProductSpecs: React.FC<Props> = ({
                 <div className="products-string"></div>
                 <div className="products-info">
                   <p className="products-text products-text__first">
-                    Screen <span className="products-span">{product.screen}</span>
+                    Screen{' '}
+                    <span className="products-span">{product.screen}</span>
                   </p>
                   <p className="products-text">
                     Capacity{' '}
