@@ -20,14 +20,13 @@ export const CartPage = () => {
     async function fetchData() {
       const data = await getProductData();
 
-      if (data) {
+      try {
         const visibleProducts = data.filter(p =>
-          cart.some(item => item.id === p.itemId),
-        );
+          cart.some(item => item.id === p.itemId));
 
         setProducts(visibleProducts);
-      } else {
-        fetchData();
+      } catch {
+        throw new Error();
       }
     }
 

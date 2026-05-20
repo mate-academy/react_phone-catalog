@@ -115,10 +115,6 @@ export const CatalogPage = () => {
       typeof pageValue === 'number'
     ) {
       updateSearchParam('page', pageValue);
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
     }
   };
 
