@@ -357,6 +357,7 @@ export const Main: React.FC = () => {
                 activeIndex,
                 activeIndex + productsPerSlide,
               )}
+              currentSlide={currentSlide}
             />
           </section>
           <section className="categories section">

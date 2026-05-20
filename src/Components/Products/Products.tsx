@@ -6,17 +6,13 @@ import { Link } from 'react-router-dom';
 
 type Props = {
   currentProducts: Products[];
+  currentSlide: number;
 };
 
-export const Product: React.FC<Props> = ({ currentProducts }) => {
+export const Product: React.FC<Props> = ({ currentSlide, currentProducts }) => {
   return (
     <div className="products-phones">
       {currentProducts.map(product => {
-        const currentSlide = Math.floor(
-          currentProducts.findIndex(p => p.id === product.id) /
-            currentProducts.length,
-        );
-
         return (
           <Link
             key={product.id}
