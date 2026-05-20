@@ -51,7 +51,7 @@ export const Product: React.FC<Props> = ({
           return (
             <Link
               key={product.id}
-              to={`phones/${product.id}`}
+              to={`../phones/${product.id}`}
               className="products-phone"
               style={{
                 minWidth: `calc((100% - ${(visibleCount - 1) * 24}px) / ${visibleCount})`,
