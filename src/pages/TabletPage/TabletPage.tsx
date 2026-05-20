@@ -97,7 +97,7 @@ export const TabletPage = () => {
 
   const handleAddToCart = (tablet: Tablet) => {
     const cartItem: CartItem = {
-      id: tablet.itemId, // ✅ ВАЖНО
+      id: tablet.itemId, 
       name: tablet.name,
       price: tablet.priceDiscount,
       image: `${tablet.images[0]}`,

@@ -75,9 +75,9 @@
     line-height: 100%;
     color: var(--text-muted);
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 200px;
+    overflow: visible;
+    text-overflow: unset;
+    max-width: none;
   }
 
   // ID товара: 176x15, right align, справа вверху
