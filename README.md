@@ -1,143 +1,200 @@
-# React Product Catalog
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bcheban/react_phone-catalog/master/public/img/banner-phones.png" alt="Nice Gadgets Store Banner" width="600" />
+</p>
 
-Implement the catalog with a shopping cart and favorites page according to one of the next designs:
+<h1 align="center">Nice Gadgets — Phone Catalog</h1>
 
-- [Original](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)
-- [Original Dark](https://www.figma.com/design/WMdJ24eHk4EkSr25mrt7Y2/Phone-catalog--V2--Original-Dark)
-- [Rounded Blue](https://www.figma.com/file/FRxncC4lfyhs6og1L6FGEU/Phone-catalog-(V2)-Rounded-Style-2?node-id=0%3A1)
-- [Rounded Purple](https://www.figma.com/file/xMK2Dy0mfBbJJSNctmOuLW/Phone-catalog-(V2)-Rounded-Style-1?node-id=0%3A1)
-- [Rounded Orange](https://www.figma.com/file/7JTa0q8n3dTSAyMNaA0u8o/Phone-catalog-(V2)-Rounded-Style-3?node-id=0%3A1)
+<p align="center">
+  <strong>A multilingual, theme-switchable e-commerce catalog for phones, tablets, and accessories — built with React 18, TypeScript, Redux Toolkit, and SCSS.</strong>
+</p>
 
-You may also implement color theme switching!
+<p align="center">
+  <a href="https://bcheban.github.io/react_phone-catalog/">🔗 Live Demo</a> |
+  <a href="https://github.com/bcheban/react_phone-catalog">💻 GitHub Repo</a>
+</p>
 
-## If you work in a team
+---
 
-Follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)
+## 📌 Project Overview
 
-## Project Setup from scratch
+**Nice Gadgets** is a full-featured product catalog single-page application built with **React 18** and **TypeScript**, modeled after a real e-commerce storefront.
+Users can browse phones, tablets, and accessories, view per-product detail pages with color and capacity variants, manage a shopping cart and favourites list, and switch between **English** and **Ukrainian** translations as well as **light** and **dark** themes — all with state persisted to **localStorage**.
 
-Follow the [Instruction](https://github.com/mate-academy/react_phone-catalog/blob/master/setup.md) to setup your project, add Eslint, Prettier, Husky and enable auto deploy.
+The app uses **Redux Toolkit** for global state (cart, favourites, products, theme, i18n), **React Router v6** for navigation, and **i18next** for localization. The UI follows an **atomic design** structure (atoms / molecules / organisms) under `src/modules/`, styled with **SCSS modules** on top of **Bulma**. Built as part of the **Mate Academy** React course.
 
-## Data
+---
 
-Use the data from `/public/api` and images from `/public/img` folders. You can reorganize them the way you like.
+## 🌐 Live Preview
 
-## App
+👉 **[https://bcheban.github.io/react_phone-catalog/](https://bcheban.github.io/react_phone-catalog/)**
 
-1. Put components into the `src/components` folder.
-   - Each component should be a folder with `index.ts`, `ComponentName.tsx`, `ComponentName.module.scss` files.
-   - Use CSS modules.
-   - Keep `.module.scss` files together with their components.
-2. Advanced project structure:
-   - `src/modules` folder. Inside per page modules `HomePage`, `CartPage`, etc., and `shared` folder with shared content between modules.
-   - Inside each module its own `components` folder with the structure described above. And optionally other files/folders: `hooks`, `constants`, and so on.
-3. Add the sticky header with a logo, navigation, favorites, and cart.
-4. The footer with the link to the GitHub repo and `Back to top` button.
-   - The content should be limited to the same width as the page content;
-   - `Back to top` button should scroll to the top smoothly;
-5. Add `NotFoundPage` containing text `Page not found` for all the unknown URLs.
-6. All changes the hover effects should be smooth.
-7. Scale all image links by 10% on hover.
-8. Implement all form elements and icons according to the UI Kit.
+---
 
-## Home page
+## 🎨 Design Reference
 
-Implement Home page at available at `/`.
+The UI follows the official **Mate Academy** Figma design — **Original Dark** variant with custom theme switching.
 
-1. `<h1>Product Catalog</h1>` should be visually hidden.
-2. `PicturesSlider`:
-   - Find your own images to personalize the App;
-   - Change pictures automatically every 5 seconds;
-   - The next buttons should show the first image after the last one;
-   - Dashes at the bottom should allow choosing an exact picture.
-3. `ProductsSlider` for the `Hot prices` block:
-   - The products with a discount starting from the biggest absolute value;
-   - `<` and `>` buttons should scroll products.
-4. `Shop by category` block with links to `/phones`, `/tablets`, and `/accessories`.
-5. Add Brand new block using ProductsSlider with products that are the newest according to the year field.
+- 🎨 [Original Design](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)
+- 🌑 [Original Dark Design](https://www.figma.com/design/WMdJ24eHk4EkSr25mrt7Y2/Phone-catalog--V2--Original-Dark)
 
-## Product pages
+---
 
-There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
+## 🛠 Technologies Used
 
-1. Each page loads the data of the required `type`.
-2. Add an `h1` with `Phones/Tablets/Accessories page` (choose required).
-3. Add `ProductsList` component showing all the `products`.
-4. Implement a `Loader` to show it while waiting for the data from the server.
-5. In case of a loading error show the something went wrong message with a reload button.
-6. If there are no products available show the `There are no phones/tablets/accessories yet` message (choose required).
-7. Add a `<select>` with the `Newest`, `Alphabetically`, and `Cheapest` options to sort products by `age`, `title`, or `price` (after discount).
-   - Save the sort value in the URL `?sort=age` and apply it after the page reload.
-8. Add `Pagination` buttons and `Items on page` select element with `4`, `8`, `16`, and `all` options.
-   - It should limit the products you show to the user;
-   - Save pagination params in the URL `?page=2&perPage=8` (`page=1` and `perPage=all` are the default values and should not be added to the URL;
-   - Hide pagination elements if they do not make sense;
-   - You can use the logic explained in [the React Pagination task](https://github.com/mate-academy/react_pagination#react-pagination).
+### Core Framework & Build Tools
+<p>
+  <img src="https://img.shields.io/badge/React_18-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React 18" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+</p>
 
-## Product details page
+### State Management
+<p>
+  <img src="https://img.shields.io/badge/Redux_Toolkit-764ABC?style=for-the-badge&logo=redux&logoColor=white" alt="Redux Toolkit" />
+  <img src="https://img.shields.io/badge/React_Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white" alt="React Redux" />
+</p>
 
-Create `ProductDetailsPage` available at `/product/:productId`.
+### Routing
+<p>
+  <img src="https://img.shields.io/badge/React_Router_6-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white" alt="React Router DOM 6" />
+</p>
 
-1. `ProductCard` image and title should be links to the product details page.
-2. Use `Loader` when fetching the product details.
-3. Show the details on the page:
-   - Display the available colors from colorsAvailable and the capacities from capacityAvailable as radio inputs, allowing the selection of one value from the offered options;
-   - `About` section should contain a subheader with description;
-   - Choose `Tech specs` you want to show.
-4. Add the ability to choose a picture.
-5. Implement `You may also like` block with products chosen randomly:
-   - Create `getSuggestedProducts` method fetching the suggested products.
-6. Add `Back` button working the same way as a Browser `Back` button.
-7. Add `Breadcrumbs` at the top with:
-   - A Home page link;
-   - A category page link (`Phones`, `Tablets`, `Accessories`);
-   - The name of the product (just a text).
-8. Show `Product was not found` if there is no product with a given id on the server.
+### Internationalization
+<p>
+  <img src="https://img.shields.io/badge/i18next-26A69A?style=for-the-badge&logo=i18next&logoColor=white" alt="i18next" />
+  <img src="https://img.shields.io/badge/react--i18next-26A69A?style=for-the-badge&logo=i18next&logoColor=white" alt="react-i18next" />
+</p>
 
-## Shopping Cart page
+### Styling
+<p>
+  <img src="https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=sass&logoColor=white" alt="SCSS" />
+  <img src="https://img.shields.io/badge/Bulma-00D1B2?style=for-the-badge&logo=bulma&logoColor=white" alt="Bulma" />
+  <img src="https://img.shields.io/badge/classnames-1A1A1A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="classnames" />
+  <img src="https://img.shields.io/badge/normalize--scss-CC6699?style=for-the-badge&logo=sass&logoColor=white" alt="normalize-scss" />
+</p>
 
-Create a Cart page with a list of `CartItem`s at `/cart`.
-Each item should have an `id`, `quantity`, and a `product`.
-Use React Context or Redux to store Items.
+### UI & Interaction
+<p>
+  <img src="https://img.shields.io/badge/Swiper-0066FF?style=for-the-badge&logo=swiper&logoColor=white" alt="Swiper" />
+  <img src="https://img.shields.io/badge/React_Select-1A1A1A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React Select" />
+  <img src="https://img.shields.io/badge/React_Transition_Group-1A1A1A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React Transition Group" />
+  <img src="https://img.shields.io/badge/Sonner-000000?style=for-the-badge&logo=react&logoColor=white" alt="Sonner" />
+  <img src="https://img.shields.io/badge/Font_Awesome-528DD7?style=for-the-badge&logo=fontawesome&logoColor=white" alt="Font Awesome" />
+</p>
 
-1. `Add to cart` button in the `ProductCard` should add a product to the `Cart`.
-2. If the product is already in the `Cart` the button should say `Added to cart` and do nothing.
-3. Add the ability to remove items from the `Cart` with an `x` button next to a `CartItem`.
-4. Add a message `Your cart is empty` when there are no products in the `Cart`.
-5. Add the ability to change the item quantity in the `Cart` with `-` and `+` buttons (it should be > 0).
-6. Total amount and quantity should be calculated automatically.
-7. Show the quantity at the `Cart` icon in the header.
-8. Save the `Cart` to `localStorage` on each change and read it on page load.
-9. `Checkout` button should show a modal dialog with the text `Checkout is not implemented yet. Do you want to clear the Cart?`:
-   - Clear the Cart if the user confirms the order;
-   - Keep the Cart items and close the confirmation on cancel;
-   - Use the `confirm` function if you don't have a better solution.
+### Utilities
+<p>
+  <img src="https://img.shields.io/badge/lodash.debounce-3492FF?style=for-the-badge&logo=lodash&logoColor=white" alt="lodash.debounce" />
+</p>
 
-## Favorites page
+### Testing
+<p>
+  <img src="https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white" alt="Cypress" />
+</p>
 
-Create `Favorites` page with a `ProductsList` showing favorite products at `/favorites`.
+### Linting & Formatting
+<p>
+  <img src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white" alt="ESLint" />
+  <img src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black" alt="Prettier" />
+  <img src="https://img.shields.io/badge/Stylelint-263238?style=for-the-badge&logo=stylelint&logoColor=white" alt="Stylelint" />
+</p>
 
-1. Add/remove a product to favorites by pressing a heart button in the `ProductCard` element.
-2. The heart should be highlighted if the product is already added to the favorites.
-3. Use React Context or Redux to store the favorites.
-4. Show the number of favorites at the `Favorites` icon in the header.
-5. Save favorites to `localStorage` on each change and load them on page load.
+### CI / CD
+<p>
+  <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions" />
+</p>
 
-## Other tasks
+### Deployment
+<p>
+  <img src="https://img.shields.io/badge/GitHub_Pages-222222?style=for-the-badge&logo=githubpages&logoColor=white" alt="GitHub Pages" />
+</p>
 
-1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`.
-2. Implement the `Product was not found` state for the `ProductDetailsPage`.
+---
 
-## (*) Advanced tasks
+## ⚙️ Getting Started
 
-- Implement color theme switching!
-- Use [skeletons](https://freefrontend.com/css-skeleton-loadings/) to make loading more natural.
-- Add the ability to change page language.
+Follow these steps to run the project locally.
 
-### Search
+### 📋 Prerequisites
 
-Show `input:search` in the header when a page contains a `ProductList` to search in.
+- **Node.js** `v20.x` (see `mateAcademy.nodejsMajorVersion` in `package.json`)
+- **npm** `v10.x` or higher
+- **Git**
 
-1. Save the `Search` value in the URL as a `?query=value` to apply on page load.
-2. Show `There are no phones/tablets/accessories/products matching the query` instead of `ProductList` when needed.
-3. Add `debounce` to the search field.
+### 📦 Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/bcheban/react_phone-catalog.git phone-catalog_react
+   cd phone-catalog_react
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the dev server:**
+   ```bash
+   npm start
+   ```
+   The app will open at [http://localhost:3000](http://localhost:3000).
+
+### 🧰 Available Scripts
+
+| Script              | Description                                            |
+| ------------------- | ------------------------------------------------------ |
+| `npm start`         | Start the local dev server                             |
+| `npm run build`     | Create a production build in `/build`                  |
+| `npm test`          | Run Cypress E2E tests                                  |
+| `npm run lint`      | Run Stylelint, Prettier, ESLint, and CSS lint together |
+| `npm run lint-js`   | Run ESLint on `.ts` / `.tsx` files                     |
+| `npm run lint-css`  | Run Stylelint on `.scss` files                         |
+| `npm run format`    | Format source files with Prettier                      |
+| `npm run deploy`    | Build and deploy to GitHub Pages                       |
+
+---
+
+## 🚀 Features
+
+- **🏠 Home Page** – Hero slideshow (Swiper), brand-new products, hot prices, and category cards.
+- **📱 Phones / 💻 Tablets / 🎧 Accessories Catalogs** – Dedicated catalog pages with sorting, filtering, and pagination.
+- **🔍 Product Detail Pages** – Image gallery, color and capacity variant switching, full specs, and "About" section.
+- **🛒 Shopping Cart** – Add/remove items, adjust quantity, total price calculation, with confirmation modal on checkout.
+- **❤️ Favourites** – Save products to a wishlist with persistent state.
+- **🔎 Search with Debounce** – Filtered search via `lodash.debounce` across catalog pages.
+- **📑 Pagination** – Configurable items-per-page with navigable page controls.
+- **🍞 Breadcrumbs** – Atomic-design breadcrumb navigation across detail pages.
+- **🌗 Light / Dark Theme** – Theme toggle with sun/moon icons, persisted to localStorage.
+- **🌐 i18n (EN / UA)** – Full localization via `react-i18next` with English and Ukrainian dictionaries.
+- **🔔 Toast Notifications** – User feedback via **Sonner**.
+- **🎬 Smooth Transitions** – Page and component animations via **React Transition Group**.
+- **🚫 Custom 404 / Not Found Pages** – Dedicated "Page Not Found" and "Product Not Found" screens.
+- **💾 LocalStorage Persistence** – Cart, favourites, theme, and language survive page reloads.
+- **🧪 E2E Tested** – Cypress integration tests (`cypress/integration/page.spec.js`).
+- **🤖 CI Workflows** – Automated lint & test runs via GitHub Actions.
+- **🔤 Custom Typography** – Bundled Mont font (Bold / Regular / SemiBold).
+- **📱 Fully Responsive** – Mobile-first design, optimized for all screen sizes.
+
+---
+
+## ✅ README Checklist
+
+- [x] **Project Name** with a clear, descriptive title
+- [x] **Project Overview** with a short description of what the app does
+- [x] **Live Preview** link to the deployed version
+- [x] **Design Reference** with links to the Figma mockups
+- [x] **Technologies Used** with all major tools and libraries listed
+- [x] **Getting Started** with prerequisites, installation, and run instructions
+- [x] **Available Scripts** documented for local development
+- [x] **Features** described in a readable, scannable list
+- [x] **Responsive design** verified on mobile, tablet, and desktop
+- [x] **Deployed** to GitHub Pages and link verified to work
+- [x] **Linted & formatted** — `npm run lint` passes cleanly
+- [x] **CI workflows** pass on the `develop` branch
+
+---
+
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/bcheban">@bcheban</a> · Mate Academy React Course
+</p>

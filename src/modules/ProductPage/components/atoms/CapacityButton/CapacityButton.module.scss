@@ -1,0 +1,23 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.capacity {
+  border: 1px solid var(--icons-color);
+  background-color: transparent;
+
+  // isolation: isolate;
+
+  &__text {
+    color: var(--buttons-text-color-primary);
+  }
+
+  &--active {
+    background-color: var(--buttons-text-color-primary);
+  }
+
+  &--active &__text,
+  &:hover &__text {
+    color: var(--main-background-color);
+  }
+
+  @include hover(background-color, var(--buttons-text-color-primary));
+}

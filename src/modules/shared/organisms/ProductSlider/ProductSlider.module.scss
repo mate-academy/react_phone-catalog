@@ -1,0 +1,42 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__button {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.swiper__slide {
+  height: auto;
+
+  @include span-columns(3, 4);
+
+  @include on-tablet {
+    @include span-columns(5, 12);
+  }
+
+  @include on-small-desktop {
+    @include span-columns(6, 24);
+  }
+}
+
+.margin_compensation {
+  padding: 24px 16px;
+  margin: -24px -16px;
+}

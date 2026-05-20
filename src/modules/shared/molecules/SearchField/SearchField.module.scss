@@ -1,0 +1,40 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  min-width: 80px;
+  max-width: 180px;
+  flex-grow: 0;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--main-background-color);
+  border: 1px solid var(--icons-color);
+  border-radius: 10px;
+  color: var(--main-text-color-primary);
+  align-items: center;
+  padding-inline: 8px;
+
+  &:focus,
+  &:active {
+    outline: 1px solid var(--main-text-color-primary);
+  }
+
+  &::placeholder {
+    font-weight: 400;
+    font-size: 10px;
+    color: var(--main-text-color-secondary);
+
+    @include on-tablet {
+      font-size: 12px;
+    }
+  }
+
+  @include focus-visible;
+}
