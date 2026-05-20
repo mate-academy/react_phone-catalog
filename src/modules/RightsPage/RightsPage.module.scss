@@ -1,0 +1,23 @@
+@import '../../styles/variables';
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 16px;
+  text-align: center;
+  flex: 1;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    color: $c-text-primary;
+    margin-bottom: 24px;
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: $c-text-secondary;
+    font-weight: 600;
+  }
+}

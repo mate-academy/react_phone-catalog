@@ -1,0 +1,74 @@
+@import '../../styles/variables';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  // margin-top: 40px;
+
+  margin-top: auto;
+  padding-top: 40px;
+
+  &__list {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $c-bg-elements;
+    color: $c-text-primary;
+    border: 1px solid $c-border;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $c-text-secondary;
+    }
+
+    &--active {
+      background-color: $c-text-primary;
+      color: $c-bg-dark;
+      border-color: $c-text-primary;
+    }
+
+
+  }
+
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $c-bg-elements;
+    color: $c-text-primary;
+    border: 1px solid $c-border;
+    cursor: pointer;
+    transition: border-color 0.3s;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $c-text-secondary;
+    }
+
+  }
+}
