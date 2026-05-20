@@ -1,23 +1,9 @@
-import {
-  collection,
-  query,
-  where,
-  orderBy,
-  getDocs,
-  CollectionReference,
-  Query,
-} from 'firebase/firestore';
-import { firestore } from '../firebase/firebase';
 import type { Book } from '@/types/Book';
-import type { LanguageOption } from '@/types/LanguageOption';
+import { getPaperBooks, getKindleBooks, getAudioBooks } from './booksAPI';
 
 export type SortOption = 'alphabetically' | 'cheapest' | 'newest';
 export type BookTypeOption = 'kindle' | 'paperback' | 'audiobook' | null;
-
-const booksCollection = collection(
-  firestore,
-  'books',
-) as CollectionReference<Book>;
+export type LanguageOption = string | null;
 
 export const getBooks = async (
   language: LanguageOption = null,
@@ -25,41 +11,40 @@ export const getBooks = async (
   bookType: BookTypeOption = null,
   sortBy: SortOption = 'newest',
 ) => {
-  try {
-    let booksQuery: Query<Book> = query(booksCollection);
+  let books: Book[] = [];
 
-    if (language) {
-      booksQuery = query(booksQuery, where('lang', '==', language));
-    }
-
-    if (bookType) {
-      booksQuery = query(booksQuery, where('type', '==', bookType));
-    }
-
-    if (category) {
-      booksQuery = query(
-        booksQuery,
-        where('category', 'array-contains', category),
-      );
-    }
-
-    switch (sortBy) {
-      case 'alphabetically':
-        booksQuery = query(booksQuery, orderBy('name', 'asc'));
-        break;
-      case 'cheapest':
-        booksQuery = query(booksQuery, orderBy('finalPrice', 'asc'));
-        break;
-      case 'newest':
-      default:
-        booksQuery = query(booksQuery, orderBy('publicationYear', 'desc'));
-        break;
-    }
-
-    const querySnapshot = await getDocs(booksQuery);
-    return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-  } catch (error) {
-    console.error('Помилка Firestore:', error);
-    throw error;
+  if (bookType === 'paperback') {
+    books = await getPaperBooks();
+  } else if (bookType === 'kindle') {
+    books = await getKindleBooks();
+  } else if (bookType === 'audiobook') {
+    books = await getAudioBooks();
+  } else {
+    const [paper, kindle, audio] = await Promise.all([
+      getPaperBooks(),
+      getKindleBooks(),
+      getAudioBooks(),
+    ]);
+    books = [...paper, ...kindle, ...audio];
   }
+
+  if (language) {
+    books = books.filter((b) => b.lang === language);
+  }
+
+  if (category) {
+    books = books.filter((b) => b.category?.includes(category));
+  }
+
+  switch (sortBy) {
+    case 'alphabetically':
+      books.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case 'newest':
+    default:
+      books.sort((a, b) => b.publicationYear - a.publicationYear);
+      break;
+  }
+
+  return books;
 };
