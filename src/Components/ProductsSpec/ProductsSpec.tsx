@@ -1,21 +1,52 @@
 import { Products } from '../../types/Products';
 import '../DevSpec/PhoneSpec.scss';
 import { ProductCard } from '../ProductCard/ProductCard';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 type Props = {
   currentProducts: Products[];
+  visibleCount: number;
 };
 
-export const ProductSpecs: React.FC<Props> = ({ currentProducts }) => {
+export const ProductSpecs: React.FC<Props> = ({
+  currentProducts,
+  visibleCount,
+}) => {
+  const viewportRef = useRef<HTMLDivElement | null>(null);
+  const [cardWidth, setCardWidth] = useState(0);
+  const gap = 24;
+
+  useEffect(() => {
+    const updateCardWidth = () => {
+      if (!viewportRef.current) {
+        return;
+      }
+
+      const width = viewportRef.current.offsetWidth;
+      const count = Math.max(1, visibleCount);
+
+      setCardWidth((width - gap * (count - 1)) / count);
+    };
+
+    updateCardWidth();
+    window.addEventListener('resize', updateCardWidth);
+
+    return () => window.removeEventListener('resize', updateCardWidth);
+  }, [visibleCount]);
+
   return (
     <div className="products-phones">
       {currentProducts.map(product => (
         <Link
-          to={`../phones/${product.id}`}
           key={product.id}
+          to={`phones/${product.id}`}
           className="products-phone"
+          style={
+            cardWidth
+              ? { minWidth: `${cardWidth}px`, maxWidth: `${cardWidth}px` }
+              : {}
+          }
         >
           <div className="products-container">
             <div className="products_">

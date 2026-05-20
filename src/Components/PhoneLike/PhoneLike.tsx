@@ -102,7 +102,10 @@ export const PhoneLike = () => {
             </Link>
           </div>
         </div>
-        <ProductSpecs currentProducts={currentProducts} />
+        <ProductSpecs
+          currentProducts={currentProducts}
+          visibleCount={productsPerSlide}
+        />
       </section>
     </>
   );
