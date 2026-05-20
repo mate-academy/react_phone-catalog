@@ -246,7 +246,7 @@ export const ProductDetailsPage = () => {
         </a>
 
         <img
-          src="./icons/arrow-right.svg"
+          src="./icons/arrow-right-small.svg"
           alt="arrow-right"
           className="home--nav-arrow"
         />
@@ -256,7 +256,7 @@ export const ProductDetailsPage = () => {
         </a>
 
         <img
-          src="./icons/arrow-right.svg"
+          src="./icons/arrow-right-small.svg"
           alt="arrow-right"
           className="home--nav-arrow"
         />
