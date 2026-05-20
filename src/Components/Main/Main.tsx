@@ -74,7 +74,6 @@ export const Main: React.FC = () => {
     },
   ];
 
-  const [currentSlide, setCurrentSlide] = React.useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
   const [productsPerSlide, setProductsPerSlide] = useState(4);
   const activeRect = activeRec;
@@ -128,20 +127,20 @@ export const Main: React.FC = () => {
     [picIndex, pics],
   );
 
-  // const handleProductChange = useCallback(
-  //   (direction: 'next' | 'prev') => {
-  //     setActiveIndex(prev => {
-  //       const lastIndex = Math.max(0, products.length - productsPerSlide);
+  const handleProductChange = useCallback(
+    (direction: 'next' | 'prev') => {
+      setActiveIndex(prev => {
+        const lastIndex = Math.max(0, products.length - productsPerSlide);
 
-  //       if (direction === 'next') {
-  //         return Math.min(prev + 1, lastIndex);
-  //       }
+        if (direction === 'next') {
+          return Math.min(prev + 1, lastIndex);
+        }
 
-  //       return Math.max(0, prev - 1);
-  //     });
-  //   },
-  //   [products.length, productsPerSlide],
-  // );
+        return Math.max(0, prev - 1);
+      });
+    },
+    [products.length, productsPerSlide],
+  );
 
   const handleDiscountedChange = useCallback(
     (direction: 'next' | 'prev') => {
@@ -319,16 +318,7 @@ export const Main: React.FC = () => {
                 <Link to="" className="new__models-arrow-left">
                   <button
                     className={`new__models-arrow ${activeIndex === 0 ? 'new__models-arrow-disabled' : ''}`}
-                    onClick={() => {
-                      // handleProductChange('prev');
-                      setCurrentSlide(
-                        prev =>
-                          (prev -
-                            1 +
-                            Math.ceil(products.length / productsPerSlide)) %
-                          Math.ceil(products.length / productsPerSlide),
-                      );
-                    }}
+                    onClick={() => handleProductChange('prev')}
                     disabled={activeIndex === 0}
                   >
                     <img src={arrowLeft} alt="" className="icon-arrow" />
@@ -337,14 +327,7 @@ export const Main: React.FC = () => {
                 <Link to="" className="new__models-arrow-right">
                   <button
                     className={`new__models-arrow ${activeIndex + productsPerSlide >= products.length ? 'new__models-arrow-disabled' : ''}`}
-                    onClick={() => {
-                      // handleProductChange('next');
-                      setCurrentSlide(
-                        prev =>
-                          (prev + 1) %
-                          Math.ceil(products.length / productsPerSlide),
-                      );
-                    }}
+                    onClick={() => handleProductChange('next')}
                     disabled={activeIndex + productsPerSlide >= products.length}
                   >
                     <img src={arrowRight} alt="" className="icon-arrow" />
@@ -353,11 +336,9 @@ export const Main: React.FC = () => {
               </div>
             </div>
             <Product
-              currentProducts={products.slice(
-                activeIndex,
-                activeIndex + productsPerSlide,
-              )}
-              currentSlide={currentSlide}
+              products={products}
+              currentSlide={activeIndex}
+              visibleCount={productsPerSlide}
             />
           </section>
           <section className="categories section">
