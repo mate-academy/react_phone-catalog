@@ -45,7 +45,7 @@ export const Cart = () => {
         <div className="cart__sub">{totalQuantity} items</div>
         <div className="cart__container">
           <div className="cart__items">
-            {totalQuantity === 0 && (
+            {totalQuantity === 0 && !checkOut && (
               <span className="cart__items-empty">Your cart is empty</span>
             )}
             <div className="cart__grid">
@@ -127,21 +127,22 @@ export const Cart = () => {
               Checkout
             </button>
           </div>
-          {/* <div className="cart__checkout-container">
+          <div className="cart__checkout-container">
             {checkOut && (
-              <div className="cart__checkout-modal">
+              <>
                 <h1 className="cart__checkout-title section-title">
                   Thank you for your purchase!
                 </h1>
+                <div className="cart__line"></div>
                 <button
                   onClick={() => setCheckOut(false)}
                   className="cart__checkout-close"
                 >
                   Close
                 </button>
-              </div>
+              </>
             )}
-          </div> */}
+          </div>
         </div>
       </div>
       <div className="cart__footer">

@@ -315,11 +315,53 @@
     }
   }
 
-  &__checkout-container {
-    width: 300px;
-    height: 200px;
+  &__checkout{
+    &-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
 
-    background-color: transparent;
-    border: #3B3E4A solid 1px;
+      padding-inline: 24px;
+
+      width: 400px;
+      height: 230px;
+
+      background-color: transparent;
+      border: #3B3E4A solid 1px;
+    }
+
+    &-title {
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+
+      margin-bottom: 10px;
+    }
+
+    &-close {
+      width: 120px;
+      height: 48px;
+
+      background-color: #905BFF;
+
+      font-family: 'Mont Regular', sans-serif;
+      color: #F1F2F9;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        transition: 0.3s;
+        background-color: #A378FF;
+      }
+    }
   }
 }
