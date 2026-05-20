@@ -11,17 +11,13 @@ type Props = {
 
 export const Product: React.FC<Props> = ({ currentSlide, currentProducts }) => {
   return (
-    <div
-      className="products-phones"
-      style={{
-        transform: `translateX(-${currentSlide * 100}%)`,
-      }}
-    >
+    <div className="products-phones">
       {currentProducts.map(product => (
         <Link
           key={product.id}
           to={`phones/${product.id}`}
           className="products-phone"
+          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
         >
           <div className="products-container">
             <div className="products_">
