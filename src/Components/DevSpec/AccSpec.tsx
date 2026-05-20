@@ -251,7 +251,7 @@ export const AccSpec: React.FC = () => {
             <div className="phone__colors">
               {accessorie?.colorsAvailable.map(c => {
                 const updatedPath = path?.replace(
-                  /-[^-]+$/,
+                  path?.includes('space') ? /-[^-]+-[^-]+$/ : /-[^-]+$/,
                   `-${normalizePathValue(c)}`,
                 );
 
