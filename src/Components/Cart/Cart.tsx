@@ -127,7 +127,7 @@ export const Cart = () => {
               Checkout
             </button>
           </div>
-          <div className="cart__checkout">
+          {/* <div className="cart__checkout-container">
             {checkOut && (
               <div className="cart__checkout-modal">
                 <h1 className="cart__checkout-title section-title">
@@ -141,7 +141,7 @@ export const Cart = () => {
                 </button>
               </div>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="cart__footer">
