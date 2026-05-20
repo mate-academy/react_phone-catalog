@@ -1,0 +1,13 @@
+.product-info {
+  &__name {
+    @include device-title;
+    padding-bottom: 8px;
+  }
+
+  &__price-wrap {
+    width: 100%;
+    height: auto;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $gray-elements;
+  }
+}

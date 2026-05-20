@@ -1,0 +1,47 @@
+.product {
+  &-card {
+    width: 100%;
+    max-width: 288px;
+    height: 439px;
+    border: 1px solid $gray-elements;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 32px;
+    cursor: pointer;
+
+    &--slider {
+      max-width: 212px;
+      height: 430px;
+    }
+
+    @include tablet {
+      height: 506px;
+
+      &--slider {
+        max-width: 237px;
+        height: 512px;
+      }
+    }
+
+    @include desktop {
+      max-width: 272px;
+
+      &--slider {
+        height: 500px;
+      }
+    }
+  }
+
+  &__design {
+    width: 100%;
+    max-width: 223px;
+    height: 130px;
+    object-fit: contain;
+
+    @include tablet {
+      height: 196px;
+    }
+  }
+}

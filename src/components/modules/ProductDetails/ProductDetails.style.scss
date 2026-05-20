@@ -1,0 +1,320 @@
+.product-page {
+  @include paddings-page;
+
+  &__crumbs {
+    padding-bottom: 24px;
+
+    @include tablet {
+      padding-bottom: 40px;
+    }
+  }
+
+  &__backbutton {
+    padding-bottom: 16px;
+  }
+
+  &__title {
+    @include h2;
+    color: $gray-primary;
+  }
+
+  &__sections {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 56px;
+
+    @include tablet {
+      gap: 64px;
+    }
+
+    @include desktop {
+      gap: 80px;
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 40px;
+    width: 100%;
+    height: auto;
+
+    &--design {
+      padding-top: 40px;
+    }
+
+    @include tablet {
+      &--design {
+        flex-direction: row;
+      }
+    }
+
+    @include desktop {
+      &--info {
+        flex-direction: row;
+      }
+
+      align-items: flex-start;
+      gap: 64px;
+    }
+  }
+
+  &__product-design {
+    width: 100%;
+    max-width: 530px;
+    height: auto;
+    max-height: 339px;
+
+    @include tablet {
+      max-height: 287px;
+    }
+
+    @include desktop {
+      max-height: 464px;
+    }
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+
+    @include tablet {
+      max-width: 320px;
+    }
+
+    &__options {
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+
+      &__block {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 8px;
+
+        &--capacity {
+          padding-block: 24px;
+          box-sizing: content-box;
+          border-block: 1px solid $gray-elements;
+        }
+      }
+
+      &__title {
+        @include text12;
+        color: $gray-secondary;
+
+        &::first-letter {
+          text-transform: capitalize;
+        }
+      }
+
+      &__wrap {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: flex-start;
+        gap: 8px;
+      }
+
+      &__color {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        box-sizing: border-box;
+        cursor: pointer;
+
+        &-wrap {
+          border: 1px solid $gray-elements;
+          width: 32px;
+          height: 32px;
+          padding: 2px;
+          border-radius: 50%;
+          box-sizing: border-box;
+
+          &:hover {
+            border-color: $icons-placeholders;
+          }
+
+          &--picked {
+            border-color: $gray-primary;
+          }
+        }
+
+        &--midnight {
+          background-color: #5f7170;
+        }
+        &--spaceblack{
+          background-color: #4c4c4c;
+        }
+        &--black {
+          background-color: #4c4c4c;
+        }
+        &--graphite{
+          background-color: rgba(98, 91, 91, 0.811);
+        }
+        &--space-gray, &--spacegray {
+          background-color: #5f7170;
+        }
+        &--silver {
+          background-color: silver;
+        }
+        &--midnightgreen {
+          background-color: rgb(58, 75, 58);
+        }
+        &--green {
+          background-color: aquamarine;
+        }
+        &--blue {
+          background-color: cornflowerblue;
+        }
+        &--sierrablue {
+          background-color: rgb(163, 190, 239);
+        }
+        &--purple {
+          background-color: rgb(209, 171, 245);
+        }
+        &--white {
+          background-color: #f0f0f0;
+        }
+        &--yellow {
+          background-color: rgb(253, 243, 109);
+        }
+        &--gold {
+          background-color: #fcdbc1;
+        }
+        &--red {
+          background-color: crimson;
+        }
+        &--pink, &--rosegold {
+          background-color: pink;
+        }
+      }
+
+      &__capacity {
+        width: 56px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        border: 1px solid $icons-placeholders;
+        color: $gray-primary;
+        cursor: pointer;
+
+        @include text14;
+
+        &:hover {
+          border-color: $gray-secondary;
+        }
+
+        &--picked {
+          background-color: $gray-primary;
+          color: $white;
+        }
+      }
+    }
+
+    &__actions {
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+    }
+  }
+
+  .article {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 16px;
+
+    @include desktop {
+      max-width: 569px;
+    }
+
+    &__title {
+      @include h3;
+      color: $gray-primary;
+
+      &::first-letter {
+        text-transform: capitalize;
+      }
+    }
+
+    &__paragraphs {
+      padding-top: 32px;
+      border-top: 1px solid $gray-elements;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    &__paragraph {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+
+      &__text {
+        @include text14;
+        color: #89939a;
+      }
+    }
+  }
+
+  .tech-specs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 16px;
+
+    &__title {
+      @include h3;
+      color: $gray-primary;
+
+      &::first-letter {
+        text-transform: capitalize;
+      }
+    }
+
+    &__content {
+      padding-top: 25px;
+      border-top: 1px solid $gray-elements;
+      width: 100%;
+    }
+  }
+
+  &__slider {
+    padding-top: 56px;
+
+    @include tablet {
+      padding-top: 64px;
+    }
+
+    @include desktop {
+      padding-top: 80px;
+    }
+  }
+}
