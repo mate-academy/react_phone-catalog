@@ -9,10 +9,14 @@ type Props = {
 };
 
 export const Product: React.FC<Props> = ({ currentProducts }) => {
+  const productMap = currentProducts[0];
+
   return (
     <div
       className="products-phones"
-      style={{ transform: `translateX(-${currentProducts.length * 100}px)` }}
+      style={{
+        transform: `translateX(-${currentProducts.indexOf(productMap) * 100}px)`,
+      }}
     >
       {currentProducts.map(product => (
         <Link
