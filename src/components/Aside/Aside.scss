@@ -58,7 +58,7 @@
   }
 
   &__closes {
-    background-image: url('public/icons/Close.svg');
+    background-image: url('/icons/Close.svg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -114,7 +114,7 @@
       height: 24px;
       background-size: contain;
       background-repeat: no-repeat;
-      background-image: url('public/icons/HeartLove.svg');
+      background-image: url('/icons/ActiveHeart.svg');
     }
   }
 
@@ -126,7 +126,7 @@
       height: 24px;
       background-size: contain;
       background-repeat: no-repeat;
-      background-image: url('/figmaLogo/Packet.svg');
+      background-image: url('/icons/cart.svg');
     }
   }
 }
