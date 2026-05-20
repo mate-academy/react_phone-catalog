@@ -166,6 +166,12 @@
     width: 100%;
     min-width: 50px;
     aspect-ratio: 1 / 1;
+    transition: 0.3s;
+
+    &:hover {
+      border: 1px solid #75767F;
+      transition: 0.3s;
+    }
 
     &-active {
       border: 1px solid #F1F2F9;
