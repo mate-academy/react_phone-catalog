@@ -1,0 +1,132 @@
+@import '../../styles/main';
+
+.footer {
+  box-sizing: border-box;
+  padding: 32px 0;
+  border-top: 1px solid $elements-color;
+  background-color: $white-color;
+
+  @include on-mobile {
+    padding: 48px 16px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    margin: 0 auto;
+
+    @include on-mobile {
+      flex-direction: column;
+      gap: 32px;
+      align-items: unset;
+      text-align: unset;
+
+    }
+
+    @include on-tablet {
+      max-width: $tablet-content-max-width;
+      padding: 0 24px;
+    }
+
+    @include on-desktop {
+      max-width: $desktop-content-max-width;
+      padding: 0 32px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+
+    @include on-mobile {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+
+    color: $secondary-color;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    transition: color $transition-time ease, transform $transition-time ease;
+
+    @include font-dt-uppercase;
+
+    &:hover, &:focus-visible {
+      transform: translateY(-1px);
+      color: $primary-color;
+    }
+  }
+
+  &__totop {
+    cursor: pointer;
+    user-select: none;
+
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+
+    .text {
+      color: $secondary-color;
+
+      @include font-dt-small-text;
+
+      transition: color $transition-time ease;
+    }
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      box-sizing: border-box;
+      width: 32px;
+      height: 32px;
+      border: 1px solid $elements-color;
+      border-radius: 50%;
+
+      background-color: transparent;
+
+      transition: border-color $transition-time ease,
+      background-color $transition-time ease,
+      transform $transition-time ease;
+    }
+
+    &:hover {
+      .icon {
+        transform: translateY(-2px);
+        border-color: $primary-color;
+        background-color: rgba($primary-color, 0.02);
+      }
+    }
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,116 @@
+@import '../../styles/main';
+
+$image-border-radius: 8px;
+$mobile-card-width: 212px;
+$tablet-card-width: 237px;
+$desktop-card-width: 272px;
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+
+  @include on-tablet {
+    width: calc(100vw - 24px);
+  }
+
+  @include on-mobile {
+    width: calc(100vw - 18px);
+  }
+
+  .swiper {
+    margin: -4px;
+    padding: 4px;
+
+    @include on-tablet {padding-right: -24px}
+
+    @include on-mobile {padding-right: -18px}
+
+    .card {
+      display: flex;
+      width: $mobile-card-width !important;
+      height: auto !important;
+
+      @include on-tablet {
+        width: $tablet-card-width !important;
+      }
+
+      @include on-desktop {
+        width: $desktop-card-width !important;
+      }
+
+      & > div {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &__title {
+    font-family: Mont, serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    color: $primary-color;
+    letter-spacing: -1%;
+
+    @include on-mobile {
+      padding-right: 16px;
+
+      font-family: Mont, serif;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 140%;
+      letter-spacing: 0;
+    }
+
+    @include on-tablet {
+      padding-right: 16px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @include on-tablet {padding-right: 24px}
+
+    @include on-mobile {padding-right: 18px;}
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    button {
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      aspect-ratio: 1 / 1;
+      height: 32px;
+      border: 1px solid $icon-color;
+      border-radius: 20px;
+
+      background-color: transparent;
+
+      &:disabled {
+        cursor: not-allowed;
+        border-color: $icon-color;
+        opacity: 0.5;
+      }
+
+      &:hover {
+        border-color: $primary-color;
+      }
+    }
+  }
+}

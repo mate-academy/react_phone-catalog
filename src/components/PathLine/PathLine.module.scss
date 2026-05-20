@@ -1,0 +1,63 @@
+@import '../../styles/main';
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include on-mobile {
+    gap: 24px;
+  }
+
+  .path {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+
+    &__icon {
+      display: flex;
+      align-items: center;
+    }
+
+    &__text-last {
+      color: $secondary-color;
+    }
+  }
+
+  .backbutton {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    text-decoration: none;
+  }
+}
+
+.home {
+  display: flex;
+}
+
+.text {
+  @include font-dt-small-text;
+
+  align-items: center;
+
+  box-sizing: border-box;
+
+  color: $primary-color;
+  text-decoration: none;
+  text-transform: capitalize;
+
+
+  &_invert {
+    color: $secondary-color;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+.icon {
+  filter: invert(1);
+}

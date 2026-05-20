@@ -35,7 +35,7 @@ Use the data from `/public/api` and images from `/public/img` folders. You can r
 4. The footer with the link to the GitHub repo and `Back to top` button.
    - The content should be limited to the same width as the page content;
    - `Back to top` button should scroll to the top smoothly;
-5. Add `NotFoundPage` containing text `Page not found` for all the unknown URLs.
+5. Add `NotFoundProduct` containing text `Page not found` for all the unknown URLs.
 6. All changes the hover effects should be smooth.
 7. Scale all image links by 10% on hover.
 8. Implement all form elements and icons according to the UI Kit.
@@ -125,7 +125,7 @@ Create `Favorites` page with a `ProductsList` showing favorite products at `/fav
 
 ## Other tasks
 
-1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`.
+1. Add `NotFoundProduct` containing text `Page not found` for all the other URLs with the link to `HomePage`.
 2. Implement the `Product was not found` state for the `ProductDetailsPage`.
 
 ## (*) Advanced tasks

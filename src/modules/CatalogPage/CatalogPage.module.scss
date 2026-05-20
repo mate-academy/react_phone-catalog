@@ -1,0 +1,95 @@
+@import '../../styles/main';
+
+.page {
+  @include page-default;
+}
+
+.title {
+  padding: 40px 0;
+
+  @include on-desktop {
+    padding: 24px 0 32px
+  }
+
+  .count {
+    @include font-dt-body-text;
+
+    color: $secondary-color;
+  }
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 40px 16px;
+  justify-items: center;
+
+  padding-top: 24px;
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: $desktop-content-max-width;
+  }
+}
+
+.pagination {
+  user-select: none;
+
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  padding-top: 40px;
+
+  @include on-mobile {
+    padding-top: 24px;
+  }
+
+  .container {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.button {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $elements-color;
+  border-radius: 100%;
+
+  color: $primary-color;
+
+  transition: 0.5s;
+
+  @include font-dt-body-text;
+
+  &--control {
+    cursor: default;
+    border-color: $icon-color;
+    opacity: 0.5;
+
+    &:hover {
+      border-color: $primary-color;
+      transition: $transition-time;
+    }
+
+    &--active {
+      cursor: pointer;
+      border-color: $icon-color;
+      opacity: 1;
+    }
+  }
+
+  &--active {
+    border-color: $primary-color;
+    color: $white-color;
+    background-color: $primary-color;
+  }
+}

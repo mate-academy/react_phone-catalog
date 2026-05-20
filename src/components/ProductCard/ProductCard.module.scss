@@ -1,0 +1,192 @@
+@import '../../styles/main';
+
+$mobile-card-height: 439px;
+$tablet-card-height: 512px;
+$desktop-card-height: 506px;
+
+.card {
+  display: flex;
+  flex-grow: 1;
+
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid $elements-color;
+  border-radius: 8px;
+
+  background-color: $white-color;
+
+  @include on-tablet {
+    height: $tablet-card-height;
+  }
+
+  @include on-desktop {
+    height: $desktop-card-height;
+  }
+
+  &__title {
+    @include font-dt-body-text;
+
+    padding-top: 16px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    width: 100%;
+    margin: 0;
+    padding: 32px;
+
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 8px;
+
+    min-height: 0;
+
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      .card__title {
+        color: $accent-color;
+      }
+    }
+  }
+
+  &__image {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 0;
+
+    .image {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform $transition-time;
+    }
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    @include font-m-h2;
+
+    .normal {
+      color: $primary-color;
+    }
+
+    .discount {
+      color: $secondary-color;
+      text-decoration-line: line-through;
+    }
+  }
+  &__divider {
+    border-top: 1px solid $elements-color;
+  }
+
+  &__info {
+    .screen {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .capacity {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .ram {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    border: none;
+
+    .button_cart {
+      cursor: pointer;
+
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+      justify-content: center;
+
+      height: 40px;
+      border: none;
+      border-radius: 8px;
+
+      @include font-dt-buttons;
+
+      color: $white-color;
+
+      background-color: $accent-color;
+
+      transition: all 0.5s;
+
+      &__added {
+        border: 1px solid $elements-color;
+        color: $accent-color;
+        background-color: transparent;
+      }
+
+      &:hover {
+        box-shadow: $button-shadow;
+      }
+    }
+
+    .button_fovourite {
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      aspect-ratio: 1 / 1;
+      height: 40px;
+      border: 1px solid $icon-color;
+      border-radius: 20px;
+
+      background-color: transparent;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+    }
+  }
+}
+
+.spec {
+  &__name {
+    @include font-dt-small-text;
+
+    color: $secondary-color;
+  }
+
+  &__value {
+    @include font-base;
+
+    right: 0;
+
+    font-size: 12px;
+    font-weight: 700;
+    color: $primary-color;
+    letter-spacing: 0;
+  }
+}

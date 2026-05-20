@@ -1,0 +1,17 @@
+@import '../../styles/main';
+
+.page {
+  @include page-default;
+
+  .image_box {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    .image {
+      width: 100%;
+      max-width: 500px;
+    }
+  }
+}

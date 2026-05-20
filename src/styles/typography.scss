@@ -1,0 +1,99 @@
+@mixin  font-base {
+  font-family: Mont, sans-serif;
+}
+
+@mixin font-dt-h1 {
+  font-family: Mont, sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+}
+
+@mixin font-dt-h2 {
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin font-dt-h3 {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+@mixin font-dt-h4 {
+  font-family: Mont, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+@mixin font-dt-uppercase {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+@mixin font-dt-buttons {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin font-dt-body-text {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin font-dt-small-text {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+@mixin font-m-h1 {
+  font-family: Mont, sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin font-m-h2 {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+@mixin font-m-h3 {
+  font-family: Mont, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: -0.01em;
+}
+
+@mixin font-m-h4 {
+  font-family: Mont, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+}
