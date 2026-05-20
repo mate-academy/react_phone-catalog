@@ -10,11 +10,7 @@ type Props = {
   visibleCount: number;
 };
 
-export const Product: React.FC<Props> = ({
-  currentSlide,
-  products,
-  visibleCount,
-}) => {
+export const Product: React.FC<Props> = ({ products, visibleCount }) => {
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const [cardWidth, setCardWidth] = useState(0);
   const gap = 24;
@@ -41,9 +37,9 @@ export const Product: React.FC<Props> = ({
     <div className="products-viewport" ref={viewportRef}>
       <div
         className="products-phones"
-        style={{
-          transform: `translateX(-${currentSlide * (cardWidth + gap)}px)`,
-        }}
+        // style={{
+        //   transform: `translateX(-${currentSlide * (cardWidth + gap)}px)`,
+        // }}
       >
         {products.map(product => (
           <Link

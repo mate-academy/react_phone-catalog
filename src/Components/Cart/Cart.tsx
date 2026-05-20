@@ -16,7 +16,7 @@ import { Aside } from '../Aside/Aside';
 export const Cart = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [checkOut, setCheckOut] = useState(false);
-  const { totalQuantity, items, removeFromCart, changeQuantity } = useCart();
+  const { totalQuantity, items, removeFromCart, changeQuantity, clearCart } = useCart();
   const { totalFavourites } = useFav();
   const totalPrice = items.reduce(
     (total, item) => total + item.product.fullPrice * item.quantity,
@@ -112,7 +112,7 @@ export const Cart = () => {
             </div>
           </div>
           <div
-            className={`cart__total ${totalQuantity < 1 ? 'cart__total-none' : ''}`}
+            className={`cart__total ${totalQuantity < 1 && checkOut ? 'cart__total-none' : ''}`}
           >
             <span className="cart__total-price">${totalPrice}</span>
             <span className="cart__total-subtotal">
@@ -122,7 +122,7 @@ export const Cart = () => {
             <button
               onClick={() => {
                 setCheckOut(true);
-                removeFromCart(all => all + 0);
+                clearCart();
               }}
               className="cart__checkout"
               disabled={totalQuantity === 0}
