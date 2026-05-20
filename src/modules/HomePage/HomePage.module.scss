@@ -1,0 +1,54 @@
+@use 'src/assets/styles/helpers' as *;
+
+.container {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include tablet-above {
+    gap: 64px;
+  }
+
+  @include desktop-above {
+    gap: 80px;
+  }
+}
+
+.list {
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include tablet-above {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.photo {
+  transition-duration: 0.3s;
+
+  @include mobile {
+    height: 288px;
+    width: 288px;
+  }
+
+  &:hover {
+    box-shadow: 0 2px 16px 0 #0000001A;
+    scale: 102%;
+  }
+}
+
+.title {
+  margin: 0;
+}
+

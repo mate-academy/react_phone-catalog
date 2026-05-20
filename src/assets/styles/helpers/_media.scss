@@ -1,0 +1,58 @@
+/* stylelint-disable media-feature-range-notation */
+@use './functions' as *;
+
+$desktop: 1199;
+$tablet: 639;
+$mobile: 319;
+
+@mixin desktop-above {
+  @media (width > rem($desktop)) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (width <= rem($desktop)) {
+    @content;
+  }
+}
+
+@mixin tablet-above {
+  @media (width > rem($tablet)) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (width <= rem($tablet)) {
+    @content;
+  }
+}
+
+@mixin mobile-above {
+  @media (width > rem($mobile)) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (width <= rem($mobile)) {
+    @content;
+  }
+}
+
+@mixin hover($hasActiveEffectOnMobile: true) {
+  @media (any-hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+
+  @if $hasActiveEffectOnMobile {
+    @media (any-hover: none) {
+      &:active {
+        @content;
+      }
+    }
+  }
+}

@@ -1,0 +1,287 @@
+@use 'src/assets/styles/helpers' as *;
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  display: grid;
+  padding-top: 32px;
+
+  @include tablet-above {
+    padding-top: 40px;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+  }
+
+  @include desktop-above {
+    column-gap: 16px;
+    grid-template-columns: repeat(24, 32px);
+  }
+}
+
+.list {
+  display: flex;
+  gap:8px;
+  padding-top: 16px;
+  padding-bottom: 40px;
+  order: 2;
+
+  @include tablet-above {
+    padding-block: 0;
+    flex-direction: column;
+    grid-column: 1 / 2;
+    order: 0;
+  }
+
+  @include desktop-above {
+    gap: 16px;
+    grid-column: 1 / 3;
+  }
+}
+
+.image {
+  padding: 11px;
+  height: 287px;
+  width: 287px;
+  object-fit: contain;
+  order: 1;
+
+  @include tablet-above {
+    order: 0;
+    grid-column: 2 / 8;
+  }
+
+  @include desktop-above {
+    grid-column: 3 / 13;
+    height: 464px;
+    width: 464px;
+  }
+}
+
+.item {
+  border: var(--border);
+  height: 50px;
+  width: 50px;
+
+  @include tablet-above {
+    height: 35px;
+    width: 35px;
+  }
+
+  @include desktop-above {
+    height: 80px;
+    width: 80px;
+  }
+}
+
+.itemActive {
+  border: var(--border-hover);
+}
+
+.miniphoto {
+  padding: 7px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.specification {
+  order: 3;
+
+  @include tablet-above {
+    grid-column: 8 / -1;
+    order: 0;
+  }
+
+  @include desktop-above {
+    grid-column: 14 / 20;
+  }
+}
+
+.id {
+  display: none;
+  color: #B4BDC3;
+
+  @include tablet-above {
+    display: flex;
+    grid-column: 8 / -1;
+  }
+
+  @include desktop-above {
+    grid-column: 23 / -1;
+    justify-self: end;
+  }
+}
+
+.color {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 24px;
+  border-bottom: var(--border);
+}
+
+.colorlist {
+  display: flex;
+  gap: 8px;
+}
+
+.coloritem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: var(--border);
+  border-radius: 100%;
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid var(--color-icons);
+  }
+}
+
+.coloritemActive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  border: var(--border-hover);
+}
+
+.inner {
+  width: 28px;
+  height: 28px;
+  border-radius: 100%;
+  filter: brightness(90%) saturate(80%) contrast(90%);
+}
+
+.text {
+  color: var(--color-secondary);
+}
+
+.capacity {
+  padding-block: 24px;
+  border-bottom: var(--border);
+}
+
+.capacitylist {
+  display: flex;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.capacityitem {
+  border: var(--border);
+  padding-inline: 8px;
+  padding-top: 7px;
+  padding-bottom: 4px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.capacityitemActive {
+  padding-inline: 8px;
+  padding-top: 7px;
+  padding-bottom: 4px;
+  color: #fff;
+  background-color: var(--color-primary);
+}
+
+.price {
+  padding-top: 32px;
+  padding-bottom: 16px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.discount {
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--color-secondary);
+  text-decoration: line-through;
+}
+
+.buttons {
+  display: flex;
+  column-gap: 8px;
+  height: 40px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.info {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  padding-top: 32px;
+}
+
+.data {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-secondary);
+}
+
+.spec {
+  color: var(--color-primary);
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  row-gap: 64px;
+  justify-content: space-evenly;
+  padding-block: 56px;
+
+  @include tablet-above {
+    padding-block: 64px;
+  }
+
+  @include desktop-above {
+    flex-direction: row;
+    padding-block: 80px;
+    gap: 64px;
+  }
+}
+
+.about {
+  @include desktop-above {
+    flex: 1;
+  }
+}
+
+.specs {
+  @include desktop-above {
+    flex: 1;
+  }
+}
+
+.title {
+  padding-bottom:16px;
+  border-bottom: var(--border) ;
+}
+
+.topic {
+  padding-top: 32px;
+}
+
+.p {
+  padding-top: 16px;
+  color: var(--color-secondary);
+}
+
+.h2 {
+  margin: 0;
+}
+
+.sale {
+  margin: 0;
+}

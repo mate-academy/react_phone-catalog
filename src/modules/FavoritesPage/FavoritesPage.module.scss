@@ -1,0 +1,31 @@
+@use 'src/assets/styles/helpers' as *;
+
+.title {
+  margin: 0;
+}
+
+.quantity {
+  color: var(--color-secondary);
+}
+
+.list {
+  display: grid;
+  gap: 16px;
+  padding-top: 24px;
+  grid-template-columns: repeat(1, 1fr);
+
+  @include tablet-above {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  @include desktop-above {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.empty {
+  display: flex;
+  align-items: start;
+  justify-self: center;
+  scale: 0.5;
+}

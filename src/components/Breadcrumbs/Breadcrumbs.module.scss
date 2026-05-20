@@ -1,0 +1,19 @@
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 40px;
+  align-items: center;
+  text-align: center;
+}
+
+.category {
+  align-self: center;
+  color: var(--color-primary);
+}
+
+.text {
+  color: var(--color-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
