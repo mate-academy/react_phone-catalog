@@ -34,25 +34,6 @@ enum Image {
   fifth = 'fifth',
 }
 
-enum Color {
-  black = 'black',
-  green = 'green',
-  yellow = 'yellow',
-  white = 'white',
-  purple = 'purple',
-  red = 'red',
-  rosegold = 'rosegold',
-  gold = 'gold',
-  silver = 'silver',
-  spacegray = 'spacegray',
-  coral = 'coral',
-  midnight = 'midnight',
-  graphite = 'graphite',
-  sierrablue = 'sierrablue',
-  pink = 'pink',
-  blue = 'blue',
-}
-
 export const AccSpec: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const { pathname } = useLocation();
@@ -74,18 +55,42 @@ export const AccSpec: React.FC = () => {
     price: Number(a.priceDiscount ?? a.priceRegular ?? 0),
     screen: a.screen ?? '—',
     capacity: a.capacity ?? '—',
-    color: a.color ?? a.colorsAvailable ?? '—',
+    color: Array.isArray(a.color)
+      ? (a.color[0] ?? '—')
+      : (a.color ?? a.colorsAvailable?.[0] ?? '—'),
     ram: a.ram ?? '—',
     year: new Date().getFullYear(),
-    image: a.images ?? '',
+    image: Array.isArray(a.images) ? (a.images[0] ?? '') : (a.images ?? ''),
   });
   const navigate = useNavigate();
   const [, setErrorMessage] = useState(false);
   const [, setLoading] = useState(false);
   const [image, setImage] = useState<Image>(Image.first);
-  const [color, setColor] = useState<Color | null>(null);
+  const [color, setColor] = useState<string | null>(null);
   const images = accessorie?.images || [];
   const path = accessorie?.id;
+
+  const normalizePathValue = (value: string) =>
+    value.toLowerCase().replace(/\s+/g, '-');
+
+  const getDefaultColor = (acc?: Accessorie) => {
+    if (!acc) {
+      return null;
+    }
+
+    const rawColor = acc.color as unknown;
+
+    if (typeof rawColor === 'string' && rawColor.trim()) {
+      return rawColor;
+    }
+
+    if (Array.isArray(rawColor) && rawColor.length) {
+      return rawColor[0];
+    }
+
+    return acc.colorsAvailable?.[0] ?? null;
+  };
+
   // const capacitiesRaw = accessorie?.capacity ?? [];
   const capacities: string[] = Array.isArray(accessorie?.capacity)
     ? accessorie.capacity
@@ -100,6 +105,18 @@ export const AccSpec: React.FC = () => {
       setSelectedCapacity(capacities[0]);
     }
   }, [capacities]);
+
+  useEffect(() => {
+    if (!accessorie) {
+      return;
+    }
+
+    const defaultColor = getDefaultColor(accessorie);
+
+    if (defaultColor) {
+      setColor(defaultColor);
+    }
+  }, [accessorie]);
   const imageKeys: Image[] = [
     Image.first,
     Image.second,
@@ -235,21 +252,20 @@ export const AccSpec: React.FC = () => {
               {accessorie?.colorsAvailable.map(c => {
                 const updatedPath = path?.replace(
                   /-[^-]+$/,
-                  `-${c.toLowerCase()}`,
+                  `-${normalizePathValue(c)}`,
                 );
-                // const colorFirst = color === c[0];
 
                 return (
                   <div
                     key={c}
-                    className={`phone__color ${color === c ? 'phone__color-active' : color === c[0] ? 'phone__color-active' : c === accessorie.colorsAvailable[0] ? 'phone__color-active' : ''} phone__color-${c.toLowerCase()}`}
+                    className={`phone__color ${color === c || (!color && c === accessorie.colorsAvailable[0]) ? 'phone__color-active' : ''} phone__color-${normalizePathValue(c)}`}
                   >
                     <div
                       onClick={() => {
                         setColor(c);
                         navigate(`../accessories/${updatedPath}`);
                       }}
-                      className={`phone__color-color phone__color-${c}`}
+                      className={`phone__color-color phone__color-${normalizePathValue(c)}`}
                     ></div>
                   </div>
                 );
@@ -260,9 +276,11 @@ export const AccSpec: React.FC = () => {
               <p className="phone__specs-cap-text">Select capacity</p>
               <div className="phone__specs-capacities">
                 {accessorie?.capacityAvailable.map(cap => {
+                  const activeColor =
+                    color || getDefaultColor(accessorie) || '';
                   const updatedPathCap = path?.replace(
                     /-[^-]+-[^-]+$/,
-                    `-${cap.toLowerCase()}-${color?.toLowerCase()}`,
+                    `-${normalizePathValue(cap)}-${normalizePathValue(activeColor)}`,
                   );
 
                   return (
