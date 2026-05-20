@@ -127,22 +127,22 @@ export const Cart = () => {
               Checkout
             </button>
           </div>
-          <div className="cart__checkout-container">
-            {checkOut && (
+          {checkOut && (
+            <div className="cart__check-container">
               <>
-                <h1 className="cart__checkout-title section-title">
+                <h1 className="cart__check-title section-title">
                   Thank you for your purchase!
                 </h1>
                 <div className="cart__line"></div>
                 <button
                   onClick={() => setCheckOut(false)}
-                  className="cart__checkout-close"
+                  className="cart__check-close"
                 >
                   Close
                 </button>
               </>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
       <div className="cart__footer">
