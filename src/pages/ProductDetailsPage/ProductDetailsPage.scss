@@ -44,6 +44,25 @@
     margin-bottom: 16px;
   }
 
+  &__back-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+  }
+
+  &__back-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__back-text {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+    color: #F1F2F9;
+  }
+
   // 1. Заголовок: 1136x41, font 32px/800/41px
   &__title {
     width: 1136px;
@@ -73,7 +92,7 @@
     font-size: 12px;
     font-weight: 700;
     line-height: 100%;
-    color: #89939A;;
+    color: #89939A;
     white-space: nowrap;
     overflow: visible;
     text-overflow: unset;
@@ -294,7 +313,6 @@
     max-width: 560px;
     box-sizing: border-box;
 
-    // "About" — 22px/800/140%
     & h2 {
       max-width: 100%;
       font-size: 22px;
@@ -307,7 +325,6 @@
       border-bottom: 1px solid var(--border-color);
     }
 
-    // Подзаголовки — 20px/700/100%
     & h3 {
       max-width: 100%;
       font-size: 20px;
@@ -318,7 +335,6 @@
       margin: 32px 0 16px 0;
     }
 
-    // Текст — 14px/600/21px
     & p {
       max-width: 100%;
       font-size: 14px;
@@ -412,7 +428,6 @@
     }
 
     & img {
-      // Само фото: 442x442
       width: 442px;
       height: 442px;
       object-fit: contain;
@@ -491,6 +506,8 @@
     &--sierrablue  { background-color: #69ABCE; }
     &--alpinegreen { background-color: #576856; }
     &--deepPurple  { background-color: #594F63; }
+    &--rosegold    { background-color: #B76E79; }
+    &--coral       { background-color: #FF6F61; }
 
     &--active,
     &[aria-selected='true'] {
@@ -510,9 +527,9 @@
   flex-wrap: wrap;
 
   & .capacity-option {
-    width: 56px;
+    min-width: 56px;
     height: 32px;
-    padding: 0;
+    padding: 0 8px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -724,6 +741,10 @@
       background-color: #323542;
       border: 1px solid #3B3E4A;
       transition: border-color 0.3s ease;
+
+      &.favorite--active {
+        border-color: #F1F2F9;
+      }
 
       &:hover {
         border-color: #F1F2F9;

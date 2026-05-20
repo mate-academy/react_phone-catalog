@@ -271,10 +271,11 @@ export const ProductDetailsPage = () => {
       </div>
 
       <div className="product-details--back">
-        <a href={getCategoryLink()}>
-          <p className="home--nav-top">{'<'} Back</p>
-        </a>
-      </div>
+  <a href={getCategoryLink()} className="product-details__back-link">
+    <img src="./icons/arrow-left-small.svg" alt="back" className="product-details__back-icon" />
+    <span className="product-details__back-text">Back</span>
+  </a>
+</div>
 
       <h1 className="product-details__title">
         {product.name}
