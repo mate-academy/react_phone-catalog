@@ -128,20 +128,20 @@ export const Main: React.FC = () => {
     [picIndex, pics],
   );
 
-  const handleProductChange = useCallback(
-    (direction: 'next' | 'prev') => {
-      setActiveIndex(prev => {
-        const lastIndex = Math.max(0, products.length - productsPerSlide);
+  // const handleProductChange = useCallback(
+  //   (direction: 'next' | 'prev') => {
+  //     setActiveIndex(prev => {
+  //       const lastIndex = Math.max(0, products.length - productsPerSlide);
 
-        if (direction === 'next') {
-          return Math.min(prev + 1, lastIndex);
-        }
+  //       if (direction === 'next') {
+  //         return Math.min(prev + 1, lastIndex);
+  //       }
 
-        return Math.max(0, prev - 1);
-      });
-    },
-    [products.length, productsPerSlide],
-  );
+  //       return Math.max(0, prev - 1);
+  //     });
+  //   },
+  //   [products.length, productsPerSlide],
+  // );
 
   const handleDiscountedChange = useCallback(
     (direction: 'next' | 'prev') => {
@@ -320,7 +320,7 @@ export const Main: React.FC = () => {
                   <button
                     className={`new__models-arrow ${activeIndex === 0 ? 'new__models-arrow-disabled' : ''}`}
                     onClick={() => {
-                      handleProductChange('prev');
+                      // handleProductChange('prev');
                       setCurrentSlide(
                         prev =>
                           (prev -
@@ -338,7 +338,7 @@ export const Main: React.FC = () => {
                   <button
                     className={`new__models-arrow ${activeIndex + productsPerSlide >= products.length ? 'new__models-arrow-disabled' : ''}`}
                     onClick={() => {
-                      handleProductChange('next');
+                      // handleProductChange('next');
                       setCurrentSlide(
                         prev =>
                           (prev + 1) %
