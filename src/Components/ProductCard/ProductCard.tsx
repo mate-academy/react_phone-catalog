@@ -20,10 +20,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     'products-cart-active': added,
   });
 
-  const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <div className="page__models-buttons">
       <button
@@ -36,8 +32,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           } else {
             addToCart(product);
           }
-
-          handleScrollToTop();
         }}
       >
         <span className="products-cart__link">
@@ -58,8 +52,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           } else {
             addToFav(product);
           }
-
-          handleScrollToTop();
         }}
       >
         {addedFav ? (
