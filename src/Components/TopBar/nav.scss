@@ -33,6 +33,12 @@
     text-decoration: none;
     text-transform: uppercase;
     color: #75767F;
+    transition: 0.3s;
+
+    &:hover {
+      color: #F1F2F9;
+      transition: 0.3s;
+    }
   }
 
   &__link-selected {
@@ -42,6 +48,7 @@
     text-decoration: none;
     text-transform: uppercase;
     color: #F1F2F9;
+    transition: 0.3s;
 
     &::after {
       content: '';
@@ -53,6 +60,8 @@
       height: 3px;
       background: #F1F2F9;
 
+      animation: slideInRight 0.5s ease-out;
+
       @include on-tablet {
         top: 12px;
       }
@@ -62,4 +71,16 @@
       }
     }
   }
- }
+}
+
+
+@keyframes slideInRight {
+   from {
+       transform:scaleX(0);
+       opacity: 0;
+   }
+   to {
+       transform: scaleX(100%);
+       opacity: 1;
+   }
+}

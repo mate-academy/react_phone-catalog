@@ -27,6 +27,7 @@
     width: 32px;
     background-color: #323542;
     border: 1px solid #3B3E4A;
+    transition: 0.3s;
 
     &-disabled {
       background-color: transparent;
@@ -38,6 +39,7 @@
     &:hover {
       background-color: #4A4D58;
       border-color: #525761;
+      transition: 0.3s;
     }
   }
 }

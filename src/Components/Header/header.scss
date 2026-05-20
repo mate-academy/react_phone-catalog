@@ -69,6 +69,8 @@
         height: 3px;
         background: #F1F2F9;
 
+        animation: slideInRight 0.5s ease-out;
+
         @include on-tablet {
           position: relative;
           top: 0;
@@ -193,4 +195,15 @@
     }
 
   }
+}
+
+@keyframes slideInRight {
+   from {
+       transform:scaleX(0);
+       opacity: 0;
+   }
+   to {
+       transform: scaleX(100%);
+       opacity: 1;
+   }
 }
