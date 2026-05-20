@@ -6,46 +6,53 @@ import { Link } from 'react-router-dom';
 
 type Props = {
   currentProducts: Products[];
-  currentSlide: number;
 };
 
-export const Product: React.FC<Props> = ({ currentSlide, currentProducts }) => {
+export const Product: React.FC<Props> = ({ currentProducts }) => {
   return (
     <div className="products-phones">
-      {currentProducts.map(product => (
-        <Link
-          key={product.id}
-          to={`phones/${product.id}`}
-          className="products-phone"
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-        >
-          <div className="products-container">
-            <div className="products_">
-              <div className="products-img">
-                <img src={product.image} alt="" className="products-image" />
+      {currentProducts.map(product => {
+        const currentSlide = Math.floor(
+          currentProducts.findIndex(p => p.id === product.id) /
+            currentProducts.length,
+        );
+
+        return (
+          <Link
+            key={product.id}
+            to={`phones/${product.id}`}
+            className="products-phone"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            <div className="products-container">
+              <div className="products_">
+                <div className="products-img">
+                  <img src={product.image} alt="" className="products-image" />
+                </div>
+                <p className="products-title">{product.name}</p>
+                <span className="products-price">${product.fullPrice}</span>
               </div>
-              <p className="products-title">{product.name}</p>
-              <span className="products-price">${product.fullPrice}</span>
-            </div>
-            <div className="products__bottom">
-              <div className="products-string"></div>
-              <div className="products-info">
-                <p className="products-text products-text__first">
-                  Screen <span className="products-span">{product.screen}</span>
-                </p>
-                <p className="products-text">
-                  Capacity{' '}
-                  <span className="products-span">{product.capacity}</span>
-                </p>
-                <p className="products-text">
-                  RAM <span className="products-span">{product.ram}</span>
-                </p>
+              <div className="products__bottom">
+                <div className="products-string"></div>
+                <div className="products-info">
+                  <p className="products-text products-text__first">
+                    Screen{' '}
+                    <span className="products-span">{product.screen}</span>
+                  </p>
+                  <p className="products-text">
+                    Capacity{' '}
+                    <span className="products-span">{product.capacity}</span>
+                  </p>
+                  <p className="products-text">
+                    RAM <span className="products-span">{product.ram}</span>
+                  </p>
+                </div>
+                <ProductCard product={product} />
               </div>
-              <ProductCard product={product} />
             </div>
-          </div>
-        </Link>
-      ))}
+          </Link>
+        );
+      })}
     </div>
   );
 };

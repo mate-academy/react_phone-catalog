@@ -353,7 +353,6 @@ export const Main: React.FC = () => {
               </div>
             </div>
             <Product
-              currentSlide={currentSlide}
               currentProducts={products.slice(
                 activeIndex,
                 activeIndex + productsPerSlide,
