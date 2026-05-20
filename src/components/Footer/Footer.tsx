@@ -19,7 +19,7 @@ export const Footer = () => {
             <img src="img/logo.svg" alt="Logo" className={styles.logo} />
           </a>
         </div>
-        <div className={styles.footerNavLink}>
+        <div className={styles.footerNavUl}>
           <a
             href="https://github.com/adadiada"
             target="_blank"
@@ -41,7 +41,7 @@ export const Footer = () => {
         <a
           href="#"
           onClick={handleScrollTo}
-          className={styles.topBtn}
+          className={styles.topBackToTop}
           aria-label="Back to top"
         >
           <p className={styles.topBackToTop}>Back to top</p>

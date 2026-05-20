@@ -29,6 +29,7 @@ export const Header: React.FC<Props> = ({
       <NavLink to="/" className={styles.logo}>
         <img src="/img/logo.svg" alt="Logo" className="logo" />
       </NavLink>
+
       <nav>
         <ul className={styles.navList}>
           <li className={styles.navItem}>
@@ -56,6 +57,7 @@ export const Header: React.FC<Props> = ({
           </li>
         </ul>
       </nav>
+
       <div className={styles.actionsIcon}>
         <NavLink to="/favorites" className={styles.icon} aria-label="Favorites">
           <img
@@ -73,11 +75,13 @@ export const Header: React.FC<Props> = ({
           {cartCount > 0 && <span className="badge">{cartCount}</span>}
         </NavLink>
       </div>
+
       <div className={styles.burgerMenuMaxWidth}>
         <button className={styles.burgerMenu} onClick={menu.toggleMenu}>
           <img src="/img/burger-mob.svg" alt="BurgerMenu" />
         </button>
       </div>
+
       {menu.isMenuOpen && <Asaid onClose={menu.closeMenu} />}
     </header>
   );

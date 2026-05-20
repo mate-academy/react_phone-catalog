@@ -14,4 +14,14 @@
   }
 }
 
+@mixin paddingInline() {
+  padding: 48px ;
+
+  @include on-tablet {
+      padding: 48px;
+  }
+        @include on-desktop {
+          padding: 64px;
+        }
+}
 

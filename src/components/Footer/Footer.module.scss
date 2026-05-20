@@ -1,41 +1,39 @@
+@import '../../mixin.scss';
+
 .footer {
+  margin-top: 81px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
+  color: white;
 }
 
 .container {
-  bottom: 0;
-  // margin: 0 auto;
-  // padding: 1rem;
-  display: flex;
+  padding: 32px 89px;
   justify-content: space-between;
+  display: flex;
   align-items: center;
   border-top: 1px solid #E2E6E9;
+
+    @include on-phone {
+      padding: 32px 16px;
+      // flex-direction: column;
+      // gap: 32px;
+      // text-align: center;
+    }
 }
 
-.logo {
-  height: auto;
-  transition: transform .2s;
-}
-
-.logo:hover {
-  transform: scale(1.1);
-}
-
-.topBtn {
-  background: none;
-  border: none;
-}
-
-.footerNavLink {
+.footerNavUl {
   display: flex;
+  gap: 106px;
+  list-style: none;
+
 }
 
 .footerNav {
+  justify-content: space-between;
   list-style: none;
     box-sizing: border-box;
-    justify-content: space-between;
       display: flex;
       color: #89939A;
       text-transform: uppercase;
@@ -45,3 +43,38 @@
       letter-spacing: 4%;
 
 }
+
+.topBackToTop {
+  display: flex;
+  align-items: center;
+
+box-sizing: border-box;
+font-weight: 600;
+text-align: none;
+text-decoration: none;
+color: #89939A;
+  font-size: 12px;
+  gap: 16px;
+}
+
+.vector {
+  box-sizing: border-box;
+  height: 16px;
+  width: 16px;
+  border: 1px solid #E2E6E9;
+
+  padding: 14px 12px;
+}
+
+
+
+
+
+// .logo {
+//   height: auto;
+//   transition: transform .2s;
+// }
+
+// .logo:hover {
+//   transform: scale(1.1);
+// }
