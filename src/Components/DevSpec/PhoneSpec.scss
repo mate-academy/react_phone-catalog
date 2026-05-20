@@ -175,6 +175,7 @@
 
     &-active {
       border: 1px solid #F1F2F9;
+      transition: 0.3s;
     }
 
     @include on-tablet {
