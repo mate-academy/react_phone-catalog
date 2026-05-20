@@ -10,7 +10,10 @@ type Props = {
 
 export const Product: React.FC<Props> = ({ currentProducts }) => {
   return (
-    <div className="products-phones">
+    <div
+      className="products-phones"
+      style={{ transform: `translateX(-${currentProducts.length * 100}px)` }}
+    >
       {currentProducts.map(product => (
         <Link
           key={product.id}

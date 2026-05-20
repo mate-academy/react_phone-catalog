@@ -3,32 +3,6 @@
 .welcome__block {
   margin-bottom: 80px;
 
-  // &-button {
-  //   @include on-desktop {
-  //     display: flex;
-  //     align-items: center;
-  //     justify-content: center;
-
-  //     position: absolute;
-  //     top: 52.9%;
-  //     left: 26.9%;
-  //     width: 191px;
-  //     height: 57px;
-  //     border: 1px solid transparent;
-  //     cursor: pointer;
-
-  //     background-color: transparent;
-  //     border-radius: 60px;
-  //     transition: 0.3s;
-
-  //     &:hover {
-  //       border: 1px solid #F1F2F9;
-  //       opacity: 0.5;
-  //       transition: 0.3s;
-  //     }
-  //   }
-  // }
-
   &-title {
     font-family: Mont, sans-serif;
     font-weight: 800;
