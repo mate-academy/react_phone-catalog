@@ -9,7 +9,6 @@ import { addToCart } from '../../store/cartSlice';
 import { toggleFavorite } from '../../store/favoritesSlice';
 import cn from 'classnames';
 import styles from './ProductDetailsPage.module.scss';
-// Додаємо імпорт нашої функції (перевір шлях, якщо він відрізняється)
 import { getImageUrl } from '../../api/getImageUrl';
 
 const COLOR_HEX: Record<string, string> = {
@@ -104,7 +103,10 @@ export const ProductDetailsPage = () => {
     <div className={styles.container}>
       <Breadcrumbs category={product.category} productName={product.name} />
 
-      <button onClick={() => navigate(-1)} className={styles.back_button}>
+      <button
+        onClick={() => navigate(`/${product.category}`)}
+        className={styles.back_button}
+      >
         {'<'} Back
       </button>
 

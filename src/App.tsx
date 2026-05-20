@@ -8,6 +8,8 @@ import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 import './App.scss';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
+import { ContactsPage } from './modules/ContactsPage/ContactsPage';
+import { RightsPage } from './modules/RightsPage/RightsPage';
 
 export const App = () => {
   return (
@@ -36,6 +38,9 @@ export const App = () => {
 
           <Route path="/cart" element={<CartPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
+
+          <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/rights" element={<RightsPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

@@ -5,7 +5,10 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
-  margin-top: 40px;
+  // margin-top: 40px;
+
+  margin-top: auto;
+  padding-top: 40px;
 
   &__list {
     display: flex;
@@ -62,7 +65,7 @@
       opacity: 0.5;
       cursor: not-allowed;
     }
-    
+
     &:hover:not(:disabled) {
       border-color: $c-text-secondary;
     }

@@ -93,7 +93,7 @@ export const CatalogPage = ({ category }: Props) => {
 
     params.set('page', newPage.toString());
     setSearchParams(params);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -157,7 +157,7 @@ export const CatalogPage = ({ category }: Props) => {
       )}
 
       {!isLoading && !isError && visibleProducts.length > 0 && (
-        <>
+        <div className={styles.page__list_container}>
           <ProductsList products={visibleProducts} />
 
           {perPage !== 'all' && (
@@ -168,7 +168,7 @@ export const CatalogPage = ({ category }: Props) => {
               onPageChange={handlePageChange}
             />
           )}
-        </>
+        </div>
       )}
     </div>
   );
