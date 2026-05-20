@@ -76,7 +76,7 @@
         .image {
           position: absolute;
           object-fit: contain;
-          transition: transform $transition-time cubic-bezier(0.16, 1, 0.3, 1);
+          transition: transform $transition-time + 2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .phones{

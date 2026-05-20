@@ -61,7 +61,7 @@ export const HomePage = () => {
       ) : (
         <div className={styles.page}>
           <div className={styles.title}>
-            <h1>Welcome to Nice Gadgets store!</h1>
+            <h1>Product Catalog</h1>
           </div>
           <div className={styles.content}>
             <PicturesSlider banners={banners} id={1} />

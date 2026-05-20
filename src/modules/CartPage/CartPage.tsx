@@ -22,7 +22,8 @@ export const CartPage = () => {
 
       try {
         const visibleProducts = data.filter(p =>
-          cart.some(item => item.id === p.itemId));
+          cart.some(item => item.id === p.itemId),
+        );
 
         setProducts(visibleProducts);
       } catch {

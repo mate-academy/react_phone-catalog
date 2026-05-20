@@ -132,14 +132,13 @@ $desktop-card-height: 506px;
       border: none;
       border-radius: 8px;
 
-      font-family: Mont, serif;
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 21px;
+      @include font-dt-buttons;
+
       color: $white-color;
-      letter-spacing: 0;
 
       background-color: $accent-color;
+
+      transition: all 0.5s;
 
       &__added {
         border: 1px solid $elements-color;
