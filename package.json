@@ -54,7 +54,7 @@
   "scripts": {
     "dev": "vite",
     "start": "mate-scripts start -l",
-    "build": "vite build",
+    "build": "mate-scripts build",
     "test": "mate-scripts test -l",
     "style-format": "npx stylelint 'src/**/*.scss' --fix --allow-empty-input",
     "lint-js": "mate-scripts lint -j",
