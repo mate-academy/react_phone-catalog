@@ -33,25 +33,6 @@ enum Image {
   fifth = 'fifth',
 }
 
-enum Color {
-  black = 'black',
-  green = 'green',
-  yellow = 'yellow',
-  white = 'white',
-  purple = 'purple',
-  red = 'red',
-  rosegold = 'rosegold',
-  gold = 'gold',
-  silver = 'silver',
-  spacegray = 'spacegray',
-  coral = 'coral',
-  midnight = 'midnight',
-  graphite = 'graphite',
-  sierrablue = 'sierrablue',
-  pink = 'pink',
-  blue = 'blue',
-}
-
 export const TabletSpec: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const { pathname } = useLocation();
@@ -76,14 +57,36 @@ export const TabletSpec: React.FC = () => {
     color: t.color ?? t.colorsAvailable ?? '—',
     ram: t.ram ?? '—',
     year: new Date().getFullYear(),
-    image: t.images ?? '',
+    image: Array.isArray(t.images) ? (t.images[0] ?? '') : (t.images ?? ''),
   });
   const [, setErrorMessage] = useState(false);
   const [, setLoading] = useState(false);
   const [image, setImage] = useState<Image>(Image.first);
-  const [color, setColor] = useState<Color | null>(null);
+  const [color, setColor] = useState<string | null>(null);
   const images = tablet?.images || [];
   const path = tablet?.id;
+
+  const normalizePathValue = (value: string) =>
+    value.toLowerCase().replace(/\s+/g, '-');
+
+  const getDefaultColor = (item?: Tablet) => {
+    if (!item) {
+      return null;
+    }
+
+    const rawColor = item.color as unknown;
+
+    if (typeof rawColor === 'string' && rawColor.trim()) {
+      return rawColor;
+    }
+
+    if (Array.isArray(rawColor) && rawColor.length) {
+      return rawColor[0];
+    }
+
+    return item.colorsAvailable?.[0] ?? null;
+  };
+
   // const capacitiesRaw = tablet?.capacity ?? [];
   const capacities: string[] = Array.isArray(tablet?.capacity)
     ? tablet.capacity
@@ -93,6 +96,18 @@ export const TabletSpec: React.FC = () => {
 
   const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!tablet) {
+      return;
+    }
+
+    const defaultColor = getDefaultColor(tablet);
+
+    if (defaultColor) {
+      setColor(defaultColor);
+    }
+  }, [tablet]);
 
   useEffect(() => {
     if (capacities.length) {
@@ -234,20 +249,20 @@ export const TabletSpec: React.FC = () => {
               {tablet?.colorsAvailable.map(c => {
                 const updatedPath = path?.replace(
                   /-[^-]+$/,
-                  `-${c.toLowerCase()}`,
+                  `-${normalizePathValue(c)}`,
                 );
 
                 return (
                   <div
                     key={c}
-                    className={`phone__color ${color === c ? 'phone__color-active' : c === tablet.colorsAvailable[0] ? 'phone__color-active' : ''} phone__color-${c.toLowerCase()}`}
+                    className={`phone__color ${color === c || (!color && c === tablet.colorsAvailable[0]) ? 'phone__color-active' : ''} phone__color-${normalizePathValue(c)}`}
                   >
                     <div
                       onClick={() => {
                         setColor(c);
                         navigate(`../tablets/${updatedPath}`);
                       }}
-                      className={`phone__color-color phone__color-${c}`}
+                      className={`phone__color-color phone__color-${normalizePathValue(c)}`}
                     ></div>
                   </div>
                 );
@@ -258,9 +273,10 @@ export const TabletSpec: React.FC = () => {
               <p className="phone__specs-cap-text">Select capacity</p>
               <div className="phone__specs-capacities">
                 {tablet?.capacityAvailable.map(cap => {
+                  const activeColor = color || getDefaultColor(tablet) || '';
                   const updatedPathCap = path?.replace(
                     /-[^-]+-[^-]+$/,
-                    `-${cap.toLowerCase()}`,
+                    `-${normalizePathValue(cap)}-${normalizePathValue(activeColor)}`,
                   );
 
                   return (
@@ -270,9 +286,7 @@ export const TabletSpec: React.FC = () => {
                       className={`phone__specs-capacity ${cap === selectedCapacity ? 'phone__specs-capacity-active' : ''}`}
                       onClick={() => {
                         setSelectedCapacity(cap);
-                        navigate(
-                          `../tablets/${updatedPathCap}-${color.toLowerCase()}`,
-                        );
+                        navigate(`../tablets/${updatedPathCap}`);
                       }}
                       onKeyDown={e =>
                         (e.key === 'Enter' || e.key === ' ') &&

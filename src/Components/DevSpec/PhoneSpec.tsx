@@ -33,25 +33,6 @@ enum Image {
   fifth = 'fifth',
 }
 
-enum Color {
-  black = 'black',
-  green = 'green',
-  yellow = 'yellow',
-  white = 'white',
-  purple = 'purple',
-  red = 'red',
-  rosegold = 'rosegold',
-  gold = 'gold',
-  silver = 'silver',
-  spacegray = 'spacegray',
-  coral = 'coral',
-  midnight = 'midnight',
-  graphite = 'graphite',
-  sierrablue = 'sierrablue',
-  pink = 'pink',
-  blue = 'blue',
-}
-
 export const PhoneSpec: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -83,8 +64,30 @@ export const PhoneSpec: React.FC = () => {
   const [, setErrorMessage] = useState(false);
   const [, setLoading] = useState(false);
   const [image, setImage] = useState<Image>(Image.first);
-  const [color, setColor] = useState<Color | null>(null);
+  const [color, setColor] = useState<string | null>(null);
   const images = phone?.images ?? [];
+
+  const normalizePathValue = (value: string) =>
+    value.toLowerCase().replace(/\s+/g, '-');
+
+  const getDefaultColor = (item?: Phone) => {
+    if (!item) {
+      return null;
+    }
+
+    const rawColor = item.color as unknown;
+
+    if (typeof rawColor === 'string' && rawColor.trim()) {
+      return rawColor;
+    }
+
+    if (Array.isArray(rawColor) && rawColor.length) {
+      return rawColor[0];
+    }
+
+    return item.colorsAvailable?.[0] ?? null;
+  };
+
   // const capacitiesRaw = phone?.capacity ?? [];
   const capacities: string[] = Array.isArray(phone?.capacityAvailable)
     ? phone.capacityAvailable
@@ -95,6 +98,18 @@ export const PhoneSpec: React.FC = () => {
   const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
 
   const path = phone?.id;
+
+  useEffect(() => {
+    if (!phone) {
+      return;
+    }
+
+    const defaultColor = getDefaultColor(phone);
+
+    if (defaultColor) {
+      setColor(defaultColor);
+    }
+  }, [phone]);
 
   useEffect(() => {
     if (capacities.length) {
@@ -236,20 +251,20 @@ export const PhoneSpec: React.FC = () => {
               {phone?.colorsAvailable.map(c => {
                 const updatedPath = path?.replace(
                   /-[^-]+$/,
-                  `-${c.toLowerCase()}`,
+                  `-${normalizePathValue(c)}`,
                 );
 
                 return (
                   <div
                     key={c}
-                    className={`phone__color ${color === c ? 'phone__color-active' : c === phone.colorsAvailable[0] ? 'phone__color-active' : ''} phone__color-${c.toLowerCase()}`}
+                    className={`phone__color ${color === c || (!color && c === phone.colorsAvailable[0]) ? 'phone__color-active' : ''} phone__color-${normalizePathValue(c)}`}
                   >
                     <div
                       onClick={() => {
                         setColor(c);
                         navigate(`../phones/${updatedPath}`);
                       }}
-                      className={`phone__color-color phone__color-${c}`}
+                      className={`phone__color-color phone__color-${normalizePathValue(c)}`}
                     ></div>
                   </div>
                 );
@@ -260,9 +275,10 @@ export const PhoneSpec: React.FC = () => {
               <p className="phone__specs-cap-text">Select capacity</p>
               <div className="phone__specs-capacities">
                 {phone?.capacityAvailable.map(cap => {
+                  const activeColor = color || getDefaultColor(phone) || '';
                   const updatedPathCap = path?.replace(
                     /-[^-]+-[^-]+$/,
-                    `-${selectedCapacity?.toLowerCase()}-${color?.toLowerCase()}`,
+                    `-${normalizePathValue(cap)}-${normalizePathValue(activeColor)}`,
                   );
 
                   return (
@@ -271,8 +287,8 @@ export const PhoneSpec: React.FC = () => {
                       type="button"
                       className={`phone__specs-capacity ${cap === selectedCapacity ? 'phone__specs-capacity-active' : ''}`}
                       onClick={() => {
-                        navigate(`../phones/${updatedPathCap}`);
                         setSelectedCapacity(cap);
+                        navigate(`../phones/${updatedPathCap}`);
                       }}
                       onKeyDown={e =>
                         (e.key === 'Enter' || e.key === ' ') &&
