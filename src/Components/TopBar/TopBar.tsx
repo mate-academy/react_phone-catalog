@@ -64,7 +64,7 @@ export const TopBar: React.FC<Props> = ({
             <img src={fav} className="header__fav-img" alt="Favourites" />
             <div className="header__count">
               <span className="header__count-number header__count-left">
-                {favouritesCount}
+                {favouritesCount === 0 ? '' : favouritesCount}
               </span>
             </div>
           </button>
@@ -74,7 +74,7 @@ export const TopBar: React.FC<Props> = ({
             <img src={basket} className="header__basket-img" alt="basket" />
             <div className="header__count">
               <span className="header__count-number header__count-right">
-                {cartItemsCount}
+                {cartItemsCount === 0 ? '' : cartItemsCount}
               </span>
             </div>
           </button>
