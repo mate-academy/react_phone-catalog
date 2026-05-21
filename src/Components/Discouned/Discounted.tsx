@@ -48,7 +48,7 @@ export const Discount: React.FC<Props> = ({
         {DiscountedProducts.map(product => (
           <Link
             key={product.id}
-            to={`phones/${product.id}`}
+            to={`/phones/${product.id}`}
             className="products-phone"
             style={{
               minWidth: `calc((100% - ${(visibleCount - 1) * gap}px) / ${visibleCount})`,
