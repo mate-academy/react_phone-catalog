@@ -224,7 +224,7 @@ export const ProductDetailsPage = () => {
     <section className="product-details section">
       <div className="home--nav">
         <a href="#">
-          <img src="public/icons/Home.svg" alt="home_nav" />
+          <img src="public/icons/Home.png" alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <a href={getCategoryLink()}>
@@ -336,8 +336,8 @@ export const ProductDetailsPage = () => {
               <img
                 src={
                   favorites.includes(product.id)
-                    ? 'public/icons/ActiveHeart.svg'
-                    : 'public/icons/heart.svg'
+                    ? 'public/icons/ActiveHeart.png'
+                    : 'public/icons/heart.png'
                 }
                 alt="Favorite"
                 className="product-details__favorite-icon"
@@ -551,8 +551,8 @@ export const ProductDetailsPage = () => {
                       <img
                         src={
                           favorites.includes(relatedItem.id)
-                            ? 'public/icons/ActiveHeart.svg'
-                            : 'public/icons/heart.svg'
+                            ? 'public/icons/ActiveHeart.png'
+                            : 'public/icons/heart.png'
                         }
                         alt="Favorite"
                         className="related-products__card-btn-icon"

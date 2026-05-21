@@ -194,8 +194,8 @@ export default function NewBrand() {
                     <img
                       src={
                         favorites.includes(phone.itemId)
-                          ? './icons/ActiveHeart.svg'
-                          : './icons/heart.svg'
+                          ? './icons/ActiveHeart.png'
+                          : './icons/heart.png'
                       }
                       alt="Favorite"
                       className="new-brand__card-btn-icon"

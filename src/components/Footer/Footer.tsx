@@ -14,7 +14,7 @@ export const Footer = () => {
     <footer className="footer">
       <div className="footer__container">
         <div className="footer__img">
-          <img src="public/icons/logo.svg" alt="Nice-Gadgets-Logo" />
+          <img src="public/icons/logo.png" alt="Nice-Gadgets-Logo" />
         </div>
 
         <div className="footer__links">
@@ -34,7 +34,7 @@ export const Footer = () => {
 
         <a href="#" className="footer__up-link" onClick={handleScrollToTop}>
           <p>Back to top</p>
-          <img src="public/icons/Up.svg" alt="public/icons/Up.svg" />
+          <img src="public/icons/Up.png" alt="public/icons/Up.png" />
         </a>
       </div>
     </footer>

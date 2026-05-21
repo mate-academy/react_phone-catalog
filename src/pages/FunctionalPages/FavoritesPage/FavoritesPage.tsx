@@ -158,7 +158,7 @@ export const FavoritesPage = () => {
                 onClick={() => toggleFavorite(product.id)}
               >
                 <img
-                  src="public/icons/ActiveHeart.svg"
+                  src="public/icons/ActiveHeart.png"
                   alt="Remove from favorites"
                   className="favorites__item-btn-icon"
                 />
