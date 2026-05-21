@@ -62,7 +62,7 @@ export const TopBar: React.FC<Props> = ({
         <NavLink to="/favourites" className={getLink}>
           <button className="header__fav header__button">
             <img src={fav} className="header__fav-img" alt="Favourites" />
-            {favouritesCount === 0 && (
+            {(favouritesCount ?? 0) > 0 && (
               <div className="header__count">
                 <span className="header__count-number">{favouritesCount}</span>
               </div>
@@ -72,7 +72,7 @@ export const TopBar: React.FC<Props> = ({
         <NavLink to="/basket" className={getLink}>
           <button className="header__basket header__button">
             <img src={basket} className="header__basket-img" alt="basket" />
-            {cartItemsCount === 0 && (
+            {(cartItemsCount ?? 0) > 0 && (
               <div className="header__count">
                 <span className="header__count-number">{cartItemsCount}</span>
               </div>
