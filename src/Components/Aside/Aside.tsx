@@ -69,7 +69,7 @@ export const Aside: React.FC<Props> = ({
             {totalFavourites > 0 && (
               <div className="header__count aside__count">
                 <span className="header__count-number header__count-right">
-                  {totalFavourites + 1}
+                  {totalFavourites}
                 </span>
               </div>
             )}
@@ -81,7 +81,7 @@ export const Aside: React.FC<Props> = ({
             {totalQuantity > 0 && (
               <div className="header__count aside__count">
                 <span className="header__count-number header__count-right">
-                  {totalQuantity + 1}
+                  {totalQuantity}
                 </span>
               </div>
             )}
