@@ -105,7 +105,13 @@ export const Tablets = () => {
         favouritesCount={totalFavourites}
         setMenuOpen={setMenuOpen}
       />
-      {menuOpen && <Aside setMenuOpen={setMenuOpen} />}
+      {menuOpen && (
+        <Aside
+          setMenuOpen={setMenuOpen}
+          totalFavourites={totalFavourites}
+          totalQuantity={totalQuantity}
+        />
+      )}
       {Loading ? (
         <Loader />
       ) : (

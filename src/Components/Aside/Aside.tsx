@@ -9,9 +9,15 @@ import classNames from 'classnames';
 
 type Props = {
   setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  totalFavourites: number;
+  totalQuantity: number;
 };
 
-export const Aside: React.FC<Props> = ({ setMenuOpen }) => {
+export const Aside: React.FC<Props> = ({
+  setMenuOpen,
+  totalQuantity,
+  totalFavourites,
+}) => {
   // className for main navigation links (no "selected" decoration)
   const getLink = ({ isActive }: { isActive: boolean }) =>
     classNames('aside__nav-link', {
@@ -60,11 +66,25 @@ export const Aside: React.FC<Props> = ({ setMenuOpen }) => {
         <NavLink to="/favourites" className={getFooterLink}>
           <button className="aside__footer-button">
             <img src={favourites} alt="" />
+            {totalFavourites > 0 && (
+              <div className="header__count aside__count">
+                <span className="header__count-number header__count-right">
+                  {totalFavourites + 1}
+                </span>
+              </div>
+            )}
           </button>
         </NavLink>
         <NavLink to="/basket" className={getFooterLink}>
           <button className="aside__footer-button">
             <img src={cart} alt="" />
+            {totalQuantity > 0 && (
+              <div className="header__count aside__count">
+                <span className="header__count-number header__count-right">
+                  {totalQuantity + 1}
+                </span>
+              </div>
+            )}
           </button>
         </NavLink>
       </div>

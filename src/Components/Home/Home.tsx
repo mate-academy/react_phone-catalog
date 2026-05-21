@@ -23,7 +23,13 @@ export const Home = () => {
         favouritesCount={totalFavourites}
         setMenuOpen={setMenuOpen}
       />
-      {menuOpen && <Aside setMenuOpen={setMenuOpen} />}
+      {menuOpen && (
+        <Aside
+          setMenuOpen={setMenuOpen}
+          totalFavourites={totalFavourites}
+          totalQuantity={totalQuantity}
+        />
+      )}
       <div className="container">
         <Main />
       </div>

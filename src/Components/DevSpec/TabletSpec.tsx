@@ -186,7 +186,13 @@ export const TabletSpec: React.FC = () => {
         favouritesCount={totalFavourites}
         setMenuOpen={setMenuOpen}
       />
-      {menuOpen && <Aside setMenuOpen={setMenuOpen} />}
+      {menuOpen && (
+        <Aside
+          setMenuOpen={setMenuOpen}
+          totalFavourites={totalFavourites}
+          totalQuantity={totalQuantity}
+        />
+      )}
       <div className="phone__container container">
         <div className="phone__path">
           <Link to="/" className="phone__path-home">

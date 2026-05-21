@@ -136,6 +136,7 @@
     }
 
     &-button {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -147,5 +148,21 @@
 
       background-color: transparent;
     }
+  }
+
+  &__count {
+    position: absolute;
+    top: 18px;
+    right: 42%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 16px;
+    height: 16px;
+
+    background-color: #F1F2F9;
+    border-radius: 50%;
   }
 }

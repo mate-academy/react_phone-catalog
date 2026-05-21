@@ -32,7 +32,13 @@ export const Cart = () => {
           favouritesCount={totalFavourites}
           setMenuOpen={setMenuOpen}
         />
-        {menuOpen && <Aside setMenuOpen={setMenuOpen} />}
+        {menuOpen && (
+          <Aside
+            setMenuOpen={setMenuOpen}
+            totalFavourites={totalFavourites}
+            totalQuantity={totalQuantity}
+          />
+        )}
       </div>
       <div className="cart__content">
         <div className="cart__path">

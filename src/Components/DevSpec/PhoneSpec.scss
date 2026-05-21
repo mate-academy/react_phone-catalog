@@ -97,6 +97,8 @@
     max-height: 100%;
     object-fit: contain;
     aspect-ratio: 1 / 1;
+
+    cursor: pointer;
   }
 
   &__image {
@@ -639,6 +641,18 @@
     @include on-tablet {
       flex-direction: row;
       gap: 64px;
+    }
+  }
+
+  &__footer {
+    &-fixed {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+
+      background-color: #0F1121;
     }
   }
 }

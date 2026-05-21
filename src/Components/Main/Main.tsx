@@ -182,10 +182,12 @@ export const Main: React.FC = () => {
   ];
 
   useEffect(() => {
-    const id = setInterval(() => setPicIndex(p => (p + 1) % pics.length), 5000);
+    const id = window.setTimeout(() => {
+      setPicIndex(p => (p + 1) % pics.length);
+    }, 5000);
 
-    return () => clearInterval(id);
-  }, [pics.length]);
+    return () => clearTimeout(id);
+  }, [picIndex, pics.length]);
 
   return (
     <main className="main">
