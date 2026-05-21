@@ -12,6 +12,10 @@ export const Header: React.FC<Props> = ({
   favouritesCount,
   setMenuOpen,
 }) => {
+  // debug: verify props received by Header
+  // eslint-disable-next-line no-console
+  console.debug('Header props:', { cartItemsCount, favouritesCount });
+
   return (
     <header id="top" className="header">
       <div className="header__container">

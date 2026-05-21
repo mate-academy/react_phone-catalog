@@ -2,7 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import './top-bar.scss';
 import './nav.scss';
 import classNames from 'classnames';
-import React from 'react';
+import React, { useEffect } from 'react';
 import menu from '../../images/icons/Menu.svg';
 const logo = new URL('../../images/Logo.png', import.meta.url).href;
 const fav = new URL(
@@ -25,6 +25,11 @@ export const TopBar: React.FC<Props> = ({
   favouritesCount,
   setMenuOpen,
 }) => {
+  useEffect(() => {
+    // debug: verify props received by TopBar
+    // eslint-disable-next-line no-console
+    console.debug('TopBar props:', { cartItemsCount, favouritesCount });
+  }, [cartItemsCount, favouritesCount]);
   const navLink = [
     { id: '/', title: 'home' },
     { id: '/phones', title: 'phones' },
