@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   background: var(--card-bg);
-  transition: box-shadow 0.3s;
+  transition: box-shadow var(--transition-default);
 
   @include desktop {
     &:hover {
@@ -15,7 +15,6 @@
     }
     &:hover &__image-wrapper {
       transform: scale(1.05);
-      transition: transform 0.3s ease-in-out;
       z-index: 9;
     }
   }
@@ -26,6 +25,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 24px;
+    transition: transform var(--transition-default);
   }
 
   &__image {
@@ -40,7 +40,7 @@
 
     margin: 0 0 8px;
     line-height: 21px;
-    height: 42px; /* Обмеження на 2 рядки */
+    height: 42px;
     overflow: hidden;
   }
 
@@ -87,14 +87,14 @@
   &__actions {
     display: flex;
     gap: 8px;
-    margin-top: auto; /* Притискає кнопки до низу */
+    margin-top: auto;
 
     .btn-add {
       flex: 1;
       height: 40px;
       background: $light-text-main;
       color: #fff;
-      border: none;
+      border: 1px solid red;
       font-weight: 700;
       font-size: 14px;
       cursor: pointer;
@@ -116,7 +116,5 @@
         }
       }
     }
-
-  
   }
 }

@@ -15,13 +15,13 @@ import { ProductsList } from '../ProductList/ProductList';
 import NotFoundPage from '@/modules/NotFoundPage/NotFoundPage';
 import styles from './CatalogPage.module.scss';
 
-// Helper to format titles (moved outside component to prevent recreation)
 const formatTitle = (category: string = ''): string => {
   const titles: Record<string, string> = {
     phones: 'Phones page',
     tablets: 'Tablets page',
     accessories: 'Accessories page',
   };
+
   return titles[category] || 'Products';
 };
 
@@ -36,15 +36,11 @@ export const CatalogPage: React.FC = () => {
   const allowedCategories = ['phones', 'tablets', 'accessories'];
   const isValidCategory = allowedCategories.includes(category || '');
 
-  // --- 1. DERIVE STATE FROM URL (Single Source of Truth) ---
-  // No useState needed for these!
   const sortParam = searchParams.get('sort') || '';
   const perPageParam =
     searchParams.get('perPage') || DEFAULT_PER_PAGE.toString();
   const currentPage = Number(searchParams.get('page')) || 1;
 
-  // --- 2. DATA FETCHING ---
-  // Fetch ONLY once on mount. We don't need to refetch on sort/filter change.
   useEffect(() => {
     setLoading(true);
     getProducts()
@@ -53,24 +49,19 @@ export const CatalogPage: React.FC = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  // --- 3. FILTERING & SORTING (Memoized) ---
   const processedData = useMemo(() => {
     let visibleList = [...products];
 
-    // 1. SANITIZE: Remove empty objects or nulls immediately
-    // Adjust logic based on what "empty" means to your API (e.g., !p.id, !p.name, etc.)
     visibleList = visibleList.filter(
       p => p && p.id && Object.keys(p).length > 0,
     );
 
-    // 2. Filter by Category
     if (category) {
       visibleList = visibleList.filter(
         p => p.category.toLowerCase() === category.toLowerCase(),
       );
     }
 
-    // 3. Sort
     if (sortParam) {
       visibleList.sort((a, b) => {
         switch (sortParam) {
@@ -89,66 +80,79 @@ export const CatalogPage: React.FC = () => {
     return visibleList;
   }, [products, category, sortParam]);
 
-  // --- 4. PAGINATION LOGIC ---
   const totalCount = processedData.length;
   const isAll = perPageParam === 'all';
   const perPageNumber = isAll ? totalCount : Number(perPageParam);
 
   const paginatedProducts = useMemo(() => {
-    if (isAll) return processedData;
+    if (isAll) {
+      return processedData;
+    }
+
     const start = (currentPage - 1) * perPageNumber;
+
     return processedData.slice(start, start + perPageNumber);
   }, [processedData, currentPage, perPageNumber, isAll]);
 
-  // --- 5. EFFECTS ---
-  // Reset pagination/sort when CATEGORY changes
   useEffect(() => {
-    if (!isValidCategory) return;
+    if (!isValidCategory) {
+      return;
+    }
 
-    // Check if we need to clean URL (only if sort/page exists)
     if (searchParams.has('page') || searchParams.has('sort')) {
       const newParams = new URLSearchParams(searchParams);
+
       newParams.delete('page');
       newParams.delete('sort');
       newParams.delete('perPage');
       setSearchParams(newParams);
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [category]); // Only runs when category changes in URL
 
-  // --- 6. HANDLERS ---
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [category]);
+
   const handleSortChange = (value: string | null) => {
     const params = new URLSearchParams(searchParams);
-    if (value) params.set('sort', value);
-    else params.delete('sort');
 
-    params.delete('page'); // Reset to page 1
+    if (value) {
+      params.set('sort', value);
+    } else {
+      params.delete('sort');
+    }
+
+    params.delete('page');
     setSearchParams(params);
   };
 
   const handlePerPageChange = (value: string | null) => {
     const params = new URLSearchParams(searchParams);
+
     if (value && value !== DEFAULT_PER_PAGE.toString()) {
       params.set('perPage', value);
     } else {
       params.delete('perPage');
     }
 
-    params.delete('page'); // Reset to page 1
+    params.delete('page');
     setSearchParams(params);
   };
 
   const handlePageChange = (newPage: number) => {
     const params = new URLSearchParams(searchParams);
-    if (newPage === 1) params.delete('page');
-    else params.set('page', String(newPage));
+
+    if (newPage === 1) {
+      params.delete('page');
+    } else {
+      params.set('page', String(newPage));
+    }
 
     setSearchParams(params);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // --- RENDER ---
-  if (!isValidCategory) return <NotFoundPage />;
+  if (!isValidCategory) {
+    return <NotFoundPage />;
+  }
 
   const shouldShowPagination = !loading && !error && totalCount > perPageNumber;
   const pageTitle = formatTitle(category);

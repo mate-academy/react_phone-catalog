@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import styles from './PageHeader.module.scss';
 
-// --- Icons ---
 const HomeIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +44,6 @@ const ChevronIcon = () => (
   </svg>
 );
 
-// --- Component ---
 type BreadCrumbsProps = {
   title?: string;
 };
@@ -63,28 +61,23 @@ const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ title }) => {
   return (
     <nav className={styles.breadcrumbs}>
       <div className={styles.breadcrumbsList}>
-        {/* 1. Home */}
         <Link to="/" className={styles.link} aria-label="Home">
           <HomeIcon />
         </Link>
 
-        {/* 2. Category */}
         {category && (
           <div className={styles.item}>
             <ChevronIcon />
             {productSlug ? (
-              // Якщо є продукт -> категорія це посилання
               <Link to={`/${category}`} className={styles.link}>
                 {formatCategory(category)}
               </Link>
             ) : (
-              // Якщо продукту немає -> категорія це поточний текст
               <span className={styles.current}>{formatCategory(category)}</span>
             )}
           </div>
         )}
 
-        {/* 3. Product (Title) */}
         {productSlug && title && (
           <div className={styles.item}>
             <ChevronIcon />

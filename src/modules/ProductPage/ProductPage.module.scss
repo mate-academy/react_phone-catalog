@@ -1,6 +1,5 @@
 @use '@/styles/mixins.scss' as *;
 
-/* ============ BLOCK: PRODUCT PAGE ============ */
 .product-page {
   &__hero {
     display: flex;
@@ -129,15 +128,15 @@
     letter-spacing: $body-track;
     font-weight: 500;
     color: var(--text-main);
-    /* Forces text to one line */
+
     white-space: nowrap;
-    /* Hides the overflow */
+
     overflow: hidden;
-    /* Adds "..." at the end */
+
     text-overflow: ellipsis;
-    /* Ensure the container has a width or max-width context */
+
     max-width: 75%;
-    display: block; /* or inline-block */
+    display: block; 
   }
 
   &__loader {
@@ -148,7 +147,18 @@
   }
 }
 
-/* ============ BLOCK: BACK BUTTON ============ */
+.product-not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  h2 {
+    font-size: $h2-size;
+    color: var(--text-main);
+  }
+}
+
 .back-button {
   display: flex;
   align-items: center;
@@ -164,8 +174,6 @@
     color: var(--text-main);
   }
 }
-
-/* ============ BLOCK: PRODUCT GALLERY ============ */
 
 .product-gallery {
   display: flex;
@@ -270,7 +278,6 @@
     row-gap: 24px;
   }
 
-  /* COLORS */
   &__color-label {
     font-size: $small-size;
     font-weight: 600;
@@ -319,7 +326,6 @@
     border-radius: 50%;
   }
 
-  /* CAPACITY */
   &__capacity-container {
     display: flex;
     flex-direction: column;
@@ -360,7 +366,6 @@
     }
   }
 
-  /* PRICE */
   &__buy-section {
     display: flex;
     flex-direction: column;
@@ -424,7 +429,6 @@
     }
   }
 
-  /* BOTTOM BUTTONS */
   &__button-container {
     display: flex;
     column-gap: 8px;

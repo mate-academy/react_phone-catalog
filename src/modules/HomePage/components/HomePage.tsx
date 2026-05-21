@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom';
 import PageHeader from '@/modules/shared/components/PageHeader/PageHeader';
 import styles from './HomePage.module.scss';
 import { ProductsSlider } from './ProductsSlider';
-// import Swiper styles
-// import 'swiper/css';
 
 export const HomePage: React.FC = () => {
   const [products] = useState<Product[]>(productsList);
@@ -25,6 +23,7 @@ export const HomePage: React.FC = () => {
 
     return products.slice(0, randomCount);
   };
+
   for (const item of products) {
     if (item.category in counters) {
       counters[item.category as keyof typeof counters]++;

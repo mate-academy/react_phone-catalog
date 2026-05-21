@@ -38,7 +38,6 @@ export const specsConfig: SpecConfigItem[] = [
 ];
 
 export const COLOR_MAP: Record<string, string> = {
-  // Existing
   midnight: '#1e2248',
   yellow: '#ffe680',
   purple: '#bab7ff',
@@ -46,12 +45,11 @@ export const COLOR_MAP: Record<string, string> = {
   blue: '#007aff',
   starlight: '#f5f2e9',
 
-  // Added from product list
   black: '#1f2020',
   coral: '#ee7762',
   gold: '#fae7cf',
   graphite: '#5c5b57',
-  green: '#afe3d0', // Muted mint green (iPhone 11 style)
+  green: '#afe3d0',
   midnightgreen: '#4e5851',
   pink: '#fae0d8',
   rosegold: '#e6c7c2',

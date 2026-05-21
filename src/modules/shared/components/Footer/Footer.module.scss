@@ -14,6 +14,7 @@
   @include tablet {
     padding: 32px;
   }
+
   @include desktop {
     flex-direction: row;
     align-items: center;
@@ -31,14 +32,12 @@
   }
 
   &__link {
-    @include type(
-      $uppercase-size,
+    @include type($uppercase-size,
       $uppercase-line,
       $uppercase-track,
-      $uppercase-weight
-    );
+      $uppercase-weight );
     color: var(--text-secondary);
-    transition: color 0.3s;
+    transition: color var(--transition-default);
 
     &:hover {
       color: var(--text-main);
@@ -66,7 +65,7 @@
     padding: 0;
     cursor: pointer;
     align-self: center;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--transition-default);
 
     &:hover {
       .footer__backtoTopText {
@@ -80,15 +79,13 @@
   }
 
   &__backtoTopText {
-    @include type(
-      $small-size,
+    @include type($small-size,
       $small-line,
       $small-track,
       700,
-      $font-mont-semibold
-    );
+      $font-mont-semibold );
     color: var(--text-secondary);
-    transition: color 0.3s ease;
+    transition: color var(--transition-default);
   }
 
   &__backtoTopIcon {
@@ -99,7 +96,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.3s ease;
+    transition: all var(--transition-default);
     color: var(--text-main);
   }
 }

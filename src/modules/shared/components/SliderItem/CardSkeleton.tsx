@@ -1,5 +1,5 @@
 import styles from '../../../../modules/HomePage/components/SliderComponent.module.scss';
-import classNames from 'classnames'; // Якщо є, або використовуйте шаблоні рядки
+import classNames from 'classnames';
 
 export const CardSkeleton = () => {
   return (
@@ -9,23 +9,19 @@ export const CardSkeleton = () => {
         styles.SliderComponent__skeleton,
       )}
     >
-      {/* Image Skeleton */}
       <div className={styles.SliderComponent__item__imageContainer}></div>
 
       <div className={styles.SliderComponent__item__infoContainer}>
-        {/* Name Skeleton */}
         <span className={styles.SliderComponent__item__itemName}>
           Loading Product Name
         </span>
 
-        {/* Price Skeleton */}
         <div className={styles.SliderComponent__item__priceContainer}>
           <div className={styles.SliderComponent__item__fullPrice}>$000</div>
         </div>
 
         <div className={styles.SliderComponent__item__divider}></div>
 
-        {/* Specs Skeleton */}
         <div className={styles.SliderComponent__item__specContainer}>
           {[1, 2, 3].map(i => (
             <div key={i}>
@@ -39,7 +35,6 @@ export const CardSkeleton = () => {
           ))}
         </div>
 
-        {/* Buttons Skeleton */}
         <div className={styles.SliderComponent__item__buttonContainer}>
           <button className={styles.SliderComponent__item__cartButton}>
             Add

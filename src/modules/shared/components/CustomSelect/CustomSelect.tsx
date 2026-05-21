@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import classNames from 'classnames/bind'; // distinct from 'classnames' for simpler usage
+import classNames from 'classnames/bind';
 import styles from './CustomSelect.module.scss';
 import { useTheme } from '@/context/ThemeContext';
 
@@ -36,9 +36,8 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
   const optionsListRef = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
 
-  const selectedOption = options.find((opt) => opt.value === value);
+  const selectedOption = options.find(opt => opt.value === value);
 
-  // Close on click outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
@@ -46,17 +45,21 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
         setFocusedIndex(null);
       }
     };
+
     document.addEventListener('mousedown', handleClickOutside);
+
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Auto-scroll to focused item
   useEffect(() => {
     if (isOpen && focusedIndex !== null && optionsListRef.current) {
-      const focusedElement = optionsListRef.current.children[focusedIndex] as HTMLElement;
+      const focusedElement = optionsListRef.current.children[
+        focusedIndex
+      ] as HTMLElement;
+
       if (focusedElement) {
         focusedElement.scrollIntoView({
-          block: 'nearest', // Scrolls just enough to bring it into view
+          block: 'nearest',
           behavior: 'smooth',
         });
       }
@@ -64,12 +67,15 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
   }, [focusedIndex, isOpen]);
 
   const toggleOpen = () => {
-    if (disabled) return;
-    setIsOpen((prev) => !prev);
+    if (disabled) {
+      return;
+    }
 
-    // Reset focus to currently selected item on open
+    setIsOpen(prev => !prev);
+
     if (!isOpen) {
-      const currentIndex = options.findIndex((o) => o.value === value);
+      const currentIndex = options.findIndex(o => o.value === value);
+
       setFocusedIndex(currentIndex !== -1 ? currentIndex : 0);
     }
   };
@@ -80,15 +86,19 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (disabled) return;
+    if (disabled) {
+      return;
+    }
 
     if (!isOpen) {
       if (['Enter', ' ', 'ArrowDown', 'ArrowUp'].includes(e.key)) {
         e.preventDefault();
         setIsOpen(true);
-        const currentIndex = options.findIndex((o) => o.value === value);
+        const currentIndex = options.findIndex(o => o.value === value);
+
         setFocusedIndex(currentIndex !== -1 ? currentIndex : 0);
       }
+
       return;
     }
 
@@ -99,14 +109,14 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
         break;
       case 'ArrowDown':
         e.preventDefault();
-        setFocusedIndex((prev) =>
-          prev === null || prev === options.length - 1 ? 0 : prev + 1
+        setFocusedIndex(prev =>
+          prev === null || prev === options.length - 1 ? 0 : prev + 1,
         );
         break;
       case 'ArrowUp':
         e.preventDefault();
-        setFocusedIndex((prev) =>
-          prev === null || prev <= 0 ? options.length - 1 : prev - 1
+        setFocusedIndex(prev =>
+          prev === null || prev <= 0 ? options.length - 1 : prev - 1,
         );
         break;
       case 'Enter':
@@ -115,6 +125,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
         if (focusedIndex !== null) {
           handleSelect(options[focusedIndex].value);
         }
+
         break;
     }
   };
@@ -123,15 +134,16 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
     <div
       ref={rootRef}
       className={cx('select', className, { disabled })}
-      data-theme={theme} // CSS handles the theme
+      data-theme={theme}
       onKeyDown={handleKeyDown}
-      // Accessibility attributes
       tabIndex={disabled ? -1 : 0}
       role="combobox"
       aria-expanded={isOpen}
       aria-haspopup="listbox"
       aria-controls="select-listbox"
-      aria-activedescendant={focusedIndex !== null ? `option-${focusedIndex}` : undefined}
+      aria-activedescendant={
+        focusedIndex !== null ? `option-${focusedIndex}` : undefined
+      }
     >
       {label && <span className={styles.select__label}>{label}</span>}
 
@@ -143,10 +155,20 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
           {selectedOption ? selectedOption.label : placeholder}
         </span>
 
-        {/* Arrow Icon */}
         <div className={cx('select__arrow', { rotated: isOpen })}>
-           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path fillRule="evenodd" clipRule="evenodd" d="M12.4715 5.52864C12.7318 5.78899 12.7318 6.2111 12.4715 6.47145L8.47149 10.4714C8.21114 10.7318 7.78903 10.7318 7.52868 10.4714L3.52868 6.47144C3.26833 6.2111 3.26833 5.78899 3.52868 5.52864C3.78903 5.26829 4.21114 5.26829 4.47149 5.52864L8.00008 9.05723L11.5287 5.52864C11.789 5.26829 12.2111 5.26829 12.4715 5.52864Z" fill="currentColor"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M12.4715 5.52864C12.7318 5.78899 12.7318 6.2111 12.4715 6.47145L8.47149 10.4714C8.21114 10.7318 7.78903 10.7318 7.52868 10.4714L3.52868 6.47144C3.26833 6.2111 3.26833 5.78899 3.52868 5.52864C3.78903 5.26829 4.21114 5.26829 4.47149 5.52864L8.00008 9.05723L11.5287 5.52864C11.789 5.26829 12.2111 5.26829 12.4715 5.52864Z"
+              fill="currentColor"
+            />
           </svg>
         </div>
       </div>
@@ -168,15 +190,15 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
               return (
                 <div
                   key={option.value}
-                  id={`option-${index}`} // For aria-activedescendant
+                  id={`option-${index}`}
                   role="option"
                   aria-selected={isSelected}
                   className={cx('select__option', {
                     selected: isSelected,
                     focused: isFocused,
                   })}
-                  onClick={(e) => {
-                    e.stopPropagation(); 
+                  onClick={e => {
+                    e.stopPropagation();
                     handleSelect(option.value);
                   }}
                   onMouseEnter={() => setFocusedIndex(index)}

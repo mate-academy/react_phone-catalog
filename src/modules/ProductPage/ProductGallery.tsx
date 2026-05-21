@@ -19,13 +19,14 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ photos }) => {
   const next = () => {
     setCurrentPhotoIndex(prev => (prev + 1) % validPhotos.length);
   };
+
   const prev = () =>
     setCurrentPhotoIndex(
       prev => (prev - 1 + validPhotos.length) % validPhotos.length,
     );
   const MIN_SWIPE_DISTANCE = 25;
   const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null); // Скидаємо попередній кінець
+    setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
   };
 
@@ -34,36 +35,40 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ photos }) => {
   };
 
   const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return; // Ігноруємо, якщо немає початку чи кінця
+    if (!touchStart || !touchEnd) {
+      return;
+    }
 
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > MIN_SWIPE_DISTANCE;
     const isRightSwipe = distance < -MIN_SWIPE_DISTANCE;
 
     if (isLeftSwipe) {
-      next(); // Свайп вліво -> наступний слайд
+      next();
     }
+
     if (isRightSwipe) {
-      prev(); // Свайп вправо -> попередній слайд
+      prev();
     }
   };
+
   const handleImageError = (badIndex: number) => {
     setValidPhotos(prev => {
-      if (!prev[badIndex]) return prev;
+      if (!prev[badIndex]) {
+        return prev;
+      }
 
       const next = prev.filter((_, i) => i !== badIndex);
 
-      // підлаштовуємо currentPhotoIndex під новий масив
       setCurrentPhotoIndex(prevIndex => {
-        if (next.length === 0) return 0;
+        if (next.length === 0) {
+          return 0;
+        }
 
-        // якщо видалили поточне фото
         if (prevIndex === badIndex) {
-          // якщо це був останній елемент — беремо новий останній
           return badIndex >= next.length ? next.length - 1 : badIndex;
         }
 
-        // якщо видалили елемент перед поточним — зсуваємо індекс
         if (prevIndex > badIndex) {
           return prevIndex - 1;
         }
@@ -116,7 +121,6 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ photos }) => {
           />
         ) : (
           <div className={styles['product-gallery__no-photo']}>
-            {/* Custom placeholder text */}
             No photos available
           </div>
         )}

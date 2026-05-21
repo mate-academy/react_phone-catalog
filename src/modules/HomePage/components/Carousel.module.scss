@@ -20,7 +20,7 @@
     justify-content: center;
 
     @include tablet {
-      column-gap: 16px; // Прибираємо відступ, щоб картинка була точно від краю до краю
+      column-gap: 16px; 
     }
   }
 
@@ -35,7 +35,7 @@
     display: flex;
     width: 100%;
     height: 100%;
-    transition: transform 0.5s ease-in-out;
+    transition: transform var(--transition-default);
   }
 
   &__slide {
@@ -63,7 +63,7 @@
       color: var(--text-main);
       background-color: var(--btn-bg);
       border: 1px solid var(--btn-border);
-      transition: all 0.3s;
+      transition: all var(--transition-default);
     }
 
     &:hover {
@@ -76,3 +76,4 @@
     }
   }
 }
+

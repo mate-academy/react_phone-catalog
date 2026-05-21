@@ -30,7 +30,6 @@ export const BackButton: React.FC<BackButtonProps> = ({ label }) => {
         />
       </svg>
 
-      {/* FIXED: BEM Element */}
       <span>{label}</span>
     </button>
   );

@@ -24,8 +24,8 @@ const NAV_ICONS = {
     'M1 8C1 7.58579 1.39175 7.25 1.875 7.25H14.125C14.6082 7.25 15 7.58579 15 8C15 8.41421 14.6082 8.75 14.125 8.75H1.875C1.39175 8.75 1 8.41421 1 8Z',
     'M1.875 10.75C1.39175 10.75 1 11.0858 1 11.5C1 11.9142 1.39175 12.25 1.875 12.25H14.125C14.6082 12.25 15 11.9142 15 11.5C15 11.0858 14.6082 10.75 14.125 10.75H1.875Z',
   ],
-  /* eslint-enable max-len */
 };
+
 export const Navbar = () => {
   const { totalCount, totalFavoritesCount } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,14 +41,11 @@ export const Navbar = () => {
 
   useEffect(() => {
     if (isMenuOpen) {
-      // Блокуємо скрол
       document.body.style.overflow = 'hidden';
     } else {
-      // Відновлюємо скрол (повертаємо дефолтне значення)
       document.body.style.overflow = '';
     }
 
-    // Функція очищення (cleanup), якщо компонент Navbar видалиться
     return () => {
       document.body.style.overflow = '';
     };
@@ -172,5 +169,3 @@ export const Navbar = () => {
     </>
   );
 };
-
-// export default Navbar;

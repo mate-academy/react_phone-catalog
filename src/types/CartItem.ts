@@ -1,6 +1,4 @@
-
-
 export type CartItem = {
-  itemId: string; // або itemId: string
+  itemId: string;
   quantity: number;
 };

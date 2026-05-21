@@ -3,9 +3,9 @@
   flex-direction: column;
   &__container {
     display: grid;
-    /* Це ключовий рядок для адаптиву */
+
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    column-gap: 16px; /* Відступи між картками */
+    column-gap: 16px; 
     row-gap: 40px;
     width: 100%;
 

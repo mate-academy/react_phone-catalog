@@ -16,14 +16,12 @@ const Favorites: React.FC = () => {
 
   const [products, setProducts] = useState<Product[]>([]);
 
-  // 1. Якщо у нас вже є улюблені товари (ID), ставимо loading true.
-  // Якщо масив ID порожній — loading false (відразу покажемо Empty State без запиту)
   const [loading, setLoading] = useState<boolean>(favorites.length > 0);
 
   useEffect(() => {
-    // 2. Оптимізація: Якщо улюблених немає, не робимо запит
     if (favorites.length === 0) {
       setLoading(false);
+
       return;
     }
 
@@ -33,7 +31,7 @@ const Favorites: React.FC = () => {
       .then(fetchedProducts => {
         setProducts(fetchedProducts);
       })
-      .catch(console.error) // Варто додати обробку помилок
+      .catch(console.error)
       .finally(() => {
         setLoading(false);
       });
@@ -56,8 +54,6 @@ const Favorites: React.FC = () => {
         </div>
       ) : (
         <>
-          {/* Тут також перевіряємо favorites.length, щоб уникнути ситуації,
-              коли запит пройшов, але збігів не знайдено (хоча логічно це те саме) */}
           {favorites.length > 0 && preparedFavorites.length > 0 ? (
             <>
               <PageHeader

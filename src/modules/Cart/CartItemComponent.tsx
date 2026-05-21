@@ -11,6 +11,7 @@ type CartItemProps = {
 const CartItemComponent: React.FC<CartItemProps> = ({ item }) => {
   const { reduceQuantity, increaseQuantity, removeFromCart } = useCart();
   const { theme } = useTheme();
+
   return (
     <div className={styles.cartItem}>
       <button
@@ -40,7 +41,6 @@ const CartItemComponent: React.FC<CartItemProps> = ({ item }) => {
         <span className={styles.cartItem__name}>{item.name}</span>
       </div>
       <div className={styles.cartItem__quantityBlock}>
-        {/* Кнопка МІНУС */}
         <button
           className={classNames(styles.cartItem__quantityButton, {
             [styles['cartItem__quantityButton--dark']]: theme === 'dark',
@@ -66,7 +66,6 @@ const CartItemComponent: React.FC<CartItemProps> = ({ item }) => {
 
         <span className={styles.cartItem__quantity}>{item.quantity}</span>
 
-        {/* Кнопка ПЛЮС */}
         <button
           className={classNames(styles.cartItem__quantityButton, {
             [styles['cartItem__quantityButton--dark']]: theme === 'dark',

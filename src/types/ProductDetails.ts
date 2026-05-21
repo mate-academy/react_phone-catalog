@@ -24,7 +24,6 @@ export interface ProductDetails {
   ram: string;
   cell: string[];
 
-  // Present only for some products (like the iPad)
   camera?: string;
   zoom?: string;
 }

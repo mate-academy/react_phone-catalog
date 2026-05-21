@@ -23,7 +23,7 @@
   transform: translate(-50%, -50%) scale(0.3);
   transform-origin: center;
   opacity: 0;
-  animation: popup 0.3s ease forwards;
+  animation: popup var(--transition-default) forwards;
 
   &__header {
     display: flex;
@@ -52,7 +52,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.2s ease;
+    transition: color var(--transition-default);
 
     &:hover {
       color: var(--text-main);
@@ -89,3 +89,4 @@
     opacity: 1;
   }
 }
+

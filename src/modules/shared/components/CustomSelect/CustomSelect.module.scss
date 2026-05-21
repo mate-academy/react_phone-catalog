@@ -1,14 +1,14 @@
 .select {
   position: relative;
-  // width: 100%; // Optional: let parent decide width
+
   cursor: pointer;
-  outline: none; // We handle focus styles visually
+  outline: none; 
   width: 50%;
   max-width: 200px;
   &__label {
     display: block;
     margin-bottom: 4px;
-    font-size: 12px; // or $small-size
+    font-size: 12px; 
     color: var(--text-secondary);
   }
 
@@ -19,10 +19,13 @@
     padding: 10px 12px;
     border: 1px solid var(--btn-border);
     background-color: var(--bg-main);
-    transition: all 0.2s ease;
+    transition:
+      border-color var(--transition-default),
+      background-color var(--transition-default);
     user-select: none;
 
     &:hover {
+      will-change: border-color;
       border-color: var(--text-secondary);
     }
 
@@ -33,7 +36,7 @@
 
   &__value {
     color: var(--text-main);
-    font-size: 14px; // or $body-size
+    font-size: 14px; 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -46,8 +49,9 @@
   &__arrow {
     display: flex;
     align-items: center;
-    color: var(--text-secondary); // Use currentColor in SVG to inherit this
-    transition: transform 0.2s ease;
+    color: var(--text-secondary); 
+    transition: transform var(--transition-default);
+    will-change: transform;
 
     &.rotated {
       transform: rotate(180deg);
@@ -63,7 +67,7 @@
     overflow-y: auto;
     background-color: var(--bg-main);
     border: 1px solid var(--btn-border);
-    z-index: 100; // Increased Z-index
+    z-index: 100; 
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
@@ -72,17 +76,18 @@
     font-size: 14px;
     color: var(--text-secondary);
     cursor: pointer;
-    transition: background-color 0.1s ease;
+    transition: background-color var(--transition-default);
 
     &:hover,
     &.focused {
+      will-change: background-color;
       background-color: var(--bg-secondary);
       color: var(--text-main);
     }
 
     &.selected {
       color: var(--text-main);
-      background-color: var(--btn-bg); // Or a specific active color
+      background-color: var(--btn-bg); 
       font-weight: 500;
     }
   }
@@ -94,16 +99,14 @@
     font-size: 14px;
   }
 
-  // -- Disabled State --
   &.disabled {
     opacity: 0.6;
     pointer-events: none;
   }
 
-  // -- Dark Theme Overrides --
   &[data-theme='dark'] {
     .select__control {
-      background-color: var(--btn-bg); // Assuming you have card variables
+      background-color: var(--btn-bg); 
       border-color: transparent;
 
       &.open {
@@ -128,3 +131,4 @@
     }
   }
 }
+

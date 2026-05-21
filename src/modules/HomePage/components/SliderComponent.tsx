@@ -26,8 +26,9 @@ export const SliderComponent: React.FC<SliderComponentProps> = ({
   const prev = () => {
     setIndex(prev => prev - 1);
   };
+
   const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null); // Скидаємо попередній кінець
+    setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
   };
 
@@ -36,17 +37,19 @@ export const SliderComponent: React.FC<SliderComponentProps> = ({
   };
 
   const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return; // Ігноруємо, якщо немає початку чи кінця
+    if (!touchStart || !touchEnd) {
+      return;
+    }
+
     distance = touchStart - touchEnd;
   };
+
   if (touchStart && touchEnd) {
     listRef.current?.scrollBy({
       left: distance,
       behavior: 'smooth',
     });
   }
-
-  // const visible = products.slice(index, index + 4);
 
   return (
     <section>

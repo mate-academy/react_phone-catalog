@@ -10,7 +10,11 @@
   justify-content: center;
   cursor: pointer;
   color: var(--text-main);
-  transition: all 0.3s ease;
+  transition:
+    background-color var(--transition-default),
+    border-color var(--transition-default),
+    color var(--transition-default),
+    box-shadow var(--transition-default);
   flex-shrink: 0;
 
   @include desktop {

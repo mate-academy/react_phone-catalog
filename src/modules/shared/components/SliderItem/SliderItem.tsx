@@ -21,7 +21,9 @@ export const SliderItem: React.FC<SliderItemProps> = ({
     addToCart,
   } = useCart();
 
-  if (!item) return null;
+  if (!item) {
+    return null;
+  }
 
   const fav = isFavorite(item.itemId || '');
   const inCart = isInCart(item.itemId || '');
@@ -30,7 +32,9 @@ export const SliderItem: React.FC<SliderItemProps> = ({
     e.preventDefault();
     e.stopPropagation();
 
-    if (!item) return;
+    if (!item) {
+      return;
+    }
 
     addToCart(item.itemId);
   };
@@ -39,7 +43,9 @@ export const SliderItem: React.FC<SliderItemProps> = ({
     e.preventDefault();
     e.stopPropagation();
 
-    if (!item) return;
+    if (!item) {
+      return;
+    }
 
     if (fav) {
       removeFromFavorites(item.itemId || '');
@@ -109,14 +115,7 @@ export const SliderItem: React.FC<SliderItemProps> = ({
           >
             {inCart ? 'Added to Cart' : 'Add to Cart'}
           </Button>
-          {/* <button
-            onClick={handleCartClick}
-            className={`${styles.SliderComponent__item__cartButton} ${
-              inCart ? styles['SliderComponent__item__cartButton--added'] : ''
-            }`}
-          >
-            {inCart ? 'Added to Cart' : 'Add to Cart'}
-          </button> */}
+
           <button
             onClick={handleFav}
             className={styles.SliderComponent__item__favoriteButton}

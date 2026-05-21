@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styles from './NotFoundPage.module.scss';
 import { Link } from 'react-router-dom';
-import { SliderComponent } from '../HomePage/components/SliderComponent';
 import { recentlyViewedService } from '../shared/components/utils/RecentlyViewed/RecentlyViewed';
 import { Product } from '@/types/Product';
 import { getProducts } from '@/api/api';
+import { ProductsSlider } from '../HomePage/components/ProductsSlider';
 
 const NotFoundPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -44,12 +44,11 @@ const NotFoundPage: React.FC = () => {
           {loading ? (
             <div className={styles.skeletonLoader}></div>
           ) : (
-            products.length > 0 && (
-              <SliderComponent products={products} title="Recently Viewed" />
-            )
+            products.length > 0 &&   <ProductsSlider products={products} title="Recently Viewed" />
           )}
         </div>
       </div>
+
     </section>
   );
 };

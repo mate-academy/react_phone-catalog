@@ -1,4 +1,3 @@
-// src/context/ThemeContext.tsx
 import React, {
   createContext,
   useContext,
@@ -30,9 +29,9 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
   };
 
-
   useEffect(() => {
     const savedTheme = localStorage.getItem('app-theme') as Theme | null;
+
     if (savedTheme) {
       setTheme(savedTheme);
     }
@@ -47,8 +46,10 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);
+
   if (!context) {
     throw new Error('useTheme must be used within a ThemeProvider');
   }
+
   return context;
 };

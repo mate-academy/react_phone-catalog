@@ -3,7 +3,11 @@ import { useParams } from 'react-router-dom';
 import PageHeader from '../shared/components/PageHeader/PageHeader';
 import { Product } from '@/types/Product';
 import { ProductDetails } from '@/types/ProductDetails';
-import { getProductDetails, getProducts } from '@/api/api';
+import {
+  getProductDetails,
+  getProducts,
+  getSuggestedProducts,
+} from '@/api/api';
 import { specsConfig } from '../shared/components/utils/constants/constants';
 import ProductGallery from './ProductGallery';
 import { ProductConfigurator } from './ProductConfigurator';
@@ -19,8 +23,10 @@ export const ProductPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [products, setProducts] = useState<Product[]>([]);
   const [product, setProduct] = useState<ProductDetails | null>(null);
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
+  const isInitialLoadRef = React.useRef(true);
 
   useEffect(() => {
     getProducts()
@@ -30,31 +36,51 @@ export const ProductPage: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    setLoading(true);
+
+    if (isInitialLoadRef.current) {
+      setLoading(true);
+      isInitialLoadRef.current = false;
+    }
+
+    // 1. Create a flag to track if this specific effect is still valid
+    let ignore = false;
+
     getProductDetails(category)
       .then(products => {
+        // 2. If a new request has started, ignore this stale response
+        if (ignore) {
+          return;
+        }
+
         const foundProduct = products.find(p => p.id === productSlug);
+
         setProduct(foundProduct || null);
         setSelectedColor(foundProduct?.color || '');
         setSelectedCapacity(foundProduct?.capacity || '');
       })
       .finally(() => {
-        setLoading(false);
+        // Only stop loading if we aren't ignoring this request
+        if (!ignore) {
+          setLoading(false);
+        }
       });
-  }, [productSlug]);
 
-  const shuffle = <T,>(array: T[]): T[] =>
-    [...array].sort(() => Math.random() - 0.5);
+    getSuggestedProducts()
+      .then(data => {
+        if (!ignore) {
+          setSuggestedProducts(data);
+        }
+      })
+      .catch(error =>
+        console.error('Error fetching suggested products:', error),
+      );
 
-  const getRandomProducts = (products: Product[]) => {
-    const randomCount = Math.floor(Math.random() * 10) + 3;
-    return shuffle(products).slice(0, randomCount);
-  };
+    // 3. Cleanup function: runs when productSlug changes, invalidating the old request
+    return () => {
+      ignore = true;
+    };
+  }, [category, productSlug]); // Note: added 'category' here as it's used inside the effect
 
-  const suggestedProducts = useMemo(() => {
-    if (products.length === 0) return [];
-    return getRandomProducts(products);
-  }, [products, productSlug]);
   const foundProductFromProducts = useMemo(
     () => products.find(p => p.itemId === productSlug),
     [products, productSlug],
@@ -74,6 +100,12 @@ export const ProductPage: React.FC = () => {
         </div>
       )}
       {!loading && !product && <NotFoundPage />}
+      {/* {!loading && !product && (
+        <div className={styles['product-not-found']}>
+          <h2>Product was not found</h2>
+          <NotFoundPage />
+        </div>
+      )} */}
       {!loading && product && (
         <>
           <PageHeader
@@ -145,7 +177,9 @@ export const ProductPage: React.FC = () => {
                 {specsConfig.map(({ label, key, optional }) => {
                   const value = product[key];
 
-                  if (optional && !value) return null;
+                  if (optional && !value) {
+                    return null;
+                  }
 
                   return (
                     <li

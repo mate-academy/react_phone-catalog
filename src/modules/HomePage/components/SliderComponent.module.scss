@@ -40,7 +40,7 @@
   &__itemsWrapper {
     display: flex;
     gap: 16px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform var(--transition-default);
   }
 
   &__item {
@@ -48,7 +48,7 @@
     padding: 32px;
     flex-direction: column;
     width: 100%;
-    // max-width: 272px;
+
     border: 1px solid $light-border;
     min-height: 512px;
     display: flex;
@@ -59,19 +59,19 @@
       box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
     }
     &:hover &__imageContainer {
-      transform: scale(1.1);
-      transition: transform 0.3s ease-in-out;
+      transform: scale(1.05);
+      transition: transform var(--transition-default);
       z-index: 9;
     }
 
     &__itemName {
-      // min-height: 42px;
-      min-height: 42px; // або max-height
+
+      min-height: 42px;
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
-      line-clamp: 2; // кількість рядків
-      -webkit-line-clamp: 2; // кількість рядків
+      line-clamp: 2;
+      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       @include type($body-size, $body-line, $body-track, $body-weight);
     }
@@ -86,7 +86,7 @@
         display: block;
         width: 100%;
         height: 100%;
-        object-fit: contain; // 🔥 key line
+        object-fit: contain;
       }
     }
     &__divider {
@@ -131,27 +131,25 @@
       font-size: $h3-size;
       position: relative;
       display: inline-block;
-      text-decoration: none; // Прибираємо стандартне закреслення
+      text-decoration: none;
 
-      // Налаштування товщини лінії (змініть за бажанням)
       $line-height: 2px;
-      $line-color: $light-text-secondary; // Колір лінії (зазвичай такий же, як у тексту)
+      $line-color: $light-text-secondary;
       $center-pos: 47%;
-      // 1. Малюємо ЛІНІЮ (Середній шар)
+
       &::before {
         content: '';
         position: absolute;
         left: 0;
         width: 100%;
         height: $line-height;
-        background-color: $light-text-secondary; // Колір лінії
+        background-color: $light-text-secondary;
         z-index: 1;
 
-        // Позиціонування
         top: $center-pos;
         transform: translateY(
           -50%
-        ); // Центруємо саму лінію відносно точки $center-pos
+        );
       }
 
       &::after {
@@ -164,8 +162,6 @@
         color: #fff;
         z-index: 2;
 
-        // Складна формула, щоб "віконце" маски рухалося разом із лінією
-        // inset(top right bottom left)
         clip-path: inset(
           calc(#{$center-pos} - #{$line-height} / 2) 0
             calc(100% - (#{$center-pos} + #{$line-height} / 2)) 0
@@ -216,14 +212,13 @@
       }
     }
   }
-  /* === SKELETON STYLES === */
+
   &__skeleton {
-    // Блокуємо будь-які ховери та кліки
+
     pointer-events: none;
     user-select: none;
-    border-color: transparent; // Прибираємо бордер картки, якщо треба
+    border-color: transparent;
 
-    // Міксін для ефекту завантаження (з вашого прикладу)
     @mixin skeleton-bg {
       background-color: $loading-grey;
       background: linear-gradient(
@@ -236,59 +231,51 @@
       background-size: 200% 100%;
       background-position-x: 180%;
       animation: 1s loading ease-in-out infinite;
-      color: transparent !important; // Ховаємо текст
+      color: transparent !important;
       border-color: transparent !important;
       border-radius: 4px;
     }
 
-    // Застосовуємо ефект до конкретних частин вашої картки
-
-    // 1. Картинка
     .SliderComponent__item__imageContainer {
       @include skeleton-bg;
       img {
-        opacity: 0; // Ховаємо іконку битої картинки
+        opacity: 0;
       }
     }
 
-    // 2. Назва товару
     .SliderComponent__item__itemName {
       @include skeleton-bg;
-      height: 1.5rem; // Фіксуємо висоту скелетону
+      height: 1.5rem;
       margin-bottom: 8px;
-      display: block; // Щоб спрацювала висота
+      display: block;
     }
 
-    // 3. Ціна
     .SliderComponent__item__fullPrice,
     .SliderComponent__item__price {
       @include skeleton-bg;
       display: inline-block;
-      width: 60px; // Ширина заглушки ціни
+      width: 60px;
       height: 24px;
       &::before,
       &::after {
-        content: none; // Прибирає контент псевдоелементів
-        display: none; // Гарантує, що вони не займають місця
-        background: none; // На всяк випадок прибирає фон
+        content: none;
+        display: none;
+        background: none;
       }
     }
 
-    // 4. Характеристики (Specs)
     .SliderComponent__item__infoName,
     .SliderComponent__item__infoValue {
       @include skeleton-bg;
       display: inline-block;
-      width: 40px; // Маленькі блочки для тексту
+      width: 40px;
       height: 14px;
     }
 
-    // Трохи розширимо значення характеристик
     .SliderComponent__item__infoValue {
       width: 60px;
     }
 
-    // 5. Кнопки
     .SliderComponent__item__cartButton,
     .SliderComponent__item__favoriteButton {
       @include skeleton-bg;
@@ -296,7 +283,8 @@
       box-shadow: none;
       img {
         opacity: 0;
-      } // Ховаємо іконку серця
+      }
     }
   }
 }
+

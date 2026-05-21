@@ -11,6 +11,7 @@ export const Footer: React.FC = () => {
   const handleScrollTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
   const { theme } = useTheme();
 
   return (
@@ -39,7 +40,7 @@ export const Footer: React.FC = () => {
       <button
         className={styles.footer__backtoTopButton}
         onClick={handleScrollTop}
-        aria-label="Scroll back to top" // Good for accessibility
+        aria-label="Scroll back to top"
       >
         <span className={styles.footer__backtoTopText}>Back to top</span>
         <div
@@ -49,7 +50,6 @@ export const Footer: React.FC = () => {
         >
           <ArrowIcon direction="up" />
         </div>
-        {/* Empty alt because button has aria-label */}
       </button>
     </footer>
   );

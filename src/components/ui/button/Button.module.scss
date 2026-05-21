@@ -1,21 +1,20 @@
-// Імпортуйте ваші глобальні змінні та міксини
-@import '@/styles/variables'; // або шлях до вашого файлу з $light-text-main
-// @import '@/styles/mixins'; // якщо використовуєте міксини для шрифтів
+@import '@/styles/variables';
 
 .button {
-  // --- Базові стилі для всіх кнопок ---
   display: inline-flex;
   align-items: center;
   justify-content: center;
   position: relative;
   box-sizing: border-box;
-
   font-family: inherit;
   font-weight: 600;
   text-decoration: none;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition:
+    background-color var(--transition-default),
+    border-color var(--transition-default),
+    box-shadow var(--transition-default);
 
   &:disabled {
     opacity: 0.6;
@@ -23,16 +22,15 @@
     pointer-events: none;
   }
 
-  // --- Варіанти дизайну (Variants) ---
-
-  // Основна кнопка (синя/чорна)
   &--primary {
-    background-color: var(--btn-main); // Ваш колір з variables
+    background-color: var(--btn-main);
     color: #fff;
     border-color: var(--btn-main);
 
     &:hover {
       box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+      will-change: background-color, border-color, box-shadow;
+      will-change: box-shadow;
     }
   }
 
@@ -43,11 +41,10 @@
     }
   }
 
-  // Кнопка для стану "Added" (біла з рамкою)
   &--outline {
     background-color: var(--btn-bg);
-    color: $color-green; // Зелений колір для "Added"
-    border-color: var(--color-disabled); // Сірий бордер
+    color: $color-green;
+    border-color: var(--color-disabled);
     &--dark {
       color: var(--text-main);
       border-color: var(--btn-bg);
@@ -59,30 +56,14 @@
     }
   }
 
-  // --- Варіанти розміру (Sizes) ---
-
-  // &--small {
-  //   height: 32px;
-  //   // padding: 0 16px;
-  //   font-size: 14px;
-  // }
-
   &--normal {
     height: 40px;
-    // padding: 0 20px;
     font-size: 14px;
   }
 
-  // &--large {
-  //   height: 48px;
-  //   padding: 0 32px;
-  //   font-size: 16px;
-  // }
-
-  // --- Додаткові модифікатори ---
-
   &--fullWidth {
-    width: 100%; // <-- ДОДАТИ ЦЕ
+    width: 100%;
     display: flex;
+    flex: 1;
   }
 }

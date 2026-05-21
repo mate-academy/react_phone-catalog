@@ -11,7 +11,7 @@ import { Loader } from '../shared/components/Loader';
 import { Button } from '@/components/ui/button/Button';
 
 export type CartProduct = Product & { quantity: number };
-//TODO: add loader
+
 export const Cart: React.FC = () => {
   const { cart, totalCount, clearCart } = useCart();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,8 +21,10 @@ export const Cart: React.FC = () => {
   useEffect(() => {
     if (cart.length === 0) {
       setIsLoading(false);
+
       return;
     }
+
     getProducts()
       .then(setProducts)
       .finally(() => setIsLoading(false));
@@ -32,6 +34,7 @@ export const Cart: React.FC = () => {
     return cart
       .map(cartItem => {
         const product = products.find(p => p.itemId === cartItem.itemId);
+
         return product ? { ...product, quantity: cartItem.quantity } : null;
       })
       .filter((item): item is CartProduct => item !== null);
@@ -78,12 +81,7 @@ export const Cart: React.FC = () => {
               className={styles.cartPage__checkoutBlockAmount}
             >{`Total for ${totalCount} items`}</span>
           </div>
-          <Button
-            // className={styles.cartPage__checkoutBlockButton}
-            onClick={handleCheckout}
-          >
-            Checkout
-          </Button>
+          <Button onClick={handleCheckout}>Checkout</Button>
         </div>
       </div>
       {isModalOpen && (

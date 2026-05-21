@@ -42,10 +42,9 @@
   }
   &__sliderContainer {
     width: 100%;
+    min-width: 0;
     min-height: 592px;
-    display: flex;
-    // justify-content: center;
-    // align-items: center;
+    display: block;
   }
 
   .skeletonLoader {

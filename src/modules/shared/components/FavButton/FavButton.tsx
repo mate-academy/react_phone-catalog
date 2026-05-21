@@ -19,7 +19,6 @@ const FavButton: React.FC<FavButtonProps> = ({ fav, handleFav }) => {
       )}
       onClick={handleFav}
     >
-      {/* SVG для сердечка */}
       <svg
         width="16"
         height="16"

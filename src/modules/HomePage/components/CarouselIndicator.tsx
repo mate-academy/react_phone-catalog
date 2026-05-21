@@ -1,5 +1,5 @@
 type CarouselIndicatorProps = {
-  activeIndex: number; // 0, 1 or 2
+  activeIndex: number;
   numberOfSlides: number;
   setActiveIndex?: React.Dispatch<React.SetStateAction<number>>;
 };

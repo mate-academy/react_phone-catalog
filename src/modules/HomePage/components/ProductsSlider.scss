@@ -16,13 +16,14 @@ $bg-hover: #fafbfc;
     cursor: pointer;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s;
+    transition: border-color var(--transition-default);
     user-select: none;
     color: var(--text-main);
     @include desktop {
       display: flex;
     }
     &:hover {
+      will-change: border-color;
       border-color: var(--btn-hover-color);
     }
     &--dark {
@@ -69,7 +70,7 @@ $bg-hover: #fafbfc;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: border-color 0.3s;
+      transition: border-color var(--transition-default);
 
       &:hover {
         border-color: $text-primary;
@@ -82,11 +83,10 @@ $bg-hover: #fafbfc;
     gap: 16px;
     overflow-x: auto;
     scroll-behavior: smooth;
-    padding-bottom: 10px; /* Для скроллбара, якщо він видимий */
+    padding-bottom: 10px; 
     padding: 13px;
     margin: -13px;
 
-    /* Приховуємо скроллбар для чистоти */
     &::-webkit-scrollbar {
       display: none;
     }
@@ -95,11 +95,9 @@ $bg-hover: #fafbfc;
   }
 }
 
-/* Стилі картки */
-
-/* Адаптивність */
 @media (max-width: 640px) {
   .product-card {
-    flex: 0 0 212px; /* Вужчі картки на мобільному */
+    flex: 0 0 212px; 
   }
 }
+

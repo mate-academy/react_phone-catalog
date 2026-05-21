@@ -8,7 +8,7 @@ export const Layout = () => {
     <>
       <Navbar />
       <main className="container">
-        <Outlet /> {/* <- this renders the current route's element */}
+        <Outlet />
       </main>
       <Footer />
     </>

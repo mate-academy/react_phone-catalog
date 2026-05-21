@@ -5,12 +5,12 @@
   flex: 1;
   margin: 0 auto;
   padding: 0 16px;
+
   @include mobile {
     position: relative;
   }
 
   @include tablet {
-    // max-width: 960px;
     padding: 0 24px;
   }
 
@@ -18,11 +18,14 @@
     max-width: 1136px;
     padding: 0;
   }
-  > section {
+
+  >section {
     margin-bottom: 56px;
+
     @include tablet {
       margin-bottom: 64px;
     }
+
     @include desktop {
       margin-bottom: 80px;
     }

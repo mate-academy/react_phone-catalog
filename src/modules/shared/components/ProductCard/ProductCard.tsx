@@ -24,7 +24,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     addToCart,
   } = useCart();
 
-  if (!item) return null;
+  if (!item) {
+    return null;
+  }
 
   const fav = isFavorite(item.itemId || '');
   const inCart = isInCart(item.itemId || '');
@@ -32,7 +34,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     e.preventDefault();
     e.stopPropagation();
 
-    if (!item) return;
+    if (!item) {
+      return;
+    }
 
     addToCart(item.itemId);
   };
@@ -41,7 +45,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     e.preventDefault();
     e.stopPropagation();
 
-    if (!item) return;
+    if (!item) {
+      return;
+    }
 
     if (fav) {
       removeFromFavorites(item.itemId || '');
@@ -49,6 +55,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       addToFavorites(item.itemId);
     }
   };
+
   return (
     <div className="product-card">
       <Link

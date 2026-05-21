@@ -28,7 +28,9 @@ export const CustomModal: React.FC<CustomModalProps> = ({
         </div>
         <div className={styles.customModal__content}>
           {modalBody}
-          <Button onClick={onCheckout} fullWidth >Checkout</Button>
+          <Button onClick={onCheckout} fullWidth>
+            Checkout
+          </Button>
         </div>
       </div>
     </div>

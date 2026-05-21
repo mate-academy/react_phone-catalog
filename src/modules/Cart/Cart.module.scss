@@ -1,4 +1,4 @@
-// Define Breakpoints (You can move these to a variables file)
+
 $tablet: 768px;
 $desktop: 1024px;
 @use '@/styles/mixins.scss' as *;
@@ -25,11 +25,11 @@ $desktop: 1024px;
 
   &__layout {
     display: flex;
-    flex-direction: column; // Stack vertically by default (Mobile First)
+    flex-direction: column; 
     gap: 16px;
 
     @include desktop {
-      flex-direction: row; // Switch to side-by-side on Tablet
+      flex-direction: row; 
       align-items: flex-start;
     }
   }
@@ -51,15 +51,13 @@ $desktop: 1024px;
     padding: 24px;
     border: 1px solid var(--color-elements);
 
-    // Mobile: Full width
     width: 100%;
 
-    // Desktop: Fixed width or percentage
     @media (min-width: $desktop) {
     }
     @include desktop {
-      flex: 0 0 320px; // Don't grow, don't shrink, fixed 320px
-      position: sticky; // Optional: Makes checkout stick while scrolling
+      flex: 0 0 320px; 
+      position: sticky; 
       top: 80px;
     }
 
@@ -99,7 +97,7 @@ $desktop: 1024px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: box-shadow 0.3s ease;
+      transition: box-shadow var(--transition-default);
 
       &:hover {
         box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
@@ -112,31 +110,28 @@ $desktop: 1024px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 100%; // Ensure list takes full width
+  width: 100%;
 }
 
 $tablet: 768px;
 
 .cartItem {
-  // === MOBILE LAYOUT (Based on Screenshot) ===
+
   display: grid;
-  // Columns: [CloseBtn ~24px] [Image 80px] [Name takes rest]
+
   grid-template-columns: 24px 80px 1fr;
 
-  // Rows: [Top part] [Bottom part]
   grid-template-rows: auto auto;
 
-  // Map the HTML elements to the grid locations
-  grid-template-areas: 'del img name' // Top row
-    'qty qty price'; // Bottom row (Qty spans across del and img columns)
+  grid-template-areas: 'del img name' 
+    'qty qty price'; 
 
-  gap: 16px; // Gap between elements
+  gap: 16px; 
   padding: 16px;
   border: 1px solid var(--card-border);
   background-color: var(--card-bg);
   align-items: center;
 
-  // === DESKTOP LAYOUT (Reset to Flexbox) ===
   @media (min-width: 640px) {
     display: flex;
     grid-template-columns: none;
@@ -147,15 +142,14 @@ $tablet: 768px;
     align-items: center;
   }
 
-  // 1. Remove Button (Top Left)
   &__removeButton {
-    grid-area: del; // Assign to 'del' area
+    grid-area: del; 
     width: 24px;
     height: 24px;
     padding: 0;
     display: flex;
     align-items: center;
-    justify-content: center; // Center the X icon
+    justify-content: center; 
     background: transparent;
     border: none;
     cursor: pointer;
@@ -165,18 +159,17 @@ $tablet: 768px;
     }
 
     @media (min-width: $tablet) {
-      width: 16px; // Smaller on desktop per your original design
-      order: 1; // 1st item on desktop
+      width: 16px; 
+      order: 1; 
     }
 
     svg {
-      display: block; // Removes extra line-height space
+      display: block; 
     }
   }
 
-  // 2. Image (Top Center)
   &__imageWrapper {
-    grid-area: img; // Assign to 'img' area
+    grid-area: img; 
     width: 80px;
     height: 80px;
     display: flex;
@@ -184,7 +177,7 @@ $tablet: 768px;
     justify-content: center;
 
     @media (min-width: $tablet) {
-      order: 2; // 2nd item on desktop
+      order: 2; 
     }
 
     img {
@@ -194,13 +187,12 @@ $tablet: 768px;
     }
   }
 
-  // 3. Name (Top Right)
   &__nameWrapper {
-    grid-area: name; // Assign to 'name' area
-    align-self: flex-start; // Align text to the top of the cell
+    grid-area: name; 
+    align-self: flex-start; 
 
     @media (min-width: $tablet) {
-      flex-grow: 1; // Take available space
+      flex-grow: 1; 
       order: 3;
       display: flex;
       align-self: center;
@@ -214,17 +206,15 @@ $tablet: 768px;
     color: var(--text-main);
   }
 
-  // 4. Quantity Block (Bottom Left)
   &__quantityBlock {
-    grid-area: qty; // Assign to 'qty' area
-    // 'qty' spans the first two columns ("qty qty"), so it sits under X and Image
+    grid-area: qty; 
 
     display: flex;
     align-items: center;
-    justify-content: flex-start; // Align to the left
-    gap: 0; // Use internal margins or keep buttons touching
-    width: 96px; // Fixed width for the controls
-    margin-top: 8px; // Add space between image and buttons
+    justify-content: flex-start; 
+    gap: 0; 
+    width: 96px; 
+    margin-top: 8px; 
 
     @media (min-width: $tablet) {
       order: 4;
@@ -233,7 +223,7 @@ $tablet: 768px;
   }
 
   &__quantityButton {
-    // Layout
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -241,9 +231,8 @@ $tablet: 768px;
     height: 32px;
     cursor: pointer;
     user-select: none;
-    transition: all 0.3s;
+    transition: all var(--transition-default);
 
-    // Color Styles (Reused)
     border: 1px solid var(--btn-border);
     background: var(--btn-bg);
     color: var(--text-main);
@@ -269,30 +258,30 @@ $tablet: 768px;
   }
 
   &__quantity {
-    width: 32px; // Match button width for symmetry
+    width: 32px; 
     text-align: center;
     font-weight: 600;
     font-size: 14px;
   }
 
-  // 5. Price (Bottom Right)
   &__positionPriceWrapper {
     display: flex;
     justify-content: flex-end;
-    grid-area: price; // Assign to 'price' area
-    justify-self: end; // Push to the far right
-    align-self: flex-end; // Align to the bottom
+    grid-area: price; 
+    justify-self: end; 
+    align-self: flex-end; 
 
     @include tablet {
       order: 5;
-      width: 80px; // Fixed width on desktop
+      width: 80px; 
       align-self: center;
     }
   }
 
   &__positionPrice {
-    font-size: 20px; // Make it bigger like the screenshot
+    font-size: 20px; 
     font-weight: 700;
     color: var(--text-main);
   }
 }
+

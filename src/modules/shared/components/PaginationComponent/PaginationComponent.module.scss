@@ -1,12 +1,10 @@
-@import '@/styles/variables'; // Assuming you have this for $color-text-white
+@import '@/styles/variables';
 
 .pagination {
   display: flex;
   justify-content: center;
   margin-bottom: 80px;
   column-gap: 16px;
-
-  // -- Shared Styles --
 
   %base-button {
     width: 32px;
@@ -18,22 +16,24 @@
     background-color: var(--btn-bg);
     color: var(--text-main);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition:
+      background-color var(--transition-default),
+      border-color var(--transition-default);
 
     &:hover {
+      will-change: background-color, border-color;
       border-color: var(--text-main);
     }
 
     &:disabled {
       opacity: 0.5;
       cursor: not-allowed;
+
       &:hover {
         border-color: var(--btn-border);
       }
     }
   }
-
-  // -- Elements --
 
   &__navBtn {
     @extend %base-button;
@@ -46,6 +46,7 @@
 
   &__page {
     @extend %base-button;
+
     border-color: var(--color-disabled);
     background-color: var(--bg-main);
 
@@ -58,6 +59,7 @@
 
   &__dots {
     @extend %base-button;
+
     border-color: var(--color-disabled);
     background-color: var(--bg-main);
 
@@ -86,6 +88,7 @@
 
       &.active {
         background-color: var(--btn-main);
+
         &:hover {
           background-color: var(--btn-main-hover);
         }
