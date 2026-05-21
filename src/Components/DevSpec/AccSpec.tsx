@@ -21,6 +21,7 @@ import { Products } from '../../types/Products';
 import React from 'react';
 import { Accessorie } from '../../types/Accessories';
 import { Aside } from '../Aside/Aside';
+import { Loader } from '../Loader/Loader';
 
 // type Props = {
 //   favouritesCount: number;
@@ -41,6 +42,7 @@ export const AccSpec: React.FC = () => {
   const { totalQuantity, addToCart, removeFromCart, isInCart } = useCart();
   const { addToFav, removeFromFav, isInFav, totalFavourites } = useFav();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -64,7 +66,6 @@ export const AccSpec: React.FC = () => {
   });
   const navigate = useNavigate();
   const [, setErrorMessage] = useState(false);
-  const [, setLoading] = useState(false);
   const [image, setImage] = useState<Image>(Image.first);
   const [color, setColor] = useState<string | null>(null);
   const images = accessorie?.images || [];
@@ -169,7 +170,7 @@ export const AccSpec: React.FC = () => {
       return;
     }
 
-    setLoading(true);
+    setLoader(true);
     getAccessorieById(productId)
       .then(product => {
         if (product) {
@@ -178,7 +179,7 @@ export const AccSpec: React.FC = () => {
         }
       })
       .catch(() => setErrorMessage(true))
-      .finally(() => setLoading(false));
+      .finally(() => setLoader(false));
   }, [productId]);
   console.log('productId from params:', productId);
 
@@ -196,289 +197,300 @@ export const AccSpec: React.FC = () => {
           totalQuantity={totalQuantity}
         />
       )}
-      <div className="phone__container container">
-        <div className="phone__path">
-          <Link to="/" className="phone__path-home">
-            <img src={home} alt="" />
-          </Link>
-          <div className="phone__path-arr">
-            <img src={arr} alt="" />
-          </div>
-          <Link to="../accessories" className="phone__path-phones">
-            Accessories
-          </Link>
-          <div className="phone__path-arr">
-            <img src={arr} alt="" />
-          </div>
-          <p className="phone__path-name">{accessorie?.name}</p>
-        </div>
-        <Link to="../accessories" className="phone__back">
-          <img src={backArr} alt="" className="phone__back-arr" />
-          <p className="phone__back-back">Back</p>
-        </Link>
-        <div className="phone__title">{accessorie?.name}</div>
-        <div className="phone__main">
-          <div className="phone__image">
-            <div className="phone__image-main phone__image-main__first">
-              {images[mainIndex] && (
-                <img
-                  className="phone__main-image"
-                  src={images[mainIndex]}
-                  alt=""
-                />
-              )}
+      {loader && <Loader />}
+      {!loader && (
+        <div className="phone__container container">
+          <div className="phone__path">
+            <Link to="/" className="phone__path-home">
+              <img src={home} alt="" />
+            </Link>
+            <div className="phone__path-arr">
+              <img src={arr} alt="" />
             </div>
-            <div className="phone__images">
-              {images.map((src, i) => (
-                <div
-                  key={src}
-                  className={`phone__imgs ${i === mainIndex ? 'phone__imgs-active' : ''}`}
-                >
+            <Link to="../accessories" className="phone__path-phones">
+              Accessories
+            </Link>
+            <div className="phone__path-arr">
+              <img src={arr} alt="" />
+            </div>
+            <p className="phone__path-name">{accessorie?.name}</p>
+          </div>
+          <Link to="../accessories" className="phone__back">
+            <img src={backArr} alt="" className="phone__back-arr" />
+            <p className="phone__back-back">Back</p>
+          </Link>
+          <div className="phone__title">{accessorie?.name}</div>
+          <div className="phone__main">
+            <div className="phone__image">
+              <div className="phone__image-main phone__image-main__first">
+                {images[mainIndex] && (
                   <img
-                    src={src}
-                    className="phone__img"
-                    onClick={() => setImage(imageByIndex(i))}
+                    className="phone__main-image"
+                    src={images[mainIndex]}
+                    alt=""
                   />
-                </div>
-              ))}
-            </div>
-            <div className="phone__image-main phone__image-main__second">
-              {images[mainIndex] && (
-                <img
-                  className="phone__main-image"
-                  src={images[mainIndex]}
-                  alt=""
-                />
-              )}
-            </div>
-          </div>
-          <div className="phone__specs">
-            <p className="phone__colors-text">Available colors</p>
-            <div className="phone__colors">
-              {accessorie?.colorsAvailable.map(c => {
-                const updatedPath = path?.replace(
-                  path?.includes('space') ? /-[^-]+-[^-]+$/ : /-[^-]+$/,
-                  `-${normalizePathValue(c)}`,
-                );
-
-                return (
+                )}
+              </div>
+              <div className="phone__images">
+                {images.map((src, i) => (
                   <div
-                    key={c}
-                    className={`phone__color ${color === c || (!color && c === accessorie.colorsAvailable[0]) ? 'phone__color-active' : ''} phone__color-${normalizePathValue(c)}`}
+                    key={src}
+                    className={`phone__imgs ${i === mainIndex ? 'phone__imgs-active' : ''}`}
                   >
-                    <div
-                      onClick={() => {
-                        setColor(c);
-                        navigate(`../accessories/${updatedPath}`);
-                      }}
-                      className={`phone__color-color phone__color-${normalizePathValue(c)}`}
-                    ></div>
+                    <img
+                      src={src}
+                      className="phone__img"
+                      onClick={() => setImage(imageByIndex(i))}
+                    />
                   </div>
-                );
-              })}
+                ))}
+              </div>
+              <div className="phone__image-main phone__image-main__second">
+                {images[mainIndex] && (
+                  <img
+                    className="phone__main-image"
+                    src={images[mainIndex]}
+                    alt=""
+                  />
+                )}
+              </div>
             </div>
-            <div className="phone__specs-border"></div>
-            <div className="phone__specs-cap">
-              <p className="phone__specs-cap-text">Select capacity</p>
-              <div className="phone__specs-capacities">
-                {accessorie?.capacityAvailable.map(cap => {
-                  const activeColor =
-                    color || getDefaultColor(accessorie) || '';
-                  const updatedPathCap = path?.replace(
-                    /-[^-]+-[^-]+$/,
-                    `-${normalizePathValue(cap)}-${normalizePathValue(activeColor)}`,
+            <div className="phone__specs">
+              <p className="phone__colors-text">Available colors</p>
+              <div className="phone__colors">
+                {accessorie?.colorsAvailable.map(c => {
+                  const updatedPath = path?.replace(
+                    path?.includes('space') ? /-[^-]+-[^-]+$/ : /-[^-]+$/,
+                    `-${normalizePathValue(c)}`,
                   );
 
                   return (
-                    <button
-                      key={cap}
-                      type="button"
-                      className={`phone__specs-capacity ${cap === selectedCapacity ? 'phone__specs-capacity-active' : ''}`}
-                      onClick={() => {
-                        setSelectedCapacity(cap);
-                        navigate(`../accessories/${updatedPathCap}`);
-                      }}
-                      onKeyDown={e =>
-                        (e.key === 'Enter' || e.key === ' ') &&
-                        setSelectedCapacity(cap)
-                      }
-                      aria-pressed={cap === selectedCapacity}
+                    <div
+                      key={c}
+                      className={`phone__color ${color === c || (!color && c === accessorie.colorsAvailable[0]) ? 'phone__color-active' : ''} phone__color-${normalizePathValue(c)}`}
                     >
-                      {cap}
-                    </button>
+                      <div
+                        onClick={() => {
+                          setColor(c);
+                          navigate(`../accessories/${updatedPath}`);
+                        }}
+                        className={`phone__color-color phone__color-${normalizePathValue(c)}`}
+                      ></div>
+                    </div>
                   );
                 })}
-                <div />
               </div>
-            </div>
-            <div className="phone__specs-border"></div>
-            <div className="phone__prices">
-              <div className="phone__price">
-                <div className="phone__price-full">
-                  {accessorie?.priceRegular}$
+              <div className="phone__specs-border"></div>
+              <div className="phone__specs-cap">
+                <p className="phone__specs-cap-text">Select capacity</p>
+                <div className="phone__specs-capacities">
+                  {accessorie?.capacityAvailable.map(cap => {
+                    const activeColor =
+                      color || getDefaultColor(accessorie) || '';
+                    const updatedPathCap = path?.replace(
+                      /-[^-]+-[^-]+$/,
+                      `-${normalizePathValue(cap)}-${normalizePathValue(activeColor)}`,
+                    );
+
+                    return (
+                      <button
+                        key={cap}
+                        type="button"
+                        className={`phone__specs-capacity ${cap === selectedCapacity ? 'phone__specs-capacity-active' : ''}`}
+                        onClick={() => {
+                          setSelectedCapacity(cap);
+                          navigate(`../accessories/${updatedPathCap}`);
+                        }}
+                        onKeyDown={e =>
+                          (e.key === 'Enter' || e.key === ' ') &&
+                          setSelectedCapacity(cap)
+                        }
+                        aria-pressed={cap === selectedCapacity}
+                      >
+                        {cap}
+                      </button>
+                    );
+                  })}
+                  <div />
                 </div>
-                <span className="phone__price-discount">
-                  {accessorie?.priceDiscount}$
-                </span>
+              </div>
+              <div className="phone__specs-border"></div>
+              <div className="phone__prices">
+                <div className="phone__price">
+                  <div className="phone__price-full">
+                    {accessorie?.priceRegular}$
+                  </div>
+                  <span className="phone__price-discount">
+                    {accessorie?.priceDiscount}$
+                  </span>
+                </div>
+              </div>
+              <div className="phone__buttons">
+                <button
+                  className={`phone__add ${accessorie && isInCart(String(accessorie.id)) ? 'phone__add-added' : ''}`}
+                  type="button"
+                  onClick={() => {
+                    if (accessorie) {
+                      const product = mapAccessorieToProduct(accessorie);
+
+                      if (isInCart(String(product.id))) {
+                        removeFromCart(String(product.id));
+                      } else {
+                        addToCart(product);
+                      }
+                    }
+                  }}
+                >
+                  {accessorie && isInCart(String(accessorie.id))
+                    ? 'Added'
+                    : 'Add to cart'}
+                </button>
+                <button
+                  className={`phone__fav ${accessorie && isInFav(String(accessorie.id)) ? 'phone__fav-added' : ''}`}
+                  type="button"
+                  onClick={() => {
+                    if (accessorie) {
+                      const product = mapAccessorieToProduct(accessorie);
+
+                      if (isInFav(String(product.id))) {
+                        removeFromFav(String(product.id));
+                      } else {
+                        addToFav(product);
+                      }
+                    }
+                  }}
+                >
+                  <img
+                    src={
+                      accessorie && isInFav(String(accessorie.id))
+                        ? activeFav
+                        : fav
+                    }
+                    alt=""
+                    className="phone__fav-img"
+                  />
+                </button>
+              </div>
+              <div className="phone__specifications">
+                <p className="phone__specifications-text phone__specifications-text__first">
+                  Screen{' '}
+                  <span className="phone__specifications-span">
+                    {accessorie?.screen}
+                  </span>
+                </p>
+                <p className="phone__specifications-text">
+                  Capacity{' '}
+                  <span className="phone__specifications-span">
+                    {accessorie?.capacity}
+                  </span>
+                </p>
+                <p className="phone__specifications-text">
+                  Processor{' '}
+                  <span className="phone__specifications-span">
+                    {accessorie?.processor}
+                  </span>
+                </p>
+                <p className="phone__specifications-text">
+                  RAM{' '}
+                  <span className="phone__specifications-span">
+                    {accessorie?.ram}
+                  </span>
+                </p>
               </div>
             </div>
-            <div className="phone__buttons">
-              <button
-                className={`phone__add ${accessorie && isInCart(String(accessorie.id)) ? 'phone__add-added' : ''}`}
-                type="button"
-                onClick={() => {
-                  if (accessorie) {
-                    const product = mapAccessorieToProduct(accessorie);
-
-                    if (isInCart(String(product.id))) {
-                      removeFromCart(String(product.id));
-                    } else {
-                      addToCart(product);
-                    }
-                  }
-                }}
-              >
-                {accessorie && isInCart(String(accessorie.id))
-                  ? 'Added'
-                  : 'Add to cart'}
-              </button>
-              <button
-                className={`phone__fav ${accessorie && isInFav(String(accessorie.id)) ? 'phone__fav-added' : ''}`}
-                type="button"
-                onClick={() => {
-                  if (accessorie) {
-                    const product = mapAccessorieToProduct(accessorie);
-
-                    if (isInFav(String(product.id))) {
-                      removeFromFav(String(product.id));
-                    } else {
-                      addToFav(product);
-                    }
-                  }
-                }}
-              >
-                <img
-                  src={
-                    accessorie && isInFav(String(accessorie.id))
-                      ? activeFav
-                      : fav
-                  }
-                  alt=""
-                  className="phone__fav-img"
-                />
-              </button>
+          </div>
+          <div className="phone__info">
+            <div className="phone__about">
+              <h1 className="phone__about-title">About</h1>
+              <div className="phone__about-border"></div>
+              <div className="phone__about-article">
+                <div className="phone__about-article-title">
+                  Premium Accessories
+                </div>
+                <div className="phone__about-article-subtitle">
+                  <span className="phone__about-article-subtitle-span">
+                    Discover our premium collection of accessories designed to
+                    enhance your mobile experience.
+                    <br />
+                    {''}
+                    <br />
+                    From stylish cases to powerful chargers, our accessories
+                    combine functionality with elegance. Each item is crafted
+                    with precision and tested for quality.
+                  </span>
+                </div>
+              </div>
+              <div className="phone__about-article">
+                <div className="phone__about-article-title">
+                  Quality & Design
+                </div>
+                <div className="phone__about-article-subtitle">
+                  Our accessories are designed with the same attention to detail
+                  as our premium devices. Whether you're looking for protection,
+                  convenience, or style, you'll find the perfect accessory to
+                  complement your lifestyle.
+                </div>
+              </div>
+              <div className="phone__about-article">
+                <div className="phone__about-article-title">
+                  Compatibility & Performance
+                </div>
+                <div className="phone__about-article-subtitle">
+                  Every accessory is engineered for optimal performance and
+                  compatibility. Experience seamless integration with your
+                  devices, ensuring you get the most out of your technology
+                  investment.
+                </div>
+              </div>
             </div>
-            <div className="phone__specifications">
-              <p className="phone__specifications-text phone__specifications-text__first">
+            <div className="phone__tech">
+              <div className="phone__tech-title">Tech specs</div>
+              <div className="phone__tech-border"></div>
+              <p className="phone__tech-text phone__tech-text__first">
                 Screen{' '}
-                <span className="phone__specifications-span">
-                  {accessorie?.screen}
+                <span className="phone__tech-span">{accessorie?.screen}</span>
+              </p>
+              <p className="phone__tech-text phone__tech-text__first">
+                Resolution{' '}
+                <span className="phone__tech-span">
+                  {accessorie?.resolution}
                 </span>
               </p>
-              <p className="phone__specifications-text">
-                Capacity{' '}
-                <span className="phone__specifications-span">
-                  {accessorie?.capacity}
-                </span>
-              </p>
-              <p className="phone__specifications-text">
+              <p className="phone__tech-text">
                 Processor{' '}
-                <span className="phone__specifications-span">
+                <span className="phone__tech-span">
                   {accessorie?.processor}
                 </span>
               </p>
-              <p className="phone__specifications-text">
-                RAM{' '}
-                <span className="phone__specifications-span">
-                  {accessorie?.ram}
+              <p className="phone__tech-text">
+                RAM <span className="phone__tech-span">{accessorie?.ram}</span>
+              </p>
+              <p className="phone__tech-text">
+                Built in memory{' '}
+                <span className="phone__tech-span">{accessorie?.capacity}</span>
+              </p>
+              <p className="phone__tech-text">
+                Color{' '}
+                <span className="phone__tech-span">{accessorie?.color}</span>
+              </p>
+              <p className="phone__tech-text">
+                Material{' '}
+                <span className="phone__tech-span">{accessorie?.material}</span>
+              </p>
+              <p className="phone__tech-text">
+                Compatibility{' '}
+                <span className="phone__tech-span">
+                  {accessorie?.compatibility}
                 </span>
               </p>
             </div>
           </div>
+          <PhoneLike />
         </div>
-        <div className="phone__info">
-          <div className="phone__about">
-            <h1 className="phone__about-title">About</h1>
-            <div className="phone__about-border"></div>
-            <div className="phone__about-article">
-              <div className="phone__about-article-title">
-                Premium Accessories
-              </div>
-              <div className="phone__about-article-subtitle">
-                <span className="phone__about-article-subtitle-span">
-                  Discover our premium collection of accessories designed to
-                  enhance your mobile experience.
-                  <br />
-                  {''}
-                  <br />
-                  From stylish cases to powerful chargers, our accessories
-                  combine functionality with elegance. Each item is crafted with
-                  precision and tested for quality.
-                </span>
-              </div>
-            </div>
-            <div className="phone__about-article">
-              <div className="phone__about-article-title">Quality & Design</div>
-              <div className="phone__about-article-subtitle">
-                Our accessories are designed with the same attention to detail
-                as our premium devices. Whether you're looking for protection,
-                convenience, or style, you'll find the perfect accessory to
-                complement your lifestyle.
-              </div>
-            </div>
-            <div className="phone__about-article">
-              <div className="phone__about-article-title">
-                Compatibility & Performance
-              </div>
-              <div className="phone__about-article-subtitle">
-                Every accessory is engineered for optimal performance and
-                compatibility. Experience seamless integration with your
-                devices, ensuring you get the most out of your technology
-                investment.
-              </div>
-            </div>
-          </div>
-          <div className="phone__tech">
-            <div className="phone__tech-title">Tech specs</div>
-            <div className="phone__tech-border"></div>
-            <p className="phone__tech-text phone__tech-text__first">
-              Screen{' '}
-              <span className="phone__tech-span">{accessorie?.screen}</span>
-            </p>
-            <p className="phone__tech-text phone__tech-text__first">
-              Resolution{' '}
-              <span className="phone__tech-span">{accessorie?.resolution}</span>
-            </p>
-            <p className="phone__tech-text">
-              Processor{' '}
-              <span className="phone__tech-span">{accessorie?.processor}</span>
-            </p>
-            <p className="phone__tech-text">
-              RAM <span className="phone__tech-span">{accessorie?.ram}</span>
-            </p>
-            <p className="phone__tech-text">
-              Built in memory{' '}
-              <span className="phone__tech-span">{accessorie?.capacity}</span>
-            </p>
-            <p className="phone__tech-text">
-              Color{' '}
-              <span className="phone__tech-span">{accessorie?.color}</span>
-            </p>
-            <p className="phone__tech-text">
-              Material{' '}
-              <span className="phone__tech-span">{accessorie?.material}</span>
-            </p>
-            <p className="phone__tech-text">
-              Compatibility{' '}
-              <span className="phone__tech-span">
-                {accessorie?.compatibility}
-              </span>
-            </p>
-          </div>
-        </div>
-        <PhoneLike />
+      )}
+      <div className={`phone__footer ${loader ? 'phone__footer-fixed' : ''}`}>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 };

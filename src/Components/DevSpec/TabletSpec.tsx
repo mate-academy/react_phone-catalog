@@ -20,6 +20,7 @@ import { Products } from '../../types/Products';
 import React from 'react';
 import { Tablet } from '../../types/Tablets';
 import { Aside } from '../Aside/Aside';
+import { Loader } from '../Loader/Loader';
 
 // type Props = {
 //   favouritesCount: number;
@@ -60,7 +61,7 @@ export const TabletSpec: React.FC = () => {
     image: Array.isArray(t.images) ? (t.images[0] ?? '') : (t.images ?? ''),
   });
   const [, setErrorMessage] = useState(false);
-  const [, setLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [image, setImage] = useState<Image>(Image.first);
   const [color, setColor] = useState<string | null>(null);
   const images = tablet?.images || [];
@@ -166,7 +167,7 @@ export const TabletSpec: React.FC = () => {
       return;
     }
 
-    setLoading(true);
+    setLoader(true);
     getTabletById(productId)
       .then(product => {
         if (product) {
@@ -175,7 +176,7 @@ export const TabletSpec: React.FC = () => {
         }
       })
       .catch(() => setErrorMessage(true))
-      .finally(() => setLoading(false));
+      .finally(() => setLoader(false));
   }, [productId]);
   console.log('productId from params:', productId);
 
@@ -193,284 +194,293 @@ export const TabletSpec: React.FC = () => {
           totalQuantity={totalQuantity}
         />
       )}
-      <div className="phone__container container">
-        <div className="phone__path">
-          <Link to="/" className="phone__path-home">
-            <img src={home} alt="" />
-          </Link>
-          <div className="phone__path-arr">
-            <img src={arr} alt="" />
-          </div>
-          <Link to="../tablets" className="phone__path-phones">
-            Tablets
-          </Link>
-          <div className="phone__path-arr">
-            <img src={arr} alt="" />
-          </div>
-          <p className="phone__path-name">{tablet?.name}</p>
-        </div>
-        <Link to="../tablets" className="phone__back">
-          <img src={backArr} alt="" className="phone__back-arr" />
-          <p className="phone__back-back">Back</p>
-        </Link>
-        <div className="phone__title">{tablet?.name}</div>
-        <div className="phone__main">
-          <div className="phone__image">
-            <div className="phone__image-main phone__image-main__first">
-              {images[mainIndex] && (
-                <img
-                  className="phone__main-image"
-                  src={images[mainIndex]}
-                  alt=""
-                />
-              )}
+      {loader && <Loader />}
+      {!loader && (
+        <div className="phone__container container">
+          <div className="phone__path">
+            <Link to="/" className="phone__path-home">
+              <img src={home} alt="" />
+            </Link>
+            <div className="phone__path-arr">
+              <img src={arr} alt="" />
             </div>
-            <div className="phone__images">
-              {images.map((src, i) => (
-                <div
-                  key={src}
-                  className={`phone__imgs ${i === mainIndex ? 'phone__imgs-active' : ''}`}
-                >
+            <Link to="../tablets" className="phone__path-phones">
+              Tablets
+            </Link>
+            <div className="phone__path-arr">
+              <img src={arr} alt="" />
+            </div>
+            <p className="phone__path-name">{tablet?.name}</p>
+          </div>
+          <Link to="../tablets" className="phone__back">
+            <img src={backArr} alt="" className="phone__back-arr" />
+            <p className="phone__back-back">Back</p>
+          </Link>
+          <div className="phone__title">{tablet?.name}</div>
+          <div className="phone__main">
+            <div className="phone__image">
+              <div className="phone__image-main phone__image-main__first">
+                {images[mainIndex] && (
                   <img
-                    src={src}
-                    className="phone__img"
-                    onClick={() => setImage(imageByIndex(i))}
+                    className="phone__main-image"
+                    src={images[mainIndex]}
+                    alt=""
                   />
-                </div>
-              ))}
-            </div>
-            <div className="phone__image-main phone__image-main__second">
-              {images[mainIndex] && (
-                <img
-                  className="phone__main-image"
-                  src={images[mainIndex]}
-                  alt=""
-                />
-              )}
-            </div>
-          </div>
-          <div className="phone__specs">
-            <p className="phone__colors-text">Available colors</p>
-            <div className="phone__colors">
-              {tablet?.colorsAvailable.map(c => {
-                const updatedPath = path?.replace(
-                  /-[^-]+$/,
-                  `-${normalizePathValue(c)}`,
-                );
-
-                return (
+                )}
+              </div>
+              <div className="phone__images">
+                {images.map((src, i) => (
                   <div
-                    key={c}
-                    className={`phone__color ${color === c || (!color && c === tablet.colorsAvailable[0]) ? 'phone__color-active' : ''} phone__color-${normalizePathValue(c)}`}
+                    key={src}
+                    className={`phone__imgs ${i === mainIndex ? 'phone__imgs-active' : ''}`}
                   >
-                    <div
-                      onClick={() => {
-                        setColor(c);
-                        navigate(`../tablets/${updatedPath}`);
-                      }}
-                      className={`phone__color-color phone__color-${normalizePathValue(c)}`}
-                    ></div>
+                    <img
+                      src={src}
+                      className="phone__img"
+                      onClick={() => setImage(imageByIndex(i))}
+                    />
                   </div>
-                );
-              })}
+                ))}
+              </div>
+              <div className="phone__image-main phone__image-main__second">
+                {images[mainIndex] && (
+                  <img
+                    className="phone__main-image"
+                    src={images[mainIndex]}
+                    alt=""
+                  />
+                )}
+              </div>
             </div>
-            <div className="phone__specs-border"></div>
-            <div className="phone__specs-cap">
-              <p className="phone__specs-cap-text">Select capacity</p>
-              <div className="phone__specs-capacities">
-                {tablet?.capacityAvailable.map(cap => {
-                  const activeColor = color || getDefaultColor(tablet) || '';
-                  const updatedPathCap = path?.replace(
-                    /-[^-]+-[^-]+$/,
-                    `-${normalizePathValue(cap)}-${normalizePathValue(activeColor)}`,
+            <div className="phone__specs">
+              <p className="phone__colors-text">Available colors</p>
+              <div className="phone__colors">
+                {tablet?.colorsAvailable.map(c => {
+                  const updatedPath = path?.replace(
+                    /-[^-]+$/,
+                    `-${normalizePathValue(c)}`,
                   );
 
                   return (
-                    <button
-                      key={cap}
-                      type="button"
-                      className={`phone__specs-capacity ${cap === selectedCapacity ? 'phone__specs-capacity-active' : ''}`}
-                      onClick={() => {
-                        setSelectedCapacity(cap);
-                        navigate(`../tablets/${updatedPathCap}`);
-                      }}
-                      onKeyDown={e =>
-                        (e.key === 'Enter' || e.key === ' ') &&
-                        setSelectedCapacity(cap)
-                      }
-                      aria-pressed={cap === selectedCapacity}
+                    <div
+                      key={c}
+                      className={`phone__color ${color === c || (!color && c === tablet.colorsAvailable[0]) ? 'phone__color-active' : ''} phone__color-${normalizePathValue(c)}`}
                     >
-                      {cap}
-                    </button>
+                      <div
+                        onClick={() => {
+                          setColor(c);
+                          navigate(`../tablets/${updatedPath}`);
+                        }}
+                        className={`phone__color-color phone__color-${normalizePathValue(c)}`}
+                      ></div>
+                    </div>
                   );
                 })}
-                <div />
               </div>
-            </div>
-            <div className="phone__specs-border"></div>
-            <div className="phone__prices">
-              <div className="phone__price">
-                <div className="phone__price-full">{tablet?.priceRegular}$</div>
-                <span className="phone__price-discount">
-                  {tablet?.priceDiscount}$
-                </span>
+              <div className="phone__specs-border"></div>
+              <div className="phone__specs-cap">
+                <p className="phone__specs-cap-text">Select capacity</p>
+                <div className="phone__specs-capacities">
+                  {tablet?.capacityAvailable.map(cap => {
+                    const activeColor = color || getDefaultColor(tablet) || '';
+                    const updatedPathCap = path?.replace(
+                      /-[^-]+-[^-]+$/,
+                      `-${normalizePathValue(cap)}-${normalizePathValue(activeColor)}`,
+                    );
+
+                    return (
+                      <button
+                        key={cap}
+                        type="button"
+                        className={`phone__specs-capacity ${cap === selectedCapacity ? 'phone__specs-capacity-active' : ''}`}
+                        onClick={() => {
+                          setSelectedCapacity(cap);
+                          navigate(`../tablets/${updatedPathCap}`);
+                        }}
+                        onKeyDown={e =>
+                          (e.key === 'Enter' || e.key === ' ') &&
+                          setSelectedCapacity(cap)
+                        }
+                        aria-pressed={cap === selectedCapacity}
+                      >
+                        {cap}
+                      </button>
+                    );
+                  })}
+                  <div />
+                </div>
               </div>
-            </div>
-            <div className="phone__buttons">
-              <button
-                className={`phone__add ${tablet && isInCart(String(tablet.id)) ? 'phone__add-added' : ''}`}
-                type="button"
-                onClick={() => {
-                  if (tablet) {
-                    const product = mapTabletToProduct(tablet);
+              <div className="phone__specs-border"></div>
+              <div className="phone__prices">
+                <div className="phone__price">
+                  <div className="phone__price-full">
+                    {tablet?.priceRegular}$
+                  </div>
+                  <span className="phone__price-discount">
+                    {tablet?.priceDiscount}$
+                  </span>
+                </div>
+              </div>
+              <div className="phone__buttons">
+                <button
+                  className={`phone__add ${tablet && isInCart(String(tablet.id)) ? 'phone__add-added' : ''}`}
+                  type="button"
+                  onClick={() => {
+                    if (tablet) {
+                      const product = mapTabletToProduct(tablet);
 
-                    if (isInCart(String(product.id))) {
-                      removeFromCart(String(product.id));
-                    } else {
-                      addToCart(product);
+                      if (isInCart(String(product.id))) {
+                        removeFromCart(String(product.id));
+                      } else {
+                        addToCart(product);
+                      }
                     }
-                  }
-                }}
-              >
-                {tablet && isInCart(String(tablet.id))
-                  ? 'Added'
-                  : 'Add to cart'}
-              </button>
-              <button
-                className={`phone__fav ${tablet && isInFav(String(tablet.id)) ? 'phone__fav-added' : ''}`}
-                type="button"
-                onClick={() => {
-                  if (tablet) {
-                    const product = mapTabletToProduct(tablet);
+                  }}
+                >
+                  {tablet && isInCart(String(tablet.id))
+                    ? 'Added'
+                    : 'Add to cart'}
+                </button>
+                <button
+                  className={`phone__fav ${tablet && isInFav(String(tablet.id)) ? 'phone__fav-added' : ''}`}
+                  type="button"
+                  onClick={() => {
+                    if (tablet) {
+                      const product = mapTabletToProduct(tablet);
 
-                    if (isInFav(String(product.id))) {
-                      removeFromFav(String(product.id));
-                    } else {
-                      addToFav(product);
+                      if (isInFav(String(product.id))) {
+                        removeFromFav(String(product.id));
+                      } else {
+                        addToFav(product);
+                      }
                     }
-                  }
-                }}
-              >
-                <img
-                  src={tablet && isInFav(String(tablet.id)) ? activeFav : fav}
-                  alt=""
-                  className="phone__fav-img"
-                />
-              </button>
-            </div>
-            <div className="phone__specifications">
-              <p className="phone__specifications-text phone__specifications-text__first">
-                Screen{' '}
-                <span className="phone__specifications-span">
-                  {tablet?.screen}
-                </span>
-              </p>
-              <p className="phone__specifications-text">
-                Capacity{' '}
-                <span className="phone__specifications-span">
-                  {tablet?.capacity}
-                </span>
-              </p>
-              <p className="phone__specifications-text">
-                Processor{' '}
-                <span className="phone__specifications-span">
-                  {tablet?.processor}
-                </span>
-              </p>
-              <p className="phone__specifications-text">
-                RAM{' '}
-                <span className="phone__specifications-span">
-                  {tablet?.ram}
-                </span>
-              </p>
+                  }}
+                >
+                  <img
+                    src={tablet && isInFav(String(tablet.id)) ? activeFav : fav}
+                    alt=""
+                    className="phone__fav-img"
+                  />
+                </button>
+              </div>
+              <div className="phone__specifications">
+                <p className="phone__specifications-text phone__specifications-text__first">
+                  Screen{' '}
+                  <span className="phone__specifications-span">
+                    {tablet?.screen}
+                  </span>
+                </p>
+                <p className="phone__specifications-text">
+                  Capacity{' '}
+                  <span className="phone__specifications-span">
+                    {tablet?.capacity}
+                  </span>
+                </p>
+                <p className="phone__specifications-text">
+                  Processor{' '}
+                  <span className="phone__specifications-span">
+                    {tablet?.processor}
+                  </span>
+                </p>
+                <p className="phone__specifications-text">
+                  RAM{' '}
+                  <span className="phone__specifications-span">
+                    {tablet?.ram}
+                  </span>
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="phone__info">
-          <div className="phone__about">
-            <h1 className="phone__about-title">About</h1>
-            <div className="phone__about-border"></div>
-            <div className="phone__about-article">
-              <div className="phone__about-article-title">
-                And then there was Pro
+          <div className="phone__info">
+            <div className="phone__about">
+              <h1 className="phone__about-title">About</h1>
+              <div className="phone__about-border"></div>
+              <div className="phone__about-article">
+                <div className="phone__about-article-title">
+                  And then there was Pro
+                </div>
+                <div className="phone__about-article-subtitle">
+                  <span className="phone__about-article-subtitle-span">
+                    A transformative triple‑camera system that adds tons of
+                    capability without complexity.
+                    <br />
+                    {''}
+                    <br />
+                    An unprecedented leap in battery life. And a mind‑blowing
+                    chip that doubles down on machine learning and pushes the
+                    boundaries boundaries of what a smartphone can do. Welcome
+                    to the first powerful enough to be called Pro.
+                  </span>
+                </div>
               </div>
-              <div className="phone__about-article-subtitle">
-                <span className="phone__about-article-subtitle-span">
+              <div className="phone__about-article">
+                <div className="phone__about-article-title">Camera</div>
+                <div className="phone__about-article-subtitle">
+                  Meet the first triple‑camera system to combine cutting‑edge
+                  technology with the legendary simplicity of iPhone. Capture up
+                  to four times more scene. Get beautiful images in drastically
+                  lower light. Shoot the highest‑quality video in a smartphone —
+                  then edit with the same tools you love for photos. You’ve
+                  never shot with anything like it.
+                </div>
+              </div>
+              <div className="phone__about-article">
+                <div className="phone__about-article-title">
+                  Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak
+                  it. Love it.
+                </div>
+                <div className="phone__about-article-subtitle">
                   A transformative triple‑camera system that adds tons of
-                  capability without complexity.
-                  <br />
-                  {''}
-                  <br />
-                  An unprecedented leap in battery life. And a mind‑blowing chip
-                  that doubles down on machine learning and pushes the
-                  boundaries boundaries of what a smartphone can do. Welcome to
-                  the first powerful enough to be called Pro.
-                </span>
+                  capability without complexity. iPhone 11 Pro lets you capture
+                  videos that are beautifully true to life, with greater detail
+                  and smoother motion. Epic processing power means it can shoot
+                  4K video with extended dynamic range and cinematic video
+                  stabilization — all at 60 fps. You get more creative control,
+                  too, with four times more scene and powerful new editing tools
+                  to play with.
+                </div>
               </div>
             </div>
-            <div className="phone__about-article">
-              <div className="phone__about-article-title">Camera</div>
-              <div className="phone__about-article-subtitle">
-                Meet the first triple‑camera system to combine cutting‑edge
-                technology with the legendary simplicity of iPhone. Capture up
-                to four times more scene. Get beautiful images in drastically
-                lower light. Shoot the highest‑quality video in a smartphone —
-                then edit with the same tools you love for photos. You’ve never
-                shot with anything like it.
-              </div>
-            </div>
-            <div className="phone__about-article">
-              <div className="phone__about-article-title">
-                Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it.
-                Love it.
-              </div>
-              <div className="phone__about-article-subtitle">
-                A transformative triple‑camera system that adds tons of
-                capability without complexity. iPhone 11 Pro lets you capture
-                videos that are beautifully true to life, with greater detail
-                and smoother motion. Epic processing power means it can shoot 4K
-                video with extended dynamic range and cinematic video
-                stabilization — all at 60 fps. You get more creative control,
-                too, with four times more scene and powerful new editing tools
-                to play with.
-              </div>
+            <div className="phone__tech">
+              <div className="phone__tech-title">Tech specs</div>
+              <div className="phone__tech-border"></div>
+              <p className="phone__tech-text phone__tech-text__first">
+                Screen{' '}
+                <span className="phone__tech-span">{tablet?.screen}</span>
+              </p>
+              <p className="phone__tech-text phone__tech-text__first">
+                Resolution{' '}
+                <span className="phone__tech-span">{tablet?.resolution}</span>
+              </p>
+              <p className="phone__tech-text">
+                Processor{' '}
+                <span className="phone__tech-span">{tablet?.processor}</span>
+              </p>
+              <p className="phone__tech-text">
+                RAM <span className="phone__tech-span">{tablet?.ram}</span>
+              </p>
+              <p className="phone__tech-text">
+                Built in memory{' '}
+                <span className="phone__tech-span">{tablet?.capacity}</span>
+              </p>
+              <p className="phone__tech-text">
+                Camera{' '}
+                <span className="phone__tech-span">{tablet?.camera}</span>
+              </p>
+              <p className="phone__tech-text">
+                Zoom <span className="phone__tech-span">{tablet?.zoom}</span>
+              </p>
+              <p className="phone__tech-text">
+                Cell <span className="phone__tech-span">{tablet?.cell}</span>
+              </p>
             </div>
           </div>
-          <div className="phone__tech">
-            <div className="phone__tech-title">Tech specs</div>
-            <div className="phone__tech-border"></div>
-            <p className="phone__tech-text phone__tech-text__first">
-              Screen <span className="phone__tech-span">{tablet?.screen}</span>
-            </p>
-            <p className="phone__tech-text phone__tech-text__first">
-              Resolution{' '}
-              <span className="phone__tech-span">{tablet?.resolution}</span>
-            </p>
-            <p className="phone__tech-text">
-              Processor{' '}
-              <span className="phone__tech-span">{tablet?.processor}</span>
-            </p>
-            <p className="phone__tech-text">
-              RAM <span className="phone__tech-span">{tablet?.ram}</span>
-            </p>
-            <p className="phone__tech-text">
-              Built in memory{' '}
-              <span className="phone__tech-span">{tablet?.capacity}</span>
-            </p>
-            <p className="phone__tech-text">
-              Camera <span className="phone__tech-span">{tablet?.camera}</span>
-            </p>
-            <p className="phone__tech-text">
-              Zoom <span className="phone__tech-span">{tablet?.zoom}</span>
-            </p>
-            <p className="phone__tech-text">
-              Cell <span className="phone__tech-span">{tablet?.cell}</span>
-            </p>
-          </div>
+          <PhoneLike />
         </div>
-        <PhoneLike />
+      )}
+      <div className={`phone__footer ${loader ? 'phone__footer-fixed' : ''}`}>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 };
