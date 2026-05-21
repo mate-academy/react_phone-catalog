@@ -66,7 +66,7 @@ export const Aside: React.FC<Props> = ({
         <NavLink to="/favourites" className={getFooterLink}>
           <button className="aside__footer-button">
             <img src={favourites} alt="" />
-            {totalFavourites > 0 && totalFavourites !== undefined && (
+            {(totalFavourites ?? 0) > 0 && (
               <div className="header__count aside__count">
                 <span className="header__count-number">{totalFavourites}</span>
               </div>
@@ -76,7 +76,7 @@ export const Aside: React.FC<Props> = ({
         <NavLink to="/basket" className={getFooterLink}>
           <button className="aside__footer-button">
             <img src={cart} alt="" />
-            {totalQuantity > 0 && totalQuantity !== undefined && (
+            {(totalQuantity ?? 0) > 0 && (
               <div className="header__count aside__count">
                 <span className="header__count-number">{totalQuantity}</span>
               </div>
