@@ -9,9 +9,10 @@ import { Product } from '../Products/Products';
 import React from 'react';
 import { Discount } from '../Discouned/Discounted';
 import { Discounted } from '../../types/Discounted';
+import favi from '../../images/icons/favicon.svg';
 
-import welcomeTablet from '../../images/Banner-tablet.png';
-import welcomePhone from '../../images/banner-phone.png';
+import welcomeImageAcc from '../../images/BannerAppleWatch.jpg';
+import welcomeImageTablet from '../../images/BannerTablet.jpg';
 
 enum Rectangles {
   first = 'first',
@@ -169,7 +170,7 @@ export const Main: React.FC = () => {
   ).href;
 
   const welcomeImage = new URL('../../images/Banner.png', import.meta.url).href;
-  const welcomeSlides = [welcomeImage, welcomeImage, welcomeImage];
+  const welcomeSlides = [welcomeImage, welcomeImageTablet, welcomeImageAcc];
 
   useEffect(() => {
     const id = setInterval(() => setPicIndex(p => (p + 1) % pics.length), 5000);
@@ -196,34 +197,72 @@ export const Main: React.FC = () => {
               >
                 <img src={arrowLeft} className="icon-slider" alt="" />
               </button>
-              <Link to="/phones">
-                <div className="welcome__block-img">
-                  <div
-                    className="welcome__block-track"
-                    style={{ transform: `translateX(-${picIndex * 100}%)` }}
-                  >
-                    {welcomeSlides.map((_, index) => (
-                      <div key={index} className="welcome__block-slide">
-                        <picture>
-                          <source
-                            media="(min-width: 1200px)"
-                            srcSet={welcomeImage}
-                          />
-                          <source
-                            media="(min-width: 640px)"
-                            srcSet={welcomeTablet}
-                          />
+              {/* <Link to="/phones"> */}
+              <div className="welcome__block-img">
+                <div
+                  className="welcome__block-track"
+                  style={{ transform: `translateX(-${picIndex * 100}%)` }}
+                >
+                  {welcomeSlides.map((slide, index) => (
+                    <div key={index} className="welcome__block-slide">
+                      <div className="welcome__block-banner">
+                        <div className="welcome__block-order">
+                          <div className="welcome__block-order-text">
+                            <p className="welcome__block-order-title">
+                              Now available <br /> in our store!{' '}
+                              <img
+                                className="welcome__block-favi"
+                                src={favi}
+                                alt=""
+                              />
+                            </p>
+                            <span className="welcome__block-order-description">
+                              Be the first!
+                            </span>
+                          </div>
+                          <Link
+                            to={
+                              index === 0
+                                ? '/phones'
+                                : index === 1
+                                  ? '/tablets'
+                                  : '/accessories'
+                            }
+                          >
+                            <button className="welcome__block-order-btn">
+                              Order Now
+                            </button>
+                          </Link>
+                        </div>
+                        <div className="welcome__block-img">
+                          <picture>
+                            <source
+                              media="(min-width: 1200px)"
+                              srcSet={slide}
+                            />
+                            <img
+                              className="welcome__block-ima"
+                              src={slide}
+                              alt="Welcome Image"
+                            />
+                          </picture>
+                        </div>
+                      </div>
+
+                      {/* <picture>
+
+
                           <img
                             className="welcome__block-image"
                             src={welcomePhone}
                             alt="Welcome Image"
                           />
-                        </picture>
-                      </div>
-                    ))}
-                  </div>
+                        </picture> */}
+                    </div>
+                  ))}
                 </div>
-              </Link>
+              </div>
+              {/* </Link> */}
               <button
                 type="button"
                 className="welcome__block-slider"

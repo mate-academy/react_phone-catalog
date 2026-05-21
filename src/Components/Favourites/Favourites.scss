@@ -52,7 +52,16 @@
     min-width: 0;
 
     &-empty {
-      font-size: 38px;
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+
+      @include on-tablet {
+        font-size: 48px;
+        line-height: 56px;
+      }
     }
   }
 
@@ -72,5 +81,18 @@
     width: 100%;
     margin-top: auto;
     padding-top: 40px;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
   }
 }
