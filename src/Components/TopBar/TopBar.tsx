@@ -67,8 +67,8 @@ export const TopBar: React.FC<Props> = ({
         <NavLink to="/favourites" className={getLink}>
           <button className="header__fav header__button">
             <img src={fav} className="header__fav-img" alt="Favourites" />
-            {(favouritesCount ?? 0) > 0 && (
-              <div className="header__count">
+            {(favouritesCount ?? 1) > 0 && (
+              <div className="header__count header__count-fav">
                 <span className="header__count-number">{favouritesCount}</span>
               </div>
             )}
