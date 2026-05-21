@@ -10,9 +10,12 @@ import React from 'react';
 import { Discount } from '../Discouned/Discounted';
 import { Discounted } from '../../types/Discounted';
 import favi from '../../images/icons/favicon.svg';
-
+import welcomeImagePhone from '../../images/banner-phone.png';
 import welcomeImageAcc from '../../images/BannerAppleWatch.jpg';
 import welcomeImageTablet from '../../images/BannerTablet.jpg';
+import welcomeImagePhonePhone from '../../images/bannerphonephone.jpg';
+import welcomeImageTabletPhone from '../../images/bannerphonetablet.jpg';
+import welcomeImageAccPhone from '../../images/bannerphoneacc.jpg';
 
 enum Rectangles {
   first = 'first',
@@ -77,6 +80,7 @@ export const Main: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [productsPerSlide, setProductsPerSlide] = useState(4);
   const activeRect = activeRec;
+  const widt = window.innerWidth;
 
   const [discountedActiveIndex, setDiscountedActiveIndex] = useState(0);
 
@@ -171,6 +175,11 @@ export const Main: React.FC = () => {
 
   const welcomeImage = new URL('../../images/Banner.png', import.meta.url).href;
   const welcomeSlides = [welcomeImage, welcomeImageTablet, welcomeImageAcc];
+  const welcomeSlidesPhone = [
+    welcomeImagePhonePhone,
+    welcomeImageTabletPhone,
+    welcomeImageAccPhone,
+  ];
 
   useEffect(() => {
     const id = setInterval(() => setPicIndex(p => (p + 1) % pics.length), 5000);
@@ -205,49 +214,51 @@ export const Main: React.FC = () => {
                 >
                   {welcomeSlides.map((slide, index) => (
                     <div key={index} className="welcome__block-slide">
-                      <div className="welcome__block-banner">
-                        <div className="welcome__block-order">
-                          <div className="welcome__block-order-text">
-                            <p className="welcome__block-order-title">
-                              Now available <br /> in our store!{' '}
-                              <img
-                                className="welcome__block-favi"
-                                src={favi}
-                                alt=""
-                              />
-                            </p>
-                            <span className="welcome__block-order-description">
-                              Be the first!
-                            </span>
+                      {widt >= 768 ? (
+                        <div className="welcome__block-banner">
+                          <div className="welcome__block-order">
+                            <div className="welcome__block-order-text">
+                              <p className="welcome__block-order-title">
+                                Now available <br /> in our store!{' '}
+                                <img
+                                  className="welcome__block-favi"
+                                  src={favi}
+                                  alt=""
+                                />
+                              </p>
+                              <span className="welcome__block-order-description">
+                                Be the first!
+                              </span>
+                            </div>
+                            <Link
+                              to={
+                                index === 0
+                                  ? '/phones'
+                                  : index === 1
+                                    ? '/tablets'
+                                    : '/accessories'
+                              }
+                            >
+                              <button className="welcome__block-order-btn">
+                                Order Now
+                              </button>
+                            </Link>
                           </div>
-                          <Link
-                            to={
-                              index === 0
-                                ? '/phones'
-                                : index === 1
-                                  ? '/tablets'
-                                  : '/accessories'
-                            }
-                          >
-                            <button className="welcome__block-order-btn">
-                              Order Now
-                            </button>
-                          </Link>
-                        </div>
-                        <div className="welcome__block-img">
-                          <picture>
-                            <source
-                              media="(min-width: 1200px)"
-                              srcSet={slide}
-                            />
+                          <div className="welcome__block-img">
                             <img
-                              className="welcome__block-ima"
                               src={slide}
-                              alt="Welcome Image"
+                              className="welcome__block-ima"
+                              alt={`Welcome Slide ${index + 1}`}
                             />
-                          </picture>
+                          </div>
                         </div>
-                      </div>
+                      ) : (
+                        <img
+                          className="welcome__block-ima"
+                          src={welcomeSlidesPhone[picIndex]}
+                          alt={`Welcome Slide ${picIndex + 1}`}
+                        />
+                      )}
 
                       {/* <picture>
 

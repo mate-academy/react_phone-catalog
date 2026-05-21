@@ -25,7 +25,7 @@
   &-sliders {
     gap: 16px;
     display: flex;
-    align-items: stretch;
+    align-items: center;
     justify-content: center;
     margin-bottom: 24px;
   }
@@ -52,7 +52,9 @@
   }
 
   &-slide {
-    min-width: 100%;
+    width: 100%;
+    flex-shrink: 0;
+    display: flex;
     justify-content: center;
     align-items: center;
   }
@@ -102,8 +104,6 @@
     justify-content: space-between;
 
     padding: 50px;
-
-    width: 468px;
 
     background-color: #222;
     border: 1px solid #222;
@@ -177,14 +177,19 @@
 
   &-ima {
     transform: translateY(10px);
-    height: 400px;
-    width: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
     transition: 0.3s;
 
     &:hover {
       // transform: translateY(-5px);
       transform: scale(1.05);
       transition: 0.3s;
+    }
+
+    @include on-tablet {
+      height: 400px;
     }
   }
 }
