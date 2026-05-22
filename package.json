@@ -16,10 +16,12 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
+    "@mate-academy/students-ts-config": "^0.0.4",
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
+    "cypress": "^15.15.0",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.4",
