@@ -1,0 +1,7 @@
+@use '../../components/utils/mixin.module.scss' as mixin;
+
+ .product__list{
+@include mixin.page-grid;
+
+
+}

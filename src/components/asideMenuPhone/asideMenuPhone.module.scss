@@ -1,0 +1,74 @@
+@use '/src/components/utils/mixin.module.scss' as mixin;
+
+.menu {
+  padding-top: 24px;
+z-index: 1000;
+  text-transform: uppercase;
+  font-weight: 800;
+
+
+  opacity: 1;
+  position: fixed;
+
+  right: 0;
+  left: 0;
+ box-sizing: border-box;
+  height: 100vh;
+
+  background-color:white;
+
+  @include mixin.on-tablet{
+  display: none;
+}
+}
+
+ .buttonWrapper {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.is-active {
+    color:#313237;
+    border-bottom: 3px solid #313237;
+  }
+}
+
+
+.menu__bottom{
+position: fixed;
+bottom: 0;
+left: 0;
+right: 0;
+
+  border-top: 1px solid #E2E6E9;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 64px;
+
+  .visible--mobile {
+  display: block !important;
+height: 16px;
+width: 16px;
+color:#313237;
+
+@include mixin.on-tablet {
+  display: none !important;
+  }
+}
+
+}
+
+.divider {
+  width: 0.5px;
+  height: 64px;
+  background-color:  #E2E6E9;
+}
+
+.wrapper{
+  position: relative;
+}
+
+

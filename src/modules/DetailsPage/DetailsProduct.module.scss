@@ -1,0 +1,58 @@
+@use "../../components/utils/mixin.module.scss" as mixin;
+
+.wrapper{
+  margin-bottom: 56px;
+
+
+  @include mixin.page-grid;
+
+  &__carousel{
+  grid-column: 1/-1;
+
+  @include mixin.on-tablet{
+grid-column: 1/7;
+  }
+
+  @include mixin.on-desktop{
+    grid-column: 1/12;
+  }
+}
+
+&__info{
+  grid-column: 1/-1;
+
+  @include mixin.on-tablet{
+    grid-column: 7/-1;
+  }
+
+  @include mixin.on-desktop{
+    grid-column: 13/-1;
+  }
+}
+
+
+}
+
+.aboutwrapper{
+  @include mixin.page-grid;
+
+  &__about{
+    grid-column: 1/-1;
+
+    @include mixin.on-desktop{
+      grid-column: 1/12;
+
+    }
+  }
+
+  &__tech{
+    grid-column: 1/-1;
+
+    @include mixin.on-desktop{
+      grid-column: 13/-1;
+
+    }
+  }
+
+}
+

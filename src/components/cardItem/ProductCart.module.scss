@@ -1,0 +1,135 @@
+@use '/src/components/utils/mixin.module.scss' as mixin;
+
+.card{
+box-sizing: border-box;
+ border: 1px solid #E2E6E9;
+
+  padding: 32px;
+padding-bottom: 0;
+
+  @include mixin.on-desktop {
+
+&:hover{
+      transform: scale(1.1);
+    }
+
+  }
+  &--grid{
+margin: 0 auto;
+    grid-column: 1/-1;
+
+    @include mixin.on-tablet{ grid-column: span 4;}
+
+    @include mixin.on-desktop{grid-column: span 6;} }
+
+&__link{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #0F0F11;
+}
+
+  &__image{
+  width: 148px;
+  height: 129px;
+  object-fit: contain;
+  display: block;
+
+@include mixin.on-tablet{
+  width: 173px;
+  height: 181px;
+
+}
+
+@include mixin.on-desktop{
+  width: 208px;
+ height: 196px;
+
+}
+
+  }
+
+  &__name{
+  min-height: 48px;
+  margin: 0;
+  margin-top: 24px;
+  font-family: Mont, sans-serif;
+font-weight: 600;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0%;
+text-align: left;
+margin-bottom: 8px;
+  }
+
+  &__fullprice{
+    font-family: Mont, sans-serif;
+font-weight: 800;
+font-size: 22px;
+line-height: 140%;
+letter-spacing: 0%;
+margin-bottom: 8px;
+  }
+
+  &__price{
+     margin-left: 8px;
+    font-family: Mont, sans-serif;
+  font-weight: 600;
+font-size: 22px;
+line-height: 100%;
+letter-spacing: 0%;
+text-decoration: line-through;
+color:#89939A;
+
+  }
+
+&__border{
+  border: 0.5px solid #E2E6E9;
+  margin-bottom: 8px;
+}
+
+&__info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+ margin: 0 auto;
+  margin-bottom: 16px;
+
+}
+
+  &__screen{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  margin-top: 8px;
+
+  }
+
+  &__characteristics{
+    color: #89939A;
+  font-family: Mont, sans-serif;;
+font-weight: 700;
+font-size: 12px;
+line-height: 100%;
+letter-spacing: 0%;
+
+}
+
+&__goods{
+  color: #0F0F11;
+  font-family: Mont, sans-serif;;
+font-weight: 700;
+font-size: 12px;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: right;
+
+}
+
+
+
+
+}
+

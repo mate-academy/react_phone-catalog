@@ -1,0 +1,139 @@
+@use '../utils/mixin.module.scss' as mixin;
+
+.footer{
+background-color:white;
+
+border-top: 1px solid #E2E6E9;
+padding-top: 32px;
+padding-left: 16px;
+padding-right: 16px;
+
+  @include mixin.on-tablet{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0;
+  padding-left: 32px;
+  padding-right: 32px;
+
+ }
+
+&__button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+ @include mixin.on-desktop{
+  &:hover{
+    transform: scale(1.1);
+
+  }
+}
+
+  }
+
+  &__logo{
+ @include mixin.on-tablet {
+  width: 80px;
+  height: 28px;
+}
+
+}
+
+  &__text{
+     font-family: Mont, sans-serif;
+font-weight: 700;
+font-size: 12px;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: right;
+text-decoration: none;
+color:#89939A;
+
+  }
+
+  &__icon{
+color:#0F0F11;
+padding: 12px;
+border: 1px solid #B4BDC3;
+border-radius: 100%;
+      background-position: center;
+      background-size: 16px 16px;
+      margin-left: 16px;
+
+@include mixin.on-desktop{
+ &:hover{
+border-color: #0F0F11;
+
+
+}
+
+}
+
+   }
+}
+
+.nav{
+  margin-top: 32px;
+
+  &__list{
+    height: 100%;
+margin: 0;
+    padding: 0;
+    margin-bottom: 32px;
+list-style: none;
+display: flex;
+flex-direction: column;
+justify-content: right;
+
+@include mixin.on-tablet{
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 378px;
+  gap:13px;
+
+}
+
+@include mixin.on-desktop{
+  gap:105px;
+}
+  }
+
+  &__item{
+    transition: transform 0.3s ease;
+
+  @include mixin.on-desktop{
+ &:hover{
+    transform: scale(1.1);
+  }
+}
+
+
+&:nth-child(-n+2) {
+      margin-bottom: 16px;
+
+      @include mixin.on-tablet{
+      margin: 0;
+    }
+    }
+
+  }
+
+  &__link{
+ font-family: Mont, sans-serif;
+font-weight: 800;
+font-size: 12px;
+line-height: 11px;
+letter-spacing: 4%;
+text-transform: uppercase;
+text-decoration: none;
+color:#89939A;
+
+  }
+
+}
+
+
+

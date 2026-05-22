@@ -1,0 +1,61 @@
+@use "/src/components/utils/mixin.module.scss";
+
+.page{
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+margin-bottom: 24px;
+
+@include mixin.on-tablet{
+  margin-bottom: 40px;
+
+}
+
+  &__icon{
+    display: block;
+    margin-right: 8px;
+    height: 16px;
+    width: 16px;
+
+ &--home{
+      color: black;
+    }
+  }
+
+
+  &__text{
+    text-decoration: none;
+color: #89939A;
+margin: 0;
+margin-right: 8px;
+ font-family: Mont, sans-serif;
+font-weight: 600;
+font-size: 12px;
+line-height: 100%;
+letter-spacing: 0%;
+
+ &--disabled{
+ pointer-events: none;
+    cursor: default;
+}
+
+&--active{
+  color: black;
+}
+
+  }
+
+  &__productName{
+    color: #89939A;
+    margin: 0;
+  font-family: Mont, sans-serif;
+font-weight: 600;
+font-size: 12px;
+line-height: 100%;
+letter-spacing: 0%;
+
+}
+
+
+}
