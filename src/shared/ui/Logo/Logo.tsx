@@ -1,4 +1,4 @@
-import LogoSvg from '@/assets/image/logo/logo.svg?react';
+import LogoSvg from '@/assets/images/logo/logo.svg?react';
 import './Logo.scss';
 import { Link } from 'react-router-dom';
 

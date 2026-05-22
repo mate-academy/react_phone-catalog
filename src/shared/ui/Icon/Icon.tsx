@@ -1,16 +1,15 @@
 import { Link } from 'react-router-dom';
 import './Icon.scss';
-import LogoSvg from '@/assets/image/logo/logo.svg?react';
 
 type Props = {
   name: 'menu' | 'heart';
 };
 
-export const Icon: React.FC = ({ type }: Props) => {
+export const Icon: React.FC<Props> = ({ name }: Props) => {
   return (
     <>
-      {type === 'button' && <button className="icon"></button>}{' '}
-      {type === 'link' && <Link className="icon"></Link>}
+      {name === 'menu' && <button className="icon"></button>}{' '}
+      {name === 'heart' && <Link to={'/'} className="icon"></Link>}
     </>
   );
 };
