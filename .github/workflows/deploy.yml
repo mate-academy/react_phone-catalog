@@ -15,6 +15,8 @@ jobs:
       - run: npm ci
       - run: npm run build
       - name: Deploy
+        permissions:
+          contents: write
         uses: crazy-max/ghaction-github-pages@v4
         with:
           target_branch: gh-pages
