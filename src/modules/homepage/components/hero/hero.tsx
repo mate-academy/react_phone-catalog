@@ -50,7 +50,7 @@ export const HeroPage: React.FC = () => {
     <>
       <section className={styles.hero}>
         <div className={styles.hero__paragraph}>
-          <h1 className={styles.hero__title}>Welcome to Nice Gadgets store!</h1>
+          <h1 className={styles.hero__title}>Product Catalog</h1>
         </div>
         <div className={styles.hero__banner}>
           <button
