@@ -1,0 +1,182 @@
+@import '../../../../utils/mixin';
+
+.product__list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding-inline: 0;
+  margin-bottom: 56px;
+  transition: transform 0.5s ease-in-out;
+
+  @include on-tablets {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-inline: 0;
+    flex-wrap: nowrap;
+    margin-bottom: 81px;
+  }
+
+  &-wrapper {
+    overflow: hidden; // É AQUI que o "mágico" acontece!
+    margin: 0; // Centraliza a moldura
+
+    @include on-tablets {
+      width: 650px;
+    }
+
+    @include on-desktop {
+      flex-shrink: 0;
+      width: 1137px; // O tamanho que você quer que apareça na tela
+    }
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 8px;
+  width: 212px;
+  height: 439px;
+  border-radius: 8px;
+  border: 1px solid #E2E6E9;
+  padding: 32px;
+  box-sizing: border-box;
+
+  @include on-desktop {
+    width: 272px;
+    height: 506px;
+  }
+
+  &__product-image {
+    width: 148px;
+    height: 129px;
+    object-fit: contain;
+
+    @include on-desktop {
+      width: 208px;
+      height: 196px;
+    }
+  }
+
+  &__product-title {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: normal;
+    color: #313237;
+    margin: 0;
+    width: 85%;
+  }
+
+  &__product-price-container {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    border-bottom: 1px solid #E2E6E9;
+    padding-bottom: 8px;
+    height: auto;
+  }
+
+  &__product-price {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: normal;
+    position: relative;
+    margin: 0;
+
+    // Espaço entre a linha e o número
+    // ... resto do seu estilo
+    &-discount {
+      font-family: Mont, sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-decoration: line-through;
+      margin: 0;
+      color: #89939A;
+    }
+  }
+
+  &__product-content {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    height: auto;
+    width: auto;
+  }
+
+  &__product-info {
+    margin: 0;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: normal;
+    color: #89939A;
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex-shrink: 0;
+
+      &--flex-end {
+        align-items: flex-end;
+
+        p {
+          color: #0F0F11;
+        }
+      }
+    }
+  }
+
+  &__button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  &__button {
+    height: 40px;
+    width: 100px;
+    border-radius: 8px;
+    background-color: #216CFF;
+    color: #FFF;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+
+    @include on-tablets {
+      width: 125px;
+      height: 40px;
+    }
+
+    @include on-desktop {
+      width: 160px;
+      height: 40px;
+      border-radius: 8px;
+    }
+
+    &-heart {
+      width: 40px;
+      height: 40px;
+      border-radius: 48px;
+      border: 1px solid #B4BDC3;
+      background-color: #FFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+  }
+}

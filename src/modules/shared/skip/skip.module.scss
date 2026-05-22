@@ -1,0 +1,40 @@
+.skip {
+   &__product {
+    display: flex;
+    gap: 16px;
+
+    &-skip {
+    width: 5px;
+    height: 9px;
+    &--left {
+      rotate: 180deg;
+    }
+  }
+
+  &-button {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 48px;
+    border: 1px solid #B4BDC3;
+    padding: 0;
+    background-color: #FAFBFC;
+
+    &:hover:not(:disabled) {
+    border: 1px solid #0F0F11;
+    }
+    &--disabled {
+    border: 1px solid #E2E6E9;
+    cursor: default;
+    opacity: 0.5;
+    }
+
+  
+
+  }
+
+   }
+
+
+
+}

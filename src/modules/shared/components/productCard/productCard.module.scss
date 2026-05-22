@@ -1,0 +1,260 @@
+@import '../../../../utils/mixin';
+
+.card {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 16px;
+  width: 212px;
+  height: 439px;
+  border-radius: 8px;
+  border: 1px solid #E2E6E9;
+  padding: 32px;
+  box-sizing: border-box;
+
+  @include on-tablets {
+    width: 237px;
+    height: 512px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    height: 506px;
+  }
+
+  &__product-price-container {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    border-bottom: 1px solid #E2E6E9;
+    padding-bottom: 8px;
+    height: auto;
+  }
+
+  &--catalog {
+    width: 287px;
+    height: 440px;
+    border-radius: 8px;
+    border-width: 1px;
+    padding: 32px;
+    box-sizing: border-box;
+
+    @include on-tablets {
+      width: 288px;
+      height: 506px;
+    }
+
+    @include on-desktop {
+      width: 272px;
+      height: 506px;
+    }
+  }
+
+  &--favorites {
+    width: 287px;
+    height: 440px;
+    opacity: 1;
+    border-radius: 8px;
+    border-width: 1px;
+    padding: 32px;
+
+    @include on-tablets {
+      width: 288px;
+      height: 506px;
+    }
+  }
+
+  &__product-image {
+    width: 148px;
+    height: 129px;
+    object-fit: contain;
+
+    &:hover {
+      scale: 110%;
+      transition: all 0.3s ease-in-out;
+    }
+
+    @include on-tablets {
+      width: 173px;
+      height: 202px;
+    }
+
+    @include on-desktop {
+      width: 208px;
+      height: 196px;
+    }
+
+    &--catalog {
+      width: 223px;
+      height: 130px;
+
+      @include on-tablets {
+        width: 224px;
+        height: 196px;
+      }
+
+      @include on-desktop {
+        width: 208px;
+        height: 196px;
+      }
+    }
+
+    &--favorites {
+      width: 223px;
+      height: 130px;
+    }
+  }
+
+  &__product-title {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 21px;
+    letter-spacing: normal;
+    color: #313237;
+    margin: 0;
+  }
+
+  &__product-link {
+    text-decoration: none;
+
+    @include on-tablets {
+      width: 90%;
+    }
+  }
+
+  &__product-price {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: normal;
+    position: relative;
+    margin: 0;
+
+    &-discount {
+      font-family: Mont, sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-decoration: line-through;
+      margin: 0;
+      color: #89939A;
+    }
+  }
+
+  &__product-content {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    height: auto;
+    width: auto;
+  }
+
+  &__product-info {
+    margin: 0;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: normal;
+    color: #89939A;
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex-shrink: 0;
+
+      &--flex-end {
+        align-items: flex-end;
+
+        p {
+          color: #0F0F11;
+        }
+      }
+    }
+  }
+
+  &__button-container {
+    display: grid;
+    gap: 8px;
+    margin-top: auto;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__button {
+    height: 40px;
+    width: 100px;
+    border-radius: 8px;
+    background-color: #216CFF;
+    color: #FFF;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+
+    &--active {
+      background-color: #FFF;
+      border: 1px solid #E2E6E9;
+      color: #216CFF;
+    }
+
+    &--catalog {
+      width: 175px !important;
+      height: 40px !important;
+      border-radius: 8px !important;
+    }
+
+    &--favorites {
+      width: 176px !important;
+      height: 40px !important;
+    }
+
+    @include on-tablets {
+      width: 125px;
+      height: 40px;
+    }
+
+    @include on-desktop {
+      width: 160px;
+      height: 40px;
+      border-radius: 8px;
+    }
+
+    &-heart {
+      width: 40px;
+      height: 40px;
+      border-radius: 48px;
+      border: 1px solid #B4BDC3;
+      background-color: #FFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      justify-self: end;
+    }
+  }
+
+  &__image-heart {
+    width: 20px;
+    height: 20px;
+    fill: #FFF; // Cor do coração vazio
+    stroke: #000; // Contorno cinza
+    stroke-width: 2px; // Largura do contorno
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &--active {
+      fill: #EB5757; // Preenche com vermelho
+      stroke: #EB5757;
+    }
+  }
+}

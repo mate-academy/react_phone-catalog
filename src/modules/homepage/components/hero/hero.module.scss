@@ -1,0 +1,299 @@
+@import '../../../../utils/mixin';
+
+.hero {
+  width: auto;
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+
+    @include on-tablets {
+      grid-column: 1 / 9;
+    }
+
+    @include on-desktop {
+      font-size: 48px;
+      line-height: 56px;
+      grid-column: 1 / 17;
+    }
+  }
+
+  &__paragraph {
+    @include content-padding-inline;
+
+    @include on-tablets {
+      @include page-grid;
+    }
+  }
+
+  &__banner {
+    width: 100%;
+    gap: 19px;
+    justify-items: center;
+
+    @include page-grid;
+
+    @include on-tablets {
+      @include content-padding-inline;
+    }
+  }
+
+  &__image-1 {
+    width: 320px;
+    height: 320px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 18px;
+    display: block;
+    background-image: url('/img/heroPhone.png');
+    grid-column: 1 / -1;
+
+    @include on-tablets {
+      background-image: url('/img/herobanner.png');
+      width: 490px;
+      height: 189px;
+      border-radius: 8px;
+      grid-column: 2 / 12;
+    }
+
+    @include on-desktop {
+      width: 1040px;
+      height: 400px;
+      opacity: 1;
+      border-radius: 8px;
+      grid-column: 2 / 24;
+    }
+  }
+
+  &__image-2 {
+    width: 320px;
+    height: 320px;
+    margin-bottom: 18px;
+    display: block;
+    background-image: url('/img/promax.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include on-tablets {
+      background-image: url('/img/category-accessories.png');
+      width: 490px;
+      height: 189px;
+    }
+
+    @include on-desktop {
+      width: 1040px;
+      height: 400px;
+      border-radius: 8px;
+    }
+  }
+
+  &__image-3 {
+    width: 320px;
+    height: 320px;
+    margin-bottom: 18px;
+    display: block;
+    background-size: cover;
+    background-image: url('/img/iphones.png');
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include on-tablets {
+      background-image: url('/img/imgslider3.jpg');
+      width: 490px;
+      height: 189px;
+    }
+
+    @include on-desktop {
+      width: 1040px;
+      height: 400px;
+      border-radius: 8px;
+    }
+  }
+
+  &__image--arrow-left {
+    rotate: 180deg;
+  }
+
+  &__button {
+    display: none;
+
+    @include on-tablets {
+      cursor: pointer;
+      display: block;
+      width: 32px;
+      height: 189px;
+      border-radius: 48px;
+      border: 1px solid #B4BDC3;
+      opacity: 1;
+      background-color: #FAFBFC;
+
+      @include on-desktop {
+        width: 32px;
+        height: 400px;
+        opacity: 1;
+        border-width: 1px;
+      }
+    }
+
+    &--grid-align {
+      @include on-desktop {
+        grid-column: 24;
+      }
+    }
+
+    &:hover {
+      border: 1px solid #0F0F11;
+    }
+  }
+
+  &__slider-wrapper {
+    flex-shrink: 0;
+    margin: 0 auto; // Centraliza a moldura
+
+    @include on-tablets {
+      width: 490px;
+      overflow: hidden; // É AQUI que o "mágico" acontece!
+    }
+
+    @include on-desktop {
+      width: 1040px; // O tamanho que você quer que apareça na tela
+    }
+  }
+
+  &__slider-list {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    gap: 8px;
+    list-style: none;
+    width: 490px;
+
+    @include on-tablets {
+      transition: transform 0.5s ease-in-out;
+    }
+
+    @include on-desktop {
+      width: 1040px;
+    }
+  }
+
+  &__skip-wrapper {
+    margin-bottom: 66px;
+
+    @include page-grid;
+    @include content-padding-inline;
+
+    @include on-tablets {
+      margin-bottom: 74px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 90px;
+    }
+  }
+
+  &__skip-container-bar {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    grid-column: 2 / 4;
+
+    @include on-tablets {
+      grid-column: 6 / 8;
+    }
+
+    @include on-desktop {
+      grid-column: 12 / 13;
+    }
+  }
+
+  &__skip-image {
+    display: block;
+    width: 14px;
+    height: 4px;
+    background-color: #E2E6E9;
+    border: none;
+    cursor: pointer;
+
+    &--active {
+      background-color: #0F0F11;
+    }
+  }
+
+  &__product {
+    &-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @include content-padding-inline;
+
+      @include on-tablets {
+        @include page-grid;
+      }
+
+      @include on-desktop {
+        width: auto;
+      }
+    }
+
+    &-title {
+      margin: 0;
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-style: Bold;
+      font-size: 22px;
+      line-height: 140%;
+      letter-spacing: 0%;
+
+      @include on-tablets {
+        font-size: 32px;
+        line-height: 41px;
+        letter-spacing: -1%;
+        grid-column: 1 / 7;
+      }
+
+      @include on-desktop {
+        grid-column: 1 / 8;
+      }
+    }
+
+    &-controls {
+      display: flex;
+      gap: 16px;
+
+      @include on-tablets {
+        grid-column: 10 / 12;
+      }
+
+      @include on-desktop {
+        gap: 0;
+        grid-column: 22 / 24;
+      }
+    }
+
+    &-button {
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border-radius: 48px;
+      border-width: 1px;
+      background-color: #FAFBFC;
+      padding: 0;
+    }
+  }
+
+  &__product-container {
+    width: auto;
+
+    @include content-padding-inline;
+  }
+}

@@ -1,0 +1,55 @@
+@import "./var";
+
+@mixin on-tablets {
+  @media(min-width: $tablet-min-width) {
+    @content
+  }
+}
+
+@mixin on-desktop {
+  @media(min-width: $desktop-min-width) and (max-width: $desktop-max-width) {
+    @content
+  }
+}
+
+@mixin on-large-desktop {
+  @media(min-width: $desktop-large-width) {
+    @content
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablets {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+
+  @include on-large-desktop {
+    padding-inline: 152px;
+  }
+}
+
+@mixin page-grid {
+  --colums: 4;
+
+  display: grid;
+  grid-template-columns: repeat(var(--colums), 1fr);
+  column-gap: 16px;
+
+  @include on-tablets {
+    --colums: 12;
+
+    column-gap: 16px;
+  }
+
+  @include on-desktop {
+    --colums: 24;
+
+    column-gap: 16px;
+  }
+}

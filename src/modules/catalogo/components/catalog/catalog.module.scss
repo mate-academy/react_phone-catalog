@@ -1,0 +1,88 @@
+@import "../../../../utils/mixin";
+
+.catalog {
+  height: auto;
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    margin: 24px 0 8px;
+  }
+
+  &__count {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: normal;
+    color: #89939A;
+    margin: 0;
+    margin-bottom: 32px;
+  }
+
+  &__content {
+    @include content-padding-inline;
+  }
+
+  &__productlist-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__sort-container {
+    @include page-grid;
+  }
+
+  &__sort-button {
+    width: 136px;
+    height: 40px;
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: #B4BDC3;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: normal;
+    color: #0F0F11;
+    margin-bottom: 20px;
+
+    @include on-desktop {
+      width: 128px;
+    }
+
+    &--width {
+      @include on-tablets {
+        width: 187px;
+      }
+
+      @include on-desktop {
+        width: 176px;
+        height: 40px;
+      }
+    }
+  }
+
+  &__sort-option {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: normal;
+    color: #0F0F11;
+  }
+
+  &__sort-title {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: normal;
+    color: #89939A;
+    margin-bottom: 4px;
+  }
+}
