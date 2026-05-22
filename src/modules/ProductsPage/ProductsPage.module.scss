@@ -4,9 +4,9 @@
 .productspage {
   overflow-x: hidden;
   box-sizing: border-box;
+  margin: 24px 0;
 
   @include grid;
-  margin: 24px 0;
 
   .header {
     grid-column: 1 / -1;
@@ -81,7 +81,19 @@
   }
 
   .products {
-    width: 100%;
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-items: stretch;
+
+    @media (min-width: $tablet-breakpoint) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
 }

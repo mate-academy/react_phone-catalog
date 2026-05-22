@@ -22,16 +22,13 @@ export const ProductCard = ({ product }: Props) => {
       <Link className={styles.productImage} to={`/product/${product.itemId}`}>
         <img className={styles.image} src={product.image} alt={product.name} />
       </Link>
-
       <Link to={`/product/${product.itemId}`} className={styles.title}>
         {product.name}
       </Link>
-
       <div className={styles.prices}>
         <p>${product.price}</p>
         <p>${product.fullPrice}</p>
       </div>
-
       <div className={styles.another_info}>
         <div className={styles.info}>
           <p>Screen</p>
@@ -46,7 +43,6 @@ export const ProductCard = ({ product }: Props) => {
           <p>{product.ram}</p>
         </div>
       </div>
-
       <div className={styles.buttons}>
         {isInCart ? (
           <button

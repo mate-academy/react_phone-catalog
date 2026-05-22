@@ -82,6 +82,16 @@
 
       .card {
         flex-shrink: 0;
+
+        width: 212px;
+
+        @media (min-width: $tablet-breakpoint) {
+          width: 237px;
+        }
+
+        @media (min-width: $desktop-breakpoint) {
+          width: 272px;
+        }
       }
     }
 
