@@ -13,11 +13,11 @@ export const Favorites: React.FC = () => {
     <section className={styles.favorites}>
       <div className={styles['breadcrumbs__icons-container']}>
         <NavLink to={'/'}>
-          <img src="/img/Home.png" alt="icon home" />{' '}
+          <img src="img/Home.png" alt="icon home" />{' '}
         </NavLink>
         <img
           className={styles['breadcrumbs__image-arrow']}
-          src="/img/arrow.png"
+          src="img/arrow.png"
           alt="arrow image"
         />
         <p className={styles.breadcrumbs__text}>Favourites</p>

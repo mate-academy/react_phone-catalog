@@ -59,7 +59,7 @@ export const HeroPage: React.FC = () => {
           >
             {' '}
             <img
-              src="/img/arrow.png"
+              src="img/arrow.png"
               className={styles['hero__image--arrow-left']}
               alt=""
             />{' '}
@@ -82,7 +82,7 @@ export const HeroPage: React.FC = () => {
             onClick={handleSkipSlider}
           >
             {' '}
-            <img src="/img/arrow.png" alt="" />{' '}
+            <img src="img/arrow.png" alt="" />{' '}
           </button>
         </div>
         <div className={styles['hero__skip-wrapper']}>

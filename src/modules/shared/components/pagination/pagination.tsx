@@ -97,7 +97,7 @@ export const Pagination: React.FC = ({
           >
             <img
               className={styles['page-buttom-image-left']}
-              src="/img/arrow.png"
+              src="/arrow.png"
               alt=""
             />
           </NavLink>
@@ -134,7 +134,7 @@ export const Pagination: React.FC = ({
             className={styles['page-buttom']}
             to={nextPageLink}
           >
-            <img src="/img/arrow.png" alt="" />
+            <img src="img/arrow.png" alt="" />
           </NavLink>
         </div>
       </div>

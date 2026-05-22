@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
       <div className={styles.footer__rectangle}>
         <img
           className={styles['footer__image-logo']}
-          src="/img/Logo.png"
+          src="img/Logo.png"
           alt="logo nice gadgets"
         />
         <ul className={styles.footer__list}>
@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
             onClick={() => scrolToTop()}
             className={styles.footer__button}
           >
-            <img className={styles.footer__arrow} src="/img/arrow.png" alt="" />
+            <img className={styles.footer__arrow} src="img/arrow.png" alt="" />
           </button>
         </div>
       </div>

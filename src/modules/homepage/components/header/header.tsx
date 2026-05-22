@@ -20,7 +20,7 @@ export const Header: React.FC = () => {
       <div className={styles['top-bar']}>
         <NavLink to={'/'} className={styles['top-bar__link-logo']}>
           <img
-            src="/img/Logo.png"
+            src="img/Logo.png"
             alt="logo nice gadgets"
             className={styles['top-bar__image-logo']}
           />
@@ -62,7 +62,7 @@ export const Header: React.FC = () => {
               className={styles['top-bar__action-heart']}
             >
               <img
-                src="/img/heart.png"
+                src="img/heart.png"
                 alt="heart"
                 className={styles['top-bar__image-heart']}
               />
@@ -80,7 +80,7 @@ export const Header: React.FC = () => {
           >
             <NavLink to={'/bag'} className={styles['top-bar__action-bag']}>
               <img
-                src="/img/cart.png"
+                src="img/cart.png"
                 alt="bag"
                 className={styles['top-bar__image-bag']}
               />
@@ -94,7 +94,7 @@ export const Header: React.FC = () => {
           <div className={styles['top-bar__actions-content-menu']}>
             <NavLink to={'/menu'} className={styles['top-bar__action-menu']}>
               <img
-                src="/img/Menu.png"
+                src="img/Menu.png"
                 alt="icon burger"
                 className={styles['top-bar__image-menu']}
               />

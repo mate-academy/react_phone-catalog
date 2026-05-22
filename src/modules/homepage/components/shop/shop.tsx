@@ -25,7 +25,7 @@ export const Shop: React.FC = () => {
             <span className={styles.shop__rectangle}>
               <img
                 className={`${styles['shop__category-phone']} ${styles['shop__category-image--scale']}`}
-                src="/img/category-phones.png"
+                src="img/category-phones.png"
                 alt="mobile phones"
               />
             </span>
@@ -40,7 +40,7 @@ export const Shop: React.FC = () => {
             >
               <img
                 className={`${styles['shop__category-tablets']} ${styles['shop__category-image--scale']}`}
-                src="/img/category-tablets.png"
+                src="img/category-tablets.png"
                 alt="mobile phones"
               />
             </span>
@@ -55,7 +55,7 @@ export const Shop: React.FC = () => {
             >
               <img
                 className={`${styles['shop__category-accessories']} ${styles['shop__category-image--scale']}`}
-                src="/img/category-accessories.png"
+                src="img/category-accessories.png"
                 alt="mobile phones"
               />
             </span>

@@ -32,7 +32,7 @@ export const Menu: React.FC = () => {
       <div className={styles['top-bar']}>
         <NavLink to={'/'} className={styles['top-bar__link-logo']}>
           <img
-            src="/img/logoblack.png"
+            src="img/logoblack.png"
             alt="logo nice gadgets"
             className={styles['top-bar__image-logo']}
           />
@@ -40,7 +40,7 @@ export const Menu: React.FC = () => {
         <div className={styles['top-bar__actions-container']}>
           <NavLink to={'/'} className={styles['top-bar__action-menu']}>
             <img
-              src="/img/Close.png"
+              src="img/Close.png"
               alt="icon close"
               className={styles['top-bar__image-menu']}
             />
@@ -83,7 +83,7 @@ export const Menu: React.FC = () => {
             <NavLink className={styles['bottom__link-heart']} to={'/favorites'}>
               <img
                 className={styles['bottom__bar-image']}
-                src="/img/heart.png"
+                src="img/heart.png"
                 alt=""
               />
               <span className={styles['bottom__bar-counter-heart']}>
@@ -97,7 +97,7 @@ export const Menu: React.FC = () => {
             <NavLink className={styles['bottom__link-bag']} to={'/bag'}>
               <img
                 className={styles['bottom__bar-image']}
-                src="/img/cart.png"
+                src="img/cart.png"
                 alt=""
               />
               <span className={styles['bottom__bar-counter-bag']}>

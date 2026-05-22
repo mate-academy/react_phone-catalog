@@ -19,14 +19,14 @@ export const SkipButton: React.FC = ({
         >
           <img
             className={`${styles['skip__product-skip']} ${styles['skip__product-skip--left']}`}
-            src="/img/arrow.png"
+            src="img/arrow.png"
             alt=""
           />
         </button>
         <button className={styles['skip__product-button']} onClick={handleSkip}>
           <img
             className={styles['skip__product-skip']}
-            src="/img/arrow.png"
+            src="img/arrow.png"
             alt=""
           />
         </button>

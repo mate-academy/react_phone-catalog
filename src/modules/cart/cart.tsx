@@ -34,7 +34,7 @@ export const Cart: React.FC = () => {
     <section className={styles.cart}>
       <div className={styles['cart__back-button-container']}>
         <img
-          src="/img/arrow.png"
+          src="img/arrow.png"
           alt=""
           className={styles['cart__back-button-arrow']}
         />
@@ -55,7 +55,7 @@ export const Cart: React.FC = () => {
                   >
                     <img
                       className={styles['cart__product-close']}
-                      src="/img/Close.png"
+                      src="img/Close.png"
                       alt=""
                     />
                   </button>
@@ -88,7 +88,7 @@ export const Cart: React.FC = () => {
                       className={styles['cart__product-button-change']}
                     >
                       {' '}
-                      <img src="/img/Plus.png" alt="" />
+                      <img src="img/Plus.png" alt="" />
                     </button>
                   </div>
                   <p

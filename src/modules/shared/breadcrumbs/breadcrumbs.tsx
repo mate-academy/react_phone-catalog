@@ -24,13 +24,13 @@ export const BreadCrumbs: React.FC = ({
         <NavLink className={styles['breadcrumbs__link-home']} to={'/'}>
           <img
             className={styles['breadcrumbs__home-image']}
-            src="/img/Home.png"
+            src="img/Home.png"
             alt=""
           />
         </NavLink>
         <img
           className={styles['breadcrumbs__arrow-image']}
-          src="/img/arrow.png"
+          src="img/arrow.png"
           alt=""
         />
         <NavLink
@@ -46,7 +46,7 @@ export const BreadCrumbs: React.FC = ({
           <>
             <img
               className={styles['breadcrumbs__arrow-image']}
-              src="/img/arrow.png"
+              src="img/arrow.png"
               alt=""
             />
             <p className={styles['breadcrumbs__product-name']}>{productId}</p>
@@ -57,7 +57,7 @@ export const BreadCrumbs: React.FC = ({
         <>
           <img
             className={styles['breadcrumbs__arrow-back']}
-            src="/img/arrow.png"
+            src="img/arrow.png"
             alt=""
           />
           <BackButton onBack={handleClick} />
