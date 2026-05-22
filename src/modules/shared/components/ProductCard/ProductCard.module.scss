@@ -33,16 +33,21 @@
   background-color: $surface_1;
 
   width: 100%;
-  height: 100%;
   padding: 32px;
+  height: 440px;
+
+  @media (min-width: $tablet-breakpoint) {
+    height: 512px;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    height: 506px;
+  }
 
 
   .productImage {
-    width: 100%;
     flex: 1;
     min-height: 0;
-
-    @include flex-center;
 
     .image {
       width: 100%;
@@ -158,5 +163,3 @@
 
   }
 }
-
-
