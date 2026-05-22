@@ -35,7 +35,7 @@ export const TabletPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${import.meta.env.BASE_URL}/api/tablets.json`)
+    fetch(`${import.meta.env.BASE_URL}api/tablets.json`)
       .then(response => {
         if (!response.ok) {
           throw new Error(
@@ -97,7 +97,7 @@ export const TabletPage = () => {
 
   const handleAddToCart = (tablet: Tablet) => {
     const cartItem: CartItem = {
-      id: tablet.itemId, 
+      id: tablet.id,
       name: tablet.name,
       price: tablet.priceDiscount,
       image: `${tablet.images[0]}`,
@@ -139,7 +139,7 @@ export const TabletPage = () => {
         <a href="#">
           <img src="./icons/home.svg" alt="home_nav" className="home--nav-icon" />
         </a>
-        <img src="./icons/arrow-right.svg" alt="arrow-right" className="home--nav-arrow" />
+        <img src="./icons/arrow-right-small.svg" alt="arrow-right" className="home--nav-arrow" />
         <p className="home--nav-top">Tablets</p>
       </div>
 
@@ -165,8 +165,7 @@ export const TabletPage = () => {
         ) : (
           currentItems.map(tablet => (
             <div key={tablet.id} className="tablets__card">
-              {/* ✅ FIX HERE */}
-              <Link to={`/${tablet.category}/${tablet.itemId}`}>
+              <Link to={`/${tablet.category}/${tablet.id}`}>
                 <img
                   src={
                     imageError[`${tablet.images[0]}`]
@@ -206,7 +205,7 @@ export const TabletPage = () => {
                   className={`tablets__card-btn tablets__card-btn--add ${
                     cart.some(
                       item =>
-                        item.id === tablet.itemId &&
+                        item.id === tablet.id &&
                         item.color === tablet.color &&
                         item.capacity === tablet.capacity,
                     )
@@ -219,14 +218,14 @@ export const TabletPage = () => {
                   }}
                   disabled={cart.some(
                     item =>
-                      item.id === tablet.itemId &&
+                      item.id === tablet.id &&
                       item.color === tablet.color &&
                       item.capacity === tablet.capacity,
                   )}
                 >
                   {cart.some(
                     item =>
-                      item.id === tablet.itemId &&
+                      item.id === tablet.id &&
                       item.color === tablet.color &&
                       item.capacity === tablet.capacity,
                   )
@@ -236,16 +235,16 @@ export const TabletPage = () => {
 
                 <button
                   className={`tablets__card-btn tablets__card-btn--favorite ${
-                    favorites.includes(tablet.itemId) ? 'favorite--active' : ''
+                    favorites.includes(tablet.id) ? 'favorite--active' : ''
                   }`}
                   onClick={e => {
                     e.preventDefault();
-                    toggleFavorite(tablet.itemId);
+                    toggleFavorite(tablet.id);
                   }}
                 >
                   <img
                     src={
-                      favorites.includes(tablet.itemId)
+                      favorites.includes(tablet.id)
                         ? './icons/heart-active.svg'
                         : './icons/heart.svg'
                     }
