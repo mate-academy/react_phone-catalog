@@ -39,9 +39,9 @@ export default function ShopByCategory() {
           <Link to="/accessories" className="shop__link">
             <div className="shop__card shop__card--accessories">
               <img
-                src="img/category-accessories.png"
+                src="img/phones.png"
                 alt="accessories-category"
-                className="shop__img"
+                className="shop__img--accessories"
               />
             </div>
           </Link>

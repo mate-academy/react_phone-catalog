@@ -6,13 +6,13 @@
   z-index: 1000;
   position: sticky;
   top: 0;
-  background-color: #1F1F2B;
+  background-color: #1f1f2b;
 
   &__burger-wrapper {
     height: 64px;
     display: flex;
     align-items: center;
-    border-left: 1px solid #3B3E4A;
+    border-left: 1px solid #3b3e4a;
     padding: 0 16px;
 
     @include on-tablet {
@@ -44,7 +44,7 @@
     }
 
     &:hover span {
-      background-color: #75767F;
+      background-color: #75767f;
     }
 
     @include on-tablet {
@@ -61,7 +61,7 @@
     display: flex;
     align-items: center;
     position: relative;
-    border-bottom: 1px solid #3B3E4A;
+    border-bottom: 1px solid #3b3e4a;
     height: 64px;
     box-sizing: border-box;
   }
@@ -104,7 +104,7 @@
   &__heart,
   &__packet {
     position: relative;
-    border-left: 1px solid #3B3E4A;
+    border-left: 1px solid #3b3e4a;
     cursor: pointer;
     height: 100%;
     display: flex;
@@ -115,6 +115,14 @@
     @include on-phone {
       display: none;
     }
+  }
+
+  &__packet-amount {
+    margin-left: 8px;
+    font-size: 12px;
+    color: #f1f2f9;
+    font-weight: 700;
+    white-space: nowrap;
   }
 
   &__heart {
@@ -149,7 +157,7 @@
 }
 
 .navbar-item {
-  color: #75767F;
+  color: #75767f;
   cursor: pointer;
   position: relative;
   text-decoration: none;
@@ -166,7 +174,7 @@
   transition: color 0.2s ease;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     bottom: 0;
@@ -199,7 +207,7 @@
   right: 8px;
   width: 14px;
   height: 14px;
-  background-color: #EB5757;
+  background-color: #eb5757;
   color: white;
   font-size: 8px;
   font-weight: 700;

@@ -4,18 +4,10 @@
 
 .shop {
   margin-top: 56px;
-  padding: 0 32px;
-
-  @include on-tablet {
-    padding: 0 24px;
-  }
-
-  @include on-phone {
-    padding: 0 16px;
-  }
+  padding: 0;
 
   &__title {
-    color: #F1F2F9;
+    color: #f1f2f9;
     font-family: 'Mont', Montserrat, sans-serif;
     font-weight: 800;
     font-size: 32px;
@@ -58,16 +50,20 @@
       transform: translate(-50%, -50%) scale(1.1);
     }
 
+    &:hover .shop__img--accessories {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
     &--phones {
-      background-color: #6D6474;
+      background-color: #6d6474;
     }
 
     &--tablets {
-      background-color: #A9A9A9;
+      background-color: #a9a9a9;
     }
 
     &--accessories {
-      background-color: #AE0062;
+      background-color: #ae0062;
     }
 
     @include on-tablet {
@@ -90,8 +86,19 @@
     transition: transform 0.3s ease;
   }
 
+  &__img--accessories {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    top: 50%;
+    left: 53.5%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease;
+  }
+
   &__label {
-    color: #F1F2F9;
+    color: #f1f2f9;
     font-family: 'Mont', Montserrat, sans-serif;
     font-weight: 700;
     font-size: 20px;
@@ -101,7 +108,7 @@
   }
 
   &__models {
-    color: #75767F;
+    color: #75767f;
     font-family: 'Mont', Montserrat, sans-serif;
     font-weight: 600;
     font-size: 14px;

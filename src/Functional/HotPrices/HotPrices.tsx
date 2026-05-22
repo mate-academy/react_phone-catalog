@@ -25,7 +25,8 @@ export default function HotPrices() {
   const [phones, setPhones] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const { addToCart, toggleFavorite, cart, favorites } = useCart();
+  const { addToCart, removeFromCart, toggleFavorite, cart, favorites } =
+    useCart();
 
   useEffect(() => {
     setLoading(true);
@@ -105,7 +106,11 @@ export default function HotPrices() {
                   <img
                     src={`${import.meta.env.BASE_URL}${phone.image}`}
                     alt={phone.name}
-                    className="hot__card-image"
+                    className={`hot__card-image ${
+                      phone.itemId === 'apple-iphone-14-pro-512gb-spaceblack'
+                        ? 'hot__card-image--big'
+                        : ''
+                    }`}
                     onError={e =>
                       e.currentTarget.setAttribute(
                         'src',
@@ -141,22 +146,37 @@ export default function HotPrices() {
                 </Link>
                 <div className="hot__card-actions">
                   <button
-                    className="hot__card-btn hot__card-btn--add"
-                    onClick={() =>
-                      addToCart({
-                        id: phone.itemId,
-                        name: phone.name,
-                        price: phone.price,
-                        image: phone.image,
-                        color: phone.color,
-                        capacity: phone.capacity,
-                        quantity: 1,
-                      })
-                    }
-                    disabled={cart.some(item => item.id === phone.itemId)}
+                    className={`hot__card-btn hot__card-btn--add ${
+                      cart.some(item => item.id === phone.itemId)
+                        ? 'hot__card-btn--remove'
+                        : ''
+                    }`}
+                    onClick={() => {
+                      const isInCart = cart.some(
+                        item => item.id === phone.itemId,
+                      );
+
+                      if (isInCart) {
+                        removeFromCart(
+                          phone.itemId,
+                          phone.color,
+                          phone.capacity,
+                        );
+                      } else {
+                        addToCart({
+                          id: phone.itemId,
+                          name: phone.name,
+                          price: phone.price,
+                          image: phone.image,
+                          color: phone.color,
+                          capacity: phone.capacity,
+                          quantity: 1,
+                        });
+                      }
+                    }}
                   >
                     {cart.some(item => item.id === phone.itemId)
-                      ? 'Added to cart'
+                      ? 'Remove from cart'
                       : 'Add to cart'}
                   </button>
                   <button

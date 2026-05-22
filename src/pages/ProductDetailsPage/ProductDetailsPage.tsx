@@ -16,7 +16,8 @@ export const ProductDetailsPage = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
   const { pathname, search } = useLocation();
-  const { addToCart, toggleFavorite, cart, favorites } = useCart();
+  const { addToCart, removeFromCart, toggleFavorite, cart, favorites } =
+    useCart();
 
   const [product, setProduct] = useState<Phone | Tablet | Accessories | null>(
     null,
@@ -161,20 +162,37 @@ export const ProductDetailsPage = () => {
     }
   };
 
+  const isInCart = cart.some(
+    item =>
+      item.id === product?.id &&
+      item.color === selectedColor &&
+      item.capacity === selectedCapacity,
+  );
+
   const handleAddToCart = () => {
     if (!product) {
       return;
     }
 
-    addToCart({
-      id: product.id,
-      name: product.name,
-      price: product.priceDiscount,
-      image: selectedImage || 'img/page-not-found.png',
-      color: selectedColor || product.color,
-      capacity: selectedCapacity || undefined,
-      quantity: 1,
-    });
+    if (isInCart) {
+      // Remove from cart if already added
+      removeFromCart(
+        product.id,
+        selectedColor || product.color,
+        selectedCapacity || undefined,
+      );
+    } else {
+      // Add to cart
+      addToCart({
+        id: product.id,
+        name: product.name,
+        price: product.priceDiscount,
+        image: selectedImage || 'img/page-not-found.png',
+        color: selectedColor || product.color,
+        capacity: selectedCapacity || undefined,
+        quantity: 1,
+      });
+    }
   };
 
   const handleToggleFavorite = () => {
@@ -188,13 +206,6 @@ export const ProductDetailsPage = () => {
   const handleImageError = (imageSrc: string) => {
     setImageError(prev => ({ ...prev, [imageSrc]: true }));
   };
-
-  const isInCart = cart.some(
-    item =>
-      item.id === product?.id &&
-      item.color === selectedColor &&
-      item.capacity === selectedCapacity,
-  );
 
   const getCategoryLink = () => {
     if (!product) {
@@ -320,9 +331,8 @@ export const ProductDetailsPage = () => {
             <button
               className={`product-details__add-to-cart ${isInCart ? 'added' : ''}`}
               onClick={handleAddToCart}
-              disabled={isInCart}
             >
-              {isInCart ? 'Added to cart' : 'Add to cart'}
+              {isInCart ? 'Remove from cart' : 'Add to cart'}
             </button>
             <button
               className={`product-details__favorite ${favorites.includes(product.id) ? 'favorite--active' : ''}`}

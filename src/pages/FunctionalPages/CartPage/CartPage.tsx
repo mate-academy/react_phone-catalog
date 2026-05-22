@@ -56,7 +56,9 @@ export const CartPage = () => {
                 </div>
                 <button
                   className="cart__item-remove"
-                  onClick={() => removeFromCart(item.id)}
+                  onClick={() =>
+                    removeFromCart(item.id, item.color, item.capacity)
+                  }
                 >
                   Remove
                 </button>

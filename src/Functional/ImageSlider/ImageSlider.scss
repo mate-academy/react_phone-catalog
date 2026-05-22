@@ -1,17 +1,9 @@
 @use '../../mixins.scss' as *;
 
 .swiper--top {
-  padding: 0 32px;
+  padding: 0;
   margin-top: 24px;
   overflow: hidden;
-
-  @include on-tablet {
-    padding: 0 24px;
-  }
-
-  @include on-phone {
-    padding: 0 16px;
-  }
 
   &__conteiner {
     position: relative;
@@ -55,19 +47,19 @@
     width: 32px;
     min-width: 32px;
     flex-shrink: 0;
-    border: 1px solid #3B3E4A;
+    border: 1px solid #3b3e4a;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: #F1F2F9;
+    color: #f1f2f9;
     background-color: #161827;
     transition: border-color 0.3s ease;
     font-size: 16px;
     padding: 0;
 
     &:hover {
-      border-color: #F1F2F9;
+      border-color: #f1f2f9;
     }
   }
 
@@ -79,12 +71,12 @@
     width: 14px;
     height: 4px;
     border-radius: 0;
-    background: #3B3E4A;
+    background: #3b3e4a;
     opacity: 1;
     transition: background-color 0.3s ease;
   }
 
   .swiper-pagination-bullet-active {
-    background: #F1F2F9;
+    background: #f1f2f9;
   }
 }

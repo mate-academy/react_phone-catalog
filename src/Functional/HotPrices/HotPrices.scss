@@ -28,7 +28,7 @@
   }
 
   &__title {
-    color: #F1F2F9;
+    color: #f1f2f9;
     font-family: 'Mont', Montserrat, sans-serif;
     font-weight: 800;
     font-size: 32px;
@@ -46,8 +46,8 @@
     width: 32px;
     height: 32px;
     background-color: transparent;
-    border: 1px solid #3B3E4A;
-    color: #F1F2F9;
+    border: 1px solid #3b3e4a;
+    color: #f1f2f9;
     font-size: 14px;
     cursor: pointer;
     display: flex;
@@ -57,7 +57,7 @@
     border-radius: 0;
 
     &:hover {
-      border-color: #F1F2F9;
+      border-color: #f1f2f9;
     }
   }
 
@@ -73,7 +73,7 @@
     display: flex;
     flex-direction: column;
     background-color: #161827;
-    border: 1px solid #3B3E4A;
+    border: 1px solid #3b3e4a;
     padding: 32px;
     height: 506px;
     text-align: left;
@@ -94,7 +94,7 @@
 
   &__card-image {
     width: 100%;
-    height: 196px;
+    height: 200px;
     object-fit: contain;
     margin-bottom: 16px;
     display: block;
@@ -105,12 +105,24 @@
     }
   }
 
+  &__card-image--big {
+    display: block;
+    padding: 32px 32px 0 32px;
+    box-sizing: border-box;
+    max-width: calc(100% - 64px);
+    width: auto;
+    height: 240px;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: contain;
+  }
+
   &__card-title {
     font-family: 'Mont', Montserrat, sans-serif;
     font-size: 14px;
     font-weight: 600;
     margin: 0 0 8px 0;
-    color: #F1F2F9;
+    color: #f1f2f9;
     line-height: 21px;
   }
 
@@ -125,14 +137,14 @@
     font-family: 'Mont', Montserrat, sans-serif;
     font-size: 22px;
     font-weight: 800;
-    color: #F1F2F9;
+    color: #f1f2f9;
     line-height: 31px;
   }
 
   &__card-old-price {
     font-family: 'Mont', Montserrat, sans-serif;
     font-size: 14px;
-    color: #75767F;
+    color: #75767f;
     text-decoration: line-through;
     font-weight: 600;
     line-height: 21px;
@@ -143,7 +155,7 @@
     flex-direction: column;
     gap: 8px;
     padding: 16px 0;
-    border-top: 1px solid #3B3E4A;
+    border-top: 1px solid #3b3e4a;
     margin-bottom: 16px;
   }
 
@@ -155,12 +167,12 @@
   }
 
   &__card-spec-label {
-    color: #75767F;
+    color: #75767f;
     font-weight: 700;
   }
 
   &__card-spec-value {
-    color: #F1F2F9;
+    color: #f1f2f9;
     font-weight: 700;
   }
 
@@ -180,21 +192,32 @@
     font-weight: 700;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease;
   }
 
   &__card-btn--add {
     flex: 1;
-    background-color: #905BFF;
+    background-color: #905bff;
     color: white;
 
     &:hover {
-      background-color: #A378FF;
+      background-color: #a378ff;
     }
 
     &:disabled {
-      background-color: #3B3E4A;
+      background-color: #3b3e4a;
       cursor: not-allowed;
+    }
+  }
+
+  &__card-btn--remove {
+    background-color: #3b3e4a;
+    color: #f1f2f9;
+
+    &:hover {
+      background-color: #50535f;
     }
   }
 
@@ -202,7 +225,7 @@
     width: 40px;
     height: 40px;
     background-color: transparent;
-    border: 1px solid #3B3E4A;
+    border: 1px solid #3b3e4a;
     color: white;
     display: flex;
     align-items: center;
@@ -210,7 +233,7 @@
     flex-shrink: 0;
 
     &:hover {
-      border-color: #F1F2F9;
+      border-color: #f1f2f9;
     }
   }
 

@@ -20,7 +20,7 @@ interface CartContextType {
   cart: CartItem[];
   favorites: string[];
   addToCart: (item: CartItem) => void;
-  removeFromCart: (id: string) => void;
+  removeFromCart: (id: string, color?: string, capacity?: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   toggleFavorite: (id: string) => void;
   clearCart: () => void;
@@ -71,8 +71,27 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
-  const removeFromCart = (id: string) => {
-    setCart(prevCart => prevCart.filter(item => item.id !== id));
+  const removeFromCart = (id: string, color?: string, capacity?: string) => {
+    setCart(prevCart =>
+      prevCart.filter(item => {
+        // If color and capacity are provided, match specific variant
+        if (color !== undefined && capacity !== undefined) {
+          return !(
+            item.id === id &&
+            item.color === color &&
+            item.capacity === capacity
+          );
+        }
+
+        // If only color is provided, match by id and color
+        if (color !== undefined) {
+          return !(item.id === id && item.color === color);
+        }
+
+        // Otherwise, remove all items with this id
+        return item.id !== id;
+      }),
+    );
   };
 
   const updateQuantity = (id: string, quantity: number) => {

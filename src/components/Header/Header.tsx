@@ -10,6 +10,8 @@ export const Header = () => {
   const { cart, favorites } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const cartItemsCount = cart.reduce((total, item) => total + item.quantity, 0);
+
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames('navbar-item', {
       'is-active': isActive,
@@ -66,9 +68,9 @@ export const Header = () => {
                 alt="Cart"
                 className="header__packet__top__btn"
               />
-              {cart.length > 0 && (
+              {cartItemsCount > 0 && (
                 <span className="cart-count cart-count--cart">
-                  {cart.length}
+                  {cartItemsCount}
                 </span>
               )}
             </Link>
