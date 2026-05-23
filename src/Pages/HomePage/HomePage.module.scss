@@ -1,0 +1,19 @@
+@import '../../utils/mixins';
+@import '../../variables';
+
+.HomePage{
+  @include inline-padding;
+
+  font-family: $font-family;
+
+  width: 100%;
+}
+
+.title{
+  padding-block: 56px;
+  font-family: $font-family;
+}
+
+.hidden{
+  display: none;
+}

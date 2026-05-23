@@ -1,0 +1,109 @@
+@use "sass:color";
+@import '../../variables';
+@import '../../utils/mixins';
+
+.cart {
+  @include inline-padding;
+  @include grid;
+
+  padding-bottom: 80px;
+  column-gap: 24px;
+  min-height: calc(100vh - 48px - 96px);
+  align-content: flex-start;
+
+  &__back {
+    grid-column: 1 / -1;
+    width: 66px;
+    height: 16px;
+    border: none;
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 40px;
+    margin-bottom: 16px;
+    text-decoration: none;
+    color: $Secondary;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 32px;
+    color: $Primary;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-desktop { grid-column: 1 / span 16; }
+
+    @include on-tablet { grid-column: 1 / span 24; }
+
+    @include on-phone { grid-column: 1 / -1; }
+  }
+
+  &__line {
+    height: 1px;
+    width: 100%;
+    background-color: $Elements;
+    margin-block: 24px;
+  }
+
+  &__summary {
+    border: 1px solid $Elements;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+    padding: 24px;
+    box-sizing: border-box;
+
+    @include on-desktop { grid-column: 18 / span 7; }
+
+    @include on-tablet {
+      grid-column: 1/-1;
+      margin-top: 32px;
+    }
+
+    @include on-phone {
+      grid-column: 1/-1;
+      margin-top: 32px;
+    }
+  }
+
+  &__total {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: $Primary;
+  }
+
+  &__count {
+    font-size: 14px;
+    color: $Secondary;
+  }
+
+  &__checkout {
+    width: 100%;
+    height: 48px;
+    background-color: $Primary;
+    color: white;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      background-color: color.scale($Primary, $lightness: 10%);
+    }
+  }
+}

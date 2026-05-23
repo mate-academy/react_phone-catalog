@@ -1,0 +1,54 @@
+@import '../../utils/mixins';
+@import '../../variables';
+
+.favorites{
+  @include inline-padding;
+
+  display: flex;
+  flex-direction: column;
+
+  row-gap: 40px;
+
+
+  &__title{
+    font-family: $font-family;
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 48px;
+
+    line-height: 56px;
+    letter-spacing: -1%;
+    color: $Primary;
+  }
+
+  &__itemsCount{
+    font-family: $font-family;
+    font-weight: 600;
+    font-size: 14px;
+
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $Secondary;
+  }
+
+  &__itemsContainer{
+    @include grid;
+
+    row-gap: 40px;
+    margin-bottom: 40px;
+  }
+  &__card{
+    @include on-phone{
+      grid-column: span 4;
+    }
+
+    @include on-tablet{
+      grid-column: span 6;
+    }
+
+    @include on-desktop{
+      grid-column: span 6;
+    }
+  }
+}
+
