@@ -36,7 +36,7 @@ export const PhonePage = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${import.meta.env.BASE_URL}/api/phones.json`)
+    fetch(`${import.meta.env.BASE_URL}api/phones.json`)
       .then(response => {
         if (!response.ok) throw new Error(`Failed to fetch: ${response.status}`);
         return response.json();
@@ -131,7 +131,10 @@ export const PhonePage = () => {
         <a href="#">
           <img src="./icons/home.svg" alt="home_nav" className="home--nav-icon" />
         </a>
-        <img src="./icons/arrow-right.svg" alt="arrow-right" className="home--nav-arrow" />
+
+        {/* ✅ Маленькая стрелка для breadcrumb */}
+        <img src="./icons/arrow-right-small.svg" alt="arrow-right" className="home--nav-arrow" />
+
         <p className="home--nav-top">Phones</p>
       </div>
 
@@ -157,10 +160,7 @@ export const PhonePage = () => {
         ) : (
           currentItems.map(phone => (
             <div key={phone.id} className="phone__card">
-
-              {/* 🔥 FIX HERE */}
-              <Link to={`/phones/${phone.itemId ?? phone.id}`}>
-
+              <Link to={`/phones/${phone.id}`}>
                 <img
                   src={
                     imageError[phone.images[0]]
@@ -248,7 +248,6 @@ export const PhonePage = () => {
                   />
                 </button>
               </div>
-
             </div>
           ))
         )}
@@ -256,12 +255,13 @@ export const PhonePage = () => {
 
       {totalPages > 1 && (
         <div className="pagination">
+          {/* ✅ Иконка стрелки влево для пагинации */}
           <button
             onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
-            className="pagination__button"
+            className="pagination__button pagination__button--arrow"
           >
-            {'<'}
+            <img src="./icons/arrow-left.svg" alt="prev" className="pagination__arrow-icon" />
           </button>
 
           {getPageNumbers().map((page, index) => (
@@ -275,12 +275,13 @@ export const PhonePage = () => {
             </button>
           ))}
 
+          {/* ✅ Иконка стрелки вправо для пагинации */}
           <button
             onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
             disabled={currentPage === totalPages}
-            className="pagination__button"
+            className="pagination__button pagination__button--arrow"
           >
-            {'>'}
+            <img src="./icons/arrow-right.svg" alt="next" className="pagination__arrow-icon" />
           </button>
         </div>
       )}

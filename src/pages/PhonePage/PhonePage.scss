@@ -201,6 +201,18 @@
   }
 }
 
+.pagination__button--arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.pagination__arrow-icon {
+  width: 16px;
+  height: 16px;
+}
+
 .pagination {
   margin-top: 40px;
   display: flex;
