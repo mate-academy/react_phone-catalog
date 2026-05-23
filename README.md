@@ -8,7 +8,7 @@ Implement the catalog with a shopping cart and favorites page according to one o
 - [Rounded Purple](https://www.figma.com/file/xMK2Dy0mfBbJJSNctmOuLW/Phone-catalog-(V2)-Rounded-Style-1?node-id=0%3A1)
 - [Rounded Orange](https://www.figma.com/file/7JTa0q8n3dTSAyMNaA0u8o/Phone-catalog-(V2)-Rounded-Style-3?node-id=0%3A1)
 
-You may also implement color theme switching!
+You may also implement color theme switching!]]
 
 ## If you work in a team
 
