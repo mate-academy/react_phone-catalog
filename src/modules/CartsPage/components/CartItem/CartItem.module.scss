@@ -1,0 +1,137 @@
+@use '../../../../styles/variables.scss' as v;
+@use '../../../../styles/mixins.scss';
+
+.cartItem {
+    @include mixins.flex-column(16px);
+    
+    border: 1px solid var(--color-surface-border);
+    background-color: var(--color-surface);
+    border-radius: var(--radius-add-card);
+    transition: border-color v.$transition;
+
+    &:hover {
+        border-color: var(--color-hover);
+    }
+
+    @include mixins.on-tablet {
+        flex-direction: row;
+        gap: 24px;
+    }
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 16px 0;
+    min-width: 0;
+
+    @include mixins.on-tablet {
+        gap: 24px;
+        padding: 24px 0 24px 24px;
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+.removeButton {
+    @include mixins.flex-center;
+
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.imageLink {
+    @include mixins.flex-center;
+
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform v.$transition;
+}
+
+.imageLink:hover .image {
+  transform: scale(1.1);
+}
+
+.title {
+    margin: 0;
+
+    @include mixins.typography(600, 14px, 21px);
+
+    color: var(--color-primary);
+    text-decoration: none;
+    min-width: 0;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px 16px;
+
+    @include mixins.on-tablet {
+        gap: 24px;
+        padding: 0 24px 0 0;
+        align-items: center;
+        flex-shrink: 0;
+    }
+}
+
+.quantityControls {
+    display: flex;
+    align-items: center;
+}
+
+.quantityButton {
+    @include mixins.flex-center;
+
+    width: 32px;
+    height: 32px;
+    padding: 0;
+
+    background-color: var(--color-control);
+    border: 1px solid var(--color-icons);
+    transition:
+      border-color v.$transition,
+      background-color v.$transition;
+    cursor: pointer;
+
+    &:disabled {
+      border: 1px solid var(--color-control-disabled);
+      background-color: var(--color-surface);
+      cursor: not-allowed;
+    }
+
+    &:not(:disabled):hover {
+      border-color: var(--color-control-hover-border);
+      background-color: var(--color-control-hover-bg);
+    }
+}
+
+.quantity {
+    @include mixins.flex-center;
+
+    min-width: 32px;
+    height: 32px;
+
+    @include mixins.typography(600, 14px, 21px);
+
+    color: var(--color-primary);
+}
+
+.price {
+    @include mixins.typography(800, 22px, 1.4);
+
+    color: var(--color-primary);
+}

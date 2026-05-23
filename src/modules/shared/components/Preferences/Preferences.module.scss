@@ -1,0 +1,80 @@
+@use '../../../../styles/variables.scss' as v;
+@use '../../../../styles/mixins.scss';
+
+.preferences {
+  display: flex;
+  gap: 8px;
+  padding-top: 16px;
+}
+
+.control {
+  @include mixins.flex-column(4px);
+  
+  flex: 1;
+}
+
+.search {
+  display: none;
+  height: 40px;
+  padding: 0 36px 0 40px;
+
+  border: 1px solid var(--color-surface-devider);
+  border-radius: var(--radius-button);
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+
+  @include mixins.typography(600, 14px, 21px);
+
+  outline: none;
+
+  transition:
+    border-color v.$transition,
+    box-shadow v.$transition,
+    background-color v.$transition;
+
+  &::placeholder {
+    color: var(--color-secondary);
+  }
+
+  &:hover {
+    border-color: var(--color-select-hover-border);
+    background-color: var(--color-control);
+  }
+
+  &:focus {
+    border-color: var(--color-select-focus);
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  @include mixins.on-tablet {
+    display: block;
+  }
+}
+
+.themeSelect {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--color-surface-devider);
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  cursor: pointer;
+  appearance: none;
+  background-image: url('/img/icon/chevron-arrow-down.svg');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  transition:
+  border-color 0.3s ease,
+  background-color 0.3s ease,
+  color 0.3s ease;
+
+  &:hover {
+    border-color: var(--color-select-hover-border);
+    background-color: var(--color-control);
+  }
+
+  &:focus {
+    border-color: var(--color-select-focus);
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  }
+}

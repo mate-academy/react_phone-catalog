@@ -1,1 +1,59 @@
-// not empty
+@use './styles/variables.scss' as v;
+@use './styles/mixins.scss';
+@import './styles/theme';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-bg);
+  margin: 0;
+  font-family: Montserrat, sans-serif;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 48px;
+
+  @include mixins.on-desktop {
+    padding-top: 64px;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: v.$container-width;
+  margin: 0 auto;
+  padding-inline: 16px;
+
+  @include mixins.on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include mixins.on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+.layoutGrid {
+  @include mixins.grid-columns(4, 1fr, 16px);
+
+  @include mixins.on-tablet {
+    @include mixins.grid-columns(12, 1fr, 16px);
+  };
+
+  @include mixins.on-desktop {
+    @include mixins.grid-columns(24, 1fr, 16px);
+  };
+}

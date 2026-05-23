@@ -1,0 +1,43 @@
+@use '../../../../styles/variables.scss' as v;
+@use '../../../../styles/mixins.scss';
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-block: 24px;
+
+    @include mixins.on-tablet {
+        margin: 24px 0 40px;
+    }
+}
+
+.homeLink {
+    display: flex;
+    transition: transform v.$transition;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.currentPage {
+    @include mixins.typography(600, 12px, 1);
+
+    text-decoration: none;
+    color: var(--color-secondary);
+}
+
+.active {
+    color: var(--color-primary);
+}
+
+.currentProduct {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    @include mixins.typography(600, 12px, 1);
+
+    color: var(--color-secondary);
+}

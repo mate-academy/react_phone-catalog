@@ -1,0 +1,93 @@
+@use '../../../../styles/variables.scss' as v;
+@use '../../../../styles/mixins.scss';
+
+.pageTitle {
+    margin: 0;
+    margin-bottom: 8px;
+
+    @include mixins.typography(800, 32px, 41px, -0.01em);
+
+    color: var(--color-primary);
+
+    @include mixins.on-tablet {
+        @include mixins.typography(800, 48px, 56px);
+    }
+}
+
+.error,
+.empty {
+  @include mixins.flex-column(16px);
+
+  align-items: center;
+  padding: 40px 0;
+}
+
+.reloadButton {
+  height: 40px;
+  padding-inline: 16px;
+  border: none;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.modelsCount {
+    margin: 0;
+    margin-bottom: 32px;
+
+    @include mixins.typography(600, 14px, 21px);
+
+    color: var(--color-secondary);
+
+    @include mixins.on-tablet {
+        margin-bottom: 40px;
+    }
+}
+
+.controls {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.control {
+    @include mixins.flex-column(4px);
+
+    flex: 1;
+}
+
+.controlLabel {
+    @include mixins.typography(700, 12px, 1);
+
+    color: var(--color-secondary);
+}
+
+.controlSelect {
+    height: 40px;
+    padding: 0 12px;
+    background-color: var(--color-control);
+    border: 1px solid var(--color-icons);
+    border-radius: var(--radius-select);
+    cursor: pointer;
+    appearance: none;
+    background-image: url('/img/icon/chevron-arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+
+    @include mixins.typography(700, 14px, 21px);
+    
+    color: var(--color-primary);
+    transition:
+      border v.$transition,
+      background-color v.$transition;
+
+    &:hover {
+      border: 1px solid var(--color-select-hover-border);
+      background-color: var(--color-control);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-select-focus);
+    }
+}

@@ -1,0 +1,76 @@
+@use '../../styles/mixins.scss';
+
+.main {
+    margin-bottom: 56px;
+
+    @include mixins.on-tablet {
+        margin-bottom: 64px;
+    }
+
+    @include mixins.on-desktop {
+        margin-bottom: 80px;
+    }
+}
+
+.back {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+}
+
+.backLink {
+    display: flex;
+    align-items: center;
+
+    @include mixins.typography(700, 12px, 1);
+
+    color: var(--color-nav-text-footer);
+    text-decoration: none;
+}
+
+.title {
+    margin: 0;
+    margin-bottom: 32px;
+
+    @include mixins.typography(800, 22px, 1.4);
+
+    color: var(--color-primary);
+
+    @include mixins.on-tablet {
+        margin-bottom: 40px;
+
+        @include mixins.typography(800, 32px, 41px, -0.01em);
+    }
+}
+
+.content {
+    display: block;
+    margin-bottom: 56px;
+
+    @include mixins.on-tablet {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 64px;
+    }
+
+    @include mixins.on-desktop {
+        gap: 64px;
+        margin-bottom: 109px;
+    }
+}
+
+.detailsSection {
+    display: block;
+    margin-bottom: 56px;
+
+    @include mixins.on-tablet {
+        margin-bottom: 64px;
+    }
+
+    @include mixins.on-desktop {
+        display: flex;
+        gap: 64px;
+        margin-bottom: 80px;
+    }
+}

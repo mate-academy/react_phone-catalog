@@ -1,0 +1,107 @@
+import { Link } from 'react-router-dom';
+import { Product } from '../../../../types/Product';
+import styles from './ProductCard.module.scss';
+import { useShop } from '../../../../store/shop/ShopContext';
+import { useTheme } from '../../../../store/theme/ThemeContext';
+import { favouriteIconMap } from '../../config/favouriteIconMap';
+import { useSmoothNavigate } from '../../../../hooks/useSmoothNavigate';
+
+type Props = {
+  product: Product;
+  isFavourite: boolean;
+  showDiscount?: boolean;
+};
+
+export const ProductCard: React.FC<Props> = ({
+  product,
+  isFavourite,
+  showDiscount = false,
+}) => {
+  const { toggleFavourite, addToCart, carts } = useShop();
+  const { theme } = useTheme();
+  const isCart = carts.some(item => item.product.itemId === product.itemId);
+
+  const smoothNavigate = useSmoothNavigate();
+
+  return (
+    <div className={styles.card}>
+      <div className={styles.cardContent}>
+        <Link
+          to={`/product/${product.itemId}`}
+          className={styles.imageLink}
+          onClick={event => {
+            smoothNavigate(event, `/product/${product.itemId}`);
+          }}
+        >
+          <img
+            src={`${product.image}`}
+            alt={product.name}
+            className={styles.image}
+          />
+        </Link>
+        <div className={styles.titleWrapper}>
+          <Link
+            to={`/product/${product.itemId}`}
+            className={styles.title}
+            onClick={event => {
+              smoothNavigate(event, `/product/${product.itemId}`);
+            }}
+          >
+            {product.name}
+          </Link>
+        </div>
+        <div className={styles.priceBlock}>
+          {showDiscount ? (
+            <div className={styles.priceRow}>
+              <span className={styles.price}>${product.price}</span>
+              <span className={styles.oldPrice}>${product.fullPrice}</span>
+            </div>
+          ) : (
+            <span className={styles.price}>${product.fullPrice}</span>
+          )}
+        </div>
+        <div className={styles.specs}>
+          <div className={styles.specRow}>
+            <span className={styles.specName}>Screen</span>
+            <span className={styles.specValue}>{product.screen}</span>
+          </div>
+          <div className={styles.specRow}>
+            <span className={styles.specName}>Capacity</span>
+            <span className={styles.specValue}>{product.capacity}</span>
+          </div>
+          <div className={styles.specRow}>
+            <span className={styles.specName}>RAM</span>
+            <span className={styles.specValue}>{product.ram}</span>
+          </div>
+        </div>
+        <div className={styles.actions}>
+          <button
+            type="button"
+            className={`${isCart ? styles.selected : styles.addToCart}`}
+            onClick={() => addToCart(product)}
+            disabled={isCart}
+          >
+            {`${isCart ? 'Added to cart' : 'Add to cart'}`}
+          </button>
+          <button
+            type="button"
+            className={`${styles.favouriteButton} ${
+              isFavourite ? styles.favouriteButtonActive : ''
+            }`}
+            aria-label="Add to favourites"
+            onClick={() => toggleFavourite(product)}
+          >
+            <img
+              src={
+                isFavourite
+                  ? favouriteIconMap[theme].active
+                  : favouriteIconMap[theme].default
+              }
+              alt=""
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};

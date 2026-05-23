@@ -1,0 +1,54 @@
+@use '../../../../styles/mixins.scss';
+
+.sectionAbout {
+    @include mixins.flex-column(32px);
+
+    margin-bottom: 56px;
+
+    @include mixins.on-tablet {
+        margin-bottom: 64px;
+    }
+
+    @include mixins.on-desktop {
+        flex-basis: 560px;
+        margin-bottom: 0;
+    }
+}
+
+.title {
+    margin: 0;
+    padding-bottom: 16px;
+
+    @include mixins.typography(700, 20px, 1);
+
+    border-bottom: 1px solid var(--color-surface-devider);
+    color: var(--color-primary);
+
+    @include mixins.on-tablet {
+        @include mixins.typography(800, 22px, 1.4);
+    }
+}
+
+.block {
+    @include mixins.flex-column(16px);
+}
+
+.subtitle {
+    margin: 0;
+
+    @include mixins.typography(700, 16px, 1);
+    
+    color: var(--color-primary);
+
+    @include mixins.on-tablet {
+        font-size: 20px;
+    }
+}
+
+.text {
+    margin: 0;
+
+    @include mixins.typography(600, 14px, 21px);
+
+    color: var(--color-secondary);
+}

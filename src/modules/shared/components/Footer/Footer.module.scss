@@ -1,0 +1,109 @@
+@use '../../../../styles/variables.scss' as v;
+@use '../../../../styles/mixins.scss';
+
+.footer {
+    border-top: 1px solid var(--color-surface-devider);
+}
+
+.footerContent {
+    @include mixins.flex-column(32px);
+    
+    padding: 32px 16px;
+    max-width: v.$container-width;
+    margin: 0 auto;
+
+    @include mixins.on-tablet {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+        padding: 32px;
+    }
+
+    @include mixins.on-desktop {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.logoLink {
+    display: flex;
+
+    @include mixins.on-tablet {
+        flex: 1;
+    }
+}
+
+.logoImage {
+    display: block;
+    width: 89px;
+    height: 32px;
+}
+
+.nav {
+    @include mixins.on-tablet {
+        width: 100%;
+    }
+}
+
+.menuList {
+    @include mixins.flex-column(16px);
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include mixins.on-tablet {
+        gap: 0;
+        height: 100%;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+    }
+}
+
+.menuLink {
+    @include mixins.typography(800, 12px, 11px, 0.04em);
+
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-nav-text-footer);
+}
+
+.backToTopBlock {
+    @include mixins.flex-center;
+
+    gap: 16px;
+
+    @include mixins.on-tablet {
+        flex: 1;
+        justify-content: end;
+    }
+}
+
+.backToTopText {
+    margin: 0;
+
+    @include mixins.typography(700, 12px, 1);
+
+    color: var(--color-secondary);
+}
+
+.backToTopButton {
+    @include mixins.flex-center;
+
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background-color: var(--color-control);
+    border: 1px solid var(--color-icons);
+    border-radius: var(--radius-button);
+    transition:
+      border-color v.$transition,
+      background-color v.$transition;
+    cursor: pointer;
+
+    &:hover {
+        border-color: var(--color-control-hover-border);
+        background-color: var(--color-control-hover-bg);
+    }
+}

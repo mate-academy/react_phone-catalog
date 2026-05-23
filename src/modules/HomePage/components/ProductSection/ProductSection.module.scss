@@ -1,0 +1,83 @@
+@use '../../../../styles/variables.scss' as v;
+@use '../../../../styles/mixins';
+
+.sectionInner {
+  @include mixins.on-desktop {
+    max-width: v.$container-width;
+    margin: 0 auto;
+  }
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 16px;
+  margin-bottom: 24px;
+
+  @include mixins.on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include mixins.on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+.title {
+  margin: 0;
+
+  @include mixins.typography(800, 22px, 1.4);
+  
+  color: var(--color-primary);
+
+  @include mixins.on-tablet {
+    @include mixins.typography(800, 32px, 41px, -0.01em);
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.arrowLeft,
+.arrowRight {
+  @include mixins.flex-center;
+
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-control);
+  border: 1px solid var(--color-icons);
+  border-radius: var(--radius-button);
+  transition:
+    border-color v.$transition,
+    background-color v.$transition;
+  cursor: pointer;
+
+  &:disabled {
+    border: 1px solid var(--color-control-disabled);
+    background-color: var(--color-bg);
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):hover {
+    border-color: var(--color-control-hover-border);
+    background-color: var(--color-control-hover-bg);
+  }
+}
+
+.sliderWrapper {
+  overflow: hidden;
+  margin-right: 0;
+  margin-left: 16px;
+
+  @include mixins.on-tablet {
+    margin-left: 24px;
+  }
+
+  @include mixins.on-desktop {
+    margin-inline: 32px;
+  }
+}
