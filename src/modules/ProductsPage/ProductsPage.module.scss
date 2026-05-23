@@ -1,6 +1,28 @@
 @use '../shared/styles/mixins.scss' as *;
 @use '../shared/styles/variables.scss' as *;
 
+
+%icon {
+  width: 32px;
+  height: 32px;
+  margin-inline: 8px;
+  border: none;
+  background-color: $icon-bg-default;
+
+  @include flex-center;
+
+  &:hover {
+    background-color: $icon-bg-hover;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+    filter: invert(1);
+  }
+}
+
+
 .productspage {
   overflow-x: hidden;
   box-sizing: border-box;
@@ -76,6 +98,8 @@
         background-repeat: no-repeat;
         background-position: right 12px center;
         background-size: 16px;
+
+        
       }
     }
   }
@@ -88,11 +112,59 @@
     align-items: stretch;
 
     @media (min-width: $tablet-breakpoint) {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
     }
 
     @media (min-width: $desktop-breakpoint) {
       grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .pages {
+    grid-column: 1 / -1;
+    gap: 8px;
+    margin-block: 24px 64px;
+
+    @media (min-width: $tablet-breakpoint) {
+      margin-block: 40px 64px;
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+      margin-block: 40px 80px;
+    }
+
+    @include flex-center;
+
+    .icon {
+      @extend %icon;
+
+      &_disabled {
+        @extend %icon;
+
+        border: $border-default;
+        background-color: $surface_1;
+        pointer-events: none;
+
+        img {
+          filter: brightness(0.5);
+        }
+      }
+
+    }
+
+
+    &_button {
+      width: 32px;
+      height: 32px;
+      text-decoration: none;
+      border: none;
+      background-color: $surface_1;
+      color: white;
+
+    }
+
+    .active {
+      background-color: $btn-text-default;
     }
   }
 
