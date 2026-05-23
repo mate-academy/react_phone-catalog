@@ -1,0 +1,79 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+/* Додатковий reset для специфічних елементів */
+div, section, article, header, footer, main, aside, nav {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Mont", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+  /* Для центрування контенту всередині */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  main {
+    padding: 0 16px;
+  }
+}
+@media (min-width: 640px) and (max-width: 1199px) {
+  main {
+    padding: 0 24px;
+  }
+}/*# sourceMappingURL=App.css.map */

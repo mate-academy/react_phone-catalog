@@ -1,0 +1,96 @@
+@import '../../variables';
+@import '../../mixins';
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  backdrop-filter: blur(2px);
+}
+
+.modalContent {
+  background: $color-white;
+  padding: 32px;
+  border-radius: 0;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  animation: modal-fade-in 0.3s ease;
+}
+
+.modalClose {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: $color-secondary;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.modalMessage {
+  font-size: 18px;
+  margin-bottom: 24px;
+  color: $color-primary;
+  font-family: $font-main;
+}
+
+.modalActions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.modalBtn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 0;
+  font-weight: 600;
+  font-family: $font-main;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &.confirm {
+    background-color: $color-red;
+    color: $color-white;
+  }
+
+  &.cancel {
+    background-color: $color-elements;
+    color: $color-primary;
+  }
+}
+
+@keyframes modal-fade-in {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

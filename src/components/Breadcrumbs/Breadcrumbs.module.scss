@@ -1,0 +1,52 @@
+@import '../../variables';
+@import '../../mixins';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0; 
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    color: inherit;
+    flex-shrink: 0;
+
+    img {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+      display: block;
+    }
+  }
+
+  .breadcrumbsHome {
+    img {
+      width: 16px;
+      max-height: 16px;
+    }
+  }
+
+  .breadcrumbsArrow {
+    opacity: 1;
+  }
+
+  .breadcrumbsCurrent {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    color: $color-primary;
+
+
+    &:last-child {
+      color: $color-secondary;
+    }
+  }
+}

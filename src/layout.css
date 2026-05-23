@@ -1,0 +1,63 @@
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+.layout {
+  display: grid;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 20px 0;
+  grid-template-columns: repeat(24, 1fr);
+  -moz-column-gap: 16px;
+       column-gap: 16px;
+  justify-content: center;
+  align-items: stretch;
+}
+@media (min-width: 640px) and (max-width: 1199px) {
+  .layout {
+    padding: 49px 16px 0;
+    max-width: 1199px;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .layout {
+    padding: 48px 16px 0;
+    max-width: 639px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}/*# sourceMappingURL=layout.css.map */

@@ -1,0 +1,29 @@
+@import './variables';
+@import './mixins';
+
+.layout {
+  display: grid;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 20px 0;
+
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: 40px;
+
+  justify-content: center;
+  align-items: stretch;
+
+  @include tablet {
+    padding: 49px 0 0;
+    max-width: 1199px;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include mobile {
+    padding: 49px 0 0;
+    max-width: 639px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

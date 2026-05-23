@@ -1,0 +1,115 @@
+@import '../../variables';
+@import '../../mixins';
+
+.catalog {
+  grid-column: 1 / -1;
+  margin-bottom: 80px;
+
+  @include mobile { margin-bottom: 64px; }
+
+  @include tablet { margin-bottom: 64px; }
+
+  .catalogTitle {
+    font-size: map-get($h1-styles, font-size);
+    font-weight: map-get($h1-styles, font-weight);
+    line-height: map-get($h1-styles, line-height);
+    letter-spacing: map-get($h1-styles, letter-spacing);
+    color: $color-primary;
+    margin-top: 40px;
+    margin-bottom: 8px;
+
+    @include mobile {
+      font-size: map-get($h1-styles-mobile, font-size);
+      margin-top: 24px;
+    }
+  }
+
+  .catalogCount {
+    font-size: 14px;
+    color: $color-secondary;
+    margin-top: 8px;
+    margin-bottom: 40px;
+
+    @include mobile {
+      margin-bottom: 32px;
+    }
+  }
+
+  .catalogGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 16px;
+    margin-top: 40px;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      gap: 40px;
+    }
+  }
+
+  .catalogEmpty {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: $color-secondary;
+    margin-top: 40px;
+  }
+
+  .catalogPagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 40px;
+
+    @include mobile {
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .paginationList {
+      display: flex;
+      gap: 8px;
+    }
+
+    .paginationButton,
+    .paginationArrow {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $color-icons;
+      background-color: $color-white;
+      cursor: pointer;
+      transition: all 0.3s;
+      flex-shrink: 0;
+      font-family: $font-main;
+      font-size: map-get($buttons, font-size);
+
+      &:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+
+      &.active {
+        background-color: $color-primary;
+        color: $color-white;
+        border-color: $color-primary;
+      }
+
+      &:hover:not(:disabled, .active) {
+        border-color: $color-primary;
+      }
+
+      @include mobile {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+}

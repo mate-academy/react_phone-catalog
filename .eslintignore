@@ -1,2 +1,10 @@
 /build
 /node_modules
+node_modules
+dist
+build
+reports
+cypress
+cypress.config.ts
+eslint.config.js
+phone_catalog

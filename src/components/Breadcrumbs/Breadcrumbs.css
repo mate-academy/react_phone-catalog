@@ -1,0 +1,52 @@
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.breadcrumbs__home img {
+  width: 16px;
+  max-height: 16px;
+}
+.breadcrumbs__arrow {
+  color: #89939A;
+}
+.breadcrumbs__current {
+  font-size: 12px;
+  font-weight: 500;
+  color: #B4BDC3;
+  line-height: 16px;
+}
+
+.breadcrumbs a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.breadcrumbs a img {
+  width: 16px;
+  height: 16px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: block;
+}/*# sourceMappingURL=Breadcrumbs.css.map */

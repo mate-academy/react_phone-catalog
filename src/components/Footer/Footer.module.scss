@@ -1,0 +1,134 @@
+@import '../../variables';
+@import '../../mixins';
+
+.footer {
+  width: 100%;
+  background-color: $color-white;
+  border-top: 1px solid $color-elements;
+  padding: 32px 0;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+
+  .footerContainer {
+    display: grid;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+
+    @include tablet {
+      grid-template-columns: repeat(12, 1fr);
+      padding: 0 24px;
+      max-width: 1199px;
+    }
+
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      padding: 0 16px;
+      max-width: 639px;
+    }
+
+    .footerLeft {
+      grid-column: 1 / 5;
+      display: flex;
+      align-items: center;
+
+      @include tablet {
+        grid-column: 1 / 3;
+      }
+
+      @include mobile {
+        width: auto;
+      }
+
+      .footerLogo {
+        width: 89px;
+        height: auto;
+        display: block;
+      }
+    }
+
+    .footerCenter {
+      grid-column: 7 / 19;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+
+      @include tablet {
+        grid-column: 4 / 10;
+        gap: 16px;
+      }
+
+      @include mobile {
+        flex-direction: column;
+        align-items: start;
+        gap: 16px;
+      }
+
+      a {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: $color-secondary;
+        font-size: 12px;
+        font-weight: 800;
+        transition: color 0.3s;
+        white-space: nowrap;
+
+        &:hover {
+          color: $color-primary;
+        }
+      }
+    }
+
+    .footerRight {
+      grid-column: 21 / 25;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 16px;
+
+      @include tablet {
+        grid-column: 10 / 13;
+      }
+
+      @include mobile {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .backToTopText {
+        color: $color-secondary;
+        font-size: 12px;
+        white-space: nowrap;
+      }
+
+      .backToTopButton {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-white;
+        border: 1px solid $color-icons;
+        cursor: pointer;
+        transition: border-color 0.3s;
+
+        img {
+          width: 16px;
+          height: 16px;
+        }
+
+        &:hover {
+          border-color: $color-primary;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,272 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+  border-bottom: 1px solid #E2E6E9;
+  background-color: #FFF;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+.header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+}
+.header .logo {
+  width: 80px;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .header .logo {
+    width: 64px;
+    padding: 13px 16px;
+  }
+}
+@media (min-width: 640px) and (max-width: 1199px) {
+  .header .logo {
+    width: 64px;
+    padding: 13px 16px;
+  }
+}
+.header .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .header .nav-left {
+    gap: 175px;
+  }
+}
+@media (min-width: 640px) and (max-width: 1199px) {
+  .header .nav-left {
+    gap: 16px;
+  }
+}
+.header .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 64px;
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .header .nav-links {
+    gap: 16px;
+  }
+}
+@media (min-width: 640px) and (max-width: 1199px) {
+  .header .nav-links {
+    gap: 32px;
+  }
+}
+.header .nav-links .nav-link {
+  color: #89939A;
+  text-decoration: none;
+  text-transform: uppercase;
+  position: relative;
+  padding: 25px 0;
+  transition: color 0.3s;
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .header .nav-links .nav-link {
+    padding: 8px 0;
+  }
+}
+@media (min-width: 640px) and (max-width: 1199px) {
+  .header .nav-links .nav-link {
+    padding: 18px 0;
+  }
+}
+.header .nav-links .nav-link {
+  /* Додаємо псевдоелемент для зайняття простору (опційно) */
+}
+.header .nav-links .nav-link::before {
+  content: "";
+  position: absolute;
+  bottom: -19px; /* 16px + 3px висота риски */
+  left: 0;
+  width: 100%;
+  height: 19px; /* Висота риски + відступ */
+  background: transparent;
+}
+.header .nav-links .nav-link:hover, .header .nav-links .nav-link.active {
+  color: #313237;
+}
+.header .nav-links .nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0; /* ← ЗМІНА: риска впритул до тексту */
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #313237;
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .header .nav-links .nav-link.active::after {
+    height: 2px;
+  }
+}
+.header .nav-links {
+  /* MOBILE MENU */
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .header .nav-links {
+    position: fixed;
+    top: 49px; /* Відступ зверху під хедер */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 32px;
+    padding-top: 48px;
+    background-color: #FFF;
+    z-index: 9999;
+    overflow-y: auto;
+  }
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .header .nav-links.open {
+    display: flex;
+  }
+}
+.header .button-group-header {
+  display: flex;
+  align-items: stretch;
+  opacity: 1;
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .header .button-group-header {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    gap: 0;
+    padding-bottom: env(safe-area-inset-bottom);
+    background-color: #FFF;
+    border-top: 1px solid #E2E6E9;
+    z-index: 10000;
+    /* по замовчуванню приховані */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(100%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .header .button-group-header.mobile-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}
+.header .button-group-header-block {
+  width: 64px;
+  display: flex;
+  border-left: 1px solid #E2E6E9;
+  transition: background-color 0.3s;
+}
+.header .button-group-header-block:hover {
+  background-color: #FAFBFC;
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .header .button-group-header-block {
+    width: 50%;
+  }
+}
+.header .button-group-header-block a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.header .cart,
+.header .like {
+  width: 16px;
+  height: 16px;
+}
+.header {
+  /* BURGER МЕНЮ */
+}
+.header .burger-menu {
+  display: none;
+}
+@media (min-width: 320px) and (max-width: 639px) {
+  .header .burger-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px; /* або 48px */
+    height: 100%; /* Займає всю висоту хедера */
+    border-left: 1px solid #E2E6E9;
+    cursor: pointer;
+    position: relative;
+    z-index: 10001;
+    /* Прибираємо зайві стилі для span */
+  }
+  .header .burger-menu span {
+    display: none;
+  }
+  .header .burger-menu img {
+    width: 16px;
+    height: 16px;
+    transition: opacity 0.3s;
+    padding: 16px;
+  }
+  .header .burger-menu {
+    /* Якщо потрібна анімація зміни іконки */
+  }
+  .header .burger-menu.open img {
+    opacity: 0.7;
+    /* або змінити src через JS */
+  }
+}
+.header .header.scrolled {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border-bottom-color: transparent;
+}/*# sourceMappingURL=Header.css.map */
