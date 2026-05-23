@@ -1,45 +1,16 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React from 'react';
 import PageHeader from '../../shared/components/PageHeader/PageHeader';
-import { useCart } from '../../app/providers/CartContext';
 import styles from './Favorites.module.scss';
-import { getProducts } from '@/shared/api/api';
-import { Product } from '@/types';
 import { ProductsList } from '../../features/product/components/ProductList/ProductList';
 import { Loader } from '../../shared/components/Loader';
 import emptyFavorites from '/img/empty_favorites.svg';
 import { useNavigate } from 'react-router-dom';
+import { useFavProducts } from '../../features/favorites/hooks/useFavProducts';
 import classNames from 'classnames';
 
 const Favorites: React.FC = () => {
-  const { favorites } = useCart();
   const navigate = useNavigate();
-
-  const [products, setProducts] = useState<Product[]>([]);
-
-  const [loading, setLoading] = useState<boolean>(favorites.length > 0);
-
-  useEffect(() => {
-    if (favorites.length === 0) {
-      setLoading(false);
-
-      return;
-    }
-
-    setLoading(true);
-
-    getProducts()
-      .then(fetchedProducts => {
-        setProducts(fetchedProducts);
-      })
-      .catch(console.error)
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
-  const preparedFavorites = useMemo(
-    () => products.filter(product => favorites.includes(product.itemId)),
-    [products, favorites],
-  );
+  const { preparedFavorites, loading, favorites, products } = useFavProducts();
 
   return (
     <div

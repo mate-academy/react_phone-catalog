@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import classNames from 'classnames/bind';
 import styles from './PaginationComponent.module.scss';
 import { ArrowIcon } from '@/shared/ui/Icons/ArrowIcon';
 import { useTheme } from '@/app/providers/ThemeContext';
@@ -11,11 +10,6 @@ type PaginationComponentProps = {
   perPage: number;
   currentPage: number;
   onPageChange: (page: number) => void;
-};
-
-type PaginationItem = {
-  type: 'page' | 'dots';
-  value: number;
 };
 
 export const PaginationComponent: React.FC<PaginationComponentProps> = ({

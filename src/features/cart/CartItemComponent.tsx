@@ -5,14 +5,12 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { CartProduct } from './hooks/useCartProducts';
 import { useTheme } from '@/app/providers/ThemeContext';
-import { useCartProducts } from './hooks/useCartProducts';
 type CartItemProps = {
   item: CartProduct;
 };
 const CartItemComponent: React.FC<CartItemProps> = ({ item }) => {
   const { reduceQuantity, increaseQuantity, removeFromCart } = useCart();
   const { theme } = useTheme();
-  const { cartProducts } = useCartProducts();
   return (
     <div className={styles.cartItem}>
       <button
