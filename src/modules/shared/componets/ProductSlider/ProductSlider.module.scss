@@ -1,0 +1,106 @@
+@import '../../Utills/variables';
+
+
+
+
+.title{
+  color: $gray_primary;
+}
+
+
+.container{
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.button__container{
+  display: flex;
+  gap: 16px;
+
+
+
+
+
+  >button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $gray;
+    background: #fff;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.2s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      border-top: 2px solid $gray;
+      border-right: 2px solid $gray;
+      transition: border-color 0.2s;
+    }
+
+    &:hover {
+      border: 1px solid $gray_primary;
+    }
+
+    &:active {
+      border: 1px solid $gray;
+
+      &::before {
+        border-top: 2px solid $gray;
+        border-right: 2px solid $gray;
+      }
+    }
+}
+
+
+
+
+
+
+}
+
+
+.button__left::before{
+   transform: translate(-50%, -50%) rotate(225deg);
+}
+
+.button__rigth::before{
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+
+
+
+
+
+.slider {
+   overflow: hidden;
+ }
+
+ .cards {
+   display: flex;
+   gap: 16px;
+   overflow-x: auto;
+   -webkit-overflow-scrolling: touch;
+   scroll-behavior: smooth;
+   scroll-snap-type: x mandatory;
+   padding-bottom: 8px; /* keep space in case of overlayed scrollbar */
+
+   
+   -ms-overflow-style: none;
+   scrollbar-width: none; 
+ }
+
+ 
+ .cards > * {
+   flex: 0 0 280px; /* adjust as needed */
+}
+

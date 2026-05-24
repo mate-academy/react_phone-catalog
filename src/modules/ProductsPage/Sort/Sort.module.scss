@@ -1,0 +1,104 @@
+@import '../../shared/Utills/variables';
+
+.sort{
+  display: flex;
+  gap: 16px;
+
+
+  @media (min-width:$mobile_width) {
+    width: 60%;
+  }
+
+
+  @media (min-width:$mobile_width) {
+    width: 40%;
+  }
+
+
+
+  & > div {
+    width: 100%;
+
+
+
+  }
+}
+
+
+
+.sort__by{
+
+  & > p{
+      color:$gray_secondary ;
+    }
+
+
+
+}
+
+
+.sort__items{
+
+   > p{
+      color:$gray_secondary ;
+    }
+
+
+
+}
+
+
+
+.dropdown{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  width: 100%;
+  height: 40px;
+  border: 2px solid $gray;
+  transition: all ease-in 3ms;
+
+
+
+  &:hover{
+    border: 2px solid $gray_primary;
+  }
+
+
+
+ & > span{
+  margin-left: 12px;
+  color: $gray_primary
+ }
+
+}
+
+
+.list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 2px solid $gray;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  z-index: 100;
+
+}
+
+.list li {
+  color: $gray_secondary;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    color: $gray_primary;
+    background-color: #FAFBFC;
+  }
+}

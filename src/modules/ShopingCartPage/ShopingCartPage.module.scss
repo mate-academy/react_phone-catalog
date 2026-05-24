@@ -1,0 +1,79 @@
+
+@import '../shared/Utills/variables';
+
+
+
+
+
+.ShopingCartPage{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+}
+
+
+.ShopingCartPage__top{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: start;
+
+
+    @media (min-width:$mobile-width) {
+        gap: 16px;
+    }
+}
+
+
+
+.ShopingCart__list{
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+    width: 100%;
+}
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @media(min-width: $desctop_width) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+
+
+
+
+        & > :nth-child(1) {
+            flex: 2;
+            min-width: 0;
+
+        }
+
+
+        & > :nth-child(2) {
+            flex: 1;
+            min-width: 250px;
+        }
+    }
+}
+
+
+
+
+.product__cart__empty{
+    display: flex;
+    place-self: center;
+}
+
+
+.product__cart__empty__img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
