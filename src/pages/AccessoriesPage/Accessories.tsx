@@ -190,7 +190,7 @@ export const AccessoriesPage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="public/icons/Home.png" alt="home_nav" />
+          <img src="./icons/Home.png" alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <p className="home--nav-top">Accessories</p>
@@ -283,8 +283,8 @@ export const AccessoriesPage = () => {
                   <img
                     src={
                       favorites.includes(accessory.id)
-                        ? 'public/icons/ActiveHeart.png'
-                        : 'public/icons/heart.png'
+                        ? './icons/ActiveHeart.png'
+                        : './icons/heart.png'
                     }
                     alt="Favorite"
                     className="accessories__card-btn-icon"

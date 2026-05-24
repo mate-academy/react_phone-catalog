@@ -192,7 +192,7 @@ export const TabletPage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="public/icons/Home.png" alt="home_nav" />
+          <img src="./icons/Home.png" alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <p className="home--nav-top">Tablets</p>
@@ -298,8 +298,8 @@ export const TabletPage = () => {
                   <img
                     src={
                       favorites.includes(tablet.id)
-                        ? 'public/icons/ActiveHeart.png'
-                        : 'public/icons/heart.png'
+                        ? './icons/ActiveHeart.png'
+                        : './icons/heart.png'
                     }
                     alt="Favorite"
                     className="tablets__card-btn-icon"

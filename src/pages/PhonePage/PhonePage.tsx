@@ -197,7 +197,7 @@ export const PhonePage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="public/icons/Home.png" alt="home_nav" />
+          <img src="./icons/Home.png" alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <p className="home--nav-top">Phones</p>
@@ -303,8 +303,8 @@ export const PhonePage = () => {
                   <img
                     src={
                       favorites.includes(phone.id)
-                        ? 'public/icons/ActiveHeart.png'
-                        : 'public/icons/heart.png'
+                        ? './icons/ActiveHeart.png'
+                        : './icons/heart.png'
                     }
                     alt="Favorite"
                     className="phone__card-btn-icon"
