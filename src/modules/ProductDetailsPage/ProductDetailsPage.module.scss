@@ -1,0 +1,398 @@
+@use '../../styles/variables' as *;
+
+.details {
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    color: $color-primary;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      margin-bottom: 40px;
+    }
+  }
+
+  // ---------- Main (gallery + controls) ----------
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 64px;
+      margin-bottom: 64px;
+    }
+  }
+
+  // Gallery
+  &__gallery {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      flex: 1;
+    }
+
+    @include on-desktop {
+      gap: 16px;
+    }
+  }
+
+  &__mainImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+
+    @include on-desktop {
+      width: 464px;
+      height: 464px;
+    }
+  }
+
+  &__mainImg {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &__thumbs {
+    display: flex;
+    gap: 8px;
+
+    @include on-tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__thumb {
+    width: 52px;
+    height: 52px;
+    padding: 4px;
+    border: 1px solid $color-elements;
+    background: $color-surface;
+    cursor: pointer;
+    transition: border-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+      padding: 8px;
+    }
+
+    &:hover {
+      border-color: $color-secondary;
+    }
+
+    &--active {
+      border-color: $color-primary;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  // Controls
+  &__controls {
+    width: 100%;
+
+    @include on-tablet {
+      width: 320px;
+      flex-shrink: 0;
+    }
+  }
+
+  &__section {
+    margin-bottom: 24px;
+  }
+
+  &__sectionLabel {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $color-secondary;
+    margin-bottom: 8px;
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background-color: $color-elements;
+    margin-bottom: 24px;
+  }
+
+  // Colors
+  &__colors {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__colorCircle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid $color-elements;
+    cursor: pointer;
+    transition: border-color 0.3s;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+
+    &:hover {
+      outline-color: $color-icons;
+    }
+
+    &--active {
+      outline-color: $color-primary;
+    }
+  }
+
+  // Capacity
+  &__capacities {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__capButton {
+    padding: 7px 8px;
+    font-family: $font-family;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $color-primary;
+    border: 1px solid $color-icons;
+    background-color: transparent;
+    cursor: pointer;
+    text-align: center;
+    transition:
+      background-color 0.3s,
+      color 0.3s,
+      border-color 0.3s;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &--active {
+      color: $color-button-text;
+      background-color: $color-button;
+      border-color: $color-button;
+      cursor: default;
+    }
+  }
+
+  // Price
+  &__priceRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $color-primary;
+  }
+
+  &__fullPrice {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 28px;
+    color: $color-secondary;
+    text-decoration: line-through;
+  }
+
+  // Action buttons
+  &__actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__addToCart {
+    flex: 1;
+    height: 48px;
+    font-family: $font-family;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $color-button-text;
+    background-color: $color-button;
+    border: none;
+    cursor: pointer;
+    transition:
+      background-color 0.3s,
+      box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: 0 3px 13px $color-button-shadow;
+    }
+
+    &--active {
+      color: $color-green;
+      background-color: $color-hover-and-bg;
+      border: 1px solid $color-elements;
+
+      &:hover {
+        box-shadow: none;
+        border-color: $color-primary;
+      }
+    }
+  }
+
+  &__favButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid $color-icons;
+    background: $color-hover-and-bg;
+    cursor: pointer;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &--active {
+      border-color: $color-elements;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  // Short specs
+  &__shortSpecs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__specRow {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__specLabel {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $color-secondary;
+  }
+
+  &__specValue {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    color: $color-primary;
+    text-align: right;
+  }
+
+  // ---------- Info (About + Tech specs) ----------
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    margin-bottom: 56px;
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 64px;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__about {
+    flex: 1;
+  }
+
+  &__techSpecs {
+    @include on-desktop {
+      width: 512px;
+      flex-shrink: 0;
+    }
+  }
+
+  &__infoTitle {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    color: $color-primary;
+    margin-bottom: 16px;
+  }
+
+  &__infoDivider {
+    width: 100%;
+    height: 1px;
+    background-color: $color-elements;
+    margin-bottom: 32px;
+  }
+
+  &__aboutSection {
+    margin-bottom: 32px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__aboutSubtitle {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: $color-primary;
+    margin-bottom: 16px;
+  }
+
+  &__aboutText {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: $color-secondary;
+    margin-bottom: 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__techList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  // ---------- Suggested ----------
+
+  &__suggested {
+    margin-bottom: 56px;
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+}

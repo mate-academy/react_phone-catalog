@@ -1,0 +1,28 @@
+@use '../../styles/variables' as *;
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  margin-bottom: 16px;
+  font-family: $font-family;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  color: $color-secondary;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+    opacity: 0.5;
+  }
+}

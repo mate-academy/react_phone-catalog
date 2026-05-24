@@ -1,0 +1,152 @@
+@use '../../styles/variables' as *;
+
+.footer {
+  border-top: 1px solid $color-elements;
+  margin-top: auto;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 32px 16px;
+    max-width: $content-max-width;
+    margin: 0 auto;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 24px;
+    }
+
+    @include on-desktop {
+      padding: 32px 152px;
+    }
+  }
+
+  // Logo section — flex: 1 on desktop
+  &__logoWrapper {
+    flex-shrink: 0;
+
+    @include on-tablet {
+      flex: 1;
+    }
+  }
+
+  &__logo {
+    display: inline-flex;
+  }
+
+  &__logoContainer {
+    position: relative;
+    width: 89px;
+    height: 32px;
+    overflow: hidden;
+  }
+
+  &__logoText {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__logoFlame {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 14%;
+    height: 52%;
+    object-fit: contain;
+  }
+
+  // Navigation links — flex: 1 on desktop, distributed
+  &__nav {
+    width: 100%;
+
+    @include on-tablet {
+      flex: 1;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__link {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $color-secondary;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  // Back to top — flex: 1 on desktop, right-aligned
+  &__backToTop {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    @include on-tablet {
+      flex: 1;
+      justify-content: flex-end;
+    }
+  }
+
+  &__backToTopBtn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  &__backToTopText {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    color: $color-secondary;
+    white-space: nowrap;
+    transition: color 0.3s;
+  }
+
+  &__backToTopBtn:hover &__backToTopText {
+    color: $color-primary;
+  }
+
+  &__backToTopIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-icons;
+    transition: border-color 0.3s;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__backToTopBtn:hover &__backToTopIcon {
+    border-color: $color-primary;
+  }
+}

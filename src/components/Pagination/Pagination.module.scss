@@ -1,0 +1,74 @@
+@use '../../styles/variables' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &__page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    font-family: $font-family;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $color-primary;
+    background-color: transparent;
+    border: 1px solid $color-elements;
+    cursor: pointer;
+    transition:
+      border-color 0.3s,
+      background-color 0.3s,
+      color 0.3s;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &--active {
+      color: $color-button-text;
+      background-color: $color-button;
+      border-color: $color-button;
+      cursor: default;
+
+      &:hover {
+        border-color: $color-button;
+      }
+    }
+  }
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    border: 1px solid $color-elements;
+    cursor: pointer;
+    transition: border-color 0.3s;
+
+    &:hover:not(:disabled) {
+      border-color: $color-primary;
+    }
+
+    &--disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

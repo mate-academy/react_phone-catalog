@@ -1,0 +1,55 @@
+@use '../../styles/variables' as *;
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 50%;
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
+  color: $color-primary;
+
+  &:hover {
+    background-color: $color-hover-and-bg;
+    transform: rotate(15deg);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.toggle__icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+.toggle__sun,
+.toggle__moon {
+  position: absolute;
+  inset: 0;
+  width: 16px;
+  height: 16px;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.toggle__sun--visible,
+.toggle__moon--visible {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}

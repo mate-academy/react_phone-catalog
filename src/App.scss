@@ -1,1 +1,71 @@
-// not empty
+@use 'styles/variables' as *;
+@use 'styles/base';
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__main {
+    flex: 1;
+    padding-top: 24px;
+    padding-bottom: 56px;
+
+    @include on-tablet {
+      padding-top: 32px;
+      padding-bottom: 64px;
+    }
+  }
+}
+
+// Page-level shared styles
+.page__title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  color: $color-primary;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.page__subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $color-secondary;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.section {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    color: $color-primary;
+    margin-bottom: 24px;
+
+    @include on-desktop {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+}

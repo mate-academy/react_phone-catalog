@@ -1,0 +1,123 @@
+@use 'variables' as *;
+
+// ========================
+// Theme CSS Custom Properties
+// ========================
+:root {
+  --color-primary: #313237;
+  --color-secondary: #89939a;
+  --color-icons: #b4bdc3;
+  --color-elements: #e2e6e9;
+  --color-hover-and-bg: #fafbfc;
+  --color-white: #fff;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --color-accent: #4219d0;
+  --color-surface: #fff;
+  --color-button: #313237;
+  --color-button-text: #fff;
+  --color-button-shadow: rgba(23, 32, 49, 0.4);
+  --color-focus-border: #313237;
+  --fill-0: #313237;
+  --icon-invert: 0;
+}
+
+[data-theme='dark'] {
+  --color-primary: #f1f2f9;
+  --color-secondary: #75767f;
+  --color-icons: #4a4d58;
+  --color-elements: #3b3e4a;
+  --color-hover-and-bg: #323542;
+  --color-white: #0f1121;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --color-accent: #905bff;
+  --color-surface: #161827;
+  --color-button: #905bff;
+  --color-button-text: #fff;
+  --color-button-shadow: rgba(144, 91, 255, 0.4);
+  --color-focus-border: #905bff;
+  --fill-0: #f1f2f9;
+  --icon-invert: 1;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+// Dark mode SVG icon inversion (after img to satisfy specificity order)
+[data-theme='dark'] img[src$='.svg']:not([data-no-invert]) {
+  filter: invert(1) brightness(2);
+  transition: filter 0.3s;
+}
+
+[data-theme='dark'] img:not([src$='.svg']) {
+  filter: none;
+}
+
+input,
+select {
+  font-family: inherit;
+}
+
+// Utility classes
+.container {
+  max-width: $content-max-width;
+  margin: 0 auto;
+
+  @include content-padding-inline;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

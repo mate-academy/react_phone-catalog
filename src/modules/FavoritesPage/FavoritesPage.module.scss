@@ -1,0 +1,25 @@
+@use '../../styles/variables' as *;
+
+.favPage {
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    justify-items: center;
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__empty {
+    padding: 40px;
+    text-align: center;
+    font-size: 16px;
+    color: $color-secondary;
+  }
+}

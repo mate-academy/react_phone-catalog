@@ -1,0 +1,53 @@
+@use '../../styles/variables' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+
+  @include on-tablet {
+    margin-bottom: 24px;
+  }
+
+  &__home {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__separator {
+    width: 16px;
+    height: 16px;
+    opacity: 0.5;
+  }
+
+  &__link {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $color-secondary;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__current {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $color-primary;
+  }
+}
