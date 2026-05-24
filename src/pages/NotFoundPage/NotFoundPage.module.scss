@@ -1,0 +1,17 @@
+@use '../../styles/utils' as utils;
+
+.pageNotFound {
+  grid-column: 1 / -1;
+  justify-content: center;
+
+  &__text {
+    margin-top: 50px;
+    font-size: 32px;
+    line-height: 41px;
+    text-align: center;
+  }
+
+  &__img {
+    width: 100%;
+  }
+}
