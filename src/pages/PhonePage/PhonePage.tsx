@@ -256,13 +256,9 @@ export const PhonePage = () => {
       {totalPages > 1 && (
         <div className="pagination">
           {/* ✅ Иконка стрелки влево для пагинации */}
-          <button
-            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-            disabled={currentPage === 1}
-            className="pagination__button pagination__button--arrow"
-          >
-            <img src="./icons/arrow-left.svg" alt="prev" className="pagination__arrow-icon" />
-          </button>
+          <button onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} disabled={currentPage === 1} className="pagination__button pagination__button--nav">
+  <img src="./icons/arrow-left.svg" alt="prev" />
+</button>
 
           {getPageNumbers().map((page, index) => (
             <button
@@ -276,13 +272,9 @@ export const PhonePage = () => {
           ))}
 
           {/* ✅ Иконка стрелки вправо для пагинации */}
-          <button
-            onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-            disabled={currentPage === totalPages}
-            className="pagination__button pagination__button--arrow"
-          >
-            <img src="./icons/arrow-right.svg" alt="next" className="pagination__arrow-icon" />
-          </button>
+          <button onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))} disabled={currentPage === totalPages} className="pagination__button pagination__button--nav">
+  <img src="./icons/arrow-right.svg" alt="next" />
+</button>
         </div>
       )}
     </section>
