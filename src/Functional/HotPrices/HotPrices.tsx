@@ -186,8 +186,8 @@ export default function HotPrices() {
                     <img
                       src={
                         favorites.includes(phone.itemId)
-                          ? './icons/ActiveHeart.png'
-                          : './icons/heart.png'
+                          ? '/public/icons/ActiveHeart.png'
+                          : '/public/icons/heart.png'
                       }
                       alt="Favorite"
                       className="hot__card-btn-icon"

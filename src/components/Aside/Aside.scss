@@ -58,7 +58,7 @@
   }
 
   &__closes {
-    background-image: url('/icons/Close.png');
+    background-image: url('/public/icons/Close.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -114,7 +114,7 @@
       height: 24px;
       background-size: contain;
       background-repeat: no-repeat;
-      background-image: url('/icons/ActiveHeart.png');
+      background-image: url('/public/icons/ActiveHeart.png');
     }
   }
 
@@ -126,7 +126,7 @@
       height: 24px;
       background-size: contain;
       background-repeat: no-repeat;
-      background-image: url('/icons/cart.png');
+      background-image: url('/public/icons/cart.png');
     }
   }
 }
