@@ -20,6 +20,7 @@ export const AccessoriesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(() => {
     const param = Number(searchParams.get('perPage'));
+
     return [8, 16, 32].includes(param) ? param : 8;
   });
   const [imageError, setImageError] = useState<{ [key: string]: boolean }>({});
@@ -119,6 +120,7 @@ export const AccessoriesPage = () => {
   const handleItemsPerPageChange = (value: number) => {
     setItemsPerPage(value);
     const nextParams = new URLSearchParams(searchParams);
+
     nextParams.set('perPage', String(value));
     updateSearchParams(nextParams);
   };

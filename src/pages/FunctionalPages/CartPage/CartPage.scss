@@ -136,13 +136,13 @@
     justify-content: center;
     transition: color 0.3s;
 
+    &:disabled {
+          color: var(--border-color);
+          cursor: not-allowed;
+        }
+
     &:hover:not(:disabled) {
       color: var(--primary-color);
-    }
-
-    &:disabled {
-      color: var(--border-color);
-      cursor: not-allowed;
     }
   }
 
@@ -236,7 +236,7 @@
   }
 }
 
-@keyframes slideInNotification {
+@keyframes slide-in-notification {
   from {
     opacity: 0;
     transform: translate(-50%, -60%);
