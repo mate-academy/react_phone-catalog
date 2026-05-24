@@ -70,8 +70,12 @@
     align-items: center;
     gap: 8px;
     color: #b0b0b0;
-    text-decoration: none;
     font-size: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+    padding: 0;
 
     img {
       width: 24px;

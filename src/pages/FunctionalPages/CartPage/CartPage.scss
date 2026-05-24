@@ -8,6 +8,21 @@
   color: var(--text-color);
   font-family: Inter, sans-serif;
 
+  &__back {
+    margin-bottom: 16px;
+  }
+
+  &__back-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--text-color);
+    }
+  }
+
   &__title {
     font-size: 36px;
     font-weight: 700;
@@ -21,317 +36,217 @@
   }
 
   &__items {
-    flex: 2;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    margin-bottom: 32px;
+    gap: 16px;
   }
 
   &__item {
-    display: flex;
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
     gap: 16px;
+    align-items: center;
 
     @include card-box;
 
     padding: 16px;
+    position: relative;
+  }
+
+  &__item-remove-icon {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      color: var(--text-color);
+    }
   }
 
   &__item-image {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     object-fit: contain;
     border-radius: 8px;
   }
 
   &__item-details {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
   }
 
   &__item-name {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
+    margin: 0;
   }
 
   &__item-spec {
-    font-size: 14px;
+    font-size: 12px;
     color: var(--text-muted);
+    margin: 0;
   }
 
   &__item-price {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
+    margin: 0;
+  }
+
+  &__item-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-end;
   }
 
   &__item-quantity {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 4px;
+  }
 
-    & button {
-      width: 32px;
-      height: 32px;
-      background-color: var(--primary-color);
-      color: var(--text-color);
-      font-size: 16px;
+  &__quantity-btn {
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s;
 
-      @include button-base;
-
+    &:hover:not(:disabled) {
+      color: var(--primary-color);
     }
 
-    & span {
-      font-size: 16px;
+    &:disabled {
+      color: var(--border-color);
+      cursor: not-allowed;
     }
   }
 
-  &__content {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  &__quantity-display {
+    width: 30px;
+    text-align: center;
+    font-size: 14px;
+  }
 
-    @media (min-width: 1200px) {
-      flex-direction: row;
-      align-items: flex-start;
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 32px;
+
+    @include on-tablet {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @include on-phone {
+      grid-template-columns: 1fr;
+      gap: 24px;
     }
   }
 
   &__summary {
-    flex: 1;
-
     @include card-box;
 
     padding: 24px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: right;
+    gap: 16px;
+    height: fit-content;
 
-    @media (min-width: 1200px) {
-      max-width: 300px;
-      align-self: flex-start;
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    & h2 {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 16px;
-      text-align: center;
+    @include on-phone {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
     }
+  }
+
+  &__summary-total {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  &__summary-text {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin: 0;
   }
 
   &__checkout {
     width: 100%;
     padding: 12px 24px;
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    font-size: 16px;
-
-    @include button-base;
-
-  }
-
-  &__item-remove {
-    background-color: #ff4d4f;
-    color: var(--text-color);
-    padding: 8px 16px;
-    align-self: flex-start;
-
-    @include button-base;
-  }
-}
-
-.section {
-  position: relative;
-}
-
-.brand {
-  @include on-tablet {
-    height: 577px;
-  }
-
-  @include on-desktop {
-    height: 571px;
-  }
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-  }
-
-  &__title {
-    color: white;
-    width: 150px;
-    height: 62px;
-  }
-
-  &__nav {
-    display: flex;
-    gap: 10px;
-  }
-
-  &__nav-btn {
-    width: 32px;
-    height: 32px;
-    background-color: #323542;
-    color: white;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    @include button-base;
-
-    &:hover {
-      background-color: #75767F;
-    }
-  }
-
-  &__card {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    position: relative;
-
-    @include card-box;
-
-    padding: 8px;
-    width: 212px;
-    min-height: 443px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-
-    @include on-tablet {
-      padding: 20px;
-      max-width: 272px;
-    }
-
-    @include on-desktop {
-      max-width: 272px;
-    }
-
-    a {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      text-decoration: none;
-    }
-  }
-
-  &__card-title,
-  &__card-prices,
-  &__card-specs {
-    flex-shrink: 0;
-  }
-
-  &__card-image {
-    width: 100%;
-    height: 180px;
-    object-fit: contain;
-    margin-bottom: 15px;
-  }
-
-  &__card-title {
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 10px;
-    color: white;
-  }
-
-  &__card-prices {
-    display: flex;
-    justify-content: left;
-    gap: 10px;
-    margin-bottom: 15px;
-  }
-
-  &__card-price {
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-  }
-
-  &__card-old-price {
-    font-size: 18px;
-    color: #888;
-    text-decoration: line-through;
-  }
-
-  &__card-spec {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-  }
-
-  &__card-actions {
-    margin-top: auto;
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-  }
-
-  &__card-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    font-size: 14px;
-    text-align: center;
-
-    @include button-base;
-  }
-
-  &__card-btn--add {
-    flex: 1;
     background-color: #a855f7;
-    border: 1px solid #905BFF;
-    color: white;
-    padding: 0 16px;
-    text-decoration: none;
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 
     &:hover {
       background-color: #9333ea;
     }
   }
 
-  &__card-btn-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &__card-btn--favorite {
-    border-radius: 5px;
-    width: 40px;
-    height: 40px;
-    background-color: #323542;
+  &__notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #22c55e;
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &:hover {
-      color: #a855f7;
-    }
-  }
-
-  &__card-spec-label {
-    color: #75767F;
-  }
-
-  &__card-spec-value {
-    color: white;
+    padding: 20px 32px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    animation: slideInNotification 0.3s ease-out;
   }
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-  height: 32px;
-  width: 32px;
+@keyframes slideInNotification {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.section {
+  position: relative;
 }

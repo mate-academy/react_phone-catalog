@@ -16,7 +16,6 @@
   color: var(--text-color);
   font-family: Inter, sans-serif;
 
-
   &__actions {
     margin-top: auto;
     display: flex;
@@ -220,16 +219,17 @@
     display: flex;
     flex-direction: column;
     max-height: 464px;
-    overflow-y: auto;
-    scrollbar-width: thin;
     scrollbar-color: var(--primary-color) var(--card-bg);
     gap: 12px;
 
     @include on-phone {
       flex-direction: row;
-      overflow-x: auto;
+      flex-wrap: wrap;
+      overflow-x: hidden;
+      width: 100%;
       max-height: none;
       gap: 8px;
+      justify-content: center;
     }
   }
 
@@ -256,7 +256,9 @@
   cursor: pointer;
   border: 2px solid transparent;
   border-radius: 8px;
-  transition: border-color 0.3s, transform 0.2s;
+  transition:
+    border-color 0.3s,
+    transform 0.2s;
 
   &--active {
     border-color: var(--primary-color);
@@ -283,7 +285,9 @@
     border-radius: 50%;
     border: 2px solid transparent;
     cursor: pointer;
-    transition: border-color 0.3s, transform 0.2s;
+    transition:
+      border-color 0.3s,
+      transform 0.2s;
 
     &--black {
       background-color: #000;
@@ -435,7 +439,9 @@
     padding: 8px;
     height: 470px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
     @include on-tablet {
@@ -507,7 +513,7 @@
   }
 
   &__card-spec-label {
-    color: #75767F;
+    color: #75767f;
     font-weight: 500;
   }
 
@@ -539,7 +545,7 @@
   &__card-btn--add {
     flex: 1;
     background-color: #a855f7;
-    border: 1px solid #905BFF;
+    border: 1px solid #905bff;
     color: var(--text-color);
     padding: 0 16px;
 
@@ -595,7 +601,6 @@
   & a:hover {
     color: var(--primary-color);
   }
-
 
   & img {
     width: 16px;
