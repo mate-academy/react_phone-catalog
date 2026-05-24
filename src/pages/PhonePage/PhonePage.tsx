@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './PhonePage.scss';
 import { SortForm } from '../../Functional/SortForm/SortForm';
 import { Phone } from '../../Interface';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useCart } from '../../Functional/CartContext/CartContext';
 
 interface CartItem {
@@ -17,14 +17,18 @@ interface CartItem {
 
 export const PhonePage = () => {
   const { addToCart, toggleFavorite, cart, favorites } = useCart();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [phones, setPhones] = useState<Phone[]>([]);
   const [filteredPhones, setFilteredPhones] = useState<Phone[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [sortBy, setSortBy] = useState('');
+  const [sortBy, setSortBy] = useState(() => searchParams.get('sort') ?? '');
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(8);
+  const [itemsPerPage, setItemsPerPage] = useState(() => {
+    const param = Number(searchParams.get('perPage'));
+    return [8, 16, 32].includes(param) ? param : 8;
+  });
   const [imageError, setImageError] = useState<{ [key: string]: boolean }>({});
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -82,6 +86,46 @@ export const PhonePage = () => {
 
     setFilteredPhones(sorted);
   }, [phones, searchTerm, sortBy]);
+
+  useEffect(() => {
+    const paramSort = searchParams.get('sort') ?? '';
+    const paramPerPage = Number(searchParams.get('perPage'));
+    const normalizedPerPage = [8, 16, 32].includes(paramPerPage)
+      ? paramPerPage
+      : 8;
+
+    if (paramSort !== sortBy) {
+      setSortBy(paramSort);
+    }
+
+    if (normalizedPerPage !== itemsPerPage) {
+      setItemsPerPage(normalizedPerPage);
+    }
+  }, [searchParams]);
+
+  const updateSearchParams = (nextParams: URLSearchParams) => {
+    setSearchParams(nextParams, { replace: true });
+  };
+
+  const handleSortChange = (value: string) => {
+    setSortBy(value);
+    const nextParams = new URLSearchParams(searchParams);
+
+    if (value) {
+      nextParams.set('sort', value);
+    } else {
+      nextParams.delete('sort');
+    }
+
+    updateSearchParams(nextParams);
+  };
+
+  const handleItemsPerPageChange = (value: number) => {
+    setItemsPerPage(value);
+    const nextParams = new URLSearchParams(searchParams);
+    nextParams.set('perPage', String(value));
+    updateSearchParams(nextParams);
+  };
 
   const getPageNumbers = () => {
     const maxPagesToShow = 5;
@@ -166,9 +210,10 @@ export const PhonePage = () => {
           searchTerm={searchTerm}
           onSearchChange={setSearchTerm}
           sortBy={sortBy}
-          onSortChange={setSortBy}
+          onSortChange={handleSortChange}
           onResultChange={setFilteredPhones}
-          onItemsPerPageChange={setItemsPerPage}
+          itemsPerPage={itemsPerPage}
+          onItemsPerPageChange={handleItemsPerPageChange}
         />
       </div>
 

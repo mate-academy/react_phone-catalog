@@ -1,6 +1,5 @@
 // У компоненті SortForm
 import './SortForm.scss';
-import { useState } from 'react';
 
 type Props<T extends BaseItem> = {
   items: T[];
@@ -9,6 +8,7 @@ type Props<T extends BaseItem> = {
   sortBy: string;
   onSortChange: (value: string) => void;
   onResultChange: (items: T[]) => void;
+  itemsPerPage: number;
   onItemsPerPageChange?: (value: number) => void;
 };
 
@@ -23,10 +23,9 @@ export function SortForm<T extends BaseItem>({
   onSearchChange,
   sortBy,
   onSortChange,
+  itemsPerPage,
   onItemsPerPageChange,
 }: Props<T>) {
-  const [itemsPerPage, setItemsPerPage] = useState(8);
-
   return (
     <div className="sort-form">
       <div className="sort-form__top">
@@ -70,10 +69,7 @@ export function SortForm<T extends BaseItem>({
           <select
             id="perPage"
             value={itemsPerPage}
-            onChange={e => {
-              setItemsPerPage(Number(e.target.value));
-              onItemsPerPageChange?.(Number(e.target.value));
-            }}
+            onChange={e => onItemsPerPageChange?.(Number(e.target.value))}
             className="sort-form__select"
           >
             <option value={8}>8</option>
