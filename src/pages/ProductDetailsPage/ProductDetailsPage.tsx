@@ -561,8 +561,8 @@ export const ProductDetailsPage = () => {
                       <img
                         src={
                           favorites.includes(relatedItem.id)
-                            ? 'public/icons/ActiveHeart.png'
-                            : 'public/icons/heart.png'
+                            ? './icons/ActiveHeart.png'
+                            : './icons/heart.png'
                         }
                         alt="Favorite"
                         className="related-products__card-btn-icon"
