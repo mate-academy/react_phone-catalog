@@ -1,0 +1,24 @@
+.main {
+  @include page-grid;
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 70vh;
+
+  @include on-tablet {
+    min-height: 89vh;
+  }
+
+  @include on-desktop {
+    min-height: 89vh;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}

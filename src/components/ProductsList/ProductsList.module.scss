@@ -1,0 +1,9 @@
+.products {
+  display: flex;
+  grid-column: 1 / -1;
+  flex-wrap: wrap;
+  gap: 16px;
+  row-gap: 40px;
+
+  margin-bottom: 24px;
+}

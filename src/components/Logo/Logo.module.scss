@@ -1,0 +1,29 @@
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.navbarLogo {
+  padding-inline: 16px;
+
+  @include on-desktop {
+    padding-inline: 24px;
+  }
+}
+
+.navbarImg {
+  width: 64px;
+  height: 20.8px;
+
+  @include on-desktop {
+    width: 80px;
+    height: 26.47px;
+  }
+}
+
+.footerImg {
+  width: 89px;
+  height: 30.25px;
+}

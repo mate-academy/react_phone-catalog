@@ -1,0 +1,36 @@
+.main {
+  @include page-grid;
+}
+
+.head {
+  display: flex;
+  grid-column: 1 / -1;
+  flex-direction: column;
+}
+
+.headContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.title {
+  margin: 0;
+}
+
+.cards {
+  display: flex;
+  grid-column: 1 / -1;
+  flex-wrap: wrap;
+  gap: 16px;
+  row-gap: 40px;
+}
+
+.counter {
+  color: var(--color-secondary);
+}

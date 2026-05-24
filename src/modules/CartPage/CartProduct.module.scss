@@ -1,0 +1,152 @@
+.product {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  box-sizing: border-box;
+  width: 288px;
+  padding: 16px;
+  border: 1px solid var(--card-border-color);
+
+  background-color: var(--card-bg-color);
+
+  &:hover {
+    box-shadow: 0 2px 16px 0 #0000001a;
+  }
+
+  @include on-tablet {
+    flex-direction: row;
+    width: 592px;
+    height: 128px;
+    padding: 24px;
+  }
+
+  @include on-desktop {
+    width: 752px;
+  }
+}
+
+.details {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  @include on-tablet {
+    justify-content: space-between;
+  }
+}
+
+.wrapper {
+  width: 80px;
+  height: 80px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.priceTitle {
+  margin: 0;
+  color: var(--color-primary);
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+
+  &Button {
+    cursor: pointer;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    border: 1px solid var(--small-button-default-border);
+
+    background-color: var(--small-button-default-bg);
+  }
+}
+
+.value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  color: var(--color-primary);
+}
+
+.disabled {
+  border-color: var(--small-button-active-border);
+  background-color: inherit;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.name {
+  color: var(--color-primary);
+
+  @include on-tablet {
+    width: 176px;
+  }
+}
+
+.isLoading {
+  .image,
+  .name,
+  .price {
+    border-radius: 5%;
+    background: linear-gradient(110deg, var(--skeleton-bg-color) 8%, var(--skeleton-line-color) 18%, var(--skeleton-bg-color) 33%);
+    background-size: 200% 100%;
+    animation: 1.5s shine linear infinite;
+  }
+
+  .close {
+    background-image: none;
+  }
+
+  .price,
+  .priceTitle,
+  .counter {
+    min-width: 50px;
+    min-height: 20px;
+  }
+
+  .price {
+    margin: 10px 25px;
+  }
+
+  .name {
+    min-width: 150px;
+    min-height: 25px;
+
+    @include on-tablet {
+      min-width: 230px;
+    }
+  }
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
+}
