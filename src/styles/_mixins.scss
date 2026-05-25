@@ -28,15 +28,11 @@ $max-tablet: 1199px;
   font-size: 48px;
   font-weight: $font-weight-extra-bold;
   letter-spacing: -1%;
-  margin-top: 56px;
-  @include tablet() {
-    margin-top: 32px;
-  }
+  line-height: 100%;
+  // margin-top: 56px;
 
   @include mobile() {
     font-size: 32px;
-    line-height: 41px;
-    margin-top: 24px;
   }
 }
 
@@ -73,4 +69,41 @@ $max-tablet: 1199px;
   @include mobile() {
     --column-count: 1;
   }
+}
+
+@mixin page-paddings {
+  padding: 0 152px;
+
+  @include tablet {
+    padding: 0 25px;
+  }
+
+  @include mobile {
+    padding: 0;
+  }
+}
+
+@mixin product-details-line {
+  content: '';
+  display: block;
+  height: 1px;
+  background-color: $color-elements;
+  margin-top: 24px;
+
+  @include tablet() {
+    width: 100%;
+  }
+}
+
+@mixin discountPrice {
+  font-size: 22px;
+  font-weight: $font-weight-bold;
+  line-height: 140%;
+}
+
+@mixin fullPrice {
+  font-weight: $font-weight-semi;
+  margin-left: 8px;
+  text-decoration: line-through;
+  color: $color-secondary;
 }

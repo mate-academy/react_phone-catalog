@@ -28,6 +28,7 @@
     flex-direction: row;
     justify-content: space-between;
     gap: 16px;
+
     @include mobile {
       flex-direction: column;
     }
@@ -39,10 +40,19 @@
     @include mobile {
       width: 100%;
     }
+    object-fit: cover;
+  }
+
+  &__image-container {
+    overflow: hidden;
   }
 
   &__image {
     width: 100%;
+    @include animation-transition;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__name {

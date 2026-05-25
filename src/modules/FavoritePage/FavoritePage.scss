@@ -1,9 +1,10 @@
 @import '@/styles/variables';
 @import '@/styles/mixins';
 
-.page {
+.favorite {
   max-width: 1800px;
   margin: auto;
+  min-height: 60vh;
   @include page-paddings;
 
   &__content {

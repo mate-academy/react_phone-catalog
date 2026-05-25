@@ -90,7 +90,7 @@
     object-position: 87.5% 50%;
   }
   &__button {
-    border: 1px solid $color-elements;
+    border: 1px solid $color-icons;
     @include animation-transition;
     cursor: pointer;
     &--left,
@@ -104,7 +104,7 @@
     }
     &:disabled {
       opacity: 0.5;
-      border-color: $color-secondary;
+      border-color: $color-elements;
       cursor: default;
       pointer-events: none;
     }

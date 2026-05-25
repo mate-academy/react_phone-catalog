@@ -1,23 +1,18 @@
 import './HomePage.scss';
-import React, { useEffect, useState } from 'react';
-import { BannerSlider } from './components/BanerSlider';
+import React from 'react';
+import { BannerSlider } from './components/BannerSlider';
 import { ProductsSlider } from './components/ProductsSlider';
 import { ShopCategory } from './components/ShopCategory';
 import { Product } from '../../types/Product';
-import { getData } from '../../utils/getData';
+import { Loader } from '../../components/shared/Loader';
 
-export const HomePage: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+type Props = {
+  products: Product[];
+  loading: boolean;
+  error: string;
+};
 
-  useEffect(() => {
-    getData<Product[]>('/products')
-      .then(data => setProducts(data))
-      .catch(setError)
-      .finally(() => setLoading(false));
-  }, []);
-
+export const HomePage: React.FC<Props> = ({ products, loading, error }) => {
   function countCategoriesCount() {
     const categoriesCounts = {
       phones: products.filter(p => p.category === 'phones').length,
@@ -30,27 +25,35 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      <section className="products">
-        <div className="products__content">
-          <h1 className="products__header">Welcome to Nice Gadgets store!</h1>
-          <BannerSlider />
-          <ProductsSlider
-            header={'Brand new models'}
-            oldPrice={false}
-            products={products
-              .sort((elem1, elem2) => elem1.year - elem2.year)
-              .slice(0, 10)}
-          />
-          <ShopCategory counts={countCategoriesCount()} />
-          <ProductsSlider
-            header={'Hot prices'}
-            oldPrice={true}
-            products={products
-              .sort((elem1, elem2) => elem1.price - elem2.price)
-              .slice(0, 10)}
-          />
-        </div>
-      </section>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <p>{error}</p>
+      ) : (
+        <section className="page">
+          <div className="page__content">
+            <h1 id="h1" className="page__header">
+              Welcome to Nice Gadgets store!
+            </h1>
+            <BannerSlider />
+            <ProductsSlider
+              header={'Brand new models'}
+              oldPrice={false}
+              products={products
+                .sort((elem1, elem2) => elem1.year - elem2.year)
+                .slice(0, 10)}
+            />
+            <ShopCategory counts={countCategoriesCount()} />
+            <ProductsSlider
+              header={'Hot prices'}
+              oldPrice={true}
+              products={products
+                .sort((elem1, elem2) => elem1.price - elem2.price)
+                .slice(0, 10)}
+            />
+          </div>
+        </section>
+      )}
     </>
   );
 };

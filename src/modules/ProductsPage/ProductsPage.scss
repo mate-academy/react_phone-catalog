@@ -1,0 +1,90 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.page {
+  max-width: 1800px;
+  margin: auto;
+  @include page-paddings;
+
+  &__content {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  &__container {
+    @include grid;
+  }
+
+  &__header {
+    @include h1;
+    margin-top: 40px;
+
+    @include mobile {
+      margin-top: 24px;
+    }
+  }
+
+  &__amount {
+    font-weight: $font-weight-regular;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    color: $color-secondary;
+    margin-top: 12px;
+  }
+
+  &__products {
+    margin-top: 24px;
+  }
+
+  &__dropdowns {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    gap: 20px;
+  }
+
+  &__dropdown {
+    &--container {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    &--label {
+      font-size: 12px;
+      line-height: 100%;
+      color: $color-secondary;
+    }
+    &--select {
+      font-size: 14px;
+      line-height: 21px;
+      border-radius: 0;
+      border: 1px solid $color-icons;
+      color: $color-primary;
+      font-weight: $font-weight-semi;
+      height: 40px;
+      padding: 0 7px;
+      max-width: 176px;
+      min-width: 128px;
+      @include animation-transition;
+
+      &:hover {
+        border: 1px solid $color-secondary;
+      }
+    }
+
+    &--option {
+      background-color: $color-white;
+      color: $color-secondary;
+      font-size: 14px;
+      line-height: 21px;
+      height: 40px;
+
+      &:hover {
+        color: $color-primary;
+        background-color: $color-elements;
+      }
+    }
+  }
+}

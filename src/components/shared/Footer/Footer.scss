@@ -1,0 +1,101 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  margin-top: 80px;
+  box-shadow: 0 -1px 1px $color-elements;
+
+  @include page-paddings;
+
+  @include tablet {
+    margin-top: 64px;
+  }
+
+  @include mobile {
+    margin-top: 64px;
+    flex-direction: column;
+    height: 260px;
+    align-items: baseline;
+  }
+
+  &__logo {
+    display: block;
+    width: 80px;
+    height: 30px;
+    background: url('/img/Logo.svg') no-repeat center / contain;
+    margin: 33px 24px 33px 0;
+  }
+
+  &__bullets {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 380px;
+    font-size: 14px;
+    line-height: 11px;
+    font-weight: $font-weight-extra-bold;
+    text-transform: uppercase;
+    color: $color-secondary;
+
+    @include tablet {
+      width: 280px;
+    }
+    @include mobile {
+      flex-direction: column;
+      gap: 16px;
+      margin: 0 24px;
+      max-width: 300px;
+    }
+  }
+
+  &__button-text {
+    font-size: 14px;
+    line-height: 100%px;
+    font-weight: $font-weight-bold;
+    color: $color-secondary;
+  }
+
+  &__button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    @include mobile {
+      margin: 32px auto;
+    }
+  }
+
+  &__button-text {
+    font-size: 14px;
+    line-height: 100%;
+    font-weight: $font-weight-bold;
+    color: $color-secondary;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $color-elements;
+    width: 32px;
+    height: 32px;
+  }
+
+  &__icon {
+    background: url('/img/ArrowUp.svg') no-repeat center / contain;
+    width: 12px;
+    height: 12px;
+    display: block;
+    @include animation-transition;
+
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
+}

@@ -8,6 +8,8 @@
   border: $color-elements 1px solid;
   padding: 32px;
   border: 1px solid $color-elements;
+
+  justify-content: end;
   @include animation-transition;
 
   &:hover {
@@ -29,6 +31,12 @@
     max-height: 100%;
     object-fit: contain;
     display: block;
+    @include animation-transition;
+
+    &:hover {
+      scale: 1.1;
+      transform: rotate(-5deg);
+    }
   }
 
   &__title {
@@ -40,9 +48,7 @@
 
   &__price-container {
     margin-top: 8px;
-    font-size: 22px;
-    font-weight: $font-weight-bold;
-    line-height: 140%;
+    @include discountPrice;
 
     &::after {
       content: '';
@@ -53,11 +59,8 @@
     }
   }
 
-  &__price-old {
-    font-weight: $font-weight-semi;
-    margin-left: 8px;
-    text-decoration: line-through;
-    color: $color-secondary;
+  &__full-price {
+    @include fullPrice;
   }
 
   &__specs-item {
@@ -73,36 +76,7 @@
     color: $color-secondary;
   }
 
-  &__buttons {
-    display: grid;
-    grid-template-columns: 1fr 40px;
-    gap: 8px;
-    margin-top: auto;
-  }
-
-  &__button--add {
+  &__add-favorite {
     height: 40px;
-    border: none;
-    background-color: $color-primary;
-    color: $color-white;
-    font-weight: $font-weight-semi;
-    cursor: pointer;
-    transition: background-color 0.3s;
-
-    &:hover {
-      background-color: darken($color-primary, 10%);
-    }
-  }
-
-  &__button--favorite {
-    width: 40px;
-    height: 40px;
-    border: 1px solid $color-secondary;
-    background-color: $color-white;
-    background-image: url('/img/HeartIcon.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 20px;
-    cursor: pointer;
   }
 }

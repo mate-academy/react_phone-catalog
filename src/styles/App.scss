@@ -11,7 +11,7 @@
 @font-face {
   font-family: 'Mont';
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
-  font-weight: 600; // Для SemiBold стандарт 600
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
@@ -19,25 +19,22 @@
 @font-face {
   font-family: 'Mont';
   src: url('/fonts/Mont-Bold.otf') format('opentype');
-  font-weight: 700; // Для Bold стандарт 700
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
-// Применяем box-sizing ко всем элементам
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-// Убираем внешние и внутренние отступы у всех элементов
 * {
   margin: 0;
   padding: 0;
 }
 
-// Заголовки
 h1,
 h2,
 h3,
@@ -46,10 +43,9 @@ h4 {
   color: $color-primary;
 }
 
-// Базовые настройки для HTML и Body
 html {
-  // Чтобы футер можно было прижать к низу, если контента мало
   height: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -71,7 +67,7 @@ ol {
 
 a {
   text-decoration: none;
-  color: inherit; // Ссылка берет цвет текста у родителя
+  color: inherit;
 }
 
 img,
@@ -80,14 +76,14 @@ video,
 canvas,
 svg {
   display: block;
-  max-width: 100%; // Картинки не вылезают за пределы контейнера
+  max-width: 100%;
 }
 
 input,
 button,
 textarea,
 select {
-  font: inherit; // Формы используют тот же шрифт, что и всё приложение
+  font: inherit;
 }
 
 button {

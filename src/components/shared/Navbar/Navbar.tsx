@@ -1,8 +1,15 @@
 import './Navbar.scss';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useCart } from '../../../context/CartContext';
+import { useFavorite } from '../../../context/FavoriteContext';
 
 export const Navbar: React.FC = () => {
+  const { cartItems } = useCart();
+  const { favoriteItems } = useFavorite();
+
+  const totalCartItems = cartItems.reduce((sum, item) => sum + item.amount, 0);
+
   return (
     <header className="header">
       <nav className="navbar">
@@ -31,14 +38,21 @@ export const Navbar: React.FC = () => {
         </div>
 
         <div className="navbar__actions">
-          <NavLink
-            to="/compare"
-            className="navbar__action navbar__action--compare"
-          />
-          <NavLink
-            to="/basket"
-            className="navbar__action navbar__action--basket"
-          />
+          <div className="navbar__action">
+            {favoriteItems.length !== 0 ? <p>{favoriteItems.length}</p> : ''}
+
+            <NavLink
+              to="/favorite"
+              className="navbar__action navbar__action--compare"
+            />
+          </div>
+          <div className="navbar__action">
+            {totalCartItems > 0 ? <p>{cartItems.length}</p> : ''}
+            <NavLink
+              to="/cart"
+              className="navbar__action navbar__action--basket"
+            />
+          </div>
         </div>
       </nav>
     </header>

@@ -1,0 +1,59 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  gap: 8px;
+  height: 100%;
+}
+
+.button {
+  &--add {
+    height: 100%;
+    border: none;
+    background-color: $color-primary;
+    color: $color-white;
+    font-weight: $font-weight-bold;
+    cursor: pointer;
+    box-shadow: 0px 0 0px rgba(0, 0, 0, 0.1);
+    @include animation-transition;
+
+    &:hover {
+      background-color: darken($color-primary, 10%);
+      box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.1);
+      border-color: transparent;
+    }
+
+    &-clicked {
+      color: $color-green;
+      background-color: $color-white;
+      border: 1px solid $color-elements;
+      font-weight: $font-weight-bold;
+      @include animation-transition;
+    }
+  }
+
+  &--favorite {
+    height: 100%;
+    aspect-ratio: 1;
+    border: 1px solid $color-secondary;
+    background-color: $color-white;
+    background-image: url('/img/HeartIcon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+    cursor: pointer;
+    @include animation-transition;
+
+    &-clicked {
+      border: 1px solid $color-secondary;
+      background-image: url('/img/heartFilletIcon.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 20px;
+      cursor: pointer;
+      @include animation-transition;
+    }
+  }
+}

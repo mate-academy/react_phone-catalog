@@ -1,0 +1,17 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.specs {
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    font-weight: $font-weight-semi;
+    margin: 8px 0;
+    font-size: 12px;
+    color: $color-primary;
+  }
+
+  &__label {
+    color: $color-secondary;
+  }
+}
