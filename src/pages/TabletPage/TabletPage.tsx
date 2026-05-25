@@ -18,6 +18,7 @@ interface CartItem {
 
 export const TabletPage = () => {
   const { addToCart, toggleFavorite, cart, favorites } = useCart();
+
   const [tablets, setTablets] = useState<Tablet[]>([]);
   const [filteredTablets, setFilteredTablets] = useState<Tablet[]>([]);
   const [loading, setLoading] = useState(true);
@@ -30,11 +31,17 @@ export const TabletPage = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredTablets.slice(indexOfFirstItem, indexOfLastItem);
+
+  const currentItems = filteredTablets.slice(
+    indexOfFirstItem,
+    indexOfLastItem,
+  );
+
   const totalPages = Math.ceil(filteredTablets.length / itemsPerPage);
 
   useEffect(() => {
     setLoading(true);
+
     fetch(`${import.meta.env.BASE_URL}api/tablets.json`)
       .then(response => {
         if (!response.ok) {
@@ -42,6 +49,7 @@ export const TabletPage = () => {
             `Failed to fetch tablets.json: ${response.status} ${response.statusText}`,
           );
         }
+
         return response.json();
       })
       .then(data => {
@@ -78,19 +86,35 @@ export const TabletPage = () => {
 
   const getPageNumbers = () => {
     const maxPagesToShow = 5;
+
     const pages: (number | string)[] = [];
+
     const startPage = Math.max(1, currentPage - 2);
-    const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+
+    const endPage = Math.min(
+      totalPages,
+      startPage + maxPagesToShow - 1,
+    );
 
     pages.push(1);
-    if (startPage > 2) pages.push('...');
 
-    for (let i = startPage; i <= endPage; i++) {
-      if (i !== 1 && i !== totalPages) pages.push(i);
+    if (startPage > 2) {
+      pages.push('...');
     }
 
-    if (endPage < totalPages - 1) pages.push('...');
-    if (totalPages !== 1) pages.push(totalPages);
+    for (let i = startPage; i <= endPage; i++) {
+      if (i !== 1 && i !== totalPages) {
+        pages.push(i);
+      }
+    }
+
+    if (endPage < totalPages - 1) {
+      pages.push('...');
+    }
+
+    if (totalPages !== 1) {
+      pages.push(totalPages);
+    }
 
     return pages;
   };
@@ -110,7 +134,10 @@ export const TabletPage = () => {
   };
 
   const handleImageError = (imageSrc: string) => {
-    setImageError(prev => ({ ...prev, [imageSrc]: true }));
+    setImageError(prev => ({
+      ...prev,
+      [imageSrc]: true,
+    }));
   };
 
   if (loading) {
@@ -127,7 +154,11 @@ export const TabletPage = () => {
     return (
       <section className="section">
         <div className="tablets">
-          <div className="error">Error: {error}</div>
+          <div className="error">
+            Error:
+            {' '}
+            {error}
+          </div>
         </div>
       </section>
     );
@@ -137,14 +168,29 @@ export const TabletPage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="./icons/home.svg" alt="home_nav" className="home--nav-icon" />
+          <img
+            src="./icons/home.svg"
+            alt="home_nav"
+            className="home--nav-icon"
+          />
         </a>
-        <img src="./icons/arrow-right-small.svg" alt="arrow-right" className="home--nav-arrow" />
+
+        <img
+          src="./icons/arrow-right-small.svg"
+          alt="arrow-right"
+          className="home--nav-arrow"
+        />
+
         <p className="home--nav-top">Tablets</p>
       </div>
 
       <p className="section__text">Tablets</p>
-      <p className="section__models">{filteredTablets.length} models</p>
+
+      <p className="section__models">
+        {filteredTablets.length}
+        {' '}
+        models
+      </p>
 
       <div className="section__top-bar">
         <SortForm<Tablet>
@@ -161,10 +207,15 @@ export const TabletPage = () => {
 
       <div className="tablets">
         {filteredTablets.length === 0 ? (
-          <p className="tablets__no-results">No tablets found.</p>
+          <p className="tablets__no-results">
+            No tablets found.
+          </p>
         ) : (
           currentItems.map(tablet => (
-            <div key={tablet.id} className="tablets__card">
+            <div
+              key={tablet.id}
+              className="tablets__card"
+            >
               <Link to={`/${tablet.category}/${tablet.id}`}>
                 <img
                   src={
@@ -174,28 +225,51 @@ export const TabletPage = () => {
                   }
                   alt={tablet.name}
                   className="tablets__card-image"
-                  onError={() => handleImageError(`${tablet.images[0]}`)}
+                  onError={() =>
+                    handleImageError(`${tablet.images[0]}`)
+                  }
                 />
-                <h3 className="tablets__card-title">{tablet.name}</h3>
+
+                <h3 className="tablets__card-title">
+                  {tablet.name}
+                </h3>
 
                 <div className="tablets__card-prices">
                   <span className="tablets__card-price">
-                    ${tablet.priceDiscount}
+                    $
+                    {tablet.priceDiscount}
                   </span>
                 </div>
 
                 <div className="tablets__card-specs">
                   <div className="tablets__card-spec">
-                    <span className="tablets__card-spec-label">Screen</span>
-                    <span className="tablets__card-spec-value">{tablet.screen}</span>
+                    <span className="tablets__card-spec-label">
+                      Screen
+                    </span>
+
+                    <span className="tablets__card-spec-value">
+                      {tablet.screen}
+                    </span>
                   </div>
+
                   <div className="tablets__card-spec">
-                    <span className="tablets__card-spec-label">Capacity</span>
-                    <span className="tablets__card-spec-value">{tablet.capacity}</span>
+                    <span className="tablets__card-spec-label">
+                      Capacity
+                    </span>
+
+                    <span className="tablets__card-spec-value">
+                      {tablet.capacity}
+                    </span>
                   </div>
+
                   <div className="tablets__card-spec">
-                    <span className="tablets__card-spec-label">RAM</span>
-                    <span className="tablets__card-spec-value">{tablet.ram}</span>
+                    <span className="tablets__card-spec-label">
+                      RAM
+                    </span>
+
+                    <span className="tablets__card-spec-value">
+                      {tablet.ram}
+                    </span>
                   </div>
                 </div>
               </Link>
@@ -235,7 +309,9 @@ export const TabletPage = () => {
 
                 <button
                   className={`tablets__card-btn tablets__card-btn--favorite ${
-                    favorites.includes(tablet.id) ? 'favorite--active' : ''
+                    favorites.includes(tablet.id)
+                      ? 'favorite--active'
+                      : ''
                   }`}
                   onClick={e => {
                     e.preventDefault();
@@ -258,34 +334,55 @@ export const TabletPage = () => {
         )}
       </div>
 
-      <div className="pagination">
-        <button
-          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-          className="pagination__button"
-        >
-          {'<'}
-        </button>
-
-        {getPageNumbers().map((page, index) => (
+      {totalPages > 1 && (
+        <div className="pagination">
+          {/* ✅ Иконка стрелки влево */}
           <button
-            key={index}
-            className={`pagination__button ${currentPage === page ? 'active' : ''}`}
-            onClick={() => typeof page === 'number' && setCurrentPage(page)}
-            disabled={typeof page !== 'number'}
+            onClick={() =>
+              setCurrentPage(prev => Math.max(prev - 1, 1))
+            }
+            disabled={currentPage === 1}
+            className="pagination__button pagination__button--nav"
           >
-            {page}
+            <img
+              src="./icons/arrow-left.svg"
+              alt="prev"
+            />
           </button>
-        ))}
 
-        <button
-          onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-          disabled={currentPage === totalPages}
-          className="pagination__button"
-        >
-          {'>'}
-        </button>
-      </div>
+          {getPageNumbers().map((page, index) => (
+            <button
+              key={index}
+              className={`pagination__button ${
+                currentPage === page ? 'active' : ''
+              }`}
+              onClick={() =>
+                typeof page === 'number' &&
+                setCurrentPage(page)
+              }
+              disabled={typeof page !== 'number'}
+            >
+              {page}
+            </button>
+          ))}
+
+          {/* ✅ Иконка стрелки вправо */}
+          <button
+            onClick={() =>
+              setCurrentPage(prev =>
+                Math.min(prev + 1, totalPages),
+              )
+            }
+            disabled={currentPage === totalPages}
+            className="pagination__button pagination__button--nav"
+          >
+            <img
+              src="./icons/arrow-right.svg"
+              alt="next"
+            />
+          </button>
+        </div>
+      )}
     </section>
   );
 };

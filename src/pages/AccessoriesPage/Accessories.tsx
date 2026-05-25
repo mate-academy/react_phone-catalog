@@ -17,12 +17,22 @@ export const AccessoriesPage = () => {
   const [sortBy, setSortBy] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(8);
-  const [imageError, setImageError] = useState<{ [key: string]: boolean }>({});
+
+  const [imageError, setImageError] = useState<{
+    [key: string]: boolean;
+  }>({});
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredAccessories.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(filteredAccessories.length / itemsPerPage);
+
+  const currentItems = filteredAccessories.slice(
+    indexOfFirstItem,
+    indexOfLastItem,
+  );
+
+  const totalPages = Math.ceil(
+    filteredAccessories.length / itemsPerPage,
+  );
 
   useEffect(() => {
     setLoading(true);
@@ -30,8 +40,11 @@ export const AccessoriesPage = () => {
     fetch(`${import.meta.env.BASE_URL}api/accessories.json`)
       .then(response => {
         if (!response.ok) {
-          throw new Error(`Failed to fetch accessories.json: ${response.status}`);
+          throw new Error(
+            `Failed to fetch accessories.json: ${response.status}`,
+          );
         }
+
         return response.json();
       })
       .then(data => {
@@ -55,9 +68,18 @@ export const AccessoriesPage = () => {
     );
 
     const sorted = [...filtered].sort((a, b) => {
-      if (sortBy === 'newest') return b.year - a.year;
-      if (sortBy === 'priceLow') return a.priceDiscount - b.priceDiscount;
-      if (sortBy === 'priceHigh') return b.priceDiscount - a.priceDiscount;
+      if (sortBy === 'newest') {
+        return b.year - a.year;
+      }
+
+      if (sortBy === 'priceLow') {
+        return a.priceDiscount - b.priceDiscount;
+      }
+
+      if (sortBy === 'priceHigh') {
+        return b.priceDiscount - a.priceDiscount;
+      }
+
       return 0;
     });
 
@@ -66,22 +88,35 @@ export const AccessoriesPage = () => {
 
   const getPageNumbers = () => {
     const maxPagesToShow = 5;
+
     const pages: (number | string)[] = [];
 
     const startPage = Math.max(1, currentPage - 2);
-    const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+
+    const endPage = Math.min(
+      totalPages,
+      startPage + maxPagesToShow - 1,
+    );
 
     pages.push(1);
 
-    if (startPage > 2) pages.push('...');
-
-    for (let i = startPage; i <= endPage; i++) {
-      if (i !== 1 && i !== totalPages) pages.push(i);
+    if (startPage > 2) {
+      pages.push('...');
     }
 
-    if (endPage < totalPages - 1) pages.push('...');
+    for (let i = startPage; i <= endPage; i++) {
+      if (i !== 1 && i !== totalPages) {
+        pages.push(i);
+      }
+    }
 
-    if (totalPages !== 1) pages.push(totalPages);
+    if (endPage < totalPages - 1) {
+      pages.push('...');
+    }
+
+    if (totalPages !== 1) {
+      pages.push(totalPages);
+    }
 
     return pages;
   };
@@ -98,7 +133,10 @@ export const AccessoriesPage = () => {
   };
 
   const handleImageError = (imageSrc: string) => {
-    setImageError(prev => ({ ...prev, [imageSrc]: true }));
+    setImageError(prev => ({
+      ...prev,
+      [imageSrc]: true,
+    }));
   };
 
   if (loading) {
@@ -115,7 +153,11 @@ export const AccessoriesPage = () => {
     return (
       <section className="section">
         <div className="accessories">
-          <div className="error">Error: {error}</div>
+          <div className="error">
+            Error:
+            {' '}
+            {error}
+          </div>
         </div>
       </section>
     );
@@ -125,17 +167,30 @@ export const AccessoriesPage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="./icons/home.svg" alt="home_nav" className="home--nav-icon" />
+          <img
+            src="./icons/home.svg"
+            alt="home_nav"
+            className="home--nav-icon"
+          />
         </a>
 
         {/* ✅ Маленькая стрелка для breadcrumb */}
-        <img src="./icons/arrow-right-small.svg" alt="arrow-right" className="home--nav-arrow" />
+        <img
+          src="./icons/arrow-right-small.svg"
+          alt="arrow-right"
+          className="home--nav-arrow"
+        />
 
         <p className="home--nav-top">Accessories</p>
       </div>
 
       <p className="section__text">Accessories</p>
-      <p className="section__models">{filteredAccessories.length} models</p>
+
+      <p className="section__models">
+        {filteredAccessories.length}
+        {' '}
+        models
+      </p>
 
       <div className="section__top-bar">
         <SortForm<Accessories>
@@ -152,10 +207,15 @@ export const AccessoriesPage = () => {
 
       <div className="accessories">
         {filteredAccessories.length === 0 ? (
-          <p className="accessories__no-results">No accessories found.</p>
+          <p className="accessories__no-results">
+            No accessories found.
+          </p>
         ) : (
           currentItems.map(accessory => (
-            <div key={accessory.id} className="accessories__card">
+            <div
+              key={accessory.id}
+              className="accessories__card"
+            >
               <Link to={`/${accessory.category}/${accessory.id}`}>
                 <img
                   src={
@@ -165,7 +225,9 @@ export const AccessoriesPage = () => {
                   }
                   alt={accessory.name}
                   className="accessories__card-image"
-                  onError={() => handleImageError(accessory.images[0])}
+                  onError={() =>
+                    handleImageError(accessory.images[0])
+                  }
                 />
 
                 <h3 className="accessories__card-title">
@@ -174,7 +236,8 @@ export const AccessoriesPage = () => {
 
                 <div className="accessories__card-prices">
                   <span className="accessories__card-price">
-                    ${accessory.priceDiscount}
+                    $
+                    {accessory.priceDiscount}
                   </span>
                 </div>
 
@@ -183,6 +246,7 @@ export const AccessoriesPage = () => {
                     <span className="accessories__card-spec-label">
                       Color
                     </span>
+
                     <span className="accessories__card-spec-value">
                       {accessory.color}
                     </span>
@@ -249,33 +313,50 @@ export const AccessoriesPage = () => {
 
       {totalPages > 1 && (
         <div className="pagination">
-          {/* ✅ Иконка стрелки влево для пагинации */}
+          {/* ✅ Иконка стрелки влево */}
           <button
-            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+            onClick={() =>
+              setCurrentPage(prev => Math.max(prev - 1, 1))
+            }
             disabled={currentPage === 1}
-            className="pagination__button pagination__button--arrow"
+            className="pagination__button pagination__button--nav"
           >
-            <img src="./icons/arrow-left.svg" alt="prev" className="pagination__arrow-icon" />
+            <img
+              src="./icons/arrow-left.svg"
+              alt="prev"
+            />
           </button>
 
           {getPageNumbers().map((page, index) => (
             <button
               key={index}
-              className={`pagination__button ${currentPage === page ? 'active' : ''}`}
-              onClick={() => typeof page === 'number' && setCurrentPage(page)}
+              className={`pagination__button ${
+                currentPage === page ? 'active' : ''
+              }`}
+              onClick={() =>
+                typeof page === 'number' &&
+                setCurrentPage(page)
+              }
               disabled={typeof page !== 'number'}
             >
               {page}
             </button>
           ))}
 
-          {/* ✅ Иконка стрелки вправо для пагинации */}
+          {/* ✅ Иконка стрелки вправо */}
           <button
-            onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+            onClick={() =>
+              setCurrentPage(prev =>
+                Math.min(prev + 1, totalPages),
+              )
+            }
             disabled={currentPage === totalPages}
-            className="pagination__button pagination__button--arrow"
+            className="pagination__button pagination__button--nav"
           >
-            <img src="./icons/arrow-right.svg" alt="next" className="pagination__arrow-icon" />
+            <img
+              src="./icons/arrow-right.svg"
+              alt="next"
+            />
           </button>
         </div>
       )}
