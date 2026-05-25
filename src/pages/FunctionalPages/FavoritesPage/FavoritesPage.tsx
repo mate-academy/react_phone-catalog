@@ -104,7 +104,7 @@ export const FavoritesPage = () => {
               <img
                 src={
                   imageError[`${product.images[0]}`] || !product.images[0]
-                    ? 'img/page-not-found.png'
+                    ? 'img/page-not-found.svg'
                     : `${product.images[0]}`
                 }
                 alt={product.name}
@@ -133,7 +133,7 @@ export const FavoritesPage = () => {
                     price: product.priceDiscount,
                     image: product.images[0]
                       ? `${product.images[0]}`
-                      : 'img/page-not-found.png',
+                      : 'img/page-not-found.svg',
                     color: product.color,
                     quantity: 1,
                     ...(isPhoneOrTablet(product) && {
@@ -158,7 +158,7 @@ export const FavoritesPage = () => {
                 onClick={() => toggleFavorite(product.id)}
               >
                 <img
-                  src="./icons/ActiveHeart.png"
+                  src="./icons/ActiveHeart.svg"
                   alt="Remove from favorites"
                   className="favorites__item-btn-icon"
                 />

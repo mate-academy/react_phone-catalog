@@ -199,7 +199,7 @@ export const PhonePage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="./icons/Home.png" alt="home_nav" />
+          <img src="./icons/Home.svg" alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <p className="home--nav-top">Phones</p>
@@ -229,7 +229,7 @@ export const PhonePage = () => {
                 <img
                   src={
                     imageError[`${phone.images[0]}`]
-                      ? 'img/page-not-found.png'
+                      ? 'img/page-not-found.svg'
                       : `${phone.images[0]}`
                   }
                   alt={phone.name}
@@ -305,8 +305,8 @@ export const PhonePage = () => {
                   <img
                     src={
                       favorites.includes(phone.id)
-                        ? './icons/ActiveHeart.png'
-                        : './icons/heart.png'
+                        ? './icons/ActiveHeart.svg'
+                        : './icons/heart.svg'
                     }
                     alt="Favorite"
                     className="phone__card-btn-icon"

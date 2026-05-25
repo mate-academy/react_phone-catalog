@@ -2,9 +2,14 @@ html {
   overflow-x: hidden;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  box-sizing: border-box;
   background-color: #0f1121;
   font-family: Montserrat, sans-serif;
   overflow-x: hidden;

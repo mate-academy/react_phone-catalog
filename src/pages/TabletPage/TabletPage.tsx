@@ -194,7 +194,7 @@ export const TabletPage = () => {
     <section className="section">
       <div className="home--nav">
         <a href="#">
-          <img src="./icons/Home.png" alt="home_nav" />
+          <img src="./icons/Home.svg" alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <p className="home--nav-top">Tablets</p>
@@ -222,7 +222,7 @@ export const TabletPage = () => {
                 <img
                   src={
                     imageError[`${tablet.images[0]}`]
-                      ? 'img/page-not-found.png'
+                      ? 'img/page-not-found.svg'
                       : `${tablet.images[0]}`
                   }
                   alt={tablet.name}
@@ -300,8 +300,8 @@ export const TabletPage = () => {
                   <img
                     src={
                       favorites.includes(tablet.id)
-                        ? './icons/ActiveHeart.png'
-                        : './icons/heart.png'
+                        ? './icons/ActiveHeart.svg'
+                        : './icons/heart.svg'
                     }
                     alt="Favorite"
                     className="tablets__card-btn-icon"

@@ -106,7 +106,7 @@ export default function NewBrand() {
           }}
           breakpoints={{
             320: { slidesPerView: 1, spaceBetween: 16 },
-            640: { slidesPerView: 2, spaceBetween: 16 },
+            640: { slidesPerView: 1, spaceBetween: 16 },
             1200: { slidesPerView: 4, spaceBetween: 16 },
           }}
           className="new-brand__swiper"
@@ -122,7 +122,7 @@ export default function NewBrand() {
                     onError={e =>
                       e.currentTarget.setAttribute(
                         'src',
-                        'img/page-not-found.png',
+                        'img/page-not-found.svg',
                       )
                     }
                   />
@@ -210,8 +210,8 @@ export default function NewBrand() {
                     <img
                       src={
                         favorites.includes(phone.itemId)
-                          ? './icons/ActiveHeart.png'
-                          : './icons/heart.png'
+                          ? './icons/ActiveHeart.svg'
+                          : './icons/heart.svg'
                       }
                       alt="Favorite"
                       className="new-brand__card-btn-icon"

@@ -94,7 +94,7 @@ export default function HotPrices() {
           }}
           breakpoints={{
             320: { slidesPerView: 1, spaceBetween: 16 },
-            640: { slidesPerView: 2, spaceBetween: 16 },
+            640: { slidesPerView: 1, spaceBetween: 16 },
             1200: { slidesPerView: 4, spaceBetween: 16 },
           }}
           className="hot__swiper"
@@ -114,7 +114,7 @@ export default function HotPrices() {
                     onError={e =>
                       e.currentTarget.setAttribute(
                         'src',
-                        'img/page-not-found.png',
+                        'img/page-not-found.svg',
                       )
                     }
                   />
@@ -186,8 +186,8 @@ export default function HotPrices() {
                     <img
                       src={
                         favorites.includes(phone.itemId)
-                          ? './icons/ActiveHeart.png'
-                          : './icons/heart.png'
+                          ? './icons/ActiveHeart.svg'
+                          : './icons/heart.svg'
                       }
                       alt="Favorite"
                       className="hot__card-btn-icon"

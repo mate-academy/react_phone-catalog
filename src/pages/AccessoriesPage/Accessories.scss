@@ -7,7 +7,7 @@
   @include padding-inline-category;
 
   &__text {
-    color: #F1F2F9;
+    color: #f1f2f9;
     font-size: 48px;
     line-height: 56px;
     font-weight: 800;
@@ -24,7 +24,7 @@
   align-items: center;
 
   &-top {
-    color: #F1F2F9;
+    color: #f1f2f9;
   }
 }
 
@@ -34,10 +34,20 @@
   gap: 16px;
   margin-top: 56px;
 
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
   &__card {
     position: relative;
     background-color: #161827;
-    border: 1px solid #3B3E4A;
+    border: 1px solid #3b3e4a;
     border-radius: 0;
     padding: 32px;
     text-align: left;
@@ -65,7 +75,7 @@
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 8px;
-    color: #F1F2F9;
+    color: #f1f2f9;
     line-height: 21px;
   }
 
@@ -79,7 +89,7 @@
   &__card-price {
     font-size: 22px;
     font-weight: 800;
-    color: #F1F2F9;
+    color: #f1f2f9;
   }
 
   &__card-specs {
@@ -87,7 +97,7 @@
     flex-direction: column;
     gap: 8px;
     margin-bottom: 16px;
-    border-top: 1px solid #3B3E4A;
+    border-top: 1px solid #3b3e4a;
     padding-top: 16px;
   }
 
@@ -99,12 +109,12 @@
   }
 
   &__card-spec-label {
-    color: #75767F;
+    color: #75767f;
     font-weight: 700;
   }
 
   &__card-spec-value {
-    color: #F1F2F9;
+    color: #f1f2f9;
     font-weight: 700;
   }
 
@@ -129,16 +139,16 @@
 
   &__card-btn--add {
     flex: 1;
-    background-color: #905BFF;
+    background-color: #905bff;
     color: white;
 
     &.added {
-      background-color: #3B3E4A;
+      background-color: #3b3e4a;
       cursor: not-allowed;
     }
 
     &:hover:not(.added) {
-      background-color: #A378FF;
+      background-color: #a378ff;
     }
   }
 
@@ -146,14 +156,14 @@
     width: 40px;
     height: 40px;
     background-color: transparent;
-    border: 1px solid #3B3E4A;
+    border: 1px solid #3b3e4a;
     border-radius: 0;
     display: flex;
     align-items: center;
     justify-content: center;
 
     &:hover {
-      border-color: #F1F2F9;
+      border-color: #f1f2f9;
     }
   }
 
@@ -184,9 +194,9 @@
     width: 32px;
     height: 32px;
     background-color: transparent;
-    border: 1px solid #3B3E4A;
+    border: 1px solid #3b3e4a;
     border-radius: 0;
-    color: #F1F2F9;
+    color: #f1f2f9;
     font-size: 14px;
     cursor: pointer;
     display: flex;
@@ -195,9 +205,9 @@
     transition: border-color 0.3s ease;
 
     &.active {
-      background-color: #F1F2F9;
-      color: #0F1121;
-      border-color: #F1F2F9;
+      background-color: #f1f2f9;
+      color: #0f1121;
+      border-color: #f1f2f9;
     }
 
     &:disabled {
@@ -206,7 +216,7 @@
     }
 
     &:hover:not(:disabled):not(.active) {
-      border-color: #F1F2F9;
+      border-color: #f1f2f9;
     }
   }
 }

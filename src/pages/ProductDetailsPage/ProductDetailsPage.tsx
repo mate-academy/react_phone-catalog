@@ -87,7 +87,7 @@ export const ProductDetailsPage = () => {
           setSelectedImage(
             newProduct.images?.[0]
               ? `${newProduct.images[0]}`
-              : 'img/page-not-found.png',
+              : 'img/page-not-found.svg',
           );
           setSelectedCapacity(urlCapacity);
 
@@ -132,7 +132,7 @@ export const ProductDetailsPage = () => {
       setSelectedImage(
         newProduct.images?.[0]
           ? `${newProduct.images[0]}`
-          : 'img/page-not-found.png',
+          : 'img/page-not-found.svg',
       );
       navigate(`/products/${newProduct.id}`);
     }
@@ -156,7 +156,7 @@ export const ProductDetailsPage = () => {
       setSelectedImage(
         newProduct.images?.[0]
           ? `${newProduct.images[0]}`
-          : 'img/page-not-found.png',
+          : 'img/page-not-found.svg',
       );
       navigate(`/products/${newProduct.id}`);
     }
@@ -187,7 +187,7 @@ export const ProductDetailsPage = () => {
         id: product.id,
         name: product.name,
         price: product.priceDiscount,
-        image: selectedImage || 'img/page-not-found.png',
+        image: selectedImage || 'img/page-not-found.svg',
         color: selectedColor || product.color,
         capacity: selectedCapacity || undefined,
         quantity: 1,
@@ -235,7 +235,7 @@ export const ProductDetailsPage = () => {
     <section className="product-details section">
       <div className="home--nav">
         <a href="#">
-          <img src="./icons/Home.png" alt="home_nav" />
+          <img src="./icons/Home.svg" alt="home_nav" />
         </a>
         <p className="home--nav-top">{'>'}</p>
         <a href={getCategoryLink()}>
@@ -258,8 +258,8 @@ export const ProductDetailsPage = () => {
             <img
               src={
                 imageError[selectedImage || '']
-                  ? 'img/page-not-found.png'
-                  : selectedImage || 'img/page-not-found.png'
+                  ? 'img/page-not-found.svg'
+                  : selectedImage || 'img/page-not-found.svg'
               }
               alt={product.name || 'No image available'}
               loading="lazy"
@@ -271,7 +271,7 @@ export const ProductDetailsPage = () => {
               <img
                 key={index}
                 src={
-                  imageError[`${image}`] ? 'img/page-not-found.png' : `${image}`
+                  imageError[`${image}`] ? 'img/page-not-found.svg' : `${image}`
                 }
                 alt={`${product.name} thumbnail ${index + 1}`}
                 className={`thumbnail ${selectedImage === `${image}` ? 'thumbnail--active' : ''}`}
@@ -346,8 +346,8 @@ export const ProductDetailsPage = () => {
               <img
                 src={
                   favorites.includes(product.id)
-                    ? './icons/ActiveHeart.png'
-                    : './icons/heart.png'
+                    ? './icons/ActiveHeart.svg'
+                    : './icons/heart.svg'
                 }
                 alt="Favorite"
                 className="product-details__favorite-icon"
@@ -432,9 +432,10 @@ export const ProductDetailsPage = () => {
                 prevEl: '.swiper-button-p',
               }}
               breakpoints={{
-                320: { slidesPerView: 2, spaceBetween: 8 },
-                480: { slidesPerView: 3, spaceBetween: 12 },
-                768: { slidesPerView: 4, spaceBetween: 16 },
+                320: { slidesPerView: 1, spaceBetween: 8 },
+                480: { slidesPerView: 1, spaceBetween: 12 },
+                640: { slidesPerView: 1, spaceBetween: 12 },
+                768: { slidesPerView: 3, spaceBetween: 16 },
                 1024: { slidesPerView: 4, spaceBetween: 16 },
               }}
               className="brand__swiper"
@@ -445,7 +446,7 @@ export const ProductDetailsPage = () => {
                     <img
                       src={
                         imageError[`${relatedItem.images[0]}`]
-                          ? 'img/page-not-found.png'
+                          ? 'img/page-not-found.svg'
                           : `${relatedItem.images[0]}`
                       }
                       alt={relatedItem.name}
@@ -561,8 +562,8 @@ export const ProductDetailsPage = () => {
                       <img
                         src={
                           favorites.includes(relatedItem.id)
-                            ? './icons/ActiveHeart.png'
-                            : './icons/heart.png'
+                            ? './icons/ActiveHeart.svg'
+                            : './icons/heart.svg'
                         }
                         alt="Favorite"
                         className="related-products__card-btn-icon"
