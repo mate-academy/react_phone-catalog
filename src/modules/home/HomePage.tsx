@@ -1,5 +1,12 @@
+import { Footer } from '../shared/components/Layout/Footer';
+import { Header } from '../shared/components/Layout/Header';
+
 export const HomePage = () => {
-  <div className="section">
-    <h1 className="title">Product Catalog</h1>
-  </div>;
+  return (
+    <div className="section">
+      <Header />
+      <h1 className="title">Product Catalog</h1>
+      <Footer />
+    </div>
+  );
 };
