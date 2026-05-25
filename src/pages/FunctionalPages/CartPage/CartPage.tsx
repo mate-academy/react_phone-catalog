@@ -76,7 +76,14 @@ export const CartPage = () => {
               <div className="cart__item-controls">
                 <div className="cart__item-quantity">
                   <button
-                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                    onClick={() =>
+                      updateQuantity(
+                        item.id,
+                        item.quantity - 1,
+                        item.color,
+                        item.capacity,
+                      )
+                    }
                     disabled={item.quantity === 1}
                     className="cart__quantity-btn"
                   >
@@ -86,7 +93,14 @@ export const CartPage = () => {
                     {item.quantity}
                   </span>
                   <button
-                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                    onClick={() =>
+                      updateQuantity(
+                        item.id,
+                        item.quantity + 1,
+                        item.color,
+                        item.capacity,
+                      )
+                    }
                     className="cart__quantity-btn"
                   >
                     +

@@ -6,8 +6,6 @@
 }
 .new-brand {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
   margin-top: 40px;
   padding: 0;
   box-sizing: border-box;
@@ -17,6 +15,7 @@
     align-items: center;
     margin-bottom: 24px;
     height: 41px;
+    padding: 0 16px;
   }
   &__title {
     color: #f1f2f9;
@@ -50,6 +49,7 @@
   }
   &__swiper {
     width: 100%;
+    padding: 0 16px;
   }
   &__slide {
     height: auto;
