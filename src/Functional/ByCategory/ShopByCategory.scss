@@ -1,0 +1,120 @@
+/* stylelint-disable */
+
+@use '../../mixins.scss' as *;
+
+.shop {
+  width: 100%;
+  margin-top: 56px;
+  padding: 0 16px;
+
+  &__title {
+    color: #f1f2f9;
+    font-family: 'Mont', Montserrat, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    margin: 0 0 24px 0;
+  }
+
+  &__main {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+  }
+
+  &__container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+  }
+
+  &__card {
+    width: 100%;
+    height: 368px;
+    position: relative;
+    overflow: hidden;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:hover .shop__img {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    &:hover .shop__img--accessories {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    &--phones {
+      background-color: #6d6474;
+    }
+
+    &--tablets {
+      background-color: #a9a9a9;
+    }
+
+    &--accessories {
+      background-color: #ae0062;
+    }
+
+    @include on-tablet {
+      height: 187px;
+    }
+
+    @include on-phone {
+      height: 200px;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease;
+  }
+
+  &__img--accessories {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    top: 50%;
+    left: 53.5%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease;
+  }
+
+  &__label {
+    color: #f1f2f9;
+    font-family: 'Mont', Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0;
+    margin: 16px 0 0 0;
+  }
+
+  &__models {
+    color: #75767f;
+    font-family: 'Mont', Montserrat, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    margin: 4px 0 0 0;
+  }
+}

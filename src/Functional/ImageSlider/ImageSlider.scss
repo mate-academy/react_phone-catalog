@@ -1,0 +1,86 @@
+@use '../../mixins.scss' as *;
+
+.swiper--top {
+  padding: 0;
+  margin-top: 24px;
+  overflow: hidden;
+
+  &__conteiner {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    gap: 0;
+  }
+
+  &__images {
+    flex: 1;
+    height: 432px;
+    min-width: 0;
+    max-width: 100%;
+
+    @include on-tablet {
+      height: 284px;
+    }
+
+    @include on-phone {
+      height: 200px;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-wrapper,
+    .swiper-slide {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__banner {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &-button-prev,
+  &-button-next {
+    width: 32px;
+    min-width: 32px;
+    flex-shrink: 0;
+    border: 1px solid #3b3e4a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #f1f2f9;
+    background-color: #161827;
+    transition: border-color 0.3s ease;
+    font-size: 16px;
+    padding: 0;
+
+    &:hover {
+      border-color: #f1f2f9;
+    }
+  }
+
+  .swiper-pagination {
+    bottom: 16px;
+  }
+
+  .swiper-pagination-bullet {
+    width: 14px;
+    height: 4px;
+    border-radius: 0;
+    background: #3b3e4a;
+    opacity: 1;
+    transition: background-color 0.3s ease;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: #f1f2f9;
+  }
+}
