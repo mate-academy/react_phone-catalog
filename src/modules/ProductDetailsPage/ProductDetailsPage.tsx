@@ -122,8 +122,12 @@ export const ProductDetailsPage = () => {
     return <div className={styles.loading}>Loading...</div>;
   }
 
-  const getNewProductUrl = (cap: string, col: string) =>
-    `/${productData.category}/${productData.namespaceId}-${cap.toLowerCase()}-${col.toLowerCase().replace(/\s+/g, '-')}`;
+  const getNewProductUrl = (cap: string, col: string) => {
+    const category = productData.category;
+    const id = `${productData.namespaceId}-${cap.toLowerCase()}-${col.toLowerCase().replace(/\s+/g, '-')}`;
+
+    return `${import.meta.env.BASE_URL}${category}/${id}`;
+  };
 
   const formatProduct = (p: ProductData) =>
     ({

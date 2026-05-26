@@ -112,12 +112,15 @@ $border-color: #3b3e4a;
   margin-bottom: 40px;
   font-size: 32px;
   font-weight: 800;
+  word-wrap: break-word;
 }
 
 .productGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
+
+  width: 100%;
   margin-bottom: 80px;
 
   @media (max-width: 900px) {
@@ -130,9 +133,14 @@ $border-color: #3b3e4a;
   display: flex;
   gap: 16px;
 
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+
   .thumbnails {
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
     gap: 16px;
 
     .thumb {
@@ -160,6 +168,7 @@ $border-color: #3b3e4a;
     @media (max-width: 600px) {
       flex-direction: row;
       justify-content: center;
+      width: 100%;
     }
   }
 
@@ -167,10 +176,14 @@ $border-color: #3b3e4a;
     display: flex;
     flex: 1;
     justify-content: center;
+    align-items: center;
+    min-width: 0;
 
     img {
+      width: 100%;
       max-width: 100%;
-      max-height: 500px;
+      height: auto;
+      max-height: 400px;
       object-fit: contain;
     }
   }
@@ -181,6 +194,10 @@ $border-color: #3b3e4a;
 }
 
 .infoSection {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+
   .priceBlock {
     display: flex;
     gap: 12px;
@@ -203,14 +220,19 @@ $border-color: #3b3e4a;
     display: flex;
     gap: 16px;
     align-items: center;
+
+    box-sizing: border-box;
+    width: 100%;
     margin-bottom: 32px;
 
     .addBtn {
       @extend %add-btn-base;
+      min-width: 0;
     }
 
     .favBtn {
       @extend %fav-btn-base;
+      flex-shrink: 0;
     }
   }
 
@@ -270,12 +292,23 @@ $border-color: #3b3e4a;
 
 .shortSpecRow {
   display: flex;
+  gap: 8px;
   justify-content: space-between;
+
+  box-sizing: border-box;
+  width: 100%;
   margin-bottom: 8px;
+
   font-size: 12px;
 
   span:first-child {
     color: $secondary-text;
+    white-space: nowrap;
+  }
+
+  span:last-child {
+    text-align: right;
+    word-break: break-word;
   }
 }
 
@@ -283,6 +316,9 @@ $border-color: #3b3e4a;
   display: grid;
   grid-template-columns: 1fr 400px;
   gap: 64px;
+
+  box-sizing: border-box;
+  width: 100%;
 
   h2 {
     margin-bottom: 16px;
@@ -308,18 +344,29 @@ $border-color: #3b3e4a;
   }
 
   .specs {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+
     .specsRow {
       display: flex;
+      gap: 16px;
       justify-content: space-between;
+
+      box-sizing: border-box;
+      width: 100%;
       padding: 8px 0;
+
       font-size: 14px;
 
       span:first-child {
         color: $secondary-text;
+        white-space: nowrap;
       }
 
       span:last-child {
         text-align: right;
+        word-break: break-word;
       }
     }
   }
@@ -391,7 +438,6 @@ $border-color: #3b3e4a;
 .cardWrapper {
   box-sizing: border-box;
   display: flex;
-
   flex: 0 0 100%;
 
   max-width: 100%;
@@ -505,7 +551,6 @@ $border-color: #3b3e4a;
   border-radius: 8px !important;
 
   color: #fff !important;
-
   background: #323542 !important;
 
   transition: all 0.2s;
