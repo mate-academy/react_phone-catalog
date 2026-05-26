@@ -67,11 +67,11 @@ export const ProductDetailsPage = () => {
   useEffect(() => {
     const updateVisibleCards = () => {
       if (window.innerWidth < 640) {
-        setVisibleCards(1); // На мобилках листаем по 1
+        setVisibleCards(1);
       } else if (window.innerWidth < 1024) {
-        setVisibleCards(2); // На планшетах по 2
+        setVisibleCards(2);
       } else {
-        setVisibleCards(4); // На десктопе по 4
+        setVisibleCards(4);
       }
     };
 
@@ -129,13 +129,30 @@ export const ProductDetailsPage = () => {
     return `${import.meta.env.BASE_URL}${category}/${id}`;
   };
 
+  // Функция для безопасного формирования пути к картинкам из папки public
+  const getSafeImageUrl = (imagePath: string) => {
+    if (!imagePath) {
+      return '';
+    }
+
+    // 1. Очищаем от лишних начальных слэшей и точек
+    const cleanPath = imagePath.replace(/^(\.\.\/|\.\/|\/)/, '');
+
+    // 2. Гарантируем, что BASE_URL имеет слэш на конце, а путь его НЕ имеет
+    const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+      ? import.meta.env.BASE_URL
+      : `${import.meta.env.BASE_URL}/`;
+
+    return `${baseUrl}${cleanPath}`;
+  };
+
   const formatProduct = (p: ProductData) =>
     ({
       ...p,
       itemId: p.id,
       fullPrice: p.priceRegular,
       price: p.priceDiscount,
-      image: p.images[0],
+      image: getSafeImageUrl(p.images[0]),
     }) as any;
 
   const handleAddToCart = (e: React.MouseEvent, product: ProductData) => {
@@ -163,7 +180,10 @@ export const ProductDetailsPage = () => {
           <img src={home} alt="home" />
         </Link>
         <span>{'>'}</span>
-        <Link to={`/${productData.category}`}>{productData.category}</Link>
+        {/* Исправлен путь для категории */}
+        <Link to={`${import.meta.env.BASE_URL}${productData.category}`}>
+          {productData.category}
+        </Link>
         <span>{'>'}</span>
         <p>{productData.name}</p>
       </nav>
@@ -179,12 +199,14 @@ export const ProductDetailsPage = () => {
                 className={`${styles.thumb} ${mainImage === img ? styles.active : ''}`}
                 onClick={() => setMainImage(img)}
               >
-                <img src={`/${img}`} alt="thumb" />
+                {/* Безопасный путь к превью */}
+                <img src={getSafeImageUrl(img)} alt="thumb" />
               </div>
             ))}
           </div>
           <div className={styles.mainImage}>
-            <img src={`/${mainImage}`} alt="main" />
+            {/* Безопасный путь к главной картинке */}
+            <img src={getSafeImageUrl(mainImage)} alt="main" />
           </div>
         </div>
 
