@@ -1,0 +1,97 @@
+.picturesSlider {
+  position: relative;
+
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.container {
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+
+  height: 400px;
+  border-radius: 12px;
+
+  background-color: #0f1117;
+}
+
+.window {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+}
+
+.image {
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: cover !important;
+  object-position: center;
+
+  animation: fade-in 0.5s ease-in-out;
+}
+
+.arrow {
+  cursor: pointer;
+
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  border: none;
+
+  background-color: #21232e;
+
+  &:hover {
+    background-color: #323542;
+  }
+
+  &IconLeft,
+  &IconRight {
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #f1f2f9;
+    border-left: 2px solid #f1f2f9;
+  }
+
+  &IconLeft {
+    transform: rotate(-45deg);
+  }
+  &IconRight {
+    transform: rotate(135deg);
+  }
+}
+
+.dots {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.dot {
+  cursor: pointer;
+  width: 14px;
+  height: 4px;
+  background-color: #3b3e4a;
+
+  &Active {
+    width: 24px;
+    background-color: #fff;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}

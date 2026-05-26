@@ -1,0 +1,116 @@
+.catalogPage {
+  min-height: 100vh;
+  padding-bottom: 80px;
+  background-color: #0f1117;
+}
+
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 16px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 639px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 8px;
+  }
+
+  @media (max-width: 360px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 24px 0;
+
+  .crumbLink {
+    display: flex;
+    align-items: center;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .arrow {
+    width: 16px;
+    filter: invert(0.5);
+  }
+
+  .currentCrumb {
+    font-size: 12px;
+    font-weight: 700;
+    color: #89939a;
+    text-transform: capitalize;
+  }
+}
+
+.title {
+  width: fit-content;
+  margin: 32px auto 8px 0 !important;
+
+  font-size: 48px;
+  font-weight: 800;
+  text-align: left !important;
+}
+
+.count {
+  margin-bottom: 32px;
+  font-weight: 600;
+  color: #89939a;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.controlGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #89939a;
+  }
+
+  .select {
+    cursor: pointer;
+
+    min-width: 120px;
+    padding: 10px 12px;
+    border: 1px solid #4a4d58;
+    border-radius: 8px;
+
+    font-size: 14px;
+    color: #fff;
+
+    background-color: #323542;
+    outline: none;
+
+    &:hover {
+      border-color: #89939a;
+    }
+  }
+}

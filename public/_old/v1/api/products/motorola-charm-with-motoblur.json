@@ -1,5 +1,10 @@
 {
-    "additionalFeatures": "MOTOBLUR-enabled; battery manager; seven home screens; customize by moving or resizing widgets; Android HTML WebKit w/Flash Lite; BACKTRACK\u2122 navigation pad behind screen", 
+    "additionalFeatures": "MOTOBLUR-enabled;
+ battery manager;
+ seven home screens;
+ customize by moving or resizing widgets;
+ Android HTML WebKit w/Flash Lite;
+ BACKTRACK\u2122 navigation pad behind screen", 
     "android": {
         "os": "Android 2.1", 
         "ui": "MOTOBLUR"

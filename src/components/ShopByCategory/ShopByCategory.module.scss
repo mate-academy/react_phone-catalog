@@ -1,0 +1,86 @@
+.categorySection {
+  width: 100%;
+  margin-top: 56px;
+
+  @media (min-width: 640px) {
+    margin-top: 80px;
+  }
+}
+
+.sectionTitle {
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+
+  @media (min-width: 640px) {
+    font-size: 32px;
+  }
+}
+
+.categoryGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.categoryCard {
+  width: 100%;
+  text-decoration: none;
+
+  @media (min-width: 640px) {
+    flex: 1;
+  }
+}
+
+.categoryImage {
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  aspect-ratio: 1 / 1;
+  margin-bottom: 16px;
+  border-radius: 8px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.phonesBg {
+  background-color: #89939a;
+}
+
+.tabletsBg {
+  background-color: #8d8d92;
+}
+
+.accessoriesBg {
+  background-color: #97345a;
+}
+
+.categoryName {
+  margin-bottom: 4px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.categoryCount {
+  font-size: 14px;
+  color: #89939a;
+}
