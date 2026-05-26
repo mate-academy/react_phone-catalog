@@ -126,7 +126,7 @@ export const ProductDetailsPage = () => {
     const category = productData.category;
     const id = `${productData.namespaceId}-${cap.toLowerCase()}-${col.toLowerCase().replace(/\s+/g, '-')}`;
 
-    return `${import.meta.env.BASE_URL}${category}/${id}`;
+    return `/${category}/${id}`;
   };
 
   // Функция для безопасного формирования пути к картинкам из папки public
@@ -135,10 +135,16 @@ export const ProductDetailsPage = () => {
       return '';
     }
 
-    // 1. Очищаем от лишних начальных слэшей и точек
-    const cleanPath = imagePath.replace(/^(\.\.\/|\.\/|\/)/, '');
+    // 1. Очищаем от начальных точек и слэшей
+    let cleanPath = imagePath.replace(/^(\.\.\/|\.\/|\/)/, '');
 
-    // 2. Гарантируем, что BASE_URL имеет слэш на конце, а путь его НЕ имеет
+    // 2. Если путь НЕ начинается с "img/", но и не содержит "api/", добавляем "img/"
+    // (Частая проблема: в общем списке товаров путь "img/...", а в детальном — просто "phones/...")
+    if (!cleanPath.startsWith('img/') && !cleanPath.startsWith('api/')) {
+      cleanPath = `img/${cleanPath}`;
+    }
+
+    // 3. Формируем правильный базовый URL со слэшем на конце
     const baseUrl = import.meta.env.BASE_URL.endsWith('/')
       ? import.meta.env.BASE_URL
       : `${import.meta.env.BASE_URL}/`;
