@@ -147,6 +147,18 @@
         display: flex;
         height: $header-height;
         width: 48px;
+
+        &_active {
+          color: $white;
+
+          &::after {
+            height: 8%;
+            border-radius: 50px;
+            width: 30%;
+
+          }
+        }
+
       }
     }
 

@@ -7,7 +7,7 @@
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  background-color: $bg-color-card;
+  background-color: $surface_1;
   margin: 0 auto;
 
   width: 288px;
@@ -45,16 +45,15 @@
       border: none;
       width: 16px;
       height: 16px;
-      background-color: $bg-color-card;
-
+      background-color: $surface_1;
 
       img {
         filter: brightness(0.3);
         transition: all 0.2s ease;
+      }
 
-        &:hover {
-          filter: brightness(1);
-        }
+      img:hover {
+        filter: brightness(1);
       }
 
       @include scale-img(1.2);
@@ -63,11 +62,11 @@
     .product_link {
       text-decoration: none;
       flex: 1;
-      color: $text-white__hover;
+      color: $white;
       transition: color 0.3s ease;
 
       &:hover {
-        color: $color-accent
+        color: $color-accent;
       }
 
       .product_name {
@@ -93,62 +92,63 @@
         width: 32px;
         height: 32px;
 
-        img {
-          width: 16px;
+        &:hover {
+          background-color: $icon-bg-hover;
         }
 
-        &:hover {
-          background-color: $icons-hover;
-        }
       }
 
       .icon {
         @extend %icon;
 
         border: none;
-        background-color: $icons-def;
+        background-color: $icon-bg-default;
 
+        img {
+          width: 16px;
+        }
       }
 
       .iconDisabled {
         @extend %icon;
 
         border: $border-default;
-        background-color: $bg-color-card;
+        background-color: $surface_1;
         pointer-events: none;
 
         img {
+          width: 16px;
           filter: brightness(0.5);
         }
       }
-    }
 
-    .price {
-      @include font-h3;
-    }
-  }
-}
-
-@media (min-width: $tablet-breakpoint) {
-  .cartItem {
-    flex-direction: row;
-    width: 592px;
-    padding: 24px;
-
-    .first_part {
-      gap: 24px;
-    }
-
-    .second_part {
-      width: 192px;
-      gap: 24px;
-      justify-content: flex-end;
+      .price {
+        @include font-h3;
+      }
     }
   }
-}
 
-@media (min-width: $desktop-breakpoint) {
-  .cartItem {
-    width: 742px;
+  @media (min-width: $tablet-breakpoint) {
+    .cartItem {
+      flex-direction: row;
+      width: 592px;
+      padding: 24px;
+
+      .first_part {
+        gap: 24px;
+      }
+
+      .second_part {
+        width: 192px;
+        gap: 24px;
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    .cartItem {
+      width: 742px;
+    }
   }
 }

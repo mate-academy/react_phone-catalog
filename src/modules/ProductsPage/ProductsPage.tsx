@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { getData } from '../../utils/api';
 import { Product } from '../../types';
 import styles from '../ProductsPage/ProductsPage.module.scss';
-import { ProductCard } from '../shared/components/ProductCard';
+import { ProductCard, ProductCardLoading } from '../shared/components';
+import { Errors } from '../shared/components/Errors/Errors';
 
 type Category = 'phones' | 'tablets' | 'accessories';
 
@@ -19,6 +20,8 @@ export const ProductsPage = () => {
   const title = categoryNames[category as Category];
 
   const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sort = searchParams.get('sort') || 'age';
@@ -52,20 +55,23 @@ export const ProductsPage = () => {
   const visiblePages = pages.slice(startPage - 1, endPage);
 
   useEffect(() => {
-    getData<Product[]>('products').then(data =>
-      setProducts(data.filter(p => p.category === category)),
-    );
+    getData<Product[]>('products')
+      .then(data => setProducts(data.filter(p => p.category === category)))
+      .catch(() => setIsError(true))
+      .finally(() => setIsLoading(false));
   }, [category]);
 
   return (
     <div className={styles.productspage}>
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
-          <img
-            className={styles.breadcrumb_icon}
-            src="/img/icons/Home.svg"
-            alt="home"
-          />
+          <Link to="/">
+            <img
+              className={styles.breadcrumb_icon}
+              src="/img/icons/Home.svg"
+              alt="home"
+            />
+          </Link>
           <img
             className={styles.breadcrumb_icon}
             src="/img/icons/Chevron_(Arrow_Right).svg"
@@ -103,13 +109,22 @@ export const ProductsPage = () => {
           </div>
         </div>
       </header>
-      <div className={styles.products}>
-        {visibleProducts.map(product => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+      {!isError && <Errors type="fetch-error" />}
+      {!isError && (
+        <div className={styles.products}>
+          {isLoading ? (
+            <ProductCardLoading count={perPage === 'all' ? 8 : +perPage} />
+          ) : products.length === 0 ? (
+            <Errors type="empty" />
+          ) : (
+            visibleProducts.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))
+          )}
+        </div>
+      )}
 
-      {countPages > 1 && (
+      {!isLoading && countPages > 1 && (
         <div className={styles.pages}>
           <button
             disabled={+page === 1}

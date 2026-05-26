@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import styles from '../FavoritesPage/FavoritesPage.module.scss';
 import { ProductCard } from '../shared/components/ProductCard';
 import { FavoritesContext } from '../../context/FavoritesContext';
+import { Link } from 'react-router-dom';
+import { Errors } from '../shared/components/Errors/Errors';
 
 export const FavoritesPage = () => {
   const { favoritesItems } = useContext(FavoritesContext);
@@ -12,11 +14,13 @@ export const FavoritesPage = () => {
     <div className={styles.favoritespage}>
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
-          <img
-            className={styles.breadcrumb_icon}
-            src="/img/icons/Home.svg"
-            alt="home"
-          />
+          <Link to="/">
+            <img
+              className={styles.breadcrumb_icon}
+              src="/img/icons/Home.svg"
+              alt="home"
+            />
+          </Link>
           <img
             className={styles.breadcrumb_icon}
             src="/img/icons/Chevron_(Arrow_Right).svg"
@@ -28,9 +32,13 @@ export const FavoritesPage = () => {
         <p className={styles.count}>{countProducts} models</p>
       </header>
       <div className={styles.products}>
-        {favoritesItems.map(product => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+        {favoritesItems.length === 0 ? (
+          <Errors type="empty-favorites" />
+        ) : (
+          favoritesItems.map(product => (
+            <ProductCard key={product.id} product={product} />
+          ))
+        )}
       </div>
     </div>
   );

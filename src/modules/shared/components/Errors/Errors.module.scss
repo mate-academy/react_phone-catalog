@@ -1,0 +1,14 @@
+.errors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 64px 16px;
+  text-align: center;
+}
+
+.img {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+}

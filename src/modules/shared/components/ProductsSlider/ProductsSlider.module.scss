@@ -34,9 +34,9 @@
       @include font-h2;
     }
 
-
     justify-content: space-between;
     margin-bottom: 16px;
+
 
     .headerButtons {
       display: flex;
@@ -64,12 +64,9 @@
 
   .windowSlider {
     box-sizing: border-box;
+    display: flex;
     overflow-x: auto;
-    scrollbar-width: none;
-
-    @media (min-width: $tablet-breakpoint) {
-      @include flex-center;
-    }
+    justify-content: safe center;
 
 
     &::-webkit-scrollbar {
@@ -78,6 +75,7 @@
 
     .slider {
       display: flex;
+      align-items: start›;
       gap: 16px;
 
       .card {

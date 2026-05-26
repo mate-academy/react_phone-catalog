@@ -5,25 +5,33 @@ import { BannerSlider } from '../shared/components/BannerSlider';
 import styles from './HomePage.module.scss';
 import { ProductsSlider } from '../shared/components/ProductsSlider';
 import { CategoryCard } from '../shared/components/CategoryCard/CategoryCard';
+import { Errors } from '../shared/components/Errors/Errors';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   const [isLoading, setIsLoading] = useState(true);
-  const [, setError] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsError(true);
+      setIsLoading(false);
+    }, 10000);
+
     getData<Product[]>('products')
       .then(date => {
         setProducts(date);
-        setIsLoading(true);
       })
       .catch(() => {
-        setError(true);
+        setIsError(true);
       })
       .finally(() => {
+        clearTimeout(timeout);
         setIsLoading(false);
       });
+
+    return () => clearTimeout(timeout);
   }, []);
 
   const brandNew = [...products].sort((a, b) => b.year - a.year);
@@ -36,6 +44,10 @@ export const HomePage = () => {
   const countsAccessories = products.filter(a => {
     return a.category === 'accessories';
   }).length;
+
+  if (isError) {
+    return <Errors type="fetch-error" />;
+  }
 
   return (
     <article className={styles.homepage}>

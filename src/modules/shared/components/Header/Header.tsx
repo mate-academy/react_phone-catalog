@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
-import { MobileMenu } from '../Menu/Menu';
+import { MobileMenu } from '../MobileMenu/Menu';
 import { FavoritesContext } from '../../../../context/FavoritesContext';
 
 export const Header = () => {
@@ -51,15 +51,25 @@ export const Header = () => {
       </nav>
 
       <div className={styles.icons}>
-        <Link to="/favorites" className={styles.icon}>
+        <NavLink
+          to="/favorites"
+          className={({ isActive }) =>
+            `${styles.icon} ${isActive ? styles.icon_active : ''}`
+          }
+        >
           <img src="/img/icons/Favorites.svg" alt="Favorites" />
           {favoritesItems.length > 0 && (
             <span className={styles.count}>{favoritesItems.length}</span>
           )}
-        </Link>
-        <Link to="/cart" className={styles.icon}>
+        </NavLink>
+        <NavLink
+          to="/cart"
+          className={({ isActive }) =>
+            `${styles.icon} ${isActive ? styles.icon_active : ''}`
+          }
+        >
           <img src="/img/icons/Shopping_bag.svg" alt="Shopping bag " />
-        </Link>
+        </NavLink>
       </div>
 
       <button

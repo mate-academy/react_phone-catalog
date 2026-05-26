@@ -6,9 +6,9 @@ import { ProductsPage } from './modules/ProductsPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { CartPage } from './modules/CartPage';
 import { FavoritesPage } from './modules/FavoritesPage';
-import { NotFoundPage } from './modules/shared/components/NotFoundPage';
 import { Header } from './modules/shared/components/Header';
 import { Footer } from './modules/shared/components/Footer';
+import { Errors } from './modules/shared/components/Errors/Errors';
 
 export const App = () => {
   return (
@@ -22,7 +22,7 @@ export const App = () => {
         <Route path="/product/:productId" element={<ProductDetailsPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/favorites" element={<FavoritesPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<Errors type="not-found" />} />
       </Routes>
 
       <Footer />
