@@ -5,6 +5,7 @@
   max-width: 1800px;
   margin: auto;
   @include page-paddings;
+  min-height: 64vh;
 
   &__content {
     max-width: 1440px;

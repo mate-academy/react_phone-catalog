@@ -37,7 +37,7 @@
   &--favorite {
     height: 100%;
     aspect-ratio: 1;
-    border: 1px solid $color-secondary;
+    border: 1px solid $color-icons;
     background-color: $color-white;
     background-image: url('/img/HeartIcon.svg');
     background-repeat: no-repeat;
@@ -46,8 +46,12 @@
     cursor: pointer;
     @include animation-transition;
 
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+
     &-clicked {
-      border: 1px solid $color-secondary;
+      border: 1px solid $color-elements;
       background-image: url('/img/heartFilletIcon.svg');
       background-repeat: no-repeat;
       background-position: center;

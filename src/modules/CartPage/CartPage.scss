@@ -120,6 +120,13 @@
         width: 100%;
       }
     }
+    &--link {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+    }
 
     &--btns {
       display: flex;

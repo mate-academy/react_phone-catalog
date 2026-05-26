@@ -33,7 +33,7 @@ export const HomePage: React.FC<Props> = ({ products, loading, error }) => {
         <section className="page">
           <div className="page__content">
             <h1 id="h1" className="page__header">
-              Welcome to Nice Gadgets store!
+              Product Catalog
             </h1>
             <BannerSlider />
             <ProductsSlider

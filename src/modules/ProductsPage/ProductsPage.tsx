@@ -6,6 +6,7 @@ import { Loader } from '../../components/shared/Loader';
 import { Pagination } from './components/Pagination';
 import { Breadcrumbs } from '../../components/shared/Breadcrumbs/Breadcrumbs';
 import { useFavorite } from '../../context/FavoriteContext';
+import { useSearchParams } from 'react-router-dom';
 
 interface Props {
   category: string;
@@ -27,8 +28,9 @@ export const ProductsPage: React.FC<Props> = ({
     category.charAt(0).toUpperCase() + category.slice(1);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(16);
-  const [sortBy, setSortBy] = useState('newest');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const itemsPerPage = searchParams.get('perPage') || '16';
+  const sortBy = searchParams.get('sortBy') || 'age';
   const [isGridLoading, setIsGridLoading] = useState(false);
 
   const sortedProducts = [...actualProducts].sort((a, b) => {
@@ -47,11 +49,15 @@ export const ProductsPage: React.FC<Props> = ({
   });
 
   function handleItemsPerPage(event: React.ChangeEvent<HTMLSelectElement>) {
-    setItemsPerPage(+event.target.value);
+    const currentParams = Object.fromEntries(searchParams.entries());
+    setSearchParams({
+      ...currentParams,
+      perPage: event.target.value,
+    });
     setCurrentPage(1);
   }
-  const lastItemIndex = currentPage * itemsPerPage;
-  const firstItemIndex = lastItemIndex - itemsPerPage;
+  const lastItemIndex = currentPage * +itemsPerPage;
+  const firstItemIndex = lastItemIndex - +itemsPerPage;
   const currentProducts = sortedProducts.slice(firstItemIndex, lastItemIndex);
 
   useEffect(() => {
@@ -62,10 +68,15 @@ export const ProductsPage: React.FC<Props> = ({
     }, 300);
 
     return () => clearTimeout(timer);
-  }, [category, itemsPerPage, currentPage, sortBy]);
+  }, [category, itemsPerPage, currentPage, URLSearchParams]);
 
   function handleSortChange(event: React.ChangeEvent<HTMLSelectElement>) {
-    setSortBy(event.target.value);
+    const currentParams = Object.fromEntries(searchParams.entries());
+    setSearchParams({
+      ...currentParams,
+      sortBy: event.target.value,
+    });
+
     setCurrentPage(1);
   }
 
@@ -162,7 +173,7 @@ export const ProductsPage: React.FC<Props> = ({
           <Pagination
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
-            itemsPerPage={itemsPerPage}
+            itemsPerPage={+itemsPerPage}
             productsLength={actualProducts.length}
             setIsGridLoading={setIsGridLoading}
           />

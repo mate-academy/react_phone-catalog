@@ -1,5 +1,6 @@
 import React, { createContext, useMemo, useState } from 'react';
 import { ProductCart } from '../types/ProductCart';
+import { useLocalStorage } from '../utils/useLocalStorage';
 
 interface CartContextType {
   cartItems: ProductCart[];
@@ -15,7 +16,7 @@ type Props = {
 };
 
 export const CartProvider: React.FC<Props> = ({ children }) => {
-  const [cartItems, setCartItems] = useState<ProductCart[]>([]);
+  const [cartItems, setCartItems] = useLocalStorage<ProductCart[]>('cart', []);
 
   const value = useMemo(
     () => ({ cartItems, setCartItems }),

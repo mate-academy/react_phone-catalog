@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Product } from '../types/Product';
+import { useLocalStorage } from '../utils/useLocalStorage';
 
 type FavoriteContextType = {
   favoriteItems: Product[];
@@ -15,7 +16,10 @@ type Props = {
 };
 
 export const FavoriteProvider: React.FC<Props> = ({ children }) => {
-  const [favoriteItems, setFavoriteItems] = useState<Product[]>([]);
+  const [favoriteItems, setFavoriteItems] = useLocalStorage<Product[]>(
+    'favorite',
+    [],
+  );
 
   const value = useMemo(
     () => ({

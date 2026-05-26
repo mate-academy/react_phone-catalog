@@ -1,10 +1,10 @@
+import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import './CartPage.scss';
 import React from 'react';
 
 export const CartPage: React.FC = () => {
   const { cartItems, setCartItems } = useCart();
-
   const totalPrice = cartItems.reduce(
     (sum, item) => sum + item.product.price * item.amount,
     0,
@@ -36,12 +36,18 @@ export const CartPage: React.FC = () => {
                             )
                           }
                         ></button>
-                        <img
-                          className="cart__item--image"
-                          src={product.image}
-                          alt={product.name}
-                        />
-                        <p className="cart__item--title">{product.name}</p>
+                        <Link
+                          className="cart__item--link"
+                          to={`/${item.product.category}/${item.product.itemId}`}
+                        >
+                          <img
+                            className="cart__item--image"
+                            src={product.image}
+                            alt={product.name}
+                          />
+
+                          <p className="cart__item--title">{product.name}</p>
+                        </Link>
                       </div>
 
                       <div className="cart__item--buttons">

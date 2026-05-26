@@ -7,7 +7,6 @@ import { useFavorite } from '../../../context/FavoriteContext';
 export const Navbar: React.FC = () => {
   const { cartItems } = useCart();
   const { favoriteItems } = useFavorite();
-
   const totalCartItems = cartItems.reduce((sum, item) => sum + item.amount, 0);
 
   return (
@@ -47,7 +46,7 @@ export const Navbar: React.FC = () => {
             />
           </div>
           <div className="navbar__action">
-            {totalCartItems > 0 ? <p>{cartItems.length}</p> : ''}
+            {totalCartItems > 0 ? <p>{totalCartItems}</p> : ''}
             <NavLink
               to="/cart"
               className="navbar__action navbar__action--basket"
