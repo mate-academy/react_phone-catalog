@@ -18,21 +18,17 @@ export const FavoritesContext = createContext<FavoritesContextType>({
 });
 
 export const FavoritesProvider = ({ children }: Props) => {
-  const [favoritesItems, setFavoritesItems] = useState<Product[]>([]);
+  const [favoritesItems, setFavoritesItems] = useState<Product[]>(() => {
+    const saved = localStorage.getItem('favorites');
+
+    return saved ? JSON.parse(saved) : [];
+  });
 
   useEffect(() => {
     const favoritesItemsStr = JSON.stringify(favoritesItems);
 
     localStorage.setItem('favorites', favoritesItemsStr);
   }, [favoritesItems]);
-
-  useEffect(() => {
-    const saved = localStorage.getItem('favorites');
-
-    if (saved) {
-      setFavoritesItems(JSON.parse(saved));
-    }
-  }, []);
 
   function addToFavorites(item: Product) {
     setFavoritesItems([...favoritesItems, item]);

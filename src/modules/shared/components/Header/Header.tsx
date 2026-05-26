@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { MobileMenu } from '../Menu/Menu';
+import { FavoritesContext } from '../../../../context/FavoritesContext';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { favoritesItems } = useContext(FavoritesContext);
 
   return (
     <header className={styles.header}>
@@ -50,6 +53,9 @@ export const Header = () => {
       <div className={styles.icons}>
         <Link to="/favorites" className={styles.icon}>
           <img src="/img/icons/Favorites.svg" alt="Favorites" />
+          {favoritesItems.length > 0 && (
+            <span className={styles.count}>{favoritesItems.length}</span>
+          )}
         </Link>
         <Link to="/cart" className={styles.icon}>
           <img src="/img/icons/Shopping_bag.svg" alt="Shopping bag " />

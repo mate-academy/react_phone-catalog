@@ -85,9 +85,31 @@
       align-items: center;
       justify-content: center;
       border-left: $border-default;
+      position: relative;
 
       @include hover-underline(0);
 
+
+      .count {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(0, -100%);
+        width: 14px;
+        height: 14px;
+        border-radius: 8px;
+        background-color: $red;
+        color: $white;
+        font-family: Mont, sans-serif;
+        font-size: 9px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 4px;
+        border: 1px solid $black;
+
+      }
     }
   }
 
@@ -98,6 +120,11 @@
     border-left: $border-default;
     background: none;
     cursor: pointer;
+
+    img {
+      @include scale-img(1.15);
+
+    }
 
   }
 

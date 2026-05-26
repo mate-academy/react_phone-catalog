@@ -115,7 +115,7 @@ export const ProductsPage = () => {
             disabled={+page === 1}
             className={+page === 1 ? styles.icon_disabled : styles.icon}
             onClick={() =>
-              setSearchParams({ sort, perPage, page: String(+page - 1) })
+              setSearchParams({ sort, perPage, page: String(+page - 4) })
             }
           >
             <img src="/img/icons/Chevron_(Arrow_Left).svg" alt="" />
@@ -132,12 +132,12 @@ export const ProductsPage = () => {
             </button>
           ))}
           <button
-            disabled={+page === countPages - 2}
+            disabled={+page > countPages - 3}
             className={
-              +page === countPages - 2 ? styles.icon_disabled : styles.icon
+              +page > countPages - 3 ? styles.icon_disabled : styles.icon
             }
             onClick={() =>
-              setSearchParams({ sort, perPage, page: String(+page + 1) })
+              setSearchParams({ sort, perPage, page: String(+page + 4) })
             }
           >
             <img src="/img/icons/Chevron_(Arrow_Right).svg" alt="" />
