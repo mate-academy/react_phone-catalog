@@ -7,7 +7,7 @@
 }
 
 @mixin on-desktop {
-  @media(min-width: $desktop-min-width) and (max-width: $desktop-max-width) {
+  @media(min-width: $desktop-min-width) {
     @content
   }
 }
@@ -18,7 +18,7 @@
   }
 }
 
-@mixin content-padding-inline {
+@mixin content-padding-inline  {
   padding-inline: 16px;
 
   @include on-tablets {

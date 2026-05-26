@@ -39,13 +39,21 @@ export const ProductsList: React.FC<PhoneProps> = ({
   });
 
   useEffect(() => {
-    if (listRef.current) {
-      const cardWidt = listRef.current.children[0]?.clientWidth || 0;
+    const handleUpdateOffset = () => {
+      if (listRef.current) {
+        const cardWidt = listRef.current.children[0]?.clientWidth || 0;
+        const offset = currentIndex * (cardWidt + 16);
 
-      const offset = currentIndex * (cardWidt + 16);
+        listRef.current.style.transform = `translateX(-${offset}px)`;
+      }
+    };
 
-      listRef.current.style.transform = `translateX(-${offset}px)`;
-    }
+    handleUpdateOffset();
+    window.addEventListener('resize', handleUpdateOffset);
+
+    return () => {
+      window.removeEventListener('resize', handleUpdateOffset);
+    };
   }, [currentIndex]);
 
   const lastIndex = perPage + startIndex || productYear.length;

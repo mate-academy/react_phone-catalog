@@ -20,7 +20,7 @@ export const Shop: React.FC = () => {
     <section className={styles.shop}>
       <h2 className={styles.shop__title}>Shop by category</h2>
       <div className={styles.shop__category}>
-        <div>
+        <div className={styles['shop__category-rectangle-grid1']}>
           <NavLink to={'/phones'}>
             <span className={styles.shop__rectangle}>
               <img
@@ -33,7 +33,7 @@ export const Shop: React.FC = () => {
           <h3 className={styles['shop__category-title']}>Mobile phones</h3>
           <p className={styles.shop__counter}>{`${phones.length} models`}</p>
         </div>
-        <div>
+        <div className={styles['shop__category-rectangle-grid2']}>
           <NavLink to={'/tablets'}>
             <span
               className={`${styles.shop__rectangle} ${styles['shop__rectangle--grey']}`}
@@ -48,7 +48,7 @@ export const Shop: React.FC = () => {
           <h3 className={styles['shop__category-title']}>Tablets</h3>
           <p className={styles.shop__counter}>{`${tablets.length} models`}</p>
         </div>
-        <div>
+        <div className={styles['shop__category-rectangle-grid3']}>
           <NavLink to={'/accessories'}>
             <span
               className={`${styles.shop__rectangle} ${styles['shop__rectangle--color']}`}

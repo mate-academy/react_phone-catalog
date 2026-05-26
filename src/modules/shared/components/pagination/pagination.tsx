@@ -97,7 +97,7 @@ export const Pagination: React.FC = ({
           >
             <img
               className={styles['page-buttom-image-left']}
-              src="/arrow.png"
+              src="img/arrow.png"
               alt=""
             />
           </NavLink>

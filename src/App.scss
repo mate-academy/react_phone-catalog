@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -31,9 +37,7 @@ html, body {
   flex-direction: column;
   min-height: 100vh; // Ocupa no mínimo 100% da altura da tela (View Height)
 
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
+
 }
 
 .main-content {

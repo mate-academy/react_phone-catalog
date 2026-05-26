@@ -78,7 +78,7 @@ export const HeroPage: React.FC = () => {
             </ul>
           </div>
           <button
-            className={`${styles.hero__button} ${styles['herro__button--grid-align']}`}
+            className={`${styles.hero__button} ${styles['hero__button--grid-align']}`}
             onClick={handleSkipSlider}
           >
             {' '}

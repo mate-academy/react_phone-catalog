@@ -22,14 +22,12 @@
   &-wrapper {
     overflow: hidden; // É AQUI que o "mágico" acontece!
     margin: 0; // Centraliza a moldura
+    width: 100%;
 
-    @include on-tablets {
-      width: 650px;
-    }
+
 
     @include on-desktop {
       flex-shrink: 0;
-      width: 1137px; // O tamanho que você quer que apareça na tela
     }
   }
 }

@@ -235,6 +235,10 @@
       margin-left: 48px;
       gap: 64px;
     }
+
+    @include on-large-desktop {
+      margin-left: 68px;
+    }
   }
 
   &__link {
