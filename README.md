@@ -33,15 +33,6 @@ Core
 - Error handling and loading states
 - Optional dark/light theme switching
 
-# Project Structure
-
-- `src/components` — Reusable UI components
-- `src/modules` — Page-based modules
-- `src/pages` — Main application pages
-- `src/context` / `src/store` — Global state management
-- `public/api` — Product data
-- `public/img` — Product images
-
 # Pages Included
 
 - Home Page
