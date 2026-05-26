@@ -1,0 +1,27 @@
+@import '../../utils/main';
+
+.button-fav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 48px;
+  border: 1px solid var(--gray-icons-color);
+  background-color: var(--surface-2-color);
+  cursor: pointer;
+
+  @include hover(border-color, var(--gray-primary-color));
+
+  &--selected {
+    border-color: var(--gray-elements-color);
+  }
+
+  &--small {
+    width: 40px;
+    height: 40px;
+  }
+
+  &--large {
+    width: 48px;
+    height: 48px;
+  }
+}

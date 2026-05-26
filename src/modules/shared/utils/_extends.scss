@@ -1,0 +1,120 @@
+%h1 {
+  font-family: $main-font;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  color: var(--gray-primary-color);
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -1%;
+  }
+}
+
+%h2 {
+  font-family: $main-font;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0%;
+
+  color: var(--gray-primary-color);
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+}
+
+%h3 {
+  font-family: $main-font;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+
+  @include on-tablet {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
+
+%h4 {
+  font-family: $main-font;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: var(--gray-primary-color);
+
+  @include on-tablet {
+    font-size: 20px;
+  }
+}
+
+%uppercase {
+  font-family: $main-font;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--gray-secondary-color);
+}
+
+%button {
+  font-family: $main-font;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+}
+
+%small-text-12 {
+  font-family: $main-font;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+%body-text-14 {
+  font-family: $main-font;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+}
+
+%price {
+  font-family: $main-font;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0%;
+  color: var(--gray-primary-color);
+}
+
+%h2-price {
+  font-family: $main-font;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  color: var(--gray-primary-color);
+}
+
+%counter {
+  font-family: $main-font;
+  font-weight: 700;
+  font-size: 9px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+}

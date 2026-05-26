@@ -1,0 +1,83 @@
+@import '../../utils/main';
+
+.footer {
+  box-shadow: 0 -1px 0 0 var(--gray-elements-color);
+  background-color: var(--header-bg-color);
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 32px;
+
+    padding-block: 32px;
+
+    @include content-padding-inline;
+
+    background-color: var(--header-bg-color);
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 0;
+      max-width: 192px;
+    }
+
+    @include on-desktop {
+      max-width: 378px;
+    }
+  }
+
+  &__logo-wrapper {
+    display: flex;
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+
+    @include hover(transform, scale(1.1));
+  }
+
+  &__link {
+    @extend %uppercase;
+
+    transition: all 0.4s ease;
+
+    &:hover {
+      color: var(--gray-primary-color);
+      transform: scale(1.1);
+    }
+  }
+
+  &__back-to-top {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    cursor: pointer;
+  }
+
+  &__button-title {
+    @extend %small-text-12;
+
+    text-align: right;
+    color: var(--gray-secondary-color);
+
+    @include hover(color, var(--gray-primary-color));
+  }
+}

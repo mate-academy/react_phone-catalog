@@ -1,0 +1,58 @@
+@import '../shared/utils/main';
+
+.products {
+  &__wrapper {
+    margin-bottom: 64px;
+
+    @include content-padding-inline;
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__header {
+    @extend %h1;
+
+    color: var(--gray-primary-color);
+  }
+
+  &__count {
+    padding-top: 8px;
+
+    @extend %body-text-14;
+
+    color: var(--gray-secondary-color);
+  }
+
+  &__drop-downs {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-block: 32px 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__drop-down {
+    width: 136px;
+
+    &--sort-by {
+      @include on-tablet {
+        width: 187px;
+      }
+
+      @include on-desktop {
+        width: 176px;
+      }
+    }
+
+    &--items-per-page {
+      @include on-desktop {
+        width: 128px;
+      }
+    }
+  }
+}

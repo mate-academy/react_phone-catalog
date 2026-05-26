@@ -1,0 +1,96 @@
+@import '../../utils/main';
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &--menu {
+    height: 100%;
+  }
+
+  &__icon-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50%;
+    height: 100%;
+
+    box-shadow: -1px -1px 0 0 var(--gray-elements-color);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: var(--gray-primary-color);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+
+    &--active::after {
+      transform: scaleX(1);
+    }
+
+    &--header {
+      width: 48px;
+      height: 48px;
+      border: 0;
+      background: var(--header-bg-color);
+
+      @include hover(background, var(--hover-color));
+
+      box-shadow: -1px 0 0 0 var(--gray-elements-color);
+
+      @include on-desktop {
+        width: 64px;
+        height: 64px;
+      }
+    }
+
+    &--menu {
+      width: 50%;
+      height: 100%;
+      box-shadow: -1px -1px 0 0 var(--gray-elements-color);
+    }
+  }
+
+  &__icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+  }
+
+  &__counter {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 14px;
+    height: 14px;
+
+    border: 1px solid var(--bg-color);
+    border-radius: 50px;
+
+    @extend %counter;
+
+    background-color: var(--accent-color);
+    color: var(--button-cart-text-color);
+  }
+}

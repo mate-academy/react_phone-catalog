@@ -1,0 +1,21 @@
+@import '../../../shared/utils/main';
+
+.catalog {
+  @include content-padding-inline;
+
+  &__header {
+    margin-bottom: 24px;
+
+    @extend %h2;
+  }
+
+  &__container {
+    @include page-grid;
+
+    row-gap: 32px;
+
+    @include on-tablet {
+      column-gap: 16px;
+    }
+  }
+}

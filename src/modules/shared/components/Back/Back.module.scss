@@ -1,0 +1,27 @@
+@import '../../utils/main';
+
+.back-button {
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-block: 24px 16px;
+
+    background: none;
+    border: 0;
+    cursor: pointer;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__text {
+    @extend %small-text-12;
+
+    font-weight: 700;
+    color: var(--back-text-color);
+
+    @include hover(color, var(--gray-primary-color));
+  }
+}

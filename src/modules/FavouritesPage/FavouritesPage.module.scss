@@ -1,0 +1,47 @@
+@import '../shared/utils/main';
+
+.favourites {
+  &__container {
+    margin-bottom: 56px;
+
+    @include content-padding-inline;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+
+    @extend %h1;
+  }
+
+  &__count {
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+
+    @extend %body-text-14;
+
+    color: var(--gray-secondary-color);
+  }
+
+  &__empty-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 40px;
+
+    @extend %h1;
+
+    color: var(--gray-secondary-color);
+  }
+}
