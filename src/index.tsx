@@ -13,6 +13,8 @@ import { CatalogPage } from './modules/CatalogPage/CatalogPage';
 // eslint-disable-next-line max-len
 import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
 
+import './App.scss';
+
 import { GlobalProvider } from './components/CartContext/CartContext';
 
 import { CartPage } from './components/CartContext/CartPage';

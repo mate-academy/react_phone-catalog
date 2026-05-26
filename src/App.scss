@@ -1,9 +1,10 @@
+// 1. Подключаем шрифт Montserrat напрямую в SCSS
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
 html,
 body {
   scroll-behavior: smooth;
-
   position: relative;
-
   overflow-x: hidden;
 
   box-sizing: border-box;
@@ -13,14 +14,20 @@ body {
   padding: 0;
 
   color: #fff;
-
   background-color: #0f1117;
+
+  // 2. Указываем шрифт для body
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+  // 3. Принудительно наследуем шрифт для всех элементов, кнопок и инпутов
+  font-family: 'Montserrat', sans-serif !important;
 }
 
 main {

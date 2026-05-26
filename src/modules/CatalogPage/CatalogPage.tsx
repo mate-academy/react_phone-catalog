@@ -1,29 +1,25 @@
+/* eslint-disable max-len */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
-
 import { useParams, useSearchParams, Link } from 'react-router-dom';
-
 import { Product } from '../HomePage/HomePage';
-
 import styles from './CatalogPage.module.scss';
-
 import home from '../../api/icons/Home.png';
-
 import vector from '../../api/icons/Vector.png';
-
 import productsData from '../../data/products.json';
 import { ProductCard } from '../../components/ProduuctCard/ProductCard';
+import { Pagination } from '../../components/Pagination/Pagination'; // Импортируем пагинацию
 
 export const CatalogPage: React.FC = () => {
   const { category } = useParams<{ category: string }>();
-
   const [searchParams, setSearchParams] = useSearchParams();
-
   const [products, setProducts] = useState<Product[]>([]);
 
   const sortBy = searchParams.get('sort') || 'newest';
-
   const perPage = searchParams.get('perPage') || 'all';
+
+  // Достаем текущую страницу из URL, по дефолту 1
+  const currentPage = Number(searchParams.get('page')) || 1;
 
   const displayTitle =
     category === 'phones'
@@ -40,6 +36,7 @@ export const CatalogPage: React.FC = () => {
     setProducts(filtered);
   }, [category]);
 
+  // 1. Сортируем все продукты категории
   const sortedProducts = [...products].sort((a, b) => {
     if (sortBy === 'alphabetically') {
       return a.name.localeCompare(b.name);
@@ -52,17 +49,31 @@ export const CatalogPage: React.FC = () => {
     return b.year - a.year;
   });
 
-  const itemsToShow =
+  // 2. Считаем лимиты для пагинации
+  const itemsPerPage =
     perPage === 'all' ? sortedProducts.length : Number(perPage);
 
-  const visibleProducts = sortedProducts.slice(0, itemsToShow);
+  // Вычисляем индексы для обрезки массива
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
 
+  // Из всех отсортированных берем только карточки для ТЕКУЩЕЙ страницы
+  const visibleProducts = sortedProducts.slice(startIndex, endIndex);
+
+  // Сброс страницы на первую при смене сортировки
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSearchParams({ sort: e.target.value, perPage });
+    setSearchParams({ sort: e.target.value, perPage, page: '1' });
   };
 
+  // Сброс страницы на первую при изменении количества карточек на странице
   const handlePerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSearchParams({ sort: sortBy, perPage: e.target.value });
+    setSearchParams({ sort: sortBy, perPage: e.target.value, page: '1' });
+  };
+
+  // Функция переключения страницы
+  const handlePageChange = (page: number) => {
+    setSearchParams({ sort: sortBy, perPage, page: page.toString() });
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // При переключении плавно скроллим вверх
   };
 
   return (
@@ -113,11 +124,20 @@ export const CatalogPage: React.FC = () => {
           </div>
         </div>
 
+        {/* Сетка с отфильтрованными карточками */}
         <div className={styles.grid}>
           {visibleProducts.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
+
+        {/* Наш новый компонент пагинации */}
+        <Pagination
+          totalItems={sortedProducts.length}
+          itemsPerPage={itemsPerPage}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
       </div>
     </main>
   );
