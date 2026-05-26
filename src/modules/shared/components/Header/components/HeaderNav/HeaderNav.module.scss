@@ -1,0 +1,44 @@
+@use '@styles/mixins/ActiveNavState';
+
+$gray-secondary: #89939A;
+$gray-primary: #313237;
+
+.nav {
+  display: none;
+  height: 100%;
+
+  @media screen and (min-width: 640px) {
+    display: flex;
+    gap: 32px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    gap: 64px;
+  }
+}
+
+.link, .activeLink {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  position: relative;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.link {
+  color: $gray-secondary;
+}
+
+.activeLink {
+  color: $gray-primary;
+}
+
+.link::after, .activeLink::after {
+  @extend %underline;
+}
+
+.activeLink::after {
+  @extend %activate-underline;
+}

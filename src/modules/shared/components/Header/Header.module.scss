@@ -1,0 +1,79 @@
+@use '@styles/mixins/ActiveNavState';
+
+.header {
+  height: 48px;
+  box-shadow: 0 1px 0 0 #E2E6E9;
+
+  @media screen and (min-width: 1200px) {
+    height: 64px;
+ }
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.right {
+  display: flex;
+  align-items: stretch;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+ padding: 0 16px;
+ width: 64px;
+ height: 22px;
+
+ @media screen and (min-width: 1200px) {
+  padding: 0 24px;
+  width: 80px;
+  height: 28px;
+ }
+}
+
+.favorites, .cart {
+  display: none;
+
+  @media screen and (min-width: 640px) {
+    display: flex;
+    padding: 0 16px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    display: flex;
+    padding: 0 24px;
+  }
+}
+
+.burgerBtn, .favorites, .cart {
+  align-items: center;
+  box-shadow: -1px 0 0 0 #E2E6E9;
+}
+
+.icon {
+  @extend %underline;
+}
+
+.activeIcon::after {
+  @extend %activate-underline;
+}
+
+.burgerBtn {
+  display: flex;
+  padding: 0 16px;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+
+  @media screen and (min-width: 640px) {
+    display: none;
+  }
+}
+
