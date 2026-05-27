@@ -1,0 +1,110 @@
+$min-tablet: 639px;
+$max-tablet: 1199px;
+
+@mixin mobile {
+  @media (max-width: #{$min-tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$min-tablet}) and (max-width: #{$max-tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$max-tablet + 1px}) {
+    @content;
+  }
+}
+
+@mixin animation-transition {
+  transition: all 0.3s ease;
+}
+
+@mixin h1 {
+  grid-column: 1 / -1;
+
+  font-size: 48px;
+  font-weight: $font-weight-extra-bold;
+  line-height: 100%;
+  letter-spacing: -1%;
+
+  // margin-top: 56px;
+  @include mobile {
+    font-size: 32px;
+  }
+}
+
+@mixin h2 {
+  grid-column: 1 / -1;
+
+  font-size: 32px;
+  font-weight: $font-weight-extra-bold;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  @include mobile {
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0;
+  }
+}
+
+@mixin grid {
+  --column-count: 4;
+
+  display: grid;
+  grid-template-columns: repeat(var(--column-count), minmax(229px, 340px));
+  gap: 40px 16px;
+  justify-content: center;
+
+  @include tablet {
+    --column-count: auto-fit;
+  }
+
+  @include mobile {
+    --column-count: 1;
+  }
+}
+
+@mixin page-paddings {
+  padding: 0 152px;
+
+  @include tablet {
+    padding: 0 25px;
+  }
+
+  @include mobile {
+    padding: 0;
+  }
+}
+
+@mixin product-details-line {
+  content: '';
+
+  display: block;
+
+  height: 1px;
+  margin-top: 24px;
+
+  background-color: $color-elements;
+
+  @include tablet {
+    width: 100%;
+  }
+}
+
+@mixin discount-price {
+  font-size: 22px;
+  font-weight: $font-weight-bold;
+  line-height: 140%;
+}
+
+@mixin full-price {
+  margin-left: 8px;
+  font-weight: $font-weight-semi;
+  color: $color-secondary;
+  text-decoration: line-through;
+}

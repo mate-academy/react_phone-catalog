@@ -1,0 +1,400 @@
+/* stylelint-disable */
+/* stylelint-enable */
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+@keyframes fade-in {
+  from {
+    opacity: 0.4;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.product-details {
+  max-width: 1800px;
+  margin: auto;
+
+  @include page-paddings;
+
+  &__static {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    &--back {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    &--arrow {
+      width: 20px;
+      height: 20px;
+      transform: rotate(180deg);
+      background-color: transparent;
+      background-image: url('/img/ArrowRightIcon.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+
+    &--text {
+      margin: 0;
+      color: $color-primary;
+      font-size: 14px;
+    }
+  }
+
+  &__header {
+    margin-top: 16px;
+    font-size: 33px;
+
+    @include h1;
+
+    @include mobile {
+      font-size: 22px;
+    }
+  }
+
+  &__container {
+    @include grid;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__images {
+    display: flex;
+    margin-right: 50px;
+
+    @include tablet {
+      align-items: flex-start;
+      margin-right: 16px;
+    }
+
+    @include mobile {
+      flex-direction: column-reverse;
+      margin: 0 auto;
+    }
+
+    &--thumbs {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-right: 16px;
+
+      @include mobile {
+        flex-direction: row;
+        margin-top: 16px;
+      }
+    }
+  }
+
+  &__preview-image {
+    width: 80px;
+    height: 80px;
+    padding: 5px;
+    border: 1px solid $color-icons;
+    object-fit: contain;
+    cursor: pointer;
+
+    @include animation-transition;
+
+    @include tablet {
+      width: 35px;
+      height: 35px;
+    }
+
+    @include mobile {
+      width: 50px;
+      height: 50px;
+    }
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+
+    &--active {
+      border: 1px solid $color-primary;
+    }
+  }
+
+  &__main-image {
+    &--container {
+      max-width: 456px;
+      max-height: 500px;
+    }
+
+    @include mobile {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    &--image {
+      width: 100%;
+      height: 100%;
+      padding: 0 30px;
+      object-fit: contain;
+      animation: fade-in 0.4s ease-out forwards;
+      will-change: opacity, transform;
+
+      @include tablet {
+        max-height: 450px;
+      }
+
+      @include mobile {
+        max-height: 450px;
+      }
+    }
+  }
+
+  &__subtitle {
+    color: $color-secondary;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  &__text-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__container--specs {
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+
+    @include tablet {
+      max-width: 240px;
+    }
+
+    @include mobile {
+      width: 100%;
+      max-width: 100%;
+      margin-top: 40px;
+    }
+  }
+
+  &__colors {
+    width: 100%;
+
+    &-id {
+      position: absolute;
+      left: 85%;
+
+      @include tablet {
+        position: relative;
+        left: auto;
+      }
+
+      @include mobile {
+        position: relative;
+        left: auto;
+      }
+    }
+
+    &-list {
+      display: flex;
+      gap: 8px;
+    }
+
+    &::after {
+      @include product-details-line;
+    }
+  }
+
+  &__color-container {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-icons;
+    border-radius: 50%;
+    background-color: $color-white;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &--active {
+      border-color: $color-primary;
+    }
+  }
+
+  &__color-btn {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+  }
+
+  &__radio-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  &__capacity {
+    margin-top: 24px;
+
+    &--btns {
+      display: grid;
+      grid-template-columns: repeat(5, 55px);
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    &--button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      padding: 0 16px;
+      border: 1px solid $color-icons;
+      background-color: $color-white;
+      color: $color-primary;
+      font-size: 14px;
+      line-height: 100%;
+      cursor: pointer;
+
+      @include animation-transition;
+
+      &:hover {
+        border-color: $color-primary;
+      }
+
+      &--active {
+        border-color: $color-primary;
+        background-color: $color-primary;
+        color: $color-white;
+      }
+    }
+
+    &::after {
+      @include product-details-line;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    margin-top: 32px;
+
+    &--discount {
+      font-size: 32px;
+
+      @include discount-price;
+    }
+
+    &--regular {
+      font-size: 22px;
+
+      @include full-price;
+    }
+  }
+
+  &__buy-favorite-buttons {
+    height: 48px;
+    margin-top: 16px;
+  }
+
+  &__specs-small {
+    margin-top: 32px;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+
+    @include tablet {
+      flex-direction: column-reverse;
+    }
+
+    @include mobile {
+      flex-direction: column;
+    }
+
+    &--container {
+      margin-top: 32px;
+    }
+
+    &--text {
+      margin-top: 16px;
+      color: $color-secondary;
+      font-size: 14px;
+      font-weight: $font-weight-regular;
+      line-height: 21px;
+    }
+
+    &--about {
+      max-width: 560px;
+
+      @include tablet {
+        max-width: 100%;
+      }
+    }
+
+    &--tech-specs {
+      width: 512px;
+
+      @include tablet {
+        max-width: 100%;
+      }
+
+      @include mobile {
+        width: 100%;
+      }
+    }
+  }
+
+  &__h2 {
+    font-size: 20px;
+    font-weight: $font-weight-extra-bold;
+
+    &::after {
+      margin-top: 16px;
+
+      @include product-details-line;
+    }
+
+    @include mobile {
+      font-weight: $font-weight-semi;
+    }
+  }
+
+  &__h3 {
+    margin-top: 32px;
+    font-size: 20px;
+    font-weight: $font-weight-semi;
+    line-height: 29px;
+  }
+}

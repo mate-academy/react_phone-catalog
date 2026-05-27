@@ -1,0 +1,92 @@
+/* stylelint-disable */
+/* stylelint-enable */
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.shop-category {
+  width: 100%;
+  margin-top: 80px;
+
+  @include tablet {
+    margin-top: 64px;
+  }
+
+  @include mobile {
+    margin-top: 56px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__header {
+    @include h2;
+  }
+
+  &__card-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__card {
+    width: 33%;
+
+    @include mobile {
+      width: 100%;
+    }
+
+    object-fit: cover;
+  }
+
+  &__image-container {
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+
+    @include animation-transition;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__name {
+    font-size: 20px;
+    font-weight: $font-weight-semi;
+    line-height: 100%;
+
+    margin-top: 25px;
+
+    @include tablet {
+      font-weight: $font-weight-bold;
+    }
+
+    @include mobile {
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  &__amount {
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: $font-weight-regular;
+    color: $color-secondary;
+
+    @include tablet {
+      font-weight: $font-weight-semi;
+    }
+
+    @include mobile {
+      font-weight: $font-weight-semi;
+    }
+  }
+}

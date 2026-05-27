@@ -1,0 +1,214 @@
+/* stylelint-disable */
+/* stylelint-enable */
+@import '@/styles/variables';
+/* stylelint-disable */
+/* stylelint-enable */
+@import '@/styles/mixins';
+
+.header {
+  position: sticky;
+  z-index: 100;
+  top: 0;
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    background-color: $color-white;
+    border-bottom: 1px solid $color-elements;
+
+    &__checkbox {
+      display: none;
+    }
+
+    &__logo {
+      display: block;
+      width: 80px;
+      height: 30px;
+      background: url('/img/Logo.svg') no-repeat center / contain;
+      margin: 0 24px;
+    }
+
+    &__menu {
+      display: flex;
+      height: 100%;
+      padding: 0 30px;
+
+      @include tablet {
+        padding: 0;
+      }
+
+      @include mobile {
+        display: none;
+        position: fixed;
+        inset: 64px 0;
+        background: #fff;
+        flex-direction: column;
+        align-items: center;
+        z-index: 100;
+      }
+    }
+
+    &__link {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin: 0 16px;
+      height: 100%;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: $font-weight-extra-bold;
+      font-size: 12px;
+      color: $color-secondary;
+      transition: color 0.3s;
+
+      @include mobile {
+        height: auto;
+        padding: 20px 0;
+        font-size: 18px;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: $color-primary;
+        transform: scaleX(0);
+        transform-origin: left;
+        box-sizing: border-box;
+
+        @include animation-transition;
+      }
+
+      &.active {
+        color: $color-primary;
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+
+    &__actions {
+      display: flex;
+      margin-left: auto;
+      height: 100%;
+
+      @include mobile {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 64px;
+        background: #fff;
+        border-top: 1px solid #e2e6e9;
+        z-index: 101;
+      }
+
+      &--one {
+        display: flex;
+        flex-direction: row;
+      }
+      p {
+        position: absolute;
+        left: 33px;
+        top: 18px;
+        font-size: 10px;
+        text-align: center;
+        color: $color-white;
+        border: 1px solid white;
+        z-index: 1;
+        border-radius: 50%;
+        width: 14px;
+        height: 14px;
+        background: $color-red;
+
+        @include animation-transition;
+      }
+    }
+
+    &__action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-left: 1px solid #e2e6e9;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 20px;
+      cursor: pointer;
+      position: relative;
+
+      &--compare {
+        background-image: url('/img/HeartIcon.svg');
+      }
+      &--basket {
+        background-image: url('/img/BasketIcon.svg');
+      }
+
+      &--menu {
+        background-image: url('/img/MobileMenuIcon.svg');
+        display: none;
+
+        @include mobile {
+          display: flex;
+          position: absolute;
+          right: 0;
+          top: 0;
+          z-index: 102;
+          flex: none;
+          width: 64px;
+          height: 64px;
+          border-left: 1px solid #e2e6e9;
+        }
+      }
+
+      @include mobile {
+        &:not(&--menu) {
+          flex: 1;
+          height: 100%;
+          border-left: none;
+
+          &:first-child {
+            border-right: 1px solid #e2e6e9;
+          }
+        }
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        background-color: $color-primary;
+        transform: scaleX(0);
+
+        @include animation-transition;
+      }
+      &.active::after {
+        transform: scaleX(1);
+      }
+    }
+
+    &__checkbox:checked {
+      @include mobile {
+        ~ .navbar__menu {
+          display: flex;
+        }
+
+        ~ .navbar__actions {
+          display: flex;
+        }
+      }
+
+      ~ .navbar__action--menu {
+        background-image: url('/img/CrossIcon.svg');
+      }
+    }
+  }
+}
