@@ -18,7 +18,5 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-
-      - run: npm install --legacy-peer-deps
-
+      - run: npm install
       - run: npm run lint
