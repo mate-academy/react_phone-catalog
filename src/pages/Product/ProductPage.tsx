@@ -10,7 +10,7 @@ import { ProductsSlider } from '@/features/home/ProductsSlider';
 
 import { ProductDetailsSection } from './components/ProductDetailsSection';
 import { SpecsList } from './components/SpecsList';
-import { useProductDetails } from '@/features/product/hooks/userProductsDetails';
+import { useProductDetails } from '@/features/product/hooks/useProductsDetails';
 import { useProducts } from '@/features/product/hooks/useProducts';
 import { useSuggestedProducts } from '@/features/product/hooks/useSuggestedProducts';
 import { useRecentlyViewed } from '@/features/product/hooks/useRecentlyViewed';
