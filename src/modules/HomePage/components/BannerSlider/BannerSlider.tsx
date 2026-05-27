@@ -73,7 +73,7 @@ export const BannerSlider: React.FC = () => {
           >
             {sliderObj.map(obj => {
               return (
-                <Link className="slider__slide" to={obj.link}>
+                <Link key={obj.img} className="slider__slide" to={obj.link}>
                   <img
                     className="slider__image"
                     key={obj.img}

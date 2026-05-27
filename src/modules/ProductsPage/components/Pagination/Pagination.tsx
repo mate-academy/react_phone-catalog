@@ -32,7 +32,10 @@ export const Pagination: React.FC<Props> = ({
     setCurrentPage(pageNumber);
   };
 
-  if (totalPages <= 1) return null;
+  if (totalPages <= 1) {
+    return null;
+  }
+
   return (
     <>
       <div className="pagination">

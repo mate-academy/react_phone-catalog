@@ -15,7 +15,7 @@ export const CartFavoritesToggle: React.FC<Props> = ({ product }) => {
   );
   const inFavorite = favoriteItems.some(item => item.itemId === product.itemId);
 
-  function addToBasket(product: Product) {
+  function addToBasket() {
     if (inBasket) {
       setCartItems(
         cartItems.filter(elem => elem.product.itemId !== product.itemId),
@@ -25,7 +25,7 @@ export const CartFavoritesToggle: React.FC<Props> = ({ product }) => {
     }
   }
 
-  function addToFavorite(product: Product) {
+  function addToFavorite() {
     if (favoriteItems.some((item: Product) => item.id === product.id)) {
       setFavoriteItems(
         favoriteItems.filter(elem => elem.itemId !== product.itemId),
@@ -40,12 +40,12 @@ export const CartFavoritesToggle: React.FC<Props> = ({ product }) => {
       <div className="buttons">
         <button
           className={`button button--add${inBasket ? '-clicked' : ''}`}
-          onClick={() => addToBasket(product)}
+          onClick={addToBasket}
         >
           {!inBasket ? 'Add to cart' : 'Added to cart'}
         </button>
         <button
-          onClick={() => addToFavorite(product)}
+          onClick={addToFavorite}
           className={`button button--favorite${inFavorite ? '-clicked' : ''}`}
           aria-label="Add to favorite"
         ></button>

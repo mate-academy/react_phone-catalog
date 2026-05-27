@@ -19,7 +19,9 @@ export const CartPage: React.FC = () => {
   };
 
   const handleCheckout = () => {
-    if (cartItems.length === 0) return;
+    if (cartItems.length === 0) {
+      return;
+    }
 
     setIsPopupOpen(true);
     setCartItems([]);
@@ -75,6 +77,7 @@ export const CartPage: React.FC = () => {
                                     elem => elem.product.id !== product.id,
                                   );
                                 }
+
                                 return prev.map(elem =>
                                   elem.product.id === product.id
                                     ? { ...elem, amount: elem.amount - 1 }

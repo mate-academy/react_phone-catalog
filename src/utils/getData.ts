@@ -5,8 +5,6 @@ export function getData<T>(url: string): Promise<T> {
 
   const rawPath = `${BASE_URL}/api/${cleanUrl}.json`;
 
-  const cleanPath = rawPath.replace(/\/+/g, '/');
-
   return fetch(rawPath).then(response => {
     if (response.ok) {
       return response.json();

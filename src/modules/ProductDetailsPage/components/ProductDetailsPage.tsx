@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import './ProductDetailsPage.scss';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
@@ -10,6 +11,7 @@ import { Specs } from '../../../components/shared/Specs';
 import { CartFavoritesToggle } from '../../../components/shared/CartFavoritesToggle';
 import { ProductsSlider } from '../../HomePage/components/ProductsSlider';
 import { Product } from '../../../types/Product';
+/* eslint-enable max-len */
 
 export const ProductDetailsPage: React.FC = () => {
   const { category, productId } = useParams<{
@@ -59,6 +61,7 @@ export const ProductDetailsPage: React.FC = () => {
             elem => elem.itemId !== productId && elem.category === category,
           )
           .slice(0, 10);
+
         setRecommendedPRoducts(sameCategoryProductsClear);
 
         const baseProduct = sameCategoryProducts.find(
@@ -106,6 +109,7 @@ export const ProductDetailsPage: React.FC = () => {
       currentCapacityIdPart,
       targetCapacityIdPart,
     );
+
     navigate(`/${category}/${newProductId}`);
   };
 
@@ -117,6 +121,7 @@ export const ProductDetailsPage: React.FC = () => {
     return <p>Product not found</p>;
   }
 
+  /* eslint-disable max-len */
   return (
     <section className="product-details">
       <div className="page__content">
@@ -298,3 +303,4 @@ export const ProductDetailsPage: React.FC = () => {
     </section>
   );
 };
+/* eslint-enable max-len */

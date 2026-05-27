@@ -18,9 +18,11 @@ export const ProductsSlider: React.FC<Props> = ({
   const [visibleCards, setVisibleCards] = React.useState(4);
   const touchStart = React.useRef(0);
   const touchEnd = React.useRef(0);
+
   React.useEffect(() => {
     const updateVisibleCards = () => {
       const width = window.innerWidth;
+
       if (width < 640) {
         setVisibleCards(1);
       } else if (width < 1200) {
@@ -29,11 +31,14 @@ export const ProductsSlider: React.FC<Props> = ({
         setVisibleCards(4);
       }
     };
+
     updateVisibleCards();
     window.addEventListener('resize', updateVisibleCards);
+
     return () => window.removeEventListener('resize', updateVisibleCards);
   }, []);
   const maxIndex = Math.max(0, products.length - visibleCards);
+
   React.useEffect(() => {
     if (currentIndex > maxIndex) {
       setCurrentIndex(maxIndex);
@@ -42,15 +47,19 @@ export const ProductsSlider: React.FC<Props> = ({
   const step = (offset: number) => {
     setCurrentIndex(prev => Math.max(0, Math.min(prev + offset, maxIndex)));
   };
+
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStart.current = e.targetTouches[0].clientX;
     touchEnd.current = e.targetTouches[0].clientX;
   };
+
   const handleTouchMove = (e: React.TouchEvent) => {
     touchEnd.current = e.targetTouches[0].clientX;
   };
+
   const handleTouchEnd = () => {
     const diff = touchStart.current - touchEnd.current;
+
     if (Math.abs(diff) > 50) {
       step(diff > 0 ? 1 : -1);
     }

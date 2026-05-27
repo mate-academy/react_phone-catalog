@@ -50,12 +50,14 @@ export const ProductsPage: React.FC<Props> = ({
 
   function handleItemsPerPage(event: React.ChangeEvent<HTMLSelectElement>) {
     const currentParams = Object.fromEntries(searchParams.entries());
+
     setSearchParams({
       ...currentParams,
       perPage: event.target.value,
     });
     setCurrentPage(1);
   }
+
   const lastItemIndex = currentPage * +itemsPerPage;
   const firstItemIndex = lastItemIndex - +itemsPerPage;
   const currentProducts = sortedProducts.slice(firstItemIndex, lastItemIndex);
@@ -72,6 +74,7 @@ export const ProductsPage: React.FC<Props> = ({
 
   function handleSortChange(event: React.ChangeEvent<HTMLSelectElement>) {
     const currentParams = Object.fromEntries(searchParams.entries());
+
     setSearchParams({
       ...currentParams,
       sortBy: event.target.value,

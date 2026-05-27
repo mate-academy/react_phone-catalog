@@ -19,7 +19,10 @@ export const Navbar: React.FC = () => {
         <label
           htmlFor="menu-toggle"
           className="navbar__action navbar__action--menu"
-        />
+          aria-label="Toggle menu"
+        >
+          <span style={{ display: 'none' }}>Toggle menu</span>
+        </label>
 
         <div className="navbar__menu">
           <NavLink to="/" className="navbar__link">

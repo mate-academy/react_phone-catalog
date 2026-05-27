@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from 'react';
+/* eslint-disable @typescript-eslint/indent */
+import React, { useMemo } from 'react';
 import { Product } from '../types/Product';
 import { useLocalStorage } from '../utils/useLocalStorage';
 
@@ -38,8 +39,10 @@ export const FavoriteProvider: React.FC<Props> = ({ children }) => {
 
 export const useFavorite = () => {
   const context = React.useContext(FavoriteContext);
+
   if (!context) {
     throw new Error('useFavorite must be used within a FavoriteProvider');
   }
+
   return context;
 };

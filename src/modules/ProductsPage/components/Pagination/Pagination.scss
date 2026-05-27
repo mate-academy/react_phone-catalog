@@ -43,7 +43,6 @@
     height: 100%;
 
     &--inactive {
-      background-color: $color-primary;
       mask: url('/img/ArrowRightIcon.svg') no-repeat center / contain;
       -webkit-mask: url('/img/ArrowRightIcon.svg') no-repeat center / contain;
       width: 100%;
