@@ -1,9 +1,9 @@
 import { Button } from '@/shared/ui/button/Button';
-import { useCart } from '@/app/providers/CartContext';
 import { Product } from '@/types';
 import { Link } from 'react-router-dom';
 import './ProductCard.scss';
 import FavButton from '../../../favorites/components/FavButton/FavButton';
+import { useProductActions } from '../../hooks/useProductActions';
 
 type ProductCardProps = {
   item: Product;
@@ -14,45 +14,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   item,
   showDiscount,
 }) => {
-  const {
-    isFavorite,
-    isInCart,
-    addToFavorites,
-    removeFromFavorites,
-    addToCart,
-  } = useCart();
-
+  const { inCart, inFav, handleCartClick, handleFav, buttonText } =
+    useProductActions(item.itemId);
   if (!item) {
     return null;
   }
-
-  const fav = isFavorite(item.itemId || '');
-  const inCart = isInCart(item.itemId || '');
-  const handleCartClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if (!item) {
-      return;
-    }
-
-    addToCart(item.itemId);
-  };
-
-  const handleFav = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if (!item) {
-      return;
-    }
-
-    if (fav) {
-      removeFromFavorites(item.itemId || '');
-    } else {
-      addToFavorites(item.itemId);
-    }
-  };
 
   return (
     <div className="product-card">
@@ -93,9 +59,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           fullWidth
           variant={inCart ? 'outline' : 'primary'}
         >
-          {inCart ? 'Added to Cart' : 'Add to Cart'}
+          {buttonText}
         </Button>
-        <FavButton fav={fav} handleFav={handleFav} />
+        <FavButton fav={inFav} handleFav={handleFav} />
       </div>
     </div>
   );

@@ -27,7 +27,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
 }) => {
   const navigate = useNavigate();
   const { category, productSlug } = useParams();
-  const { inFav, inCart, handleCartClick, handleFav } = useProductActions(
+  const { inFav, inCart, handleCartClick, handleFav, buttonText } = useProductActions(
     foundProductFromProducts?.itemId,
   );
 
@@ -146,7 +146,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
             fullWidth
             variant={inCart ? 'outline' : 'primary'}
           >
-            {inCart ? 'Added to Cart' : 'Add to Cart'}
+            {buttonText}
           </Button>
 
           <button

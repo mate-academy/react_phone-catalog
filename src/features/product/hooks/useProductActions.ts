@@ -38,5 +38,6 @@ export const useProductActions = (itemId?: string) => {
     inFav,
     handleCartClick,
     handleFav,
+    buttonText: inCart ? 'Added to Cart' : 'Add to Cart',
   };
 };
