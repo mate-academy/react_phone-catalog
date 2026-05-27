@@ -1,11 +1,12 @@
 @import '@/styles/variables';
 @import '@/styles/mixins';
 
-@keyframes fadeIn {
+@keyframes fade-in {
   from {
     opacity: 0.4;
     transform: scale(0.98);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -15,6 +16,7 @@
 .product-details {
   max-width: 1800px;
   margin: auto;
+
   @include page-paddings;
 
   &__static {
@@ -31,27 +33,28 @@
     }
 
     &--arrow {
+      width: 20px;
+      height: 20px;
+      transform: rotate(180deg);
       background-color: transparent;
       background-image: url('/img/ArrowRightIcon.svg');
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
-      width: 20px;
-      height: 20px;
-      transform: rotate(180deg);
     }
 
     &--text {
-      font-size: 14px;
-      color: $color-primary;
       margin: 0;
+      color: $color-primary;
+      font-size: 14px;
     }
   }
 
   &__header {
     margin-top: 16px;
-    @include h1;
     font-size: 33px;
+
+    @include h1;
 
     @include mobile {
       font-size: 22px;
@@ -78,13 +81,12 @@
 
     @include tablet {
       align-items: flex-start;
-
       margin-right: 16px;
     }
 
     @include mobile {
-      margin: 0 auto;
       flex-direction: column-reverse;
+      margin: 0 auto;
     }
 
     &--thumbs {
@@ -103,16 +105,18 @@
   &__preview-image {
     width: 80px;
     height: 80px;
-    object-fit: contain;
     padding: 5px;
     border: 1px solid $color-icons;
+    object-fit: contain;
     cursor: pointer;
+
     @include animation-transition;
 
     @include tablet {
       width: 35px;
       height: 35px;
     }
+
     @include mobile {
       width: 50px;
       height: 50px;
@@ -141,10 +145,11 @@
     &--image {
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      animation: fadeIn 0.4s ease-out forwards;
-      will-change: opacity, transform;
       padding: 0 30px;
+      object-fit: contain;
+      animation: fade-in 0.4s ease-out forwards;
+      will-change: opacity, transform;
+
       @include tablet {
         max-height: 450px;
       }
@@ -156,9 +161,9 @@
   }
 
   &__subtitle {
+    color: $color-secondary;
     font-size: 12px;
     font-weight: 500;
-    color: $color-secondary;
   }
 
   &__text-container {
@@ -176,8 +181,8 @@
     }
 
     @include mobile {
-      max-width: 100%;
       width: 100%;
+      max-width: 100%;
       margin-top: 40px;
     }
   }
@@ -211,14 +216,14 @@
   }
 
   &__color-container {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 1px solid $color-icons;
-    background-color: $color-white;
     display: grid;
     place-items: center;
     flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-icons;
+    border-radius: 50%;
+    background-color: $color-white;
     cursor: pointer;
     transition: border-color 0.2s ease;
 
@@ -232,23 +237,23 @@
   }
 
   &__color-btn {
+    display: block;
     width: 24px;
     height: 24px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    padding: 0;
     margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
     outline: none;
-    display: block;
+    cursor: pointer;
   }
 
   &__radio-hidden {
     position: absolute;
     width: 1px;
     height: 1px;
-    padding: 0;
     margin: -1px;
+    padding: 0;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
@@ -258,24 +263,25 @@
     margin-top: 24px;
 
     &--btns {
-      margin-top: 8px;
       display: grid;
       grid-template-columns: repeat(5, 55px);
       gap: 8px;
+      margin-top: 8px;
     }
 
     &--button {
-      font-size: 14px;
-      line-height: 100%;
-      color: $color-primary;
-      background-color: $color-white;
-      height: 32px;
-      padding: 0 16px;
-      border: 1px solid $color-icons;
-      cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      height: 32px;
+      padding: 0 16px;
+      border: 1px solid $color-icons;
+      background-color: $color-white;
+      color: $color-primary;
+      font-size: 14px;
+      line-height: 100%;
+      cursor: pointer;
+
       @include animation-transition;
 
       &:hover {
@@ -283,8 +289,8 @@
       }
 
       &--active {
-        background-color: $color-primary;
         border-color: $color-primary;
+        background-color: $color-primary;
         color: $color-white;
       }
     }
@@ -296,24 +302,28 @@
 
   &__price {
     display: flex;
-    gap: 8px;
     align-items: flex-end;
+    gap: 8px;
     margin-top: 32px;
+
     &--discount {
-      @include discountPrice;
       font-size: 32px;
+
+      @include discount-price;
     }
 
     &--regular {
-      @include fullPrice;
       font-size: 22px;
+
+      @include full-price;
     }
   }
 
   &__buy-favorite-buttons {
-    margin-top: 16px;
     height: 48px;
+    margin-top: 16px;
   }
+
   &__specs-small {
     margin-top: 32px;
   }
@@ -322,9 +332,11 @@
     display: flex;
     flex-direction: row;
     gap: 40px;
+
     @include tablet {
       flex-direction: column-reverse;
     }
+
     @include mobile {
       flex-direction: column;
     }
@@ -334,14 +346,16 @@
     }
 
     &--text {
-      font-size: 14px;
-      line-height: 21px;
-      color: $color-secondary;
-      font-weight: $font-weight-regular;
       margin-top: 16px;
+      color: $color-secondary;
+      font-size: 14px;
+      font-weight: $font-weight-regular;
+      line-height: 21px;
     }
+
     &--about {
       max-width: 560px;
+
       @include tablet {
         max-width: 100%;
       }
@@ -365,8 +379,9 @@
     font-weight: $font-weight-extra-bold;
 
     &::after {
-      @include product-details-line;
       margin-top: 16px;
+
+      @include product-details-line;
     }
 
     @include mobile {
@@ -375,9 +390,9 @@
   }
 
   &__h3 {
-    font-size: 20px;
-    line-height: 29px;
-    font-weight: $font-weight-semi;
     margin-top: 32px;
+    font-size: 20px;
+    font-weight: $font-weight-semi;
+    line-height: 29px;
   }
 }

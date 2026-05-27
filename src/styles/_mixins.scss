@@ -29,9 +29,9 @@ $max-tablet: 1199px;
   font-weight: $font-weight-extra-bold;
   letter-spacing: -1%;
   line-height: 100%;
-  // margin-top: 56px;
 
-  @include mobile() {
+  // margin-top: 56px;
+  @include mobile {
     font-size: 32px;
   }
 }
@@ -43,13 +43,10 @@ $max-tablet: 1199px;
   letter-spacing: -1%;
   line-height: 41px;
 
-  @include tablet() {
-  }
-
-  @include mobile() {
+  @include mobile {
     font-size: 22px;
-    line-height: 140%;
     letter-spacing: 0;
+    line-height: 140%;
   }
 }
 
@@ -58,15 +55,14 @@ $max-tablet: 1199px;
 
   display: grid;
   grid-template-columns: repeat(var(--column-count), minmax(229px, 340px));
-  column-gap: 16px;
-  row-gap: 40px;
+  gap: 40px 16px;
   justify-content: center;
 
-  @include tablet() {
+  @include tablet {
     --column-count: auto-fit;
   }
 
-  @include mobile() {
+  @include mobile {
     --column-count: 1;
   }
 }
@@ -90,20 +86,20 @@ $max-tablet: 1199px;
   background-color: $color-elements;
   margin-top: 24px;
 
-  @include tablet() {
+  @include tablet {
     width: 100%;
   }
 }
 
-@mixin discountPrice {
+@mixin discount-price {
   font-size: 22px;
   font-weight: $font-weight-bold;
   line-height: 140%;
 }
 
-@mixin fullPrice {
+@mixin full-price {
   font-weight: $font-weight-semi;
   margin-left: 8px;
-  text-decoration: line-through;
   color: $color-secondary;
+  text-decoration: line-through;
 }
