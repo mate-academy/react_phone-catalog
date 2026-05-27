@@ -96,11 +96,10 @@ export default function HotPrices() {
 
           <div className="hot__nav">
             <button className="hot__nav-btn swiper-hot-prev">
-              {'<'}
+              <img src="./icons/arrow-left.svg" alt="prev" />
             </button>
-
             <button className="hot__nav-btn swiper-hot-next">
-              {'>'}
+              <img src="./icons/arrow-right.svg" alt="next" />
             </button>
           </div>
         </div>

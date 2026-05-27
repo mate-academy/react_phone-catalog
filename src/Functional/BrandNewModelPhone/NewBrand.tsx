@@ -95,16 +95,15 @@ export default function NewBrand() {
       <div className="new-brand">
         <div className="new-brand__header">
           <h2 className="new-brand__title">
-            Brand new models
+           Brand new models
           </h2>
 
           <div className="new-brand__nav">
             <button className="new-brand__nav-btn swiper-new-prev">
-              {'<'}
+              <img src="./icons/arrow-left.svg" alt="prev" />
             </button>
-
             <button className="new-brand__nav-btn swiper-new-next">
-              {'>'}
+              <img src="./icons/arrow-right.svg" alt="next" />
             </button>
           </div>
         </div>
