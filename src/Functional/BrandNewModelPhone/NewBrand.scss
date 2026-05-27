@@ -39,14 +39,24 @@
     border: 1px solid #3b3e4a;
     color: #f1f2f9;
     font-size: 14px;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, opacity 0.3s ease;
     border-radius: 0;
+    opacity: 0.3;
+    cursor: not-allowed;
     &:hover {
-      border-color: #f1f2f9;
+      border-color: #3b3e4a;
+    }
+    &.swiper-button-disabled {
+    }
+    &:not(.swiper-button-disabled) {
+      opacity: 1;
+      cursor: pointer;
+      &:hover {
+        border-color: #f1f2f9;
+      }
     }
   }
   &__swiper {
