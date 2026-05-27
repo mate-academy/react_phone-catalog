@@ -1,18 +1,20 @@
 import React from 'react';
 import styles from '@/pages/Cart/Cart.module.scss';
-import { useCart } from '@/app/providers/CartContext';
 import { CustomModal } from '@/shared/components/CustomModal/CustomModal';
 import { Button } from '@/shared/ui/button/Button';
 import { useCartProducts } from './hooks/useCartProducts';
+import { useAppDispatch } from '@/store/hooks';
+import { clearCart } from '@/store/slices/cartSlice';
 
 const CartCheckoutBox = () => {
-  const { totalCount, clearCart } = useCart();
   const { totalAmount, isEmpty } = useCartProducts();
   const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const dispatch = useAppDispatch();
+  const handleClose = () => setIsModalOpen(prev => !prev);
 
-  const handleCheckout = () => setIsModalOpen(prev => !prev);
-
-  if (isEmpty) return null;
+  if (isEmpty) {
+    return null;
+  }
 
   return (
     <>
@@ -22,15 +24,18 @@ const CartCheckoutBox = () => {
             ${totalAmount}
           </span>
           <span className={styles.cartPage__checkoutBlockAmount}>
-            {`Total for ${totalCount} items`}
+            {`Total for ${totalAmount} items`}
           </span>
         </div>
-        <Button onClick={handleCheckout}>Checkout</Button>
+        <Button onClick={handleClose}>Checkout</Button>
       </div>
       {isModalOpen && (
         <CustomModal
-          onClose={handleCheckout}
-          onCheckout={clearCart}
+          onClose={handleClose}
+          onCheckout={() => {
+            dispatch(clearCart());
+            handleClose();
+          }}
           modalBody={
             <p>
               Checkout is not implemented yet. Do you want to clear the Cart?
@@ -41,4 +46,5 @@ const CartCheckoutBox = () => {
     </>
   );
 };
+
 export default CartCheckoutBox;

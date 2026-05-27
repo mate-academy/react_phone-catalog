@@ -59,7 +59,6 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
 
     const normalizedValue = normalizeValue(value);
 
-    // 🔥 FIX: Use local state instead of the stale 'product' prop
     const oldPart =
       type === 'color'
         ? normalizeValue(selectedColor)

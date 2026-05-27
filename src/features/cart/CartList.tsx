@@ -6,12 +6,13 @@ import { Loader } from '@/shared/components/Loader/Loader';
 const CartList = () => {
   const { cartProducts, isLoading } = useCartProducts();
 
-  if (isLoading)
+  if (isLoading) {
     return (
       <div className={styles.cartPage__loaderWrapper}>
         <Loader />
       </div>
     );
+  }
 
   return (
     <div className={styles.cartItemsList}>
@@ -21,4 +22,5 @@ const CartList = () => {
     </div>
   );
 };
+
 export default CartList;

@@ -1,10 +1,8 @@
 import { Button } from '@/shared/ui/button/Button';
 import { useCart } from '@/app/providers/CartContext';
 import { Product } from '@/types';
-import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import './ProductCard.scss';
-import { useTheme } from '@/app/providers/ThemeContext';
 import FavButton from '../../../favorites/components/FavButton/FavButton';
 
 type ProductCardProps = {

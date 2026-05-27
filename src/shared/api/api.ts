@@ -56,12 +56,6 @@ export const getProductDetails = (category: string | undefined) => {
   return get<ProductDetails[]>(ENDPOINTS[category as Category]);
 };
 
-export const getProductsByIds = async (ids: string[]) => {
-  const products = await getProducts();
-
-  return products.filter(p => ids.includes(p.itemId));
-};
-
 export const getSuggestedProducts = async () => {
   const products = await getProducts();
   const shuffle = <T>(array: T[]): T[] =>
