@@ -1,0 +1,68 @@
+@import '/src/styles/fonts';
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  padding-block: 64px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+
+    padding-block: 80px;
+  }
+
+  &__title {
+    margin: 0;
+
+    @include font-h1-mobile;
+
+    color: $primary-color;
+
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+
+    @include on-tablet {
+      @include font-h1;
+    }
+  }
+
+  &__banner {
+    @include on-tablet {
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      max-width: 1260px;
+      padding-inline: 32px;
+      margin-inline: auto;
+    }
+  }
+
+  &__newModels {
+    margin: 0 auto;
+
+    @include on-desktop {
+      width: 1136px;
+    }
+  }
+
+  &__hotPrices {
+    margin: 0 auto;
+
+    @include on-desktop {
+      width: 1136px;
+    }
+  }
+}

@@ -1,0 +1,186 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+@import '../../styles/fonts';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $header-height-mobile;
+  width: 100vw;
+  box-shadow: 0 1px 0 0 #E2E6E9;
+  gap: 16px;
+  top: 0;
+  position: sticky;
+  z-index: 10;
+  background-color: $white-color;
+
+  @include on-desktop {
+    height: $header-height-desktop;
+  }
+
+  &__logo {
+    padding-inline: 16px;
+    padding-block: 13px;
+
+    &__img {
+      display: block;
+      width: 64px;
+      height: 22px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+
+    &__list {
+      list-style-type: none;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      padding: 0;
+      margin: 0;
+
+      @include on-tablet {
+        display: flex;
+      }
+    }
+
+    &__item {
+      display: flex;
+      height: 100%;
+    }
+
+    &__link {
+      display: flex;
+      align-items: center;
+      height: $header-height-mobile;
+      text-decoration: none;
+      color: $secondary-color;
+
+      @include font-uppercase;
+
+      position: relative;
+
+      @include on-desktop {
+        height: $header-height-desktop;
+      }
+
+      &--active {
+        color: $primary-color;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          height: 3px;
+          transition: background-color 0.3s;
+          background-color: $primary-color;
+        }
+      }
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: $header-height-mobile;
+    width: $header-height-mobile;
+    background-color: $white-color;
+    border: none;
+    cursor: pointer;
+    box-shadow: -1px 0 0 0 #e2e6e9;
+
+    @include on-desktop {
+      height: $header-height-desktop;
+      width: $header-height-desktop;
+    }
+
+    &--active {
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        transition: background-color 0.3s;
+        background-color: $primary-color;
+      }
+    }
+
+    &--menu {
+      @include on-tablet {
+        display: none;
+      }
+    }
+
+    &--heart {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+      }
+    }
+
+    &--bag {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+      }
+    }
+  }
+
+  &__iconWrapper {
+    height: 28px;
+    width: 28px;
+
+    position: relative;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    padding: 6px;
+
+    @include hover (transform, scale(1.1));
+  }
+
+  &__iconNumber {
+    position: absolute;
+    z-index: 2;
+
+    width: 14px;
+    height: 14px;
+    top: 0;
+    right: 0;
+
+    background-color: $red-color;
+    border-radius: 50%;
+    border: 1px solid $white-color;
+
+    color: $white-color;
+    font-family: MontRegular, sans-serif;
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0%;
+    text-align: center;
+    line-height: 14px;
+  }
+}
