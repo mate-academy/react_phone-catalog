@@ -1,0 +1,29 @@
+// COLORS
+$color-light-secondary: #89939A;
+$color-light-accent: #27AE60;
+$color-light-hover: #FAFBFC;
+$color-light-icons: #B4BDC3;
+$color-light-elements: #E2E6E9;
+$color-light-white: #fff;
+$color-dark-surface2: #313237;
+$color-accent-hover: #a378ff;
+
+  // BREAKPOINTS
+
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+
+  // TRANSITIONS
+
+$transition-duration: 0.3s;
+
+  // LAYOUT
+
+$header-mobile-height: 48px;
+$header-desktop-height: 64px;
+$container-max-width: 1200px;
+
+  // Z-INDEX
+
+$z-navbar: 1000;
+$z-mobile-menu: 1001;

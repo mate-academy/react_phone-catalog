@@ -1,0 +1,22 @@
+@import '../../styles/variables';
+
+.favorites-page {
+  margin-bottom: 80px;
+
+  &__title {
+    margin-top: 24px;
+    margin-bottom: 8px;
+    color: var(--color-primary);
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+  }
+
+  &__amount,
+  &__empty {
+    margin-bottom: 32px;
+    color: var(--color-secondary);
+    font-size: 14px;
+    line-height: 21px;
+  }
+}

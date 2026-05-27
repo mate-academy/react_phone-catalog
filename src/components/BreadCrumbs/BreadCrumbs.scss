@@ -1,0 +1,36 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+  margin-top: 24px;
+
+  &__home {
+    display: flex;
+    align-items: center;
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__link {
+    color: var(--color-secondary);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+
+    @include hover(color, var(--color-primary));
+
+  }
+
+  &__current {
+    color: var(--color-secondary);
+    font-size: 12px;
+    font-weight: 700;
+  }
+}
