@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import './CartPage.scss';
-import React from 'react';
+import React, { useState } from 'react';
+import { Popup } from './components';
 
 export const CartPage: React.FC = () => {
   const { cartItems, setCartItems } = useCart();
@@ -11,9 +12,22 @@ export const CartPage: React.FC = () => {
   );
 
   const totalItemsCount = cartItems.reduce((sum, item) => sum + item.amount, 0);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
+
+  const handleCheckout = () => {
+    if (cartItems.length === 0) return;
+
+    setIsPopupOpen(true);
+    setCartItems([]);
+  };
 
   return (
     <div className="cart">
+      {isPopupOpen && <Popup onClose={handleClosePopup} />}
       <div className="cart__content">
         <h1 className="cart__header">Cart</h1>
         <div className="cart__wrap">
@@ -105,7 +119,9 @@ export const CartPage: React.FC = () => {
             <p className="cart__price--text">
               Total for {totalItemsCount} items
             </p>
-            <button className="cart__price--button">Checkout</button>
+            <button onClick={handleCheckout} className="cart__price--button">
+              Checkout
+            </button>
           </div>
         </div>
       </div>

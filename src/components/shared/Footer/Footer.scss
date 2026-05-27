@@ -10,6 +10,9 @@
   height: 100px;
   margin-top: 80px;
   box-shadow: 0 -1px 1px $color-elements;
+  // position: sticky;
+  // bottom: 0%;
+  background: $color-white;
 
   @include page-paddings;
 

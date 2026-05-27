@@ -38,7 +38,17 @@
     display: flex;
     box-sizing: border-box;
     width: 100%;
-    transition: transform 0.5s ease-in-out;
+    @include animation-transition;
+
+    @include mobile {
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  &__slide {
+    width: 100%;
+    flex-shrink: 0;
+    display: block;
 
     @include mobile {
       aspect-ratio: 1 / 1;
@@ -47,11 +57,17 @@
 
   &__image {
     width: 100%;
-    flex-shrink: 0;
+    height: 100%;
     display: block;
     object-fit: cover;
     margin: 0 auto;
     object-position: 87.5% 50%;
+
+    @include mobile {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1 / 1;
+    }
   }
 
   &__button {
@@ -63,7 +79,11 @@
 
     &--left,
     &--right {
-      width: 5em;
+      width: 10em;
+
+      @include tablet {
+        width: 15em;
+      }
     }
 
     &--left::before {

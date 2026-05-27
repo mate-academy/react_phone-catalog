@@ -20,6 +20,7 @@ export const Footer: React.FC = () => {
         </div>
         <div className="footer__button-container">
           <p className="footer__button-text">Back to top</p>
+          {/* <Link to={}></Link> */}
           <a href="#" className="footer__button">
             <div className="footer__icon"></div>
           </a>

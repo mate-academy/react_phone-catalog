@@ -75,6 +75,13 @@ export const ProductDetailsPage: React.FC = () => {
       .finally(() => setLoading(false));
   }, [category, productId]);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [productId]);
+
   const handleColorChange = (targetColor: string) => {
     if (!productDetails || !category) {
       return;

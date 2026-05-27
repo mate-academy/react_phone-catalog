@@ -1,23 +1,33 @@
+import { Link } from 'react-router-dom';
 import './BannerSlider.scss';
 import React from 'react';
 
 export const BannerSlider: React.FC = () => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
-  const images = [
-    'img/imageSlider/Banner 01.png',
-    'img/imageSlider/Banner 02.png',
-    'img/imageSlider/Banner 03.png',
+  const sliderObj = [
+    {
+      link: 'phones/apple-iphone-11-pro-max-256gb-midnightgreen',
+      img: 'img/imageSlider/Banner 01.png',
+    },
+    {
+      link: 'tablets/apple-ipad-pro-11-2021-128gb-spacegray',
+      img: 'img/imageSlider/Banner 02.png',
+    },
+    {
+      link: 'accessories/apple-watch-series-5-44mm-silver',
+      img: 'img/imageSlider/Banner 03.png',
+    },
   ];
 
   let touchStart = 0;
   let touchEnd = 0;
 
   const nextSlide = () => {
-    setCurrentIndex(prev => (prev === images.length - 1 ? 0 : prev + 1));
+    setCurrentIndex(prev => (prev === sliderObj.length - 1 ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
-    setCurrentIndex(prev => (prev === 0 ? images.length - 1 : prev - 1));
+    setCurrentIndex(prev => (prev === 0 ? sliderObj.length - 1 : prev - 1));
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -61,14 +71,16 @@ export const BannerSlider: React.FC = () => {
               display: 'flex',
             }}
           >
-            {images.map(image => {
+            {sliderObj.map(obj => {
               return (
-                <img
-                  key={image}
-                  src={image}
-                  alt="Main Banner"
-                  className="slider__image"
-                />
+                <Link className="slider__slide" to={obj.link}>
+                  <img
+                    className="slider__image"
+                    key={obj.img}
+                    src={obj.img}
+                    alt="Main Banner"
+                  />
+                </Link>
               );
             })}
           </div>
@@ -80,7 +92,7 @@ export const BannerSlider: React.FC = () => {
         />
       </div>
       <div className="slider__dots">
-        {images.map((_, index) => (
+        {sliderObj.map((_, index) => (
           <button
             key={index}
             className={`slider__dot ${currentIndex === index ? 'slider__dot--active' : ''}`}
