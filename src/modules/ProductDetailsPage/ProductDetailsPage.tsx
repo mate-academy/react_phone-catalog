@@ -186,10 +186,7 @@ export const ProductDetailsPage = () => {
           <img src={home} alt="home" />
         </Link>
         <span>{'>'}</span>
-        {/* Исправлен путь для категории */}
-        <Link to={`${import.meta.env.BASE_URL}${productData.category}`}>
-          {productData.category}
-        </Link>
+        <Link to={`/${productData.category}`}>{productData.category}</Link>
         <span>{'>'}</span>
         <p>{productData.name}</p>
       </nav>

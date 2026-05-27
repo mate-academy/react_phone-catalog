@@ -37,7 +37,13 @@ export const Footer: React.FC = () => {
           >
             CONTACTS
           </a>
-          <a href="/rights">RIGHTS</a>
+          <a
+            href="https://www.apple.com/legal/privacy/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            RIGHTS
+          </a>
         </nav>
 
         <div className={styles.backToTop}>
