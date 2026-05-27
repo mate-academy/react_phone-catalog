@@ -9,6 +9,7 @@
   max-width: 1800px;
   margin: auto;
   min-height: 60vh;
+
   @include page-paddings;
 
   &__content {
@@ -23,6 +24,7 @@
 
   &__header {
     margin-top: 56px;
+
     @include h1;
 
     @include tablet {
@@ -169,6 +171,7 @@
         margin-top: 32px;
         max-width: 100%;
       }
+
       @include mobile {
         margin-top: 32px;
         max-width: 100%;
@@ -189,6 +192,7 @@
 
       &::after {
         @include product-details-line;
+
         margin-top: 25px;
       }
     }

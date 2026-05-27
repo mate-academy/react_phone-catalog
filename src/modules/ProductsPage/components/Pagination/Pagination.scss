@@ -18,6 +18,7 @@
     line-height: 100%;
     justify-content: center;
     font-weight: $font-weight-regular;
+
     @include animation-transition;
 
     &--active {

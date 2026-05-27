@@ -5,11 +5,13 @@
 
 .slider {
   margin-top: 56px;
+
   @include tablet {
     margin-top: 32px;
   }
+
   @include mobile {
-    margin: 24px -16px 0 -16px;
+    margin: 24px -16px 0;
   }
 
   &__container {
@@ -17,6 +19,7 @@
     display: flex;
     justify-content: space-between;
     gap: 16px;
+
     @include tablet {
       gap: 20px;
     }
@@ -40,6 +43,7 @@
     display: flex;
     box-sizing: border-box;
     width: 100%;
+
     @include animation-transition;
 
     @include mobile {
@@ -74,7 +78,9 @@
 
   &__button {
     border: 1px solid $color-elements;
+
     @include animation-transition;
+
     @include mobile {
       display: none;
     }
@@ -97,7 +103,7 @@
     }
 
     &:hover {
-      box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     }
   }
 
@@ -114,6 +120,7 @@
     border: none;
     background-color: $color-elements;
     cursor: pointer;
+
     @include animation-transition;
 
     &--active {

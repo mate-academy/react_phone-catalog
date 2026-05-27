@@ -1,4 +1,2 @@
-node_modules
-dist
-# Если хочешь скрыть папку билда от линтера:
-build/
+/build
+/node_modules

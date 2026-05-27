@@ -51,6 +51,7 @@
     @include tablet {
       width: 280px;
     }
+
     @include mobile {
       flex-direction: column;
       gap: 16px;
@@ -71,6 +72,7 @@
     flex-direction: row;
     align-items: center;
     gap: 16px;
+
     @include mobile {
       margin: 32px auto;
     }
@@ -90,6 +92,7 @@
     width: 12px;
     height: 12px;
     display: block;
+
     @include animation-transition;
 
     &:hover {

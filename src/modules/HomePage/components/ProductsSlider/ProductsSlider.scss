@@ -4,14 +4,16 @@
 /* stylelint-disable */
 /* stylelint-enable */
 @import '@/styles/mixins';
+
 .products-slider {
   margin-top: 80px;
+
   @include tablet {
     margin-top: 64px;
   }
 
   @include mobile {
-    margin: 56px -16px 0 -16px;
+    margin: 56px -16px 0;
   }
 
   &__title {
@@ -24,6 +26,7 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 16px;
+
     @include tablet {
       gap: 20px;
     }
@@ -47,6 +50,7 @@
     &--buttons {
       display: flex;
       gap: 16px;
+
       @include mobile {
         margin-right: 16px;
       }
@@ -56,11 +60,11 @@
   &__window {
     padding: 9px 10px 10px 3px;
     flex-grow: 1;
-    overflow: hidden;
     border-radius: 0;
     position: relative;
     touch-action: pan-y;
     overflow: hidden;
+
     @include mobile {
       overflow: hidden;
     }
@@ -71,11 +75,13 @@
     gap: 16px;
     box-sizing: border-box;
     width: 100%;
+
     @include mobile {
       padding: 0 16px;
     }
 
     @include animation-transition;
+
     transform: translateX(
       calc(var(--current-index) * -1 * (100% + 16px) / var(--visible-cards))
     );
@@ -108,7 +114,9 @@
 
   &__button {
     border: 1px solid $color-icons;
+
     @include animation-transition;
+
     cursor: pointer;
 
     &--left,
@@ -125,7 +133,7 @@
     }
 
     &:hover:not(:disabled) {
-      box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
       border-color: $color-primary;
     }
 

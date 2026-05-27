@@ -42,6 +42,7 @@
     @include mobile {
       width: 100%;
     }
+
     object-fit: cover;
   }
 
@@ -51,6 +52,7 @@
 
   &__image {
     width: 100%;
+
     @include animation-transition;
     &:hover {
       transform: scale(1.1);

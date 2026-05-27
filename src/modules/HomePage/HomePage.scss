@@ -8,6 +8,7 @@
 .page {
   max-width: 1800px;
   margin: auto;
+
   @include page-paddings;
 
   &__content {
@@ -22,6 +23,7 @@
 
   &__header {
     margin-top: 56px;
+
     @include h1;
 
     @include tablet {
