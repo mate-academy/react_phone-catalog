@@ -4,9 +4,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { ProductDetails } from '@/types/ProductDetails';
 import { Product } from '@/types/Product';
-import { useCart } from '@/app/providers/CartContext';
 import { COLOR_MAP } from '@/shared/constants/colors';
 import { Button } from '@/shared/ui/button/Button';
+import { useProductActions } from './hooks/useProductActions';
 
 type ProductConfiguratorProps = {
   product?: ProductDetails;
@@ -27,14 +27,9 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
 }) => {
   const navigate = useNavigate();
   const { category, productSlug } = useParams();
-
-  const {
-    isFavorite,
-    isInCart,
-    addToFavorites,
-    removeFromFavorites,
-    addToCart,
-  } = useCart();
+  const { inFav, inCart, handleCartClick, handleFav } = useProductActions(
+    foundProductFromProducts?.itemId,
+  );
 
   if (!product) {
     return null;
@@ -75,35 +70,6 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
     }
 
     navigate(`/${category}/${newSlug}`, { replace: true });
-  };
-
-  const fav = isFavorite(foundProductFromProducts?.itemId || '');
-  const inCart = isInCart(foundProductFromProducts?.itemId || '');
-
-  const handleCartClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if (!foundProductFromProducts) {
-      return;
-    }
-
-    addToCart(foundProductFromProducts?.itemId || '');
-  };
-
-  const handleFav = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if (!foundProductFromProducts) {
-      return;
-    }
-
-    if (fav) {
-      removeFromFavorites(foundProductFromProducts?.itemId || '');
-    } else {
-      addToFavorites(foundProductFromProducts.itemId);
-    }
   };
 
   return (
@@ -188,7 +154,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
             onClick={handleFav}
           >
             <img
-              src={fav ? 'img/icons/red-heart.svg' : 'img/icons/heart.svg'}
+              src={inFav ? 'img/icons/red-heart.svg' : 'img/icons/heart.svg'}
               alt="Favorite"
             />
           </button>

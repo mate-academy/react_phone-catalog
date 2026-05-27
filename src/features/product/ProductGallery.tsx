@@ -16,6 +16,7 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ photos }) => {
     setValidPhotos(photos ?? []);
     setCurrentPhotoIndex(0);
   }, [photos]);
+
   const next = () => {
     setCurrentPhotoIndex(prev => (prev + 1) % validPhotos.length);
   };
@@ -24,7 +25,9 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ photos }) => {
     setCurrentPhotoIndex(
       prev => (prev - 1 + validPhotos.length) % validPhotos.length,
     );
+
   const MIN_SWIPE_DISTANCE = 25;
+
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);

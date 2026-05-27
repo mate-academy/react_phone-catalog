@@ -20,7 +20,6 @@ import styles from './ProductPage.module.scss';
 export const ProductPage: React.FC = () => {
   const { category, productSlug } = useParams();
 
-  // 1. Використовуємо хуки для отримання даних
   const {
     product,
     loading,
@@ -38,10 +37,8 @@ export const ProductPage: React.FC = () => {
     [products, productSlug],
   );
 
-  // 2. Хук для побічних ефектів
   useRecentlyViewed(foundProductFromProducts?.itemId);
 
-  // 3. Рендеринг станів завантаження або помилки
   if (loading) {
     return (
       <div className={styles['product-page__loader']}>
@@ -54,7 +51,6 @@ export const ProductPage: React.FC = () => {
     return <NotFoundPage />;
   }
 
-  // 4. Головний рендеринг сторінки
   return (
     <>
       <PageHeader
