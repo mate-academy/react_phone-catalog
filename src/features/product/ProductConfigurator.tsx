@@ -1,4 +1,4 @@
-import styles from './ProductPage.module.scss';
+import styles from '@/pages/Product/ProductPage.module.scss';
 import classNames from 'classnames';
 import { useNavigate, useParams } from 'react-router-dom';
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './ProductPage.module.scss';
+import styles from '@/pages/Product/ProductPage.module.scss';
 import cn from 'classnames';
 
 type ProductGalleryProps = {
