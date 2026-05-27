@@ -16,26 +16,32 @@ export const Pagination: React.FC<Props> = ({
 }) => {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-  // Если страниц 1 или меньше, пагинация вообще не нужна
+  // Если страниц 1 или меньше, пагинация не нужна
   if (totalPages <= 1) {
     return null;
   }
 
-  // Количество одновременно видимых номеров страниц (ограничим до 4, как в ТЗ)
   const maxVisiblePages = 4;
+  const visiblePageNumbers: number[] = [];
 
-  // Логика расчета динамического диапазона (какие именно цифры показать)
-  let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-  let endPage = startPage + maxVisiblePages - 1;
+  // Железобетонный расчет стартовой и конечной страницы
+  let startPage = currentPage - 1;
 
-  if (endPage > totalPages) {
-    endPage = totalPages;
-    startPage = Math.max(1, endPage - maxVisiblePages + 1);
+  if (currentPage === 1) {
+    startPage = 1;
+  } else if (currentPage === totalPages) {
+    startPage = Math.max(1, totalPages - maxVisiblePages + 1);
+  } else if (currentPage + 2 > totalPages) {
+    startPage = Math.max(1, totalPages - maxVisiblePages + 1);
   }
 
-  const visiblePageNumbers = [];
+  startPage = Math.max(1, startPage);
+  const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
 
-  for (let i = startPage; i <= endPage; i++) {
+  // Если из-за округлений в начале не добрали страниц до maxVisiblePages, корректируем старт
+  const finalStartPage = Math.max(1, endPage - maxVisiblePages + 1);
+
+  for (let i = finalStartPage; i <= endPage; i++) {
     visiblePageNumbers.push(i);
   }
 
@@ -50,7 +56,7 @@ export const Pagination: React.FC<Props> = ({
         {'<'}
       </button>
 
-      {/* Номера страниц (показываем только обрезанный диапазон) */}
+      {/* Номера страниц */}
       {visiblePageNumbers.map(page => (
         <button
           key={page}

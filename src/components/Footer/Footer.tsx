@@ -30,7 +30,13 @@ export const Footer: React.FC = () => {
           >
             GITHUB
           </a>
-          <a href="/contacts">CONTACTS</a>
+          <a
+            href="https://www.linkedin.com/in/pavlo-balanenko-589820346/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            CONTACTS
+          </a>
           <a href="/rights">RIGHTS</a>
         </nav>
 

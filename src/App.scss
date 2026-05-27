@@ -1,35 +1,45 @@
-// 1. Подключаем шрифт Montserrat напрямую в SCSS
+/// 1. Скачиваем шрифт Montserrat напрямую из Google Fonts
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
-html,
-body {
-  scroll-behavior: smooth;
-  position: relative;
-  overflow-x: hidden;
+html {
+  height: 100%;
+}
 
-  box-sizing: border-box;
-  max-width: 100%;
-  min-height: 100vh;
+body {
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 
+  // Меняем position: relative на нормальный flex, чтобы расталкивать элементы
+  display: flex;
+  flex-direction: column;
+
+  overflow-x: hidden;
+  box-sizing: border-box;
+  max-width: 100%;
   color: #fff;
   background-color: #0f1117;
+  scroll-behavior: smooth;
+}
 
-  // 2. Указываем шрифт для body
-  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+// Добавляем стили для корневого класса из App.tsx
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; // Растягиваем обертку на весь экран
+  width: 100%;
+}
+
+main {
+  padding-top: 40px; // Чтобы фиксированный хедер не перекрывал контент страницы
+
+  // САМАЯ ВАЖНАЯ СТРОКА: заставит контент (каталог) забирать всё свободное место
+  // и принудительно выталкивать футер на самый низ страницы!
+  flex-grow: 1;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: inherit;
-  // 3. Принудительно наследуем шрифт для всех элементов, кнопок и инпутов
-  font-family: 'Montserrat', sans-serif !important;
-}
-
-main {
-  padding-top: 20px;
 }

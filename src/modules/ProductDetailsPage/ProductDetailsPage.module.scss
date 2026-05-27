@@ -85,6 +85,7 @@ $border-color: #3b3e4a;
   display: flex;
   gap: 8px;
   align-items: center;
+  padding: 20px 0 24px 0;
 
   margin: 24px 0;
 
@@ -103,6 +104,7 @@ $border-color: #3b3e4a;
 
   a {
     font-weight: 700;
+    font-size: 14px;
     color: #fff;
     text-decoration: none;
   }
@@ -382,6 +384,7 @@ $border-color: #3b3e4a;
   width: 100% !important;
   max-width: 100vw !important;
   margin-top: 64px !important;
+
 }
 
 .suggestedHeader {
@@ -389,6 +392,7 @@ $border-color: #3b3e4a;
   flex-wrap: wrap !important;
   gap: 12px !important;
   justify-content: space-between !important;
+
 
   h2 {
     font-size: 22px !important;
@@ -439,6 +443,7 @@ $border-color: #3b3e4a;
   box-sizing: border-box;
   display: flex;
   flex: 0 0 100%;
+  margin-bottom: 96px;
 
   max-width: 100%;
   padding: 0 8px;

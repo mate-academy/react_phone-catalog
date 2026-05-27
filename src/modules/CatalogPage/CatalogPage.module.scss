@@ -1,13 +1,14 @@
 .catalogPage {
-  min-height: 100vh;
-  padding-bottom: 80px;
+  min-height: auto;
+  padding-bottom: 94px;
   background-color: #0f1117;
+
 }
 
 .container {
   max-width: 1136px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 16px 80px 16px;
 }
 
 .grid {
