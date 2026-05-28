@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"vite\" \"npm:scss:types\"",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b --noEmit && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "scss:types": "typed-scss-modules \"src/**/*.module.scss\" --watch --aliasPrefixes.@ src"
