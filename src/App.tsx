@@ -1,16 +1,30 @@
 // import { useState } from 'react';
+import React from 'react';
 import './App.scss';
-import { Header } from './widgets/Header/Header';
+import { Header } from '@/modules/Header';
+import { Outlet } from 'react-router-dom';
+import { ThemeProvider } from './app/providers/Theme';
+import { PhonesProvider } from './app/providers/Phones/PhoneContext';
+import { CartProvider } from './app/providers/Cart';
+import { FavouritesProvider } from './app/providers/Favorities';
 
-function App() {
+export const App: React.FC = () => {
   // const [count, setCount] = useState(0);
 
   return (
     <>
-      <Header></Header>
-      <h1>H1 — The quick brown fox jumps over the lazy dog</h1>
+      <ThemeProvider>
+        <CartProvider>
+          <FavouritesProvider>
+            <PhonesProvider>
+              <Header></Header>
+              <Outlet />
+            </PhonesProvider>
+          </FavouritesProvider>
+        </CartProvider>
+      </ThemeProvider>
     </>
   );
-}
+};
 
 export default App;

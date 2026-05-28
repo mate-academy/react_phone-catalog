@@ -4,15 +4,23 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"vite\" \"npm:scss:types\"",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "scss:types": "typed-scss-modules \"src/**/*.module.scss\" --watch --aliasPrefixes.@ src"
   },
   "dependencies": {
+    "boneyard-js": "^1.8.1",
+    "classnames": "^2.5.1",
+    "i18next": "^26.2.0",
+    "i18next-browser-languagedetector": "^8.2.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-router-dom": "^7.15.1"
+    "react-i18next": "^17.0.8",
+    "react-router-dom": "^7.15.1",
+    "react-tooltip": "^6.0.4",
+    "swiper": "^12.1.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
@@ -21,6 +29,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
+    "concurrently": "^9.2.1",
     "cypress": "^15.15.0",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
@@ -35,7 +44,8 @@
     "jiti": "^2.7.0",
     "prettier": "^3.8.3",
     "sass": "^1.99.0",
-    "typescript": "~6.0.2",
+    "typed-scss-modules": "^8.1.1",
+    "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.4",
     "vite": "^8.0.12",
     "vite-plugin-checker": "^0.13.0",

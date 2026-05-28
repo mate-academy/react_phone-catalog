@@ -1,5 +1,6 @@
 @forward "./utils/vars";
 @forward "./utils/mixins";
 
+@use "./base/global-vars";
 @use "./base/normalize";
 @use "./base/typography";

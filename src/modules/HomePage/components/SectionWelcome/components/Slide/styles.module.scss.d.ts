@@ -1,0 +1,11 @@
+export declare const button: string;
+export declare const button2: string;
+export declare const image: string;
+export declare const leftContainer: string;
+export declare const noThemeTransition: string;
+export declare const paragraph: string;
+export declare const rightContainer: string;
+export declare const root: string;
+export declare const slide: string;
+export declare const title: string;
+export declare const title2: string;

@@ -1,9 +1,27 @@
 // @use './shared/styles/utils/reset';
 
-@use "./shared/styles" as *;
+@use './shared/styles' as *;
 
-html {
-  font-family: 'Montserrat', sans-serif;
+.page {
+  scroll-behavior: smooth;
+  font-family: 'Mont', sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+  background-color: var(--bg);
+  min-width: 320px;
+}
+
+#root {
+  height: 3000px;
+
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  background-color: color-mix(in srgb, var(--text), transparent 70%);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--h);
+  border-radius: 5px;
 }

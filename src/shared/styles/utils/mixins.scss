@@ -1,4 +1,4 @@
-@use "./vars" as *;
+@use './vars' as *;
 
 @mixin on-tablet {
   @media (min-width: $tablet) {
@@ -11,3 +11,47 @@
     @content;
   }
 }
+
+@mixin on-big-desktop {
+  @media (min-width: $big-desktop) {
+    @content;
+  }
+}
+
+@mixin padding-container($min: 0px) {
+  padding-inline: calc(16px - #{$min});
+
+  @include on-tablet {
+    padding-inline: calc(24px - #{$min});
+  }
+
+  @include on-desktop {
+    padding-inline: calc((100vw - 1136px) / 2 - #{$min});
+  }
+}
+
+@mixin grid {
+  --count-culumn: 4;
+
+  display: grid;
+  grid-template-columns: repeat(var(--count-culumn), 1fr);
+
+  column-gap: 16px;
+  
+  @include padding-container;
+
+  @include on-tablet {
+    --count-culumn: 12;
+
+  }
+
+  @include on-desktop {
+    --count-culumn: 24;
+
+    justify-content: center;
+
+    grid-template-columns: repeat(var(--count-culumn), 32px);
+  }
+}
+
+

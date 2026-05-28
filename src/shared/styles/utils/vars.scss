@@ -1,13 +1,40 @@
 $tablet: 640px;
 $desktop: 1200px;
-$primary: #0f0f11;
-$secondary: #89939a;
-$accent: #f86800;
-$secondary-accent: #476df4;
-$icons: #B4BDC3;
-$elements: #E2E6E9;
-$hover-BG: #E2E6E9;
-$white: #fff;
-$green: #27AE60;
-$red: #EB5757;
+$big-desktop: 1440px;
 $transition: 0.3s;
+
+//#region colorLight
+$bg-light: #FAFBFC;
+$bg-header-footer-light: #FFFFFF;
+$bg-goods-light: #FFFFFF;
+$bg-button-light: #FFFFFF;
+$accent-light: #f86800;
+$icon-light: #0F0F11;
+$accent2-light: #476DF4;
+$h-light: #0F0F11;
+$text-light: #89939A;
+$line-and-border-light: #E2E6E9;
+$accent-invert-light: invert($accent-light);
+
+//#endregion
+
+//#region colorDark
+$bg-dark: #0f1121;
+$bg-header-footer-dark: #0f1121;
+$bg-goods-dark: #161827;
+$bg-button-dark: #323542;
+$accent-dark: #905BFF;
+$icon-dark: #F1F2F9;
+$accent2-dark: #EB5757;
+$h-dark: #F1F2F9;
+$text-dark: #75767F;
+$line-and-border-dark: #323542;
+$accent-invert-dark: invert($accent-dark);
+
+//#endregion
+
+// $icons: #b4bdc3;
+// $elements: #e2e6e9;
+// $hover-BG: #e2e6e9;
+// $white: #fff;
+$red: #eb5757;

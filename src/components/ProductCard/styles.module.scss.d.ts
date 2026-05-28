@@ -1,0 +1,15 @@
+export declare const buttonBuy: string;
+export declare const buttonHeart: string;
+export declare const buttons: string;
+export declare const content: string;
+export declare const detail: string;
+export declare const details: string;
+export declare const detailText1: string;
+export declare const detailText2: string;
+export declare const image: string;
+export declare const line: string;
+export declare const main: string;
+export declare const noThemeTransition: string;
+export declare const price: string;
+export declare const root: string;
+export declare const title: string;

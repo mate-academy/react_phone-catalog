@@ -1,0 +1,12 @@
+export declare const container: string;
+export declare const customPagination: string;
+export declare const mySwiper: string;
+export declare const noThemeTransition: string;
+export declare const root: string;
+export declare const sliderButtonNext: string;
+export declare const sliderButtonPrev: string;
+export declare const sliderWrapper: string;
+export declare const swiperPaginationBullet: string;
+export declare const swiperPaginationBulletActive: string;
+export declare const swiperSlide: string;
+export declare const title: string;
