@@ -1,0 +1,236 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/_mixins' as mixins;
+
+.footer {
+  width: 100%;
+  margin-top: 64px;
+  border-top: 1px solid vars.$icons-color;
+  background-color: vars.$white-color;
+
+  @include mixins.tablet {
+    margin-top: 48px;
+  }
+
+  @include mixins.mobile {
+    margin-top: 40px;
+  }
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+
+    @include mixins.tablet {
+      padding: 0 24px;
+    }
+
+    @include mixins.mobile {
+      padding: 0 16px;
+    }
+  }
+
+  &__top_section {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 32px 0;
+
+    @include mixins.tablet {
+      flex-direction: column;
+      gap: 32px;
+      align-items: flex-start;
+      padding: 24px 0;
+    }
+
+    @include mixins.mobile {
+      flex-direction: column;
+      gap: 24px;
+      align-items: flex-start;
+      padding: 20px 0;
+    }
+  }
+
+  &__logo {
+    flex-shrink: 0;
+
+    @include mixins.mobile {
+      width: 100%;
+    }
+
+    img {
+      display: block;
+      width: auto;
+      height: 32px;
+
+      @include mixins.mobile {
+        height: 28px;
+      }
+    }
+
+    a {
+      display: block;
+      line-height: 0;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+
+    @include mixins.tablet {
+      justify-content: flex-start;
+      width: 100%;
+    }
+
+    @include mixins.mobile {
+      justify-content: flex-start;
+      width: 100%;
+    }
+
+    &_list {
+      display: flex;
+      gap: 24px;
+
+      margin: 0;
+      padding: 0;
+
+      list-style: none;
+
+      @include mixins.tablet {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      @include mixins.mobile {
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+      }
+    }
+
+    &_item {
+      margin: 0;
+
+      @include mixins.mobile {
+        width: 100%;
+      }
+    }
+
+    &_link {
+      display: block;
+
+      font-family: vars.$font-primary;
+      font-size: 12px;
+      font-weight: 800;
+      color: vars.$secondary-color;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: vars.$primary-color;
+      }
+
+      &:active {
+        color: vars.$primary-color;
+      }
+
+      @include mixins.mobile {
+        padding: 4px 0;
+        font-size: 12px;
+      }
+    }
+  }
+
+  &__back {
+    cursor: pointer;
+
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    padding: 0;
+    border: none;
+
+    background: none;
+
+    transition: all 0.3s ease;
+
+    @include mixins.tablet {
+      justify-content: space-between;
+      width: 100%;
+      padding-top: 16px;
+      border-top: 1px solid vars.$icons-color;
+    }
+
+    @include mixins.mobile {
+      justify-content: center;
+      width: 100%;
+      padding-top: 16px;
+    }
+
+    &_text {
+      margin: 0;
+
+      font-family: vars.$font-primary;
+      font-size: 12px;
+      font-weight: 700;
+      color: vars.$secondary-color;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+
+      transition: color 0.3s ease;
+    }
+
+    &_icon {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+
+      width: 32px;
+      height: 32px;
+      border: 1px solid vars.$icons-color;
+      border-radius: 4px;
+
+      background: white;
+
+      transition: all 0.3s ease;
+
+      img {
+        transform: rotate(-90deg);
+
+        width: 16px;
+        height: 16px;
+
+        object-fit: contain;
+
+        transition: filter 0.3s ease;
+      }
+    }
+
+    &:hover {
+      .footer__back_text {
+        color: vars.$primary-color;
+      }
+
+      .footer__back_icon {
+        border-color: vars.$primary-color;
+        background: vars.$primary-color;
+
+        img {
+          filter: brightness(0) invert(1);
+        }
+      }
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}

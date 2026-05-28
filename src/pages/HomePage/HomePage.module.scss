@@ -1,0 +1,47 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/_mixins' as mixins;
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  text-align: left;
+
+  @include mixins.tablet {
+    padding: 0 24px;
+  }
+
+  @include mixins.mobile {
+    padding: 0;
+  }
+
+  &__title {
+    width: 100%;
+
+    font-family: vars.$font-primary;
+    font-size: 48px;
+    font-weight: 800;
+    color: vars.$primary-color;
+    text-align: left;
+
+    @include mixins.tablet {
+      font-size: 40px;
+    }
+
+    @include mixins.mobile {
+      font-size: 32px;
+    }
+
+    &_mobile {
+      display: none;
+    }
+  }
+}

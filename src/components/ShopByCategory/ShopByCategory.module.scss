@@ -1,0 +1,128 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/_mixins' as mixins;
+
+.homePage__categoryProducts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 16px;
+
+  @include mixins.tablet {
+    padding: 0 24px;
+  }
+
+  @include mixins.mobile {
+    padding: 0 16px;
+  }
+
+  &_title {
+    margin: 0;
+
+    font-family: vars.$font-primary;
+    font-size: 32px;
+    font-weight: 800;
+    color: vars.$primary-color;
+
+    @include mixins.mobile {
+      font-size: 22px;
+    }
+  }
+
+  &_list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); // три колонки
+    gap: 20px;
+
+    @include mixins.tablet {
+      grid-template-columns: repeat(3, 1fr); // теж три колонки, але менший gap
+      gap: 16px;
+    }
+
+    @include mixins.mobile {
+      grid-template-columns: 1fr; // одна колонка на мобільних
+      gap: 16px;
+    }
+  }
+
+  &_item {
+    display: flex;
+    flex: 1 1 calc(33.33% - 14px);
+    flex-direction: column;
+    transition: all 0.3s ease;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.02);
+    }
+
+    @include mixins.tablet {
+      flex: 1 1 calc(33.33% - 11px);
+    }
+
+    @include mixins.mobile {
+      flex: 1 1 100%;
+    }
+
+    &_cover {
+      position: relative;
+
+      overflow: hidden;
+
+      aspect-ratio: 1 / 1; // квадрат, замість жорсткої ширини/висоти
+      width: 100%; // зробити ширину 100% від батьківського блока
+      border: 1px solid #e2e6e9;
+
+      &_img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    &_info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 24px;
+
+      &_title {
+        margin: 0;
+
+        font-family: vars.$font-primary;
+        font-size: 24px;
+        font-weight: 800;
+        color: vars.$primary-color;
+
+        @include mixins.tablet {
+          font-size: 20px;
+        }
+
+        @include mixins.mobile {
+          font-size: 20px;
+        }
+      }
+
+      &_description {
+        margin: 0;
+        padding: 0;
+
+        font-family: vars.$font-primary;
+        font-size: 16px;
+        font-weight: 400;
+        color: vars.$secondary-color;
+
+        @include mixins.tablet {
+          font-size: 14px;
+        }
+
+        @include mixins.mobile {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

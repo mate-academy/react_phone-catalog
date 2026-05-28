@@ -1,0 +1,126 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/_mixins' as mixins;
+
+.itemCardDescription {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+
+  width: 100%;
+  max-width: 1200px;
+  margin: 80px 0 0;
+
+  @include mixins.mobile {
+    grid-template-columns: 1fr;
+    margin: 64px 0 0;
+  }
+
+  &_title {
+    margin: 0;
+    padding: 0;
+
+    font-family: vars.$font-primary;
+    font-size: 22px;
+    font-weight: 800;
+    color: vars.$primary-color;
+  }
+
+  &_line {
+    display: block;
+
+    width: 100%;
+    min-width: 320px;
+    height: 1px;
+    margin: 16px 0 32px;
+
+    background-color: vars.$elements-color;
+
+    @include mixins.mobile {
+      min-width: 0;
+      margin: 16px 0 24px;
+    }
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &_list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+
+      margin: 0;
+      padding: 0;
+
+      list-style: none;
+    }
+
+    &_item {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+
+      &_title {
+        margin: 0;
+        padding: 0;
+
+        font-family: vars.$font-primary;
+        font-size: 20px;
+        font-weight: 700;
+        color: vars.$primary-color;
+      }
+
+      &_text {
+        margin: 0;
+        padding: 0;
+
+        font-family: vars.$font-primary;
+        font-size: 14px;
+        font-weight: 500;
+        color: vars.$secondary-color;
+      }
+    }
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &_list {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding: 0;
+    }
+
+    &_item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      margin: 0 0 8px;
+      padding: 0;
+
+      font-family: vars.$font-primary;
+      font-size: 14px;
+      font-weight: 500;
+
+      &_title {
+        margin: 0;
+        padding: 0;
+        color: vars.$secondary-color;
+      }
+
+      &_value {
+        margin: 0;
+        padding: 0;
+        color: vars.$primary-color;
+      }
+    }
+  }
+}

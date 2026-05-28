@@ -1,0 +1,127 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/_mixins' as mixins;
+
+.homePage {
+  &__products {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 100%;
+    max-width: 1200px;
+    margin: 80px 0 0 24px;
+
+    @include mixins.tablet {
+      margin: 64px 0 0 24px;
+    }
+
+    @include mixins.mobile {
+      margin: 56px 0 0;
+    }
+
+    &_title {
+      font-family: vars.$font-primary;
+      font-size: 32px;
+      font-weight: 800;
+      color: vars.$primary-color;
+    }
+
+    &_header {
+      display: flex;
+      justify-content: space-between;
+
+      &_btns {
+        cursor: pointer;
+        display: flex;
+        gap: 24px;
+        align-items: center;
+      }
+
+      &_button {
+        cursor: pointer;
+
+        transform: rotate(180);
+
+        width: 32px;
+        height: 32px;
+        border: 1px solid #e2e6e9;
+
+        color: vars.$primary-color;
+
+        background-color: vars.$white-color;
+
+        &_prev_disabled {
+          opacity: 0.5;
+        }
+
+        &_next_disabled {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+
+  &__products_list {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.4s ease;
+
+    &_wrapper {
+      overflow: hidden;
+      width: 100%;
+
+      @include mixins.tablet {
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+
+        -webkit-overflow-scrolling: touch;
+      }
+
+      @include mixins.mobile {
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+
+    @include mixins.tablet {
+      scroll-snap-type: x mandatory;
+    }
+
+    @include mixins.mobile {
+      scroll-snap-type: x mandatory;
+    }
+  }
+}
+
+.productSlide {
+  flex: 0 0 calc(100% / 4);
+  box-sizing: border-box;
+  animation: fade-in-slide 0.4s ease forwards;
+
+  @include mixins.tablet {
+    scroll-snap-align: start;
+    flex: 0 0 40%;
+  }
+
+  @include mixins.mobile {
+    scroll-snap-align: start;
+    flex: 0 0 80%;
+  }
+
+  &__card {
+    width: 100%;
+  }
+}
+
+@keyframes fade-in-slide {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

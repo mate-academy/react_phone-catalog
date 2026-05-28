@@ -1,0 +1,62 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/_mixins' as mixins;
+
+.favorites {
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @include mixins.tablet {
+    padding: 0 24px;
+  }
+
+  @include mixins.mobile {
+    padding: 0 16px;
+  }
+
+  &__title {
+    width: 100%;
+
+    font-family: vars.$font-primary;
+    font-size: 48px;
+    font-weight: 800;
+    color: vars.$primary-color;
+    text-align: left;
+
+    @include mixins.mobile {
+      font-size: 32px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    justify-items: center;
+
+    margin-bottom: 40px;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 900px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+
+  &__card {
+    width: 100%;
+  }
+}
