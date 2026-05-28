@@ -109,7 +109,7 @@ export const ProductsPage = () => {
           </div>
         </div>
       </header>
-      {!isError && <Errors type="fetch-error" />}
+      {isError && <Errors type="fetch-error" />}
       {!isError && (
         <div className={styles.products}>
           {isLoading ? (

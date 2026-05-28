@@ -3,11 +3,13 @@ import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { MobileMenu } from '../MobileMenu/Menu';
 import { FavoritesContext } from '../../../../context/FavoritesContext';
+import { CartContext } from '../../../../context/CartContext';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { favoritesItems } = useContext(FavoritesContext);
+  const { cartItems } = useContext(CartContext);
 
   return (
     <header className={styles.header}>
@@ -69,6 +71,9 @@ export const Header = () => {
           }
         >
           <img src="/img/icons/Shopping_bag.svg" alt="Shopping bag " />
+          {cartItems.length > 0 && (
+            <span className={styles.count}>{cartItems.length}</span>
+          )}
         </NavLink>
       </div>
 

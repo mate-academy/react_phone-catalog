@@ -95,14 +95,15 @@
         top: 50%;
         left: 50%;
         transform: translate(0, -100%);
-        width: 14px;
-        height: 14px;
+        width: auto;
+        min-width: 16px;
+        height: 16px;
         border-radius: 8px;
         background-color: $red;
         color: $white;
         font-family: Mont, sans-serif;
         font-size: 9px;
-        font-weight: 700;
+        font-weight: 400;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -134,6 +135,11 @@
     .nav {
       display: flex;
       gap: 32px;
+
+      .nav_link {
+        margin-inline-start: 16px;
+      }
+
     }
 
     .icons {
@@ -172,6 +178,10 @@
 
     .nav {
       gap: 64px;
+
+      .nav_link {
+        margin-inline-start: 24px;
+      }
     }
 
     .navLogo {

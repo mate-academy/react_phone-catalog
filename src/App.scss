@@ -29,6 +29,9 @@ body {
   font-family: Mont, sans-serif;
   background-color: $black;
   color: $white;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }
 
 p {

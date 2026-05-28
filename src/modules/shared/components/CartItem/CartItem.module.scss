@@ -27,14 +27,14 @@
       justify-content: center;
       align-items: center;
       box-sizing: border-box;
+
       padding: 7px;
       height: 80px;
       width: 80px;
 
 
       img {
-        width: 100%;
-        height: auto;
+        height: 100%;
         object-fit: contain;
       }
 
@@ -127,6 +127,7 @@
       }
     }
   }
+}
 
   @media (min-width: $tablet-breakpoint) {
     .cartItem {
@@ -151,4 +152,3 @@
       width: 742px;
     }
   }
-}

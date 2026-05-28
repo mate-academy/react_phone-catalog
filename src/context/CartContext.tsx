@@ -27,7 +27,11 @@ export const CartContext = createContext<CartContextType>({
 });
 
 export const CartProvider = ({ children }: Props) => {
-  const [cartItems, setCartItems] = useState<CartItemType[]>([]);
+  const [cartItems, setCartItems] = useState<CartItemType[]>(() => {
+    const saved = localStorage.getItem('cart');
+
+    return saved ? JSON.parse(saved) : [];
+  });
 
   function updateQuantity(item: Product, newQuantity: number) {
     setCartItems(
@@ -44,14 +48,6 @@ export const CartProvider = ({ children }: Props) => {
 
     localStorage.setItem('cart', cartItemsStr);
   }, [cartItems]);
-
-  useEffect(() => {
-    const saved = localStorage.getItem('cart');
-
-    if (saved) {
-      setCartItems(JSON.parse(saved));
-    }
-  }, []);
 
   const quantityCarts = cartItems.reduce(
     (acc, item) => acc + item.quantityCarts,

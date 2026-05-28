@@ -4,7 +4,7 @@ import styles from './Footer.module.scss';
 
 export const Footer = () => {
   return (
-    <footer className={`${styles.footer} ${styles}`}>
+    <footer className={styles.footer}>
       <Link className={styles.footerLogo} to="/">
         <img src="/img/icons/Logo.svg" alt="Logo" />
       </Link>

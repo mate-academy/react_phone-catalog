@@ -21,11 +21,9 @@ export const CartItem = ({ product, quantity }: Props) => {
         >
           <img src="/img/icons/Close.svg" alt="delete" />
         </button>
-        <img
-          className={styles.product_img}
-          src={`/${product.image}`}
-          alt={product.name}
-        />
+        <div className={styles.product_img}>
+          <img src={`/${product.image}`} alt={product.name} />
+        </div>
         <Link to={`/product/${product.id}`} className={styles.product_link}>
           {product.name}
         </Link>
