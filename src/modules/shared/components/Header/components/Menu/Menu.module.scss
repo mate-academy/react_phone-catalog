@@ -1,1 +1,71 @@
-// not empty
+@use '@styles/mixins/ActiveNavState';
+
+$gray-secondary: #89939A;
+$gray-primary: #313237;
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 72px; // header size 48px + margin 24px
+  width: 100%;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.link, .activeLink {
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.link {
+  color: $gray-secondary;
+}
+
+.activeLink {
+  color: $gray-primary;
+}
+
+.link::after, .activeLink::after {
+  @extend %underline;
+}
+
+.activeLink::after {
+  @extend %activate-underline;
+}
+
+.bottom {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+
+  box-shadow: 0 -1px 0 0 #E2E6E9;
+  width: 100%;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  padding: 24px 72px;
+
+  box-shadow: -1px 0 0 0 #E2E6E9;
+
+  @extend %underline;
+}
+
+.activeIcon::after {
+  @extend %activate-underline;
+}

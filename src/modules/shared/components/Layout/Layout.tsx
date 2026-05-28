@@ -2,6 +2,9 @@ import { Outlet } from 'react-router-dom';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 import { Menu } from '../Header/components/Menu';
+import { useEffect } from 'react';
+
+const MIN_TABLET_SCREEN_SIZE = 640;
 
 type Props = {
   isMenuOpen: boolean;
@@ -9,10 +12,30 @@ type Props = {
 };
 
 export const Layout = ({ isMenuOpen, setIsMenuOpen }: Props) => {
+  // This allows you to close the navigation menu if the screen width
+  // accidentally becomes equal to or greater than the tablet's screen size
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= MIN_TABLET_SCREEN_SIZE) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, [setIsMenuOpen]);
+
   return (
     <div>
       <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-      <main>{isMenuOpen ? <Menu /> : <Outlet />}</main>
+      <main>
+        {isMenuOpen ? (
+          <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+        ) : (
+          <Outlet />
+        )}
+      </main>
       <Footer />
     </div>
   );

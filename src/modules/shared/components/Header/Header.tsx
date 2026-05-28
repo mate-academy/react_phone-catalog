@@ -27,6 +27,7 @@ export const Header = ({ isMenuOpen, setIsMenuOpen }: Props) => {
               alt="Company Logo"
             />
           </Link>
+
           <HeaderNav />
         </div>
         <div className={styles.right}>
@@ -51,11 +52,10 @@ export const Header = ({ isMenuOpen, setIsMenuOpen }: Props) => {
             className={styles.burgerBtn}
             onClick={handleClick}
           >
-            {isMenuOpen ? (
-              <img src="/icons/close.svg" alt="Close" />
-            ) : (
-              <img src="/icons/menu.svg" alt="Menu" />
-            )}
+            <img
+              src={isMenuOpen ? '/icons/close.svg' : '/icons/menu.svg'}
+              alt="Menu"
+            />
           </button>
         </div>
       </div>

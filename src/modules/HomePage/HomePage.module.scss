@@ -1,1 +1,61 @@
-// not empty
+.container {
+  width: 100%;
+  padding: 0 16px;
+  margin: 0 auto;
+  max-width: 1200px;
+
+  @media screen and (min-width: 640px) {
+    padding: 0 24px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding: 0 32px;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 56px;
+
+  @media screen and (min-width: 640px) {
+    gap: 64px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    gap: 80px;
+  }
+}
+
+.sliderSection {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+
+  @media screen and (min-width: 640px) {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.title {
+  font-size: 32px;
+
+  &Container {
+    padding: 16px;
+
+    @media screen and (min-width: 640px) {
+      padding: 0;
+    }
+  }
+
+  @media screen and (min-width: 640px) {
+    font-size: 48px;
+    margin: 32px 0;
+  }
+
+  @media screen and (min-width: 1200px) {
+    font-size: 56px;
+    margin: 56px 0;
+  }
+}

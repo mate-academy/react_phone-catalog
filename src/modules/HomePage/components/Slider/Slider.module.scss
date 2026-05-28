@@ -1,0 +1,87 @@
+.slider {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.controls {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  @media screen and (min-width: 640px) {
+    gap: 19px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    gap: 16px;
+  }
+}
+
+.btn {
+  display: none;
+
+  @media screen and (min-width: 640px) {
+    display: block;
+    background-color: #fff;
+    border: 1px solid #B4BDC3;
+    border-radius: 0;
+    width: 32px;
+
+    cursor: pointer;
+
+    &:active {
+      border: 1px solid #222;
+    }
+  }
+}
+
+.imgContainer {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+  height: auto;
+  width: 100%;
+  border: 1px solid #B4BDC3;
+
+  aspect-ratio: 1 / 1;
+
+  @media screen and (min-width: 640px) {
+    aspect-ratio: unset;
+    height: 190px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    height: 400px;
+  }
+}
+
+.sliderImg {
+  width: 100%;
+  display: block;
+  align-self: stretch;
+
+  object-fit: cover;
+}
+
+.sliderBtns {
+  display: flex;
+  gap: 14px;
+}
+
+.sliderBtn {
+  width: 14px;
+  height: 4px;
+  border-radius: 0;
+  border: none;
+}
+
+.active {
+  transition: background-color .25s ease-in;
+  background-color: #313237;
+}
