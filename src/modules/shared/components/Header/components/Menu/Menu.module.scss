@@ -1,7 +1,5 @@
 @use '@styles/mixins/ActiveNavState';
-
-$gray-secondary: #89939A;
-$gray-primary: #313237;
+@use '@styles/variables/variables.scss' as vars;
 
 .menu {
   display: flex;
@@ -31,11 +29,11 @@ $gray-primary: #313237;
 }
 
 .link {
-  color: $gray-secondary;
+  color: vars.$secondary-color;
 }
 
 .activeLink {
-  color: $gray-primary;
+  color: vars.$primary-color;
 }
 
 .link::after, .activeLink::after {

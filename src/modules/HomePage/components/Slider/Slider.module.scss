@@ -1,3 +1,5 @@
+@use '@styles/variables/variables.scss' as vars;
+
 .slider {
   display: flex;
   gap: 8px;
@@ -27,15 +29,15 @@
 
   @media screen and (min-width: 640px) {
     display: block;
-    background-color: #fff;
-    border: 1px solid #B4BDC3;
+    background-color: vars.$white-color;
+    border: 1px solid vars.$icons-color;
     border-radius: 0;
     width: 32px;
 
     cursor: pointer;
 
     &:active {
-      border: 1px solid #222;
+      border: 1px solid vars.$primary-color;
     }
   }
 }
@@ -47,7 +49,7 @@
   min-width: 0;
   height: auto;
   width: 100%;
-  border: 1px solid #B4BDC3;
+  border: 1px solid vars.$icons-color;
 
   aspect-ratio: 1 / 1;
 
@@ -83,5 +85,5 @@
 
 .active {
   transition: background-color .25s ease-in;
-  background-color: #313237;
+  background-color: vars.$primary-color;
 }

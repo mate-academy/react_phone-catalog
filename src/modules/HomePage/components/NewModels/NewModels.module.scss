@@ -1,8 +1,4 @@
-$gray-lighter: #E2E6E9;
-$gray-darker: #89939A;
-$gray-primary: #313237;
-$gray-icons: #B4BDC3;
-$white: #fff;
+@use '@styles/variables/variables.scss' as vars;
 
 .newModelsSection {
   display: flex;
@@ -40,8 +36,8 @@ $white: #fff;
 .control {
   width: 32px;
   height: 32px;
-  background-color: #fff;
-  border: 1px solid $gray-icons;
+  background-color: vars.$white-color;
+  border: 1px solid vars.$icons-color;
   cursor: pointer;
 }
 
@@ -55,7 +51,7 @@ $white: #fff;
   padding: 32px;
   width: 212px;
 
-  border: 1px solid $gray-lighter;
+  border: 1px solid vars.$elements-color;
 
 
   @media screen and (min-width: 640px) {
@@ -78,7 +74,7 @@ $white: #fff;
 .cardTitle {
   font-size: 14px;
   font-weight: 400;
-  color: $gray-primary;
+  color: vars.$primary-color;
 }
 
 .price {
@@ -100,11 +96,11 @@ $white: #fff;
   font-weight: 400;
 
   &Title {
-    color: $gray-darker;
+    color: vars.$secondary-color;
   }
 
   &Description{
-    color: $gray-primary;
+    color: vars.$primary-color;
   }
 }
 
@@ -116,12 +112,12 @@ $white: #fff;
 }
 
 .addBtn {
-  background-color: $gray-primary;
+  background-color: vars.$primary-color;
   padding: 10px;
   width: 100%;
   font-size: 14px;
   font-weight: 500;
-  color: $white;
+  color: vars.$white-color;
 
   border: none;
   cursor: pointer;
@@ -132,8 +128,8 @@ $white: #fff;
   height: 40px;
   flex-shrink: 0;
 
-  border: 1px solid $gray-icons;
-  background-color: $white;
+  border: 1px solid vars.$icons-color;
+  background-color: vars.$white-color;
   cursor: pointer;
 }
 
