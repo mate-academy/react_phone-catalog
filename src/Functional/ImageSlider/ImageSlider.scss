@@ -51,30 +51,33 @@
   }
 
   &-button-prev,
-  &-button-next {
-    width: 32px;
-    min-width: 32px;
-    flex-shrink: 0;
-    border: 1px solid #3B3E4A;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: #F1F2F9;
-    background-color: #161827;
-    transition: border-color 0.3s ease;
-    font-size: 16px;
-    padding: 0;
+&-button-next {
+  width: 32px;
+  min-width: 32px;
+  flex-shrink: 0;
+  border: 1px solid #3B3E4A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #161827;
+  transition: border-color 0.3s ease;
+  padding: 0;
 
-    &:hover {
-      border-color: #F1F2F9;
-    }
-
-    &:active {
-      background-color: #323242;
-      border-color: #F1F2F9;
-    }
+  img {
+    width: 16px;
+    height: 16px;
   }
+
+  &:hover {
+    border-color: #F1F2F9;
+  }
+
+  &:active {
+    background-color: #323242;
+    border-color: #F1F2F9;
+  }
+}
 
   .swiper-pagination {
     bottom: 16px;

@@ -18,7 +18,7 @@ export default function SliderSwiper() {
     <div className="swiper--top">
       <div className="swiper--top__conteiner">
         <button className="swiper--top-button-prev" onClick={handlePrevSlide}>
-          {'<'}
+          <img src="./icons/arrow-left-small.svg" alt="prev" />
         </button>
 
         <div className="swiper--top__images">
@@ -45,7 +45,7 @@ export default function SliderSwiper() {
         </div>
 
         <button className="swiper--top-button-next" onClick={handleNextSlide}>
-          {'>'}
+          <img src="./icons/arrow-right-small.svg" alt="next" />
         </button>
       </div>
     </div>
