@@ -1,0 +1,202 @@
+@import '../../mainStyles/main';
+
+.productList {
+  min-height: calc(100vh - $headerHeightSmallScreen - $footerHeightSmallScreen);
+  padding-bottom: 56px;
+  padding-inline: 16px;
+
+  font-family: Mont, sans-serif;
+  color: $textColor;
+
+  @include on-tablet {
+    min-height: calc(100vh - $headerHeightSmallScreen - $footerHeightBigScreen);
+    padding-bottom: 64px;
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    min-height: calc(100vh - $headerHeightBigScreen - $footerHeightBigScreen);
+    padding-bottom: 81px;
+    padding-inline: 32px;
+  }
+
+  &_backContainer {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    padding-top: 25px;
+    padding-bottom: 40px;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+
+    &_img {
+      cursor: pointer;
+      display: block;
+      width: $iconWidth;
+      height: $iconHeight;
+    }
+
+    &_category {
+      display: flex;
+      align-items: flex-end;
+
+      font-size: 12px;
+      line-height: 15.34px;
+      color: $textSecondaryColor;
+      text-transform: capitalize;
+
+      &::before {
+        content: '';
+
+        display: block;
+
+        width: $iconWidth;
+        height: $iconHeight;
+        margin-right: 8px;
+
+        color: $textSecondaryColor;
+
+        background-image: url('../../images/icons/сhevron_arrow_right.svg');
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  &_title {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+    text-transform: capitalize;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &_count {
+    margin-top: 8px;
+    margin-bottom: 32px;
+    color: $textSecondaryColor;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &_list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    @include on-tablet {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include on-desktop {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+
+  &_filters {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: flex-start;
+
+    margin-bottom: 24px;
+  }
+
+  &_filterText {
+    margin-bottom: 4px;
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    color: $textSecondaryColor;
+  }
+
+  &_customDropdown {
+    cursor: pointer;
+    user-select: none;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 136px;
+    padding: 10px;
+    border: 1px solid $borderColorDark;
+
+    font-size: 14px;
+    color: $textColor;
+
+    background-color: $white;
+
+    transition: border $animation;
+
+    &:hover {
+      border-color: $textSecondaryColor;
+    }
+
+    @include on-tablet {
+      width: 176px;
+    }
+  }
+
+  &_dropdownIcon {
+    display: inline-block;
+
+    width: $iconWidth;
+    height: $iconHeight;
+    margin-left: 8px;
+
+    background-image: url('../../images/icons/chevron_arrow_down.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &_dropdownIcon.open {
+    transform: rotate(180deg);
+  }
+
+  &_dropdownMenu {
+    position: absolute;
+    z-index: 1000;
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+    margin-top: 4px;
+    padding: 5px 0;
+    border: 1px solid $borderColorDark;
+
+    background-color: $white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &_dropdownItem {
+    cursor: pointer;
+    user-select: none;
+
+    padding: 8px 16px;
+
+    font-size: 14px;
+    color: $textSecondaryColor;
+
+    &:hover {
+      color: $textColor;
+      background-color: #fafbfc;
+    }
+  }
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20vh;
+}

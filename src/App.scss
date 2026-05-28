@@ -1,1 +1,21 @@
-// not empty
+@import './styles/variables';
+@import './styles/mixins';
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+}

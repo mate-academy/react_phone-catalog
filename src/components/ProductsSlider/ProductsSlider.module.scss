@@ -1,0 +1,105 @@
+@import '/src/styles/mixins';
+@import '/src/styles/variables';
+@import '/src/styles/fonts';
+
+.swiper {
+  &__slide {
+    width: auto;
+  }
+}
+
+.slider {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    max-width: 100%;
+    padding-inline: 16px;
+
+    @include on-tablet {
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      width: 1136px;
+      padding-inline: 0;
+    }
+  }
+
+  &__title {
+    display: block;
+    width: 136px;
+    margin: 0;
+
+    @include font-h2-mobile;
+
+    @include on-tablet {
+      width: 490px;
+      height: 41px;
+
+      @include font-h2;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__button {
+    @include button-style;
+
+    &--left {
+      background-image: url(/public/img/icons/icon-arrow-left.svg);
+    }
+
+    &--right {
+      background-image: url(/public/img/icons/icon-arrow-right.svg);
+    }
+  }
+
+  &__content {
+    scroll-behavior: smooth;
+
+    overflow-x: hidden;
+    display: flex;
+    gap: 24px;
+
+    box-sizing: border-box;
+    width: calc(100vw);
+    margin-top: 24px;
+    padding-left: 16px;
+
+    @include on-tablet {
+      padding-left: 24px;
+    }
+
+    @include on-desktop {
+      width: 1136px;
+      padding-inline: 0;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &__slider {
+      width: 212px;
+
+      @include on-tablet {
+        width: 237px;
+      }
+
+      @include on-desktop {
+        width: 272px;
+      }
+    }
+  }
+}
+
+.swiper-button-disabled {
+  pointer-events: none;
+  opacity: 0.3;
+}

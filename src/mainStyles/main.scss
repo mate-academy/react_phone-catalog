@@ -1,0 +1,56 @@
+@import './reset';
+@import './variables';
+@import './mixins';
+@import './container';
+@import './fonts';
+
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+}
+
+.slick-track {
+  height: 189px;
+}
+
+main {
+  width: 100%;
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.swiper {
+  display: flex !important;
+}
+
+.swiper-pagination {
+  bottom: -27px !important;
+}
+
+.swiper-pagination-bullet {
+  width: 14px !important;
+  height: 4px !important;
+  border-radius: 0 !important;
+}
+
+.swiper-pagination-bullet:hover {
+  cursor: pointer;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $textColor !important;
+}

@@ -1,66 +1,34 @@
-import footer from './Footer.module.scss';
-
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import cn from 'classnames';
-import { ScrollToSectContext } from '../../contexts/ScrollToSectContext';
+import styles from '/src/components/Footer/Footer.module.scss';
 
 export const Footer = () => {
-  const { scrollToSect } = useContext(ScrollToSectContext);
-
   return (
-    <footer className={footer.footer}>
-      <div className="frame">
-        <div className="container">
-          <div className={footer.footer__content}>
-            <div className={footer.footer__logo__container}>
-              <Link
-                to="/"
-                className={footer.footer__logo}
-                onClick={() => scrollToSect('top')}
-              ></Link>
-            </div>
+    <footer className={styles.footer}>
+      <img src="./img/logo.svg" alt="logo" className={styles.footer__logo} />
 
-            <nav className={cn(footer.footer__nav, footer.nav)}>
-              <ul className={footer.nav__list}>
-                <li className={footer.nav__item}>
-                  <Link
-                    to="https://github.com/PolianskyiDmytro/react_phone-catalog"
-                    target="_blank"
-                    className={footer.nav__link}
-                  >
-                    Github
-                  </Link>
-                </li>
-                <li className={footer.nav__item}>
-                  <Link
-                    to="https://polianskyidmytro.github.io/PolianskyiDmytroCV/"
-                    target="_blank"
-                    className={footer.nav__link}
-                  >
-                    Contacts
-                  </Link>
-                </li>
-                <li className={footer.nav__item}>
-                  <Link
-                    to="https://regulatoryinfo.apple.com/regulatorydata"
-                    target="_blank"
-                    className={footer.nav__link}
-                  >
-                    rights
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-            <button
-              type="button"
-              className={footer['footer__to-top']}
-              onClick={() => scrollToSect('top')}
-            >
-              Back to top
-            </button>
-          </div>
-        </div>
+      <ul className={styles.footer__list}>
+        <li className={styles.footer__item}>
+          <a href="#" className={styles.footer__link}>
+            Github
+          </a>
+        </li>
+        <li className={styles.footer__item}>
+          <a href="#" className={styles.footer__link}>
+            Contacts
+          </a>
+        </li>
+        <li className={styles.footer__item}>
+          <a href="#" className={styles.footer__link}>
+            Rights
+          </a>
+        </li>
+      </ul>
+
+      <div className={styles.footer__back}>
+        <p className={styles.footer__back__text}>Back to top</p>
+        <button
+          className={styles.footer__back__button}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        ></button>
       </div>
     </footer>
   );

@@ -1,0 +1,363 @@
+@import '../../../mainStyles/main';
+
+.cart {
+  min-height: calc(100vh - $headerHeightSmallScreen - $footerHeightSmallScreen);
+  padding-bottom: 56px;
+  padding-inline: 16px;
+
+  font-family: Mont, sans-serif;
+  color: $textColor;
+
+  @include on-tablet {
+    min-height: calc(100vh - $headerHeightSmallScreen - $footerHeightBigScreen);
+    padding-bottom: 64px;
+    padding-inline: 0;
+  }
+
+  @include on-desktop {
+    min-height: calc(100vh - $headerHeightBigScreen - $footerHeightBigScreen);
+  }
+
+  &_backContainer {
+    padding-top: 25px;
+    padding-bottom: 16px;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+  }
+
+  &_backText {
+    display: flex;
+    align-items: flex-end;
+
+    max-width: fit-content;
+
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $textSecondaryColor;
+
+    &::before {
+      content: '';
+
+      display: block;
+
+      width: $iconWidth;
+      height: $iconHeight;
+
+      background-image: url('../../../images/icons/chevron_arrow_left.svg');
+      background-repeat: no-repeat;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: $textColor;
+    }
+  }
+
+  &_title {
+    margin-bottom: 32px;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &_emptyImg {
+    display: block;
+
+    width: 100%;
+    max-width: 90%;
+    height: auto;
+    max-height: 400px;
+    margin: 0 auto;
+
+    object-fit: contain;
+
+    @include on-tablet {
+      max-width: 500px;
+    }
+
+    @include on-desktop {
+      max-width: 600px;
+    }
+  }
+
+  &_container {
+    @include on-desktop {
+      display: flex;
+      padding-bottom: 16px;
+    }
+  }
+
+  &_list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &_item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    padding: 16px;
+    border: 1px solid $borderColor;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 0;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 24px;
+    }
+  }
+
+  &_containerDetails {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+&_delete {
+  content: url('../../../images/icons/close.svg');
+
+  display: inline-block;
+
+  width: 9.33px;
+  height: 9.33px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  transition: all $animation;
+
+  &:hover {
+    cursor: pointer;
+    transform: $standartScale;
+  }
+
+  @include on-tablet {
+    margin-right: 8px;
+  }
+}
+
+&_img {
+  display: block;
+
+  width: 80px;
+  height: 80px;
+
+  object-fit: contain;
+
+  transition: all $animation;
+
+  &:hover {
+    cursor: pointer;
+    transform: $standartScale;
+  }
+}
+
+&_name {
+  width: 100%;
+
+  font-size: 14px;
+  line-height: 21px;
+  color: $textColor;
+
+  transition: all $animation;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  @include on-tablet {
+    margin-right: 24px;
+  }
+}
+
+&_containerCountPrice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+&_buttons {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+}
+
+&_buttonSubtract {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: $buttonWidth;
+  height: $buttonHeight;
+  border: 1px solid $borderColorDark;
+
+  background-color: $white;
+
+  transition: all $animation;
+
+  &::after {
+    content: '';
+
+    display: block;
+
+    width: $iconWidth;
+    height: $iconHeight;
+
+    background-image: url('../../../images/icons/minus.svg');
+    background-size: cover;
+  }
+
+  &:hover {
+    box-shadow: $boxShadowHover;
+  }
+
+  &:disabled {
+    cursor: auto;
+    border: 1px solid $borderColor;
+
+    &::after {
+      background-image: url('../../../images/icons/minus_grey_icon.png');
+    }
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
+
+&_buttonAdd {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: $buttonWidth;
+  height: $buttonHeight;
+  border: 1px solid $borderColorDark;
+
+  background-color: $white;
+
+  transition: all $animation;
+
+  &::after {
+    content: '';
+
+    display: block;
+
+    width: $iconWidth;
+    height: $iconHeight;
+
+    background-image: url('../../../images/icons/plus.svg');
+    background-size: cover;
+  }
+
+  &:hover {
+    box-shadow: $boxShadowHover;
+  }
+}
+
+&_count {
+  min-width: 32px;
+  text-align: center;
+}
+
+&_price {
+  min-width: 123px;
+
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 30.8px;
+  text-align: right;
+}
+
+&_order {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  height: 190px;
+  margin-top: 32px;
+  padding: 24px;
+  border: 1px solid $borderColor;
+
+  @include on-desktop {
+    max-width: 368px;
+    margin: 0;
+    margin-left: 16px;
+  }
+
+  &_price {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+    color: $textColor;
+  }
+
+  &_totalPrice {
+    font-size: 14px;
+    line-height: 21px;
+    color: $textSecondaryColor;
+  }
+}
+
+&_checkout {
+  cursor: pointer;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 48px;
+  margin-top: 32px;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: $white;
+
+  background-color: $textColor;
+
+  transition: all $animation;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: -16px;
+    right: 0;
+    left: 0;
+
+    height: 1px;
+
+    background-color: $borderColor;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+}
+}

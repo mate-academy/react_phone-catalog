@@ -1,0 +1,191 @@
+@import '../../../src/mainStyles/main';
+
+.phones {
+  box-sizing: border-box;
+  width: 1200px;
+  min-height: 100vh;
+  margin-top: 24px;
+
+  &_card {
+    display: flex;
+    flex-flow: column nowrap;
+
+    min-width: 212px;
+    height: 440px;
+    padding: 32px;
+    border: 1px solid $borderColor;
+
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    color: $textColor;
+
+    transition: all #{$animation};
+
+    &:hover {
+      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    @include on-tablet {
+      min-width: 237px;
+      height: 512px;
+    }
+
+    @include on-desktop {
+      max-width: 272px;
+      height: 506px;
+    }
+  }
+
+  &_img {
+    display: block;
+
+    width: 148px;
+    height: 129px;
+    margin: 0 auto;
+
+    object-fit: contain;
+
+    transition: all #{$animation};
+
+    &:hover {
+      cursor: pointer;
+      transform: $standartScale;
+    }
+
+    @include on-tablet {
+      min-width: 173px;
+      min-height: 181px;
+    }
+
+    @include on-desktop {
+      min-width: 208px;
+      min-height: 196px;
+    }
+  }
+
+  &_title {
+    min-height: 44px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
+  &_priceBlock {
+    display: flex;
+    align-items: center;
+
+    padding-bottom: 16px;
+    border-bottom: 1px solid $borderColor;
+
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+  }
+
+  &_priceFull {
+    line-height: 30.8px;
+  }
+
+  &_priceHot {
+    margin-left: 8px;
+
+    font-family: Mont, sans-serif;
+    line-height: 28.12px;
+    color: $textSecondaryColor;
+    text-decoration: line-through;
+  }
+
+  &_options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: space-between;
+
+    margin-block: 16px;
+
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $textSecondaryColor;
+  }
+
+  &_option {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_details {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $textColor;
+  }
+
+  &_buttonsContainer {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  &_buttonAdd {
+    cursor: pointer;
+
+    width: 100%;
+    height: 40px;
+
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    color: $white;
+
+    background-color: $textColor;
+
+    transition: all $animation;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+
+  &_favourites {
+    cursor: pointer;
+
+    min-width: 40px;
+    height: 40px;
+    border: 1px solid $borderColorDark;
+
+    background-color: $white;
+
+    transition: all $animation;
+
+    &:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    &_heartIcon {
+      display: block;
+
+      width: $iconWidth;
+      height: $iconHeight;
+      margin: 0 auto;
+
+      background-image: url('../../../src/images/icons/favourites_heart_like.svg');
+      background-size: cover;
+    }
+
+    &_heartIconFull {
+      display: block;
+
+      width: $iconWidth;
+      height: $iconHeight;
+      margin: 0 auto;
+
+      background-image: url('../../../src/images/icons/favourites_filled_heart_like.svg');
+      background-size: cover;
+    }
+  }
+}
+
+.added {
+  border: 1px solid $borderColor;
+  color: $whiteGreen;
+  background-color: $white;
+}

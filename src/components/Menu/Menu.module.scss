@@ -1,132 +1,174 @@
-@import '../../style/main';
+@import '../../styles/mixins';
+@import '../../styles/variables';
+@import '../../styles/fonts';
 
 .menu {
-  background-color: $header-footer-bg-color;
-  margin: 0;
-  padding: 0;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  right: 0;
+  left: 0;
 
-  &__content {
-    height: calc(100vh - $header-height-tablet-mobile - $actions-height - 24px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100vh;
+
+  background-color: $white-color;
+
+  @include on-tablet {
+    pointer-events: none;
+    opacity: 0;
   }
-}
 
-.nav {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  margin-top: 24px;
+  &__nav {
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: $header-height-mobile;
+
+    box-shadow: 0 1px 0 0 #E2E6E9;
+
+    &__logo {
+      padding-block: 13px;
+      padding-inline: 16px;
+
+      &__img {
+        display: block;
+        width: 64px;
+        height: 22px;
+      }
+    }
+
+    &__button {
+      display: block;
+
+      width: $header-height-mobile;
+      height: $header-height-mobile;
+      border: 0;
+
+      background-color: $white-color;
+      background-repeat: no-repeat;
+      background-position: center;
+      box-shadow: -1px 0 0 0 #E2E6E9;
+
+      &__icon {
+        width: 16px;
+        height: 16px;
+
+        @include hover(transform, scale(1.1));
+      }
+    }
+  }
 
   &__list {
-    padding: 0;
-    margin: 0;
-    list-style: none;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     gap: 16px;
-  }
-
-  &__item {
-    display: flex;
-  }
-
-  &__link {
-    text-decoration: none;
-    color: $secondary-color;
-    font-weight: 800;
-    font-size: 12px;
-    letter-spacing: 4%;
-    text-transform: uppercase;
-    display: flex;
-    line-height: 27px;
-  }
-}
-
-.actions {
-  margin: 0;
-  padding: 0;
-  border: 1px solid $shadow-color;
-  box-sizing: border-box;
-  height: $actions-height;
-
-  &__list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-  }
-
-  &__item {
-    grid-column: span 1;
-  }
-
-  &__link {
-    display: flex;
-    background-size: 16px;
-    background-repeat: no-repeat;
-    background-position: center;
     align-items: center;
     justify-content: center;
-    height: 62px;
-    box-sizing: border-box;
-    padding: 0;
-    border: none;
 
-    &__fav {
-      background-image: url(/img/header/favourites.svg);
+    margin: 0;
+    padding-top: 24px;
+    padding-inline: 0;
+
+    list-style-type: none;
+
+    &__item {
+      display: flex;
+      height: 100%;
     }
 
-    &__cart {
-      background-image: url(/img/header/shopping-bag.svg);
-      box-shadow: -1px 0 0 0 $shadow-color;
+    &__link {
+      position: relative;
+
+      display: flex;
+
+      padding-block: 8px;
+
+      color: $secondary-color;
+      text-decoration: none;
+
+      @include font-uppercase;
+
+      &--active {
+        color: $primary-color;
+
+        &::after {
+          content: '';
+
+          position: absolute;
+          bottom: 0;
+
+          width: 100%;
+          height: 3px;
+
+          background-color: $primary-color;
+
+          transition: background-color 0.3s;
+        }
+      }
+
+      &:hover {
+        color: $primary-color;
+      }
     }
   }
-}
 
-.link {
-  &--active {
-    color: $main-color;
-    position: relative;
+  &__buttons {
+    position: fixed;
+    bottom: 0;
+    left: 0;
 
-    &::after {
-      position: absolute;
-      content: '';
-      display: block;
-      left: 0;
-      bottom: 0;
-      height: 3px;
-      width: 100%;
-      background-color: $main-color;
-    }
-  }
-}
-
-.counter {
-  padding: 0;
-  margin: 0;
-  font-weight: 400;
-  font-size: 9px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 14px;
-  height: 14px;
-  background-color: $button-color;
-  border: 1px solid $header-footer-bg-color;
-  border-radius: 14px;
-  color: $header-footer-bg-color;
-
-  &__container {
-    height: 28px;
-    width: 28px;
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
+
+    width: 100%;
+    border-top: 1px solid #e2e6e9;
+  }
+
+  &__button {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    width: 50vw;
+    height: 64px;
+
+    background-color: $white-color;
+
+    &:last-child {
+      border-left: 1px solid #e2e6e9;
+    }
+
+    &--active {
+      position: relative;
+
+      &::after {
+      content: '';
+
+      position: absolute;
+      bottom: 0;
+
+      width: 100%;
+      height: 3px;
+
+      background-color:$primary-color;
+      }
+    }
+
+    &__icon {
+      width: 16px;
+      height: 16px;
+
+      @include hover(transform, scale(1.1));
+    }
   }
 }

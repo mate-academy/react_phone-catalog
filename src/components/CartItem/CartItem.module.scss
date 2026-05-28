@@ -1,0 +1,137 @@
+@import '/src/styles/mixins';
+@import '/src/styles/variables';
+@import '/src/styles/fonts';
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  box-sizing: border-box;
+  width: 288px;
+  padding: 16px;
+  border: 1px solid $elements-color;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 24px;
+    width: 592px;
+  }
+
+  @include on-desktop {
+    width: 752px;
+  }
+
+  &__firstRow {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__buttonDelete {
+    cursor: pointer;
+
+    width: 16px;
+    height: 16px;
+    border: 0;
+
+    opacity: 0.3;
+    background-color: transparent;
+    background-image: url('../../../public/img/icons/icon-close.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  &__link {
+    cursor: pointer;
+
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  &__name {
+    width: 128px;
+
+    @include font-body;
+
+    color: $primary-color;
+
+    @include on-tablet {
+      width: 176px;
+    }
+
+    @include on-desktop {
+      width: 336px;
+    }
+  }
+
+  &__secondRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      gap: 24px;
+      justify-content: center;
+    }
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 96px;
+  }
+
+  &__button {
+    @include button-style;
+
+    &--decrease {
+      background-image: url('/img/icons/icon-minus.svg');
+
+      &:disabled {
+        opacity: 0.3;
+      }
+    }
+
+    &--increase {
+      background-image: url('../../../public/img/icons/icon-plus.svg');
+    }
+  }
+
+  &__itemQuantity {
+    @include font-body;
+
+    color: black;
+  }
+
+  &__totalPrice {
+    display: flex;
+    justify-content: end;
+    width: 80px;
+    color: $primary-color;
+
+    @include font-h3;
+  }
+}
