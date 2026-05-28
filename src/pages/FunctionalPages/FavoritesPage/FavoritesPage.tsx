@@ -73,7 +73,7 @@ export const FavoritesPage = () => {
         <img src="./icons/home.svg" alt="Home" className="favorites__breadcrumbs-home" />
       </Link>
 
-      <img src="./icons/arrow-right.svg" alt="arrow" className="favorites__breadcrumbs-arrow" />
+      <img src="./icons/arrow-right-small-white.svg" alt="arrow" className="favorites__breadcrumbs-arrow" />
 
       <span className="favorites__breadcrumbs-current">
         Favourites
