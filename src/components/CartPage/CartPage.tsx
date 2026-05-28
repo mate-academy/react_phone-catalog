@@ -31,7 +31,7 @@ export const CartPage = () => {
       <div className="cart-page__empty">
         <img
           className="cart-page__empty-image"
-          src="/img/cart-is-empty.png"
+          src="img/cart-is-empty.png"
           alt="Cart is empty"
         />
 
@@ -61,14 +61,14 @@ export const CartPage = () => {
           className="cart-page__back-icon cart-page__back-icon--default"
           src={
             theme === 'dark'
-              ? '/img/icons/arrow-left.svg'
-              : '/img/icons-light/arrow-left-light.svg'
+              ? 'img/icons/arrow-left.svg'
+              : 'img/icons-light/arrow-left-light.svg'
           }
           alt="Back arrow"
         />
         <img
           className={'cart-page__back-icon ' + 'cart-page__back-icon--hover'}
-          src="/img/icons/arrow-left_hover.svg"
+          src="img/icons/arrow-left_hover.svg"
           alt="Back arrow"
         />
         Back

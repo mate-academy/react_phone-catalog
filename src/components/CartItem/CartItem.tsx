@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import { CartItem as CartItemType } from '../../types/CartItem';
 import './CartItem.scss';
 import { ThemeContext } from '../../context/ThemeContext';
+import { getImageUrl } from '../../utils/getImageUrl';
+import { Link } from 'react-router-dom';
 
 type Props = {
   item: CartItemType;
@@ -24,20 +26,24 @@ export const CartItem = ({ item, onRemove, onIncrease, onDecrease }: Props) => {
         <img
           src={
             theme === 'dark'
-              ? '/img/icons/close.svg'
-              : '/img/icons-light/close-light.svg'
+              ? 'img/icons/close.svg'
+              : 'img/icons-light/close-light.svg'
           }
           alt="Cross icon"
         />
       </button>
 
-      <img
-        src={`/${product.image}`}
-        alt={product.name}
-        className="cart-item__image"
-      />
+      <Link to={`/product/${product.itemId}`}>
+        <img
+          src={getImageUrl(product.image)}
+          alt={product.name}
+          className="cart-item__image"
+        />
+      </Link>
 
-      <h3 className="cart-item__title">{product.name}</h3>
+      <Link to={`/product/${product.itemId}`} className="cart-item__title">
+        {product.name}
+      </Link>
 
       <div className="cart-item__quantity">
         <button

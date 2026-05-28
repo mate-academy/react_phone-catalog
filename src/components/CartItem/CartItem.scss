@@ -39,9 +39,14 @@
 
   &__title {
     color: var(--color-primary);
+    text-decoration: none;
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
+
+    &:hover {
+      color: var(--color-accent);
+    }
   }
 
   &__quantity {

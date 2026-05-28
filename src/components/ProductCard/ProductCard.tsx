@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { FavoritesContext } from '../../context/FavoritesContext';
 import { ThemeContext } from '../../context/ThemeContext';
+import { getImageUrl } from '../../utils/getImageUrl';
 
 type Props = {
   product: Product;
@@ -22,7 +23,7 @@ export const ProductCard = ({ product }: Props) => {
     <article className="product-card">
       <Link to={`/product/${product.itemId}`} className="product-card__link">
         <img
-          src={`/${product.image}`}
+          src={getImageUrl(product.image)}
           alt={product.name}
           className="product-card__image"
         />
@@ -76,10 +77,10 @@ export const ProductCard = ({ product }: Props) => {
           <img
             src={
               isProductFavorite
-                ? '/img/icons/favourites-filled.svg'
+                ? 'img/icons/favourites-filled.svg'
                 : theme === 'dark'
-                  ? '/img/icons/favourites.svg'
-                  : '/img/icons-light/favourites-light.svg'
+                  ? 'img/icons/favourites.svg'
+                  : 'img/icons-light/favourites-light.svg'
             }
             alt="Favorite icon"
           />

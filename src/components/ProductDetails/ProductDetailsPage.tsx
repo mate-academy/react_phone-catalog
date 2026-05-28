@@ -17,6 +17,7 @@ import { FavoritesContext } from '../../context/FavoritesContext';
 import { findProductVariant } from '../../utils/findProductVariant';
 import { Loader } from '../Loader';
 import { ThemeContext } from '../../context/ThemeContext';
+import { getImageUrl } from '../../utils/getImageUrl';
 
 export const ProductDetailsPage = () => {
   //#region useSmth
@@ -142,8 +143,8 @@ export const ProductDetailsPage = () => {
           }
           src={
             theme === 'dark'
-              ? '/img/icons/arrow-left.svg'
-              : '/img/icons-light/arrow-left-light.svg'
+              ? 'img/icons/arrow-left.svg'
+              : 'img/icons-light/arrow-left-light.svg'
           }
           alt="Back arrow"
         />
@@ -151,7 +152,7 @@ export const ProductDetailsPage = () => {
           className={
             'product-details__back-icon ' + 'product-details__back-icon--hover'
           }
-          src="/img/icons/arrow-left_hover.svg"
+          src="img/icons/arrow-left_hover.svg"
           alt="Back arrow"
         />
         Back
@@ -173,13 +174,17 @@ export const ProductDetailsPage = () => {
                       selectedImage === image,
                   })}
                 >
-                  <img src={`/${image}`} alt={product.name} width={60} />
+                  <img src={getImageUrl(image)} alt={product.name} width={60} />
                 </button>
               ))}
             </div>
 
             <div className="product-details__main-image">
-              <img src={`/${selectedImage}`} alt={product.name} width={300} />
+              <img
+                src={getImageUrl(selectedImage)}
+                alt={product.name}
+                width={300}
+              />
             </div>
           </div>
 
@@ -272,10 +277,10 @@ export const ProductDetailsPage = () => {
                 <img
                   src={
                     isProductFavorite
-                      ? '/img/icons/favourites-filled.svg'
+                      ? 'img/icons/favourites-filled.svg'
                       : theme === 'dark'
-                        ? '/img/icons/favourites.svg'
-                        : '/img/icons-light/favourites-light.svg'
+                        ? 'img/icons/favourites.svg'
+                        : 'img/icons-light/favourites-light.svg'
                   }
                   alt="Favorite icon"
                 />

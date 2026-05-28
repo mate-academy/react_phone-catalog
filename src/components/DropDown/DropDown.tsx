@@ -50,7 +50,7 @@ export const DropDown = ({ value, options, onChange }: Props) => {
 
         <img
           className="dropdown__arrow"
-          src={isOpen ? '/img/icons/arrow-up.svg' : '/img/icons/arrow-down.svg'}
+          src={isOpen ? 'img/icons/arrow-up.svg' : 'img/icons/arrow-down.svg'}
           alt="Dropdown arrow"
         />
       </button>

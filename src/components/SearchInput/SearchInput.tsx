@@ -25,8 +25,8 @@ export const SearchInput = ({ value, onChange, onClose }: Props) => {
         <img
           src={
             theme === 'dark'
-              ? '/img/icons/close.svg'
-              : '/img/icons-light/close-light.svg'
+              ? 'img/icons/close.svg'
+              : 'img/icons-light/close-light.svg'
           }
           alt="Close search"
         />

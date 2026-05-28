@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import './PicturesSlides.scss';
 
 const images = [
-  '/img/banner-phones.svg',
-  '/img/banner-tablets.png',
-  '/img/banner-accessories.png',
+  'img/banner-phones.svg',
+  'img/banner-tablets.png',
+  'img/banner-accessories.png',
 ];
 
 export const PicturesSlides = () => {
@@ -46,7 +46,7 @@ export const PicturesSlides = () => {
             {activeIndex === 0 && (
               <source
                 media="(max-width: 639px)"
-                srcSet="/img/banner-mobile.svg"
+                srcSet="img/banner-mobile.svg"
               />
             )}
 

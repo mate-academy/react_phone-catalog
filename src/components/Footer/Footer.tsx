@@ -19,8 +19,8 @@ export const Footer = () => {
         <img
           src={
             theme === 'dark'
-              ? '/img/icons/logo.svg'
-              : '/img/icons-light/logo-light.svg'
+              ? 'img/icons/logo.svg'
+              : 'img/icons-light/logo-light.svg'
           }
           alt="Logo"
         />
@@ -56,8 +56,8 @@ export const Footer = () => {
           className="footer__button-icon"
           src={
             theme === 'dark'
-              ? '/img/icons/arrow-up.svg'
-              : '/img/icons-light/arrow-up-light.svg'
+              ? 'img/icons/arrow-up.svg'
+              : 'img/icons-light/arrow-up-light.svg'
           }
           alt="Arrow up"
         />

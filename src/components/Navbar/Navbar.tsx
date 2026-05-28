@@ -48,8 +48,8 @@ export const Navbar = () => {
             <img
               src={
                 theme === 'dark'
-                  ? '/img/icons/logo.svg'
-                  : '/img/icons-light/logo-light.svg'
+                  ? 'img/icons/logo.svg'
+                  : 'img/icons-light/logo-light.svg'
               }
               alt="Logo"
             />
@@ -120,8 +120,8 @@ export const Navbar = () => {
               <img
                 src={
                   theme === 'dark'
-                    ? '/img/icons/search.svg'
-                    : '/img/icons-light/search-light.svg'
+                    ? 'img/icons/search.svg'
+                    : 'img/icons-light/search-light.svg'
                 }
                 alt="Search"
               />
@@ -131,8 +131,8 @@ export const Navbar = () => {
             <img
               src={
                 theme === 'dark'
-                  ? '/img/icons/sun.svg'
-                  : '/img/icons-light/moon.svg'
+                  ? 'img/icons/sun.svg'
+                  : 'img/icons-light/moon.svg'
               }
               alt="Toggle theme"
             />
@@ -146,8 +146,8 @@ export const Navbar = () => {
             <img
               src={
                 theme === 'dark'
-                  ? '/img/icons/favourites.svg'
-                  : '/img/icons-light/favourites-light.svg'
+                  ? 'img/icons/favourites.svg'
+                  : 'img/icons-light/favourites-light.svg'
               }
               alt="Favourites icon"
             />
@@ -164,8 +164,8 @@ export const Navbar = () => {
             <img
               src={
                 theme === 'dark'
-                  ? '/img/icons/cart.svg'
-                  : '/img/icons-light/cart-light.svg'
+                  ? 'img/icons/cart.svg'
+                  : 'img/icons-light/cart-light.svg'
               }
               alt="Shopping cart icon"
             />
@@ -183,11 +183,11 @@ export const Navbar = () => {
               src={
                 isMenuOpen
                   ? theme === 'dark'
-                    ? '/img/icons/close.svg'
-                    : '/img/icons-light/close-light.svg'
+                    ? 'img/icons/close.svg'
+                    : 'img/icons-light/close-light.svg'
                   : theme === 'dark'
-                    ? '/img/icons/menu.svg'
-                    : '/img/icons-light/menu-light.svg'
+                    ? 'img/icons/menu.svg'
+                    : 'img/icons-light/menu-light.svg'
               }
               alt="Menu"
             />
@@ -240,8 +240,8 @@ export const Navbar = () => {
               <img
                 src={
                   theme === 'dark'
-                    ? '/img/icons/favourites.svg'
-                    : '/img/icons-light/favourites-light.svg'
+                    ? 'img/icons/favourites.svg'
+                    : 'img/icons-light/favourites-light.svg'
                 }
                 alt="Favorites"
               />
@@ -255,8 +255,8 @@ export const Navbar = () => {
               <img
                 src={
                   theme === 'dark'
-                    ? '/img/icons/cart.svg'
-                    : '/img/icons-light/cart-light.svg'
+                    ? 'img/icons/cart.svg'
+                    : 'img/icons-light/cart-light.svg'
                 }
                 alt="Cart"
               />
