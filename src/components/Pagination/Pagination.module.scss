@@ -1,0 +1,63 @@
+@import '../../styles/variable';
+@import '../../styles/mixins';
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  margin-bottom: 64px;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+  .paginationItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border: 1px $border-color solid;
+    cursor: pointer;
+    list-style: none;
+}
+
+.paginationItem:hover {
+  border-color: rgb(16, 9, 0);
+}
+
+.prev {
+  margin-right: 8px;
+}
+
+.next {
+  margin-left: 8px;
+}
+
+.next, .prev {
+  border: 1px $gray-icons solid;
+}
+
+.paginationLink {
+  text-decoration: none;
+  color: $primary-gray;
+  cursor: pointer;
+}
+
+.paginationItem.active {
+  background-color: $primary-gray;
+}
+
+.paginationLink.active {
+  color: $white-color;
+}
+
+.disabled {
+  pointer-events: none;
+  color: $gray-icons;
+}

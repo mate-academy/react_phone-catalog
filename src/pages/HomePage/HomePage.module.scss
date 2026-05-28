@@ -1,0 +1,108 @@
+@import '../../styles/font';
+@import '../../styles/variable';
+@import '../../styles/mixins';
+
+
+
+.container {
+  width: 100%;
+  max-width: 1136px;
+  margin: 0 auto;
+}
+
+.visually__hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.title {
+  height: 82px;
+  min-width: 288px;
+  width: auto;
+  margin: 24px 16px;
+
+  background-color: rgb(232, 88, 222);
+
+  @include h1;
+
+  color: $primary-black-color;
+
+  @include on-tablet {
+    max-width: 592px;
+    height: 112px;
+    margin: 32px 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    height: 56px;
+    margin: 56px auto;
+  }
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+   @include on-desktop {
+    gap: 80px;
+  }
+}
+
+.banner {
+  background-color: rgb(91, 17, 51);
+}
+
+.new__models {
+  background-color: rgb(92, 251, 148);
+}
+
+.sliderPadding {
+    padding-left: $container-pading-mobile;
+
+  @include on-tablet {
+    padding-left: $container-pading-tablet;
+  }
+
+  @include on-desktop {
+    padding-left: 0;
+  }
+}
+
+
+.hot__prices {
+  background-color: darkcyan;
+  width: 100%;
+  max-width: 1136px;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  margin-bottom: 64px;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.shop__category {
+  background-color: aqua;
+  padding-inline: $container-pading-mobile;
+
+  @include on-tablet {
+    padding-inline: $container-pading-tablet;
+  }
+
+  @include on-desktop {
+    padding-inline: 0;
+  }
+}
+

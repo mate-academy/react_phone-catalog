@@ -1,0 +1,34 @@
+@import '../../styles/font.scss';
+
+.sortSelect {
+  display: flex;
+  flex-direction: column;
+}
+
+.sort {
+  @include spec-bold;
+}
+
+.select {
+  border: 1px $gray-icons solid;
+  border-radius: 8px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.select:hover {
+  border-color: black;
+}
+
+.select:focus {
+  border-color: black;
+}
+
+option {
+  color: $gray-secondary-color;
+}
+
+.dropDownContainer {
+  position: relative;
+}
+

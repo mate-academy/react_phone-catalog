@@ -1,0 +1,22 @@
+@import '../../styles/mixins';
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+
+  column-gap: 16px;
+  row-gap: 40px;
+
+  max-width: 100%;
+
+  @include on-desktop {
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  }
+}
+
+
+
+// .item {
+//   max-width: 288px;
+//   height: 440px;
+// }

@@ -1,0 +1,66 @@
+@import '../../styles/variable';
+@import '../../styles/font';
+@import '../../styles/mixins';
+
+.container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 24px;
+  line-height: 15px;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+  height: 16px;
+  background-color: aquamarine;
+
+  @include small-text;
+}
+
+.crumb {
+  display: flex;
+  color: $primary-gray;
+  text-decoration: none;
+}
+
+.items {
+  display: flex;
+  align-items: center;
+  line-height: 100%;
+  min-width: 0;
+}
+
+.crumbLast {
+  color: $gray-secondary-color;
+  min-width: 0;
+
+  // /!!!!!! три крапки
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.next {
+  margin-right: 8px;
+  color: $gray-secondary-color;
+}
+
+.Prev {
+  margin-inline: 5px;
+}
+
+.back {
+   cursor: pointer;
+   display: flex;
+   flex-direction: row;
+   gap: 4px;
+   margin-top: 24px;
+}
+
+.backButton {
+  border: none;
+  background-color: white;
+  padding: 0;
+  cursor: pointer;
+  color: $gray-secondary-color;
+}
+

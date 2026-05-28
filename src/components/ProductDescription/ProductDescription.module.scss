@@ -1,0 +1,40 @@
+@import '../../styles/font';
+@import '../../styles/variable';
+
+
+.title {
+  margin: 0;
+
+  @include h3;
+}
+
+.titleContainer {
+  padding-bottom: 16px;
+
+  border-bottom: 1px $border-color solid;
+  margin-bottom: 32px;
+}
+
+.paragraph {
+  color: $gray-secondary-color;
+  margin: 0;
+
+  @include bodyText14;
+}
+
+.descroptionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: green;
+}
+
+.itemTitle {
+  margin: 0;
+}
