@@ -2,15 +2,15 @@ import { NavLink } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 
-import logo from '../../api/img/Logo.png';
+import logo from '../../api/img/Logo.svg';
 
-import heartIcon from '../../api/icons/heart.png';
+import heartIcon from '../../api/icons/heart.svg';
 
-import cartIcon from '../../api/icons/cart.png';
+import cartIcon from '../../api/icons/cart.svg';
 
-import burgerIcon from '../../api/buttoms/Menu.png';
+import burgerIcon from '../../api/buttoms/Menu.svg';
 
-import closeIcon from '../../api/buttoms/Close.png';
+import closeIcon from '../../api/buttoms/Close.svg';
 
 import { useGlobal } from '../CartContext/CartContext';
 

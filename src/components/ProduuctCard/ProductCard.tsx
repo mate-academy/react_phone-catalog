@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './ProductCard.module.scss';
 import { Product } from '../../modules/HomePage/HomePage';
-import HeartIcon from '../../api/buttoms/Addtf.png';
+import HeartIcon from '../../api/buttoms/Addtf.svg';
 import { useGlobal } from '../CartContext/CartContext';
-import like from '../../api/buttoms/Add to fovourites - Added.png';
+import like from '../../api/buttoms/Add to fovourites - Added.svg';
 import { Link } from 'react-router-dom';
 
 interface Props {

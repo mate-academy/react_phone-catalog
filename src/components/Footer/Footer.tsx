@@ -2,9 +2,9 @@ import React from 'react';
 
 import styles from './Footer.module.scss';
 
-import Up from '../../api/buttoms/up.png';
+import Up from '../../api/buttoms/up.svg';
 
-import logo from '../../api/img/Logo.png';
+import logo from '../../api/img/Logo.svg';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {

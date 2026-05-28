@@ -6,7 +6,7 @@ import styles from './FavoritesPage.module.scss';
 
 import { useNavigate } from 'react-router-dom';
 
-import home from '../../api/buttoms/Right.png';
+import home from '../../api/buttoms/Right.svg';
 import { ProductCard } from '../ProduuctCard/ProductCard';
 
 export const FavoritesPage: React.FC = () => {

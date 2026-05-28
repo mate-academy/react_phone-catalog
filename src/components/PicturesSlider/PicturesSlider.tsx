@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
 import styles from './PicturesSlider.module.scss';
 
 const images = [
@@ -30,24 +29,36 @@ export const PicturesSlider = () => {
   return (
     <div className={styles.picturesSlider}>
       <div className={styles.container}>
+        {/* Кнопка Влево */}
         <button className={styles.arrow} onClick={handlePrev}>
           <div className={styles.arrowIconLeft}></div>
         </button>
 
+        {/* Окно просмотра */}
         <div className={styles.window}>
-          <img
-            key={currentIndex}
-            src={images[currentIndex]}
-            alt="Banner"
-            className={styles.image}
-          />
+          {/* Лента, которая плавно двигается */}
+          <div
+            className={styles.tape}
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {images.map((src, index) => (
+              <img
+                key={index}
+                src={src}
+                alt={`Banner ${index + 1}`}
+                className={styles.image}
+              />
+            ))}
+          </div>
         </div>
 
+        {/* Кнопка Вправо */}
         <button className={styles.arrow} onClick={handleNext}>
           <div className={styles.arrowIconRight}></div>
         </button>
       </div>
 
+      {/* Точки пагинации */}
       <div className={styles.dots}>
         {images.map((_, index) => (
           <div

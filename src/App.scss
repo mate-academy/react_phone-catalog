@@ -1,5 +1,5 @@
 /// 1. Скачиваем шрифт Montserrat напрямую из Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 html {
   height: 100%;
@@ -10,7 +10,6 @@ body {
   padding: 0;
   min-height: 100vh;
 
-  // Меняем position: relative на нормальный flex, чтобы расталкивать элементы
   display: flex;
   flex-direction: column;
 
@@ -20,6 +19,9 @@ body {
   color: #fff;
   background-color: #0f1117;
   scroll-behavior: smooth;
+
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 // Добавляем стили для корневого класса из App.tsx
@@ -42,4 +44,5 @@ main {
 *::before,
 *::after {
   box-sizing: inherit;
+  font-family: 'Inter', sans-serif;
 }

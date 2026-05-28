@@ -4,9 +4,9 @@ import { CartItem, useGlobal } from '../CartContext/CartContext';
 
 import styles from './CartPage.module.scss';
 
-import home from '../../api/buttoms/Right.png';
+import home from '../../api/buttoms/Right.svg';
 
-import close from '../../api/buttoms/Close.png';
+import close from '../../api/buttoms/Close.svg';
 
 export const CartPage: React.FC = () => {
   const { cart: rawCart, updateQuantity, removeFromCart } = useGlobal();

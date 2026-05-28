@@ -3,12 +3,12 @@ import { useParams, Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import styles from './ProductDetailsPage.module.scss';
 import { useGlobal } from '../../components/CartContext/CartContext';
-import HeartIcon from '../../api/icons/heart.png';
-import like from '../../api/buttoms/Union.png';
+import HeartIcon from '../../api/icons/heart.svg';
+import like from '../../api/buttoms/Union.svg';
 import phones from '../../../src/data/phones.json';
 import tablets from '../../../src/data/tablets.json';
 import accessories from '../../../src/data/accessories.json';
-import home from '../../api/icons/Home.png';
+import home from '../../api/icons/Home.svg';
 import { ProductCard } from '../../components/ProduuctCard/ProductCard';
 
 interface ProductData {

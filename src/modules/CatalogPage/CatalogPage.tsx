@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { Product } from '../HomePage/HomePage';
 import styles from './CatalogPage.module.scss';
-import home from '../../api/icons/Home.png';
-import vector from '../../api/icons/Vector.png';
+import home from '../../api/icons/Home.svg';
+import vector from '../../api/icons/Vector.svg';
 import productsData from '../../data/products.json';
 import { ProductCard } from '../../components/ProduuctCard/ProductCard';
 import { Pagination } from '../../components/Pagination/Pagination'; // Импортируем пагинацию

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import { Product } from '../../modules/HomePage/HomePage';
 
@@ -27,10 +27,29 @@ const GlobalContext = createContext<ContextProps | undefined>(undefined);
 export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [favorites, setFavorites] = useState<Product[]>([]);
+  // 1. Инициализируем стейт из localStorage (ленивая инициализация)
+  const [favorites, setFavorites] = useState<Product[]>(() => {
+    const savedFavorites = localStorage.getItem('favorites');
 
-  const [cart, setCart] = useState<CartItem[]>([]);
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
+  });
 
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    const savedCart = localStorage.getItem('cart');
+
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+
+  // 2. Отслеживаем изменения стейтов и сохраняем их в localStorage
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
+  // --- Все твои функции остаются абсолютно без изменений ---
   const addToCart = (product: Product) => {
     setCart(prev => {
       const existing = prev.find(item => item.id === product.id);
