@@ -13,7 +13,6 @@ html {
   --h: #{$h-light};
   --text: #{$text-light};
   --line-and-border: #{$line-and-border-light};
-  --accent-invert: #{$accent-invert-light};
 
 
   //#endregion
@@ -30,7 +29,6 @@ html {
     --h: #{$h-dark};
     --text: #{$text-dark};
     --line-and-border: #{$line-and-border-dark};
-    --accent-invert:  #{$accent-invert-dark};
   }
   //#endregion
 }

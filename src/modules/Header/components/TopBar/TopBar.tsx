@@ -2,7 +2,7 @@ import { Logo } from '@/components/Logo';
 import { Nav } from '../Nav';
 import { Icon } from '@/components/Icon';
 import styles from './Topbar.module.scss';
-import { useTheme } from '@/app/providers';
+import { useTheme } from '@/app/providers/Theme/ThemeContext';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';

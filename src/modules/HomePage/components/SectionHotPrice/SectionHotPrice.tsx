@@ -108,7 +108,7 @@ export const SectionHotPrice = () => {
         </div>
       </div>
       <div className={styles.swiperContainer}>
-        <div className={styles.swiperWrapper}>
+        <div >
           <Swiper
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
@@ -141,7 +141,7 @@ export const SectionHotPrice = () => {
             ))}
 
             {loading &&
-              Array.from({ length: 10 }).map((phone, index) => {
+              Array.from({ length: 10 }).map((_, index) => {
                 return (
                   <SwiperSlide key={index} className={styles.slide}>
                     <Skeleton

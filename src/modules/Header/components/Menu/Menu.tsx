@@ -3,7 +3,6 @@ import { TopBar } from '../TopBar';
 import styles from './Menu.module.scss';
 import { Nav } from '../Nav';
 import { NavLink } from 'react-router-dom';
-import { Icon } from '@/components/Icon';
 import { useCart } from '@/app/providers/Cart';
 import { IconWithCounter } from '@/components/IconWithCounter';
 import { useFavourites } from '@/app/providers/Favorities';
