@@ -110,13 +110,28 @@
     align-items: center;
     justify-content: center;
     padding: 0 20px;
+    position: relative;
+    text-decoration: none;
 
     @include on-phone {
       display: none;
     }
-  }
 
-  &__heart {
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 3px;
+      background-color: #fff;
+      transition: width 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+
     &__top {
       position: relative;
       display: flex;
@@ -131,21 +146,12 @@
       }
     }
   }
+}
 
-  &__packet {
-    &__top {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 16px;
-      height: 16px;
-
-      img {
-        width: 16px;
-        height: 16px;
-      }
-    }
+.header__heart.is-active,
+.header__packet.is-active {
+  &::after {
+    width: 100%;
   }
 }
 

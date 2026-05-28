@@ -36,35 +36,33 @@ export const Header = () => {
         </nav>
 
         <div className="header__head--logo">
-          <div className="header__heart">
-            <Link to="/favorites" className="header__heart__top">
-              <img
-                src="./icons/heart.svg"
-                alt="Favorites"
-                className="header__heart__top__btn"
-              />
+          <NavLink
+            to="/favorites"
+            className={({ isActive }) =>
+              classNames('header__heart', { 'is-active': isActive })
+            }
+          >
+            <div className="header__heart__top">
+              <img src="./icons/heart.svg" alt="Favorites" />
               {favorites.length > 0 && (
-                <span className="cart-count cart-count--favorites">
-                  {favorites.length}
-                </span>
+                <span className="cart-count">{favorites.length}</span>
               )}
-            </Link>
-          </div>
+            </div>
+          </NavLink>
 
-          <div className="header__packet">
-            <Link to="/cart" className="header__packet__top">
-              <img
-                src="./icons/cart.svg"
-                alt="Cart"
-                className="header__packet__top__btn"
-              />
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              classNames('header__packet', { 'is-active': isActive })
+            }
+          >
+            <div className="header__packet__top">
+              <img src="./icons/cart.svg" alt="Cart" />
               {cart.length > 0 && (
-                <span className="cart-count cart-count--cart">
-                  {cart.length}
-                </span>
+                <span className="cart-count">{cart.length}</span>
               )}
-            </Link>
-          </div>
+            </div>
+          </NavLink>
 
           <div className="header__burger-wrapper">
             <div className="header__burger">
