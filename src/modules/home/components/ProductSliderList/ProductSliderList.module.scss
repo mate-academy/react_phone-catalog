@@ -1,0 +1,62 @@
+.listWrapper {
+  margin-bottom: 80px;
+  width: 100%;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  color: #f1f2f9;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.arrows {
+  display: flex;
+  gap: 16px;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0f1121;
+  border: 1px solid #3b3e4a;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  transition: background-color 0.3s;
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):hover {
+    background-color: #1e213a;
+  }
+}
+
+.sliderWindow {
+  overflow: hidden;
+  width: 100%;
+}
+
+.productSliderList {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.cardWrapper {
+  flex: 0 0 calc((100% - (16px * 3)) / 4); // Динамічний розрахунок точної ширини 4-х карток з урахуванням gap
+  min-width: 0;
+}
