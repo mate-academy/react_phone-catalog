@@ -98,29 +98,7 @@
     }
   }
 
-  a {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    align-self: stretch;
-    cursor: pointer;
-
-    &, &:link, &:visited, &:hover, &:active, &:focus {
-      text-decoration: none !important;
-      border-bottom: none !important;
-      box-shadow: none !important;
-      outline: none !important;
-      color: inherit !important;
-    }
-
-    &:hover {
-      .itemName {
-        color: #a378ff;
-        transition: color 0.2s ease;
-      }
-    }
-  }
-
+  // 1. Сначала объявляем базовые стили контента и самого имени товара
   .itemInfo {
     display: flex;
     flex: 1;
@@ -146,6 +124,30 @@
       color: #f1f2f9;
       margin: 0;
       text-decoration: none !important;
+    }
+  }
+
+  // 2. Ссылку ставим ниже, чтобы её правила для :hover корректно переопределяли свойства базового .itemName
+  a {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    cursor: pointer;
+
+    &, &:link, &:visited, &:hover, &:active, &:focus {
+      text-decoration: none !important;
+      border-bottom: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+      color: inherit !important;
+    }
+
+    &:hover {
+      .itemName {
+        color: #a378ff;
+        transition: color 0.2s ease;
+      }
     }
   }
 }

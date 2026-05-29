@@ -139,7 +139,6 @@ export const ProductDetailsPage = () => {
     let cleanPath = imagePath.replace(/^(\.\.\/|\.\/|\/)/, '');
 
     // 2. Если путь НЕ начинается с "img/", но и не содержит "api/", добавляем "img/"
-    // (Частая проблема: в общем списке товаров путь "img/...", а в детальном — просто "phones/...")
     if (!cleanPath.startsWith('img/') && !cleanPath.startsWith('api/')) {
       cleanPath = `img/${cleanPath}`;
     }
@@ -186,7 +185,13 @@ export const ProductDetailsPage = () => {
           <img src={home} alt="home" />
         </Link>
         <span>{'>'}</span>
-        <Link to={`/${productData.category}`}>{productData.category}</Link>
+        {/* ТУТ ИСПРАВЛЕНО: Преобразуем первую букву категории в заглавную */}
+        <Link to={`/${productData.category}`}>
+          {productData.category
+            ? productData.category.charAt(0).toUpperCase() +
+              productData.category.slice(1)
+            : ''}
+        </Link>
         <span>{'>'}</span>
         <p>{productData.name}</p>
       </nav>

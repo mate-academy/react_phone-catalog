@@ -120,7 +120,9 @@ export const CatalogPage: React.FC = () => {
             <img src={vector} alt="arrow" />
           </div>
           <span className={styles.currentCrumb}>
-            {category === 'phones' ? 'Phones' : category}
+            {category
+              ? category.charAt(0).toUpperCase() + category.slice(1)
+              : ''}
           </span>
         </nav>
 
