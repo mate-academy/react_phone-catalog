@@ -118,7 +118,7 @@
 
 
 
-    .add-to-cart {
+    .addToCart {
       @extend %add-to-cart;
 
       background-color: $color-accent;
@@ -134,7 +134,7 @@
       }
     }
 
-    .add-to-fav {
+    .addToFav {
       @extend %add-to-cart;
       @extend %add-to-fav;
 

@@ -11,15 +11,17 @@
 
   @include flex-center;
 
-  &:hover {
-    background-color: $icon-bg-hover;
-  }
 
   img {
     width: 16px;
     height: 16px;
     filter: invert(1);
   }
+
+  &:hover {
+    background-color: $icon-bg-hover;
+  }
+
 }
 
 
@@ -81,27 +83,90 @@
         color: $graySecondary;
       }
 
-      &_select {
+      .sort_by,
+      .items_on_page {
+        position: relative;
+      }
+
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown_header {
         @include font-buttons;
 
-        width: 135px;
-        margin-top: 4px;
-        appearance: none;
-        box-sizing: border-box;
-        padding: 12px;
+        width: 176px;
         height: 40px;
-        border: none;
+        margin-top: 4px;
+        padding: 0 12px;
         background-color: $surface_2;
+        border: none;
         color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
 
-        background-image: url('public/img/icons/Chevron_(Arrow_Down).svg');
-        background-repeat: no-repeat;
-        background-position: right 12px center;
-        background-size: 16px;
+        cursor: pointer;
 
-        
+        img {
+          width: 16px;
+          height: 16px;
+          filter: invert(1);
+        }
+
+        &:hover {
+          outline: $border-default;
+        }
+
+        &.open {
+          border-color: $color-accent;
+        }
+
+        &:hover img {
+          filter: invert(0);
+        }
+
+
+
+      }
+
+      .dropdown_list {
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        width: 100%;
+        background-color: $surface_2;
+        border: $border-default;
+        list-style: none;
+        z-index: 10;
+
+
+      }
+
+      .dropdown_item {
+        @include font-body-text;
+
+        padding: 8px 12px;
+        cursor: pointer;
+        color: $graySecondary;
+        background-color: $black;
+
+        &:hover {
+          background-color: $surface_2;
+          color: $white;
+        }
+
+        &.active {
+          color: $white;
+        }
+      }
+
+      .items_on_page .dropdown_header {
+        width: 80px;
       }
     }
+
   }
 
   .products {
@@ -145,9 +210,7 @@
         background-color: $surface_1;
         pointer-events: none;
 
-        img {
-          filter: brightness(0.5);
-        }
+        opacity: 0.5;
       }
 
     }

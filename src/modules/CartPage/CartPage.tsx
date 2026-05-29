@@ -25,8 +25,8 @@ export const CartPage = () => {
             alt="back"
           />
         </Link>
-        <Link to="/">
-          <p className={styles.breadcrumb_page}>Back</p>
+        <Link className={styles.breadcrumb_page} to="/">
+          <p>Back</p>
         </Link>
       </div>
       <p className={styles.title}>Cart</p>

@@ -1,14 +1,16 @@
 @use '../../../styles/variables.scss' as *;
 
 .isLoading {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
   width: 100%;
   aspect-ratio: 1 / 1;
-  background-color: $grayElements;
-  gap: 10px;
+
+  @media (min-width: $tablet-breakpoint) {
+    aspect-ratio: 8 / 3;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    aspect-ratio: 13 / 5;
+  }
 
   .image {
     width: 100%;
@@ -17,7 +19,6 @@
     background-image: linear-gradient(90deg, $grayElements 0, $graySecondary 40px, $grayElements 80px);
     animation: shimmer 2s infinite linear;
   }
-
 }
 
 @keyframes shimmer {
@@ -29,4 +30,3 @@
     background-position: 250px;
   }
 }
-

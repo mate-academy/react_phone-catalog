@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Product } from '../../types';
 import { getData } from '../../utils/api';
 import { BannerSlider } from '../shared/components/BannerSlider';
@@ -6,33 +6,15 @@ import styles from './HomePage.module.scss';
 import { ProductsSlider } from '../shared/components/ProductsSlider';
 import { CategoryCard } from '../shared/components/CategoryCard/CategoryCard';
 import { Errors } from '../shared/components/Errors/Errors';
+import { useAsync } from '../../hooks/useAsync';
 
 export const HomePage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const { data, isLoading, isError } = useAsync(
+    () => getData<Product[]>('products'),
+    [],
+  );
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIsError(true);
-      setIsLoading(false);
-    }, 10000);
-
-    getData<Product[]>('products')
-      .then(date => {
-        setProducts(date);
-      })
-      .catch(() => {
-        setIsError(true);
-      })
-      .finally(() => {
-        clearTimeout(timeout);
-        setIsLoading(false);
-      });
-
-    return () => clearTimeout(timeout);
-  }, []);
+  const products = data ?? [];
 
   const brandNew = [...products].sort((a, b) => b.year - a.year);
   const hotPrice = [...products].sort(

@@ -55,7 +55,7 @@ export const ProductCard = ({ product }: Props) => {
           </button>
         ) : (
           <button
-            className={styles['add-to-cart']}
+            className={styles.addToCart}
             onClick={() => {
               addToCart(product);
             }}
@@ -77,7 +77,7 @@ export const ProductCard = ({ product }: Props) => {
           </button>
         ) : (
           <button
-            className={styles['add-to-fav']}
+            className={styles.addToFav}
             onClick={() => {
               addToFavorites(product);
             }}

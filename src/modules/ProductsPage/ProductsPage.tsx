@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { getData } from '../../utils/api';
 import { Product } from '../../types';
 import styles from '../ProductsPage/ProductsPage.module.scss';
 import { ProductCard, ProductCardLoading } from '../shared/components';
 import { Errors } from '../shared/components/Errors/Errors';
+import { useAsync } from '../../hooks/useAsync';
 
 type Category = 'phones' | 'tablets' | 'accessories';
 
@@ -14,16 +15,29 @@ const categoryNames = {
   accessories: 'Accessories',
 };
 
+const perPageOptions = ['4', '8', '16', 'all'];
+const sortOptions = [
+  { value: 'age', label: 'Newest' },
+  { value: 'title', label: 'Alphabetically' },
+  { value: 'price', label: 'Cheapest' },
+];
+
 export const ProductsPage = () => {
   const location = useLocation();
   const category = location.pathname.slice(1);
   const title = categoryNames[category as Category];
 
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { data, isLoading, isError } = useAsync(
+    () =>
+      getData<Product[]>('products').then(d =>
+        d.filter(p => p.category === category),
+      ),
+    [category],
+  );
 
+  const products = data ?? [];
+
+  const [searchParams, setSearchParams] = useSearchParams();
   const sort = searchParams.get('sort') || 'age';
   const perPage = searchParams.get('perPage') || 'all';
   const page = searchParams.get('page') || '1';
@@ -54,12 +68,8 @@ export const ProductsPage = () => {
 
   const visiblePages = pages.slice(startPage - 1, endPage);
 
-  useEffect(() => {
-    getData<Product[]>('products')
-      .then(data => setProducts(data.filter(p => p.category === category)))
-      .catch(() => setIsError(true))
-      .finally(() => setIsLoading(false));
-  }, [category]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isSortOpen, setIsSortOpen] = useState(false);
 
   return (
     <div className={styles.productspage}>
@@ -84,28 +94,79 @@ export const ProductsPage = () => {
         <div className={styles.filters}>
           <div className={styles.sort_by}>
             <p className={styles.filters_title}>Sort by</p>
-            <select
-              className={styles.filters_select}
-              value={sort}
-              onChange={e => setSearchParams({ sort: e.target.value, perPage })}
+            <button
+              className={`${styles.dropdown_header} ${isSortOpen ? styles.open : ''}`}
+              onClick={() => {
+                setIsSortOpen(!isSortOpen);
+                setIsOpen(false);
+              }}
             >
-              <option value="age">Newest</option>
-              <option value="title">Alphabetically</option>
-              <option value="price">Cheapest</option>
-            </select>
+              {sortOptions.find(o => o.value === sort)?.label}
+              <img
+                src={
+                  isSortOpen
+                    ? '/img/icons/Chevron_(Arrow_Up).svg'
+                    : '/img/icons/Chevron_(Arrow_Down).svg'
+                }
+                alt=""
+              />
+            </button>
+
+            {isSortOpen && (
+              <ul className={styles.dropdown_list}>
+                {sortOptions.map(({ value, label }) => (
+                  <li
+                    key={value}
+                    className={`${styles.dropdown_item} ${sort === value ? styles.active : ''}`}
+                    onClick={() => {
+                      setSearchParams({ sort: value, perPage });
+                      setIsSortOpen(false);
+                    }}
+                  >
+                    {label}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
           <div className={styles.items_on_page}>
             <p className={styles.filters_title}>Items on page</p>
-            <select
-              className={styles.filters_select}
-              value={perPage}
-              onChange={e => setSearchParams({ sort, perPage: e.target.value })}
-            >
-              <option value="4">4</option>
-              <option value="8">8</option>
-              <option value="16">16</option>
-              <option value="all">all</option>
-            </select>
+            <div className={styles.dropdown}>
+              <button
+                className={`${styles.dropdown_header} ${isOpen ? styles.open : ''}`}
+                onClick={() => {
+                  setIsOpen(!isOpen);
+                  setIsSortOpen(false);
+                }}
+              >
+                {perPage}
+                <img
+                  src={
+                    isOpen
+                      ? '/img/icons/Chevron_(Arrow_Up).svg'
+                      : '/img/icons/Chevron_(Arrow_Down).svg'
+                  }
+                  alt=""
+                />
+              </button>
+
+              {isOpen && (
+                <ul className={styles.dropdown_list}>
+                  {perPageOptions.map(value => (
+                    <li
+                      key={value}
+                      className={`${styles.dropdown_item} ${perPage === value ? styles.active : ''}`}
+                      onClick={() => {
+                        setSearchParams({ sort, perPage: value });
+                        setIsOpen(false);
+                      }}
+                    >
+                      {value}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
         </div>
       </header>

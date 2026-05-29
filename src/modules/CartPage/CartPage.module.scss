@@ -8,14 +8,24 @@
   align-self: start;
 
   .breadcrumb {
-    grid-column: 1 / -1;
+    @include font-small-text;
+
     display: flex;
     flex-direction: row;
+    align-items: center;
+    grid-column: 1 / -1;
     gap: 8px;
     margin-block: 24px;
 
+
+
     img {
       filter: invert(1);
+
+      &:hover {
+        filter: invert(43%) sepia(72%) saturate(3825%) hue-rotate(237deg) brightness(100%) contrast(102%);
+      }
+
     }
 
     &_icon {
@@ -29,9 +39,15 @@
 
     &_page {
       text-transform: capitalize;
+      text-decoration: none;
       color: $white;
 
       @include font-small-text;
+
+      &:hover {
+        color: $color-accent;
+
+      }
 
     }
   }

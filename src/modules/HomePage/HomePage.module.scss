@@ -16,7 +16,6 @@
 
     @include font-h1($size: 32px, $line-height: 41px);
 
-
     @media (min-width: $tablet-breakpoint) {
       @include font-h1;
     }
@@ -74,7 +73,6 @@
 
   .hot_prices_slider {
     grid-column: 1 / -1;
-    margin-block: 30px 60px;
 
     @include section-margin;
   }

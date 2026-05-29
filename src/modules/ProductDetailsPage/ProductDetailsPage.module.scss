@@ -1,0 +1,473 @@
+@use '/src/modules/shared/styles/mixins.scss' as *;
+@use '/src/modules/shared/styles/variables.scss' as *;
+
+%add-to-cart {
+  height: 40px;
+  flex: 1;
+  border: none;
+
+  @include font-buttons;
+
+  color: $white;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background-color: $btn-text-hover;
+  }
+}
+
+%add-to-fav {
+  width: 40px;
+  height: 40px;
+
+  @include flex-center;
+}
+
+.product_details_page {
+  @include grid;
+
+  .breadcrumb {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    gap: 8px;
+    margin: 24px 0;
+
+    @media (min-width: $tablet-breakpoint) {
+      margin-bottom: 32px;
+    }
+
+    &_icon {
+      @include flex-center;
+
+      width: 16px;
+      height: 16px;
+    }
+
+    &_category {
+      text-transform: capitalize;
+      text-decoration: none;
+      color: $white;
+
+      @include font-small-text;
+
+    }
+
+
+    &_title {
+      @include font-small-text;
+
+      color: $graySecondary;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
+  }
+
+  .back {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+
+    grid-column: 1 / -1;
+    gap: 8px;
+
+
+    img {
+      filter: invert(1);
+
+      &:hover {
+        filter: invert(43%) sepia(72%) saturate(3825%) hue-rotate(237deg) brightness(100%) contrast(102%);
+      }
+
+    }
+
+    &_icon {
+      @include flex-center;
+
+      width: 16px;
+      height: 16px;
+
+    }
+
+
+    &_page {
+      text-transform: capitalize;
+      color: $white;
+
+      @include font-small-text;
+
+      &:hover {
+        color: $color-accent;
+
+      }
+
+    }
+  }
+
+  .main {
+    grid-column: 1 / -1;
+
+    .productname {
+      @include font-h2(22px, 140%);
+
+      color: $white;
+
+      @media (min-width: $tablet-breakpoint) {
+        @include font-h2;
+
+        margin-bottom: 40px;
+      }
+    }
+
+    .mainInfo {
+      @include section-margin;
+
+      @media (min-width: $tablet-breakpoint) {
+        display: flex;
+        flex-direction: row;
+        gap: 64px;
+      }
+
+
+      .images {
+        width: 47%;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        @include flex-center;
+
+        @media (min-width: $tablet-breakpoint) {
+          flex-direction: row-reverse;
+        }
+
+        .mainImage {
+          width: 300px;
+          height: 300px;
+          margin-block: 32px 16px;
+
+          @include flex-center;
+
+          @media (min-width: $desktop-breakpoint) {
+            width: 464px;
+            height: 464px;
+            margin-block: 0;
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+
+        .thumbnails {
+          display: flex;
+          flex-direction: row;
+          gap: 8px;
+
+          @media (min-width: $tablet-breakpoint) {
+            flex-direction: column;
+          }
+
+          .thumbnail {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            cursor: pointer;
+            border: $border-default;
+            padding: 4px;
+
+
+            &.active {
+              border-color: $white;
+            }
+          }
+        }
+
+      }
+
+      .description {
+        width: 100%;
+        margin-top: 40px;
+
+        @media (min-width: $tablet-breakpoint) {
+          max-width: 320px;
+          margin-top: 0;
+
+        }
+
+        @include font-small-text;
+
+        .colors {
+          padding-bottom: 24px;
+          border-bottom: $border-default;
+
+          &_header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: $graySecondary;
+          }
+
+          &_list {
+            display: flex;
+            flex-direction: row;
+            gap: 14px;
+            margin-top: 14px;
+
+            .color {
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              cursor: pointer;
+              outline-offset: 2px;
+              outline: 1px solid $dot-border-def;
+
+              &:hover {
+                outline: 1px solid $dot-border-hover;
+              }
+
+              &.active {
+                outline: 1px solid $dot-border-selected;
+              }
+            }
+          }
+
+        }
+
+        .capacity {
+          margin-top: 24px;
+          padding-bottom: 24px;
+          border-bottom: $border-default;
+
+
+          &_title {
+            color: $graySecondary;
+            margin-bottom: 8px;
+
+          }
+
+          &_list {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+          }
+
+          &_item {
+            @include font-body-text;
+
+            width: 56px;
+            height: 32px;
+            border: $border-default;
+            background-color: $black;
+            color: $white;
+          }
+
+          .active {
+            background-color: $white;
+            color: $black;
+          }
+        }
+
+      }
+
+      .prices {
+        margin-top: 32px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 8px;
+
+        p {
+          @include font-h2;
+        }
+
+        :last-child {
+          color: $graySecondary;
+          text-decoration: line-through;
+          font-size: 22px;
+          font-weight: 600;
+          line-height: 100%;
+        }
+
+      }
+
+      .another_info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        p {
+          @include font-small-text;
+        }
+
+        .info {
+          display: flex;
+          justify-content: space-between;
+
+          :first-child {
+            color: $graySecondary;
+          }
+
+          :last-child {
+            max-width: 60%;
+            color: $white;
+            text-align: right;
+
+          }
+        }
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        margin-block: 16px 32px;
+        gap: 8px;
+
+
+
+        .addToCart {
+          @extend %add-to-cart;
+
+          background-color: $color-accent;
+        }
+
+        .addedToCart {
+          @extend %add-to-cart;
+
+          background-color: $icon-bg-selected;
+
+          &:hover {
+            background-color: $icon-bg-hover;
+          }
+        }
+
+        .addToFav {
+          @extend %add-to-cart;
+          @extend %add-to-fav;
+
+          flex: none;
+
+          background-color: $icon-bg-default;
+          border: none;
+
+        }
+
+        .addedToFav {
+          @extend %add-to-fav;
+
+          border: $border-default;
+          background-color: $black;
+
+
+        }
+
+        img {
+          justify-content: center;
+          align-items: center;
+          width: 16px;
+          height: 16px;
+        }
+
+      }
+    }
+
+    .subInfo {
+      display: flex;
+      flex-direction: column;
+
+      @media (min-width: $desktop-breakpoint) {
+        flex-direction: row;
+        gap: 64px;
+      }
+
+      .title {
+        @include font-h3(20px, 100%);
+
+        margin-bottom: 31px;
+        color: $white;
+        padding-bottom: 16px;
+        border-bottom: $border-default;
+
+        @media (min-width: $tablet-breakpoint) {
+          @include font-h3;
+        }
+      }
+
+      .descriptions {
+        width: 48%;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+
+        @include section-margin;
+
+        .description {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+
+          .description_title {
+            @include font-h4(16px, 100%);
+
+            color: $white;
+
+            @media (min-width: $tablet-breakpoint) {
+              @include font-h4;
+            }
+          }
+
+          .description_text {
+            @include font-body-text;
+
+            color: #89939A;
+          }
+        }
+      }
+
+      .specs {
+        width: 48%;
+
+        @include section-margin;
+
+        .specs_info {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          padding: 16px 0;
+
+
+          p {
+            @include font-body-text;
+          }
+
+          .info {
+            display: flex;
+            justify-content: space-between;
+
+            :first-child {
+              color: $graySecondary;
+            }
+          }
+        }
+      }
+    }
+
+
+
+
+  }
+
+  .slider {
+    grid-column: 1 / -1;
+
+    @include section-margin;
+  }
+}
