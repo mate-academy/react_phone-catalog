@@ -1,0 +1,32 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-block: 24px;
+}
+
+.breadcrumbsLink {
+
+  font-weight: 700;
+  font-size: 12px;
+
+  line-height: 100%;
+  letter-spacing: 0%;
+
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  color: var(--text);
+
+  &:hover {
+    color: var(--h);
+  }
+
+  p {
+   display: block;
+  }
+}
+
+.iconArrow {
+  color: var(--text);
+}

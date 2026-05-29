@@ -16,6 +16,14 @@
   gap: 8px;
   padding: 32px;
   background-color: var(--bg-goods);
+  border: 1px solid var(--line-and-border);
+  border-radius: 8px;
+}
+
+[data-theme='dark'] {
+  & .content {
+    border-radius: 0;
+  }
 }
 
 .image {
@@ -44,6 +52,14 @@
   font-size: 14px;
   line-height: 21px;
   margin-top: auto;
+}
+
+.skeleton {
+  height: 100%;
+
+  & > * {
+    height: 100%;
+  }
 }
 
 .priceBox {
@@ -133,5 +149,9 @@
 
   .image {
     transform: scale(1.05);
+  }
+
+  .content {
+    border-color: var(--h);
   }
 }

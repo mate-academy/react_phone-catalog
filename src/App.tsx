@@ -8,6 +8,7 @@ import { PhonesProvider } from './app/providers/Phones/PhoneContext';
 import { CartProvider } from './app/providers/Cart';
 import { FavouritesProvider } from './app/providers/Favorities';
 import { ProductsProvider } from './app/providers/Products/ProductsContext';
+import { Footer } from './modules/Footer';
 
 export const App: React.FC = () => {
   // const [count, setCount] = useState(0);
@@ -21,6 +22,7 @@ export const App: React.FC = () => {
               <ProductsProvider>
                 <Header></Header>
                 <Outlet />
+                <Footer></Footer>
               </ProductsProvider>
             </PhonesProvider>
           </FavouritesProvider>

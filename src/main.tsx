@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import './index.scss';
 import App from './App';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { PhonePage } from './pages/PhonePage';
+import { PhonesPage } from './modules/PhonesPage/PhonesPage';
 import { HomePage } from './modules/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { ScrollToTop } from './components/ScrollToTop';
@@ -19,7 +19,7 @@ createRoot(document.getElementById('root')!).render(
         <Route index element={<HomePage />}></Route>
         <Route path="home" element={<Navigate to="/" replace />} />
         <Route path="phones">
-          <Route index element={<PhonePage />}></Route>
+          <Route index element={<PhonesPage />}></Route>
           <Route path=":productId?" element={<ProductDetailsPage/>}></Route>
         </Route>
         <Route path="*" element={<NotFoundPage />}></Route>

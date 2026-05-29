@@ -40,4 +40,10 @@
 
 .logoFooter {
   cursor: pointer;
+  width: 89px;
+  height: 32px;
+  .logoSvg {
+    width: 100%;
+    height: 100%;
+  }
 }

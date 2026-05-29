@@ -9,7 +9,8 @@ export const en = {
 
   HomeTitle: {
     welcome: 'Welcome to Nice Gadgets store!',
-    hotPrice: 'Hot prices'
+    hotPrice: 'Hot prices',
+    newBrand: 'Brand new models',
   },
 
   sectionCategories: {
@@ -18,6 +19,12 @@ export const en = {
     tablets: 'Tablets',
     accessories: 'Accessories',
     models: 'models',
+  },
+
+  footer: {
+    backToTop: 'Back to top',
+    contacts: 'Contacts',
+    right: 'Right',
   },
 
   navigation: {

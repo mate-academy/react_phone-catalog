@@ -36,7 +36,7 @@ export const SectionWelcome = () => {
       <h1 className={styles.title}>{t('HomeTitle.welcome')}</h1>
 
       <div className={styles.sliderWrapper}>
-        <ButtonSecond iconFlipX className={styles.sliderButtonPrev}></ButtonSecond>
+        <ButtonSecond rotate={180} className={styles.sliderButtonPrev}></ButtonSecond>
         <Swiper
           onSwiper={(swiper) => {
             swiperRef.current = swiper;

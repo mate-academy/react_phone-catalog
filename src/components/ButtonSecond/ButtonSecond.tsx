@@ -3,17 +3,21 @@ import { Icon } from '../Icon';
 import styles from './styles.module.scss';
 import classNames from 'classnames';
 
-type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & { iconFlipX?: boolean };
+type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  rotate?: number;
+};
 
-export const ButtonSecond = ({ iconFlipX = false, children, className, ...props }: Props) => {
+export const ButtonSecond = ({
+  rotate = 0,
+  children,
+  className,
+  ...props
+}: Props) => {
   console.log('ButtonSecond');
   return (
     <button {...props} className={classNames(className, styles.button)}>
       <div className={styles.wrapper}>
-        <Icon
-          className={classNames(styles.icon, { [styles.iconFlip]: iconFlipX })}
-          type="arrowRight"
-        />
+        <Icon className={styles.icon} style={{ rotate: `${rotate}deg` }} type="arrowRight" />
       </div>
       {children}
     </button>

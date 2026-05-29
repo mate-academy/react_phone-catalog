@@ -16,7 +16,7 @@
   transform: translateX(0);
 
   @include on-tablet {
-    transform: translateX(+100%);
+    display: none;
   }
 }
 

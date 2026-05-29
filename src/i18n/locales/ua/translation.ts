@@ -10,6 +10,7 @@ export const ua = {
   HomeTitle: {
     welcome: 'Ласкаво просимо до магазину Nice Gadgets!',
     hotPrice: 'Гарячі пропозиції',
+    newBrand: 'Нові моделі',
   },
 
   sectionCategories: {
@@ -18,6 +19,12 @@ export const ua = {
     tablets: 'Планшети',
     accessories: 'Аксесуари',
     models: 'моделей',
+  },
+
+  footer: {
+    backToTop: 'Повернутись нагору',
+    contacts: 'Контакти',
+    right: 'Права',
   },
 
   navigation: {

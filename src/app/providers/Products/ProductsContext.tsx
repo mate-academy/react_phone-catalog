@@ -60,6 +60,7 @@ export function ProductsProvider({ children }: Props) {
   }, [products]);
 
   return (
+    
     <ProductsContext.Provider
       value={{
         products: products,

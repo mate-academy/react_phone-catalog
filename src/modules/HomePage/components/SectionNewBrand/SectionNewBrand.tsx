@@ -9,14 +9,12 @@ import 'swiper/css/pagination';
 
 // import './styles.css';
 
-// import required modules
-
 import { Product } from '@/shared/type';
 import '@/bones/registry';
 import { useProducts } from '@/app/providers/Products/ProductsContext';
 import { ProductsSlider } from '../ProductsSlider';
 
-export const SectionHotPrice = () => {
+export const SectionNewBrand = () => {
   const { products, loading, loadProducts } = useProducts();
   const { t } = useTranslation();
 
@@ -24,23 +22,23 @@ export const SectionHotPrice = () => {
     loadProducts();
   }, [loadProducts]);
 
-  const hotProduct = useMemo<Product[]>(() => {
+  const NewBrandProduct = useMemo<Product[]>(() => {
     if (!products) {
       return [];
     }
 
     return products.sort(
       (productsA, productsB) =>
-        productsB.fullPrice - productsB.price - (productsA.fullPrice - productsA.price),
+        productsB.year - productsA.year,
     );
   }, [products]);
 
   return (
     <section>
       <ProductsSlider
-        products={hotProduct}
-        title={t('HomeTitle.hotPrice')}
-        lengthSlides={16}
+        products={NewBrandProduct}
+        title={t('HomeTitle.newBrand')}
+        lengthSlides={20}
         isLoading={loading}
       ></ProductsSlider>
     </section>

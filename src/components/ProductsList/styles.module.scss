@@ -1,0 +1,16 @@
+@use '@/shared/styles' as *;
+
+.container {
+  @include grid;
+
+  padding: 0;
+  row-gap: 40px;
+}
+
+.productCard {
+  grid-column: 4 span;
+
+  @include on-desktop {
+    grid-column: 6 span;
+  }
+}

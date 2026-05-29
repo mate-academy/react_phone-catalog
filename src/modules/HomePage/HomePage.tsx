@@ -4,6 +4,7 @@ import { SectionHotPrice } from './components/SectionHotPrice';
 
 import styles from './styles.module.scss';
 import { SectionCategories } from './components/SectionCategories';
+import { SectionNewBrand } from './components/SectionNewBrand';
 
 export const HomePage: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ export const HomePage: React.FC = () => {
       <SectionWelcome />
       <SectionHotPrice />
       <SectionCategories />
+      <SectionNewBrand />
     </main>
   );
 };

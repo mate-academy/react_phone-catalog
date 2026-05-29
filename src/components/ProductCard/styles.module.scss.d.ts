@@ -14,5 +14,6 @@ export declare const price: string;
 export declare const priceBox: string;
 export declare const pricelineThrough: string;
 export declare const root: string;
+export declare const skeleton: string;
 export declare const title: string;
 export declare const titleLink: string;
