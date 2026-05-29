@@ -27,22 +27,30 @@ export const Menu = ({ isMenuOpen, setIsMenuOpen }: Props) => {
     <>
       <div className={styles.menu}>
         <nav className={styles.nav}>
-          <NavLink onClick={closeMenu} to="/" end className={getLinkClass}>
-            HOME
-          </NavLink>
-          <NavLink onClick={closeMenu} to="/phones" className={getLinkClass}>
-            PHONES
-          </NavLink>
-          <NavLink onClick={closeMenu} to="/tablets" className={getLinkClass}>
-            TABLETS
-          </NavLink>
-          <NavLink
-            onClick={closeMenu}
-            to="/accessories"
-            className={getLinkClass}
-          >
-            ACCESSORIES
-          </NavLink>
+          <div className={styles.linkContainer}>
+            <NavLink onClick={closeMenu} to="/" end className={getLinkClass}>
+              HOME
+            </NavLink>
+          </div>
+          <div className={styles.linkContainer}>
+            <NavLink onClick={closeMenu} to="/phones" className={getLinkClass}>
+              PHONES
+            </NavLink>
+          </div>
+          <div className={styles.linkContainer}>
+            <NavLink onClick={closeMenu} to="/tablets" className={getLinkClass}>
+              TABLETS
+            </NavLink>
+          </div>
+          <div className={styles.linkContainer}>
+            <NavLink
+              onClick={closeMenu}
+              to="/accessories"
+              className={getLinkClass}
+            >
+              ACCESSORIES
+            </NavLink>
+          </div>
         </nav>
         <div className={styles.bottom}>
           <NavLink
