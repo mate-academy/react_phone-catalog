@@ -256,7 +256,7 @@ export const PhonePage = () => {
         <div className="pagination">
           {/* Иконка стрелки влево  */}
           <button onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} disabled={currentPage === 1} className="pagination__button pagination__button--nav">
-  <img src="./icons/arrow-left.svg" alt="prev" />
+  <img src="./icons/arrow-left-small-white.svg" alt="prev" />
 </button>
 
           {getPageNumbers().map((page, index) => (
@@ -272,7 +272,7 @@ export const PhonePage = () => {
 
           {/* Иконка стрелки вправо  */}
           <button onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))} disabled={currentPage === totalPages} className="pagination__button pagination__button--nav">
-  <img src="./icons/arrow-right.svg" alt="next" />
+  <img src="./icons/arrow-right-small-white.svg" alt="next" />
 </button>
         </div>
       )}
