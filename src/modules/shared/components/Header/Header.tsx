@@ -9,9 +9,16 @@ const getActiveClass = (isActive: boolean) => {
 type Props = {
   isMenuOpen: boolean;
   setIsMenuOpen: (isOpen: boolean) => void;
+  favoritesCounter: number;
+  cartCounter: number;
 };
 
-export const Header = ({ isMenuOpen, setIsMenuOpen }: Props) => {
+export const Header = ({
+  isMenuOpen,
+  setIsMenuOpen,
+  favoritesCounter,
+  cartCounter,
+}: Props) => {
   const handleClick = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -38,7 +45,11 @@ export const Header = ({ isMenuOpen, setIsMenuOpen }: Props) => {
             to={'/favorites'}
           >
             <img src="/icons/favorites.svg" alt="Favorites" />
+            {favoritesCounter > 0 && (
+              <span className={styles.counter}>{favoritesCounter}</span>
+            )}
           </NavLink>
+
           <NavLink
             className={({ isActive }) => {
               return `${styles.cart} ${getActiveClass(isActive)}`;
@@ -46,6 +57,9 @@ export const Header = ({ isMenuOpen, setIsMenuOpen }: Props) => {
             to={'/cart'}
           >
             <img src="/icons/cart.svg" alt="Cart" />
+            {cartCounter > 0 && (
+              <span className={styles.counter}>{cartCounter}</span>
+            )}
           </NavLink>
           <button
             type="button"

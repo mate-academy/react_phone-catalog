@@ -34,9 +34,11 @@
     border-radius: 0;
     width: 32px;
 
+    transition: border .2s ease-in;
+
     cursor: pointer;
 
-    &:active {
+    &:hover {
       border: 1px solid vars.$primary-color;
     }
   }
@@ -81,6 +83,7 @@
   height: 4px;
   border-radius: 0;
   border: none;
+  cursor: pointer;
 }
 
 .active {

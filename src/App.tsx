@@ -8,27 +8,22 @@ import { AccessoriesPage } from './modules/AccessoriesPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { Cart } from './modules/CartPage';
 import { NotFoundPage } from './modules/NotFoundPage';
-import { useState } from 'react';
+import { AppProvider } from './context/Context';
 
 export const App = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <Layout isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-        }
-      >
-        <Route index element={<HomePage />} />
-        <Route path="/phones" element={<PhonesPage />} />
-        <Route path="/tablets" element={<TabletsPage />} />
-        <Route path="/accessories" element={<AccessoriesPage />} />
-        <Route path="/favorites" element={<FavoritesPage />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Route>
-    </Routes>
+    <AppProvider>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/phones" element={<PhonesPage />} />
+          <Route path="/tablets" element={<TabletsPage />} />
+          <Route path="/accessories" element={<AccessoriesPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </AppProvider>
   );
 };

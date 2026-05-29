@@ -1,11 +1,30 @@
 import { Product } from '../../../../types/Product';
 import styles from './NewModels.module.scss';
+import cn from 'classnames';
+import { useAppContext } from '../../../../context/Context';
 
 type Props = {
   newPhonesModels: Product[];
 };
 
 export const NewModels = ({ newPhonesModels }: Props) => {
+  const { favoritesIds, setFavoritesIds, addBtnIds, setAddBtnIds } =
+    useAppContext();
+
+  const toggleArrayIds = (array: number[], id: number) => {
+    return array.includes(id)
+      ? array.filter(itemId => itemId !== id)
+      : [...array, id];
+  };
+
+  const toggleFavorites = (id: number) => {
+    setFavoritesIds(toggleArrayIds(favoritesIds, id));
+  };
+
+  const toggleAddButton = (id: number) => {
+    setAddBtnIds(toggleArrayIds(addBtnIds, id));
+  };
+
   return (
     <section className={styles.newModelsSection}>
       <div className={styles.titleAndControls}>
@@ -47,11 +66,27 @@ export const NewModels = ({ newPhonesModels }: Props) => {
                   <p className={styles.specDescription}>{phone.ram}</p>
                 </div>
                 <div className={styles.cardButtons}>
-                  <button className={styles.addBtn}>Add to cart</button>
-                  <button className={styles.favoritesBtn}>
+                  <button
+                    onClick={() => toggleAddButton(phone.id)}
+                    className={cn(styles.addBtn, {
+                      [styles.isActive]: addBtnIds.includes(phone.id),
+                    })}
+                  >
+                    {addBtnIds.includes(phone.id)
+                      ? 'Added to cart'
+                      : 'Add to cart'}
+                  </button>
+                  <button
+                    onClick={() => toggleFavorites(phone.id)}
+                    className={styles.favoritesBtn}
+                  >
                     <img
                       className={styles.favorites}
-                      src="/icons/favorites.svg"
+                      src={
+                        favoritesIds.includes(phone.id)
+                          ? '/icons/favorites-filled.svg'
+                          : '/icons/favorites.svg'
+                      }
                       alt="favorites"
                     />
                   </button>

@@ -6,11 +6,9 @@ import { getProducts } from '../../utils/api';
 import { NewModels } from './components/NewModels';
 
 export const HomePage = () => {
-  // const [phones, setPhones] = useState<Phone[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    // getPhones().then(phonesFromServer => setPhones(phonesFromServer));
     getProducts().then(productsFromServer => setProducts(productsFromServer));
   }, []);
 

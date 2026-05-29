@@ -2,16 +2,19 @@ import { Outlet } from 'react-router-dom';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 import { Menu } from '../Header/components/Menu';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useAppContext } from '../../../../context/Context';
 
 const MIN_TABLET_SCREEN_SIZE = 640;
 
-type Props = {
-  isMenuOpen: boolean;
-  setIsMenuOpen: (isOpen: boolean) => void;
-};
+export const Layout = () => {
+  const { favoritesIds, addBtnIds } = useAppContext();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-export const Layout = ({ isMenuOpen, setIsMenuOpen }: Props) => {
+  const getArrayLength = (array: number[]) => {
+    return array.length;
+  };
+
   // This allows you to close the navigation menu if the screen width
   // accidentally becomes equal to or greater than the tablet's screen size
   useEffect(() => {
@@ -28,7 +31,12 @@ export const Layout = ({ isMenuOpen, setIsMenuOpen }: Props) => {
 
   return (
     <div>
-      <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <Header
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+        favoritesCounter={getArrayLength(favoritesIds)}
+        cartCounter={getArrayLength(addBtnIds)}
+      />
       <main>
         {isMenuOpen ? (
           <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />

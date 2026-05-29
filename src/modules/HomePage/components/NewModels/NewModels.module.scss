@@ -39,12 +39,17 @@
   background-color: vars.$white-color;
   border: 1px solid vars.$icons-color;
   cursor: pointer;
+
+  transition: border .2s ease-in;
+
+  &:hover {
+    border: 1px solid vars.$primary-color;
+  }
 }
 
 .phoneCard {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: start;
   flex-shrink: 0;
   gap: 8px;
@@ -72,6 +77,7 @@
 }
 
 .cardTitle {
+  flex-grow: 1;
   font-size: 14px;
   font-weight: 400;
   color: vars.$primary-color;
@@ -121,6 +127,22 @@
 
   border: none;
   cursor: pointer;
+
+  transition: box-shadow .2s ease-in;
+
+  &:hover {
+    box-shadow: 0 3px 13px vars.$primary-color;
+  }
+
+  &.isActive {
+    color: vars.$green-color;
+    background-color: vars.$white-color;
+    border: solid 1px vars.$elements-color;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
 }
 
 .favoritesBtn {
@@ -131,6 +153,11 @@
   border: 1px solid vars.$icons-color;
   background-color: vars.$white-color;
   cursor: pointer;
+  transition: border .2s ease-in;
+
+  &:hover {
+    border: 1px solid vars.$primary-color;
+  }
 }
 
 
