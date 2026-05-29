@@ -3,7 +3,6 @@ import './App.scss';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { AppRouter } from './routes/AppRouter';
-import { CartProvider } from './app/providers/CartContext';
 import { ThemeProvider } from './app/providers/ThemeContext';
 import { store } from './store/store';
 
@@ -12,9 +11,7 @@ export const App = () => (
     <Provider store={store}>
       <HashRouter>
         <ThemeProvider>
-          <CartProvider>
-            <AppRouter />
-          </CartProvider>
+          <AppRouter />
         </ThemeProvider>
       </HashRouter>
     </Provider>

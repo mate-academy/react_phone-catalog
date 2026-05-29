@@ -2,7 +2,6 @@ import React from 'react';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 // eslint-disable-next-line import/extensions
-import { useCart } from '@/app/providers/CartContext';
 import { links } from '@/shared/constants/links';
 import styles from './Menu.module.scss';
 import { selectCartTotalCount } from '@/store/slices/cartSlice';

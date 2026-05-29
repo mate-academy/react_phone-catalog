@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useTheme } from '@/app/providers/ThemeContext';
-import { useCart } from '@/app/providers/CartContext';
 import { links } from '@/shared/constants/links';
 import Menu from '../../ui/Menu/Menu';
 import ThemeToggle from './ThemeIcon';
