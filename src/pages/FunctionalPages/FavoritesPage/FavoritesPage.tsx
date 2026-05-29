@@ -130,7 +130,6 @@ export const FavoritesPage = () => {
         {favoriteProducts.map(product => (
           <div key={product.id} className="favorites__item">
 
-            {/* ✅ FIX */}
             <Link
               to={`/${product.category}/${product.itemId ?? product.id}`}
             >

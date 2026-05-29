@@ -132,7 +132,6 @@ export const PhonePage = () => {
           <img src="./icons/home.svg" alt="home_nav" className="home--nav-icon" />
         </a>
 
-        {/* ✅ Маленькая стрелка для breadcrumb */}
         <img src="./icons/arrow-right-small.svg" alt="arrow-right" className="home--nav-arrow" />
 
         <p className="home--nav-top">Phones</p>
@@ -255,7 +254,7 @@ export const PhonePage = () => {
 
       {totalPages > 1 && (
         <div className="pagination">
-          {/* ✅ Иконка стрелки влево для пагинации */}
+          {/* Иконка стрелки влево  */}
           <button onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} disabled={currentPage === 1} className="pagination__button pagination__button--nav">
   <img src="./icons/arrow-left.svg" alt="prev" />
 </button>
@@ -271,7 +270,7 @@ export const PhonePage = () => {
             </button>
           ))}
 
-          {/* ✅ Иконка стрелки вправо для пагинации */}
+          {/* Иконка стрелки вправо  */}
           <button onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))} disabled={currentPage === totalPages} className="pagination__button pagination__button--nav">
   <img src="./icons/arrow-right.svg" alt="next" />
 </button>

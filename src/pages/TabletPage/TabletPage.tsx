@@ -336,7 +336,7 @@ export const TabletPage = () => {
 
       {totalPages > 1 && (
         <div className="pagination">
-          {/* ✅ Иконка стрелки влево */}
+          {/*  Иконка стрелки влево */}
           <button
             onClick={() =>
               setCurrentPage(prev => Math.max(prev - 1, 1))
@@ -366,7 +366,7 @@ export const TabletPage = () => {
             </button>
           ))}
 
-          {/* ✅ Иконка стрелки вправо */}
+          {/* Иконка стрелки вправо */}
           <button
             onClick={() =>
               setCurrentPage(prev =>

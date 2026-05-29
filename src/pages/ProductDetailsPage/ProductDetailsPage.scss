@@ -63,7 +63,6 @@
     color: #F1F2F9;
   }
 
-  // 1. Заголовок: 1136x41, font 32px/800/41px
   &__title {
     width: 1136px;
     max-width: 100%;
@@ -87,7 +86,7 @@
     }
   }
 
-  // Название в breadcrumb (серый мелкий текст)
+
   &__id {
     font-size: 12px;
     font-weight: 700;
@@ -99,7 +98,6 @@
     max-width: none;
   }
 
-  // ID товара: 176x15, right align, справа вверху
   &__item-id {
     width: 176px;
     height: 15px;
@@ -129,7 +127,6 @@
     }
   }
 
-  // 3. Галерея: thumbnails 80x464, gap 16px
   &__gallery {
     display: flex;
     flex-direction: row;
@@ -163,7 +160,6 @@
     }
   }
 
-  // 4. Цвета: контейнер 320x55 (полоса 320px)
   &__colors {
     width: 320px;
     min-height: 55px;
@@ -186,7 +182,6 @@
     }
   }
 
-  // Available colors label: 98x15, font 12px/700
   &__label {
     font-size: 12px;
     font-weight: 700;
@@ -392,7 +387,7 @@
   }
 }
 
-// 3. Галерея - thumbnails контейнер: 80x464, gap 16px
+
 .gallery {
   &__thumbnails {
     display: flex;
@@ -408,7 +403,7 @@
     }
   }
 
-  // Большое фото: 464x464
+
   &__main-image {
     width: 464px;
     height: 464px;
@@ -446,7 +441,6 @@
   }
 }
 
-// Одна миниатюра: 78x78
 .thumbnail {
   width: 78px;
   height: 78px;
@@ -471,7 +465,6 @@
   }
 }
 
-// 4. Кружки цветов: 32x32
 .color-options {
   display: flex;
   gap: 8px;

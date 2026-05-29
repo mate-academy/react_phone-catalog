@@ -174,7 +174,7 @@ export const AccessoriesPage = () => {
           />
         </a>
 
-        {/* ✅ Маленькая стрелка для breadcrumb */}
+        {/*  Маленькая стрелка для breadcrumb */}
         <img
           src="./icons/arrow-right-small.svg"
           alt="arrow-right"
@@ -313,7 +313,7 @@ export const AccessoriesPage = () => {
 
       {totalPages > 1 && (
         <div className="pagination">
-          {/* ✅ Иконка стрелки влево */}
+          {/*  Иконка стрелки влево */}
           <button
             onClick={() =>
               setCurrentPage(prev => Math.max(prev - 1, 1))
@@ -343,7 +343,7 @@ export const AccessoriesPage = () => {
             </button>
           ))}
 
-          {/* ✅ Иконка стрелки вправо */}
+          {/*  Иконка стрелки вправо */}
           <button
             onClick={() =>
               setCurrentPage(prev =>
