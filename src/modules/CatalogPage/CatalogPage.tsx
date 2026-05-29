@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { Product } from '../HomePage/HomePage';
 import styles from './CatalogPage.module.scss';
@@ -8,17 +8,23 @@ import home from '../../api/icons/Home.svg';
 import vector from '../../api/icons/Vector.svg';
 import productsData from '../../data/products.json';
 import { ProductCard } from '../../components/ProduuctCard/ProductCard';
-import { Pagination } from '../../components/Pagination/Pagination'; // Импортируем пагинацию
+import { Pagination } from '../../components/Pagination/Pagination';
 
 export const CatalogPage: React.FC = () => {
   const { category } = useParams<{ category: string }>();
   const [searchParams, setSearchParams] = useSearchParams();
   const [products, setProducts] = useState<Product[]>([]);
 
+  // Состояния для открытия кастомных дропдаунов
+  const [isSortOpen, setIsSortOpen] = useState(false);
+  const [isPerPageOpen, setIsPerPageOpen] = useState(false);
+
+  // Рефы для отслеживания клика вне выпадашек
+  const sortRef = useRef<HTMLDivElement>(null);
+  const perPageRef = useRef<HTMLDivElement>(null);
+
   const sortBy = searchParams.get('sort') || 'newest';
   const perPage = searchParams.get('perPage') || 'all';
-
-  // Достаем текущую страницу из URL, по дефолту 1
   const currentPage = Number(searchParams.get('page')) || 1;
 
   const displayTitle =
@@ -28,6 +34,20 @@ export const CatalogPage: React.FC = () => {
         ? category.charAt(0).toUpperCase() + category.slice(1)
         : '';
 
+  // Тексты для отображения на кнопках
+  const sortLabels: Record<string, string> = {
+    newest: 'Newest',
+    alphabetically: 'Alphabetically',
+    cheapest: 'Cheapest',
+  };
+
+  const perPageLabels: Record<string, string> = {
+    '4': '4',
+    '8': '8',
+    '16': '16',
+    all: 'All',
+  };
+
   useEffect(() => {
     const filtered = (productsData as Product[]).filter(
       p => p.category === category,
@@ -36,7 +56,26 @@ export const CatalogPage: React.FC = () => {
     setProducts(filtered);
   }, [category]);
 
-  // 1. Сортируем все продукты категории
+  // Закрытие дропдаунов при клике снаружи
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
+        setIsSortOpen(false);
+      }
+
+      if (
+        perPageRef.current &&
+        !perPageRef.current.contains(event.target as Node)
+      ) {
+        setIsPerPageOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   const sortedProducts = [...products].sort((a, b) => {
     if (sortBy === 'alphabetically') {
       return a.name.localeCompare(b.name);
@@ -49,31 +88,25 @@ export const CatalogPage: React.FC = () => {
     return b.year - a.year;
   });
 
-  // 2. Считаем лимиты для пагинации
   const itemsPerPage =
     perPage === 'all' ? sortedProducts.length : Number(perPage);
-
-  // Вычисляем индексы для обрезки массива
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-
-  // Из всех отсортированных берем только карточки для ТЕКУЩЕЙ страницы
   const visibleProducts = sortedProducts.slice(startIndex, endIndex);
 
-  // Сброс страницы на первую при смене сортировки
-  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSearchParams({ sort: e.target.value, perPage, page: '1' });
+  const handleSortSelect = (value: string) => {
+    setSearchParams({ sort: value, perPage, page: '1' });
+    setIsSortOpen(false);
   };
 
-  // Сброс страницы на первую при изменении количества карточек на странице
-  const handlePerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSearchParams({ sort: sortBy, perPage: e.target.value, page: '1' });
+  const handlePerPageSelect = (value: string) => {
+    setSearchParams({ sort: sortBy, perPage: value, page: '1' });
+    setIsPerPageOpen(false);
   };
 
-  // Функция переключения страницы
   const handlePageChange = (page: number) => {
     setSearchParams({ sort: sortBy, perPage, page: page.toString() });
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // При переключении плавно скроллим вверх
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -92,46 +125,116 @@ export const CatalogPage: React.FC = () => {
         </nav>
 
         <h1 className={styles.title}>{displayTitle}</h1>
-
         <p className={styles.count}>{products.length} models</p>
 
         <div className={styles.controls}>
-          <div className={styles.controlGroup}>
+          {/* Кастомный дропдаун Сортировки */}
+          <div className={styles.controlGroup} ref={sortRef}>
             <label className={styles.label}>Sort by</label>
-            <select
-              value={sortBy}
-              onChange={handleSortChange}
-              className={styles.select}
-            >
-              <option value="newest">Newest</option>
-              <option value="alphabetically">Alphabetically</option>
-              <option value="cheapest">Cheapest</option>
-            </select>
+            <div className={styles.dropdownWrapper}>
+              <button
+                type="button"
+                className={`${styles.selectButton} ${isSortOpen ? styles.activeButton : ''}`}
+                onClick={() => {
+                  setIsSortOpen(!isSortOpen);
+                  setIsPerPageOpen(false);
+                }}
+              >
+                <span>{sortLabels[sortBy]}</span>
+                <span
+                  className={`${styles.arrow} ${isSortOpen ? styles.arrowOpen : ''}`}
+                >
+                  ▼
+                </span>
+              </button>
+
+              {isSortOpen && (
+                <ul className={styles.dropdownMenu}>
+                  <li
+                    className={sortBy === 'newest' ? styles.selectedOption : ''}
+                    onClick={() => handleSortSelect('newest')}
+                  >
+                    Newest
+                  </li>
+                  <li
+                    className={
+                      sortBy === 'alphabetically' ? styles.selectedOption : ''
+                    }
+                    onClick={() => handleSortSelect('alphabetically')}
+                  >
+                    Alphabetically
+                  </li>
+                  <li
+                    className={
+                      sortBy === 'cheapest' ? styles.selectedOption : ''
+                    }
+                    onClick={() => handleSortSelect('cheapest')}
+                  >
+                    Cheapest
+                  </li>
+                </ul>
+              )}
+            </div>
           </div>
 
-          <div className={styles.controlGroup}>
+          {/* Кастомный дропдаун Количество на странице */}
+          <div className={styles.controlGroup} ref={perPageRef}>
             <label className={styles.label}>Items per page</label>
-            <select
-              value={perPage}
-              onChange={handlePerPageChange}
-              className={styles.select}
-            >
-              <option value="4">4</option>
-              <option value="8">8</option>
-              <option value="16">16</option>
-              <option value="all">All</option>
-            </select>
+            <div className={styles.dropdownWrapper}>
+              <button
+                type="button"
+                className={`${styles.selectButton} ${isPerPageOpen ? styles.activeButton : ''}`}
+                onClick={() => {
+                  setIsPerPageOpen(!isPerPageOpen);
+                  setIsSortOpen(false);
+                }}
+              >
+                <span>{perPageLabels[perPage]}</span>
+                <span
+                  className={`${styles.arrow} ${isPerPageOpen ? styles.arrowOpen : ''}`}
+                >
+                  ▼
+                </span>
+              </button>
+
+              {isPerPageOpen && (
+                <ul className={styles.dropdownMenu}>
+                  <li
+                    className={perPage === '4' ? styles.selectedOption : ''}
+                    onClick={() => handlePerPageSelect('4')}
+                  >
+                    4
+                  </li>
+                  <li
+                    className={perPage === '8' ? styles.selectedOption : ''}
+                    onClick={() => handlePerPageSelect('8')}
+                  >
+                    8
+                  </li>
+                  <li
+                    className={perPage === '16' ? styles.selectedOption : ''}
+                    onClick={() => handlePerPageSelect('16')}
+                  >
+                    16
+                  </li>
+                  <li
+                    className={perPage === 'all' ? styles.selectedOption : ''}
+                    onClick={() => handlePerPageSelect('all')}
+                  >
+                    All
+                  </li>
+                </ul>
+              )}
+            </div>
           </div>
         </div>
 
-        {/* Сетка с отфильтрованными карточками */}
         <div className={styles.grid}>
           {visibleProducts.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
 
-        {/* Наш новый компонент пагинации */}
         <Pagination
           totalItems={sortedProducts.length}
           itemsPerPage={itemsPerPage}

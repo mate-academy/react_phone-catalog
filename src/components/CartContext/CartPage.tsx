@@ -1,11 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { CartItem, useGlobal } from '../CartContext/CartContext';
-
 import styles from './CartPage.module.scss';
-
 import home from '../../api/buttoms/Right.svg';
-
 import close from '../../api/buttoms/Close.svg';
 
 export const CartPage: React.FC = () => {
@@ -22,6 +20,20 @@ export const CartPage: React.FC = () => {
     (sum: number, item: CartItem) => sum + item.quantity,
     0,
   );
+
+  const handleCheckout = () => {
+    const isConfirmed = window.confirm(
+      `You are about to purchase ${totalItems} items for a total of $${totalPrice}. Proceed with order?`,
+    );
+
+    if (isConfirmed) {
+      cart.forEach(item => removeFromCart(item.id));
+
+      window.alert(
+        'Thank you for your purchase! Your order has been successfully placed.',
+      );
+    }
+  };
 
   return (
     <div className={styles.cartPage}>
@@ -48,14 +60,16 @@ export const CartPage: React.FC = () => {
                     <img src={close} alt="remove" />
                   </button>
 
-                  <div className={styles.itemInfo}>
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className={styles.itemImage}
-                    />
-                    <p className={styles.itemName}>{item.name}</p>
-                  </div>
+                  <Link to={`/${item.category || 'phones'}/${item.itemId}`}>
+                    <div className={styles.itemInfo}>
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className={styles.itemImage}
+                      />
+                      <p className={styles.itemName}>{item.name}</p>
+                    </div>
+                  </Link>
 
                   <div className={styles.rightBlock}>
                     <div className={styles.quantityControls}>
@@ -84,7 +98,10 @@ export const CartPage: React.FC = () => {
               <h2 className={styles.totalPrice}>${totalPrice}</h2>
               <p className={styles.totalCount}>Total for {totalItems} items</p>
               <div className={styles.divider} />
-              <button className={styles.checkoutBtn}>Checkout</button>
+
+              <button className={styles.checkoutBtn} onClick={handleCheckout}>
+                Checkout
+              </button>
             </div>
           </div>
         ) : (
