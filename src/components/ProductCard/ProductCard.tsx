@@ -1,4 +1,4 @@
-import { Phone } from '@/shared/type';
+import { Product } from '@/shared/type';
 import React, { useMemo } from 'react';
 
 import styles from './styles.module.scss';
@@ -11,45 +11,49 @@ import { useFavourites } from '@/app/providers/Favorities';
 import { ButtonHeart } from '../ButtonSecond copy/ButtonHeart';
 
 type Props = React.ComponentProps<'article'> & {
-  phone: Phone;
+  product: Product;
 };
-export const ProductCard = ({ phone, ...props }: Props) => {
+export const ProductCard = ({ product, ...props }: Props) => {
   const { t } = useTranslation();
   const { favourites, setFavourites } = useFavourites();
 
   const { cart, setCart } = useCart();
 
-  const isFavourite = useMemo(() => favourites.includes(phone.id), [favourites, phone.id]);
-  const isInCart = useMemo(() => cart.includes(phone.id), [cart, phone.id]);
+  const isFavourite = useMemo(() => favourites.includes(product.itemId), [favourites, product.itemId]);
+  const isInCart = useMemo(() => cart.includes(product.itemId), [cart, product.itemId]);
 
   return (
-    <article {...props} className={styles.main} aria-label={phone.name}>
+    <article {...props} className={styles.main} aria-label={product.name}>
       <div className={styles.content}>
-        <Link to={'phones/' + phone.id}>
+        <Link className={styles.image} to={'phones/' + product.itemId}>
           <img
             className={styles.image}
-            src={phone.images[0]}
-            alt={phone.name + ' image'}
+            src={product.image}
+            alt={product.name + ' image'}
             loading="lazy"
           />
         </Link>
-        <Link to={'phones/' + phone.id}>
-          <h4 className={styles.title}>{phone.name}</h4>
+        <Link className={styles.titleLink} to={'phones/' + product.itemId}>
+          <h4 className={styles.title}>{product.name}</h4>
         </Link>
-        <h3 className={styles.price}>{'$' + phone.priceRegular}</h3>
+        <div className={styles.priceBox}>
+          <h3 className={styles.price}>{'$' + product.fullPrice}</h3>
+          <h3 className={styles.price + ' ' + styles.pricelineThrough}>{'$' + product.price}</h3>
+        </div>
+
         <div className={styles.line}></div>
         <div className={styles.details}>
           <div className={styles.detail}>
             <p className={styles.detailText1}>{t('productCart.screen')}</p>
-            <p className={styles.detailText2}>{phone.screen}</p>
+            <p className={styles.detailText2}>{product.screen}</p>
           </div>
           <div className={styles.detail}>
             <p className={styles.detailText1}>{t('productCart.capacity')}</p>
-            <p className={styles.detailText2}>{phone.capacity}</p>
+            <p className={styles.detailText2}>{product.capacity}</p>
           </div>
           <div className={styles.detail}>
             <p className={styles.detailText1}>{t('productCart.RAM')}</p>
-            <p className={styles.detailText2}>{phone.ram}</p>
+            <p className={styles.detailText2}>{product.ram}</p>
           </div>
         </div>
         <div className={styles.buttons}>
@@ -58,9 +62,9 @@ export const ProductCard = ({ phone, ...props }: Props) => {
             selected={isInCart}
             onClick={() => {
               setCart((prev) =>
-                prev.includes(String(phone.id))
-                  ? prev.filter((id) => id !== String(phone.id))
-                  : [...prev, String(phone.id)],
+                prev.includes(String(product.id))
+                  ? prev.filter((id) => id !== String(product.id))
+                  : [...prev, String(product.id)],
               );
             }}
           >
@@ -71,9 +75,9 @@ export const ProductCard = ({ phone, ...props }: Props) => {
             like={isFavourite}
             onClick={() => {
               setFavourites((prev) =>
-                prev.includes(String(phone.id))
-                  ? prev.filter((id) => id !== String(phone.id))
-                  : [...prev, String(phone.id)],
+                prev.includes(String(product.id))
+                  ? prev.filter((id) => id !== String(product.id))
+                  : [...prev, String(product.id)],
               );
             }}
           ></ButtonHeart>

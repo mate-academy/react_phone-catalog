@@ -12,6 +12,14 @@ export const en = {
     hotPrice: 'Hot prices'
   },
 
+  sectionCategories: {
+    title: 'Shop by category',
+    modile: 'Mobile phones',
+    tablets: 'Tablets',
+    accessories: 'Accessories',
+    models: 'models',
+  },
+
   navigation: {
     home: 'Home',
     phones: 'Phones',

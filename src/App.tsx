@@ -7,6 +7,7 @@ import { ThemeProvider } from './app/providers/Theme';
 import { PhonesProvider } from './app/providers/Phones/PhoneContext';
 import { CartProvider } from './app/providers/Cart';
 import { FavouritesProvider } from './app/providers/Favorities';
+import { ProductsProvider } from './app/providers/Products/ProductsContext';
 
 export const App: React.FC = () => {
   // const [count, setCount] = useState(0);
@@ -17,8 +18,10 @@ export const App: React.FC = () => {
         <CartProvider>
           <FavouritesProvider>
             <PhonesProvider>
-              <Header></Header>
-              <Outlet />
+              <ProductsProvider>
+                <Header></Header>
+                <Outlet />
+              </ProductsProvider>
             </PhonesProvider>
           </FavouritesProvider>
         </CartProvider>

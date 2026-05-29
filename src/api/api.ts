@@ -1,4 +1,4 @@
-import { Phone } from '@/shared/type';
+import { Phone, Product } from '@/shared/type';
 
 const BASE_URL = './api';
 
@@ -24,6 +24,11 @@ function getPhones() {
   return getData<Phone[]>('/phones.json');
 }
 
+function getProducts() {
+  return getData<Product[]>('/products.json');
+}
+
 export const api = {
   getPhones: getPhones,
+  getProducts: getProducts,
 }

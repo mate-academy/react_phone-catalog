@@ -12,6 +12,14 @@ export const ua = {
     hotPrice: 'Гарячі пропозиції',
   },
 
+  sectionCategories: {
+    title: 'Покупки за категоріями',
+    modile: 'Телефони',
+    tablets: 'Планшети',
+    accessories: 'Аксесуари',
+    models: 'моделей',
+  },
+
   navigation: {
     home: 'Головна',
     phones: 'Телефони',

@@ -2,11 +2,15 @@
 
 .main {
   width: 100%;
+  height: 100%;
 
   transition: box-shadow $transition;
 }
 
 .content {
+  box-sizing: border-box;
+  height: 100%;
+
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -16,19 +20,35 @@
 
 .image {
   width: 100%;
+  object-fit: contain;
+  object-position: center;
+  height: 100%;
   transition: transform $transition;
 }
 
-
-
 .title {
+  display: block;
+
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0%;
   margin-top: 16px;
+  height: 42px;
 
   color: var(--h);
+}
+
+.titleLink {
+  display: block;
+  font-size: 14px;
+  line-height: 21px;
+  margin-top: auto;
+}
+
+.priceBox {
+  display: flex;
+  gap: 8px;
 }
 
 .price {
@@ -37,6 +57,12 @@
   font-size: 22px;
   line-height: 140%;
   letter-spacing: 0%;
+
+  &lineThrough {
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+    color: var(--text);
+  }
 }
 
 .line {
@@ -54,6 +80,7 @@
 
 .detail {
   display: flex;
+  gap: 20px;
   justify-content: space-between;
 
   &Text1 {
@@ -70,12 +97,19 @@
     line-height: 100%;
     letter-spacing: 0%;
     color: var(--h);
+    text-align: end;
+
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
 .buttons {
   display: flex;
   gap: 8px;
+  // margin-top: auto;
 }
 
 .buttonHeart {
@@ -94,11 +128,10 @@
   flex: 1;
 }
 
-
 .main:hover {
- box-shadow: 0 0 10px var(--line-and-border);
+  box-shadow: 0 0 10px var(--line-and-border);
 
- .image {
-   transform: scale(1.05);
- }
+  .image {
+    transform: scale(1.05);
+  }
 }
