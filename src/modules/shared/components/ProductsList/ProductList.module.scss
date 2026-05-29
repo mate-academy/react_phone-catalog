@@ -1,8 +1,18 @@
-.catalog {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 16px;
-  padding: 80px 150px;
+.listWrapper {
+  margin-bottom: 80px;
+}
 
-  background-color: #0f1121;
+.title {
+  color: #f1f2f9;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  margin: 0 0 24px;
+}
+
+.productList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
 }

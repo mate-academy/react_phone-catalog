@@ -1,3 +1,73 @@
-.root {
-  display: block;
+.categoryWrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-bottom: 80px;
+}
+
+.pageTitle {
+  color: #f1f2f9;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  margin: 0 0 24px;
+}
+
+.categoryContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  width: 100%;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  flex: 1;
+  min-width: 0;
+}
+
+.imageBox {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.bgPhones {
+  background-color: #6d6474;
+}
+
+.bgTablets {
+  background-color: #8d8d92;
+}
+
+.bgAccessories {
+  background-color: #973d5f;
+}
+
+.categoryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1em;
+  color: #f1f2f9;
+  margin: 24px 0 4px;
+}
+
+.description {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #75767f;
+  margin: 0;
 }

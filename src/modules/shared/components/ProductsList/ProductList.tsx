@@ -9,10 +9,13 @@ type Props = {
 
 export const ProductList: React.FC<Props> = ({ products }) => {
   return (
-    <section className={styles.catalog}>
-      {products.map(product => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </section>
+    <div className={styles.listWrapper}>
+      <h2 className={styles.title}>Brand new models</h2>
+      <section className={styles.productList}>
+        {products.slice(0, 4).map(product => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </section>
+    </div>
   );
 };

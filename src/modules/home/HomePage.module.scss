@@ -1,5 +1,11 @@
-.container {
+.homePage {
   background-color: #0f1121;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 152px;
 }
 
 .title {
@@ -7,5 +13,5 @@
   font-weight: 800;
   font-size: 48px;
   line-height: 56px;
-  margin: 56px 150px;
+  margin: 56px 0;
 }
