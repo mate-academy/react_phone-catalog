@@ -5,6 +5,9 @@ import { NavLink } from 'react-router-dom';
 import { useCart } from '@/app/providers/CartContext';
 import { links } from '@/shared/constants/links';
 import styles from './Menu.module.scss';
+import { selectCartTotalCount } from '@/store/slices/cartSlice';
+import { useSelector } from 'react-redux';
+import { selectFavoritesCount } from '@/store/slices/favoritesSlice';
 
 type MenuProps = {
   onClose?: () => void;
@@ -21,7 +24,8 @@ const ICONS = {
   ],
 };
 const Menu: React.FC<MenuProps> = ({ onClose, isMenuOpen }) => {
-  const { totalCount, totalFavoritesCount } = useCart();
+  const totalCount = useSelector(selectCartTotalCount);
+  const totalFavoritesCount = useSelector(selectFavoritesCount);
 
   return (
     <div

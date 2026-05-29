@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-// eslint-disable-next-line import/extensions
 import { useTheme } from '@/app/providers/ThemeContext';
-// eslint-disable-next-line import/extensions
 import { useCart } from '@/app/providers/CartContext';
 import { links } from '@/shared/constants/links';
 import Menu from '../../ui/Menu/Menu';
@@ -10,6 +8,9 @@ import ThemeToggle from './ThemeIcon';
 import styles from './Navbar.module.scss';
 import LogoDark from '/img/LogoDark.svg';
 import LogoLight from '/img/LogoLight.svg';
+import { useSelector } from 'react-redux';
+import { selectCartTotalCount } from '@/store/slices/cartSlice';
+import { selectFavoritesCount } from '@/store/slices/favoritesSlice';
 const NAV_ICONS = {
   /* eslint-disable max-len */
   heart:
@@ -27,7 +28,8 @@ const NAV_ICONS = {
 };
 
 export const Navbar = () => {
-  const { totalCount, totalFavoritesCount } = useCart();
+  const totalCount = useSelector(selectCartTotalCount);
+  const totalFavoritesCount = useSelector(selectFavoritesCount);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { theme } = useTheme();
