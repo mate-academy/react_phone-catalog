@@ -8,7 +8,7 @@ import { AccessoriesPage } from './modules/AccessoriesPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { Cart } from './modules/CartPage';
 import { NotFoundPage } from './modules/NotFoundPage';
-import { AppProvider } from './context/Context';
+import { AppProvider } from './context/AppContext';
 
 export const App = () => {
   return (

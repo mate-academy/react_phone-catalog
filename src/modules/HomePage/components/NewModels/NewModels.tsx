@@ -1,7 +1,7 @@
 import { Product } from '../../../../types/Product';
 import styles from './NewModels.module.scss';
 import cn from 'classnames';
-import { useAppContext } from '../../../../context/Context';
+import { useAppContext } from '../../../../context/AppContext';
 
 type Props = {
   newPhonesModels: Product[];

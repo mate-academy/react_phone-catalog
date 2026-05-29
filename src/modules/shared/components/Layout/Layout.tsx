@@ -3,7 +3,7 @@ import { Header } from '../Header';
 import { Footer } from '../Footer';
 import { Menu } from '../Header/components/Menu';
 import { useEffect, useState } from 'react';
-import { useAppContext } from '../../../../context/Context';
+import { useAppContext } from '../../../../context/AppContext';
 
 const MIN_TABLET_SCREEN_SIZE = 640;
 
