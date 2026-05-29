@@ -24,9 +24,9 @@ export const FavoritesPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       const urls = [
-        './api/phones.json',
-        './api/tablets.json',
-        './api/accessories.json',
+        `${import.meta.env.BASE_URL}/api/phones.json`,
+        `${import.meta.env.BASE_URL}/api/tablets.json`,
+        `${import.meta.env.BASE_URL}/api/accessories.json`,
       ];
 
       const allData: (Phone | Tablet | Accessories)[] = [];
@@ -207,7 +207,6 @@ export const FavoritesPage = () => {
             </Link>
 
             <div className="favorites__item-actions">
-
               <button
                 className={`favorites__item-btn ${
                   cart.some(
@@ -256,7 +255,6 @@ export const FavoritesPage = () => {
                   className="favorites__item-btn-icon"
                 />
               </button>
-
             </div>
 
           </div>
