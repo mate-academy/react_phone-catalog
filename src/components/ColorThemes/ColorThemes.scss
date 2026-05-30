@@ -1,0 +1,47 @@
+@import '../../utils/mixins';
+
+$themes: (
+  dark: (
+    colorSwiperBG: $colorDarkGray,
+    colorSwiperText: #f1f2f9,
+    colorCartBy: #161827,
+    colorHeaderFooter: $colorBlack,
+    colorText: $colorWhite,
+    colorBackround: $colorBlack,
+    colorPaginationActive: $colorWhite,
+    colorPagination: #3B3E4A,
+  ),
+  light: (
+    colorSwiperBG: $colorWhite,
+    colorSwiperText: $colorDarkGray,
+    colorCartBy: $colorWhite,
+    colorHeaderFooter: $colorWhite,
+    colorText: $colorBlack,
+    colorBackround: $colorWhite,
+    colorPaginationActive: #313237,
+    colorPagination: #E2E6E9,
+  ),
+);
+
+@mixin themify($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
