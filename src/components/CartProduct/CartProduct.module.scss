@@ -1,0 +1,121 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables' as *;
+
+.cartProduct {
+  display: grid;
+  grid-template:
+    'remove image name' auto
+    'quantity quantity price' auto /
+    auto 80px 1fr;
+  gap: 16px;
+  align-items: center;
+
+  padding: 16px;
+  border: 1px solid $color-elements;
+  border-radius: 16px;
+
+  @include on-tablet {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    padding: 24px;
+  }
+
+  &__remove {
+    cursor: pointer;
+
+    grid-area: remove;
+
+    width: 16px;
+    height: 16px;
+    border: none;
+
+    background: none;
+  }
+
+  &__imageLink {
+    display: block;
+    grid-area: image;
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+
+    @include on-tablet {
+      width: 64px;
+      height: 64px;
+    }
+
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__name {
+    grid-area: name;
+    margin-right: auto;
+    color: $color-primary;
+    text-decoration: none;
+
+    @include text-style($body-text);
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    grid-area: quantity;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__btn {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+
+    background-color: $color-white;
+    border: 1px solid $color-elements;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+
+    &:hover {
+      background-color: $color-accent;
+    }
+  }
+
+  &__count {
+    min-width: 24px;
+    color: $color-primary;
+    text-align: center;
+
+    @include text-style($body-text);
+  }
+
+  &__price {
+    grid-area: price;
+
+    @include text-style($h3-desktop);
+
+    color: $color-primary;
+    justify-self: end;
+    width: 80px;
+    text-align: right;
+  }
+}

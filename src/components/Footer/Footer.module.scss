@@ -1,0 +1,97 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables' as *;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding-block: 32px;
+  padding-inline: 16px;
+
+  box-shadow: 0 -1px 0 0 #E2E6E9;
+
+  @include on-tablet {
+    overflow: hidden;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    max-height: 96px;
+
+    @include padding-inline-responsive;
+  }
+
+    &__logo-wrapper {
+    display: flex;
+    align-items: center;
+    height: 48px;
+
+    img {
+      height: 22px;
+
+      @include on-tablet {
+        height: 28px;
+      }
+    }
+
+    @include on-tablet {
+      height: 64px;
+    }
+  }
+
+  &__logo {
+    user-select: none;
+    object-fit: contain;
+  }
+
+  &__navList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    padding-left: 0;
+
+    list-style: none;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__link {
+    color: $color-secondary;
+    text-decoration: none;
+
+    @include text-style($uppercase-desktop);
+  }
+
+  &__backToTop {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__backToTopText {
+    @include text-style($small-text);
+
+    cursor: pointer;
+    font-weight: 700;
+    color: $color-secondary;
+  }
+
+  &__backToTopBtn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #B4BDC3;
+    border-radius: 50%;
+
+    background: none;
+  }
+}

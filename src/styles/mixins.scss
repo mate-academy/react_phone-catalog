@@ -1,0 +1,73 @@
+@use "sass:map";
+
+@mixin text-style($style) {
+  font-size: map.get($style, size);
+  font-weight: map.get($style, weight);
+  line-height: map.get($style, line-height);
+  text-transform: if(map.has-key($style, transform), map.get($style, transform), none);
+  letter-spacing: map.get($style, letter-spacing);
+}
+
+@mixin on-mobile {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin widest {
+  @media (min-width: 1201px) {
+    @content;
+  }
+}
+
+@mixin responsive-text-style($mobile, $desktop) {
+  font-size: map.get($mobile, size);
+  font-weight: map.get($mobile, weight);
+  letter-spacing: map.get($mobile, letter-spacing);
+
+  @include on-tablet {
+    font-size: map.get($desktop, size);
+    font-weight: map.get($desktop, weight);
+    letter-spacing: map.get($desktop, letter-spacing);
+  }
+}
+
+@mixin grid-tablet($gap: 16px) {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: $gap;
+}
+
+@mixin grid-desktop($gap: 16px) {
+  display: grid;
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+  column-gap: $gap;
+}
+
+@mixin padding-inline-tablet {
+  padding-inline: 24px;
+}
+
+@mixin padding-inline-responsive {
+  @include padding-inline-tablet;
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+
+  @include widest {
+    padding-inline: 152px;
+  }
+}

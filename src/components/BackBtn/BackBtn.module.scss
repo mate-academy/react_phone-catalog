@@ -1,0 +1,32 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+
+.BackBtn {
+  cursor: pointer;
+
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  text-decoration: none;
+
+  &__icon {
+    display: inline-block;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__text {
+    display: inline-block;
+
+    margin: 0;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    color: $color-secondary;
+  }
+}

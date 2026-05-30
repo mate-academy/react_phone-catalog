@@ -1,0 +1,57 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+
+.techpecs {
+  padding-top: 56px;
+
+  @include on-tablet {
+    padding-top: 64px;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / 24;
+    padding-top: 0;
+  }
+
+  &__header {
+    margin: 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-elements;
+
+    @include text-style($h3-mobile);
+
+    @include on-tablet {
+      @include text-style($h3-desktop);
+    }
+  }
+
+  &__detailes {
+    @include text-style($body-text);
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    padding: 30px 0;
+
+    color: $color-secondary;
+
+    @include on-tablet {
+      padding: 25px 0;
+    }
+  }
+
+  &__detailesRow {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__detailesName {
+    text-align: left;
+  }
+
+  &__detailesValue {
+    color: $color-primary;
+    text-align: right;
+  }
+}
