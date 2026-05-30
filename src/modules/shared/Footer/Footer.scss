@@ -1,0 +1,130 @@
+@import '../../../styles/main';
+
+.footer {
+  box-shadow: 0 -1px 0 0 var(--color-gray-elements);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    margin-top: 64px;
+    padding-block: 32px;
+
+    @include content-padding-inline;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @include on-desktop {
+      margin-top: 80px;
+    }
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+      align-items: center;
+    }
+  }
+
+  &__link {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    color: var(--color-gray-secondary);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    &:hover {
+      color: var(--color-gray-primary);
+      transform: scale(1.02);
+    }
+  }
+
+  &__block {
+    cursor: pointer;
+
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__button-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+
+    .footer__button-title {
+      position: absolute;
+      top: 50%;
+      right: 170%;
+      transform: translate(8px, -50%);
+      white-space: nowrap;
+
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+
+      font-family: Mont-SemiBold, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-gray-primary);
+
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+    }
+
+    .footer__button:hover + .footer__button-title {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+    transform: rotate(90deg);
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-gray-icons-placeholders);
+    background-color: var(--color-bg);
+    transition:
+      border-color 0.3s ease,
+      background-color 0.3s ease;
+
+    &:hover {
+      border-color: var(--color-gray-primary);
+      background-color: var(--color-hover);
+    }
+  }
+}
+
+body.theme_dark .footer__button {
+  border: none;
+  background-color: var(--color-surface-2);
+
+  @include hover(background-color, var(--color-gray-icons-placeholders));
+}

@@ -1,0 +1,164 @@
+@import '../../../styles/mixins';
+@import '../../../styles/main';
+@import '../../../styles/variables';
+
+.productCard {
+  &__container {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    padding: 32px;
+    border: 1px solid var(--color-gray-elements);
+    text-decoration: none;
+
+    @include hover(border-color, var(--color-gray-primary));
+
+    &-photo {
+      width: 148px;
+      height: 129px;
+      transition: transform 0.3s ease;
+
+      @include on-tablet {
+        width: 173px;
+        height: 202px;
+      }
+
+      @include on-desktop {
+        width: 208px;
+        height: 196px;
+      }
+    }
+
+    &-title {
+      height: 58px;
+      padding-top: 16px;
+    }
+
+    &-price {
+      display: flex;
+      gap: 8px;
+
+      font-size: 22px;
+      line-height: 31px;
+    }
+
+    &-specifications {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    &-buttons {
+      display: flex;
+      gap: 8px;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-gray-primary);
+  }
+
+  &__price {
+    &-regular {
+      font-family: Mont-Regular, sans-serif;
+      font-weight: 500;
+      color: var(--color-gray-secondary);
+      text-decoration-line: line-through;
+    }
+
+    &-discount,
+    &-regular-without-discount {
+      font-family: Mont-Bold, sans-serif;
+      font-weight: 800;
+      color: var(--color-gray-primary);
+    }
+  }
+
+  &__divider {
+    display: block;
+    height: 1px;
+    background-color: var(--color-gray-elements);
+  }
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 15px;
+
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__info {
+    color: var(--color-gray-secondary);
+  }
+
+  &__value {
+    color: var(--color-gray-primary);
+  }
+
+  &__button {
+    cursor: pointer;
+    padding: 11px 0;
+    border: none;
+
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 8px;
+    color: var(--color-bg);
+
+    &-card {
+      width: 100%;
+      background-color: var(--color-gray-primary);
+
+      @include hover(background-color, var(--color-gray-secondary));
+
+      &--active {
+        pointer-events: none;
+        border: 1px solid var(--color-gray-elements);
+        color: var(--color-green);
+        background-color: var(--color-bg);
+
+        &:hover {
+          border-color: inherit;
+          box-shadow: none;
+        }
+      }
+    }
+
+    &-favorites {
+      flex-shrink: 0;
+      width: 40px;
+      border: 1px solid var(--color-gray-icons-placeholders);
+      background-color: var(--color-bg);
+
+      @include hover(border-color, var(--color-gray-primary));
+
+      &--active {
+        border: 1px solid var(--color-gray-elements);
+      }
+    }
+  }
+
+  &:hover .productCard__container-photo {
+    transform: scale(1.05);
+  }
+}
