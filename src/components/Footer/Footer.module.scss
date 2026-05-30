@@ -1,0 +1,79 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.footer {
+  @include grid-container;
+
+  margin-top: $footer-margin-top-default;
+
+  box-shadow: 0 -1px 0 0 var(--icons);
+
+  @include on-tablet {
+    height: $footer-height-tablet;
+  }
+
+  @include on-desktop {
+    margin-top: $footer-margin-top-desktop;
+  }
+}
+
+.footerContent {
+  @include grid-columns;
+
+  padding-block: 32px;
+
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: start;
+  justify-content: space-between;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+}
+
+.linkList {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  color: var(--secondary);
+  text-transform: uppercase;
+  font-weight: 800;
+  font-style: 12px;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.linkItem {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  line-height: 12px;
+
+  @include underline-hover($height: 0);
+}
+
+.backToTopWrapper {
+  width: 100%;
+
+  @include on-tablet {
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}

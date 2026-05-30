@@ -1,0 +1,41 @@
+@import '../../../styles/variables';
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 100%;
+
+  li {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+}
+
+.homeLink {
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  background-image: url('/icons/home.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  filter: var(--icon-filter);
+
+  &:hover {
+    filter: var(--icon-filter-hover);
+  }
+}
+
+.link {
+  &:hover {
+    color: var(--secondary);
+  }
+}
+
+.current {
+  color: var(--secondary);
+}

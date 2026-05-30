@@ -1,0 +1,276 @@
+@import '../styles/variables';
+
+/* 1. Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin/padding and set sensible defaults */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+main,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* 3. HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section {
+  display: block;
+}
+
+/* 4. Base font settings */
+html {
+  -webkit-text-size-adjust: 100%; /* prevent font scaling in landscape */
+  -ms-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    'Noto Sans',
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol';
+  line-height: 1.15;
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  line-height: 1.5;
+  color: var(--primary);
+  background: var(--color-bg, #fff);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 5. Titles inherit font-weight/line-height */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+/* 6. Lists */
+ol,
+ul {
+  list-style: none;
+}
+
+/* 7. Links */
+a {
+  background-color: transparent;
+  color: inherit;
+  text-decoration: none;
+}
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* 8. Images and media */
+img,
+picture {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+svg {
+  fill: currentColor;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* 9. Forms: basic reset and cross-browser consistency */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border-radius: 0;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+/* 10. Remove inner spin on number inputs for WebKit and Firefox */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* 11. Forms: placeholder opacity */
+::placeholder {
+  opacity: 0.6;
+  color: currentColor;
+}
+
+/* 12. Table normalization */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 13. Accessibility helpers */
+[hidden] {
+  display: none !important;
+}
+
+/* 14. Focus outlines — keep for keyboard users, improve visibility */
+:focus-visible {
+  outline: 2px solid rgb(0 0 0 / 30);
+}
+
+/* 15. Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 17. Utility: make images draggable=false by default */
+img,
+svg {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* 18. Basic form element align */
+label {
+  display: inline-block;
+}
+
+/* End of normalize.css */

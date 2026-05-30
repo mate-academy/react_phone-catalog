@@ -1,0 +1,10 @@
+@import './../../styles/variables';
+@import './../../styles/mixins';
+
+.header {
+  width: 100%;
+  position: sticky;
+  background-color: var(--page-bg);
+  top: 0;
+  z-index: 1000;
+}

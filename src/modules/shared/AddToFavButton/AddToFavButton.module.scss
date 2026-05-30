@@ -1,0 +1,32 @@
+@import '../../../styles/variables';
+
+.addToFavButton {
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding: 12px;
+  border: 1px solid var(--icons);
+
+  background-image: url('/icons/favourites.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: var(--icon-filter);
+
+  &:hover {
+    border: 1px solid var(--accent);
+  }
+
+  &:active {
+    background-image: url('/icons/favourites-selected.svg');
+  }
+}
+
+.addedToFav {
+  border: none;
+  filter: none;
+  background-image: url('/icons/favourites-selected.svg');
+
+  &:hover {
+    border: none;
+  }
+}

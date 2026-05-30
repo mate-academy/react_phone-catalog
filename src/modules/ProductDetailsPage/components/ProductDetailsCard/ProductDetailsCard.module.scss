@@ -1,0 +1,92 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.productCard {
+  @include grid-container($padding-mobile: 0, $padding-tablet: 0);
+
+  row-gap: 40px;
+}
+
+.productImgs {
+  @include on-tablet {
+    grid-column: 1 / 7;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 12;
+  }
+
+  height: 288px;
+  width: 288px;
+  object-fit: contain;
+}
+
+.productInfo {
+  @include on-tablet {
+    grid-column: 7 / -1;
+  }
+
+  @include on-desktop {
+    grid-column: 13 / -1;
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.productActions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.productName {
+  align-self: start;
+}
+
+.productPrice {
+  display: flex;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+}
+
+.productFullPrice {
+  color: var(--secondary);
+  font-weight: 500;
+  font-size: 22px;
+  text-decoration: line-through;
+}
+
+.divider {
+  display: block;
+  border: 1px solid var(--icons);
+}
+
+.bottomButtonsWrapper {
+  display: flex;
+  justify-content: stretch;
+  gap: 8px;
+}
+
+.productFeatures {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+.feature {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+}
+
+.featureName {
+  color: var(--secondary);
+}
+
+.featureValue {
+  text-align: right;
+}

@@ -1,0 +1,34 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.page {
+  @include page-wrapper;
+}
+
+.container {
+  span {
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--secondary);
+  }
+}
+
+.filters {
+  @include grid-container($padding-mobile: 0, $padding-tablet: 0);
+
+  & > * {
+    @include grid-columns($cols-mobile: 2, $cols-tablet: 4, $cols-desktop: 4);
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &:last-child {
+      @include grid-columns($cols-mobile: 2, $cols-tablet: 3, $cols-desktop: 3);
+    }
+  }
+}
+
+.emptyMessageWrapper {
+  padding-top: 50px;
+}
