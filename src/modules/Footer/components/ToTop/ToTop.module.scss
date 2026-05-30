@@ -1,0 +1,41 @@
+@import '../../../../App';
+
+.to-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  @include on-tablet {
+    justify-self: end;
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+
+  .text {
+    font-family: Mont-SemiBold, sans-serif;
+    color: $secondary-color;
+    font-size: 12px;
+    line-height: 15.34px;
+    cursor: default;
+
+    @include on-desktop {
+      transition: color $default-trans-dur;
+    }
+  }
+
+  &:hover .text,
+  &:active .text {
+    color: $primary-color;
+  }
+
+  .button {
+    box-sizing: border-box;
+    height: 32px;
+
+    @include nav-elements($is-it-pagination: false);
+  }
+}

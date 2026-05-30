@@ -1,0 +1,34 @@
+@import '../../../../../App';
+
+.products-wrapper {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+
+  @include on-tablet {
+    @include tablet-grid;
+  }
+
+  @include on-small-desktop {
+    @include small-desktop-grid;
+  }
+
+  @include on-desktop {
+    @include desktop-grid;
+  }
+
+  > div {
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-small-desktop {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+}

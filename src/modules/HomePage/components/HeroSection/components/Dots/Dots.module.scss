@@ -1,0 +1,19 @@
+@import '../../../../../../App';
+
+.dots {
+  margin-top: 8px;
+  gap: 4px;
+
+  .dot-wrapper {
+    width: 24px;
+    height: 24px;
+
+    @include flex-center-center;
+  }
+
+  .dot {
+    padding: 0;
+    width: 14px;
+    height: 4px;
+  }
+}

@@ -1,0 +1,14 @@
+@import '/src/App';
+
+.favourites {
+  width: var(--container-width);
+  margin-inline: auto;
+
+  .title {
+    @include products-title;
+  }
+
+  .subtitle {
+    @include products-subtitle;
+  }
+}

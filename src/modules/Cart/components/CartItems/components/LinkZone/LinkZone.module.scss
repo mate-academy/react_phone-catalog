@@ -1,0 +1,41 @@
+@import '/src/App';
+
+.img {
+  width: 66px;
+  height: 80px;
+  object-fit: contain;
+  transition: transform $default-trans-dur;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @include on-tablet {
+    grid-column: span 2;
+    justify-self: center;
+  }
+
+  @include on-desktop {
+    grid-column: span 3;
+  }
+}
+
+.title-wrapper {
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 6;
+  }
+
+  div {
+    padding: 0;
+    height: fit-content;
+    width: 128px;
+
+    @include on-tablet {
+      width: fit-content;
+    }
+  }
+}

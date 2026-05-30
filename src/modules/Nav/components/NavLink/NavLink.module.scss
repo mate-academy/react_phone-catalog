@@ -1,0 +1,62 @@
+@import '../../../../App';
+
+.link {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 12px;
+  height: 100%;
+  letter-spacing: 4%;
+  color: $secondary-color;
+
+  @include on-desktop {
+    transition: color $default-trans-dur;
+  }
+}
+
+.item {
+  position: relative;
+  box-sizing: border-box;
+  list-style: none;
+  height: 27px;
+  display: flex;
+  align-items: center;
+
+  @include on-tablet {
+    height: 100%;
+    display: list-item;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    height: 2px;
+    background-color: $primary-color;
+    width: 100%;
+    bottom: 0;
+    transform: scaleX(0) translateZ(0);
+
+    @include on-tablet {
+      height: 3px;
+    }
+
+    @include on-desktop {
+      transition: transform $default-trans-dur;
+    }
+  }
+}
+
+@include is-active;
+
+.item:hover::before,
+.item:active::before,
+.is-active::before {
+  transform: scaleX(1) translateZ(0);
+}
+
+.is-active .link,
+.item:hover .link,
+.item:active .link {
+  color: $primary-color;
+}

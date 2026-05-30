@@ -1,0 +1,19 @@
+@import '/src/App';
+
+.counter {
+  position: absolute;
+  left: 50%;
+  transform: translate(2%, -45%);
+  box-sizing: border-box;
+  font-family: Mont-Regular, sans-serif;
+  background-color: $red-color;
+  align-items: center;
+  min-width: 14px;
+  width: fit-content;
+  height: 14px;
+  border: 0.5px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 9px;
+  padding: 2px;
+}

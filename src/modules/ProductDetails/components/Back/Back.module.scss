@@ -1,0 +1,25 @@
+@import '/src/App';
+
+.back {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &-text {
+    cursor: pointer;
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $secondary-color;
+    transition: color $default-trans-dur;
+
+    &:hover {
+      color: $green-color;
+    }
+  }
+}

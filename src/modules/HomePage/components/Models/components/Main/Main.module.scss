@@ -1,0 +1,19 @@
+@import '../../../../../../App';
+
+.products {
+  margin-top: 24px;
+  width: 100vw;
+  position: absolute;
+  overflow-x: hidden;
+
+  @include on-desktop {
+    width: var(--container-width);
+  }
+
+  .wrapper {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    transition: transform $default-trans-dur;
+  }
+}

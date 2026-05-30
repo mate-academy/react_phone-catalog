@@ -1,0 +1,50 @@
+@import '../../../../../../../../../../App';
+
+.first-part {
+  @include product-flex-column;
+
+  .wrapper {
+    cursor: pointer;
+    display: contents;
+  }
+
+  .image {
+    height: 129px;
+    width: 100%;
+    object-fit: contain;
+
+    @include on-tablet {
+      height: 202px;
+    }
+
+    @include on-desktop {
+      height: 196px;
+      transition: transform $default-trans-dur;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .price-wrapper {
+    display: flex;
+    gap: 8px;
+  }
+
+  .price,
+  .old-price {
+    font-size: 22px;
+  }
+
+  .price {
+    font-family: Mont-Bold, sans-serif;
+    line-height: 30.8px;
+  }
+
+  .old-price {
+    font-family: Mont-Regular, sans-serif;
+    text-decoration: line-through;
+    color: $secondary-color;
+  }
+}

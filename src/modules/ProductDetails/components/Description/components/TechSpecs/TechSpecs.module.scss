@@ -1,0 +1,25 @@
+@import '/src/App';
+
+.tech-specs {
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 0;
+    grid-column: 14 / span 11;
+  }
+
+  .title {
+    @include pd-title;
+  }
+
+  .specs {
+    margin-top: 30px;
+
+    @include product-flex-column;
+    @include spec(14px, 21px, Mont-Regular);
+  }
+}

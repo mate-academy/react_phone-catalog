@@ -1,0 +1,56 @@
+@import '../../App';
+
+.footer {
+  --footer-mt: 64px;
+
+  margin-top: calc(var(--product-height) + var(--footer-mt) + var(--models-mt));
+  display: flex;
+  justify-content: center;
+  padding-block: 32px;
+  border-top: $light-border-value;
+  background-color: #fff;
+
+  @include on-tablet {
+    padding: 0;
+    height: 96px;
+  }
+
+  .container {
+    width: var(--container-widdth);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      height: 100%;
+      width: 100%;
+      align-items: center;
+      
+      @include tablet-grid;
+    }
+
+    @include on-small-desktop {
+      @include small-desktop-grid;
+    }
+
+    @include on-desktop {
+      @include desktop-grid;
+    }
+  }
+
+  .logo-wrapper {
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-start;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  @include is-active;
+}
