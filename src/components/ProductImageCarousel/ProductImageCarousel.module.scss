@@ -1,0 +1,83 @@
+@import '@styles/utils/mixins';
+@import '@styles/utils/vars';
+
+.carousel {
+  @include flex($direction: row, $items: center);
+
+  gap: 16px;
+  grid-column: span 11;
+
+  &__mini {
+    @include flex(column, space-between, center);
+
+    gap: 16px;
+    background-color: $white-color;
+
+    &_item {
+      border: 1px solid $porcelain-color;
+      border-radius: $radius-medium;
+      cursor: pointer;
+      transition: border-color 0.2s ease-in-out;
+
+      &.selected {
+        border-color: $woodsmoke-color;
+      }
+
+      &:hover {
+        border-color: $dusty-gray-color;
+      }
+    }
+
+    &_img {
+      @include set-size(80px, 80px);
+
+      object-fit: contain;
+
+      @include on-tablet {
+        @include set-size(35px, 35px);
+      }
+
+      @include on-mobile {
+        @include set-size(50px, 50px);
+      }
+    }
+
+    @include on-mobile {
+      @include flex($direction: row);
+
+      order: 2;
+    }
+  }
+
+  &__main {
+    @include set-size(464px, 464px);
+
+    background-color: $white-color;
+
+    img {
+      @include set-size(100%, 100%);
+
+      object-fit: contain;
+    }
+
+    @include on-tablet {
+      @include set-size(273px, 273px);
+    }
+
+    @include on-mobile {
+      @include set-size(288px, 288px);
+    }
+  }
+
+  @include on-tablet {
+    justify-content: center;
+    grid-column: span 7;
+  }
+
+  @include on-mobile {
+    @include flex(column, flex-start, center);
+
+    grid-column: span 4;
+    margin-bottom: 40px;
+  }
+}

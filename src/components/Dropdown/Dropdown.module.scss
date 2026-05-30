@@ -1,0 +1,56 @@
+@import '@styles/utils/vars';
+@import '@styles/utils/mixins';
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 12rem;
+
+  &__arrow {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+  }
+
+  &__button {
+    @include flex(row, space-between, center);
+
+    width: 100%;
+    border-radius: $radius-medium;
+    padding: 10px 12px;
+    border: 1px solid $submarine-color;
+    background-color: $white-color;
+
+    @include hover(border, 1px solid $regent-gray-color);
+
+    &:focus {
+      border: 1px solid $woodsmoke-color;
+
+      .dropdown__arrow {
+        transform: rotate(270deg);
+      }
+    }
+  }
+
+  &__list {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-top: 4px;
+    background-color: $white-color;
+    border: 1px solid $submarine-color;
+    border-radius: $radius-medium;
+    box-shadow: 0 2px 15px 0 #0000000d;
+    overflow: hidden;
+    z-index: 10;
+  }
+
+  &__item {
+    padding: 6px 12px;
+    cursor: pointer;
+    color: $regent-gray-color;
+    background-color: $white-color;
+
+    @include hover(background-color, $athens-gray-color);
+    @include hover(color, $woodsmoke-color);
+  }
+}
