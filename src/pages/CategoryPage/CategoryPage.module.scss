@@ -1,0 +1,49 @@
+.category-page {
+  @include content-padding-inline;
+
+  &__content {
+    @include page-grid;
+
+    grid-template-rows: 1fr auto;
+    row-gap: 24px;
+    padding-bottom: 64px;
+
+    @include on-tablet {
+      row-gap: 40px;
+    }
+
+    @include on-desktop {
+      padding-bottom: 80px;
+    }
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    grid-row: 1;
+    grid-column: 1 / -1;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &__count-models {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $light-grey;
+  }
+
+
+}

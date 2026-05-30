@@ -1,0 +1,19 @@
+.home-page{
+  &__container {
+    @include content-padding-inline;
+    @include page-grid;
+
+    grid-template-rows: 1fr auto;
+    row-gap: 56px;
+
+    padding-block: 24px 64px;
+
+    @include on-tablet {
+      padding-block: 32px 64px;
+    }
+
+    @include on-desktop {
+      padding-block: 56px 80px;
+    }
+  }
+}

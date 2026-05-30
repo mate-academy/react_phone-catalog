@@ -1,0 +1,47 @@
+.card-description {
+  @include content-padding-inline;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    @include on-tablet {
+      gap: 0;
+
+      @include page-grid;
+      
+      grid-template-rows: 1fr auto;
+      row-gap: 64px;
+
+      @include on-desktop {
+        row-gap: 80px;
+      }
+    }
+  }
+
+  &__slider-container {
+    @include on-tablet {
+      grid-row: 4;
+      grid-column: 1 /-1;
+    }
+
+    @include on-desktop {
+      grid-row: 3;
+    }
+  }
+}
