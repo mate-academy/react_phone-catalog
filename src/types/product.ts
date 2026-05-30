@@ -1,14 +1,14 @@
 export interface Product {
   id: string;
-  category?: string;
-  itemId?: string;
+  category: string;
+  itemId: string;
   name: string;
   fullPrice: number;
-  price?: number;
+  price: number;
   screen: string;
   capacity: string;
-  color?: string;
+  color: string;
   ram: string;
-  year?: number;
+  year: number;
   image: string;
 }

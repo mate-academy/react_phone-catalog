@@ -1,4 +1,6 @@
 import React from 'react';
+import { useCart } from '../../../../cart-context/CartContext';
+import { useFavorite } from '../../../../favorites-context/FavoritesContext';
 import { Product } from '../../../../types/product';
 import styles from './ProductCard.module.scss';
 
@@ -7,9 +9,33 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const { addToCart, removeFromCart, cart } = useCart();
+  const isInCart = cart.some(item => item.product.id === product.id);
+
+  const handleCartClick = () => {
+    if (isInCart) {
+      removeFromCart(product.id);
+    } else {
+      addToCart(product);
+    }
+  };
+
+  const { addToFavorite, removeFromFavorite, favorite } = useFavorite();
+  const isInFavorite = favorite.some(item => item.product.id === product.id);
+
+  const handleFavoriteClick = () => {
+    if (isInFavorite) {
+      removeFromFavorite(product.id);
+    } else {
+      addToFavorite(product);
+    }
+  };
+
   return (
     <article className={styles.card}>
-      <img src={product.image} alt={product.itemId} className={styles.img} />
+      <a href={`/product/${product.id}`}>
+        <img src={product.image} alt={product.name} className={styles.img} />
+      </a>
       <p className={styles.title}>{product.name}</p>
 
       <div className={styles.priceContainer}>
@@ -38,10 +64,27 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className={styles.buttons}>
-        <button className={styles.addToCart}>Add to cart</button>
+        <button
+          className={`${styles.addToCart} ${isInCart ? styles.inCart : ''}`}
+          aria-label="Toggle cart"
+          onClick={handleCartClick}
+        >
+          {isInCart ? 'Added to cart' : 'Add to cart'}
+        </button>
         <div>
-          <button className={styles.iconLink} aria-label="Toggle favorites">
-            <img src="/img/icons/favorites.svg" alt="Favorites" />
+          <button
+            className={styles.iconLink}
+            aria-label="Toggle favorites"
+            onClick={handleFavoriteClick}
+          >
+            <img
+              src={
+                isInFavorite
+                  ? '/img/icons/favorites-field.svg'
+                  : '/img/icons/favorites.svg'
+              }
+              alt=""
+            />
           </button>
         </div>
       </div>

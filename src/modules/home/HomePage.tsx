@@ -15,7 +15,7 @@ import { ShopByCategory } from './components/ShopByCategory';
 import { Phone } from '../../types/phone';
 import { Tablet } from '../../types/tablet';
 import { Accessorie } from '../../types/accessorie';
-import { ProductSliderList } from './components/ProductSliderList';
+import { ProductSlider } from './components/ProductsSlider';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -50,7 +50,7 @@ export const HomePage = () => {
           tablets={tablets}
           accessories={accessories}
         />
-        <ProductSliderList phones={phones} />
+        <ProductSlider products={products} />
       </div>
       <Footer />
     </div>

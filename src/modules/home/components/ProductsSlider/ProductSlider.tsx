@@ -1,14 +1,14 @@
 import React, { useMemo } from 'react';
+import styles from './ProductsSlider.module.scss';
 import { Product } from '../../../../types/product';
-import { ProductCard } from '../ProductCard';
-import styles from './ProductList.module.scss';
-import { useSlider } from '../../hooks/useSlider';
+import { ProductCard } from '../../../shared/components/ProductCard';
+import { useSlider } from '../../../shared/hooks/useSlider';
 
 type Props = {
   products: Product[];
 };
 
-export const ProductList: React.FC<Props> = ({ products }) => {
+export const ProductSlider: React.FC<Props> = ({ products }) => {
   const {
     currentSlide,
     sliderRef,
@@ -18,16 +18,19 @@ export const ProductList: React.FC<Props> = ({ products }) => {
     translateValue,
   } = useSlider(products.length);
 
-  const newModels = useMemo(() => {
-    return [...products].sort(
-      (newModel, oldModel) => oldModel.year - newModel.year,
-    );
+  const hotPrice = useMemo(() => {
+    return [...products].sort((productA, productB) => {
+      const discountA = (productA.fullPrice ?? 0) - (productA.price ?? 0);
+      const discountB = (productB.fullPrice ?? 0) - (productB.price ?? 0);
+
+      return discountB - discountA;
+    });
   }, [products]);
 
   return (
-    <div className={styles.listWrapper}>
+    <div className={styles.sliderWrapper}>
       <div className={styles.topBar}>
-        <h2 className={styles.title}>Brand new models</h2>
+        <h2 className={styles.title}>Hot prices</h2>
 
         <div className={styles.arrows}>
           <button
@@ -50,14 +53,14 @@ export const ProductList: React.FC<Props> = ({ products }) => {
         </div>
       </div>
 
-      <div className={styles.listWindow} ref={sliderRef}>
+      <div className={styles.sliderWindow} ref={sliderRef}>
         <section
-          className={styles.productList}
+          className={styles.productSlider}
           style={{
             transform: `translateX(-${translateValue}px)`,
           }}
         >
-          {newModels.map(product => (
+          {hotPrice.map(product => (
             <div key={product.id} className={styles.cardWrapper} data-card>
               <ProductCard product={product} />
             </div>

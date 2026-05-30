@@ -2,17 +2,78 @@
   margin-bottom: 80px;
 }
 
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
 .title {
-  color: #f1f2f9;
   font-weight: 800;
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -0.01em;
-  margin: 0 0 24px;
+  color: #f1f2f9;
+  margin: 0;
+}
+
+.arrows {
+  display: flex;
+  gap: 16px;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  background-color: #323542;
+  border: 1px solid #3b3e4a;
+
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  img {
+    filter: brightness(0) invert(1);
+  }
+
+  &:hover {
+    background-color: #4a4d58;
+  }
+
+  &:active {
+    transform: scale(0.95);
+    background-color: #15172c;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #a3a8b4;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.25;
+    border-color: #3b3e4a;
+    background-color: #0f1121;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.listWindow {
+  overflow: hidden;
 }
 
 .productList {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
   gap: 16px;
+  transition: transform 0.3s ease;
+}
+
+.cardWrapper {
+  flex-shrink: 0;
+  width: calc((100% - 48px) / 4);
 }
