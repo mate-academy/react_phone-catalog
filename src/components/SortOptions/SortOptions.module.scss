@@ -1,0 +1,36 @@
+.sortOptions {
+  @include container;
+
+  padding-top: 32px;
+
+  &__sort-box {
+    @include page-grid;
+  }
+
+  &__sort {
+    display: flex;
+    flex-direction: column;
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+  }
+
+  &__page {
+    display: flex;
+    flex-direction: column;
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+  }
+
+  &__label {
+    @extend %small-text;
+
+    color: $secondary-color;
+    padding-bottom: 4px;
+  }
+}
