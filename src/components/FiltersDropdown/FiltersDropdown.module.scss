@@ -1,0 +1,106 @@
+@import '../../styles/main';
+
+.buttons {
+  margin-bottom: 24px;
+  gap: 16px;
+
+  @include page-grid;
+}
+
+.button {
+  grid-column: span 2;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &__sort {
+    @include on-tablet {
+      grid-column: 1 / 5;
+    }
+  }
+
+  &__quantity {
+    @include on-tablet {
+      grid-column: 5 / 8;
+    }
+  }
+
+  &__label {
+    margin-bottom: 4px;
+    color: $color-secondary;
+
+    @extend %font-small-text;
+  }
+
+  &__select {
+    position: relative;
+    padding-inline: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    line-height: 40px;
+    color: $color-primary;
+    border: 1px solid $color-icons;
+    cursor: pointer;
+
+    @extend %font-buttons;
+    @include hover(border-color, $color-secondary);
+
+    &--active {
+      border-color: $color-primary;
+
+      @include hover(border-color, $color-primary);
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 100%;
+    background: center / contain no-repeat
+      url(../../../public/icons/chevron-arrow-down.svg);
+    transition: background-image $effect-duration;
+  }
+
+  &__items {
+    position: absolute;
+    margin-top: 4px;
+    padding-block: 8px;
+    width: 100%;
+    font-weight: 500;
+    background-color: $color-white;
+    border: 1px solid $color-elements;
+    box-shadow: 0 2px 15px 0 #0000000d;
+    transition: opacity $effect-duration;
+
+    @extend %font-body-text;
+
+    &.not-visible {
+      display: none;
+    }
+  }
+
+  &__option {
+    padding-inline: 12px;
+    height: 32px;
+    line-height: 32px;
+    color: $color-secondary;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover {
+      color: $color-primary;
+      background-color: $color-hover-bg;
+    }
+  }
+
+  &__content-value {
+    display: inline-block;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}

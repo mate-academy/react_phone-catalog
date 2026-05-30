@@ -1,0 +1,120 @@
+@import '../../styles/main';
+
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: $color-white;
+  border-bottom: 1px solid $color-elements;
+  z-index: 1000;
+  height: 48px;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__main {
+    display: flex;
+    gap: 16px;
+
+    @include on-desktop {
+      gap: 24px;
+    }
+  }
+}
+
+.logo {
+  padding: 13px 16px;
+
+  @include on-desktop {
+    padding: 18px 24px;
+  }
+
+  &__img {
+    height: 22px;
+    width: 64px;
+
+    @include on-desktop {
+      height: 28px;
+      width: 80px;
+    }
+  }
+}
+
+.icons {
+  display: flex;
+
+  &__item {
+    position: relative;
+    display: none;
+    cursor: pointer;
+    transition: all $effect-duration;
+
+    @include on-tablet {
+      display: block;
+      position: relative;
+      box-shadow: -1px 0 0 0 $color-elements;
+    }
+
+    &:hover {
+      background-color: #9797971c;
+    }
+
+    &--mobile {
+      display: block;
+
+      @include on-tablet {
+        display: none;
+      }
+    }
+
+    &--active {
+      @include header-active-link;
+    }
+  }
+
+  &__icon {
+    padding: 16px;
+    transition: opacity $effect-duration;
+
+    @include on-mobile {
+      position: absolute;
+      top: 0;
+      right: 0;
+      box-shadow: -1px 0 0 0 $color-elements;
+    }
+
+    @include on-desktop {
+      padding: 24px;
+    }
+
+    &--not-visible {
+      opacity: 0;
+    }
+  }
+
+  &__count-badge {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14px;
+    height: 14px;
+    top: 10px;
+    right: 10px;
+    background-color: #eb5757;
+    border-radius: 50%;
+    border: 1px solid $color-white;
+    font-size: 9px;
+    line-height: 11px;
+    font-weight: 700;
+    color: $color-white;
+
+    @include on-desktop {
+      top: 18px;
+      right: 18px;
+    }
+  }
+}

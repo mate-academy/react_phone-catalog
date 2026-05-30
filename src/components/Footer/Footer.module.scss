@@ -1,0 +1,110 @@
+@import '../../styles/main';
+
+.footer {
+  padding-block: 32px;
+  width: 100%;
+  box-shadow: 0 -1px 0 0 $color-elements;
+  color: $color-secondary;
+
+  &__container {
+    margin-inline: auto;
+    padding-inline: $mobile-horizontal-indents;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+    max-width: 1200px;
+
+    @include on-tablet {
+      padding-inline: $tablet-horizontal-indents;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      padding-inline: $desktop-horizontal-indents;
+    }
+  }
+
+  &__logo-container {
+    display: flex;
+  }
+
+  &__logo {
+    display: block;
+    height: auto;
+  }
+
+  &__navigation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__navigation-item {
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 11px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: color $effect-duration;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  &__button-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-icons;
+    transform: rotate(-90deg);
+    transition: border-color $effect-duration;
+  }
+
+  &__button {
+    margin-inline: auto;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    color: inherit;
+    transition: color $effect-duration;
+
+    @include on-tablet {
+      margin-inline: 0;
+    }
+
+    &:hover {
+      color: $color-primary;
+
+      .footer__button-icon {
+        border-color: $color-primary;
+      }
+    }
+  }
+
+  &__button-text {
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 700;
+  }
+}

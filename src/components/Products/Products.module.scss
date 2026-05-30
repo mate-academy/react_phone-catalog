@@ -1,0 +1,37 @@
+@import '../../styles/main';
+
+.products {
+  padding-top: 24px;
+
+  &__title {
+    margin: 24px 0 8px;
+    color: $color-primary;
+
+    @extend %font-h1-mobile;
+
+    @include on-tablet {
+      margin-top: 40px;
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__total-items {
+    margin-bottom: 32px;
+    color: $color-secondary;
+
+    @extend %font-body-text;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__list {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}
