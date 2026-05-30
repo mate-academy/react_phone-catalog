@@ -1,0 +1,83 @@
+@import '../../utils';
+
+.product-card {
+  width: 100%;
+  height: 506px;
+  padding: 32px;
+  border: 1px solid $elements;
+  border-radius: 8px;
+  transition: all 0.3s;
+
+  @media (max-width: 1199px) {
+    height: 512px;
+  }
+
+  @media (max-width: $mobile) {
+    height: 440px;
+  }
+
+  &:hover {
+    box-shadow: 0 2px 16px #0000001a;
+  }
+
+  &__content {
+    border-bottom: 1px solid $elements;
+  }
+
+  &__link {
+    display: block;
+    max-width: 208px;
+    height: 196px;
+    margin: 8px auto;
+    line-height: 0;
+
+    @media (max-width: $mobile) {
+      height: 130px;
+    }
+  }
+
+  &__title {
+    display: block;
+    font-family: $font-family;
+    font-size: 14px;
+    font-weight: $font-weight-regular;
+    line-height: 21px;
+    color: $primary;
+    min-height: 50px;
+    padding-top: 8px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    &--discount {
+      font-family: $font-family;
+      font-size: 22px;
+      font-weight: $font-weight-bolt;
+    }
+
+    &--full {
+      font-family: $font-family;
+      font-size: 22px;
+      font-weight: $font-weight-regular;
+      color: $secondary;
+      text-decoration: line-through;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+}

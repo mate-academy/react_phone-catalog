@@ -1,0 +1,37 @@
+@import '../../utils';
+
+.item-tech {
+  width: 100%;
+  max-width: 512px;
+  margin-bottom: 8px;
+
+  @media (max-width: $tablet) {
+    max-width: none;
+  }
+
+  &__title {
+    @include title-in-item-block;
+  }
+
+  &__list {
+    margin-top: 25px;
+  }
+
+  &__name {
+    @include small-text;
+
+    font-weight: $font-weight-regular;
+    color: $secondary;
+
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__value {
+    @include small-text;
+
+    font-weight: $font-weight-medium;
+    color: $primary;
+  }
+}

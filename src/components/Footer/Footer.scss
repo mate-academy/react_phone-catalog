@@ -1,0 +1,76 @@
+@import '../../utils';
+
+.footer {
+  border-top: 1px solid $elements;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $footer-height;
+
+    max-width: 1136px;
+    margin: 0 auto;
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 32px;
+      padding-bottom: 32px;
+      height: 257px;
+    }
+  }
+
+  &__menu-list {
+    display: flex;
+    align-items: center;
+    gap: 106px;
+    list-style: none;
+
+    @media (max-width: $tablet) {
+      gap: 14px;
+    }
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-left: 16px;
+    }
+  }
+
+  &__menu-link {
+    @include menu-list;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__button {
+    display: flex;
+    margin-right: 16px;
+    gap: 16px;
+    text-align: center;
+    align-items: center;
+
+    @media (max-width: $mobile) {
+      margin: 0 auto;
+    }
+
+    &-text {
+      font-family: $font-family;
+      font-size: 12px;
+      font-weight: $font-weight-medium;
+      color: $secondary;
+    }
+
+    &-back {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid $secondary;
+      background-color: $white;
+      cursor: pointer;
+    }
+  }
+}

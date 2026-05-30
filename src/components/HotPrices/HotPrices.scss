@@ -1,0 +1,7 @@
+@import '../../utils';
+
+.hot-prices {
+  &__title {
+    @include title-of-blocks;
+  }
+}
