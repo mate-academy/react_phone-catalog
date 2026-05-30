@@ -1,0 +1,55 @@
+@use '../../../../styles/utils/typography' as *;
+@use '../../../../styles/utils/colors' as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: $color-overlay;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: $color-white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 0 20px $color-modal;
+  text-align: center;
+}
+
+.message {
+  margin-bottom: 1.5rem;
+  color: var(--color-message);
+
+  @include body-text;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.confirm,
+.cancel {
+  padding: 0.5rem 1.2rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s ease-in-out;
+
+  @include body-text;
+}
+
+.confirm {
+  background-color: $color-alert-button;
+  color: $color-white;
+}
+
+.cancel {
+  background-color: $color-cancel-button;
+}

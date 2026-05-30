@@ -1,0 +1,53 @@
+@use '../../styles/utils/breakpoints' as *;
+@use '../../styles/utils/typography' as *;
+@use '../../styles/utils/colors' as *;
+
+.main {
+  width: 100%;
+  padding: 24px 16px 56px;
+
+  @include for-tablet {
+    padding: 24px 24px 64px;
+  }
+
+  @include for-laptop {
+    padding: 24px 32px 81px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+.productOverview {
+  display: flex;
+  flex-direction: column;
+  padding-top: 32px;
+
+  @include for-tablet {
+    display: flex;
+    flex-direction: row;
+    padding-top: 40px;
+    gap: 16px;
+  }
+
+  @include for-laptop {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 64px;
+  }
+}
+
+
+.title {
+  @include h2-mobile;
+}
+
+
+.sectionWrapper {
+  @include for-laptop {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 64px;
+    padding-bottom: 80px;
+  }
+
+}

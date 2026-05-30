@@ -1,0 +1,46 @@
+@use '../../../../styles/utils/typography' as *;
+@use '../../../../styles/utils/colors' as *;
+@use '../../../../styles/utils/breakpoints' as *;
+
+.navigationMenu {
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__button {
+    padding: 16px;
+    border: 0;
+    border-left: 1px solid $color-header-border;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    @include for-laptop {
+      padding: 24px;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-color: $color-white;
+    border-radius: 50%;
+    padding: 1px;
+  }
+}
+
+.searchInput {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid $color-link-navigation;
+  width: 100%;
+  max-width: 300px;
+  position: absolute;
+  top: 70px;
+  left: -200px;
+  min-width: 200px;
+
+  @include small-text
+}

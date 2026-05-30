@@ -1,0 +1,237 @@
+@use '../../styles/utils/breakpoints' as *;
+@use '../../styles/utils/colors' as *;
+@use '../../styles/utils/mixins' as *;
+@use '../../styles/utils/typography' as *;
+@use '../../styles/utils/variables' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-index-header;
+  border-bottom: 1px solid $color-header-border;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  justify-content: space-between;
+  background-color: var(--color-bg);
+
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: 100%;
+
+    @include for-laptop {
+      gap: 24px;
+    }
+  }
+
+  @include for-laptop {
+    max-width: 1500px;
+    margin: 0 auto;
+    justify-content: space-between;
+    width: 100%;
+    height: 64px;
+  }
+}
+
+.logo {
+  padding: 0 16px;
+  position: relative;
+
+  &__img {
+    display: block;
+    width: 64px;
+    height: 22px;
+
+    @include for-laptop {
+      width: 80px;
+      height: 26px;
+    }
+  }
+
+  &__hand {
+    display: block;
+    width: 8.7px;
+    height: 11.4px;
+    position: absolute;
+    top: 0;
+    left: 48.13px;
+
+    @include for-laptop {
+      width: 10.92px;
+      height: 14.6px;
+      left: 64.15px;
+    }
+  }
+
+  @include for-laptop {
+    padding: 0 24px;
+  }
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 32px;
+
+  &__link {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $color-link-navigation;
+    align-self: stretch;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    @include uppercase;
+
+    &:hover {
+      color: var(--color-text);
+    }
+
+    &--active {
+      color: var(--color-text);
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 27px;
+        background-color: var(--color-text);
+        width: 100%;
+        height: 3px;
+
+        @include for-laptop {
+          top: 34px;
+        }
+      }
+    }
+  }
+
+  @include for-mobile {
+    display: none;
+  }
+
+  @include for-laptop {
+    gap: 64px;
+  }
+}
+
+.navigation {
+  @include for-tablet {
+    display: none;
+  }
+
+  &__button {
+    cursor: pointer;
+    padding: 16px;
+    border: 0;
+    border-left: 1px solid $color-header-border;
+    border-bottom: 1px solid $color-header-border;
+    background-color: var(--color-bg);
+
+    @include for-laptop {
+      padding: 24px;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 16px;
+    height: 16px;
+
+    @include for-laptop {
+      padding: 24px;
+    }
+  }
+}
+
+.navigationMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include for-mobile {
+    display: none;
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__theme {
+    align-self: stretch;
+
+  }
+
+  &__item {
+    padding: 16px;
+    border: 0;
+    border-left: 1px solid $color-header-border;
+    text-decoration: none;
+    position: relative;
+
+    &--active {
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        background-color: var(--color-bg-dashes-active);
+        width: 100%;
+        bottom: 0;
+        height: 3px;
+      }
+    }
+
+    @include for-laptop {
+      padding: 24px;
+    }
+  }
+
+  &__button {
+    padding: 24px 16px;
+    border: 0;
+    border-left: 1px solid $color-header-border;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__img {
+    display: block;
+    width: 16px;
+    height: 16px;
+
+    &--theme {
+      background-color: var(--color-button);
+      border-radius: 50%;
+    }
+  }
+}
+
+.quantity {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: $color-secondary-accent;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid $color-white;
+
+  &__value {
+    @include quantity;
+
+    color: $color-white;
+  }
+}

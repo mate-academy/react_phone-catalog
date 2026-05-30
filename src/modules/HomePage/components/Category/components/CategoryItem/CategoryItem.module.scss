@@ -1,0 +1,82 @@
+@use '../../../../../../styles/utils/typography' as *;
+@use '../../../../../../styles/utils/colors' as *;
+@use '../../../../../../styles/utils/breakpoints' as *;
+
+.linkWrapper {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+}
+
+.category {
+  padding: 0 16px;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+
+  @include for-tablet {
+    padding: 0;
+  }
+
+  &__item {
+    height: 320px;
+    width: 100%;
+    background-color: $color-category-phone;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+
+    @include for-tablet {
+      height: 187px;
+    };
+
+    @include for-laptop {
+      height: 368px;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-position: top left;
+    object-fit: cover;
+
+    @include for-tablet {
+      top: 30px;
+      left: 30px
+    }
+
+    @include for-laptop {
+      top: 55px;
+      left: 55px
+    }
+  }
+
+  &__title {
+    @include h3-mobile;
+
+    margin-bottom: 4px;
+  }
+
+  &__value {
+    @include body-text;
+
+    color: $color-link-navigation;
+    padding-bottom: 24px;
+  }
+
+  &:last-child {
+    .category__value {
+      padding-bottom: 0;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}

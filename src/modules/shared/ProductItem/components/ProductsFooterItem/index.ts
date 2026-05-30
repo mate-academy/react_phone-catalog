@@ -1,0 +1,1 @@
+export { ProductsFooterItem } from './ProductsFooterItem';

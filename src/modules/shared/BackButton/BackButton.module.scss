@@ -1,0 +1,27 @@
+@use '../../../styles/utils/colors' as *;
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 24px 0 16px;
+  color: $color-hover-nav;
+
+  &__button {
+    font-family: Mont-Regular, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-decoration: none;
+    color: $color-link-navigation;
+    vertical-align: bottom;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-hover-nav;
+    }
+  }
+}

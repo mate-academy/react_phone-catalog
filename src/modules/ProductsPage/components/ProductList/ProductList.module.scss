@@ -1,0 +1,19 @@
+@use '../../../../styles/utils/breakpoints' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include for-tablet {
+    flex-flow: row wrap;
+    gap: 40px 16px;
+    justify-content: center;
+  }
+
+  @include for-mobile {
+    flex-flow: row wrap;
+    gap: 40px 16px;
+    justify-content: center;
+  }
+}
