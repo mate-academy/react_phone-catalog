@@ -1,0 +1,60 @@
+@use '../../styles/utils' as utils;
+
+.slider {
+  position: static;
+  grid-column: 1 / -1;
+}
+
+.slide {
+  margin-right: 16px;
+}
+
+.arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: block;
+
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #E2E6E9;
+
+  background-image: url(../../assets/img/icons/arrow-up.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+
+  transition: all 0.3s;
+
+  &::before {
+    content: none;
+  }
+
+  &:hover {
+    border: 1px solid #B4BDC3;
+    background-color: #FAFBFC;
+    background-image: url(../../assets/img/icons/arrow-up.svg);
+    background-position: center;
+  }
+}
+
+.next {
+  transform: rotateZ(90deg);
+
+  &:hover {
+    background-color: utils.$hover;
+    background-repeat: no-repeat;
+  }
+}
+
+.prev {
+  right: 60px;
+  left: auto;
+  transform: rotateZ(-90deg);
+
+  &:hover {
+    background-color: utils.$hover;
+    background-repeat: no-repeat;
+  }
+}

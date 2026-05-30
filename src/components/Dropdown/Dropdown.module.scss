@@ -1,0 +1,107 @@
+@use '../../styles/utils' as utils;
+
+.dropdown {
+  position: relative;
+  grid-column: span 2;
+
+  @include utils.on-tablet {
+    grid-column: span 4;
+  }
+
+  @include utils.on-desktop {
+    grid-column: span 5;
+  }
+
+  &:last-child {
+    @include utils.on-tablet {
+      grid-column: span 3;
+    }
+  }
+
+  &__title {
+    font-size: 12px;
+    line-height: 15px;
+    color: utils.$secondary;
+  }
+
+  &__field {
+    position: relative;
+    z-index: 5;
+
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid utils.$icons;
+
+
+    font-size: 15px;
+    line-height: 21px;
+    color: utils.$primary;
+
+    background-color: #fff;
+
+    transition: all 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      border-color: utils.$secondary;
+    }
+
+    &--focus {
+      border: 1px solid utils.$primary;
+    }
+  }
+
+  &__list {
+    position: absolute;
+    top: 0;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+    width: 100%;
+    padding-block: 8px;
+    border: 1px solid utils.$icons;
+
+    visibility: hidden;
+    opacity: 0;
+    background-color: #fff;
+
+
+    transition: all .3s;
+
+    &--show {
+      z-index: 1;
+      top: calc(100% + 8px);
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__item {
+    cursor: pointer;
+
+    padding: 6px 12px;
+
+    font-size: 14px;
+    line-height: 21px;
+    color: utils.$secondary;
+
+    transition: all .3s;
+
+    &:hover {
+      color: utils.$primary;
+      background-color: utils.$hover;
+    }
+
+    &--active {
+      color: utils.$primary;
+      background-color: utils.$hover;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+@use '../../styles/utils' as utils;
+
+.goToBack {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  width: 66px;
+
+  font-size: 12px;
+  line-height: 15px;
+  color: utils.$secondary;
+
+  transition: all .3s;
+
+  &:hover {
+    cursor: pointer;
+    color: utils.$primary;
+  }
+}

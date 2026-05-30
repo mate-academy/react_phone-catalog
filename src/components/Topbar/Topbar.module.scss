@@ -1,0 +1,48 @@
+@use '../../styles/utils' as utils;
+
+.top-bar {
+  position: relative;
+
+  display: flex;
+  flex-grow: 1;
+  gap: 16px;
+  justify-content: space-between;
+
+  height: 48px;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    bottom: 0;
+
+    display: block;
+
+    width: 100vw;
+    height: 1px;
+
+    background-color: utils.$elements;
+  }
+
+  &__button {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    padding-inline: 16px;
+    border-left: 1px solid utils.$elements;
+
+    @include utils.on-tablet {
+      display: none;
+    }
+  }
+
+  @include utils.on-tablet {
+    flex-grow: 0;
+  }
+
+  @include utils.on-desktop {
+    height: 64px;
+  }
+}

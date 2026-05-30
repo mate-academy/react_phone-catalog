@@ -1,0 +1,260 @@
+@use './utils' as utils;
+
+html {
+  scroll-behavior: smooth;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+.icon {
+  cursor: pointer;
+
+  display: block;
+
+  width: 16px;
+  height: 16px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &--menu {
+    background-image: url(../assets/img/icons/menu-burger-icon.svg);
+  }
+
+  &--home {
+    background-image: url(../assets/img/icons/home.svg);
+  }
+
+  &--like {
+    background-image: url(../assets/img/icons/like.svg);
+  }
+
+  &--heart-red {
+    background-image: url(../assets/img/icons/heart-red.svg);
+  }
+
+  &--cart {
+    background-image: url(../assets/img/icons/cart.svg);
+  }
+
+  &--close {
+    background-image: url(../assets/img/icons/close.svg);
+  }
+
+  &--search {
+    background-image: url(../assets/img/icons/search.svg);
+  }
+
+  &--minus {
+    background-image: url(../assets/img/icons/minus.svg);
+  }
+
+  &--plus {
+    background-image: url(../assets/img/icons/plus.svg);
+  }
+
+  &--arrow {
+    background-image: url(../assets/img/icons/arrow-up.svg);
+    transition: transform 0.3s;
+
+    &--right {
+      transform: rotateZ(90deg);
+    }
+
+    &--left {
+      transform: rotateZ(-90deg);
+    }
+
+    &--down {
+      transform: rotateX(180deg);
+    }
+  }
+}
+
+.circle-color {
+  cursor: pointer;
+
+  position: relative;
+
+  display: block;
+
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  padding: 2px;
+  border: 1px solid utils.$elements;
+  border-radius: 50%;
+
+  background-color: white;
+
+  transition: all .3s;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+  }
+
+  &:hover {
+    border-color: utils.$icons;
+  }
+
+  &--active {
+    pointer-events: none;
+    border-color: utils.$primary;
+  }
+
+  &--black {
+    background-color: utils.$primary;
+  }
+
+  &--green {
+    background-color: utils.$green;
+  }
+
+  &--yellow {
+    background-color: yellow;
+  }
+
+  &--purple {
+    background-color: purple;
+  }
+
+  &--rosegold {
+    background-color: utils.$rosegold;
+  }
+
+  &--red {
+    background-color: utils.$red;
+  }
+
+  &--silver {
+    background-color: utils.$elements;
+  }
+
+  &--spacegray {
+    background-color: utils.$secondary;
+  }
+
+  &--gold {
+    background-color: utils.$gold;
+  }
+
+  &--midnightgreen {
+    background-color: utils.$midnightgreen;
+  }
+
+  &--skyblue {
+    background-color: utils.$blue;
+  }
+}
+
+.main {
+  flex: 1;
+  box-sizing: border-box;
+  padding-top: 48px;
+
+  @include utils.on-desktop {
+    padding-top: 64px;
+  }
+}
+
+.container {
+  max-width: utils.$desktop-min-width;
+  margin: 0 auto;
+  padding-inline: 16px;
+
+  @include utils.on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include utils.on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+.section {
+  margin-bottom: 56px;
+
+  @include utils.page-grid;
+
+  @media (min-width: utils.$tablet-min-width) {
+    margin-bottom: 64px;
+  }
+
+  @media (min-width: utils.$desktop-min-width) {
+    margin-bottom: 86px;
+  }
+}
+
+.title {
+  margin-block: 24px;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+
+  @include utils.on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.subtitle {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+
+  @include utils.on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.divider {
+  width: 100%;
+  border: none;
+  border-top: 1px solid utils.$elements;
+}
+
+.button {
+  cursor: pointer;
+
+  flex-grow: 1;
+
+  box-sizing: border-box;
+  height: 40px;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  color: #fff;
+  text-align: center;
+
+  background-color: utils.$primary;
+
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+
+  &--selected {
+    border: 1px solid utils.$elements;
+    color: utils.$green;
+    background-color: #fff;
+  }
+}
