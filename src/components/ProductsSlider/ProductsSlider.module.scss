@@ -1,0 +1,76 @@
+@import '../../styles/variables';
+
+.sliderContainer {
+  grid-column: 1/-1;
+  margin-bottom: 48px;
+
+  & :global {
+    .slick-dots {
+      bottom: -48px !important;
+    }
+
+    li.slick-active > div {
+      background-color: $color-white;
+    }
+
+    div.slick-slide.slick-active.slick-current > div {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: $size-mobile) {
+    margin-inline: -16px;
+  }
+}
+
+.customSlide {
+  width: calc(100% - 96px);
+  aspect-ratio: 2.56 / 1;
+  object-fit: fill;
+
+  @media (max-width: $size-mobile) {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: right center;
+  }
+}
+
+.customDot {
+  width: 14px;
+  height: 4px;
+  background-color: $color-elements;
+}
+
+.customArrow {
+  height: 100%;
+  width: 32px;
+
+  background-color: $color-surface2;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  z-index: 2;
+
+  &:hover {
+    background-color: $color-icons;
+  }
+
+  @media (max-width: $size-mobile) {
+    display: none;
+  }
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+}

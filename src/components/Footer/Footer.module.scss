@@ -1,0 +1,97 @@
+@import '../../styles/variables';
+
+.footer {
+  background-color: $color-black;
+  box-sizing: border-box;
+  border-top: 1px solid $color-elements;
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: $size-mobile) {
+    padding: 32px 16px;
+    justify-content: flex-start;
+  }
+}
+
+.footerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1136px;
+
+  @media (max-width: $size-tablet) {
+    width: 100%;
+  }
+
+  @media (max-width: $size-mobile) {
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start;
+  }
+}
+
+.navList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: $size-mobile) {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.navLink {
+  text-transform: uppercase;
+  color: $color-white;
+  text-decoration: none;
+  line-height: 11px;
+  display: block;
+  font-family: $font-bold;
+  font-size: 12px;
+  letter-spacing: 4%;
+}
+
+.icon-links {
+  display: flex;
+  align-items: center;
+}
+
+.toTop {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  width: 33%;
+  justify-content: flex-end;
+
+  @media (max-width: $size-mobile) {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.toTopTitle {
+  font-family: $font-semibold;
+  color: $color-secondary;
+  line-height: 100%;
+  font-size: 12px;
+  letter-spacing: 0%;
+}
+
+.toTopButton {
+  width: 32px;
+  height: 32px;
+  background-color: $color-surface2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-icons;
+  }
+}

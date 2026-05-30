@@ -1,0 +1,158 @@
+@import '../../styles/variables';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 1px 0 0 $color-surface2;
+
+  font-family: $font-bold;
+
+  background-color: $color-black;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  height: 64px;
+  box-sizing: border-box;
+  border-bottom: 2px solid $color-elements;
+
+  @media (max-width: $size-tablet) {
+    height: 48px;
+  }
+}
+
+.logoAndNav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 100%;
+
+  @media (max-width: $size-tablet) {
+    gap: 16px;
+  }
+}
+
+.logo {
+  padding-inline: 24px;
+  box-sizing: border-box;
+
+  img {
+    height: 28px;
+    width: 80px;
+  }
+
+  @media (max-width: $size-tablet) {
+    padding-inline: 16px;
+
+    img {
+      height: 22px;
+      width: 64px;
+    }
+  }
+}
+
+.navList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 64px;
+
+  align-items: center;
+
+  @media (max-width: $size-tablet) {
+    gap: 32px;
+  }
+
+  @media (max-width: $size-mobile) {
+    display: none;
+  }
+
+  &_link {
+    text-transform: uppercase;
+    color: $color-elements;
+    text-decoration: none;
+    display: block;
+
+    font-size: 12px;
+    padding-block: 22px;
+
+    @media (max-width: $size-tablet) {
+      padding-block: 14px;
+    }
+
+    &:hover {
+      color: $color-white;
+    }
+  }
+}
+
+.activeLink {
+  color: $color-white;
+  border-bottom: 3px solid $color-white;
+}
+
+.iconLinks {
+  display: flex;
+
+  &_link {
+    width: 64px;
+    height: 64px;
+    border-left: 2px solid $color-elements;
+    background-color: $color-black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+    position: relative;
+
+    &:last-child {
+      display: none;
+    }
+
+    @media (max-width: $size-tablet) {
+      width: 48px;
+      height: 48px;
+    }
+
+    @media (max-width: $size-mobile) {
+      &:last-child {
+        display: flex;
+      }
+
+      &:nth-child(-n + 2) {
+        display: none;
+      }
+    }
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.counter {
+  position: absolute;
+  background-color: $color-red;
+  border: 1px solid $color-black;
+  right: 16px;
+  top: 16px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  font-size: 9px;
+
+  @media (max-width: $size-tablet) {
+    right: 8px;
+    top: 8px;
+  }
+}

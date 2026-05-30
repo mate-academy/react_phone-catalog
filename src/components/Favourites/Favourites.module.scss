@@ -1,0 +1,74 @@
+@import '../../styles/variables';
+
+.page {
+  background-color: $color-black;
+  padding: 24px 32px 80px;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: $size-tablet) {
+    padding: 24px 24px 64px;
+  }
+
+  @media (max-width: $size-mobile) {
+    padding: 24px 16px 56px;
+  }
+}
+
+.pageContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  background-color: $color-black;
+  max-width: 1136px;
+
+  @media (max-width: $size-mobile) {
+    gap: 24px;
+  }
+}
+
+.pathHome {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  &_title {
+    font-family: $font-semibold;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $color-secondary;
+  }
+}
+
+.pageInfo {
+  &_title {
+    color: $color-white;
+    font-family: $font-bold;
+    line-height: 56px;
+    font-size: 48px;
+    letter-spacing: -1%;
+    margin: 0;
+    margin-bottom: 8px;
+
+    @media (max-width: $size-mobile) {
+      line-height: 41px;
+      font-size: 32px;
+    }
+  }
+
+  &_counter {
+    font-family: $font-regular;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $color-secondary;
+  }
+}
+
+.pageItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 16px;
+}
