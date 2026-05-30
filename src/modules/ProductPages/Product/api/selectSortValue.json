@@ -1,0 +1,17 @@
+[
+  {
+    "id": 0,
+    "value": "age",
+    "label": "Newest"
+  },
+  {
+    "id": 1,
+    "value": "title",
+    "label": "Alphabetically"
+  },
+  {
+    "id": 2,
+    "value": "price",
+    "label": "Cheapest"
+  }
+]

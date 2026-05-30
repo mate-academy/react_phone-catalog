@@ -1,0 +1,22 @@
+[
+  {
+    "id": 0,
+    "value": 4,
+    "label": "4"
+  },
+  {
+    "id": 1,
+    "value": 8,
+    "label": "8"
+  },
+  {
+    "id": 2,
+    "value": 16,
+    "label": "16"
+  },
+  {
+    "id": 3,
+    "value": "all",
+    "label": "all"
+  }
+]

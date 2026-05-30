@@ -1,0 +1,97 @@
+@media only screen and (min-width:320px){
+    .top-content{
+        grid-column: span 4;
+
+        &-title{
+            grid-column: span 4;
+            padding: 24px 0;
+            font-size: 32px;
+            line-height: 41px;
+        }
+    }
+    
+    .new-models{
+        margin-bottom: 24px;
+        position: relative;
+           
+            &-top{
+                grid-column: span 4;
+                padding: 0;
+                margin: 0;
+                overflow: hidden;
+                margin-bottom: 24.5px;
+            }
+    }
+    .new-brand{
+        width: 100%;
+        grid-column: span 4;
+        display: flex;
+        gap: 16px;
+        overflow: auto hidden;
+        padding: 0;
+        scroll-behavior: smooth;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+    }
+    .home-section-title{
+        font-family: MontBold, sans-serif;
+        font-size: 22px;
+        line-height: 140%;
+        letter-spacing: 0%;
+        grid-column: span 2;
+    }
+    .controllers{
+        grid-column: 3/5;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+    }
+    .main-content .search-link{
+        display: none;
+    }
+   
+}
+
+@media only screen and (min-width:640px) {
+    .top-content-title{
+        grid-column: span 9;
+        padding: 32px 24px;
+        font-size: 48px;
+        line-height: 56px;
+    }
+    .new-models-top {
+        grid-column: span 12;
+    }
+    .controllers{
+        grid-column: 12/13;
+    }
+    .home-section-title {
+        grid-column: span 8;
+    }
+    .new-brand {
+        width: 100%;
+        grid-column: span 12;
+    }
+
+}
+
+@media only screen and (min-width: 1200px) {
+    .top-content-title{
+        grid-column: span 24;
+        padding: 32px 0;
+    }
+    .new-models-top {
+        grid-column: span 24;
+    }
+    .controllers{
+        grid-column: 24/25;
+    }
+    .home-section-title {
+        grid-column: span 8;
+    }
+    .new-brand {
+        width: 100%;
+        grid-column: span 24;
+    }
+}
