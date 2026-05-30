@@ -1,1 +1,45 @@
-// not empty
+@import './Scss-variables/Variables';
+@import '/src/modules/Utils/mixins.scss';
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $main-background-color;
+  cursor: url(./img/cursor/Cursor\ Mouse\ Mice.svg);
+  overflow-x: hidden;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+  flex: 1;
+
+  @include onTablet {
+    min-width: 640px;
+    padding: 0 24px;
+  }
+
+  @include onDesktop {
+    max-width: 1200px;
+    padding: 0 32px;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+}

@@ -1,0 +1,100 @@
+@import '../../../Scss-variables/Variables.scss';
+@import '../../Utils/mixins.scss';
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include onTablet {
+    flex-direction: row;
+    gap: 64px;
+  }
+
+  &--margin {
+    margin-bottom: 56px;
+    @include onTablet {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__product {
+    width: 100%;
+    max-width: 559px;
+
+    @include onTablet {
+      margin-right: 0;
+    }
+
+    &__title {
+      font-family: $mont-regular-font;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+      color: #f1f2f9;
+      margin-bottom: 16px;
+    }
+
+    &__text {
+      font-family: $mont-regular-font;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 150%;
+      color: #75767f;
+      margin-bottom: 32px;
+      white-space: pre-wrap;
+    }
+
+    &__line {
+      color: #3b3e4a;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__info {
+    width: 100%;
+    max-width: 512px;
+
+    @include onTablet {
+      flex-shrink: 1;
+    }
+
+    &__title {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+      color: #f1f2f9;
+      margin-bottom: 16px;
+    }
+
+    &__line {
+      color: #3b3e4a;
+      width: 100%;
+      margin-bottom: 32px;
+    }
+
+    &__about {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+
+      &__parametr {
+        font-family: $mont-regular-font;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 150%;
+        color: #75767f;
+      }
+
+      &__number {
+        font-family: $mont-regular-font;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 150%;
+        text-align: right;
+        color: $active-link-color;
+      }
+    }
+  }
+}

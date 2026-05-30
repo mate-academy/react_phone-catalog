@@ -1,0 +1,210 @@
+@import '../../../Scss-variables/Variables.scss';
+@import '../../Utils/mixins.scss';
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999999999;
+  height: 100vh;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  background-color: $main-background-color;
+
+  &.active {
+    transform: translateX(0);
+  }
+  &__container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    border-bottom: 1px solid grey;
+
+    @include onTablet {
+      justify-content: space-between;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-left: 16px;
+    flex-shrink: 0;
+    @include onTablet {
+      padding-left: 24px;
+      padding-right: 32px;
+    }
+
+    @include onDesktop {
+      padding-right: 48px;
+    }
+
+    &__image {
+      display: block;
+      width: 64px;
+      height: 22px;
+
+      @include onDesktop {
+        width: 80px;
+        height: 28px;
+      }
+    }
+  }
+  &__icons {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    &__close {
+      display: block;
+      background-image: url(/img/logo/Close.svg);
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 14px;
+      height: 16px;
+      padding: 24px;
+      cursor: pointer;
+      border-left: 1px solid grey;
+    }
+  }
+
+  &__nav {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    gap: 24px;
+
+    &:first-of-type {
+      padding: 32px;
+    }
+
+    &__link {
+      font-family: $mont-regular-font;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      text-transform: uppercase;
+
+      color: $not-active-link-color;
+      text-decoration: none;
+      transition: 0.2s;
+      white-space: nowrap;
+      position: relative;
+
+      &:hover {
+        color: $active-link-color;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        background-color: $active-link-color;
+        height: 4px;
+        bottom: -10px;
+        left: 0;
+        width: 100%;
+        transform: scaleX(0);
+        transition: transform 0.3s;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  .is-active {
+    color: $active-link-color;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      background-color: $active-link-color;
+      height: 4px;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      transform: scaleX(1);
+    }
+  }
+
+  &__footer {
+    height: 96px;
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: $active-link-color;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid grey;
+
+    &__favourites,
+    &__cart {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &__favourites {
+      background-image: url(/img/logo/Heart.svg);
+      border-right: 1px solid grey;
+      &::after {
+        content: '';
+        position: absolute;
+        background-color: $active-link-color;
+        height: 4px;
+        bottom: 0;
+        left: 0;
+        width: 50%;
+        transform: scaleX(0);
+        transition: transform 0.3s;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+      }
+    }
+
+    &__cart {
+      background-image: url(/img/logo/Bag.svg);
+      &::after {
+        content: '';
+        position: absolute;
+        background-color: $active-link-color;
+        height: 4px;
+        bottom: 0;
+        right: 0;
+        width: 50%;
+        transform: scaleX(0);
+        transition: transform 0.3s;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
