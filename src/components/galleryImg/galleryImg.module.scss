@@ -1,0 +1,85 @@
+@import '../../styles/main';
+
+.galleryImg {
+  @include page-grid;
+
+  row-gap: 16px;
+
+  @include on-tablet {
+    grid-auto-flow: column;
+    grid-column: 1 / 8;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+}
+
+.bigImgBlock {
+  display: flex;
+  justify-content: center;
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: 2 / -1;
+  }
+
+  @include on-desktop {
+    grid-column: 3 / -1;
+  }
+}
+
+.smallImgBlock {
+  display: flex;
+  gap: 8px;
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    flex-direction: column;
+    grid-column: 1 / 2;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 3;
+  }
+}
+
+.bigImg {
+  display: block;
+  object-fit: contain;
+  min-width: 288px;
+
+  @include on-tablet {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+.smallImg {
+  display: block;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.smallImgBtn {
+  background: none;
+  border: 1px solid #e2e6e9;
+  border-radius: 4px;
+  padding: 4px;
+  height: 40px;
+  width: 40px;
+
+  @include on-tablet {
+    height: 35px;
+    width: 35px;
+  }
+
+  @include on-desktop {
+    height: 80px;
+    width: 80px;
+  }
+}
+
+.active {
+  border: 1px solid #0f0f11;
+}

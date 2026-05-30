@@ -1,1 +1,31 @@
-// not empty
+@import './styles/main';
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Mont, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  max-width: 100%;
+  background: #FAFBFC;
+  min-width: 320px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
+
+
+.container {
+  @include content-padding-inline;
+}
+
+
+
+
+

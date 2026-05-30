@@ -1,0 +1,39 @@
+@import '../../styles/main';
+
+.container {
+  @include content-padding-inline;
+
+}
+
+.phonesPage{
+  margin: 24px 0 64px;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.filterBlock {
+  @include page-grid;
+
+  margin: 32px 0 24px;
+
+  @include on-tablet{
+    margin-top: 40px;
+  }
+}
+
+.productNotFound {
+  @include content-padding-inline;
+
+  display: flex;
+  flex-direction: column;
+  margin-block: 32px;
+}
+
+.errorMessage {
+font-weight: 800;
+font-size: 32px;
+line-height: 56px;
+letter-spacing: .01em;
+}

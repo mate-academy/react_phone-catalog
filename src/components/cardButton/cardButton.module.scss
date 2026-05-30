@@ -1,0 +1,54 @@
+@import '../../styles/main';
+
+.cardBtnBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.cardBtn {
+  background: #216cff;
+  border-radius: 8px;
+  height: 40px;
+  width: calc(100% - 48px);
+  border: none;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+
+  &--size {
+    height: 48px;
+    width: calc(100% - 56px);
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+
+  &--active {
+    border: 1px solid #e2e6e9;
+    background: transparent;
+    color: #216cff;
+  }
+}
+
+.button-img {
+  @include button-img;
+
+  &--size {
+    height: 48px;
+    width: 48px;
+  }
+}
+
+.disabled {
+  border-color: #e2e6e9;
+
+  &:hover {
+    border-color: #e2e6e9;
+  }
+}

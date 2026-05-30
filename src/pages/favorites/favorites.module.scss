@@ -1,0 +1,22 @@
+@import '../../styles/main';
+
+.container {
+  @include content-padding-inline;
+
+}
+
+.favorites {
+  margin-top: 24px;
+}
+
+.favoritesProd {
+  margin: 32px 0 56px;
+
+  @include on-tablet {
+    margin: 40px 0 64px;
+  }
+  
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}

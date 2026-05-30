@@ -1,0 +1,23 @@
+@import '../../styles/main';
+
+.logo {
+  display: flex;
+}
+
+.logo--padding-left {
+  padding-left: 16px;
+
+  @include on-desktop {
+    padding-left: 24px;
+  }
+}
+
+.logoImg {
+  height: 22px;
+  width: 64px;
+
+  @include on-desktop {
+    height: 28px;
+    width: 80px;
+  }
+}

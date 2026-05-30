@@ -1,0 +1,48 @@
+@import '../../styles/main';
+
+.container {
+  @include content-padding-inline;
+}
+
+.section-title {
+  @include section-title;
+}
+
+.categories {
+  @include page-grid;
+
+  gap: 32px;
+  margin-top: 24px;
+}
+
+.categoryImg {
+  object-fit: contain;
+  transition: all 0.5s ease-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / -1;
+  text-decoration: none;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+}
+
+.categoryTitle {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  margin: 24px 0 4px;
+  color: #0f0f11;
+}
