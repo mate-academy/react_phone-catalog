@@ -1,0 +1,123 @@
+.favorites {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  color: var(--text-color);
+  font-family: Inter, sans-serif;
+
+  &__title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 32px;
+  }
+
+  &__empty {
+    font-size: 24px;
+    text-align: center;
+    color: var(--text-muted);
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #2a2a3e;
+    border-radius: 10px;
+    padding: 16px;
+    min-height: 460px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    text-align: center;
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    a {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      text-decoration: none;
+    }
+  }
+  &__item-image {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  &__item-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  &__item-price {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+  }
+
+  &__item-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  &__item-btn {
+    padding: 8px 16px;
+    background-color: #905BFF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+
+    &.added {
+      background-color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    &:hover {
+      background-color: var(--primary-color-dark);
+    }
+
+    &--favorite {
+      padding: 8px;
+      background-color: transparent;
+      border: none;
+    }
+  }
+
+  &__item-btn-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__back {
+    color: #75767f;
+    margin: 20px 0;
+    display: inline-block;
+    font-size: 14px;
+    text-decoration: none;
+
+    &:hover {
+      color: white;
+    }
+  }
+}
