@@ -1,0 +1,57 @@
+@import '../../../styles/main';
+
+.cartModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: #fff;
+  padding: 24px 32px;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.cartModal__notification {
+  font-size: 18px;
+  margin-bottom: 24px;
+  color: $primary-color;
+}
+
+.cartModal__buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cartModal__button_confirm,
+.cartModal__button_cancel {
+  flex: 1;
+  padding: 10px 16px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.cartModal__button_confirm {
+  background-color: $accent-color;
+  color: white;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.25);
+  }
+}
+
+.cartModal__button_cancel {
+  background-color: #e0e0e0;
+  color: $primary-color;
+
+  &:hover {
+    background-color: #c4c4c4;
+  }
+}

@@ -1,0 +1,72 @@
+@import '../../styles/main';
+
+.footer {
+  background-color: #fff;
+  padding: 32px 0;
+  box-shadow: 0 -1px 0 $elements-color;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__backToTop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    &_text {
+      color: $secondary-color;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+    }
+
+    &_icon {
+      width: 32px;
+      height: 32px;
+      padding: 8px;
+      border-radius: 50%;
+      border: 1px solid $icons-color;
+      cursor: pointer;
+      rotate: 270deg;
+    }
+  }
+}
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    align-items: center;
+    flex-direction: row;
+  }
+
+  @include on-desktop {
+    gap: 106px;
+  }
+
+  &__item {
+    color: $secondary-color;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+@import './variables';
+@import './typography';
+@import './mixins';
+@import './reset';
+
+body {
+  font-family: $main-font;
+  font-size: 16px;
+  line-height: 1.5;
+  color: $primary-color;
+  background-color: $bg-color;
+}
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0 64px;
+  background-color: $bg-color;
+
+  @include on-tablet {
+    padding: 32px 0 64px;
+  }
+
+  @include on-desktop {
+    padding: 56px 0 80px;
+  }
+}
+
+.section-title {
+  margin-bottom: 24px;
+}
+
+.swiper {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.swiper-wrapper {
+  display: flex !important;
+  position: relative !important;
+}
+
+.swiper-pagination {
+  position: absolute !important;
+}
+
+.swiper-pagination-bullet {
+  overflow: visible !important;
+  width: 14px !important;
+  height: 4px !important;
+  border-radius: 0 !important;
+  background-color: $secondary-color !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $primary-color !important;
+}

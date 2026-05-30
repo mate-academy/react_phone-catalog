@@ -1,0 +1,86 @@
+@import './mixins';
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+h1,
+h2 {
+  font-weight: 700;
+}
+
+h2,
+h3,
+h4 {
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 3rem;
+    line-height: 56px;
+  }
+}
+
+h2 {
+  font-size: 1.38rem; /* 22px */
+  line-height: 31px;
+
+  @include on-tablet {
+    font-size: 2rem; /* 32px */
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+h3 {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 600;
+  line-height: 26px;
+
+  @include on-tablet {
+    font-size: 1.38rem; /* 22px */
+    font-weight: 700;
+    line-height: 31px;
+  }
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 20px;
+
+  @include on-tablet {
+    font-size: 1.25rem; /* 20px */
+    line-height: 26px;
+  }
+}
+
+.body-text {
+  font-size: 0.88rem; /* 14px */
+  line-height: 21px;
+}

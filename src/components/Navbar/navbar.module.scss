@@ -1,0 +1,144 @@
+@import '../../styles/main';
+
+/* ========== MOBILE-FIRST ========== */
+
+.header {
+  background: #fff;
+  box-shadow: 0 1px 0 $elements-color;
+}
+
+.navbar {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    @include on-desktop {
+      gap: 48px;
+    }
+  }
+
+  &__logo {
+    height: 22px;
+
+    @include on-desktop {
+      height: 28px;
+    }
+  }
+}
+
+/* ========== NAVIGATION LINKS ========== */
+
+.menuList {
+  display: none; // сховати на мобільних
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__link {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $secondary-color;
+    line-height: 48px;
+
+    @include on-desktop {
+      line-height: 64px;
+    }
+
+    &.active {
+      color: $primary-color;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $primary-color;
+      }
+    }
+  }
+}
+
+/* ========== NAVBAR ICONS ========== */
+
+.navbarIcons {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  &__item {
+    position: relative;
+    padding: 16px;
+    box-shadow: -1px 0 0 $elements-color;
+
+    @include on-desktop {
+      padding: 24px;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__amount {
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    border: 2px solid $white;
+    border-radius: 50%;
+    font-size: 9px;
+    width: 16px;
+    height: 16px;
+    color: $white;
+    background-color: $accent-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include on-desktop {
+      top: 16px;
+      right: 16px;
+    }
+  }
+}
+
+/* ========== BURGER BUTTON ========== */
+
+.burger {
+  display: flex;
+  background: none;
+  border: none;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+}
