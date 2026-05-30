@@ -3,6 +3,7 @@ import { BaseProduct } from '../../types/BaseProduct';
 import styles from './ProductCard.module.scss';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import { useCart } from '../../pages/CartPage/context/CartContext';
 
 type Props = {
   product: BaseProduct;
@@ -10,7 +11,7 @@ type Props = {
 };
 
 export const ProductCard = ({ product, className }: Props) => {
-  const [isInCart, setIsInCart] = useState(false);
+  const { addToCart, removeFromCart, isInCart } = useCart();
   const [isFavorite, setIsFavorite] = useState(false);
 
   return (
@@ -50,11 +51,21 @@ export const ProductCard = ({ product, className }: Props) => {
       <div className={styles.actions}>
         <button
           className={classNames(styles.cartButton, {
-            [styles.cartButtonActive]: isInCart,
+            [styles.cartButtonActive]: isInCart(String(product.id)),
           })}
-          onClick={() => setIsInCart(prev => !prev)}
+          onClick={() => {
+            if (product) {
+              if (isInCart(String(product.id))) {
+                removeFromCart(String(product.id));
+              } else {
+                addToCart(product);
+              }
+            }
+          }}
         >
-          {isInCart ? 'Added to cart' : 'Add to cart'}
+          {isInCart(String(product?.id) ?? '')
+            ? 'Added to cart'
+            : 'Add to cart'}
         </button>
         <button
           className={classNames(styles.favoriteButton, {

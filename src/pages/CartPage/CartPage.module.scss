@@ -1,0 +1,110 @@
+@use '../../style' as *;
+
+.cart {
+  padding-inline: 0;
+  margin-block: rem(40) rem(80);
+  min-height: calc(100vh - rem(161));
+
+  @media (max-width: $desktop) {
+    padding-inline: rem(24);
+    margin-block: rem(40) rem(64);
+    min-height: calc(100vh - rem(148));
+  }
+
+  @media (max-width: $tablet) {
+    padding-inline: rem(16);
+    margin-block: rem(24) rem(56);
+    min-height: calc(100vh - rem(305));
+  }
+}
+
+.container {
+  @include container;
+
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+
+  max-width: rem(1140);
+  margin: 0 auto rem(80);
+  column-gap: rem(16);
+
+  @media (max-width: $desktop) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @media (max-width: $tablet) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.title {
+  grid-column: 1 / -1;
+  margin: 0;
+  margin-bottom: rem(32);
+}
+
+.items {
+  grid-column: span 16;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  gap: rem(16);
+
+  @media (max-width: $desktop) {
+    grid-column: 1 / -1;
+    margin-bottom: rem(32);
+  }
+
+}
+
+.checkout {
+  @include flex-center($isInline: false);
+
+  grid-column: 17 / 25;
+  flex-direction: column;
+  padding: rem(24);
+  border: var(--border);
+  border-radius: rem(8);
+  height: rem(205);
+
+  @media (max-width: $desktop) {
+    height: rem(190);
+    grid-column: 1 / -1;
+  }
+}
+
+.totalPrice {
+  font-weight: 800;
+  font-size: rem(32);
+  line-height: 128%;
+  letter-spacing: -0.01em;
+  color: var(--gray-primary);
+}
+
+.count {
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  padding-bottom: rem(24);
+  margin-bottom: rem(24);
+  border-bottom: var(--border);
+
+  @media (max-width: $desktop) {
+    padding-bottom: rem(16);
+    margin-bottom: rem(16);
+  }
+}
+
+.checkoutButton {
+  width: 100%;
+  height: rem(48);
+  font-weight: 700;
+  background: var(--accent);
+  border-radius: rem(8);
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  text-align: center;
+  color: var(--gray--white);
+}

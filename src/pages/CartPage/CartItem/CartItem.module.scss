@@ -1,0 +1,82 @@
+@use '../../../style' as *;
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-height: rem(128);
+  width: 100%;
+  padding-inline: rem(24);
+  border: var(--border);
+  border-radius: rem(8);
+  gap: rem(24);
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+.itemImage {
+  height: rem(80);
+  width: rem(80);
+  object-fit: contain;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: $tablet) {
+    width: 100%;
+    justify-content: start;
+    margin-block: rem(16);
+  }
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: $tablet) {
+    width: 100%;
+    margin-bottom: rem(16);
+  }
+}
+
+.button {
+  @include flex-center($isInline: false);
+  padding: rem(8);
+  border: var(--border);
+  border-radius: 100%;
+}
+
+.removeOne {
+  margin-right: rem(14);
+}
+
+.addOne {
+  margin-left: rem(14);
+}
+
+.count {
+  font-weight: 600;
+  font-size: rem(14);
+  line-height: 150%;
+  text-align: center;
+  color: var(--gray-primary);
+}
+
+.price {
+  font-weight: 800;
+  font-size: rem(22);
+  line-height: 140%;
+  text-align: right;
+  color: var(--gray-primary);
+  margin-left: rem(24);
+
+  @media (max-width: $tablet) {
+    margin-left: auto;
+  }
+}

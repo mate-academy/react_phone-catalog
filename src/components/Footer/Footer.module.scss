@@ -5,7 +5,7 @@
   height: rem(96);
 
   @media (max-width: $tablet) {
-    height: 100%;
+    height: rem(257);
   }
 }
 
@@ -83,5 +83,5 @@
   background-color: var(--gray--white);
   border: rem(2) solid var(--gray--elements);
   border-radius: 100%;
-  padding: 0 0;
+  padding: 0;
 }

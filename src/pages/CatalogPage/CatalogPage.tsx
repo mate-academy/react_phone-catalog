@@ -55,7 +55,8 @@ export const CatalogPage = ({ category }: Props) => {
     Object.entries(params).forEach(([key, value]) => {
       if (
         (key === 'page' && value === '1') ||
-        (key === 'perPage' && value === 'all')) {
+        (key === 'perPage' && value === 'all')
+      ) {
         newParams.delete(key);
       } else {
         newParams.set(key, value);

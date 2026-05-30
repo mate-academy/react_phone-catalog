@@ -1,0 +1,8 @@
+@use '../../style' as *;
+
+.buttonBack {
+  display: flex;
+  align-items: center;
+  gap: rem(4);
+  margin-bottom: rem(16);
+}

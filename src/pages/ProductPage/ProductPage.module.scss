@@ -33,13 +33,6 @@
   }
 }
 
-.buttonBack {
-  display: flex;
-  align-items: center;
-  gap: rem(4);
-  margin-bottom: rem(16);
-}
-
 .galary {
   display: grid;
   grid-column: 1 / -1;
@@ -129,6 +122,26 @@
   }
 }
 
+.sectionTitle {
+  font-weight: 500;
+  margin-bottom: rem(8);
+}
+
+.colorContainer {
+  display: flex;
+  gap: rem(8);
+  padding-bottom: rem(24);
+  margin-bottom: rem(24);
+  border-bottom: var(--border);
+}
+
+.color {
+  width: rem(32);
+  height: rem(32);
+  border: var(--border);
+  border-radius: 100%;
+}
+
 .capacityContainer {
   display: flex;
   gap: rem(8);
@@ -147,6 +160,10 @@
 .isActiveCapacity {
   color: var(--gray--white);
   background-color: var(--gray-primary);
+}
+
+.isActiveColor {
+  border-color: var(--gray-primary);
 }
 
 .prices {
@@ -245,8 +262,9 @@
 }
 
 .secondTitle {
-  margin-bottom: rem(8);
-  font-weight: 600;
+  border-bottom: var(--border);
+  padding-bottom: rem(16);
+  margin-bottom: rem(32);
 }
 
 .about {

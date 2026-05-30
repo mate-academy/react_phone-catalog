@@ -14,7 +14,6 @@ import './App.scss';
 export const App = () => (
   <BrowserRouter>
     <Header />
-
     <Routes>
       <Route path="/" element={<HomePage />}></Route>
       <Route path="/phones" element={<CatalogPage category="Phones" />} />
@@ -28,7 +27,6 @@ export const App = () => (
       <Route path="/favorites" element={<FavoritePage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
-
     <Footer />
   </BrowserRouter>
 );

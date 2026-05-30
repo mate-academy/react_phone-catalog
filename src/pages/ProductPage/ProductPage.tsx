@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import styles from './ProductPage.module.scss';
 import { Path } from '../../components/Path';
 import { loadProductDetails } from '../../api/getData';
@@ -8,8 +8,9 @@ import { ProductDetails } from '../../types/ProductDetails';
 import { ProductsSlider } from '../HomePage/components/ProductSlider';
 import { SpecsTable } from '../../components/SpecsTable/SpecsTable';
 import { SpecRow } from '../../components/SpecsTable/SpecsTable';
-import { ArrowIcon } from '../../components/icons/Arrow';
 import { Loader } from '../../components/Loader';
+import { ButtonBack } from '../../components/ButtonBack';
+import { useCart } from '../CartPage/context/CartContext';
 import classNames from 'classnames';
 
 export const ProductPage = () => {
@@ -18,9 +19,9 @@ export const ProductPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isInCart, setIsInCart] = useState(false);
+  const { addToCart, removeFromCart, isInCart } = useCart();
   const [isFavorite, setIsFavorite] = useState(false);
-  const navigate = useNavigate();
+
 
   const { category, productId } = useParams();
   const capitalized = (category!.charAt(0).toUpperCase() +
@@ -45,7 +46,7 @@ export const ProductPage = () => {
     };
 
     loadingData();
-  }, [productId]);
+  }, [config.apiProduct, productId]);
 
   const sliderProducts = useMemo(() => {
     if (!product) {
@@ -85,6 +86,49 @@ export const ProductPage = () => {
     { label: 'Cell', value: product?.cell.join(', ') },
   ].filter((spec): spec is SpecRow => spec.value !== undefined);
 
+  const colorMap: Record<string, string> = {
+    midnight: '#171E27',
+    starlight: '#F9F3EE',
+    gold: '#F9E5C9',
+    silver: '#F5F5F0',
+    graphite: '#5C5B57',
+    sierrablue: '#9BB5CE',
+    spaceblack: '#1C1C1E',
+    'space gray': '#4C4C4C',
+    spacegray: '#4C4C4C',
+    'midnight green': '#5F7170',
+    green: '#364935',
+    red: '#A50011',
+    purple: '#B89FCA',
+    'deep purple': '#3D2B55',
+    yellow: '#FFE566',
+    blue: '#215E7C',
+    pink: '#FAE0D8',
+    black: '#1C1C1E',
+    white: '#F5F5F0',
+  };
+
+  const getCapacityLink = (capacity: string) => {
+    const targetProduct = products.find(
+      prod =>
+        prod.namespaceId === product?.namespaceId &&
+        prod.color === product?.color &&
+        prod.capacity === capacity,
+    );
+
+    return targetProduct
+      ? `/${category}/${targetProduct.id}`
+      : `/${category}/${productId}`;
+  };
+
+  const getColorLink = (color: string) => {
+    const currentColor = product?.color.replace(/ /g, '-') ?? '';
+    const newColor = color.replace(/ /g, '-');
+    const newProductId = productId?.replace(currentColor, newColor);
+
+    return `/${category}/${newProductId}`;
+  };
+
   if (isLoading) {
     return <Loader />;
   }
@@ -97,10 +141,7 @@ export const ProductPage = () => {
     <div className={styles.productPage}>
       <div className={styles.container}>
         <Path productId={productId} category={category!} />
-        <button onClick={() => navigate(-1)} className={styles.buttonBack}>
-          <ArrowIcon direction="left" />
-          <p>Back</p>
-        </button>
+        <ButtonBack />
         <h2 className={styles.title}>{product?.name}</h2>
         <div className={styles.galary}>
           <div className={styles.sideImages}>
@@ -123,8 +164,37 @@ export const ProductPage = () => {
           />
         </div>
         <div className={styles.productInfo}>
-          <p className={styles.secondTitile}>Available colors</p>
-          <p className={styles.secondTitile}>Select capacity</p>
+          <div className={styles.availableColors}>
+            <p className={styles.sectionTitle}>Available colors</p>
+            <div className={styles.colorContainer}>
+              {product?.colorsAvailable.map(color => (
+                <NavLink
+                  key={color}
+                  to={getColorLink(color)}
+                  className={`${styles.color} ${color === product.color ? styles.isActiveColor : ''
+                    }`}
+                  style={{ backgroundColor: colorMap[color] }}
+                ></NavLink>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.selectCapacity}>
+            <p className={styles.sectionTitle}>Select capacity</p>
+            <div className={styles.capacityContainer}>
+              {product?.capacityAvailable.map(capacity => (
+                <NavLink
+                  key={capacity}
+                  to={getCapacityLink(capacity)}
+                  className={`${styles.capacity} ${capacity === product.capacity ? styles.isActiveCapacity : ''
+                    }`}
+                >
+                  {capacity}
+                </NavLink>
+              ))}
+            </div>
+          </div>
+
           <div className={styles.prices}>
             <p className={styles.price}>${product?.priceDiscount}</p>
             {product && product.priceDiscount < product.priceRegular && (
@@ -134,12 +204,20 @@ export const ProductPage = () => {
 
           <div className={styles.actions}>
             <button
-              className={classNames(styles.cartButton, {
-                [styles.cartButtonActive]: isInCart,
-              })}
-              onClick={() => setIsInCart(prev => !prev)}
+              className={styles.cartButton}
+              onClick={() => {
+                if (product) {
+                  if (isInCart(String(product.id))) {
+                    removeFromCart(String(product.id));
+                  } else {
+                    addToCart(product);
+                  }
+                }
+              }}
             >
-              {isInCart ? 'Added to cart' : 'Add to cart'}
+              {isInCart(String(product?.id) ?? '')
+                ? 'Added to cart'
+                : 'Add to cart'}
             </button>
             <button
               className={classNames(styles.favoriteButton, {

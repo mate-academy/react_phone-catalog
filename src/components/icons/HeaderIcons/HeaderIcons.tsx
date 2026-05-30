@@ -4,9 +4,10 @@ import styles from './HeaderIcons.module.scss';
 type Props = {
   className: string;
   classIcon: string;
+  onClose?: () => void;
 };
 
-export const HeaderIcons = ({ className, classIcon }: Props) => {
+export const HeaderIcons = ({ className, classIcon, onClose }: Props) => {
   return (
     <div className={className || ''}>
       <NavLink
@@ -14,6 +15,7 @@ export const HeaderIcons = ({ className, classIcon }: Props) => {
         className={({ isActive }) =>
           `${classIcon || ''} ${isActive ? styles.active : ''}`
         }
+        onClick={onClose}
       >
         <img src="/img/header/Favourites.svg" alt="Nice Gadgets" />
       </NavLink>
@@ -22,6 +24,7 @@ export const HeaderIcons = ({ className, classIcon }: Props) => {
         className={({ isActive }) =>
           `${classIcon || ''} ${isActive ? styles.active : ''}`
         }
+        onClick={onClose}
       >
         <img src="/img/header/Cart.svg" alt="Nice Gadgets" />
       </NavLink>
