@@ -1,0 +1,169 @@
+/* Menu Button */
+.menuButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+
+  &:hover {
+    color: #0070f3;
+  }
+}
+
+/* Hamburger Menu Container */
+.hamburgerMenu {
+  width: 320px;
+  height: 639px; /* Fixed height */
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  right: 0;
+  border: 1px solid #e2e6e9;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Space for top, middle, bottom */
+  align-items: stretch;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  gap: 0;
+}
+
+/* Top Section: Logo and Close Button */
+.topSection {
+  height: 48px; /* Fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border: 1px solid #86159f;
+  border-radius: 5px;
+  border-color: black;
+  gap: 16px;
+
+  .divider {
+    width: 1px;
+    height: 100%;
+    background-color: #e2e6e9;
+    margin-left: auto;
+    align-self: flex-end;
+  }
+
+  .closeButton {
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: transparent; /* Make the background transparent */
+    color: #fff; /* Inverts the color for visibility */
+
+    &:hover {
+      color: #0070f3; /* Hover effect */
+    }
+  }
+
+  .logo img {
+    max-height: 32px;
+    filter: invert(1);
+  }
+
+  .icon {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* Middle Section: Links */
+.middleSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Center the links vertically */
+  align-items: stretch; /* Align links to the left */
+  padding: 0 16px;
+  margin-top: 24px; /* Space between top and middle sections */
+}
+
+.links {
+  padding-top: 0; /* Position the links */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px; /* Gap between links */
+}
+
+.links a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #333;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #0070f3;
+  }
+}
+
+/* Bottom Section: Heart and Bag Icons */
+.bottomSection {
+  height: 64px;
+  width: 100%; /* Hug height */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #e2e6e9;
+  padding: 0 16px;
+  background-color: #e2e6e9;
+  margin-top: auto;
+
+  .iconLink {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #333;
+
+    &:hover {
+      color: #0070f3;
+    }
+  }
+
+  .dividerb {
+    width: 1px;
+    height: 100%;
+    background-color: #e2e6e9;
+    align-self: center;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    filter: invert(1);
+    transition:
+      transform 0.3s ease,
+      background-color 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+      background-color: rgba(0, 112, 243, 0.1);
+      border-radius: 50%;
+    }
+  }
+
+  .count {
+    font-size: 0.9rem;
+    color: #555;
+    margin-left: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bottomSection {
+    flex-direction: center;
+    height: auto;
+    padding: 16px;
+  }
+
+  .iconLink {
+    margin-bottom: 8px;
+  }
+}

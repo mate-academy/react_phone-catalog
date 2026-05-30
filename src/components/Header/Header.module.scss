@@ -1,0 +1,119 @@
+/* Header Wrapper */
+.header {
+  height: 64px; /* Increased height for better visibility */
+  border: 1px solid #86159f;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  background-color: #e2e6e9;
+  position: fixed; /* Makes the header fixed at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000; /* Ensures it stays above other elements */
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #0070f3;
+  margin-bottom: 16px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 40px; /* Space between logo, nav, and icons */
+  padding: 0 16px; /* Padding for the header */
+  background-color: #e2e6e9; /* Background color for the header */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: 24px; /* Space between logo and nav */
+  margin-left: 16px;
+  filter: invert(1);
+}
+
+/* Top Bar: Logo Section */
+
+.logo img {
+  max-height: 40px;
+}
+
+/* Navigation Links */
+.nav {
+  display: flex;
+  gap: 40px; /* Space between links */
+  margin: 0 auto; /* Centers the nav links horizontally */
+  justify-content: flex-start;
+  margin-left: 24px; /* Space between logo and nav */
+  margin-right: auto; /* Space between nav and icons */
+}
+
+.nav a {
+  text-decoration: none;
+  font-size: 1rem;
+  color: #333;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #0070f3; /* Hover effect */
+  }
+}
+
+.nav a.active {
+  text-decoration: underline; /* Underline the active link */
+  color: #0070f3; /* Change the color for the active link */
+  font-weight: bold;
+}
+
+/* Icons Section */
+.icons {
+  display: flex;
+  gap: 24px; /* Space between icons */
+  align-items: center;
+  justify-content: flex-end; /* Align icons to the right */
+  margin-right: 16px;
+  filter: invert(1);
+}
+
+.iconLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  justify-content: center;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.hamburgerMenu {
+  display: none; /* Hidden by default */
+
+  @media (max-width: 768px) {
+    display: block; /* Shows hamburger menu on small screens */
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav {
+    display: none; /* Hide navigation links */
+  }
+
+  .icons {
+    gap: 12px; /* Adjust icon spacing */
+  }
+
+  .logo img {
+    max-height: 32px; /* Slightly smaller logo for phones */
+  }
+}
