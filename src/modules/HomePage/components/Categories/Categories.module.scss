@@ -1,0 +1,47 @@
+@import '../../../../styles/utils';
+
+.categories {
+  margin: 50px 0;
+
+  @include padding-inline;
+
+  &__title {
+    margin-bottom: 24px;
+
+    @include tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @include tablet {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    object-fit: contain;
+    margin-bottom: 24px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+
+    @include scale-on-hover;
+
+    @include tablet {
+      object-fit: cover;
+    }
+  }
+}
