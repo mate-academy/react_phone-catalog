@@ -1,0 +1,40 @@
+@import '../../styles/main';
+
+*{
+    background-color: $mainColor;
+}
+
+.homeTitle {
+  height: 82px;
+  width: 288px;
+  color: $textColor;
+  text-align: center;
+  padding-inline: auto;
+  margin-block: 30px;
+  font-family: Mont, Arial, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+
+  @include min-screen($tablet) {
+    height: 115px;
+    width: 592px;
+    margin-block: 32px;
+    text-align: left;
+    font-size: 48px;
+    line-height: 56px;
+    padding-inline: 16px;
+  }
+
+  @include min-screen($laptop) {
+    width: 100%;
+    height: 56px;
+    margin-block: 56px;
+    padding-inline: 32px;
+  }
+
+  @include min-screen($largeDesktop) {
+    padding-inline: 152px;
+  }
+}
+
