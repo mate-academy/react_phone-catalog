@@ -1,0 +1,55 @@
+@mixin on-hover($properties-map, $duration: $effect-duration) {
+  $props-to-transition: ();
+
+  // stylelint-disable-next-line scss/no-global-function-names
+  @each $property, $value in $properties-map {
+    // stylelint-disable-next-line scss/no-global-function-names
+    $props-to-transition: append($props-to-transition, $property, comma);
+  }
+
+  // stylelint-disable-next-line scss/no-global-function-names
+  $transition-property-list: join(map-keys($properties-map), ', ');
+
+  transition-property: #{$transition-property-list};
+  transition-duration: $duration;
+
+  &:hover {
+    @each $property, $value in $properties-map {
+      #{$property}: $value;
+    }
+  }
+}
+
+@mixin on-image-hover {
+  @include on-hover(
+    (
+      transform: scale(1.1),
+    )
+  );
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: $padding-mobile;
+
+  @include on-tablet {
+    padding-inline: $padding-tablet;
+  }
+
+  @include on-desktop {
+    margin-inline: auto;
+    max-width: 1170px;
+    padding-inline: $padding-desktop;
+  }
+}
