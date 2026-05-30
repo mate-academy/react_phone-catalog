@@ -1,0 +1,38 @@
+@import '../../style/variables';
+@import '../../style/mixins';
+
+.select {
+  padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__title {
+    color: #75767f;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+  }
+
+  &__box {
+    width: 187px;
+    background-color: $grey-dark-color;
+    padding-inline: 12px;
+    padding-block: 10px;
+    border: none;
+    color: $text-color;
+    appearance: none;
+    background-image: url('img/icons/Chevron (Arrow Down).svg');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+
+    cursor: pointer;
+  }
+
+  @include on-tablet {
+    flex: 1;
+    &__box {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@import '../../style/variables';
+
+.buttonBack {
+  padding-top: 40px;
+
+  &Wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &Icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &Text {
+    color: $text-color;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+
+    &:hover {
+      color: $purple-color;
+    }
+  }
+}

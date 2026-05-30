@@ -1,0 +1,59 @@
+@import '../../style/variables';
+
+.pagination {
+  padding-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+
+  &__pages {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    &__page-button {
+      width: 32px;
+      height: 32px;
+      background-color: $grey-dark-secondary-color;
+      border: none;
+      color: $text-color;
+
+      cursor: pointer;
+
+      &:hover {
+        background-color: $purple-color;
+      }
+
+      &.active {
+        background-color: $purple-color;
+        color: $text-color;
+      }
+    }
+  }
+
+  &__arrow {
+    border: none;
+    background-color: $grey-dark-color;
+    width: 32px;
+    height: 32px;
+    font-size: 24px;
+    color: $text-color;
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: transparent;
+      border: 1px solid $grey-element-color;
+      color: $grey-icon-color;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: $purple-color;
+    }
+
+    &-image {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

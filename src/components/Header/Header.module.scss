@@ -1,0 +1,158 @@
+@import '../../style/variables';
+@import '../../style/mixins';
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 64px;
+  width: 100%;
+
+  box-shadow: 0 1px 0 $grey-dark-color;
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: inherit;
+
+  &__icon-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  &__badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background-color: $red-color;
+    color: $text-color;
+    font-size: 9px;
+    font-weight: 700;
+    border-radius: 50%;
+    padding: 2px 4px;
+    line-height: 100%;
+
+    text-align: center;
+
+    min-width: 14px;
+  }
+
+  .burger-button {
+    display: none;
+  }
+
+  &__logo {
+    height: 28px;
+    padding-inline: 24px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    gap: 64px;
+  }
+
+  &__link {
+    cursor: pointer;
+    text-decoration: none;
+
+    box-sizing: border-box;
+
+    color: #75767F;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    font-size: 12px;
+    font-weight: 800;
+
+    border-bottom: 3px solid transparent;
+
+    &:hover {
+      color: $text-color;
+      border-bottom: 3px solid $text-color;
+    }
+
+    &--home {
+      margin-left: 24px;
+    }
+
+    &--active {
+      color: $text-color;
+      border-bottom: 3px solid $text-color;
+    }
+  }
+
+  &__button {
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &-link {
+      align-items: center;
+      justify-content: center;
+
+      padding: 24px;
+      border-left: solid $grey-dark-color 1px;
+      position: relative;
+
+      &:hover::after,
+      &--active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: $text-color;
+      }
+    }
+  }
+
+  @media (max-width: 1200px) {
+    &__nav {
+      gap: 64px;
+    }
+  }
+
+  @include on-desktop {
+    &__logo {
+      height: 22px;
+      padding-inline: 16px;
+    }
+
+    &__nav {
+      gap: 32px;
+    }
+  }
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+    &__container {
+      display: none;
+    }
+
+    .burger-button {
+      display: flex;
+      align-items: center;
+      border: none;
+      justify-content: center;
+      padding: 24px;
+      border-left: solid $grey-dark-color 1px;
+      background-color: transparent;
+    }
+  }
+}

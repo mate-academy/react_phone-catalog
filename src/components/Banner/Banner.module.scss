@@ -1,0 +1,88 @@
+@import '../../style/variables';
+@import '../../style/mixins';
+
+.banner {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  position: relative;
+
+  &Btn {
+    border: none;
+    background-color:$grey-dark-color;
+    padding-inline: 8px;
+    color: $text-color;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  &Arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+  &Wrapper {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &Img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out 0.5s ease;
+
+    &Active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    &Last {
+      object-position: center 0;
+    }
+  }
+
+  &Dots {
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 3;
+  }
+
+  &Dot {
+    width: 14px;
+    height: 4px;
+    background: $grey-element-color;
+    cursor: pointer;
+    transition: background 0.3s, width 0.3s;
+
+    &Active {
+      background: $text-color;
+      width: 20px;
+    }
+  }
+
+  @include on-tablet {
+    &Btn {
+      display: none;
+    }
+  }
+
+  @include on-desktop {
+    &Wrapper {
+      width: 100%;
+      height: 189px;
+    }
+  }
+}
