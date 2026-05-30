@@ -1,0 +1,27 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+
+.page{
+  padding-bottom: 56px;
+  padding-top: 24px;
+
+  @include page-grid;
+  @include inline-padding;
+
+  @include on-tablet{
+    padding-block: 40px 64px;
+  }
+
+  @include on-desktop{
+    padding-bottom: 80px;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+
+    font-size: 32px;
+    line-height: 41px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+}

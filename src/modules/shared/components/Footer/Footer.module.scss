@@ -1,0 +1,92 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+
+.footer {
+  padding-block: 32px;
+  font-size: 12px;
+  line-height: 11px;
+  text-transform: uppercase;
+  color: $secondary-color;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  @include inline-padding;
+
+  @include on-tablet{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__menu{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-block: 32px;
+
+    @include on-tablet{
+      flex-direction: row;
+      padding-block: 0;
+      align-items: center;
+      gap: 14px;
+    }
+
+    @include on-desktop{
+      gap: 106px;
+    }
+  }
+
+  &__item{
+    font-weight: 800;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease 0s;
+
+    &:hover{
+      border-color: $secondary-color;
+    }
+  }
+
+  &__back{
+    font-weight: 700;
+    line-height: 15px;
+    gap: 16px;
+    font-family: Mont, sans-serif;
+    cursor: pointer;
+
+    @include small-text;
+  }
+
+  &__backText{
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    margin-right: 16px;
+    transition: border-color 0.3s ease 0s;
+
+    &:hover span:first-child{
+      border-color: $secondary-color;
+    }
+  }
+
+  &__arrow{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 16px;
+    border: 1px solid $icons-color;
+    animation: up-down-arrow 3s infinite;
+    z-index: -1;
+    transition: all 0.3s ease 0s;
+
+    @include center;
+    
+    display: inline-flex;
+  }
+}
+
+@keyframes up-down-arrow {
+  0%{
+    transform: translateY(0) scale(1);
+  }
+  100%{
+    transform: translateY(-10px) scale(0.95);
+  }
+}
