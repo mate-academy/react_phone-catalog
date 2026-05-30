@@ -1,0 +1,20 @@
+.catalog {
+  &__title {
+    margin-bottom: 8px !important;
+  }
+  &__count {
+    @include desktop-body;
+    color: $color-secondary;
+    margin-bottom: 32px;
+
+    @include desktop {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.loaderGrid {
+  @include product-grid-layout;
+
+  margin-top: 24px;
+}

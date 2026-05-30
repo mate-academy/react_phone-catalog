@@ -1,0 +1,159 @@
+@use 'variables' as *;
+
+@mixin typography($weight, $size, $lineHeight, $letterSpacing: 0) {
+  font-family: $font-main;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $lineHeight;
+  letter-spacing: $letterSpacing;
+}
+
+@mixin desktop-h1 {
+  @include typography($font-weight-bold, 48px, 56px, -0.01em);
+}
+
+@mixin desktop-h2 {
+  @include typography($font-weight-bold, 32px, 41px, -0.01em);
+}
+
+@mixin desktop-h3 {
+  @include typography($font-weight-bold, 22px, 31px);
+}
+
+@mixin desktop-uppercase {
+  @include typography($font-weight-bold, 12px, 21px);
+}
+
+@mixin desktop-h4 {
+  @include typography($font-weight-semibold, 20px, 26px);
+}
+
+@mixin desktop-button {
+  @include typography($font-weight-semibold, 14px, 21px);
+}
+
+@mixin desktop-body {
+  @include typography($font-weight-regular, 14px, 21px);
+}
+
+@mixin desktop-small-text {
+  @include typography($font-weight-semibold, 12px, 15px);
+}
+
+// MOBILE
+@mixin mobile-h1 {
+  @include typography($font-weight-bold, 32px, 41px, -0.01em);
+}
+
+@mixin mobile-h2 {
+  @include typography($font-weight-bold, 22px, 31px);
+}
+
+@mixin mobile-h3 {
+  @include typography($font-weight-semibold, 20px, 26px);
+}
+
+@mixin mobile-h4 {
+  @include typography($font-weight-semibold, 16px, 20px);
+}
+
+// grid layoyt
+@function col-width($col-count, $total-cols) {
+  @return calc(100% / #{$total-cols} * #{$col-count});
+}
+
+// container
+@mixin container {
+  width: 100%;
+  min-height: 100vh;    
+  min-height: 100svh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $gap;
+
+  @include tablet {
+    padding: 0 $padding-tablet;
+  }
+
+  @include desktop {
+    padding: 0 $padding-desktop;
+  }
+}
+
+// media query
+//640px
+@mixin tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+// 768
+@mixin tablet-large {
+  @media (min-width: #{$tablet-large}) {
+    @content;
+  }
+}
+
+@mixin tablet-landscape {
+  @media (min-width: #{$tablet}) and (max-width: #{$desktop - 1px}) {
+    @content;
+  }
+}
+
+//1200
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+@mixin product-grid-layout {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+
+  &__item {
+    grid-column: span 4;
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(12, 1fr);
+
+    &__item {
+      grid-column: span 6;
+    }
+  }
+
+  @include tablet-large {
+    grid-template-columns: repeat(12, 1fr);
+
+    &__item {
+      grid-column: span 4;
+    }
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(24, 1fr);
+    &__item {
+      grid-column: span 6;
+    }
+  }
+}
+
+
+%button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  min-width: 180px;
+  padding: 0 24px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}

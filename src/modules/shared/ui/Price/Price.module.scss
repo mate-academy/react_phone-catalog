@@ -1,0 +1,32 @@
+
+.price {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+
+  &Large {
+    gap: 12px;
+
+    .current {
+      @include desktop-h2;
+    }
+
+    .old {
+      @include desktop-h3;
+      font-weight: 500;
+    }
+  }
+}
+
+.current {
+  color: $color-primary;
+  @include desktop-h3;
+}
+
+.old {
+  color: $color-secondary;
+  @include desktop-h3;
+  font-weight: 600;
+  text-decoration: line-through;
+}

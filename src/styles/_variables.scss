@@ -1,0 +1,134 @@
+:root {
+  // LIGHT THEME (Default)
+  --color-primary: #313237; // Headings
+  --color-secondary: #89939a; // Body text
+  --color-icons: #b4bdc3; // Icons
+  --color-elements: #e2e6e9; // Elements
+  --color-surface-1: #fff; // Hover bg / Surface
+  --color-surface-2: #fafbfc; // Hover bg / Surface
+  --color-page-bg: #fff; // Background
+  --color-button-selected-bg: var(--color-surface-1);
+  --color-button-selected-text: #27ae60;
+  --color-icon-bg: #fff;
+  --color-icon-bg-hover: #fff;
+  --color-icon-bg-selected: #fff;
+  --color-icon-content: #313237;
+  --color-icon-bg-accent: #313237;
+
+  --color-white: #fff;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --color-accent: #313237;
+  --color-black: #0f1121;
+
+  --color-button-text: #fff;
+  --color-button-shadow: rgba(23, 32, 49, 0.4);
+  --color-search-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --color-search-border: transparent;
+  --color-search-bg: var(--color-page-bg);
+}
+
+[data-theme='dark'] {
+  // DARK THEME
+  --color-primary: #f1f2f9; // headings
+  --color-secondary: #75767f; // main text
+  --color-icons: #4a4d58; // Icons
+  --color-elements: #3b3e4a; // Elements
+  --color-surface-1: #161827; // Surface 1
+  --color-surface-2: #323542; // Surface 2
+  --color-page-bg: #0f1121; // Background
+  --color-button-selected-bg: var(--color-surface-2);
+  --color-button-selected-text: #f1f2f9;
+  --color-icon-bg: #323542;
+  --color-icon-bg-hover: #4a4d58;
+  --color-icon-bg-selected: #161827;
+  --color-icon-content: #f1f2f9;
+  --color-icon-bg-accent: #905bff;
+
+  --color-white: #f1f2f9;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --color-accent: #905bff;
+  --color-black: #0f1121;
+
+  --color-button-text: #fff;
+  --color-button-shadow: rgba(144, 91, 255, 0.4);
+  --color-search-shadow: 0 20px 20px -5px rgba(87, 87, 87, 0.5);
+  --color-search-border: 1px solid rgba(255, 255, 255, 0.1);
+  --color-search-bg: var(var(--color-page-bg));
+}
+
+// Themed colors — reference CSS custom properties defined in _base.scss
+$color-primary: var(--color-primary);
+$color-secondary: var(--color-secondary);
+$color-icons: var(--color-icons);
+$color-elements: var(--color-elements);
+$color-surface-1: var(--color-surface-1);
+$color-surface-2: var(--color-surface-2);
+$color-page-bg: var(--color-page-bg);
+$color-button-selected-bg: var(--color-button-selected-bg);
+$color-button-selected-text: var(--color-button-selected-text);
+$color-icon-bg: var(--color-icon-bg);
+$color-icon-bg-hover: var(--color-icon-bg-hover);
+$color-icon-bg-selected: var(--color-icon-bg-selected);
+$color-icon-content: var(--color-icon-content);
+$color-icon-bg-accent:var(--color-icon-bg-accent);
+
+$color-white: var(--color-white);
+$color-green: var(--color-green);
+$color-red: var(--color-red);
+$color-accent: var(--color-accent);
+
+$color-button-text: var(--color-button-text);
+$color-button-shadow: var(--color-button-shadow);
+$box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+
+$color-search-shadow: var(--color-search-shadow);
+$color-search-border: var(--color-search-border);
+$color-search-bg: var(--color-page-bg);
+
+// border
+
+$border: 1px solid var(--color-elements);
+$border-icon: 1px solid var(--color-icons);
+
+//transition
+$transition-default: 0.3s ease;
+
+// Breakpoints
+$mobile: 320px;
+$tablet: 640px;
+$tablet-large: 768px;
+$desktop: 1200px;
+
+// Container padding
+$padding-tablet: 24px;
+$padding-desktop: 24px;
+$gap: 16px;
+
+//fonts
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+$font-main: 'Mont', Arial, sans-serif;
+$font-weight-regular: 500;
+$font-weight-semibold: 700;
+$font-weight-bold: 800;

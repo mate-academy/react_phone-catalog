@@ -1,0 +1,116 @@
+.footer {
+  width: 100%;
+  border-top: 1px solid $color-elements;
+  background-color: $color-page-bg;
+  padding: 32px 16px;
+  transition: background-color 0.3s;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0 32px;
+    }
+  }
+
+  &__logo {
+    display: block;
+    height: 32px;
+
+    img {
+      height: 100%;
+      display: block;
+    }
+  }
+}
+
+.logo {
+  transition: filter 0.3s;
+}
+
+.nav {
+  @include tablet {
+    display: flex;
+    align-items: center;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include tablet {
+      flex-direction: row;
+      gap: 32px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: $color-secondary;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}
+
+.backToTop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  &__text {
+    font-size: 12px;
+    font-weight: 700;
+    color: $color-secondary;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: $color-surface-1;
+    border: 1px solid $color-elements;
+    color: $color-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: $color-primary;
+
+      .backToTop__icon {
+        transform: translateY(-2px);
+        color: $color-primary;
+      }
+    }
+
+    @include desktop {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s;
+    color: $color-primary;
+  }
+}

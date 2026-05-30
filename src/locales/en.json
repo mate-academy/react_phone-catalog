@@ -1,0 +1,99 @@
+{
+  "nav": {
+    "home": "Home",
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "catalog": "Catalog"
+  },
+  "home": {
+    "welcome": "Welcome to Nice Gadgets store!",
+    "newModels": "Brand new models",
+    "shopByCategory": "Shop by category",
+    "hotPrices": "Hot prices"
+  },
+  "favorites": {
+    "title": "Favorites",
+    "empty": "Your favorites list is empty",
+    "items_one": "item",
+    "items_other": "items"
+  },
+  "categories": {
+    "phones": "Mobile phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories"
+  },
+  "cart": {
+    "title": "Cart",
+    "checkout": "Checkout",
+    "total": "Total for {{count}} item",
+    "total_plural": "Total for {{count}} items",
+    "checkoutMessage": "Checkout is not implemented yet. Do you want to clear the Cart?",
+    "confirmClear": "Clear the Cart",
+    "cancel": "Cancel"
+  },
+  "footer": {
+    "github": "Github",
+    "contacts": "Contacts",
+    "rights": "Rights"
+  },
+  "buttons": {
+    "addToCart": "Add to cart",
+    "added": "Added",
+    "back": "Back",
+    "backToHome": "Back to home",
+    "backToTop": "Back to top"
+  },
+  "catalog": {
+    "modelsCount_one": "{{count}} model",
+    "modelsCount_other": "{{count}} models",
+    "sortBy": "Sort by",
+    "itemsOnPage": "Items on page",
+    "sortOptions": {
+      "newest": "Newest",
+      "alphabetically": "Alphabetically",
+      "cheapest": "Cheapest",
+      "all": "All"
+    },
+    "likesSlider": "You may also like"
+  },
+  "empty": {
+    "cart": {
+      "title": "Your cart is empty",
+      "text": "But it doesn't have to be! Check out our latest gadgets."
+    },
+    "favorites": {
+      "title": "You haven't liked anything yet",
+      "text": "Save your favorite gadgets here to find them easily later."
+    },
+    "product": {
+      "title": "Product was not found",
+      "text": "The specific model you are looking for is currently unavailable or doesn't exist."
+    },
+    "page404": {
+      "title": "Page not found"
+    },
+    "back": "Go to Home"
+  },
+  "error": {
+    "title": "Oops! Something went wrong",
+    "reload": "Try to refresh",
+    "default": "An unexpected error occurred",
+    "productsLoad": "Failed to load products. Please try refreshing the page.",
+    "notFound": "Product not found."
+  },
+  "search": {
+    "placeholder": "Search...",
+    "resultsTitle": "Search results",
+    "resultsFor": "Results for \"{{query}}\"",
+    "resultsCount": "Found {{count}} products for \"{{query}}\"",
+    "noResults": "No products match your search.",
+    "categories": {
+      "phones": "phones",
+      "tablets": "tablets",
+      "accessories": "accessories",
+      "products": "products"
+    },
+    "tryAgain": "Please try a different keyword or browse our categories."
+  }
+}

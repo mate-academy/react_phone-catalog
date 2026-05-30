@@ -1,0 +1,329 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 48px;
+  background-color: $color-page-bg;
+  border-bottom: $border;
+  z-index: 1000;
+  gap: 16px;
+
+  @include tablet {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 48px;
+    display: flex;
+    align-items: center;
+  }
+
+  @include desktop {
+    height: 64px;
+    gap: 24px;
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    @include tablet {
+      justify-content: flex-start;
+      width: auto;
+    }
+  }
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  padding: 16px 16px;
+  height: 100%;
+
+}
+
+.logo {
+    width: 64px;
+    height: auto;
+    object-fit: contain;
+
+    @include desktop {
+      width: 80px;
+    }
+  }
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mobileActions {
+  display: flex;
+  align-items: center;
+  border-left: 1px solid $color-elements;
+}
+
+.searchMobileWrapper {
+  display: block;
+  width: 48px;
+
+  @include tablet {
+  display: none;
+  }
+}
+
+.searchDesktopWrapper {
+  display: none;
+  @include tablet {
+    display: block;
+  }
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid $color-elements;
+  color: $color-primary;
+
+  @include tablet {
+    display: none;
+  }
+
+
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.menuContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  position: fixed;
+  top: 48px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+
+  background-color: $color-page-bg;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-20px);
+  //transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.3s;
+
+  &Visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+  @include tablet {
+    display: flex;
+    flex-direction: row;
+    pointer-events: all;
+    position: static;
+    height: 100%;
+    width: auto;
+    flex: 1;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+}
+
+.nav {
+  @include tablet {
+    height: 100%;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 16px 0;
+
+    @include tablet {
+      flex-direction: row;
+      height: 100%;
+      padding: 0;
+      gap: 32px;
+    }
+
+    @include desktop {
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    @include tablet {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    @include desktop-uppercase;
+    color: $color-secondary;
+    letter-spacing: 4%;
+    transition: color 0.3s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $color-primary;
+      bottom: -8px;
+
+      @include tablet {
+        bottom: -16px;
+      }
+      @include desktop {
+        bottom: -22px;
+      }
+
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      color: $color-primary;
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    &Active {
+      color: $color-primary;
+
+      &::after {
+        transform: scaleX(1);
+        transition: none;
+      }
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 80px;
+  margin-top: auto;
+  border-top: 1px solid $color-elements;
+  padding-bottom: env(safe-area-inset-bottom, 20px);
+
+
+  @include tablet {
+    border-top: none;
+    width: auto;
+    height: 100%;
+    min-height: unset;
+    margin-left: auto;
+  }
+
+  &__item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-right: 1px solid $color-elements;
+    height: 100%;
+    color: $color-primary;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &:hover {
+      background-color: $color-surface-2;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: transparent;
+      transition: background-color 0.3s;
+    }
+
+    &Active {
+      &::after {
+        background-color: $color-primary;
+      }
+    }
+
+    @include tablet {
+      height: 48px;
+      width: 48px;
+      border-right: none;
+      border-left: 1px solid $color-elements;
+    }
+
+    @include desktop {
+      height: 64px;
+      width: 64px;
+    }
+  }
+
+
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+
+  min-width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: $color-red;
+  color: $color-white;
+  font-family: 'Mont', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--body-bg-color);
+}

@@ -1,0 +1,184 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include desktop {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.itemList {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include desktop {
+    flex: 2;
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid $color-elements;
+  padding: 16px;
+  background-color: $color-page-bg;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+
+    @include tablet {
+      gap: 24px;
+    }
+
+    &Left {
+      flex: 1;
+      min-width: 0;
+      gap: 16px;
+
+      @include tablet {
+        gap: 24px;
+      }
+    }
+
+    &Right {
+      flex-shrink: 0;
+      justify-content: space-between;
+
+      @include tablet {
+        gap: 24px;
+        min-width: 250px;
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    color: $color-icons;
+  }
+
+  &__imgWrapper {
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &__name {
+    flex: 1;
+    @include desktop-body;
+    align-self: flex-start;
+
+    @include tablet {
+      align-self: center;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    width: 98px;
+
+    &Btn {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $color-icons;
+      cursor: pointer;
+
+      &Count {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &:hover {
+        border-color: $color-primary;
+      }
+
+      &:disabled {
+        border-color: $color-elements;
+      }
+    }
+  }
+
+  &__price {
+    @include desktop-h3;
+    flex-shrink: 0;
+    width: 80px;
+    text-align: right;
+  }
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $color-elements;
+  padding: 24px;
+  background-color: $color-page-bg;
+
+  @include desktop {
+    flex: 1;
+    align-self: flex-start;
+    position: sticky;
+    top: 80px;
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__totalPrice {
+    @include desktop-h2;
+  }
+
+  &__totalCount {
+    @include desktop-body;
+    color: $color-secondary;
+  }
+
+  &__divider {
+    height: 1px;
+    width: 100%;
+    background-color: $color-elements;
+    margin: 16px 0;
+  }
+}
+
+.btnCheckout {
+  height: 48px;
+}

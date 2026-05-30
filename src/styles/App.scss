@@ -1,0 +1,23 @@
+@use 'reset' as *;
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'base' as *;
+
+.app {
+  &__main {
+    @include container;
+    position: relative;
+
+    padding-top: 24px;
+    padding-bottom: 64px;
+
+    @include tablet {
+      padding-top: 80px;
+    }
+
+    @include desktop {
+      padding-top: 120px;
+      padding-bottom: 80px;
+    }
+  }
+}

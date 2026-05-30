@@ -1,0 +1,89 @@
+.slider {
+  width: 100%;
+  user-select: none;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4px;
+  }
+
+  &__title {
+    flex-basis: 50%;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $color-elements;
+    background-color: $color-surface-1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:disabled {
+      opacity: 0.2;
+      cursor: not-allowed;
+      border-color: $color-elements;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $color-primary;
+      background-color: $color-surface-2;
+    }
+  }
+
+  &__arrow {
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid $color-primary;
+    border-right: 2px solid $color-primary;
+
+    &Left {
+      transform: rotate(-135deg);
+      margin-left: 3px;
+    }
+
+    &Right {
+      transform: rotate(45deg);
+      margin-right: 3px;
+    }
+  }
+
+  &__viewport {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+
+  &__item {
+    flex: 0 0 auto;
+    display: flex;
+
+    & > * {
+      width: 100%;
+    }
+  }
+}
+
+.headerWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}

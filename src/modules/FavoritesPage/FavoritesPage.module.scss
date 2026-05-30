@@ -1,0 +1,23 @@
+
+.header {
+  margin-bottom: 32px;
+}
+
+.title {
+  margin-bottom: 8px;
+}
+
+.count {
+  color: #89939a;
+  font-weight: 600;
+}
+
+
+.emptyState {
+  text-align: center;
+  margin-top: 64px;
+}
+
+.content {
+  @include product-grid-layout;
+}

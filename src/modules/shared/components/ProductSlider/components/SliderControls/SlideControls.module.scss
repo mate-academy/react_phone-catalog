@@ -1,0 +1,29 @@
+.controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-icons;
+  background-color: $color-surface-1;
+  color: $color-primary;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+
+  &Disabled {
+    opacity: 0.5;
+    cursor: default;
+    border-color: $color-elements;
+    color: $color-elements;
+  }
+}

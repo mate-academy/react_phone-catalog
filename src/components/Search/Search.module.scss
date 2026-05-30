@@ -1,0 +1,126 @@
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include tablet {
+    width: 48px;
+    height: 48px;
+    border-left: 1px solid $color-elements;
+  }
+
+  @include desktop {
+    width: 64px;
+    height: 64px;
+  }
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 101;
+    color: $color-primary;
+
+  }
+}
+
+.wrapper {
+  position: fixed;
+  top: 48px;
+  left: 0;
+  width: 100%;
+  height: calc(100dvh - 48px);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
+
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1002;
+    width: 100%;
+    height: 110px;
+    background-color: $color-page-bg;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 4px 12px $color-search-shadow;
+    border-bottom: 1px solid $color-elements;
+
+    transform: translateY(-100%);
+    transition: transform 0.4s ease;
+
+    .wrapper--active & {
+      transform: translateY(0);
+    }
+  }
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+  color: $color-primary;
+
+  &__icon {
+    width: 20px;
+    opacity: 0.5;
+    color: $color-primary;
+  }
+
+  &__input {
+    flex: 1;
+    border: none;
+    outline: none;
+    @include desktop-body;
+    background: transparent;
+    font-size: 16px;
+    color: $color-primary;
+
+    @include tablet {
+      @include desktop-body;
+    }
+
+    &::placeholder {
+      color: $color-secondary;
+    }
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1001;
+  background-color: $color-search-shadow;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
