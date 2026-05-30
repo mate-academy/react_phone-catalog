@@ -1,0 +1,23 @@
+
+.Page__backButton {
+  cursor: pointer;
+
+    display: flex;
+  gap: 4px;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 66px;
+
+    font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 100%;
+  color: #89939A;
+  letter-spacing: 0%;
+  
+  &:hover {
+    color: #0F0F11;
+  
+  }
+  }

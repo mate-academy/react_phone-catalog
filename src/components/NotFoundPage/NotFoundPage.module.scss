@@ -1,0 +1,97 @@
+@import '../../styles/mixins';
+
+
+.page {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+   height: 100%;
+    
+    font-family: Mont, sans-serif;
+
+    background-image: url('../../../public//img/page-not-found.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+   
+
+    @include respond-to('mobile') {
+        grid-column: span 4 ;
+    }
+
+    @include respond-to('tablet') {
+        grid-column: span 12 ;
+    }
+
+    @include respond-to('desktop') {
+        grid-column: span 24 ;
+    }
+  }
+  
+  .content {
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 100%;
+  height: 100%;
+    border-radius: 12px;
+
+    color: #0F0F11;
+    text-align: center;
+
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .title {
+    margin-bottom: 16px;
+    font-size: 36px;
+    font-weight: 700;
+  }
+  
+  .text {
+    margin-bottom: 24px;
+    font-size: 18px;
+  }
+  
+  .link {
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+
+  
+
+  }
+  
+  .button {
+    align-self: center;
+
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    background-color: #216CFF;
+
+    transition: 0.3s;
+
+    &:hover {
+        box-shadow: 0 3px 13px 0 #17203166;
+
+    }
+
+    @include respond-to('mobile') {
+        max-width: 320px;
+    }
+
+    @include respond-to('tablet') {
+        max-width: 400px;
+    }
+
+    @include respond-to('desktop') {
+        max-width: 400px;
+    }
+  }

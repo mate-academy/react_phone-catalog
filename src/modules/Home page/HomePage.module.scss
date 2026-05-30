@@ -1,0 +1,48 @@
+@import '../../styles//mixins';
+
+.container {
+
+  @include respond-to('mobile') {
+    grid-column: span 4;
+  }
+
+  @include respond-to('tablet') {
+    grid-column: span 12;
+  }
+
+  @include respond-to('desktop') {
+    grid-column: span 24;
+    max-width: 1200px;
+    margin: 0 32px;
+  }
+
+
+}
+
+  .title {
+    font-family: Mont, sans-serif;
+font-size: 48px;
+font-weight: bold;
+letter-spacing: -0.01em;
+
+@include respond-to('mobile') {
+margin: 24px 0;
+  font-size: 32px;
+line-height: 41px;
+
+}
+
+@include respond-to('tablet') {
+margin: 32px 0;
+  font-size: 48px;
+line-height: 56px;
+
+}
+
+@include respond-to('desktop') {
+margin: 56px 0;
+  }
+
+
+
+  }

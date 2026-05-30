@@ -1,0 +1,112 @@
+{
+    "header": {
+      "home": "Home",
+      "phones": "Phones",
+      "tablets": "Tablets",
+      "accessories": "Accessories"
+    },
+
+    
+  "homepage": {
+          "welcome": "Welcome to Nice Gadgets store!",
+          "new_models": "Brand new models",
+          "hot_prices": "Hot prices"
+        },
+
+        "categories": {
+            "shop_by_category": "Shop by category",
+            "phones": "Mobile phones",
+            "tablets": "Tablets",
+            "accessories": "Accessories",
+            "models": "models"
+
+        },
+
+        "footer": {
+          "github": "github",
+          "contacts": "contacts",
+          "rights": "rights",
+          "back_to_top": "Back to top"
+        },
+
+        "catalog": {
+            "error": "Something went wrong",
+            "emptyError": "There are no {{category}} yet"
+        
+        },
+
+        "perPageSelect": {
+            "perPage": "Items on page"
+        },
+
+        "sortSelect": {
+            "sortBy": "Sort by",
+
+            "newest": "Newest",
+            "price": "Price: low to high",
+            "alphabet": "Alphabetical"
+        },
+
+        "back": {
+            "back": "Back"
+        },
+
+       "productDetails": {
+        "colors": "Available colors",
+        "capacity": "Select capacity",
+        "cardCapacity": "Capacity",
+        "add_to_cart": "Add to cart",
+        "screen": "Screen",
+        "resolution": "Resolution",
+        "processor": "Processor",
+        "ram": "RAM",
+        "about": "About",
+        "tech_specs": "Tech specs",
+        "Built_in_memory": "Built in memory",
+        "camera": "Camera",
+        "zoom": "Zoom",
+        "cell": "Cell"
+       },
+
+       "slider": {
+        "title": "You may also like"
+       },
+
+       "favourites": {
+        "title": "Favourites",
+        "items": "items"
+
+       },
+
+       "cart": {
+        "title": "Cart",
+        "total": "Total for {{count}} items",
+        "checkout": "Checkout"
+       },
+
+       "card": {
+        "add_to_cart": "Add to cart",
+        "added": "Added"
+       },
+
+       "productNotFound": {
+        "title": "Product was not found",
+        "text":  "We couldn’t find the product you’re looking for.",
+        "link": "Go back to Home"
+       },
+
+       "pageNotFound": {
+        "title": "Page not found",
+        "text":  "Sorry, the page you're looking for doesn't exist.",
+        "link": "Go back to Home"
+       }
+
+        
+        
+
+
+
+      
+ 
+  }
+  

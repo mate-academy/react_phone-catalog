@@ -1,0 +1,29 @@
+// src/components/LanguageSwitcher/LanguageSwitcher.module.scss
+.langSwitcher {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  
+  .langBtn {
+    cursor: pointer;
+
+    border: none;
+
+    font-weight: bold;
+    color: #888;
+
+    background: none;
+
+    transition: color 0.2s ease;
+  
+    &.active {
+      color: #000;
+      text-decoration: underline;
+    }
+  
+    &:hover {
+      color: #000;
+    }
+  }
+  

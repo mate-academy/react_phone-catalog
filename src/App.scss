@@ -1,1 +1,31 @@
-// not empty
+@font-face {
+  font-family: Mont;
+  font-weight: 400;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 600;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 700;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+}
+
+@import './styles/mixins';
+@import './styles/variables';
+
+
+* {
+  margin: 0;
+
+}
+
+body.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
