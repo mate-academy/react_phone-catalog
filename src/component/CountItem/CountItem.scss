@@ -1,0 +1,5 @@
+@use "../Main-css/Mixins" as mixin;
+
+.items__count {
+  @include mixin.text-default(14px, #75767F, 600);
+}
