@@ -1,0 +1,37 @@
+@import './variables';
+
+@mixin on-mobile {
+  @media (min-width: $mobile-min-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin on-grid {
+  --colums: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  @include on-tablet {
+    --colums: 12;
+  }
+
+  @include on-desktop {
+    --colums: 24;
+
+    grid-template-columns: repeat(var(--colums), 1fr);
+  }
+}

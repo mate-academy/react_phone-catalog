@@ -1,0 +1,210 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+$border-color: $elements-color;
+$hover-bg: $hover-color;
+$nav-font-size: 11px;
+$nav-letter-spacing: 0.08em;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: $white-color;
+  border-bottom: 1px solid #e2e6e9;
+  box-shadow: 0 1px 0 0 #e2e6e9;
+
+  &__menuIcone {
+    margin-left: auto;
+    display: flex;
+    box-sizing: border-box;
+    border-right: 1px solid $elements-color;
+    border-left: 1px solid $elements-color;
+    padding: 16px;
+    &img {
+      width: 16px;
+      height: 16px;
+    }
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__actions {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      align-items: stretch;
+      height: 100%;
+    }
+    &__wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 100%;
+      border-left: 1px solid $elements-color;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: $primary-color;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.2s ease;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+      }
+
+      &:last-child {
+        border-right: 1px solid $elements-color;
+      }
+    }
+    &__btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+
+      text-decoration: none;
+      background: transparent;
+      cursor: pointer;
+      size: 16px;
+
+      position: relative;
+
+      img {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &__badge {
+      position: absolute;
+      top: 17px;
+      right: 16px;
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      width: 14px;
+      height: 14px;
+      background-color: $red-color;
+      border-radius: 100%;
+      padding: 2.33px;
+      outline: 1px solid #fff;
+      font-family: Mont, sans-serif;
+      font-size: 9px;
+      color: #fff;
+      line-height: 1;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    height: $header-height-mobile;
+
+    @include on-tablet {
+      height: $header-height-desktop;
+    }
+
+    &__links {
+      display: flex;
+
+      align-items: stretch;
+      height: 100%;
+      width: 100%;
+    }
+
+    &__logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      width: 64px;
+      height: 22px;
+      margin-left: 16px;
+      margin-right: 16px;
+
+      @include on-tablet {
+        width: 80px;
+        height: 28px;
+        margin-right: 24px;
+      }
+
+      @include on-desktop {
+        margin-left: 24px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+    }
+    &__nav {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+        align-items: stretch;
+        gap: 32px;
+        height: $header-height-desktop;
+        flex: 1;
+      }
+
+      @include on-desktop {
+        gap: 64px;
+      }
+    }
+  }
+}
+
+.link {
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  color: $secondary-color;
+  text-decoration: none;
+  position: relative;
+
+  @include font-uppercase;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: $primary-color;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+.isActive {
+  color: $primary-color;
+
+  &::after {
+    transform: scaleX(1);
+  }
+}

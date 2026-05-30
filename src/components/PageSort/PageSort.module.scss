@@ -1,0 +1,55 @@
+@import '../../styles/fonts';
+
+.filter {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  &__select {
+    @include font-button;
+  }
+  &__sortBy {
+    display: flex;
+    flex-direction: column;
+  }
+
+  p {
+    margin-bottom: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #89939a;
+  }
+  &__sortBy select {
+    width: 176px;
+  }
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid #b4bdc3;
+    padding: 10px 36px 10px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #313237;
+    cursor: pointer;
+    background-color: white;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%23313237' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    transition: border-color 0.3s ease;
+
+    &:hover {
+      border-color: #313237;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #313237;
+    }
+  }
+
+  &__itemPages {
+    width: 128px;
+  }
+}

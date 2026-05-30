@@ -1,0 +1,36 @@
+@import '../../styles/variables';
+@import '../../styles/fonts';
+
+.pageNavigation {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__separator {
+    opacity: 0.4;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__item {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__current {
+    color: $secondary-color;
+
+    @include font-small-text;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $primary-color;
+
+    @include font-small-text;
+    &__homeImg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

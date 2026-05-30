@@ -1,0 +1,43 @@
+@import '../../styles/variables';
+@import '../../styles/fonts';
+@import '../../styles/mixins';
+
+.catalog {
+  padding-bottom: 64px;
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
+  &__flex {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    padding-inline: 16px;
+
+    @include on-tablet {
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      padding-inline: 32px;
+    }
+  }
+
+  &__quentites {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: #89939a;
+  }
+  &__title {
+    @include font-h1-mobile;
+
+    @include on-tablet {
+      margin-top: 40px;
+
+      @include font-h1;
+    }
+  }
+}

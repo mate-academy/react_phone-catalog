@@ -1,0 +1,122 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles//fonts.scss';
+
+.info {
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding: 0 16px;
+
+  @include on-tablet {
+    align-self: start;
+    padding: 0;
+  }
+
+  &__divider {
+    height: 1px;
+    background: #e2e6e9;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__priceNew {
+    @include font-h3;
+
+    font-size: 22px;
+    font-weight: 800;
+    color: $primary-color;
+  }
+
+  &__priceOld {
+    font-size: 22px;
+    font-weight: 500;
+    color: $secondary-color;
+    text-decoration: line-through;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__addToCart {
+    flex: 1;
+    height: 48px;
+    background: #313237;
+
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #000;
+    }
+
+    &--active {
+      color: $green-color;
+      border: 1px solid $elements-color;
+      background: none;
+    }
+  }
+
+  &__favorite {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #b4bdc3;
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s;
+    flex-shrink: 0;
+
+    &:hover,
+    &--active {
+      border-color: #313237;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__specRow {
+    @include font-small-text;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__specLabel {
+    @include font-small-text;
+
+    font-size: 12px;
+    color: $secondary-color;
+  }
+
+  &__specValue {
+    font-size: 12px;
+    font-weight: 700;
+    color: $primary-color;
+    text-align: right;
+  }
+}

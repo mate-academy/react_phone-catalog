@@ -1,0 +1,41 @@
+@import '../../styles/fonts';
+@import '../../styles/variables';
+
+.capacityPicker {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__label {
+    @include font-small-text;
+
+    color: $secondary-color;
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  &__btn {
+    padding: 6px 12px;
+    border: 1px solid #b4bdc3;
+    background: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: #313237;
+    transition: all 0.2s;
+
+    &:hover:not(&--active) {
+      border-color: #313237;
+    }
+
+    &--active {
+      background: #313237;
+      color: #fff;
+      border-color: #313237;
+    }
+  }
+}
