@@ -1,0 +1,58 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.breadcrumbs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  padding-block: 24px;
+
+  @include on-tablet {
+    padding-block: 24px 40px;
+  }
+}
+
+.button {
+  display: block;
+}
+
+.img {
+  display: block;
+}
+
+.sectionTitle {
+  position: relative;
+  top: 1px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1;
+  color: $secondary-text-color;
+}
+
+.sectionTitleActive {
+  position: relative;
+  top: 1px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1;
+  color: $primary-text-color;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.productName {
+  position: relative;
+  top: 1px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1;
+  color: $secondary-text-color;
+
+  // заміна частини яка непоміщається в рядок на ...
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

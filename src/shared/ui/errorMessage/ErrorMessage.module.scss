@@ -1,0 +1,28 @@
+@import '../../styles/mixins';
+
+.errorBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.notification {
+  color: $red-color;
+}
+
+.reloadButton {
+  height: 40px;
+  width: 100px;
+  border-radius: 8px;
+  background-color: $red-color;
+  color: $white-color;
+  border: 0;
+
+  @include on-tablet {
+    width: 125px;
+  }
+
+  @include on-desktop {
+    width: 160px;
+  }
+}

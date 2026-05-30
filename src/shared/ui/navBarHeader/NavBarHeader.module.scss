@@ -1,0 +1,60 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.navLink {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  color: $secondary-text-color;
+  cursor: pointer; 
+  line-height: 27px;
+
+  &:hover {
+    color: $primary-text-color;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      height: 3px;
+      width: 100%;
+      background-color: $primary-text-color;
+    }
+}
+  
+  @include on-tablet {
+    line-height: 48px;
+  }
+
+  @include on-desktop {
+    line-height: 64px;
+  }
+
+  @include hover(transform, scale(1.1));
+}
+
+.activeNavLink {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  color: $primary-text-color;
+
+  @include on-tablet {
+    line-height: 48px;
+  }
+
+  @include on-desktop {
+    line-height: 64px;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background-color: $primary-text-color;
+  }
+}

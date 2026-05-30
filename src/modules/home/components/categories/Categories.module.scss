@@ -1,0 +1,81 @@
+@import '../../../../shared/styles/mixins';
+@import '../../../../shared/styles/variables';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.categoryTitle {
+  padding-bottom: 24px;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  align-self: self-start;
+  gap: 32px;
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.categoryCard {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.categoryImg {
+  height: 288px;
+  width: 288px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+
+  @include hover(transform, scale(1.05));
+
+  @include on-tablet {
+    height: 187px;
+    width: 187px;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  @include on-desktop {
+    height: 368px;
+    width: 368px;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+.img {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 110%;
+  height: auto;
+  object-fit: contain;
+
+}
+
+.categoryInfo {
+  padding-top: 24px;
+}
+
+.sectionTitle {
+  padding-bottom: 4px;
+  color: $primary-text-color;
+}
+
+.info {
+  color: $secondary-text-color;
+
+}

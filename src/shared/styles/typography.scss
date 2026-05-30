@@ -1,0 +1,81 @@
+@import './mixins';
+
+h1 {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+h3 {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+
+  @include on-tablet { // ???? перевірити розміри для мобільного 
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+h4 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+
+  @include on-tablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+/* UPPERCASE */
+.uppercase {
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* BUTTON TEXT */
+.button-text {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+/* BODY TEXT */
+.body-text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  
+}
+
+/* SMALL TEXT */
+.small-text {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+}

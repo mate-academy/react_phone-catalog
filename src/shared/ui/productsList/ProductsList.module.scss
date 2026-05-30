@@ -1,0 +1,19 @@
+@import '../../styles/mixins';
+
+.wrapper {
+  display: grid;
+  gap: 40px;
+  padding-block: 24px;
+
+  grid-template-columns: 1fr;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fit, minmax(229px, 1fr));
+    padding-block: 24px 40px;
+    gap: 40px 16px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

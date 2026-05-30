@@ -1,0 +1,62 @@
+@import '../../../../shared/styles/mixins';
+@import '../../../../shared/styles/variables';
+
+.wrapper {
+  padding-block: 56px 64px;
+
+  @include on-tablet {
+    padding-block: 64px;
+  }
+
+  @include on-desktop {
+    padding-block: 80px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+
+  @include on-tablet {
+    max-width: 592px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+  }
+}
+
+.sliderButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.productsOuter {
+  overflow: hidden; // усе, що не влазить по ширині, не видно
+  margin-right: -16px;
+
+  @include on-tablet {
+    margin-right: -24px;
+  }
+
+  @include on-desktop{
+    overflow: visible;
+    margin-right: 0;
+  }
+}
+
+.products {
+  display: flex;
+  gap: 16px;
+  flex-wrap: nowrap; // не переносити на новий ряд
+
+  @include on-desktop {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

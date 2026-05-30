@@ -1,0 +1,90 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+.menuContent {
+  min-height: calc(100vh - 48px); 
+  display: flex;
+  flex-direction: column;
+
+  @include content-padding-inline;
+}
+
+.menuMain {
+  flex: 1;
+}
+
+.navLinks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 24px;
+  gap: 16px;
+}
+
+.menuFooter {
+  display: flex;
+  height: 64px;
+  border-top: 1px solid $elements-color;
+}
+
+.footerButton {
+  flex: 1; // займає половину ширини
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &:hover::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: $primary-text-color;
+  }
+}
+
+
+.footerButton:first-child {
+  border-right: 1px solid $elements-color;
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::after {
+    content: attr(data-count);
+    position: absolute;
+
+    width: 14px;
+    height: 14px;
+    background-color: $secondary-accent-color;
+    color: $white-color;
+    border-radius: 50%;
+    font-size: 9px;
+    font-weight: 600;
+    border: 2px solid $white-color;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    left: 100%;
+    bottom: 100%;
+    transform: translate(-50%, 50%);
+  }
+
+  &[data-count='0']::after {
+    display: none;
+  }
+}
+
+.img {
+  width: 16px;
+  height: 16px;
+}
