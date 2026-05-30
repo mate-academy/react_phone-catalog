@@ -1,0 +1,12 @@
+@import '/src/style/main';
+
+.ProductsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  justify-items: center;
+  gap: 40px 16px;
+
+  &__card {
+    max-width: 320px;
+  }
+}

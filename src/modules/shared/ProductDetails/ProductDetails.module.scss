@@ -1,0 +1,28 @@
+@import '/src/style/main';
+
+.ProductDetails {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  text-transform: capitalize;
+
+  &__item {
+    @include small-text;
+
+    color: $c-secondary;
+    display: flex;
+    justify-content: space-between;
+
+    & > span {
+      color: $c-primary;
+    }
+
+    &_darkTheme {
+      color: $c-secondary-dark;
+
+      & > span {
+        color: $c-white-dark;
+      }
+    }
+  }
+}

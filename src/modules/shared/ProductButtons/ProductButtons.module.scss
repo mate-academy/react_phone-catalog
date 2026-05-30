@@ -1,0 +1,83 @@
+@import '/src/style/main';
+
+.Buttons {
+  display: flex;
+  column-gap: 8px;
+
+  &__buttonAdd {
+    @include buttons;
+
+    flex: 1 1 auto;
+    background-color: $c-primary;
+    color: $c-white;
+    padding: 9.5px;
+    transition: all $transition;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+
+    &_darkTheme {
+      background-color: $c-accent-dark;
+
+      &:hover {
+        box-shadow: none;
+        background-color: #a378ff;
+      }
+    }
+
+    &_active {
+      border: 1px solid $c-elements;
+      background-color: #fff;
+      color: $c-green;
+
+      &:hover {
+        box-shadow: 0 0 5px 0 $c-green;
+      }
+
+      &_darkTheme {
+        border-color: $c-surface2-dark;
+        background-color: $c-surface2-dark;
+        color: $c-white-dark;
+
+        &:hover {
+          box-shadow: none;
+          background-color: $c-surface1-dark;
+        }
+      }
+    }
+  }
+
+  &__buttonLike {
+    height: 40px;
+    width: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid $c-icons;
+    transition: all $transition;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+
+    &_darkTheme {
+      border-color: $c-surface2-dark;
+      background-color: $c-surface2-dark;
+
+      &:hover {
+        border-color: $c-icons-dark;
+        background-color: $c-icons-dark;
+      }
+    }
+
+    &_active {
+      &_darkTheme {
+        border-color: $c-elements-dark;
+        background-color: inherit;
+      }
+    }
+  }
+}

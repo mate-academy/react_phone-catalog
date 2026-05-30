@@ -1,0 +1,89 @@
+@import '/src/style/main';
+
+.PicturesSlider {
+  &__content {
+    display: flex;
+
+    gap: 20px;
+
+    @include on-tablet {
+      @include inline-padding-content;
+    }
+  }
+
+  &__button {
+    display: none;
+    min-width: 32px;
+    border: 1px solid $c-icons;
+    transition: all $transition;
+
+    @include on-tablet {
+      display: block;
+    }
+
+    &:hover {
+      border-color: $c-primary;
+    }
+
+    &_darkTheme {
+      background-color: $c-surface2-dark;
+      border-color: $c-surface2-dark;
+
+      &:hover {
+        border-color: $c-secondary-dark;
+      }
+    }
+  }
+
+  &__slider {
+    overflow: hidden;
+  }
+
+  &__allSlides {
+    display: flex;
+    gap: 5px;
+    transition: all 1s;
+
+    & > div {
+      min-width: 100%;
+    }
+  }
+
+  &__bottomBtns {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  &__bottomBtn {
+    display: block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 14px;
+      height: 4px;
+      background-color: $c-elements;
+      top: 10px;
+      left: 5px;
+    }
+
+    &_darkTheme::after {
+      background-color: $c-elements-dark;
+    }
+
+    &_active {
+      &::after {
+        background-color: $c-primary;
+      }
+
+      &_darkTheme::after {
+        background-color: $c-white-dark;
+      }
+    }
+  }
+}

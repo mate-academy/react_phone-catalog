@@ -1,0 +1,156 @@
+@import '/src/style/main';
+
+.ProductDetailsPage {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__content {
+    @include inline-padding-content;
+
+    padding-top: 24px;
+    padding-bottom: 56px;
+
+    @include on-tablet {
+      padding-bottom: 64px;
+    }
+
+    @include on-desktop {
+      padding-bottom: 80px;
+    }
+  }
+
+  &__btnBack {
+    margin-top: 24px;
+  }
+
+  &__title {
+    margin-top: 16px;
+
+    @include h2;
+
+    color: inherit;
+  }
+
+  &__mainInfo {
+    margin-top: 32px;
+  }
+
+  &__secondaryInfo {
+    margin-top: 56px;
+
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-desktop {
+      margin-top: 80px;
+    }
+  }
+}
+
+.mainInfo {
+  @include grid-layout;
+
+  position: relative;
+  row-gap: 40px;
+
+  &__slider {
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 7;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__content {
+    position: relative;
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 5;
+    }
+
+    @include on-desktop {
+      position: initial;
+      grid-column: 14 / 21;
+    }
+  }
+
+  &__pageId {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $c-icons;
+
+    @include small-text;
+  }
+
+  &__price {
+    margin-top: 32px;
+  }
+
+  &__btns {
+    margin-top: 16px;
+  }
+
+  &__details {
+    margin-top: 32px;
+  }
+}
+
+.secondaryInfo {
+  @include grid-layout;
+
+  row-gap: 56px;
+
+  @include on-tablet {
+    row-gap: 64px;
+  }
+
+  &__left {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__rigth {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 14 / -1;
+    }
+  }
+
+  &__blockTitle {
+    @include h3;
+
+    color: inherit;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $c-elements;
+
+    &_darkTheme{
+      border-bottom-color: $c-icons-dark;
+    }
+  }
+
+  &__details {
+    margin-top: 30px;
+
+    @include on-tablet {
+      margin-top: 25px;
+    }
+  }
+}

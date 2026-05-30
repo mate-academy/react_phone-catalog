@@ -1,0 +1,72 @@
+@mixin h1 {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin h2 {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25.56px;
+
+  @include on-tablet {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+  }
+}
+
+@mixin h4 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20.45px;
+
+  @include on-tablet {
+    font-size: 20px;
+    line-height: 25.56px;
+  }
+}
+
+@mixin uppercase {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+@mixin buttons {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+@mixin body-text {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+@mixin small-text {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+}
