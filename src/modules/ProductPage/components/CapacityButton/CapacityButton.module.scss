@@ -1,0 +1,12 @@
+@use '@/styles/resources' as *;
+
+.btn {
+  border-radius: $radius;
+  padding-inline: 8px;
+}
+
+.isSelected {
+  color: $main-bg;
+  background-color: $primary-color;
+  border-color: $primary-color;
+}

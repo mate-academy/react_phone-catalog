@@ -1,0 +1,23 @@
+@use '@/styles/resources' as *;
+
+.wrapper {
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-column: 14 / -1;
+  }
+}
+
+.title {
+  padding-bottom: 16px;
+  border-bottom: 1px solid $elements-color;
+  font-weight: 600 !important;
+  color: $primary-color;
+
+  @include transition((color, border-color), $color-transition);
+  @include heading-h3;
+}
+
+.specs {
+  margin-top: 30px;
+}

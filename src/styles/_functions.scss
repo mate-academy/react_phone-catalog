@@ -1,0 +1,5 @@
+@use './vars' as *;
+
+@function n-gap($n: 1) {
+  @return $main-gap * $n;
+}

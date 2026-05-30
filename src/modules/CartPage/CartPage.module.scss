@@ -1,0 +1,66 @@
+@use '@/styles/resources' as *;
+
+.wrapper {
+  padding-block: 24px 56px;
+  gap: 24px;
+  flex: 1;
+  width: 100%;
+
+  @include flex-column;
+
+  @include on-tablet {
+    padding-block: 24px 64px;
+  }
+
+  @include on-desktop {
+    padding-block: 24px 80px;
+  }
+}
+
+.title {
+  color: $primary-color;
+
+  @include transition(color, $color-transition);
+}
+
+.mainContent {
+  gap: 24px;
+
+  @include page-grid;
+}
+
+.cartList {
+  gap: 32px;
+  position: relative;
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-column: span 16;
+  }
+}
+
+.summary {
+  grid-column: 1 / -1;
+  align-self: start;
+
+  @include on-desktop {
+    grid-column: span 8;
+    position: sticky;
+    top: calc(var(--header-height) + 16px);
+  }
+}
+
+.messageWrapper {
+  flex: 1;
+
+  @include flex-center;
+}
+
+.emptyCartImg {
+  width: 75%;
+}
+
+.shopBtn {
+  padding-inline: 16px;
+  border-radius: $radius;
+}

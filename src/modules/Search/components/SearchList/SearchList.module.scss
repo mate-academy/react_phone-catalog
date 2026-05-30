@@ -1,0 +1,12 @@
+@use '@/styles/resources' as *;
+
+.list {
+  gap: 4px;
+
+  @include flex-column;
+}
+
+.message {
+  text-align: center;
+  color: $secondary-color;
+}

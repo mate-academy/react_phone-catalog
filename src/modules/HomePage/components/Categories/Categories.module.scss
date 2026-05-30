@@ -1,0 +1,24 @@
+@use '@/styles/resources' as *;
+
+.title {
+  margin-bottom: 24px;
+  color: $primary-color;
+}
+
+.categories {
+  row-gap: 32px;
+
+  @include page-grid;
+}
+
+.categoryContainer {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+}

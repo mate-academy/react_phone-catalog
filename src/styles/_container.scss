@@ -1,0 +1,11 @@
+@use './vars' as *;
+@use './mixins' as *;
+
+.container {
+  padding-inline: $page-hor-paddings;
+
+  @include on-desktop {
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+}

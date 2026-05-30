@@ -1,0 +1,7 @@
+@use '@/styles/resources' as *;
+
+.errorBtn {
+  padding-inline: 16px;
+  border-radius: $radius;
+  gap: 8px;
+}

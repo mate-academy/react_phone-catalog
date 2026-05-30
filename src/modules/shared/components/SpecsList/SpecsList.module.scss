@@ -1,0 +1,28 @@
+@use '@/styles/resources' as *;
+
+.specs {
+  gap: 8px;
+
+  @include flex-column;
+  @include small-text;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  @include body-text;
+}
+
+.specOption {
+  color: $secondary-color;
+
+  @include transition(color, $color-transition);
+}
+
+.specValue {
+  color: $primary-color;
+
+  @include transition(color, $color-transition);
+}

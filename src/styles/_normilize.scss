@@ -1,0 +1,49 @@
+@use './vars' as *;
+@use './mixins' as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Mont, sans-serif;
+}
+
+body {
+  @include body-text;
+}
+
+button,
+input {
+  background: none;
+  border: 0;
+  outline: none;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: $radius;
+  background: $card-border-color;
+
+  @include transition(background-color, $color-transition);
+
+  @include hover {
+    background-color: $secondary-color;
+  }
+}

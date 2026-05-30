@@ -1,0 +1,48 @@
+@use '@/styles/resources' as *;
+
+.modalContent {
+  height: 100%;
+  overflow: hidden;
+  padding-block: 16px;
+  gap: 16px;
+
+  @include flex-column;
+}
+
+.searchBar {
+  gap: 8px;
+  flex-shrink: 0;
+  padding-inline: 16px;
+
+  @include flex-between-center;
+}
+
+.cancelBtn {
+  gap: 4px;
+  color: $secondary-color;
+  cursor: pointer;
+
+  @include transition(color, $color-transition);
+  @include small-text;
+  @include flex-center;
+
+  span {
+    line-height: 15px;
+  }
+
+  @include hover {
+    color: $primary-color;
+  }
+}
+
+.mainContent {
+  flex-grow: 1;
+  overflow-y: auto;
+  min-height: 0;
+  padding-inline: 16px;
+}
+
+.notFoundMessage {
+  text-align: center;
+  color: $icons-color;
+}

@@ -1,0 +1,85 @@
+@use '@/styles/resources' as *;
+
+.card {
+  background-color: $card-bg;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid $elements-color;
+  gap: 16px;
+  justify-content: space-between;
+
+  @include flex-column;
+  @include transition((background-color, border-color), $color-transition);
+
+  @include on-tablet {
+    gap: 24px;
+    flex-direction: row;
+    padding: 24px;
+  }
+}
+
+.mainContent {
+  gap: 16px;
+
+  @include flex-between-center;
+}
+
+.removeBtn {
+  color: $icons-color;
+  cursor: pointer;
+  display: contents;
+
+  @include transition(color, $color-transition);
+
+  @include hover {
+    color: $primary-color;
+  }
+}
+
+.preview {
+  width: 80px;
+  height: 80px;
+  text-align: center;
+
+  img {
+    height: 100%;
+    width: auto;
+
+    @include transition(transform);
+  }
+
+  @include hover {
+    img {
+      transform: scale($hover-scale);
+    }
+  }
+}
+
+.title {
+  color: $primary-color;
+  flex: 1;
+
+  @include body-text;
+  @include transition(color, $color-transition);
+
+  @include hover {
+    color: $accent-color;
+  }
+}
+
+.actions {
+  @include flex-between-center;
+}
+
+.price {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  color: $primary-color;
+  min-width: 80px;
+  display: block;
+  text-align: end;
+
+  @include transition(color, $color-transition);
+}

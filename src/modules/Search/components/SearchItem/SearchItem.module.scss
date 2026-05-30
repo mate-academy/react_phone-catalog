@@ -1,0 +1,41 @@
+@use '@/styles/resources' as *;
+
+.card {
+  gap: 16px;
+  background-color: $card-bg;
+  border-radius: $radius;
+  border: 1px solid $card-border-color;
+  padding: 8px;
+
+  @include flex-between-center;
+
+  @include hover {
+    .title {
+      color: $accent-color;
+    }
+  }
+}
+
+.imgWrapper {
+  width: 45px;
+  aspect-ratio: 1 / 1;
+  text-align: center;
+
+  @include flex-center;
+
+  img {
+    height: 100%;
+  }
+}
+
+.title {
+  color: $primary-color;
+  flex: 1;
+
+  @include transition(color, $color-transition);
+  @include small-text;
+}
+
+.price {
+  color: $primary-color;
+}

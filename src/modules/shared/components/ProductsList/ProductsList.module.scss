@@ -1,0 +1,28 @@
+@use '@/styles/resources' as *;
+
+.products {
+  row-gap: 40px;
+  width: 100%;
+
+  @include page-grid;
+}
+
+.productCard {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+  @include on-small-desktop {
+    grid-column: span 3;
+  }
+
+  @include on-desktop {
+    grid-column: span 6;
+  }
+}
+
+.emptyMessageIcon {
+  width: 100%;
+}

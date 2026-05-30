@@ -1,0 +1,63 @@
+@use '@/styles/resources' as *;
+
+.wrapper {
+  gap: n-gap(1.5);
+
+  @include flex-column;
+}
+
+.topBar {
+  align-items: center;
+
+  @include page-grid;
+}
+
+.title {
+  grid-column: 1 / span 2;
+  color: $primary-color;
+
+  @include transition(color, $color-transition);
+
+  @include on-tablet {
+    grid-column: 1 / span 10;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / -3;
+  }
+}
+
+.sliderBtns {
+  grid-column: span 2;
+  justify-self: end;
+  gap: $main-gap;
+
+  @include flex-center;
+}
+
+.container {
+  padding-inline: 0;
+}
+
+.slider {
+  overflow: hidden;
+  padding: 20px 10px;
+  margin: -20px -10px;
+}
+
+.sliderContainer {
+  display: flex;
+  gap: $card-gap;
+}
+
+.slide {
+  flex: 0 0 262px;
+
+  @include on-desktop {
+    flex: 0 0 calc((100% - $card-gap * 3) / 4);
+  }
+}
+
+.arrowBtn {
+  border-radius: 50%;
+}

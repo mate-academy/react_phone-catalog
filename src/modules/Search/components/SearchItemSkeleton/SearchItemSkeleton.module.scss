@@ -1,0 +1,31 @@
+@use '@/styles/resources' as *;
+
+.skeleton {
+  gap: 16px;
+  background-color: $card-bg;
+  border-radius: $radius;
+  border: 1px solid $card-border-color;
+  padding: 8px;
+
+  @include flex-between-center;
+}
+
+.imgSkeleton {
+  width: 45px;
+  height: 45px;
+}
+
+.titleWrapper {
+  flex: 1;
+}
+
+.titleSkeleton {
+  height: 30px;
+  width: 100%;
+  max-width: 350px;
+}
+
+.priceSkeleton {
+  height: 30px;
+  width: 50px;
+}

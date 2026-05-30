@@ -1,0 +1,95 @@
+@use '@/styles/resources' as *;
+
+.header {
+  background-color: $main-bg;
+  height: $header-height;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid $elements-color;
+  z-index: 1000;
+
+  @include flex-between-center;
+  @include transition(
+    (background-color, border-bottom-color),
+    $color-transition
+  );
+
+  @include on-desktop {
+    gap: 24px;
+  }
+}
+
+.headerLogo {
+  padding-inline: $main-gap;
+
+  @include on-desktop {
+    padding-inline: 24px;
+  }
+}
+
+.btnsWrapper {
+  display: flex;
+  align-items: center;
+
+  @include on-small-desktop {
+    display: none;
+  }
+}
+
+.headerNavigation {
+  display: none;
+  flex: 1;
+
+  @include on-small-desktop {
+    display: block;
+  }
+}
+
+.headerMenuBtn {
+  @include header-square-btn;
+
+  &::before,
+  &::after,
+  span {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 2px;
+    background-color: $primary-color;
+    border-radius: 10px;
+    position: absolute;
+    transition:
+      transform $transition ease-in-out,
+      opacity $color-transition ease-in-out,
+      background-color $color-transition ease-in-out;
+  }
+
+  span {
+    opacity: 1;
+
+    @include transition(opacity, $transition);
+  }
+
+  &::before {
+    transform: translateY(-6px);
+  }
+
+  &::after {
+    transform: translateY(6px);
+  }
+}
+
+.headerMenuBtnActive {
+  span {
+    opacity: 0;
+  }
+
+  &::before {
+    transform: translateY(0) rotate(45deg);
+  }
+
+  &::after {
+    transform: translateY(0) rotate(-45deg);
+  }
+}

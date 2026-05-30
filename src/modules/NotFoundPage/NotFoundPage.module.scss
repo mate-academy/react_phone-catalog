@@ -1,0 +1,48 @@
+@use '@/styles/resources' as *;
+
+.wrapper {
+  --num-color: #e2e6e9;
+
+  flex: 1;
+
+  @include flex-center;
+}
+
+[data-theme='dark'] .wrapper {
+  --num-color: #222533;
+}
+
+.content {
+  position: relative;
+  font-size: 16px;
+  gap: 16px;
+
+  @include flex-column;
+
+  &::before {
+    content: '404';
+    font-size: clamp(10rem, 50vw, 18rem);
+    font-weight: 800;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--num-color);
+    z-index: -1;
+
+    @include transition(color, $color-transition);
+  }
+}
+
+.message {
+  text-align: center;
+  color: $primary-color;
+
+  @include transition(color, $color-transition);
+}
+
+.btn {
+  align-self: center;
+  padding-inline: 16px;
+  border-radius: $radius;
+}

@@ -1,0 +1,27 @@
+@use '@/styles/resources' as *;
+
+.modal {
+  padding: 16px;
+
+  @include flex-column;
+}
+
+.body {
+  align-items: center;
+
+  @include flex-column;
+}
+
+.icon {
+  color: $accent-color;
+}
+
+.messageTitle {
+  color: $accent-color;
+}
+
+.message {
+  color: $primary-color;
+  margin-top: 16px;
+  text-align: center;
+}
