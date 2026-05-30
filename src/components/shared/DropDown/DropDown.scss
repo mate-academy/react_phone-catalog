@@ -1,0 +1,82 @@
+@import '../../../styles/main';
+
+.dropdown {
+  position: relative;
+  width: min-content;
+
+  &__title {
+    @include text-small;
+
+    line-height: normal;
+    color: $color-text-secondary;
+  }
+
+  &__button {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    width: 180px;
+    height: 40px;
+    margin-block: 4px;
+    padding-inline: 12px;
+    border: 1px solid $color-icon;
+    border-radius: 8px;
+
+    background: none;
+
+    transition: border 0.3s;
+
+    &:focus {
+      border-color: $color-text-main;
+    }
+  }
+
+  &__label {
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: normal;
+    color: $color-text-main;
+  }
+
+  &__options {
+    position: absolute;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 12px;
+    border: 1px solid $color-icon;
+    border-radius: 8px;
+
+    list-style-type: none;
+
+    background-color: $color-white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  &__option {
+    cursor: pointer;
+
+    align-self: flex-start;
+
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-text-secondary;
+
+    &:hover {
+      color: $color-text-main;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@import '../../../styles/main';
+
+.favorites {
+  @include container;
+
+  box-sizing: border-box;
+  padding-block: 24px 80px;
+
+  &__breadcrumbs {
+    margin: 0 0 24px;
+
+    @include on-tablet {
+      margin: 0 0 40px;
+    }
+  }
+
+  &__title {
+    @include title-1;
+
+    margin: 0 0 8px;
+    color: $color-text-main;
+  }
+
+  &__count {
+    @include text-normal;
+
+    margin: 0 0 32px;
+    color: $color-text-secondary;
+
+    @include on-tablet {
+      margin: 0 0 40px;
+    }
+  }
+}

@@ -1,0 +1,179 @@
+@import '../../../styles/main';
+
+.header {
+  position: sticky;
+  z-index: 5;
+  top: 0;
+
+  display: flex;
+  justify-content: space-between;
+
+  margin: 0;
+  border-bottom: 1px solid $color-element;
+
+  background-color: $color-white;
+
+  @include on-tablet {
+    justify-content: start;
+  }
+
+  &__logo {
+    height: 22px;
+    padding: 13px 16px;
+
+    @include on-desktop {
+      height: 28px;
+      padding: 18px 24px;
+    }
+
+    &-link {
+      display: flex;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      padding-left: 16px;
+    }
+
+    @include on-desktop {
+      padding-left: 24px;
+    }
+
+    &-items {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      justify-content: space-between;
+
+      box-sizing: border-box;
+      margin: 0;
+
+      list-style: none;
+
+      @include on-desktop {
+        gap: 64px;
+      }
+    }
+
+    &-item {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      box-sizing: border-box;
+      height: 100%;
+
+      &--active {
+        &::after {
+          @include bottom-border-link;
+
+          animation-name: bottom-bar-animation;
+          animation-duration: $animation-timing;
+        }
+      }
+    }
+
+    &-link {
+      @include text-uppercase;
+
+      color: $color-text-secondary;
+      text-decoration: none;
+      transition: color $animation-timing $animation-rule;
+      &:hover {
+        color: $color-text-main;
+      }
+
+      &--active {
+        color: $color-text-main;
+      }
+    }
+  }
+
+  &__menu {
+    cursor: pointer;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+    border-left: 1px solid $color-element;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__icons {
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__icon {
+    display: none;
+
+    @include on-tablet {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 48px;
+      height: 48px;
+      border-left: 1px solid $color-element;
+
+      &:hover::after {
+        @include bottom-border-link;
+
+        display: flex;
+        animation-name: bottom-bar-animation;
+        animation-duration: $animation-timing;
+      }
+
+      &--active::after {
+        @include bottom-border-link;
+      }
+    }
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+
+    &-number {
+      position: absolute;
+      top: 18px;
+      left: 32px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      box-sizing: border-box;
+      width: 14px;
+      height: 14px;
+      border: 1px solid $color-white;
+      border-radius: 50%;
+
+      font-family: Mont, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      color: $color-white;
+      letter-spacing: normal;
+
+      background-color: $color-accent;
+    }
+  }
+}

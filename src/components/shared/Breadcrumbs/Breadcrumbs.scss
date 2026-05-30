@@ -1,0 +1,35 @@
+@import '../../../styles/main';
+
+.breadcrumbs {
+  &__container {
+    overflow: hidden;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    height: 16px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__link {
+    @include text-small;
+    
+    overflow: hidden;
+    display: inline-block;
+
+    max-width: 100%;
+
+    line-height: normal;
+    color: $color-text-main;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+    &--current {
+      font-weight: 600;
+      color: $color-text-secondary;
+    }
+  }
+}

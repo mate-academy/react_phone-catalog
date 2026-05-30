@@ -1,1 +1,26 @@
-// not empty
+@import './styles/main';
+
+.page {
+  font-family: Mont, sans-serif;
+
+  &__body {
+    scroll-behavior: smooth;
+
+    min-width: 320px;
+    margin: 0;
+    padding: 0;
+
+    background-color: $color-background;
+  }
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+
+  &__main {
+    flex: 1;
+  }
+}

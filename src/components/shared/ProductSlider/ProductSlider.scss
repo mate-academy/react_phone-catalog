@@ -1,0 +1,50 @@
+@import '../../../styles/main';
+
+.product-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    @include title-2;
+
+    margin: 0;
+    color: $color-text-main;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__bottom {
+    overflow: hidden;
+  }
+  &__track {
+    display: flex;
+    gap: 16px;
+    transition: transform $animation-timing $animation-rule;
+  }
+
+  &__item {
+    flex: 0 0 calc(66% - 16px / 1.5);
+
+    @media (min-width: 450px) {
+      flex: 0 0 calc(50% - 16px / 2);
+    }
+
+    @media (min-width: 800px) {
+      flex: 0 0 calc(33.3% - (16px * 2) / 3);
+    }
+
+    @include on-desktop {
+      flex: none;
+    }
+  }
+}

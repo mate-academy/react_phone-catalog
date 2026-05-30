@@ -1,0 +1,70 @@
+@import '../../../styles/main';
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 24px;
+  margin-block: auto;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &__container {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-icon;
+    border-radius: 50%;
+
+    background-color: $color-background;
+
+    &:hover {
+      border-color: $color-text-main;
+    }
+
+    &--disabled {
+      border-color: $color-element;
+    }
+
+    &-page {
+      @include text-normal;
+      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      box-sizing: border-box;
+      width: 32px;
+      height: 32px;
+      border: 1px solid $color-element;
+      border-radius: 50%;
+
+      line-height: normal;
+
+      background-color: $color-background;
+
+      &:hover {
+        border-color: $color-text-main;
+      }
+
+      &--active {
+        border: none;
+        color: $color-white;
+        background-color: $color-text-main;
+      }
+    }
+  }
+}
