@@ -1,0 +1,62 @@
+.pagesBar {
+  @include fullsize-grid;
+
+  @include for-tablet {
+    margin: 0 0 64px;
+  }
+
+  @include for-desktop {
+    margin: 0 0 80px;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.visiblePagesList {
+  display: flex;
+  gap: 8px;
+}
+
+.selectedPage {
+  color: $color-white;
+  border: 1px solid $color-primary;
+  background-color: $color-primary;
+}
+
+.moveButton {
+  all: unset;
+  box-sizing: border-box;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-icons;
+  cursor: pointer;
+}
+
+.pagesBar > .moveButton, .visiblePagesList > * {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  font-size: $body-text-fs;
+  font-weight: 600;
+  line-height: $body-text-lh;
+  text-decoration: none;
+  color: $color-primary;
+  background-color: $color-white;
+  border: 1px solid $color-elements;
+  transition: $transition;
+
+  &:hover {
+    border: 1px solid $color-icons;
+    transition: $transition;
+  }
+}

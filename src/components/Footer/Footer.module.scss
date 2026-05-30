@@ -1,0 +1,83 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.hr {
+  border: 0;
+  height: 1px;
+  margin: 0 0 32px;
+  background-color: $color-icons;
+}
+
+.logo {
+  width: 89px;
+  height: 32px;
+}
+
+.logoLink {
+  height: 32px;
+}
+
+.controls {
+  @include for-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @include for-desktop {
+    width: 1200px;
+    align-self: center;
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 0 16px;
+  margin: 0 0 32px;
+}
+
+.list {
+  @include for-tablet {
+    flex-direction: row;
+    gap: 107px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  & > * {
+    height: $uppercase-lh;
+  }
+}
+
+.link {
+  display: inline-block;
+  height: $uppercase-lh;
+  font-size: $uppercase-fs;
+  font-weight: bold;
+  line-height: $uppercase-lh;
+  letter-spacing: $uppercase-ls;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $color-secondary;
+  transition: $transition;
+
+  &:hover {
+    color: $color-primary;
+    transition: $transition;
+  }
+}
+
+.toTop {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  font-size: $st-fs;
+  font-weight: 400;
+  line-height: $st-lh;
+  color: $color-secondary;
+}

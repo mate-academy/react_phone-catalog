@@ -1,0 +1,248 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+}
+
+.pannel {
+  @include for-tablet {
+    justify-content: start;
+    gap: 16px;
+  }
+
+  @include for-desktop {
+    gap: 24px;
+    height: 65px;
+  }
+
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 49px;
+  border-bottom: 1px solid $color-elements;
+  background-color: $color-white;
+}
+
+.logo-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 96px;
+  height: 100%;
+
+  @include for-desktop {
+    width: 128px;
+  }
+}
+
+.logo-img {
+  width: 65px;
+  height: 22px;
+
+  @include for-desktop {
+    width: 80px;
+    height: 28px;
+  }
+}
+
+.tabs {
+  @include for-tablet {
+    display: flex;
+    gap: 32px;
+    height: 48px;
+  }
+
+  @include for-desktop {
+    gap: 64px;
+    height: 64px;
+  }
+
+  display: none;
+}
+
+.nav-link {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 3px 0 0;
+  font-size: $uppercase-fs;
+  font-weight: bold;
+  line-height: $uppercase-lh;
+  letter-spacing: $uppercase-ls;
+  text-transform: uppercase;
+  color: $color-secondary;
+  border-bottom: 3px solid $color-white;
+  transition: $transition;
+  cursor: pointer;
+
+  &--selected, &:hover {
+    color: $color-primary;
+    border-bottom: 3px solid $color-primary;
+    transition: $transition;
+  }
+}
+
+.client-section {
+  @include for-tablet {
+    display: flex;
+    height: 100%;
+    margin-left: auto;
+  }
+
+  display: none;
+}
+
+.client-button {
+  @include for-desktop {
+    width: 64px;
+  }
+
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 100%;
+  border-left: 1px solid $color-elements;
+  transition: $transition;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-elements;
+  }
+
+  &--selected {
+    border-bottom: 3px solid $color-primary;
+    transition: $transition;
+  }
+}
+
+.client-icon {
+  position: relative;
+
+  & > img {
+  width: 16px; }
+
+}
+
+.counter {
+  position: absolute;
+  box-sizing: border-box;
+  width: 14px;
+  height: 14px;
+  top: -6px;
+  left: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  line-height: 100%;
+  border: 1px solid $color-white;
+  border-radius: 14px;
+  color: $color-white;
+  background-color: $color-red;
+}
+
+.menu-button {
+  @include for-tablet {
+    display: none;
+  }
+
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 100%;
+  border-left: 1px solid $color-elements;
+  transition: $transition;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-elements;
+  }
+}
+
+.menu-icon {
+  width: 14px;
+  transition: $transition;
+}
+
+.menu {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  height: calc(100dvh - 49px);
+  margin: 49px 0 0;
+  background-color: $color-white;
+  transform: translateX(100%);
+  transition: $transition;
+
+  @include for-desktop {
+    margin: 65px 0 0;
+  }
+
+  &.open {
+    transition: $transition;
+    transform: translateX(0);
+  }
+}
+
+.menuList {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  padding: 24px 16px;
+
+  & > * {
+    all: unset;
+    padding: 8px 0;
+    font-family: $font-family;
+    font-size: $uppercase-fs;
+    font-weight: bold;
+    line-height: $uppercase-lh;
+    letter-spacing: $uppercase-ls;
+    text-transform: uppercase;
+    color: $color-secondary;
+    cursor: pointer;
+  }
+}
+
+.menuClient {
+  display: flex;
+  justify-content: space-between;
+  gap: 1px;
+  padding: 1px 0 0;
+  background-color: $color-elements;
+
+  & > * {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 24px 0;
+    background-color: $color-white;
+    border: 1px solid $color-white;
+
+  }
+}
+
+.menuList > *:hover {
+  color: $color-primary;
+}
+
+.menuClient > *:hover {
+  border-bottom: 2px solid $color-primary;
+}
+

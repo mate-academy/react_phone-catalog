@@ -1,0 +1,124 @@
+.primary {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $font-family;
+  font-size: $body-text-fs;
+  font-weight: 600;
+  line-height: $body-text-lh;
+  color: $color-white;
+  border: 0;
+  background-color: $color-primary;
+  transition: $transition;
+  cursor: pointer;
+
+  &--sm {
+    height: 40px;
+  }
+
+  &--md {
+    height: 48px;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+    transition: $transition
+  }
+
+  &--selected {
+    color: $color-green;
+    background-color: $color-white;
+    border: 1px solid $color-elements;
+    transition: $transition;
+  }
+}
+
+.secondary {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  font-family: $font-family;
+  font-size: $body-text-fs;
+  font-weight: 400;
+  line-height: $body-text-lh;
+  background-color: $color-white;
+  border: 1px solid $color-icons;
+  transition: $transition;
+  cursor: pointer;
+
+  &--sm {
+    height: 32px;
+    padding: 0 7px;
+  }
+
+  &:hover {
+    border: 1px solid $color-primary;
+    transition: $transition;
+  }
+
+  &--selected {
+    color: $color-white;
+    background-color: $color-primary;
+    border: 1px solid $color-primary;
+  }
+}
+
+.iconType {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  background-color: $color-white;
+  border: 1px solid $color-icons;
+  transition: $transition;
+  cursor: pointer;
+
+  &--xs {
+    height: 32px;
+  }
+
+  &--sm {
+    height: 40px;
+  }
+
+  &--md {
+    height: 48px;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+    transition: $transition
+  }
+}
+
+.round {
+  all: unset;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 3px solid $color-white;
+  outline: 1px solid $color-elements;
+  transition: $transition;
+  cursor: pointer;
+
+  &--sm {
+    width: 32px;
+    aspect-ratio: 1 / 1;
+  }
+
+  &:hover {
+    outline: 1px solid $color-icons;
+    transition: $transition;
+  }
+
+  &--selected {
+    outline: 1px solid $color-primary;
+
+    &:hover {
+      outline: 1px solid $color-primary;
+    }
+  }
+}
+
+

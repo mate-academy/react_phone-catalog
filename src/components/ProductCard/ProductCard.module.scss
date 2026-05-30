@@ -1,0 +1,74 @@
+.card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 31px;
+  background-color: $color-white;
+  border: 1px solid $color-elements;
+  transition: $transition;
+  cursor: pointer;
+}
+
+.image {
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  object-fit: contain;
+}
+
+.name {
+  padding: 16px 0 0;
+  font-size: $body-text-fs;
+  line-height: $body-text-lh;
+  color: $color-primary;
+}
+
+.prices > *{
+  font-size: $h3-fs;
+  font-weight: $h3-fw;
+  line-height: $h3-lh;
+  margin: 0 8px 0 0;
+}
+
+.priceOld {
+  font-weight: 400;
+  text-decoration: line-through;
+  color: $color-secondary;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: $color-elements;
+}
+
+.spec {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: $st-fs;
+  font-weight: 600;
+  line-height: $st-lh;
+}
+
+.specLabel {
+  color: $color-secondary;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.cartButton {
+  flex: 1;
+}
