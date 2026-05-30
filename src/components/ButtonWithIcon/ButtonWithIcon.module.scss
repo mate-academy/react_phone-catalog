@@ -1,0 +1,29 @@
+.button {
+  border: 1px solid #b4bdc3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  flex-shrink: 0;
+  transition: border 0.3s;
+  color: #313237;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #313237;
+  }
+
+  &--no-hover:hover {
+    border-color: #b4bdc3;
+  }
+
+  &__number--selected {
+    background-color: #313237;
+    color: #fff;
+    border-color: #313237;
+    transition:
+      color 0.3s,
+      background-color 0.3s,
+      border-color 0.5s;
+  }
+}

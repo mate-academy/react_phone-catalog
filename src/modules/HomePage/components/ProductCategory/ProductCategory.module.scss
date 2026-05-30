@@ -1,0 +1,31 @@
+.category {
+  grid-column: span 4;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+}
