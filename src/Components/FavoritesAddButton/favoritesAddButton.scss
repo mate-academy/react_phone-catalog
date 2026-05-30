@@ -1,0 +1,63 @@
+$border-hover-color: rgba(180, 189, 195, 1);
+$main-bg-color: rgba(255, 255, 255, 1);
+
+.add-favorites-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  button {
+    all: unset;
+    cursor: pointer;
+  }
+
+  .add-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: #905bff;
+    color: #f1f2f9;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    height: 30px;
+
+    .button-text {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+      color: #f1f2f9;
+    }
+
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .added {
+    background: #323542;
+  }
+
+  .favorites-button {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    height: 46px;
+    width: 46px;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.iconLike {
+  height: 46px;
+  width: 46px;
+}

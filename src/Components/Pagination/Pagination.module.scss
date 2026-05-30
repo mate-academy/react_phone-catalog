@@ -1,0 +1,65 @@
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 64px;
+
+  @media (min-width: $desktop-min-width) {
+    margin-bottom: 80px;
+  }
+}
+
+.pageBtn {
+  width: 32px;
+  height: 32px;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  background-color: #161827;
+  cursor: pointer;
+  transition: background 0.2s;
+  color: #F1F2F9;
+
+  &:hover:not(:disabled) {
+    background: #323542;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.active {
+  background: #905BFF;
+}
+
+.arrowRight {
+  margin-left: 8px;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  width: 32px;
+  height: 32px;
+  background-image: url(/public/img/arrowRight.svg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.arrowLeft {
+  margin-right: 8px;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  width: 32px;
+  height: 32px;
+  background-image: url(/public/img/arrowLeft.svg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

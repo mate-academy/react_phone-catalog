@@ -1,0 +1,32 @@
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+
+.page {
+  padding-inline: 16px;
+  max-width: 1200px;
+
+  @media (min-width: $tablet-min-width) {
+    padding-inline: 24px;
+  }
+
+  @media (min-width: $desktop-min-width) {
+    padding-inline: 32px;
+    margin-inline: auto;
+  }
+}
+
+.title {
+  font-size: 48px;
+  line-height: 56px;
+  margin-bottom: 24px;
+  font-weight: 800;
+  color: #F1F2F9;
+
+  @media (min-width: $tablet-min-width) {
+    margin-bottom: 32px;
+  }
+
+  @media (min-width: $desktop-min-width) {
+    margin-bottom: 56px;
+  }
+}
