@@ -1,0 +1,14 @@
+@use '@styles/mixins' as *;
+
+.menu-nav {
+  color: var(--color-secondary);
+
+  @include uppercase;
+
+  &__items {
+    gap: 16px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}

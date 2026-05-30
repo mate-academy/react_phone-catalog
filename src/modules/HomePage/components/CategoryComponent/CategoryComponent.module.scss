@@ -1,0 +1,38 @@
+@use '@styles/mixins' as *;
+
+.category-component {
+  gap: 24px;
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+
+  @include on-desktop {
+    @include hover;
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+  }
+
+  &__content {
+    gap: 4px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__image {
+    height: 100%;
+
+    top: 25%;
+    left: 25%;
+    position: relative;
+  }
+
+  &__amount {
+    color: var(--color-secondary);
+
+    @include body-text;
+  }
+}

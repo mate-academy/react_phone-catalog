@@ -1,0 +1,25 @@
+@use '@styles/vars' as *;
+@use '@styles/mixins' as *;
+
+.back-to-top {
+  height: 32px;
+  cursor: pointer;
+  user-select: none;
+  color: var(--color-secondary);
+
+  gap: $column-gap-p;
+  display: flex;
+  align-items: center;
+
+  @include on-desktop {
+    @include hover;
+  }
+
+  &__label {
+    @include small-text;
+  }
+
+  &__arrow {
+    pointer-events: none;
+  }
+}

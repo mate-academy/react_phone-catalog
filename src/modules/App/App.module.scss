@@ -1,0 +1,59 @@
+@use '@styles/vars' as *;
+@use '@styles/mixins' as *;
+
+.app {
+  min-width: $phone-min-width;
+
+  &__header {
+    top: 0;
+    z-index: 100;
+    position: sticky;
+  }
+
+  &__body {
+    gap: $row-gap-t;
+    display: flex;
+    flex-direction: column;
+    color: var(--color-primary);
+
+    padding-top: 24px;
+
+    @include on-desktop {
+      gap: $row-gap-d;
+    }
+
+    &--home {
+      @include on-tablet {
+        padding-top: 32px;
+      }
+
+      @include on-desktop {
+        padding-top: 56px;
+      }
+    }
+
+    &--shopping-bag {
+      @include on-tablet {
+        padding-top: 40px;
+      }
+    }
+
+    &--cart {
+      @include on-tablet {
+        padding-top: 40px;
+      }
+    }
+  }
+
+  &__content {
+    gap: 24px;
+    display: flex;
+    flex-direction: column;
+
+    @include content-padding-inline;
+
+    @include on-tablet {
+      gap: 40px;
+    }
+  }
+}

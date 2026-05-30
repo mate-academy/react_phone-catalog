@@ -1,0 +1,23 @@
+@use '@styles/vars' as *;
+@use '@styles/mixins' as *;
+
+.add-to-card {
+  gap: 8px;
+  display: flex;
+  user-select: none;
+  height: $add-to-card-height;
+
+  &__button {
+    flex-grow: 1;
+  }
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+
+    @include on-desktop {
+      @include hover;
+    }
+  }
+}
