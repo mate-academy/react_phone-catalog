@@ -1,0 +1,169 @@
+@import '../../../styles/main';
+
+.phones {
+  min-height: 100vh;
+  width: 1200px;
+  margin-top: 24px;
+  box-sizing: border-box;
+
+  &_card {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 440px;
+    min-width: 212px;
+    padding: 32px;
+    border: 1px solid $borderColor;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    color: $textMainColor;
+    transition: all #{$animation};
+
+    &:hover {
+      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    @include on-tablet {
+      height: 512px;
+      min-width: 237px;
+    }
+
+    @include on-desktop {
+      height: 506px;
+      max-width: 272px;
+    }
+  }
+
+  &_img {
+    display: block;
+    height: 129px;
+    width: 148px;
+    margin: 0 auto;
+    object-fit: contain;
+    transition: all #{$animation};
+
+    &:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+
+    @include on-tablet {
+      min-height: 181px;
+      min-width: 173px;
+    }
+
+    @include on-desktop {
+      min-height: 196px;
+      min-width: 208px;
+    }
+  }
+
+  &_title {
+    min-height: 44px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
+  &_priceBlock {
+    display: flex;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $borderColor;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+  }
+
+  &_priceFull {
+    line-height: 30.8px;
+  }
+
+  &_priceHot {
+    margin-left: 8px;
+    font-family: Mont, sans-serif;
+    line-height: 28.12px;
+    color: $textSecondaryColor;
+    text-decoration: line-through;
+  }
+
+  &_options {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 8px;
+    margin-block: 16px;
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $textSecondaryColor;
+  }
+
+  &_option {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_details {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $textMainColor;
+  }
+
+  &_buttonsContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &_buttonAdd {
+    height: 40px;
+    width: 100%;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    color: #fff;
+    background-color: $textMainColor;
+    transition: all $animation;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+
+  &_favourites {
+    height: 40px;
+    min-width: 40px;
+    border: 1px solid $borderColorDark;
+    background-color: #fff;
+    transition: all $animation;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    &_heartIcon {
+      display: block;
+      height: 16px;
+      width: 16px;
+      margin: 0 auto;
+      background-size: cover;
+      background-image: url('../../../assets/img/icons/favourites-icon.png');
+    }
+
+    &_heartIconFull {
+      display: block;
+      height: 16px;
+      width: 16px;
+      margin: 0 auto;
+      background-size: cover;
+      background-image: url('../../../assets/img/icons/favourites-full-icon.png');
+    }
+  }
+}
+
+.added {
+  border: 1px solid $borderColor;
+  color: #27ae60;
+  background-color: #fff;
+}
