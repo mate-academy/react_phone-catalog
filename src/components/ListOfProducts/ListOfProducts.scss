@@ -1,0 +1,17 @@
+@import '../../styles/utils/mixin';
+@import '../../styles/utils/variables';
+
+.listOfProducts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.listOfProducts__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px 16px;
+  max-width: 1136px;
+  padding-bottom: 40px;
+}

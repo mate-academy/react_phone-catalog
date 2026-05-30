@@ -1,0 +1,47 @@
+@import '../../styles/utils/mixin';
+@import '../../styles/utils/variables';
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 248px;
+}
+
+.pagination li {
+  list-style: none;
+}
+
+.pagination a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  text-decoration: none;
+  background: $white-color;
+  border: 1px solid $elements-gray-color;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.pagination a:hover {
+  border-color: $main-text-color;
+}
+
+.pagination .active a {
+  background: $main-text-color;
+  color: $white-color;
+}
+
+.pagination .disabled a {
+  cursor: not-allowed;
+}

@@ -1,0 +1,81 @@
+@import '../../styles/utils/mixin';
+@import '../../styles/utils/variables';
+
+.new-models {
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+
+  @include on-tablet {
+    padding-top: 64px;
+  }
+
+  @include on-mobile {
+    padding-top: 56px;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 24px;
+
+    @include on-tablet {
+      padding: 0 24px 24px;
+    }
+
+    @include on-mobile {
+      padding: 0 16px 24px;
+    }
+  }
+
+  &__title {
+    align-items: start;
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons-gray-color;
+    background-color: $white-color;
+    position: relative;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      width: 16px;
+      height: 16px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      fill: black;
+    }
+
+    &--prev {
+      &::before {
+        background-image: url(../../../public/img/icons/arrow-prev.svg);
+      }
+    }
+
+    &--next {
+      &::before {
+        background-image: url(../../../public/img/icons/arrow-next.svg);
+      }
+    }
+
+    &:hover {
+      border: 1px solid $main-text-color;
+    }
+  }
+}

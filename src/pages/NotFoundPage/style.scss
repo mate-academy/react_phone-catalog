@@ -1,0 +1,26 @@
+@import '../../styles/utils/mixin';
+@import '../../styles/utils/variables';
+
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  text-align: center;
+
+  &__img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    object-fit: contain;
+
+    @include on-tablet {
+      width: 300px;
+    }
+
+    @include on-mobile {
+      width: 200px;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+@import '../../styles/utils/mixin';
+@import '../../styles/utils/variables';
+
+.tablets-page {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 24px 0 80px;
+
+  @include on-tablet {
+    padding: 24px 24px 64px;
+  }
+
+  @include on-mobile {
+    padding: 24px 16px 64px;
+    ;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 40px;
+
+    @include on-mobile {
+      padding-bottom: 24px;
+    }
+  }
+
+  &__title {
+    font-size: 48px;
+    padding-bottom: 8px;
+
+    @include on-mobile {
+      font-size: 32px;
+    }
+  }
+}
+
+.nav {
+  &__home {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    background-image: url(../../../public/img/icons/home-nav.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &__next-step {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    background-image: url(../../../public/img/icons/arrow-next.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &__title {
+    color: $secondary-text-color;
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+  }
+}
