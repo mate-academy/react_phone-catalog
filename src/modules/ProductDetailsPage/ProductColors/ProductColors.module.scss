@@ -1,0 +1,42 @@
+@import '../../shared/styles/main';
+
+.colors {
+  &__labels {
+    @include flex(row, space-between, center);
+
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    color: var(--color-gray-secondary);
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    padding: 8px 0 24px;
+  }
+
+  &__button {
+    @include set-size(32px, 32px);
+    
+    border-radius: 50%;
+    border: 2px solid var(--color-gray-primary);
+    transition: all 0.3s ease;
+
+    &:hover {
+      border: 2px solid var(--color-gray-secondary);
+    }
+
+    &.selected {
+      border: 2px solid var(--color-gray-secondary);
+    }
+  }
+
+  &__inside {
+    @include set-size(28px, 28px);
+
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+}

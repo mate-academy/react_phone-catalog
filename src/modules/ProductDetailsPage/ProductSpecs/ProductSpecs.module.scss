@@ -1,0 +1,59 @@
+@import '../../shared/styles/main';
+
+.detail {
+  &__characteristics {
+    grid-column: span 4;
+
+    &-title {
+      font-family: Mont-SemiBold, sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 100%;
+
+      color: var(--color-gray-primary);
+
+      margin: 46px 0 56px;
+
+      @include on-tablet {
+        font-family: Mont-Bold, sans-serif;
+        font-weight: 800;
+        font-size: 22px;
+        line-height: 140%;
+
+         margin: 41px 0 64px;
+      }
+
+      @include on-desktop {
+        margin: 0 auto;
+      }
+    }
+
+    &-container {
+      @include flex(row, space-between);
+      
+      margin-bottom: 8px;
+
+      &__name {
+        font-family: Mont-Regular, sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+
+        color: var(--color-gray-secondary);
+      }
+
+      &__info {
+        font-family: Mont-Regular, sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+
+        color: var(--color-gray-primary);
+      }
+    }
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@import '../../../shared/styles/main';
+
+.button {
+  margin: 25px 0;
+
+  @include flex(row, flex-start, center);
+  
+  cursor: pointer;
+
+  gap: 4px;
+
+  &__title {
+    padding-top: 2px;
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0;
+    color: var(--color-gray-secondary);
+  }
+
+  &:hover {
+    .button__title {
+      color: var(--color-gray-primary);
+    }
+  }
+
+  @include on-tablet {
+    margin: 41px 0;
+  }
+}

@@ -1,0 +1,42 @@
+@import '../../shared/styles/main';
+
+.capacity {
+  &__title {
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: var(--color-gray-secondary);
+
+    margin-bottom: 8px;
+  }
+
+  &__list {
+    @include flex(row, flex-start, center);
+
+    gap: 8px;
+  }
+
+  &__button {
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    border: 1px solid var(--color-gray-icons-placeholders);
+    padding: 6px 8px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: transition;
+      border: 1px solid var(--color-gray-primary);
+    }
+
+    &.selected {
+      color: var(--color-bg);
+      background: var(--color-gray-primary);
+      border: 1px solid var(--color-gray-primary);
+    }
+  }
+}

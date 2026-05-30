@@ -1,0 +1,64 @@
+@import '../../../shared/styles/main';
+
+.carousel {
+  overflow: visible;
+
+  &__top {
+    @include flex(row, space-between, center);
+
+    margin-bottom: 24px;
+
+    &-title {
+      font-family: Mont-Bold, sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+      letter-spacing: 0%;
+
+      @include on-tablet {
+        font-weight: 800;
+        font-size: 32px;
+        line-height: 41px;
+        letter-spacing: -1%;
+      }
+
+      color: var(--color-gray-primary);
+    }
+  }
+
+  &__contentWrapper {
+    overflow: hidden visible;
+    padding: 8px;
+  }
+
+  &__content {
+    @include flex(row, space-between);
+
+    gap: 16px;
+    will-change: transform;
+    transform: translateZ(0);
+    padding-top: 8px;
+  }
+
+  &__navigation {
+    @include flex(row, center, center);
+
+    gap: 16px;
+
+    &_btn {
+      width: 32px;
+      padding: 6px;
+      background: none;
+
+      border: 1px solid var(--color-gray-icons-placeholders);
+      cursor: pointer;
+
+      @include hover(border-color, var(--color-gray-primary));
+
+      &.disabled {
+        opacity: 0.4;
+        pointer-events: none;
+      }
+    }
+  }
+}

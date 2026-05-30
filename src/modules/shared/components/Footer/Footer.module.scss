@@ -1,0 +1,122 @@
+@import '../../styles/main';
+
+.footer {
+  box-shadow: 0 -1px 0 0 #E2E6E9;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-block: 32px;
+    margin-top: 64px;
+
+    @include content-padding-inline;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+    align-self: flex-start;
+    color: var(--color-gray-secondary);
+    font-family: Mont-Bold, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-gray-primary);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      height: 2px;
+      background-color: var(--color-gray-primary);
+      width: 100%;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+
+      @include on-tablet {
+        transform-origin: center;
+      }
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+
+
+  &__button {
+    @include flex(row, center, center);
+
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-gray-icons-placeholders);
+    background-color: var(--color-bg);
+
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+  }
+
+  &__title {
+    color: var(--color-gray-secondary);
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    text-align: right;
+
+    transition: color 0.3s ease;
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    cursor: pointer;
+
+    &:hover {
+      .footer__title {
+        color: var(--color-gray-primary);
+      }
+
+      .footer__button {
+        border: 1px solid var(--color-gray-primary);
+      }
+    }
+  }
+}
