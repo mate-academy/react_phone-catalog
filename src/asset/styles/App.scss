@@ -1,0 +1,241 @@
+html {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  scroll-behavior: smooth;
+}
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &--menu {
+    background-image: url(./asset/img/icons/menu-burger-icon.png);
+  }
+
+  &--home {
+    background-image: url(./asset/img/icons/home.png);
+  }
+
+  &--like {
+    background-image: url(./asset/img/icons/like.png);
+  }
+
+  &--heart-red {
+    background-image: url(./asset/img/icons/heart-red.png);
+  }
+
+  &--cart {
+    background-image: url(./asset/img/icons/cart.png);
+  }
+
+  &--close {
+    background-image: url(./asset/img/icons/close.png);
+  }
+
+  &--search {
+    background-image: url(./asset/img/icons/search.png);
+  }
+
+  &--minus {
+    background-image: url(./asset/img/icons/minus.png);
+  }
+
+  &--plus {
+    background-image: url(./asset/img/icons/plus.png);
+  }
+
+  &--arrow {
+    background-image: url(./asset/img/icons/arrow.png);
+    transition: transform 0.3s;
+
+    &--right {
+      transform: rotateZ(90deg);
+    }
+
+    &--left {
+      transform: rotateZ(-90deg);
+    }
+
+    &--down {
+      transform: rotateX(180deg);
+    }
+  }
+}
+
+.circle-color {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $-elements;
+  padding: 2px;
+  box-sizing: border-box;
+  background-color: white;
+  position: relative;
+  transition: all .3s;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $-icons;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &--active {
+    border-color: $-primary;
+    pointer-events: none;
+  }
+
+  &--black {
+    background-color: $-primary;
+  }
+
+  &--green {
+    background-color: $-green;
+  }
+
+  &--yellow {
+    background-color: yellow;
+  }
+
+  &--purple {
+    background-color: purple;
+  }
+
+  &--rosegold {
+    background-color: $-rosegold;
+  }
+
+  &--red {
+    background-color: $-red;
+  }
+
+  &--silver {
+    background-color: $-elements;
+  }
+
+  &--spacegray {
+    background-color: $-secondary;
+  }
+
+  &--gold {
+    background-color: $-gold;
+  }
+
+  &--midnightgreen {
+    background-color: $-midnightgreen;
+  }
+
+  &--skyblue {
+    background-color: $-blue;
+  }
+}
+
+.main {
+  padding-top: 48px;
+  box-sizing: border-box;
+  flex: 1;
+
+  @include on-desktop {
+    padding-top: 64px;
+  }
+}
+
+.container {
+  max-width: $-desktop-min-width;
+  padding-inline: 16px;
+  margin: 0 auto;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+.section {
+  margin-bottom: 56px;
+
+  @include page-grid;
+
+  @media (min-width: $-tablet-min-width) {
+    margin-bottom: 64px;
+  }
+
+  @media (min-width: $-desktop-min-width) {
+    margin-bottom: 86px;
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  margin-block: 24px;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.subtitle {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid $-elements;
+  width: 100%;
+}
+
+.button {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  flex-grow: 1;
+  height: 40px;
+  background-color: $-primary;
+  color: #fff;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+
+  &--selected {
+    border: 1px solid $-elements;
+    background-color: #fff;
+    color: $-green;
+  }
+}

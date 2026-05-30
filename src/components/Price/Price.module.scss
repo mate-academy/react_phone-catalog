@@ -1,0 +1,16 @@
+@import '../../main';
+
+.price {
+  color: $-primary;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  display: flex;
+
+  &__fullPrice {
+    color: $-secondary;
+    text-decoration: line-through;
+    font-size: 22px;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,81 @@
+@import '../../main';
+
+.images-block {
+  row-gap: 8px;
+
+  @include page-grid;
+
+  @include on-tablet {
+    grid-auto-flow: column;
+  }
+
+  &__main {
+    grid-column: 1 /-1;
+    aspect-ratio: 1;
+
+    @include on-tablet {
+      grid-column: 3 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: span 20;
+    }
+  }
+
+  &__thumbnail {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / 3;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 5;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.thumbnail {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-content: start;
+  gap: 8px;
+
+  @include on-tablet {
+    grid-template-columns: 1fr;
+  }
+
+  &__image {
+    aspect-ratio: 1;
+    overflow: hidden;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid $-elements;
+    cursor: pointer;
+    transition: all .3s;
+
+    &:hover {
+      border-color: $-icons;
+
+      img {
+        transform: scale(1.1);
+      }
+
+    }
+
+    &--active {
+      border-color: $-primary;
+      pointer-events: none;
+    }
+  }
+}
+
+.img {
+  transition: all .3s;
+  height: 100%;
+  object-fit: contain;
+}

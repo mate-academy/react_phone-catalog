@@ -1,0 +1,31 @@
+@import '../../main';
+
+.breadcrumbs {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 15px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    &--link {
+      transition: all .3s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+    &--last {
+      color: $-secondary;
+    }
+  }
+}
+
+.icon {
+  &__arrow {
+    cursor: default;
+  }
+}

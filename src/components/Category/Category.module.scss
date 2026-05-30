@@ -1,0 +1,73 @@
+@import '../../main';
+
+.category {
+  width: 100%;
+  box-sizing: border-box;
+
+  &__link {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    position: relative;
+    transition: all .3s;
+
+    &--phones {
+      background-color: $-secondary;
+    }
+
+    &--tablets {
+      background-color: $-icons;
+    }
+
+    &--accessories {
+      background-color: rgba(213, 60, 81, 1);
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+
+      img {
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    transition: all .3s;
+
+    &--phones {
+      width: 100%;
+    }
+
+    &--tablets {
+      height: 120%;
+      left: 15%;
+    }
+
+    &--accessories {
+      height: 80%;
+      top: auto;
+      bottom: 0;
+      left: 15%;
+    }
+
+  }
+
+  &__title {
+    font-size: 20px;
+    line-height: 26px;
+    color: $-primary;
+    margin-top: 24px;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 21px;
+    color: $-secondary;
+    margin-top: 4px;
+  }
+}

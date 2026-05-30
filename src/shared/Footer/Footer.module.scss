@@ -1,0 +1,87 @@
+@import '../../main';
+
+.footer {
+  padding-block: 32px;
+  border-top: 1px solid $-elements;
+  color: $-secondary;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__logo {
+    padding: 0;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__item {
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+  }
+
+  &__link {
+    transition: all .3s;
+    &:hover {
+      color: $-primary;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+  }
+
+}
+
+.logo {
+  padding: 0;
+}
+
+.back-to-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: fit-content;
+  transition: all .3s;
+  color: $-secondary;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  cursor: pointer;
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    border: 1px solid $-icons;
+    transition: all .3s;
+  }
+
+  &:hover {
+    color: $-primary;
+
+    & span {
+      background-color: $-elements;
+    }
+  }
+}
