@@ -1,0 +1,40 @@
+
+.container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 0;
+  width: 100%;
+
+  @include respond-to(tablet) {
+    padding: 24px 0 40px;
+  }
+}
+
+.home {
+  width: 16px;
+  height: 16px;
+}
+
+.text {
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-text;
+}
+
+.categoryLink {
+  color: $color-light;
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: $color-text;
+  }
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+}

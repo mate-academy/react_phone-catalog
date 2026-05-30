@@ -1,1 +1,32 @@
-// not empty
+@import '../src/styles/mixins';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.not-shown {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.main-with-fixed-header {
+  padding-top: 48px;
+
+  @include respond-to(tablet) {
+    padding-top: 48px;
+  }
+
+  @include respond-to(desktop) {
+    padding-top: 64px;
+  }
+}

@@ -1,0 +1,147 @@
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.buttons_left {
+  justify-content: flex-start;
+}
+
+.buttons_center {
+  justify-content: center;
+}
+
+.buttons_right {
+  justify-content: flex-end;
+}
+
+.buttons_small {
+  gap: 8px;
+}
+
+.buttons_medium {
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.button {
+  border-radius: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.button_add {
+  border: 1px solid $color-lila;
+  background-color: $color-lila;
+  font-weight: 700;
+  color: $color-light;
+  flex-grow: 1;
+
+  &:disabled {
+    background-color: $color-card;
+    border-color: $color-text;
+    color: $color-text;
+    cursor: not-allowed;
+    opacity: 0.7;
+
+    &:hover {
+      background-color: $color-card;
+      border-color: $color-text;
+      transform: none;
+    }
+  }
+
+  &:hover:not(:disabled) {
+    background-color: lighten($color-lila, 10%);
+    border-color: lighten($color-lila, 10%);
+  }
+}
+
+.button_add_small {
+  height: 40px;
+  width: 160px;
+  font-size: 14px;
+}
+
+.button_add_medium {
+  height: 48px;
+  width: 100%;
+  font-size: 14px;
+
+  @include respond-to(tablet) {
+    width: 180px;
+  }
+
+  @include respond-to(desktop) {
+    width: 263px;
+  }
+}
+
+.button_add_large {
+  height: 56px;
+  width: 180px;
+  font-size: 18px;
+
+  @include respond-to(tablet) {
+    width: 200px;
+  }
+
+  @include respond-to(desktop) {
+    width: 240px;
+  }
+}
+
+.button_fav {
+  background-color: $color-border;
+  border: 1px solid $color-border;
+
+  &:hover {
+    background-color: lighten($color-border, 10%);
+    border-color: lighten($color-border, 10%);
+  }
+}
+
+.img {
+  transition: filter 0.3s ease;
+
+  .button_fav:hover & {
+    filter: brightness(0.9);
+  }
+}
+
+.button_fav_small .img {
+  height: 16px;
+  width: 16px;
+}
+
+.button_fav_medium .img {
+  height: 20px;
+  width: 20px;
+}
+
+.button_fav_large .img {
+  height: 24px;
+  width: 24px;
+}
+
+.button_fav_small {
+  height: 40px;
+  width: 40px;
+}
+
+.button_fav_medium {
+  min-height: 48px;
+  min-width: 48px;
+}
+
+.button_fav_large {
+  height: 56px;
+  width: 56px;
+}
