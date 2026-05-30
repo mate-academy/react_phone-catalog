@@ -1,0 +1,160 @@
+@use '../../../utils/mixins.scss' as *;
+@import '../../../utils/variables.scss';
+
+.product_card {
+  width: 212px;
+  display: flex;
+  flex-direction: column;
+  background-color: #161827;
+  height: 440px;
+
+
+  @include onTablet {
+    width: 237px;
+    height: 512px;
+  }
+
+  @include onDesktop {
+    width: 272px;
+  }
+}
+
+.content {
+  padding-inline: 32px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  
+
+  &_container {
+    padding-top: 32px;
+    height: 129px;
+    display: flex;
+    align-items: start;
+
+    @include onTablet {
+      height: 202px;
+    }
+
+    @include onDesktop {
+      height: 208px;
+    }
+  }
+}
+
+.name {
+  font-family: Mont, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: $main-text-color;
+  padding-bottom: 8px;
+  word-wrap: break-word;
+  flex-shrink: 0;
+}
+
+.price {
+  display: flex;
+  gap: 8px;
+}
+
+.old_price {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 30px;
+  text-decoration-line: line-through;
+  color: $second-text-color;
+}
+
+.discounted_price {
+  color: $main-text-color;
+  font-size: 22px;
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  padding-bottom: 8px;
+  line-height: 30px;
+}
+
+.line {
+  height: 1px;
+  border: none;
+  background-color: #3B3E4A;
+  margin-bottom: 8px;
+}
+
+.description {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 8px;
+
+  &_title {
+    color: $second-text-color;
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+  }
+
+  &_value {
+    color: $main-text-color;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: Mont, sans-serif;
+    line-height: 15px;
+  }
+}
+
+.screen,
+.capacity,
+.ram {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  padding-bottom: 32px;
+}
+
+.button_cart {
+  width: 100px;
+  height: 40px;
+  background-color: #905BFF;
+  border: none;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #F1F2F9;
+
+  @include onTablet {
+    width: 125px;
+  }
+
+  @include onDesktop {
+    width: 160px;
+  }
+}
+
+.button_favourite {
+  background-color: #323542;
+  width: 40px;
+  height: 40px;
+  background-image: url('/img/icon-like.png');
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}

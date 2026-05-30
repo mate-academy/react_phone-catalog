@@ -1,0 +1,35 @@
+@use './utils/mixins.scss' as *;
+@import './utils/variables.scss';
+
+button {
+  background-color: #323542;
+  color: $main-text-color;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  border: none;
+  @include hover(background-color, #4A4D58);
+
+  &:disabled {
+    color: #3B3E4A;
+  border: 1px solid #3B3E4A;
+  background-color: #161827;
+  }
+}
+
+h2 {
+  color: $main-text-color;
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 800;
+
+  @include onTablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  @include onDesktop {
+    font-size: 32px;
+  }
+}
