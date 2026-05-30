@@ -1,0 +1,118 @@
+@import '../utilsMV';
+
+.icon {
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: all 0.4s ease-in-out;
+
+  &--logo {
+    background-image: url('/img/icons/Logo1.svg');
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+
+    @include on-tablet {
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  &--menu {
+    background-size: auto;
+    background-image: url('/img/icons/Cart-=.svg');
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &--close {
+    background-size: auto;
+    background-image: url('/img/icons/cart-X.svg');
+  }
+
+  &--heart {
+    background-image: url('/img/logo/Favourites.svg');
+    background-size: auto;
+    background-position: center;
+
+    &-fill {
+      background-image: url('/img/logo/FilledHeart.svg');
+    }
+  }
+
+  &--heartMenu {
+    background-image: url('/img/logo/Favourites16.svg');
+    background-size: auto;
+    background-position: center;
+  }
+
+  &--bag {
+    background-image: url('/img/logo/Bag48.svg');
+    background-size: auto;
+    background-position: center;
+  }
+  &--bagMenu {
+    background-image: url('/img/logo/Bag.svg');
+    background-size: auto;
+    background-position: center;
+  }
+
+  &--arrow {
+    background-size: auto;
+    background-position: center;
+
+    &-up {
+      background-image: url('/img/logo/ArrowUp.svg');
+
+      &--rotate {
+        transform: rotate(270deg);
+      }
+    }
+  }
+
+  &--arrowright {
+    background-size: auto;
+    background-position: center;
+
+    &-up {
+      width: 16px;
+      height: 16px;
+      background-image: url('/img/logo/ArrowR.svg');
+    }
+  }
+
+  &--home {
+    width: 16px;
+    height: 16px;
+    background-image: url('/img/logo/Home2.svg');
+  }
+
+  &--minus {
+    background-image: url('/img/icons/minus.svg');
+    background-size: auto;
+    background-position: center;
+
+    &-disabled {
+      background-image: url('/img/icons/Minus-disablet16.svg');
+      background-size: auto;
+      background-position: center;
+    }
+  }
+
+  &--plus {
+    background-image: url('/img/icons/Plus.svg');
+    background-size: auto;
+    background-position: center;
+  }
+
+  &--cross {
+    background-image: url('/img/icons/Close.gray.svg');
+    background-size: auto;
+    background-position: center;
+    width: 16px;
+    height: 16px;
+  }
+}

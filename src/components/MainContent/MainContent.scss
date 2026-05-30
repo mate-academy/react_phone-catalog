@@ -1,0 +1,15 @@
+@import '../../styles/utilsMV';
+
+.main-content {
+  margin-bottom: 8px;
+
+  @include grid;
+
+  @include on-desktop {
+    margin-bottom: 0;
+  }
+
+  &__margin {
+    @include margin-bottom;
+  }
+}
