@@ -1,0 +1,27 @@
+@import '../../styles/variables.scss';
+
+.container {
+  width: 100%;
+}
+
+h2 {
+  margin-bottom: $button-navigate;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  gap: var(--header-height);
+}
+
+@media (max-width: 639px) {
+  .header {
+    flex-direction: column;
+  }
+}
+
+.notFound {
+  display: block;
+  width: 60%;
+  margin: auto;
+}
