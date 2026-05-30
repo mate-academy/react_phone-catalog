@@ -1,0 +1,19 @@
+@use '../../styles/utils' as utils;
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    text-align: center;
+  }
+
+  &__link {
+    text-align: center;
+  }
+
+  &__img {
+    margin-block: 60px;
+  }
+}

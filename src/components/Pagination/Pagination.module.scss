@@ -1,0 +1,13 @@
+@use '../../styles/utils' as utils;
+
+.pagination {
+  display: flex;
+  height: 32px;
+  gap: 16px;
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+    height: 100%;
+  }
+}

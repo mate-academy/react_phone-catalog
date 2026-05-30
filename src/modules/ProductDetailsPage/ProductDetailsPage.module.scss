@@ -1,0 +1,208 @@
+@use '../../styles/utils' as utils;
+
+.product-details {
+  &__not-found {
+    &-img {
+      margin-block: 60px;
+    }
+
+    &-title {
+      text-align: center;
+      margin-block: 60px
+    }
+  }
+
+  &__main {
+    @include utils.page-grid;
+    
+    height: auto;
+    grid-auto-flow: column;
+  }
+
+  &__photo {
+    &-big {
+      display: flex;
+      grid-column: 1 / -1;
+      object-fit: contain; // fix (cover with ratio - interactive)
+      aspect-ratio: 1 / 1;
+
+      width: 100%;
+
+      @include utils.on-tablet {
+        grid-column: 2 / 8;
+      }
+
+      @include utils.on-desktop {
+        grid-column: 3 / 13;
+      }
+    }
+
+    &-frame {
+      grid-column: span 1;
+      padding: 5px;
+      display: flex;
+      justify-content: center;
+      border: 1px solid utils.$color-elements;
+      cursor: pointer;
+    }
+
+    &-small {
+      object-fit: contain;
+      aspect-ratio: 1 / 1;
+      width: 100%;
+    }
+  }
+
+  &__photos-wrapper {
+    grid-column: 1 / -1;
+    margin-top: 16px;
+    gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    @include utils.on-tablet {
+      grid-column: 1 / 2;
+      margin-top: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    @include utils.on-desktop {
+      grid-column: 1 / 3;
+    }
+  }
+
+  &__controls {
+    grid-column: 1 / -1;
+    margin-top: 40px;
+
+    @include utils.on-tablet {
+      grid-column: 8 / -1;
+      margin-top: 0;
+    }
+
+    @include utils.on-desktop {
+      grid-column: 14 / 21;
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+
+    &-block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &-title {
+      color: utils.$color-secondary;
+    }
+
+    &-buttons {
+      height: 32px;
+      display: flex;
+      gap: 8px;
+    }
+
+    &-line {
+      width: 100%;
+      height: 1px;
+      background-color: utils.$color-elements;
+      border: none;
+      margin-block: 24px;
+    }
+  }
+
+  &__payment {
+    margin-bottom: 32px;
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &-old {
+      font-weight: 600;
+      font-size: 22px;
+      text-decoration: line-through;
+      color: utils.$color-secondary;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &-row {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    &-title {
+      color: utils.$color-secondary;
+    }
+  }
+
+  &__description {
+    @include utils.page-grid;
+
+    row-gap: 56px;
+
+    @include utils.on-tablet {
+      row-gap: 64px;
+    }
+
+    &-block {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+
+      &--left {
+        @include utils.on-desktop {
+          grid-column: 1 / 13;
+        }
+      }
+
+      &--right {
+        @include utils.on-desktop {
+          grid-column: 14 / -1;
+        }
+      }
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      &-text {
+        color: utils.$color-secondary;
+      }
+    }
+
+    &-title {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      color: utils.$color-white;
+    }
+
+    &-line {
+      width: 100%;
+      height: 1px;
+      background-color: utils.$color-elements;
+      border: none;
+      margin: 0;
+    }
+  }
+}

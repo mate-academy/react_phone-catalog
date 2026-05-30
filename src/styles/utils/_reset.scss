@@ -1,0 +1,33 @@
+html, body, div, span,
+h1, h2, h3, h4, h5, h6, p,
+a,
+img,
+ol, ul, li,
+form, label,
+table, tbody, tfoot, thead, tr, th, td,
+article, aside,
+footer, header, hgroup,
+menu, nav, section{
+	font: inherit;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+a, ul, li, ol {
+  color: inherit;
+  text-decoration: none;
+  list-style: none;
+}
+
+button {
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit; /* Inherits font styles from parent */
+  cursor: pointer; /* Ensures the cursor remains a pointer */
+  text-align: inherit; /* Inherits text alignment */
+  color: inherit; /* Inherits text color */
+}

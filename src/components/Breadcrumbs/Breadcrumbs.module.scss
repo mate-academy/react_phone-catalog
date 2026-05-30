@@ -1,0 +1,22 @@
+@use '../../styles/utils' as utils;
+
+.breadcrumbs {
+  display: flex;
+  column-gap: 8px;
+  align-items: center;
+  margin-block: 24px;
+
+  &__item {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+
+    &.active {
+      color: utils.$color-secondary;
+    }
+  }
+
+  &__arrow {
+    color: utils.$color-icons;
+  }
+}

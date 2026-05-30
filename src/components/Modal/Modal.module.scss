@@ -1,0 +1,29 @@
+@use '../../styles/utils' as utils;
+
+.modal {
+  background-color: utils.$color-surface1;
+  top: 50%;
+  left: 50%;
+  width: 70vw;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  text-align: center;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include utils.on-tablet {
+    width: auto;
+  }
+
+  &-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+  }
+}

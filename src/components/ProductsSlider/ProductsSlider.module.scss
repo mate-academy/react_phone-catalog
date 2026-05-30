@@ -1,0 +1,32 @@
+@use '../../styles/utils' as utils;
+
+.product-slider {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+    column-gap: 16px;
+    align-items: center;
+    height: 32px;
+  }
+
+  &__wrapper {
+    margin-right: calc(-1 * utils.$padding-content) !important;
+    margin-top: 24px;
+
+    @include utils.on-tablet {
+      margin-right: calc(-1 * utils.$padding-content-tablet) !important;
+    }
+
+    @include utils.on-desktop {
+      margin-right: 0 !important;
+    }
+  }
+
+  &__card {
+    height: auto !important;
+  }
+}

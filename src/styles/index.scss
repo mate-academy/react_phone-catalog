@@ -1,0 +1,204 @@
+@use './utils/reset';
+@use './utils/fonts';
+@use './utils.scss' as utils;
+
+h1 {
+  @include utils.on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  font-weight: 800;
+}
+
+h2 {
+  @include utils.on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  font-weight: 800;
+}
+
+h3 {
+  @include utils.on-tablet {
+    font-size: 22px;
+    line-height: 31px;
+    font-weight: 800;
+  }
+
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+
+h4 {
+  @include utils.on-tablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+
+p {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+.button-text {
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+
+.uppercase-text {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.body-text {
+  font-weight: 400; /* Regular */
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+.small-text {
+  font-weight: 700; /* SemiBold */
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+body {
+  font-family: Mont, sans-serif;
+  color: utils.$color-white;
+  background-color: utils.$color-black;
+}
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  mask-position: center;
+  transition: all 0.3s ease;
+
+  &--menu {
+    mask-image: url(../assets/img/icons/Menu.svg);
+  }
+
+  &--favorites {
+    mask-image: url(../assets/img/icons/Favourites.svg);
+  }
+
+  &--shopping {
+    mask-image: url(../assets/img/icons/Shopping-Bag.svg);
+  }
+
+  &--close {
+    mask-image: url(../assets/img/icons/Close.svg);
+  }
+
+  &--arrow-left {
+    mask-image: url(../assets/img/icons/Arrow-Left.svg);
+  }
+
+  &--arrow-right {
+    mask-image: url(../assets/img/icons/Arrow-Right.svg);
+  }
+
+  &--arrow-top {
+    mask-image: url(../assets/img/icons/Arrow-Up.svg);
+  }
+
+  &--arrow-bottom {
+    mask-image: url(../assets/img/icons/Arrow-Down.svg);
+  }
+
+  &--heart-filled {
+    mask-image: url(../assets/img/icons/Favourites-Filled.svg);
+  }
+
+  &--slider-button {
+    mask-image: url(../assets/img/icons/Slider-Button.svg);
+    width: 14px;
+    height: 4px;
+  }
+
+  &--home {
+    mask-image: url(../assets/img/icons/Home.svg);
+  }
+
+  &--plus {
+    mask-image: url(../assets/img/icons/Plus.svg);
+  }
+
+  &--minus {
+    mask-image: url(../assets/img/icons/Minus.svg);
+  }
+}
+
+.section {
+  margin-bottom: 56px;
+
+  @include utils.on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include utils.on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.hidden-title {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.page__info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  margin-bottom: 32px;
+
+  @include utils.on-tablet {
+    margin-block: 40px;
+  }
+
+  &-count {
+    color: utils.$color-secondary;
+  }
+}
+
+.not-found__img {
+  object-fit: cover;
+  max-width: 550px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: block;
+}
+

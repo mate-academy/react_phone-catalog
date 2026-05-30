@@ -1,0 +1,81 @@
+@use '../../styles/utils' as utils;
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &-label {
+    color: utils.$color-secondary;
+  }
+
+  &-content {
+    position: relative;
+  }
+
+  &-icon {
+    color: utils.$color-secondary;
+
+    &.is-open {
+      transform: rotateX(180deg);
+    }
+  }
+
+  &-trigger {
+    box-sizing: border-box;
+    padding: 9px 11px;
+    background-color: utils.$color-surface2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid transparent;
+    transition: border 0.3s ease;
+
+    &:hover {
+      border: 1px solid utils.$color-icons;
+
+      .dropdown-icon {
+        color: utils.$color-icons;
+      }
+    }
+
+    &.is-open {
+      border: 1px solid utils.$color-accent;
+    }
+  }
+
+  &-menu {
+    visibility: hidden;
+    position: absolute;
+    background-color: utils.$color-black;
+    padding-block: 8px;
+    box-sizing: border-box;
+    border: 1px solid utils.$color-elements;
+    z-index: 5;
+    left: 0;
+    right: 0;
+    top: calc(100% + 4px);
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+
+    &.is-open {
+      transform: translateY(0);
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &-item {
+    color: utils.$color-secondary;
+    cursor: pointer;
+    padding: 6px 12px;
+
+    &.is-active {
+      background-color: utils.$color-surface2;
+      color: utils.$color-white;
+    }
+  }
+}
