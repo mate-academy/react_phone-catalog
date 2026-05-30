@@ -1,0 +1,39 @@
+@import '../../../styles/main';
+
+.newModels {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    color: $textMainColor;
+    margin-bottom: 32px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    height: 32px;
+    width: 80px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $pageBackground;
+    border: 1px solid $hoverIconButtonColor;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 32px;
+
+    @include hover(background-color, $hoverIconButtonColor);
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}

@@ -1,0 +1,118 @@
+@import '../../styles/main';
+
+.accessoriesPage {
+  &__navigation {
+    display: flex;
+      align-items: center;
+    column-gap: 8px;
+    padding-block: 24px;
+  }
+
+  &__iconHome {
+    background-image: url('../../img/icons/icon-home.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+  }
+
+  &__iconArrowRight {
+    background-image: url('../../img/icons/icon-arrow-right-grey.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 12px;
+    width: 12px;
+  }
+
+  &__address {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    color: $textNotActiveColor;
+    text-transform: capitalize;
+    font-size: 12px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  &__amountModels {
+    margin-bottom: 32px;
+    color: $textNotActiveColor;
+
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__selectors {
+    display: flex;
+    column-gap: 16px;
+  }
+
+  &__selectorContent {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px  
+  }
+
+  &__selectorTitle {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 100%;
+    color: $textNotActiveColor;
+  }
+
+  &__phoneList {
+    padding-block: 24px;
+    row-gap: 40px;
+    
+    @include page-grid;
+  }
+
+  &__phoneItem {
+    grid-column: span 4;
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+
+  }
+
+  &__pagination {
+    display: flex;
+    column-gap: 16px;
+    justify-content: center;
+  }
+
+  &__arrow {
+    background-color: $mainIconButtonColor;
+    color: $textMainColor;
+    height: 32px;
+    width: 32px;
+  }
+
+  &__numberButtonsWrapper {
+    overflow: hidden;
+  }
+
+  &__numberButtons {
+    display: flex;
+    column-gap: 8px;
+  }
+
+  &__numberButton  {
+    color: $textMainColor;
+    background-color: $mainNumberButtonColor;
+    min-width: 32px;
+    height: 32px;
+
+    &_active {
+      background-color: $mainPurpleButtonColor;
+    }
+  }
+}
