@@ -1,0 +1,86 @@
+@use '../../mixins/mixins' as *;
+
+.tablets {
+  @include omitFixedTopBar;
+  @include padding-inline;
+
+  flex: 1;
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include desktop {
+    padding-bottom: 80px;
+  }
+
+  &__title {
+    @include titleStyle;
+
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    margin-bottom: 32px;
+    font-weight: 600;
+    line-height: 21px;
+    color: var(--text-color);
+
+    @include tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__noProducts {
+    font-size: 20px;
+  }
+
+  &__error {
+    margin-top: 60px;
+    font-size: 16px;
+    text-align: center;
+
+    @include tablet{
+      font-size: 25px;
+    }
+  }
+
+  &__reload {
+    display: block;
+
+    width: 110px;
+    height: 30px;
+    margin-top: 30px;
+    margin-inline: auto;
+    padding-block: 5px;
+    border: 0.1px solid var(--text-color);
+    border-radius: 9999px;
+
+    font-size: 8px;
+    font-weight: 800;
+    color: var(--header-color);
+    text-align: center;
+    text-transform: uppercase;
+
+    background-color: var(--purple-main);
+
+    &:hover {
+      background-color: var(--purple-light);
+    }
+
+    &--lightTheme{
+      background-color: var(--header-color);
+      color: var(--app-background);
+
+      &:hover {
+        background-color: var(--header-color);
+        @include buttonOnHover;
+      }
+    }
+
+    @include tablet{
+      width: 165px;
+      height: 50px;
+      padding-block: 15px;
+      font-size: 13px;
+    }
+  }
+}

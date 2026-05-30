@@ -1,0 +1,84 @@
+{
+  "nav": {
+    "home": "Home",
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "github": "Github",
+    "rights": "Rights",
+    "contacts": "Contacts",
+    "backToTop": "Back to top",
+    "backToHome": "Back to home"
+  },
+  "sections": {
+    "brandNewModels": "Brand new models",
+    "shopByCategory": "Shop by category",
+    "hotPrices": "Hot prices",
+    "favorites": "Favorites",
+    "mobilePhones": "Mobile Phones",
+    "cart": "Cart",
+    "youMayLike": "You may also like"
+  },
+  "messages": {
+    "welcome": "Welcome to Nice Gadgets Store!"
+  },
+  "titles": {
+    "screen": "Screen",
+    "capacity": "Capacity",
+    "ram": "RAM",
+    "resolution": "Resolution",
+    "processor": "Processor",
+    "about": "About",
+    "techSpecs": "Tech Specs",
+    "cell": "Cell",
+    "nowInStore": "Now available in our store!",
+    "beTheFirst": "Be the first!",
+    "sliderText": "Pro. Beyond."
+  },
+  "buttonText": {
+    "addToCart": "Add to cart",
+    "addedToCart": "Added to cart",
+    "reload": "Reload",
+    "order": "Order now"
+  },
+  "categories": {
+    "mobilePhones": "Mobile phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "quantityModels": "models"
+  },
+  "filtering": {
+    "sortBy": "Sort by",
+    "itemsOnPage": "Items on page",
+    "search": "Search by name",
+    "newest": "Newest",
+    "cheapest": "Cheapest",
+    "alphabetically": "Alphabetically",
+    "all": "All",
+    "placeholder": "Enter the text to search"
+  },
+  "elements": {
+    "checkout": "Checkout",
+    "totalOne": "Total for {{count}} item",
+    "totalMore": "Total for {{count}} items",
+    "back": "Back",
+    "colors": "Available colors",
+    "capacity": "Select capacity",
+    "items": "{{count}} items",
+    "item": "1 item",
+    "models": "{{count}} models",
+    "model": "1 model"
+  },
+  "errors": {
+    "smthWrong": "Something went wrong!",
+    "noAccessories": "There are no accessories yet",
+    "emptyCart": "Your cart is empty!",
+    "pageNotFound": "Page not found",
+    "noPhones": "There are no phones yet",
+    "noTablets": "There are no tablets yet",
+    "phonesNotFound": "There are no phones matching the query!",
+    "tabletsNotFound": "There are no tablets matching the query!",
+    "accessoriesNotFound": "There are no accessories matching the query!",
+    "productNotFound": "Product was not found!"
+  }
+}

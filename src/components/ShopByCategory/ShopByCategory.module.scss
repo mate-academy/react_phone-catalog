@@ -1,0 +1,68 @@
+@use '../../mixins/mixins' as *;
+
+.ShopByCategory{
+  @include padding-inline;
+
+  &__title{
+    margin-bottom: 24px;
+
+    @include sectionTitleStyle;
+  }
+
+  &__categories{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+
+    @include tablet{
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__categoryTitle{
+    position: relative;
+    transform-origin: left center;
+
+    display: block;
+
+    width: max-content;
+    margin-top: 24px;
+
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 100%;
+    color: var(--header-color);
+    text-decoration: none;
+
+    @include scaleOnHover;
+  }
+
+  &__categoryQuantity{
+    padding-top: 4px;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: var(--text-color);
+  }
+
+  &__categoryPhoto{
+    width: 288px;
+    height: 288px;
+
+    @include scaleOnHover;
+
+    @include tablet{
+      width: fit-content;
+      height: 187px;
+    }
+
+    @include desktop{
+      width: fit-content;
+      height: 368px;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+export type Phone = {
+  id: string;
+  category: string;
+  namespaceId: string;
+  name: string;
+  capacityAvailable: ['64GB', '128GB', '256GB'];
+  capacity: string;
+  priceRegular: 1100;
+  priceDiscount: 1050;
+  colorsAvailable: string[];
+  color: string;
+  images: string[];
+  description: object[];
+  screen: string;
+  resolution: string;
+  processor: string;
+  ram: string;
+  camera: string;
+  zoom: string;
+  cell: string[];
+  quantity: number;
+};

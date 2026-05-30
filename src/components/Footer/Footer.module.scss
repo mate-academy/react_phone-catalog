@@ -1,0 +1,117 @@
+@use '../../mixins/mixins' as *;
+
+.Footer {
+  &__content {
+    @include padding-inline;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-block: 32px;
+
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style: none;
+
+    @include tablet {
+      flex-direction: row;
+      gap: 14px;
+    }
+
+    @include desktop {
+      gap: 107px;
+    }
+  }
+
+  &__link {
+    @include scaleOnHover;
+
+    display: block;
+
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    color: var(--header-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4%;
+
+    &:hover {
+      color: var(--purple-main);
+    }
+
+    &--lightTheme {
+      color: var(--text-color);
+
+      &:hover {
+        color: var(--header-color);
+      }
+    }
+  }
+
+  &__navToTop {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+  }
+
+  &__toTopButton {
+    cursor: pointer;
+    all: unset;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+    color: var(--text-color);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--purple-main);
+    }
+
+    &--lightTheme {
+      &:hover {
+        color: var(--header-color);
+      }
+    }
+  }
+
+  &__upButton {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+
+    background-color: var(--dark-gray);
+    background-image: url('../../../public/img/icons/arrow-up.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:hover {
+      background-color: var(--items-hover);
+    }
+
+    &--lightTheme {
+      border: 1px solid var(--border-color);
+      background-color: var(--app-background);
+      background-image: url('../../../public/img/icons/arrow-up-lightTheme-dark.svg');
+
+      &:hover {
+        border-color: var(--header-color);
+        background-color: var(--app-background);
+      }
+    }
+  }
+}

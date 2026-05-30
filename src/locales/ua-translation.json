@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "home": "Головна",
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари",
+    "github": "GitHub",
+    "rights": "Права",
+    "contacts": "Контакти",
+    "backToTop": "Вгору",
+    "backToHome": "Назад на головну"
+  },
+  "sections": {
+    "brandNewModels": "Нові моделі",
+    "shopByCategory": "Купуйте за категоріями",
+    "hotPrices": "Гарячі ціни",
+    "favorites": "Обране",
+    "mobilePhones": "Мобільні телефони",
+    "cart": "Кошик",
+    "youMayLike": "Вам також може сподобатися"
+  },
+  "messages": {
+    "welcome": "Ласкаво просимо до магазину Nice Gadgets!"
+  },
+  "titles": {
+    "screen": "Екран",
+    "capacity": "Ємність",
+    "ram": "RAM",
+    "resolution": "Роздільна здатність",
+    "processor": "Процесор",
+    "about": "Про товар",
+    "techSpecs": "Технічні характеристики",
+    "cell": "Камера",
+    "nowInStore": "Тепер у нашому магазині!",
+    "beTheFirst": "Будь першим!",
+    "sliderText": "Про. Поза межами."
+  },
+  "buttonText": {
+    "addToCart": "Додати до кошика",
+    "addedToCart": "Додано до кошика",
+    "reload": "Перезавантажити",
+    "order": "Замовити"
+  },
+  "categories": {
+    "mobilePhones": "Мобільні телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари",
+    "quantityModels": "моделей"
+  },
+  "filtering": {
+    "sortBy": "Сортувати за",
+    "itemsOnPage": "Товарів на сторінці",
+    "search": "Пошук за назвою",
+    "newest": "Новинки",
+    "cheapest": "Найдешевші",
+    "alphabetically": "За абеткою",
+    "all": "Усі",
+    "placeholder": "Введіть тест для пошуку"
+  },
+  "elements": {
+    "checkout": "Оформити замовлення",
+    "totalOne": "Всього за {{count}} товар",
+    "totalMore": "Всього за {{count}} товари",
+    "back": "Назад",
+    "colors": "Доступні кольори",
+    "capacity": "Оберіть ємність",
+    "items": "{{count}} товари",
+    "item": "1 товар",
+    "models": "{{count}} моделей",
+    "model": "1 модель"
+  },
+  "errors": {
+    "smthWrong": "Щось пішло не так!",
+    "noAccessories": "Аксесуарів поки що немає",
+    "emptyCart": "Ваша корзина порожня!",
+    "pageNotFound": "Сторінку не знайдено",
+    "phonesNotFound": "Немає телефонів що відповідають запиту!",
+    "tabletsNotFound": "Немає планшетів що відповідають запиту!",
+    "accessoriesNotFound": "Немає аксесуарів що відповідають запиту!",
+    "productNotFound": "Продукт не знайдено!"
+  }
+}

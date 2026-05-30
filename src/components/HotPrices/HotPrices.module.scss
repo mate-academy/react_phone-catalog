@@ -1,0 +1,9 @@
+@use '../../mixins/mixins' as *;
+
+.HotPrices {
+  position: relative;
+
+  @include desktop{
+    @include padding-inline;
+  }
+}
