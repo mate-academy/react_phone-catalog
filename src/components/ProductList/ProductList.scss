@@ -1,0 +1,28 @@
+@import '../../styles/utils';
+
+.product-list {
+  @include grid;
+
+  padding-top: 48px;
+  padding-inline: 16px;
+
+  @include on-desktop {
+    padding-top: 64px;
+  }
+
+  &__list {
+    grid-column: span 4;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(229px, auto));
+    gap: 40px 16px;
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+      grid-column: span 24;
+    }
+  }
+}
