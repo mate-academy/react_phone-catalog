@@ -1,0 +1,44 @@
+.slider__button {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--border-radius-slider-pictures-button);
+  border: 1px solid var(--border-color-slider-pictures-button);
+  background-color: var(--background-color-slider-pictures-button);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+
+  &:hover {
+    border: 1px solid var(--border-color-slider-pictures-button-hover);
+    background-color: var(--background-color-slider-pictures-button-hover);
+  }
+
+  &--pictures {
+    height: 100%;
+  }
+
+  &--prev {
+    background-image: var(--prev);
+  }
+  &--next {
+    background-image: var(--next);
+  }
+
+  &--no-active {
+    border: 1px solid var(--border-color-slider-pictures-button-no-active);
+    background-color: var(--background-color-slider-pictures-button-no-active);
+    cursor: not-allowed;
+
+    &:hover {
+      border: 1px solid var(--border-color-slider-pictures-button-no-active);
+      background-color: var(--background-color-slider-pictures-button-no-active);
+    }
+  }
+
+  &__container {
+    width: 32px;
+  }
+}

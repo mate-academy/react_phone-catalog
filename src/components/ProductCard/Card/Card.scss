@@ -1,0 +1,88 @@
+@import '../../mixins';
+
+.card {
+  box-sizing: border-box;
+  width: 100%;
+  background-color: var(--background-color-card);
+  border: 1px solid var(--border-color-card);
+  border-radius: var(--border-radius-card);
+  grid-column: -1 / 1;
+  height: auto;
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: var(--text-color-card-link);
+  }
+
+  &__title {
+    min-height: 42px;
+    line-height: 21px;
+    margin-top: 16px;
+
+    @include underline-hover($color: var(--text-color-nav-link-hover));
+  }
+
+  &__photo {
+    max-height: 130px;
+    width: 100%;
+    object-fit: contain;
+    cursor: pointer;
+
+    @include hover(transform, scale(1.05));
+
+    @include on-tablet {
+      min-height: 196px;
+    }
+  }
+
+  &__content {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    &--new {
+      color: var(--text-color-card-price-new);
+    }
+
+    &--old {
+      color: var(--text-color-card-price-old);
+      text-decoration: line-through;
+    }
+  }
+
+  &__line {
+    border-top: 1px solid var(--border-color-card-line);
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &--name {
+      color: var(--text-color-card-name);
+    }
+
+    &--text {
+      font-weight: 700;
+      color: var(--text-color-card-text);
+    }
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

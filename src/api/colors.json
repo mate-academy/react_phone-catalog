@@ -1,0 +1,23 @@
+[
+  { "color": "black", "hex": "#4C4C4C" },
+  { "color": "gold", "hex": "#FFD700" },
+  { "color": "yellow", "hex": "#FCDBC1" },
+  { "color": "green", "hex": "#5F7170" },
+  { "color": "midnightgreen", "hex": "#004953" },
+  { "color": "silver", "hex": "#C0C0C0" },
+  { "color": "spacegray", "hex": "#4B4B4B" },
+  { "color": "red", "hex": "#EB5757" },
+  { "color": "white", "hex": "#F0F0F0" },
+  { "color": "coral", "hex": "#FF7F50" },
+  { "color": "rosegold", "hex": "#B76E79" },
+  { "color": "purple", "hex": "#800080" },
+  { "color": "blue", "hex": "#0000FF" },
+  { "color": "pink", "hex": "#FFC0CB" },
+  { "color": "midnight", "hex": "#191970" },
+  { "color": "sierrablue", "hex": "#2A52BE" },
+  { "color": "graphite", "hex": "#383838" },
+  { "color": "space gray", "hex": "#4B4B4B" },
+  { "color": "rose gold", "hex": "#B76E79" },
+  { "color": "sky-blue", "hex": "#87CEEB" },
+  { "color": "starlight", "hex": "#F5F5F5" }
+]
