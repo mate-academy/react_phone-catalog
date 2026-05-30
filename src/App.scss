@@ -1,1 +1,37 @@
-// not empty
+@use './styles/utils/theme' as *;
+@use './styles/blocks/page' as *;
+@use './styles/blocks/icon' as *;
+@use './styles/utils/variables' as *;
+@use './styles/blocks/reset' as *;
+@use './styles/utils/mixins' as *;
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+body {
+  background-color: var(--background);
+  height: 100%;
+}
+
+.main {
+  min-height: 100vh;
+
+}
