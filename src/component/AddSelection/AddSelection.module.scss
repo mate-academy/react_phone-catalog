@@ -1,0 +1,56 @@
+@import './../style/index';
+
+.add-selection {
+  display: flex;
+  gap: 5px;
+  height: 40px;
+  width: 100%;
+  justify-content: space-between;
+
+  &__button-cart{
+    width: 100%;
+    background-color: $color-button;
+    color: $color-white;
+    font-size: 14px;
+    border: none;
+    border-radius: 10px;
+
+    &:hover {
+      background-color: $background-color;
+      border:  1px solid $color-button;
+      color: $color-button;
+    }
+
+    &--active {
+      background-color: $background-color;
+      border: 1px solid $color-button;
+      color: $color-button;
+    }
+  }
+
+  &__button-favourites {
+    width: 40px;
+    height: 40px;
+    background-color: $background-color;
+    border: 1px solid $color-grey;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 0;
+
+    &--active {
+      background-color: $background-color;
+      border: 1px solid $color-primary;
+    }
+
+    &:hover {
+      background-color: $background-color;
+      border: 1px solid $color-primary;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+  }
+}

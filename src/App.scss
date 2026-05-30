@@ -1,1 +1,61 @@
-// not empty
+@import './component/style/index';
+
+
+
+h1, h2, h3, h4, h5, h6, a, p {
+  margin: 0;
+  font-family: Mont,sans-serif;
+  color: $color-primary;
+}
+
+a, button, img {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  margin: 0;
+  background-color: $background-color;
+  height: 100vh;
+}
+
+body.sidebar-open {
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.root {
+  height: 100%;
+}
+
+
+.container {
+ display: flex;
+flex-direction: column;
+min-height: 100vh;
+}
+
+.main {
+  flex-grow: 1;
+}
+
+
+.visuallyhidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
