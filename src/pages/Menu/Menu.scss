@@ -1,0 +1,40 @@
+.menu {
+  position: fixed;
+  display: none;
+  height: 100%;
+  top: 49px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: $c-white;
+  &-isOpen {
+    display: block;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: calc(100vh - 48px);
+    width: 100vw;
+
+    background-color: $c-white;
+    &-link {
+      width: 100%;
+    }
+    &-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding-top: 24px;
+      padding-inline: 16px;
+    }
+    &-icons {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+    }
+  }
+}

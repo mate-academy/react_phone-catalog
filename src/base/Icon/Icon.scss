@@ -1,0 +1,147 @@
+.icon {
+  cursor: pointer;
+  &__wrapper {
+    position: relative;
+  }
+  &__content {
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+    height: 13px;
+    width: 13px;
+    top: 21%;
+    right: 22%;
+    color: $c-white;
+    font-family: Mont, sans-serif;
+    font-size: 0.4rem;
+
+    @include on-desktop {
+      top: 28%;
+      right: 29%;
+    }
+  }
+
+  &--bar {
+    height: 48px;
+    width: 48px;
+    &-border {
+      box-shadow: -1px 0 0 0 $c-elements;
+    }
+
+    @include on-desktop {
+      height: 64px;
+      width: 64px;
+    }
+  }
+
+  &--button {
+    &-border {
+      border: 1px solid $c-icons;
+      &-disabled {
+        border: 1px solid $c-elements;
+      }
+    }
+    &-16 {
+      height: 16px;
+      width: 16px;
+    }
+    &-32 {
+      height: 32px;
+      width: 32px;
+    }
+    &-40 {
+      height: 40px;
+      width: 40px;
+    }
+  }
+
+  &--menu-page {
+    width: 100%;
+    height: 64px;
+    box-shadow: -1px -1px 0 0 $c-elements;
+    position: relative;
+    &:hover::after {
+      content: '';
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      bottom: 0;
+      background: $c-primary;
+    }
+  }
+
+  &--menu {
+    background: url('/public/img/header\ \(2\).png') no-repeat center;
+  }
+
+  &--favorite {
+    background: url('/public/img/heart.png') no-repeat center;
+    &-added {
+      background: url('/public/img/heart.png') no-repeat
+        center;
+    }
+    &-counter {
+      background: url('/public/img/heart.png')
+        no-repeat center;
+    }
+  }
+
+  &--cart {
+    background: url('/public/img/Shop.png') no-repeat center;
+    &-counter {
+      background: url('/public/img/Shop.png') no-repeat
+        center;
+    }
+  }
+
+  &--close {
+    background: url('../../../public/img/Close.png') no-repeat center;
+  }
+
+  &--chevron-left {
+    background: url('/public/img/esquerda.png') no-repeat
+      center;
+    &-disabled {
+      background: url('/public/img/esquerda.png')
+        no-repeat center;
+    }
+  }
+
+  &--chevron-right {
+    background: url('/public/img/direita.png') no-repeat
+      center;
+    &-disabled {
+      background: url('/public/img/direita.png')
+        no-repeat center;
+    }
+  }
+
+  &--chevron-up {
+    background: url('/public/img/up.png') no-repeat
+      center;
+  }
+
+  &--home {
+    background: url('../../../public/img/Home.png') no-repeat center;
+    &-disabled {
+      background: url('/react_phone-catalog/public/img/Home.png')
+        no-repeat center;
+    }
+  }
+
+  &--minus {
+    background: url('../../../public/img/Minus.png') no-repeat center;
+    &-disabled {
+      background: url('../../../public/img/Minus.png')
+        no-repeat center;
+    }
+  }
+
+  &--plus {
+    background: url('../../../public/img/Plus.png') no-repeat center;
+    &-disabled {
+      background: url('../../../public/img/Plus.png')
+        no-repeat center;
+    }
+  }
+}

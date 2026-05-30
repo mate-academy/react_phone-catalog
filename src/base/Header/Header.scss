@@ -1,0 +1,23 @@
+.topbar {
+  display: flex;
+  gap: 48px;
+  flex-direction: row;
+  box-shadow: 0 1px 0 0 #e2e6e9;
+  background-color: $c-white;
+
+  &__logo-container {
+    display: flex;
+    padding-inline: 16px;
+    width: 96px;
+  }
+
+  &__nav-container {
+    display: flex;
+    margin-left: 48px;
+  }
+
+  &__icons-container {
+    display: flex;
+    margin-left: auto;
+  }
+}

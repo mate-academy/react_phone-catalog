@@ -1,0 +1,53 @@
+@import './vars';
+
+@mixin on-mobile {
+  @media screen and (max-width: $max-width-mobile) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media screen and (min-width: $min-width-tablet) and (max-width: $max-width-tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media screen and (min-width: $min-width-desktop) {
+    @content;
+  }
+}
+
+@mixin on-big-desktop {
+  @media screen and (min-width: $min-width-big-desktop) {
+    @content;
+  }
+}
+
+@mixin grid-page {
+  display: grid;
+  justify-content: center;
+  grid-auto-rows: auto;
+  column-gap: $grid-cols-gap;
+  grid-template-columns: repeat($grid-cols-mobile, 1fr);
+
+  @include on-tablet {
+    grid-template-columns: repeat($grid-cols-tablet, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat($grid-cols-desktop, 32px);
+  }
+}
+
+@mixin inline-padding {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 0;
+  }
+}
