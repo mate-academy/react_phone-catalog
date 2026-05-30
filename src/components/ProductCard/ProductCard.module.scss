@@ -1,0 +1,164 @@
+@import '../../styles/mixins';
+
+.card {
+  box-sizing: border-box;
+  padding: 32px;
+  border: 1px solid #e2e6e9;
+  border-radius: 8px;
+  background-color: $color-card-bg;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+
+  @include mobile {
+    width: 212;
+    height: 439;
+  }
+
+  /* tablet */
+  @include tablet {
+    width: 237px;
+    height: 512px;
+  }
+
+  /* desktop */
+  @include desktop {
+    width: 272px;
+    height: 506px;
+  }
+}
+
+.card:hover {
+  border-color: #323542;
+  box-shadow: 0 2px 16px 0 #0000001a;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.imageLink {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.imageWrapper {
+  width: 208px;
+  height: 196px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 130px;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.3s;
+
+  /* tablet */
+  @include tablet {
+    height: 202px;
+  }
+
+  /* desktop */
+  @include desktop {
+    height: 196px;
+  }
+}
+
+.imageLink:hover .image {
+  transform: scale(1.1);
+}
+
+.title {
+  -webkit-line-clamp: 2;
+  text-decoration: none;
+  margin: 0;
+  padding-top: 24px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $color-text-primary;
+  min-height: calc(1.4em * 2);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.prices {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 8px;
+  padding-block: 8px;
+  width: 100%;
+  border-bottom: 1px solid $color-text-primary;
+}
+
+.price {
+  margin: 0;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0;
+}
+
+.oldPrice {
+  margin: 0;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 100%;
+  letter-spacing: 0;
+  text-decoration: line-through;
+  color: $color-text-grey;
+}
+
+.details {
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.option {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.optionTitle {
+  margin: 0;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: $color-text-grey;
+}
+
+.optionValue {
+  margin: 0;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+/* Add to cart */
+.actions {
+  padding-top: 16px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 8px;
+  justify-content: center;
+  align-items: center;
+}

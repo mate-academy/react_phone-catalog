@@ -1,0 +1,108 @@
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  margin-block: 56px;
+
+  /* tablet */
+  @include tablet {
+    margin-block: 64px;
+  }
+
+  /* desktop */
+  @include desktop {
+    margin-block: 80px;
+  }
+}
+
+.title {
+  margin: 0 0 24px;
+  font-weight: 800;
+  font-style: bold;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0;
+
+  /* tablet */
+  @include tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* tablet */
+  @include tablet {
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+    justify-content: center;
+  }
+}
+
+.category {
+  margin-bottom: 32px;
+
+  /* tablet */
+  @include tablet {
+    margin: 0;
+  }
+}
+
+.pictureLink {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+
+  width: 288px;
+  height: 288px;
+
+  @include tablet {
+    width: 187px;
+    height: 187px;
+  }
+
+  @include desktop {
+    width: 320px;
+    height: 320px;
+  }
+}
+
+.picture {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.categoryTitle {
+  margin: 24px 0 0;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0;
+  text-decoration: none;
+  color: $color-text-primary;
+  display: block;
+}
+
+.description {
+  margin: 4px 0 0;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $color-text-grey;
+}
+
+.category a:hover .picture {
+  transform: scale(1.1);
+}

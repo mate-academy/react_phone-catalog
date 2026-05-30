@@ -1,0 +1,40 @@
+.breadcrumbs {
+  margin-top: 24px;
+  height: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding-left: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.item {
+  height: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.title {
+  color: $color-text-grey;
+  font-weight: 600;
+}
+
+.homeIcon {
+  width: 16px;
+  height: 16px;
+  background: url('/public/icon/home.svg') center / contain no-repeat;
+}
+
+.arrowIcon {
+  width: 16px;
+  height: 16px;
+  background: url('../../../public/icon/arrow-right.svg') center / contain
+    no-repeat;
+}
