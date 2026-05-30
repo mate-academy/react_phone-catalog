@@ -1,0 +1,185 @@
+@import '../../shared/variables';
+@import '../../shared/mixins';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--background-color);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+
+  &__left {
+    display: flex;
+    padding-left: 24px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__image {
+    @include mobile {
+      width: 64px;
+      height: 22px;
+    }
+
+    @include laptop {
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  &__list {
+    @include mobile {
+      display: none;
+    }
+
+    @include tablet {
+      display: flex;
+      align-items: center;
+    }
+
+  }
+
+  &__select {
+    @include tablet {
+      margin: 0;
+      display: flex;
+      list-style: none;
+      gap: 10%;
+    }
+
+    @include laptop {
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    @include tablet {
+      text-decoration: none;
+      color: $grey-color;
+      font-size: 11px;
+      font-weight: 800;
+      padding-bottom: 16px;
+
+      &:hover {
+        color: var(--hover-color);
+        border-bottom: 3px solid var(--hover-color);
+      }
+    }
+
+    @include laptop {
+      font-size: 12px;
+      padding-bottom: 24px;
+    }
+
+    &--active {
+      color: var(--hover-color);
+      border-bottom: 3px solid var(--hover-color);
+    }
+
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__toggles {
+    display: flex;
+
+    @include tablet {
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    @include laptop {
+      flex-direction: row;
+    }
+  }
+
+  &__heart,
+  &__cart {
+    @include mobile {
+      display: none;
+    }
+
+    @include tablet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      position: relative;
+      border-left: 1px solid var(--border-color);
+      box-sizing: border-box;
+
+      &:hover {
+        border-bottom: 3px solid var(--hover-color);
+      }
+    }
+
+    @include laptop {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  &__badge {
+    @include tablet {
+      position: absolute;
+      top: 5px;
+      right: 7px;
+      background-color: red;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 50%;
+      border: 2px solid white;
+      width: 14px;
+      height: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @include laptop {
+      top: 12px;
+      right: 14px;
+    }
+
+  }
+
+  &__menu {
+    @include mobile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-left: 1px solid var(--border-color);
+      box-sizing: border-box;
+
+      &:hover {
+        border-bottom: 3px solid var(--hover-color);
+      }
+    }
+
+    @include tablet {
+      display: none;
+    }
+  }
+}
+
+

@@ -1,0 +1,81 @@
+@import '../../shared/variables';
+@import '../../shared/mixins';
+
+.title {
+  @include mobile {
+    padding: 0 16px;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--hover-color);
+  }
+
+  @include tablet {
+    padding: 0;
+  }
+
+}
+
+.categories {
+  @include mobile {
+    display: block;
+    text-align: center;
+    padding: 0 16px;
+  }
+
+  @include tablet {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  .category {
+    @include mobile {
+      width: 100%;
+    }
+
+    @include tablet {
+      width: calc(100% / 3 - 10px);
+    }
+
+    &__image {
+      @include mobile {
+        width: 100%;
+        background-color: lightgray;
+      }
+
+      @include tablet {
+        width: 100%;
+      }
+
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    &__name {
+      @include mobile {
+        margin: 0;
+        text-align: left;
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--hover-color);
+        margin-top: 24px;
+        margin-bottom: 5px;
+
+      }
+    }
+
+    &__quantity {
+      @include mobile {
+        margin: 0;
+        text-align: left;
+        font-size: 14px;
+        font-weight: 500;
+        color: $grey-color;
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
