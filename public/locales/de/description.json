@@ -1,0 +1,663 @@
+[
+  {
+    "namespaceId": "apple-ipad-pro-11-2021",
+    "description": [
+      {
+        "title": "Leistungsstarke Performance",
+        "text": [
+          "Erleben Sie unglaubliche Leistung und Performance mit dem Apple iPad Pro 11. Mit dem M1-Chip bietet es ein neues Leistungsniveau, das es schneller und effizienter als je zuvor macht.",
+          "Egal, ob Sie Fotos bearbeiten, Grafiken entwerfen oder anspruchsvolle Apps im Multitasking-Modus nutzen, das iPad Pro 11 bewältigt alles mit Leichtigkeit."
+        ]
+      },
+      {
+        "title": "Atemberaubendes Liquid Retina Display",
+        "text": [
+          "Genießen Sie ein lebendiges und beeindruckendes visuelles Erlebnis auf dem Liquid Retina Display des iPad Pro 11. Mit ProMotion-Technologie und True Tone passt sich das Display Ihrer Umgebung an und sorgt für flüssiges Scrollen, präzise Farbtreue und unglaubliche Details.",
+          "Von Filmen bis zur Videobearbeitung erweckt das Display des iPad Pro 11 Ihre Inhalte mit atemberaubender Klarheit zum Leben."
+        ]
+      },
+      {
+        "title": "Vielseitiges Kamerasystem",
+        "text": [
+          "Nehmen Sie atemberaubende Fotos und Videos mit dem fortschrittlichen Kamerasystem des iPad Pro 11 auf. Mit einer 12MP Ultra-Weitwinkel-Frontkamera und einer 12MP Weitwinkel-Rückkamera mit LiDAR-Scanner können Sie hochwertige Aufnahmen machen und Augmented-Reality-Erlebnisse genießen.",
+          "Egal, ob Sie Videoanrufe tätigen, Dokumente scannen oder 4K-Videos aufnehmen, das Kamerasystem des iPad Pro 11 liefert eine außergewöhnliche Leistung."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-ipad-air-4th-gen",
+    "description": [
+      {
+        "title": "Dünn, leicht und leistungsstark",
+        "text": [
+          "Das Apple iPad Air (4. Generation) kombiniert schlankes Design mit leistungsstarker Performance. Durch seinen dünnen und leichten Formfaktor ist es unglaublich portabel und leicht überallhin mitzunehmen.",
+          "Mit dem A14 Bionic Chip mit Neural Engine liefert das iPad Air eine schnelle und effiziente Leistung, was es ideal für Multitasking, Gaming und kreative Aufgaben macht."
+        ]
+      },
+      {
+        "title": "Atemberaubendes Liquid Retina Display",
+        "text": [
+          "Tauchen Sie ein in lebendige Bilder auf dem Liquid Retina Display des iPad Air. Mit True Tone und einem breiten P3-Farbraum bietet es naturgetreue Farben und unglaubliche Details.",
+          "Egal, ob Sie Filme schauen, Fotos bearbeiten oder im Web surfen, das Display des iPad Air bietet ein beeindruckendes und angenehmes Seherlebnis."
+        ]
+      },
+      {
+        "title": "Vielseitige Funktionen und Apple Pencil Unterstützung",
+        "text": [
+          "Erschließen Sie neue Möglichkeiten mit den vielseitigen Funktionen des iPad Air. Es unterstützt den Apple Pencil (2. Generation), sodass Sie Notizen machen, skizzieren und Dokumente präzise kommentieren können.",
+          "Mit Touch ID, das in die obere Taste integriert ist, können Sie Ihr iPad sicher entsperren, sichere Einkäufe tätigen und Apps mit einem einfachen Berühren authentifizieren."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-ipad-mini-6th-gen",
+    "description": [
+      {
+        "title": "Kompakt und tragbar",
+        "text": [
+          "Erleben Sie die Leistung eines iPads in kompakter Größe mit dem Apple iPad Mini (6. Generation). Mit seinem 8,3-Zoll Liquid Retina Display und schlankem Design ist es perfekt für Produktivität und Unterhaltung unterwegs.",
+          "Egal, ob Sie lesen, spielen oder Videos schauen, das iPad Mini bietet ein beeindruckendes visuelles Erlebnis in einem tragbaren Paket."
+        ]
+      },
+      {
+        "title": "A15 Bionic Chip und Neural Engine",
+        "text": [
+          "Das iPad Mini (6. Generation) ist mit dem leistungsstarken A15 Bionic Chip und Neural Engine ausgestattet und liefert schnelle und effiziente Leistung. Es kann anspruchsvolle Aufgaben und grafikintensive Apps mühelos bewältigen, was es sowohl für die Arbeit als auch für Spiele geeignet macht.",
+          "Erleben Sie flüssiges Multitasking, immersives Gaming und nahtlose App-Nutzung auf dem iPad Mini."
+        ]
+      },
+      {
+        "title": "Fortschrittliche Kameras und Center Stage",
+        "text": [
+          "Nehmen Sie atemberaubende Fotos und Videos mit den fortschrittlichen Kameras des iPad Mini auf. Mit einer 12MP Frontkamera und einer 12MP Rückkamera können Sie hochwertige Aufnahmen machen und beeindruckende Videos aufnehmen.",
+          "Das iPad Mini verfügt außerdem über Center Stage, eine Funktion, die Sie bei Videoanrufen automatisch im Bild hält, wodurch Ihre Gespräche ansprechender und dynamischer werden."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-ipad-10-2-2020",
+    "description": [
+      {
+        "title": "Vielseitig und erschwinglich",
+        "text": [
+          "Das Apple iPad 10.2 (2020) bietet eine vielseitige und erschwingliche Option für alltägliche Aufgaben und Unterhaltung. Egal, ob Sie im Internet surfen, Inhalte streamen oder Produktivitäts-Apps verwenden, es bietet ein reibungsloses und reaktionsschnelles Erlebnis.",
+          "Mit seinem großen 10,2-Zoll Retina Display bietet es ein großartiges Seherlebnis für alle Ihre Inhalte."
+        ]
+      },
+      {
+        "title": "Leistungsstarke Performance",
+        "text": [
+          "Erleben Sie leistungsstarke Performance mit dem A12 Bionic Chip des iPad 10.2. Er ermöglicht schnelles und effizientes Multitasking, sodass Sie mehrere Apps reibungslos und nahtlos ausführen können.",
+          "Vom Gaming bis zur Bearbeitung von Dokumenten bewältigt das iPad 10.2 alles mit Leichtigkeit."
+        ]
+      },
+      {
+        "title": "Apple Pencil und Smart Keyboard Unterstützung",
+        "text": [
+          "Erschließen Sie Ihre Kreativität und Produktivität mit Apple Pencil und Smart Keyboard Unterstützung. Machen Sie Notizen, zeichnen Sie und skizzieren Sie präzise mit dem Apple Pencil (1. Generation) und verwandeln Sie Ihr iPad mit dem Smart Keyboard in einen leichten Laptop.",
+          "Das iPad 10.2 passt sich Ihren Bedürfnissen an, egal ob Sie Student, Profi oder kreativer Künstler sind."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-ipad-mini-5th-gen",
+    "description": [
+      {
+        "title": "Kompakt und Leistungsstark",
+        "text": [
+          "Das Apple iPad Mini (5. Generation) überzeugt mit seiner kompakten Größe und leistungsstarken Performance. Egal, ob Sie unterwegs oder zu Hause sind, es ist perfekt für Produktivität, Unterhaltung und Kreativität.",
+          "Mit seinem A12 Bionic Chip liefert das iPad Mini eine schnelle und effiziente Leistung, sodass Sie anspruchsvolle Apps und Spiele reibungslos ausführen können."
+        ]
+      },
+      {
+        "title": "Retina Display und True Tone",
+        "text": [
+          "Erleben Sie atemberaubende Bilder auf dem Retina Display des iPad Mini. Mit der True Tone Technologie passt es die Farbtemperatur des Displays an das Umgebungslicht an und sorgt so für ein natürliches und angenehmes Seherlebnis.",
+          "Vom Lesen von E-Books bis zum Durchsuchen von Fotos erweckt das Display des iPad Mini Inhalte mit lebendigen Farben und scharfen Details zum Leben."
+        ]
+      },
+      {
+        "title": "Apple Pencil und Smart Keyboard Unterstützung",
+        "text": [
+          "Erschließen Sie Ihre Kreativität und Produktivität mit Apple Pencil und Smart Keyboard Unterstützung. Machen Sie Notizen, skizzieren Sie und kommentieren Sie Dokumente präzise mit dem Apple Pencil (1. Generation) und verwandeln Sie Ihr iPad Mini mit dem Smart Keyboard in eine vielseitige Workstation.",
+          "Das iPad Mini passt sich Ihren Bedürfnissen an und ist somit ein leistungsstarkes Werkzeug für Arbeit und Freizeit."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-watch-series-3",
+    "description": [
+      {
+        "title": "Überwachen Sie Ihre Gesundheit",
+        "text": [
+          "Die Apple Watch Series 3 ist mit Sensoren ausgestattet, um Ihre Herzfrequenz, verbrannten Kalorien und andere Fitness-Metriken den ganzen Tag über zu verfolgen. Sie kann sogar Ihre Workouts verfolgen und personalisierte Fitnessziele vorschlagen."
+        ]
+      },
+      {
+        "title": "Bleiben Sie unterwegs verbunden",
+        "text": [
+          "Mit Mobilfunkkonnektivität können Sie Anrufe tätigen und Nachrichten von Ihrem Handgelenk senden, auch ohne Ihr iPhone in der Nähe. Und mit Siri können Sie Wegbeschreibungen erhalten, Nachrichten senden und Erinnerungen freihändig einstellen."
+        ]
+      },
+      {
+        "title": "Streamen Sie Ihre Lieblingsmusik",
+        "text": [
+          "Mit Apple Music und Siri können Sie über 75 Millionen Songs auf Ihrer Apple Watch Series 3 streamen. Oder hören Sie Ihre Lieblings-Podcasts, Hörbücher und Radiosender."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-watch-series-6",
+    "description": [
+      {
+        "title": "Always-On Retina Display",
+        "text": [
+          "Die Apple Watch Series 6 verfügt über ein Always-On Retina Display, das im Freien bei gesenktem Handgelenk 2,5-mal heller ist. So können Sie alle Informationen auf Ihrem Zifferblatt auf einen Blick sehen."
+        ]
+      },
+      {
+        "title": "Blutsauerstoffsensor",
+        "text": [
+          "Die Blutsauerstoff-App misst Ihren Blutsauerstoffspiegel mit einem revolutionären neuen Sensor und einer App. Sie können auch jederzeit und überall ein EKG von Ihrem Handgelenk aus erstellen."
+        ]
+      },
+      {
+        "title": "Verfolgen Sie Ihre tägliche Aktivität",
+        "text": [
+          "Die Apple Watch Series 6 verfolgt Ihre tägliche Aktivität, einschließlich Workouts, zurückgelegte Schritte und verbrannte Kalorien. Sie verfügt außerdem über ein integriertes GPS, um Ihre Läufe, Spaziergänge und Wanderungen zu verfolgen."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-watch-series-5",
+    "description": [
+      {
+        "title": "Always-On Retina Display",
+        "text": [
+          "Mit dem Always-On Retina Display können Sie die Uhrzeit und wichtige Informationen problemlos ablesen, ohne das Handgelenk heben zu müssen. Das Display ist außerdem 30% größer als bei der Series 3, was das Lesen und die Interaktion erleichtert."
+        ]
+      },
+      {
+        "title": "EKG-App",
+        "text": [
+          "Die EKG-App kann unregelmäßige Herzrhythmen erkennen und Sie warnen, wenn etwas nicht in Ordnung zu sein scheint. Sie können auch jederzeit und überall ein EKG direkt von Ihrem Handgelenk aus erstellen."
+        ]
+      },
+      {
+        "title": "Aktivitätstracking",
+        "text": [
+          "Die Apple Watch Series 5 verfolgt Ihre tägliche Aktivität, einschließlich Workouts, zurückgelegte Schritte und verbrannte Kalorien. Sie verfügt außerdem über ein integriertes GPS, um Ihre Läufe, Spaziergänge und Wanderungen zu verfolgen."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-watch-series-4",
+    "description": [
+      {
+        "title": "Größeres Display",
+        "text": [
+          "Die Apple Watch Series 4 verfügt über ein größeres Display, das Ihnen mehr Informationen auf einen Blick anzeigt. Das Display ist über 30 % größer als bei der Series 3 und ist randlos mit abgerundeten Ecken."
+        ]
+      },
+      {
+        "title": "EKG-App",
+        "text": [
+          "Mit der EKG-App können Sie ein Elektrokardiogramm direkt von Ihrem Handgelenk aus erstellen. Diese Funktion ist nur in bestimmten Ländern und Regionen verfügbar."
+        ]
+      },
+      {
+        "title": "Sturzerkennung",
+        "text": [
+          "Die Apple Watch Series 4 kann erkennen, wenn Sie stürzen, und kann einen Alarm an Notdienste senden, wenn Sie nicht innerhalb einer Minute reagieren. Diese Funktion ist nur für Benutzer über 65 Jahre verfügbar."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-watch-se",
+    "description": [
+      {
+        "title": "Retina Display",
+        "text": [
+          "Die Apple Watch SE verfügt über ein Retina Display, das klare und lebendige Bilder für eine einfache Lesbarkeit bietet."
+        ]
+      },
+      {
+        "title": "Familienkonfiguration",
+        "text": [
+          "Mit der Familienkonfiguration können Sie Ihre Apple Watch SE mit dem iPhone eines Familienmitglieds koppeln, sodass Sie auch ohne eigenes iPhone in Verbindung bleiben können."
+        ]
+      },
+      {
+        "title": "Fitnesstracking",
+        "text": [
+          "Die Apple Watch SE bietet umfassende Funktionen zur Fitnessverfolgung, einschließlich Aktivitätstracking, Herzfrequenzüberwachung und integriertem GPS zur Verfolgung Ihrer Outdoor-Workouts."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-iphone-11",
+    "description": [
+      {
+        "title": "Und dann kam Pro",
+        "text": [
+          "Ein transformatives Dreifach-Kamera-System, das jede Menge Funktionen ohne Komplexität hinzufügt.",
+          "Ein beispielloser Sprung bei der Batterielebensdauer. Und ein umwerfender Chip, der maschinelles Lernen verdoppelt und die Grenzen dessen, was ein Smartphone leisten kann, verschiebt. Willkommen beim ersten iPhone, das leistungsstark genug ist, um Pro genannt zu werden."
+        ]
+      },
+      {
+        "title": "Kamera",
+        "text": [
+          "Lernen Sie das erste Dreifach-Kamera-System kennen, das modernste Technologie mit der legendären Einfachheit des iPhone kombiniert. Erfassen Sie bis zu viermal mehr Szene. Erhalten Sie schöne Bilder bei drastisch schlechterem Licht. Nehmen Sie Videos in höchster Qualität mit einem Smartphone auf – und bearbeiten Sie sie dann mit den gleichen Tools, die Sie für Fotos lieben. So etwas haben Sie noch nie aufgenommen."
+        ]
+      },
+      {
+        "title": "Aufnehmen. Drehen. Zoomen. Zuschneiden. Schneiden. Belichten. Anpassen. Lieben.",
+        "text": [
+          "Mit dem iPhone 11 Pro können Sie Videos aufnehmen, die wunderschön lebensecht sind, mit mehr Details und flüssigeren Bewegungen. Epische Rechenleistung bedeutet, dass es 4K-Videos mit erweitertem Dynamikbereich und kinoreifer Videostabilisierung aufnehmen kann – alles mit 60 Bildern pro Sekunde. Sie erhalten auch mehr kreative Kontrolle, mit viermal mehr Szene und leistungsstarken neuen Bearbeitungstools zum Spielen."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-iphone-11-pro",
+    "description": [
+      {
+        "title": "Und dann kam Pro",
+        "text": [
+          "Ein transformatives Dreifach-Kamera-System, das jede Menge Funktionen ohne Komplexität hinzufügt.",
+          "Ein beispielloser Sprung bei der Batterielebensdauer. Und ein umwerfender Chip, der maschinelles Lernen verdoppelt und die Grenzen dessen, was ein Smartphone leisten kann, verschiebt. Willkommen beim ersten iPhone, das leistungsstark genug ist, um Pro genannt zu werden."
+        ]
+      },
+      {
+        "title": "Kamera",
+        "text": [
+          "Lernen Sie das erste Dreifach-Kamera-System kennen, das modernste Technologie mit der legendären Einfachheit des iPhone kombiniert. Erfassen Sie bis zu viermal mehr Szene. Erhalten Sie schöne Bilder bei drastisch schlechterem Licht. Nehmen Sie Videos in höchster Qualität mit einem Smartphone auf – und bearbeiten Sie sie dann mit den gleichen Tools, die Sie für Fotos lieben. So etwas haben Sie noch nie aufgenommen."
+        ]
+      },
+      {
+        "title": "Aufnehmen. Drehen. Zoomen. Zuschneiden. Schneiden. Belichten. Anpassen. Lieben.",
+        "text": [
+          "Mit dem iPhone 11 Pro können Sie Videos aufnehmen, die wunderschön lebensecht sind, mit mehr Details und flüssigeren Bewegungen. Epische Rechenleistung bedeutet, dass es 4K-Videos mit erweitertem Dynamikbereich und kinoreifer Videostabilisierung aufnehmen kann – alles mit 60 Bildern pro Sekunde. Sie erhalten auch mehr kreative Kontrolle, mit viermal mehr Szene und leistungsstarken neuen Bearbeitungstools zum Spielen."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-iphone-11-pro-max",
+    "description": [
+      {
+        "title": "Und dann kam Pro",
+        "text": [
+          "Ein transformatives Dreifach-Kamera-System, das jede Menge Funktionen ohne Komplexität hinzufügt.",
+          "Ein beispielloser Sprung bei der Batterielebensdauer. Und ein umwerfender Chip, der maschinelles Lernen verdoppelt und die Grenzen dessen, was ein Smartphone leisten kann, verschiebt. Willkommen beim ersten iPhone, das leistungsstark genug ist, um Pro genannt zu werden."
+        ]
+      },
+      {
+        "title": "Kamera",
+        "text": [
+          "Lernen Sie das erste Dreifach-Kamera-System kennen, das modernste Technologie mit der legendären Einfachheit des iPhone kombiniert. Erfassen Sie bis zu viermal mehr Szene. Erhalten Sie schöne Bilder bei drastisch schlechterem Licht. Nehmen Sie Videos in höchster Qualität mit einem Smartphone auf – und bearbeiten Sie sie dann mit den gleichen Tools, die Sie für Fotos lieben. So etwas haben Sie noch nie aufgenommen."
+        ]
+      },
+      {
+        "title": "Aufnehmen. Drehen. Zoomen. Zuschneiden. Schneiden. Belichten. Anpassen. Lieben.",
+        "text": [
+          "Mit dem iPhone 11 Pro können Sie Videos aufnehmen, die wunderschön lebensecht sind, mit mehr Details und flüssigeren Bewegungen. Epische Rechenleistung bedeutet, dass es 4K-Videos mit erweitertem Dynamikbereich und kinoreifer Videostabilisierung aufnehmen kann – alles mit 60 Bildern pro Sekunde. Sie erhalten auch mehr kreative Kontrolle, mit viermal mehr Szene und leistungsstarken neuen Bearbeitungstools zum Spielen."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-iphone-7",
+    "description": [
+      {
+        "title": "Und dann kam Pro",
+        "text": [
+          "Ein transformatives Dreifach-Kamera-System, das jede Menge Funktionen ohne Komplexität hinzufügt.",
+          "Ein beispielloser Sprung bei der Batterielebensdauer. Und ein umwerfender Chip, der maschinelles Lernen verdoppelt und die Grenzen dessen, was ein Smartphone leisten kann, verschiebt. Willkommen beim ersten iPhone, das leistungsstark genug ist, um Pro genannt zu werden."
+        ]
+      },
+      {
+        "title": "Kamera",
+        "text": [
+          "Lernen Sie das erste Dreifach-Kamera-System kennen, das modernste Technologie mit der legendären Einfachheit des iPhone kombiniert. Erfassen Sie bis zu viermal mehr Szene. Erhalten Sie schöne Bilder bei drastisch schlechterem Licht. Nehmen Sie Videos in höchster Qualität mit einem Smartphone auf – und bearbeiten Sie sie dann mit den gleichen Tools, die Sie für Fotos lieben. So etwas haben Sie noch nie aufgenommen."
+        ]
+      },
+      {
+        "title": "Aufnehmen. Drehen. Zoomen. Zuschneiden. Schneiden. Belichten. Anpassen. Lieben.",
+        "text": [
+          "Mit dem iPhone 11 Pro können Sie Videos aufnehmen, die wunderschön lebensecht sind, mit mehr Details und flüssigeren Bewegungen. Epische Rechenleistung bedeutet, dass es 4K-Videos mit erweitertem Dynamikbereich und kinoreifer Videostabilisierung aufnehmen kann – alles mit 60 Bildern pro Sekunde. Sie erhalten auch mehr kreative Kontrolle, mit viermal mehr Szene und leistungsstarken neuen Bearbeitungstools zum Spielen."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-iphone-7-plus",
+    "description": [
+      {
+        "title": "Und dann kam Pro",
+        "text": [
+          "Ein transformatives Dreifach-Kamera-System, das jede Menge Funktionen ohne Komplexität hinzufügt.",
+          "Ein beispielloser Sprung bei der Batterielebensdauer. Und ein umwerfender Chip, der maschinelles Lernen verdoppelt und die Grenzen dessen, was ein Smartphone leisten kann, verschiebt. Willkommen beim ersten iPhone, das leistungsstark genug ist, um Pro genannt zu werden."
+        ]
+      },
+      {
+        "title": "Kamera",
+        "text": [
+          "Lernen Sie das erste Dreifach-Kamera-System kennen, das modernste Technologie mit der legendären Einfachheit des iPhone kombiniert. Erfassen Sie bis zu viermal mehr Szene. Erhalten Sie schöne Bilder bei drastisch schlechterem Licht. Nehmen Sie Videos in höchster Qualität mit einem Smartphone auf – und bearbeiten Sie sie dann mit den gleichen Tools, die Sie für Fotos lieben. So etwas haben Sie noch nie aufgenommen."
+        ]
+      },
+      {
+        "title": "Aufnehmen. Drehen. Zoomen. Zuschneiden. Schneiden. Belichten. Anpassen. Lieben.",
+        "text": [
+          "Mit dem iPhone 11 Pro können Sie Videos aufnehmen, die wunderschön lebensecht sind, mit mehr Details und flüssigeren Bewegungen. Epische Rechenleistung bedeutet, dass es 4K-Videos mit erweitertem Dynamikbereich und kinoreifer Videostabilisierung aufnehmen kann – alles mit 60 Bildern pro Sekunde. Sie erhalten auch mehr kreative Kontrolle, mit viermal mehr Szene und leistungsstarken neuen Bearbeitungstools zum Spielen."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-iphone-8",
+    "description": [
+      {
+        "title": "Und dann kam Pro",
+        "text": [
+          "Ein transformatives Dreifach-Kamera-System, das jede Menge Funktionen ohne Komplexität hinzufügt.",
+          "Ein beispielloser Sprung bei der Batterielebensdauer. Und ein umwerfender Chip, der maschinelles Lernen verdoppelt und die Grenzen dessen, was ein Smartphone leisten kann, verschiebt. Willkommen beim ersten iPhone, das leistungsstark genug ist, um Pro genannt zu werden."
+        ]
+      },
+      {
+        "title": "Kamera",
+        "text": [
+          "Lernen Sie das erste Dreifach-Kamera-System kennen, das modernste Technologie mit der legendären Einfachheit des iPhone kombiniert. Erfassen Sie bis zu viermal mehr Szene. Erhalten Sie schöne Bilder bei drastisch schlechterem Licht. Nehmen Sie Videos in höchster Qualität mit einem Smartphone auf – und bearbeiten Sie sie dann mit den gleichen Tools, die Sie für Fotos lieben. So etwas haben Sie noch nie aufgenommen."
+        ]
+      },
+      {
+        "title": "Aufnehmen. Drehen. Zoomen. Zuschneiden. Schneiden. Belichten. Anpassen. Lieben.",
+        "text": [
+          "Mit dem iPhone 11 Pro können Sie Videos aufnehmen, die wunderschön lebensecht sind, mit mehr Details und flüssigeren Bewegungen. Epische Rechenleistung bedeutet, dass es 4K-Videos mit erweitertem Dynamikbereich und kinoreifer Videostabilisierung aufnehmen kann – alles mit 60 Bildern pro Sekunde. Sie erhalten auch mehr kreative Kontrolle, mit viermal mehr Szene und leistungsstarken neuen Bearbeitungstools zum Spielen."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-iphone-xr",
+    "description": [
+      {
+        "title": "Und dann kam Pro",
+        "text": [
+          "Ein transformatives Dreifach-Kamera-System, das jede Menge Funktionen ohne Komplexität hinzufügt.",
+          "Ein beispielloser Sprung bei der Batterielebensdauer. Und ein umwerfender Chip, der maschinelles Lernen verdoppelt und die Grenzen dessen, was ein Smartphone leisten kann, verschiebt. Willkommen beim ersten iPhone, das leistungsstark genug ist, um Pro genannt zu werden."
+        ]
+      },
+      {
+        "title": "Kamera",
+        "text": [
+          "Lernen Sie das erste Dreifach-Kamera-System kennen, das modernste Technologie mit der legendären Einfachheit des iPhone kombiniert. Erfassen Sie bis zu viermal mehr Szene. Erhalten Sie schöne Bilder bei drastisch schlechterem Licht. Nehmen Sie Videos in höchster Qualität mit einem Smartphone auf – und bearbeiten Sie sie dann mit den gleichen Tools, die Sie für Fotos lieben. So etwas haben Sie noch nie aufgenommen."
+        ]
+      },
+      {
+        "title": "Aufnehmen. Drehen. Zoomen. Zuschneiden. Schneiden. Belichten. Anpassen. Lieben.",
+        "text": [
+          "Mit dem iPhone 11 Pro können Sie Videos aufnehmen, die wunderschön lebensecht sind, mit mehr Details und flüssigeren Bewegungen. Epische Rechenleistung bedeutet, dass es 4K-Videos mit erweitertem Dynamikbereich und kinoreifer Videostabilisierung aufnehmen kann – alles mit 60 Bildern pro Sekunde. Sie erhalten auch mehr kreative Kontrolle, mit viermal mehr Szene und leistungsstarken neuen Bearbeitungstools zum Spielen."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-iphone-xs",
+    "description": [
+      {
+        "title": "Und dann kam Pro",
+        "text": [
+          "Ein transformatives Dreifach-Kamera-System, das jede Menge Funktionen ohne Komplexität hinzufügt.",
+          "Ein beispielloser Sprung bei der Batterielebensdauer. Und ein umwerfender Chip, der maschinelles Lernen verdoppelt und die Grenzen dessen, was ein Smartphone leisten kann, verschiebt. Willkommen beim ersten iPhone, das leistungsstark genug ist, um Pro genannt zu werden."
+        ]
+      },
+      {
+        "title": "Kamera",
+        "text": [
+          "Lernen Sie das erste Dreifach-Kamera-System kennen, das modernste Technologie mit der legendären Einfachheit des iPhone kombiniert. Erfassen Sie bis zu viermal mehr Szene. Erhalten Sie schöne Bilder bei drastisch schlechterem Licht. Nehmen Sie Videos in höchster Qualität mit einem Smartphone auf – und bearbeiten Sie sie dann mit den gleichen Tools, die Sie für Fotos lieben. So etwas haben Sie noch nie aufgenommen."
+        ]
+      },
+      {
+        "title": "Aufnehmen. Drehen. Zoomen. Zuschneiden. Schneiden. Belichten. Anpassen. Lieben.",
+        "text": [
+          "Mit dem iPhone 11 Pro können Sie Videos aufnehmen, die wunderschön lebensecht sind, mit mehr Details und flüssigeren Bewegungen. Epische Rechenleistung bedeutet, dass es 4K-Videos mit erweitertem Dynamikbereich und kinoreifer Videostabilisierung aufnehmen kann – alles mit 60 Bildern pro Sekunde. Sie erhalten auch mehr kreative Kontrolle, mit viermal mehr Szene und leistungsstarken neuen Bearbeitungstools zum Spielen."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-iphone-xs-max",
+    "description": [
+      {
+        "title": "Und dann kam Pro",
+        "text": [
+          "Ein transformatives Dreifach-Kamera-System, das jede Menge Funktionen ohne Komplexität hinzufügt.",
+          "Ein beispielloser Sprung bei der Batterielebensdauer. Und ein umwerfender Chip, der maschinelles Lernen verdoppelt und die Grenzen dessen, was ein Smartphone leisten kann, verschiebt. Willkommen beim ersten iPhone, das leistungsstark genug ist, um Pro genannt zu werden."
+        ]
+      },
+      {
+        "title": "Kamera",
+        "text": [
+          "Lernen Sie das erste Dreifach-Kamera-System kennen, das modernste Technologie mit der legendären Einfachheit des iPhone kombiniert. Erfassen Sie bis zu viermal mehr Szene. Erhalten Sie schöne Bilder bei drastisch schlechterem Licht. Nehmen Sie Videos in höchster Qualität mit einem Smartphone auf – und bearbeiten Sie sie dann mit den gleichen Tools, die Sie für Fotos lieben. So etwas haben Sie noch nie aufgenommen."
+        ]
+      },
+      {
+        "title": "Aufnehmen. Drehen. Zoomen. Zuschneiden. Schneiden. Belichten. Anpassen. Lieben.",
+        "text": [
+          "Mit dem iPhone 11 Pro können Sie Videos aufnehmen, die wunderschön lebensecht sind, mit mehr Details und flüssigeren Bewegungen. Epische Rechenleistung bedeutet, dass es 4K-Videos mit erweitertem Dynamikbereich und kinoreifer Videostabilisierung aufnehmen kann – alles mit 60 Bildern pro Sekunde. Sie erhalten auch mehr kreative Kontrolle, mit viermal mehr Szene und leistungsstarken neuen Bearbeitungstools zum Spielen."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-iphone-14",
+    "description": [
+      {
+        "title": "Wunderbar",
+        "text": [
+          "Ein transformatives Dreifach-Kamera-System, das jede Menge Funktionen ohne Komplexität hinzufügt.",
+          "Ein beispielloser Sprung bei der Batterielebensdauer. Und ein umwerfender Chip, der maschinelles Lernen verdoppelt und die Grenzen dessen, was ein Smartphone leisten kann, verschiebt. Willkommen beim ersten iPhone, das leistungsstark genug ist, um Pro genannt zu werden."
+        ]
+      },
+      {
+        "title": "Kamera",
+        "text": [
+          "Lernen Sie das erste Dreifach-Kamera-System kennen, das modernste Technologie mit der legendären Einfachheit des iPhone kombiniert. Erfassen Sie bis zu viermal mehr Szene. Erhalten Sie schöne Bilder bei drastisch schlechterem Licht. Nehmen Sie Videos in höchster Qualität mit einem Smartphone auf – und bearbeiten Sie sie dann mit den gleichen Tools, die Sie für Fotos lieben. So etwas haben Sie noch nie aufgenommen."
+        ]
+      },
+      {
+        "title": "Aufnehmen. Drehen. Zoomen. Zuschneiden. Schneiden. Belichten. Anpassen. Lieben.",
+        "text": [
+          "Mit dem iPhone 11 Pro können Sie Videos aufnehmen, die wunderschön lebensecht sind, mit mehr Details und flüssigeren Bewegungen. Epische Rechenleistung bedeutet, dass es 4K-Videos mit erweitertem Dynamikbereich und kinoreifer Videostabilisierung aufnehmen kann – alles mit 60 Bildern pro Sekunde. Sie erhalten auch mehr kreative Kontrolle, mit viermal mehr Szene und leistungsstarken neuen Bearbeitungstools zum Spielen."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-iphone-14-pro",
+    "description": [
+      {
+        "title": "Und dann war ein Pro",
+        "text": [
+          "Ein transformatives Dreifach-Kamera-System, das jede Menge Funktionen ohne Komplexität hinzufügt.",
+          "Ein beispielloser Sprung bei der Batterielebensdauer. Und ein umwerfender Chip, der maschinelles Lernen verdoppelt und die Grenzen dessen, was ein Smartphone leisten kann, verschiebt. Willkommen beim ersten iPhone, das leistungsstark genug ist, um Pro genannt zu werden."
+        ]
+      },
+      {
+        "title": "Kamera",
+        "text": [
+          "Lernen Sie das erste Dreifach-Kamera-System kennen, das modernste Technologie mit der legendären Einfachheit des iPhone kombiniert. Erfassen Sie bis zu viermal mehr Szene. Erhalten Sie schöne Bilder bei drastisch schlechterem Licht. Nehmen Sie Videos in höchster Qualität mit einem Smartphone auf – und bearbeiten Sie sie dann mit den gleichen Tools, die Sie für Fotos lieben. So etwas haben Sie noch nie aufgenommen."
+        ]
+      },
+      {
+        "title": "Aufnehmen. Drehen. Zoomen. Zuschneiden. Schneiden. Belichten. Anpassen. Lieben.",
+        "text": [
+          "Mit dem iPhone 11 Pro können Sie Videos aufnehmen, die wunderschön lebensecht sind, mit mehr Details und flüssigeren Bewegungen. Epische Rechenleistung bedeutet, dass es 4K-Videos mit erweitertem Dynamikbereich und kinoreifer Videostabilisierung aufnehmen kann – alles mit 60 Bildern pro Sekunde. Sie erhalten auch mehr kreative Kontrolle, mit viermal mehr Szene und leistungsstarken neuen Bearbeitungstools zum Spielen."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-iphone-12",
+    "description": [
+      {
+        "title": "Schneller als schnell.",
+        "text": [
+          "5G-Geschwindigkeit. A14 Bionic, der schnellste Chip in einem Smartphone. Ein randloses OLED-Display. Ceramic Shield mit vierfacher Sturzleistung. Und der Nachtmodus auf jeder Kamera. Das iPhone 12 hat alles – in zwei perfekten Größen."
+        ]
+      },
+      {
+        "title": "A14 Bionic Chip. Das Einzige, was dem nahekam, war unser letzter Chip.",
+        "text": [
+          "Der A14 Bionic ist der erste 5-Nanometer-Chip in der Branche, mit fortschrittlichen Komponenten, die buchstäblich atombreit sind. Vierzig Prozent mehr Transistoren erhöhen die Geschwindigkeiten und steigern gleichzeitig die Effizienz für eine großartige Batterielaufzeit. Und ein neuer ISP ermöglicht die Dolby Vision-Aufnahme – etwas, das keine professionelle Filmkamera, geschweige denn ein anderes Telefon, kann."
+        ]
+      },
+      {
+        "title": "Der Nachtmodus kommt auf alle Ihre Kameras.",
+        "text": [
+          "Schwaches Licht ist jetzt ein Highlight. Von schwach beleuchteten Restaurants bis zu mondhellen Stränden liefert der neue Nachtmodus natürliche Aufnahmen bei schlechten Lichtverhältnissen – automatisch."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-iphone-13-mini",
+    "description": [
+      {
+        "title": "Ihre neue Superkraft.",
+        "text": [
+          "A15 Bionic, der schnellste Chip, der jemals in einem Smartphone verbaut wurde. Super Retina XDR Display mit ProMotion. Robustes Ceramic Shield mit 4x besserer Sturzleistung. Neuer Nachtmodus auf allen Kameras. Es ist das ultimative iPhone, angetrieben vom ultimativen Chip."
+        ]
+      },
+      {
+        "title": "A15 Bionic Chip. Superkraft. Mini-Größe.",
+        "text": [
+          "Der A15 Bionic Chip ist der schnellste Chip, der jemals in einem Smartphone verbaut wurde. Er treibt alles an, von der Fotografie bis zum Gaming. Und die unglaublichen Beschleuniger für maschinelles Lernen ermöglichen Ihnen, Augmented Reality wie nie zuvor zu erleben."
+        ]
+      },
+      {
+        "title": "Erstaunliche Kamera. Kein Pro erforderlich.",
+        "text": [
+          "Das iPhone 13 Mini macht atemberaubende Fotos und Videos mit seinem fortschrittlichen Dual-Kamera-System, mit einem neuen Nachtmodus auf allen Kameras. Und fotografische Stile personalisieren Ihre Fotos im Moment für einen schönen Look."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-iphone-13-pro-max",
+    "description": [
+      {
+        "title": "Das ultimative Pro-Kamerasystem",
+        "text": [
+          "Wir stellen das erste Pro-Kamerasystem vor, das auch ein iPhone ist – mit 3-fach optischem Zoom, Makrofotografie, Nachtmodus-Porträts und einem neuen ProRes-Format für das hochwertigste Video, das jemals in einem Smartphone verfügbar war. Machen Sie sich bereit, wie ein Profi zu fotografieren."
+        ]
+      },
+      {
+        "title": "Kinematographischer Modus",
+        "text": [
+          "Filmen Sie wie ein Profi mit exklusivem Zugang zum Tiefenschärfeeffekt des Kinomodus, jetzt sowohl bei der Weitwinkel- als auch bei der Telekamera. Fügen Sie Fokusübergänge für einen kreativen Look hinzu und wechseln Sie einfach zwischen den Kameras, um mehr vom Moment einzufangen."
+        ]
+      },
+      {
+        "title": "A15 Bionic",
+        "text": [
+          "A15 Bionic ist der schnellste Chip, der jemals in einem Smartphone verbaut wurde. Er ermöglicht unglaubliche Erlebnisse in den Bereichen Fotografie, Video, Gaming und mehr – und das alles bei einer großartigen Batterielaufzeit. Und er ermöglicht die fortschrittlichsten maschinellen Lernfunktionen in jedem Smartphone für Erlebnisse der nächsten Stufe."
+        ]
+      },
+      {
+        "title": "ProMotion",
+        "text": [
+          "Die ProMotion-Technologie passt das Display automatisch an die Bewegung auf Ihrem Bildschirm an, für flüssigeres Scrollen, größere Reaktionsfähigkeit und flüssigere Bewegungen – und einen Akku, der den ganzen Tag hält."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-iphone-17-pro",
+    "description": [
+      {
+        "title": "Kameras",
+        "text": [
+          "Ein gewaltiger Zoom nach vorn. Das gesamte Kamerasystem des iPhone 17 Pro steckt voller Innovationen. Das Teleobjektiv verfügt über die nächste Generation unseres Tetraprismen-Designs und einen 56 Prozent größeren Sensor. Mit einer äquivalenten Brennweite von 200 mm und dem 8-fachen optischen Zoom ist es das leistungsstärkste iPhone-Teleobjektiv aller Zeiten – mit einem Gesamtzoom von 16-fach. So eröffnen sich Ihnen noch mehr kreative Möglichkeiten und Sie können Ihre Kompositionen um eine größere Reichweite erweitern."
+        ]
+      },
+      {
+        "title": "Pro-Video",
+        "text": [
+          "Noch professioneller und es bräuchte einen Agenten. Vom Heimvideo bis zur Hollywood-Produktion – das iPhone 17 Pro meistert jede Herausforderung. Mit mehr professionellen Videofunktionen als je zuvor – wie verbesserter Videostabilisierung, Spezifikationen in Kinoqualität und Kompatibilität mit branchenüblichen Workflows – bietet das iPhone 17 Pro leistungsstarke Filmwerkzeuge, wann und wo immer Sie sie brauchen."
+        ]
+      },
+      {
+        "title": "Leistung",
+        "text": [
+          "Neue Dimensionen der Leistung. Ob Sie mit aufwendigen Grafiken oder riesigen Mediendateien arbeiten – das iPhone 17 Pro bietet blitzschnelle Performance dank fortschrittlicher Kühltechnologie. Eine von Apple entwickelte, lasergeschweißte Dampfkammer leitet in Kombination mit dem Aluminium-Unibody-Gehäuse die Wärme effizient vom A19 Pro Chip ab und ermöglicht so eine noch höhere Dauerleistung. Dieser Durchbruch im Wärmemanagement ist der Schlüssel zum leistungsstärksten iPhone aller Zeiten."
+        ]
+      },
+      {
+        "title": "Alles in der Familie",
+        "text": [
+          "Alles, was Sie brauchen. Alles auf dem iPhone. Die neuesten iPhone-Modelle stecken voller fortschrittlicher Funktionen. Hilfreiche Apple Intelligence-Funktionen wie Visual Intelligence¹² und Schreibwerkzeuge erleichtern Ihnen den Alltag. Schnelle, sichere Verbindungen mit Wi-Fi 7,¹³, Bluetooth 6, 5G¹⁴ und eSIM¹⁵"
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-ipad-pro-13-m4-2024",
+    "description": [
+      {
+        "title": "M5. Schöpfer. Beschleuniger.",
+        "text": [
+          "Der M5 Chip setzt neue Maßstäbe für das iPad Pro und bietet Leistung und Effizienz wie nie zuvor. Eine 10-Core-GPU der nächsten Generation mit leistungsstarken neuen neuronalen Beschleunigern beschleunigt KI-Aufgaben enorm – von der Token-Generierung großer Sprachmodelle (LLM) bis hin zu generativen Bildern. Die Multithreading-fähige CPU und der schnellere Speicher sorgen für bahnbrechende Geschwindigkeiten in Ihren Workflows."
+        ]
+      },
+      {
+        "title": "iPadOS und Apps. Ein Rundgang durch die Belegschaft.",
+        "text": [
+          "iPadOS 26 präsentiert ein atemberaubendes neues Design mit Liquid Glass und bahnbrechende Verbesserungen, die die Produktivität des iPad Pro auf ein neues Niveau heben. Ein neu gestaltetes, intuitives Fenstersystem bietet Ihnen mehr Leistung und Flexibilität als je zuvor. Nutzen Sie professionelle Apps, spielen Sie anspruchsvolle Spiele und realisieren Sie kreative Projekte jeder Größe mit einer intuitiven Touch-Bedienung.",
+          "Produktivität auf höchstem Niveau. Öffnen Sie mehrere Fenster gleichzeitig, passen Sie deren Größe und Anordnung nach Ihren Wünschen an und teilen Sie Ihren Bildschirm in Drittel oder Viertel."
+        ]
+      },
+      {
+        "title": "Apple Pencil Pro. Entwickelt für grenzenlose Kreativität.",
+        "text": [
+          "Der Apple Pencil setzt neue Maßstäbe für Zeichnen, Malen, Schreiben und Notizen – intuitiv, präzise und einfach magisch. Und das alles mit pixelgenauer Präzision, geringer Latenz, Neigungsempfindlichkeit und Handballenerkennung.",
+          "Und der Apple Pencil Pro bietet noch mehr Möglichkeiten, Ihre Ideen wie nie zuvor zum Leben zu erwecken."
+        ]
+      }
+    ]
+  },
+  {
+    "namespaceId": "apple-watch-ultra-3",
+    "description": [
+      {
+        "title": "Kenne deinen Körper genau.",
+        "text": [
+          "Je mehr du weißt, desto besser kannst du handeln. Von der EKG-App bis zur Vitalwerte-App und mehr – die Apple Watch Ultra 3 bietet dir ein umfassenderes Bild deiner Gesundheit, damit du immer informiert bist. Und jetzt geht die Ultra 3 mit einer bahnbrechenden Funktion – Benachrichtigungen bei Bluthochdruck – den nächsten großen Schritt für deine Herzgesundheit."
+        ]
+      },
+      {
+        "title": "Satellitenkommunikation. Funktioniert einwandfrei.",
+        "text": [
+          "Wenn Sie sich abseits des Stromnetzes befinden und weder Mobilfunk noch WLAN verfügbar sind, hilft Ihnen die Ultra 3 dank integrierter Satellitenkommunikation, in Verbindung zu bleiben. Und im Notfall können Sie direkt von Ihrem Handgelenk aus per Satellit Notdienste kontaktieren."
+        ]
+      },
+      {
+        "title": "Trainingsmedien, die auf dich abgestimmt sind.",
+        "text": [
+          "Lass Apple Music die beste Playlist basierend auf deinem Workout und deinen Musikvorlieben auswählen. Oder wähle einfach eine der vorgeschlagenen Playlists oder Podcasts aus."
+        ]
+      }
+    ]
+  }
+]

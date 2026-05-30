@@ -1,0 +1,166 @@
+:root { // Значення за замовчуванням (light theme)
+  --accent: #F86800;
+  --secondary-accent: #476DF4;
+  --primary: #0F0F11;
+  --secondary: #89939A;
+  --icons: #B4BDC3;
+  --elements: #E2E6E9;
+  --background-color: #FAFBFC;
+  --border-color: #E2E6E9;
+  --box-shadow: 0px 3px 13px 0px #17203166;
+  --hover: #E2E6E9;
+  --green: #27AE60;
+  --red: #EB5757;
+  --white: #FFF;
+  --white-black: #FFF;
+
+  --text-hover: var(--primary);
+
+  --heart: #0F0F11;
+  --heart-liked: #476DF4;
+  --heart-text-color: #FFF;
+  --heart-border-color: #FFF;
+
+  --card-background: #FFF;
+  --card-border: #E2E6E9;
+  --card-radius: 8px;
+  --card-cart-radius: 16px;
+
+  --gallery-item-radius: 4px;
+  --capacity-item-radius: 4px;
+
+  --price-full-mix-blend-mode: color-dodge;
+
+  --add-button-bg: var(--accent);
+  --add-button-bg-selected: none;
+  --add-button-text: var(--white);
+  --add-button-text-selected: var(--accent);
+  --add-button-border-color-selected: #E2E6E9;
+  --add-button-radius: 8px;
+
+  --button-round-square-radius: 48px;
+  --button-bg-color-default: none;
+  --button-bg-color-hover: none;
+  --button-border-color-default: #B4BDC3;
+  --button-border-color-disabled: #E2E6E9;
+  --button-border-color-hover: #0F0F11;
+
+  --select-border-default: #b4bdc3;
+  --select-border-hover: #89939a;
+  --select-border-focus: #0f0f11;
+  --select-background-hover-item: #fafbfc;
+  --select-border-radius: 8px;
+  --select-options-bg-color: #FFF;
+  --select-options-border-color: #E2E6E9;
+  --select-arrow-color: #B4BDC3;
+
+  --pagination-btn-active-bg-c: #0F0F11;
+}
+
+body.theme-dark {
+  --accent: #905BFF;
+  --secondary-accent: #75767F;
+  --primary: #F1F2F9;
+  --secondary: #75767F;
+  --icons: #4A4D58;
+  --elements: #3B3E4A;
+  --background-color: #0F1121;
+  --border-color: #4A4D58;
+  --box-shadow: 0px 3px 13px 0px #8E98C4, 0 0 5px 0 #8E98C4;
+  --white: #F1F2F9;
+  --black: #0F1121;
+  --Surface-1: #161827;
+  --Surface-2: #323542;
+  --background-color-1: #161827;
+  --background-color-2: #323542;
+  --hover: #3B3E4A;
+  --white-black: #0F1121;
+
+  --text-hover: var(--accent);
+
+  --heart: #F1F2F9;
+  --heart-liked: #EB5757;
+  --heart-text-color: #F1F2F9;
+  --heart-border-color: #0F1121;
+
+  --card-background: #161827;
+  --card-border: #161827;
+  --card-radius: 0;
+  --card-cart-radius: 0;
+
+  --gallery-item-radius: 0;
+  --capacity-item-radius: 0;
+
+  --price-full-mix-blend-mode: color-burn;
+
+  --add-button-bg: var(--accent);
+  --add-button-bg-selected: #323542;
+  --add-button-text: #F1F2F9;
+  --add-button-text-selected: var(--accent);
+  --add-button-border-color-selected: #323542;
+  --add-button-radius: 0;
+
+  --button-round-square-radius: 0;
+  --button-bg-color-default: #323542;
+  --button-bg-color-hover: #4A4D58;
+  --button-border-color-default: #323542;
+  --button-border-color-disabled: #3B3E4A;
+  --button-border-color-hover: #4A4D58;
+
+  --select-border-default: #323542;
+  --select-border-hover: #4A4D58;
+  --select-border-focus: #905BFF;
+  --select-background-hover-item: #323542;
+  --select-border-radius: 0;
+  --select-options-bg-color: #3B3E4A;
+  --select-options-border-color: #3B3E4A;
+  --select-arrow-color: #75767F;
+
+  --pagination-btn-active-bg-c: #905BFF;
+}
+
+// body.theme-light {
+// }
+
+body.theme-purple {
+  --accent: #4219D0;
+  --secondary-accent: #F4BA47;
+  --heart-liked: #F4BA47;
+
+  --add-button-bg: var(--accent);
+  --add-button-text-selected: var(--accent);
+  --add-button-radius: 48px;
+
+  --gallery-item-radius: 4px;
+}
+
+body.theme-blue {
+  --accent: #216CFF;
+  --secondary-accent: #F447AF;
+  --heart-liked: #F447AF;
+
+  --add-button-bg: var(--accent);
+  --add-button-text-selected: var(--accent);
+  --add-button-radius: 8px;
+
+  --gallery-item-radius: 4px;
+}
+
+body.theme-black {
+  --accent: #313237;
+  --secondary-accent: #89939A;
+  --heart-liked: #EB5757;
+
+  --button-round-square-radius: 0;
+  --add-button-bg: var(--accent);
+  --add-button-text-selected: var(--green);
+  --add-button-radius: 0;
+
+  --card-radius: 0;
+  --card-cart-radius: 0;
+
+  --select-border-radius: 0;
+
+  --gallery-item-radius: 0;
+  --capacity-item-radius: 0;
+}

@@ -1,0 +1,22 @@
+.arrowIcon {
+  display: block; // Забезпечує коректне відображення та трансформації
+  transition: transform 0.3s ease; // Для плавної анімації
+
+  // Базовий напрямок (right) - трансформація 0deg
+  &--right {
+    transform: rotate(0deg);
+  }
+
+  // Обертання для інших напрямків:
+  &--left {
+    transform: rotate(180deg);
+  }
+
+  &--up {
+    transform: rotate(-90deg);
+  }
+
+  &--down {
+    transform: rotate(90deg);
+  }
+}

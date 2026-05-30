@@ -1,0 +1,48 @@
+@import '../../../../../../styles/utils';
+
+.select-capacity__title {
+  @extend %small_text;
+
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.select-capacity__divider {
+  @extend %divider;
+}
+
+.select-capacity__list {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.product-options__capacity-item {
+  @extend %body_text;
+
+  padding: 8px 15px;
+  border: 1px solid var(--icons);
+  border-radius: var(--capacity-item-radius);
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Стиль для активної (обраної) ємності */
+.product-options__capacity-item--active {
+  background-color: var(--primary);
+  color: var(--white-black);
+  border-color: var(--primary);
+}
+
+.product-options__capacity-item:hover {
+  border-color: var(--primary);
+}

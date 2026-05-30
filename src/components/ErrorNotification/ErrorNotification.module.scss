@@ -1,0 +1,37 @@
+@import '../../styles/utils';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.title {
+  @extend %h2;
+
+  margin-bottom: 8px;
+}
+
+.message {
+  @extend %body_text;
+
+  color: var(--secondary);
+  margin-bottom: 24px;
+}
+
+.retryButton {
+  @extend %buttons_text;
+  @extend %hover_shadow;
+
+  height: 40px;
+  padding: 1px 30px;
+  background-color: var(--add-button-bg);
+  color: var(--add-button-text);
+  border: none;
+  border-radius: var(--add-button-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}

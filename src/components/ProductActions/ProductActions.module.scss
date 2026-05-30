@@ -1,0 +1,64 @@
+@import '../../styles/utils';
+
+.product-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.product-actions__btn--cart {
+  @extend %buttons_text;
+  @include hover(box-shadow, var(--box-shadow));
+
+  line-height: 14px;
+  flex-grow: 1;
+  height: 40px;
+  opacity: 1;
+  border-radius: var(--add-button-radius);
+  border: 1px solid var(--accent);
+  background-color: var(--accent);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.product-actions__btn--cart-added {
+  background-color: var(--add-button-bg-selected);
+  border-color: var(--add-button-border-color-selected);
+  color: var(--add-button-text-selected);
+  cursor: default; // Якщо додано, можна прибрати курсор-поінтер
+}
+
+.product-actions__btn--favourites {
+  @include hover(box-shadow, var(--box-shadow));
+
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #b4bdc3;
+  background: none;
+  cursor: pointer;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  transition: all 0.3s ease; // Плавний перехід для SVG
+
+  // Стилі для елемента PATH всередині SVG
+  path {
+    // Ненатиснутий стан: Колір контуру слідує за темою
+    fill: var(--heart, #0F0F11);
+    transition: fill 0.3s ease;
+  }
+}
+
+// Коли серце натиснуте (isFav === true)
+.icon--liked {
+  path {
+    // Натиснутий стан: Колір заливки змінна --heart-liked (запасний червоний)
+    fill: var(--heart-liked, #EB5757);
+  }
+}

@@ -1,1 +1,33 @@
-// not empty
+@import './styles/utils';
+@import './styles/themes';
+@import './styles/fonts';
+
+body {
+  margin: 0;
+  font-family: 'Mont', sans-serif;
+  box-sizing: border-box;
+  min-width: 320px;
+}
+
+iframe {
+  display: none;
+}
+
+.app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.section {
+  padding-top: 48px;
+  background-color: var(--background-color);
+  flex-grow: 1;
+  padding-bottom: 64px;
+
+  @include on-desktop {
+    padding-top: 64px;
+    padding-bottom: 80px;
+  }
+}
