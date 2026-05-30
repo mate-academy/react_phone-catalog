@@ -1,0 +1,50 @@
+@use '../../assets/styles/variables' as *;
+
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.breadcrumbRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+ .breadcrumbLink {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-text);
+  }
+}
+
+.breadcrumbCurrent {
+  display: flex;
+  font-size: 12px;
+  font-weight: 700;
+  color: #89939A;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: 24px;
+
+  @include tablet {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  @include desktop {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+}

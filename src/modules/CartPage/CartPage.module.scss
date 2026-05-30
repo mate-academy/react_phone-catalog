@@ -1,0 +1,269 @@
+@use '../../assets/styles/variables' as *;
+
+
+.cartPage {
+ width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #89939A;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-text);
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-text);
+  margin-top: 24px;
+
+  @include tablet {
+    font-size: 48px;
+    margin-top: 40px;
+  }
+
+   @include desktop {
+    font-size: 48px;
+    margin-top: 40px;
+  }
+}
+
+.emptyWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+  align-self: center;
+}
+
+.emptyImage {
+  width: 120px;
+
+  @include tablet {
+    width: 160px;
+  }
+
+  @include desktop {
+    width: 200px;
+  }
+}
+
+.empty {
+  font-size: 16px;
+  color: $color-secondary;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.contentCart {
+  display: flex;
+  flex-direction: column;
+
+  @include desktop {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+  width: 100%;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  border: 1px solid var(--color-elements);
+  background-color: var(--color-background-card);
+  border-radius: 16px;
+
+  @include tablet {
+    padding: 24px;
+    flex-direction: row;
+  }
+  @include desktop {
+    padding: 24px;
+    flex-direction: row;
+  }
+}
+
+.protuct {
+  display: flex;
+  gap: 16px;
+  padding: 16px 16px 0;
+  flex: 1;
+  align-items: center;
+
+  @include tablet {
+    padding: 0;
+  }
+
+  @include desktop {
+    padding: 0;
+  }
+}
+
+.remove {
+  background: none;
+  border: none;
+  color: #B4BDC3;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px 16px;
+  color: var(--color-text);
+
+  @include tablet {
+    padding: 0;
+    gap: 24px;
+  }
+
+  @include desktop {
+    padding: 0;
+    gap: 24px;
+  }
+}
+
+.quantityBlock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  font-weight: 700;
+  border: 1px solid var(--color-elements);
+  border-radius: 50%;
+  background-color: var(--color-button);
+  cursor: pointer;
+
+    img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    border-color: var(--color-text);
+  }
+}
+
+.quantity {
+  font-size: 14px;
+  width: 24px;
+  text-align: center;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 800;
+  margin-top: 4px;
+  width: 80px;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  align-items: center;
+  border: 1px solid var(--color-elements);
+  border-radius: 16px;
+  color: var(--color-text);
+
+  @include desktop {
+    min-width: 368px;
+    height: 206px;
+    gap: 0;
+  }
+}
+
+.totalPrice {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1%;
+}
+
+.total {
+  font-size: 16px;
+  font-weight: 600;
+  color: #89939A;
+}
+
+.divider {
+  margin: 16px 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-elements);
+}
+
+.clearButton {
+  padding: 10px 24px;
+  background-color: $color-accent;
+  color: $color-white;
+  border: none;
+  border-radius: 48px;
+  cursor: pointer;
+  align-self: stretch;
+  font-family: 'Mont';
+  font-weight: 700;
+  font-size: 14px;
+  height: 48px;
+  transition: 0.3s ease;
+
+  &:hover {
+    box-shadow: 0px 3px 13px 0px #17203166;
+  }
+}

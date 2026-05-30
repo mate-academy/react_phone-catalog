@@ -1,0 +1,65 @@
+@use '../../../../assets/styles/variables' as *;
+
+.shopByCategory {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 80px;
+  max-width: 1136px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  font-family: $font-family-main;
+  color: var(--color-text);
+  margin-bottom: 24px;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include tablet {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  @include desktop {
+     flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform:  scale(1.03);
+  }
+}
+
+.image {
+  width: 100%;
+  object-fit: contain;
+  aspect-ratio: 1/1;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 24px 0 4px 0;
+  font-family: 'Mont', sans-serif;
+}
+
+.count {
+  font-size: 14px;
+  color: $color-secondary;
+  font-family: 'Mont', sans-serif;
+}
