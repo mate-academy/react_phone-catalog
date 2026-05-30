@@ -1,0 +1,95 @@
+@import '../../../styles/variables/variables';
+
+.select__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 4px;
+}
+
+.select {
+  position: relative;
+  border: 1px solid $ui-border-color;
+  transition: $animation-duration;
+
+  &:hover {
+    cursor: pointer;
+    border-color: $secondary;
+  }
+
+  &--focus {
+    border-color: $primary;
+
+    &:hover {
+      border-color: $primary;
+    }
+  }
+}
+
+.select__button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.select__button--arrow {
+  width: $button-size;
+  height: $button-size;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.select__dropdown {
+  box-sizing: border-box;
+  border: 1px solid $light-gray;
+  box-shadow: 0px 2px 15px 0px #0000000d;
+  background-color: #fff;
+
+  position: absolute;
+  top: 100%;
+  width: 100%;
+
+  opacity: 0;
+  transform: translateY(0);
+  transition: $animation-duration;
+
+  pointer-events: none;
+
+  &--open {
+    opacity: 1;
+    pointer-events: all;
+
+    transform: translateY(4px);
+  }
+}
+
+.select__selected-option {
+  text-transform: capitalize;
+  padding: 0 12px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.select__dropdown-option {
+  display: block;
+  padding: 6px 12px;
+  text-transform: capitalize;
+  color: $text-color-secondary !important;
+
+  transition: $animation-duration;
+
+  &:hover {
+    cursor: pointer;
+    color: $text-color !important;
+  }
+
+  &--selected {
+    background-color: $light-gray;
+    color: $text-color !important;
+  }
+}

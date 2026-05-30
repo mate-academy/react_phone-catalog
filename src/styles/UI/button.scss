@@ -1,0 +1,163 @@
+@import '../variables/variables.scss';
+
+.button-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $button-size;
+  height: $button-size;
+  border: 1px solid $ui-border-color;
+  box-sizing: border-box;
+  flex-shrink: 0;
+
+  position: relative;
+  transition: $animation-duration;
+
+  &--sm {
+    width: $button-size--sm;
+    height: $button-size--sm;
+    border: 1px solid $light-gray;
+  }
+
+  &--size-auto {
+    width: 100%;
+    height: 100%;
+  }
+
+  &--rounded {
+    border-radius: 100%;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid $ui-border-color--hover;
+  }
+}
+
+.button {
+  &--favorite {
+    &-selected {
+      border: 1px solid $light-gray;
+    }
+  }
+
+  &--cross::before,
+  &--cross::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 1px;
+    background-color: $light-gray;
+    transition: $animation-duration;
+  }
+  &--cross:hover::before,
+  &--cross:hover::after {
+    background-color: $primary;
+  }
+
+  &--cross::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &--cross::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &--arrow-top::before,
+  &--arrow-bottom::before,
+  &--arrow-left::before,
+  &--arrow-right::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+
+    border-top: 1px solid $light-gray;
+    border-right: 1px solid $light-gray;
+
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: $animation-duration;
+  }
+
+  &--arrow-top::before {
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &--arrow-bottom::before {
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%) rotate(135deg);
+  }
+
+  &--arrow-left::before {
+    left: 55%;
+    transform: translate(-50%, -50%) rotate(225deg);
+  }
+
+  &--arrow-right::before {
+    left: 45%;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &--arrow-top:hover::before,
+  &--arrow-bottom:hover::before,
+  &--arrow-left:hover::before,
+  &--arrow-right:hover::before {
+    border-top: 1px solid $primary;
+    border-right: 1px solid $primary;
+  }
+
+  &--active {
+    background-color: $primary;
+    border: 1px solid $primary;
+    color: $white;
+  }
+
+  &--disabled {
+    border: 1px solid $light-gray;
+    color: $light-gray;
+
+    &:hover::before {
+      border-color: $light-gray;
+    }
+
+    &:hover {
+      border: 1px solid $light-gray;
+    }
+  }
+}
+
+.button-primary {
+  background-color: $primary;
+  border: none;
+  box-sizing: border-box;
+  color: $white;
+
+  width: 100%;
+  height: $button-size;
+
+  transition: $animation-duration;
+
+  &--selected {
+    background-color: transparent;
+    border: 1px solid $light-gray;
+
+    & > p {
+      color: $green;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(23, 32, 49, 0.4);
+
+    & > p {
+      cursor: pointer;
+    }
+  }
+}

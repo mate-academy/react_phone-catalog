@@ -1,0 +1,10 @@
+@import '../../styles/variables/variables.scss';
+
+.product-carousel__navigation-warpper {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  gap: 16px;
+}

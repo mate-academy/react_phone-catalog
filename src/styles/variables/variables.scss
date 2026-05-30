@@ -1,0 +1,45 @@
+// colors
+$primary: #313237;
+$secondary: #89939A;
+
+$white: #fff;
+$green: #27AE60;
+$red: #EB5757;
+$gray: #B4BDC3;
+$light-gray: #E2E6E9;
+
+$icons: $gray;
+$elements: $light-gray;
+$hover: $light-gray;
+// END colors
+
+// typography
+$font-family-main: 'Mont', sans-serif;
+
+$text-color: $primary;
+$text-color-secondary: $secondary;
+$heading-text-color: $primary;
+$button-text-color: $primary;
+// END typography
+
+// utility
+$animation-duration: .2s;
+$grid-column-desktop-size: 32px;
+// END utility
+
+// components
+$body-background-color: #fff;
+
+$header-height--mb: 48px;
+$header-height: 64px;
+$header-border-color: $light-gray;
+
+$divider-color: $light-gray;
+
+$ui-border-color: $gray;
+$ui-border-color--hover: $primary;
+
+$button-size: 40px;
+$button-size--sm: 32px;
+$select-size: $button-size;
+//END components
