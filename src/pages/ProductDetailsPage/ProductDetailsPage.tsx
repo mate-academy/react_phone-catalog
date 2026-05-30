@@ -272,7 +272,7 @@ export const ProductDetailsPage = () => {
 
       <div className="product-details--back">
   <a href={getCategoryLink()} className="product-details__back-link">
-    <img src="./icons/arrow-left-small.svg" alt="back" className="product-details__back-icon" />
+  <img src="./icons/arrow-left-small.svg" alt="back" className="product-details__back-icon" />
     <span className="product-details__back-text">Back</span>
   </a>
 </div>
@@ -492,11 +492,11 @@ export const ProductDetailsPage = () => {
 
           <div className="related-products__nav">
             <button className="brand__nav-btn swiper-prev-btn">
-              <img src="./icons/arrow-left.svg" alt="prev" />
+            <img src="./icons/arrow-left-small-white.svg" alt="prev" />
             </button>
 
             <button className="brand__nav-btn swiper-next-btn">
-              <img src="./icons/arrow-right.svg" alt="next" />
+            <img src="./icons/arrow-right-small-white.svg" alt="next" />
             </button>
           </div>
         </div>

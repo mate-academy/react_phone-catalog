@@ -344,10 +344,7 @@ export const TabletPage = () => {
             disabled={currentPage === 1}
             className="pagination__button pagination__button--nav"
           >
-            <img
-              src="./icons/arrow-left.svg"
-              alt="prev"
-            />
+            <img src="./icons/arrow-left-small-white.svg" alt="prev" />
           </button>
 
           {getPageNumbers().map((page, index) => (
@@ -376,10 +373,7 @@ export const TabletPage = () => {
             disabled={currentPage === totalPages}
             className="pagination__button pagination__button--nav"
           >
-            <img
-              src="./icons/arrow-right.svg"
-              alt="next"
-            />
+            <img src="./icons/arrow-right-small-white.svg" alt="next" />
           </button>
         </div>
       )}

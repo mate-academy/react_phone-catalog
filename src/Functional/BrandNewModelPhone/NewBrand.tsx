@@ -100,10 +100,10 @@ export default function NewBrand() {
 
           <div className="new-brand__nav">
             <button className="new-brand__nav-btn swiper-new-prev">
-              <img src="./icons/arrow-left.svg" alt="prev" />
+            <img src="./icons/arrow-left-small-white.svg" alt="prev" />
             </button>
             <button className="new-brand__nav-btn swiper-new-next">
-              <img src="./icons/arrow-right.svg" alt="next" />
+            <img src="./icons/arrow-right-small-white.svg" alt="next" />
             </button>
           </div>
         </div>
