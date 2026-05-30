@@ -1,0 +1,40 @@
+@import '@styles/utils/vars';
+@import '@styles/utils/mixins';
+
+.product_colors {
+  &__labels {
+    @include flex(row, space-between, center);
+
+    margin-bottom: 8px;
+    color: $regent-gray-color;
+
+    &_id {
+      color: $submarine-color;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    padding: 0 0 24px;
+    border-bottom: 1px solid $porcelain-color;
+  }
+
+  &__button {
+    @include set-size(32px, 32px);
+
+    border-radius: 50%;
+    border: 1px solid $porcelain-color;
+
+    &.selected {
+      border: 1px solid $woodsmoke-color;
+    }
+  }
+
+  &__inside {
+    @include set-size(28px, 28px);
+
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+}
