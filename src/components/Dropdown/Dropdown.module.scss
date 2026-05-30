@@ -1,0 +1,113 @@
+.dropdownContainer {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  .dropdownBox {
+    display: flex;
+    gap: 4px;
+    flex-direction: column;
+
+    flex: 1;
+
+    .dropdown {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      height: 40px;
+      background-color: $main-bg-color;
+
+      .dropdownTrigger {
+        width: 100%;
+        border: 1px solid $border-color;
+        border-radius: 8px;
+        display: flex;
+
+        justify-content: space-between;
+        align-items: center;
+
+        font-weight: 700;
+        font-size: 14px;
+        padding: 0 12px;
+
+        &:hover {
+          background-color: $page-body-bg-color;
+          border-color: $border-hover-color;
+          cursor: pointer;
+        }
+      }
+
+      .dropdownContent {
+        z-index: 9;
+        position: absolute;
+        margin-top: 41px;
+
+        width: 100%;
+        overflow: hidden;
+
+        transform-origin: top center;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-20px);
+        transition:
+          opacity 0.3s,
+          transform 0.3s ease;
+
+        .content {
+          background-color: $main-bg-color;
+          border: 1px solid $border-color;
+          border-radius: 8px;
+
+          .li {
+            padding-left: 12px;
+            line-height: 38px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            &:hover {
+              background-color: $page-body-bg-color;
+              border-color: $border-hover-color;
+            }
+          }
+        }
+
+        &.active {
+          transform: translateY(0);
+          opacity: 1;
+          pointer-events: auto;
+        }
+      }
+    }
+
+    .smallText {
+      font-weight: 700;
+      font-size: 12px;
+      color: $text-not-active-color;
+    }
+  }
+
+  .sortByBox {
+    @include on-tablet {
+      flex: none;
+      width: 100%;
+      max-width: 186px;
+    }
+
+    @include on-desktop {
+      max-width: 176px;
+    }
+  }
+
+  .itemsOnPageBox {
+    @include on-tablet {
+      width: 136px;
+      flex: none;
+    }
+
+    @include on-desktop {
+      max-width: 128px;
+    }
+  }
+}

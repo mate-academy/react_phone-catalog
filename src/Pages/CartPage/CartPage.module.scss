@@ -1,0 +1,259 @@
+.cartPage {
+  padding: 0 16px;
+  height: 100%;
+
+  @include on-tablet {
+    padding: 0 24px 0 0;
+  }
+
+  @include on-desktop {
+    padding: 0;
+  }
+
+  .buttonBackBlock {
+    display: flex;
+    padding: 24px 0;
+    gap: 4px;
+
+    .breadcrumbsLink {
+      text-decoration: none;
+      color: $text-main-color;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .backText {
+      color: $text-not-active-color;
+      transition: color 0.5s ease;
+
+      &:hover {
+        color: $text-main-color;
+      }
+    }
+
+    @include on-tablet {
+      padding: 40px 0 16px;
+    }
+  }
+
+  .pageTitle {
+    font-weight: 800;
+    font-size: 32px;
+    padding-bottom: 32px;
+
+    @include on-tablet {
+      font-size: 48px;
+    }
+  }
+
+  .cartSection {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 16px;
+    }
+
+    .cardBox {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex: 1;
+
+      .cartsCard {
+        padding: 16px;
+        border: 1px solid $border-color;
+        border-radius: 8px;
+        background-color: $main-bg-color;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        box-sizing: border-box;
+
+        @include on-tablet {
+          gap: 24px;
+        }
+
+        .infoRow {
+          display: flex;
+          gap: 16px;
+          align-items: center;
+          width: fit-content;
+          flex: 1;
+
+          .delete {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            opacity: 0.5;
+            transition: opacity 0.5s ease;
+
+            &:hover {
+              opacity: 1;
+            }
+          }
+
+          .modelLink {
+            text-decoration: none;
+          }
+
+          .photo {
+            display: flex;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            padding: 7px;
+          }
+
+          .modelName {
+            font-size: 14px;
+            font-weight: 600;
+            color: $text-main-color;
+            min-width: 128px;
+          }
+        }
+
+        .calcBox {
+          display: flex;
+
+          .calcButton {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border: 1px solid $border-hover-color;
+            border-radius: 50%;
+          }
+
+          .count {
+            display: flex;
+            width: 32px;
+            height: 32px;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+
+        .price {
+          display: flex;
+          min-width: 80px;
+          justify-content: end;
+          margin-left: auto;
+        }
+      }
+    }
+
+    .totalForItem {
+      border: 1px solid $border-color;
+      border-radius: 8px;
+      padding: 16px;
+      background-color: $main-bg-color;
+
+      @include on-tablet {
+        padding: 24px;
+      }
+
+      @include on-desktop {
+        width: 368px;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+
+        position: sticky;
+        align-self: flex-start;
+        top: 81px;
+      }
+
+      .totalItemPrice {
+        font-weight: 800;
+        font-size: 32px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .mainText {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 16px;
+        border-bottom: 1px solid $border-color;
+        margin-bottom: 16px;
+        width: 100%;
+
+        @include on-desktop {
+          padding-bottom: 24px;
+          margin-bottom: 24px;
+        }
+      }
+
+      .checkout {
+        all: unset;
+        cursor: pointer;
+        text-align: center;
+
+        background-color: $button-color;
+        height: 48px;
+
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      .buttonText {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 21px;
+        color: #fff;
+      }
+    }
+  }
+
+  .imgBox {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+
+    .orderMessage {
+      position: absolute;
+      padding: 12px 20px;
+      margin-bottom: 16px;
+      background-color: #e0ffe0;
+      color: #060;
+      border: 1px solid #0c0;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .closeMessage {
+      position: absolute;
+      top: 4px;
+      right: 8px;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .cartIsEmpty {
+      max-width: 120px;
+
+      @include on-tablet {
+        max-width: 225px;
+      }
+    }
+
+    .emptyText {
+      font-size: 16px;
+      color: $text-not-active-color;
+
+      @include on-tablet {
+        padding-bottom: 20px;
+        font-size: 22px;
+      }
+    }
+  }
+}
