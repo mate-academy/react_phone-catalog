@@ -1,0 +1,14 @@
+.favorites_empty {
+  grid-column: 1 / -1;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+
+  img {
+    max-width: 100%;  /* замість width: 100% */
+    max-height: 300px;
+    margin-bottom: 32px;
+    object-fit: contain;
+    object-position: center;
+  }
+}

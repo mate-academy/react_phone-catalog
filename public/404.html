@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      const path = window.location.pathname
+        .replace('/react_phone-catalog', '')
+        .replace(/^\//, '');
+      const search = window.location.search;
+      const hash = window.location.hash;
+      
+      window.location.replace(
+        '/react_phone-catalog/' +
+        '?redirect=' + encodeURIComponent(path + search) +
+        hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

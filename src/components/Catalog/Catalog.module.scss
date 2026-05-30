@@ -1,0 +1,130 @@
+.toolBar {
+  display: grid;
+  grid-column: 1 / -1; /* Розтягуємо тулбар на всю ширину батька */
+  
+  /* ✅ СТВОРЮЄМО 24-КОЛОНКОВУ СІТКУ */
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+
+  &__sort, &__pagination {
+    font-size: 12px;
+    font-weight: 700;
+    color: #89939A;
+
+    &__title {
+      margin-bottom: 4px;
+    }
+  }
+
+  /* ✅ РОЗСТАВЛЯЄМО ШИРИНУ ЧЕРЕЗ КОЛОНКИ (DESKTOP) */
+  &__sort {
+    grid-column: span 5; /* Займає 6 колонок із 24 (це 25% ширини екрана) */
+  }
+
+  &__pagination {
+    grid-column: span 3; /* Займає 4 колонки із 24 (трохи вужчий) */
+  }
+
+  /* 📱 ПЛАНШЕТ (Tablet) */
+  @media (min-width: 640px) and (max-width: 1024px) {
+    /* На планшеті екран менший, тому даємо їм більше колонок */
+    &__sort {
+      grid-column: span 7; 
+    }
+    &__pagination {
+      grid-column: span 6; 
+    }
+  }
+
+  /* 📱 МОБІЛКА (Mobile) */
+  @media (max-width: 639px) {
+    margin: 0 16px;
+    grid-template-columns: repeat(2, 1fr);
+    
+    /* На мобілці ділимо екран рівно навпіл: по 12 колонок із 24 кожному */
+    &__sort, &__pagination {
+      grid-column: span 1; 
+      
+    }
+  }
+}
+
+.catalog{
+  display: grid;
+  grid-column: 1 / -1; /* Залишаємо, щоб розтягнути на весь контейнер */
+
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  
+  gap: 16px;
+
+  @media (max-width: 639px) {
+    margin: 0 16px;
+  }
+}
+
+.pagination{
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  grid-column: 1 / -1;
+
+  &__list{
+    display: flex;
+    gap:8px;
+    list-style: none;
+
+    &__item{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 32px;
+      height: 32px;
+
+      border: 1px solid #E2E6E9;
+
+      cursor: pointer;
+
+      &:hover{
+        border-color: black;
+      }
+    }
+  }
+
+  &__navNext, &__navBack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 32px;
+    height: 32px;
+
+    background-color: white;
+    border: 1px solid #B4BDC3;
+    cursor: pointer;
+
+    & img{
+      filter: brightness(0);
+    }
+
+    &:hover{
+      border-color: black;
+    }
+
+    &:disabled{
+      border: 1px solid #E2E6E9;
+      cursor: default;
+
+      & img{
+        filter: none;
+      }
+    }
+  }
+}
+
+.active {
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+}

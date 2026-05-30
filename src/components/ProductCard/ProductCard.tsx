@@ -1,0 +1,214 @@
+import { useEffect, useState } from 'react';
+import { Product } from '../ProductCarousel';
+
+import Favourite from '../../assets/Icons/Favourites.svg';
+import FavouriteFilled from '../../assets/Icons/Favourites_filled.svg';
+// Стилі підтягуються з модульного файлу каруселі
+import styles from '../ProductCarousel/ProductCarousel.module.scss';
+import { Link } from 'react-router-dom';
+import { loadFavorites, saveFavorites } from '../../services/favorites';
+import { loadCart, saveCart, CartItem } from '../../services/cart';
+import { BASE_URL } from '../../services/baseUrl';
+
+type Props = {
+  product: Product;
+  discount?: boolean;
+};
+
+const HeartIcon = ({ filled }: { filled: boolean }) =>
+  // <svg
+  //   width="18"
+  //   height="18"
+  //   viewBox="0 0 24 24"
+  //   fill={filled ? '#e53e3e' : 'none'}
+  //   stroke={filled ? '#e53e3e' : '#999'}
+  //   strokeWidth="2"
+  // >
+  //   {/* <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /> */}
+  // </svg>
+  filled ? (
+    <img src={FavouriteFilled} alt="favorite_filled_icon" />
+  ) : (
+    <img src={Favourite} alt="favorite_icon" />
+  );
+
+export const ProductCard = ({ product, discount }: Props) => {
+  const [favorites, setFavorites] = useState<Product[]>(() => loadFavorites());
+  // const [cart, setCart] = useState<Product[]>(() => loadCart());
+  const [added, setAdded] = useState(false);
+
+  // стейт
+  const [cart, setCart] = useState<CartItem[]>(() => loadCart());
+
+  // Якщо є масив images - беремо першу картинку з нього. Якщо ні - беремо старе поле image.
+  const displayImage = product.images?.[0] || product.image;
+
+  // Якщо є priceDiscount - беремо його, якщо ні - беремо price.
+  const currentPrice = product.priceDiscount || product.price;
+
+  // Те ж саме для повної ціни
+  const oldPrice = product.priceRegular || product.fullPrice;
+
+  const liked = favorites.some(p => p.itemId === product.itemId);
+  const inCart = cart.some(
+    item => String(item.product.itemId) === String(product.itemId),
+  );
+
+  useEffect(() => {
+    const syncFavorites = () => {
+      setFavorites(loadFavorites());
+    };
+
+    const syncCart = () => {
+      setCart(loadCart());
+    };
+
+    // Слухаємо нашу кастомну подію
+    window.addEventListener('favorites-updated', syncFavorites);
+    window.addEventListener('cart-updated', syncCart);
+
+    return () => {
+      window.removeEventListener('favorites-updated', syncFavorites);
+      window.removeEventListener('cart-updated', syncCart);
+    };
+  }, []);
+
+  const handleAdd = () => {
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1500);
+  };
+
+  const toggleFavorite = () => {
+    // ✅ 1. Завжди беремо найсвіжіші дані з localStorage ПЕРЕД зміною
+    const currentFavorites = loadFavorites();
+
+    // ✅ 2. Перевіряємо по свіжих даних
+    const isAlreadyFav = currentFavorites.some(
+      item => String(item.itemId) === String(product.itemId),
+    );
+
+    // ✅ 3. Формуємо новий масив
+    const nextFavorites = isAlreadyFav
+      ? currentFavorites.filter(item => item.id !== product.id)
+      : [...currentFavorites, product];
+
+    // ✅ 4. Зберігаємо в localStorage
+    saveFavorites(nextFavorites);
+
+    // ✅ 5. Кричимо на весь браузер: "Гей, я оновив улюблені!"
+    // Це змусить спрацювати useEffect у ВСІХ картках і оновити їх стейт миттєво.
+    window.dispatchEvent(new Event('favorites-updated'));
+  };
+
+  // const toggleCart = () => {
+  //   // ✅ 1. Завжди беремо найсвіжіші дані з localStorage ПЕРЕД зміною
+  //   const currentCart = loadCart();
+
+  //   // ✅ 2. Перевіряємо по свіжих даних
+  //   const isAlreadyFav = currentCart.some(
+  //     item => String(item.itemId) === String(product.itemId),
+  //   );
+
+  //   // ✅ 3. Формуємо новий масив
+  //   const nextCart = isAlreadyFav
+  //     ? currentCart.filter(item => item.id !== product.id)
+  //     : [...currentCart, product];
+
+  //   // ✅ 4. Зберігаємо в localStorage
+  //   saveCart(nextCart);
+
+  //   // ✅ 5. Кричимо на весь браузер: "Гей, я оновив улюблені!"
+  //   // Це змусить спрацювати useEffect у ВСІХ картках і оновити їх стейт миттєво.
+  //   window.dispatchEvent(new Event('cart-updated'));
+  // };
+
+  const toggleCart = () => {
+    const currentCart = loadCart();
+    const existingIndex = currentCart.findIndex(
+      item => String(item.product.itemId) === String(product.itemId),
+    );
+
+    const nextCart =
+      existingIndex >= 0
+        ? currentCart.filter((_, i) => i !== existingIndex) // видалити
+        : [...currentCart, { product, quantity: 1 }]; // додати з quantity: 1
+
+    saveCart(nextCart);
+    window.dispatchEvent(new Event('cart-updated'));
+  };
+
+  return (
+    <Link
+      to={`/${product.category}/${product.itemId}`}
+      style={{ textDecoration: 'none' }}
+    >
+      <div className={styles['product-card']}>
+        <div className={styles['card-image-wrap']}>
+          {/* Використовуємо нашу універсальну змінну для картинки */}
+          <img
+            src={`${BASE_URL}${displayImage}`}
+            alt={`${product.name} ${product.color}`}
+            className={styles['card-image']}
+            // onError={e => {
+            //   (e.target as HTMLImageElement).setAttribute(
+            //     'src',
+            //     'https://via.placeholder.com/200x240/f0f0f0/999?text=iPhone',
+            //   );
+            // }}
+          />
+        </div>
+        <div className={styles['card-body']}>
+          <h3 className={styles['card-title']}>{product.name}</h3>
+
+          {/* Використовуємо наші універсальні змінні для цін */}
+          <p className={styles['card-price']}>
+            ${currentPrice}
+            {discount && oldPrice && (
+              <span className={styles['card-discount']}>${oldPrice}</span>
+            )}
+          </p>
+
+          <div className={styles['card-specs']}>
+            <div className={styles['spec-row']}>
+              <span className={styles['spec-label']}>Screen</span>
+              <span className={styles['spec-value']}>{product.screen}</span>
+            </div>
+            <div className={styles['spec-row']}>
+              <span className={styles['spec-label']}>Capacity</span>
+              <span className={styles['spec-value']}>{product.capacity}</span>
+            </div>
+            <div className={styles['spec-row']}>
+              <span className={styles['spec-label']}>RAM</span>
+              <span className={styles['spec-value']}>{product.ram}</span>
+            </div>
+          </div>
+
+          <div className={styles['card-actions']}>
+            <button
+              className={`${styles['btn-add']} ${added ? styles.added : ''}`}
+              onClick={e => {
+                e.stopPropagation();
+                e.preventDefault();
+                handleAdd();
+                toggleCart();
+              }}
+            >
+              {inCart ? '✓ Added' : 'Add to cart'}
+            </button>
+
+            <button
+              className={`${styles['btn-like']} ${liked ? styles.liked : ''}`}
+              onClick={e => {
+                e.stopPropagation();
+                e.preventDefault();
+                toggleFavorite();
+              }}
+            >
+              <HeartIcon filled={liked} />
+            </button>
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+};

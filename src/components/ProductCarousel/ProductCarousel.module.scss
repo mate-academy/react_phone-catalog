@@ -1,0 +1,280 @@
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-section {
+  // font-family: 'DM Sans', sans-serif;
+  padding: 40px 0;
+
+  // min-height: 100vh;
+  grid-column: 1 / -1;
+}
+
+.carousel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.carousel-title {
+  font-size: clamp(22px, 4vw, 32px);
+  color: #111;
+  letter-spacing: -0.5px;
+}
+
+.carousel-nav {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-btn {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid #ddd;
+  background: #fff;
+
+  // border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  color: #333;
+}
+
+.nav-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.nav-btn:hover:not(:disabled) {
+  border-color: #111;
+  color: #fff;
+}
+
+
+.carousel-outer {
+  overflow: hidden;
+}
+
+.carousel-viewport {
+  overflow: visible;
+  cursor: grab;
+  user-select: none;
+
+  padding-top: 10px; 
+  padding-bottom: 50px; 
+
+  /* Компенсуємо цей простір, щоб карусель не стала візуально більшою */
+  margin-top: -10px;
+  margin-bottom: -50px;
+}
+
+.carousel-viewport:active {
+  cursor: grabbing;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: 100;
+}
+
+.product-card {
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #ebebeb;
+  overflow: hidden;
+  transition: box-shadow 0.25s, transform 0.25s;
+  text-decoration: none;
+
+  /* Додаємо простір для стрибка (мінімум 3px, краще 4-5px) */
+  margin-top: 4px; 
+
+  /* Також даємо місце знизу для тіні, щоб її теж не зрізало */
+  margin-bottom: 16px; 
+  cursor: pointer;
+}
+
+.product-card:hover {
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+
+.card-image-wrap {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 220px;
+  transition: background 0.3s;
+}
+
+.card-image {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.18));
+  transition: transform 0.35s;
+}
+
+.product-card:hover .card-image {
+  transform: scale(1.05);
+}
+
+.card-body {
+  padding: 16px 18px 18px;
+}
+
+.card-title {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #222;
+  line-height: 1.45;
+  margin-bottom: 10px;
+  min-height: 40px;
+}
+
+.card-price {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.card-discount{
+  text-decoration: line-through;
+  font-weight: 600;
+  color: #89939A;
+  margin-left: 8px;
+}
+
+.card-specs {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 12px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+}
+
+.spec-label {
+  color: #aaa;
+}
+
+.spec-value {
+  color: #444;
+  font-weight: 500;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-add {
+  flex: 1;
+  background: #111;
+  color: #fff;
+  border: none;
+
+  // border-radius: 9px;
+  padding: 11px 0;
+
+  // font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.15s;
+  letter-spacing: 0.1px;
+}
+
+.btn-add:hover {
+  background: #333;
+}
+
+.btn-add:active {
+  transform: scale(0.97);
+}
+
+.btn-add.added {
+  background: #2d7a46;
+}
+
+.btn-like {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid #e8e8e8;
+  background: #fff;
+
+  // border-radius: 9px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+  flex-shrink: 0;
+}
+
+.btn-like:hover {
+  border-color: #e53e3e;
+  background: #fff5f5;
+}
+
+.btn-like.liked {
+  border-color: #e53e3e;
+  background: #fff5f5;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 24px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ddd;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  padding: 0;
+}
+
+.dot.active {
+  background: #111;
+  width: 20px;
+  border-radius: 3px;
+}
+
+@media (max-width: 767px) {
+  .carousel-section {
+    padding: 28px 16px;
+  }
+  .card-image-wrap {
+    height: 180px;
+  }
+}

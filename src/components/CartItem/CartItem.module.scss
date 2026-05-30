@@ -1,0 +1,115 @@
+.cart_item {
+  display: grid;
+  padding: 24px;
+  gap: 24px;
+  align-items: center;
+  border: 1px solid #e2e6e9;
+  grid-column: 1 / -1;
+
+  // Десктопна сітка: 
+  // [кнопка] [фото] [назва - забирає все вільне місце] [кількість] [ціна]
+  grid-template-columns: auto auto 1fr auto repeat(4, auto);
+  grid-template-areas: "close img name amount price";
+
+  @media (max-width: 640px) {
+    // Мобільна сітка: 2 рядки
+    // 1 рядок: кнопка, фото та назва
+    // 2 рядок: кількість та ціна (названі області допомагають це візуалізувати)
+    grid-template-columns: auto 1fr auto auto; 
+    grid-template-areas: 
+      "close img name name"   // Назва займає дві останні колонки
+      "amount amount . price"; // Кількість займає дві перші
+    
+    row-gap: 16px;
+  }
+
+  &__close_btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    grid-area: close;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__img {
+    grid-area: img;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  &__name {
+    grid-area: name;
+
+    // font-family: Mont, sans-serif, serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #313237;
+
+    flex: 1;
+  }
+
+  &__amount {
+    grid-area: amount;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+
+    @media (max-width: 640px) {
+      justify-content: flex-start;
+    }
+
+    button {
+      background: none;
+      border: 1px solid #89939a;
+      font-size: 18px;
+      cursor: pointer;
+
+      width: 16px;
+      height: 16px;
+      padding: 16px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:disabled {
+        border-color: #e2e6e9;
+        color: #e2e6e9;
+        cursor: default;
+      }
+    }
+
+    span {
+      width: 32px;
+      height: 32px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__price {
+    grid-area: price;
+    grid-column: span 4;
+
+    // font-family: Mont, sans-serif, serif;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: right;
+    color: #313237;
+    flex: 1;
+
+    @media (max-width: 639px) {
+      grid-column: span 2;
+    }
+  }
+}

@@ -1,0 +1,400 @@
+.detail_page {
+  display: grid;
+  margin: 40px 0 0;
+  grid-column: 1 / -1;
+  position: relative;
+  grid-template-columns: repeat(24, 1fr);
+  
+   @media (max-width: 1200px) and (min-width: 640px) {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+     @media (max-width: 639px) {
+      grid-template-columns: repeat(4, 1fr);
+      margin: 0 16px;
+    }
+
+  &__title {
+    grid-column: 1 / -1;
+    color: #313237;
+    font-size: 32px;
+    font-weight: 800;
+  }
+
+  &__preview {
+    /* ✅ 1. Робимо обгортку грідом, щоб її діти могли використовувати span */
+    display: grid;
+    grid-column: span 12;
+    grid-template-columns: subgrid; // ← успадковує колонки батька!
+    margin: 40px 0 0;
+    
+    gap: 16px;
+
+    @media (max-width: 1200px) and (min-width: 640px) {
+      grid-column: span 7;
+    }
+
+    @media (max-width: 639px) {
+      grid-column: 1 / -1;
+    }
+
+    &__list {
+      /* ✅ 2. Тепер span 2 запрацює ідеально! */
+      grid-column: span 2; 
+      
+      display: flex;
+      flex-direction: column; /* Щоб мініатюри йшли списком зверху вниз */
+      gap: 16px;
+
+      @media (max-width: 1200px) and (min-width: 640px) {
+        grid-column: span 1;
+      }
+
+      @media (max-width: 639px) {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        order: 1;
+      }
+
+      
+      &__photo {
+        width: 100%;
+
+        /* ✅ 3. object-fit має бути на самому тезі img, а не на div */
+        img {
+          width: 100%;
+
+          // height: 100%;
+          object-fit: contain;
+          aspect-ratio: 1 / 1;
+        }
+      }
+    }
+
+    &__main_photo {
+      grid-column: span 10; 
+      border-radius: 16px;
+      order: 1;
+
+      @media (max-width: 1200px) and (min-width: 640px) {
+        grid-column: span 5;
+      }
+
+       @media (max-width: 639px) {
+          grid-column: 1 / -1;
+        }
+
+      img{
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: contain;
+      }
+    }
+  }
+
+  // &__grid_info {
+  //   grid-column: span 7; /* Розтягуємо на другу половину сторінки */
+  //   grid-template-columns: subgrid;
+  //   display: grid;
+  //   position: relative;
+
+  //   @media (max-width: 1200px) and (min-width: 640px) {
+  //     grid-column: span 5;
+  //   }
+  //   @media (max-width: 639px) {
+  //     grid-column: 1 / -1;
+  //   }
+  // }
+
+  &__info {
+    grid-column: 14 / -5; /* Розтягуємо на другу половину сторінки */
+    grid-template-columns: subgrid;
+
+    // display: grid;
+    // position: relative;
+    margin: 40px 0 0;
+
+    @media (max-width: 1200px) and (min-width: 640px) {
+      grid-column: span 5;
+    }
+
+    @media (max-width: 639px) {
+      grid-column: 1 / -1;
+    }
+    
+
+    &__title {
+      color: #89939A;
+      font-size: 12px;
+      font-weight: 600;
+      grid-column: 1 / -1;
+    }
+
+    &__colors{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      // position: relative;
+
+      &_id {
+        display: grid;
+        grid-column: 1 / -1;
+        position: absolute;
+        right: 0;
+        color: #89939A;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      &_list{
+        display: flex;
+        gap: 8px;
+  
+        &__item {
+          display: block;
+          border-radius: 50%;
+          outline: 1px solid #E2E6E9; /* Колір зовнішнього кільця */
+          outline-offset: 1px;
+          width: 32px;
+          height: 32px;
+
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__capacity{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      &_list{
+        display: flex;
+        gap: 8px;
+  
+        &__item {
+          display: block;
+          border: 1px solid #E2E6E9; /* Колір зовнішнього кільця */
+          padding: 8px;
+          color: #313237;
+
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__price_value {
+      color: #313237;
+      font-size: 32px;
+      font-weight: 800;
+
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      span {
+        color: #89939A;
+        font-size: 22px;
+        font-weight: 600;
+        text-decoration: line-through;
+      }
+    }
+
+    &__description {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      margin: 24px 0;
+      color: #444;
+      font-size: 14px;
+      line-height: 1.5;
+
+      &__specific {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12.5px;
+        color: black;
+
+        &__title {
+          color: #89939A;
+          font-weight: 500;
+        }
+      }
+    }
+
+    hr {
+      margin: 24px 0;
+      color: #E2E6E9;
+    }
+
+  }
+
+  &__about {
+    grid-template-columns: subgrid;
+    grid-column: span 12;
+    margin: 80px 0;
+
+    @media (max-width: 1200px) and (min-width: 640px) {
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 639px) {
+      grid-column: 1 / -1;
+    }
+
+    &__title {
+      color: #313237;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    &__paragraph {
+      margin: 32px 0 16px;
+      font-size: 20px;
+      color: #313237;
+    }
+
+    &__text {
+      color: #89939A;
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    hr {
+      margin: 16px 0 32px;
+      color: #E2E6E9;
+    }
+  }
+
+  &__tech_specs {
+    // display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 14 / -1;
+    margin: 80px 0 0;
+
+    @media (max-width: 1200px) and (min-width: 640px) {
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 639px) {
+      grid-column: 1 / -1;
+    }
+
+    &__title {
+      color: #313237;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    &__content{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      &__specific {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        color: black;
+
+        &__title {
+          color: #89939A;
+          font-weight: 500;
+        }
+
+        &__text {
+          display: flex;
+          gap: 8px;
+
+          @media (max-width: 639px) {
+            justify-content: right;
+            flex-wrap: wrap;
+            max-width: 70%;
+          }
+        }
+      }
+    }
+
+    hr {
+      margin: 16px 0 32px;
+      color: #E2E6E9;
+    }
+  }
+}
+
+.selected {
+  outline: 1px solid black; /* Колір та товщина обводки для вибраного кольору */
+  outline-offset: 1px; /* Відстань між кольором та обводкою */
+}
+
+.selectedCapacity {
+  background-color: #313237;
+  color: white;
+  border: 1px solid #313237; /* Колір та товщина обводки для вибраного кольору */
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.btn-add {
+  flex: 1;
+  background: #111;
+  color: #fff;
+  border: none;
+
+  // border-radius: 9px;
+  padding: 11px 0;
+
+  // font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.15s;
+  letter-spacing: 0.1px;
+}
+
+.btn-add:hover {
+  background: #333;
+}
+
+.btn-add:active {
+  transform: scale(0.97);
+}
+
+.btn-add.added {
+  background: #2d7a46;
+}
+
+.btn-like {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid #e8e8e8;
+  background: #fff;
+
+  // border-radius: 9px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+  flex-shrink: 0;
+}
+
+.btn-like:hover {
+  border-color: #e53e3e;
+  background: #fff5f5;
+}
+
+.btn-like.liked {
+  border-color: #e53e3e;
+  background: #fff5f5;
+}
