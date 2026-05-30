@@ -1,0 +1,71 @@
+.title {
+  font-size: 12px;
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.themeswitcher {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #b4bdc3;
+  border-radius: 8px;
+  background: none;
+  height: 40px;
+  font-size: 14px;
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  color: #89939A;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #89939a;
+    transition: 0.3s ease;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--text-color);
+  }
+}
+
+.option {
+  color: #89939a;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--text-color);
+    transition: 0.3s ease;
+  }
+}
+
+.select {
+  margin: 0;
+  padding: 8px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  list-style: none;
+  border: 1px solid #b4bdc3;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  position: absolute;
+  bottom: 100%;
+  width: 100%;
+  background-color: var(--background-color);
+  z-index: 1;
+  margin-bottom: 8px;
+}
+

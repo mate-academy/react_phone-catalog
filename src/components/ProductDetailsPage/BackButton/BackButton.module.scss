@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  padding: 0;
+  display: flex;
+  background: none;
+  border: none;
+  gap: 4px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.title {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #89939A;
+  text-decoration: none;
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+}
