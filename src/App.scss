@@ -1,1 +1,10 @@
-// not empty
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.app__content {
+     flex-grow: 1;
+}

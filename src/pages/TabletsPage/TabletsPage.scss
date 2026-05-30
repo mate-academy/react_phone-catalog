@@ -1,0 +1,157 @@
+.tablets,
+.accessories {
+  padding: 24px 0 80px;
+  padding-left: 32px;
+
+   @media (max-width: 1199px) {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+@media (max-width: 639px) {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+  &__breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 40px;
+    font-size: 12px;
+    color: #89939a;
+
+    @media (max-width: 639px) {
+      margin-bottom: 24px;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__title {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -1%;
+    margin-bottom: 8px;
+
+     @media (max-width: 639px) {
+      font-size: 32px;
+    line-height: 41px;
+    }
+  }
+
+  &__count {
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+    margin-bottom: 40px;
+    font-weight: 600;
+
+     @media (max-width: 639px) {
+      margin-bottom: 32px;
+    }
+  }
+
+  /* --- FILTER BAR --- */
+  &__filters {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+
+ @media (max-width: 639px) {
+     justify-content: space-between;
+    }
+
+  }
+
+  &__filter {
+    display:flex;
+    flex-direction: column;
+    gap: 4px;
+
+ @media (max-width: 639px) {
+     width: 100%;;
+    }
+
+
+    label {
+      font-size: 12px;
+      color: #89939a;
+
+      font-weight: 700;
+      line-height: 100%;
+
+    }
+
+    select {
+      height: 40px;
+      padding: 0 40px 0 12px;
+      border: 1px solid #e2e6e9;
+     font-weight: 700;
+      font-size: 14px;
+       background: #fff url('img/icons/down.svg') no-repeat right 12px center;
+       background-size: 16px 16px;
+
+appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  cursor: pointer;
+
+  &:hover {
+    border-color: #b4bdc3;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #313237;
+  }
+}
+}
+
+  /* GRID WITH PRODUCTS */
+
+  /* .product-list--grid {
+    width: 100%;
+
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(4, 1fr);
+
+    @media (min-width: 640px) and (max-width: 1199px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 639px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  } */
+}
+
+.products-empty {
+  grid-column: 1 / -1;
+  margin: 64px auto;
+  text-align: center;
+  color: #89939a;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    opacity: 0.6;
+  }
+
+  &__text {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+  }
+}
