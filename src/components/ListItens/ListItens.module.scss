@@ -1,0 +1,17 @@
+.listContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding-top: 55px;
+  padding-right: 10%;
+}
+
+@media (min-width: 639px) {
+  .listContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+    flex: 0 1 calc(50% - 10px);
+    padding-right: 5%;
+  }
+}
