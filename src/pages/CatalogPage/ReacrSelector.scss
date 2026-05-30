@@ -1,0 +1,66 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as mix;
+
+.reactSelectCustom {
+  &__control {
+    border: none !important;
+    border-radius: 0 !important;
+    height: 40px !important;
+    background-color: v.$colorSurface2 !important;
+
+    &:hover {
+      box-shadow: 0 0 0 1px v.$colorIcons;
+
+      & .reactSelectCustom__dropdown-indicator {
+        color: v.$colorIcons !important;
+      }
+    }
+
+    &--is-focused {
+      box-shadow: 0 0 0 1px v.$colorAccent !important;
+
+      & .reactSelectCustom__dropdown-indicator {
+        color: v.$colorSecondary !important;
+      }
+    }
+    &--menu-is-open .reactSelectCustom__dropdown-indicator {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__single-value {
+    color: v.$colorWhite !important;
+    font-size: 16px !important;
+  }
+
+  &__dropdown-indicator {
+    color: v.$colorSecondary !important;
+  }
+
+  &__indicator-separator {
+    display: none !important;
+  }
+
+  &__menu {
+    background: v.$colorBlack !important;
+  }
+
+  &__menu-list {
+    padding: 0 !important;
+    border: 1px solid v.$colorElements !important;
+  }
+
+  &__option {
+    @include mix.bodyText;
+    font-size: 14px !important;
+    color: v.$colorSecondary !important;
+    
+    &--is-selected {
+      background-color: transparent !important;
+    }
+    &--is-focused {
+      background-color: v.$colorSurface2 !important;
+      color: v.$colorWhite !important;
+    }
+  }
+}

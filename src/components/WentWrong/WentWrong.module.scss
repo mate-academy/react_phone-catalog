@@ -1,0 +1,45 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as mix;
+
+.wentWrong {
+  flex-grow: 1;
+  background-color: v.$colorSurface2;
+  display: flex;
+  padding: 50px;
+  justify-content: center;
+  gap: 50px;
+  align-items: center;
+
+  @include mix.respond-to(mobile) {
+    flex-direction: column;
+  }
+
+  &__button {
+    background-color: v.$colorAccent;
+    color: v.$colorWhite;
+    align-content: center;
+    width: 300px;
+
+    &:hover {
+      background-color: #A378FF;
+      ;
+    }
+  }
+
+  &__img {
+    display: block;
+
+    @include mix.square(400px);
+
+    object-fit: contain;
+
+    @include mix.respond-to(tablet) {
+      @include mix.square(250px);
+    }
+
+    @include mix.respond-to(mobile) {
+      @include mix.square(180px);
+    }
+
+  }
+}

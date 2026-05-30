@@ -1,0 +1,25 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as mix;
+
+.backButton {
+  &__container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__arrow {
+    background-image: url(./../../assets/images/icons/arrow.svg);
+
+    @include mix.square(16px);
+
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__text {
+    @include mix.smallText;
+
+    color: v.$colorWhite;
+  }
+}

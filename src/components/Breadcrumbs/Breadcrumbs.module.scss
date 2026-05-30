@@ -1,0 +1,35 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as mix;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__text {
+    @include mix.smallText;
+
+    color: v.$colorWhite;
+    text-transform: capitalize;
+    text-align: center;
+
+    &--active {
+      color: v.$colorSecondary;
+    }
+  }
+
+  &__home {
+    background-image: url(./../../assets/images/icons/home.svg);
+
+    @include mix.square(16px);
+  }
+
+  &__arrow {
+    background-image: url(./../../assets/images/icons/greyArrow.svg);
+
+    @include mix.square(16px);
+
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

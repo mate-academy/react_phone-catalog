@@ -1,0 +1,240 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as mix;
+
+.orderProps {
+  flex-grow: 1;
+  &__topTexts {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__text {
+    @include mix.smallText;
+
+    color: v.$colorSecondary;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+
+    @include mix.respond-to(mobile) {
+      max-width: none;
+    }
+  }
+
+  &__colors {
+    margin-top: 8px;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__color {
+    --bg-cloor: v.$colorBlack;
+
+    border-radius: 50%;
+    border: 2px solid v.$colorElements;
+
+    @include mix.square(32px);
+
+    background-color: transparent;
+    position: relative;
+
+    &--active {
+      border-color: v.$colorWhite;
+    }
+
+    &::after {
+      content: '';
+
+      @include mix.square(25px);
+
+      background-color: var(--bg-cloor);
+      display: block;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &--white {
+      --bg-cloor: #F0F0F0;
+    }
+  
+    &--yellow {
+      --bg-cloor: yellow;
+    }
+
+    &--red {
+      --bg-cloor: rgb(212, 62, 62);
+    }
+
+    &--coral {
+      --bg-cloor: rgb(150, 75, 75);
+    }
+    &--spacegray {
+      --bg-cloor: rgb(85, 85, 85);
+    }
+    &--midnightgreen {
+      --bg-cloor: rgb(34, 68, 19);
+    }
+    &--gold {
+      --bg-cloor: #ffd700;
+    }
+    &--silver {
+      --bg-cloor: #c0c0c0;
+    }
+    &--black {
+      --bg-cloor: black;
+    }
+    &--rosegold {
+      --bg-cloor: #f1e1e9;
+    }
+    &--purple {
+      --bg-cloor: #ffd0e2;
+    }
+    &--spaceblack {
+      --bg-cloor: #303030;
+    }
+    &--blue {
+      --bg-cloor: #8ac0da;
+    }
+    &--pink {
+      --bg-cloor: #e492ba;
+    }
+    &--sierrablue {
+      --bg-cloor: #a5c7e5;
+    }
+    &--graphite {
+      --bg-cloor: #bbb;
+    }
+    &--green {
+      --bg-cloor: #b5c2a6;
+    }
+  }
+
+  &__capacitySection {
+    margin: 24px 0;
+  }
+
+  &__capacities {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__capacity {
+    background-color: transparent;
+    border: 1px solid v.$colorIcons;
+    height: 32px;
+    width: auto;
+
+    padding: 7px 8px 4px;
+
+    @include mix.bodyText;
+
+    text-align: center;
+
+    &--active {
+      border: none;
+      background-color: v.$colorWhite;
+      color: v.$colorBlack;
+    }
+  }
+
+  &__prices {
+    margin-top: 32px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__price {
+    color: v.$colorWhite;
+  }
+
+  &__fullPrice {
+    text-decoration: line-through;
+    color: v.$colorSecondary;
+  }
+
+  &__buttons {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__favButton {
+    @include mix.square(40px);
+
+    background-color: v.$colorSurface2;
+    background-image: url(../../assets/images/icons/favourites.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:hover {
+      background-color: v.$colorIcons;
+    }
+
+    &--clicked {
+      background-image: url(../../assets/images/icons/favoritesSelected.svg);
+      background-color: transparent;
+      border: 1px solid v.$colorElements;
+    }
+  }
+
+  &__cartButton {
+    background-color: v.$colorAccent;
+    color: v.$colorWhite;
+    flex-grow: 1;
+    align-content: center;
+
+    &:hover {
+      background-color: #A378FF;
+    }
+
+    &--clicked {
+      background-color: v.$colorSurface2;
+    }
+  }
+
+  &__infoBlocks {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__infoBlock {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  &__infoTitle {
+    @include mix.smallText;
+
+    color: v.$colorSecondary;
+  }
+
+  &__infoText {
+    @include mix.smallText;
+  
+    color: v.$colorWhite;
+  }
+
+  &__skeletonSelets {
+    width: 200px;
+  }
+
+  &__skeletonPrice {
+    margin-top: 24px;
+  }
+
+  &__skeletonInfoText {
+    width: 100px;
+  }
+}

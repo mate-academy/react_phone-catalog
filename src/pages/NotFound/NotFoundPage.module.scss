@@ -1,0 +1,41 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as mix;
+
+.NotFoundPage {
+  flex-grow: 1;
+  background-color: v.$colorSurface2;
+  display: flex;
+  padding: 50px;
+  justify-content: center;
+  gap: 50px;
+  align-items: center;
+
+  @include mix.respond-to(mobile) {
+    flex-direction: column;
+  }
+
+  &__link {
+    cursor: pointer;
+  }
+
+  &__linkText {
+    color: v.$colorAccent;
+  }
+
+  &__img {
+    display: block;
+  
+    @include mix.square(400px);
+
+    object-fit: contain;
+
+    @include mix.respond-to(tablet) {
+      @include mix.square(250px);
+    }
+
+    @include mix.respond-to(mobile) {
+      @include mix.square(180px);
+    }
+
+  }
+}

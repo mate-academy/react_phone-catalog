@@ -1,0 +1,50 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as mix;
+
+.photoSlider {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 16px;
+
+  @include mix.respond-to(mobile) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__main {
+    @include mix.square(464px);
+
+    object-fit: contain;
+
+    @include mix.respond-to(tablet) {
+      @include mix.square(287px);
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include mix.respond-to(mobile) {
+      flex-direction: row;
+      gap: 8px
+    }
+  }
+
+  &__photo {
+    @include mix.square(80px);
+  
+    display: block;
+    object-fit: contain;
+    border: 1px solid v.$colorElements;
+
+    &--active {
+      border-color: v.$colorWhite;
+    }
+
+    @include mix.respond-to(tablet) {
+      @include mix.square(35px);
+    }
+  }
+}

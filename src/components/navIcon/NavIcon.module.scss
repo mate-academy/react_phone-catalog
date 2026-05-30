@@ -1,0 +1,52 @@
+@use './../../styles/mixins' as mix;
+@use './../../styles/variables' as v;
+
+.navIcon {
+  @include mix.square(64px);
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: -1px 0px 0px 0px #323542;
+  cursor: pointer;
+  position: relative;
+
+  @include mix.respond-to(tablet) {
+    @include mix.square(48px);
+  }
+
+  @include mix.respond-to(mobile) {
+    height: 64px;
+    width: 100%;
+  }
+
+  &--favorite {
+    background-image: url(./../../assets/images/icons/favourites.svg);
+  }
+
+  &--cart {
+    background-image: url(./../../assets/images/icons/cart.svg);
+  }
+
+  &__count {
+    border-radius: 50%;
+    @include mix.square(14px);
+    position: absolute;
+    top: 18px;
+    left: 34px;
+    font-family: Mont-Bold, serif;
+    font-size: 9px;
+    line-height: 14px;
+    text-align: center;
+    color: v.$colorWhite;
+    background-color: v.$colorRed;
+
+    @include mix.respond-to(tablet) {
+      top: 10px;
+      left: 25px;
+    }
+
+    @include mix.respond-to(mobile) {
+      top: 27%;
+      left: 50%;
+    }
+  }
+}
