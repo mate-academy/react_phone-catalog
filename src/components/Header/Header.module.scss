@@ -1,0 +1,264 @@
+.header {
+  position: fixed;
+  width: 100%;
+  background-color: $theme-background;
+  top: 0;
+  z-index: 1000;
+
+  &_wrapper {
+    display: flex;
+    height: 48px;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    border-bottom: 1px solid $gray-line;
+    overflow: hidden;
+
+    @include on-tablet {
+      height: 64px;
+    }
+  }
+
+  &_left-side {
+    display: flex;
+    gap: 16px;
+
+    @include on-desktop {
+      gap: 24px;
+    }
+  }
+
+  &_logo {
+    width: 80px;
+    margin: 13px 16px;
+  }
+
+  &_navbar {
+    &--bigger-device {
+      display: none;
+      @include on-tablet {
+        display: flex;
+      }
+    }
+  }
+
+  &_nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &_elem {
+    list-style: none;
+  }
+
+  &_link {
+    text-decoration: none;
+    font-family: 'Mont-Bold', serif;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    color: $gray-secondary;
+    position: relative;
+    transition: $t-300ms;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -19px;
+      left: 0;
+      background-color: $gray-white;
+      transition: width $t-300ms ease;
+    }
+
+    &:hover {
+      color: $gray-white;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &_icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include on-tablet {
+      display: none;
+    }
+
+    &--bigger-device {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+      }
+    }
+  }
+
+  &_icon_wrapper {
+    position: relative;
+    padding: 16px;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    @include on-tablet {
+      padding: 24px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1px;
+      height: 100%;
+      background-color: $gray-line;
+    }
+  }
+
+  &_icon {
+    width: 16px;
+    cursor: pointer;
+    transition: $t-300ms;
+
+    &:hover {
+      scale: 1.2;
+    }
+  }
+
+  &_menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100vh - 48px);
+    justify-content: space-between;
+    z-index: 2;
+
+    @include on-tablet {
+      min-height: calc(100vh - 64px);
+    }
+
+    &_nav {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      width: 100%;
+      margin-top: 24px;
+      gap: 24px;
+    }
+
+    &_elem {
+      list-style: none;
+    }
+
+    &_link {
+      text-decoration: none;
+      font-family: 'Mont-Bold', serif;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      text-transform: uppercase;
+      color: $gray-secondary;
+      position: relative;
+      transition: $t-300ms;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -8px;
+        left: 0;
+        background-color: $gray-white;
+        transition: width $t-300ms ease;
+      }
+
+      &:hover {
+        color: $gray-white;
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+
+    &_icons_wrapper {
+      display: flex;
+      position: relative;
+      border-top: 1px solid $gray-line;
+      height: 64px;
+
+      &::after {
+        position: absolute;
+        content: '';
+        width: 1px;
+        height: 100%;
+        top: 0;
+        left: 50%;
+        transform: translateX(50%);
+        background-color: $gray-line;
+      }
+
+      &--counter-position {
+        position: relative;
+      }
+    }
+
+    &_icons {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: relative;
+      width: 50%;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0px;
+          left: 0;
+          background-color: $gray-white;
+          height: 1px;
+          width: 0;
+          display: block;
+          transition: $t-300ms;
+        }
+
+        &:hover {
+          &::after {
+            width: 100%;
+          }
+        }
+    }
+  }
+
+  &--active-link {
+    color: $gray-white;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -8px;
+      left: 0;
+      background-color: $gray-white;
+      transition: width $t-300ms ease;
+
+      @include on-tablet {
+        bottom: -19px;
+      }
+    }
+  }
+}

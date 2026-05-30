@@ -1,0 +1,153 @@
+.product_top {
+  margin-inline: 16px;
+  padding-top: 24px;
+
+  @include on-tablet {
+    margin-inline: 24px;
+    padding-top: 40px;
+  }
+
+  @include on-desktop {
+    margin-inline: 0;
+  }
+
+  &_wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_title {
+    font-family: 'Mont-Bold', serif;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: $gray-white;
+    margin-bottom: 8px;
+    margin-top: 24px;
+
+    @include on-desktop {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &_counter {
+    font-family: 'Mont-Regular', serif;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $gray-secondary;
+    margin-bottom: 32px;
+
+    @include on-desktop {
+      margin-bottom: 40px;
+    }
+  }
+
+  &_dropdowns {
+    display: flex;
+    z-index: 1;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &_dropdown {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+    &--items {
+      @include on-tablet {
+        width: 136px;
+      }
+    }
+
+    &--sorted {
+      @include on-tablet {
+        width: 186px;
+      }
+    }
+
+    &_title {
+      font-family: 'Mont-SemiBold', serif;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: $gray-secondary;
+      margin-bottom: 4px;
+    }
+
+    &_select {
+      background-color: $theme-background;
+      font-family: 'Mont-SemiBold', serif;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      color: $gray-secondary;
+      height: 40px;
+      transition: $t-300ms;
+      display: flex;
+      align-items: center;
+      padding-left: 16px;
+
+      &:hover {
+        font-family: 'Mont-Regular', serif;
+        color: $gray-white;
+        background-color: $gray-surface2;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &_custom-dropdown {
+    position: relative;
+
+    &__toggle {
+      position: relative;
+      width: 100%;
+      height: 40px;
+      transition: $t-300ms;
+      display: flex;
+      justify-content: left;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      font-family: 'Mont-SemiBold', serif;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      color: $gray-white;
+      background-color: $gray-secondary;
+      border: none;
+      outline: none;
+      box-sizing: border-box;
+      cursor: pointer;
+
+      &--open {
+        border: 1px solid $btn-purple;
+      }
+    }
+
+    &_menu {
+      background-color: $theme-background;
+      box-sizing: border-box;
+      position: absolute;
+      padding: 8px 0;
+      margin-top: 4px;
+      width: 100%;
+      top: -40;
+      left: 0;
+      list-style: none;
+      border: 1px solid $gray-line;
+    }
+
+    &_chevron {
+      transition: $t-300ms;
+
+      &--rotated {
+        transform: rotate(180deg);
+        transition: $t-300ms;
+      }
+    }
+  }
+}

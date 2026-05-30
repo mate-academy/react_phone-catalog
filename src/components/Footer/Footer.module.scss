@@ -1,0 +1,119 @@
+.footer {
+  margin-top: 64px;
+  padding: 32px 16px;
+  border-top: 1px solid $gray-line;
+
+  @include on-tablet {
+    margin-top: 80px;
+    padding: 32px;
+  }
+
+  @include on-desktop {
+    padding-inline: 0;
+  }
+
+  &_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      gap: 0;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &_img {
+    width: 90px;
+  }
+
+  &_menu {
+    &_list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      list-style: none;
+
+      @include on-tablet {
+        flex-direction: row;
+        gap: 14px;
+      }
+
+      @include on-desktop {
+        flex-direction: row;
+        gap: 110px;
+      }
+    }
+
+    &_item {
+      font-family: 'Mont-Bold', serif;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      text-transform: uppercase;
+    }
+
+    &_link {
+      color: $gray-white;
+      text-decoration: none;
+      position: relative;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $gray-white;
+        transition: $t-300ms;
+      }
+
+      &:hover {
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &_btn {
+    display: flex;
+    gap: 16px;
+    align-self: center;
+    align-items: center;
+
+    &_text {
+      color: $gray-secondary;
+      font-family: 'Mont-SemiBold', serif;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      cursor: pointer;
+      transition: $t-300ms;
+
+      &:hover {
+        scale: 1.2;
+      }
+    }
+
+    &_to-top {
+      width: 32px;
+      height: 32px;
+      background-color: $gray-surface2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: $t-300ms;
+
+      &:hover {
+        scale: 1.2;
+      }
+    }
+  }
+}

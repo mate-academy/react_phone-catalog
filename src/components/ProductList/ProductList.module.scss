@@ -1,0 +1,190 @@
+.products {
+  display: grid;
+  gap: 40px 16px;
+  grid-template-columns: 1fr;
+  margin-inline: 16px;
+
+  @include on-tablet {
+    margin-inline: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+    max-width: 1200px;
+    margin-inline: 0;
+  }
+}
+
+.product {
+  grid-column: 1 / -1;
+  background-color: $gray-surface1;
+  overflow: hidden;
+
+  @include on-tablet {
+    grid-column: span 1;
+    max-width: 352.2px;
+  }
+
+  @include on-desktop {
+    max-width: 272px;
+  }
+
+  &_link {
+    text-decoration: none;
+    transition: $t-300ms;
+
+    &--img:hover {
+      scale: 1.1;
+    }
+
+    &--text {
+      font-family: 'Mont-Regular', serif;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      margin-bottom: 8px;
+      color: $gray-white;
+      white-space: nowrap;
+      overflow: hidden;
+      display: block;
+
+      &:hover {
+        color: $btn-purple;
+      }
+    }
+  }
+
+  &_wrapper {
+    padding: 32px;
+    color: $gray-white;
+  }
+
+  &_img_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &_img {
+    width: auto;
+    height: 175px;
+  }
+
+  &_title {
+    font-family: 'Mont-Regular', serif;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    margin-bottom: 8px;
+  }
+
+  &_price_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &_price {
+    font-family: 'Mont-Bold', serif;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+
+    &--lined {
+      font-family: 'Mont-Regular', serif;
+      text-decoration: line-through;
+      color: $gray-secondary;
+      line-height: 100%;
+    }
+  }
+
+  &_line {
+    width: 100%;
+    height: 1px;
+    background-color: $gray-line;
+    margin-bottom: 8px;
+  }
+
+  &_info {
+    padding-block: 8px;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    margin-bottom: 8px;
+
+    &_wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &_key {
+      font-family: 'Mont-SemiBold', serif;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: $gray-secondary;
+    }
+
+    &_value {
+      font-family: 'Mont-SemiBold', serif;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+    }
+  }
+
+  &_buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &_add-to-cart {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    background-color: $btn-purple;
+    text-decoration: none;
+    color: $gray-white;
+    font-family: 'Mont-SemiBold', serif;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+    transition: $t-300ms;
+
+    &:hover {
+      background-color: $btn-purple-hover;
+    }
+  }
+
+  &_add-to-favorites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: $gray-surface2;
+    outline: none;
+    border: none;
+
+    & img {
+      transition: $t-300ms;
+    }
+
+    &:hover {
+      & img {
+        scale: 1.2;
+      }
+    }
+
+    &_img {
+      transition: $t-300ms;
+    }
+  }
+}

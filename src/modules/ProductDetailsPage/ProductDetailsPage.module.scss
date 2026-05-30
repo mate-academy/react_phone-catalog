@@ -1,0 +1,501 @@
+.product_details {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &_wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-inline: 16px;
+    gap: 40px;
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: center;
+      gap: 16px;
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      padding-inline: 0;
+      gap: 64px;
+      justify-content: flex-start;
+      margin-bottom: 80px;
+    }
+  }
+
+  &_top {
+    padding-inline: 16px;
+    margin-top: 24px;
+
+    @include on-tablet {
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      padding-inline: 0;
+    }
+  }
+
+  &_title {
+    font-family: 'Mont-Bold', serif;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: $gray-white;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+      margin-bottom: 40px;
+    }
+  }
+
+  &_images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include on-tablet {
+      flex-direction: row-reverse;
+      align-items: flex-start;
+      gap: 16px;
+      flex: 1;
+    }
+
+    @include on-desktop {
+      flex: 0;
+    }
+
+    &_main {
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+
+      @include on-tablet {
+        min-width: 286px;
+        margin: 0;
+        flex: 1;
+      }
+
+      @include on-desktop {
+        min-width: 464px;
+      }
+
+      &_image {
+        width: 100%;
+        max-height: 440px;
+        object-fit: contain;
+        transition: all 300ms ease-in-out;
+      }
+    }
+  }
+
+  &_secondary-imgs {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: space-between;
+
+    @include on-tablet {
+      flex-direction: column;
+      height: 100%;
+      width: auto;
+      justify-content: flex-start;
+      gap: 8px;
+      flex: 0;
+    }
+
+    @include on-desktop {
+      gap: 16px;
+    }
+  }
+
+  &_secondary-img {
+    flex: 0 0 auto;
+    width: 50px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    cursor: pointer;
+    object-position: center;
+    border: 2px solid $gray-line;
+    box-sizing: border-box;
+    padding: 1px;
+    transition: $t-300ms;
+
+    &--active {
+      border: 2px solid $gray-white;
+    }
+
+    @include on-tablet {
+      width: 35px;
+    }
+
+    @include on-desktop {
+      width: 80px;
+    }
+  }
+
+  &_other {
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      min-width: 236px;
+      flex: 1;
+    }
+
+    @include on-desktop {
+      max-width: 320px;
+    }
+  }
+
+  &_line {
+    width: 100%;
+    height: 1px;
+    background-color: $gray-line;
+  }
+
+  &_colors {
+    display: flex;
+    flex-direction: column;
+
+    &_title {
+      font-family: 'Mont-SemiBold', serif;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: $gray-secondary;
+      margin-bottom: 8px;
+    }
+
+    &_wrapper {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    &_color {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid $gray-line;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2px;
+      cursor: pointer;
+
+      &--active {
+        border: 2px solid $gray-white;
+      }
+
+      &_child {
+        background-color: bisque;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        aspect-ratio: 1 / 1;
+      }
+    }
+
+    &_line {
+      margin-bottom: 24px;
+    }
+  }
+
+  &_capacity {
+    display: flex;
+    flex-direction: column;
+
+    &_title {
+      font-family: 'Mont-SemiBold', serif;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: $gray-secondary;
+      margin-bottom: 8px;
+    }
+
+    &_wrapper {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    &_item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid $gray-line;
+      padding: 8px;
+      font-family: 'Mont-Regular', serif;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      text-align: center;
+      color: $gray-white;
+      transition: $t-300ms;
+      cursor: pointer;
+
+      &--active {
+        border: 2px solid $gray-white;
+      }
+    }
+
+    &_line {
+      margin-bottom: 32px;
+    }
+  }
+
+  &_buy {
+    display: flex;
+    flex-direction: column;
+
+    &_pricing {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+      gap: 8px;
+
+      &_price-discount {
+        font-family: 'Mont-Bold', serif;
+        font-size: 32px;
+        line-height: 41px;
+        letter-spacing: -1%;
+        color: $gray-white;
+      }
+
+      &_price-regular {
+        font-family: 'Mont-Regular', serif;
+        font-size: 22px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-decoration: line-through;
+        color: $gray-secondary;
+      }
+    }
+
+    &_btns {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+      height: 48px;
+    }
+
+    &_btn {
+      outline: none;
+      border: none;
+      height: 48px;
+
+      &--cart {
+        flex: 1;
+        font-family: 'Mont-SemiBold', serif;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0%;
+        text-align: center;
+        transition: $t-300ms;
+        background-color: $btn-purple;
+        color: $gray-white;
+
+        &:hover {
+          background-color: $btn-purple-hover;
+        }
+      }
+
+      &--favorite {
+        width: 48px;
+        background-color: $gray-surface2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .heart {
+          transition: $t-300ms;
+          width: 16px;
+          height: 16px;
+        }
+
+        &:hover {
+          .heart {
+            scale: 1.2;
+          }
+        }
+      }
+    }
+  }
+
+  &_parameters {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &_wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &_key {
+      font-family: 'Mont-SemiBold', serif;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: $gray-secondary;
+    }
+
+    &_value {
+      font-family: 'Mont-SemiBold', serif;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-align: right;
+      color: $gray-white;
+    }
+  }
+
+  &_about {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    color: $gray-white;
+    padding-inline: 16px;
+
+    @include on-tablet {
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      padding-inline: 0;
+      flex-direction: row;
+      gap: 64px;
+    }
+
+    &_description {
+      &_title {
+        font-family: 'Mont-SemiBold', serif;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        margin-bottom: 16px;
+
+        @include on-tablet {
+          font-weight: 800;
+          font-size: 22px;
+          line-height: 140%;
+        }
+
+        @include on-desktop {
+          flex: 1;
+          min-width: 560px;
+        }
+      }
+
+      &_line {
+        margin-bottom: 32px;
+      }
+
+      &_desc_container {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      &_desc {
+        display: flex;
+        flex-direction: column;
+
+        &_wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        &_title {
+          font-family: 'Mont-SemiBold', serif;
+          font-size: 16px;
+          line-height: 100%;
+          letter-spacing: 0%;
+
+          @include on-tablet {
+            font-size: 20px;
+          }
+        }
+
+        &_text {
+          font-family: 'Mont-Regular', serif;
+          font-size: 14px;
+          line-height: 21px;
+          letter-spacing: 0%;
+          color: $gray-secondary;
+        }
+      }
+    }
+
+    &_specs {
+      &_title {
+        margin-bottom: 16px;
+        font-family: 'Mont-SemiBold', serif;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: 0%;
+
+        @include on-tablet {
+          font-weight: 800;
+          font-size: 22px;
+          line-height: 140%;
+        }
+
+        @include on-desktop {
+          flex: 1;
+          min-width: 512px;
+        }
+      }
+
+      &_line {
+        margin-bottom: 30px;
+      }
+
+      &_container {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      &_wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      &_key {
+        font-family: 'Mont-Regular', serif;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0%;
+        color: $gray-secondary;
+      }
+
+      &_value {
+        font-family: 'Mont-Regular', serif;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0%;
+        text-align: right;
+      }
+    }
+  }
+}

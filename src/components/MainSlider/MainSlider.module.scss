@@ -1,0 +1,102 @@
+.main-slider {
+  margin-inline: 16px;
+
+  @include on-tablet {
+    margin-inline: 24px;
+  }
+
+  @include on-desktop {
+    margin-inline: 0;
+    max-width: 1200px;
+  }
+
+  &_wrapper {
+    box-sizing: border-box;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    margin-bottom: 18px;
+    position: relative;
+    touch-action: pan-y;
+
+    @include on-tablet {
+      aspect-ratio: unset;
+      box-sizing: border-box;
+    }
+  }
+
+  &_btn {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-self: stretch;
+      min-width: 32px;
+      background-color: $gray-line;
+      outline: none;
+      border: none;
+      flex-shrink: 0;
+      cursor: pointer;
+
+      & img {
+        transition: $t-300ms;
+      }
+
+      &:hover img {
+        scale: 1.5;
+      }
+    }
+
+    &--next {
+      transform: rotate(180deg);
+    }
+  }
+
+  &_slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 88% center;
+
+    @include on-tablet {
+      max-height: 180px;
+      flex: 1;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    @media (min-width: 700px) {
+      max-height: 230px;
+    }
+
+    @media (min-width: 1010px) {
+      max-height: 340px;
+    }
+
+    @include on-desktop {
+      max-height: 380px;
+    }
+  }
+
+  &_dots {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  &_dot {
+    width: 14px;
+    height: 4px;
+    background-color: $gray-line;
+    transition: $t-300ms;
+    cursor: pointer;
+
+    &--active {
+      background-color: $gray-white;
+    }
+  }
+}
