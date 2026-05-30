@@ -1,0 +1,81 @@
+@use './mixins.scss' as *;
+@use './typography.scss' as *;
+@use './variables.scss' as *;
+
+.slider {
+  @include on-grid;
+
+  display: grid;
+  grid-column: 1 / -1;
+  overflow: hidden;
+  margin-top: 80px;
+
+  &__title {
+    grid-column: 1 / -3;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      grid-column: span 10;
+    }
+
+    @include on-mobile {
+      grid-column: span 4;
+    }
+  }
+
+  &__pc {
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &__mobile {
+    display: none;
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+
+      display: flex;
+
+      flex-direction: row;
+
+      justify-content: space-between;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    grid-column: 1 / -1;
+    width: max-content;
+    transition-duration: 0.3s;
+    margin-bottom: 80px;
+
+    --card-width: #{$card-width};
+    --gap: #{$gap};
+
+    &-wrap {
+      overflow: hidden;
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+
+    @include on-tablet {
+      justify-self: end;
+    }
+  }
+
+  &__button:first-of-type {
+    grid-column: -3 / -2;
+  }
+
+  &__button:last-of-type {
+    grid-column: -2 / -1;
+  }
+}

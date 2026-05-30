@@ -1,0 +1,255 @@
+@use './mixins.scss' as *;
+@use './typography.scss' as *;
+@use './variables.scss' as *;
+
+.logo {
+  @include on-mobile {
+    height: 20px;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-bottom: 1px solid $elements;
+  position: sticky;
+  top: 0;
+  background-color: $white;
+  z-index: 1;
+
+  @include on-tablet {
+    height: 48px;
+  }
+
+  &__logo-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 128px;
+    height: 100%;
+    margin-right: 24px;
+
+    @include on-mobile {
+      width: 98px;
+    }
+  }
+
+  &__left {
+    display: flex;
+
+    flex-direction: row;
+
+    height: 100%;
+  }
+
+  &__nav {
+    &-list {
+      display: flex;
+
+      flex-direction: row;
+
+      align-items: center;
+
+      height: 100%;
+
+      gap: 64px;
+
+      list-style: none;
+
+      margin: 0;
+
+      padding: 0;
+
+      @include on-tablet {
+        gap: 32px;
+      }
+
+      @include on-mobile {
+        display: none;
+      }
+    }
+
+    &-item {
+      display: flex;
+
+      flex-direction: row;
+
+      align-items: center;
+
+      position: relative;
+
+      cursor: pointer;
+
+      height: 100%;
+
+      transition-duration: 0.3s;
+
+      &::before {
+        content: '';
+
+        position: absolute;
+
+        bottom: 0;
+
+        right: 50%;
+
+        left: 50%;
+
+        height: 3px;
+
+        background-color: $primary;
+
+        transition-duration: 0.3s;
+      }
+
+      &.is-active::before {
+        left: 0;
+
+        right: 0;
+      }
+    }
+
+    &-link {
+      display: flex;
+
+      align-items: center;
+
+      position: relative;
+
+      height: 100%;
+
+      color: $primary;
+
+      text-decoration: none;
+
+      transition-duration: 0.3s;
+
+      &::before {
+        content: '';
+
+        position: absolute;
+
+        bottom: 0;
+
+        right: 50%;
+
+        left: 50%;
+
+        height: 3px;
+
+        background-color: $primary;
+
+        transition-duration: 0.3s;
+      }
+
+      &.is-active::before {
+        left: 0;
+
+        right: 0;
+      }
+    }
+  }
+
+  &__icons {
+    &-list {
+      display: flex;
+
+      flex-direction: row;
+
+      height: 100%;
+
+      list-style: none;
+
+      margin: 0;
+
+      padding: 0;
+
+      @include on-mobile {
+        display: none;
+      }
+    }
+
+    &-item {
+      position: relative;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      height: 100%;
+
+      aspect-ratio: 1 / 1;
+
+      box-sizing: border-box;
+
+      border: 1px solid $elements;
+
+      transition-duration: 0.3s;
+
+      &:hover {
+        border: 1px solid $primary;
+      }
+
+      &:active {
+        background-color: $primary;
+
+        .icon {
+          background-color: $white;
+        }
+      }
+
+      &::before {
+        content: '';
+
+        position: absolute;
+
+        bottom: 0;
+
+        right: 50%;
+
+        left: 50%;
+
+        height: 3px;
+
+        background-color: $primary;
+
+        transition-duration: 0.3s;
+      }
+
+      &.is-active::before {
+        left: 0;
+
+        right: 0;
+      }
+    }
+  }
+
+  &__red {
+    position: absolute;
+    display: flex;
+    background-color: $red;
+    color: $white;
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 2px solid $white;
+    top: 16px;
+    right: 16px;
+    font-size: 9px;
+
+    @include on-tablet {
+      top: 6px;
+      right: 6px;
+    }
+  }
+}

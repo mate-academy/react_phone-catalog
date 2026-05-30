@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p c:/react_phone-catalog/src/img/icons)",
+      "Bash(cp -r c:/react_phone-catalog/public/img/icons/. c:/react_phone-catalog/src/img/icons/)",
+      "Bash(rm c:/react_phone-catalog/public/img/icons/*.svg)",
+      "Bash(rm c:/react_phone-catalog/src/img/icons/logo.png)"
+    ]
+  }
+}

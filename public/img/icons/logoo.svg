@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 22" width="130" height="22" role="img" aria-label="Nice Gadgets logo">
+  <style>
+    .lt { font-family: 'Mont-Bold', Mont, 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 700; fill: #313237; letter-spacing: 0.3px; }
+  </style>
+  <text class="lt" x="0" y="16">NICE</text>
+  <text x="42" y="16" font-family="Arial, sans-serif" font-size="14" fill="#F4B22E">✿</text>
+  <text class="lt" x="55" y="16">GADGETS</text>
+</svg>

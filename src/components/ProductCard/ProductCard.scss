@@ -1,0 +1,167 @@
+@use '../../style/variables.scss' as *;
+@use '../../style/mixins.scss' as *;
+
+.product__card {
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+
+  width: 272px;
+  height: 506px;
+
+  padding: 32px;
+
+  border: 1px solid $elements;
+
+  grid-column: span 6;
+
+  margin-left: $gap;
+
+  gap: 8px;
+
+  color: $primary;
+
+  text-decoration: none;
+
+  transition-duration: 0.3s;
+
+  flex: 0 0 auto;
+
+  scroll-snap-align: start;
+  min-width: 0;
+
+  @include on-tablet {
+    grid-column: span 5;
+  }
+
+  @include on-mobile {
+    grid-column: span 4;
+
+    // width: 100%;
+  }
+
+  &-image {
+    height: 196px;
+
+    transition-duration: 0.3s;
+
+    &-wrapper {
+      display: flex;
+
+      justify-content: center;
+    }
+  }
+
+  &:hover {
+    transform: scale(0.95);
+  }
+
+  &:hover &-image {
+    transform: scale(1.05);
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &--page {
+    width: 100%;
+    grid-column: span 6;
+
+    margin: 0;
+  }
+
+  &-title {
+    position: relative;
+
+    align-content: center;
+
+    height: 58px;
+  }
+
+  &-price {
+    &-wrapper {
+      display: flex;
+
+      gap: 8px;
+    }
+  }
+
+  &-line {
+    width: 100%;
+
+    height: 1px;
+
+    background-color: $elements;
+  }
+
+  &-description {
+    margin: 0;
+
+    padding: 0;
+
+    height: 77px;
+
+    list-style: none;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-around;
+  }
+
+  &-item {
+    display: flex;
+
+    flex-direction: row;
+
+    height: 15px;
+
+    align-items: center;
+
+    justify-content: space-between;
+  }
+
+  &-param {
+    color: $secondary;
+  }
+
+  &-value {
+    font-family: Mont, sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 300;
+
+    line-height: 100%;
+
+    text-align: right;
+
+    letter-spacing: 0%;
+
+    color: $primary;
+  }
+
+  &-buttons {
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: space-between;
+  }
+
+  &-button {
+    width: 160px;
+    height: 40px;
+
+    text-decoration: none;
+  }
+}
+
+.discounted {
+  color: $secondary;
+
+  text-decoration: line-through;
+}

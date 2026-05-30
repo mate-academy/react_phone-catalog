@@ -1,0 +1,119 @@
+@use './mixins.scss' as *;
+@use './typography.scss' as *;
+@use './variables.scss' as *;
+
+.footer {
+  display: flex;
+
+  justify-content: center;
+
+  width: 100%;
+
+  border: 1px solid $elements;
+
+  box-sizing: border-box;
+
+  height: 96px;
+
+  @include on-mobile {
+    height: max-content;
+    padding: 32px 0;
+    box-sizing: border-box;
+  }
+
+  &__wrapper {
+    @include on-grid;
+
+    @include on-tablet {
+      width: 100%;
+
+      padding: 0 24px;
+    }
+
+    @include on-mobile {
+      row-gap: 32px;
+    }
+  }
+
+  &__logo-div {
+    grid-column: span 6;
+
+    align-self: flex-start;
+
+    width: 90px;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-right: 24px;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+  }
+
+  &__list {
+    grid-column: span 12;
+
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: space-around;
+
+    align-self: center;
+
+    list-style: none;
+
+    margin: 0;
+
+    padding: 0;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-mobile {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+
+    color: $secondary;
+  }
+
+  &__back {
+    grid-column: span 6;
+
+    display: flex;
+
+    justify-content: end;
+
+    align-items: center;
+
+    gap: 16px;
+
+    color: $secondary;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-mobile {
+      width: 100%;
+      justify-content: center;
+    }
+
+    &-button {
+      aspect-ratio: 1 / 1;
+    }
+  }
+}

@@ -1,0 +1,137 @@
+@use './mixins.scss' as *;
+@use './typography.scss' as *;
+@use './variables.scss' as *;
+
+.menu {
+  position: fixed;
+  top: 0;
+  background-color: white;
+  height: 100vh;
+  width: 100%;
+  z-index: 10;
+  overflow: hidden;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 48px;
+    align-items: center;
+    border-bottom: 1px solid $elements;
+  }
+
+  &__logo {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    width: 98px;
+    justify-content: center;
+
+    &-img {
+      height: 20px;
+    }
+  }
+
+  &__button {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    gap: 16px;
+    align-items: center;
+
+    &-item {
+      position: relative;
+      width: min-content;
+
+
+      &::before {
+        content: '';
+        position: absolute;
+        height: 1px;
+        background-color: $primary;
+        width: 0;
+        bottom: 0;
+      }
+    }
+
+    &-link {
+      padding: 8px 0;
+      text-decoration: none;
+      color: $primary;
+    }
+  }
+
+  &__active {
+    position: relative;
+    width: min-content;
+
+    &::before {
+      content: '';
+      position: absolute;
+      height: 1px;
+      background-color: $primary;
+      width: 0;
+      bottom: 0;
+    }
+  }
+
+  &__unlock {
+    display: none;
+
+    @include on-mobile {
+      display: flex;
+    }
+  }
+
+  &__icons {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    position: fixed;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: row;
+
+    height: 64px;
+    width: 100%;
+  }
+
+  &__icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
+    border: 1px solid $elements;
+    box-sizing: border-box;
+  }
+
+
+  &__red {
+    position: absolute;
+    display: flex;
+    background-color: $red;
+    color: $white;
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 2px solid $white;
+    top: 16px;
+    right: 43%;
+    font-size: 9px;
+  }
+}
