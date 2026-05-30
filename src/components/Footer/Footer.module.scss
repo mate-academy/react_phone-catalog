@@ -1,0 +1,103 @@
+@import '../../style/mixins';
+@import '../../style/vars';
+@import '../../style/fonts';
+@import '../../style/extends';
+
+.footer {
+  padding-block: 32px;
+  background-color: var(--page-bg);
+
+  @include content-padding-inline;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+    }
+    
+    @include on-desktop {
+      gap: 107px;
+    }
+  }
+
+  &__link {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+
+    @include hover(color, var(--text-main));
+  }
+
+  &__buttonBack {
+    @extend %small-text-12;
+
+    padding: 0;
+    border: 0;
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    gap: 16px;
+    width: fit-content;
+    background-color: var(--page-bg);
+    cursor: pointer;
+
+    @include hover(color, var(--text-main));
+  }
+
+  &__buttonIcon {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border-sl-bt);
+    border-radius: 50%;
+    display: flex;
+    transition: all $transition;
+  }
+
+  &__buttonBack:hover &__buttonIcon {
+    border-color: var(--text-main);
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    color: var(--text-main);
+    transform: rotate(-90deg);
+    margin: auto;
+  }
+}
+
+.container {
+  background-color: var(--page-bg);
+  width: 100%;
+
+  // @include on-desktop {
+  //   margin-top: 80px;
+  // }
+}

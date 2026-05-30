@@ -1,0 +1,122 @@
+@import '../../../style/vars';
+@import '../../../style/mixins';
+@import '../../../style/normalize';
+
+.slider {
+  max-width: 100%;
+
+  @include content-padding-inline;
+  @include page-grid;
+
+  &__button {
+    box-sizing: border-box;
+    display: none;
+    width: 32px;
+    border: 1px solid var(--border-sl-bt);
+    background-color: var(--sl-bt-bg);
+    border-radius: 48px;
+    cursor: pointer;
+
+    @include hover (border-color, var(--text-main));
+
+    @include on-tablet {
+      display: block;
+    }
+
+    &--left {
+      @include on-tablet {
+        grid-column: 1 / 2;
+      }
+    }
+
+    &--right {
+      @include on-tablet {
+        grid-column: 12 / span 1;
+      }
+
+      @include on-desktop {
+        grid-column: 24 / span 1;
+      }
+    }
+  }
+
+  &__arrowSlider {
+    color: var(--text-main);
+    width: 16px;
+    height: 16px;
+  }
+
+  &__container {
+    // width: 100%;
+    height: 100vw;
+    overflow: hidden;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      height: 320px;
+      width: 100%;
+      grid-column: 2 / span 10;
+    }
+
+    @include on-desktop {
+      height: 400px;
+      grid-column: 2 / span 22;
+    }
+  }
+
+  &__viewport {
+    display: flex;
+    height: 100vw;
+    will-change: transform;
+    transition: all $transition;
+
+    @include on-tablet {
+      height: 320px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__img {
+    flex: 0 0 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    flex-shrink: 0;
+
+    &--contain {
+      @include on-tablet {
+        object-fit: contain;
+      }
+    }
+  }
+
+  &__dots-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    padding-block: 18px;
+
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 1 / span 24;
+    }
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    background-color: var(--border);
+    border: none;
+    cursor: pointer;
+
+    &--active {
+      background-color: var(--text-main);
+    }
+  }
+}

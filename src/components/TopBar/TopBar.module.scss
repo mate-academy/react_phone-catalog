@@ -1,0 +1,114 @@
+@import '../../style/mixins';
+@import '../../style/vars';
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  height: 48px;
+  width: 100%;
+  box-shadow: 0 1px 0 0 var(--border);
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__iconLogo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 16px;
+  }
+
+  &__logo {
+    width: 64px;
+    height: 22px;
+    color: var(--text-main);
+  }
+
+  &__actions {
+    display: flex;
+  }
+
+  &__actionLink {
+    display: none;
+    position: relative;
+
+    @include on-tablet {
+      display: block;
+    }
+
+    &::after {
+      display: block;
+      position: absolute;
+      content: '';
+      height: 2px;
+      width: 100%;
+      background-color: var(--text-main);
+      left: 0;
+      bottom: 0;
+      transform: scaleX(0);
+      transition: transform $transition;
+    }
+
+    &--active::after {
+      transform: scaleX(100%);
+      transform-origin: left;
+    }
+  }
+
+  &__containerIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    box-shadow: -1px 0 0 0 var(--border);
+
+    position: relative;
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  &__countFavorite {
+    position: absolute;
+    transform: translate(50%, -50%);
+
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--count-favorite-bg);
+    color: var(--btn-text);
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 9px;
+    padding-block: 2px 3px;
+    text-align: center;
+  }
+
+  &__button {
+    padding: 0;
+    border: none;
+    background: transparent;
+    width: 48px;
+    height: 100%;
+
+    @include on-desktop {
+      width: 64px;
+    }
+
+    &:last-child {
+      @include on-tablet {
+        display: none;
+      }
+    }
+  }
+
+  &__iconAction {
+    width: 16px;
+    height: 16px;
+    color: var(--text-main);
+  }
+}

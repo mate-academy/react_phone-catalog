@@ -1,0 +1,121 @@
+// LIGHT THEME
+$lt-primary: #0f0f11; // Main text
+$lt-secondary: #89939a; // Secondary text
+$lt-elements: #e2e6e9; // border
+$lt-purple: #4219d0; // bvutton/ button text
+$lt-main-bg: #fafbfc; // background
+$lt-white: #fff; // card background
+$lt-bt-sl-bd: #b4bdc3;
+$lt-bt-sl-bg: #fff;
+$c-gray: #fafbfc;
+$lt-shadow-add-bt: #17203166;
+$lt-shadow-card: #252525e3;
+$phone-category: #6d6474;
+$tablet-category: #8d8d92;
+$accessory-category: #973d5f;
+$lt-overlay: #00000080;
+$lt-skeleton: #f7f7f7;
+$lt-linear-gradient-a: #ececec;
+$lt-linear-gradient-b: #f4f4f4;
+$lt-linear-gradient-c: #ececec;
+$lt-lg-text-a: #ececec;
+$lt-lg-text-b: #ddd;
+$lt-lg-text-c: #ececec;
+$lt-skelet-bg: #dddbdd;
+$lt-sk-meta-text: #6b6b6b;
+$lt-sk-shimmer: #fff;
+
+// DARK THEME
+$dt-sk-shimmer: #000;
+$dt-sk-meta-text: #aaa;
+$dt-skelet-bg: #2a2a2a;
+$dt-lg-text-a: #333;
+$dt-lg-text-b: #444;
+$dt-lg-text-c: #333;
+$dt-linear-gradient-a: #2a2a2a;
+$dt-linear-gradient-b: #3a3a23;
+$dt-linear-gradient-c: #2a2a2a;
+$dt-skeleton: #2a2a2a;
+$dt-black-text-pag: #000;
+$dt-black: #0f0f11; // page backgroun
+$dt-elements: #3b3e4a; // border
+$dt-secondary: #89939a;
+$dt-card-bg: #161827;
+$dt-purple: #905bff; // bvutton/ button text
+$dt-white: #f1f2f9; // Text and light accents
+$dt-bt-sl-bd: #323542;
+$dt-bt-sl-bg: #323542;
+$dt-shadow-add-bt: #e8dfce66;
+$dt-disabled-icon: #4a4d58;
+$dt-shadow-card: #dadadae3;
+$transition: 0.3s;
+$table-min-width: 640px;
+$table-md-min-width: 768px;
+$desktop-min-width: 1200px;
+$dt-overlay: #FFF3;
+
+:root {
+  --page-bg: #{$lt-white};
+  --card-bg: #{$lt-white};
+  --text-main: #{$lt-primary};
+  --text-secondary: #{$lt-secondary};
+  --border: #{$lt-elements};
+  --btn-bg: #{$lt-purple};
+  --btn-text: #{$lt-white};
+  --icon-color: #{$lt-primary};
+  --border-sl-bt: #{$lt-bt-sl-bd};
+  --icon-bc-ar: #{$lt-bt-sl-bd};
+  --sl-bt-bg: #{$lt-bt-sl-bg};
+  --main-bg: #{$c-gray};
+  --shadow-add-bt: #{$lt-shadow-add-bt};
+  --shasow-card: #{$lt-shadow-card};
+  --icon-disabled: #{$lt-bt-sl-bd};
+  --borde-hover-mini: #{$lt-secondary};
+  --text-id: #{$lt-bt-sl-bd};
+  --pagination-text: #{$lt-white};
+  --count-favorite-bg: #{$lt-purple};
+  --overlay-bg: #{$lt-overlay};
+  --skeleton-bg: #{$lt-skeleton};
+  --skeleton-lg-a: #{$lt-linear-gradient-a};
+  --skeleton-lg-b: #{$lt-linear-gradient-b};
+  --skeleton-lg-c: #{$lt-linear-gradient-c};
+  --skeleton-text-a: #{$lt-lg-text-a};
+  --skeleton-text-b: #{$lt-lg-text-b};
+  --skeleton-text-c: #{$lt-lg-text-c};
+  --skelet-bg: #{$lt-skelet-bg};
+  --skelet-meta-text: #{$lt-sk-meta-text};
+  --skeleton-shimmer: 255, 255, 255;
+}
+
+[data-theme='dark'] {
+  --icon-bc-ar: #{$dt-disabled-icon};
+  --page-bg: #{$dt-black};
+  --card-bg: #{$dt-card-bg};
+  --text-main: #{$dt-white};
+  --text-secondary: #{$dt-secondary};
+  --border: #{$dt-elements};
+  --btn-bg: #{$dt-purple};
+  --btn-text: #{$dt-white};
+  --icon-color: #{$dt-white};
+  --border-sl-bt: #{$dt-bt-sl-bd};
+  --sl-bt-bg: #{$dt-bt-sl-bg};
+  --main-bg: #{$dt-black};
+  --shadow-add-bt: #{$dt-shadow-add-bt};
+  --shasow-card: #{$dt-shadow-card};
+  --icon-disabled: #{$dt-disabled-icon};
+  --borde-hover-mini: #{$lt-secondary};
+  --text-id: #{$dt-disabled-icon};
+  --pagination-text: #{$dt-black-text-pag};
+  --count-favorite-bg: #{$dt-purple};
+  --overlay-bg: #{$dt-overlay};
+  --skeleton-bg: #{$dt-skeleton};
+  --skeleton-lg-a: #{$dt-linear-gradient-a};
+  --skeleton-lg-b: #{$dt-linear-gradient-b};
+  --skeleton-lg-c: #{$dt-linear-gradient-c};
+  --skeleton-text-a: #{$dt-lg-text-a};
+  --skeleton-text-b: #{$dt-lg-text-b};
+  --skeleton-text-c: #{$dt-lg-text-c};
+  --skelet-bg: #{$dt-skelet-bg};
+  --skelet-meta-text: #{$dt-sk-meta-text};
+  --skeleton-shimmer: 0, 0, 0;
+}

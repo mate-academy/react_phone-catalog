@@ -1,0 +1,28 @@
+@import '../../../style/extends';
+
+.techSpec {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__name {
+    @extend %body-text-14;
+
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  &__value {
+    @extend %body-text-14;
+
+    color: var(--text-maim);
+    text-align: right;
+  }
+}

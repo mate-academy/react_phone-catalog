@@ -1,0 +1,121 @@
+@import '../../style/mixins';
+@import '../../style/extends';
+@import '../../style/fonts';
+@import '../../style/vars';
+
+.slider {
+  @include on-desktop {
+    @include content-padding-inline;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include content-padding-inline;
+
+    @include on-tablet {
+      // margin-top: 64px;
+    }
+
+    @include on-desktop {
+      // margin-block: 80px 24px;
+      padding-inline: 0;
+    }
+
+    @include title-margin-block;
+  }
+
+  &__title {
+    @extend %h2;
+  }
+
+  &__breake {
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border-sl-bt);
+    border-radius: 50%;
+    background-color: var(--sl-bt-bg);
+    cursor: pointer;
+
+    @include hover(border-color, var(--text-main));
+
+    &:disabled {
+      border-color: var(--border);
+      cursor: default;
+    }
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    color: var(--text-main);
+
+    &--disabled {
+      color: var(--icon-disabled);
+    }
+  }
+
+  &__listContainer {
+    padding-left: 16px;
+
+    @include on-tablet {
+      padding-left: 24px;
+    }
+
+    @include on-desktop {
+      padding-left: 0;
+    }
+  }
+
+  &__cardContainer {
+    width: 212px;
+    height: 439px;
+
+    @include on-tablet {
+      width: 237px;
+      height: 512px;
+    }
+
+    @include on-desktop {
+      width: 272px;
+      height: 506px;
+    }
+  }
+
+  &__productsList {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    & > * {
+      flex: 0 0 auto;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include on-tablet {
+      gap: 16px;
+    }
+  }
+}

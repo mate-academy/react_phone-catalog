@@ -1,0 +1,1 @@
+export { TexhSpec } from './TechSpec';

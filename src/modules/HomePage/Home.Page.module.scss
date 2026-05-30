@@ -1,0 +1,59 @@
+@import '../../style/extends';
+@import '../../style/fonts';
+
+.homePage {
+  padding-bottom: 64px;
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
+  &__title-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  &__title {
+    @extend %h2;
+
+    margin: 24px 16px;
+
+    @include content-padding-inline;
+
+    @include on-tablet {
+      margin: 32px 0;
+    }
+
+    @include on-desktop {
+      margin-block: 56px;
+      margin-inline: auto;
+    }
+  }
+
+  &__breake {
+    @include on-desktop {
+      display: none;
+    }
+  }
+
+  &__error {
+    background-image: url('img/product-not-found.webp');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    width: 100%;
+    height: 190px;
+
+    text-align: center;
+
+    @include content-padding-inline;
+
+  }
+}

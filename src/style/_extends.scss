@@ -1,0 +1,101 @@
+@import './mixins';
+@import './vars';
+
+%h1 {
+  font-family: Mont, serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+%h2 {
+  font-family: Mont, serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+%h3-price {
+  font-family: Mont, serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0;
+}
+
+%h3 {
+  font-family: Mont, serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0;
+
+  @include on-tablet {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
+
+%h4 {
+  font-family: Mont, serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+%body-text-14 {
+  font-family: Mont, serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+%small-text-12 {
+  font-family: Mont, serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+%visually-hidden {
+  position: absolute;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  white-space: nowrap;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: none;
+}
+
+%hidden-radio {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+%buttons {
+  font-family: Mont, serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}

@@ -1,0 +1,34 @@
+@import '../../style/extends';
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding-block: 25px;
+
+  &__icon {
+    color: var(--icon-bc-ar);
+    width: 16px;
+    height: 16px;
+
+    &--home {
+      color: var(--text-main);
+    }
+  }
+
+  &__category {
+    @extend %small-text-12;
+
+    color: var(--text-main);
+  }
+
+  &__name {
+    @extend %small-text-12;
+
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
