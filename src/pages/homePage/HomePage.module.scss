@@ -1,0 +1,16 @@
+@use '../../styles/variables.scss' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  width: 100%;
+
+  @media(max-width: $tablet) {
+    gap: 64px;
+  }
+
+  @media(max-width: $mobile) {
+    gap: 56px;
+  }
+}
