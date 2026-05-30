@@ -1,0 +1,31 @@
+[data-theme="light"] {
+  --background-color: #FAFBFC;
+  --primary-font-color: black;
+  --secondary-font-color: #89939A;
+  --menu-hover-link: #313237;
+  --pagination-dot: black;
+  --active-button: white;
+  --text-active-button: #216CFF;
+  --footer-arrow: #89939A;
+  --pagination-hover: white;
+  --pagination-arrow: black;
+  --menu-block: #89939A;
+  --breadcrumbs-hover: black;
+  --favourite-background: #FAFBFC;
+}
+
+[data-theme="dark"] {
+  --background-color: rgb(0, 0, 0);
+  --primary-font-color: white;
+  --secondary-font-color: white;
+  --menu-hover-link: white;
+  --pagination-dot: rgb(255, 255, 255);
+  --active-button: black;
+  --text-active-button: white;
+  --footer-arrow: white;
+  --pagination-hover: rgb(64, 63, 63);
+  --pagination-arrow: rgb(64, 63, 63);
+  --menu-block: rgb(64, 63, 63);
+  --breadcrumbs-hover: darkred;
+  --favourite-background: rgb(28, 27, 27);
+}

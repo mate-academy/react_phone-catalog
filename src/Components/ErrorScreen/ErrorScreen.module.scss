@@ -1,0 +1,15 @@
+@import '../styles/main';
+
+.errorscreen {
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 70vh;
+}
+
+.title {
+  font-family: Mont, sans-serif;
+  color: var(--primary-font-color);
+  height: 50vh;
+}

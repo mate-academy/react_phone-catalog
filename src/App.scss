@@ -1,1 +1,19 @@
-// not empty
+/* @import '../src/Components/styles/main'; */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+:root {
+  --background-color: #FAFBFC;
+  --secondary-background: #00000092;
+  --text-color: black;
+  --secondary-font: white;
+
+}
+
+body {
+  background-color: var(--background-color);
+}
+
