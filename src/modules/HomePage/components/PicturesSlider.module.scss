@@ -1,0 +1,94 @@
+.slider {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #000;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.slider img {
+  width: 100%;
+  max-height: 520px;
+  min-height: 430px;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 1440 / 520;
+}
+
+.navigation {
+  position: absolute;
+  inset: auto 1rem 1rem auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.navigation button {
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.dots {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dots button {
+  flex: 0 0 14px;
+  width: 14px;
+  min-width: 14px;
+  max-width: 14px;
+  height: 14px;
+  min-height: 14px;
+  max-height: 14px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.65);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  appearance: none;
+}
+
+.dots button:hover,
+.dots button.active {
+  background: #06f;
+}
+
+.navigation button:hover {
+  background: #fff;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.14);
+  transform: translateX(3px);
+}
+
+.navigation button:first-child:hover {
+  transform: translateX(-3px);
+}
+
+@media (max-width: 560px) {
+  .slider {
+    border-radius: 16px;
+  }
+
+  .slider img {
+    max-height: 280px;
+    min-height: 240px;
+    aspect-ratio: 4 / 3;
+  }
+
+  .navigation {
+    inset: auto 0.75rem 0.75rem auto;
+  }
+}

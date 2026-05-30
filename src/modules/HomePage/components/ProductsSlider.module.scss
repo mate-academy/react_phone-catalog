@@ -1,0 +1,57 @@
+.sliderSection {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  min-width: 0;
+  text-align: center;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.buttons button {
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: #fff;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
+
+.list {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  width: 100%;
+  padding-bottom: 0.5rem;
+  scroll-snap-type: x mandatory;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.item {
+  min-width: 0;
+  flex: 0 0 min(240px, 78vw);
+  scroll-snap-align: start;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
+}

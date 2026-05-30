@@ -1,0 +1,23 @@
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+  min-width: 0;
+}
+
+.card {
+  min-width: 0;
+  padding: 1.5rem;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #1a1a1a;
+  background: #fff;
+  border: 1px solid #e2e6f0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+}

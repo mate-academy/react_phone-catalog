@@ -1,0 +1,40 @@
+.page {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #334155;
+}
+
+select {
+  border: 1px solid #cbd5e1;
+  padding: 0.55rem 0.75rem;
+  border-radius: 12px;
+}
+
+.message {
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid #e2e6f0;
+  border-radius: 20px;
+  background: #f8fafc;
+  color: #334155;
+}
+
+button {
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #1a1a1a;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+}

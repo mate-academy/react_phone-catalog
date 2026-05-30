@@ -1,0 +1,129 @@
+.card {
+  background: #fff;
+  border: 1px solid #e2e6f0;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: #cbd5e1;
+}
+
+.preview {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  padding: 1.5rem 1.25rem 0.75rem;
+}
+
+.preview img {
+  width: 100%;
+  height: 100%;
+  max-width: 82%;
+  max-height: 82%;
+  object-fit: contain;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.preview:hover img {
+  transform: scale(1.04);
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  background: #f1f5f9;
+  display: grid;
+  place-items: center;
+  color: #64748b;
+}
+
+.body {
+  padding: 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.title {
+  color: #111827;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.meta {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.priceBlock {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.priceBlock span {
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.cartButton,
+.favoriteButton {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.65rem 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cartButton {
+  background: #06f;
+  color: #fff;
+  flex: 1;
+  min-width: 0;
+}
+
+.cartButton:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.cartButton:not(:disabled):hover {
+  box-shadow: 0 10px 22px rgba(0, 102, 255, 0.2);
+  transform: translateX(4px);
+}
+
+.cartButton:not(:disabled):active {
+  transform: translateX(8px) scale(0.98);
+}
+
+.favoriteButton {
+  background: #f8fafc;
+  color: #1f2937;
+  width: 3rem;
+}
+
+.favoriteButton:hover {
+  border-color: #cbd5e1;
+  color: #06f;
+  transform: translateY(-2px);
+}
+
+.favoriteButton:active {
+  transform: scale(0.94);
+}

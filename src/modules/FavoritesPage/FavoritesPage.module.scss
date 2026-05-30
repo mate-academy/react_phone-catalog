@@ -1,0 +1,22 @@
+.page {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.message {
+  padding: 2rem;
+  border: 1px solid #e2e6f0;
+  border-radius: 20px;
+  background: #f8fafc;
+  text-align: center;
+  color: #334155;
+}
+
+button {
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #1a1a1a;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
