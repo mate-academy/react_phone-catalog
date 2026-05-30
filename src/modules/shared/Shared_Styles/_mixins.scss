@@ -1,0 +1,89 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop-plus {
+  @media (min-width: $desktopPlus-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1280px;
+    margin: 0;
+    margin-inline: auto;
+    padding-inline: 152px;
+  }
+}
+
+@mixin pageGrid {
+  display: grid;
+  column-gap: 16px;
+  column-width: 64px;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include on-tablet {
+    column-width: 32px;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}
+
+@mixin container-margin-bottom {
+  margin-bottom: 50px;
+
+  @include on-tablet {
+    margin-bottom: 60px
+  }
+
+  @include on-desktop {
+    margin-bottom: 70px
+  }
+}
+
+@mixin skeletonBoxShadow {
+  -webkit-box-shadow: 2px 2px 5px 1px $elements-color;
+  -moz-box-shadow: 2px 2px 5px 1px $elements-color;
+  box-shadow: 2px 2px 5px 1px $elements-color;
+  border-radius: 2%;
+}
+
+@mixin skeleton {
+  background-color: $elements-color;
+  background-size: 40px 100%;
+  border-radius: 2%;
+  background-position: left -40px top 0;
+  background-repeat: no-repeat;
+  background-image:
+		linear-gradient(
+			90deg,
+			rgba(#fff, 0),
+			rgba(#fff, 0.5),
+			rgba(#fff, 0)
+		);
+  animation: shine 1s ease infinite;
+}
+
+@keyframes shine {
+	to {
+		background-position: right -40px top 0;
+	}
+}

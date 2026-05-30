@@ -1,0 +1,15 @@
+.error {
+  background-color: #fce4e4;
+  border: 1px solid #fcc2c3;
+  padding: 5px 10px;
+  margin-block: 20px;
+
+  &--dark {
+    background-color: $gray-elements;
+    border-color: $secondary-purple;
+
+    & > p {
+      color: $white-for-dark;
+    }
+  }
+}

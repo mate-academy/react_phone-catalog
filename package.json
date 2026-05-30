@@ -7,16 +7,21 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
+    "@react-oauth/google": "^0.12.1",
+    "@reduxjs/toolkit": "^2.6.1",
     "bulma": "^1.0.1",
     "classnames": "^2.5.1",
+    "framer-motion": "^12.6.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.25.1",
-    "react-transition-group": "^4.4.5"
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^6.30.0",
+    "react-transition-group": "^4.4.5",
+    "redux": "^5.0.1"
   },
   "devDependencies": {
     "@cypress/react18": "^2.0.1",
-    "@mate-academy/scripts": "^1.8.5",
+    "@mate-academy/scripts": "^2.1.1",
     "@mate-academy/students-ts-config": "*",
     "@mate-academy/stylelint-config": "*",
     "@types/node": "^20.14.10",

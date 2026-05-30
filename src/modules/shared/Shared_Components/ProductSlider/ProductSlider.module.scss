@@ -1,0 +1,48 @@
+.carousel {
+  @include container-margin-bottom;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__container {
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    overflow-x: scroll;
+  }
+
+  &__card-set {
+    --gallery-column-gap: 22px;
+    display: grid;
+    grid-template-rows: repeat(1, auto);
+    grid-auto-flow: column;
+    grid-column-gap: var(--gallery-column-gap);
+    column-gap: var(--gallery-column-gap);
+    grid-row-gap: 0px;
+    row-gap: 0px;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+
+  &__card-container {
+    display: grid;
+    grid-template-rows: repeat(1, auto);
+    grid-auto-flow: column;
+    grid-column-gap: var(--gallery-column-gap);
+    column-gap: var(--gallery-column-gap);
+    grid-row-gap: 0px;
+    row-gap: 0px;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}
