@@ -1,0 +1,58 @@
+@import '../../../../styles/styles';
+
+.cart-item {
+  background: $surface-1;
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  @include on-tablet {
+    padding: 24px;
+    gap: 24px;
+  }
+
+  &__remove {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+
+    @include on-image-hover;
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+
+    @include on-image-hover;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    width: 50%;
+    flex-shrink: 2;
+    text-decoration: none;
+    color: $white;
+
+    @include on-hover(
+      (
+        color: $accent,
+      )
+    );
+  }
+
+  &__quantity-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__price {
+    margin-left: auto;
+  }
+}

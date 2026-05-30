@@ -1,1 +1,29 @@
-// not empty
+@import './styles/styles';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: $black;
+  color: $white;
+  font-family: Mont, sans-serif;
+  margin: 0;
+  scroll-behavior: smooth;
+
+  > :first-child {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    main {
+      flex-grow: 1;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}

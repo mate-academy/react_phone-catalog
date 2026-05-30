@@ -1,0 +1,79 @@
+@import '../../../../styles/styles';
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+  justify-content: center;
+  align-items: center;
+
+  & > :first-child {
+    margin-right: 8px;
+  }
+
+  & > :last-child {
+    margin-left: 8px;
+  }
+}
+
+.item {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  user-select: none;
+  box-sizing: border-box;
+  transition:
+    background-color $effect-duration ease,
+    border-color $effect-duration ease;
+
+  &--disabled {
+    border: 1px solid $icons;
+    background: transparent !important;
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+.arrowLink {
+  // stylelint-disable-next-line scss/at-extend-no-missing-placeholder
+  @extend .item;
+
+  background: $surface-2;
+
+  &:hover:not(.item--disabled) {
+    background-color: $icons;
+  }
+}
+
+.pageLink {
+  // stylelint-disable-next-line scss/at-extend-no-missing-placeholder
+  @extend .item;
+
+  background: $surface-1;
+  font-weight: 600;
+  font-size: 14px;
+  color: $white;
+  border: 1px solid $surface-1;
+
+  &:hover:not(.pageLink--active) {
+    background: $surface-2;
+    border-color: $surface-2;
+  }
+
+  &--active {
+    background: $accent;
+    border-color: $accent;
+    color: $white;
+    pointer-events: none;
+
+    @include on-hover(
+      (
+        background-color: $accent-hover,
+        border-color: $accent-hover,
+      )
+    );
+  }
+}
