@@ -1,0 +1,53 @@
+.brand {
+  grid-column: span 24;
+  width: 100%;
+
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 56px;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-family: 'Mont-Bold';
+    font-size: 32px;
+    line-height: 41px;
+    color: #313237;
+  }
+
+  &__arrows {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(137, 147, 154, 0.4);
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 22px;
+    color: #313237;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      border-color: #313237;
+    }
+  }
+
+  &__slider-window {
+      overflow: hidden;
+      width: 100%;
+  }
+
+  &__slider-track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.4s ease;
+  }
+}

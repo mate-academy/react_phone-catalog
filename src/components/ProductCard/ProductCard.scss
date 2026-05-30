@@ -1,0 +1,157 @@
+* {
+  text-decoration: none;
+  font-family: 'Mont-Bold';
+}
+
+.card {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 32px;
+  border: 1px solid #e2e6e9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #fff;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.16);
+  }
+
+
+  &__image {
+    width: 208px;
+    height: 208px;
+    object-fit: contain;
+    margin: 0;
+    display: block;
+  }
+
+        &__image-wrapper {
+          height: 208px;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          margin-bottom: 16px;
+        }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    height: 42px;
+    color: #313237;
+    margin-bottom: 8px;
+  }
+
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__price-new {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    color: #313237;
+  }
+
+  &__price-old {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 31px;
+    color: #89939a;
+    text-decoration: line-through;
+  }
+
+
+  &__chars {
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__char-item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__char-name {
+    font-size: 12px;
+    font-weight: 400;
+    color: #89939a;
+  }
+
+  &__char-value {
+    font-size: 12px;
+    font-weight: 700;
+    color: #313237;
+  }
+
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__add-to-cart-button {
+    flex: 1;
+    height: 40px;
+    background: #313237;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: #5f5f5f;
+    }
+            &.added {
+              color: rgba(39, 174, 96, 1);
+              background-color: rgba(226, 230, 233, 1);
+            }
+
+            &:active {
+              color: rgba(39, 174, 96, 1);
+              background-color: rgba(226, 230, 233, 1);
+            }
+  }
+
+  &__favourites-button {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e2e6e9;
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border-color 0.3s;
+    padding: 0;
+    line-height: 0;
+    .icon--favourite {
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: background-image 0.3s;
+        &:hover {
+            border-color: #313237;
+          }
+    }
+
+
+    &:hover {
+      border-color: #313237;
+    }
+        .icon__img {
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
+  }
+}

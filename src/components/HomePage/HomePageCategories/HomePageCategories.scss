@@ -1,0 +1,74 @@
+.categories {
+  padding: 64px 0;
+
+  &__title {
+    font-family: 'Mont-Bold';
+    font-size: 32px;
+    line-height: 41px;
+    margin-bottom: 24px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+
+    @media (max-width: 1023px) {
+      flex-direction: column;
+      gap: 32px;
+    }
+  }
+}
+
+.category {
+  flex: 1;
+  max-width: 368px;
+  cursor: pointer;
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+
+  &__image--phones {
+    background-image: url('/img/Phones.png');
+    background-position: left center;
+  }
+
+  &__image--tablets {
+    background-image: url('/img/tablets.png');
+    background-position: center center;
+  }
+
+  &__image--accessories {
+    background-image: url('/img/accessories.png');
+    background-position: right center;
+  }
+
+  &__name {
+    margin-top: 24px;
+    margin-bottom: 4px;
+    font-family: 'Mont-SemiBold';
+    font-size: 18px;
+    line-height: 24px;
+    color: black;
+  }
+
+  &__count {
+    font-family: 'Mont-Regular';
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+}
