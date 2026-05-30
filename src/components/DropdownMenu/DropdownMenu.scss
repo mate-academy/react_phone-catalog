@@ -1,0 +1,92 @@
+@import '../../styles/main';
+
+.dropdownMenu {
+  height: 59px;
+  width: 136px;
+
+  @include on-tablet {
+    width: 187px;
+  }
+
+  &__label {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15.34px;
+    color: var(--secondary-color);
+  }
+
+  &__button {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 12px;
+    border: 1px solid var(--dropdown-border-color);
+    background-color: var(--dropdown-bg-color);
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--dropdown-border-hover-color);
+    }
+
+    &-text {
+      font-family: Mont, sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+      color: var(--text-color);
+    }
+
+    &-img {
+      width: 16px;
+      height: 16px;
+
+      &-active {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  &__list {
+    display: none;
+
+    &-active {
+      width: 136px;
+      background-color: var(--bg-color);
+      border: 1px solid var(--dropdown-list-border);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+      position: absolute;
+      margin-top: 5px;
+      z-index: 100;
+
+      @include on-tablet {
+        width: 187px;
+      }
+    }
+  }
+
+  &__item {
+    height: 40px;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--secondary-color);
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+
+    &:hover,
+    &:focus {
+      background-color: var(--dropdown-list-bg-hover);
+      color: var(--text-color);
+    }
+  }
+}

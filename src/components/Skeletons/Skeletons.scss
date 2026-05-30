@@ -1,0 +1,36 @@
+@import '../../styles/main';
+
+.skeletons {
+  margin-top: 24px;
+
+  &__content {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__list {
+    display: flex;
+    flex-flow: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+
+    @include on-tablet {
+      justify-content: start;
+    }
+  }
+
+  &__item {
+    width: 287px;
+    height: 506px;
+    border: 1px solid $elementsColor;
+
+    @include on-tablet {
+      width: 288px;
+    }
+
+    @include on-desktop {
+      width: 272px;
+    }
+  }
+}
