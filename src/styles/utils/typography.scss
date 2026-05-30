@@ -1,0 +1,103 @@
+@mixin headline-1 {
+  margin: 0;
+  padding: 0;
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 800;
+  color: $primary-color;
+
+  @include tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin headline-2 {
+  margin: 0;
+  padding: 0;
+  font-size: 22px;
+  line-height: 31px;
+  font-weight: 800;
+  color: $primary-color;
+
+  @include tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+@mixin headline-3 {
+  margin: 0;
+  padding: 0;
+  font-size: 22px;
+  line-height: 26px;
+  font-weight: 700;
+  color: $primary-color;
+
+  @include tablet {
+    font-size: 22px;
+    line-height: 31px;
+    font-weight: 800;
+  }
+}
+
+@mixin headline-4 {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  color: $primary-color;
+
+  @include tablet {
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0.04em;
+  }
+}
+
+@mixin text-buttons {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+@mixin text-uppercase {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $primary-color;
+}
+
+@mixin text-body {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 21px;
+  color: $primary-color;
+  font-weight: 400;
+}
+
+@mixin text-small {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 600;
+}
+
+@mixin text-full-price {
+  margin: 0;
+  padding: 0;
+  font-size: 22px;
+  line-height: 26px;
+  color: $secondary-color;
+  font-weight: 600;
+  text-decoration-line: line-through;
+}

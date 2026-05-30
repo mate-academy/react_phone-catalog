@@ -1,0 +1,12 @@
+@import '/src/styles/styles';
+
+.ProductTechInfo {
+  &__title {
+    @include headline-3;
+
+    padding-bottom: 16px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid $elements-color;
+  }
+}
+

@@ -1,0 +1,89 @@
+@import '/src/styles/styles';
+
+.productsSlider {
+  padding-block: 56px;
+
+  @include tablet {
+    padding-top: 64px;
+  }
+
+  @include desktop {
+    padding-top: 80px;
+  }
+
+  &__container {
+    @include container;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__heading {
+    @include headline-2;
+  }
+
+  &__navigation {
+    display: flex;
+    align-items: center;
+    gap: 16px
+  }
+
+  &__nextEl,
+  &__prevEl {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $icons-color;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+
+    @include hover (border, 1px solid $primary-color)
+  }
+
+  &__prevEl {
+    background-image: url('../../images/icons/arrow-left.svg');
+  }
+
+  &__nextEl {
+    background-image: url('../../images/icons/arrow-right.svg');
+  }
+
+  &__navigationDisabled {
+    opacity: 0.5;
+    cursor: auto;
+
+    @include hover (border, 1px solid $icons-color)
+  }
+
+  &__slides {
+    margin-left: 16px;
+
+    @include tablet {
+      margin-left: 24px;
+      max-width: 1136px;
+    }
+
+    @include desktop {
+      padding-left: 0;
+      margin-inline: auto;
+    }
+  }
+
+  &__slide {
+    width: 212px !important;
+
+    @include tablet {
+      width: 237px !important;
+    }
+
+    @include desktop {
+      width: 272px !important;
+    }
+  }
+}

@@ -1,0 +1,114 @@
+@import '/src/styles/styles';
+
+.cartPage {
+
+  &__container {
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+    @include container;
+  }
+
+  &__back {
+    margin-bottom: 24px;
+  }
+
+  &__heading {
+    @include headline-1;
+
+    margin-bottom: 32px;
+  }
+
+  &__content {
+    @include grid-markup;
+
+    row-gap: 32px;
+
+    @include desktop {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    grid-column: 1/-1;
+
+    @include desktop {
+     grid-area: span 2/span 16;
+    }
+  }
+
+  &__summary {
+    border: 1px solid $elements-color;
+    padding: 24px;
+    border-radius: 16px;
+    box-sizing: border-box;
+    grid-column: 1/-1;
+
+    @include desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid $elements-color;
+
+    @include desktop {
+      padding-bottom: 25px;
+      margin-bottom: 25px;
+    }
+  }
+
+  &__totalSum {
+    @include headline-2;
+  }
+
+  &__totalText {
+    @include text-small;
+
+    color: $secondary-color;
+  }
+
+  &__checkoutButton {
+    @include text-buttons;
+
+    width: 100%;
+    height: 48px;
+    background-color: $accent-color;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: box-shadow $effectDuration;
+
+    @include hover (box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.4));
+  }
+
+  &__message {
+    text-align: center;
+    padding: 64px 0;
+    color: $secondary-color;
+  }
+
+  &__messageText{
+    @include headline-2;
+
+    color: $primary-color;
+    margin-bottom: 16px;
+  }
+
+  &__messageImage {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+}

@@ -1,0 +1,30 @@
+@import '/src/styles/styles';
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 100px;
+
+  &__content {
+    width: 60px;
+    height: 60px;
+    border: 3px solid #fff;
+    border-bottom-color: $accent-color;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+}
+
+
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

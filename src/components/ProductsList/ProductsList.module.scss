@@ -1,0 +1,7 @@
+@import '/src/styles/styles';
+
+.productsList {
+  @include grid-markup-products;
+}
+
+

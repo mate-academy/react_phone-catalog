@@ -1,0 +1,41 @@
+@import '/src/styles/styles';
+
+.notFoundPage {
+  @include container;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 50px;
+  padding-block: 100px;
+
+  &__title {
+    @include headline-1;
+  }
+
+  &__link {
+    @include text-buttons;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    width: 240px;
+    background-color: $accent-color;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all $effectDuration;
+
+    @include hover (box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.4));
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+}
+

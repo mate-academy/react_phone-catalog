@@ -1,0 +1,137 @@
+@import '/src/styles/styles';
+
+.header {
+  border-bottom: 1px solid $elements-color;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: #fff;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 16px;
+    height: $header-height-mobile;
+    z-index: 2;
+    position: relative;
+    background-color: inherit;
+
+    @include tablet {
+      justify-content: unset;
+      gap: 32px;
+    }
+
+    @include desktop {
+      height: $header-height-desktop;
+      gap: 48px;
+    }
+  }
+
+  &__navigation {
+    display: none;
+
+    @include tablet {
+      display: flex;
+      width: 100%;
+    }
+  }
+
+  &__actions {
+    display: flex;
+  }
+
+  &__searchButton {
+    @include header-button-mobile-style;
+
+    @include desktop {
+      height: $header-height-desktop;
+      width: $header-height-desktop;
+    }
+  }
+
+   &__headerActions {
+    display: none;
+
+    @include tablet {
+      display: flex;
+    }
+   }
+
+  &__burgemMenuWrapper {
+    @include header-button-mobile-style;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__burgerMenu {
+    position: relative;
+    width: 14px;
+    height: 8.5px;
+    display: flex;
+    align-items: center;
+
+    &--active {
+      span:nth-of-type(1) {
+        transform: rotate(45deg) scale(0);
+      }
+
+      span:nth-of-type(2) {
+        transform: rotate(45deg) scale(0.86);
+
+        &::after {
+          transform: rotate(90deg);
+        }
+      }
+
+      span:nth-of-type(3) {
+        transform: rotate(45deg) scale(0);
+      }
+    }
+  }
+
+  &__burgerMenuLine {
+    @include menu-button-lines-style;
+
+    &::after {
+      content: '';
+
+      @include menu-button-lines-style;
+    }
+
+    &:nth-of-type(1) {
+      top: 0;
+    }
+
+    &:nth-of-type(3) {
+      top: 100%;
+      transform: translateY(-100%);
+    }
+  }
+
+  &__searchBar {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background-color: $hover-bg-color;
+    z-index: 1;
+    opacity: 0;
+
+    transition: transform $effectDuration ease-in-out, opacity $effectDuration ease-in-out, visibility $effectDuration;
+    transform: translateY(-100%);
+    visibility: hidden;
+
+    @include container;
+
+    &--visible {
+      transform: translateY(0);
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+

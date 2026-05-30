@@ -1,0 +1,30 @@
+@import '/src/styles/styles';
+
+.colorLink {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  border: 1px solid $elements-color;
+  box-sizing: border-box;
+  border-radius: 50%;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid #fff;
+    z-index: 1;
+    border-radius: 50%;
+  }
+
+  @include hover (border-color, $secondary-color);
+
+  &--active {
+    border: 1px solid $primary-color;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+}

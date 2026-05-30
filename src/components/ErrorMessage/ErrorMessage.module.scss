@@ -1,0 +1,37 @@
+@import '/src/styles/styles';
+
+.error {
+  @include container;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  padding-block: 100px;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 600px;
+
+  &__message {
+    @include headline-1;
+  }
+
+  &__reloadButton {
+    @include text-buttons;
+
+    height: 48px;
+    width: 240px;
+
+    background-color: $accent-color;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all $effectDuration;
+
+    @include hover (box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.4));
+  }
+}
+
+
+

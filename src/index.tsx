@@ -1,4 +1,9 @@
 import { createRoot } from 'react-dom/client';
-import { App } from './App';
+import { Root } from './Root';
+import { GlobalStateProvider } from './context/GlobalContext';
 
-createRoot(document.getElementById('root') as HTMLElement).render(<App />);
+createRoot(document.getElementById('root') as HTMLDivElement).render(
+  <GlobalStateProvider>
+    <Root />
+  </GlobalStateProvider>,
+);
