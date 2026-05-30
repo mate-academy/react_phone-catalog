@@ -1,0 +1,87 @@
+.burger-menu {
+  position: fixed; // Меню поверх всего
+  top: 48px; // Убедись, что это соответствует высоте хедера
+  right: 0;
+  height: calc(100vh - 35px); // Учитываем высоту хедера
+  width: 100vw;
+  background-color: white;
+  z-index: 1000;
+
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out;
+  &--active {
+    transform: translateX(-3px);
+
+    body {
+      overflow: hidden;
+    }
+  }
+  &__inner {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &--text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+
+    &-button {
+      position: relative;
+      color: rgb(137, 147, 154);
+    }
+  }
+
+  &--button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around; /* Равномерное распределение */
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+
+      border: 1px solid rgb(226, 230, 233);
+      width: 100%;
+    }
+
+    &::after {
+      content: '';
+      box-sizing: border-box;
+      position: absolute;
+      top: 50%;
+
+      border: 1px solid rgb(226, 230, 233);
+      width: 64px;
+
+      transform: rotate(90deg);
+    }
+  }
+}
+
+
+.burger-menu--text-button--is-active::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+
+  border: 1px solid #313237;
+  width: 100%;
+}
+
+.b-s-d--is-active::before {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+
+  border: 2px solid #313237;
+  width: 47%;
+}

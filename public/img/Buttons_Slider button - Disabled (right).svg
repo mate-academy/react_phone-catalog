@@ -1,0 +1,10 @@
+<svg width="32.000000" height="32.000000" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs/>
+	<rect id="Buttons/Slider button - Disabled (right)" rx="-0.500000" width="31.000000" height="31.000000" transform="matrix(-1 0 0 1 32.5 0.5)" fill="#FFFFFF" fill-opacity="0"/>
+	<rect id="Rectangle 20" rx="15.500000" width="31.000000" height="31.000000" transform="matrix(-1 0 0 1 32 0)" stroke="#E2E6E9" stroke-opacity="1.000000" stroke-width="1.000000"/>
+	<rect id="Icons/Chevron (Arrow Right)" rx="-0.500000" width="15.000000" height="15.000000" transform="matrix(-1 0 0 1 24.5 8.5)" fill="#FFFFFF" fill-opacity="0"/>
+	<path id="Vector (Stroke)" d="M18.47 11.52C18.21 11.26 17.78 11.26 17.52 11.52L13.52 15.52C13.26 15.78 13.26 16.21 13.52 16.47L17.52 20.47C17.78 20.73 18.21 20.73 18.47 20.47C18.73 20.21 18.73 19.78 18.47 19.52L14.94 16L18.47 12.47C18.73 12.21 18.73 11.78 18.47 11.52Z" fill="#B4BDC4" fill-opacity="1.000000" fill-rule="evenodd"/>
+</svg>

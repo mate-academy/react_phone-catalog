@@ -1,0 +1,15 @@
+.swiper-pagination {
+  transform: translateY(0%);
+}
+
+.swiper-pagination-bullet {
+  background: rgb(226, 230, 233);
+  border-radius: 0;
+  width: 14px;
+  height: 4px;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: rgb(15, 15, 17);
+}
