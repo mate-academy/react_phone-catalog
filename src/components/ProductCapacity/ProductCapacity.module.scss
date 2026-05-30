@@ -1,0 +1,89 @@
+@import '../../styles/variables';
+
+.capacitySelector {
+  width: 100%;
+  padding-bottom: $spacing-lg;
+  border-bottom: 1px solid;
+
+  @include mobile {
+    padding-bottom: $spacing-md;
+  }
+
+  [data-theme='light'] & {
+    border-color: $elements-border-light;
+  }
+
+  [data-theme='dark'] & {
+    border-color: $elements-selected-dark;
+  }
+}
+
+.label {
+  display: block;
+  margin-bottom: $spacing-md;
+
+  @include small-text;
+
+  [data-theme='light'] & {
+    color: $text-secondary-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-secondary-dark;
+  }
+}
+
+.capacities {
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+}
+
+.capacityButton {
+  min-width: 60px;
+  height: 32px;
+  padding: 0 $spacing-sm;
+  border: 1px solid;
+  border-radius: $border-radius-sm;
+  background: none;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  @include small-text;
+
+  [data-theme='light'] & {
+    color: $text-primary-light;
+    border-color: $elements-border-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-primary-dark;
+    border-color: $elements-selected-dark;
+  }
+
+  &:hover {
+    [data-theme='light'] & {
+      border-color: $text-primary-light;
+      background: $elements-hover-light;
+    }
+
+    [data-theme='dark'] & {
+      border-color: $text-primary-dark;
+      background: $elements-hover-dark;
+    }
+  }
+
+  &Active {
+    [data-theme='light'] & {
+      color: $white;
+      background: $text-primary-light;
+      border-color: $text-primary-light;
+    }
+
+    [data-theme='dark'] & {
+      color: $surface-primary-dark;
+      background: $text-primary-dark;
+      border-color: $text-primary-dark;
+    }
+  }
+}

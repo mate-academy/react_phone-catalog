@@ -1,0 +1,78 @@
+@import '../../styles/variables';
+
+.productSpecs {
+  width: 100%;
+}
+
+.title {
+  @include h3;
+
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-md;
+  border-bottom: 1px solid;
+
+  [data-theme='light'] & {
+    color: $text-primary-light;
+    border-color: $elements-border-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-primary-dark;
+    border-color: $elements-selected-dark;
+  }
+}
+
+.specsList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: $spacing-md;
+  padding: $spacing-sm 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid;
+
+    [data-theme='light'] & {
+      border-color: $elements-border-light;
+    }
+
+    [data-theme='dark'] & {
+      border-color: $elements-selected-dark;
+    }
+  }
+}
+
+.specLabel {
+  @include body-text;
+
+  flex-shrink: 0;
+
+  [data-theme='light'] & {
+    color: $text-secondary-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-secondary-dark;
+  }
+}
+
+.specValue {
+  @include body-text;
+
+  font-weight: $font-weight-semi-bold;
+  text-align: right;
+
+  [data-theme='light'] & {
+    color: $text-primary-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-primary-dark;
+  }
+}

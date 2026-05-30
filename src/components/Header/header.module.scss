@@ -1,0 +1,321 @@
+@import '../../styles/variables';
+
+// ============================================
+// HEADER
+// ============================================
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 64px;
+  border-bottom: 1px solid;
+  z-index: 100;
+
+  // Light theme
+  [data-theme='light'] & {
+    background: $surface-secondary-light;
+    border-color: $elements-border-light;
+  }
+
+  // Dark theme
+  [data-theme='dark'] & {
+    background: $surface-primary-dark;
+    border-color: $elements-selected-dark;
+  }
+
+  // Add shadow on scroll (optional)
+  &.scrolled {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.container {
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// ============================================
+// LOGO
+// ============================================
+.logo {
+  display: flex;
+  width: 96px;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: opacity $transition-base;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @include desktop {
+    width: 128px;
+  }
+}
+
+.logoImage {
+  height: 22px;
+  width: auto;
+  object-fit: contain;
+
+  @include desktop {
+    height: 28px;
+  }
+}
+
+// ============================================
+// NAVIGATION (Desktop & Tablet)
+// ============================================
+.navigation {
+  flex: 1;
+  display: none; // Hidden on mobile
+
+  @include tablet {
+    display: flex;
+    justify-content: center;
+  }
+
+  @include desktop {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+// ============================================
+// ACTIONS SECTION
+// ============================================
+.actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+
+  @include desktop {
+    gap: 24px;
+  }
+}
+
+// ============================================
+// DESKTOP SWITCHERS (Desktop Only)
+// ============================================
+.desktopSwitchers {
+  display: none; // Hidden by default
+
+  @include desktop {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+// ============================================
+// TABLET DROPDOWN (Tablet Only)
+// ============================================
+.tabletDropdown {
+  display: none; // Hidden by default
+  position: relative;
+
+  @include tablet {
+    display: block;
+  }
+
+  @include desktop {
+    display: none; // Hidden on desktop
+  }
+}
+
+.dropdownButton {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: all $transition-base;
+
+  [data-theme='light'] & {
+    border-color: $elements-border-light;
+  }
+
+  [data-theme='dark'] & {
+    border-color: $elements-selected-dark;
+  }
+
+  // Hover state
+  &:hover::after {
+    display: block;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+
+    [data-theme='light'] & {
+      background-color: $text-primary-light;
+    }
+
+    [data-theme='dark'] & {
+      background-color: $text-primary-dark;
+    }
+  }
+
+  // Active state (when dropdown is open)
+  &.active::after {
+    display: block;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+
+    [data-theme='light'] & {
+      background-color: $text-primary-light;
+    }
+
+    [data-theme='dark'] & {
+      background-color: $text-primary-dark;
+    }
+  }
+}
+
+.dropdownIcon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  transition: transform $transition-base;
+
+  [data-theme='light'] & {
+    transform: rotate(180deg);
+  }
+
+  // Rotate when dropdown is open
+  .dropdownButton.active & {
+    transform: rotate(180deg);
+
+    [data-theme='light'] & {
+    transform: rotate(0);
+  }
+  }
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 100px;
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 101;
+  animation: dropdown-fade-in 0.2s ease-out;
+
+  [data-theme='light'] & {
+    background: $surface-secondary-light;
+    border-color: $elements-border-light;
+  }
+
+  [data-theme='dark'] & {
+    background: $surface-primary-dark;
+    border-color: $elements-selected-dark;
+  }
+}
+
+@keyframes dropdown-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ============================================
+// BUTTONS (Favorite & Cart - Desktop & Tablet)
+// ============================================
+.buttons {
+  display: none; // Hidden on mobile
+
+  @include tablet {
+    display: flex;
+    align-items: center;
+  }
+
+  @include desktop {
+    display: flex;
+    align-items: center;
+  }
+}
+
+// ============================================
+// BURGER MENU (Mobile Only)
+// ============================================
+.burgerWrapper {
+  display: block; // Visible on mobile
+
+  @include tablet {
+    display: none; // Hidden on tablet
+  }
+
+  @include desktop {
+    display: none; // Hidden on desktop
+  }
+}
+
+// ============================================
+// RESPONSIVE ADJUSTMENTS
+// ============================================
+
+// Mobile (<640px)
+@include mobile {
+  .header {
+    height: 48px;
+  }
+}
+
+@include tablet {
+  .header {
+    height: 48px;
+  }
+
+  .container {
+    gap: 16px;
+  }
+}
+
+// Desktop (≥1200px)
+@include desktop {
+  .container {
+    gap: 24px;
+  }
+}
+
+// ============================================
+// UTILITY CLASSES
+// ============================================
+
+// For sticky header on scroll
+.header.sticky {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+// For transparent header on home page (optional)
+.header.transparent {
+  background: transparent;
+  border-bottom-color: transparent;
+}

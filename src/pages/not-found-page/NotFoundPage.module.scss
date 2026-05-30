@@ -1,0 +1,228 @@
+@import '../../styles/variables';
+
+// ============================================
+// PAGE LAYOUT
+// ============================================
+
+.page {
+  min-height: calc(100vh - #{$header-height-desktop} - #{$footer-height});
+  padding: $spacing-2xl 0;
+  animation: fade-in 0.3s ease-out;
+
+  [data-theme="light"] & {
+    background: $surface-primary-light;
+  }
+
+  [data-theme="dark"] & {
+    background: $surface-primary-dark;
+  }
+
+  @include mobile {
+    padding: $spacing-xl 0;
+    min-height: calc(100vh - #{$header-height-mobile} - #{$footer-height});
+  }
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding-desktop;
+
+  @include mobile {
+    padding: 0 $container-padding-mobile;
+  }
+
+  @include tablet {
+    padding: 0 $container-padding-tablet;
+  }
+}
+
+// ============================================
+// EMPTY STATE (404)
+// ============================================
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - #{$header-height-desktop} - #{$footer-height} - #{$spacing-2xl} * 2);
+  padding: $spacing-3xl 0;
+
+  @include mobile {
+    min-height: calc(100vh - #{$header-height-mobile} - #{$footer-height} - #{$spacing-xl} * 2);
+    padding: $spacing-3xl 0;
+  }
+}
+
+.emptyStateContent {
+  text-align: center;
+  max-width: 600px;
+  padding: 0 $spacing-md;
+}
+
+.emptyStateImage {
+  width: 500px;
+  height: auto;
+  margin: 0 auto $spacing-xl;
+  display: block;
+  object-fit: contain;
+  background-color: $white;
+  border-radius: 8px;
+
+  @include mobile {
+    width: 300px;
+    margin-bottom: $spacing-3xl;
+  }
+
+  @include tablet {
+    width: 360px;
+  }
+}
+
+.emptyStateTitle {
+  @include h1;
+
+  margin: 0 0 $spacing-md;
+
+  [data-theme="light"] & {
+    color: $text-primary-light;
+  }
+
+  [data-theme="dark"] & {
+    color: $text-primary-dark;
+  }
+
+  @include mobile {
+    font-size: $font-size-2xl;
+  }
+}
+
+.emptyStateMessage {
+  @include h3;
+
+  margin: 0 0 $spacing-md;
+  font-weight: $font-weight-semi-bold;
+
+  [data-theme="light"] & {
+    color: $text-primary-light;
+  }
+
+  [data-theme="dark"] & {
+    color: $text-primary-dark;
+  }
+
+  @include mobile {
+    font-size: $font-size-lg;
+  }
+}
+
+.emptyStateDescription {
+  @include body-text;
+
+  margin: 0 0 $spacing-2xl;
+  line-height: $line-height-relaxed;
+
+  [data-theme="light"] & {
+    color: $text-secondary-light;
+  }
+
+  [data-theme="dark"] & {
+    color: $text-secondary-dark;
+  }
+
+  @include mobile {
+    margin-bottom: $spacing-xl;
+  }
+}
+
+/* stylelint-disable no-descending-specificity */
+.backToHomeButton {
+  @include buttons;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  min-width: 180px;
+  border-radius: $border-radius-md;
+  text-decoration: none;
+  transition: all $transition-base;
+  cursor: pointer;
+  border: none;
+
+  [data-theme="light"] & {
+    background: $primary-accent;
+    color: $white;
+  }
+
+
+  [data-theme="dark"] & {
+    background: $primary-accent-dark;
+    color: $white;
+  }
+
+  &:active {
+    [data-theme="dark"] & {
+       transform: translateY(0) scale(0.98);
+    }
+
+    [data-theme="light"] & {
+      transform: translateY(0) scale(0.98);
+    }
+  }
+
+  &:hover {
+    [data-theme="dark"] & {
+      opacity: 0.9;
+      box-shadow: 0 4px 16px rgba(144, 91, 255, 0.3);
+      transform: translateY(-1px);
+    }
+
+    [data-theme="light"] & {
+      opacity: 0.9;
+      box-shadow: $shadow-button-hover;
+      transform: translateY(-1px);
+    }
+  }
+
+  @include mobile {
+    padding: 10px 20px;
+    min-width: 160px;
+    font-size: $font-size-sm;
+  }
+}
+/* stylelint-enable no-descending-specificity */
+
+// ============================================
+// ANIMATION
+// ============================================
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Accessibility improvements
+@media (prefers-reduced-motion: reduce) {
+  .page {
+    animation: none;
+  }
+
+  .backToHomeButton {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}

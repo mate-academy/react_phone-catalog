@@ -1,0 +1,229 @@
+// ============================================
+// TYPOGRAPHY SYSTEM
+// Based on Figma Design System
+// ============================================
+
+// ============================================
+// FONT FAMILY
+// ============================================
+$font-family-base: 'Mont', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+
+// ============================================
+// FONT WEIGHTS
+// ============================================
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+
+// ============================================
+// FONT SIZES
+// ============================================
+$font-size-xs: 10px;
+$font-size-sm: 12px;
+$font-size-base: 14px;
+$font-size-md: 16px;
+$font-size-lg: 20px;
+$font-size-xl: 22px;
+$font-size-2xl: 32px;
+$font-size-3xl: 48px;
+
+// ============================================
+// LINE HEIGHTS
+// ============================================
+$line-height-tight: 1.3;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// ============================================
+// TYPOGRAPHY MIXINS - DESKTOP/TABLET
+// ============================================
+
+// H1 — The quick brown fox jumps over the lazy dog
+// Font: Mont Bold / Size: 48px / Line height: 56px / Letter spacing: -0.01em
+@mixin h1-desktop {
+  font-family: $font-family-base;
+  font-weight: $font-weight-bold;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+}
+
+// H2 — The quick brown fox jumps over the lazy dog
+// Font: Mont Bold / Size: 32px / Line height: 41px / Letter spacing: -0.01em
+@mixin h2-desktop {
+  font-family: $font-family-base;
+  font-weight: $font-weight-bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+// H3 — The quick brown fox jumps over the lazy dog
+// Font: Mont Bold / Size: 22px / Line height: 31px / Letter spacing: 0
+@mixin h3-desktop {
+  font-family: $font-family-base;
+  font-weight: $font-weight-bold;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+// H4 — The quick brown fox jumps over the lazy dog
+// Font: Mont SemiBold / Size: 20px / Line height: 26px / Letter spacing: 0
+@mixin h4-desktop {
+  font-family: $font-family-base;
+  font-weight: $font-weight-semi-bold;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+// UPPERCASE — THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
+// Font: Mont Bold / Size: 12px / Line height: 11px / Letter spacing: 0.04em
+@mixin uppercase-desktop {
+  font-family: $font-family-base;
+  font-weight: $font-weight-bold;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+// Buttons — The quick brown fox jumps over the lazy dog
+// Font: Mont SemiBold / Size: 14px / Line height: 21px / Letter spacing: 0
+@mixin buttons-desktop {
+  font-family: $font-family-base;
+  font-weight: $font-weight-semi-bold;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+// Body text — The quick brown fox jumps over the lazy dog
+// Font: Mont Regular / Size: 14px / Line height: 21px / Letter spacing: 0
+@mixin body-text-desktop {
+  font-family: $font-family-base;
+  font-weight: $font-weight-regular;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+// Small text — The quick brown fox jumps over the lazy dog
+// Font: Mont SemiBold / Size: 12px / Line height: 15px / Letter spacing: 0
+@mixin small-text-desktop {
+  font-family: $font-family-base;
+  font-weight: $font-weight-semi-bold;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+// ============================================
+// TYPOGRAPHY MIXINS - MOBILE
+// ============================================
+
+// H1 — The quick brown fox jumps over the lazy dog
+// Font: Mont Bold / Size: 32px / Line height: 41px / Letter spacing: -0.01em
+@mixin h1-mobile {
+  font-family: $font-family-base;
+  font-weight: $font-weight-bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+// H2 — The quick brown fox jumps over the lazy dog
+// Font: Mont Bold / Size: 22px / Line height: 31px / Letter spacing: 0
+@mixin h2-mobile {
+  font-family: $font-family-base;
+  font-weight: $font-weight-bold;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+// H3 — The quick brown fox jumps over the lazy dog
+// Font: Mont SemiBold / Size: 20px / Line height: 26px / Letter spacing: 0
+@mixin h3-mobile {
+  font-family: $font-family-base;
+  font-weight: $font-weight-semi-bold;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+// H4 — The quick brown fox jumps over the lazy dog
+// Font: Mont SemiBold / Size: 16px / Line height: 20px / Letter spacing: 0
+@mixin h4-mobile {
+  font-family: $font-family-base;
+  font-weight: $font-weight-semi-bold;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+// ============================================
+// RESPONSIVE TYPOGRAPHY MIXINS
+// Auto-switch between mobile and desktop sizes
+// Breakpoint: 640px (tablet-up)
+// ============================================
+
+// H1 - Responsive heading (32px mobile → 48px desktop)
+@mixin h1 {
+  @include h1-mobile;
+
+  @media (min-width: 640px) {
+    @include h1-desktop;
+  }
+}
+
+// H2 - Responsive heading (22px mobile → 32px desktop)
+@mixin h2 {
+  @include h2-mobile;
+
+  @media (min-width: 640px) {
+    @include h2-desktop;
+  }
+}
+
+// H3 - Responsive heading (20px mobile → 22px desktop)
+@mixin h3 {
+  @include h3-mobile;
+
+  @media (min-width: 640px) {
+    @include h3-desktop;
+  }
+}
+
+// H4 - Responsive heading (16px mobile → 20px desktop)
+@mixin h4 {
+  @include h4-mobile;
+
+  @media (min-width: 640px) {
+    @include h4-desktop;
+  }
+}
+
+// UPPERCASE - Same on all devices
+@mixin uppercase {
+  @include uppercase-desktop;
+}
+
+// Buttons - Same on all devices
+@mixin buttons {
+  @include buttons-desktop;
+}
+
+// Body text - Same on all devices
+@mixin body-text {
+  @include body-text-desktop;
+}
+
+// Small text - Same on all devices
+@mixin small-text {
+  @include small-text-desktop;
+}

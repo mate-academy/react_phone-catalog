@@ -1,0 +1,157 @@
+@import '../../styles/variables';
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+
+  @include mobile {
+    gap: $spacing-xs;
+  }
+}
+
+.pages {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+
+  @include mobile {
+    gap: 4px;
+  }
+}
+
+/* stylelint-disable no-descending-specificity */
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid;
+  border-radius: $border-radius-sm;
+  background: transparent;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  @include small-text;
+
+  font-weight: $font-weight-semi-bold;
+
+  [data-theme="light"] & {
+    border-color: $icon-default-light;
+    color: $text-primary-light;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled, .active) {
+      background: $surface-secondary-light;
+      border-color: $text-primary-light;
+    }
+  }
+
+  [data-theme="dark"] & {
+    border-color: $icon-color-dark;
+    color: $text-primary-dark;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled, .active) {
+      background: $surface-secondary-dark;
+      border-color: $text-primary-dark;
+    }
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.95);
+  }
+
+  @include mobile {
+    min-width: 28px;
+    height: 28px;
+    padding: 0 6px;
+  }
+}
+/* stylelint-enable no-descending-specificity */
+
+.arrow {
+  svg {
+    width: 16px;
+    height: 16px;
+
+    @include mobile {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+.page {
+  // Page number button
+}
+
+/* stylelint-disable no-descending-specificity */
+.active {
+  [data-theme="dark"] & {
+    background: $primary-accent-dark;
+    border-color: $primary-accent-dark;
+    color: $white;
+
+    &:hover {
+      background: $primary-accent-dark;
+      border-color: $primary-accent-dark;
+    }
+  }
+
+  [data-theme="light"] & {
+    background: $primary-accent;
+    border-color: $primary-accent;
+    color: $white;
+
+    &:hover {
+      background: $primary-accent;
+      border-color: $primary-accent;
+    }
+  }
+}
+
+/* stylelint-enable no-descending-specificity */
+
+.ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+
+  @include small-text;
+
+  [data-theme="light"] & {
+    color: $text-secondary-light;
+  }
+
+  [data-theme="dark"] & {
+    color: $text-secondary-dark;
+  }
+
+  @include mobile {
+    min-width: 28px;
+    height: 28px;
+    padding: 0 6px;
+  }
+}
+
+// Accessibility
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}
