@@ -1,0 +1,13 @@
+.favorites {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-tablet {
+    gap: 40px;
+  }
+
+  @include page-margins;
+  @include bottom-margin;
+}
