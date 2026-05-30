@@ -45,7 +45,7 @@
   &__input,
   &__select {
     color: #F1F2F9;
-    background-color: transparent;
+    background-color: #323542;
     padding: 10px 16px;
     font-size: 14px;
     font-weight: 600;
@@ -55,6 +55,10 @@
     transition: border-color 0.2s ease;
     font-family: 'Mont', Montserrat, sans-serif;
 
+    &::placeholder {
+      color: #F1F2F9;
+    }
+
     &:focus,
     &:hover {
       border-color: #F1F2F9;
@@ -62,7 +66,7 @@
 
     option {
       background-color: #161827;
-      color: #F1F2F9;
+      color: #f9f4f1;
     }
   }
 

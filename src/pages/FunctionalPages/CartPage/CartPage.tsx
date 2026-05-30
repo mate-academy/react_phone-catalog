@@ -14,7 +14,7 @@ export const CartPage = () => {
       <section className="cart section">
         <div className="cart__back" onClick={() => window.history.back()}>
           <img
-            src={`${import.meta.env.BASE_URL}icons/arrow-left-small-white.svg`}
+            src={`${import.meta.env.BASE_URL}icons/arrow-left-breadcrumb.svg`}
             alt="back"
             className="cart__back-arrow"
           />
@@ -30,7 +30,7 @@ export const CartPage = () => {
     <section className="cart section">
       <div className="cart__back" onClick={() => window.history.back()}>
         <img
-          src={`${import.meta.env.BASE_URL}icons/arrow-left-small-white.svg`}
+          src={`${import.meta.env.BASE_URL}icons/arrow-left-breadcrumb.svg`}
           alt="back"
           className="cart__back-arrow"
         />
