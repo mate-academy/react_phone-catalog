@@ -1,4 +1,8 @@
 module.exports = {
   extends: "@mate-academy/stylelint-config",
-  rules: {}
+  rules: {
+    "property-no-unknown": [true, {
+      ignoreProperties: ["composes"]
+    }]
+  }
 };

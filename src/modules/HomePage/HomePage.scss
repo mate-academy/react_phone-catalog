@@ -1,0 +1,254 @@
+@import '../../shared/styles/mixin';
+@import '../../shared/styles/variables';
+
+.home-page {
+  &__hidden-title {
+    visibility: hidden;
+  }
+}
+
+.home-page__title {
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 800;
+  color: $primary-color;
+  grid-column: 1 / -1;
+
+  @include respond-to(mobile) {
+    margin: 24px 0;
+    font-size: 32px;
+  line-height: 41px;
+  }
+
+    @include respond-to(tablet) {
+      margin: 32px 0;
+    }
+
+  @include respond-from(desktop) {
+margin: 56px 0;
+  }
+}
+
+.slider__container {
+  padding: 0 32px;
+  margin: 0 auto 80px;
+  position: relative;
+  display: flex;
+  z-index: 2;
+
+  @include respond-to(tablet) {
+    padding: 0 24px;
+    margin-bottom: 64px;
+    height: 221px;
+  }
+
+  @include respond-to(mobile) {
+    padding: 0;
+    margin-bottom: 56px;
+  width: 100%;
+  height: 100%;
+  }
+
+    @include respond-from(desktop) {
+      padding: 0;
+      width: 1136px;
+      height: 432px;
+    }
+}
+
+.slider__container--arrow-icon{
+  padding: 0 8px;
+  border: 1px solid #B4BDC3;
+  width: 32px;
+  max-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  @include respond-to(tablet) {
+      max-height: 189px;
+  }
+
+  @include respond-to(mobile) {
+    display: none;
+  }
+}
+
+.slider__container--arrow-icon-left {
+  margin-right: 16px;
+}
+
+.slider__container--arrow-icon-right {
+  margin-left: 16px;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.icon_left {
+  background-image: url('../../images/arrow-left.svg');
+
+}
+
+.icon_right {
+  background-image: url('../../images/arrow-right.svg');
+}
+
+.photoSwiper {
+  position: relative;
+  overflow: hidden;
+
+  & .swiper-pagination {
+      height: 24px;
+
+
+      & .swiper-pagination-bullet {
+        height: 4px;
+        width: 14px;
+        border-radius: 0%;
+        background-color: $primary-color !important;
+
+        .swiper-pagination-bullet-active {
+          opacity: 1;
+          background-color: black;
+        }
+      }
+    }
+}
+
+.slider__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1040px;
+  max-height: 432px;
+  height: 400px;
+  background-color: $white-color;
+
+  @include respond-to(tablet) {
+    height: 189px;
+  }
+
+  @include respond-to(mobile) {
+    width: 100%;
+    height: 90%;
+  }
+}
+
+.slider__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+
+// category section
+
+.category {
+  grid-column: 1 / -1;
+
+  &__section {
+  margin-top: 56px;
+
+  @include respond-to(tablet) {
+    margin-top: 64px;
+  }
+
+  @include respond-to(desktop) {
+    margin-top: 80px;
+  }
+
+  @include respond-from(desktop) {
+    margin-top: 80px;
+  }
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    font-size: 32px;
+    line-height: 41px;
+    grid-column: 1 / -1;
+
+    @include respond-to(mobile) {
+    font-size: 22px;
+    line-height: 31px;
+  }
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+
+    @include respond-to(mobile) {
+      flex-direction: column;
+    }
+  }
+
+        &__link-field {
+          margin-bottom: 24px;
+          transform: scale(1);
+          transition: transform $transition;
+
+          @include respond-to(mobile) {
+            min-width: 288px;
+          }
+
+          @include respond-to(tablet) {
+            min-width: 187px;
+            min-height: 187px;
+          }
+
+          @include respond-from(desktop) {
+            width: 368px;
+            height: 368px;
+          }
+        }
+
+  &__item:hover .category__link-field, &__item:focus .category__link-field{
+    transform: scale(1.05);
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 16px;
+
+    @include respond-to(mobile) {
+        margin-bottom: 32px;
+      }
+  }
+
+  @include respond-to(mobile) {
+    &__item:not(:last-child) {
+        margin-right: 0;
+      }
+  }
+
+
+
+  &__link {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__name {
+    margin-bottom: 4px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &__info {
+    font-size: 14px;
+    color: $secondary-color;
+  }
+}

@@ -1,0 +1,32 @@
+@import '../../styles/variables';
+@import '../../styles/mixin';
+
+.Pagination {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.PaginationButton {
+  border: 1px solid $elements-color;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &.Active {
+    background-color: $primary-color;
+    color: #fff;
+    cursor: default;
+  }
+
+  &.Disabled {
+    color: $elements-color;
+  }
+
+  &:hover:not(.Active, .Disabled) {
+    background-color: #ddd;
+  }
+}
