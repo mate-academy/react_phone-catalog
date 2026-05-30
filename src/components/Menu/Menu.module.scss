@@ -1,0 +1,24 @@
+@use '/src/utils' as *;
+
+.Menu {
+  position: fixed;
+  width: 100vw;
+  inset: 48px 0 0 ;
+  transform: translateX(100%);
+  z-index: 999;
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
+  &__active {
+    background-color: #fff;
+    pointer-events: all;
+    transform: translateX(0%);
+  }
+
+  &__icons {
+    display: flex;
+    flex-grow: 1;
+  }
+}

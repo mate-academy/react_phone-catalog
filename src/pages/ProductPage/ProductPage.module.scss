@@ -1,0 +1,58 @@
+@use '/src/utils' as *;
+
+$gap: 8px;
+
+.ProductPage {
+  row-gap: 40px;
+
+  @include grid;
+
+  @include on-tablet {
+    row-gap: 70px;
+  }
+
+  @include on-desktop {
+    row-gap: 80px;
+  }
+
+  &__mainInfo {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-tablet {
+      grid-column: span 5;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / 20;
+    }
+  }
+
+  &__addTo {
+    display: flex;
+    gap: $gap;
+  }
+
+  &__techSpecs {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-desktop {
+      grid-column: 14 / -1;
+    }
+  }
+
+  &__subtitle {
+    color: var(--text-main);
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-light-color);
+  }
+
+  &__slider {
+    grid-column: 1 / -1;
+  }
+}
