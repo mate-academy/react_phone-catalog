@@ -1,0 +1,172 @@
+.productsCards {
+  margin-bottom: 80px;
+}
+
+.productsCardsTitle {
+font-weight: 800;
+font-size: 32px;
+line-height: 41px;
+letter-spacing: -0.01em;
+grid-column: 1 / 8;
+margin-bottom: 24px;
+}
+
+.productsCardsArrow {
+  column-gap: 16px;
+  display: grid;
+  grid-column: 23 / 25;
+  grid-template-columns: repeat(2, 32px);
+}
+
+.arrowSize {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #B4BDC3;
+  text-align: center;
+}
+
+.arrowImg {
+  padding: 8px;
+}
+
+
+.card {
+  text-align: center;
+  border: 1px solid #B4BDC3;
+  padding-top: 32px;
+  height: 506px;
+}
+
+.card:hover {
+  background-color: #f7f7f7;
+}
+
+.cardImg {
+  height: 196px;
+  margin-bottom: 24px;
+}
+
+.cardName {
+font-weight: 600;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0;
+padding: 0 32px;
+text-align: left;
+margin-bottom: 8px;
+height: 42px;
+}
+
+.cardLink {
+color: #313237;
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 32px;
+  justify-content: flex-start;
+}
+
+.price {
+  font-weight: 800;
+  font-size: 22px;
+}
+
+.fullPrice {
+font-weight: 600;
+font-size: 22px;
+line-height: 1;
+letter-spacing: 0;
+text-decoration: line-through;
+color: #89939A;
+}
+
+.line {
+  display: block;
+  width: 208px;
+  border-bottom: 1px solid #E2E6E9;
+  margin: 0 auto;
+}
+
+.infoLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  margin-top: 8px;
+}
+
+.label {
+  font-weight: 700;
+  font-size: 12px;
+  color: #89939A;
+}
+
+.value {
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.addBlock {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 32px;
+  margin-top: 8px;
+  margin-bottom: 32px;
+}
+
+.btn {
+  font-weight: 700;
+  font-size: 14px;
+  background-color: #313237;
+  color: #fff;
+  padding: 10px 40px;
+}
+
+.btn:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.added {
+  background-color: #fff;
+  color: #27AE60;
+  padding: 10px 30px;
+  border: 1px solid #E2E6E9;
+}
+
+.likeBtn {
+  width: 40px;
+  height: 40px;
+  padding: 12px;
+  border: 1px solid #B4BDC3;
+}
+
+.likeBtn:hover {
+  border: 1px solid #313237;
+}
+
+.likeBtnActive {
+  border: 1px solid #E2E6E9;
+}
+
+.likeImg {
+  width: 16px;
+  height: 16px;
+}
+
+
+
+@media (max-width: 870px) {
+
+  .btn {
+    padding:  0 10px;
+  }
+
+  .priceRow {
+    margin-top: 20px;
+  }
+
+
+}

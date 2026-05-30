@@ -1,0 +1,118 @@
+.ShopByCategory {
+  margin-bottom: 80px;
+}
+
+.cards {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 16px;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: 0.01em;
+  grid-column: 1 / 8;
+  margin-bottom: 24px;
+}
+
+.images {
+  text-align: right;
+  margin-bottom: 24px;
+}
+
+.images:hover {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+
+.cards>.card:nth-child(1) .images {
+  background-color: #6D6474;
+}
+
+.cards>.card:nth-child(2) .images {
+  background-color: #8D8D92;
+}
+
+.cards>.card:nth-child(3) .images {
+  background-color: #973D5F;
+}
+
+.img {
+  width: 368px;
+  height: 368px;
+}
+
+
+.subTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1em;
+  letter-spacing: 0%;
+  color: #313237;
+}
+
+.models {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: #89939A;
+}
+
+
+@media (max-width: 1024px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px 24px;
+  }
+
+  .img {
+    width: 100%;
+    height: auto;
+  }
+
+  .images {
+    margin-bottom: 24px;
+  }
+
+  .title {
+    grid-column: 1 / 12;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .cards>.card {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .img {
+    width: 100%;
+
+  }
+
+  .title {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 630px) {
+  .cards {
+    display: block;
+
+    /* отключаем grid, чтобы карточки шли вниз */
+    width: 100%;
+
+    /* растягиваем на всю ширину контейнера */
+    margin: 0;
+
+    /* убираем внешние отступы */
+    padding: 0;
+
+    /* убираем внутренние отступы */
+  }
+}
