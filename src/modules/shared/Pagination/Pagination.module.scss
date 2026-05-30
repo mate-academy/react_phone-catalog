@@ -1,0 +1,75 @@
+@use '/src/styles/utils/vars' as vars;
+@use '/src/styles/utils/mixins' as mixins;
+
+.pagination {
+  &__container {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__nav {
+    border: #b4bdc3 solid 1px;
+    width: 32px;
+    height: 32px;
+  }
+
+  &__nav.disabled {
+    opacity: 0.6;
+
+    &:hover {
+      border: #b4bdc3 solid 1px;
+    }
+  }
+
+  &__nav--prev {
+  }
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__page {
+    border: #e2e6e9 solid 1px;
+    width: 32px;
+    height: 32px;
+
+    @include mixins.on-mobile {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  &__nav,
+  &__page {
+    transition: border 0.3s ease;
+
+    &:hover {
+      border: vars.$main-color solid 1px;
+    }
+  }
+
+  &__page.selected {
+    border: none;
+    background-color: vars.$main-color;
+    color: #fff;
+  }
+
+  &__nav--next {
+  }
+
+  &__dots {
+    border: none;
+    font-size: 20px;
+    color: rgb(220, 220, 220);
+
+    @include mixins.on-mobile {
+      display: none;
+    }
+    &:hover {
+      border: none;
+    }
+  }
+}

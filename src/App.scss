@@ -1,1 +1,107 @@
-// not empty
+@use '/src/styles/fonts';
+@use '/src/styles/utils';
+@use '/src/styles/utils/vars' as vars;
+@use '/src/styles/utils/mixins' as mixins;
+
+@use '/src/styles/blocks/page';
+@use '/src/styles/blocks/App';
+
+body {
+  font-family: 'Mont';
+  font-weight: 700;
+  font-size: 12px;
+  color: vars.$main-color;
+  padding-top: 65px;
+
+  @include mixins.on-tablet {
+    padding-top: 48px;
+  }
+}
+
+.App {
+  overflow: hidden;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  flex: 1 1 auto;
+}
+
+[class*='__container'] {
+  max-width: 1166px;
+  margin: 0 auto;
+  padding: 0px 15px;
+}
+
+.main-title {
+  @include mixins.main-title;
+}
+
+.title {
+  @include mixins.title;
+}
+
+.product-card {
+}
+
+.button-add {
+  background-color: vars.$main-color;
+  color: #fff;
+  flex: 1 1 auto;
+  height: 40px;
+  font-size: 14px;
+  line-height: calc(21 / 14 * 100%);
+  transition: box-shadow 0.3s ease;
+  font-weight: 600;
+
+  &--added {
+    background-color: white;
+    color: #27ae60;
+    border: 1px solid #e2e6e9;
+  }
+
+  &--big {
+    height: 48px;
+  }
+
+  &:hover {
+    box-shadow: 0px 5px 15px 0px #0000002f;
+  }
+}
+
+.button-add.button-add--added:hover {
+  box-shadow: none;
+}
+
+.button-like {
+  width: 40px;
+  height: 40px;
+  border: 1px #b4bdc3 solid;
+  transition: border 0.3s ease;
+
+  &--big {
+    width: 48px;
+    height: 48px;
+  }
+
+  &__icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-top: 3px;
+    background: url('/img/icons/like-dis.svg') center no-repeat;
+    transition:
+      transform 0.3s ease,
+      background-image 0.3s ease;
+  }
+  &--liked {
+    background: url('/img/icons/liked.svg') center no-repeat;
+    transform: scale(1);
+  }
+
+  &:hover {
+    border: 1px vars.$main-color solid;
+  }
+}

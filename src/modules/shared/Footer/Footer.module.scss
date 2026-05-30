@@ -1,0 +1,60 @@
+@use '/src/styles/utils/mixins' as mixins;
+@use '/src/styles/utils/vars' as vars;
+
+.footer {
+  border-top: 1px solid vars.$minor-color;
+
+  @include mixins.on-mobile {
+    padding: 34px 0 32px;
+  }
+
+  &__container {
+    display: flex;
+    min-height: 96px;
+    align-items: center;
+    gap: 15px;
+
+    @include mixins.on-mobile {
+      gap: 32px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__wrapper {
+    flex: 1 1 auto;
+  }
+
+  &__logo {
+  }
+
+  &__info {
+    flex: 1 1 auto;
+  }
+
+  &__list {
+    display: flex;
+    gap: 106px;
+
+    @include mixins.on-tablet {
+      gap: 16px;
+    }
+
+    @include mixins.on-mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__item {
+  }
+
+  &__link {
+    text-transform: uppercase;
+    color: vars.$minor-color;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: rgb(177, 177, 177);
+    }
+  }
+}

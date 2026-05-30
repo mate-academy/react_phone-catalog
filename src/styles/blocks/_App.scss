@@ -1,0 +1,11 @@
+@use '../../styles/utils/mixins' as mixins;
+
+.App {
+  &__footer {
+    margin-top: 80px;
+
+    @include mixins.on-tablet {
+      margin-top: 64px;
+    }
+  }
+}

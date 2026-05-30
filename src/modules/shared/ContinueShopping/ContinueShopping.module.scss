@@ -1,0 +1,24 @@
+@use '/src/styles/utils/mixins' as mixins;
+@use '/src/styles/utils/vars' as vars;
+
+.continue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: f;
+    border: 1px vars.$main-color solid;
+    padding: 15px;
+    font-size: 14px;
+    font-weight: 400;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgb(250, 250, 250);
+    }
+  }
+}

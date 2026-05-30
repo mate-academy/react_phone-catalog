@@ -1,0 +1,74 @@
+@use '/src/styles/utils/vars' as vars;
+@use '/src/styles/utils/mixins' as mixins;
+
+.breadcrumbs {
+  @include mixins.on-mobile {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+
+    > * {
+      min-width: 0; // Дозволяємо стискатися дочірнім елементам
+    }
+  }
+
+  &__crumb {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @include mixins.on-mobile {
+      max-width: inherit;
+    }
+
+    &:not(:last-child)::after {
+      content: '';
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 8px;
+      width: 16px;
+      height: 16px;
+      white-space: nowrap;
+      background: url('/img/icons/spliter.svg') center no-repeat;
+
+      @include mixins.on-mobile {
+        margin: 0 6px;
+      }
+    }
+
+    &:not(:last-child) > a {
+      transition: opacity 0.3s ease;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    &:not(:first-child) > a {
+      padding-top: 2px;
+
+      @include mixins.on-mobile {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: inherit;
+      }
+    }
+
+    &:last-child {
+      color: vars.$minor-color;
+    }
+  }
+}

@@ -1,0 +1,87 @@
+@use '/src/styles/utils/vars' as vars;
+@use '/src/styles/utils/mixins' as mixins;
+
+.select {
+  position: relative;
+  width: 176px;
+  font-size: 14px;
+  z-index: 5;
+
+  @include mixins.on-mobile {
+    width: 110px;
+  }
+
+  &__toggle {
+    width: 100%;
+    border: 1px #b4bdc3 solid;
+    padding: 10px 12px;
+    text-align-last: left;
+    color: vars.$main-color;
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    transition: border 0.3s ease;
+    font-weight: 600;
+
+    &.focus {
+      border: 1px vars.$main-color solid;
+    }
+
+    img {
+      transition: transform 0.4s ease;
+    }
+  }
+
+  &__value {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 44px;
+    border: 1px #b4bdc3 solid;
+    width: 100%;
+    background-color: #fff;
+    padding: 8px 0;
+    transition: all 0.3s ease;
+    visibility: hidden;
+    opacity: 0;
+    font-weight: 400;
+    color: vars.$minor-color;
+    transform: translateY(-20%);
+    z-index: -1;
+
+    &.visible {
+      transform: translateY(0%);
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: vars.$main-color;
+      background-color: #fafbfc;
+    }
+  }
+
+  &__text {
+    width: 170px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
