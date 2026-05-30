@@ -1,0 +1,38 @@
+@use 'styles/utils/' as u;
+
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.heroContainer {
+  margin-bottom: 56px;
+
+  @include u.on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include u.on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.sectionContainerSecond {
+  margin-block: 56px;
+
+  @include u.on-tablet {
+    margin-block: 64px;
+  }
+
+  @include u.on-desktop {
+    margin-block: 80px;
+  }
+}
+
+.sectionContainerThird {
+  margin-bottom: 64px;
+
+  @include u.on-desktop {
+    margin-bottom: 80px;
+  }
+}

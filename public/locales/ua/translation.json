@@ -1,0 +1,669 @@
+{
+  "nav": {
+    "home": "Головна",
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари"
+  },
+  "buttons": {
+    "addToCart": "Додати до кошика",
+    "addedToCart": "Додано",
+    "addToFavorites": "Додати до улюбленого",
+    "back": "Назад",
+    "checkout": "Оформити замовлення"
+  },
+  "footer": {
+    "backToTop": "Вгору",
+    "github": "Github",
+    "contacts": "Контакти",
+    "rights": "Права"
+  },
+  "categories": {
+    "title": "Категорії товарів",
+    "phones": "Мобільні телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари",
+    "models": "{{count}} моделей"
+  },
+  "productCatalog": {
+    "titlePhones": "Мобільні телефони",
+    "titleTablets": "Планшети",
+    "titleAccessories": "Аксесуари",
+    "titleFavourites": "Обране",
+    "titleCart": "Кошик"
+  },
+  "home": {
+    "welcome": "Ласкаво просимо до магазину Nice Gadgets!",
+    "newModels": "Нові моделі",
+    "hotPrices": "Гарячі ціни"
+  },
+  "swiper": {
+    "youMayAlsoLike": "Також може сподобатись"
+  },
+  "description": {
+    "about": "Про продукт(english)",
+    "techSpecs": "Технічна специфікація"
+  },
+  "common": {
+    "items": "{{count}} товарів",
+    "emptyFavourites": "Ваш список обраного порожній.",
+    "emptyCart": "Ваш кошик порожній."
+  },
+  "notFoundPage": {
+    "imageAlt": "Сторінку не знайдено",
+    "subtitle": "Ой! Сторінку не знайдено",
+    "description": "Здається, ми збилися зі шляху. Давайте повернемо вас додому!",
+    "homeButton": "Повернутися на головну"
+  },
+  "modal": {
+    "inDevTitle": "Функція в розробці",
+    "inDevText1": "На жаль, функція оформлення замовлення ще не реалізована.",
+    "inDevText2": "Дякуємо, що переглянули цей демо-проект!",
+    "ok": "Гаразд"
+  },
+  "characteristics": {
+    "screen": "Екран",
+    "capacity": "Ємність",
+    "ram": "ОЗП",
+    "resolution": "Роздільна здатність",
+    "processor": "Процесор",
+    "camera": "Камера",
+    "zoom": "Зум",
+    "cell": "Мережа",
+    "builtInMemory": "Вбудована пам'ять"
+  },
+  "products": {
+    "apple-iphone-7-32gb-black": {
+      "name": "Apple iPhone 7 32GB Чорний"
+    },
+    "apple-iphone-7-plus-32gb-black": {
+      "name": "Apple iPhone 7 Plus 32GB Чорний"
+    },
+    "apple-iphone-8-64gb-gold": {
+      "name": "Apple iPhone 8 64GB Золотий"
+    },
+    "apple-iphone-11-64gb-black": {
+      "name": "Apple iPhone 11 64GB Чорний"
+    },
+    "apple-iphone-11-128gb-yellow": {
+      "name": "Apple iPhone 11 128GB Жовтий"
+    },
+    "apple-iphone-11-256gb-green": {
+      "name": "Apple iPhone 11 256GB Зелений"
+    },
+    "apple-iphone-11-pro-64gb-gold": {
+      "name": "Apple iPhone 11 Pro 64GB Золотий"
+    },
+    "apple-iphone-11-pro-256gb-midnightgreen": {
+      "name": "Apple iPhone 11 Pro 256GB Темно-зелений"
+    },
+    "apple-iphone-11-pro-512gb-silver": {
+      "name": "Apple iPhone 11 Pro 512GB Сріблястий"
+    },
+    "apple-iphone-11-pro-max-64gb-spacegray": {
+      "name": "Apple iPhone 11 Pro Max 64GB Сірий космос"
+    },
+    "apple-iphone-11-pro-max-256gb-gold": {
+      "name": "Apple iPhone 11 Pro Max 256GB Золотий"
+    },
+    "apple-iphone-11-pro-max-512gb-spacegray": {
+      "name": "Apple iPhone 11 Pro Max 512GB Сірий космос"
+    },
+    "apple-iphone-xr-64gb-red": {
+      "name": "Apple iPhone XR 64GB Червоний"
+    },
+    "apple-iphone-xr-128gb-white": {
+      "name": "Apple iPhone XR 128GB Білий"
+    },
+    "apple-iphone-xs-64gb-spacegray": {
+      "name": "Apple iPhone XS 64GB Сірий космос"
+    },
+    "apple-iphone-xs-max-64gb-gold": {
+      "name": "Apple iPhone XS Max 64GB Золотий"
+    },
+    "apple-iphone-xs-max-256gb-silver": {
+      "name": "Apple iPhone XS Max 256GB Сріблястий"
+    },
+    "apple-iphone-7-32gb-gold": {
+      "name": "Apple iPhone 7 32GB Золотий"
+    },
+    "apple-iphone-7-plus-32gb-silver": {
+      "name": "Apple iPhone 7 Plus 32GB Сріблястий"
+    },
+    "apple-iphone-8-64gb-spacegray": {
+      "name": "Apple iPhone 8 64GB Сірий космос"
+    },
+    "apple-iphone-11-64gb-green": {
+      "name": "Apple iPhone 11 64GB Зелений"
+    },
+    "apple-iphone-11-128gb-purple": {
+      "name": "Apple iPhone 11 128GB Фіолетовий"
+    },
+    "apple-iphone-11-256gb-yellow": {
+      "name": "Apple iPhone 11 256GB Жовтий"
+    },
+    "apple-iphone-11-pro-256gb-gold": {
+      "name": "Apple iPhone 11 Pro 256GB Золотий"
+    },
+    "apple-iphone-11-pro-512gb-spacegray": {
+      "name": "Apple iPhone 11 Pro 512GB Сірий космос"
+    },
+    "apple-iphone-11-pro-max-64gb-silver": {
+      "name": "Apple iPhone 11 Pro Max 64GB Сріблястий"
+    },
+    "apple-iphone-11-pro-max-256gb-midnightgreen": {
+      "name": "Apple iPhone 11 Pro Max 256GB Темно-зелений"
+    },
+    "apple-iphone-11-pro-max-512gb-silver": {
+      "name": "Apple iPhone 11 Pro Max 512GB Сріблястий"
+    },
+    "apple-iphone-xr-64gb-white": {
+      "name": "Apple iPhone XR 64GB Білий"
+    },
+    "apple-iphone-xr-128gb-coral": {
+      "name": "Apple iPhone XR 128GB Кораловий"
+    },
+    "apple-iphone-xs-64gb-gold": {
+      "name": "Apple iPhone XS 64GB Золотий"
+    },
+    "apple-iphone-xs-256gb-spacegray": {
+      "name": "Apple iPhone XS 256GB Сірий космос"
+    },
+    "apple-iphone-xs-max-64gb-silver": {
+      "name": "Apple iPhone XS Max 64GB Сріблястий"
+    },
+    "apple-iphone-xs-max-256gb-gold": {
+      "name": "Apple iPhone XS Max 256GB Золотий"
+    },
+    "apple-iphone-7-32gb-rosegold": {
+      "name": "Apple iPhone 7 32GB Рожеве золото"
+    },
+    "apple-iphone-11-64gb-purple": {
+      "name": "Apple iPhone 11 64GB Фіолетовий"
+    },
+    "apple-iphone-11-64gb-red": {
+      "name": "Apple iPhone 11 64GB Червоний"
+    },
+    "apple-iphone-11-128gb-black": {
+      "name": "Apple iPhone 11 128GB Чорний"
+    },
+    "apple-iphone-11-256gb-red": {
+      "name": "Apple iPhone 11 256GB Червоний"
+    },
+    "apple-iphone-11-pro-64gb-midnightgreen": {
+      "name": "Apple iPhone 11 Pro 64GB Темно-зелений"
+    },
+    "apple-iphone-11-pro-256gb-silver": {
+      "name": "Apple iPhone 11 Pro 256GB Сріблястий"
+    },
+    "apple-iphone-11-pro-512gb-gold": {
+      "name": "Apple iPhone 11 Pro 512GB Золотий"
+    },
+    "apple-iphone-11-pro-max-64gb-midnightgreen": {
+      "name": "Apple iPhone 11 Pro Max 64GB Темно-зелений"
+    },
+    "apple-iphone-11-pro-max-256gb-spacegray": {
+      "name": "Apple iPhone 11 Pro Max 256GB Сірий космос"
+    },
+    "apple-iphone-xr-64gb-coral": {
+      "name": "Apple iPhone XR 64GB Кораловий"
+    },
+    "apple-iphone-xr-128gb-red": {
+      "name": "Apple iPhone XR 128GB Червоний"
+    },
+    "apple-iphone-xs-256gb-gold": {
+      "name": "Apple iPhone XS 256GB Золотий"
+    },
+    "apple-iphone-xs-max-64gb-spacegray": {
+      "name": "Apple iPhone XS Max 64GB Сірий космос"
+    },
+    "apple-iphone-7-plus-32gb-rosegold": {
+      "name": "Apple iPhone 7 Plus 32GB Рожеве золото"
+    },
+    "apple-iphone-11-64gb-white": {
+      "name": "Apple iPhone 11 64GB Білий"
+    },
+    "apple-iphone-11-128gb-green": {
+      "name": "Apple iPhone 11 128GB Зелений"
+    },
+    "apple-iphone-11-128gb-white": {
+      "name": "Apple iPhone 11 128GB Білий"
+    },
+    "apple-iphone-11-256gb-black": {
+      "name": "Apple iPhone 11 256GB Чорний"
+    },
+    "apple-iphone-11-256gb-white": {
+      "name": "Apple iPhone 11 256GB Білий"
+    },
+    "apple-iphone-11-pro-64gb-spacegray": {
+      "name": "Apple iPhone 11 Pro 64GB Сірий космос"
+    },
+    "apple-iphone-11-pro-512gb-midnightgreen": {
+      "name": "Apple iPhone 11 Pro 512GB Темно-зелений"
+    },
+    "apple-iphone-11-pro-max-64gb-gold": {
+      "name": "Apple iPhone 11 Pro Max 64GB Золотий"
+    },
+    "apple-iphone-11-pro-max-256gb-silver": {
+      "name": "Apple iPhone 11 Pro Max 256GB Сріблястий"
+    },
+    "apple-iphone-11-pro-max-512gb-midnightgreen": {
+      "name": "Apple iPhone 11 Pro Max 512GB Темно-зелений"
+    },
+    "apple-iphone-xr-128gb-yellow": {
+      "name": "Apple iPhone XR 128GB Жовтий"
+    },
+    "apple-iphone-7-32gb-silver": {
+      "name": "Apple iPhone 7 32GB Сріблястий"
+    },
+    "apple-iphone-11-256gb-purple": {
+      "name": "Apple iPhone 11 256GB Фіолетовий"
+    },
+    "apple-iphone-11-pro-max-512gb-gold": {
+      "name": "Apple iPhone 11 Pro Max 512GB Золотий"
+    },
+    "apple-iphone-11-64gb-yellow": {
+      "name": "Apple iPhone 11 64GB Жовтий"
+    },
+    "apple-iphone-11-pro-256gb-spacegray": {
+      "name": "Apple iPhone 11 Pro 256GB Сірий космос"
+    },
+    "apple-iphone-8-64gb-silver": {
+      "name": "Apple iPhone 8 64GB Сріблястий"
+    },
+    "apple-iphone-11-128gb-red": {
+      "name": "Apple iPhone 11 128GB Червоний"
+    },
+    "apple-iphone-xs-max-256gb-spacegray": {
+      "name": "Apple iPhone XS Max 256GB Сірий космос"
+    },
+    "apple-iphone-7-plus-32gb-gold": {
+      "name": "Apple iPhone 7 Plus 32GB Золотий"
+    },
+    "apple-iphone-11-pro-64gb-silver": {
+      "name": "Apple iPhone 11 Pro 64GB Сріблястий"
+    },
+    "apple-iphone-xr-64gb-yellow": {
+      "name": "Apple iPhone XR 64GB Жовтий"
+    },
+    "apple-iphone-14-128gb-midnight": {
+      "name": "Apple iPhone 14 128GB Темна ніч"
+    },
+    "apple-iphone-14-256gb-midnight": {
+      "name": "Apple iPhone 14 256GB Темна ніч"
+    },
+    "apple-iphone-14-512gb-midnight": {
+      "name": "Apple iPhone 14 512GB Темна ніч"
+    },
+    "apple-iphone-14-128gb-yellow": {
+      "name": "Apple iPhone 14 128GB Жовтий"
+    },
+    "apple-iphone-14-256gb-yellow": {
+      "name": "Apple iPhone 14 256GB Жовтий"
+    },
+    "apple-iphone-14-512gb-yellow": {
+      "name": "Apple iPhone 14 512GB Жовтий"
+    },
+    "apple-iphone-14-128gb-purple": {
+      "name": "Apple iPhone 14 128GB Фіолетовий"
+    },
+    "apple-iphone-14-256gb-purple": {
+      "name": "Apple iPhone 14 256GB Фіолетовий"
+    },
+    "apple-iphone-14-512gb-purple": {
+      "name": "Apple iPhone 14 512GB Фіолетовий"
+    },
+    "apple-iphone-14-pro-128gb-spaceblack": {
+      "name": "Apple iPhone 14 Pro 128GB Космічний чорний"
+    },
+    "apple-iphone-14-pro-256gb-spaceblack": {
+      "name": "Apple iPhone 14 Pro 256GB Космічний чорний"
+    },
+    "apple-iphone-14-pro-512gb-spaceblack": {
+      "name": "Apple iPhone 14 Pro 512GB Космічний чорний"
+    },
+    "apple-iphone-14-pro-1tb-spaceblack": {
+      "name": "Apple iPhone 14 Pro 1TB Космічний чорний"
+    },
+    "apple-iphone-12-64gb-purple": {
+      "name": "Apple iPhone 12 64GB Фіолетовий"
+    },
+    "apple-iphone-12-128gb-purple": {
+      "name": "Apple iPhone 12 128GB Фіолетовий"
+    },
+    "apple-iphone-12-256gb-purple": {
+      "name": "Apple iPhone 12 256GB Фіолетовий"
+    },
+    "apple-iphone-12-64gb-white": {
+      "name": "Apple iPhone 12 64GB Білий"
+    },
+    "apple-iphone-12-128gb-white": {
+      "name": "Apple iPhone 12 128GB Білий"
+    },
+    "apple-iphone-12-256gb-white": {
+      "name": "Apple iPhone 12 256GB Білий"
+    },
+    "apple-iphone-12-64gb-red": {
+      "name": "Apple iPhone 12 64GB Червоний"
+    },
+    "apple-iphone-12-128gb-red": {
+      "name": "Apple iPhone 12 128GB Червоний"
+    },
+    "apple-iphone-12-256gb-red": {
+      "name": "Apple iPhone 12 256GB Червоний"
+    },
+    "apple-iphone-12-64gb-black": {
+      "name": "Apple iPhone 12 64GB Чорний"
+    },
+    "apple-iphone-12-128gb-black": {
+      "name": "Apple iPhone 12 128GB Чорний"
+    },
+    "apple-iphone-12-256gb-black": {
+      "name": "Apple iPhone 12 256GB Чорний"
+    },
+    "apple-iphone-13-mini-64gb-blue": {
+      "name": "Apple iPhone 13 Mini 64GB Синій"
+    },
+    "apple-iphone-13-mini-128gb-blue": {
+      "name": "Apple iPhone 13 Mini 128GB Синій"
+    },
+    "apple-iphone-13-mini-256gb-blue": {
+      "name": "Apple iPhone 13 Mini 256GB Синій"
+    },
+    "apple-iphone-13-mini-64gb-white": {
+      "name": "Apple iPhone 13 Mini 64GB Білий"
+    },
+    "apple-iphone-13-mini-128gb-white": {
+      "name": "Apple iPhone 13 Mini 128GB Білий"
+    },
+    "apple-iphone-13-mini-256gb-white": {
+      "name": "Apple iPhone 13 Mini 256GB Білий"
+    },
+    "apple-iphone-13-mini-64gb-pink": {
+      "name": "Apple iPhone 13 Mini 64GB Рожевий"
+    },
+    "apple-iphone-13-mini-128gb-pink": {
+      "name": "Apple iPhone 13 Mini 128GB Рожевий"
+    },
+    "apple-iphone-13-mini-256gb-pink": {
+      "name": "Apple iPhone 13 Mini 256GB Рожевий"
+    },
+    "apple-iphone-13-mini-64gb-midnight": {
+      "name": "Apple iPhone 13 Mini 64GB Темна ніч"
+    },
+    "apple-iphone-13-mini-128gb-midnight": {
+      "name": "Apple iPhone 13 Mini 128GB Темна ніч"
+    },
+    "apple-iphone-13-mini-256gb-midnight": {
+      "name": "Apple iPhone 13 Mini 256GB Темна ніч"
+    },
+    "apple-iphone-13-pro-max-128gb-sierrablue": {
+      "name": "Apple iPhone 13 Pro Max 128GB Небесно-блакитний"
+    },
+    "apple-iphone-13-pro-max-256gb-sierrablue": {
+      "name": "Apple iPhone 13 Pro Max 256GB Небесно-блакитний"
+    },
+    "apple-iphone-13-pro-max-512gb-sierrablue": {
+      "name": "Apple iPhone 13 Pro Max 512GB Небесно-блакитний"
+    },
+    "apple-iphone-13-pro-max-1tb-sierrablue": {
+      "name": "Apple iPhone 13 Pro Max 1TB Небесно-блакитний"
+    },
+    "apple-iphone-13-pro-max-128gb-gold": {
+      "name": "Apple iPhone 13 Pro Max 128GB Золотий"
+    },
+    "apple-iphone-13-pro-max-256gb-gold": {
+      "name": "Apple iPhone 13 Pro Max 256GB Золотий"
+    },
+    "apple-iphone-13-pro-max-512gb-gold": {
+      "name": "Apple iPhone 13 Pro Max 512GB Золотий"
+    },
+    "apple-iphone-13-pro-max-1tb-gold": {
+      "name": "Apple iPhone 13 Pro Max 1TB Золотий"
+    },
+    "apple-iphone-13-pro-max-128gb-graphite": {
+      "name": "Apple iPhone 13 Pro Max 128GB Графіт"
+    },
+    "apple-iphone-13-pro-max-256gb-graphite": {
+      "name": "Apple iPhone 13 Pro Max 256GB Графіт"
+    },
+    "apple-iphone-13-pro-max-512gb-graphite": {
+      "name": "Apple iPhone 13 Pro Max 512GB Графіт"
+    },
+    "apple-iphone-13-pro-max-1tb-graphite": {
+      "name": "Apple iPhone 13 Pro Max 1TB Графіт"
+    },
+    "apple-iphone-14-pro-128gb-gold": {
+      "name": "Apple iPhone 14 Pro 128GB Золотий"
+    },
+    "apple-iphone-14-pro-256gb-gold": {
+      "name": "Apple iPhone 14 Pro 256GB Золотий"
+    },
+    "apple-iphone-14-pro-512gb-gold": {
+      "name": "Apple iPhone 14 Pro 512GB Золотий"
+    },
+    "apple-iphone-14-pro-1tb-gold": {
+      "name": "Apple iPhone 14 Pro 1TB Золотий"
+    },
+    "apple-watch-series-3-38mm-spacegray": {
+      "name": "Apple Watch Series 3 38мм Сірий космос"
+    },
+    "apple-watch-series-3-42mm-spacegray": {
+      "name": "Apple Watch Series 3 42мм Сірий космос"
+    },
+    "apple-watch-series-3-38mm-gold": {
+      "name": "Apple Watch Series 3 38мм Золотий"
+    },
+    "apple-watch-series-3-42mm-gold": {
+      "name": "Apple Watch Series 3 42мм Золотий"
+    },
+    "apple-watch-series-3-38mm-silver": {
+      "name": "Apple Watch Series 3 38мм Сріблястий"
+    },
+    "apple-watch-series-3-42mm-silver": {
+      "name": "Apple Watch Series 3 42мм Сріблястий"
+    },
+    "apple-watch-series-6-40mm-spacegray": {
+      "name": "Apple Watch Series 6 40мм Сірий космос"
+    },
+    "apple-watch-series-6-44mm-spacegray": {
+      "name": "Apple Watch Series 6 44мм Сірий космос"
+    },
+    "apple-watch-series-6-40mm-silver": {
+      "name": "Apple Watch Series 6 40мм Сріблястий"
+    },
+    "apple-watch-series-6-44mm-silver": {
+      "name": "Apple Watch Series 6 44мм Сріблястий"
+    },
+    "apple-watch-series-6-40mm-gold": {
+      "name": "Apple Watch Series 6 40мм Золотий"
+    },
+    "apple-watch-series-6-44mm-gold": {
+      "name": "Apple Watch Series 6 44мм Золотий"
+    },
+    "apple-watch-series-6-40mm-blue": {
+      "name": "Apple Watch Series 6 40мм Синій"
+    },
+    "apple-watch-series-6-44mm-blue": {
+      "name": "Apple Watch Series 6 44мм Синій"
+    },
+    "apple-watch-series-6-40mm-red": {
+      "name": "Apple Watch Series 6 40мм Червоний"
+    },
+    "apple-watch-series-6-44mm-red": {
+      "name": "Apple Watch Series 6 44мм Червоний"
+    },
+    "apple-watch-series-5-40mm-silver": {
+      "name": "Apple Watch Series 5 40мм Сріблястий"
+    },
+    "apple-watch-series-5-44mm-silver": {
+      "name": "Apple Watch Series 5 44мм Сріблястий"
+    },
+    "apple-watch-series-5-40mm-gold": {
+      "name": "Apple Watch Series 5 40мм Золотий"
+    },
+    "apple-watch-series-5-44mm-gold": {
+      "name": "Apple Watch Series 5 44мм Золотий"
+    },
+    "apple-watch-series-5-40mm-spacegray": {
+      "name": "Apple Watch Series 5 40мм Сірий космос"
+    },
+    "apple-watch-series-5-44mm-spacegray": {
+      "name": "Apple Watch Series 5 44мм Сірий космос"
+    },
+    "apple-watch-series-4-40mm-silver": {
+      "name": "Apple Watch Series 4 40мм Сріблястий"
+    },
+    "apple-watch-series-4-44mm-silver": {
+      "name": "Apple Watch Series 4 44мм Сріблястий"
+    },
+    "apple-watch-series-4-40mm-gold": {
+      "name": "Apple Watch Series 4 40мм Золотий"
+    },
+    "apple-watch-series-4-44mm-gold": {
+      "name": "Apple Watch Series 4 44мм Золотий"
+    },
+    "apple-watch-series-4-40mm-spacegray": {
+      "name": "Apple Watch Series 4 40мм Сірий космос"
+    },
+    "apple-watch-series-4-44mm-spacegray": {
+      "name": "Apple Watch Series 4 44мм Сірий космос"
+    },
+    "apple-watch-se-40mm-silver": {
+      "name": "Apple Watch SE 40мм Сріблястий"
+    },
+    "apple-watch-se-44mm-silver": {
+      "name": "Apple Watch SE 44мм Сріблястий"
+    },
+    "apple-watch-se-40mm-gold": {
+      "name": "Apple Watch SE 40мм Золотий"
+    },
+    "apple-watch-se-44mm-gold": {
+      "name": "Apple Watch SE 44мм Золотий"
+    },
+    "apple-watch-se-40mm-spacegray": {
+      "name": "Apple Watch SE 40мм Сірий космос"
+    },
+    "apple-watch-se-44mm-spacegray": {
+      "name": "Apple Watch SE 44мм Сірий космос"
+    },
+    "apple-ipad-pro-11-2021-128gb-spacegray": {
+      "name": "Apple iPad Pro 11 (2021) 128GB Сірий космос"
+    },
+    "apple-ipad-pro-11-2021-128gb-silver": {
+      "name": "Apple iPad Pro 11 (2021) 128GB Сріблястий"
+    },
+    "apple-ipad-pro-11-2021-256gb-spacegray": {
+      "name": "Apple iPad Pro 11 (2021) 256GB Сірий космос"
+    },
+    "apple-ipad-pro-11-2021-256gb-silver": {
+      "name": "Apple iPad Pro 11 (2021) 256GB Сріблястий"
+    },
+    "apple-ipad-pro-11-2021-512gb-spacegray": {
+      "name": "Apple iPad Pro 11 (2021) 512GB Сірий космос"
+    },
+    "apple-ipad-pro-11-2021-512gb-silver": {
+      "name": "Apple iPad Pro 11 (2021) 512GB Сріблястий"
+    },
+    "apple-ipad-pro-11-2021-1tb-spacegray": {
+      "name": "Apple iPad Pro 11 (2021) 1TB Сірий космос"
+    },
+    "apple-ipad-pro-11-2021-1tb-silver": {
+      "name": "Apple iPad Pro 11 (2021) 1TB Сріблястий"
+    },
+    "apple-ipad-pro-11-2021-2tb-spacegray": {
+      "name": "Apple iPad Pro 11 (2021) 2TB Сірий космос"
+    },
+    "apple-ipad-pro-11-2021-2tb-silver": {
+      "name": "Apple iPad Pro 11 (2021) 2TB Сріблястий"
+    },
+    "apple-ipad-air-4th-gen-256gb-rose-gold": {
+      "name": "Apple iPad Air (4-го покоління) 256GB Рожеве золото"
+    },
+    "apple-ipad-air-4th-gen-64gb-rose-gold": {
+      "name": "Apple iPad Air (4-го покоління) 64GB Рожеве золото"
+    },
+    "apple-ipad-air-4th-gen-256gb-silver": {
+      "name": "Apple iPad Air (4-го покоління) 256GB Сріблястий"
+    },
+    "apple-ipad-air-4th-gen-64gb-silver": {
+      "name": "Apple iPad Air (4-го покоління) 64GB Сріблястий"
+    },
+    "apple-ipad-air-4th-gen-256gb-green": {
+      "name": "Apple iPad Air (4-го покоління) 256GB Зелений"
+    },
+    "apple-ipad-air-4th-gen-64gb-green": {
+      "name": "Apple iPad Air (4-го покоління) 64GB Зелений"
+    },
+    "apple-ipad-air-4th-gen-256gb-sky-blue": {
+      "name": "Apple iPad Air (4-го покоління) 256GB Небесно-блакитний"
+    },
+    "apple-ipad-air-4th-gen-64gb-sky-blue": {
+      "name": "Apple iPad Air (4-го покоління) 64GB Небесно-блакитний"
+    },
+    "apple-ipad-mini-6th-gen-256gb-spacegray": {
+      "name": "Apple iPad Mini (6-го покоління) 256GB Сірий космос"
+    },
+    "apple-ipad-mini-6th-gen-64gb-spacegray": {
+      "name": "Apple iPad Mini (6-го покоління) 64GB Сірий космос"
+    },
+    "apple-ipad-mini-6th-gen-256gb-starlight": {
+      "name": "Apple iPad Mini (6-го покоління) 256GB Зоряне сяйво"
+    },
+    "apple-ipad-mini-6th-gen-64gb-starlight": {
+      "name": "Apple iPad Mini (6-го покоління) 64GB Зоряне сяйво"
+    },
+    "apple-ipad-mini-6th-gen-256gb-pink": {
+      "name": "Apple iPad Mini (6-го покоління) 256GB Рожевий"
+    },
+    "apple-ipad-mini-6th-gen-64gb-pink": {
+      "name": "Apple iPad Mini (6-го покоління) 64GB Рожевий"
+    },
+    "apple-ipad-10-2-2020-128gb-gold": {
+      "name": "Apple iPad 10.2 (2020) 128GB Золотий"
+    },
+    "apple-ipad-10-2-2020-32gb-gold": {
+      "name": "Apple iPad 10.2 (2020) 32GB Золотий"
+    },
+    "apple-ipad-10-2-2020-128gb-silver": {
+      "name": "Apple iPad 10.2 (2020) 128GB Сріблястий"
+    },
+    "apple-ipad-10-2-2020-32gb-silver": {
+      "name": "Apple iPad 10.2 (2020) 32GB Сріблястий"
+    },
+    "apple-ipad-10-2-2020-128gb-spacegray": {
+      "name": "Apple iPad 10.2 (2020) 128GB Сірий космос"
+    },
+    "apple-ipad-10-2-2020-32gb-spacegray": {
+      "name": "Apple iPad 10.2 (2020) 32GB Сірий космос"
+    },
+    "apple-ipad-mini-5th-gen-256gb-silver": {
+      "name": "Apple iPad Mini (5-го покоління) 256GB Сріблястий"
+    },
+    "apple-ipad-mini-5th-gen-64gb-silver": {
+      "name": "Apple iPad Mini (5-го покоління) 64GB Сріблястий"
+    },
+    "apple-ipad-mini-5th-gen-256gb-spacegray": {
+      "name": "Apple iPad Mini (5-го покоління) 256GB Сірий космос"
+    },
+    "apple-ipad-mini-5th-gen-64gb-spacegray": {
+      "name": "Apple iPad Mini (5-го покоління) 64GB Сірий космос"
+    },
+    "apple-ipad-mini-5th-gen-256gb-gold": {
+      "name": "Apple iPad Mini (5-го покоління) 256GB Золотий"
+    },
+    "apple-ipad-mini-5th-gen-64gb-gold": {
+      "name": "Apple iPad Mini (5-го покоління) 64GB Золотий"
+    }
+  },
+  "controls": {
+    "sortBy": "Сортувати за",
+    "itemsOnPage": "Товарів на сторінці",
+    "sortOptions": {
+      "newest": "Новизною",
+      "alphabetically": "Алфавітом",
+      "cheapest": "Ціною"
+    },
+    "noProducts": "Для цієї категорії товари не знайдені"
+  }
+}

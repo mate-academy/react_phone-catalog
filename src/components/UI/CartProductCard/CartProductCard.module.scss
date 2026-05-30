@@ -1,0 +1,147 @@
+@use 'styles/utils' as u;
+
+.card {
+  border-radius: var(--card-border-radius);
+  background-color: var(--surface-1);
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 16px;
+
+  @include u.on-tablet {
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 24px;
+  }
+}
+
+.productInfo {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  @include u.on-tablet {
+    gap: 24px;
+  }
+}
+
+.btnRemoveProduct {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 16px;
+  padding: 0;
+  border: none;
+
+  background-color: var(--surface-1);
+
+  transition: background-color u.$effect-duration ease;
+}
+
+.btnRemoveProductIcon {
+  path {
+    fill: var(--icons);
+  }
+}
+
+.productImage {
+  width: 80px;
+  height: 80px;
+}
+
+.productName {
+  width: 128px;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--text-primary);
+
+  @include u.on-tablet {
+    flex-grow: 1;
+    width: auto;
+  }
+
+  @include u.on-desktop {
+    width: 336px;
+  }
+}
+
+.quantityPrice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include u.on-tablet {
+    gap: 24px;
+  }
+}
+
+.counterProduct {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnDecrementCounter,
+.btnIncrementCounter {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: var(--btn-border-radius);
+
+  background-color: var(--surface-2);
+}
+
+.btnDecrementCounter {
+  path {
+    fill: var(--text-primary);
+  }
+}
+
+.productQuantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  color: var(--text-primary);
+}
+
+.btnDecrementCounter:disabled,
+.btnIncrementCounter:disabled {
+  border: 1px solid var(--elements);
+  background-color: transparent;
+
+  path {
+    fill: var(--icons);
+  }
+}
+
+.productPrice {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  color: var(--text-primary);
+  text-align: right;
+
+  @include u.on-tablet {
+    width: 80px;
+  }
+}

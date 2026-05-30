@@ -1,0 +1,94 @@
+@use 'styles/utils/' as u;
+
+.container {
+  margin-top: 24px;
+  margin-bottom: 56px;
+
+  @include u.padding-inline;
+
+  @include u.on-tablet {
+    margin-top: 40px;
+    margin-bottom: 64px;
+  }
+
+  @include u.on-desktop {
+    max-width: 1136px;
+    margin-bottom: 80px;
+    padding-inline: 32px;
+  }
+}
+
+.title {
+  margin-bottom: 8px;
+
+  font-size: 32px;
+  line-height: 41px;
+  color: var(--text-primary);
+  letter-spacing: -1%;
+
+  @include u.on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -1%;
+  }
+}
+
+.counterModels {
+  margin-bottom: 32px;
+
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--text-secondary);
+  letter-spacing: 0%;
+
+  @include u.on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.productGridContainer {
+  gap: 40px;
+
+  @include u.page-grid;
+
+  @include u.on-tablet {
+    gap: 16px;
+    row-gap: 40px;
+  }
+}
+
+.productItem {
+  display: flex;
+  grid-column: span 4;
+  justify-content: center;
+  width: 100%;
+
+  @include u.on-tablet {
+    grid-column: span 6;
+  }
+
+  @media (min-width: 768px) {
+    grid-column: span 4;
+  }
+
+  @include u.on-desktop {
+    grid-column: span 6;
+  }
+}
+
+.emptyStateContainer {
+  grid-column: 1 / -1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.noItemsMessage {
+  color: var(--text-primary);
+}
+
+.favouritesNotFoundImg {
+  max-width: 100%;
+}

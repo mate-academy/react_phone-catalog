@@ -1,0 +1,57 @@
+@use 'styles/utils' as u;
+@use 'sass:color' as color;
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 439px;
+  padding: 32px;
+  border-radius: var(--card-border-radius);
+
+  background-color: var(--surface-1);
+
+  @include u.hover(box-shadow, 0 4px 8px var(--accent));
+
+  @include u.on-tablet {
+    height: 512px;
+  }
+
+  @include u.on-desktop {
+    height: 506px;
+  }
+}
+
+.productImage {
+  width: 100%;
+  height: 129px;
+  margin-bottom: 24px;
+  margin-inline: auto;
+
+  object-fit: contain;
+  object-position: center;
+
+  @include u.hover(transform, scale(1.1));
+
+  @include u.on-tablet {
+    height: 202px;
+  }
+}
+
+.productLink {
+  text-decoration: none;
+}
+
+.productName {
+  overflow: auto;
+
+  min-height: 42px;
+  margin-bottom: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: var(--text-primary);
+}

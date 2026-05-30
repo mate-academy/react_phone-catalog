@@ -1,0 +1,86 @@
+{
+  "nav": {
+    "home": "Home",
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories"
+  },
+  "buttons": {
+    "addToCart": "Add to cart",
+    "addedToCart": "Added to cart",
+    "addToFavorites": "Add to favorites",
+    "back": "Back",
+    "checkout": "Checkout"
+  },
+  "footer": {
+    "backToTop": "Back to top",
+    "github": "Github",
+    "contacts": "Contacts",
+    "rights": "Rights"
+  },
+  "categories": {
+    "title": "Shop by category",
+    "phones": "Mobile phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "models": "{{count}} models"
+  },
+  "productCatalog": {
+    "titlePhones": "Mobile phones",
+    "titleTablets": "Tablets",
+    "titleAccessories": "Accessories",
+    "titleFavourites": "Favourites",
+    "titleCart": "Cart"
+  },
+  "home": {
+    "welcome": "Welcome to Nice Gadgets store!",
+    "newModels": "Brand new models",
+    "hotPrices": "Hot prices"
+  },
+  "swiper": {
+    "youMayAlsoLike": "You may also like"
+  },
+  "description": {
+    "about": "About",
+    "techSpecs": "Tech specs"
+  },
+  "common": {
+    "items": "{{count}} items",
+    "emptyFavourites": "Your favorites list is empty.",
+    "emptyCart": "Your cart is empty."
+  },
+  "notFoundPage": {
+    "imageAlt": "Page Not Found",
+    "subtitle": "Oops! Page Not Found",
+    "description": "It seems we’ve wandered off the path. Let’s get you back home!",
+    "homeButton": "Return Home"
+  },
+  "modal": {
+    "inDevTitle": "Feature in Development",
+    "inDevText1": "We're sorry, but the checkout feature is not yet implemented.",
+    "inDevText2": "Thank you for checking out this demo project!",
+    "ok": "OK"
+  },
+  "characteristics": {
+    "screen": "Screen",
+    "capacity": "Capacity",
+    "ram": "RAM",
+    "resolution": "Resolution",
+    "processor": "Processor",
+    "camera": "Camera",
+    "zoom": "Zoom",
+    "cell": "Cell",
+    "builtInMemory": "Built in memory"
+  },
+  "products": {},
+  "controls": {
+    "sortBy": "Sort by",
+    "itemsOnPage": "Items on page",
+    "sortOptions": {
+      "newest": "Newest",
+      "alphabetically": "Alphabetically",
+      "cheapest": "Cheapest"
+    },
+    "noProducts": "No products found for this category"
+  }
+}

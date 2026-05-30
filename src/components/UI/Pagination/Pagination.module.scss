@@ -1,0 +1,74 @@
+@use 'styles/utils/' as u;
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+
+  list-style: none;
+}
+
+.pageLink {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 1px;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: 0%;
+
+  background-color: var(--surface-1);
+
+  &:hover:not(.disabled) {
+    background-color: var(--elements);
+  }
+}
+
+.pageItem {
+  &.disabled {
+    pointer-events: none;
+    border: 1px solid var(--elements);
+    background-color: transparent;
+
+    path {
+      fill: var(--icons);
+    }
+  }
+
+  &.active {
+    .pageLink {
+      color: var(--text-primary);
+      background-color: var(--accent);
+    }
+  }
+}
+
+.dots {
+  pointer-events: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 32px;
+  height: 32px;
+
+  color: var(--text-primary);
+}
+
+.pageLinkNavBtn {
+  background-color: var(--surface-2);
+}

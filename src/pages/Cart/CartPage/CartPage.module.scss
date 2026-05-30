@@ -1,0 +1,10 @@
+@use 'styles/utils/' as u;
+
+.heroContainer {
+  @include u.padding-inline;
+
+  @include u.on-desktop {
+    max-width: 1136px;
+  }
+}
+

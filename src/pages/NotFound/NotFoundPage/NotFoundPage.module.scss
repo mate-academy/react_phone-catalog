@@ -1,0 +1,179 @@
+@use 'styles/utils/' as u;
+@use 'sass:color' as color;
+
+.notFound {
+  position: relative;
+
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 100vh;
+
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+
+  @include u.padding-inline;
+
+  .content {
+    position: relative;
+    z-index: 2;
+
+    padding: 16px;
+    border-radius: 20px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+    animation: fade-in 0.8s ease-in-out;
+
+    @include u.padding-inline;
+
+    .image {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: u.$spacing-unit * 2;
+
+      filter: drop-shadow(0 4px 15px rgba(var(--accent), 0.3));
+
+      animation: float 3s infinite ease-in-out;
+
+      @include u.on-tablet {
+        max-width: 400px;
+      }
+    }
+
+    .title {
+      margin: 0;
+
+      font-size: 6rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--accent);
+      text-shadow: 0 4px 15px rgba(var(--accent), 0.4);
+
+      @include u.on-tablet {
+        font-size: 8rem;
+      }
+
+      @include u.on-desktop {
+        font-size: 10rem;
+      }
+    }
+
+    .subtitle {
+      margin: u.$spacing-unit 0 u.$spacing-unit * 2;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #333;
+
+      @include u.on-tablet {
+        font-size: 2rem;
+      }
+
+      @include u.on-desktop {
+        font-size: 2.5rem;
+      }
+    }
+
+    .description {
+      margin-bottom: u.$spacing-unit * 3;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #666;
+
+      @include u.on-tablet {
+        font-size: 1.13rem;
+      }
+
+      @include u.on-desktop {
+        font-size: 1.25rem;
+      }
+    }
+
+    .homeButton {
+      display: inline-block;
+
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+
+      background: linear-gradient(
+        90deg,
+        var(--accent),
+        var(--accent-light)
+      );
+      box-shadow: 0 5px 15px rgba(var(--accent), 0.2);
+
+      @include u.hover(transform, translateY(-2px));
+
+      @include u.on-tablet {
+        padding: 1rem 2.5rem;
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .background {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+
+      position: absolute;
+      top: -50%;
+      left: -50%;
+
+      width: 200%;
+      height: 200%;
+
+      background: radial-gradient(
+        circle,
+        rgba(var(--accent), 0.2) 10%,
+        transparent 50%
+      );
+
+      animation: rotate-background 15s infinite linear;
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rotate-background {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

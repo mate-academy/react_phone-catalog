@@ -1,0 +1,26 @@
+@use './variables' as vars;
+
+%h1 {
+  font-family: vars.$font-family-base;
+  font-weight: 800;
+}
+
+%h2 {
+  font-family: vars.$font-family-base;
+  font-weight: 800;
+}
+
+%h3 {
+  font-family: vars.$font-family-base;
+  font-weight: 700;
+}
+
+%h4 {
+  font-family: vars.$font-family-base;
+  font-weight: 700;
+}
+
+%p {
+  font-family: vars.$font-family-base;
+  font-weight: 600;
+}

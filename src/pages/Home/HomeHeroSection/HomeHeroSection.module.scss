@@ -1,0 +1,23 @@
+@use 'styles/utils/' as u;
+
+.header__title {
+  padding-top: 24px;
+  padding-inline: 16px;
+
+  font-size: 32px;
+  line-height: 41px;
+  color: var(--text-primary);
+  letter-spacing: -1%;
+
+  @include u.on-tablet {
+    padding-top: 32px;
+    padding-inline: 24px;
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  @include u.on-desktop {
+    padding-top: 56px;
+    padding-inline: 32px;
+  }
+}

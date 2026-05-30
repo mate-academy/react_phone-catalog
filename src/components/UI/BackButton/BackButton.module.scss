@@ -1,0 +1,54 @@
+@use 'styles/utils' as u;
+
+.arrowBackButton {
+  rotate: -180deg;
+
+  path {
+    transition: fill u.$effect-duration ease;
+  }
+}
+
+.textBackButton {
+  display: flex;
+  align-items: center;
+
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+
+  transition: color u.$effect-duration ease;
+}
+
+.wrapperBackButton {
+  cursor: pointer;
+
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+
+  margin-top: 24px;
+  padding: 0;
+  border: none;
+
+  appearance: none;
+  background-color: transparent;
+
+  @include u.on-tablet {
+    margin-top: 40px;
+  }
+
+  @include u.on-desktop {
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+
+  &:hover {
+    .arrowBackButton path {
+      fill: var(--accent);
+    }
+
+    .textBackButton {
+      color: var(--accent);
+    }
+  }
+}

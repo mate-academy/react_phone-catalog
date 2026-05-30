@@ -1,0 +1,136 @@
+@use 'styles/utils/' as u;
+
+.container {
+  position: relative;
+  padding-top: 24px;
+
+  @include u.on-tablet {
+    margin-inline: 24px;
+    padding-top: 32px;
+  }
+
+  @include u.on-desktop {
+    margin-inline: 32px;
+    padding-top: 56px;
+  }
+}
+
+.mySwiper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 352px;
+
+  @include u.on-tablet {
+    height: 221px;
+  }
+
+  @include u.on-desktop {
+    height: 432px;
+  }
+}
+
+.swiperSlide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(0);
+  }
+}
+
+.swiperImage {
+  display: block;
+
+  max-width: 100%;
+  height: 320px;
+  margin: 0 auto;
+  border-radius: 15px;
+
+  object-fit: cover;
+  object-position: center;
+  background-color: var(--background);
+
+  @include u.on-tablet {
+    width: 490px;
+    height: 189px;
+  }
+
+  @include u.on-desktop {
+    width: 1040px;
+    height: 400px;
+  }
+}
+
+.customNavBtn {
+  cursor: pointer;
+
+  position: absolute;
+  z-index: 10;
+  transform: translateY(-50%);
+
+  width: 32px;
+  height: 189px;
+  border: none;
+  border-radius: 3px;
+
+  background: var(--surface-2);
+
+  @include u.on-tablet {
+    top: 50%;
+  }
+
+  @include u.on-desktop {
+    top: 52%;
+    width: 32px;
+    height: 400px;
+  }
+
+  @media (max-width: 639px) {
+    display: none;
+  }
+}
+
+.customNavPrev {
+  left: 0;
+}
+
+.customNavNext {
+  right: 0;
+}
+
+.customNavPrev:hover,
+.customNavNext:hover {
+  background: var(--icons);
+}
+
+.arrowLeft,
+.arrowRight {
+  path {
+    fill: var(--text-primary);
+  }
+}
+
+.customBullet {
+  cursor: pointer;
+
+  display: inline-block;
+
+  width: 14px;
+  height: 4px;
+  margin: 0 7px;
+
+  opacity: 1;
+  background-color: var(--elements);
+}
+
+.customBulletActive {
+  transform: scale(1.2);
+  background-color: var(--text-primary);
+}

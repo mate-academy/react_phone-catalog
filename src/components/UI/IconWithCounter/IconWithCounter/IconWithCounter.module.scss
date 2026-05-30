@@ -1,0 +1,12 @@
+ @use 'styles/utils/' as u;
+
+.navbar {
+ &__counterText {
+    font-family: Mont, sans-serif;
+    font-size: '9px';
+    font-weight: 700;
+    line-height: '100%';
+    text-align: 'center';
+    letter-spacing: '0%';
+  }
+}
