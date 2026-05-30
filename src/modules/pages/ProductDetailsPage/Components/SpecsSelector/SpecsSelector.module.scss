@@ -1,0 +1,102 @@
+@use '../../../../../utils/mixins';
+
+.selector {
+  grid-column: 1 / -1;
+    display: flex;
+    gap: 32px;
+    flex-direction: column;
+
+  @include mixins.on-tablet {
+    grid-column: -6 / -1;
+  }
+
+  @include mixins.on-desktop {
+    grid-column: -11 / -5;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+
+    &--color {
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #FFF;
+      outline: 1px solid #E2E6E9;
+
+      &--active {
+        outline: 1px solid #313237;
+      }
+    }
+  }
+
+  &__storage {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    &--item {
+      cursor: pointer;
+      height: 32px;
+      border: 1px solid #B4BDC3;
+      padding: 8px;
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 0%;
+      text-align: center;
+
+      &--active {
+        color: #FFF;
+        background-color: #313237;
+      }
+    }
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    &--discount {
+      font-weight: 50;
+      font-size: 22px;
+      letter-spacing: 0%;
+      text-decoration: line-through;
+      color: #89939A;
+    }
+  }
+
+    &__description {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+    gap: 8px;
+
+      &--specsText {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: right;
+      }
+
+      &--item {
+        display: flex;
+        justify-content: space-between;
+      }
+  }
+}
+
+.smallText {
+  margin-bottom: 8px;
+  color: #89939A;
+  text-align: left;
+}

@@ -1,0 +1,54 @@
+@use '../../utils/mixins' as mixins;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 257px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+
+  @include mixins.on-tablet {
+    height: 96px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__links {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+
+
+    @include mixins.on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+
+  &__logo {
+    &--img {
+      @include mixins.hover(transform, scale(1.1));
+
+      height: 32px;
+      width: 89px;
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+    color: #89939A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    background-color: #FFF;
+    border: none;
+
+    @include mixins.hover(color, black)
+  }
+
+}

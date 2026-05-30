@@ -1,0 +1,82 @@
+@use '../../../../utils/mixins';
+
+.item {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  border: 1px solid #E2E6E9;
+  padding: 16px;
+  flex-wrap: wrap;
+
+  @include mixins.on-tablet {
+    gap: 24px;
+    padding: 24px;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+
+    @include mixins.on-mobile {
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    @include mixins.on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__text {
+    flex: 1 1 0%;
+    min-width: 0;
+  }
+
+  p {
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    min-width: 0;
+  }
+
+  &__photo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  &__close {
+    svg {
+      fill: #B4BDC3;
+      cursor: pointer;
+
+      @include mixins.hover(fill, black);
+    }
+  }
+
+  &__counter {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+
+    button {
+      background-color: white;
+      width: 32px;
+      height: 32px;
+      border: 1px solid #B4BDC3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:disabled {
+        svg {
+          fill: #B4BDC3;
+          border: 1px solid #E2E6E9;
+        }
+      }
+    }
+  }
+}
+
+

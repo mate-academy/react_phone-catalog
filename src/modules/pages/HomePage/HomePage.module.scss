@@ -1,0 +1,17 @@
+@use '../../../utils/mixins';
+
+.title {
+  margin: 24px 0;
+
+  @include mixins.on-tablet {
+    margin: 32px 0;
+  }
+
+  @include mixins.on-desktop {
+    margin: 56px 0;
+  }
+}
+
+h4 {
+  margin-bottom: 4px;
+}
