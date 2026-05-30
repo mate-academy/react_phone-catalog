@@ -1,0 +1,88 @@
+@import '../../../../styles/variables';
+
+.config {
+  margin-bottom: $spacing-xs;
+}
+
+.section {
+  margin-bottom: $spacing-m;
+}
+
+.label {
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 700;
+  color: $c-secondary;
+  margin-bottom: $spacing-xs;
+}
+
+.colors {
+  display: flex;
+  gap: $spacing-xs;
+  flex-wrap: wrap;
+}
+
+.colorCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $size-action-btn;
+  height: $size-action-btn;
+  border-radius: 50%;
+  border: 1px solid $c-elements;
+  transition: $transition-color;
+
+  span {
+    display: block;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1px solid $c-white;
+  }
+
+  &:hover {
+    border-color: $c-icons;
+  }
+
+  &.activeColor {
+    border-color: $c-primary;
+  }
+}
+
+.divider {
+  height: 1px;
+  background-color: $c-elements;
+  margin: $spacing-m 0;
+  border: none;
+}
+
+.capacities {
+  display: flex;
+  gap: $spacing-xs;
+  flex-wrap: wrap;
+}
+
+.capacityBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 $spacing-xs;
+  min-width: 48px;
+  height: $size-action-btn;
+  border: 1px solid $c-icons;
+  color: $c-primary;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: $transition-default;
+
+  &:hover {
+    border-color: $c-primary;
+  }
+
+  &.activeCapacity {
+    background-color: $c-primary;
+    color: $c-white;
+    border-color: $c-primary;
+  }
+}

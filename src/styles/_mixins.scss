@@ -1,0 +1,273 @@
+@import './variables';
+
+// --- Media Queries (Mobile First) ---
+
+@mixin on-tablet {
+  @media (min-width: #{$bp-tablet}) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: #{$bp-desktop}) {
+    @content;
+  }
+}
+
+// --- Layout & Containers ---
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin page-container {
+  max-width: $bp-desktop;
+  margin: 0 auto;
+  padding-bottom: $spacing-xxl;
+
+  @include on-tablet {
+    padding-bottom: $spacing-3xl;
+  }
+
+  @include on-desktop {
+    padding-bottom: $spacing-4xl;
+  }
+}
+
+@mixin empty-state-container {
+  @include flex-center;
+
+  flex-direction: column;
+  text-align: center;
+  padding: $spacing-3xl $spacing-s;
+  min-height: 50vh;
+
+  @include on-tablet {
+    padding: $spacing-4xl $spacing-m;
+    min-height: 60vh;
+  }
+}
+
+// --- Interactive Elements ---
+
+@mixin primary-button {
+  @include flex-center;
+
+  height: $size-primary-btn-height;
+  padding: 0 $spacing-l;
+  background-color: $c-primary;
+  color: $c-white;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: $fw-semibold;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: $transition-default;
+
+  &:hover {
+    box-shadow: $shadow-sm;
+  }
+
+  &:disabled {
+    background-color: $c-elements;
+    color: $c-icons;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+@mixin action-square-button {
+  @include flex-center;
+
+  width: $size-action-btn;
+  height: $size-action-btn;
+  flex-shrink: 0;
+  padding: 0;
+  border: 1px solid $c-elements;
+  background-color: $c-white;
+  color: $c-primary;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: $fw-semibold;
+  font-size: 14px;
+  transition: $transition-color;
+
+  &:disabled,
+  &.disabled {
+    border-color: $c-elements;
+    color: $c-icons;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &:hover:not(:disabled, .disabled, .active) {
+    border-color: $c-primary;
+  }
+}
+
+// --- Typography ---
+
+/* H1 Logic */
+@mixin hero-title {
+  font-weight: $fw-bold-h;
+  color: $c-primary;
+  letter-spacing: -0.01em;
+  margin-bottom: $spacing-l;
+
+  /* Mobile H1 */
+  font-size: 32px;
+  line-height: 41px;
+
+  @include on-tablet {
+    /* Desktop H1 */
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+/* H2 Logic */
+@mixin page-title {
+  font-weight: $fw-bold-h;
+  color: $c-primary;
+  margin-bottom: $spacing-m;
+
+  /* Mobile H2 */
+  letter-spacing: 0;
+  font-size: 22px;
+  line-height: 31px;
+
+  @include on-tablet {
+    /* Desktop H2 */
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    margin-bottom: $spacing-l;
+  }
+}
+
+/* H3 Logic */
+@mixin text-section-title {
+  color: $c-primary;
+  letter-spacing: 0;
+
+  /* Mobile H3 */
+  font-weight: $fw-semibold-h;
+  font-size: 20px;
+  line-height: 26px;
+
+  @include on-tablet {
+    /* Desktop H3 */
+    font-weight: $fw-bold-h;
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+/* H4 Logic (Bordered) */
+@mixin section-title-bordered {
+  color: $c-primary;
+  padding-bottom: $spacing-s;
+  border-bottom: 1px solid $c-elements;
+  letter-spacing: 0;
+
+  /* Mobile H4 */
+  font-weight: $fw-semibold-h;
+  font-size: 16px;
+  line-height: 20px;
+
+  @include on-tablet {
+    /* Desktop H4 */
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+/* H4 Logic (No border) */
+@mixin text-subtitle {
+  color: $c-primary;
+  letter-spacing: 0;
+
+  /* Mobile H4 */
+  font-weight: $fw-semibold-h;
+  font-size: 16px;
+  line-height: 20px;
+
+  @include on-tablet {
+    /* Desktop H4 */
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+/* Body & Buttons */
+
+@mixin text-secondary-regular {
+  font-weight: $fw-regular;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $c-secondary;
+}
+
+@mixin text-primary-semibold {
+  font-weight: $fw-semibold;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $c-primary;
+}
+
+@mixin text-secondary-semibold {
+  font-weight: $fw-semibold;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $c-secondary;
+}
+
+/* Small Texts */
+
+@mixin text-small-bold {
+  font-weight: $fw-semibold;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+/* Uppercase Texts */
+
+@mixin text-logo {
+  font-weight: $fw-bold;
+  font-size: 14px;
+  color: $c-primary;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+@mixin text-nav-link {
+  font-weight: $fw-bold;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Prices */
+
+@mixin text-price-massive {
+  font-weight: $fw-bold;
+  font-size: 32px;
+  line-height: 41px;
+  color: $c-primary;
+  letter-spacing: -0.01em;
+}
+
+@mixin text-price-medium {
+  font-weight: $fw-bold;
+  font-size: 22px;
+  line-height: 31px;
+  color: $c-primary;
+}

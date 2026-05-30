@@ -1,0 +1,37 @@
+@import './variables';
+
+/* =========================================
+   MONT FONT FAMILY
+   ========================================= */
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: $fw-regular;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: $fw-semibold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: $fw-bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: $fw-bold-h;
+  font-style: normal;
+  font-display: swap;
+}

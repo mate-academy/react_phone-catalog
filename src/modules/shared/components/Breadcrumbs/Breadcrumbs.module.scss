@@ -1,0 +1,49 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-m;
+  padding-top: $spacing-m;
+
+  @include on-tablet {
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+  color: $c-primary;
+  transition: $transition-default;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  color: $c-icons;
+}
+
+.link {
+  @include text-small-bold;
+
+  color: $c-secondary;
+  text-decoration: none;
+  transition: $transition-color;
+
+  &:hover {
+    color: $c-primary;
+  }
+}
+
+.current {
+  @include text-small-bold;
+
+  color: $c-secondary;
+}

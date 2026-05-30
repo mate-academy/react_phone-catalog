@@ -1,0 +1,30 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xxs;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: $spacing-m 0;
+  font-family: inherit;
+  color: $c-secondary;
+  cursor: pointer;
+  transition: $transition-color;
+
+  &:hover {
+    color: $c-primary;
+  }
+
+  .text {
+    display: block;
+
+    @include text-small-bold;
+  }
+
+  @include on-tablet {
+    margin: $spacing-xl 0 $spacing-s;
+  }
+}

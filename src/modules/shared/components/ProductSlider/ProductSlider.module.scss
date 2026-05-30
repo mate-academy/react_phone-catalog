@@ -1,0 +1,49 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.sliderContainer {
+  margin-right: -$spacing-s;
+  margin-bottom: $spacing-xxl;
+
+  @include on-tablet {
+    margin-right: -$spacing-m;
+    margin-bottom: $spacing-3xl;
+  }
+
+  @media (min-width: 1024px) {
+    margin-right: 0;
+  }
+
+  @include on-desktop {
+    margin-bottom: $spacing-4xl;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-m;
+}
+
+.navigation {
+  display: flex;
+  gap: $spacing-s;
+  margin-right: $spacing-s;
+
+  @include on-tablet {
+    margin-right: $spacing-m;
+  }
+
+  @media (min-width: 1024px) {
+    margin-right: 0;
+  }
+}
+
+.navBtn {
+  @include action-square-button;
+}
+
+.slide {
+  height: auto;
+}

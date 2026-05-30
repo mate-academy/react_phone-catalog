@@ -1,0 +1,85 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.buttons {
+  display: flex;
+  gap: $spacing-xs;
+  width: 100%;
+}
+
+.addToCart {
+  @include flex-center;
+
+  flex: 1;
+  background-color: $c-primary;
+  color: $c-white;
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid transparent;
+
+  font-weight: $fw-semibold;
+  line-height: 21px;
+
+  transition: $transition-color;
+
+  &:hover {
+    background-color: $c-secondary;
+  }
+
+  &.inCart {
+    background-color: $c-white;
+    color: $c-green;
+    border-color: $c-elements;
+
+    &:hover {
+      border-color: $c-green;
+    }
+  }
+}
+
+.favorite {
+  @include flex-center;
+
+  border: 1px solid $c-icons;
+  background-color: transparent;
+  color: $c-primary;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  transition: $transition-color;
+
+  &:hover {
+    border-color: $c-primary;
+  }
+
+  &.favoriteActive {
+    color: $c-red;
+    border-color: $c-elements;
+  }
+}
+
+/* =========================================
+   SIZE MODIFIERS
+   ========================================= */
+
+.small {
+  .addToCart {
+    height: 40px;
+    font-size: 14px;
+  }
+  .favorite {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.large {
+  .addToCart {
+    height: $size-primary-btn-height;
+    font-size: 14px;
+  }
+  .favorite {
+    width: $size-primary-btn-height;
+    height: $size-primary-btn-height;
+  }
+}

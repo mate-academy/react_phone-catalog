@@ -1,0 +1,50 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: $spacing-xs;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  color: $c-secondary;
+}
+
+.value {
+  color: $c-primary;
+  text-align: right;
+}
+
+/* =========================================
+   VARIANTS
+   ========================================= */
+
+.card {
+  padding: $spacing-xs 0;
+
+  .item {
+    @include text-small-bold;
+  }
+}
+
+.short {
+  .item {
+    @include text-small-bold;
+  }
+}
+
+.full {
+  .item {
+    @include text-secondary-regular;
+  }
+}

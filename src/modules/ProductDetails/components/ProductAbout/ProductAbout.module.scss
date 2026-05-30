@@ -1,0 +1,32 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.title {
+  @include section-title-bordered;
+
+  margin-bottom: $spacing-l;
+}
+
+.productDescription {
+  margin-bottom: $spacing-l;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.subtitle {
+  @include text-subtitle;
+
+  margin-bottom: $spacing-s;
+}
+
+.paragraph {
+  @include text-secondary-regular;
+
+  margin-bottom: $spacing-s;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

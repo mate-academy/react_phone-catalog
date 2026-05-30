@@ -1,0 +1,73 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.container {
+  @include page-container;
+}
+
+.content {
+  display: grid;
+  align-items: flex-start;
+  margin-top: $spacing-l;
+
+  grid-template-columns: 1fr;
+  gap: $spacing-l;
+
+  @include on-desktop {
+    grid-template-columns: 1fr 368px;
+    gap: $spacing-s;
+  }
+}
+
+.listWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkoutWrapper {
+  @include on-desktop {
+    position: sticky;
+    top: $spacing-m;
+  }
+}
+
+.emptyState {
+  @include empty-state-container;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: $spacing-xl 0;
+
+  @include on-tablet {
+    padding: $spacing-3xl 0;
+  }
+
+  .emptyImage {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: $spacing-l;
+
+    @include on-tablet {
+      max-width: 350px;
+    }
+  }
+
+  h2 {
+    color: $c-secondary;
+    font-weight: $fw-semibold;
+    font-size: 20px;
+    margin-bottom: $spacing-m;
+
+    @include on-tablet {
+      font-size: 24px;
+    }
+  }
+
+  .continueShopping {
+    @include primary-button;
+  }
+}

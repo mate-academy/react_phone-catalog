@@ -1,0 +1,91 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.gallery {
+  display: flex;
+  gap: $spacing-s;
+  flex-direction: column;
+  min-width: 0;
+
+  @include on-tablet {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+}
+
+.mainImageContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1 / 1;
+
+  min-width: 280px;
+  max-width: 464px;
+
+  .mainImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: row;
+  gap: $spacing-xs;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  scrollbar-width: none;
+
+  @include on-tablet {
+    flex-direction: column;
+    overflow-x: visible;
+
+    width: 10%;
+    max-width: 80px;
+    min-width: 35px;
+    flex-shrink: 0;
+  }
+
+  @include on-desktop {
+    width: 80px;
+  }
+}
+
+.thumbnailBtn {
+  width: clamp(35px, 20vw, 80px);
+  height: clamp(35px, 20vw, 80px);
+
+  flex-shrink: 0;
+  padding: 0;
+  border: 1px solid $c-elements;
+  background-color: $c-white;
+  cursor: pointer;
+  transition: $transition-color;
+
+  @include on-tablet {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  &:hover {
+    border-color: $c-secondary;
+  }
+
+  &.thumbnailActive {
+    border-color: $c-primary;
+  }
+
+  .thumbnailImg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
