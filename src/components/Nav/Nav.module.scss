@@ -1,0 +1,38 @@
+@import '../../styles/utils';
+
+.container {
+  display: none;
+  gap: 32px;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.link {
+  display: block;
+  color: $color-secondary;
+
+  @include uppercase;
+
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  transition: color $hover-delay;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  @include on-tablet {
+    padding-block: 17px;
+  }
+
+  @include on-desktop {
+    padding-block: 26px;
+  }
+}
+
+.active {
+  color: $color-primary;
+  border-bottom: 3px solid $color-primary;
+}
