@@ -58,7 +58,9 @@
 
  @mixin h2 {
   font-weight: 700;
+
   // 31px можливо!!!!
+
   line-height: 41px;
   font-size: 22px;
 
@@ -113,7 +115,7 @@
   letter-spacing: 0%;
 }
 
-@mixin body-semiBold {
+@mixin body-semi-bold {
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
@@ -127,9 +129,7 @@
   line-height: 15px;
 }
 
-//Buttons
-
-@mixin bodyText14 {
+@mixin body-text-14 {
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;

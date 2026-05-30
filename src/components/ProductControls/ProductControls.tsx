@@ -8,19 +8,20 @@ import ProductCapacity from '../ProductCapacity/ProductCapacity';
 import { Products } from '../../types/Products';
 import { useEffect, useState } from 'react';
 import { getProducts } from '../../api/api';
+import { Options } from '../../types/Options';
 
 type Props = {
   currentProduct: TypesOfProducts;
   currentColor: string;
   currentCapacity: string;
-  setCurrentColor: () => void;
+  optionsChange: (option: Options) => void;
 };
 
 export const ProductControls: React.FC<Props> = ({
   currentProduct,
   currentColor,
   currentCapacity,
-  setCurrentColor,
+  optionsChange,
 }) => {
   const [product, setProduct] = useState<Products>();
 
@@ -44,7 +45,7 @@ export const ProductControls: React.FC<Props> = ({
       <div className={styles.colorsAndId}>
         <div className={styles.colors}>
           <ProductColors
-            setCurrentColor={setCurrentColor}
+            optionsChange={optionsChange}
             currentProduct={currentProduct}
             currentColor={currentColor}
           />
@@ -57,6 +58,7 @@ export const ProductControls: React.FC<Props> = ({
 
         <div className={styles.capacityContainer}>
           <ProductCapacity
+            optionsChange={optionsChange}
             currentProduct={currentProduct}
             currentCapacity={currentCapacity}
           />

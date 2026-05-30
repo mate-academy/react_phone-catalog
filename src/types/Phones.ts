@@ -3,6 +3,7 @@ import { Category } from '../pages/ProductsPage/ProductsPage';
 export interface Phones {
   id: string;
   category: Category;
+  namespaceId: string;
   name: string;
   capacityAvailable: string[];
   capacity: string;

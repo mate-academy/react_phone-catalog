@@ -2,17 +2,18 @@ import classNames from 'classnames';
 import { COLOR_MAP } from '../../types/Colors';
 import styles from './ProductColors.module.scss';
 import { TypesOfProducts } from '../../types/TypesOfProducts';
+import { Options } from '../../types/Options';
 
 type Props = {
   currentColor: string;
   currentProduct: TypesOfProducts;
-  setCurrentColor: (color: string) => void;
+  optionsChange: (color: Options) => void;
 };
 
 export const ProductColors: React.FC<Props> = ({
   currentProduct,
   currentColor,
-  setCurrentColor,
+  optionsChange,
 }) => {
   return (
     <>
@@ -35,7 +36,7 @@ export const ProductColors: React.FC<Props> = ({
                 type="radio"
                 name="color"
                 onChange={() => {
-                  setCurrentColor(color);
+                  optionsChange({ color: color });
                 }}
                 className={styles.input}
               />

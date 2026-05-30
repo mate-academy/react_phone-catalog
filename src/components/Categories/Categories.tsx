@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getAccessories, getPhones, getTablets } from '../../api/api';
 import styles from './Categories.module.scss';
 import { NavLink } from 'react-router-dom';
+import { TypesOfProducts } from '../../types/TypesOfProducts';
 
 type Count = {
   phones: number;
@@ -16,7 +17,7 @@ type Category = {
   photo: string;
   photo2: string;
   color: string;
-  fn: () => Promise<any>;
+  fn: () => Promise<TypesOfProducts[]>;
 };
 
 const CATEGORIES: Category[] = [

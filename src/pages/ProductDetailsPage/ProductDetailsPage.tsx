@@ -1,7 +1,7 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import { useCallback, useEffect, useState } from 'react';
-import { getProductDetails } from '../../api/api';
+import { getProductDetails, getProductDetailsAll } from '../../api/api';
 import Loader from '../../components/Loader/Loader';
 import styles from './ProductDetailsPage.module.scss';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
@@ -14,21 +14,40 @@ import { getProductSpec } from '../../hooks/getProductSpec';
 import { YouAlsoLike } from '../../components/YouAlsoLike/YouAlsoLike';
 import ProductGallery from '../../components/ProductGallery/ProductGallery';
 import classNames from 'classnames';
+import { Options } from '../../types/Options';
 
 export const ProductDetailsPage = () => {
   // #region constant
   const { productId } = useParams();
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [currentProduct, setCurrentProduct] = useState<TypesOfProducts | null>(
     null,
   );
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [currentImage, setCurrentImage] = useState<string>('');
-  const [currentColor, setCurrentColor] = useState<string>('');
-  const [currentCapacity, setCurrentCapacity] = useState<string>('');
   // #endregion
 
   // #region Function and if
+  const handleProductOptionChange = (option: Options) => {
+    const newColor = option.color ?? currentProduct?.color;
+    const newCapacity = option.capacity ?? currentProduct?.capacity;
+    const newNameSpeced = currentProduct?.namespaceId;
+
+    getProductDetailsAll().then(products => {
+      const newProd = products.find(
+        product =>
+          product.color === newColor &&
+          product.capacity === newCapacity &&
+          newNameSpeced === product.namespaceId,
+      );
+
+      if (newProd) {
+        navigate(`/product/${newProd?.id}`);
+      }
+    });
+  };
+
   const loadProductDetails = useCallback(() => {
     if (!productId) {
       return;
@@ -41,8 +60,6 @@ export const ProductDetailsPage = () => {
       .then(product => {
         setCurrentProduct(product || null);
         setCurrentImage(product?.images[0] || '');
-        setCurrentColor(product?.color || '');
-        setCurrentCapacity(product?.capacity || '');
       })
       .catch(() => {
         setErrorMessage('Product was not found');
@@ -89,10 +106,10 @@ export const ProductDetailsPage = () => {
 
         <div className={classNames(styles.sections, styles.controlSection)}>
           <ProductControls
-            setCurrentColor={setCurrentColor}
+            optionsChange={handleProductOptionChange}
             currentProduct={currentProduct}
-            currentColor={currentColor}
-            currentCapacity={currentCapacity}
+            currentColor={currentProduct.color}
+            currentCapacity={currentProduct.capacity}
           />
         </div>
       </div>

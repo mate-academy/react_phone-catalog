@@ -32,3 +32,13 @@ export const getProductDetails = async (productId: string) => {
 
   return product;
 };
+
+export const getProductDetailsAll = async () => {
+  const allProducts = await Promise.all([
+    getPhones(),
+    getTablets(),
+    getAccessories(),
+  ]);
+
+  return allProducts.flat();
+};

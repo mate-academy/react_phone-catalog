@@ -1,3 +1,4 @@
+import { Options } from '../../types/Options';
 import { TypesOfProducts } from '../../types/TypesOfProducts';
 import styles from './ProductCapacity.module.scss';
 import classNames from 'classnames';
@@ -5,11 +6,13 @@ import classNames from 'classnames';
 type Props = {
   currentProduct: TypesOfProducts;
   currentCapacity: string;
+  optionsChange: (color: Options) => void;
 };
 
 export const ProductCapacity: React.FC<Props> = ({
   currentProduct,
   currentCapacity,
+  optionsChange,
 }) => {
   return (
     <>
@@ -27,6 +30,9 @@ export const ProductCapacity: React.FC<Props> = ({
               id={variant}
               value={variant}
               className={styles.input}
+              onChange={() => {
+                optionsChange({ capacity: variant });
+              }}
             />
 
             <span

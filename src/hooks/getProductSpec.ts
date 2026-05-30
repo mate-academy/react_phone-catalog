@@ -1,8 +1,8 @@
 // // import { Products } from '../types/Products';
 // import { TypesOfProducts } from '../types/TypesOfProducts';
 
-import { Spec } from "../components/ProductSpec/ProductSpec";
-import { TypesOfProducts } from "../types/TypesOfProducts";
+import { Spec } from '../components/ProductSpec/ProductSpec';
+import { TypesOfProducts } from '../types/TypesOfProducts';
 
 // export type ProductSpecKey =
 //   | 'screen'

@@ -1,5 +1,5 @@
 @import '../../styles/variable';
-@import '../../styles/font.scss';
+@import '../../styles/font';
 
 .input {
    position: absolute;
@@ -29,9 +29,10 @@
 }
 
 .title {
-  @include small-text;
   color: $gray-secondary-color;
   margin: 0;
+
+  @include small-text;
 }
 
 
