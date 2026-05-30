@@ -1,0 +1,177 @@
+@use '../../styles/tokens.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.root {
+  padding-inline: 16px;
+
+  @include grid;
+
+  @include tablet {
+    padding-inline: 24px;
+  }
+
+  @include desktop {
+    padding-inline: 32px;
+  }
+}
+
+.inner {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 1200px;
+  justify-self: center;
+}
+
+.back {
+  grid-column: 1 / -1;
+  margin: 24px 0 0;
+}
+
+.title {
+  grid-column: 1 / -1;
+  margin: 24px 0 8px;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  @include tablet {
+    font-size: 48px;
+    line-height: 56px;
+    margin: 40px 0 8px;
+  }
+}
+
+.stats {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $muted;
+}
+
+.controls {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 16px;
+  margin: 32px 0 24px;
+
+  @include tablet {
+    margin: 40px 0 24px;
+  }
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 136px;
+
+  @include tablet {
+    width: 187px;
+  }
+
+  @include desktop {
+    width: 176px;
+  }
+}
+
+.controlLabel {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: $muted;
+}
+
+.select {
+  padding: 10px 12px;
+  border: 1px solid #B4BDC3;
+  background:
+    url('/src/assets/Chevron\ \(Arrow\ Down\).png') no-repeat right 12px center / 16px 16px;
+  background-color: $bg;
+  appearance: none;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: $text;
+
+  &:hover {
+    border-color: $muted;
+  }
+
+  &:focus {
+    outline: 1px solid $text;
+  }
+}
+
+.products {
+  grid-column: 1 / -1;
+  overflow-anchor: none;
+}
+
+.pager {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 0;
+  flex-wrap: nowrap;
+
+  @include tablet {
+    padding: 40px 0 0;
+  }
+
+  @include desktop {
+    padding: 40px 0 0;
+  }
+}
+
+.arrowBtn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #B4BDC3;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  cursor: pointer;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+
+  &[data-disabled='true'] {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  &:not([data-disabled='true']):hover {
+    background: #f9f9f9;
+  }
+}
+
+.pageBtn {
+  min-width: 32px;
+  height: 32px;
+  border: 1px solid $line;
+  font-family: $font;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $text;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease, font-weight 0.2s ease;
+
+  &:hover {
+    background: #f9f9f9;
+  }
+}
+
+.pageBtnActive {
+  background: $text;
+  color: $bg;
+  font-family: $font;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}

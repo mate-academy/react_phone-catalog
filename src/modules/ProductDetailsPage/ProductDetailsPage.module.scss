@@ -1,0 +1,591 @@
+@use '../../styles/tokens.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.root {
+  padding-inline: 16px;
+
+  @include grid;
+
+  @include tablet {
+    padding-inline: 24px;
+  }
+
+  @include desktop {
+    padding-inline: 32px;
+  }
+}
+
+.inner {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 1200px;
+  justify-self: center;
+}
+
+.breadcrumbs {
+  grid-column: 1 / -1;
+  margin: 24px 0;
+
+  @include tablet {
+    margin: 24px 0 40px;
+  }
+
+  @include desktop {
+    margin: 24px 0 40px;
+  }
+}
+
+.breadcrumbsBack {
+  grid-column: 1 / -1;
+}
+
+.title {
+  grid-column: 1 / -1;
+  margin: 16px 0 32px;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  color: $text;
+
+  @include tablet {
+    font-size: 32px;
+    line-height: 41px;
+    margin: 16px 0 40px;
+  }
+
+  @include desktop {
+    font-size: 32px;
+    line-height: 41px;
+    margin: 16px 0 40px;
+  }
+}
+
+.grid {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+
+  @include tablet {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  @include desktop {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 64px;
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+
+  @include tablet {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  @include desktop {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.mainImage {
+  position: relative;
+  width: 288px;
+  height: 288px;
+  overflow: visible;
+
+  @include desktop {
+    width: 464px;
+    height: 464px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .imgVisible {
+    opacity: 1;
+  }
+
+  .imgHidden {
+    opacity: 0;
+  }
+}
+
+.thumbs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  @include tablet {
+    order: -1;
+    flex-direction: column;
+    align-items: stretch;
+    max-height: 288px;
+    overflow-y: auto;
+    padding-right: 2px;
+  }
+
+  @include desktop {
+    order: -1;
+    flex-direction: column;
+    align-items: stretch;
+    max-height: 464px;
+    overflow-y: auto;
+    padding-right: 2px;
+  }
+}
+
+.thumb {
+  width: 50px;
+  height: 50px;
+  border: 1px solid $line;
+  overflow: hidden;
+  padding: 4px;
+  background: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+
+  @include tablet {
+    width: 35px;
+    height: 35px;
+  }
+
+  @include desktop {
+    width: 80px;
+    height: 80px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  &.active {
+    border-color: $text;
+  }
+}
+
+.panel {
+  margin-top: 16px;
+  min-width: 320px;
+
+  @include tablet {
+    margin-top: 0;
+    align-self: start;
+  }
+
+  @include desktop {
+    margin-top: 0;
+    align-self: start;
+  }
+}
+
+.optionLabel {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+  color: $muted;
+  margin-top: 24px;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+
+  &:first-of-type .optionLabel {
+    @include tablet {
+      margin-top: 0;
+    }
+
+    @include desktop {
+      margin-top: 0;
+    }
+  }
+}
+
+.swatches {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 8px 0 24px;
+}
+
+.swatch {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $line;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.swatch input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.swatch span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.swatch.selected {
+  outline: 1px solid $text;
+}
+
+.sep {
+  height: 0;
+  border-top: 1px solid $line;
+}
+
+.choices {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 8px 0 24px;
+}
+
+.choice {
+  padding: 7px 8px;
+  border: 1px solid #B4BDC3;
+  cursor: pointer;
+}
+
+.choice input {
+  display: none;
+}
+
+.choice.selected {
+  background: $text;
+  color: #fff;
+  border-color: $text;
+}
+
+.priceBlock {
+  display: flex;
+  gap: 8px;
+  margin-top: 32px;
+  align-items: center;
+}
+
+.price {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -1%;
+  color: $text;
+}
+
+.fullPrice {
+  text-decoration: line-through;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 100%;
+  color: $muted;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0 32px;
+}
+
+.cartBtn {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: $text;
+  color: $bg;
+  border: none;
+
+  &:hover {
+    background: adjust($text, 5%);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &.inCart {
+    background: $bg;
+    color: $accent;
+    border: 1px solid $line;
+
+    &:hover {
+      border-color: $accent;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+}
+
+.heartBtn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #B4BDC3;
+  background: $card-bg;
+  cursor: pointer;
+  transition: border-color .2s;
+
+  &:hover {
+    border-color: $text;
+  }
+
+  &.active {
+    border-color: $line;
+  }
+}
+
+.heartIcon {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.specs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.specs li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+}
+
+.specs li span {
+  color: $muted;
+}
+
+.specs li strong {
+  color: $text;
+}
+
+.about {
+  grid-column: 1 / -1;
+  margin: 56px 0 0;
+
+  @include tablet {
+    margin: 64px 0 0;
+  }
+
+  @include desktop {
+    margin: 80px 0 0;
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include tablet {
+    gap: 64px;
+  }
+
+  @include desktop {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 64px;
+  }
+}
+
+.left {
+  @include desktop {
+    flex: 0 0 560px;
+    width: 560px;
+  }
+}
+
+.right {
+  @include desktop {
+    flex: 0 0 512px;
+    width: 512px;
+  }
+}
+
+.aboutTitle {
+  grid-column: 1 / -1;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 100%;
+  color: $text;
+  margin: 0 0 16px;
+
+  @include tablet {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+  }
+
+  @include desktop {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+  }
+}
+
+.about>.sep {
+  width: 100%;
+  margin: 0 0 24px;
+}
+
+.aboutBlock {
+  display: flex;
+  flex-direction: column;
+  margin: 32px 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include desktop {
+    grid-column: 1;
+    margin: 0;
+  }
+}
+
+.blockTitle {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 100%;
+  color: $text;
+  margin: 0 0 8px;
+
+  @include tablet {
+    font-size: 20px;
+  }
+
+  @include desktop {
+    font-size: 20px;
+    margin-top: 32px;
+  }
+}
+
+.blockText {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $muted;
+  margin: 8px 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.specsBlock {
+  grid-column: 1 / -1;
+
+  @include desktop {
+    grid-column: 2;
+    align-self: start;
+  }
+}
+
+.specsBlockTitle {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 100%;
+  color: $text;
+  margin: 0 0 16px;
+
+  @include tablet {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+  }
+
+  @include desktop {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+  }
+}
+
+.specsBlockList {
+  list-style: none;
+  padding: 0;
+  margin: 30px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specsBlockList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  gap: 8px;
+}
+
+.specsBlockList li span {
+  color: $muted;
+  flex-shrink: 0;
+}
+
+.specsBlockList li strong {
+  color: $text;
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.2s ease;
+}
+
+.suggested {
+  grid-column: 1 / -1;
+  margin: 0;
+  display: flex;
+}
+
+.suggested>* {
+  padding-inline: 0 !important;
+  margin-inline: 0;
+  width: 100%;
+  max-width: none;
+}

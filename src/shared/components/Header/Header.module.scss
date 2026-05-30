@@ -1,0 +1,416 @@
+@use '../../../styles/tokens.scss' as *;
+@use '../../../styles/mixins.scss' as *;
+
+.header {
+  background: $card-bg;
+  box-shadow: $shadow-hairline;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 500;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-8;
+  height: 48px;
+
+  @include tablet {
+    overflow-x: hidden;
+  }
+
+  @include desktop {
+    height: 64px;
+  }
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  min-width: 0;
+  flex: 1 1 auto;
+
+  @include tablet {
+    gap: $space-32;
+  }
+
+  @include desktop {
+    gap: $space-48;
+  }
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  width: 96px;
+  height: 48px;
+  padding: 14px 16px;
+  text-decoration: none;
+
+  @include desktop {
+    width: 128px;
+    height: 64px;
+    padding: 18px 24px;
+  }
+}
+
+.logoImg {
+  display: block;
+  width: 64px;
+  height: auto;
+
+  @include desktop {
+    width: 80px;
+  }
+}
+
+.burger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: transparent;
+  border: 0;
+  box-shadow: -1px 0 0 0 $line;
+  cursor: pointer;
+
+  @include tablet {
+    display: none;
+  }
+
+  @include desktop {
+    display: none;
+  }
+}
+
+.burgerIcon {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+/* правая группа */
+.right {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 0 0 auto;
+}
+
+.iconBtn {
+  position: relative;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: -1px 0 0 0 $line;
+
+  @include tablet {
+    display: inline-flex;
+    width: 48px;
+    height: 48px;
+  }
+
+  @include desktop {
+    display: inline-flex;
+    width: 64px;
+    height: 64px;
+  }
+
+  &[aria-current="page"] {
+    @include tablet {
+      box-shadow: -1px 0 0 0 $line, inset 0 -2px 0 0 $text;
+    }
+
+    @include desktop {
+      box-shadow: -1px 0 0 0 $line, inset 0 -2px 0 0 $text;
+    }
+  }
+}
+
+.iconImg {
+  display: none;
+
+  @include tablet {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  @include desktop {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 4px;
+  border-radius: 999px;
+  font-family: $font;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 16px;
+  background: $danger;
+  color: $bg;
+
+  @include desktop {
+    top: 16px;
+    right: 16px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 5px;
+  }
+}
+
+.nav {
+  display: none;
+
+  @include tablet {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  @include desktop {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+}
+
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  text-decoration: none;
+  color: $muted;
+  font-family: $font;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: 0;
+
+  @include desktop {
+    font-size: 14px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -16px;
+    height: 2px;
+    background: $text;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .18s ease;
+
+    @include desktop {
+      bottom: -24px;
+    }
+  }
+}
+
+.active {
+  color: $text;
+
+  &::after {
+    transform: scaleX(1);
+  }
+}
+
+.search {
+  display: none;
+}
+
+@media (min-width: #{$bp-tablet-min}) {
+  .search {
+    display: flex;
+    align-items: center;
+    flex: 0 1 clamp(200px, 28vw, 200px);
+    min-width: 0;
+    margin: 0 $space-8;
+  }
+
+  .searchInput {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid $muted;
+    border-radius: 20px;
+    outline: none;
+    background-color: transparent;
+    color: $text;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+
+    &::placeholder {
+      color: $muted;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: $text;
+    }
+  }
+}
+
+@media (min-width: #{$bp-desktop-min}) {
+  .search {
+    flex-basis: clamp(320px, 28vw, 520px);
+  }
+}
+
+/* --- Mobile panel --- */
+.navPanel {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: $bg;
+  grid-template-rows: auto 1fr auto;
+  z-index: 1000;
+  transform: translateX(-100%);
+  transition: transform .2s ease;
+}
+
+.navPanelOpen {
+  display: grid;
+  transform: translateX(0);
+
+  @include tablet {
+    display: none !important;
+  }
+}
+
+.panelTop {
+  display: grid;
+  grid-template-columns: 1fr 48px;
+  align-items: center;
+  height: 48px;
+  box-shadow: 0 1px 0 0 $line;
+  padding-left: 16px;
+}
+
+.panelLogo img {
+  display: block;
+  width: 64px;
+  height: auto;
+}
+
+.panelClose {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  box-shadow: -1px 0 0 0 $line;
+}
+
+.panelNav {
+  display: grid;
+  align-content: start;
+  justify-items: center;
+  row-gap: 24px;
+  padding: 24px 0 0;
+  list-style: none;
+  margin: 0;
+
+  a {
+    text-decoration: none;
+    color: $muted;
+    font-family: $font;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 6px 2px;
+    position: relative;
+  }
+}
+
+.mLinkActive {
+  color: $text !important;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    background: $text;
+  }
+}
+
+.panelBottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 64px;
+  box-shadow: 0 -1px 0 0 $line;
+
+  .panelIcon {
+    display: grid;
+    place-items: center;
+    border-left: 1px solid $line;
+    text-decoration: none;
+    position: relative;
+    color: inherit;
+
+    &:first-child {
+      border-left: 0;
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: $text;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform .2s ease;
+    }
+
+    &.active::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+@include tablet {
+
+  .navPanel,
+  .navPanelOpen {
+    display: none !important;
+  }
+}
+
+:where(.burger, .iconBtn, .link, .panelClose, .panelIcon, .panelNav a) {
+  &:focus-visible {
+    outline: 2px solid $focus;
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+}

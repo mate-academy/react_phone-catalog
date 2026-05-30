@@ -1,0 +1,109 @@
+@use '../../../styles/tokens.scss' as *;
+@use '../../../styles/mixins.scss' as *;
+
+.section {
+  padding-inline: 16px;
+
+  @include grid;
+
+  @include tablet {
+    padding-inline: 24px;
+  }
+
+  @include desktop {
+    padding-inline: 32px;
+  }
+}
+
+.inner {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 1200px;
+  justify-self: center;
+  display: grid;
+  gap: 24px;
+  margin-top: 56px;
+
+  @include tablet {
+    margin-top: 64px;
+  }
+
+  @include desktop {
+    margin-top: 80px;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  letter-spacing: 0;
+  color: $text;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+}
+
+.btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #B4BDC3;
+  background: $bg;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .08);
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  pointer-events: none;
+}
+
+.scroller {
+  overflow: hidden;
+  overscroll-behavior-x: contain;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+}
+
+.cell {
+  flex: 0 0 212px;
+
+  @include tablet {
+    flex: 0 0 237px;
+  }
+
+  @include desktop {
+    flex: 0 0 272px;
+  }
+}
+
+.btn:disabled {
+  opacity: .5;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}

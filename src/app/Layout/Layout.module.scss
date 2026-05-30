@@ -1,0 +1,17 @@
+.root {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow-anchor: none;
+}
+
+.content {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+}
+
+html {
+  scrollbar-gutter: stable both-edges;
+}

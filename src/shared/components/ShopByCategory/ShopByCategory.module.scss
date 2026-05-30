@@ -1,0 +1,135 @@
+@use '../../../styles/tokens.scss' as *;
+@use '../../../styles/mixins.scss' as *;
+
+.root {
+  padding-inline: 16px;
+
+  @include grid;
+
+  @include tablet {
+    padding-inline: 24px;
+  }
+
+  @include desktop {
+    padding-inline: 32px;
+  }
+}
+
+.inner {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 1200px;
+  justify-self: center;
+  display: grid;
+  margin-top: 56px;
+
+  @include tablet {
+    margin-top: 64px;
+  }
+
+  @include desktop {
+    margin-top: 80px;
+  }
+}
+
+.title {
+  grid-column: 1 / -1;
+  margin: 0 0 24px;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  color: $text;
+
+  @include tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+}
+
+.grid {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  @include desktop {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+  }
+}
+
+.card {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-decoration: none;
+  color: $text;
+  transition: transform .15s ease;
+
+  @include tablet {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  @include desktop {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.image {
+  overflow: hidden;
+  height: 180px;
+
+  @include tablet {
+    height: 220px;
+  }
+
+  @include desktop {
+    height: 260px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform .2s;
+  }
+}
+
+.card:hover .image img {
+  transform: scale(1.06);
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+}
+
+.meta {
+  font-size: 14px;
+  line-height: 21px;
+  color: $muted;
+}
