@@ -7,3 +7,4 @@ describe('App', () => {
     cy.get('h1').should('have.text', 'Product Catalog');
   });
 });
+
