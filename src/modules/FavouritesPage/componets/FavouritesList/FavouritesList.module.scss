@@ -1,0 +1,38 @@
+@import '../../../../modules/shared/styles/mixins';
+
+.section {
+  padding-top: 60px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-phone {
+    padding-inline: 16px;
+  }
+}
+
+.amount {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #89939A;
+  margin-bottom: 40px;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  list-style: none;
+  gap: 40px 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fill, minmax(237px, 1fr));
+  }
+
+  @include on-phone {
+    grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  }
+}
