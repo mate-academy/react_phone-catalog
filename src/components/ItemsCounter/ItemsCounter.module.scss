@@ -1,0 +1,18 @@
+@import '../../styles/variables';
+
+
+.items__counter {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 14px;
+    height: 14px; 
+    border-radius: 50%;
+
+    font-size: 9px;
+    color: $white;
+    text-align: center;
+
+    background-color: $red;
+}

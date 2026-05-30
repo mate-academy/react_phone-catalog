@@ -1,0 +1,155 @@
+@import '../../styles/mixins';
+@import '../../styles//variables';
+@import '../../styles/media';
+
+.card__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    min-width: 212px;
+    max-width: 350px;
+    min-height: 442px;
+    max-height: 442px;
+    padding: 32px;
+    border: 1px solid $elements;
+
+    text-decoration: none;
+
+    @include tablet {
+        min-width: 237px;
+        min-height: 512px;
+    }
+
+    @include desktop{
+        min-width: 272px;
+        min-height: 506px;
+    }
+
+    &__title {
+     @include h4-MB;
+
+     width: 100%; 
+    max-height: 52px;
+    margin: 0;
+    margin-bottom: 5px;
+    padding-top: 12px;
+
+     color: $primary-color;
+    text-align: center;
+    }
+
+    &__price {
+        @include h3-MB;
+
+        align-self: flex-start;
+        margin-top: 8px;
+        font-weight: 700;
+        color: $primary-color;
+    }
+}
+
+.model__img {
+    width: 100%;
+    max-width: 148px;
+    max-height: 119px;
+    object-fit: contain;
+
+    @include tablet{
+        max-width: 173px;
+        max-height: 181px;
+
+    }
+
+    @include desktop{
+        max-width: 208px;
+        max-height: 196px;
+    }
+}
+
+.card__line{
+    width: 100%;
+    height: 1px;
+    background-color: $elements;
+}
+
+.characteristics__list-short{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    width: 100%;
+    margin: 0;
+    padding: 8px 0;
+
+    list-style: none;
+}
+
+.characteristics__item-short{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.characteristic-key{
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    line-height: 100%;
+    color: $secondary-color;
+}
+
+.characteristic-value{
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+    color: $primary-color;
+}
+
+.card__link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+}
+
+.card__buttons{
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 40px;
+}
+
+.model-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+
+.add--to__fovourites{
+    max-width: 40px;
+    border: 1px solid $icons;
+    background-color: $white;
+}
+
+.cross__regular-price{
+    font-weight: 500;
+    color: $secondary-color;
+    text-decoration: line-through;
+}
+
+.favorite__img{
+    transition: all .5s;
+}
+

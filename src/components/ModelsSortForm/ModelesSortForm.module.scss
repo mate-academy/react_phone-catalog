@@ -1,0 +1,73 @@
+@import '../../styles/variables';
+@import '../../styles/media';
+@import '../../styles/mixins';
+
+.models__sort-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    margin-top: 32px;
+    padding: 0 16px;
+
+    @include tablet{
+        margin-top: 40px;
+    }
+}
+
+.models__sort-formwrapper{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    width: 100%;
+    max-width: 1136px;
+}
+
+.model__select-label{
+    @include smallText-DT;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    width: 136px;
+
+    font-size: 12px;
+    color: $secondary-color;
+
+    @include tablet{
+        width: 128px;
+    }
+}
+
+.model__select-label--longer{
+    @include tablet{
+        width: 200px;
+    }
+
+    @include desktop{
+        width: 210px;
+    }
+}
+
+.model__select{
+    height: 40px;
+    padding-left: 12px;
+    border: 1px solid $icons;
+
+    background-color: $white;
+    outline: none;
+
+    &:focus{
+        border: 1px solid $primary-color;
+    }
+
+    #option{
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 21px;
+        color: $primary-color;
+    }
+}

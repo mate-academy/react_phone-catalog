@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-clean-order"
+  ],
+  "rules": {
+    "selector-class-pattern": "^([a-z][a-z0-9]*)(-[a-z0-9]+)*(__[a-zA-Z0-9-]+)*(--[a-zA-Z0-9]+)*$",
+    "scss/at-import-partial-extension-blacklist": ["scss"],
+    "scss/percent-placeholder-pattern": "^[_a-z0-9-]+$",
+    "scss/dollar-variable-pattern": "^[_a-z0-9-]+$",
+    "scss/at-mixin-pattern": "^[_a-zA-Z0-9-]+$",
+    "scss/at-function-pattern": "^[_a-z0-9-]+$"
+  }
+}

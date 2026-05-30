@@ -1,0 +1,55 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+@import '../../styles/media';
+
+.h1{
+    width: 100%;
+    max-width: 1136px;
+
+    @include h1-MB;
+
+    color: $primary-color;
+
+    @include tablet {
+        @include h1-DT;
+    }
+}
+
+.h2{
+    width: 100%;
+    max-width: 1136px;
+
+    @include h2-MB;
+
+    color: $primary-color;
+
+    @include tablet {
+        @include h2-DT;
+    }
+}
+
+.h3{
+    width: 100%;
+    max-width: 1136px;
+
+    @include h3-MB;
+
+    color: $primary-color;
+
+    @include tablet {
+        @include h3-DT;
+    }
+}
+
+.h4{
+    width: 100%;
+    max-width: 1136px;
+
+    @include h4-MB;
+
+    color: $primary-color;
+
+    @include tablet {
+        @include h4-DT;
+    }
+}

@@ -1,18 +1,23 @@
 {
   "name": "react_phone-catalog",
-  "homepage": "react_phone-catalog",
+  "homepage": "https://eksonurit.github.io/react_phone-catalog",
   "version": "0.1.0",
   "keywords": [],
   "author": "Mate Academy",
   "license": "GPL-3.0",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
+    "bootstrap": "^5.3.8",
     "bulma": "^1.0.1",
     "classnames": "^2.5.1",
     "react": "^18.3.1",
+    "react-bootstrap": "^2.10.10",
     "react-dom": "^18.3.1",
+    "react-loading-skeleton": "^3.5.0",
     "react-router-dom": "^6.25.1",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "styled-components": "^6.1.19",
+    "swiper": "^12.0.3"
   },
   "devDependencies": {
     "@cypress/react18": "^2.0.1",
@@ -23,8 +28,10 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/react-transition-group": "^4.4.10",
+    "@types/styled-components": "^5.1.36",
     "@typescript-eslint/parser": "^7.16.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "cross-env": "^10.1.0",
     "cypress": "^13.13.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-typescript": "^18.0.0",
@@ -42,8 +49,11 @@
     "prettier": "^3.3.2",
     "sass": "^1.77.8",
     "stylelint": "^16.7.0",
+    "stylelint-config-clean-order": "^8.0.0",
+    "stylelint-config-standard-scss": "^16.0.0",
     "typescript": "^5.2.2",
-    "vite": "^5.3.1"
+    "vite": "^5.3.1",
+    "vite-plugin-svgr": "^4.5.0"
   },
   "scripts": {
     "start": "mate-scripts start -l",
