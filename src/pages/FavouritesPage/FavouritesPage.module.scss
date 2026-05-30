@@ -1,0 +1,18 @@
+@import '../../utils/scss/variables';
+
+.favourites {
+  &__title {
+    margin-bottom: 0;
+  }
+
+  &__count {
+    font-size: 14px;
+
+    color: $secondary-color;
+  }
+
+  &__noProducts {
+    color: $secondary-color;
+    margin-top: 50px;
+  }
+}
