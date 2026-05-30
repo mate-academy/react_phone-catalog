@@ -1,0 +1,25 @@
+@import '/src/utils/global';
+
+.not_found {
+  height: calc(100vh - 297px - 48px);
+  width: 100%;
+
+  @include on-tablet {
+    height: calc(100vh - 167px - 48px);
+  }
+
+  @include on-desktop {
+    height: calc(100vh - 183px - 64px);
+  }
+
+  & img {
+    display: block;
+    position: relative;
+    left: 50%;
+    object-fit: scale-down;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}

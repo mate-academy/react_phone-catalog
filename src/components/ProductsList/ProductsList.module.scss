@@ -1,0 +1,24 @@
+@import '/src/utils/global';
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+
+  gap: 16px;
+  row-gap: 40px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fit, minmax(230px, .5fr));
+  }
+
+  @include on-laptop {
+    grid-template-columns: repeat(auto-fit, minmax(230px, .33fr));
+
+  }
+
+  &__item {
+    & article {
+      width: 100%;
+    }
+  }
+}

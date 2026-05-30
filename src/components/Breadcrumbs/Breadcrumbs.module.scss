@@ -1,0 +1,34 @@
+@import '/src/utils/global';
+
+.Breadcrumbs {
+  margin-top: 24px;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__link {
+    cursor: pointer;
+  }
+
+  &__item:last-child &__link {
+    pointer-events: none;
+    color: $ligth-gray;
+    cursor: default;
+  }
+
+  &__item &__link {
+    & svg {
+      & path {
+        transition: all 0.3s;
+      }
+
+      &:hover path {
+        fill: $accent;
+      }
+    }
+    @include hover(color, $accent);
+  }
+}

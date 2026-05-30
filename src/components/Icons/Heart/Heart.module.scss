@@ -1,0 +1,46 @@
+@import '/src/utils/global';
+
+.active {
+  & path {
+    fill: $primary-red !important;
+  }
+}
+
+.HeartIco {
+  display: flex;
+  position: relative;
+
+  & svg {
+    height: 16px;
+    width: 16px;
+
+    & path {
+      fill: $white;
+    }
+  }
+
+  &__counter {
+    box-sizing: border-box;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: -7px;
+    right: -7px;
+
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 100%;
+    text-align: center;
+
+    background-color: $primary-red;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    border: 1px solid $fon;
+  }
+}
+
+

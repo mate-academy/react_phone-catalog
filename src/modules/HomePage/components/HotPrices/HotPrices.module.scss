@@ -1,0 +1,26 @@
+@import '/src/utils/global';
+
+.hotPrices {
+  width: 100%;
+  height: fit-content;
+  position: relative;
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    position: relative;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 140%;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+  }
+
+}
