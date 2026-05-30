@@ -126,6 +126,7 @@ Create `Favorites` page with a `ProductsList` showing favorite products at `/fav
 ## Other tasks
 
 1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`.
+
 2. Implement the `Product was not found` state for the `ProductDetailsPage`.
 
 ## (*) Advanced tasks
