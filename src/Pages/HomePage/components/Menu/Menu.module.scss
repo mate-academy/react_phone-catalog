@@ -1,0 +1,47 @@
+@use '../../../../shared/utils.scss' as *;
+
+.menu {
+  z-index: 1;
+  transform: translateX(-100%);
+  height: calc(100vh - 72px);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $color-white;
+  transition: transform $effectDuration;
+  padding-top: 72px;
+
+  &__buttons {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 64px;
+    border-top: 1px $color-elements solid;
+    display: flex;
+    justify-content: space-between;
+
+    &-line {
+      height: 100%;
+      width: 1px;
+      background-color: $color-elements;
+      flex-shrink: 0;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+
+    &-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.show {
+  transform: translateX(0);
+}

@@ -1,0 +1,16 @@
+@use '../../utils.scss' as *;
+
+.productlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+
+  @include on-tablet {
+    @include table-grid;
+  }
+
+  @include on-desktop {
+    @include desktop-grid;
+  }
+}

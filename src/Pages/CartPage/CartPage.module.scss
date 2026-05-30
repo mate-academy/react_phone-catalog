@@ -1,0 +1,74 @@
+@use '../../shared/utils.scss' as *;
+
+.cartpage {
+  margin-bottom: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__breadcrumbs {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 24px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -10px;
+    }
+  }
+
+  &__image {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-desktop {
+      @include desktop-grid;
+    }
+  }
+
+  &__title {
+    margin: 0;
+
+    @include on-desktop {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-desktop {
+      grid-column: 1 / 17;
+    }
+  }
+}
+
+.cartempty {
+  max-width: 320px;
+  max-height: 320px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+
+  @include on-tablet {
+    max-width: 500px;
+    max-height: 500px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+  }
+}
