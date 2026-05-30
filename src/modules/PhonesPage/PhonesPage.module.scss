@@ -1,0 +1,25 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+@use '../../styles/fonts.scss' as *;
+
+.phones_nav {
+  @include nav-responsive;
+}
+
+.phones {
+  @include margin-top-responsive;
+
+  @include respond-to(phone) {
+    overflow: hidden;
+  }
+}
+
+.phones_header {
+  margin-bottom: 0;
+
+  @include header-responsive;
+}
+
+.phones_quantity {
+  @include total-amount-of-products;
+}

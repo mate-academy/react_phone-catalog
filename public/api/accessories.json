@@ -722,7 +722,7 @@
     "capacity": "44mm",
     "priceRegular": 429,
     "priceDiscount": 399,
-    "colorsAvailable": ["space gray", "silver", "gold"],
+    "colorsAvailable": ["silver", "gold", "space gray"],
     "color": "silver",
     "images": [
       "img/accessories/apple-watch-series-5/silver/00.webp",
@@ -806,7 +806,7 @@
     "capacity": "44mm",
     "priceRegular": 429,
     "priceDiscount": 399,
-    "colorsAvailable": ["space gray", "silver", "gold"],
+    "colorsAvailable": ["silver", "gold", "space gray"],
     "color": "gold",
     "images": [
       "img/accessories/apple-watch-series-5/gold/00.webp",
@@ -890,7 +890,7 @@
     "capacity": "44mm",
     "priceRegular": 429,
     "priceDiscount": 399,
-    "colorsAvailable": ["space gray", "silver", "gold"],
+    "colorsAvailable": ["silver", "gold", "space gray"],
     "color": "space-gray",
     "images": [
       "img/accessories/apple-watch-series-5/space-gray/00.webp",
@@ -1268,7 +1268,7 @@
     "capacity": "40mm",
     "priceRegular": 279,
     "priceDiscount": 259,
-    "colorsAvailable": ["silver", "space gray", "gold"],
+    "colorsAvailable": ["silver", "gold", "space gray"],
     "color": "gold",
     "images": [
       "img/accessories/apple-watch-se/gold/00.webp",
@@ -1310,7 +1310,7 @@
     "capacity": "44mm",
     "priceRegular": 309,
     "priceDiscount": 289,
-    "colorsAvailable": ["space gray", "silver", "gold"],
+    "colorsAvailable": ["silver", "gold", "space gray"],
     "color": "gold",
     "images": [
       "img/accessories/apple-watch-se/gold/00.webp",
@@ -1352,7 +1352,7 @@
     "capacity": "40mm",
     "priceRegular": 279,
     "priceDiscount": 259,
-    "colorsAvailable": ["silver", "space gray", "gold"],
+    "colorsAvailable": ["silver", "gold", "space gray"],
     "color": "space gray",
     "images": [
       "img/accessories/apple-watch-se/space-gray/00.webp",
@@ -1394,7 +1394,7 @@
     "capacity": "44mm",
     "priceRegular": 309,
     "priceDiscount": 289,
-    "colorsAvailable": ["silver", "space gray", "gold"],
+    "colorsAvailable": ["silver", "gold", "spave gray"],
     "color": "space gray",
     "images": [
       "img/accessories/apple-watch-se/space-gray/00.webp",

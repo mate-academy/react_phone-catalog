@@ -1,0 +1,22 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.productPage__title {
+  margin-bottom: 40px;
+
+  @include header-h2;
+
+  @include respond-to(phone) {
+    @include header-3;
+  }
+}
+
+.productPage_spec {
+  display: flex;
+  flex-direction: row;
+
+  @include respond-to(phone) {
+    display: flex;
+    flex-direction: column;
+  }
+}

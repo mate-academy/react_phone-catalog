@@ -1,0 +1,37 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+@use '../../styles/fonts.scss' as *;
+
+.favorites_nav {
+  @include nav-responsive;
+}
+
+.favorites {
+  @include margin-top-responsive;
+}
+
+.favorites_header {
+  margin-bottom: 0;
+
+  @include header-responsive;
+}
+
+.favorites_empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Mont-Bold, sans-serif;
+  font-size: 24px;
+  line-height: -0.01em;
+  line-height: 56px;
+  color: $gray-secondary;
+  white-space: nowrap;
+}
+
+.favorites_total {
+  @include total-amount-of-products;
+}
+
+.favorites_list {
+  @include grid-for-products;
+}

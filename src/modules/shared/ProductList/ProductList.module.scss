@@ -1,0 +1,13 @@
+@use '../../../styles/mixins.scss' as *;
+
+.productList {
+  @include grid-for-products;
+
+  @include respond-to(phone) {
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
