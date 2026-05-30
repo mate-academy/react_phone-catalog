@@ -1,0 +1,355 @@
+@use '../../utils/vars' as *;
+@use '../../utils/mixins' as *;
+
+.cartpage {
+  @include page-grid;
+
+  flex: 1;
+
+  @include on-phone {
+    margin: 24px 16px;
+  }
+
+  @include on-tablet {
+    margin: 40px 32px 64px;
+    padding: 0;
+  }
+
+  @include on-desktop {
+    margin: 40px 0 80px;
+  }
+
+  &__section {
+    display: flex;
+    grid-column: span 1;
+    align-items: center;
+
+    box-sizing: border-box;
+    width: 100%;
+
+
+    @include on-phone {
+      gap: 15px;
+    }
+
+    @include on-tablet {
+      gap: 24px;
+      padding: 0;
+    }
+
+    &_2 {
+      display: flex;
+      grid-column: span 1;
+      gap: 24px;
+      align-items: center;
+
+      @include on-phone {
+        justify-content: space-between;
+        padding: 0;
+      }
+
+      @include on-tablet {
+        justify-content: flex-end;
+        padding: 0;
+      }
+    }
+  }
+
+  &__title {
+    grid-column: 1/-1;
+
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-style: Bold;
+    color: $primary-color;
+    text-align: left;
+    letter-spacing: -1%;
+
+    @include on-phone {
+      margin: 24px 0 32px;
+      font-size: 32px;
+      line-height: 41px;
+    }
+
+    @include on-tablet {
+      margin: 16px 0 32px;
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__backbutton {
+    display: flex;
+    grid-column: 1/-1;
+    align-items: flex-end;
+
+    border: 0;
+
+    background-color: $background-color;
+
+    &__icon {
+      width: 16px;
+      height: 16px;
+      margin-right: 4px;
+
+      :global(body.dark) & {
+        filter: brightness(0) invert(1);
+      }
+    }
+
+    &__text {
+      margin: 0;
+
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 100%;
+      color: $secondary-color;
+      letter-spacing: 0%;
+    }
+  }
+
+  &__noproducts {
+    grid-column: 1/-1;
+    text-align-last: center;
+
+    &_p {
+      font-family: Mont, sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 140%;
+    }
+
+    &_img {
+      width: 30%;
+    }
+  }
+
+  &__closebut {
+    cursor: pointer;
+
+    flex-shrink: 0;
+
+    width: 16px;
+    height: 16px;
+    margin-inline: 24px;
+
+    :global(body.dark) & {
+      filter: brightness(0) invert(1);
+    }
+
+    @include on-phone {
+      margin-inline: 0 16px;
+    }
+  }
+
+  &__list {
+    display: grid;
+
+    @include on-phone {
+      grid-column: 1/-1;
+      margin-bottom: 32px;
+    }
+
+    @include on-desktop {
+      grid-column: 1/16;
+      margin-bottom: 0;
+    }
+
+    row-gap: 16px;
+
+    &_product {
+      border: 1px solid $elements-color;
+
+      @include on-phone {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+      }
+
+      @include on-tablet {
+        @include item-grid;
+
+        height: 128px;
+      }
+
+      &_img {
+        flex-shrink: 0;
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+      }
+
+      &_name {
+        flex: 1;
+
+        min-width: 0;
+
+        font-family: Mont, sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 21px;
+        color: $primary-color;
+        text-align: left;
+        letter-spacing: 0%;
+        word-break: break-word;
+
+        @include on-tablet {
+          width: max-content;
+        }
+      }
+
+      &_price {
+        @include on-phone {
+          margin: 0;
+        }
+
+        @include on-tablet {
+          margin-right: 24px;
+        }
+
+        font-family: Mont,
+        sans-serif;
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 140%;
+        color: $primary-color;
+        text-align: right;
+        letter-spacing: 0%;
+      }
+    }
+  }
+
+  &__summary {
+    @include on-phone {
+      display: flex;
+      grid-column: 1/-1;
+      flex-direction: column;
+      align-items: center;
+
+      margin-bottom: 32px;
+      padding: 24px;
+    }
+
+    @include on-desktop {
+      grid-column: 17/-1;
+    }
+
+    height: max-content;
+    border: 1px solid $elements-color;
+
+    &_total {
+      &_amount {
+        margin: 23px 0 0;
+
+        font-family: Mont, sans-serif;
+        font-size: 32px;
+        font-weight: 800;
+        line-height: 41px;
+        color: $primary-color;
+        letter-spacing: -1%;
+
+        @include on-tablet {
+          margin: 23px 0 0;
+        }
+      }
+
+      &_p {
+        width: 100%;
+        margin: 0 24px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid $elements-color;
+
+        font-family: Mont, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+        color: $secondary-color;
+        text-align: center;
+        letter-spacing: 0%;
+
+        @include on-tablet {
+          width: auto;
+          margin: 0 24px;
+          padding-bottom: 25px;
+        }
+      }
+    }
+
+    &_but {
+      cursor: pointer;
+
+      width: -webkit-fill-available;
+      margin: 24px;
+      padding-block: 13.5px;
+      border: none;
+
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+      color: $background-color;
+      text-align: center;
+      letter-spacing: 0%;
+
+      background-color: $primary-color;
+
+      @include on-tablet {
+        width: -webkit-fill-available;
+        margin: 24px;
+      }
+    }
+  }
+
+  &__changequantity {
+    display: flex;
+    column-gap: 14px;
+    align-items: center;
+
+    &_but {
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      border: 1px solid $elements-color;
+
+      background-color: $background-color;
+
+      transition: border-color 0.3s;
+
+      &:disabled {
+        cursor: default;
+        opacity: 0.5;
+      }
+
+      &:hover:not(:disabled) {
+        border-color: $primary-color;
+      }
+
+      &_img {
+        width: 16px;
+        height: 16px;
+
+        :global(body.dark) & {
+          filter: brightness(0) invert(1);
+        }
+      }
+    }
+
+    &_value {
+      width: 32px;
+
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: $primary-color;
+      text-align: center;
+    }
+  }
+}

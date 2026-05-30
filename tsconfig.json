@@ -1,9 +1,17 @@
 {
   "extends": "@mate-academy/students-ts-config",
   "include": [
-    "src"
+    "src",
+    "vite.config.mts"
   ],
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "models/*": ["src/models/*"],
+      "public/*": ["public/*"],
+      "services/*": ["src/services/*"],
+      "shared/*": ["src/modules/shared/*"]
+    },
     "sourceMap": false,
     "types": ["node", "cypress"]
   }
