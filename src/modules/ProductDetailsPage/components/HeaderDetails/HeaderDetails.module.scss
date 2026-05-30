@@ -1,0 +1,53 @@
+@use "@/styles/_media" as *;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+  margin-bottom: 32px;
+
+  @include tablet {
+    margin-bottom: 40px;
+  }
+
+  &BackLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &LinkImage {
+    width: 16px;
+    height: 16px;
+  }
+
+  &LinkText {
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--gray-white);
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 2px;
+    transition-duration: var(--transition-duration);
+
+    @include hover {
+      color: var(--accent);
+    }
+  }
+
+  &Title {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    text-wrap: auto;
+    color: var(--gray-white);
+
+    @include tablet {
+      font-size: 32px;
+      line-height: 128%;
+      letter-spacing: -0.01em;
+    }
+  }
+}

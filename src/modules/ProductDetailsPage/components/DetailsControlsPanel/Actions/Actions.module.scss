@@ -1,0 +1,37 @@
+@use "@/styles/_media" as *;
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+
+  @include desktop {
+    width: 320px;
+  }
+
+  &Price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    &Discount {
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 128%;
+      letter-spacing: -0.01em;
+      color: var(--gray-white);
+    }
+    &Regular {
+      font-weight: 600;
+      font-size: 22px;
+      text-decoration: line-through;
+      color: var(--gray-secondary);
+    }
+  }
+
+  &Buttons {
+    display: flex;
+    gap: 8px;
+  }
+}

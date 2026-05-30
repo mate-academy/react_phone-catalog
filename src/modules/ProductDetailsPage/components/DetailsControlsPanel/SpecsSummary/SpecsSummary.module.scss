@@ -1,0 +1,30 @@
+@use "@/styles/_media" as *;
+
+.specsSummary {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+
+  @include desktop {
+    width: 320px;
+  }
+
+  &Item {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &Name {
+    color: var(--gray-secondary);
+  }
+
+  &Value {
+    color: var(--gray-white);
+  }
+}

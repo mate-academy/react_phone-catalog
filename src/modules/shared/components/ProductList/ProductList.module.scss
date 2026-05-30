@@ -1,0 +1,10 @@
+@use "@/styles/_media" as *;
+
+.productList {
+  margin-bottom: 24px;
+  row-gap: 40px;
+
+  @include tablet {
+    margin-bottom: 40px;
+  }
+}

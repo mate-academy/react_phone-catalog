@@ -1,0 +1,9 @@
+@use './mixins' as *;
+
+.container {
+  @include content-padding-inline;
+}
+
+.grid {
+  @include responsive-grid;
+}

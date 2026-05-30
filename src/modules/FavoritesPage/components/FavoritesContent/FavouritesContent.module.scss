@@ -1,0 +1,14 @@
+@use "@/styles/_media" as *;
+
+.content {
+  margin-bottom: 56px;
+  min-height: calc(100vh - 490px);
+
+  @include tablet {
+    margin-bottom: 64px;
+  }
+
+  @include desktop {
+    margin-bottom: 80px;
+  }
+}

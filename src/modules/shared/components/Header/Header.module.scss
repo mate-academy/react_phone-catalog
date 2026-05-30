@@ -1,0 +1,82 @@
+@use '@styles/media' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  height: 48px;
+  background-color: var(--gray-black);
+  box-shadow: 0 1px 0 0 var(--gray-surface-2);
+
+  @include desktop {
+    height: 64px;
+  }
+
+  &Inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include desktop {
+      gap: 24px;
+    }
+  }
+
+  &Top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+
+    @include tablet {
+      width: unset;
+    }
+  }
+
+  &Logo {
+    display: flex;
+    padding: 0 16px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition-duration: 0.3s;
+
+    @include desktop {
+      padding: 0 24px;
+    }
+
+    img {
+      width: 64px;
+      height: 22px;
+
+      @include desktop {
+        width: 80px;
+        height: 28px;
+      }
+    }
+
+    @include hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &Burger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 48px;
+    height: 100%;
+    box-shadow: -1px 1px var(--gray-surface-2);
+    cursor: pointer;
+    transition-duration: 0.3s;
+
+    @include tablet {
+      display: none;
+    }
+
+    @include hover {
+      background-color: var(--gray-surface-1);
+    }
+  }
+}

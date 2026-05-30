@@ -1,0 +1,16 @@
+@use "@/styles/_media" as *;
+
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 12;
+  }
+
+  @include desktop {
+    grid-column: span 16;
+  }
+}

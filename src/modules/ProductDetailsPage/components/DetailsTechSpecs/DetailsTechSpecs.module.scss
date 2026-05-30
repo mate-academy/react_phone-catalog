@@ -1,0 +1,55 @@
+@use "@/styles/_media" as *;
+
+.techSpecs {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 56px;
+  gap: 30px;
+  grid-column: span 4;
+
+  @include tablet {
+    gap: 25px;
+    grid-column: span 12;
+    margin-bottom: 64px;
+  }
+
+  @include desktop {
+    grid-column: 14 / -1;
+    margin-bottom: 0;
+  }
+
+  &Title {
+    border-bottom: 1px solid var(--gray-elements);
+    padding-bottom: 16px;
+
+    @include tablet {
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+    }
+  }
+
+  &List {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &Item {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 150%;
+    text-wrap: auto;
+    text-align: right;
+  }
+
+  &Name {
+    color: var(--gray-secondary);
+  }
+
+  &Value {
+    color: var(--gray-white);
+  }
+}

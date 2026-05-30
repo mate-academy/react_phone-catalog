@@ -1,0 +1,43 @@
+@use "@/styles/_media" as *;
+
+.panel {
+  position: relative;
+  grid-column: span 4;
+  margin-bottom: 56px;
+
+  @include tablet {
+    margin-bottom: 64px;
+  }
+  
+  @include desktop {
+    margin-bottom: 0;
+  }
+
+  @include tablet {
+    grid-column: 8 / -1;
+  }
+
+  @include desktop {
+    grid-column: 14 / -1;
+  }
+
+  &ProductId {
+    color: var(--placeholders);
+    font-weight: 700;
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.divider {
+  border: none;
+  height: 1px;
+  margin: 24px 0;
+  background: var(--gray-elements);
+
+  @include desktop {
+    width: 320px;
+  }
+}

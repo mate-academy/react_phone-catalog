@@ -1,0 +1,13 @@
+@use "@/styles/_media" as *;
+
+.productDetails {
+  margin-bottom: 56px;
+
+  @include tablet {
+    margin-bottom: 64px;
+  }
+
+  @include desktop {
+    margin-bottom: 80px;
+  }
+}

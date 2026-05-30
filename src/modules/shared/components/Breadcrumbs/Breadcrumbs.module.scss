@@ -1,0 +1,49 @@
+@use "@/styles/_media" as *;
+
+.catalog {
+  &Breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    @include tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &BreadcrumbsImage {
+    width: 16px;
+    height: 16px;
+  }
+
+  &BreadcrumbsLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    height: 16px;
+    width: 16px;
+    transition-duration: 0.3s;
+
+    @include hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &BreadcrumbsCategoryName {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray-secondary);
+    position: relative;
+    top: 2px; // или 2px, подобрать вручную
+
+    @include hover {
+      color: var(--accent);
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@use "@/styles/_media" as *;
+
+.about {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 56px;
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 12;
+    margin-bottom: 64px;
+  }
+
+  @include desktop {
+    margin-bottom: 80px;
+  }
+
+  &Block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &Title {
+    border-bottom: 1px solid var(--gray-elements);
+    padding-bottom: 16px;
+
+    @include tablet {
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+    }
+  }
+
+  &Subtitle {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--gray-white);
+    text-wrap: auto;
+
+    @include tablet {
+      font-size: 20px;
+    }
+  }
+
+  &Text {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 150%;
+    color: var(--gray-secondary);
+    text-wrap: auto;
+  }
+}
