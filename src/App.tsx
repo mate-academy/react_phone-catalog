@@ -13,10 +13,16 @@ import { FavoritesPage } from './modules/FavoritesPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import './App.scss';
 
+const configuredBase = import.meta.env.BASE_URL.replace(/\/$/, '');
+const routerBasename =
+  configuredBase && window.location.pathname.startsWith(configuredBase)
+    ? configuredBase
+    : '/';
+
 export const App = () => (
   <CartProvider>
     <FavoritesProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={routerBasename}>
         <div className="App">
           <Header />
           <main className="content">

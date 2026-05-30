@@ -1,12 +1,13 @@
 import { Category, Product } from '../types';
+import { getAssetPath } from '../utils/assets';
 
 const categoryFiles: Record<Category, string> = {
-  phones: '/api/phones.json',
-  tablets: '/api/tablets.json',
-  accessories: '/api/accessories.json',
+  phones: getAssetPath('api/phones.json'),
+  tablets: getAssetPath('api/tablets.json'),
+  accessories: getAssetPath('api/accessories.json'),
 };
 
-const listFile = '/api/products.json';
+const listFile = getAssetPath('api/products.json');
 
 async function fetchJson<T>(path: string): Promise<T> {
   const response = await fetch(path);
@@ -19,11 +20,11 @@ async function fetchJson<T>(path: string): Promise<T> {
 }
 
 function normalizeAssetPath(path = '') {
-  if (!path || path.startsWith('/') || path.startsWith('http')) {
+  if (!path || path.startsWith('http')) {
     return path;
   }
 
-  return `/${path}`;
+  return getAssetPath(path);
 }
 
 function normalizeProductImages(product: Product): Product {

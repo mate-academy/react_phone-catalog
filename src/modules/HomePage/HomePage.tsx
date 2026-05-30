@@ -8,6 +8,7 @@ import {
 import { ProductsSlider } from './components/ProductsSlider';
 import { PicturesSlider } from './components/PicturesSlider';
 import { CategoryLinks } from './components/CategoryLinks';
+import { getAssetPath } from '../../utils/assets';
 import styles from './HomePage.module.scss';
 import type { Product } from '../../types';
 
@@ -40,9 +41,9 @@ export const HomePage = () => {
   const hotProducts = getHotProducts(products, 8);
   const newestProducts = getNewestProducts(products, 8);
   const slides = [
-    '/img/banner-phones.png',
-    '/img/banner-tablets.png',
-    '/img/banner-accessories.png',
+    getAssetPath('img/banner-phones.png'),
+    getAssetPath('img/banner-tablets.png'),
+    getAssetPath('img/banner-accessories.png'),
   ];
 
   return (

@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { useCart } from '../../contexts/CartContext';
+import { getAssetPath } from '../../utils/assets';
 import { formatCurrency } from '../../utils/format';
 import styles from './CartPage.module.scss';
 
@@ -34,7 +35,7 @@ export const CartPage = () => {
   if (!items.length) {
     return (
       <div className={styles.empty}>
-        <img src="/img/cart-is-empty.png" alt="" />
+        <img src={getAssetPath('img/cart-is-empty.png')} alt="" />
         <p>Your cart is empty</p>
       </div>
     );
