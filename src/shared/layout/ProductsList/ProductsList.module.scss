@@ -1,0 +1,15 @@
+@import '../../styles/mixins';
+
+
+.products-list {
+  margin-bottom: 24px;
+
+  &__container {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: stretch;
+    justify-content: center;
+  }
+}

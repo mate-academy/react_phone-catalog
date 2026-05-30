@@ -1,0 +1,81 @@
+@import '../../styles/mixins';
+@import '../../styles/variable';
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: transform $effect-duration;
+  font-size: 12px;
+  z-index: 10;
+  background-color: #FFF;
+
+  &__show {
+    transform: translateY(0);
+  }
+
+  &__hide {
+    transform: translateY(-100%);
+  }
+
+  @include on-tablet {
+    margin: 0 auto 32px;
+  }
+
+  @include on-desktop {
+    margin: 0 auto 56px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 16px;
+    height: 48px;
+    border-bottom: 1px solid $elements-color-gray;
+
+    @include on-tablet {
+      height: 48px;
+      font-weight: 800;
+    }
+
+    @include on-desktop {
+      padding-left: 24px;
+      height: 64px;
+    }
+  }
+
+  &__logo {
+    cursor: pointer;
+    width: 64px;
+    height: 22px;
+    margin-right: auto;
+
+    @include position-image-in-container;
+
+    @include on-tablet {
+      margin-right: 32px;
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+      margin-right: 48px;
+    }
+  }
+
+  &__buttons{
+    display: flex;
+  }
+
+  &__menu {
+    @include icon-button-desktop(48px, 16px);
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+}
+
+

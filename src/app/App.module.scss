@@ -1,0 +1,17 @@
+@import '../shared/styles/variable';
+@import '../shared/styles/mixins';
+
+.main {
+  padding-top: 48px;
+  flex: 1 1 auto;
+
+  @include on-desktop {
+    padding-top: 64px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

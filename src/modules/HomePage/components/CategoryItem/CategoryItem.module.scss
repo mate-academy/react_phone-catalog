@@ -1,0 +1,78 @@
+@import '../../../../shared/styles/mixins';
+@import '../../../../shared/styles/variable';
+
+.category {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-tablet-middle {
+    grid-column: span 5;
+  }
+
+  @include on-tablet-large {
+    grid-column: span 7;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+
+
+
+  &__image {
+    width: 288px;
+    height: 288px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      width: 187px;
+      height: 187px;
+    }
+
+    @include on-tablet-middle {
+      width: 224.06px;
+      height: 224.06px;
+    }
+
+    @include on-tablet-large {
+      width: 315px;
+      height: 315px;
+    }
+
+
+    @include on-desktop {
+      width: 368px;
+      height: 368px;
+      overflow: hidden;
+
+      & img {
+        transition: transform $effect-duration;
+      }
+
+      & img:hover {
+        transform: scale(1.1);
+      }
+    }
+
+
+
+    @include position-image-in-container;
+  }
+
+  &__title {
+    color: $text-color-black;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    margin-bottom: 4px;
+  }
+
+  &__quantity {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}

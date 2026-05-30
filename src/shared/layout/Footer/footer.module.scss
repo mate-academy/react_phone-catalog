@@ -1,0 +1,103 @@
+@import '../../styles/mixins';
+@import '../../styles/variable';
+
+.footer {
+  border-top: 1px solid $elements-color-gray;
+  padding-block: 32px;
+  height: 257px;
+
+   @include on-tablet {
+    height: 96px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      max-height: 96px;
+    }
+  }
+
+  &__logo {
+    cursor: pointer;
+    max-width: 89px;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    align-self: center;
+  }
+
+  &__link-up,
+  &__icon-up {
+    cursor: pointer;
+    background-color: inherit;
+  }
+
+  &__link-up {
+    border: none;
+    text-decoration: none;
+    color: $text-color-gray;
+    transition: color $effect-duration;
+
+    &:hover {
+      color: $text-color-black;
+    }
+  }
+
+  &__icon-up {
+    padding: 8px;
+    border: 1px solid $text-color-gray;
+    max-width: 32px;
+    max-height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border $effect-duration;
+
+    &:hover {
+       border: 1px solid $text-color-black;
+    }
+  }
+
+  @include on-desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.navigation-footer {
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    font-weight: 800;
+    gap: 16px;
+    text-transform: uppercase;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 32px
+    }
+
+    @include on-desktop {
+      gap: 107px;
+    }
+  }
+
+  &__item {
+    @include nav-hover-effect(-10px);
+  }
+
+}

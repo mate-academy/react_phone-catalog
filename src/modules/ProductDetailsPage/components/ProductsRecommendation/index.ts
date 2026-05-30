@@ -1,0 +1,1 @@
+export { ProductsRecommendation } from './ProductsRecommendation';

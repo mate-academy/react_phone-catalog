@@ -1,0 +1,65 @@
+@import '../../styles/variable';
+@import '../../styles/mixins';
+
+.product {
+  display: flex;
+  flex-direction: column;
+  max-width: 212px;
+  padding: 32px;
+  border: 1px solid $elements-color-gray;
+  row-gap: 8px;
+  color: $text-color-black;
+  height: 100%;
+  transition: box-shadow $effect-duration;
+
+  &:hover {
+    box-shadow: 0 2px 16px 0 #0000001A;
+  }
+
+  @include on-tablet {
+    width: 237px;
+    max-width: 237px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    max-width: 272px;
+  }
+
+  &__image {
+    @include position-image-in-container;
+
+    width: 100%;
+    height: 129px;
+
+    @include on-tablet {
+      width: 173px;
+      height: 181px;
+    }
+
+    @include on-desktop {
+      width: 208px;
+      height: 196px;
+
+      & img {
+        transition: transform $effect-duration;
+      }
+
+      & img:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__title-link {
+    flex: 1 1 auto;
+    cursor: pointer;
+  }
+
+  &__title {
+    padding-top: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+  }
+  }

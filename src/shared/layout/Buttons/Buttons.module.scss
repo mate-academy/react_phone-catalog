@@ -1,0 +1,64 @@
+@import '../../../shared/styles/mixins';
+@import '../../../shared/styles/variable';
+
+
+.buttons-product {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  column-gap: 8px;
+
+  &__add,
+  &__added,
+  &__like {
+    @include reset-button;
+  }
+
+  &__add,
+  &__added {
+    cursor: pointer;
+    width: 100%;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    padding: 9.5px;
+    transition: all $effect-duration;
+    max-height: 40px;
+  }
+
+  &__add {
+    background-color: $text-color-black;
+    color: #FFF;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+
+  &__added {
+    background-color: transparent;
+    color: $text-color-green;
+    border: 1px solid $elements-color-gray;
+
+     &:hover {
+      border: 1px solid $text-color-black;
+    }
+  }
+
+  &__like {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 40px;
+    max-height: 40px;
+    padding: 12px;
+    border: 1px solid $elements-color-gray;
+    transition: border $effect-duration;
+
+    &:hover {
+      border: 1px solid $text-color-black;
+    }
+  }
+}
+

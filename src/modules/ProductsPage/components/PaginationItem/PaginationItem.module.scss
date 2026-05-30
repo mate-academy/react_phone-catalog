@@ -1,0 +1,50 @@
+@import '../../../../shared/styles/variable';
+
+.pagination {
+  margin-bottom: 64px;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    column-gap: 16px;
+  }
+
+  &__arrowright,
+  &__page,
+  &__arrowleft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid $elements-color-gray;
+    transition: all $effect-duration;
+    width: 32px;
+    height: 32px;
+  }
+
+  &__arrowright,
+  &__arrowleft {
+    &:hover {
+      border: 1px solid $text-color-black;
+    }
+  }
+
+  &__pages {
+    display: flex;
+    column-gap: 8px;
+  }
+
+  &__page {
+    color: $text-color-black;
+
+    &:hover {
+      color: #FFF;
+      background-color: $text-color-black;
+    }
+  }
+
+  &__active {
+    color: #FFF;
+    background-color: $text-color-black;
+  }
+}

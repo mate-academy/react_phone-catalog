@@ -1,0 +1,49 @@
+@import '../../../../../../shared/styles/variable';
+@import '../../../../../../shared/styles/mixins';
+
+.colors {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+
+  &::before {
+    @include pseudo-line;
+  }
+
+  &__wrapper,
+  &__item {
+    border-radius: 50%;
+  }
+
+   &__wrapper {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elements-color-gray;
+    border-radius: 50%;
+  }
+
+  &__item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .active {
+    border: 1px solid $text-color-black;
+  }
+}

@@ -1,0 +1,26 @@
+@import '../../../../styles/variable';
+@import '../../../../styles/mixins';
+
+.input {
+  display: none;
+  color: $text-color-black;
+  max-width: 100px;
+  padding: 10px 14px;
+  border: 1px solid $elements-color-gray;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+  transition: all $effect-duration;
+  margin-inline: 20px;
+
+  @include on-desktop {
+    display: flex;
+  }
+}
+
+.input:focus {
+  border-color: $text-color-black;
+  box-shadow: 0 0 6px rgba(74, 144, 226, 0.4);
+
+   max-width: 250px;
+}

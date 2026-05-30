@@ -1,0 +1,43 @@
+@import '../../styles/mixins';
+@import '../../styles/variable';
+
+
+.products-slider {
+  @include component-margin-bottom;
+
+  &__slide {
+    width: 212px;
+
+    @include on-tablet {
+      width: 237px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    column-gap: 72px;
+  }
+
+  &__phones {
+    display: flex;
+    align-items: stretch;
+  }
+}
+
+.arrows {
+  display: flex;
+  column-gap: 16px;
+
+  &__left,
+  &__right {
+    @include reset-button;
+
+    padding: 8px;
+    max-width: 32px;
+    max-height: 32px;
+    border: 1px solid $text-color-black
+  }
+}

@@ -1,0 +1,49 @@
+@import '../../../../shared/styles/variable';
+@import '../../../../shared/styles/mixins';
+
+.product-description {
+  @include component-margin-bottom;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    align-items: flex-start;
+
+    @include on-tablet-large {
+      flex-direction: row;
+      gap: 64px;
+    }
+  }
+
+  &__about {
+   @include on-tablet-large {
+      flex: 1 1 500px;
+      max-width: 560px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    color: $text-color-black;
+    padding-bottom: 16px;
+    margin-bottom: 36px;
+    position: relative;
+
+    &::before {
+      @include pseudo-line;
+    }
+
+    @include on-tablet {
+      font-size: 22px;
+    }
+  }
+
+  &__items{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+}

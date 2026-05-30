@@ -1,0 +1,27 @@
+@import '../../styles/variable';
+
+.page {
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+  gap: 10px;
+  width: max-content;
+
+  &__title {
+    font-size: 30px;
+    color: $text-color-black;
+  }
+
+  &__link {
+    font-size: 15px;
+    padding: 5px;
+    border: 1px solid $elements-color-gray;
+    transition: all $effect-duration;
+    text-align: center;
+
+    &:hover {
+      color: $text-color-black;
+      border: 1px solid $text-color-black;
+    }
+  }
+}
