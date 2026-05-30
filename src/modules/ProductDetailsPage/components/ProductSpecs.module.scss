@@ -1,0 +1,34 @@
+@use '../../../styles/variables';
+@use '../../../styles/mixins';
+
+.wrapper {
+  width: 100%;
+  max-width: 560px;
+}
+
+.title {
+  @include mixins.title(variables.$fs-xl, variables.$fw-bold);
+
+  margin-bottom: 24px;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+
+  @include mixins.text(variables.$fs-small, variables.$fw-regular, var(--secondary-text));
+
+  td {
+    padding: 10px 0;
+  }
+
+  td:first-child {
+    width: 50%;
+    font-weight: variables.$fw-medium;
+    color: var(--main-text);
+  }
+
+  td:last-child {
+    text-align: right;
+  }
+}

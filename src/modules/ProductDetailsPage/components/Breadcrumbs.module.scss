@@ -1,0 +1,21 @@
+@use '../../../styles/variables';
+@use '../../../styles/mixins';
+
+.breadcrumbs {
+  @include mixins.text(variables.$fs-small, variables.$fw-regular, var(--secondary-text));
+
+  margin-bottom: 16px;
+
+  a {
+    color: var(--secondary-text);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  span {
+    color: var(--main-text);
+  }
+}

@@ -1,0 +1,153 @@
+@use '../../styles/variables';
+@use '../../styles/mixins';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border: 1px solid variables.$color-elements;
+  border-radius: variables.$radius-l;
+  background-color: var(--card-bg);
+  transition: transform variables.$transition-main, box-shadow variables.$transition-main;
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: variables.$shadow-md;
+  }
+}
+
+.imageWrapper {
+  display: block;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: variables.$radius-m;
+  object-fit: contain;
+  transition: transform variables.$transition-main;
+}
+
+.imageWrapper:hover .image {
+  transform: scale(1.1);
+}
+
+.name {
+  margin-bottom: 4px;
+
+  @include mixins.text($size: variables.$fs-normal, $weight: variables.$fw-semi-bold);
+
+  text-decoration: none;
+  transition: color variables.$transition-main;
+
+  min-height: calc(variables.$fs-normal * 1.5 * 2);
+  display: block;
+
+  &:hover {
+    color: variables.$color-primary;
+  }
+}
+
+.priceBlock {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  margin-bottom: 16px;
+}
+
+.currentPrice {
+  @include mixins.text($size: variables.$fs-large, $weight: variables.$fw-bold);
+}
+
+.oldPrice {
+  @include mixins.text($size: variables.$fs-small, $color: var(--secondary-text));
+
+  text-decoration: line-through;
+}
+
+.characteristics {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include mixins.text($size: variables.$fs-normal, $color: var(--secondary-text));
+
+    & > span:first-child {
+      display: inline-block;
+    }
+
+    & > span:last-child {
+      display: inline-block;
+      text-align: right;
+    }
+  }
+}
+
+.divider {
+  height: 1px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background-color: variables.$color-elements;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.addToCart {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: variables.$radius-m;
+  font-size: variables.$fs-small;
+  color: variables.$color-white;
+  background-color: variables.$color-primary;
+  transition: background-color variables.$transition-main;
+
+  &:hover {
+    background-color: variables.$color-secondary;
+    cursor: default;
+  }
+}
+
+.favorite {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px;
+  border: 1px solid variables.$color-elements;
+  border-radius: 50%;
+  color: var(--icons);
+  background-color: transparent;
+  transition: all variables.$transition-main;
+
+  &:hover {
+    border-color: variables.$color-red;
+    color: variables.$color-red;
+  }
+}
+
+.activeFavorite {
+  border-color: variables.$color-red;
+  color: variables.$color-red;
+}
