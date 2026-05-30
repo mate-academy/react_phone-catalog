@@ -1,0 +1,218 @@
+@import './../../../../mixins';
+
+.product {
+
+  &__img {
+    margin-bottom: 16px;
+    margin-top: auto;
+    transition: transform 0.3s ease;
+    text-align: center;
+
+    img {
+      display: block;
+      width: 148px;
+      height: 129px;
+      object-fit: contain;
+
+      @include on-tablet {
+        width: 173px;
+        height: 202px;
+      }
+
+      @include on-dekstop {
+        width: 208px;
+        height: 196px;
+      }
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    background-color: #161827;
+    padding: 32px;
+    width: 212px;
+    height: 439px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-sizing: border-box;
+    transition: 0.3s;
+
+    &:hover {
+      .product__img {
+        transform: scale(1.1);
+      }
+    }
+
+    @include on-tablet {
+      width: 237px;
+      height: 512px;
+    }
+
+    @include on-dekstop {
+      width: 100%;
+      height: 506px;
+    }
+  }
+
+  &__name {
+    color: #F1F2F9;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-top: auto;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #3B3E4A;
+  }
+
+  &__fullprice {
+    color: #F1F2F9;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.4;
+    margin-top: auto;
+  }
+
+  &__price {
+    color: #75767f;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1;
+    text-decoration-line: line-through;
+  }
+
+  &__screen {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+
+    &-title {
+      color: #75767F;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    &-spec {
+      color: #F1F2F9;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+      margin-left: auto;
+    }
+  }
+
+  &__capacity {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+
+    &-title {
+      color: #75767F;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    &-spec {
+      color: #F1F2F9;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+      margin-left: auto;
+    }
+  }
+
+  &__ram {
+    display: flex;
+    align-items: center;
+    padding-bottom: 8px;
+    margin-top: auto;
+
+    &-title {
+      color: #75767F;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    &-spec {
+      color: #F1F2F9;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+      margin-left: auto;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+  }
+
+  &__add {
+    width: 100px;
+    height: 40px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.5;
+    text-align: center;
+    background-color: #905BFF;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #A378FF;
+    }
+
+    @include on-tablet {
+      width: 125px;
+    }
+
+    @include on-dekstop {
+      width: 160px;
+    }
+  }
+
+  &__add-active {
+    background-color: #323542;
+
+    &:hover {
+      background-color: #4A4D58;
+    }
+  }
+
+  &__favorite {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    background-color: #323542;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #4A4D58;
+    }
+  }
+
+  &__favorite-filled {
+    background-color: transparent !important;
+    border: 1px solid #3B3E4A;
+  }
+}

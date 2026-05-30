@@ -1,0 +1,85 @@
+@import './../../../../mixins';
+
+.cart {
+
+  &__item {
+    display: flex;
+    background: #161827;
+    padding: 16px;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+
+    @include on-tablet {
+      gap: 24px;
+      padding: 24px;
+      height: 128px;
+      box-sizing: border-box;
+      flex-flow: row nowrap;
+    }
+  }
+
+  &__item-remove {
+    cursor: pointer;
+  }
+
+  &__item-img {
+
+    img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+  }
+
+  &__item-name {
+    color: #F1F2F9;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    width: 50%;
+  }
+
+  &__item-quantity {
+    color: #F1F2F9;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__item-quantity-remove {
+    background: #323542;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  &__item-quantity-add {
+    background: #323542;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  &__item-price {
+    color: #F1F2F9;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.4;
+    margin-left: auto;
+  }
+}
+
+.quantity-disabled {
+  background: transparent;
+  border: 1px solid #3B3E4A;
+}

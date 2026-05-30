@@ -1,0 +1,111 @@
+@import './../../../../mixins';
+
+.banner {
+  margin-top: 56px;
+  position: relative;
+  margin-left: -24px;
+  margin-right: -24px;
+
+  @include on-tablet {
+    margin-left: initial;
+    margin-right: initial;
+  }
+
+  &-slider-container {
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 320px !important;
+      object-fit: cover;
+      margin: 0 auto;
+
+      @include on-tablet {
+        height: 300px !important;
+      }
+
+      @include on-dekstop {
+        height: 400px !important;
+      }
+    }
+  }
+}
+
+.banner .swiper {
+  position: initial;
+
+  @include on-tablet {
+    width: calc(100% - 100px);
+  }
+
+  @include on-dekstop {
+    width: initial;
+  }
+}
+
+.banner .swiper-button-next,
+.swiper-button-prev {
+  position: absolute;
+  width: 32px;
+  height: 100%;
+  top: 0;
+  background-color: #323542;
+  margin-top: 0;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.banner .swiper-button-prev {
+  left: 0;
+  display: none;
+
+  @include on-tablet {
+    display: block;
+  }
+
+  &::after {
+    background-image: url('./../../../../img/left-arrow.png');
+  }
+}
+
+.banner .swiper-button-next {
+  right: 0;
+  display: none;
+
+  @include on-tablet {
+    display: block;
+  }
+
+  &::after {
+    background-image: url('./../../../../img/right-arrow.png');
+  }
+}
+
+.banner .swiper-pagination {
+  top: initial !important;
+  bottom: initial !important;
+}
+
+.banner .swiper-pagination-bullet {
+  width: 14px;
+  height: 4px;
+  border-radius: 0;
+  background-color: #3B3E4A !important;
+  transition: background-color .4s;
+  margin: 0 10px !important;
+}
+
+.banner .swiper-pagination-bullet-active {
+  background-color: #F1F2F9 !important;
+}

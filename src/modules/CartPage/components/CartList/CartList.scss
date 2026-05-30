@@ -1,0 +1,16 @@
+@import './../../../../mixins';
+
+.cart {
+
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+
+    @include on-dekstop {
+      width: 68%;
+    }
+  }
+}

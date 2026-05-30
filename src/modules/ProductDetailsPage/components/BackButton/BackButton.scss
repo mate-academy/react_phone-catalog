@@ -1,0 +1,28 @@
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+
+    &__text {
+      color: #75767F;
+    }
+  }
+
+  &__img {
+    vertical-align: middle;
+  }
+
+  &__text {
+    color: #F1F2F9;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    height: 16px;
+    transition: 0.3s;
+  }
+}

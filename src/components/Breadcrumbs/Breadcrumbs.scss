@@ -1,0 +1,42 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+
+  &__current {
+    display: flex;
+    align-items: end;
+    gap: 8px;
+    color: #75767F;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__uncurrent {
+    display: flex;
+    align-items: end;
+    gap: 8px;
+
+    a {
+      color: #F1F2F9;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+      transition: 0.3s;
+
+      &:hover {
+        color: #75767F;
+      }
+    }
+  }
+
+  &__link {
+
+    img {
+      vertical-align: middle;
+    }
+  }
+}

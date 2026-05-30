@@ -1,0 +1,369 @@
+@import './../../../../mixins';
+
+.product-details {
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 40px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+
+    @include on-dekstop {
+      gap: 64px;
+    }
+  }
+
+  .product-details__col:nth-child(1) {
+    width: 100%;
+
+    @include on-dekstop {
+      width: 52.31%;
+    }
+  }
+
+  .product-details__col:nth-child(2) {
+    width: 100%;
+
+    @include on-dekstop {
+      width: 30.77%;
+    }
+  }
+
+  .product-details__col:nth-child(3) {
+    width: 0;
+
+    @include on-dekstop {
+      width: 16.92%;
+    }
+  }
+
+  &__gallery {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-direction: column-reverse;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      flex-direction: row;
+      margin-bottom: 0;
+    }
+  }
+
+  &__thumbnails {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: column;
+    }
+
+    img {
+      width: 35px;
+      height: 35px;
+      object-fit: contain;
+      border: 1px solid #3B3E4A;
+      cursor: pointer;
+
+      @include on-dekstop {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
+
+  &__img {
+
+    img {
+      width: 287px;
+      height: 287px;
+      object-fit: contain;
+
+      @include on-dekstop {
+        width: 464px;
+        height: 464px;
+      }
+    }
+  }
+
+  &__colors {
+    padding-bottom: 24px;
+    border-bottom: 1px solid #3B3E4A
+  }
+
+  &__colors-title {
+    color: #75767F;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  &__colors-options {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__color {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #3B3E4A;
+  }
+
+  &__capacities {
+    margin-top: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #3B3E4A
+  }
+
+  &__capacities-title {
+    color: #75767F;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  &__capacities-options {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__capacity {
+    padding: 8px;
+    color: #F1F2F9;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration: none;
+    border: 1px solid #4A4D58;
+  }
+
+  &__panel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #0f1121;
+    box-sizing: border-box;
+  }
+
+  &__prices {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__price {
+    color: #F1F2F9;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+  }
+
+  &__discount {
+    color: #75767F;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: line-through;
+  }
+
+  &__buttons {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__add {
+    width: 180px;
+    height: 48px;
+    color: #F1F2F9;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    background-color: #905BFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #A378FF;
+    }
+
+    @include on-dekstop {
+      width: 263px;
+    }
+  }
+
+  &__add-active {
+    background-color: #323542;
+
+    &:hover {
+      background-color: #4A4D58;
+    }
+  }
+
+  &__favorite {
+    background-color: #323542;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+    box-sizing: border-box;
+
+    &:hover {
+      background-color: #4A4D58;
+    }
+  }
+
+  &__favorite-filled {
+    background-color: transparent !important;
+    border: 1px solid #3B3E4A;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 21px;
+  }
+
+  &__spec-title {
+    color: #75767F;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  &__spec-text {
+    color: #F1F2F9;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  &__id {
+    color: #4A4D58;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+    text-align: end;
+
+    &--mobile {
+      display: block;
+
+      @include on-dekstop {
+        display: none;
+      }
+    }
+
+    &--dekstop {
+      display: none;
+
+      @include on-dekstop {
+        display: block;
+      }
+    }
+  }
+
+  &__description {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+
+    @include on-dekstop {
+      flex-direction: row;
+    }
+  }
+
+  &__about {
+    width: 100%;
+
+    @include on-dekstop {
+      width: 50%;
+    }
+  }
+
+  &__about-title {
+    color: #F1F2F9;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.4;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #3B3E4A;
+  }
+
+  &__about-description {
+    margin-top: 32px;
+  }
+
+  &__description-title {
+    color: #F1F2F9;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &__description-text {
+    color: #75767F;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-top: 16px;
+  }
+
+  &__tech {
+    width: 100%;
+
+    @include on-dekstop {
+      width: 50%;
+    }
+  }
+
+  &__tech-title {
+    color: #F1F2F9;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.4;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #3B3E4A;
+  }
+}
+
+.active-thumbnail {
+  border: 1px solid #F1F2F9 !important;
+}
+
+.active-color {
+  border: 1px solid #F1F2F9 !important;
+}
+
+.active-capacity {
+  color: #0F1121 !important;
+  background-color: #F1F2F9;
+}
