@@ -1,0 +1,66 @@
+@use '../../styles/mixins' as *;
+
+.homePage {
+  padding-block: 56px 80px;
+
+  @media (max-width: 1199px) {
+    padding-block: 32px 64px;
+  }
+
+  @media (max-width: 639px) {
+    padding-top: 24px;
+  }
+
+  &__title {
+    @include h1-title;
+
+    margin-bottom: 56px;
+
+    grid-column: 1/-1;
+
+    @media (max-width: 1199px) {
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 639px) {
+      @include h1-title-mobile;
+      
+      margin-bottom: 24px;
+    }
+  }
+
+  &__section--slider{
+    margin-top: 80px;
+    grid-column: 1/-1;
+
+
+    @media (min-width: 640px) and (max-width: 1199px) {
+      margin-top: 64px;
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @media (max-width: 639px) {
+      margin-top: 56px;
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__section {
+    margin-top: 80px;
+    grid-column: 1/-1;
+
+    @media (min-width: 640px) and (max-width: 1199px) {
+      margin-top: 64px;
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @media (max-width: 639px) {
+      margin-top: 56px;
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__section--pictureSlider {
+    margin-top: 0;
+  }
+}

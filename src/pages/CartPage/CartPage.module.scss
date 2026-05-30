@@ -1,0 +1,61 @@
+@use './../../styles/variables' as *;
+@use './../../styles/mixins' as *;
+
+.cartPage {
+  padding-block: 40px 80px;
+
+  @media (max-width: 1199px) {
+    padding-bottom: 64px;
+  }
+
+  &__button {
+    @include btn-back;
+
+    display: block;
+
+    max-width: 100px;
+  }
+
+  &__title {
+    @include h1-title;
+
+    grid-column: 1/-1;
+
+    @media (max-width: 639px) {
+      @include h1-title-mobile;
+    }
+  }
+
+  &__summary {
+    margin-block: 32px 80px;
+
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 16px;
+
+    grid-column: 1/-1;
+
+    @media (min-width: 640px) and (max-width: 1199px) {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 32px 0;
+    }
+
+    @media (max-width: 639px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__empty {
+    text-align: center;
+    font-size: 32px;
+    color: var(--secondary-color);
+    background-image: url('/public/img/cart/cart-is-empty.png');
+    height: 500px;
+    width: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    grid-column: 1/-1;
+  }
+}

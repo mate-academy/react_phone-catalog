@@ -1,0 +1,55 @@
+@use '../../styles/mixins' as *;
+
+.productDetailsPage {
+  padding-block: 24px 80px;
+
+  @media (max-width: 1199px) {
+    padding-bottom: 64px;
+  }
+
+  @media (max-width: 639px) {
+    padding-bottom: 24px;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+    grid-column: 1 / -1;
+
+    @media (max-width: 639px) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__backButton {
+    @include btn-back;
+  }
+
+  &__article {
+    grid-column: 1 / -1;
+    display: grid;
+    column-gap: 16px;
+    grid-template-columns: repeat(24, 1fr);
+
+    @media (min-width: 640px) and (max-width: 1199px) {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @media (max-width: 639px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__slider {
+    grid-column: 1/-1;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+
+    @media (min-width: 640px) and (max-width: 1199px) {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @media (max-width: 639px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}

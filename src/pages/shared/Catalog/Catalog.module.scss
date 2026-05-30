@@ -1,0 +1,76 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+.catalog {
+  grid-column: 1/-1;
+
+  &__title {
+    @include h1-title;
+
+    margin-bottom: 8px;
+
+    @media (max-width: 639px) {
+      @include h1-title-mobile;
+    }
+  }
+
+  &__count {
+    font-weight: 600;
+    color: var(--secondary-color);
+
+    margin-bottom: 40px;
+
+    @media (max-width: 639px) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__dropdowns {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+
+    margin-bottom: 24px;
+
+    @media (min-width: 640px) and (max-width: 1199px) {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @media (max-width: 639px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__dropdownBig {
+    grid-column: 1/5;
+
+    @media (min-width: 640px) and (max-width: 1199px) {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @media (max-width: 639px) {
+      grid-column: 1/3;
+    }
+  }
+
+  &__dropdownSmall {
+    grid-column: 5/8;
+
+    @media (max-width: 639px) {
+      grid-column: 3/-1;
+    }
+  }
+
+  &__list {
+    margin-bottom: 40px;
+
+    @media (max-width: 639px) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+  }
+}

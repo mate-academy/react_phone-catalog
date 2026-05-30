@@ -1,0 +1,140 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.productInfo {
+  grid-column: 1/-1;
+
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  column-gap: 16px;
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @media (max-width: 639px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__title {
+    grid-column: 1/-1;
+
+    margin-bottom: 40px;
+
+    @media (max-width: 639px) {
+      @include h2-title-mobile;
+
+      margin-bottom: 32px;
+    }
+  }
+
+  &__topSection {
+    grid-column: 1/-1;
+
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 16px;
+    width: 100%;
+
+    @media (min-width: 640px) and (max-width: 1199px) {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @media (max-width: 639px) {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+
+  &__bottomSection {
+    margin-block: 80px;
+    grid-column: 1/-1;
+
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+
+    @media (min-width: 640px) and (max-width: 1199px) {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+      margin-block: 64px;
+    }
+
+    @media (max-width: 639px) {
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+      margin-block: 56px;
+    }
+  }
+}
+
+.about {
+  grid-column: 1/13;
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    grid-column: 1/-1;
+  }
+
+  &__title {
+    @include h3-title;
+
+    position: relative;
+    display: flex;
+    margin-bottom: 48px;
+
+    &::after {
+      @include decoration;
+
+      top: calc(100% + 16px);
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 32px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__subtitle {
+    @include h4-title;
+
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    margin: 0;
+
+    font-weight: 500;
+    color: var(--secondary-color);
+  }
+}
+
+.fullSpecs {
+  grid-column: 14/-1;
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    grid-column: 1/-1;
+  }
+
+  &__title {
+    @include h3-title;
+
+    position: relative;
+    display: flex;
+    margin-bottom: 48px;
+
+    &::after {
+      @include decoration;
+
+      top: calc(100% + 16px);
+    }
+  }
+}

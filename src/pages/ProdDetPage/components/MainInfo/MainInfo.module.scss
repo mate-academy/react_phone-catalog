@@ -1,0 +1,146 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.mainInfo {
+  grid-column: 14 / span 7;
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    @include small-text;
+    
+    grid-column: 8/-1;
+  }
+
+  &__colors {
+    position: relative;
+
+    &::after {
+      @include decoration;
+
+      top: calc(100% + 24px);
+    }
+
+    &Label {
+      @include small-text;
+
+      color: var(--secondary-color);
+
+      margin-bottom: 8px;
+    }
+
+    &List {
+      display: flex;
+      gap: 8px;
+    }
+
+    &Item {
+      display: flex;
+      list-style: none;
+    }
+
+    &Link {
+      @include btn-hover;
+
+      border: 1px solid var(--elements-color);
+      border-radius: 50%;
+      cursor: pointer;
+
+      height: 32px;
+      width: 32px;
+
+      padding: 2px;
+      background-clip: content-box;
+      background-color: transparent;
+
+      &--active {
+        border-color: var(--primary-color);
+        cursor: auto;
+      }
+    }
+  }
+
+  &__capacity {
+    position: relative;
+
+    margin-top: 48px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: var(--elements-color);
+      top: calc(100% + 24px);
+    }
+
+    &Label {
+      @include small-text;
+
+      color: var(--secondary-color);
+
+      margin-bottom: 8px;
+    }
+
+    &List {
+      display: flex;
+      gap: 8px;
+    }
+
+    &Item {
+      display: flex;
+      list-style: none;
+    }
+
+    &Link {
+      @include btn-common;
+      @include btn-hover;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-color: var(--icons-color);
+
+      color: inherit;
+      text-decoration: none;
+
+      width: 60px;
+      height: 32px;
+
+      &--active {
+        border-color: var(--primary-color);
+        background-color: var(--primary-color);
+        color: $main-bg;
+        cursor: auto;
+      }
+    }
+  }
+
+  &__price {
+    margin-top: 56px;
+
+    display: flex;
+    gap: 8px;
+
+    @include h2-title;
+  }
+
+  &__oldPrice {
+    font-weight: 500;
+    font-size: 22px;
+    text-decoration: line-through;
+    color: var(--secondary-color);
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+
+    margin-block: 16px 32px;
+  }
+
+  &__specs {
+    margin-top: 32px;
+
+    @include specs-block;
+  }
+}

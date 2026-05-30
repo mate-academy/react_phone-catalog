@@ -1,0 +1,104 @@
+@use '../../../../styles/variables' as *;
+
+.headerLinks {
+  display: flex;
+  height: 100%;
+  align-items: center;
+
+  margin-left: auto;
+}
+
+.headerLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 64px;
+  border-left: 1px solid var(--elements-color);
+  position: relative;
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    width: 48px;
+  }
+
+  &--active::after {
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: var(--primary-color);
+    top: calc(100% - 2px);
+    left: 0;
+  }
+}
+
+.headerIcon {
+  position: relative;
+  display: inline-block;
+
+    &::before {
+    content: var(--count);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-10%, 18%);
+    width: 12px;
+    height: 12px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 50%;
+  }
+}
+
+
+.mobileLinks {
+  display: flex;
+  height: 64px;
+  border-top: 1px solid var(--elements-color);
+  width: 100%;
+}
+
+.mobileLink {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid var(--elements-color);;
+
+  &--active::after {
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: var(--primary-color);
+    top: calc(100% - 3px);
+    left: 0;
+  }
+}
+
+.mobileIcon {
+  position: relative;
+  display: inline-block;
+
+  &::before {
+    content: var(--count);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-10%, 18%);
+    width: 12px;
+    height: 12px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 50%;
+  }
+}

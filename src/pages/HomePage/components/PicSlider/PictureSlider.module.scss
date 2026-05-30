@@ -1,0 +1,65 @@
+@use '../../../../styles/variables' as *;
+
+.pictureSlider {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: stretch;
+  gap: 8px 16px;
+
+   @media (max-width: 639px) {
+      grid-template-columns: 1fr;
+      margin-inline: -16px;
+    }
+
+  &__slider {
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+
+  &__list {
+    display: flex;
+    transition: transform 0.3s ease;
+  }
+
+  &__item {
+    list-style: none;
+    flex: 0 0 100%;
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__pagination {
+    grid-column: 1/-1;
+
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    &Item {
+      list-style: none;
+    }
+
+    &Btn {
+      display: block;
+      background: var(--elements-color);
+      border: none;
+      height: 4px;
+      width: 14px;
+      cursor: pointer;
+
+      &--active {
+        cursor: auto;
+        background-color: var(--primary-color);
+      }
+
+      &:hover {
+        background: var(--secondary-color);
+      }
+    }
+  }
+}
