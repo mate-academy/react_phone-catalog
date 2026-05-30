@@ -1,0 +1,81 @@
+@import '../../assets/styles/main';
+
+.cart {
+  min-height: calc(100vh - 64px - 96px);
+
+  &__container {
+    padding-block: 24px 56px;
+
+    @include on-tablet {
+      padding-block: 40px 64px;
+    }
+
+    @include on-desktop {
+      padding-block: 40px 80px;
+    }
+
+    @include on-desktop-extra {
+      padding-block: 40px 80px;
+    }
+
+    @include content-padding;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+  }
+
+  &__backButtonWrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__backArrowImg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__backButton {
+    cursor: pointer;
+
+    margin-left: 4px;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 100%;
+    color: $color-secondary;
+  }
+
+  &__items {
+    row-gap: 32px;
+
+    @include page-grid;
+  }
+
+  &__itemsWrapper {
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+      grid-column: span 16;
+    }
+
+    @include on-desktop-extra {
+      grid-column: span 16;
+    }
+  }
+
+  &__emptyTitle {
+    text-align: center;
+  }
+}

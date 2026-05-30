@@ -1,0 +1,84 @@
+@import '../../../../assets/styles/main';
+
+.category {
+  &__container {
+    @include page-grid;
+    @include content-padding;
+  }
+
+  &__title {
+    grid-column: 1/-1;
+    margin-bottom: 24px;
+  }
+
+  &__cards {
+    grid-column: 1/-1;
+
+    @include on-tablet {
+      display: flex;
+      grid-column: 1/-1;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+  }
+
+  &__card:nth-child(-n + 2) {
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-right: 16px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__picture {
+    width: 100%;
+    height: 288px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      height: 187px;
+    }
+
+    @include on-desktop {
+      height: 368px;
+    }
+
+    @include on-desktop-extra {
+      height: 368px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 5px 10px 2px $color-primary;
+    }
+  }
+
+  &__cardTitle {
+    margin-bottom: 4px;
+  }
+
+  &__cardDescription {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $color-secondary;
+
+    @include on-tablet {
+      font-weight: 500;
+    }
+  }
+}
