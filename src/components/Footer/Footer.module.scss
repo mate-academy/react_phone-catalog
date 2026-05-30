@@ -1,0 +1,110 @@
+@import "../../utils/mixins";
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  margin-top: 56px;
+  padding: 32px 16px;
+  border-top: 1px solid $main-lightgrey;
+
+  @include on-tablet {
+      display: flex;
+      flex-direction: row;
+      gap: 0;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-top: 64px;
+      padding: 32px 24px;
+    }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+      gap: 32px;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+  }
+
+  &__link {
+    font-family: Mont;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    color: $main-grey;
+    text-decoration: none;
+    letter-spacing: 4%;
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 0 auto;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+
+    &-content {
+      cursor: pointer;
+
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: center;
+
+      border: none;
+
+      text-decoration: none;
+
+      background: none;
+    }
+
+    &-text {
+      font-family: Mont;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 100%;
+      color: $main-grey;
+      letter-spacing: 0%;
+    }
+
+    &-icon {
+      width: 16px;
+      height: 16px;
+      padding: 7px;
+      border: 1px solid $icon-grey;
+    }
+  }
+}

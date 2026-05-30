@@ -1,0 +1,73 @@
+@import "../../utils/mixins";
+
+.wrapper {
+  margin-top: 56px;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__title {
+      font-size: 22px;
+      font-weight: 800;
+      color: $main-black;
+
+      @include on-tablet {
+        font-size: 32px;
+      }
+    }
+  }
+}
+
+.slider {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.swiper {
+  &__slide {
+    width: 272px;
+  }
+}
+
+.nav-wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.nav-button {
+  cursor: pointer;
+  user-select: none;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $icon-grey;
+
+  font-size: 20px;
+
+  background-color: $main-white;
+
+  transition: border 0.3s ease;
+
+  &__icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  &--icon {
+    transform: rotate(180deg);
+  }
+
+  &:hover {
+   border: 1px solid $main-black;
+  }
+}
+
+.nav-button:disabled {
+  cursor: default;
+  opacity: 0.3;
+}
+
+
+

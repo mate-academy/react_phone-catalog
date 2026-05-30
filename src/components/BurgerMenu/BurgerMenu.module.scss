@@ -1,0 +1,143 @@
+@import "../../utils/mixins";
+
+.burgerMenu {
+    pointer-events: none;
+
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    left: 0;
+    transform: translateY(-100%);
+
+    width: 100vw;
+    height: 100vh;
+
+    opacity: 0;
+    background-color: $main-white;
+
+    transition: transform $transition-time ease, opacity $transition-time ease;
+
+
+
+    &--Open {
+    pointer-events: all;
+
+    transform: translateY(0);
+
+    display: flex;
+    flex-direction: column;
+
+    max-width: 1200px;
+    min-height: 100vh;
+    margin: 0 auto;
+
+    opacity: 1;
+  }
+
+  &__head {
+    height: 48px;
+    border-bottom: 1px solid $main-lightgrey;
+
+  }
+
+  &__logo {
+    width: 64px;
+    height: 22px;
+    padding: 13px 16px;
+  }
+
+  &__close-button {
+    cursor: pointer;
+
+    position: absolute;
+    z-index: 1100;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+
+    height: 48px;
+    padding: 0;
+    border: none;
+
+    background: none;
+  }
+
+  &__line {
+    width: 1px;
+    height: 48px;
+    background-color: $main-lightgrey;
+  }
+
+  &__close-logo {
+    width: 16px;
+    height: 16px;
+    padding: 13px 16px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &__main {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      margin: 0;
+      padding: 0;
+
+      text-align: center;
+      list-style: none;
+    }
+
+    &__link {
+      font-family: Mont;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 11px;
+      color: $main-grey;
+      text-decoration: none;
+      letter-spacing: 4%;
+    }
+
+    &__link:hover {
+      cursor: pointer;
+      padding: 8px 0;
+      border-bottom: 2px solid $main-black;
+      color: $main-black;
+    }
+  }
+
+  &__block {
+
+    &__button {
+      width: 50%;
+      height: 64px;
+      border: 1px solid $main-lightgrey;
+      border-radius: none;
+
+      background-color: $main-white;
+    }
+
+    &__button:hover {
+      cursor: pointer;
+      border-bottom: 2px solid $main-black;
+    }
+
+    &__icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

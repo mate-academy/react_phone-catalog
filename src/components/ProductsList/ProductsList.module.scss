@@ -1,0 +1,14 @@
+@import "../../utils/mixins";
+
+.product__list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+
+  @include on-tablet {
+    flex-flow: row wrap;
+    gap: 40px 14px;
+    justify-content: center;
+  }
+}

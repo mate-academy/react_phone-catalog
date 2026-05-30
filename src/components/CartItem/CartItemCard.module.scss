@@ -1,0 +1,140 @@
+@import "../../utils/mixins";
+.cart-item-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cart-item-card {
+  padding: 16px;
+  border: 1px solid $main-lightgrey;
+  font-family: Mont;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+  }
+
+  &__first {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+
+    &__block {
+      display: flex;
+      align-items: center;
+
+      &__button {
+        width: 16px;
+        height: 16px;
+        padding: 0;
+        border: none;
+
+        background-color: $main-white;
+
+        &__close {
+          cursor: pointer;
+          color: $icon-grey;
+        }
+      }
+    }
+
+    &__photo-block {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+
+      width: 80px;
+      height: 80px;
+
+      &__photo {
+        width: 66px;
+        height: 66px;
+      }
+    }
+
+    &__name {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600px;
+      color: $main-black;
+
+      @include on-tablet {
+        max-width: 176px;
+      }
+    }
+  }
+
+  &__second {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+      margin-top: 0;
+    }
+
+    &__price {
+      display: flex;
+      justify-content: flex-end;
+
+      min-width: 75px;
+      margin: 0;
+
+      font-size: 22px;
+      font-weight: 800;
+      color: $main-black;
+
+    }
+
+    &__quantity-block {
+      display: flex;
+      align-items: center;
+
+      &__button {
+        width: 32px;
+        height: 32px;
+        border: 1px solid $icon-grey;
+        background-color: $main-white;
+
+        &--disabled {
+          width: 32px;
+          height: 32px;
+          border: 1px solid $main-lightgrey;
+          background-color: $main-white;
+        }
+
+        &__minus {
+          cursor: pointer;
+          color: $main-black;
+
+          &--disabled {
+            color: $icon-grey;
+          }
+        }
+
+        &__plus {
+          cursor: pointer;
+          color: $main-black;
+        }
+      }
+
+      &__quantity {
+        min-width: 22px;
+        margin: 0;
+        text-align: center;
+        color: $main-black;
+      }
+    }
+  }
+}

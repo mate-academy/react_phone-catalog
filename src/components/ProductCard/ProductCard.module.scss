@@ -1,0 +1,179 @@
+.productCard {
+  border: 1px solid $main-lightgrey;
+  width: 272px;
+
+  &:hover {
+    box-shadow: 0 2px 15px 0 #0000001A;
+  }
+
+  &__content {
+    padding: 32px;
+  }
+
+  &__imgblock {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__image {
+    width: 110px;
+    height: 130px;
+  }
+
+  &__nameLink {
+    text-decoration: none;
+  }
+
+  &__nameblock {
+    height: 80px;
+  }
+
+  &__name {
+    margin: 0;
+    padding-top: 24px;
+
+    font-family: Mont;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $main-black;
+    letter-spacing: 0%;
+  }
+
+  &__priceblock {
+    display: flex;
+  }
+
+  &__price {
+    margin: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    font-family: Mont;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+    color: $main-black;
+    letter-spacing: 0%;
+
+    &--fullprice {
+      margin-left: 8px;
+      font-weight: 600;
+      color: $main-grey;
+      text-decoration: line-through;
+    }
+  }
+
+  &__line {
+    margin: 0;
+    padding-bottom: 16px;
+    border-top: 1px solid $main-lightgrey;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 8px;
+
+
+    &__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      &--name {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        font-family: Mont;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 100%;
+        color: $main-grey;
+        letter-spacing: 0%;
+      }
+
+      &--value {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        font-family: 'Mont';
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 100%;
+        color: $main-black;
+        text-align: right;
+        letter-spacing: 0%;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 8px;
+
+
+    &--add {
+      cursor: pointer;
+
+      width: 160px;
+      height: 40px;
+      padding: 0;
+      border: none;
+      border-radius: 0;
+
+      font-family: 'Mont';
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      color: $main-white;
+      text-align: center;
+      letter-spacing: 0%;
+
+      background-color: $main-black;
+
+      transition: font-size $transition-time ease, box-shadow $transition-time ease;
+
+      &:hover {
+        font-size: 15px;
+        box-shadow: 0 3px 13px 0 #17203166;
+      }
+
+      &--selected {
+        border: 1px $main-lightgrey solid;
+        color: #27AE60;
+        background-color: $main-white;
+      }
+    }
+
+    &--like {
+      cursor: pointer;
+
+      width: 40px;
+      height: 40px;
+      border: 1px solid $icon-grey;
+      border-radius: 0;
+
+      background-color: $main-white;
+
+      transition: border $transition-time;
+
+      &:hover {
+        border: 1px solid $main-black;
+      }
+
+      &--selected {
+        border: 1px solid $main-lightgrey;
+      }
+    }
+
+    &__logo {
+      width: 16px;
+      height: 16px;
+      color: $main-black;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+@import "../../utils/mixins";
+
+.back-button {
+  margin-top: 24px;
+  padding-left: 0;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &__block {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0;
+    border: none;
+
+    background-color: $main-white;
+  }
+
+  &__img {
+    width: 16px;
+    height: 16px;
+    margin-right: 3px;
+  }
+
+  &__name {
+    margin: 0;
+
+    font-family: Mont;
+    font-size: 12px;
+    font-weight: 700;
+    color: $main-grey;
+  }
+
+}

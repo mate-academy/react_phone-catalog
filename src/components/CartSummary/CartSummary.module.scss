@@ -1,0 +1,98 @@
+@import "../../utils/mixins";
+
+.cart-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 52px 0 56px;
+  padding: 24px;
+  border: 1px solid $main-lightgrey;
+
+  font-family: 'Mont';
+
+  @include on-tablet {
+    margin: 62px 0 64px;
+  }
+
+  @include on-desktop {
+    margin: 0;
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    &::after {
+      content: '';
+
+      display: block;
+
+      width: 100%;
+      height: 1px;
+      margin-top: 16px;
+
+      background-color: $main-lightgrey;
+
+      @include on-desktop {
+        margin-top: 25px;
+      }
+    }
+
+    &__sum {
+      margin: 0;
+      font-size: 32px;
+      font-weight: 800;
+      color: $main-black;
+    }
+
+    &__quantity {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: $main-grey;
+    }
+
+
+    &__checkout {
+      margin-top: 16px;
+
+      @include on-tablet {
+        width: 100%;
+      }
+
+      @include on-desktop {
+        margin-top: 24px;
+      }
+
+      &__button {
+        cursor: pointer;
+
+        width: 240px;
+        height: 48px;
+        padding: 0;
+        border: none;
+
+        background-color: $main-black;
+
+        @include on-tablet {
+          width: 100%;
+        }
+
+
+        &__text {
+          margin: 0;
+          font-size: 14px;
+          font-weight: 700;
+          color: $main-white;
+        }
+      }
+    }
+
+    @include on-desktop {
+      width: 318px;
+    }
+  }
+}

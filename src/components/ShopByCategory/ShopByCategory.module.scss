@@ -1,0 +1,142 @@
+@import "../../utils/mixins";
+
+.category {
+  margin: 0 16px;
+  font-family: 'Mont';
+
+  @include on-tablet {
+    margin: 0 24px;
+  }
+
+  &__title {
+    margin: 56px 0 0;
+    font-size: 22px;
+    font-weight: 800;
+    color: $main-black;
+
+    @include on-tablet {
+      margin: 64px 0 0;
+      font-size: 32px;
+    }
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 16px;
+      justify-content: center;
+    }
+  }
+
+  &__link {
+    padding-top: 24px;
+
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 100%;
+    color: $main-black;
+    text-decoration: none;
+    letter-spacing: 0%;
+
+    &__name {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+  }
+
+  &__qnt {
+    margin: 4px 0 0;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: $main-grey;
+    letter-spacing: 0%;
+  }
+
+  &__photo {
+    position: relative;
+    overflow: hidden;
+
+    width: 288px;
+    height: 288px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    &:hover {
+      box-shadow: 0px 2px 16px 0px #0000001A;
+      transform: scale(1.01);
+      transition: all 0.3s ease;
+    }
+
+    @include on-tablet {
+      width: 187px;
+      height: 187px;
+    }
+
+    @include on-desktop {
+      width: 368px;
+      height: 368px;
+    }
+
+    &--purple {
+      background-color: #6D6474;
+    }
+
+    &--grey {
+      background-color: #8D8D92;
+    }
+
+    &--red {
+      background-color: #D53C51;
+    }
+
+
+    &__image {
+      position: absolute;
+      transform: translate(-0%, -0%);
+
+
+      &--phones {
+        top: 9%;
+        left: 13%;
+        width: 302px;
+        height: 357px;
+
+        @include on-desktop {
+          width: 386px;
+          height: 457px;
+        }
+      }
+
+      &--tablets {
+        top: 15%;
+        left: 18%;
+        width: 288px;
+        height: 288px;
+
+        @include on-desktop {
+          width: 386px;
+          height: 457px;
+        }
+      }
+
+      &--accessories {
+        top: 20%;
+        left: 20%;
+        width: 550px;
+        height: 288px;
+
+        @include on-desktop {
+          width: 886px;
+          height: 457px;
+        }
+      }
+    }
+  }
+
+}

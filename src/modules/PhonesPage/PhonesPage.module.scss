@@ -1,0 +1,155 @@
+@import "../../utils/mixins";
+
+.phones-page {
+  margin-top: 24px;
+  padding: 0 16px;
+  font-family: 'Mont';
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 30px;
+  }
+
+  &__navi {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__logo {
+      width: 16px;
+      height: 16px;
+  }
+
+  &__arrow {
+      width: 6px;
+      height: 10px;
+  }
+
+  &__page {
+    display: flex;
+    align-items: center;
+
+    margin: 0;
+    padding-top: 4px;
+
+    font-size: 12px;
+    font-weight: 600;
+    color: $main-grey;
+    letter-spacing: 0%;
+  }
+
+  &__title {
+    margin: 24px 0 8px;
+    font-size: 32px;
+    font-weight: 800;
+
+    @include on-tablet {
+      margin: 40px 0 8px;
+      font-size: 48px;
+    }
+  }
+
+  &__models {
+    margin: 0 0 32px;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $main-grey;
+    letter-spacing: 0%;
+
+    @include on-tablet {
+      margin: 0 0 40px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+
+    @include on-tablet {
+      gap: 16px;
+      justify-content: flex-start;
+    }
+  }
+
+  &__select {
+
+    &__title {
+      margin-bottom: 4px;
+
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 100%;
+      color: $main-grey;
+      letter-spacing: 0%;
+    }
+
+    &__field-1 {
+      width: 136px;
+      height: 40px;
+      border-color: $icon-grey;
+
+      @include on-tablet {
+        width: 187px;
+      }
+    }
+
+    &__field-2 {
+      width: 136px;
+      height: 40px;
+      border-color: $icon-grey;
+    }
+
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+  }
+
+  &__phones {
+    margin-top: 24px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 24px;
+
+    &__left {
+      margin-right: 8px;
+      border: 1px solid $icon-grey;
+    }
+
+    &__right {
+      margin-left: 8px;
+      border: 1px solid $icon-grey;
+    }
+
+    &__button {
+      width: 32px;
+      height: 32px;
+      background-color: $main-white;
+    }
+
+    &__nbutton {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $main-lightgrey;
+      background-color: $main-white;
+    }
+
+    &__active {
+      color:$main-white;
+      background-color: $main-black;
+    }
+  }
+}
+
+
