@@ -1,0 +1,110 @@
+@import '../../../../styles/main';
+
+.picturesSlider {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    @include content-padding-inline;
+
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.picturesSlider__container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.picturesSlider__button {
+  display: none;
+
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-gray-icons-placeholders);
+    cursor: pointer;
+  }
+}
+
+.picturesSlider__button:hover {
+  border-color: var(--color-gray-primary);
+  background-color: var(--color-hover);
+}
+
+body.theme_dark .picturesSlider__button {
+  border: none;
+  background-color: var(--color-surface-2);
+}
+
+body.theme_dark .picturesSlider__button:hover {
+  background-color: var(--color-gray-icons-placeholders);
+}
+
+.picturesSlider__container-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  @include on-tablet {
+    min-height: 189px;
+    max-height: 400px;
+    margin-inline: 16px;
+    flex-grow: 1;
+    aspect-ratio: 400 / 189;
+  }
+}
+
+.picturesSlider__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+
+  &--active {
+    opacity: 1;
+  }
+}
+
+.picturesSlider__dots {
+  height: 24px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.picturesSlider__dot {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  position: relative;
+}
+
+.picturesSlider__dot::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 4px;
+  background-color: var(--color-gray-elements);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.picturesSlider__dot--active::after {
+  background-color: var(--color-gray-primary);
+}
