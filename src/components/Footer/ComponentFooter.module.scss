@@ -1,0 +1,97 @@
+@import '/src/styles/mixins';
+
+.container{
+  box-shadow: 0 -1px 0 0 rgba(226, 230, 233, 1);
+  padding: 32px 16px;
+  display: flex;
+  gap: 28px;
+  flex-direction: column;
+
+  @include on-tablet{
+    padding: 32px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .nav{
+    display: flex;
+    align-items: center;
+
+    &__list{
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 16px;
+      flex-direction: column;
+      list-style: none;
+
+      @include on-tablet{
+        flex-direction: row;
+        gap: 24px;
+      }
+
+      @include on-desktop{
+        gap: 107px;
+      }
+    }
+
+    &__link{
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 11px;
+      letter-spacing: 0.04em;
+      color: rgba(137, 147, 154, 1);
+      text-decoration: none;
+
+      &:hover{
+        cursor: pointer;
+        color: black;
+        transition-duration: 0.3s;
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+
+    .back{
+      cursor: pointer;
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15.34px;
+      color: rgba(137, 147, 154, 1);
+
+      &:hover{
+        color: black;
+        transition-duration: 0.5s;
+      }
+    }
+
+    .button{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50px;
+      border: 1px solid rgba(180, 189, 195, 1);
+      background-color: inherit;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 50%;
+      cursor: pointer;
+
+      &:hover{
+        border: 1px solid rgba(15, 15, 17, 1);
+        transition-duration: 0.5s;
+      }
+    }
+  }
+}

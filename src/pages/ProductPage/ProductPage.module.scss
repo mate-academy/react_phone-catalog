@@ -1,0 +1,114 @@
+@import '/src/styles/mixins';
+
+.productPage{
+  @include container-padding;
+  @include page-grid;
+
+  background-color: rgba(250, 251, 252, 1);
+  justify-content: center;
+
+  .productGrid{
+    @include grid-column;
+
+    justify-content: center;
+    gap: 40px 16px;
+    grid-template-columns: repeat(auto-fit, minmax(229px, 288px));
+
+    @include on-tablet {
+      justify-content: normal;
+      grid-template-columns: repeat(auto-fit, minmax(229px, 1fr));
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(4, auto);
+    }
+  }
+
+  .phones__top {
+    @include grid-column;
+
+    column-gap: 16px;
+    margin-bottom: 24px;
+
+    .label{
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15.34px;
+      color: rgba(137, 147, 154, 1);
+    }
+  }
+
+  .phones__title {
+    @include grid-column;
+
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-transform: capitalize;
+    margin: 0;
+  }
+
+  .phones__count {
+    @include grid-column;
+
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: rgba(137, 147, 154, 1);
+    margin: 8px 0 32px;
+  }
+
+  .phones__sort {
+    @include page-grid;
+
+    grid-column: span var(--columns);
+  }
+
+  .pagination {
+    @include grid-column;
+
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 24px 0 0;
+
+    &__link{
+      color: rgba(15, 15, 17, 1);
+      text-decoration: none;
+      background-color: inherit;
+      margin: 0 8px;
+      height: 32px;
+      width: 32px;
+      border-radius: 48px;
+      border: 1px solid rgba(180, 189, 195, 1);
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      &:hover{
+        border: 1px solid rgba(15, 15, 17, 1);
+        transition-duration: 0.5s;
+      }
+    }
+
+    .activePage {
+      background-color: black;
+      color: white;
+    }
+
+    .disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+
+}
