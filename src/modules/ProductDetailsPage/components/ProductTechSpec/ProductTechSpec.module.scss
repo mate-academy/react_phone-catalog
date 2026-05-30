@@ -1,0 +1,21 @@
+@use '../../../../styles/variables.scss' as *;
+
+.techSpec {
+  padding-top: $gap-32;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-8;
+}
+
+.techItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.techLabel {
+  color: $secondary;
+}
+
+.techValue {
+  font-family: $fontMontSemiBold;
+}

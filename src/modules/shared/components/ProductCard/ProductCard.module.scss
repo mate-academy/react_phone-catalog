@@ -1,0 +1,97 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.productCard {
+  background-color: $white;
+  padding: 32px;
+  width: 212px;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: $gap-8;
+  justify-content: space-between;
+
+  border: 1px solid $elements;
+  border-radius: 8px;
+
+  @include on-tablet {
+    width: 225px;
+  }
+
+  @include on-desktop {
+    width: 268px;
+  }
+}
+
+.productCard:hover {
+  box-shadow: 0 2px 15px 0 #0000001a;
+}
+
+.productImage {
+  display: flex;
+  justify-content: center;
+  height: 129px;
+
+  @include on-tablet {
+    height: 202px;
+  }
+
+  @include on-desktop {
+    height: 208px;
+  }
+
+  img {
+    height: 100%;
+    object-fit: cover;
+
+    @include hover(transform, scale(1.1));
+  }
+}
+
+.productTitle {
+  font-family: $fontMontSemiBold;
+  font-size: $font-size-md;
+  color: $primary;
+  text-decoration: none;
+  margin-top: 16px;
+  min-height: 42px;
+}
+
+.productPrice {
+  margin-top: 8px;
+  font-family: $fontMontBold;
+  font-size: $font-size-3xl;
+  line-height: 140%;
+
+  display: flex;
+  gap: $gap-8;
+
+  .oldPrice {
+    font-family: $fontMont;
+    color: $secondary;
+    text-decoration: line-through;
+    letter-spacing: 0%;
+  }
+}
+
+.productInfo {
+  padding-top: $gap-8;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-8;
+
+  border-top: 1px solid $elements;
+  .infoItem {
+    display: flex;
+    justify-content: space-between;
+
+    font-family: $fontMontBold;
+    font-size: $font-size-base;
+
+    .greyText {
+      font-family: $fontMontSemiBold;
+      color: $secondary;
+    }
+  }
+}

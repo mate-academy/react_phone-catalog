@@ -1,0 +1,82 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+@use '../../../../styles/shared.scss' as *;
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $gap-16;
+
+  @include on-tablet{
+    flex-direction: row-reverse;
+    justify-content: start;
+    align-items: start;
+}
+}
+
+.mainImageWrapper {
+  display: flex;
+  justify-content: center;
+
+  width: 288px;
+  height: 288px;
+
+  @include on-desktop{
+    width: 464px;
+    height: 464px;
+  }
+}
+
+.mainImage {
+  width: auto;
+  height: 100%;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.thumbnails {
+  display: flex;
+  gap: $gap-8;
+  justify-content: center;
+
+  @include on-tablet{
+    flex-direction: column;
+  }
+}
+
+%thumb-base {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.6;
+  border: 2px solid transparent;
+  object-fit: cover;
+  transition: all 0.2s;
+
+  @include on-tablet{
+    width: 35px;
+    height: 35px;
+  }
+
+  @include on-desktop{
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.thumb {
+  @extend %thumb-base;
+}
+
+.thumb:hover {
+  opacity: 0.8;
+}
+
+.thumbActive {
+  @extend %thumb-base;
+
+  opacity: 1;
+  border-color: #000;
+}

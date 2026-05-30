@@ -1,0 +1,125 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/shared.scss' as *;
+
+header {
+  position: sticky;
+  top: 0;
+  box-shadow: 0 1px 0 0 $boxShadowColors;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: $white;
+  z-index: 2;
+}
+
+.headerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $gap-8;
+  height: 48px;
+
+  @include on-tablet {
+    overflow: hidden;
+  }
+
+  @include on-desktop {
+    height: 64px;
+  }
+}
+
+.leftPart {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  min-width: 0;
+  flex: 1 1 auto;
+
+  @include on-tablet {
+    gap: $gap-32;
+  }
+
+  @include on-desktop {
+    gap: $gap-48;
+  }
+}
+
+.rightPart {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 0 0 auto;
+}
+
+.iconWrapper {
+  box-shadow: -1px 0 0 0 $boxShadowColors;
+
+  @include icon-paddings;
+}
+
+.logoWrapper {
+  padding: $gap-13 $gap-16;
+  width: 96px;
+  height: 48px;
+
+  @include on-desktop {
+    padding: $gap-18 $gap-24;
+    width: 128px;
+    height: 64px;
+  }
+
+  img {
+    width: 64px;
+    height: 22px;
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+    }
+  }
+}
+
+.menuWrapper {
+  @include on-desktop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+}
+
+.linkWrapper {
+  position: relative;
+}
+
+.iconCount {
+  position: absolute;
+  bottom: 12px;
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  background-color: $secondaryAccent;
+  color: $white;
+  font-family: $fontMontSemiBold;
+  font-size: $font-size-xs;
+  line-height: $line-height-16;
+  padding: $gap-4;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchWrapper {
+  display: none;
+
+  @include on-desktop {
+    display: flex;
+  }
+}
+
+.openMenu{
+  cursor: pointer;
+}

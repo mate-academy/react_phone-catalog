@@ -1,0 +1,104 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.burgerMenu {
+  box-sizing: border-box;
+  z-index: 1;
+  height: 100vh;
+  width: 100vw;
+  background-color: $white;
+  position: absolute;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 1px 0 0 $boxShadowColors;
+  box-sizing: border-box;
+  width: 100%;
+  height: 48px;
+}
+
+.iconWrapper {
+  box-shadow: -1px 0 0 0 $boxShadowColors;
+
+  @include icon-paddings;
+}
+
+.closeIcon {
+  cursor: pointer;
+}
+
+.iconCountWrapper {
+  position: relative;
+}
+
+.iconCount {
+  position: absolute;
+  bottom: 12px;
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  background-color: $secondaryAccent;
+  color: $white;
+  font-family: $fontMontSemiBold;
+  font-size: $font-size-xs;
+  line-height: $line-height-16;
+  padding: $gap-4;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoWrapper {
+  padding: $gap-13 $gap-16;
+}
+
+.content {
+  padding-top: $gap-24;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  height: 64px;
+  box-shadow: 0 -1px 0 0 $boxShadowColors;
+}
+
+.footerLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  box-shadow: -1px 0 0 0 $boxShadowColors;
+  position: relative;
+
+  &::after {
+    content: '';
+    height: 3px;
+    width: 100%;
+    display: block;
+    position: absolute;
+    background-color: $primary;
+
+    transition: transform $duration;
+    transform: scale(0);
+    transform-origin: left;
+
+    bottom: 0;
+  }
+
+  &.active {
+    &::after {
+      transform: scale(1);
+    }
+  }
+
+  img {
+    width: 16px;
+  }
+}
