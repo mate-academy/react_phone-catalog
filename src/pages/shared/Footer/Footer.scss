@@ -1,0 +1,107 @@
+@import '../../../styles/main';
+
+.footer {
+  box-shadow: 0 -1px 0 0 var(--color-gray-elements);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-block: 32px;
+    margin-top: 64px;
+
+    @include content-padding-inline;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      margin-top: 80px;
+    }
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+
+    &-container {
+      @include on-tablet {
+        flex-grow: 1;
+      }
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    @include on-desktop {
+      align-items: center;
+    }
+  }
+
+  &__link {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    color: var(--color-gray-secondary);
+
+    @include hover(color, var(--color-gray-primary));
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    cursor: pointer;
+
+    @include on-tablet {
+      justify-content: end;
+      flex-grow: 1;
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-gray-icons-placeholders);
+    background-color: var(--color-bg);
+    transform: rotate(90deg);
+
+    transition: border-color 0.3s ease;
+
+    &:hover {
+      border: 1px solid var(--color-gray-primary);
+      background-color: var(--color-hover);
+    }
+
+    &-title {
+      font-family: Mont-SemiBold, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-gray-secondary);
+    }
+  }
+}
+
+body.theme_dark .footer__button {
+  border: none;
+  background-color: var(--color-surface-2);
+
+  @include hover(background-color, var(--color-gray-icons-placeholders));
+}

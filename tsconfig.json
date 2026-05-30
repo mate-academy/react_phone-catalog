@@ -5,6 +5,8 @@
   ],
   "compilerOptions": {
     "sourceMap": false,
-    "types": ["node", "cypress"]
+    "jsx": "react-jsx",
+    "types": ["node", "cypress"],
+    "forceConsistentCasingInFileNames": true
   }
 }
