@@ -1,0 +1,104 @@
+@import '../../styles/main.scss';
+
+.product {
+  @include base-spacing;
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__back {
+    padding-left: 0;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+    height: 16px;
+    cursor: pointer;
+    @include hover-scale;
+  }
+
+  &__icon {
+    padding-top: 2px;
+  }
+
+  &__btnText {
+    @include small-text;
+    color: var(--primary-color);
+    font-family: Mont;
+  }
+
+  &__name {
+    margin-top: 16px;
+    margin-bottom: 40px;
+
+    @include h2;
+
+    @include on-mobile {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__details {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @include on-mobile {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__images {
+    grid-column: span 12;
+
+    @include on-tablet {
+      grid-column: span 7;
+    }
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__addInfo {
+    grid-column: 14 / 21;
+
+    @include on-tablet {
+      grid-column: 8 / -1;
+    }
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+      margin-top: 40px;
+    }
+  }
+
+  &__aboutInfo {
+    margin-top: 80px;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-mobile {
+      margin-top: 56px;
+    }
+  }
+
+  &__slider {
+    width: 102.5%;
+    box-sizing: border-box;
+
+    @include on-tablet {
+      width: 100%;
+    }
+  }
+}

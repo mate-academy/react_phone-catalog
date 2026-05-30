@@ -1,0 +1,117 @@
+@import '../../styles/main.scss';
+
+.carts {
+  display: flex;
+  margin-top: 0;
+  padding-inline: 32px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 64px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-mobile {
+    padding-inline: 16px;
+    margin-bottom: 56px;
+  }
+
+  &__content {
+    width: 100%;
+  }
+
+  &__back {
+    border: none;
+    background-color: transparent;
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+    height: 16px;
+    cursor: pointer;
+    margin-top: 40px;
+    margin-bottom: 16px;
+    padding-left: 0;
+
+    @include hover-scale;
+
+    @include on-mobile {
+      margin-block: 24px;
+    }
+  }
+
+  &__btnText {
+    @include small-text;
+
+    color: var(--primary-color);
+    font-family: Mont;
+  }
+
+  &__icon {
+    padding-top: 2px;
+  }
+
+  &__title {
+    @include h1;
+  }
+
+  &__count {
+    color: var(--secondary-color);
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: $font-thin;
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
+
+  &__products {
+    margin-top: 32px;
+    column-gap: 16px;
+    row-gap: 40px;
+  }
+
+  &__empty {
+    font-size: 26px;
+    font-weight: $font-acc;
+
+    @include on-mobile {
+      font-size: 20px;
+    }
+
+    @media (max-width: 400px) {
+      font-size: 16px;
+    }
+  }
+
+  &__emptyImage {
+    display: flex;
+    justify-content: end;
+    width: 500px;
+    height: 500px;
+    margin-top: 30px;
+
+    @include on-mobile {
+      width: 300px;
+      height: 300px;
+      margin-top: 15px;
+    }
+
+    @media (max-width: 400px) {
+      width: 250px;
+      height: 250px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+
+    @include on-tablet {
+      align-items: center;
+      flex-direction: column;
+      gap: 32px;
+    }
+  }
+}

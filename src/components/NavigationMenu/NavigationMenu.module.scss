@@ -1,0 +1,64 @@
+@import '../../styles/main.scss';
+
+.nav {
+  &__list {
+    display: flex;
+    list-style-type: none;
+    justify-content: left;
+    gap: 64px;
+    padding-left: 24px;
+
+    @include on-tablet {
+      padding-left: 16px;
+      gap: 32px;
+    }
+
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &__item {
+    color: var(--secondary-color);
+    @include uppercase;
+    @include hover-scale;
+
+    :hover {
+      color: var(--primary-color);
+    }
+  }
+}
+
+.navMenu {
+  justify-content: center;
+  height: 100%;
+
+  .nav__logo {
+    display: flex;
+  }
+
+  .nav__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+
+  .nav__item {
+    text-align: center;
+    padding-block: 8px;
+  }
+
+  .is-active {
+    &::after {
+      bottom: -8px;
+    }
+  }
+}
+
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
