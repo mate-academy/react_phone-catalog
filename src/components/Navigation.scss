@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+.navigation {
+  box-shadow: 0px 4px 10px 3px var(--elements);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: var(--white);
+  height: 64px;
+  justify-content: space-between;
+
+  &-left {
+    display: flex;
+    gap: 32px;
+    justify-content: space-between;
+  }
+
+  &-right {
+    height: 64px;
+    width: 128px;
+    display: flex;
+  }
+
+  &-right > .nav-item {
+    border-left: 1px var(--elements) solid;
+  }
+
+  .icon {
+    height: 16px;
+    width: 26px;
+  }
+
+
+  .logo {
+    height: 64px;
+    width: 128px;
+    background-color: var(--white);
+    display: flex;
+
+    &-image {
+      height: 28px;
+      width: 80px;
+      margin: auto;
+    }
+  }
+
+  .nav-item {
+    position: relative;
+    min-width: 64px;
+    height: 64px;
+    line-height: 64px;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+
+    &.is-active {
+      color: black; // Цвет активного элемента (при необходимости)
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0px;
+        height: 3px;
+        background-color: var(--primary); // Цвет подчеркивания
+        transform: scaleX(1); // Подчеркивание будет видно
+        transition: transform 0.3s ease;
+      }
+    }
+
+    &:not(.is-active)::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0px;
+      height: 3px;
+      background-color: var(--primary);
+      transform: scaleX(0); // Скрыть подчеркивание
+      transition: transform 0.3s ease;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0px; // Смещение вниз, чтобы черточка появлялась ниже текста
+      height: 3px; // Толщина черточки
+      background-color: var(--primary); // Цвет черточки
+      transform: scaleX(0); // По умолчанию невидима (скрыта, так как ширина равна 0)
+      transition: transform 0.3s ease; // Плавный переход
+    }
+
+    .navigation-right > &:hover::after {
+      transform: scaleX(1); // При наведении черточка растягивается до полной ширины
+    }
+  }
+
+}
+

@@ -1,0 +1,9 @@
+.grid-container {
+  grid-column: 1 / -1;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(var(--gridColumn), 32px);
+  gap: 16px;
+  width: 100%;
+  height: 100%;
+}
