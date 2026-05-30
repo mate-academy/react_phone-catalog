@@ -1,0 +1,55 @@
+@use "../../../../shared/variables/variables" as *;
+@use "../../../../shared/mixins/mixins" as *;
+
+.productHeader {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0;
+  margin-top: 24px;
+}
+
+.header__path {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header__icon_home {
+  @include icon-size(16px);
+  @include flex-center;
+}
+
+.header__icon_arrow {
+  @include icon-size(16px);
+  @include flex-center;
+}
+
+.header__title_page {
+  color: $white-color;
+}
+
+.header__title_product {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  color: $gray-color;
+}
+
+.productHeader__title {
+  margin-top: 16px;
+}
+
+.title__text {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+
+  @media (max-width: 639px) {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: 0;
+  }
+}

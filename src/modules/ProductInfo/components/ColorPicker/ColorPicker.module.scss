@@ -1,0 +1,40 @@
+@use "../../../../shared/variables/variables" as *;
+
+.colorPicker {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.colorOption {
+  width: 32px;
+  height: 32px;
+  padding: 2px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(59, 62, 74, 1);
+  cursor: pointer;
+  transition:
+    border 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    opacity: 0.85;
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.colorCircle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: border-color 0.2s ease;
+}
+
+.active {
+  border-color: $white-color;
+}

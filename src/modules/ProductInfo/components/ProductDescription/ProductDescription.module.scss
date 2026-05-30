@@ -1,0 +1,106 @@
+@use "../../../../shared/variables/variables" as *;
+@use "../../../../shared/mixins/mixins" as *;
+
+.productDescription {
+  margin-top: 80px;
+  display: flex;
+
+  @media (max-width: 1199px) {
+    flex-direction: column;
+  }
+}
+
+.description__title {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  color: $white-color;
+
+  @media (max-width: 639px) {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 22px;
+  }
+}
+
+.description__About {
+  flex: 1;
+
+  @media (max-width: 1199px) {
+    flex: none;
+  }
+}
+
+.About__items {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.About__items_title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: $white-color;
+
+  @media (max-width: 639px) {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+  }
+}
+
+.About__items_description {
+  @include subtitle-text;
+
+  color: $gray-color;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.description__TechSpecs {
+  margin-left: 64px;
+  flex: 1;
+
+  @media (max-width: 1199px) {
+    margin-left: 0;
+    margin-top: 64px;
+    flex: none;
+  }
+}
+
+.techSpecs {
+  margin-top: 25px;
+}
+
+.techSpecs__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.techSpecs__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item__label {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $gray-color;
+}
+
+.item__value {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $white-color;
+}

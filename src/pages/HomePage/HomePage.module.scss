@@ -1,0 +1,13 @@
+@use "../../shared/mixins/mixins" as *;
+
+.home__page_title {
+  margin-top: 56px;
+  letter-spacing: -0.48px;
+
+  @include title-style;
+
+  @media (max-width: 640px) {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}

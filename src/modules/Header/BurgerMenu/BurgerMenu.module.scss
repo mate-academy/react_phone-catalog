@@ -1,0 +1,80 @@
+@use "../../../shared/mixins/mixins.scss" as *;
+@use "../../../shared/variables/variables" as *;
+
+.menu {
+  width: 100%;
+  height: 100vh;
+  background-color: #0f1121;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu__top {
+  box-shadow: 0 1px 0 0 rgba(50, 53, 66, 1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  padding: 13px 16px;
+
+  img {
+    width: 64px;
+    height: 22px;
+  }
+}
+
+.nav {
+  margin: 24px 16px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include nav-link;
+}
+
+.nav__item {
+  position: relative;
+  height: 27px;
+}
+
+.active {
+  color: $white-color;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: $white-color;
+}
+
+.closeBtn {
+  @include header-button;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgba(59, 62, 74, 1);
+}
+
+.menu__button {
+  border: none;
+  height: 64px;
+  width: 50%;
+  box-shadow: -1px 0 0 0 rgba(50, 53, 66, 1);
+
+  @include flex-center;
+}

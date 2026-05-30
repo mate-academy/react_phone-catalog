@@ -1,0 +1,61 @@
+@use "../../shared/variables/variables"  as *;
+
+.select {
+  position: relative;
+}
+
+.select__trigger {
+  width: 100%;
+  background: rgba(50, 53, 66, 1);
+  padding: 10px 12px;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.select__active_value {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $white-color;
+}
+
+.select__arrow {
+  display: block;
+  object-fit: cover;
+}
+
+.select__arrow img:hover {
+  color: rgba(74, 77, 88, 1);
+}
+
+.select__items {
+  margin-top: 4px;
+  padding: 8px 0;
+  width: 100%;
+  background: rgba(15, 17, 33, 1);
+  border: 1px solid rgba(59, 62, 74, 1);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+  overflow-y: auto;
+}
+
+.select__item {
+  padding: 6px 12px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $gray-color;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(50, 53, 66, 1);
+    color: $white-color;
+  }
+}

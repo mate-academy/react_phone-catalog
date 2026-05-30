@@ -1,0 +1,64 @@
+@use "../../shared/variables/variables" as *;
+@use "../../shared/mixins/mixins" as *;
+
+.Catalog__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.header__icon_home {
+  @include icon-size(16px);
+}
+
+.header__icon_arrow {
+  @include icon-size(16px);
+  @include flex-center;
+}
+
+.header__title_page {
+  @include grey-text;
+}
+
+.Catalog__title_text {
+  margin-top: 40px;
+
+  @include title-style;
+}
+
+.Catalog__title_subtext {
+  margin-top: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: $gray-color;
+}
+
+.Catalog__filters {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.filters__title {
+  @include grey-text;
+}
+
+.filters__sortBy {
+  width: 176px;
+  margin-top: 4px;
+}
+
+.filters__counterItems {
+  width: 128px;
+  margin-top: 4px;
+}
+
+.Catalog__items {
+  margin-top: 24px;
+  display: flex;
+  justify-content:space-around;
+  flex-wrap: wrap;
+  gap: 40px 16px;
+}

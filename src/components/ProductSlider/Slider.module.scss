@@ -1,0 +1,79 @@
+@use "../../shared/mixins/mixins" as *;
+
+.Slider {
+  margin-top: 80px;
+  position: relative;
+}
+
+.Slider__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Slider__title {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.32px;
+  color: rgba(241, 242, 249, 1);
+
+  @media (max-width: 639px) {
+    font-style: Bold;
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: 0;
+  }
+}
+
+.Slider__buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.Slider__button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: #323542;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  @include flex-center;
+
+  &:hover {
+    background-color: #3b3e4a;
+  }
+
+  img {
+    @include icon-size(16px);
+  }
+
+  &.disabled {
+    background: rgba(15, 17, 33, 1);
+    border: 1px solid rgba(59, 62, 74, 1);
+    color: red;
+  }
+}
+
+.Slider__list {
+  background: rgba(15, 17, 33, 1);
+  padding-top: 24px;
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 8px;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.Slider__item {
+  width: 272px;
+  transform-origin: center;
+  will-change: transform;
+}
