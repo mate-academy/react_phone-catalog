@@ -1,0 +1,101 @@
+@use './../../style/main' as *;
+
+.sort {
+  display: flex;
+  flex-direction: row;
+  column-gap: 16px;
+  margin-top: 32px;
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: 1 / 8;
+    margin-top: 40px;
+
+    &>:nth-child(1) {
+      width: 137%;
+    }
+  }
+
+
+  &__wrapper {
+    @include page-grid;
+
+  }
+}
+
+.dropdown {
+  position: relative;
+
+  &__wrapper {
+    height: 40px;
+    font-size: inherit;
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+    width: 100%;
+
+  }
+
+  & * {
+    box-sizing: border-box;
+  }
+
+  &__select {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $surface-2;
+    padding: 12px;
+    border: 1px solid $surface-2;
+    color: $white;
+    transition: border 0.3s;
+    cursor: pointer;
+
+
+    &:focus {
+      border: 1px solid $accent;
+    }
+
+    &_caret {
+      transition: 0.3s;
+
+      &.rotate {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    top: 44px;
+    height: 0;
+    opacity: 0;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    background-color: $black;
+    list-style: none;
+    border: 1px solid $elements;
+    z-index: 5;
+    transition: all 0.3s;
+
+    &.open {
+      opacity: 1;
+      height: auto;
+    }
+
+    & li {
+      padding: 6px 12px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      transition: background-color 0.3s;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $elements;
+      }
+    }
+  }
+}

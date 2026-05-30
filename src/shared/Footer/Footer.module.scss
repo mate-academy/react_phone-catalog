@@ -1,0 +1,66 @@
+@use './../../style/main' as *;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 96px;
+  width: 100%;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    height: 100%;
+
+
+    &_wrapper {
+      width: 100%;
+    }
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+  }
+
+  &__item {
+    // display: grid;
+    // place-items: center;
+
+    &_link {
+      text-decoration: none;
+      text-transform: uppercase;
+      list-style: none;
+      color: $white;
+      font-weight: 800;
+      letter-spacing: 4%;
+      line-height: 11px;
+
+    }
+  }
+
+  &__back_to_top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-wrap: nowrap;
+    padding: 32px 16px;
+    color: $secondary;
+
+
+    &_button {
+      margin-left: 16px;
+      background-color: $surface-2;
+      border: none;
+      height: 32px;
+      width: 32px;
+    }
+  }
+}
