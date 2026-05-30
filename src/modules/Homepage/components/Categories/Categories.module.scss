@@ -1,0 +1,118 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables.scss' as *;
+
+.shop {
+  grid-column: 1/-1;
+
+  &__title {
+    @include heading-h2;
+
+    margin-bottom: 24px;
+  }
+
+  &__categories {
+    @include grid-layout;
+
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    &__title {
+      color: var(--primary-color);
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    &__body {
+      color: var(--secondary-color);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+    }
+  }
+
+  &__images {
+    width: 288px;
+    height: 288px;
+    margin-bottom: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgb(23 32 49 / 25%);
+    }
+
+    @include on-tablet {
+      width: 187px;
+      height: 187px;
+    }
+
+    @include on-full-screen {
+      width: 368px;
+      height: 368px;
+    }
+
+    &__image1 {
+      background-image: url('./images/phones-category.svg');
+    }
+
+    &__image2 {
+      background-image: url('./images/tablets-category.svg');
+    }
+
+    &__image3 {
+      background-color: #8b3b5a;
+      background-image: url('../../../../../public/img/category-accessories.webp');
+    }
+  }
+
+  &__category {
+    margin: 0 auto;
+    text-decoration: none;
+
+    &__phones {
+      grid-column: 1/-1;
+
+      @include on-tablet {
+        grid-column: 1/5;
+      }
+
+      @include on-full-screen {
+        grid-column: 1/9;
+      }
+    }
+
+    &__tablets {
+      grid-column: 1/-1;
+
+      @include on-tablet {
+        grid-column: 5/9;
+      }
+
+      @include on-full-screen {
+        grid-column: 9/17;
+      }
+    }
+
+    &__accessories {
+      grid-column: 1/-1;
+
+      @include on-tablet {
+        grid-column: 9/-1;
+      }
+
+      @include on-full-screen {
+        grid-column: 17/-1;
+      }
+    }
+  }
+}

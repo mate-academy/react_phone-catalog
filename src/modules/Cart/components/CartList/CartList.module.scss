@@ -1,0 +1,132 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables.scss' as *;
+
+.cart {
+  grid-column: 1/-1;
+
+  @include grid-layout;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    grid-column: 1/-1;
+    padding: 32px 0;
+
+    @include on-full-screen {
+      grid-column: 1/17;
+    }
+  }
+
+  &__checkout {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1/-1;
+    padding: 24px;
+    border: 1px solid var(--elements);
+
+    @include on-full-screen {
+      align-self: start;
+      grid-column: 17/-1;
+      margin-top: 32px;
+    }
+
+    &__total {
+      color: var(--primary-color);
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      text-align: center;
+      letter-spacing: -1%;
+    }
+
+    &__items_amount {
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--elements);
+      color: var(--secondary-color);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      text-align: center;
+    }
+
+    &__btn {
+      height: 48px;
+      background-color: var(--add-button-back-color);
+      color: var(--add-button-color);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 48px;
+      text-align: center;
+
+      &:hover {
+        box-shadow: var(--add-button-hover-shadow);
+        background-color: var(--add-button-hover-back-color);
+      }
+    }
+  }
+}
+
+.checkbox_notification {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0 0 0 / 40%);
+  backdrop-filter: blur(6px);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    width: 80%;
+    height: 40%;
+    padding: 0 16px;
+    border-radius: 10px;
+    background-color: var(--background-color);
+
+    @include on-full-screen {
+      justify-content: space-around;
+      width: 50%;
+      height: 50%;
+      padding: 32px;
+    }
+
+    &__title {
+      @include heading-h2;
+      
+      text-align: center;
+    }
+
+    &__btns {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      gap: 16px;
+
+      &__btn {
+        width: 100%;
+        max-width: 280px;
+        height: 48px;
+        padding: 0 12px;
+        border-radius: 5px;
+        background-color: var(--add-button-back-color);
+        color: var(--add-button-color);
+        line-height: 48px;
+        text-align: center;
+
+        &:hover {
+          box-shadow: var(--add-button-hover-shadow);
+          background-color: var(--add-button-hover-back-color);
+        }
+      }
+    }
+  }
+}
