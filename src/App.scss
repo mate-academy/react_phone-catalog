@@ -1,1 +1,42 @@
-// not empty
+@font-face {
+  font-family: MyFont;
+  src: url('../../../fonts/Mont.otf') format('opentype');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: MyFont, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+main {
+  margin-top: 35px;
+}
+
+footer {
+  margin-top: 100px;
+  border-top: 1px solid rgb(220, 220, 220);
+  padding: 30px 0;
+}

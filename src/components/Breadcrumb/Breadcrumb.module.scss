@@ -1,0 +1,35 @@
+.breadcrumbs {
+  font-size: 14px;
+  color: #666;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    color: #666;
+  }
+
+  &__link {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__separator {
+    color: #aaa;
+  }
+
+  &__item--current {
+    color: #999;
+    font-weight: normal;
+  }
+}
