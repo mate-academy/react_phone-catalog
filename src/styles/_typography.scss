@@ -1,0 +1,96 @@
+@import '../styles/utils/mixins';
+@import '../styles/utils/vars';
+
+h1, h2, h3, h4, .uppercase, .buttons, .body-text, .small-text {
+  font-family: Mont, sans-serif;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  color: $primary-color;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 30.8px;
+  letter-spacing: 0;
+  color: $primary-color;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+}
+
+h3 {
+  font-weight: semiBold;
+  font-size: 20px;
+  line-height: 25.56px;
+  letter-spacing: 0;
+  color: $primary-color;
+
+  @include on-tablet {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 30.8px;
+  }
+}
+
+h4 {
+  font-weight: semiBold;
+  font-size: 16px;
+  line-height: 20.45px;
+  letter-spacing: 0;
+  color: $primary-color;
+
+  @include on-tablet {
+    font-size: 20px;
+    line-height: 25.56px;
+  }
+}
+
+.uppercase {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+}
+
+.buttons {
+  font-weight: semiBold;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+.body-text {
+  @include body-text;
+}
+
+.small-text {
+  @include small-text;
+}
+
+.small-text-black {
+  @include small-text;
+
+  color: $primary-color;
+}
+
+.body-text-black {
+  @include body-text;
+
+  color: $primary-color;
+}

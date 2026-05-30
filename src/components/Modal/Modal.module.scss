@@ -1,0 +1,55 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.modal {
+  position: fixed;
+  transition: all $duration $type;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+  margin-left: calc((100vw - 400px) / 2);
+  margin-top: 20px;
+  background-color: $hover_bg-color;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 320px;
+  max-width: 400px;
+  width: 100%;
+  border: 1px solid $secondary-color;
+}
+
+.modal__message {
+  font-family: Mont, sans-serif;
+  color: $primary-color;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.modal__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.modal__button {
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.modal__button--cancel {
+  width: 100px;
+  border: 1px solid $primary-color;
+  background-color: $element-color;
+  font-family: Mont, sans-serif;
+  color: $primary-color;
+}
+
+.modal__button--clear {
+  font-family: Mont, sans-serif;
+  border: 1px solid $primary-color;
+  background-color: $red-color;
+  color: $white-color;
+}

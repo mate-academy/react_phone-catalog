@@ -1,0 +1,111 @@
+  @import 'vars';
+
+  @mixin on-tablet {
+    @media (min-width: $tablet-min-width) {
+      @content;
+    }
+  }
+
+  @mixin on-desktop {
+    @media (min-width: $desktop-min-width) {
+      @content;
+    }
+  }
+
+  @mixin on-desktop-wide {
+    @media (min-width: $desktop-wide-min-width) {
+      @content;
+    }
+  }
+
+  @mixin content-padding-inline() {
+    padding-inline: 16px;
+
+    @include on-tablet {
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      padding-inline: calc((100vw - 1136px) / 2);
+    }
+  }
+
+  @mixin button() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $icon-color;
+    background-color: $white-color;
+    color: $primary-color;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+
+  @mixin black-button {
+    @include button;
+
+    background-color: $primary-color;
+    color: $white-color;
+    border: none;
+
+    &:hover {
+      box-shadow: 0 3px 13px $shadow-color;
+    }
+  }
+
+  @mixin button-selected {
+    @include button;
+
+    color: $green-color;
+  }
+
+  .inlineContainer {
+    @include content-padding-inline;
+  }
+
+  .componentContainer {
+    margin-top: 56px;
+
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-desktop {
+      margin-top: 80px;
+    }
+  }
+
+  .gridContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(24, 32px);
+    }
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  @mixin small-text {
+    font-weight: semiBold;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0;
+  }
+
+  @mixin body-text {
+    color: $secondary-color;
+    font-weight: regular;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+  }
