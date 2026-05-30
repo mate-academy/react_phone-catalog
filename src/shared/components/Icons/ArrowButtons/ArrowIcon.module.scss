@@ -1,0 +1,24 @@
+@import '../../../styles/variables.module';
+
+.arrow-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $icon-color;
+
+  svg {
+    fill: $primary-color;
+  }
+
+  &:hover {
+    border-color: $primary-color;
+  }
+
+  &:disabled {
+    border-color: $elements-color;
+
+    svg {
+      fill: $icon-color;
+    }
+  }
+}

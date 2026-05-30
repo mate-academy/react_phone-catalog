@@ -1,0 +1,39 @@
+@import '../../../shared/styles/mixins';
+@import '../../../shared/styles/variables.module';
+
+.BackToTop {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  font-weight: 600;
+  color: $secondary-color;
+  &:hover
+   {
+    color: $primary-color;
+  }
+  &:hover span {
+    border-color: $primary-color;
+  }
+
+  @include on-mobile {
+    margin-inline: auto;
+  }
+
+}
+
+.icon {
+  display: block;
+
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $elements-color;
+
+  background-image: url(/public/img/icons/Arrow_Top.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+
+  transition: border 0.3s ease;
+}

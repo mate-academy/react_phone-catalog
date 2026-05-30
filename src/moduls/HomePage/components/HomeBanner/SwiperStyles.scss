@@ -1,0 +1,28 @@
+@import '../../../../shared/styles/variables.module';
+
+.custom-pagination {
+  display: flex;
+  grid-column: 1/-1;
+  grid-row: 2;
+  gap: 14px;
+  justify-content: center;
+
+  padding-block: 10px;
+}
+
+.swiper-pagination-bullet {
+  width: 14px;
+  height: 4px;
+  margin: 0 !important;
+  border-radius: 0;
+
+  opacity: 1;
+  background-color: $elements-color;
+
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $primary-color;
+}
+

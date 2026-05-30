@@ -1,0 +1,32 @@
+@import '../../styles/variables.module';
+
+.primary_Button {
+  box-sizing: border-box;
+  height: 40px;
+
+  line-height: 40px;
+  text-align: center;
+
+  background-color: $primary-color;
+
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 2px 5px rgba($primary-color, 0.7);
+  }
+
+  &__selected {
+    cursor: default;
+
+    box-sizing: border-box;
+    border: 1px solid $elements-color;
+
+    color: $green;
+
+    background-color: $white;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}

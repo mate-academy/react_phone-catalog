@@ -1,1 +1,125 @@
-// not empty
+@import './shared/styles/variables.module';
+@import './shared/styles/mixins';
+
+@font-face {
+  font-family: Mont;
+  font-weight: 400;
+  font-style: normal;
+  src: url(/fonts/Mont-Regular.otf) format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 600;
+  src: url(/fonts/Mont-SemiBold.otf) format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 700;
+  font-style: normal;
+  src: url(/fonts/Mont-Bold.otf) format('opentype');
+}
+
+
+html, body {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+
+  background-color: #fff;
+
+  &:has(.menu__open) {
+    overflow: hidden;
+  }
+}
+
+.App {
+  display: flex;
+
+  // height: 100%;
+  flex-direction: column;
+  min-height: 100vh;
+
+  // overflow: hidden;
+
+  // &:has(.menu__open) {
+  //   overflow: hidden;
+  // }
+}
+
+.menu__open {
+    pointer-events: all !important;
+  top: 0 !important;
+    opacity: 1 !important;
+}
+
+a {
+  font-family: Mont, sans-serif;
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  color: $primary-color;
+
+  @include on-mobile {
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+
+  // line-height: 128%;
+  color: $primary-color;
+
+  @include on-mobile {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+h3 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+
+  // line-height: 128%;
+  color: $primary-color;
+
+  @include on-mobile {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+  }
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+  color: $primary-color;
+
+  @include on-mobile {
+    font-size: 16px;
+  }
+}
+
+.button_text {
+  font-size: 14px;
+  font-weight: 600;
+  color: $white;
+
+}

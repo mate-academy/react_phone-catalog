@@ -1,0 +1,50 @@
+@import '../../shared/styles/variables.module';
+@import '../../shared/styles/mixins';
+
+.category {
+  padding-top: 24px;
+  padding-bottom: 80px;
+
+  &__top {
+    margin-bottom: 40px;
+
+    p {
+      font-size: 14px;
+      color: $secondary-color;
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__breads {
+    margin-bottom: 40px;
+  }
+}
+
+.itemsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 0.25fr ));
+  gap: 16px;
+  row-gap: 40px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 0.33fr));
+  }
+
+  @include on-tablet-less {
+    grid-template-columns: repeat(auto-fit, minmax(272px, 0.5fr));
+  }
+
+  @include on-mobile {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  }
+}
+
+.empty {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+}

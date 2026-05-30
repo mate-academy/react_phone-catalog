@@ -1,0 +1,96 @@
+@import '../../shared/styles/variables.module';
+@import '../../shared/styles/mixins';
+
+.cartItem {
+  display: flex;
+
+  // gap: 24px;
+  align-items: center;
+
+  box-sizing: border-box;
+  padding: 24px;
+  border: 1px solid $elements-color;
+
+  @include on-mobile {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__top {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+
+    @include on-mobile {
+      gap: 16px;
+      width: 100%;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    gap: 24px;
+    margin-left: auto;
+
+    @include on-mobile {
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+
+  svg {
+    fill: $icon-color;
+  }
+
+  &__img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  &__name {
+    flex-grow: 1;
+    font-size: 14px;
+  }
+
+  &__quantity {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  &__amount {
+    // margin-left: 30px;
+    width: 80px;
+    text-align: right;
+  }
+}
+
+.button {
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $icon-color;
+
+  transition: border 0.3s ease;
+  &:hover {
+    border-color: $primary-color;
+  }
+
+
+  svg {
+    fill: $primary-color;
+  }
+
+  &:disabled {
+    border-color: $elements-color;
+    svg {
+      fill: $icon-color;
+    }
+  }
+}

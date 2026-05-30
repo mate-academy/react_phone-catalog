@@ -1,0 +1,22 @@
+@import '../../styles/variables.module';
+
+.goBackButton {
+  display: flex;
+  gap: 4px;
+  align-items: self-end;
+
+  width: 66px;
+  margin-bottom: 16px;
+
+  font-weight: 600;
+  line-height: 1;
+  color: $secondary-color;
+
+  svg {
+    fill: $primary-color;
+  }
+
+  &:hover {
+    color: $primary-color;
+  }
+}
