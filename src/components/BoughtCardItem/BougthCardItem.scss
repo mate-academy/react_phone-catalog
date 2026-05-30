@@ -1,0 +1,123 @@
+@import '../../utils/core';
+
+.bought {
+  margin-bottom: 17px;
+
+  &__image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 21px;
+
+    @include themy($themes) {
+      color: themed('colorText');
+    }
+
+    @include on-tablet {
+      font-size: 14px;
+    }
+  }
+
+  &__num {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include themy($themes) {
+      color: themed('colorText');
+    }
+  }
+}
+
+.bought__button {
+  display: flex;
+  margin-left: 4px;
+  cursor: pointer; // 8/11
+}
+
+.deleteIcon {
+  height: 16px;
+  width: 16px;
+  cursor: pointer;
+}
+
+.bought__item {
+  display: flex;
+  background-color: $color-surf-1;
+  align-items: center;
+  border: 1px solid $color-surf-1;
+  padding: 8px;
+  justify-content: space-between;
+
+  @include themy($themes) {
+    background: themed('colorCart');
+  }
+
+  @include on-desktop {
+    display: flex;
+    padding: 24px;
+  }
+
+  @include on-desktop {
+    display: flex;
+    padding: 24px;
+  }
+}
+
+.bought__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  width: 256px;
+
+  @include on-tablet {
+    width: 344px;
+    gap: 24px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 0;
+    width: 480px;
+    gap: 24px;
+  }
+}
+
+.bought__wrapper2 {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 256px;
+
+  @include on-tablet {
+    width: 200px;
+  }
+
+  @include on-desktop {
+    gap: 24px;
+    width: 200px;
+  }
+}
+
+.bought__price {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 70px;
+
+  @include themy($themes) {
+    color: themed('colorText');
+  }
+
+  @include on-tablet {
+    font-size: 22px;
+  }
+}

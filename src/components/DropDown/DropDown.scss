@@ -1,0 +1,50 @@
+@import '../../utils/core';
+
+.Dropdown-control {
+  background-color: $color-surf-2;
+  border: 1px solid $color-surf-2;
+  width: 136px;
+  height: 40px;
+  color: $color-white;
+  cursor: pointer;
+
+  &:active {
+    border: 1px solid black;
+  }
+
+  @include on-tablet {
+    width: 187px;
+  }
+
+  @include on-desktop {
+    width: 176px;
+  }
+}
+
+.Dropdown-menu {
+  background-color: $color-surf-2;
+  border: 1px solid $color-surf-2;
+  width: 136px;
+  color: $color-white;
+
+  &:active {
+    border: 1px solid black;
+  }
+
+  @include on-tablet {
+    width: 187px;
+  }
+
+  @include on-desktop {
+    width: 176px;
+  }
+}
+
+.Dropdown-option {
+  color: $color-white;
+}
+
+.Dropdown-option.is-selected {
+  background-color: $color-surf-2;
+  color: $color-white;
+}

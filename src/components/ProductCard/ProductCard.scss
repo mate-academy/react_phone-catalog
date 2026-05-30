@@ -1,0 +1,52 @@
+@import '../../utils/core';
+
+.product {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &__cards {
+    display: flex;
+    padding-top: 50px;
+    justify-content: flex-start;
+    gap: 16px;
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+
+    @include on-desktop {
+      justify-content: center;
+    }
+  }
+
+  &__titleButton {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.prevBtn, .nextBtn {
+  font-family: Mont-Bold, sans-serif;
+  background-color: transparent;
+  border: 1px solid $color-elem-text;
+  color: $color-accent;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-surf-2;
+    border: 1px solid $color-surf-2;
+    color: $color-white;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}

@@ -1,0 +1,69 @@
+@import '../../utils/core';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  gap: 16px;
+  padding-top: 50px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  &__image {
+    width: 288px;
+    height: 288px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+
+    @include on-tablet {
+      width: 187px;
+      height: 187px;
+    }
+
+    @include on-desktop {
+      width: 368px;
+      height: 368px;
+    }
+
+    &:hover {
+      box-shadow: 1px 0 0.4em  rgb(14, 78, 243);
+      transform: translateY(-3px);
+      border-image: initial;
+    }
+  }
+
+  &__title {
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+    margin: 24px 0 0;
+
+    @include themy($themes) {
+      color: themed('colorText');
+    }
+  }
+
+  &__description {
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    margin: 4px 0 0;
+    color: $color-second-title;
+
+    @include themy($themes) {
+      color: themed('colorText');
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $color-white;
+  }
+}
