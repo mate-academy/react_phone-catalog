@@ -1,0 +1,115 @@
+@font-face {
+  font-family: Mont-Bold;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont-Regular;
+  src: url('../../../public/fonts/Mont-Regular.otf');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url('../../../public/fonts/Mont-SemiBold.otf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+.menu {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 72px;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background-color: white;
+  position: fixed;
+
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    &--item {
+      text-decoration: none;
+      width: fit-content;
+      height: 27px;
+      line-height: 27px;
+      position: relative;
+
+      font-family: Mont-Bold, sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 4%;
+      text-transform: uppercase;
+      color: #89939A;
+    }
+  }
+
+  &__trinkets {
+    display: flex;
+    height: 64px;
+    border-top: 1px solid lightgrey;
+
+    &--heart {
+      background-image: url('../../../public/img/heart.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      border-right: 1px solid lightgrey;
+
+      width: 50%;
+      height: 100%;
+    }
+
+    &--basket {
+      background-image: url('../../../public/img/basket.png');
+      background-repeat: no-repeat;
+      background-position: center;
+
+      width: 50%;
+      height: 100%;
+    }
+  }
+
+  &-open {
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 640px) {
+  .menu {
+    display: none;
+  }
+}
+
+.burger-active {
+  color: #313237;
+}
+
+.burger-active::after {
+  content: '';
+  background-color: #313237;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.heart-active {
+  background-image: url('../../../public/img/heart-red.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
