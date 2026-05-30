@@ -1,0 +1,53 @@
+@import '../../styles/main';
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include on-tablet {
+    @include page-container;
+
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+  }
+
+  &__title {
+    @include font-set($mobile-h1);
+    @include page-container;
+
+    margin-block: 24px;
+
+    @include on-tablet {
+      @include font-set($tablet-h1);
+
+      padding-inline: 0;
+      margin-block: 32px;
+    }
+
+    @include on-desktop {
+      margin-block: 56px;
+    }
+  }
+}
+
+.skeleton {
+  background-color: $elements;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 526px;
+  width: 100%;
+
+  @include on-tablet {
+      height: 577px;
+      width: 100%;
+  }
+
+  @include on-desktop {
+    height: 571px;
+    width: 100%;
+  }
+}
