@@ -1,0 +1,133 @@
+.cart {
+  align-items: start;
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
+}
+
+.title {
+  margin-bottom: 24px;
+}
+
+.cart-item {
+  width: 752px;
+  height: 128px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #E2E6E9;
+  padding: 24px;
+  gap: 24px;
+  margin-bottom: 24px;
+
+  &__button-close {
+    border: none;
+    background: none;
+  }
+
+  &__img {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 80px;
+    width: 80px;
+  }
+
+  &__photo {
+    height: 80px;
+  }
+  
+  &__name {
+    width: 295px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: left;
+    color: #313237;
+  }
+
+  &__control {
+    display: flex;
+    flex-direction: row;
+    width: 96px;
+    height: 32px;
+  }
+
+  &__button-control {
+    border: 1px solid #E2E6E9;
+    color: #E2E6E9;
+    width: 32px;
+    background: none;
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  &__button-control--active {
+    border: 1px solid #B4BDC3;
+    color: #313237;
+  }
+
+  &__sign {
+    display: block;
+    width: 16px;
+  }
+
+  &__count {
+    width: 32px;
+    text-align: center;
+    align-self: center;
+    
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: center;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 30.8px;
+    text-align: left;
+    color: #313237;
+  }
+}
+
+.cart-quantity {
+  height: 206px;
+  text-align: center;
+  padding: 24px;
+  border: 1px solid #E2E6E9;
+
+  &__total-price {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40.9px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: #313237;
+  }
+
+  &__total-items {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: center;
+    color: #89939A;
+    margin-bottom: 24px;
+  }
+
+  &__hr {
+    border: 1px solid #E2E6E9;
+    margin-bottom: 24px;
+  }
+
+  &__checkout {
+    width: 320px;
+    height: 48px;
+    background: #313237;
+    color: #FFFFFF;
+  }
+}

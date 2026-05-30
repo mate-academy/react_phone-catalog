@@ -1,0 +1,124 @@
+.container {
+  width: 1136px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.bloc {
+  margin-bottom: 80px;
+  width: 100%;
+}
+
+.category {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    width: 100%;
+  }
+
+  &__card {
+    text-decoration: none;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__photo {
+    position: relative;
+    width: 368px;
+    height: 368px;
+    overflow: hidden;
+    margin-bottom: 24px;
+
+    &--phones {
+      background: #FCDBC1;
+    }
+
+    &--tablets {
+      background: #8D8D92;
+    }
+
+    &--accessories {
+      background: #973D5F;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: 20px;
+    right: -75px;
+    width: 386px; 
+
+    &--acces {
+      top: 70px;
+      right: -300px;
+      width: 650px;
+    }
+  }
+
+  &__name {
+    font-size: 20px;
+    line-height: 26px;
+    color: #313237;
+        }
+    
+    &__amount {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      color: #89939A;
+    }
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1136px;
+  gap: 16px;
+  height: 400px;
+
+  &__box {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+  }
+}
+
+.slide {
+  position: absolute;
+  width: 1040px;
+}
+
+.slide-hidden {
+  display: none;
+}
+
+.arrow {
+  border: none;
+  background: none;
+}
+
+.indicators {
+  margin-bottom: 72px;
+  padding-top: 8px;
+}
+
+.indicator {
+  border: none;
+  background: none;
+  margin: 1px;
+}
+
+.hot-prices {
+  width: 100%;
+}
