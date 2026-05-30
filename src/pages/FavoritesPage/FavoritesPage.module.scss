@@ -1,0 +1,79 @@
+.favoritesPage {
+  padding-bottom: 80px;
+  margin-top: -12px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  font-size: 12px;
+  color: #89939A;
+
+  a {
+    color: #313237;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .homeIcon {
+    font-size: 20px;
+  }
+
+  .categoryLink {
+    text-transform: capitalize;
+    color: #89939A;
+  }
+}
+
+.title {
+  // Mobile first
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  color: #0F0F11;
+
+  // Tablet and up
+  @media (min-width: 640px) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  // Desktop and up
+  @media (min-width: 1200px) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.count {
+  font-size: 14px;
+  color: #89939a;
+  margin-bottom: 32px;
+}
+
+.emptyMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  text-align: left;
+  padding: 32px 0;
+  min-height: 400px;
+  gap: 16px;
+
+  h2 {
+    font-size: 26px;
+    color: #313237;
+  }
+
+  p {
+    color: #89939a;
+  }
+}

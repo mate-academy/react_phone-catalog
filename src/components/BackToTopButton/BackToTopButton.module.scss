@@ -1,0 +1,42 @@
+.backToTopButton {
+  position: fixed;
+  bottom: 40px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  background-color: #216CFF;
+  border: 1px solid #e2e6e9;
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+
+  // Escondido por padrão
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+
+  &:hover {
+    background-color: #fff;
+    border-color: #216CFF;
+    color: #216CFF; // A seta agora ficará azul no hover
+    transition: all 0.3s; // Mantém a transição suave
+  }
+
+  // Classe para mostrar o botão
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.arrowIcon {
+  width: 24px;
+  height: 24px;
+}
