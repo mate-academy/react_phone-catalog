@@ -1,0 +1,58 @@
+@font-face {
+  font-family: SemiFont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: SmallFont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+}
+
+.line {
+  width: 100%;
+  background-color: rgba(226, 230, 233, 1);
+  height: 1px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.aboutSectionTitle {
+  color: rgba(49, 50, 55, 1);
+  font-size: 16px;
+  margin-bottom: 16px;
+  font-family: SemiFont, sans-serif; /* ✅ */
+}
+
+.aboutSectionText {
+  margin-bottom: 32px;
+  color: rgba(137, 147, 154, 1);
+  font-size: 14px;
+  font-family: SmallFont, sans-serif; /* ✅ */
+}
+
+.techTitle {
+  color: rgba(49, 50, 55, 1);
+  font-size: 20px;
+  font-family: SemiFont, sans-serif; /* ✅ додано font-family */
+}
+
+.aboutHere {
+  @media (min-width: 1200px) {
+    width: 560px;
+    height: 631px;
+  }
+}
+
+.techContainer {
+  @media (min-width: 1200px) {
+    height: 296px;
+    width: 512px;
+  }
+}
+
+.aboutContainer {
+  @media (min-width: 1200px) {
+    display: flex;
+    justify-content: space-between;
+  }
+}

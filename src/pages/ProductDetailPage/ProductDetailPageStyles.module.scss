@@ -1,0 +1,78 @@
+@font-face {
+  font-family: SmallFont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+}
+
+.whereIAm {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  align-items: center;
+}
+
+.phonesRight {
+  color: rgba(180, 189, 195, 1);
+}
+
+.phonesText {
+  color: rgba(180, 189, 195, 1);
+  font-size: 12px;
+  font-family: SmallFont, sans-serif;
+}
+
+.CategoryText {
+  font-size: 12px;
+  font-family: SmallFont, sans-serif;
+  color: rgba(49, 50, 55, 1);
+  text-decoration: none;
+}
+
+.backToCat {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.categoryRight {
+  margin-right: 8px;
+  color: rgba(49, 50, 55, 1);
+}
+
+.categoryBack {
+  color: rgba(137, 147, 154, 1);
+  font-size: 12px;
+  font-family: SmallFont, sans-serif;
+
+  &:hover {
+    color: rgba(49, 50, 55, 1);
+  }
+}
+
+.nameText {
+  font-size: 22px;
+  color: rgba(49, 50, 55, 1);
+  margin-top: 16px;
+
+  @media (min-width: 640px) {
+    font-size: 32px;
+  }
+}
+
+.productContainer {
+  @media (min-width: 640px) {
+    justify-content: flex-start;
+    display: flex;
+  }
+}
+
+.productRight {
+  @media (min-width: 640px) {
+    width: 237px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 320px;
+  }
+}
