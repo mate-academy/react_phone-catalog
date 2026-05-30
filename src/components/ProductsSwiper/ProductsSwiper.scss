@@ -1,0 +1,50 @@
+@import '/src/utils/variables';
+@import '/src/utils/mixins';
+
+.swiper {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  z-index: 0;
+
+  &-wrapper {
+    display: flex;
+    align-items: stretch;
+  }
+
+  &-slide {
+    width: 272px; 
+    height: 506px;
+    flex-shrink: 0; 
+    display: flex;
+    box-sizing: border-box;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 100%;
+  }
+
+  &__topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+    color: var(--color-gray-primary);
+    @include adaptiv-value(font-size, 22, 32, 1);
+    @include adaptiv-value(width, 136, 800, 1);
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+}

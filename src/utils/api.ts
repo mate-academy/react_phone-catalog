@@ -1,0 +1,25 @@
+import { ProductName } from '../types/prodName';
+import { Product } from '../types/Product';
+import { ProductDetails } from '../types/ProductDetails';
+
+async function fetchProducts<T>(url: string): Promise<T> {
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    const errorData = await response.json();
+
+    throw new Error(
+      `Error: ${response.statusText} - ${errorData.message || 'Unknown error'}`,
+    );
+  }
+
+  return response.json();
+}
+
+export function getAllProducts(): Promise<Product[]> {
+  return fetchProducts<Product[]>('./api/products.json');
+}
+
+export function getProductsDetails(type: ProductName): Promise<ProductDetails[]> {
+  return fetchProducts<ProductDetails[]>(`./api/${type}.json`);
+}

@@ -1,0 +1,42 @@
+@import '../../utils/variables';
+@import '../../utils/mixins';
+
+.price {
+    flex: 0 0 auto;
+    display: inline;
+    width: 100%;
+    font-weight: 800;
+    line-height: 140%;
+    margin-bottom: 8px;
+    color: var(--color-gray-primary);
+
+    &--old {
+      padding-left: 8px;
+      font-weight: 500;
+      line-height: 100%;
+      color: var(--color-gray-secondary);
+      text-decoration: line-through;
+    }
+
+    &-block {
+      &--s {
+        .price {
+          font-size: 22px;
+        }
+
+        .price--old {
+          font-size: 18px;
+        }
+      }
+
+      &--m {
+        .price {
+          font-size: 32px;
+        }
+
+        .price--old {
+          font-size: 22px;
+        }
+      }
+    }
+  }

@@ -1,0 +1,36 @@
+$maxWidth: 1920;
+$phoneMinWidth: 320;
+$maxWidthContainer: 1136;
+$desktop-min-width: 1200px;
+$tablet-min-width: 640px;
+$phone-min-width: 320px;
+$header-height--desktop: 64px;
+$header-height--phone: 48px;
+
+body {
+  --color-accent: #F86800;
+  --color-secondary-accent: #f20c0c;
+  --color-gray-primary: #0F0F11;
+  --color-gray-secondary: #89939A;
+  --color-gray-icons-placeholders: #B4BDC3;
+  --color-gray-elements: #E2E6E9;
+  --color-gray-background: #FAFBFC;
+  --color-gray-white: #FFF;
+  --color-modal-dialog: #FAFBFC;
+  --color-quantity: #eee;
+  --color-search-text: #E2E6E9;
+}
+
+body.theme-dark {
+  --color-accent: #df6610f4;
+  --color-secondary-accent: #878787;
+  --color-gray-primary: #e8e8e8;
+  --color-gray-secondary: #737373;
+  --color-gray-icons-placeholders: #383838;
+  --color-gray-elements: #292929;
+  --color-gray-background: #1c1c1c;
+  --color-gray-white: #262626;
+  --color-modal-dialog: #FAFBFC;
+  --color-quantity: #eee;
+  --color-search-text: #3b3b3b;
+}
