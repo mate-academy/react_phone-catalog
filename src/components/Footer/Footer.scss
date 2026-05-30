@@ -1,0 +1,43 @@
+.footer {
+  font-family: Mont, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-top: 1px solid #e2e6e9;
+  margin-top: 150px;
+  &__content {
+    margin: 0 auto;
+    width: 100%;
+    height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__items {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 100px;
+    align-items: center;
+
+    &__item {
+      text-decoration: none;
+      color: gray;
+    }
+  }
+  &__back{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &__text{
+      display: flex;
+      align-items: center;
+      color: gray;
+      text-decoration: none;
+      gap: 8px;
+    }
+  }
+}

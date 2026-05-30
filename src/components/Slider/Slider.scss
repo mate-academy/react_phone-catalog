@@ -1,0 +1,43 @@
+.slider {
+  position: relative;
+  max-width: 1136px;
+  height: 400px;
+  margin: 0 auto;
+
+  &__window {
+    overflow: hidden;
+    height: 100%;
+    border-radius: 16px;
+  }
+
+  &__track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease;
+  }
+
+  &__image {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 67%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 400px;
+    background: white;
+    border: 1px solid #b4bdc3;
+    cursor: pointer;
+
+    &--left {
+      left: -48px;
+    }
+
+    &--right {
+      right: -48px;
+    }
+  }
+}

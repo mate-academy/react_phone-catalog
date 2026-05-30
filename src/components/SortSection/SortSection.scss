@@ -1,0 +1,46 @@
+body{
+  font-family: Mont, Arial, sans-serif;
+
+}
+
+.sort-section{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+  &__models{
+    color: #89939A;
+  }
+  &__filters{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+gap: 16px;
+    &__filter{
+      display: flex;
+      flex-direction: column;
+gap: 8px;
+      &__label{
+        font-family: Mont, Arial, sans-serif;
+
+        color: #89939A;
+        font-weight: 700;
+        font-size: 12px;
+        leading-trim: NONE;
+        line-height: 100%;
+        letter-spacing: 0%;
+
+      }
+      &__select{
+        width: 128px;
+        height: 40px;
+        top: 19px;
+        border: 1px solid #b4bdc3;
+
+        font-size: 14px;
+        font-family: inherit;
+        background-color: #fff;
+        cursor: pointer;
+      }
+    }
+  }
+}

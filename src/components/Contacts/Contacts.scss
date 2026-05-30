@@ -1,0 +1,67 @@
+.contacts {
+  padding: 40px 0;
+  text-align: center;
+
+  &__title {
+    font-size: 48px;
+    margin-bottom: 40px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center; // Центруємо одну картку
+    padding: 20px;
+  }
+}
+
+.developer-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+
+  &__image-container {
+    margin-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 250px;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    min-height: 60px; // Щоб текст не "стрибав"
+  }
+
+  &__github {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+
+    &-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover {
+      color: #EB5757; // Твій основний колір
+    }
+  }
+}

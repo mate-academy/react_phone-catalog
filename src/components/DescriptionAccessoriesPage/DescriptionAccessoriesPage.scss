@@ -1,0 +1,391 @@
+.description-accessories-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @media (min-width: 640px) {
+    padding: 0 32px;
+  }
+
+  &__back-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 24px 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &__icon {
+      display: flex;
+      align-items: center;
+      width: 8px;
+      height: 8px;
+    }
+
+    &__text {
+      font-family: Mont, Arial, sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      color: #89939a;
+      transition: color 0.3s;
+    }
+
+    &:hover {
+      .description-accessories-page__back-button__text {
+        color: #313237;
+      }
+    }
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+
+    @media (max-width: 639px) {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    &__specs {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      &__spec {
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0;
+
+        &__name {
+          font-family: Mont, Arial, sans-serif;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 100%;
+          color: #89939A;
+        }
+
+        &__value {
+          font-family: Mont, Arial, sans-serif;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 100%;
+          text-align: right;
+        }
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+
+      &__fav {
+        width: 40px;
+        height: 40px;
+        border: 1px solid #b4bdc3;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: border-color 0.2s;
+
+        &__icon {
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+      &__add-to {
+        flex: 1;
+        height: 40px;
+        background-color: #313237;
+        color: #fff;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 0;
+        transition: all 0.2s ease;
+
+        &--active {
+          background-color: white;
+          color: #27ae60; // Гарний зелений колір
+          border: 1px solid #b4bdc3;
+        }
+      }
+    }
+
+    &__price {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      align-items: center;
+
+      &__full {
+        color: #89939A;
+        font-family: Mont, Arial, sans-serif;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 100%;
+        text-decoration: line-through;
+      }
+
+      &__discount {
+        font-size: 32px;
+        font-family: Mont, Arial, sans-serif;
+        font-weight: 800;
+        line-height: 140%;
+        color: #313237;
+      }
+    }
+
+    &__gallery {
+      display: flex;
+      gap: 36px;
+      justify-content: center;
+
+      @media (max-width: 640px) {
+        flex-direction: column-reverse;
+      }
+
+      &__thumbs {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        @media (max-width: 640px) {
+          flex-direction: row;
+          justify-content: center;
+        }
+
+        img {
+          width: 80px;
+          height: 80px;
+          object-fit: contain;
+          cursor: pointer;
+          border: 1px solid transparent;
+
+          @media (max-width: 1199px) {
+            width: 30px;
+            height: 30px;
+          }
+
+          @media (max-width: 640px) {
+            width: 50px;
+            height: 50px;
+          }
+
+          &.active {
+            border: 1px solid #313237;
+          }
+        }
+      }
+
+      &__main {
+        display: flex;
+        width: 100%;
+        height: 464px;
+        justify-content: center;
+        align-items: center;
+
+        @media (max-width: 1199px) {
+          max-width: 287px;
+          height: auto;
+          aspect-ratio: 1 / 1;
+          margin: 0 auto;
+        }
+
+        img {
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+
+    &__capacity {
+      &__text {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 100%;
+        color: #B4BDC3;
+        margin-bottom: 8px;
+      }
+
+      &__buttons {
+        gap: 8px;
+        display: flex;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #E2E6E9;
+
+        &__button {
+          background-color: white;
+          border: 1px solid #B4BDC3;
+          height: 32px;
+          width: 64px;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 21px;
+          text-align: center;
+          color: #313237;
+          cursor: pointer;
+          transition: all 0.2s ease;
+
+          /* Стиль активної пам'яті */
+          &.active {
+            background-color: #313237;
+            color: #ffffff;
+            border-color: #313237;
+          }
+        }
+      }
+    }
+
+    &__options {
+      display: flex;
+      gap: 16px;
+      flex-direction: column;
+
+      &__texts {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-right: 30px;
+
+        &__text {
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 100%;
+          color: #B4BDC3;
+        }
+      }
+
+      &__colors {
+        display: flex;
+        gap: 10px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #E2E6E9;
+      }
+
+      &__button {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid #e2e6e9; // стандартна тонка рамка
+        cursor: pointer;
+        padding: 0;
+        transition: all 0.2s ease-in-out;
+        position: relative;
+        background-clip: content-box;
+
+        /* Стиль активного кольору (кільце) */
+        &.active-color {
+          border-color: transparent;
+          box-shadow: 0 0 0 1px #fff, 0 0 0 2px #313237;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+
+    @media (max-width: 1199px) {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    &__tech {
+      display: flex;
+      flex-direction: column;
+
+      &__section-title {
+        font-family: Mont, Arial, sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 140%;
+        color: #313237;
+        margin-bottom: 16px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #E2E6E9;
+      }
+
+      &__lists {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        &__list {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+
+          &__label {
+            font-family: Mont, Arial, sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 21px;
+            color: #89939A;
+          }
+
+          &__value {
+            font-family: Mont, Arial, sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 21px;
+            color: #313237;
+            text-align: right;
+          }
+        }
+      }
+    }
+
+    &__about {
+      &__section-title {
+        font-family: Mont, Arial, sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 140%;
+        color: #313237;
+        margin-bottom: 16px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #E2E6E9;
+      }
+
+      &__section {
+        margin-bottom: 32px;
+
+        &__subtitle {
+          font-family: Mont, Arial, sans-serif;
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 140%;
+          margin-bottom: 16px;
+          color: #313237;
+        }
+
+        &__text {
+          font-family: Mont, Arial, sans-serif;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 26px;
+          color: #89939A;
+          margin-bottom: 16px;
+        }
+      }
+    }
+  }
+}

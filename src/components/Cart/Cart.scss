@@ -1,0 +1,182 @@
+.cart-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px;
+
+  &__title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    color: #313237;
+  }
+
+  &__cart-empty {
+    padding: 40px;
+    text-align: center;
+    &__photo {
+      max-width: 300px;
+      margin-top: 24px;
+    }
+  }
+
+  // Головний контейнер: ділить екран на дві колонки
+  &__cart-container {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+
+    @media (max-width: 900px) {
+      flex-direction: column;
+    }
+
+    // ЛІВА КОЛОНКА: Список товарів
+    &__cart-list {
+      flex: 1; // Займає весь вільний простір зліва
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      // Окрема картка
+      &__cart-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px;
+        border: 1px solid #E2E6E9;
+        background: #fff;
+        gap: 16px;
+
+        &__remove {
+          background: none;
+          border: none;
+          font-size: 24px;
+          color: #B4BDC3;
+          cursor: pointer;
+          transition: 0.2s;
+          &:hover { color: #313237; }
+        }
+
+        &__info {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          flex: 1;
+        }
+
+        &__img {
+          width: 64px;
+          height: 64px;
+          object-fit: contain;
+        }
+
+        &__name {
+          font-size: 14px;
+          font-weight: 500;
+          color: #313237;
+          max-width: 200px;
+          line-height: 1.4;
+        }
+
+        // Блок з кнопками кількості та ціною
+        &__actions {
+          display: flex;
+          align-items: center;
+          gap: 32px; // Відстань між +- та ціною
+
+          &__quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            button {
+              width: 32px;
+              height: 32px;
+              border: 1px solid #E2E6E9;
+              background: #fff;
+              cursor: pointer;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 18px;
+              transition: 0.2s;
+
+              &:disabled { opacity: 0.3; cursor: not-allowed; }
+              &:hover:not(:disabled) { border-color: #313237; }
+            }
+
+            span {
+              font-size: 16px;
+              min-width: 16px;
+              text-align: center;
+              color: #313237;
+            }
+          }
+        }
+
+        // ✅ Стиль для ціни, щоб вона не вилазила
+        &__price {
+          font-size: 22px;
+          font-weight: 700;
+          color: #313237;
+          min-width: 80px;
+          text-align: right;
+        }
+      }
+    }
+
+    // ПРАВА КОЛОНКА: Блок оплати
+    &__checkout-section {
+      width: 320px;
+      padding: 24px;
+      border: 1px solid #E2E6E9;
+      background: #fff;
+      text-align: center;
+      position: sticky; // Щоб блок "їхав" за тобою при скролі (опціонально)
+      top: 24px;
+
+      &__total {
+        font-size: 32px;
+        margin-bottom: 8px;
+        color: #313237;
+      }
+
+      &__count {
+        font-size: 14px;
+        color: #89939A;
+      }
+
+      &__divider {
+        height: 1px;
+        background: #E2E6E9;
+        margin: 24px 0;
+      }
+
+      &__btn {
+        width: 100%;
+        height: 48px;
+        background: #313237;
+        color: #fff;
+        border: none;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover { background: #4a4c52; }
+      }
+    }
+  }
+}
+
+.back-button {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #89939A;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: 0.2s;
+  &:hover { color: #313237; }
+}

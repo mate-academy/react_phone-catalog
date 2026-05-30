@@ -1,0 +1,49 @@
+.brand-new {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    leading-trim: NONE;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+
+  &__header {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    gap: 16px; /* Замінив 8px на 16px для однакових відступів */
+    justify-content: center; /* Центруємо картки на мобільних пристроях */
+  }
+
+  &__arrows {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc3;
+    background-color: #fff;
+    display: flex; /* Додав flex для центрування вмісту */
+    align-items: center;
+    justify-content: center; /* Стрілочка буде ідеально по центру */
+    cursor: pointer;
+
+    img {
+      height: 16px;
+      width: 16px;
+    }
+  }
+}
