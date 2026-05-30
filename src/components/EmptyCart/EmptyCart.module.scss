@@ -1,0 +1,23 @@
+@use '../../styles/utils' as utils;
+
+.empty-cart {
+  grid-column: 1 / -1;
+
+
+  &__img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 550px;
+    height: 100%;
+  }
+
+  &__text {
+    text-align: center;
+    font-size: 16px;
+
+    @include utils.on-tablet {
+      font-size: 21px;
+    }
+  }
+}
