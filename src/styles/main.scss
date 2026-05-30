@@ -1,0 +1,14 @@
+@import './reset';
+@import './fonts';
+@import './vars';
+@import './mixins';
+@import './typography';
+@import './common';
+
+.page {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  scroll-behavior: smooth;
+  background-color: $page-bg-color;
+  color: $primary-color;
+}

@@ -1,0 +1,57 @@
+@import '@styles/main';
+
+.modal {
+  padding: 20px 30px;
+  width: fit-content;
+  border: 1px solid $icons-color;
+  border-radius: $border-radius;
+  color: $black-color;
+  background-color: $white-color;
+
+
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  align-items: center;
+
+  &__text {
+    @include body-text;
+
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+
+    &--accent {
+      font-weight: 800;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__btn {
+    @include buttons-text;
+
+    border-radius: $border-radius;
+    padding: 5px 10px;
+    cursor: pointer;
+
+    transition: color $hover-duration, opacity $hover-duration;
+
+    &:hover {
+      opacity: 0.8;
+      color: $white-color;
+    }
+
+    &--confirm {
+      background-color: $green-color;
+    }
+
+    &--cancel {
+      background-color: $red-color;
+    }
+  }
+}

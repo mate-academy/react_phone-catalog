@@ -1,0 +1,26 @@
+@import '@styles/main';
+
+.nav-btn {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: -1px 0 0 0 $elements-color;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: background-color $hover-duration ease-out;
+  position: relative;
+
+  &--square {
+    aspect-ratio: 1 / 1;
+  }
+
+  &__counter {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(100%, -100%);
+  }
+}

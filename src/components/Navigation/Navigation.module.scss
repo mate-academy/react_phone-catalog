@@ -1,0 +1,16 @@
+@import '@styles/main';
+
+.nav {
+  height: 100%;
+  color: $secondary-color;
+
+  &__list {
+    display: flex;
+    height: 100%;
+    gap: 64px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+}

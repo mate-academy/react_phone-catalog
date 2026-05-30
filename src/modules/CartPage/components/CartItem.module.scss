@@ -1,0 +1,107 @@
+@import '@styles/main';
+
+.cart-item {
+  border: 1px solid $elements-color;
+  border-radius: 16px;
+  background-color: $card-bg-color;
+  padding: 24px;
+
+  display: flex;
+  gap: 24px;
+
+  &--dark {
+    background-color: $card-bg-color;
+  }
+
+  @include on-mobile {
+    flex-direction: column;
+    gap: 16px;
+
+    padding: 16px;
+  }
+
+  &__left {
+    flex-grow: 1;
+
+    display: grid;
+    align-items: center;
+    column-gap: 24px;
+    grid-template-columns: auto auto 1fr;
+
+    @include on-mobile {
+      column-gap: 16px;
+    }
+  }
+
+  &__delete-btn {
+    cursor: pointer;
+
+    & path {
+      transition: fill $hover-duration;
+      fill: $icons-color;
+    }
+
+    &:hover path {
+      fill: $primary-color;
+    }
+  }
+
+  &__link {
+    display: flex;
+  }
+
+  &__title {
+    @include body-text;
+
+    cursor: pointer;
+    color: $primary-color;
+    transition: color $hover-duration;
+    flex-grow: 1;
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+
+  &__img {
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
+    cursor: pointer;
+
+    transition: transform $hover-duration;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__right {
+    display: grid;
+    align-items: center;
+    column-gap: 24px;
+    grid-template-columns: repeat(2, auto);
+
+    @include on-mobile {
+      column-gap: 16px;
+    }
+  }
+
+  &__btns {
+    width: 96px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    place-items: center;
+  }
+
+  &__price {
+    width: 80px;
+    text-align: right;
+    justify-self: end;
+
+    &::before {
+      content: "$";
+    }
+  }
+}
+

@@ -1,0 +1,14 @@
+@import '@styles/main';
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  transition:
+    color $hover-duration,
+    background-color $hover-duration ease-out;
+
+  @include uppercase;
+}

@@ -1,0 +1,30 @@
+@import '@styles/main';
+
+.favourites-page {
+  height: 100%;
+
+  @include content-limitation;
+
+  &__breadcrumbs {
+    margin-block: 24px 40px;
+
+    @include on-mobile {
+      margin-block: 24px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    margin-bottom: 40px;
+    color: $secondary-color;
+
+    @include body-text;
+
+    @include on-mobile {
+      margin-bottom: 32px;
+    }
+  }
+}

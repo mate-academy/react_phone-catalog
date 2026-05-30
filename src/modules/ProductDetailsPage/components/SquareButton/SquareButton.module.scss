@@ -1,0 +1,34 @@
+@import '@styles/main';
+
+.btn {
+  @include body-text;
+
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 32px;
+  padding-inline: 8px;
+  border: 1px solid $icons-color;
+  border-radius: 4px;
+  transition:
+    border-color $hover-duration,
+    color $hover-duration,
+    background-color $hover-duration;
+  box-sizing: border-box;
+  color: inherit;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+
+  &--active {
+    border-color: $primary-color;
+    background-color: $primary-color;
+    color: $white-color;
+  }
+
+  &--dark.btn--active {
+    color: $black-color;
+    background-color: $white-color;
+  }
+}

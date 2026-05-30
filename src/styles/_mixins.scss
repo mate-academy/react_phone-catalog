@@ -1,0 +1,132 @@
+@mixin uppercase {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+ }
+
+ @mixin buttons-text {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+ }
+
+ @mixin body-text {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+ }
+
+ @mixin small-text {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+ }
+
+
+ @mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+ }
+
+ @mixin on-tablet {
+  @media (max-width: ($desktop-min-width - 1px)) {
+    @content;
+  }
+ }
+
+ @mixin on-mobile {
+  @media (max-width: ($tablet-min-width - 1px)) {
+    @content;
+  }
+ }
+
+
+ @mixin content-limitation {
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+  padding-inline: $padding-inline--l;
+  margin-inline: auto;
+
+  @include on-tablet {
+    padding-inline: $padding-inline--m;
+  }
+
+  @include on-mobile {
+    padding-inline: $padding-inline--s;
+  }
+ }
+
+ @mixin page-grid {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-mobile {
+    grid-template-columns: repeat(4, 1fr);
+  }
+ }
+
+ @mixin circle-btn {
+  border-radius: 50%;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $icons-color;
+
+  transition:
+    background-color $hover-duration,
+    border-color $hover-duration;
+
+    &--light {
+      &:hover {
+        border-color: $primary-color;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        border-color: $elements-color;
+
+        & path {
+          fill: $icons-color;
+        }
+      }
+    }
+
+    &--dark {
+      border-color: transparent;
+      background-color: $elements-color;
+
+      &:hover {
+        background-color: $icons-color;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        border-color:  $elements-color;
+        background-color: transparent;
+      }
+
+      &:disabled path {
+        fill: $icons-color;
+      }
+    }
+ }

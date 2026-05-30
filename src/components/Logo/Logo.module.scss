@@ -1,0 +1,28 @@
+@import '@styles/main';
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  &:hover > img {
+    transform: scale(1.05);
+  }
+
+  &__img {
+    transition: transform $hover-duration ease-out;
+    width: 80px;
+    height: 28px;
+
+    @include on-tablet {
+      width: 64px;
+      height: 22px;
+    }
+
+    &--big {
+      width: 89px;
+      height: 32px;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@import '@styles/main';
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 16px;
+  color: $secondary-color;
+  cursor: pointer;
+  transition: color $hover-duration;
+
+  @include small-text;
+
+  &:hover {
+    color: $accent-color;
+  }
+}

@@ -1,0 +1,10 @@
+@import '@styles/main';
+
+.icon {
+  display: flex;
+
+  & path {
+    transition: fill $hover-duration;
+    fill: $primary-color;
+  }
+}
