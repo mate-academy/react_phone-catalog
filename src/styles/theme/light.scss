@@ -1,0 +1,24 @@
+@import '../utils';
+
+body.light-theme {
+  --green: #{$green};
+  --red: #{$red};
+  --primary: #{$light-primary};
+  --secondary: #{$light-secondary};
+  --white: #{$light-white};
+  --elements: #{$light-elements};
+  --hover-bg: #{$light-hover-bg};
+  --accent: #{$light-accent};
+  --secondary-accent: #{$light-secondary-accent};
+  --text-footer: #{$light-secondary};
+  --bg-header-footer: #{$light-white};
+  --link: #{$light-secondary};
+  --active-link: #{$light-primary};
+  --icon-primary: #{$light-primary};
+  --icon-secondary: #{$light-icons};
+  --round-btn-hover: #{$light-hover-bg};
+  --round-btn-hover-border: #{$light-primary};
+  --bg-secondary: #{$light-white};
+  --text-active: #{$light-white};
+  --search-img: url('../../assets/images/icons/search-light.svg');
+}

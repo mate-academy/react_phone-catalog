@@ -1,0 +1,27 @@
+@import '../../../../styles/utils';
+
+.pagination {
+  display: flex;
+  gap: 16px;
+
+  &__container {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__item {
+    width: 32px;
+    height: 32px;
+
+    &--next {
+      transform: rotate(90deg);
+    }
+    &--prev {
+      transform: rotate(-90deg);
+    }
+  }
+
+  &__dots {
+    align-self: end;
+  }
+}

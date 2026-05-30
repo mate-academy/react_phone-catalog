@@ -1,0 +1,22 @@
+@import '../../../../styles/utils';
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__navigation {
+    @include page-padding-inline;
+  }
+
+  &__actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid var(--elements);
+    height: 64px;
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+}
