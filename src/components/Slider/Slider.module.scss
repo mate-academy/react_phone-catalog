@@ -1,0 +1,64 @@
+.slider {
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-direction: column;
+  margin-inline: -16px;
+
+  &__content {
+    display: flex;
+
+    @include on-tablet {
+      @include grid(tablet);
+    }
+
+    @include on-desktop {
+      @include grid(desktop);
+    }
+  }
+
+  &__carouselWrapper {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+
+      aspect-ratio: auto;
+      height: 189px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__carousel {
+    display: flex;
+
+    height: 100%;
+    width: 100%;
+  }
+
+  &__slide {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    flex-shrink: 0;
+  }
+
+  
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 8px;
+  }
+
+  @include on-tablet {
+    margin-inline: 0;
+  }
+}
