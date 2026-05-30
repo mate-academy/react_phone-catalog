@@ -1,0 +1,231 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.cart {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @include mixin.flex(flex, false, false, column);
+
+  @include mixin.on-mobile {
+    min-height: calc(100vh - 49px - 256px);
+    padding: 24px 32px 32px;
+  }
+
+  @include mixin.on-tablet {
+    min-height: calc(100vh - 49px - 135px);
+    padding: 24px 32px 64px;
+  }
+
+  @include mixin.on-tablet-2 {
+    min-height: calc(100vh - 49px - 135px);
+    padding: 24px 32px 64px;
+  }
+
+  @include mixin.on-desktop {
+    min-height: calc(100vh - 65px - 135px);
+    padding: 24px 32px 64px;
+  }
+
+  &__content {
+    margin: 0 auto;
+    width: 100%;
+    gap: 20px;
+
+    @include mixin.flex(flex, false, false, column);
+
+    @include mixin.on-desktop {
+      @include mixin.flex(flex, false, false, row);
+    }
+  }
+
+  &__left {
+    flex: 2;
+  }
+
+  &__right {
+    flex: 1;
+    border: 1px solid var.$elements;
+    padding: 24px;
+    max-height: max-content;
+
+    @include mixin.flex(flex, center, center, column);
+  }
+
+  &__right-dark {
+    flex: 1;
+    border: 1px solid var.$dark-elements;
+    padding: 24px;
+    max-height: max-content;
+
+    @include mixin.flex(flex, center, center, column);
+  }
+
+  &__title {
+    color: var.$primary-gray;
+
+    @include mixin.on-mobile {
+      @include mixin.h1-mobile;
+
+      margin-bottom: 20px;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.h1-desktop-tablet;
+
+      margin-bottom: 24px;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.h1-desktop-tablet;
+
+      margin-bottom: 32px;
+    }
+  }
+
+  &__title-dark {
+    color: var.$dark-white;
+
+    @include mixin.on-mobile {
+      @include mixin.h1-mobile;
+
+      margin-bottom: 20px;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.h1-desktop-tablet;
+
+      margin-bottom: 24px;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.h1-desktop-tablet;
+
+      margin-bottom: 32px;
+    }
+  }
+
+  &__btn-back {
+    margin-bottom: 8px;
+  }
+
+  &__item {
+    @include mixin.responsive-property(margin-bottom, 8px, 12px, 16px);
+  }
+
+  &__total-price {
+    color: var.$primary-gray;
+
+    @include mixin.on-mobile {
+      @include mixin.h2-mobile;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.h2-desktop-tablet;
+    }
+  }
+
+  &__total-price-dark {
+    color: var.$dark-white;
+
+    @include mixin.on-mobile {
+      @include mixin.h2-mobile;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.h2-desktop-tablet;
+    }
+  }
+
+  &__total-text {
+    color: var.$secondary-gray;
+    margin-bottom: 16px;
+
+    @include mixin.body-text-desktop-tablet;
+  }
+
+  &__total-text-dark {
+    color: var.$dark-secondary-gray;
+    margin-bottom: 16px;
+
+    @include mixin.body-text-desktop-tablet;
+  }
+
+  &__line {
+    @include mixin.sizes(100%, 1px);
+
+    background-color: var.$elements;
+    margin-bottom: 16px;
+  }
+
+  &__line-dark {
+    @include mixin.sizes(100%, 1px);
+
+    background-color: var.$dark-elements;
+    margin-bottom: 16px;
+  }
+
+  &__button {
+    @include mixin.flex(flex, center, center, false);
+    @include mixin.sizes(100%, 48px);
+
+    background-color: var.$primary-gray;
+    cursor: pointer;
+    color: var.$white;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+
+  &__button-dark {
+    @include mixin.flex(flex, center, center, false);
+    @include mixin.sizes(100%, 48px);
+
+    background-color: var.$dark-accent;
+    cursor: pointer;
+    color: var.$dark-white;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+
+  &__empty {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+  }
+
+  &__text {
+    color: var.$red;
+    text-align: center;
+
+    @include mixin.on-mobile {
+      @include mixin.h3-mobile;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.h3-desktop-tablet;
+    }
+  }
+
+  &__img-empty {
+    object-fit: contain;
+
+    @include mixin.on-mobile {
+      width: 300px;
+      height: 300px;
+    }
+
+    @include mixin.on-desktop {
+      width: 500px;
+      height: 500px;
+    }
+  }
+}

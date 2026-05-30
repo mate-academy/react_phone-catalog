@@ -1,0 +1,24 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.product-list {
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+
+  @include mixin.on-mobile {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @include mixin.on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mixin.on-tablet-2 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include mixin.on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
