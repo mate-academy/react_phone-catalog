@@ -1,0 +1,22 @@
+@use "../../utils/mixins" as mix;
+
+.products {
+  &__card_container {
+    grid-column: span 4;
+    margin-bottom: 40px;
+
+    @include mix.on-tablette {
+      grid-column: span 6;
+    }
+  }
+
+  &__row {
+    @include mix.on-tablette {
+      grid-column: 7 / 13;
+    }
+
+    @include mix.on-desktop {
+      grid-column: 8 / 25;
+    }
+  }
+}
