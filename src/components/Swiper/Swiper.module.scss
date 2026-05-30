@@ -1,0 +1,118 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/theme/theme-dark.scss' as *;
+@use '../../styles/theme/theme-light.scss' as *;
+
+.navigationButton {
+  display: none;
+  width: 32px;
+  height: 320px;
+  border: 1px solid var(--swiper-button-border);
+  background-color: var(--swiper-button-bg);
+  cursor: pointer;
+
+  &:disabled {
+    border: 1px solid #000;
+    pointer-events: none;
+  }
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 189px;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}
+
+.swiperWrapper {
+  width: 100%;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.swiperContainer {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-tablet {
+    margin-bottom: 80px;
+  }
+}
+
+.swiper {
+  height: 320px !important;
+  width: 100%;
+  cursor: grab;
+
+  @include on-tablet {
+    height: 189px !important;
+  }
+
+  @include on-desktop {
+    height: 400px !important;
+  }
+
+  &Pagination {
+    display: flex;
+    justify-content: center;
+    column-gap: 14px;
+    margin-top: 14px;
+    bottom: 0;
+
+    &Bullet {
+      margin: 0 !important;
+      width: 14px;
+      height: 4px;
+      border-radius: 0;
+      background-color: var(--swiper-bullet);
+      transition: .3s;
+      cursor: pointer;
+
+      &Active {
+        background-color: var(--swiper-bullet-active);
+      }
+    }
+  }
+
+  &Item {
+    height: 100%;
+    color: #fff;
+    padding: 30px;
+    background: linear-gradient(to bottom right, #0096FF, #BB64FF, #F55273);
+  }
+
+  &Item3 {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    background: var(--swiper-item3-bg);
+    color: var(--swiper-item3-color);
+    font-weight: 600;
+
+    & span {
+      background: #1d1d1f;
+      background-clip: text;
+      -webkit-text-fill-color: rgba(0, 0, 0, 0);
+      background-image: linear-gradient(108deg,#0894FF,#C959DD 34%,#FF2E54 68%,#FF9004);
+    }
+
+    &Button {
+      background: #fff;
+      width: 200px;
+      color: #3c010d;
+      padding: 12px 22px;
+      border-radius: 22px;
+      font-weight: 600;
+    }
+  }
+}
+
+

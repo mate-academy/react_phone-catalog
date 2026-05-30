@@ -63,6 +63,7 @@ module.exports = {
     ],
     'implicit-arrow-linebreak:': 0,
 
+
     // React
     'react/prop-types': 0,
     'react/require-default-props': 0,
@@ -98,11 +99,27 @@ module.exports = {
         },
       },
     ],
+
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
+        optionalDependencies: false,
+        peerDependencies: false,
+      },
+    ],
   },
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'src/vite-env.d.ts', 'cypress'],
   settings: {
     react: {
       version: 'detect',
     },
+
+    'import/resolver': {
+      node: {
+        paths: ['node_modules'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
+      }
+    }
   },
 };
