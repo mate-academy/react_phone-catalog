@@ -1,0 +1,45 @@
+@import '../../../../shared/global/utils/mixins';
+@import '../../../../shared/global/globalStyles/globalStyles.scss';
+@import '../../../../shared/global/utils/vars';
+@import '../../../../shared/global/utils/fonts';
+
+.modalwin {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+
+  &__clsbutton {
+    display: flex;
+    justify-content: end;
+  }
+
+  &__content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    align-items: center;
+    background-color: $white;
+    color: $main-text-color;
+    text-align: center;
+    padding: 36px;
+    z-index: 11;
+    max-width: 80%;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__text {
+    @include body-text;
+    margin-bottom: 16px;
+  }
+}

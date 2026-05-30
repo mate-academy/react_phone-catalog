@@ -1,0 +1,29 @@
+@import '../../shared/global/utils/mixins';
+@import '../../shared/global/globalStyles/globalStyles.scss';
+@import '../../shared/global/utils/vars';
+@import '../../shared/global/utils/fonts';
+
+.secondaryButton {
+  background-color: transparent;
+  border: 1px solid $btns-border-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 48px;
+  height: 100%;
+  padding: 11px;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  transition: all 0.3s;
+
+  &:hover {
+    border: 1px solid $main-text-color;
+  }
+
+  &:active {
+    transform: scale(1.05);
+    border: 1px solid $secondary-accent-color;
+  }
+}

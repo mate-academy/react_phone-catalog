@@ -1,0 +1,80 @@
+@import '../../../../shared/global/utils/mixins';
+@import '../../../../shared/global/globalStyles/globalStyles.scss';
+@import '../../../../shared/global/utils/vars';
+@import '../../../../shared/global/utils/fonts';
+
+.imagesslider {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+
+    gap: 8px;
+  }
+
+  &__photos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    @include on-tablet {
+      justify-content: start;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+      order: 2;
+    }
+  }
+
+  &__photo_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $btns-border-color;
+    box-sizing: border-box;
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+    }
+
+    &_active {
+      border: 1px solid $accent-color;
+    }
+  }
+
+  &__photo {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+  }
+
+  &__mainphoto {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 288px;
+
+    @media (max-width: 640px) {
+      order: 1;
+    }
+
+    @include on-tablet {
+      width: 464px;
+      height: 464px;
+    }
+  }
+
+  &__photo {
+    width: 90%;
+    height: 90%;
+  }
+}

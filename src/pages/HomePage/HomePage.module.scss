@@ -1,0 +1,15 @@
+@import '../../shared/global/utils/mixins';
+@import '../../shared/global/globalStyles/globalStyles.scss';
+@import '../../shared/global/utils/vars';
+@import '../../shared/global/utils/fonts';
+
+.homepage {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  margin-block: 80px;
+
+  &__title {
+    @include header-1;
+  }
+}

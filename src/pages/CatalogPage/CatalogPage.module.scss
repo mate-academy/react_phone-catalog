@@ -1,0 +1,20 @@
+@import '../../shared/global/utils/mixins';
+@import '../../shared/global/globalStyles/globalStyles.scss';
+@import '../../shared/global/utils/vars';
+@import '../../shared/global/utils/fonts';
+
+.phonespage {
+  @include page-grid;
+
+  &__top {
+    grid-column: 1 / -1;
+  }
+
+  &__products {
+    grid-column: 1 / -1;
+  }
+
+  &__loader {
+    grid-column: 1 / -1;
+  }
+}
