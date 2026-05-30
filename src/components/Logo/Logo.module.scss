@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+
+  &__logoWrapper {
+    position: relative;
+    display: inline-block;
+
+    &__iconContainer {
+      position: absolute;
+      top: 6.5px;
+      right: 20px;
+      transform: translate(0, -50%);
+    }
+  }
+}

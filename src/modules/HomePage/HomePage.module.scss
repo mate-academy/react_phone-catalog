@@ -1,0 +1,27 @@
+@use 'src/styles/mixins' as *;
+
+.container {
+  max-width: 1140px;
+  margin: 56px auto 0;
+  padding: 0 24px;
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1140px;
+  }
+
+  @include tablet {
+    margin-top: 32px;
+  }
+
+  @include mobile {
+    margin-top: 24px;
+    padding: 0 16px;
+
+    h1 {
+      font-size: 32px;
+   }
+  }
+}

@@ -1,0 +1,34 @@
+.container {
+  &__label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #89939A;
+  }
+
+  &__items {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+
+    &__item {
+      border: 1px solid #B4BDC3;
+      cursor: pointer;
+      padding: 8px;
+
+      span {
+        color: #313237;
+        size: 14px;
+        font-weight: 500;
+      }
+
+      &__active {
+        background-color: #313237;
+        color: #FFF;
+
+        span {
+          color: #FFF;
+        }
+      }
+    }
+  }
+}
