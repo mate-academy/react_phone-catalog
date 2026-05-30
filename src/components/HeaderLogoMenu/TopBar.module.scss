@@ -1,0 +1,115 @@
+@import '../../styles/mixins.module';
+
+@font-face {
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-family: Mont, sans-serif;
+}
+
+@import 'src/styles/vars';
+
+.header {
+  position: fixed;
+  opacity: 1;
+  background-color: $White;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 150;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 16px;
+  border-bottom: 1px solid $Elements;
+  font-family: Mont, sans-serif;
+
+  &__navigation__wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__list {
+    display: none;
+    padding-inline-start: 32px;
+    position: relative;
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: row;
+    }
+
+    @include on-big-screen {
+      padding-inline-start: 48px;
+    }
+
+    margin-block: 0;
+  }
+
+  &__item {
+    list-style: none;
+    margin-right: 32px;
+    position: relative;
+  }
+
+  &__link {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    color: $Secondary;
+    text-decoration: none;
+    display: block;
+    transition: transform $effectDuration;
+
+    @include on-tablet {
+      padding-block: 18px;
+    }
+
+    @include on-big-screen {
+      padding-block: 26.5px;
+    }
+
+    &--current-page {
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        inset: 20.5px 0 0;
+
+        @include on-big-screen {
+          top: 37px;
+        }
+
+        background-color: $Primary;
+        height: 3px;
+        width: 100%;
+        transition: transform$effectDuration;
+        transform: scale(1);
+        transform-origin: left;
+        z-index: 1200;
+        margin-top: 24px;
+      }
+    }
+  }
+
+
+  &__icon-1 {
+    border-left: 1px solid $Elements;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__logo {
+    height: 22px;
+  }
+
+  &__logo-img {
+    width: 64px;
+    height: 22px;
+  }
+}

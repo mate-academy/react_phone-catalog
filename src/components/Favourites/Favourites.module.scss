@@ -1,0 +1,221 @@
+@import '../../styles/mixins.module';
+
+@font-face {
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-family: Mont, sans-serif;
+}
+
+@import 'src/styles/vars';
+
+.bag-page {
+  font-family: Mont, sans-serif;
+
+  @include content-margin-inline;
+
+  @include on-big-screen {
+    width: 1136px;
+    margin: auto;
+  }
+
+  &__path-of-user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 8px;
+    margin-top: 78px;
+  }
+
+  &__go-home-icon {
+    background-image: url('./../img/home.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+
+  &__direction {
+    background-image: url('./../img/chevron-arrow-right.svg');
+    background-position: center;
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+
+  &__go-home {
+    color: $Secondary;
+    text-decoration: none;
+  }
+
+  &__list {
+    margin: 0 auto;
+    font-family: Mont, sans-serif;
+    padding-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(var(--column-count), 1fr);
+
+    @include on-tablet {
+      grid-template-columns: repeat(var(--column-count), 1fr);
+    }
+
+    @include on-middle-screen {
+      grid-template-columns: repeat(var(--column-count), 1fr);
+    }
+
+    @include on-big-screen {
+      grid-template-columns: repeat(var(--column-count), 1fr);
+    }
+
+    justify-content: center;
+    gap: 40px 16px;
+
+    @include on-tablet {
+      --column-count: 2;
+    }
+
+    @include on-middle-screen {
+      --column-count: 3;
+    }
+
+    @include on-big-screen {
+      --column-count: 4;
+    }
+  }
+
+  &__title {
+    margin-block: 24px 8px;
+
+    @include on-tablet {
+      margin-block: 40px 8px;
+    }
+  }
+
+  &__card{
+    min-width: 229px;
+    max-width: 100%;
+    height: 506px;
+
+    border: 1px solid $Elements;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+  }
+
+  &__image {
+    box-sizing: border-box;
+    width: 75%;
+    height: 75%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color:$NoneBackground;
+    margin-top: 32px;
+    border: none;
+    display: block;
+    transition: transform$effectDuration ease-in-out;
+
+    &:hover {
+      transition: transform$effectDuration ease-in-out;
+      transform: scale($scale);
+    }
+  }
+
+  &__data {
+    margin-top: 32px;
+    margin-inline: 32px;
+  }
+
+  &__name {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 21px;
+    font-size: 14px;
+    letter-spacing: 0;
+  }
+
+  &__price {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    font-style: normal;
+    line-height: 140%;
+    margin-top: 8px;
+  }
+
+  &__deteils {
+    width: 173px;
+    margin-bottom: 16px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    width: 100%;
+  }
+
+  &__gb {
+    font-size: 12px;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    margin-top: 8px;
+  }
+
+  &__add {
+    background-color: $Accent;
+    color: $White;
+    border: 1px solid$NoneBackground;
+    border-radius: 8px;
+    width: 100%;
+    height: 40px;
+    transition: background-color$effectDuration, color$effectDuration;
+
+    &:hover {
+      transition: background-color$effectDuration, color$effectDuration;
+      border: 1px solid $Elements;
+    }
+  }
+
+  &__lovely-choice {
+    padding: 0;
+    background-image: url('./../img/add-to-fovourites-default.png');
+
+    &:hover {
+      background-image: url('./../img/add-to-fovourites-hover.png');
+    }
+
+    &--active {
+      background-image: url('./../img/add-to-fovourites-added.png');
+
+      transition: transform$effectDuration ease-in-out;
+
+      &:hover {
+        background-image: url('./../img/add-to-fovourites-added.png');
+        transform: scale(1.1);
+        transition: transform$effectDuration ease-in-out;
+      }
+    }
+
+    color: $White;
+    background-color: $White;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
+    width: 49px;
+    height: 40px;
+    margin-left: 8px;
+    border: 1px solid $NoneBackground;
+  }
+}

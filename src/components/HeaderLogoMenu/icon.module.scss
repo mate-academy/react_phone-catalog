@@ -1,0 +1,111 @@
+@import '../../styles/mixins.module';
+@import 'src/styles/vars';
+
+.icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  border: none;
+  background-color: $NoneBackground;
+}
+
+.icon--menu {
+  background-image: url("./../img/burger-menu.svg");
+  background-size: cover;
+  margin: 16px;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.icon--active {
+  @include on-tablet {
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      bottom: 0;
+      left: 0;
+      background-color: $Primary;
+      height: 3px;
+      width: 100%;
+      transform-origin: left;
+    }
+  }
+}
+
+.icon--close {
+  background-image: url("./../img/icon-close.png");
+  background-size: cover;
+  margin: 16px;
+}
+
+.icon--heart {
+  width: 0;
+  height: 0;
+
+  @include on-tablet {
+    background-image: url("./../img/favourites-(heart-like).svg");
+    width: 16px;
+    height: 16px;
+    padding: 16px;
+    background-size: 16px 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &__wrapper {
+      border-right: 1px solid $Elements;
+      position: relative;
+    }
+  }
+
+  @include on-big-screen {
+    padding: 24px;
+  }
+}
+
+.icon--bag {
+  width: 0;
+  height: 0;
+
+  @include on-tablet {
+    background-image: url("./../img/shopping-bag-cart.svg");
+    width: 16px;
+    height: 16px;
+    padding: 16px;
+    background-size: 16px 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &__wrapper {
+      position: relative;
+    }
+  }
+
+  @include on-big-screen {
+    padding: 24px;
+  }
+}
+
+.badge {
+  display: none;
+
+  @include on-tablet {
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    background: $Secondary-Accent;
+    color: $White;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 9px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    box-sizing: border-box;
+  }
+}

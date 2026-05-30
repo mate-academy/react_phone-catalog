@@ -1,0 +1,231 @@
+@import '../../styles/mixins.module';
+
+@font-face {
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-family: Mont, sans-serif;
+}
+
+@import 'src/styles/vars';
+
+.cart {
+  text-decoration: none;
+  color: $Primary;
+
+  &__reference {
+    text-decoration: none;
+  }
+
+  @include content-margin-inline;
+
+  @include on-big-screen {
+    margin-inline: auto;
+    width: 1136px;
+  }
+
+  font-family: Mont, sans-serif;
+
+  &__cart {
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+    }
+
+    margin-bottom: 16px;
+    border: 1px solid $Elements;
+    border-radius: 16px;
+  }
+
+  &__gadget-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 16px;
+
+    @include on-tablet {
+      margin: 24px;
+    }
+  }
+
+  &__path-of-user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 8px;
+    margin-top: 72px;
+  }
+
+  &__arrow-left {
+    background-image: url('./../img/chevron-arrow_left.svg');
+    display: block;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  &__back {
+    cursor: pointer;
+    text-decoration: none;
+    color:$Secondary;
+    border: none;
+    background-color: $NoneBackground;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+    height: 15px;
+  }
+
+  &__title {
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 56px;
+    margin-block: 24px 32px;
+
+    @include on-tablet {
+      margin-top: 16px;
+    }
+  }
+
+  &__content-wrapper {
+    @include on-big-screen {
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      gap: 10px;
+    }
+  }
+
+  &__list {
+    grid-column: 1 / 17;
+  }
+
+  &__icon-close {
+    background-image: url('./../img/close.svg');
+    background-position: center;
+    background-color: $White;
+    border: none;
+    width: 16px;
+    height: 16px;
+    transition: transform $effectDuration ease-in-out;
+
+    &:hover {
+      transform: scale($scale);
+      transition: transform $effectDuration ease-in-out;
+    }
+  }
+
+  &__image {
+    width: 66px;
+    height: auto;
+    margin-inline: 16px;
+    transition: transform $effectDuration ease-in-out;
+
+    @include on-tablet {
+      margin: 24px;
+    }
+
+    &:hover {
+      transform: scale($scale);
+      transition: transform$effectDuration ease-in-out;
+    }
+  }
+
+  &__name {
+    color: $Primary;
+  }
+
+  &__gadget-deteils {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $Primary;
+  }
+
+  &__change-quantity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 24px;
+    gap: 14px;
+  }
+
+  &__button-add {
+    background-image: url('./../img/plus.svg');
+  }
+
+  &__button-get-out {
+    background-image: url('./../img/minus-active.svg');
+
+    &--no-access {
+      background-image: url('./../img/minus.svg');
+    }
+  }
+
+  &__single-price {
+    color: $Primary;
+  }
+
+  &__buttons {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__desicion-border {
+    border: 1px solid $Elements;
+    border-radius: 16px;
+    padding-inline: 24px;
+    margin-top: 32px;
+    padding-bottom: 24px;
+    grid-column: 17 / 26;
+
+    @include on-big-screen {
+      width: auto;
+      height: fit-content;
+      margin-top: 0;
+    }
+  }
+
+  &__items-info {
+    border-bottom: 1px solid $Elements;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__items-price {
+    margin-right: 24px;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    color: $Primary;
+  }
+
+  &__items-qauntity {
+    font-weight: 600;
+    font-size: 14px;
+    color:$Secondary;
+    line-height: 21px;
+    width: fit-content;
+  }
+
+  &__button-checkout {
+    box-sizing: border-box;
+    width: 100%;
+    display: block;
+    height: 48px;
+    color: $White;
+    border: none;
+    border-radius: 8px;
+    background-color: $Accent;
+    margin-top: 16px;
+    margin-bottom: 24px;
+  }
+}
