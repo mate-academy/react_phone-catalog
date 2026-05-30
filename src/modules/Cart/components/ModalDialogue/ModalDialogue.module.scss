@@ -1,0 +1,57 @@
+@use '../../../../styles/utils' as g;
+
+.modal {
+  position: absolute;
+  height: 100px;
+  width: 300px;
+  z-index: 4;
+  top: -80px;
+  left: -50px;
+  background-color: white;
+  border: 1px solid g.$elements-color;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__message{
+    font-family: g.$font-regular;
+    font-size: 14px;
+    color: g.$main-grey;
+    text-align: center;
+
+    padding-inline: 10px;
+  }
+
+  &__buttons{
+    margin-top: 10px;
+    margin-inline: auto;
+    width: fit-content;
+  }
+
+  &__button {
+    background-color: g.$main-white;
+    border: 1px solid g.$elements-color;
+    padding: 5px;
+
+    font-family: g.$font-semi;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: g.$second-grey;
+    text-align: center;
+    outline: none;
+
+    &:active,
+    &:focus {
+      outline: none;
+    }
+
+    &:first-child{
+      margin-right: 5px;
+    }
+
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}

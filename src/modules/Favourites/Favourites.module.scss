@@ -1,0 +1,31 @@
+@use '../../styles/utils/' as g;
+
+.favourites {
+
+  &__title {
+    margin-top: 24px;
+
+    @include g.h1-title;
+
+    @include g.on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__count{
+    margin-top: 8px;
+
+    font-family: g.$font-regular;
+    font-size: 14px;
+    line-height: 21px;
+    color: g.$second-grey;
+  }
+
+  &__list{
+    margin-top: 32px;
+
+    @include g.on-tablet {
+      margin-top: 40px;
+    }
+  }
+}

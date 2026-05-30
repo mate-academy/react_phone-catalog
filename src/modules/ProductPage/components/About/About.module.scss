@@ -1,0 +1,33 @@
+@use '../../../../styles/utils/' as g;
+
+.about {
+
+  &__title {
+    @include g.h3-title-product-details;
+  }
+
+  &__item{
+    margin-top: 32px;
+  }
+
+  &__subtitle{
+    @include g.h4-title-product-details;
+  }
+
+  &__textblock {
+    margin-top: 16px;
+  }
+
+  &__paragraph{
+    margin-top: 25px;
+
+    font-family: g.$font-regular;
+    font-size: 14px;
+    line-height: 21px;
+    color: g.$second-grey;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}

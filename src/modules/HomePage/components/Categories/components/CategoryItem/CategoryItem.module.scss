@@ -1,0 +1,60 @@
+@use '../../../../../../styles/utils/' as g;
+
+.item{
+  flex-basis: 100%;
+  position: relative;
+
+  @include g.on-tablet {
+    flex: 0 1 33.33%;
+  }
+
+  &__banner{
+    position: relative;
+
+    overflow: hidden;
+    display: block;
+
+    aspect-ratio: 1 / 1;
+    width: 100%;
+
+    background-color: aqua;
+
+    transition: transform linear g.$transition-duration;
+
+    &:hover{
+      transform: scale(1.05);
+    }
+
+
+    &-img{
+      position: absolute;
+      top: 13%;
+      left: 13%;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: fill;
+      object-position: center;
+    }
+  }
+
+  &__title{
+    margin-top: 24px;
+
+    font-family: g.$font-semi;
+    font-size: 20px;
+    line-height: 26px;
+    color: g.$main-grey;
+    text-transform: capitalize;
+  }
+
+  &__count {
+    margin-top: 4px;
+
+    font-family: g.$font-regular;
+    font-size: 14px;
+    line-height: 21px;
+    color: g.$second-grey;
+  }
+}

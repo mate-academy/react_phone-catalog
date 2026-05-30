@@ -1,0 +1,21 @@
+@use '../../../styles/utils/' as g;
+
+.fav{
+    cursor: pointer;
+
+    flex-grow: 0;
+
+    aspect-ratio: 1;
+    height: 100%;
+    border: 1px solid g.$icons-color;
+
+    transition: border-color g.$transition-duration linear;
+
+    &__in {
+      color: red;
+    }
+
+    &:hover{
+      border-color: g.$main-grey;
+    }
+  }
