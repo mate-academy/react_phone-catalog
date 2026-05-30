@@ -1,0 +1,47 @@
+
+@use '../../utils/vars' as *;
+@import '../../utils/mixins';
+
+.icon {
+  width: 32px;
+    height: 32px;
+    padding: 0;
+
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    box-sizing: border-box;
+
+    border-radius: 50%;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+   
+
+  &--button-left {
+  background-image: url('/img/icons/icon-button-left-2x.png');
+  &:hover {
+  background-color: $hover-bg-color;
+  border-color: $primary-color;
+
+  @include hover(color, $hover-bg-color(1.1));
+
+  &.disabled, &[disabled] {
+  pointer-events: none;
+  cursor: not-allowed;
+  background: $hover-bg-color;
+  border-color: $icons-color;
+  transform: none;
+  box-shadow: none;
+  background-image: url('/img/icons/icon-button-left-disabled-2x.png');
+}
+
+}
+
+
+}
+}
+

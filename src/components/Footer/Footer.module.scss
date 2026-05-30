@@ -1,0 +1,130 @@
+@use '../../utils/vars' as *;
+@import '../Header/Header.module';
+@import './../Logo/Logo.module';
+
+.footer {
+    background-color: $footer-background-color;
+    border-top: 1px solid  $footer-border-color;
+
+   // width: 100%;
+
+    &__logo {
+    width: 90px;
+    height: 32px;
+    padding: 0;
+    margin: 32px 103px 32px 0;
+
+    @include on-desktop {
+      margin: 32px 290px 32px 0;
+    }
+  }
+
+
+  .topBarMobile {
+    margin: 0;
+    padding: 0;
+    display: block;
+
+    @include on-tablet {
+        display: none;
+    }
+
+  }
+
+  .topBar {
+    border-bottom: 0;
+    margin-block: auto;
+    display: none;
+
+     @include on-tablet {
+        display: flex;
+      }
+
+  }
+
+  &__content {
+    @include content-padding-inline;
+
+    justify-content:left;
+
+  //  width: 100%;
+    height: 257px;
+    display: flex;
+    flex-direction: column;
+    border: 1px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: center;
+      height: 96px;
+    }
+
+    @include on-desktop {
+        flex-direction: row;
+    }
+  }
+
+  &__github,
+  &__rights,
+  &__contacts {
+    height: 11px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 16px;
+
+    @include on-tablet {
+       margin-right: 13.5px;
+        margin-block: auto;
+    }
+
+    @include on-desktop {
+        margin-right: 106px;
+    }
+  }
+
+  &__rights {
+    height: 15px;
+    margin-block: auto;
+
+     @include on-tablet {
+       margin-right: 74px;
+     }
+
+     @include on-desktop {
+          margin-right: 260px;
+     }
+
+  }
+
+
+   .icon {
+
+    &--button-slider-right {
+    background-image: url(/img/buttons/button-slider-right.png);
+    width: 32px;
+    height: 32px;
+    display: block;
+
+    @include on-tablet {
+      background-image: url(/img/buttons/button-slider-right-2x.png);
+    }
+
+  }
+
+  }
+
+}
+
+  .footer__backToTop {
+      text-transform: none;
+      display: flex;
+
+      flex-direction: row;
+
+      height: object-fit;
+      align-items: center;
+      justify-content: center;
+      margin  : auto;
+      gap: 16px;
+  }
+

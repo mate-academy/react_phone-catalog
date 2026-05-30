@@ -1,0 +1,66 @@
+@use '../../utils/vars' as *;
+@import '../../utils/mixins';
+
+  .button {
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #FFFF;
+    box-sizing: border-box;
+    background-color: transparent;
+
+     &--disabled {
+      pointer-events: none;
+      cursor: not-allowed;
+
+      background-color: #FFFF;
+      color: $secondary-color;
+      transform: none;
+      box-shadow: none;
+      border: 1px solid $secondary-color;
+    }
+
+    &--history-back {
+      font-size: 12px;
+      color: $secondary-color;
+      background-color: transparent;
+    }
+
+     &--favourites {
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+    }
+
+      &.disabled, &[disabled] {
+      pointer-events: none;
+      cursor: not-allowed;
+
+      background-color: #FFFF;
+      color: $secondary-color;
+      transform: none;
+      box-shadow: none;
+      border: 1px solid $secondary-color;
+  }
+
+  }
+
+.like {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
+    box-sizing: border-box;
+    background-image: url(/img/icons/icon-favourites-like-2x.png);
+
+    &:hover {
+      background-image: url(/img/icons/icon-favourites-like-2x.png);
+    }
+}

@@ -1,0 +1,18 @@
+@use '../../utils/vars' as *;
+@import '../../utils/mixins';
+
+.topBar {
+  
+  &__logo {
+    width: 64px;
+    height: 22px;
+    padding: 0;
+    margin: 15px;
+
+    @include on-desktop {
+        width: 80px;
+        height: 28px;
+         margin: 18px 24px;
+    }
+  }
+}

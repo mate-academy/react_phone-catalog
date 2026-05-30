@@ -1,0 +1,84 @@
+@use '../../utils/vars' as *;
+@import '../../utils/mixins' ;
+
+.productPage {
+  @include page-grid;
+
+  &__content {
+    display: grid;
+    grid-column: 1/-1;
+    flex-direction: column;
+    width: 100%;
+    flex: 1 1 0%;
+    min-width: 0;
+  }
+
+
+  h1 {
+    margin: 0;
+    margin-bottom: 8px;
+    padding: 0;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+    color: $secondary-color;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+
+    @include on-tablet {
+    font-size: 14px;
+    }
+
+  }
+
+   &__productsFilter {
+      margin-top: 32px;
+
+       @include page-grid;
+
+}
+
+  .label {
+   @include label;
+  }
+
+  .select {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid $icons-color;
+    height: 40px;
+  }
+
+  .filterItem {
+    grid-row: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+ .filterItem--sort-by {
+   grid-column:  span 2;
+
+    @include on-tablet {
+      grid-column:  1/5;
+    }
+
+}
+
+.filterItem--items-on-page {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+  }
+}

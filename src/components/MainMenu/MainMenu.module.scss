@@ -1,0 +1,87 @@
+@use '../../utils/vars.scss' as *;
+@import '../../utils/mixins' ;
+@import '../Header/Header.module';
+@import '../Icon/Icon.module';
+
+.mainMenu {
+  background-color: $menu-background-color;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $menu-color;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1001;
+  transform: translateX(100%);
+  transition: transform $effect-duration;
+  margin: 5px;
+  width: 100vw;
+
+  &.open {
+    transform: translateX(0);
+
+    display: block;
+  }
+
+  &__top {
+    position: sticky;
+    top: 0;
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    background-color: $menu-background-color;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $header-border-color;
+}
+
+ &__layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  }
+
+&__content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+@include on-tablet {
+    display: none;
+   }
+  }
+
+&__nav {
+  margin-top: 32px;
+  }
+
+.footer {
+  height: 64px;
+  display: flex;
+  border-top: 1px solid $header-border-color;
+  flex-direction: row;
+  gap: 0;
+  padding: 0;
+  justify-content: center;
+
+  &__col {
+  flex: 1;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+  height: 100%;
+  border-right: 1px solid $header-border-color;
+  margin: auto;
+}
+
+&__col:last-child {
+  border-right: none
+}
+}
+
+}

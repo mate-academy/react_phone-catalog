@@ -1,0 +1,22 @@
+
+@use '../../utils/vars' as *;
+@import '../../utils/mixins';
+
+ .icon {
+
+  &--button-right {
+    background-image: url(/img/icons/icon-button-right-2x.png);
+    justify-self: end;
+     &:hover {
+        background-color: $hover-bg-color;
+        border-color: $primary-color;
+
+        @include hover(color, $hover-bg-color(1.1));
+     }
+
+    &.disabled, &[disabled] {
+      background-image: url(/img/icons/icons/icon-button-right-disabled-2x.png);
+     }
+  }
+
+ }

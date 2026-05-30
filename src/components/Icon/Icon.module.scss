@@ -1,0 +1,175 @@
+@use '../../utils/vars' as *;
+@import '../../utils/mixins';
+
+
+.icon,
+.icon--large {
+  cursor: pointer;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+  width: object-fit;
+  box-sizing: border-box;
+
+  @include hover(transform, scale(1.1));
+
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  margin: 16px;
+  background-color: transparent;
+
+  &__background {
+    border-left: 1px solid #E2E6E9;
+  }
+
+  &__background--hidden {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+    }
+  }
+
+  &--menu {
+    background-image: url(/img/icons/icon-burger-menu-2x.png);
+    width: 16px;
+    height: 16px;
+    display: block;
+
+    @include on-tablet {
+      display: none;
+    }
+
+  }
+
+  &--shopping-bag-cart {
+      display: block;
+      background-image: url(/img/icons/icon-shopping-bag-cart-2x.png);
+      width: 16px;
+      height: 16px;
+      transform: scale(1.1);
+    }
+
+  &--close {
+    background-image: url(/img/icons/icon-close-2x.png);
+    width: 16px;
+    height: 16px;
+  }
+
+   &--home {
+    background-image: url(/img/icons/icon-home-2x.png);
+    width: 16px;
+    height: 16px;
+    margin-inline: 0;
+  }
+
+  &--button-right {
+    background-image: url(/img/icons/icon-button-right-2x.png);
+    justify-self: end;
+
+  }
+}
+
+  .icon--large {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 auto;
+
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
+    box-sizing: border-box;
+
+    border-radius: 50%;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    border: 1px solid $icons-color;
+
+    &:hover {
+       background-color: $hover-bg-color;
+       border-color: $primary-color;
+
+       @include hover(color, $hover-bg-color(1.1));
+    }
+
+    &.disabled, &[disabled] {
+      pointer-events: none;
+      cursor: not-allowed;
+      background: $hover-bg-color;
+      border-color: $icons-color;
+
+      transform: none;
+      box-shadow: none;
+  }
+
+  &--favourites{
+    display: none;
+    background-image: url(/img/icons/icon-favourites-2x.png);
+
+    @include on-tablet {
+      display: block;
+  }
+  }
+
+ }
+
+.iconWrap {
+  position: relative;
+  display: block;
+}
+
+.badge {
+  border: 1px solid blue;
+  background-color: #476DF4;
+  color: #fff;
+  text-align: center;
+  transform: translate(0, 0);
+  pointer-events: none;
+  font-weight: 700;
+  font-size: 9px;
+  z-index: 5;
+  position: absolute;
+  min-width: 10px;
+  height: 10px;
+  line-height: 10px;
+  padding: 3px;
+  border-radius: 50%;
+  top: 8px;
+  right: 4px;
+
+
+  @include on-tablet {
+    top: -8px;
+    right: 6px;
+  }
+
+}
+
+.icon--round {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    display: flex;
+    border: 1px solid $icons-color;
+    color: $primary-color;
+    font-size: 14px;
+
+
+    &:hover {
+        border-color: $primary-color;
+    }
+
+  }

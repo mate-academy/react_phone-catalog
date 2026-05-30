@@ -1,0 +1,32 @@
+@use '../../utils/vars' as *;
+@import '../../utils/mixins';
+
+  .button {
+
+    &--add-to-card {
+    margin: 0;
+    white-space: nowrap;
+    margin-right: 8px;
+    background-color: $accent-color;
+    transition: box-shadow $effect-duration ease, transform $effect-duration ease;
+    width: 100px;
+    height: 40px;
+    box-sizing: border-box;
+
+
+      @include on-tablet {
+         width: 125px;
+      }
+
+      @include on-desktop {
+         width: 160px;
+      }
+
+    }
+
+    &--in-cart {
+      background-color: #FFFF;
+      color: $accent-color;
+      outline: 1px solid #E2E6E9;
+    }
+  }

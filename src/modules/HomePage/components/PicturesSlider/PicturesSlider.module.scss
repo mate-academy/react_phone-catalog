@@ -1,0 +1,126 @@
+@use '../../../../utils/vars.scss' as *;
+@import '../../../../utils/mixins' ;
+@import '../../../../components/Header/Header.module';
+
+.picturesSlider {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  margin: 0 auto;
+      &__button {
+        height: 100%;
+
+        display: none;
+
+        @include on-tablet {
+          display: block;
+        }
+
+        @include on-desktop {
+          height: 400px;
+        }
+
+     }
+
+     &__button-slider-left {
+        @include on-tablet {
+            object-fit: cover;
+            display: block;
+            width: 32px;
+            height: 100%;
+        }
+     }
+
+  &__layout {
+    width: 100%;
+      height: 320px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    @include on-tablet {
+      height: 189px;
+    }
+
+      @include on-desktop {
+        height: 400px;
+      }
+  }
+
+   &__banner {
+    display: flex;
+    box-sizing: border-box;
+    width: 70%;
+    height: 320px;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:  contain;
+    background-color: #FFFF;
+
+    @include on-tablet {
+      background-image: url('/img/header-bg-tablet-2x.png');
+      width: 100%;
+      height: 189px;
+      background-color: $primary-color;
+      outline: 10px solid #FFFF;
+    }
+
+      @include on-desktop {
+        height: 400px;
+        border: 5px solid #FFFF;
+        background-image: url('/img/header-bg-desktop-2x.png');
+      }
+  }
+
+  &__content  {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    overflow: hidden;
+
+    @include on-tablet {
+       min-width: 490px;
+    }
+
+    @include on-desktop{
+        max-width: 1136px;
+        outline: 10px solid #FFFF;
+    }
+  }
+
+ &__productImage {
+    display: block;
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin: auto;
+
+    @include on-tablet {
+      width: auto;
+      height: 189px;
+    }
+
+     @include on-desktop {
+        height: 400px;
+     }
+    }
+
+}
+
+.picture {
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  background-color: $primary-color;
+  width: 100%;
+
+  @include on-tablet {
+    width: 50%;
+  }
+
+}
