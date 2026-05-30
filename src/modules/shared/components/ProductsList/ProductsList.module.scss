@@ -1,0 +1,27 @@
+@import '@/styles/main';
+
+.products_list {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 40px 16px;
+
+  grid-template-columns: 1fr;
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 800px) and (max-width: 1199px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &--note {
+    grid-column: 1 / -1;
+    font-size: 16px;
+    text-align: center;
+  }
+}

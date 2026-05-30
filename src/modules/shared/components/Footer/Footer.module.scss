@@ -1,0 +1,79 @@
+@import '@/styles/main';
+
+.footer {
+  grid-area: footer;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 32px;
+  padding: 32px 16px;
+  background: $white-color;
+
+  box-shadow: 0 -1px 0 rgba($elements-color, 1);
+
+  @include on-desktop {
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 152px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 32px;
+  }
+
+  &__nav {
+    &--list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+
+      @include on-desktop {
+        flex-direction: row;
+        gap: 53px;
+      }
+    }
+
+    &--link {
+      text-decoration: none;
+      color: $secondary-color;
+
+      transition-property: color;
+      transition-duration: $transition-time;
+
+      &:hover {
+        color: $secondary-accent-color;
+      }
+    }
+  }
+
+  &__redirect {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    @include on-desktop {
+      justify-content: flex-end;
+    }
+
+    &--text {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 100%;
+      color: $secondary-color;
+    }
+  }
+}

@@ -1,0 +1,177 @@
+@import './variables';
+@import './icon';
+@import './typography';
+
+.button {
+  font-family: none;
+  &__primary {
+    border: none;
+    box-sizing: border-box;
+    border-radius: 8px;
+    width: 100%;
+    height: 40px;
+
+    background-color: $accent-color;
+    color: $white-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0;
+
+    transition-property: all;
+    transition-duration: $transition-time;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba($shadow-color, 0.4);
+    }
+
+    &--active {
+      background: none;
+      border: 1px solid $elements-color;
+      color: $accent-color;
+    }
+  }
+
+  &__back {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
+
+    &--text {
+      color: $secondary-color;
+      line-height: 100%;
+
+      transition-property: color;
+      transition-duration: $transition-time;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+
+  &__circle {
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+
+    transition-property: border, color;
+    transition-duration: $transition-time;
+
+    &--arrow {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $icons-color;
+      color: $primary-color;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+
+      &:disabled {
+        cursor: default;
+        border-color: $elements-color;
+        color: $elements-color;
+      }
+    }
+
+    &--regular {
+      width: 32px;
+      height: 32px;
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 500;
+      letter-spacing: 0;
+      text-align: center;
+
+      border: 1px solid $elements-color;
+      color: $primary-color;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+
+      &:active, &.active {
+        border-color: $primary-color;
+        background-color: $primary-color;
+        color: $white-color;
+      }
+    }
+
+    &--color {
+      width: 32px;
+      height: 32px;
+      padding: 1px;
+      border: 1px solid $elements-color;
+
+      &::before {
+        content: '';
+        width: 90%;
+        height: 90%;
+        border-radius: 50%;
+        background-color: var(--button-color);
+      }
+
+      &:hover {
+        border-color: $icons-color;
+      }
+
+      &:active, &.active {
+        border-color: $primary-color;
+      }
+    }
+
+    &--favorite {
+      border: 1px solid $icons-color;
+      color: $primary-color;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+    }
+  }
+
+  &__capacity {
+    padding: 8px;
+    box-sizing: border-box;
+    background: none;
+    border: 1px solid $icons-color;
+    border-radius: 4px;
+    font-family: inherit;
+    cursor: pointer;
+
+    transition-property: background-color color;
+    transition-duration: $transition-time;
+
+    &:hover {
+      background-color: $elements-color;
+      color: $primary-color;
+    }
+
+    &:active, &--active {
+      background-color: $primary-color;
+      color: $white-color;
+    }
+  }
+}
