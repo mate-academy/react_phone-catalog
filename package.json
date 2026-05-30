@@ -9,14 +9,17 @@
     "@fortawesome/fontawesome-free": "^6.5.2",
     "bulma": "^1.0.1",
     "classnames": "^2.5.1",
+    "lucide-react": "^0.477.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-loading-skeleton": "^3.5.0",
     "react-router-dom": "^6.25.1",
+    "react-swipeable": "^7.0.2",
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
     "@cypress/react18": "^2.0.1",
-    "@mate-academy/scripts": "^1.8.5",
+    "@mate-academy/scripts": "^1.9.12",
     "@mate-academy/students-ts-config": "*",
     "@mate-academy/stylelint-config": "*",
     "@types/node": "^20.14.10",
@@ -47,7 +50,7 @@
   },
   "scripts": {
     "start": "mate-scripts start -l",
-    "build": "mate-scripts build",
+    "build": "mate-scripts build ",
     "test": "mate-scripts test -l",
     "style-format": "npx stylelint 'src/**/*.scss' --fix --allow-empty-input",
     "lint-js": "mate-scripts lint -j",

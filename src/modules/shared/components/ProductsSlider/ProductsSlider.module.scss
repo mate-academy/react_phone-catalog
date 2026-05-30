@@ -1,0 +1,88 @@
+@import '../../../../styles/global';
+
+.product-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    @include h2;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+    height: 32px;
+  }
+
+  &__wrapper {
+    @include page-grid;
+  }
+
+  &__card {
+    display: flex;
+    justify-items: stretch;
+    grid-row: 1 / 2;
+    height: 439px;
+    grid-column-end: span 3;
+
+    @include on-tablet {
+      height: 512px;
+      grid-column-end: span 5;
+    }
+
+    @include on-desktop {
+      height: 506px;
+      grid-column-end: span 6;
+    }
+
+    &:first-child {
+      grid-column-start: 1;
+
+    }
+
+    &:nth-child(2) {
+      grid-column-start: 1;
+      transform: translateX(calc(100% + #{$grid-gap}));
+
+      @include on-tablet {
+        grid-column-start: 6;
+        transform: none;
+      }
+
+      @include on-desktop {
+        grid-column-start: 7;
+      }
+    }
+
+    &:nth-child(3) {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+        grid-column-start: 6;
+        transform: translateX(calc(100% + #{$grid-gap}));
+      }
+
+      @include on-desktop {
+        grid-column-start: 13;
+        transform: none;
+      }
+    }
+
+    &:nth-child(4) {
+      display: none;
+
+      @include on-desktop {
+        display: flex;
+        grid-column: -7 / span 6;
+      }
+    }
+  }
+}
