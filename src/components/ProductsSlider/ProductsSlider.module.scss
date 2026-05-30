@@ -1,0 +1,45 @@
+.sliderSection {
+  margin-bottom: 40px;
+}
+
+.headingRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.headingRow h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #151837;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.buttons button {
+  width: 42px;
+  height: 42px;
+  border: none;
+  background: #eef2f6;
+  color: #151837;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.track {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scroll-behavior: smooth;
+}
+
+.productItem {
+  min-width: 280px;
+  flex: 0 0 280px;
+}

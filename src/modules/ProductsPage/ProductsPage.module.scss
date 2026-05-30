@@ -1,0 +1,126 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  padding: 24px 0 80px;
+}
+
+.container {
+  @include container;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $color-text;
+  margin-bottom: 8px;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.count {
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-secondary;
+  margin-bottom: 32px;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.selectGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-secondary;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.select {
+  height: 40px;
+  padding: 0 32px 0 12px;
+  background: $color-surface2;
+  color: $color-text;
+  font-family: $font-family;
+  font-size: 14px;
+  font-weight: 700;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2375767F' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  cursor: pointer;
+  min-width: 176px;
+  transition: border $transition-default;
+  border: 1px solid transparent;
+
+  &:hover,
+  &:focus {
+    border-color: $color-icons;
+    outline: none;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.empty {
+  font-size: 20px;
+  font-weight: 700;
+  color: $color-secondary;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: $color-secondary;
+}
+
+.reloadBtn {
+  height: 40px;
+  padding: 0 24px;
+  background: $color-accent;
+  color: $color-text;
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: $font-family;
+  cursor: pointer;
+  transition: opacity $transition-default;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}

@@ -1,0 +1,18 @@
+.notFoundPage {
+  min-height: calc(100vh - 190px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  text-align: center;
+  padding: 32px;
+}
+
+.homeLink {
+  color: #fff;
+  background: #0d6efd;
+  padding: 12px 22px;
+  border-radius: 16px;
+  text-decoration: none;
+}

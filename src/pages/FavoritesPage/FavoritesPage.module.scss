@@ -1,0 +1,17 @@
+.favoritesPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.error {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 26px;
+  border-radius: 24px;
+  background: #fff4e6;
+  color: #7a4f18;
+}

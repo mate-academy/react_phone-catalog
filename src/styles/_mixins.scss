@@ -1,0 +1,27 @@
+@use 'variables' as *;
+
+@mixin on-tablet {
+  @media (min-width: #{$tablet-min}) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: #{$desktop-min}) {
+    @content;
+  }
+}
+
+@mixin container {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 $container-padding-mobile;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 $container-padding-desktop;
+  }
+}
