@@ -1,0 +1,54 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.search {
+  position: relative;
+  display: none;
+  margin-left: auto;
+  margin-right: 0;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.input {
+  width: 200px;
+  height: 32px;
+  padding: 0 32px 0 8px;
+  border: 1px solid $color-elements;
+  background-color: $color-white;
+  font-family: $font-family;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: $color-primary;
+  outline: none;
+  transition: border-color $transition-duration;
+
+  @include on-desktop {
+    width: 300px;
+  }
+
+  &::placeholder {
+    color: $color-secondary;
+  }
+
+  &:focus {
+    border-color: $color-primary;
+  }
+}
+
+.icon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+

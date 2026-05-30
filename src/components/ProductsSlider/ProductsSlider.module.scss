@@ -1,0 +1,50 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.slider {
+  overflow: hidden;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.button {
+  @include square-button;
+}
+
+.track {
+  display: flex;
+  gap: 16px;
+  transition: transform $transition-duration;
+}
+
+.card {
+  min-width: 212px;
+  width: 212px;
+
+  @include on-tablet {
+    min-width: 237px;
+    width: 237px;
+  }
+
+  @include on-desktop {
+    min-width: 272px;
+    width: 272px;
+  }
+}
+

@@ -1,0 +1,66 @@
+@use '../../styles/variables' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding-top: 24px;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+
+  img {
+    transition: transform $transition-duration;
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: $color-secondary;
+  transition: color $transition-duration, transform $transition-duration;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.current {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: $color-primary;
+}
