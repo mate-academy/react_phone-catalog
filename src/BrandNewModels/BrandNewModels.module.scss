@@ -1,0 +1,158 @@
+.product_list {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  gap: 16px;
+  padding: 0 16px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.title {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  text-align: left;
+  max-width: 136px;
+}
+
+.buttons_group {
+  display: flex;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.buttons_controls {
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  border: 1px solid gray;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons_controls:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.product_grid {
+  margin: 32px 0 24px 0;
+  width: 100%;
+}
+
+.link_product {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  max-width: fit-content;
+  height: 506px;
+}
+
+:global(.swiper-slide) {
+  max-width: fit-content;
+}
+
+
+/* Tablet */
+@media screen and (min-width: 640px) {
+  .product_list {
+    width: 100%;
+    margin-top: 64px;
+    margin: auto;
+  }
+
+  .controls {
+    max-width: 1136px;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    white-space: nowrap;
+  }
+
+  .buttons_group {
+    position: relative;
+    margin-left: auto;
+    gap: 16px;
+  }
+
+  .product_grid {
+    width: 100%;
+  }
+
+  .link_product {
+    max-width: fit-content;
+    height: 512px;
+    object-fit: none;
+  }
+
+}
+
+/* Desktop */
+@media screen and (min-width: 1200px) {
+  .product_list {
+    width: 1136px;
+    padding: 0;
+  }
+
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1136px;
+  }
+
+
+  .title {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+
+  .buttons_group {
+
+    display: flex;
+    gap: 16px;
+    margin-left: auto;
+  }
+
+  .buttons_controls {
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: 1px solid gray;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product_grid {
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .link_product {
+    max-width: fit-content;
+    width: 272px;
+    height: 506px;
+  }
+
+  :global(.swiper-slide) {
+    max-width: none;
+  }
+
+}
