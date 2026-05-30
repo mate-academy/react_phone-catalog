@@ -1,0 +1,26 @@
+@import '../../styles/main';
+
+.homePage {
+  &__title {
+    margin-block: 24px;
+    font-family: Mont-Bold, sans-serif;
+    color: var(--color-gray-primary);
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    @include content-padding-inline;
+
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+      margin-block: 32px;
+    }
+
+    @include on-desktop {
+      margin-block: 56px;
+    }
+  }
+}
