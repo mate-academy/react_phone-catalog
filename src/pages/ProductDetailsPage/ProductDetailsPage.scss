@@ -1,0 +1,27 @@
+@import '../../styles/main';
+
+.productDetailsPage {
+  &__back_button {
+    padding: 4px;
+    width: 66px;
+    height: 20px;
+    gap: 4px;
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+    border-style: none;
+    background-color: $backgroundColor;
+    cursor: pointer;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+
+    &__text {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      color: $whiteColor;
+    }
+  }
+}

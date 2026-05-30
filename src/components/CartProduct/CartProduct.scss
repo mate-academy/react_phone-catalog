@@ -1,0 +1,139 @@
+@import '../../styles/main';
+
+.cartProduct {
+  width: 100%;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border: 1px solid $surface1Color;
+  border-radius: 10px;
+  background-color: $surface1Color;
+
+  @include on-tablet {
+    height: 128px;
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+    padding: 24px;
+  }
+
+  @include on-desktop {
+    width: 752px;
+  }
+
+  &__image_section {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+
+    &_remove {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      border-radius: 50%;
+      cursor: pointer;
+
+      &:hover {
+        border: 1px solid $accentColorHover;
+        background-color: $accentColorHover;
+        border-radius: 50%;
+      }
+    }
+
+    &__product_image {
+      width: 80px;
+      height: 80px;
+
+    }
+
+    &_img {
+        width: 66px;
+        height: 100%;
+      }
+
+    &__title {
+      font-family: Mont, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      color: $whiteColor
+    }
+  }
+
+  &__info_section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 16px;
+
+    @include on-tablet {
+      margin-top: 0;
+      justify-content: center;
+    }
+
+    .count {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $surface2Color;
+    border-radius: 15px;
+    background-color: $surface2Color;
+    cursor: pointer;
+
+    &_minus {
+      &-disabled {
+        background-color: $surface1Color;
+      }
+    }
+
+    &:hover {
+      border-color: $iconsColor;
+      background-color: $accentColorHover;
+    }
+  }
+
+  &__quantity {
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    color: $whiteColor;
+  }
+}
+
+
+    &__price {
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 30.8px;
+      color: $whiteColor;
+
+      @include on-tablet {
+        width: 80px;
+        text-align: right;
+      }
+    }
+  }
+}

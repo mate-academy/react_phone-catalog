@@ -1,0 +1,92 @@
+@import '../../styles/main';
+
+.skeletons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.skeleton-card {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  background-color: $surface1Color;
+  height: 440px;
+  width: 288px;
+  min-height: 229px;
+  padding: 32px;
+  border-radius: 10px;
+
+  @include on-tablet {
+    height: 506px;
+    width: 288px;
+    }
+
+    @include on-desktop {
+      height: 506px;
+      width: 272px;
+    }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, $surface2Color 25%, $iconsColor 50%, $surface2Color 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+  border-radius: 8px;
+}
+
+.skeleton-card__image {
+  align-self: center;
+  height: 129px;
+  width: 148px;
+
+  @include on-tablet {
+    height: 173px;
+    width: 202px;
+  }
+
+  @include on-desktop {
+    height: 196px;
+    width: 208px;
+  }
+}
+
+.skeleton-card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeleton-card__line {
+  height: 16px;
+  width: 100%;
+}
+
+.skeleton-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skeleton-card__button {
+  width: 70%;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.skeleton-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+

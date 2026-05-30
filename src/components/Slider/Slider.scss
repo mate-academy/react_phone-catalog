@@ -1,0 +1,109 @@
+@import '../../styles/main';
+
+.slider {
+  width: 100%;
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: $whiteColor;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    background-color: $surface2Color;
+    border: 2px solid $surface2Color;
+    border-radius: 20px;
+    cursor: pointer;
+
+    &:hover {
+    background-color: $iconsColor;
+    }
+
+    &--next {
+      transform: rotate(180deg);
+    }
+
+    &--disabled {
+      pointer-events: none;
+      background-color: $backgroundColor;
+      border: 2px solid $surface2Color;
+    }
+  }
+
+  &__content {
+   display: flex;
+   width: 100%;
+   flex-direction: column;
+   gap: 14px;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__items {
+
+
+    &__list {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    gap: 16px;
+    overflow: hidden;
+
+    &-item {
+      height: 440px;
+      width: 288px;
+      min-height: 229px;
+      padding: 32px;
+      display: flex;
+      justify-content: center;
+      border: 1px solid $surface1Color;
+      background-color: $surface1Color;
+      border-radius: 10px;
+
+      &:hover {
+        border-color: $surface2Color;
+        transform: translateY(-3px);
+        box-shadow: 0.5px 8px 70px -34px rgba(107, 49, 131, 1);
+      }
+
+      @include on-tablet {
+        height: 506px;
+        width: 288px;
+      }
+
+      @include on-desktop {
+        height: 506px;
+        width: 272px;
+      }
+    }
+    }
+  }
+}
