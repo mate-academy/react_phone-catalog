@@ -1,0 +1,275 @@
+@import '../variables';
+@import '../mixins';
+
+.cart {
+  flex-grow: 1;
+  margin-top: 24px;
+  margin-inline: 16px;
+
+  @include cart;
+
+  &__buttons-back {
+    height: 16px;
+    display: flex;
+    gap: 4px;
+
+    @include cart-buttons-back;
+
+    &__arrow-left {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 16px;
+      height: 16px;
+
+      &__image {
+        width: 5.33px;
+        height: 9.33px;
+      }
+    }
+  }
+
+  &__title {
+    margin-top: 24px;
+    height: 41px;
+
+    font-weight: 800;
+    font-size: 32px;
+
+    @include cart-title;
+  }
+
+  &__items {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__total {
+    width: 100%;
+    margin-bottom: 56px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    @include cart-total;
+
+    &__price {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      width: 100%;
+
+      &__total-price {
+        font-weight: 800;
+        font-size: 32px;
+      }
+
+      &__total-items {
+        font-weight: 600;
+        font-size: 14px;
+        color: #89939a;
+      }
+    }
+
+    &__line {
+      width: 100%;
+      color: #e2e6e9;
+      border: 1px solid;
+    }
+
+    &__button {
+      height: 48px;
+      width: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-weight: 700;
+      font-size: 14px;
+      color: #ffffff;
+      background: #313237;
+      cursor: pointer;
+    }
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid;
+
+  @include item;
+
+  &__info {
+    margin-top: 16px;
+    margin-inline: 16px;
+    height: 80px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    @include item-info;
+
+    &__delete {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+
+      &__image {
+        width: 100%;
+      }
+    }
+
+    &__item-image {
+      width: 80px;
+      height: 80px;
+
+      @include hover(transform, scale(1.1));
+
+      &__photo {
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+      }
+    }
+
+    &__item-title {
+      width: 128px;
+      height: 63px;
+      text-decoration: none;
+      color: inherit;
+
+      @include item-title;
+      @include hover(transform, scale(1.1));
+    }
+  }
+
+  &__counter-price {
+    margin-bottom: 16px;
+    margin-inline: 16px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 32px;
+
+    @include item-counter-price;
+
+    &__counter {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 96px;
+
+      &__button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 32px;
+        width: 32px;
+        cursor: pointer;
+
+        @include hover(transform, scale(1.1));
+
+        &__image {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+
+    &__price {
+      font-weight: 800;
+      font-size: 22px;
+    }
+  }
+}
+
+.item-container {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include item-container;
+}
+
+.cart-is-empty {
+  margin-inline: auto;
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__image {
+    width: 100%;
+  }
+}
+
+.cart-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+
+  &__content {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    width: 320px;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  &__question {
+    margin-bottom: 30px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button {
+    padding: 8px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__button--confirm {
+    background: #e53935;
+    color: white;
+  }
+
+  &__button--cancel {
+    background: #eee;
+    border: 1px solid;
+  }
+}
