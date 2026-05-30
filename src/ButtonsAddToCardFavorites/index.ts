@@ -1,0 +1,1 @@
+export { ButtonsAddToCardFavorites } from './ButtonsAddToCardFavorites';
