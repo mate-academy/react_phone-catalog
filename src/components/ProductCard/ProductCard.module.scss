@@ -1,0 +1,79 @@
+.card {
+  padding: 32px;
+  border: 1px solid #e2e6e9;
+  border-radius: 10px;
+  width: 212px;
+  height: 439px;
+
+  &__img {
+    height: 129px;
+    width: 148px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 21px;
+    margin-top: 16px;
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    margin-block: 8px 8px;
+  }
+
+  &__horizontalRule {
+    color: #e2e6e9;
+    margin: 0;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-block: 8px;
+  }
+
+  &__specs > div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__characteristics {
+    font-size: 12px;
+    color: #89939a;
+  }
+
+  &__values {
+    font-size: 12px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__addCartBtn {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    border: 1px solid #216cff;
+    background-color: #216cff;
+    border-radius: 7px;
+    color: #fff;
+    height: 40px;
+    width: 100px;
+  }
+
+  &__addFovouritesBtn {
+    border: none;
+    background: none;
+  }
+
+  &__icon {
+    height: 40px;
+    width: 40px;
+  }
+}
