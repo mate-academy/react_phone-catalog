@@ -1,0 +1,30 @@
+@media (min-width: 640px) and (max-width: 1199px) {
+  .phonesPage {
+    padding: 24px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .phonesPage {
+    padding: 17px;
+  }
+  h1 {
+    font-size: 32px;
+  }
+}
+
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .productGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .productGrid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
