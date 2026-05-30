@@ -1,0 +1,77 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins.scss' as *;
+
+.gallery {
+  display: flex;
+  gap: 16px;
+
+  @include for-phone {
+    flex-direction: row-reverse;
+  }
+
+  &__mini {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 80px;
+
+    @include for-tablet {
+      width: 35px;
+    }
+
+    @include for-phone {
+      width: 50px;
+      gap: 8px;
+    }
+  }
+
+  &__miniPhoto {
+    height: 80px;
+    border: 1px solid $elements;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_active {
+      border-color: $text;
+    }
+
+    img {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    @include for-tablet {
+      height: 35px;
+    }
+
+    @include for-phone {
+      height: 50px;
+    }
+  }
+
+  &__mainPhoto {
+    width: 464px;
+    height: 464px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @include for-tablet {
+      width: 273px;
+      height: 273px;
+    }
+
+    @include for-phone {
+      width: 100%;
+    }
+  }
+}

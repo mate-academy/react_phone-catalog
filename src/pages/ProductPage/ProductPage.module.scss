@@ -1,0 +1,237 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+
+.productPage {
+  h2 {
+    @include h2;
+    color: $text;
+    margin-bottom: 40px;
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-bottom: 109px;
+
+    @include for-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include for-phone {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+
+  &__subTitle {
+    @include h3;
+    color: $text;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elements;
+  }
+
+  &__paragraph {
+    padding: 0;
+    margin: 0;
+    margin-top: 32px;
+    color: $secondary;
+    @include body-text;
+
+    h4 {
+      @include h4;
+      color: $text;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__miniHeader {
+    color: $secondary;
+    @include small-text;
+    margin-bottom: 8px;
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__color {
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    padding: 2px;
+    border-radius: 50%;
+
+    border: 1px solid $elements;
+
+    &_active {
+      border-color: white;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    div {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+  }
+
+  &__capacityContainer {
+    padding: 24px 0;
+    border-top: 1px solid $elements;
+    border-bottom: 1px solid $elements;
+    margin-top: 24px;
+    margin-bottom: 32px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__capacities {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__capacity {
+    padding: 7px 8px;
+    border: 2px solid $elements;
+    width: auto;
+    @include body-text;
+    color: $text;
+
+    &_active {
+      background-color: $text;
+      color: $black;
+      border-color: $text;
+    }
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+
+    &_new {
+      @include h2;
+      color: $text;
+    }
+
+    &_old {
+      @include h3;
+      color: $secondary;
+      text-decoration: line-through;
+    }
+  }
+
+  &__btnContainer {
+    display: flex;
+    gap: 8px;
+    height: 48px;
+  }
+
+  .addToBagBtn {
+    width: 263px;
+    height: 100%;
+  }
+
+  .favoriteBtn {
+    height: 100%;
+    width: 48px;
+  }
+}
+
+
+.table {
+  @include body-text;
+  color: $secondary;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &_mini {
+    width: 320px;
+    margin-top: 32px;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    text-transform: capitalize;
+  }
+
+  &__value {
+    color: $text;
+  }
+
+}
+
+@include for-tablet {
+  .productPage {
+
+    &__top {
+      gap: 17px;
+      margin-bottom: 64px;
+    }
+
+    &__bottom {
+      grid-template-columns: 1fr;
+      margin-bottom: 64px;
+    }
+
+    &__paragraph {
+      color: $secondary;
+    }
+
+    .addToBagBtn {
+      width: 180px;
+      height: 100%;
+    }
+  }
+
+  .table {
+    &_mini {
+      width: 237px;
+    }
+  }
+}
+
+@include for-phone {
+  .productPage {
+
+    &__top {
+      gap: 40px;
+      margin-bottom: 56px;
+      grid-template-columns: 1fr;
+    }
+
+    &__bottom {
+      gap: 56px;
+      margin-bottom: 56px;
+    }
+
+    .addToBagBtn {
+      width: 231px;
+    }
+  }
+
+  .table {
+    &_mini {
+      width: 288px;
+    }
+  }
+}

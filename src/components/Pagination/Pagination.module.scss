@@ -1,0 +1,27 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+
+  button {
+    @include grey-button;
+    width: 32px;
+    height: 32px;
+    color: $text;
+  }
+
+  .active {
+    background-color: $accent;
+  }
+
+  .arrowButton {
+    margin: 0 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

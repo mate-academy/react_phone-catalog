@@ -1,0 +1,46 @@
+import React from 'react';
+import { useNavigate, useNavigationType } from 'react-router-dom';
+import styles from './BackButton.module.scss';
+
+interface BackButtonProps {
+  fallbackTo?: string;
+}
+
+export const BackButton: React.FC<BackButtonProps> = ({ fallbackTo = '/' }) => {
+  const navigate = useNavigate();
+  const navigationType = useNavigationType();
+
+  const handleBack = () => {
+    const canGoBack =
+      typeof window.history.state?.idx === 'number' &&
+      window.history.state.idx > 0;
+
+    if ((navigationType !== 'POP' && canGoBack) || navigationType === 'PUSH') {
+      navigate(-1);
+    } else {
+      navigate(fallbackTo, { replace: true });
+    }
+  };
+
+  return (
+    <span onClick={handleBack} className={styles.backButton}>
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ transform: 'rotate(180deg)' }}
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M5.52876 3.52864C5.78911 3.26829 6.21122 3.26829 6.47157 3.52864L10.4716 7.52864C10.7319 7.78899 10.7319 8.2111 10.4716 8.47145L6.47157 12.4714C6.21122 12.7318 5.78911 12.7318 5.52876 12.4714C5.26841 12.2111 5.26841 11.789 5.52876 11.5286L9.05735 8.00004L5.52876 4.47145C5.26841 4.2111 5.26841 3.78899 5.52876 3.52864Z"
+          fill="#F1F2F9"
+        />
+      </svg>
+
+      <div>Back</div>
+    </span>
+  );
+};

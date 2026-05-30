@@ -1,0 +1,24 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: $text;
+  @include small-text;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  div {
+    line-height: 0;
+  }
+}

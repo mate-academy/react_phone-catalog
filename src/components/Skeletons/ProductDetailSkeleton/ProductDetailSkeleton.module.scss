@@ -1,0 +1,163 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.productPage {
+  animation: pulse 1.5s infinite ease-in-out;
+
+  .title {
+    height: 32px;
+    width: 40%;
+    background-color: $surface2;
+    margin-bottom: 40px;
+    border-radius: 4px;
+  }
+
+  .top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+
+  .gallery {
+    height: 400px;
+    background-color: $surface2;
+    border-radius: 8px;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .miniHeader {
+    height: 16px;
+    width: 120px;
+    background-color: $surface2;
+    margin-bottom: 8px;
+    border-radius: 4px;
+  }
+
+  .colorRow, .capacityRow {
+    display: flex;
+    gap: 8px;
+  }
+
+  .colorCircle {
+    width: 32px;
+    height: 32px;
+    background-color: $surface2;
+    border-radius: 50%;
+  }
+
+  .capacityBlock {
+    width: 60px;
+    height: 32px;
+    background-color: $surface2;
+    border-radius: 4px;
+  }
+
+  .priceBlock {
+    display: flex;
+    gap: 8px;
+
+    .priceNew, .priceOld {
+      height: 24px;
+      width: 80px;
+      background-color: $surface2;
+      border-radius: 4px;
+    }
+  }
+
+  .btns {
+    display: flex;
+    gap: 8px;
+
+    .addBtn {
+      width: 263px;
+      height: 48px;
+      background-color: $surface2;
+      border-radius: 4px;
+    }
+
+    .favBtn {
+      width: 48px;
+      height: 48px;
+      background-color: $surface2;
+      border-radius: 4px;
+    }
+  }
+
+  .tableMini, .tableRow {
+    display: flex;
+    gap: 8px;
+  }
+
+  .tableCell {
+    flex: 1;
+    height: 16px;
+    background-color: $surface2;
+    border-radius: 4px;
+  }
+
+  .bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+
+  .subtitle {
+    height: 24px;
+    width: 120px;
+    background-color: $surface2;
+    margin-bottom: 16px;
+    border-radius: 4px;
+  }
+
+  .paragraphBlock {
+    margin-top: 24px;
+
+    .paragraphTitle {
+      height: 20px;
+      width: 100px;
+      background-color: $surface2;
+      margin-bottom: 12px;
+      border-radius: 4px;
+    }
+
+    .paragraphLine {
+      height: 16px;
+      background-color: $surface2;
+      margin-bottom: 8px;
+      border-radius: 4px;
+    }
+  }
+
+  .carouselTitle {
+    height: 24px;
+    width: 200px;
+    background-color: $surface2;
+    margin-bottom: 16px;
+    border-radius: 4px;
+  }
+
+  .carousel {
+    height: 200px;
+    background-color: $surface2;
+    border-radius: 8px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

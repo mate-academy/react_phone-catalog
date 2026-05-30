@@ -1,0 +1,140 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins.scss' as *;
+
+.bigSlider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &__slideContainer {
+    height: 400px;
+  }
+
+  &__button {
+    @include grey-button;
+    height: 400px;
+    width: 32px;
+    @include for-phone {
+      display: none;
+    }
+  }
+
+  &__dashes {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+
+  &__dash {
+    width: 14px;
+    height: 4px;
+    margin: 0 4px;
+    background-color: $elements;
+    cursor: pointer;
+
+    &.active {
+      background-color: #fff;
+    }
+  }
+
+}
+
+.slideContainer {
+  background-color: black;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 400px;
+
+  
+  @include for-phone {
+    height: 320px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr;
+  }
+
+  &__text {
+    background-color: $surface1;
+    margin: 16px;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+
+    
+    @include for-phone {
+      align-items: center;
+      background-color: transparent;
+    }
+  }
+
+  &__title {
+    @include h1;
+    font-weight: bold;
+    background: linear-gradient(90deg, #6e34ff, #e85edb); 
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+
+    @include for-desktop {
+      @include h2;
+    }
+  }
+
+  &__description {
+    @include body-text;
+    color: $secondary;
+
+    
+    @include for-phone {
+      display: none;
+    }
+  }
+
+  a {
+    @include link;
+    @include uppercase;
+    background-color: transparent;
+    border: 1px solid $secondary;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $text;
+    width: 40%;
+    height: 20%;
+
+    &:hover {
+      cursor: pointer;
+      border-color: $text;
+      transition: .3s ease-in-out;
+    }
+    
+    @include for-desktop {
+      width: 80%;
+      height: 10%;
+    }
+
+    
+    @include for-phone {
+      display: none;
+    }
+  }
+
+  &__img {
+    height: 400px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    
+    @include for-phone {
+      height: 200px;
+    }
+  }
+}

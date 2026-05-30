@@ -1,0 +1,145 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+
+.card {
+  box-sizing: border-box;
+  width: 272px;
+  height: 506px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  background-color: $secondaryBlack;
+  justify-content: space-between;
+
+  &:hover {
+    img {
+      transform: scale(1.1);
+    }
+
+  }
+
+  a {
+    @include link;
+  }
+
+  img {
+    width: 208px;
+    height: 175px;
+    object-fit: contain;
+    transform: scale(1);
+    transition: all .3s ease-in-out;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+
+    padding-bottom: 8px;
+    border-bottom: 1px solid $secondary;
+  }
+
+  &__bottom {
+    justify-self: end;
+  }
+
+  &__title {
+    @include body-text;
+    height: 58px;
+    display: flex;
+    align-items: center
+  }
+
+  &__price {
+    @include h3;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__oldPrice {
+    color: $secondary;
+    text-decoration: line-through;
+    font-weight: 600;
+  }
+
+  &__desc {
+    margin: 8px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 0;
+    @include small-text
+  }
+
+  &__descContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__descInfo {
+    text-align: end;
+  }
+
+  &__descTitle {
+    color: $secondary;
+  }
+
+  &__btnContainer {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      padding: 0;
+    }
+  }
+
+  &__addBtn {
+    @include button;
+    width: 160px;
+    height: 100%;
+  }
+
+  &__favorite {
+    @include grey-button;
+    width: 40px;
+  }
+
+}
+
+@include for-tablet {
+  .card {
+    width: 237px;
+    height: 512px;
+
+    img {
+      width: 173px;
+      height: 202px;
+    }
+
+    &__addBtn {
+      width: 125px;
+    }
+
+    &__favorite {
+      width: 40px;
+    }
+  }
+}
+
+@include for-phone {
+  .card {
+    width: 212px;
+    height: 439px;
+    justify-self: center;
+
+    img {
+      width: 148px;
+      height: 129px;
+    }
+
+    &__addBtn {
+      width: 100px;
+    }
+  }
+}
