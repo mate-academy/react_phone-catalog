@@ -1,0 +1,23 @@
+.line {
+  position: absolute;
+  border-radius: 8px;
+  height: 4px;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  background: $grey-third-color;
+  content: '';
+  transition: transform 0.3s;
+}
+
+.header-icons {
+  display: block;
+  box-sizing: border-box;
+  position: relative;
+  width: 64px;
+  height: 64px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  box-shadow: -1px 0 0 $grey-third-color;
+  cursor: pointer;
+}

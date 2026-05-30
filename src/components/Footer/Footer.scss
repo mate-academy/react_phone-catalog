@@ -1,0 +1,68 @@
+@import '../../style-utils/mixins';
+@import '../../style-utils/variables';
+
+.footer {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 32px;
+  padding: 0 32px;
+  box-shadow: 0 -1px 0 0 $grey-third-color;
+
+  @include onTablet {
+    width: 100%;
+    max-width: 1136px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 30px;
+  }
+
+  &__nav {
+    display: flex;
+
+    @include onTablet {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__nav-link {
+    @include onTablet {
+      padding: 10px 0;
+      margin: 0;
+    }
+  }
+
+  &__back-to-top {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    gap: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    color: $grey-secondary-color;
+
+    &--icon {
+      height: 32px;
+      width: 32px;
+      border: 1px solid $grey-fourth-color;
+      background-image: url('../../Images/Icons/ArrowUp.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &:hover {
+        border-color: black;
+      }
+    }
+  }
+
+  &__logo {
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
