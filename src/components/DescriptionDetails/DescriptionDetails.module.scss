@@ -1,0 +1,90 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.section_title {
+  @include h3;
+
+  padding-bottom: 16px;
+  border-bottom: 1px solid color(elements);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.paragraph_title {
+  @include h4;
+
+  margin-bottom: 16px;
+  font-size: 16px;
+  line-height: 100%;
+}
+
+.section {
+  @include page-grid;
+
+  grid-column: 1 / -1;
+  row-gap: 56px;
+
+  @include respond-to(desktop) {
+    row-gap: 64px;
+  }
+}
+
+.info {
+  display: flex;
+  grid-column: 1 / -1;
+  flex-direction: column;
+  row-gap: 32px;
+
+  font-size: 16px;
+
+  @include respond-to(desktop) {
+    grid-column: 1 / 13;
+  }
+}
+
+.text_description {
+  @include body-text;
+
+  margin-top: 10px;
+  color: color(secondary);
+}
+
+.tech_specs {
+  grid-column: 1 / -1;
+
+  @include respond-to(desktop) {
+    grid-column: 14 / -1;
+  }
+}
+
+table {
+  width: 100%;
+  margin-top: 25px;
+}
+
+tbody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+tr {
+  display: flex;
+  justify-content: space-between;
+}
+
+td {
+  @include body-text;
+
+  width: 50%;
+
+  &:first-child {
+    color: color(secondary);
+  }
+
+  &:last-child {
+    color: color(primary);
+    text-align: right;
+  }
+}

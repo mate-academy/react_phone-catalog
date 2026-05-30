@@ -1,0 +1,25 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.pageOverlay {
+  position: fixed;
+  z-index: z(transition-overlay);
+  inset: 0;
+
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: color(primary);
+
+  background-color: color(white);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.title {
+  @include h1;
+
+  text-align: center;
+}

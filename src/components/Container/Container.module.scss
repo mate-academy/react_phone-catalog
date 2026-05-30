@@ -1,0 +1,28 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.container {
+  @include page-grid;
+
+  overflow: hidden;
+  grid-auto-rows: min-content;
+  justify-content: center;
+
+  box-sizing: border-box;
+  min-width: 320px;
+  max-width: $max-screen-width;
+  min-height: calc(100vh - (hh(mobile-tablet) + fh(mobile)));
+  padding-inline: page-padding(mobile);
+
+  @include respond-to(tablet) {
+    min-height: calc(100vh - (hh(mobile-tablet) + fh(tablet-desktop)));
+    padding-inline: page-padding(tablet);
+  }
+
+  @include respond-to(desktop) {
+    min-height: calc(100vh - (hh(desktop) + fh(tablet-desktop)));
+    margin-inline: auto;
+    padding-inline: page-padding(desktop);
+  }
+}

@@ -1,0 +1,107 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.breadcrumbs {
+  overflow: hidden;
+  display: flex;
+  grid-column: 1 / -1;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  margin-top: 24px;
+  margin-right: 8px;
+  margin-bottom: 24px;
+
+  @include respond-to(tablet) {
+    margin-bottom: 40px;
+  }
+}
+
+.crumbContainer {
+  display: flex;
+  flex-shrink: 1;
+  align-items: center;
+
+  &:last-child {
+    min-width: 0;
+  }
+
+  &:not(:last-child)::after {
+    content: "";
+
+    width: 16px;
+    height: 16px;
+    margin: 0 8px;
+
+    background-image: url(/img/icons/Breadcrumbs/arrow-right.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+}
+
+.crumb {
+  @include small-text;
+
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  max-width: 100%;
+
+  color: color(primary);
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+  white-space: nowrap;
+
+  &.active {
+    color: color(secondary);
+  }
+
+  span {
+    cursor: default;
+    user-select: none;
+
+    overflow: hidden;
+    display: inline-block;
+
+    max-width: inherit;
+    margin-top: 2px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.linkHome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+}
+
+.homeIcon {
+  path {
+    fill: color(primary);
+    transition: fill $duration-default $easing-default;
+  }
+
+  &:hover {
+    path {
+      fill: color(secondary);
+    }
+  }
+}
+
+.link {
+  margin-top: 2px;
+  color: color(primary);
+  transition: color $duration-default $easing-default;
+
+  &:hover {
+    color: color(secondary);
+  }
+}

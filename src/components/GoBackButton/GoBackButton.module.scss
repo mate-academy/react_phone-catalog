@@ -1,0 +1,39 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.goBack {
+  @include small-text;
+
+  display: flex;
+  grid-column: 1 / -1;
+  align-items: center;
+
+  width: 66px;
+  height: 16px;
+
+  font-weight: 600;
+  color: color(secondary);
+
+  transition: color $duration-default $easing-default;
+
+  &:hover {
+    color: color(primary);
+  }
+}
+
+.goBackIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+
+  fill: color(primary);
+}
+
+.goBackLabel {
+  margin-top: 2px;
+}

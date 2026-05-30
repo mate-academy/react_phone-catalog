@@ -1,0 +1,23 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.productsSection {
+  grid-column: 1 / -1;
+  margin-bottom: 64px;
+
+  @include respond-to(desktop) {
+    margin-bottom: 80px;
+  }
+}
+
+.title {
+  @include h1;
+}
+
+.amountModels {
+  @include body-text;
+
+  margin-top: 8px;
+  color: color(secondary);
+}

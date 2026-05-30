@@ -1,0 +1,16 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.productsRow {
+  grid-column: 1 / -1;
+  margin-top: bottom-margin(mobile);
+
+  @include respond-to(tablet) {
+    margin-top: bottom-margin(tablet);
+  }
+
+  @include respond-to(desktop) {
+    margin-top: bottom-margin(desktop);
+  }
+}
