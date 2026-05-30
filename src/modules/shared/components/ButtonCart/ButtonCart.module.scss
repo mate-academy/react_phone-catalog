@@ -1,0 +1,26 @@
+@use '../../styles/constants' as *;
+
+.buttonCart {
+  height: 4rem;
+
+  font-weight: $font-weight-bold;
+  font-size: $font-size-small;
+  line-height: $line-height-small;
+  letter-spacing: 0%;
+
+  color: $white;
+  background-color: $primary-color;
+
+  transition: box-shadow 250ms ease;
+
+  &[aria-pressed="true"] {
+    color: rgba(39, 174, 96, 1);
+    background-color: $white;
+    border: $border-primary;
+  }
+
+  &:hover{
+    box-shadow: 0 0.3rem 1.3rem 0 rgba(23, 32, 49, 0.4);
+
+  }
+}

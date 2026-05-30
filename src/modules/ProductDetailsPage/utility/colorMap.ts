@@ -1,0 +1,27 @@
+export const COLOR_MAP = {
+  spacegray: '#5A5A5C',
+  'space gray': '#5A5A5C',
+  'space-gray': '#5A5A5C',
+  midnightgreen: '#414A4C',
+  sierrablue: '#88A3BC',
+  spaceblack: '#2E3033',
+  graphite: '#4C4C4C',
+  midnight: '#17171C',
+  starlight: '#F7F4F0',
+  rosegold: '#B76E79',
+  'rose gold': '#B76E79',
+  'sky-blue': '#87CEEB',
+
+  // Standardowe nazwy
+  silver: '#C0C0C0',
+  gold: '#FFD700',
+  yellow: '#FFFF00',
+  purple: '#800080',
+  green: '#008000',
+  red: '#FF0000',
+  black: '#000000',
+  white: '#FFFFFF',
+  blue: '#0000FF',
+  pink: '#FFC0CB',
+  coral: '#FF7F50',
+};

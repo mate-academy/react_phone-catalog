@@ -1,0 +1,80 @@
+@use '../../../shared/styles/mixins' as *;
+@use '../../../shared/styles/constants' as *;
+
+.dropdown {
+  width: 13.6rem;
+  margin: 3.2rem 0 2.4rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  position: relative;
+
+  @include for-desktops {
+    margin: 4.0rem 0 2.4rem;
+  }
+
+  &__label {
+    font-weight: $font-weight-bold;
+    font-size: 1.2rem;
+    color: $secondary-color;
+  }
+
+  &__trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4.0rem;
+
+    border: 0.1rem solid rgba(180, 189, 195, 1);
+
+    font-weight: $font-weight-bold;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+  }
+
+  &__arrow {
+    height: 1.6rem;
+    width: 1.6rem;
+
+    transform: rotate(90deg);
+    fill: $tertiary-color;
+  }
+
+  &__menu {
+    border: $border-primary;
+    box-shadow: 0 0.2rem 1.5rem 0 $shadow;
+    background-color: white;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+
+  }
+
+  &__menuItem {
+    height: 3.2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: 500;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+    color: $secondary-color;
+
+    transition: color 0.5s ease;
+
+    &:hover {
+      color: $primary-color;
+    }
+
+    &__active {
+      border: 0.1rem solid black;
+    }
+  }
+
+}

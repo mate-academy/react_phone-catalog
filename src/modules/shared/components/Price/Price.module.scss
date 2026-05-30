@@ -1,0 +1,34 @@
+@use '../../../shared/styles/mixins' as *;
+@use '../../styles/constants' as *;
+
+.price {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  height: 3.1rem;
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+
+  @include for-desktops {
+    grid-area: price;
+  }
+
+
+  &__value {
+    font-weight: $font-weight-extra-bold;
+    font-size: $font-size-medium;
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: $black;
+  }
+
+  &__discount {
+    font-weight: $font-weight-medium;
+    font-size: $font-size-medium;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-decoration: line-through;
+    color: $secondary-color;
+  }
+}

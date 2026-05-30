@@ -1,0 +1,114 @@
+@use './mixins' as *;
+
+@font-face {
+  font-family: Mont;
+  src: url(/fonts/Mont-Bold.otf) format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url(/fonts/Mont-SemiBold.otf) format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url(/fonts/Mont-Regular.otf) format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: Mont, sans-serif;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: none;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+footer, header, nav, section, main{
+  display: block;
+}
+
+body{
+  line-height: 1;
+}
+
+ol, ul{
+  list-style: none;
+}
+
+blockquote, q{
+  quotes: none;
+}
+
+blockquote::before, blockquote::after, q::before, q::after{
+  content: '';
+  content: none;
+}
+
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input{
+  border-radius: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+h1 {
+  font-weight: 800;
+  font-style: bold;
+  font-size: 3.2rem;
+  line-height: 4.1rem;
+  letter-spacing: -0.01rem;
+
+  @include for-tablets {
+    font-size: 4.8rem;
+    line-height: 5.6rem;
+  }
+}
+
+h2 {
+  font-weight: 800;
+  font-style: bold;
+  font-size: 2.2rem;
+  line-height: 140%;
+
+  @include for-tablets {
+    font-size: 3.2rem;
+    line-height: 4.1rem;
+  }
+}

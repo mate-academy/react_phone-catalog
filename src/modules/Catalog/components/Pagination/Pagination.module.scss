@@ -1,0 +1,42 @@
+@use '../../../shared/styles/mixins' as *;
+@use '../../../shared/styles/constants' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  margin: 2.4rem 0 6.4rem;
+
+  @include for-tablets {
+    margin: 4.0rem 0 6.4rem;
+  }
+
+  &__pages {
+    display: flex;
+    justify-content: center;
+
+    gap: 0.8rem;
+
+    margin: $margin-horizontal-small;
+  }
+
+  &__page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 3.2rem;
+    width: 3.2rem;
+
+    border: $border-primary;
+
+    font-weight: $font-weight-medium;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+
+    &_active {
+      background-color: $primary-color;
+      color: $white;
+    }
+  }
+}

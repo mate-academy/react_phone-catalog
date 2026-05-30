@@ -70,7 +70,7 @@ There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
    - Save the sort value in the URL `?sort=age` and apply it after the page reload.
 8. Add `Pagination` buttons and `Items on page` select element with `4`, `8`, `16`, and `all` options.
    - It should limit the products you show to the user;
-   - Save pagination params in the URL `?page=2&perPage=8` (`page=1` and `perPage=all` are the default values and should not be added to the URL;
+   - Save pagination params in the URL `?page=2&perPage=8` `page=1` and `perPage=all` are the default values and should not be added to the URL;
    - Hide pagination elements if they do not make sense;
    - You can use the logic explained in [the React Pagination task](https://github.com/mate-academy/react_pagination#react-pagination).
 

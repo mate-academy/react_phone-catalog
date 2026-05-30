@@ -1,0 +1,60 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/constants' as *;
+
+.breadcrumbs {
+  padding-top: 2.4rem;
+
+  @include for-tablets {
+    grid-area: bread;
+  }
+
+  &__path {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+
+    &>li[aria-current='page'] {
+      flex-shrink: 1;
+      min-width: 0;
+    }
+  }
+
+  &__link {
+    padding: 0;
+
+    font-weight: $font-weight-bold;
+    font-size: 1.2rem;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    text-decoration: none;
+
+    &:visited {
+      color: inherit;
+    }
+  }
+
+  &__icon {
+    width: 1.6rem;
+    height: 1.6rem;
+
+    &_color {
+      fill: $tertiary-color;
+    }
+  }
+
+  &__text {
+    font-weight: $font-weight-bold;
+    font-size: 1.2rem;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    display: block;
+
+    color: $secondary-color;
+  }
+}

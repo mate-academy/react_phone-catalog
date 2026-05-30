@@ -1,0 +1,84 @@
+@use '../../styles/constants' as *;
+@use '../../styles/mixins' as *;
+
+a {
+  text-decoration: none;
+}
+
+.link {
+  font-weight: $font-weight-extra-bold;
+  font-size: 1.2rem;
+  line-height: 1.1rem;
+  letter-spacing: 0.04rem;
+  text-transform: uppercase;
+  padding-bottom: 0.8rem;
+  color: $secondary-color;
+
+  &_active {
+    color: $primary-color;
+    border-bottom: 0.3rem solid $primary-color;
+  }
+
+  @include for-tablets {
+    padding-bottom: 1.35rem;
+  }
+}
+
+.iconLink {
+  height: 6.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+
+  position: relative;
+
+  @include for-tablets {
+    height: 4.8rem;
+    width: 4.8rem;
+
+    flex: none;
+  }
+
+  &:not(:last-child) {
+    border-right: $border-primary;
+  }
+
+  &__icon {
+    height: 1.6rem;
+    width: 1.6rem;
+  }
+
+  &__counter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    padding: 0 0.3rem;
+
+    display: inline-flex;
+    block-size: 1.4rem;
+    min-inline-size: 1.4rem;
+    inline-size: auto;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+
+    background: #ef4444;
+    color: #fff;
+
+    font-weight: $font-weight-medium;
+    font-size: 0.9rem;
+    line-height: 1;
+    white-space: nowrap;
+
+    pointer-events: none;
+    transform: translate(0.2rem, -1.4rem);
+    transition: opacity .15s ease, transform .15s ease;
+
+    @include for-tablets {
+       transform: translate(0.2rem, -1.4rem);
+    }
+  }
+}
+

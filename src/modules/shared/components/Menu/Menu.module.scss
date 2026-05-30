@@ -1,0 +1,127 @@
+@use '../../styles/constants' as *;
+@use '../../styles/mixins' as *;
+
+.menu {
+  position: fixed;
+  inset: 4.8rem 0 0;
+  z-index: 900;
+
+  overflow-y: hidden;
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: transform 0.7s ease, opacity 0.7s ease, visibility 0s ease 0.7s;
+  will-change: transform, opacity;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background-color: $white;
+
+  @include for-tablets {
+    width: 100%;
+
+    position: static;
+    inset: 0;
+    z-index: auto;
+
+    overflow-y: none;
+    transform: none;
+    transition: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: visible;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+    background-color: transparent;
+  }
+
+  &_open {
+    transform: translateY(0);
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+
+    transition: transform 0.7s ease, opacity 0.7s ease, visibility 0s;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include for-tablets {
+      flex-direction: row;
+      gap: 3.2rem;
+    }
+
+    @include for-desktops {
+      gap: 6.4rem;
+    }
+  }
+
+  &__item {
+    margin: 3.2rem 1.6rem 0;
+
+    @include for-tablets {
+      margin: 0;
+    }
+
+    &:first-child {
+      margin-top: 2.4rem;
+
+      @include for-tablets {
+        margin: 0;
+      }
+    }
+  }
+
+  &__iconsWrapper {
+    height: 6.4rem;
+    display: flex;
+    border: $border-primary;
+
+    @include for-tablets {
+      height: 4.8rem;
+    }
+
+    @include for-desktops {
+      height: 6.4rem;
+    }
+  }
+
+  &__iconLink {
+    height: 6.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+
+
+    &:not(:last-child) {
+      border-right: $border-primary;
+    }
+
+    @include for-tablets {
+      height: 4.8rem;
+      flex: none;
+    }
+
+    @include for-desktops {
+      height: 6.4rem;
+      width: 6.4rem;
+    }
+  }
+
+  &__icon {
+    height: 1.6rem;
+    width: 1.6rem;
+  }
+}
+

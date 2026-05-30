@@ -1,0 +1,67 @@
+@use '../../../shared/styles/mixins' as *;
+@use '../../../shared/styles/constants' as *;
+
+.productGallery {
+  margin: 3.2rem 0 4.0rem;
+
+  @include for-tablets {
+    grid-area: picture;
+
+    margin-top: 4.0rem;
+
+    align-self: start;
+
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 1.6rem;
+  }
+
+  &__image {
+    height: 28.8rem;
+    aspect-ratio: 1/1;
+
+    @include for-desktops {
+      height: 46.4rem;
+    }
+  }
+
+  &__thumbnails {
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+
+    padding: 1.6rem 0;
+
+    @include for-tablets {
+      flex-direction: column;
+
+      padding: 0;
+
+    }
+
+    @include for-desktops {
+      gap: 1.6rem;
+    }
+  }
+
+  &__thumbnail {
+    height: 4.9rem;
+    width: 5.1rem;
+
+    border: 0.1rem solid rgba(196, 196, 196, 1);
+
+    @include for-desktops {
+      height: 6.6rem;
+      width: 6.6rem;
+    }
+
+    &_active {
+      border: 0.1rem solid $primary-color;
+    }
+  }
+
+  &__button {
+    padding: 0;
+  }
+}

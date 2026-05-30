@@ -1,0 +1,89 @@
+@use '../shared/styles/mixins' as *;
+
+.productDetailsPage {
+  overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.6rem;
+
+  @include for-tablets {
+    display: grid;
+    // stylelint-disable declaration-block-no-redundant-longhand-properties
+    grid-template-columns: 1fr 23.7rem;
+    grid-template-rows: repeat(9, auto);
+    grid-template-areas:
+    "bread bread"
+    "back back"
+    "titleH2 titleH2"
+    "picture controls"
+    "about about"
+    "titleH3 titleH3"
+    "line line"
+    "techs techs"
+    "slider slider";
+
+    column-gap: 1.7rem;
+
+    align-items: center;
+
+    padding: 0 2.4rem;
+  }
+
+  @include for-desktops {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, auto) max-content max-content 1fr auto;
+    grid-template-areas:
+    "bread bread"
+    "back back"
+    "titleH2 titleH2"
+    "picture controls"
+    "about titleH3"
+    "about line"
+    "about techs"
+    "slider slider";
+
+    padding: 0 3.2rem;
+
+    align-items: start;
+    justify-content: start;
+  }
+
+  &__h2 {
+    color: rgba(49, 50, 55, 1);
+
+    @include for-tablets {
+      grid-area: titleH2;
+    }
+  }
+
+  &__h3 {
+    font-weight: 700;
+    font-size: 2.0rem;
+    line-height: 100%;
+
+    @include for-tablets {
+      grid-area: titleH3;
+
+      font-size: 2.2rem;
+      font-weight: 800;
+    }
+
+    @include for-desktops {
+      margin: 8rem 0 0;
+    }
+  }
+
+  &__line {
+    margin: 1.6rem 0 3rem;
+    grid-area: line;
+  }
+
+  & &__specsLean {
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+  }
+}
+
+
+

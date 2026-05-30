@@ -1,0 +1,48 @@
+/* stylelint-disable */
+// COLORS
+$primary-color: rgba(49, 50, 55, 1);
+$secondary-color: rgba(137, 147, 154, 1);
+$border-color: rgba(226, 230, 233, 1);
+$tertiary-color: rgba(180, 189, 195, 1);
+$black: rgba(0, 0, 0, 1);
+$white: rgba(255, 255, 255, 1);
+$overlay: rgba(0, 0, 0, 0.6);
+$shadow: rgba(0, 0, 0, 0.15);
+// FONTS
+$font-family-primary: Mont, sans-serif;
+// FONT-WEIGHT
+$font-weight-medium: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+// FONT-SIZE
+$font-size-small: 1.4rem;
+$font-size-medium: 2.2rem;
+$font-size-large: 3.2rem;
+$font-size-extra-large: 4.8rem;
+// LINE
+$line-height-small: 2.1rem;
+$line-height-medium: 140%;
+$line-height-large: 4.1rem;
+$line-height-extra-large: 5.6rem;
+// MARGIN
+$margin-horizontal-small: 0 1.6rem;
+$margin-horizontal-medium: 0 2.4rem;
+$margin-vertical-small: 1.6rem 0;
+$margin-vertical-medium: 3.2rem 0;
+// PADDING
+$padding-horizontal-large: 0 3.2rem;
+$padding-vertical-medium: 2.4rem 0;
+$padding-vertical-large: 3.2rem 0;
+// BORDER
+$border-primary: 0.1rem solid $border-color;
+// OTHERS
+$transition-default: all 0.3s;
+$cursor-pointer: pointer;
+// MAX-WIDTH
+$max-width: 120rem;
+// PRODUCT-CARD WIDTH
+$mobile-product-card-width: 21.2rem;
+$tablet-product-card-width: 23.7rem;
+$desktop-product-card-width: 27.2rem;
+$mobile-product-card-gap: 1.6rem;
+

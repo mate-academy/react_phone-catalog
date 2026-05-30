@@ -1,0 +1,31 @@
+@use '../../../shared/styles/mixins' as *;
+
+.categories {
+  display: flex;
+  flex-direction: column;
+
+  @include for-tablets {
+    display: grid;
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+    "title title title"
+    "phones tablets accessories";
+
+    column-gap: 1.6rem;
+  }
+
+  h2 {
+    margin-bottom: 2.4rem;
+    grid-area: title;
+  }
+
+  & > :nth-child(n + 3) {
+    margin-top: 3.2rem;
+
+    @include for-tablets {
+      margin-top: 0;
+    }
+  }
+}
