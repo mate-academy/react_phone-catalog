@@ -1,0 +1,53 @@
+@use '../../../../style' as *;
+
+.section {
+  @include section;
+}
+
+.container {
+  @include containerFlex;
+}
+
+.title {
+  @include heading;
+}
+
+.topRow {
+  @include flex-between;
+  margin-bottom: rem(24);
+
+  @media (max-width: $desktop) {
+    margin-right: rem(24);
+  }
+
+  @media (max-width: $tablet) {
+    margin-right: rem(16);
+  }
+}
+
+.sliders {
+  @include flex-center($isInline: false);
+}
+
+.slider {
+  @include slider;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.left {
+  margin-right: rem(16);
+}
+
+.sliderTrack {
+  overflow: hidden;
+}
+
+.productCardsContainer {
+  display: flex;
+  gap: rem(16);
+  transition: transform 0.5s ease;
+}

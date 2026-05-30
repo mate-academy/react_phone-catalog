@@ -1,0 +1,83 @@
+@use './functions' as *;
+
+@mixin flex-center($isInline: false) {
+  @if $isInline {
+    display: inline-flex;
+  } @else  {
+    display: flex;
+  }
+
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin section {
+  max-width: rem(1440);
+  margin: 0 auto rem(80);
+  padding: 0;
+
+  @media (max-width: $desktop) {
+    padding: 0 0 0 rem(24);
+  }
+
+  @media (max-width: $tablet) {
+    padding: 0 0 0 rem(16);
+  }
+}
+
+@mixin heading($size: 'default') {
+  font-weight: 800;
+  margin: 0;
+  color: var(--gray-primary);
+
+  @if $size == 'large' {
+    @include fluid-text(48, 38);
+
+    line-height: 117%;
+    letter-spacing: -0.03em;
+  } @else {
+    @include fluid-text(32, 32);
+
+    line-height: 128%;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin container {
+  max-width: rem(1140);
+  width: 100%;
+  margin: 0 auto;
+}
+
+@mixin containerFlex {
+  @include container;
+
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin icon {
+  border-left: var(--border);
+  border-right: var(--border);
+  padding: rem(24);
+
+  @media (max-width: $desktop) {
+    padding: rem(16);
+  }
+}
+
+@mixin slider {
+  @include flex-center($isInline: false);
+
+  width: rem(32);
+  height: rem(32);
+  border-radius: 100%;
+  border: 1px solid var(--gray--icons-placeholders);
+  background-color: var(--gray--white);
+}

@@ -1,0 +1,19 @@
+@use '../../style' as *;
+
+.container {
+  @include containerFlex;
+}
+
+.title {
+  @include heading;
+  align-self: center;
+}
+
+.image {
+  margin: rem(80) rem(80);
+  aspect-ratio: 1 / 1;
+
+  @media (max-width: $desktop) {
+    margin: rem(40) rem(40);
+  }
+}

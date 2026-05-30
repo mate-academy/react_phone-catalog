@@ -1,0 +1,54 @@
+@use '../../../../style' as *;
+
+.nav {
+  display: flex;
+  align-self: stretch;
+  gap: rem(64);
+  font-family: var(--font-family);
+  margin: 0 rem(24);
+
+  @media (max-width: $desktop) {
+    gap: rem(32);
+  }
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.link {
+  @include fluid-text(12, 12);
+
+  text-decoration: none;
+  color: var(--gray--secondary);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    color: var(--gray-primary);
+  }
+}
+
+.active {
+  color: var(--gray-primary);
+
+  @media (max-width: $tablet) {
+    padding-bottom: rem(8);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: rem(3);
+    border-radius: rem(5);
+    background: var(--gray-primary);
+  }
+}

@@ -1,0 +1,15 @@
+@use '../../../../style' as *;
+
+.button {
+  height: 100%;
+  margin-left: auto;
+  display: none;
+
+  @media (max-width: $tablet) {
+    display: flex;
+  }
+}
+
+.icon {
+  @include icon;
+}

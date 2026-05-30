@@ -1,0 +1,36 @@
+@use '../../../style' as *;
+
+.phones {
+  display: grid;
+  gap: rem(16);
+  justify-content: space-between;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  @media (min-width: $tablet) {
+    grid-template-columns: repeat(12, 1fr);
+    gap: rem(24);
+  }
+
+  @media (min-width: $desktop) {
+    gap: rem(16);
+    grid-template-columns: repeat(24, 1fr);
+  }
+}
+
+.catalogCard {
+  width: 100%;
+  grid-column: span 4;
+
+  @media (min-width: $tablet) {
+    grid-column: span 6;
+  }
+
+  @media (min-width: 800px) {
+    grid-column: span 4;
+  }
+
+  @media (min-width: $desktop) {
+    grid-column: span 6;
+  }
+}

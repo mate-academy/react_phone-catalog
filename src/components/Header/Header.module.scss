@@ -1,0 +1,50 @@
+@use '../../style' as *;
+
+.header {
+  position: sticky;
+  border-bottom: var(--border);
+  height: rem(64);
+  background-color: var(--gray--white);
+  top: 0;
+  z-index: 100;
+
+  @media (max-width: $desktop) {
+    height: rem(48);
+  }
+}
+
+.container {
+  @include flex-between;
+  max-width: rem(1440);
+  margin: 0 auto;
+  height: 100%;
+}
+
+.logo {
+  padding: rem(18) rem(24);
+
+  @media (max-width: $desktop) {
+    padding: rem(13) rem(16);
+  }
+}
+
+.logoImg {
+  display: block;
+  height: rem(28);
+
+  @media (max-width: $desktop) {
+    height: rem(22);
+  }
+}
+
+.icons {
+  margin-left: auto;
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.icon {
+  @include icon;
+}

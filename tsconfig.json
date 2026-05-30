@@ -4,7 +4,11 @@
     "src"
   ],
   "compilerOptions": {
+    "jsx": "react-jsx",
     "sourceMap": false,
-    "types": ["node", "cypress"]
+    "types": [
+      "node",
+      "cypress"
+    ]
   }
 }

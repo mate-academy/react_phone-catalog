@@ -1,0 +1,119 @@
+@use '../../../../style' as *;
+
+.section {
+  @include section;
+}
+
+.hero {
+  margin-top: rem(56);
+
+  @media (max-width: $desktop) {
+    margin-top: rem(32);
+    padding-right: rem(24);
+  }
+
+  @media (max-width: $tablet) {
+    margin-top: rem(24);
+    padding: 0;
+    overflow: hidden;
+  }
+}
+
+.container {
+  @include containerFlex;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+}
+
+.title {
+  @include heading('large');
+
+  margin-block: 0 rem(56);
+
+  @media (max-width: $tablet) {
+    margin-inline: rem(16);
+  }
+}
+
+.banner {
+  width: 100%;
+  min-height: rem(189);
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  border-radius: rem(8);
+  transition: background-image 0.5s ease;
+}
+
+.bannerMobile {
+  display: none;
+  border-radius: 0;
+  aspect-ratio: 1 / 1;
+
+  @media (max-width: $tablet) {
+    display: block;
+  }
+}
+
+.bannerDesktop {
+  display: block;
+  aspect-ratio: 13 / 5;
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.sliderButton {
+  border: 1px solid var(--gray--icons-placeholders);
+  border-radius: rem(48);
+  width: rem(32);
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.left {
+  margin-right: rem(16);
+
+  @media (max-width: $desktop) {
+    margin-right: rem(19);
+  }
+}
+
+.right {
+  margin-left: rem(16);
+
+  @media (max-width: $desktop) {
+    margin-left: rem(19);
+  }
+}
+
+.dots {
+  @include flex-between;
+
+  width: 80px;
+  height: rem(24);
+
+  margin: 0 auto;
+  margin-top: rem(8);
+  gap: rem(16);
+}
+
+.dot {
+  width: rem(14);
+  height: rem(4);
+
+  background-color: var(--gray--elements);
+  border-radius: rem(2);
+
+  transition: background-color 0.3s ease;
+}
+
+.active {
+  background-color: var(--gray-primary);
+}

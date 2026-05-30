@@ -1,0 +1,56 @@
+@use '../../../../style' as *;
+
+.section {
+  @include section;
+
+  @media (max-width: $desktop) {
+    padding-inline: rem(24);
+  }
+}
+
+.container {
+  @include containerFlex;
+}
+
+.title {
+  @include heading;
+  margin-bottom: rem(24);
+}
+
+.category {
+  @include flex-between;
+  gap: rem(16);
+  align-items: stretch;
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+  }
+}
+
+.image {
+  width: clamp(#{rem(187)}, 28vw, #{rem(368)});
+  margin-bottom: rem(24);
+  aspect-ratio: 1 / 1;
+
+  @media (max-width: $desktop) {
+    border-radius: rem(8);
+  }
+
+  @media (max-width: $tablet) {
+    width: 100%;
+  }
+}
+
+.categoryName {
+  font-weight: 700;
+  font-size: rem(20);
+  color: var(--gray-primary);
+  margin-bottom: rem(4);
+}
+
+.countOfModels {
+  font-weight: 500;
+  font-size: rem(14);
+  line-height: 150%;
+  color: var(--gray--secondary);
+}
