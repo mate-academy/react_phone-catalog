@@ -1,0 +1,21 @@
+@font-face {
+  font-family: Mont-Bold;
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Mont-Regular;
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
+}
+
+$primary: #0F0F11;
+$secondary: #89939A;
+$border-color: #E2E6E9;
+$main-page-color: #FAFBFC;
+$button-color: #4219d0;
+$text-shadow-color: #c9cfd3;
