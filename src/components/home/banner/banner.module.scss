@@ -1,0 +1,253 @@
+@import '../../../styles/main';
+
+* {
+  box-sizing: border-box;
+}
+
+.banner {
+  margin-top: 24px;
+
+  position: relative;
+
+  &__title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  @include on-tablet {
+    margin-top: 32px;
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    margin-top: 56px;
+    padding: 0 32px;
+  }
+
+  &_title {
+    font-family: Mont-bold, sans-serif;
+
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-top: 32px;
+    }
+
+    @include on-desktop {
+      margin-top: 56px;
+    }
+  }
+
+  &_img {
+    position: relative;
+
+    &_text {
+      min-width: 200px;
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      font-size: 25px;
+
+      text-decoration: none;
+      color: red;
+    }
+  }
+}
+
+.banner1 {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+
+  @include on-tablet {
+    max-width: calc(100% - 50px);
+    margin: 0 auto;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}
+
+.banner2 {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+
+  @include on-tablet {
+    max-width: calc(100% - 50px);
+    margin: 0 auto;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}
+
+.banner3 {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+
+  @include on-tablet {
+    max-width: calc(100% - 50px);
+    margin: 0 auto;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}
+
+.button_prev {
+  display: none;
+  position: fixed;
+  left: -16px;
+  height: 100%;
+  z-index: 1001;
+  width: 32px;
+  background-color: #fff;
+  border: 1px solid #b4bdc3;
+  background-image: url('../../../../public/img/littleImages/Arrow-left.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include on-tablet {
+    display: block;
+  }
+}
+
+.button_next {
+  display: none;
+  position: fixed;
+  height: 100%;
+  z-index: 1001;
+  right: -16px;
+  width: 32px;
+  background-color: #fff;
+  border: 1px solid #b4bdc3;
+  background-image: url('../../../../public/img/littleImages/Arrow-right.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include on-tablet {
+    display: block;
+  }
+}
+
+.button_order {
+  text-decoration: none;
+  display: none;
+  height: 40px;
+  width: 150px;
+  position: fixed;
+  border: 1px solid #b4bdc3;
+  border-radius: 28px;
+  bottom: 60px;
+  left: 100px;
+  transition: all $animation;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b4bdc3;
+    color: black;
+  }
+
+  @include on-desktop {
+    height: 60px;
+    width: 250px;
+    position: fixed;
+    border: 1px solid #b4bdc3;
+    border-radius: 28px;
+    bottom: 60px;
+    left: 100px;
+
+    &:hover {
+      transform: scale(1.05);
+      background-color: white;
+    }
+  }
+}
+
+.button_order2 {
+  text-decoration: none;
+  display: none;
+  height: 40px;
+  width: 150px;
+  position: fixed;
+  border: 1px solid #b4bdc3;
+  border-radius: 28px;
+  bottom: 60px;
+  left: 100px;
+  transition: all $animation;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b4bdc3;
+    color: black;
+  }
+
+  @include on-desktop {
+    height: 60px;
+    width: 250px;
+    position: fixed;
+    border: 1px solid #b4bdc3;
+    border-radius: 28px;
+    bottom: 60px;
+    left: 100px;
+
+    &:hover {
+      transform: scale(1.05);
+      background-color: white;
+    }
+  }
+}
+
+.button_order3 {
+  text-decoration: none;
+  display: none;
+  height: 40px;
+  width: 150px;
+  position: fixed;
+  border: 1px solid #b4bdc3;
+  border-radius: 28px;
+  bottom: 60px;
+  left: 100px;
+  transition: all $animation;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b4bdc3;
+    color: black;
+  }
+
+  @include on-desktop {
+    height: 60px;
+    width: 250px;
+    position: fixed;
+    border: 1px solid #b4bdc3;
+    border-radius: 28px;
+    bottom: 60px;
+    left: 100px;
+
+    &:hover {
+      transform: scale(1.05);
+      background-color: white;
+    }
+  }
+}

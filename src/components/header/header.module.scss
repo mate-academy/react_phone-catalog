@@ -1,0 +1,223 @@
+@import '../../styles/main';
+
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  box-shadow: 0 1px 1px 0 #e2e6e9;
+
+  &_cont {
+    padding-left: 16px;
+    padding-right: 16px;
+
+    @include on-tablet {
+      padding-right: 0;
+      padding-left: 24px;
+    }
+
+    @include on-desktop {
+      padding-left: 32px;
+    }
+  }
+
+  &_div {
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      justify-content: normal;
+    }
+
+    @include on-desktop {
+      height: 64px;
+    }
+  }
+
+  &_logo {
+    width: 64px;
+    height: 22px;
+
+    @include on-tablet {
+      margin-right: 32px;
+    }
+
+    @include on-desktop {
+      margin-right: 48px;
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  &_icon_open {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background-image: url(/img/littleImages/Menu-header.svg);
+    background-size: cover;
+  }
+
+  &_icon_close {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background-image: url(/public/img/littleImages/Close-header.svg);
+    background-size: cover;
+  }
+
+  &_menu {
+    align-content: center;
+    height: 48px;
+    padding-left: 16px;
+    box-shadow: -1px 1px 1px 0 #e2e6e9;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &_list {
+    @include on-tablet {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &_link {
+    border-bottom: 3px solid #fff;
+    text-decoration: none;
+    height: 100%;
+
+    font-family: Mont-bold, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    color: #89939a;
+    display: flex;
+    align-items: center;
+  }
+
+  &_nav {
+    display: none;
+
+    @include on-tablet {
+      height: 100%;
+      width: 100%;
+      display: flex;
+    }
+  }
+
+  &_favorite {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    border-left: 1px solid #e2e6e9;
+
+    min-width: 48px;
+    max-height: 48px;
+
+    @include on-desktop {
+      min-width: 64px;
+      max-height: 64px;
+    }
+  }
+
+  &_cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid #e2e6e9;
+    border-right: 1px solid #e2e6e9;
+    min-width: 48px;
+    max-height: 48px;
+
+    @include on-desktop {
+      min-width: 64px;
+      max-height: 64px;
+    }
+  }
+
+  &_icon1 {
+    transition:
+      background-image 0.5s ease,
+      transform 0.5s ease;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+    position: relative;
+    background-image: url('../../../public/img/littleImages/Favourites-header.svg');
+
+    &_quan {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      min-width: 14px;
+      min-height: 14px;
+      border-radius: 50%;
+      background-color: #eb5757;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 600;
+      line-height: 11.5px;
+      position: absolute;
+      top: -5px;
+      right: -5px;
+    }
+  }
+
+  &_icon2 {
+    position: relative;
+    transition:
+      background-image 0.5s ease,
+      transform 0.5s ease;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+    background-image: url('../../../public/img/littleImages/Shopping-bag-header.svg');
+  }
+}
+
+.header_title_inv {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.header_favorite:hover .header_icon1 {
+  transform: scale(1.2);
+}
+
+.header_cart:hover .header_icon2 {
+  transform: scale(1.2);
+}
+
+.is_active {
+  border-bottom: 3px solid #313237;
+  color: #313237;
+}
