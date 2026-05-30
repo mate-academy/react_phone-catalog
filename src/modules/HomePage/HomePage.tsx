@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { SectionWelcome } from './components/SectionWelcome';
 import { SectionHotPrice } from './components/SectionHotPrice';
 
@@ -7,6 +7,7 @@ import { SectionCategories } from './components/SectionCategories';
 import { SectionNewBrand } from './components/SectionNewBrand';
 
 export const HomePage: React.FC = () => {
+
   return (
     <main className={styles.main}>
       <SectionWelcome />

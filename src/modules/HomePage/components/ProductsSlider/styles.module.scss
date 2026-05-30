@@ -29,6 +29,7 @@
 
 .swiperContainer {
   @include padding-container(10px);
+  min-width: 0;
 }
 
 .swiperWrapper {
@@ -37,22 +38,42 @@
 
 .swiper {
   padding: 10px;
+  width: 100%;
+  min-width: 0;
 }
 
 .slide {
   height: auto;
-
-  width: calc(((100% - (16px * 3)) / 4) * 3 + (16px * 2));
-
-  &:not(&:last-child) {
-    margin-right: 16px;
-  }
-
-  @include on-tablet {
-    width: calc(((100% - (16px * 11)) / 12) * 5 + (16px * 4));
-  }
-
-  @include on-desktop {
-    width: calc(((100% - (16px * 23)) / 24) * 6 + (16px * 5));
-  }
+  min-width: 0;
 }
+
+:global(.swiper) {
+  width: 100%;
+}
+
+:global(.swiper-wrapper) {
+  min-width: 0;
+}
+
+
+.swiperContainer {
+  @include padding-container(10px);
+
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.swiper {
+  width: 100%;
+  min-width: 0;
+  overflow: visible;
+  padding: 10px;
+}
+
+.slide {
+  height: auto;
+  min-width: 0;
+}
+
+

@@ -1,7 +1,7 @@
 import { ButtonSecond } from '@/components/ButtonSecond/ButtonSecond';
 import styles from './styles.module.scss';
 import { ProductCard } from '@/components/ProductCard';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { Swiper as SwiperType } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -29,6 +29,16 @@ type Props = {
 export const ProductsSlider: React.FC<Props> = ({ lengthSlides, products, isLoading, title }) => {
   const swiperRef = useRef<SwiperType | null>(null);
 
+
+  const ggg = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!ggg) {
+      return;
+    }
+    console.log(ggg.current?.clientHeight);
+  }, [products]);
+
   useEffect(() => {
     const onResize = () => {
       swiperRef.current?.update();
@@ -40,6 +50,8 @@ export const ProductsSlider: React.FC<Props> = ({ lengthSlides, products, isLoad
       window.removeEventListener('resize', onResize);
     };
   }, []);
+
+  
 
   return (
     <>
@@ -57,33 +69,52 @@ export const ProductsSlider: React.FC<Props> = ({ lengthSlides, products, isLoad
           </div>
         </div>
       </div>
-      <div className={styles.swiperContainer}>
+      <div   ref={ggg} className={styles.swiperContainer}>
         <div>
-          <Swiper
+          <Swiper 
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}
-            slidesPerView="auto"
+            virtual
+            spaceBetween={16}
+            slidesPerView={4 / 3}
+            breakpoints={{
+              640: {
+                slidesPerView: 12 / 5,
+                spaceBetween: 16,
+              },
+              1200: {
+                slidesPerView: 24 / 6,
+                spaceBetween: 16,
+              },
+            }}
             onResize={(swiper) => {
               swiper.setTranslate(swiper.translate);
             }}
-            virtual
             navigation={{
               prevEl: `.${styles.sliderButtonPrev}`,
               nextEl: `.${styles.sliderButtonNext}`,
             }}
-            autoplay={
-              isLoading
-                ? {}
-                : {
-                    delay: 3500,
-                    disableOnInteraction: true,
-                  }
-            }
+            // autoplay={
+            //   isLoading
+            //     ? {}
+            //     : {
+            //         delay: 3500,
+            //         disableOnInteraction: true,
+            //       }
+            // }
             modules={[FreeMode, Navigation, Autoplay, Virtual]}
             className={styles.swiper}
           >
-            {products &&
+            <SwiperSlide>
+              <div className={styles.divTest}>
+                <h2>Hello!</h2>
+                <h2>Hello!</h2>
+                <h2>Hello!</h2>
+                <h2>Hello!</h2>
+              </div>
+            </SwiperSlide>
+            {/* {products.length !== 0 &&
               products.slice(0, lengthSlides).map((product) => (
                 <SwiperSlide
                   className={styles.slide}
@@ -94,14 +125,14 @@ export const ProductsSlider: React.FC<Props> = ({ lengthSlides, products, isLoad
                 </SwiperSlide>
               ))}
 
-            {isLoading &&
+            {products.length === 0 &&
               Array.from({ length: lengthSlides }).map((_, index) => {
                 return (
                   <SwiperSlide key={index} className={styles.slide} virtualIndex={index}>
                     <ProductCard />
                   </SwiperSlide>
                 );
-              })}
+              })} */}
           </Swiper>
         </div>
       </div>

@@ -8,12 +8,23 @@ type Props = {
 };
 
 export const ProductsList: React.FC<Props> = ({ products }) => {
+
+
+
   return (
     <div className={styles.container}>
-      {products.map((product) => {
+      {products.length !== 0 && products.map((product) => {
         return (
-          <div className={styles.productCard}>
-            <ProductCard key={product.id} product={product}></ProductCard>
+          <div key={product.id} className={styles.productCard}>
+            <ProductCard  product={product}></ProductCard>
+          </div>
+        );
+      })}
+ 
+      {products.length === 0 && Array.from({ length: 30 }).map((_, index) => {
+        return (
+          <div key={index} className={styles.productCard}>
+            <ProductCard ></ProductCard>
           </div>
         );
       })}

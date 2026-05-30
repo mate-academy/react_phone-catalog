@@ -1,7 +1,7 @@
 // @use './shared/styles/utils/reset';
 
+@use './shared/styles/base' as *;
 @use './shared/styles' as *;
-
 .page {
   scroll-behavior: smooth;
   font-family: 'Mont', sans-serif;
@@ -11,14 +11,13 @@
   min-width: 320px;
 }
 
-
-
 body::-webkit-scrollbar {
   width: 10px;
   background-color: color-mix(in srgb, var(--text), transparent 70%);
 }
 
 body::-webkit-scrollbar-thumb {
-  background: var(--h);
+  background: color-mix(in srgb, var(--h), var(--line-and-border) 30%);
+
   border-radius: 5px;
 }

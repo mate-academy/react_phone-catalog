@@ -5,6 +5,7 @@ import styles from './styles.module.scss';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { ProductsList } from '@/components/ProductsList';
 import { useProducts } from '@/app/providers/Products/ProductsContext';
+import { Dropdown } from '@/components/Dropdown';
 
 export const PhonesPage: React.FC = () => {
   const { pathname } = useLocation();
@@ -22,7 +23,8 @@ export const PhonesPage: React.FC = () => {
       <div className={styles.content}>
         <Breadcrumbs></Breadcrumbs>
         <h1>Mobile phones</h1>
-        {products && <ProductsList products={products.slice(0, 30)}></ProductsList>}
+        <Dropdown></Dropdown>
+        {<ProductsList products={products?.slice(0, 30) || []}></ProductsList>}
       </div>
     </main>
   );

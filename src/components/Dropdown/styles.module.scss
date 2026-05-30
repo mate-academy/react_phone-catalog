@@ -1,0 +1,83 @@
+@use '@/shared/styles' as *;
+
+.dropdown {
+  position: relative;
+}
+
+.trigger {
+  box-sizing: border-box;
+  color: var(--h);
+  background-color: #323542;
+  padding: 10px 12px;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  border: 1px solid #323542;
+
+  &:hover {
+    background-color: #3d4050;
+    border: 1px solid #5a5f74;
+  }
+}
+
+.list {
+  background-color: var(--bg);
+}
+
+.content {
+  z-index: 1;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  border: 1px solid var(--line-and-border);
+  transform: translateY(-10px);
+  transition:
+    opacity $transition,
+    transform $transition,
+    max-height $transition;
+
+  overflow: hidden;
+  overflow-y: hidden;
+  max-height: 0;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+}
+
+.isActive .content {
+  display: block;
+  pointer-events: all;
+  opacity: 1;
+  transform: translateY(4px);
+
+  max-height: 200px;
+}
+
+.itemButton {
+  padding: 10px 12px;
+  background: none;
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+
+  color: var(--text);
+
+  &:hover {
+    background-color: var(--line-and-border);
+    color: var(--h);
+  }
+}
+
+.content::-webkit-scrollbar {
+  width: 3px;
+  background-color: color-mix(in srgb, var(--text), var(--line-and-border) 70%);
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--h), var(--line-and-border) 30%);
+  border-radius: 5px;
+}

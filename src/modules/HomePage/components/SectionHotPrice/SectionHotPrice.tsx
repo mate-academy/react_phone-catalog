@@ -1,6 +1,5 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-
 
 // Import Swiper styles
 import 'swiper/css';
@@ -20,6 +19,8 @@ export const SectionHotPrice = () => {
   const { products, loading, loadProducts } = useProducts();
   const { t } = useTranslation();
 
+
+
   useEffect(() => {
     loadProducts();
   }, [loadProducts]);
@@ -36,7 +37,7 @@ export const SectionHotPrice = () => {
   }, [products]);
 
   return (
-    <section>
+    <section >
       <ProductsSlider
         products={hotProduct}
         title={t('HomeTitle.hotPrice')}
