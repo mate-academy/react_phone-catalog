@@ -1,0 +1,87 @@
+@use '../../styles/vars';
+
+.dropdown {
+  position: relative;
+  width: 100%;
+
+  &__button {
+    width: 100%;
+    padding: 12px 16px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 16px;
+    font-weight: vars.$font-weight-semi-bold;
+    color: vars.$color-primary;
+
+    background-color: white;
+    border: 1px solid vars.$color-elements;
+    border-radius: 4px;
+    cursor: pointer;
+
+    transition:
+      border-color vars.$transition-time,
+      box-shadow vars.$transition-time;
+
+    &:hover {
+      border-color: vars.$color-secondary;
+    }
+
+    &--opened {
+      border-color: vars.$color-primary !important;
+      box-shadow: 0 0 0 1px vars.$color-primary;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+  }
+
+  &__container {
+    position: absolute;
+    margin-top: 4px;
+    padding: 8px 1px;
+
+    right: 0;
+    left: 0;
+
+    background-color: white;
+    border: 1px solid vars.$color-elements;
+    border-radius: 4px;
+    box-shadow: 0 2px 15px 0 #0000000d;
+    z-index: 10;
+  }
+
+  &__item {
+    width: 100%;
+    padding: 6px 12px;
+    box-sizing: border-box;
+
+    color: vars.$color-secondary;
+    background-color: white;
+    cursor: pointer;
+
+    transition:
+      color vars.$transition-time,
+      background-color vars.$transition-time;
+
+    &:hover {
+      color: vars.$color-primary;
+      background-color: vars.$color-hover;
+    }
+
+    &-text {
+      pointer-events: none;
+
+      color: vars.$color-secondary;
+
+      &--selected {
+        color: vars.$color-primary;
+      }
+    }
+  }
+}
