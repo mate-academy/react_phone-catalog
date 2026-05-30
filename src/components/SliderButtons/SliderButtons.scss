@@ -1,0 +1,29 @@
+@import '../../styles/index';
+
+.swiper-buttons-wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.swiper-button-next-brandNew,
+.swiper-button-next-hotPrices,
+.swiper-button-next-recommendations {
+  svg {
+    rotate: 180deg;
+  }
+}
+
+.swiper-button-prev-brandNew,
+.swiper-button-next-brandNew {
+  @include swiper-buttons;
+}
+
+.swiper-button-prev-hotPrices,
+.swiper-button-next-hotPrices {
+  @include swiper-buttons;
+}
+
+.swiper-button-next-recommendations,
+.swiper-button-prev-recommendations {
+  @include swiper-buttons;
+}

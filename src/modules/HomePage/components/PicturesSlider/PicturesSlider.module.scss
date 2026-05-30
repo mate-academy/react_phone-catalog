@@ -1,0 +1,164 @@
+@import '../../../../styles/index';
+
+.swiper {
+  &__wrapper {
+    position: relative;
+    max-width: 1040px;
+    margin: 56px auto 112px;
+
+    @media (max-width: 1199px) {
+      max-width: 840px;
+    }
+
+    @media (max-width: 991px) {
+      max-width: 620px;
+
+      margin: 32px auto 96px;
+    }
+
+    @media (max-width: 767px) {
+      max-width: 450px;
+    }
+
+    @media (max-width: 575px) {
+      max-width: initial;
+      width: 100vw;
+      margin-left: -16px;
+    }
+  }
+
+  &__image {
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+
+    @media (max-width: 991px) {
+      height: 221px;
+    }
+
+    @media (max-width: 575px) {
+      border-radius: initial;
+    }
+
+    @media (max-width: 424px) {
+      height: initial;
+      aspect-ratio: 1;
+    }
+
+    &--1 {
+      background-image: url('../../../../../public/img/banner-new-phone.png');
+      flex: 1;
+      background-size: contain;
+
+      &--mob {
+        @media (max-width: 424px) {
+          background-image: url('../../../../../public/img/banner-new-phone-mob.png');
+        }
+      }
+    }
+
+    &--2 {
+      background-image: url('../../../../../public/img/banner-tablets.png');
+      background-position: center;
+      background-color: $grey-color;
+    }
+    &--3 {
+      background-image: url('../../../../../public/img/banner-accessories.png');
+      background-position: top;
+      background-color: $red-color;
+    }
+  }
+
+  &__banner {
+    @include flex;
+
+    align-items: center;
+    gap: 20px;
+    background-color: #010000;
+    border-radius: 8px;
+    height: 400px;
+
+    @media (max-width: 991px) {
+      height: 100%;
+    }
+
+    @media (max-width: 575px) {
+      border-radius: initial;
+    }
+
+    @media (max-width: 424px) {
+      display: none;
+    }
+
+    &__mobile {
+      display: none;
+
+      @media (max-width: 424px) {
+        display: block;
+      }
+    }
+  }
+
+  &__orderBlock {
+    @include flex;
+
+    flex-direction: column;
+    flex: 0.8;
+    gap: 20px;
+    background-color: #222;
+    height: 90%;
+    border-radius: 20px;
+    padding: 50px;
+    margin-left: 15px;
+
+    @media (max-width: 991px) {
+      padding: 20px;
+    }
+
+    p {
+      color: #999899;
+      margin-top: 15px;
+
+      @media (max-width: 991px) {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  &__orderTitle {
+    font-size: 42px;
+    background: linear-gradient(to right, #7743e8, #c068f6);
+    background-clip: text;
+    color: transparent;
+
+    @media (max-width: 991px) {
+      font-size: 28px;
+      line-height: 30px;
+    }
+
+    @media (max-width: 767px) {
+      font-size: 22px;
+    }
+  }
+
+  &__orderBtn {
+    @include button;
+    @include hover(
+      (background-color, #999899),
+      (color, #f5f4f4),
+      (border-color, #999899)
+    );
+
+    color: #f5f4f4;
+    text-transform: uppercase;
+    border: 1px solid #f5f4f4;
+    padding: 18px 0;
+    max-width: 200px;
+
+    @media (max-width: 991px) {
+      font-size: 14px;
+      padding: 12px;
+    }
+  }
+}

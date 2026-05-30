@@ -1,0 +1,270 @@
+@import '../../../../styles/index';
+
+.product {
+  &__details {
+    @include flex;
+
+    gap: 64px;
+    margin-top: 40px;
+
+    @media (max-width: 767px) {
+      gap: 16px;
+    }
+
+    @media (max-width: 575px) {
+      flex-direction: column;
+      gap: 40px;
+      margin-top: 32px;
+    }
+  }
+
+  &__images {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+
+    @media (max-width: 767px) {
+      gap: 10px;
+    }
+
+    @media (max-width: 575px) {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+  }
+
+  &__imagesWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+
+    @media (max-width: 991px) {
+      height: fit-content;
+    }
+
+    @media (max-width: 575px) {
+      flex-direction: row;
+    }
+  }
+
+  &__imageSelected {
+    display: flex;
+    justify-content: center;
+    width: 464px;
+
+    @media (max-width: 1199px) {
+      width: 320px;
+    }
+
+    @media (max-width: 991px) {
+      width: 237px;
+    }
+
+    img {
+      height: 464px;
+
+      @media (max-width: 991px) {
+        height: 320px;
+      }
+
+      @media (max-width: 767px) {
+        height: 250px;
+      }
+    }
+  }
+
+  &__image {
+    height: 80px;
+    width: 80px;
+    padding: 8px;
+    object-fit: contain;
+    border: 1px solid $elements-color;
+    border-radius: 8px;
+    cursor: pointer;
+
+    @media (max-width: 991px) {
+      height: 60px;
+      width: 60px;
+    }
+
+    @media (max-width: 767px) {
+      height: 50px;
+      width: 50px;
+    }
+
+    &__active {
+      border: 1px solid $main-text-color;
+    }
+  }
+
+  &__info {
+    @include flex;
+
+    gap: 15px;
+    flex: 1;
+    position: relative;
+  }
+
+  &__infoWrapper {
+    width: 320px;
+
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+  }
+
+  &__idNum {
+    text-align: right;
+    color: $grey-color;
+
+    @media (max-width: 991px) {
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  &__btns {
+    @include flex;
+
+    gap: 8px;
+    margin-top: 16px;
+
+    > :first-child {
+      flex-grow: 1;
+    }
+  }
+
+  &__characteristics {
+    margin-top: 32px;
+    > :not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__characteristic {
+    @include flex;
+
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 600;
+
+    &__name {
+      color: $secondary-text-color;
+    }
+  }
+
+  &__value {
+    text-align: right;
+  }
+
+  &__divider {
+    @include divider;
+  }
+
+  &__text {
+    color: $secondary-text-color;
+  }
+
+  &__optionsAvailable {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    margin-bottom: 24px;
+
+    @media (max-width: 767px) {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__colorBtn {
+    width: 32px;
+    height: 32px;
+    background-color: $white-color;
+    border: 1px solid $elements-color;
+    border-radius: 36px;
+  }
+
+  &__color {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid white;
+    border-radius: 36px;
+  }
+
+  &__colorActive {
+    border-color: $main-text-color;
+  }
+
+  &__capacityWrapper {
+    margin-top: 24px;
+  }
+
+  &__capacity {
+    border: 1px solid $elements-color;
+    border-radius: 4px;
+    padding: 7px 8px;
+  }
+
+  &__capacityActive {
+    background-color: $main-text-color;
+    color: $white-color;
+  }
+
+  &__prices {
+    margin-top: 32px;
+  }
+
+  &__description {
+    @include flex;
+
+    gap: 65px;
+    margin-top: 80px;
+
+    @media (max-width: 991px) {
+      flex-direction: column;
+    }
+  }
+
+  &__about,
+  &__tech {
+    width: 50%;
+
+    @media (max-width: 991px) {
+      width: 100%;
+    }
+  }
+
+  &__aboutWrapper {
+    margin-top: 32px;
+  }
+
+  &__aboutDesc {
+    margin-top: 16px;
+    font-weight: 500;
+    color: $secondary-text-color;
+  }
+
+  &__techSpecs {
+    margin-top: 25px;
+  }
+
+  &__spec {
+    @include flex;
+
+    margin-bottom: 8px;
+  }
+
+  &__specName {
+    font-weight: 500;
+    color: $secondary-text-color;
+  }
+
+  &__specValue {
+    font-weight: 500;
+  }
+
+  &__recommendations {
+    margin-top: 80px;
+  }
+}

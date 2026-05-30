@@ -1,0 +1,76 @@
+@import '../../../../styles/index';
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.4s ease-in-out,
+    visibility 0.4s ease-in-out;
+
+  &__active {
+    opacity: 1;
+    visibility: visible;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+  }
+}
+
+.modal {
+  position: absolute;
+  max-width: 400px;
+  z-index: 100;
+  border-radius: 16px;
+  background-color: $white-color;
+  border: 1px solid $elements-color;
+  padding: 24px;
+  transform: scale(0);
+  opacity: 0;
+  transition:
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+
+  &__active {
+    opacity: 1;
+    transform: scale(1);
+
+    @media (max-width: 374px) {
+      max-width: 300px;
+    }
+  }
+
+  &__question {
+    margin-top: 15px;
+  }
+
+  &__btns {
+    @include flex;
+
+    gap: 30px;
+    margin-top: 30px;
+
+    @media (max-width: 425px) {
+      gap: 15px;
+    }
+
+    & > div {
+      flex: 1;
+    }
+  }
+
+  &__cancelBtn div {
+    background-color: $white-color;
+    color: $accent-color;
+    border: 1px solid $elements-color;
+  }
+}

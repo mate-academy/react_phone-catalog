@@ -1,0 +1,26 @@
+@import '../../styles/index';
+
+.search {
+  display: flex;
+  gap: 10px;
+  margin-right: 25px;
+  border-left: 1px solid #e2e6e9;
+  padding: 21px;
+
+  @media (max-width: 991px) {
+    padding: 13px 12px;
+    margin-right: 0;
+  }
+
+  &__input {
+    padding-top: 3px;
+    font-size: 14px;
+    color: $main-text-color;
+    border: none;
+    outline: none;
+
+    @media (max-width: 815px) {
+      max-width: 130px;
+    }
+  }
+}

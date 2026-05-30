@@ -1,0 +1,52 @@
+.swiper-button-prev,
+.swiper-button-next {
+  display: block;
+  height: 100%;
+  top: 0;
+  margin: 0;
+  width: 32px;
+
+  @include button;
+
+  border: 1px solid $grey-color;
+  background-color: transparent;
+
+  @include hover((border-color, $main-text-color));
+
+  @media (max-width: 575px) {
+    display: none;
+  }
+
+  &::after {
+    content: '';
+  }
+}
+
+.swiper-button-next {
+  right: -50px;
+
+  svg {
+    rotate: 180deg;
+  }
+}
+
+.swiper-button-prev {
+  left: -50px;
+}
+
+.swiper-pagination {
+  bottom: -40px !important;
+  border: none;
+  background-color: transparent;
+
+  &-bullet {
+    width: 14px;
+    height: 4px;
+    border-radius: 0;
+    background-color: $secondary-text-color;
+  }
+
+  &-bullet-active {
+    background-color: $main-text-color !important;
+  }
+}

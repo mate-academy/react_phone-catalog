@@ -1,0 +1,136 @@
+@import '../../styles/index';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 110;
+  border-bottom: 1px solid $elements-color;
+
+  &__navbar {
+    @include flex;
+
+    align-items: center;
+    gap: 64px;
+    position: relative;
+    height: 64px;
+    z-index: 110;
+    background-color: $white-color;
+
+    @media (max-width: 991px) {
+      height: 48px;
+      gap: 35px;
+    }
+
+    @media (max-width: 767px) {
+      gap: 0;
+    }
+  }
+
+  &__img {
+    padding-left: 24px;
+
+    img {
+      @media (max-width: 991px) {
+        width: 64px;
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    margin-right: auto;
+
+    @media (max-width: 1199px) {
+      gap: 40px;
+    }
+
+    @media (max-width: 991px) {
+      gap: 32px;
+    }
+
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+
+  &__rightBlock {
+    @include flex;
+
+    align-items: center;
+
+    @media (max-width: 767px) {
+      margin-left: auto;
+    }
+
+    @media (max-width: 424px) {
+      display: none;
+    }
+  }
+
+  &__icons {
+    position: relative;
+    margin-left: auto;
+
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+
+  &__hamburger {
+    display: none;
+    padding: 20px;
+    border-left: 1px solid $elements-color;
+
+    @media (max-width: 767px) {
+      display: block;
+    }
+
+    & > span {
+      display: block;
+      width: 14px;
+      height: 1.5px;
+      background-color: $main-text-color;
+      border-radius: 8px;
+      &:not(:last-of-type) {
+        margin-bottom: 2px;
+      }
+    }
+  }
+
+  &__hamburgerMenu {
+    position: absolute;
+    z-index: 90;
+    translate: 0 -140%;
+    transition: translate 0.4s;
+    pointer-events: none;
+    left: 0;
+    width: 100%;
+    background: $white-color;
+
+    @include flex;
+
+    flex-direction: column;
+  }
+
+  &__menuOpen {
+    translate: 0 1px;
+    pointer-events: all;
+    height: calc(100vh - 48px);
+  }
+
+  &__mobileNav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding-top: 24px;
+  }
+
+  &__mobileIcons {
+    @include flex;
+
+    border-top: 1px solid $elements-color;
+  }
+}

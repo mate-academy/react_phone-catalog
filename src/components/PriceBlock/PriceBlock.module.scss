@@ -1,0 +1,24 @@
+@import '../../styles/index';
+
+.priceWrapper {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+
+  &__fullPrice {
+    position: relative;
+    color: $secondary-text-color;
+    font-weight: 500;
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 50%;
+      transform: translateY(-50%);
+      height: 1px;
+      width: 100%;
+      background-color: $secondary-text-color;
+      backdrop-filter: invert(75%);
+      mix-blend-mode: color-dodge;
+    }
+  }
+}

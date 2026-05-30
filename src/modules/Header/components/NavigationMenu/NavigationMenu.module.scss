@@ -1,0 +1,32 @@
+@import '../../../../styles/index';
+
+.navigation {
+  &__navItem {
+    color: $secondary-text-color;
+    padding: 26px 0;
+
+    @include hover((color, $main-text-color));
+
+    @media (max-width: 991px) {
+      padding: 18px 0;
+    }
+
+    @media (max-width: 767px) {
+      padding: 8px 0;
+    }
+  }
+
+  &__isActive {
+    color: $main-text-color;
+    border-bottom: 3px solid $main-text-color;
+    padding-bottom: 23px;
+
+    @media (max-width: 991px) {
+      padding-bottom: 15px;
+    }
+
+    @media (max-width: 767px) {
+      padding: 6px 0;
+    }
+  }
+}

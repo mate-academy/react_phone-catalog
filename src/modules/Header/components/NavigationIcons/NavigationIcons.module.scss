@@ -1,0 +1,58 @@
+@import '../../../../styles/index';
+
+.nav {
+  &__icon {
+    position: relative;
+    cursor: pointer;
+    padding: 24px;
+    border-left: 1px solid $elements-color;
+    line-height: 0;
+
+    @media (max-width: 991px) {
+      padding: 16px;
+    }
+
+    @media (max-width: 767px) {
+      padding: 24px 0;
+      flex: 1;
+      text-align: center;
+    }
+  }
+
+  &__iconCounter {
+    position: absolute;
+    top: 18px;
+    left: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 14px;
+    height: 14px;
+    border: 1px solid white;
+    background-color: $accent-color;
+    color: $white-color;
+    border-radius: 50%;
+    font-size: 9px;
+
+    @media (max-width: 991px) {
+      top: 10px;
+    }
+
+    @media (max-width: 767px) {
+      top: 19px;
+      left: 50%;
+    }
+  }
+
+  &__isActive {
+    color: $main-text-color;
+    border-bottom: 3px solid $main-text-color;
+    padding-bottom: 23px;
+
+    @media (max-width: 991px) {
+      padding-bottom: 15px;
+    }
+  }
+}
