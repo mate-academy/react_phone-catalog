@@ -1,0 +1,119 @@
+.rec-slider {
+  width: 100%;
+  position: relative;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 16px;
+
+    @media (min-width: 640px) {
+      padding: 24px;
+    }
+
+    @media (min-width: 1200px) {
+      padding: 32px;
+      padding-left: 0;
+    }
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    color: rgba(241, 242, 249, 1);
+    margin: 0;
+
+    @media (min-width: 640px) {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__container {
+    position: relative;
+    width: 100%;
+  }
+
+  &__nav-prev,
+  &__nav-next {
+    width: 32px;
+    height: 32px;
+    background-color: rgba(50, 53, 66, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 0;
+    transition: all 0.3s ease;
+
+    .slider-icon {
+      color: rgba(241, 242, 249, 1);
+    }
+
+    &:hover {
+      background-color: rgba(74, 77, 88, 1);
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .is-disabled {
+    background-color: transparent;
+    border: 1px solid rgba(59, 62, 74, 1);
+
+    .slider-icon {
+      color: rgba(74, 77, 88, 1);
+    }
+
+    &:hover {
+      background-color: transparent;
+      cursor: not-allowed;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.hot-prices {
+  display: flex;
+  gap: 8px;
+  position: relative;
+  margin-bottom: 16px;
+
+  &__price {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: rgba(241, 242, 249, 1);
+  }
+
+  &__full_price {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    text-decoration: line-through;
+    color: rgba(117, 118, 127, 1);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 40px;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(59, 62, 74, 1);
+  }
+}
