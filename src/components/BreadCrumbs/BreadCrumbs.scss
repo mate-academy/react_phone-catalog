@@ -1,0 +1,42 @@
+@import '../../styles/main';
+
+.breadCrumbs {
+  height: 16px;
+  gap: 8px;
+  margin-top: 24px;
+
+  &__contant {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 16px;
+    gap: 8px;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15.34px;
+    color: var(--secondary-color-dark);
+    text-decoration: none;
+
+    &-active {
+      color: var(--text-color);
+    }
+  }
+
+  &__arrow {
+    opacity: 0.5;
+  }
+}
+
+.box {
+  display: flex;
+}
+
+.img {
+  width: 40px;
+  height: 40px;
+  display: flex;
+}

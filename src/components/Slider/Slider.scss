@@ -1,0 +1,131 @@
+@import '../../styles/main';
+
+.Slider {
+  margin-top: 56px;
+
+  &__content {
+    overflow: hidden;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 16px;
+
+    @include on-tablet {
+      padding-right: 24px;
+    }
+
+    @include on-desktop {
+      padding-right: 32px;
+    }
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 30.8px;
+    color: var(--text-color);
+    width: 136px;
+
+    @include on-tablet {
+      width: 100%;
+      font-size: 32px;
+      line-height: 42px;
+      letter-spacing: -1%;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--surface-color2);
+    border: 1px solid var(--slider-border-btn);
+    cursor: pointer;
+
+    &-left {
+      &-disabled {
+        pointer-events: none;
+        background-color: var(--bg-color);
+      }
+    }
+
+    &-right-disabled {
+      pointer-events: none;
+      background-color: var(--bg-color);
+    }
+
+    &:hover {
+      border-color: $primaryColor;
+      background-color: var(--hov-bg-slider-btn);
+    }
+
+    &--leftImg {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__cardsBlock {
+    @include on-desktop {
+      max-width: 1136px;
+      overflow: hidden;
+    }
+  }
+
+  &__productCards {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    transition-duration: 0.5s;
+
+    @include on-desktop {
+      padding-right: 32px;
+    }
+
+    &-item {
+      height: 439px;
+      width: 212px;
+      border: 1px solid var(--elements-color);
+      padding: 32px;
+
+      &:hover {
+        border-color: var(--text-color);
+      }
+
+      @include on-tablet {
+        height: 512px;
+        width: 237px;
+      }
+
+      @include on-desktop {
+        height: 506px;
+        width: 272px;
+      }
+    }
+  }
+
+  &__container {
+    padding-left: 16px;
+
+    @include on-tablet {
+      padding-left: 24px;
+    }
+
+    @include on-desktop {
+      padding-left: 32px;
+      max-width: 1200px;
+      margin-inline: auto;
+    }
+  }
+}
