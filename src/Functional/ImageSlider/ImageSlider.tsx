@@ -45,7 +45,7 @@ export default function SliderSwiper() {
         </div>
 
         <button className="swiper--top-button-next" onClick={handleNextSlide}>
-          <img src="./icons/arrow-right-small.svg" alt="next" />
+          <img src="./icons/arrow-right-small-active.svg" alt="next" />
         </button>
       </div>
     </div>
