@@ -1,0 +1,48 @@
+@use '../../styles/index' as *;
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+
+  &__button {
+    background-color: $color-accent;
+
+    &:hover {
+      background-color: $color-accent-hover;
+    }
+
+    &--selected {
+      background-color: $color-surface-2;
+
+      &:hover {
+        background-color: $color-icons;
+        border: 1px solid $color-surface-2;
+      }
+    }
+  }
+
+  &__favourite {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    background-color: $border;
+
+
+    &--active {
+      background-color: transparent;
+      border: 1px solid $color-icons;
+    }
+
+    &:hover {
+      background-color: $color-icons;
+    }
+  }
+}

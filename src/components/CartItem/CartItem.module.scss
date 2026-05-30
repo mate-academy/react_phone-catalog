@@ -1,0 +1,138 @@
+@use '../../styles/index' as *;
+
+.cart-item {
+  grid-column: 1 / -1;
+  position: relative;
+
+  padding: 24px;
+  background-color: $color-surface-1;
+
+  grid-template-rows: 1fr 1fr;
+  row-gap: 16px;
+  align-items: center;
+
+
+  @include page-grid;
+
+  @include on-tablet {
+    grid-template-rows: none;
+  }
+
+  &__close {
+    position: absolute;
+    top: 42px;
+    left: 16px;
+    transition: all .3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include on-tablet {
+      position: static;
+    }
+  }
+
+  &__image {
+    position: relative;
+    left: 30px;
+    width: 66px;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      object-position: center;
+    }
+
+    @include on-tablet {
+      position: static;
+    }
+  }
+
+  &__item-name {
+    grid-column: span 3;
+    color:$color-white;
+
+    @include on-tablet {
+      grid-column: span 5;
+    }
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
+
+    & h3 {
+      font-weight: 400;
+      transition: color 0.3s;
+
+      &:hover {
+        color: rgba(255,255,255,0.85);
+      }
+    }
+  }
+
+  &__counter {
+    grid-column: span 1;
+
+    @include on-tablet {
+      grid-column: span 2 / -4;
+    }
+
+    @include on-desktop {
+      grid-column: span 4 / -6;
+    }
+  }
+
+  &__price {
+    text-align: end;
+    font-size: 22px;
+    font-weight: 800;
+    grid-column: span 2 / -1;
+
+    @include on-tablet {
+      grid-column: span 3 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: span 5 / -1;
+    }
+  }
+
+  &:hover {
+    border-color: $color-secondary;
+  }
+}
+
+.counter {
+  min-width: 100px;
+  display: flex;
+  justify-content: space-between;
+
+  &__item {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-elements;
+    cursor: pointer;
+    transition: all .3s;
+
+    &:hover {
+      background-color: $color-elements;
+    }
+
+    &--disabled {
+      pointer-events: none;
+      color: $color-icons;
+    }
+  }
+}

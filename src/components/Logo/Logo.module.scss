@@ -1,0 +1,35 @@
+@use '../../styles/index' as *;
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  padding-inline: 16px;
+
+  &__picture {
+    display: flex;
+    align-items: center;
+  }
+
+  &__img {
+    display: block;
+    width: 64px;
+    height: 22px;
+    transition: transform 0.2s ease;
+
+    @include hover(transform, scale(1.04));
+  }
+
+  @include on-tablet {
+    padding-inline: 20px;
+
+    &__img {
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  @include on-desktop {
+    padding-inline: 24px;
+  }
+}
+

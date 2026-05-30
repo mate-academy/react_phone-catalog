@@ -1,0 +1,44 @@
+@use '../../styles/index' as *;
+
+.pagination {
+  grid-column: 1 / -1;
+
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    font-family: Mont, sans-serif;
+    background-color: $color-surface-1;
+    font-size: 14px;
+    line-height: 21px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-elements;
+    }
+
+    &--arrow {
+      background-color: $color-surface-2;
+
+      &:hover {
+        border: 1px solid $color-icons;
+        background-color: $color-black;
+      }
+    }
+
+    &--active {
+      color: $color-white;
+      background-color: $color-accent;
+    }
+
+
+  }
+}

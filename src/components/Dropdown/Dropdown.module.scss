@@ -1,0 +1,85 @@
+@use '../../styles/index' as *;
+
+.dropdown {
+  grid-column: span 2;
+  position: relative;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 5;
+  }
+
+  &:last-child {
+    @include on-tablet {
+      grid-column: span 3;
+    }
+  }
+
+  &__title {
+    color: $color-secondary;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__field {
+    color: $color-white;
+    background-color: $color-surface-2;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-size: 15px;
+    line-height: 21px;
+    transition: all 0.3s;
+    position: relative;
+    z-index: 5;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__list {
+    background-color: $color-black;
+    border: 1px solid $color-icons;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-block: 8px;
+    transition: all .3s;
+    visibility: hidden;
+    opacity: 0;
+
+    &--show {
+      z-index: 1;
+      top: calc(100% + 8px);
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__item {
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-white;
+    cursor: pointer;
+    transition: all .3s;
+
+    &:hover {
+      background-color: $color-surface-2;
+    }
+
+    &--active {
+      background-color: $color-surface-2;
+    }
+  }
+}
