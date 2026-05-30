@@ -1,0 +1,56 @@
+@use 'styles/variables' as v;
+
+.favoritesPage {
+  &__Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    margin-bottom: v.$gap-section;
+    gap: v.$gap-md;
+  }
+
+  &__ItemList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: v.$gap-xxl v.$gap-md;
+    margin-bottom: v.$gap-section;
+    overflow: hidden;
+  }
+
+  &__Header {
+    display: flex;
+    flex-direction: column;
+    gap: v.$gap-sm;
+    margin-bottom: v.$gap-xxl;
+  }
+
+  &__Title {
+    font-size: 48px;
+    font-family: v.$font-bold;
+  }
+
+  &__Count {
+    color: v.$color-muted
+  }
+}
+
+
+@media (max-width: v.$bp-1000) {
+  .favoritesPage__ItemList {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: v.$bp-850) {
+  .favoritesPage__ItemList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: v.$bp-520) {
+  .favoritesPage__ItemList {
+    grid-template-columns: 1fr;
+  }
+}

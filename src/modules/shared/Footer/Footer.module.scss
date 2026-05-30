@@ -1,0 +1,78 @@
+@use 'styles/variables' as v;
+
+.footer {
+  &__Container {
+    background-color: v.$color-primary;
+    font-family: v.$font-base;
+  }
+
+  &__Body {
+    height: v.$footer-height;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  &__Logo {
+    transition: transform 0.2s ease-in;
+
+    &:hover {
+      transform: scale(1.04);
+    }
+  }
+
+  &__Navigation {
+    display: flex;
+    gap: v.$footer-gap;
+
+    &Button {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: v.$gap-sm;
+      cursor: pointer;
+    }
+  }
+
+  &__Link {
+    color: v.$color-white;
+    text-decoration: none;
+
+    &IconContainer {
+      width: v.$footer-icon-size;
+      height: v.$footer-icon-size;
+      border: 1px solid v.$color-border;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color v.$transition-fast;
+
+      &:hover {
+        background-color: v.$color-bg-hover;
+      }
+    }
+
+    &Icon {
+      width: v.$footer-icon;
+      height: v.$footer-icon;
+      color: v.$color-white;
+    }
+  }
+}
+
+@media (max-width: v.$bp-540) {
+  .footer {
+    &__Body {
+      flex-direction: column;
+      align-items: flex-start;
+      height: fit-content;
+      gap: v.$footer-gap;
+      padding: v.$footer-body-padding;
+    }
+
+    &__Navigation {
+      flex-direction: column;
+    }
+  }
+}

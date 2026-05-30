@@ -1,0 +1,30 @@
+@use 'styles/variables' as v;
+
+.tabsNumbered {
+  &__Container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    max-height: v.$size-icon-lg;
+    gap: v.$gap-sm;
+  }
+}
+
+.page {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: v.$size-icon-lg;
+  height: v.$size-icon-lg;
+  cursor: pointer;
+  border: 1px solid v.$color-border-light;
+  font-family: v.$font-base;
+
+  &Active {
+    background-color: v.$color-primary;
+    color: v.$color-white;
+    border: 1px solid v.$color-primary-alt;
+  }
+}

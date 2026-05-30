@@ -1,0 +1,114 @@
+@use 'styles/variables' as v;
+
+.burgerMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100vw;
+  height: 100vh;
+  background-color: v.$color-bg-dark;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: v.$z-top;
+
+  &__Logo {
+    width: auto;
+    height: v.$gap-lg;
+  }
+
+  &__Content {
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: v.$gap-mobile;
+    padding: v.$gap-mobile;
+    overflow-y: auto;
+    border-top: 1px solid v.$color-border;
+  }
+
+  &__Lang {
+    display: flex;
+    gap: v.$gap-sm;
+    margin-top: v.$gap-md;
+  }
+
+  &__LangBtn {
+    background: none;
+    border: 1px solid v.$color-border;
+    color: v.$color-muted;
+    cursor: pointer;
+    font-family: v.$font-base;
+    padding: v.$gap-sm v.$gap-md;
+    border-radius: v.$radius-sm;
+
+    &[data-active="true"] {
+      color: v.$color-white;
+      border-color: v.$color-white;
+    }
+  }
+
+  &__Link {
+    color: v.$color-muted;
+    text-decoration: none;
+    white-space: nowrap;
+    font-family: v.$font-semibold;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: v.$height-header-mobile;
+    position: relative;
+    border-bottom: 2px solid v.$color-transparent;
+
+    &Content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    &Active {
+      color: v.$color-white;
+      border-bottom: v.$underline-height solid v.$color-white;
+      height: v.$height-header-mobile;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      font-family: v.$font-semibold;
+      box-sizing: border-box;
+    }
+  }
+
+  &__Footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: auto;
+
+    &Icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 1px solid v.$color-border;
+      color: v.$color-disabled;
+      padding: v.$gap-lg;
+      flex-grow: 1;
+
+      &:first-child {
+        border-right: 1px solid v.$color-border;
+      }
+    }
+  }
+}
+
+@media (max-width: v.$bp-540) {
+  .burgerMenu {
+    &.open {
+      display: flex;
+    }
+  }
+}

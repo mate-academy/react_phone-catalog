@@ -1,0 +1,27 @@
+@use 'styles/variables' as v;
+
+.productsList__Container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: v.$gap-xxl v.$gap-md;
+  overflow: hidden;
+}
+
+@media (max-width: v.$bp-1000) {
+  .productsList__Container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: v.$bp-850) {
+  .productsList__Container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: v.$bp-520) {
+  .productsList__Container {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,45 @@
+@use 'styles/variables' as v;
+
+.detailsPage {
+  &__Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: v.$gap-section;
+  }
+
+  &__Header {
+    display: flex;
+    flex-direction: row;
+    padding-top: v.$gap-xxl;
+    gap: v.$gap-xxxl;
+    width: 100%;
+  }
+
+  &__Title {
+    margin-top: v.$gap-md;
+  }
+
+  &__Body {
+    margin-top: v.$gap-section;
+    display: flex;
+    flex-direction: row;
+    gap: v.$gap-xxxl;
+  }
+
+  &__Footer {
+    margin-top: v.$gap-section;
+  }
+}
+
+@media (max-width: v.$bp-640) {
+  .detailsPage {
+    &__Header {
+      flex-direction: column;
+    }
+
+    &__Body {
+      flex-direction: column;
+    }
+  }
+}

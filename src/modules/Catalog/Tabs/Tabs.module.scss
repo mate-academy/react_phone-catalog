@@ -1,0 +1,41 @@
+@use 'styles/variables' as v;
+
+.tabs {
+  &__Container {
+    display: flex;
+    flex-direction: column;
+    gap: v.$gap-xxl;
+    box-sizing: border-box;
+  }
+
+  &__Navigation {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    box-sizing: border-box;
+    align-items: center;
+    gap: v.$gap-md;
+  }
+
+  &__Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: v.$size-icon-lg;
+    height: v.$size-icon-lg;
+    background-color: v.$color-white;
+    border: 1px solid v.$color-border-tab;
+    box-sizing: border-box;
+    transition:
+      background-color v.$transition-fast-in,
+      color v.$transition-fast-in,
+      border v.$transition-fast-in;
+
+    &:hover {
+      background-color: v.$color-primary;
+      color: v.$color-white;
+      border: v.$color-primary;
+    }
+  }
+}

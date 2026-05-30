@@ -1,0 +1,68 @@
+@use 'styles/variables' as v;
+
+.homePage {
+  &__Container {
+    display: flex;
+    flex-direction: column;
+    gap: v.$gap-section;
+    padding-top: 56px;
+    padding-bottom: v.$gap-section;
+  }
+
+  &__Title {
+    font-family: v.$font-bold;
+    font-size: clamp(28px, 5vw, 48px);
+  }
+
+  &__SkeletonTitle {
+    height: 48px;
+    max-width: 400px;
+    background: linear-gradient(
+      90deg,
+      v.$color-border-light 25%,
+      v.$color-bg-hover-light 50%,
+      v.$color-border-light 75%
+    );
+    background-size: 200% 100%;
+    animation: home-shimmer 1.2s ease-in-out infinite;
+    border-radius: v.$radius-sm;
+  }
+
+  &__SkeletonSectionTitle {
+    height: 32px;
+    width: 200px;
+    margin-bottom: v.$gap-md;
+    background: linear-gradient(
+      90deg,
+      v.$color-border-light 25%,
+      v.$color-bg-hover-light 50%,
+      v.$color-border-light 75%
+    );
+    background-size: 200% 100%;
+    animation: home-shimmer 1.2s ease-in-out infinite;
+    border-radius: v.$radius-sm;
+  }
+}
+
+@keyframes home-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: v.$bp-1200) {
+  .homePage__Container {
+    padding-top: v.$gap-xl;
+    gap: v.$gap-xl;
+  }
+}
+
+@media (max-width: v.$bp-640) {
+  .homePage__Container {
+    padding-top: v.$gap-lg;
+    gap: v.$gap-lg;
+  }
+}

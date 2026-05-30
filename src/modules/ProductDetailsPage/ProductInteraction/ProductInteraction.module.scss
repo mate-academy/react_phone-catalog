@@ -1,0 +1,181 @@
+@use 'styles/variables' as v;
+
+.interactionContainer {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: v.$gap-xl;
+  width: 50%;
+}
+
+.bottomContainer {
+  display: flex;
+  flex-direction: column;
+  gap: v.$gap-md;
+  width: 100%;
+}
+
+.priceContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: v.$gap-sm;
+
+  > h2 {
+    font-family: v.$font-bold;
+  }
+
+  > h3 {
+    text-decoration: line-through;
+    color: v.$color-gray;
+  }
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: v.$height-btn-lg;
+  gap: v.$gap-sm;
+}
+
+.cartButton {
+  height: 100%;
+  flex-grow: 1;
+  box-sizing: border-box;
+  font-family: v.$font-base;
+  border-radius: none;
+}
+
+.favoritesButton {
+  width: v.$height-btn-lg;
+  height: v.$height-btn-lg;
+  min-width: v.$height-btn-lg;
+}
+
+.productInteraction {
+  &__Forms {
+    box-sizing: border-box;
+    font-family: v.$font-base;
+    color: v.$color-gray;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: max-content;
+    gap: v.$gap-lg;
+  }
+}
+
+.formStyle {
+  &__Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: max-content;
+    box-sizing: border-box;
+    gap: v.$gap-sm;
+    border-bottom: 1px solid v.$color-border-light;
+    padding-bottom: v.$gap-lg;
+  }
+
+  &__Title {
+    display: flex;
+    align-self: flex-start;
+  }
+}
+
+.colorWrapper {
+  width: v.$size-color-swatch;
+  height: v.$size-color-swatch;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.colorWrapper input {
+  display: none;
+}
+
+.colorButton {
+  width: v.$size-color-swatch;
+  height: v.$size-color-swatch;
+  border-radius: v.$radius-circle;
+  border: 3px solid v.$color-white;
+  outline: 1px solid v.$color-border-light;
+  margin: 1px;
+  cursor: pointer;
+  transition: all v.$transition-fast;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.colorWrapper input:checked + .colorButton {
+  outline: 1px solid v.$color-primary-alt;
+}
+
+.formList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: flex-start;
+  box-sizing: border-box;
+  width: 100%;
+  height: 42px;
+  gap: v.$gap-sm;
+}
+
+.capacityWrapper {
+  box-sizing: border-box;
+}
+
+.capacityWrapper input {
+  display: none;
+}
+
+.capacityButton {
+  border: 1px solid v.$color-border-muted;
+  color: v.$color-primary;
+  border-radius: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  background: v.$color-white;
+  transition: all v.$transition-fast;
+  height: v.$size-icon-lg;
+  padding: 10px;
+  font-family: v.$font-base;
+}
+
+.capacityWrapper input:checked + .capacityButton {
+  border-color: v.$color-primary-alt;
+  background: v.$color-primary-alt;
+  color: v.$color-white;
+}
+
+.specsList {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: v.$gap-sm;
+  margin-top: v.$gap-md;
+
+  &__Item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 12px;
+
+    &Key {
+      color: v.$color-gray;
+    }
+  }
+}
+
+@media (max-width: v.$bp-640) {
+  .interactionContainer {
+    width: 100%;
+  }
+
+  .formList {
+    overflow-x: scroll;
+  }
+}

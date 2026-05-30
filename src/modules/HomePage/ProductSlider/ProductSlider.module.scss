@@ -1,0 +1,46 @@
+@use 'styles/variables' as v;
+
+.productSlider {
+  &__Header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: v.$gap-lg;
+  }
+
+  &__Title {
+    font-family: v.$font-semibold;
+    font-size: clamp(18px, 5vw, 32px);
+  }
+
+  &__Navigation {
+    display: flex;
+    flex-direction: row;
+    gap: v.$gap-md;
+  }
+
+  &__Button {
+    box-sizing: border-box;
+    background-color: v.$color-white;
+    border: 1px solid v.$color-border-light;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    transition: opacity v.$transition-opacity,
+      background-color 0.2s ease-in;
+
+    &Icon {
+      color: v.$color-bg-dark;
+    }
+
+    &:hover {
+      background-color: v.$color-border-light;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.4;
+    }
+  }
+}

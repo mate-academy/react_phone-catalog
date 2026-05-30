@@ -1,0 +1,86 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
+@use 'styles/variables' as v;
+
+.sliderRoot :global(.swiper-wrapper) {
+  width: 800px;
+  height: 400px;
+}
+
+:global(.swiper-pagination-bullet) {
+  width: v.$size-icon-md;
+  height: 9px;
+  border-radius: v.$radius-sm;
+  background-color: v.$color-bg-dark;
+}
+
+:global(.swiper) {
+  width: 100%;
+}
+
+.sliderRoot :global(.swiper-slide) {
+  width: fit-content;
+  height: 100%;
+}
+
+.swiperSlide__Image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.productSlider {
+  &__Container {
+    display: flex;
+    flex-direction: row;
+    gap: v.$gap-md;
+  }
+
+  &__Button {
+    box-sizing: border-box;
+    background-color: v.$color-bg-dark;
+    border: none;
+    width: 35.42px; // The most magic number i've ever seen, only one that works tho
+    transition: background-color v.$transition-fast;
+    cursor: pointer;
+
+    &:hover {
+      background-color: v.$color-bg-hover;
+    }
+
+    &Icon {
+      color: v.$color-white;
+    }
+  }
+}
+
+@media (max-width: v.$bp-640) {
+  .sliderRoot {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+  }
+
+  .sliderRoot :global(.swiper-wrapper) {
+    width: 100vw;
+    height: 400px;
+  }
+
+  .sliderRoot :global(.swiper-slide) {
+    width: 100vw;
+  }
+
+  .productSlider {
+    &__Button {
+      display: none;
+      pointer-events: none;
+    }
+  }
+}

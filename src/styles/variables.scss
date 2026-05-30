@@ -1,0 +1,86 @@
+/* stylelint-disable color-hex-length, scss/dollar-variable-empty-line-before */
+$color-primary: black;
+$color-primary-alt: #313237;
+$color-secondary: black;
+$color-border: #323542;
+$color-border-light: #E2E6E9;
+$color-border-muted: #B4BDC3;
+$color-border-tab: #b9bdc0;
+$color-transparent: transparent;
+$color-badge: #EB5757;
+$color-muted: #75767F;
+$color-text: #F1F2F9;
+$color-gray: #89939A;
+$color-bg-dark: black;
+$color-bg-hover: #323542;
+$color-bg-hover-light: #F5F5F5;
+$color-bg-hover-light-alt: #e8e8e8;
+$color-white: #fff;
+$color-disabled: #8e929e;
+$color-heart-default: #333;
+$color-success: #27AE60;
+
+$font-base: "Mont";
+$font-semibold: "Mont-SemiBold";
+$font-bold: "Mont-Bold";
+$font-size-md: 22px;
+$font-size-m: 14px;
+
+$height-header-desktop: 64px;
+$gap-header-desktop: 24px;
+$logo-padding-desktop: 0 24px;
+$gap-body-desktop: 64px;
+$icon-size-desktop: 64px;
+$underline-height: 3px;
+
+$height-header-mobile: 48px;
+$gap-mobile: 16px;
+$logo-padding-mobile: 16px;
+$gap-body-mobile: 32px;
+$icon-size-mobile: 48px;
+
+$footer-height: 64px;
+$footer-gap: 32px;
+$footer-icon-size: 32px;
+$footer-icon: 16px;
+$footer-body-padding: 32px 16px;
+
+$content-margin-max: 152px;
+$content-margin-mid: 32px;
+$content-margin-small: 24px;
+
+$gap-xs: 4px;
+$gap-sm: 8px;
+$gap-md: 16px;
+$gap-lg: 24px;
+$gap-xl: 32px;
+$gap-xxl: 40px;
+$gap-xxxl: 64px;
+$gap-section: 80px;
+
+$height-btn: 40px;
+$height-btn-lg: 48px;
+$size-icon-sm: 16px;
+$size-icon-md: 18px;
+$size-icon-lg: 32px;
+$size-color-swatch: 32px;
+$radius-sm: 3px;
+$radius-circle: 50%;
+
+$z-top: 9999;
+
+$bp-320: 320px;
+$bp-520: 520px;
+$bp-540: 540px;
+$bp-640: 640px;
+$bp-750: 750px;
+$bp-850: 850px;
+$bp-890: 890px;
+$bp-1000: 1000px;
+$bp-1200: 1200px;
+
+$transition-fast: 0.2s ease-in-out;
+$transition-fast-in: 0.2s ease-in;
+$transition-opacity: 0.2s ease-out;
+
+// There was some vibe coding present for this one:>

@@ -1,0 +1,46 @@
+@use 'styles/variables' as v;
+
+.searchBox {
+  &__Container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: v.$height-header-mobile;
+    width: 100%;
+    padding: 0 v.$gap-md;
+    background-color: v.$color-white;
+    border: 1px solid v.$color-border-light;
+    color: v.$color-primary;
+    gap: v.$gap-xs;
+    box-sizing: border-box;
+
+    &:hover {
+      background-color: v.$color-bg-hover-light;
+    }
+  }
+
+  &__IconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-right: v.$gap-sm;
+    color: v.$color-bg-dark;
+  }
+
+  &__InputContainer {
+    flex: 1;
+    border: none;
+    outline: none;
+    background-color: v.$color-transparent;
+    font-size: v.$font-size-m;
+    height: 100%;
+    font-family: v.$font-base;
+    color: v.$color-bg-dark;
+
+    &::placeholder {
+      color: dark;
+      font-size: v.$font-size-m;
+    }
+  }
+}

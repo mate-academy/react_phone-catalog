@@ -1,0 +1,22 @@
+@use 'styles/variables' as v;
+
+.catalogPage {
+  &__Container {
+    margin-bottom: v.$gap-section;
+  }
+
+  &__Info {
+    display: flex;
+    flex-direction: column;
+    gap: v.$gap-sm;
+    margin-top: v.$gap-xxl;
+  }
+
+  &__Title {
+    font-family: v.$font-bold;
+  }
+
+  &__ModelsInfo {
+    color: v.$color-gray;
+  }
+}

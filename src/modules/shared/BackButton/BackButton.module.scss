@@ -1,0 +1,36 @@
+@use 'styles/variables' as v;
+
+.backButton {
+  &__Container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    height: v.$size-icon-sm;
+    width: max-content;
+    gap: v.$gap-xs;
+    cursor: pointer;
+    margin-top: v.$gap-xxl;
+  }
+
+  &__Text {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    height: 15px;
+    color: v.$color-gray;
+    font-family: v.$font-base;
+
+    transition: color 0.2s ease-in;
+
+    &:hover {
+      color: v.$color-primary;
+    }
+  }
+
+  &__Icon {
+    width: v.$size-icon-sm;
+    height: v.$size-icon-sm;
+    color: v.$color-primary;
+  }
+}

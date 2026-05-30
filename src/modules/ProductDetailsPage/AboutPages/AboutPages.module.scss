@@ -1,0 +1,40 @@
+@use 'styles/variables' as v;
+
+.aboutPages {
+  &__Container {
+    width: 50%;
+  }
+
+  &__Header {
+    padding-bottom: v.$gap-md;
+    margin-bottom: 25px;
+    border-bottom: 1px solid v.$color-border-light;
+  }
+
+  &__Paragraphs {
+    display: flex;
+    flex-direction: column;
+    gap: v.$gap-xl;
+  }
+}
+
+.description {
+  &__Title {
+    margin-bottom: v.$gap-md;
+    font-size: 20px;
+  }
+
+  &__Paragraph {
+    color: v.$color-gray;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
+
+@media (max-width: v.$bp-640) {
+  .aboutPages {
+    &__Container {
+      width: 100%;
+    }
+  }
+}

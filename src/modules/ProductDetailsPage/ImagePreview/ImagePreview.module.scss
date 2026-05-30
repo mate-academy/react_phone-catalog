@@ -1,0 +1,83 @@
+@use 'styles/variables' as v;
+
+.imagePreview {
+  &__Container {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    height: 50%;
+    gap: v.$gap-md;
+    box-sizing: border-box;
+  }
+
+  &__ImageList {
+    display: flex;
+    flex-direction: column;
+    gap: v.$gap-md;
+  }
+
+  &__ImageContainer {
+    width: 80px;
+    height: 80px;
+    padding: 7px;
+    box-sizing: border-box;
+    list-style: none;
+    border: 1px solid v.$color-border-light;
+    transition: border-color 0.2s ease-in;
+
+    &Active {
+      border: 1px solid v.$color-primary-alt;
+    }
+
+    &:hover {
+      border-color: v.$color-primary-alt;
+    }
+  }
+
+  &__CurrentContainer {
+    display: flex;
+    flex: 1;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__CurrentImage {
+    width: 100%;
+    height: 100%;
+    max-height: 370px;
+    overflow: hidden;
+
+    object-fit: contain;
+  }
+
+  &__Image {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+  }
+}
+
+
+@media (max-width: v.$bp-640) {
+  .imagePreview {
+    &__Container {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    &__ImageContainer {
+      width: 100%;
+    }
+
+    &__CurrentImage {
+      box-sizing: border-box;
+      object-fit: scale-down;
+    }
+
+    &__ImageList {
+      justify-content: center;
+      flex-direction: row;
+    }
+  }
+}
