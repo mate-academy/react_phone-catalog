@@ -1,0 +1,16 @@
+.about {
+  &__title {
+    padding-bottom: 16px;
+    box-sizing: border-box;
+    border-bottom: 1px solid $shadow-color;
+  }
+
+  &__text-Block {
+    margin-top: 32px;
+
+    &--text {
+      margin-top: 16px;
+      color: $nav-link-color;
+    }
+  }
+}

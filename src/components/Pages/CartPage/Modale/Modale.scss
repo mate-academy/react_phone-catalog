@@ -1,0 +1,76 @@
+@import '../../../../styles/vars';
+@import '../../../../styles/mixins';
+
+.modale {
+  position: fixed;
+  z-index: 3;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  &__window {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px;
+    box-sizing: border-box;
+    width: $modale-width;
+    max-width: $modale-max-width;
+    border: 1px solid $select-border-color;
+    border-radius: 20px;
+    background-color: $bg-color;
+    box-shadow: 0 33px 30px 0 $shadow-cart-color;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-between;
+
+    @include on-big-mobile {
+      flex-direction: row;
+      gap: initial;
+    }
+
+    &--cencel,
+    &--confirm {
+      color: $bg-button-color;
+      width: 100%;
+      height: 40px;
+      border-radius: 20px;
+      box-sizing: border-box;
+      border: none;
+      cursor: pointer;
+    }
+
+    &--cencel {
+      border-radius: 20px;
+      background-color: $bg-selected-button-color;
+
+      &:hover {
+        box-shadow: 0 0 30px 0 $bg-selected-button-color;
+      }
+
+      @include on-big-mobile {
+        border-radius: 20px 0 0 20px;
+      }
+    }
+
+    &--confirm {
+      order: -1;
+      border-radius: 20px;
+      background-color: $confirm-bg-color;
+
+      &:hover {
+        box-shadow: 0 0 30px 0 $confirm-bg-color;
+      }
+
+      @include on-big-mobile {
+        order: initial;
+        border-radius: 0 20px 20px 0;
+      }
+    }
+  }
+}
