@@ -1,0 +1,75 @@
+@import '../../../../styles/utils';
+
+.shop-by-category {
+  row-gap: 24px;
+
+  @include page-grid;
+
+  &__title {
+    grid-column: 1 / -1;
+
+    color: var(--color-text-primary);
+  }
+
+  &__categories {
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-columns: subgrid;
+    row-gap: 32px;
+  }
+}
+
+.category {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+
+  &__img {
+    height: 75%;
+    width: 75%;
+    object-fit: contain;
+
+    transition: transform $transition-duration-base ease-in-out;
+  }
+
+  &__link {
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 24px;
+
+    &:hover .category__img {
+      transform: scale(1.1);
+    }
+  }
+
+
+  &__title {
+    color: var(--color-text-primary);
+
+    margin-bottom: 4px;
+  }
+
+  &__models {
+    @extend %text-body;
+
+    color: var(--color-text-secondary);
+
+    &--loading {
+      height: 1lh;
+      width: 10ch;
+
+      @include skeleton-loader;
+    }
+  }
+}

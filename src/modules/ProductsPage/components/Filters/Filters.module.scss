@@ -1,0 +1,31 @@
+@import  '../../../../styles/utils';
+
+.filters {
+  row-gap: 8px;
+
+  @include page-grid;
+
+  &__sort-by {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+  }
+
+  &__items-per-page {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+  }
+
+  &__search-input {
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 5;
+    }
+  }
+}

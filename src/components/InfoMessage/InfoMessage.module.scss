@@ -1,0 +1,54 @@
+@import '../../styles/utils';
+
+.info-message {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+
+  &__title {
+  color: var(--color-text-primary);
+  }
+
+  &__button {
+    @extend %mont-semi-bold;
+
+    width: max-content;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-button-text);
+    background-color: var(--color-button-bg);
+    border: 1px solid var(--color-button-border);
+    padding: 8px 16px;
+    max-height: 48px;
+    box-sizing: border-box;
+    transition: filter $transition-duration-base ease-in-out;
+
+    &:hover {
+      filter: brightness(1.1);
+    }
+
+    @include on-desktop {
+      font-size: 16px;
+      padding: 10px 20px;
+    }
+
+  }
+
+  &__img {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  &--no-button {
+    row-gap: 32px;
+
+    @include on-tablet {
+      row-gap: 48px;
+    }
+
+    @include on-desktop {
+      row-gap: 60px;
+    }
+  }
+}

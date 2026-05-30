@@ -1,0 +1,57 @@
+@import '../../styles/utils';
+
+.breadcrumbs {
+  @include page-grid;
+
+  &__list {
+    grid-column: 1 / -1;
+
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:last-child {
+      max-width: 100%;
+      min-width: 0;
+    }
+  }
+
+  &__icon {
+    color: var(--color-icon-secondary);
+
+    &--nav {
+      color: var(--color-text-primary);
+    }
+  }
+
+  &__link {
+    @extend %text-small;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    max-width: 100%;
+    min-width: 0;
+
+    color: var(--color-text-primary);
+
+    &--current {
+      color: var(--color-text-secondary);
+    }
+  }
+
+  &__text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    min-width: 0;
+  }
+}

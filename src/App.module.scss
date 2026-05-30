@@ -1,0 +1,16 @@
+@import './styles/index';
+
+body {
+  background-color: var(--color-bg);
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+
+  & > main {
+    flex: 1;
+  }
+}

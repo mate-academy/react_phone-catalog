@@ -1,0 +1,156 @@
+@import '../../styles/utils';
+
+.product-details {
+  @include page-grid;
+  @include responsive-padding-inline;
+
+  &__not-found {
+    grid-column: 1 / -1;
+  }
+
+  &__message {
+    grid-column: 1 / -1;
+
+    margin-bottom: 56px;
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+      margin-top: 32px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+      margin-top: 56px;
+    }
+  }
+
+  &__breadcrumbs {
+    grid-column: 1 / -1;
+
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__content {
+    grid-column: 1 / -1;
+
+    margin-bottom: 56px;
+
+    @include page-grid;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__slider {
+    grid-column: 1 / -1;
+
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__back-button {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    color: var(--color-text-primary);
+    grid-column: 1 / -1;
+
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+
+    &--loading {
+      height: 1lh;
+      width: clamp(15ch, 60vw, 30ch);
+
+      @include skeleton-loader;
+    }
+  }
+
+  &__main {
+    grid-column: 1 / -1;
+    row-gap: 56px;
+
+    @include page-grid;
+
+    @include on-tablet {
+      row-gap: 64px;
+    }
+
+    @include on-desktop {
+      row-gap: 80px;
+    }
+  }
+
+  &__gallery{
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 7;
+    }
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__controls {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 5;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / span 7;
+    }
+  }
+
+  &__about {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__specs {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 14 / -1;
+    }
+  }
+}
+
+.not-found {
+  &__back-button {
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    color: var(--color-text-primary);
+  }
+}

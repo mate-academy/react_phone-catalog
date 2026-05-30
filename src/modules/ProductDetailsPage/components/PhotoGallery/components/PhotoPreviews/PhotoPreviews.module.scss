@@ -1,0 +1,88 @@
+@import '../../../../../../styles/utils';
+
+.photo-previews {
+  height: 60px;
+  width: 100%;
+  overflow: hidden;
+
+  @include on-tablet {
+    height: 100%;
+  }
+
+  &__list {
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+    display: inline-flex;
+    gap: 8px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include on-tablet {
+      flex-direction: column;
+      max-height: 560px;
+    }
+
+    @include on-desktop {
+      max-height: 464px;
+    }
+  }
+
+  &__item {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    max-height: 60px;
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--color-element-border);
+    transition: border-color $transition-duration-base ease-in-out;
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        border-color: var(--color-element-border-hover);
+      }
+    }
+
+    &--active {
+      border-color: var(--color-element-border-hover);
+      pointer-events: none;
+      cursor: default;
+    }
+
+    @include on-tablet {
+      max-height: none;
+      height: auto;
+      max-width: 100%;
+      min-width: 100%;
+    }
+
+    &--loading {
+      cursor: default;
+      pointer-events: none;
+      border: none;
+      height: 60px;
+
+      @include skeleton-loader;
+
+      @include on-tablet {
+        height: auto;
+      }
+    }
+  }
+
+  &__img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  }
+}

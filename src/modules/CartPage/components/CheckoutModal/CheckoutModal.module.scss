@@ -1,0 +1,100 @@
+@import '../../../../styles/utils';
+
+.overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--color-overlay-bg);
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  max-width: 90%;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-element-border);
+
+  @include on-tablet {
+    padding: 20px 32px;
+    max-width: 540px;
+  }
+
+  @include on-desktop {
+    padding: 24px 48px;
+    max-width: 640px;
+  }
+
+  &__text {
+    @extend %mont-semi-bold;
+
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+    color: var(--color-text-primary);
+
+    @include on-tablet {
+      font-size: 14px;
+    }
+
+    @include on-desktop {
+      font-size: 16px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 16px;
+
+    @include on-tablet {
+      column-gap: 20px;
+    }
+
+    @include on-desktop {
+      column-gap: 24px;
+    }
+  }
+
+  &__button {
+    @extend %mont-semi-bold;
+
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--color-button-text);
+    background-color: var(--color-button-bg);
+    border: 1px solid var(--color-button-border);
+    padding: 5px 12px;
+    max-height: 48px;
+    box-sizing: border-box;
+    transition: filter $transition-duration-base ease-in-out;
+
+    @include on-tablet {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+
+    @include on-desktop {
+      font-size: 16px;
+      padding: 10px 20px;
+    }
+
+    &:hover {
+      filter: brightness(1.1);
+    }
+
+    &--confirm {
+     filter: brightness(0.8);
+    }
+  }
+}
+

@@ -1,0 +1,157 @@
+@import '../../styles/utils';
+
+.product-card {
+  padding: 32px;
+  box-sizing: border-box;
+  display: flex;
+  row-gap: 8px;
+  flex-direction: column;
+  background-color: var(--color-product-card-bg);
+  border: 1px solid var(--color-product-card-border);
+  height: 439px;
+  transition:
+    box-shadow $transition-duration-base ease-in-out,
+    border-color $transition-duration-base ease-in-out;
+
+  @include on-tablet {
+    height: 512px;
+  }
+
+  @include on-desktop {
+    height: 506px;
+  }
+
+  &:hover {
+    border-color: var(--color-product-card-border-hover);
+    box-shadow: 0 2px 15px 0 #0000001a;
+  }
+
+  &--loading {
+    pointer-events: none;
+  }
+
+  &__img {
+    height: 100%;
+    object-fit: contain;
+
+    transition: transform $transition-duration-base ease-in-out;
+  }
+
+  &__img-container {
+    flex: 1;
+    min-height: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      .product-card__img {
+        transform: scale(1.1);
+      }
+    }
+
+    &--loading {
+      pointer-events: none;
+
+      @include skeleton-loader;
+    }
+  }
+
+
+  &__title {
+    @extend %text-body;
+
+    font-weight: 600;
+    color: var(--color-text-primary);
+
+    padding-top: 16px;
+
+    &--loading {
+      height: 1lh;
+
+      @include skeleton-loader;
+    }
+  }
+
+  &__prices {
+    display: flex;
+    column-gap: 8px;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 30px;
+    color: var(--color-text-primary);
+
+    &--discount {
+      color: var(--color-text-secondary);
+      font-weight: 600;
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+      text-decoration-color: var(--color-text-secondary);
+    }
+
+    &--loading {
+      height: 1lh;
+      width: 50%;
+
+      @include skeleton-loader;
+    }
+  }
+
+  &__decor {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-element-secondary);
+  }
+
+  &__specs {
+    padding-block: 8px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+
+  &__spec {
+    @extend %text-small;
+
+    color: var(--color-text-primary);
+
+    display: flex;
+    justify-content: space-between;
+
+    & :first-child {
+      color: var(--color-text-secondary);
+    }
+
+    &--loading {
+      height: 1lh;
+
+      @include skeleton-loader;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    column-gap: 8px;
+  }
+
+  &__cart-btn {
+    flex: 1;
+
+    &--loading {
+      @include skeleton-loader;
+    }
+  }
+
+  &__fav-btn {
+    height: 40px;
+    width: 40px;
+
+    &--loading {
+      @include skeleton-loader;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+@import '../../../../styles/utils';
+
+.tech-specs {
+  &__title {
+    color: var(--color-text-primary);
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-element-secondary);
+
+    margin-bottom: 30px;
+
+    @include on-tablet {
+      margin-bottom: 25px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 24px
+  }
+
+  &__property{
+    @extend %text-body;
+
+    color: var(--color-text-secondary);
+
+    &--loading {
+      height: 1lh;
+      width: 20ch;
+
+      @include skeleton-loader;
+    }
+  }
+
+  &__value {
+    @extend %text-body;
+
+    color: var(--color-text-primary);
+    text-align: right;
+
+    &--loading {
+      height: 1lh;
+      width: 30ch;
+
+      @include skeleton-loader;
+    }
+  }
+}

@@ -1,0 +1,95 @@
+@import '../../../../../../styles/utils';
+
+.dropdown {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+
+  &__label {
+    color: var(--color-text-secondary);
+
+    @extend %text-small;
+  }
+
+  &__btn {
+    padding: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    background-color: var(--color-field-bg);
+    border: 1px solid var(--color-field-border);
+    color: var(--color-text-primary);
+
+    transition: border-color $transition-duration-base ease-in-out;
+
+    &:hover {
+      border-color: var(--color-field-border-hover);
+    }
+
+    &:focus {
+      border-color: var(--color-field-border-focus);
+    }
+
+    &--active {
+      border-color: var(--color-field-border-focus);
+    }
+  }
+
+  &__icon {
+    transition: transform $transition-duration-base ease-in-out ;
+
+    &--active {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+
+    margin-top: 4px;
+    background-color: var(--color-bg);
+    padding-block: 8px;
+    box-sizing: border-box;
+    border: 1px solid var(--color-field-border);
+    z-index: 100;
+
+    visibility: hidden;
+    transition:
+      transform $transition-duration-base ease-in-out,
+      opacity $transition-duration-base ease-in-out;
+
+    &--active {
+      opacity: 1;
+      transform: scaleY(1);
+      visibility: visible;
+    }
+  }
+
+  &__item {
+    padding: 6px 12px;
+    color: var(--color-text-secondary);
+    transition:
+      color $transition-duration-base ease-in-out,
+      background-color $transition-duration-base ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--color-text-primary);
+      background-color: var(--color-field-bg);
+    }
+  }
+}

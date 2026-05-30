@@ -1,0 +1,27 @@
+@import '../../styles/utils';
+
+.add-to-fav-btn {
+  box-sizing: border-box;
+  height: 40px;
+  width: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--color-icon-primary);
+  background-color: var(--color-icon-bg);
+  border: 1px solid var(--color-icon-border);
+  transition: all $transition-duration-base ease-in-out;
+
+  &:hover {
+    border-color: var(--color-icon-border-hover);
+    background-color: var(--color-icon-bg-hover);
+  }
+
+  &__heart-icon {
+    &--active {
+      color: var(--color-red);
+    }
+  }
+}

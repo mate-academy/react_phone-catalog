@@ -1,0 +1,23 @@
+@import '../../styles/utils';
+
+.logo {
+  display: block;
+  width: max-content;
+
+  &__img {
+    width: 64px;
+    height: 22px;
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  &--big {
+    .logo__img {
+      width: 89px;
+      height: 32px;
+    }
+  }
+}
