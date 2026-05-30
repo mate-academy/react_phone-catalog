@@ -1,0 +1,42 @@
+@import '../../styles/utils/mixins';
+
+.home-page {
+  max-width: 1136px;
+  margin-inline: auto;
+  margin-bottom: 64px;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    width: 100%;
+    margin-block: 24px;
+
+    @include on-tablet {
+      margin-block: 32px;
+    }
+
+    @include on-desktop {
+      margin-block: 56px;
+    }
+  }
+
+  &__banner {
+    background-color: lightblue;
+  }
+
+  &__blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    @include on-tablet {
+      gap: 64px;
+    }
+
+    @include on-desktop {
+      gap: 80px;
+    }
+  }
+}

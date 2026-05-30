@@ -1,0 +1,49 @@
+.carousel {
+  height: 100%;
+  margin: 0 auto;
+  overflow: auto;
+
+  &__list {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    list-style: none;
+  }
+
+  &__item {
+    flex: 0 0 auto;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__button-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1;
+    color: #333;
+
+    &--prev {
+      left: 10px;
+    }
+
+    &--next {
+      right: 10px;
+    }
+
+    &.disabled {
+      color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+}

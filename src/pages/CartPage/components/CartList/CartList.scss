@@ -1,0 +1,14 @@
+@import '../../../../styles/utils/mixins';
+
+.cart__list {
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+
+  @include on-desktop {
+    grid-column: 1 / 17;
+  }
+}

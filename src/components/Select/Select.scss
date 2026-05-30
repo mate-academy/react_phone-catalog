@@ -1,0 +1,58 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.custom-select {
+  position: relative;
+  width: 100%;
+  border: 1px solid $color_icons_placeholder;
+  border-radius: 8px;
+  padding: 10px 12px 9px;
+  cursor: pointer;
+
+
+  &:focus {
+    border-color: $color_primary;
+    outline: none;
+  }
+
+  @include hover(border-color, $color_secondary);
+
+  &__trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 24px;
+  }
+
+  &__icon {
+    transition: transform 0.3s ease;
+    position: absolute;
+    right: 12px;
+  }
+
+  &__icon.open {
+    transform: rotate(180deg);
+  }
+
+  &__options {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid $color_icons_placeholder;
+    border-radius: 8px;
+    padding-block: 8px;
+    z-index: 10;
+  }
+
+  &__option {
+    padding: 6px 0 5px 12px;
+    color: $color_secondary;
+    border-radius: 8px;
+    cursor: pointer;
+
+    @include hover("background-color", $color_hover);
+    @include hover("color", $color_primary);
+  }
+}
