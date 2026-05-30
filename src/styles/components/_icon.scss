@@ -1,0 +1,81 @@
+// ============================================
+// ICON COMPONENT
+// ============================================
+
+@use '../abstracts/variables' as *;
+
+.icon {
+  display: inline-block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &__arrow-left {
+    --icon-url: url('/react_phone-catalog/img/icons/arrow-left.svg');
+
+    background-image: var(--icon-url);
+  }
+
+  &__arrow-right {
+    --icon-url: url('/react_phone-catalog/img/icons/arrow-right.svg');
+
+    background-image: var(--icon-url);
+  }
+
+  &__arrow-up {
+    --icon-url: url('/react_phone-catalog/img/icons/arrow-up.svg');
+
+    background-image: var(--icon-url);
+  }
+
+  &__close {
+    --icon-url: url('/react_phone-catalog/img/icons/close.svg');
+
+    background-image: var(--icon-url);
+  }
+
+  &__search {
+    --icon-url: url('/react_phone-catalog/img/icons/search.svg');
+
+    background-image: var(--icon-url);
+  }
+
+  &__like {
+    --icon-url: url('/react_phone-catalog/img/icons/like.svg');
+
+    background-image: var(--icon-url);
+  }
+
+  &__menu {
+    --icon-url: url('/react_phone-catalog/img/icons/menu.svg');
+
+    background-image: var(--icon-url);
+  }
+
+  &__cart {
+    --icon-url: url('/react_phone-catalog/img/icons/cart.svg');
+
+    background-image: var(--icon-url);
+  }
+
+  &__badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background-color: $color-red;
+    border: 1px solid $color-white;
+    color: $color-white;
+    font-family: $font-main;
+    font-weight: 400;
+    font-size: 9px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

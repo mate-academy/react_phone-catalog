@@ -1,0 +1,10 @@
+@forward 'abstracts/variables';
+@forward 'abstracts/mixins';
+
+// 2. Base (ресети, шрифти, базові стилі)
+@forward 'base/fonts';
+@forward 'base/reset';
+@forward 'base/layout';
+
+// 3. Components (дрібні переиспользуемі компоненти)
+@forward 'components/icon';

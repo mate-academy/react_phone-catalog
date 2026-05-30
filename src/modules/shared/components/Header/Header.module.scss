@@ -1,0 +1,174 @@
+// ============================================
+// HEADER BLOCK
+// ============================================
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
+.header {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $color-elements;
+  height: 48px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  // Тінь при скролі (можна додати через JS клас)
+  &--scrolled {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.98);
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    flex: 1;
+    max-width: 600px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+  }
+
+  &__logo-image {
+    height: 22px;
+    width: auto;
+    display: block;
+
+    @include on-desktop {
+      height: 30px;
+    }
+  }
+
+  &__wrap {
+    display: flex;
+    gap: 16px;
+    height: 100%;
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-tablet {
+      height: 100%;
+      display: flex;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+  }
+
+  &__nav-link {
+    @include uppercase;
+
+    color: $color-secondary;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    position: relative;
+    transition: color 0.3s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: transparent;
+      transition: background-color 0.3s ease;
+    }
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    &--active {
+      color: $color-primary;
+
+      &::after {
+        background-color: $color-primary;
+      }
+    }
+  }
+
+  &__nav-item {
+    display: flex;
+    align-items: stretch;
+
+    &--active {
+      .header__nav-link {
+        color: $color-primary;
+
+        &::after {
+          background-color: $color-primary;
+        }
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    height: 100%;
+  }
+
+  &__actions-desktop {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__actions-mobile {
+    display: flex;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    border-left: 1px solid $color-elements;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    overflow: visible;
+    transition: background-color 0.3s ease;
+
+    &--active {
+      border-bottom: 3px solid $color-primary;
+    }
+
+    &:hover {
+      background-color: $color-hover-bg;
+    }
+  }
+}

@@ -1,0 +1,93 @@
+// ============================================
+// SHOP BY CATEGORY BLOCK
+// ============================================
+
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
+.shop-by-category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__header {
+    @include h2;
+
+    color: $color-primary;
+  }
+
+  &__list {
+    @include page-grid;
+
+    gap: 32px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow: hidden;
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__container {
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    &--color-mobile {
+      background-color: #6D6474;
+    }
+
+    &--color-tablet {
+      background-color: #8D8D92;
+    }
+
+    &--color-accessories {
+      background-color: #973D5F;
+    }
+
+  }
+
+  &__item-image {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 24px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__item-title {
+    @include h4;
+
+    color: $color-primary;
+  }
+
+  &__item-count {
+    @include body-text;
+
+    color: $color-secondary;
+  }
+}
