@@ -1,0 +1,120 @@
+.login {
+  @include cancel-padding;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+  width: 100vw;
+
+  background-image: url('../../../public/img/login-bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @media (min-width: 1024px) {
+    justify-content: space-between;
+  }
+
+  @media (min-width: 1440px) {
+    padding-left: 152px;
+    margin-inline: -152px;
+
+    background-position: unset;
+    background-size: contain;
+  }
+
+  &__form {
+    height: 55vh;
+    width: 100vw;
+
+    padding: 20px 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 50px;
+
+    background-color: rgb(25, 32, 32);
+
+    @include on-tablet {
+      width: 80vw;
+      padding: 50px 20px;
+    }
+
+    @media (min-width: 1024px) {
+      height: 700px;
+      width: 50vw;
+    }
+  }
+
+  &__title {
+    color: white;
+    text-align: center;
+
+    font-size: 32px;
+    font-family: 'Mont';
+
+    @media (min-width: 1024px) {
+      font-size: 38px;
+    }
+
+    @media (min-width: 1440px) {
+      font-size: 56px;
+    }
+  }
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  &__input {
+    height: 80px;
+    width: 85vw;
+
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+
+    outline: none;
+
+    font-size: 24px;
+    color: white;
+    font-family: 'Mont-regular';
+
+    @include on-tablet {
+      width: 55vw;
+    }
+
+    @media (min-width: 1024px) {
+      width: 35vw;
+    }
+  }
+
+  &__button {
+    margin-top: 50px;
+
+    width: 35vw;
+    height: 80px;
+    background-color: rgb(13, 23, 23);
+
+    color: white;
+    font-size: 32px;
+    font-family: 'Mont';
+  }
+
+  &__block {
+    display: none;
+
+    @media (min-width: 1024px) {
+      display: block;
+    }
+
+    height: 100vh;
+    width: 20vw;
+    background-color: rgb(14, 98, 98);
+  }
+}

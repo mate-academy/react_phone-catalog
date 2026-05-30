@@ -1,0 +1,134 @@
+.products {
+  display: flex;
+  flex-direction: column;
+
+  &__path {
+    margin-top: 24px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__home, &__arrow {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__home {
+    background-image: url(../../../icons/home.svg);
+  }
+
+  &__arrow {
+    background-image: url(../../../icons/arrows/arrow-right.svg);
+  }
+
+  &__current-page {
+    margin: 0;
+
+    position: relative;
+    top: 2px; // to position it in the center
+
+    @include textTypeFull(12px, 15.34px, 'Mont-regular', $secondary-color);
+  }
+
+  &__title {
+    margin-block: 24px 0;
+
+    @include textType(32px, 41px);
+    letter-spacing: -0.01em;
+
+    @include on-tablet {
+      margin-top: 40px;
+
+      @include textType(48px, 56px);
+    }
+  }
+
+  &__models-count {
+    margin-block: 8px 0;
+
+    @include textTypeFull(14px, 21px, 'Mont-regular', $secondary-color);
+  }
+
+  &__dropdowns {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__products {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(272px, 1fr));
+
+    gap: 40px;
+
+    @include on-mobile {
+      justify-items: center;
+    }
+
+    @include on-tablet {
+      grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+
+      justify-items: center;
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(4, minmax(272px, 1fr));
+    }
+  }
+
+  &__product {
+    @include on-tablet {
+      grid-column: span 1;
+    }
+  }
+}
+
+.pagination {
+  margin-top: 24px;
+  align-self: center;
+
+  display: flex;
+  gap: 16px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+
+    flex-wrap: wrap;
+  }
+
+  &__page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 32px;
+    width: 32px;
+
+    border: 1px solid $element-color;
+
+    @include textTypeFull(14px, 21px, 'Mont-regular', $primary-color);
+    transition: all .3s .1s ease-in-out;
+
+    &:hover {
+      background-color: $primary-color;
+      color: $white;
+    }
+  }
+}
+
+.page-selected {
+  background-color: $primary-color;
+  border-color: $primary-color;
+
+  color: $white;
+}
+
