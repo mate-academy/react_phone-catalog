@@ -1,0 +1,29 @@
+.catalog__pagination-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.catalog__pagination-number-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.catalog__pagination-number-button {
+  width: 32px;
+  height: 32px;
+  background-color: #161827;
+  color: #fff;
+
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  line-height: 21px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-active {
+  background-color: #905BFF;
+}

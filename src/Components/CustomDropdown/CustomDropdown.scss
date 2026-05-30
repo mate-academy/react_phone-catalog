@@ -1,0 +1,66 @@
+.catalog-sort {
+  position: relative;
+  width: 176px;
+  height: 40px;
+  background-color: #323542;
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  box-sizing: border-box;
+
+  &__trigger {
+    font: inherit;
+    height: 40px;
+    padding-left: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__content {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background-color: #0f1121;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 0;
+    opacity: 0;
+    transition: all 0.2s ease;
+
+    &--open {
+      height: auto;
+      opacity: 1;
+      padding: 4px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      z-index: 10;
+    }
+  }
+
+  .catalog-sort-item {
+    background-color: #0f1121;
+    color: #75767f;
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    padding: 6px 12px;
+    transition: all 0.15s ease;
+
+    &:hover {
+      background-color: #323542;
+      color: #f1f2f9;
+    }
+  }
+}
+
+.dropdown-active {
+  border: 1px solid #905BFF;
+}
