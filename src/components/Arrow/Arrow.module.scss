@@ -1,0 +1,18 @@
+@use 'src/styles/mixins' as *;
+
+.arrowSymbol {
+  width: 14px;
+  height: 14px;
+}
+
+.left {
+  transform: rotate(-90deg);
+}
+
+.right {
+  transform: rotate(90deg);
+}
+
+.down {
+  transform: rotate(180deg);
+}
