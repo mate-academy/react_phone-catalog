@@ -1,0 +1,42 @@
+@import '../../assets/fonts/variables';
+
+.errorWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  min-height: calc(100vh - 64px - 96px);
+  padding: 0 24px 40px;
+
+  text-align: center;
+}
+
+.message {
+
+  @include desktop-tablet-h2-style;
+
+  color: #eb5757;
+}
+
+.retryButton {
+
+  @include desktop-tablet-h3-style;
+
+  cursor: pointer;
+  
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+
+  color: #fff;
+
+  background-color: #323542;
+
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #50535a;
+  }
+}
