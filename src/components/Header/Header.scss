@@ -1,0 +1,259 @@
+@import '../../styles/utils/mixins';
+
+.header {
+  display: flex;
+  height: 48px;
+
+  justify-content: space-between;
+  border-bottom: 1px solid#E2E6E9;
+  position: sticky;
+  top: 0;
+  background-color: #fafbfc;
+  z-index: 1000;
+
+  padding-inline: -24px;
+
+  @include on-tablet {
+    height: 64px;
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__logo {
+    width: 80px;
+    margin: 18px 24px;
+
+    @include on-mobile {
+      margin: 13px 16px;
+    }
+  }
+
+  &__navigation {
+    @include on-mobile {
+      display: none;
+    }
+
+    &--list {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    &--item {
+      font-size: 12px;
+      list-style: none;
+      margin-right: 64px;
+
+      @include on-tablet {
+        margin-right: 32px;
+      }
+
+      @include on-desktop {
+        margin-right: 64px;
+      }
+    }
+
+    &--item:first-child {
+      margin-left: 24px;
+    }
+
+    &--link {
+      text-decoration: none;
+      text-transform: uppercase;
+      color: #89939a;
+      font-family: Mont-Bold, sans-serif;
+      padding: 23.5px 0;
+      transition: color 0.3s ease;
+
+      &-active {
+        color: #313237;
+        border-bottom: 3px solid #313237;
+      }
+
+      &:hover {
+        color: #313237;
+        border-bottom: 3px solid #313237;
+      }
+    }
+  }
+
+  &__burger {
+    height: 48px;
+    width: 48px;
+    background-color: #fafbfc;
+    border: 1px solid#E2E6E9;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__mobile-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #fafbfc;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+  }
+
+  &__mobile-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__mobile-logo {
+    width: 80px;
+    margin-left: 16px;
+  }
+
+  &__mobile-close {
+    border: 1px solid #e2e6e9;
+    height: 48px;
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 0;
+    background-color: #fafbfc;
+
+    &--icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__mobile-list {
+    margin-top: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+
+    &--item {
+      font-family: Mont-Bold, sans-serif;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: #89939a;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      padding-bottom: 8px;
+      transition:
+        color 0.2s ease,
+        border-color 0.2s ease;
+
+      &.active {
+        color: #313237;
+        border-bottom: 3px solid #313237;
+      }
+
+      &:hover {
+        color: #313237;
+      }
+    }
+  }
+
+  &__mobile-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    border-top: 1px solid #e2e6e9;
+
+    &--icon-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+    }
+
+    &--button {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 64px;
+      border-right: 1px solid #e2e6e9;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    &--icons {
+      width: 16px;
+      height: 16px;
+    }
+
+    &--badge {
+      top: -6px;
+      right: -6px;
+      position: absolute;
+      background-color: #eb5757;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      border-radius: 50%;
+      padding: 2px 5px;
+      min-width: 16px;
+      text-align: center;
+    }
+  }
+
+  &__icons {
+    @include on-mobile {
+      display: none;
+    }
+
+    display: flex;
+    align-items: center;
+
+    &--icon {
+      width: 16px;
+      margin: 24px;
+    }
+
+    &--button {
+      height: 100%;
+      border-left: 1px solid#E2E6E9;
+      cursor: pointer;
+      position: relative;
+    }
+
+    &--badge {
+      font-family: Mont-Regular, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      width: 14px;
+      height: 14px;
+      background-color: #eb5757;
+      border-radius: 50%;
+      line-height: 11.5px;
+      position: absolute;
+      top: 30%;
+      right: 30%;
+    }
+  }
+}

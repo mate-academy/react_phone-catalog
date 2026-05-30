@@ -1,0 +1,70 @@
+@import '../../styles/utils/mixins';
+
+.footer {
+  border-top: 1px solid#E2E6E9;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+
+    @include on-mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__nav {
+    @include on-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    gap: 107px;
+    display: flex;
+
+    &--link {
+      text-decoration: none;
+      font-family: Mont-Bold, sans-serif;
+      font-size: 12px;
+      line-height: 11px;
+      text-transform: uppercase;
+      color: #89939a;
+    }
+
+    &--info {
+      margin: 42px 0;
+
+      @include on-mobile {
+        margin: 0;
+      }
+    }
+  }
+
+  &__logo {
+    width: 89px;
+    margin: 32px 0;
+  }
+
+  &__back {
+    display: flex;
+    justify-content: center;
+
+    &-to-top {
+      font-family: Mont-SemiBold, sans-serif;
+      font-size: 12px;
+      line-height: 16px;
+      color: #89939a;
+      margin: 42px 0;
+    }
+  }
+
+  &__button {
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    margin: 32px 0 32px 16px;
+    border: 1px solid #b4bdc3;
+    cursor: pointer;
+  }
+}

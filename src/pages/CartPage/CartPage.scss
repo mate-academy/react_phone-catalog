@@ -1,0 +1,311 @@
+@import '../../styles/utils/mixins';
+
+.cart {
+  &__wrapper {
+    display: flex;
+    margin-bottom: 16px;
+    gap: 16px;
+    flex-direction: column;
+    align-items: stretch;
+
+    @include on-desktop {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+
+  &__title {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.5px;
+    margin-bottom: 32px;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: none;
+
+    @include on-desktop {
+      display: flex;
+      flex: 0 0 752px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 128px;
+    border: 1px solid #e2e6e9;
+    padding: 0 24px;
+    transition: box-shadow 0.2s ease;
+    margin-bottom: 16px;
+    gap: 16px;
+
+    @include on-mobile {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 16px;
+      text-align: left;
+    }
+
+    &:hover {
+      border: 1px solid #000;
+    }
+  }
+
+  &__item-top {
+    display: flex;
+    align-items: center;
+    flex: 1 1 auto;
+    min-width: 0;
+
+    @include on-tablet {
+      white-space: nowrap;
+    }
+  }
+
+  &__item-bottom {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    justify-content: space-between;
+
+    @include on-tablet {
+      flex: 0 0 180px;
+      flex-shrink: 0;
+      justify-content: flex-end;
+    }
+
+    &--button {
+      height: 32px;
+      width: 32px;
+      border: 1px solid #e2e6e9;
+      background-color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    &--quantity {
+      font-size: 14px;
+      font-weight: 600;
+      width: 32px;
+      text-align: center;
+    }
+
+    @include on-mobile {
+      flex-direction: row;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    width: 96px;
+    justify-content: space-between;
+  }
+
+  &__icon {
+    &--cancel {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 24px;
+      flex: 0 0 auto;
+
+      &__img {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  &__product-image {
+    flex: 0 0 80px;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-right: 24px;
+  }
+
+  &__product-name {
+    flex: 1 1 auto;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    color: #313237;
+    line-height: 1.4;
+    margin: 0;
+    text-decoration: none;
+  }
+
+  &__price {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 20px;
+    white-space: nowrap;
+    margin-left: 8px;
+    min-width: 80px;
+    text-align: right;
+  }
+
+  &__checkout {
+    border: 1px solid #e2e6e9;
+    padding: 24px;
+
+    width: 100%;
+    flex: none;
+
+    @include on-desktop {
+      flex: 0 0 368px;
+    }
+  }
+
+  &__total-price {
+    display: flex;
+    justify-content: center;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.5px;
+  }
+
+  &__total-amount {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+
+    &::after {
+      content: '';
+      height: 1px;
+      bottom: -24px;
+      width: 100%;
+      background-color: #e2e6e9;
+      margin-top: 24px;
+    }
+  }
+
+  &__checkout-button {
+    height: 48px;
+    background-color: #313237;
+    width: 100%;
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    color: #fff;
+    margin-top: 24px;
+  }
+
+  &__empty {
+    display: flex;
+    margin-bottom: 20px;
+
+    &--string {
+      font-family: Mont-Regular, sans-serif;
+      font-weight: 500;
+      font-size: 50px;
+      color: #89939a;
+      margin-bottom: 20px;
+
+      @include on-tablet {
+        margin-top: 25vh;
+      }
+
+      @include on-mobile {
+        font-size: 36px;
+      }
+    }
+
+    @include on-mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-in;
+  }
+
+  &__modal {
+    background: #fff;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    animation: scaleIn 0.25s ease;
+  }
+
+  &__modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  &__modal-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #555;
+  }
+
+  &__modal-button {
+    padding: 10px 20px;
+    background-color: #0071e3;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #005bb5;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}

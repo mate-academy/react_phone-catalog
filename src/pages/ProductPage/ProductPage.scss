@@ -1,0 +1,339 @@
+@import '../../styles/utils/mixins';
+
+.product-page {
+  margin-top: 24px;
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+
+    @include on-tablet {
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+
+    @include on-mobile {
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+
+  &__product-name {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.5px;
+    color: #313237;
+    margin-bottom: 40px;
+  }
+
+  &__images {
+    display: flex;
+    gap: 16px;
+
+    @include on-mobile {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 80px;
+
+    @include on-mobile {
+      flex-direction: row;
+      width: auto;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &--image {
+      height: 80px;
+      width: 80px;
+      object-fit: contain;
+      border: 1px solid #e2e6e9;
+    }
+
+    &--current-img {
+      height: 287px;
+      width: 287px;
+      object-fit: contain;
+      margin: 0 auto;
+
+      @include on-desktop {
+        height: 464px;
+        width: 464px;
+      }
+    }
+  }
+
+  &__select {
+    width: 100%;
+
+    @include on-desktop {
+      width: 320px;
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 24px;
+  }
+
+  &__option {
+    width: 100%;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__color {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #313237;
+    border-radius: 100%;
+    cursor: pointer;
+    background-clip: content-box;
+    position: relative;
+
+    &:hover {
+      border-color: #313237;
+    }
+
+    &.selected {
+      border: 2px solid #313237;
+      box-shadow: 0 0 0 1px #313237;
+    }
+  }
+
+  &__option-title {
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+    line-height: 15.34px;
+    color: #89939a;
+    margin-bottom: 8px;
+
+    &:first-child {
+      @include on-mobile {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  &__radio {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__capacity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    width: 56px;
+    height: 32px;
+    border: 1px solid #b4bdc3;
+    cursor: pointer;
+    background-color: #fff;
+
+    &:hover {
+      border-color: #313237;
+    }
+
+    &.selected {
+      background-color: #313237;
+      color: #fff;
+      border-color: #313237;
+    }
+  }
+
+  &__prices {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+    color: #313237;
+    display: flex;
+    margin-top: 32px;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    &--full-price {
+      font-family: Mont-Regular, sans-serif;
+      text-decoration: line-through;
+      font-size: 22px;
+      line-height: 28.12px;
+      color: #89939a;
+    }
+  }
+
+  &__add-to {
+    display: flex;
+    height: 48px;
+    gap: 8px;
+    margin-bottom: 32px;
+
+    &--cart {
+      font-family: Mont-SemiBold, sans-serif;
+      width: 100%;
+      background-color: #313237;
+      color: #fff;
+      font-size: 14px;
+      line-height: 21px;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.9;
+      }
+
+      &.in-cart {
+        background-color: #fff;
+        color: #27ae60;
+        border: 1px solid #b4bdc3;
+      }
+    }
+
+    &--favourites {
+      width: 48px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      justify-content: center;
+      background-color: #fff;
+      border: 1px solid #b4bdc3;
+      cursor: pointer;
+
+      &:hover {
+        border-color: #b4bdc3;
+      }
+
+      &.active {
+        border-color: #b4bdc3;
+        background-color: #f8f8f8;
+      }
+    }
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &--names {
+      font-family: Mont-SemiBold, sans-serif;
+      font-size: 12px;
+      color: #89939a;
+    }
+
+    &--values {
+      display: flex;
+      flex-direction: column;
+      font-family: Mont-SemiBold, sans-serif;
+      font-size: 12px;
+      color: #313237;
+      align-items: flex-end;
+      white-space: nowrap;
+    }
+  }
+
+  &__id {
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+    line-height: 15.34px;
+    color: #b4bdc3;
+  }
+
+  &__details {
+    margin-top: 80px;
+    display: flex;
+    gap: 65px;
+    margin-bottom: 80px;
+    flex-direction: column;
+
+    @include on-desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__about {
+    @include on-desktop {
+      width: 560px;
+    }
+  }
+
+  &__title {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 20px;
+    line-height: 25.56px;
+    color: #313237;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e6e9;
+    margin-bottom: 25px;
+  }
+
+  &__subtitle {
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 20px;
+    line-height: 25.56px;
+    color: #313237;
+    margin-top: 32px;
+  }
+
+  &__description {
+    display: block;
+    margin-top: 16px;
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+
+  &__specification {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+
+    &--names {
+      font-family: Mont-Regular, sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: #89939a;
+    }
+
+    &--values {
+      font-family: Mont-Regular, sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: right;
+    }
+
+    @include on-tablet {
+      width: auto;
+    }
+
+    @include on-desktop {
+      width: 512px;
+    }
+  }
+}
