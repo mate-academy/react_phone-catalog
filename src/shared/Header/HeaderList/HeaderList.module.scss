@@ -1,0 +1,17 @@
+@use '../../../styles/utils' as utils;
+
+@include utils.on-tablet {
+  .list {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+
+    @include utils.on-desktop {
+      gap: 64px;
+    }
+
+    &__item {
+      position: relative;
+    }
+  }
+}

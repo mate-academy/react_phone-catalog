@@ -1,0 +1,67 @@
+@use '../../styles/utils' as utils;
+
+.cart {
+  padding: 24px 0 64px;
+
+  &__title {
+    max-width: 200px;
+    margin-bottom: 32px;
+
+    font-family: utils.$font-main;
+    font-size: 48px;
+    font-weight: 800;
+    font-style: normal;
+    line-height: 56px;
+    color: utils.$color-white;
+    letter-spacing: -0.01em;
+  }
+
+  &__content {
+    @extend %flex-column;
+
+    gap: 32px;
+    width: 100%;
+
+    @include utils.on-desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__products {
+    @extend %flex-column;
+
+    gap: 32px;
+    align-items: center;
+
+    @include utils.on-desktop {
+      width: 70%;
+    }
+  }
+
+  &__empty {
+    @extend %flex-column;
+
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+
+    @include utils.on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__emptyTitle {
+    font-family: utils.$font-main;
+    font-size: 32px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 24px;
+    color: utils.$color-secondary;
+    text-align: left;
+  }
+
+  &__emptyImg {
+    width: 100%;
+    max-width: 300px;
+  }
+}

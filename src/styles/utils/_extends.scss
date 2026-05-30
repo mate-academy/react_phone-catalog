@@ -1,0 +1,26 @@
+%flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+%flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+%flex-end {
+  display: flex;
+  justify-content: end;
+}
+
+%flex-between-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+%background-cover {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}

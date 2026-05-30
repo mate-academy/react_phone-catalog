@@ -1,0 +1,71 @@
+@use '../../styles/utils' as utils;
+
+.breadcrumb {
+  margin-bottom: 24px;
+
+  @include utils.on-tablet {
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    overflow: hidden;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__item {
+    display: flex;
+    flex-shrink: 0;
+    gap: 8px;
+    align-items: end;
+
+    list-style: none;
+    &:last-child {
+      flex-shrink: 1;
+      min-width: 0;
+    }
+  }
+
+  &__link {
+    font-family: utils.$font-main;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 15px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: capitalize;
+    white-space: nowrap;
+  }
+
+  &__text {
+    overflow: hidden;
+    display: block;
+
+    font-family: utils.$font-main;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 15px;
+    color: utils.$color-secondary;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    white-space: nowrap;
+  }
+
+  &__arrow {
+    display: block;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__icon {
+    display: block;
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+  }
+}

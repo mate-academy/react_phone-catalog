@@ -1,0 +1,205 @@
+@use '../../styles/utils' as utils;
+
+.header {
+  position: fixed;
+  z-index: 100;
+
+  width: 100%;
+  padding: 0 0 0 16px;
+  border-bottom: utils.$default-border;
+
+  background-color: utils.$color-black;
+
+  &__content {
+    @extend %flex-between-center;
+
+    @include utils.on-tablet {
+      gap: 32px;
+      justify-content: flex-start;
+    }
+
+    @include utils.on-desktop {
+      gap: 48px;
+    }
+  }
+
+  &__logo {
+    a {
+      display: block;
+
+      img {
+        display: block;
+        width: 64px;
+        height: 22px;
+
+        @include utils.on-desktop {
+          width: 80px;
+          height: 28px;
+        }
+      }
+    }
+  }
+
+  &__logo--mobile {
+    padding: 12px 16px;
+    border-bottom: utils.$default-border;
+
+    a {
+      display: block;
+      width: max-content;
+    }
+
+    .header__logo {
+      display: block;
+      width: 62px;
+      height: 100%;
+    }
+
+    @include utils.on-tablet {
+      display: none;
+    }
+  }
+
+  &__nav {
+    @extend %flex-column;
+
+    pointer-events: none;
+
+    position: absolute;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100dvh;
+
+    opacity: 0;
+    background-color: utils.$color-black;
+
+    transition:
+      transform 0.6s ease,
+      opacity 0.6s ease;
+
+    &--active {
+      pointer-events: auto;
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    ul {
+      @extend %flex-column;
+
+      overflow-y: auto;
+      gap: 26px;
+      align-items: center;
+
+      @include utils.on-tablet {
+        overflow-y: visible;
+        flex-direction: row;
+        gap: 32px;
+      }
+
+      @include utils.on-desktop {
+        gap: 64px;
+      }
+
+      li {
+        position: relative;
+        list-style: none;
+      }
+    }
+
+    @include utils.on-tablet {
+      pointer-events: auto;
+
+      position: static;
+      transform: none;
+
+      display: flex;
+      flex-direction: row;
+      gap: 32px;
+      align-items: center;
+      justify-content: space-between;
+
+      width: 100%;
+      height: auto;
+
+      opacity: 1;
+
+      transition: none;
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    font-family: utils.$font-main;
+    font-size: 12px;
+    font-weight: 800;
+    font-style: normal;
+    color: utils.$color-secondary;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    transition: color utils.$animation-duration;
+
+    @include utils.on-tablet {
+      padding: 18px 0;
+
+      &::after {
+        content: '';
+
+        position: absolute;
+        bottom: 1px;
+        left: 0;
+        transform-origin: bottom;
+        transform: scaleY(0);
+
+        width: 100%;
+        height: 3px;
+
+        background-color: utils.$color-white;
+
+        transition: transform 0.3s ease;
+      }
+
+      &:hover {
+        color: utils.$color-white;
+
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+
+    @include utils.on-desktop {
+      padding: 26px 0;
+    }
+  }
+
+  .active-link {
+    color: utils.$color-white;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      transform: initial;
+
+      width: 100%;
+      height: 3px;
+
+      background-color: utils.$color-white;
+
+      @include utils.on-tablet {
+        bottom: 1px;
+      }
+    }
+  }
+}

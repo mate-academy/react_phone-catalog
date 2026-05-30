@@ -1,0 +1,54 @@
+@use '../../styles/utils' as utils;
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 0;
+
+  &__title {
+    margin-bottom: 24px;
+
+    font-family: utils.$font-main;
+    font-size: 44px;
+    font-weight: 800;
+    font-style: normal;
+    line-height: 140%;
+    color: utils.$color-white;
+    text-align: center;
+  }
+
+  &__img {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  &__btn {
+    cursor: pointer;
+
+    width: max-content;
+    height: 40px;
+    padding: 0 24px;
+    border: none;
+    border-radius: 15px;
+
+    font-family: utils.$font-main;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 15px;
+    color: utils.$color-white;
+    text-transform: uppercase;
+
+    background-color: utils.$color-accent;
+    outline: none;
+
+    transition: background-color utils.$animation-duration;
+
+    &:hover {
+      background-color: utils.$color-accent-hover;
+    }
+  }
+}

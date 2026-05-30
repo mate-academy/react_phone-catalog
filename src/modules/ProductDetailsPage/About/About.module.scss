@@ -1,0 +1,52 @@
+@use '../../../styles/utils' as utils;
+
+.about {
+  width: 100%;
+
+  @include utils.on-desktop {
+    width: 50%;
+  }
+
+  &__title {
+    margin-bottom: 32px;
+    padding-bottom: 18px;
+    border-bottom: utils.$default-border;
+
+    font-family: utils.$font-main;
+    font-size: 20px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 26px;
+    color: utils.$color-white;
+  }
+
+  &__content {
+    @extend %flex-column;
+
+    gap: 32px;
+  }
+
+  &__item {
+    @extend %flex-column;
+
+    gap: 16px;
+  }
+
+  &__subtitle {
+    font-family: utils.$font-main;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 20px;
+    color: utils.$color-white;
+  }
+
+  &__text {
+    font-family: utils.$font-main;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 21px;
+    color: #89939a;
+  }
+}

@@ -1,0 +1,186 @@
+@use '../../styles/utils' as utils;
+
+.productOptions {
+  @extend %flex-column;
+
+  position: relative;
+  gap: 24px;
+  width: 100%;
+
+  &__colorsWrapper {
+    @extend %flex-column;
+
+    gap: 8px;
+    padding-bottom: 24px;
+    border-bottom: utils.$default-border;
+
+    @include utils.on-desktop {
+      max-width: 320px;
+    }
+  }
+
+  &__title {
+    @extend %flex-between-center;
+
+    span {
+      font-family: utils.$font-main;
+      font-size: 12px;
+      font-weight: 600;
+      font-style: normal;
+      line-height: 15px;
+      color: utils.$color-secondary;
+    }
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__colorItem {
+    padding: 4px;
+    border: utils.$default-border;
+    border-radius: 50%;
+
+    list-style: none;
+
+    transition: border utils.$animation-duration;
+
+    &:not(.productOptions__color--active):hover {
+      border: 1px solid utils.$color-secondary;
+    }
+  }
+
+  &__color {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  &__color--active {
+    border: 1px solid utils.$color-white;
+  }
+
+  &__sizes {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__sizeItem {
+    padding: 4px;
+    border: utils.$default-border;
+    list-style: none;
+    transition: background-color utils.$animation-duration;
+
+    &:not(.productOptions__size--active):hover {
+      background-color: utils.$color-elements;
+    }
+  }
+
+  &__size--active {
+    background-color: utils.$color-white;
+    & span {
+      color: utils.$color-black;
+    }
+  }
+
+  &__id {
+    @include utils.on-desktop {
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  &__size {
+    padding: 8px;
+
+    font-family: utils.$font-main;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 21px;
+    color: utils.$color-white;
+    text-align: center;
+  }
+
+  &__sizesWrapper {
+    @extend %flex-column;
+
+    gap: 8px;
+    padding-bottom: 24px;
+    border-bottom: utils.$default-border;
+
+    @include utils.on-desktop {
+      max-width: 320px;
+    }
+  }
+
+  &__prices {
+    @extend %flex-column;
+
+    gap: 8px;
+
+    @include utils.on-tablet {
+      gap: 16px;
+    }
+
+    @include utils.on-desktop {
+      gap: 32px;
+      max-width: 320px;
+    }
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__fullPrice {
+    font-family: utils.$font-main;
+    font-size: 32px;
+    font-weight: 800;
+    font-style: normal;
+    line-height: 41px;
+    color: utils.$color-white;
+    letter-spacing: -0.01em;
+  }
+
+  &__discount {
+    font-family: utils.$font-main;
+    font-size: 22px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 28px;
+    color: utils.$color-secondary;
+    text-decoration-line: line-through;
+  }
+}
+
+.product__info {
+  &Row {
+    @extend %flex-between-center;
+
+    padding: 8px 0;
+  }
+
+  &Title {
+    font-family: utils.$font-main;
+    font-size: 12px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 15px;
+    color: utils.$color-secondary;
+  }
+
+  &Value {
+    font-family: utils.$font-main;
+    font-size: 12px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 15px;
+    color: utils.$color-white;
+    text-align: right;
+  }
+}
