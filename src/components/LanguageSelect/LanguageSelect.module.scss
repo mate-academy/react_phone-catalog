@@ -1,0 +1,80 @@
+.root {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.trigger {
+  font: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  border: 1px solid var(--color-elements);
+  border-radius: 8px;
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: var(--color-secondary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.flag {
+  width: 24px;
+  height: 18px;
+  border-radius: 2px;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 200;
+  min-width: 220px;
+  border: 1px solid var(--color-elements);
+  border-radius: 10px;
+  background-color: var(--color-white);
+  padding: 8px;
+  box-shadow: 0 12px 24px rgb(0 0 0 / 10%);
+}
+
+.option {
+  font: inherit;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+
+  &:hover,
+  &:focus-visible {
+    background-color: rgb(0 0 0 / 4%);
+  }
+}
+
+.optionActive {
+  border-color: var(--color-elements);
+}
+
+.optionLabel {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-primary);
+  line-height: 1.2;
+}

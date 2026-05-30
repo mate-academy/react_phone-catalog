@@ -1,0 +1,91 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-secondary);
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 136px;
+  padding: 11px 12px;
+  border: 1px solid var(--color-elements);
+  border-radius: 0;
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  cursor: pointer;
+  font: inherit;
+}
+
+.trigger:hover,
+.trigger:focus-visible {
+  border-color: var(--color-secondary);
+  outline: none;
+}
+
+.triggerOpen,
+.triggerOpen:hover,
+.triggerOpen:focus-visible {
+  border-color: var(--color-primary);
+}
+
+.triggerLabel {
+  display: inline-block;
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+  background-image: url('/img/arrow_down_gray.svg');
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.2s ease;
+}
+
+.arrowOpen {
+  transform: rotate(180deg);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 10;
+  border: 1px solid var(--color-elements);
+  background-color: var(--color-white);
+  padding: 8px 0;
+}
+
+.option {
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  font: inherit;
+  color: var(--color-secondary);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.option:hover,
+.option:focus-visible {
+  color: var(--color-primary);
+  background-color: var(--color-hover-bg);
+  outline: none;
+}
+
+.optionSelected {
+  color: var(--color-primary);
+}
