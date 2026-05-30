@@ -1,0 +1,101 @@
+@import '../../shared/colors';
+@import '../../shared/mixins';
+
+.ProductsGallery {
+  @include responsive-grid;
+
+  &__top {
+    grid-column: 1 / 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__bottom {
+    grid-column: 1 / 5;
+    display: flex;
+    gap: 16px;
+    margin-right: -16px;
+    overflow-x: hidden;
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__buttonLeftDisabled {
+    width: 32px;
+    height: 32px;
+
+    margin-right: 16px;
+
+    border: 1px solid $elements;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: $hover-bg;
+    cursor: pointer;
+
+    background-image: url('img/buttons/arrow-left-disabled.svg');
+  }
+
+  &__buttonRightActive {
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid $icons;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: $hover-bg;
+    cursor: pointer;
+
+    background-image: url('img/buttons/arrow-right.svg');
+  }
+
+  &__buttonLeftActive {
+    background-color: $hover-bg;
+    background-image: url('img/buttons/arrow-left.svg');
+    border: 1px solid $icons;
+  }
+
+  &__buttonRightDisabled {
+    background-color: $hover-bg;
+    background-image: url('img/buttons/arrow-right-disabled.svg');
+    border: 1px solid $elements;
+  }
+
+  @media screen and (min-width: 640px) {
+    &__top {
+      grid-column: 1 / 13;
+    }
+
+    &__bottom {
+      grid-column: 1 / 13;
+      margin-right: -24px;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    &__top {
+      grid-column: 1 / 25;
+    }
+
+    &__bottom {
+      grid-column: 1 / 25;
+      margin-right: 0;
+    }
+  }
+
+  &__ProductCard {
+    flex: 0 0 212px;
+
+    @media screen and (min-width: 640px) {
+      flex: 0 0 237px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      flex: 0 0 272px;
+    }
+  }
+}

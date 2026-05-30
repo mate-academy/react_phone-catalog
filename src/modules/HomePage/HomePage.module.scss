@@ -1,0 +1,65 @@
+@import '../../shared/mixins';
+@import '../../shared/colors';
+
+.HomePage {
+  &__content {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+
+  &__titleWrapper {
+    margin-bottom: 24px;
+
+    @include responsive-grid;
+
+    @media screen and (min-width: 640px) {
+      margin-bottom: 32px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__title {
+    grid-column: 1 / 5;
+  }
+
+  &__line1,
+  &__line2 {
+    display: block;
+  }
+
+  @media screen and (min-width: 640px) {
+    &__title {
+      grid-column: 1 / 10;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    &__line1,
+    &__line2 {
+      display: inline;
+    }
+
+    &__title {
+      grid-column: 1 / auto;
+      white-space: nowrap;
+    }
+  }
+
+  & .HomePage__slider,
+  & .HomePage__newModels,
+  & .HomePage__categories,
+  & .HomePage__hotPrices {
+    margin-bottom: 56px;
+
+    @media screen and (min-width: 640px) {
+      margin-bottom: 60px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 80px;
+    }
+  }
+}

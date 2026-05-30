@@ -1,0 +1,97 @@
+@import '../../shared/colors';
+
+.Header {
+  position: sticky;
+  top: 0;
+  width: auto;
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid $elements;
+
+  margin-bottom: 24px;
+
+  @media screen and (min-width: 640px) {
+    margin-bottom: 32px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    margin-bottom: 56px;
+  }
+
+  &__logo {
+    width: 64px;
+    height: 22px;
+  }
+
+  &__burger {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__logoWrapper {
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+  }
+
+  &__navWrapper {
+    display: none;
+  }
+
+  &__burgerWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+
+    box-sizing: border-box;
+    border: 1px solid $elements;
+  }
+}
+
+.Backdrop {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: calc(100vh - 50px);
+  background-color: rgba(0, 0, 0, 0);
+}
+
+@media (min-width: 640px) {
+  .Header {
+    justify-content: left;
+
+    &__navWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-left: 16px;
+    }
+
+    &__burgerWrapper {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .Header {
+    &__logo {
+      width: 80px;
+      height: 28px;
+    }
+  }
+}
