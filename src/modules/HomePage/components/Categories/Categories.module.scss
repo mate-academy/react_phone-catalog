@@ -1,0 +1,95 @@
+@import '/src/shared/styles/index';
+
+.categories {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: $content-max-width;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding-inline: $content-padding-inline;
+
+    &__content {
+    aspect-ratio: 20 / 5;
+    max-height: 368px;
+    
+    @include flex-center;
+
+    flex-direction: row;
+    gap: 16px;
+
+    @include on-phone{
+        flex-direction: column;
+        aspect-ratio: 5 / 16;
+        width: 100%;
+        max-height: 850px;
+        box-sizing: border-box;
+        gap: 64px;
+      
+    }
+    }
+
+    &__category {
+        @include set-size(100%, 100%);
+        overflow: hidden;
+        border-radius: 10px;
+    
+        @include on-phone{
+            margin-bottom: 32px;
+        }
+    }
+
+    &__title {
+        @include set-font($font-mont, 32px, 800);
+    
+        color: $color-element-black;
+    }
+
+    &__name{
+        margin: 24px 0 0;
+    
+        @include set-font($font-mont, 20px, 700);
+    
+        color: $color-element-black;
+    }
+
+    &__value {
+        @include set-font($font-mont, 14px, 500);
+    
+        color: $color-grey;
+        margin: 0;
+    }
+
+    &__window {
+        overflow: hidden;
+    
+        @include set-size(100%, 100%);
+    
+        position: relative;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+    }
+
+   &__background {
+    @include set-size(100%, 100%);
+
+    transition: all 0.3s;
+   }
+    
+    &__image {
+        object-fit: contain;
+    
+        @include set-size(100%, 100%);
+    
+        position: absolute;
+        right: -25%;
+        bottom: -15%;
+        transition: all 0.3s ease-in-out;
+    }
+    
+}

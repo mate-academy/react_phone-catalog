@@ -1,0 +1,120 @@
+@import '../../../styles/index';
+@import '../../../../App';
+
+aside {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 48px);
+  background-color: $color-white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  transition: all 0.3s;
+}
+
+.asideLinks {
+  @include flex-center;
+
+  margin-top: 24px;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.asideIcons {
+  @include flex-center;
+
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  flex-direction: row;
+}
+
+.asideIcon {
+  @include set-size(50%, 64px);
+
+  box-shadow: 0 1px 4px rgba(226, 230, 233, 0.75);
+  transition: all 0.3s;
+
+  &:hover {
+    border: 1px solid black;
+  }
+}
+
+.links {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 64px;
+
+  &__item {
+    @include set-font($font-mont, 16px, 800);
+    @include flex-center;
+    @include set-size(100%, 100%);
+
+    position: relative;
+    transition: all 0.3s;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    color: #000;
+
+    &:hover {
+      background-color: $color-light-grey;
+      text-shadow:
+        -1px -1px 0 $color-modified-grey,
+        1px -1px 0 $color-modified-grey,
+        -1px 1px 0 $color-modified-grey,
+        1px 1px 0 $color-modified-grey;
+    }
+
+    &--active {
+      color: $color-element-black;
+    }
+  }
+
+  @include on-tablet {
+    font-size: 12px;
+    line-height: 11px;
+  }
+
+  @media (max-width: 790px) {
+    gap: 20px;
+  }
+}
+
+.count {
+  @include set-size(14px, 14px);
+  @include set-font($font-mont, 9px, 600);
+
+  position: absolute;
+  background-color: #476df4;
+  border: 1px solid $color-white;
+  border-radius: 50px;
+  color: $color-white;
+  line-height: 14px;
+  text-align: center;
+}
+
+.cartCount {
+  position: absolute;
+  top: 25%;
+  right: -80%;
+
+  @include on-phone {
+    top: 25%;
+    left: 50%;
+  }
+}
+
+.favouritesCount {
+  top: 25%;
+  right: 120%;
+
+  @include on-phone {
+    top: 25%;
+    left: 50%;
+  }
+}

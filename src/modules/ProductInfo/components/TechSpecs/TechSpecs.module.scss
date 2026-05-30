@@ -1,0 +1,36 @@
+@import '/src/shared/styles/index';
+@import 'src/App';
+
+.card__tech {
+    grid-column: 14 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @include on-tablet {
+        grid-column: 1 / -1;
+    }
+  }
+
+  .card__techTitle {
+    @include set-font($font-mont, 22px, 800);
+  
+    color: $color-element-black;
+  }
+
+  .card__techItem {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card__techName {
+    @include set-font($font-mont, 14px, 500);
+  
+    color: $color-grey;
+  }
+
+  .card__techValue {
+    @include set-font($font-mont, 14px, 600);
+  
+    color: $color-element-black;
+  }
