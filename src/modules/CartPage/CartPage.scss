@@ -1,0 +1,133 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/vars.scss';
+
+.cart {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 32px;
+
+  &__ampty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    min-height: 40vh;
+    gap: 10px;
+
+    &__title {
+      color: $main-grey-color;
+
+      @include mont(600, 22px);
+    }
+
+    &__img__link {
+      max-width: 120px;
+
+      @include on-tablet {
+        max-width: 240px;
+      }
+    }
+
+    &__sent {
+      display: flex;
+      background-color: rgb(219, 219, 219);
+      gap: 10px;
+      border-radius: 10px;
+      padding: 5px 10px;
+
+      &__p {
+        @include mont(500, 12px);
+      }
+
+      &__img {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__padding {
+    @include content-padding-inline;
+  }
+
+  &__wrapper {
+    @include on-desktop {
+      @include page-grid;
+    }
+  }
+
+  &__content {
+    flex: 2;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    margin-bottom: 32px;
+
+    @include on-desktop {
+      grid-column: 1 / 18;
+    }
+  }
+
+  &__checkout {
+    @include content-padding-inline;
+
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    max-width: 100%;
+    align-items: center;
+    border: 1px solid rgba(226, 230, 233, 1);
+    margin-inline: 16px;
+    gap: 16px;
+
+    max-height: 220px;
+
+    @include on-desktop {
+      grid-column: 18 / -1;
+    }
+
+    @include on-tablet {
+      margin-inline: 24px;
+    }
+
+    &__details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__price {
+      @include mont(800, 32px);
+      // padding: 0;
+      margin: 0 auto;
+    }
+
+    &__br {
+      border-top: 1px solid rgba(226, 230, 233, 1);
+      width: 100%;
+    }
+
+    &__items {
+      color: $main-grey-color;
+
+      @include mont(600, 14px);
+    }
+
+    &__btn {
+      @include mont(700, 14px);
+
+      background-color: $main-black-color;
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding-block: 13.5px;
+      cursor: pointer;
+
+      @include hover-scale-hover;
+    }
+  }
+}

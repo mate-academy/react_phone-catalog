@@ -1,0 +1,188 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/vars.scss';
+
+.header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding-left: 16px;
+  justify-content: space-between;
+  box-shadow: 0 1px 0 rgba(226, 230, 233, 1);
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: #fff;
+
+  height: 48px;
+
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 32px;
+  }
+
+  @include on-desktop {
+    height: 64px;
+    padding-left: 24px;
+    margin-bottom: 56px;
+  }
+
+  &__logo__img {
+    width: 64px;
+    height: 22px;
+
+    @include on-desktop {
+      height: 28px;
+      width: 80px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__bttns {
+    &__list {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    &__item {
+      padding: 16px;
+
+      @include on-desktop {
+        padding: 24px;
+      }
+
+      box-shadow: -1px 0px 0px rgba(226, 230, 233, 1);
+
+      &--phone {
+        @include on-tablet {
+          display: none;
+        }
+      }
+
+      &--tablet {
+        display: none;
+
+        @include on-tablet {
+          display: block;
+        }
+      }
+    }
+
+    &__logo {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.nav {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    &__link {
+      text-decoration: none;
+      text-transform: uppercase;
+      color: $main-grey-color;
+
+      @include mont(800);
+
+      &--active {
+        color: $main-black-color;
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -55%; // лінія на самому низу лінку
+          left: 0;
+          width: 100%;
+          height: 3px; // товщина лінії
+          background-color: $main-black-color;
+        }
+
+        @include on-desktop {
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -92%; // лінія на самому низу лінку
+            left: 0;
+            width: 100%;
+            height: 3px; // товщина лінії
+            background-color: $main-black-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+.favourites {
+  position: relative;
+
+  &__counter {
+    @include mont(700, 9px);
+
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    background-color: rgba(235, 87, 87, 1);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    top: -4px;
+    right: -4px;
+  }
+}
+
+.cart {
+  position: relative;
+
+  &__counter {
+    @include mont(700, 9px);
+
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    background-color: rgba(235, 87, 87, 1);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    top: -4px;
+    right: -4px;
+  }
+}

@@ -1,0 +1,101 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/vars.scss';
+
+.footer {
+  margin-top: 64px;
+
+ &__content {
+
+  padding-inline: 16px;
+  margin-top: 32px;
+
+  @include on-tablet {
+    padding-inline: 32px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+ }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+  &-separator {
+    border-top: 1px solid rgba(226, 230, 233, 1);
+  }
+
+  &__logo {
+    &__link {
+      width: 89px;
+      height: 32px;
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 13.5px;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__link {
+    color: $main-grey-color;
+    text-transform: uppercase;
+    text-decoration: none;
+    align-items: center;
+
+    @include hover-active-hover;
+
+    @include mont(800, 12px);
+  }
+
+  &__go-up {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    &__text {
+      color: $main-grey-color;
+
+      @include hover-active-hover;
+
+      @include mont(700, 12px);
+    }
+
+    &__img {
+      padding: 8px;
+
+      border: 1px solid rgba(180, 189, 195, 1);
+
+      @include hover-black-hover;
+    }
+
+    &__img__link {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

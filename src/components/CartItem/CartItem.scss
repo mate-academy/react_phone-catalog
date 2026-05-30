@@ -1,0 +1,134 @@
+@import '../../styles/vars.scss';
+@import '../../styles/mixins.scss';
+
+.cart-item {
+  display: flex;
+  flex-direction: column; // 📱 мобільна версія — вертикально
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid rgba(226, 230, 233, 1);
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+    gap: 24px;
+  }
+
+  &__close {
+    align-self: flex-end;
+    cursor: pointer;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    img {
+      width: 14px;
+      height: 14px;
+    }
+
+    @include on-tablet {
+      align-self: center;
+      flex: 0 0 auto;
+    }
+  }
+
+  &__img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: auto;
+      height: 80px;
+      object-fit: contain;
+    }
+
+    @include on-tablet {
+      flex: 0 0 80px;
+    }
+  }
+
+  &__title {
+    text-decoration: none;
+    color: $main-black-color;
+    @include mont(600, 14px);
+    text-align: center;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-width: 220px;
+
+    transition: color $main-transition-time ease;
+
+    &:hover {
+      color: $main-grey-color;
+    }
+
+    @include on-tablet {
+      text-align: left;
+      flex: 1;
+      max-width: 300px;
+    }
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    button {
+      border: 1px solid $main-grey-color;
+      padding: 8px;
+      background: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      img {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    p {
+      @include mont(600, 14px);
+      margin: 0;
+    }
+  }
+
+  &__price {
+    color: $main-black-color;
+    @include mont(800, 18px);
+
+    @include on-tablet {
+      text-align: right;
+      flex: 0 0 70px;
+    }
+  }
+
+  &__bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      width: auto;
+      justify-content: flex-end;
+      gap: 32px;
+    }
+  }
+}
