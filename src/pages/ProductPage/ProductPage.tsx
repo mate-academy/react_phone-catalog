@@ -22,7 +22,6 @@ export const ProductPage = () => {
   const { addToCart, removeFromCart, isInCart } = useCart();
   const [isFavorite, setIsFavorite] = useState(false);
 
-
   const { category, productId } = useParams();
   const capitalized = (category!.charAt(0).toUpperCase() +
     category!.slice(1)) as CatalogType;
@@ -171,8 +170,9 @@ export const ProductPage = () => {
                 <NavLink
                   key={color}
                   to={getColorLink(color)}
-                  className={`${styles.color} ${color === product.color ? styles.isActiveColor : ''
-                    }`}
+                  className={`${styles.color} ${
+                    color === product.color ? styles.isActiveColor : ''
+                  }`}
                   style={{ backgroundColor: colorMap[color] }}
                 ></NavLink>
               ))}
@@ -186,8 +186,9 @@ export const ProductPage = () => {
                 <NavLink
                   key={capacity}
                   to={getCapacityLink(capacity)}
-                  className={`${styles.capacity} ${capacity === product.capacity ? styles.isActiveCapacity : ''
-                    }`}
+                  className={`${styles.capacity} ${
+                    capacity === product.capacity ? styles.isActiveCapacity : ''
+                  }`}
                 >
                   {capacity}
                 </NavLink>
