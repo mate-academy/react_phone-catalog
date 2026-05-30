@@ -1,0 +1,182 @@
+@use '../../mixins.scss' as *;
+
+.shop {
+  margin-top: 56px;
+
+  @include padding-inline;
+
+
+  &__title {
+    margin: 10px 0;
+    color: white;
+  }
+
+  &__main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__phone {
+    position: relative;
+
+    overflow: hidden;
+
+    width: 288px;
+    height: 288px;
+
+    background-color: #6D6474;
+
+    @include on-tablet {
+      width: 187px;
+      height: 187px;
+    }
+
+    @include on-desktop {
+      width: 368px;
+      height: 368px;
+    }
+
+    &--img {
+      position: absolute;
+      top: 70px;
+      right: -50px;
+
+      width: 302px;
+      height: 357px;
+
+      object-fit: contain;
+
+      transition: transform 0.5s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      @include on-tablet {
+        top: 45px;
+        width: 210px;
+        height: 200px;
+      }
+
+      @include on-desktop {
+        top: 80px;
+        width: 302px;
+        height: 357px;
+      }
+    }
+  }
+
+  &__tablet {
+    position: relative;
+
+    overflow: hidden;
+
+    width: 288px;
+    height: 288px;
+
+    background-color: #A9A9A9;
+
+    @include on-tablet {
+      width: 187px;
+      height: 187px;
+    }
+
+    @include on-desktop {
+      width: 368px;
+      height: 368px;
+    }
+
+    &--img {
+      position: absolute;
+      top: 20px;
+      right: -40px;
+
+      width: 302px;
+      height: 357px;
+
+      object-fit: contain;
+
+      transition: transform 0.5s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      @include on-tablet {
+        top: 30px;
+        width: 210px;
+        height: 200px;
+      }
+
+      @include on-desktop {
+        top: 45px;
+        right: -100px;
+        width: 402px;
+        height: 400px;
+      }
+    }
+  }
+
+  &__accessories {
+    position: relative;
+
+    overflow: hidden;
+
+    width: 288px;
+    height: 288px;
+
+    background-color: #AE0062;
+
+      @include on-tablet {
+      width: 187px;
+      height: 187px;
+    }
+
+      @include on-desktop {
+      width: 368px;
+      height: 368px;
+    }
+
+    &--img {
+      position: absolute;
+      top: -30px;
+      right: -230px;
+
+      width: 480px;
+      height: 430px;
+
+      object-fit: contain;
+
+      transition: transform 0.5s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      @include on-tablet {
+        top: 40px;
+        right: -270px;
+        width: 550px;
+        height: 150px;
+      }
+
+      @include on-desktop {
+        top: 0;
+        right: -330px;
+        width: 670px;
+        height: 430px;
+      }
+    }
+  }
+
+  &__models--title {
+    margin: 0;
+    color: #89939A;
+  }
+}

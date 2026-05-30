@@ -1,0 +1,86 @@
+@use '../../mixins.scss' as *;
+
+.swiper--top {
+  @include padding-inline;
+
+  &__conteiner {
+    position: relative;
+
+    display: flex;
+    gap: 15px;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  &__images {
+    width: 100%;
+
+    @include on-tablet {
+      height: 221px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__banner {
+    width: 100%;
+    height: 320px;
+
+    object-fit: cover;
+    background-color: #FDF5E6;
+
+    transition: transform 0.5s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    @include on-tablet {
+      height: 290px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &-button-next,
+  &-button-prev {
+    display: none;
+
+    @media (min-width: 500px) {
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 40px;
+      border: none;
+
+      color: white;
+
+      background-color: #323542;
+
+      transition: background-color 0.3s ease;
+    }
+  }
+
+
+  &-pagination-bullet {
+    width: 14px;
+    height: 4px;
+    border-radius: 0;
+
+    opacity: 1;
+    background: #323542;
+
+    transition: background-color 0.3s ease;
+  }
+
+  &-pagination-bullet-active {
+    background: #ccc;
+  }
+}
