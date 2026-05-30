@@ -1,0 +1,12 @@
+@use '/src/styles';
+
+.addToFavoritesButton {
+  width: 40px;
+  height: 40px;
+
+  &__icon {
+    &--select {
+      color: styles.get-color(selected-favorite);
+    }
+  }
+}

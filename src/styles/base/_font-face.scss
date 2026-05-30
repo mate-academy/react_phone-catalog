@@ -1,0 +1,15 @@
+@use '../abstracts/fonts';
+
+@mixin get-font-face($family, $file-name, $weight, $style: normal) {
+  @font-face {
+    font-family: $family;
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+    src: url('../fonts/#{$file-name}.otf') format('opentype');
+  }
+}
+
+@include get-font-face('Mont', 'Mont-Regular', fonts.get-font-weight(regular));
+@include get-font-face('Mont', 'Mont-SemiBold', fonts.get-font-weight(semibold));
+@include get-font-face('Mont', 'Mont-Bold', fonts.get-font-weight(bold));

@@ -1,0 +1,109 @@
+@use '/src/styles' as styles;
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding: 32px;
+  border: 1px solid styles.get-color(elements);
+
+  @include styles.hover-styles {
+    box-shadow: 0 2px 16px 0 #0000001A;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__imageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 196px;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    height: 42px;
+    padding-top: 16px;
+    color: styles.get-color(primary);
+
+    @include styles.typography(body);
+  }
+
+  &__prices {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__discountPrice {
+    color: styles.get-color(primary);
+
+    @include styles.typography(h3);
+  }
+
+  &__fullPrice {
+    color: styles.get-color(secondary);
+    text-decoration: line-through;
+
+    @include styles.typography(h3);
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-block: 8px;
+
+    &Item {
+      display: flex;
+      justify-content: space-between;
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15.34px;
+      letter-spacing: 0%;
+    }
+  }
+
+  &__label {
+    color: styles.get-color(secondary);
+  }
+
+  &__value {
+    color: styles.get-color(primary);
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__addToCartButton {
+    flex: 1;
+  }
+
+  &__addToFavoritesButton {
+    width: 40px;
+    height: 40px;
+  }
+
+  &__icon {
+    &--selected {
+      color: styles.get-color(selected-favorite);
+    }
+  }
+}

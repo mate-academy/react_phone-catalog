@@ -1,0 +1,27 @@
+export const colorHexMap: Record<string, string> = {
+  black: '#000000',
+  gold: '#FFD700',
+  yellow: '#FFFF00',
+  green: '#008000',
+  midnightgreen: '#004953',
+  silver: '#C0C0C0',
+  spacegray: '#535353',
+  'space gray': '#535353',
+  'space-gray': '#535353',
+  red: '#FF0000',
+  white: '#FFFFFF',
+  purple: '#800080',
+  coral: '#FF7F50',
+  rosegold: '#B76E79',
+  'rose gold': '#B76E79',
+  midnight: '#191970',
+  spaceblack: '#1D1B1B',
+  blue: '#0000FF',
+  pink: '#FFC0CB',
+  sierrablue: '#5C82A6',
+  graphite: '#4A4A4A',
+  'sky-blue': '#87CEEB',
+  starlight: '#F5E6CA',
+};
+
+export const getHexColor = (color: string) => colorHexMap[color.toLowerCase()];

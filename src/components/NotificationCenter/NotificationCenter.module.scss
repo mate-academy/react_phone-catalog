@@ -1,0 +1,29 @@
+@use '/src/styles';
+
+.toastList {
+  position: fixed;
+  z-index: 100;
+  top: styles.get-size(header-height-base) + 20px;
+  right: 20px;
+
+  overflow-y: scroll;
+
+  max-height: calc(100vh - (styles.get-size(header-height-base) + 20px));
+
+  visibility: visible;
+
+  @include styles.media(desktop) {
+    top: styles.get-size(header-height-desktop) + 20px;
+    max-height: calc(100vh - (styles.get-size(header-height-desktop) + 20px));
+  }
+
+  &:empty {
+    visibility: hidden;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}

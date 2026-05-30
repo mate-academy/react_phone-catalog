@@ -1,0 +1,30 @@
+@use '/src/styles';
+
+.productPage {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  &__title {
+    color: styles.get-color(primary);
+
+    @include styles.typography(h1);
+  }
+
+  &__subtitle {
+    color: styles.get-color(secondary);
+
+    @include styles.typography(body);
+  }
+
+  &__dropdowns {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__products {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}

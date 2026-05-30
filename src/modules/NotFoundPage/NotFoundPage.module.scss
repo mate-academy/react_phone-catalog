@@ -1,0 +1,43 @@
+@use '/src/styles';
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  &__title {
+    color: styles.get-color(primary);
+
+  @include styles.typography(h1);
+
+    @include styles.media(tablet) {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__text {
+    display: flex;
+    gap: 10px;
+    color: styles.get-color(secondary);
+
+  @include styles.typography(body);
+  }
+
+  &__linkHome {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: styles.get-color(primary);
+    text-decoration: underline;
+    letter-spacing: 0%;
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+  }
+}

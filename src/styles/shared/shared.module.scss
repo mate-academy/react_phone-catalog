@@ -1,0 +1,52 @@
+@use '../abstracts/colors';
+@use '../abstracts/sizes';
+@use '../abstracts/breakpoints';
+@use '../abstracts/mixins';
+
+.headerButton {
+  aspect-ratio: 1 / 1;
+  height: sizes.get-size(header-height-base);
+  border: none;
+
+  background-color: colors.get-color(white);
+  box-shadow: -1px 0 0 0 colors.get-color(elements);
+
+  @include breakpoints.media(desktop) {
+    height: sizes.get-size(header-height-desktop);
+  }
+}
+
+.link {
+  position: relative;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform-origin: center;
+    transform: scaleX(0);
+
+    width: 100%;
+    height: 3px;
+
+    background-color: colors.get-color(primary);
+
+    @include mixins.transition(transform);
+  }
+
+  @include mixins.hover-styles {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &--active {
+    color: colors.get-color(primary);
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}

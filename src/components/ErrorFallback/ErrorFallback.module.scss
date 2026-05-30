@@ -1,0 +1,34 @@
+@use '/src/styles';
+
+.errorFallback {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  &__title {
+    color: styles.get-color(primary);
+
+    @include styles.typography(h2);
+  }
+
+  &__text {
+    display: flex;
+    gap: 10px;
+    color: styles.get-color(secondary);
+
+    @include styles.typography(body);
+  }
+
+  &__reloadButton {
+    width: 100px;
+    height: 40px;
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+  }
+}

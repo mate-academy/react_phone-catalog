@@ -1,0 +1,27 @@
+@use '/src/styles';
+
+.productSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+
+    @include styles.typography(body);
+
+    &--short {
+      @include styles.typography(small);
+    }
+  }
+
+
+  &__label {
+    color: styles.get-color(secondary);
+  }
+
+  &__value {
+    color: styles.get-color(primary);
+  }
+}
