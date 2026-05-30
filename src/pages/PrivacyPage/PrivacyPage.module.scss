@@ -1,0 +1,46 @@
+.page {
+  padding: 40px 0;
+  background: var(--background-primary);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.title {
+  font-size: 32px;
+  margin: 24px 0;
+  color: var(--text-color);
+}
+
+.content {
+  line-height: 1.8;
+  color: var(--text-color);
+  font-size: 16px;
+}
+
+.content section {
+  margin-bottom: 32px;
+}
+
+.content h2 {
+  font-size: 22px;
+  margin: 32px 0 16px;
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.content p {
+  margin: 12px 0;
+  opacity: 0.9;
+}
+
+.lastUpdated {
+  margin-top: 48px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-align: center;
+}

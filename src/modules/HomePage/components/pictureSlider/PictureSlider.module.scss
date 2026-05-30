@@ -1,0 +1,132 @@
+.slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.slideContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 6;
+  background: var(--background-primary);
+}
+
+.slideImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slideImage.transition {
+  opacity: 0;
+}
+
+.prev {
+  left: 0;
+  padding-left: 16px;
+  justify-content: flex-start;
+}
+
+.next {
+  right: 0;
+  padding-right: 16px;
+  justify-content: flex-end;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 60px;
+  background: transparent;
+  border: none;
+  color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.prev::before,
+.next::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--border-color);
+  border-top: none;
+  border-right: none;
+  transition: all 0.3s ease;
+}
+
+.prev::before {
+  transform: rotate(45deg);
+  margin-left: 4px;
+}
+
+.next::before {
+  transform: rotate(-135deg);
+  margin-right: 4px;
+}
+
+.dots {
+  text-align: center;
+  padding: 16px 0;
+  margin-top: 8px;
+}
+
+.dot {
+  height: 8px;
+  width: 24px;
+  background: var(--text-color);
+  border-radius: 25%;
+  display: inline-block;
+  margin: 0 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: var(--background-secondary);
+  width: 32px;
+}
+
+@media (max-width: 699px) {
+  .slideContainer {
+    aspect-ratio: 16 / 9;
+  }
+
+  .prev,
+  .next {
+    width: 50px;
+  }
+
+  .prev::before,
+  .next::before {
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .slideContainer {
+    aspect-ratio: 16 / 5;
+  }
+}

@@ -1,0 +1,1 @@
+export { DetailsSlider } from './DetailsSlider';
