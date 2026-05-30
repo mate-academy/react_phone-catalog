@@ -1,0 +1,31 @@
+@import '../../styles/utils/utils';
+
+.container {
+  width: 100%;
+  border-spacing: 0 8px;
+}
+
+.techSpec {
+  font-weight: 600;
+  vertical-align: top;
+
+  &__name {
+    color: var(--grey-secondary);
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  &__value {
+    text-align: right;
+    white-space: nowrap;
+
+    &__wrap {
+      white-space: wrap;
+    }
+  }
+}
+
+th,
+tr {
+  padding: 0;
+}

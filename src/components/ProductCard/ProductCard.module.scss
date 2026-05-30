@@ -1,0 +1,43 @@
+@import '../../styles/utils/utils';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  box-sizing: border-box;
+  font-family: inherit;
+  height: 439px;
+  width: 100%;
+  padding: 32px;
+  color: inherit;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+
+  @include hover(box-shadow, 0 2px 16px 0 var(--grey-secondary));
+
+  &__darkTheme {
+    background-color: $card-color;
+    border-color: $card-color;
+
+    @include hover(border-color, $grey-button);
+    @include hover(box-shadow, 0 2px 5px 0 $grey-button);
+  }
+}
+
+.img {
+  padding: 0;
+  height: 30%;
+  width: 100%;
+  object-fit: contain;
+
+  flex-shrink: 2;
+  flex-grow: 2;
+
+
+}
+
+.mainInfo {
+  flex-shrink: 0;
+  width: 100%;
+}

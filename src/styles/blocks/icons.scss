@@ -1,0 +1,67 @@
+.icon {
+  height: 16px;
+  width: 16px;
+
+  background-color: var(--text-color);
+  mask-repeat: no-repeat;
+  mask-position: center;
+
+  &--notActive {
+    background-color: var(--disabled-icon-color);
+  }
+
+  &--menu {
+    -webkit-mask-image: url(../../../public/img/icons/menu.svg);
+    mask-image: url(../../../public/img/icons/menu.svg);
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &--fav {
+    -webkit-mask-image: url(../../../public/img/icons/favourites.svg);
+    mask-image: url(../../../public/img/icons/favourites.svg);
+  }
+
+  &--cart {
+    -webkit-mask-image: url(../../../public/img/icons/shopping-bag.svg);
+    mask-image: url(../../../public/img/icons/shopping-bag.svg);
+  }
+
+  &--close {
+    -webkit-mask-image: url(../../../public/img/icons/close.svg);
+    mask-image: url(../../../public/img/icons/close.svg);
+    background-color: var(--text-color);
+  }
+
+  &--minus {
+    -webkit-mask-image: url(../../../public/img/icons/minus.svg);
+    mask-image: url(../../../public/img/icons/minus.svg);
+  }
+
+  &--arrow {
+    -webkit-mask-image: url(../../../public/img/icons/arrow.svg);
+    mask-image: url(../../../public/img/icons/arrow.svg);
+  }
+  &--arrow-black {
+    -webkit-mask-image: url(../../../public/img/icons/arrow.svg);
+    mask-image: url(../../../public/img/icons/arrow.svg);
+  }
+
+  &--plus {
+    -webkit-mask-image: url(../../../public/img/icons/plus.svg);
+    mask-image: url(../../../public/img/icons/plus.svg);
+  }
+
+  &--home {
+    -webkit-mask-image: url(../../../public/img/icons/home.svg);
+    mask-image: url(../../../public/img/icons/home.svg);
+  }
+
+  &--search {
+    -webkit-mask-image: url(../../../public/img/icons/search.svg);
+    mask-image: url(../../../public/img/icons/search.svg);
+  }
+}
+

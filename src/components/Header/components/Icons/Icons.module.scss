@@ -1,0 +1,89 @@
+@import '../../../../styles/utils/utils';
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+}
+
+.icon1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 100%;
+  position: relative;
+  background-color: inherit;
+  border-left: solid 1px var(--border-color);
+  padding-inline: 16px;
+  transition: transform 8s;
+
+  @include on-desktop {
+    padding-inline: 24px;
+  }
+}
+
+
+.hamburger {
+  position: relative;
+  cursor: pointer;
+  height: 10px;
+  width: 14px;
+
+  &__selected {
+    height: 16px;
+    width: 16px;
+  }
+
+  &:target .menu {
+    transform: translateX(100%);
+  }
+}
+
+.bar {
+  position: absolute;
+  display: block;
+  height: 1.5px;
+  width: 16px;
+  background-color: var(--text-color);
+  border-radius: 4px;
+  transition: all 0.4s ease-in-out;
+
+  &__0 {
+    top: 0;
+    &__selected {
+      transform: rotate(45deg);
+      transform-origin: top left;
+      width: 21px;
+    }
+  }
+
+  &__1 {
+    top: 40%;
+
+    &__selected {
+      transform: translateX(-100%);
+      background-color: transparent;
+    }
+  }
+
+  &__2 {
+    top: 40%;
+
+    &__selected {
+      transform: translateX(100%);
+      background-color: transparent;
+    }
+  }
+
+  &__3 {
+    bottom: 0;
+    &__selected {
+      transform: rotate(-45deg);
+      transform-origin: bottom left;
+      width: 21px;
+    }
+  }
+}
+
+

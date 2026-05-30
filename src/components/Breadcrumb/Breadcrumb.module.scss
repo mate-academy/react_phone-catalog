@@ -1,0 +1,39 @@
+@import '../../styles/utils/utils';
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.text {
+  cursor: pointer;
+  font-weight: 600;
+
+  @include hover(color, var(--text-color));
+  @include hover(font-weight, bold);
+
+  &__main {
+    color: var(--text-color);
+    font-weight: 600;
+  }
+}
+
+.container__darkTheme .icon {
+  @include hover(background-color, $violet-main);
+}
+
+.container__darkTheme .text {
+  @include hover(color, $violet-main);
+}
+
+.productName {
+  width: 55vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.iconBack {
+  transform: rotate(180deg);
+}

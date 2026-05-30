@@ -1,0 +1,13 @@
+.border {
+  border: 1px solid var(--border-color);
+
+  &--bottom {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  &--left {
+    border-left: 1px solid var(--border-color);
+  }
+}
+
+

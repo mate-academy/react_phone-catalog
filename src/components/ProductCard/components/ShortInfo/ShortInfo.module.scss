@@ -1,0 +1,17 @@
+@import '../../../../styles/utils/utils';
+
+.shortInfo {
+  width: 100%;
+
+  &__name {
+    margin: 0;
+  }
+
+  &__price {
+    padding-block: 8px;
+  }
+}
+
+.buttons {
+  margin-top: 8px;
+}
