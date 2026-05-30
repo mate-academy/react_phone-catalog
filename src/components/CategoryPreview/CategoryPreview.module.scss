@@ -1,0 +1,285 @@
+@import '../../assets/fonts/variables';
+
+.categoryPreview {
+
+  @include grid-24(16px);
+  @include grid-24-mw($gap: 16px);
+
+  row-gap: 0;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto 80px;
+}
+
+.title {
+  overflow: hidden;
+  grid-column: 1 / 13;
+
+  height: 41px;
+  margin: 0;
+  margin-bottom: 24px;
+
+  color: var(--color-white);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @include desktop-tablet-h2-style;
+}
+
+.blocks {
+  grid-column: 1 / -1;
+
+  @include grid-24($gap: 16px);
+
+}
+
+.block {
+  position: relative;
+
+  display: flex;
+  grid-column: span 8;
+  flex-direction: column;
+  align-items: flex-start;
+
+  text-decoration: none;
+}
+
+.imageWrapper {
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:first-child,
+  &:nth-child(2),
+  &:nth-child(3) {
+    position: relative;
+    overflow: hidden;
+    height: 368px;
+  }
+}
+
+.block:first-child .imageWrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 368px;
+}
+
+.block:first-child img {
+  position: relative;
+  transform: translate(30px, 10px);
+
+  width: 412px;
+  height: 494px;
+
+  object-fit: cover;
+}
+
+.block:nth-child(2) .imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 368px;
+}
+
+.block:nth-child(2) img {
+  position: relative;
+  transform: translate(20px, 20px);
+
+  width: 546px;
+  height: 546px;
+
+  object-fit: cover;
+}
+
+.block:nth-child(3) .imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 368px;
+}
+
+.block:nth-child(3) img {
+  position: relative;
+  transform: translate(58px, 50px);
+  width: 660px;
+   height: 318px;
+}
+
+.image {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  object-fit: cover;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 24px;
+}
+
+.titleText {
+
+  @include desktop-tablet-h4-style;
+
+}
+
+.subtitleText {
+
+  @include body-text-style;
+
+  color: var(--color-secondary);
+}
+
+
+// 📱 Планшет: 640px – 1199px
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .categoryPreview {
+
+    @include grid-12($gap: 24px);
+
+    overflow-x: visible;
+    justify-content: start;
+
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 64px;
+    padding: 0 24px;
+  }
+
+  .blocks {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    max-width: 100%;
+    height: 262px;
+  }
+
+  .block {
+    grid-column: span 4;
+    width: 100%;
+    height: 262px;
+  }
+
+  .block:first-child img {
+    position: relative;
+    transform: translate(16px, 8px);
+
+    width: 205px;
+    height: 239px;
+
+    object-fit: cover;
+  }
+
+  .block:nth-child(2) img {
+    position: relative;
+    transform: translate(11px, 10px);
+
+    width: 277px;
+    height: 277px;
+
+    object-fit: cover;
+  }
+
+  .block:nth-child(3) img {
+    position: relative;
+    transform: translate(34px, 23px);
+
+    width: 352px;
+    height: 175px;
+
+    object-fit: cover;
+  }
+
+  .imageWrapper {
+    position: relative;
+    overflow: hidden;
+    width: auto;
+    height: auto;
+  }
+
+  .title {
+    grid-column: 1 / 12;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 639px) {
+  .categoryPreview {
+
+    @include grid-4($gap: 16px);
+
+    row-gap: 0;
+    align-items: center;
+
+    box-sizing: border-box;
+    width: 100%;
+    max-width: calc(4 * 1fr + 3 * 16px);
+    margin: 0 auto;
+    margin-bottom: 56px;
+    padding: 0 16px;
+  }
+
+  .title {
+    grid-column: 1 / -1;
+    height: auto;
+    margin-bottom: 24px;
+
+    @include mobile-h2-style;
+  }
+
+  .blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .block {
+    grid-column: 1 / -1;
+    height: 363px;
+  }
+
+  .block img {
+    transform: none;
+    width: 100%;
+    height: auto;
+
+  }
+
+  .imageWrapper {
+    width: 100%;
+  }
+
+  .block:first-child img {
+    position: relative;
+    transform: translate(19px, 45px);
+
+    width: 357px;
+    height: 331px;
+
+    object-fit: cover;
+  }
+
+  .block:nth-child(2) img {
+    position: relative;
+    transform: translate(17px, 15px);
+
+    width: 427px;
+    height: 427px;
+
+    object-fit: cover;
+  }
+
+  .block:nth-child(3) img {
+    position: relative;
+    transform: translate(35px, 41px);
+
+    width: 542px;
+    height: 250px;
+
+    object-fit: cover;
+  }
+}

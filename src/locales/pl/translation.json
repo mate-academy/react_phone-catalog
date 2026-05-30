@@ -1,0 +1,160 @@
+{"back": "Powrót",
+  "cart": {
+    "title": "Koszyk",
+    "empty": "Twój koszyk jest pusty",
+    "checkout": "Zamów",
+    "totalForItems": "Łącznie {{count}} przedmiotów",
+    "remove": "Usuń przedmiot",
+    "increase": "Zwiększ ilość",
+    "decrease": "Zmniejsz ilość",
+    "checkoutConfirm": "Realizacja zamówienia nie jest jeszcze dostępna. Czy wyczyścić koszyk?"
+  },
+    "nav": {
+    "home": "Strona główna",
+    "phones": "Telefony",
+    "tablets": "Tablety",
+    "accessories": "Akcesoria",
+    "favorites": "Ulubione",
+    "cart": "Koszyk"
+  },
+"home": {
+  "heroTitle": "Witamy w sklepie Nice Gadgets!",
+  "brandNewModels": "Nowe modele",
+  "hotPrices": "Gorące ceny",
+  "shopByCategory": "Kup według kategorii",
+  "categories": {
+    "phones": "Telefony komórkowe",
+    "phonesSubtitle": "{{count}} modeli",
+    "tablets": "Tablety",
+    "tabletsSubtitle": "{{count}} modeli",
+    "accessories": "Akcesoria",
+    "accessoriesSubtitle": "{{count}} modeli"
+  }
+},
+"product": {
+    "inCart": "W koszyku",
+    "addToCart": "Dodaj do koszyka",
+    "toggleFavorite": "Dodaj/usuń z ulubionych",
+    "favorite": "Ulubione"
+  },
+  "productSpecs": {
+    "Screen": "Ekran",
+    "Capacity": "Pamięć",
+    "RAM": "RAM"
+  },
+    "phonesPage": {
+    "title": "Telefony komórkowe",
+    "modelsCount": "{{count}} modeli"
+  },
+  "filters": {
+    "sort": {
+      "title": "Sortuj według",
+      "newest": "Najnowsze",
+      "alphabetically": "Alfabetycznie",
+      "cheapest": "Najtańsze",
+      "order": "Kolejność"
+    },
+    "itemsPerPage": {
+      "title": "Produktów na stronie",
+      "all": "Wszystkie"
+    }
+  },
+  "product": {
+    "notFound": "Produkt nie został znaleziony",
+    "id": "ID",
+    "colors": { "available": "Dostępne kolory" },
+    "selectCapacity": "Wybierz pojemność",
+    "addToCart": "Dodaj do koszyka",
+    "addedToCart": "Dodano do koszyka",
+    "addToFavorites": "Dodaj do ulubionych",
+    "addedToFavorites": "Dodano do ulubionych",
+    "specs": {
+      "Screen": "Ekran",
+      "Capacity": "Pojemność",
+      "RAM": "RAM",
+      "Built in memory": "Pamięć wbudowana",
+      "Camera": "Aparat",
+      "Zoom": "Zoom",
+      "Cell": "Sieć komórkowa",
+      "Optical, 2x": "Optyczny, 2x"
+    },
+    "about": {
+      "title": "O produkcie",
+      "proTitle": "A potem pojawił się Pro",
+      "proText": "Transformacyjny system potrójnego aparatu...",
+      "cameraTitle": "Aparat",
+      "cameraText": "Pierwszy system z trzema aparatami...",
+      "shootTitle": "Nagrywaj. Obracaj. Zoom. Kadruj. Wytnij. Oświetl. Popraw. Pokochaj.",
+      "shootText": "iPhone 11 Pro pozwala nagrywać wideo..."
+    },
+    "techSpecs": "Specyfikacja techniczna",
+    "recommended": "Może Ci się spodobać"
+  },
+   "product": {
+    "notFound": "Produkt nie został znaleziony",
+    "availableColors": "Dostępne kolory",
+    "selectCapacity": "Wybierz pamięć",
+    "addToCart": "Dodaj do koszyka",
+    "addToFavorites": "Dodaj do ulubionych",
+    "addedToCart": "Dodano do koszyka",
+    "addedToFavorites": "Dodano do ulubionych",
+    "about": "O produkcie",
+    "techSpecs": "Specyfikacja techniczna",
+    "youMayAlsoLike": "Może Ci się spodobać",
+    "memory": "Pamięć wbudowana",
+    "camera": "Aparat",
+    "zoom": "Zoom",
+    "cell": "Sieci",
+    "aboutProTitle": "A potem pojawił się Pro",
+    "aboutProText": "Rewolucyjny system trzech aparatów, który dodaje mnóstwo możliwości bez zbędnej komplikacji. Bezprecedensowy skok w żywotności baterii. I niesamowity układ, który podwaja możliwości uczenia maszynowego i przesuwa granice tego, co może zrobić smartfon. Witaj w pierwszym iPhonie wystarczająco potężnym, aby nosić nazwę Pro.",
+    "cameraTitle": "Aparat",
+    "cameraText": "Poznaj pierwszy system trzech aparatów, który łączy najnowocześniejszą technologię z legendarną prostotą iPhone’a. Uchwyć do czterech razy więcej sceny. Rób piękne zdjęcia w znacznie gorszych warunkach oświetleniowych. Nagrywaj wideo najwyższej jakości w smartfonie — a następnie edytuj je tymi samymi narzędziami, które znasz z edycji zdjęć. Nigdy wcześniej nie filmowałeś czymś takim.",
+    "shootTitle": "Nagrywaj. Obracaj. Zoomuj. Kadruj. Przycinaj. Oświetlaj. Dostosuj. Pokochaj.",
+    "shootText": "iPhone 11 Pro pozwala nagrywać filmy wiernie oddające rzeczywistość, z większą szczegółowością i płynniejszym ruchem. Ogromna moc obliczeniowa oznacza możliwość nagrywania wideo 4K z rozszerzonym zakresem dynamicznym i kinową stabilizacją obrazu — wszystko przy 60 fps. Zyskujesz również większą kontrolę twórczą, z czterokrotnie szerszym kadrem i nowymi potężnymi narzędziami do edycji."
+  },
+  "specs": {
+  "screen": "Ekran",
+  "capacity": "Pamięć",
+  "ram": "RAM",
+  "resolution": "Rozdzielczość",
+  "processor": "Procesor",
+  "builtInMemory": "Wbudowana pamięć",
+  "camera": "Aparat",
+  "zoom": "Zoom",
+  "cell": "Sieci"
+},
+  "favoritesPage": {
+    "title": "Ulubione",
+    "item": "przedmiot",
+    "items": "przedmioty",
+    "empty": "Brak ulubionych"
+  },
+    "footer": {
+    "logoAlt": "Logo Nice Gadgets",
+    "github": "GitHub",
+    "contacts": "Kontakt",
+    "rights": "Prawa",
+    "backToTop": "Do góry"
+  },
+    "notFound": {
+    "defaultMessage": "Strona nie została znaleziona"
+  },
+  "contactsPage": {
+    "message": "Strona kontaktów (w przygotowaniu)"
+  },
+  "rightsPage": {
+    "message": "Strona praw (w przygotowaniu)"
+  },
+  "error": {
+  "somethingWentWrong": "Coś poszło nie tak",
+  "retry": "Odśwież"
+},
+  "tabletsPage": {
+    "title": "Tablety",
+    "modelsCount": "{{count}} modeli"
+  },
+    "accessoriesPage": {
+    "title": "Akcesoria",
+    "modelsCount": "{{count}} modeli"
+  }
+}

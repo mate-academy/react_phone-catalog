@@ -1,0 +1,107 @@
+@import '../../assets/fonts/variables';
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 80px;
+
+  @include grid-24-mw($gap: 16px);
+
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sectionHeader {
+
+  @include grid-24($gap: 16px);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.title {
+
+  @include desktop-tablet-h2-style;
+
+  color: var(--color-white);
+}
+
+.arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.arrowBtn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-elements);
+  background-color: var(--color-surface2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+
+  &:hover:not(.disabled) {
+    transform: scale(1.1);
+    background-color: var(--color-icons);
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.productsWrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.productsTrack {
+  display: flex;
+  gap: 16px;
+}
+
+.productSlide {
+  flex: 0 0 calc(100% / 4); // 4 карточки на десктопе
+
+  box-sizing: border-box;
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .productSlide {
+    flex: 0 0 calc(100% / 3);
+  }
+
+  .section {
+    max-width: 100%;
+    padding: 24px;
+  }
+
+  .sectionHeader {
+    padding: 0;
+  }
+}
+
+@media (max-width: 639px) {
+  .productSlide {
+    flex: 0 0 calc(100% / 2);
+  }
+
+  .section {
+    display: grid;
+    max-width: 100%;
+    padding: 0 16px;
+    margin-bottom: 54px;
+  }
+}

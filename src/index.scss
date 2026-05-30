@@ -1,0 +1,43 @@
+@import './assets/fonts/variables';
+
+
+* {
+  cursor: url('/src/assets/icons/cursor.svg') 8 8, auto;
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  font-family: $font-main;
+  color: var(--color-white);
+}
+
+body {
+  width: 100%;
+  background-color:var(--color-black);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-theme {
+  color: var(--color-white);
+  background-color: var(--color-surface1);
+}
+
+main {
+  margin-top: 64px;
+}
+
+
+@media (max-width: 1199px) and (min-width: 640px) {
+  main {
+  margin-top: 48px;
+}
+}
+
+
+// Мобильная от 320px до 639px
+@media (max-width: 639px) {
+  main {
+  margin-top: 48px;
+}
+}
