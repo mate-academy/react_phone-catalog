@@ -1,0 +1,58 @@
+@import '../../../styles/main.scss';
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__top {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    &-title {
+      max-width: 136px;
+
+      @include on-tablet {
+        max-width: 100%;
+      }
+    }
+
+    &-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 16px;
+    }
+  }
+
+  &__main {
+    overflow: hidden;
+    width: 110%;
+
+    &-container {
+      transition: transform 0.5s ease;
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+
+      & > * {
+        width: 212px;
+
+        @include on-tablet {
+          width: 237px;
+        }
+
+        @include on-desktop {
+          width: 272px;
+        }
+      }
+    }
+
+    @include on-desktop {
+      width: 100%;
+    }
+  }
+}

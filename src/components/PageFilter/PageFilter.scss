@@ -1,0 +1,17 @@
+@import '../../styles/main.scss';
+
+.page-filter {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  max-width: 320px;
+  column-gap: 16px;
+  margin-top: 32px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &__title {
+    margin-bottom: 4px;
+  }
+}
