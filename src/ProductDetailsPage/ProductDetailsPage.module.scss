@@ -1,0 +1,422 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.page {
+  padding: 24px 0 80px;
+}
+
+.container {
+  @include container;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: $color-secondary;
+  font-size: 12px;
+  font-weight: 700;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: $font-family;
+  margin-bottom: 16px;
+  transition: color $transition-default;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+  color: $color-text;
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-bottom: 80px;
+
+  @include on-tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include on-desktop {
+    grid-template-columns: 560px 1fr;
+    gap: 64px;
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.thumbs {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  overflow-x: auto;
+
+  @include on-tablet {
+    flex-direction: column;
+  }
+}
+
+.thumb {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border: 1px solid $color-elements;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  cursor: pointer;
+  background: $color-surface1;
+  transition: border-color $transition-default;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &:hover {
+    border-color: $color-text;
+  }
+}
+
+.thumbActive {
+  border-color: $color-text;
+}
+
+.mainImage {
+  flex: 1;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.optionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.optionLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-secondary;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.optionId {
+  font-size: 12px;
+  color: $color-secondary;
+}
+
+.colors {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.colorBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $color-elements;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  padding: 2px;
+  transition: border-color $transition-default;
+
+  &:hover {
+    border-color: $color-secondary;
+  }
+}
+
+.colorBtnActive {
+  border: 2px solid $color-text;
+}
+
+.colorInner {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid $color-bg;
+}
+
+.capacities {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.capBtn {
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid $color-icons;
+  background: transparent;
+  color: $color-text;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: $font-family;
+  cursor: pointer;
+  transition: all $transition-default;
+
+  &:hover {
+    border-color: $color-text;
+  }
+}
+
+.capBtnActive {
+  background: $color-text;
+  color: $color-bg;
+  border-color: $color-text;
+}
+
+.divider {
+  height: 1px;
+  background: $color-elements;
+}
+
+.dividerFull {
+  height: 1px;
+  background: $color-elements;
+  margin-bottom: 32px;
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.priceDiscount {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  color: $color-text;
+}
+
+.priceRegular {
+  font-size: 22px;
+  font-weight: 600;
+  color: $color-secondary;
+  text-decoration: line-through;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.cartBtn {
+  flex: 1;
+  height: 48px;
+  background: $color-accent;
+  color: $color-text;
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: $font-family;
+  cursor: pointer;
+  transition: opacity $transition-default;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+.cartBtnAdded {
+  background: $color-surface2;
+  color: $color-text;
+}
+
+.favBtn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid $color-elements;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: $color-text;
+  font-size: 18px;
+  cursor: pointer;
+  transition: border-color $transition-default;
+  flex-shrink: 0;
+
+  &:hover {
+    border-color: $color-text;
+  }
+}
+
+.favBtnActive {
+  color: $color-red;
+}
+
+.shortSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.shortSpec {
+  display: flex;
+  justify-content: space-between;
+}
+
+.shortSpecLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-secondary;
+}
+
+.shortSpecValue {
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-text;
+  text-align: right;
+}
+
+.sections {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+  margin-bottom: 80px;
+
+  @include on-desktop {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+}
+
+.sectionTitle {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+  color: $color-text;
+  margin-bottom: 16px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.about,
+.techSpecs {
+  display: flex;
+  flex-direction: column;
+}
+
+.descSection {
+  margin-bottom: 32px;
+}
+
+.descTitle {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  color: $color-text;
+  margin-bottom: 16px;
+}
+
+.descText {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: $color-secondary;
+  margin-bottom: 8px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.techSpec {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid $color-elements;
+}
+
+.techSpecLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-secondary;
+}
+
+.techSpecValue {
+  font-size: 14px;
+  font-weight: 700;
+  color: $color-text;
+  text-align: right;
+  max-width: 50%;
+}
+
+.notFound {
+  font-size: 20px;
+  font-weight: 700;
+  color: $color-secondary;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.backLink {
+  display: inline-block;
+  margin-top: 16px;
+  color: $color-accent;
+  font-weight: 700;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

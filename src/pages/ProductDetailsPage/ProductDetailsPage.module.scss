@@ -1,0 +1,188 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+.topRow {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 32px;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.mainImage {
+  width: 100%;
+  border-radius: 32px;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+
+.thumbs {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.thumb,
+.thumbActive {
+  border: 2px solid transparent;
+  border-radius: 18px;
+  padding: 4px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.thumbActive {
+  border-color: #0d6efd;
+}
+
+.thumb img {
+  display: block;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.detailsPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 28px;
+  border-radius: 32px;
+  background: #fff;
+  border: 1px solid #eef2f6;
+}
+
+.detailsPanel h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.price {
+  font-size: 2rem;
+  color: #0d6efd;
+  margin: 0;
+}
+
+.selectionGroup {
+  display: grid;
+  gap: 18px;
+}
+
+.optionsRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.radioLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #d7deed;
+  border-radius: 14px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.radioLabel input {
+  accent-color: #0d6efd;
+}
+
+.addButton,
+.backButton {
+  border: none;
+  border-radius: 16px;
+  padding: 14px 18px;
+  cursor: pointer;
+}
+
+.addButton {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.backButton {
+  background: #eef2f6;
+  color: #151837;
+}
+
+.descriptionSection,
+.techSpecs,
+.suggested {
+  background: #fff;
+  padding: 28px;
+  border-radius: 32px;
+  border: 1px solid #eef2f6;
+}
+
+.descriptionBlock {
+  margin-bottom: 18px;
+}
+
+.descriptionBlock h3 {
+  margin: 0 0 10px;
+}
+
+.techSpecs h2,
+.suggested h2 {
+  margin-top: 0;
+}
+
+.specList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.specList div {
+  border: 1px solid #d7deed;
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  background: #f9fbff;
+}
+
+.notFound,
+.errorBlock {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 28px;
+  border-radius: 24px;
+  background: #fff;
+  border: 1px solid #eef2f6;
+  text-align: center;
+}
+
+.notFound h1 {
+  margin-bottom: 18px;
+}
+
+.notFound button,
+.errorBlock button {
+  margin-top: 18px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 14px;
+  background: #0d6efd;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .topRow {
+    grid-template-columns: 1fr;
+  }
+}

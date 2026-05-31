@@ -1,0 +1,32 @@
+// Dark theme colors
+$color-bg: #0f1121;           // Page background (Black)
+$color-surface1: #161827;     // Card background (Surface 1)
+$color-surface2: #323542;     // Button backgrounds (Surface 2)
+$color-elements: #3b3e4a;     // Borders, dividers (Elements)
+$color-icons: #4a4d58;        // Icons, placeholders
+$color-secondary: #75767f;    // Secondary text
+$color-text: #f1f2f9;         // Primary text (White)
+$color-accent: #905bff;       // Primary buttons, active states
+$color-green: #27ae60;        // Success / "Added to cart"
+$color-red: #eb5757;          // Error / Favorites active
+
+// Aliases for readability
+$color-white: $color-text;
+$color-black: $color-bg;
+
+// Typography
+$font-family: 'Mont', sans-serif;
+
+// Breakpoints
+$mobile-max: 639px;
+$tablet-min: 640px;
+$tablet-max: 1199px;
+$desktop-min: 1200px;
+
+// Container
+$container-max: 1200px;
+$container-padding-mobile: 16px;
+$container-padding-desktop: 32px;
+
+// Transitions
+$transition-default: 0.3s ease;

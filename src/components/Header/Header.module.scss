@@ -1,0 +1,147 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(15, 17, 33, 0.96);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+}
+
+.headerInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #f8f9ff;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.brandIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #905bff;
+}
+
+.brandIcon .fa {
+  font-size: 0.95rem;
+}
+
+.logoBrand {
+  color: #905bff;
+}
+
+.navigationWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.link {
+  color: #b5b7c9;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.link:hover,
+.link:focus {
+  color: #fff;
+}
+
+.active {
+  color: #f8f9ff;
+  font-weight: 700;
+}
+
+.search {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #12142a;
+  border-radius: 16px;
+  padding: 10px 14px;
+  max-width: 420px;
+}
+
+.search input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: #f8f9ff;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.iconButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  background: #10131f;
+  color: #f8f9ff;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.iconButton:hover {
+  transform: scale(1.05);
+  background: #1c1f35;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  color: #fff;
+  background: #905bff;
+  border-radius: 999px;
+}
+
+@media (max-width: 860px) {
+  .headerInner {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .controls {
+    justify-content: flex-end;
+  }
+}

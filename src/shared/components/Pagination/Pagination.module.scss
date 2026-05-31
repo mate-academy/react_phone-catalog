@@ -1,0 +1,41 @@
+@use '../../../styles/variables' as *;
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-surface1;
+  border: none;
+  color: $color-text;
+  font-size: 14px;
+  font-family: $font-family;
+  font-weight: 600;
+  transition: background $transition-default;
+  cursor: pointer;
+
+  &:hover:not(.disabled, .active) {
+    background: $color-elements;
+  }
+}
+
+.active {
+  background: $color-accent;
+  cursor: default;
+}
+
+.disabled {
+  border: 1px solid $color-elements;
+  background: transparent;
+  color: $color-icons;
+  cursor: not-allowed;
+}
