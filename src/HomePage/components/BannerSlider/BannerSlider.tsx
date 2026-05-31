@@ -3,22 +3,24 @@ import { useEffect, useState, useCallback } from 'react';
 import classNames from 'classnames';
 import styles from './BannerSlider.module.scss';
 
+const base = import.meta.env.BASE_URL;
+
 const banners = [
   {
     id: 1,
-    image: '/img/banner-phones.png',
+    image: `${base}img/banner-phones.png`,
     alt: 'New Phones',
     link: '/phones',
   },
   {
     id: 2,
-    image: '/img/banner-tablets.png',
+    image: `${base}img/banner-tablets.png`,
     alt: 'Tablets',
     link: '/tablets',
   },
   {
     id: 3,
-    image: '/img/banner-accessories.png',
+    image: `${base}img/banner-accessories.png`,
     alt: 'Accessories',
     link: '/accessories',
   },

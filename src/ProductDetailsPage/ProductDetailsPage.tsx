@@ -42,7 +42,8 @@ const categoryLabels: Record<string, string> = {
   accessories: 'Accessories',
 };
 
-const resolveImg = (path: string) => (path.startsWith('/') ? path : `/${path}`);
+const resolveImg = (path: string) =>
+  `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
 
 export const ProductDetailsPage: React.FC = () => {
   const { itemId } = useParams<{ itemId: string }>();

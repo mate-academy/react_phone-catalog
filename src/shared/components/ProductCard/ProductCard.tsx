@@ -22,9 +22,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <article className={styles.card}>
       <Link to={detailPath} className={styles.imageLink}>
         <img
-          src={
-            product.image.startsWith('/') ? product.image : `/${product.image}`
-          }
+          src={`${import.meta.env.BASE_URL}${product.image.replace(/^\//, '')}`}
           alt={product.name}
           className={styles.image}
         />

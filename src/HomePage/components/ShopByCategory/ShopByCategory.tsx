@@ -3,26 +3,28 @@ import { Link } from 'react-router-dom';
 import { Product } from '../../../types';
 import styles from './ShopByCategory.module.scss';
 
+const base = import.meta.env.BASE_URL;
+
 const categoryConfig = [
   {
     key: 'phones' as const,
     name: 'Mobile phones',
     link: '/phones',
-    image: '/img/category-phones.png',
+    image: `${base}img/category-phones.png`,
     bgColor: '#6D6474',
   },
   {
     key: 'tablets' as const,
     name: 'Tablets',
     link: '/tablets',
-    image: '/img/category-tablets.png',
+    image: `${base}img/category-tablets.png`,
     bgColor: '#8D8D92',
   },
   {
     key: 'accessories' as const,
     name: 'Accessories',
     link: '/accessories',
-    image: '/img/category-accessories.png',
+    image: `${base}img/category-accessories.png`,
     bgColor: '#973D5F',
   },
 ];

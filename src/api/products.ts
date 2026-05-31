@@ -1,9 +1,11 @@
 import { Product, ProductCategory, SortKey } from '../types';
 
+const BASE = `${import.meta.env.BASE_URL}api`;
+
 const CATEGORY_PATH: Record<ProductCategory, string> = {
-  phones: '/api/phones.json',
-  tablets: '/api/tablets.json',
-  accessories: '/api/accessories.json',
+  phones: `${BASE}/phones.json`,
+  tablets: `${BASE}/tablets.json`,
+  accessories: `${BASE}/accessories.json`,
 };
 
 async function fetchJson<T>(url: string): Promise<T> {

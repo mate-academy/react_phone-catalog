@@ -12,7 +12,7 @@ import { FavoritesPage } from './FavoritesPage';
 import { NotFoundPage } from './NotFoundPage';
 
 export const App = () => (
-  <BrowserRouter>
+  <BrowserRouter basename={import.meta.env.BASE_URL}>
     <CartProvider>
       <FavoritesProvider>
         <div className="App">
