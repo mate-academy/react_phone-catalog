@@ -92,6 +92,18 @@ export const ProductDetailsPage = () => {
     product.price ?? product.priceDiscount ?? product.priceRegular ?? 0;
   const oldPrice = product.fullPrice ?? product.priceRegular ?? 0;
   const routeCategory = product.category;
+  const getConfigurationId = (capacity: string, color: string) => {
+    const capacitySlug = capacity.toLowerCase();
+    const colorSlug = color.toLowerCase().replace(/\s+/g, '-');
+
+    return `${product.namespaceId ?? product.id}-${capacitySlug}-${colorSlug}`;
+  };
+
+  const updateConfiguration = (capacity: string, color: string) => {
+    const nextProductId = getConfigurationId(capacity, color);
+
+    navigate(`/product/${nextProductId}`);
+  };
 
   return (
     <main className={styles.page}>
@@ -159,7 +171,9 @@ export const ProductDetailsPage = () => {
                         name="color"
                         value={color}
                         checked={selectedColor === color}
-                        onChange={() => setSelectedColor(color)}
+                        onChange={() =>
+                          updateConfiguration(selectedCapacity, color)
+                        }
                       />
                       <span>{color}</span>
                     </label>
@@ -178,7 +192,9 @@ export const ProductDetailsPage = () => {
                         name="capacity"
                         value={capacity}
                         checked={selectedCapacity === capacity}
-                        onChange={() => setSelectedCapacity(capacity)}
+                        onChange={() =>
+                          updateConfiguration(capacity, selectedColor)
+                        }
                       />
                       <span>{capacity}</span>
                     </label>

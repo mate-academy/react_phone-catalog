@@ -124,6 +124,24 @@ export const CategoryPage = ({ category, title }: CategoryPageProps) => {
             <option value="price">Cheapest</option>
           </select>
         </label>
+        <label>
+          Items per page:
+          <select
+            value={perPage}
+            onChange={event =>
+              updatePerPage(
+                event.target.value === 'all'
+                  ? 'all'
+                  : Number(event.target.value),
+              )
+            }
+          >
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="16">16</option>
+            <option value="all">All</option>
+          </select>
+        </label>
       </div>
       {query && filtered.length === 0 ? (
         <div className={styles.message}>
@@ -134,13 +152,12 @@ export const CategoryPage = ({ category, title }: CategoryPageProps) => {
       ) : (
         <>
           <ProductsList products={visibleProducts} />
-          {perPage !== 'all' && total > perPage && (
+          {perPage !== 'all' && (
             <Pagination
               page={currentPage}
               perPage={perPage}
               total={total}
               onPageChange={updatePage}
-              onPerPageChange={updatePerPage}
             />
           )}
         </>

@@ -56,12 +56,17 @@
 }
 
 .controls button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 34px;
   height: 34px;
   border: 1px solid #cbd5e1;
   border-radius: 999px;
   background: #fff;
   cursor: pointer;
+  line-height: 1;
+  padding: 0;
 }
 
 .remove {

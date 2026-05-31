@@ -6,6 +6,8 @@
 .toolbar {
   display: flex;
   justify-content: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 label {
@@ -19,6 +21,21 @@ select {
   border: 1px solid #cbd5e1;
   padding: 0.55rem 0.75rem;
   border-radius: 12px;
+}
+
+@media (max-width: 560px) {
+  .toolbar {
+    justify-content: stretch;
+  }
+
+  label {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  select {
+    min-width: 150px;
+  }
 }
 
 .message {

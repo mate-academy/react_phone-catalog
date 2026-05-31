@@ -17,6 +17,7 @@ export const Header = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [value, setValue] = useState(searchParams.get('query') ?? '');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { totalQuantity } = useCart();
   const { count } = useFavorites();
 
@@ -27,7 +28,12 @@ export const Header = () => {
 
   useEffect(() => {
     setValue(new URLSearchParams(location.search).get('query') ?? '');
+    setIsMenuOpen(false);
   }, [location.search]);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     if (!isSearchPage) {
@@ -58,7 +64,24 @@ export const Header = () => {
           <span>Phone Catalog</span>
         </Link>
 
-        <nav className={styles.navigation}>
+        <button
+          type="button"
+          className={styles.menuButton}
+          onClick={() => setIsMenuOpen(current => !current)}
+          aria-label="Toggle navigation"
+          aria-expanded={isMenuOpen}
+        >
+          <i
+            className={isMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'}
+            aria-hidden="true"
+          />
+        </button>
+
+        <nav
+          className={`${styles.navigation} ${
+            isMenuOpen ? styles.navigationOpen : ''
+          }`}
+        >
           <Link to="/phones">Phones</Link>
           <Link to="/tablets">Tablets</Link>
           <Link to="/accessories">Accessories</Link>

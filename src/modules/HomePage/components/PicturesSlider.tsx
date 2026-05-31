@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './PicturesSlider.module.scss';
 
 interface PicturesSliderProps {
@@ -10,6 +10,20 @@ export const PicturesSlider = ({ images }: PicturesSliderProps) => {
   const total = images.length;
 
   const activeImage = images[active];
+
+  useEffect(() => {
+    if (total <= 1) {
+      return undefined;
+    }
+
+    const timer = window.setInterval(() => {
+      setActive(current => (current + 1) % total);
+    }, 4000);
+
+    return () => {
+      window.clearInterval(timer);
+    };
+  }, [total]);
 
   return (
     <section className={styles.slider}>
