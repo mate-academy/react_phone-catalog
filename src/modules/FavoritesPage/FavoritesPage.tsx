@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ProductsList } from '../../components/ProductsList';
 import { Loader } from '../../components/Loader';
+import { Pagination } from '../../components/Pagination';
 import { useFavorites } from '../../contexts/FavoritesContext';
 import {
   fetchListProducts,
@@ -14,10 +15,13 @@ export const FavoritesPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { favorites } = useFavorites();
 
   const query = searchParams.get('query') || '';
+  const page = Number(searchParams.get('page') || '1');
+  const perPageParam = searchParams.get('perPage');
+  const perPage = perPageParam === 'all' ? 'all' : Number(perPageParam || '4');
 
   useEffect(() => {
     setLoading(true);
@@ -38,6 +42,44 @@ export const FavoritesPage = () => {
     () => filterProductsByQuery(products, query),
     [products, query],
   );
+  const total = filtered.length;
+  const currentPage = Math.max(
+    1,
+    Math.min(
+      page,
+      Math.max(1, perPage === 'all' ? 1 : Math.ceil(total / perPage)),
+    ),
+  );
+
+  const visibleProducts = useMemo(() => {
+    if (perPage === 'all') {
+      return filtered;
+    }
+
+    const start = (currentPage - 1) * perPage;
+
+    return filtered.slice(start, start + perPage);
+  }, [filtered, perPage, currentPage]);
+
+  const updatePerPage = (nextPerPage: number | 'all') => {
+    const next = new URLSearchParams(searchParams);
+
+    next.set('perPage', String(nextPerPage));
+    next.set('page', '1');
+    setSearchParams(next);
+  };
+
+  const updatePage = (nextPage: number) => {
+    const next = new URLSearchParams(searchParams);
+
+    if (nextPage === 1) {
+      next.delete('page');
+    } else {
+      next.set('page', String(nextPage));
+    }
+
+    setSearchParams(next);
+  };
 
   if (loading) {
     return <Loader />;
@@ -71,7 +113,35 @@ export const FavoritesPage = () => {
   return (
     <main className={styles.page}>
       <h1>Favorites</h1>
-      <ProductsList products={filtered} />
+      <div className={styles.toolbar}>
+        <label>
+          Items per page:
+          <select
+            value={perPage}
+            onChange={event =>
+              updatePerPage(
+                event.target.value === 'all'
+                  ? 'all'
+                  : Number(event.target.value),
+              )
+            }
+          >
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="16">16</option>
+            <option value="all">All</option>
+          </select>
+        </label>
+      </div>
+      <ProductsList products={visibleProducts} />
+      {perPage !== 'all' && (
+        <Pagination
+          page={currentPage}
+          perPage={perPage}
+          total={total}
+          onPageChange={updatePage}
+        />
+      )}
     </main>
   );
 };

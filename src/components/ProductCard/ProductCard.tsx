@@ -10,7 +10,7 @@ interface ProductCardProps {
 }
 
 export const ProductCard = ({ product }: ProductCardProps) => {
-  const { addToCart, isInCart } = useCart();
+  const { addToCart, removeFromCart, isInCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
   const productId = product.itemId || product.id;
   const inCart = isInCart(productId || '');
@@ -19,6 +19,19 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   const price =
     product.price ?? product.priceDiscount ?? product.priceRegular ?? 0;
   const oldPrice = product.fullPrice ?? product.priceRegular ?? 0;
+  const toggleCart = () => {
+    if (!productId) {
+      return;
+    }
+
+    if (inCart) {
+      removeFromCart(productId);
+
+      return;
+    }
+
+    addToCart(product);
+  };
 
   return (
     <article className={styles.card}>
@@ -45,10 +58,9 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           <button
             type="button"
             className={styles.cartButton}
-            onClick={() => addToCart(product)}
-            disabled={inCart}
+            onClick={toggleCart}
           >
-            {inCart ? 'Added to cart' : 'Add to cart'}
+            {inCart ? 'Remove from cart' : 'Add to cart'}
           </button>
           {productId && (
             <button

@@ -4,6 +4,25 @@ import { getAssetPath } from '../../utils/assets';
 import { formatCurrency } from '../../utils/format';
 import styles from './CartPage.module.scss';
 
+const getCartImage = (path?: string) => {
+  if (!path) {
+    return getAssetPath('img/product-not-found.png');
+  }
+
+  if (path.startsWith('http')) {
+    return path;
+  }
+
+  if (
+    import.meta.env.BASE_URL !== '/' &&
+    path.startsWith(import.meta.env.BASE_URL)
+  ) {
+    return path;
+  }
+
+  return getAssetPath(path);
+};
+
 export const CartPage = () => {
   const {
     items,
@@ -53,14 +72,11 @@ export const CartPage = () => {
           const product = item.product;
           const price =
             product.price ?? product.priceDiscount ?? product.priceRegular ?? 0;
+          const image = getCartImage(product.image ?? product.images?.[0]);
 
           return (
             <div key={item.id} className={styles.item}>
-              <img
-                className={styles.image}
-                src={product.image ?? product.images?.[0]}
-                alt={product.name}
-              />
+              <img className={styles.image} src={image} alt={product.name} />
               <div className={styles.content}>
                 <h2>{product.name}</h2>
                 <div className={styles.meta}>

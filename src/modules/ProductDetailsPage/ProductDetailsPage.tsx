@@ -24,9 +24,7 @@ export const ProductDetailsPage = () => {
   const [error, setError] = useState(false);
   const [suggested, setSuggested] = useState<Product[]>([]);
   const [currentImage, setCurrentImage] = useState('');
-  const [selectedColor, setSelectedColor] = useState('');
-  const [selectedCapacity, setSelectedCapacity] = useState('');
-  const { addToCart, isInCart } = useCart();
+  const { addToCart, removeFromCart, isInCart } = useCart();
 
   useEffect(() => {
     if (!productId) {
@@ -45,8 +43,6 @@ export const ProductDetailsPage = () => {
 
         setProduct(item);
         setCurrentImage(item.images?.[0] ?? item.image ?? '');
-        setSelectedColor(item.color ?? item.colorsAvailable?.[0] ?? '');
-        setSelectedCapacity(item.capacity ?? item.capacityAvailable?.[0] ?? '');
       })
       .catch(() => setError(true))
       .finally(() => setLoading(false));
@@ -92,6 +88,12 @@ export const ProductDetailsPage = () => {
     product.price ?? product.priceDiscount ?? product.priceRegular ?? 0;
   const oldPrice = product.fullPrice ?? product.priceRegular ?? 0;
   const routeCategory = product.category;
+  const selectedColor = product.color ?? product.colorsAvailable?.[0] ?? '';
+  const selectedCapacity =
+    product.capacity ?? product.capacityAvailable?.[0] ?? '';
+  const cartProductId = (product.itemId || product.id).toString();
+  const isProductInCart = isInCart(cartProductId);
+
   const getConfigurationId = (capacity: string, color: string) => {
     const capacitySlug = capacity.toLowerCase();
     const colorSlug = color.toLowerCase().replace(/\s+/g, '-');
@@ -103,6 +105,16 @@ export const ProductDetailsPage = () => {
     const nextProductId = getConfigurationId(capacity, color);
 
     navigate(`/product/${nextProductId}`);
+  };
+
+  const toggleCart = () => {
+    if (isProductInCart) {
+      removeFromCart(cartProductId);
+
+      return;
+    }
+
+    addToCart(product);
   };
 
   return (
@@ -206,10 +218,9 @@ export const ProductDetailsPage = () => {
           <button
             type="button"
             className={styles.cartButton}
-            onClick={() => addToCart(product)}
-            disabled={isInCart(product.id)}
+            onClick={toggleCart}
           >
-            {isInCart(product.id) ? 'Added to cart' : 'Add to cart'}
+            {isProductInCart ? 'Remove from cart' : 'Add to cart'}
           </button>
         </div>
       </section>
