@@ -2,14 +2,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.scss';
 import { CartProvider } from './contexts/CartContext';
 import { FavoritesProvider } from './contexts/FavoritesContext';
-import { Header } from './modules/shared/components/Header';
-import { Footer } from './modules/shared/components/Footer';
-import { HomePage } from './modules/HomePage';
-import { ProductsPage } from './modules/ProductsPage';
-import { ProductDetailsPage } from './modules/ProductDetailsPage';
-import { CartPage } from './modules/CartPage';
-import { FavoritesPage } from './modules/FavoritesPage';
-import { NotFoundPage } from './modules/NotFoundPage';
+import { Header } from './shared/components/Header';
+import { Footer } from './shared/components/Footer';
+import { HomePage } from './HomePage';
+import { ProductsPage } from './ProductsPage';
+import { ProductDetailsPage } from './ProductDetailsPage';
+import { CartPage } from './CartPage';
+import { FavoritesPage } from './FavoritesPage';
+import { NotFoundPage } from './NotFoundPage';
 
 export const App = () => (
   <BrowserRouter>

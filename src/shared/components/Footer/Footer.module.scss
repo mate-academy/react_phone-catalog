@@ -1,0 +1,101 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.footer {
+  background: $color-bg;
+  border-top: 1px solid $color-elements;
+  margin-top: auto;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 32px 16px;
+
+  @include on-desktop {
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: $container-max;
+    margin: 0 auto;
+    padding: 32px;
+    height: 96px;
+    gap: 0;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoText {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: $color-text;
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 64px;
+  }
+}
+
+.link {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $color-text;
+  text-decoration: none;
+  transition: color $transition-default;
+
+  &:hover {
+    color: $color-secondary;
+  }
+}
+
+.topBtn {
+  width: 32px;
+  height: 32px;
+  background: $color-surface2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: background $transition-default;
+  color: $color-text;
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: $font-family;
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-secondary;
+  transition: color $transition-default;
+
+  &:hover {
+    color: $color-text;
+
+    .topBtn {
+      background: $color-icons;
+    }
+  }
+}

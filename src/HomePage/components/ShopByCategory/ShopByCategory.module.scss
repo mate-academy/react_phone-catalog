@@ -1,0 +1,79 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.section {
+  margin-bottom: 80px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+  color: $color-text;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.imageBox {
+  border-radius: 0;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 24px;
+  position: relative;
+  transition: filter $transition-default;
+}
+
+.image {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transition: transform $transition-default;
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+
+  &:hover .imageBox {
+    filter: brightness(1.1);
+  }
+
+  &:hover .image {
+    transform: scale(1.1);
+  }
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  color: $color-text;
+  margin-bottom: 4px;
+}
+
+.count {
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-secondary;
+}
