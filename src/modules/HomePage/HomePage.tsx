@@ -33,7 +33,7 @@ export const HomePage = () => {
 
   return (
     <article className={styles.homepage}>
-      <p className={styles.title}>Welcome to Nice Gadgets store!</p>
+      <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
       <div className={styles.banner}>
         <BannerSlider isLoading={isLoading} />
       </div>

@@ -8,6 +8,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FavoritesContext } from '../../context/FavoritesContext';
 import { CartContext } from '../../context/CartContext';
 import { ProductDetailsPageLoading } from './Loading/ProductDetailsPage';
+import { Errors } from '../shared/components/Errors/Errors';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -55,10 +56,6 @@ export const ProductDetailsPage = () => {
     navigate(`/product/${newItemId}`);
   };
 
-  if (isLoading || !currentProduct || !productDetail) {
-    return <ProductDetailsPageLoading />;
-  }
-
   return (
     <article className={styles.product_details_page}>
       <div className={styles.breadcrumb}>
@@ -96,183 +93,191 @@ export const ProductDetailsPage = () => {
         <p className={styles.back_page}>Back</p>
       </Link>
 
-      <main className={styles.main}>
-        <h1 className={styles.productname}>{productDetail?.name}</h1>
-        <section className={styles.mainInfo}>
-          <div className={styles.images}>
-            <div className={styles.mainImage}>
-              <img
-                src={activeImage || productDetail?.images[0]}
-                alt={productDetail?.name}
-              />
-            </div>
-
-            <div className={styles.thumbnails}>
-              {productDetail?.images.map((img, index) => (
+      {isLoading ? (
+        <ProductDetailsPageLoading />
+      ) : !currentProduct || !productDetail ? (
+        <Errors type="empty" />
+      ) : (
+        <main className={styles.main}>
+          <h1 className={styles.productname}>{productDetail?.name}</h1>
+          <section className={styles.mainInfo}>
+            <div className={styles.images}>
+              <div className={styles.mainImage}>
                 <img
-                  key={index}
-                  className={`${styles.thumbnail} ${(activeImage || productDetail?.images[0]) === img ? styles.active : ''}`}
-                  src={img}
-                  alt={`${productDetail?.name} ${index}`}
-                  onClick={() => setActiveImage(img)}
+                  src={activeImage || productDetail?.images[0]}
+                  alt={productDetail?.name}
                 />
-              ))}
-            </div>
-          </div>
-          <div className={styles.description}>
-            <div className={styles.colors}>
-              <div className={styles.colors_header}>
-                <p className={styles.colors_title}>Available colors</p>
-                <p className={styles.colors_id}>ID: {currentProduct?.id}</p>
               </div>
-              <div className={styles.colors_list}>
-                {productDetail?.colorsAvailable.map(color => (
-                  <div
-                    key={color}
-                    className={`${styles.color} ${productDetail?.color === color ? styles.active : ''}`}
-                    style={{ backgroundColor: color }}
-                    onClick={() =>
-                      handleChange(color, productDetail?.capacity || '')
-                    }
+
+              <div className={styles.thumbnails}>
+                {productDetail?.images.map((img, index) => (
+                  <img
+                    key={index}
+                    className={`${styles.thumbnail} ${(activeImage || productDetail?.images[0]) === img ? styles.active : ''}`}
+                    src={img}
+                    alt={`${productDetail?.name} ${index}`}
+                    onClick={() => setActiveImage(img)}
                   />
                 ))}
               </div>
             </div>
-            <div className={styles.capacity}>
-              <p className={styles.capacity_title}>Select capacity</p>
-              <div className={styles.capacity_list}>
-                {productDetail?.capacityAvailable.map(cap => (
+            <div className={styles.description}>
+              <div className={styles.colors}>
+                <div className={styles.colors_header}>
+                  <p className={styles.colors_title}>Available colors</p>
+                  <p className={styles.colors_id}>ID: {currentProduct?.id}</p>
+                </div>
+                <div className={styles.colors_list}>
+                  {productDetail?.colorsAvailable.map(color => (
+                    <div
+                      key={color}
+                      className={`${styles.color} ${productDetail?.color === color ? styles.active : ''}`}
+                      style={{ backgroundColor: color }}
+                      onClick={() =>
+                        handleChange(color, productDetail?.capacity || '')
+                      }
+                    />
+                  ))}
+                </div>
+              </div>
+              <div className={styles.capacity}>
+                <p className={styles.capacity_title}>Select capacity</p>
+                <div className={styles.capacity_list}>
+                  {productDetail?.capacityAvailable.map(cap => (
+                    <button
+                      key={cap}
+                      className={`${styles.capacity_item} ${productDetail.capacity === cap ? styles.active : ''}`}
+                      onClick={() =>
+                        handleChange(productDetail?.color || '', cap)
+                      }
+                    >
+                      {cap}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className={styles.prices}>
+                <p>${productDetail?.priceDiscount}</p>
+                <div className={styles.fullPrice}>
+                  <p>${productDetail?.priceRegular}</p>
+                </div>
+              </div>
+              <div className={styles.buttons}>
+                {isInCart ? (
                   <button
-                    key={cap}
-                    className={`${styles.capacity_item} ${productDetail.capacity === cap ? styles.active : ''}`}
+                    className={styles.addedToCart}
                     onClick={() =>
-                      handleChange(productDetail?.color || '', cap)
+                      currentProduct && removeFromCart(currentProduct.id)
                     }
                   >
-                    {cap}
+                    Added
                   </button>
-                ))}
+                ) : (
+                  <button
+                    className={styles.addToCart}
+                    onClick={() => currentProduct && addToCart(currentProduct)}
+                  >
+                    Add to cart
+                  </button>
+                )}
+                {isInFavorites ? (
+                  <button
+                    className={styles.addedToFav}
+                    onClick={() =>
+                      currentProduct && removeFromFavorites(currentProduct.id)
+                    }
+                  >
+                    <img
+                      src="/img/icons/Favourites_Filled_(Heart_Like).svg"
+                      alt="add to favorites"
+                    />
+                  </button>
+                ) : (
+                  <button
+                    className={styles.addToFav}
+                    onClick={() =>
+                      currentProduct && addToFavorites(currentProduct)
+                    }
+                  >
+                    <img
+                      src="/img/icons/Favorites.svg"
+                      alt="add to favorites"
+                    />
+                  </button>
+                )}
+              </div>
+              <div className={styles.another_info}>
+                <div className={styles.info}>
+                  <p>Screen</p>
+                  <p>{productDetail?.screen}</p>
+                </div>
+                <div className={styles.info}>
+                  <p>Resolution</p>
+                  <p>{productDetail?.resolution}</p>
+                </div>
+                <div className={styles.info}>
+                  <p>Processor</p>
+                  <p>{productDetail?.processor}</p>
+                </div>
+                <div className={styles.info}>
+                  <p>RAM</p>
+                  <p>{productDetail?.ram}</p>
+                </div>
               </div>
             </div>
-            <div className={styles.prices}>
-              <p>${productDetail?.priceDiscount}</p>
-              <div className={styles.fullPrice}>
-                <p>${productDetail?.priceRegular}</p>
+          </section>
+          <section className={styles.subInfo}>
+            <div className={styles.descriptions}>
+              <h2 className={styles.title}>About</h2>
+              {productDetail?.description.map((desc: Description, index) => (
+                <div className={styles.description} key={index}>
+                  <h4 key={index} className={styles.description_title}>
+                    {desc.title}
+                  </h4>
+                  <p className={styles.description_text}>{desc.text}</p>
+                </div>
+              ))}
+            </div>
+            <div className={styles.specs}>
+              <h2 className={styles.title}>Tech specs</h2>
+              <div className={styles.specs_info}>
+                <div className={styles.info}>
+                  <p>Screen</p>
+                  <p>{productDetail?.screen}</p>
+                </div>
+                <div className={styles.info}>
+                  <p>Resolution</p>
+                  <p>{productDetail?.resolution}</p>
+                </div>
+                <div className={styles.info}>
+                  <p>Processor</p>
+                  <p>{productDetail?.processor}</p>
+                </div>
+                <div className={styles.info}>
+                  <p>RAM</p>
+                  <p>{productDetail?.ram}</p>
+                </div>
+                <div className={styles.info}>
+                  <p>Built in memory</p>
+                  <p>{productDetail?.capacity}</p>
+                </div>
+                <div className={styles.info}>
+                  <p>Camera</p>
+                  <p>{productDetail?.camera}</p>
+                </div>
+                <div className={styles.info}>
+                  <p>Zoom</p>
+                  <p>{productDetail?.zoom}</p>
+                </div>
+                <div className={styles.info}>
+                  <p>Cell</p>
+                  <p>{productDetail?.cell.join(', ')}</p>
+                </div>
               </div>
             </div>
-            <div className={styles.buttons}>
-              {isInCart ? (
-                <button
-                  className={styles.addedToCart}
-                  onClick={() =>
-                    currentProduct && removeFromCart(currentProduct.id)
-                  }
-                >
-                  Added
-                </button>
-              ) : (
-                <button
-                  className={styles.addToCart}
-                  onClick={() => currentProduct && addToCart(currentProduct)}
-                >
-                  Add to cart
-                </button>
-              )}
-              {isInFavorites ? (
-                <button
-                  className={styles.addedToFav}
-                  onClick={() =>
-                    currentProduct && removeFromFavorites(currentProduct.id)
-                  }
-                >
-                  <img
-                    src="/img/icons/Favourites_Filled_(Heart_Like).svg"
-                    alt="add to favorites"
-                  />
-                </button>
-              ) : (
-                <button
-                  className={styles.addToFav}
-                  onClick={() =>
-                    currentProduct && addToFavorites(currentProduct)
-                  }
-                >
-                  <img src="/img/icons/Favorites.svg" alt="add to favorites" />
-                </button>
-              )}
-            </div>
-            <div className={styles.another_info}>
-              <div className={styles.info}>
-                <p>Screen</p>
-                <p>{productDetail?.screen}</p>
-              </div>
-              <div className={styles.info}>
-                <p>Resolution</p>
-                <p>{productDetail?.resolution}</p>
-              </div>
-              <div className={styles.info}>
-                <p>Processor</p>
-                <p>{productDetail?.processor}</p>
-              </div>
-              <div className={styles.info}>
-                <p>RAM</p>
-                <p>{productDetail?.ram}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className={styles.subInfo}>
-          <div className={styles.descriptions}>
-            <h2 className={styles.title}>About</h2>
-            {productDetail?.description.map((desc: Description, index) => (
-              <div className={styles.description} key={index}>
-                <h4 key={index} className={styles.description_title}>
-                  {desc.title}
-                </h4>
-                <p className={styles.description_text}>{desc.text}</p>
-              </div>
-            ))}
-          </div>
-          <div className={styles.specs}>
-            <h2 className={styles.title}>Tech specs</h2>
-            <div className={styles.specs_info}>
-              <div className={styles.info}>
-                <p>Screen</p>
-                <p>{productDetail?.screen}</p>
-              </div>
-              <div className={styles.info}>
-                <p>Resolution</p>
-                <p>{productDetail?.resolution}</p>
-              </div>
-              <div className={styles.info}>
-                <p>Processor</p>
-                <p>{productDetail?.processor}</p>
-              </div>
-              <div className={styles.info}>
-                <p>RAM</p>
-                <p>{productDetail?.ram}</p>
-              </div>
-              <div className={styles.info}>
-                <p>Built in memory</p>
-                <p>{productDetail?.capacity}</p>
-              </div>
-              <div className={styles.info}>
-                <p>Camera</p>
-                <p>{productDetail?.camera}</p>
-              </div>
-              <div className={styles.info}>
-                <p>Zoom</p>
-                <p>{productDetail?.zoom}</p>
-              </div>
-              <div className={styles.info}>
-                <p>Cell</p>
-                <p>{productDetail?.cell.join(', ')}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
+          </section>
+        </main>
+      )}
       <div className={styles.slider}>
         <ProductsSlider
           title="You may also like"
