@@ -54,7 +54,7 @@
   position: fixed;
   bottom: 0;
 
-  box-shadow: 0 -1px 0 0 #E2E6E9;
+  box-shadow: 0 -1px 0 0 vars.$elements-color;
   width: 100%;
 }
 
@@ -64,7 +64,7 @@
   flex: 1;
   padding: 24px 72px;
 
-  box-shadow: -1px 0 0 0 #E2E6E9;
+  box-shadow: -1px 0 0 0 vars.$elements-color;
 
   @extend %underline;
 }

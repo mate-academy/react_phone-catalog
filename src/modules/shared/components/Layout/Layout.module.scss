@@ -1,1 +1,16 @@
-// not empty
+@use '@styles/variables/variables.scss' as vars;
+
+.mainContainer {
+  width: 100%;
+  padding: 0 16px;
+  margin: 0 auto;
+  max-width: 1200px;
+
+  @media screen and (min-width: vars.$tablet-width) {
+    padding: 0 24px;
+  }
+
+  @media screen and (min-width: vars.$desktop-width) {
+    padding: 0 32px;
+  }
+}

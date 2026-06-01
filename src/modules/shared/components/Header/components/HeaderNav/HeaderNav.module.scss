@@ -5,12 +5,12 @@
   display: none;
   height: 100%;
 
-  @media screen and (min-width: 640px) {
+  @media screen and (min-width: vars.$tablet-width) {
     display: flex;
     gap: 32px;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: vars.$desktop-width) {
     gap: 64px;
   }
 }

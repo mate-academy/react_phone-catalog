@@ -3,6 +3,7 @@ import { Header } from '../Header';
 import { Footer } from '../Footer';
 import { Menu } from '../Header/components/Menu';
 import { useEffect, useState } from 'react';
+import styles from './Layout.module.scss';
 
 const MIN_TABLET_SCREEN_SIZE = 640;
 
@@ -26,7 +27,7 @@ export const Layout = () => {
   return (
     <div>
       <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-      <main>
+      <main className={styles.mainContainer}>
         {isMenuOpen ? (
           <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         ) : (

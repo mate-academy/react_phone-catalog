@@ -15,17 +15,15 @@ export const HomePage = () => {
   }, [setNewPhoneModels]);
 
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <section className={styles.sliderSection}>
-          <div className={styles.titleContainer}>
-            <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
-          </div>
-          <Slider />
-        </section>
+    <main className={styles.main}>
+      <section className={styles.sliderSection}>
+        <div className={styles.titleContainer}>
+          <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
+        </div>
+        <Slider />
+      </section>
 
-        <NewModels />
-      </main>
-    </div>
+      <NewModels />
+    </main>
   );
 };

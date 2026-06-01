@@ -16,7 +16,7 @@
   font-size: 22px;
   flex: 1;
 
-  @media screen and (min-width: 640px) {
+  @media screen and (min-width: vars.$tablet-width) {
     font-size: 32px;
   }
 }
