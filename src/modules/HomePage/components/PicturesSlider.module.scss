@@ -1,38 +1,62 @@
 .slider {
   position: relative;
-  border-radius: 24px;
-  overflow: hidden;
-  background: #000;
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) 32px;
+  gap: 16px;
+  overflow: visible;
+  background: transparent;
   width: 100%;
   max-width: 100%;
   min-width: 0;
 }
 
 .slider img {
+  grid-column: 2;
   width: 100%;
-  max-height: 520px;
-  min-height: 430px;
+  max-height: 400px;
+  min-height: 320px;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
-  aspect-ratio: 1440 / 520;
+  aspect-ratio: 1040 / 400;
+}
+
+.orderButton {
+  position: absolute;
+  left: calc(28px + 7%);
+  bottom: 15%;
+  display: grid;
+  place-items: center;
+  width: min(20vw, 200px);
+  height: 60px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  color: transparent;
+  text-decoration: none;
+}
+
+.orderButton:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
 .navigation {
   position: absolute;
-  inset: auto 1rem 1rem auto;
-  display: flex;
-  gap: 0.5rem;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) 32px;
+  pointer-events: none;
 }
 
 .navigation button {
-  border: none;
-  background: rgba(255, 255, 255, 0.85);
-  width: 44px;
-  height: 44px;
+  width: 32px;
+  height: 100%;
+  border: 1px solid var(--color-icons);
+  background: var(--color-white);
   padding: 0;
-  border-radius: 999px;
+  border-radius: 0;
   cursor: pointer;
+  pointer-events: auto;
   transition: background-color 0.2s ease, transform 0.2s ease,
     box-shadow 0.2s ease;
 }
@@ -41,9 +65,9 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 1rem;
+  bottom: -24px;
   display: flex;
-  gap: 0.5rem;
+  gap: 14px;
 }
 
 .dots button {
@@ -51,11 +75,11 @@
   width: 14px;
   min-width: 14px;
   max-width: 14px;
-  height: 14px;
-  min-height: 14px;
-  max-height: 14px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.65);
+  height: 4px;
+  min-height: 4px;
+  max-height: 4px;
+  border-radius: 0;
+  background: var(--color-elements);
   border: none;
   padding: 0;
   cursor: pointer;
@@ -64,31 +88,36 @@
 
 .dots button:hover,
 .dots button.active {
-  background: #06f;
+  background: var(--color-primary);
+}
+
+.navigation button:last-child {
+  grid-column: 3;
 }
 
 .navigation button:hover {
-  background: #fff;
-  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.14);
-  transform: translateX(3px);
-}
-
-.navigation button:first-child:hover {
-  transform: translateX(-3px);
+  background: var(--color-hover);
+  box-shadow: none;
+  transform: none;
 }
 
 @media (max-width: 560px) {
   .slider {
-    border-radius: 16px;
+    grid-template-columns: 1fr;
   }
 
   .slider img {
+    grid-column: 1;
     max-height: 280px;
     min-height: 240px;
     aspect-ratio: 4 / 3;
   }
 
   .navigation {
-    inset: auto 0.75rem 0.75rem auto;
+    display: none;
+  }
+
+  .orderButton {
+    display: none;
   }
 }

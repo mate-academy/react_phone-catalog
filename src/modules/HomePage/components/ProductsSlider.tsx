@@ -6,9 +6,14 @@ import styles from './ProductsSlider.module.scss';
 interface ProductsSliderProps {
   title: string;
   products: Product[];
+  showDiscount?: boolean;
 }
 
-export const ProductsSlider = ({ title, products }: ProductsSliderProps) => {
+export const ProductsSlider = ({
+  title,
+  products,
+  showDiscount = true,
+}: ProductsSliderProps) => {
   const listRef = useRef<HTMLDivElement | null>(null);
 
   const handleScroll = (direction: number) => {
@@ -35,7 +40,7 @@ export const ProductsSlider = ({ title, products }: ProductsSliderProps) => {
       <div className={styles.list} ref={listRef}>
         {products.map(product => (
           <div key={product.itemId || product.id} className={styles.item}>
-            <ProductCard product={product} />
+            <ProductCard product={product} showDiscount={showDiscount} />
           </div>
         ))}
       </div>

@@ -4,11 +4,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  margin-top: 1.25rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid #e2e6f0;
-  border-radius: 16px;
-  background: #fff;
+  margin-top: 16px;
 }
 
 .controls {
@@ -19,11 +15,13 @@
 }
 
 button {
-  border: 1px solid #cbd5e1;
-  background: #fff;
-  color: #1a1a1a;
-  padding: 0.5rem 0.85rem;
-  border-radius: 999px;
+  height: 32px;
+  min-width: 32px;
+  border: 1px solid var(--color-icons);
+  background: var(--color-white);
+  color: var(--color-primary);
+  padding: 0 12px;
+  border-radius: 0;
   cursor: pointer;
 }
 
@@ -36,11 +34,12 @@ label {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: #475569;
+  color: var(--color-secondary);
+  font-size: 14px;
 }
 
 select {
-  border: 1px solid #cbd5e1;
-  border-radius: 12px;
+  border: 1px solid var(--color-icons);
+  border-radius: 0;
   padding: 0.45rem 0.75rem;
 }

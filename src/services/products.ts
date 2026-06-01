@@ -109,13 +109,20 @@ export function filterProductsByQuery(
   products: Product[],
   query: string,
 ): Product[] {
-  const normalized = query.trim().toLowerCase();
+  const words = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
 
-  if (!normalized) {
+  if (!words.length) {
     return products;
   }
 
-  return products.filter(item => item.name.toLowerCase().includes(normalized));
+  return products.filter(item => {
+    const searchable = [item.name, item.color, item.capacity, item.category]
+      .filter(Boolean)
+      .join(' ')
+      .toLowerCase();
+
+    return words.every(word => searchable.includes(word));
+  });
 }
 
 export function getHotProducts(products: Product[], limit = 6): Product[] {
@@ -150,7 +157,7 @@ export function getShopByCategory(): Array<{
   category: Category;
 }> {
   return [
-    { label: 'Phones', path: '/phones', category: 'phones' },
+    { label: 'Mobile phones', path: '/phones', category: 'phones' },
     { label: 'Tablets', path: '/tablets', category: 'tablets' },
     { label: 'Accessories', path: '/accessories', category: 'accessories' },
   ];

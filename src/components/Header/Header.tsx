@@ -61,7 +61,7 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <Link to="/" className={styles.logo}>
-          <span>Phone Catalog</span>
+          <span>Nice Gadgets</span>
         </Link>
 
         <button

@@ -111,6 +111,7 @@ export const CategoryPage = ({ category, title }: CategoryPageProps) => {
   return (
     <main className={styles.page}>
       <h1>{title}</h1>
+      <p className={styles.count}>{products.length} models</p>
       <div className={styles.toolbar}>
         <label>
           Sort by:

@@ -8,15 +8,18 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <p className={styles.text}>
+        <span className={styles.logo}>Nice Gadgets</span>
+        <nav className={styles.links}>
           <a
             href="https://github.com/mate-academy/react_phone-catalog"
             target="_blank"
             rel="noreferrer"
           >
-            GitHub repository
+            GitHub
           </a>
-        </p>
+          <a href="mailto:hello@nice-gadgets.dev">Contacts</a>
+          <a href="/">Rights</a>
+        </nav>
         <button
           type="button"
           className={styles.backButton}

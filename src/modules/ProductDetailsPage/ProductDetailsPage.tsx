@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Loader } from '../../components/Loader';
 import { ProductCard } from '../../components/ProductCard';
 import { useCart } from '../../contexts/CartContext';
+import { useFavorites } from '../../contexts/FavoritesContext';
 import {
   fetchProductDetails,
   getSuggestedProducts,
@@ -16,6 +17,32 @@ const categoryNames: Record<string, string> = {
   accessories: 'Accessories',
 };
 
+const colorMap: Record<string, string> = {
+  black: '#1f2020',
+  blue: '#215e7c',
+  coral: '#ee7762',
+  gold: '#f4e8ce',
+  graphite: '#5c5b57',
+  green: '#aee1cd',
+  midnight: '#171e27',
+  midnightgreen: '#4e5851',
+  pink: '#f8d7df',
+  purple: '#c8bad8',
+  red: '#ba0c2f',
+  rosegold: '#f6d8c7',
+  silver: '#f5f5f0',
+  sierrablue: '#a7c1d9',
+  skyblue: '#cfe2f3',
+  spaceblack: '#302d33',
+  spacegray: '#4f4f4f',
+  starlight: '#f8f3e8',
+  white: '#f9f6ef',
+  yellow: '#f7e27a',
+};
+
+const getColorValue = (color: string) =>
+  colorMap[color.toLowerCase().replace(/\s+/g, '')] ?? color;
+
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
@@ -25,6 +52,7 @@ export const ProductDetailsPage = () => {
   const [suggested, setSuggested] = useState<Product[]>([]);
   const [currentImage, setCurrentImage] = useState('');
   const { addToCart, removeFromCart, isInCart } = useCart();
+  const { toggleFavorite, isFavorite } = useFavorites();
 
   useEffect(() => {
     if (!productId) {
@@ -53,6 +81,7 @@ export const ProductDetailsPage = () => {
       return;
     }
 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     getSuggestedProducts(productId).then(setSuggested);
   }, [productId]);
 
@@ -93,6 +122,7 @@ export const ProductDetailsPage = () => {
     product.capacity ?? product.capacityAvailable?.[0] ?? '';
   const cartProductId = (product.itemId || product.id).toString();
   const isProductInCart = isInCart(cartProductId);
+  const isProductFavorite = isFavorite(cartProductId);
 
   const getConfigurationId = (capacity: string, color: string) => {
     const capacitySlug = capacity.toLowerCase();
@@ -141,7 +171,7 @@ export const ProductDetailsPage = () => {
       <button
         type="button"
         className={styles.backButton}
-        onClick={() => navigate(-1)}
+        onClick={() => navigate(`/${routeCategory}`)}
       >
         ← Back
       </button>
@@ -167,61 +197,90 @@ export const ProductDetailsPage = () => {
         </div>
         <div className={styles.infoColumn}>
           <h1>{product.name}</h1>
-          <div className={styles.priceBlock}>
-            <strong>€{price}</strong>
-            {oldPrice > price && <span>€{oldPrice}</span>}
-          </div>
           <div className={styles.selectors}>
             {product.colorsAvailable && (
               <div>
-                <h3>Color</h3>
-                <div className={styles.options}>
+                <h3>Available colors</h3>
+                <div className={styles.colorOptions}>
                   {product.colorsAvailable.map(color => (
-                    <label key={color} className={styles.optionLabel}>
-                      <input
-                        type="radio"
-                        name="color"
-                        value={color}
-                        checked={selectedColor === color}
-                        onChange={() =>
-                          updateConfiguration(selectedCapacity, color)
-                        }
+                    <button
+                      key={color}
+                      type="button"
+                      className={`${styles.colorOption} ${
+                        selectedColor === color ? styles.colorOptionActive : ''
+                      }`}
+                      onClick={() =>
+                        updateConfiguration(selectedCapacity, color)
+                      }
+                      aria-label={`Select ${color} color`}
+                    >
+                      <span
+                        style={{ backgroundColor: getColorValue(color) }}
+                        aria-hidden="true"
                       />
-                      <span>{color}</span>
-                    </label>
+                    </button>
                   ))}
                 </div>
               </div>
             )}
             {product.capacityAvailable && (
               <div>
-                <h3>Capacity</h3>
-                <div className={styles.options}>
+                <h3>Select capacity</h3>
+                <div className={styles.capacityOptions}>
                   {product.capacityAvailable.map(capacity => (
-                    <label key={capacity} className={styles.optionLabel}>
-                      <input
-                        type="radio"
-                        name="capacity"
-                        value={capacity}
-                        checked={selectedCapacity === capacity}
-                        onChange={() =>
-                          updateConfiguration(capacity, selectedColor)
-                        }
-                      />
-                      <span>{capacity}</span>
-                    </label>
+                    <button
+                      key={capacity}
+                      type="button"
+                      className={`${styles.capacityOption} ${
+                        selectedCapacity === capacity
+                          ? styles.capacityOptionActive
+                          : ''
+                      }`}
+                      onClick={() =>
+                        updateConfiguration(capacity, selectedColor)
+                      }
+                    >
+                      {capacity}
+                    </button>
                   ))}
                 </div>
               </div>
             )}
           </div>
-          <button
-            type="button"
-            className={styles.cartButton}
-            onClick={toggleCart}
-          >
-            {isProductInCart ? 'Remove from cart' : 'Add to cart'}
-          </button>
+          <div className={styles.priceBlock}>
+            <strong>€{price}</strong>
+            {oldPrice > price && <span>€{oldPrice}</span>}
+          </div>
+          <div className={styles.actions}>
+            <button
+              type="button"
+              className={`${styles.cartButton} ${
+                isProductInCart ? styles.cartButtonActive : ''
+              }`}
+              onClick={toggleCart}
+            >
+              {isProductInCart ? 'Added to cart' : 'Add to cart'}
+            </button>
+            <button
+              type="button"
+              className={`${styles.favoriteButton} ${
+                isProductFavorite ? styles.favoriteButtonActive : ''
+              }`}
+              onClick={() => toggleFavorite(cartProductId)}
+              aria-label={
+                isProductFavorite ? 'Remove from favorites' : 'Add to favorites'
+              }
+            >
+              <i
+                className={
+                  isProductFavorite
+                    ? 'fa-solid fa-heart'
+                    : 'fa-regular fa-heart'
+                }
+                aria-hidden="true"
+              />
+            </button>
+          </div>
         </div>
       </section>
       <section className={styles.about}>

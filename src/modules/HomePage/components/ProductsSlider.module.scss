@@ -1,5 +1,4 @@
 .sliderSection {
-  margin-top: 2rem;
   width: 100%;
   max-width: 100%;
   min-width: 0;
@@ -8,39 +7,39 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
   min-width: 0;
-  text-align: center;
 }
 
 .header h2 {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 32px;
+  line-height: 41px;
 }
 
 .buttons {
   display: flex;
-  gap: 0.5rem;
-  margin-left: auto;
+  gap: 16px;
 }
 
 .buttons button {
-  border: 1px solid #cbd5e1;
-  border-radius: 999px;
-  background: #fff;
-  padding: 0.5rem 0.75rem;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-icons);
+  border-radius: 0;
+  background: var(--color-white);
+  padding: 0;
   cursor: pointer;
 }
 
 .list {
   display: flex;
-  gap: 1rem;
+  gap: 16px;
   overflow-x: auto;
   width: 100%;
-  padding-bottom: 0.5rem;
+  padding-bottom: 4px;
   scroll-snap-type: x mandatory;
   max-width: 100%;
   min-width: 0;
@@ -48,8 +47,25 @@
 
 .item {
   min-width: 0;
-  flex: 0 0 min(240px, 78vw);
+  flex: 0 0 calc((100% - 48px) / 4);
   scroll-snap-align: start;
+}
+
+@media (max-width: 900px) {
+  .item {
+    flex-basis: calc((100% - 32px) / 3);
+  }
+}
+
+@media (max-width: 640px) {
+  .header h2 {
+    font-size: 24px;
+    line-height: 31px;
+  }
+
+  .item {
+    flex-basis: min(272px, 82vw);
+  }
 }
 
 .list::-webkit-scrollbar {
