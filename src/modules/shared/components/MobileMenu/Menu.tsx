@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Menu.module.scss';
 import { FavoritesContext } from '../../../../context/FavoritesContext';
+import { CartContext } from '../../../../context/CartContext';
 
 export const MobileMenu = ({
   isOpen,
@@ -11,6 +12,7 @@ export const MobileMenu = ({
   onClose: () => void;
 }) => {
   const { favoritesItems } = useContext(FavoritesContext);
+  const { cartItems } = useContext(CartContext);
 
   return (
     <div className={`${styles.mobile_menu} ${isOpen ? styles.open : ''}`}>
@@ -86,11 +88,10 @@ export const MobileMenu = ({
           }
           onClick={onClose}
         >
-          <img
-            className={styles.icon}
-            src="img/icons/Shopping_bag.svg"
-            alt="Shopping bag "
-          />
+          <img src="img/icons/Shopping_bag.svg" alt="Shopping bag " />
+          {cartItems.length > 0 && (
+            <span className={styles.count}>{cartItems.length}</span>
+          )}
         </NavLink>
       </footer>
     </div>
