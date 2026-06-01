@@ -2,12 +2,12 @@
 @use '@styles/variables/variables.scss' as vars;
 
 .header {
-  height: 48px;
+  height: vars.$header-height-mobile;
   padding-left: 16px;
   box-shadow: 0 1px 0 0 vars.$elements-color;
 
-  @media screen and (min-width: 1200px) {
-    height: 64px;
+  @media screen and (min-width: vars.$desktop-width) {
+    height: vars.$header-height-desktop;
     padding-left: 24px;
  }
 }
@@ -34,7 +34,7 @@
   width: 64px;
   height: 22px;
 
- @media screen and (min-width: 1200px) {
+ @media screen and (min-width: vars.$desktop-width) {
     width: 80px;
     height: 28px;
   }
@@ -44,14 +44,14 @@
   display: none;
   position: relative;
 
-  @media screen and (min-width: 640px) {
+  @media screen and (min-width: vars.$tablet-width) {
     display: flex;
     justify-content: center;
     height: 100%;
     padding: 0 16px;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: vars.$desktop-width) {
     padding: 0 24px;
   }
 }
@@ -77,7 +77,7 @@
   background: none;
   cursor: pointer;
 
-  @media screen and (min-width: 640px) {
+  @media screen and (min-width: vars.$tablet-width) {
     display: none;
   }
 }

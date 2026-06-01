@@ -1,38 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Slider } from './components/Slider/Slider';
 import styles from './HomePage.module.scss';
-import { Product } from '../../types/Product';
 import { getProducts } from '../../utils/api';
 import { NewModels } from './components/NewModels';
+import { useAppContext } from '../../context/AppContext';
 
 export const HomePage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const { setNewPhoneModels } = useAppContext();
 
   useEffect(() => {
-    getProducts().then(productsFromServer => setProducts(productsFromServer));
-  }, []);
-
-  const getNewModels = (category: string) => {
-    const newProducts = products.filter(
-      product => product.category === category,
+    getProducts().then(productsFromServer =>
+      setNewPhoneModels(productsFromServer),
     );
-
-    newProducts.sort((product1: Product, product2: Product) => {
-      return Number(product2.year) - Number(product1.year);
-    });
-
-    if (!newProducts.length) {
-      return [];
-    }
-
-    const currentYear = Number(newProducts[0].year);
-
-    return newProducts.filter(
-      newProduct => Number(newProduct.year) === currentYear,
-    );
-  };
-
-  const newPhonesModels = getNewModels('phones');
+  });
 
   return (
     <div className={styles.container}>
@@ -44,7 +24,7 @@ export const HomePage = () => {
           <Slider />
         </section>
         <section>
-          <NewModels newPhonesModels={newPhonesModels} />
+          <NewModels />
         </section>
       </main>
     </div>

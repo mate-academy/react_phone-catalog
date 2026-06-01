@@ -1,0 +1,118 @@
+@use '@styles/variables/variables.scss' as vars;
+
+.phoneCard {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  flex-shrink: 0;
+  gap: 8px;
+  padding: 32px;
+  width: 212px;
+
+  border: 1px solid vars.$elements-color;
+
+
+  @media screen and (min-width: vars.$tablet-width) {
+    max-width: 237px;
+    width: auto;
+  }
+
+  @media screen and (min-width: vars.$desktop-width) {
+    max-width: 272px;
+  }
+}
+
+.imgContainer {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cardTitle {
+  flex-grow: 1;
+  font-size: 14px;
+  font-weight: 400;
+  color: vars.$primary-color;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 400;
+
+  &Title {
+    color: vars.$secondary-color;
+  }
+
+  &Description{
+    color: vars.$primary-color;
+  }
+}
+
+.cardButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+.addBtn {
+  background-color: vars.$primary-color;
+  padding: 10px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  color: vars.$white-color;
+
+  border: none;
+  cursor: pointer;
+
+  transition: box-shadow .2s ease-in;
+
+  &:hover {
+    box-shadow: 0 3px 13px vars.$primary-color;
+  }
+
+  &.isActive {
+    color: vars.$green-color;
+    background-color: vars.$white-color;
+    border: solid 1px vars.$elements-color;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
+
+.favoritesBtn {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+
+  border: 1px solid vars.$icons-color;
+  background-color: vars.$white-color;
+  cursor: pointer;
+  transition: border .2s ease-in;
+
+  &:hover {
+    border: 1px solid vars.$primary-color;
+  }
+}

@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   position: fixed;
-  top: 72px; // header size 48px + margin 24px
+  top: calc(vars.$header-height-mobile + 24px); // header size 48px + margin 24px
   width: 100%;
 }
 

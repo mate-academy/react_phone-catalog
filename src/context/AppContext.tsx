@@ -1,10 +1,13 @@
 import React, { useContext, useState, createContext } from 'react';
+import { Product } from '../types/Product';
 
 type ContextType = {
   favoritesIds: number[];
   setFavoritesIds: React.Dispatch<React.SetStateAction<number[]>>;
   addBtnIds: number[];
   setAddBtnIds: React.Dispatch<React.SetStateAction<number[]>>;
+  newPhonesModels: Product[];
+  setNewPhoneModels: React.Dispatch<React.SetStateAction<Product[]>>;
 };
 
 const AppContext = createContext<ContextType | undefined>(undefined);
@@ -12,6 +15,7 @@ const AppContext = createContext<ContextType | undefined>(undefined);
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [favoritesIds, setFavoritesIds] = useState<number[]>([]);
   const [addBtnIds, setAddBtnIds] = useState<number[]>([]);
+  const [newPhonesModels, setNewPhoneModels] = useState<Product[]>([]);
 
   return (
     <AppContext.Provider
@@ -20,6 +24,8 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
         setFavoritesIds,
         addBtnIds,
         setAddBtnIds,
+        newPhonesModels,
+        setNewPhoneModels,
       }}
     >
       {children}
