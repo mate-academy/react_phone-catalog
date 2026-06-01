@@ -21,7 +21,7 @@ export const CartPage = () => {
         <Link to="/">
           <img
             className={styles.breadcrumb_icon}
-            src="/img/icons/Chevron_(Arrow_Left).svg"
+            src="img/icons/Chevron_(Arrow_Left).svg"
             alt="back"
           />
         </Link>

@@ -62,13 +62,13 @@ export const ProductDetailsPage = () => {
         <Link to="/">
           <img
             className={styles.breadcrumb_icon}
-            src="/img/icons/Home.svg"
+            src="img/icons/Home.svg"
             alt="home"
           />
         </Link>
         <img
           className={styles.breadcrumb_icon}
-          src="/img/icons/Chevron_(Arrow_Right).svg"
+          src="img/icons/Chevron_(Arrow_Right).svg"
           alt=" to"
         />
         <Link
@@ -79,7 +79,7 @@ export const ProductDetailsPage = () => {
         </Link>
         <img
           className={styles.breadcrumb_icon}
-          src="/img/icons/Chevron_(Arrow_Right).svg"
+          src="img/icons/Chevron_(Arrow_Right).svg"
           alt=" to"
         />
         <p className={styles.breadcrumb_title}>{currentProduct?.name}</p>
@@ -87,7 +87,7 @@ export const ProductDetailsPage = () => {
       <Link to="/" className={styles.back}>
         <img
           className={styles.back_icon}
-          src="/img/icons/Chevron_(Arrow_Left).svg"
+          src="img/icons/Chevron_(Arrow_Left).svg"
           alt="back"
         />
         <p className={styles.back_page}>Back</p>
@@ -188,7 +188,7 @@ export const ProductDetailsPage = () => {
                     }
                   >
                     <img
-                      src="/img/icons/Favourites_Filled_(Heart_Like).svg"
+                      src="img/icons/Favourites_Filled_(Heart_Like).svg"
                       alt="add to favorites"
                     />
                   </button>
@@ -199,10 +199,7 @@ export const ProductDetailsPage = () => {
                       currentProduct && addToFavorites(currentProduct)
                     }
                   >
-                    <img
-                      src="/img/icons/Favorites.svg"
-                      alt="add to favorites"
-                    />
+                    <img src="img/icons/Favorites.svg" alt="add to favorites" />
                   </button>
                 )}
               </div>

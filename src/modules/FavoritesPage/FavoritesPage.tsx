@@ -17,13 +17,13 @@ export const FavoritesPage = () => {
           <Link to="/">
             <img
               className={styles.breadcrumb_icon}
-              src="/img/icons/Home.svg"
+              src="img/icons/Home.svg"
               alt="home"
             />
           </Link>
           <img
             className={styles.breadcrumb_icon}
-            src="/img/icons/Chevron_(Arrow_Right).svg"
+            src="img/icons/Chevron_(Arrow_Right).svg"
             alt=" to"
           />
           <p className={styles.breadcrumb_page}>favorites</p>

@@ -19,7 +19,7 @@ export const CartItem = ({ product, quantity }: Props) => {
           onClick={() => removeFromCart(product.id)}
           className={styles.close}
         >
-          <img src="/img/icons/Close.svg" alt="delete" />
+          <img src="img/icons/Close.svg" alt="delete" />
         </button>
         <div className={styles.product_img}>
           <img src={`/${product.image}`} alt={product.name} />
@@ -37,7 +37,7 @@ export const CartItem = ({ product, quantity }: Props) => {
               updateQuantity(product, quantity - 1);
             }}
           >
-            <img src="/img/icons/Minus.svg" alt="decrease quantity" />
+            <img src="img/icons/Minus.svg" alt="decrease quantity" />
           </button>
           <span className={styles.quantity}>{quantity}</span>
           <button
@@ -46,7 +46,7 @@ export const CartItem = ({ product, quantity }: Props) => {
               updateQuantity(product, quantity + 1);
             }}
           >
-            <img src="/img/icons/Plus.svg" alt="increase quantity" />
+            <img src="img/icons/Plus.svg" alt="increase quantity" />
           </button>
         </div>
         <p className={styles.price}>${product.price}</p>

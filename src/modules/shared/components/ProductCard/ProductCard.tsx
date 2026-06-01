@@ -71,7 +71,7 @@ export const ProductCard = ({ product }: Props) => {
             }}
           >
             <img
-              src="/img/icons/Favourites_Filled_(Heart_Like).svg"
+              src="img/icons/Favourites_Filled_(Heart_Like).svg"
               alt="add to favorites"
             />
           </button>
@@ -82,7 +82,7 @@ export const ProductCard = ({ product }: Props) => {
               addToFavorites(product);
             }}
           >
-            <img src="/img/icons/Favorites.svg" alt="add to favorites" />
+            <img src="img/icons/Favorites.svg" alt="add to favorites" />
           </button>
         )}
       </div>

@@ -16,12 +16,12 @@ export const MobileMenu = ({
     <div className={`${styles.mobile_menu} ${isOpen ? styles.open : ''}`}>
       <header className={styles.header}>
         <Link to="/" className={styles.navLogo} onClick={onClose}>
-          <img src="/img/icons/Logo.svg" alt="Logo" />
+          <img src="img/icons/Logo.svg" alt="Logo" />
         </Link>
         <button className={styles.burger} onClick={onClose}>
           <img
             className={styles.icon}
-            src="/img/icons/Close.svg"
+            src="img/icons/Close.svg"
             alt="Close_Menu"
           />
         </button>
@@ -74,7 +74,7 @@ export const MobileMenu = ({
           }
           onClick={onClose}
         >
-          <img src="/img/icons/Favorites.svg" alt="Favorites" />
+          <img src="img/icons/Favorites.svg" alt="Favorites" />
           {favoritesItems.length > 0 && (
             <span className={styles.count}>{favoritesItems.length}</span>
           )}
@@ -88,7 +88,7 @@ export const MobileMenu = ({
         >
           <img
             className={styles.icon}
-            src="/img/icons/Shopping_bag.svg"
+            src="img/icons/Shopping_bag.svg"
             alt="Shopping bag "
           />
         </NavLink>

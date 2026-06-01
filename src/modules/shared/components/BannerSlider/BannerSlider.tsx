@@ -6,9 +6,9 @@ export const BannerSlider = ({ isLoading }: { isLoading: boolean }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
-    '/img/banner-phones.png',
-    '/img/banner-tablets.png',
-    '/img/banner-accessories.png',
+    'img/banner-phones.png',
+    'img/banner-tablets.png',
+    'img/banner-accessories.png',
   ];
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export const BannerSlider = ({ isLoading }: { isLoading: boolean }) => {
             )
           }
         >
-          <img src="/img/icons/Chevron_(Arrow_Left).svg" alt="" />
+          <img src="img/icons/Chevron_(Arrow_Left).svg" alt="" />
         </button>
 
         <div className={styles.images}>
@@ -67,7 +67,7 @@ export const BannerSlider = ({ isLoading }: { isLoading: boolean }) => {
             )
           }
         >
-          <img src="/img/icons/Chevron_(Arrow_Right).svg" alt="next" />
+          <img src="img/icons/Chevron_(Arrow_Right).svg" alt="next" />
         </button>
       </div>
 

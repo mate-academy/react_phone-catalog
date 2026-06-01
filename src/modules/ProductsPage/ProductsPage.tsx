@@ -78,13 +78,13 @@ export const ProductsPage = () => {
           <Link to="/">
             <img
               className={styles.breadcrumb_icon}
-              src="/img/icons/Home.svg"
+              src="img/icons/Home.svg"
               alt="home"
             />
           </Link>
           <img
             className={styles.breadcrumb_icon}
-            src="/img/icons/Chevron_(Arrow_Right).svg"
+            src="img/icons/Chevron_(Arrow_Right).svg"
             alt=" to"
           />
           <p className={styles.breadcrumb_category}>{category}</p>
@@ -105,8 +105,8 @@ export const ProductsPage = () => {
               <img
                 src={
                   isSortOpen
-                    ? '/img/icons/Chevron_(Arrow_Up).svg'
-                    : '/img/icons/Chevron_(Arrow_Down).svg'
+                    ? 'img/icons/Chevron_(Arrow_Up).svg'
+                    : 'img/icons/Chevron_(Arrow_Down).svg'
                 }
                 alt=""
               />
@@ -143,8 +143,8 @@ export const ProductsPage = () => {
                 <img
                   src={
                     isOpen
-                      ? '/img/icons/Chevron_(Arrow_Up).svg'
-                      : '/img/icons/Chevron_(Arrow_Down).svg'
+                      ? 'img/icons/Chevron_(Arrow_Up).svg'
+                      : 'img/icons/Chevron_(Arrow_Down).svg'
                   }
                   alt=""
                 />
@@ -194,7 +194,7 @@ export const ProductsPage = () => {
               setSearchParams({ sort, perPage, page: String(+page - 4) })
             }
           >
-            <img src="/img/icons/Chevron_(Arrow_Left).svg" alt="" />
+            <img src="img/icons/Chevron_(Arrow_Left).svg" alt="" />
           </button>
           {visiblePages.map(pageNumber => (
             <button
@@ -216,7 +216,7 @@ export const ProductsPage = () => {
               setSearchParams({ sort, perPage, page: String(+page + 4) })
             }
           >
-            <img src="/img/icons/Chevron_(Arrow_Right).svg" alt="" />
+            <img src="img/icons/Chevron_(Arrow_Right).svg" alt="" />
           </button>
         </div>
       )}

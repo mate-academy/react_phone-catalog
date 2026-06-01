@@ -33,7 +33,7 @@ export const ProductsSlider = ({
               )
             }
           >
-            <img src="/img/icons/Chevron_(Arrow_Left).svg" alt="" />
+            <img src="img/icons/Chevron_(Arrow_Left).svg" alt="" />
           </button>
           <button
             disabled={currentSlide === products.length - 1}
@@ -44,7 +44,7 @@ export const ProductsSlider = ({
               )
             }
           >
-            <img src="/img/icons/Chevron_(Arrow_Right).svg" alt="next" />
+            <img src="img/icons/Chevron_(Arrow_Right).svg" alt="next" />
           </button>
         </div>
       </header>

@@ -51,7 +51,7 @@ export const HomePage = () => {
         <div className={styles.categories_cards}>
           <CategoryCard
             nameCategory="Mobile phones"
-            imageCategory="/img/category-phones.webp"
+            imageCategory="img/category-phones.webp"
             countModels={countsPhones}
             bgColor="#6D6474"
             linkTo="/phones"
@@ -59,7 +59,7 @@ export const HomePage = () => {
           />
           <CategoryCard
             nameCategory="Tablets"
-            imageCategory="/img/category-tablets.webp"
+            imageCategory="img/category-tablets.webp"
             countModels={countsTablets}
             bgColor="#626262"
             linkTo="/tablets"
@@ -67,7 +67,7 @@ export const HomePage = () => {
           />
           <CategoryCard
             nameCategory="Accessories"
-            imageCategory="/img/category-accessories.webp"
+            imageCategory="img/category-accessories.webp"
             countModels={countsAccessories}
             bgColor="#fcdcff"
             linkTo="/accessories"

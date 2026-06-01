@@ -10,13 +10,13 @@ type ErrorType =
 
 const config = {
   'fetch-error': {
-    img: '/img/error/page-not-found.png',
+    img: 'img/error/page-not-found.png',
     title: 'Network crash',
     subtitle: 'Try again later and check your connection',
   },
 
   empty: {
-    img: '/img/error/product-not-found.png',
+    img: 'img/error/product-not-found.png',
     title: 'This item is out of stock',
     subtitle:
       // eslint-disable-next-line max-len
@@ -24,19 +24,19 @@ const config = {
   },
 
   'empty-cart': {
-    img: '/img/error/cart-is-empty.png',
+    img: 'img/error/cart-is-empty.png',
     title: 'Your cart is empty',
     subtitle: `If you'd like to buy something, it will appear here`,
   },
 
   'empty-favorites': {
-    img: '/img/error/favorites-is-empty.png',
+    img: 'img/error/favorites-is-empty.png',
     title: 'No items in your favorites',
     subtitle: `If you like something, it's sure to be here`,
   },
 
   'not-found': {
-    img: '/img/error/page-not-found.png',
+    img: 'img/error/page-not-found.png',
     title: 'Page not found',
     subtitle: 'The page you are looking for does not exist',
   },

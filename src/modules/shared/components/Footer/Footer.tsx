@@ -6,7 +6,7 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <Link className={styles.footerLogo} to="/">
-        <img src="/img/icons/Logo.svg" alt="Logo" />
+        <img src="img/icons/Logo.svg" alt="Logo" />
       </Link>
       <div className={styles.links}>
         <a
@@ -40,7 +40,7 @@ export const Footer = () => {
       >
         Back to top
         <div className={styles.icon}>
-          <img src="/img/icons/Chevron_(Arrow_Up).svg" alt="go to top" />
+          <img src="img/icons/Chevron_(Arrow_Up).svg" alt="go to top" />
         </div>
       </button>
     </footer>
