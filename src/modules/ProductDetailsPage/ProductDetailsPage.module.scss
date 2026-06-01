@@ -122,6 +122,60 @@
         margin-bottom: 40px;
       }
     }
+    .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        margin-block: 16px 32px;
+        gap: 8px;
+
+
+
+        .addToCart {
+          @extend %add-to-cart;
+
+          background-color: $color-accent;
+        }
+
+        .addedToCart {
+          @extend %add-to-cart;
+
+          background-color: $icon-bg-selected;
+
+          &:hover {
+            background-color: $icon-bg-hover;
+          }
+        }
+
+        .addToFav {
+          @extend %add-to-cart;
+          @extend %add-to-fav;
+
+          flex: none;
+
+          background-color: $icon-bg-default;
+          border: none;
+
+        }
+
+        .addedToFav {
+          @extend %add-to-fav;
+
+          border: $border-default;
+          background-color: $black;
+
+
+        }
+
+        img {
+          justify-content: center;
+          align-items: center;
+          width: 16px;
+          height: 16px;
+        }
+
+      }
 
     .mainInfo {
       @include section-margin;
@@ -134,7 +188,7 @@
 
 
       .images {
-        width: 47%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -143,6 +197,10 @@
 
         @media (min-width: $tablet-breakpoint) {
           flex-direction: row-reverse;
+        }
+
+        @media (min-width: $desktop-breakpoint) {
+          width: 47%;
         }
 
         .mainImage {
@@ -323,63 +381,10 @@
         }
       }
 
-      .buttons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-decoration: none;
-        margin-block: 16px 32px;
-        gap: 8px;
-
-
-
-        .addToCart {
-          @extend %add-to-cart;
-
-          background-color: $color-accent;
-        }
-
-        .addedToCart {
-          @extend %add-to-cart;
-
-          background-color: $icon-bg-selected;
-
-          &:hover {
-            background-color: $icon-bg-hover;
-          }
-        }
-
-        .addToFav {
-          @extend %add-to-cart;
-          @extend %add-to-fav;
-
-          flex: none;
-
-          background-color: $icon-bg-default;
-          border: none;
-
-        }
-
-        .addedToFav {
-          @extend %add-to-fav;
-
-          border: $border-default;
-          background-color: $black;
-
-
-        }
-
-        img {
-          justify-content: center;
-          align-items: center;
-          width: 16px;
-          height: 16px;
-        }
-
-      }
     }
 
     .subInfo {
+      width: 100%;
       display: flex;
       flex-direction: column;
 
@@ -402,12 +407,15 @@
       }
 
       .descriptions {
-        width: 48%;
         display: flex;
         flex-direction: column;
         gap: 32px;
 
         @include section-margin;
+
+        @media (min-width: $desktop-breakpoint) {
+          width: 48%;
+        }
 
         .description {
           display: flex;
@@ -433,9 +441,13 @@
       }
 
       .specs {
-        width: 48%;
+        width: 100%;
 
         @include section-margin;
+
+        @media (min-width: $desktop-breakpoint) {
+          width: 48%;
+        }
 
         .specs_info {
           display: flex;
@@ -469,5 +481,12 @@
     grid-column: 1 / -1;
 
     @include section-margin;
+  }
+
+  .loadingGrid {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 16px;
   }
 }

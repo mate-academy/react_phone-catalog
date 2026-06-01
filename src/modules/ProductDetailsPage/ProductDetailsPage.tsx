@@ -7,6 +7,7 @@ import { useAsync } from '../../hooks/useAsync';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FavoritesContext } from '../../context/FavoritesContext';
 import { CartContext } from '../../context/CartContext';
+import { ProductDetailsPageLoading } from './Loading/ProductDetailsPage';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -53,6 +54,10 @@ export const ProductDetailsPage = () => {
 
     navigate(`/product/${newItemId}`);
   };
+
+  if (isLoading || !currentProduct || !productDetail) {
+    return <ProductDetailsPageLoading />;
+  }
 
   return (
     <article className={styles.product_details_page}>
