@@ -1,0 +1,30 @@
+//← медиазапросы, повторяющиеся блоки
+@mixin nav-link {
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 8px 0;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-secondary);
+  line-height: 11px;
+  letter-spacing: 0.04em;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+
+
+  
+}
+
+@mixin nav-link-active {
+  line-height: 11px;
+  color: var(--color-primary);
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--color-primary);
+
+  @media (min-width: 640px) {
+    border-bottom: 3px solid var(--color-primary);
+  }
+}
