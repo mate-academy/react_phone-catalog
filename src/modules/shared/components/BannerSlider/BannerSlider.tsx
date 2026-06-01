@@ -17,7 +17,7 @@ export const BannerSlider = ({ isLoading }: { isLoading: boolean }) => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [slides.length]);
 
   const [touchStartX, setTouchStartX] = useState(0);
 
