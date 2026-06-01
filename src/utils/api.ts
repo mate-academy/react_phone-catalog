@@ -1,5 +1,7 @@
+const BASE = '/react_phone-catalog/';
+
 export function getData<T>(apiEndpoint: string): Promise<T> {
-  return fetch(`${import.meta.env.BASE_URL}api/${apiEndpoint}.json`)
+  return fetch(`${BASE}api/${apiEndpoint}.json`)
     .then(response => response.json())
     .then(data => data as T)
     .catch(() => {
