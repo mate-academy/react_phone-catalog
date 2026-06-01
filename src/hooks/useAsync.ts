@@ -26,7 +26,7 @@ export function useAsync<T>(asyncFn: () => Promise<T>, deps: unknown[] = []) {
 
     asyncFnRef
       .current()
-      .then(data => setState({ data, isLoading: true, isError: false }))
+      .then(data => setState({ data, isLoading: false, isError: false }))
       .catch(() => setState({ data: null, isLoading: false, isError: true }))
       .finally(() => clearTimeout(timeout));
 
