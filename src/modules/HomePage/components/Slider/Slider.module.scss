@@ -44,14 +44,17 @@
   }
 }
 
-.imgContainer {
+.track {
   display: flex;
-  flex: 1;
-  overflow: hidden;
-  min-width: 0;
+  height: 100%;
+  transition: transform .2s ease-in;
+}
+
+.imgContainer {
   height: auto;
   width: 100%;
   border: 1px solid vars.$icons-color;
+  overflow: hidden;
 
   aspect-ratio: 1 / 1;
 
@@ -66,7 +69,7 @@
 }
 
 .sliderImg {
-  width: 100%;
+  min-width: 100%;
   display: block;
   align-self: stretch;
 

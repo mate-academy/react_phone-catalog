@@ -1,17 +1,21 @@
 export const scrollProducts = (
   direction: 'left' | 'right',
   cardContainerRef: React.RefObject<HTMLDivElement>,
-  cardRef: React.RefObject<HTMLDivElement>,
 ) => {
-  if (!cardContainerRef.current || !cardRef.current) {
+  const container = cardContainerRef.current;
+
+  if (!container) {
     return;
   }
 
-  const cardWidth = cardRef.current?.offsetWidth ?? 0;
-  const gap = parseFloat(
-    window.getComputedStyle(cardContainerRef.current).columnGap,
-  );
+  const firstCard = container.firstChild as HTMLElement;
 
+  if (!firstCard) {
+    return;
+  }
+
+  const cardWidth = firstCard.offsetWidth ?? 0;
+  const gap = parseFloat(window.getComputedStyle(container).columnGap) || 0;
   const step = cardWidth + gap;
 
   cardContainerRef.current.scrollBy({

@@ -4,7 +4,6 @@ import { scrollProducts } from '../../../../utils/scrollProducts';
 import { PhonesList } from './components/PhonesList';
 
 export const NewModels = () => {
-  const cardRef = useRef<HTMLDivElement>(null);
   const cardContainerRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -13,13 +12,13 @@ export const NewModels = () => {
         <h2 className={styles.sectionTitle}>Brand new models</h2>
         <div className={styles.controls}>
           <button
-            onClick={() => scrollProducts('left', cardContainerRef, cardRef)}
+            onClick={() => scrollProducts('left', cardContainerRef)}
             className={styles.control}
           >
             <img src="/icons/chevron-arrow-left.svg" alt="arrow-left" />
           </button>
           <button
-            onClick={() => scrollProducts('right', cardContainerRef, cardRef)}
+            onClick={() => scrollProducts('right', cardContainerRef)}
             className={styles.control}
           >
             <img src="/icons/chevron-arrow-right.svg" alt="arrow-right" />
@@ -27,7 +26,7 @@ export const NewModels = () => {
         </div>
       </div>
 
-      <PhonesList cardRef={cardRef} cardContainerRef={cardContainerRef} />
+      <PhonesList cardContainerRef={cardContainerRef} />
     </section>
   );
 };

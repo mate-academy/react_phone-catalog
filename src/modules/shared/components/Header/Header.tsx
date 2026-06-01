@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import { HeaderNav } from './components/HeaderNav';
 import styles from './Header.module.scss';
+import { useAppContext } from '../../../../context/AppContext';
 
 const getActiveClass = (isActive: boolean) => {
   return `${styles.icon} ${isActive ? styles.activeIcon : ''}`;
@@ -9,16 +10,10 @@ const getActiveClass = (isActive: boolean) => {
 type Props = {
   isMenuOpen: boolean;
   setIsMenuOpen: (isOpen: boolean) => void;
-  favoritesCounter: number;
-  cartCounter: number;
 };
 
-export const Header = ({
-  isMenuOpen,
-  setIsMenuOpen,
-  favoritesCounter,
-  cartCounter,
-}: Props) => {
+export const Header = ({ isMenuOpen, setIsMenuOpen }: Props) => {
+  const { favoritesIds, addBtnIds } = useAppContext();
   const handleClick = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -45,8 +40,8 @@ export const Header = ({
             to={'/favorites'}
           >
             <img src="/icons/favorites.svg" alt="Favorites" />
-            {favoritesCounter > 0 && (
-              <span className={styles.counter}>{favoritesCounter}</span>
+            {favoritesIds.length > 0 && (
+              <span className={styles.counter}>{favoritesIds.length}</span>
             )}
           </NavLink>
 
@@ -57,8 +52,8 @@ export const Header = ({
             to={'/cart'}
           >
             <img src="/icons/cart.svg" alt="Cart" />
-            {cartCounter > 0 && (
-              <span className={styles.counter}>{cartCounter}</span>
+            {addBtnIds.length > 0 && (
+              <span className={styles.counter}>{addBtnIds.length}</span>
             )}
           </NavLink>
           <button

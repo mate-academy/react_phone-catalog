@@ -1,40 +1,29 @@
-import { useEffect, useState } from 'react';
-import { PromoImageData } from '../../../../types/PromoImgType';
+import { useEffect, useMemo, useState } from 'react';
 import styles from './Slider.module.scss';
 import cn from 'classnames';
+import { sliderData } from '../../../../types/SliderData';
+import { debounce } from 'lodash';
 
 const SLIDER_DELAY = 5000;
 const MIN_TABLET_SCREEN_SIZE = 640;
-
-const sliderData: PromoImageData[] = [
-  {
-    url: '/promo/Apple-iPhone-15-promo-banner-buy-now-scaled.jpg',
-    croppedImgUrl: '/promo/iphone-cropped.jpg',
-    alt: 'Iphone',
-  },
-  {
-    url: '/promo/Banner-Samsung-Galaxy-S25-FE-Launch-Over-Desktop.webp',
-    croppedImgUrl: '/promo/cropped-sumsung.webp',
-    alt: 'Samsung',
-  },
-  {
-    url: '/promo/Banner-web-Serie-RN15.jpg',
-    croppedImgUrl: '/promo/xiaomi-cropped.png',
-    alt: 'Xiaomi',
-  },
-];
+const RESIZE_DELAY = 100;
 
 export const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== 'undefined' ? window.innerWidth : 0,
+  );
+
+  const handleResize = useMemo(
+    () => debounce(() => setWindowWidth(window.innerWidth), RESIZE_DELAY),
+    [],
+  );
 
   useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [handleResize]);
 
   const goNext = () => {
     setCurrentSlide(prev => (prev === sliderData.length - 1 ? 0 : prev + 1));
@@ -45,37 +34,41 @@ export const Slider = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      goNext();
-    }, SLIDER_DELAY);
+    const interval = setInterval(() => goNext(), SLIDER_DELAY);
 
     return () => clearInterval(interval);
   }, []);
 
-  const currentImage = sliderData[currentSlide];
-
-  const handleClick = (index: number) => {
-    setCurrentSlide(index);
-  };
-
   return (
     <div className={styles.slider}>
       <div className={styles.controls}>
-        <button className={styles.btn} onClick={goBack}>
+        <button
+          className={styles.btn}
+          onClick={goBack}
+          aria-label="Previous slide"
+        >
           <img src="/icons/chevron-arrow-left.svg" alt="" />
         </button>
         <div className={styles.imgContainer}>
-          <img
-            className={styles.sliderImg}
-            src={
-              windowWidth >= MIN_TABLET_SCREEN_SIZE
-                ? currentImage.url
-                : currentImage.croppedImgUrl
-            }
-            alt={currentImage.alt}
-          />
+          <div
+            className={styles.track}
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {sliderData.map(slide => (
+              <img
+                key={`slide-btn-${slide.alt}`}
+                className={styles.sliderImg}
+                src={
+                  windowWidth >= MIN_TABLET_SCREEN_SIZE
+                    ? slide.url
+                    : slide.croppedImgUrl
+                }
+                alt={slide.alt}
+              />
+            ))}
+          </div>
         </div>
-        <button className={styles.btn} onClick={goNext}>
+        <button className={styles.btn} onClick={goNext} aria-label="Next slide">
           <img src="/icons/chevron-arrow-right.svg" alt="" />
         </button>
       </div>
@@ -86,7 +79,7 @@ export const Slider = () => {
             className={cn(styles.sliderBtn, {
               [styles.active]: currentSlide === index,
             })}
-            onClick={() => handleClick(index)}
+            onClick={() => setCurrentSlide(index)}
           ></button>
         ))}
       </div>

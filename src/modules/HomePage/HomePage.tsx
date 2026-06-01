@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Slider } from './components/Slider/Slider';
 import styles from './HomePage.module.scss';
-import { getProducts } from '../../utils/api';
+import { getNewModels, getProducts } from '../../utils/api';
 import { NewModels } from './components/NewModels';
 import { useAppContext } from '../../context/AppContext';
 
@@ -9,10 +9,10 @@ export const HomePage = () => {
   const { setNewPhoneModels } = useAppContext();
 
   useEffect(() => {
-    getProducts().then(productsFromServer =>
-      setNewPhoneModels(productsFromServer),
-    );
-  });
+    getProducts().then(productsFromServer => {
+      setNewPhoneModels(getNewModels('phones', productsFromServer));
+    });
+  }, [setNewPhoneModels]);
 
   return (
     <div className={styles.container}>
@@ -23,9 +23,8 @@ export const HomePage = () => {
           </div>
           <Slider />
         </section>
-        <section>
-          <NewModels />
-        </section>
+
+        <NewModels />
       </main>
     </div>
   );

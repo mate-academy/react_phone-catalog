@@ -5,17 +5,11 @@ import cn from 'classnames';
 
 type Props = {
   phone: Product;
-  cardRef: React.RefObject<HTMLDivElement>;
 };
 
-export const PhoneCard = ({ phone, cardRef }: Props) => {
-  const {
-    favoritesIds,
-    addBtnIds,
-    setFavoritesIds,
-    setAddBtnIds,
-    newPhonesModels,
-  } = useAppContext();
+export const PhoneCard = ({ phone }: Props) => {
+  const { favoritesIds, addBtnIds, setFavoritesIds, setAddBtnIds } =
+    useAppContext();
 
   const toggleArrayIds = (array: number[], id: number) => {
     return array.includes(id)
@@ -32,11 +26,7 @@ export const PhoneCard = ({ phone, cardRef }: Props) => {
   };
 
   return (
-    <div
-      ref={phone.id === newPhonesModels[0].id ? cardRef : null}
-      key={phone.id}
-      className={styles.phoneCard}
-    >
+    <div className={styles.phoneCard}>
       <div className={styles.imgContainer}>
         <img className={styles.img} src={phone.image} alt={phone.name} />
       </div>

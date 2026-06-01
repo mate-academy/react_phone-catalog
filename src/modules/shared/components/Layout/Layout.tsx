@@ -3,17 +3,11 @@ import { Header } from '../Header';
 import { Footer } from '../Footer';
 import { Menu } from '../Header/components/Menu';
 import { useEffect, useState } from 'react';
-import { useAppContext } from '../../../../context/AppContext';
 
 const MIN_TABLET_SCREEN_SIZE = 640;
 
 export const Layout = () => {
-  const { favoritesIds, addBtnIds } = useAppContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const getArrayLength = (array: number[]) => {
-    return array.length;
-  };
 
   // This allows you to close the navigation menu if the screen width
   // accidentally becomes equal to or greater than the tablet's screen size
@@ -31,12 +25,7 @@ export const Layout = () => {
 
   return (
     <div>
-      <Header
-        isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
-        favoritesCounter={getArrayLength(favoritesIds)}
-        cartCounter={getArrayLength(addBtnIds)}
-      />
+      <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <main>
         {isMenuOpen ? (
           <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
