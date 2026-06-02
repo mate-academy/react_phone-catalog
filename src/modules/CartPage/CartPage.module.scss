@@ -93,6 +93,13 @@
   min-height: 128px;
 }
 
+.imageLink {
+  display: grid;
+  place-items: center;
+  width: 80px;
+  height: 80px;
+}
+
 .image {
   width: 80px;
   height: 80px;
@@ -108,6 +115,11 @@
   line-height: 21px;
   font-weight: 600;
   min-width: 0;
+  text-decoration: none;
+}
+
+.title:hover {
+  color: var(--color-accent);
 }
 
 .controls {
@@ -193,6 +205,11 @@
   }
 
   .image {
+    width: 64px;
+    height: 64px;
+  }
+
+  .imageLink {
     width: 64px;
     height: 64px;
   }

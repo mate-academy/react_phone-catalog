@@ -21,7 +21,12 @@ export const CategoryLinks = () => {
   return (
     <section className={styles.categories}>
       {categories.map(item => (
-        <Link key={item.category} to={item.path} className={styles.card}>
+        <Link
+          key={item.category}
+          to={`/${item.category}`}
+          className={styles.card}
+          aria-label={`Open ${item.label}`}
+        >
           <div className={styles.imageWrap}>
             <img src={categoryImages[item.category]} alt="" />
           </div>

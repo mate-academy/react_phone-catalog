@@ -24,10 +24,10 @@
 }
 
 .preview img {
-  width: 100%;
-  height: 100%;
-  max-width: 82%;
-  max-height: 82%;
+  width: auto;
+  height: auto;
+  max-width: 160px;
+  max-height: 160px;
   object-fit: contain;
   transform-origin: center;
   transition: transform 0.3s ease;

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
 import { fetchListProducts } from '../../services/products';
 import { getAssetPath } from '../../utils/assets';
@@ -100,6 +100,7 @@ export const CartPage = () => {
           const image = getCartImage(
             freshProduct?.image ?? product.image ?? product.images?.[0],
           );
+          const detailsLink = `/product/${item.id}`;
 
           return (
             <div key={item.id} className={styles.item}>
@@ -111,8 +112,16 @@ export const CartPage = () => {
               >
                 ×
               </button>
-              <img className={styles.image} src={image} alt={product.name} />
-              <h2 className={styles.title}>{product.name}</h2>
+              <Link
+                to={detailsLink}
+                className={styles.imageLink}
+                aria-label={`Open ${product.name} details`}
+              >
+                <img className={styles.image} src={image} alt={product.name} />
+              </Link>
+              <Link to={detailsLink} className={styles.title}>
+                {product.name}
+              </Link>
               <div className={styles.controls}>
                 <button
                   type="button"
