@@ -232,19 +232,19 @@ export const getBanners = async (): Promise<Banner[]> => {
     return [
       {
         id: '1',
-        image: '../../public/img/banner-phones.png',
+        image: 'img/banner-phones.png',
         title: 'Latest Phones',
         description: 'Check out the newest models',
       },
       {
         id: '2',
-        image: '../../public/img/banner-tablets.png',
+        image: 'img/banner-tablets.png',
         title: 'Tablets',
         description: 'Powerful and portable',
       },
       {
         id: '3',
-        image: '../../public/img/banner-accessories.png',
+        image: 'img/banner-accessories.png',
         title: 'Accessories',
         description: 'Complete your setup',
       },
