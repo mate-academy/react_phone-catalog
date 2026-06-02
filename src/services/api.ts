@@ -72,7 +72,7 @@ export interface HomePageData {
 // Загрузить все продукты из products.json
 export const getAllProducts = async (): Promise<Product[]> => {
   try {
-    const response = await fetch('/api/products.json');
+    const response = await fetch('api/products.json');
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -95,7 +95,7 @@ export const getAllProducts = async (): Promise<Product[]> => {
 
 export const getAllPhones = async (): Promise<PhoneDetail[]> => {
   try {
-    const response = await fetch('/api/phones.json');
+    const response = await fetch('api/phones.json');
 
     if (!response.ok) {
       throw new Error('Failed to fetch phones');
@@ -111,7 +111,7 @@ export const getAllPhones = async (): Promise<PhoneDetail[]> => {
 
 export const getAllTablets = async (): Promise<PhoneDetail[]> => {
   try {
-    const response = await fetch('/api/tablets.json');
+    const response = await fetch('api/tablets.json');
 
     if (!response.ok) {
       throw new Error('Failed to fetch tablets');
@@ -127,7 +127,7 @@ export const getAllTablets = async (): Promise<PhoneDetail[]> => {
 
 export const getAllAccessories = async (): Promise<PhoneDetail[]> => {
   try {
-    const response = await fetch('/api/accessories.json');
+    const response = await fetch('api/accessories.json');
 
     if (!response.ok) {
       throw new Error('Failed to fetch accessories');

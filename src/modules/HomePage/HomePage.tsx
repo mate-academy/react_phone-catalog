@@ -44,13 +44,13 @@ export const HomePage: FC = () => {
       try {
         const data: HomePageData = await getHomePageData();
 
-        const phonesResponse = await fetch('/api/phones.json').then(res =>
+        const phonesResponse = await fetch('api/phones.json').then(res =>
           res.json(),
         );
-        const tabletsResponse = await fetch('/api/tablets.json').then(res =>
+        const tabletsResponse = await fetch('api/tablets.json').then(res =>
           res.json(),
         );
-        const accessoriesResponse = await fetch('/api/accessories.json').then(
+        const accessoriesResponse = await fetch('api/accessories.json').then(
           res => res.json(),
         );
 

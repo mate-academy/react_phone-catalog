@@ -86,7 +86,7 @@ export const ProductDetailsPage: FC = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch('/api/phones.json');
+        const response = await fetch('api/phones.json');
         const data = await response.json();
 
         setAllProducts(data);
