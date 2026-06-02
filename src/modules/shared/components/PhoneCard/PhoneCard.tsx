@@ -1,21 +1,17 @@
-import { useAppContext } from '../../../../../../../../context/AppContext';
-import { Product } from '../../../../../../../../types/Product';
+import { useAppContext } from '../../../../context/AppContext';
+import { Product } from '../../../../types/Product';
+import { toggleArrayIds } from '../../../../utils/toggleArrayIds';
 import styles from './PhoneCard.module.scss';
 import cn from 'classnames';
 
 type Props = {
   phone: Product;
+  isOldPriceVisible?: boolean;
 };
 
-export const PhoneCard = ({ phone }: Props) => {
+export const PhoneCard = ({ phone, isOldPriceVisible }: Props) => {
   const { favoritesIds, addBtnIds, setFavoritesIds, setAddBtnIds } =
     useAppContext();
-
-  const toggleArrayIds = (array: number[], id: number) => {
-    return array.includes(id)
-      ? array.filter(itemId => itemId !== id)
-      : [...array, id];
-  };
 
   const toggleFavorites = (id: number) => {
     setFavoritesIds(toggleArrayIds(favoritesIds, id));
@@ -31,7 +27,12 @@ export const PhoneCard = ({ phone }: Props) => {
         <img className={styles.img} src={phone.image} alt={phone.name} />
       </div>
       <h3 className={styles.cardTitle}>{phone.name}</h3>
-      <p className={styles.price}>${phone.price}</p>
+      <div className={styles.priceContainer}>
+        <p className={styles.price}>${phone.price}</p>
+        {isOldPriceVisible && (
+          <p className={styles.fullPrice}>${phone.fullPrice}</p>
+        )}
+      </div>
       <div className={styles.specs}>
         <div className={styles.spec}>
           <p className={styles.specTitle}>Screen</p>

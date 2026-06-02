@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import styles from './Slider.module.scss';
 import cn from 'classnames';
-import { sliderData } from '../../../../types/SliderData';
 import { debounce } from 'lodash';
+import { sliderData } from '../../../../types/SliderData';
 
 const SLIDER_DELAY = 5000;
 const MIN_TABLET_SCREEN_SIZE = 640;

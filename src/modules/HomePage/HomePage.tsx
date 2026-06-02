@@ -1,20 +1,10 @@
-import { useEffect } from 'react';
 import { Slider } from './components/Slider/Slider';
 import styles from './HomePage.module.scss';
-import { getNewModels, getProducts } from '../../utils/api';
-import { NewModels } from './components/NewModels';
-import { useAppContext } from '../../context/AppContext';
 import { Categories } from './components/Categories';
+import { HotPrices } from './components/HotPrices';
+import { NewModels } from './components/NewModels';
 
 export const HomePage = () => {
-  const { setNewPhoneModels } = useAppContext();
-
-  useEffect(() => {
-    getProducts().then(productsFromServer => {
-      setNewPhoneModels(getNewModels('phones', productsFromServer));
-    });
-  }, [setNewPhoneModels]);
-
   return (
     <main className={styles.main}>
       <section className={styles.sliderSection}>
@@ -23,9 +13,9 @@ export const HomePage = () => {
         </div>
         <Slider />
       </section>
-
       <NewModels />
       <Categories />
+      <HotPrices />
     </main>
   );
 };

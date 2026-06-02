@@ -7,18 +7,18 @@
   flex-shrink: 0;
   gap: 8px;
   padding: 32px;
-  width: 212px;
+  width: 220px;
 
   border: 1px solid vars.$elements-color;
 
 
   @media screen and (min-width: vars.$tablet-width) {
-    max-width: 237px;
+    max-width: 240px;
     width: auto;
   }
 
   @media screen and (min-width: vars.$desktop-width) {
-    max-width: 272px;
+    max-width: 270px;
   }
 }
 
@@ -40,9 +40,21 @@
   color: vars.$primary-color;
 }
 
+.priceContainer {
+  display: flex;
+  gap: 8px;
+}
+
 .price {
   font-size: 22px;
   font-weight: 800;
+}
+
+.fullPrice {
+  font-size: 22px;
+  font-weight: 600;
+  color: vars.$secondary-color;
+  text-decoration: line-through;
 }
 
 .specs {

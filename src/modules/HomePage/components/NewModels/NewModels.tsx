@@ -1,32 +1,23 @@
-import styles from './NewModels.module.scss';
-import { useRef } from 'react';
-import { scrollProducts } from '../../../../utils/scrollProducts';
-import { PhonesList } from './components/PhonesList';
+import { useEffect, useState } from 'react';
+import { ProductCarousel } from '../../../shared/components/ProductCarousel';
+import { getNewModels, getProducts } from '../../../../utils/api';
+import { Product } from '../../../../types/Product';
+import { PhoneCard } from '../../../shared/components/PhoneCard/PhoneCard';
 
 export const NewModels = () => {
-  const cardContainerRef = useRef<HTMLDivElement>(null);
+  const [newProducts, setNewProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    getProducts().then(productsFromServer => {
+      setNewProducts(getNewModels('phones', productsFromServer));
+    });
+  }, []);
 
   return (
-    <section className={styles.newModelsSection}>
-      <div className={styles.titleAndControls}>
-        <h2 className={styles.sectionTitle}>Brand new models</h2>
-        <div className={styles.controls}>
-          <button
-            onClick={() => scrollProducts('left', cardContainerRef)}
-            className={styles.control}
-          >
-            <img src="/icons/chevron-arrow-left.svg" alt="arrow-left" />
-          </button>
-          <button
-            onClick={() => scrollProducts('right', cardContainerRef)}
-            className={styles.control}
-          >
-            <img src="/icons/chevron-arrow-right.svg" alt="arrow-right" />
-          </button>
-        </div>
-      </div>
-
-      <PhonesList cardContainerRef={cardContainerRef} />
-    </section>
+    <ProductCarousel title={'Brand new models'}>
+      {newProducts.map(product => (
+        <PhoneCard key={product.id} phone={product} />
+      ))}
+    </ProductCarousel>
   );
 };
