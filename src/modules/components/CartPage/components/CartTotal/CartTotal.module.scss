@@ -1,0 +1,53 @@
+.cart {
+  &Total {
+    grid-column: span 8;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+
+    background-color: #fff;
+    border: 1px solid #E2E6E9;
+    border-radius: 16px;
+
+    &Price {
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+      color: #0F0F11;
+    }
+
+    &Count {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+      color: #89939A;
+
+      width: 100%;
+      border-bottom: 1px solid #E2E6E9;
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &CheckoutBtn {
+    width: 100%;
+    height: 48px;
+    background-color: #4219D0;
+    border-radius: 48px;
+
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #fff;
+  }
+}
+
+
+
+

@@ -1,0 +1,30 @@
+.details {
+  width: 100%;
+  margin-top: 16px;
+  margin-bottom: 80px;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  color: #0F0F11;
+}
+
+.mainSection {
+  display: flex;
+  align-items: flex-start;
+  gap: 64px;
+  margin-top: 40px;
+}
+
+.infoSection {
+  display: flex;
+  align-items: flex-start;
+  gap: 64px;
+  margin-top: 80px;
+}
+
+
+

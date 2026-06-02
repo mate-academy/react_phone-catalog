@@ -1,0 +1,207 @@
+//colorBlock
+.colors {
+  &Block {
+    border-bottom: 1px solid #E2E6E9;
+    padding-bottom: 24px;
+  }
+
+  &Title {
+    font-weight: 500;
+    font-size: 12px;
+    color: #89939A;
+  }
+
+  &List {
+    display: flex;
+    gap: 10px;
+    padding-top: 8px;
+  }
+}
+.colorBtn {
+  width: 30px;
+  height: 30px;
+
+  // внутрішній круг
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  // зовнішній круг
+  outline: 1px solid #E2E6E9;
+  outline-offset: 1px;
+
+  background-color: gray;
+  transition: outline-color 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    outline-color: #89939A;
+  }
+
+  &Active {
+    outline-color: #0F0F11;
+  }
+}
+
+//capacityBlock
+.capacity {
+  &Block {
+    margin-top: 24px;
+    border-bottom: 1px solid #E2E6E9;
+    padding-bottom: 24px;
+  }
+
+  &Title {
+    font-weight: 500;
+    font-size: 12px;
+    color: #89939A;
+  }
+
+  &List {
+    display: flex;
+    gap: 8px;
+    padding-top: 8px;
+  }
+
+  &Btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 32px;
+    padding: 7px 8px 4px 8px;
+    text-decoration: none;
+
+    border: 1px solid #B4BDC3;
+    border-radius: 4px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #0F0F11;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+
+    &Active {
+      color: #ffffff;
+      background-color: #0F0F11;
+    }
+
+    &:hover {
+      border-color: #89939A;
+    }
+  }
+}
+
+//priceBlock
+.price {
+  &Block {
+    display: flex;
+    align-items: center;
+    height: 41px;
+    gap: 8px;
+
+    margin-top: 32px;
+  }
+
+  &Current {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: #0F0F11
+  }
+
+  &Discount {
+    font-weight: 500;
+    font-size: 22px;
+    color: #89939A;
+    text-decoration: line-through;
+  }
+}
+
+//buttonsBlock
+.buttonsBlock {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+.button {
+  &Cart {
+    all: unset;
+    width: 263px;
+    height: 48px;
+    background-color: #4219D0;
+    border-radius: 32px;
+
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0px 3px 13px 0px #17203166;
+    }
+
+    &Active {
+      background-color: #fff;
+      border: 1px solid #E2E6E9;
+      color: #4219D0;
+    }
+  }
+
+  &Favourite {
+    all: unset;
+    width: 48px;
+    height: 48px;
+    border: 1px solid #B4BDC3;
+    border-radius: 32px;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+
+    &:hover {
+      border-color: #89939A;
+    }
+  }
+}
+
+//shortSpecsBlock
+.shortSpecsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 32px;
+}
+.spec {
+  &Block {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &Title {
+    font-weight: 600;
+    font-size: 12px;
+    color: #89939A
+  }
+
+  &Value {
+    font-weight: 600;
+    font-size: 12px;
+    color: #0F0F11;
+  }
+}
+

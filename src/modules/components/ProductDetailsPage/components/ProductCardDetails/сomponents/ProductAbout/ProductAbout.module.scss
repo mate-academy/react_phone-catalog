@@ -1,0 +1,32 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 560px;
+
+  &Title {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    color: #0F0F11;
+
+    border-bottom: 1px solid #E2E6E9;
+    padding-bottom: 16px;
+  }
+
+  &SubTitle {
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: #0F0F11;
+  }
+
+  &Paragraph {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939A;
+
+    margin-top: 10px;
+  }
+}

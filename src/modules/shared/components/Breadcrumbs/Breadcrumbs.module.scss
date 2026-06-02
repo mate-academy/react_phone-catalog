@@ -1,0 +1,55 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+
+  &Link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &Active {
+      line-height: 16px;
+      color: #0F0F11;
+    }
+  }
+
+  &Icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+
+    transform: translateY(-1px);
+  }
+
+  &Arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 16px;
+    height: 16px;
+
+    img {
+      display: block;
+    }
+  }
+
+  &Text {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #89939A;
+  }
+}
+
+
+

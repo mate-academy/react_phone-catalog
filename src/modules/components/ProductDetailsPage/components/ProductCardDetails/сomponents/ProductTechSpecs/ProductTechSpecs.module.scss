@@ -1,0 +1,42 @@
+.specs {
+  width: 100%;
+
+  &Title {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    color: #0F0F11;
+
+    border-bottom: 1px solid #E2E6E9;
+    padding-bottom: 16px;
+  }
+
+  &List {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    margin-top: 25px;
+  }
+
+  &Item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &Label {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939A;
+  }
+
+  &Value {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #0F0F11;
+  }
+}
+
+

@@ -1,0 +1,44 @@
+.backButton {
+  margin-top: 40px;
+
+  &Btn {
+    all: unset;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.7;
+
+      .backButtonIcon {
+        transform: translateX(-2px);
+      }
+    }
+  }
+
+  &Icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 16px;
+    width: 16px;
+
+    transition: transform 0.3s ease;
+
+    img {
+      transform: translateY(-0.5px);
+    }
+  }
+
+  &Text {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #89939A
+  }
+}

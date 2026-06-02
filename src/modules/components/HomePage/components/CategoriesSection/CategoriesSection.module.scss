@@ -1,0 +1,88 @@
+.sectionContainer {
+  grid-column: 1 / -1;
+  width: 100%;
+
+  margin-top: 80px;
+  margin-bottom: 80px;
+
+  @include on-tablet {
+    margin-top: 64px;
+    margin-bottom: 64px;
+  }
+
+  @include on-mobile {
+    margin-top: 56px;
+    margin-bottom: 56px;
+  }
+}
+
+.sectionTitle {
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  font-weight: 800;
+  color: #0F0F11;
+
+  @include on-mobile {
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  margin-top: 24px;
+
+  @include on-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+.categoryCard {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+
+  &:hover {
+    .categoryImage {
+      transform: scale(1.03);
+    }
+  }
+}
+
+.imageWrapper {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.categoryImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.categoryName {
+  font-weight: 600;
+  font-size: 20px;
+  color: #313237;
+  margin-bottom: 4px;
+}
+
+.modelsCount {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939A;
+}
+

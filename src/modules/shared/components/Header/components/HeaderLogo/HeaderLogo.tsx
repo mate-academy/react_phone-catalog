@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import logoImg from '/img/logo.svg';
+import logoIcon from '@/assets/svg/logo.svg';
 import styles from './HeaderLogo.module.scss';
 
 export const HeaderLogo = () => {
@@ -8,7 +8,7 @@ export const HeaderLogo = () => {
     <div className={styles.logo}>
       <Link to="/">
         <img
-          src={logoImg}
+          src={logoIcon}
           className={styles.logoImg}
           alt="Nice Gadgets Logo"
         ></img>

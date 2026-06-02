@@ -1,0 +1,38 @@
+.errorBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.errorText {
+  font-size: 16px;
+  color: #FF2E2E;
+  margin: 0;
+}
+
+.reloadBtn {
+  all: unset;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 8px 16px;
+  background-color: #0F0F11;
+  color: #FFFFFF;
+  border-radius: 4px;
+
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #313237;
+  }
+}

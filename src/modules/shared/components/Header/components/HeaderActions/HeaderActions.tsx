@@ -1,35 +1,59 @@
+/* eslint-disable import/extensions */
+/* eslint-disable max-len */
 /* eslint-disable prettier/prettier */
 
-import iconFarourites from '/img/header_icon-favourites.svg';
-import iconBag from '/img/header_icon-bag.svg';
-import iconMenu from '/img/header_icon-menu.svg';
+import { Link, useLocation } from 'react-router-dom';
+
+import { useFavourites } from '@/modules/shared/utils/context/FavouritesContext';
+import { useCart } from '@/modules/shared/utils/context/CartContext';
+
+import iconFarourites from '@/assets/svg/heart.svg';
+import iconBag from '@/assets/svg/cart.svg';
+import iconMenu from '@/assets/svg/menu.svg';
+
 import styles from './HeaderActions.module.scss';
 
 const {
   actions,
   actionItem,
+  actionItemActive,
   actionItemIcon,
   actionItemCount,
   actionItemMenu,
 } = styles;
 
-const favouritesCount = 14;
-const bagCount = 88;
-
 export const HeaderActions = () => {
+  const { favouritesCount } = useFavourites();
+  const { totalCount } = useCart();
+  const { pathname } = useLocation();
+
   return (
     <div className={actions}>
-      <a className={actionItem}>
+      <Link
+        to="/favourites"
+        className={`
+          ${actionItem}
+          ${pathname === '/favourites' ? actionItemActive : ''}
+        `}
+      >
         <img src={iconFarourites} className={actionItemIcon} alt="Fav Icon" />
         {favouritesCount > 0 && (
           <span className={actionItemCount}>{favouritesCount}</span>
         )}
-      </a>
+      </Link>
 
-      <a className={actionItem}>
+      <Link
+        to="/cart"
+        className={`
+          ${actionItem}
+          ${pathname === '/cart' ? actionItemActive : ''}
+        `}
+      >
         <img src={iconBag} className={actionItemIcon} alt="Bag Icon" />
-        {bagCount > 0 && <span className={actionItemCount}>{bagCount}</span>}
-      </a>
+        {totalCount > 0 && (
+          <span className={actionItemCount}>{totalCount}</span>
+        )}
+      </Link>
 
       <a className={actionItemMenu}>
         <img src={iconMenu} className={actionItemIcon} alt="Menu Icon" />

@@ -1,0 +1,128 @@
+@include on-tablet {};
+@include on-mobile {};
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #E2E6E9;
+
+  width: 100%;
+  height: 96px;
+  padding: 0 152px;
+
+  @include on-tablet {
+    padding: 0 32px;
+  };
+
+  @include on-mobile {
+    padding: 32px 16px;
+    flex-direction: column;
+    gap: 32px;
+    height: auto;
+  };
+}
+
+.logo {
+  display: flex;
+  justify-content: flex-start;
+  flex: 1;
+
+  @include on-mobile {
+    flex: none;
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+.logoImg {
+  display: block;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+
+  @include on-mobile {
+    flex: none;
+    width: 100%;
+    justify-content: start;
+  }
+}
+
+.navList {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 380px;
+  list-style: none;
+
+  @include on-mobile {
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+  }
+}
+
+.navItem {
+  display: flex;
+  justify-content: center;
+}
+
+.navLink {
+  text-decoration: none;
+  text-transform: uppercase;
+
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  color: #89939A;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #0F0F11;
+  }
+}
+
+.scrollBlock {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+  align-items: center;
+  gap: 16px;
+
+  @include on-mobile {
+    flex: none;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.scrollText {
+  font-weight: 400;
+  font-size: 12px;
+  color: #89939A;
+}
+
+.scrollBtn {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid #B4BDC3;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: #0F0F11;
+    background-color: #FAFAFA;
+  }
+}
+

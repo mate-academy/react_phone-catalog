@@ -12,8 +12,29 @@
   position: relative;
 
   border-left: solid 1px #E2E6E9;
-
   width: 64px;
+  transition: color 0.3s ease;
+
+  &::after {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #0F0F11;
+
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+
+  &Active {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
 
   &Icon {
     width: 16px;
@@ -51,7 +72,7 @@
 
     width: 48px;
     height: 100%;
-    
+
     border-left: 1px solid #E2E6E9;
   }
 }
