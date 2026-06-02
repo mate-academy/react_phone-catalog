@@ -11,6 +11,9 @@ import { SpecRow } from '../../components/SpecsTable/SpecsTable';
 import { Loader } from '../../components/Loader';
 import { ButtonBack } from '../../components/ButtonBack';
 import { useCart } from '../CartPage/context/CartContext';
+import { useFavorite } from '../FavoritePage/context/FavoriteContext';
+import { COLOR_MAP } from '../../utils/colorMap';
+import { HeartIcon } from '../../components/icons/HeartIcon';
 import classNames from 'classnames';
 
 export const ProductPage = () => {
@@ -20,7 +23,7 @@ export const ProductPage = () => {
   const [hasError, setHasError] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const { addToCart, removeFromCart, isInCart } = useCart();
-  const [isFavorite, setIsFavorite] = useState(false);
+  const { addToFavorite, removeFromFavorite, isFavorite } = useFavorite();
 
   const { category, productId } = useParams();
   const capitalized = (category!.charAt(0).toUpperCase() +
@@ -85,28 +88,6 @@ export const ProductPage = () => {
     { label: 'Cell', value: product?.cell.join(', ') },
   ].filter((spec): spec is SpecRow => spec.value !== undefined);
 
-  const colorMap: Record<string, string> = {
-    midnight: '#171E27',
-    starlight: '#F9F3EE',
-    gold: '#F9E5C9',
-    silver: '#F5F5F0',
-    graphite: '#5C5B57',
-    sierrablue: '#9BB5CE',
-    spaceblack: '#1C1C1E',
-    'space gray': '#4C4C4C',
-    spacegray: '#4C4C4C',
-    'midnight green': '#5F7170',
-    green: '#364935',
-    red: '#A50011',
-    purple: '#B89FCA',
-    'deep purple': '#3D2B55',
-    yellow: '#FFE566',
-    blue: '#215E7C',
-    pink: '#FAE0D8',
-    black: '#1C1C1E',
-    white: '#F5F5F0',
-  };
-
   const getCapacityLink = (capacity: string) => {
     const targetProduct = products.find(
       prod =>
@@ -121,11 +102,40 @@ export const ProductPage = () => {
   };
 
   const getColorLink = (color: string) => {
-    const currentColor = product?.color.replace(/ /g, '-') ?? '';
-    const newColor = color.replace(/ /g, '-');
-    const newProductId = productId?.replace(currentColor, newColor);
+    const targetProduct = products.find(
+      p =>
+        p.namespaceId === product?.namespaceId &&
+        p.color === color &&
+        p.capacity === product?.capacity,
+    );
 
-    return `/${category}/${newProductId}`;
+    return targetProduct
+      ? `/${category}/${targetProduct.id}`
+      : `/${category}/${productId}`;
+  };
+
+  const handleAddToCart = () => {
+    if (!product) {
+      return;
+    }
+
+    addToCart({
+      ...product,
+      image: product.images[0],
+      price: product.priceDiscount,
+    });
+  };
+
+  const handleAddToFavorite = () => {
+    if (!product) {
+      return;
+    }
+
+    addToFavorite({
+      ...product,
+      image: product.images[0],
+      price: product.priceDiscount,
+    });
   };
 
   if (isLoading) {
@@ -134,6 +144,10 @@ export const ProductPage = () => {
 
   if (hasError) {
     return <p>Something went wrong</p>;
+  }
+
+  if (!product && !isLoading) {
+    return <p>Product was not found</p>;
   }
 
   return (
@@ -173,7 +187,7 @@ export const ProductPage = () => {
                   className={`${styles.color} ${
                     color === product.color ? styles.isActiveColor : ''
                   }`}
-                  style={{ backgroundColor: colorMap[color] }}
+                  style={{ backgroundColor: COLOR_MAP[color] }}
                 ></NavLink>
               ))}
             </div>
@@ -205,43 +219,31 @@ export const ProductPage = () => {
 
           <div className={styles.actions}>
             <button
-              className={styles.cartButton}
+              className={classNames(styles.cartButton, {
+                [styles.cartButtonActive]: isInCart(String(product?.id)),
+              })}
               onClick={() => {
-                if (product) {
-                  if (isInCart(String(product.id))) {
-                    removeFromCart(String(product.id));
-                  } else {
-                    addToCart(product);
-                  }
+                if (!isInCart(String(product?.id))) {
+                  handleAddToCart();
                 }
               }}
+              disabled={isInCart(String(product?.id))}
             >
-              {isInCart(String(product?.id) ?? '')
-                ? 'Added to cart'
-                : 'Add to cart'}
+              {isInCart(String(product?.id)) ? 'Added to cart' : 'Add to cart'}
             </button>
             <button
               className={classNames(styles.favoriteButton, {
-                [styles.favoriteButtonActive]: isFavorite,
+                [styles.favoriteButtonActive]: isFavorite(String(product?.id)),
               })}
-              onClick={() => setIsFavorite(prev => !prev)}
+              onClick={() => {
+                if (isFavorite(String(product?.id))) {
+                  removeFromFavorite(String(product?.id));
+                } else {
+                  handleAddToFavorite();
+                }
+              }}
             >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                  2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                  C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5
-                  c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                  fill={isFavorite ? '#ac2424' : 'none'}
-                  stroke={isFavorite ? '#ac2424' : '#0F0F11'}
-                  strokeWidth="1.5"
-                />
-              </svg>
+              <HeartIcon isActive={isFavorite(String(product?.id))} />
             </button>
           </div>
           <SpecsTable specs={shortSpecs} />

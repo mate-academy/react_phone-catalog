@@ -22,6 +22,11 @@
   height: rem(80);
   width: rem(80);
   object-fit: contain;
+  margin-inline: rem(16) rem(24);
+
+  @media (max-width: $tablet) {
+    margin-inline: rem(16);
+  }
 }
 
 .container {

@@ -9,22 +9,33 @@ type CartContextType = {
   removeFromCart: (id: string) => void;
   isInCart: (id: string) => boolean;
   updateQuantity: (id: string, quantity: number) => void;
+  clearCart: () => void;
 };
 
 const CartContext = createContext<CartContextType | null>(null);
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
-  const [cartItems, setCartItems] = useState<CartItems[]>([]);
+  const [cartItems, setCartItems] = useState<CartItems[]>(() => {
+    const saved = localStorage.getItem('cartItems');
+
+    return saved ? JSON.parse(saved) : [];
+  });
 
   const addToCart = (product: BaseProduct) => {
-    setCartItems([
+    const newItems = [
       ...cartItems,
       { ...product, id: String(product.id), quantity: 1 },
-    ]);
+    ];
+
+    setCartItems(newItems);
+    localStorage.setItem('cartItems', JSON.stringify(newItems));
   };
 
   const removeFromCart = (id: string) => {
-    setCartItems(cartItems.filter(item => String(item.id) !== id));
+    const itemForDelete = cartItems.filter(item => String(item.id) !== id);
+
+    setCartItems(itemForDelete);
+    localStorage.setItem('cartItems', JSON.stringify(itemForDelete));
   };
 
   const isInCart = (id: string) => {
@@ -32,16 +43,29 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const updateQuantity = (id: string, quantity: number) => {
-    setCartItems(
-      cartItems.map(item =>
-        String(item.id) === id ? { ...item, quantity } : item,
-      ),
+    const itemForUpdate = cartItems.map(item =>
+      String(item.id) === id ? { ...item, quantity } : item,
     );
+
+    setCartItems(itemForUpdate);
+    localStorage.setItem('cartItems', JSON.stringify(itemForUpdate));
+  };
+
+  const clearCart = () => {
+    setCartItems([]);
+    localStorage.removeItem('cartItems');
   };
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, isInCart, updateQuantity }}
+      value={{
+        cartItems,
+        addToCart,
+        removeFromCart,
+        isInCart,
+        updateQuantity,
+        clearCart,
+      }}
     >
       {children}
     </CartContext.Provider>

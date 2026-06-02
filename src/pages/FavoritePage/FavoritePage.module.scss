@@ -1,6 +1,30 @@
-@use '../../../style' as *;
+@use '../../style' as *;
 
-.phones {
+.container {
+  @include containerGrid;
+  margin-bottom: rem(80);
+}
+
+.title {
+  grid-column: 1 / -1;
+  margin: 0;
+  margin-bottom:rem(8);
+}
+
+.itemsCount {
+  grid-column: 1 / -1;
+  margin-bottom: rem(40);
+
+  @media (max-width: $tablet) {
+    margin-bottom: rem(32);
+  }
+}
+
+.content {
+  grid-column: 1 / -1;
+}
+
+.items {
   display: grid;
   gap: rem(16);
   justify-content: space-between;

@@ -50,8 +50,8 @@
 }
 
 @mixin container {
-  max-width: rem(1140);
   width: 100%;
+  max-width: rem(1140);
   margin: 0 auto;
 }
 
@@ -60,6 +60,28 @@
 
   display: flex;
   flex-direction: column;
+}
+
+@mixin containerGrid {
+  @include container;
+
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: rem(16);
+
+  @media (max-width: $desktop) {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: rem(24);
+    padding: 0 rem(24);
+    margin-bottom: rem(64);
+  }
+
+  @media (max-width: $tablet) {
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: rem(16);
+    padding: 0 rem(16);
+    margin-bottom: rem(64);
+  }
 }
 
 @mixin icon {
@@ -80,4 +102,21 @@
   border-radius: 100%;
   border: 1px solid var(--gray--icons-placeholders);
   background-color: var(--gray--white);
+}
+
+@mixin catalogCard {
+  width: 100%;
+  grid-column: span 4;
+
+  @media (min-width: $tablet) {
+    grid-column: span 6;
+  }
+
+  @media (min-width: 855px) {
+    grid-column: span 4;
+  }
+
+  @media (min-width: $desktop) {
+    grid-column: span 6;
+  }
 }

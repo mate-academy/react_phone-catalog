@@ -108,3 +108,27 @@
   text-align: center;
   color: var(--gray--white);
 }
+
+.empty {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  grid-column: 1 / -1;
+}
+
+.emptyTitle {
+  margin: 0;
+  margin-bottom: rem(80);
+}
+
+.emptyImage {
+  width: rem(500);
+  height: rem(500);
+  margin-bottom: rem(40);
+  align-self: center;
+
+  @media (max-width: $tablet) {
+    width: rem(300);
+    height: rem(300);
+  }
+}

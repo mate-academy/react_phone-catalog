@@ -48,4 +48,6 @@
 
 .icon {
   @include icon;
+  position: relative;
+  overflow: visible;
 }

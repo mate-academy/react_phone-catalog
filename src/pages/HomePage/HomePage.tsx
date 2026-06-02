@@ -54,12 +54,14 @@ export const HomePage = () => {
 
   const hotPrices = getUnique(
     [...products].sort(
-      (a, b) => a.fullPrice - a.price - (b.fullPrice - b.price),
+      (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
     ),
-  ).slice(32, 40);
+  ).slice(0, 8);
 
   return (
     <div>
+      <h1 className="visuallyHidden">Product Catalog</h1>
+
       {isLoading && <Loader />}
 
       {hasError && <p>Something went wrong</p>}

@@ -34,6 +34,19 @@ p {
   color: var(--gray--secondary);
 }
 
+h1 {
+  font-weight: 800;
+  font-size: rem(48);
+  line-height: 117%;
+  letter-spacing: -0.01em;
+  color: var(--gray-primary);
+
+  @media (max-width: $tablet) {
+    font-size: rem(32);
+    line-height: 128%;
+  }
+}
+
 h4 {
   font-weight: 700;
   font-size: rem(20);

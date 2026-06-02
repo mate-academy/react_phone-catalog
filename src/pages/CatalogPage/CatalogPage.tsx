@@ -42,7 +42,7 @@ export const CatalogPage = ({ category }: Props) => {
     };
 
     loadingData();
-  }, []);
+  }, [config.apiCatalog]);
 
   const categoryProducts = useMemo(
     () => products.filter(product => product.category === config.category),

@@ -14,3 +14,28 @@
     background: var(--gray-primary);
   }
 }
+
+.cartIcon {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: rem(10);
+  right: rem(10);
+  background-color: #eb5757;
+  color: white;
+  font-size: rem(9);
+  font-weight: 700;
+  width: rem(14);
+  height: rem(14);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: $desktop) {
+    top: rem(17);
+    right: rem(17);
+  }
+}
