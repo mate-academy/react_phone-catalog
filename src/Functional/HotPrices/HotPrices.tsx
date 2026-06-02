@@ -29,6 +29,7 @@ export default function HotPrices() {
   const {
     addToCart,
     toggleFavorite,
+    removeFromCart,
     cart,
     favorites,
   } = useCart();
@@ -49,8 +50,7 @@ export default function HotPrices() {
           .filter(p => p.fullPrice > p.price)
           .sort(
             (a, b) =>
-              (b.fullPrice - b.price) -
-              (a.fullPrice - a.price),
+              (b.fullPrice - b.price) - (a.fullPrice - a.price),
           );
 
         setPhones(withDiscount);
@@ -66,9 +66,7 @@ export default function HotPrices() {
     return (
       <section className="hot-section">
         <div className="hot">
-          <p style={{ color: 'white' }}>
-            Loading...
-          </p>
+          <p style={{ color: 'white' }}>Loading...</p>
         </div>
       </section>
     );
@@ -78,9 +76,7 @@ export default function HotPrices() {
     return (
       <section className="hot-section">
         <div className="hot">
-          <p style={{ color: 'red' }}>
-            {error}
-          </p>
+          <p style={{ color: 'red' }}>{error}</p>
         </div>
       </section>
     );
@@ -90,16 +86,14 @@ export default function HotPrices() {
     <section className="hot-section">
       <div className="hot">
         <div className="hot__header">
-          <h2 className="hot__title">
-            Hot prices
-          </h2>
+          <h2 className="hot__title">Hot prices</h2>
 
           <div className="hot__nav">
             <button className="hot__nav-btn swiper-hot-prev">
-            <img src="./icons/arrow-left-small-white.svg" alt="prev" />
+              <img src="./icons/arrow-left-small-white.svg" alt="prev" />
             </button>
             <button className="hot__nav-btn swiper-hot-next">
-            <img src="./icons/arrow-right-small-white.svg" alt="next" />
+              <img src="./icons/arrow-right-small-white.svg" alt="next" />
             </button>
           </div>
         </div>
@@ -113,29 +107,15 @@ export default function HotPrices() {
             prevEl: '.swiper-hot-prev',
           }}
           breakpoints={{
-            320: {
-              slidesPerView: 1,
-              spaceBetween: 16,
-            },
-            640: {
-              slidesPerView: 2,
-              spaceBetween: 16,
-            },
-            1200: {
-              slidesPerView: 4,
-              spaceBetween: 16,
-            },
+            320: { slidesPerView: 1, spaceBetween: 16 },
+            640: { slidesPerView: 2, spaceBetween: 16 },
+            1200: { slidesPerView: 4, spaceBetween: 16 },
           }}
           className="hot__swiper"
         >
           {phones.slice(0, 20).map(phone => (
-            <SwiperSlide
-              key={phone.id}
-              className="hot__slide"
-            >
+            <SwiperSlide key={phone.id} className="hot__slide">
               <div className="hot__card">
-
-                {/* ✅ FIX */}
                 <Link to={`/${phone.category}/${phone.itemId}`}>
                   <img
                     src={`${import.meta.env.BASE_URL}${phone.image}`}
@@ -149,80 +129,64 @@ export default function HotPrices() {
                     }
                   />
 
-                  <h3 className="hot__card-title">
-                    {phone.name}
-                  </h3>
+                  <h3 className="hot__card-title">{phone.name}</h3>
 
                   <div className="hot__card-prices">
-                    <span className="hot__card-price">
-                      ${phone.price}
-                    </span>
-
-                    <span className="hot__card-old-price">
-                      ${phone.fullPrice}
-                    </span>
+                    <span className="hot__card-price">${phone.price}</span>
+                    <span className="hot__card-old-price">${phone.fullPrice}</span>
                   </div>
 
                   <div className="hot__card-specs">
                     <div className="hot__card-spec">
-                      <span className="hot__card-spec-label">
-                        Screen
-                      </span>
-                      <span className="hot__card-spec-value">
-                        {phone.screen}
-                      </span>
+                      <span className="hot__card-spec-label">Screen</span>
+                      <span className="hot__card-spec-value">{phone.screen}</span>
                     </div>
-
                     <div className="hot__card-spec">
-                      <span className="hot__card-spec-label">
-                        Capacity
-                      </span>
-                      <span className="hot__card-spec-value">
-                        {phone.capacity}
-                      </span>
+                      <span className="hot__card-spec-label">Capacity</span>
+                      <span className="hot__card-spec-value">{phone.capacity}</span>
                     </div>
-
                     <div className="hot__card-spec">
-                      <span className="hot__card-spec-label">
-                        RAM
-                      </span>
-                      <span className="hot__card-spec-value">
-                        {phone.ram}
-                      </span>
+                      <span className="hot__card-spec-label">RAM</span>
+                      <span className="hot__card-spec-value">{phone.ram}</span>
                     </div>
                   </div>
                 </Link>
 
                 <div className="hot__card-actions">
                   <button
-                    className="hot__card-btn hot__card-btn--add"
-                    onClick={() =>
-                      addToCart({
-                        id: phone.itemId,
-                        name: phone.name,
-                        price: phone.price,
-                        image: phone.image,
-                        color: phone.color,
-                        capacity: phone.capacity,
-                        quantity: 1,
-                      })
-                    }
-                    disabled={cart.some(
-                      item => item.id === phone.itemId,
-                    )}
+                    className={`hot__card-btn hot__card-btn--add${
+                      cart.some(item => item.id === phone.itemId)
+                        ? ' is-added'
+                        : ''
+                    }`}
+                    onClick={() => {
+                      const inCart = cart.some(
+                        item => item.id === phone.itemId,
+                      );
+
+                      if (inCart) {
+                        removeFromCart(phone.itemId);
+                      } else {
+                        addToCart({
+                          id: phone.itemId,
+                          name: phone.name,
+                          price: phone.price,
+                          image: phone.image,
+                          color: phone.color,
+                          capacity: phone.capacity,
+                          quantity: 1,
+                        });
+                      }
+                    }}
                   >
-                    {cart.some(
-                      item => item.id === phone.itemId,
-                    )
+                    {cart.some(item => item.id === phone.itemId)
                       ? 'Added to cart'
                       : 'Add to cart'}
                   </button>
 
                   <button
                     className="hot__card-btn hot__card-btn--favorite"
-                    onClick={() =>
-                      toggleFavorite(phone.itemId)
-                    }
+                    onClick={() => toggleFavorite(phone.itemId)}
                   >
                     <img
                       src={
@@ -235,7 +199,6 @@ export default function HotPrices() {
                     />
                   </button>
                 </div>
-
               </div>
             </SwiperSlide>
           ))}

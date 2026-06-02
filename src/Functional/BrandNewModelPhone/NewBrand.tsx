@@ -29,6 +29,7 @@ export default function NewBrand() {
   const {
     addToCart,
     toggleFavorite,
+    removeFromCart,
     cart,
     favorites,
   } = useCart();
@@ -70,9 +71,7 @@ export default function NewBrand() {
     return (
       <section className="section">
         <div className="new-brand">
-          <p style={{ color: 'white' }}>
-            Loading...
-          </p>
+          <p style={{ color: 'white' }}>Loading...</p>
         </div>
       </section>
     );
@@ -82,9 +81,7 @@ export default function NewBrand() {
     return (
       <section className="section">
         <div className="new-brand">
-          <p style={{ color: 'red' }}>
-            {error}
-          </p>
+          <p style={{ color: 'red' }}>{error}</p>
         </div>
       </section>
     );
@@ -94,16 +91,14 @@ export default function NewBrand() {
     <section className="section">
       <div className="new-brand">
         <div className="new-brand__header">
-          <h2 className="new-brand__title">
-           Brand new models
-          </h2>
+          <h2 className="new-brand__title">Brand new models</h2>
 
           <div className="new-brand__nav">
             <button className="new-brand__nav-btn swiper-new-prev">
-            <img src="./icons/arrow-left-small-white.svg" alt="prev" />
+              <img src="./icons/arrow-left-small-white.svg" alt="prev" />
             </button>
             <button className="new-brand__nav-btn swiper-new-next">
-            <img src="./icons/arrow-right-small-white.svg" alt="next" />
+              <img src="./icons/arrow-right-small-white.svg" alt="next" />
             </button>
           </div>
         </div>
@@ -117,34 +112,16 @@ export default function NewBrand() {
             prevEl: '.swiper-new-prev',
           }}
           breakpoints={{
-            320: {
-              slidesPerView: 1,
-              spaceBetween: 16,
-            },
-
-            640: {
-              slidesPerView: 2,
-              spaceBetween: 16,
-            },
-
-            1200: {
-              slidesPerView: 4,
-              spaceBetween: 16,
-            },
+            320: { slidesPerView: 1, spaceBetween: 16 },
+            640: { slidesPerView: 2, spaceBetween: 16 },
+            1200: { slidesPerView: 4, spaceBetween: 16 },
           }}
           className="new-brand__swiper"
         >
           {phones.slice(0, 20).map(phone => (
-            <SwiperSlide
-              key={phone.id}
-              className="new-brand__slide"
-            >
+            <SwiperSlide key={phone.id} className="new-brand__slide">
               <div className="new-brand__card">
-
-                {/* ✅ FIX */}
-                <Link
-                  to={`/${phone.category}/${phone.itemId}`}
-                >
+                <Link to={`/${phone.category}/${phone.itemId}`}>
                   <img
                     src={`${import.meta.env.BASE_URL}${phone.image}`}
                     alt={phone.name}
@@ -157,15 +134,10 @@ export default function NewBrand() {
                     }
                   />
 
-                  <h3 className="new-brand__card-title">
-                    {phone.name}
-                  </h3>
+                  <h3 className="new-brand__card-title">{phone.name}</h3>
 
                   <div className="new-brand__card-prices">
-                    <span className="new-brand__card-price">
-                      ${phone.price}
-                    </span>
-
+                    <span className="new-brand__card-price">${phone.price}</span>
                     {phone.fullPrice !== phone.price && (
                       <span className="new-brand__card-old-price">
                         ${phone.fullPrice}
@@ -174,70 +146,56 @@ export default function NewBrand() {
                   </div>
 
                   <div className="new-brand__card-specs">
-
                     <div className="new-brand__card-spec">
-                      <span className="new-brand__card-spec-label">
-                        Screen
-                      </span>
-
-                      <span className="new-brand__card-spec-value">
-                        {phone.screen}
-                      </span>
+                      <span className="new-brand__card-spec-label">Screen</span>
+                      <span className="new-brand__card-spec-value">{phone.screen}</span>
                     </div>
-
                     <div className="new-brand__card-spec">
-                      <span className="new-brand__card-spec-label">
-                        Capacity
-                      </span>
-
-                      <span className="new-brand__card-spec-value">
-                        {phone.capacity}
-                      </span>
+                      <span className="new-brand__card-spec-label">Capacity</span>
+                      <span className="new-brand__card-spec-value">{phone.capacity}</span>
                     </div>
-
                     <div className="new-brand__card-spec">
-                      <span className="new-brand__card-spec-label">
-                        RAM
-                      </span>
-
-                      <span className="new-brand__card-spec-value">
-                        {phone.ram}
-                      </span>
+                      <span className="new-brand__card-spec-label">RAM</span>
+                      <span className="new-brand__card-spec-value">{phone.ram}</span>
                     </div>
                   </div>
                 </Link>
 
                 <div className="new-brand__card-actions">
-
                   <button
-                    className="new-brand__card-btn new-brand__card-btn--add"
-                    onClick={() =>
-                      addToCart({
-                        id: phone.itemId,
-                        name: phone.name,
-                        price: phone.price,
-                        image: phone.image,
-                        color: phone.color,
-                        capacity: phone.capacity,
-                        quantity: 1,
-                      })
-                    }
-                    disabled={cart.some(
-                      item => item.id === phone.itemId,
-                    )}
+                    className={`new-brand__card-btn new-brand__card-btn--add${
+                      cart.some(item => item.id === phone.itemId)
+                        ? ' is-added'
+                        : ''
+                    }`}
+                    onClick={() => {
+                      const inCart = cart.some(
+                        item => item.id === phone.itemId,
+                      );
+
+                      if (inCart) {
+                        removeFromCart(phone.itemId);
+                      } else {
+                        addToCart({
+                          id: phone.itemId,
+                          name: phone.name,
+                          price: phone.price,
+                          image: phone.image,
+                          color: phone.color,
+                          capacity: phone.capacity,
+                          quantity: 1,
+                        });
+                      }
+                    }}
                   >
-                    {cart.some(
-                      item => item.id === phone.itemId,
-                    )
+                    {cart.some(item => item.id === phone.itemId)
                       ? 'Added to cart'
                       : 'Add to cart'}
                   </button>
 
                   <button
                     className="new-brand__card-btn new-brand__card-btn--favorite"
-                    onClick={() =>
-                      toggleFavorite(phone.itemId)
-                    }
+                    onClick={() => toggleFavorite(phone.itemId)}
                   >
                     <img
                       src={
@@ -249,7 +207,6 @@ export default function NewBrand() {
                       className="new-brand__card-btn-icon"
                     />
                   </button>
-
                 </div>
               </div>
             </SwiperSlide>
