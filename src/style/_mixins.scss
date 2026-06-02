@@ -31,6 +31,20 @@
   }
 }
 
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  white-space: nowrap;
+}
+
 @mixin heading($size: 'default') {
   font-weight: 800;
   margin: 0;

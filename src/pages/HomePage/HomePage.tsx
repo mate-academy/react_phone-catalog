@@ -5,6 +5,7 @@ import { ShopByCategory } from './components/ShopByCategory';
 import { Product } from '../../types/Product';
 import { Loader } from '../../components/Loader';
 import { loadProducts } from '../../api/getData';
+import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -60,7 +61,7 @@ export const HomePage = () => {
 
   return (
     <div>
-      <h1 className="visuallyHidden">Product Catalog</h1>
+      <h1 className={styles['visually-hidden']}>Product Catalog</h1>
 
       {isLoading && <Loader />}
 
