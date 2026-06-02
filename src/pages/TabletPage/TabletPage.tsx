@@ -17,7 +17,7 @@ interface CartItem {
 }
 
 export const TabletPage = () => {
-  const { addToCart, toggleFavorite, cart, favorites } = useCart();
+  const { addToCart, toggleFavorite, removeFromCart, cart, favorites } = useCart();
 
   const [tablets, setTablets] = useState<Tablet[]>([]);
   const [filteredTablets, setFilteredTablets] = useState<Tablet[]>([]);
@@ -288,14 +288,18 @@ export const TabletPage = () => {
                   }`}
                   onClick={e => {
                     e.preventDefault();
-                    handleAddToCart(tablet);
+                    const inCart = cart.some(
+                      item =>
+                        item.id === tablet.id &&
+                        item.color === tablet.color &&
+                        item.capacity === tablet.capacity,
+                    );
+                    if (inCart) {
+                      removeFromCart(tablet.id);
+                    } else {
+                      handleAddToCart(tablet);
+                    }
                   }}
-                  disabled={cart.some(
-                    item =>
-                      item.id === tablet.id &&
-                      item.color === tablet.color &&
-                      item.capacity === tablet.capacity,
-                  )}
                 >
                   {cart.some(
                     item =>
@@ -336,7 +340,6 @@ export const TabletPage = () => {
 
       {totalPages > 1 && (
         <div className="pagination">
-          {/*  Иконка стрелки влево */}
           <button
             onClick={() =>
               setCurrentPage(prev => Math.max(prev - 1, 1))
@@ -363,7 +366,6 @@ export const TabletPage = () => {
             </button>
           ))}
 
-          {/* Иконка стрелки вправо */}
           <button
             onClick={() =>
               setCurrentPage(prev =>

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../../Functional/CartContext/CartContext';
 
 export const AccessoriesPage = () => {
-  const { addToCart, toggleFavorite, cart, favorites } = useCart();
+  const { addToCart, toggleFavorite, removeFromCart, cart, favorites } = useCart();
 
   const [accessories, setAccessories] = useState<Accessories[]>([]);
   const [filteredAccessories, setFilteredAccessories] = useState<Accessories[]>([]);
@@ -174,7 +174,6 @@ export const AccessoriesPage = () => {
           />
         </a>
 
-        {/*  Маленькая стрелка для breadcrumb */}
         <img
           src="./icons/arrow-right-small.svg"
           alt="arrow-right"
@@ -267,13 +266,17 @@ export const AccessoriesPage = () => {
                   }`}
                   onClick={e => {
                     e.preventDefault();
-                    handleAddToCart(accessory);
+                    const inCart = cart.some(
+                      item =>
+                        item.id === accessory.id &&
+                        item.color === accessory.color,
+                    );
+                    if (inCart) {
+                      removeFromCart(accessory.id);
+                    } else {
+                      handleAddToCart(accessory);
+                    }
                   }}
-                  disabled={cart.some(
-                    item =>
-                      item.id === accessory.id &&
-                      item.color === accessory.color,
-                  )}
                 >
                   {cart.some(
                     item =>
@@ -313,7 +316,6 @@ export const AccessoriesPage = () => {
 
       {totalPages > 1 && (
         <div className="pagination">
-          {/*  Иконка стрелки влево */}
           <button
             onClick={() =>
               setCurrentPage(prev => Math.max(prev - 1, 1))
@@ -340,7 +342,6 @@ export const AccessoriesPage = () => {
             </button>
           ))}
 
-          {/*  Иконка стрелки вправо */}
           <button
             onClick={() =>
               setCurrentPage(prev =>
