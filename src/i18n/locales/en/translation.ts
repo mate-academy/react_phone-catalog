@@ -15,6 +15,8 @@ export const en = {
 
   productPage: {
     mobileTitle: 'Mobile phones',
+    tabletsTitle: 'Tablets',
+    accessoriesTitle: 'Accessories',
     models: 'models',
     sortByTitle: 'Sort by',
     sortBy: {

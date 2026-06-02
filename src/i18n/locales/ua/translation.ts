@@ -13,6 +13,21 @@ export const ua = {
     newBrand: 'Нові моделі',
   },
 
+  productPage: {
+    mobileTitle: 'Мобільні телефони',
+    tabletsTitle: 'Планшети',
+    accessoriesTitle: 'Аксесуари',
+    models: 'моделей',
+    sortByTitle: 'Сортувати за',
+    sortBy: {
+      newest: 'Новинками',
+      alphabetically: 'Алфавітом',
+      cheapest: 'Найдешевшими',
+    },
+    itemsOnPageTitle: 'Товарів на сторінці',
+    search: 'Пошук'
+  },
+
   sectionCategories: {
     title: 'Покупки за категоріями',
     modile: 'Телефони',

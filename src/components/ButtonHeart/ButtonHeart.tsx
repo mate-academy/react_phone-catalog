@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Icon } from '../Icon';
 import styles from './styles.module.scss';
 import classNames from 'classnames';

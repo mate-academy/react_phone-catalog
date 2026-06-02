@@ -48,7 +48,7 @@ export function ProductsProvider({ children }: Props) {
         return data;
       })
       .catch((error) => {
-        setError('Failed to load phones');
+        setError('Failed to load products');
         requestRef.current = null;
         throw error;
       })

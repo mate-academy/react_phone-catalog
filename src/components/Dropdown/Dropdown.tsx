@@ -3,22 +3,27 @@ import styles from './styles.module.scss';
 import classNames from 'classnames';
 import { Icon } from '../Icon';
 
-type Props<T extends readonly string[]> = React.HTMLAttributes<HTMLDivElement> & {
-  selects: T;
-  selected: NoInfer<T[number]>;
-  onSelected?: (value: NoInfer<T[number]>) => void;
+type Select = {
+  title: string;
+  option: string;
 };
 
-export const Dropdown = <const T extends readonly string[]>({
+type Props<T extends readonly Select[]> = React.HTMLAttributes<HTMLDivElement> & {
+  selects: T;
+  selected: NoInfer<T[number]['option']>;
+  onSelected?: (value: NoInfer<T[number]['option']>) => void;
+};
+
+export const Dropdown = <const T extends readonly Select[]>({
   selects,
   selected,
   onSelected = () => {},
   ...props
 }: Props<T>) => {
   const [isActive, setIsActive] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(selected);
 
   const contentRef = useRef<HTMLDivElement | null>(null);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     const el = contentRef.current;
@@ -100,28 +105,29 @@ export const Dropdown = <const T extends readonly string[]>({
         ref={dropdownRef}
       >
         <button
+          ref={triggerRef}
           className={styles.trigger}
           onClick={() => {
             setIsActive(!isActive);
           }}
         >
-          {selectedItem}
-            <Icon className={styles.triggerIcon} type="arrowRight"></Icon>
+          {selects.find((select) => select.option === selected)?.title}
+          <Icon className={styles.triggerIcon} type="arrowRight"></Icon>
         </button>
-        <div ref={contentRef} aria-hidden={!isActive} className={styles.content}>
-          <ul className={styles.list}>
+        <div ref={contentRef} aria-hidden={!isActive} inert={!isActive} className={styles.content}>
+          <ul>
             {selects.map((select, index) => {
               return (
-                <li key={select + index} className={styles.item}>
+                <li key={selected + index}>
                   <button
                     className={styles.itemButton}
                     onClick={() => {
-                      onSelected(select);
-                      setSelectedItem(select);
+                      onSelected(select.option);
                       setIsActive(false);
+                      triggerRef.current?.focus();
                     }}
                   >
-                    {select}
+                    {select.title}
                   </button>
                 </li>
               );
