@@ -2,7 +2,11 @@
 @use '@styles/variables/variables.scss' as vars;
 
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   height: vars.$header-height-mobile;
+  background-color: vars.$white-color;
   padding-left: 16px;
   box-shadow: 0 1px 0 0 vars.$elements-color;
 

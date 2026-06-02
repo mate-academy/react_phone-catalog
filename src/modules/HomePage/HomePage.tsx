@@ -4,6 +4,7 @@ import styles from './HomePage.module.scss';
 import { getNewModels, getProducts } from '../../utils/api';
 import { NewModels } from './components/NewModels';
 import { useAppContext } from '../../context/AppContext';
+import { Categories } from './components/Categories';
 
 export const HomePage = () => {
   const { setNewPhoneModels } = useAppContext();
@@ -24,6 +25,7 @@ export const HomePage = () => {
       </section>
 
       <NewModels />
+      <Categories />
     </main>
   );
 };

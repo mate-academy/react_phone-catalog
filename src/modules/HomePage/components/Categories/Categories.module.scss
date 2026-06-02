@@ -1,0 +1,17 @@
+@use '@styles/variables/variables.scss' as vars;
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &Title {
+    font-size: 22px;
+    font-weight: 800;
+    color: vars.$primary-color;
+
+    @media screen and (min-width: vars.$tablet-width) {
+      font-size: 32px;
+    }
+  }
+}
