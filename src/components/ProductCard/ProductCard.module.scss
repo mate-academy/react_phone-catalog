@@ -5,9 +5,9 @@
   flex-direction: column;
   width: rem(273);
   padding: rem(32);
-  border: 1px solid var(--gray--elements);
+  border: 1px solid var(--gray-elements);
   border-radius: rem(16);
-  background: var(--gray--white);
+  background: var(--gray-white);
   transition: box-shadow 0.3s;
   flex-shrink: 0;
 
@@ -47,7 +47,7 @@
 .fullPrice {
   font-size: rem(22);
   font-weight: 600;
-  color: var(--gray--secondary);
+  color: var(--gray-secondary);
   text-decoration: line-through;
   opacity: 0.7;
 }
@@ -58,7 +58,7 @@
   gap: rem(8);
   padding-top: rem(8);
   padding-bottom: rem(16);
-  border-top: 1px solid var(--gray--elements);
+  border-top: 1px solid var(--gray-elements);
   margin-bottom: rem(16);
 }
 
@@ -69,7 +69,7 @@
 .specLabel {
   font-size: rem(12);
   font-weight: 700;
-  color: var(--gray--secondary);
+  color: var(--gray-secondary);
 }
 
 .specValue {
@@ -93,7 +93,7 @@
   flex: 1;
   padding: rem(10) rem(20);
   background: var(--accent);
-  color: var(--gray--white);
+  color: var(--gray-white);
   border: none;
   border-radius: rem(10);
   font-size: rem(14);
@@ -102,16 +102,16 @@
   transition: background 0.3s;
 
   &:hover {
-    background: var(--gray--white);
+    background: var(--gray-white);
     color: var(--accent);
-    border: 1px solid var(--gray--elements);
+    border: 1px solid var(--gray-elements);
   }
 }
 
 .cartButtonActive {
-  background: var(--gray--white);
+  background: var(--gray-white);
   color: var(--accent);
-  border: 1px solid var(--gray--elements);
+  border: 1px solid var(--gray-elements);
 }
 
 .favoriteButton {
@@ -120,7 +120,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--gray--elements);
+  border: 1px solid var(--gray-elements);
   border-radius: 50%;
   cursor: pointer;
   transition: border-color 0.3s;

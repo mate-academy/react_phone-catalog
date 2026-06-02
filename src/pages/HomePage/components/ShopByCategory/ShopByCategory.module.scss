@@ -9,16 +9,18 @@
 }
 
 .container {
-  @include containerFlex;
+  @include container-flex;
 }
 
 .title {
   @include heading;
+
   margin-bottom: rem(24);
 }
 
 .category {
   @include flex-between;
+
   gap: rem(16);
   align-items: stretch;
 
@@ -52,5 +54,5 @@
   font-weight: 500;
   font-size: rem(14);
   line-height: 150%;
-  color: var(--gray--secondary);
+  color: var(--gray-secondary);
 }

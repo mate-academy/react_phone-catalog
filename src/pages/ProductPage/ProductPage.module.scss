@@ -1,7 +1,7 @@
 @use '../../style' as *;
 
 .container {
-  @include containerGrid;
+  @include container-grid;
 }
 
 .title {
@@ -140,7 +140,7 @@
 }
 
 .isActiveCapacity {
-  color: var(--gray--white);
+  color: var(--gray-white);
   background-color: var(--gray-primary);
 }
 
@@ -166,7 +166,7 @@
   font-size: rem(22);
   font-weight: 500;
   text-decoration: line-through;
-  color: var(--gray--secondary);
+  color: var(--gray-secondary);
   opacity: 0.7;
 }
 
@@ -181,7 +181,7 @@
   height: rem(48);
   padding: rem(10) rem(20);
   background: var(--accent);
-  color: var(--gray--white);
+  color: var(--gray-white);
   border-radius: rem(10);
   font-size: rem(14);
   font-weight: 700;
@@ -191,9 +191,9 @@
   &:hover,
 
   &.cartButtonActive {
-    background: var(--gray--white);
+    background: var(--gray-white);
     color: var(--accent);
-    border: 1px solid var(--gray--elements);
+    border: 1px solid var(--gray-elements);
   }
 }
 
@@ -204,7 +204,7 @@
   flex-shrink: 0;
   width: rem(48);
   height: rem(48);
-  border: 1px solid var(--gray--elements);
+  border: 1px solid var(--gray-elements);
   border-radius: 50%;
   cursor: pointer;
   transition: border-color 0.3s;
@@ -283,7 +283,7 @@
   font-size: rem(14);
   font-weight: 500;
   line-height: 1.6;
-  color: var(--gray--secondary);
+  color: var(--gray-secondary);
   margin-bottom: rem(8);
 
   &:last-child {

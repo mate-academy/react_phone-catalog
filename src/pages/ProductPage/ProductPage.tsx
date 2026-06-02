@@ -22,7 +22,7 @@ export const ProductPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
-  const { addToCart, removeFromCart, isInCart } = useCart();
+  const { addToCart, isInCart } = useCart();
   const { addToFavorite, removeFromFavorite, isFavorite } = useFavorite();
 
   const { category, productId } = useParams();
@@ -223,7 +223,7 @@ export const ProductPage = () => {
                 [styles.cartButtonActive]: isInCart(String(product?.id)),
               })}
               onClick={() => {
-                if (!isInCart(String(product?.id))) {
+                if (product && !isInCart(String(product.id))) {
                   handleAddToCart();
                 }
               }}

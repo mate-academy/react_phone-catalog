@@ -98,7 +98,6 @@
 .checkoutButton {
   width: 100%;
   height: rem(48);
-  font-weight: 700;
   background: var(--accent);
   border-radius: rem(8);
   font-family: var(--font-family);
@@ -106,7 +105,7 @@
   font-size: 14px;
   line-height: 150%;
   text-align: center;
-  color: var(--gray--white);
+  color: var(--gray-white);
 }
 
 .empty {

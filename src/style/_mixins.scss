@@ -3,7 +3,7 @@
 @mixin flex-center($isInline: false) {
   @if $isInline {
     display: inline-flex;
-  } @else  {
+  } @else {
     display: flex;
   }
 
@@ -55,14 +55,14 @@
   margin: 0 auto;
 }
 
-@mixin containerFlex {
+@mixin container-flex {
   @include container;
 
   display: flex;
   flex-direction: column;
 }
 
-@mixin containerGrid {
+@mixin container-grid {
   @include container;
 
   display: grid;
@@ -100,11 +100,11 @@
   width: rem(32);
   height: rem(32);
   border-radius: 100%;
-  border: 1px solid var(--gray--icons-placeholders);
-  background-color: var(--gray--white);
+  border: 1px solid var(--gray-icons-placeholders);
+  background-color: var(--gray-white);
 }
 
-@mixin catalogCard {
+@mixin catalog-card {
   width: 100%;
   grid-column: span 4;
 

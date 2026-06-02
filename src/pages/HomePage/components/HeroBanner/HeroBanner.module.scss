@@ -20,7 +20,7 @@
 }
 
 .container {
-  @include containerFlex;
+  @include container-flex;
 }
 
 .content {
@@ -68,7 +68,7 @@
 }
 
 .sliderButton {
-  border: 1px solid var(--gray--icons-placeholders);
+  border: 1px solid var(--gray-icons-placeholders);
   border-radius: rem(48);
   width: rem(32);
 
@@ -108,7 +108,7 @@
   width: rem(14);
   height: rem(4);
 
-  background-color: var(--gray--elements);
+  background-color: var(--gray-elements);
   border-radius: rem(2);
 
   transition: background-color 0.3s ease;

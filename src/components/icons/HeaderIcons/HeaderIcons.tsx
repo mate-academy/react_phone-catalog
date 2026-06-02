@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styles from './HeaderIcons.module.scss';
 import { useCart } from '../../../pages/CartPage/context/CartContext';
+// eslint-disable-next-line max-len
 import { useFavorite } from '../../../pages/FavoritePage/context/FavoriteContext';
 
 type Props = {

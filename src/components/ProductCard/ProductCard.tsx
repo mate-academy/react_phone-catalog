@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const ProductCard = ({ product, className }: Props) => {
-  const { addToCart, removeFromCart, isInCart } = useCart();
+  const { addToCart, isInCart } = useCart();
   const { addToFavorite, removeFromFavorite, isFavorite } = useFavorite();
 
   return (
@@ -55,12 +55,8 @@ export const ProductCard = ({ product, className }: Props) => {
             [styles.cartButtonActive]: isInCart(String(product.id)),
           })}
           onClick={() => {
-            if (product) {
-              if (isInCart(String(product.id))) {
-                removeFromCart(String(product.id));
-              } else {
-                addToCart(product);
-              }
+            if (product && !isInCart(String(product.id))) {
+              addToCart(product);
             }
           }}
           disabled={isInCart(String(product.id))}

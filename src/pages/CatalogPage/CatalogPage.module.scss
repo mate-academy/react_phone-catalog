@@ -1,7 +1,8 @@
 @use '../../style' as *;
 
 .container {
-  @include containerGrid;
+  @include container-grid;
+
   margin-bottom: rem(80);
 }
 
@@ -16,6 +17,7 @@
 
 .title {
   grid-column: 1 / -1;
+
   @include heading($size: 'large');
 
   margin-bottom: rem(16);
@@ -57,7 +59,7 @@
   grid-column: 1 / -1;
 }
 
-.swipper{
+.swipper {
   @include flex-center($isInline: false);
 
   grid-column: 1 / -1;
@@ -80,7 +82,7 @@
 
 .active {
   background-color: var(--gray-primary);
-  color: var(--gray--white);
+  color: var(--gray-white);
 }
 
 .left {

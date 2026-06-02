@@ -1,7 +1,7 @@
 @use '../../style' as *;
 
 .path {
-  @include flex-center();
+  @include flex-center;
 
   grid-column: 1 / -1;
   justify-content: start;

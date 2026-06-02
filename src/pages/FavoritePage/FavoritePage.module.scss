@@ -1,14 +1,15 @@
 @use '../../style' as *;
 
 .container {
-  @include containerGrid;
+  @include container-grid;
+
   margin-bottom: rem(80);
 }
 
 .title {
   grid-column: 1 / -1;
   margin: 0;
-  margin-bottom:rem(8);
+  margin-bottom: rem(8);
 }
 
 .itemsCount {
@@ -42,6 +43,6 @@
   }
 }
 
-.catalogCard {
-  @include catalogCard;
+.catalog-card {
+  @include catalog-card;
 }

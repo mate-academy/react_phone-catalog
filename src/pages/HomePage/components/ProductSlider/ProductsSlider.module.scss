@@ -5,7 +5,7 @@
 }
 
 .container {
-  @include containerFlex;
+  @include container-flex;
 }
 
 .title {
@@ -14,6 +14,7 @@
 
 .topRow {
   @include flex-between;
+
   margin-bottom: rem(24);
 
   @media (max-width: $desktop) {

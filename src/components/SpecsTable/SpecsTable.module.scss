@@ -17,6 +17,7 @@
 
 .specRow {
   @include flex-between;
+
   font-size: rem(14);
 
   @media (min-width: $tablet) {
@@ -30,7 +31,7 @@
 
 .specLabel {
   font-weight: 700;
-  color: var(--gray--secondary);
+  color: var(--gray-secondary);
 }
 
 .specValue {
@@ -45,5 +46,3 @@
 .full .specValue {
   font-weight: 500;
 }
-
-

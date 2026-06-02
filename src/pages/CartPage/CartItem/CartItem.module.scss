@@ -52,6 +52,7 @@
 
 .button {
   @include flex-center($isInline: false);
+
   padding: rem(8);
   border: var(--border);
   border-radius: 100%;

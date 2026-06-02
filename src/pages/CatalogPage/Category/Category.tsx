@@ -13,7 +13,7 @@ export const Category = ({ products }: Props) => {
         <ProductCard
           key={product.id}
           product={product}
-          className={styles.catalogCard}
+          className={styles.catalog - card}
         />
       ))}
     </div>

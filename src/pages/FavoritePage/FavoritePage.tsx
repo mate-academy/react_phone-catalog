@@ -19,7 +19,7 @@ export const FavoritePage = () => {
               <ProductCard
                 key={item.id}
                 product={item}
-                className={styles.catalogCard}
+                className={styles.catalog - card}
               />
             ))}
           </div>

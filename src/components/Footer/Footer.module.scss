@@ -1,7 +1,7 @@
 @use '../../style' as *;
 
 .footer {
-  border-top: 1px solid var(--gray--elements);
+  border-top: 1px solid var(--gray-elements);
   height: rem(96);
 
   @media (max-width: $tablet) {
@@ -44,7 +44,7 @@
 .link {
   @include fluid-text(14, 14);
 
-  color: var(--gray--secondary);
+  color: var(--gray-secondary);
   font-weight: 800;
   font-size: rem(12);
   letter-spacing: 0.04em;
@@ -68,10 +68,11 @@
 
 .text {
   @include fluid-text(14, 14);
+
   font-weight: 700;
   font-size: rem(12);
   text-align: right;
-  color: var(--gray--secondary);
+  color: var(--gray-secondary);
 }
 
 .button {
@@ -80,8 +81,8 @@
   width: rem(32);
   height: rem(32);
   margin-left: rem(16);
-  background-color: var(--gray--white);
-  border: rem(2) solid var(--gray--elements);
+  background-color: var(--gray-white);
+  border: rem(2) solid var(--gray-elements);
   border-radius: 100%;
   padding: 0;
 }
