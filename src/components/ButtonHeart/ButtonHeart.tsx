@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Icon } from '../Icon';
 import styles from './styles.module.scss';
 import classNames from 'classnames';
@@ -7,7 +7,6 @@ type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & { like: boolean };
 
 export const ButtonHeart = ({ onClick, like = false, children, className, ...props }: Props) => {
   const [showFloatingHeart, setShowFloatingHeart] = useState(false);
-
 
   return (
     <button
@@ -22,7 +21,7 @@ export const ButtonHeart = ({ onClick, like = false, children, className, ...pro
           setTimeout(() => setShowFloatingHeart(false), 1000);
         }
       }}
-      className={classNames(className, styles.button, { [styles.isLike]: like })}
+      className={classNames(className, styles.button, { [styles.isLike]: like})}
     >
       <div className={styles.wrapper}>
         <Icon className={classNames(styles.heartLike)} type="heartLike" />

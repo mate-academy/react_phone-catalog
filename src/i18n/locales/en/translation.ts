@@ -13,6 +13,19 @@ export const en = {
     newBrand: 'Brand new models',
   },
 
+  productPage: {
+    mobileTitle: 'Mobile phones',
+    models: 'models',
+    sortByTitle: 'Sort by',
+    sortBy: {
+      newest: 'Newest',
+      alphabetically: 'Alphabetically',
+      cheapest: 'Cheapest',
+    },
+    itemsOnPageTitle: 'Items on page',
+    search: 'Search'
+  },
+
   sectionCategories: {
     title: 'Shop by category',
     modile: 'Mobile phones',

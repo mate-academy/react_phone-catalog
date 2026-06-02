@@ -16,13 +16,16 @@ createRoot(document.getElementById('root')!).render(
     <ScrollToTop />
     <Routes>
       <Route path="/" element={<App />}>
-        <Route index element={<HomePage />}></Route>
+        <Route index element={<HomePage />} />
+
         <Route path="home" element={<Navigate to="/" replace />} />
+
         <Route path="phones">
-          <Route index element={<PhonesPage />}></Route>
-          <Route path=":productId?" element={<ProductDetailsPage/>}></Route>
+          <Route index element={<PhonesPage />} />
+          <Route path=":productId" element={<ProductDetailsPage />} />
         </Route>
-        <Route path="*" element={<NotFoundPage />}></Route>
+
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   </HashRouter>,

@@ -7,6 +7,7 @@ export declare const details: string;
 export declare const detailText1: string;
 export declare const detailText2: string;
 export declare const image: string;
+export declare const imageImg: string;
 export declare const line: string;
 export declare const main: string;
 export declare const price: string;

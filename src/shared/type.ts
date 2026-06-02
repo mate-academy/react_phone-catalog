@@ -31,7 +31,7 @@ export type Phone = {
 
 export type Product = {
   id: number;
-  category: string;
+  category: 'accessories' | 'tablets' | 'phones';
   itemId: string;
   name: string;
   fullPrice: number;

@@ -6,6 +6,4 @@ export declare const gridContainer: string;
 export declare const img: string;
 export declare const imgTransform: string;
 export declare const imgWrapper: string;
-export declare const noThemeTransition: string;
-export declare const root: string;
 export declare const title: string;

@@ -1,7 +1,7 @@
 import { ButtonSecond } from '@/components/ButtonSecond/ButtonSecond';
 import styles from './styles.module.scss';
 import { ProductCard } from '@/components/ProductCard';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Swiper as SwiperType } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -28,16 +28,8 @@ type Props = {
 
 export const ProductsSlider: React.FC<Props> = ({ lengthSlides, products, isLoading, title }) => {
   const swiperRef = useRef<SwiperType | null>(null);
+  const [isReady, setIsReady] = useState(false);
 
-
-  const ggg = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (!ggg) {
-      return;
-    }
-    console.log(ggg.current?.clientHeight);
-  }, [products]);
 
   useEffect(() => {
     const onResize = () => {
@@ -51,7 +43,16 @@ export const ProductsSlider: React.FC<Props> = ({ lengthSlides, products, isLoad
     };
   }, []);
 
+  const handleSlidesReady = useCallback((swiper: SwiperType) => {
+    setIsReady(true);
   
+    // requestAnimationFrame(() => {
+    //   // debugger;
+    //   if (swiper.slides.length > 0) {
+    //     setIsReady(true);
+    //   }
+    // });
+  }, []);
 
   return (
     <>
@@ -69,72 +70,69 @@ export const ProductsSlider: React.FC<Props> = ({ lengthSlides, products, isLoad
           </div>
         </div>
       </div>
-      <div   ref={ggg} className={styles.swiperContainer}>
-        <div>
-          <Swiper 
-            onSwiper={(swiper) => {
-              swiperRef.current = swiper;
-            }}
-            virtual
-            spaceBetween={16}
-            slidesPerView={4 / 3}
-            breakpoints={{
-              640: {
-                slidesPerView: 12 / 5,
-                spaceBetween: 16,
-              },
-              1200: {
-                slidesPerView: 24 / 6,
-                spaceBetween: 16,
-              },
-            }}
-            onResize={(swiper) => {
-              swiper.setTranslate(swiper.translate);
-            }}
-            navigation={{
-              prevEl: `.${styles.sliderButtonPrev}`,
-              nextEl: `.${styles.sliderButtonNext}`,
-            }}
-            // autoplay={
-            //   isLoading
-            //     ? {}
-            //     : {
-            //         delay: 3500,
-            //         disableOnInteraction: true,
-            //       }
-            // }
-            modules={[FreeMode, Navigation, Autoplay, Virtual]}
-            className={styles.swiper}
-          >
-            <SwiperSlide>
-              <div className={styles.divTest}>
-                <h2>Hello!</h2>
-                <h2>Hello!</h2>
-                <h2>Hello!</h2>
-                <h2>Hello!</h2>
-              </div>
-            </SwiperSlide>
-            {/* {products.length !== 0 &&
-              products.slice(0, lengthSlides).map((product) => (
-                <SwiperSlide
-                  className={styles.slide}
-                  key={product.itemId}
-                  virtualIndex={product.id}
-                >
-                  <ProductCard product={product} />
-                </SwiperSlide>
-              ))}
 
-            {products.length === 0 &&
-              Array.from({ length: lengthSlides }).map((_, index) => {
-                return (
-                  <SwiperSlide key={index} className={styles.slide} virtualIndex={index}>
-                    <ProductCard />
-                  </SwiperSlide>
-                );
-              })} */}
-          </Swiper>
-        </div>
+      <div className={styles.swiperContainer}>
+        <Swiper
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          onAfterInit={handleSlidesReady}
+          virtual={{
+            addSlidesBefore: 1,
+            addSlidesAfter: 1,
+          }}
+          spaceBetween={16}
+          slidesPerView={4 / 3}
+          breakpoints={{
+            640: {
+              slidesPerView: 12 / 5,
+              spaceBetween: 16,
+            },
+            1200: {
+              slidesPerView: 24 / 6,
+              spaceBetween: 16,
+            },
+          }}
+          onResize={(swiper) => {
+            swiper.setTranslate(swiper.translate);
+          }}
+          navigation={{
+            prevEl: `.${styles.sliderButtonPrev}`,
+            nextEl: `.${styles.sliderButtonNext}`,
+          }}
+          // autoplay={
+          //   isLoading
+          //     ? {}
+          //     : {
+          //         delay: 3500,
+          //         disableOnInteraction: true,
+          //       }
+          // }
+          modules={[FreeMode, Navigation, Autoplay, Virtual]}
+          className={styles.swiper}
+        >
+          {!isReady && (
+            <div className={styles.slideTest}>
+              <ProductCard />
+            </div>
+          )}
+
+          {products.length !== 0 &&
+            products.slice(0, lengthSlides).map((product) => (
+              <SwiperSlide className={styles.slide} key={product.itemId} virtualIndex={product.id}>
+                <ProductCard product={product} />
+              </SwiperSlide>
+            ))}
+
+          {products.length === 0 &&
+            Array.from({ length: lengthSlides }).map((_, index) => {
+              return (
+                <SwiperSlide key={index} className={styles.slide} virtualIndex={index}>
+                  <ProductCard />
+                </SwiperSlide>
+              );
+            })}
+        </Swiper>
       </div>
     </>
   );

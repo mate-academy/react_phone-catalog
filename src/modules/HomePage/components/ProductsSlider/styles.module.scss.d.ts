@@ -3,6 +3,7 @@ export declare const buttonBox: string;
 export declare const slide: string;
 export declare const sliderButtonNext: string;
 export declare const sliderButtonPrev: string;
+export declare const slideTest: string;
 export declare const swiper: string;
 export declare const swiperContainer: string;
 export declare const swiperWrapper: string;

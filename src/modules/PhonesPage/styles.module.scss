@@ -2,4 +2,126 @@
 
 .content {
   @include padding-container;
+
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 80px;
+}
+
+.title {
+  @include on-tablet {
+    margin-top: 16px;
+  }
+}
+
+.p {
+  margin-top: 8px;
+}
+
+.pagination {
+  margin-top: 40px;
+  margin-inline: auto;
+}
+
+.filterSortContainer {
+  margin-top: 32px;
+  margin-bottom: 24px;
+  @include grid;
+  padding: 0;
+
+  row-gap: 16px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}
+
+.filterbox {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  p {
+    color: var(--text);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+}
+
+.queryBox {
+  grid-column: 4 span;
+
+  @include on-tablet {
+    grid-column: 5 span;
+  }
+
+  @include on-desktop {
+    grid-column: 8 span;
+  }
+
+  input {
+    box-sizing: border-box;
+    height: 100%;
+
+    background-color: white;
+    border: none;
+    outline: none;
+    color: var(--h);
+    border: 1px solid #b4bdc3;
+    border-radius: 8px;
+    font-family: 'Mont', sans-serif;
+    font-weight: 500;
+    letter-spacing: 5%;
+
+    padding: 10px 12px;
+    caret-color: var(--h);
+
+    &:focus {
+      border: 1px solid black;
+    }
+  }
+}
+
+[data-theme='dark'] .queryBox input {
+  background-color: #323542;
+  border: 1px solid #323542;
+  border-radius: 0;
+
+  &:focus {
+    border: 1px solid var(--accent);
+  }
+}
+
+.dropdownSortBox {
+  grid-column: 2 span;
+
+  @include on-tablet {
+    grid-column: 4 span;
+  }
+
+  p {
+    color: var(--text);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+}
+
+.dropdownPerPageBox {
+  grid-column: 2 span;
+
+  @include on-tablet {
+    grid-column: 3 span;
+  }
+
+  p {
+    color: var(--text);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
 }

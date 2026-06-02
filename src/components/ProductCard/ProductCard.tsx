@@ -19,8 +19,6 @@ export const ProductCard = ({ product, ...props }: Props) => {
   const { t } = useTranslation();
   const { favourites, setFavourites } = useFavourites();
 
-
-  
   const preparedProduct = useMemo(() => {
     return product
       ? product
@@ -51,80 +49,86 @@ export const ProductCard = ({ product, ...props }: Props) => {
     [cart, preparedProduct.itemId],
   );
 
-  // console.log(preparedProduct);
+  const cardWithoutContainer = (
+    <>
+      <Link className={styles.image} to={'/phones/' + preparedProduct.itemId}>
+        <img
+          className={styles.imageImg}
+          src={preparedProduct.image}
+          alt={preparedProduct.name + ' image'}
+          loading="lazy"
+        />
+      </Link>
+      <Link className={styles.titleLink} to={'/phones/' + preparedProduct.itemId}>
+        <h4 className={styles.title}>{preparedProduct.name}</h4>
+      </Link>
+      <div className={styles.priceBox}>
+        <h3 className={styles.price}>{'$' + preparedProduct.fullPrice}</h3>
+        <h3 className={styles.price + ' ' + styles.pricelineThrough}>
+          {'$' + preparedProduct.price}
+        </h3>
+      </div>
+
+      <div className={styles.line}></div>
+      <div className={styles.details}>
+        <div className={styles.detail}>
+          <p className={styles.detailText1}>{t('productCart.screen')}</p>
+          <p className={styles.detailText2}>{preparedProduct.screen}</p>
+        </div>
+        <div className={styles.detail}>
+          <p className={styles.detailText1}>{t('productCart.capacity')}</p>
+          <p className={styles.detailText2}>{preparedProduct.capacity}</p>
+        </div>
+        <div className={styles.detail}>
+          <p className={styles.detailText1}>{t('productCart.RAM')}</p>
+          <p className={styles.detailText2}>{preparedProduct.ram}</p>
+        </div>
+      </div>
+      <div className={styles.buttons}>
+        <ButtonBuy
+          className={styles.buttonBuy}
+          selected={isInCart}
+          onClick={() => {
+            setCart((prev) =>
+              prev.includes(String(preparedProduct.itemId))
+                ? prev.filter((id) => id !== String(preparedProduct.itemId))
+                : [...prev, String(preparedProduct.itemId)],
+            );
+          }}
+        >
+          {isInCart ? t('productCart.buttonSelected') : t('productCart.button')}
+        </ButtonBuy>
+        <ButtonHeart
+          className={styles.buttonHeart}
+          like={isFavourite}
+          onClick={() => {
+            setFavourites((prev) =>
+              prev.includes(String(preparedProduct.itemId))
+                ? prev.filter((id) => id !== String(preparedProduct.itemId))
+                : [...prev, String(preparedProduct.itemId)],
+            );
+          }}
+        ></ButtonHeart>
+      </div>
+    </>
+  );
 
   return (
     <article {...props} className={styles.main} aria-label={preparedProduct.name}>
-      <Skeleton
-        name="blog-card"
-        loading={!product}
-        color="var(--text)"
-        darkColor="var(--text )"
-        animate="shimmer"
-        className={styles.skeleton}
-      >
       <div className={styles.content}>
-        <Link className={styles.image} to={'phones/' + preparedProduct.itemId}>
-          <img
-            className={styles.image}
-            src={preparedProduct.image}
-            alt={preparedProduct.name + ' image'}
-            loading="lazy"
-          />
-        </Link>
-        <Link className={styles.titleLink} to={'phones/' + preparedProduct.itemId}>
-          <h4 className={styles.title}>{preparedProduct.name}</h4>
-        </Link>
-        <div className={styles.priceBox}>
-          <h3 className={styles.price}>{'$' + preparedProduct.fullPrice}</h3>
-          <h3 className={styles.price + ' ' + styles.pricelineThrough}>
-            {'$' + preparedProduct.price}
-          </h3>
-        </div>
-
-        <div className={styles.line}></div>
-        <div className={styles.details}>
-          <div className={styles.detail}>
-            <p className={styles.detailText1}>{t('productCart.screen')}</p>
-            <p className={styles.detailText2}>{preparedProduct.screen}</p>
-          </div>
-          <div className={styles.detail}>
-            <p className={styles.detailText1}>{t('productCart.capacity')}</p>
-            <p className={styles.detailText2}>{preparedProduct.capacity}</p>
-          </div>
-          <div className={styles.detail}>
-            <p className={styles.detailText1}>{t('productCart.RAM')}</p>
-            <p className={styles.detailText2}>{preparedProduct.ram}</p>
-          </div>
-        </div>
-        <div className={styles.buttons}>
-          <ButtonBuy
-            className={styles.buttonBuy}
-            selected={isInCart}
-            onClick={() => {
-              setCart((prev) =>
-                prev.includes(String(preparedProduct.itemId))
-                  ? prev.filter((id) => id !== String(preparedProduct.itemId))
-                  : [...prev, String(preparedProduct.itemId)],
-              );
-            }}
-          >
-            {isInCart ? t('productCart.buttonSelected') : t('productCart.button')}
-          </ButtonBuy>
-          <ButtonHeart
-            className={styles.buttonHeart}
-            like={isFavourite}
-            onClick={() => {
-              setFavourites((prev) =>
-                prev.includes(String(preparedProduct.itemId))
-                  ? prev.filter((id) => id !== String(preparedProduct.itemId))
-                  : [...prev, String(preparedProduct.itemId)],
-              );
-            }}
-          ></ButtonHeart>
-        </div>
+        <Skeleton
+          fallback={cardWithoutContainer}
+          fixture={cardWithoutContainer}
+          name="blog-card"
+          loading={!product}
+          color="var(--text)"
+          darkColor="var(--text )"
+          animate="shimmer"
+          className={styles.skeleton}
+        >
+          {cardWithoutContainer}
+        </Skeleton>
       </div>
-      </Skeleton>
     </article>
   );
 };

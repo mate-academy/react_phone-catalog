@@ -94,10 +94,13 @@
     background-color: transparent;
   }
 
-  .wrapper {
-    animation: like $transition forwards;
-  }
 }
+
+// .animation {
+//   .wrapper {
+//     animation: like $transition forwards;
+//   }
+// }
 
 [data-theme='dark'] {
   .button {
@@ -108,9 +111,9 @@
     &.isLike {
       &.button {
         background-color: transparent;
-        border: 1px solid #3B3E4A;
+        border: 1px solid #3b3e4a;
       }
-      animation: like $transition forwards ease-in-out;
+      // animation: like $transition forwards ease-in-out;
     }
 
     &:hover {

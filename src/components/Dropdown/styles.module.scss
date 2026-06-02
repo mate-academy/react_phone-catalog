@@ -2,31 +2,59 @@
 
 .dropdown {
   position: relative;
+  // width: 100%;
 }
 
 .trigger {
+  text-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
   box-sizing: border-box;
   color: var(--h);
-  background-color: #323542;
   padding: 10px 12px;
 
   font-weight: 700;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0%;
-  border: 1px solid #323542;
+
+  background-color: white;
+  border-radius: 8px;
+
+  border: 1px solid #b4bdc3;
 
   &:hover {
-    background-color: #3d4050;
-    border: 1px solid #5a5f74;
+    border: 1px solid #89939a;
   }
 }
 
-.list {
-  background-color: var(--bg);
+.triggerIcon {
+  transition: transform $transition;
+  transform: rotate(90deg);
+  color: var(--text);
 }
 
+.isActive {
+  .triggerIcon {
+    transform: rotate(270deg);
+  }
+}
+
+// .list {
+//   background-color: var(--bg);
+// }
+
 .content {
+  padding-block: 8px;
+  background-color: white;
+  border-radius: 8px;
+
+  box-sizing: border-box;
+  width: 100%;
+
   z-index: 1;
   position: absolute;
   pointer-events: none;
@@ -55,7 +83,15 @@
   max-height: 200px;
 }
 
+.isActive .trigger {
+  border-color: #0F0F11;
+}
+
+
 .itemButton {
+  border-radius: 8px;
+  text-align: start;
+  width: 100%;
   padding: 10px 12px;
   background: none;
   font-family: Mont, sans-serif;
@@ -67,7 +103,7 @@
   color: var(--text);
 
   &:hover {
-    background-color: var(--line-and-border);
+    background-color: #f0f0f0;
     color: var(--h);
   }
 }
@@ -80,4 +116,36 @@
 .content::-webkit-scrollbar-thumb {
   background: color-mix(in srgb, var(--h), var(--line-and-border) 30%);
   border-radius: 5px;
+}
+
+[data-theme='dark'] {
+  .trigger {
+    border-radius: 0;
+    background-color: #323542;
+
+    border: 1px solid #323542;
+
+    &:hover {
+      background-color: #3d4050;
+      border: 1px solid #5a5f74;
+    }
+  }
+
+  .isActive .trigger {
+    border-color: var(--accent);
+  }
+
+  .content {
+    border-radius: 0;
+
+    background-color: var(--bg);
+  }
+
+  .itemButton {
+    border-radius: 0;
+
+    &:hover {
+      background-color: var(--line-and-border);
+    }
+  }
 }
