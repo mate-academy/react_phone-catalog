@@ -1,0 +1,107 @@
+.slider {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.arrowLeft {
+  left: 0;
+}
+
+.arrowRight {
+  right: 0;
+}
+
+.arrowLeft,
+.arrowRight {
+  position: absolute;
+  top: 0;
+  
+  height: 100%;
+  width: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #fff;
+  border: 1px solid #B4BDC3;
+  border-radius: 48px;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #f8f9fa;
+  }
+}
+
+.arrowLeft img,
+.arrowRight img {
+  width: 16px;
+  height: 16px;
+}
+
+.dots {
+  position: absolute;
+  bottom: -24px;
+
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+
+  background: #ccc;
+  cursor: pointer;
+
+  transition: background 0.3s ease;
+}
+
+.active {
+  background: #000;
+}
+
+@media (max-width: 639px) {
+  .arrowLeft,
+  .arrowRight {
+    display: none;
+  }
+  .image {
+    max-width: 320px;
+    height: 320px;
+    object-fit: cover;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .image {
+    max-width: 490px;
+    height: 189px;
+    object-fit: cover;
+  }
+}
+
+@media (min-width: 1200px) {
+  .image {
+    max-width: 1040px;
+    height: 400px;
+    object-fit: cover;
+  }
+}
