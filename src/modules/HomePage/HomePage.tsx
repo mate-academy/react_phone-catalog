@@ -74,7 +74,7 @@ export const HomePage: FC = () => {
           {
             id: 1,
             name: 'Mobile phones',
-            image: '/img/ShopByCategoryPhone.png',
+            image: 'img/ShopByCategoryPhone.png',
             link: '/phones',
             count: phonesCount,
             categoryId: 'phones',
@@ -82,7 +82,7 @@ export const HomePage: FC = () => {
           {
             id: 2,
             name: 'Tablets',
-            image: '/img/ShopByCategoryTablets.png',
+            image: 'img/ShopByCategoryTablets.png',
             link: '/tablets',
             count: tabletsCount,
             categoryId: 'tablets',
@@ -90,7 +90,7 @@ export const HomePage: FC = () => {
           {
             id: 3,
             name: 'Accessories',
-            image: '/img/ShopByCategoryAccessories.png',
+            image: 'img/ShopByCategoryAccessories.png',
             link: '/accessories',
             count: accessoriesCount,
             categoryId: 'accessories',
