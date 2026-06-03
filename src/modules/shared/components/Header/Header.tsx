@@ -10,6 +10,10 @@ export const Header = () => {
 
   const { favoritesItems } = useContext(FavoritesContext);
   const { cartItems } = useContext(CartContext);
+  const countCartProducts = cartItems.reduce(
+    (acc, { quantityCarts }) => acc + quantityCarts,
+    0,
+  );
 
   return (
     <header className={styles.header}>
@@ -71,8 +75,8 @@ export const Header = () => {
           }
         >
           <img src="img/icons/Shopping_bag.svg" alt="Shopping bag " />
-          {cartItems.length > 0 && (
-            <span className={styles.count}>{cartItems.length}</span>
+          {countCartProducts > 0 && (
+            <span className={styles.count}>{countCartProducts}</span>
           )}
         </NavLink>
       </div>

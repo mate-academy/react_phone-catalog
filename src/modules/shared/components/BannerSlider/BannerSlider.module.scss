@@ -27,6 +27,8 @@
     flex: 1;
     aspect-ratio: 1/1;
     overflow: hidden;
+    position: relative;
+    perspective: 1000px;
 
     @media (min-width: $tablet-breakpoint) {
       aspect-ratio: 8/3;
@@ -37,9 +39,27 @@
     }
 
     img {
+      position: absolute;
       width: 100%;
       height: 100%;
-      object-fit: cover
+      object-fit: cover;
+      opacity: 0;
+      transform: rotateY(0deg);
+      transition: transform 0.5s ease, opacity 1.5s ease;
+
+      &.active {
+        opacity: 1;
+        transform: rotateY(0deg);
+        transition-delay: 0.3s;
+      }
+
+      &.prevNext {
+        transform: rotateY(90deg);
+      }
+
+      &.prevPrev {
+        transform: rotateY(-90deg);
+      }
     }
   }
 
@@ -77,6 +97,7 @@
   .icon {
     display: none;
     transition: all 0.5s ease;
+
 
     img {
       width: 16px;

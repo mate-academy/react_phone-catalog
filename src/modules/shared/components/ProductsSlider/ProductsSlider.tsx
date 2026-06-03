@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styles from './ProductsSlider.module.scss';
 import { ProductCard } from '../ProductCard';
 import { Product } from '../../../../types';
@@ -19,6 +19,34 @@ export const ProductsSlider = ({
 }: Props) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  const handleNext = () => {
+    const card = sliderRef.current?.querySelector(
+      `.${styles.card}`,
+    ) as HTMLElement;
+    const cardWidth = card?.offsetWidth + 16;
+
+    sliderRef.current?.scrollBy({
+      left: cardWidth * count,
+      behavior: 'smooth',
+    });
+    setCurrentSlide(prev => prev + count);
+  };
+
+  const handlePrev = () => {
+    const card = sliderRef.current?.querySelector(
+      `.${styles.card}`,
+    ) as HTMLElement;
+    const cardWidth = card?.offsetWidth + 16;
+
+    sliderRef.current?.scrollBy({
+      left: -cardWidth * count,
+      behavior: 'smooth',
+    });
+    setCurrentSlide(prev => prev - count);
+  };
+
   return (
     <article className={styles.productsSlider}>
       <header className={styles.header}>
@@ -27,33 +55,25 @@ export const ProductsSlider = ({
           <button
             disabled={currentSlide === 0}
             className={currentSlide === 0 ? styles.iconDisabled : styles.icon}
-            onClick={() =>
-              setCurrentSlide(
-                currentSlide === 0 ? products.length - 1 : currentSlide - 1,
-              )
-            }
+            onClick={handlePrev}
           >
             <img src="img/icons/Chevron_(Arrow_Left).svg" alt="" />
           </button>
           <button
             disabled={currentSlide === products.length - 1}
             className={styles.icon}
-            onClick={() =>
-              setCurrentSlide(
-                currentSlide === products.length - 1 ? 0 : currentSlide + 1,
-              )
-            }
+            onClick={handleNext}
           >
             <img src="img/icons/Chevron_(Arrow_Right).svg" alt="next" />
           </button>
         </div>
       </header>
-      <div className={styles.windowSlider}>
+      <div className={styles.windowSlider} ref={sliderRef}>
         <div className={styles.slider}>
           {isLoading ? (
             <ProductCardLoading count={count} />
           ) : (
-            products.slice(currentSlide, currentSlide + count).map(product => (
+            products.map(product => (
               <div key={product.id} className={styles.card}>
                 <ProductCard product={product} />
               </div>

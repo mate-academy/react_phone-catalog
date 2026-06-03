@@ -6,6 +6,7 @@
   width: 32px;
   height: 32px;
   border: none;
+  cursor: pointer;
   background-color: $icon-bg-default;
 
   @include flex-center;

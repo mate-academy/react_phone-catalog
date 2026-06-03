@@ -158,4 +158,49 @@
       align-items: flex-start;
     }
   }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    @include flex-center;
+  }
+
+  .modal {
+    background: $surface_1;
+    padding: 24px 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    max-width: 400px;
+
+    @media (min-width: $tablet-breakpoint) {
+      padding: 40px;
+      width: 480px;
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+      width: 560px;
+    }
+
+    button {
+      background: $color-accent;
+      color: $white;
+      border: none;
+      margin: 0 auto;
+      width: 50%;
+      padding: 12px 24px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $btn-text-hover;
+      }
+    }
+  }
 }

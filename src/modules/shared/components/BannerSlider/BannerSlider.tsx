@@ -10,14 +10,37 @@ export const BannerSlider = ({ isLoading }: { isLoading: boolean }) => {
     'img/banner-tablets.png',
     'img/banner-accessories.png',
   ];
+  const [prevSlide, setPrevSlide] = useState<number | null>(null);
+  const [direction, setDirection] = useState<'next' | 'prev'>('next');
+
+  const goToSlide = (index: number, dir: 'next' | 'prev' = 'next') => {
+    setDirection(dir);
+    setPrevSlide(currentSlide);
+    setCurrentSlide(index);
+  };
+
+  const getImageClass = (index: number) => {
+    if (index === currentSlide) {
+      return styles.active;
+    }
+
+    if (index === prevSlide) {
+      return direction === 'next' ? styles.prevNext : styles.prevPrev;
+    }
+
+    return '';
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide(prev => (prev === slides.length - 1 ? 0 : prev + 1));
+      goToSlide(
+        currentSlide === slides.length - 1 ? 0 : currentSlide + 1,
+        'next',
+      );
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [slides.length]);
+  }, [currentSlide, slides.length]);
 
   const [touchStartX, setTouchStartX] = useState(0);
 
@@ -31,14 +54,16 @@ export const BannerSlider = ({ isLoading }: { isLoading: boolean }) => {
         const diff = touchStartX - event.changedTouches[0].clientX;
 
         if (diff < -50) {
-          setCurrentSlide(
+          goToSlide(
             currentSlide === 0 ? slides.length - 1 : currentSlide - 1,
+            'prev',
           );
         }
 
         if (diff > 50) {
-          setCurrentSlide(
+          goToSlide(
             currentSlide === slides.length - 1 ? 0 : currentSlide + 1,
+            'next',
           );
         }
       }}
@@ -47,8 +72,9 @@ export const BannerSlider = ({ isLoading }: { isLoading: boolean }) => {
         <button
           className={styles.icon}
           onClick={() =>
-            setCurrentSlide(
+            goToSlide(
               currentSlide === 0 ? slides.length - 1 : currentSlide - 1,
+              'prev',
             )
           }
         >
@@ -56,14 +82,22 @@ export const BannerSlider = ({ isLoading }: { isLoading: boolean }) => {
         </button>
 
         <div className={styles.images}>
-          <img src={slides[currentSlide]} alt="banner" />
+          {slides.map((slide, index) => (
+            <img
+              key={index}
+              src={slide}
+              alt="banner"
+              className={getImageClass(index)}
+            />
+          ))}
         </div>
 
         <button
           className={styles.icon}
           onClick={() =>
-            setCurrentSlide(
+            goToSlide(
               currentSlide === slides.length - 1 ? 0 : currentSlide + 1,
+              'next',
             )
           }
         >
@@ -76,7 +110,7 @@ export const BannerSlider = ({ isLoading }: { isLoading: boolean }) => {
           <div key={index} className={styles.button}>
             <button
               className={index === currentSlide ? styles.active : ''}
-              onClick={() => setCurrentSlide(index)}
+              onClick={() => goToSlide(index)}
             />
           </div>
         ))}

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './CartPage.module.scss';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
@@ -7,8 +7,12 @@ import { Errors } from '../shared/components/Errors/Errors';
 
 export const CartPage = () => {
   const { cartItems } = useContext(CartContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const countProducts = cartItems.length;
+  const countProducts = cartItems.reduce(
+    (acc, { quantityCarts }) => acc + quantityCarts,
+    0,
+  );
 
   const totalPrice = cartItems.reduce(
     (acc, { product, quantityCarts }) => acc + product.price * quantityCarts,
@@ -52,9 +56,23 @@ export const CartPage = () => {
               Total for {countProducts} items
             </p>
           </div>
-          <button className={styles.checkoutButton}>Checkout</button>
+          <button
+            className={styles.checkoutButton}
+            onClick={() => setIsModalOpen(true)}
+          >
+            Checkout
+          </button>
         </div>
       </main>
+      {isModalOpen && (
+        <div className={styles.overlay} onClick={() => setIsModalOpen(false)}>
+          <div className={styles.modal} onClick={e => e.stopPropagation()}>
+            <h3>🎉 Order confirmed!</h3>
+            <p>Thank you for your purchase!</p>
+            <button onClick={() => setIsModalOpen(false)}>Close</button>
+          </div>
+        </div>
+      )}
     </article>
   );
 };

@@ -95,8 +95,10 @@ export const ProductDetailsPage = () => {
 
       {isLoading ? (
         <ProductDetailsPageLoading />
-      ) : !currentProduct || !productDetail ? (
-        <Errors type="empty" />
+      ) : !currentProduct ? (
+        <Errors type="not-found" />
+      ) : !productDetail ? (
+        <ProductDetailsPageLoading />
       ) : (
         <main className={styles.main}>
           <h1 className={styles.productname}>{productDetail?.name}</h1>
