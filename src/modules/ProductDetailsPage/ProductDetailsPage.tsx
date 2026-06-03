@@ -21,6 +21,7 @@ const colorMap: Record<string, string> = {
   black: '#1f2020',
   blue: '#215e7c',
   coral: '#ee7762',
+  deeppurple: '#5f4b8b',
   gold: '#f4e8ce',
   graphite: '#5c5b57',
   green: '#aee1cd',
