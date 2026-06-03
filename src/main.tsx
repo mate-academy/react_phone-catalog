@@ -9,6 +9,7 @@ import { ScrollToTop } from './components/ScrollToTop';
 import './i18n/i18n';
 import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
 import { ProductsPage } from './modules/ProductsPage';
+import './bones/registry'
 
 createRoot(document.getElementById('root')!).render(
   // <StrictMode>

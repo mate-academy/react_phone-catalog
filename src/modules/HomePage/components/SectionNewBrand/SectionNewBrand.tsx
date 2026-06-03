@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 // import './styles.css';
 
 import { Product } from '@/shared/type';
-import '@/bones/registry';
+
 import { useProducts } from '@/app/providers/Products/ProductsContext';
 import { ProductsSlider } from '../ProductsSlider';
 

@@ -17,7 +17,7 @@ import 'swiper/css/pagination';
 import { FreeMode, Navigation, Autoplay, Virtual } from 'swiper/modules';
 import classNames from 'classnames';
 import { Product } from '@/shared/type';
-import '@/bones/registry';
+
 
 type Props = {
   products: Product[];

@@ -105,7 +105,7 @@ export const ProductCard = ({ product, ...props }: Props) => {
         <Skeleton
           fallback={cardWithoutContainer}
           fixture={cardWithoutContainer}
-          name="blog-card"
+          name="ProductCard"
           loading={!product}
           color="var(--text)"
           darkColor="var(--text )"

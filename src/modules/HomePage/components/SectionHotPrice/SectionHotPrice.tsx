@@ -11,7 +11,7 @@ import 'swiper/css/pagination';
 // import required modules
 
 import { Product } from '@/shared/type';
-import '@/bones/registry';
+// import '@/bones/registry';
 import { useProducts } from '@/app/providers/Products/ProductsContext';
 import { ProductsSlider } from '../ProductsSlider';
 

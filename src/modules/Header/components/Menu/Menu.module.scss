@@ -1,7 +1,7 @@
 @use '@/shared/styles' as *;
 
 .menu {
-  z-index: 2;
+  z-index: 5;
   position: fixed;
   display: flex;
   flex-direction: column;

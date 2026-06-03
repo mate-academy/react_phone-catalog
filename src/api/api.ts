@@ -9,7 +9,7 @@ function wait(delay: number): Promise<void> {
 }
 
 function getData<T>(url: string): Promise<T> {
-  return wait(400)
+  return wait(800)
     .then(() => fetch(BASE_URL + url))
     .then((response) => {
       if (!response.ok) {
