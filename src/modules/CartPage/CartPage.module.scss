@@ -149,6 +149,11 @@
           background-color: $btn-text-hover;
         }
 
+        &:disabled {
+          opacity: 0.5;
+          pointer-events: none;
+        }
+
       }
 
     }
@@ -172,6 +177,7 @@
   }
 
   .modal {
+    border: 1px solid $green;
     background: $surface_1;
     padding: 24px 16px;
     text-align: center;

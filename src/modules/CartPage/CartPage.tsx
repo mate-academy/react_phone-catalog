@@ -6,7 +6,7 @@ import { CartItem } from '../shared/components';
 import { Errors } from '../shared/components/Errors/Errors';
 
 export const CartPage = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, clearCart } = useContext(CartContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const countProducts = cartItems.reduce(
@@ -59,6 +59,7 @@ export const CartPage = () => {
           <button
             className={styles.checkoutButton}
             onClick={() => setIsModalOpen(true)}
+            disabled={countProducts === 0}
           >
             Checkout
           </button>
@@ -69,7 +70,14 @@ export const CartPage = () => {
           <div className={styles.modal} onClick={e => e.stopPropagation()}>
             <h3>🎉 Order confirmed!</h3>
             <p>Thank you for your purchase!</p>
-            <button onClick={() => setIsModalOpen(false)}>Close</button>
+            <button
+              onClick={() => {
+                setIsModalOpen(false);
+                clearCart();
+              }}
+            >
+              Close
+            </button>
           </div>
         </div>
       )}
