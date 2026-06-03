@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
-import { ProductCarts } from '../components/ProductCart/ProductCarts';
-import { PropsPhone } from '../types/Products';
-import { getData } from '../fetch/httpClient';
+import { Link } from 'react-router-dom';
+
+import { ProductCarts } from '../../inMain/ProductCart/ProductCarts';
+import { PropsPhone } from '../../types/Products';
+import { getData } from '../../fetch/httpClient';
+import styles from './Phones.module.scss';
 
 type Props = {
   phones?: PropsPhone[] | null;
@@ -25,6 +28,15 @@ export const Phones: React.FC<Props> = ({ phones }) => {
 
   return (
     <div className="container">
+      <div>
+        <Link to="/" className={styles.home}>
+          <button className={styles.homeButton}>
+            <img src="/img/home.svg" alt="home" className={styles.homeImg} />
+            <p className={styles.homeGo}>{'>'}</p>
+            <p className={styles.homeGoTo}>Phones</p>
+          </button>
+        </Link>
+      </div>
       <h1 className="title">Phones</h1>
 
       {phones?.map(p => (

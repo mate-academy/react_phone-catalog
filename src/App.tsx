@@ -1,9 +1,9 @@
 import './App.module.scss';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
-import { ProductCarts } from './components/ProductCart/ProductCarts';
+import { ProductCarts } from './inMain/ProductCart/ProductCarts';
 import { Outlet } from 'react-router-dom';
-import { BannerSlider } from './components/BannerSlider';
+import { BannerSlider } from './inMain/BannerSlider';
 import { MenuProvider } from './context/MenuContext';
 
 export const App: React.FC = () => {

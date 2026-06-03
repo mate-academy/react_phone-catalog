@@ -25,64 +25,84 @@ export const Header: React.FC<Props> = ({
   }
 
   return (
-    <header className={styles.container}>
-      <NavLink to="/" className={styles.logo}>
-        <img src="/img/logo.svg" alt="Logo" className="logo" />
-      </NavLink>
-
-      <nav>
-        <ul className={styles.navList}>
-          <li className={styles.navItem}>
-            <NavLink to="/" className={cn(styles.navItem, getLinkClass)}>
-              HOME
-            </NavLink>
-          </li>
-          <li className={styles.navItem}>
-            <NavLink to="/phones" className={cn(styles.navItem, getLinkClass)}>
-              PHONES
-            </NavLink>
-          </li>
-          <li className={styles.navItem}>
-            <NavLink to="/tablets" className={cn(styles.navItem, getLinkClass)}>
-              TABLETS
-            </NavLink>
-          </li>
-          <li className={styles.navItem}>
-            <NavLink
-              to="/accessories"
-              className={cn(styles.navItem, getLinkClass)}
-            >
-              ACCESSORIES
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
-
-      <div className={styles.actionsIcon}>
-        <NavLink to="/favorites" className={styles.icon} aria-label="Favorites">
-          <img
-            src="/img/favorites.svg"
-            className={styles.iconImgFavorites}
-            alt="Favourites"
-          />
-          {favoritesCount > 0 && (
-            <span className="badge">{favoritesCount}</span>
-          )}
+    <header className={styles.header}>
+      <div className={styles.container}>
+        <NavLink to="/" className={styles.logo}>
+          <img src="/img/logo.svg" alt="Logo" className="logo" />
         </NavLink>
 
-        <NavLink to="/cart" className={styles.icon} aria-label="Cart">
-          <img src="/img/cart.svg" className={styles.iconImgCart} alt="Cart" />
-          {cartCount > 0 && <span className="badge">{cartCount}</span>}
-        </NavLink>
-      </div>
+        <nav>
+          <ul className={styles.navList}>
+            <li className={styles.navItem}>
+              <NavLink to="/" className={cn(styles.navItem, getLinkClass)}>
+                HOME
+              </NavLink>
+            </li>
+            <li className={styles.navItem}>
+              <NavLink
+                to="/phones"
+                className={cn(styles.navItem, getLinkClass)}
+              >
+                PHONES
+              </NavLink>
+            </li>
+            <li className={styles.navItem}>
+              <NavLink
+                to="/tablets"
+                className={cn(styles.navItem, getLinkClass)}
+              >
+                TABLETS
+              </NavLink>
+            </li>
+            <li className={styles.navItem}>
+              <NavLink
+                to="/accessories"
+                className={cn(styles.navItem, getLinkClass)}
+              >
+                ACCESSORIES
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
 
-      <div className={styles.burgerMenuMaxWidth}>
-        <button className={styles.burgerMenu} onClick={menu.toggleMenu}>
-          <img src="/img/burger-mob.svg" alt="BurgerMenu" />
-        </button>
-      </div>
+        <div className={styles.actionsIcon}>
+          <NavLink
+            to="/favorites"
+            className={styles.icon}
+            aria-label="Favorites"
+          >
+            <img
+              src="/img/favorites.svg"
+              className={styles.iconImgFavorites}
+              alt="Favourites"
+            />
+            {favoritesCount > 0 && (
+              <span className="badge">{favoritesCount}</span>
+            )}
+          </NavLink>
 
-      {menu.isMenuOpen && <Asaid onClose={menu.closeMenu} />}
+          <NavLink to="/cart" className={styles.icon} aria-label="Cart">
+            <img
+              src="/img/cart.svg"
+              className={styles.iconImgCart}
+              alt="Cart"
+            />
+            {cartCount > 0 && <span className="badge">{cartCount}</span>}
+          </NavLink>
+        </div>
+
+        <div className={styles.burgerMenuMaxWidth}>
+          <button className={styles.burgerMenu} onClick={menu.toggleMenu}>
+            <img
+              src="/img/burger-mob.svg"
+              alt="BurgerMenu"
+              className={styles.iconImgBurgerMob}
+            />
+          </button>
+        </div>
+
+        {menu.isMenuOpen && <Asaid onClose={menu.closeMenu} />}
+      </div>
     </header>
   );
 };
