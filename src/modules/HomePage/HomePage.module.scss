@@ -1,0 +1,54 @@
+.page {
+  display: grid;
+  gap: 80px;
+  width: 100%;
+  min-width: 0;
+}
+
+.page h1 {
+  margin-bottom: -40px;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: 0;
+}
+
+.hero {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  max-width: var(--page-max-width);
+  margin-inline: auto;
+  min-width: 0;
+}
+
+.section {
+  width: 100%;
+  max-width: var(--page-max-width);
+  margin-inline: auto;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.section h2 {
+  margin-bottom: 24px;
+  font-size: 32px;
+  line-height: 41px;
+}
+
+.empty {
+  text-align: center;
+  padding: 2rem;
+  color: #334155;
+}
+
+@media (max-width: 640px) {
+  .page {
+    gap: 56px;
+  }
+
+  .page h1 {
+    margin-bottom: -24px;
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
