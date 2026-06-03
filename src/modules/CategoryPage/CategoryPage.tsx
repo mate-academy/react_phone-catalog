@@ -26,7 +26,7 @@ export const CategoryPage = ({ category, title }: CategoryPageProps) => {
   const query = searchParams.get('query') || '';
   const page = Number(searchParams.get('page') || '1');
   const perPageParam = searchParams.get('perPage');
-  const perPage = perPageParam === 'all' ? 'all' : Number(perPageParam || '4');
+  const perPage = perPageParam === 'all' ? 'all' : Number(perPageParam || '16');
 
   useEffect(() => {
     setLoading(true);

@@ -7,9 +7,12 @@ import {
 } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
 import { useFavorites } from '../../contexts/FavoritesContext';
+import { getAssetPath } from '../../utils/assets';
 import styles from './Header.module.scss';
 
 const searchRoutes = ['/phones', '/tablets', '/accessories', '/favorites'];
+const favoriteIcon = getAssetPath('img/figma/Vector (Stroke).svg');
+const cartIcon = getAssetPath('img/figma/Group 17.svg');
 
 export const Header = () => {
   const location = useLocation();
@@ -20,6 +23,8 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { totalQuantity } = useCart();
   const { count } = useFavorites();
+  const isFavoritesActive = location.pathname.startsWith('/favorites');
+  const isCartActive = location.pathname.startsWith('/cart');
 
   const isSearchPage = useMemo(
     () => searchRoutes.some(route => location.pathname.startsWith(route)),
@@ -107,21 +112,27 @@ export const Header = () => {
           )}
           <button
             type="button"
-            className={styles.navButton}
+            className={`${styles.navButton} ${
+              isFavoritesActive ? styles.navButtonActive : ''
+            }`}
             onClick={() => navigate('/favorites')}
             aria-label="Open favorites"
           >
-            <i className="fa-regular fa-heart" aria-hidden="true" />
-            <span>{count}</span>
+            <img src={favoriteIcon} alt="" className={styles.actionIcon} />
+            {count > 0 && <span className={styles.badge}>{count}</span>}
           </button>
           <button
             type="button"
-            className={styles.navButton}
+            className={`${styles.navButton} ${
+              isCartActive ? styles.navButtonActive : ''
+            }`}
             onClick={() => navigate('/cart')}
             aria-label="Open cart"
           >
-            <i className="fa-solid fa-bag-shopping" aria-hidden="true" />
-            <span>{totalQuantity}</span>
+            <img src={cartIcon} alt="" className={styles.actionIcon} />
+            {totalQuantity > 0 && (
+              <span className={styles.badge}>{totalQuantity}</span>
+            )}
           </button>
         </div>
       </div>
