@@ -25,22 +25,40 @@
 }
 
 .buttons button {
+  display: grid;
+  place-items: center;
   width: 32px;
   height: 32px;
   border: 1px solid var(--color-icons);
   border-radius: 0;
   background: var(--color-white);
   padding: 0;
+  color: var(--color-primary);
   cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.buttons button:disabled {
+  border-color: var(--color-elements);
+  color: var(--color-icons);
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.buttons button:not(:disabled):hover {
+  border-color: var(--color-primary);
+  background: var(--color-hover);
 }
 
 .list {
   display: flex;
   gap: 16px;
-  overflow-x: auto;
   width: 100%;
   padding-bottom: 4px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
+  scrollbar-width: none;
   max-width: 100%;
   min-width: 0;
 }
