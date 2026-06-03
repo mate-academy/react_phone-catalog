@@ -5,6 +5,12 @@ export const ua = {
     RAM: 'ОЗП',
     button: 'Додати в кошик',
     buttonSelected: 'Додано',
+    processor: 'Процесор',
+    resolution: 'Роздільна здатність',
+    builtInMemory: 'Вбудована памʼять',
+    camera: 'Камера',
+    zoom: 'Зум',
+    cell: 'Мережа',
   },
 
   HomeTitle: {
@@ -25,7 +31,7 @@ export const ua = {
       cheapest: 'Найдешевшими',
     },
     itemsOnPageTitle: 'Товарів на сторінці',
-    search: 'Пошук'
+    search: 'Пошук',
   },
 
   sectionCategories: {

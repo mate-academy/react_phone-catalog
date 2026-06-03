@@ -5,6 +5,12 @@ export const en = {
     RAM: 'RAM',
     button: 'Add to cart',
     buttonSelected: 'Added',
+    processor: 'Processor',
+    resolution: 'Resolution',
+    builtInMemory: 'Built in memory',
+    camera: 'Camera',
+    zoom: 'Zoom',
+    cell: 'Cell',
   },
 
   HomeTitle: {

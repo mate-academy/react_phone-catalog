@@ -49,7 +49,6 @@ const debounce = (time: number, callback: () => void) => {
     clearTimeout(timer);
 
     timer = setTimeout(() => {
-      console.log('mmmmmm');
       callback();
     }, time);
   };
@@ -140,7 +139,7 @@ export const ProductsPage = ({ category }: { category: 'phones' | 'tablets' | 'a
     <main>
       <div className={styles.content}>
         <Breadcrumbs></Breadcrumbs>
-        <h1 className={styles.title}>{title}</h1>
+        <h1 >{title}</h1>
         <p className={styles.p}>{!preparePhone ? '...' : preparePhone.length} models</p>
         <div className={styles.filterSortContainer}>
           <div className={classNames(styles.dropdownSortBox, styles.filterbox)}>

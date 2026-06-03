@@ -1,33 +1,7 @@
-type Capacity = '32GB' | '64GB' | '128GB' | '256GB' | '512GB';
-type Color = 'black' | 'green' | 'yellow' | 'white' | 'purple' | 'red';
-type Cell = 'GPRS' | 'EDGE' | 'WCDMA' | 'UMTS' | 'HSPA' | 'LTE';
-
-type Description = {
-  title: string;
-  text: string[];
-};
-
-export type Phone = {
-  id: string;
-  category: string;
-  namespaceId: string;
-  name: string;
-  capacityAvailable: Capacity[];
-  capacity: Capacity;
-  priceRegular: number;
-  priceDiscount: number;
-  colorsAvailable: Color[];
-  color: Color;
-  images: string[];
-  description: Description[];
-  screen: string;
-  resolution: string;
-  processor: string;
-  ram: string;
-  camera: string;
-  zoom: string;
-  cell: Cell[];
-};
+type Capacity = '32GB' | '64GB' | '128GB' | '256GB' | '512GB' | '1TB';
+type Color = 'black' | 'green' | 'yellow' | 'white' | 'purple' | 'red' | 'gold';
+// type Cell = 'GPRS' | 'EDGE' | 'WCDMA' | 'UMTS' | 'HSPA' | 'LTE';
+export type Category = 'phones' | 'tablets' | 'accessories';
 
 export type Product = {
   id: number;
@@ -42,4 +16,41 @@ export type Product = {
   ram: string;
   year: number;
   image: string;
+};
+
+
+type ProductCategory = 'phones' | 'tablets' | 'accessories';
+
+type ProductDescription = {
+  title: string;
+  text: string[];
+};
+
+export type ProductDetails = {
+  id: string;
+  category: ProductCategory;
+  namespaceId: string;
+  name: string;
+
+  capacityAvailable: string[];
+  capacity: string;
+
+  priceRegular: number;
+  priceDiscount: number;
+
+  colorsAvailable: string[];
+  color: string;
+
+  images: string[];
+  description: ProductDescription[];
+  descriptionUa: ProductDescription[];
+
+  screen: string;
+  resolution: string;
+  processor: string;
+  ram: string;
+  cell: string[];
+
+  camera?: string;
+  zoom?: string;
 };

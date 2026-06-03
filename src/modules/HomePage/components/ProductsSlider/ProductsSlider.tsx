@@ -26,7 +26,7 @@ type Props = {
   lengthSlides: number;
 };
 
-export const ProductsSlider: React.FC<Props> = ({ lengthSlides, products, isLoading, title }) => {
+export const ProductsSlider: React.FC<Props> = ({ lengthSlides, products, title }) => {
   const swiperRef = useRef<SwiperType | null>(null);
   const [isReady, setIsReady] = useState(false);
 
@@ -43,7 +43,7 @@ export const ProductsSlider: React.FC<Props> = ({ lengthSlides, products, isLoad
     };
   }, []);
 
-  const handleSlidesReady = useCallback((swiper: SwiperType) => {
+  const handleSlidesReady = useCallback(() => {
     setIsReady(true);
   
     // requestAnimationFrame(() => {

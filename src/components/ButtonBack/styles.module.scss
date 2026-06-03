@@ -1,0 +1,35 @@
+.button {
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  background: none;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+
+  color: #89939a;
+  gap: 4px;
+
+  &:hover {
+    color: #0f0f11;
+  }
+}
+
+.icon {
+  color: #0f0f11;
+  transform: rotate(180deg);
+}
+
+[data-theme='dark'] {
+  .button {
+    color: var(--h);
+    &:hover {
+      color: var(--accent);
+    }
+  }
+
+  .icon {
+   color: inherit;
+  }
+}

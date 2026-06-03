@@ -4,7 +4,6 @@ import './App.scss';
 import { Header } from '@/modules/Header';
 import { Outlet } from 'react-router-dom';
 import { ThemeProvider } from './app/providers/Theme';
-import { PhonesProvider } from './app/providers/Phones/PhoneContext';
 import { CartProvider } from './app/providers/Cart';
 import { FavouritesProvider } from './app/providers/Favorities';
 import { ProductsProvider } from './app/providers/Products/ProductsContext';
@@ -18,13 +17,11 @@ export const App: React.FC = () => {
       <ThemeProvider>
         <CartProvider>
           <FavouritesProvider>
-            <PhonesProvider>
-              <ProductsProvider>
-                <Header></Header>
-                <Outlet />
-                <Footer></Footer>
-              </ProductsProvider>
-            </PhonesProvider>
+            <ProductsProvider>
+              <Header></Header>
+              <Outlet />
+              <Footer></Footer>
+            </ProductsProvider>
           </FavouritesProvider>
         </CartProvider>
       </ThemeProvider>

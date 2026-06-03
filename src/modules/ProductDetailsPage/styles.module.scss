@@ -1,0 +1,238 @@
+@use '@/shared/styles' as *;
+
+.container {
+  @include grid;
+
+  &NoGrid {
+    @include padding-container;
+  }
+}
+
+.imageSwiper {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: 1 / 8;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+}
+
+.title {
+  padding-top: 16px;
+  grid-column: 1 / -1;
+  padding-bottom: 32px;
+
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
+}
+
+.parameters {
+  grid-column: 1 / -1;
+  padding-top: 40px;
+
+  @include on-tablet {
+    padding-top: 0;
+
+    grid-column: 9 / -1;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / 21;
+  }
+}
+
+.parameterTitle {
+  display: flex;
+  justify-content: space-between;
+}
+.parameterSelects {
+  display: flex;
+  gap: 8px;
+}
+
+.parameterBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: var(--line-and-border);
+
+  &MarginTop24 {
+    margin-top: 24px;
+  }
+
+  &MarginBottom24 {
+    margin-bottom: 24px;
+  }
+
+  &MarginBottom32 {
+    margin-bottom: 32px;
+  }
+}
+
+.priceBox {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.price {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  &lineThrough {
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+    color: var(--text);
+  }
+}
+
+.pricelineThrough {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-decoration: line-through;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &MarginTop32 {
+    margin-top: 32px;
+  }
+}
+
+.detail {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+
+  &Text1 {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    color: var(--text);
+
+    &fontSize14 {
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    &fontWeight700 {
+      font-weight: 700;
+    }
+  }
+
+  &Text2 {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: var(--h);
+    text-align: end;
+
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &fontSize14 {
+      font-size: 14px;
+      font-family: Mont;
+      line-height: 21px;
+    }
+
+    &fontWeight700 {
+      font-weight: 700;
+    }
+  }
+}
+
+.buttons {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+  // margin-top: auto;
+}
+
+.buttonHeart {
+  width: 48px;
+  height: 48px;
+}
+
+.buttonBuy {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: center;
+
+  display: block;
+  flex: 1;
+}
+
+.sections {
+  grid-column: 1 / -1;
+
+  margin-block: 56px;
+  row-gap: 56px;
+
+  @include grid;
+  padding: 0;
+
+  @include on-tablet {
+    margin-block: 64px;
+    row-gap: 64px;
+  }
+
+  @include on-desktop {
+    margin-block: 80px;
+    row-gap: 80px;
+  }
+}
+
+.sectionAbout {
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-column: 1 / 12;
+  }
+}
+
+.sectionTechSpecs {
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-column: 13 / -1;
+  }
+}
+
+.sectionAboutDescription {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  & p {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+
+    margin-top: 8px;
+  }
+}

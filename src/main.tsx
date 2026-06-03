@@ -7,7 +7,7 @@ import { HomePage } from './modules/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { ScrollToTop } from './components/ScrollToTop';
 import './i18n/i18n';
-import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
 import { ProductsPage } from './modules/ProductsPage';
 
 createRoot(document.getElementById('root')!).render(
@@ -22,17 +22,17 @@ createRoot(document.getElementById('root')!).render(
 
         <Route path="phones">
           <Route index element={<ProductsPage key={'phones'} category='phones' />} />
-          <Route path=":productId" element={<ProductDetailsPage />} />
+          <Route path=":productId" element={<ProductDetailsPage category='phones' />} />
         </Route>
 
         <Route path="tablets">
           <Route index element={<ProductsPage key={'tablets'} category='tablets' />} />
-          <Route path=":productId" element={<ProductDetailsPage />} />
+          <Route path=":productId" element={<ProductDetailsPage category='tablets' />} />
         </Route>
 
         <Route path="accessories">
           <Route index element={<ProductsPage key={'accessories'} category='accessories' />} />
-          <Route path=":productId" element={<ProductDetailsPage />} />
+          <Route path=":productId" element={<ProductDetailsPage category='accessories' />} />
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />

@@ -1,4 +1,4 @@
-import { Product } from '@/shared/type';
+import {Product } from '@/shared/type';
 import React, { useMemo } from 'react';
 
 import styles from './styles.module.scss';
@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { useFavourites } from '@/app/providers/Favorities';
 import { ButtonHeart } from '../ButtonHeart/ButtonHeart';
 import { Skeleton } from 'boneyard-js/react';
+import { defaultProduct } from '@/shared/defaultProduct';
 
 type Props = React.ComponentProps<'article'> & {
   product?: Product | undefined;
@@ -20,22 +21,7 @@ export const ProductCard = ({ product, ...props }: Props) => {
   const { favourites, setFavourites } = useFavourites();
 
   const preparedProduct = useMemo(() => {
-    return product
-      ? product
-      : {
-          id: 116,
-          category: 'phones',
-          itemId: 'apple-iphone-13-pro-max-1tb-gold',
-          name: 'Apple iPhone 13 Pro Max 1TB Gold',
-          fullPrice: 1740,
-          price: 1520,
-          screen: "6.1' OLED",
-          capacity: '1TB',
-          color: 'gold',
-          ram: '6GB',
-          year: 2022,
-          image: 'img/phones/apple-iphone-13-pro-max/gold/00.webp',
-        };
+    return product ? product : defaultProduct;
   }, [product]);
 
   const { cart, setCart } = useCart();
@@ -51,7 +37,7 @@ export const ProductCard = ({ product, ...props }: Props) => {
 
   const cardWithoutContainer = (
     <>
-      <Link className={styles.image} to={'/phones/' + preparedProduct.itemId}>
+      <Link className={styles.image} to={'/' + preparedProduct.category + '/' + preparedProduct.itemId}>
         <img
           className={styles.imageImg}
           src={preparedProduct.image}
@@ -59,7 +45,7 @@ export const ProductCard = ({ product, ...props }: Props) => {
           loading="lazy"
         />
       </Link>
-      <Link className={styles.titleLink} to={'/phones/' + preparedProduct.itemId}>
+      <Link className={styles.titleLink} to={'/' + preparedProduct.category + '/' + preparedProduct.itemId}>
         <h4 className={styles.title}>{preparedProduct.name}</h4>
       </Link>
       <div className={styles.priceBox}>

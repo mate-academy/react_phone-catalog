@@ -8,11 +8,6 @@
   padding-bottom: 80px;
 }
 
-.title {
-  @include on-tablet {
-    margin-top: 16px;
-  }
-}
 
 .p {
   margin-top: 8px;

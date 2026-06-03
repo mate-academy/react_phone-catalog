@@ -1,4 +1,4 @@
-import { Phone, Product } from '@/shared/type';
+import { Category, Product, ProductDetails } from '@/shared/type';
 
 const BASE_URL = './api';
 
@@ -9,7 +9,7 @@ function wait(delay: number): Promise<void> {
 }
 
 function getData<T>(url: string): Promise<T> {
-  return wait(1200)
+  return wait(400)
     .then(() => fetch(BASE_URL + url))
     .then((response) => {
       if (!response.ok) {
@@ -20,8 +20,20 @@ function getData<T>(url: string): Promise<T> {
     });
 }
 
-function getPhones() {
-  return getData<Phone[]>('/phones.json');
+function getProductDetails(category: Category, itemId: string) {
+  return getData<ProductDetails[]>(`/${category}.json`).then((phones) => {
+    const productDetail = phones.find((findPhone) => findPhone.id === itemId);
+    if (!productDetail) {
+      throw new Error("Don't found phone");
+    }
+
+    return {
+      productDetail,
+      productByNamespace: phones.filter(
+        (filterPhone) => filterPhone.namespaceId === productDetail?.namespaceId,
+      ),
+    };
+  });
 }
 
 function getProducts() {
@@ -29,6 +41,6 @@ function getProducts() {
 }
 
 export const api = {
-  getPhones: getPhones,
-  getProducts: getProducts,
-}
+  getProductDetails,
+  getProducts,
+};

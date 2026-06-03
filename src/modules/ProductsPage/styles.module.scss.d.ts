@@ -6,4 +6,3 @@ export declare const filterSortContainer: string;
 export declare const p: string;
 export declare const pagination: string;
 export declare const queryBox: string;
-export declare const title: string;

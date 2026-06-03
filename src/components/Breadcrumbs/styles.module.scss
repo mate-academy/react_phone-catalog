@@ -1,8 +1,14 @@
+@use '@/shared/styles' as *;
+
 .breadcrumbs {
   display: flex;
   align-items: center;
   gap: 8px;
   padding-block: 24px;
+
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
 }
 
 .breadcrumbsLink {
