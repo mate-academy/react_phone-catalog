@@ -1,0 +1,40 @@
+@use '/src/modules/shared/styles/variables.scss' as *;
+
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  padding-inline: 16px;
+
+
+
+  @media (min-width: $tablet-breakpoint) {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    padding-inline: 24px;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    grid-template-columns: repeat(24, minmax(0, 32px))  ;
+    justify-content: center
+  }
+}
+
+@mixin section-margin {
+  margin-bottom: 56px;
+
+  @media (min-width: $tablet-breakpoint) {
+    margin-bottom: 64px;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    margin-bottom: 80px;
+  }
+}
+

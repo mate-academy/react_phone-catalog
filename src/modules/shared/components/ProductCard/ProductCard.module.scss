@@ -1,0 +1,165 @@
+@use '/src/modules/shared/styles/variables.scss' as *;
+@use '/src/modules/shared/styles/mixins.scss' as *;
+
+
+%add-to-cart {
+  height: 40px;
+  flex: 1;
+  border: none;
+
+  @include font-buttons;
+
+  color: $white;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background-color: $btn-text-hover;
+  }
+}
+
+%add-to-fav {
+  width: 40px;
+  height: 40px;
+
+  @include flex-center;
+}
+
+.productCard {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  background-color: $surface_1;
+
+  width: 100%;
+  padding: 32px;
+  height: 440px;
+
+  @media (min-width: $tablet-breakpoint) {
+    height: 512px;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    height: 506px;
+  }
+
+
+  .productImage {
+    flex: 1;
+    min-height: 0;
+
+    .image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+
+      @include scale-img;
+    }
+  }
+
+  .title {
+    text-decoration: none;
+
+    @include font-body-text;
+
+    margin-top: 16px;
+
+    color: $white;
+  }
+
+  .prices {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0;
+
+    p {
+      @include font-h3;
+    }
+
+    :last-child {
+      color: $graySecondary;
+      text-decoration: line-through;
+      font-weight: 600;
+      line-height: 100%;
+    }
+
+  }
+
+  .another_info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-top: $border-default;
+    padding: 16px 0;
+
+    p {
+      @include font-small-text;
+    }
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+
+      :first-child {
+        color: $graySecondary;
+      }
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    gap: 8px;
+
+
+
+    .addToCart {
+      @extend %add-to-cart;
+
+      background-color: $color-accent;
+    }
+
+    .addedToCart {
+      @extend %add-to-cart;
+
+      background-color: $icon-bg-selected;
+
+      &:hover {
+        background-color: $icon-bg-hover;
+      }
+    }
+
+    .addToFav {
+      @extend %add-to-cart;
+      @extend %add-to-fav;
+
+      flex: none;
+
+      background-color: $icon-bg-default;
+      border: none;
+
+    }
+
+    .addedToFav {
+      @extend %add-to-fav;
+
+      border: $border-default;
+      background-color: $black;
+
+
+    }
+
+    img {
+      justify-content: center;
+      align-items: center;
+      width: 16px;
+      height: 16px;
+    }
+
+  }
+}

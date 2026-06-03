@@ -1,0 +1,123 @@
+@use '../shared/styles/mixins.scss' as *;
+@use '../shared/styles/variables.scss' as *;
+
+
+.favoritespage {
+  overflow-x: hidden;
+  box-sizing: border-box;
+  margin-block: 25px 56px;
+
+  @include grid;
+
+  .header {
+    grid-column: 1 / -1;
+    width: 100%;
+
+    .breadcrumb {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+
+      &_icon {
+        @include flex-center;
+
+        width: 16px;
+        height: 16px;
+      }
+
+      &_page {
+        text-transform: capitalize;
+        color: $graySecondary;
+
+        @include font-small-text;
+
+      }
+    }
+
+    .title {
+      margin-block: 24px 8px;
+      text-transform: capitalize;
+
+      @include font-h1(32px, 41px);
+
+      @media (min-width: $tablet-breakpoint) {
+        margin-top: 40px;
+
+        @include font-h1;
+      }
+    }
+
+    .count {
+      @include font-body-text;
+
+      margin-bottom: 8px;
+      color: $graySecondary;
+    }
+
+    .filters {
+      display: flex;
+      box-sizing: border-box;
+      width: 100%;
+
+      gap: 16px;
+      margin-block: 32px 8px;
+
+      &_title {
+        @include font-small-text;
+
+        color: $graySecondary;
+      }
+
+      &_select {
+        @include font-buttons;
+
+        width: 135px;
+        margin-top: 4px;
+        appearance: none;
+        box-sizing: border-box;
+        padding: 12px;
+        height: 40px;
+        border: none;
+        background-color: $surface_2;
+        color: $white;
+
+        background-image: url('public/img/icons/Chevron_(Arrow_Down).svg');
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-size: 16px;
+
+
+      }
+    }
+  }
+
+  .products {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr;
+    gap: 16px 40px;
+    align-items: stretch;
+
+    @media (min-width: $tablet-breakpoint) {
+      grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .pages {
+    grid-column: 1 / -1;
+    gap: 8px;
+    margin-block: 24px 64px;
+
+    @media (min-width: $tablet-breakpoint) {
+      margin-block: 40px 64px;
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+      margin-block: 40px 80px;
+    }
+  }
+}

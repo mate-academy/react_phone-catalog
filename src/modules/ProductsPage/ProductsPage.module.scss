@@ -1,0 +1,234 @@
+@use '../shared/styles/mixins.scss' as *;
+@use '../shared/styles/variables.scss' as *;
+
+
+%icon {
+  width: 32px;
+  height: 32px;
+  margin-inline: 8px;
+  border: none;
+  background-color: $icon-bg-default;
+
+  @include flex-center;
+
+
+  img {
+    width: 16px;
+    height: 16px;
+    filter: invert(1);
+  }
+
+  &:hover {
+    background-color: $icon-bg-hover;
+  }
+
+}
+
+
+.productspage {
+  overflow-x: hidden;
+  box-sizing: border-box;
+  margin: 24px 0;
+
+  @include grid;
+
+  .header {
+    grid-column: 1 / -1;
+    width: 100%;
+
+    .breadcrumb {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+
+      &_icon {
+        @include flex-center;
+
+        width: 16px;
+        height: 16px;
+      }
+
+      &_category {
+        text-transform: capitalize;
+        color: $graySecondary;
+
+        @include font-small-text;
+
+      }
+    }
+
+    .title {
+      margin-block: 24px 8px;
+
+      @include font-h1(32px, 41px)
+    }
+
+    .count {
+      @include font-body-text;
+
+      color: $graySecondary;
+    }
+
+    .filters {
+      display: flex;
+      box-sizing: border-box;
+      width: 100%;
+
+      gap: 16px;
+      margin-block: 32px 8px;
+
+      &_title {
+        @include font-small-text;
+
+        color: $graySecondary;
+      }
+
+      .sort_by,
+      .items_on_page {
+        position: relative;
+      }
+
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown_header {
+        @include font-buttons;
+
+        width: 176px;
+        height: 40px;
+        margin-top: 4px;
+        padding: 0 12px;
+        background-color: $surface_2;
+        border: none;
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+
+        cursor: pointer;
+
+        img {
+          width: 16px;
+          height: 16px;
+          filter: invert(1);
+        }
+
+        &:hover {
+          outline: $border-default;
+        }
+
+        &.open {
+          border-color: $color-accent;
+        }
+
+        &:hover img {
+          filter: invert(0);
+        }
+
+
+
+      }
+
+      .dropdown_list {
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        width: 100%;
+        background-color: $surface_2;
+        border: $border-default;
+        list-style: none;
+        z-index: 10;
+
+
+      }
+
+      .dropdown_item {
+        @include font-body-text;
+
+        padding: 8px 12px;
+        cursor: pointer;
+        color: $graySecondary;
+        background-color: $black;
+
+        &:hover {
+          background-color: $surface_2;
+          color: $white;
+        }
+
+        &.active {
+          color: $white;
+        }
+      }
+
+      .items_on_page .dropdown_header {
+        width: 80px;
+      }
+    }
+
+  }
+
+  .products {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-items: stretch;
+
+    @media (min-width: $tablet-breakpoint) {
+      grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .pages {
+    grid-column: 1 / -1;
+    gap: 8px;
+    margin-block: 24px 64px;
+
+    @media (min-width: $tablet-breakpoint) {
+      margin-block: 40px 64px;
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+      margin-block: 40px 80px;
+    }
+
+    @include flex-center;
+
+    .icon {
+      @extend %icon;
+
+      &_disabled {
+        @extend %icon;
+
+        border: $border-default;
+        background-color: $surface_1;
+        pointer-events: none;
+
+        opacity: 0.5;
+      }
+
+    }
+
+
+    &_button {
+      width: 32px;
+      height: 32px;
+      text-decoration: none;
+      border: none;
+      background-color: $surface_1;
+      color: white;
+
+    }
+
+    .active {
+      background-color: $btn-text-default;
+    }
+  }
+
+}

@@ -1,0 +1,98 @@
+@use "/src/modules/shared/styles/variables.scss" as *;
+@use "/src/modules/shared/styles/mixins.scss" as *;
+
+
+%icon {
+  width: 32px;
+  height: 32px;
+  border: none;
+  cursor: pointer;
+  background-color: $icon-bg-default;
+
+  @include flex-center;
+
+  &:hover {
+    background-color: $icon-bg-hover;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+    filter: invert(1);
+  }
+}
+
+.productsSlider {
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
+
+  .header {
+    @include flex-center;
+    @include font-h2($size: 22px, $line-height: 140%);
+
+    @media (min-width: $tablet-breakpoint) {
+      @include font-h2;
+    }
+
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+
+    .headerButtons {
+      display: flex;
+      gap: 8px;
+
+      .icon {
+        @extend %icon;
+      }
+
+
+      .iconDisabled {
+        @extend %icon;
+
+        border: $border-default;
+        background-color: $surface_1;
+        pointer-events: none;
+
+        img {
+          filter: brightness(0.5);
+        }
+      }
+    }
+
+  }
+
+  .windowSlider {
+    box-sizing: border-box;
+    display: flex;
+    overflow-x: auto;
+    justify-content: safe center;
+
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .slider {
+      display: flex;
+      align-items: start›;
+      gap: 16px;
+
+      .card {
+        flex-shrink: 0;
+
+        width: 212px;
+
+        @media (min-width: $tablet-breakpoint) {
+          width: 237px;
+        }
+
+        @media (min-width: $desktop-breakpoint) {
+          width: 272px;
+        }
+      }
+    }
+
+  }
+}
