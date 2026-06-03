@@ -152,12 +152,13 @@ export const ProductDetailsPage = () => {
       <div className={styles.breadcrumbs}>
         <button
           type="button"
-          className={styles.link}
+          className={`${styles.link} ${styles.homeLink}`}
           onClick={() => navigate('/')}
+          aria-label="Home"
         >
-          Home
+          <i className="fa-solid fa-house" aria-hidden="true" />
         </button>
-        <span>›</span>
+        <span className={styles.separator}>›</span>
         <button
           type="button"
           className={styles.link}
@@ -165,8 +166,8 @@ export const ProductDetailsPage = () => {
         >
           {productCategory}
         </button>
-        <span>›</span>
-        <span>{product.name}</span>
+        <span className={styles.separator}>›</span>
+        <span className={styles.current}>{product.name}</span>
       </div>
       <button
         type="button"

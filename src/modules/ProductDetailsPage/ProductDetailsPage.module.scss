@@ -13,19 +13,41 @@
 .breadcrumbs {
   grid-column: 1 / -1;
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 8px;
   color: var(--color-secondary);
   font-size: 12px;
   line-height: 15px;
+  font-weight: 600;
 }
 
 .link {
+  display: inline-flex;
+  align-items: center;
   border: none;
   background: none;
   color: var(--color-primary);
   cursor: pointer;
   padding: 0;
+  text-decoration: none;
+}
+
+.homeLink {
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  font-size: 12px;
+}
+
+.separator {
+  color: var(--color-icons);
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.current {
+  color: var(--color-secondary);
 }
 
 .backButton {
