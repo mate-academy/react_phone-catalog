@@ -192,14 +192,14 @@
     color: white;
     white-space: nowrap;
 
-
-    &:hover {
+    &:hover:not(.is-added) {
       background-color: #A378FF;
     }
 
-    &:disabled {
+    &.is-added {
       background-color: #3B3E4A;
-      cursor: not-allowed;
+      color: #F1F2F9;
+      cursor: pointer;
     }
   }
 

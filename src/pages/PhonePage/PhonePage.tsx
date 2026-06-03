@@ -17,7 +17,7 @@ interface CartItem {
 }
 
 export const PhonePage = () => {
-  const { addToCart, toggleFavorite, cart, favorites } = useCart();
+  const { addToCart, toggleFavorite, removeFromCart, cart, favorites } = useCart();
 
   const [phones, setPhones] = useState<Phone[]>([]);
   const [filteredPhones, setFilteredPhones] = useState<Phone[]>([]);
@@ -210,13 +210,17 @@ export const PhonePage = () => {
                   }`}
                   onClick={e => {
                     e.preventDefault();
-                    handleAddToCart(phone);
+                    const inCart = cart.some(item =>
+                      item.id === phone.id &&
+                      item.color === phone.color &&
+                      item.capacity === phone.capacity,
+                    );
+                    if (inCart) {
+                      removeFromCart(phone.id);
+                    } else {
+                      handleAddToCart(phone);
+                    }
                   }}
-                  disabled={cart.some(item =>
-                    item.id === phone.id &&
-                    item.color === phone.color &&
-                    item.capacity === phone.capacity,
-                  )}
                 >
                   {cart.some(item =>
                     item.id === phone.id &&
@@ -254,10 +258,13 @@ export const PhonePage = () => {
 
       {totalPages > 1 && (
         <div className="pagination">
-          {/* Иконка стрелки влево  */}
-          <button onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} disabled={currentPage === 1} className="pagination__button pagination__button--nav">
-  <img src="./icons/arrow-left-small-white.svg" alt="prev" />
-</button>
+          <button
+            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className="pagination__button pagination__button--nav"
+          >
+            <img src="./icons/arrow-left-small-white.svg" alt="prev" />
+          </button>
 
           {getPageNumbers().map((page, index) => (
             <button
@@ -270,10 +277,13 @@ export const PhonePage = () => {
             </button>
           ))}
 
-          {/* Иконка стрелки вправо  */}
-          <button onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))} disabled={currentPage === totalPages} className="pagination__button pagination__button--nav">
-  <img src="./icons/arrow-right-small-white.svg" alt="next" />
-</button>
+          <button
+            onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+            disabled={currentPage === totalPages}
+            className="pagination__button pagination__button--nav"
+          >
+            <img src="./icons/arrow-right-small-white.svg" alt="next" />
+          </button>
         </div>
       )}
     </section>
