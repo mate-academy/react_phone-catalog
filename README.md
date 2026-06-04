@@ -1,143 +1,93 @@
-# React ProductType Catalog
+# React Product Catalog
 
-Implement the catalog with a shopping cart and favorites page according to one of the next designs:
+A comprehensive, high-performance e-commerce application designed for browsing, filtering, and purchasing tech gadgets (smartphones, tablets, and accessories). The application features advanced client-side routing, query-string based filtering, a persistent shopping cart and wishlist system, comprehensive translation capabilities, and a robust architecture.
 
-- [Original](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)
-- [Original Dark](https://www.figma.com/file/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark)
-- [Rounded Blue](https://www.figma.com/file/FRxncC4lfyhs6og1L6FGEU/Phone-catalog-(V2)-Rounded-Style-2?node-id=0%3A1)
-- [Rounded Purple](https://www.figma.com/file/xMK2Dy0mfBbJJSNctmOuLW/Phone-catalog-(V2)-Rounded-Style-1?node-id=0%3A1)
-- [Rounded Purple](https://www.figma.com/file/7JTa0q8n3dTSAyMNaA0u8o/Phone-catalog-(V2)-Rounded-Style-3?node-id=0%3A1)
+The standout feature of this project is its **advanced design customizability**, offering 5 distinct color themes backed by dynamic SCSS token management and interactive micro-interactions.
 
-You may also implement color theme switching!
+---
 
-## If you work in a team
+## 🌐 Live Preview
 
-Follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)
+Experience the live version of the application here:
+👉 **[Launch Live Demo](https://Bukavyna.github.io/react-phone-catalog/)**
 
-## Project Setup from scratch
+---
 
-Follow the [Instruction](https://github.com/mate-academy/react_phone-catalog/blob/master/setup.md) to setup your project, add Eslint, Prettier, Husky and enable auto deploy.
+## 🎨 Design Reference & Themes
 
-## Data
+The application's interface is based on the professional Phone Catalog design concept. Going beyond standard specifications, this project implements full runtime UI palette shifting across **5 distinct visual configurations**:
 
-Use the data from `/public/api` and images from `/public/img` folders. You can reorganize theme the way you like.
+1. ⚪ **Original Light** — Clean, content-focused corporate layout.
+2. ⚫ **Original Dark** — Deep charcoal background with sharp purple accents.
+3. ❄️ **Ice Cap** — Crisp off-white foundation paired with vibrant blue-violet triggers.
+4. ⚡ **Electric Cyan** — Neon-infused dark interface with cyan and purple contrasts.
+5. 🍑 **Apricot Sorbet** — Soft pastel peach workspace with high-contrast warm accents.
 
-## App
+*All themes are fully mapped to structural CSS/SCSS design tokens to ensure immediate color, border, and text adjustments globally.*
 
-1. Put components into the `src/components` folder.
-   - Each component should be a folder with `product.types.ts`, `ComponentName.tsx`, `ComponentName.module.scss` files.
-   - Use CSS modules.
-   - Keep `.module.scss` files together with their components.
-2. Advanced project structure:
-   - `src/modules` folder. Inside per page modules `HomePage`, `CartPage`, etc., and `shared` folder with shared content between modules.
-   - Inside each module its own `components` folder with the structure described above. And optionally other files/folders: `hooks`, `constants`, and so on.
-3. Add the sticky header with a logo, navigation, favorites, and cart.
-4. The footer with the link to the GitHub repo and `Back to top` button.
-   - The content should be limited to the same width as the page content;
-   - `Back to top` button should scroll to the top smoothly;
-5. Add `NotFoundPage` containing text `Page not found` for all the unknown URLs.
-6. All changes the hover effects should be smooth.
-7. Scale all image links by 10% on hover.
-8. Implement all form elements and icons according to the UI Kit.
+---
 
-## Home page
+## 🛠️ Technologies & Project Architecture
 
-Implement Home page at available at `/`.
+The architecture relies on strict type safety and a highly modular structure to guarantee ease of scaling and smooth performance:
 
-1. `<h1>ProductType Catalog</h1>` should be visually hidden.
-2. `HotPrices`:
-   - Find your own images to personalize the App;
-   - Change pictures automatically every 5 seconds;
-   - The next buttons should show the first image after the last one;
-   - Dashes at the bottom should allow choosing an exact picture.
-3. `ProductsSlider` for the `Hot prices` block:
-   - The products with a discount starting from the biggest absolute value;
-   - `<` and `>` buttons should scroll products.
-4. `Shop by category` block with links to `/phones`, `/tablets`, and `/accessories`.
-5. Add Brand new block using ProductsSlider with products that are the newest according to the year field.
+* **Core Framework:** React 18 (Functional Components & Hooks)
+* **Language:** TypeScript (Strict Mode)
+* **State Management:** React Context API & Custom Storage Hooks (Cart, Favorites, and Theme tracking)
+* **Routing:** React Router v6 (HashRouter with deep URL state management)
+* **Styling:** SCSS / SASS using CSS Modules (`*.module.scss`) for isolated component styles
+* **Localization:** i18next (Seamless runtime transition between English & Ukrainian)
+* **Animations:** Lordicon React Player (Interactive, state-driven Lottie vector profiles)
+* **Build Automation:** Parcel Bundler
 
-## ProductType pages
+### 📁 Architecture & Folder Layout
+The codebase follows an enterprise-ready architecture:
+* `src/modules/` — Split into isolated page modules (`Home`, `Catalog`, `Cart`, `ProductDetails`, `Favorites`, `NotFound`).
+* `src/components/` — Shared, reusable UI layout components (`Button`, `ArrowButton`, `Skeleton`, `Spinner`).
+* Each component directory strictly groups its own `.tsx` view, `.module.scss` stylesheets, and local type interfaces.
 
-There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
+---
 
-1. Each page loads the data of the required `type`.
-2. Add an `h1` with `Phones/Tablets/Accessories page` (choose required).
-3. Add `ProductsList` component showing all the `products`.
-4. Implement a `Loader` to show it while waiting for the data from the server.
-5. In case of a loading error show the something went wrong message with a reload button.
-6. If there are no products available show the `There are no phones/tablets/accessories yet` message (choose required).
-7. Add a `<select>` with the `Newest`, `Alphabetically`, and `Cheapest` options to sort products by `age`, `title`, or `price` (after discount).
-   - Save the sort value in the URL `?sort=age` and apply it after the page reload.
-8. Add `Pagination` buttons and `Items on page` select element with `4`, `8`, `16`, and `all` options.
-   - It should limit the products you show to the user;
-   - Save pagination params in the URL `?page=2&perPage=8` (`page=1` and `perPage=all` are the default values and should not be added to the URL;
-   - Hide pagination elements if they do not make sense;
-   - You can use the logic explained in [the React Pagination task](https://github.com/mate-academy/react_pagination#react-pagination).
+## ✨ Features
 
-## ProductType details page
+### 🌟 Advanced Requirements Met
+* **🎨 Dual-Theme Switching:** Comprehensive implementation of runtime Dark Mode and Light Mode switching mapped to global SCSS variables.
+* **🌐 Full i18n Localization:** In-app language toggle translating systemic strings between Ukrainian (UK) and English (EN) instantly.
+* **🦴 Structural Skeletons:** Premium placeholder blocks utilizing simulated loading states for high-end perceived speed.
+* **✨ Micro-Interactions & Animated UI:** Replaced generic static icons with stateful **Lordicon Lottie animations** (e.g., `paletteFlower`, `wiredTrolley`). These icons dynamically track mouse engagement (`onMouseEnter`) via specialized hooks and adapt their internal vector color properties (`primary`/`secondary` parameters) in real-time to match the active color theme configurations.
 
-Create `ProductDetailsPage` available at `/product/:productId`.
+### 🏠 Home Page
+* **Dynamic Hero Banner:** An automated, infinite loop image slider updating every 5 seconds, complete with manual indicator dots and side-scrolling arrows.
+* **Curated Product Carousels:** Specialized dynamic shelves capturing `Hot Prices` (ranked by absolute discount values) and `Brand New Models` (ranked by release year).
+* **Category Navigation:** High-fidelity responsive links splitting inventory into Phones, Tablets, and Accessories.
 
-1. `ProductCard` image and title should be links to the product details page.
-2. Use `Loader` when fetching the product details.
-3. Show the details on the page:
-   - Display the available colors from colorsAvailable and the capacities from capacityAvailable as radio inputs, allowing the selection of one value from the offered options;
-   - `About` section should contain a subheader with description;
-   - Choose `Tech specs` you want to show.
-4. Add the ability to choose a picture.
-5. Implement `You may also like` block with products chosen randomly:
-   - Create `getSuggestedProducts` method fetching the suggested products.
-6. Add `Back` button working the same way as a Browser `Back` button.
-7. Add `Breadcrumbs` at the top with:
-   - A Home page link;
-   - A category page link (`Phones`, `Tablets`, `Accessories`);
-   - The name of the product (just a text).
-8. Show `ProductType was not found` if there is no product with a given id on the server.
+### 📱 Catalog Management (`/phones`, `/tablets`, `/accessories`)
+* **Asynchronous Loading UX:** Smooth content staging driven by dedicated spinner icons and highly structural **CSS Skeletons** simulating data shapes.
+* **Persistent URL States:** Complex sorting values (`Newest`, `Alphabetically`, `Cheapest`) and pagination caps (`4`, `8`, `16`, `all`) sync inside browser query parameters (`?page=2&perPage=8&sort=age`).
+* **Resilient Boundaries:** Built-in error retry boundaries alongside user-friendly "Something went wrong" or empty inventory state panels.
 
-## Shopping Cart page
+### 🔍 Global Debounced Search
+* **Context-Aware Inputs:** Search textbars mount within the navigation layout, evaluating data queries inside local product lists via custom debouncing.
+* **Deep Linking:** Lookups are bound directly to `?query=value` parameters to allow straightforward page link shares.
 
-Create a Cart page with a list of `CartItem`s at `/cart`.
-Each item should have an `id`, `quantity`, and a `product`.
-Use React Context or Redux to store Items.
+### 🛍️ Shopping Cart & Wishlist Ecosystem
+* **Persistent Session Storage:** Cart items, total pricing metadata, and favorited states serialize directly into `localStorage` on every user engagement.
+* **Granular Cart Modifiers:** Supports bulk removal, incremental item counts, and dynamic item counter indicators over header navbar icons.
+* **Simulated Checkout Flow:** Triggering checkout launches an interactive window prompting order confirmation and cart clearance.
 
-1. `Add to cart` button in the `ProductCard` should add a product to the `Cart`.
-2. If the product is already in the `Cart` the button should say `Added to cart` and do nothing.
-3. Add the ability to remove items from the `Cart` with an `x` button next to a `CartItem`.
-4. Add a message `Your cart is empty` when there are no products in the `Cart`.
-5. Add the ability to change the item quantity in the `Cart` with `-` and `+` buttons (it should be > 0).
-6. Total amount and quantity should be calculated automatically.
-7. Show the quantity at the `Cart` icon in the header.
-8. Save the `Cart` to `localStorage` on each change and read it on page load.
-9. `Checkout` button should show a modal dialog with the text `Checkout is not implemented yet. Do you want to clear the Cart?`:
-   - Clear the Cart if the user confirms the order;
-   - Keep the Cart items and close the confirmation on cancel;
-   - Use the `confirm` function if you don't have a better solution.
+---
 
-## Favorites page
+## 🚀 Getting Started
 
-Create `Favorites` page with a `ProductsList` showing favorite products at `/favorites`.
+To run this project locally, execute the following commands in your terminal:
 
-1. Add/remove a product to favorites by pressing a heart button in the `ProductCard` element.
-2. The heart should be highlighted if the product is already added to the favorites.
-3. Use React Context or Redux to store the favorites.
-4. Show the number of favorites at the `Favorites` icon in the header.
-5. Save favorites to `localStorage` on each change and load theme on page load.
+```bash
+# 1. Clone the repository
+git clone [https://github.com/Bukavyna/react-phone-catalog.git](https://github.com/Bukavyna/react-phone-catalog.git)
+cd react-phone-catalog
 
-## Other tasks
+# 2. Install package dependencies
+npm install
 
-1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`.
-2. Implement the `ProductType was not found` state for the `ProductDetailsPage`.
-
-## (*) Advanced tasks
-
-- Implement color theme switching!
-- Use [skeletons](https://freefrontend.com/css-skeleton-loadings/) to make loading more natural.
-- Add the ability to change page language.
-
-### Search
-
-Show `input:search` in the header when a page contains a `ProductList` to search in.
-
-1. Save the `Search` value in the URL as a `?query=value` to apply on page load.
-2. Show `There are no phones/tablets/accessories/products matching the query` instead of `ProductList` when needed.
-3. Add `debounce` to the search field.
+# 3. Spin up the local development server
+npm start
