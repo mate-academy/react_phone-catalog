@@ -7,9 +7,10 @@ import styles from './ProductsSlider.module.scss';
 type Props = {
   title: string;
   products: BaseProduct[];
+  className?: string;
 };
 
-export const ProductsSlider = ({ title, products }: Props) => {
+export const ProductsSlider = ({ title, products, className }: Props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const sliderTrackRef = useRef<HTMLDivElement>(null);
 
@@ -32,7 +33,7 @@ export const ProductsSlider = ({ title, products }: Props) => {
   };
 
   return (
-    <div className={`${styles.productsSlider} ${styles.section}`}>
+    <div className={`${styles.productsSlider} ${className}`}>
       <div className={styles.container}>
         <div className={styles.topRow}>
           <h2 className={styles.title}>{title}</h2>
@@ -56,15 +57,17 @@ export const ProductsSlider = ({ title, products }: Props) => {
           </div>
         </div>
         <div className={styles.sliderTrack}>
-          <div
-            className={styles.productCardsContainer}
-            style={{
-              transform: `translateX(-${currentIndex * getCardWidth()}px)`,
-            }}
-          >
-            {products.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+          <div style={{ overflow: 'hidden' }}>
+            <div
+              className={styles.productCardsContainer}
+              style={{
+                transform: `translateX(-${currentIndex * getCardWidth()}px)`,
+              }}
+            >
+              {products.map(product => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
           </div>
         </div>
       </div>

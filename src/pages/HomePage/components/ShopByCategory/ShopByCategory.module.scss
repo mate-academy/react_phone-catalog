@@ -30,9 +30,9 @@
 }
 
 .image {
+  aspect-ratio: 1 / 1;
   width: clamp(#{rem(187)}, 28vw, #{rem(368)});
   margin-bottom: rem(24);
-  aspect-ratio: 1 / 1;
 
   @media (max-width: $desktop) {
     border-radius: rem(8);
@@ -44,15 +44,15 @@
 }
 
 .categoryName {
-  font-weight: 700;
-  font-size: rem(20);
-  color: var(--gray-primary);
   margin-bottom: rem(4);
+  font-size: rem(20);
+  font-weight: 700;
+  color: var(--gray-primary);
 }
 
 .countOfModels {
-  font-weight: 500;
   font-size: rem(14);
+  font-weight: 500;
   line-height: 150%;
   color: var(--gray-secondary);
 }

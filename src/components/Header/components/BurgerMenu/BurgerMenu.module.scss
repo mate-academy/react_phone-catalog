@@ -2,11 +2,13 @@
 
 .overlay {
   position: fixed;
-  inset: rem(48) 0 0;
-  background: var(--gray-white);
   z-index: 99;
+  inset: rem(48) 0 0;
+
   display: flex;
   flex-direction: column;
+
+  background: var(--gray-white);
 
   @media (min-width: $tablet) {
     display: none;
@@ -16,10 +18,11 @@
 .burgerNav {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: rem(32);
-  margin-inline: rem(16);
+  align-items: center;
+
   margin-top: rem(24);
+  margin-inline: rem(16);
 
   @media (min-width: $tablet) {
     display: none;
@@ -27,15 +30,16 @@
 }
 
 .menuIcons {
-  margin-top: auto;
   display: flex;
-  border-top: 1px solid var(--gray-elements);
   width: 100%;
+  margin-top: auto;
+  border-top: 1px solid var(--gray-elements);
 }
 
 .menuIcon {
   @include flex-center($isInline: false);
 
+  position: relative;
   flex: 1;
   height: rem(64);
 

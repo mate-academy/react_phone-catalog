@@ -11,8 +11,8 @@
 }
 
 .image {
-  margin: rem(80);
   aspect-ratio: 1 / 1;
+  margin: rem(80);
 
   @media (max-width: $desktop) {
     margin: rem(40);

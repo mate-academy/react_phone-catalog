@@ -27,10 +27,9 @@
 
 .items {
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: rem(16);
   justify-content: space-between;
-
-  grid-template-columns: repeat(4, 1fr);
 
   @media (min-width: $tablet) {
     grid-template-columns: repeat(12, 1fr);
@@ -38,8 +37,8 @@
   }
 
   @media (min-width: $desktop) {
-    gap: rem(16);
     grid-template-columns: repeat(24, 1fr);
+    gap: rem(16);
   }
 }
 

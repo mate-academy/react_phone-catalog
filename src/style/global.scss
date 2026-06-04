@@ -7,39 +7,39 @@
 }
 
 body {
-  font-family: var(--font-family);
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
+  font-family: var(--font-family);
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
 button {
+  cursor: pointer;
+
   margin: 0;
   padding: 0;
-  cursor: pointer;
   border: none;
+
   background-color: var(--gray-white);
 }
 
 p {
   margin: 0;
-  font-weight: 700;
   font-size: rem(14);
+  font-weight: 700;
   color: var(--gray-secondary);
 }
 
 h1 {
-  font-weight: 800;
   font-size: rem(48);
+  font-weight: 800;
   line-height: 117%;
-  letter-spacing: -0.01em;
   color: var(--gray-primary);
+  letter-spacing: -0.01em;
 
   @media (max-width: $tablet) {
     font-size: rem(32);
@@ -48,19 +48,23 @@ h1 {
 }
 
 h4 {
-  font-weight: 700;
   font-size: rem(20);
+  font-weight: 700;
   color: var(--gray-primary);
 }
 
 .visuallyHidden {
   position: absolute;
+
+  overflow: hidden;
+
   width: 1px;
   height: 1px;
-  padding: 0;
   margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
+  padding: 0;
   border: 0;
+
+  white-space: nowrap;
+
+  clip: rect(0, 0, 0, 0);
 }

@@ -269,13 +269,12 @@ export const ProductPage = () => {
             <SpecsTable specs={fullSpecs} variant="small" />
           </div>
         </div>
-        <div style={{ gridColumn: '1 / -1' }}>
-          <ProductsSlider
-            title={'You may also like'}
-            products={sliderProducts}
-          />
-        </div>
       </div>
+      <ProductsSlider
+        title={'You may also like'}
+        products={sliderProducts}
+        className={styles['product-page']}
+      />
     </div>
   );
 };

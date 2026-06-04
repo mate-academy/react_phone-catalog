@@ -5,12 +5,15 @@
 
   &::after {
     content: '';
+
     position: absolute;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
+
     height: rem(3);
     border-radius: rem(5);
+
     background: var(--gray-primary);
   }
 }
@@ -21,18 +24,26 @@
 
 .badge {
   position: absolute;
-  top: rem(10);
-  right: rem(10);
-  background-color: #eb5757;
-  color: white;
-  font-size: rem(9);
-  font-weight: 700;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
   width: rem(14);
   height: rem(14);
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+  font-size: rem(9);
+  font-weight: 700;
+  color: white;
+
+  background-color: #eb5757;
+
+  @media (min-width: $tablet) {
+    top: rem(9);
+    right: rem(9);
+    display: flex;
+  }
 
   @media (min-width: $desktop) {
     top: rem(17);

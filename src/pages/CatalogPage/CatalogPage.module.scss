@@ -8,11 +8,12 @@
 
 .topBar {
   display: flex;
-  width: 100%;
-  justify-content: start;
-  flex-direction: column;
-  margin: 0 auto;
   grid-column: 1 / -1;
+  flex-direction: column;
+  justify-content: start;
+
+  width: 100%;
+  margin: 0 auto;
 }
 
 .title {
@@ -29,28 +30,28 @@
 }
 
 .filter {
-  grid-column: 1 / -1;
   display: flex;
+  grid-column: 1 / -1;
   gap: rem(16);
   margin-bottom: rem(24);
 
   .sortBy,
   .CountOfItems {
+    position: relative;
     display: flex;
     align-items: center;
-    position: relative;
   }
 }
 
 .input {
-  border: var(--border);
   height: rem(40);
+  border: var(--border);
   border-radius: rem(8);
 }
 
 .button {
-  position: absolute;
   content: "";
+  position: absolute;
   right: 0;
   padding: rem(12);
 }
@@ -71,8 +72,8 @@
   @include slider;
 
   &:disabled {
-    opacity: 0.6;
     cursor: not-allowed;
+    opacity: 0.6;
   }
 }
 
@@ -81,8 +82,8 @@
 }
 
 .active {
-  background-color: var(--gray-primary);
   color: var(--gray-white);
+  background-color: var(--gray-primary);
 }
 
 .left {

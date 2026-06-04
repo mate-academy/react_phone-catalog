@@ -2,11 +2,13 @@
 
 .header {
   position: sticky;
-  border-bottom: var(--border);
-  height: rem(64);
-  background-color: var(--gray-white);
-  top: 0;
   z-index: 100;
+  top: 0;
+
+  height: rem(64);
+  border-bottom: var(--border);
+
+  background-color: var(--gray-white);
 
   @media (max-width: $desktop) {
     height: rem(48);
@@ -17,8 +19,8 @@
   @include flex-between;
 
   max-width: rem(1440);
-  margin: 0 auto;
   height: 100%;
+  margin: 0 auto;
 }
 
 .logo {

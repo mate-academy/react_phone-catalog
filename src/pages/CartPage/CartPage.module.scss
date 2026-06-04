@@ -1,20 +1,20 @@
 @use '../../style' as *;
 
 .cart {
-  padding-inline: 0;
-  margin-block: rem(40) rem(80);
   min-height: calc(100vh - rem(161));
+  margin-block: rem(40) rem(80);
+  padding-inline: 0;
 
   @media (max-width: $desktop) {
-    padding-inline: rem(24);
-    margin-block: rem(40) rem(64);
     min-height: calc(100vh - rem(148));
+    margin-block: rem(40) rem(64);
+    padding-inline: rem(24);
   }
 
   @media (max-width: $tablet) {
-    padding-inline: rem(16);
-    margin-block: rem(24) rem(56);
     min-height: calc(100vh - rem(305));
+    margin-block: rem(24) rem(56);
+    padding-inline: rem(16);
   }
 }
 
@@ -23,10 +23,10 @@
 
   display: grid;
   grid-template-columns: repeat(24, 1fr);
+  column-gap: rem(16);
 
   max-width: rem(1140);
   margin: 0 auto rem(80);
-  column-gap: rem(16);
 
   @media (max-width: $desktop) {
     grid-template-columns: repeat(12, 1fr);
@@ -44,11 +44,11 @@
 }
 
 .items {
-  grid-column: span 16;
   display: flex;
-  align-items: start;
+  grid-column: span 16;
   flex-direction: column;
   gap: rem(16);
+  align-items: start;
 
   @media (max-width: $desktop) {
     grid-column: 1 / -1;
@@ -62,57 +62,61 @@
 
   grid-column: 17 / 25;
   flex-direction: column;
+
+  height: rem(205);
   padding: rem(24);
   border: var(--border);
   border-radius: rem(8);
-  height: rem(205);
 
   @media (max-width: $desktop) {
-    height: rem(190);
     grid-column: 1 / -1;
+    height: rem(190);
   }
 }
 
 .totalPrice {
-  font-weight: 800;
   font-size: rem(32);
+  font-weight: 800;
   line-height: 128%;
-  letter-spacing: -0.01em;
   color: var(--gray-primary);
+  letter-spacing: -0.01em;
 }
 
 .count {
   width: 100%;
-  text-align: center;
-  font-weight: 500;
-  padding-bottom: rem(24);
   margin-bottom: rem(24);
+  padding-bottom: rem(24);
   border-bottom: var(--border);
 
+  font-weight: 500;
+  text-align: center;
+
   @media (max-width: $desktop) {
-    padding-bottom: rem(16);
     margin-bottom: rem(16);
+    padding-bottom: rem(16);
   }
 }
 
 .checkoutButton {
   width: 100%;
   height: rem(48);
-  background: var(--accent);
   border-radius: rem(8);
+
   font-family: var(--font-family);
-  font-weight: 500;
   font-size: 14px;
+  font-weight: 500;
   line-height: 150%;
-  text-align: center;
   color: var(--gray-white);
+  text-align: center;
+
+  background: var(--accent);
 }
 
 .empty {
   display: flex;
-  width: 100%;
-  flex-direction: column;
   grid-column: 1 / -1;
+  flex-direction: column;
+  width: 100%;
 }
 
 .emptyTitle {
@@ -121,10 +125,10 @@
 }
 
 .emptyImage {
+  align-self: center;
   width: rem(500);
   height: rem(500);
   margin-bottom: rem(40);
-  align-self: center;
 
   @media (max-width: $tablet) {
     width: rem(300);

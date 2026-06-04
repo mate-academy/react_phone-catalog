@@ -8,7 +8,7 @@ export const ButtonBack = () => {
   return (
     <button onClick={() => navigate(-1)} className={styles.buttonBack}>
       <ArrowIcon direction="left" />
-      <p>Back</p>
+      <p className={styles.text}>Back</p>
     </button>
   );
 };

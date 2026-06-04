@@ -21,6 +21,7 @@
   grid-template-columns: 1fr;
   gap: rem(16);
   align-items: start;
+
   width: 100%;
   margin-bottom: rem(40);
 
@@ -41,8 +42,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: rem(8);
-  width: 100%;
   order: 2;
+
+  width: 100%;
 
   @media (min-width: $tablet) {
     flex-direction: column;
@@ -51,12 +53,15 @@
 }
 
 .image {
-  width: clamp(rem(50), 12vw, rem(80));
+  cursor: pointer;
+
   aspect-ratio: 1 / 1;
-  object-fit: contain;
+  width: clamp(rem(50), 12vw, rem(80));
   border: var(--border);
   border-radius: rem(8);
-  cursor: pointer;
+
+  object-fit: contain;
+
   transition: transform 0.3s;
 
   &.active {
@@ -77,14 +82,17 @@
 }
 
 .mainImage {
-  order: 1;
-  width: 100%;
-  max-width: rem(464);
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  margin-inline: auto;
   cursor: pointer;
+
+  order: 1;
+
+  aspect-ratio: 1 / 1;
+  width: 100%;
   min-width: 0;
+  max-width: rem(464);
+  margin-inline: auto;
+
+  object-fit: contain;
 
   @media (min-width: $tablet) {
     order: 2;
@@ -105,15 +113,16 @@
 }
 
 .sectionTitle {
-  font-weight: 500;
   margin-bottom: rem(8);
+  font-weight: 500;
 }
 
 .colorContainer {
   display: flex;
   gap: rem(8);
-  padding-bottom: rem(24);
+
   margin-bottom: rem(24);
+  padding-bottom: rem(24);
   border-bottom: var(--border);
 }
 
@@ -127,14 +136,15 @@
 .capacityContainer {
   display: flex;
   gap: rem(8);
-  padding-bottom: rem(24);
+
   margin-bottom: rem(32);
+  padding-bottom: rem(24);
   border-bottom: var(--border);
 }
 
 .capacity {
-  padding-inline: rem(8);
   padding-block: rem(7) rem(4);
+  padding-inline: rem(8);
   border: var(--border);
   border-radius: rem(10);
 }
@@ -150,23 +160,25 @@
 
 .prices {
   display: flex;
-  align-items: center;
   gap: rem(8);
+  align-items: center;
 }
 
 .price {
+  margin-block: rem(8);
+
   font-size: rem(32);
   font-weight: 800;
-  letter-spacing: -0.01em;
   color: var(--gray-primary);
-  margin-block: rem(8);
+  letter-spacing: -0.01em;
 }
 
 .fullPrice {
   font-size: rem(22);
   font-weight: 500;
-  text-decoration: line-through;
   color: var(--gray-secondary);
+  text-decoration: line-through;
+
   opacity: 0.7;
 }
 
@@ -177,36 +189,44 @@
 }
 
 .cartButton {
+  cursor: pointer;
+
   flex: 1;
+
   height: rem(48);
   padding: rem(10) rem(20);
-  background: var(--accent);
-  color: var(--gray-white);
   border-radius: rem(10);
+
   font-size: rem(14);
   font-weight: 700;
-  cursor: pointer;
+  color: var(--gray-white);
+
+  background: var(--accent);
+
   transition: background 0.3s;
 
   &:hover,
 
   &.cartButtonActive {
-    background: var(--gray-white);
-    color: var(--accent);
     border: 1px solid var(--gray-elements);
+    color: var(--accent);
+    background: var(--gray-white);
   }
 }
 
 .favoriteButton {
+  cursor: pointer;
+
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+
   width: rem(48);
   height: rem(48);
   border: 1px solid var(--gray-elements);
   border-radius: 50%;
-  cursor: pointer;
+
   transition: border-color 0.3s;
 
   path {
@@ -229,25 +249,19 @@
 }
 
 .fullInfo {
-  display: grid;
   grid-column: 1 / -1;
-  grid-template-columns: repeat(24, 1fr);
-  column-gap: rem(16);
 
-  @media (max-width: $desktop) {
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: rem(24);
-  }
-
-  @media (max-width: $tablet) {
-    grid-template-columns: 1fr;
+  @media (min-width: $desktop) {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: rem(16);
   }
 }
 
 .secondTitle {
-  border-bottom: var(--border);
-  padding-bottom: rem(16);
   margin-bottom: rem(32);
+  padding-bottom: rem(16);
+  border-bottom: var(--border);
 }
 
 .about {
@@ -267,24 +281,25 @@
   margin-bottom: rem(32);
 
   &:last-child {
-    border-bottom: none;
     margin-bottom: 0;
+    border-bottom: none;
   }
 }
 
 .descriptionTitle {
+  margin-bottom: rem(16);
   font-size: rem(20);
   font-weight: 700;
   color: var(--gray-primary);
-  margin-bottom: rem(16);
 }
 
 .descriptionText {
+  margin-bottom: rem(8);
+
   font-size: rem(14);
   font-weight: 500;
   line-height: 1.6;
   color: var(--gray-secondary);
-  margin-bottom: rem(8);
 
   &:last-child {
     margin-bottom: 0;
