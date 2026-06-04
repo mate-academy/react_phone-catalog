@@ -10,7 +10,7 @@ export const HomePage = () => {
       <div className={styles.content}>
         <section className={styles.slider}>
           <div className={styles.container}>
-            <button className={styles['slider__button--prev']}>
+            <button className={styles.buttonPrev}>
               <span></span>
             </button>
 
@@ -19,7 +19,7 @@ export const HomePage = () => {
               alt="Banner-phones"
               className={styles.slider__img}
             />
-            <button className={styles['slider__button--next']}>
+            <button className={styles.buttonNext}>
               <span></span>
             </button>
           </div>

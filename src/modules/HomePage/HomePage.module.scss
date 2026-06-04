@@ -27,11 +27,7 @@
 .slider {
   grid-column: 1 / -1;
 
-  &__button--prev {
-    grid-column: 1 / 2;
-  }
-
   &__img {
-    grid-column: 2 / -2;
+    width: 100%;
   }
 }
