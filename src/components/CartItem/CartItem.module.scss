@@ -1,0 +1,105 @@
+@use "../../styles/effects" as *;
+@use "../../styles/mixins" as *;
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  border: 1px solid #E2E6E9;
+  padding: 16px;
+
+  @include hover-scale;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 24px;
+  }
+
+  .leftBloc {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 36px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+
+    .button {
+      color: var(--color-cart-remove);
+
+      font-size: 16px;
+    }
+    .icon {
+      width: 66px;
+      aspect-ratio: 1/1.2;
+      margin-right: auto;
+    }
+
+    .productName {
+      color: var(--color-primary);
+
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      letter-spacing: 0;
+    }
+  }
+
+  .rightBloc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 220px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+
+    .counter {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      width: 100px;
+
+      .buttonQuantity {
+        width: 32px;
+        height: 32px;
+        color: var(--color-primary);
+        border: 1px solid var(--favorite-border);
+
+        font-size: 16px;
+
+        &:disabled {
+          color: var(--button-default);
+          border-color: var(--button-default);
+          background-color: transparent;
+        }
+      }
+
+      .quantity {
+        color: var(--color-cart-quantity);
+
+        font-size: 14px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .price {
+    text-align: right;
+
+    min-width: 80px;
+    color: var(--color-primary);
+    margin-left: auto;
+
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0;
+  }
+}

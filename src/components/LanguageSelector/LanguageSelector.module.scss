@@ -1,0 +1,6 @@
+@use "../../styles/mixins" as *;
+@include dropdown-selector-system;
+
+.switcher {
+  @include nav-button;
+}

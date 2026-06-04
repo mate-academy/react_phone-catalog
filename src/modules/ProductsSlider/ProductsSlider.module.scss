@@ -1,0 +1,93 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables.module" as *;
+
+.productSlider {
+  margin-right: -$padding-inline-mobile;
+  margin-bottom: 80px;
+
+  @include on-tablet {
+    margin-right: -$padding-inline-tablet;
+  }
+
+  @include on-desktop {
+    margin-right: initial;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    .title {
+      display: flex;
+      gap: 16px;
+    }
+
+    .buttonBox {
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  .slider {
+    --gap: clamp(8px, 2vw, 42px);
+    --items: 1.5;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gap);
+
+    padding: 24px 10px;
+    scroll-padding: 0 10px;
+
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include on-tablet {
+      --items: 2.5;
+    }
+
+    @include on-desktop {
+      --items: 4;
+    }
+
+    @media (min-width: 1700px) {
+      --items: 5;
+    }
+  }
+
+  .slide {
+    flex: 0 0 auto;
+
+    scroll-snap-align: start;
+
+    width: calc(
+    (100% - (var(--items) - 1) * var(--gap)) / var(--items)
+    );
+    height: 100%;
+
+    .productCard {
+      height: 100%;
+    }
+  }
+
+    .cardWrapper {
+      width: 100%;
+    }
+  }
+
+.arrowLeft {
+  transform: rotate(180deg);
+}
+
+.arrowRight {
+  transform: rotate(360deg);
+}

@@ -1,4 +1,4 @@
-# React Product Catalog
+# React ProductType Catalog
 
 Implement the catalog with a shopping cart and favorites page according to one of the next designs:
 
@@ -6,7 +6,7 @@ Implement the catalog with a shopping cart and favorites page according to one o
 - [Original Dark](https://www.figma.com/design/WMdJ24eHk4EkSr25mrt7Y2/Phone-catalog--V2--Original-Dark)
 - [Rounded Blue](https://www.figma.com/file/FRxncC4lfyhs6og1L6FGEU/Phone-catalog-(V2)-Rounded-Style-2?node-id=0%3A1)
 - [Rounded Purple](https://www.figma.com/file/xMK2Dy0mfBbJJSNctmOuLW/Phone-catalog-(V2)-Rounded-Style-1?node-id=0%3A1)
-- [Rounded Orange](https://www.figma.com/file/7JTa0q8n3dTSAyMNaA0u8o/Phone-catalog-(V2)-Rounded-Style-3?node-id=0%3A1)
+- [Rounded Purple](https://www.figma.com/file/7JTa0q8n3dTSAyMNaA0u8o/Phone-catalog-(V2)-Rounded-Style-3?node-id=0%3A1)
 
 You may also implement color theme switching!
 
@@ -20,12 +20,12 @@ Follow the [Instruction](https://github.com/mate-academy/react_phone-catalog/blo
 
 ## Data
 
-Use the data from `/public/api` and images from `/public/img` folders. You can reorganize them the way you like.
+Use the data from `/public/api` and images from `/public/img` folders. You can reorganize theme the way you like.
 
 ## App
 
 1. Put components into the `src/components` folder.
-   - Each component should be a folder with `index.ts`, `ComponentName.tsx`, `ComponentName.module.scss` files.
+   - Each component should be a folder with `product.types.ts`, `ComponentName.tsx`, `ComponentName.module.scss` files.
    - Use CSS modules.
    - Keep `.module.scss` files together with their components.
 2. Advanced project structure:
@@ -44,8 +44,8 @@ Use the data from `/public/api` and images from `/public/img` folders. You can r
 
 Implement Home page at available at `/`.
 
-1. `<h1>Product Catalog</h1>` should be visually hidden.
-2. `PicturesSlider`:
+1. `<h1>ProductType Catalog</h1>` should be visually hidden.
+2. `HotPrices`:
    - Find your own images to personalize the App;
    - Change pictures automatically every 5 seconds;
    - The next buttons should show the first image after the last one;
@@ -56,7 +56,7 @@ Implement Home page at available at `/`.
 4. `Shop by category` block with links to `/phones`, `/tablets`, and `/accessories`.
 5. Add Brand new block using ProductsSlider with products that are the newest according to the year field.
 
-## Product pages
+## ProductType pages
 
 There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
 
@@ -74,7 +74,7 @@ There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
    - Hide pagination elements if they do not make sense;
    - You can use the logic explained in [the React Pagination task](https://github.com/mate-academy/react_pagination#react-pagination).
 
-## Product details page
+## ProductType details page
 
 Create `ProductDetailsPage` available at `/product/:productId`.
 
@@ -92,7 +92,7 @@ Create `ProductDetailsPage` available at `/product/:productId`.
    - A Home page link;
    - A category page link (`Phones`, `Tablets`, `Accessories`);
    - The name of the product (just a text).
-8. Show `Product was not found` if there is no product with a given id on the server.
+8. Show `ProductType was not found` if there is no product with a given id on the server.
 
 ## Shopping Cart page
 
@@ -121,12 +121,12 @@ Create `Favorites` page with a `ProductsList` showing favorite products at `/fav
 2. The heart should be highlighted if the product is already added to the favorites.
 3. Use React Context or Redux to store the favorites.
 4. Show the number of favorites at the `Favorites` icon in the header.
-5. Save favorites to `localStorage` on each change and load them on page load.
+5. Save favorites to `localStorage` on each change and load theme on page load.
 
 ## Other tasks
 
 1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`.
-2. Implement the `Product was not found` state for the `ProductDetailsPage`.
+2. Implement the `ProductType was not found` state for the `ProductDetailsPage`.
 
 ## (*) Advanced tasks
 

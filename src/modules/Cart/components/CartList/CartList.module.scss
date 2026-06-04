@@ -1,0 +1,11 @@
+@use "../../../../styles/mixins" as *;
+
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-desktop {
+    width: 66%;
+  }
+}

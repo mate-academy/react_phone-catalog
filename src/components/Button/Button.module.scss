@@ -1,0 +1,20 @@
+@use "../../styles/themes" as *;
+
+.button {
+  height: 40px;
+  color: var(--button-text-add);
+  background-color: var(--button-primary);
+  padding: 0 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  font-weight: 600;
+
+  &:disabled {
+    color: var(--button-text-added);
+    background-color: var(--button-default);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}

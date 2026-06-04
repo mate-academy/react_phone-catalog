@@ -1,0 +1,60 @@
+@use "../../../../styles/themes" as *;
+@use "../../../../styles/mixins" as *;
+@use "../../../../styles/variables.module" as *;
+
+.colorsSelectionBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  width: 100%;
+  padding: 10px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 15px;
+    margin-block-end: 8px;
+
+    .label, .idNumber {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .label {
+      color: var(--color-secondary);
+    }
+
+    .idNumber {
+      color: $c-grey-light;
+    }
+  }
+
+  .colorsSelection {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    .colorButton {
+      width: 32px;
+      height: 32px;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      outline: 1px solid #e2e6e9;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &.active {
+        box-shadow: 0 0 10px 1px;
+      }
+    }
+  }
+}

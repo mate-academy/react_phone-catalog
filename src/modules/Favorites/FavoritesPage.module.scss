@@ -1,0 +1,30 @@
+@use "../../styles/mixins" as *;
+
+.favoritesPage {
+  margin-block-end: 56px;
+
+  @include on-tablet {
+    margin-block-end: 64px;
+  }
+
+  @include on-desktop {
+    margin-block-end: 80px;
+  }
+
+  .title {
+    margin-block-end: 8px;
+  }
+
+  .count {
+    margin-block-end: 32px;
+  }
+
+  .grid {
+    @include products-list;
+  }
+
+  .empty {
+    display: flex;justify-content: center;
+    align-items: center;
+  }
+}

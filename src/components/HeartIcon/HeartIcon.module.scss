@@ -1,0 +1,5 @@
+@use "../../styles/mixins" as *;
+
+.heartIcon {
+  @include toggle-button;
+}

@@ -1,0 +1,50 @@
+.capacitySelectionBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding: 10px;
+
+  .label {
+    color: var(--color-secondary);
+    margin-block-end: 8px;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0;
+  }
+
+  .capacitySelection {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    .capacityButton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 52px;
+      height: 32px;
+      color: var(--color-primary);
+      border: 1px solid #e2e6e9;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      letter-spacing: 0;
+
+      &:hover {
+        transform: scale(1.1);
+        color: #FF7A1A;
+      }
+
+      &.active {
+        box-shadow: 0 0 10px 1px;
+      }
+    }
+  }
+}

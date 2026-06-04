@@ -1,0 +1,73 @@
+@use "../../../../styles/effects" as *;
+@use "../../../../styles/variables.module" as *;
+@use "../../../../styles/mixins" as *;
+
+.homePage {
+  width: 100%;
+  margin-block-end: 56px;
+
+  @include on-tablet {
+    margin-block-end: 64px;
+  }
+
+  @include on-desktop {
+    margin-block-end: 80px;
+  }
+
+  .homePageTitle {
+    margin-block-end: 24px;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+    }
+  }
+}
+
+.homePageBox {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.homePageLink {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 100%;
+  margin-inline: auto;
+
+  @include hover-scale;
+
+  .categoryTitle {
+    margin-top: auto;
+    margin-block: 24px 4px;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+
+    @include on-tablet {
+      font-weight: 600;
+    }
+  }
+
+  .categoryCount {
+    color: var(--color-secondary);
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+}
+
+.homePageImg {
+  width: 90%;
+  margin-inline: auto;
+}

@@ -1,0 +1,107 @@
+{
+  "pageTitle": "Nice Gadgets Store",
+
+  "addToCart": "Add to cart",
+  "favorites": "Favorites",
+  "theme": "Theme",
+
+  "nav": {
+    "home": "Home",
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories"
+  },
+
+  "aria": {
+    "toggleMenu": "Toggle navigation menu"
+  },
+
+  "products": {
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories"
+  },
+
+  "categories": {
+    "phones": "Mobile Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories"
+  },
+
+  "models": "models",
+
+  "sortBy": "Sort by",
+
+  "sorts": {
+    "Newest" : "Newest",
+    "Alphabetically":  "Alphabetically",
+    "Cheapest": "Cheapest"
+  },
+
+  "items": "Items on page",
+
+  "title": {
+    "productCatalog": "Product Catalog",
+    "newModels": "Brand new models",
+    "shopByCategory": "Shop by category",
+    "hotPrices": "Hot prices",
+    "mayAlsoLike": "You may also like"
+  },
+
+  "footer": {
+    "contacts": "Contacts",
+    "rights": "Rights",
+    "backToTop": "Back to top"
+  },
+
+  "actions": {
+    "AddedToCart": "Added to cart",
+    "AddToCart": "Add to cart"
+  },
+
+  "errors": {
+    "api": "Server error",
+    "network": "Network error. Please try again later.",
+    "localStorageRead": "Unable to retrieve data from local storage.",
+    "localStorageWrite": "Unable to save. Storage is full.",
+    "unknown": "Something went wrong.",
+    "themeProvider": "useTheme must be used within ThemeProvider.",
+    "reloadPage": "Reload Page"
+  },
+
+  "buttonBack": "Back",
+
+  "cart": {
+    "title": "Cart",
+    "alertCheckout": "Checkout is coming soon!",
+    "totalForItems_one": "Total for {{count}} item",
+    "totalForItems_other": "Total for {{count}} items",
+    "checkout": "Checkout"
+  },
+
+  "emptyCart": {
+    "title": "Your cart is empty",
+    "description": " But it`apos;s never too late to fix it! Check out our catalog to find\n something special.",
+    "buttonCheckout": "Return to shopping"
+  },
+
+  "common": {
+    "title": "Your favorites list is empty",
+    "total_zero": "No items",
+    "total_one": "{{count}} item",
+    "total_other": "{{count}} items"
+  },
+
+  "colors": {
+    "originalLight": "Original Light",
+    "originalDark": "Original Dark",
+    "roundedPurpleBlue": "Ice Cap",
+    "purpleBlue": "Neon Wave",
+    "purpleOrange": "Apricot Sorbet"
+  },
+
+  "languages": {
+    "ukrainian": "Українська",
+    "english": "English"
+  }
+}

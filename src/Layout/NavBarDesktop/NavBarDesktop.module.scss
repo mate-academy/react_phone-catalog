@@ -1,0 +1,59 @@
+@use "../../styles/variables.module" as *;
+@use "../../styles/effects" as *;
+@use "../../styles/mixins" as *;
+
+.navigation {
+  width: 100%;
+  height: 100%;
+
+  display: none;
+  align-items: center;
+  text-align: center;
+
+  @media (min-width: $breakpoint-tablet) {
+    display: flex;
+    margin-left: 16px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    margin-left: 24px;
+  }
+
+  .navigation__container {
+    display: flex;
+    gap: 26px;
+  }
+
+  &__link {
+    @include nav-link-base;
+
+    &:hover::after {
+      left: 0;
+      bottom: -18px;
+
+      width: 100%;
+      height: 2px;
+      background-color: var(--hover-color-primary);
+
+      @media (min-width: $breakpoint-desktop) {
+        bottom: -27px;
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+
+    height: 100%;
+    margin-left: auto;
+  }
+
+  &__iconLink {
+    height: 100%;
+    border-left: 1px solid var(--border-color);
+  }
+
+  &__icon {
+    z-index: 1;
+  }
+}

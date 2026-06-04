@@ -1,0 +1,138 @@
+@use "../../../../styles/mixins" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  .arrowButtonBack {
+    color: black;
+    transform: rotate(180deg);
+    margin-block-end: 16px;
+  }
+
+  .title {
+    margin-block: 16px 32px;
+
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 120%;
+    letter-spacing: 0;
+
+    @include on-tablet {
+      margin-block: 16px 40px;
+
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+    }
+  }
+
+  .productDetails {
+    width: 100%;
+
+    .productPageHero {
+      margin-block-end: 56px;
+
+      @include on-tablet {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      @include on-desktop {
+        gap: 64px;
+      }
+
+      .imageGallery {
+        height: auto;
+        margin-block-end: 40px;
+
+        @include on-tablet {
+          width: 60%;
+        }
+      }
+
+      .selectionBlock {
+        width: 100%;
+
+        @include on-tablet {
+          width: 45%;
+        }
+
+        .capacityAvailable {
+          width: 100%;
+          margin-block-start: 24px;
+        }
+
+        .productActions {
+          max-width: 320px;
+          margin-block-end: 32px;
+        }
+      }
+
+      .divider {
+        max-width: 320px;
+        width: 100%;
+        height: 1px;
+        background-color: var(--divider-cart);
+        margin-block-start: 24px;
+      }
+
+      .priceContainer {
+        margin-block: 32px 16px;
+      }
+
+      .technicalInformation {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        max-width: 320px;
+
+        .specRow {
+          display: flex;
+          justify-content: space-between;
+
+          .specLabel, .specValue {
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1;
+          }
+
+          .specLabel {
+            color: var(--color-secondary);
+          }
+
+          .specValue {
+            color: var(--color-primary);
+          }
+        }
+      }
+    }
+  }
+
+  .description {
+    @include on-desktop {
+      display: flex;
+      justify-content: space-between;
+      gap: 64px;
+    }
+
+    .aboutSection {
+      @include on-desktop {
+        width: 60%;
+      }
+    }
+
+    .techSpecs {
+      @include on-desktop {
+        width: 45%;
+      }
+    }
+  }
+}
+
+.loading {
+  pointer-events: none;
+}
+
+@include price-container;

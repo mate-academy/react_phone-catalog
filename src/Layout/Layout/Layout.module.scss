@@ -1,0 +1,29 @@
+@use '../../styles/variables.module' as *;
+@use "../../styles/mixins" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+  margin-inline: $padding-inline-mobile;
+  margin-top: 72px;
+
+  @include on-tablet {
+    margin-top: 72px;
+    margin-inline: $padding-inline-tablet;
+  }
+
+  @include on-desktop {
+    margin-inline: $padding-inline-desktop;
+    margin-top: 120px;
+  }
+
+  @include on-xx-desktop {
+    margin-inline: $padding-inline-XXDesktop;
+  }
+}

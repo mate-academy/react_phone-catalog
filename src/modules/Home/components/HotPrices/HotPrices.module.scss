@@ -1,0 +1,43 @@
+.newModels {
+  margin-bottom: 80px;
+  padding: 0 16px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    .title {
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  .sliderWindow {
+    overflow: hidden;
+    width: 100%;
+
+    .sliderContainer {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      gap: 16px;
+    }
+
+    .cardWrapper {
+      flex: 0 0 calc(100% / 1.5);
+
+      @media (min-width: 640px) {
+        flex-basis: calc(100% / 2.5);
+      }
+
+      @media (min-width: 1024px) {
+        flex-basis: calc(100% / 4);
+      }
+    }
+  }
+}
+
+.arrowLeft {
+  transform: rotate(180deg);
+}

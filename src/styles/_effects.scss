@@ -1,0 +1,33 @@
+@use "variables.module" as *;
+
+@mixin smooth-transition($prop: all, $time: 0.3s, $func: ease) {
+  transition: $prop $time $func;
+}
+
+@mixin hover-scale($scale: 1.03) {
+  @include smooth-transition(transform);
+
+  &:hover {
+    transform: scale($scale);
+    box-shadow: 0 4px 12px var(--border-color);
+  }
+}
+
+@mixin underline-hover($line-color: var(--color-accent)) {
+  position: relative;
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    @include smooth-transition(transform);
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}

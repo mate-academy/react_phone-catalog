@@ -260,7 +260,7 @@
     "capacity": "40mm",
     "priceRegular": 399,
     "priceDiscount": 329,
-    "colorsAvailable": ["space gray", "silver", "gold", "blue", "red"],
+"colorsAvailable": ["space gray", "silver", "gold", "blue", "red"],
     "color": "space gray",
     "images": [
       "img/accessories/apple-watch-series-6/space-gray/00.webp",

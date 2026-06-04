@@ -1,0 +1,10 @@
+.arrowIcon {
+  width: 6px;
+  height: 10px;
+  color: var(--color-secondary);
+  transition: transform 0.3s ease, color 0.2s ease;
+
+  path {
+    fill: currentColor;
+  }
+}

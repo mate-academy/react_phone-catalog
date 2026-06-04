@@ -1,0 +1,23 @@
+.backButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 47px;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0;
+
+  .iconWrapper {
+    .arrowIcon {
+      color: var(--color-primary);
+      transform: rotate(180deg);
+    }
+  }
+
+  .text {
+    color: var(--footer-uppercase);
+  }
+}

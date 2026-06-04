@@ -1,0 +1,97 @@
+@use "../../styles/variables.module" as *;
+@use "../../styles/effects" as *;
+@use "../../styles/mixins" as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  min-width: 229px;
+  min-height: 435px;
+  background-color: var(--background-card);
+  border: 1px solid var(--border-color);
+  padding: 32px;
+
+  @include hover-scale;
+
+  .link {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-decoration: none;
+
+    .boxIcon {
+      display: flex;
+      flex-shrink: 0;
+      justify-content: center;
+      align-items: center;
+      height: 130px;
+
+      .icon {
+        height: 100%;
+        object-fit: contain;
+        margin: auto;
+      }
+    }
+  }
+}
+
+.name {
+  flex-grow: 1;
+
+  color: var(--color-primary);
+  text-decoration: none;
+
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  line-height: 21px;
+  letter-spacing: 0;
+
+  &:hover {
+    color: var(--color-primare);
+  }
+}
+
+.priceContainer {
+  @include price-container;
+}
+
+@include price-container;
+
+.separator {
+  height: 1px;
+  background-color: var(--separator);
+  margin-bottom: 16px;
+}
+
+.specs {
+  margin-bottom: 24px;
+
+  .specItem {
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-block-end: 8px;
+    margin-bottom: 8px;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+  }
+
+  .specKey {
+    color: var(--color-secondary);
+    white-space: nowrap;
+  }
+
+  .specValue {
+    max-width: 100px;
+    color: var(--color-primary);
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}

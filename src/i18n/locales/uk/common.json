@@ -1,0 +1,109 @@
+{
+  "pageTitle": "Магазин гаджетів",
+
+  "addToCart": "Додати до кошика",
+  "favorites": "Улюблене",
+  "theme": "Тема",
+
+  "nav": {
+    "home": "Головна",
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари"
+  },
+
+  "aria": {
+    "toggleMenu": "Перемкнути меню навігації"
+  },
+
+  "products": {
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари"
+  },
+
+  "categories": {
+    "phones": "Мобільні Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари"
+  },
+
+  "models": "моделей",
+
+  "sortBy": "Сортувати за",
+
+  "sorts": {
+    "Newest" : "Найновіші",
+    "Alphabetically": "За алфавітом",
+    "Cheapest": "Найдешевші"
+  },
+
+  "items": "Елементи на сторінці",
+
+  "title": {
+    "productCatalog": "Каталог продукції",
+    "newModels": "Зовсім нові моделі",
+    "shopByCategory": "Купуйте за категоріями",
+    "hotPrices": "Гарячі ціни",
+    "mayAlsoLike": "Вам також може сподобатися"
+  },
+
+  "footer": {
+    "contacts": "Контакти",
+    "rights": "Права",
+    "backToTop": "Перемотати вверх"
+  },
+
+  "actions": {
+    "AddedToCart": "Додано в кошик",
+    "AddToCart": "Додати в кошик"
+  },
+
+  "errors": {
+    "api": "Помилка сервера",
+    "network": "Помилка мережі. Спробуйте пізніше.",
+    "localStorageRead": "Не вдалося отримати дані з локального сховища.",
+    "localStorageWrite": "Не вдалося зберегти дані. Сховище переповнене.",
+    "unknown": "Щось пішло не так.",
+    "themeProvider": "useTheme має використовуватися всередині ThemeProvider",
+    "reloadPage": "Перезавантажити сторінку"
+  },
+
+  "buttonBack": "Назад",
+
+  "cart": {
+    "title": "Кошик",
+    "alertCheckout": "Оплата незабаром!",
+    "totalForItems_one": "Всього {{count}} товар",
+    "totalForItems_few": "Всього {{count}} товари",
+    "totalForItems_many": "Всього {{count}} товарів",
+    "checkout": "Оплатити"
+  },
+
+  "emptyCart": {
+    "title": "Ваш кошик порожній",
+    "description": "Але ніколи не пізно це виправити! Перегляньте наш каталог, щоб знайти щось особливе.",
+    "buttonCheckout": "Повернутись до покупок"
+  },
+
+  "common": {
+    "title": "Ваш список улюблених товарів порожній",
+    "total_zero": "Немає товарів",
+    "total_one": "{{count}} товар",
+    "total_few": "{{count}} товари",
+    "total_many": "{{count}} товарів"
+  },
+
+  "colors": {
+    "originalLight": "Оригінальний світлий",
+    "originalDark": "Оригінальний темний",
+    "purpleBlue": "Крижана шапка",
+    "roundedPurpleBlue": "Неонова хвиля",
+    "purpleOrange": "Абрикосовий сорбет"
+  },
+
+  "languages": {
+    "ukrainian": "Українська",
+    "english": "English"
+  }
+}

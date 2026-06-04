@@ -1,0 +1,110 @@
+@use "../../styles/variables.module" as *;
+@use "../../styles/effects" as *;
+@use "../../styles/themes" as *;
+@use "../../styles/mixins" as *;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  width: 100%;
+  height: auto;
+  background-color: var(--background-page);
+
+  padding-block: 32px;
+  padding-inline: $padding-inline-mobile;
+  border-top: 1px solid #e2e6e9;
+
+  @media (min-width: $breakpoint-tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding-inline: $padding-inline-desktop;
+  }
+
+  @media (min-width: $breakpoint-XXDesktop) {
+    padding-inline: $padding-inline-XXDesktop;
+    gap: 106px;
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    width: 100%;
+    background-color: var(--background-page);
+
+    @media (min-width: $breakpoint-tablet) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+
+      width: 200px;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      gap: 106px;
+    }
+
+    &__link {
+      font-weight: 800;
+      font-size: 12px;
+      text-decoration: none;
+      text-transform: uppercase;
+      line-height: 11px;
+
+      color: var(--footer-uppercase);
+    }
+  }
+
+  .scrollToTop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    height: 32px;
+    color: $c-grey-medium;
+    background-color: transparent;
+
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    cursor: pointer;
+
+    @media (min-width: $breakpoint-tablet) {
+      justify-content: right;
+
+      width: 200px;
+    }
+
+
+    .scrollButtonToTop {
+      width: 32px;
+      height: 32px;
+    }
+
+    .boxArrowToTop {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 32px;
+      height:32px;
+      color: #F1F2F9;
+
+      .imgArrowToTop {
+        z-index: 1;
+      }
+    }
+  }
+}
+
+.arrowIcon {
+  width: 32px;
+  transform: rotate(-90deg);
+}

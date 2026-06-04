@@ -1,0 +1,40 @@
+@use "../../styles/variables.module";
+
+.productsBox {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 288px;
+  margin-inline: auto;
+
+  .title {
+    color: var(--color-primary);
+    padding-block-end: 16px;
+  }
+
+  .countBadge {
+    color: var(--color-secondary);
+    margin-block-end: 32px;
+  }
+
+  .sortSelect {
+    margin-block-end: 24px;
+  }
+
+  .productsList {
+    margin-top: 24px;
+  }
+
+  .pagination {
+    margin-top: 50px;
+  }
+}
+
+.empty, .error {
+  text-align: center;
+
+  color: red;
+  margin-block-start: 50px;
+
+  font-size: 28px;
+}

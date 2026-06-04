@@ -1,0 +1,109 @@
+@use "variables.module" as *;
+
+:root {
+  --background-page: #{$c-white};
+  --background-card: #{$c-white};
+  --background-hero: #{$c-anthracite};
+  --color-logo: #{$c-grey-charcoal};
+  --color-primary: #{$c-grey-charcoal};
+  --color-secondary: #{$c-grey-medium};
+  --hover-color-primary: #{$c-grey-charcoal};
+  --color-favorites-cart: #{$c-grey-charcoal};
+  --button-temu: #{$c-grey-charcoal};
+  --button-primary: #{$c-grey-charcoal};
+  --button-hover: #{$c-grey-slate};
+  --button-default: #{$c-grey-pale};
+  --button-text-add: #{$c-white};
+  --button-text-added: #{$c-green};
+  --favorite-border: #{$c-grey-light};
+  --favorite-bg: #{$c-white};
+  --favorite-icon: #{$c-grey-charcoal};
+  --separator: #{$c-grey-pale};
+  --border-color: #{$c-grey-pale};
+  --footer-uppercase: #{$c-grey-medium};
+  --color-cart-remove: #{$c-grey-light};
+  --color-cart-quantity: #{$c-black-true};
+  --divider-cart: #{$c-grey-pale};
+  --checkout-button: #{$c-white};
+  --pagination-buttons-forward-back-border-primary: #{$c-grey-light};
+  --pagination-buttons-forward-back-background-primary: #{$c-transparent};
+  --pagination-buttons-forward-back-background-hover: #{$c-transparent};
+  --pagination-buttons-forward-back-border-hover: #{$c-grey-charcoal};
+  --pagination-buttons-border-primary: #{$c-grey-pale};
+  --pagination-buttons-border-hover: #{$c-grey-charcoal};
+  --pagination-buttons-border-selected: #{$c-grey-charcoal};
+  --pagination-buttons-background-primary: #{$c-transparent};
+  --pagination-buttons-background-hover: #{$c-transparent};
+  --pagination-buttons-background-selected: #{$c-grey-charcoal};
+  --pagination-buttons-color-primary: #{$c-black-true};
+  --pagination-buttons-color-hover: #{$c-black-true};
+  --pagination-buttons-color-selected: #{$c-white};
+}
+
+body.original-dark {
+  --background-page: #{$c-black-deep};
+  --background-card: #{$c-black-blue};
+  --color-logo: #{$c-white-off};
+  --color-primary: #{$c-white-off};
+  --color-secondary: #{$c-grey-dark};
+  --hover-color-primary: #{$c-white-off};
+  --color-favorites-cart: #{$c-white-off};
+  --button-temu: #{$c-white-off};
+  --button-primary: #{$c-purple};
+  --button-hover: #{$c-purple-light};
+  --button-default: #{$c-grey-night};
+  --button-text-added: #{$c-white-off};
+  --favorite-border: #{$c-grey-night};
+  --favorite-bg: #{$c-grey-night};
+  --favorite-icon: #{$c-white-off};
+  --separator: #{$c-anthracite-blue};
+  --border-color: #{$c-white-soft};
+  --footer-uppercase: #{$c-white-off};
+  --color-cart-remove: #{$c-grey-slate};
+  --color-cart-quantity: #{$c-white-off};
+  --checkout-button: #{$c-white-off};
+  --divider-cart: #{$c-anthracite-blue};
+  --pagination-buttons-forward-back-border-primary: #{$c-grey-night};
+  --pagination-buttons-forward-back-background-primary: #{$c-grey-night};
+  --pagination-buttons-forward-back-background-hover: #{$c-grey-slate};
+  --pagination-buttons-forward-back-border-hover: #{$c-grey-slate};
+  --pagination-buttons-border-primary: #{$c-black-blue};
+  --pagination-buttons-border-hover: #{$c-anthracite-blue};
+  --pagination-buttons-border-selected: #{$c-purple};
+  --pagination-buttons-background-primary: #{$c-black-blue};
+  --pagination-buttons-background-hover: #{$c-anthracite-blue};
+  --pagination-buttons-background-selected: #{$c-purple};
+}
+
+body.ice-cap, body.electric-cyan, body.apricot-sorbet {
+  --pagination-buttons-forward-back-border-hover: #{$c-black};
+  --pagination-buttons-border-hover: #{$c-black};
+  --pagination-buttons-background-selected: #{$c-black};
+  --favorite-icon: #{$c-black};
+  --hover-color-primary: #{$c-black};
+  --color-primary: #{$c-black};
+}
+
+body.ice-cap {
+  --background-page: #{$c-white-off};
+  --color-logo: #{$c-deep-pink};
+  --button-primary: #{$c-blue-bright};
+  --button-hover: #{$c-purple-vivid};
+  --button-text-added: #{$c-blue-bright};
+}
+
+body.electric-cyan {
+  --background-page: #{$c-cyan-neon};
+  --background-card: #{$c-cyan-dark};
+  --button-primary: #{$c-purple-deep};
+  --button-hover: #{$c-blue-sky};
+  --button-text-added: #{$c-purple-deep};
+}
+
+body.apricot-sorbet {
+  --background-page: #{$c-peach};
+  --background-card: #{$c-peach-dark};
+  --button-primary: #{$c-orange};
+  --button-hover: #{$c-orange-light};
+  --button-text-added: #{$c-orange};
+}

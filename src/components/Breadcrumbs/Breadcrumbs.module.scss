@@ -1,0 +1,33 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin: 24px 0;
+
+  font-size: 12px;
+}
+
+.homeLink, .link {
+  display: flex;
+  align-items: center;
+
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.arrow {
+  font-size: 10px;
+}
+
+.categoryTitle {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+}
+
+.current {
+  color: var(--color-secondary);
+  overflow: hidden;
+}

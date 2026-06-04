@@ -1,0 +1,77 @@
+$breakpoint-tablet: 640px;
+$breakpoint-desktop: 1040px;
+$breakpoint-XXDesktop: 1400px;
+$padding-inline-mobile: 16px;
+$padding-inline-tablet: 24px;
+$padding-inline-desktop: 32px;
+$padding-inline-XXDesktop: 152px;
+$font-size-xs: 12px; // Extra Small
+$font-size-sm: 14px; // Small
+$font-size-md: 16px; // Medium (базовий розмір)
+$font-size-xl: 20px; // Extra Large
+$font-size-2xl: 22px; // 2x Extra Large
+$font-size-5xl: 32px; // 5x Extra Large
+$font-size-6xl: 48px; // 5x Extra Large
+
+$font-weight-thin: 100; // Thin
+$font-weight-extralight: 200; // Extra Light
+$font-weight-light: 300; // Light
+$font-weight-regular: 400; // Regular (Normal)
+$font-weight-medium: 500; // Medium
+$font-weight-semibold: 600; // Semi Bold
+$font-weight-bold: 700; // Bold
+$font-weight-extrabold: 800; // Extra Bold
+$font-weight-black: 900; // Black
+
+$c-transparent: rgba(0, 0, 0, 0);
+$c-white: #FFF;
+$c-white-off: #F1F2F9;
+$c-white-soft: #FAFBFC;
+$c-grey-pale: #E2E6E9;
+$c-grey-light: #B4BDC3;
+$c-grey-medium: #89939A;
+$c-grey-dark: #75767F;
+$c-grey-slate: #4A4D58;
+$c-grey-charcoal: #313237;
+$c-grey-night: #323542;
+$c-black-blue: #161827;
+$c-black-deep: #0F1121;
+$c-black: #0F0F11;
+$c-black-true: #000;
+$c-purple: #905BFF;
+$c-purple-light: #A378FF;
+$c-purple-deep: #4219D0;
+$c-purple-vivid: #5729E0;
+$c-blue-bright: #216CFF;
+$c-blue-sky: #3D7FFF;
+$c-blue-violet: #4219D0;
+$c-cyan-neon: #01F8FF;
+$c-cyan-dark: #00E1FF;
+$c-deep-pink: #F447AF;
+$c-orange: #F86800;
+$c-orange-light: #FF7A1A;
+$c-peach: #FFC4AA;
+$c-peach-dark: #FEA77E;
+$c-yellow: #FFEE15;
+$c-bright-blue: #0057b7;
+$c-anthracite: #373F43;
+$c-anthracite-blue: #3B3E4A;
+$c-green: #27AE60;
+
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+:export {
+  white: #{$c-white};
+  greyCharcoal: #{$c-grey-charcoal};
+  blackDeep: #{$c-black-deep};
+  whiteOff: #{$c-white-off};
+  purple: #{$c-purple};
+  black: #{$c-black};
+  blueViolet: #{$c-blue-violet};
+  cyanNeon: #{$c-cyan-neon};
+  blueBright: #{$c-blue-bright};
+  peach: #{$c-peach};
+  orange: #{$c-orange};
+  yellow: #{$c-yellow};
+  brightBlue: #{$c-bright-blue};
+  blueSky: #{$c-blue-sky};
+}
