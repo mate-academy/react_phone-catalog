@@ -22,7 +22,7 @@ your programs, too.
   When we speak of free software, we are referring to freedom, not
 price.  Our General Public Licenses are designed to make sure that you
 have the freedom to distribute copies of free software (and charge for
-theme if you wish), that you receive source code or can get it if you
+them if you wish), that you receive source code or can get it if you
 want it, that you can change the software or use pieces of it in new
 free programs, and that you know you can do these things.
 
@@ -34,7 +34,7 @@ you modify it: responsibilities to respect the freedom of others.
   For example, if you distribute copies of such a program, whether
 gratis or for a fee, you must pass on to the recipients the same
 freedoms that you received.  You must make sure that they, too, receive
-or can get the source code.  And you must show theme these terms so they
+or can get the source code.  And you must show them these terms so they
 know their rights.
 
   Developers that use the GNU GPL protect your rights with two steps:
@@ -48,7 +48,7 @@ changed, so that their problems will not be attributed erroneously to
 authors of previous versions.
 
   Some devices are designed to deny users access to install or run
-modified versions of the software inside theme, although the manufacturer
+modified versions of the software inside them, although the manufacturer
 can do so.  This is fundamentally incompatible with the aim of
 protecting users' freedom to change the software.  The systematic
 pattern of such abuse occurs in the area of products for individuals to
@@ -164,12 +164,12 @@ rights of fair use or other equivalent, as provided by copyright law.
   You may make, run and propagate covered works that you do not
 convey, without conditions so long as your license otherwise remains
 in force.  You may convey covered works to others for the sole purpose
-of having theme make modifications exclusively for you, or provide you
+of having them make modifications exclusively for you, or provide you
 with facilities for running those works, provided that you comply with
 the terms of this License in conveying all material for which you do
 not control copyright.  Those thus making or running the covered works
 for you must do so exclusively on your behalf, under your direction
-and control, on terms that prohibit theme from making any copies of
+and control, on terms that prohibit them from making any copies of
 your copyrighted material outside their relationship with you.
 
   Conveying under any other circumstances is permitted solely under
@@ -230,7 +230,7 @@ terms of section 4, provided that you also meet all of these conditions:
     d) If the work has interactive user interfaces, each must display
     Appropriate Legal Notices; however, if the Program has interactive
     interfaces that do not display Appropriate Legal Notices, your
-    work need not make theme do so.
+    work need not make them do so.
 
   A compilation of a covered work with other separate and independent
 works, which are not by their nature extensions of the covered work,
@@ -285,7 +285,7 @@ in one of these ways:
     Corresponding Source, you remain obligated to ensure that it is
     available for as long as needed to satisfy these requirements.
 
-    error) Convey the object code using peer-to-peer transmission, provided
+    e) Convey the object code using peer-to-peer transmission, provided
     you inform other peers where the object code and Corresponding
     Source of the work are being offered to the general public at no
     charge under subsection 6d.
@@ -294,7 +294,7 @@ in one of these ways:
 from the Corresponding Source as a System Library, need not be
 included in conveying the object code work.
 
-  A "User ProductType" is either (1) a "consumer product", which means any
+  A "User Product" is either (1) a "consumer product", which means any
 tangible personal property which is normally used for personal, family,
 or household purposes, or (2) anything designed or sold for incorporation
 into a dwelling.  In determining whether a product is a consumer product,
@@ -307,29 +307,29 @@ is a consumer product regardless of whether the product has substantial
 commercial, industrial or non-consumer uses, unless such uses represent
 the only significant mode of use of the product.
 
-  "Installation Information" for a User ProductType means any methods,
+  "Installation Information" for a User Product means any methods,
 procedures, authorization keys, or other information required to install
-and execute modified versions of a covered work in that User ProductType from
+and execute modified versions of a covered work in that User Product from
 a modified version of its Corresponding Source.  The information must
 suffice to ensure that the continued functioning of the modified object
 code is in no case prevented or interfered with solely because
 modification has been made.
 
   If you convey an object code work under this section in, or with, or
-specifically for use in, a User ProductType, and the conveying occurs as
+specifically for use in, a User Product, and the conveying occurs as
 part of a transaction in which the right of possession and use of the
-User ProductType is transferred to the recipient in perpetuity or for a
+User Product is transferred to the recipient in perpetuity or for a
 fixed term (regardless of how the transaction is characterized), the
 Corresponding Source conveyed under this section must be accompanied
 by the Installation Information.  But this requirement does not apply
 if neither you nor any third party retains the ability to install
-modified object code on the User ProductType (for example, the work has
+modified object code on the User Product (for example, the work has
 been installed in ROM).
 
   The requirement to provide Installation Information does not include a
 requirement to continue to provide support service, warranty, or updates
 for a work that has been modified or installed by the recipient, or for
-the User ProductType in which it has been modified or installed.  Access to a
+the User Product in which it has been modified or installed.  Access to a
 network may be denied when the modification itself materially and
 adversely affects the operation of the network or violates the rules and
 protocols for communication across the network.
@@ -376,7 +376,7 @@ that material) supplement the terms of this License with terms:
     d) Limiting the use for publicity purposes of names of licensors or
     authors of the material; or
 
-    error) Declining to grant rights under trademark law for use of some
+    e) Declining to grant rights under trademark law for use of some
     trade names, trademarks, or service marks; or
 
     f) Requiring indemnification of licensors and authors of that
@@ -513,7 +513,7 @@ country that you have reason to believe are valid.
   If, pursuant to or in connection with a single transaction or
 arrangement, you convey, or propagate by procuring conveyance of, a
 covered work, and grant a patent license to some of the parties
-receiving the covered work authorizing theme to use, propagate, modify
+receiving the covered work authorizing them to use, propagate, modify
 or convey a specific copy of the covered work, then the patent license
 you grant is automatically extended to all recipients of the covered
 work and works based on it.
@@ -627,7 +627,7 @@ possible use to the public, the best way to achieve this is to make it
 free software which everyone can redistribute and change under these terms.
 
   To do so, attach the following notices to the program.  It is safest
-to attach theme to the start of each source file to most effectively
+to attach them to the start of each source file to most effectively
 state the exclusion of warranty; and each file should have at least
 the "copyright" line and a pointer to where the full notice is found.
 
