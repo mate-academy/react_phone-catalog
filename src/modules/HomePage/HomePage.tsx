@@ -3,28 +3,31 @@ import styles from './HomePage.module.scss';
 export const HomePage = () => {
   return (
     <main className={styles.main}>
-      <div className={styles.container}>
+      <div className={styles['title-wrapper']}>
         <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
+      </div>
 
-        <section className={styles.banner}>
-          <div className={styles.slider}>
-            <button
-              className={styles['prev-slide']}
-              type="button"
-              aria-label="Previous slide"
-            ></button>
+      <div className={styles.content}>
+        <section className={styles.slider}>
+          <div className={styles.container}>
+            <button className={styles['slider__button--prev']}>
+              <span></span>
+            </button>
 
             <img
               src="img/photos/banner-phones.png"
-              alt=""
-              className={styles['banner-image']}
+              alt="Banner-phones"
+              className={styles.slider__img}
             />
+            <button className={styles['slider__button--next']}>
+              <span></span>
+            </button>
+          </div>
 
-            <button
-              className={styles['next-slide']}
-              type="button"
-              aria-label="Next slide"
-            ></button>
+          <div className={styles.pagination}>
+            <button></button>
+            <button></button>
+            <button></button>
           </div>
         </section>
       </div>
