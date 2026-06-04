@@ -47,20 +47,25 @@
     border: 1px solid #3B3E4A;
     color: #F1F2F9;
     font-size: 14px;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, opacity 0.3s ease;
     border-radius: 0;
+    opacity: 0.3;
+    cursor: not-allowed;
 
     &:hover {
-      border-color: #F1F2F9;
+      border-color: #3B3E4A;
     }
 
-    &:active {
-      background-color: #323242;
-      border-color: #F1F2F9;
+    &:not(.swiper-button-disabled) {
+      opacity: 1;
+      cursor: pointer;
+
+      &:hover {
+        border-color: #F1F2F9;
+      }
     }
   }
 
