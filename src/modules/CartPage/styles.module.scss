@@ -1,0 +1,91 @@
+@use '@/shared/styles' as *;
+
+.topContainer {
+  @include padding-container;
+}
+
+.buttonBack {
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}
+
+.title {
+  margin-top: 16px;
+}
+
+.mainContainer {
+  @include grid;
+  margin-top: 32px;
+  margin-bottom: 56px;
+  row-gap: 32px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.cardsContainer {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-desktop {
+    grid-column: 1 / 16;
+  }
+}
+
+.results {
+  grid-column: 1 / -1;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid #e2e6e9;
+  border-radius: 16px;
+  gap: 16px;
+
+  transition:
+    color $transition,
+    background-color $transition,
+    border $transition;
+
+  @include on-desktop {
+    grid-column: 16 / -1;
+  }
+
+
+  &PriceAndTotal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &Price {
+   width: fit-content;
+  }
+
+  &Line {
+    height: 1px;
+    width: 100%;
+    background-color: var(--line-and-border);
+  }
+
+  &Button {
+    height: 48px;
+    width: 100%;
+  }
+}
+
+[data-theme='dark'] .results {
+  border: 1px solid #3B3E4A;
+  border-radius: 0;
+
+}

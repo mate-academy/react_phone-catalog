@@ -1,0 +1,12 @@
+export declare const buttonClose: string;
+export declare const buttonCount: string;
+export declare const container1: string;
+export declare const container2: string;
+export declare const content: string;
+export declare const count: string;
+export declare const countContainer: string;
+export declare const image: string;
+export declare const name: string;
+export declare const nameContainer: string;
+export declare const nameLink: string;
+export declare const price: string;

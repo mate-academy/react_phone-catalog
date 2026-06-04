@@ -41,7 +41,6 @@ export const ProductsPage = ({ category }: { category: 'phones' | 'tablets' | 'a
 
   const [searchInput, setSearchInput] = useState(query);
 
-  console.log(searchInput);
 
   const page = +(searchParams.get('page') || 1);
   const perPage: optionDropdownPerPage =

@@ -5,6 +5,8 @@
   align-items: center;
   gap: 8px;
   padding-block: 24px;
+  color: var(--text);
+  
 
   @include on-tablet {
     padding-bottom: 40px;
@@ -41,6 +43,4 @@
   }
 }
 
-.iconArrow {
-  color: var(--text);
-}
+

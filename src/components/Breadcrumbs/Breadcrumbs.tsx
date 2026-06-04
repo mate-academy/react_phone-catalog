@@ -30,7 +30,7 @@ export const Breadcrumbs: React.FC = () => {
       </Link>
       {breadcrumbs.map((segment, index) => (
         <Fragment key={index}>
-          <Icon className={styles.iconArrow} type="arrowRight"></Icon>
+          <Icon type="arrowRight"></Icon>
           <Link
             className={classNames(styles.breadcrumbsLink, {
               [styles.breadcrumbsLinkLast]: index === breadcrumbs.length - 1,

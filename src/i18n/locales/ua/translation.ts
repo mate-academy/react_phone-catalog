@@ -55,6 +55,12 @@ export const ua = {
 
   sectionYouMayAlsoLike: 'Вам також може сподобатися',
 
+  cart: {
+    cart: 'Кошик',
+    checkout: 'Оформити замовлення',
+    total: 'Всього',
+  },
+
   sectionCategories: {
     title: 'Покупки за категоріями',
     modile: 'Телефони',

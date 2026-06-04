@@ -47,6 +47,12 @@ export const en = {
 
   AreNoProductsYet: 'There are no products yet',
 
+  cart: {
+    cart: 'Cart',
+    checkout: 'Checkout',
+    total: 'Total for',
+  },
+
   sectionCategories: {
     title: 'Shop by category',
     modile: 'Mobile phones',

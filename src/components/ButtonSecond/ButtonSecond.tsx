@@ -5,19 +5,24 @@ import classNames from 'classnames';
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   rotate?: number;
+  arrowIcon?: boolean;
 };
 
 export const ButtonSecond = ({
   rotate = 0,
   children,
   className,
+  arrowIcon = true,
   ...props
 }: Props) => {
   return (
     <button {...props} className={classNames(className, styles.button)}>
-      <div className={styles.wrapper}>
-        <Icon className={styles.icon} style={{ rotate: `${rotate}deg` }} type="arrowRight" />
-      </div>
+      {arrowIcon && (
+        <div className={styles.wrapper}>
+          <Icon  style={{ rotate: `${rotate}deg` }} type="arrowRight" />
+        </div>
+      )}
+
       {children}
     </button>
   );

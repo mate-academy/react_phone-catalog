@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { HTMLAttributes, useEffect, useRef, useState } from 'react';
 import { Icon } from '../Icon/Icon';
 import classNames from 'classnames';
 
 import styles from './styles.module.scss';
 
-type Props = React.SVGProps<SVGSVGElement> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   type: 'heart' | 'cart';
   count: number;
 };

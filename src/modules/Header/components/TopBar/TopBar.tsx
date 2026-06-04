@@ -20,7 +20,7 @@ export const TopBar = ({
   const { theme, toggleTheme } = useTheme();
   const { i18n } = useTranslation();
   const { favourites } = useFavourites();
-  const { cart } = useCart();
+  const { totalItems } = useCart();
 
   return (
     <div className={styles.topbar}>
@@ -61,7 +61,7 @@ export const TopBar = ({
                 });
               }}
             >
-              <IconWithCounter type="cart" count={cart.length} />
+              <IconWithCounter type="cart" count={totalItems} />
             </NavLink>
             <button
               className={classNames(styles.icon, styles.iconMenu)}

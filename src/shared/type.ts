@@ -54,3 +54,9 @@ export type ProductDetails = {
   camera?: string;
   zoom?: string;
 };
+
+
+export type ProductInCart = {
+  id: string,
+  count: number;
+}

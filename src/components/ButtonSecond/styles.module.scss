@@ -4,6 +4,7 @@
   border-radius: 48px;
   border: 1px solid #b4bdc3;
   background-color: transparent;
+  color: var(--h);
 
   transition:
     background-color $transition,
@@ -15,19 +16,14 @@
 
   &:active {
     background-color: #0f0f11;
-    .icon {
-      color: #e2e6e9;
-    }
+    color: #e2e6e9;
   }
 
   &:disabled {
     cursor: auto;
     background: none;
     border: 1px solid #e2e6e9;
-
-    .icon {
-      color: #e2e6e9;
-    }
+    color: #e2e6e9;
   }
 }
 
@@ -37,10 +33,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.icon {
-  color: var(--h);
 }
 
 [data-theme='dark'] {
@@ -62,9 +54,7 @@
       border: 1px solid #3b3e4a;
       background-color: transparent;
 
-      .icon {
-        color: #4a4d58;
-      }
+      color: #4a4d58;
     }
   }
 }

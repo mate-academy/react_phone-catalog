@@ -1,4 +1,4 @@
-import {Product } from '@/shared/type';
+import { Product } from '@/shared/type';
 import React, { useMemo } from 'react';
 
 import styles from './styles.module.scss';
@@ -24,20 +24,23 @@ export const ProductCard = ({ product, ...props }: Props) => {
     return product ? product : defaultProduct;
   }, [product]);
 
-  const { cart, setCart } = useCart();
+  const { cart, toggleCartProduct } = useCart();
 
   const isFavourite = useMemo(
     () => favourites.includes(preparedProduct.itemId),
     [favourites, preparedProduct.itemId],
   );
   const isInCart = useMemo(
-    () => cart.includes(preparedProduct.itemId),
+    () => cart.some((productCart) => productCart.id === preparedProduct.itemId),
     [cart, preparedProduct.itemId],
   );
 
   const cardWithoutContainer = (
     <>
-      <Link className={styles.image} to={'/' + preparedProduct.category + '/' + preparedProduct.itemId}>
+      <Link
+        className={styles.image}
+        to={'/' + preparedProduct.category + '/' + preparedProduct.itemId}
+      >
         <img
           className={styles.imageImg}
           src={preparedProduct.image}
@@ -45,7 +48,10 @@ export const ProductCard = ({ product, ...props }: Props) => {
           loading="lazy"
         />
       </Link>
-      <Link className={styles.titleLink} to={'/' + preparedProduct.category + '/' + preparedProduct.itemId}>
+      <Link
+        className={styles.titleLink}
+        to={'/' + preparedProduct.category + '/' + preparedProduct.itemId}
+      >
         <h4 className={styles.title}>{preparedProduct.name}</h4>
       </Link>
       <div className={styles.priceBox}>
@@ -75,11 +81,11 @@ export const ProductCard = ({ product, ...props }: Props) => {
           className={styles.buttonBuy}
           selected={isInCart}
           onClick={() => {
-            setCart((prev) =>
-              prev.includes(String(preparedProduct.itemId))
-                ? prev.filter((id) => id !== String(preparedProduct.itemId))
-                : [...prev, String(preparedProduct.itemId)],
-            );
+            if (!product) {
+              return;
+            }
+
+            toggleCartProduct(product.itemId);
           }}
         >
           {isInCart ? t('productCart.buttonSelected') : t('productCart.button')}

@@ -42,7 +42,7 @@ export const ProductDetails = ({
 }) => {
   const { t, i18n } = useTranslation();
   const { favourites, setFavourites } = useFavourites();
-  const { cart, setCart } = useCart();
+  const { cart, toggleCartProduct } = useCart();
 
   const [state, setState] = useState<ProductDetailsState>({
     status: 'loading',
@@ -59,7 +59,7 @@ export const ProductDetails = ({
     if (state.status !== 'success') {
       return false;
     }
-    return cart.includes(state.product.productDetail.id);
+    return cart.some((product) => product.id === state.product.productDetail.id);
   }, [cart, state]);
 
   useEffect(() => {
@@ -184,11 +184,7 @@ export const ProductDetails = ({
               {...addSkeleton(styles.buttonBuy)}
               selected={isInCart}
               onClick={() => {
-                setCart((prev) =>
-                  prev.includes(String(product.id))
-                    ? prev.filter((id) => id !== String(product.id))
-                    : [...prev, String(product.id)],
-                );
+                toggleCartProduct(product.id);
               }}
             >
               {isInCart ? t('productCart.buttonSelected') : t('productCart.button')}
