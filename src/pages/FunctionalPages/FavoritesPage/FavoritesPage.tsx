@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { Accessories, Phone, Tablet } from '../../../Interface';
 
 export const FavoritesPage = () => {
-  const { favorites, toggleFavorite, cart, addToCart } = useCart();
+  const { favorites, toggleFavorite, cart, addToCart, removeFromCart } = useCart();
 
   const [allProducts, setAllProducts] = useState<(Phone | Tablet | Accessories)[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -127,138 +127,129 @@ export const FavoritesPage = () => {
       </p>
 
       <div className="favorites__items">
-        {favoriteProducts.map(product => (
-          <div key={product.id} className="favorites__item">
+        {favoriteProducts.map(product => {
+          const inCart = cart.some(
+            item =>
+              item.id === product.id &&
+              item.color === product.color,
+          );
 
-            <Link
-              to={`/${product.category}/${product.itemId ?? product.id}`}
-            >
-              <img
-                src={
-                  imageError[product.images?.[0]] || !product.images?.[0]
-                    ? 'img/page-not-found.png'
-                    : product.images[0]
-                }
-                alt={product.name}
-                className="favorites__item-image"
-                onError={() =>
-                  product.images?.[0] &&
-                  handleImageError(product.images[0])
-                }
-              />
-
-              <h3 className="favorites__item-name">
-                {product.name}
-              </h3>
-
-              <div className="favorites__item-prices">
-                <span className="favorites__item-price">
-                  ${product.priceDiscount}
-                </span>
-
-                {product.priceRegular !== product.priceDiscount && (
-                  <span className="favorites__item-price--old">
-                    ${product.priceRegular}
-                  </span>
-                )}
-              </div>
-
-              <div className="favorites__item-specs">
-                {isPhoneOrTablet(product) ? (
-                  <>
-                    <div className="favorites__item-spec">
-                      <span className="favorites__item-spec-label">
-                        Screen
-                      </span>
-                      <span className="favorites__item-spec-value">
-                        {product.screen}
-                      </span>
-                    </div>
-
-                    <div className="favorites__item-spec">
-                      <span className="favorites__item-spec-label">
-                        Capacity
-                      </span>
-                      <span className="favorites__item-spec-value">
-                        {product.capacity}
-                      </span>
-                    </div>
-
-                    <div className="favorites__item-spec">
-                      <span className="favorites__item-spec-label">
-                        RAM
-                      </span>
-                      <span className="favorites__item-spec-value">
-                        {product.ram}
-                      </span>
-                    </div>
-                  </>
-                ) : (
-                  <div className="favorites__item-spec">
-                    <span className="favorites__item-spec-label">
-                      Color
-                    </span>
-                    <span className="favorites__item-spec-value">
-                      {product.color}
-                    </span>
-                  </div>
-                )}
-              </div>
-            </Link>
-
-            <div className="favorites__item-actions">
-              <button
-                className={`favorites__item-btn ${
-                  cart.some(
-                    item =>
-                      item.id === product.id &&
-                      item.color === product.color,
-                  )
-                    ? 'added'
-                    : ''
-                }`}
-                onClick={() =>
-                  addToCart({
-                    id: product.id,
-                    name: product.name,
-                    price: product.priceDiscount,
-                    image: product.images[0] || 'img/page-not-found.png',
-                    color: product.color,
-                    quantity: 1,
-                    ...(isPhoneOrTablet(product) && {
-                      capacity: product.capacity,
-                    }),
-                  })
-                }
-                disabled={cart.some(
-                  item =>
-                    item.id === product.id &&
-                    item.color === product.color,
-                )}
-              >
-                {cart.some(
-                  item =>
-                    item.id === product.id &&
-                    item.color === product.color,
-                )
-                  ? 'Added to cart'
-                  : 'Add to cart'}
-              </button>
-
-              <button
-                className="favorites__item-btn favorites__item-btn--favorite favorite--active"
-                onClick={() => toggleFavorite(product.id)}
+          return (
+            <div key={product.id} className="favorites__item">
+              <Link
+                to={`/${product.category}/${product.itemId ?? product.id}`}
               >
                 <img
-                  src="./icons/heart-active.svg"
-                  alt="Remove from favorites"
-                  className="favorites__item-btn-icon"
+                  src={
+                    imageError[product.images?.[0]] || !product.images?.[0]
+                      ? 'img/page-not-found.png'
+                      : product.images[0]
+                  }
+                  alt={product.name}
+                  className="favorites__item-image"
+                  onError={() =>
+                    product.images?.[0] &&
+                    handleImageError(product.images[0])
+                  }
                 />
-              </button>
-            </div>
 
-          </div>
-        ))}
+                <h3 className="favorites__item-name">
+                  {product.name}
+                </h3>
+
+                <div className="favorites__item-prices">
+                  <span className="favorites__item-price">
+                    ${product.priceDiscount}
+                  </span>
+
+                  {product.priceRegular !== product.priceDiscount && (
+                    <span className="favorites__item-price--old">
+                      ${product.priceRegular}
+                    </span>
+                  )}
+                </div>
+
+                <div className="favorites__item-specs">
+                  {isPhoneOrTablet(product) ? (
+                    <>
+                      <div className="favorites__item-spec">
+                        <span className="favorites__item-spec-label">
+                          Screen
+                        </span>
+                        <span className="favorites__item-spec-value">
+                          {product.screen}
+                        </span>
+                      </div>
+
+                      <div className="favorites__item-spec">
+                        <span className="favorites__item-spec-label">
+                          Capacity
+                        </span>
+                        <span className="favorites__item-spec-value">
+                          {product.capacity}
+                        </span>
+                      </div>
+
+                      <div className="favorites__item-spec">
+                        <span className="favorites__item-spec-label">
+                          RAM
+                        </span>
+                        <span className="favorites__item-spec-value">
+                          {product.ram}
+                        </span>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="favorites__item-spec">
+                      <span className="favorites__item-spec-label">
+                        Color
+                      </span>
+                      <span className="favorites__item-spec-value">
+                        {product.color}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </Link>
+
+              <div className="favorites__item-actions">
+                <button
+                  className={`favorites__item-btn ${inCart ? 'added' : ''}`}
+                  onClick={() => {
+                    if (inCart) {
+                      removeFromCart(product.id);
+                    } else {
+                      addToCart({
+                        id: product.id,
+                        name: product.name,
+                        price: product.priceDiscount,
+                        image: product.images[0] || 'img/page-not-found.png',
+                        color: product.color,
+                        quantity: 1,
+                        ...(isPhoneOrTablet(product) && {
+                          capacity: product.capacity,
+                        }),
+                      });
+                    }
+                  }}
+                >
+                  {inCart ? 'Added to cart' : 'Add to cart'}
+                </button>
+
+                <button
+                  className="favorites__item-btn favorites__item-btn--favorite favorite--active"
+                  onClick={() => toggleFavorite(product.id)}
+                >
+                  <img
+                    src="./icons/heart-active.svg"
+                    alt="Remove from favorites"
+                    className="favorites__item-btn-icon"
+                  />
+                </button>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

@@ -17,19 +17,15 @@ export const ProductDetailsPage = () => {
   const { productId, category } = useParams();
   const { pathname } = useLocation();
 
-  const { addToCart, toggleFavorite, cart, favorites } = useCart();
+  const { addToCart, toggleFavorite, removeFromCart, cart, favorites } = useCart();
 
-  const [product, setProduct] = useState<
-    Phone | Tablet | Accessories | null
-  >(null);
+  const [product, setProduct] = useState<Phone | Tablet | Accessories | null>(null);
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
 
-  const [allProducts, setAllProducts] = useState<
-    (Phone | Tablet | Accessories)[]
-  >([]);
+  const [allProducts, setAllProducts] = useState<(Phone | Tablet | Accessories)[]>([]);
 
   const [imageError, setImageError] = useState<{
     [key: string]: boolean;
@@ -121,7 +117,6 @@ export const ProductDetailsPage = () => {
             isPhoneOrTablet(found) ? found.capacity : null,
           );
 
-          // Ищем числовой id из products.json
           try {
             const productsRes = await fetch(
               `${import.meta.env.BASE_URL}api/products.json`,
@@ -170,15 +165,19 @@ export const ProductDetailsPage = () => {
       return;
     }
 
-    addToCart({
-      id: product.id,
-      name: product.name,
-      price: product.priceDiscount,
-      image: selectedImage || 'img/page-not-found.png',
-      color: selectedColor || product.color,
-      capacity: selectedCapacity || undefined,
-      quantity: 1,
-    });
+    if (isInCart) {
+      removeFromCart(product.id);
+    } else {
+      addToCart({
+        id: product.id,
+        name: product.name,
+        price: product.priceDiscount,
+        image: selectedImage || 'img/page-not-found.png',
+        color: selectedColor || product.color,
+        capacity: selectedCapacity || undefined,
+        quantity: 1,
+      });
+    }
   };
 
   const handleToggleFavorite = () => {
@@ -271,11 +270,11 @@ export const ProductDetailsPage = () => {
       </div>
 
       <div className="product-details--back">
-  <a href={getCategoryLink()} className="product-details__back-link">
-  <img src="./icons/arrow-left-small.svg" alt="back" className="product-details__back-icon" />
-    <span className="product-details__back-text">Back</span>
-  </a>
-</div>
+        <a href={getCategoryLink()} className="product-details__back-link">
+          <img src="./icons/arrow-left-small.svg" alt="back" className="product-details__back-icon" />
+          <span className="product-details__back-text">Back</span>
+        </a>
+      </div>
 
       <h1 className="product-details__title">
         {product.name}
@@ -386,7 +385,6 @@ export const ProductDetailsPage = () => {
                   isInCart ? 'added' : ''
                 }`}
                 onClick={handleAddToCart}
-                disabled={isInCart}
               >
                 {isInCart ? 'Added to cart' : 'Add to cart'}
               </button>
@@ -492,11 +490,11 @@ export const ProductDetailsPage = () => {
 
           <div className="related-products__nav">
             <button className="brand__nav-btn swiper-prev-btn">
-            <img src="./icons/arrow-left-small-white.svg" alt="prev" />
+              <img src="./icons/arrow-left-small-white.svg" alt="prev" />
             </button>
 
             <button className="brand__nav-btn swiper-next-btn">
-            <img src="./icons/arrow-right-small-white.svg" alt="next" />
+              <img src="./icons/arrow-right-small-white.svg" alt="next" />
             </button>
           </div>
         </div>
@@ -574,20 +572,23 @@ export const ProductDetailsPage = () => {
                       className={`related-products__card-btn related-products__card-btn--add ${
                         itemInCart ? 'added' : ''
                       }`}
-                      onClick={() =>
-                        addToCart({
-                          id: item.id,
-                          name: item.name,
-                          price: item.priceDiscount,
-                          image: item.images[0],
-                          color: item.color,
-                          capacity: isPhoneOrTablet(item)
-                            ? item.capacity
-                            : undefined,
-                          quantity: 1,
-                        })
-                      }
-                      disabled={itemInCart}
+                      onClick={() => {
+                        if (itemInCart) {
+                          removeFromCart(item.id);
+                        } else {
+                          addToCart({
+                            id: item.id,
+                            name: item.name,
+                            price: item.priceDiscount,
+                            image: item.images[0],
+                            color: item.color,
+                            capacity: isPhoneOrTablet(item)
+                              ? item.capacity
+                              : undefined,
+                            quantity: 1,
+                          });
+                        }
+                      }}
                     >
                       {itemInCart ? 'Added' : 'Add to cart'}
                     </button>
