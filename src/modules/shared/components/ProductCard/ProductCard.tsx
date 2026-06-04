@@ -65,11 +65,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className={styles.buttons}>
         <button
-          className={`${styles.addToCart} ${isInCart ? styles.inCart : ''}`}
+          className={`${styles.addToCart} ${isInCart ? styles.isActive : ''}`}
           aria-label="Toggle cart"
           onClick={handleCartClick}
         >
-          {isInCart ? 'Added to cart' : 'Add to cart'}
+          {isInCart ? 'Added' : 'Add to cart'}
         </button>
         <div>
           <button

@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Footer } from '../shared/components/Layout/Footer';
-import { Header } from '../shared/components/Layout/Header';
 import { ProductList } from '../shared/components/ProductsList';
 import { Product } from '../../types/product';
 import {
@@ -40,7 +38,6 @@ export const HomePage = () => {
 
   return (
     <div className={styles.homePage}>
-      <Header />
       <div className={styles.container}>
         <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
         <PicturesSlider />
@@ -52,7 +49,6 @@ export const HomePage = () => {
         />
         <ProductSlider products={products} />
       </div>
-      <Footer />
     </div>
   );
 };

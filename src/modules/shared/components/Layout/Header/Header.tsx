@@ -1,3 +1,4 @@
+import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 
 export const Header = () => {
@@ -17,47 +18,47 @@ export const Header = () => {
         <nav className={styles.nav}>
           <ul className={styles.list}>
             <li>
-              <a href="#" className={styles.link}>
+              <NavLink to="/" className={styles.link}>
                 Home
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="#" className={styles.link}>
+              <NavLink to="/catalog/phones" className={styles.link}>
                 Phones
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="#" className={styles.link}>
+              <NavLink to="/catalog/tablets" className={styles.link}>
                 Tablets
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="#" className={styles.link}>
+              <NavLink to="/catalog/accessories" className={styles.link}>
                 Accessories
-              </a>
+              </NavLink>
             </li>
           </ul>
         </nav>
 
         <div className={styles.icons}>
           <div>
-            <a
+            <Link
               className={styles.iconLink}
-              href="/favorites"
+              to="/favorites"
               aria-label="Favorites"
             >
               <img src="/img/icons/favorites.svg" alt="Favorites" />
-            </a>
+            </Link>
           </div>
 
           <div>
-            <a
+            <Link
               className={styles.iconLink}
-              href="/shopping-bag"
+              to="/shopping-bag"
               aria-label="Shopping bag"
             >
               <img src="/img/icons/shopping-bag.svg" alt="Shopping bag" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

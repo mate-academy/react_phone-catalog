@@ -1,0 +1,14 @@
+.title {
+  margin: 40px 0 8px;
+}
+
+.listWindow {
+  overflow: hidden;
+}
+
+.productList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  transition: transform 0.3s ease;
+}

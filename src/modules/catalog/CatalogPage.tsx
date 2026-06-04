@@ -1,48 +1,55 @@
-import React, { useEffect, useState } from 'react';
-import { Product } from '../../types/product';
-import { getProducts } from '../../services/product.api';
+import { useEffect, useState } from 'react';
 import styles from './CatalogPage.module.scss';
-import { ProductList } from '../shared/components/ProductsList';
-import { Footer } from '../shared/components/Layout/Footer';
-import { Header } from '../shared/components/Layout/Header';
+import { CatalogList } from './components/CatalogList';
+import { Product } from '../../types/product';
+import { useParams } from 'react-router-dom';
+import {
+  getAccessories,
+  getPhones,
+  getTablets,
+} from '../../services/product.api';
 
-export const CatalogPage: React.FC = () => {
+export const CatalogPage = () => {
+  const { category } = useParams<{ category: string }>();
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
-    setErrorMessage('');
 
-    getProducts()
-      .then(data => {
-        setProducts(data);
-      })
-      .catch(error => {
-        setErrorMessage(error.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+    const fetchData = async () => {
+      let data: Product[] = [];
 
+      switch (category) {
+        case 'phones':
+          data = await getPhones();
+          break;
+        case 'tablets':
+          data = await getTablets();
+          break;
+        case 'accessories':
+          data = await getAccessories();
+          break;
+
+        default:
+          data = [];
+      }
+
+      setProducts(data);
+      setLoading(false);
+    };
+
+    fetchData();
+  }, [category]);
   if (loading) {
-    return <p className={styles.loader}>Loading products...</p>;
-  }
-
-  if (errorMessage) {
-    return <p className={styles.error}>{errorMessage}</p>;
+    return <div>Loading...</div>;
   }
 
   return (
-    <div className="section">
-      <Header />
-      <main>
-        <h1 className={styles.title}>Product Catalog</h1>
-        <ProductList products={products} />
-      </main>
-      <Footer />
+    <div className={styles.catalogPage}>
+      <div className={styles.container}>
+        <CatalogList products={products} title={`${category}`} />
+      </div>
     </div>
   );
 };
