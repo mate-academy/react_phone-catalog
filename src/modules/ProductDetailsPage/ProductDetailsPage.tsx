@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { Category } from '@/shared/type';
 import { ProductDetails } from './components/ProductDetails/ProductDetails';
+// import styles from './styles.module.scss'
 
 export const ProductDetailsPage = ({ category }: { category: Category }) => {
   const { productId } = useParams<{ productId: string }>();
@@ -29,6 +30,7 @@ export const ProductDetailsPage = ({ category }: { category: Category }) => {
   return (
     <main>
       <ProductDetails key={productId} category={category} productId={productId}></ProductDetails>
+      
     </main>
   );
 };

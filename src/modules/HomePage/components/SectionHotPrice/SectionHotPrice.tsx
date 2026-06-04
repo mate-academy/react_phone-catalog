@@ -1,19 +1,9 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/pagination';
-
-// import './styles.css';
-
-// import required modules
-
 import { Product } from '@/shared/type';
-// import '@/bones/registry';
 import { useProducts } from '@/app/providers/Products/ProductsContext';
-import { ProductsSlider } from '../ProductsSlider';
+import { ProductsSlider } from '@/components/ProductsSlider';
 
 export const SectionHotPrice = () => {
   const { products, loading, loadProducts } = useProducts();

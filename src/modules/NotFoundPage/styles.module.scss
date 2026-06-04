@@ -1,0 +1,9 @@
+@use '@/shared/styles' as *;
+
+.container {
+ @include padding-container;
+}
+
+.image{
+ width: 100%;
+}

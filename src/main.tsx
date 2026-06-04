@@ -1,44 +1,46 @@
-// import { StrictMode } from 'react';
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.scss';
 import App from './App';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { HomePage } from './modules/HomePage';
-import { NotFoundPage } from './pages/NotFoundPage';
+import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 import { ScrollToTop } from './components/ScrollToTop';
 import './i18n/i18n';
 import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
 import { ProductsPage } from './modules/ProductsPage';
-import './bones/registry'
+import './bones/registry';
+import { FavouritesPage } from './modules/FavouritesPage';
 
 createRoot(document.getElementById('root')!).render(
-  // <StrictMode>
-  <HashRouter>
-    <ScrollToTop />
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Route index element={<HomePage />} />
+  <StrictMode>
+    <HashRouter>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<HomePage />} />
 
-        <Route path="home" element={<Navigate to="/" replace />} />
+          <Route path="home" element={<Navigate to="/" replace />} />
+          <Route path="favourites" element={<FavouritesPage></FavouritesPage>} />
 
-        <Route path="phones">
-          <Route index element={<ProductsPage key={'phones'} category='phones' />} />
-          <Route path=":productId" element={<ProductDetailsPage category='phones' />} />
+          <Route path="phones">
+            <Route index element={<ProductsPage key={'phones'} category="phones" />} />
+            <Route path=":productId" element={<ProductDetailsPage category="phones" />} />
+          </Route>
+
+          <Route path="tablets">
+            <Route index element={<ProductsPage key={'tablets'} category="tablets" />} />
+            <Route path=":productId" element={<ProductDetailsPage category="tablets" />} />
+          </Route>
+
+          <Route path="accessories">
+            <Route index element={<ProductsPage key={'accessories'} category="accessories" />} />
+            <Route path=":productId" element={<ProductDetailsPage category="accessories" />} />
+          </Route>
+
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
-
-        <Route path="tablets">
-          <Route index element={<ProductsPage key={'tablets'} category='tablets' />} />
-          <Route path=":productId" element={<ProductDetailsPage category='tablets' />} />
-        </Route>
-
-        <Route path="accessories">
-          <Route index element={<ProductsPage key={'accessories'} category='accessories' />} />
-          <Route path=":productId" element={<ProductDetailsPage category='accessories' />} />
-        </Route>
-
-        <Route path="*" element={<NotFoundPage />} />
-      </Route>
-    </Routes>
-  </HashRouter>,
-  // </StrictMode>,
+      </Routes>
+    </HashRouter>
+  </StrictMode>,
 );

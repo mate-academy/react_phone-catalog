@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import styles from './styles.module.scss';
 import { Icon } from '@/components/Icon';
 import { useTranslation } from 'react-i18next';
+import classNames from 'classnames';
 
 type BreadcrumbsType = {
   label: string;
@@ -30,7 +31,12 @@ export const Breadcrumbs: React.FC = () => {
       {breadcrumbs.map((segment, index) => (
         <Fragment key={index}>
           <Icon className={styles.iconArrow} type="arrowRight"></Icon>
-          <Link className={styles.breadcrumbsLink} to={segment.path || '/'}>
+          <Link
+            className={classNames(styles.breadcrumbsLink, {
+              [styles.breadcrumbsLinkLast]: index === breadcrumbs.length - 1,
+            })}
+            to={segment.path || '/'}
+          >
             {t(`navigation.${segment.label}`, '') ||
               segment.label.slice(0, 1).toUpperCase() + segment.label.slice(1, -1)}
           </Link>

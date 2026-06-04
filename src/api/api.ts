@@ -21,10 +21,11 @@ function getData<T>(url: string): Promise<T> {
 }
 
 function getProductDetails(category: Category, itemId: string) {
+
   return getData<ProductDetails[]>(`/${category}.json`).then((phones) => {
     const productDetail = phones.find((findPhone) => findPhone.id === itemId);
     if (!productDetail) {
-      throw new Error("Don't found phone");
+      throw new Error("Product was not found");
     }
 
     return {

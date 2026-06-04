@@ -12,7 +12,6 @@
 }
 
 .breadcrumbsLink {
-
   font-weight: 700;
   font-size: 12px;
 
@@ -22,14 +21,23 @@
   display: flex;
   align-items: center;
   width: fit-content;
-  color: var(--text);
+  color: var(--h);
 
   &:hover {
-    color: var(--h);
+    color: var(--accent);
   }
 
   p {
-   display: block;
+    display: block;
+  }
+
+  &Last {
+    pointer-events: none;
+    color: var(--text);
+
+    &:hover {
+      color: var(--text);
+    }
   }
 }
 

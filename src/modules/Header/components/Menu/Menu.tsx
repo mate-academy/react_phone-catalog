@@ -37,7 +37,7 @@ export const Menu = ({
           <Nav type="Menu" />
           <div className={styles.bottomContainer}>
             <NavLink
-              to="/favorites"
+              to="/favourites"
               className={({ isActive }: { isActive: boolean }) => {
                 return classNames(styles.icon, { [styles.active]: isActive });
               }}

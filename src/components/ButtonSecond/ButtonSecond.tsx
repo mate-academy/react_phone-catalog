@@ -13,7 +13,6 @@ export const ButtonSecond = ({
   className,
   ...props
 }: Props) => {
-  console.log('ButtonSecond');
   return (
     <button {...props} className={classNames(className, styles.button)}>
       <div className={styles.wrapper}>

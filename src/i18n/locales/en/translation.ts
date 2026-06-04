@@ -31,8 +31,21 @@ export const en = {
       cheapest: 'Cheapest',
     },
     itemsOnPageTitle: 'Items on page',
-    search: 'Search'
+    search: 'Search',
   },
+
+  buttonBack: 'Back',
+
+  errors: { ProductDontFound: 'Product was not found', pageNotFound: 'Page not found' },
+
+  productDetails: {
+    availableColors: 'Available colors',
+    selectCapacity: 'Select capacity',
+    about: 'About',
+    techSpecs: 'Tech specs',
+  },
+
+  AreNoProductsYet: 'There are no products yet',
 
   sectionCategories: {
     title: 'Shop by category',
@@ -40,6 +53,17 @@ export const en = {
     tablets: 'Tablets',
     accessories: 'Accessories',
     models: 'models',
+    model: 'model',
+    items: 'items',
+    item: 'item',
+  },
+
+  sectionYouMayAlsoLike: 'You may also like',
+
+  favouritesPage: {
+    favouritesTitle: 'Favourites',
+    empty: 'Your favourites list is empty',
+    addYourFirstProduct: 'Add your first product to the wishlist',
   },
 
   footer: {
@@ -49,6 +73,7 @@ export const en = {
   },
 
   navigation: {
+    favourites: 'Favourites',
     home: 'Home',
     phones: 'Phones',
     tablets: 'Tablets',

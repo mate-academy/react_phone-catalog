@@ -2,8 +2,11 @@ import { useNavigate } from 'react-router-dom';
 import { Icon } from '../Icon';
 import { HTMLAttributes } from 'react';
 import styles from './styles.module.scss';
+import { useTranslation } from 'react-i18next';
 
 export const ButtonBack = ({ ...Props }: HTMLAttributes<HTMLDivElement>) => {
+  const {t} = useTranslation();
+
   const navigate = useNavigate();
   return (
     <div {...Props}>
@@ -14,7 +17,7 @@ export const ButtonBack = ({ ...Props }: HTMLAttributes<HTMLDivElement>) => {
         }}
       >
         <Icon className={styles.icon} type="arrowRight"></Icon>
-        Back
+        {t('buttonBack')}
       </button>
     </div>
   );

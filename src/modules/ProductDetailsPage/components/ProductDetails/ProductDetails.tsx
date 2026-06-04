@@ -2,12 +2,11 @@ import { api } from '@/api/api';
 import { useCart } from '@/app/providers/Cart';
 import { useFavourites } from '@/app/providers/Favorities';
 import { Category, ProductDetails as ProductDetailsType } from '@/shared/type';
-import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ImageSwiper } from '../ImageSwiper';
 import { ButtonColor } from '@/components/ButtonColor';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
 import { ButtonBuy } from '@/components/ButtonBuy/ButtonBuy';
 import { ButtonHeart } from '@/components/ButtonHeart/ButtonHeart';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
@@ -15,6 +14,8 @@ import { ButtonBack } from '@/components/ButtonBack';
 import styles from './styles.module.scss';
 import productColors from '@/shared/utils';
 import skeleton from './skeleton.module.scss';
+import { ButtonThird } from '@/components/ButtonThird/ButtonThird';
+import { SectionYouMayAlsoLike } from '../SectionYouMayAlsoLike';
 
 type ProductDetailsState =
   | { status: 'loading' }
@@ -41,7 +42,6 @@ export const ProductDetails = ({
 }) => {
   const { t, i18n } = useTranslation();
   const { favourites, setFavourites } = useFavourites();
-
   const { cart, setCart } = useCart();
 
   const [state, setState] = useState<ProductDetailsState>({
@@ -123,7 +123,7 @@ export const ProductDetails = ({
         <div className={styles.parameters}>
           <div className={styles.parameterBox}>
             <div className={styles.parameterTitle}>
-              <p {...addSkeleton()}>Available colors</p>
+              <p {...addSkeleton()}>{t('productDetails.availableColors')}</p>
               <p {...addSkeleton()}>{`ID ${hashString(product.id)}`}</p>
             </div>
             <div className={styles.parameterSelects}>
@@ -148,21 +148,21 @@ export const ProductDetails = ({
 
           <div className={styles.parameterBox}>
             <div className={classNames(styles.parameterTitle)}>
-              <p {...addSkeleton()}>Select capacity</p>
+              <p {...addSkeleton()}>{t('productDetails.selectCapacity')}</p>
             </div>
             <div className={styles.parameterSelects}>
               {product.capacityAvailable.map((capacity) => {
                 const link =
                   productByNamespace.find((item) => item.capacity === capacity)?.id || '';
                 return (
-                  <Link
+                  <ButtonThird
                     {...addSkeleton()}
                     key={capacity}
                     to={`/${category}/${link}`}
-                    // selected={capacity === product.color}
+                    selected={capacity === product.capacity}
                   >
                     {capacity}
-                  </Link>
+                  </ButtonThird>
                 );
               })}
             </div>
@@ -215,7 +215,9 @@ export const ProductDetails = ({
             </div>
             <div className={styles.detail}>
               <p {...addSkeleton(styles.detailText1)}>{t('productCart.capacity')}</p>
-              <p {...addSkeleton(classNames(styles.detailText2, styles.detailText2fontWeight700))}>{product.capacity}</p>
+              <p {...addSkeleton(classNames(styles.detailText2, styles.detailText2fontWeight700))}>
+                {product.capacity}
+              </p>
             </div>
             <div className={styles.detail}>
               <p {...addSkeleton(styles.detailText1)}>{t('productCart.RAM')}</p>
@@ -233,9 +235,9 @@ export const ProductDetails = ({
         </div>
         <div className={styles.sections}>
           <section className={styles.sectionAbout} aria-label="About product">
-            <h2 {...addSkeleton()}>About</h2>
+            <h2 {...addSkeleton()}>{t('productDetails.about')}</h2>
             <div
-               className={classNames(styles.line, styles.lineMarginBottom32, styles.lineMarginTop24)}
+              className={classNames(styles.line, styles.lineMarginBottom32, styles.lineMarginTop24)}
             ></div>
             <div className={styles.sectionAboutDescription}>
               {product[i18n.resolvedLanguage === 'en' ? 'description' : 'descriptionUa'].map(
@@ -263,7 +265,7 @@ export const ProductDetails = ({
           </section>
 
           <section className={styles.sectionTechSpecs} aria-label="About product">
-            <h2 {...addSkeleton()}>Tech specs</h2>
+            <h2 {...addSkeleton()}>{t('productDetails.techSpecs')}</h2>
             <div
               className={classNames(styles.line, styles.lineMarginBottom32, styles.lineMarginTop24)}
             ></div>
@@ -566,14 +568,29 @@ export const ProductDetails = ({
         return productDetailsDefault;
 
       case 'error':
-        return <p>{state.error}</p>;
+        return (
+          <div className={styles.containerNoGrid}>
+            <h1>{state.error}</h1>
+
+            <img
+              className={styles.imageProductNotFound}
+              src="./img/product-not-found.png"
+              alt="Image product not found"
+            />
+          </div>
+        );
 
       case 'success': {
-        return prepareProductDetails(
-          state.product.productDetail,
-          state.product.productByNamespace,
-          false,
-          state.product.productDetail.id,
+        return (
+          <>
+            {prepareProductDetails(
+              state.product.productDetail,
+              state.product.productByNamespace,
+              false,
+              state.product.productDetail.id,
+            )}
+            <SectionYouMayAlsoLike className={styles.sectionYouMayAlsoLike}></SectionYouMayAlsoLike>
+          </>
         );
       }
     }

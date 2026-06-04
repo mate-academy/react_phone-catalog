@@ -34,12 +34,36 @@ export const ua = {
     search: 'Пошук',
   },
 
+  buttonBack: 'Назад',
+
+  errors: { ProductDontFound: 'Product was not found', pageNotFound: 'Сторінку не знайдено' },
+
+  productDetails: {
+    availableColors: 'Доступні кольори',
+    selectCapacity: 'Оберіть памʼять',
+    about: 'Про товар',
+    techSpecs: 'Технічні характеристики',
+  },
+
+  AreNoProductsYet: 'Поки що немає товарів',
+
+  favouritesPage: {
+    favouritesTitle: 'Обране',
+    empty: 'Ваш список обраного порожній',
+    addYourFirstProduct: 'Додайте свій перший товар до списку бажань',
+  },
+
+  sectionYouMayAlsoLike: 'Вам також може сподобатися',
+
   sectionCategories: {
     title: 'Покупки за категоріями',
     modile: 'Телефони',
     tablets: 'Планшети',
     accessories: 'Аксесуари',
     models: 'моделей',
+    model: 'модель',
+    items: 'товарів',
+    item: 'товар',
   },
 
   footer: {
@@ -49,6 +73,7 @@ export const ua = {
   },
 
   navigation: {
+    favourites: 'Обране',
     home: 'Головна',
     phones: 'Телефони',
     tablets: 'Планшети',

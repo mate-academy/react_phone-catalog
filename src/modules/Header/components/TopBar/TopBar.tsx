@@ -43,8 +43,8 @@ export const TopBar = ({
               ></div>
             </button>
             <NavLink
-              aria-label="favorites"
-              to="/favorites"
+              aria-label="favourites"
+              to="/favourites"
               className={({ isActive }: { isActive: boolean }) => {
                 return classNames(styles.icon, styles.iconHeartAndCart, {
                   [styles.active]: isActive,

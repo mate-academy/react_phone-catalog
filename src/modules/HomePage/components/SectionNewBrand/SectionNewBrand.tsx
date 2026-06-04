@@ -1,18 +1,11 @@
 import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/pagination';
-
-// import './styles.css';
-
 import { Product } from '@/shared/type';
 
 import { useProducts } from '@/app/providers/Products/ProductsContext';
-import { ProductsSlider } from '../ProductsSlider';
+import { ProductsSlider } from '@/components/ProductsSlider';
+
 
 export const SectionNewBrand = () => {
   const { products, loading, loadProducts } = useProducts();

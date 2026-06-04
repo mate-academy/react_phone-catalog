@@ -10,34 +10,13 @@ import { Product } from '@/shared/type';
 import { Pagination } from '@/components/Pagination';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
+import { getSearchParams } from '@/shared/utils';
 
 const typeSearch = {
   newest: 'age',
   alphabetically: 'title',
   cheapest: 'price',
 };
-
-type Param = string | number;
-
-type Params = {
-  [key: string]: Param[] | Param | null;
-};
-
-function getSearchParams(params: Params, search?: string | URLSearchParams) {
-  const newParams = new URLSearchParams(search);
-
-  for (const [key, value] of Object.entries(params)) {
-    if (value === null) {
-      newParams.delete(key);
-    } else if (Array.isArray(value)) {
-      newParams.delete(key);
-      value.forEach((item) => newParams.append(key, item.toString()));
-    } else {
-      newParams.set(key, value.toString());
-    }
-  }
-  return newParams.toString();
-}
 
 type optionDropdownSort = 'age' | 'title' | 'price';
 type optionDropdownPerPage = '16' | 'all' | '4' | '8';
@@ -140,12 +119,11 @@ export const ProductsPage = ({ category }: { category: 'phones' | 'tablets' | 'a
       <div className={styles.content}>
         <Breadcrumbs></Breadcrumbs>
         <h1 >{title}</h1>
-        <p className={styles.p}>{!preparePhone ? '...' : preparePhone.length} models</p>
+        <p className={styles.p}>{!preparePhone ? '...' : preparePhone.length} {t('productPage.models')}</p>
         <div className={styles.filterSortContainer}>
           <div className={classNames(styles.dropdownSortBox, styles.filterbox)}>
             <p>{t('productPage.sortByTitle')}</p>
             <Dropdown
-              // className={}
               selects={[
                 {
                   title: t('productPage.sortBy.alphabetically'),

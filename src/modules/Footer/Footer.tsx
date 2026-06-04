@@ -12,8 +12,8 @@ export const Footer = () => {
 
       <div className={styles.linksBox}>
         <a className={styles.link} target='_blank' href="https://github.com/RuslanV23/react_phone-catalog">Github</a>
-        <a className={styles.link} target='_blank' href="https://github.com/RuslanV23">Contacts</a>
-        <a className={styles.link} target='_blank' href="https://github.com/RuslanV23/react_phone-catalog/blob/master/README.md">rights</a>
+        <a className={styles.link} target='_blank' href="https://github.com/RuslanV23">{t('footer.contacts')}</a>
+        <a className={styles.link} target='_blank' href="https://github.com/RuslanV23/react_phone-catalog/blob/master/README.md">{t('footer.right')}</a>
       </div>
 
       <div className={styles.scrollTopBox}>
