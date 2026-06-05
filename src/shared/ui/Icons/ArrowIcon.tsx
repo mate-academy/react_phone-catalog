@@ -1,3 +1,6 @@
+import classNames from 'classnames';
+import styles from './ArrowIcon.module.scss';
+
 type ArrowIconProps = {
   direction?: 'left' | 'right' | 'up' | 'down';
   className?: string;
@@ -8,21 +11,15 @@ export const ArrowIcon: React.FC<ArrowIconProps> = ({
   className,
 }) => (
   <svg
-    style={{
-      transform:
-        direction === 'right'
-          ? 'rotate(180deg)'
-          : direction === 'up'
-            ? 'rotate(90deg)'
-            : direction === 'down'
-              ? 'rotate(-90deg)'
-              : 'none',
-    }}
     width="16"
     height="16"
     viewBox="0 0 16 16"
     fill="none"
-    className={className}
+    className={classNames(
+      styles.arrow,
+      direction !== 'left' && styles[`arrow--${direction}`],
+      className,
+    )}
   >
     <path
       fillRule="evenodd"
