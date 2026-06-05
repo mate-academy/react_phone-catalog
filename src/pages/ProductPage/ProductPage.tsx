@@ -65,11 +65,13 @@ export const ProductPage = () => {
       })
       .map(prod => ({
         ...prod,
+        itemId: String(prod.id),
+        category: category!,
         image: `/${prod.images[0]}`,
         price: prod.priceDiscount,
         fullPrice: prod.priceRegular,
       }));
-  }, [products, product]);
+  }, [product, products, category]);
 
   const shortSpecs = [
     { label: 'Screen', value: product?.screen },
@@ -143,11 +145,11 @@ export const ProductPage = () => {
   }
 
   if (hasError) {
-    return <p>Something went wrong</p>;
+    return <h1 className={styles.errorMessage}>Something went wrong</h1>;
   }
 
   if (!product && !isLoading) {
-    return <p>Product was not found</p>;
+    return <h1 className={styles.errorMessage}>Product was not found</h1>;
   }
 
   return (

@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowIcon } from '../../../../components/icons/Arrow';
 import classNames from 'classnames';
 import styles from './HeroBanner.module.scss';
@@ -18,11 +19,17 @@ export const HeroBanner = () => {
       id: 2,
       desktop: '/img/Header-banner-2.png',
       mobile: '/img/banner-2-mb.png',
+      buttonText: 'Explore Collection',
+      link: '/phones',
+      theme: 'dark',
     },
     {
       id: 3,
       desktop: '/img/Header-banner-3.png',
       mobile: '/img/banner-3-mb.png',
+      buttonText: 'Shop Collection',
+      link: '/accessories',
+      theme: 'light',
     },
   ];
 
@@ -77,14 +84,31 @@ export const HeroBanner = () => {
           >
             <ArrowIcon direction="left" />
           </button>
-          <div
-            className={`${styles.banner} ${styles.bannerDesktop}`}
-            style={{ backgroundImage: `url(${slides[currentIndex].desktop})` }}
-          />
-          <div
-            className={`${styles.banner} ${styles.bannerMobile}`}
-            style={{ backgroundImage: `url(${slides[currentIndex].mobile})` }}
-          />
+          <div className={styles.bannerWrapper}>
+            <div
+              className={`${styles.banner} ${styles.bannerDesktop}`}
+              style={{
+                backgroundImage: `url(${slides[currentIndex].desktop})`,
+              }}
+            />
+            <div
+              className={`${styles.banner} ${styles.bannerMobile}`}
+              style={{ backgroundImage: `url(${slides[currentIndex].mobile})` }}
+            />
+            <Link
+              to={slides[currentIndex].link || '/'}
+              className={`${styles.exploreButton} ${
+                slides[currentIndex].theme === 'dark'
+                  ? styles.exploreButtonDark
+                  : styles.exploreButtonLight
+              }`}
+              style={{
+                display: slides[currentIndex].link ? 'inline-flex' : 'none',
+              }}
+            >
+              {slides[currentIndex].buttonText} →
+            </Link>
+          </div>
           <button
             className={`${styles.sliderButton} ${styles.right}`}
             aria-label="Next slide"

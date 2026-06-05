@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './ShopByCategory.module.scss';
 
 export const ShopByCategory = () => {
@@ -9,7 +10,9 @@ export const ShopByCategory = () => {
           <div className={styles.card}>
             <img src="/img/Phones.png" alt="Phones" className={styles.image} />
             <div className={styles.info}>
-              <span className={styles.categoryName}>Mobile phones</span>
+              <Link to="/phones">
+                <span className={styles.categoryName}>Mobile phones</span>
+              </Link>
               <p className={styles.countOfModels}>95 models</p>
             </div>
           </div>
@@ -20,7 +23,9 @@ export const ShopByCategory = () => {
               className={styles.image}
             />
             <div className={styles.info}>
-              <span className={styles.categoryName}>Tablets</span>
+              <Link to="/tablets">
+                <span className={styles.categoryName}>Tablets</span>
+              </Link>
               <p className={styles.countOfModels}>24 models</p>
             </div>
           </div>
@@ -31,7 +36,9 @@ export const ShopByCategory = () => {
               className={styles.image}
             />
             <div className={styles.info}>
-              <span className={styles.categoryName}>Accessories</span>
+              <Link to="/accessories">
+                <span className={styles.categoryName}>Accessories</span>
+              </Link>
               <p className={styles.countOfModels}>100 models</p>
             </div>
           </div>

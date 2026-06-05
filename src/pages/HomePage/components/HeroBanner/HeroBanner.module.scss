@@ -119,3 +119,103 @@
 .active {
   background-color: var(--gray-primary);
 }
+
+.visuallyHidden {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  white-space: nowrap;
+
+  clip: rect(0, 0, 0, 0);
+}
+
+.bannerWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.exploreButton {
+  position: absolute;
+  bottom: 18%;
+  left: 5%;
+
+  display: inline-flex;
+  gap: rem(8);
+  align-items: center;
+
+  padding: rem(14) rem(24);
+  border-radius: rem(48);
+
+  font-size: rem(14);
+  font-weight: 600;
+
+  transition: all 0.3s;
+
+  @media (max-width: $desktop) {
+    bottom: 19%;
+    padding: rem(10) rem(16);
+    font-size: rem(14);
+  }
+
+  @media (max-width: 890px) {
+    bottom: 17%;
+    left: 5%;
+    padding: rem(7) rem(11);
+    font-size: rem(9);
+  }
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.exploreButtonDark {
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  color: white;
+  background: transparent;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+}
+
+.exploreButtonLight {
+  bottom: 21%;
+  left: 4.5%;
+
+  padding: rem(14) rem(20);
+  border: none;
+
+  font-size: rem(16);
+  color: #1a1a1a;
+
+  background: white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  }
+
+  @media (max-width: $desktop) {
+    bottom: 22%;
+    padding: rem(10) rem(16);
+    font-size: rem(13);
+  }
+
+  @media (max-width: 860px) {
+    bottom: 22%;
+    left: 4%;
+    padding: rem(7) rem(11);
+    font-size: rem(9);
+  }
+}

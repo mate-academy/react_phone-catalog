@@ -13,20 +13,24 @@ import './App.scss';
 
 export const App = () => (
   <BrowserRouter>
-    <Header />
-    <Routes>
-      <Route path="/" element={<HomePage />}></Route>
-      <Route path="/phones" element={<CatalogPage category="Phones" />} />
-      <Route path="/tablets" element={<CatalogPage category="Tablets" />} />
-      <Route
-        path="/accessories"
-        element={<CatalogPage category="Accessories" />}
-      />
-      <Route path="/:category/:productId" element={<ProductPage />}></Route>
-      <Route path="/cart" element={<CartPage />}></Route>
-      <Route path="/favorites" element={<FavoritePage />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
-    <Footer />
+    <div className="root">
+      <Header />
+      <main style={{ flex: 1 }}>
+        <Routes>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/phones" element={<CatalogPage category="Phones" />} />
+          <Route path="/tablets" element={<CatalogPage category="Tablets" />} />
+          <Route
+            path="/accessories"
+            element={<CatalogPage category="Accessories" />}
+          />
+          <Route path="/:category/:productId" element={<ProductPage />}></Route>
+          <Route path="/cart" element={<CartPage />}></Route>
+          <Route path="/favorites" element={<FavoritePage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
   </BrowserRouter>
 );

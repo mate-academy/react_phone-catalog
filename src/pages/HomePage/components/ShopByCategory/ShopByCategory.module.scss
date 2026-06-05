@@ -29,6 +29,15 @@
   }
 }
 
+.card {
+  transition: transform 0.3s;
+
+
+  &:hover {
+    transform: scale(1.01);
+  }
+}
+
 .image {
   aspect-ratio: 1 / 1;
   width: clamp(#{rem(187)}, 28vw, #{rem(368)});
