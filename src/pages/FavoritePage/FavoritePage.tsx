@@ -9,7 +9,7 @@ export const FavoritePage = () => {
   return (
     <div className={styles.favorite}>
       <div className={styles.container}>
-        <Path category="Favorite" />
+        <Path category="Favorites" />
         <h1 className={styles.title}>Favorites</h1>
         <p className={styles.itemsCount}>{`${favoriteItems.length} items`}</p>
 
