@@ -5,6 +5,7 @@ import {
   removeFromFavorites,
   selectIsFavorite,
 } from '@/store/slices/favoritesSlice';
+import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 
 export const useProductActions = (itemId?: string) => {
@@ -24,12 +25,15 @@ export const useProductActions = (itemId?: string) => {
   const handleFav = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (!itemId) return;
+    if (!itemId) {
+      return;
+    }
 
     if (inFav) {
       dispatch(removeFromFavorites(itemId));
     } else {
       dispatch(addToFavorites(itemId));
+      toast.success('Added to favorites');
     }
   };
 

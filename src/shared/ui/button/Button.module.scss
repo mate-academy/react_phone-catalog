@@ -2,6 +2,7 @@
 
 .button {
   display: inline-flex;
+  height: 40px;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -57,7 +58,6 @@
   }
 
   &--normal {
-    height: 40px;
     font-size: 14px;
   }
 

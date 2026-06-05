@@ -67,6 +67,7 @@ module.exports = {
     'react/prop-types': 0,
     'react/require-default-props': 0,
     'import/prefer-default-export': 0,
+    'import/extensions': 'off',
     'standard/no-callback-literal': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
     'react/destructuring-assignment': 0,

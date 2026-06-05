@@ -5,6 +5,7 @@ import { Button } from '@/shared/ui/button/Button';
 import { useCartProducts } from './hooks/useCartProducts';
 import { useAppDispatch } from '@/store/hooks';
 import { clearCart } from '@/store/slices/cartSlice';
+import { toast } from 'react-hot-toast';
 
 const CartCheckoutBox = () => {
   const { totalAmount, isEmpty } = useCartProducts();
@@ -35,6 +36,7 @@ const CartCheckoutBox = () => {
           onCheckout={() => {
             dispatch(clearCart());
             handleClose();
+            toast.success('Cart cleared successfully!');
           }}
           modalBody={
             <p>

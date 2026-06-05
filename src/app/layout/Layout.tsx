@@ -6,25 +6,30 @@ import { useEffect } from 'react';
 import { initializeCart } from '@/store/slices/cartSlice';
 import { useAppDispatch } from '@/store/hooks';
 import { initializeFavorites } from '@/store/slices/favoritesSlice';
+import toast, { Toaster } from 'react-hot-toast';
 
 export const Layout = () => {
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     try {
       const storedCart = localStorage.getItem('shop_cart');
+
       if (storedCart) {
         dispatch(initializeCart(JSON.parse(storedCart)));
       }
     } catch (error) {
-      console.error('Помилка відновлення кошика:', error);
+      toast.error('Error restoring cart: ' + error);
     }
+
     try {
       const storedFav = localStorage.getItem('shop_favorites');
+
       if (storedFav) {
         dispatch(initializeFavorites(JSON.parse(storedFav)));
       }
     } catch (error) {
-      console.error('Помилка відновлення обраного:', error);
+      toast.error('Error restoring favorites: ' + error);
     }
   }, [dispatch]);
 
@@ -35,6 +40,20 @@ export const Layout = () => {
         <Outlet />
       </main>
       <Footer />
+      <Toaster
+        position="bottom-center"
+        containerClassName="toaster-container"
+        toastOptions={{
+          duration: 2500,
+          className: 'app-toast',
+          success: {
+            className: 'app-toast app-toast--success',
+          },
+          error: {
+            className: 'app-toast app-toast--error',
+          },
+        }}
+      />
     </>
   );
 };
