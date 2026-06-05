@@ -1,8 +1,5 @@
 import { Product } from '@/shared/type';
-import {
-  createContext,
-  useContext,
-} from 'react';
+import { createContext, useContext } from 'react';
 
 type ProductsContextType = {
   products: Product[] | null;
@@ -12,9 +9,6 @@ type ProductsContextType = {
 };
 
 export const ProductsContext = createContext<ProductsContextType | null>(null);
-
-
-
 
 export function useProducts() {
   const context = useContext(ProductsContext);

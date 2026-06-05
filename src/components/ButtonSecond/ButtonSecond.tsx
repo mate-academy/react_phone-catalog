@@ -19,7 +19,7 @@ export const ButtonSecond = ({
     <button {...props} className={classNames(className, styles.button)}>
       {arrowIcon && (
         <div className={styles.wrapper}>
-          <Icon  style={{ rotate: `${rotate}deg` }} type="arrowRight" />
+          <Icon style={{ rotate: `${rotate}deg` }} type="arrowRight" />
         </div>
       )}
 

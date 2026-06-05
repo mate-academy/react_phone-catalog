@@ -30,7 +30,9 @@ export const Slide = ({
       <div className={styles.leftContainer}>
         <h2 className={styles.title}>{textTitle}</h2>
         <p className={styles.paragraph}>{paragraph}</p>
-        <Link aria-label={to}  to={to} className={styles.button}>{textButton}</Link>
+        <Link aria-label={to} to={to} className={styles.button}>
+          {textButton}
+        </Link>
       </div>
 
       <div className={styles.rightContainer}>
@@ -42,7 +44,9 @@ export const Slide = ({
           <img src={image} alt={alt} loading="lazy" />
         </picture>
       </div>
-      <Link aria-label={to} to={to} className={classNames(styles.button, styles.button2)}>{textButton}</Link>
+      <Link aria-label={to} to={to} className={classNames(styles.button, styles.button2)}>
+        {textButton}
+      </Link>
     </div>
   );
 };

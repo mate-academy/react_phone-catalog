@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 import { useTranslation } from 'react-i18next';
 
 export const ButtonBack = ({ ...Props }: HTMLAttributes<HTMLDivElement>) => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
   return (

@@ -30,7 +30,6 @@ export const ProductDetailsPage = ({ category }: { category: Category }) => {
   return (
     <main>
       <ProductDetails key={productId} category={category} productId={productId}></ProductDetails>
-      
     </main>
   );
 };

@@ -86,7 +86,7 @@ export const en = {
     phones: 'Phones',
     tablets: 'Tablets',
     accessories: 'Accessories',
-    cart: 'Cart'
+    cart: 'Cart',
   },
   banners: {
     phone: {

@@ -7,7 +7,6 @@ import { SectionCategories } from './components/SectionCategories';
 import { SectionNewBrand } from './components/SectionNewBrand';
 
 export const HomePage: React.FC = () => {
-
   return (
     <main className={styles.main}>
       <SectionWelcome />

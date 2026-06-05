@@ -11,8 +11,6 @@ import 'swiper/css/thumbs';
 
 import styles from './styles.module.scss';
 
-
-
 type Props = HTMLAttributes<HTMLDivElement> & { images: string[] };
 
 export const ImageSwiper = ({ images, ...props }: Props) => {

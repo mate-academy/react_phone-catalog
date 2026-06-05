@@ -18,7 +18,6 @@ export type Product = {
   image: string;
 };
 
-
 type ProductCategory = 'phones' | 'tablets' | 'accessories';
 
 type ProductDescription = {
@@ -55,8 +54,7 @@ export type ProductDetails = {
   zoom?: string;
 };
 
-
 export type ProductInCart = {
-  id: string,
+  id: string;
   count: number;
-}
+};

@@ -4,10 +4,7 @@ import type { ProductInCart } from '@/shared/type';
 export type CartContextType = {
   cart: ProductInCart[];
   toggleCartProduct: (id: string) => void;
-  setCountCartProduct: (
-    id: string,
-    newValue: number | ((prev: number) => number),
-  ) => void;
+  setCountCartProduct: (id: string, newValue: number | ((prev: number) => number)) => void;
   deleteCartProduct: (id: string) => void;
   clearCart: () => void;
   totalItems: number;

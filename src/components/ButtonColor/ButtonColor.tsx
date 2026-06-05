@@ -14,7 +14,11 @@ export const ButtonColor = ({
   selected: boolean;
 }) => {
   return (
-    <Link {...props} to={to} className={classNames(className, styles.button, { [styles.selected]: selected })}>
+    <Link
+      {...props}
+      to={to}
+      className={classNames(className, styles.button, { [styles.selected]: selected })}
+    >
       <div className={styles.circle} style={{ backgroundColor: color }}></div>
     </Link>
   );

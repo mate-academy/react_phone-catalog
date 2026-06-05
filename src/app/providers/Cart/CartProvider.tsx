@@ -3,7 +3,6 @@ import { ProductInCart } from '@/shared/type';
 import { ReactNode, useMemo, useCallback } from 'react';
 import { CartContext } from './CartContext';
 
-
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useLocalStorage<ProductInCart[]>('cart', []);
 
@@ -77,4 +76,3 @@ export function CartProvider({ children }: { children: ReactNode }) {
     </CartContext.Provider>
   );
 }
-

@@ -7,8 +7,6 @@ type FavouritesContextType = {
 
 export const FavouritesContext = createContext<FavouritesContextType | null>(null);
 
-
-
 export function useFavourites() {
   const context = useContext(FavouritesContext);
 

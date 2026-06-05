@@ -16,15 +16,15 @@ export const SectionCategories = () => {
   }, [loadProducts]);
 
   const quantityOfTablets = useMemo(() => {
-    return products?.filter((item) => item.category === 'tablets').length
+    return products?.filter((item) => item.category === 'tablets').length;
   }, [products]);
 
   const quantityOfPhones = useMemo(() => {
-    return products?.filter((item) => item.category === 'phones').length
+    return products?.filter((item) => item.category === 'phones').length;
   }, [products]);
 
   const quantityOfAccessories = useMemo(() => {
-    return products?.filter((item) => item.category === 'accessories').length
+    return products?.filter((item) => item.category === 'accessories').length;
   }, [products]);
 
   return (
@@ -39,7 +39,10 @@ export const SectionCategories = () => {
               </div>
             </div>
             <h3 className={styles.categoryTitle}>{t('sectionCategories.modile')}</h3>
-            <p className={styles.categoryParagraph}> {quantityOfPhones ? quantityOfPhones: '...'} {t('sectionCategories.models')}</p>
+            <p className={styles.categoryParagraph}>
+              {' '}
+              {quantityOfPhones ? quantityOfPhones : '...'} {t('sectionCategories.models')}
+            </p>
           </Link>
           <Link className={styles.category} to="./tablets">
             <div className={styles.imgWrapper}>
@@ -53,7 +56,10 @@ export const SectionCategories = () => {
               </div>
             </div>
             <h3 className={styles.categoryTitle}>{t('sectionCategories.tablets')}</h3>
-            <p className={styles.categoryParagraph}> {quantityOfTablets ? quantityOfTablets : '...'} {t('sectionCategories.tablets')}</p>
+            <p className={styles.categoryParagraph}>
+              {' '}
+              {quantityOfTablets ? quantityOfTablets : '...'} {t('sectionCategories.tablets')}
+            </p>
           </Link>
           <Link className={styles.category} to="./accessories">
             <div className={styles.imgWrapper}>
@@ -67,7 +73,11 @@ export const SectionCategories = () => {
               </div>
             </div>
             <h3 className={styles.categoryTitle}>{t('sectionCategories.accessories')}</h3>
-            <p className={styles.categoryParagraph}> {quantityOfAccessories ? quantityOfAccessories : '...'}  {t('sectionCategories.accessories')}</p>
+            <p className={styles.categoryParagraph}>
+              {' '}
+              {quantityOfAccessories ? quantityOfAccessories : '...'}{' '}
+              {t('sectionCategories.accessories')}
+            </p>
           </Link>
         </div>
       </div>

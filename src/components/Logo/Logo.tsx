@@ -11,7 +11,7 @@ type Props = Omit<React.ComponentProps<typeof Link>, 'to'> & {
 export const Logo: React.FC<Props> = ({ type, to = '/', className, ...props }: Props) => {
   return (
     <Link {...props} to={to} className={classNames(styles[`logo${type}`], styles.logo, className)}>
-      <LogoSvg role="img" aria-label="Logo link to home page"  className={styles.logoSvg} />
+      <LogoSvg role="img" aria-label="Logo link to home page" className={styles.logoSvg} />
     </Link>
   );
 };

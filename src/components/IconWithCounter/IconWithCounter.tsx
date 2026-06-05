@@ -32,7 +32,9 @@ export const IconWithCounter = ({ count, type, className, ...props }: Props) => 
               [styles.counterAnimate]: isAnimated,
             })}
             onAnimationEnd={() => setIsAnimated(false)}
-          >{count}</div>
+          >
+            {count}
+          </div>
         )}
       </div>
     </div>

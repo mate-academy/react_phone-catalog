@@ -1,13 +1,12 @@
-import { ScrollToTop } from "@/components/ScrollToTop";
-import { FavouritesPage } from "@/modules/FavouritesPage";
-import { HomePage } from "@/modules/HomePage";
-import { NotFoundPage } from "@/modules/NotFoundPage";
-import { ProductDetailsPage } from "@/modules/ProductDetailsPage";
-import { ProductsPage } from "@/modules/ProductsPage";
-import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
-import { App } from "../App";
-import { CartPage } from "@/modules/CartPage";
-
+import { ScrollToTop } from '@/components/ScrollToTop';
+import { FavouritesPage } from '@/modules/FavouritesPage';
+import { HomePage } from '@/modules/HomePage';
+import { NotFoundPage } from '@/modules/NotFoundPage';
+import { ProductDetailsPage } from '@/modules/ProductDetailsPage';
+import { ProductsPage } from '@/modules/ProductsPage';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { App } from '../App';
+import { CartPage } from '@/modules/CartPage';
 
 export const Routers = () => {
   return (

@@ -1,31 +1,30 @@
 const productColors: Record<string, string> = {
- black: "#000000",
- blue: "#0000FF",
- coral: "#FF7F50",
- gold: "#FFD700",
- graphite: "#41424C",
- green: "#008000",
- midnight: "#191970",
- midnightgreen: "#004C3F",
- pink: "#FFC0CB",
- purple: "#800080",
- red: "#FF0000",
- "rose gold": "#B76E79",
- rosegold: "#B76E79",
- sierrablue: "#9FB5C8",
- silver: "#C0C0C0",
- "sky blue": "#87CEEB",
- "space gray": "#5F5F5F",
- "space-gray": "#5F5F5F",
- spaceblack: "#1D1D1F",
- spacegray: "#5F5F5F",
- starlight: "#F7E7CE",
- white: "#FFFFFF",
- yellow: "#FFFF00",
+  black: '#000000',
+  blue: '#0000FF',
+  coral: '#FF7F50',
+  gold: '#FFD700',
+  graphite: '#41424C',
+  green: '#008000',
+  midnight: '#191970',
+  midnightgreen: '#004C3F',
+  pink: '#FFC0CB',
+  purple: '#800080',
+  red: '#FF0000',
+  'rose gold': '#B76E79',
+  rosegold: '#B76E79',
+  sierrablue: '#9FB5C8',
+  silver: '#C0C0C0',
+  'sky blue': '#87CEEB',
+  'space gray': '#5F5F5F',
+  'space-gray': '#5F5F5F',
+  spaceblack: '#1D1D1F',
+  spacegray: '#5F5F5F',
+  starlight: '#F7E7CE',
+  white: '#FFFFFF',
+  yellow: '#FFFF00',
 };
 
 export default productColors;
-
 
 type Param = string | number;
 
@@ -34,17 +33,17 @@ type Params = {
 };
 
 export function getSearchParams(params: Params, search?: string | URLSearchParams) {
- const newParams = new URLSearchParams(search);
+  const newParams = new URLSearchParams(search);
 
- for (const [key, value] of Object.entries(params)) {
-   if (value === null) {
-     newParams.delete(key);
-   } else if (Array.isArray(value)) {
-     newParams.delete(key);
-     value.forEach((item) => newParams.append(key, item.toString()));
-   } else {
-     newParams.set(key, value.toString());
-   }
- }
- return newParams.toString();
+  for (const [key, value] of Object.entries(params)) {
+    if (value === null) {
+      newParams.delete(key);
+    } else if (Array.isArray(value)) {
+      newParams.delete(key);
+      value.forEach((item) => newParams.append(key, item.toString()));
+    } else {
+      newParams.set(key, value.toString());
+    }
+  }
+  return newParams.toString();
 }

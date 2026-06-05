@@ -64,7 +64,9 @@ export const FavouritesPage = () => {
 
         {!error && (
           <ProductsList
-            length={!slicefavouritesProducts && page === 1 ? Math.min(favourites.length, 16) : maxProducts}
+            length={
+              !slicefavouritesProducts && page === 1 ? Math.min(favourites.length, 16) : maxProducts
+            }
             products={slicefavouritesProducts}
             isLoading={loading}
           ></ProductsList>
@@ -90,7 +92,11 @@ export const FavouritesPage = () => {
           <>
             <h2>{t('favouritesPage.empty')}</h2>
             <p>{t('favouritesPage.addYourFirstProduct')}</p>
-            <img className={styles.imageIsEmpty} src="./img/cart-is-empty.png" alt="Image cart is empty" />
+            <img
+              className={styles.imageIsEmpty}
+              src="./img/cart-is-empty.png"
+              alt="Image cart is empty"
+            />
           </>
         )}
       </div>

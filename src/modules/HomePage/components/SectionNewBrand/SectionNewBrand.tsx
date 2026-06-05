@@ -6,7 +6,6 @@ import { Product } from '@/shared/type';
 import { useProducts } from '@/app/providers/Products';
 import { ProductsSlider } from '@/components/ProductsSlider';
 
-
 export const SectionNewBrand = () => {
   const { products, loading, loadProducts } = useProducts();
   const { t } = useTranslation();
@@ -20,10 +19,7 @@ export const SectionNewBrand = () => {
       return [];
     }
 
-    return products.sort(
-      (productsA, productsB) =>
-        productsB.year - productsA.year,
-    );
+    return products.sort((productsA, productsB) => productsB.year - productsA.year);
   }, [products]);
 
   return (

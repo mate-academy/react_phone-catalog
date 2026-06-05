@@ -41,7 +41,6 @@ export const ProductsPage = ({ category }: { category: 'phones' | 'tablets' | 'a
 
   const [searchInput, setSearchInput] = useState(query);
 
-
   const page = +(searchParams.get('page') || 1);
   const perPage: optionDropdownPerPage =
     (searchParams.get('perPage') as optionDropdownPerPage) || '16';
@@ -117,8 +116,10 @@ export const ProductsPage = ({ category }: { category: 'phones' | 'tablets' | 'a
     <main>
       <div className={styles.content}>
         <Breadcrumbs></Breadcrumbs>
-        <h1 >{title}</h1>
-        <p className={styles.p}>{!preparePhone ? '...' : preparePhone.length} {t('productPage.models')}</p>
+        <h1>{title}</h1>
+        <p className={styles.p}>
+          {!preparePhone ? '...' : preparePhone.length} {t('productPage.models')}
+        </p>
         <div className={styles.filterSortContainer}>
           <div className={classNames(styles.dropdownSortBox, styles.filterbox)}>
             <p>{t('productPage.sortByTitle')}</p>

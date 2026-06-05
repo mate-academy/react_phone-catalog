@@ -20,7 +20,7 @@ function getRandomProducts(products: Product[], lenght: number = 16): Product[] 
   return randomProducts;
 }
 
-export const SectionYouMayAlsoLike = ({...props}: HTMLAttributes<HTMLElement>) => {
+export const SectionYouMayAlsoLike = ({ ...props }: HTMLAttributes<HTMLElement>) => {
   const { products, loading, loadProducts } = useProducts();
   const { t } = useTranslation();
 

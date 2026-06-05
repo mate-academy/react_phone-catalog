@@ -17,11 +17,11 @@ export const ButtonHeart = ({ onClick, like = false, children, className, ...pro
         }
 
         if (!like) {
-          setShowFloatingHeart(true)
+          setShowFloatingHeart(true);
           setTimeout(() => setShowFloatingHeart(false), 1000);
         }
       }}
-      className={classNames(className, styles.button, { [styles.isLike]: like})}
+      className={classNames(className, styles.button, { [styles.isLike]: like })}
     >
       <div className={styles.wrapper}>
         <Icon className={classNames(styles.heartLike)} type="heartLike" />

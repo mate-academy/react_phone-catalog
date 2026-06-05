@@ -18,7 +18,6 @@ export const ProductCardInCart = ({
   const prepareProduct = product ? product : defaultProduct;
   const { deleteCartProduct, setCountCartProduct } = useCart();
 
-
   return (
     <article {...props}>
       <div className={styles.content}>
@@ -76,7 +75,9 @@ export const ProductCardInCart = ({
             </div>
           </Skeleton>
           <Skeleton isLoading={!product}>
-            <h2 className={styles.price}>{`$${prepareProduct.price * (cartProduct?.count || 1)}`}</h2>
+            <h2
+              className={styles.price}
+            >{`$${prepareProduct.price * (cartProduct?.count || 1)}`}</h2>
           </Skeleton>
         </div>
       </div>

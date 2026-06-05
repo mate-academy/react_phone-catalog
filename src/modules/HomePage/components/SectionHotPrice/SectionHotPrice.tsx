@@ -9,8 +9,6 @@ export const SectionHotPrice = () => {
   const { products, loading, loadProducts } = useProducts();
   const { t } = useTranslation();
 
-
-
   useEffect(() => {
     loadProducts();
   }, [loadProducts]);
@@ -27,7 +25,7 @@ export const SectionHotPrice = () => {
   }, [products]);
 
   return (
-    <section >
+    <section>
       <ProductsSlider
         products={hotProduct}
         title={t('HomeTitle.hotPrice')}
