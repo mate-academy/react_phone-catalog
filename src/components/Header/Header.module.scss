@@ -42,6 +42,9 @@
 
 .icons {
   margin-left: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
 
   @media (max-width: $tablet) {
     display: none;
@@ -53,4 +56,6 @@
 
   position: relative;
   overflow: visible;
+  border-left: var(--border);
+  height: 100%;
 }

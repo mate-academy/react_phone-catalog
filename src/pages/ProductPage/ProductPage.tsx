@@ -32,8 +32,17 @@ export const ProductPage = () => {
 
   useEffect(() => {
     const loadingData = async () => {
-      setIsLoading(true);
       setActiveIndex(0);
+
+      if (products.length > 0) {
+        const item = products.find(prod => prod.id === productId);
+
+        setProduct(item);
+
+        return;
+      }
+
+      setIsLoading(true);
       try {
         const data = await loadProductDetails(config.apiProduct);
         const item = data.find(prod => prod.id === productId);
@@ -48,7 +57,7 @@ export const ProductPage = () => {
     };
 
     loadingData();
-  }, [config.apiProduct, productId]);
+  }, [config.apiProduct, productId, products]);
 
   const sliderProducts = useMemo(() => {
     if (!product) {

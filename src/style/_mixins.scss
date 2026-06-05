@@ -105,8 +105,6 @@
 
 @mixin icon {
   padding: rem(24);
-  border-right: var(--border);
-  border-left: var(--border);
 
   @media (max-width: $desktop) {
     padding: rem(16);
