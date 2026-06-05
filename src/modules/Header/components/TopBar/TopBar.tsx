@@ -2,13 +2,12 @@ import { Logo } from '@/components/Logo';
 import { Nav } from '../Nav';
 import { Icon } from '@/components/Icon';
 import styles from './Topbar.module.scss';
-import { useTheme } from '@/app/providers/Theme/ThemeContext';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import { IconWithCounter } from '@/components/IconWithCounter';
 import { useCart } from '@/app/providers/Cart';
 import { useFavourites } from '@/app/providers/Favorities';
+import { Setting } from '../Setting';
 
 export const TopBar = ({
   type,
@@ -17,8 +16,6 @@ export const TopBar = ({
   type: 'Header' | 'Menu';
   setOpen: (value: boolean) => void;
 }) => {
-  const { theme, toggleTheme } = useTheme();
-  const { i18n } = useTranslation();
   const { favourites } = useFavourites();
   const { totalItems } = useCart();
 
@@ -31,17 +28,7 @@ export const TopBar = ({
             <Nav type="Header" />
           </div>
           <div className={styles.rightContainer}>
-            <div style={{ display: 'flex', gap: '5px' }}>
-              <button onClick={() => i18n.changeLanguage('ua')}>UA</button>
-              <button onClick={() => i18n.changeLanguage('en')}>EN</button>
-            </div>
-            <button className={styles.swicherThemeContainer} onClick={() => toggleTheme()}>
-              <div
-                className={classNames(styles.swicherTheme, {
-                  [styles.swicherThemeDark]: theme === 'dark',
-                })}
-              ></div>
-            </button>
+
             <NavLink
               aria-label="favourites"
               to="/favourites"
@@ -71,6 +58,7 @@ export const TopBar = ({
             >
               <Icon type="menu"></Icon>
             </button>
+            <Setting className={styles.settingHeader}></Setting>
           </div>
         </>
       )}
@@ -81,13 +69,8 @@ export const TopBar = ({
             <Logo type="Header" className={''}></Logo>
           </div>
           <div className={styles.rightContainer}>
-            <button className={styles.swicherThemeContainer} onClick={() => toggleTheme()}>
-              <div
-                className={classNames(styles.swicherTheme, {
-                  [styles.swicherThemeDark]: theme === 'dark',
-                })}
-              ></div>
-            </button>
+            <Setting></Setting>
+
             <button
               className={styles.icon}
               onClick={() => {

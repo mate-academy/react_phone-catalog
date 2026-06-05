@@ -2,8 +2,8 @@ import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Product } from '@/shared/type';
-import { useProducts } from '@/app/providers/Products/ProductsContext';
 import { ProductsSlider } from '@/components/ProductsSlider';
+import { useProducts } from '@/app/providers/Products';
 
 export const SectionHotPrice = () => {
   const { products, loading, loadProducts } = useProducts();

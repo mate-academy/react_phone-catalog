@@ -4,11 +4,11 @@ import styles from './styles.module.scss';
 
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { ProductsList } from '@/components/ProductsList';
-import { useProducts } from '@/app/providers/Products/ProductsContext';
 import { Pagination } from '@/components/Pagination';
 import { useTranslation } from 'react-i18next';
 import { useFavourites } from '@/app/providers/Favorities';
 import { getSearchParams } from '@/shared/utils';
+import { useProducts } from '@/app/providers/Products';
 
 const maxProducts = 16;
 

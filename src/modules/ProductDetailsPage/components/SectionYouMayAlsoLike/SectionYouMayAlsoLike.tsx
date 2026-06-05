@@ -2,7 +2,7 @@ import { HTMLAttributes, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Product } from '@/shared/type';
-import { useProducts } from '@/app/providers/Products/ProductsContext';
+import { useProducts } from '@/app/providers/Products';
 import { ProductsSlider } from '@/components/ProductsSlider';
 
 function getRandomProducts(products: Product[], lenght: number = 16): Product[] {

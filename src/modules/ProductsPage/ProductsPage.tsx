@@ -4,13 +4,13 @@ import styles from './styles.module.scss';
 
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { ProductsList } from '@/components/ProductsList';
-import { useProducts } from '@/app/providers/Products/ProductsContext';
 import { Dropdown } from '@/components/Dropdown';
 import { Product } from '@/shared/type';
 import { Pagination } from '@/components/Pagination';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { getSearchParams } from '@/shared/utils';
+import { useProducts } from '@/app/providers/Products';
 
 const typeSearch = {
   newest: 'age',

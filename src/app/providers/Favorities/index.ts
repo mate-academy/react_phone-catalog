@@ -1,1 +1,2 @@
-export * from './FavouritesContext';
+export * from './FavouritesProvider';
+export { useFavourites } from './FavouritesContext';

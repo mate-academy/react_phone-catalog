@@ -1,0 +1,11 @@
+export declare const active: string;
+export declare const dark: string;
+export declare const languageText: string;
+export declare const mainButton: string;
+export declare const mainButtonIcon: string;
+export declare const mainButtonIconActive: string;
+export declare const setting: string;
+export declare const settingButton: string;
+export declare const settingContainer: string;
+export declare const settingContainerActive: string;
+export declare const settingSwicher: string;

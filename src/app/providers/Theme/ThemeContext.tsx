@@ -1,5 +1,5 @@
-import { useLocalStorage } from '@/shared/Hooks';
-import { createContext, useContext, ReactNode, useEffect } from 'react';
+import { createContext, useContext } from 'react';
+
 
 type Theme = 'light' | 'dark';
 
@@ -8,25 +8,7 @@ type ThemeContextType = {
   toggleTheme: () => void;
 };
 
-const ThemeContext = createContext<ThemeContextType | null>(null);
-
-type ThemeProviderProps = {
-  children: ReactNode;
-};
-
-export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setTheme] = useLocalStorage<Theme>('theme', 'light');
-
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
-
-  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
-}
+export const ThemeContext = createContext<ThemeContextType | null>(null);
 
 export function useTheme() {
   const context = useContext(ThemeContext);

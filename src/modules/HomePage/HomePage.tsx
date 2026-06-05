@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { SectionWelcome } from './components/SectionWelcome';
 import { SectionHotPrice } from './components/SectionHotPrice';
 

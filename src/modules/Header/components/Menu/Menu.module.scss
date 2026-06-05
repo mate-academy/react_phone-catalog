@@ -1,6 +1,7 @@
 @use '@/shared/styles' as *;
 
 .menu {
+  min-width: 320px;
   z-index: 5;
   position: fixed;
   display: flex;

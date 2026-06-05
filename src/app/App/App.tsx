@@ -4,8 +4,8 @@ import { Outlet } from 'react-router-dom';
 import { ThemeProvider } from '../providers/Theme';
 import { CartProvider } from '../providers/Cart';
 import { FavouritesProvider } from '../providers/Favorities';
-import { ProductsProvider } from '../providers/Products/ProductsContext';
 import { Footer } from '../../modules/Footer';
+import { ProductsProvider } from '../providers/Products';
 
 export const App: React.FC = () => {
   return (
