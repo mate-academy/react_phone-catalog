@@ -93,3 +93,14 @@
 .right {
   margin-left: rem(8);
 }
+
+.dots {
+  user-select: none;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 rem(4);
+
+  color: var(--gray-primary);
+}

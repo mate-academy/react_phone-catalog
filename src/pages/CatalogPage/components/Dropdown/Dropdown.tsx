@@ -11,30 +11,31 @@ type Option<T> = {
 type Props<T> = {
   options: Option<T>[];
   label: string;
-  defaultValue: T;
+  value: T;
   onChange: (value: T) => void;
 };
 
 export const Dropdown = <T extends string | number>({
   options,
   label,
-  defaultValue,
+  value,
   onChange,
 }: Props<T>) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState<T>(defaultValue);
 
-  const handleSelect = (title: string, value: T) => {
-    setSelected(title as T);
-    onChange(value);
+  const handleSelect = (val: T) => {
+    onChange(val);
     setIsOpen(false);
   };
+
+  const selectedLabel =
+    options.find(o => o.value === value)?.label ?? String(value);
 
   return (
     <div className={styles.dropdown}>
       <p className={styles.label}>{label}</p>
       <button className={styles.trigger} onClick={() => setIsOpen(!isOpen)}>
-        <p className={styles.text}>{selected}</p>
+        <p className={styles.text}>{selectedLabel}</p>
         <ArrowIcon direction={isOpen ? 'up' : 'down'} />
       </button>
 
@@ -44,7 +45,7 @@ export const Dropdown = <T extends string | number>({
             <button
               key={option.id}
               className={styles.option}
-              onClick={() => handleSelect(option.label, option.value)}
+              onClick={() => handleSelect(option.value)}
             >
               {option.label}
             </button>

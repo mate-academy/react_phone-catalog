@@ -11,6 +11,7 @@ import classNames from 'classnames';
 import { getVisibleProducts } from '../../utils/getVisibleProducts';
 import { Path } from '../../components/Path';
 import { useSearchParams } from 'react-router-dom';
+import { scrollToTop } from '../../utils/scrollToTop';
 
 type Props = {
   category: CatalogType;
@@ -66,14 +67,47 @@ export const CatalogPage = ({ category }: Props) => {
     setSearchParams(newParams);
   };
 
-  const handlePrev = () => updateParams({ page: String(currentPage - 1) });
-  const handleNext = () => updateParams({ page: String(currentPage + 1) });
+  const handlePrev = () => {
+    updateParams({ page: String(currentPage - 1) });
+    scrollToTop();
+  };
+
+  const handleNext = () => {
+    updateParams({ page: String(currentPage + 1) });
+    scrollToTop();
+  };
 
   const totalPages =
     perPage === 'all'
       ? 1
       : Math.ceil(categoryProducts.length / Number(perPage));
-  const pages = [...Array(totalPages)].map((_, i) => i + 1);
+
+  const getPageRange = (current: number, total: number): (number | '...')[] => {
+    if (total <= 7) {
+      return [...Array(total)].map((_, i) => i + 1);
+    }
+
+    const pages: (number | '...')[] = [1];
+
+    if (current > 3) {
+      pages.push('...');
+    }
+
+    const start = Math.max(2, current - 1);
+    const end = Math.min(total - 1, current + 1);
+
+    for (let i = start; i <= end; i++) {
+      pages.push(i);
+    }
+
+    if (current < total - 2) {
+      pages.push('...');
+    }
+
+    pages.push(total);
+
+    return pages;
+  };
 
   const visibleProducts = useMemo(() => {
     return getVisibleProducts({
@@ -118,7 +152,7 @@ export const CatalogPage = ({ category }: Props) => {
             <Dropdown
               label="Sort by"
               options={sortOptions}
-              defaultValue="Newest"
+              value={sortBy}
               onChange={value =>
                 updateParams({ sort: String(value), page: '1' })
               }
@@ -127,7 +161,7 @@ export const CatalogPage = ({ category }: Props) => {
             <Dropdown
               label="Items on page"
               options={perPageOptions}
-              defaultValue={Number('16')}
+              value={Number(perPage)}
               onChange={value =>
                 updateParams({ perPage: String(value), page: '1' })
               }
@@ -148,17 +182,28 @@ export const CatalogPage = ({ category }: Props) => {
           >
             <ArrowIcon direction="left" />
           </button>
-          {[...pages].map(page => (
-            <button
-              className={classNames(styles.pageNumber, {
-                [styles.active]: currentPage === page,
-              })}
-              onClick={() => updateParams({ page: String(page) })}
-              key={page}
-            >
-              {page}
-            </button>
-          ))}
+
+          {getPageRange(currentPage, totalPages).map((page, i) =>
+            page === '...' ? (
+              <span key={`dots-${i}`} className={styles.dots}>
+                ...
+              </span>
+            ) : (
+              <button
+                key={page}
+                className={classNames(styles.pageNumber, {
+                  [styles.active]: currentPage === page,
+                })}
+                onClick={() => {
+                  updateParams({ page: String(page) });
+                  scrollToTop();
+                }}
+              >
+                {page}
+              </button>
+            ),
+          )}
+
           <button
             className={`${styles.slider} ${styles.right}`}
             aria-label="Next slide"
