@@ -2,6 +2,7 @@
 
 .main {
   @include padding-container;
+
   padding-block: 32px;
   display: flex;
   flex-direction: column;
@@ -21,7 +22,6 @@
   gap: 16px;
   flex: 0.5;
   box-sizing: border-box;
-  // padding-inline: 20%;
 
   @include on-tablet {
     flex-direction: row;

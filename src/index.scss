@@ -2,9 +2,10 @@
 
 @use './shared/styles/base' as *;
 @use './shared/styles' as *;
+
 .page {
   scroll-behavior: smooth;
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   background-color: var(--bg);

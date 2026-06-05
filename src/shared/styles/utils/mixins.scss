@@ -17,16 +17,16 @@
     @content;
   }
 }
-
+/* stylelint-disable-next-line length-zero-no-unit */
 @mixin padding-container($min: 0px) {
-  padding-inline: calc(16px - #{$min});
+  padding-inline: calc(16px - $min);
 
   @include on-tablet {
-    padding-inline: calc(24px - #{$min});
+    padding-inline: calc(24px - $min);
   }
 
   @include on-desktop {
-    padding-inline: calc((100vw - 1136px) / 2 - #{$min});
+    padding-inline: calc((100vw - 1136px) / 2 - $min);
   }
 }
 
@@ -37,7 +37,7 @@
   grid-template-columns: repeat(var(--count-culumn), 1fr);
 
   column-gap: 16px;
-  
+
   @include padding-container;
 
   @include on-tablet {

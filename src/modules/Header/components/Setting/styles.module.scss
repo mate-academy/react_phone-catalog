@@ -12,7 +12,7 @@
   top: 102%;
   position: absolute;
 
-  box-shadow: -1px 1px 0px 0px var(--line-and-border);
+  box-shadow: -1px 1px 0 0 var(--line-and-border);
 
   display: flex;
   flex-direction: column;
@@ -45,7 +45,7 @@
   display: flex;
   box-sizing: border-box;
 
-  box-shadow: 0px -1px 0px 0px var(--line-and-border);
+  box-shadow: 0 -1px 0 0 var(--line-and-border);
 
   flex-direction: column;
   align-items: center;
@@ -104,7 +104,7 @@
   height: 100%;
   aspect-ratio: 1/1;
   background-color: var(--bg-header-footer);
-  box-shadow: -1px 0px 0px 0px var(--line-and-border);
+  box-shadow: -1px 0 0 0 var(--line-and-border);
   color: var(--icon);
 
   transition:

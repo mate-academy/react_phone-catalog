@@ -2,7 +2,6 @@
 @use '../utils/mixins.scss' as *;
 
 html {
-  //#region colorLight
   --bg: #{$bg-light};
   --bg-header-footer: #{$bg-header-footer-light};
   --bg-goods: #{$bg-goods-light};
@@ -15,9 +14,6 @@ html {
   --line-and-border: #{$line-and-border-light};
 
 
-  //#endregion
-
-  //#region colorDark
   &[data-theme='dark'] {
     --bg: #{$bg-dark};
     --bg-header-footer: #{$bg-header-footer-dark};
@@ -30,5 +26,5 @@ html {
     --text: #{$text-dark};
     --line-and-border: #{$line-and-border-dark};
   }
-  //#endregion
+
 }

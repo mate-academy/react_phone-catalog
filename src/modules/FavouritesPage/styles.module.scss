@@ -30,6 +30,7 @@
   margin-top: 32px;
   margin-bottom: 24px;
   @include grid;
+
   padding: 0;
 
   row-gap: 16px;
@@ -69,12 +70,11 @@
     height: 100%;
 
     background-color: white;
-    border: none;
     outline: none;
     color: var(--h);
     border: 1px solid #b4bdc3;
     border-radius: 8px;
-    font-family: 'Mont', sans-serif;
+    font-family: Mont, sans-serif;
     font-weight: 500;
     letter-spacing: 5%;
 

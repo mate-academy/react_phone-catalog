@@ -2,23 +2,16 @@ $tablet: 640px;
 $desktop: 1200px;
 $big-desktop: 1440px;
 $transition: 0.3s;
-
-//#region colorLight
 $bg-light: #FAFBFC;
-$bg-header-footer-light: #FFFFFF;
-$bg-goods-light: #FFFFFF;
-$bg-button-light: #FFFFFF;
+$bg-header-footer-light: #FFF;
+$bg-goods-light: #FFF;
+$bg-button-light: #FFF;
 $accent-light: #f86800;
 $icon-light: #0F0F11;
 $accent2-light: #476DF4;
 $h-light: #0F0F11;
 $text-light: #89939A;
 $line-and-border-light: #E2E6E9;
-
-
-//#endregion
-
-//#region colorDark
 $bg-dark: #0f1121;
 $bg-header-footer-dark: #0f1121;
 $bg-goods-dark: #161827;
@@ -29,12 +22,4 @@ $accent2-dark: #EB5757;
 $h-dark: #F1F2F9;
 $text-dark: #75767F;
 $line-and-border-dark: #323542;
-
-
-//#endregion
-
-// $icons: #b4bdc3;
-// $elements: #e2e6e9;
-// $hover-BG: #e2e6e9;
-// $white: #fff;
 $red: #eb5757;

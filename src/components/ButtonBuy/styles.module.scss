@@ -1,5 +1,9 @@
 @use '@/shared/styles' as *;
 
+.icon {
+  color: var(--h);
+}
+
 .button {
   border-radius: 8px;
   border: 1px solid #b4bdc3;
@@ -13,7 +17,7 @@
   &:not(.selected) {
     animation: bloom 2s infinite alternate;
   }
-  
+
   &:hover {
     background-color: color-mix(in srgb, var(--accent), white 20%);
   }
@@ -55,9 +59,7 @@
   justify-content: center;
 }
 
-.icon {
-  color: var(--h);
-}
+
 
 .iconFlip {
   transform: scaleX(-1);
@@ -95,10 +97,10 @@
 }
 
 .button.animationSelect {
-  animation: animationSelect $transition ease forwards;
+  animation: animation-select $transition ease forwards;
 }
 
-@keyframes animationSelect {
+@keyframes animation-select {
   0% {
     transform: scale(1);
   }
@@ -113,10 +115,10 @@
 }
 
 .button.animationDeselect {
-  animation: animationDeselect $transition ease forwards;
+  animation: animation-deselect $transition ease forwards;
 }
 
-@keyframes animationDeselect {
+@keyframes animation-deselect {
   0% {
     transform: scale(1);
   }

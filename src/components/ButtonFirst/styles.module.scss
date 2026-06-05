@@ -1,5 +1,10 @@
 @use '@/shared/styles' as *;
 
+
+.icon {
+  color: var(--h);
+}
+
 .button {
   color: var(--h);
   border-radius: 48px;
@@ -22,12 +27,12 @@
 
   &:active {
     background-color: #0f0f11;
-    color: #ffffff;
+    color: #fff;
   }
 
   &.selected {
     background-color: #0f0f11;
-    color: #ffffff;
+    color: #fff;
   }
 
   &:disabled {
@@ -50,9 +55,6 @@
   justify-content: center;
 }
 
-.icon {
-  color: var(--h);
-}
 
 [data-theme='dark'] {
   .button {

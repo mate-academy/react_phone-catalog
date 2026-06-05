@@ -34,7 +34,7 @@
   transition: transform $transition;
 
   &:hover {
-   transform: scale(1.03);
+    transform: scale(1.03);
   }
 }
 
@@ -46,52 +46,6 @@
 
   // background: #eeeeee;
 }
-
-.mainImage {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: top;
-}
-
-.thumbsSwiper {
-  width: 100%;
-  height: 100%;
-  // order: 1;
-
-  @include on-tablet {
-    // height: 100%;
-    order: -1;
-  }
-}
-
-.thumbSlide {
-  min-height: 0;
-  min-height: 0;
-  height: 100%;
-  width: auto;
-  aspect-ratio: 1 / 1;
-
-  @include on-tablet {
-    height: auto;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-  }
-}
-
-.thumbsSwiper {
-  :global(.swiper-slide-thumb-active) {
-    .thumbButton {
-      border-color: var(--h);
-      opacity: 1;
-    }
-  }
-}
-//   // :global(.swiper-slide) {
-//   //   height: 60px;
-//   // }
-// }
 
 .thumbButton {
   width: 100%;
@@ -115,8 +69,48 @@
   }
 
   &:focus-visible {
-    outline: 2px solid #222222;
+    outline: 2px solid #222;
     outline-offset: 2px;
+  }
+}
+
+.mainImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top;
+}
+
+.thumbsSwiper {
+  width: 100%;
+  height: 100%;
+
+  @include on-tablet {
+    order: -1;
+  }
+}
+
+.thumbSlide {
+  min-height: 0;
+  height: 100%;
+  width: auto;
+  aspect-ratio: 1 / 1;
+
+  @include on-tablet {
+    height: auto;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+}
+/* stylelint-disable-next-line no-duplicate-selectors */
+.thumbsSwiper {
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+  :global(.swiper-slide-thumb-active) {
+    .thumbButton {
+      border-color: var(--h);
+      opacity: 1;
+    }
   }
 }
 

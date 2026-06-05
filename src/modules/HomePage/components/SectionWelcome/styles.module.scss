@@ -3,6 +3,7 @@
 
 .title {
   @include padding-container;
+
   grid-column: 1 / -1;
 
   margin-block: 24px;
@@ -55,6 +56,7 @@
 
   @include on-tablet {
     @include padding-container;
+
     display: flex;
     justify-content: space-between;
     gap: 16px;
@@ -87,6 +89,7 @@
 .sliderButtonPrev {
   justify-self: start;
 }
+
 .sliderButtonNext {
   justify-self: end;
 }
@@ -98,6 +101,7 @@
   margin-top: 20px;
 }
 
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
 .customPagination :global(.swiper-pagination-bullet) {
   position: relative;
   width: 14px;
@@ -117,6 +121,7 @@
   }
 }
 
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
 .customPagination :global(.swiper-pagination-bullet-active) {
   background-color: var(--h);
 }

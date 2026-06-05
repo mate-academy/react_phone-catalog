@@ -3,7 +3,6 @@
 .main {
   width: 100%;
   height: 100%;
-  // height: 600px;
 
   transition: box-shadow $transition;
 }
@@ -86,7 +85,7 @@
 }
 
 .price {
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   font-weight: 800;
   font-size: 22px;
   line-height: 140%;
@@ -143,7 +142,6 @@
 .buttons {
   display: flex;
   gap: 8px;
-  // margin-top: auto;
 }
 
 .buttonHeart {

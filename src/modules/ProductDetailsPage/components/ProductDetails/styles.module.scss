@@ -7,6 +7,7 @@
     @include padding-container;
   }
 }
+
 .sectionYouMayAlsoLike {
   margin-bottom: 56px;
 
@@ -19,9 +20,8 @@
   }
 }
 
-
 .imageProductNotFound {
- width: 100%;
+  width: 100%;
 }
 
 .imageSwiper {
@@ -65,6 +65,7 @@
   display: flex;
   justify-content: space-between;
 }
+
 .parameterSelects {
   display: flex;
   gap: 8px;
@@ -106,19 +107,17 @@
   line-height: 41px;
   letter-spacing: -1%;
 
+
+
   &lineThrough {
     text-decoration: line-through;
     text-decoration-thickness: 1px;
     color: var(--text);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 100%;
+    letter-spacing: 0%;
   }
-}
-
-.pricelineThrough {
-  font-weight: 500;
-  font-size: 22px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  text-decoration: line-through;
 }
 
 .details {
@@ -169,7 +168,7 @@
 
     &fontSize14 {
       font-size: 14px;
-      font-family: Mont;
+      font-family: Mont, sans-serif;
       line-height: 21px;
     }
 
@@ -183,7 +182,6 @@
   margin-top: 16px;
   display: flex;
   gap: 8px;
-  // margin-top: auto;
 }
 
 .buttonHeart {
@@ -209,6 +207,7 @@
   row-gap: 56px;
 
   @include grid;
+
   padding: 0;
 
   @include on-tablet {

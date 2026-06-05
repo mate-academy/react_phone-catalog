@@ -9,6 +9,10 @@
 }
 
 .isLike {
+  &.button {
+    background-color: transparent;
+  }
+
   .icon {
     transform: scale(0);
   }
@@ -22,10 +26,10 @@
 }
 
 .isLike .heartLike {
-  animation: appearHeart $transition forwards;
+  animation: appear-heart $transition forwards;
 }
 
-@keyframes appearHeart {
+@keyframes appear-heart {
   0% {
     transform: scale(0);
   }
@@ -89,19 +93,6 @@
   justify-content: center;
 }
 
-.isLike {
-  &.button {
-    background-color: transparent;
-  }
-
-}
-
-// .animation {
-//   .wrapper {
-//     animation: like $transition forwards;
-//   }
-// }
-
 [data-theme='dark'] {
   .button {
     border-radius: 0;
@@ -113,7 +104,6 @@
         background-color: transparent;
         border: 1px solid #3b3e4a;
       }
-      // animation: like $transition forwards ease-in-out;
     }
 
     &:hover {
@@ -138,10 +128,10 @@
 
 .floatingHeart {
   position: absolute;
-  animation: floatingHeart 1s ease-in-out forwards;
+  animation: floating-heart 1s ease-in-out forwards;
 }
 
-@keyframes floatingHeart {
+@keyframes floating-heart {
   0% {
     opacity: 0;
     transform: translate(0, 0) scale(1);
@@ -157,11 +147,11 @@
 
   40% {
     opacity: 1;
-    transform: translate(0px, -40px) scale(2);
+    transform: translate(0, -40px) scale(2);
   }
 
   100% {
     opacity: 0;
-    transform: translate(0px, -160px) scale(6);
+    transform: translate(0, -160px) scale(6);
   }
 }

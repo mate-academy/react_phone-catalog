@@ -5,7 +5,7 @@
   justify-content: space-between;
 
   height: 48px;
-  box-shadow: 0px 1px 0px 0px var(--line-and-border);
+  box-shadow: 0 1px 0 0 var(--line-and-border);
   background-color: var(--bg-header-footer);
 
   @include on-desktop {
@@ -30,7 +30,7 @@
   height: 100%;
   aspect-ratio: 1/1;
   background-color: var(--bg-header-footer);
-  box-shadow: -1px 0px 0px 0px var(--line-and-border);
+  box-shadow: -1px 0 0 0 var(--line-and-border);
   color: var(--icon);
 
   &::after {

@@ -2,7 +2,6 @@
 
 .dropdown {
   position: relative;
-  // width: 100%;
 }
 
 .trigger {
@@ -69,7 +68,6 @@
   overflow: hidden;
   overflow-y: hidden;
   max-height: 0;
-  scroll-behavior: smooth;
   overscroll-behavior: contain;
   scroll-behavior: smooth;
 }

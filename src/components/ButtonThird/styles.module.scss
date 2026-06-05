@@ -1,5 +1,9 @@
 @use '@/shared/styles' as *;
 
+.icon {
+  color: var(--h);
+}
+
 .button {
   color: var(--h);
   border-radius: 4px;
@@ -22,12 +26,12 @@
 
   &:active {
     background-color: #0f0f11;
-    color: #ffffff;
+    color: #fff;
   }
 
   &.selected {
     background-color: #0f0f11;
-    color: #ffffff;
+    color: #fff;
   }
 
   &:disabled {
@@ -38,8 +42,6 @@
       color: #e2e6e9;
     }
   }
-
-
 }
 
 .wrapper {
@@ -52,15 +54,13 @@
   padding: 4px 8px;
 }
 
-.icon {
-  color: var(--h);
-}
+
 
 [data-theme='dark'] {
   .button {
     border-radius: 0;
     border-width: 1;
-    border-color: #4A4D58;
+    border-color: #4a4d58;
     background-color: transparent;
 
     &:hover {
@@ -84,7 +84,7 @@
     &.selected {
       background-color: var(--h);
       border-color: var(--h);
-      color: #0F1121;
+      color: #0f1121;
     }
   }
 }
