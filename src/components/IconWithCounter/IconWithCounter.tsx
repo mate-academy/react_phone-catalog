@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useEffect, useRef, useState } from 'react';
+import { HTMLAttributes, useEffect, useRef, useState } from 'react';
 import { Icon } from '../Icon/Icon';
 import classNames from 'classnames';
 

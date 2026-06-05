@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useMemo } from 'react';
+import { useLayoutEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styles from './styles.module.scss';
 
