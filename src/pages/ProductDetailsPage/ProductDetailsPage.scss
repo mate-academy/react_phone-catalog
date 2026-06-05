@@ -105,7 +105,7 @@
     font-weight: 700;
     line-height: 100%;
     letter-spacing: 0;
-    color: var(--text-muted);
+    color: #4A4D58;
     text-align: right;
     margin-left: auto;
   }
@@ -410,7 +410,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--border-color);
+    border: none;
 
     @include on-tablet {
       width: 288px;
@@ -602,7 +602,8 @@
     background-color: #161827;
     border: 1px solid #3B3E4A;
     padding: 32px;
-    height: 506px;
+    min-height: 506px;    // ← было height: 506px
+    height: auto;         // ← добавь это
     box-sizing: border-box;
     transition: box-shadow 0.3s ease;
 
