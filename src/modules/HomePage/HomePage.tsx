@@ -62,7 +62,6 @@ export const HomePage: React.FC = () => {
   const [isAtEndHot, setIsAtEndHot] = useState(false);
 
   useEffect(() => {
-    // 1. Считаем количество по категориям
     const counts = {
       phones: productsData.filter((p: any) => p.category === 'phones').length,
       tablets: productsData.filter((p: any) => p.category === 'tablets').length,
@@ -72,10 +71,13 @@ export const HomePage: React.FC = () => {
 
     setCategoryCounts(counts);
 
-    // 2. Фильтруем новые модели (2022 год и новее)
-    const latestModels = [...productsData] // делаем копию для сортировки
+    const latestModels = [...productsData]
       .filter((p: any) => p.year >= 2022)
-      .sort((a: any, b: any) => b.year - a.year);
+      .sort((a: any, b: any) => b.year - a.year)
+      .map((product: any) => ({
+        ...product,
+        price: product.fullPrice,
+      }));
 
     // 3. Фильтруем товары со скидкой
     const discountedProducts = [...productsData]

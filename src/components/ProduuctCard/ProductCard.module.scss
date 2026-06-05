@@ -64,9 +64,11 @@
   justify-content: space-between;
   font-size: 12px;
 
+
   p {
     margin: 2px 0;
     color: #89939a;
+
   }
   span {
     color: #fff;
@@ -77,6 +79,7 @@
   display: flex;
   gap: 8px;
   margin-top: 16px;
+
 }
 
 .addToCart {
@@ -104,6 +107,7 @@
   display: flex;
   gap: 8px;
   align-items: center;
+  margin-top: 10px;
 }
 
 .favBtn {
