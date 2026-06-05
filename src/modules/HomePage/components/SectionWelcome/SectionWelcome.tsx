@@ -33,8 +33,7 @@ export const SectionWelcome = () => {
   }, []);
   return (
     <section>
-      {/* <h1 className={styles.title}>{t('HomeTitle.welcome')}</h1> */}
-      <h1 className={styles.title}>Product Catalog</h1>
+      <h1 className={styles.title}>{t('HomeTitle.welcome')}</h1>
 
       <div className={styles.sliderWrapper}>
         <ButtonSecond
