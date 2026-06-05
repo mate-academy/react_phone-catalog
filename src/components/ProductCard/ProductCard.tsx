@@ -78,6 +78,7 @@ export const ProductCard = ({ product, ...props }: Props) => {
       </div>
       <div className={styles.buttons}>
         <ButtonBuy
+          aria-label={`Buy product ${preparedProduct.name}`}
           className={styles.buttonBuy}
           selected={isInCart}
           onClick={() => {
@@ -91,6 +92,7 @@ export const ProductCard = ({ product, ...props }: Props) => {
           {isInCart ? t('productCart.buttonSelected') : t('productCart.button')}
         </ButtonBuy>
         <ButtonHeart
+          aria-label={`Like product ${preparedProduct.name}`}
           className={styles.buttonHeart}
           like={isFavourite}
           onClick={() => {

@@ -1,7 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import ua from './locales/ua/translation';
+import uk from './locales/uk/translation';
 import en from './locales/en/translation';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
@@ -10,7 +10,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources: {
-      ua: { translation: ua },
+      uk: { translation: uk },
       en: { translation: en },
     },
 

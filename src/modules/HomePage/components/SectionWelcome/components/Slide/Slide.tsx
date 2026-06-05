@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.module.scss';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 type Props = React.HTMLAttributes<HTMLDivElement> & {
   alt: string;
@@ -10,6 +11,7 @@ type Props = React.HTMLAttributes<HTMLDivElement> & {
   textTitle2: string;
   paragraph: string;
   textButton: string;
+  to: string;
 };
 
 export const Slide = ({
@@ -20,6 +22,7 @@ export const Slide = ({
   alt,
   imageMax640,
   image,
+  to,
   ...props
 }: Props) => {
   return (
@@ -27,7 +30,7 @@ export const Slide = ({
       <div className={styles.leftContainer}>
         <h2 className={styles.title}>{textTitle}</h2>
         <p className={styles.paragraph}>{paragraph}</p>
-        <button className={styles.button}>{textButton}</button>
+        <Link aria-label={to}  to={to} className={styles.button}>{textButton}</Link>
       </div>
 
       <div className={styles.rightContainer}>
@@ -39,7 +42,7 @@ export const Slide = ({
           <img src={image} alt={alt} loading="lazy" />
         </picture>
       </div>
-      <button className={classNames(styles.button, styles.button2)}>{textButton}</button>
+      <Link aria-label={to} to={to} className={classNames(styles.button, styles.button2)}>{textButton}</Link>
     </div>
   );
 };

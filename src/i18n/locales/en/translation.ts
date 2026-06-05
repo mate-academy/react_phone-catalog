@@ -51,6 +51,8 @@ export const en = {
     cart: 'Cart',
     checkout: 'Checkout',
     total: 'Total for',
+    isEmpty: 'Your cart is empty',
+    isEmptyParagraph: 'Add your first product to the cart',
   },
 
   sectionCategories: {
@@ -84,6 +86,7 @@ export const en = {
     phones: 'Phones',
     tablets: 'Tablets',
     accessories: 'Accessories',
+    cart: 'Cart'
   },
   banners: {
     phone: {

@@ -79,6 +79,7 @@ export const CartPage = () => {
             {!loading &&
               !error &&
               productsCart &&
+              productsCart.length !== 0 &&
               productsCart.map((productCart) => {
                 return (
                   <ProductCardInCart
@@ -88,25 +89,36 @@ export const CartPage = () => {
                   ></ProductCardInCart>
                 );
               })}
+
+            {cart.length === 0 && (
+              <div>
+                <h1>{t('cart.isEmpty')}</h1>
+                <p>{t('cart.isEmptyParagraph')}</p>
+                <img src="./img/cart-is-empty.png" alt="Image cart is empty" />
+              </div>
+            )}
           </div>
-          <div className={styles.results}>
-            <div className={styles.resultsPriceAndTotal}>
-              <Skeleton className={styles.resultsPriceAndTotal} isLoading={!productsCart}>
-                <h2 className={styles.resultsPrice}>{`$${resultsPrice}`}</h2>
-                <p>{`${t('cart.total')} ${TotalItems || 0} ${TotalItems > 1 ? t('sectionCategories.items') : t('sectionCategories.item')}`}</p>
-              </Skeleton>
-            </div>
-            <div className={styles.resultsLine}></div>
-            <Skeleton isLoading={!productsCart}>
-              <ButtonBuy
-                onClick={() => setOpenModal(true)}
-                className={styles.resultsButton}
-                selected={false}
-              >
-                {t('cart.checkout')}
-              </ButtonBuy>
-            </Skeleton>
-          </div>
+          {!productsCart ||
+            (productsCart && productsCart.length !== 0 && (
+              <div className={styles.results}>
+                <div className={styles.resultsPriceAndTotal}>
+                  <Skeleton className={styles.resultsPriceAndTotal} isLoading={!productsCart}>
+                    <h2 className={styles.resultsPrice}>{`$${resultsPrice}`}</h2>
+                    <p>{`${t('cart.total')} ${TotalItems || 0} ${TotalItems > 1 ? t('sectionCategories.items') : t('sectionCategories.item')}`}</p>
+                  </Skeleton>
+                </div>
+                <div className={styles.resultsLine}></div>
+                <Skeleton isLoading={!productsCart}>
+                  <ButtonBuy
+                    onClick={() => setOpenModal(true)}
+                    className={styles.resultsButton}
+                    selected={false}
+                  >
+                    {t('cart.checkout')}
+                  </ButtonBuy>
+                </Skeleton>
+              </div>
+            ))}
         </div>
       </main>
       {<ModalDialog isOpen={openModal} isSetOpen={setOpenModal}></ModalDialog>}

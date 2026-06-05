@@ -7,6 +7,7 @@ import { useCart } from '@/app/providers/Cart';
 import { IconWithCounter } from '@/components/IconWithCounter';
 import { useFavourites } from '@/app/providers/Favorities';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const Menu = ({
   isOpen,
@@ -18,6 +19,7 @@ export const Menu = ({
   const { cart } = useCart();
   const { favourites } = useFavourites();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 640);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,11 +34,15 @@ export const Menu = ({
   return (
     <>
       {isMobile && (
-        <aside className={classNames(styles.menu, { [styles.isOpen]: isOpen })}>
+        <aside
+          aria-label="Side bar menu navigation"
+          className={classNames(styles.menu, { [styles.isOpen]: isOpen })}
+        >
           <TopBar setOpen={setOpen} type="Menu" />
           <Nav type="Menu" />
           <div className={styles.bottomContainer}>
             <NavLink
+              aria-label={t('navigation.favourites')}
               to="/favourites"
               className={({ isActive }: { isActive: boolean }) => {
                 return classNames(styles.icon, { [styles.active]: isActive });
@@ -45,6 +51,7 @@ export const Menu = ({
               <IconWithCounter count={favourites.length} type="heart"></IconWithCounter>
             </NavLink>
             <NavLink
+              aria-label={t('navigation.cart')}
               to="/cart"
               className={({ isActive }: { isActive: boolean }) => {
                 return classNames(styles.icon, { [styles.active]: isActive });

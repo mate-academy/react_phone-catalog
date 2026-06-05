@@ -1,4 +1,4 @@
-export const ua = {
+export const uk = {
   productCart: {
     screen: 'Екран',
     capacity: 'Памʼять',
@@ -59,6 +59,8 @@ export const ua = {
     cart: 'Кошик',
     checkout: 'Оформити замовлення',
     total: 'Всього',
+    isEmpty: 'Ваш кошик порожній',
+    isEmptyParagraph: 'Додайте свій перший товар до кошика',
   },
 
   sectionCategories: {
@@ -84,6 +86,7 @@ export const ua = {
     phones: 'Телефони',
     tablets: 'Планшети',
     accessories: 'Аксесуари',
+    cart: 'Кошик',
   },
   banners: {
     phone: {
@@ -106,4 +109,4 @@ export const ua = {
   },
 } as const;
 
-export default ua;
+export default uk;

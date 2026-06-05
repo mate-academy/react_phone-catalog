@@ -18,7 +18,6 @@ import { FreeMode, Navigation, Autoplay, Virtual } from 'swiper/modules';
 import classNames from 'classnames';
 import { Product } from '@/shared/type';
 
-
 type Props = {
   products: Product[];
   isLoading: boolean;
@@ -29,7 +28,6 @@ type Props = {
 export const ProductsSlider: React.FC<Props> = ({ lengthSlides, products, title }) => {
   const swiperRef = useRef<SwiperType | null>(null);
   const [isReady, setIsReady] = useState(false);
-
 
   useEffect(() => {
     const onResize = () => {
@@ -45,7 +43,7 @@ export const ProductsSlider: React.FC<Props> = ({ lengthSlides, products, title 
 
   const handleSlidesReady = useCallback(() => {
     setIsReady(true);
-  
+
     // requestAnimationFrame(() => {
     //   // debugger;
     //   if (swiper.slides.length > 0) {
@@ -61,10 +59,12 @@ export const ProductsSlider: React.FC<Props> = ({ lengthSlides, products, title 
           <h2>{title}</h2>
           <div className={styles.buttonBox}>
             <ButtonSecond
+              aria-label="Previous slide"
               className={classNames(styles.button, styles.sliderButtonPrev)}
               rotate={180}
             ></ButtonSecond>
             <ButtonSecond
+              aria-label="Next slide"
               className={classNames(styles.button, styles.sliderButtonNext)}
             ></ButtonSecond>
           </div>

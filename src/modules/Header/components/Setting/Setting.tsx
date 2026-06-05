@@ -17,7 +17,7 @@ export const Setting = ({ className, ...props }: HTMLAttributes<HTMLDivElement>)
       const target = event.target;
 
       if (target instanceof Node && menuRef.current && !menuRef.current.contains(target)) {
-       setSettingMenu(false);
+        setSettingMenu(false);
       }
     };
 
@@ -33,6 +33,7 @@ export const Setting = ({ className, ...props }: HTMLAttributes<HTMLDivElement>)
   return (
     <div ref={menuRef} {...props} className={classNames(styles.setting, className)}>
       <button
+        aria-label="Open and close setting language and theme"
         onClick={() => {
           setSettingMenu(!settingMenu);
         }}
@@ -51,7 +52,11 @@ export const Setting = ({ className, ...props }: HTMLAttributes<HTMLDivElement>)
           [styles.settingContainerActive]: settingMenu,
         })}
       >
-        <button className={styles.settingButton} onClick={() => toggleTheme()}>
+        <button
+          aria-label="Toggle theme"
+          className={styles.settingButton}
+          onClick={() => toggleTheme()}
+        >
           {theme === 'light' && <Icon type="sun"></Icon>}
           {theme === 'dark' && <Icon type="moon"></Icon>}
 
@@ -62,15 +67,16 @@ export const Setting = ({ className, ...props }: HTMLAttributes<HTMLDivElement>)
           ></div>
         </button>
         <button
+          aria-label="Toggle language"
           className={styles.settingButton}
-          onClick={() => i18n.changeLanguage(i18n.language === 'ua' ? 'en' : 'ua')}
+          onClick={() => i18n.changeLanguage(i18n.language === 'uk' ? 'en' : 'uk')}
         >
-          {i18n.language === 'ua' && <p className={styles.languageText}>UK</p>}
+          {i18n.language === 'uk' && <p className={styles.languageText}>UK</p>}
           {i18n.language === 'en' && <p className={styles.languageText}>EN</p>}
 
           <div
             className={classNames(styles.settingSwicher, {
-              [styles.dark]: i18n.language === 'ua',
+              [styles.dark]: i18n.language === 'uk',
             })}
           ></div>
         </button>

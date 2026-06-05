@@ -28,7 +28,6 @@ export const TopBar = ({
             <Nav type="Header" />
           </div>
           <div className={styles.rightContainer}>
-
             <NavLink
               aria-label="favourites"
               to="/favourites"
@@ -51,6 +50,7 @@ export const TopBar = ({
               <IconWithCounter type="cart" count={totalItems} />
             </NavLink>
             <button
+              aria-label="Open side bar menu navigation"
               className={classNames(styles.icon, styles.iconMenu)}
               onClick={() => {
                 setOpen(true);
@@ -72,6 +72,7 @@ export const TopBar = ({
             <Setting></Setting>
 
             <button
+              aria-label="Close side bar menu navigation"
               className={styles.icon}
               onClick={() => {
                 setOpen(false);

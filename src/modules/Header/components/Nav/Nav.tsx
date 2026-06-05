@@ -14,7 +14,7 @@ export const Nav: React.FC<{ type: 'Header' | 'Menu' }> = ({ type }) => {
   const { t } = useTranslation();
 
   return (
-    <nav className={classNames(styles[`nav${type}`], styles.nav)}>
+    <nav aria-label={'navigation'} className={classNames(styles[`nav${type}`], styles.nav)}>
       <ul className={styles.list}>
         <li className={styles.item}>
           <NavLink className={activeNavLink} to={'/'} aria-label={t('navigation.home')}>

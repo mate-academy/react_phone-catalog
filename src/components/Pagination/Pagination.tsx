@@ -136,6 +136,7 @@ export const Pagination = ({
     <div {...props}>
       <div aria-label="pagination" className={styles.pagination}>
         <ButtonSecond
+          aria-label="Previous pagination"
           disabled={selected === 1}
           className={styles.buttonArrow}
           rotate={180}
@@ -147,6 +148,7 @@ export const Pagination = ({
         {paginationItems.map((item, index) => {
           return (
             <ButtonFirst
+              aria-label={`Button pagination in ${item.page}`}
               key={index}
               selected={item.type === 'page' && item.selected}
               className={styles.buttonNumber}
@@ -160,6 +162,7 @@ export const Pagination = ({
         })}
 
         <ButtonSecond
+          aria-label="Next pagination"
           disabled={selected === maxLength}
           className={styles.buttonArrow}
           onClick={() => {

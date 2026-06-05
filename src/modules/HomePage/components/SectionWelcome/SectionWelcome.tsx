@@ -36,7 +36,11 @@ export const SectionWelcome = () => {
       <h1 className={styles.title}>{t('HomeTitle.welcome')}</h1>
 
       <div className={styles.sliderWrapper}>
-        <ButtonSecond rotate={180} className={styles.sliderButtonPrev}></ButtonSecond>
+        <ButtonSecond
+          aria-label="Previous slide"
+          rotate={180}
+          className={styles.sliderButtonPrev}
+        ></ButtonSecond>
         <Swiper
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
@@ -67,6 +71,7 @@ export const SectionWelcome = () => {
               textTitle={<Trans i18nKey="banners.phone.title" components={[<br />]} />}
               textTitle2="iPhone 17"
               paragraph={t('banners.phone.p')}
+              to={'/phones'}
             />
           </SwiperSlide>
           <SwiperSlide className={styles.swiperSlide}>
@@ -78,6 +83,7 @@ export const SectionWelcome = () => {
               textTitle={<Trans i18nKey="banners.tablets.title" components={[<br />]} />}
               textTitle2="iPad 11"
               paragraph={t('banners.tablets.p')}
+              to={'/tablets'}
             />
           </SwiperSlide>
           <SwiperSlide className={styles.swiperSlide}>
@@ -89,11 +95,11 @@ export const SectionWelcome = () => {
               textTitle={<Trans i18nKey="banners.accessories.title" components={[<br />]} />}
               textTitle2="Apple Watch!"
               paragraph={t('banners.accessories.p')}
+              to={'/accessories'}
             />
           </SwiperSlide>
-
         </Swiper>
-        <ButtonSecond className={styles.sliderButtonNext}></ButtonSecond>
+        <ButtonSecond aria-label="Next slide" className={styles.sliderButtonNext}></ButtonSecond>
       </div>
       <div className={styles.customPagination}></div>
     </section>
