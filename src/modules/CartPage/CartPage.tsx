@@ -90,8 +90,7 @@ export const CartPage = () => {
                 );
               })}
           </div>
-          {!productsCart ||
-            (productsCart && productsCart.length !== 0 && (
+          {(loading || (productsCart && productsCart.length !== 0)) &&  (
               <div className={styles.results}>
                 <div className={styles.resultsPriceAndTotal}>
                   <Skeleton className={styles.resultsPriceAndTotal} isLoading={!productsCart}>
@@ -110,7 +109,7 @@ export const CartPage = () => {
                   </ButtonBuy>
                 </Skeleton>
               </div>
-            ))}
+            )}
           {cart.length === 0 && (
             <div className={styles.containerIsEmpty}>
               <h2>{t('cart.isEmpty')}</h2>

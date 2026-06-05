@@ -114,7 +114,7 @@ export const Dropdown = <const T extends readonly Select[]>({
           {selects.find((select) => select.option === selected)?.title}
           <Icon className={styles.triggerIcon} type="arrowRight"></Icon>
         </button>
-        <div ref={contentRef} aria-hidden={!isActive} inert={!isActive} className={styles.content}>
+        <div ref={contentRef} aria-hidden={!isActive} className={styles.content}>
           <ul>
             {selects.map((select, index) => {
               return (

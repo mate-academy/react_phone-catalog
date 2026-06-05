@@ -111,8 +111,7 @@ export const ProductDetails = ({
   ) => {
     const addSkeleton = (className: string = '') => {
       return {
-        className: classNames(className, { [skeleton.skeleton]: isLoading }),
-        inert: isLoading,
+        className: classNames(className, { [skeleton.skeleton]: isLoading })
       };
     };
 
