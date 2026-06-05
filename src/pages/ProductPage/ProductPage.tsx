@@ -33,6 +33,7 @@ export const ProductPage = () => {
   useEffect(() => {
     const loadingData = async () => {
       setActiveIndex(0);
+      window.scrollTo(0, 0);
 
       if (products.length > 0) {
         const item = products.find(prod => prod.id === productId);
@@ -64,14 +65,11 @@ export const ProductPage = () => {
       return [];
     }
 
-    const currentBase = product.name.split(' ').slice(0, 3).join(' ');
-
-    return products
-      .filter(prod => {
-        const prodBase = prod.name.split(' ').slice(0, 3).join(' ');
-
-        return prodBase === currentBase && prod.id !== product.id;
-      })
+    const result = products
+      .filter(
+        prod =>
+          prod.namespaceId === product.namespaceId && prod.id !== product.id,
+      )
       .map(prod => ({
         ...prod,
         itemId: String(prod.id),
@@ -80,6 +78,8 @@ export const ProductPage = () => {
         price: prod.priceDiscount,
         fullPrice: prod.priceRegular,
       }));
+
+    return result;
   }, [product, products, category]);
 
   const shortSpecs = [
