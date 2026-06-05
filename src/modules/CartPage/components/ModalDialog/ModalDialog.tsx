@@ -55,6 +55,7 @@ export const ModalDialog = ({
                 selected={false}
                 onClick={() => {
                   clearCart();
+                  isSetOpen(false);
                 }}
                 className={styles.button}
               >
