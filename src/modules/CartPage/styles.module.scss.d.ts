@@ -1,5 +1,8 @@
 export declare const buttonBack: string;
 export declare const cardsContainer: string;
+export declare const containerIsEmpty: string;
+export declare const imageIsEmpty: string;
+export declare const main: string;
 export declare const mainContainer: string;
 export declare const results: string;
 export declare const resultsButton: string;

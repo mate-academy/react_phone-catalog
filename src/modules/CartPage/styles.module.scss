@@ -1,5 +1,9 @@
 @use '@/shared/styles' as *;
 
+.main {
+  min-height: 78vh;
+}
+
 .topContainer {
   @include padding-container;
 }
@@ -61,7 +65,6 @@
     grid-column: 16 / -1;
   }
 
-
   &PriceAndTotal {
     display: flex;
     flex-direction: column;
@@ -69,7 +72,7 @@
   }
 
   &Price {
-   width: fit-content;
+    width: fit-content;
   }
 
   &Line {
@@ -85,7 +88,16 @@
 }
 
 [data-theme='dark'] .results {
-  border: 1px solid #3B3E4A;
+  border: 1px solid #3b3e4a;
   border-radius: 0;
+}
 
+.containerIsEmpty {
+  grid-column: 1 / -1;
+}
+
+.imageIsEmpty {
+  width: 100%;
+  object-fit: contain;
+  height: 400px;
 }

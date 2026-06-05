@@ -59,7 +59,7 @@ export const CartPage = () => {
 
   return (
     <>
-      <main>
+      <main className={styles.main}>
         <div className={styles.topContainer}>
           <ButtonBack className={styles.buttonBack}></ButtonBack>
           <h1 className={styles.title}>{t('cart.cart')}</h1>
@@ -89,14 +89,6 @@ export const CartPage = () => {
                   ></ProductCardInCart>
                 );
               })}
-
-            {cart.length === 0 && (
-              <div>
-                <h1>{t('cart.isEmpty')}</h1>
-                <p>{t('cart.isEmptyParagraph')}</p>
-                <img src="./img/cart-is-empty.png" alt="Image cart is empty" />
-              </div>
-            )}
           </div>
           {!productsCart ||
             (productsCart && productsCart.length !== 0 && (
@@ -119,6 +111,17 @@ export const CartPage = () => {
                 </Skeleton>
               </div>
             ))}
+          {cart.length === 0 && (
+            <div className={styles.containerIsEmpty}>
+              <h2>{t('cart.isEmpty')}</h2>
+              <p>{t('cart.isEmptyParagraph')}</p>
+              <img
+                className={styles.imageIsEmpty}
+                src="./img/cart-is-empty.png"
+                alt="Image cart is empty"
+              />
+            </div>
+          )}
         </div>
       </main>
       {<ModalDialog isOpen={openModal} isSetOpen={setOpenModal}></ModalDialog>}

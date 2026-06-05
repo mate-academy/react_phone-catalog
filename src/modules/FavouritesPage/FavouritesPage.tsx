@@ -47,7 +47,7 @@ export const FavouritesPage = () => {
   }, [favouritesProducts]);
 
   return (
-    <main>
+    <main className={styles.main}>
       <div className={styles.content}>
         <Breadcrumbs></Breadcrumbs>
         <h1>{t('favouritesPage.favouritesTitle')}</h1>
@@ -90,7 +90,7 @@ export const FavouritesPage = () => {
           <>
             <h2>{t('favouritesPage.empty')}</h2>
             <p>{t('favouritesPage.addYourFirstProduct')}</p>
-            <img src="./img/cart-is-empty.png" alt="Image cart is empty" />
+            <img className={styles.imageIsEmpty} src="./img/cart-is-empty.png" alt="Image cart is empty" />
           </>
         )}
       </div>

@@ -1,5 +1,9 @@
 @use '@/shared/styles' as *;
 
+.main {
+  min-height: 78vh;
+}
+
 .content {
   @include padding-container;
 
@@ -123,4 +127,9 @@
     line-height: 100%;
     letter-spacing: 0%;
   }
+}
+
+.imageIsEmpty {
+  object-fit: contain;
+  height: 400px;
 }
