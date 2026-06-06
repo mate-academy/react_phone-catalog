@@ -1,13 +1,9 @@
 @use '../../mixins.scss' as *;
 
-.section {
-  position: relative;
-}
-
 .new-brand {
   margin-top: 40px;
-  padding: 0 32px;
   box-sizing: border-box;
+  padding: 0 32px;
 
   @include on-tablet {
     padding: 0 24px;
@@ -57,9 +53,6 @@
 
     &:hover {
       border-color: #3b3e4a;
-    }
-
-    &.swiper-button-disabled {
     }
 
     &:not(.swiper-button-disabled) {
@@ -216,7 +209,6 @@
       cursor: not-allowed;
     }
 
-    // ✅ Товар добавлен в корзину
     &.is-added {
       background-color: #3b3e4a;
       color: #f1f2f9;
