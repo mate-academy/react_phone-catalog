@@ -71,19 +71,19 @@ export const ProductCard = ({
         </button>
         <button
           className={classNames(styles.favoriteButton, {
-            [styles.favoriteButtonActive]: isFavorite(String(product.id)),
+            [styles.favoriteButtonActive]: isFavorite(product.itemId),
           })}
           onClick={() => {
             if (product) {
-              if (isFavorite(String(product.id))) {
-                removeFromFavorite(String(product.id));
+              if (isFavorite(product.itemId)) {
+                removeFromFavorite(product.itemId);
               } else {
                 addToFavorite(product);
               }
             }
           }}
         >
-          <HeartIcon isActive={isFavorite(String(product.id))} />
+          <HeartIcon isActive={isFavorite(product.itemId)} />
         </button>
       </div>
     </div>

@@ -22,7 +22,7 @@ export const FavoriteProvider = ({
   });
 
   const addToFavorite = (item: BaseProduct) => {
-    const newItems = [...favoriteItems, { ...item, id: String(item.id) }];
+    const newItems = [...favoriteItems, { ...item, id: item.itemId }];
 
     setFavoriteItems(newItems);
     localStorage.setItem('favoriteItems', JSON.stringify(newItems));
