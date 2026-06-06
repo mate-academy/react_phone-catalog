@@ -1,0 +1,47 @@
+@use '../../style' as *;
+
+.container {
+  @include container-grid;
+
+  margin-bottom: rem(80);
+}
+
+.title {
+  grid-column: 1 / -1;
+  margin: 0;
+  margin-bottom: rem(8);
+}
+
+.itemsCount {
+  grid-column: 1 / -1;
+  margin-bottom: rem(40);
+
+  @media (max-width: $tablet) {
+    margin-bottom: rem(32);
+  }
+}
+
+.content {
+  grid-column: 1 / -1;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: rem(16);
+  justify-content: space-between;
+
+  @media (min-width: $tablet) {
+    grid-template-columns: repeat(12, 1fr);
+    gap: rem(24);
+  }
+
+  @media (min-width: $desktop) {
+    grid-template-columns: repeat(24, 1fr);
+    gap: rem(16);
+  }
+}
+
+.catalog-card {
+  @include catalog-card;
+}

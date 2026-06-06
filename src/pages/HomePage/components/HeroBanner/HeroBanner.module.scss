@@ -1,0 +1,229 @@
+@use '../../../../style' as *;
+
+.section {
+  @include section;
+}
+
+.hero {
+  margin-top: rem(56);
+
+  @media (max-width: $desktop) {
+    margin-top: rem(32);
+    padding-right: rem(24);
+  }
+
+  @media (max-width: $tablet) {
+    overflow: hidden;
+    margin-top: rem(24);
+    padding: 0;
+  }
+}
+
+.container {
+  @include container-flex;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+}
+
+.title {
+  @include heading('large');
+
+  margin-block: 0 rem(56);
+
+  @media (max-width: $tablet) {
+    margin-inline: rem(16);
+  }
+}
+
+.banner {
+  width: 100%;
+  min-height: rem(189);
+  border-radius: rem(8);
+
+  object-fit: cover;
+  background-position: center;
+  background-size: cover;
+
+  transition: background-image 0.5s ease;
+}
+
+.bannerMobile {
+  display: none;
+  aspect-ratio: 1 / 1;
+  border-radius: 0;
+
+  @media (max-width: $tablet) {
+    display: block;
+  }
+}
+
+.bannerDesktop {
+  display: block;
+  aspect-ratio: 13 / 5;
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.sliderButton {
+  width: rem(32);
+  border: 1px solid var(--gray-icons-placeholders);
+  border-radius: rem(48);
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.left {
+  margin-right: rem(16);
+
+  @media (max-width: $desktop) {
+    margin-right: rem(19);
+  }
+}
+
+.right {
+  margin-left: rem(16);
+
+  @media (max-width: $desktop) {
+    margin-left: rem(19);
+  }
+}
+
+.dots {
+  @include flex-between;
+
+  gap: rem(16);
+
+  width: 80px;
+  height: rem(24);
+  margin: 0 auto;
+  margin-top: rem(8);
+}
+
+.dot {
+  width: rem(14);
+  height: rem(4);
+  border-radius: rem(2);
+
+  background-color: var(--gray-elements);
+
+  transition: background-color 0.3s ease;
+}
+
+.active {
+  background-color: var(--gray-primary);
+}
+
+.visuallyHidden {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  white-space: nowrap;
+
+  clip: rect(0, 0, 0, 0);
+}
+
+.bannerWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.exploreButton {
+  position: absolute;
+  bottom: 18%;
+  left: 5%;
+
+  display: inline-flex;
+  gap: rem(8);
+  align-items: center;
+
+  padding: rem(14) rem(24);
+  border-radius: rem(48);
+
+  font-size: rem(14);
+  font-weight: 600;
+
+  transition: all 0.3s;
+
+  @media (max-width: $desktop) {
+    bottom: 19%;
+    padding: rem(10) rem(16);
+    font-size: rem(14);
+  }
+
+  @media (max-width: 890px) {
+    bottom: 17%;
+    left: 5%;
+    padding: rem(7) rem(11);
+    font-size: rem(9);
+  }
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.exploreButtonDark {
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  color: white;
+  background: transparent;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.exploreButtonLight {
+  bottom: 21%;
+  left: 4.5%;
+
+  padding: rem(14) rem(20);
+  border: none;
+
+  font-size: rem(16);
+  color: #1a1a1a;
+
+  background: white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  }
+
+  @media (max-width: $desktop) {
+    bottom: 22%;
+    padding: rem(10) rem(16);
+    font-size: rem(13);
+  }
+
+  @media (max-width: 860px) {
+    bottom: 22%;
+    left: 4%;
+    padding: rem(7) rem(11);
+    font-size: rem(9);
+  }
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}

@@ -1,0 +1,106 @@
+@use '../../style' as *;
+
+.container {
+  @include container-grid;
+
+  margin-bottom: rem(80);
+}
+
+.topBar {
+  display: flex;
+  grid-column: 1 / -1;
+  flex-direction: column;
+  justify-content: start;
+
+  width: 100%;
+  margin: 0 auto;
+}
+
+.title {
+  grid-column: 1 / -1;
+
+  @include heading($size: 'large');
+
+  margin-bottom: rem(16);
+}
+
+.modelsCount {
+  grid-column: 1 / -1;
+  margin-bottom: rem(40);
+}
+
+.filter {
+  display: flex;
+  grid-column: 1 / -1;
+  gap: rem(16);
+  margin-bottom: rem(24);
+
+  .sortBy,
+  .CountOfItems {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.input {
+  height: rem(40);
+  border: var(--border);
+  border-radius: rem(8);
+}
+
+.button {
+  content: "";
+  position: absolute;
+  right: 0;
+  padding: rem(12);
+}
+
+.content {
+  grid-column: 1 / -1;
+}
+
+.swipper {
+  @include flex-center($isInline: false);
+
+  grid-column: 1 / -1;
+  gap: rem(8);
+  margin-top: rem(40);
+}
+
+.slider {
+  @include slider;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.pageNumber {
+  @include slider;
+}
+
+.active {
+  color: var(--gray-white);
+  background-color: var(--gray-primary);
+}
+
+.left {
+  margin-right: rem(8);
+}
+
+.right {
+  margin-left: rem(8);
+}
+
+.dots {
+  user-select: none;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 rem(4);
+
+  color: var(--gray-primary);
+}

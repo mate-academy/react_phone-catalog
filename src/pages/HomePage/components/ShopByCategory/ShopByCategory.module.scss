@@ -1,0 +1,67 @@
+@use '../../../../style' as *;
+
+.section {
+  @include section;
+
+  @media (max-width: $desktop) {
+    padding-inline: rem(24);
+  }
+}
+
+.container {
+  @include container-flex;
+}
+
+.title {
+  @include heading;
+
+  margin-bottom: rem(24);
+}
+
+.category {
+  @include flex-between;
+
+  gap: rem(16);
+  align-items: stretch;
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+  }
+}
+
+.card {
+  transition: transform 0.3s;
+
+
+  &:hover {
+    transform: scale(1.01);
+  }
+}
+
+.image {
+  aspect-ratio: 1 / 1;
+  width: clamp(#{rem(187)}, 28vw, #{rem(368)});
+  margin-bottom: rem(24);
+
+  @media (max-width: $desktop) {
+    border-radius: rem(8);
+  }
+
+  @media (max-width: $tablet) {
+    width: 100%;
+  }
+}
+
+.categoryName {
+  margin-bottom: rem(4);
+  font-size: rem(20);
+  font-weight: 700;
+  color: var(--gray-primary);
+}
+
+.countOfModels {
+  font-size: rem(14);
+  font-weight: 500;
+  line-height: 150%;
+  color: var(--gray-secondary);
+}

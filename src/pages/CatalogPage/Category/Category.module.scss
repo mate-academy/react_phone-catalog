@@ -1,0 +1,22 @@
+@use '../../../style' as *;
+
+.phones {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: rem(16);
+  justify-content: space-between;
+
+  @media (min-width: $tablet) {
+    grid-template-columns: repeat(12, 1fr);
+    gap: rem(24);
+  }
+
+  @media (min-width: $desktop) {
+    grid-template-columns: repeat(24, 1fr);
+    gap: rem(16);
+  }
+}
+
+.catalog-card {
+  @include catalog-card;
+}

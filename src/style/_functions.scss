@@ -1,0 +1,27 @@
+@use 'sass:math';
+
+@function rem($pixel) {
+  @if math.is-unitless($pixel) {
+    @return math.div($pixel, 16) + rem;
+  }
+}
+
+@mixin fluid-text($max: 48, $min: 14) {
+  $maxViewportWidth: 1440;
+  $minViewportWidth: 320;
+  $maxSize: math.div($max, 16);
+  $minSize: math.div($min, 16);
+  $maxWidth: math.div($maxViewportWidth, 16);
+  $minWidth: math.div($minViewportWidth, 16);
+  $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+  $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+  font-size: clamp(#{$minSize * 1rem},
+    #{$yAxisIntersection * 1rem} + #{$slope * 100vw},
+    #{$maxSize * 1rem});
+}
+
+$desktop-large: rem(1440);
+$desktop: rem(1200);
+$tablet: rem(640);
+$mobile: rem(320);

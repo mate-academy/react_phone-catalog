@@ -1,0 +1,18 @@
+@use '../../style' as *;
+
+.path {
+  @include flex-center;
+
+  grid-column: 1 / -1;
+  gap: rem(8);
+  justify-content: start;
+  margin-block: rem(24) rem(40);
+
+  @media (max-width: $tablet) {
+    margin-block: rem(24);
+  }
+}
+
+.buttonHome {
+  height: rem(16);
+}

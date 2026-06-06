@@ -1,0 +1,48 @@
+@use '../../style' as *;
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: rem(8);
+  margin-block: rem(32) rem(56);
+
+  @media (min-width: $tablet) {
+    margin-block: rem(32) rem(64);
+  }
+
+  @media (min-width: $desktop) {
+    margin-block: rem(32) auto;
+  }
+}
+
+.specRow {
+  @include flex-between;
+
+  font-size: rem(14);
+
+  @media (min-width: $tablet) {
+    font-size: rem(12);
+  }
+
+  @media (min-width: $desktop) {
+    font-size: rem(14);
+  }
+}
+
+.specLabel {
+  font-weight: 700;
+  color: var(--gray-secondary);
+}
+
+.specValue {
+  font-weight: 600;
+  color: var(--gray-primary);
+}
+
+.full .specLabel {
+  font-weight: 500;
+}
+
+.full .specValue {
+  font-weight: 500;
+}

@@ -1,0 +1,58 @@
+@use '../../../../style' as *;
+
+.productsSlider {
+  @include section;
+
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.title {
+  @include heading;
+}
+
+.topRow {
+  @include flex-between;
+
+  margin-bottom: rem(24);
+
+  @media (max-width: 1157px) {
+    margin-right: rem(24);
+  }
+
+  @media (max-width: $tablet) {
+    margin-right: rem(16);
+  }
+}
+
+.sliders {
+  @include flex-center($isInline: false);
+}
+
+.slider {
+  @include slider;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.left {
+  margin-right: rem(16);
+}
+
+.sliderTrack {
+  overflow: visible;
+}
+
+.productCardsContainer {
+  display: flex;
+  gap: rem(16);
+  transition: transform 0.5s ease;
+}

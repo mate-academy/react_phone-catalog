@@ -1,0 +1,156 @@
+@use '../../style' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+
+  width: rem(273);
+  padding: rem(32);
+  border: 1px solid var(--gray-elements);
+  border-radius: rem(16);
+
+  background: var(--gray-white);
+
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0 rem(4) rem(16) rgba(0, 0, 0, 0.1);
+  }
+}
+
+.image {
+  width: 100%;
+  height: rem(196);
+  object-fit: contain;
+}
+
+.name {
+  min-height: rem(42);
+  margin: rem(16) 0 0;
+
+  font-size: rem(14);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--gray-primary);
+}
+
+.prices {
+  display: flex;
+  gap: rem(8);
+  align-items: center;
+}
+
+.price {
+  margin-block: rem(8);
+  font-size: rem(22);
+  font-weight: 800;
+  color: var(--gray-primary);
+}
+
+.fullPrice {
+  font-size: rem(22);
+  font-weight: 600;
+  color: var(--gray-secondary);
+  text-decoration: line-through;
+
+  opacity: 0.7;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: rem(8);
+
+  margin-bottom: rem(16);
+  padding-top: rem(8);
+  padding-bottom: rem(16);
+  border-top: 1px solid var(--gray-elements);
+}
+
+.specRow {
+  @include flex-between;
+}
+
+.specLabel {
+  font-size: rem(12);
+  font-weight: 700;
+  color: var(--gray-secondary);
+}
+
+.specValue {
+  overflow: hidden;
+
+  max-width: rem(140);
+
+  font-size: rem(12);
+  font-weight: 700;
+  color: var(--gray-primary);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  gap: rem(8);
+  margin-top: auto;
+}
+
+.cartButton {
+  cursor: pointer;
+
+  flex: 1;
+
+  padding: rem(10) rem(20);
+  border: none;
+  border-radius: rem(10);
+
+  font-size: rem(14);
+  font-weight: 700;
+  color: var(--gray-white);
+
+  background: var(--accent);
+
+  transition: background 0.3s;
+
+  &:hover {
+    border: 1px solid var(--gray-elements);
+    color: var(--accent);
+    background: var(--gray-white);
+  }
+}
+
+.cartButtonActive {
+  border: 1px solid var(--gray-elements);
+  color: var(--accent);
+  background: var(--gray-white);
+}
+
+.favoriteButton {
+  cursor: pointer;
+
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: rem(40);
+  height: rem(40);
+  border: 1px solid var(--gray-elements);
+  border-radius: 50%;
+
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: var(--gray-primary);
+  }
+
+  path {
+    transition: fill 0.3s, stroke 0.3s;
+  }
+
+  &:hover path {
+    fill: var(--favorite);
+    stroke: var(--favorite);
+  }
+}

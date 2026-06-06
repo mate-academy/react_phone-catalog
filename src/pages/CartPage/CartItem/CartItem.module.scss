@@ -1,0 +1,90 @@
+@use '../../../style' as *;
+
+.item {
+  display: flex;
+  flex-direction: row;
+  gap: rem(24);
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  min-height: rem(128);
+  padding-inline: rem(24);
+  border: var(--border);
+  border-radius: rem(8);
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+.itemImage {
+  width: rem(80);
+  height: rem(80);
+  margin-inline: rem(16) rem(24);
+  object-fit: contain;
+
+  @media (max-width: $tablet) {
+    margin-inline: rem(16);
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: $tablet) {
+    justify-content: start;
+    width: 100%;
+    margin-block: rem(16);
+  }
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: $tablet) {
+    width: 100%;
+    margin-bottom: rem(16);
+  }
+}
+
+.button {
+  @include flex-center($isInline: false);
+
+  padding: rem(8);
+  border: var(--border);
+  border-radius: 100%;
+}
+
+.removeOne {
+  margin-right: rem(14);
+}
+
+.addOne {
+  margin-left: rem(14);
+}
+
+.count {
+  font-size: rem(14);
+  font-weight: 600;
+  line-height: 150%;
+  color: var(--gray-primary);
+  text-align: center;
+}
+
+.price {
+  margin-left: rem(24);
+
+  font-size: rem(22);
+  font-weight: 800;
+  line-height: 140%;
+  color: var(--gray-primary);
+  text-align: right;
+
+  @media (max-width: $tablet) {
+    margin-left: auto;
+  }
+}

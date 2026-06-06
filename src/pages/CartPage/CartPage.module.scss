@@ -1,0 +1,135 @@
+@use '../../style' as *;
+
+.cart {
+  min-height: calc(100vh - rem(161));
+  margin-block: rem(40) rem(80);
+  padding-inline: 0;
+
+  @media (max-width: $desktop) {
+    min-height: calc(100vh - rem(148));
+    margin-block: rem(40) rem(64);
+    padding-inline: rem(24);
+  }
+
+  @media (max-width: $tablet) {
+    min-height: calc(100vh - rem(305));
+    margin-block: rem(24) rem(56);
+    padding-inline: rem(16);
+  }
+}
+
+.container {
+  @include container;
+
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: rem(16);
+
+  max-width: rem(1140);
+
+  @media (max-width: $desktop) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @media (max-width: $tablet) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.title {
+  grid-column: 1 / -1;
+  margin: 0;
+  margin-bottom: rem(32);
+}
+
+.items {
+  display: flex;
+  grid-column: span 16;
+  flex-direction: column;
+  gap: rem(16);
+  align-items: start;
+
+  @media (max-width: $desktop) {
+    grid-column: 1 / -1;
+    margin-bottom: rem(32);
+  }
+
+}
+
+.checkout {
+  @include flex-center($isInline: false);
+
+  grid-column: 17 / 25;
+  flex-direction: column;
+
+  height: rem(205);
+  padding: rem(24);
+  border: var(--border);
+  border-radius: rem(8);
+
+  @media (max-width: $desktop) {
+    grid-column: 1 / -1;
+    height: rem(190);
+  }
+}
+
+.totalPrice {
+  font-size: rem(32);
+  font-weight: 800;
+  line-height: 128%;
+  color: var(--gray-primary);
+  letter-spacing: -0.01em;
+}
+
+.count {
+  width: 100%;
+  margin-bottom: rem(24);
+  padding-bottom: rem(24);
+  border-bottom: var(--border);
+
+  font-weight: 500;
+  text-align: center;
+
+  @media (max-width: $desktop) {
+    margin-bottom: rem(16);
+    padding-bottom: rem(16);
+  }
+}
+
+.checkoutButton {
+  width: 100%;
+  height: rem(48);
+  border-radius: rem(8);
+
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 150%;
+  color: var(--gray-white);
+  text-align: center;
+
+  background: var(--accent);
+}
+
+.empty {
+  display: flex;
+  grid-column: 1 / -1;
+  flex-direction: column;
+  width: 100%;
+}
+
+.emptyTitle {
+  margin: 0;
+  margin-bottom: rem(80);
+}
+
+.emptyImage {
+  align-self: center;
+  width: rem(400);
+  height: rem(400);
+
+  @media (max-width: $tablet) {
+    width: rem(300);
+    height: rem(300);
+  }
+}

@@ -1,0 +1,54 @@
+@use './functions' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+
+  margin: 0;
+  padding: 0;
+  border: none;
+
+  background-color: var(--gray-white);
+}
+
+p {
+  margin: 0;
+  font-size: rem(14);
+  font-weight: 700;
+  color: var(--gray-secondary);
+}
+
+h1 {
+  font-size: rem(48);
+  font-weight: 800;
+  line-height: 117%;
+  color: var(--gray-primary);
+  letter-spacing: -0.01em;
+
+  @media (max-width: $tablet) {
+    font-size: rem(32);
+    line-height: 128%;
+  }
+}
+
+h4 {
+  font-size: rem(20);
+  font-weight: 700;
+  color: var(--gray-primary);
+}
