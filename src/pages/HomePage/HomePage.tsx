@@ -70,7 +70,11 @@ export const HomePage = () => {
       {!isLoading && !hasError && (
         <>
           <HeroBanner />
-          <ProductsSlider title={'Brand new models'} products={brandNew} />
+          <ProductsSlider
+            title={'Brand new models'}
+            products={brandNew}
+            showDiscount={false}
+          />
           <ShopByCategory />
           <ProductsSlider title={'Hot prices'} products={hotPrices} />
         </>

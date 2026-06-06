@@ -8,9 +8,15 @@ type Props = {
   title: string;
   products: BaseProduct[];
   className?: string;
+  showDiscount?: boolean;
 };
 
-export const ProductsSlider = ({ title, products, className }: Props) => {
+export const ProductsSlider = ({
+  title,
+  products,
+  className,
+  showDiscount = true,
+}: Props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const sliderTrackRef = useRef<HTMLDivElement>(null);
 
@@ -65,7 +71,11 @@ export const ProductsSlider = ({ title, products, className }: Props) => {
               }}
             >
               {products.map(product => (
-                <ProductCard key={product.id} product={product} />
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  showDiscount={showDiscount}
+                />
               ))}
             </div>
           </div>

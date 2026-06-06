@@ -9,11 +9,17 @@ import { useCart } from '../../pages/CartPage/context/CartContext';
 type Props = {
   product: BaseProduct;
   className?: string;
+  showDiscount?: boolean;
 };
 
-export const ProductCard = ({ product, className }: Props) => {
+export const ProductCard = ({
+  product,
+  className,
+  showDiscount = true,
+}: Props) => {
   const { addToCart, isInCart } = useCart();
   const { addToFavorite, removeFromFavorite, isFavorite } = useFavorite();
+  const displayPrice = showDiscount ? product.price : product.fullPrice;
 
   return (
     <div className={`${styles.card} ${className || ''}`}>
@@ -26,9 +32,9 @@ export const ProductCard = ({ product, className }: Props) => {
       </Link>
 
       <div className={styles.prices}>
-        <p className={styles.price}>${product.price}</p>
-        {product.price < product.fullPrice && (
-          <p className={styles.fullPrice}>${product.fullPrice}</p>
+        <p className={styles.price}>${displayPrice}</p>
+        {showDiscount && (
+          <span className={styles.fullPrice}>${product.fullPrice}</span>
         )}
       </div>
 

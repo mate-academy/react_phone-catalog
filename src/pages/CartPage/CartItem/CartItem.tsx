@@ -1,5 +1,6 @@
 import { useCart } from '../context/CartContext';
 import { CartItems } from '../context/CartContext';
+import { Link } from 'react-router-dom';
 import styles from './CartItem.module.scss';
 
 type Props = {
@@ -20,7 +21,9 @@ export const CartItem = ({ item, onRemove }: Props) => {
           <img src="/img/catalog/icons/Close.svg" alt="icon close" />
         </button>
         <img src={`/${item.image}`} alt="image" className={styles.itemImage} />
-        <p className={styles.name}>{item.name}</p>
+        <Link to={`/${item.category}/${item.id}`}>
+          <p className={styles.name}>{item.name}</p>
+        </Link>
       </div>
       <div className={styles.counter}>
         <button
