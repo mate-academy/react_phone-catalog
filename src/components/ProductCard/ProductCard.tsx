@@ -65,7 +65,7 @@ export const ProductCard = ({
               addToCart(product);
             }
           }}
-          disabled={isInCart(String(product.id))}
+          disabled={isInCart(String(product.itemId))}
         >
           {isInCart(String(product?.id) ?? '')
             ? 'Added to cart'

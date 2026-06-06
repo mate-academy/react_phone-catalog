@@ -24,7 +24,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const addToCart = (product: BaseProduct) => {
     const newItems = [
       ...cartItems,
-      { ...product, id: String(product.id), quantity: 1 },
+      { ...product, id: String(product.itemId), quantity: 1 },
     ];
 
     setCartItems(newItems);

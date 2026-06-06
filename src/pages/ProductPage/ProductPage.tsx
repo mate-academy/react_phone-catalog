@@ -132,6 +132,7 @@ export const ProductPage = () => {
 
     addToCart({
       ...product,
+      itemId: String(product.id),
       image: product.images[0],
       price: product.priceDiscount,
     });
