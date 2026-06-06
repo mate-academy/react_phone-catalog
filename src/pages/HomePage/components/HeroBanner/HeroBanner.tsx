@@ -95,19 +95,18 @@ export const HeroBanner = () => {
               className={`${styles.banner} ${styles.bannerMobile}`}
               style={{ backgroundImage: `url(${slides[currentIndex].mobile})` }}
             />
-            <Link
-              to={slides[currentIndex].link || '/'}
-              className={`${styles.exploreButton} ${
-                slides[currentIndex].theme === 'dark'
-                  ? styles.exploreButtonDark
-                  : styles.exploreButtonLight
-              }`}
-              style={{
-                display: slides[currentIndex].link ? 'inline-flex' : 'none',
-              }}
-            >
-              {slides[currentIndex].buttonText} →
-            </Link>
+            {slides[currentIndex].link && (
+              <Link
+                to={slides[currentIndex].link}
+                className={`${styles.exploreButton} ${
+                  slides[currentIndex].theme === 'dark'
+                    ? styles.exploreButtonDark
+                    : styles.exploreButtonLight
+                }`}
+              >
+                {slides[currentIndex].buttonText} →
+              </Link>
+            )}
           </div>
           <button
             className={`${styles.sliderButton} ${styles.right}`}
