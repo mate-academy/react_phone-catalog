@@ -7,19 +7,8 @@
   flex-shrink: 0;
   gap: 8px;
   padding: 32px;
-  width: 220px;
 
   border: 1px solid vars.$elements-color;
-
-
-  @media screen and (min-width: vars.$tablet-width) {
-    max-width: 240px;
-    width: auto;
-  }
-
-  @media screen and (min-width: vars.$desktop-width) {
-    max-width: 270px;
-  }
 }
 
 .imgContainer {

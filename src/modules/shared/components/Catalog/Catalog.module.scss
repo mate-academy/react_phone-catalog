@@ -1,0 +1,153 @@
+@use '@styles/variables/variables.scss' as vars;
+
+.catalogSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.historyNav {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+
+.historyLink {
+  height: 16px;
+}
+
+.pathname {
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  color: vars.$secondary-color;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  overflow: visible;
+
+  @media screen and (min-width: vars.$tablet-width) {
+    max-width: 310px;
+  }
+}
+
+.sortSelect, .itemsOnPage {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 4px;
+
+}
+
+.sortSelect {
+  @media screen and (min-width: vars.$tablet-width) {
+    flex: 2;
+  }
+}
+
+.productCounter {
+  font-size: 14px;
+  color: vars.$secondary-color;
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px 12px;
+  width: 100%;
+  height: 40px;
+  background-color: vars.$white-color;
+
+  border: 1px solid vars.$icons-color;
+
+  background-image: url('/icons/chevron-arrow-down.svg');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.label {
+  font-size: 12px;
+  color: vars.$secondary-color;
+}
+
+.productsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 40px;
+  row-gap: 16px;
+}
+
+.pageBtns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn, .controlBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+  border: 1px solid vars.$elements-color;
+  background-color: vars.$white-color;
+  color: vars.$primary-color;
+
+  transition: border .2s ease-in;
+
+  &:hover {
+    border: 1px solid vars.$primary-color;
+  }
+}
+
+.btn.isActive {
+  color: vars.$white-color;
+  background-color: vars.$primary-color;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: absolute;
+  top: 100%;
+  left: -1px;
+  padding: 10px 12px;
+  width: calc(100% + 2px);
+  align-self: stretch;
+  background-color: vars.$white-color;
+  list-style-type: none;
+  border: 1px solid vars.$icons-color;
+
+  opacity: 0;
+  transition: all .2s ease-in;
+
+  &.isOpen {
+    opacity: 1;
+  }
+}
+
+.placeholder {
+  font-size: 12px;
+}
+
+.option {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+

@@ -25,7 +25,7 @@ export const Layout = () => {
   }, [setIsMenuOpen]);
 
   return (
-    <div>
+    <div className={styles.layoutContainer}>
       <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <main className={styles.mainContainer}>
         {isMenuOpen ? (

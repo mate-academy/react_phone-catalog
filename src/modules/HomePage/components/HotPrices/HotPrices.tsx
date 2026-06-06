@@ -30,7 +30,7 @@ export const HotPrices = () => {
     <section>
       <ProductCarousel title="Hot prices">
         {getHottestProducts().map(phone => (
-          <PhoneCard key={phone.id} phone={phone} isOldPriceVisible={true} />
+          <PhoneCard key={phone.id} product={phone} isOldPriceVisible={true} />
         ))}
       </ProductCarousel>
     </section>

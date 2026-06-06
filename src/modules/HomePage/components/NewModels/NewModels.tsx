@@ -16,7 +16,7 @@ export const NewModels = () => {
   return (
     <ProductCarousel title={'Brand new models'}>
       {newProducts.map(product => (
-        <PhoneCard key={product.id} phone={product} />
+        <PhoneCard key={product.id} product={product} />
       ))}
     </ProductCarousel>
   );

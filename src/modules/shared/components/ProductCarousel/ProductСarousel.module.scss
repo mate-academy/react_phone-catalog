@@ -4,6 +4,19 @@
   display: flex;
   overflow: hidden;
   gap: 16px;
+
+  & > * {
+    width: calc(100% - 50px);
+    flex-shrink: 0;
+
+    @media screen and (min-width: vars.$tablet-width) {
+      width: calc(50% - 50px);
+    }
+
+    @media screen and (min-width: vars.$desktop-width) {
+      width: 25%;
+    }
+  }
 }
 
 .newModelsSection {
