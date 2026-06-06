@@ -6,6 +6,8 @@ import { getProducts } from '../../utils/api';
 import { sortProducts } from '../../utils/sortProducts';
 import { usePagination } from '../../hooks/usePagination';
 import { useCatalogParams } from '../../hooks/useCatalogParams';
+import { Loader } from '../shared/components/Loader/Loader';
+import styles from './AccessoriesPage.module.scss';
 
 export const AccessoriesPage = () => {
   const {
@@ -18,13 +20,18 @@ export const AccessoriesPage = () => {
   } = useCatalogParams();
 
   const [accessories, setAccessories] = useState<Product[]>([]);
+  const [isLoad, setIsLoad] = useState(false);
 
   useEffect(() => {
-    getProducts().then(productsFromServer =>
-      setAccessories(
-        productsFromServer.filter(prod => prod.category === 'accessories'),
-      ),
-    );
+    setIsLoad(true);
+
+    getProducts()
+      .then(productsFromServer =>
+        setAccessories(
+          productsFromServer.filter(prod => prod.category === 'accessories'),
+        ),
+      )
+      .finally(() => setIsLoad(false));
   }, []);
 
   const sortedProducts = useMemo(() => {
@@ -38,18 +45,26 @@ export const AccessoriesPage = () => {
   );
 
   return (
-    <Catalog
-      title="Accessories"
-      products={sortedProducts}
-      renderItem={product => <PhoneCard product={product} />}
-      sortByValue={sort}
-      setSortByValue={handleSortValueChange}
-      itemsOnPageValue={productsPerPage}
-      setItemsOnPageValue={handleProductsPerPageChange}
-      currentPage={currentPage}
-      totalPages={totalPages}
-      visibleItems={visibleItems}
-      setCurrentPage={handleSetCurrentPage}
-    />
+    <>
+      {isLoad ? (
+        <div className={styles.loaderContainer}>
+          <Loader />
+        </div>
+      ) : (
+        <Catalog
+          title="Accessories"
+          products={sortedProducts}
+          renderItem={product => <PhoneCard product={product} />}
+          sortByValue={sort}
+          setSortByValue={handleSortValueChange}
+          itemsOnPageValue={productsPerPage}
+          setItemsOnPageValue={handleProductsPerPageChange}
+          currentPage={currentPage}
+          totalPages={totalPages}
+          visibleItems={visibleItems}
+          setCurrentPage={handleSetCurrentPage}
+        />
+      )}
+    </>
   );
 };
