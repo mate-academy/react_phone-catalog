@@ -4,7 +4,11 @@
   @include grid;
 
   padding: 0;
-  row-gap: 40px;
+  row-gap: 20px;
+
+  @include on-desktop {
+    row-gap: 40px;
+  }
 }
 
 .productCard {

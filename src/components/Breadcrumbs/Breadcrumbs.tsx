@@ -38,7 +38,7 @@ export const Breadcrumbs: React.FC = () => {
             to={segment.path || '/'}
           >
             {t(`navigation.${segment.label}`, '') ||
-              segment.label.slice(0, 1).toUpperCase() + segment.label.slice(1, -1)}
+              segment.label.slice(0, 1).toUpperCase() + segment.label.slice(1)}
           </Link>
         </Fragment>
       ))}

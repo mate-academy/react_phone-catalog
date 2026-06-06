@@ -78,7 +78,7 @@
 }
 
 .button2 {
-  display: block;
+  display: flex;
   margin-inline: auto;
 
   @include on-tablet {

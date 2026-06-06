@@ -117,7 +117,7 @@
   }
 
   & .list {
-    gap: 32px;
+    gap: clamp(16px, 2.8vw, 32px);
 
     @include on-desktop {
       gap: 64px;

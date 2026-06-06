@@ -2688,20 +2688,6 @@
     "image": "img/phones/apple-iphone-14-pro/gold/00.webp"
   },
   {
-    "id": 193,
-    "category": "phones",
-    "itemId": "apple-iphone-14-pro-512gb-gold",
-    "name": "Apple iPhone 14 Pro 512GB Gold",
-    "fullPrice": 1600,
-    "price": 1530,
-    "screen": "6.1' OLED",
-    "capacity": "512GB",
-    "color": "gold",
-    "ram": "6GB",
-    "year": 2022,
-    "image": "img/phones/apple-iphone-14-pro/gold/00.webp"
-  },
-  {
     "id": 194,
     "category": "phones",
     "itemId": "apple-iphone-14-pro-1tb-gold",

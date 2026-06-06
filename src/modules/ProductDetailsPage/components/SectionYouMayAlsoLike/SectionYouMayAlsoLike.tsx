@@ -10,7 +10,7 @@ function getRandomProducts(products: Product[], lenght: number = 16): Product[] 
 
   const randomProducts = Array.from({ length: Math.min(lenght, copyProducts.length) }).map(() => {
     const randomProduct = copyProducts.splice(
-      Math.round(Math.random() * (length - 1)),
+      Math.round(Math.random() * (copyProducts.length - 1)),
       1,
     )[0] as Product;
 

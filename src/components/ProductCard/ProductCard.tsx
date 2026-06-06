@@ -35,6 +35,7 @@ export const ProductCard = ({ product, ...props }: Props) => {
     [cart, preparedProduct.itemId],
   );
 
+
   const cardWithoutContainer = (
     <>
       <Link
