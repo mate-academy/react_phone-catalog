@@ -3,6 +3,7 @@ import styles from './ShopByCategory.module.scss';
 import { Phone } from '../../../../types/phone';
 import { Tablet } from '../../../../types/tablet';
 import { Accessorie } from '../../../../types/accessorie';
+import { Link } from 'react-router-dom';
 
 type Props = {
   phones: Phone[];
@@ -24,7 +25,7 @@ export const ShopByCategory: React.FC<Props> = ({
       <h2 className={styles.pageTitle}>Shop by category</h2>
 
       <div className={styles.categoryContainer}>
-        <a className={styles.category} href={'#/phones'}>
+        <Link className={styles.category} to="/catalog/phones">
           <div className={`${styles.imageBox} ${styles.bgPhones}`}>
             <img
               src="/img/category-phones.png"
@@ -34,9 +35,9 @@ export const ShopByCategory: React.FC<Props> = ({
           </div>
           <h4 className={styles.title}>Mobile phones</h4>
           <p className={styles.description}>{phonesQuantity} models</p>
-        </a>
+        </Link>
 
-        <a className={styles.category} href={'#/tablets'}>
+        <Link className={styles.category} to="/catalog/tablets">
           <div className={`${styles.imageBox} ${styles.bgTablets}`}>
             <img
               src="/img/category-tablets.png"
@@ -46,9 +47,9 @@ export const ShopByCategory: React.FC<Props> = ({
           </div>
           <h4 className={styles.title}>Tablets</h4>
           <p className={styles.description}>{tabletsQuantity} models</p>
-        </a>
+        </Link>
 
-        <a className={styles.category} href={'#/Accessories'}>
+        <Link className={styles.category} to="/catalog/accessories">
           <div className={`${styles.imageBox} ${styles.bgAccessories}`}>
             <img
               src="/img/category-accessories.png"
@@ -58,7 +59,7 @@ export const ShopByCategory: React.FC<Props> = ({
           </div>
           <h4 className={styles.title}>Accessories</h4>
           <p className={styles.description}>{accessoriesQuantity} models</p>
-        </a>
+        </Link>
       </div>
     </div>
   );

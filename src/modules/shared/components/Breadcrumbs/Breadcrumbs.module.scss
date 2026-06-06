@@ -1,3 +1,26 @@
-.root {
-  display: block;
+.list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+}
+
+.currentCrumb {
+  color: #666;
+  font-weight: bold;
+}
+
+.crumbLink {
+  text-decoration: none;
+  color: #0070f3;
+}
+
+.separator {
+  margin: 0 8px;
+  color: #ccc;
 }

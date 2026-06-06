@@ -12,7 +12,12 @@ export const AppRoutes = () => {
 
           <Route path="catalog">
             <Route index element={<CatalogPage />} />
-            <Route path=":category" element={<CatalogPage />} />
+
+            <Route
+              path=":category"
+              element={<CatalogPage />}
+              handle={{ crumb: 'catalog' }}
+            />
           </Route>
         </Route>
 
