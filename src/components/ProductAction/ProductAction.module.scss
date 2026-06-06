@@ -1,19 +1,5 @@
 @import '../../styles/variable';
 
-.buttonAdd {
-    flex: 1;
-    height: 40px;
-    border: none;
-    border-radius: 8px;
-    background-color: $orange-button;
-    color: $white-color;
-    width: 100%;
-
-    &:hover {
-      box-shadow: 0 3px 13px 0 #17203166;
-    }
-  }
-
   .buttonFavorite {
     width: 40px;
     height: 40px;
@@ -26,7 +12,7 @@
     background-color: $white-color;
 
     &:hover {
-      border: 1px solid #0F0F11;
+      border: 1px solid $primary-gray;
     }
 
     &__icon {
@@ -34,6 +20,10 @@
       height: 16px;
       display: block;
     }
+  }
+
+  .isFavourite {
+    border: 1px solid $border-color;
   }
 
   .favoriteBig {
@@ -51,7 +41,6 @@
   }
 
   .buttons {
-    // height: 40px;
     cursor: pointer;
     transition:
       box-shadow 0.3s ease,

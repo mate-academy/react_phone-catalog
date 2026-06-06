@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './MobileMenu.module.scss';
 import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+import IconsActions from '../IconActions/IconActions';
 
 type MobileMen = {
   href: string;
@@ -53,35 +54,8 @@ export const MobileMenu: React.FC<Props> = ({ items, onClose, isOpen }) => {
           </ul>
         </div>
 
-        <div className={styles.menu__bottom}>
-          <NavLink
-            to="/favorites"
-            className={({ isActive }) =>
-              classNames(styles.icons, {
-                [styles['is-active-bottom']]: isActive,
-              })
-            }
-          >
-            <img
-              src="/img/icons/heart-Icon.svg"
-              alt="heart-logo"
-              className={styles.link__size}
-            />
-          </NavLink>
-          <NavLink
-            to="/cart"
-            className={({ isActive }) =>
-              classNames(styles.icons, {
-                [styles['is-active-bottom']]: isActive,
-              })
-            }
-          >
-            <img
-              src="/img/icons/shoping-bag-icon.svg"
-              alt="shoping-bag"
-              className={styles.icon__size}
-            />
-          </NavLink>
+        <div className={styles.menu__bottom} onClick={onClose}>
+          <IconsActions variant={'mobileMenu'} />
         </div>
       </aside>
     </>

@@ -3,7 +3,9 @@ import { useEffect, useState } from 'react';
 import styles from './header.module.scss';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import { useMatchMedia } from '../../hooks/useMatchMedia';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+// import { CartContext } from '../../Contexts/CartContext/CartContext';
+import IconsAction from '../IconActions/IconActions';
 
 export const Header = () => {
   const HEADERS_ITEMS = [
@@ -64,20 +66,7 @@ export const Header = () => {
           </div>
           <div className={styles['buttons-right']}>
             <div className={styles.actions}>
-              <Link to="/" className={styles['buttons-right-container']}>
-                <img
-                  src="/img/icons/heart-Icon.svg"
-                  alt="heart-logo"
-                  className={styles['buttons-right-size']}
-                />
-              </Link>
-              <Link to="/" className={styles['buttons-right-container']}>
-                <img
-                  src="/img/icons/shoping-bag-icon.svg"
-                  alt="shoping-bag"
-                  className={styles['buttons-right-size']}
-                />
-              </Link>
+              <IconsAction variant="header" />
             </div>
             <button
               type="button"
@@ -98,7 +87,6 @@ export const Header = () => {
         </div>
       </header>
 
-      {/* {isMenuOpen && ( */}
       <MobileMenu
         items={HEADERS_ITEMS}
         isOpen={isMenuOpen}
@@ -106,7 +94,6 @@ export const Header = () => {
           setIsMenuOpen(false);
         }}
       />
-      {/* )} */}
     </>
   );
 };

@@ -145,20 +145,37 @@
   display: flex;
   margin-left: auto;
   align-items: center;
-
-  &-container {
-    display: flex;
-    background-color: $white-color;
-    width: 64px;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    border-left: 1px solid $border-color;
-    cursor: pointer;
-  }
-
-  &-size {
-    width: 16px;
-    height: 16px;
-  }
 }
+
+//   &-container {
+//     display: flex;
+//     background-color: $white-color;
+//     width: 64px;
+//     justify-content: center;
+//     align-items: center;
+//     border: none;
+//     border-left: 1px solid $border-color;
+//     cursor: pointer;
+//   }
+
+//   &-size {
+//     position: relative;
+//     width: 16px;
+//     height: 16px;
+//   }
+
+// .totalProductQuantity {
+//   display: block;
+//   position: absolute;
+//   top: 12px;
+//   right: 14px;
+
+//    background-color: red;
+//    color: white;
+//    border-radius: 50%;
+//    border: 1px white solid;
+//    padding: 2px 6px;
+//    font-size: 12px;
+//   min-width: 20px;
+//   height: 20px;
+// }

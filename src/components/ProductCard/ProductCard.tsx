@@ -44,7 +44,7 @@ export const ProductCard: React.FC<Props> = ({
       <ProductSpec spec={specTech} />
 
       <div className={styles.buttonsDown}>
-        <ProductAction variant={'smallButtonSize'} />
+        <ProductAction variant={'smallButtonSize'} product={product} />
       </div>
     </article>
   );

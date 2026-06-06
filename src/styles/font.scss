@@ -141,3 +141,9 @@
   line-height: 11px;
   letter-spacing: 0.04em;
 }
+
+ @mixin buttons {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+ }

@@ -54,7 +54,7 @@ export const ProductControls: React.FC<Props> = ({
       </div>
 
       <div className={styles.bottomSection}>
-        <div className={styles.sectionBorder}></div>
+        <div className={styles.line}></div>
 
         <div className={styles.capacityContainer}>
           <ProductCapacity
@@ -77,7 +77,7 @@ export const ProductControls: React.FC<Props> = ({
           </div>
 
           <div className={styles.buttonsDown}>
-            <ProductAction variant={'bigButtonSize'} />
+            <ProductAction variant={'bigButtonSize'} product={product} />
           </div>
         </div>
 
