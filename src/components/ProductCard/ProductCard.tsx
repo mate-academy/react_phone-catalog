@@ -58,18 +58,16 @@ export const ProductCard = ({
       <div className={styles.actions}>
         <button
           className={classNames(styles.cartButton, {
-            [styles.cartButtonActive]: isInCart(String(product.id)),
+            [styles.cartButtonActive]: isInCart(product.itemId),
           })}
           onClick={() => {
-            if (product && !isInCart(String(product.id))) {
+            if (product && !isInCart(product.itemId)) {
               addToCart(product);
             }
           }}
-          disabled={isInCart(String(product.itemId))}
+          disabled={isInCart(product.itemId)}
         >
-          {isInCart(String(product?.id) ?? '')
-            ? 'Added to cart'
-            : 'Add to cart'}
+          {isInCart(product.itemId) ? 'Added to cart' : 'Add to cart'}
         </button>
         <button
           className={classNames(styles.favoriteButton, {
