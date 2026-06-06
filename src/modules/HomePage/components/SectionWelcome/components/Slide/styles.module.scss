@@ -1,0 +1,163 @@
+@use '@/shared/styles' as *;
+
+.slide {
+  box-sizing: border-box;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+}
+
+.leftContainer {
+  display: none;
+  flex-direction: column;
+  width: 30%;
+
+  background-color: #222;
+  border-radius: 40px;
+  padding: 30px;
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include on-desktop {
+    width: 35%;
+    padding: 40px;
+  }
+}
+
+.rightContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+}
+
+.button {
+  margin-block: auto;
+  text-transform: uppercase;
+  background-color: transparent;
+  border-radius: 25px;
+  display: flex;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  height: 50px;
+  border: 1px solid gray;
+  width: 75%;
+  color: rgb(217, 217, 217);
+
+  transition: box-shadow $transition;
+
+  &:hover {
+    box-shadow: 0 0 10px var(--accent);
+  }
+
+  @include on-desktop {
+    width: 70%;
+    font-size: 14px;
+
+    height: 60px;
+    border-radius: 30px;
+  }
+}
+
+.paragraph {
+  text-align: start;
+  margin-top: 30px;
+  color: rgb(173, 173, 173);
+}
+
+.button2 {
+  display: flex;
+  margin-inline: auto;
+
+  @include on-tablet {
+    margin-inline: 0;
+
+    display: none;
+  }
+}
+
+.title {
+  text-align: start;
+  width: fit-content;
+  background: linear-gradient(
+    90deg,
+    var(--accent),
+    color-mix(in srgb, var(--accent) 50%, rgb(255, 14, 26))
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  font-size: 32px;
+  line-height: 100%;
+
+  @include on-desktop {
+    font-size: 38px;
+  }
+
+  &::after {
+    display: inline-block;
+    content: '';
+    width: 1em;
+    height: 1em;
+    background-image: url('../../../../../../assets/images/favicon/favicon-big.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-left: 5px;
+  }
+}
+
+.image {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; // или cover
+    object-position: center;
+  }
+}
+
+.title2 {
+  animation: title 1.5s infinite ease alternate;
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 140%;
+
+  @include on-tablet {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+}
+
+@keyframes title {
+  0% {
+    color: var(--accent);
+  }
+
+  100% {
+    color: color-mix(in srgb, var(--accent) 50%, rgb(255, 34, 45));
+  }
+}

@@ -1,0 +1,9 @@
+export declare const container: string;
+export declare const gallery: string;
+export declare const mainImage: string;
+export declare const mainSlide: string;
+export declare const mainSwiper: string;
+export declare const thumbButton: string;
+export declare const thumbImage: string;
+export declare const thumbSlide: string;
+export declare const thumbsSwiper: string;

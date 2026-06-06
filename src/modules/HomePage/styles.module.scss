@@ -1,0 +1,17 @@
+@use '@/shared/styles' as *;
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+    gap: 80px;
+  }
+}

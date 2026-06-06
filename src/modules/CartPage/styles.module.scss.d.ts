@@ -1,0 +1,13 @@
+export declare const buttonBack: string;
+export declare const cardsContainer: string;
+export declare const containerIsEmpty: string;
+export declare const imageIsEmpty: string;
+export declare const main: string;
+export declare const mainContainer: string;
+export declare const results: string;
+export declare const resultsButton: string;
+export declare const resultsLine: string;
+export declare const resultsPrice: string;
+export declare const resultsPriceAndTotal: string;
+export declare const title: string;
+export declare const topContainer: string;

@@ -1,0 +1,37 @@
+.circle {
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--bg);
+  border-radius: 50%;
+}
+
+.button {
+  display: block;
+  width: fit-content;
+  padding: 1px;
+  border-radius: 50%;
+  background-color: #e2e6e9;
+
+  &:hover {
+    background-color: #b4bdc3;
+  }
+
+  &.selected {
+    background-color: var(--h);
+  }
+}
+
+[data-theme='dark'] {
+  .button {
+    background-color: #3b3e4a;
+
+    &:hover {
+      background-color: #75767f;
+    }
+
+    &.selected {
+      background-color: var(--h);
+    }
+  }
+}

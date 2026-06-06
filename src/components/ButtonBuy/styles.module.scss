@@ -1,0 +1,133 @@
+@use '@/shared/styles' as *;
+
+.icon {
+  color: var(--h);
+}
+
+.button {
+  border-radius: 8px;
+  border: 1px solid #b4bdc3;
+  background-color: var(--accent);
+  color: white;
+
+  transition:
+    background-color $transition,
+    border-color $transition;
+
+  &:not(.selected) {
+    animation: bloom 2s infinite alternate;
+  }
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--accent), white 20%);
+  }
+
+  &:active {
+    background-color: var(--accent);
+  }
+
+  &:disabled {
+    cursor: auto;
+    border: 1px solid #e2e6e9;
+
+    .icon {
+      color: #e2e6e9;
+    }
+  }
+
+  &.selected {
+    color: var(--accent);
+
+    background-color: var(--bg-button);
+  }
+}
+
+@keyframes bloom {
+  from {
+    filter: drop-shadow(0 0 1px var(--accent));
+  }
+  to {
+    filter: drop-shadow(0 0 5px var(--accent));
+  }
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.iconFlip {
+  transform: scaleX(-1);
+}
+
+[data-theme='dark'] {
+  .button {
+    border-radius: 0;
+    border-width: 0;
+    background-color: var(--accent);
+
+    // &:not(.selected) {
+    //   animation: bloom 2s infinite alternate;
+    // }
+
+    &:hover {
+      background-color: color-mix(in srgb, var(--accent), white 20%);
+    }
+
+    &:disabled {
+      cursor: auto;
+      border: 1px solid #3b3e4a;
+      background-color: transparent;
+
+      .icon {
+        color: #4a4d58;
+      }
+    }
+
+    &.selected {
+      color: var(--h);
+      background-color: var(--bg-button);
+    }
+  }
+}
+
+.button.animationSelect {
+  animation: animation-select $transition ease forwards;
+}
+
+@keyframes animation-select {
+  0% {
+    transform: scale(1);
+  }
+
+  60% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.button.animationDeselect {
+  animation: animation-deselect $transition ease forwards;
+}
+
+@keyframes animation-deselect {
+  0% {
+    transform: scale(1);
+  }
+
+  60% {
+    transform: scale(0.8);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

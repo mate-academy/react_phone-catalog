@@ -1,0 +1,9 @@
+export declare const active: string;
+export declare const icon: string;
+export declare const iconHeartAndCart: string;
+export declare const iconMenu: string;
+export declare const leftContainer: string;
+export declare const rightContainer: string;
+export declare const settingHeader: string;
+export declare const topbar: string;
+export declare const topbarLogo: string;

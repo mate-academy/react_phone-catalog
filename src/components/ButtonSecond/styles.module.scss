@@ -1,0 +1,60 @@
+@use '@/shared/styles' as *;
+
+.button {
+  border-radius: 48px;
+  border: 1px solid #b4bdc3;
+  background-color: transparent;
+  color: var(--h);
+
+  transition:
+    background-color $transition,
+    border-color $transition;
+
+  &:hover {
+    border-color: var(--h);
+  }
+
+  &:active {
+    background-color: #0f0f11;
+    color: #e2e6e9;
+  }
+
+  &:disabled {
+    cursor: auto;
+    background: none;
+    border: 1px solid #e2e6e9;
+    color: #e2e6e9;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme='dark'] {
+  .button {
+    border-radius: 0;
+    border-width: 0;
+    background-color: #323542;
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+
+    &:active {
+      background-color: var(--accent);
+    }
+
+    &:disabled {
+      cursor: auto;
+      border: 1px solid #3b3e4a;
+      background-color: transparent;
+
+      color: #4a4d58;
+    }
+  }
+}

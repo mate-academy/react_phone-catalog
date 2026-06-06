@@ -1,0 +1,11 @@
+@use '@/shared/styles' as *;
+
+.header {
+  position: sticky;
+  z-index: 4;
+  top: 0;
+}
+
+// [data-theme='dark'] .header__theme {
+//   background-color: aqua;
+// }

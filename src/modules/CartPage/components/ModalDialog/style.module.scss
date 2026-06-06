@@ -1,0 +1,49 @@
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.70);
+  min-width: 320px;
+}
+
+.content {
+  background-color: var(--bg-header-footer);
+  padding: 20px 30px;
+  width: fit-content;
+  height: fit-content;
+  max-width: 70%;
+  max-height: 70%;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  box-shadow: 0 0 5px black;
+}
+
+[data-theme='dark'] .content {
+  border-radius: 0;
+
+  background-color: var(--text);
+}
+
+.buttonsBox {
+  display: flex;
+  gap: 20px;
+}
+
+.button {
+  flex: 1;
+  font-weight: 600;
+  font-size: 14px;
+
+  line-height: 21px;
+  text-align: center;
+  height: 42px;
+}
+
+.title {
+  text-align: center;
+}

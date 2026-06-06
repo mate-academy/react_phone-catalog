@@ -1,0 +1,182 @@
+@use '@/shared/styles' as *;
+
+.main {
+  width: 100%;
+  height: 100%;
+
+  transition: box-shadow $transition;
+}
+
+.content {
+  box-sizing: border-box;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background-color: var(--bg-goods);
+  border: 1px solid var(--line-and-border);
+  border-radius: 8px;
+
+  @include on-tablet {
+    padding: 16px;
+  }
+
+  @include on-desktop {
+    padding: 32px;
+  }
+}
+
+[data-theme='dark'] {
+  & .content {
+    border-radius: 0;
+  }
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 7 / 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform $transition;
+
+  @include on-tablet {
+    aspect-ratio: 7 / 10;
+  }
+}
+
+.imageImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.title {
+  display: block;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  margin-top: 24px;
+  height: 42px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: var(--h);
+}
+
+.titleLink {
+  display: block;
+  font-size: 14px;
+  line-height: 21px;
+  margin-top: auto;
+}
+
+.skeleton {
+  height: 100%;
+
+  & > * {
+    display: flex;
+    gap: 8px;
+    height: 100%;
+    flex-direction: column;
+  }
+}
+
+.priceBox {
+  display: flex;
+  gap: 8px;
+}
+
+.price {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0%;
+
+  &lineThrough {
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+    color: var(--text);
+  }
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: var(--line-and-border);
+}
+
+.details {
+  padding-block: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+
+  &Text1 {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: var(--text);
+  }
+
+  &Text2 {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: var(--h);
+    text-align: end;
+
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.buttonHeart {
+  width: 40px;
+  height: 40px;
+}
+
+.buttonBuy {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: center;
+
+  display: block;
+  flex: 1;
+}
+
+.main:hover {
+  box-shadow: 0 0 10px var(--line-and-border);
+
+  .image {
+    transform: scale(1.05);
+  }
+
+  .content {
+    border-color: var(--h);
+  }
+}

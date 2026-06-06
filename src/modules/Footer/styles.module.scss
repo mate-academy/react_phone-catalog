@@ -1,0 +1,67 @@
+@use '@/shared/styles' as *;
+
+.main {
+  @include padding-container;
+
+  padding-block: 32px;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line-and-border);
+  gap: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.linksBox {
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+  flex: 0.5;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.link {
+  width: fit-content;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+
+  color: var(--h);
+  text-transform: uppercase;
+
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+.buttonScrollTop {
+  width: 32px;
+  height: 32px;
+}
+
+.scrollTopBox {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  margin-inline: auto;
+
+  @include on-tablet {
+    margin-inline: 0;
+  }
+}
+
+.scrollTopText {
+  color: var(--text);
+}

@@ -1,0 +1,32 @@
+@use '@/shared/styles' as *;
+
+.pagination {
+  display: flex;
+  gap: 4px;
+
+  @include on-tablet {
+    gap: 8px;
+  }
+}
+
+.buttonArrow {
+  display: block;
+  width: 28px;
+  height: 28px;
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.buttonNumber {
+  display: block;
+  width: 28px;
+  height: 28px;
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+}

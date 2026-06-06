@@ -1,0 +1,157 @@
+@use '@/shared/styles' as *;
+
+.icon {
+  color: var(--h);
+  transition:
+    color $transition,
+    background-color $transition,
+    transform $transition;
+}
+
+.isLike {
+  &.button {
+    background-color: transparent;
+  }
+
+  .icon {
+    transform: scale(0);
+  }
+}
+
+.heartLike {
+  color: $red;
+  position: absolute;
+  transform: scale(0);
+  transition: transform $transition;
+}
+
+.isLike .heartLike {
+  animation: appear-heart $transition forwards;
+}
+
+@keyframes appear-heart {
+  0% {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes like {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.iconFlip {
+  transform: scaleX(-1);
+}
+
+.button {
+  border-radius: 48px;
+  border: 1px solid #b4bdc3;
+  background-color: transparent;
+
+  transition:
+    background-color $transition,
+    border-color $transition;
+
+  &:hover {
+    border-color: var(--h);
+  }
+
+  &:active {
+    background-color: var(--accent);
+  }
+
+  &:disabled {
+    cursor: auto;
+    border: 1px solid #e2e6e9;
+
+    .icon {
+      color: #e2e6e9;
+    }
+  }
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme='dark'] {
+  .button {
+    border-radius: 0;
+    border-width: 0;
+    background-color: #323542;
+
+    &.isLike {
+      &.button {
+        background-color: transparent;
+        border: 1px solid #3b3e4a;
+      }
+    }
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+
+    &:active {
+      background-color: var(--accent);
+    }
+
+    &:disabled {
+      cursor: auto;
+      border: 1px solid #3b3e4a;
+      background-color: transparent;
+
+      .icon {
+        color: #4a4d58;
+      }
+    }
+  }
+}
+
+.floatingHeart {
+  position: absolute;
+  animation: floating-heart 1s ease-in-out forwards;
+}
+
+@keyframes floating-heart {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(1);
+  }
+
+  10% {
+    transform: translate(-4px, -5px) scale(4);
+  }
+
+  20% {
+    transform: translate(4px, -10px) scale(1);
+  }
+
+  40% {
+    opacity: 1;
+    transform: translate(0, -40px) scale(2);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(0, -160px) scale(6);
+  }
+}

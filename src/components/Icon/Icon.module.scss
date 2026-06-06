@@ -1,0 +1,12 @@
+@use '@/shared/styles' as *;
+
+
+.icon {
+ display: block;
+ width: 17px;
+ height: 17px;
+ object-fit: contain;
+ object-position: center;
+ color: inherit;
+
+}

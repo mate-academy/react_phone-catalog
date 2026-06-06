@@ -1,0 +1,63 @@
+@use '../utils/mixins.scss' as *;
+@use '../utils/vars.scss' as *;
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
+/* stylelint-disable-next-line selector-max-id */
+#root {
+  position: relative;
+}
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  color: var(--text);
+}
+
+html,
+html *,
+html *::before,
+html *::after {
+  transition:
+    background-color $transition,
+    color $transition,
+    border-color $transition,
+    fill $transition,
+    stroke $transition;
+}
+
+html.no-theme-transition,
+html.no-theme-transition *,
+html.no-theme-transition *::before,
+html.no-theme-transition *::after {
+  transition: none !important;
+}

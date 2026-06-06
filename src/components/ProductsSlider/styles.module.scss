@@ -1,0 +1,67 @@
+@use '@/shared/styles' as *;
+
+.titleContainer {
+  @include padding-container;
+}
+
+.titleBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  height: 32px;
+  width: 32px;
+}
+
+.sliderButtonPrev {
+  margin: 0;
+}
+
+.sliderButtonNext {
+  margin: 0;
+}
+
+.buttonBox {
+  display: flex;
+  gap: 16px;
+}
+
+.swiperContainer {
+  @include padding-container(10px);
+
+  min-width: 0;
+}
+
+.swiperWrapper {
+  height: auto;
+}
+
+.swiper {
+  padding: 10px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.slide {
+  height: auto;
+}
+
+.slideTest {
+  height: auto;
+
+  width: calc(((100% - (16px * 3)) / 4) * 3 + (16px * 2));
+
+  &:not(&:last-child) {
+    margin-right: 16px;
+  }
+
+  @include on-tablet {
+    width: calc(((100% - (16px * 11)) / 12) * 5 + (16px * 4));
+  }
+
+  @include on-desktop {
+    width: calc(((100% - (16px * 23)) / 24) * 6 + (16px * 5));
+  }
+}

@@ -1,0 +1,30 @@
+@use '../utils/vars.scss' as *;
+@use '../utils/mixins.scss' as *;
+
+html {
+  --bg: #{$bg-light};
+  --bg-header-footer: #{$bg-header-footer-light};
+  --bg-goods: #{$bg-goods-light};
+  --bg-button: #{$bg-button-light};
+  --accent: #{$accent-light};
+  --icon: #{$icon-light};
+  --accent2: #{$accent2-light};
+  --h: #{$h-light};
+  --text: #{$text-light};
+  --line-and-border: #{$line-and-border-light};
+
+
+  &[data-theme='dark'] {
+    --bg: #{$bg-dark};
+    --bg-header-footer: #{$bg-header-footer-dark};
+    --bg-goods: #{$bg-goods-dark};
+    --bg-button: #{$bg-button-dark};
+    --accent: #{$accent-dark};
+    --icon: #{$icon-dark};
+    --accent2: #{$accent2-dark};
+    --h: #{$h-dark};
+    --text: #{$text-dark};
+    --line-and-border: #{$line-and-border-dark};
+  }
+
+}

@@ -1,0 +1,10 @@
+export declare const content: string;
+export declare const dropdownPerPageBox: string;
+export declare const dropdownSortBox: string;
+export declare const filterbox: string;
+export declare const filterSortContainer: string;
+export declare const imageIsEmpty: string;
+export declare const main: string;
+export declare const p: string;
+export declare const pagination: string;
+export declare const queryBox: string;

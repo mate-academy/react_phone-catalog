@@ -1,0 +1,126 @@
+@use '@/shared/styles' as *;
+
+.nav {
+  display: flex;
+}
+
+.list {
+  display: flex;
+  list-style: none;
+  gap: 32px;
+  margin: 0;
+  align-items: center;
+  padding: 0;
+  height: 100%;
+}
+
+.item {
+  height: 100%;
+
+  display: inline-block;
+}
+
+.link {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+
+  height: 100%;
+  color: var(--text);
+
+  &::after {
+    display: block;
+    position: absolute;
+    background-color: var(--h);
+    content: '';
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    transform: scaleX(0);
+    transform-origin: center;
+
+    transition:
+      background-color $transition,
+      transform $transition;
+  }
+
+  &.active {
+    color: var(--h);
+
+    &::after {
+      display: block;
+      position: absolute;
+      background-color: var(--h);
+      content: '';
+      width: 100%;
+      height: 3px;
+      bottom: 0;
+      transform: scaleX(1);
+    }
+  }
+
+  &:hover {
+    color: var(--accent);
+
+    &::after {
+      background-color: var(--accent);
+    }
+  }
+}
+
+.navMenu {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 16px;
+    margin: 0;
+    align-items: center;
+    padding: 0;
+  }
+
+  .item {
+    height: 27px;
+
+    display: inline-block;
+  }
+
+  .link {
+    &::after {
+      height: 3px;
+    }
+  }
+}
+
+.navHeader {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    margin-left: 16px;
+  }
+
+  @include on-desktop {
+    margin-left: 24px;
+  }
+
+  & .list {
+    gap: clamp(16px, 2.8vw, 32px);
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+}
