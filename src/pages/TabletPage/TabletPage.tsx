@@ -5,6 +5,7 @@ import { Tablet } from '../../Interface';
 import { SortForm } from '../../Functional/SortForm/SortForm';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../Functional/CartContext/CartContext';
+import { getBaseUrl } from '../../utils';
 
 interface CartItem {
   id: string;
@@ -42,7 +43,7 @@ export const TabletPage = () => {
   useEffect(() => {
     setLoading(true);
 
-    fetch(`${import.meta.env.BASE_URL}/api/tablets.json`)
+    fetch(`${getBaseUrl()}api/tablets.json`)
       .then(response => {
         if (!response.ok) {
           throw new Error(

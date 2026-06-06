@@ -5,6 +5,7 @@ import { SortForm } from '../../Functional/SortForm/SortForm';
 import { Accessories } from '../../Interface';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../Functional/CartContext/CartContext';
+import { getBaseUrl } from '../../utils';
 
 export const AccessoriesPage = () => {
   const { addToCart, toggleFavorite, removeFromCart, cart, favorites } = useCart();
@@ -37,7 +38,7 @@ export const AccessoriesPage = () => {
   useEffect(() => {
     setLoading(true);
 
-    fetch(`${import.meta.env.BASE_URL}/api/accessories.json`)
+    fetch(`${getBaseUrl()}api/accessories.json`)
       .then(response => {
         if (!response.ok) {
           throw new Error(

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import './FavoritesPage.scss';
 import { useEffect, useState } from 'react';
 import { Accessories, Phone, Tablet } from '../../../Interface';
+import { getBaseUrl } from '../../../utils';
 
 export const FavoritesPage = () => {
   const { favorites, toggleFavorite, cart, addToCart, removeFromCart } = useCart();
@@ -24,9 +25,9 @@ export const FavoritesPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       const urls = [
-        `${import.meta.env.BASE_URL}/api/phones.json`,
-        `${import.meta.env.BASE_URL}/api/tablets.json`,
-        `${import.meta.env.BASE_URL}/api/accessories.json`,
+        `${getBaseUrl()}api/phones.json`,
+        `${getBaseUrl()}api/tablets.json`,
+        `${getBaseUrl()}api/accessories.json`,
       ];
 
       const allData: (Phone | Tablet | Accessories)[] = [];

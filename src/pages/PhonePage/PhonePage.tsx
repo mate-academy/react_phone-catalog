@@ -5,6 +5,7 @@ import { SortForm } from '../../Functional/SortForm/SortForm';
 import { Phone } from '../../Interface';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../Functional/CartContext/CartContext';
+import { getBaseUrl } from '../../utils';
 
 interface CartItem {
   id: string;
@@ -36,7 +37,7 @@ export const PhonePage = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${import.meta.env.BASE_URL}/api/phones.json`)
+    fetch(`${getBaseUrl()}api/phones.json`)
       .then(response => {
         if (!response.ok) throw new Error(`Failed to fetch: ${response.status}`);
         return response.json();

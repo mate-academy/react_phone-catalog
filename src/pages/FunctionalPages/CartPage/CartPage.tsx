@@ -1,5 +1,6 @@
 import { useCart } from '../../../Functional/CartContext/CartContext';
 import './CartPage.scss';
+import { getBaseUrl } from '../../../utils';
 
 export const CartPage = () => {
   const { cart, removeFromCart, updateQuantity } = useCart();
@@ -14,7 +15,7 @@ export const CartPage = () => {
       <section className="cart section">
         <div className="cart__back" onClick={() => window.history.back()}>
           <img
-            src={`${import.meta.env.BASE_URL}icons/arrow-left-breadcrumb.svg`}
+            src={`${getBaseUrl()}icons/arrow-left-breadcrumb.svg`}
             alt="back"
             className="cart__back-arrow"
           />
@@ -30,7 +31,7 @@ export const CartPage = () => {
     <section className="cart section">
       <div className="cart__back" onClick={() => window.history.back()}>
         <img
-          src={`${import.meta.env.BASE_URL}icons/arrow-left-breadcrumb.svg`}
+          src={`${getBaseUrl()}icons/arrow-left-breadcrumb.svg`}
           alt="back"
           className="cart__back-arrow"
         />
@@ -49,7 +50,7 @@ export const CartPage = () => {
                 onClick={() => removeFromCart(item.id)}
               >
                 <img
-                  src={`${import.meta.env.BASE_URL}icons/close.svg`}
+                  src={`${getBaseUrl()}icons/close.svg`}
                   alt="close"
                 />
               </button>

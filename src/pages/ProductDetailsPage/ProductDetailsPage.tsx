@@ -6,6 +6,7 @@ import { Phone, Tablet, Accessories } from '../../Interface';
 import { useCart } from '../../Functional/CartContext/CartContext';
 import './ProductDetailsPage.scss';
 import { YourComponent } from './YourComponent';
+import { getBaseUrl } from '../../utils';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -91,7 +92,7 @@ export const ProductDetailsPage = () => {
         }
 
         const response = await fetch(
-          `${import.meta.env.BASE_URL}${productsFile}`,
+          `${getBaseUrl()}${productsFile}`,
         );
 
         if (!response.ok) {
@@ -119,7 +120,7 @@ export const ProductDetailsPage = () => {
 
           try {
             const productsRes = await fetch(
-              `${import.meta.env.BASE_URL}api/products.json`,
+              `${getBaseUrl()}api/products.json`,
             );
 
             if (productsRes.ok) {

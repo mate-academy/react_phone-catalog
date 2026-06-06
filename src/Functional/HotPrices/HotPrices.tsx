@@ -5,6 +5,7 @@ import 'swiper/css';
 import './HotPrices.scss';
 import { Link } from 'react-router-dom';
 import { useCart } from '../CartContext/CartContext';
+import { getBaseUrl } from '../../utils';
 
 interface Product {
   id: number;
@@ -37,7 +38,7 @@ export default function HotPrices() {
   useEffect(() => {
     setLoading(true);
 
-    fetch(`${import.meta.env.BASE_URL}/api/products.json`)
+    fetch(`${getBaseUrl()}api/products.json`)
       .then(response => {
         if (!response.ok) {
           throw new Error(`Failed to fetch: ${response.status}`);
@@ -118,7 +119,7 @@ export default function HotPrices() {
               <div className="hot__card">
                 <Link to={`/${phone.category}/${phone.itemId}`}>
                   <img
-                    src={`${import.meta.env.BASE_URL}${phone.image}`}
+                    src={`${getBaseUrl()}${phone.image}`}
                     alt={phone.name}
                     className="hot__card-image"
                     onError={e =>

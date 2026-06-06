@@ -5,6 +5,7 @@ import 'swiper/css';
 import './NewBrand.scss';
 import { Link } from 'react-router-dom';
 import { useCart } from '../CartContext/CartContext';
+import { getBaseUrl } from '../../utils';
 
 interface Product {
   id: number;
@@ -37,7 +38,7 @@ export default function NewBrand() {
   useEffect(() => {
     setLoading(true);
 
-    fetch(`${import.meta.env.BASE_URL}/api/products.json`)
+    fetch(`${getBaseUrl()}api/products.json`)
       .then(response => {
         if (!response.ok) {
           throw new Error(`Failed to fetch: ${response.status}`);
@@ -123,7 +124,7 @@ export default function NewBrand() {
               <div className="new-brand__card">
                 <Link to={`/${phone.category}/${phone.itemId}`}>
                   <img
-                    src={`${import.meta.env.BASE_URL}${phone.image}`}
+                    src={`${getBaseUrl()}${phone.image}`}
                     alt={phone.name}
                     className="new-brand__card-image"
                     onError={e =>
