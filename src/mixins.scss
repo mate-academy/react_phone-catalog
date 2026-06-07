@@ -38,9 +38,7 @@
     padding: 0 24px;
   }
 
-  @include on-desktop {
-    padding: 0 120px;
-  }
+  
 }
 
 @mixin card-box {
