@@ -34,7 +34,7 @@ export const Layout = () => {
           <Outlet />
         )}
       </main>
-      <Footer />
+      {!isMenuOpen && <Footer />}
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { Product } from '../../../../types/Product';
 import { getNewModels, getProducts } from '../../../../utils/api';
 import { ProductCarousel } from '../../../shared/components/ProductCarousel';
 import { PhoneCard } from '../../../shared/components/PhoneCard/PhoneCard';
+import styles from './HotPrices.module.scss';
 
 export const HotPrices = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -27,7 +28,7 @@ export const HotPrices = () => {
   };
 
   return (
-    <section>
+    <section className={styles.section}>
       <ProductCarousel title="Hot prices">
         {getHottestProducts().map(phone => (
           <PhoneCard key={phone.id} product={phone} isOldPriceVisible={true} />

@@ -10,7 +10,7 @@ type Props = {
 };
 
 export const PhoneCard = ({ product, isOldPriceVisible }: Props) => {
-  const { favoritesIds, addBtnIds, setFavoritesIds, setAddBtnIds } =
+  const { favoritesIds, cartIds, setFavoritesIds, setCartIds } =
     useAppContext();
 
   const toggleFavorites = (id: number) => {
@@ -18,7 +18,7 @@ export const PhoneCard = ({ product, isOldPriceVisible }: Props) => {
   };
 
   const toggleAddButton = (id: number) => {
-    setAddBtnIds(toggleArrayIds(addBtnIds, id));
+    setCartIds(toggleArrayIds(cartIds, id));
   };
 
   return (
@@ -50,10 +50,10 @@ export const PhoneCard = ({ product, isOldPriceVisible }: Props) => {
           <button
             onClick={() => toggleAddButton(product.id)}
             className={cn(styles.addBtn, {
-              [styles.isActive]: addBtnIds.includes(product.id),
+              [styles.isActive]: cartIds.includes(product.id),
             })}
           >
-            {addBtnIds.includes(product.id) ? 'Added to cart' : 'Add to cart'}
+            {cartIds.includes(product.id) ? 'Added to cart' : 'Add to cart'}
           </button>
           <button
             onClick={() => toggleFavorites(product.id)}

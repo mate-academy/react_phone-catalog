@@ -4,8 +4,8 @@ import { Product } from '../types/Product';
 type ContextType = {
   favoritesIds: number[];
   setFavoritesIds: React.Dispatch<React.SetStateAction<number[]>>;
-  addBtnIds: number[];
-  setAddBtnIds: React.Dispatch<React.SetStateAction<number[]>>;
+  cartIds: number[];
+  setCartIds: React.Dispatch<React.SetStateAction<number[]>>;
   newPhonesModels: Product[];
   setNewPhoneModels: React.Dispatch<React.SetStateAction<Product[]>>;
 };
@@ -14,7 +14,7 @@ const AppContext = createContext<ContextType | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [favoritesIds, setFavoritesIds] = useState<number[]>([]);
-  const [addBtnIds, setAddBtnIds] = useState<number[]>([]);
+  const [cartIds, setCartIds] = useState<number[]>([]);
   const [newPhonesModels, setNewPhoneModels] = useState<Product[]>([]);
 
   return (
@@ -22,8 +22,8 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         favoritesIds,
         setFavoritesIds,
-        addBtnIds,
-        setAddBtnIds,
+        cartIds,
+        setCartIds,
         newPhonesModels,
         setNewPhoneModels,
       }}

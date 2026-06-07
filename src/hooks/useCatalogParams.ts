@@ -2,7 +2,7 @@ import { useSearchParams } from 'react-router-dom';
 import {
   DEFAULT_SORT_VALUE,
   INITIAL_PAGE,
-  MIN_ITEMS_PER_PAGE,
+  DEFAULT_ITEMS_PER_PAGE,
 } from '../types/Constants';
 import { setSearchWith } from '../utils/paramsFunctions';
 import { useCallback } from 'react';
@@ -12,8 +12,7 @@ export const useCatalogParams = () => {
 
   const pageNumber = Number(searchParams.get('page')) || INITIAL_PAGE;
   const sort = searchParams.get('sortBy') || DEFAULT_SORT_VALUE;
-  const productsPerPage =
-    Number(searchParams.get('perPage')) || MIN_ITEMS_PER_PAGE;
+  const productsPerPage = searchParams.get('perPage') || DEFAULT_ITEMS_PER_PAGE;
 
   const handleSortValueChange = useCallback(
     (event: string) => {
@@ -30,10 +29,10 @@ export const useCatalogParams = () => {
   );
 
   const handleProductsPerPageChange = useCallback(
-    (event: number) => {
+    (event: string) => {
       setSearchWith(
         {
-          perPage: event === MIN_ITEMS_PER_PAGE ? null : event,
+          perPage: event === DEFAULT_ITEMS_PER_PAGE ? null : event,
           page: null,
         },
         searchParams,

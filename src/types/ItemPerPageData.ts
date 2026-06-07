@@ -1,5 +1,6 @@
 export const ItemsPerPageData = [
-  { value: 16, title: 16 },
-  { value: 24, title: 24 },
-  { value: 32, title: 32 },
+  { value: '4', title: '4' },
+  { value: '8', title: '8' },
+  { value: '16', title: '16' },
+  { value: 'all', title: 'all' },
 ];

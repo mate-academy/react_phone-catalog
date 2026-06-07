@@ -6,8 +6,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  top: calc(vars.$header-height-mobile + 24px); // header size 48px + margin 24px
+  position: absolute;
+  top: 24px;
+  left: 0;
   width: 100%;
 }
 
@@ -71,4 +72,8 @@
 
 .activeIcon::after {
   @extend %activate-underline;
+}
+
+.favorites, .cart {
+  position: relative;
 }

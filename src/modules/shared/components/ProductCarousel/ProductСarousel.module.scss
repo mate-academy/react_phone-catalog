@@ -6,15 +6,15 @@
   gap: 16px;
 
   & > * {
-    width: calc(100% - 50px);
+    width: calc(100% - 50px); // 50px to make the next card visible, so it's clear that this is a carousel
     flex-shrink: 0;
 
     @media screen and (min-width: vars.$tablet-width) {
-      width: calc(50% - 50px);
+      width: calc(50% - 50px); // 50px to make the next card visible, so it's clear that this is a carousel
     }
 
     @media screen and (min-width: vars.$desktop-width) {
-      width: 25%;
+      width: calc(25% - 12px); // 12px = (3 indents of 16 px each) = 48px / 4 cards
     }
   }
 }
