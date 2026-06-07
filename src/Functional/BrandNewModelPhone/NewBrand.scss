@@ -3,15 +3,6 @@
 .new-brand {
   margin-top: 40px;
   box-sizing: border-box;
-  padding: 0 32px;
-
-  @include on-tablet {
-    padding: 0 24px;
-  }
-
-  @include on-phone {
-    padding: 0 16px;
-  }
 
   &__header {
     display: flex;
@@ -189,9 +180,7 @@
     font-weight: 700;
     border: none;
     cursor: pointer;
-    transition:
-      background-color 0.3s ease,
-      border-color 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
   }
 
   &__card-btn--add {

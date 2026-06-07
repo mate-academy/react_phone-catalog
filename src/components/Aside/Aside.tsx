@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Aside.scss';
+import { getBaseUrl } from '../../utils';
 
 type Props = {
   isMenuOpen: boolean;
@@ -10,8 +11,8 @@ export const Aside: React.FC<Props> = ({ isMenuOpen, onClose }) => {
   return (
     <aside className={`menu ${isMenuOpen ? 'menu--open' : ''}`}>
       <div className="menu__top">
-        <Link to="/" className="menu__logo">
-          <img src="figmaLogo/Logo.svg" alt="NiceGadgets_logo" />
+        <Link to="/" className="menu__logo" onClick={onClose}>
+          <img src={`${getBaseUrl()}icons/logo.svg`} alt="NiceGadgets_logo" />
         </Link>
         <div className="menu__close-wrapper">
           <div className="menu__close">
@@ -19,7 +20,9 @@ export const Aside: React.FC<Props> = ({ isMenuOpen, onClose }) => {
               type="button"
               className="menu__closes"
               onClick={onClose}
-            ></button>
+            >
+              <img src={`${getBaseUrl()}icons/close.svg`} alt="close" />
+            </button>
           </div>
         </div>
       </div>
@@ -44,12 +47,12 @@ export const Aside: React.FC<Props> = ({ isMenuOpen, onClose }) => {
       <div className="menu__bottom">
         <div className="menu__heart">
           <Link to="/favorites" onClick={onClose}>
-            <div className="menu__heart__top"></div>
+            <img src={`${getBaseUrl()}icons/heart.svg`} alt="Favorites" />
           </Link>
         </div>
         <div className="menu__packet">
           <Link to="/cart" onClick={onClose}>
-            <div className="menu__packet__top"></div>
+            <img src={`${getBaseUrl()}icons/cart.svg`} alt="Cart" />
           </Link>
         </div>
       </div>

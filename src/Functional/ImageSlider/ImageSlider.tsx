@@ -4,6 +4,7 @@ import { MainSlider } from './MainSlider';
 import bannerAccessories from '/img/banner-accessories.png';
 import bannerPhones from '/img/banner-phones.png';
 import bannerTablets from '/img/banner-tablets.png';
+import { getBaseUrl } from '../../utils';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -18,7 +19,7 @@ export default function SliderSwiper() {
     <div className="swiper--top">
       <div className="swiper--top__conteiner">
         <button className="swiper--top-button-prev" onClick={handlePrevSlide}>
-          <img src="./icons/arrow-left-small.svg" alt="prev" />
+          <img src={`${getBaseUrl()}icons/arrow-left-small.svg`} alt="prev" />
         </button>
 
         <div className="swiper--top__images">
@@ -45,7 +46,7 @@ export default function SliderSwiper() {
         </div>
 
         <button className="swiper--top-button-next" onClick={handleNextSlide}>
-          <img src="./icons/arrow-right-small-active.svg" alt="next" />
+          <img src={`${getBaseUrl()}icons/arrow-right-small-active.svg`} alt="next" />
         </button>
       </div>
     </div>

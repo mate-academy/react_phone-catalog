@@ -2,15 +2,6 @@
 
 .shop {
   margin-top: 56px;
-  padding: 0 32px;
-
-  @include on-tablet {
-    padding: 0 24px;
-  }
-
-  @include on-phone {
-    padding: 0 16px;
-  }
 
   &__title {
     color: #F1F2F9;
@@ -26,6 +17,10 @@
     display: flex;
     gap: 16px;
     width: 100%;
+
+    @include on-phone {
+      flex-direction: column;
+    }
   }
 
   &__container {
@@ -73,7 +68,7 @@
     }
 
     @include on-phone {
-      height: 200px;
+      height: 100vw;
     }
   }
 

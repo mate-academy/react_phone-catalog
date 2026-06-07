@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { useCart } from '../../Functional/CartContext/CartContext';
 import { Aside } from '../Aside/Aside';
 import { useState } from 'react';
+import { getBaseUrl } from '../../utils';
 
 export const Header = () => {
   const { cart, favorites } = useCart();
@@ -24,7 +25,7 @@ export const Header = () => {
       <div className="header__top">
         <div className="header__logo">
           <Link to="/">
-            <img src="./icons/logo.svg" alt="NiceGadgets logo" />
+            <img src={`${getBaseUrl()}icons/logo.svg`} alt="NiceGadgets logo" />
           </Link>
         </div>
 
@@ -43,7 +44,7 @@ export const Header = () => {
             }
           >
             <div className="header__heart__top">
-              <img src="./icons/heart.svg" alt="Favorites" />
+              <img src={`${getBaseUrl()}icons/heart.svg`} alt="Favorites" />
               {favorites.length > 0 && (
                 <span className="cart-count">{favorites.length}</span>
               )}
@@ -57,7 +58,7 @@ export const Header = () => {
             }
           >
             <div className="header__packet__top">
-              <img src="./icons/cart.svg" alt="Cart" />
+              <img src={`${getBaseUrl()}icons/cart.svg`} alt="Cart" />
               {cart.length > 0 && (
                 <span className="cart-count">{cart.length}</span>
               )}

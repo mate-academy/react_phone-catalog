@@ -14,14 +14,14 @@ export const Footer = () => {
     <footer className="footer">
       <div className="footer__container">
         <div className="footer__img">
-          <img src="public/icons/logo.svg" alt="Nice-Gadgets-Logo" />
+          <img src="./icons/logo.svg" alt="Nice-Gadgets-Logo" />
         </div>
 
         <div className="footer__links">
-          <a
+
             href="https://github.com/AlexanderBarkar/react_phone-catalog"
             className="footer__link"
-          >
+          <a>
             Github
           </a>
           <a href="#" className="footer__link">

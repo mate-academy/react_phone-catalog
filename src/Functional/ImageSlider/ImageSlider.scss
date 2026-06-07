@@ -10,7 +10,8 @@
   }
 
   @include on-phone {
-    padding: 0 16px;
+    padding: 0;
+    margin-inline: -16px;
   }
 
   &__conteiner {
@@ -31,7 +32,7 @@
     }
 
     @include on-phone {
-      height: 200px;
+      height: 100vw;
     }
 
     .swiper {
@@ -51,33 +52,41 @@
   }
 
   &-button-prev,
-&-button-next {
-  width: 32px;
-  min-width: 32px;
-  flex-shrink: 0;
-  border: 1px solid #3B3E4A;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  background-color: #323542;
-  transition: border-color 0.3s ease;
-  padding: 0;
+  &-button-next {
+    width: 32px;
+    min-width: 32px;
+    flex-shrink: 0;
+    border: 1px solid #3B3E4A;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #323542;
+    transition: border-color 0.3s ease;
+    padding: 0;
 
-  img {
-    width: 16px;
-    height: 16px;
-  }
+    img {
+      width: 16px;
+      height: 16px;
+    }
 
-  &:hover {
-    border-color: #F1F2F9;
-  }
+    &:hover {
+      border-color: #F1F2F9;
+    }
 
-  &:active {
-    background-color: #323242;
-    border-color: #F1F2F9;
+    &:active {
+      background-color: #323242;
+      border-color: #F1F2F9;
+    }
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    @include on-desktop {
+      display: flex;
+    }
   }
-}
 
   .swiper-pagination {
     bottom: 16px;

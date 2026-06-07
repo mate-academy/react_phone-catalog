@@ -7,9 +7,7 @@ import './Main.scss';
 export const Main = () => {
   return (
     <main>
-      <div className="main">
-        <h2 className="main__title">Welcome to Nice Gadgets store!</h2>
-      </div>
+      <h2 className="main__title">Welcome to Nice Gadgets store!</h2>
       <ImageSlider />
       <NewBrand />
       <ShopByCategory />

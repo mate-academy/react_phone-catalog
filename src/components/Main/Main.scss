@@ -10,10 +10,9 @@
     letter-spacing: -0.01em;
     text-align: left;
     margin: 0;
-    padding: 24px 32px 0;
+    padding: 0;
 
     @include on-tablet {
-      padding: 24px 24px 0;
       font-size: 36px;
       line-height: 44px;
     }
@@ -21,7 +20,6 @@
     @include on-phone {
       font-size: 32px;
       line-height: 40px;
-      padding: 16px 16px 0;
     }
   }
 }

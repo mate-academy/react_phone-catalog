@@ -6,16 +6,7 @@
 
 .hot {
   margin-top: 40px;
-  padding: 0 32px;
   box-sizing: border-box;
-
-  @include on-tablet {
-    padding: 0 24px;
-  }
-
-  @include on-phone {
-    padding: 0 16px;
-  }
 
   &__header {
     display: flex;

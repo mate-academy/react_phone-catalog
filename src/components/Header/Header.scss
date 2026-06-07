@@ -113,10 +113,6 @@
     position: relative;
     text-decoration: none;
 
-    @include on-phone {
-      display: none;
-    }
-
     &::after {
       content: "";
       position: absolute;
