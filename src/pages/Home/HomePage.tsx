@@ -17,11 +17,11 @@ export const HomePage: React.FC = () => {
 
   const getRandomInt = (min: number, max: number): number =>
     Math.floor(Math.random() * (max - min + 1)) + min;
-  const getRandomProducts = (products: Product[], min = 10, max = 30) => {
-    const safeMax = Math.min(max, products.length);
+  const getRandomProducts = (randomProducts: Product[], min = 10, max = 30) => {
+    const safeMax = Math.min(max, randomProducts.length);
     const randomCount = getRandomInt(min, safeMax);
 
-    return products.slice(0, randomCount);
+    return randomProducts.slice(0, randomCount);
   };
 
   for (const item of products) {
@@ -59,7 +59,7 @@ export const HomePage: React.FC = () => {
         <div className={styles.categoryGrid}>
           <Link to="/phones" className={styles.categoryCard}>
             <img
-              src="img/phone-category.png"
+              src="img/phone-category.webp"
               alt="Mobile Phones"
               className={styles.categoryImage}
             />
@@ -72,7 +72,7 @@ export const HomePage: React.FC = () => {
           </Link>
           <Link to="/tablets" className={styles.categoryCard}>
             <img
-              src="img/tablet-category.png"
+              src="img/tablet-category.webp"
               alt="Tablets"
               className={styles.categoryImage}
             />
@@ -85,7 +85,7 @@ export const HomePage: React.FC = () => {
           </Link>
           <Link to="/accessories" className={styles.categoryCard}>
             <img
-              src="img/accessories-category.jpeg"
+              src="img/accessories-category.webp"
               alt="Accessories"
               className={styles.categoryImage}
             />

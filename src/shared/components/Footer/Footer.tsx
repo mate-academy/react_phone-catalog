@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import LogoDark from '/img/LogoDark.svg';
@@ -8,11 +8,32 @@ import { useTheme } from '@/app/providers/ThemeContext';
 import classNames from 'classnames';
 
 export const Footer: React.FC = () => {
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const { theme } = useTheme();
+
   const handleScrollTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const { theme } = useTheme();
+  useEffect(() => {
+    const checkScroll = () => {
+      const isScrollable =
+        document.documentElement.scrollHeight > window.innerHeight;
+
+      setShowBackToTop(isScrollable);
+    };
+
+    checkScroll();
+    const resizeObserver = new ResizeObserver(() => {
+      checkScroll();
+    });
+
+    resizeObserver.observe(document.body);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, []);
 
   return (
     <footer className={styles.footer}>
@@ -37,20 +58,22 @@ export const Footer: React.FC = () => {
         </Link>
       </div>
 
-      <button
-        className={styles.footer__backtoTopButton}
-        onClick={handleScrollTop}
-        aria-label="Scroll back to top"
-      >
-        <span className={styles.footer__backtoTopText}>Back to top</span>
-        <div
-          className={classNames(styles.footer__backtoTopIcon, {
-            [styles['footer__backtoTopIcon--dark']]: theme === 'dark',
-          })}
+      {showBackToTop && (
+        <button
+          className={styles.footer__backtoTopButton}
+          onClick={handleScrollTop}
+          aria-label="Scroll back to top"
         >
-          <ArrowIcon direction="up" />
-        </div>
-      </button>
+          <span className={styles.footer__backtoTopText}>Back to top</span>
+          <div
+            className={classNames(styles.footer__backtoTopIcon, {
+              [styles['footer__backtoTopIcon--dark']]: theme === 'dark',
+            })}
+          >
+            <ArrowIcon direction="up" />
+          </div>
+        </button>
+      )}
     </footer>
   );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import type React from 'react';
 
 type CarouselIndicatorSvgProps = {
@@ -17,7 +18,7 @@ export const CarouselIndicatorSvg: React.FC<CarouselIndicatorSvgProps> = ({
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="{numberOfSlides * 28}"
+      width={numberOfSlides * 28}
       height="24"
       viewBox={`0 0 ${numberOfSlides * 28} 24`}
       fill="none"
