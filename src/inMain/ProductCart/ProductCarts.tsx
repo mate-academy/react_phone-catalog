@@ -20,29 +20,22 @@ export const ProductCarts: React.FC<Props> = ({
   ram,
 }) => {
   return (
-    <div className={styles.container}>
-      <article>
-        <h2 className={styles.productTitle}>
-          <NavLink to={`/product/${id}`}>
-            <img
-              className={styles.cardPhoto}
-              src="/img/imac.jpeg"
-              alt={title}
-            />
-          </NavLink>
-        </h2>
-        <div className={styles.cardPrice}>${price}</div>
+    <article>
+      <h2 className={styles.productTitle}>
+        <NavLink to={`/product/${id}`}>
+          <img className={styles.cardPhoto} src="/img" alt={title} />
+        </NavLink>
+      </h2>
+      <span className={styles.cardPrice}>${price}</span>
 
-        <div className={styles.cardScreen}>{screen}</div>
-        <div className={styles.cardCapacity}>{capacity}</div>
-        <div className={styles.cardRAM}>{ram}</div>
-        <div className={styles.actions}>
-          <button className={styles.cardAddTo} data-qa="card-hover">
-            Add to cart
-          </button>
-          <FavoritesIcon count={0} />
-        </div>
-      </article>
-    </div>
+      <span className={styles.cardScreen}>{screen}</span>
+      <span className={styles.cardCapacity}>{capacity}</span>
+      <span className={styles.cardRAM}>{ram}</span>
+      <span className={styles.actions}></span>
+      <button className={styles.cardToAdd} data-qa="card-hover">
+        Add to cart
+      </button>
+      <FavoritesIcon count={0} />
+    </article>
   );
 };

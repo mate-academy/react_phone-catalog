@@ -2,6 +2,17 @@
 
 .main {
   margin: 0 auto;
+
+   }
+
+.mainWellcome {
+  padding: 56px 32px;
+
+    @include on-tablet {
+      padding: 32px 24px;
+    }
+  
+    @include on-phone {
+      padding: 24px 16px;
 }
-
-
+}

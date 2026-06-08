@@ -11,6 +11,7 @@
 
   .container {
     width: 100%;
+    box-sizing: border-box;
     // top: 0;
     align-items: center;
     display: flex;
@@ -115,6 +116,8 @@
 
 
 .burgerMenuMaxWidth {
+  height: 56px;
+  box-sizing: border-box;
   display: none;
 
   @include on-tablet {
@@ -122,6 +125,7 @@
     }
 
          @include on-phone {
+          height: 100%;
            display: flex;
             align-items: center;
             border-left: 1px solid #E2E6E9;

@@ -23,14 +23,20 @@
 
 
 html,
-body {
-  height: 100%;
+body,
+h1,
+p,
+h2,
+span,
+button {
+  // height: 100%;
   margin: 0;
   font-family: Mont;
+  padding: 0;
 }
 
-// #root {
-//   min-height: 100vh;
-//   display: flex;
-//   flex-direction: column;
-// }
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

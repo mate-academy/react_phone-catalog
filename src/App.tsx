@@ -1,9 +1,7 @@
 import './App.module.scss';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
-import { ProductCarts } from './inMain/ProductCart/ProductCarts';
 import { Outlet } from 'react-router-dom';
-import { BannerSlider } from './inMain/BannerSlider';
 import { MenuProvider } from './context/MenuContext';
 
 export const App: React.FC = () => {
@@ -11,20 +9,7 @@ export const App: React.FC = () => {
     <MenuProvider>
       <div data-cy="app">
         <Header />
-        <div className="section">
-          <div className="container">
-            <Outlet />
-          </div>
-        </div>
-        <BannerSlider />
-        <ProductCarts
-          id={'id'}
-          title={'title'}
-          price={0}
-          screen={'screen'}
-          capacity={'capacity'}
-          ram={'ram'}
-        />
+        <Outlet />
         <Footer />
       </div>
     </MenuProvider>

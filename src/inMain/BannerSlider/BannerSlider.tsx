@@ -1,10 +1,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import styles from './BannerSlider.module.scss';
-
 import 'swiper/css';
 import 'swiper/css/pagination';
-
 export const BannerSlider = () => {
   const images = [
     '/img/banner-phones.png',
@@ -14,38 +12,41 @@ export const BannerSlider = () => {
 
   return (
     <div className={styles.container}>
-      <button className={styles.sliderButton} id="#main-prev-button">
-        {'<'}
+      <button className={styles.sliderButton} id="main-prev-button">
+        <img src="/img/left.svg" alt="left" className={styles.leftButton} />
       </button>
+      <div className={styles.mainSwiper}>
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={8}
+          slidesPerView={1}
+          pagination={{
+            clickable: true,
+            el: '#main-slider-pagination',
+          }}
+          autoplay={{ delay: 5000 }}
+          loop={false}
+          className={styles.swiperBlock}
+          navigation={{
+            prevEl: '#main-prev-button',
+            nextEl: '#main-next-button',
+          }}
+        >
+          {images.map(img => (
+            <SwiperSlide key={img}>
+              <img alt="banner" src={img} className={styles.bannerImage} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
 
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={8}
-        slidesPerView={1}
-        pagination={{
-          clickable: true,
-          el: '#main-slider-pagination',
-        }}
-        autoplay={{ delay: 5000 }}
-        loop={true}
-        className={styles.mainSwiper}
-        navigation={{
-          prevEl: '#main-prev-button',
-          nextEl: '#main-next-button',
-        }}
-      >
-        <SwiperSlide>
-          <div className={styles.sliderButtonDas}>
-            {images.map(img => (
-              <img alt={img} src={img} key={img} />
-            ))}
-          </div>
-        </SwiperSlide>
-      </Swiper>
-      <button className={styles.sliderButton} id="#main-next-button">
-        {'>'}
+      <button className={styles.sliderButton} id="main-next-button">
+        <img src="/img/right.svg" alt="right" className={styles.rightButton} />
       </button>
-      <div id="#main-slider-pagination" className={styles.mainPagination}></div>
+      <span
+        id="main-slider-pagination"
+        className={styles.mainPagination}
+      ></span>
     </div>
   );
 };

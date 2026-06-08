@@ -1,4 +1,4 @@
-import { PropsPhone } from '../types/Products';
+import { PropsPhone } from '../types/Alltypes';
 import { getData } from './httpClient';
 
 export function getPhones(phoneId: string) {

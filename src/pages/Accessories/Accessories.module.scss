@@ -1,13 +1,16 @@
 @import '../../mixin.scss';
-.home{
+
+.home {
   text-decoration: none;
 }
+
 .homeButton {
   border: none;
   background: white;
   display: flex;
 
 }
+
 .homeButton {
   margin: 24px 32px 40px;
   font-weight: 600;
@@ -16,15 +19,16 @@
   // font-size: 12px;
   align-items: center;
   gap: 8px;
+
   @include on-phone {
     margin: 24px 16px;
   }
 
 }
 
-.homeImg{
-width: 16px;
-height: 16px;
+.homeImg {
+  width: 16px;
+  height: 16px;
 }
 
 .homePhones {
@@ -33,6 +37,6 @@ height: 16px;
 
 .homeGo,
 .homeGoTo {
-color: #89939A;
+  color: #89939A;
 
 }

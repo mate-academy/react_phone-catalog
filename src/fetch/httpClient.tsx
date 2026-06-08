@@ -1,14 +1,8 @@
-const BASE_URL = 'http://localhost:5173/api';
-
-// const urls = [
-//   BASE_URL + '/api/phones.json',
-//   BASE_URL + '/api/tablets.json',
-//   BASE_URL + '/api/accessories.json',
-// ];
+// const BASE_URL = 'http://localhost:5173/api';
 
 export async function getData<T>(url: string): Promise<T> {
   try {
-    const res = await fetch(BASE_URL + url);
+    const res = await fetch(url);
 
     if (!res.ok) {
       throw new Error('Failed to load products');
