@@ -33,11 +33,13 @@ const CartCheckoutBox = () => {
       {isModalOpen && (
         <CustomModal
           onClose={handleClose}
-          onCheckout={() => {
+          onSubmit={() => {
             dispatch(clearCart());
             handleClose();
             toast.success('Cart cleared successfully!');
           }}
+          modalTitle="Checkout"
+          submitText="Checkout"
           modalBody={
             <p>
               Checkout is not implemented yet. Do you want to clear the Cart?

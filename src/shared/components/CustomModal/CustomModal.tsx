@@ -4,20 +4,24 @@ import { Button } from '@/shared/ui/button/Button';
 
 type CustomModalProps = {
   onClose?: () => void;
-  onCheckout?: () => void;
+  onSubmit?: () => void;
   modalBody?: React.ReactNode;
+  submitText?: string;
+  modalTitle?: string;
 };
 
 export const CustomModal: React.FC<CustomModalProps> = ({
   onClose,
-  onCheckout,
+  onSubmit,
   modalBody,
+  submitText,
+  modalTitle,
 }) => {
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.customModal} onClick={e => e.stopPropagation()}>
         <div className={styles.customModal__header}>
-          <h2 className={styles.customModal__title}>Checkout</h2>
+          <h2 className={styles.customModal__title}>{modalTitle}</h2>
           <button
             className={styles.customModal__closeButton}
             onClick={onClose}
@@ -28,7 +32,7 @@ export const CustomModal: React.FC<CustomModalProps> = ({
         </div>
         <div className={styles.customModal__content}>
           {modalBody}
-          <Button onClick={onCheckout}>Checkout</Button>
+          {submitText && <Button onClick={onSubmit}>{submitText}</Button>}
         </div>
       </div>
     </div>
