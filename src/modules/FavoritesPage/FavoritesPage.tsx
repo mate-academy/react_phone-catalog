@@ -30,11 +30,23 @@ export const FavoritesPage = () => {
           <Loader />
         </div>
       ) : (
-        <Catalog
-          title="Favorites"
-          products={favorites}
-          renderItem={product => <PhoneCard product={product} />}
-        />
+        <>
+          {favoritesIds.length > 0 ? (
+            <Catalog
+              title="Favorites"
+              products={favorites}
+              renderItem={product => <PhoneCard product={product} />}
+            />
+          ) : (
+            <div className={styles.heartContainer}>
+              <img
+                className={styles.brokenHeart}
+                src="/icons/broken-heart.png"
+                alt="broken-heart"
+              />
+            </div>
+          )}
+        </>
       )}
     </>
   );

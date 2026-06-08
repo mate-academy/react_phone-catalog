@@ -1,0 +1,94 @@
+@use '@styles/variables/variables.scss' as vars;
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 16px;
+  border: 1px solid vars.$elements-color;
+
+  @media screen and (min-width: vars.$tablet-width) {
+    display: grid;
+    grid-template-columns: 16px 80px minmax(130px, 300px) 100px 80px;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+
+  @media screen and (min-width: vars.$tablet-width) {
+    display: contents;
+  }
+}
+
+.imgContainer {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cardClose {
+  display: block;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: vars.$primary-color;
+  word-break: break-word;
+}
+
+.cardBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  @media screen and (min-width: vars.$tablet-width) {
+    display: contents;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  @media screen and (min-width: vars.$tablet-width) {
+    justify-self: center;
+  }
+}
+
+.btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid vars.$icons-color;
+  background-color: vars.$white-color;
+  cursor: pointer;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 00;
+  color: vars.$primary-color;
+
+  @media screen and (min-width: vars.$tablet-width) {
+    justify-self: end;
+  }
+}

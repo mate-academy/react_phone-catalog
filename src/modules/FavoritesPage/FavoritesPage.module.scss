@@ -1,1 +1,11 @@
-// not empty
+.loaderContainer, .heartContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.brokenHeart {
+  width: 100px;
+  height: 100px;
+}

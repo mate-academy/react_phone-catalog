@@ -1,21 +1,33 @@
-import React, { useContext, useState, createContext } from 'react';
-import { Product } from '../types/Product';
+import React, { useContext, useState, createContext, useEffect } from 'react';
 
 type ContextType = {
   favoritesIds: number[];
   setFavoritesIds: React.Dispatch<React.SetStateAction<number[]>>;
   cartIds: number[];
   setCartIds: React.Dispatch<React.SetStateAction<number[]>>;
-  newPhonesModels: Product[];
-  setNewPhoneModels: React.Dispatch<React.SetStateAction<Product[]>>;
 };
 
 const AppContext = createContext<ContextType | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
-  const [favoritesIds, setFavoritesIds] = useState<number[]>([]);
-  const [cartIds, setCartIds] = useState<number[]>([]);
-  const [newPhonesModels, setNewPhoneModels] = useState<Product[]>([]);
+  const [favoritesIds, setFavoritesIds] = useState<number[]>(() => {
+    const saved = localStorage.getItem('favoritesIds');
+
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [cartIds, setCartIds] = useState<number[]>(() => {
+    const saved = localStorage.getItem('cartIds');
+
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('cartIds', JSON.stringify(cartIds));
+  }, [cartIds]);
+
+  useEffect(() => {
+    localStorage.setItem('favoritesIds', JSON.stringify(favoritesIds));
+  }, [favoritesIds]);
 
   return (
     <AppContext.Provider
@@ -24,8 +36,6 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
         setFavoritesIds,
         cartIds,
         setCartIds,
-        newPhonesModels,
-        setNewPhoneModels,
       }}
     >
       {children}
