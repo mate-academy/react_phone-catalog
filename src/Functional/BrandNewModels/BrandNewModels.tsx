@@ -10,6 +10,7 @@ import { ProductCarts } from '../ProductCart/ProductCarts';
 export const BrandNewModels: React.FC = () => {
   const [products, setProducts] = useState<Products[]>([]);
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     getData<Products[]>('./api/products.json').then(data => {
       setProducts(data);
@@ -23,14 +24,14 @@ export const BrandNewModels: React.FC = () => {
       <div className={styles.newModels}>
         <h2>Brand new models</h2>
         <div className={styles.buttonsGroup}>
-          <button className={styles.buttonNewModels} id="main-prev-button">
+          <button className={styles.buttonNewModels} id="brand-prev-button">
             <img
               src="/img/left.svg"
               alt="left"
               className={styles.newModelsGroup}
             />
           </button>
-          <button className={styles.buttonNewModels} id="main-next-button">
+          <button className={styles.buttonNewModels} id="brand-next-button">
             <img
               src="/img/right.svg"
               alt="right"
@@ -51,22 +52,16 @@ export const BrandNewModels: React.FC = () => {
           loop={false}
           className={styles.swiperNewBlock}
           navigation={{
-            prevEl: '#main-prev-button',
-            nextEl: '#main-next-button',
+            prevEl: '#brand-prev-button',
+            nextEl: '#brand-next-button',
           }}
         >
-          {newProducts.map(product => (
-            <SwiperSlide key={product.id}>
-              <ProductCarts
-                id={product.id}
-                title={product.title}
-                price={product.price}
-                screen={product.screen}
-                capacity={product.capacity}
-                ram={product.ram}
-              />
-            </SwiperSlide>
-          ))}
+          {newProducts.length > 0 &&
+            newProducts.map(product => (
+              <SwiperSlide key={product.id}>
+                <ProductCarts product={product} />
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </div>

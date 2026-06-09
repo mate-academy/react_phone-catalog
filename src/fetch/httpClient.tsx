@@ -1,5 +1,3 @@
-// const BASE_URL = 'http://localhost:5173/api';
-
 export async function getData<T>(url: string): Promise<T> {
   try {
     const res = await fetch(url);

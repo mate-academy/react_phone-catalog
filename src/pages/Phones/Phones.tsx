@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { ProductCarts } from '../../inMain/ProductCart/ProductCarts';
+import { ProductCarts } from '../../Functional/ProductCart/ProductCarts';
 import { FullProducts } from '../../types/Alltypes';
 import { getData } from '../../fetch/httpClient';
 import styles from './Phones.module.scss';

@@ -1,7 +1,7 @@
 import styles from './Main.module.scss';
-import { BannerSlider } from '../../inMain/BannerSlider/BannerSlider';
+import { BannerSlider } from '../../Functional/BannerSlider/BannerSlider';
 // eslint-disable-next-line max-len
-import { BrandNewModels } from '../../inMain/BrandNewModels/BrandNewModels';
+import { BrandNewModels } from '../../Functional/BrandNewModels';
 
 export const Main: React.FC = () => {
   return (

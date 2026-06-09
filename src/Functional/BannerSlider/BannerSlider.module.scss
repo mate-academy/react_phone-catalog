@@ -16,8 +16,8 @@
 
 .leftButton,
 .rightButton {
-height: 16px;
-width: 16px;
+  height: 16px;
+  width: 16px;
 }
 
 .mainSwiper {
@@ -29,26 +29,27 @@ width: 16px;
   box-sizing: border-box;
   // max-width: 1040;
   // transition: opacity 0.5s ease;
-   object-position: center -100px;
-    border-radius: 12px;
-    padding: 0 48px;
-      overflow: hidden;
-      @include on-tablet {
-          height: 221px;
-          padding: 0;
-        }
+  object-position: center -100px;
+  border-radius: 12px;
+  padding: 0 48px;
+  overflow: hidden;
 
-      @include on-phone{
-      height: 352px;
-      padding: 0;
-      }
-    }
+  @include on-tablet {
+    height: 221px;
+    padding: 0;
+  }
 
-    .bannerImage{
-      height: 432px;
-      width: 100%;
-      object-position: center;
-      object-fit: cover;
+  @include on-phone {
+    height: 352px;
+    padding: 0;
+  }
+}
+
+.bannerImage {
+  height: 432px;
+  width: 100%;
+  object-position: center;
+  object-fit: cover;
 }
 
 .sliderButton {
@@ -61,19 +62,23 @@ width: 16px;
   width: 32px;
   height: 400px;
   cursor: pointer;
+
   @include on-tablet {
     gap: 19px;
   }
+
   @include on-desktop {
-        gap: 16px;
+    gap: 16px;
   }
 
   @include on-phone {
     display: none;
   }
+
   &:first-of-type {
     left: 10px;
   }
+
   &:last-of-type {
     right: 10px;
   }
@@ -88,15 +93,15 @@ width: 16px;
   gap: 4px;
 
   .swiper-pagination-bullet {
-      width: 14px;
-      height: 4px;
-      border-radius: 100%;
-      background: #3B3E4A;
-      opacity: 1;
-      transition: background-color 0.3s ease;
-    }
+    width: 14px;
+    height: 4px;
+    border-radius: 100%;
+    background: #3B3E4A;
+    opacity: 1;
+    transition: background-color 0.3s ease;
+  }
 
-    .swiper-pagination-bullet-active {
-      background: #F1F2F9;
-    }
+  .swiper-pagination-bullet-active {
+    background: #F1F2F9;
+  }
 }
