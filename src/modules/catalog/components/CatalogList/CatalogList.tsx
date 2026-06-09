@@ -9,7 +9,7 @@ import { usePagination } from '../../../shared/hooks/usePagination';
 import { SortOption, useSort } from '../../hooks/useSort';
 // import { Breadcrumbs } from '../../../shared/components/Breadcrumbs';
 
-type AnyProduct = Phone | Tablet | Accessorie;
+export type AnyProduct = Phone | Tablet | Accessorie;
 
 type Props = {
   products: AnyProduct[];
@@ -37,25 +37,22 @@ export const CatalogList: React.FC<Props> = ({ products, title }) => {
   const { sort, setSort } = useSort();
   const { page, perPage, setPagination } = usePagination();
 
+  const mappedProducts = useMemo(() => products.map(mapToProduct), [products]);
+
   const sortedProducts = useMemo(() => {
-    const copy = [...products];
+    const copy = [...mappedProducts];
 
     switch (sort) {
       case 'age':
-        return copy.sort((a, b) => {
-          const yearA = 'year' in a ? a.year : 0;
-          const yearB = 'year' in b ? b.year : 0;
-
-          return yearB - yearA;
-        });
+        return copy.sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
       case 'title':
         return copy.sort((a, b) => a.name.localeCompare(b.name));
       case 'price':
-        return copy.sort((a, b) => a.priceDiscount - b.priceDiscount);
+        return copy.sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
       default:
         return copy;
     }
-  }, [products, sort]);
+  }, [mappedProducts, sort]);
 
   const totalPages = useMemo(() => {
     if (perPage === 'all' || perPage === 0) {
@@ -159,18 +156,27 @@ export const CatalogList: React.FC<Props> = ({ products, title }) => {
       </div>
 
       <div className={styles.listWindow}>
-        <section className={styles.productList}>
-          {visibleProducts.map(product => {
-            return (
+        {visibleProducts.length === 0 ? (
+          <div className={styles.emptyState}>
+            <h2 className={styles.emptyStateTitle}>
+              There are no {title.toLowerCase()} yet
+            </h2>
+            <p className={styles.emptyStateSub}>
+              Please check back later or try changing your filters.
+            </p>
+          </div>
+        ) : (
+          <section className={styles.productList}>
+            {visibleProducts.map(product => (
               <div key={product.id} className={styles.cardWrapper} data-card>
-                <ProductCard product={mapToProduct(product)} />
+                <ProductCard product={product} />
               </div>
-            );
-          })}
-        </section>
+            ))}
+          </section>
+        )}
       </div>
 
-      {perPage !== 'all' && totalPages > 1 && (
+      {currentProductsQuantity > 0 && perPage !== 'all' && totalPages > 1 && (
         <div className={styles.pagination}>
           <button
             className={styles.paginationButtonArrow}

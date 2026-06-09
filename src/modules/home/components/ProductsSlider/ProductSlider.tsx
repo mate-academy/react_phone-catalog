@@ -6,9 +6,10 @@ import { useSlider } from '../../../shared/hooks/useSlider';
 
 type Props = {
   products: Product[];
+  title: string;
 };
 
-export const ProductSlider: React.FC<Props> = ({ products }) => {
+export const ProductSlider: React.FC<Props> = ({ products, title }) => {
   const {
     currentSlide,
     sliderRef,
@@ -30,7 +31,7 @@ export const ProductSlider: React.FC<Props> = ({ products }) => {
   return (
     <div className={styles.sliderWrapper}>
       <div className={styles.topBar}>
-        <h2 className={styles.title}>Hot prices</h2>
+        <h2 className={styles.title}>{title}</h2>
 
         <div className={styles.arrows}>
           <button

@@ -14,40 +14,57 @@ import { Phone } from '../../types/phone';
 import { Tablet } from '../../types/tablet';
 import { Accessorie } from '../../types/accessorie';
 import { ProductSlider } from './components/ProductsSlider';
+import { Loader } from '../shared/components/UI/Loader';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [phones, setPhones] = useState<Phone[]>([]);
   const [tablets, setTablets] = useState<Tablet[]>([]);
   const [accessories, setAccessories] = useState<Accessorie[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getProducts()
-      .then(data => setProducts(data))
-      .catch(() => {});
-    getPhones()
-      .then(data => setPhones(data))
-      .catch(() => {});
-    getTablets()
-      .then(data => setTablets(data))
-      .catch(() => {});
-    getAccessories()
-      .then(data => setAccessories(data))
-      .catch(() => {});
+    setLoading(true);
+
+    Promise.all([getProducts(), getPhones(), getTablets(), getAccessories()])
+      .then(([productsData, phonesData, tabletsData, accessoriesData]) => {
+        setProducts(productsData);
+        setPhones(phonesData);
+        setTablets(tabletsData);
+        setAccessories(accessoriesData);
+      })
+      .catch(error => {
+        throw new Error(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
+
+  if (loading) {
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div className={styles.homePage}>
       <div className={styles.container}>
         <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
+
         <PicturesSlider />
+
         <ProductList products={products} />
+
         <ShopByCategory
           phones={phones}
           tablets={tablets}
           accessories={accessories}
         />
-        <ProductSlider products={products} />
+
+        <ProductSlider products={products} title="Hot prices" />
       </div>
     </div>
   );

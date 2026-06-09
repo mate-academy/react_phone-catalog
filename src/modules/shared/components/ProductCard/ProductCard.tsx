@@ -1,8 +1,9 @@
 import React from 'react';
-import { useCart } from '../../../../cart-context/CartContext';
 import { useFavorite } from '../../../../favorites-context/FavoritesContext';
 import { Product } from '../../../../types/product';
 import styles from './ProductCard.module.scss';
+import { Link } from 'react-router-dom';
+import { useCart } from '../../../../cart-context/CartContext';
 
 type Props = {
   product: Product;
@@ -14,7 +15,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   const handleCartClick = () => {
     if (isInCart) {
-      removeFromCart(product.id);
+      removeFromCart(String(product.id));
     } else {
       addToCart(product);
     }
@@ -25,17 +26,21 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   const handleFavoriteClick = () => {
     if (isInFavorite) {
-      removeFromFavorite(product.id);
+      removeFromFavorite(String(product.id));
     } else {
       addToFavorite(product);
     }
   };
 
+  if (!product) {
+    return null;
+  }
+
   return (
     <article className={styles.card}>
-      <a href={`/product/${product.id}`}>
+      <Link to={`/product/${product.id}`}>
         <img src={product.image} alt={product.name} className={styles.img} />
-      </a>
+      </Link>
       <p className={styles.title}>{product.name}</p>
 
       <div className={styles.priceContainer}>
@@ -73,6 +78,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </button>
         <div>
           <button
+            type="button"
             className={styles.iconLink}
             aria-label="Toggle favorites"
             onClick={handleFavoriteClick}
