@@ -2,7 +2,6 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 import { Products } from '../types/Alltypes';
 
 type CartItem = {
-  id: string;
   quantity: number;
   product: Products;
 };
@@ -41,17 +40,16 @@ export const CartProvader: React.FC<{ children: React.ReactNode }> = ({
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 
-  const addToCart = (item: CartItem) => {
+  const addToCart = (item: Products) => {
     // dodae tovar //
     setCart(prevCart => {
       const existingItem = prevCart.find(
-        cartItem =>
-          cartItem.id === item.id && cartItem.product === item.product,
+        cartItem => cartItem.product === item.product,
       );
 
       if (existingItem) {
         return prevCart.map(cartItem =>
-          cartItem.id === item.id && cartItem.product === item.product
+          cartItem.product === item.product
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem,
         );
@@ -66,25 +64,25 @@ export const CartProvader: React.FC<{ children: React.ReactNode }> = ({
     setCart(prevCart => prevCart.filter(item => item.id !== id));
   };
 
-  // const updateQuantity = (id: string, quantity: number) => {
-  //   if (quantity <= 0) {
-  //     removeFromCart(id);
+  const updateQuantity = (_product: Products, quantity: number) => {
+    if (quantity <= 0) {
+      removeFromCart(id);
 
-  //     return;
-  //   }
+      return;
+    }
 
-  //   setCart(prevCart =>
-  //     prevCart.map(item => (item.id === id ? { ...item, quantity } : item)),
-  //   );
-  // };
+    setCart(prevCart =>
+      prevCart.map(item => (item.id === id ? { ...item, quantity } : item)),
+    );
+  };
 
-  // const toggleFavorite = (id: string) => {
-  //   setFavorites(prevFavorites =>
-  //     prevFavorites.includes(id)
-  //       ? prevFavorites.filter(favId => favId !== id)
-  //       : [...prevFavorites, id],
-  //   );
-  // };
+  const toggleFavorite = (id: string) => {
+    setFavorites(prevFavorites =>
+      prevFavorites.includes(id)
+        ? prevFavorites.filter(favId => favId !== id)
+        : [...prevFavorites, id],
+    );
+  };
 
   const clearCart = () => {
     setCart([]);
