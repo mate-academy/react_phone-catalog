@@ -45,6 +45,7 @@ export const CartPage = () => {
               key={`${item.id}-${item.color}-${item.capacity}`}
               className="cart__item"
             >
+              {/* Desktop: крестик */}
               <button
                 className="cart__item-close"
                 onClick={() => removeFromCart(item.id)}
@@ -54,29 +55,66 @@ export const CartPage = () => {
                   alt="close"
                 />
               </button>
+
+              {/* Desktop: фото */}
               <img
                 src={item.image}
                 alt={item.name}
-                className="cart__item-image"
+                className="cart__item-image cart__item-image--desktop"
               />
-              <p className="cart__item-name">{item.name}</p>
-              <div className="cart__item-quantity">
+
+              {/* Mobile: первая строка — крестик + фото + название */}
+              <div className="cart__item-first-row">
                 <button
-                  className="cart__item-qty-btn"
-                  onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                  disabled={item.quantity === 1}
+                  className="cart__item-close--mobile"
+                  onClick={() => removeFromCart(item.id)}
                 >
-                  -
+                  <img
+                    src={`${getBaseUrl()}icons/close.svg`}
+                    alt="close"
+                  />
                 </button>
-                <span className="cart__item-qty-value">{item.quantity}</span>
-                <button
-                  className="cart__item-qty-btn"
-                  onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                >
-                  +
-                </button>
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="cart__item-image"
+                />
+                <p className="cart__item-name">{item.name}</p>
               </div>
-              <p className="cart__item-price">${item.price * item.quantity}</p>
+
+              {/* Desktop: название */}
+              <p className="cart__item-name cart__item-name--desktop">
+                {item.name}
+              </p>
+
+              <div className="cart__item-controls">
+                <div className="cart__item-quantity">
+                  <button
+                    className="cart__item-qty-btn"
+                    onClick={() =>
+                      updateQuantity(item.id, item.quantity - 1)
+                    }
+                    disabled={item.quantity === 1}
+                  >
+                    -
+                  </button>
+                  <span className="cart__item-qty-value">
+                    {item.quantity}
+                  </span>
+                  <button
+                    className="cart__item-qty-btn"
+                    onClick={() =>
+                      updateQuantity(item.id, item.quantity + 1)
+                    }
+                  >
+                    +
+                  </button>
+                </div>
+
+                <p className="cart__item-price">
+                  ${item.price * item.quantity}
+                </p>
+              </div>
             </div>
           ))}
         </div>
