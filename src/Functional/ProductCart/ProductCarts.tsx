@@ -4,8 +4,8 @@ import { FavoritesIcon } from '../../utils/icons';
 import { Products } from '../../types/Alltypes';
 import React from 'react';
 
-import { useCart } from '../../context/CartContext';
-import { useFavorites } from '../../context/FavoritesContext';
+// import { useCart } from '../../context/CartContext';
+// import { useFavorites } from '../../context/FavoritesContext';
 
 type Props = {
   product: Products;

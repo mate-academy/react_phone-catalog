@@ -10,15 +10,16 @@ type CartContextType = {
   cart: CartItem[];
   favorites: string[];
   addToCart: (product: Products) => void;
-  removeFromCart: (id: string) => void;
-  updateQuantity: (id: string, quantity: number) => void;
+  removeFromCart: (product: Products) => void;
+  updateQuantity: (product: Products, quantity: number) => void;
+  toggleFavorite: (id: string) => void;
   clearCart: () => void;
   totalQuantity: number;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-export const CartProvader: React.FC<{ children: React.ReactNode }> = ({
+export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [cart, setCart] = useState<CartItem[]>(() => {
@@ -44,35 +45,41 @@ export const CartProvader: React.FC<{ children: React.ReactNode }> = ({
     // dodae tovar //
     setCart(prevCart => {
       const existingItem = prevCart.find(
-        cartItem => cartItem.product === item.product,
+        cartItem => String(cartItem.product.id) === String(item.id),
       );
 
       if (existingItem) {
         return prevCart.map(cartItem =>
-          cartItem.product === item.product
+          cartItem.product.id === item.id
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem,
         );
       }
 
-      return [...prevCart, { ...item, quantity: 1 }];
+      return [...prevCart, { id: item, quantity: 1, product: item }];
     });
   };
 
-  const removeFromCart = (id: string) => {
+  const removeFromCart = (product: Products) => {
     //vidalye tovar //
-    setCart(prevCart => prevCart.filter(item => item.id !== id));
+    setCart(prevCart =>
+      prevCart.filter(item => item.product.id !== product.id),
+    );
   };
 
-  const updateQuantity = (_product: Products, quantity: number) => {
+  const updateQuantity = (product: Products, quantity: number) => {
+    const productId = product.id;
+
     if (quantity <= 0) {
-      removeFromCart(id);
+      removeFromCart(product);
 
       return;
     }
 
     setCart(prevCart =>
-      prevCart.map(item => (item.id === id ? { ...item, quantity } : item)),
+      prevCart.map(item =>
+        item.product.id === productId ? { ...item, quantity } : item,
+      ),
     );
   };
 
@@ -88,6 +95,8 @@ export const CartProvader: React.FC<{ children: React.ReactNode }> = ({
     setCart([]);
   };
 
+  const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <CartContext.Provider
       value={{
@@ -97,6 +106,7 @@ export const CartProvader: React.FC<{ children: React.ReactNode }> = ({
         removeFromCart,
         updateQuantity,
         toggleFavorite,
+        totalQuantity,
         clearCart,
       }}
     >

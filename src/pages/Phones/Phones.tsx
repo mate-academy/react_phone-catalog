@@ -28,6 +28,7 @@ export const Phones: React.FC = () => {
         <button className={styles.homeButton}>
           <img src="/img/home.svg" alt="home" className={styles.homeImg} />
           <span className={styles.homeGo}>{'>'}</span>
+
           <span className={styles.homeGoTo}>Phones</span>
         </button>
       </Link>

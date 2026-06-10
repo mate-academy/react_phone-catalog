@@ -6,15 +6,19 @@ import styles from './BrandNewModels.module.scss';
 import React, { useState, useEffect } from 'react';
 import { getData } from '../../fetch/httpClient';
 import { ProductCarts } from '../ProductCart/ProductCarts';
+import { useCart } from '../../context/CartContext';
 
 export const BrandNewModels: React.FC = () => {
   const [products, setProducts] = useState<Products[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const { cart, totalQuantity, totalPrice } = useCart();
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    getData<Products[]>('./api/products.json').then(data => {
-      setProducts(data);
-    });
+    getData<Products[]>('./api/products.json')
+      .then(data => setProducts(data))
+      .catch(() => setError('Something went wrong'))
+      .finally(() => setLoading(false));
   }, []);
 
   const newProducts = [...products].sort((a, b) => b.year - a.year);

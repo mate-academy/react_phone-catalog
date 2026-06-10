@@ -11,38 +11,45 @@ export const BannerSlider = () => {
   ];
 
   return (
-    <div className={styles.container}>
-      <button className={styles.sliderButton} id="main-prev-button">
-        <img src="/img/left.svg" alt="left" className={styles.leftButton} />
-      </button>
-      <div className={styles.mainSwiper}>
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={8}
-          slidesPerView={1}
-          pagination={{
-            clickable: true,
-            el: '#main-slider-pagination',
-          }}
-          autoplay={{ delay: 5000 }}
-          loop={false}
-          className={styles.swiperBlock}
-          navigation={{
-            prevEl: '#main-prev-button',
-            nextEl: '#main-next-button',
-          }}
-        >
-          {images.map(img => (
-            <SwiperSlide key={img}>
-              <img alt="banner" src={img} className={styles.bannerImage} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+    <div>
+      <div className={styles.container}>
+        <button className={styles.sliderButton} id="main-prev-button">
+          <img src="/img/left.svg" alt="left" className={styles.leftButton} />
+        </button>
+        <div className={styles.mainSwiper}>
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={8}
+            slidesPerView={1}
+            pagination={{
+              clickable: true,
+              el: '#main-slider-pagination',
+            }}
+            autoplay={{ delay: 5000 }}
+            loop={false}
+            className={styles.swiperBlock}
+            navigation={{
+              prevEl: '#main-prev-button',
+              nextEl: '#main-next-button',
+            }}
+          >
+            {images.map(img => (
+              <SwiperSlide key={img}>
+                <img alt="banner" src={img} className={styles.bannerImage} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        <button className={styles.sliderButton} id="main-next-button">
+          <img
+            src="/img/right.svg"
+            alt="right"
+            className={styles.rightButton}
+          />
+        </button>
       </div>
 
-      <button className={styles.sliderButton} id="main-next-button">
-        <img src="/img/right.svg" alt="right" className={styles.rightButton} />
-      </button>
       <span
         id="main-slider-pagination"
         className={styles.mainPagination}
