@@ -1,0 +1,84 @@
+.loading {
+    font-family: Mont, sans-serif;
+    color: #F1F2F9;
+    padding: 40px 16px;
+    text-align: center;
+}
+
+.errorMessage {
+    font-family: Mont, sans-serif;
+    color: #eb5757;
+    font-size: 18px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.favoritesPage {
+    display: flex;
+    flex-direction: column;
+    max-width: 288px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0 16px 40px;
+    padding-top: 40px;
+
+    @media (min-width: 640px) {
+      max-width: 600px;
+    }
+
+    @media (min-width: 1200px) {
+      max-width: 1136px;
+    }
+
+
+    &Title {
+        font-family: Mont, sans-serif;
+        font-weight: 800;
+        font-size: 32px;
+        line-height: 56px;
+        letter-spacing: -0.01em;
+        color: #F1F2F9;
+        margin-bottom: 0;
+        margin-top: 0;
+        width: 100%;
+
+
+        @media (min-width: 640px) {
+          font-size: 48px;
+        }
+    }
+
+    &Count {
+        margin-top: 8px;
+        margin-bottom: 40px;
+        font-family: Mont, sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        color: #75767F;
+    }
+
+    &Grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 40px 16px;
+        width: 100%;
+        margin: 0 auto;
+        justify-content: center;
+
+        @media (min-width: 640px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (min-width: 1200px) {
+          grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    &Empty {
+        font-family: Mont, sans-serif;
+        font-size: 18px;
+        color: #75767f;
+        margin-top: 24px;
+    }
+}
