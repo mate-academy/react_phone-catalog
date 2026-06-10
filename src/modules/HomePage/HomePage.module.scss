@@ -57,6 +57,7 @@
 
   &SectionTitle {
     font-size: 22px;
+    // margin: 0 auto;
     font-weight: 800;
     color: #F1F2F9;
 
@@ -114,11 +115,11 @@
   }
 
   &Left {
-    background-image: url('/img/chevron-arron-left.png');
+    background-image: url('../../assets/img/chevron-arron-left.png');
   }
 
   &Right {
-    background-image: url('/img/chevron-arron-right.png');
+    background-image: url('../../assets/img/chevron-arron-right.png');
   }
 }
 

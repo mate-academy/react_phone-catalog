@@ -26,7 +26,7 @@ export const CartPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('api/products.json')
       .then(res => {
         if (!res.ok) {
           throw new Error('Failed to load products. Please try again later.');

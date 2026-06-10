@@ -5,6 +5,7 @@ import { Product } from '../../Types/Product';
 import productsData from '../../../public/api/products.json';
 import styles from './PhonesPage.module.scss';
 import { Loader } from '../../components/Loader/Loader';
+import homeIcon from '../../assets/img/Home.png';
 
 export const PhonesPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -155,7 +156,7 @@ export const PhonesPage: React.FC = () => {
           <nav className={styles.breadcrumbs} aria-label="breadcrumb">
             <Link to="/" className={styles.breadcrumbsLink}>
               <img
-                src="img/Home.png"
+                src={homeIcon}
                 alt="home"
                 className={styles.breadcrumbsHomeIcon}
               />

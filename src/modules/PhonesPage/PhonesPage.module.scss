@@ -101,7 +101,7 @@
     &Separator {
         height: 16px;
         width: 16px;
-        background-image: url('/img/vector-stroke.png');
+        background-image: url('../../assets/img/vector-stroke.png');
         background-size: 5px;
         background-repeat: no-repeat;
         background-position: center;
@@ -167,7 +167,7 @@
     &Arrow {
         width: 16px;
         height: 16px;
-        background-image: url("/img/chevron-arron-down.png");
+        background-image: url("../../assets/img/chevron-arron-down.png");
         background-size: 16px;
         background-repeat: no-repeat;
         background-position: center;
@@ -290,11 +290,11 @@
         background-size: 16px;
 
         &Left {
-            background-image: url("/img/chevron-arron-left.png");
+            background-image: url("../../assets/img/chevron-arron-left.png");
         }
 
         &Right {
-            background-image: url("/img/chevron-arron-right.png");
+            background-image: url("../../assets/img/chevron-arron-right.png");
         }
     }
 }

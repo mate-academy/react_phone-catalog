@@ -112,7 +112,7 @@
     grid-row: 1;
     width: 16px;
     height: 16px;
-    background-image: url("/img/Union.png");
+    background-image: url("../../assets/img/Union.png");
     background-color: transparent;
     background-size: 10px;
     background-repeat: no-repeat;
@@ -199,14 +199,14 @@
     transition: all 0.2s ease;
 
     &.minus {
-      background-image: url(/img/Minus.png);
+      background-image: url(../../assets/img/Minus.png);
       background-repeat: no-repeat;
       background-position: center;
       background-size: 16px;
     }
 
     &.plus {
-      background-image: url(/img/Plus.png);
+      background-image: url(../../assets/img/Plus.png);
       background-repeat: no-repeat;
       background-position: center;
       background-size: 16px;

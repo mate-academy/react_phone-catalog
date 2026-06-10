@@ -57,7 +57,7 @@ $color-border: #3b3e4a;
     &Separator {
       height: 16px;
       width: 16px;
-      background-image: url('/img/vector-stroke.png');
+      background-image: url('../img/vector-stroke.png');
       background-size: 5px;
       background-repeat: no-repeat;
       background-position: center;
@@ -88,7 +88,7 @@ $color-border: #3b3e4a;
       height: 16px;
       background-color: $color-text-secondary;
       display: inline-block;
-      mask-image: url('/img/vector-stroke.png');
+      mask-image: url('../img/vector-stroke.png');
       mask-repeat: no-repeat;
       mask-position: center;
       mask-size: 5px;
@@ -348,7 +348,7 @@ $color-border: #3b3e4a;
         height: 48px;
         background: transparent;
         border: 1px solid $color-border;
-        background-image: url('/img/favourites-logo.png');
+        background-image: url('../img/favourites-logo.png');
         background-repeat: no-repeat;
         background-position: center;
         background-size: 16px;
@@ -361,7 +361,7 @@ $color-border: #3b3e4a;
       }
 
       .favoriteBtnActive {
-        background-image: url('/img/favourites-filled.png');
+        background-image: url('../img/favourites-filled.png');
         border-color: $color-border;
       }
     }
@@ -494,7 +494,7 @@ $color-border: #3b3e4a;
           height: 10px;
           background-color: $color-white;
           display: block;
-          mask-image: url('/img/vector-stroke.png');
+          mask-image: url('../img/vector-stroke.png');
           mask-repeat: no-repeat;
           mask-position: center;
           mask-size: contain;

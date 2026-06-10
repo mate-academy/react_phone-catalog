@@ -3,6 +3,9 @@ import { NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { useFavorites } from '../../context/FavouritesContext';
 import { useCart } from '../../context/CartContext';
+import logo from '../../assets/img/nice-gadgets-logo.png';
+import favoritesIcon from '../../assets/img/favourites-logo.png';
+import shoppingBagIcon from '../../assets/img/shopping-bag.png';
 
 export const Header: React.FC = () => {
   const { favoriteIds } = useFavorites();
@@ -30,7 +33,7 @@ export const Header: React.FC = () => {
       <header className={styles.header}>
         <div className={styles.headerLeft}>
           <NavLink to="/" className={styles.headerLogo} onClick={closeMenu}>
-            <img src="/img/nice-gadgets-logo.png" alt="nice gadgets logo" />
+            <img src={logo} alt="nice gadgets logo" />
           </NavLink>
 
           <nav className={styles.nav}>
@@ -87,7 +90,7 @@ export const Header: React.FC = () => {
                 `${styles.headerActionBtn} ${isActive ? styles.active : ''}`
               }
             >
-              <img src="/img/favourites-logo.png" alt="favourites logo" />
+              <img src={favoritesIcon} alt="favourites logo" />
               {favoriteIds.length > 0 && (
                 <span className={styles.headerCount}>{favoriteIds.length}</span>
               )}
@@ -99,7 +102,7 @@ export const Header: React.FC = () => {
                 `${styles.headerActionBtn} ${isActive ? styles.active : ''}`
               }
             >
-              <img src="/img/shopping-bag.png" alt="shopping bag logo" />
+              <img src={shoppingBagIcon} alt="shopping bag logo" />
               {totalCartItems > 0 && (
                 <span className={styles.headerCount}>{totalCartItems}</span>
               )}
@@ -121,7 +124,7 @@ export const Header: React.FC = () => {
       >
         <div className={styles.asideMenu__top}>
           <NavLink to="/" className={styles.headerLogo} onClick={closeMenu}>
-            <img src="/img/nice-gadgets-logo.png" alt="nice gadgets logo" />
+            <img src={logo} alt="nice gadgets logo" />
           </NavLink>
 
           <button
@@ -191,7 +194,7 @@ export const Header: React.FC = () => {
               }
               onClick={closeMenu}
             >
-              <img src="/img/favourites-logo.png" alt="favourites logo" />
+              <img src={favoritesIcon} alt="favourites logo" />
               {favoriteIds.length > 0 && (
                 <span className={styles.asideMenu__count}>
                   {favoriteIds.length}
@@ -206,7 +209,7 @@ export const Header: React.FC = () => {
               }
               onClick={closeMenu}
             >
-              <img src="/img/shopping-bag.png" alt="shopping bag logo" />
+              <img src={shoppingBagIcon} alt="shopping bag logo" />
               {totalCartItems > 0 && (
                 <span className={styles.asideMenu__count}>
                   {totalCartItems}

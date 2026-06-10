@@ -8,6 +8,9 @@ import { Banner } from '../Banner/Banner';
 import { Product } from '../../Types/Product';
 import productsData from '../../../public/api/products.json';
 import { Loader } from '../../components/Loader/Loader';
+import categoriesPhones from '../../assets/img/category-phones.png';
+import categoriesTablets from '../../assets/img/category-tablets.png';
+import categoriesAccessories from '../../assets/img/category-accessories.png';
 
 const CARD_GAP = 16;
 
@@ -215,19 +218,19 @@ export const HomePage: React.FC = () => {
               <div className={styles.categoriesContainer}>
                 <CategoryLink
                   to="/phones"
-                  img="img/category-phones.png"
+                  img={categoriesPhones}
                   label="Mobile phones"
                   count={categoryCounts.phones}
                 />
                 <CategoryLink
                   to="/tablets"
-                  img="img/category-tablets.png"
+                  img={categoriesTablets}
                   label="Tablets"
                   count={categoryCounts.tablets}
                 />
                 <CategoryLink
                   to="/accessories"
-                  img="img/accessories.png"
+                  img={categoriesAccessories}
                   label="Accessories"
                   count={categoryCounts.accessories}
                 />
