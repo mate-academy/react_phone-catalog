@@ -1,0 +1,300 @@
+.container {
+    max-width: 288px;
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    @media (min-width: 640px) {
+      max-width: 640px;
+      padding: 0 24px;
+    }
+
+    @media (min-width: 1200px) {
+      max-width: 1136px;
+      padding-inline: 0;
+
+    }
+}
+
+.phonesPage {
+    padding-bottom: 80px;
+
+    &Title {
+        font-family: Mont, sans-serif;
+        font-size: 32px;
+        font-weight: 800;
+        line-height: 41px;
+        letter-spacing: -0.01em;
+        color: #f1f2f9;
+        margin: 0;
+    }
+
+    &Count {
+        font-family: Mont, sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        color: #75767F;
+        margin: 8px 0 32px;
+
+        @media (min-width: 640px) {
+          margin-bottom: 40px;
+        }
+    }
+
+    &Filters {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 24px;
+    }
+
+    &Grid {
+        display: grid;
+        grid-template-columns: repeat(1, 288px);
+        width: 100%;
+        margin: 0 auto;
+        justify-content: center;
+        gap: 40px 16px;
+
+        @media (min-width: 640px) {
+          grid-template-columns: repeat(2, 287px);
+        }
+
+        @media (min-width: 1200px) {
+          grid-template-columns: repeat(4, 272px);
+        }
+    }
+
+    &Empty {
+        font-family: Mont, sans-serif;
+        color: #f1f2f9;
+        font-size: 18px;
+        margin-top: 40px;
+    }
+}
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 24px 0;
+    margin-bottom: 24px;
+
+    @media (min-width: 640px) {
+      margin-bottom: 40px;
+    }
+
+    &Link {
+        display: flex;
+        align-items: center;
+        transition: opacity 0.3s;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    &HomeIcon {
+        width: 16px;
+        height: 16px;
+    }
+
+    &Separator {
+        height: 16px;
+        width: 16px;
+        background-image: url('../../assets/img/vector-stroke.png');
+        background-size: 5px;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 1;
+    }
+
+    &Current {
+        font-family: Mont, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        color: #75767F;
+        line-height: 15px;
+        text-transform: capitalize;
+    }
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+
+    &Label {
+        font-family: Mont, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 15px;
+        color: #75767f;
+    }
+}
+
+.dropdown {
+    position: relative;
+    width: 136px;
+
+    &Small {
+        width: 128px;
+    }
+
+    &Button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 136px;
+        height: 40px;
+        padding: 0 12px;
+        background-color: #323542;
+        border: none;
+        color: #f1f2f9;
+        font-family: Mont, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        cursor: pointer;
+        transition: border-color 0.3s;
+
+        &Active {
+            border-color: #f1f2f9;
+        }
+
+        &:hover {
+            border-color: #f1f2f9;
+        }
+    }
+
+    &Arrow {
+        width: 16px;
+        height: 16px;
+        background-image: url("../../assets/img/chevron-arron-down.png");
+        background-size: 16px;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: transform 0.3s;
+
+        &Up {
+            transform: rotate(180deg);
+        }
+    }
+
+    &List {
+        position: absolute;
+        top: 42px;
+        left: 0;
+        width: 100%;
+        background-color: #323542;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        z-index: 10;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    &Item {
+        padding: 10px 12px;
+        color: #75767f;
+        font-family: Mont, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+
+        &:hover {
+            background-color: #2160df;
+            color: #f1f2f9;
+        }
+    }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 40px;
+
+    &List {
+        display: flex;
+        gap: 8px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    &Item {
+        padding: 0;
+        margin: 0;
+    }
+
+    &Button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        background-color: #323542;
+        border: none;
+        color: #f1f2f9;
+        font-family: Mont, sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s, border-color 0.3s;
+
+        &:hover:not(:disabled) {
+            background-color: #4e536b;
+        }
+
+        &Active {
+            background-color: #a378ff;
+            color: #fff;
+            cursor: default;
+
+            &:hover {
+                background-color: #a378ff;
+            }
+        }
+    }
+
+    &Arrow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        background-color: #3b3e4f;
+        border: none;
+        color: #f1f2f9;
+        font-family: Mont, sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s, border-color 0.3s;
+
+        &:hover:not(:disabled) {
+            background-color: #4e536b;
+        }
+
+        &Disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+    }
+
+    &ArrowIcon {
+        width: 16px;
+        height: 16px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 16px;
+
+        &Left {
+            background-image: url("../../assets/img/chevron-arron-left.png");
+        }
+
+        &Right {
+            background-image: url("../../assets/img/chevron-arron-right.png");
+        }
+    }
+}
