@@ -9,7 +9,7 @@ export const Breadcrumbs: React.FC<Props> = ({ title, productName }) => {
   return (
     <div className={styles.breadcrumbs}>
       <Link to="/" className={styles['breadcrumbs__home-link']}>
-        <img src="/img/icons/home.png" alt="" />
+        <img src={`${import.meta.env.BASE_URL}icons/home.png`} alt="" />
       </Link>
       {title && (
         <>
