@@ -1,47 +1,389 @@
-.mainLayout {
-  display: grid;
-  grid-template-columns: 1fr 1fr; // Дві рівні колонки для десктопа
-  gap: 40px;
+.productDetails {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #0f1121;
+  color: #f1f2f9;
+}
 
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr; // На мобільних стають одна під одну
+.backButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin-top: 40px;
+  border: none;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1em;
+  cursor: pointer;
+  background-color: transparent;
+  color: #f1f2f9;
+  padding: 0;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.7;
   }
 }
 
+.back {
+  margin: 0;
+  border: none;
+  filter: brightness(0) invert(1);
+}
+
+.topBar {
+  display: flex;
+  margin: 16px 0 40px;
+}
+
+.title {
+  flex: auto;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: #f1f2f9;
+  margin: 0;
+}
+
+.productId {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1em;
+  color: #4a4d58;
+  flex: 1;
+}
+
+.mainLayout {
+  display: flex;
+  gap: 64px;
+  margin-bottom: 60px;
+  position: relative;
+}
+
 .mediaColumn {
-  display: flex; // Слайдер зліва, велике фото справа
+  display: flex;
   gap: 16px;
+}
+
+.thumbsSlider {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.selectImage {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  border: 1px solid #3b3e4a;
+  background-color: #0f1121;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: #f1f2f9;
+  }
+}
+
+.sliderImage {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+}
+
+.mainPreview {
+  width: 464px;
+  height: 464px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .configColumn {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  width: 320px;
+}
 
-  .shortSpecs {
-    // Стилі суто для маленьких характеристик під кнопкою
-    &Row {
-      display: flex;
-      justify-content: space-between;
+.colorSelector {
+  margin-bottom: 24px;
+}
+
+.colorsGrid {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #3b3e4a;
+  padding-bottom: 24px;
+}
+
+.colorWrapper {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+.colorInput {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.colorLabel {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid #3b3e4a;
+  box-shadow: 0 0 0 1px transparent;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &.isActive {
+    border-color: #0f1121;
+    box-shadow: 0 0 0 2px #f1f2f9;
+  }
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.capacity {
+  margin-bottom: 24px;
+}
+
+.capacityGrid {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #3b3e4a;
+  padding-bottom: 24px;
+}
+
+.capacityButton {
+  padding: 7px 8px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #4a4d58;
+  cursor: pointer;
+  color: #f1f2f9;
+  background-color: #0f1121;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #4a4d58;
+  }
+
+  &.isActiveButton {
+    border: none;
+    color: #0f1121;
+    background-color: #f1f2f9;
+    border-color: #f1f2f9;
+  }
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.price {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+.discount {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1em;
+  text-decoration: line-through;
+  color: #75767f;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.buyButton {
+  flex: 1;
+  height: 48px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background-color: #905bff;
+  color: #f1f2f9;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #a378ff;
+  }
+
+  &.isAdded {
+    background-color: #323542;
+
+    &:hover {
+      background-color: #eb5757;
     }
   }
 }
 
-.detailsLayout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-top: 60px;
-  gap: 60px;
+.favButton {
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #323542;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #4a4d58;
+  }
+
+  &.isFav {
+    border: 1px solid #3b3e4a;
+    background-color: #161827;
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+  }
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.specTitle {
+  color: #75767f;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1em;
+  margin: 0;
+}
+
+.description {
+  color: #f1f2f9;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1em;
+}
+
+.paraghTitle {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1em;
+  color: #75767f;
+  margin-bottom: 8px;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  gap: 64px;
+  margin-top: 80px;
+}
+
+.about {
+  flex: 1;
+}
+
+.aboutTitle {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1em;
+  margin: 32px 0 16px;
+}
+
+.aboutText {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #75767f;
+}
+
+.characteristic {
+  flex: 0.8;
 }
 
 .techSpecs {
-  // Стилі для великої таблиці внизу сторінки
-  &Table {
-    display: flex;
-    flex-direction: column;
-  }
-  &Row {
-    border-bottom: 1px solid #e2e6e9;
-    padding: 12px 0;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.techSpecRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.techSpecTitle {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #75767f;
+}
+
+.techSpecDescription {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.sectionTitle {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1.4em;
+  border-bottom: 1px solid #3b3e4a;
+  padding-bottom: 16px;
+  margin-bottom: 32px;
 }

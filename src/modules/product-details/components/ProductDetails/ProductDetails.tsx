@@ -81,13 +81,13 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
   }
 
   return (
-    <div className={styles.ProductDetails}>
+    <div className={styles.productDetails}>
       <button className={styles.backButton} onClick={() => navigate(-1)}>
-        -- Back
+        <img src="/img/icons/left.svg" alt="" className={styles.back} />
+        Back
       </button>
 
       <div className={styles.topBar}>
-        <span className={styles.productId}>{product.id}</span>
         <h2 className={styles.title}>{product.name}</h2>
       </div>
 
@@ -99,9 +99,14 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
                 <button
                   key={image + index}
                   type="button"
+                  className={styles.selectImage}
                   onClick={() => setActiveImage(image)}
                 >
-                  <img src={image} alt={`Product shot ${index + 1}`} />
+                  <img
+                    src={image}
+                    alt={`Product shot ${index + 1}`}
+                    className={styles.sliderImage}
+                  />
                 </button>
               ))
             ) : (
@@ -110,13 +115,18 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
           </div>
 
           <div className={styles.mainPreview}>
-            <img src={activeImage || product.images?.[0]} alt={product.name} />
+            <img
+              className={styles.mainImage}
+              src={activeImage || product.images?.[0]}
+              alt={product.name}
+            />
           </div>
         </div>
 
         <div className={styles.configColumn}>
           <div className={styles.colorSelector}>
-            <p className={styles.sectionLabel}>Available colors</p>
+            <p className={styles.paraghTitle}>Available colors</p>
+
             <div className={styles.colorsGrid}>
               {colorsList.map((color, index) => {
                 const colorInputId = `${product.id}-color-${index}`;
@@ -146,140 +156,154 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
               })}
             </div>
           </div>
-        </div>
 
-        <div className={styles.capacity}>
-          <p>Select capacity</p>
+          <div className={styles.capacity}>
+            <p className={styles.paraghTitle}>Select capacity</p>
 
-          <div className={styles.capacityGrid}>
-            {capacityList.map(capacity => {
-              const isSelected = activeCapacity === capacity;
+            <div className={styles.capacityGrid}>
+              {capacityList.map(capacity => {
+                const isSelected = activeCapacity === capacity;
 
-              return (
-                <button
-                  key={capacity}
-                  type="button"
-                  className={`${styles.capacityButton} ${isSelected ? styles.isActiveButton : ''}`}
-                  onClick={() => setActiveCapacity(capacity)}
-                >
-                  {capacity}
-                </button>
-              );
-            })}
+                return (
+                  <button
+                    key={capacity}
+                    type="button"
+                    className={`${styles.capacityButton} ${isSelected ? styles.isActiveButton : ''}`}
+                    onClick={() => setActiveCapacity(capacity)}
+                  >
+                    {capacity}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className={styles.addToChart}>
+            <div className={styles.priceContainer}>
+              <span className={styles.price}>
+                ${product.priceDiscount || product.priceRegular}
+              </span>
+
+              {product.priceDiscount !== product.priceRegular ? (
+                <span className={styles.discount}>${product.priceRegular}</span>
+              ) : null}
+            </div>
+
+            <div className={`${styles.actions}`}>
+              <button
+                type="button"
+                onClick={handleCartClick}
+                className={`${styles.buyButton} ${isInCart ? styles.isAdded : ''}`}
+              >
+                {isInCart ? 'Added' : 'Add to cart'}
+              </button>
+              <button
+                type="button"
+                className={`${styles.favButton} ${isInFavorite ? styles.isFav : ''}`}
+                aria-label="Toggle favorites"
+                onClick={handleFavoriteClick}
+              >
+                <img
+                  src={
+                    isInFavorite
+                      ? '/img/icons/favorites-field.svg'
+                      : '/img/icons/favorites.svg'
+                  }
+                  alt=""
+                />
+              </button>
+            </div>
+          </div>
+
+          <div className={styles.specs}>
+            <div className={styles.specRow}>
+              <p className={styles.specTitle}>Screen</p>
+              <span className={styles.description}>{product.screen}</span>
+            </div>
+            <div className={styles.specRow}>
+              <p className={styles.specTitle}>Resolution</p>
+              <span className={styles.description}>{product.resolution}</span>
+            </div>
+            <div className={styles.specRow}>
+              <p className={styles.specTitle}>Processor</p>
+              <span className={styles.description}>{product.processor}</span>
+            </div>
+            <div className={styles.specRow}>
+              <p className={styles.specTitle}>RAM</p>
+              <span className={styles.description}>{product.ram}</span>
+            </div>
           </div>
         </div>
 
-        <div className={styles.addToChart}>
-          <div className={styles.priceContainer}>
-            <span className={styles.price}>
-              ${product.priceDiscount || product.priceRegular}
-            </span>
-
-            {product.priceDiscount !== product.priceRegular ? (
-              <span className={styles.discount}>${product.priceRegular}</span>
-            ) : null}
-          </div>
-
-          <div
-            className={`${styles.actions} ${isInCart ? styles.isAdded : ''}`}
-          >
-            <button
-              type="button"
-              onClick={handleCartClick}
-              className={styles.buyBtn}
-            >
-              {isInCart ? 'Added' : 'Add to cart'}
-            </button>
-            <button
-              type="button"
-              className={styles.favBtn}
-              aria-label="Toggle favorites"
-              onClick={handleFavoriteClick}
-            >
-              <img
-                src={
-                  isInFavorite
-                    ? '/img/icons/favorites-field.svg'
-                    : '/img/icons/favorites.svg'
-                }
-                alt=""
-              />
-            </button>
-          </div>
-        </div>
-
-        <div className={styles.specs}>
-          <div className={styles.specRow}>
-            <p className={styles.specTitle}>Screen</p>
-            <span className={styles.description}>{product.screen}</span>
-          </div>
-          <div className={styles.specRow}>
-            <p className={styles.specTitle}>Resolution</p>
-            <span className={styles.description}>{product.resolution}</span>
-          </div>
-          <div className={styles.specRow}>
-            <p className={styles.specTitle}>Processor</p>
-            <span className={styles.description}>{product.processor}</span>
-          </div>
-          <div className={styles.specRow}>
-            <p className={styles.specTitle}>RAM</p>
-            <span className={styles.description}>{product.ram}</span>
-          </div>
-        </div>
+        <span className={styles.productId}>ID: {product.namespaceId}</span>
       </div>
 
       <div className={styles.main}>
         <section className={styles.about}>
-          <h3>About</h3>
+          <h3 className={styles.sectionTitle}>About</h3>
 
           {product.description?.map((prod, index) => (
-            <div key={prod.title || index}>
-              <h4>{prod.title}</h4>
-              <p>{prod.text}</p>
+            <div key={prod.title || index} className={styles.aboutContainer}>
+              <h4 className={styles.aboutTitle}>{prod.title}</h4>
+              <p className={styles.aboutText}>{prod.text}</p>
             </div>
           ))}
         </section>
 
         <section className={styles.characteristic}>
-          <h3>Tech specs</h3>
+          <h3 className={styles.sectionTitle}>Tech specs</h3>
 
-          <div className={styles.specRow}>
-            <p className={styles.specTitle}>Screen</p>
-            <span className={styles.description}>{product.screen}</span>
-          </div>
-          <div className={styles.specRow}>
-            <p className={styles.specTitle}>Resolution</p>
-            <span className={styles.description}>{product.resolution}</span>
-          </div>
-          <div className={styles.specRow}>
-            <p className={styles.specTitle}>Processor</p>
-            <span className={styles.description}>{product.processor}</span>
-          </div>
-          <div className={styles.specRow}>
-            <p className={styles.specTitle}>RAM</p>
-            <span className={styles.description}>{product.ram}</span>
-          </div>
-          <div className={styles.specRow}>
-            <p className={styles.specTitle}>Built in memory</p>
-            <span className={styles.description}>{product.capacity}</span>
-          </div>
-          {'camera' in product && (
-            <div className={styles.specRow}>
-              <span>Camera</span>
-              <span>{product.camera}</span>
+          <div className={styles.techSpecs}>
+            <div className={styles.techSpecRow}>
+              <p className={styles.techSpecTitle}>Screen</p>
+              <span className={styles.techSpecDescription}>
+                {product.screen}
+              </span>
             </div>
-          )}
-          {'zoom' in product && (
-            <div className={styles.specRow}>
-              <span>Zoom</span>
-              <span>{product.zoom}</span>
+            <div className={styles.techSpecRow}>
+              <p className={styles.techSpecTitle}>Resolution</p>
+              <span className={styles.techSpecDescription}>
+                {product.resolution}
+              </span>
             </div>
-          )}
-          <div className={styles.specRow}>
-            <p className={styles.specTitle}>Cell</p>
-            <span className={styles.description}>
-              {product.cell?.join(', ') || ''}
-            </span>
+            <div className={styles.techSpecRow}>
+              <p className={styles.techSpecTitle}>Processor</p>
+              <span className={styles.techSpecDescription}>
+                {product.processor}
+              </span>
+            </div>
+            <div className={styles.techSpecRow}>
+              <p className={styles.techSpecTitle}>RAM</p>
+              <span className={styles.techSpecDescription}>{product.ram}</span>
+            </div>
+            <div className={styles.techSpecRow}>
+              <p className={styles.techSpecTitle}>Built in memory</p>
+              <span className={styles.techSpecDescription}>
+                {product.capacity}
+              </span>
+            </div>
+            {'camera' in product && (
+              <div className={styles.techSpecRow}>
+                <p className={styles.techSpecTitle}>Camera</p>
+                <span className={styles.techSpecDescription}>
+                  {product.camera}
+                </span>
+              </div>
+            )}
+            {'zoom' in product && (
+              <div className={styles.techSpecRow}>
+                <p className={styles.techSpecTitle}>Zoom</p>
+                <span className={styles.techSpecDescription}>
+                  {product.zoom}
+                </span>
+              </div>
+            )}
+            <div className={styles.techSpecRow}>
+              <p className={styles.techSpecTitle}>Cell</p>
+              <span className={styles.techSpecDescription}>
+                {product.cell?.join(', ') || ''}
+              </span>
+            </div>
           </div>
         </section>
       </div>
