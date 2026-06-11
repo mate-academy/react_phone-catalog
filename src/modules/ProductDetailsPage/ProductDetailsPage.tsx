@@ -108,8 +108,8 @@ export const ProductDetailsPage: React.FC = () => {
     const controller = new AbortController();
 
     Promise.all([
-      fetch('/api/products.json', { signal: controller.signal }),
-      fetch(`/api/${category}.json`, { signal: controller.signal }),
+      fetch('api/products.json', { signal: controller.signal }),
+      fetch(`api/${category}.json`, { signal: controller.signal }),
     ])
       .then(async ([allRes, categoryRes]) => {
         if (!allRes.ok || !categoryRes.ok) {

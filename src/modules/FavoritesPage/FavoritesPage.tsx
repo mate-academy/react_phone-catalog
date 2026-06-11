@@ -3,6 +3,8 @@ import { useFavorites } from '../../context/FavouritesContext';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import styles from './FavoritesPage.module.scss';
 import { Loader } from '../../components/Loader/Loader';
+import emptyFavoritesIcon from '../../assets/img/cart-is-empty.png';
+import { Link } from 'react-router-dom';
 
 interface ProductItem {
   id: string;
@@ -70,6 +72,9 @@ export const FavoritesPage: React.FC = () => {
 
   return (
     <div className={styles.favoritesPage}>
+      <Link to=".." className={styles.favoritesPageBack}>
+        Back
+      </Link>
       <h1 className={styles.favoritesPageTitle}>Favorites</h1>
       <p className={styles.favoritesPageCount}>
         {favoriteProducts.length} items
@@ -100,9 +105,15 @@ export const FavoritesPage: React.FC = () => {
           })}
         </div>
       ) : (
-        <p className={styles.favoritesPageEmpty}>
-          Your favorites list is empty
-        </p>
+        <div className={styles.favoritesPageEmpty}>
+          <h2>Your cart is empty</h2>
+          <p>Add you first product to the cart</p>
+          <img
+            src={emptyFavoritesIcon}
+            alt="Empty cart icon"
+            className={styles.favoritesPageEmptyImage}
+          />
+        </div>
       )}
     </div>
   );

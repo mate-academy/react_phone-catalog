@@ -1,13 +1,35 @@
 /* eslint-disable max-len */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import logo from '../../assets/img/nice-gadgets-logo.png';
 
 export const Footer: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    const handleScrollAndResize = () => {
+      const hasScrollableContent =
+        document.documentElement.scrollHeight > window.innerHeight;
+      const isScrolledDown = window.scrollY > 1;
+
+      setIsVisible(hasScrollableContent && isScrolledDown);
+    };
+
+    handleScrollAndResize();
+
+    window.addEventListener('scroll', handleScrollAndResize);
+    window.addEventListener('resize', handleScrollAndResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScrollAndResize);
+      window.removeEventListener('resize', handleScrollAndResize);
+    };
+  }, []);
 
   return (
     <footer className={styles.footer}>
@@ -57,24 +79,26 @@ export const Footer: React.FC = () => {
           </ul>
         </nav>
 
-        <div
-          className={styles.footerBackToTop}
-          onClick={scrollToTop}
-          role="button"
-          tabIndex={0}
-          onKeyDown={e => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              scrollToTop();
-            }
-          }}
-        >
-          <span className={styles.footerBackToTopText}>Back to top</span>
-          <button
-            type="button"
-            className={styles.footerBackToTopButton}
-            tabIndex={-1}
-          />
-        </div>
+        {isVisible && (
+          <div
+            className={styles.footerBackToTop}
+            onClick={scrollToTop}
+            role="button"
+            tabIndex={0}
+            onKeyDown={e => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                scrollToTop();
+              }
+            }}
+          >
+            <span className={styles.footerBackToTopText}>Back to top</span>
+            <button
+              type="button"
+              className={styles.footerBackToTopButton}
+              tabIndex={-1}
+            />
+          </div>
+        )}
       </div>
     </footer>
   );

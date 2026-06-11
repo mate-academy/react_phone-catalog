@@ -3,6 +3,7 @@ import { useCart } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
 import styles from './CartPage.module.scss';
 import { Loader } from '../../components/Loader/Loader';
+import emptyCartIcon from '../../assets/img/cart-is-empty.png';
 
 interface Product {
   id: string;
@@ -166,7 +167,15 @@ export const CartPage: React.FC = () => {
           </div>
         </div>
       ) : (
-        <p className={styles.cartPageEmpty}>Your cart is empty</p>
+        <div className={styles.cartPageEmpty}>
+          <h2>Your cart is empty</h2>
+          <p>Add you first product to the cart</p>
+          <img
+            src={emptyCartIcon}
+            alt="Empty cart icon"
+            className={styles.cartPageEmptyImage}
+          />
+        </div>
       )}
     </div>
   );

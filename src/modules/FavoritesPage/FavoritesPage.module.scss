@@ -27,8 +27,33 @@
     }
 
     @media (min-width: 1200px) {
-      max-width: 1136px;
+      max-width: 1200px;
     }
+
+    &Back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #75767f;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #F1F2F9;
+    }
+
+    &::before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      background-image: url(../../assets/img/chevron-arron-left.png);
+      opacity: 0.5;
+      background-size: 16px;
+    }
+  }
 
 
     &Title {
@@ -76,9 +101,17 @@
     }
 
     &Empty {
-        font-family: Mont, sans-serif;
-        font-size: 18px;
-        color: #75767f;
-        margin-top: 24px;
-    }
+    max-width: 1136px;
+    height: 400px;
+    object-fit: contain;
+    font-size: 18px;
+    margin-top: 24px;
+    color: #75767f;
+      }
+}
+
+.favoritesPageEmptyImage {
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
 }

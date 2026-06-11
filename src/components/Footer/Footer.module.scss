@@ -49,6 +49,13 @@
     }
   }
 
+  &Nav {
+    @media (min-width: 640px) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
   &NavList {
     display: flex;
     flex-direction: column;
@@ -112,8 +119,7 @@
       height: 32px;
       background-color: #323542;
       border: 1px solid #3b3e4a;
-      background-image: url('/img/chevron-arron-right.png');
-
+      background-image: url('../../assets/img/chevron-arron-right.png');
       background-position: center;
       transform: rotate(270deg);
       background-repeat: no-repeat;

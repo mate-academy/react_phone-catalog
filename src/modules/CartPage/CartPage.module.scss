@@ -10,7 +10,6 @@
 
 .cartPage {
   background-color: #0F1121;
-  min-height: 100vh;
   padding: 40px 16px;
   color: #F1F2F9;
   font-family: Mont, sans-serif;
@@ -23,7 +22,7 @@
   }
 
   @media (min-width: 1200px) {
-    max-width: 1200px
+    max-width: 1136px
   }
 
   &Back {
@@ -42,9 +41,12 @@
     }
 
     &::before {
-      content: '‹';
-      font-size: 20px;
-      line-height: 1;
+      content: '';
+      width: 16px;
+      height: 16px;
+      background-image: url(../../assets/img/chevron-arron-left.png);
+      opacity: 0.5;
+      background-size: 16px;
     }
   }
 
@@ -81,10 +83,19 @@
   }
 
   &Empty {
+    max-width: 1136px;
+    height: 400px;
+    object-fit: contain;
     font-size: 18px;
     margin-top: 24px;
     color: #75767f;
   }
+}
+
+.cartPageEmptyImage {
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
 }
 
 .cartItem {

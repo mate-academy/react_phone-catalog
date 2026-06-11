@@ -156,7 +156,7 @@
         width: 40px;
         height: 40px;
         background-color: #323542;
-        background-image: url('/img/favourites-logo.png');
+        background-image: url('../../assets/img/favourites-logo.png');
         background-position: center;
         background-repeat: no-repeat;
         background-size: 16px;
@@ -169,7 +169,7 @@
         }
 
         &Active {
-            background-image: url(/img/favourites-filled.png);
+            background-image: url(../../assets/img/favourites-filled.png);
             background-color: #161827;
             border: 1px solid #3B3E4A;
         }
