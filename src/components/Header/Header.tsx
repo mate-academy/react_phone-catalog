@@ -19,13 +19,11 @@ export const Header = () => {
   const { cart } = cartContext;
   const totalAmount = cart.reduce((sum, item) => sum + item.amount, 0);
 
-
-
   if (!favoritesContext) {
     return null;
   }
-const { favorites } = favoritesContext;
 
+  const { favorites } = favoritesContext;
 
   return (
     <>
