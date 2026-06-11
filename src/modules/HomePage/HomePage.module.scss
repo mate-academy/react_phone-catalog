@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-.title-wrapper {
+.titleContainer {
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   gap: 16px;
@@ -28,9 +28,12 @@
   column-gap: 16px;
 }
 
+.imageWrapper {
+  grid-column: 2 / -2;
+}
+
 .slider {
   &__img {
-    grid-column: 2 / -2;
     width: 100%;
   }
 }
@@ -57,7 +60,13 @@
     padding: 0;
     width: 14px;
     height: 4px;
+    border: none;
     background-color: #3B3E4A;
+    cursor: pointer;
+  }
+
+  &__buttonActive {
+    background-color: #F1F2F9;
   }
 }
 

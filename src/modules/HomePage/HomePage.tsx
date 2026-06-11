@@ -1,48 +1,66 @@
 import { Link } from 'react-router-dom';
 import styles from './HomePage.module.scss';
 import { Footer } from '../../components/Footer/Footer';
+import { useState } from 'react';
 
 export const HomePage = () => {
+  const images = [
+    'img/banner.png',
+    'img/banner-phones.png',
+    'img/banner-accessories.png',
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentImageIndex(prev => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentImageIndex(prev => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentImageIndex(index);
+  };
+
   return (
     <>
       <main className={styles.main}>
-        <div className={styles['title-wrapper']}>
+        <div className={styles.titleContainer}>
           <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
         </div>
 
         <div className={styles.content}>
           <section className={`${styles.section} ${styles.hero}`}>
             <div className={styles.container}>
-              <button className={styles.buttonPrev}>
+              <button className={styles.buttonPrev} onClick={prevSlide}>
                 <img src="img/icons/arrow-left.png" alt="Arrow Left" />
               </button>
 
-              <img
-                src="img/photos/banner-phones.png"
-                alt="Banner-phones"
-                className={styles.slider__img}
-              />
-              <button className={styles.buttonNext}>
+              <div className={styles.imageWrapper}>
+                <img
+                  src={images[currentImageIndex]}
+                  alt={`Slide ${currentImageIndex + 1}`}
+                  className={styles.slider__img}
+                />
+              </div>
+
+              <button className={styles.buttonNext} onClick={nextSlide}>
                 <img src="img/icons/arrow-right.png" alt="Arrow Right" />
               </button>
             </div>
 
             <div className={styles.pagination}>
-              <button
-                type="button"
-                aria-label="Go to slide 1"
-                className={styles.pagination__button}
-              ></button>
-              <button
-                type="button"
-                aria-label="Go to slide 2"
-                className={styles.pagination__button}
-              ></button>
-              <button
-                type="button"
-                aria-label="Go to slide 3"
-                className={styles.pagination__button}
-              ></button>
+              {images.map((_, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  aria-label={`Go to slide ${index + 1}`}
+                  className={`${styles.pagination__button} ${currentImageIndex === index ? styles.pagination__buttonActive : ''}`}
+                  onClick={() => goToSlide(index)}
+                />
+              ))}
             </div>
           </section>
 
