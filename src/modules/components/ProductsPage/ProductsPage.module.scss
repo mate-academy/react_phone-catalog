@@ -1,21 +1,26 @@
-.container {
-  padding: 0 152px;
-}
+.products {
+  &Page {
+    padding-top: var(--page-padding-top-products);
+    padding-bottom: var(--page-padding-bottom-products);
 
-.pageTitle {
-  font-weight: 800;
-  font-size: 48px;
-  line-height: 56px;
-  letter-spacing: -1%;
+    @include on-tablet {
+      padding-bottom: var(--page-padding-bottom-products-tablet);
+    }
 
-  margin-top: 40px;
-}
+    @include on-mobile {
+      padding-bottom: var(--page-padding-bottom-products-mobile);
+    }
 
-.modelsCount {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 21px;
-  color: #89939A;
+    &Title {
+      @include font-h1;
+      color: var(--color-primary);
+      margin-top: 40px;
+    }
 
-  margin-top: 8px;
+    &Count {
+      @include font-body;
+      color: var(--color-secondary);
+      margin-top: 8px;
+    }
+  }
 }

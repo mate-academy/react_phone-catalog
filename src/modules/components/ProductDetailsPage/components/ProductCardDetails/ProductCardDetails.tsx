@@ -14,10 +14,10 @@ import styles from './ProductCardDetails.module.scss';
 
 //#region STYLES
 const {
-  details,
-  title,
-  mainSection,
-  infoSection,
+  detailsContainer,
+  detailsTitle,
+  detailsMainSection,
+  detailsInfoSection,
 } = styles;
 //#endregion STYLES
 
@@ -28,15 +28,15 @@ interface Props {
 export const ProductCardDetails: React.FC<Props> = ({ product }) => {
   //#region RENDER
   return (
-    <div className={details}>
-      <h2 className={title}>{product.name}</h2>
+    <div className={detailsContainer}>
+      <h2 className={detailsTitle}>{product.name}</h2>
 
-      <div className={mainSection}>
+      <div className={detailsMainSection}>
         <ProductGallery images={product.images} />
         <ProductActions product={product} />
       </div>
 
-      <div className={infoSection}>
+      <div className={detailsInfoSection}>
         <ProductAbout description={product.description} />
         <ProductTechSpecs product={product} />
       </div>

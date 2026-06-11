@@ -1,63 +1,35 @@
-.sliderContainer {
-  grid-column: 1 / -1;
-  width: 100%;
-}
-
-.headerBlock {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-.sliderTitle {
-  font-size: 32px;
-  line-height: 41px;
-  letter-spacing: -1%;
-  font-weight: 800;
-  color: #0F0F11;
-}
-
-.buttonsBlock {
-  display: flex;
-  gap: 16px;
-}
-
-.arrowBtn {
-  all: unset;
-  width: 32px;
-  height: 32px;
-  border: 1px solid #B4BDC3;
-  box-sizing: border-box;
-  border-radius: 50%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  background-color: white;
-  transition: all 0.3s ease;
-
-  &:hover:not(:disabled) {
-    border-color: #0F0F11;
-    background-color: #FAFAFA;
+.slider {
+  &Container {
+    grid-column: 1 / -1;
+    width: 100%;
   }
 
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+  &Header {
+    @include flex-center($content: space-between);
+
+    margin-bottom: 24px;
+  }
+
+  &Title {
+    @include font-h2;
+
+    color: var(--color-primary);
+  }
+
+  &Actions {
+    @include flex-center($gap: 16px);
+  }
+
+  &Viewport {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &Track {
+    @include flex-center($content: flex-start);
+    gap: var(--grid-gap-column);
+
+    width: max-content;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   }
 }
-
-.viewport {
-  width: 100%;
-  overflow: hidden;
-}
-
-.track {
-  display: flex;
-  gap: 16px;
-  width: max-content;
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-}
-

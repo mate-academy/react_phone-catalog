@@ -1,17 +1,14 @@
 .actions {
   display: flex;
   margin-left: auto;
-
   height: 100%;
 }
 
 .actionItem {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
   position: relative;
 
-  border-left: solid 1px #E2E6E9;
+  border-left: solid 1px var(--color-elements);
   width: 64px;
   transition: color 0.3s ease;
 
@@ -22,7 +19,7 @@
     left: 0;
     right: 0;
     height: 3px;
-    background-color: #0F0F11;
+    background-color: var(--color-primary);
 
     transform: scaleX(0);
     transform-origin: center;
@@ -49,19 +46,17 @@
     width: 14px;
     height: 14px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center;
     padding-top: 1px;
 
-    background-color: #4219D0;
-    color: #fff;
+    background-color: var(--color-accent);
+    color: var(--color-white);
     font-size: 9px;
     font-weight: 700;
     line-height: 1;
     border-radius: 50%;
 
-    border: 1px solid #fff;
+    border: 1px solid var(--color-white);
   }
 
   &Menu {
@@ -73,7 +68,7 @@
     width: 48px;
     height: 100%;
 
-    border-left: 1px solid #E2E6E9;
+    border-left: 1px solid var(--color-elements);
   }
 }
 

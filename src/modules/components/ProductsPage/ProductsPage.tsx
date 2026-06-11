@@ -6,6 +6,7 @@
 
 //#region IMPORTS
 import { useLocation, useSearchParams } from 'react-router-dom';
+import { useMemo } from 'react';
 
 import { useProducts } from '@/modules/shared/utils/context/ProductsContext';
 
@@ -25,9 +26,9 @@ import styles from './ProductsPage.module.scss';
 
 //#region STYLES
 const {
-  container,
-  pageTitle,
-  modelsCount,
+  productsPage,
+  productsPageTitle,
+  productsPageCount,
 } = styles;
 //#endregion STYLES
 
@@ -46,7 +47,8 @@ export const ProductsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortBy = (searchParams.get('sort') as SortType) || SortType.Age;
-  const perPage = (searchParams.get('perPage') as PerPageType) || PerPageType.All;
+  const perPage =
+    (searchParams.get('perPage') as PerPageType) || PerPageType.All;
   const currentPage = Number(searchParams.get('page') || 1);
   //#endregion URL_STATE
 
@@ -58,40 +60,40 @@ export const ProductsPage = () => {
   };
   //#endregion HANDLERS
 
-  //#region SORTING
-  const sortedProducts = [...products].sort((a, b) => {
-    switch (sortBy) {
-      case SortType.Title:
-        return a.name.localeCompare(b.name);
+  //#region SORTING_&_PAGINATION
+  const sortedProducts = useMemo(() => {
+    return [...products].sort((a, b) => {
+      switch (sortBy) {
+        case SortType.Title:
+          return a.name.localeCompare(b.name);
+        case SortType.Price:
+          return a.price - b.price;
+        case SortType.Age:
+        default:
+          return b.year - a.year;
+      }
+    });
+  }, [products, sortBy]);
 
-      case SortType.Price:
-        return a.price - b.price;
-
-      case SortType.Age:
-      default:
-        return b.year - a.year;
-    }
-  });
-  //#endregion SORING
-
-  //#region PAGINATION
   const itemsPerPage = perPage === PerPageType.All ? sortedProducts.length : Number(perPage);
   const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
 
-  const paginatedProducts =
-    perPage === PerPageType.All
-      ? sortedProducts
-      : sortedProducts.slice(
-        (currentPage - 1) * itemsPerPage,
-        (currentPage - 1) * itemsPerPage + itemsPerPage,
-      );
+  const paginatedProducts = useMemo(() => {
+    if (perPage === PerPageType.All) {
+      return sortedProducts;
+    }
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+
+    return sortedProducts.slice(startIndex, startIndex + itemsPerPage);
+  }, [sortedProducts, currentPage, perPage, itemsPerPage]);
 
   const showPagination = perPage !== PerPageType.All && totalPages > 1;
-  //#endregion PAGINATION
+  //#endregion SORTING_&_PAGINATION_LOGIC
 
   //#region RENDER
   return (
-    <div className={container}>
+    <div className={productsPage}>
       <Breadcrumbs pageTitle={currentPageTitle} />
 
       {isLoading && <Loader />}
@@ -100,8 +102,8 @@ export const ProductsPage = () => {
 
       {!isLoading && !isError && (
         <>
-          <h1 className={pageTitle}>{currentPageTitle}</h1>
-          <p className={modelsCount}>{products.length} models</p>
+          <h1 className={productsPageTitle}>{currentPageTitle}</h1>
+          <p className={productsPageCount}>{products.length} models</p>
 
           <ProductPageFilters />
 

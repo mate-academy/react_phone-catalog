@@ -1,24 +1,25 @@
-.card {
-  background-color: #fff;
-  border: 1px solid #E2E6E9;
-  border-radius: 8px;
-  box-sizing: border-box;
-
+.productCard {
   display: flex;
   flex-direction: column;
-  padding: 32px;
 
-  width: 272px;
-  height: 506px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+  border-radius: 8px;
+
+  padding: 32px;
+  box-sizing: border-box;
+
+  width: var(--card-width-desktop);
+  height: var(--card-height-desktop);
 
   @include on-tablet {
-    width: 237px;
-    height: 512px;
+    width: var(--card-width-tablet);
+    height: var(--card-height-tablet);
   }
 
   @include on-mobile {
-    width: 212px;
-    height: 439px;
+    width: var(--card-width-mobile);
+    height: var(--card-height-mobile);
   }
 }
 
@@ -26,140 +27,113 @@
   text-decoration: none;
 }
 
-.imageContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.cardImageBlock {
+  @include flex-center;
+
   width: 100%;
   height: 196px;
 
   @include on-tablet {
-    height: 202px;
+    height: 196px;
   }
 
   @include on-mobile {
-    height: 129px;
+    height: 130px;
   }
 }
 
-.imageText {
+.cardImage {
+  display: block;
+
   max-width: 100%;
   max-height: 100%;
+
   object-fit: contain;
 }
 
-.nameTitle {
-  margin-top: 24px;
+.cardTitle {
+  @include font-body;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
-  color: #0F0F11;
 
   height: 42px;
+  margin-top: 24px;
   overflow: hidden;
+
+  color: var(--color-primary);
 }
 
-.priceBlock {
-  margin-top: 8px;
-  display: flex;
+.cardPriceBlock {
+  @include flex-center($direction: row, $content: flex-start, $gap: 8px);
+
   align-items: baseline;
-  gap: 8px;
+  margin-top: 8px;
 }
 
 .priceCurrent {
-  font-weight: 800;
-  font-size: 22px;
-  line-height: 140%;
-  color: #0F0F11
+  @include font-h2;
+
+  color: var(--color-primary);
 }
 
 .priceDiscount {
+  @include font-h3;
   font-weight: 500;
-  font-size: 22px;
-  color: #89939A;
+
+  color: var(--color-secondary);
   text-decoration: line-through;
 }
 
-.divider {
-  margin-top: 8px;
+.cardDivider {
   width: 100%;
-  border: 1px solid #E2E6E9;
+  height: 1px;
+  margin-top: 8px;
+
+  background-color: var(--color-elements);
 }
 
-.specsBlock {
-  margin-top: 8px;
+.cardSpecs {
   display: flex;
   flex-direction: column;
+
   gap: 8px;
+  margin-top: 8px;
 }
 
-.specRow {
-  display: flex;
-  justify-content: space-between;
-
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 15px;
+.specItem {
+  @include flex-center($direction: row, $content: space-between);
 }
 
 .specTitle {
-  color: #89939A;
+  @include font-small;
+  font-weight: 600;
+
+  color: var(--color-secondary);
 }
 
 .specValue {
-  color: #0F0F11;
+  @include font-small;
+  font-weight: 600;
+
+  color: var(--color-primary);
 }
 
-.buttonsBlock {
-  margin-top: auto;
+.cardActions {
   display: flex;
   gap: 8px;
+
   width: 100%;
+  margin-top: auto;
 }
 
-.btnCart {
-  all: unset;
+.actionCart {
   flex: 1;
   height: 40px;
-  background-color: #4219D0;
-  border-radius: 32px;
-
-  color: white;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 21px;
-  text-align: center;
-
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    box-shadow: 0px 3px 13px 0px #17203166;
-  }
-
-  &Active {
-    background-color: #fff;
-    border: 1px solid #E2E6E9;
-    color: #4219D0;
-  }
 }
 
-.btnFavourite {
-  all: unset;
+.actionFavourite {
+  flex-shrink: 0;
+
   width: 40px;
   height: 40px;
-  border: 1px solid #B4BDC3;
-  border-radius: 32px;
-  box-sizing: border-box;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s;
-
-  img {
-    width: 16px;
-    height: 16px;
-  }
+  padding: 0;
 }

@@ -2,20 +2,18 @@
   width: 100%;
 
   &Title {
-    font-weight: 700;
-    font-size: 22px;
-    line-height: 140%;
-    color: #0F0F11;
+    @include font-h3;
+    color: var(--color-primary);
 
-    border-bottom: 1px solid #E2E6E9;
+    border-bottom: 1px solid var(--color-elements);
     padding-bottom: 16px;
   }
 
   &List {
     display: flex;
     flex-direction: column;
-    gap: 8px;
 
+    gap: 8px;
     margin-top: 25px;
   }
 
@@ -25,18 +23,12 @@
   }
 
   &Label {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    color: #89939A;
+    @include font-body;
+    color: var(--color-secondary);
   }
 
   &Value {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    color: #0F0F11;
+    @include font-body;
+    color: var(--color-primary);
   }
 }
-
-

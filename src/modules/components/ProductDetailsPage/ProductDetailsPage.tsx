@@ -12,8 +12,7 @@ import { CategoryType } from '@/modules/shared/utils/types';
 import { ErrorMessage } from '@/modules/shared/components/ErrorMessage';
 import { Loader } from '@/modules/shared/components/Loader';
 import { Breadcrumbs } from '@/modules/shared/components/Breadcrumbs';
-import { BackButton } from '@/modules/shared/components/BackButton';
-
+import { BackButton } from '@/modules/shared/components/ui/BackButton';
 
 import { ProductCardDetails } from './components/ProductCardDetails';
 import { ProductsSlider } from '../HomePage/components/ProductsSlider';
@@ -22,9 +21,7 @@ import styles from './ProductDetailsPage.module.scss';
 //#endregion IMPORTS
 
 //#region STYLES
-const {
-  container,
-} = styles;
+const { productDetailsPage, backBtnWrapper } = styles;
 //#endregion STYLES
 
 export const ProductDetailsPage = () => {
@@ -63,7 +60,7 @@ export const ProductDetailsPage = () => {
 
   //#region RENDER
   return (
-    <div className={container}>
+    <div className={productDetailsPage}>
       {isLoading && <Loader />}
       {isError && <ErrorMessage message="Product was not found" />}
 
@@ -72,13 +69,13 @@ export const ProductDetailsPage = () => {
         productName={productDetails?.name}
       />
 
-      <BackButton />
+      <div className={backBtnWrapper}>
+        <BackButton />
+      </div>
 
       {showDetails && (
         <>
-          <ProductCardDetails
-            product={productDetails}
-          />
+          <ProductCardDetails product={productDetails} />
 
           <ProductsSlider
             title="You may also like"

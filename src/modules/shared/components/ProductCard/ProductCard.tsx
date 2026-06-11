@@ -2,8 +2,10 @@
 /* eslint-disable import/extensions */
 /* eslint-disable prettier/prettier */
 
+//#region IMPORST
 import { Link } from 'react-router-dom';
 
+import { useCart } from '../../utils/context/CartContext';
 import { useFavourites } from '../../utils/context/FavouritesContext';
 
 import { ProductType } from '@/modules/shared/utils/types';
@@ -12,27 +14,33 @@ import favoutiteIcon from '@/assets/svg/heart.svg';
 import favouriteIconActive from '@/assets/svg/heart-filled.svg';
 
 import styles from './ProductCard.module.scss';
-import { useCart } from '../../utils/context/CartContext';
+import { Button } from '../ui/Button';
+//#endregion
 
+//#region STYLES
 const {
-  card,
+  productCard,
+
   cardLink,
-  imageContainer,
-  imageText,
-  nameTitle,
-  priceBlock,
+  cardImageBlock,
+  cardImage,
+  cardTitle,
+
+  cardPriceBlock,
   priceCurrent,
   priceDiscount,
-  divider,
-  specsBlock,
-  specRow,
+
+  cardDivider,
+  cardSpecs,
+  specItem,
   specTitle,
   specValue,
-  buttonsBlock,
-  btnCart,
-  btnCartActive,
-  btnFavourite,
+
+  cardActions,
+  actionCart,
+  actionFavourite,
 } = styles;
+//#endregion
 
 interface Props {
   product: ProductType;
@@ -43,74 +51,85 @@ export const ProductCard: React.FC<Props> = ({
   product,
   showDiscount = false,
 }) => {
+  //#region DATA_FETCHING
   const { toggleCart, isInCart } = useCart();
   const isActiveCart = isInCart(product.itemId);
 
   const { toggleFavourite, isFavourite } = useFavourites();
   const isActiveFavourite = isFavourite(product.itemId);
+  //#endregion
 
+  //#region RENDER
   return (
-    <div className={card}>
+    <div className={productCard}>
       <Link to={`/${product.category}/${product.itemId}`} className={cardLink}>
-        <div className={imageContainer}>
+        <div className={cardImageBlock}>
           <img
             src={`/${product.image}`}
             alt={product.name}
-            className={imageText}
+            className={cardImage}
           />
         </div>
 
-        <h3 className={nameTitle}>{product.name}</h3>
+        <h3 className={cardTitle}>{product.name}</h3>
       </Link>
 
-      <div className={priceBlock}>
+      <div className={cardPriceBlock}>
         <span className={priceCurrent}>{`$${product.price}`}</span>
         {showDiscount && (
           <span className={priceDiscount}>{`$${product.fullPrice}`}</span>
         )}
       </div>
 
-      <div className={divider} />
+      <div className={cardDivider} />
 
-      <div className={specsBlock}>
-        <div className={specRow}>
+      <div className={cardSpecs}>
+        <div className={specItem}>
           <span className={specTitle}>Screen</span>
           <span className={specValue}>{product.screen}</span>
         </div>
-        <div className={specRow}>
+        <div className={specItem}>
           <span className={specTitle}>Capacity</span>
           <span className={specValue}>{product.capacity}</span>
         </div>
-        <div className={specRow}>
+        <div className={specItem}>
           <span className={specTitle}>RAM</span>
           <span className={specValue}>{product.ram}</span>
         </div>
       </div>
 
-      <div className={buttonsBlock}>
-        <button
-          className={`
-            ${btnCart}
-            ${isActiveCart ? btnCartActive : ''}
-          `}
-          type="button"
+      <div className={cardActions}>
+        <Button
+          variant="primary"
+          isSelected={isActiveCart}
+          className={actionCart}
           onClick={() => toggleCart(product)}
-          aria-label="Add to cart"
+          aria-label={
+            isActiveCart
+              ? 'Remove from cart'
+              : 'Add to cart'
+          }
         >
           {isActiveCart ? 'Added to cart' : 'Add to cart'}
-        </button>
-        <button
-          className={btnFavourite}
-          type="button"
+        </Button>
+
+        <Button
+          variant="icon"
+          className={actionFavourite}
           onClick={() => toggleFavourite(product)}
-          aria-label="Add to favorites"
+          aria-label={
+            isActiveFavourite
+              ? 'Remove from favorites'
+              : 'Add to favorites'
+          }
         >
           <img
             src={isActiveFavourite ? favouriteIconActive : favoutiteIcon}
-            alt="Add to favorites"
+            alt="Favorite icon"
           />
-        </button>
+        </Button>
       </div>
     </div>
   );
+  //#endregion
 };

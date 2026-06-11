@@ -1,9 +1,6 @@
 .backButton {
-  margin-top: 40px;
-
   &Btn {
     all: unset;
-
     display: inline-flex;
     align-items: center;
     gap: 4px;
@@ -21,9 +18,7 @@
   }
 
   &Icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
 
     height: 16px;
     width: 16px;
@@ -36,9 +31,7 @@
   }
 
   &Text {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-    color: #89939A
+    @include font-small;
+    color: var(--color-secondary);
   }
 }

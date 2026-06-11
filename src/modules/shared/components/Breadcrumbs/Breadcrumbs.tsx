@@ -1,13 +1,16 @@
 /* eslint-disable max-len */
 /* eslint-disable prettier/prettier */
 
+//#region IMPORTS
 import { Link } from 'react-router-dom';
 
 import arrowRight from '@/assets/svg/arrow-right-gray.svg';
 import homeIcon from '@/assets/svg/home.svg';
 
 import styles from './Breadcrumbs.module.scss';
+//#endregion IMPORTS
 
+//#region STYLES
 const {
   breadcrumbs,
   breadcrumbsLink,
@@ -16,17 +19,21 @@ const {
   breadcrumbsArrow,
   breadcrumbsText,
 } = styles;
+//#endregion STYLES
 
 interface Props {
   pageTitle: string;
   productName?: string;
-};
+}
 
 export const Breadcrumbs: React.FC<Props> = ({ pageTitle, productName }) => {
+  //#region HANDLERS_&_HELPERS
   const editedPageTitle = pageTitle
     ? pageTitle.charAt(0).toUpperCase() + pageTitle.slice(1)
     : '';
+  //#endregion HANDLERS_&_HELPERS
 
+  //#region RENDER
   return (
     <nav className={breadcrumbs} aria-label="breadcrumb">
       {/* 1 рівень: Головна */}
@@ -34,8 +41,8 @@ export const Breadcrumbs: React.FC<Props> = ({ pageTitle, productName }) => {
         <img className={breadcrumbsIcon} src={homeIcon} alt="Home" />
       </Link>
 
-      <div className={breadcrumbsArrow}>
-        <img src={arrowRight} />
+      <div className={breadcrumbsArrow} aria-hidden="true">
+        <img src={arrowRight} alt="" />
       </div>
 
       {/* 2 рівень: Категорія (стає посиланням, лише якщо є productName) */}
@@ -48,8 +55,8 @@ export const Breadcrumbs: React.FC<Props> = ({ pageTitle, productName }) => {
             {editedPageTitle}
           </Link>
 
-          <div className={breadcrumbsArrow}>
-            <img src={arrowRight} />
+          <div className={breadcrumbsArrow} aria-hidden="true">
+            <img src={arrowRight} alt="" />
           </div>
         </>
       ) : (
@@ -57,10 +64,8 @@ export const Breadcrumbs: React.FC<Props> = ({ pageTitle, productName }) => {
       )}
 
       {/* 3 рівень: Назва продукту */}
-      {productName &&
-        <span className={breadcrumbsText}>{productName}</span>
-      }
-
+      {productName && <span className={breadcrumbsText}>{productName}</span>}
     </nav>
   );
+  //#endregion RENDER
 };

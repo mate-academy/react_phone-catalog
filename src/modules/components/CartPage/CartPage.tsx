@@ -1,31 +1,38 @@
 /* eslint-disable import/extensions */
 /* eslint-disable prettier/prettier */
 
+//#region IMPORTS
 import { useCart } from '@/modules/shared/utils/context/CartContext';
 
-import styles from './CartPage.module.scss';
 import { CartItem } from './components/CartItem';
 import { CartTotal } from './components/CartTotal';
-import { BackButton } from '@/modules/shared/components/BackButton';
+import { BackButton } from '@/modules/shared/components/ui/BackButton';
 
+import styles from './CartPage.module.scss';
+//#endregion
+
+//#region STYLES
 const {
   cartPage,
-  title,
-  content,
+  cartTitle,
+  cartContent,
   itemList,
 } = styles;
+//#endregion
 
 export const CartPage = () => {
+  //#region DATA_FETCHING
   const { cart } = useCart();
+  //#endregion
 
+  //#region RENDER
   return (
     <div className={cartPage}>
       <BackButton />
 
-      <h1 className={title}>Cart</h1>
+      <h1 className={cartTitle}>Cart</h1>
 
-      <div className={content}>
-
+      <div className={cartContent}>
         <div className={itemList}>
           {cart.map(item => (
             <CartItem key={item.product.id} cart={item} />
@@ -36,4 +43,5 @@ export const CartPage = () => {
       </div>
     </div>
   );
+  //#endregion
 };

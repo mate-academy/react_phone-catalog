@@ -2,41 +2,13 @@
 /* eslint-disable import/extensions */
 /* eslint-disable prettier/prettier */
 
+//#region IMPORTS
 import { ProductDetailsType as ProductType } from '@/modules/shared/utils/types';
 
-const getTechSpecsData = (product: ProductType): Record<string, string> => {
-  const capacityLabel = product.category === 'accessories'
-    ? 'Capacity'
-    : 'Built in memory';
-
-  const specs: Record<string, string> = {
-    Screen: product.screen,
-    Resolution: product.resolution,
-    Processor: product.processor,
-    RAM: product.ram,
-    [capacityLabel]: product.capacity,
-  };
-
-  if (product.camera) {
-    specs.Camera = product.camera;
-  }
-
-  if (product.zoom) {
-    specs.Zoom = product.zoom;
-  }
-
-  if (product.cell && product.cell.length > 0) {
-    specs.Cell =
-      product.cell[0] === 'Not applicable'
-        ? 'Wi-Fi only'
-        : product.cell.join(', ');
-  }
-
-  return specs;
-};
-
 import styles from './ProductTechSpecs.module.scss';
+//#endregion
 
+//#region STYLES
 const {
   specs,
   specsTitle,
@@ -45,12 +17,51 @@ const {
   specsLabel,
   specsValue,
 } = styles;
+//#endregion
 
-export const ProductTechSpecs = (
-  { product }: { product: ProductType }
-) => {
+//#region HELPERS
+const getTechSpecsData = (product: ProductType): Record<string, string> => {
+  const capacityLabel = product.category === 'accessories'
+    ? 'Capacity'
+    : 'Built in memory';
+
+  const specsData: Record<string, string> = {
+    Screen: product.screen,
+    Resolution: product.resolution,
+    Processor: product.processor,
+    RAM: product.ram,
+    [capacityLabel]: product.capacity,
+  };
+
+  if (product.camera) {
+    specsData.Camera = product.camera;
+  }
+
+  if (product.zoom) {
+    specsData.Zoom = product.zoom;
+  }
+
+  if (product.cell && product.cell.length > 0) {
+    specsData.Cell =
+      product.cell[0] === 'Not applicable'
+        ? 'Wi-Fi only'
+        : product.cell.join(', ');
+  }
+
+  return specsData;
+};
+//#endregion
+
+interface Props {
+  product: ProductType;
+}
+
+export const ProductTechSpecs: React.FC<Props> = ({ product }) => {
+  //#region DATA
   const techSpecs = getTechSpecsData(product);
+  //#endregion
 
+  //#region RENDER
   return (
     <div className={specs}>
       <h3 className={specsTitle}>Tech specs</h3>
@@ -65,4 +76,5 @@ export const ProductTechSpecs = (
       </div>
     </div>
   );
+  //#endregion
 };

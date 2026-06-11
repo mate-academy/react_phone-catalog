@@ -3,19 +3,22 @@
 /* eslint-disable prettier/prettier */
 
 //#region IMPORTS
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useProducts } from '@/modules/shared/utils/context/ProductsContext';
 import { useFavourites } from '@/modules/shared/utils/context/FavouritesContext';
+import { useCart } from '@/modules/shared/utils/context/CartContext';
 
 import { ProductDetailsType, ProductType } from '@/modules/shared/utils/types';
 import { PRODUCT_COLORS_MAP as COLORS } from '@/modules/shared/utils/constants';
+
+// import { Button } from '@/modules/shared/components/ui/Button';
 
 import favouriteIcon from '@/assets/svg/heart.svg';
 import favouriteIconActive from '@/assets/svg/heart-filled.svg';
 
 import styles from './ProductActions.module.scss';
-import { useCart } from '@/modules/shared/utils/context/CartContext';
 //#endregion IMPORTS
 
 //#region STYLES
@@ -65,7 +68,7 @@ export const ProductActions: React.FC<Props> = ({ product }) => {
   const { toggleCart, isInCart } = useCart();
   //#endregion DATA_FETCHING
 
-  //#region PRODUCT_CONFINGS
+  //#region PRODUCT_CONFIGS
   const currentProduct = product.namespaceId;
   const currentColor = product.color;
   const currentCapacity = product.capacity;
@@ -73,13 +76,13 @@ export const ProductActions: React.FC<Props> = ({ product }) => {
   const isActiveFavourite = isFavourite(product.id);
   const isActiveCart = isInCart(product.id);
 
-  const categoryProducts: ProductDetailsType[] = productsDetails.filter(
-    item => item.category === product.category
-  );
+  const categoryProducts: ProductDetailsType[] = useMemo(() => {
+    return productsDetails.filter(item => item.category === product.category);
+  }, [productsDetails, product.category]);
 
-  const baseProduct: ProductType | undefined = products.find(
-    item => item.itemId === product.id
-  );
+  const baseProduct: ProductType | undefined = useMemo(() => {
+    return products.find(item => item.itemId === product.id);
+  }, [products, product.id]);
   //#endregion PRODUCT_CONFINGS
 
   //#region TECH_SPECS_DATA
@@ -166,6 +169,27 @@ export const ProductActions: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className={buttonsBlock}>
+        {/* <Button
+          variant="primary"
+          isSelected={isActiveCart}
+          className={buttonCart}
+          onClick={() => baseProduct && toggleCart(baseProduct)}
+          aria-label={isActiveCart ? 'Remove from cart' : 'Add to cart'}
+        >
+          {isActiveCart ? 'Added to cart' : 'Add to cart'}
+        </Button>
+
+        <Button
+          variant="icon"
+          isSelected={isActiveFavourite}
+          className={buttonFavourite}
+          onClick={() => baseProduct && toggleFavourite(baseProduct)}
+          aria-label={
+            isActiveFavourite ? 'Remove from favorites' : 'Add to favorites'
+          }
+        >
+          <img src={isActiveFavourite ? favouriteIconActive : favouriteIcon} />
+        </Button> */}
         <button
           className={`
             ${buttonCart}
@@ -181,11 +205,11 @@ export const ProductActions: React.FC<Props> = ({ product }) => {
           className={buttonFavourite}
           type="button"
           onClick={() => baseProduct && toggleFavourite(baseProduct)}
-          aria-label={isActiveFavourite ? 'Remove from favorites' : 'Add to favorites'}
+          aria-label={
+            isActiveFavourite ? 'Remove from favorites' : 'Add to favorites'
+          }
         >
-          <img
-            src={isActiveFavourite ? favouriteIconActive : favouriteIcon}
-          />
+          <img src={isActiveFavourite ? favouriteIconActive : favouriteIcon} />
         </button>
       </div>
 

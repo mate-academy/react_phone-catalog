@@ -1,27 +1,33 @@
+/* eslint-disable import/extensions */
 /* eslint-disable padding-line-between-statements */
 /* eslint-disable max-len */
 /* eslint-disable prettier/prettier */
 
+//#region IMPORTS
 import { useSearchParams } from 'react-router-dom';
 
-import { PerPageType, SortType } from '../../../../shared/utils/types';
-import {
-  PER_PAGE_OPTIONS,
-  SORT_OPTIONS,
-} from '../../../../shared/utils/constants';
+import { PerPageType, SortType } from '@/modules/shared/utils/types';
+import { PER_PAGE_OPTIONS, SORT_OPTIONS } from '@/modules/shared/utils/constants';
+
+import { CustomDropdown } from '@/modules/shared/components/ui/CustomDropdown';
 
 import styles from './ProductPageFilters.module.scss';
-import { CustomDropdown } from './components/CustomDropdown';
+//#endregion
 
-const { filtersContainer } = styles;
+//#region STYLES
+const { productPageFilters } = styles;
+//#endregion
 
 export const ProductPageFilters = () => {
+  //#region STATE_&_CONSTANTS
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortBy = (searchParams.get('sort') as SortType) || SortType.Age;
   const perPage =
     (searchParams.get('perPage') as PerPageType) || PerPageType.All;
+  //#endregion
 
+  //#region HANDLERS
   const handleSortChange = (newValue: string) => {
     const newParams = new URLSearchParams(searchParams);
     newParams.set('sort', newValue);
@@ -35,9 +41,11 @@ export const ProductPageFilters = () => {
     newPageSize.set('page', '1');
     setSearchParams(newPageSize);
   };
+  //#endregion
 
+  //#region RENDER
   return (
-    <div className={filtersContainer}>
+    <div className={productPageFilters}>
       <CustomDropdown
         label="Sort By"
         value={sortBy}
@@ -53,4 +61,6 @@ export const ProductPageFilters = () => {
       />
     </div>
   );
+  //#endregion
 };
+

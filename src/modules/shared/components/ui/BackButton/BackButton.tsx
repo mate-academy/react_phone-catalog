@@ -1,25 +1,41 @@
 /* eslint-disable prettier/prettier */
 
+//#region IMPORTS
 import { useNavigate } from 'react-router-dom';
 
 import arrowLeft from '@/assets/svg/arrow-left.svg';
 
 import styles from './BackButton.module.scss';
+//#endregion IMPORTS
 
-const { backButton, backButtonBtn, backButtonIcon, backButtonText } = styles;
+//#region STYLES
+const {
+  backButton,
+  backButtonBtn,
+  backButtonIcon,
+  backButtonText,
+} = styles;
+//#endregion STYLES
 
 export const BackButton = () => {
+  //#region STATE_&_HOOKS
   const navigate = useNavigate();
-  const navigateBack = () => navigate(-1);
+  //#endregion STATE_&_HOOKS
 
+  //#region HANDLERS_&_HELPERS
+  const navigateBack = () => navigate(-1);
+  //#endregion HANDLERS_&_HELPERS
+
+  //#region RENDER
   return (
     <div className={backButton}>
       <button className={backButtonBtn} type="button" onClick={navigateBack}>
-        <div className={backButtonIcon}>
-          <img src={arrowLeft} alt="Back" />
+        <div className={backButtonIcon} aria-hidden="true">
+          <img src={arrowLeft} alt="" />
         </div>
         <span className={backButtonText}>Back</span>
       </button>
     </div>
   );
+  //#endregion RENDER
 };

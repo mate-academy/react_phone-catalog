@@ -1,25 +1,30 @@
+/* eslint-disable max-len */
 /* eslint-disable import/extensions */
 /* eslint-disable prettier/prettier */
 
+//#region IMPORTS
 import { useState, useEffect } from 'react';
-import { ProductCard } from '@/modules/shared/components/ProductCard';
 
+import { ProductCard } from '@/modules/shared/components/ProductCard';
+import { Button } from '@/modules/shared/components/ui/Button';
 import { ProductType } from '@/modules/shared/utils/types';
 
 import arrowLeft from '@/assets/svg/arrow-left.svg';
 import arrowRight from '@/assets/svg/arrow-right.svg';
 
 import styles from './ProductsSlider.module.scss';
+//#endregion
 
+//#region STYLES
 const {
   sliderContainer,
-  headerBlock,
+  sliderHeader,
   sliderTitle,
-  buttonsBlock,
-  arrowBtn,
-  viewport,
-  track,
+  sliderActions,
+  sliderViewport,
+  sliderTrack,
 } = styles;
+//#endregion
 
 interface Props {
   title: string;
@@ -32,30 +37,38 @@ export const ProductsSlider: React.FC<Props> = ({
   products,
   hasDiscount = false,
 }) => {
+  //#region STATE_&_HOOKS
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(4);
-  const [stepWidth, setStepWidth] = useState(288); // 272 + 16
+  const [stepWidth, setStepWidth] = useState(0);
 
   useEffect(() => {
+    const rootStyles = getComputedStyle(document.documentElement);
+
+    const gap = parseInt(rootStyles.getPropertyValue('--grid-gap-column'));
+    const desktopWidth = parseInt(rootStyles.getPropertyValue('--card-width-desktop'));
+    const tabletWidth = parseInt(rootStyles.getPropertyValue('--card-width-tablet'));
+    const mobileWidth = parseInt(rootStyles.getPropertyValue('--card-width-mobile'));
+
     const handleResize = () => {
       const width = window.innerWidth;
 
       if (width < 640) {
-        // Мобілка: 1 картка у в'юпорті
+        // Мобілка: 1 картка
         setVisibleCards(1);
-        setStepWidth(228);
+        setStepWidth(mobileWidth + gap);
       } else if (width < 840) {
-        // Маленький планшет: у в'юпорті вміщається лише 2 картки
+        // Маленький планшет: 2 картки
         setVisibleCards(2);
-        setStepWidth(253);
+        setStepWidth(tabletWidth + gap);
       } else if (width < 1200) {
-        // Великий планшет: тут уже вільно вміщається 3 картки
+        // Великий планшет: 3 картки
         setVisibleCards(3);
-        setStepWidth(253);
+        setStepWidth(tabletWidth + gap);
       } else {
-        // Десктоп: 4 картки у в'юпорті
+        // Десктоп: 4 картки
         setVisibleCards(4);
-        setStepWidth(288);
+        setStepWidth(desktopWidth + gap);
       }
     };
 
@@ -64,7 +77,9 @@ export const ProductsSlider: React.FC<Props> = ({
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+  //#endregion
 
+  //#region HANDLERS_&_HELPERS
   const maxIndex = Math.max(0, products.length - visibleCards);
 
   const handlePrev = () => {
@@ -74,34 +89,36 @@ export const ProductsSlider: React.FC<Props> = ({
   const handleNext = () => {
     setCurrentIndex(prev => Math.min(maxIndex, prev + 1));
   };
+  //#endregion
 
+  //#region RENDER
   return (
     <div className={sliderContainer}>
-      <div className={headerBlock}>
+      <div className={sliderHeader}>
         <h2 className={sliderTitle}>{title}</h2>
-        <div className={buttonsBlock}>
-          <button
-            type="button"
-            className={arrowBtn}
+        <div className={sliderActions}>
+          <Button
+            variant="icon"
             onClick={handlePrev}
             disabled={currentIndex === 0}
+            aria-label="Previous items"
           >
             <img src={arrowLeft} alt="Previous" />
-          </button>
-          <button
-            type="button"
-            className={arrowBtn}
+          </Button>
+          <Button
+            variant="icon"
             onClick={handleNext}
             disabled={currentIndex === maxIndex}
+            aria-label="Next items"
           >
             <img src={arrowRight} alt="Next" />
-          </button>
+          </Button>
         </div>
       </div>
 
-      <div className={viewport}>
+      <div className={sliderViewport}>
         <div
-          className={track}
+          className={sliderTrack}
           style={{ transform: `translateX(-${currentIndex * stepWidth}px)` }}
         >
           {products.map(item => (
@@ -115,4 +132,5 @@ export const ProductsSlider: React.FC<Props> = ({
       </div>
     </div>
   );
+  //#endregion
 };

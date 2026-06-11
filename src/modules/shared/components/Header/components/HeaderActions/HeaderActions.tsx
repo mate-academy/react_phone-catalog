@@ -2,6 +2,7 @@
 /* eslint-disable max-len */
 /* eslint-disable prettier/prettier */
 
+//#region IMPORTS
 import { Link, useLocation } from 'react-router-dom';
 
 import { useFavourites } from '@/modules/shared/utils/context/FavouritesContext';
@@ -12,7 +13,9 @@ import iconBag from '@/assets/svg/cart.svg';
 import iconMenu from '@/assets/svg/menu.svg';
 
 import styles from './HeaderActions.module.scss';
+//#endregion
 
+//#region STYLES
 const {
   actions,
   actionItem,
@@ -21,12 +24,16 @@ const {
   actionItemCount,
   actionItemMenu,
 } = styles;
+//#endregion
 
 export const HeaderActions = () => {
+  //#region STATE
   const { favouritesCount } = useFavourites();
   const { totalCount } = useCart();
   const { pathname } = useLocation();
+  //#endregion
 
+  //#region RENDER
   return (
     <div className={actions}>
       <Link
@@ -60,4 +67,5 @@ export const HeaderActions = () => {
       </a>
     </div>
   );
+  //#endregion
 };

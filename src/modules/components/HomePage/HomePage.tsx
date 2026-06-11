@@ -3,6 +3,8 @@
 /* eslint-disable prettier/prettier */
 
 //#region IMPORTS
+import { useMemo } from 'react';
+
 import { useProducts } from '@/modules/shared/utils/context/ProductsContext';
 
 import { BannerSlider } from './components/BannerSlider';
@@ -22,19 +24,16 @@ export const HomePage = () => {
   //#endregion DATA_FETCHING
 
   //#region DATA_TRANSORFATION
-  const brandNewProducts = [...products]
-    .sort((a, b) => b.year - a.year)
-    .slice(0, 12);
+  const brandNewProducts = useMemo(() => {
+    return [...products].sort((a, b) => b.year - a.year).slice(0, 12);
+  }, [products]);
 
-  const hotPriceProducts = [...products]
-    .filter(product => product.fullPrice > product.price)
-    .sort((a, b) => {
-      const discountA = a.fullPrice - a.price;
-      const discountB = b.fullPrice - b.price;
-
-      return discountB - discountA;
-    })
-    .slice(0, 12);
+  const hotPriceProducts = useMemo(() => {
+    return [...products]
+      .filter(product => product.fullPrice > product.price)
+      .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
+      .slice(0, 12);
+  }, [products]);
   //#endregion DATA_TRANSORFATION
 
   //#region RENDER

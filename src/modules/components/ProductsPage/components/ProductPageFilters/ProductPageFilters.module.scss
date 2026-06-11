@@ -1,5 +1,4 @@
-.filtersContainer {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
+.productPageFilters {
+  @include flex-center($direction: row, $content: flex-start, $gap: 16px);
+  margin-top: 40px;
 }

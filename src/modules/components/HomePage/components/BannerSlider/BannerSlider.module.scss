@@ -1,123 +1,117 @@
 .slider {
-  grid-column: 1 / -1;
-
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-
-  margin-top: 56px;
-  margin-bottom: 80px;
-  justify-content: space-between;
-
-  @include on-tablet {
-    margin-top: 32px;
-    margin-bottom: 64px;
-    justify-content: center;
-  }
-
-  @include on-mobile {
-    margin-top: 24px;
-    margin-bottom: 56px;
-    justify-content: center;
-
-    width: calc(100% + 32px);
-    margin-left: -16px;
-    margin-right: -16px;
-  }
-}
-
-.arrow {
-  height: 400px;
-  width: 32px;
-  background-color: initial;
-  border-radius: 20px;
-  border: 1px #B4BDC3 solid;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    border-color: #0F0F11;
-    background-color: #FAFAFA;
-  }
-
-  @include on-tablet {
-    height: 189px;
-  }
-
-  @include on-mobile {
-    display: none;
-  }
-}
-
-.viewport {
-  flex: 1;
-  border-radius: 8px;
-  overflow: hidden;
-
-  height: 400px;
-  margin: 0 16px;
-
-  @include on-tablet {
-    height: 189px;
-    width: 490px;
-    margin: 0 19px;
-    flex: none;
-  }
-
-  @include on-mobile {
-    height: auto;
+  &Container {
+    grid-column: 1 / -1;
+    @include flex-center($content: space-between);
+    flex-wrap: wrap;
     width: 100%;
-    aspect-ratio: 1 / 1;
 
-    margin: 0;
-    border-radius: 0;
-    flex: none;
-  }
-}
+    margin-top: 56px;
+    margin-bottom: 80px;
 
-.track {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.slide {
-  display: block;
-  flex-shrink: 0;
-  width: 100%;
-  height: 100%;
-
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    @include on-tablet {
+      margin-top: 32px;
+      margin-bottom: 64px;
+      justify-content: center;
+    }
 
     @include on-mobile {
-      object-fit: cover;
+      margin-top: 24px;
+      margin-bottom: 56px;
+      justify-content: center;
+
+      width: calc(100% + 32px);
+      margin-left: -16px;
+      margin-right: -16px;
+    }
+  }
+
+  &Arrow {
+    flex-shrink: 0;
+    height: 400px;
+    border-radius: 20px;
+
+    @include on-tablet {
+      height: 189px;
+    }
+
+    @media (max-width: 645px) {
+      display: none;
+    }
+
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &Viewport {
+    flex: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 400px;
+    margin: 0 16px;
+
+    @include on-tablet {
+      flex: none;
+      height: 189px;
+      width: 490px;
+      margin: 0 19px;
+    }
+
+    @include on-mobile {
+      flex: none;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+
+      margin: 0;
+      border-radius: 0;
+    }
+  }
+
+  &Track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+  }
+
+  &Slide {
+    display: block;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+
+      @include on-mobile {
+        object-fit: cover;
+      }
+    }
+  }
+
+  &Pagination {
+    @include flex-center($gap: 14px);
+    width: 100%;
+    margin-top: 18px;
+  }
+
+  &Dot {
+    all: unset;
+    height: 4px;
+    width: 14px;
+    cursor: pointer;
+
+    background-color: var(--color-elements);
+    transition: background-color 0.3s ease;
+
+    &Active {
+      background-color: var(--color-primary);
     }
   }
 }
 
-.pagination {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  gap: 14px;
-  margin-top: 18px;
-}
-
-.dot {
-  all: unset;
-  height: 4px;
-  width: 14px;
-  cursor: pointer;
-
-  background-color: #E2E6E9;
-  transition: background-color 0.3s ease;
-
-  &Active {
-    background-color: black;
-  }
-}

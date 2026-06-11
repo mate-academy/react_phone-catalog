@@ -1,12 +1,15 @@
 /* eslint-disable max-len */
 /* eslint-disable prettier/prettier */
 
+//#region IMPORTS
 import { useEffect, useRef, useState } from 'react';
 
 import arrowDown from '@/assets/svg/arrow-dropdown-gray.svg';
 
 import styles from './CustomDropdown.module.scss';
+//#endregion IMPORTS
 
+//#region STYLES
 const {
   dropdownWrapper,
   dropdownLabel,
@@ -18,13 +21,14 @@ const {
   dropdownItem,
   dropdownItemActive,
 } = styles;
+//#endregion STYLES
 
-const {} = styles;
-
+//#region TYPES
 interface Option {
   value: string;
   label: string;
 }
+//#endregion TYPES
 
 interface Props {
   label: string;
@@ -39,6 +43,7 @@ export const CustomDropdown: React.FC<Props> = ({
   options,
   onChange,
 }) => {
+  //#region STATE_&_HOOKS
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -58,38 +63,36 @@ export const CustomDropdown: React.FC<Props> = ({
 
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+  //#endregion STATE_&_HOOKS
 
+  //#region RENDER
   return (
     <div className={dropdownWrapper} ref={dropdownRef}>
       <span className={dropdownLabel}>{label}</span>
 
-      <div
-        className={`
-          ${dropdownField}
-          ${isOpen ? dropdownFieldActive : ''}
-        `}
+      <button
+        type="button"
+        className={`${dropdownField} ${isOpen ? dropdownFieldActive : ''}`}
         onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
       >
         <span>{currentLabel}</span>
         <img
           src={arrowDown}
-          className={`
-            ${dropdownArrow}
-            ${isOpen ? dropdownArrowActive : ''}
-          `}
+          className={`${dropdownArrow} ${isOpen ? dropdownArrowActive : ''}`}
           alt=""
+          aria-hidden="true"
         />
-      </div>
+      </button>
 
       {isOpen && (
-        <ul className={dropdownList}>
+        <ul className={dropdownList} role="listbox">
           {options.map(option => (
             <li
               key={option.value}
-              className={`
-                ${dropdownItem}
-                ${option.value === value ? dropdownItemActive : ''}
-              `}
+              className={`${dropdownItem} ${option.value === value ? dropdownItemActive : ''}`}
+              role="option"
+              aria-selected={option.value === value}
               onClick={() => {
                 onChange(option.value);
                 setIsOpen(false);
@@ -102,4 +105,5 @@ export const CustomDropdown: React.FC<Props> = ({
       )}
     </div>
   );
+  //#endregion RENDER
 };

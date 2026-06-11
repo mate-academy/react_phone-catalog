@@ -1,13 +1,10 @@
 .header {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-
-  border-bottom: solid 1px #E2E6E9;
+  @include flex-center($content: flex-start);
+  border-bottom: solid 1px var(--color-elements);
   height: 64px;
 
   @include on-tablet { height: 48px; }
-  
+
   @include on-mobile { height: 48px; }
 }
 

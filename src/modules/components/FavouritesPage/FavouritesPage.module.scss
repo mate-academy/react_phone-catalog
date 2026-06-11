@@ -1,32 +1,52 @@
 .favourites {
   &Page {
-    padding: 0 152px;
+    padding-top: var(--page-padding-top-fav);
+    padding-bottom: var(--page-padding-bottom-fav);
+
+    @include on-tablet {
+      padding-bottom: var(--page-padding-bottom-fav-tablet);
+    }
+
+    @include on-mobile {
+      padding-bottom: var(--page-padding-bottom-fav-mobile);
+    }
   }
 
   &Title {
+    @include font-h1;
+
+    color: var(--color-primary);
     margin-top: 40px;
 
-    font-weight: 800;
-    font-size: 48px;
-    line-height: 56px;
-    letter-spacing: -1%;
-    color: #0F0F11;
+    @include on-mobile {
+      margin-top: 24px;
+    }
   }
 
   &Count {
-    margin-top: 8px;
-
+    @include font-body;
     font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-    color: #89939A;
+
+    color: var(--color-secondary);
+    margin-top: 8px;
   }
 
   &List {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--card-width-desktop));
+    justify-content: flex-start;
+
+    gap: var(--grid-gap-row) var(--grid-gap-column);
     margin-top: 40px;
 
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px 16px;
+    @include on-tablet {
+      grid-template-columns: repeat(auto-fill, var(--card-width-tablet));
+    }
+
+    @include on-mobile {
+      grid-template-columns: repeat(auto-fill, var(--card-width-mobile));
+      justify-content: center;
+      margin-top: 32px;
+    }
   }
 }

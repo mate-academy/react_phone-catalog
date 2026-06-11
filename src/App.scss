@@ -1,3 +1,8 @@
+@use './styles/breakpoints';
+@use './styles/colors';
+@use './styles/variables';
+
+// #region FONTS
 @font-face {
   font-family: Mont;
   src: url('/fonts/Mont-Regular.otf') format('opentype');
@@ -18,6 +23,7 @@
   font-weight: 700;                 /* Bold */
   font-style: normal;
 }
+// #endregion
 
 *,
 *::before,
@@ -29,10 +35,36 @@
 
 .App {
   font-family: Mont, sans-serif;
-  max-width: 100%;
-  overflow-x: hidden;
-
   display: flex;
   flex-direction: column;
+
+  max-width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.main-content {
+  flex: 1;
+  background-color: var(--color-hover-bg);
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+
+  padding-left: 32px;
+  padding-right: 32px;
+
+  @include on-tablet {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  @include on-mobile {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 

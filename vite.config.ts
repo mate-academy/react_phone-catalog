@@ -12,7 +12,9 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "./src/styles/breakpoints" as *;\n`,
+        additionalData: `
+          @use "./src/styles/index" as *;
+        `,
       },
     },
   },

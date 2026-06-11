@@ -2,22 +2,30 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable max-len */
 
+//#region IMPORTS
 import { useFavourites } from '@/modules/shared/utils/context/FavouritesContext';
 
-import styles from './FavouritesPage.module.scss';
 import { Breadcrumbs } from '@/modules/shared/components/Breadcrumbs';
 import { ProductCard } from '@/modules/shared/components/ProductCard';
 
+import styles from './FavouritesPage.module.scss';
+//#endregion
+
+//#region STYLES
 const {
   favouritesPage,
   favouritesTitle,
   favouritesCount,
   favouritesList,
 } = styles;
+//#endregion
 
 export const FavouritesPage = () => {
-  const { favourites, favouritesCount: count, } = useFavourites();
+  //#region DATA_FETCHING
+  const { favourites, favouritesCount: count } = useFavourites();
+  //#endregion
 
+  //#region RENDER
   return (
     <div className={favouritesPage}>
       <Breadcrumbs pageTitle="Favourites" />
@@ -35,4 +43,5 @@ export const FavouritesPage = () => {
       </div>
     </div>
   );
+  //#endregion
 };

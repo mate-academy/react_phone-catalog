@@ -1,14 +1,13 @@
 //colorBlock
 .colors {
   &Block {
-    border-bottom: 1px solid #E2E6E9;
+    border-bottom: 1px solid var(--color-elements);
     padding-bottom: 24px;
   }
 
   &Title {
-    font-weight: 500;
-    font-size: 12px;
-    color: #89939A;
+    @include font-small;
+    color: var(--color-secondary);
   }
 
   &List {
@@ -17,27 +16,27 @@
     padding-top: 8px;
   }
 }
+
 .colorBtn {
   width: 30px;
   height: 30px;
 
   // внутрішній круг
-  border: 2px solid #ffffff;
+  border: 2px solid var(--color-white);
   border-radius: 50%;
   // зовнішній круг
-  outline: 1px solid #E2E6E9;
+  outline: 1px solid var(--color-elements);
   outline-offset: 1px;
 
-  background-color: gray;
   transition: outline-color 0.3s ease;
   cursor: pointer;
 
   &:hover {
-    outline-color: #89939A;
+    outline-color: var(--color-secondary);
   }
 
   &Active {
-    outline-color: #0F0F11;
+    outline-color: var(--color-primary);
   }
 }
 
@@ -45,14 +44,13 @@
 .capacity {
   &Block {
     margin-top: 24px;
-    border-bottom: 1px solid #E2E6E9;
+    border-bottom: 1px solid var(--color-elements);
     padding-bottom: 24px;
   }
 
   &Title {
-    font-weight: 500;
-    font-size: 12px;
-    color: #89939A;
+    @include font-small;
+    color: var(--color-secondary);
   }
 
   &List {
@@ -62,32 +60,27 @@
   }
 
   &Btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
 
     height: 32px;
     padding: 7px 8px 4px 8px;
     text-decoration: none;
 
-    border: 1px solid #B4BDC3;
+    border: 1px solid var(--color-icons);
     border-radius: 4px;
 
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-
-    color: #0F0F11;
-    background-color: #ffffff;
+    @include font-body;
+    color: var(--color-primary);
+    background-color: var(--color-white);
     transition: all 0.3s ease;
 
     &Active {
-      color: #ffffff;
-      background-color: #0F0F11;
+      color: var(--color-white);
+      background-color: var(--color-primary);
     }
 
     &:hover {
-      border-color: #89939A;
+      border-color: var(--color-secondary);
     }
   }
 }
@@ -95,26 +88,19 @@
 //priceBlock
 .price {
   &Block {
-    display: flex;
-    align-items: center;
+    @include flex-center($content: flex-start, $gap: 8px);
     height: 41px;
-    gap: 8px;
-
     margin-top: 32px;
   }
 
   &Current {
-    font-weight: 800;
-    font-size: 32px;
-    line-height: 41px;
-    letter-spacing: -1%;
-    color: #0F0F11
+    @include font-h2;
+    color: var(--color-primary);
   }
 
   &Discount {
-    font-weight: 500;
-    font-size: 22px;
-    color: #89939A;
+    @include font-h3;
+    color: var(--color-secondary);
     text-decoration: line-through;
   }
 }
@@ -126,45 +112,42 @@
   gap: 8px;
   width: 100%;
 }
+
 .button {
   &Cart {
     all: unset;
+    @include flex-center;
     width: 263px;
     height: 48px;
-    background-color: #4219D0;
+    background-color: var(--color-accent);
     border-radius: 32px;
 
-    color: #ffffff;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    text-align: center;
+    color: var(--color-white);
+    @include font-buttons;
 
     cursor: pointer;
     transition: all 0.3s ease;
 
     &:hover {
-      box-shadow: 0px 3px 13px 0px #17203166;
+      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
     }
 
     &Active {
-      background-color: #fff;
-      border: 1px solid #E2E6E9;
-      color: #4219D0;
+      background-color: var(--color-white);
+      border: 1px solid var(--color-elements);
+      color: var(--color-accent);
     }
   }
 
   &Favourite {
     all: unset;
+    @include flex-center;
     width: 48px;
     height: 48px;
-    border: 1px solid #B4BDC3;
+    border: 1px solid var(--color-icons);
     border-radius: 32px;
     box-sizing: border-box;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
 
@@ -174,7 +157,7 @@
     }
 
     &:hover {
-      border-color: #89939A;
+      border-color: var(--color-secondary);
     }
   }
 }
@@ -186,6 +169,7 @@
   gap: 8px;
   margin-top: 32px;
 }
+
 .spec {
   &Block {
     display: flex;
@@ -193,15 +177,14 @@
   }
 
   &Title {
+    @include font-small;
     font-weight: 600;
-    font-size: 12px;
-    color: #89939A
+    color: var(--color-secondary);
   }
 
   &Value {
+    @include font-small;
     font-weight: 600;
-    font-size: 12px;
-    color: #0F0F11;
+    color: var(--color-primary);
   }
 }
-

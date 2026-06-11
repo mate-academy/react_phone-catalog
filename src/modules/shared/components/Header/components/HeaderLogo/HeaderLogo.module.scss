@@ -2,9 +2,7 @@
   width: 128px;
   height: 100%;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
 
   &Img {
     width: 80px;

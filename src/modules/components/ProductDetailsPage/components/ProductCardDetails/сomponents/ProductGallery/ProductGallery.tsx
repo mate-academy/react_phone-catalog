@@ -1,9 +1,12 @@
 /* eslint-disable prettier/prettier */
 
+//#region IMPORTS
 import { useState } from 'react';
 
 import styles from './ProductGallery.module.scss';
+//#endregion
 
+//#region STYLES
 const {
   gallery,
   thumbsList,
@@ -13,14 +16,22 @@ const {
   preview,
   previewImage,
 } = styles;
+//#endregion
 
-export const ProductGallery = (
-  { images }: { images: string[] }
-) => {
+interface Props {
+  images: string[];
+}
+
+export const ProductGallery: React.FC<Props> = ({ images }) => {
+  //#region STATE
   const [activeIndex, setActiveIndex] = useState(0);
+  //#endregion
 
+  //#region DATA
   const currentPreviewImage = images[activeIndex] || images[0];
+  //#endregion
 
+  //#region RENDER
   return (
     <div className={gallery}>
       <div className={thumbsList}>
@@ -33,14 +44,23 @@ export const ProductGallery = (
             key={imgUrl}
             onClick={() => setActiveIndex(index)}
           >
-            <img className={thumbsImage} src={`/${imgUrl}`} alt="" />
+            <img
+              className={thumbsImage}
+              src={`/${imgUrl}`}
+              alt={`Product thumbnail ${index + 1}`}
+            />
           </div>
         ))}
       </div>
 
       <div className={preview}>
-        <img className={previewImage} src={`/${currentPreviewImage}`} alt="" />
+        <img
+          className={previewImage}
+          src={`/${currentPreviewImage}`}
+          alt="Product preview"
+        />
       </div>
     </div>
   );
+  //#endregion
 };

@@ -2,12 +2,9 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 24px;
 
   &Link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
 
     text-decoration: none;
     transition: opacity 0.3s ease;
@@ -18,7 +15,7 @@
 
     &Active {
       line-height: 16px;
-      color: #0F0F11;
+      color: var(--color-primary);
     }
   }
 
@@ -31,9 +28,7 @@
   }
 
   &Arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
 
     width: 16px;
     height: 16px;
@@ -44,12 +39,7 @@
   }
 
   &Text {
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 16px;
-    color: #89939A;
+    @include font-small;
+    color: var(--color-secondary);
   }
 }
-
-
-

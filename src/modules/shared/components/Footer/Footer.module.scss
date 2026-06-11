@@ -1,37 +1,29 @@
-@include on-tablet {};
-@include on-mobile {};
-
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid #E2E6E9;
-
+.footer {
+  border-top: 1px solid var(--color-elements);
   width: 100%;
-  height: 96px;
-  padding: 0 152px;
+  background-color: var(--color-white);
 
-  @include on-tablet {
-    padding: 0 32px;
-  };
+  :global(.container) {
+    height: 96px;
+    width: 100%;
+    @include flex-center($content: space-between);
 
-  @include on-mobile {
-    padding: 32px 16px;
-    flex-direction: column;
-    gap: 32px;
-    height: auto;
-  };
+    @include on-mobile {
+      @include flex-center($direction: column, $gap: 32px);
+      padding-top: 32px;
+      padding-bottom: 32px;
+      height: auto;
+    }
+  }
 }
 
 .logo {
-  display: flex;
-  justify-content: flex-start;
+  @include flex-center($content: flex-start);
   flex: 1;
 
   @include on-mobile {
     flex: none;
     width: 100%;
-    justify-content: flex-start;
   }
 }
 
@@ -40,8 +32,7 @@
 }
 
 .nav {
-  display: flex;
-  justify-content: center;
+  @include flex-center;
   flex: 1;
 
   @include on-mobile {
@@ -52,46 +43,37 @@
 }
 
 .navList {
-  display: flex;
-  justify-content: space-between;
+  @include flex-center($content: space-between);
+
   width: 100%;
   max-width: 380px;
   list-style: none;
 
   @include on-mobile {
-    flex-direction: column;
-    align-items: start;
-    gap: 16px;
+    @include flex-center($direction: column, $content: flex-start, $gap: 16px);
+    align-items: flex-start;
   }
 }
 
 .navItem {
-  display: flex;
-  justify-content: center;
+  @include flex-center;
 }
 
 .navLink {
+  @include font-uppercase;
+  color: var(--color-secondary);
   text-decoration: none;
-  text-transform: uppercase;
 
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 11px;
-  letter-spacing: 4%;
-  color: #89939A;
   transition: color 0.3s ease;
 
   &:hover {
-    color: #0F0F11;
+    color: var(--color-primary);
   }
 }
 
 .scrollBlock {
-  display: flex;
-  justify-content: flex-end;
+  @include flex-center($content: flex-end, $gap: 16px);
   flex: 1;
-  align-items: center;
-  gap: 16px;
 
   @include on-mobile {
     flex: none;
@@ -101,28 +83,15 @@
 }
 
 .scrollText {
+  @include font-small;
   font-weight: 400;
-  font-size: 12px;
-  color: #89939A;
+  color: var(--color-secondary);
 }
 
 .scrollBtn {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 32px;
-  height: 32px;
-  border: 1px solid #B4BDC3;
-  border-radius: 50%;
-  background-color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    border-color: #0F0F11;
-    background-color: #FAFAFA;
+  &.scrollBtn {
+    width: 32px;
+    height: 32px;
+    background-color: var(--color-white);
   }
 }
-

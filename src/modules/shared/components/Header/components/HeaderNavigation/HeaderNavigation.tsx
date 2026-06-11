@@ -1,8 +1,14 @@
 /* eslint-disable prettier/prettier */
+
+//#region IMPORTS
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
-import styles from './HeaderNavigation.module.scss';
 import cn from 'classnames';
+
+import styles from './HeaderNavigation.module.scss';
+//#endregion
+
+//#region STYLES_&_CONSTANTS
 const {
   navigation,
   navigationLink,
@@ -18,12 +24,16 @@ const navLinks = [
   { title: 'tablets', href: '/tablets' },
   { title: 'accessories', href: '/accessories' },
 ];
+//#endregion
 
 export const HeaderNavigation = () => {
+  //#region STATE
   const [isHovered, setIsHovered] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [lastIndex, setLastIndex] = useState<number | null>(null);
+  //#endregion
 
+  //#region HANDLERS_&_HELPERS
   const handleMouseEnter = (index: number) => {
     if (hoveredIndex !== null && hoveredIndex !== index) {
       setLastIndex(hoveredIndex);
@@ -43,7 +53,9 @@ export const HeaderNavigation = () => {
       [fromLeft]: !isMovingLeft,
     });
   };
+  //#endregion
 
+  //#region RENDER
   return (
     <nav
       className={navigation}
@@ -65,4 +77,5 @@ export const HeaderNavigation = () => {
       ))}
     </nav>
   );
+  //#endregion
 };
