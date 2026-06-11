@@ -1,5 +1,5 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import './App.scss';
 import { Header } from './components/Header';
 import { HomePage } from './modules/HomePage/HomePage';
@@ -9,16 +9,16 @@ import { AccessoriesPage } from './modules/AccessoriesPage/AccessoriesPage';
 import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 
 export const App = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Header />
 
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route index element={<HomePage />} />
       <Route path="/phones" element={<PhonesPage />} />
       <Route path="/tablets" element={<TabletsPage />} />
       <Route path="/accessories" element={<AccessoriesPage />} />
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
-  </BrowserRouter>
+  </HashRouter>
 );
