@@ -51,7 +51,7 @@ export const Breadcrumbs = ({ product }: Props) => {
             <span key={crumb.to} className={styles.items}>
               {index > 0 && (
                 <img
-                  src="/img/icons/Chevron (Arrow Right).svg"
+                  src="./img/icons/Chevron (Arrow Right).svg"
                   className={styles.next}
                   alt="NextVector"
                 />
@@ -62,7 +62,7 @@ export const Breadcrumbs = ({ product }: Props) => {
                 <Link className={styles.crumb} to={crumb.to}>
                   {crumb.to === '/' ? (
                     <img
-                      src="/img/icons/Home.svg"
+                      src="./img/icons/Home.svg"
                       className={styles.homeIcon}
                       alt="Home"
                     />
@@ -79,7 +79,7 @@ export const Breadcrumbs = ({ product }: Props) => {
       {product && (
         <div className={styles.back} onClick={() => navigate(-1)}>
           <img
-            src="/img/icons/VectorPrev.svg"
+            src="./img/icons/VectorPrev.svg"
             className={styles.Prev}
             alt="PrevVector"
           />

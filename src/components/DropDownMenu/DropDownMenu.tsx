@@ -66,7 +66,7 @@ export const DropDownMenu: React.FC<Props> = ({
         <div className={styles.value}>{currentValue}</div>
         <span className={styles.arrowDown}>
           <img
-            src="public/img/icons/Chevron (Arrow Down).svg"
+            src="public./img/icons/Chevron (Arrow Down).svg"
             alt="arrow down"
           />
         </span>

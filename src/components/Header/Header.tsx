@@ -41,7 +41,7 @@ export const Header = () => {
       <header className={styles.header}>
         <div className={styles.container}>
           <a href="/">
-            <img src="/img/Logo.svg" alt="logo" className={styles.logo} />
+            <img src="./img/Logo.svg" alt="logo" className={styles.logo} />
           </a>
           <div className={styles['header-middle-block-wrapper']}>
             <ul className={styles['header-list']}>
@@ -76,7 +76,7 @@ export const Header = () => {
             >
               <img
                 src={
-                  isMenuOpen ? '/img/icons/Close.svg' : '/img/icons/Union.svg'
+                  isMenuOpen ? './img/icons/Close.svg' : './img/icons/Union.svg'
                 }
                 alt={isMenuOpen ? 'close Menu' : 'open Menu'}
                 className={styles.burgerMenu__icon}

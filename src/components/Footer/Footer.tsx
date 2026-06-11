@@ -16,7 +16,7 @@ export const Footer = () => {
       <div className={styles.container}>
         <a href="/">
           <img
-            src="/img/Logo.svg"
+            src="./img/Logo.svg"
             alt="logo"
             className={styles['footer-logo']}
           />

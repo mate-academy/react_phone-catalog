@@ -33,7 +33,7 @@ export const CartPage = () => {
     <div className={styles.container}>
       <div className={styles.back} onClick={() => navigate(-1)}>
         <img
-          src="/img/icons/VectorPrev.svg"
+          src="./img/icons/VectorPrev.svg"
           className={styles.Prev}
           alt="PrevVector"
         />
@@ -51,7 +51,7 @@ export const CartPage = () => {
                   <div className={styles.product} key={product.id}>
                     <div className={styles.topRow}>
                       <img
-                        src="public\img\icons\Close-gray.svg"
+                        src=".\img\icons\Close-gray.svg"
                         alt="close"
                         className={styles.close}
                         onClick={() => {

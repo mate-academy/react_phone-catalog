@@ -18,7 +18,7 @@ export const CartIconLink: React.FC<Props> = ({ variant }) => {
       variant={variant}
       badgeCount={totalQuantity}
       path={'/cart'}
-      icon={'/img/icons/shoping-bag-icon.svg'}
+      icon={'./img/icons/shoping-bag-icon.svg'}
       descriptions={'shoping-bag'}
     />
   );

@@ -43,8 +43,8 @@ export const ProductAction: React.FC<Props> = ({
         <img
           src={
             isFavorite
-              ? '/img/icons/Favourites_Filled.svg'
-              : '/img/icons/heart-Icon.svg'
+              ? './img/icons/Favourites_Filled.svg'
+              : './img/icons/heart-Icon.svg'
           }
           alt="heart-logo"
           className={styles.buttonFavorite__icon}

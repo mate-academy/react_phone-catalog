@@ -28,11 +28,11 @@ export const MobileMenu: React.FC<Props> = ({ items, onClose, isOpen }) => {
       >
         <nav className={styles.menu__nav}>
           <Link to="/" className={styles.menu__nav__logo}>
-            <img src="/img/Logo.svg" alt="logo" className={styles.logo} />
+            <img src="./img/Logo.svg" alt="logo" className={styles.logo} />
           </Link>
 
           <button className={styles.closeButton} onClick={onClose}>
-            <img src="/img/icons/Close.svg" alt="close Button" />
+            <img src="./img/icons/Close.svg" alt="close Button" />
           </button>
         </nav>
 
