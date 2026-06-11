@@ -1,0 +1,49 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.breadcrumbs {
+  padding-top: 24px;
+  display: flex;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.breadcrumbs__home-link {
+  display: flex;
+}
+
+.breadcrumbs__home-link img {
+ height: 80%;
+  display: inline-block;
+}
+
+.breadcrumbs__link {
+  text-decoration: none;
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+
+  line-height: 24px;
+  letter-spacing: 0%;
+
+  color: $color-secondary;
+
+}
+
+.breadcrumbs__link--active {
+  color: #313237;
+}
+
+.breadcrumbs__product-name {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+
+  line-height: 24px;
+  letter-spacing: 0%;
+
+  color: $color-secondary;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

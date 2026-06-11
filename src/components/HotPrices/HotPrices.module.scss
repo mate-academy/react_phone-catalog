@@ -1,0 +1,13 @@
+@use "../../styles/mixins.scss" as *;
+
+.hot-prices{
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}

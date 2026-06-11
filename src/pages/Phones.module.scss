@@ -1,0 +1,117 @@
+@use '../styles/mixins.scss' as *;
+@use '../styles/variables' as *;
+
+.pageGrid {
+  @include page-grid;
+
+  padding-inline: 16px;
+}
+
+.phones__breadcrumbs {
+  margin-bottom: 40px;
+}
+
+.title {
+  grid-column: 1 / -1;
+  font-family: Mont, sans-serif;
+font-weight: 800;
+font-style: Bold;
+font-size: 48px;
+
+line-height: 56px;
+letter-spacing: -1%;
+margin-bottom: 8px;
+}
+
+.modelsCount {
+  margin-bottom: 40px;
+    grid-column: 1 / -1;
+    font-family: Mont, sans-serif;
+font-weight: 500;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0%;
+color: $color-secondary;
+
+}
+
+.catalogControle {
+    grid-column: 1 / -1;
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  font-family: Mont, sans-serif;
+font-weight: 500;
+font-size: 12px;
+line-height: 100%;
+letter-spacing: 0%;
+color: $color-secondary;
+gap: 4px;
+
+}
+
+
+.sortSelect {
+  min-width: 176px;
+  height: 40px;
+  border-radius: 8px;
+  border-color: $color-icons;
+  font-family: Mont,sans-serif;
+font-weight: 500;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0%;
+color: $color-primary;
+
+padding: 10px 12px;
+
+}
+
+.sortSelect:hover {
+  border-color: $color-secondary;
+}
+
+.sortSelect:focus {
+    outline: none;
+    border-color:$color-primary;
+}
+
+.perPageSelect {
+  min-width: 128px;
+  height: 40px;
+   border-radius: 8px;
+  border-color: $color-icons;
+  font-family: Mont,sans-serif;
+font-weight: 500;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0%;
+color:$color-primary;
+
+padding: 10px 12px;
+
+}
+
+.perPageSelect:hover {
+  border-color: $color-secondary;
+}
+
+.perPageSelect:focus {
+    outline: none;
+    border-color:$color-primary;
+}
+
+.products {
+    grid-column: 1 / -1;
+}
+
+.paginationWrapper {
+grid-column: 1 / -1;
+
+  margin-bottom: 80px;
+}

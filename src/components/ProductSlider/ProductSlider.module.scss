@@ -1,0 +1,74 @@
+@use '/src/styles/mixins.scss' as *;
+@use '../../styles/variables' as *;
+
+.product-slider__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+
+}
+
+.product-slider__title {
+  font-family: Mont, sans-serif;
+font-weight: 800;
+font-size: 22px;
+color: $color-primary;
+line-height: 140%;
+max-width: 136px;
+
+  @include on-tablet {
+    font-size: $h2-size-desktop;
+    line-height: $h2-line-height-desktop;
+    letter-spacing: -1%;
+    max-width: none;
+  }
+
+}
+
+.product-slider__buttons {
+  display: flex;
+  gap: 16px;
+
+}
+
+.product-slider__button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-elements;
+  border-radius: 50%;
+  background-color: transparent;
+
+  transition: border-color $transition-duration ease;
+}
+
+.product-slider__button:hover {
+  border-color: $color-primary;
+}
+
+.product-slider__button:disabled {
+  opacity: 0.3;
+}
+
+.product-slider__button:disabled:hover  {
+    transform: none;
+border-color: $color-elements;
+}
+
+.product-slider__wrapper {
+  overflow: hidden;
+}
+
+.product-slider__list {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+}
+
+.section {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 80px;
+  }
+}

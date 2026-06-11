@@ -1,0 +1,23 @@
+@use "../../styles/mixins.scss" as *;
+
+.productList__item {
+  list-style: none;
+
+}
+
+.productList {
+ display: grid;
+  gap: 16px;
+  row-gap: 40px;
+  margin-bottom: 40px;
+
+  grid-template-columns: 1fr;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+    @include on-desktop {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
