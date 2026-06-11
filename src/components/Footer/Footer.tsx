@@ -68,7 +68,7 @@ export const Footer: React.FC = () => {
             </li>
             <li className={styles.footerNavItem}>
               <a
-                href="https://github.com/VitaliyHoroshko/react_phone-catalog/blob/master/README.md"
+                href="https://www.apple.com/legal/privacy/en-ww/"
                 target="_blank"
                 rel="noreferrer"
                 className={styles.footerNavLink}

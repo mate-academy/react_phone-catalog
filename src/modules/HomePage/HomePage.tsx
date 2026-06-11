@@ -139,9 +139,10 @@ export const HomePage: React.FC = () => {
       ) : (
         <>
           <main className={styles.container}>
-            <h1 className={styles.homePageTitle}>
+            <h1 className={styles.visuallyHidden}>Product Catalog</h1>
+            <p className={styles.homePageTitle}>
               Welcome to Nice Gadgets store!
-            </h1>
+            </p>
 
             <section className={styles.homePageBannerSection}>
               <Banner />
@@ -196,8 +197,8 @@ export const HomePage: React.FC = () => {
                       category={product.category}
                       image={product.image}
                       title={product.name}
-                      price={product.price}
-                      fullPrice={product.fullPrice}
+                      price={product.fullPrice}
+                      // fullPrice={product.fullPrice}
                       screen={product.screen}
                       capacity={product.capacity}
                       ram={product.ram}

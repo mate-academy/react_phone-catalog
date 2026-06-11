@@ -54,6 +54,13 @@ export const ProductDetailsPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [itemId]);
+
   const handleScroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
@@ -102,7 +109,6 @@ export const ProductDetailsPage: React.FC = () => {
       return;
     }
 
-    setLoading(true);
     setError(false);
 
     const controller = new AbortController();
@@ -255,9 +261,9 @@ export const ProductDetailsPage: React.FC = () => {
           <span className={styles.breadcrumbsCurrent}>{product.name}</span>
         </nav>
 
-        <button onClick={() => navigate(-1)} className={styles.backButton}>
+        <Link to={`/${category}`} className={styles.backButton}>
           Back
-        </button>
+        </Link>
 
         <h1 className={styles.productTitle}>{product.name}</h1>
 
