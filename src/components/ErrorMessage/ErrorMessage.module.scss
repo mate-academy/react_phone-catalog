@@ -2,7 +2,8 @@
 
 .errorMessage {
   color: black;
-   @include h2
+  
+   @include h2;
 }
 
 .errorContainer {
