@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { FavoritesContext } from '../../context/FavoritesContext';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
@@ -10,6 +10,8 @@ export const Header = () => {
   const cartContext = useContext(CartContext);
   const favoritesContext = useContext(FavoritesContext);
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   if (!cartContext) {
     return null;
   }
@@ -17,9 +19,13 @@ export const Header = () => {
   const { cart } = cartContext;
   const totalAmount = cart.reduce((sum, item) => sum + item.amount, 0);
 
+
+
   if (!favoritesContext) {
     return null;
   }
+const { favorites } = favoritesContext;
+
 
   return (
     <>
