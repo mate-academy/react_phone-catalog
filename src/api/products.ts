@@ -1,5 +1,9 @@
 const fetchData = async (url: string) => {
-  const res = await fetch(url);
+  const cleanUrl = url.startsWith('/') ? url.slice(1) : url;
+
+  const fullUrl = `${import.meta.env.BASE_URL}${cleanUrl}`;
+
+  const res = await fetch(fullUrl);
 
   if (!res.ok) {
     throw new Error('Failed to load data');
