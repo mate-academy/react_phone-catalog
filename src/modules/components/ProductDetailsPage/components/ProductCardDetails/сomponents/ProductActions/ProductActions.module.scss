@@ -1,13 +1,26 @@
-//colorBlock
+.actionsContainer {
+  grid-column: 14 / 21;
+  width: 100%;
+
+  @include on-tablet {
+    grid-column: 8 / -1;
+  }
+
+  @include on-mobile {
+    grid-column: 1 / -1;
+  }
+}
+
+/* --- Colors Block --- */
 .colors {
   &Block {
-    border-bottom: 1px solid var(--color-elements);
     padding-bottom: 24px;
+    border-bottom: 1px solid var(--color-elements);
   }
 
   &Title {
-    @include font-small;
     color: var(--color-secondary);
+    @include font-small;
   }
 
   &List {
@@ -21,15 +34,13 @@
   width: 30px;
   height: 30px;
 
-  // внутрішній круг
   border: 2px solid var(--color-white);
   border-radius: 50%;
-  // зовнішній круг
   outline: 1px solid var(--color-elements);
   outline-offset: 1px;
 
-  transition: outline-color 0.3s ease;
   cursor: pointer;
+  transition: outline-color 0.3s ease;
 
   &:hover {
     outline-color: var(--color-secondary);
@@ -40,17 +51,17 @@
   }
 }
 
-//capacityBlock
+/* --- Capacity Block --- */
 .capacity {
   &Block {
     margin-top: 24px;
-    border-bottom: 1px solid var(--color-elements);
     padding-bottom: 24px;
+    border-bottom: 1px solid var(--color-elements);
   }
 
   &Title {
-    @include font-small;
     color: var(--color-secondary);
+    @include font-small;
   }
 
   &List {
@@ -64,14 +75,14 @@
 
     height: 32px;
     padding: 7px 8px 4px 8px;
-    text-decoration: none;
 
+    color: var(--color-primary);
+    background-color: var(--color-white);
     border: 1px solid var(--color-icons);
     border-radius: 4px;
 
+    text-decoration: none;
     @include font-body;
-    color: var(--color-primary);
-    background-color: var(--color-white);
     transition: all 0.3s ease;
 
     &Active {
@@ -85,7 +96,7 @@
   }
 }
 
-//priceBlock
+/* --- Price Block --- */
 .price {
   &Block {
     @include flex-center($content: flex-start, $gap: 8px);
@@ -94,38 +105,39 @@
   }
 
   &Current {
-    @include font-h2;
     color: var(--color-primary);
+    @include font-h2;
   }
 
   &Discount {
-    @include font-h3;
     color: var(--color-secondary);
     text-decoration: line-through;
+    @include font-h3;
   }
 }
 
-//buttonsBlock
+/* --- Buttons Block --- */
 .buttonsBlock {
-  margin-top: 16px;
   display: flex;
   gap: 8px;
   width: 100%;
+  margin-top: 16px;
 }
 
 .button {
   &Cart {
     all: unset;
     @include flex-center;
-    width: 263px;
+
+    flex: 1;
     height: 48px;
+
+    color: var(--color-white);
     background-color: var(--color-accent);
     border-radius: 32px;
 
-    color: var(--color-white);
-    @include font-buttons;
-
     cursor: pointer;
+    @include font-buttons;
     transition: all 0.3s ease;
 
     &:hover {
@@ -133,20 +145,23 @@
     }
 
     &Active {
+      color: var(--color-accent);
       background-color: var(--color-white);
       border: 1px solid var(--color-elements);
-      color: var(--color-accent);
     }
   }
 
   &Favourite {
     all: unset;
     @include flex-center;
+    flex-shrink: 0;
+
     width: 48px;
     height: 48px;
+    box-sizing: border-box;
+
     border: 1px solid var(--color-icons);
     border-radius: 32px;
-    box-sizing: border-box;
 
     cursor: pointer;
     transition: all 0.3s ease;
@@ -162,7 +177,7 @@
   }
 }
 
-//shortSpecsBlock
+/* --- Short Specs Block --- */
 .shortSpecsBlock {
   display: flex;
   flex-direction: column;
@@ -177,14 +192,14 @@
   }
 
   &Title {
-    @include font-small;
-    font-weight: 600;
     color: var(--color-secondary);
+    font-weight: 600;
+    @include font-small;
   }
 
   &Value {
-    @include font-small;
-    font-weight: 600;
     color: var(--color-primary);
+    font-weight: 600;
+    @include font-small;
   }
 }

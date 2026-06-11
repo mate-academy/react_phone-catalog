@@ -18,38 +18,21 @@
     color: var(--color-primary);
   }
 
-  &MainSection {
-    display: flex;
-    align-items: flex-start;
-    gap: 64px;
+  &Grid {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 80px 16px;
     margin-top: 40px;
 
     @include on-tablet {
-      gap: 16px;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 64px 16px;
     }
 
     @include on-mobile {
-      flex-direction: column;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 56px 16px;
       margin-top: 32px;
-    }
-  }
-
-  &InfoSection {
-    display: flex;
-    align-items: flex-start;
-    gap: 64px;
-    margin-top: 80px;
-
-    @include on-tablet {
-      flex-direction: column;
-      margin-top: 64px;
-      gap: 64px;
-    }
-
-    @include on-mobile {
-      flex-direction: column;
-      margin-top: 40px;
-      gap: 56px;
     }
   }
 }

@@ -10,7 +10,7 @@ import styles from './ProductTechSpecs.module.scss';
 
 //#region STYLES
 const {
-  specs,
+  specsContainer,
   specsTitle,
   specsList,
   specsItem,
@@ -63,7 +63,7 @@ export const ProductTechSpecs: React.FC<Props> = ({ product }) => {
 
   //#region RENDER
   return (
-    <div className={specs}>
+    <div className={specsContainer}>
       <h3 className={specsTitle}>Tech specs</h3>
 
       <div className={specsList}>

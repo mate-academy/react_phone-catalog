@@ -21,6 +21,8 @@ export const PER_PAGE_OPTIONS = [
 
 export const PRODUCT_COLORS_MAP = {
   black: '#1c1d21',
+  spaceblack: '#2e2c2b',
+  midnight: '#2b303a',
   green: '#aee1cd',
   yellow: '#ffe681',
   white: '#f9f6ef',

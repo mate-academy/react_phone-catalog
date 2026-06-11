@@ -23,7 +23,7 @@ import styles from './ProductActions.module.scss';
 
 //#region STYLES
 const {
-  actions,
+  actionsContainer,
 
   colorsBlock,
   colorsTitle,
@@ -122,7 +122,7 @@ export const ProductActions: React.FC<Props> = ({ product }) => {
 
   //#region RENDER
   return (
-    <div className={actions}>
+    <div className={actionsContainer}>
       <div className={colorsBlock}>
         <p className={colorsTitle}>Available colors</p>
         <div className={colorsList}>

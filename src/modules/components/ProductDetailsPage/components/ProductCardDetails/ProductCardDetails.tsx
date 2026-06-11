@@ -16,8 +16,7 @@ import styles from './ProductCardDetails.module.scss';
 const {
   detailsContainer,
   detailsTitle,
-  detailsMainSection,
-  detailsInfoSection,
+  detailsGrid,
 } = styles;
 //#endregion STYLES
 
@@ -29,17 +28,16 @@ export const ProductCardDetails: React.FC<Props> = ({ product }) => {
   //#region RENDER
   return (
     <div className={detailsContainer}>
+      
       <h2 className={detailsTitle}>{product.name}</h2>
 
-      <div className={detailsMainSection}>
+      <div className={detailsGrid}>
         <ProductGallery images={product.images} />
         <ProductActions product={product} />
-      </div>
-
-      <div className={detailsInfoSection}>
         <ProductAbout description={product.description} />
         <ProductTechSpecs product={product} />
       </div>
+
     </div>
   );
   //#endregion RENDER

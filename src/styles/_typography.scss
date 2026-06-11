@@ -23,20 +23,20 @@ $font-family-main: 'Mont', sans-serif;
   letter-spacing: -0.01em;
 
   @include on-mobile {
-    font-size: 22px;
+    font-size: 32px;
     line-height: 31px;
   }
 }
 
 @mixin font-h3 {
   font-family: $font-family-main;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 22px;
   line-height: 31px;
 
   @include on-mobile {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 22px;
     line-height: 26px;
   }
 }
