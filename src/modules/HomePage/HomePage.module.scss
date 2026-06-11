@@ -3,10 +3,11 @@
   margin: 0 auto;
   width: 100%;
 
+
   @media (min-width: 640px) {
     margin-top: 72px;
-    max-width: 640px;
-    padding-inline: 24px;
+    max-width: 662px;
+    padding: 0 24px;
   }
 
   @media (min-width: 1200px) {
@@ -32,7 +33,7 @@
     padding: 0 16px;
     overflow: visible;
     margin: 0 auto;
-       margin-top: 56px;
+    margin-top: 56px;
     min-width: 288px;
 
     @media (min-width: 640px) {
