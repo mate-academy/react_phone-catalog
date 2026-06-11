@@ -65,6 +65,7 @@
     img {
       width: 20px;
       height: 20px;
+      filter: brightness(0) invert(1);
     }
   }
 
@@ -91,27 +92,59 @@
 
   &__bottom {
     display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
     position: absolute;
     bottom: 0;
     left: 0;
+    border-top: 1px solid #3B3E4A;
   }
 
   &__heart,
   &__packet {
-    border: 1px solid #3B3E4A;
-    cursor: pointer;
-    padding: 20px 100px;
+    flex: 1;
+    height: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
+    border: none;
+    position: relative;
+
+    &:first-child {
+      border-right: 1px solid #3B3E4A;
+    }
 
     img {
       width: 24px;
       height: 24px;
     }
+  }
+
+  &__icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 14px;
+    height: 14px;
+    background-color: #EB5757;
+    color: white;
+    font-size: 8px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    pointer-events: none;
   }
 }
 
@@ -140,13 +173,19 @@
     transition: width 0.3s ease-in-out;
   }
 
-  &:active,
-  &:focus {
+  &:hover {
     color: white;
+
+    &::after {
+      width: 100%;
+    }
   }
 
-  &:active::after,
-  &:focus::after {
-    width: 100%;
+  &.nav__link--active {
+    color: white;
+
+    &::after {
+      width: 100%;
+    }
   }
 }

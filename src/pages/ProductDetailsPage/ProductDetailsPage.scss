@@ -17,10 +17,13 @@
 .product-details {
   padding: 24px 32px;
   max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
   color: var(--text-color);
 
   @include on-tablet {
-    padding: 24px;
+    padding: 24px 32px;
   }
 
   @include on-phone {

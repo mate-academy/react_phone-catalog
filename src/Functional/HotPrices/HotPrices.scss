@@ -92,13 +92,23 @@
   }
 
   &__card-image {
-    width: 100%;
+    width: 208px;
     height: 196px;
     object-fit: contain;
-    margin-bottom: 16px;
+    margin: 0 auto 16px auto;
     display: block;
     transition: transform 0.3s ease;
     flex-shrink: 0;
+
+    @include on-tablet {
+      width: 224px;
+      height: 196px;
+    }
+
+    @include on-phone {
+      width: 224px;
+      height: 130px;
+    }
 
     &:hover {
       transform: scale(1.1);

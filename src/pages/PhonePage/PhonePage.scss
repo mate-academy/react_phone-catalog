@@ -246,6 +246,13 @@
   align-items: center;
   flex-wrap: wrap;
 
+  @include on-phone {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 8px;
+  }
+
   &__button {
     width: 32px;
     height: 32px;
@@ -260,6 +267,7 @@
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    flex-shrink: 0;
 
     &.active {
       background-color: #905BFF;

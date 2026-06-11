@@ -1,5 +1,3 @@
-// ProductDetailsPage.tsx
-
 import { useParams, useLocation, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Phone, Tablet, Accessories } from '../../Interface';
@@ -47,19 +45,27 @@ export const ProductDetailsPage = () => {
     color?: string | null,
     capacity?: string | null,
   ) => {
-    const parts = product.id!.split('-');
+    const currentColor = product.color || '';
+    const currentCapacity = isPhoneOrTablet(product) ? product.capacity : null;
 
-    parts.splice(-2, 2);
+    const colorParts = currentColor.toLowerCase().replace(/ /g, '-').split('-').length;
+    const capacityParts = currentCapacity
+      ? currentCapacity.toLowerCase().split('-').length
+      : 0;
+    const trimCount = colorParts + capacityParts;
+
+    const parts = product.id!.split('-');
+    const base = parts.slice(0, parts.length - trimCount);
 
     if (capacity) {
-      parts.push(capacity.toLowerCase());
+      base.push(...capacity.toLowerCase().split(' '));
     }
 
     if (color) {
-      parts.push(color.toLowerCase());
+      base.push(...color.toLowerCase().replace(/ /g, '-').split('-'));
     }
 
-    return parts.join('-');
+    return base.join('-');
   };
 
   useEffect(() => {
@@ -91,37 +97,26 @@ export const ProductDetailsPage = () => {
           return;
         }
 
-        const response = await fetch(
-          `${getBaseUrl()}${productsFile}`,
-        );
+        const response = await fetch(`${getBaseUrl()}${productsFile}`);
 
         if (!response.ok) {
           throw new Error(`Failed to fetch ${productsFile}`);
         }
 
-        const data: (Phone | Tablet | Accessories)[] =
-          await response.json();
+        const data: (Phone | Tablet | Accessories)[] = await response.json();
 
         setAllProducts(data);
 
-        const found = data.find(
-          item => item.id === productId,
-        );
+        const found = data.find(item => item.id === productId);
 
         if (found) {
           setProduct(found);
           setSelectedColor(found.color);
-          setSelectedImage(
-            found.images?.[0] || 'img/page-not-found.png',
-          );
-          setSelectedCapacity(
-            isPhoneOrTablet(found) ? found.capacity : null,
-          );
+          setSelectedImage(found.images?.[0] || 'img/page-not-found.png');
+          setSelectedCapacity(isPhoneOrTablet(found) ? found.capacity : null);
 
           try {
-            const productsRes = await fetch(
-              `${getBaseUrl()}api/products.json`,
-            );
+            const productsRes = await fetch(`${getBaseUrl()}api/products.json`);
 
             if (productsRes.ok) {
               const productsData = await productsRes.json();
@@ -219,19 +214,11 @@ export const ProductDetailsPage = () => {
   );
 
   if (isLoading) {
-    return (
-      <div className="product-details">
-        Loading...
-      </div>
-    );
+    return <div className="product-details">Loading...</div>;
   }
 
   if (!product) {
-    return (
-      <div className="product-details">
-        Product not found
-      </div>
-    );
+    return <div className="product-details">Product not found</div>;
   }
 
   return (
@@ -261,9 +248,7 @@ export const ProductDetailsPage = () => {
           className="home--nav-arrow"
         />
 
-        <span className="product-details__id">
-          {product.name}
-        </span>
+        <span className="product-details__id">{product.name}</span>
 
         <span className="product-details__item-id">
           ID: {productNumericId ?? product.id}
@@ -272,14 +257,16 @@ export const ProductDetailsPage = () => {
 
       <div className="product-details--back">
         <a href={getCategoryLink()} className="product-details__back-link">
-          <img src="./icons/arrow-left-small.svg" alt="back" className="product-details__back-icon" />
+          <img
+            src="./icons/arrow-left-small.svg"
+            alt="back"
+            className="product-details__back-icon"
+          />
           <span className="product-details__back-text">Back</span>
         </a>
       </div>
 
-      <h1 className="product-details__title">
-        {product.name}
-      </h1>
+      <h1 className="product-details__title">{product.name}</h1>
 
       <div className="product-details__main">
         <div className="product-details__gallery">
@@ -335,7 +322,7 @@ export const ProductDetailsPage = () => {
                   )}`}
                   className={`color-option color-option--${color
                     .toLowerCase()
-                    .replace(' ', '')} ${
+                    .replace(/ /g, '-')} ${
                     selectedColor === color ? 'color-option--active' : ''
                   }`}
                 />
@@ -420,13 +407,17 @@ export const ProductDetailsPage = () => {
               {'resolution' in product && product.resolution && (
                 <div className="product__spec">
                   <span className="product__spec-title">Resolution</span>
-                  <span className="product__spec-value">{product.resolution}</span>
+                  <span className="product__spec-value">
+                    {product.resolution}
+                  </span>
                 </div>
               )}
               {'processor' in product && product.processor && (
                 <div className="product__spec">
                   <span className="product__spec-title">Processor</span>
-                  <span className="product__spec-value">{product.processor}</span>
+                  <span className="product__spec-value">
+                    {product.processor}
+                  </span>
                 </div>
               )}
               {'ram' in product && product.ram && (
@@ -461,25 +452,46 @@ export const ProductDetailsPage = () => {
           <h2>Tech specs</h2>
           <div>
             {'screen' in product && product.screen && (
-              <p><span>Screen</span><span>{product.screen}</span></p>
+              <p>
+                <span>Screen</span>
+                <span>{product.screen}</span>
+              </p>
             )}
             {'resolution' in product && product.resolution && (
-              <p><span>Resolution</span><span>{product.resolution}</span></p>
+              <p>
+                <span>Resolution</span>
+                <span>{product.resolution}</span>
+              </p>
             )}
             {'processor' in product && product.processor && (
-              <p><span>Processor</span><span>{product.processor}</span></p>
+              <p>
+                <span>Processor</span>
+                <span>{product.processor}</span>
+              </p>
             )}
             {'ram' in product && product.ram && (
-              <p><span>RAM</span><span>{product.ram}</span></p>
+              <p>
+                <span>RAM</span>
+                <span>{product.ram}</span>
+              </p>
             )}
             {'camera' in product && product.camera && (
-              <p><span>Camera</span><span>{product.camera}</span></p>
+              <p>
+                <span>Camera</span>
+                <span>{product.camera}</span>
+              </p>
             )}
             {'zoom' in product && product.zoom && (
-              <p><span>Zoom</span><span>{product.zoom}</span></p>
+              <p>
+                <span>Zoom</span>
+                <span>{product.zoom}</span>
+              </p>
             )}
             {'cell' in product && Array.isArray(product.cell) && (
-              <p><span>Cell</span><span>{product.cell.join(', ')}</span></p>
+              <p>
+                <span>Cell</span>
+                <span>{product.cell.join(', ')}</span>
+              </p>
             )}
           </div>
         </div>
@@ -508,8 +520,8 @@ export const ProductDetailsPage = () => {
           }}
           spaceBetween={16}
           breakpoints={{
-            320:  { slidesPerView: 1.2 },
-            640:  { slidesPerView: 2.2 },
+            320: { slidesPerView: 1.2 },
+            640: { slidesPerView: 2.2 },
             1024: { slidesPerView: 4 },
           }}
         >
@@ -530,9 +542,7 @@ export const ProductDetailsPage = () => {
                       className="related-products__card-image"
                     />
 
-                    <p className="related-products__card-title">
-                      {item.name}
-                    </p>
+                    <p className="related-products__card-title">{item.name}</p>
                   </Link>
 
                   <div className="related-products__card-prices">
@@ -548,22 +558,34 @@ export const ProductDetailsPage = () => {
                   <div className="related-products__card-specs">
                     {'screen' in item && item.screen && (
                       <p>
-                        <span className="related-products__card-spec-label">Screen</span>
-                        <span className="related-products__card-spec-value">{item.screen}</span>
+                        <span className="related-products__card-spec-label">
+                          Screen
+                        </span>
+                        <span className="related-products__card-spec-value">
+                          {item.screen}
+                        </span>
                       </p>
                     )}
 
                     {isPhoneOrTablet(item) && item.capacity && (
                       <p>
-                        <span className="related-products__card-spec-label">Capacity</span>
-                        <span className="related-products__card-spec-value">{item.capacity}</span>
+                        <span className="related-products__card-spec-label">
+                          Capacity
+                        </span>
+                        <span className="related-products__card-spec-value">
+                          {item.capacity}
+                        </span>
                       </p>
                     )}
 
                     {'ram' in item && item.ram && (
                       <p>
-                        <span className="related-products__card-spec-label">RAM</span>
-                        <span className="related-products__card-spec-value">{item.ram}</span>
+                        <span className="related-products__card-spec-label">
+                          RAM
+                        </span>
+                        <span className="related-products__card-spec-value">
+                          {item.ram}
+                        </span>
                       </p>
                     )}
                   </div>
