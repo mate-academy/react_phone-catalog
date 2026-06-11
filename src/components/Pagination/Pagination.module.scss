@@ -8,11 +8,6 @@
   list-style: none;
   margin: 0 auto;
   padding: 0;
-  margin-bottom: 64px;
-
-  @include on-desktop {
-    margin-bottom: 80px;
-  }
 }
 
   .paginationItem {

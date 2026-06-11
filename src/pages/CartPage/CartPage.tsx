@@ -1,12 +1,28 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './CartPage.module.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { CartContext } from '../../Contexts/CartContext/CartContext';
 import classNames from 'classnames';
+import CheckOutMessage from '../../components/CheckOutMessage/CheckOutMessage';
 
 export const CartPage = () => {
+  const [checkOutMessage, setCheckOutMessage] = useState<boolean>(false);
   const navigate = useNavigate();
-  const { cartItems, changeQuntity, removeFromCart } = useContext(CartContext);
+  const { cartItems, changeQuntity, removeFromCart, clearCart } =
+    useContext(CartContext);
+  const [checkOut, setCheckOut] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (checkOut) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [checkOut]);
 
   const totalPrice = cartItems.reduce(
     (acc, item) => acc + item.product.price * item.quantity,
@@ -105,13 +121,29 @@ export const CartPage = () => {
 
               <div className={styles.line}></div>
 
-              <button className={styles.buttonAdd}>Checkout</button>
+              <button
+                className={styles.buttonAdd}
+                onClick={() => {
+                  setCheckOutMessage(true);
+                  setCheckOut(true);
+                }}
+              >
+                Checkout
+              </button>
             </div>
           </div>
         ) : (
           <p>Your cart is empty </p>
         )}
       </div>
+
+      {checkOutMessage && (
+        <CheckOutMessage
+          clearCart={clearCart}
+          cancel={setCheckOutMessage}
+          setCheckOut={setCheckOut}
+        />
+      )}
     </div>
   );
 };

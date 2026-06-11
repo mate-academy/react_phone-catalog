@@ -2,8 +2,6 @@
 @import '../../styles/variable';
 @import '../../styles/mixins';
 
-
-
 .container {
   width: 100%;
   max-width: 1136px;
@@ -24,8 +22,6 @@
   min-width: 288px;
   width: auto;
   margin: 24px 16px;
-
-  background-color: rgb(232, 88, 222);
 
   @include h1;
 
@@ -58,14 +54,6 @@
   }
 }
 
-.banner {
-  background-color: rgb(91, 17, 51);
-}
-
-.new__models {
-  background-color: rgb(92, 251, 148);
-}
-
 .sliderPadding {
     padding-left: $container-pading-mobile;
 
@@ -80,7 +68,6 @@
 
 
 .hot__prices {
-  background-color: darkcyan;
   width: 100%;
   max-width: 1136px;
   margin: 0 auto;
@@ -94,7 +81,6 @@
 }
 
 .shop__category {
-  background-color: aqua;
   padding-inline: $container-pading-mobile;
 
   @include on-tablet {

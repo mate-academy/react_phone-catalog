@@ -11,6 +11,11 @@
   margin: 0;
   background-color: $white-color;
   border-top: 1px solid $border-color;
+  margin-top: 64px;
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
 
   &-logo {
     width: 89px;

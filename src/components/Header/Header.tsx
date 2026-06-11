@@ -4,7 +4,6 @@ import styles from './header.module.scss';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import { useMatchMedia } from '../../hooks/useMatchMedia';
 import { NavLink } from 'react-router-dom';
-// import { CartContext } from '../../Contexts/CartContext/CartContext';
 import IconsAction from '../IconActions/IconActions';
 
 export const Header = () => {

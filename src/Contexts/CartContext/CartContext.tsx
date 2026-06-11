@@ -13,6 +13,7 @@ export type CartItemContext = {
   addToCart: (product: Products) => void;
   removeFromCart: (id: number) => void;
   changeQuntity: (id: number, val: number) => void;
+  clearCart: () => void;
 };
 
 type Props = {
@@ -24,6 +25,7 @@ export const CartContext = createContext<CartItemContext>({
   addToCart: () => {},
   changeQuntity: () => {},
   removeFromCart: () => {},
+  clearCart: () => {},
 });
 
 export const CartProvider: React.FC<Props> = ({ children }) => {
@@ -62,6 +64,10 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   const removeFromCart = (prodId: number) => {
     const newItemsCart = cartItems.filter(item => item.id !== prodId);
 
@@ -73,6 +79,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     addToCart,
     changeQuntity,
     removeFromCart,
+    clearCart,
   };
 
   return (

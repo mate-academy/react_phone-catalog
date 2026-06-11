@@ -4,7 +4,8 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import HomaPage from './pages/HomePage/HomePage';
 import { ProductsPage } from './pages/ProductsPage/ProductsPage';
 import ProductDetails from './pages/ProductDetailsPage/ProductDetailsPage';
-import CartPage from './pages/CartPage/CartPAge';
+import FavoritePage from './pages/FavoritePage/FavoritePage';
+import CartPage from './pages/CartPage/CartPage';
 
 export const Root = () => {
   return (
@@ -21,6 +22,7 @@ export const Root = () => {
           <Route path="product/:productId" element={<ProductDetails />} />
           <Route path="*" element={<NotFoundPage />} />
           <Route path="cart" element={<CartPage />} />
+          <Route path="favorites" element={<FavoritePage />} />
         </Route>
       </Routes>
     </HashRouter>

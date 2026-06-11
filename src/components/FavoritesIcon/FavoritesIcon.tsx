@@ -14,7 +14,7 @@ export const FavoritesIcon: React.FC<Props> = ({ variant }) => {
     <IconButton
       variant={variant}
       badgeCount={favoritesItemsLength}
-      path={'/favorite'}
+      path={'/favorites'}
       icon={'/img/icons/heart-Icon.svg'}
       descriptions={'Favorites'}
     />
