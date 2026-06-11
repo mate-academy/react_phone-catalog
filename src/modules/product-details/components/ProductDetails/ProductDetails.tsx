@@ -82,66 +82,69 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
 
   return (
     <div className={styles.ProductDetails}>
-      <button onClick={() => navigate(-1)}>-- Back</button>
+      <button className={styles.backButton} onClick={() => navigate(-1)}>
+        -- Back
+      </button>
 
       <div className={styles.topBar}>
-        <div>
-          <p>{product.id}</p>
-        </div>
+        <span className={styles.productId}>{product.id}</span>
         <h2 className={styles.title}>{product.name}</h2>
       </div>
 
-      <div className={styles.mainBlock}>
-        <div className={styles.slider}>
-          {product?.images?.length ? (
-            product.images.map((image, index) => (
-              <button
-                key={image + index}
-                type="button"
-                onClick={() => setActiveImage(image)}
-              >
-                <img src={image} alt={`Product shot ${index + 1}`} />
-              </button>
-            ))
-          ) : (
-            <p>Images are loading...</p>
-          )}
+      <div className={styles.mainLayout}>
+        <div className={styles.mediaColumn}>
+          <div className={styles.thumbsSlider}>
+            {product?.images?.length ? (
+              product.images.map((image, index) => (
+                <button
+                  key={image + index}
+                  type="button"
+                  onClick={() => setActiveImage(image)}
+                >
+                  <img src={image} alt={`Product shot ${index + 1}`} />
+                </button>
+              ))
+            ) : (
+              <p>Images are loading...</p>
+            )}
+          </div>
+
+          <div className={styles.mainPreview}>
+            <img src={activeImage || product.images?.[0]} alt={product.name} />
+          </div>
         </div>
 
-        <div className={styles.mainImg}>
-          <img src={activeImage || product.images?.[0]} alt={product.name} />
-        </div>
+        <div className={styles.configColumn}>
+          <div className={styles.colorSelector}>
+            <p className={styles.sectionLabel}>Available colors</p>
+            <div className={styles.colorsGrid}>
+              {colorsList.map((color, index) => {
+                const colorInputId = `${product.id}-color-${index}`;
+                const isSelected = activeColor === color;
 
-        <div className={styles.colors}>
-          <p>Available colors</p>
-
-          <div className={styles.colorsGrid}>
-            {colorsList.map((color, index) => {
-              const colorInputId = `${product.id}-color-${index}`;
-              const isSelected = activeColor === color;
-
-              return (
-                <div key={colorInputId} className={styles.colorWrapper}>
-                  <input
-                    id={colorInputId}
-                    type="radio"
-                    name={`product-color-${product.id}`}
-                    value={color}
-                    checked={isSelected}
-                    className={styles.colorInput}
-                    onChange={() => setActiveColor(color)}
-                  />
-                  <label
-                    htmlFor={colorInputId}
-                    className={`${styles.colorLabel} ${isSelected ? styles.isActive : ''}`}
-                    style={{ backgroundColor: color }}
-                    title={color}
-                  >
-                    <span className={styles.visuallyHidden}>{color}</span>
-                  </label>
-                </div>
-              );
-            })}
+                return (
+                  <div key={colorInputId} className={styles.colorWrapper}>
+                    <input
+                      id={colorInputId}
+                      type="radio"
+                      name={`product-color-${product.id}`}
+                      value={color}
+                      checked={isSelected}
+                      className={styles.colorInput}
+                      onChange={() => setActiveColor(color)}
+                    />
+                    <label
+                      htmlFor={colorInputId}
+                      className={`${styles.colorLabel} ${isSelected ? styles.isActive : ''}`}
+                      style={{ backgroundColor: color }}
+                      title={color}
+                    >
+                      <span className={styles.visuallyHidden}>{color}</span>
+                    </label>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
 

@@ -15,7 +15,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   const handleCartClick = () => {
     if (isInCart) {
-      removeFromCart(String(product.id));
+      removeFromCart(product.id);
     } else {
       addToCart(product);
     }
@@ -26,7 +26,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   const handleFavoriteClick = () => {
     if (isInFavorite) {
-      removeFromFavorite(String(product.id));
+      removeFromFavorite(product.id);
     } else {
       addToFavorite(product);
     }

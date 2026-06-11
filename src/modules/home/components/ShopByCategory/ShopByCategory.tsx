@@ -25,7 +25,7 @@ export const ShopByCategory: React.FC<Props> = ({
       <h2 className={styles.pageTitle}>Shop by category</h2>
 
       <div className={styles.categoryContainer}>
-        <Link className={styles.category} to="/phones">
+        <Link className={styles.category} to="/catalog/phones">
           <div className={`${styles.imageBox} ${styles.bgPhones}`}>
             <img
               src="/img/category-phones.png"
@@ -37,7 +37,7 @@ export const ShopByCategory: React.FC<Props> = ({
           <p className={styles.description}>{phonesQuantity} models</p>
         </Link>
 
-        <Link className={styles.category} to="/tablets">
+        <Link className={styles.category} to="/catalog/tablets">
           <div className={`${styles.imageBox} ${styles.bgTablets}`}>
             <img
               src="/img/category-tablets.png"
@@ -49,7 +49,7 @@ export const ShopByCategory: React.FC<Props> = ({
           <p className={styles.description}>{tabletsQuantity} models</p>
         </Link>
 
-        <Link className={styles.category} to="/accessories">
+        <Link className={styles.category} to="/catalog/accessories">
           <div className={`${styles.imageBox} ${styles.bgAccessories}`}>
             <img
               src="/img/category-accessories.png"

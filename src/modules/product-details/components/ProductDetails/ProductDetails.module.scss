@@ -1,3 +1,47 @@
-.root {
-  display: block;
+.mainLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr; // Дві рівні колонки для десктопа
+  gap: 40px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; // На мобільних стають одна під одну
+  }
+}
+
+.mediaColumn {
+  display: flex; // Слайдер зліва, велике фото справа
+  gap: 16px;
+}
+
+.configColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .shortSpecs {
+    // Стилі суто для маленьких характеристик під кнопкою
+    &Row {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+.detailsLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 60px;
+  gap: 60px;
+}
+
+.techSpecs {
+  // Стилі для великої таблиці внизу сторінки
+  &Table {
+    display: flex;
+    flex-direction: column;
+  }
+  &Row {
+    border-bottom: 1px solid #e2e6e9;
+    padding: 12px 0;
+  }
 }
