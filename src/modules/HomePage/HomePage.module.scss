@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .title-wrapper {
   display: grid;
   grid-template-columns: repeat(24, 1fr);
@@ -20,14 +24,227 @@
 .content {
   display: grid;
   grid-template-columns: repeat(24, 1fr);
-  gap: 16px;
   margin-inline: 152px;
+  column-gap: 16px;
 }
 
 .slider {
-  grid-column: 1 / -1;
-
   &__img {
+    grid-column: 2 / -2;
     width: 100%;
   }
 }
+
+.buttonPrev, .buttonNext {
+  display: block;
+  background-color: #323542;
+  border: none;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 16px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding-block: 18px 0;
+
+  &__button {
+    margin: 10px 9px;
+    padding: 0;
+    width: 14px;
+    height: 4px;
+    background-color: #3B3E4A;
+  }
+}
+
+.section {
+  margin-bottom: 80px;
+  grid-column: 1 / -1;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 41px;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    color: #F1F2F9;
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -1%;
+  }
+
+  &__buttons {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 16px;
+  }
+}
+
+.swiper {
+  background-color: #323542;
+  border: solid 1px #3B3E4A;
+  padding: 8px;
+  height: 32px;
+  width: 32px;
+}
+
+.newPhones {
+  &__product {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 16px;
+  }
+}
+
+.productCard {
+  grid-column: span 6;
+  padding: 32px;
+  background-color: #161827;
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__link {
+    display: grid;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    text-decoration: none;
+    color: #F1F2F9;
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    color: #F1F2F9;
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    margin-top: 8px;
+  }
+
+  &__discount {
+    margin-left: 8px;
+    color: #89939A;
+    font-weight: 600;
+    text-decoration: line-through;
+  }
+
+  &__divider {
+    color: #3B3E4A;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-block: 16px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__property {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: #75767F;
+  }
+
+  &__value {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: #F1F2F9;
+  }
+
+  &__control {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__addButton {
+    font-family: Mont, sans-serif;
+    width: 100%;
+    color: #F1F2F9;
+    background-color: #905BFF;
+    border: none;
+  }
+
+  &__favoriteLink {
+    width: 40px;
+    height: 40px;
+    background-color: #323542;
+  }
+
+  &__favoriteIcon {
+    padding: 12px;
+  }
+}
+
+.category {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 16px;
+
+  &__item {
+    grid-column: span 8;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__image {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__title {
+    margin: 0;
+    color: #F1F2F9;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  &__count {
+    margin: 0;
+    color: #89939A;
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+  }
+}
+
+.hotPrices {
+  &__product {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 16px;
+  }
+}
+

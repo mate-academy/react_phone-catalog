@@ -6,6 +6,7 @@
   left: 0;
   right: 0;
   background-color: #0F1121;
+  height: 64px;
 }
 
 .container {
@@ -23,33 +24,31 @@
   font-size: 12px;
 }
 
-.nav-list {
+.list {
   display: flex;
   align-items: center;
   padding: 0;
   gap: 64px;
-
-  &__item {
-    list-style: none;
-    letter-spacing: 4%;
-  }
-
-  &__link {
-    text-decoration: none;
-    color: #75767F;
-    padding-block: 24px;
-  }
 }
 
-.logo {
-  padding: 18px 24px;
+.item {
+  list-style: none;
+  letter-spacing: 4%;
 }
 
-.header-actions {
+.link {
+  text-decoration: none;
+  color: #75767F;
+  padding-block: 24px;
+}
+
+.actions {
   display: flex;
+}
 
-  &__link {
-    padding: 24px;
-    border-left: 1px solid #323542;
-  }
+.actionLink {
+  display: flex;
+  align-items: center;
+  padding: 24px;
+  border-left: 1px solid #323542;
 }
