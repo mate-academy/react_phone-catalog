@@ -1,7 +1,7 @@
 const fetchData = async (url: string) => {
   const cleanUrl = url.startsWith('/') ? url.slice(1) : url;
 
-  const fullUrl = `${import.meta.env.BASE_URL}${cleanUrl}`;
+  const fullUrl = `${import.meta.env.BASE_URL}/${cleanUrl}`;
 
   const res = await fetch(fullUrl);
 
