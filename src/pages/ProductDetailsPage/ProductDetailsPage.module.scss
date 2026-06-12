@@ -4,7 +4,6 @@
 .detailsContainer {
   display: flex;
   flex-direction: column;
-  background-color: yellow;
   justify-content: center;
   padding-inline: $container-pading-mobile;
   width: 100%;
@@ -68,7 +67,7 @@
   min-width: 288px;
   width: 100%;
   margin-top: 16px;
-  
+
   @include h2;
 }
 
