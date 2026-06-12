@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
 import styles from './ProductSlider.module.scss';
 
@@ -39,6 +39,24 @@ export const ProductSlider: React.FC<Props> = ({
 
   const maxIndex = products.length - 4;
 
+  const touchStartX = useRef(0);
+
+const handleTouchStart = (e: React.TouchEvent) => {
+  touchStartX.current = e.touches[0].clientX;
+};
+
+const handleTouchEnd = (e: React.TouchEvent) => {
+  const diff = touchStartX.current - e.changedTouches[0].clientX;
+
+  if (diff > 50 && currentIndex < maxIndex) {
+    handleNext();
+  }
+
+  if (diff < -50 && currentIndex > 0) {
+    handlePrev();
+  }
+};
+
   return (
     <div className={styles.section}>
       <div className={styles['product-slider__header']}>
@@ -72,6 +90,9 @@ export const ProductSlider: React.FC<Props> = ({
           style={{
             transform: `translateX(-${currentIndex * 288}px)`,
           }}
+
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
         >
           {products.map(product => (
             <li key={product.id}>

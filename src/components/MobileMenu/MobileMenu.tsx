@@ -10,6 +10,7 @@ export const MobileMenu: React.FC<Props> = ({ onClose }) => {
   const cartContext = useContext(CartContext);
   const favoritesContext = useContext(FavoritesContext);
 
+
   if (!cartContext) {
     return null;
   }
@@ -40,22 +41,22 @@ export const MobileMenu: React.FC<Props> = ({ onClose }) => {
       <nav className={`${styles.header__nav}`}>
         <ul className={styles.nav__list}>
           <li className="nav__item">
-            <Link to="/" className={styles.nav__link}>
+            <Link to="/" className={styles.nav__link} onClick={onClose}>
               home
             </Link>
           </li>
           <li className="nav__item">
-            <Link to="/phones" className={styles.nav__link}>
+            <Link to="/phones" className={styles.nav__link} onClick={onClose}>
               phones
             </Link>
           </li>
           <li className="nav__item">
-            <Link to="/tablets" className={styles.nav__link}>
+            <Link to="/tablets" className={styles.nav__link} onClick={onClose}>
               tablets
             </Link>
           </li>
           <li className="nav__item">
-            <Link to="/accessories" className={styles.nav__link}>
+            <Link to="/accessories" className={styles.nav__link} onClick={onClose}>
               accessories
             </Link>
           </li>
@@ -63,7 +64,7 @@ export const MobileMenu: React.FC<Props> = ({ onClose }) => {
       </nav>
 
       <div className={styles['mobile-menu__bottom']}>
-        <Link to="/favorites" className={styles.icon}>
+        <Link to="/favorites" className={styles.icon} onClick={onClose}>
           <img src={`${import.meta.env.BASE_URL}/img/icons/heart.svg`} />
           {favorites.length > 0 && (
             <span className={styles['favourites-count']}>
@@ -72,7 +73,7 @@ export const MobileMenu: React.FC<Props> = ({ onClose }) => {
           )}
         </Link>
 
-        <Link to="/cart" className={styles.icon}>
+        <Link to="/cart" className={styles.icon} onClick={onClose}>
           <img src={`${import.meta.env.BASE_URL}/img/icons/cart.svg`} />
           {cart.length > 0 && (
             <span className={styles['cart-count']}>{totalAmount}</span>

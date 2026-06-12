@@ -63,6 +63,8 @@ border-color: $color-elements;
   display: flex;
   gap: 16px;
   list-style: none;
+
+  transition: transform $transition-duration ease;
 }
 
 .section {

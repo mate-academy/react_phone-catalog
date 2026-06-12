@@ -371,6 +371,17 @@ display: flex;
   box-shadow: none;
 }
 
+.product-details__add:disabled {
+  border: 1px solid $color-elements;
+  color: $color-elements;
+  background-color: transparent;
+}
+
+.product-details__add:not(:disabled):hover {
+  box-shadow: 0 3px 13px 0 #17203166;
+}
+
+
 .product-details__favourite {
   background-color: transparent;
    padding: 0;

@@ -88,7 +88,7 @@ export const Header = () => {
         </div>
       </header>
 
-      {isMenuOpen && <MobileMenu onClose={() => setIsMenuOpen(false)} />}
+      {isMenuOpen && <MobileMenu onClose={() => setIsMenuOpen(false)}/>}
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import {
   getAccessories,
@@ -65,7 +65,7 @@ export const ProductDetailsPage = () => {
   useEffect(() => {
     getProducts()
       .then((data: Product[]) => {
-        const newProducts = data.sort((a, b) => b.year - a.year);
+        const newProducts = [...data].sort((a, b) => b.year - a.year);
 
         setProducts(newProducts);
       })
@@ -112,11 +112,91 @@ export const ProductDetailsPage = () => {
     });
   }, [productId]);
 
+   const getSuggestedProducts = (
+    allProducts: Product[],
+    currentItemId: string,
+    amount = 10,
+  ) => {
+    const filtered = allProducts.filter(
+      newProduct => newProduct.itemId !== currentItemId,
+    );
+
+    const shuffled = [...filtered];
+
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    return shuffled.slice(0, amount);
+  };
+
+
+
+  const getCategoryProducts = () => {
+    switch (product?.category) {
+      case 'phones':
+        return getPhones();
+
+      case 'tablets':
+        return getTablets();
+
+      case 'accessories':
+        return getAccessories();
+
+      default:
+        return Promise.resolve([]);
+    }
+  };
+
+  const handleColorChange = (newColor: string) => {
+    getCategoryProducts().then((data: ProductDetails[]) => {
+      const variant = data.find(
+        item =>
+          item.namespaceId === product?.namespaceId &&
+          item.color === newColor &&
+          item.capacity === product.capacity,
+      );
+
+      if (variant) {
+        navigate(`/product/${variant.id}`);
+      }
+    });
+  };
+
+  const handleCapacityChange = (newCapacity: string) => {
+    getCategoryProducts().then((data: ProductDetails[]) => {
+      const variant = data.find(
+        item =>
+          item.namespaceId === product?.namespaceId &&
+          item.color === product.color &&
+          item.capacity === newCapacity,
+      );
+
+      if (variant) {
+        navigate(`/product/${variant.id}`);
+      }
+    });
+  };
+
+   const suggestedProducts = useMemo(() => {
+  return getSuggestedProducts(
+    products,
+    product?.namespaceId ?? '',
+    10,
+  );
+}, [products, product?.namespaceId]);
+
   if (!cartContext) {
     return null;
   }
 
-  const { setCart } = cartContext;
+  const { cart, setCart } = cartContext;
+
+  const isExistInCart = cart.some(
+    item => item.product.itemId === product?.id,
+  );
 
   if (!favoritesContext) {
     return null;
@@ -219,77 +299,7 @@ export const ProductDetailsPage = () => {
     }
   };
 
-  const getSuggestedProducts = (
-    allProducts: Product[],
-    currentItemId: string,
-    amount = 10,
-  ) => {
-    const filtered = allProducts.filter(
-      newProduct => newProduct.itemId !== currentItemId,
-    );
 
-    const shuffled = [...filtered];
-
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-
-    return shuffled.slice(0, amount);
-  };
-
-  const suggestedProducts = getSuggestedProducts(
-    products,
-    product?.namespaceId ?? '',
-    10,
-  );
-
-  const getCategoryProducts = () => {
-    switch (product.category) {
-      case 'phones':
-        return getPhones();
-
-      case 'tablets':
-        return getTablets();
-
-      case 'accessories':
-        return getAccessories();
-
-      default:
-        return Promise.resolve([]);
-    }
-  };
-
-  const handleColorChange = (newColor: string) => {
-    getCategoryProducts().then((data: ProductDetails[]) => {
-      const variant = data.find(
-        item =>
-          item.namespaceId === product.namespaceId &&
-          item.color === newColor &&
-          item.capacity === product.capacity,
-      );
-
-      if (variant) {
-        navigate(`/product/${variant.id}`);
-      }
-    });
-  };
-
-  const handleCapacityChange = (newCapacity: string) => {
-    getCategoryProducts().then((data: ProductDetails[]) => {
-      const variant = data.find(
-        item =>
-          item.namespaceId === product.namespaceId &&
-          item.color === product.color &&
-          item.capacity === newCapacity,
-      );
-
-      if (variant) {
-        navigate(`/product/${variant.id}`);
-      }
-    });
-  };
 
   return (
     <div className={styles['product-details']}>
@@ -409,6 +419,7 @@ export const ProductDetailsPage = () => {
             <button
               className={styles['product-details__add']}
               onClick={handleAddToCart}
+              disabled={isExistInCart}
             >
               Add to card
             </button>
