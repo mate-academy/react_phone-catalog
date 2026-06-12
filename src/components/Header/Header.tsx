@@ -40,9 +40,9 @@ export const Header = () => {
     <>
       <header className={styles.header}>
         <div className={styles.container}>
-          <a href="/">
+          <NavLink to="/">
             <img src="./img/Logo.svg" alt="logo" className={styles.logo} />
-          </a>
+          </NavLink>
           <div className={styles['header-middle-block-wrapper']}>
             <ul className={styles['header-list']}>
               {HEADERS_ITEMS.map(item => {
