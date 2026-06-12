@@ -29,6 +29,17 @@ export const CartPage = () => {
     0,
   );
 
+  const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  const itemsPrice = (id: number) => {
+    const prod = cartItems.find(item => item.id === id);
+
+    if (prod) {
+      return prod?.product.price * prod?.quantity;
+    }
+
+    return;
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.back} onClick={() => navigate(-1)}>
@@ -103,7 +114,8 @@ export const CartPage = () => {
                         </button>
                       </div>
                       <div className={styles.price}>
-                        ${product.product.price}
+                        {/* nen */}
+                        {itemsPrice(product.id)}
                       </div>
                     </div>
                   </div>
@@ -115,7 +127,7 @@ export const CartPage = () => {
               <div className={styles.totalPrice}>
                 <div className={styles.price}>${totalPrice}</div>
                 <div className={styles.priceInfo}>
-                  Total for {cartItems.length} items
+                  Total for {totalItems} items
                 </div>
               </div>
 

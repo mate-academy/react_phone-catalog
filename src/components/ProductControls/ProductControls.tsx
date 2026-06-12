@@ -1,6 +1,6 @@
 import ProductAction from '../ProductAction/ProductAction';
 import ProductPrice from '../ProductPrice/ProductPrice';
-import ProductSpec from '../ProductSpec/ProductSpec';
+import ProductSpec, { Spec } from '../ProductSpec/ProductSpec';
 import styles from './ProductControls.module.scss';
 import { TypesOfProducts } from '../../types/TypesOfProducts';
 import ProductColors from '../ProductColors/ProductColors';
@@ -33,7 +33,7 @@ export const ProductControls: React.FC<Props> = ({
     });
   }, [currentProduct.id]);
 
-  const specTech: string[][] = [
+  const specTech: Spec[] = [
     ['Screen', currentProduct.screen],
     ['Resolution', currentProduct.resolution],
     ['Capacity', currentProduct.capacity],
@@ -77,14 +77,18 @@ export const ProductControls: React.FC<Props> = ({
           </div>
 
           <div className={styles.buttonsDown}>
-            <ProductAction variant={'bigButtonSize'} product={product} />
+            {product && (
+              <ProductAction variant={'bigButtonSize'} product={product} />
+            )}
           </div>
         </div>
 
-        <ProductSpec spec={specTech} className={styles.specTech} />
+        <ProductSpec spec={specTech} />
       </div>
     </div>
   );
 };
 
 export default ProductControls;
+
+// className={styles.specTech}
