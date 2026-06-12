@@ -4,37 +4,74 @@
   bottom: 0;
   margin-top: 81px;
   display: flex;
-  flex-direction: column;
-
   color: white;
-}
-
-.container {
-  padding: 32px 89px;
-  justify-content: space-between;
-  display: flex;
-  align-items: center;
+  align-items: stretch;
   border-top: 1px solid #E2E6E9;
 
-    @include on-phone {
-      padding: 32px 16px;
-      // flex-direction: column;
-      // gap: 32px;
-      // text-align: center;
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-phone {
+     margin-top: 64px;
     }
 }
 
+.container {
+  width: 100%;
+  padding: 0 32px ;
+  height: 96px;
+  display: flex;
+  align-items: center;
+
+  @include on-phone {
+    height: 257px;
+    padding: 0 16px;
+    flex-direction: column;
+    gap: 32px;
+    text-align: center;
+  }
+}
+
+.logoLink{
+      margin-right: auto;
+}
+
+.logo {
+  margin-right: auto;
+  margin: 32px 0;
+  }
+
 .footerNavUl {
   display: flex;
-  gap: 106px;
   list-style: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+        gap: 16px;
 
+    @include on-phone {
+      margin-right: auto;
+        flex-direction: column;
+        gap: 16px;
+}
+}
+
+.footerA{
+margin-right: auto;
+}
+
+.footerA,
+.footerNav,
+.footerNav {
+  text-decoration: none;
+  color: #89939A;
+  font-weight: 800;
+  line-height: 11px;
+  font-size: 12px;
 }
 
 .footerNav {
-  justify-content: space-between;
-  list-style: none;
-    box-sizing: border-box;
       display: flex;
       color: #89939A;
       text-transform: uppercase;
@@ -43,27 +80,29 @@
       line-height: 11px;
       letter-spacing: 4%;
 
-}
+    }
 
-.topBackToTop {
-  display: flex;
-  align-items: center;
+    .topBackToTop {
+      display: flex;
+      align-items: center;
 
-box-sizing: border-box;
-font-weight: 600;
-text-align: none;
-text-decoration: none;
-color: #89939A;
-  font-size: 12px;
-  gap: 16px;
+      box-sizing: border-box;
+      font-weight: 700;
+      text-align: none;
+      text-decoration: none;
+      color: #89939A;
+      font-size: 12px;
+      gap: 16px;
+
+      @include on-phone {
+        align-items: center;
+      }
 }
 
 .vector {
-  box-sizing: border-box;
   height: 16px;
   width: 16px;
   border: 1px solid #E2E6E9;
-
   padding: 14px 12px;
 }
 

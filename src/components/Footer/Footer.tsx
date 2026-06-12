@@ -1,5 +1,5 @@
 import styles from './Footer.module.scss';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   const handleScrollTo = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -14,28 +14,23 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <div className="logoLink">
+        <div className={styles.logoLink}>
           <a href="#">
             <img src="img/logo.svg" alt="Logo" className={styles.logo} />
           </a>
         </div>
         <div className={styles.footerNavUl}>
-          <a
-            href="https://github.com/adadiada"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.footerNav}
-          >
+          <a href="https://github.com/adadiada" className={styles.footerA}>
             GITHUB
           </a>
 
-          <NavLink to="/contacts" className={styles.footerNav}>
+          <Link to="/contacts" className={styles.footerNav}>
             CONTACTS
-          </NavLink>
+          </Link>
 
-          <NavLink to="/rights" className={styles.footerNav}>
+          <Link to="/rights" className={styles.footerNav}>
             RIGHTS
-          </NavLink>
+          </Link>
         </div>
 
         <a

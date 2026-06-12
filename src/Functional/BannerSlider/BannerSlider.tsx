@@ -24,6 +24,8 @@ export const BannerSlider = () => {
             pagination={{
               clickable: true,
               el: '#main-slider-pagination',
+              bulletClass: `${styles['swiper-pagination-bullet']}`,
+              bulletActiveClass: `${styles['swiper-pagination-bullet-active']}`,
             }}
             autoplay={{ delay: 5000 }}
             loop={false}

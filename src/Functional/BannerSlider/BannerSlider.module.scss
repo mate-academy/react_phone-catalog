@@ -48,6 +48,7 @@
 }
 
 .bannerImage {
+  display: block;
   height: 400px;
   width: 100%;
   object-position: center;
@@ -69,7 +70,6 @@
 
   @include on-tablet {
     gap: 19px;
-
   }
 
   @include on-desktop {
@@ -99,7 +99,7 @@
   border-radius: 2px;
 
   .swiper-pagination-bullet {
-    width: 14px;
+    width: 18px;
     height: 4px;
     background: #3B3E4A;
     opacity: 1;

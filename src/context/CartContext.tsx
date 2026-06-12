@@ -45,7 +45,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     // dodae tovar //
     setCart(prevCart => {
       const existingItem = prevCart.find(
-        cartItem => String(cartItem.product.id) === String(item.id),
+        cartItem => cartItem.product.id === item.id,
       );
 
       if (existingItem) {

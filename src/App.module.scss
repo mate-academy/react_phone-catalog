@@ -24,7 +24,11 @@
 
 html,
 body,
+div,
 h1,
+h2,
+h3,
+a,
 p,
 h2,
 span,
@@ -36,7 +40,6 @@ button {
 }
 
 #root {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }

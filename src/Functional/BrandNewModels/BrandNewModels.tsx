@@ -48,10 +48,14 @@ export const BrandNewModels: React.FC = () => {
         <Swiper
           modules={[Navigation]}
           spaceBetween={16}
-          slidesPerView={1}
+          slidesPerView={4}
           pagination={{
             clickable: true,
-            // el: '#main-slider-pagination',
+          }}
+          breakpoints={{
+            320: { slidesPerView: 2, spaceBetween: 16 },
+            640: { slidesPerView: 3, spaceBetween: 16 },
+            1200: { slidesPerView: 4, spaceBetween: 16 },
           }}
           loop={false}
           className={styles.swiperNewBlock}

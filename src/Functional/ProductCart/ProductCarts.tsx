@@ -1,11 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './ProductCarts.module.scss';
-import { FavoritesIcon } from '../../utils/icons';
 import { Products } from '../../types/Alltypes';
 import React from 'react';
-
-// import { useCart } from '../../context/CartContext';
-// import { useFavorites } from '../../context/FavoritesContext';
 
 type Props = {
   product: Products;
@@ -16,26 +12,38 @@ export const ProductCarts: React.FC<Props> = ({ product }) => {
     return null;
   }
 
-  const { id, image, title, price, screen, capacity, ram } = product;
+  const { id, image, name, price, screen, capacity, ram } = product;
 
   return (
-    <article className={styles.productCart}>
-      <Link to={`/product/${id}`}>
-        <img className={styles.cardPhoto} src={image} alt={title} />
+    <article className={styles.container}>
+      <Link to={`/product/${id}`} className={styles.productCart}>
+        <img className={styles.cardPhoto} src={image} alt={name} />
+        <h2 className={styles.productCart}>{name}</h2>
+        <div className={styles.cardPrice}>${price}</div>
+        <div className={styles.cardSpes}>
+          <div className={styles.screen}>
+            <span>Screen</span>
+            <strong className={styles.strong}>{screen}</strong>
+          </div>
+          <div className={styles.capacity}>
+            <span>Capacity</span>
+            <strong className={styles.strong}>{capacity}</strong>
+          </div>
+          <div className={styles.ram}>
+            <span>Ram</span>
+            <strong className={styles.strong}>{ram}</strong>
+          </div>
+        </div>
       </Link>
-
-      <h2 className={styles.productCart}>
-        <Link to={`/product/${id}`}>{title}</Link>
-      </h2>
-      <div className={styles.cardPrice}>${price}</div>
-
-      <span className={styles.screen}>{screen}</span>
-      <span className={styles.capacity}>{capacity}</span>
-      <span className={styles.ram}>{ram}</span>
-
       <div className={styles.actions}>
         <button className={styles.cardToAdd}>Add to cart</button>
-        <FavoritesIcon count={0} />
+        <button className={styles.buttonToFavorites}>
+          <img
+            src="/img/favorites.svg"
+            className={styles.iconImgFavorites}
+            alt="Favourites"
+          />
+        </button>
       </div>
     </article>
   );
