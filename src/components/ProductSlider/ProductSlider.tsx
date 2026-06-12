@@ -1,7 +1,9 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
+
 import { useState } from 'react';
 import styles from './ProductSlider.module.scss';
 import { Products } from '../../types/Products';

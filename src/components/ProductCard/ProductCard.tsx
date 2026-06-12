@@ -26,7 +26,10 @@ export const ProductCard: React.FC<Props> = ({
 
   return (
     <article className={classNames(styles.card, styles[variant])}>
-      <NavLink to={`/product/${product.itemId}`} className={styles.link}>
+      <NavLink
+        to={`/${product.category}/${product.itemId}`}
+        className={styles.link}
+      >
         <div className={styles.imageWrapper}>
           <img src={product.image} alt={product.name} className={styles.img} />
         </div>
