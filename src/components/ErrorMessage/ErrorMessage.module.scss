@@ -1,5 +1,9 @@
 @use '../../styles/variables' as *;
 
+.error-message {
+   padding: 40px;
+}
+
 .error-message__text {
   font-family: Mont, sans-serif;
 font-weight: 500;
