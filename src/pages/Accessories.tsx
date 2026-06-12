@@ -52,7 +52,6 @@ export const Accessories = () => {
       .finally(() => setLoading(false));
   }, []);
 
-
   const sortedProducts = [...accessories].sort((a, b) => {
     switch (sort) {
       case 'age':

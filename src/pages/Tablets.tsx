@@ -52,7 +52,6 @@ export const Tablets = () => {
       .finally(() => setLoading(false));
   }, []);
 
-
   const sortedProducts = [...tablets].sort((a, b) => {
     switch (sort) {
       case 'age':

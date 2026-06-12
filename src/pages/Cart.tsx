@@ -82,24 +82,23 @@ export const Cart = () => {
                     />
                   </button>
                   <Link
-                        to={`/product/${item.product.itemId}`}
-                         className={styles['cart-item__link']}
-
-                      >
-                  <div className={styles['cart-item__image-container']}>
-                    <img
-                      src={`${import.meta.env.BASE_URL}/${
-                        item.product.image.startsWith('/')
-                          ? item.product.image.slice(1)
-                          : item.product.image
-                      }`}
-                      alt=""
-                      className={styles['cart-item__image']}
-                    />
-                  </div>
-                  <p className={styles['cart-item__title']}>
-                    {item.product.name}
-                  </p>
+                    to={`/product/${item.product.itemId}`}
+                    className={styles['cart-item__link']}
+                  >
+                    <div className={styles['cart-item__image-container']}>
+                      <img
+                        src={`${import.meta.env.BASE_URL}/${
+                          item.product.image.startsWith('/')
+                            ? item.product.image.slice(1)
+                            : item.product.image
+                        }`}
+                        alt=""
+                        className={styles['cart-item__image']}
+                      />
+                    </div>
+                    <p className={styles['cart-item__title']}>
+                      {item.product.name}
+                    </p>
                   </Link>
                 </div>
                 <div className={styles['cart-item__controls']}>

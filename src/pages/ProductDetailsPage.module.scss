@@ -166,7 +166,7 @@ width: 288px;
 }
 
 .product-details__info {
-  width: 238px;
+  width: 100%;
 
   @include on-desktop {
       width: 320px;
