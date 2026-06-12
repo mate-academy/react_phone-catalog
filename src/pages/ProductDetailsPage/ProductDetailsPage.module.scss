@@ -1,0 +1,93 @@
+@import '../../styles/variable';
+@import '../../styles/font';
+
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-inline: $container-pading-mobile;
+  width: 100%;
+
+  @include on-tablet {
+    padding-inline: $container-pading-tablet;
+  }
+
+  @include on-desktop {
+    padding-inline: auto;
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    grid-template-columns: 7fr 5fr;
+    column-gap: 18px;
+    margin-top: 40px;
+    align-items: start;
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: 12fr 11fr;
+    column-gap: 64px;
+  }
+}
+
+.bottomSection {
+  @include on-desktop {
+    display: grid;
+    grid-template-columns: 12fr 11fr;
+    column-gap: 64px;
+  }
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+}
+
+.controlSection {
+  margin-bottom: 0;
+}
+
+.title {
+  position: relative;
+  min-width: 288px;
+  width: 100%;
+  margin-top: 16px;
+
+  @include h2;
+}
+
+.breadcrumbs {
+  width: 100%;
+}
+
+.titleSpec {
+  margin: 0;
+
+  @include h3;
+}
+
+.titleSpecContainer {
+  padding-bottom: 16px;
+
+  border-bottom: 1px $border-color solid;
+  margin-bottom: 14px;
+}
+
+.alsoLike {
+  padding-left: 0;
+}

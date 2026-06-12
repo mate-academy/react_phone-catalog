@@ -1,0 +1,42 @@
+@import '../../styles/variable';
+@import '../../styles/font';
+
+.input {
+  position: absolute;
+  opacity: 0;
+}
+
+.colorContainer{
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin: 0;
+}
+
+.colorCircle {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.outsideBorder {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px $border-color solid;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.activeBorder {
+  border-color: $primary-gray;
+}
+
+.title {
+  margin: 0;
+  color: $gray-secondary-color;
+  margin-bottom: 8px;
+
+  @include small-text;
+}

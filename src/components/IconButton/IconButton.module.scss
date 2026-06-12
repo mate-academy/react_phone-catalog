@@ -1,0 +1,59 @@
+@import '../../styles/variable';
+
+  .iconContainer {
+    position: relative;
+    display: flex;
+    background-color: $white-color;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-left: 1px solid $border-color;
+    cursor: pointer;
+  }
+
+  .header {
+    width: 64px;
+    height: 64px;
+  }
+
+  .mobileMenu {
+    width: 50%;
+    height: 64px;
+    border-top: 1px solid $border-color;
+  }
+
+  .imgSize {
+    position: relative;
+    width: 16px;
+    height: 16px;
+  }
+
+  .totalQuantityAndLikes {
+  display: block;
+  position: absolute;
+
+
+   background-color: $shoping-and-favor;
+   color: white;
+   border-radius: 50%;
+   border: 1px white solid;
+   padding: 2px 6px;
+   font-size: 8px;
+  min-width: 16px;
+  height: 16px;
+}
+
+
+.badgeHeader {
+  top: 12px;
+  right: 14px;
+}
+
+.badgeMobile {
+  top: 14px;
+  right: calc(50% - 18px);
+}
+
+.active {
+  border-bottom: 3px solid $gray-primary;
+}

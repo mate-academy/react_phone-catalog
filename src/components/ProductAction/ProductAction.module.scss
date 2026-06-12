@@ -1,0 +1,52 @@
+@import '../../styles/variable';
+
+  .buttonFavorite {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 48px;
+    border: 1px solid $gray-icons;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $white-color;
+
+    &:hover {
+      border: 1px solid $primary-gray;
+    }
+
+    &__icon {
+      width: 16px;
+      height: 16px;
+      display: block;
+    }
+  }
+
+  .isFavourite {
+    border: 1px solid $border-color;
+  }
+
+  .favoriteBig {
+      width: 48px;
+      min-width: 48px;
+      height: 48px;
+    }
+
+  .smallButtonSize {
+    height: 40px;
+  }
+
+  .addBig {
+    height: 48px;
+  }
+
+  .buttons {
+    cursor: pointer;
+    transition:
+      box-shadow 0.3s ease,
+      transform 0.2s ease;
+  }
+
+  .buttons:active {
+    transform: scale(0.98);
+  }

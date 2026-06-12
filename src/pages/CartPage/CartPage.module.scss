@@ -1,0 +1,241 @@
+@import '../../styles/variable';
+@import '../../styles/font';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-inline: 16px;
+
+  @include on-tablet {
+    margin-inline: 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1200px;
+    margin-inline: auto;
+    margin-bottom: 80px;
+  }
+}
+
+.CartContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.gridContainer {
+  display: flex;
+  flex-direction: column;
+
+   @include on-desktop {
+    display: grid;
+    grid-template-columns: 16fr 8fr;
+    gap: 16px;
+  }
+}
+
+.Prev {
+  margin-inline: 5px;
+}
+
+.back {
+   cursor: pointer;
+   display: flex;
+   flex-direction: row;
+   gap: 4px;
+   margin: 24px 0;
+}
+
+.backButton {
+  border: none;
+  background-color: white;
+  padding: 0;
+  cursor: pointer;
+  color: $gray-secondary-color;
+}
+
+.title {
+  @include h1;
+
+  color: $primary-gray;
+}
+
+
+.productContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  min-width: 288px;
+  width: 100%;
+  padding: 16px;
+  border: 1px $border-color solid;
+  border-radius: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 24px;
+    justify-content: space-between;
+
+    min-width: 592px;
+    width: 100%;
+  }
+
+  @include on-desktop {
+    max-width: 752px;
+  }
+}
+
+.topRow {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.picturesContainer {
+  width: 80px;
+  height: 80px;
+}
+
+.picture {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+
+  transition: transform 0.5s ease;
+}
+
+.buttons {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px $gray-icons solid;
+  background-color: $white-color;
+  cursor: pointer;
+}
+
+.buttons:hover {
+  border: 1px $primary-black-color solid;
+}
+
+.buttonAdd {
+  height: 48px;
+  width: 100%;
+  background-color: $orange-button;
+  border-radius: 8px;
+  color: $white-color;
+  border: none;
+  cursor: pointer;
+
+  @include buttons;
+}
+
+.secondRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @include on-tablet {
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.counter {
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+  justify-content: center;
+  align-items: center;
+}
+
+.line {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: $border-color;
+  margin: 16px auto;
+}
+
+.totalPrice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.price {
+  @include h2;
+
+  @include on-tablet {
+    width: 80px;
+    display: flex;
+    justify-content: end;
+
+    @include h3;
+  }
+}
+
+.priceInfo {
+  color: $gray-secondary-color;
+
+  @include body-text-14;
+}
+
+.totalContainer {
+  padding: 24px;
+  margin-bottom: 56px;
+  min-width: 288px;
+  width: 100%;
+  border: 1px $border-color solid;
+  border-radius: 16px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin: 0;
+    width: 368px;
+    max-width: 368px;
+    max-height: 206px;
+  }
+}
+
+.productTitle {
+  color: $primary-gray;
+
+  @include body-text-14;
+}
+
+.productTitle:hover {
+  color: rgb(73, 74, 141);
+}
+
+.navLink {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navLink:hover .picture {
+  transform: scale(1.1);
+}
+
+.close:hover {
+  cursor: pointer;
+  background-color: rgb(234, 240, 238);
+  border-radius: 70%;
+}

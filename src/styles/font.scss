@@ -1,0 +1,149 @@
+@import '../styles/mixins';
+@import '../styles/variable';
+
+@font-face {
+  font-family: Mont;
+  src: url(/fonts/Mont-Regular.otf);
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url(/fonts/Mont-SemiBold.otf);
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url(/fonts/Mont-Bold.otf);
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+
+// @mixin price-bold {
+//   font-weight: 700;
+//   font-size: 22px;
+//   line-height: 140%;
+// }
+
+
+
+@mixin spec-bold {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  color: $primary-black-color;
+}
+
+
+ @mixin h1 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+ }
+
+ @mixin h2 {
+  font-weight: 700;
+
+  // 31px можливо!!!!
+
+  line-height: 41px;
+  font-size: 22px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+ }
+
+ @mixin h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 100%;
+
+  @include on-tablet {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+  }
+ }
+
+ @mixin h4 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+
+  @include on-tablet {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+  }
+ }
+
+ @mixin price-bold {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 140%;
+}
+
+@mixin price-old {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 100%;
+}
+
+
+@mixin body-regular {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+}
+
+@mixin body-semi-bold {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: $gray-secondary-color;
+}
+
+ @mixin small-text {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+@mixin body-text-14 {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin uppercase {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+ @mixin buttons {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+ }

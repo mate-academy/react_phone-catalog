@@ -1,0 +1,22 @@
+@import '../../styles/font';
+@import '../../styles/variable';
+
+.fullPrice {
+  color: $gray-secondary-color;
+  text-decoration: line-through;
+  margin: 0;
+
+  @include price-old;
+}
+
+.price {
+  margin: 0;
+  color: $primary-black-color;
+
+  @include price-bold;
+}
+
+.big {
+  font-size: 32px;
+}
+

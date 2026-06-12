@@ -1,0 +1,17 @@
+@import '../../styles/font';
+
+.container {
+  max-width: 1136px;
+  width: 100%;
+}
+
+.title {
+  top: 0;
+  height: 41px;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  margin-bottom: 24px;
+
+  @include h2;
+}

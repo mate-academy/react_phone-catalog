@@ -1,0 +1,46 @@
+@import '../../styles/variable';
+
+.messageContainer {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  max-width: 70%;
+  min-height: 160px;
+  padding: 20px;
+  background-color: $white-color;
+  z-index: 1000;
+  border-radius: 18px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 8px;
+}
+
+.button {
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: rgb(142, 172, 216);
+  height: auto;
+  padding: 5px;
+  width: 100px;
+}
+
+.button:hover {
+  background-color: rgb(37, 3, 100);
+  color: $white-color;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(57, 56, 56, 0.4);
+
+  display: flex;
+  justify-content: center;
+  align-items: self-start;
+
+  z-index: 999;
+}
