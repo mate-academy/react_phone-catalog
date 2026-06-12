@@ -52,9 +52,6 @@ export const Tablets = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [currentPage]);
 
   const sortedProducts = [...tablets].sort((a, b) => {
     switch (sort) {

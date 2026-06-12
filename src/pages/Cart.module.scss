@@ -48,7 +48,7 @@
 opacity: 1;
 border-radius: 16px;
 border: 1px solid $color-elements;
-padding: 24px;
+padding: 40px;
 list-style: none;
 margin-bottom: 16px;
 display: flex;
@@ -85,6 +85,13 @@ flex-direction: row;
 
 }
 
+.cart-item__link{
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: $color-primary;
+}
+
 .cart-item__image-container {
   width: 80px;
   height: 80px;
@@ -108,7 +115,12 @@ font-size: 14px;
 
 line-height: 21px;
 letter-spacing: 0%;
-width: 176px;
+width: 128px;
+
+
+@include on-tablet {
+   width: 336px;
+}
 
 @include on-desktop {
    width: 336px;

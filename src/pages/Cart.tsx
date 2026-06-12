@@ -3,6 +3,7 @@ import { Breadcrumbs } from '../components/Breadcrumbs/Bredcrumbs';
 import styles from './Cart.module.scss';
 import { CartContext } from '../context/CartContext';
 import { ProductCardData } from '../components/ProductCard/ProductCard';
+import { Link } from 'react-router-dom';
 export type CartItem = {
   product: ProductCardData;
   amount: number;
@@ -80,6 +81,11 @@ export const Cart = () => {
                       src={`${import.meta.env.BASE_URL}/img/buttons/close.svg`}
                     />
                   </button>
+                  <Link
+                        to={`/product/${item.product.itemId}`}
+                         className={styles['cart-item__link']}
+
+                      >
                   <div className={styles['cart-item__image-container']}>
                     <img
                       src={`${import.meta.env.BASE_URL}/${
@@ -94,6 +100,7 @@ export const Cart = () => {
                   <p className={styles['cart-item__title']}>
                     {item.product.name}
                   </p>
+                  </Link>
                 </div>
                 <div className={styles['cart-item__controls']}>
                   <div className={styles['cart-item__counter']}>

@@ -41,21 +41,21 @@ export const ProductSlider: React.FC<Props> = ({
 
   const touchStartX = useRef(0);
 
-const handleTouchStart = (e: React.TouchEvent) => {
-  touchStartX.current = e.touches[0].clientX;
-};
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
 
-const handleTouchEnd = (e: React.TouchEvent) => {
-  const diff = touchStartX.current - e.changedTouches[0].clientX;
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
 
-  if (diff > 50 && currentIndex < maxIndex) {
-    handleNext();
-  }
+    if (diff > 50 && currentIndex < maxIndex) {
+      handleNext();
+    }
 
-  if (diff < -50 && currentIndex > 0) {
-    handlePrev();
-  }
-};
+    if (diff < -50 && currentIndex > 0) {
+      handlePrev();
+    }
+  };
 
   return (
     <div className={styles.section}>
@@ -90,9 +90,8 @@ const handleTouchEnd = (e: React.TouchEvent) => {
           style={{
             transform: `translateX(-${currentIndex * 288}px)`,
           }}
-
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
           {products.map(product => (
             <li key={product.id}>

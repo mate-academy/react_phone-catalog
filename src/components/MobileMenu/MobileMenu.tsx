@@ -10,7 +10,6 @@ export const MobileMenu: React.FC<Props> = ({ onClose }) => {
   const cartContext = useContext(CartContext);
   const favoritesContext = useContext(FavoritesContext);
 
-
   if (!cartContext) {
     return null;
   }
@@ -56,7 +55,11 @@ export const MobileMenu: React.FC<Props> = ({ onClose }) => {
             </Link>
           </li>
           <li className="nav__item">
-            <Link to="/accessories" className={styles.nav__link} onClick={onClose}>
+            <Link
+              to="/accessories"
+              className={styles.nav__link}
+              onClick={onClose}
+            >
               accessories
             </Link>
           </li>

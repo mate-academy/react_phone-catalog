@@ -52,9 +52,6 @@ export const Accessories = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [currentPage]);
 
   const sortedProducts = [...accessories].sort((a, b) => {
     switch (sort) {

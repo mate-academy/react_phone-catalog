@@ -112,7 +112,7 @@ export const ProductDetailsPage = () => {
     });
   }, [productId]);
 
-   const getSuggestedProducts = (
+  const getSuggestedProducts = (
     allProducts: Product[],
     currentItemId: string,
     amount = 10,
@@ -131,8 +131,6 @@ export const ProductDetailsPage = () => {
 
     return shuffled.slice(0, amount);
   };
-
-
 
   const getCategoryProducts = () => {
     switch (product?.category) {
@@ -180,13 +178,9 @@ export const ProductDetailsPage = () => {
     });
   };
 
-   const suggestedProducts = useMemo(() => {
-  return getSuggestedProducts(
-    products,
-    product?.namespaceId ?? '',
-    10,
-  );
-}, [products, product?.namespaceId]);
+  const suggestedProducts = useMemo(() => {
+    return getSuggestedProducts(products, product?.namespaceId ?? '', 10);
+  }, [products, product?.namespaceId]);
 
   if (!cartContext) {
     return null;
@@ -194,9 +188,7 @@ export const ProductDetailsPage = () => {
 
   const { cart, setCart } = cartContext;
 
-  const isExistInCart = cart.some(
-    item => item.product.itemId === product?.id,
-  );
+  const isExistInCart = cart.some(item => item.product.itemId === product?.id);
 
   if (!favoritesContext) {
     return null;
@@ -298,8 +290,6 @@ export const ProductDetailsPage = () => {
       ]);
     }
   };
-
-
 
   return (
     <div className={styles['product-details']}>
