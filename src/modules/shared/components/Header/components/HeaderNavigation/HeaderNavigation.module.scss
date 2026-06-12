@@ -2,6 +2,22 @@
   @include flex-center($gap: 64px);
   height: 100%;
   margin: 0 24px;
+
+  &.mobileNavigation {
+    flex-direction: column;
+    gap: 32px;
+    margin: 0;
+    height: auto;
+
+    .navigationLink {
+      height: auto;
+      padding-bottom: 8px;
+
+      &::after {
+        display: block;
+      }
+    }
+  }
 }
 
 .navigationLink {
@@ -76,7 +92,7 @@
 }
 
 @include on-mobile {
-  .navigation {
+  .navigation:not(.mobileNavigation) {
     display: none;
   }
 }

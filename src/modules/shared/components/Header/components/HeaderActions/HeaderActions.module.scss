@@ -1,23 +1,48 @@
 .actions {
   display: flex;
-  margin-left: auto;
   height: 100%;
+  margin-left: auto;
+
+  &.mobileActions {
+    width: 100%;
+    margin: 0;
+
+    .actionItem {
+      display: flex !important;
+      flex: 1;
+
+      width: auto;
+      border-right: 1px solid var(--color-elements);
+      border-left: none;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    .actionItemCount {
+      right: auto;
+      left: calc(50% + 1px);
+    }
+  }
 }
 
 .actionItem {
-  @include flex-center;
   position: relative;
+  @include flex-center;
 
-  border-left: solid 1px var(--color-elements);
   width: 64px;
+  border-left: 1px solid var(--color-elements);
+
   transition: color 0.3s ease;
 
   &::after {
-    position: absolute;
     content: '';
+    position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
+
     height: 3px;
     background-color: var(--color-primary);
 
@@ -42,36 +67,34 @@
     position: absolute;
     top: 18px;
     right: 16px;
+    @include flex-center;
 
     width: 14px;
     height: 14px;
-
-    @include flex-center;
     padding-top: 1px;
 
     background-color: var(--color-accent);
+    border: 1px solid var(--color-white);
+    border-radius: 50%;
+
     color: var(--color-white);
     font-size: 9px;
     font-weight: 700;
     line-height: 1;
-    border-radius: 50%;
-
-    border: 1px solid var(--color-white);
   }
 
   &Menu {
     display: none;
-
     justify-content: center;
     align-items: center;
 
     width: 48px;
     height: 100%;
-
     border-left: 1px solid var(--color-elements);
+
+    cursor: pointer;
   }
 }
-
 
 @include on-tablet {
   .actionItem {
@@ -85,11 +108,11 @@
 }
 
 @include on-mobile {
-  .actionItem {
+  .actionItem:not(.actionItemMenu) {
     display: none;
+  }
 
-    &Menu {
-      display: flex;
-    }
+  .actionItemMenu {
+    display: flex;
   }
 }

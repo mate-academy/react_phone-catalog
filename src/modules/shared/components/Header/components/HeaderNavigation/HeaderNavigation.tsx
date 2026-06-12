@@ -3,6 +3,7 @@
 //#region IMPORTS
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
+
 import cn from 'classnames';
 
 import styles from './HeaderNavigation.module.scss';
@@ -10,6 +11,7 @@ import styles from './HeaderNavigation.module.scss';
 
 //#region STYLES_&_CONSTANTS
 const {
+  mobileNavigation,
   navigation,
   navigationLink,
   navigationLinkActive,
@@ -26,7 +28,11 @@ const navLinks = [
 ];
 //#endregion
 
-export const HeaderNavigation = () => {
+interface Props {
+  isMobileMenu?: boolean;
+}
+
+export const HeaderNavigation: React.FC<Props> = ({ isMobileMenu }) => {
   //#region STATE
   const [isHovered, setIsHovered] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -58,7 +64,10 @@ export const HeaderNavigation = () => {
   //#region RENDER
   return (
     <nav
-      className={navigation}
+      className={`
+        ${navigation}
+        ${isMobileMenu ? mobileNavigation : ''}
+      `}
       onMouseLeave={() => {
         setIsHovered(false);
         setHoveredIndex(null);

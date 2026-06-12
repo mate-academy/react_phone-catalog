@@ -17,6 +17,7 @@ import styles from './HeaderActions.module.scss';
 
 //#region STYLES
 const {
+  mobileActions,
   actions,
   actionItem,
   actionItemActive,
@@ -26,7 +27,12 @@ const {
 } = styles;
 //#endregion
 
-export const HeaderActions = () => {
+interface Props {
+  isMobileMenu?: boolean;
+  onMenuClick?: () => void;
+}
+
+export const HeaderActions: React.FC<Props> = ({ isMobileMenu, onMenuClick }) => {
   //#region STATE
   const { favouritesCount } = useFavourites();
   const { totalCount } = useCart();
@@ -35,7 +41,12 @@ export const HeaderActions = () => {
 
   //#region RENDER
   return (
-    <div className={actions}>
+    <div
+      className={`
+        ${actions}
+        ${isMobileMenu ? mobileActions : ''}
+      `}
+    >
       <Link
         to="/favourites"
         className={`
@@ -62,9 +73,14 @@ export const HeaderActions = () => {
         )}
       </Link>
 
-      <a className={actionItemMenu}>
-        <img src={iconMenu} className={actionItemIcon} alt="Menu Icon" />
-      </a>
+      {!isMobileMenu && (
+        <a
+          className={actionItemMenu}
+          onClick={onMenuClick}
+        >
+          <img src={iconMenu} className={actionItemIcon} alt="Menu Icon" />
+        </a>
+      )}
     </div>
   );
   //#endregion
