@@ -3,14 +3,14 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable max-len */
 
-import { createContext, useContext, useEffect, useState } from 'react';
-
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { ProductType, ProductDetailsType, CategoryType } from '../types';
 
 interface ProductsContextType {
   // Сирі дані та прапорці стану
   products: ProductType[];
   productsDetails: ProductDetailsType[];
+  categoryCount: Record<CategoryType, number>;
   isLoading: boolean;
   isError: boolean;
 
@@ -63,6 +63,24 @@ export const ProductsProvider = (
     getProducts();
   }, []);
 
+  const categoryCount = useMemo(() => {
+    const counts: Record<CategoryType, number> = {
+      phones: 0,
+      tablets: 0,
+      accessories: 0,
+    };
+
+    products.forEach(product => {
+      const category = product.category as CategoryType;
+
+      if (category in counts) {
+        counts[category] += 1;
+      }
+    });
+
+    return counts;
+  }, [products]);
+
   function getProductsByCategory(category: CategoryType): ProductType[] {
     return [...products].filter(prod => prod.category === category);
   }
@@ -100,6 +118,7 @@ export const ProductsProvider = (
       value={{
         products,
         productsDetails,
+        categoryCount,
         isLoading,
         isError,
         getProductsByCategory,

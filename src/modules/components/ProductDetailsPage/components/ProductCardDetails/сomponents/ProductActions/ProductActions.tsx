@@ -13,7 +13,7 @@ import { useCart } from '@/modules/shared/utils/context/CartContext';
 import { ProductDetailsType, ProductType } from '@/modules/shared/utils/types';
 import { PRODUCT_COLORS_MAP as COLORS } from '@/modules/shared/utils/constants';
 
-// import { Button } from '@/modules/shared/components/ui/Button';
+import { Button } from '@/modules/shared/components/ui/Button';
 
 import favouriteIcon from '@/assets/svg/heart.svg';
 import favouriteIconActive from '@/assets/svg/heart-filled.svg';
@@ -169,10 +169,13 @@ export const ProductActions: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className={buttonsBlock}>
-        {/* <Button
+        <Button
           variant="primary"
           isSelected={isActiveCart}
-          className={buttonCart}
+          className={`
+            ${buttonCart}
+            ${isActiveCart ? buttonCartActive : ''}
+          `}
           onClick={() => baseProduct && toggleCart(baseProduct)}
           aria-label={isActiveCart ? 'Remove from cart' : 'Add to cart'}
         >
@@ -189,28 +192,7 @@ export const ProductActions: React.FC<Props> = ({ product }) => {
           }
         >
           <img src={isActiveFavourite ? favouriteIconActive : favouriteIcon} />
-        </Button> */}
-        <button
-          className={`
-            ${buttonCart}
-            ${isActiveCart ? buttonCartActive : ''}
-          `}
-          type="button"
-          onClick={() => baseProduct && toggleCart(baseProduct)}
-          aria-label={isActiveCart ? 'Remove from cart' : 'Add to cart'}
-        >
-          {isActiveCart ? 'Added to cart' : 'Add to cart'}
-        </button>
-        <button
-          className={buttonFavourite}
-          type="button"
-          onClick={() => baseProduct && toggleFavourite(baseProduct)}
-          aria-label={
-            isActiveFavourite ? 'Remove from favorites' : 'Add to favorites'
-          }
-        >
-          <img src={isActiveFavourite ? favouriteIconActive : favouriteIcon} />
-        </button>
+        </Button>
       </div>
 
       <div className={shortSpecsBlock}>

@@ -1,7 +1,12 @@
+/* eslint-disable @typescript-eslint/indent */
+/* eslint-disable import/extensions */
 /* eslint-disable prettier/prettier */
 
 //#region IMPORTS
 import { Link } from 'react-router-dom';
+
+import { useProducts } from '@/modules/shared/utils/context/ProductsContext';
+import { CategoryType } from '@/modules/shared/utils/types';
 
 import phonesImg from '@/assets/img/category-phones.png';
 import tabletsImg from '@/assets/img/categoty-tablets.png';
@@ -22,25 +27,29 @@ const {
   categoriesCount,
 } = styles;
 
-const categories = [
+const categories:
+  Array<{
+    id: CategoryType,
+    name: string,
+    image: string,
+    path: string,
+  }>
+  = [
   {
     id: 'phones',
     name: 'Mobile phones',
-    count: '95 models',
     image: phonesImg,
     path: '/phones',
   },
   {
     id: 'tablets',
     name: 'Tablets',
-    count: '24 models',
     image: tabletsImg,
     path: '/tablets',
   },
   {
     id: 'accessories',
     name: 'Accessories',
-    count: '100 models',
     image: accessoriesImg,
     path: '/accessories',
   },
@@ -48,6 +57,10 @@ const categories = [
 //#endregion
 
 export const CategoriesSection = () => {
+  //#region STATE
+  const { categoryCount} = useProducts();
+  //#endregion
+
   //#region RENDER
   return (
     <div className={categoriesContainer}>
@@ -68,7 +81,9 @@ export const CategoriesSection = () => {
               />
             </div>
             <h3 className={categoriesName}>{category.name}</h3>
-            <span className={categoriesCount}>{category.count}</span>
+            <span className={categoriesCount}>
+              {categoryCount[category.id] || 0} models
+            </span>
           </Link>
         ))}
       </div>
