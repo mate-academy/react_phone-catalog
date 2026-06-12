@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import styles from './ProductsSlider.module.scss';
-import { Product } from '../../../../types/product';
 import { ProductCard } from '../../../shared/components/ProductCard';
 import { useSlider } from '../../../shared/hooks/useSlider';
+import { Product } from '../../../../types/product';
 
 type Props = {
   products: Product[];
