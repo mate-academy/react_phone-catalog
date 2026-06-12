@@ -83,7 +83,9 @@ export const PicturesSlider = () => {
               {slide.productSubtitle}
             </p>
             <div className={styles['banner__product-image']}>
-              <img src={`${import.meta.env.BASE_URL}/${slide.image.startsWith('/') ? slide.image.slice(1) : slide.image}`} />
+              <img
+                src={`${import.meta.env.BASE_URL}/${slide.image.startsWith('/') ? slide.image.slice(1) : slide.image}`}
+              />
             </div>
           </div>
         </Link>
@@ -93,7 +95,9 @@ export const PicturesSlider = () => {
           onClick={handleNext}
         >
           {' '}
-          <img src={`${import.meta.env.BASE_URL}/img/buttons/arrow-right.png`} />
+          <img
+            src={`${import.meta.env.BASE_URL}/img/buttons/arrow-right.png`}
+          />
         </button>
       </div>
       <div className={styles.slider__dots}>

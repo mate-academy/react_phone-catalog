@@ -331,12 +331,14 @@ export const ProductDetailsPage = () => {
             <img
               className={styles[`product-details__image`]}
               src={
-  product?.images[currentImage]
-    ? `${import.meta.env.BASE_URL}/${product.images[currentImage].startsWith('/')
-        ? product.images[currentImage].slice(1)
-        : product.images[currentImage]}`
-    : ''
-}
+                product?.images[currentImage]
+                  ? `${import.meta.env.BASE_URL}/${
+                      product.images[currentImage].startsWith('/')
+                        ? product.images[currentImage].slice(1)
+                        : product.images[currentImage]
+                    }`
+                  : ''
+              }
             />
           </div>
         </div>
@@ -415,11 +417,11 @@ export const ProductDetailsPage = () => {
               onClick={handleAddToFavorites}
             >
               <img
-               src={
-  isFavorite
-    ? `${import.meta.env.BASE_URL}/img/buttons/heart-filled.svg`
-    : `${import.meta.env.BASE_URL}/img/buttons/heart.svg`
-}
+                src={
+                  isFavorite
+                    ? `${import.meta.env.BASE_URL}/img/buttons/heart-filled.svg`
+                    : `${import.meta.env.BASE_URL}/img/buttons/heart.svg`
+                }
               />
             </button>
           </div>
@@ -446,109 +448,108 @@ export const ProductDetailsPage = () => {
             </li>
           </ul>
         </div>
+      </div>
 
-        <div className={styles['product-details__bottom']}>
-          <div className={styles['product-details__about']}>
-            <h2 className={styles['product-details__about-title']}>About</h2>
-            <div className={styles['product-details__divider']}></div>
+      <div className={styles['product-details__bottom']}>
+        <div className={styles['product-details__about']}>
+          <h2 className={styles['product-details__about-title']}>About</h2>
+          <div className={styles['product-details__divider']}></div>
 
-            <div className={styles['product-details__about-content']}>
-              {product.description.map(descriptionItem => (
-                <>
-                  <div className={styles['product-details__about-subtitle']}>
-                    {descriptionItem.title}
-                  </div>
-                  <div className={styles['product-details__about-text']}>
-                    {descriptionItem.text}
-                  </div>
-                </>
-              ))}
-            </div>
-          </div>
-
-          <div className={styles['product-details__tech-specs']}>
-            <h2 className={styles['product-details__tech-specs-title']}>
-              Tech specs
-            </h2>
-            <div className={styles['product-details__divider']}></div>
-            <ul className={styles['product-details__tech-specs-list']}>
-              <li className={styles['product-details__tech-specs-item']}>
-                <span className={styles['product-details__tech-specs-name']}>
-                  Screen
-                </span>
-                <span className={styles['product-details__tech-specs-value']}>
-                  {product.screen}
-                </span>
-              </li>
-
-              <li className={styles['product-details__tech-specs-item']}>
-                <span className={styles['product-details__tech-specs-name']}>
-                  Resolution
-                </span>
-                <span className={styles['product-details__tech-specs-value']}>
-                  {product.resolution}
-                </span>
-              </li>
-
-              <li className={styles['product-details__tech-specs-item']}>
-                <span className={styles['product-details__tech-specs-name']}>
-                  Processor
-                </span>
-                <span className={styles['product-details__tech-specs-value']}>
-                  {product.processor}
-                </span>
-              </li>
-
-              <li className={styles['product-details__tech-specs-item']}>
-                <span className={styles['product-details__tech-specs-name']}>
-                  RAM
-                </span>
-                <span className={styles['product-details__tech-specs-value']}>
-                  {product.ram}
-                </span>
-              </li>
-
-              <li className={styles['product-details__tech-specs-item']}>
-                <span className={styles['product-details__tech-specs-name']}>
-                  Built in memory
-                </span>
-                <span className={styles['product-details__tech-specs-value']}>
-                  {product.capacity}
-                </span>
-              </li>
-
-              <li className={styles['product-details__tech-specs-item']}>
-                <span className={styles['product-details__tech-specs-name']}>
-                  Camera
-                </span>
-                <span className={styles['product-details__tech-specs-value']}>
-                  {product.camera}
-                </span>
-              </li>
-
-              <li className={styles['product-details__tech-specs-item']}>
-                <span className={styles['product-details__tech-specs-name']}>
-                  Zoom
-                </span>
-                <span className={styles['product-details__tech-specs-value']}>
-                  {product.zoom}
-                </span>
-              </li>
-
-              <li className={styles['product-details__tech-specs-item']}>
-                <span className={styles['product-details__tech-specs-name']}>
-                  Cell
-                </span>
-                <span className={styles['product-details__tech-specs-value']}>
-                  {product.cell.join(', ')}
-                </span>
-              </li>
-            </ul>
+          <div className={styles['product-details__about-content']}>
+            {product.description.map(descriptionItem => (
+              <>
+                <div className={styles['product-details__about-subtitle']}>
+                  {descriptionItem.title}
+                </div>
+                <div className={styles['product-details__about-text']}>
+                  {descriptionItem.text}
+                </div>
+              </>
+            ))}
           </div>
         </div>
 
-        <SugProducts suggestedProducts={suggestedProducts} />
+        <div className={styles['product-details__tech-specs']}>
+          <h2 className={styles['product-details__tech-specs-title']}>
+            Tech specs
+          </h2>
+          <div className={styles['product-details__divider']}></div>
+          <ul className={styles['product-details__tech-specs-list']}>
+            <li className={styles['product-details__tech-specs-item']}>
+              <span className={styles['product-details__tech-specs-name']}>
+                Screen
+              </span>
+              <span className={styles['product-details__tech-specs-value']}>
+                {product.screen}
+              </span>
+            </li>
+
+            <li className={styles['product-details__tech-specs-item']}>
+              <span className={styles['product-details__tech-specs-name']}>
+                Resolution
+              </span>
+              <span className={styles['product-details__tech-specs-value']}>
+                {product.resolution}
+              </span>
+            </li>
+
+            <li className={styles['product-details__tech-specs-item']}>
+              <span className={styles['product-details__tech-specs-name']}>
+                Processor
+              </span>
+              <span className={styles['product-details__tech-specs-value']}>
+                {product.processor}
+              </span>
+            </li>
+
+            <li className={styles['product-details__tech-specs-item']}>
+              <span className={styles['product-details__tech-specs-name']}>
+                RAM
+              </span>
+              <span className={styles['product-details__tech-specs-value']}>
+                {product.ram}
+              </span>
+            </li>
+
+            <li className={styles['product-details__tech-specs-item']}>
+              <span className={styles['product-details__tech-specs-name']}>
+                Built in memory
+              </span>
+              <span className={styles['product-details__tech-specs-value']}>
+                {product.capacity}
+              </span>
+            </li>
+
+            <li className={styles['product-details__tech-specs-item']}>
+              <span className={styles['product-details__tech-specs-name']}>
+                Camera
+              </span>
+              <span className={styles['product-details__tech-specs-value']}>
+                {product.camera}
+              </span>
+            </li>
+
+            <li className={styles['product-details__tech-specs-item']}>
+              <span className={styles['product-details__tech-specs-name']}>
+                Zoom
+              </span>
+              <span className={styles['product-details__tech-specs-value']}>
+                {product.zoom}
+              </span>
+            </li>
+
+            <li className={styles['product-details__tech-specs-item']}>
+              <span className={styles['product-details__tech-specs-name']}>
+                Cell
+              </span>
+              <span className={styles['product-details__tech-specs-value']}>
+                {product.cell.join(', ')}
+              </span>
+            </li>
+          </ul>
+        </div>
       </div>
+      <SugProducts suggestedProducts={suggestedProducts} />
     </div>
   );
 };

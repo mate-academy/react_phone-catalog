@@ -3,6 +3,8 @@
 
 .pageGrid {
   @include page-grid;
+
+  padding-inline: 16px;
 }
 
 .accessories__breadcrumbs {

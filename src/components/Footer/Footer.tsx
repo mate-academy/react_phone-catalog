@@ -51,7 +51,9 @@ export const Footer = () => {
           >
             Back to top
             <span className={styles.footer__icon}>
-              <img src={`${import.meta.env.BASE_URL}/img/buttons/arrow-up.png`} />
+              <img
+                src={`${import.meta.env.BASE_URL}/img/buttons/arrow-up.png`}
+              />
             </span>
           </button>
         </div>
