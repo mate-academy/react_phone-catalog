@@ -60,7 +60,7 @@ export const PicturesSlider = () => {
           onClick={handlePrev}
         >
           {' '}
-          <img src="/img/buttons/arrow-left.png" />
+          <img src={`${import.meta.env.BASE_URL}/img/buttons/arrow-left.png`} />
         </button>
         <Link
           to="/product/apple-iphone-14-pro"
@@ -83,7 +83,7 @@ export const PicturesSlider = () => {
               {slide.productSubtitle}
             </p>
             <div className={styles['banner__product-image']}>
-              <img src={slide.image} />
+              <img src={`${import.meta.env.BASE_URL}/${slide.image.startsWith('/') ? slide.image.slice(1) : slide.image}`} />
             </div>
           </div>
         </Link>
@@ -93,7 +93,7 @@ export const PicturesSlider = () => {
           onClick={handleNext}
         >
           {' '}
-          <img src="/img/buttons/arrow-right.png" />
+          <img src={`${import.meta.env.BASE_URL}/img/buttons/arrow-right.png`} />
         </button>
       </div>
       <div className={styles.slider__dots}>

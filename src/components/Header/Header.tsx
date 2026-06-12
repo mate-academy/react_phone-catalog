@@ -31,7 +31,7 @@ export const Header = () => {
         <div className={styles.container}>
           <div className={styles.header__content}>
             <a href="#" className={styles.header__logo}>
-              <img src="/img/icons/logo.svg"></img>
+              <img src={`${import.meta.env.BASE_URL}/img/icons/logo.svg`}></img>
             </a>
 
             <nav className={`${styles.header__nav}`}>
@@ -61,7 +61,7 @@ export const Header = () => {
 
             <div className={styles.header__icons}>
               <Link to="/favorites" className={styles.icon}>
-                <img src="../../public/img/icons/heart.svg" />
+                <img src={`${import.meta.env.BASE_URL}/img/icons/heart.svg`} />
                 {favorites.length > 0 && (
                   <span className={styles['favourites-count']}>
                     {favorites.length}
@@ -70,7 +70,7 @@ export const Header = () => {
               </Link>
 
               <Link to="/cart" className={styles.icon}>
-                <img src="../../public/img/icons/cart.svg" />
+                <img src={`${import.meta.env.BASE_URL}/img/icons/cart.svg`} />
                 {cart.length > 0 && (
                   <span className={styles['cart-count']}>{totalAmount} </span>
                 )}
@@ -81,7 +81,7 @@ export const Header = () => {
                 onClick={() => setIsMenuOpen(true)}
                 className={`${styles.icon} ${styles['icon--burger-menu']} `}
               >
-                <img src="../../public/img/icons/menu.svg" />
+                <img src={`${import.meta.env.BASE_URL}/img/icons/menu.svg`} />
               </a>
             </div>
           </div>

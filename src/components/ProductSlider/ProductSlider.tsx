@@ -50,7 +50,7 @@ export const ProductSlider: React.FC<Props> = ({
             onClick={handlePrev}
             disabled={currentIndex === 0}
           >
-            <img src="/img/buttons/arrow-left.png" />
+            <img src={`${import.meta.env.BASE_URL}/img/buttons/arrow-left.png`} />
           </button>
 
           <button
@@ -58,7 +58,7 @@ export const ProductSlider: React.FC<Props> = ({
             onClick={handleNext}
             disabled={currentIndex >= maxIndex}
           >
-            <img src="/img/buttons/arrow-right.png" />
+            <img src={`${import.meta.env.BASE_URL}/img/buttons/arrow-right.png`} />
           </button>
         </div>
       </div>

@@ -27,7 +27,7 @@ export const Pagination: React.FC<Props> = ({
           }
         }}
       >
-        <img src="/img/buttons/arrow-left.png" />
+        <img src={`${import.meta.env.BASE_URL}/img/buttons/arrow-left.png`} />
       </button>
       {visiblePages.map(page => (
         <button
@@ -48,7 +48,7 @@ export const Pagination: React.FC<Props> = ({
           }
         }}
       >
-        <img src="/img/buttons/arrow-right.png" />
+        <img src={`${import.meta.env.BASE_URL}/img/buttons/arrow-right.png`} />
       </button>
     </div>
   );

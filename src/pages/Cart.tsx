@@ -76,11 +76,12 @@ export const Cart = () => {
                     className={styles['cart-item__remove']}
                     onClick={() => handleRemoveFromCart(item.product.itemId)}
                   >
-                    <img src="/img/buttons/close.svg" />
+                    <img src={`${import.meta.env.BASE_URL}/img/buttons/close.svg`} />
                   </button>
                   <div className={styles['cart-item__image-container']}>
                     <img
-                      src={item.product.image}
+                     src={`${import.meta.env.BASE_URL}/${item.product.image.startsWith('/') ?
+                      item.product.image.slice(1) : item.product.image}`}
                       alt=""
                       className={styles['cart-item__image']}
                     />
@@ -95,7 +96,7 @@ export const Cart = () => {
                       onClick={() => handleDecreaseAmount(item.product.itemId)}
                       className={styles['cart-item__counter-button']}
                     >
-                      <img src="/img/buttons/minus.png" alt="" />
+                      <img src={`${import.meta.env.BASE_URL}/img/buttons/minus.png`} alt="" />
                     </button>
                     <span className={styles['cart-item__counter-value']}>
                       {item.amount}
@@ -104,7 +105,7 @@ export const Cart = () => {
                       className={styles['cart-item__counter-button']}
                       onClick={() => handleIncreaseAmount(item.product.itemId)}
                     >
-                      <img src="/img/buttons/union.png" alt="" />
+                      <img src={`${import.meta.env.BASE_URL}/img/buttons/union.png`} alt="" />
                     </button>
                   </div>
                   <p

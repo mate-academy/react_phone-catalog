@@ -27,13 +27,13 @@ export const MobileMenu: React.FC<Props> = ({ onClose }) => {
     <div className={styles['mobile-menu']}>
       <div className={styles['mobile-menu__top']}>
         <a href="#" className={styles.header__logo}>
-          <img src="/img/icons/logo.svg"></img>
+          <img src={`${import.meta.env.BASE_URL}/img/icons/logo.svg`}></img>
         </a>
         <button
           onClick={onClose}
           className={`${styles.icon} ${styles['icon--close']} `}
         >
-          <img src="../../public/img/icons/close.svg" />
+          <img src={`${import.meta.env.BASE_URL}/img/icons/close.svg`} />
         </button>
       </div>
 
@@ -64,7 +64,7 @@ export const MobileMenu: React.FC<Props> = ({ onClose }) => {
 
       <div className={styles['mobile-menu__bottom']}>
         <Link to="/favorites" className={styles.icon}>
-          <img src="../../public/img/icons/heart.svg" />
+          <img src={`${import.meta.env.BASE_URL}/img/icons/heart.svg`} />
           {favorites.length > 0 && (
             <span className={styles['favourites-count']}>
               {favorites.length}
@@ -73,7 +73,7 @@ export const MobileMenu: React.FC<Props> = ({ onClose }) => {
         </Link>
 
         <Link to="/cart" className={styles.icon}>
-          <img src="../../public/img/icons/cart.svg" />
+          <img src={`${import.meta.env.BASE_URL}/img/icons/cart.svg`} />
           {cart.length > 0 && (
             <span className={styles['cart-count']}>{totalAmount}</span>
           )}

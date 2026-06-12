@@ -12,7 +12,7 @@ export const Footer = () => {
       <div className={styles.container}>
         <div className={styles.footer__content}>
           <a href="#" className={styles.footer__logo}>
-            <img src="/img/icons/logo.svg"></img>
+            <img src={`${import.meta.env.BASE_URL}/img/icons/logo.svg`}></img>
           </a>
 
           <nav>
@@ -51,7 +51,7 @@ export const Footer = () => {
           >
             Back to top
             <span className={styles.footer__icon}>
-              <img src="/img/buttons/arrow-up.png" />
+              <img src={`${import.meta.env.BASE_URL}/img/buttons/arrow-up.png`} />
             </span>
           </button>
         </div>

@@ -13,7 +13,7 @@ export const ShopByCategory = () => {
           <div className={styles['categories__image-container']}>
             <img
               className={styles.categories__image}
-              src="/img/categories/category-phones.png"
+              src={`${import.meta.env.BASE_URL}/img/categories/category-phones.png`}
             />
           </div>
           <h3 className={styles.categorie__title}>Mobile phones</h3>
@@ -27,7 +27,7 @@ export const ShopByCategory = () => {
           <div className={styles['categories__image-container']}>
             <img
               className={styles.categories__image}
-              src="/img/categories/category-tablets.png"
+              src={`${import.meta.env.BASE_URL}/img/categories/category-tablets.png`}
             />
           </div>
           <h3 className={styles.categorie__title}>Tablets</h3>
@@ -41,7 +41,7 @@ export const ShopByCategory = () => {
           <div className={styles['categories__image-container']}>
             <img
               className={styles.categories__image}
-              src="/img/categories/category-accessories.png"
+              src={`${import.meta.env.BASE_URL}/img/categories/category-accessories.png`}
             />
           </div>
           <h3 className={styles.categorie__title}>Accessories</h3>

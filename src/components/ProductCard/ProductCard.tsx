@@ -73,7 +73,7 @@ export const ProductCard: React.FC<Props> = ({ product, isShowDiscount }) => {
         <div className={styles['product-card__image-container']}>
           <img
             className={styles['product-card__image']}
-            src={`/${product.image}`}
+           src={`${import.meta.env.BASE_URL}/${product.image}`} alt={product.name}
           />
         </div>
         <h3 className={styles['product-card__title']}>{product.name}</h3>
@@ -121,8 +121,8 @@ export const ProductCard: React.FC<Props> = ({ product, isShowDiscount }) => {
           <img
             src={
               isFavorite
-                ? '/img/buttons/heart-filled.svg'
-                : '/img/buttons/heart.svg'
+    ? `${import.meta.env.BASE_URL}/img/buttons/heart-filled.svg`
+    : `${import.meta.env.BASE_URL}/img/buttons/heart.svg`
             }
           />
         </button>

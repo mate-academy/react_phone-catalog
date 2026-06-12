@@ -300,7 +300,7 @@ export const ProductDetailsPage = () => {
       <button className={styles.back} onClick={() => navigate(-1)}>
         <div className={styles.back__container}>
           <img
-            src="/img/buttons/arrow-left.png"
+            src={`${import.meta.env.BASE_URL}/img/buttons/arrow-left.png`}
             alt=""
             className={styles.back__icon}
           />
@@ -320,7 +320,7 @@ export const ProductDetailsPage = () => {
               >
                 <img
                   className={styles[`product-details__gallery-image`]}
-                  src={image}
+                  src={`${import.meta.env.BASE_URL}/${image.startsWith('/') ? image.slice(1) : image}`}
                 />
               </li>
             ))}
@@ -330,7 +330,13 @@ export const ProductDetailsPage = () => {
           <div className={styles['product-details__image-wrapper']}>
             <img
               className={styles[`product-details__image`]}
-              src={product?.images[currentImage]}
+              src={
+  product?.images[currentImage]
+    ? `${import.meta.env.BASE_URL}/${product.images[currentImage].startsWith('/')
+        ? product.images[currentImage].slice(1)
+        : product.images[currentImage]}`
+    : ''
+}
             />
           </div>
         </div>
@@ -409,11 +415,11 @@ export const ProductDetailsPage = () => {
               onClick={handleAddToFavorites}
             >
               <img
-                src={
-                  isFavorite
-                    ? '/img/buttons/heart-filled.svg'
-                    : '/img/buttons/heart.svg'
-                }
+               src={
+  isFavorite
+    ? `${import.meta.env.BASE_URL}/img/buttons/heart-filled.svg`
+    : `${import.meta.env.BASE_URL}/img/buttons/heart.svg`
+}
               />
             </button>
           </div>
