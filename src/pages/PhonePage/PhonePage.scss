@@ -75,6 +75,8 @@
     transition: box-shadow 0.3s ease;
     box-sizing: border-box;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 
     &:hover {
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
@@ -101,6 +103,11 @@
     margin-bottom: 8px;
     color: #F1F2F9;
     line-height: 21px;
+    min-height: 42px;        // 2 строки × 21px — всегда одинаковая высота
+    display: -webkit-box;
+    -webkit-line-clamp: 2;   // максимум 2 строки
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   &__card-prices {
@@ -130,22 +137,28 @@
     justify-content: space-between;
     font-size: 12px;
     line-height: 15px;
+    gap: 8px;
   }
 
   &__card-spec-label {
     color: #75767F;
     font-weight: 700;
+    flex-shrink: 0;          // лейбл не сжимается
   }
 
   &__card-spec-value {
     color: #F1F2F9;
     font-weight: 700;
+    text-align: right;
+    white-space: nowrap;     // не переносим на новую строку
+    overflow: hidden;
+    text-overflow: ellipsis; // длинный текст обрезаем с ...
   }
 
   &__card-actions {
     display: flex;
     gap: 8px;
-    margin-top: 16px;
+    margin-top: auto;        // прижимаем кнопки к низу карточки
   }
 
   &__card-btn {

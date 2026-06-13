@@ -89,6 +89,12 @@ export const PhonePage = () => {
     setImageError(prev => ({ ...prev, [imageSrc]: true }));
   };
 
+  // "6.5' OLED (Super Retina HD)" → "6.5' OLED"
+  const formatScreen = (screen: string) => {
+    const parts = screen.split(' ');
+    return parts.slice(0, 2).join(' ');
+  };
+
   if (loading) {
     return (
       <section className="section">
@@ -162,7 +168,7 @@ export const PhonePage = () => {
                 <div className="phone__card-specs">
                   <div className="phone__card-spec">
                     <span className="phone__card-spec-label">Screen</span>
-                    <span className="phone__card-spec-value">{phone.screen}</span>
+                    <span className="phone__card-spec-value">{formatScreen(phone.screen)}</span>
                   </div>
 
                   <div className="phone__card-spec">
