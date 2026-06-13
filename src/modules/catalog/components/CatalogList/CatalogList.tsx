@@ -7,7 +7,6 @@ import styles from './CatalogList.module.scss';
 import { Product } from '../../../../types/product';
 import { usePagination } from '../../../shared/hooks/usePagination';
 import { SortOption, useSort } from '../../hooks/useSort';
-// import { Breadcrumbs } from '../../../shared/components/Breadcrumbs';
 
 export type AnyProduct = Phone | Tablet | Accessorie;
 
@@ -115,8 +114,6 @@ export const CatalogList: React.FC<Props> = ({ products, title }) => {
   return (
     <div className={styles.listWrapper}>
       <div className={styles.topBar}>
-        {/* <Breadcrumbs /> */}
-
         <h1 className={styles.title}>{title}</h1>
 
         <div className={styles.quantity}>{currentProductsQuantity} models</div>

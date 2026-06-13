@@ -13,6 +13,7 @@ import { Loader } from '../shared/components/UI/Loader';
 import { ProductDetailsList } from './components/ProductDetailsList';
 import { ProductSlider } from '../home/components/ProductsSlider';
 import { Product } from '../../types/product';
+import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 
 type AnyProduct = Phone | Tablet | Accessorie;
 
@@ -118,6 +119,8 @@ export const ProductDetailsPage = () => {
   return (
     <div className={styles.productDetailsPage}>
       <div className={styles.container}>
+        <Breadcrumbs />
+
         <ProductDetailsList
           products={[productDetail]}
           title={productId || productDetail?.name}

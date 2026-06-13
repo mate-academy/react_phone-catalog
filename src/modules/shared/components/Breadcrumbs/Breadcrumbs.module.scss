@@ -1,5 +1,11 @@
+.nav {
+  margin-top: 24px;
+}
+
 .list {
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -8,19 +14,50 @@
 .item {
   display: flex;
   align-items: center;
+
+  &:not(:last-child)::after {
+    content: '';
+    display: inline-block;
+    width: 16px; // Размеры иконки-стрелочки
+    height: 16px;
+    margin: 0 8px;
+    background-image: url('/img/icons/right.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
 }
 
-.currentCrumb {
-  color: #666;
-  font-weight: bold;
+.homeIcon {
+  display: block;
+  width: 16px;
+  height: 16px;
 }
 
 .crumbLink {
   text-decoration: none;
-  color: #0070f3;
+  color: #f1f2f9;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1rem;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
 }
 
-.separator {
-  margin: 0 8px;
-  color: #ccc;
+.currentCrumb {
+  color: #75767f;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1rem;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
 }

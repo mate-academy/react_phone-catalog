@@ -1,47 +1,80 @@
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import {
+  createHashRouter,
+  // HashRouter,
+  Params,
+  // Route,
+  RouterProvider,
+  // Routes,
+} from 'react-router-dom';
 import { App } from '../App';
 import { HomePage } from '../modules/home';
 import { CatalogPage } from '../modules/catalog';
 import { ProductDetailsPage } from '../modules/product-details';
+import { CartPage } from '../modules/cart';
+import { FavoritesPage } from '../modules/favorites';
+import { ReactNode } from 'react';
+import { getProductById } from '../constants';
+
+interface Product {
+  id: string;
+  name: string;
+}
+export interface CrumbHandle<T = unknown> {
+  crumb: (params: Params, data?: T) => ReactNode;
+}
+
+const router = createHashRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      { index: true, element: <HomePage /> },
+
+      {
+        path: ':category',
+        element: null,
+        children: [
+          {
+            index: true,
+            element: <CatalogPage />,
+            handle: { crumb: params => params.category } as CrumbHandle,
+          },
+          {
+            path: 'product/:productId',
+            loader: async ({ params }) => {
+              if (!params.productId) {
+                return null;
+              }
+
+              const product = await getProductById(params.productId);
+
+              return product;
+            },
+            element: <ProductDetailsPage />,
+            handle: {
+              crumb: (_params, product: Product) => product?.name || 'Product',
+            } as CrumbHandle<Product>,
+          },
+        ],
+      },
+
+      {
+        path: 'cart',
+        element: <CartPage />,
+        handle: { crumb: () => 'Cart' } as CrumbHandle,
+      },
+
+      {
+        path: 'favorites',
+        element: <FavoritesPage />,
+        handle: { crumb: () => 'Favorites' } as CrumbHandle,
+      },
+
+      { path: '*', element: <p>Not found</p> },
+    ],
+  },
+]);
 
 export const AppRoutes = () => {
-  return (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<HomePage />} />
-
-          <Route path="catalog">
-            <Route index element={<CatalogPage />} />
-
-            <Route
-              path=":category"
-              element={<CatalogPage />}
-              handle={{ crumb: 'catalog' }}
-            />
-
-            <Route
-              path=":productId"
-              element={<ProductDetailsPage />}
-              handle={{ crumb: 'product' }}
-            />
-          </Route>
-
-          <Route path="product">
-            <Route index element={<ProductDetailsPage />} />
-
-            <Route
-              path=":productId"
-              element={<ProductDetailsPage />}
-              handle={{ crumb: 'product' }}
-            />
-          </Route>
-
-          {/* <Route path="/product/:productId" element={<CartPage />} /> */}
-        </Route>
-
-        <Route path="*" element={<p>Not found</p>} />
-      </Routes>
-    </HashRouter>
-  );
+  return <RouterProvider router={router} />;
 };

@@ -26,17 +26,17 @@ export const Header = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/catalog/phones" className={getLinkClass}>
+              <NavLink to="/phones" className={getLinkClass}>
                 Phones
               </NavLink>
             </li>
             <li>
-              <NavLink to="/catalog/tablets" className={getLinkClass}>
+              <NavLink to="/tablets" className={getLinkClass}>
                 Tablets
               </NavLink>
             </li>
             <li>
-              <NavLink to="/catalog/accessories" className={getLinkClass}>
+              <NavLink to="/accessories" className={getLinkClass}>
                 Accessories
               </NavLink>
             </li>
@@ -57,7 +57,7 @@ export const Header = () => {
           <div>
             <Link
               className={styles.iconLink}
-              to="/shopping-bag"
+              to="/cart"
               aria-label="Shopping bag"
             >
               <img src="/img/icons/shopping-bag.svg" alt="Shopping bag" />

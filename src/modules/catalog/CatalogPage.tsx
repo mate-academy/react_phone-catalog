@@ -8,6 +8,7 @@ import {
   getTablets,
 } from '../../services/product.api';
 import { Loader } from '../shared/components/UI/Loader';
+import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 
 export const CatalogPage = () => {
   const { category } = useParams<{ category: string }>();
@@ -74,6 +75,8 @@ export const CatalogPage = () => {
   return (
     <div className={styles.catalogPage}>
       <div className={styles.container}>
+        <Breadcrumbs />
+
         <CatalogList products={products} title={pageTitle} />
       </div>
     </div>
