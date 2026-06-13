@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client';
 import { App } from './App';
 import './styles/index.scss';
 import { HashRouter as Router } from 'react-router-dom';
-import { ScrollToTop } from './components/ScrollToTop/ScrollToTop';
+import { ScrollToTop } from './shared/components/ScrollToTop';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <Router>

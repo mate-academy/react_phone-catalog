@@ -1,0 +1,30 @@
+@use '../../../styles/variables.scss' as *;
+
+.error-message {
+   padding: 40px;
+}
+
+.error-message__text {
+  font-family: Mont, sans-serif;
+font-weight: 500;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0%;
+margin-bottom: 18px;
+}
+
+.error-message__button {
+  height: 40px;
+  width: 160px;
+  background-color: $color-accent;
+  border-radius: 8px;
+  border: none;
+  color: $color-white;
+  transition: box-shadow $transition-duration ease;
+
+  &:hover {
+  box-shadow: 0 3px 13px 0 #17203166;
+}
+}
+
+

@@ -1,20 +1,20 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 
-import { HomePage } from './pages/HomePage';
-import { NotFoundPage } from './pages/NotFoundPage';
-import { Layout } from './components/Layout/Layout';
-import { Phones } from './pages/Phones';
-import { Tablets } from './pages/Tablets';
-import { Accessories } from './pages/Accessories';
-import { Cart, CartItem } from './pages/Cart';
-import { ProductDetailsPage } from './pages/ProductDetailsPage';
-import { Favorites } from './pages/Favorites';
+import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 import { useEffect, useState } from 'react';
 
-import { ProductCardData } from './components/ProductCard/ProductCard';
-import { CartContext } from './context/CartContext';
+import { CartContext, CartItem } from './context/CartContext';
 import { FavoritesContext } from './context/FavoritesContext';
+import { HomePage } from './modules/HomePage/HomePage';
+import { Phones } from './modules/Phones/Phones';
+import { Tablets } from './modules/Tablets/Tablets';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
+import { Favorites } from './modules/Favorites/Favorites';
+import { ProductCardData } from './shared/types/ProductCardData';
+import { Layout } from './shared/components/Layout';
+import { Cart } from './modules/Cart/Cart';
+import { Accessories } from './modules/Accessories/Accessories';
 
 export const App = () => {
   const [favorites, setFavorites] = useState<ProductCardData[]>(() => {
