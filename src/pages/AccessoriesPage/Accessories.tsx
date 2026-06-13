@@ -6,6 +6,7 @@ import { Accessories } from '../../Interface';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../Functional/CartContext/CartContext';
 import { getBaseUrl } from '../../utils';
+import { Pagination } from '../../components/Pagination/Pagination';
 
 export const AccessoriesPage = () => {
   const { addToCart, toggleFavorite, removeFromCart, cart, favorites } = useCart();
@@ -86,41 +87,6 @@ export const AccessoriesPage = () => {
 
     setFilteredAccessories(sorted);
   }, [accessories, searchTerm, sortBy]);
-
-  const getPageNumbers = () => {
-    const maxPagesToShow = 5;
-
-    const pages: (number | string)[] = [];
-
-    const startPage = Math.max(1, currentPage - 2);
-
-    const endPage = Math.min(
-      totalPages,
-      startPage + maxPagesToShow - 1,
-    );
-
-    pages.push(1);
-
-    if (startPage > 2) {
-      pages.push('...');
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
-      if (i !== 1 && i !== totalPages) {
-        pages.push(i);
-      }
-    }
-
-    if (endPage < totalPages - 1) {
-      pages.push('...');
-    }
-
-    if (totalPages !== 1) {
-      pages.push(totalPages);
-    }
-
-    return pages;
-  };
 
   const handleAddToCart = (accessory: Accessories) => {
     addToCart({
@@ -244,11 +210,31 @@ export const AccessoriesPage = () => {
                 <div className="accessories__card-specs">
                   <div className="accessories__card-spec">
                     <span className="accessories__card-spec-label">
-                      Color
+                      Screen
                     </span>
 
                     <span className="accessories__card-spec-value">
-                      {accessory.color}
+                      {accessory.screen}
+                    </span>
+                  </div>
+
+                  <div className="accessories__card-spec">
+                    <span className="accessories__card-spec-label">
+                      Capacity
+                    </span>
+
+                    <span className="accessories__card-spec-value">
+                      {accessory.capacity}
+                    </span>
+                  </div>
+
+                  <div className="accessories__card-spec">
+                    <span className="accessories__card-spec-label">
+                      RAM
+                    </span>
+
+                    <span className="accessories__card-spec-value">
+                      {accessory.ram}
                     </span>
                   </div>
                 </div>
@@ -316,45 +302,15 @@ export const AccessoriesPage = () => {
       </div>
 
       {totalPages > 1 && (
-        <div className="pagination">
-          <button
-            onClick={() =>
-              setCurrentPage(prev => Math.max(prev - 1, 1))
-            }
-            disabled={currentPage === 1}
-            className="pagination__button pagination__button--nav"
-          >
-            <img src="./icons/arrow-left-small-white.svg" alt="prev" />
-          </button>
-
-          {getPageNumbers().map((page, index) => (
-            <button
-              key={index}
-              className={`pagination__button ${
-                currentPage === page ? 'active' : ''
-              }`}
-              onClick={() =>
-                typeof page === 'number' &&
-                setCurrentPage(page)
-              }
-              disabled={typeof page !== 'number'}
-            >
-              {page}
-            </button>
-          ))}
-
-          <button
-            onClick={() =>
-              setCurrentPage(prev =>
-                Math.min(prev + 1, totalPages),
-              )
-            }
-            disabled={currentPage === totalPages}
-            className="pagination__button pagination__button--nav"
-          >
-            <img src="./icons/arrow-right-small-white.svg" alt="next" />
-          </button>
-        </div>
+        <Pagination
+          handleNext={() =>
+            setCurrentPage(prev => Math.min(prev + 1, totalPages))
+          }
+          handlePrev={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+          handlePage={page => setCurrentPage(page)}
+          currentPage={currentPage}
+          totalPages={totalPages}
+        />
       )}
     </section>
   );
