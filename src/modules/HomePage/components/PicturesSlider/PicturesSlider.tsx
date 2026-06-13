@@ -51,9 +51,9 @@ export const PicturesSlider = () => {
 
   return (
     <div className={styles.hero}>
-      <h1 className={styles['pictures-slider__title']}>
+      <p className={styles['pictures-slider__title']}>
         Welcome to Nice <br className={styles['mobile-break']} /> Gadgets store!
-      </h1>
+      </p>
       <div className={styles['pictures-slider']}>
         <button
           className={`${styles.slider__arrow} ${styles['slider__arrow--left']}`}
@@ -98,7 +98,7 @@ export const PicturesSlider = () => {
           {' '}
           <img
             src={`${import.meta.env.BASE_URL}/img/buttons/arrow-right.png`}
-            alt="button-arrow-right"
+            alt="button-close"
           />
         </button>
       </div>
