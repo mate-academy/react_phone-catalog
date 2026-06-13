@@ -6,6 +6,7 @@
   "compilerOptions": {
     "sourceMap": false,
     "types": ["node", "cypress"],
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "ignoreDeprecations": "6.0"
   }
 }

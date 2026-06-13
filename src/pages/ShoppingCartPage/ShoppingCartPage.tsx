@@ -52,7 +52,7 @@ export const ShoppingCartPage: FC = () => {
             Your cart is empty
           </span>
           <img
-            src="img/cart-is-empty.png"
+            src="https://localhost:4000/img/cart-is-empty.png"
             alt="Empty shopping cart"
             className="cartPage__image-empty"
           />

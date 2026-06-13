@@ -24,7 +24,22 @@
   top: 0;
   z-index: 1;
 }
-
+.Layout__menu {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.Layout__footer {
+  background-color: var(--color-bg);
+  padding: 1rem;
+  text-align: center;
+}
+.Layout__loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
 body.theme_dark {
   background-color: var(--color-bg);
 }

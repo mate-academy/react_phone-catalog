@@ -41,7 +41,9 @@ export const ShopByCategory: React.FC = () => {
           <Link to="/phones" className="shopByCategory__link">
             <section className="shopByCategory__block">
               <img
-                src="./img/category-phones.webp"
+                // src="./img/category-phones.webp"
+                src="https://localhost:4000/img/category-phones.webp"
+                crossOrigin="anonimous"
                 alt="Category Phones"
                 className="shopByCategory__block-image"
               />
@@ -55,7 +57,9 @@ export const ShopByCategory: React.FC = () => {
           <Link to="/tablets" className="shopByCategory__link">
             <section className="shopByCategory__block">
               <img
-                src="./img/category-tablets.webp"
+                // src="./img/category-tablets.webp"
+                src="https://localhost:4000/img/category-tablets.webp"
+                crossOrigin="anonimous"
                 alt="Category Tablets"
                 className="shopByCategory__block-image"
               />
@@ -69,7 +73,9 @@ export const ShopByCategory: React.FC = () => {
           <Link to="/accessories" className="shopByCategory__link">
             <section className="shopByCategory__block">
               <img
-                src="./img/category-accessories.webp"
+                // src="./img/category-accessories.webp"
+                src="https://localhost:4000/img/category-accessories.webp"
+                crossOrigin="anonimous"
                 alt="Category Accessories"
                 className="shopByCategory__block-image"
               />

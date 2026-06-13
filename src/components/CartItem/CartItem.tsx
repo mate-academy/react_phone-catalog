@@ -29,15 +29,23 @@ export const CartItem: FC<Props> = memo(
     return (
       <div className="cartItem">
         <div className="cartItem__wrapperTop">
-          <button
-            className="cartItem__icon-close"
+          <div
+            className="cartItem__delete"
             onClick={() => updateQuantity(id, 0)}
           >
-            {/*<Icon icon={icons.close__disabled[theme]} />*/}
-          </button>
-
+            <span>Delete</span>
+            <button className="cartItem__icon-close">
+              {/*<Icon icon={icons.close__disabled[theme]} >*/}
+            </button>
+          </div>
           <Link to={`/${category}/${id}`} className="cartItem__link">
-            <img src={image} alt="Image product" className="cartItem__image" />
+            {/*src = { image }*/}
+            <img
+              src={`https://localhost:4000/${image}`}
+              crossOrigin="anonimous"
+              alt="Image product"
+              className="cartItem__image"
+            />
             <div className="cartItem__title">{name}</div>
           </Link>
         </div>

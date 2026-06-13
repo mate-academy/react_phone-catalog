@@ -92,11 +92,15 @@ export const ProductContentTop: FC<Props> = ({
     () => favorites.some(item => item.itemId === selectedProduct.id),
     [favorites, selectedProduct.id],
   );
+  const images = useMemo(() => {
+    return selectedProduct.images.map(image => `${image}`);
+  }, [selectedProduct.images]);
 
   return (
     <div className="detailsPage__content-top">
       <div className="detailsPage__container-imageSlider">
-        {selectedProduct.images.map((image, index) => (
+        {/* selectedProduct.images */}
+        {images.map((image, index) => (
           <div
             key={index}
             className={classNames('detailsPage__container-photos', {
@@ -104,7 +108,9 @@ export const ProductContentTop: FC<Props> = ({
             })}
           >
             <img
-              src={`./${image}`}
+              src={`https://localhost:4000/${image}`}
+              crossOrigin="anonymous"
+              // src={`./${image}`}
               alt={`Thumbnail ${index + 1}`}
               className="detailsPage__photo"
               onClick={() => setSelectedPhoto(index)}
@@ -117,7 +123,9 @@ export const ProductContentTop: FC<Props> = ({
         {selectedProduct.images.map((image, index) => (
           <img
             key={index}
-            src={`./${image}`}
+            crossOrigin="anonymous"
+            src={`https://localhost:4000/${image}`}
+            // src={`./${image}`}
             alt={`Selected Photo ${index + 1}`}
             className={classNames('detailsPage__image', {
               'detailsPage__image--active': selectedPhoto === index,

@@ -17,7 +17,14 @@
     &-photo {
       width: 148px;
       height: 129px;
-
+      &-show {
+        @include hover(transform, scale(1.05));
+        @include hover(box-shadow, 0 3px 13px 0 #17203166);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        opacity: 0;
+      }
       @include on-tablet {
         width: 173px;
         height: 202px;
@@ -33,7 +40,6 @@
       text-align: center;
       height: 58px;
       padding-top: 16px;
-
     }
 
     &-price {
@@ -55,7 +61,6 @@
     &-buttons {
       display: flex;
       gap: 8px;
-
     }
   }
 
@@ -161,4 +166,28 @@
 
 .productCard:hover .productCard__container-photo {
   transform: scale(1.05);
+}
+
+@keyframes moveShake {
+  0% {
+rotate: 0deg;
+  }
+  50% {
+rotate: -5deg;
+  }
+  100% {
+rotate: 5deg;
+  }
+}
+
+@keyframes moveRight {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(500px);
+  }
 }

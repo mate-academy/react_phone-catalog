@@ -5,6 +5,7 @@ import {
   useContext,
   FC,
   useCallback,
+  useMemo,
 } from 'react';
 import './PicturesSlider.scss';
 import '../../../src/shared/Icon/Icon.scss';
@@ -19,7 +20,9 @@ type Props = {
 };
 export const PicturesSlider: FC<Props> = ({ allNewestProducts }) => {
   const images = allNewestProducts.map(el => el.image);
-
+  const memorizedImages = useMemo(() => {
+    return allNewestProducts.map(el => `https://localhost:4000/${el.image}`);
+  }, [allNewestProducts]);
   const names = allNewestProducts.map(el => el.name);
   const imagesUrl: Record<number, string> = allNewestProducts.map(
     el => el.category + '/' + el.itemId,
@@ -120,10 +123,14 @@ export const PicturesSlider: FC<Props> = ({ allNewestProducts }) => {
           </div>
 
           <div className="picturesSlider__container-image">
-            {images.map((src, index) => (
+            {/*images.map((src, index) => (--- IGNORE-- --*/}
+            {memorizedImages.map((src, index) => (
               <img
                 key={index}
                 src={src}
+                // src={`https://localhost:4000/${src}`}
+                // src={`./${src}`} --- IGNORE ---
+                crossOrigin="anonymous"
                 alt="Slide"
                 className={
                   currentSlide === index

@@ -15,6 +15,7 @@ import { getAllProducts } from '../utils/api';
 import { useLocalStorage } from '../hooks/useLocaleStorage';
 import { useTheme } from '../hooks/useTheme';
 import { Theme } from '../types';
+import { getAvailableProductsByCategory } from '../utils/api';
 
 type GlobalContextType = {
   allProducts: Product[];
@@ -32,6 +33,9 @@ type GlobalContextType = {
   addToCart: (currentProduct: Product) => void;
   theme: Theme;
   toggleTheme: () => void;
+  allPhones: Product[];
+  allTablets: Product[];
+  allAccessories: Product[];
 };
 
 export const GlobalContext = createContext<GlobalContextType>({
@@ -50,6 +54,9 @@ export const GlobalContext = createContext<GlobalContextType>({
   addToCart: () => {},
   theme: 'light',
   toggleTheme: () => {},
+  allPhones: [] as Product[],
+  allTablets: [] as Product[],
+  allAccessories: [] as Product[],
 });
 
 type Props = {
@@ -63,9 +70,27 @@ export const GlobalProvider: FC<Props> = ({ children }) => {
   const [cart, setCart] = useLocalStorage<Cart[]>('shoppingCart', []);
   const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [allPhones, setAllPhones] = useState<Product[]>([]);
+  const [allTablets, setAllTablets] = useState<Product[]>([]);
+  const [allAccessories, setAllAccessories] = useState<Product[]>([]);
+
+  function productsByCategory(category: string) {
+    return getAvailableProductsByCategory(category);
+  }
 
   useEffect(() => {
     getAllProducts().then(fetchedProducts => setAllProducts(fetchedProducts));
+    productsByCategory('phones').then(phones => {
+      setAllPhones(phones);
+    });
+
+    productsByCategory('tablets').then(tablets => {
+      setAllTablets(tablets);
+    });
+
+    productsByCategory('accessories').then(accessories => {
+      setAllAccessories(accessories);
+    });
   }, []);
 
   const updateQuantity = useCallback(
@@ -144,6 +169,9 @@ export const GlobalProvider: FC<Props> = ({ children }) => {
     () => ({
       allProducts,
       setAllProducts,
+      allPhones,
+      allTablets,
+      allAccessories,
       cart,
       setCart,
       favorites,
@@ -160,6 +188,9 @@ export const GlobalProvider: FC<Props> = ({ children }) => {
     }),
     [
       allProducts,
+      allPhones,
+      allTablets,
+      allAccessories,
       cart,
       favorites,
       setAllProducts,

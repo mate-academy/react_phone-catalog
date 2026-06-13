@@ -28,10 +28,10 @@ export const Header: FC = () => {
     useContext(GlobalContext);
 
   // const location = useLocation();
-  //const [query, setQuery] = useState('');
-  //const [appliedQuery, setAppliedQuery] = useState('');
+  // const [query, setQuery] = useState('');
+  // const [appliedQuery, setAppliedQuery] = useState('');
   // const [searchParams, setSearchParams] = useSearchParams();
-  //const [query, setQuery] = useState('');
+  // const [query, setQuery] = useState('');
   // const query = searchParams.get('query') || '';
   const totalQuantity = useMemo(
     () => cart.reduce((sum, item) => sum + item.quantity, 0),
