@@ -2,21 +2,26 @@
 @use '../../../styles/variables.scss' as *;
 
 .product-card {
-   width: 100%;
+  width: 100%;
+  flex-shrink: 0;
+
   box-sizing: border-box;
   background-color: $color-white;
   border: 1px solid $color-elements;
   border-radius: 8px;
-  padding: 32px;
+  padding: 24px 16px;
   display: flex;
   flex-direction: column;
 
     @include on-tablet {
       height: 512px;
+      padding: 32px;
+      width: 237px;
     }
 
     @include on-desktop {
       height: 506px;
+      width: 272px;
     }
 
 }
@@ -164,6 +169,10 @@ line-height: 21px;
 display: flex;
   align-items: center;
   justify-content: center;
+
+  @include on-tablet {
+      width: 126px;
+    }
 
    @include on-desktop {
       width: 160px;

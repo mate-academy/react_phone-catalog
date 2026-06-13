@@ -60,7 +60,10 @@ export const PicturesSlider = () => {
           onClick={handlePrev}
         >
           {' '}
-          <img src={`${import.meta.env.BASE_URL}/img/buttons/arrow-left.png`} alt="button-arrow-left"/>
+          <img
+            src={`${import.meta.env.BASE_URL}/img/buttons/arrow-left.png`}
+            alt="button-arrow-left"
+          />
         </button>
         <Link
           to="/product/apple-iphone-14-pro"

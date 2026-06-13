@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import styles from './Pagination.module.scss';
+
 type Props = {
   totalPages: number;
   currentPage: number;
@@ -11,7 +11,11 @@ export const Pagination: React.FC<Props> = ({
   currentPage,
   setCurrentPage,
 }) => {
-  const [startPage, setStartPage] = useState(1);
+  const startPage = Math.min(
+    Math.max(1, currentPage - 1),
+    Math.max(1, totalPages - 3),
+  );
+
   const visiblePages = Array.from(
     { length: 4 },
     (_, index) => startPage + index,
@@ -20,19 +24,22 @@ export const Pagination: React.FC<Props> = ({
   return (
     <div className={styles.pagination}>
       <button
+        type="button"
         className={styles.arrow}
         onClick={() => {
-          if (startPage > 1) {
-            setStartPage(prev => prev - 1);
-          }
+          setCurrentPage(currentPage - 1);
         }}
+        disabled={currentPage === 1}
       >
-        <img src={`${import.meta.env.BASE_URL}/img/buttons/arrow-left.png`}
-         alt="button-arrow-left" />
+        <img
+          src={`${import.meta.env.BASE_URL}/img/buttons/arrow-left.png`}
+          alt="button-arrow-left"
+        />
       </button>
       {visiblePages.map(page => (
         <button
           key={page}
+          type="button"
           className={`${styles.pagination__item}
         ${currentPage === page ? styles['pagination__item--active'] : ''}`}
           onClick={() => setCurrentPage(page)}
@@ -42,15 +49,17 @@ export const Pagination: React.FC<Props> = ({
         </button>
       ))}
       <button
+        type="button"
         className={styles.arrow}
         onClick={() => {
-          if (startPage + 4 <= totalPages) {
-            setStartPage(prev => prev + 1);
-          }
+          setCurrentPage(currentPage + 1);
         }}
+        disabled={currentPage === totalPages}
       >
-        <img src={`${import.meta.env.BASE_URL}/img/buttons/arrow-right.png`}
-         alt="arrow-right"/>
+        <img
+          src={`${import.meta.env.BASE_URL}/img/buttons/arrow-right.png`}
+          alt="arrow-right"
+        />
       </button>
     </div>
   );

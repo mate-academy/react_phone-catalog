@@ -58,16 +58,26 @@ max-width: 136px;
 
 
 .product-slider__wrapper {
+  width: 100%;
   overflow: hidden;
+  padding: 4px;
 }
 
 .product-slider__list {
+   margin: 0;
+  padding: 0;
   display: flex;
   gap: 16px;
   list-style: none;
 
   transition: transform $transition-duration ease;
 }
+
+.li {
+  flex-shrink: 0;
+
+}
+
 
 .section {
   margin-bottom: 56px;

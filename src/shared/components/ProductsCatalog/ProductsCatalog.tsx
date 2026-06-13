@@ -44,6 +44,13 @@ export const ProductsCatalog: React.FC<Props> = ({ category, title }) => {
     perPage,
   );
 
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setCurrentPage(totalPages);
+    }
+  }, [currentPage, totalPages, setCurrentPage]);
+
+
   if (loading) {
     return <Loader />;
   }

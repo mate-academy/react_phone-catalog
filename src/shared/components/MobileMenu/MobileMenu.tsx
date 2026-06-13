@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import styles from './MobileMenu.module.scss';
 
 import { Link } from 'react-router-dom';
@@ -11,6 +11,13 @@ export const MobileMenu: React.FC<Props> = ({ onClose }) => {
   const cartContext = useContext(CartContext);
   const favoritesContext = useContext(FavoritesContext);
 
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
   if (!cartContext) {
     return null;
   }
@@ -34,8 +41,10 @@ export const MobileMenu: React.FC<Props> = ({ onClose }) => {
           onClick={onClose}
           className={`${styles.icon} ${styles['icon--close']} `}
         >
-          <img src={`${import.meta.env.BASE_URL}/img/icons/close.svg`}
-           alt="button-close" />
+          <img
+            src={`${import.meta.env.BASE_URL}/img/icons/close.svg`}
+            alt="button-close"
+          />
         </button>
       </div>
 
@@ -70,8 +79,10 @@ export const MobileMenu: React.FC<Props> = ({ onClose }) => {
 
       <div className={styles['mobile-menu__bottom']}>
         <Link to="/favorites" className={styles.icon} onClick={onClose}>
-          <img src={`${import.meta.env.BASE_URL}/img/icons/heart.svg`}
-           alt="button-favorite"/>
+          <img
+            src={`${import.meta.env.BASE_URL}/img/icons/heart.svg`}
+            alt="button-favorite"
+          />
           {favorites.length > 0 && (
             <span className={styles['favourites-count']}>
               {favorites.length}
@@ -80,8 +91,10 @@ export const MobileMenu: React.FC<Props> = ({ onClose }) => {
         </Link>
 
         <Link to="/cart" className={styles.icon} onClick={onClose}>
-          <img src={`${import.meta.env.BASE_URL}/img/icons/cart.svg`}
-           alt="button-cart" />
+          <img
+            src={`${import.meta.env.BASE_URL}/img/icons/cart.svg`}
+            alt="button-cart"
+          />
           {cart.length > 0 && (
             <span className={styles['cart-count']}>{totalAmount}</span>
           )}

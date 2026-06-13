@@ -9,7 +9,11 @@ export const Breadcrumbs: React.FC<Props> = ({ title, productName }) => {
   return (
     <div className={styles.breadcrumbs}>
       <Link to="/" className={styles['breadcrumbs__home-link']}>
-        <img className={styles['breadcrumbs__home-icon']} src={`${import.meta.env.BASE_URL}/img/icons/home.png`} alt="home-icon" />
+        <img
+          className={styles['breadcrumbs__home-icon']}
+          src={`${import.meta.env.BASE_URL}/img/icons/home.svg`}
+          alt="home-icon"
+        />
       </Link>
       {title && (
         <>

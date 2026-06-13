@@ -55,7 +55,7 @@ gap: 4px;
 }
 
 .sortSelect {
-  min-width: 176px;
+  width: 136px;
   height: 40px;
   border-radius: 8px;
   border-color: $color-icons;
@@ -67,6 +67,10 @@ gap: 4px;
   color: $color-primary;
 
   padding: 10px 12px;
+
+  @include on-tablet {
+     min-width: 176px;
+  }
 
   &:hover {
     border-color: $color-secondary;
@@ -81,7 +85,7 @@ gap: 4px;
 
 
 .perPageSelect {
-  min-width: 128px;
+  width: 136px;
   height: 40px;
   border-radius: 8px;
   border-color: $color-icons;
@@ -93,6 +97,10 @@ gap: 4px;
   color: $color-primary;
 
   padding: 10px 12px;
+
+  @include on-tablet {
+     width: 128px;
+  }
 
   &:hover {
   border-color: $color-secondary;
