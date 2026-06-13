@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './HomePage.module.scss';
 import { Footer } from '../../components/Footer/Footer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const HomePage = () => {
   const images = [
@@ -11,6 +11,14 @@ export const HomePage = () => {
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex(prev => (prev === images.length - 1 ? 0 : prev + 1));
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   const nextSlide = () => {
     setCurrentImageIndex(prev => (prev === images.length - 1 ? 0 : prev + 1));
@@ -39,11 +47,21 @@ export const HomePage = () => {
               </button>
 
               <div className={styles.imageWrapper}>
-                <img
-                  src={images[currentImageIndex]}
-                  alt={`Slide ${currentImageIndex + 1}`}
-                  className={styles.slider__img}
-                />
+                <div
+                  className={styles.track}
+                  style={{
+                    transform: `translateX(-${currentImageIndex * 100}%)`,
+                  }}
+                >
+                  {images.map((img, index) => (
+                    <img
+                      key={index}
+                      src={img}
+                      alt={`Slide ${index + 1}`}
+                      className={styles.slide}
+                    />
+                  ))}
+                </div>
               </div>
 
               <button className={styles.buttonNext} onClick={nextSlide}>

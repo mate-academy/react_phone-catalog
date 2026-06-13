@@ -12,24 +12,24 @@ export const Header = () => {
         <nav className={styles.nav}>
           <ul className={styles.list}>
             <li className={styles.item}>
-              <a href="" className={styles.link}>
+              <Link to="/" className={styles.link}>
                 Home
-              </a>
+              </Link>
             </li>
             <li className={styles.item}>
-              <a href="" className={styles.link}>
+              <Link to="/phones" className={styles.link}>
                 Phones
-              </a>
+              </Link>
             </li>
             <li className={styles.item}>
-              <a href="" className={styles.link}>
+              <Link to="/tablets" className={styles.link}>
                 Tablets
-              </a>
+              </Link>
             </li>
             <li className={styles.item}>
-              <a href="" className={styles.link}>
+              <Link to="/accessories" className={styles.link}>
                 Accessories
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

@@ -13,9 +13,7 @@
 
 .title {
   grid-column: 1 / -1;
-
   margin: 0;
-
   color: #F1F2F9;
   font-size: 48px;
   font-family: Mont, sans-serif;
@@ -33,12 +31,19 @@
 
 .imageWrapper {
   grid-column: 2 / -2;
+  overflow: hidden;
+  width: 100%;
 }
 
-.slider {
-  &__img {
-    width: 100%;
-  }
+.track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  max-height: 400px;
+  width: 100%;
+  flex-shrink: 0;
 }
 
 .buttonPrev, .buttonNext {
@@ -259,4 +264,3 @@
     gap: 16px;
   }
 }
-
