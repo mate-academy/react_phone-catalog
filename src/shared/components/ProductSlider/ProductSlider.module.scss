@@ -60,7 +60,7 @@ max-width: 136px;
 .product-slider__wrapper {
   width: 100%;
   overflow: hidden;
-  padding: 4px;
+
 }
 
 .product-slider__list {
@@ -73,9 +73,8 @@ max-width: 136px;
   transition: transform $transition-duration ease;
 }
 
-.li {
-  flex-shrink: 0;
-
+.product-slider__list li {
+  flex: 0 0 auto;
 }
 
 

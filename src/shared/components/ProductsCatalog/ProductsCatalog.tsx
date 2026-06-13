@@ -50,7 +50,6 @@ export const ProductsCatalog: React.FC<Props> = ({ category, title }) => {
     }
   }, [currentPage, totalPages, setCurrentPage]);
 
-
   if (loading) {
     return <Loader />;
   }
