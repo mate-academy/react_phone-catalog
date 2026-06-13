@@ -4,10 +4,14 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  flex-wrap: wrap;
-  width: 248px;
+  flex-wrap: nowrap;
   margin-left: auto;
   margin-right: auto;
+
+  @media (max-width: 639px) {
+    width: 248px;
+    flex-wrap: wrap;
+  }
 
   &__button {
     width: 32px;
