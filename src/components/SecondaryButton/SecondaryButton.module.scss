@@ -1,0 +1,28 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.secondaryButton {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  border: 1px solid $color_elements;
+
+  background-color: transparent;
+
+  @include hover(border, 1px solid $color_primary);
+
+  &Selected {
+    color: $color_white;
+    background-color: $color_primary;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    color: $color_icons;
+  }
+}

@@ -1,0 +1,41 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.ColorSelectorBorder {
+  width: 32px;
+  height: 32px;
+  padding: 2px;
+  border: 1px solid $color_elements;
+  border-radius: 50%;
+
+  &Active {
+    border-color: $color_primary;
+  }
+}
+
+.ColorSelector {
+  content: '';
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.ColorSelectorContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ColorSelectorContainerInner {
+  display: flex;
+  gap: 9px;
+}
+
+.ColorSelectorContainerInner button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}

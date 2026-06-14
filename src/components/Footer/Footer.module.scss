@@ -1,0 +1,71 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  height: 257px;
+  padding: 32px 16px;
+
+  box-shadow: 0 -1px 0 0 $color_elements;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 96px;
+  }
+
+  @include on-desktop {
+    padding: 32px calc((100vw - 1136px) / 2);
+  }
+}
+
+
+.logoLink {
+  width: 89px;
+  height: 32px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: $color_secondary;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 13.5px;
+  }
+}
+
+.navItem {
+  @include hover(color, $color_primary);
+}
+
+.backToTopButton {
+  cursor: pointer;
+
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  align-self: center;
+
+  height: 32px;
+  border: none;
+
+  color: $color_secondary;
+
+  background-color: transparent;
+}
+
+.backToTopWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+}

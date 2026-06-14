@@ -1,0 +1,20 @@
+@use '../../styles/mixins' as *;
+
+.category {
+  padding-block: 56px;
+}
+
+.title {
+  margin-bottom: 24px;
+}
+
+.navigationCards {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 16px;
+  }
+}

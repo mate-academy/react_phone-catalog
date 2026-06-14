@@ -1,0 +1,27 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.productsSliderTitle {
+  max-width: 136px;
+
+  @include on-tablet {
+    max-width: 100%;
+  }
+}
+
+.productsSliderHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.productsSliderButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+}

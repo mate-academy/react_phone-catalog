@@ -1,0 +1,143 @@
+$animation_speed: 0.3s;
+$color_primary: #313237;
+$color_secondary: #89939A;
+$color_icons: #B4BDC3;
+$color_elements: #E2E6E9;
+$color_hove_background: #FAFBFC;
+$color_green: #27AE60;
+$color_white: #FFF;
+$color_red: #EB5757;
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+$fonts: (
+  h1:(
+    size: (
+      mobile: 32px,
+      tablet: 48px,
+    ),
+    weight: (
+      mobile: 800,
+    ),
+    spacing: (
+      mobile:-0.01em,
+    ),
+    height: (
+      mobile: 41px,
+      tablet: 56px,
+    ),
+    transform: none
+  ),
+  h2:(
+    size: (
+      mobile: 22px,
+      tablet: 32px,
+    ),
+    weight: (
+      mobile: 800,
+    ),
+    spacing: (
+      mobile: 0,
+      tablet: -0.01em,
+    ),
+    height: (
+      mobile: 31px,
+      tablet: 41px,
+    ),
+    transform: none
+  ),
+  h3:(
+    size: (
+      mobile: 20px,
+      tablet: 22px,
+    ),
+    weight: (
+      mobile: 700,
+      tablet: 800,
+    ),
+    spacing: (
+      mobile: 0
+    ),
+    height: (
+      mobile: 26px,
+      tablet: 31px,
+    ),
+    transform: none
+  ),
+  h4:(
+    size: (
+      mobile: 16px,
+      tablet: 20px,
+    ),
+    weight: (
+      mobile: 700,
+    ),
+    spacing: (
+      mobile: 0
+    ),
+    height: (
+      mobile: 20px,
+      tablet: 26px,
+    ),
+    transform: none
+  ),
+  uppercase:(
+    size: (
+      mobile: 12px
+    ),
+    weight: (
+      mobile: 700,
+    ),
+    spacing: (
+      mobile: 0.04em
+    ),
+    height: (
+      mobile: 11px,
+    ),
+    transform: uppercase
+  ),
+  buttons: (
+    size: (
+      mobile: 14px
+    ),
+    weight: (
+      mobile: 600,
+    ),
+    spacing: (
+      mobile: 0
+    ),
+    height: (
+      mobile: 21px,
+    ),
+    transform: none
+  ),
+  body: (
+    size: (
+      mobile: 14px
+    ),
+    weight: (
+      mobile: 500,
+    ),
+    spacing: (
+      mobile: 0
+    ),
+    height: (
+      mobile: 21px,
+    ),
+    transform: none
+  ),
+  small: (
+    size: (
+      mobile: 12px
+    ),
+    weight: (
+      mobile: 700,
+    ),
+    spacing: (
+      mobile: 0
+    ),
+    height: (
+      mobile: 15px,
+    ),
+    transform: none
+  ),
+)

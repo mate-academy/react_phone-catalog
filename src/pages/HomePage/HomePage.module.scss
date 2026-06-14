@@ -1,0 +1,18 @@
+@use '../../styles/mixins' as *;
+
+.HomePage {
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include on-tablet {
+    padding-top: 32px;
+  }
+
+  @include on-desktop {
+    padding-top: 56px;
+  }
+
+  &Title {
+    margin-bottom: 24px;
+  }
+}

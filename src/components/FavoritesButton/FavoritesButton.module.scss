@@ -1,0 +1,13 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.favoritesButton {
+  cursor: pointer;
+
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+
+  background: none;
+
+}
