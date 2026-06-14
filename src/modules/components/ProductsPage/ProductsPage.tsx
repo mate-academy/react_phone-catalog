@@ -51,6 +51,7 @@ export const ProductsPage = () => {
   const perPage =
     (searchParams.get('perPage') as PerPageType) || PerPageType.All;
   const currentPage = Number(searchParams.get('page') || 1);
+  const query = searchParams.get('query')?.toLowerCase() || '';
   //#endregion URL_STATE
 
   //#region HANDLERS
@@ -65,11 +66,19 @@ export const ProductsPage = () => {
 
     setSearchParams(newParams);
   };
-  //#endregion HANDLERS
+  //#endregion 
 
-  //#region SORTING_&_PAGINATION
+  //#region FILTERING_SORTING_&_PAGINATION
+  const filteredProducts = useMemo(() => {
+    if (!query) {
+      return products;
+    } else {
+      return products.filter(p => p.name.toLowerCase().includes(query));
+    }
+  }, [products, query]);
+
   const sortedProducts = useMemo(() => {
-    return [...products].sort((a, b) => {
+    return [...filteredProducts].sort((a, b) => {
       switch (sortBy) {
         case SortType.Title:
           return a.name.localeCompare(b.name);
@@ -80,9 +89,10 @@ export const ProductsPage = () => {
           return b.year - a.year;
       }
     });
-  }, [products, sortBy]);
+  }, [filteredProducts, sortBy]);
 
-  const itemsPerPage = perPage === PerPageType.All ? sortedProducts.length : Number(perPage);
+  const itemsPerPage =
+    perPage === PerPageType.All ? sortedProducts.length : Number(perPage);
   const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
 
   const paginatedProducts = useMemo(() => {
@@ -94,9 +104,14 @@ export const ProductsPage = () => {
 
     return sortedProducts.slice(startIndex, startIndex + itemsPerPage);
   }, [sortedProducts, currentPage, perPage, itemsPerPage]);
+  //#endregion
 
+  //#region RENDER_CONDITIONS
+  const showEmptyCategory = products.length === 0;
+  const showEmptySearch = !showEmptyCategory && filteredProducts.length === 0;
+  const showProducts = filteredProducts.length > 0;
   const showPagination = perPage !== PerPageType.All && totalPages > 1;
-  //#endregion SORTING_&_PAGINATION_LOGIC
+  //#endregion
 
   //#region RENDER
   return (
@@ -104,22 +119,28 @@ export const ProductsPage = () => {
       <Breadcrumbs pageTitle={currentPageTitle} />
 
       {isLoading && <Loader />}
-
       {isError && <ErrorMessage />}
 
       {!isLoading && !isError && (
         <>
           <h1 className={productsPageTitle}>{currentPageTitle}</h1>
-          <p className={productsPageCount}>{products.length} models</p>
+          <p className={productsPageCount}>{filteredProducts.length} models</p>
 
-          {products.length === 0 ? (
+          {showEmptyCategory && (
             <p className={noProductsMessage}>
               There are no {currentCategory} yet
             </p>
-          ) : (
+          )}
+
+          {showEmptySearch && (
+            <p className={noProductsMessage}>
+              There are no matching products...
+            </p>
+          )}
+
+          {showProducts && (
             <>
               <ProductPageFilters />
-
               <ProductsList products={paginatedProducts} />
 
               {showPagination && (
@@ -135,5 +156,5 @@ export const ProductsPage = () => {
       )}
     </div>
   );
-  //#endregion RENDER
+  //#endregion
 };

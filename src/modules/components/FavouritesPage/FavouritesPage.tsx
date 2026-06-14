@@ -3,6 +3,8 @@
 /* eslint-disable max-len */
 
 //#region IMPORTS
+import { useSearchParams } from 'react-router-dom';
+
 import { useFavourites } from '@/modules/shared/utils/context/FavouritesContext';
 
 import { Breadcrumbs } from '@/modules/shared/components/Breadcrumbs';
@@ -16,12 +18,28 @@ const {
   favouritesPage,
   favouritesTitle,
   favouritesCount,
+  noProductsMessage,
 } = styles;
 //#endregion
 
 export const FavouritesPage = () => {
   //#region DATA_FETCHING
-  const { favourites, favouritesCount: count } = useFavourites();
+  const { favourites } = useFavourites();
+  //#endregion
+
+  //#region URL_STATE & FILTERING
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query')?.toLowerCase() || '';
+
+  const visibleProducts = favourites.filter(product =>
+    product.name.toLowerCase().includes(query),
+  );
+  //#endregion
+
+  //#region RENDER_CONDITIONS
+  const showEmptyFavourites = favourites.length === 0;
+  const showEmptySearch = !showEmptyFavourites && visibleProducts.length === 0;
+  const showProducts = visibleProducts.length > 0;
   //#endregion
 
   //#region RENDER
@@ -32,10 +50,20 @@ export const FavouritesPage = () => {
       <h1 className={favouritesTitle}>Favourites</h1>
 
       <span className={favouritesCount}>
-        {`${count} ${count > 1 ? 'items' : 'item'}`}
+        {`${visibleProducts.length} ${visibleProducts.length === 1 ? 'item' : 'items'}`}
       </span>
 
-      <ProductsList products={favourites} />
+      {showEmptyFavourites && (
+        <p className={noProductsMessage}>There are no favourites yet</p>
+      )}
+
+      {showEmptySearch && (
+        <p className={noProductsMessage}>There are no matching products...</p>
+      )}
+
+      {showProducts && (
+        <ProductsList products={visibleProducts} />
+      )}
     </div>
   );
   //#endregion

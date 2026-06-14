@@ -17,7 +17,7 @@ import { HomePage } from './modules/components/HomePage';
 import { FavouritesPage } from './modules/components/FavouritesPage';
 import { CartPage } from './modules/components/CartPage';
 import { ProductsPage } from './modules/components/ProductsPage';
-import { ProductDetailsPage } from './modules/components/ProductDetailsPage';
+import { ProductDetailsPage } from './modules/components/ProductCardDetails';
 import { NotFoundPage } from './modules/components/NotFoundPage';
 
 export const Root = () => (
