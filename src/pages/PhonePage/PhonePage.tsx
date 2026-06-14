@@ -1,9 +1,9 @@
 /* eslint-disable max-len */
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './PhonePage.scss';
 import { SortForm } from '../../Functional/SortForm/SortForm';
 import { Phone } from '../../Interface';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useCart } from '../../Functional/CartContext/CartContext';
 import { getBaseUrl } from '../../utils';
 import { Pagination } from '../../components/Pagination/Pagination';
@@ -18,18 +18,29 @@ interface CartItem {
   quantity: number;
 }
 
+const DEFAULT_ITEMS_PER_PAGE = 16;
+
 export const PhonePage = () => {
   const { addToCart, toggleFavorite, removeFromCart, cart, favorites } = useCart();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [phones, setPhones] = useState<Phone[]>([]);
   const [filteredPhones, setFilteredPhones] = useState<Phone[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [sortBy, setSortBy] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(16);
+
+  const [searchTerm, setSearchTerm] = useState(searchParams.get('query') || '');
+  const [sortBy, setSortBy] = useState(searchParams.get('sort') || '');
+  const [currentPage, setCurrentPage] = useState(
+    Number(searchParams.get('page')) || 1,
+  );
+  const [itemsPerPage, setItemsPerPage] = useState(
+    Number(searchParams.get('perPage')) || DEFAULT_ITEMS_PER_PAGE,
+  );
+
   const [imageError, setImageError] = useState<{ [key: string]: boolean }>({});
+
+  const isInitialMount = useRef(true);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -55,10 +66,6 @@ export const PhonePage = () => {
   }, []);
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [filteredPhones, sortBy, itemsPerPage]);
-
-  useEffect(() => {
     const filtered = phones.filter(item =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase()),
     );
@@ -72,6 +79,36 @@ export const PhonePage = () => {
 
     setFilteredPhones(sorted);
   }, [phones, searchTerm, sortBy]);
+
+  // Сбрасываем страницу на 1 только когда юзер меняет фильтры,
+  // но не при первой загрузке (чтобы не сбить page из URL)
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+
+    setCurrentPage(1);
+  }, [searchTerm, sortBy, itemsPerPage]);
+
+  // Если currentPage из URL больше totalPages — корректируем
+  useEffect(() => {
+    if (totalPages > 0 && currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+  }, [totalPages, currentPage]);
+
+  // Синхронизируем состояние с параметрами поиска (URL)
+  useEffect(() => {
+    const params: Record<string, string> = {};
+
+    if (searchTerm) params.query = searchTerm;
+    if (sortBy) params.sort = sortBy;
+    if (itemsPerPage !== DEFAULT_ITEMS_PER_PAGE) params.perPage = String(itemsPerPage);
+    if (currentPage !== 1) params.page = String(currentPage);
+
+    setSearchParams(params, { replace: true });
+  }, [searchTerm, sortBy, itemsPerPage, currentPage, setSearchParams]);
 
   const handleAddToCart = (phone: Phone) => {
     addToCart({

@@ -20,6 +20,10 @@ export const Header = () => {
     setIsMenuOpen(prev => !prev);
   };
 
+  // Считаем именно количество товаров (quantity), а не число позиций,
+  // чтобы значение совпадало с "Total for X items" на странице корзины
+  const totalCartItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <header className="header">
       <div className="header__top">
@@ -59,8 +63,8 @@ export const Header = () => {
           >
             <div className="header__packet__top">
               <img src={`${getBaseUrl()}icons/cart.svg`} alt="Cart" />
-              {cart.length > 0 && (
-                <span className="cart-count">{cart.length}</span>
+              {totalCartItems > 0 && (
+                <span className="cart-count">{totalCartItems}</span>
               )}
             </div>
           </NavLink>

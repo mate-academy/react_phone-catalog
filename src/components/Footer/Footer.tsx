@@ -18,10 +18,12 @@ export const Footer = () => {
         </div>
 
         <div className="footer__links">
-             <a
+          <a
             href="https://github.com/AlexanderBarkar/react_phone-catalog"
             className="footer__link"
-            >
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Github
           </a>
           <a href="#" className="footer__link">
