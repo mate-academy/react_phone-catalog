@@ -7,6 +7,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { useFavourites } from '@/modules/shared/utils/context/FavouritesContext';
 import { useCart } from '@/modules/shared/utils/context/CartContext';
+import { useTheme } from '@/modules/shared/utils/context/ThemeContext';
 
 import iconFarourites from '@/assets/svg/heart.svg';
 import iconBag from '@/assets/svg/cart.svg';
@@ -24,6 +25,7 @@ const {
   actionItemIcon,
   actionItemCount,
   actionItemMenu,
+  themeToggler,
 } = styles;
 //#endregion
 
@@ -36,6 +38,8 @@ export const HeaderActions: React.FC<Props> = ({ isMobileMenu, onMenuClick }) =>
   //#region STATE
   const { favouritesCount } = useFavourites();
   const { totalCount } = useCart();
+  const { theme, toggleTheme } = useTheme();
+
   const { pathname } = useLocation();
   //#endregion
 
@@ -47,6 +51,15 @@ export const HeaderActions: React.FC<Props> = ({ isMobileMenu, onMenuClick }) =>
         ${isMobileMenu ? mobileActions : ''}
       `}
     >
+      <button
+        className={themeToggler}
+        onClick={toggleTheme}
+        type="button"
+        aria-label="Toggle theme"
+      >
+        {theme === 'light' ? '☀️' : '🌙'}
+      </button>
+
       <Link
         to="/favourites"
         className={`
@@ -74,10 +87,7 @@ export const HeaderActions: React.FC<Props> = ({ isMobileMenu, onMenuClick }) =>
       </Link>
 
       {!isMobileMenu && (
-        <a
-          className={actionItemMenu}
-          onClick={onMenuClick}
-        >
+        <a className={actionItemMenu} onClick={onMenuClick}>
           <img src={iconMenu} className={actionItemIcon} alt="Menu Icon" />
         </a>
       )}

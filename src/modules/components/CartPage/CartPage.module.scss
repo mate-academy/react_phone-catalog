@@ -51,7 +51,8 @@
 }
 
 .emptyMessage {
-  @include font-h3;
+  @include font-h2;
   color: var(--color-red);
+  text-align: center;
   margin-top: 64px;
 }

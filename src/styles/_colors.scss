@@ -1,3 +1,4 @@
+// Глобальні змінні за замовчуванням (Світла тема)
 :root {
   // Основні акценти
   --color-accent: #4219D0;
@@ -14,6 +15,23 @@
   --color-white: #FFFFFF;
 
   // Системні сповіщення
+  --color-green: #27AE60;
+  --color-red: #EB5757;
+}
+
+// Перевизначення змінних для темної теми
+[data-theme="dark"] {
+  --color-accent: #905BFF;
+  --color-secondary-accent: #F4BA47;
+
+  --color-primary: #F1F2F9;
+  --color-secondary: #75767F;
+  --color-icons: #4A4D58;
+  --color-elements: #3B3E4A;
+
+  --color-hover-bg: #0F1121;
+  --color-white: #000;
+
   --color-green: #27AE60;
   --color-red: #EB5757;
 }
