@@ -14,9 +14,8 @@
   flex-direction: column;
 
     @include on-tablet {
-      height: 512px;
       padding: 32px;
-      width: 237px;
+
     }
 
     @include on-desktop {
@@ -171,7 +170,8 @@ display: flex;
   justify-content: center;
 
   @include on-tablet {
-      width: 126px;
+      max-width: 176px;
+      min-width: 126px;
     }
 
    @include on-desktop {
@@ -186,7 +186,7 @@ display: flex;
       box-shadow: none;
     }
 
-    &:disabled {
+    &--added{
       border: 1px solid $color-elements;
       color: $color-elements;
       background-color: transparent;

@@ -3,11 +3,9 @@ import styles from './ProductCard.module.scss';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 
-
 import { ProductCardData } from '../../types/ProductCardData';
 import { FavoritesContext } from '../../../context/FavoritesContext';
 import { CartContext } from '../../../context/CartContext';
-
 
 type Props = {
   product: ProductCardData;
@@ -25,18 +23,25 @@ export const ProductCard: React.FC<Props> = ({ product, isShowDiscount }) => {
   const isExistInCart = cart.some(
     item => item.product.itemId === product.itemId,
   );
-  const handleAddToCart = () => {
-    if (!product || isExistInCart) {
-      return;
-    }
 
-    setCart(prev => [
-      ...prev,
-      {
-        product: product,
-        amount: 1,
-      },
-    ]);
+  const handleAddToCart = () => {
+    setCart(prev => {
+      const existingItem = prev.find(
+        item => item.product.itemId === product.itemId,
+      );
+
+      if (existingItem) {
+        return prev.filter(item => item.product.itemId !== product.itemId);
+      }
+
+      return [
+        ...prev,
+        {
+          product,
+          amount: 1,
+        },
+      ];
+    });
   };
 
   if (!favoritesContext) {
@@ -98,9 +103,10 @@ export const ProductCard: React.FC<Props> = ({ product, isShowDiscount }) => {
 
       <div className={styles['product-card__buttons']}>
         <button
-          className={styles['product-card__add']}
+          className={`${styles['product-card__add']} ${
+            isExistInCart ? styles['product-card__add--added'] : ''
+          }`}
           onClick={handleAddToCart}
-          disabled={isExistInCart}
         >
           {isExistInCart ? 'Added to cart' : 'Add to card'}
         </button>
@@ -114,8 +120,7 @@ export const ProductCard: React.FC<Props> = ({ product, isShowDiscount }) => {
                 ? `${import.meta.env.BASE_URL}/img/buttons/heart-filled.svg`
                 : `${import.meta.env.BASE_URL}/img/buttons/heart.svg`
             }
-
-             alt="button-favorite"
+            alt="button-favorite"
           />
         </button>
       </div>

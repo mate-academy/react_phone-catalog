@@ -1,12 +1,16 @@
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-
 import styles from './ProductDetailsPage.module.scss';
 import { ProductCardData } from '../../shared/types/ProductCardData';
 import { CartContext } from '../../context/CartContext';
 import { FavoritesContext } from '../../context/FavoritesContext';
-import { getAccessories, getPhones, getProducts, getTablets } from '../../api/products';
+import {
+  getAccessories,
+  getPhones,
+  getProducts,
+  getTablets,
+} from '../../api/products';
 import { Loader } from '../../shared/components/Loader';
 import { ErrorMessage } from '../../shared/components/ErrorMessage';
 import { Breadcrumbs } from '../../shared/components/Breadcrumbs';
@@ -145,13 +149,16 @@ export const ProductDetailsPage = () => {
     }
   };
 
+  const normalizeColor = (color: string) =>
+    color.toLowerCase().replaceAll('-', ' ').trim();
+
   const handleColorChange = (newColor: string) => {
     getCategoryProducts().then((data: ProductDetails[]) => {
       const variant = data.find(
         item =>
           item.namespaceId === product?.namespaceId &&
-          item.color === newColor &&
-          item.capacity === product.capacity,
+          normalizeColor(item.color) === normalizeColor(newColor) &&
+          item.capacity === product?.capacity,
       );
 
       if (variant) {
@@ -199,6 +206,7 @@ export const ProductDetailsPage = () => {
   const colorsMap: Record<string, string> = {
     rosegold: '#FAD7D7',
     spacegray: '#5F7170',
+    'space gray': '#5F7170',
     midnight: '#171E27',
 
     spaceblack: '#4C4C4C',
@@ -243,11 +251,7 @@ export const ProductDetailsPage = () => {
       );
 
       if (existingItem) {
-        return prev.map(item =>
-          item.product.itemId === productCard.itemId
-            ? { ...item, amount: item.amount + 1 }
-            : item,
-        );
+        return prev.filter(item => item.product.itemId !== productCard.itemId);
       }
 
       return [
@@ -306,148 +310,155 @@ export const ProductDetailsPage = () => {
       </button>
       <h1 className={styles[`product-details__title`]}>{product?.name}</h1>
       <div className={styles[`product-details__top`]}>
-        <div className={styles[`product-details__gallery`]}>
-          <ul className={styles[`product-details__gallery-list`]}>
-            {product?.images.map((image, index) => (
-              <li
-                key={image}
-                onClick={() => setCurrentImage(index)}
-                className={`${styles['product-details__gallery-item']}
-                ${currentImage === index ? styles.active : ''}`}
-              >
-                <img
-                  className={styles[`product-details__gallery-image`]}
-                  src={`${import.meta.env.BASE_URL}/${image.startsWith('/') ? image.slice(1) : image}`}
-                   alt="product-image"
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className={styles[`product-details__image-container`]}>
-          <div className={styles['product-details__image-wrapper']}>
-            <img
-              className={styles[`product-details__image`]}
-              src={
-                product?.images[currentImage]
-                  ? `${import.meta.env.BASE_URL}/${
-                      product.images[currentImage].startsWith('/')
-                        ? product.images[currentImage].slice(1)
-                        : product.images[currentImage]
-                    }`
-                  : ''
-              }
-               alt="products-image"
-            />
-          </div>
-        </div>
-        <div className={styles[`product-details__info`]}>
-          <div className={styles[`product-details__colors`]}>
-            <p className={styles[`product-details__colors-title`]}>
-              Available colors
-            </p>
-            <ul className={styles[`product-details__colors-list`]}>
-              {product?.colorsAvailable.map(color => (
+        <div className={styles[`product-details__images`]}>
+          <div className={styles[`product-details__gallery`]}>
+            <ul className={styles[`product-details__gallery-list`]}>
+              {product?.images.map((image, index) => (
                 <li
-                  key={color}
-                  className={`${styles['product-details__colors-item']}
-                ${
-                  color === product.color
-                    ? styles['product-details__colors-item--active']
-                    : ''
-                }`}
-                  onClick={() => handleColorChange(color)}
+                  key={image}
+                  onClick={() => setCurrentImage(index)}
+                  className={`${styles['product-details__gallery-item']}
+                ${currentImage === index ? styles.active : ''}`}
                 >
-                  <button
-                    className={styles[`product-details__colors-button`]}
-                    style={{ backgroundColor: colorsMap[color] || color }}
-                  ></button>
+                  <img
+                    className={styles[`product-details__gallery-image`]}
+                    src={`${import.meta.env.BASE_URL}/${image.startsWith('/') ? image.slice(1) : image}`}
+                    alt="product-image"
+                  />
                 </li>
               ))}
             </ul>
           </div>
-          <div className={styles['product-details__divider']}></div>
+          <div className={styles[`product-details__image-container`]}>
+            <div className={styles['product-details__image-wrapper']}>
+              <img
+                className={styles[`product-details__image`]}
+                src={
+                  product?.images[currentImage]
+                    ? `${import.meta.env.BASE_URL}/${
+                        product.images[currentImage].startsWith('/')
+                          ? product.images[currentImage].slice(1)
+                          : product.images[currentImage]
+                      }`
+                    : ''
+                }
+                alt="products-image"
+              />
+            </div>
+          </div>
+        </div>
+        <div className={styles[`product-details__info`]}>
+          <div className={styles[`product-details__info-container`]}>
+            <div className={styles[`product-details__colors`]}>
+              <p className={styles[`product-details__colors-title`]}>
+                Available colors
+              </p>
+              <ul className={styles[`product-details__colors-list`]}>
+                {product?.colorsAvailable.map(color => (
+                  <li
+                    key={color}
+                    className={`${styles['product-details__colors-item']}
+                    ${
+                      normalizeColor(color) === normalizeColor(product.color)
+                        ? styles['product-details__colors-item--active']
+                        : ''
+                    }`}
+                    onClick={() => handleColorChange(color)}
+                  >
+                    <button
+                      className={styles[`product-details__colors-button`]}
+                      style={{ backgroundColor: colorsMap[color] || color }}
+                    ></button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className={styles['product-details__divider']}></div>
 
-          <div className={styles[`product-details__capacities`]}>
-            <p className={styles[`product-details__capacities-title`]}>
-              Select capacity
-            </p>
-            <ul className={styles[`product-details__capacities-list`]}>
-              {product?.capacityAvailable.map(capacity => (
-                <li
-                  key={capacity}
-                  onClick={() => handleCapacityChange(capacity)}
-                  className={styles['product-details__capacities-item']}
-                >
-                  <button
-                    className={`${styles['product-details__capacities-button']}
+            <div className={styles[`product-details__capacities`]}>
+              <p className={styles[`product-details__capacities-title`]}>
+                Select capacity
+              </p>
+              <ul className={styles[`product-details__capacities-list`]}>
+                {product?.capacityAvailable.map(capacity => (
+                  <li
+                    key={capacity}
+                    onClick={() => handleCapacityChange(capacity)}
+                    className={styles['product-details__capacities-item']}
+                  >
+                    <button
+                      className={`${styles['product-details__capacities-button']}
                 ${
                   capacity === product.capacity
                     ? styles['product-details__capacities-button--active']
                     : ''
                 }`}
-                  >
-                    {capacity}
-                  </button>
-                </li>
-              ))}
+                    >
+                      {capacity}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className={styles['product-details__divider']}></div>
+
+            <div className={styles['product-details__prices']}>
+              <p className={styles['product-details__price']}>
+                {`$${product?.priceDiscount}`}
+              </p>
+              <p className={styles['product-details__full-price']}>
+                {`$${product?.priceRegular}`}
+              </p>
+            </div>
+
+            <div className={styles['product-details__buttons']}>
+              <button
+                className={`${styles['product-details__add']} ${
+                  isExistInCart ? styles['product-details__add--added'] : ''
+                }`}
+                onClick={handleAddToCart}
+              >
+                {isExistInCart ? 'Added to cart' : 'Add to card'}
+              </button>
+              <button
+                className={styles['product-details__favourite']}
+                onClick={handleAddToFavorites}
+              >
+                <img
+                  src={
+                    isFavorite
+                      ? `${import.meta.env.BASE_URL}/img/buttons/heart-filled.svg`
+                      : `${import.meta.env.BASE_URL}/img/buttons/heart.svg`
+                  }
+                  alt="button-favorite"
+                />
+              </button>
+            </div>
+
+            <ul className={styles['product-details__specs']}>
+              <li className={styles.spec}>
+                <span className={styles.spec__name}>Screen</span>
+                <span className={styles.spec__value}>{product?.screen}</span>
+              </li>
+
+              <li className={styles.spec}>
+                <span className={styles.spec__name}>Resolution</span>
+                <span className={styles.spec__value}>
+                  {product?.resolution}
+                </span>
+              </li>
+
+              <li className={styles.spec}>
+                <span className={styles.spec__name}>Processor</span>
+                <span className={styles.spec__value}>{product?.processor}</span>
+              </li>
+
+              <li className={styles.spec}>
+                <span className={styles.spec__name}>RAM</span>
+                <span className={styles.spec__value}>{product?.ram}</span>
+              </li>
             </ul>
           </div>
-          <div className={styles['product-details__divider']}></div>
-
-          <div className={styles['product-details__prices']}>
-            <p className={styles['product-details__price']}>
-              {`$${product?.priceDiscount}`}
-            </p>
-            <p className={styles['product-details__full-price']}>
-              {`$${product?.priceRegular}`}
-            </p>
-          </div>
-
-          <div className={styles['product-details__buttons']}>
-            <button
-              className={styles['product-details__add']}
-              onClick={handleAddToCart}
-              disabled={isExistInCart}
-            >
-              Add to card
-            </button>
-            <button
-              className={styles['product-details__favourite']}
-              onClick={handleAddToFavorites}
-            >
-              <img
-                src={
-                  isFavorite
-                    ? `${import.meta.env.BASE_URL}/img/buttons/heart-filled.svg`
-                    : `${import.meta.env.BASE_URL}/img/buttons/heart.svg`
-                }
-                 alt="button-favorite"
-              />
-            </button>
-          </div>
-
-          <ul className={styles['product-details__specs']}>
-            <li className={styles.spec}>
-              <span className={styles.spec__name}>Screen</span>
-              <span className={styles.spec__value}>{product?.screen}</span>
-            </li>
-
-            <li className={styles.spec}>
-              <span className={styles.spec__name}>Resolution</span>
-              <span className={styles.spec__value}>{product?.resolution}</span>
-            </li>
-
-            <li className={styles.spec}>
-              <span className={styles.spec__name}>Processor</span>
-              <span className={styles.spec__value}>{product?.processor}</span>
-            </li>
-
-            <li className={styles.spec}>
-              <span className={styles.spec__name}>RAM</span>
-              <span className={styles.spec__value}>{product?.ram}</span>
-            </li>
-          </ul>
         </div>
       </div>
 
