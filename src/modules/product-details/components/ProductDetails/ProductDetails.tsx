@@ -2,8 +2,7 @@ import styles from './ProductDetails.module.scss';
 import { Phone } from '../../../../types/phone';
 import { Tablet } from '../../../../types/tablet';
 import { Accessorie } from '../../../../types/accessorie';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useCart } from '../../../../cart-context/CartContext';
 import { useFavorite } from '../../../../favorites-context/FavoritesContext';
 import { Product } from '../../../../types/product';
@@ -32,11 +31,54 @@ const convertToProduct = (item: AnyProduct): Product => {
 };
 
 export const ProductDetails: React.FC<Props> = ({ product }) => {
-  const [activeImage, setActiveImage] = useState<string>('');
-  const [activeColor, setActiveColor] = useState<string>('');
-  const [activeCapacity, setActiveCapacity] = useState<string>('');
-
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const { addToCart, removeFromCart, cart } = useCart();
+  const { addToFavorite, removeFromFavorite, favorite } = useFavorite();
+
+  if (!product) {
+    return <div>Product was not found</div>;
+  }
+
+  const currentPriceColor = product.color.toLowerCase();
+  const currentCapacity = product.capacity.toLowerCase();
+
+  const selectedImageUrl = searchParams.get('image');
+  const currentImage = selectedImageUrl || product.images[0];
+
+  const getNewProductSlug = (newColor?: string, newCapacity?: string) => {
+    const targetColor = (newColor || currentPriceColor)
+      .toLowerCase()
+      .replace(/\s+/g, '-');
+    const targetCapacity = (newCapacity || currentCapacity).toLowerCase();
+
+    const baseModelId =
+      'namespaceId' in product
+        ? product.namespaceId
+        : (product as { id: string }).id.split('-').slice(0, -2).join('-');
+
+    return `${baseModelId}-${targetCapacity}-${targetColor}`;
+  };
+
+  const handleChangeColor = (color: string) => {
+    const nextSlug = getNewProductSlug(color, undefined);
+
+    navigate(`/${product.category}/product/${nextSlug}`);
+  };
+
+  const handleChangeCapacity = (capacity: string) => {
+    const nextSlug = getNewProductSlug(undefined, capacity);
+
+    navigate(`/${product.category}/product/${nextSlug}`);
+  };
+
+  const handleChangeImage = (image: string) => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set('image', image);
+    setSearchParams(params);
+  };
 
   const unifiedProduct = convertToProduct(product);
 
@@ -48,8 +90,8 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
     ? product.capacityAvailable
     : [product.capacityAvailable];
 
-  const { addToCart, removeFromCart, cart } = useCart();
   const isInCart = cart.some(item => item.product.id === product.id);
+  const isInFavorite = favorite.some(item => item.product.id === product.id);
 
   const handleCartClick = () => {
     if (isInCart) {
@@ -59,9 +101,6 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
     }
   };
 
-  const { addToFavorite, removeFromFavorite, favorite } = useFavorite();
-  const isInFavorite = favorite.some(item => item.product.id === product.id);
-
   const handleFavoriteClick = () => {
     if (isInFavorite) {
       removeFromFavorite(product.id);
@@ -70,19 +109,18 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
     }
   };
 
-  useEffect(() => {
-    if (product?.images?.length) {
-      setActiveImage(product.images[0]);
-    }
-  }, [product]);
-
-  if (!product) {
-    return <div>Product was not found</div>;
-  }
-
   return (
     <div className={styles.productDetails}>
-      <button className={styles.backButton} onClick={() => navigate(-1)}>
+      <button
+        className={styles.backButton}
+        onClick={() => {
+          if (window.history.length > 1) {
+            navigate(-1);
+          } else {
+            navigate(`/${product.category}`);
+          }
+        }}
+      >
         <img src="/img/icons/left.svg" alt="" className={styles.back} />
         Back
       </button>
@@ -100,7 +138,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
                   key={image + index}
                   type="button"
                   className={styles.selectImage}
-                  onClick={() => setActiveImage(image)}
+                  onClick={() => handleChangeImage(image)}
                 >
                   <img
                     src={image}
@@ -117,7 +155,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
           <div className={styles.mainPreview}>
             <img
               className={styles.mainImage}
-              src={activeImage || product.images?.[0]}
+              src={currentImage}
               alt={product.name}
             />
           </div>
@@ -130,7 +168,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
             <div className={styles.colorsGrid}>
               {colorsList.map((color, index) => {
                 const colorInputId = `${product.id}-color-${index}`;
-                const isSelected = activeColor === color;
+                const isSelected = currentPriceColor === color.toLowerCase();
 
                 return (
                   <div key={colorInputId} className={styles.colorWrapper}>
@@ -141,7 +179,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
                       value={color}
                       checked={isSelected}
                       className={styles.colorInput}
-                      onChange={() => setActiveColor(color)}
+                      onChange={() => handleChangeColor(color)}
                     />
                     <label
                       htmlFor={colorInputId}
@@ -162,14 +200,14 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
 
             <div className={styles.capacityGrid}>
               {capacityList.map(capacity => {
-                const isSelected = activeCapacity === capacity;
+                const isSelected = currentCapacity === capacity.toLowerCase();
 
                 return (
                   <button
                     key={capacity}
                     type="button"
                     className={`${styles.capacityButton} ${isSelected ? styles.isActiveButton : ''}`}
-                    onClick={() => setActiveCapacity(capacity)}
+                    onClick={() => handleChangeCapacity(capacity)}
                   >
                     {capacity}
                   </button>
