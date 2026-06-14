@@ -18,6 +18,7 @@ import { FavouritesPage } from './modules/components/FavouritesPage';
 import { CartPage } from './modules/components/CartPage';
 import { ProductsPage } from './modules/components/ProductsPage';
 import { ProductDetailsPage } from './modules/components/ProductDetailsPage';
+import { NotFoundPage } from './modules/components/NotFoundPage';
 
 export const Root = () => (
   <ProductsProvider>
@@ -42,8 +43,7 @@ export const Root = () => (
               <Route path="home" element={<Navigate to="/" replace />} />
             </Route>
 
-            {/* Сторінка 404 (якщо шлях не знайдено) */}
-            <Route path="*" element={<h1>Page not found</h1>} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Router>
       </CartProvider>

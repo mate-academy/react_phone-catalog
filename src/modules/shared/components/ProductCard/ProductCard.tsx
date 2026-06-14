@@ -8,13 +8,13 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../../utils/context/CartContext';
 import { useFavourites } from '../../utils/context/FavouritesContext';
 
+import { Button } from '../ui/Button';
 import { ProductType } from '@/modules/shared/utils/types';
 
 import favoutiteIcon from '@/assets/svg/heart.svg';
 import favouriteIconActive from '@/assets/svg/heart-filled.svg';
 
 import styles from './ProductCard.module.scss';
-import { Button } from '../ui/Button';
 //#endregion
 
 //#region STYLES
@@ -52,7 +52,7 @@ export const ProductCard: React.FC<Props> = ({
   showDiscount = false,
 }) => {
   //#region DATA_FETCHING
-  const { toggleCart, isInCart } = useCart();
+  const { addToCart, isInCart } = useCart();
   const isActiveCart = isInCart(product.itemId);
 
   const { toggleFavourite, isFavourite } = useFavourites();
@@ -103,12 +103,12 @@ export const ProductCard: React.FC<Props> = ({
           variant="primary"
           isSelected={isActiveCart}
           className={actionCart}
-          onClick={() => toggleCart(product)}
-          aria-label={
-            isActiveCart
-              ? 'Remove from cart'
-              : 'Add to cart'
-          }
+          onClick={() => {
+            if (!isActiveCart) {
+              addToCart(product);
+            }
+          }}
+          aria-label={isActiveCart ? 'Remove from cart' : 'Add to cart'}
         >
           {isActiveCart ? 'Added to cart' : 'Add to cart'}
         </Button>
@@ -118,9 +118,7 @@ export const ProductCard: React.FC<Props> = ({
           className={actionFavourite}
           onClick={() => toggleFavourite(product)}
           aria-label={
-            isActiveFavourite
-              ? 'Remove from favorites'
-              : 'Add to favorites'
+            isActiveFavourite ? 'Remove from favorites' : 'Add to favorites'
           }
         >
           <img

@@ -12,12 +12,14 @@ interface CartContextType {
   // (де кожен товар пам'ятає свою кількість)
   cart: CartItemType[];
 
-  // розумний перемикач для картки товару
-  // (додати в кошик / видалити зовсім)
-  toggleCart: (product: ProductType) => void;
+  // функція додати в кошик
+  addToCart: (product: ProductType) => void;
 
-  // функція видалення товару із кошику на сторінці кошика
+  // функція видалити із кошика
   removeCart: (itemId: string) => void;
+
+  // очистити кошик
+  clearCart: () => void;
 
   // функція для кнопок + та - на сторінці кошика
   updateQuantity: (itemId: string, action: 'increment' | 'decrement') => void;
@@ -62,18 +64,18 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const isInCart = (itemId: string) =>
     cart.some(item => item.product.itemId === itemId);
 
-  function toggleCart(product: ProductType) {
+  function addToCart(product: ProductType) {
     if (!isInCart(product.itemId)) {
       setCart(prev => [...prev, { product: product, quantity: 1 }]);
-    } else {
-      setCart(prev =>
-        prev.filter(item => item.product.itemId !== product.itemId),
-      );
     }
   }
 
   function removeCart(itemId: string) {
     return setCart(prev => prev.filter(item => item.product.itemId !== itemId));
+  }
+
+  function clearCart() {
+    setCart([]);
   }
 
   function updateQuantity(itemId: string, action: 'increment' | 'decrement') {
@@ -104,8 +106,9 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     <CartContext.Provider
       value={{
         cart,
-        toggleCart,
+        addToCart,
         removeCart,
+        clearCart,
         updateQuantity,
         isInCart,
         totalCount,

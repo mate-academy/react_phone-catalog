@@ -20,6 +20,15 @@
   }
 }
 
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  clip-path: inset(100%);
+  white-space: nowrap;
+}
+
 .tittle {
   grid-column: 1 / -1;
   @include font-h1;

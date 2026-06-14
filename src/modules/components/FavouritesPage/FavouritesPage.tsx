@@ -6,7 +6,7 @@
 import { useFavourites } from '@/modules/shared/utils/context/FavouritesContext';
 
 import { Breadcrumbs } from '@/modules/shared/components/Breadcrumbs';
-import { ProductCard } from '@/modules/shared/components/ProductCard';
+import { ProductsList } from '@/modules/shared/components/ProductsList';
 
 import styles from './FavouritesPage.module.scss';
 //#endregion
@@ -16,7 +16,6 @@ const {
   favouritesPage,
   favouritesTitle,
   favouritesCount,
-  favouritesList,
 } = styles;
 //#endregion
 
@@ -36,11 +35,7 @@ export const FavouritesPage = () => {
         {`${count} ${count > 1 ? 'items' : 'item'}`}
       </span>
 
-      <div className={favouritesList}>
-        {favourites.map(product => (
-          <ProductCard key={product.itemId} product={product} />
-        ))}
-      </div>
+      <ProductsList products={favourites} />
     </div>
   );
   //#endregion

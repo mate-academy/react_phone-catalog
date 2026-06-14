@@ -49,3 +49,9 @@
 
   gap: 16px;
 }
+
+.emptyMessage {
+  @include font-h3;
+  color: var(--color-red);
+  margin-top: 64px;
+}

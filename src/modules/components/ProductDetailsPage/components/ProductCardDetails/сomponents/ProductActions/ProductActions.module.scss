@@ -126,53 +126,19 @@
 
 .button {
   &Cart {
-    all: unset;
-    @include flex-center;
-
     flex: 1;
-    height: 48px;
-
-    color: var(--color-white);
-    background-color: var(--color-accent);
-    border-radius: 32px;
-
-    cursor: pointer;
-    @include font-buttons;
-    transition: all 0.3s ease;
-
-    &:hover {
-      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
-    }
-
-    &Active {
-      color: var(--color-accent);
-      background-color: var(--color-white);
-      border: 1px solid var(--color-elements);
-    }
   }
 
   &Favourite {
-    all: unset;
-    @include flex-center;
     flex-shrink: 0;
 
     width: 48px;
     height: 48px;
-    box-sizing: border-box;
-
-    border: 1px solid var(--color-icons);
-    border-radius: 32px;
-
-    cursor: pointer;
-    transition: all 0.3s ease;
+    padding: 0;
 
     img {
       width: 16px;
       height: 16px;
-    }
-
-    &:hover {
-      border-color: var(--color-secondary);
     }
   }
 }

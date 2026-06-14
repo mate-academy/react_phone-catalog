@@ -14,7 +14,7 @@ import { CategoryType, PerPageType, SortType } from '../../shared/utils/types';
 import { pageTitles } from '../../shared/utils/constants';
 
 import { ProductPageFilters } from './components/ProductPageFilters';
-import { ProductsList } from './components/ProductsList';
+import { ProductsList } from '../../shared/components/ProductsList';
 import { Pagination } from './components/Pagination';
 
 import { Breadcrumbs } from '@/modules/shared/components/Breadcrumbs';
@@ -29,6 +29,7 @@ const {
   productsPage,
   productsPageTitle,
   productsPageCount,
+  noProductsMessage,
 } = styles;
 //#endregion STYLES
 
@@ -54,9 +55,15 @@ export const ProductsPage = () => {
 
   //#region HANDLERS
   const handlePageChange = (page: number) => {
-    const newPage = new URLSearchParams(searchParams);
-    newPage.set('page', String(page));
-    setSearchParams(newPage);
+    const newParams = new URLSearchParams(searchParams);
+
+    if (page === 1) {
+      newParams.delete('page');
+    } else {
+      newParams.set('page', String(page));
+    }
+
+    setSearchParams(newParams);
   };
   //#endregion HANDLERS
 
@@ -105,16 +112,24 @@ export const ProductsPage = () => {
           <h1 className={productsPageTitle}>{currentPageTitle}</h1>
           <p className={productsPageCount}>{products.length} models</p>
 
-          <ProductPageFilters />
+          {products.length === 0 ? (
+            <p className={noProductsMessage}>
+              There are no {currentCategory} yet
+            </p>
+          ) : (
+            <>
+              <ProductPageFilters />
 
-          <ProductsList products={paginatedProducts} />
+              <ProductsList products={paginatedProducts} />
 
-          {showPagination && (
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-            />
+              {showPagination && (
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                />
+              )}
+            </>
           )}
         </>
       )}

@@ -17,6 +17,7 @@ const {
   cartTitle,
   cartContent,
   itemList,
+  emptyMessage,
 } = styles;
 //#endregion
 
@@ -32,15 +33,20 @@ export const CartPage = () => {
 
       <h1 className={cartTitle}>Cart</h1>
 
-      <div className={cartContent}>
-        <div className={itemList}>
-          {cart.map(item => (
-            <CartItem key={item.product.id} cart={item} />
-          ))}
-        </div>
+      {cart.length === 0 ? (
+        <p className={emptyMessage}>Your cart is empty</p>
+      ) : (
+        <div className={cartContent}>
+          <div className={itemList}>
+            {cart.map(item => (
+              <CartItem key={item.product.id} cart={item} />
+            ))}
+          </div>
 
-        <CartTotal />
-      </div>
+          <CartTotal />
+        </div>
+      )}
+
     </div>
   );
   //#endregion

@@ -65,7 +65,7 @@ export const ProductActions: React.FC<Props> = ({ product }) => {
   //#region DATA_FETCHING
   const { products, productsDetails } = useProducts();
   const { toggleFavourite, isFavourite } = useFavourites();
-  const { toggleCart, isInCart } = useCart();
+  const { addToCart, isInCart } = useCart();
   //#endregion DATA_FETCHING
 
   //#region PRODUCT_CONFIGS
@@ -176,7 +176,11 @@ export const ProductActions: React.FC<Props> = ({ product }) => {
             ${buttonCart}
             ${isActiveCart ? buttonCartActive : ''}
           `}
-          onClick={() => baseProduct && toggleCart(baseProduct)}
+          onClick={() => {
+            if (!isActiveCart && baseProduct) {
+              addToCart(baseProduct);
+            }
+          }}
           aria-label={isActiveCart ? 'Remove from cart' : 'Add to cart'}
         >
           {isActiveCart ? 'Added to cart' : 'Add to cart'}

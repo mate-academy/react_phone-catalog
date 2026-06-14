@@ -28,18 +28,37 @@ export const ProductPageFilters = () => {
   //#endregion
 
   //#region HANDLERS
+  // const handleSortChange = (newValue: string) => {
+  //   const newParams = new URLSearchParams(searchParams);
+  //   newParams.set('sort', newValue);
+  //   newParams.set('page', '1');
+  //   setSearchParams(newParams);
+  // };
+
   const handleSortChange = (newValue: string) => {
     const newParams = new URLSearchParams(searchParams);
-    newParams.set('sort', newValue);
-    newParams.set('page', '1');
+
+    if (newValue === SortType.Age) {
+      newParams.delete('sort');
+    } else {
+      newParams.set('sort', newValue);
+    }
+
+    newParams.delete('page');
     setSearchParams(newParams);
   };
 
   const handlePerPageChange = (newValue: string) => {
-    const newPageSize = new URLSearchParams(searchParams);
-    newPageSize.set('perPage', newValue);
-    newPageSize.set('page', '1');
-    setSearchParams(newPageSize);
+    const newParams = new URLSearchParams(searchParams);
+
+    if (newValue === PerPageType.All) {
+      newParams.delete('perPage');
+    } else {
+      newParams.set('perPage', newValue);
+    }
+
+    newParams.delete('page');
+    setSearchParams(newParams);
   };
   //#endregion
 

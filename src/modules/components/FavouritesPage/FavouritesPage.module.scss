@@ -27,26 +27,13 @@
     @include font-body;
     font-weight: 600;
 
+    display: block;
     color: var(--color-secondary);
     margin-top: 8px;
-  }
-
-  &List {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, var(--card-width-desktop));
-    justify-content: flex-start;
-
-    gap: var(--grid-gap-row) var(--grid-gap-column);
-    margin-top: 40px;
-
-    @include on-tablet {
-      grid-template-columns: repeat(auto-fill, var(--card-width-tablet));
-    }
+    padding-bottom: 16px;
 
     @include on-mobile {
-      grid-template-columns: repeat(auto-fill, var(--card-width-mobile));
-      justify-content: center;
-      margin-top: 32px;
+      padding-bottom: 8px;
     }
   }
 }

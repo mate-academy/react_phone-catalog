@@ -15,7 +15,7 @@ import styles from './HomePage.module.scss';
 //#endregion
 
 //#region STYLES
-const { home, tittle } = styles;
+const { home, visuallyHidden, tittle } = styles;
 //#endregion STYLES
 
 export const HomePage = () => {
@@ -39,7 +39,8 @@ export const HomePage = () => {
   //#region RENDER
   return (
     <div className={home}>
-      <h1 className={tittle}>Welcome to Nice Gadgets store!</h1>
+      <h1 className={visuallyHidden}>Product Catalog</h1>
+      <h2 className={tittle}>Welcome to Nice Gadgets store!</h2>
       <BannerSlider />
       <ProductsSlider
         title="Brand new models"

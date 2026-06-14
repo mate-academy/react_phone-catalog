@@ -19,7 +19,19 @@ const {
 
 export const CartTotal = () => {
   //#region DATA_FETCHING
-  const { totalPrice, totalCount } = useCart();
+  const { totalPrice, totalCount, clearCart } = useCart();
+  //#endregion
+
+  //#region HANDLERS
+  const handleCheckout = () => {
+    const isConfirmed = window.confirm(
+      'Checkout is not implemented yet. Do you want to clear the Cart?',
+    );
+
+    if (isConfirmed) {
+      clearCart();
+    }
+  };
   //#endregion
 
   //#region RENDER
@@ -36,7 +48,7 @@ export const CartTotal = () => {
       <Button
         variant="primary"
         className={cartCheckoutBtn}
-        onClick={() => { }}
+        onClick={handleCheckout}
       >
         Checkout
       </Button>

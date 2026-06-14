@@ -34,10 +34,6 @@
 
     @include flex-center;
 
-    @media (max-width: 645px) {
-      display: none;
-    }
-
     @include on-mobile {
       display: none;
     }

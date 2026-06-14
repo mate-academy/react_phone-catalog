@@ -3,11 +3,11 @@
 /* eslint-disable prettier/prettier */
 
 //#region IMPORTS
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
 import { useProducts } from '@/modules/shared/utils/context/ProductsContext';
-import { CategoryType } from '@/modules/shared/utils/types';
+import { CategoryType, ProductType } from '@/modules/shared/utils/types';
 
 import { ErrorMessage } from '@/modules/shared/components/ErrorMessage';
 import { Loader } from '@/modules/shared/components/Loader';
@@ -23,6 +23,21 @@ import styles from './ProductDetailsPage.module.scss';
 //#region STYLES
 const { productDetailsPage, backBtnWrapper } = styles;
 //#endregion STYLES
+
+//#region HELPERS
+const getSuggestedProducts = (
+  products: ProductType[],
+  currentProductId?: string,
+) => {
+  const filtered = products.filter(item =>
+    item.itemId !== currentProductId);
+
+  const shuffled = [...filtered].sort(() =>
+    0.5 - Math.random());
+
+  return shuffled.slice(0, 15);
+};
+//#endregion
 
 export const ProductDetailsPage = () => {
   //#region ROUTING
@@ -52,17 +67,17 @@ export const ProductDetailsPage = () => {
 
   //#region DATA_TRANSORFATION
   const categoryProducts = getProductsByCategory(currentCategory);
-  const recommendedProducts = categoryProducts.filter(
-    product => product.itemId !== productId,
-  );
-  const showDetails = !isLoading && !isError && productDetails;
+  const recommendedProducts = useMemo(() => {
+    return getSuggestedProducts(categoryProducts, productId);
+  }, [categoryProducts, productId]);
+
+  const isNotFound = !isLoading && !isError && !productDetails;
+  const showDetails = !isLoading && !isError && !!productDetails;
   //#endregion DATA_TRANSORFATION
 
   //#region RENDER
   return (
     <div className={productDetailsPage}>
-      {isLoading && <Loader />}
-      {isError && <ErrorMessage message="Product was not found" />}
 
       <Breadcrumbs
         pageTitle={currentCategory}
@@ -73,6 +88,15 @@ export const ProductDetailsPage = () => {
         <BackButton />
       </div>
 
+      {/* Стан завантаження*/}
+      {isLoading && <Loader />}
+
+      {/* Стан помилки*/}
+      {(isError || isNotFound) && (
+        <ErrorMessage message="Product was not found" />
+      )}
+
+      {/* Стан успіху -> показуємо товар*/}
       {showDetails && (
         <>
           <ProductCardDetails product={productDetails} />

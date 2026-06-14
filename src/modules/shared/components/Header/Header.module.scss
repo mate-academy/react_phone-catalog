@@ -3,6 +3,11 @@
   border-bottom: solid 1px var(--color-elements);
   height: 64px;
 
+  position: sticky;
+  top: 0;
+  background-color: var(--color-white);
+  z-index: 1000;
+
   @include on-tablet { height: 48px; }
 
   @include on-mobile { height: 48px; }

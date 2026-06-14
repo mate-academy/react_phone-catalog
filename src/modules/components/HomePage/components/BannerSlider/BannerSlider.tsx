@@ -9,8 +9,10 @@ import { Button } from '@/modules/shared/components/ui/Button';
 
 import arrowLeft from '@/assets/svg/arrow-left.svg';
 import arrowRight from '@/assets/svg/arrow-right.svg';
-import bannerDesktop from '@/assets/img/banner-desktop&tablet.png';
-import bannerMobile from '@/assets/img/banner-mobile.png';
+
+import bannerPhones from '@/assets/webp/banner_phones.webp';
+import bannerTablets from '@/assets/webp/banner_tablets.webp';
+import bannerAccessories from '@/assets/webp/banner_accessories.webp';
 
 import styles from './BannerSlider.module.scss';
 //#endregion
@@ -28,9 +30,9 @@ const {
 } = styles;
 
 const slides = [
-  { id: 1, desktop: bannerDesktop, mobile: bannerMobile, alt: 'Promo banner 1' },
-  { id: 2, desktop: bannerDesktop, mobile: bannerMobile, alt: 'Promo banner 2' },
-  { id: 3, desktop: bannerDesktop, mobile: bannerMobile, alt: 'Promo banner 3' },
+  { id: 1, image: bannerPhones, alt: 'Promo banner Phones' },
+  { id: 2, image: bannerTablets, alt: 'Promo banner Tablets' },
+  { id: 3, image: bannerAccessories, alt: 'Promo banner Accessories' },
 ];
 //#endregion
 
@@ -49,9 +51,7 @@ export const BannerSlider = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 5000);
+    const interval = setInterval(handleNext, 5000);
 
     return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -76,10 +76,9 @@ export const BannerSlider = () => {
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {slides.map(item => (
-            <picture key={item.id} className={sliderSlide}>
-              <source srcSet={item.mobile} media="(max-width: 639px)" />
-              <img src={item.desktop} alt={item.alt} />
-            </picture>
+            <div key={item.id} className={sliderSlide}>
+              <img src={item.image} alt={item.alt} />
+            </div>
           ))}
         </div>
       </div>
