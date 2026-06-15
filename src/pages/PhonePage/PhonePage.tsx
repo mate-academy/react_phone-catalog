@@ -119,6 +119,7 @@ export const PhonePage = () => {
       color: phone.color || 'default',
       capacity: phone.capacity,
       quantity: 1,
+      category: 'phones',
     });
   };
 

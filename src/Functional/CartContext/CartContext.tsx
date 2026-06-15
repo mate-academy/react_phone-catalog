@@ -14,6 +14,7 @@ interface CartItem {
   color: string;
   capacity?: string;
   quantity: number;
+  category?: string; // 'phones' | 'tablets' | 'accessories' — нужно для ссылки на товар из корзины
 }
 
 interface CartContextType {

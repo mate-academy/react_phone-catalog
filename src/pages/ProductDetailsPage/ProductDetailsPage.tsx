@@ -172,6 +172,7 @@ export const ProductDetailsPage = () => {
         color: selectedColor || product.color,
         capacity: selectedCapacity || undefined,
         quantity: 1,
+        category: product.category,
       });
     }
   };
@@ -609,6 +610,7 @@ export const ProductDetailsPage = () => {
                               ? item.capacity
                               : undefined,
                             quantity: 1,
+                            category: item.category,
                           });
                         }
                       }}

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useCart } from '../../../Functional/CartContext/CartContext';
 import './CartPage.scss';
 import { getBaseUrl } from '../../../utils';
@@ -40,33 +41,18 @@ export const CartPage = () => {
       <h1 className="cart__title">Cart</h1>
       <div className="cart__content">
         <div className="cart__items">
-          {cart.map(item => (
-            <div
-              key={`${item.id}-${item.color}-${item.capacity}`}
-              className="cart__item"
-            >
-              {/* Desktop: крестик */}
-              <button
-                className="cart__item-close"
-                onClick={() => removeFromCart(item.id)}
+          {cart.map(item => {
+            // Ссылка ведёт на страницу товара: /phones/:id, /tablets/:id, /accessories/:id
+            const productLink = `/${item.category || 'phones'}/${item.id}`;
+
+            return (
+              <div
+                key={`${item.id}-${item.color}-${item.capacity}`}
+                className="cart__item"
               >
-                <img
-                  src={`${getBaseUrl()}icons/close.svg`}
-                  alt="close"
-                />
-              </button>
-
-              {/* Desktop: фото */}
-              <img
-                src={item.image}
-                alt={item.name}
-                className="cart__item-image cart__item-image--desktop"
-              />
-
-              {/* Mobile: первая строка — крестик + фото + название */}
-              <div className="cart__item-first-row">
+                {/* Desktop: крестик */}
                 <button
-                  className="cart__item-close--mobile"
+                  className="cart__item-close"
                   onClick={() => removeFromCart(item.id)}
                 >
                   <img
@@ -74,49 +60,77 @@ export const CartPage = () => {
                     alt="close"
                   />
                 </button>
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="cart__item-image"
-                />
-                <p className="cart__item-name">{item.name}</p>
-              </div>
 
-              {/* Desktop: название */}
-              <p className="cart__item-name cart__item-name--desktop">
-                {item.name}
-              </p>
+                {/* Desktop: фото */}
+                <Link to={productLink} className="cart__item-link">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="cart__item-image cart__item-image--desktop"
+                  />
+                </Link>
 
-              <div className="cart__item-controls">
-                <div className="cart__item-quantity">
+                {/* Mobile: первая строка — крестик + фото + название */}
+                <div className="cart__item-first-row">
                   <button
-                    className="cart__item-qty-btn"
-                    onClick={() =>
-                      updateQuantity(item.id, item.quantity - 1)
-                    }
-                    disabled={item.quantity === 1}
+                    className="cart__item-close--mobile"
+                    onClick={() => removeFromCart(item.id)}
                   >
-                    -
+                    <img
+                      src={`${getBaseUrl()}icons/close.svg`}
+                      alt="close"
+                    />
                   </button>
-                  <span className="cart__item-qty-value">
-                    {item.quantity}
-                  </span>
-                  <button
-                    className="cart__item-qty-btn"
-                    onClick={() =>
-                      updateQuantity(item.id, item.quantity + 1)
-                    }
-                  >
-                    +
-                  </button>
+                  <Link to={productLink} className="cart__item-link">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="cart__item-image"
+                    />
+                  </Link>
+                  <Link to={productLink} className="cart__item-link">
+                    <p className="cart__item-name">{item.name}</p>
+                  </Link>
                 </div>
 
-                <p className="cart__item-price">
-                  ${item.price * item.quantity}
-                </p>
+                {/* Desktop: название */}
+                <Link to={productLink} className="cart__item-link cart__item-link--desktop">
+                  <p className="cart__item-name cart__item-name--desktop">
+                    {item.name}
+                  </p>
+                </Link>
+
+                <div className="cart__item-controls">
+                  <div className="cart__item-quantity">
+                    <button
+                      className="cart__item-qty-btn"
+                      onClick={() =>
+                        updateQuantity(item.id, item.quantity - 1)
+                      }
+                      disabled={item.quantity === 1}
+                    >
+                      -
+                    </button>
+                    <span className="cart__item-qty-value">
+                      {item.quantity}
+                    </span>
+                    <button
+                      className="cart__item-qty-btn"
+                      onClick={() =>
+                        updateQuantity(item.id, item.quantity + 1)
+                      }
+                    >
+                      +
+                    </button>
+                  </div>
+
+                  <p className="cart__item-price">
+                    ${item.price * item.quantity}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="cart__summary">

@@ -16,6 +16,7 @@ interface CartItem {
   color: string;
   capacity?: string;
   quantity: number;
+  category?: string;
 }
 
 const DEFAULT_ITEMS_PER_PAGE = 8;
@@ -135,6 +136,7 @@ export const TabletPage = () => {
       color: tablet.color || 'default',
       capacity: tablet.capacity,
       quantity: 1,
+      category: 'tablets',
     };
 
     addToCart(cartItem);

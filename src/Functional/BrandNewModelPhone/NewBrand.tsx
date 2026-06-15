@@ -20,6 +20,7 @@ interface Product {
   ram: string;
   year: number;
   image: string;
+  isNewProduct?: boolean;
 }
 
 export default function NewBrand() {
@@ -49,13 +50,15 @@ export default function NewBrand() {
       .then((data: Product[]) => {
         const phonesOnly = data.filter(p => p.category === 'phones');
 
-        const sorted = [...phonesOnly].sort((a, b) => {
-          if (b.year !== a.year) {
-            return b.year - a.year;
-          }
+        const sorted = [...phonesOnly]
+          .sort((a, b) => {
+            if (b.year !== a.year) {
+              return b.year - a.year;
+            }
 
-          return b.price - a.price;
-        });
+            return b.price - a.price;
+          })
+          .map(p => ({ ...p, isNewProduct: true }));
 
         setPhones(sorted);
         setLoading(false);
@@ -129,7 +132,7 @@ export default function NewBrand() {
 
                 <div className="new-brand__card-prices">
                   <span className="new-brand__card-price">${phone.price}</span>
-                  {phone.fullPrice !== phone.price && (
+                  {!phone.isNewProduct && phone.fullPrice !== phone.price && (
                     <span className="new-brand__card-old-price">
                       ${phone.fullPrice}
                     </span>

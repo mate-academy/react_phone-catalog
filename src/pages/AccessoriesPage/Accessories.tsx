@@ -132,6 +132,7 @@ export const AccessoriesPage = () => {
       image: accessory.images[0],
       color: accessory.color,
       quantity: 1,
+      category: 'accessories',
     });
   };
 
