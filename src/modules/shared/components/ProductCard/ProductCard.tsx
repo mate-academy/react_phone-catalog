@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 import { useAppContext } from '../../../../context/AppContext';
 import { Product } from '../../../../types/Product';
 import { toggleArrayIds } from '../../../../utils/toggleArrayIds';
-import styles from './PhoneCard.module.scss';
+import styles from './ProductCard.module.scss';
 import cn from 'classnames';
 
 type Props = {
@@ -9,7 +10,7 @@ type Props = {
   isOldPriceVisible?: boolean;
 };
 
-export const PhoneCard = ({ product, isOldPriceVisible }: Props) => {
+export const ProductCard = ({ product, isOldPriceVisible }: Props) => {
   const { favoritesIds, cartIds, setFavoritesIds, setCartIds } =
     useAppContext();
 
@@ -23,12 +24,24 @@ export const PhoneCard = ({ product, isOldPriceVisible }: Props) => {
 
   return (
     <div className={styles.phoneCard}>
-      <div className={styles.imgContainer}>
-        <img className={styles.img} src={product.image} alt={product.name} />
-      </div>
-      <h3 className={styles.cardTitle}>{product.name}</h3>
+      <Link
+        to={`/product/${product.category}/${product.id}`}
+        className={styles.imgContainer}
+      >
+        <img
+          className={styles.img}
+          src={`/${product.image}`}
+          alt={product.name}
+        />
+      </Link>
+      <Link
+        className={styles.linkTitleContainer}
+        to={`/product/${product.category}/${product.id}`}
+      >
+        <p className={styles.cardTitle}>{product.name}</p>
+      </Link>
       <div className={styles.priceContainer}>
-        <p className={styles.price}>${product.price}</p>
+        <h3 className={styles.price}>${product.price}</h3>
         {isOldPriceVisible && (
           <p className={styles.fullPrice}>${product.fullPrice}</p>
         )}

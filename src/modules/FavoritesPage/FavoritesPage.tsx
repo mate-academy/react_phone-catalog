@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
 import { Catalog } from '../shared/components/Catalog';
 import { Loader } from '../shared/components/Loader/Loader';
-import { PhoneCard } from '../shared/components/PhoneCard/PhoneCard';
+import { ProductCard } from '../shared/components/ProductCard/ProductCard';
 import styles from './FavoritesPage.module.scss';
 import { useAppContext } from '../../context/AppContext';
 import { getProducts } from '../../utils/api';
@@ -26,25 +26,21 @@ export const FavoritesPage = () => {
   return (
     <>
       {isLoad ? (
-        <div className={styles.loaderContainer}>
-          <Loader />
-        </div>
+        <Loader />
       ) : (
         <>
           {favoritesIds.length > 0 ? (
             <Catalog
               title="Favorites"
               products={favorites}
-              renderItem={product => <PhoneCard product={product} />}
+              renderItem={product => <ProductCard product={product} />}
             />
           ) : (
-            <div className={styles.heartContainer}>
-              <img
-                className={styles.brokenHeart}
-                src="/icons/broken-heart.png"
-                alt="broken-heart"
-              />
-            </div>
+            <img
+              className={styles.brokenHeart}
+              src="/icons/broken-heart.png"
+              alt="broken-heart"
+            />
           )}
         </>
       )}

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Product } from '../../../../types/Product';
 import { getNewModels, getProducts } from '../../../../utils/api';
 import { ProductCarousel } from '../../../shared/components/ProductCarousel';
-import { PhoneCard } from '../../../shared/components/PhoneCard/PhoneCard';
+import { ProductCard } from '../../../shared/components/ProductCard/';
 
 export const HotPrices = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -30,7 +30,11 @@ export const HotPrices = () => {
     <section>
       <ProductCarousel title="Hot prices">
         {getHottestProducts().map(phone => (
-          <PhoneCard key={phone.id} product={phone} isOldPriceVisible={true} />
+          <ProductCard
+            key={phone.id}
+            product={phone}
+            isOldPriceVisible={true}
+          />
         ))}
       </ProductCarousel>
     </section>

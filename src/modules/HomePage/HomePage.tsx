@@ -9,7 +9,9 @@ export const HomePage = () => {
     <main className={styles.main}>
       <section className={styles.sliderSection}>
         <div className={styles.titleContainer}>
-          <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
+          <h1 className={`${styles.title} ${styles.titleMargin}`}>
+            Welcome to Nice Gadgets store!
+          </h1>
         </div>
         <Slider />
       </section>

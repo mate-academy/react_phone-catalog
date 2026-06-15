@@ -55,9 +55,7 @@ export const Cart = () => {
   return (
     <>
       {isLoad ? (
-        <div className={styles.loaderContainer}>
-          <Loader />
-        </div>
+        <Loader />
       ) : (
         <div className={styles.container}>
           <Modal isModalOpen={isModalOpen} setIsModelOpen={setIsModalOpen}>

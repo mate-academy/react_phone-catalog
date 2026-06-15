@@ -1,4 +1,5 @@
 @use '@styles/variables/variables.scss' as vars;
+@use '@styles/mixins/mixins.scss' as mixins;
 
 .main {
   display: flex;
@@ -26,7 +27,7 @@
 }
 
 .title {
-  font-size: 32px;
+  @include mixins.text-style('h1', $is-mobile: true);
 
   &Container {
     padding: 16px;
@@ -37,12 +38,22 @@
   }
 
   @media screen and (min-width: vars.$tablet-width) {
-    font-size: 48px;
+    @include mixins.text-style('h1', $is-mobile: false);
+  }
+
+  @media screen and (min-width: vars.$desktop-width) {
+    @include mixins.text-style('h1', $is-mobile: false);
+  }
+}
+
+.titleMargin {
+  margin: 24px 0;
+
+  @media screen and (min-width: vars.$tablet-width) {
     margin: 32px 0;
   }
 
   @media screen and (min-width: vars.$desktop-width) {
-    font-size: 56px;
-    margin: 56px 0;
+   margin: 56px 0;
   }
 }

@@ -9,6 +9,7 @@ import { FavoritesPage } from './modules/FavoritesPage';
 import { Cart } from './modules/CartPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { AppProvider } from './context/AppContext';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
 
 export const App = () => {
   return (
@@ -21,6 +22,10 @@ export const App = () => {
           <Route path="/accessories" element={<AccessoriesPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/product/:category/:productId"
+            element={<ProductDetailsPage />}
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

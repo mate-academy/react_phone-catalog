@@ -1,3 +1,4 @@
+@use '@styles/mixins/mixins' as mixins;
 @use '@styles/variables/variables.scss' as vars;
 
 .phoneCard {
@@ -22,11 +23,13 @@
   object-fit: contain;
 }
 
-.cardTitle {
+.linkTitleContainer {
   flex-grow: 1;
-  font-size: 14px;
-  font-weight: 400;
-  color: vars.$primary-color;
+  text-decoration: none;
+}
+
+.cardTitle {
+  @include mixins.text-style('body', false);
 }
 
 .priceContainer {
@@ -35,12 +38,11 @@
 }
 
 .price {
-  font-size: 22px;
-  font-weight: 800;
+ @include mixins.text-style('h3', false);
 }
 
 .fullPrice {
-  font-size: 22px;
+  @include mixins.text-style('h3', false);
   font-weight: 600;
   color: vars.$secondary-color;
   text-decoration: line-through;
@@ -56,8 +58,7 @@
 .spec {
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
-  font-weight: 400;
+  @include mixins.text-style('small', false);
 
   &Title {
     color: vars.$secondary-color;
@@ -76,44 +77,9 @@
 }
 
 .addBtn {
-  background-color: vars.$primary-color;
-  padding: 10px;
-  width: 100%;
-  font-size: 14px;
-  font-weight: 500;
-  color: vars.$white-color;
-
-  border: none;
-  cursor: pointer;
-
-  transition: box-shadow .2s ease-in;
-
-  &:hover {
-    box-shadow: 0 3px 13px vars.$primary-color;
-  }
-
-  &.isActive {
-    color: vars.$green-color;
-    background-color: vars.$white-color;
-    border: solid 1px vars.$elements-color;
-
-    &:hover {
-      box-shadow: none;
-    }
-  }
+  @include mixins.add-btn;
 }
 
 .favoritesBtn {
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-
-  border: 1px solid vars.$icons-color;
-  background-color: vars.$white-color;
-  cursor: pointer;
-  transition: border .2s ease-in;
-
-  &:hover {
-    border: 1px solid vars.$primary-color;
-  }
+  @include mixins.favorites-btn
 }

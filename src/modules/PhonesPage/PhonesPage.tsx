@@ -1,13 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Catalog } from '../shared/components/Catalog';
-import { PhoneCard } from '../shared/components/PhoneCard/PhoneCard';
+import { ProductCard } from '../shared/components/ProductCard/ProductCard';
 import { Product } from '../../types/Product';
 import { getProducts } from '../../utils/api';
 import { sortProducts } from '../../utils/sortProducts';
 import { usePagination } from '../../hooks/usePagination';
 import { useCatalogParams } from '../../hooks/useCatalogParams';
 import { Loader } from '../shared/components/Loader/Loader';
-import styles from './PhonesPage.module.scss';
 
 export const PhonesPage = () => {
   const {
@@ -47,14 +46,12 @@ export const PhonesPage = () => {
   return (
     <>
       {isLoad ? (
-        <div className={styles.loaderContainer}>
-          <Loader />
-        </div>
+        <Loader />
       ) : (
         <Catalog
           title="Mobile phones"
           products={sortedProducts}
-          renderItem={product => <PhoneCard product={product} />}
+          renderItem={product => <ProductCard product={product} />}
           sortByValue={sort}
           setSortByValue={handleSortValueChange}
           itemsOnPageValue={productsPerPage}

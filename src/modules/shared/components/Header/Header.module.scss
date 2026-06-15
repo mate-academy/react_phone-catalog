@@ -1,5 +1,5 @@
-@use '@styles/mixins/ActiveNavState';
 @use '@styles/variables/variables.scss' as vars;
+@use '@styles/mixins/mixins.scss' as mixins;
 
 .header {
   position: sticky;

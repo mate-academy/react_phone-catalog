@@ -1,11 +1,5 @@
 @use '@styles/variables/variables.scss' as vars;
-
-.loaderContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
+@use '@styles/mixins/mixins' as mixins;
 
 .container {
   display: flex;
@@ -36,10 +30,22 @@
   }
 }
 
+.title {
+  @include mixins.text-style('h1', true);
+
+  @media screen and (min-width: vars.$tablet-width) {
+    @include mixins.text-style('h1', false);
+  }
+
+  @media screen and (min-width: vars.$desktop-width) {
+    @include mixins.text-style('h1', false);
+  }
+}
+
 .backBtnContainer {
   display: flex;
   gap: 4px;
-  align-items: center;
+  align-items: start;
 }
 
 .arrow {
@@ -48,8 +54,8 @@
 }
 
 .backBtn {
-  font-size: 12px;
-  font-weight: 600;
+  @include mixins.text-style('small', false);
+
   color: vars.$secondary-color;
   background-color: vars.$white-color;
   border: none;
@@ -57,7 +63,8 @@
 }
 
 .counter {
-  font-size: 14px;
+  @include mixins.text-style('body', false);
+  
   color: vars.$secondary-color;
 }
 
@@ -88,13 +95,20 @@
   padding-bottom: 16px;
 }
 
+.price {
+  @include mixins.text-style('h2', true);
+
+  @media screen and (min-width: vars.$tablet-width) {
+    @include mixins.text-style('h2', false);
+  }
+
+  @media screen and (min-width: vars.$desktop-width) {
+    @include mixins.text-style('h2', false);
+  }
+}
+
 .btn {
-  height: 46px;
-  align-self: stretch;
-  color: vars.$white-color;
-  background-color: vars.$primary-color;
-  border: none;
-  cursor: pointer;
+  @include mixins.add-btn;
 }
 
 .emptyMsg {
@@ -105,8 +119,7 @@
 }
 
 .modalTitle {
-  font-size: 20px;
-  font-weight: 500;
+  @include mixins.text-style('h4', true);
 }
 
 .modalButtons {
@@ -122,8 +135,7 @@
 }
 
 .confirm {
-  background-color: vars.$primary-color;
-  color: vars.$white-color;
+  @include mixins.add-btn;
 }
 
 .cancel {

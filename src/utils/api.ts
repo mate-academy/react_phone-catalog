@@ -12,11 +12,11 @@ export const getProducts = (): Promise<Product[]> => {
 };
 
 export const getTablets = (): Promise<Tablet[]> => {
-  return fetch('api/tablets.json').then(data => data.json());
+  return fetch('/api/tablets.json').then(data => data.json());
 };
 
 export const getAccessories = (): Promise<Accessory[]> => {
-  return fetch('api/accessories.json').then(data => data.json());
+  return fetch('/api/accessories.json').then(data => data.json());
 };
 
 export const getNewModels = (category: string, currentProducts: Product[]) => {

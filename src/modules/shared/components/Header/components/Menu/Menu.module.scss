@@ -1,15 +1,18 @@
-@use '@styles/mixins/ActiveNavState';
+@use '@styles/mixins/mixins';
 @use '@styles/variables/variables.scss' as vars;
 
 .menu {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 24px;
+  justify-content: space-between;
+  position: fixed;
+  top: vars.$header-height-mobile;
   left: 0;
-  width: 100%;
+  bottom: 0;
+  width: 100vw;
+  padding-top: 24px;
+  background-color: vars.$white-color;
 }
 
 .nav {
@@ -52,11 +55,11 @@
 
 .bottom {
   display: flex;
-  position: fixed;
-  bottom: 0;
 
   box-shadow: 0 -1px 0 0 vars.$elements-color;
   width: 100%;
+
+  margin-top: auto;
 }
 
 .icon {

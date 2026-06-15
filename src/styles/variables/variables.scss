@@ -10,3 +10,25 @@ $header-height-mobile: 48px;
 $header-height-desktop: 64px;
 $tablet-width: 640px;
 $desktop-width: 1200px;
+$font-family-main: 'Mont', sans-serif;
+$font-weights: (
+  'regular': 400,
+  'semibold': 600,
+  'bold': 700
+);
+$desktop-typography: (
+  'h1': (size: 48px, weight: 'bold', tracking: -0.01em, transform: none),
+  'h2': (size: 32px, weight: 'bold', tracking: -0.01em, transform: none),
+  'h3': (size: 22px, weight: 'bold', tracking: 0,       transform: none),
+  'h4': (size: 20px, weight: 'semibold', tracking: 0,   transform: none),
+  'uppercase': (size: 12px, weight: 'bold', tracking: 0.04em, transform: uppercase),
+  'button': (size: 14px, weight: 'semibold', tracking: 0, transform: none),
+  'body': (size: 14px, weight: 'regular', tracking: 0,   transform: none),
+  'small': (size: 12px, weight: 'semibold', tracking: 0, transform: none)
+);
+$mobile-typography: (
+  'h1': (size: 32px, weight: 'bold', tracking: -0.01em),
+  'h2': (size: 22px, weight: 'bold', tracking: 0),
+  'h3': (size: 20px, weight: 'semibold', tracking: 0),
+  'h4': (size: 16px, weight: 'semibold', tracking: 0)
+);

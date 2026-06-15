@@ -1,6 +1,10 @@
 @use '@styles/variables/variables.scss' as vars;
 
 .loader {
+  position: absolute;
+  left: 45%;
+  top: 50%;
+
   height: 48px;
   width: 48px;
 
@@ -9,6 +13,7 @@
 
   animation: spin 1s linear infinite;
   border-top-color: vars.$primary-color;
+
 }
 
 @keyframes spin {

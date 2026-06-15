@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ProductCarousel } from '../../../shared/components/ProductCarousel';
 import { getNewModels, getProducts } from '../../../../utils/api';
 import { Product } from '../../../../types/Product';
-import { PhoneCard } from '../../../shared/components/PhoneCard/PhoneCard';
+import { ProductCard } from '../../../shared/components/ProductCard';
 
 export const NewModels = () => {
   const [newProducts, setNewProducts] = useState<Product[]>([]);
@@ -16,7 +16,7 @@ export const NewModels = () => {
   return (
     <ProductCarousel title={'Brand new models'}>
       {newProducts.map(product => (
-        <PhoneCard key={product.id} product={product} />
+        <ProductCard key={product.id} product={product} />
       ))}
     </ProductCarousel>
   );
