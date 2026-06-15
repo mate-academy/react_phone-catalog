@@ -60,6 +60,7 @@ export const ProductDetailsPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [productCard, setProductCard] = useState<ProductCardData | null>(null);
+  const [isNotFound, setIsNotFound] = useState(false);
   const cartContext = useContext(CartContext);
   const favoritesContext = useContext(FavoritesContext);
 
@@ -79,6 +80,8 @@ export const ProductDetailsPage = () => {
       const basicProduct = newProducts.find(item => item.itemId === productId);
 
       if (!basicProduct) {
+         setIsNotFound(true);
+
         return;
       }
 
@@ -222,13 +225,18 @@ export const ProductDetailsPage = () => {
     sierrablue: '#9DB7D3',
 
     'sky blue': '#87CEEB',
+    'titanium-black': '#2F2F2F',
+    'titanium-gray': '#8A8A8A',
+
+    obsidian: '#1F1F1F',
+    porcelain: '#F5F2EA',
   };
 
   if (loading) {
     return <Loader />;
   }
 
-  if (!product) {
+  if (isNotFound) {
     return <ErrorMessage message="Product was not found" />;
   }
 
@@ -298,7 +306,7 @@ export const ProductDetailsPage = () => {
         <Breadcrumbs title={product?.category} productName={product?.name} />
       </div>
 
-      <button className={styles.back} onClick={() => navigate(-1)}>
+      <button className={styles.back} onClick={() => navigate(`/${product.category}`)}>
         <div className={styles.back__container}>
           <img
             src={`${import.meta.env.BASE_URL}/img/buttons/arrow-left.png`}

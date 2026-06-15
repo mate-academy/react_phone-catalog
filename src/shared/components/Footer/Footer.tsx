@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 export const Footer = () => {
   const handleScrollToTop = () => {
@@ -22,26 +23,24 @@ export const Footer = () => {
                 <a
                   className={styles.nav__link}
                   target="_blank"
-                  href="https://github.com/ValentynaITCh/react_phone-catalog"
+                  href="https://github.com/ValentynaITCh"
                   rel="noreferrer"
                 >
                   Github
                 </a>
               </li>
               <li className={styles.nav__item}>
-                <a
-                  href="https://github.com/ValentynaITCh"
-                  target="_blank"
+                <Link
+                  to="/contacts"
                   className={styles.nav__link}
-                  rel="noreferrer"
                 >
                   Contacts
-                </a>
+                </Link>
               </li>
               <li className={styles.nav__item}>
-                <a href="#" className={styles.nav__link}>
+                <Link to="/rights" className={styles.nav__link}>
                   rights
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>

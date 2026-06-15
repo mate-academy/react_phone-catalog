@@ -1,0 +1,41 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+
+.pageGrid {
+  @include page-grid;
+
+  padding: 16px;
+}
+
+.contacts {
+  margin-top: 40px;
+  grid-column: 1 / -1;
+  color: $color-secondary;
+
+}
+
+.contacts__section {
+  margin-bottom: 40px;
+}
+
+.contacts__title {
+  margin-bottom: 24px;
+  color: $color-primary;
+}
+
+.contacts__text {
+  margin-bottom: 16px;
+
+
+}
+
+.contacts__links {
+ list-style: none;
+ margin-bottom: 8px;
+}
+
+.contacts__link {
+  text-decoration: none;
+  color: $color-accent;
+
+}

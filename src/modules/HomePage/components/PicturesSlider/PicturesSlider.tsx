@@ -9,7 +9,7 @@ export const PicturesSlider = () => {
       productTitle: 'iPhone 14 Pro',
       productSubtitle: 'Pro. Beyond.',
       image: '/img/banner/iphone-14-pro.png',
-      link: '/product/apple-iphone-14-pro',
+      link: '/product/apple-iphone-14-pro-128gb-spaceblack',
     },
 
     {
@@ -18,7 +18,7 @@ export const PicturesSlider = () => {
       productTitle: 'Galaxy S24 Ultra',
       productSubtitle: 'Galaxy AI is here.',
       image: '/img/banner/s24-ultra.png',
-      link: '/product/samsung-s24-ultra',
+      link: '/product/samsung-galaxy-s24-ultra-256gb-titanium-black',
     },
 
     {
@@ -27,7 +27,7 @@ export const PicturesSlider = () => {
       productTitle: 'Google Pixel 9',
       productSubtitle: 'The best of Google.',
       image: '/img/banner/pixel-9.png',
-      link: '/product/google-pixel-9',
+      link: '/product/google-pixel-9-256gb-porcelain',
     },
   ];
 
@@ -66,7 +66,7 @@ export const PicturesSlider = () => {
           />
         </button>
         <Link
-          to="/product/apple-iphone-14-pro"
+          to={slide.link}
           className={styles['pictures-slider__banner']}
         >
           <div className={styles.banner__content}>

@@ -15,6 +15,10 @@ import { ProductCardData } from './shared/types/ProductCardData';
 import { Layout } from './shared/components/Layout';
 import { Cart } from './modules/Cart/Cart';
 import { Accessories } from './modules/Accessories/Accessories';
+import { ContactsPage } from './modules/ContactsPage';
+import { RightsPage } from './modules/RightsPage';
+
+
 
 export const App = () => {
   const [favorites, setFavorites] = useState<ProductCardData[]>(() => {
@@ -52,6 +56,8 @@ export const App = () => {
                 element={<ProductDetailsPage />}
               ></Route>
               <Route path="favorites" element={<Favorites />}></Route>
+              <Route path="contacts" element={<ContactsPage />} />
+              <Route path="rights" element={<RightsPage />} />
             </Route>
             <Route path="*" element={<NotFoundPage />}></Route>
           </Routes>
