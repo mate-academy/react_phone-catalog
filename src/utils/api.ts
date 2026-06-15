@@ -4,19 +4,19 @@ import { Product } from '../types/Product';
 import { Tablet } from '../types/Tablet';
 
 export const getPhones = (): Promise<Phone[]> => {
-  return fetch('/api/phones.json').then(data => data.json());
+  return fetch('api/phones.json').then(data => data.json());
 };
 
 export const getProducts = (): Promise<Product[]> => {
-  return fetch('/api/products.json').then(data => data.json());
+  return fetch('api/products.json').then(data => data.json());
 };
 
 export const getTablets = (): Promise<Tablet[]> => {
-  return fetch('/api/tablets.json').then(data => data.json());
+  return fetch('api/tablets.json').then(data => data.json());
 };
 
 export const getAccessories = (): Promise<Accessory[]> => {
-  return fetch('/api/accessories.json').then(data => data.json());
+  return fetch('api/accessories.json').then(data => data.json());
 };
 
 export const getNewModels = (category: string, currentProducts: Product[]) => {
