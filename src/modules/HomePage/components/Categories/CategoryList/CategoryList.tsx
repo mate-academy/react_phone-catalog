@@ -20,19 +20,19 @@ export const CategoryList = () => {
     {
       title: 'Mobile phones',
       category: 'phones',
-      imgSrc: '/img/category-phones-bgc.png',
+      imgSrc: 'img/category-phones-bgc.png',
       count: phones.length,
     },
     {
       title: 'Tablets',
       category: 'tablets',
-      imgSrc: '/img/category-tablets-bgc.png',
+      imgSrc: 'img/category-tablets-bgc.png',
       count: tablets.length,
     },
     {
       title: 'Accessories',
       category: 'accessories',
-      imgSrc: '/img/category-accessories-bgc.png',
+      imgSrc: 'img/category-accessories-bgc.png',
       count: accessories.length,
     },
   ];
