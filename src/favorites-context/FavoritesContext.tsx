@@ -16,7 +16,7 @@ interface FavoriteContextType {
   favorite: FavoriteItem[];
   addToFavorite: (product: Product) => void;
   removeFromFavorite: (productId: string) => void;
-  totalItems: number;
+  totalFavoriteItems: number;
 }
 
 const FavoriteContext = createContext<FavoriteContextType | null>(null);
@@ -50,7 +50,7 @@ export const FavoriteProvider: React.FC<{ children: React.ReactNode }> = ({
     setFavorite(prev => prev.filter(item => item.product.id !== productId));
   }, []);
 
-  const totalItems = useMemo(() => {
+  const totalFavoriteItems = useMemo(() => {
     return favorite.length;
   }, [favorite]);
 
@@ -59,9 +59,9 @@ export const FavoriteProvider: React.FC<{ children: React.ReactNode }> = ({
       favorite,
       addToFavorite,
       removeFromFavorite,
-      totalItems,
+      totalFavoriteItems,
     }),
-    [favorite, addToFavorite, removeFromFavorite, totalItems],
+    [favorite, addToFavorite, removeFromFavorite, totalFavoriteItems],
   );
 
   return (

@@ -1,9 +1,14 @@
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
+import { useCart } from '../../../../../cart-context/CartContext';
+import { useFavorite } from '../../../../../favorites-context/FavoritesContext';
 
 export const Header = () => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     `${styles.link} ${isActive ? styles.isActive : ''} `;
+
+  const { totalFavoriteItems } = useFavorite();
+  const { totalItems } = useCart();
 
   return (
     <header className={styles.header}>
@@ -51,6 +56,12 @@ export const Header = () => {
               aria-label="Favorites"
             >
               <img src="/img/icons/favorites.svg" alt="Favorites" />
+
+              {totalFavoriteItems > 0 && (
+                <span className={styles.addedProdutcs}>
+                  {totalFavoriteItems}
+                </span>
+              )}
             </Link>
           </div>
 
@@ -61,6 +72,10 @@ export const Header = () => {
               aria-label="Shopping bag"
             >
               <img src="/img/icons/shopping-bag.svg" alt="Shopping bag" />
+
+              {totalItems > 0 && (
+                <span className={styles.addedProdutcs}>{totalItems}</span>
+              )}
             </Link>
           </div>
         </div>

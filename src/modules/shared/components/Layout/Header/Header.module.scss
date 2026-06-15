@@ -78,7 +78,8 @@
 }
 
 .iconLink {
-  display: flex;
+  position: relative;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   height: 64px;
@@ -89,4 +90,29 @@
   &:hover {
     background-color: #75767f;
   }
+}
+
+.addedProdutcs {
+  position: absolute;
+  top: 16px;
+  right: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 16px;
+  height: 16px;
+  padding: 0 2px;
+  border-radius: 50%;
+
+  background-color: #eb5757;
+  border: 1px solid #0f1121;
+  color: #f1f2f9;
+
+  font-weight: 700;
+  font-size: 9px;
+  line-height: 1rem;
+
+  box-sizing: border-box;
 }
