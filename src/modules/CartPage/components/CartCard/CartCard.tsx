@@ -35,7 +35,7 @@ export const CartCard = ({ cartItem }: Props) => {
         <img
           onClick={() => deleteItem(cartItem.id)}
           className={styles.cardClose}
-          src="/icons/close.svg"
+          src="icons/close.svg"
           alt="close"
         />
         <div className={styles.imgContainer}>
@@ -54,14 +54,14 @@ export const CartCard = ({ cartItem }: Props) => {
             onClick={() => decreaseTheCounter(cartItem.id)}
             className={styles.btn}
           >
-            <img src="/icons/minus.svg" alt="minus" />
+            <img src="icons/minus.svg" alt="minus" />
           </button>
           {countItemLength()}
           <button
             onClick={() => increaseTheCounter(cartItem.id)}
             className={styles.btn}
           >
-            <img src="/icons/plus.svg" alt="plus" />
+            <img src="icons/plus.svg" alt="plus" />
           </button>
         </div>
         <h3 className={styles.price}>${cartItem.price}</h3>

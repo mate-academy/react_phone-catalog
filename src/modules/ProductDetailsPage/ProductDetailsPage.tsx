@@ -175,10 +175,10 @@ export const ProductDetailsPage = () => {
                 <div className={styles.nav}>
                   <div className={styles.historyNav}>
                     <Link className={styles.historyLink} to={'/'}>
-                      <img src="/icons/home.svg" alt="home" />
+                      <img src="icons/home.svg" alt="home" />
                     </Link>
                     <img
-                      src="/icons/chevron-arrow-right.svg"
+                      src="icons/chevron-arrow-right.svg"
                       alt="arrow-right"
                     />
                     <Link
@@ -188,7 +188,7 @@ export const ProductDetailsPage = () => {
                       {category}
                     </Link>
                     <img
-                      src="/icons/chevron-arrow-right.svg"
+                      src="icons/chevron-arrow-right.svg"
                       alt="arrow-right"
                     />
                     <span className={styles.currentPathname}>
@@ -199,7 +199,7 @@ export const ProductDetailsPage = () => {
                   <div className={styles.backBtnContainer}>
                     <img
                       className={styles.arrow}
-                      src="/icons/chevron-arrow-left.svg"
+                      src="icons/chevron-arrow-left.svg"
                       alt="arrow-left"
                     />
                     <button className={styles.backBtn} onClick={handleBack}>
@@ -226,7 +226,7 @@ export const ProductDetailsPage = () => {
                             className={cn(styles.mainImg, {
                               [styles.hidden]: isImgLoad,
                             })}
-                            src={`/${img.src}`}
+                            src={`${img.src}`}
                             alt={img.alt}
                             onLoad={() => setIsImgLoad(false)}
                           />
@@ -242,7 +242,7 @@ export const ProductDetailsPage = () => {
                         >
                           <img
                             className={styles.previewImg}
-                            src={`/${img.src}`}
+                            src={`${img.src}`}
                             alt={img.alt}
                           />
                         </button>
@@ -323,8 +323,8 @@ export const ProductDetailsPage = () => {
                             className={styles.favorites}
                             src={
                               favoritesIds.includes(Number(productId))
-                                ? '/icons/favorites-filled.svg'
-                                : '/icons/favorites.svg'
+                                ? 'icons/favorites-filled.svg'
+                                : 'icons/favorites.svg'
                             }
                             alt="favorites"
                           />

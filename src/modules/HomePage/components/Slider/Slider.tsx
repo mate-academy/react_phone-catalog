@@ -47,7 +47,7 @@ export const Slider = () => {
           onClick={goBack}
           aria-label="Previous slide"
         >
-          <img src="/icons/chevron-arrow-left.svg" alt="" />
+          <img src="icons/chevron-arrow-left.svg" alt="arrow-left" />
         </button>
         <div className={styles.imgContainer}>
           <div
@@ -69,7 +69,7 @@ export const Slider = () => {
           </div>
         </div>
         <button className={styles.btn} onClick={goNext} aria-label="Next slide">
-          <img src="/icons/chevron-arrow-right.svg" alt="" />
+          <img src="icons/chevron-arrow-right.svg" alt="arrow-right" />
         </button>
       </div>
       <div className={styles.sliderBtns}>

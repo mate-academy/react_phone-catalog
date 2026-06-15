@@ -65,9 +65,9 @@ export const Catalog = ({
     <section className={styles.catalogSection}>
       <div className={styles.historyNav}>
         <Link className={styles.historyLink} to={'/'}>
-          <img src="/icons/home.svg" alt="home" />
+          <img src="icons/home.svg" alt="home" />
         </Link>
-        <img src="/icons/chevron-arrow-right.svg" alt="arrow-right" />
+        <img src="icons/chevron-arrow-right.svg" alt="arrow-right" />
         <Link
           className={`${styles.historyLink} ${styles.pathname}`}
           to={location.pathname}
@@ -159,7 +159,7 @@ export const Catalog = ({
             }}
             className={styles.controlBtn}
           >
-            <img src="/icons/chevron-arrow-left.svg" alt="left" />
+            <img src="icons/chevron-arrow-left.svg" alt="left" />
           </button>
           {pages.map(page => {
             return (
@@ -186,7 +186,7 @@ export const Catalog = ({
             }}
             className={styles.controlBtn}
           >
-            <img src="/icons/chevron-arrow-right.svg" alt="right" />
+            <img src="icons/chevron-arrow-right.svg" alt="right" />
           </button>
         </div>
       )}

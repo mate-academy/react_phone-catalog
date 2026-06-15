@@ -81,7 +81,7 @@ export const Cart = () => {
             <div className={styles.backBtnContainer}>
               <img
                 className={styles.arrow}
-                src="/icons/chevron-arrow-left.svg"
+                src="icons/chevron-arrow-left.svg"
                 alt="arrow-left"
               />
               <button className={styles.backBtn} onClick={handleBack}>

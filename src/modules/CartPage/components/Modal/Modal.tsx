@@ -21,7 +21,7 @@ export const Modal = ({ isModalOpen, setIsModelOpen, children }: Props) => {
     <div onClick={handleClose} className={styles.overlay}>
       <div className={styles.modal} onClick={e => e.stopPropagation()}>
         <button onClick={handleClose} className={styles.closeBtn}>
-          <img src="/icons/close.svg" alt="close" />
+          <img src="icons/close.svg" alt="close" />
         </button>
         {children}
       </div>

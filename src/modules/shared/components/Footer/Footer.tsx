@@ -9,7 +9,7 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <Link to={'/'} className={styles.logoLink}>
-        <img src="/img/logo/logo.svg" alt="logo" />
+        <img src="img/logo/logo.svg" alt="logo" />
       </Link>
       <nav className={styles.nav}>
         <a
@@ -32,7 +32,7 @@ export const Footer = () => {
         <button onClick={goUp} className={styles.btn} name="btn">
           <img
             className={styles.btnImg}
-            src="/icons/chevron-arrow-up.svg"
+            src="icons/chevron-arrow-up.svg"
             alt="up"
           />
         </button>

@@ -38,7 +38,7 @@ export const FavoritesPage = () => {
           ) : (
             <img
               className={styles.brokenHeart}
-              src="/icons/broken-heart.png"
+              src="icons/broken-heart.png"
               alt="broken-heart"
             />
           )}

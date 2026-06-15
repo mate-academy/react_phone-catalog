@@ -30,7 +30,7 @@ export const ProductCard = ({ product, isOldPriceVisible }: Props) => {
       >
         <img
           className={styles.img}
-          src={`/${product.image}`}
+          src={`${product.image}`}
           alt={product.name}
         />
       </Link>
@@ -76,8 +76,8 @@ export const ProductCard = ({ product, isOldPriceVisible }: Props) => {
               className={styles.favorites}
               src={
                 favoritesIds.includes(product.id)
-                  ? '/icons/favorites-filled.svg'
-                  : '/icons/favorites.svg'
+                  ? 'icons/favorites-filled.svg'
+                  : 'icons/favorites.svg'
               }
               alt="favorites"
             />
