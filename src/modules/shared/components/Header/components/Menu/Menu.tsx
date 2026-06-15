@@ -63,7 +63,7 @@ export const Menu = ({ isMenuOpen, setIsMenuOpen }: Props) => {
           to={'/favorites'}
           onClick={closeMenu}
         >
-          <img src="/icons/favorites.svg" alt="Favorites" />
+          <img src="icons/favorites.svg" alt="Favorites" />
           {favoritesIds.length > 0 && <Counter count={favoritesIds.length} />}
         </NavLink>
         <NavLink
@@ -73,7 +73,7 @@ export const Menu = ({ isMenuOpen, setIsMenuOpen }: Props) => {
           to={'/cart'}
           onClick={closeMenu}
         >
-          <img src="/icons/cart.svg" alt="Cart" />
+          <img src="icons/cart.svg" alt="Cart" />
           {cartIds.length > 0 && <Counter count={cartIds.length} />}
         </NavLink>
       </div>

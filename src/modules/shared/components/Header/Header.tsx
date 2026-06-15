@@ -26,7 +26,7 @@ export const Header = ({ isMenuOpen, setIsMenuOpen }: Props) => {
           <Link to="/">
             <img
               className={styles.logo}
-              src="/img/logo/logo.svg"
+              src="img/logo/logo.svg"
               alt="Company Logo"
             />
           </Link>
@@ -40,7 +40,7 @@ export const Header = ({ isMenuOpen, setIsMenuOpen }: Props) => {
             }}
             to={'/favorites'}
           >
-            <img src="/icons/favorites.svg" alt="Favorites" />
+            <img src="icons/favorites.svg" alt="Favorites" />
             {favoritesIds.length > 0 && <Counter count={favoritesIds.length} />}
           </NavLink>
 
@@ -50,7 +50,7 @@ export const Header = ({ isMenuOpen, setIsMenuOpen }: Props) => {
             }}
             to={'/cart'}
           >
-            <img src="/icons/cart.svg" alt="Cart" />
+            <img src="icons/cart.svg" alt="Cart" />
             {cartIds.length > 0 && <Counter count={cartIds.length} />}
           </NavLink>
           <button
@@ -59,7 +59,7 @@ export const Header = ({ isMenuOpen, setIsMenuOpen }: Props) => {
             onClick={handleClick}
           >
             <img
-              src={isMenuOpen ? '/icons/close.svg' : '/icons/menu.svg'}
+              src={isMenuOpen ? 'icons/close.svg' : 'icons/menu.svg'}
               alt="Menu"
             />
           </button>
