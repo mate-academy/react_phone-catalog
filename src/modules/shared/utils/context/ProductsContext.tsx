@@ -52,6 +52,11 @@ export const ProductsProvider = (
         }
 
         const data = await response.json();
+
+        //*! ШТУЧНЕ УПОВІЛЬНЕННЯ ЗАВАНТАЖЕННЯ ДАНИХ,ЩОБ ПОКАЗАТИ <Skeleton /> *//
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        //*! МОЖНА ВИДАЛИТИ *//
+
         setProducts(data);
       } catch (error) {
         setIsError(true);
@@ -99,6 +104,10 @@ export const ProductsProvider = (
       }
 
       const data = await response.json();
+
+      //*! ШТУЧНЕ УПОВІЛЬНЕННЯ ЗАВАНТАЖЕННЯ ДАНИХ,ЩОБ ПОКАЗАТИ <Skeleton /> *//
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      //*! МОЖНА ВИДАЛИТИ *//
 
       setProductsDetails(prev => [...prev, ...data]);
       setLoadedCategories(prev => [...prev, category]);

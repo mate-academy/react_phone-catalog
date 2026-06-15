@@ -5,6 +5,8 @@
 //#region IMPORTS
 import { useState, useEffect } from 'react';
 
+import { ProductsSliderSkeleton } from './ProductsSliderSkeleton';
+
 import { ProductCard } from '@/modules/shared/components/ProductCard';
 import { Button } from '@/modules/shared/components/ui/Button';
 import { ProductType } from '@/modules/shared/utils/types';
@@ -30,12 +32,14 @@ interface Props {
   title: string;
   products: ProductType[];
   hasDiscount?: boolean;
+  isLoading?: boolean;
 }
 
 export const ProductsSlider: React.FC<Props> = ({
   title,
   products,
   hasDiscount = false,
+  isLoading = false,
 }) => {
   //#region STATE_&_HOOKS
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -92,6 +96,12 @@ export const ProductsSlider: React.FC<Props> = ({
   //#endregion
 
   //#region RENDER
+  if (isLoading) {
+    return (
+      <ProductsSliderSkeleton title={title} />
+    );
+  }
+
   return (
     <div className={sliderContainer}>
       <div className={sliderHeader}>

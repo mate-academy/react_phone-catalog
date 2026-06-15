@@ -20,7 +20,7 @@ const { home, visuallyHidden, tittle } = styles;
 
 export const HomePage = () => {
   //#region DATA_FETCHING
-  const { products } = useProducts();
+  const { products, isLoading } = useProducts();
   //#endregion DATA_FETCHING
 
   //#region DATA_TRANSORFATION
@@ -45,12 +45,14 @@ export const HomePage = () => {
       <ProductsSlider
         title="Brand new models"
         products={brandNewProducts}
+        isLoading={isLoading}
       />
       <CategoriesSection />
       <ProductsSlider
         title="Hot prices"
         products={hotPriceProducts}
         hasDiscount
+        isLoading={isLoading}
       />
     </div>
   );

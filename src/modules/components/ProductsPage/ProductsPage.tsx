@@ -18,8 +18,10 @@ import { ProductsList } from '../../shared/components/ProductsList';
 import { Pagination } from './components/Pagination';
 
 import { Breadcrumbs } from '@/modules/shared/components/Breadcrumbs';
-import { Loader } from '@/modules/shared/components/Loader';
 import { ErrorMessage } from '@/modules/shared/components/ErrorMessage';
+
+import { ProductCardSkeleton } from '@/modules/shared/components/ProductCard/ProductCardSkeleton';
+import ProductsListStyles from '@/modules/shared/components/ProductsList/ProductsList.module.scss';
 
 import styles from './ProductsPage.module.scss';
 //#endregion IMPORTS
@@ -66,7 +68,7 @@ export const ProductsPage = () => {
 
     setSearchParams(newParams);
   };
-  //#endregion 
+  //#endregion
 
   //#region FILTERING_SORTING_&_PAGINATION
   const filteredProducts = useMemo(() => {
@@ -118,7 +120,73 @@ export const ProductsPage = () => {
     <div className={productsPage}>
       <Breadcrumbs pageTitle={currentPageTitle} />
 
-      {isLoading && <Loader />}
+      <h1 className={productsPageTitle}>{currentPageTitle}</h1>
+      <p className={productsPageCount}>{filteredProducts.length || 0} models</p>
+
+      {isError && <ErrorMessage />}
+
+      {!isError && (
+        <>
+          {(!showEmptyCategory || isLoading) && <ProductPageFilters />}
+
+          {isLoading ? (
+            <div className={ProductsListStyles.productsList}>
+              {Array.from({ length: 8 }).map((_, index) => (
+                <ProductCardSkeleton key={index} />
+              ))}
+            </div>
+          ) : (
+            <>
+              {showEmptyCategory && (
+                <p className={noProductsMessage}>
+                  There are no {currentCategory} yet
+                </p>
+              )}
+
+              {showEmptySearch && (
+                <p className={noProductsMessage}>
+                  There are no matching products...
+                </p>
+              )}
+
+              {showProducts && (
+                <>
+                  <ProductsList products={paginatedProducts} />
+
+                  {showPagination && (
+                    <Pagination
+                      currentPage={currentPage}
+                      totalPages={totalPages}
+                      onPageChange={handlePageChange}
+                    />
+                  )}
+                </>
+              )}
+            </>
+          )}
+        </>
+      )}
+    </div>
+  );
+  //#endregion
+};
+
+{
+  /*
+
+//#region RENDER
+  return (
+    <div className={productsPage}>
+      <Breadcrumbs pageTitle={currentPageTitle} />
+
+      {isLoading && (
+        <div className={ProductsListStyles.productsList}>
+          {Array.from({ length: 8 }).map((_, index) => (
+            <ProductCardSkeleton key={index} />
+          ))}
+        </div>
+      )}
+
       {isError && <ErrorMessage />}
 
       {!isLoading && !isError && (
@@ -157,4 +225,6 @@ export const ProductsPage = () => {
     </div>
   );
   //#endregion
-};
+
+*/
+}

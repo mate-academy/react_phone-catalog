@@ -9,8 +9,8 @@ import { useLocation, useParams } from 'react-router-dom';
 import { useProducts } from '@/modules/shared/utils/context/ProductsContext';
 import { CategoryType, ProductType } from '@/modules/shared/utils/types';
 
+import { ProductCardDetailsSkeleton } from './components/ProductCardDetails/ProductCardDetailsSkeleton';
 import { ErrorMessage } from '@/modules/shared/components/ErrorMessage';
-import { Loader } from '@/modules/shared/components/Loader';
 import { Breadcrumbs } from '@/modules/shared/components/Breadcrumbs';
 import { BackButton } from '@/modules/shared/components/ui/BackButton';
 
@@ -89,7 +89,7 @@ export const ProductDetailsPage = () => {
       </div>
 
       {/* Стан завантаження*/}
-      {isLoading && <Loader />}
+      {isLoading && <ProductCardDetailsSkeleton />}
 
       {/* Стан помилки*/}
       {(isError || isNotFound) && (

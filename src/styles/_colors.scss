@@ -1,4 +1,3 @@
-// Глобальні змінні за замовчуванням (Світла тема)
 :root {
   // Основні акценти
   --color-accent: #4219D0;
@@ -19,7 +18,6 @@
   --color-red: #EB5757;
 }
 
-// Перевизначення змінних для темної теми
 [data-theme="dark"] {
   --color-accent: #905BFF;
   --color-secondary-accent: #F4BA47;
