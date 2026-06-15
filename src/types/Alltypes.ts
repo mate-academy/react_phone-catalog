@@ -13,7 +13,7 @@ export type Products = {
   image: string;
 };
 
-export type Goods = {
+export type FullProduct = {
   id: string;
   category: string;
   namespaceId: string;

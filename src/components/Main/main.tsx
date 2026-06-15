@@ -4,7 +4,7 @@ import { BannerSlider } from '../../Functional/BannerSlider/BannerSlider';
 import { BrandNewModels } from '../../Functional/BrandNewModels';
 import { CartProvider } from '../../context/CartContext';
 import { ShopByCategory } from '../../Functional/ShopByCategory/ShopByCategory';
-// import { HotPrice } from '../../Functional/HotPrice/HotPrice';
+import { HotPrice } from '../../Functional/HotPrice/HotPrice';
 
 export const Main: React.FC = () => {
   return (
@@ -16,7 +16,7 @@ export const Main: React.FC = () => {
         <BannerSlider />
         <BrandNewModels />
         <ShopByCategory />
-        {/* <HotPrice /> */}
+        <HotPrice />
       </CartProvider>
     </main>
   );
