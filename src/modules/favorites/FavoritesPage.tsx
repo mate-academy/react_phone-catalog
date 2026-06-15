@@ -1,4 +1,5 @@
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
+import { FavoriteContent } from './FavoriteContent';
 import styles from './FavoritesPage.module.scss';
 
 export const FavoritesPage = () => {
@@ -6,7 +7,7 @@ export const FavoritesPage = () => {
     <div className={styles.container}>
       <Breadcrumbs />
 
-      <div></div>
+      <FavoriteContent />
     </div>
   );
 };

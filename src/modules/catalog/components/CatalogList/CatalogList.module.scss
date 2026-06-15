@@ -83,7 +83,7 @@
 .productList {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 40px 16px;
   transition: transform 0.3s ease;
   margin-bottom: 40px;
 }

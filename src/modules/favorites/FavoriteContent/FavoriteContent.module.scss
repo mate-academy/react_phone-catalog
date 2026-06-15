@@ -1,0 +1,28 @@
+.title {
+  font-weight: 800;
+  font-style: bold;
+  font-size: 48px;
+  line-height: 58px;
+  letter-spacing: -0.01rem;
+
+  color: #f1f2f9;
+
+  margin-top: 40px;
+}
+
+.currentQuantity {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+
+  color: #75767f;
+
+  margin-top: 8px;
+}
+
+.favoriteList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 16px;
+  margin: 40px 0 80px;
+}
