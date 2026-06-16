@@ -21,7 +21,7 @@ export const Footer = () => {
         <a className={styles.navLink} href="mailto:yevhen.srdk@gmail.com">
           CONTACTS
         </a>
-        <a className={styles.navLink} href="#">
+        <a className={styles.navLink} href="https://www.apple.com/ua/">
           RIGHTS
         </a>
       </nav>
