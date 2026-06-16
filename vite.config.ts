@@ -5,10 +5,11 @@ import path from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: 'react_phone-catalog',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@styles': path.resolve(__dirname, './src/styles'), // ← додай це
+      '@styles': path.resolve(__dirname, './src/styles'),
     },
   },
 });
