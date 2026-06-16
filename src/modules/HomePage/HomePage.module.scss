@@ -26,6 +26,10 @@
   }
 }
 
+.titleHidden {
+  display: none;
+}
+
 .title {
   @include mixins.text-style('h1', $is-mobile: true);
 
