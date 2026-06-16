@@ -155,7 +155,6 @@ export const Catalog = ({
           <button
             onClick={() => {
               setCurrentPage?.(currentPage !== 1 ? currentPage - 1 : 1);
-              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             className={styles.controlBtn}
           >
@@ -169,7 +168,6 @@ export const Catalog = ({
                 })}
                 onClick={() => {
                   setCurrentPage?.(page);
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
                 key={page}
               >
@@ -182,7 +180,6 @@ export const Catalog = ({
               setCurrentPage?.(
                 currentPage !== totalPages ? currentPage + 1 : totalPages,
               );
-              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             className={styles.controlBtn}
           >
