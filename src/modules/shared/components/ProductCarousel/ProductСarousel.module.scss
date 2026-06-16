@@ -20,6 +20,7 @@
     }
 
     @media screen and (min-width: vars.$desktop-width) {
+      overflow: hidden;
       width: calc(25% - 12px); // 12px = (3 indents of 16 px each) = 48px / 4 cards
     }
   }
