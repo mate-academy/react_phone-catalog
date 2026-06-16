@@ -55,7 +55,11 @@ export const Slider = () => {
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
             {sliderData.map(slide => (
-              <a href={`/${slide.link}`} key={`slide-btn-${slide.alt}`}>
+              <a
+                className={styles.sliderLink}
+                href={`/${slide.link}`}
+                key={`slide-btn-${slide.alt}`}
+              >
                 <img
                   className={styles.sliderImg}
                   src={

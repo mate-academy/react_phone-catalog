@@ -17,11 +17,11 @@
   max-width: 1200px;
 
   @media screen and (min-width: vars.$tablet-width) {
-    padding: 0 24px;
+    padding: 0 24px 64px;
   }
 
   @media screen and (min-width: vars.$desktop-width) {
-    padding: 0 32px;
+    padding: 0 32px 64px;
   }
 }
 
