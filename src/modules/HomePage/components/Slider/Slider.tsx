@@ -57,8 +57,10 @@ export const Slider = () => {
             {sliderData.map(slide => (
               <a
                 className={styles.sliderLink}
-                href={`/${slide.link}`}
+                href={slide.link}
                 key={`slide-btn-${slide.alt}`}
+                rel="noreferrer"
+                target="_blank"
               >
                 <img
                   className={styles.sliderImg}
