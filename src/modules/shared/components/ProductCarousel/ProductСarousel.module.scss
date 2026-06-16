@@ -24,7 +24,7 @@
     }
 
     @media screen and (min-width: vars.$desktop-width) {
-      overflow: auto;
+      overflow: hidden;
     }
   }
 }
