@@ -3,6 +3,7 @@ import styles from './Slider.module.scss';
 import cn from 'classnames';
 import { debounce } from 'lodash';
 import { sliderData } from '../../../../types/SliderData';
+import { Link } from 'react-router-dom';
 
 const SLIDER_DELAY = 5000;
 const MIN_TABLET_SCREEN_SIZE = 640;
@@ -55,16 +56,17 @@ export const Slider = () => {
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
             {sliderData.map(slide => (
-              <img
-                key={`slide-btn-${slide.alt}`}
-                className={styles.sliderImg}
-                src={
-                  windowWidth >= MIN_TABLET_SCREEN_SIZE
-                    ? slide.url
-                    : slide.croppedImgUrl
-                }
-                alt={slide.alt}
-              />
+              <Link to={slide.link} key={`slide-btn-${slide.alt}`}>
+                <img
+                  className={styles.sliderImg}
+                  src={
+                    windowWidth >= MIN_TABLET_SCREEN_SIZE
+                      ? slide.url
+                      : slide.croppedImgUrl
+                  }
+                  alt={slide.alt}
+                />
+              </Link>
             ))}
           </div>
         </div>
