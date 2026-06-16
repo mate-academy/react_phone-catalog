@@ -61,7 +61,7 @@ export const CartPage: React.FC = () => {
         </div>
       </div>
 
-      {isCheckout && (
+      {isCheckout && cart.length > 0 && (
         <div className="checkout-modal">
           <p>Checkout is not implemented yet</p>
         </div>
