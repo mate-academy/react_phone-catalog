@@ -73,12 +73,25 @@
 }
 
 .CartItemQuantity {
-  display: flex;
-  gap: 14px;
+  display: grid;
+  grid-template-columns: 32px 32px 32px;
   align-items: center;
 
   width: 96px;
   height: 32px;
+}
+
+.CartItemQuantity span {
+  text-align: center;
+}
+
+.ItemPrice {
+  min-width: 80px;
+  text-align: right;
+
+  @include on-tablet {
+    min-width: 96px;
+  }
 }
 
 .DeleteButton {

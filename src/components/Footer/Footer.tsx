@@ -21,13 +21,19 @@ export const Footer = () => {
       </Link>
       <nav className={classNames('font-uppercase', footer.nav)}>
         <li className={footer.navItem}>
-          <NavLink to="https://github.com/MykolaFatkullin">Github</NavLink>
+          <a
+            href="https://github.com/MykolaFatkullin"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Github
+          </a>
         </li>
         <li className={footer.navItem}>
-          <NavLink to={AppRoutes.HOME}>Contacts</NavLink>
+          <NavLink to={AppRoutes.CONTACTS}>Contacts</NavLink>
         </li>
         <li className={footer.navItem}>
-          <NavLink to={AppRoutes.HOME}>Rights</NavLink>
+          <NavLink to={AppRoutes.RIGHTS}>Rights</NavLink>
         </li>
       </nav>
       <button

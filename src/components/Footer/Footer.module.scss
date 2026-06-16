@@ -39,6 +39,10 @@
     flex-direction: row;
     gap: 13.5px;
   }
+
+  @include on-desktop {
+    gap: 106px;
+  }
 }
 
 .navItem {

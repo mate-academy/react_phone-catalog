@@ -69,7 +69,9 @@ export const ItemCardShortInfo = ({ productDetails, product }: Props) => {
       color,
     );
 
-    navigate(`/${productDetails.category}/${nextProductId}`);
+    navigate(`/${productDetails.category}/${nextProductId}`, {
+      state: { scrollToTop: true },
+    });
   };
 
   const handleCapacityChange = (capacity: string) => {
@@ -83,7 +85,9 @@ export const ItemCardShortInfo = ({ productDetails, product }: Props) => {
       productDetails.color,
     );
 
-    navigate(`/${productDetails.category}/${nextProductId}`);
+    navigate(`/${productDetails.category}/${nextProductId}`, {
+      state: { scrollToTop: true },
+    });
   };
 
   const isDiscountPresent =

@@ -5,6 +5,8 @@ export const AppRoutes = {
   ACCESSORIES: 'accessories',
   FAVORITE: 'favorites',
   CART: 'cart',
+  CONTACTS: 'contacts',
+  RIGHTS: 'rights',
 } as const;
 
 export type AppRoutesType = (typeof AppRoutes)[keyof typeof AppRoutes];

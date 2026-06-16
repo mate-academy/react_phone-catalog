@@ -4,8 +4,8 @@ import * as tabletsService from '../../api/tablet';
 import * as accessoriesService from '../../api/accessory';
 import itemCardPageStyles from './ItemCardPage.module.scss';
 
-import { useNavigate, useParams } from 'react-router-dom';
-import { useCallback, useEffect, useState } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   Accessory,
   Phone,
@@ -64,10 +64,32 @@ export const ItemCardPage = ({ category }: Props) => {
 
   const { productId = '' } = useParams<{ productId: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
+  const pageTopRef = useRef<HTMLDivElement | null>(null);
 
   const [productDetails, setProductDetails] = useState<ProductDetails | null>(
     null,
   );
+
+  const shouldScrollToTop =
+    typeof location.state === 'object' &&
+    location.state !== null &&
+    'scrollToTop' in location.state;
+
+  useEffect(() => {
+    if (!shouldScrollToTop || isLoading || !productDetails) {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      pageTopRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }, 0);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [shouldScrollToTop, isLoading, productDetails]);
 
   const loadProduct = useCallback(() => {
     setIsLoading(true);
@@ -109,7 +131,7 @@ export const ItemCardPage = ({ category }: Props) => {
   }, [loadProduct]);
 
   const handleGoBack = () => {
-    navigate(-1);
+    navigate(`/${category}`);
   };
 
   const product = products.find(prod => prod.itemId === productId);
@@ -129,6 +151,7 @@ export const ItemCardPage = ({ category }: Props) => {
       {!errorMessage && !isLoading && productDetails && product && (
         <>
           <div
+            ref={pageTopRef}
             className={classNames('container', itemCardPageStyles.ItemCardPage)}
           >
             <Breadcrumbs

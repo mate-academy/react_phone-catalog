@@ -8,6 +8,8 @@ import { ItemCardPage } from '../../pages/ItemCardPage';
 import { PhonesPage } from '../../pages/PhonesPage';
 import { TabletsPage } from '../../pages/TabletsPage';
 import { AccessoriesPage } from '../../pages/AccessoriesPage';
+import { ContactsPage } from '../../pages/ContactsPage';
+import { RightsPage } from '../../pages/RightsPage';
 
 export const Router = () => (
   <HashRouter>
@@ -22,6 +24,8 @@ export const Router = () => (
           element={<AccessoriesPage />}
         ></Route>
         <Route path={AppRoutes.CART} element={<CartPage />} />
+        <Route path={AppRoutes.CONTACTS} element={<ContactsPage />} />
+        <Route path={AppRoutes.RIGHTS} element={<RightsPage />} />
         <Route
           path={`${AppRoutes.PHONES}/:productId`}
           element={<ItemCardPage category={'phones'} />}

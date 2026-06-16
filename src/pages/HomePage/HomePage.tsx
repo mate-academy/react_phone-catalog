@@ -55,7 +55,7 @@ export const HomePage = () => {
     <div className={homePage.HomePage}>
       <div className="container">
         <h1 className={classNames('font-h1', homePage.HomePageTitle)}>
-          Welcome to Nice Gadgets store!
+          Product Catalog
         </h1>
       </div>
 

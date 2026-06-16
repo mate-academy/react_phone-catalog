@@ -1,6 +1,7 @@
 import { Product } from '../../shared/types';
 import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 import { ProductCard } from '../ProductCard';
 import classNames from 'classnames';
 import { Arrow } from '../Arrow';
@@ -11,7 +12,6 @@ import { SecondaryButton } from '../SecondaryButton';
 import { SliderTitles } from './SliderTitles';
 import { ProductCardSkeleton } from '../ProductCardSkeleton';
 import catalogStyles from '../Сatalog/Catalog.module.scss';
-import { Navigation } from 'swiper/modules';
 
 type Props = {
   products: Product[];

@@ -3,6 +3,7 @@ import { Header } from '../Header';
 import { Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { BurgerMenu } from '../BurgerMenu';
+import styles from './Layout.module.scss';
 
 const MOBILE_QUERY = '(max-width: 639px)';
 
@@ -24,18 +25,22 @@ export const Layout = () => {
   }, []);
 
   return (
-    <>
+    <div className={styles.layout}>
       <Header
         isMenuOpened={isMobileOpened}
         onToggleMenu={() => setIsMobileOpened(prev => !prev)}
       />
-      <Outlet />
+
+      <main className={styles.main}>
+        <Outlet />
+      </main>
+
       <Footer />
 
       <BurgerMenu
         isOpened={isMobileOpened}
         onToggle={() => setIsMobileOpened(false)}
       />
-    </>
+    </div>
   );
 };

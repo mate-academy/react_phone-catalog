@@ -16,11 +16,15 @@ export const ProductCard = ({ product }: Props) => {
     <div className={productCardStyles.productCard}>
       <Link
         to={`/${product.category}/${product.itemId}`}
+        state={{ scrollToTop: true }}
         className={productCardStyles.productImage}
       >
         <img src={product.image} alt={product.name} />
       </Link>
-      <Link to={`/${product.category}/${product.itemId}`}>
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        state={{ scrollToTop: true }}
+      >
         <p
           className={classNames('font-body', productCardStyles.title)}
           title={product.name}
