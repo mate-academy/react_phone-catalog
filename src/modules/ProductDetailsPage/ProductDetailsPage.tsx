@@ -78,10 +78,6 @@ export const ProductDetailsPage = () => {
     setCurrentImgId(0);
   }, [productId]);
 
-  const handleBack = () => {
-    navigate(-1);
-  };
-
   const toggleFavorites = (id: number) => {
     setFavoritesIds(toggleArrayIds(favoritesIds, id));
   };
@@ -196,16 +192,14 @@ export const ProductDetailsPage = () => {
                     </span>
                   </div>
 
-                  <div className={styles.backBtnContainer}>
+                  <Link className={styles.backBtnContainer} to={`/${category}`}>
                     <img
                       className={styles.arrow}
                       src="icons/chevron-arrow-left.svg"
                       alt="arrow-left"
                     />
-                    <button className={styles.backBtn} onClick={handleBack}>
-                      Back
-                    </button>
-                  </div>
+                    <span className={styles.backBtn}>Back</span>
+                  </Link>
                 </div>
 
                 <h2
