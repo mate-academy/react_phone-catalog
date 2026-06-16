@@ -4,8 +4,10 @@
 .catalogSection {
   display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 24px;
   width: 100%;
+  padding-bottom: 64px;
 }
 
 .historyNav {
@@ -111,6 +113,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: auto;
   gap: 8px;
 }
 
@@ -165,6 +168,6 @@
 
 .option {
   @include mixins.text-style('body', false);
-  
+
   cursor: pointer;
 }
