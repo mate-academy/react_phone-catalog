@@ -40,7 +40,7 @@ export const CartCard = ({ cartItem }: Props) => {
           alt="close"
         />
         <Link
-          to={`product/${cartItem.category}/${cartItem.id}`}
+          to={`../product/${cartItem.category}/${cartItem.id}`}
           className={styles.imgContainer}
         >
           <img
@@ -50,7 +50,7 @@ export const CartCard = ({ cartItem }: Props) => {
           />
         </Link>
         <Link
-          to={`product/${cartItem.category}/${cartItem.id}`}
+          to={`../product/${cartItem.category}/${cartItem.id}`}
           className={styles.cardTitleLink}
         >
           <p className={styles.cardTitle}>{cartItem.name}</p>
