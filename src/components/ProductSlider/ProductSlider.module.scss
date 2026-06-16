@@ -1,0 +1,26 @@
+.slider {
+  width: 100%;
+  max-width: 1136px;
+  margin: 0 auto;
+}
+
+.viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.3s ease;
+  width: max-content; /* 🔥 ВАЖЛИВО */
+}
+
+.slide {
+  flex: 0 0 auto;
+  width: 260px;
+}
+
+// .wrapperSlider{
+//   overflow: hidden;
+// }
