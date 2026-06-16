@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useAppContext } from '../../../../context/AppContext';
 import { Product } from '../../../../types/Product';
 import styles from './CartCard.module.scss';
@@ -38,14 +39,22 @@ export const CartCard = ({ cartItem }: Props) => {
           src="icons/close.svg"
           alt="close"
         />
-        <div className={styles.imgContainer}>
+        <Link
+          to={`product/${cartItem.category}/${cartItem.id}`}
+          className={styles.imgContainer}
+        >
           <img
             className={styles.cardImg}
             src={cartItem.image}
             alt={cartItem.name}
           />
-        </div>
-        <p className={styles.cardTitle}>{cartItem.name}</p>
+        </Link>
+        <Link
+          to={`product/${cartItem.category}/${cartItem.id}`}
+          className={styles.cardTitleLink}
+        >
+          <p className={styles.cardTitle}>{cartItem.name}</p>
+        </Link>
       </div>
       <div className={styles.cardBottom}>
         <div className={styles.buttons}>

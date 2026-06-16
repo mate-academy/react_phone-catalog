@@ -48,9 +48,14 @@
   flex-shrink: 0;
 }
 
+.cardTitleLink {
+  text-decoration: none;
+  color: vars.$primary-color;
+}
+
 .cardTitle {
   @include mixins.text-style('body', false);
-  
+
   color: vars.$primary-color;
   word-break: break-word;
 }
