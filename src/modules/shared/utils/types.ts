@@ -1,5 +1,7 @@
 export type CategoryType = 'phones' | 'tablets' | 'accessories';
 
+export type SupportedLanguage = 'en' | 'uk';
+
 export enum SortType {
   Age = 'age',
   Title = 'title',
