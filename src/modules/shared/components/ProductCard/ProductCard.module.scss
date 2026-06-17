@@ -14,7 +14,7 @@
 
 .imgContainer {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 4;
 }
 
 .img {
@@ -43,6 +43,7 @@
 
 .fullPrice {
   @include mixins.text-style('h3', false);
+
   font-weight: 600;
   color: vars.$secondary-color;
   text-decoration: line-through;
@@ -58,6 +59,7 @@
 .spec {
   display: flex;
   justify-content: space-between;
+  
   @include mixins.text-style('small', false);
 
   &Title {
