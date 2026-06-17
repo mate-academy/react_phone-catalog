@@ -1,0 +1,7 @@
+@import './reset.scss';
+@import './variables.scss';
+
+body {
+  font-family: Mont, sans-serif;
+  background: var(--gray);
+}

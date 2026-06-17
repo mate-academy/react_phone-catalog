@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 // import ArrowLeft from './arrow-left.svg?react';
 import styles from './Banner.module.scss';
+import { asset } from '../../utils/paths';
 
 export const Banner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -10,16 +11,16 @@ export const Banner = () => {
 
   const slides = [
     {
-      desktop: '/img/banner-phones.png',
-      mobile: '/img/banner-tablets-mobile.png',
+      desktop: 'img/banner-iPhone14Pro.png',
+      mobile: 'img/banner-tablets-mobile.png',
     },
     {
-      desktop: '/img/banner-iPhone14Pro.png',
-      mobile: '/img/banner-iPhone14Pro-mobile.png',
+      desktop: 'img/banner-phones.png',
+      mobile: 'img/banner-iPhone14Pro-mobile.png',
     },
     {
-      desktop: '/img/banner-tablets.png',
-      mobile: '/img/banner-phones-mobile.png',
+      desktop: 'img/banner-tablets.png',
+      mobile: 'img/banner-phones-mobile.png',
     },
   ];
 
@@ -90,7 +91,7 @@ export const Banner = () => {
             />
 
             <img
-              src={slides[currentSlide].desktop}
+              src={asset(slides[currentSlide].desktop)}
               className={styles.bannerImg}
               alt={`banner-${currentSlide + 1}`}
             />

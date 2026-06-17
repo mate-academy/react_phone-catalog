@@ -1,26 +1,46 @@
 .slider {
   width: 100%;
-  max-width: 1136px;
-  margin: 0 auto;
+  // max-width: 1136px;
+  // margin: 0 auto;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 24px;
 }
 
-.viewport {
-  width: 100%;
-  overflow: hidden;
-}
-
-.track {
+.buttons {
   display: flex;
   gap: 16px;
-  transition: transform 0.3s ease;
-  width: max-content; /* 🔥 ВАЖЛИВО */
 }
 
-.slide {
-  flex: 0 0 auto;
-  width: 260px;
+.buttons button {
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid var(--elements);
+  background: var(--white);
+
+  cursor: pointer;
 }
 
-// .wrapperSlider{
-//   overflow: hidden;
-// }
+:global(.swiper) {
+  width: 100%;
+  // overflow: hidden;
+}
+
+:global(.swiper-wrapper) {
+  display: flex;
+}
+
+:global(.swiper-slide) {
+  // flex-shrink: 0;
+  // width: auto;
+  // display: flex;
+  height: auto;
+}
+
+
+

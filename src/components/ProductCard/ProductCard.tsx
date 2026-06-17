@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './ProductCard.module.scss';
+import { asset } from '../../utils/paths';
 
 type Props = {
   title: string;
@@ -18,38 +19,41 @@ export const ProductCard: React.FC<Props> = ({
   capacity,
   ram,
 }) => {
-  // const selectedPhone = phones.find(phone => phone.color === selectedColor);
-  // const image = selectedPhone?.images[0];
-  // const phone = phones.find(p => p.color === color);
-  // const image = phone?.images[0];
   const [isFavorite, setIsFavorite] = useState(false);
 
   return (
     <article className={styles.card}>
-      <div className={styles.image}>
-        {image ? <img src={image} alt={title} /> : <span>No image</span>}
+      <div className={styles.top}>
+        <div className={styles.image}>
+          {image ? (
+            <img src={asset(image)} alt={title} />
+          ) : (
+            <span>No image</span>
+          )}
+        </div>
+
+        <h3 className={styles.title}>{title}</h3>
       </div>
+      <div className={styles.info}>
+        <p className={styles.price}>${price}</p>
 
-      <h3 className={styles.title}>{title}</h3>
+        <ul className={styles.specs}>
+          <li className={styles.spec}>
+            <span>Screen</span>
+            <span>{screen}</span>
+          </li>
 
-      <p className={styles.price}>${price}</p>
+          <li className={styles.spec}>
+            <span>Capacity</span>
+            <span>{capacity}</span>
+          </li>
 
-      <ul className={styles.specs}>
-        <li className={styles.spec}>
-          <span>Screen</span>
-          <span>{screen}</span>
-        </li>
-
-        <li className={styles.spec}>
-          <span>Capacity</span>
-          <span>{capacity}</span>
-        </li>
-
-        <li className={styles.spec}>
-          <span>RAM</span>
-          <span>{ram}</span>
-        </li>
-      </ul>
+          <li className={styles.spec}>
+            <span>RAM</span>
+            <span>{ram}</span>
+          </li>
+        </ul>
+      </div>
 
       <div className={styles.cardButtons}>
         <button className={styles.button}>Add to cart</button>

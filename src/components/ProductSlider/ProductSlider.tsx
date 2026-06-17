@@ -1,12 +1,22 @@
-import { useEffect, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper';
+// import { Navigation } from 'swiper/modules';
 import styles from './ProductSlider.module.scss';
+
+import 'swiper/css';
+// import 'swiper/css/navigation';
+
 import { ProductCard } from '../ProductCard/ProductCard';
+import { useRef } from 'react';
 
 type Product = {
   id: string;
   title: string;
   price: number;
   image?: string;
+  screen: string;
+  capacity: string;
+  ram: string;
 };
 
 type Props = {
@@ -15,86 +25,46 @@ type Props = {
 };
 
 export const ProductSlider: React.FC<Props> = ({ title, products }) => {
-  const [index, setIndex] = useState(0);
-
-  const [visibleCards, setVisibleCards] = useState(4);
-  const [cardWidth, setCardWidth] = useState(260);
-
-  const maxIndex = Math.max(0, products.length - visibleCards);
-
-  const handlePrev = () => {
-    setIndex(prev => Math.max(prev - 1, 0));
-  };
-
-  const handleNext = () => {
-    setIndex(prev => Math.min(prev + 1, maxIndex));
-  };
-
-  // const getVisibleCards = (width: number) => {
-  //   if (width >= 1200) {
-  //     return 4;
-  //   }
-
-  //   if (width >= 640) {
-  //     return 2.5;
-  //   }
-
-  //   return 1.3;
-  // };
-
-  useEffect(() => {
-    const update = () => {
-      const width = window.innerWidth;
-
-      if (width >= 1200) {
-        setVisibleCards(4);
-        setCardWidth(260);
-      } else if (width >= 640) {
-        setVisibleCards(2.5);
-        setCardWidth(260);
-      } else {
-        setVisibleCards(1.3);
-        setCardWidth(220);
-      }
-    };
-
-    update();
-    window.addEventListener('resize', update);
-
-    return () => window.removeEventListener('resize', update);
-  }, []);
-
-  // const maxIndex = Math.max(0, products.length - Math.ceil(visibleCards));
+  const swiperRef = useRef<SwiperType | null>(null);
+  // console.log(products);
 
   return (
     <section className={styles.slider}>
       <div className={styles.header}>
-        <h2>{title}</h2>
+        <h2 className={styles.title}>{title}</h2>
 
         <div className={styles.buttons}>
-          <button onClick={handlePrev} disabled={index === 0}>
+          <button type="button" onClick={() => swiperRef.current?.slidePrev()}>
             ←
           </button>
-          <button onClick={handleNext} disabled={index === maxIndex}>
+
+          <button type="button" onClick={() => swiperRef.current?.slideNext()}>
             →
           </button>
         </div>
       </div>
 
-      <div className={styles.viewport}>
-        <div
-          className={styles.track}
-          style={{
-            transform: `translateX(-${index * (cardWidth + 16)}px)`,
-          }}
-        >
-          {products.map(product => (
-            <div className={styles.slide} key={product.id}>
-              <ProductCard {...product} />
-            </div>
-          ))}
-        </div>
-      </div>
+      <Swiper
+        // modules={[Navigation]}
+        onSwiper={swiper => {
+          swiperRef.current = swiper;
+        }}
+        // navigation
+        spaceBetween={16}
+        // slidesPerView={4}
+        breakpoints={{
+          320: { slidesPerView: 1.3 },
+          640: { slidesPerView: 2.5 },
+          1200: { slidesPerView: 4 },
+        }}
+      >
+        {/* {products.slice(0, 20).map(product => ( */}
+        {products.map(product => (
+          <SwiperSlide key={product.id}>
+            <ProductCard {...product} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </section>
   );
 };

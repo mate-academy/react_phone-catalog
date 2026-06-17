@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Navbar.module.scss';
 import { useState } from 'react';
+import { asset } from '../../utils/paths';
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +12,7 @@ export const Navbar = () => {
         <div className={styles.headerLeft}>
           <NavLink to="/" className={styles.logo}>
             <img
-              src="/img/icons/Logo.svg"
+              src={asset('img/icons/Logo.svg')}
               alt="logo"
               className={styles.logoImg}
             />

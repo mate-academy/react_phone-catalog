@@ -3,10 +3,13 @@
   justify-content: space-between;
   align-items: center;
 
-  border-bottom: 1px solid #e2e6e9;
+  // border-bottom: 1px solid #e2e6e9;
   color: #89939a;
   position: relative;
   z-index: 1100;
+  background-color: var(--white);
+  box-shadow: 0px 1px 0px 0px #E2E6E9;
+
 }
 
 .headerLeft {
