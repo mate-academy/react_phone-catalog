@@ -1,31 +1,56 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Link, useSearchParams } from 'react-router-dom';
 
-import { FullProduct } from '../../types/Alltypes';
+import { Products } from '../../types/Alltypes';
 import { getData } from '../../fetch/httpClient';
 import styles from './Phones.module.scss';
-import { CartsHot } from '../../Functional/HotPrice/CartsHot';
+import { ProductCarts } from '../../Functional/ProductCart/ProductCarts';
+
 type Props = {
-  phone: FullProduct;
+  phone?: Products[];
 };
 
-export const Phones: React.FC<Props> = ({ phone }) => {
-  const [phones, setPhones] = useState<FullProduct[]>([]);
+export const Phones: React.FC<Props> = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [phones, setPhones] = useState<Products[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [sortType, setSortType] = useState('');
+
+  const getSortedPhones = () => {
+    const sorted = [...phones];
+
+    switch (sortType) {
+      case 'age':
+        return sorted.sort((a, b) => b.year - a.year);
+      case 'name':
+        return sorted.sort((a, b) => a.name.localeCompare(b.name));
+      case 'price':
+        return sorted.sort((a, b) => a.price - b.price);
+      default:
+        return sorted;
+    }
+  };
+
+  const displayedPhones = getSortedPhones();
 
   useEffect(() => {
-    getData<FullProduct[]>('./api/phones.json')
+    getData<Products[]>('./api/phones.json')
       .then(data => setPhones(data))
       .catch(() => setError('Something went wrong'))
       .finally(() => setLoading(false));
   }, []);
 
-  // eslint-disable-next-line curly
-  if (loading) return <div>Loading...</div>;
-  // if (error) return <div>{error} <button onClick={() => window.location.reload()}>Retry</button></div>;
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  // if (error) {
+  //   return (
+  //     <div>
+  //       {error} <button onClick={() => window.location.reload()}>Retry</button>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className={styles.containerPhones}>
@@ -37,43 +62,40 @@ export const Phones: React.FC<Props> = ({ phone }) => {
           <span className={styles.homeGoTo}>Phones</span>
         </button>
       </Link>
-      <h1 className="title">Mobile phones</h1>
-      <p className={styles.phonesModels}>95 Models</p>
-      <div className={styles.blockBySort}>
-        Sort by
-        <button></button>
-      </div>
-      <div className={styles.blockItemsOnPage}>
-        Items on page
-        <button></button>
-      </div>
-      <div className={styles.swiperContainer}>
-        <Swiper
-          modules={[Navigation]}
-          spaceBetween={16}
-          slidesPerView={4}
-          pagination={{
-            clickable: true,
-          }}
-          breakpoints={{
-            320: { slidesPerView: 2, spaceBetween: 16 },
-            640: { slidesPerView: 3, spaceBetween: 16 },
-            1200: { slidesPerView: 4, spaceBetween: 16 },
-          }}
-          loop={false}
-          className={styles.swiperNewBlock}
-          navigation={{
-            prevEl: '#phone-prev-button',
-            nextEl: '#phone-next-button',
-          }}
+
+      <h1 className={styles.title}>Mobile phones</h1>
+
+      <p className={styles.phonesModels}>{phones.length} Models</p>
+
+      <div className={styles.bySortedBlock}>
+        <div className={styles.bySorted}>Sort by</div>
+        <select
+          className={styles.select}
+          value={sortType}
+          onChange={e => setSortType(e.target.value)}
         >
-          {phones.length > 0 &&
-            phones.map(phone => (
-              <SwiperSlide key={phone.namespaceId}>
-                <CartsHot />
-              </SwiperSlide>
-            ))}
-        </Swiper>
+          <option value="age">Newest</option>
+          <option value="title">Alphabetically</option>
+          <option value="price">Cheapest</option>
+        </select>
+      </div>
+
+      <div className={styles.byFilteredBlock}>
+        <div className={styles.byItems}>Items on page</div>
+        <select className={styles.select}>
+          <option value="4">4</option>
+          <option value="8">8</option>
+          <option value="16">16</option>
+          <option value="all">All</option>
+        </select>
+      </div>
+
+      <div className={styles.catalogGrid}>
+        {displayedPhones.map(phone => (
+          <div key={phone.itemId} className={styles.gridItem}>
+            <ProductCarts product={phone} />
+          </div>
+        ))}
       </div>
     </div>
   );

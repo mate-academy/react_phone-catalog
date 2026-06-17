@@ -5,7 +5,7 @@ import { Products } from '../../types/Alltypes';
 import styles from './HotPrice.module.scss';
 import React, { useState, useEffect } from 'react';
 import { getData } from '../../fetch/httpClient';
-import { CartsHot } from './CartsHot';
+import { ProductCarts } from '../ProductCart/ProductCarts';
 import { useCart } from '../../context/CartContext';
 
 export const HotPrice: React.FC = () => {
@@ -72,7 +72,7 @@ export const HotPrice: React.FC = () => {
           {withDiscount.length > 0 &&
             withDiscount.map(product => (
               <SwiperSlide key={product.id}>
-                <CartsHot product={product} />
+                <ProductCarts product={product} />
               </SwiperSlide>
             ))}
         </Swiper>

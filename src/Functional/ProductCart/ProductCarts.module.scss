@@ -42,6 +42,12 @@
   -webkit-box-orient: vertical;
 }
 
+.cardPriceGoup {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+}
 
 .cardfullPrice {
   font-weight: 800;
@@ -50,15 +56,23 @@
   letter-spacing: 0;
 }
 
-// .cardfullPrice{
-//   font-weight: 600;
-//   font-size: 22px;
-//   line-height: 100%;
-//   letter-spacing: 0;
-//   color: #89939A;
-//  text-decoration-line: line-through;
-//      padding-left: 0;
-// }
+.cardfullPriceHot{
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #89939A;
+  text-decoration-line: line-through;
+  padding-left: 0;
+}
+
+.cardPriceHot{
+font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0;
+}
+
 
 .cardSpes {
     border-top: 1px solid #E2E6E9;

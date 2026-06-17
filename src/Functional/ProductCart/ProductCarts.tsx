@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './ProductCarts.module.scss';
 import { Products } from '../../types/Alltypes';
+
 import React from 'react';
 
 type Props = {
@@ -12,15 +13,27 @@ export const ProductCarts: React.FC<Props> = ({ product }) => {
     return null;
   }
 
-  const { category, itemId, fullPrice, image, name, screen, capacity, ram } =
-    product;
+  const {
+    category,
+    itemId,
+    fullPrice,
+    image,
+    name,
+    price,
+    screen,
+    capacity,
+    ram,
+  } = product;
 
   return (
     <article className={styles.container}>
       <Link to={`/${category}/${itemId}`} className={styles.productCart}>
         <img className={styles.cardPhoto} src={image} alt={name} />
         <h2 className={styles.productCart}>{name}</h2>
-        <span className={styles.cardfullPrice}>${fullPrice}</span>
+        <div className={styles.cardPriceGoup}>
+          <span className={styles.cardPriceHot}>${price}</span>
+          <span className={styles.cardfullPriceHot}>${fullPrice}</span>
+        </div>
         <div className={styles.cardSpes}>
           <div className={styles.screen}>
             <span>Screen</span>
