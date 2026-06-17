@@ -17,9 +17,15 @@ type Props = {
   products: Product[];
   title: SliderTitles;
   isLoading: boolean;
+  showDiscount?: boolean;
 };
 
-export const ProductsSlider = ({ products, title, isLoading }: Props) => {
+export const ProductsSlider = ({
+  products,
+  title,
+  isLoading,
+  showDiscount,
+}: Props) => {
   const prevButtonRef = useRef<HTMLButtonElement | null>(null);
   const nextButtonRef = useRef<HTMLButtonElement | null>(null);
 
@@ -97,7 +103,7 @@ export const ProductsSlider = ({ products, title, isLoading }: Props) => {
             ))}
           {products.map(product => (
             <SwiperSlide key={product.id}>
-              <ProductCard product={product} />
+              <ProductCard product={product} showDiscount={showDiscount} />
             </SwiperSlide>
           ))}
         </Swiper>

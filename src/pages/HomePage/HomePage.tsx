@@ -70,6 +70,7 @@ export const HomePage = () => {
         products={hotPrices}
         title="Hot prices"
         isLoading={isLoading}
+        showDiscount={true}
       />
     </div>
   );

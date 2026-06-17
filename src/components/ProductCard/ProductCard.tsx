@@ -7,9 +7,10 @@ import { Link } from 'react-router-dom';
 
 type Props = {
   product: Product;
+  showDiscount?: boolean;
 };
 
-export const ProductCard = ({ product }: Props) => {
+export const ProductCard = ({ product, showDiscount }: Props) => {
   const isDiscountPresent = product.fullPrice !== product.price;
 
   return (
@@ -36,7 +37,7 @@ export const ProductCard = ({ product }: Props) => {
         <span
           className={productCardStyles.newPrice}
         >{`$${product.price}`}</span>
-        {isDiscountPresent && (
+        {isDiscountPresent && showDiscount && (
           <span className={productCardStyles.oldPrice}>
             {`$${product.fullPrice}`}
           </span>
