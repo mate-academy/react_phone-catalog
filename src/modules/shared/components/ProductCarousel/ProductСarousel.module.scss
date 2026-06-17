@@ -33,6 +33,10 @@
   display: none;
 }
 
+.container > * {
+  max-width: 280px;
+}
+
 .newModelsSection {
   display: flex;
   flex-direction: column;
