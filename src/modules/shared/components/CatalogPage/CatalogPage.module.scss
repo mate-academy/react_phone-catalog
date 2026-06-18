@@ -16,7 +16,7 @@
   display: inline-block;
   width: 16px;
   height: 16px;
-  background: url('/img/Home.svg') center no-repeat;
+  background: url('img/Home.svg') center no-repeat;
   transition: opacity 0.2s ease;
 
   &:hover {
@@ -28,7 +28,7 @@
   width: 16px;
   height: 16px;
   margin: 0 8px;
-  background: url('/img/arrow-right.svg') center no-repeat;
+  background: url('img/arrow-right.svg') center no-repeat;
   opacity: 0.5;
 }
 

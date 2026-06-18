@@ -30,13 +30,13 @@ export const ProductsSlider: React.FC<Props> = ({
             id={prevButtonId}
             className={`${styles.pageButton} ${styles.prev}`}
           >
-            <img src="/img/arrow-left-pag.svg" alt="Previous" />
+            <img src="img/arrow-left-pag.svg" alt="Previous" />
           </button>
           <button
             id={nextButtonId}
             className={`${styles.pageButton} ${styles.next}`}
           >
-            <img src="/img/arrow-right-pag.svg" alt="Previous" />
+            <img src="img/arrow-right-pag.svg" alt="Previous" />
           </button>
         </div>
       </div>

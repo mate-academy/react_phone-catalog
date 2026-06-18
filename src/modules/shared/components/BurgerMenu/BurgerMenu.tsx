@@ -64,14 +64,14 @@ export const BurgerMenu: React.FC<Props> = ({ isOpen, onClose }) => {
           onClick={onClose}
         >
           <div className={styles.iconWrapper}>
-            <img src={'/img/Favourites.svg'} alt="Favourites" />
+            <img src={'img/Favourites.svg'} alt="Favourites" />
             {favCount > 0 && <span className={styles.badge}>{favCount}</span>}
           </div>
         </NavLink>
 
         <NavLink to="/cart" className={getIconButtonClass} onClick={onClose}>
           <div className={styles.iconWrapper}>
-            <img src={'/img/Cart.svg'} alt="Cart" />
+            <img src={'img/Cart.svg'} alt="Cart" />
             {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
           </div>
         </NavLink>

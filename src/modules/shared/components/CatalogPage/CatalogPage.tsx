@@ -123,7 +123,7 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
                   changeSearchParam('page', String(currentPage - 1))
                 }
               >
-                <img src="/img/arrow-left-pag.svg" alt="Previous" />
+                <img src="img/arrow-left-pag.svg" alt="Previous" />
               </button>
 
               {Array.from({ length: totalPages }, (_, index) => index + 1)
@@ -160,7 +160,7 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
                   changeSearchParam('page', String(currentPage + 1))
                 }
               >
-                <img src="/img/arrow-right-pag.svg" alt="Next" />
+                <img src="img/arrow-right-pag.svg" alt="Next" />
               </button>
             </div>
           )}

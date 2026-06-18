@@ -31,7 +31,7 @@
 }
 
 .menuIcon {
-  background-image: url('/img/Menu.svg');
+  background-image: url('img/Menu.svg');
   width: 48px;
   height: 100%;
   background-color: transparent;
@@ -45,7 +45,7 @@
   transition: background-image 0.2s ease;
 
   &.activeBurger {
-    background-image: url('/img/Close.svg') !important;
+    background-image: url('img/Close.svg') !important;
   }
 }
 
@@ -138,12 +138,12 @@
   }
 
   .iconFavourite {
-    background-image: url('/img/Favourites.svg');
+    background-image: url('img/Favourites.svg');
 
   }
 
   .iconCart {
-    background-image: url('/img/Cart.svg');
+    background-image: url('img/Cart.svg');
   }
 
   .badge {

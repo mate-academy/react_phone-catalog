@@ -25,7 +25,7 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <Link to="/" className={styles.logo} onClick={closeMenu}>
-          <img src="/img/Logo.svg" alt="Logo" className={styles.logoLink} />
+          <img src="img/Logo.svg" alt="Logo" className={styles.logoLink} />
         </Link>
 
         <nav className={styles.nav}>

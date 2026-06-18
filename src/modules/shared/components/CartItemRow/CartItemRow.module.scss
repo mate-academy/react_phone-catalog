@@ -13,7 +13,7 @@
 .removeButton {
   width: 16px;
   height: 16px;
-  background-image: url('/img/Close.svg');
+  background-image: url('img/Close.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-color: transparent;
@@ -74,17 +74,17 @@
     cursor: not-allowed;
     border-color: #e2e6e9;
   }
-  
+
   &:hover:not(:disabled) {
     border-color: #313237;
   }
 
   &.minus {
-    background-image: url('/img/Minus.svg');
+    background-image: url('img/Minus.svg');
   }
 
   &.plus {
-    background-image: url('/img/Plus.svg');
+    background-image: url('img/Plus.svg');
   }
 }
 
