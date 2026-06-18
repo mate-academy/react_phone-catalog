@@ -104,10 +104,10 @@ export const ProductDetailsPage: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.breadcrumbs}>
           <Link to="/" className={styles.homeLink}>
-            <img src={`${import.meta.env.BASE_URL}img/Home.svg`} alt="Home" />
+            <img src={`img/Home.svg`} alt="Home" />
           </Link>
           <img
-            src={`${import.meta.env.BASE_URL}img/arrow-right.svg`}
+            src={`img/arrow-right.svg`}
             alt="Arrow"
             className={styles.arrow}
           />
@@ -116,7 +116,7 @@ export const ProductDetailsPage: React.FC = () => {
             {category?.slice(1)}
           </Link>
           <img
-            src={`${import.meta.env.BASE_URL}img/arrow-right.svg`}
+            src={`img/arrow-right.svg`}
             alt="Arrow"
             className={styles.arrow}
           />
@@ -128,10 +128,7 @@ export const ProductDetailsPage: React.FC = () => {
           className={styles.backButton}
           onClick={() => navigate(-1)}
         >
-          <img
-            src={`${import.meta.env.BASE_URL}img/arrow-left.svg`}
-            alt="Back"
-          />
+          <img src={`img/arrow-left.svg`} alt="Back" />
           Back
         </button>
 
