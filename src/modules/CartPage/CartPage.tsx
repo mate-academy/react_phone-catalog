@@ -30,7 +30,7 @@ export const CartPage = () => {
         <div className={styles.backButtonWrapper}>
           <Link to="/phones" className={styles.backButton}>
             <img
-              src="/img/arrow-left.svg"
+              src="img/arrow-left.svg"
               alt="Back"
               className={styles.backArrow}
             />

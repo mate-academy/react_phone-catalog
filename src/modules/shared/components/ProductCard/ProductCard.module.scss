@@ -146,7 +146,7 @@
   height: 40px;
   border: 1px solid #e2e6e9;
   background-color: #fff;
-  background-image: url('/img/Favourites.svg');
+  background-image: url('img/Favourites.svg');
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -159,6 +159,6 @@
 
   &.isFavourite {
     border-color: #e2e6e9;
-    background-image: url('/img/Added.svg');
+    background-image: url('img/Added.svg');
   }
 }

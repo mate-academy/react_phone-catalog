@@ -18,19 +18,19 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
       title: 'Mobile phones',
       link: '/phones',
       count: `${phonesCount} models`,
-      image: '/img/category-phones.webp',
+      image: 'img/category-phones.webp',
     },
     {
       title: 'Tablets',
       link: '/tablets',
       count: `${tabletsCount} models`,
-      image: '/img/category-tablets.webp',
+      image: 'img/category-tablets.webp',
     },
     {
       title: 'Accessories',
       link: '/accessories',
       count: `${accessoriesCount} models`,
-      image: '/img/category-accessories.webp',
+      image: 'img/category-accessories.webp',
     },
   ];
 

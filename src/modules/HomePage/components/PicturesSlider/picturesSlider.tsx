@@ -30,7 +30,7 @@ export const PicturesSlider: React.FC = () => {
       >
         <SwiperSlide className={styles.slide}>
           <img
-            src="/img/slider1.png"
+            src="img/slider1.png"
             alt="iPhone 17 Pro"
             className={styles.bannerImg}
           />
@@ -48,7 +48,7 @@ export const PicturesSlider: React.FC = () => {
 
         <SwiperSlide className={styles.slide}>
           <img
-            src="/img/slider2.png"
+            src="img/slider2.png"
             alt="Tablets Banner"
             className={styles.bannerImg}
           />
@@ -65,7 +65,7 @@ export const PicturesSlider: React.FC = () => {
 
         <SwiperSlide className={styles.slide}>
           <img
-            src="/img/slider3.png"
+            src="img/slider3.png"
             alt="Accessories Banner"
             className={styles.bannerImg}
           />

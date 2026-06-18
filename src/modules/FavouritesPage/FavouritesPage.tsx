@@ -15,10 +15,10 @@ export const FavouritesPage: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.breadcrumbs}>
           <Link to="/" className={styles.homeLink}>
-            <img src="/img/Home.svg" alt="Home" />
+            <img src="img/Home.svg" alt="Home" />
           </Link>
           <img
-            src="/img/arrow-right.svg"
+            src="img/arrow-right.svg"
             alt="Arrow right"
             className={styles.arrow}
           />
