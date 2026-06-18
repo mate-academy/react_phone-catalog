@@ -14,8 +14,8 @@ export const Action = () => {
   const { favourites, cart } = useContext(StateContext);
 
   const icons = {
-    heart: '/icon/Vector (Stroke).png',
-    cart: '/icon/Shopping bag (Cart).png',
+    heart: 'icon/Vector (Stroke).png',
+    cart: 'icon/Shopping bag (Cart).png',
   };
 
   const actions: Props[] = [

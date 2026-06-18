@@ -68,7 +68,7 @@ export const SwiperProduct: React.FC<Props> = ({ products, title }) => {
             `}
           >
             <img
-              src="/icon/arrow-left.svg"
+              src="icon/arrow-left.svg"
               className={style['swiper-product__btn-icon']}
               alt="PrevImage"
             />
@@ -83,7 +83,7 @@ export const SwiperProduct: React.FC<Props> = ({ products, title }) => {
             `}
           >
             <img
-              src="/icon/arrow-right.svg"
+              src="icon/arrow-right.svg"
               className={style['swiper-product__btn-icon']}
               alt="NextImage"
             />

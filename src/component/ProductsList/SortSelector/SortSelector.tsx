@@ -59,7 +59,7 @@ export const SortSelector: React.FC<Props> = ({ title, type, items }) => {
           >
             <p className={style.selector__text}>{selectedValue.name}</p>
             <img
-              src="/icon/Arrow Down.png"
+              src="icon/Arrow Down.png"
               alt="Toggle dropdown"
               className={style.selector__icon}
             />

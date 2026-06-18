@@ -82,7 +82,7 @@ export const Pagination: React.FC<Props> = ({
           disabled={firstPage}
         >
           <img
-            src="/icon/ArrowLeft white.svg"
+            src="icon/ArrowLeft white.svg"
             alt="prev page"
             className={style.pagination__icon}
           />
@@ -117,7 +117,7 @@ export const Pagination: React.FC<Props> = ({
             disabled={lastPage}
           >
             <img
-              src="/icon/ArrowRight white.svg"
+              src="icon/ArrowRight white.svg"
               alt="next page"
               className={style.pagination__icon}
             />

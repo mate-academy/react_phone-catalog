@@ -57,7 +57,7 @@
     "update": "mate-scripts update",
     "postinstall": "npm run update && cypress verify",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "cd dist && git init && git add -A && git commit -m \"Deploy\" && git push -f https://github.com/annaskobara/react_phone-catalog.git master:gh-pages"
   },
   "browserslist": {
     "production": [

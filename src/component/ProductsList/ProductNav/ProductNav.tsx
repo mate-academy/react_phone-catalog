@@ -30,7 +30,7 @@ export const ProductNav = () => {
       <li className={style.productNav__item}>
         <Link to="/" className={style.productNav__link}>
           <img
-            src="/icon/Home.png"
+            src="icon/Home.png"
             alt="Home"
             className={style.productNav__logo}
           />

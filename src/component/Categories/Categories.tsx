@@ -10,7 +10,7 @@ export const Categories = () => {
         title: 'Mobile phones',
         path: '/phones',
         count: 0,
-        img: '/img/category-phones.png', // Виправлено шлях
+        img: 'img/category-phones.png',
         category: 'phones',
         background: '#6D6474', // Колір фону для телефонів
       },
@@ -18,17 +18,17 @@ export const Categories = () => {
         title: 'Tablets',
         path: '/tablets',
         count: 0,
-        img: '/img/category-tablets.png', // Виправлено шлях
+        img: 'img/category-tablets.png',
         category: 'tablets',
-        background: '#8D8D92', // Колір фону для планшетів
+        background: '#8D8D92',
       },
       {
         title: 'Accessories',
         path: '/accessories',
         count: 0,
-        img: '/img/category-accessories.png', // Виправлено шлях
+        img: 'img/category-accessories.png',
         category: 'accessories',
-        background: '#973C56', // Колір фону для аксесуарів
+        background: '#973C56',
       },
     ],
     [],
@@ -67,7 +67,7 @@ export const Categories = () => {
                   src={img}
                   className={style.categories__image}
                   alt={title}
-                  style={{ backgroundColor: background }} // Динамічний фон
+                  style={{ backgroundColor: background }}
                 />
                 <h4 className={style.categories__subtitle}>{title}</h4>
                 <p className={style.categories__info}>{count} models</p>

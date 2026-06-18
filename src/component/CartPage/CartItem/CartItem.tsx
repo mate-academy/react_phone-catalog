@@ -37,7 +37,7 @@ export const CartItem = ({ product }: CartItemProps) => {
           onClick={handleRemoveItem}
         >
           <img
-            src="/icon/Union.png"
+            src="icon/Union.png"
             alt="Delete"
             className={style['cart-item__close']}
           />
@@ -59,7 +59,7 @@ export const CartItem = ({ product }: CartItemProps) => {
             disabled={quantity === 1}
           >
             <img
-              src="/icon/Minus.png"
+              src="icon/Minus.png"
               alt="Minus"
               className={style['cart-item__image--count']}
             />
@@ -73,7 +73,7 @@ export const CartItem = ({ product }: CartItemProps) => {
             onClick={increaseQuantity}
           >
             <img
-              src="/icon/Plus.png"
+              src="icon/Plus.png"
               alt="Plus"
               className={style['cart-item__image--count']}
             />

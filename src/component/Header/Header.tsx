@@ -30,7 +30,7 @@ export const Headers: React.FC = () => {
         <div className={style.header__container}>
           <NavLink to="/" className={style.header__logoLink}>
             <img
-              src="/img/Logo/Logo.png"
+              src="img/Logo/Logo.png"
               alt="Logo"
               className={style.header__logo}
             />
@@ -38,9 +38,7 @@ export const Headers: React.FC = () => {
 
           <div className={style.header__burger}>
             <img
-              src={
-                burgerOpen ? '/icon/Icons/Close.png' : '/icon/Icons/Menu.png'
-              }
+              src={burgerOpen ? 'icon/Icons/Close.png' : 'icon/Icons/Menu.png'}
               alt={burgerOpen ? 'Close menu' : 'Open menu'}
               className={style.header__icon}
               onClick={toggleMenu}

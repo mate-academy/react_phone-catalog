@@ -20,7 +20,7 @@ export const Footer = () => {
     <footer className={style.footer}>
       <NavLink to="/" className={style.header__logoLink}>
         <img
-          src="/img/Logo/Logo.png"
+          src="img/Logo/Logo.png"
           alt="Logo"
           className={style.footer__logo}
         />
