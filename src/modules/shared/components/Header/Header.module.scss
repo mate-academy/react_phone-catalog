@@ -144,7 +144,7 @@
   .badge {
     position: absolute;
     top: 12px;
-    right: 12px;
+    right: 16px;
     background-color: #eb5757;
     color: #fff;
     font-size: 9px;
@@ -174,25 +174,6 @@
       height: 16px;
       display: block;
     }
-  }
-
-  .badge {
-    position: absolute;
-    top: -6px;
-    right: -6px;
-    background-color: #eb5757;
-    color: #fff;
-    font-size: 9px;
-    font-weight: 700;
-    min-width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 3px;
-    box-sizing: border-box;
-    border: 1px solid #fff;
   }
 }
 

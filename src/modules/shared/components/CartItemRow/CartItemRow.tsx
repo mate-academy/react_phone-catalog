@@ -21,7 +21,9 @@ export const CartItemRow: React.FC<Props> = ({ item }) => {
         className={styles.removeButton}
         onClick={() => dispatch(removeFromCart(itemId))}
         aria-label={`Remove ${name} from cart`}
-      />
+      >
+        <img src={`img/Close.svg`} alt="Remove" />
+      </button>
 
       <img src={`${image}`} alt={name} className={styles.image} />
 
@@ -34,14 +36,20 @@ export const CartItemRow: React.FC<Props> = ({ item }) => {
           disabled={quantity <= 1}
           onClick={() => dispatch(changeQuantity({ itemId, delta: -1 }))}
           aria-label="Decrease quantity"
-        />
+        >
+          <img src={`img/Minus.svg`} alt="Minus" />
+        </button>
+
         <span className={styles.quantityNumber}>{quantity}</span>
+
         <button
           type="button"
           className={`${styles.quantityButton} ${styles.plus}`}
           onClick={() => dispatch(changeQuantity({ itemId, delta: 1 }))}
           aria-label="Increase quantity"
-        />
+        >
+          <img src={`img/Plus.svg`} alt="Plus" />
+        </button>
       </div>
 
       <span className={styles.price}>${price * quantity}</span>

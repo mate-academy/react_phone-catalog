@@ -32,7 +32,7 @@ export const ProductDetailsPage: React.FC = () => {
   useEffect(() => {
     setLoading(true);
 
-    fetch(`${import.meta.env.BASE_URL}api/${category}.json`)
+    fetch(`api/${category}.json`)
       .then(res => {
         if (!res.ok) {
           throw new Error('Category file not found');

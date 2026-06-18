@@ -276,15 +276,15 @@
   display: block;
   transition: all 0.2s ease;
 
+  &:active {
+    transform: scale(0.95);
+  }
+  
   &:hover:not(.isFavourite) {
     filter: brightness(0);
     transform: scale(1.02);
   }
-  &:active {
-    transform: scale(0.95);
-  }
 }
-
 
 .shortSpecs,
 .fullSpecsList {
