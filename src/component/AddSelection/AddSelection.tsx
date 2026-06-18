@@ -56,13 +56,13 @@ export const AddSelection: React.FC<Props> = ({ product, className }) => {
       >
         {isInFavourite ? (
           <img
-            src="/icon/Favourites Filled Yelow.svg"
+            src="icon/Favourites Filled Yelow.svg"
             alt="liked"
             className={styles['add-selection__icon']}
           />
         ) : (
           <img
-            src="/icon/Vector (Stroke).png"
+            src="icon/Vector (Stroke).png"
             alt="unliked"
             className={styles['add-selection__icon']}
           />
