@@ -13,11 +13,16 @@
 }
 
 .homeLink {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url('img/Home.svg') center no-repeat;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition: opacity 0.2s ease;
+
+  img {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
 
   &:hover {
     opacity: 0.7;
@@ -25,11 +30,17 @@
 }
 
 .arrow {
-  width: 16px;
-  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin: 0 8px;
-  background: url('img/arrow-right.svg') center no-repeat;
-  opacity: 0.5;
+
+  img {
+    width: 16px;
+    height: 16px;
+    display: block;
+    opacity: 0.5;
+  }
 }
 
 .current {
@@ -91,7 +102,6 @@
   -moz-appearance: none;
   appearance: none;
 
-  /* 👑 ФІКС: Об'єднали background-color та картинку в одну коротку властивість */
   background: #fff
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2389939A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E")
     no-repeat right 12px center;
@@ -104,7 +114,6 @@
   }
 }
 
-/* 👑 ФІКС: Змінили хэш-айдішники (#) на класи (.) */
 .sortBySelect {
   width: 176px;
 }
@@ -129,7 +138,6 @@
   margin: 40px 0 60px;
 }
 
-/* 👑 ПОВНІСТЮ ПЕРЕЗІБРАНА ПАГІНАЦІЯ БЕЗ КОНФЛІКТІВ СПЕЦИФІЧНОСТІ */
 .pageButton {
   width: 32px;
   height: 32px;

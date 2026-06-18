@@ -56,8 +56,12 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
   return (
     <div className={styles.container}>
       <nav className={styles.breadcrumbs} aria-label="breadcrumb">
-        <Link to="/" className={styles.homeLink}></Link>
-        <span className={styles.arrow}></span>
+        <Link to="/" className={styles.homeLink}>
+          <img src="img/Home.svg" alt="Home" />
+        </Link>
+        <span className={styles.arrow}>
+          <img src="img/arrow-right.svg" alt="Arrow" />
+        </span>
         <span className={styles.current}>{title}</span>
       </nav>
 

@@ -67,10 +67,12 @@ export const Header = () => {
 
         <div className={styles.icons}>
           <Link to="/favourites" className={styles.iconFavourite}>
+            <img src="img/Heart.svg" alt="Favourites" />
             {favCount > 0 && <span className={styles.badge}>{favCount}</span>}
           </Link>
 
           <Link to="/cart" className={styles.iconCart}>
+            <img src="img/Cart.svg" alt="Cart" />
             {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
           </Link>
         </div>
