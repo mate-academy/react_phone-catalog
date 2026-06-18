@@ -45,27 +45,19 @@ export const ProductDetailsPage = () => {
     color?: string | null,
     capacity?: string | null,
   ) => {
-    const currentColor = product.color || '';
-    const currentCapacity = isPhoneOrTablet(product) ? product.capacity : null;
+    const targetColor = color || product.color;
+    const targetCapacity = capacity || (isPhoneOrTablet(product) ? product.capacity : null);
 
-    const colorParts = currentColor.toLowerCase().replace(/ /g, '-').split('-').length;
-    const capacityParts = currentCapacity
-      ? currentCapacity.toLowerCase().split('-').length
-      : 0;
-    const trimCount = colorParts + capacityParts;
+    const found = allProducts.find(item => {
+      const colorMatch = item.color === targetColor;
+      const capacityMatch = isPhoneOrTablet(item)
+        ? item.capacity === targetCapacity
+        : true;
 
-    const parts = product.id!.split('-');
-    const base = parts.slice(0, parts.length - trimCount);
+      return colorMatch && capacityMatch;
+    });
 
-    if (capacity) {
-      base.push(...capacity.toLowerCase().split(' '));
-    }
-
-    if (color) {
-      base.push(...color.toLowerCase().replace(/ /g, '-').split('-'));
-    }
-
-    return base.join('-');
+    return found?.id || product.id;
   };
 
   useEffect(() => {
@@ -161,8 +153,10 @@ export const ProductDetailsPage = () => {
       return;
     }
 
+    const itemKey = `${product.id}-${selectedColor || product.color}-${selectedCapacity || ''}`;
+
     if (isInCart) {
-      removeFromCart(product.id);
+      removeFromCart(itemKey);
     } else {
       addToCart({
         id: product.id,
@@ -527,6 +521,7 @@ export const ProductDetailsPage = () => {
           }}
         >
           {relatedProducts.map(item => {
+            const itemKey = `${item.id}-${item.color}-${isPhoneOrTablet(item) ? item.capacity : ''}`;
             const itemInCart = cart.some(c => c.id === item.id);
             const itemIsFav = favorites.includes(item.id);
 
@@ -598,7 +593,7 @@ export const ProductDetailsPage = () => {
                       }`}
                       onClick={() => {
                         if (itemInCart) {
-                          removeFromCart(item.id);
+                          removeFromCart(itemKey);
                         } else {
                           addToCart({
                             id: item.id,

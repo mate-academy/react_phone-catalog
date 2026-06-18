@@ -166,7 +166,8 @@ export default function HotPrices() {
                       );
 
                       if (inCart) {
-                        removeFromCart(phone.itemId);
+                        const itemKey = `${phone.itemId}-${phone.color}-${phone.capacity}`;
+                        removeFromCart(itemKey);
                       } else {
                         addToCart({
                           id: phone.itemId,

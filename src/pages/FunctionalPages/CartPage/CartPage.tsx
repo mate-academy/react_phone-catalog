@@ -11,6 +11,9 @@ export const CartPage = () => {
     0,
   );
 
+  const getItemKey = (id: string, color: string, capacity?: string) =>
+    `${id}-${color}-${capacity}`;
+
   if (cart.length === 0) {
     return (
       <section className="cart section">
@@ -42,18 +45,17 @@ export const CartPage = () => {
       <div className="cart__content">
         <div className="cart__items">
           {cart.map(item => {
-            // Ссылка ведёт на страницу товара: /phones/:id, /tablets/:id, /accessories/:id
+            const itemKey = getItemKey(item.id, item.color, item.capacity);
             const productLink = `/${item.category || 'phones'}/${item.id}`;
 
             return (
               <div
-                key={`${item.id}-${item.color}-${item.capacity}`}
+                key={itemKey}
                 className="cart__item"
               >
-                {/* Desktop: крестик */}
                 <button
                   className="cart__item-close"
-                  onClick={() => removeFromCart(item.id)}
+                  onClick={() => removeFromCart(itemKey)}
                 >
                   <img
                     src={`${getBaseUrl()}icons/close.svg`}
@@ -61,7 +63,6 @@ export const CartPage = () => {
                   />
                 </button>
 
-                {/* Desktop: фото */}
                 <Link to={productLink} className="cart__item-link">
                   <img
                     src={item.image}
@@ -70,11 +71,10 @@ export const CartPage = () => {
                   />
                 </Link>
 
-                {/* Mobile: первая строка — крестик + фото + название */}
                 <div className="cart__item-first-row">
                   <button
                     className="cart__item-close--mobile"
-                    onClick={() => removeFromCart(item.id)}
+                    onClick={() => removeFromCart(itemKey)}
                   >
                     <img
                       src={`${getBaseUrl()}icons/close.svg`}
@@ -93,7 +93,6 @@ export const CartPage = () => {
                   </Link>
                 </div>
 
-                {/* Desktop: название */}
                 <Link to={productLink} className="cart__item-link cart__item-link--desktop">
                   <p className="cart__item-name cart__item-name--desktop">
                     {item.name}
@@ -105,7 +104,7 @@ export const CartPage = () => {
                     <button
                       className="cart__item-qty-btn"
                       onClick={() =>
-                        updateQuantity(item.id, item.quantity - 1)
+                        updateQuantity(itemKey, item.quantity - 1)
                       }
                       disabled={item.quantity === 1}
                     >
@@ -117,7 +116,7 @@ export const CartPage = () => {
                     <button
                       className="cart__item-qty-btn"
                       onClick={() =>
-                        updateQuantity(item.id, item.quantity + 1)
+                        updateQuantity(itemKey, item.quantity + 1)
                       }
                     >
                       +

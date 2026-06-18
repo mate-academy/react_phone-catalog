@@ -14,20 +14,23 @@ interface CartItem {
   color: string;
   capacity?: string;
   quantity: number;
-  category?: string; // 'phones' | 'tablets' | 'accessories' — нужно для ссылки на товар из корзины
+  category?: string;
 }
 
 interface CartContextType {
   cart: CartItem[];
   favorites: string[];
   addToCart: (item: CartItem) => void;
-  removeFromCart: (id: string) => void;
-  updateQuantity: (id: string, quantity: number) => void;
+  removeFromCart: (key: string) => void;
+  updateQuantity: (key: string, quantity: number) => void;
   toggleFavorite: (id: string) => void;
   clearCart: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
+
+const getItemKey = (item: CartItem) =>
+  `${item.id}-${item.color}-${item.capacity}`;
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>(() => {
@@ -72,19 +75,23 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
-  const removeFromCart = (id: string) => {
-    setCart(prevCart => prevCart.filter(item => item.id !== id));
+  const removeFromCart = (key: string) => {
+    setCart(prevCart =>
+      prevCart.filter(item => getItemKey(item) !== key),
+    );
   };
 
-  const updateQuantity = (id: string, quantity: number) => {
+  const updateQuantity = (key: string, quantity: number) => {
     if (quantity <= 0) {
-      removeFromCart(id);
+      removeFromCart(key);
 
       return;
     }
 
     setCart(prevCart =>
-      prevCart.map(item => (item.id === id ? { ...item, quantity } : item)),
+      prevCart.map(item =>
+        getItemKey(item) === key ? { ...item, quantity } : item,
+      ),
     );
   };
 

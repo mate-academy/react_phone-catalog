@@ -310,7 +310,8 @@ export const TabletPage = () => {
                         item.capacity === tablet.capacity,
                     );
                     if (inCart) {
-                      removeFromCart(tablet.id);
+                      const itemKey = `${tablet.id}-${tablet.color || 'default'}-${tablet.capacity}`;
+                      removeFromCart(itemKey);
                     } else {
                       handleAddToCart(tablet);
                     }

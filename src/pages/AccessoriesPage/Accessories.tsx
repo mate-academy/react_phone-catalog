@@ -94,8 +94,7 @@ export const AccessoriesPage = () => {
     setFilteredAccessories(sorted);
   }, [accessories, searchTerm, sortBy]);
 
-  // Сбрасываем страницу на 1 только когда юзер меняет фильтры,
-  // но не при первой загрузке (чтобы не сбить page из URL)
+
   useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
@@ -105,14 +104,13 @@ export const AccessoriesPage = () => {
     setCurrentPage(1);
   }, [searchTerm, sortBy, itemsPerPage]);
 
-  // Если currentPage из URL больше totalPages — корректируем
   useEffect(() => {
     if (totalPages > 0 && currentPage > totalPages) {
       setCurrentPage(totalPages);
     }
   }, [totalPages, currentPage]);
 
-  // Синхронизируем состояние с параметрами поиска (URL)
+
   useEffect(() => {
     const params: Record<string, string> = {};
 
@@ -131,6 +129,7 @@ export const AccessoriesPage = () => {
       price: accessory.priceDiscount,
       image: accessory.images[0],
       color: accessory.color,
+      capacity: accessory.capacity || undefined,
       quantity: 1,
       category: 'accessories',
     });
@@ -143,7 +142,7 @@ export const AccessoriesPage = () => {
     }));
   };
 
-  // "6.5' OLED (Super Retina HD)" → "6.5' OLED"
+
   const formatScreen = (screen: string) => {
     const parts = screen.split(' ');
     return parts.slice(0, 2).join(' ');
@@ -302,7 +301,8 @@ export const AccessoriesPage = () => {
                         item.color === accessory.color,
                     );
                     if (inCart) {
-                      removeFromCart(accessory.id);
+                      const itemKey = `${accessory.id}-${accessory.color}-${accessory.capacity || ''}`;
+                      removeFromCart(itemKey);
                     } else {
                       handleAddToCart(accessory);
                     }

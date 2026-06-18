@@ -218,7 +218,9 @@ export const FavoritesPage = () => {
                   className={`favorites__item-btn ${inCart ? 'added' : ''}`}
                   onClick={() => {
                     if (inCart) {
-                      removeFromCart(product.id);
+                      const capacity = 'capacity' in product ? (product as { capacity?: string }).capacity : undefined;
+                      const itemKey = `${product.id}-${product.color}-${capacity || ''}`;
+                      removeFromCart(itemKey);
                     } else {
                       addToCart({
                         id: product.id,

@@ -240,7 +240,8 @@ export const PhonePage = () => {
                       item.capacity === phone.capacity,
                     );
                     if (inCart) {
-                      removeFromCart(phone.id);
+                      const itemKey = `${phone.id}-${phone.color || 'default'}-${phone.capacity}`;
+                      removeFromCart(itemKey);
                     } else {
                       handleAddToCart(phone);
                     }

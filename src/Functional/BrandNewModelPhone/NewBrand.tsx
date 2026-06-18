@@ -164,7 +164,8 @@ export default function NewBrand() {
                     const inCart = cart.some(item => item.id === phone.itemId);
 
                     if (inCart) {
-                      removeFromCart(phone.itemId);
+                      const itemKey = `${phone.itemId}-${phone.color}-${phone.capacity}`;
+                      removeFromCart(itemKey);
                     } else {
                       addToCart({
                         id: phone.itemId,
