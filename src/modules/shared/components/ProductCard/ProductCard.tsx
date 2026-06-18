@@ -41,11 +41,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   return (
     <article className={styles.card}>
-      <Link to={`${category}/${itemId}`} className={styles.imageLink}>
+      <Link to={`/${category}/${itemId}`} className={styles.imageLink}>
         <img src={`${image}`} alt={name} className={styles.image} />
       </Link>
 
-      <Link to={`${category}/${itemId}`} className={styles.titleLink}>
+      <Link to={`/${category}/${itemId}`} className={styles.titleLink}>
         <h3 className={styles.title}>{name}</h3>
       </Link>
 
