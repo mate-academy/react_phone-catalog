@@ -1,6 +1,22 @@
+.section {
+  padding-bottom: 56px;
+  padding-inline: 16px;
+}
+
+.link {
+  text-decoration: none;
+}
+
 .title {
   padding-bottom: 24px;
   padding-top: 56px;
+  font-family: Mont;
+  font-weight: 800;
+  font-style: Bold;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0%;
+  color: #313237;
 }
 
 .image {
@@ -8,4 +24,23 @@
   height: 288px;
   width: 288px;
   padding-bottom: 24px;
+}
+
+.categoryTitle {
+  font-family: Mont;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #0f0f11;
+}
+
+.count {
+  font-family: Mont;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: #89939a;
+  padding-bottom: 32px;
 }

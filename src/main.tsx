@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Root } from './root';
 
 createRoot(document.getElementById('root')!).render(
-  <BrowserRouter basename="/react_phone_catalog">
+  <BrowserRouter basename="/react_phone-catalog">
     <Root />
   </BrowserRouter>,
 );

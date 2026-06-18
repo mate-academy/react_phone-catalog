@@ -21,15 +21,28 @@ export const ProductsSlider = ({ title, products }: Props) => {
   return (
     <div className={styles.slider}>
       <div className={styles.topSlider}>
-        <h2>{title}</h2>
-        <div className={styles.sliderButton}>
-          <button type="button" onClick={handlePrev} disabled={position === 0}>
-            <img src="/img/buttons/slider_button_disabled.png" alt="" />
+        <h2 className={styles.title}>{title}</h2>
+        <div className={styles.buttons}>
+          <button
+            onClick={handlePrev}
+            disabled={position === 0}
+            className={styles.buttonLeft}
+          >
+            <img
+              src={
+                position === 0
+                  ? '/img/buttons/slider_button_disabled.png'
+                  : '/img/buttons/slider_button_default.png'
+              }
+              alt=""
+              className={styles.arrowLeft}
+            />
           </button>
           <button
             type="button"
             onClick={handleNext}
             disabled={position >= products.length - 1}
+            className={styles.buttonRight}
           >
             <img src="/img/buttons/slider_button_default.png" alt="" />
           </button>

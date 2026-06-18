@@ -31,22 +31,26 @@ export const Categories = ({ title, products }: Props) => {
 
   return (
     <>
-      <h2 className={styles.title}>{title}</h2>
-      <div>
+      <div className={styles.section}>
+        <h2 className={styles.title}>{title}</h2>
         {categories.map(category => {
           const count = products.filter(
             p => p.category === category.category,
           ).length;
 
           return (
-            <Link to={category.link} key={category.category}>
+            <Link
+              to={category.link}
+              key={category.category}
+              className={styles.link}
+            >
               <img
                 src={category.image}
                 alt={category.title}
                 className={styles.image}
               />
-              <h3>{category.title}</h3>
-              <p>{count} models</p>
+              <h3 className={styles.categoryTitle}>{category.title}</h3>
+              <p className={styles.count}>{count} models</p>
             </Link>
           );
         })}

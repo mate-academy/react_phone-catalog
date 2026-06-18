@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import styles from './Footer.module.scss';
 
 export const Footer = () => {
   //#region handlefunctions
@@ -8,36 +9,42 @@ export const Footer = () => {
   //#endregion
 
   return (
-    <div>
+    <footer className={styles.footer}>
       <Link to="/">
         <img src="/img/logo/logo.png" alt="Nice Gadgets Logo" />
       </Link>
-      <ul>
-        <li>
+      <ul className={styles.list}>
+        <li className={styles.listContent}>
           <a
             href="https://github.com/shtoikoihor"
             target="_blank"
             rel="noreferrer"
+            className={styles.listLink}
           >
             Github
           </a>
         </li>
-        <li>
+        <li className={styles.listContent}>
           <a
             href="https://www.linkedin.com/in/ihorshtoikodev/"
             target="_blank"
             rel="noreferrer"
+            className={styles.listLink}
           >
             Contacts
           </a>
         </li>
-        <li>Rights</li>
+        <li className={styles.listContent}>Rights</li>
       </ul>
 
-      <button type="button" onClick={handleScrollTop}>
-        <span>Back to top</span>
+      <button
+        type="button"
+        onClick={handleScrollTop}
+        className={styles.backToTop}
+      >
+        <span className={styles.backToTopText}>Back to top</span>
         <img src="/img/icons/button_top_icon.png" alt="" />
       </button>
-    </div>
+    </footer>
   );
 };
