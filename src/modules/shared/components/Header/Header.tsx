@@ -85,7 +85,7 @@ export const Header = () => {
             aria-label="Toggle mobile menu"
           >
             <img
-              src={isMenuOpen ? '/img/Close.svg' : '/img/Menu.svg'}
+              src={isMenuOpen ? 'img/Close.svg' : 'img/Menu.svg'}
               alt="Menu"
             />
           </button>
