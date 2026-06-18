@@ -1,0 +1,74 @@
+@import './../../style/index';
+
+.swiper-product {
+  margin-top: 50px;
+
+  @include padding-inline;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    grid-column: 1/4;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 1px solid $color-grey;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $color-primary;
+    }
+  }
+
+  &__btn-icon {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+  }
+
+  &__wrapp {
+    margin-top: 24px;
+    overflow: hidden;
+  }
+
+  &__list {
+    display: flex;
+    gap: 15px;
+  }
+
+  &__item {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+
+    @include on-desktop {
+      flex: 0 0 calc((100% - 4 * 15px) / 4);
+    }
+  }
+}
