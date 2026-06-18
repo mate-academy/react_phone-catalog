@@ -1,0 +1,431 @@
+.detailsPage {
+  padding-top: 24px;
+  padding-bottom: 56px;
+  background-color: #fafbfc;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.homeLink,
+.catalogLink {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 12px;
+  color: #313237;
+  text-decoration: none;
+}
+
+.catalogLink {
+  color: #313237;
+  &:hover {
+    color: #000;
+  }
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+}
+
+.currentPath {
+  font-weight: 600;
+  font-size: 12px;
+  color: #89939a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  font-weight: 700;
+  font-size: 14px;
+  color: #89939a;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 16px;
+
+  &:hover {
+    color: #313237;
+  }
+}
+
+.title {
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 32px;
+  color: #313237;
+  margin: 0 0 24px;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.gallerySection {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.thumbButton {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #e2e6e9;
+  background-color: #fff;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &.activeThumb {
+    border-color: #313237;
+  }
+}
+
+.mainImageWrapper {
+  width: 100%;
+  height: 288px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.mainImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.actionsSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.optionBlock {
+  margin-bottom: 16px;
+}
+
+.optionLabel {
+  display: block;
+  font-weight: 600;
+  font-size: 12px;
+  color: #89939a;
+  margin-bottom: 8px;
+}
+
+.colorPicker {
+  display: flex;
+  gap: 8px;
+}
+
+.colorCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+
+  &:hover {
+    border-color: #b4bdc3;
+  }
+
+  &.activeColor::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border: 1px solid #313237;
+    border-radius: 50%;
+  }
+}
+
+.capacityPicker {
+  display: flex;
+  gap: 8px;
+}
+
+.capacityButton {
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid #e2e6e9;
+  background-color: #fff;
+  font-size: 14px;
+  color: #313237;
+  cursor: pointer;
+
+  &.activeCapacity {
+    background-color: #313237;
+    border-color: #313237;
+    color: #fff;
+  }
+  &:hover {
+    border-color: #313237;
+  }
+}
+
+.divider {
+  height: 1px;
+  background-color: #e2e6e9;
+  margin: 16px 0;
+}
+
+.priceBlock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.priceDiscount {
+  font-weight: 800;
+  font-size: 32px;
+  color: #313237;
+}
+
+.priceRegular {
+  font-weight: 600;
+  font-size: 22px;
+  color: #89939a;
+  text-decoration: line-through;
+}
+
+.buttonsRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 320px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  box-sizing: border-box;
+}
+
+.addToCart {
+  flex: 1;
+  height: 48px;
+  background-color: #313237;
+  color: #fff;
+  border: 1px solid #313237;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover:not(.inCart) {
+    background-color: #000;
+    border-color: #000;
+    box-shadow: 0 4px 12px rgba(49, 50, 55, 0.2);
+  }
+
+  &.inCart {
+    background-color: #fff;
+    color: #27ae60;
+    border: 1px solid #e2e6e9;
+    cursor: default;
+
+    &:hover {
+      background-color: #f4f6f7;
+      color: #27ae60;
+      border-color: #b4bdc2;
+    }
+  }
+}
+
+.favouriteButton {
+  width: 48px;
+  min-width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+
+  border: 1px solid #e2e6e9;
+  background-color: #fff;
+  background-image: url('/img/Favourites.svg');
+
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    border-color: #313237;
+  }
+
+  &.isFavourite {
+    border-color: #e2e6e9;
+    background-image: url('/img/Added.svg');
+    background-size: 48px 48px;
+
+    &:hover {
+      border-color: #313237;
+    }
+  }
+}
+
+.shortSpecs,
+.fullSpecsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.specLabel {
+  color: #89939a;
+  font-weight: 600;
+}
+
+.specValue {
+  color: #313237;
+  font-weight: 600;
+}
+
+.bottomContent {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 56px;
+}
+
+.sectionTitle {
+  font-weight: 700;
+  font-size: 20px;
+  color: #313237;
+  margin: 0;
+}
+
+.descSection {
+  margin-top: 16px;
+}
+
+.descSubtitle {
+  font-weight: 600;
+  font-size: 16px;
+  color: #313237;
+  margin: 0 0 8px;
+}
+
+.descText {
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+  margin: 0 0 16px;
+}
+
+.loading,
+.notFound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  font-weight: 700;
+  color: #313237;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+
+  .mainContent {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .gallerySection {
+    flex-direction: row;
+    flex: 1;
+  }
+
+  .thumbnails {
+    flex-direction: column;
+    overflow-x: visible;
+  }
+
+  .thumbButton {
+    width: 64px;
+    height: 64px;
+  }
+
+  .mainImageWrapper {
+    height: 380px;
+  }
+
+  .actionsSection {
+    width: 320px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .mainImageWrapper {
+    height: 442px;
+  }
+
+  .actionsSection {
+    width: 396px;
+  }
+
+  .bottomContent {
+    flex-direction: row;
+    gap: 64px;
+  }
+
+  .descriptionBlock {
+    flex: 1;
+  }
+
+  .techSpecsBlock {
+    width: 396px;
+  }
+}

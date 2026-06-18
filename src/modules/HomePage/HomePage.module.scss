@@ -1,0 +1,49 @@
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.titleText {
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  font-weight: 800;
+  color: #313237;
+  margin: 32px 0 24px;
+  text-align: left;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 100%;
+    padding: 0 24px;
+  }
+
+  .titleText {
+    font-size: 48px;
+    line-height: 56px;
+    margin: 56px 0 40px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+    padding: 0 32px;
+  }
+}

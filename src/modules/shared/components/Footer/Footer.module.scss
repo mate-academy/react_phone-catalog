@@ -1,0 +1,105 @@
+.footer {
+  background-color: #fff;
+  border-top: 1px solid #e2e6e9;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 32px 16px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.logoImage {
+  width: 89px;
+  height: 30px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.navLink {
+  color: #89939a;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover,
+  &:active {
+    color: #313237;
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.backText {
+  color: #89939a;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.backButton {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: 1px solid #e2e6e9;
+  cursor: pointer;
+  padding: 0;
+  background-image: url('/img/ArrowUp.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: #313237;
+  }
+}
+
+@media (min-width: 640px) {
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .backToTop {
+    width: auto;
+    margin: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+    padding: 32px 24px;
+  }
+
+  .nav {
+    gap: 100px;
+  }
+}

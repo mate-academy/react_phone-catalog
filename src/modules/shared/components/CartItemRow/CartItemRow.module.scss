@@ -1,0 +1,139 @@
+.itemRow {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #e2e6e9;
+  background-color: #fff;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.removeButton {
+  width: 16px;
+  height: 16px;
+  background-image: url('/img/Close.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  display: block;
+  order: 1;
+}
+
+.image {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
+  order: 2;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: #313237;
+  margin: 0;
+  flex: 1;
+  text-align: left;
+  order: 3;
+}
+
+.quantityWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  margin-top: 8px;
+  order: 4;
+}
+
+.quantityButton {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e2e6e9;
+  background-color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease;
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    border-color: #e2e6e9;
+  }
+  
+  &:hover:not(:disabled) {
+    border-color: #313237;
+  }
+
+  &.minus {
+    background-image: url('/img/Minus.svg');
+  }
+
+  &.plus {
+    background-image: url('/img/Plus.svg');
+  }
+}
+
+.quantityNumber {
+  font-size: 14px;
+  color: #313237;
+  font-weight: 700;
+  min-width: 16px;
+  text-align: center;
+}
+
+.price {
+  font-weight: 800;
+  font-size: 22px;
+  color: #313237;
+  min-width: 80px;
+  text-align: right;
+  margin-left: auto;
+  margin-top: 8px;
+  flex-shrink: 0;
+  order: 5;
+}
+
+@media (min-width: 640px) {
+  .itemRow {
+    flex-wrap: nowrap;
+    gap: 24px;
+    padding: 16px 24px;
+  }
+
+  .image {
+    width: 66px;
+    height: 66px;
+  }
+
+  .name {
+    max-width: 320px;
+
+    flex: 1;
+  }
+
+  .quantityWrapper {
+    margin-left: auto;
+    margin-top: 0;
+  }
+
+  .price {
+    margin-left: 24px;
+    margin-top: 0;
+    min-width: 100px;
+  }
+}
