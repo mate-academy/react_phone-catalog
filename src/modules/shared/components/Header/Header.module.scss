@@ -121,45 +121,78 @@
     height: 100%;
   }
 
+  /* 👑 ЧИСТІ ІКОНКИ БЕЗ ЖОДНИХ ХОВЕРІВ І ФІЛЬТРІВ */
   .iconFavourite,
   .iconCart {
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 64px;
+    height: 100%;
     border-left: 1px solid #e2e6e9;
-    transition: opacity 0.2s ease;
+    text-decoration: none;
+    position: relative;
+    background: transparent;
 
     img {
       width: 16px;
       height: 16px;
       display: block;
     }
+  }
 
-    &:hover {
-      opacity: 0.7;
+  .badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: #eb5757;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    min-width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3px;
+    box-sizing: border-box;
+    border: 1px solid #fff;
+    z-index: 2;
+  }
+
+  .iconWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+
+    img {
+      width: 16px;
+      height: 16px;
+      display: block;
     }
   }
 
   .badge {
     position: absolute;
-    top: 4px;
-    right: 4px;
+    top: -6px;
+    right: -6px;
     background-color: #eb5757;
     color: #fff;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 700;
-    width: 16px;
-    height: 16px;
+    min-width: 14px;
+    height: 14px;
     border-radius: 50%;
-    border: 1px solid #fff;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 3px;
     box-sizing: border-box;
-    z-index: 9;
+    border: 1px solid #fff;
   }
 }
 
@@ -191,7 +224,7 @@
   }
 
   .badge {
-    top: 12px;
-    right: 12px;
+    top: 17px;
+    right: 17px;
   }
 }

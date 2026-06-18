@@ -67,7 +67,7 @@ export const Header = () => {
 
         <div className={styles.icons}>
           <Link to="/favourites" className={styles.iconFavourite}>
-            <img src="img/Heart.svg" alt="Favourites" />
+            <img src="img/Favourites-header.svg" alt="Favourites" />
             {favCount > 0 && <span className={styles.badge}>{favCount}</span>}
           </Link>
 

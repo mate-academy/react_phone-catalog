@@ -17,7 +17,6 @@ interface Props {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state: RootState) => state.shop.cart);
-
   const favourites = useAppSelector(
     (state: RootState) => state.shop.favourites,
   );
@@ -42,7 +41,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <article className={styles.card}>
       <Link to={`/${category}/${itemId}`} className={styles.imageLink}>
-        <img src={`${image}`} alt={name} className={styles.image} />
+        <img
+          src={image.startsWith('/') ? image.slice(1) : image}
+          alt={name}
+          className={styles.image}
+        />
       </Link>
 
       <Link to={`/${category}/${itemId}`} className={styles.titleLink}>
@@ -84,12 +87,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
 
-        <button
-          type="button"
+        <img
+          src={`img/${isFavourite ? 'Added.svg' : 'Favourites.svg'}`}
+          alt="Toggle favourite"
           className={`${styles.favouriteButton} ${isFavourite ? styles.isFavourite : ''}`}
           onClick={() => dispatch(toggleFavourite(product))}
-          aria-label="Toggle favourite"
-        ></button>
+        />
       </div>
     </article>
   );

@@ -271,36 +271,20 @@
 
 .favouriteButton {
   width: 48px;
-  min-width: 48px;
   height: 48px;
-  flex-shrink: 0;
-
-  border: 1px solid #e2e6e9;
-  background-color: #fff;
-  background-image: url('img/Favourites.svg');
-
-  background-size: 20px 20px;
-  background-position: center;
-  background-repeat: no-repeat;
-
   cursor: pointer;
-  box-sizing: border-box;
-  transition: all 0.2s ease-in-out;
+  display: block;
+  transition: all 0.2s ease;
 
-  &:hover {
-    border-color: #313237;
+  &:hover:not(.isFavourite) {
+    filter: brightness(0);
+    transform: scale(1.02);
   }
-
-  &.isFavourite {
-    border-color: #e2e6e9;
-    background-image: url('img/Added.svg');
-    background-size: 48px 48px;
-
-    &:hover {
-      border-color: #313237;
-    }
+  &:active {
+    transform: scale(0.95);
   }
 }
+
 
 .shortSpecs,
 .fullSpecsList {

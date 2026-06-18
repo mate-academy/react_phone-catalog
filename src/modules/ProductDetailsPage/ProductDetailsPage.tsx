@@ -32,7 +32,7 @@ export const ProductDetailsPage: React.FC = () => {
   useEffect(() => {
     setLoading(true);
 
-    fetch(`api/${category}.json`)
+    fetch(`${import.meta.env.BASE_URL}api/${category}.json`)
       .then(res => {
         if (!res.ok) {
           throw new Error('Category file not found');
@@ -104,14 +104,22 @@ export const ProductDetailsPage: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.breadcrumbs}>
           <Link to="/" className={styles.homeLink}>
-            <img src="img/Home.svg" alt="Home" />
+            <img src={`${import.meta.env.BASE_URL}img/Home.svg`} alt="Home" />
           </Link>
-          <img src="img/arrow-right.svg" alt="Arrow" className={styles.arrow} />
+          <img
+            src={`${import.meta.env.BASE_URL}img/arrow-right.svg`}
+            alt="Arrow"
+            className={styles.arrow}
+          />
           <Link to={`/${category}`} className={styles.catalogLink}>
             {category?.charAt(0).toUpperCase()}
             {category?.slice(1)}
           </Link>
-          <img src="img/arrow-right.svg" alt="Arrow" className={styles.arrow} />
+          <img
+            src={`${import.meta.env.BASE_URL}img/arrow-right.svg`}
+            alt="Arrow"
+            className={styles.arrow}
+          />
           <span className={styles.currentPath}>{name}</span>
         </div>
 
@@ -120,7 +128,10 @@ export const ProductDetailsPage: React.FC = () => {
           className={styles.backButton}
           onClick={() => navigate(-1)}
         >
-          <img src="img/arrow-left.svg" alt="Back" />
+          <img
+            src={`${import.meta.env.BASE_URL}img/arrow-left.svg`}
+            alt="Back"
+          />
           Back
         </button>
 
@@ -221,8 +232,9 @@ export const ProductDetailsPage: React.FC = () => {
                 {isInCart ? 'Added to cart' : 'Add to cart'}
               </button>
 
-              <button
-                type="button"
+              <img
+                src={`img/${isFavorite ? 'Added.svg' : 'Favourites.svg'}`}
+                alt="Toggle favourite"
                 className={`${styles.favouriteButton} ${isFavorite ? styles.isFavourite : ''}`}
                 onClick={() =>
                   dispatch(
@@ -241,7 +253,6 @@ export const ProductDetailsPage: React.FC = () => {
                     }),
                   )
                 }
-                aria-label="Add to favorites"
               />
             </div>
 

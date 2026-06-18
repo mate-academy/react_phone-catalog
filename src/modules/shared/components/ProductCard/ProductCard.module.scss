@@ -144,21 +144,15 @@
 .favouriteButton {
   width: 40px;
   height: 40px;
-  border: 1px solid #e2e6e9;
-  background-color: #fff;
-  background-image: url('img/Favourites.svg');
-  background-position: center;
-  background-repeat: no-repeat;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-sizing: border-box;
+  display: block;
+  transition: all 0.2s ease;
 
-  &:hover {
-    border-color: #313237;
+  &:hover:not(.isFavourite) {
+    filter: brightness(0);
+    transform: scale(1.02);
   }
-
-  &.isFavourite {
-    border-color: #e2e6e9;
-    background-image: url('img/Added.svg');
+  &:active {
+    transform: scale(0.95);
   }
 }
