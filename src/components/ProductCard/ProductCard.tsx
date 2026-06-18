@@ -36,7 +36,7 @@ export const ProductCard = ({ product }: Props) => {
         <button type="button" className={styles.cartButton}>
           Add to cart
         </button>
-        <button type="button">
+        <button type="button" className={styles.favouriteButton}>
           <img
             src="/img/icons/add_favourites_button.png"
             alt="Add to favourites"

@@ -1,5 +1,18 @@
+.topSlider {
+  display: flex;
+  padding-bottom: 16px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sliderButton {
+  display: flex;
+  gap: 8px;
+}
+
 .slider {
   display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 

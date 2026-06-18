@@ -20,20 +20,24 @@ export const ProductsSlider = ({ title, products }: Props) => {
 
   return (
     <div className={styles.slider}>
-      <h2>{title}</h2>
-      <button type="button" onClick={handlePrev} disabled={position === 0}>
-        <img src="/img/buttons/slider_button_disabled.png" alt="" />
-      </button>
-      <button
-        type="button"
-        onClick={handleNext}
-        disabled={position >= products.length - 1}
-      >
-        <img src="/img/buttons/slider_button_default.png" alt="" />
-      </button>
+      <div className={styles.topSlider}>
+        <h2>{title}</h2>
+        <div className={styles.sliderButton}>
+          <button type="button" onClick={handlePrev} disabled={position === 0}>
+            <img src="/img/buttons/slider_button_disabled.png" alt="" />
+          </button>
+          <button
+            type="button"
+            onClick={handleNext}
+            disabled={position >= products.length - 1}
+          >
+            <img src="/img/buttons/slider_button_default.png" alt="" />
+          </button>
+        </div>
+      </div>
       <div
         className={styles.track}
-        style={{ transform: `translateX(${-position * 288}px)` }}
+        style={{ transform: `translateX(${-position * 228}px)` }}
       >
         {products.map(product => (
           <ProductCard product={product} key={product.id} />

@@ -1,5 +1,3 @@
-@import 'bulma/css/bulma.min.css';
-
 @font-face {
   font-family: 'Mont';
   src: url('/fonts/Mont-Regular.otf') format('opentype');
@@ -21,6 +19,14 @@
   font-display: swap;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Mont', sans-serif;
+  background-color: #fff;
+  padding-inline: 16px;
 }

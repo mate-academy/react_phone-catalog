@@ -1,12 +1,13 @@
 .card {
   display: flex;
   flex-direction: column;
-  padding-inline: 32px;
-  width: 212px;
   height: 439px;
+  width: 212px;
+  padding-inline: 32px;
   border-width: 1px;
   opacity: 1;
   border-radius: 8px;
+  flex-shrink: 0;
 
   background: #ffffff;
   border: 1px solid #e2e6e9;
@@ -103,7 +104,7 @@
 .cartButton {
   cursor: pointer;
   background-color: #f86800;
-  width: 125px;
+  width: 100px;
   height: 40px;
   border-radius: 8px;
   border: none;
