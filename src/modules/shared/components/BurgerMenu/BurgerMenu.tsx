@@ -19,14 +19,20 @@ export const BurgerMenu: React.FC<Props> = ({ isOpen, onClose }) => {
   const favCount = favourites.length;
 
   useEffect(() => {
+    const html = document.documentElement;
+    const body = document.body;
+
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      html.style.overflow = 'hidden';
+      body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = '';
+      html.style.overflow = '';
+      body.style.overflow = '';
     }
 
     return () => {
-      document.body.style.overflow = '';
+      html.style.overflow = '';
+      body.style.overflow = '';
     };
   }, [isOpen]);
 
@@ -64,7 +70,7 @@ export const BurgerMenu: React.FC<Props> = ({ isOpen, onClose }) => {
           onClick={onClose}
         >
           <div className={styles.iconWrapper}>
-            <img src={'img/Favourites.svg'} alt="Favourites" />
+            <img src={'img/Favourites-header.svg'} alt="Favourites" />
             {favCount > 0 && <span className={styles.badge}>{favCount}</span>}
           </div>
         </NavLink>

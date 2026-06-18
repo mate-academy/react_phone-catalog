@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import {
   addToCart,
+  removeFromCart,
   toggleFavourite,
 } from '../../features/cartAndFavoritesSlice';
 import styles from './ProductDetailsPage.module.scss';
@@ -223,6 +224,8 @@ export const ProductDetailsPage: React.FC = () => {
                         year: year,
                       }),
                     );
+                  } else {
+                    dispatch(removeFromCart(itemId || product.id));
                   }
                 }}
               >

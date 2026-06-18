@@ -259,7 +259,6 @@
     background-color: #fff;
     color: #27ae60;
     border: 1px solid #e2e6e9;
-    cursor: default;
 
     &:hover {
       background-color: #f4f6f7;
@@ -279,7 +278,7 @@
   &:active {
     transform: scale(0.95);
   }
-  
+
   &:hover:not(.isFavourite) {
     filter: brightness(0);
     transform: scale(1.02);

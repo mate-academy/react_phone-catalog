@@ -80,10 +80,15 @@ export const Header = () => {
         <div className={styles.menu}>
           <button
             type="button"
-            className={`${styles.menuIcon} ${isMenuOpen ? styles.activeBurger : ''}`}
+            className={styles.menuIcon}
             onClick={toggleMenu}
             aria-label="Toggle mobile menu"
-          />
+          >
+            <img
+              src={isMenuOpen ? '/img/Close.svg' : '/img/Menu.svg'}
+              alt="Menu"
+            />
+          </button>
         </div>
       </div>
 

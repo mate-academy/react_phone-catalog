@@ -5,6 +5,7 @@ import {
   addToCart,
   CartItem,
   toggleFavourite,
+  removeFromCart,
 } from '../../../../features/cartAndFavoritesSlice';
 import styles from './ProductCard.module.scss';
 import { RootState } from '../../../../app/store';
@@ -81,6 +82,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           onClick={() => {
             if (!isInCart) {
               dispatch(addToCart(product));
+            } else {
+              dispatch(removeFromCart(itemId));
             }
           }}
         >

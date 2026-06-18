@@ -70,6 +70,8 @@
 
 .dropdownsPanel {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   gap: 16px;
   margin-bottom: 24px;
 }
@@ -78,6 +80,15 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  flex: none;
+}
+
+.sortBySelect {
+  width: 176px;
+}
+
+.itemsOnPageSelect {
+  width: 128px;
 }
 
 .label {
@@ -114,20 +125,15 @@
   }
 }
 
-.sortBySelect {
-  width: 176px;
-}
-
-.itemsOnPageSelect {
-  width: 128px;
-}
-
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(272px, 272px));
-  justify-content: center;
-  gap: 40px 16px;
+  grid-template-columns: repeat(auto-fill, 272px) !important;
+
+  justify-content: flex-start !important;
+
+  gap: 40px 16px !important;
   margin-bottom: 40px;
+  width: 100%;
 }
 
 .pagination {
@@ -209,11 +215,6 @@
     font-size: 48px;
     line-height: 56px;
   }
-
-  .grid {
-    grid-template-columns: repeat(auto-fill, 272px);
-    justify-content: space-between;
-  }
 }
 
 @media (min-width: 1200px) {
@@ -222,7 +223,4 @@
     padding: 0 32px;
   }
 
-  .grid {
-    grid-template-columns: repeat(4, 272px);
-  }
 }
