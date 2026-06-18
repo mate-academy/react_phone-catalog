@@ -107,7 +107,7 @@ export const ProductDetailsPage: React.FC = () => {
             <img src="img/Home.svg" alt="Home" />
           </Link>
           <img src="img/arrow-right.svg" alt="Arrow" className={styles.arrow} />
-          <Link to={`/${category}`} className={styles.catalogLink}>
+          <Link to={`${category}`} className={styles.catalogLink}>
             {category?.charAt(0).toUpperCase()}
             {category?.slice(1)}
           </Link>
@@ -136,13 +136,13 @@ export const ProductDetailsPage: React.FC = () => {
                   className={`${styles.thumbButton} ${mainImage === img ? styles.activeThumb : ''}`}
                   onClick={() => setMainImage(img)}
                 >
-                  <img src={`/${img}`} alt="Thumbnail" />
+                  <img src={`${img}`} alt="Thumbnail" />
                 </button>
               ))}
             </div>
             <div className={styles.mainImageWrapper}>
               <img
-                src={`/${mainImage}`}
+                src={`${mainImage}`}
                 alt={name}
                 className={styles.mainImage}
               />

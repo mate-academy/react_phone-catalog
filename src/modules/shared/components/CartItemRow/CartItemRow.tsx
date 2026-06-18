@@ -23,7 +23,7 @@ export const CartItemRow: React.FC<Props> = ({ item }) => {
         aria-label={`Remove ${name} from cart`}
       />
 
-      <img src={`/${image}`} alt={name} className={styles.image} />
+      <img src={`${image}`} alt={name} className={styles.image} />
 
       <p className={styles.name}>{name}</p>
 
