@@ -6,9 +6,10 @@ import React from 'react';
 
 type Props = {
   product: Products;
+  isNew?: boolean;
 };
 
-export const ProductCarts: React.FC<Props> = ({ product }) => {
+export const ProductCarts: React.FC<Props> = ({ product, isNew }) => {
   if (!product) {
     return null;
   }
@@ -30,10 +31,14 @@ export const ProductCarts: React.FC<Props> = ({ product }) => {
       <Link to={`/${category}/${itemId}`} className={styles.productCart}>
         <img className={styles.cardPhoto} src={image} alt={name} />
         <h2 className={styles.productCart}>{name}</h2>
+
         <div className={styles.cardPriceGoup}>
           <span className={styles.cardPriceHot}>${price}</span>
-          <span className={styles.cardfullPriceHot}>${fullPrice}</span>
+          {!isNew && (
+            <span className={styles.cardfullPriceHot}>${fullPrice}</span>
+          )}
         </div>
+
         <div className={styles.cardSpes}>
           <div className={styles.screen}>
             <span>Screen</span>

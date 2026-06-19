@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import React from 'react';
 
 import { Products } from '../../types/Alltypes';
 import { getData } from '../../fetch/httpClient';
 import styles from './Phones.module.scss';
 import { ProductCarts } from '../../Functional/ProductCart/ProductCarts';
+import { getSearchWith } from '../../getSearchWith';
 
 type Props = {
   phone?: Products[];
@@ -12,10 +14,29 @@ type Props = {
 
 export const Phones: React.FC<Props> = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+
   const [phones, setPhones] = useState<Products[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [sortType, setSortType] = useState('');
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [perPage, setPerPage] = useState(4);
+  const startIndex = (currentPage - 1) * perPage;
+  const lastIndex = startIndex + perPage;
+
+  const sortType = searchParams.get('sort') || 'age';
+  // const page = +(searchParams.get('page') || 1);
+  // const perPageParam = searchParams.get('perPage') || 'all';
+
+  function setSearchWith(params: any) {
+    const search = getSearchWith(params, searchParams);
+
+    setSearchParams(search);
+  }
+
+  function handleQueryChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    setSearchWith({ sort: event?.target.value });
+  }
 
   const getSortedPhones = () => {
     const sorted = [...phones];
@@ -23,7 +44,7 @@ export const Phones: React.FC<Props> = () => {
     switch (sortType) {
       case 'age':
         return sorted.sort((a, b) => b.year - a.year);
-      case 'name':
+      case 'title':
         return sorted.sort((a, b) => a.name.localeCompare(b.name));
       case 'price':
         return sorted.sort((a, b) => a.price - b.price);
@@ -32,11 +53,13 @@ export const Phones: React.FC<Props> = () => {
     }
   };
 
-  const displayedPhones = getSortedPhones();
+  const sortedPhones = getSortedPhones();
 
   useEffect(() => {
-    getData<Products[]>('./api/phones.json')
-      .then(data => setPhones(data))
+    getData<Products[]>('./api/products.json')
+      .then(data =>
+        setPhones(data.filter(phone => phone.category === 'phones')),
+      )
       .catch(() => setError('Something went wrong'))
       .finally(() => setLoading(false));
   }, []);
@@ -44,13 +67,14 @@ export const Phones: React.FC<Props> = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  // if (error) {
-  //   return (
-  //     <div>
-  //       {error} <button onClick={() => window.location.reload()}>Retry</button>
-  //     </div>
-  //   );
-  // }
+
+  if (error) {
+    return (
+      <div>
+        {error} <button onClick={() => window.location.reload()}>Retry</button>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.containerPhones}>
@@ -72,7 +96,7 @@ export const Phones: React.FC<Props> = () => {
         <select
           className={styles.select}
           value={sortType}
-          onChange={e => setSortType(e.target.value)}
+          onChange={handleQueryChange}
         >
           <option value="age">Newest</option>
           <option value="title">Alphabetically</option>
@@ -82,7 +106,14 @@ export const Phones: React.FC<Props> = () => {
 
       <div className={styles.byFilteredBlock}>
         <div className={styles.byItems}>Items on page</div>
-        <select className={styles.select}>
+        <select
+          className={styles.select}
+          value={perPage}
+          onChange={event => {
+            setPerPage(Number(event.target.value));
+            setCurrentPage(1);
+          }}
+        >
           <option value="4">4</option>
           <option value="8">8</option>
           <option value="16">16</option>
@@ -91,12 +122,27 @@ export const Phones: React.FC<Props> = () => {
       </div>
 
       <div className={styles.catalogGrid}>
-        {displayedPhones.map(phone => (
+        {sortedPhones.map(phone => (
           <div key={phone.itemId} className={styles.gridItem}>
             <ProductCarts product={phone} />
           </div>
         ))}
       </div>
+      {/* <div className={styles.pagination}>
+        <button
+          onClick={() => handlePageChange(page - 1)}
+          disabled={page === 1}
+        >
+          <img src="/img/vectorLeft.svg" alt="prev" />
+        </button>
+        <span>{page}</span>
+        <button
+          onClick={() => handlePageChange(page + 1)}
+          disabled={page >= totalPages}
+        >
+          <img src="/img/vectorRight.svg" alt="next" />
+        </button>
+      </div> */}
     </div>
   );
 };

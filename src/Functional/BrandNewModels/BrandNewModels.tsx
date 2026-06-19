@@ -67,7 +67,7 @@ export const BrandNewModels: React.FC = () => {
           {newProducts.length > 0 &&
             newProducts.map(product => (
               <SwiperSlide key={product.id}>
-                <ProductCarts product={product} />
+                <ProductCarts product={product} isNew={true} />
               </SwiperSlide>
             ))}
         </Swiper>
