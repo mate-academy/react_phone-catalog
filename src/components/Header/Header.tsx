@@ -34,7 +34,7 @@ export const Header = () => {
       document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
-  console.log(asset('img/icons/Logo.svg'));
+  // console.log(asset('img/icons/Logo.svg'));
 
   return (
     <>

@@ -3,17 +3,11 @@ import styles from './ProductCard.module.scss';
 // import './styles/global.scss';
 import { asset } from '../../utils/paths';
 import { NavLink } from 'react-router-dom';
+// import { mapProductToUIProduct } from '../../utils/mapProductToUIProduct';
+import { ProductCardItem } from '../../types/ProductCardItem';
 
-type Props = {
-  id: string;
-  name: string;
-  price: number;
-  discount?: number;
+type Props = ProductCardItem & {
   showDiscount?: boolean;
-  image?: string;
-  screen: string;
-  capacity: string;
-  ram: string;
 };
 
 export const ProductCard: React.FC<Props> = ({
@@ -50,7 +44,7 @@ export const ProductCard: React.FC<Props> = ({
       <div className={styles.info}>
         <div className={styles.wrapperPrice}>
           <p className={styles.price}>${price}</p>
-          {showDiscount && discount && (
+          {showDiscount && discount > 0 && (
             <p className={styles.discount}>${discount}</p>
           )}
         </div>

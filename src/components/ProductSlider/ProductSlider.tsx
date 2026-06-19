@@ -9,28 +9,31 @@ import 'swiper/css';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { useEffect, useRef, useState } from 'react';
 import { asset } from '../../utils/paths';
+// import { UIProduct } from '../../types/ui/uiProduct';
+// import { ProductListItem } from '../../types/ProductListItem';
+import { ProductCardItem } from '../../types/ProductCardItem';
 
-type Phones = {
-  id: string;
-  name: string;
-  price: number;
-  discount?: number;
-  showDiscount?: boolean;
-  image?: string;
-  screen: string;
-  capacity: string;
-  ram: string;
-};
+// type Phones = {
+//   id: string;
+//   name: string;
+//   price: number;
+//   discount?: number;
+//   showDiscount?: boolean;
+//   image?: string;
+//   screen: string;
+//   capacity: string;
+//   ram: string;
+// };
 
 type Props = {
   name: string;
-  phones: Phones[];
+  items: ProductCardItem[];
   showDiscount?: boolean;
 };
 
 export const ProductSlider: React.FC<Props> = ({
   name,
-  phones,
+  items,
   showDiscount,
 }) => {
   const swiperRef = useRef<SwiperType | null>(null);
@@ -46,7 +49,7 @@ export const ProductSlider: React.FC<Props> = ({
       setIsBeginning(swiperRef.current.isBeginning);
       setIsEnd(swiperRef.current.isEnd);
     }
-  }, [phones]);
+  }, [items]);
 
   return (
     <section className={styles.slider}>
@@ -93,7 +96,7 @@ export const ProductSlider: React.FC<Props> = ({
           </button>
         </div>
       </div>
-      {phones.length > 0 && (
+      {items.length > 0 && (
         <div className={styles.fullBleed}>
           <Swiper
             // modules={[Navigation]}
@@ -116,9 +119,9 @@ export const ProductSlider: React.FC<Props> = ({
             }}
           >
             {/* {products.slice(0, 20).map(product => ( */}
-            {phones.map(phone => (
-              <SwiperSlide key={phone.id}>
-                <ProductCard {...phone} showDiscount={showDiscount} />
+            {items.map(item => (
+              <SwiperSlide key={item.id}>
+                <ProductCard {...item} showDiscount={showDiscount} />
               </SwiperSlide>
             ))}
           </Swiper>

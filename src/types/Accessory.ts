@@ -1,8 +1,8 @@
 import { BaseProduct } from './BaseProduct';
 
-export type Phone = BaseProduct & {
+export type Accessory = BaseProduct & {
   id: string;
-  category: 'phones';
+  category: 'accessories';
   namespaceId: string;
   name: string;
 
@@ -27,7 +27,5 @@ export type Phone = BaseProduct & {
   processor: string;
   ram: string;
 
-  camera: string;
-  zoom: string;
   cell: string[];
 };

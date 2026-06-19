@@ -1,8 +1,8 @@
 import { BaseProduct } from './BaseProduct';
 
-export type Phone = BaseProduct & {
+export type Tablet = BaseProduct & {
   id: string;
-  category: 'phones';
+  category: 'tablets';
   namespaceId: string;
   name: string;
 
@@ -26,7 +26,6 @@ export type Phone = BaseProduct & {
   resolution: string;
   processor: string;
   ram: string;
-
   camera: string;
   zoom: string;
   cell: string[];
