@@ -6,12 +6,13 @@
 
 //#region IMPORTS
 import { useLocation, useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useMemo } from 'react';
 
 import { useProducts } from '@/modules/shared/utils/context/ProductsContext';
 
 import { CategoryType, PerPageType, SortType } from '../../shared/utils/types';
-import { pageTitles } from '../../shared/utils/constants';
+import { getPageTitles } from '../../shared/utils/constants';
 
 import { ProductPageFilters } from './components/ProductPageFilters';
 import { ProductsList } from '../../shared/components/ProductsList';
@@ -36,41 +37,31 @@ const {
 //#endregion STYLES
 
 export const ProductsPage = () => {
-  //#region DATA_FETCHING
+  //#region HOOKS
+  const { t } = useTranslation();
   const { pathname } = useLocation();
-  const currentCategory = pathname.slice(1) as CategoryType;
-
-  const { getProductsByCategory, isLoading, isError } = useProducts();
-  const products = getProductsByCategory(currentCategory);
-
-  const currentPageTitle = pageTitles[currentCategory];
-  //#endregion DATA_FETCHING
-
-  //#region URL_STATE
   const [searchParams, setSearchParams] = useSearchParams();
-
-  const sortBy = (searchParams.get('sort') as SortType) || SortType.Age;
-  const perPage =
-    (searchParams.get('perPage') as PerPageType) || PerPageType.All;
-  const currentPage = Number(searchParams.get('page') || 1);
-  const query = searchParams.get('query')?.toLowerCase() || '';
-  //#endregion URL_STATE
-
-  //#region HANDLERS
-  const handlePageChange = (page: number) => {
-    const newParams = new URLSearchParams(searchParams);
-
-    if (page === 1) {
-      newParams.delete('page');
-    } else {
-      newParams.set('page', String(page));
-    }
-
-    setSearchParams(newParams);
-  };
+  const { getProductsByCategory, isLoading, isError } = useProducts();
   //#endregion
 
-  //#region FILTERING_SORTING_&_PAGINATION
+  //#region URL_PARAMS
+  const sortBy = (searchParams.get('sort') as SortType) || SortType.Age;
+  const perPage = (searchParams.get('perPage') as PerPageType) || PerPageType.All;
+  const currentPage = Number(searchParams.get('page') || 1);
+  const query = searchParams.get('query')?.toLowerCase() || '';
+  //#endregion
+
+  //#region CATEGORY_DATA
+  const currentCategory = pathname.slice(1) as CategoryType;
+  const products = useMemo(() =>
+    getProductsByCategory(currentCategory),
+  [currentCategory, getProductsByCategory]);
+
+  const pageTitles = useMemo(() => getPageTitles(t), [t]);
+  const currentPageTitle = pageTitles[currentCategory];
+  //#endregion
+
+  //#region DATA_PROCCESING
   const filteredProducts = useMemo(() => {
     if (!query) {
       return products;
@@ -93,8 +84,7 @@ export const ProductsPage = () => {
     });
   }, [filteredProducts, sortBy]);
 
-  const itemsPerPage =
-    perPage === PerPageType.All ? sortedProducts.length : Number(perPage);
+  const itemsPerPage = perPage === PerPageType.All ? sortedProducts.length : Number(perPage);
   const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
 
   const paginatedProducts = useMemo(() => {
@@ -106,6 +96,20 @@ export const ProductsPage = () => {
 
     return sortedProducts.slice(startIndex, startIndex + itemsPerPage);
   }, [sortedProducts, currentPage, perPage, itemsPerPage]);
+  //#endregion
+
+  //#region HANDLERS
+  const handlePageChange = (page: number) => {
+    const newParams = new URLSearchParams(searchParams);
+
+    if (page === 1) {
+      newParams.delete('page');
+    } else {
+      newParams.set('page', String(page));
+    }
+
+    setSearchParams(newParams);
+  };
   //#endregion
 
   //#region RENDER_CONDITIONS
@@ -120,8 +124,12 @@ export const ProductsPage = () => {
     <div className={productsPage}>
       <Breadcrumbs pageTitle={currentPageTitle} />
 
-      <h1 className={productsPageTitle}>{currentPageTitle}</h1>
-      <p className={productsPageCount}>{filteredProducts.length || 0} models</p>
+      <h1 className={productsPageTitle}>
+        {currentPageTitle}
+      </h1>
+      <p className={productsPageCount}>
+        {t('productsPage.count', { count: filteredProducts.length || 0 })}
+      </p>
 
       {isError && <ErrorMessage />}
 
@@ -139,13 +147,13 @@ export const ProductsPage = () => {
             <>
               {showEmptyCategory && (
                 <p className={noProductsMessage}>
-                  There are no {currentCategory} yet
+                  {t('productsPage.message.noCategory', { category: currentCategory })}
                 </p>
               )}
 
               {showEmptySearch && (
                 <p className={noProductsMessage}>
-                  There are no matching products...
+                  {t('productsPage.message.noProducts')}
                 </p>
               )}
 
@@ -170,61 +178,3 @@ export const ProductsPage = () => {
   );
   //#endregion
 };
-
-{
-  /*
-
-//#region RENDER
-  return (
-    <div className={productsPage}>
-      <Breadcrumbs pageTitle={currentPageTitle} />
-
-      {isLoading && (
-        <div className={ProductsListStyles.productsList}>
-          {Array.from({ length: 8 }).map((_, index) => (
-            <ProductCardSkeleton key={index} />
-          ))}
-        </div>
-      )}
-
-      {isError && <ErrorMessage />}
-
-      {!isLoading && !isError && (
-        <>
-          <h1 className={productsPageTitle}>{currentPageTitle}</h1>
-          <p className={productsPageCount}>{filteredProducts.length} models</p>
-
-          {showEmptyCategory && (
-            <p className={noProductsMessage}>
-              There are no {currentCategory} yet
-            </p>
-          )}
-
-          {showEmptySearch && (
-            <p className={noProductsMessage}>
-              There are no matching products...
-            </p>
-          )}
-
-          {showProducts && (
-            <>
-              <ProductPageFilters />
-              <ProductsList products={paginatedProducts} />
-
-              {showPagination && (
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  onPageChange={handlePageChange}
-                />
-              )}
-            </>
-          )}
-        </>
-      )}
-    </div>
-  );
-  //#endregion
-
-*/
-}

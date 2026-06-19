@@ -1,15 +1,17 @@
+/* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable import/extensions */
 /* eslint-disable prettier/prettier */
 
-//#region IMPORST
+//#region IMPORT
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { useCart } from '../../utils/context/CartContext';
 import { useFavourites } from '../../utils/context/FavouritesContext';
 
 import { Button } from '../ui/Button';
-import { ProductType } from '@/modules/shared/utils/types';
+import { CategoryType, ProductType } from '@/modules/shared/utils/types';
 
 import favoutiteIcon from '@/assets/svg/heart.svg';
 import favouriteIconActive from '@/assets/svg/heart-filled.svg';
@@ -51,12 +53,17 @@ export const ProductCard: React.FC<Props> = ({
   product,
   showDiscount = false,
 }) => {
-  //#region DATA_FETCHING
+  //#region HOOKS_&_STATE
+  const { t } = useTranslation();
+
   const { addToCart, isInCart } = useCart();
   const isActiveCart = isInCart(product.itemId);
 
   const { toggleFavourite, isFavourite } = useFavourites();
   const isActiveFavourite = isFavourite(product.itemId);
+
+  const capacityLabelKey = product.category as CategoryType === 'accessories'
+    ? 'size' : 'capacity';
   //#endregion
 
   //#region RENDER
@@ -85,15 +92,23 @@ export const ProductCard: React.FC<Props> = ({
 
       <div className={cardSpecs}>
         <div className={specItem}>
-          <span className={specTitle}>Screen</span>
+          <span className={specTitle}>
+            {t('productDetailsPage.techSpecs.label.screen')}
+          </span>
           <span className={specValue}>{product.screen}</span>
         </div>
+
         <div className={specItem}>
-          <span className={specTitle}>Capacity</span>
+          <span className={specTitle}>
+            {t(`productDetailsPage.techSpecs.label.${capacityLabelKey}`)}
+          </span>
           <span className={specValue}>{product.capacity}</span>
         </div>
+
         <div className={specItem}>
-          <span className={specTitle}>RAM</span>
+          <span className={specTitle}>
+            {t('productDetailsPage.techSpecs.label.ram')}
+          </span>
           <span className={specValue}>{product.ram}</span>
         </div>
       </div>
@@ -108,22 +123,26 @@ export const ProductCard: React.FC<Props> = ({
               addToCart(product);
             }
           }}
-          aria-label={isActiveCart ? 'Remove from cart' : 'Add to cart'}
+          aria-label={!isActiveCart ? t('productDetailsPage.actions.cart.btnAria') : ''}
         >
-          {isActiveCart ? 'Added to cart' : 'Add to cart'}
+          {t('productDetailsPage.actions.cart.btnText', {
+            context: isActiveCart ? 'active' : ''
+          })}
         </Button>
 
         <Button
           variant="icon"
           className={actionFavourite}
           onClick={() => toggleFavourite(product)}
-          aria-label={
-            isActiveFavourite ? 'Remove from favorites' : 'Add to favorites'
-          }
+          aria-label={t(
+            'productDetailsPage.actions.favourite.btnAria',
+            { context: isActiveFavourite ? 'active' : '' }
+          )}
         >
           <img
             src={isActiveFavourite ? favouriteIconActive : favoutiteIcon}
-            alt="Favorite icon"
+            alt=""
+            aria-hidden="true"
           />
         </Button>
       </div>

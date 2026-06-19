@@ -4,6 +4,8 @@
 //#region IMPORTS
 import { useCart } from '@/modules/shared/utils/context/CartContext';
 
+import { useTranslation } from 'react-i18next';
+
 import { CartItem } from './components/CartItem';
 import { CartTotal } from './components/CartTotal';
 import { BackButton } from '@/modules/shared/components/ui/BackButton';
@@ -24,6 +26,7 @@ const {
 export const CartPage = () => {
   //#region DATA_FETCHING
   const { cart } = useCart();
+  const { t } = useTranslation();
   //#endregion
 
   //#region RENDER
@@ -31,10 +34,12 @@ export const CartPage = () => {
     <div className={cartPage}>
       <BackButton />
 
-      <h1 className={cartTitle}>Cart</h1>
+      <h1 className={cartTitle}>{t('cart.page.title')}</h1>
 
       {cart.length === 0 ? (
-        <p className={emptyMessage}>Your cart is empty</p>
+        <p className={emptyMessage}>
+          {t('cart.page.emptyMessage')}
+        </p>
       ) : (
         <div className={cartContent}>
           <div className={itemList}>

@@ -1,8 +1,9 @@
 /* eslint-disable prettier/prettier */
 
 //#region IMPORTS
-import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import cn from 'classnames';
 
@@ -21,10 +22,10 @@ const {
 } = styles;
 
 const navLinks = [
-  { title: 'home', href: '/' },
-  { title: 'phones', href: '/phones' },
-  { title: 'tablets', href: '/tablets' },
-  { title: 'accessories', href: '/accessories' },
+  { id: 'home', href: '/' },
+  { id: 'phones', href: '/phones' },
+  { id: 'tablets', href: '/tablets' },
+  { id: 'accessories', href: '/accessories' },
 ];
 //#endregion
 
@@ -37,6 +38,7 @@ export const HeaderNavigation: React.FC<Props> = ({ isMobileMenu }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [lastIndex, setLastIndex] = useState<number | null>(null);
+  const { t } = useTranslation();
   //#endregion
 
   //#region HANDLERS_&_HELPERS
@@ -74,17 +76,18 @@ export const HeaderNavigation: React.FC<Props> = ({ isMobileMenu }) => {
         setLastIndex(null);
       }}
     >
-      {navLinks.map(({ title, href }, index) => (
+      {navLinks.map(({ id, href }, index) => (
         <NavLink
           key={href}
           to={href}
           onMouseEnter={() => handleMouseEnter(index)}
           className={({ isActive }) => getNavLinkClass(index, isActive)}
         >
-          {title}
+          {t(`header.navigation.${id}`)}
         </NavLink>
       ))}
     </nav>
   );
   //#endregion
 };
+

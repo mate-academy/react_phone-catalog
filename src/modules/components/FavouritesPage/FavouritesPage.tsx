@@ -4,6 +4,7 @@
 
 //#region IMPORTS
 import { useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { useFavourites } from '@/modules/shared/utils/context/FavouritesContext';
 
@@ -25,6 +26,7 @@ const {
 export const FavouritesPage = () => {
   //#region DATA_FETCHING
   const { favourites } = useFavourites();
+  const { t } = useTranslation();
   //#endregion
 
   //#region URL_STATE & FILTERING
@@ -45,20 +47,24 @@ export const FavouritesPage = () => {
   //#region RENDER
   return (
     <div className={favouritesPage}>
-      <Breadcrumbs pageTitle="Favourites" />
+      <Breadcrumbs pageTitle={t('favourites.title')} />
 
-      <h1 className={favouritesTitle}>Favourites</h1>
+      <h1 className={favouritesTitle}>{t('favourites.title')}</h1>
 
       <span className={favouritesCount}>
-        {`${visibleProducts.length} ${visibleProducts.length === 1 ? 'item' : 'items'}`}
+        {t('favourites.count', { count: visibleProducts.length })}
       </span>
 
       {showEmptyFavourites && (
-        <p className={noProductsMessage}>There are no favourites yet</p>
+        <p className={noProductsMessage}>
+          {t('favourites.message.empty')}
+        </p>
       )}
 
       {showEmptySearch && (
-        <p className={noProductsMessage}>There are no matching products...</p>
+        <p className={noProductsMessage}>
+          {t('favourites.message.emptySearch')}
+        </p>
       )}
 
       {showProducts && (

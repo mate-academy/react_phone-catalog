@@ -5,6 +5,7 @@
 
   &Link {
     @include flex-center;
+    @include font-small;
 
     text-decoration: none;
     transition: opacity 0.3s ease;

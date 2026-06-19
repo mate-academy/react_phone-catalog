@@ -4,6 +4,7 @@
 
 //#region IMPORTS
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/modules/shared/components/ui/Button';
 
@@ -29,16 +30,18 @@ const {
   sliderDotActive,
 } = styles;
 
+
 const slides = [
-  { id: 1, image: bannerPhones, alt: 'Promo banner Phones' },
-  { id: 2, image: bannerTablets, alt: 'Promo banner Tablets' },
-  { id: 3, image: bannerAccessories, alt: 'Promo banner Accessories' },
+  { id: 1, image: bannerPhones },
+  { id: 2, image: bannerTablets },
+  { id: 3, image: bannerAccessories },
 ];
 //#endregion
 
 export const BannerSlider = () => {
   //#region STATE
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { t } = useTranslation();
   //#endregion
 
   //#region HANDLERS
@@ -64,10 +67,10 @@ export const BannerSlider = () => {
       <Button
         variant="icon"
         className={sliderArrow}
-        aria-label="Previous slide"
+        aria-label={t('bannerSlider.aria.prevSlide')}
         onClick={handlePrev}
       >
-        <img src={arrowLeft} alt="Arrow left" />
+        <img src={arrowLeft} alt={t('bannerSlider.alt.arrowLeft')} />
       </Button>
 
       <div className={sliderViewport}>
@@ -77,7 +80,10 @@ export const BannerSlider = () => {
         >
           {slides.map(item => (
             <div key={item.id} className={sliderSlide}>
-              <img src={item.image} alt={item.alt} />
+              <img
+                src={item.image}
+                alt={t(`bannerSlider.alt.banners.${item.id}`)}
+              />
             </div>
           ))}
         </div>
@@ -86,10 +92,10 @@ export const BannerSlider = () => {
       <Button
         variant="icon"
         className={sliderArrow}
-        aria-label="Next slide"
+        aria-label={t('bannerSlider.aria.nextSlide')}
         onClick={handleNext}
       >
-        <img src={arrowRight} alt="Arrow right" />
+        <img src={arrowRight} alt={t('bannerSlider.alt.arrowRight')} />
       </Button>
 
       <div className={sliderPagination}>
@@ -102,7 +108,7 @@ export const BannerSlider = () => {
               ${index === currentIndex ? sliderDotActive : ''}
             `}
             onClick={() => setCurrentIndex(index)}
-            aria-label={`Go to slide ${index + 1}`}
+            aria-label={`${t(`bannerSlider.aria.goTo`)} ${index + 1}`}
           />
         ))}
       </div>

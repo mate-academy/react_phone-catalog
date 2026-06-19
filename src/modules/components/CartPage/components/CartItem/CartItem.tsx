@@ -3,6 +3,7 @@
 
 //#region IMPORTS
 import { useCart } from '@/modules/shared/utils/context/CartContext';
+import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/modules/shared/components/ui/Button';
 import { CartItemType } from '@/modules/shared/utils/types';
@@ -36,6 +37,7 @@ interface Props {
 export const CartItem: React.FC<Props> = ({ cart }) => {
   //#region DATA_FETCHING
   const { removeCart, updateQuantity } = useCart();
+  const { t } = useTranslation();
   //#endregion
 
   //#region RENDER
@@ -46,15 +48,15 @@ export const CartItem: React.FC<Props> = ({ cart }) => {
           className={removeBtn}
           type="button"
           onClick={() => removeCart(cart.product.itemId)}
-          aria-label="Delete product from cart"
+          aria-label={t('cart.item.aria.removeBtn')}
         >
-          <img src={removeIcon} alt="Remove product from cart" />
+          <img src={removeIcon} alt={t('cart.item.alt.removeIcon')} />
         </button>
 
         <img
           className={productImage}
           src={cart.product.image}
-          alt={`Product image of ${cart.product.name}`}
+          alt={t('cart.item.alt.productImage', { name: cart.product.name })}
         />
 
         <p className={productName}>{cart.product.name}</p>
@@ -67,7 +69,7 @@ export const CartItem: React.FC<Props> = ({ cart }) => {
             className={quantityBtn}
             onClick={() => updateQuantity(cart.product.itemId, 'decrement')}
             disabled={cart.quantity <= 1}
-            aria-label="Decrease quantity"
+            aria-label={t('cart.item.aria.quantityDecreaseBtn')}
           >
             -
           </Button>
@@ -78,7 +80,7 @@ export const CartItem: React.FC<Props> = ({ cart }) => {
             variant="icon"
             className={quantityBtn}
             onClick={() => updateQuantity(cart.product.itemId, 'increment')}
-            aria-label="Increase quantity"
+            aria-label={t('cart.item.aria.quantityIncreaseBtn')}
           >
             +
           </Button>

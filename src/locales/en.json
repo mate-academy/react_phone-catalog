@@ -1,0 +1,222 @@
+{
+  "homePage": {
+    "title": "Welcome to Nice Gadgets store!",
+    "hidden": "Product Catalog",
+    "brandNew": "Brand new models",
+    "hotPrices": "Hot prices"
+  },
+  "categoriesSection": {
+    "title": "Shop by category",
+    "count": "models",
+    "names": {
+      "phones": "Mobile phones",
+      "tablets": "Tablets",
+      "accessories": "Accessories"
+    }
+  },
+  "bannerSlider": {
+    "aria": {
+      "prevSlide": "Previous slide",
+      "nextSlide": "Next slide",
+      "goTo": "Go to slide"
+    },
+    "alt": {
+      "arrowLeft": "Previous",
+      "arrowRight": "Next",
+      "banners": {
+        "1": "Promo banner Phones",
+        "2": "Promo banner Tablets",
+        "3": "Promo banner Accessories"
+      }
+    }
+  },
+  "productsSlider": {
+    "aria": {
+      "prevItems": "Previous items",
+      "nextItems": "Next items"
+    },
+    "alt": {
+      "arrowLeft": "Previous",
+      "arrowRight": "Next"
+    }
+  },
+  "header": {
+    "navigation": {
+      "home": "Home",
+      "phones": "Phones",
+      "tablets": "Tablets",
+      "accessories": "Accessories"
+    },
+    "logo": {
+      "logoIcon": "Nice Gadgets logo"
+    },
+    "actions": {
+      "aria": {
+        "theme": "Toggle theme"
+      },
+      "alt": {
+        "favourites": "Favourites icon",
+        "bag": "Bag icon",
+        "menu": "Menu icon"
+      }
+    },
+    "burgerMenu": {
+      "closeBtn": "Close menu",
+      "closeIcon": "Close icon"
+    }
+  },
+  "favourites": {
+    "title": "Favourites",
+    "count_one": "{{count}} item",
+    "count_other": "{{count}} items",
+    "message": {
+      "empty": "There are no favourites yet",
+      "emptySearch": "There are no matching products..."
+    }
+  },
+  "footer": {
+    "logo": {
+      "alt": "Nice Gadgets logo"
+    },
+    "nav": {
+      "github": "GitHub",
+      "contacts": "Contacts",
+      "rights": "Rights"
+    },
+    "back": {
+      "text": "Back to top",
+      "aria": "Back to top button",
+      "icon": "Back to top icon"
+    }
+  },
+  "cart": {
+    "page": {
+      "title": "Cart",
+      "emptyMessage": "Your cart is empty"
+    },
+    "total": {
+      "checkoutBtn": "Checkout",
+      "confirmation": "Checkout is not implemented yet. Do you want to clear the Cart?",
+      "countSummary_one": "Total for {{count}} item",
+      "countSummary_other": "Total for {{count}} items"
+    },
+    "item": {
+      "aria": {
+        "removeBtn": "Remove product from cart",
+        "quantityDecreaseBtn": "Decrease quantity",
+        "quantityIncreaseBtn": "Increase quantity"
+      },
+      "alt": {
+        "removeIcon": "Remove product from cart",
+        "productImage": "Product image of {{name}}"
+      }
+    }
+  },
+  "productsPage": {
+    "count_one": "{{count}} model",
+    "count_other": "{{count}} models",
+    "message": {
+      "noCategory": "There are no {{category}} yet",
+      "noProducts": "There are no matching products..."
+    }
+  },
+  "productDetailsPage": {
+    "errorMessage": "Product was not found",
+    "sliderTitle": "You may also ",
+    "gallery": {
+      "thumbnail": "Product thumbnail {{number}}",
+      "preview": "Product preview"
+    },
+    "actions": {
+      "title": {
+        "color": "Available colors",
+        "capacity": "Select capacity",
+        "size": "Select size"
+      },
+      "cart": {
+        "btnAria": "Add to cart",
+        "btnText": "Add to cart",
+        "btnText_active": "Added to cart"
+      },
+      "favourite": {
+        "btnAria": "Add to favourites",
+        "btnAria_active": "Remove from favorites"
+      },
+      "shortSpecs": {
+        "screen": "Screen",
+        "resolution": "Resolution",
+        "processor": "Processor",
+        "ram": "Ram"
+      }
+    },
+    "about": {
+      "title": "About"
+    },
+    "techSpecs": {
+      "title": "Tech Specs",
+      "label": {
+        "screen": "Screen",
+        "resolution": "Resolution",
+        "processor": "Processor",
+        "ram": "RAM",
+        "capacity": "Capacity",
+        "size": "Size",
+        "builtInMemory": "Built-in memory",
+        "camera": "Camera",
+        "zoom": "Zoom",
+        "cell": "Cell"
+      },
+      "value": {
+        "wifiOnly": "Wi-Fi only"
+      }
+    }
+  },
+  "notFoundPage": {
+    "title": "Page not found",
+    "subtitle": "Looks like you've got lost. The page you are looking for does not exist.",
+    "goHome": "Go to home"
+  },
+  "pageTitles": {
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories"
+  },
+  "pagination": {
+    "aria": {
+      "previous": "Previous page",
+      "next": "Next page",
+      "page": "Go to page {{page}}"
+    },
+    "alt": {
+      "arrowLeft": "Previous",
+      "arrowRight": "Next"
+    }
+  },
+  "filters": {
+    "sort": {
+      "title": "Sort By",
+      "options": {
+        "age": "Newest",
+        "title": "Alphabetically",
+        "price": "Cheapest"
+      }
+    },
+    "perPage": {
+      "title": "Items on page",
+      "options": {
+        "all": "All"
+      }
+    }
+  },
+  "searchInput": {
+    "placeholder": "Search...",
+    "alt": "Search"
+  },
+  "errorMessage": {
+    "default": "Something went wrong. Please try again later.",
+    "tryAgain": "Try again"
+  },
+  "backButton": {
+    "text": "Back"
+  }
+}

@@ -3,6 +3,8 @@
 /* eslint-disable import/extensions */
 
 //#region IMPORTS
+import { useTranslation } from 'react-i18next';
+
 import { Button } from '@/modules/shared/components/ui/Button';
 
 import arrowLeft from '@/assets/svg/arrow-left.svg';
@@ -33,6 +35,10 @@ export const Pagination: React.FC<Props> = ({
   totalPages,
   onPageChange,
 }) => {
+  //#region HOOKS
+  const { t } = useTranslation();
+  //#endregion
+
   //#region LOGIC
   const getVisiblePages = () => {
     // Сторінок мало (5 або менше). Показуємо всі цифри підряд.
@@ -65,16 +71,16 @@ export const Pagination: React.FC<Props> = ({
         className={paginationArrow}
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        aria-label="Previous page"
+        aria-label={t('pagination.aria.previous')}
       >
-        <img src={arrowLeft} alt="Previous" />
+        <img src={arrowLeft} alt={t('pagination.alt.arrowLeft')} />
       </Button>
 
       <div className={paginationPages}>
         {visiblePages.map((page, index) => {
           if (page === '...') {
             return (
-              <span key={`ellipsis-${index}`} className={paginationEllipsis}>
+              <span key={index} className={paginationEllipsis}>
                 ...
               </span>
             );
@@ -89,6 +95,7 @@ export const Pagination: React.FC<Props> = ({
                 ${page === currentPage ? paginationBtnActive : ''}
               `}
               onClick={() => onPageChange(Number(page))}
+              aria-label={t('pagination.aria.page', { page })}
             >
               <span>{page}</span>
             </Button>
@@ -101,9 +108,9 @@ export const Pagination: React.FC<Props> = ({
         className={paginationArrow}
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        aria-label="Next page"
+        aria-label={t('pagination.aria.next')}
       >
-        <img src={arrowRight} alt="Next" />
+        <img src={arrowRight} alt={t('pagination.alt.arrowRight')} />
       </Button>
     </div>
   );

@@ -2,6 +2,7 @@
 
 //#region IMPORTS
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import arrowLeft from '@/assets/svg/arrow-left.svg';
 
@@ -19,6 +20,7 @@ const {
 
 export const BackButton = () => {
   //#region STATE_&_HOOKS
+  const { t } = useTranslation();
   const navigate = useNavigate();
   //#endregion STATE_&_HOOKS
 
@@ -31,9 +33,9 @@ export const BackButton = () => {
     <div className={backButton}>
       <button className={backButtonBtn} type="button" onClick={navigateBack}>
         <div className={backButtonIcon} aria-hidden="true">
-          <img src={arrowLeft} alt="" />
+          <img src={arrowLeft}/>
         </div>
-        <span className={backButtonText}>Back</span>
+        <span className={backButtonText}>{t('backButton.text')}</span>
       </button>
     </div>
   );

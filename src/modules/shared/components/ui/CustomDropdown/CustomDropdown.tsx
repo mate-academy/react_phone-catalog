@@ -80,7 +80,6 @@ export const CustomDropdown: React.FC<Props> = ({
         <img
           src={arrowDown}
           className={`${dropdownArrow} ${isOpen ? dropdownArrowActive : ''}`}
-          alt=""
           aria-hidden="true"
         />
       </button>

@@ -3,6 +3,7 @@
 //#region IMPORTS
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import IconSearch from '@/assets/svg/search.svg';
 
@@ -19,6 +20,7 @@ const {
 
 export const SearchInput = () => {
   //#region STATE
+  const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const urlQuery = searchParams.get('query') || '';
@@ -55,7 +57,7 @@ export const SearchInput = () => {
       <input
         className={searchField}
         type="text"
-        placeholder="Search..."
+        placeholder={t('searchInput.placeholder')}
         value={query}
         onChange={e => setQuery(e.target.value)}
       />
@@ -63,7 +65,7 @@ export const SearchInput = () => {
       <img
         className={searchIcon}
         src={IconSearch}
-        alt="Search"
+        alt={t('searchInput.alt')}
       />
     </div>
   );

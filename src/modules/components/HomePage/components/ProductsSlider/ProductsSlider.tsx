@@ -4,6 +4,7 @@
 
 //#region IMPORTS
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { ProductsSliderSkeleton } from './ProductsSliderSkeleton';
 
@@ -45,14 +46,23 @@ export const ProductsSlider: React.FC<Props> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(4);
   const [stepWidth, setStepWidth] = useState(0);
+  const { t } = useTranslation();
+  //#endregion
 
+  //#region EFFECTS
   useEffect(() => {
     const rootStyles = getComputedStyle(document.documentElement);
 
     const gap = parseInt(rootStyles.getPropertyValue('--grid-gap-column'));
-    const desktopWidth = parseInt(rootStyles.getPropertyValue('--card-width-desktop'));
-    const tabletWidth = parseInt(rootStyles.getPropertyValue('--card-width-tablet'));
-    const mobileWidth = parseInt(rootStyles.getPropertyValue('--card-width-mobile'));
+    const desktopWidth = parseInt(
+      rootStyles.getPropertyValue('--card-width-desktop'),
+    );
+    const tabletWidth = parseInt(
+      rootStyles.getPropertyValue('--card-width-tablet'),
+    );
+    const mobileWidth = parseInt(
+      rootStyles.getPropertyValue('--card-width-mobile'),
+    );
 
     const handleResize = () => {
       const width = window.innerWidth;
@@ -97,9 +107,7 @@ export const ProductsSlider: React.FC<Props> = ({
 
   //#region RENDER
   if (isLoading) {
-    return (
-      <ProductsSliderSkeleton title={title} />
-    );
+    return <ProductsSliderSkeleton title={title} />;
   }
 
   return (
@@ -111,17 +119,17 @@ export const ProductsSlider: React.FC<Props> = ({
             variant="icon"
             onClick={handlePrev}
             disabled={currentIndex === 0}
-            aria-label="Previous items"
+            aria-label={t('productsSlider.aria.prevItems')}
           >
-            <img src={arrowLeft} alt="Previous" />
+            <img src={arrowLeft} alt={t('productsSlider.alt.arrowLeft')} />
           </Button>
           <Button
             variant="icon"
             onClick={handleNext}
             disabled={currentIndex === maxIndex}
-            aria-label="Next items"
+            aria-label={t('productsSlider.aria.nextItems')}
           >
-            <img src={arrowRight} alt="Next" />
+            <img src={arrowRight} alt={t('productsSlider.alt.arrowRight')} />
           </Button>
         </div>
       </div>

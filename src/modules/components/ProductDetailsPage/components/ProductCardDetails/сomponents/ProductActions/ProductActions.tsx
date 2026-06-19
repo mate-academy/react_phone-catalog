@@ -3,14 +3,14 @@
 /* eslint-disable prettier/prettier */
 
 //#region IMPORTS
-import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { useProducts } from '@/modules/shared/utils/context/ProductsContext';
 import { useFavourites } from '@/modules/shared/utils/context/FavouritesContext';
 import { useCart } from '@/modules/shared/utils/context/CartContext';
 
-import { ProductDetailsType, ProductType } from '@/modules/shared/utils/types';
+import { ProductDetailsType } from '@/modules/shared/utils/types';
 import { PRODUCT_COLORS_MAP as COLORS } from '@/modules/shared/utils/constants';
 
 import { Button } from '@/modules/shared/components/ui/Button';
@@ -62,10 +62,11 @@ interface Props {
 }
 
 export const ProductActions: React.FC<Props> = ({ product }) => {
-  //#region DATA_FETCHING
+  //#region HOOKS_&_DATA_FETCHING
   const { products, productsDetails } = useProducts();
   const { toggleFavourite, isFavourite } = useFavourites();
   const { addToCart, isInCart } = useCart();
+  const { t } = useTranslation();
   //#endregion DATA_FETCHING
 
   //#region PRODUCT_CONFIGS
@@ -76,21 +77,23 @@ export const ProductActions: React.FC<Props> = ({ product }) => {
   const isActiveFavourite = isFavourite(product.id);
   const isActiveCart = isInCart(product.id);
 
-  const categoryProducts: ProductDetailsType[] = useMemo(() => {
-    return productsDetails.filter(item => item.category === product.category);
-  }, [productsDetails, product.category]);
+  const capacityTitleKey = product.category === 'accessories' ? 'size' : 'capacity';
 
-  const baseProduct: ProductType | undefined = useMemo(() => {
-    return products.find(item => item.itemId === product.id);
-  }, [products, product.id]);
+  const categoryProducts = productsDetails.filter(
+    item => item.category === product.category
+  );
+
+  const baseProduct = products.find(
+    item => item.itemId === product.id
+  );
   //#endregion PRODUCT_CONFINGS
 
   //#region TECH_SPECS_DATA
   const shortSpecs = {
-    Screen: product.screen,
-    Resolution: product.resolution,
-    Processor: product.processor,
-    RAM: product.ram,
+    screen : product.screen,
+    resolution: product.resolution,
+    processor: product.processor,
+    ram: product.ram,
   };
   //#endregion TECH_SPECS_DATA
 
@@ -124,7 +127,9 @@ export const ProductActions: React.FC<Props> = ({ product }) => {
   return (
     <div className={actionsContainer}>
       <div className={colorsBlock}>
-        <p className={colorsTitle}>Available colors</p>
+        <p className={colorsTitle}>
+          {t('productDetailsPage.actions.title.color')}
+        </p>
         <div className={colorsList}>
           {product.colorsAvailable.map((color: string) => {
             const colorKey = normalize(color);
@@ -146,7 +151,9 @@ export const ProductActions: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className={capacityBlock}>
-        <p className={capacityTitle}>Select capacity</p>
+        <p className={capacityTitle}>
+          {t(`productDetailsPage.actions.title.${capacityTitleKey}`)}
+        </p>
         <div className={capacityList}>
           {product.capacityAvailable.map((capacity: string) => (
             <Link
@@ -181,9 +188,11 @@ export const ProductActions: React.FC<Props> = ({ product }) => {
               addToCart(baseProduct);
             }
           }}
-          aria-label={isActiveCart ? 'Remove from cart' : 'Add to cart'}
+          aria-label={!isActiveCart ? t('productDetailsPage.actions.cart.btnAria') : ''}
         >
-          {isActiveCart ? 'Added to cart' : 'Add to cart'}
+          {t('productDetailsPage.actions.cart.btnText', {
+            context: isActiveCart ? 'active' : '',
+          })}
         </Button>
 
         <Button
@@ -191,9 +200,9 @@ export const ProductActions: React.FC<Props> = ({ product }) => {
           isSelected={isActiveFavourite}
           className={buttonFavourite}
           onClick={() => baseProduct && toggleFavourite(baseProduct)}
-          aria-label={
-            isActiveFavourite ? 'Remove from favorites' : 'Add to favorites'
-          }
+          aria-label={t('productDetailsPage.actions.favourite.btnAria', {
+            context: isActiveFavourite ? 'active' : '',
+          })}
         >
           <img src={isActiveFavourite ? favouriteIconActive : favouriteIcon} />
         </Button>
@@ -202,7 +211,9 @@ export const ProductActions: React.FC<Props> = ({ product }) => {
       <div className={shortSpecsBlock}>
         {Object.entries(shortSpecs).map(([key, value]) => (
           <div key={key} className={specBlock}>
-            <p className={specTitle}>{key}</p>
+            <p className={specTitle}>
+              {t(`productDetailsPage.actions.shortSpecs.${key}`)}
+            </p>
             <p className={specValue}>{value}</p>
           </div>
         ))}

@@ -4,6 +4,7 @@
 
 //#region IMPORTS
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { useProducts } from '@/modules/shared/utils/context/ProductsContext';
 import { CategoryType } from '@/modules/shared/utils/types';
@@ -28,43 +29,23 @@ const {
 } = styles;
 
 const categories:
-  Array<{
-    id: CategoryType,
-    name: string,
-    image: string,
-    path: string,
-  }>
-  = [
-  {
-    id: 'phones',
-    name: 'Mobile phones',
-    image: phonesImg,
-    path: '/phones',
-  },
-  {
-    id: 'tablets',
-    name: 'Tablets',
-    image: tabletsImg,
-    path: '/tablets',
-  },
-  {
-    id: 'accessories',
-    name: 'Accessories',
-    image: accessoriesImg,
-    path: '/accessories',
-  },
+  Array<{ id: CategoryType, image: string, path: string }> = [
+  { id: 'phones', image: phonesImg, path: '/phones' },
+  { id: 'tablets', image: tabletsImg, path: '/tablets' },
+  { id: 'accessories', image: accessoriesImg, path: '/accessories' },
 ];
 //#endregion
 
 export const CategoriesSection = () => {
   //#region STATE
-  const { categoryCount} = useProducts();
+  const { categoryCount } = useProducts();
+  const { t } = useTranslation();
   //#endregion
 
   //#region RENDER
   return (
     <div className={categoriesContainer}>
-      <h2 className={categoriesTitle}>Shop by category</h2>
+      <h2 className={categoriesTitle}>{t('categoriesSection.title')}</h2>
 
       <div className={categoriesGrid}>
         {categories.map((category) => (
@@ -76,13 +57,15 @@ export const CategoriesSection = () => {
             <div className={categoriesImageWrapper}>
               <img
                 src={category.image}
-                alt={category.name}
+                alt={t(`categoriesSection.names.${category.id}`)}
                 className={categoriesImage}
               />
             </div>
-            <h3 className={categoriesName}>{category.name}</h3>
+            <h3 className={categoriesName}>
+              {t(`categoriesSection.names.${category.id}`)}
+            </h3>
             <span className={categoriesCount}>
-              {categoryCount[category.id] || 0} models
+              {categoryCount[category.id] || 0} {t('categoriesSection.count')}
             </span>
           </Link>
         ))}

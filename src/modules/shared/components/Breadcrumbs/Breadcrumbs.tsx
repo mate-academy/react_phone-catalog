@@ -3,6 +3,7 @@
 
 //#region IMPORTS
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import arrowRight from '@/assets/svg/arrow-right-gray.svg';
 import homeIcon from '@/assets/svg/home.svg';
@@ -23,14 +24,23 @@ const {
 
 interface Props {
   pageTitle: string;
+  pagePath?: string;
   productName?: string;
 }
 
-export const Breadcrumbs: React.FC<Props> = ({ pageTitle, productName }) => {
+export const Breadcrumbs: React.FC<Props> = ({ pageTitle, pagePath, productName }) => {
+  //#region HOOKS
+  const { t } = useTranslation();
+  //#endregion
+
   //#region HANDLERS_&_HELPERS
   const editedPageTitle = pageTitle
     ? pageTitle.charAt(0).toUpperCase() + pageTitle.slice(1)
     : '';
+
+  const targetPath = pagePath
+    ? `/${pagePath}`
+    : `${pageTitle.toLowerCase()}`;
   //#endregion HANDLERS_&_HELPERS
 
   //#region RENDER
@@ -38,7 +48,11 @@ export const Breadcrumbs: React.FC<Props> = ({ pageTitle, productName }) => {
     <nav className={breadcrumbs} aria-label="breadcrumb">
       {/* 1 рівень: Головна */}
       <Link className={breadcrumbsLink} to="/">
-        <img className={breadcrumbsIcon} src={homeIcon} alt="Home" />
+        <img
+          className={breadcrumbsIcon}
+          src={homeIcon}
+          alt={t('header.navigation.home')}
+        />
       </Link>
 
       <div className={breadcrumbsArrow} aria-hidden="true">
@@ -50,7 +64,7 @@ export const Breadcrumbs: React.FC<Props> = ({ pageTitle, productName }) => {
         <>
           <Link
             className={`${breadcrumbsLink} ${breadcrumbsLinkActive}`}
-            to={`/${pageTitle.toLowerCase()}`}
+            to={targetPath}
           >
             {editedPageTitle}
           </Link>
@@ -64,7 +78,10 @@ export const Breadcrumbs: React.FC<Props> = ({ pageTitle, productName }) => {
       )}
 
       {/* 3 рівень: Назва продукту */}
-      {productName && <span className={breadcrumbsText}>{productName}</span>}
+      {productName &&
+        <span className={breadcrumbsText}>
+          {productName}
+        </span>}
     </nav>
   );
   //#endregion RENDER

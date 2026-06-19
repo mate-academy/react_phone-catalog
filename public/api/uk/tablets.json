@@ -3,15 +3,15 @@
     "id": "apple-ipad-pro-11-2021-128gb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
-    "name": "Apple iPad Pro 11 (2021) 128GB Космічний сірий",
+    "name": "Apple iPad Pro 11 (2021) 128GB Space Gray",
     "capacityAvailable": [
-      "128 ГБ",
-      "256 ГБ",
-      "512 ГБ",
-      "1 ТБ",
-      "2 ТБ"
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
     ],
-    "capacity": "128 ГБ",
+    "capacity": "128GB",
     "priceRegular": 799,
     "priceDiscount": 749,
     "colorsAvailable": [
@@ -50,26 +50,26 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "8 ГБ",
-    "camera": "12 Мп + 12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "8GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-pro-11-2021-256gb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
-    "name": "Apple iPad Pro 11 (2021) 256GB Космічний сірий",
+    "name": "Apple iPad Pro 11 (2021) 256GB Space Gray",
     "capacityAvailable": [
-      "128 ГБ",
-      "256 ГБ",
-      "512 ГБ",
-      "1 ТБ",
-      "2 ТБ"
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
     ],
-    "capacity": "256 ГБ",
+    "capacity": "256GB",
     "priceRegular": 829,
     "priceDiscount": 799,
     "colorsAvailable": [
@@ -108,26 +108,26 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "8 ГБ",
-    "camera": "12 Мп + 12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "8GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-pro-11-2021-512gb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
-    "name": "Apple iPad Pro 11 (2021) 512GB Космічний сірий",
+    "name": "Apple iPad Pro 11 (2021) 512GB Space Gray",
     "capacityAvailable": [
-      "128 ГБ",
-      "256 ГБ",
-      "512 ГБ",
-      "1 ТБ",
-      "2 ТБ"
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
     ],
-    "capacity": "512 ГБ",
+    "capacity": "512GB",
     "priceRegular": 869,
     "priceDiscount": 819,
     "colorsAvailable": [
@@ -166,26 +166,26 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "8 ГБ",
-    "camera": "12 Мп + 12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "8GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-pro-11-2021-1tb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
-    "name": "Apple iPad Pro 11 (2021) 1TB Космічний сірий",
+    "name": "Apple iPad Pro 11 (2021) 1TB Space Gray",
     "capacityAvailable": [
-      "128 ГБ",
-      "256 ГБ",
-      "512 ГБ",
-      "1 ТБ",
-      "2 ТБ"
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
     ],
-    "capacity": "1 ТБ",
+    "capacity": "1TB",
     "priceRegular": 899,
     "priceDiscount": 879,
     "colorsAvailable": [
@@ -224,26 +224,26 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "16 ГБ",
-    "camera": "12 Мп + 12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "16GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-pro-11-2021-2tb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
-    "name": "Apple iPad Pro 11 (2021) 2TB Космічний сірий",
+    "name": "Apple iPad Pro 11 (2021) 2TB Space Gray",
     "capacityAvailable": [
-      "128 ГБ",
-      "256 ГБ",
-      "512 ГБ",
-      "1 ТБ",
-      "2 ТБ"
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
     ],
-    "capacity": "2 ТБ",
+    "capacity": "2TB",
     "priceRegular": 999,
     "priceDiscount": 939,
     "colorsAvailable": [
@@ -282,26 +282,26 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "16 ГБ",
-    "camera": "12 Мп + 12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "16GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-pro-11-2021-128gb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
-    "name": "Apple iPad Pro 11 (2021) 128GB Сріблястий",
+    "name": "Apple iPad Pro 11 (2021) 128GB Silver",
     "capacityAvailable": [
-      "128 ГБ",
-      "256 ГБ",
-      "512 ГБ",
-      "1 ТБ",
-      "2 ТБ"
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
     ],
-    "capacity": "128 ГБ",
+    "capacity": "128GB",
     "priceRegular": 799,
     "priceDiscount": 749,
     "colorsAvailable": [
@@ -340,26 +340,26 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "8 ГБ",
-    "camera": "12 Мп + 12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "8GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-pro-11-2021-256gb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
-    "name": "Apple iPad Pro 11 (2021) 256GB Сріблястий",
+    "name": "Apple iPad Pro 11 (2021) 256GB Silver",
     "capacityAvailable": [
-      "128 ГБ",
-      "256 ГБ",
-      "512 ГБ",
-      "1 ТБ",
-      "2 ТБ"
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
     ],
-    "capacity": "256 ГБ",
+    "capacity": "256GB",
     "priceRegular": 829,
     "priceDiscount": 799,
     "colorsAvailable": [
@@ -398,26 +398,26 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "8 ГБ",
-    "camera": "12 Мп + 12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "8GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-pro-11-2021-512gb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
-    "name": "Apple iPad Pro 11 (2021) 512GB Сріблястий",
+    "name": "Apple iPad Pro 11 (2021) 512GB Silver",
     "capacityAvailable": [
-      "128 ГБ",
-      "256 ГБ",
-      "512 ГБ",
-      "1 ТБ",
-      "2 ТБ"
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
     ],
-    "capacity": "512 ГБ",
+    "capacity": "512GB",
     "priceRegular": 869,
     "priceDiscount": 819,
     "colorsAvailable": [
@@ -456,26 +456,26 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "8 ГБ",
-    "camera": "12 Мп + 12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "8GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-pro-11-2021-1tb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
-    "name": "Apple iPad Pro 11 (2021) 1TB Сріблястий",
+    "name": "Apple iPad Pro 11 (2021) 1TB Silver",
     "capacityAvailable": [
-      "128 ГБ",
-      "256 ГБ",
-      "512 ГБ",
-      "1 ТБ",
-      "2 ТБ"
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
     ],
-    "capacity": "1 ТБ",
+    "capacity": "1TB",
     "priceRegular": 899,
     "priceDiscount": 879,
     "colorsAvailable": [
@@ -514,26 +514,26 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "16 ГБ",
-    "camera": "12 Мп + 12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "16GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-pro-11-2021-2tb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
-    "name": "Apple iPad Pro 11 (2021) 2TB Сріблястий",
+    "name": "Apple iPad Pro 11 (2021) 2TB Silver",
     "capacityAvailable": [
-      "128 ГБ",
-      "256 ГБ",
-      "512 ГБ",
-      "1 ТБ",
-      "2 ТБ"
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
     ],
-    "capacity": "2 ТБ",
+    "capacity": "2TB",
     "priceRegular": 999,
     "priceDiscount": 939,
     "colorsAvailable": [
@@ -572,23 +572,23 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "16 ГБ",
-    "camera": "12 Мп + 12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "16GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-air-4th-gen-256gb-rose-gold",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
-    "name": "Apple iPad Air (4th Gen) 256GB Рожеве золото",
+    "name": "Apple iPad Air (4th Gen) 256GB Rose Gold",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "256 ГБ",
+    "capacity": "256GB",
     "priceRegular": 749,
     "priceDiscount": 699,
     "colorsAvailable": [
@@ -630,23 +630,23 @@
     "screen": "10.9' Liquid Retina",
     "resolution": "2360x1640",
     "processor": "Apple A14 Bionic",
-    "ram": "4 ГБ",
-    "camera": "12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-air-4th-gen-64gb-rose-gold",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
-    "name": "Apple iPad Air (4th Gen) 64GB Рожеве золото",
+    "name": "Apple iPad Air (4th Gen) 64GB Rose Gold",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "64 ГБ",
+    "capacity": "64GB",
     "priceRegular": 599,
     "priceDiscount": 549,
     "colorsAvailable": [
@@ -688,23 +688,23 @@
     "screen": "10.9' Liquid Retina",
     "resolution": "2360x1640",
     "processor": "Apple A14 Bionic",
-    "ram": "4 ГБ",
-    "camera": "12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-air-4th-gen-64gb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
-    "name": "Apple iPad Air (4th Gen) 64GB Сріблястий",
+    "name": "Apple iPad Air (4th Gen) 64GB Silver",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "64 ГБ",
+    "capacity": "64GB",
     "priceRegular": 599,
     "priceDiscount": 549,
     "colorsAvailable": [
@@ -746,23 +746,23 @@
     "screen": "10.9' Liquid Retina",
     "resolution": "2360x1640",
     "processor": "Apple A14 Bionic",
-    "ram": "4 ГБ",
-    "camera": "12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-air-4th-gen-256gb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
-    "name": "Apple iPad Air (4th Gen) 256GB Сріблястий",
+    "name": "Apple iPad Air (4th Gen) 256GB Silver",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "256 ГБ",
+    "capacity": "256GB",
     "priceRegular": 749,
     "priceDiscount": 699,
     "colorsAvailable": [
@@ -804,23 +804,23 @@
     "screen": "10.9' Liquid Retina",
     "resolution": "2360x1640",
     "processor": "Apple A14 Bionic",
-    "ram": "4 ГБ",
-    "camera": "12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-air-4th-gen-256gb-green",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
-    "name": "Apple iPad Air (4th Gen) 256GB Зелений",
+    "name": "Apple iPad Air (4th Gen) 256GB Green",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "256 ГБ",
+    "capacity": "256GB",
     "priceRegular": 749,
     "priceDiscount": 699,
     "colorsAvailable": [
@@ -862,23 +862,23 @@
     "screen": "10.9' Liquid Retina",
     "resolution": "2360x1640",
     "processor": "Apple A14 Bionic",
-    "ram": "4 ГБ",
-    "camera": "12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-air-4th-gen-64gb-green",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
-    "name": "Apple iPad Air (4th Gen) 64GB Зелений",
+    "name": "Apple iPad Air (4th Gen) 64GB Green",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "64 ГБ",
+    "capacity": "64GB",
     "priceRegular": 599,
     "priceDiscount": 549,
     "colorsAvailable": [
@@ -920,23 +920,23 @@
     "screen": "10.9' Liquid Retina",
     "resolution": "2360x1640",
     "processor": "Apple A14 Bionic",
-    "ram": "4 ГБ",
-    "camera": "12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-air-4th-gen-64gb-sky-blue",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
-    "name": "Apple iPad Air (4th Gen) 64GB Небесно-блакитний",
+    "name": "Apple iPad Air (4th Gen) 64GB Sky Blue",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "64 ГБ",
+    "capacity": "64GB",
     "priceRegular": 599,
     "priceDiscount": 549,
     "colorsAvailable": [
@@ -978,23 +978,23 @@
     "screen": "10.9' Liquid Retina",
     "resolution": "2360x1640",
     "processor": "Apple A14 Bionic",
-    "ram": "4 ГБ",
-    "camera": "12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-air-4th-gen-256gb-sky-blue",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
-    "name": "Apple iPad Air (4th Gen) 256GB Небесно-блакитний",
+    "name": "Apple iPad Air (4th Gen) 256GB Sky Blue",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "256 ГБ",
+    "capacity": "256GB",
     "priceRegular": 749,
     "priceDiscount": 699,
     "colorsAvailable": [
@@ -1036,23 +1036,23 @@
     "screen": "10.9' Liquid Retina",
     "resolution": "2360x1640",
     "processor": "Apple A14 Bionic",
-    "ram": "4 ГБ",
-    "camera": "12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-mini-6th-gen-64gb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-6th-gen",
-    "name": "Apple iPad Mini (6th Gen) 64GB Космічний сірий",
+    "name": "Apple iPad Mini (6th Gen) 64GB Space Gray",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "64 ГБ",
+    "capacity": "64GB",
     "priceRegular": 499,
     "priceDiscount": 469,
     "colorsAvailable": [
@@ -1092,23 +1092,23 @@
     "screen": "8.3' Liquid Retina",
     "resolution": "2266x1488",
     "processor": "Apple A15 Bionic",
-    "ram": "4 ГБ",
-    "camera": "12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-mini-6th-gen-256gb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-6th-gen",
-    "name": "Apple iPad Mini (6th Gen) 256GB Космічний сірий",
+    "name": "Apple iPad Mini (6th Gen) 256GB Space Gray",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "256 ГБ",
+    "capacity": "256GB",
     "priceRegular": 649,
     "priceDiscount": 599,
     "colorsAvailable": [
@@ -1148,23 +1148,23 @@
     "screen": "8.3' Liquid Retina",
     "resolution": "2266x1488",
     "processor": "Apple A15 Bionic",
-    "ram": "4 ГБ",
-    "camera": "12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-mini-6th-gen-256gb-starlight",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-6th-gen",
-    "name": "Apple iPad Mini (6th Gen) 256GB Зоряне сяйво",
+    "name": "Apple iPad Mini (6th Gen) 256GB Starlight",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "256 ГБ",
+    "capacity": "256GB",
     "priceRegular": 649,
     "priceDiscount": 599,
     "colorsAvailable": [
@@ -1204,23 +1204,23 @@
     "screen": "8.3' Liquid Retina",
     "resolution": "2266x1488",
     "processor": "Apple A15 Bionic",
-    "ram": "4 ГБ",
-    "camera": "12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-mini-6th-gen-64gb-starlight",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-6th-gen",
-    "name": "Apple iPad Mini (6th Gen) 64GB Зоряне сяйво",
+    "name": "Apple iPad Mini (6th Gen) 64GB Starlight",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "64 ГБ",
+    "capacity": "64GB",
     "priceRegular": 499,
     "priceDiscount": 469,
     "colorsAvailable": [
@@ -1260,23 +1260,23 @@
     "screen": "8.3' Liquid Retina",
     "resolution": "2266x1488",
     "processor": "Apple A15 Bionic",
-    "ram": "4 ГБ",
-    "camera": "12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-mini-6th-gen-64gb-pink",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-6th-gen",
-    "name": "Apple iPad Mini (6th Gen) 64GB Рожевий",
+    "name": "Apple iPad Mini (6th Gen) 64GB Pink",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "64 ГБ",
+    "capacity": "64GB",
     "priceRegular": 499,
     "priceDiscount": 469,
     "colorsAvailable": [
@@ -1316,23 +1316,23 @@
     "screen": "8.3' Liquid Retina",
     "resolution": "2266x1488",
     "processor": "Apple A15 Bionic",
-    "ram": "4 ГБ",
-    "camera": "12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-mini-6th-gen-256gb-pink",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-6th-gen",
-    "name": "Apple iPad Mini (6th Gen) 256GB Рожевий",
+    "name": "Apple iPad Mini (6th Gen) 256GB Pink",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "256 ГБ",
+    "capacity": "256GB",
     "priceRegular": 649,
     "priceDiscount": 619,
     "colorsAvailable": [
@@ -1372,23 +1372,23 @@
     "screen": "8.3' Liquid Retina",
     "resolution": "2266x1488",
     "processor": "Apple A15 Bionic",
-    "ram": "4 ГБ",
-    "camera": "12 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-10-2-2020-128gb-gold",
     "category": "tablets",
     "namespaceId": "apple-ipad-10-2-2020",
-    "name": "Apple iPad 10.2 (2020) 128GB Золотистий",
+    "name": "Apple iPad 10.2 (2020) 128GB Gold",
     "capacityAvailable": [
-      "32 ГБ",
-      "128 ГБ"
+      "32GB",
+      "128GB"
     ],
-    "capacity": "128 ГБ",
+    "capacity": "128GB",
     "priceRegular": 429,
     "priceDiscount": 399,
     "colorsAvailable": [
@@ -1429,23 +1429,23 @@
     "screen": "10.2' Retina",
     "resolution": "2160x1620",
     "processor": "Apple A12 Bionic",
-    "ram": "3 ГБ",
-    "camera": "8 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-10-2-2020-32gb-gold",
     "category": "tablets",
     "namespaceId": "apple-ipad-10-2-2020",
-    "name": "Apple iPad 10.2 (2020) 32GB Золотистий",
+    "name": "Apple iPad 10.2 (2020) 32GB Gold",
     "capacityAvailable": [
-      "32 ГБ",
-      "128 ГБ"
+      "32GB",
+      "128GB"
     ],
-    "capacity": "32 ГБ",
+    "capacity": "32GB",
     "priceRegular": 329,
     "priceDiscount": 299,
     "colorsAvailable": [
@@ -1486,23 +1486,23 @@
     "screen": "10.2' Retina",
     "resolution": "2160x1620",
     "processor": "Apple A12 Bionic",
-    "ram": "3 ГБ",
-    "camera": "8 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-10-2-2020-32gb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-10-2-2020",
-    "name": "Apple iPad 10.2 (2020) 32GB Сріблястий",
+    "name": "Apple iPad 10.2 (2020) 32GB Silver",
     "capacityAvailable": [
-      "32 ГБ",
-      "128 ГБ"
+      "32GB",
+      "128GB"
     ],
-    "capacity": "32 ГБ",
+    "capacity": "32GB",
     "priceRegular": 329,
     "priceDiscount": 299,
     "colorsAvailable": [
@@ -1543,23 +1543,23 @@
     "screen": "10.2' Retina",
     "resolution": "2160x1620",
     "processor": "Apple A12 Bionic",
-    "ram": "3 ГБ",
-    "camera": "8 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-10-2-2020-128gb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-10-2-2020",
-    "name": "Apple iPad 10.2 (2020) 128GB Сріблястий",
+    "name": "Apple iPad 10.2 (2020) 128GB Silver",
     "capacityAvailable": [
-      "32 ГБ",
-      "128 ГБ"
+      "32GB",
+      "128GB"
     ],
-    "capacity": "128 ГБ",
+    "capacity": "128GB",
     "priceRegular": 429,
     "priceDiscount": 399,
     "colorsAvailable": [
@@ -1600,23 +1600,23 @@
     "screen": "10.2' Retina",
     "resolution": "2160x1620",
     "processor": "Apple A12 Bionic",
-    "ram": "3 ГБ",
-    "camera": "8 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-10-2-2020-128gb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-10-2-2020",
-    "name": "Apple iPad 10.2 (2020) 128GB Космічний сірий",
+    "name": "Apple iPad 10.2 (2020) 128GB Space Gray",
     "capacityAvailable": [
-      "32 ГБ",
-      "128 ГБ"
+      "32GB",
+      "128GB"
     ],
-    "capacity": "128 ГБ",
+    "capacity": "128GB",
     "priceRegular": 429,
     "priceDiscount": 399,
     "colorsAvailable": [
@@ -1657,23 +1657,23 @@
     "screen": "10.2' Retina",
     "resolution": "2160x1620",
     "processor": "Apple A12 Bionic",
-    "ram": "3 ГБ",
-    "camera": "8 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-10-2-2020-32gb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-10-2-2020",
-    "name": "Apple iPad 10.2 (2020) 32GB Космічний сірий",
+    "name": "Apple iPad 10.2 (2020) 32GB Space Gray",
     "capacityAvailable": [
-      "32 ГБ",
-      "128 ГБ"
+      "32GB",
+      "128GB"
     ],
-    "capacity": "32 ГБ",
+    "capacity": "32GB",
     "priceRegular": 329,
     "priceDiscount": 299,
     "colorsAvailable": [
@@ -1714,23 +1714,23 @@
     "screen": "10.2' Retina",
     "resolution": "2160x1620",
     "processor": "Apple A12 Bionic",
-    "ram": "3 ГБ",
-    "camera": "8 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-mini-5th-gen-256gb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-5th-gen",
-    "name": "Apple iPad Mini (5th Gen) 256GB Сріблястий",
+    "name": "Apple iPad Mini (5th Gen) 256GB Silver",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "256 ГБ",
+    "capacity": "256GB",
     "priceRegular": 549,
     "priceDiscount": 499,
     "colorsAvailable": [
@@ -1769,23 +1769,23 @@
     "screen": "7.9' Retina",
     "resolution": "2048x1536",
     "processor": "Apple A12 Bionic",
-    "ram": "3 ГБ",
-    "camera": "8 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-mini-5th-gen-64gb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-5th-gen",
-    "name": "Apple iPad Mini (5th Gen) 64GB Сріблястий",
+    "name": "Apple iPad Mini (5th Gen) 64GB Silver",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "64 ГБ",
+    "capacity": "64GB",
     "priceRegular": 549,
     "priceDiscount": 499,
     "colorsAvailable": [
@@ -1824,23 +1824,23 @@
     "screen": "7.9' Retina",
     "resolution": "2048x1536",
     "processor": "Apple A12 Bionic",
-    "ram": "3 ГБ",
-    "camera": "8 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-mini-5th-gen-64gb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-5th-gen",
-    "name": "Apple iPad Mini (5th Gen) 64GB Космічний сірий",
+    "name": "Apple iPad Mini (5th Gen) 64GB Space Gray",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "64 ГБ",
+    "capacity": "64GB",
     "priceRegular": 549,
     "priceDiscount": 499,
     "colorsAvailable": [
@@ -1879,23 +1879,23 @@
     "screen": "7.9' Retina",
     "resolution": "2048x1536",
     "processor": "Apple A12 Bionic",
-    "ram": "3 ГБ",
-    "camera": "8 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-mini-5th-gen-256gb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-5th-gen",
-    "name": "Apple iPad Mini (5th Gen) 256GB Космічний сірий",
+    "name": "Apple iPad Mini (5th Gen) 256GB Space Gray",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "256 ГБ",
+    "capacity": "256GB",
     "priceRegular": 549,
     "priceDiscount": 499,
     "colorsAvailable": [
@@ -1934,23 +1934,23 @@
     "screen": "7.9' Retina",
     "resolution": "2048x1536",
     "processor": "Apple A12 Bionic",
-    "ram": "3 ГБ",
-    "camera": "8 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-mini-5th-gen-256gb-gold",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-5th-gen",
-    "name": "Apple iPad Mini (5th Gen) 256GB Золотистий",
+    "name": "Apple iPad Mini (5th Gen) 256GB Gold",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "256 ГБ",
+    "capacity": "256GB",
     "priceRegular": 549,
     "priceDiscount": 499,
     "colorsAvailable": [
@@ -1989,23 +1989,23 @@
     "screen": "7.9' Retina",
     "resolution": "2048x1536",
     "processor": "Apple A12 Bionic",
-    "ram": "3 ГБ",
-    "camera": "8 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   },
   {
     "id": "apple-ipad-mini-5th-gen-64gb-gold",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-5th-gen",
-    "name": "Apple iPad Mini (5th Gen) 64GB Золотистий",
+    "name": "Apple iPad Mini (5th Gen) 64GB Gold",
     "capacityAvailable": [
-      "64 ГБ",
-      "256 ГБ"
+      "64GB",
+      "256GB"
     ],
-    "capacity": "64 ГБ",
+    "capacity": "64GB",
     "priceRegular": 549,
     "priceDiscount": 499,
     "colorsAvailable": [
@@ -2044,11 +2044,11 @@
     "screen": "7.9' Retina",
     "resolution": "2048x1536",
     "processor": "Apple A12 Bionic",
-    "ram": "3 ГБ",
-    "camera": "8 Мп",
-    "zoom": "Цифровий зум до 5x",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
     "cell": [
-      "Не застосовується"
+      "Not applicable"
     ]
   }
 ]

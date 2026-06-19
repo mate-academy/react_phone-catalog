@@ -3,6 +3,8 @@
 /* eslint-disable prettier/prettier */
 
 //#region IMPORTS
+import { useTranslation } from 'react-i18next';
+
 import { ProductDescriptionSection as DescriptionSection } from '@/modules/shared/utils/types';
 
 import styles from './ProductAbout.module.scss';
@@ -23,10 +25,14 @@ interface Props {
 }
 
 export const ProductAbout: React.FC<Props> = ({ description }) => {
+  //#region HOOKS
+  const { t } = useTranslation();
+  //#endregion
+
   //#region RENDER
   return (
     <div className={aboutContainer}>
-      <h3 className={aboutTitle}>About</h3>
+      <h3 className={aboutTitle}>{t('productDetailsPage.about.title')}</h3>
 
       {description.map((section: DescriptionSection) => (
         <div className={aboutSection} key={section.title}>

@@ -2,13 +2,14 @@
 
 //#region IMPORTS
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import styles from './NotFoundPage.module.scss';
 //#endregion
 
 //#region STYLES
 const {
-  notFoundPage,
+  container,
   title,
   subtitle,
   linkButton,
@@ -16,17 +17,18 @@ const {
 //#endregion
 
 export const NotFoundPage = () => {
+  //#region HOOKS
+  const { t } = useTranslation();
+  //#endregion
+
   //#region RENDER
   return (
-    <div className={notFoundPage}>
-      <h1 className={title}>Page not found</h1>
-      <p className={subtitle}>
-        Looks like you&apos;ve got lost. The page you are looking for does not
-        exist.
-      </p>
+    <div className={container}>
+      <h1 className={title}>{t('notFoundPage.title')}</h1>
+      <p className={subtitle}>{t('notFoundPage.subtitle')} </p>
 
       <Link to="/" className={linkButton}>
-        Go to Home
+        {t('notFoundPage.goHome')}
       </Link>
     </div>
   );

@@ -53,6 +53,10 @@
   &.selected {
     color: var(--color-white);
     cursor: default;
+
+    &:hover {
+      border-color: var(--color-primary)
+    }
   }
 }
 

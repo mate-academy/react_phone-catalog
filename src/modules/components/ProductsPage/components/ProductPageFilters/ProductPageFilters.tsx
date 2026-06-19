@@ -5,9 +5,11 @@
 
 //#region IMPORTS
 import { useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useMemo } from 'react';
 
 import { PerPageType, SortType } from '@/modules/shared/utils/types';
-import { PER_PAGE_OPTIONS, SORT_OPTIONS } from '@/modules/shared/utils/constants';
+import { getSortOptions, getPerPageOptions } from '@/modules/shared/utils/constants';
 
 import { CustomDropdown } from '@/modules/shared/components/ui/CustomDropdown';
 
@@ -19,22 +21,20 @@ const { productPageFilters } = styles;
 //#endregion
 
 export const ProductPageFilters = () => {
-  //#region STATE_&_CONSTANTS
+  //#region STATE_&_HOOKS
+  const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortBy = (searchParams.get('sort') as SortType) || SortType.Age;
-  const perPage =
-    (searchParams.get('perPage') as PerPageType) || PerPageType.All;
+  const perPage = (searchParams.get('perPage') as PerPageType) || PerPageType.All;
+  //#endregion
+
+  //#region FILTER_OPTIONS
+  const sortOptions = useMemo(() => getSortOptions(t), [t]);
+  const perPageOptions = useMemo(() => getPerPageOptions(t), [t]);
   //#endregion
 
   //#region HANDLERS
-  // const handleSortChange = (newValue: string) => {
-  //   const newParams = new URLSearchParams(searchParams);
-  //   newParams.set('sort', newValue);
-  //   newParams.set('page', '1');
-  //   setSearchParams(newParams);
-  // };
-
   const handleSortChange = (newValue: string) => {
     const newParams = new URLSearchParams(searchParams);
 
@@ -66,16 +66,16 @@ export const ProductPageFilters = () => {
   return (
     <div className={productPageFilters}>
       <CustomDropdown
-        label="Sort By"
+        label={t('filters.sort.title')}
         value={sortBy}
-        options={SORT_OPTIONS}
+        options={sortOptions}
         onChange={handleSortChange}
       />
 
       <CustomDropdown
-        label="Items on page"
+        label={t('filters.perPage.title')}
         value={perPage}
-        options={PER_PAGE_OPTIONS}
+        options={perPageOptions}
         onChange={handlePerPageChange}
       />
     </div>

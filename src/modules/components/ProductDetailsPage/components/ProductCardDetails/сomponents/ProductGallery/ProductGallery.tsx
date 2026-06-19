@@ -2,6 +2,7 @@
 
 //#region IMPORTS
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import styles from './ProductGallery.module.scss';
 //#endregion
@@ -23,8 +24,9 @@ interface Props {
 }
 
 export const ProductGallery: React.FC<Props> = ({ images }) => {
-  //#region STATE
+  //#region STATE_&_HOOK
   const [activeIndex, setActiveIndex] = useState(0);
+  const { t } = useTranslation();
   //#endregion
 
   //#region DATA
@@ -47,7 +49,10 @@ export const ProductGallery: React.FC<Props> = ({ images }) => {
             <img
               className={thumbsImage}
               src={`/${imgUrl}`}
-              alt={`Product thumbnail ${index + 1}`}
+              alt={t(
+                'productDetailsPage.gallery.thumbnail',
+                { number: index + 1 }
+              )}
             />
           </div>
         ))}
@@ -57,7 +62,7 @@ export const ProductGallery: React.FC<Props> = ({ images }) => {
         <img
           className={previewImage}
           src={`/${currentPreviewImage}`}
-          alt="Product preview"
+          alt={t('productDetailsPage.gallery.preview')}
         />
       </div>
     </div>

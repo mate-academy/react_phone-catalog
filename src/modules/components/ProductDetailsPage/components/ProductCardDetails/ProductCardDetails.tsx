@@ -28,7 +28,6 @@ export const ProductCardDetails: React.FC<Props> = ({ product }) => {
   //#region RENDER
   return (
     <div className={detailsContainer}>
-      
       <h2 className={detailsTitle}>{product.name}</h2>
 
       <div className={detailsGrid}>

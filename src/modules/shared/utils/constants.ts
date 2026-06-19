@@ -1,22 +1,24 @@
 import { CategoryType, PerPageType, SortType } from './types';
 
-export const pageTitles: Record<CategoryType, string> = {
-  phones: 'Mobile phones',
-  tablets: 'Tablets',
-  accessories: 'Accessories',
-};
+export const getPageTitles = (
+  t: (key: string) => string,
+): Record<CategoryType, string> => ({
+  phones: t('pageTitles.phones'),
+  tablets: t('pageTitles.tablets'),
+  accessories: t('pageTitles.accessories'),
+});
 
-export const SORT_OPTIONS = [
-  { value: SortType.Age, label: 'Newest' },
-  { value: SortType.Title, label: 'Alphabetically' },
-  { value: SortType.Price, label: 'Cheapest' },
+export const getSortOptions = (t: (key: string) => string) => [
+  { value: SortType.Age, label: t('filters.sort.options.age') },
+  { value: SortType.Title, label: t('filters.sort.options.title') },
+  { value: SortType.Price, label: t('filters.sort.options.price') },
 ];
 
-export const PER_PAGE_OPTIONS = [
+export const getPerPageOptions = (t: (key: string) => string) => [
   { value: PerPageType.Sixteen, label: '16' },
   { value: PerPageType.Eight, label: '8' },
   { value: PerPageType.Four, label: '4' },
-  { value: PerPageType.All, label: 'all' },
+  { value: PerPageType.All, label: t('filters.perPage.options.all') },
 ];
 
 export const PRODUCT_COLORS_MAP = {

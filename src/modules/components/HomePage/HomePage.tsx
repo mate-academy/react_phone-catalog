@@ -4,6 +4,7 @@
 
 //#region IMPORTS
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { useProducts } from '@/modules/shared/utils/context/ProductsContext';
 
@@ -21,6 +22,7 @@ const { home, visuallyHidden, tittle } = styles;
 export const HomePage = () => {
   //#region DATA_FETCHING
   const { products, isLoading } = useProducts();
+  const { t } = useTranslation();
   //#endregion DATA_FETCHING
 
   //#region DATA_TRANSORFATION
@@ -39,17 +41,17 @@ export const HomePage = () => {
   //#region RENDER
   return (
     <div className={home}>
-      <h1 className={visuallyHidden}>Product Catalog</h1>
-      <h2 className={tittle}>Welcome to Nice Gadgets store!</h2>
+      <h1 className={visuallyHidden}>{t('homePage.hidden')}</h1>
+      <h2 className={tittle}>{t('homePage.title')}</h2>
       <BannerSlider />
       <ProductsSlider
-        title="Brand new models"
+        title={t('homePage.brandNew')}
         products={brandNewProducts}
         isLoading={isLoading}
       />
       <CategoriesSection />
       <ProductsSlider
-        title="Hot prices"
+        title={t('homePage.hotPrices')}
         products={hotPriceProducts}
         hasDiscount
         isLoading={isLoading}

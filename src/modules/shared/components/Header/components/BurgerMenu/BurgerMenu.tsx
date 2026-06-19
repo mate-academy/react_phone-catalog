@@ -1,6 +1,8 @@
 /* eslint-disable prettier/prettier */
 
 //#region IMPORTS
+import { useTranslation } from 'react-i18next';
+
 import { HeaderLogo } from '../HeaderLogo';
 import { HeaderNavigation } from '../HeaderNavigation';
 import { HeaderActions } from '../HeaderActions';
@@ -29,6 +31,10 @@ interface Props {
 }
 
 export const BurgerMenu: React.FC<Props> = ({ isOpen, onClose }) => {
+  // #region TRANSLATION
+  const { t } = useTranslation();
+  // #endregion
+
   //#region RENDER
   return (
     <div
@@ -43,9 +49,9 @@ export const BurgerMenu: React.FC<Props> = ({ isOpen, onClose }) => {
           variant="icon"
           className={menuCloseBtn}
           onClick={onClose}
-          aria-label="Close menu"
+          aria-label={t('header.burgerMenu.closeBtn')}
         >
-          <img src={iconClose} alt="Close icon" />
+          <img src={iconClose} alt={t('header.burgerMenu.closeIcon')} />
         </Button>
       </div>
 

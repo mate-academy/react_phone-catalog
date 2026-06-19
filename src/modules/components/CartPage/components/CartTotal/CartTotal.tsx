@@ -3,9 +3,10 @@
 
 //#region IMPORTS
 import { useCart } from '@/modules/shared/utils/context/CartContext';
+import { useTranslation } from 'react-i18next';
 
-import styles from './CartTotal.module.scss';
 import { Button } from '@/modules/shared/components/ui/Button';
+import styles from './CartTotal.module.scss';
 //#endregion
 
 //#region STYLES
@@ -20,12 +21,14 @@ const {
 export const CartTotal = () => {
   //#region DATA_FETCHING
   const { totalPrice, totalCount, clearCart } = useCart();
+  const { t } = useTranslation();
+
   //#endregion
 
   //#region HANDLERS
   const handleCheckout = () => {
     const isConfirmed = window.confirm(
-      'Checkout is not implemented yet. Do you want to clear the Cart?',
+      t('cart.total.confirmation'),
     );
 
     if (isConfirmed) {
@@ -42,7 +45,7 @@ export const CartTotal = () => {
       </p>
 
       <p className={cartTotalCount}>
-        {`Total for ${totalCount} ${totalCount > 1 ? 'items' : 'item'}`}
+        {t('cart.total.countSummary', { count: totalCount })}
       </p>
 
       <Button
@@ -50,7 +53,7 @@ export const CartTotal = () => {
         className={cartCheckoutBtn}
         onClick={handleCheckout}
       >
-        Checkout
+        {t('cart.total.checkoutBtn')}
       </Button>
     </div>
   );
