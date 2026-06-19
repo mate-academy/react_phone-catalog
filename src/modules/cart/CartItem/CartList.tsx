@@ -1,9 +1,15 @@
 import { useCart } from '../../../cart-context/CartContext';
-import styles from './CartItem.module.scss';
+import styles from './CartList.module.scss';
 
 export const CartItem = () => {
-  const { cart, removeFromCart, updateQuantity, totalItems, totalPrice } =
-    useCart();
+  const {
+    cart,
+    removeFromCart,
+    updateQuantity,
+    clearCart,
+    totalItems,
+    totalPrice,
+  } = useCart();
 
   const handleAddItem = (itemId: string) => {
     const findItemId = cart.find(item => item.product.id === itemId);
@@ -23,10 +29,20 @@ export const CartItem = () => {
     }
   };
 
+  const handleCheckout = () => {
+    const isConfirmed = window.confirm(
+      'Checkout is not implemented yet. Do you want to clear the Cart?',
+    );
+
+    if (isConfirmed === true) {
+      clearCart();
+    }
+  };
+
   if (cart.length === 0) {
     return (
-      <div className={styles.emptyCart}>
-        <p className={styles.emptyCartMessage}>Your cart is empty</p>
+      <div className={styles.errorWrapper}>
+        <p className={styles.errorMessage}>Your cart is empty</p>
       </div>
     );
   }
@@ -88,7 +104,9 @@ export const CartItem = () => {
         <div className={styles.summary}>
           <h2 className={styles.summaryPrice}>${totalPrice}</h2>
           <p className={styles.summaryInfo}>Total for {totalItems} items</p>
-          <button className={styles.checkoutButton}>Checkout</button>
+          <button className={styles.checkoutButton} onClick={handleCheckout}>
+            Checkout
+          </button>
         </div>
       </div>
     </div>

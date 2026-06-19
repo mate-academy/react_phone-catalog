@@ -1,14 +1,53 @@
-import { Link, NavLink } from 'react-router-dom';
-import styles from './Header.module.scss';
+import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { useCart } from '../../../../../cart-context/CartContext';
 import { useFavorite } from '../../../../../favorites-context/FavoritesContext';
+import styles from './Header.module.scss';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { useDebounce } from '../../../hooks/useDebounce';
 
 export const Header = () => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     `${styles.link} ${isActive ? styles.isActive : ''} `;
 
+  const getIconClass = ({ isActive }: { isActive: boolean }) =>
+    `${styles.iconLink} ${isActive ? styles.isActive : ''}`;
+
   const { totalFavoriteItems } = useFavorite();
   const { totalItems } = useCart();
+  const location = useLocation();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
+  const [inputValue, setInputValue] = useState(query);
+  const debouncedQuery = useDebounce(inputValue, 300);
+
+  useEffect(() => {
+    setInputValue(query);
+  }, [query]);
+
+  useEffect(() => {
+    const newParams = new URLSearchParams(searchParams);
+
+    if (debouncedQuery) {
+      newParams.set('query', debouncedQuery);
+    } else {
+      newParams.delete('query');
+    }
+
+    setSearchParams(newParams);
+  }, [debouncedQuery]);
+
+  const searchAvailableRoutes = [
+    '/phones',
+    '/tablets',
+    '/accessories',
+    '/favorites',
+  ];
+  const isSearchVisible = searchAvailableRoutes.includes(location.pathname);
+
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
 
   return (
     <header className={styles.header}>
@@ -48,10 +87,22 @@ export const Header = () => {
           </ul>
         </nav>
 
+        {isSearchVisible && (
+          <div className={styles.searchContainer}>
+            <input
+              type="search"
+              placeholder="Search..."
+              value={inputValue}
+              onChange={handleSearchChange}
+              className={styles.searchInput}
+            />
+          </div>
+        )}
+
         <div className={styles.icons}>
           <div>
-            <Link
-              className={styles.iconLink}
+            <NavLink
+              className={getIconClass}
               to="/favorites"
               aria-label="Favorites"
             >
@@ -62,12 +113,12 @@ export const Header = () => {
                   {totalFavoriteItems}
                 </span>
               )}
-            </Link>
+            </NavLink>
           </div>
 
           <div>
-            <Link
-              className={styles.iconLink}
+            <NavLink
+              className={getIconClass}
               to="/cart"
               aria-label="Shopping bag"
             >
@@ -76,7 +127,7 @@ export const Header = () => {
               {totalItems > 0 && (
                 <span className={styles.addedProdutcs}>{totalItems}</span>
               )}
-            </Link>
+            </NavLink>
           </div>
         </div>
       </div>

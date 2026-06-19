@@ -7,6 +7,19 @@ export const BANNERS = [
   { id: 3, src: '/img/slider/banner3.jpg', alt: 'Iphone 14 pro' },
 ];
 
+export const sortOptions = [
+  { value: 'age', label: 'Newest' },
+  { value: 'title', label: 'Alphabetically' },
+  { value: 'price', label: 'Cheapest' },
+];
+
+export const perPageOptions = [
+  { value: '4', label: '4' },
+  { value: '8', label: '8' },
+  { value: '16', label: '16' },
+  { value: 'all', label: 'All' },
+];
+
 export const getProductById = async (
   targetId: string | number,
 ): Promise<BaseProduct | null> => {
@@ -18,7 +31,9 @@ export const getProductById = async (
     ]);
 
     const allProducts: BaseProduct[] = [...phones, ...tablets, ...accessories];
-    const foundProduct = allProducts.find(product => product.id === targetId);
+    const foundProduct = allProducts.find(
+      product => String(product.id) === String(targetId),
+    );
 
     return foundProduct || null;
   } catch (error) {

@@ -1,63 +1,18 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Product } from '../../../../types/product';
 import { ProductCard } from '../ProductCard';
 import styles from './ProductList.module.scss';
-import { useSlider } from '../../hooks/useSlider';
 
 type Props = {
   products: Product[];
 };
 
 export const ProductList: React.FC<Props> = ({ products }) => {
-  const {
-    currentSlide,
-    sliderRef,
-    maxSlide,
-    handlePrevSlide,
-    handleNextSlide,
-    translateValue,
-  } = useSlider(products.length);
-
-  const newModels = useMemo(() => {
-    return [...products].sort(
-      (newModel, oldModel) => oldModel.year - newModel.year,
-    );
-  }, [products]);
-
   return (
     <div className={styles.listWrapper}>
-      <div className={styles.topBar}>
-        <h2 className={styles.title}>Brand new models</h2>
-
-        <div className={styles.arrows}>
-          <button
-            className={styles.arrow}
-            disabled={currentSlide === 0}
-            onClick={handlePrevSlide}
-            aria-label="Previous slide"
-          >
-            <img src="/img/icons/left.svg" alt="" />
-          </button>
-
-          <button
-            className={styles.arrow}
-            disabled={currentSlide >= maxSlide}
-            onClick={handleNextSlide}
-            aria-label="Next slide"
-          >
-            <img src="/img/icons/right.svg" alt="" />
-          </button>
-        </div>
-      </div>
-
-      <div className={styles.listWindow} ref={sliderRef}>
-        <section
-          className={styles.productList}
-          style={{
-            transform: `translateX(-${translateValue}px)`,
-          }}
-        >
-          {newModels.map(product => (
+      <div className={styles.listWindow}>
+        <section className={styles.productList}>
+          {products.map(product => (
             <div key={product.id} className={styles.cardWrapper} data-card>
               <ProductCard product={product} />
             </div>

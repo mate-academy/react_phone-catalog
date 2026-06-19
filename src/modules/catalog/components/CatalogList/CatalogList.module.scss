@@ -74,10 +74,67 @@
   background-image: url('/public/img/icons/arrow-down.svg');
   background-repeat: no-repeat;
   background-position: right 12px center;
+
+  transition: border 0.3s ease;
+
+  &:hover {
+    border: 1px solid #4a4d58;
+  }
+}
+
+.selectOptions {
+  background-color: #0f1121;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+
+  color: #75767f;
 }
 
 .listWindow {
   overflow: hidden;
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 64px 24px;
+  background-color: #161827;
+  border: 1px solid #323542;
+  border-radius: 8px;
+  margin: 20px 0;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.emptyStateTitle {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: #f1f2f9;
+  letter-spacing: -0.01rem;
+  margin: 0;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.emptyStateSub {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #75767f;
+  margin-top: 12px;
+  margin-bottom: 0;
+  max-width: 400px;
 }
 
 .productList {

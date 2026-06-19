@@ -2,11 +2,12 @@ import React, { useMemo } from 'react';
 import { Accessorie } from '../../../../types/accessorie';
 import { Phone } from '../../../../types/phone';
 import { Tablet } from '../../../../types/tablet';
-import { ProductCard } from '../../../shared/components/ProductCard';
 import styles from './CatalogList.module.scss';
 import { Product } from '../../../../types/product';
 import { usePagination } from '../../../shared/hooks/usePagination';
 import { SortOption, useSort } from '../../hooks/useSort';
+import { ProductList } from '../../../shared/components/ProductsList';
+import { useSearchParams } from 'react-router-dom';
 
 export type AnyProduct = Phone | Tablet | Accessorie;
 
@@ -33,8 +34,20 @@ const mapToProduct = (item: AnyProduct): Product => {
 };
 
 export const CatalogList: React.FC<Props> = ({ products, title }) => {
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
+
   const { sort, setSort } = useSort();
   const { page, perPage, setPagination } = usePagination();
+
+  const pageHeading = useMemo(() => {
+    const formattedTitle =
+      title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
+
+    return formattedTitle.endsWith('page')
+      ? formattedTitle
+      : `${formattedTitle} page`;
+  }, [title]);
 
   const mappedProducts = useMemo(() => products.map(mapToProduct), [products]);
 
@@ -53,23 +66,29 @@ export const CatalogList: React.FC<Props> = ({ products, title }) => {
     }
   }, [mappedProducts, sort]);
 
+  const searchedProducts = useMemo(() => {
+    return sortedProducts.filter(product =>
+      product.name.toLowerCase().includes(query.toLowerCase()),
+    );
+  }, [sortedProducts, query]);
+
   const totalPages = useMemo(() => {
     if (perPage === 'all' || perPage === 0) {
       return 1;
     }
 
-    return Math.ceil(sortedProducts.length / perPage);
-  }, [sortedProducts.length, perPage]);
+    return Math.ceil(searchedProducts.length / perPage);
+  }, [searchedProducts.length, perPage]);
 
   const visibleProducts = useMemo(() => {
     if (perPage === 'all') {
-      return sortedProducts;
+      return searchedProducts;
     }
 
     const start = (page - 1) * perPage;
 
-    return sortedProducts.slice(start, start + perPage);
-  }, [sortedProducts, page, perPage]);
+    return searchedProducts.slice(start, start + perPage);
+  }, [searchedProducts, page, perPage]);
 
   const currentProductsQuantity = products.length;
 
@@ -114,12 +133,12 @@ export const CatalogList: React.FC<Props> = ({ products, title }) => {
   return (
     <div className={styles.listWrapper}>
       <div className={styles.topBar}>
-        <h1 className={styles.title}>{title}</h1>
+        <h1 className={styles.title}>{pageHeading}</h1>
 
         <div className={styles.quantity}>{currentProductsQuantity} models</div>
 
         <div className={styles.changes}>
-          <label htmlFor="sort-select">
+          <label htmlFor="sort-select" className={styles.label}>
             <p>Sort by</p>
 
             <select
@@ -128,13 +147,19 @@ export const CatalogList: React.FC<Props> = ({ products, title }) => {
               value={sort}
               onChange={handleSortChange}
             >
-              <option value="age">Newest</option>
-              <option value="title">Alphabetically</option>
-              <option value="price">Cheapest</option>
+              <option value="age" className={styles.selectOptions}>
+                Newest
+              </option>
+              <option value="title" className={styles.selectOptions}>
+                Alphabetically
+              </option>
+              <option value="price" className={styles.selectOptions}>
+                Cheapest
+              </option>
             </select>
           </label>
 
-          <label htmlFor="per-page-select">
+          <label htmlFor="per-page-select" className={styles.label}>
             <p>Items on page</p>
 
             <select
@@ -143,17 +168,27 @@ export const CatalogList: React.FC<Props> = ({ products, title }) => {
               value={perPage}
               onChange={handlePerPageChange}
             >
-              <option value="4">4</option>
-              <option value="8">8</option>
-              <option value="16">16</option>
-              <option value="all">All</option>
+              <option value="4" className={styles.selectOptions}>
+                4
+              </option>
+              <option value="8" className={styles.selectOptions}>
+                8
+              </option>
+              <option value="16" className={styles.selectOptions}>
+                16
+              </option>
+              <option value="all" className={styles.selectOptions}>
+                All
+              </option>
             </select>
           </label>
         </div>
       </div>
 
       <div className={styles.listWindow}>
-        {visibleProducts.length === 0 ? (
+        {searchedProducts.length > 0 ? (
+          <ProductList products={visibleProducts} />
+        ) : !query ? (
           <div className={styles.emptyState}>
             <h2 className={styles.emptyStateTitle}>
               There are no {title.toLowerCase()} yet
@@ -163,13 +198,11 @@ export const CatalogList: React.FC<Props> = ({ products, title }) => {
             </p>
           </div>
         ) : (
-          <section className={styles.productList}>
-            {visibleProducts.map(product => (
-              <div key={product.id} className={styles.cardWrapper} data-card>
-                <ProductCard product={product} />
-              </div>
-            ))}
-          </section>
+          <div className={styles.emptyState}>
+            <h2 className={styles.emptyStateTitle}>
+              There are no {title.toLowerCase()} matching the query
+            </h2>
+          </div>
         )}
       </div>
 

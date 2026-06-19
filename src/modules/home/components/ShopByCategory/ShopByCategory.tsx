@@ -9,12 +9,14 @@ type Props = {
   phones: Phone[];
   tablets: Tablet[];
   accessories: Accessorie[];
+  title: string;
 };
 
 export const ShopByCategory: React.FC<Props> = ({
   phones,
   tablets,
   accessories,
+  title,
 }) => {
   const phonesQuantity = phones.length;
   const tabletsQuantity = tablets.length;
@@ -22,7 +24,7 @@ export const ShopByCategory: React.FC<Props> = ({
 
   return (
     <div className={styles.categoryWrapper}>
-      <h2 className={styles.pageTitle}>Shop by category</h2>
+      <h2 className={styles.pageTitle}>{title}</h2>
 
       <div className={styles.categoryContainer}>
         <Link className={styles.category} to="/phones">

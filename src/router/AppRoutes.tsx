@@ -13,7 +13,7 @@ import { ProductDetailsPage } from '../modules/product-details';
 import { CartPage } from '../modules/cart';
 import { FavoritesPage } from '../modules/favorites';
 import { ReactNode } from 'react';
-import { getProductById } from '../constants';
+import { NotFoundPage } from '../modules/not-found';
 
 interface Product {
   id: string;
@@ -41,15 +41,6 @@ const router = createHashRouter([
           },
           {
             path: 'product/:productId',
-            loader: async ({ params }) => {
-              if (!params.productId) {
-                return null;
-              }
-
-              const product = await getProductById(params.productId);
-
-              return product;
-            },
             element: <ProductDetailsPage />,
             handle: {
               crumb: (_params, product: Product) => product?.name || 'Product',
@@ -70,7 +61,7 @@ const router = createHashRouter([
         handle: { crumb: () => 'Favorites' } as CrumbHandle,
       },
 
-      { path: '*', element: <p>Not found</p> },
+      { path: '*', element: <NotFoundPage /> },
     ],
   },
 ]);

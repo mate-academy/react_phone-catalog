@@ -15,7 +15,7 @@ type Props = {
 export const ProductDetailsList: React.FC<Props> = ({ products }) => {
   return (
     <div>
-      <section className={styles.aaaaaaaaaaaa}>
+      <section className={styles.listWrapper}>
         {products.map(product => (
           <div key={product.id} data-card>
             <ProductDetails product={product} />

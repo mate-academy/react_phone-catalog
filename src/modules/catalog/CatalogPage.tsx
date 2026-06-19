@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import styles from './CatalogPage.module.scss';
 import { AnyProduct, CatalogList } from './components/CatalogList';
 import { useParams } from 'react-router-dom';
@@ -14,47 +14,48 @@ export const CatalogPage = () => {
   const { category } = useParams<{ category: string }>();
   const [products, setProducts] = useState<AnyProduct[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  useEffect(() => {
+  const fetchData = useCallback(async () => {
     if (!category) {
       return;
     }
 
-    const fetchData = async () => {
-      setLoading(true);
-      setError('');
-      try {
-        let data: AnyProduct[] = [];
+    setLoading(true);
+    setErrorMessage('');
 
-        switch (category) {
-          case 'phones':
-            data = await getPhones();
-            break;
-          case 'tablets':
-            data = await getTablets();
-            break;
-          case 'accessories':
-            data = await getAccessories();
-            break;
-          default:
-            data = [];
-        }
+    try {
+      let data: AnyProduct[] = [];
 
-        setProducts(data);
-      } catch (err) {
-        if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError('Something went wrong');
-        }
-      } finally {
-        setLoading(false);
+      switch (category) {
+        case 'phones':
+          data = await getPhones();
+          break;
+        case 'tablets':
+          data = await getTablets();
+          break;
+        case 'accessories':
+          data = await getAccessories();
+          break;
+        default:
+          data = [];
       }
-    };
 
-    fetchData();
+      setProducts(data);
+    } catch {
+      setErrorMessage('Something went wrong');
+    } finally {
+      setLoading(false);
+    }
   }, [category]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  const handleRestart = () => {
+    fetchData();
+  };
 
   if (loading) {
     return (
@@ -64,8 +65,20 @@ export const CatalogPage = () => {
     );
   }
 
-  if (error) {
-    return <div className={styles.error}>{error}</div>;
+  if (errorMessage) {
+    return (
+      <div className={styles.errorWrapper}>
+        <p className={styles.errorMessage}>{errorMessage}</p>
+
+        <button
+          type="button"
+          className={styles.restartButton}
+          onClick={handleRestart}
+        >
+          Restart
+        </button>
+      </div>
+    );
   }
 
   const pageTitle = category

@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { ProductList } from '../shared/components/ProductsList';
+import { useEffect, useMemo, useState } from 'react';
 import { Product } from '../../types/product';
 import {
   getAccessories,
@@ -41,6 +40,22 @@ export const HomePage = () => {
       });
   }, []);
 
+  const newestProducts = useMemo(() => {
+    return [...products].sort(
+      (newProduct, oldProduct) =>
+        (oldProduct.year ?? 0) - (newProduct.year ?? 0),
+    );
+  }, [products]);
+
+  const hotPricesProducts = useMemo(() => {
+    return [...products].sort((hightPrice, lessPrice) => {
+      const discountA = (hightPrice.fullPrice ?? 0) - (hightPrice.price ?? 0);
+      const discountB = (lessPrice.fullPrice ?? 0) - (lessPrice.price ?? 0);
+
+      return discountB - discountA;
+    });
+  }, [products]);
+
   if (loading) {
     return (
       <div>
@@ -52,19 +67,21 @@ export const HomePage = () => {
   return (
     <div className={styles.homePage}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
+        <h1 className={styles.hiddenTitle}>Product Catalog</h1>
+        <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
 
         <PicturesSlider />
 
-        <ProductList products={products} />
+        <ProductSlider products={newestProducts} title="Brand new models" />
 
         <ShopByCategory
           phones={phones}
           tablets={tablets}
           accessories={accessories}
+          title="Shop by category"
         />
 
-        <ProductSlider products={products} title="Hot prices" />
+        <ProductSlider products={hotPricesProducts} title="Hot prices" />
       </div>
     </div>
   );

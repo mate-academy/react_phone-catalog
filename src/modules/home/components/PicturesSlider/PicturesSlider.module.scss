@@ -19,7 +19,8 @@
 .slideImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
+  animation: 0.5s ease-in-out;
 }
 
 .arrow {

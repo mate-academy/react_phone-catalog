@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import styles from './ProductsSlider.module.scss';
 import { ProductCard } from '../../../shared/components/ProductCard';
 import { useSlider } from '../../../shared/hooks/useSlider';
@@ -18,15 +18,6 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
     handleNextSlide,
     translateValue,
   } = useSlider(products.length);
-
-  const hotPrice = useMemo(() => {
-    return [...products].sort((productA, productB) => {
-      const discountA = (productA.fullPrice ?? 0) - (productA.price ?? 0);
-      const discountB = (productB.fullPrice ?? 0) - (productB.price ?? 0);
-
-      return discountB - discountA;
-    });
-  }, [products]);
 
   return (
     <div className={styles.sliderWrapper}>
@@ -61,7 +52,7 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
             transform: `translateX(-${translateValue}px)`,
           }}
         >
-          {hotPrice.map(product => (
+          {products.map(product => (
             <div key={product.id} className={styles.cardWrapper} data-card>
               <ProductCard product={product} />
             </div>
