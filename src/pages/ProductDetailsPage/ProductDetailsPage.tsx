@@ -16,15 +16,20 @@ export const ProductDetailsPage = () => {
   const { productId, category } = useParams();
   const { pathname } = useLocation();
 
-  const { addToCart, toggleFavorite, removeFromCart, cart, favorites } = useCart();
+  const { addToCart, toggleFavorite, removeFromCart, cart, favorites } =
+    useCart();
 
-  const [product, setProduct] = useState<Phone | Tablet | Accessories | null>(null);
+  const [product, setProduct] = useState<Phone | Tablet | Accessories | null>(
+    null,
+  );
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
 
-  const [allProducts, setAllProducts] = useState<(Phone | Tablet | Accessories)[]>([]);
+  const [allProducts, setAllProducts] = useState<
+    (Phone | Tablet | Accessories)[]
+  >([]);
 
   const [imageError, setImageError] = useState<{
     [key: string]: boolean;
@@ -45,19 +50,26 @@ export const ProductDetailsPage = () => {
     color?: string | null,
     capacity?: string | null,
   ) => {
-    const targetColor = color || product.color;
-    const targetCapacity = capacity || (isPhoneOrTablet(product) ? product.capacity : null);
+    const targetColor = color ?? product.color;
+    const targetCapacity =
+      capacity ?? (isPhoneOrTablet(product) ? product.capacity : null);
 
     const found = allProducts.find(item => {
+      const sameModel =
+        'namespaceId' in item &&
+        'namespaceId' in product &&
+        item.namespaceId === product.namespaceId;
+
       const colorMatch = item.color === targetColor;
+
       const capacityMatch = isPhoneOrTablet(item)
         ? item.capacity === targetCapacity
         : true;
 
-      return colorMatch && capacityMatch;
+      return sameModel && colorMatch && capacityMatch;
     });
 
-    return found?.id || product.id;
+    return found?.id ?? product.id;
   };
 
   useEffect(() => {
@@ -203,9 +215,7 @@ export const ProductDetailsPage = () => {
   };
 
   const relatedProducts = allProducts.filter(
-    item =>
-      item.category === product?.category &&
-      item.id !== product?.id,
+    item => item.category === product?.category && item.id !== product?.id,
   );
 
   if (isLoading) {
@@ -245,9 +255,7 @@ export const ProductDetailsPage = () => {
 
         <span className="product-details__id">{product.name}</span>
 
-        <span className="product-details__item-id">
-          ID: {productNumericId ?? product.id}
-        </span>
+        <span className="product-details__item-id">ID: {productNumericId}</span>
       </div>
 
       <div className="product-details--back">
@@ -430,16 +438,16 @@ export const ProductDetailsPage = () => {
         {'description' in product && Array.isArray(product.description) && (
           <div className="product-details__description">
             <h2>About</h2>
-            {(
-              product.description as { title: string; text: string[] }[]
-            ).map((section, i) => (
-              <div key={i}>
-                <h3>{section.title}</h3>
-                {section.text.map((paragraph, j) => (
-                  <p key={j}>{paragraph}</p>
-                ))}
-              </div>
-            ))}
+            {(product.description as { title: string; text: string[] }[]).map(
+              (section, i) => (
+                <div key={i}>
+                  <h3>{section.title}</h3>
+                  {section.text.map((paragraph, j) => (
+                    <p key={j}>{paragraph}</p>
+                  ))}
+                </div>
+              ),
+            )}
           </div>
         )}
 
