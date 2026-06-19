@@ -18,7 +18,7 @@ export const SwiperBaner: React.FC<Props> = ({ slides, interval = 5000 }) => {
     }, interval);
 
     return () => clearInterval(timer);
-  }, [slides.length, interval]);
+  }, [currentSlide, slides.length, interval]);
 
   const nextSlide = () => {
     setCurrentSlide(prev => (prev + 1) % slides.length);

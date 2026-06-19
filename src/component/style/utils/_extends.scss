@@ -30,9 +30,20 @@
 }
 
 %p {
-  font-family: Mont-SemiBold, sans-serif;
+  font-family: Mont-Regular, sans-serif;
 }
 
 %a {
-  font-family: Mont-SemiBold, sans-serif;
+  font-family: Mont-Regular, sans-serif;
+}
+
+body {
+  font-family: Mont-Regular, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
 }

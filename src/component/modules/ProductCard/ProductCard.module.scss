@@ -13,7 +13,7 @@
   width: 272px;
 
   @include on-desktop {
-    width: 100%;
+    max-width: 272px;
   }
 
   @include scale-on-hover;

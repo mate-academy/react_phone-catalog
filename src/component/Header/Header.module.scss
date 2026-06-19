@@ -18,10 +18,13 @@ a {
   }
 
   &__container {
+    position: relative;
+    background-color: $background-color;
+    height: 100%;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #E2E6E9;
-    z-index: 2;
+    z-index: 10;
     gap: 16px;
     justify-content: space-between;
 
@@ -96,6 +99,4 @@ a {
       gap: 711px;
     }
   }
-
-  
 }

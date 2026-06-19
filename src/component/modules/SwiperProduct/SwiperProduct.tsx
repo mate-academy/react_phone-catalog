@@ -11,24 +11,20 @@ interface Props {
 
 export const SwiperProduct: React.FC<Props> = ({ products, title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleCardsCount, setVisibleCardsCount] = useState(3);
+  const [visibleCardsCount, setVisibleCardsCount] = useState(4);
 
   const updateVisibleCardsCount = () => {
     const width = window.innerWidth;
 
-    switch (true) {
-      case width < 440:
-        setVisibleCardsCount(1);
-        break;
-      case width < 640:
-        setVisibleCardsCount(2);
-        break;
-      case width < 1200:
-        setVisibleCardsCount(3);
-        break;
-      default:
-        setVisibleCardsCount(4);
-        break;
+    // Справжні брейкпоінти, що враховують фізичний розмір карток (272px + 16px gap):
+    if (width >= 1200) {
+      setVisibleCardsCount(4); // Десктоп: поміщається 4 картки (1136px)
+    } else if (width >= 900) {
+      setVisibleCardsCount(3); // Великий планшет/ноутбук: поміщається 3 картки (848px)
+    } else if (width >= 640) {
+      setVisibleCardsCount(2); // Планшет: поміщається точно 2 картки (560px)
+    } else {
+      setVisibleCardsCount(1); // Мобілка: 1 картка
     }
   };
 
@@ -41,15 +37,18 @@ export const SwiperProduct: React.FC<Props> = ({ products, title }) => {
     };
   }, []);
 
+  // Обчислюємо максимальний індекс, далі якого гортати не можна
+  const maxIndex = products.length - visibleCardsCount;
+
   const nextSlide = () => {
     setCurrentIndex(prevIndex =>
-      prevIndex === products.length - 1 ? 0 : prevIndex + 1,
+      prevIndex >= maxIndex ? prevIndex : prevIndex + 1,
     );
   };
 
   const prevSlide = () => {
     setCurrentIndex(prevIndex =>
-      prevIndex === 0 ? products.length - 1 : prevIndex - 1,
+      prevIndex <= 0 ? 0 : prevIndex - 1,
     );
   };
 
@@ -76,7 +75,7 @@ export const SwiperProduct: React.FC<Props> = ({ products, title }) => {
 
           <button
             onClick={nextSlide}
-            disabled={currentIndex === products.length - visibleCardsCount}
+            disabled={currentIndex >= maxIndex} // Кнопка блокується строго на фініші
             className={`
               ${style['swiper-product__btn']}
               ${style['swiper-product__btn--next']}

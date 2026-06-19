@@ -23,7 +23,7 @@
 
   &__select {
     display: grid;
-    grid-template-columns: repeat(2s, 1fr);
+    grid-template-columns: repeat(2, 1fr); // 🌟 Виправлено описку: прибрали "s" з "2s"
     gap: 16px;
     margin-bottom: 24px;
 
@@ -37,8 +37,18 @@
   }
 
   &__items {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+    display: grid;                         // 🌟 Перевели з flex на grid сітку
+    grid-template-columns: repeat(1, 1fr); // 1 колонка для мобільних пристроїв
+    gap: 24px;                             // Базовий відступ між картками
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr); // 🌟 Строго 2 колонки для планшета (768px)
+      gap: 40px 16px;                        // 40px між рядами, 16px між колонками
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(4, 1fr); // 🌟 4 колонки для комп'ютера (1200px+)
+      gap: 40px 16px;
+    }
   }
 }

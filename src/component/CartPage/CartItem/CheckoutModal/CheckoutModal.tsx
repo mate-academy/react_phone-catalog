@@ -19,7 +19,7 @@ export const CheckoutModal: React.FC<Props> = ({ close }) => {
       <div className={style.modal__content}>
         <button className={style.modal__close} onClick={close}>
           <img
-            src="/icon/Union.png"
+            src="icon/Union.png"
             alt="Close"
             className={style.modal__icon}
           />
