@@ -34,7 +34,9 @@ export const Footer = () => {
             className={styles.backButton}
             onClick={scrollToTop}
             aria-label="Scroll to top"
-          ></button>
+          >
+            <img src="img/ArrowUp.svg" alt="Up" />
+          </button>
         </div>
       </div>
     </footer>

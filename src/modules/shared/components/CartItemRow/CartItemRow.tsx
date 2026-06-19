@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../../../app/hooks';
 import {
   changeQuantity,
@@ -12,7 +13,7 @@ interface Props {
 
 export const CartItemRow: React.FC<Props> = ({ item }) => {
   const dispatch = useAppDispatch();
-  const { itemId, name, price, image, quantity } = item;
+  const { itemId, name, price, image, quantity, category } = item;
 
   return (
     <div className={styles.itemRow}>
@@ -22,12 +23,14 @@ export const CartItemRow: React.FC<Props> = ({ item }) => {
         onClick={() => dispatch(removeFromCart(itemId))}
         aria-label={`Remove ${name} from cart`}
       >
-        <img src={`img/Close.svg`} alt="Remove" />
+        <img src="img/Close.svg" alt="Remove" />
       </button>
 
       <img src={`${image}`} alt={name} className={styles.image} />
 
-      <p className={styles.name}>{name}</p>
+      <p className={styles.name}>
+        <Link to={`/${category}/${itemId}`}> {name}</Link>
+      </p>
 
       <div className={styles.quantityWrapper}>
         <button
@@ -37,7 +40,7 @@ export const CartItemRow: React.FC<Props> = ({ item }) => {
           onClick={() => dispatch(changeQuantity({ itemId, delta: -1 }))}
           aria-label="Decrease quantity"
         >
-          <img src={`img/Minus.svg`} alt="Minus" />
+          <img src="img/Minus.svg" alt="Minus" />
         </button>
 
         <span className={styles.quantityNumber}>{quantity}</span>
@@ -48,7 +51,7 @@ export const CartItemRow: React.FC<Props> = ({ item }) => {
           onClick={() => dispatch(changeQuantity({ itemId, delta: 1 }))}
           aria-label="Increase quantity"
         >
-          <img src={`img/Plus.svg`} alt="Plus" />
+          <img src="img/Plus.svg" alt="Plus" />
         </button>
       </div>
 

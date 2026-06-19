@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -9,6 +10,8 @@ import {
 import styles from './ProductDetailsPage.module.scss';
 import { RootState } from '../../app/store';
 import { ProductDetails } from '../../types/ProductDetails';
+import { ProductsSlider } from '../shared/components/ProductSlider';
+import { Product } from '../../types/Product';
 
 export const ProductDetailsPage: React.FC = () => {
   const { category, itemId } = useParams<{
@@ -19,6 +22,9 @@ export const ProductDetailsPage: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const [product, setProduct] = useState<ProductDetails | null>(null);
+  const [allCategoryProducts, setAllCategoryProducts] = useState<
+    ProductDetails[]
+  >([]);
   const [mainImage, setMainImage] = useState<string>('');
   const [loading, setLoading] = useState(true);
 
@@ -42,6 +48,7 @@ export const ProductDetailsPage: React.FC = () => {
         return res.json();
       })
       .then((data: ProductDetails[]) => {
+        setAllCategoryProducts(data);
         const foundProduct = data.find(
           item => item.id === itemId || item.namespaceId === itemId,
         );
@@ -70,6 +77,23 @@ export const ProductDetailsPage: React.FC = () => {
   if (!product) {
     return <div className={styles.notFound}>Product not found</div>;
   }
+
+  const suggestedProducts: Product[] = allCategoryProducts
+    .filter(item => item.id !== product.id)
+    .slice(0, 10)
+    .map(item => ({
+      id: item.id,
+      category: item.category || category || '',
+      itemId: item.id,
+      name: item.name,
+      fullPrice: item.priceRegular,
+      price: item.priceDiscount,
+      screen: item.screen,
+      capacity: item.capacity,
+      ram: item.ram,
+      image: item.images && item.images.length > 0 ? item.images[0] : '',
+      year: item.year || 2022,
+    }));
 
   const {
     name,
@@ -221,7 +245,7 @@ export const ProductDetailsPage: React.FC = () => {
                         capacity,
                         ram,
                         image: images[0],
-                        year: year,
+                        year,
                       }),
                     );
                   } else {
@@ -249,7 +273,7 @@ export const ProductDetailsPage: React.FC = () => {
                       capacity,
                       ram,
                       image: images[0],
-                      year: year,
+                      year,
                     }),
                   )
                 }
@@ -324,6 +348,17 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {suggestedProducts.length > 0 && (
+          <div className={styles.suggestedSection}>
+            <ProductsSlider
+              title="You may also like"
+              products={suggestedProducts}
+              prevButtonId="suggested-prev"
+              nextButtonId="suggested-next"
+            />
+          </div>
+        )}
       </div>
     </div>
   );

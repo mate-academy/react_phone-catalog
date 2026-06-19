@@ -30,6 +30,7 @@ export const HomePage = () => {
         products={brandNewProducts}
         prevButtonId="brand-new-prev"
         nextButtonId="brand-new-next"
+        isBrandNew={true}
       />
 
       <ShopByCategory products={normalizedProducts} />

@@ -13,9 +13,13 @@ import { Product } from '../../../../types/Product';
 
 interface Props {
   product: Product;
+  isBrandNew?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  isBrandNew = false,
+}) => {
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state: RootState) => state.shop.cart);
   const favourites = useAppSelector(
@@ -54,8 +58,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </Link>
 
       <div className={styles.priceWrapper}>
-        <span className={styles.price}>${price}</span>
-        <span className={styles.fullPrice}>${fullPrice}</span>
+        {isBrandNew ? (
+          <span className={styles.price}>${fullPrice}</span>
+        ) : (
+          <>
+            <span className={styles.price}>${price}</span>
+            <span className={styles.fullPrice}>${fullPrice}</span>
+          </>
+        )}
       </div>
 
       <div className={styles.divider}></div>

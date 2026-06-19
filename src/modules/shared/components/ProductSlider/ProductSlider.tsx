@@ -12,6 +12,7 @@ interface Props {
   products: Product[];
   prevButtonId: string;
   nextButtonId: string;
+  isBrandNew?: boolean;
 }
 
 export const ProductsSlider: React.FC<Props> = ({
@@ -19,6 +20,7 @@ export const ProductsSlider: React.FC<Props> = ({
   products,
   prevButtonId,
   nextButtonId,
+  isBrandNew = false,
 }) => {
   return (
     <section className={styles.section}>
@@ -71,7 +73,7 @@ export const ProductsSlider: React.FC<Props> = ({
       >
         {products.map(product => (
           <SwiperSlide key={product.id} className={styles.slide}>
-            <ProductCard product={product} />
+            <ProductCard product={product} isBrandNew={isBrandNew} />
           </SwiperSlide>
         ))}
       </Swiper>

@@ -4,20 +4,18 @@
   padding: 32px;
   background-color: #fff;
   border: 1px solid #e2e6e9;
-  border-radius: 0; /* або твій радіус за макетом */
+  border-radius: 0;
   transition: all 0.3s ease;
   position: relative;
   box-sizing: border-box;
 
-  /* 👑 КЛЮЧОВИЙ ФІКС 1: Прибираємо overflow: hidden, якщо він тут був! */
   overflow: visible !important;
 
-  /* Ідеальний ховер: додаємо тінь та мікро-зсув вгору, які нічого не обрізають */
   &:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     transform: translateY(
       -4px
-    ); /* плавний підйом картки без деформації картинки */
+    );
   }
 }
 

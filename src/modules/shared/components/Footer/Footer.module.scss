@@ -65,10 +65,18 @@
   border: 1px solid #e2e6e9;
   cursor: pointer;
   padding: 0;
-  background-image: url('img/ArrowUp.svg');
-  background-position: center;
-  background-repeat: no-repeat;
   transition: all 0.3s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 16px;
+    height: 16px;
+    display: block;
+    object-fit: contain;
+  }
 
   &:hover {
     border-color: #313237;
