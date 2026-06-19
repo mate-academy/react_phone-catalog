@@ -1,0 +1,134 @@
+.mobileMenu {
+  z-index: 2;
+  position: fixed;
+  top: 48px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: calc(100vh - 48px);
+  background: var(--white);
+}
+
+.mobileNav {
+  flex: 1;
+}
+
+.mobileNavList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 24px;
+
+  padding-top: 32px;
+
+  list-style: none;
+}
+.nav {
+
+  &__link {
+    text-decoration: none;
+    color: #89939a;
+
+    font-family: 'MontExtra', 'Mont', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #313237;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      height: 2px;
+      background-color: transparent;
+
+      transition: background-color 0.2s ease;
+    }
+  }
+}
+
+.active {
+  color: #313237;
+
+  &::after {
+    background-color: #313237;
+  }
+}
+
+
+.mobileActions {
+  flex: 1;
+  display: flex;
+
+  border-top: 1px solid #e2e6e9;
+}
+
+.mobileAction {
+  display: flex;
+  flex: 1;
+
+  justify-content: center;
+  align-items: center;
+}
+.iconWrapper {
+  position: relative;
+  display: inline-flex;
+}
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  transform: translate(50%, -60%);
+
+  min-width: 14px;
+  height: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #0f6fff;
+  color: #fff;
+
+  font-size: 9px;
+  font-weight: 600;
+}
+
+@media (max-width: 1199px) {
+  .badge {
+    transform: translate(55%, -60%);
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+
+}
+
+// @media (min-width: 320px) and (max-width: 639px) {
+@media (max-width: 639px) {
+  .badge {
+    transform: translate(50%, -50%);
+  }
+    .mobileNavList {
+    gap: 16px;
+  }
+
+}

@@ -2,8 +2,9 @@ import { Phone } from '../types/Phone';
 
 export const mapPhoneToProduct = (phone: Phone) => ({
   id: phone.id,
-  title: phone.name,
-  price: phone.priceDiscount,
+  name: phone.name,
+  price: phone.priceRegular,
+  discount: phone.priceDiscount,
   image: phone.images[0],
   screen: phone.screen,
   capacity: phone.capacity,

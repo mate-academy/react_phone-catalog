@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import { App } from './App';
 import { HashRouter } from 'react-router-dom';
+// import './styles/reset.scss';
 import './styles/fonts.scss';
 import './styles/global.scss';
 import 'swiper/css';

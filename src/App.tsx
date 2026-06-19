@@ -5,16 +5,17 @@ import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 
 import { PhonesPage } from './pages/PhonesPage/PhonesPage';
 import { Footer } from './components/Footer';
-import { Navbar } from './components/Navbar';
 import { CartProvider } from './context/CartContext';
 import { FavoritesProvider } from './context/FavoritesContext';
+import { Header } from './components/Header/Header';
 
 export const App = () => {
   return (
     <CartProvider>
       <FavoritesProvider>
         <div className="App">
-          <Navbar />
+          <Header />
+          {/* <Navbar /> */}
 
           <div className="section">
             <div className="container">

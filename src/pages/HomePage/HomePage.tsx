@@ -10,23 +10,27 @@ export const HomePage = () => {
   const [phones, setPhones] = useState([]);
 
   useEffect(() => {
-    fetch('/api/phones.json')
+    fetch(`${import.meta.env.BASE_URL}api/phones.json`)
       .then(res => res.json())
       .then(setPhones);
   }, []);
 
-  const products = phones.map(mapPhoneToProduct);
+  const phonesApi = phones.map(mapPhoneToProduct);
 
   return (
     <main className={styles.home}>
       {/* Slider */}
       <Banner />
 
-      <ProductSlider title="Brand new models" products={products} />
+      <ProductSlider
+        name="Brand new models"
+        phones={phonesApi}
+        showDiscount={false}
+      />
 
       <Categories />
 
-      {/* <ProductSlider title="Hot prices" /> */}
+      <ProductSlider name="Hot prices" phones={phonesApi} showDiscount={true} />
     </main>
   );
 };

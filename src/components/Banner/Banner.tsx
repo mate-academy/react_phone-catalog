@@ -79,11 +79,6 @@ export const Banner = () => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {/* <div className={styles.bannerInfo}>
-            <h2 className={styles.bannerTitle}>Now available in our store!</h2>
-            <p className={styles.bannerText}>Be the first!</p>
-            <button className={styles.bannerButton}>ORDER NOW</button>
-          </div> */}
           <picture>
             <source
               media="(max-width: 639px)"

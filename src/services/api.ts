@@ -1,5 +1,5 @@
 export const getPhones = async () => {
-  const res = await fetch('/api/phones.json');
+  const res = await fetch(`${import.meta.env.BASE_URL}api/phones.json`);
 
   return res.json();
 };

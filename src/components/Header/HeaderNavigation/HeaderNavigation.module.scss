@@ -1,0 +1,78 @@
+.nav {
+  position: relative;
+  display: flex;
+  &__list {
+    display: flex;
+    gap: 64px; // між li
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+    position: relative;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #89939a;
+
+    font-family: 'MontExtra', 'Mont', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    height: 64px;
+
+    position: relative;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #313237;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      height: 2px;
+      background-color: transparent;
+
+      transition: background-color 0.2s ease;
+    }
+  }
+}
+
+.active {
+  color: #313237;
+
+  &::after {
+    background-color: #313237;
+  }
+}
+
+
+@media (max-width: 1199px) {
+  .nav__link {
+    height: 48px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .nav__list {
+    gap: 32px;
+  }
+
+}
+
+// @media (min-width: 320px) and (max-width: 639px) {
+@media (max-width: 639px) {
+  .nav {
+    display: none;
+  }
+
+}

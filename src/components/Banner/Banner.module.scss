@@ -83,18 +83,14 @@
 }
 
 .arrowPrev {
-  background-image: url('/img/icons/arrow-left.svg');
+  background-image: url('/img/icons/arrow-left-action.svg');
 }
 
 .arrowNext {
-  background-image: url('/img/icons/arrow-right.svg');
+  background-image: url('/img/icons/arrow-right-action.svg');
 }
 
 @media (min-width: 640px) and (max-width: 1199px) {
-  .container {
-    // max-width: 592px;
-    // margin: 0 auto;
-  }
 
   .banner {
     max-width: 592px;
@@ -118,9 +114,6 @@
 }
 
 @media (max-width: 639px) {
-  .container {
-    // padding: 0;
-  }
   .title {
     font-size: 32px;
     line-height: 41px;

@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import styles from './ProductCard.module.scss';
+// import './styles/global.scss';
 import { asset } from '../../utils/paths';
+import { NavLink } from 'react-router-dom';
 
 type Props = {
-  title: string;
+  id: string;
+  name: string;
   price: number;
+  discount?: number;
+  showDiscount?: boolean;
   image?: string;
   screen: string;
   capacity: string;
@@ -12,8 +17,11 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({
-  title,
+  id,
+  name,
   price,
+  discount,
+  showDiscount,
   image,
   screen,
   capacity,
@@ -24,18 +32,28 @@ export const ProductCard: React.FC<Props> = ({
   return (
     <article className={styles.card}>
       <div className={styles.top}>
-        <div className={styles.image}>
-          {image ? (
-            <img src={asset(image)} alt={title} />
-          ) : (
-            <span>No image</span>
-          )}
-        </div>
+        <NavLink
+          to={`/products/${id}`}
+          className={`${styles.icon} ${styles.mobileAction}`}
+        >
+          <div className={styles.image}>
+            {image ? (
+              <img src={asset(image)} alt={name} />
+            ) : (
+              <span>No image</span>
+            )}
+          </div>
 
-        <h3 className={styles.title}>{title}</h3>
+          <h3 className={styles.title}>{name}</h3>
+        </NavLink>
       </div>
       <div className={styles.info}>
-        <p className={styles.price}>${price}</p>
+        <div className={styles.wrapperPrice}>
+          <p className={styles.price}>${price}</p>
+          {showDiscount && discount && (
+            <p className={styles.discount}>${discount}</p>
+          )}
+        </div>
 
         <ul className={styles.specs}>
           <li className={styles.spec}>
@@ -56,7 +74,7 @@ export const ProductCard: React.FC<Props> = ({
       </div>
 
       <div className={styles.cardButtons}>
-        <button className={styles.button}>Add to cart</button>
+        <button className={styles.buttonAddToCart}>Add to cart</button>
 
         <button
           type="button"
@@ -67,9 +85,17 @@ export const ProductCard: React.FC<Props> = ({
           }`}
         >
           <span
-            className={`${styles.heart} ${
-              isFavorite ? styles.heartSelected : ''
-            }`}
+            // className={`${styles.heart} ${
+            //   isFavorite ? styles.heartSelected : ''
+            // }`}
+            className={styles.heart}
+            style={{
+              backgroundImage: `url(${asset(
+                isFavorite
+                  ? 'img/icons/heart-filled.svg'
+                  : 'img/icons/heart.svg',
+              )})`,
+            }}
           />
         </button>
       </div>

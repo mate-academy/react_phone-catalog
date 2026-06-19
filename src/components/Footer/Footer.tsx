@@ -1,3 +1,4 @@
+import { asset } from '../../utils/paths';
 import styles from './Footer.module.scss';
 import { NavLink } from 'react-router-dom';
 
@@ -14,7 +15,7 @@ export const Footer = () => {
       <div className={styles.container}>
         <NavLink to="/" className={`${styles.footerLogo}`}>
           <img
-            src="/img/icons/Logo.svg"
+            src={asset('img/icons/Logo.svg')}
             alt="logo"
             className={styles.footerLogoImg}
           />
