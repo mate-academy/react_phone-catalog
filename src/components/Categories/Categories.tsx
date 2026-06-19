@@ -11,19 +11,19 @@ export const Categories = ({ title, products }: Props) => {
   const categories = [
     {
       title: 'Mobile phones',
-      image: '/img/category-phones.png',
+      image: './img/category-phones.png',
       link: '/phones',
       category: 'phones',
     },
     {
       title: 'Tablets',
-      image: '/img/category-tablets.png',
+      image: './img/category-tablets.png',
       link: '/tablets',
       category: 'tablets',
     },
     {
       title: 'Accessories',
-      image: '/img/category-accessories.png',
+      image: './img/category-accessories.png',
       link: '/accessories',
       category: 'accessories',
     },

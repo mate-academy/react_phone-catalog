@@ -15,14 +15,14 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <Link to="/">
-        <img src="/img/logo/logo.png" alt="Nice Gadgets Logo" />
+        <img src="./img/logo/logo.png" alt="Nice Gadgets Logo" />
       </Link>
       <button
         type="button"
         onClick={handleToggleMenu}
         className={styles.button}
       >
-        <img src="/img/burger_menu/burger_menu.png" alt="Burger Menu" />
+        <img src="./img/burger_menu/burger_menu.png" alt="Burger Menu" />
       </button>
       <Menu isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </header>

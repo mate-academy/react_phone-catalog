@@ -11,7 +11,7 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <Link to="/">
-        <img src="/img/logo/logo.png" alt="Nice Gadgets Logo" />
+        <img src="./img/logo/logo.png" alt="Nice Gadgets Logo" />
       </Link>
       <ul className={styles.list}>
         <li className={styles.listContent}>
@@ -43,7 +43,7 @@ export const Footer = () => {
         className={styles.backToTop}
       >
         <span className={styles.backToTopText}>Back to top</span>
-        <img src="/img/icons/button_top_icon.png" alt="" />
+        <img src="./img/icons/button_top_icon.png" alt="" />
       </button>
     </footer>
   );

@@ -5,9 +5,9 @@ import cn from 'classnames';
 export const Banner = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const banners = [
-    '/img/banner-phones.png',
-    '/img/banner-accessories.png',
-    '/img/banner-tablets.png',
+    './img/banner-phones.png',
+    './img/banner-accessories.png',
+    './img/banner-tablets.png',
   ];
 
   //#region handleArrows

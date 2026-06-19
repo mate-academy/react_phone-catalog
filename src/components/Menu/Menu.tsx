@@ -11,10 +11,10 @@ export const Menu = ({ isOpen, onClose }: Props) => {
     <div className={`${styles.menu} ${isOpen ? styles.open : ''}`}>
       <div className={styles.menuHeader}>
         <Link to="/">
-          <img src="/img/logo/logo.png" alt="Nice Gadgets Logo" />
+          <img src="./img/logo/logo.png" alt="Nice Gadgets Logo" />
         </Link>
         <button type="button" onClick={onClose} className={styles.button}>
-          <img src="/img/close_menu/close_menu.png" alt="Close Menu" />
+          <img src="./img/close_menu/close_menu.png" alt="Close Menu" />
         </button>
       </div>
 
@@ -45,10 +45,10 @@ export const Menu = ({ isOpen, onClose }: Props) => {
 
       <div className={styles.buttons}>
         <Link to="/favourites" className={styles.buttonFav}>
-          <img src="/img/icons/favourites_icon.png" alt="Favourites icon" />
+          <img src="./img/icons/favourites_icon.png" alt="Favourites icon" />
         </Link>
         <Link to="/cart" className={styles.buttonCart}>
-          <img src="/img/icons/cart_icon.png" alt="Cart icon" />
+          <img src="./img/icons/cart_icon.png" alt="Cart icon" />
         </Link>
       </div>
     </div>

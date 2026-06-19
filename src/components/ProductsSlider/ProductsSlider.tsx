@@ -31,8 +31,8 @@ export const ProductsSlider = ({ title, products }: Props) => {
             <img
               src={
                 position === 0
-                  ? '/img/buttons/slider_button_disabled.png'
-                  : '/img/buttons/slider_button_default.png'
+                  ? './img/buttons/slider_button_disabled.png'
+                  : './img/buttons/slider_button_default.png'
               }
               alt=""
               className={styles.arrowLeft}
@@ -44,7 +44,7 @@ export const ProductsSlider = ({ title, products }: Props) => {
             disabled={position >= products.length - 1}
             className={styles.buttonRight}
           >
-            <img src="/img/buttons/slider_button_default.png" alt="" />
+            <img src="./img/buttons/slider_button_default.png" alt="" />
           </button>
         </div>
       </div>
