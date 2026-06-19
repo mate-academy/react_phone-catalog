@@ -7,8 +7,8 @@ import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/modules/shared/components/ui/Button';
 
-import arrowLeft from '@/assets/svg/arrow-left.svg';
-import arrowRight from '@/assets/svg/arrow-right.svg';
+import ArrowLeft from '@/assets/svg/arrow-left.svg?react';
+import ArrowRight from '@/assets/svg/arrow-right.svg?react';
 
 import styles from './Pagination.module.scss';
 //#endregion
@@ -21,6 +21,9 @@ const {
   paginationEllipsis,
   paginationBtn,
   paginationBtnActive,
+
+  arrowLeft,
+  arrowRight
 } = styles;
 //#endregion
 
@@ -53,11 +56,26 @@ export const Pagination: React.FC<Props> = ({
 
     // Ми в самому кінці.
     if (currentPage >= totalPages - 2) {
-      return [1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+      return [
+        1,
+        '...',
+        totalPages - 3,
+        totalPages - 2,
+        totalPages - 1,
+        totalPages,
+      ];
     }
 
     // Ми десь посередині (показуємо сторінку до і сторінку після).
-    return [1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages];
+    return [
+      1,
+      '...',
+      currentPage - 1,
+      currentPage,
+      currentPage + 1,
+      '...',
+      totalPages,
+    ];
   };
 
   const visiblePages = getVisiblePages();
@@ -73,7 +91,10 @@ export const Pagination: React.FC<Props> = ({
         disabled={currentPage === 1}
         aria-label={t('pagination.aria.previous')}
       >
-        <img src={arrowLeft} alt={t('pagination.alt.arrowLeft')} />
+        <ArrowLeft
+          className={arrowLeft}
+          aria-label={t('pagination.alt.arrowLeft')}
+        />
       </Button>
 
       <div className={paginationPages}>
@@ -110,7 +131,10 @@ export const Pagination: React.FC<Props> = ({
         disabled={currentPage === totalPages}
         aria-label={t('pagination.aria.next')}
       >
-        <img src={arrowRight} alt={t('pagination.alt.arrowRight')} />
+        <ArrowRight
+          className={arrowRight}
+          aria-label={t('pagination.alt.arrowRight')}
+        />
       </Button>
     </div>
   );

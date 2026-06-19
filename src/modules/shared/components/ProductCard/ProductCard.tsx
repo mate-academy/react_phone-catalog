@@ -13,8 +13,8 @@ import { useFavourites } from '../../utils/context/FavouritesContext';
 import { Button } from '../ui/Button';
 import { CategoryType, ProductType } from '@/modules/shared/utils/types';
 
-import favoutiteIcon from '@/assets/svg/heart.svg';
-import favouriteIconActive from '@/assets/svg/heart-filled.svg';
+import FavouriteIcon from '@/assets/svg/heart.svg?react';
+import FavouriteIconActive from '@/assets/svg/heart-filled.svg?react';
 
 import styles from './ProductCard.module.scss';
 //#endregion
@@ -41,6 +41,9 @@ const {
   cardActions,
   actionCart,
   actionFavourite,
+
+  favouriteIcon,
+  favouriteIconActive,
 } = styles;
 //#endregion
 
@@ -62,8 +65,8 @@ export const ProductCard: React.FC<Props> = ({
   const { toggleFavourite, isFavourite } = useFavourites();
   const isActiveFavourite = isFavourite(product.itemId);
 
-  const capacityLabelKey = product.category as CategoryType === 'accessories'
-    ? 'size' : 'capacity';
+  const capacityLabelKey =
+    (product.category as CategoryType) === 'accessories' ? 'size' : 'capacity';
   //#endregion
 
   //#region RENDER
@@ -123,10 +126,12 @@ export const ProductCard: React.FC<Props> = ({
               addToCart(product);
             }
           }}
-          aria-label={!isActiveCart ? t('productDetailsPage.actions.cart.btnAria') : ''}
+          aria-label={
+            !isActiveCart ? t('productDetailsPage.actions.cart.btnAria') : ''
+          }
         >
           {t('productDetailsPage.actions.cart.btnText', {
-            context: isActiveCart ? 'active' : ''
+            context: isActiveCart ? 'active' : '',
           })}
         </Button>
 
@@ -134,16 +139,15 @@ export const ProductCard: React.FC<Props> = ({
           variant="icon"
           className={actionFavourite}
           onClick={() => toggleFavourite(product)}
-          aria-label={t(
-            'productDetailsPage.actions.favourite.btnAria',
-            { context: isActiveFavourite ? 'active' : '' }
-          )}
+          aria-label={t('productDetailsPage.actions.favourite.btnAria', {
+            context: isActiveFavourite ? 'active' : '',
+          })}
         >
-          <img
-            src={isActiveFavourite ? favouriteIconActive : favoutiteIcon}
-            alt=""
-            aria-hidden="true"
-          />
+          {isActiveFavourite ? (
+            <FavouriteIconActive className={favouriteIconActive} />
+          ) : (
+            <FavouriteIcon className={favouriteIcon} />
+          )}
         </Button>
       </div>
     </div>

@@ -5,12 +5,14 @@
 
   position: sticky;
   top: 0;
-  background-color: var(--color-white);
+  background-color: var((--color-surface-1));
   z-index: 1000;
 
-  @include on-tablet { height: 48px; }
+  @include on-tablet {
+    height: 48px;
+  }
 
-  @include on-mobile { height: 48px; }
+  @include on-mobile {
+    height: 48px;
+  }
 }
-
-

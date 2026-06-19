@@ -12,16 +12,15 @@ import { useCart } from '@/modules/shared/utils/context/CartContext';
 import { LanguageSwitcher } from '../LanguageSwitcher';
 import { ThemeToggler } from '../ThemeToggler';
 
-import iconFarourites from '@/assets/svg/heart.svg';
-import iconBag from '@/assets/svg/cart.svg';
-import iconMenu from '@/assets/svg/menu.svg';
+import IconFarourites from '@/assets/svg/heart.svg?react';
+import IconCart from '@/assets/svg/cart.svg?react';
+import IconMenu from '@/assets/svg/menu.svg?react';
 
 import styles from './HeaderActions.module.scss';
 //#endregion
 
 //#region STYLES
 const {
-  mobileActions: burgerActions,
   actions,
   actionSettings,
   actionItem,
@@ -29,6 +28,12 @@ const {
   actionItemIcon,
   actionItemCount,
   actionItemMenu,
+
+  burgerActions,
+
+  iconFavourites,
+  iconCart,
+  iconMenu,
 } = styles;
 //#endregion
 
@@ -37,7 +42,10 @@ interface Props {
   onMenuClick?: () => void;
 }
 
-export const HeaderActions: React.FC<Props> = ({ isBurgerMenu, onMenuClick }) => {
+export const HeaderActions: React.FC<Props> = ({
+  isBurgerMenu,
+  onMenuClick,
+}) => {
   //#region STATE
   const { favouritesCount } = useFavourites();
   const { totalCount } = useCart();
@@ -67,10 +75,9 @@ export const HeaderActions: React.FC<Props> = ({ isBurgerMenu, onMenuClick }) =>
           ${pathname === '/favourites' ? actionItemActive : ''}
         `}
       >
-        <img
-          src={iconFarourites}
-          className={actionItemIcon}
-          alt={t('header.actions.alt.favourites')}
+        <IconFarourites
+          className={`${actionItemIcon} ${iconFavourites}`}
+          aria-label={t('header.actions.alt.favourites')}
         />
         {favouritesCount > 0 && (
           <span className={actionItemCount}>{favouritesCount}</span>
@@ -84,10 +91,9 @@ export const HeaderActions: React.FC<Props> = ({ isBurgerMenu, onMenuClick }) =>
           ${pathname === '/cart' ? actionItemActive : ''}
         `}
       >
-        <img
-          src={iconBag}
-          className={actionItemIcon}
-          alt={t('header.actions.alt.bag')}
+        <IconCart
+          className={`${actionItemIcon} ${iconCart}`}
+          aria-label={t('header.actions.alt.bag')}
         />
         {totalCount > 0 && (
           <span className={actionItemCount}>{totalCount}</span>
@@ -96,10 +102,9 @@ export const HeaderActions: React.FC<Props> = ({ isBurgerMenu, onMenuClick }) =>
 
       {!isBurgerMenu && (
         <a className={actionItemMenu} onClick={onMenuClick}>
-          <img
-            src={iconMenu}
-            className={actionItemIcon}
-            alt={t('header.actions.alt.menu')}
+          <IconMenu
+            className={`${actionItemIcon} ${iconMenu}`}
+            aria-label={t('header.actions.alt.menu')}
           />
         </a>
       )}

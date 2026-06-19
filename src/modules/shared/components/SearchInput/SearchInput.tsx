@@ -5,17 +5,13 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import IconSearch from '@/assets/svg/search.svg';
+import IconSearch from '@/assets/svg/search.svg?react';
 
 import styles from './SearchInput.module.scss';
 //#endregion
 
 //#region STYLES
-const {
-  searchContainer,
-  searchField,
-  searchIcon,
-} = styles;
+const { searchContainer, searchField, searchIcon } = styles;
 //#endregion
 
 export const SearchInput = () => {
@@ -62,10 +58,9 @@ export const SearchInput = () => {
         onChange={e => setQuery(e.target.value)}
       />
 
-      <img
+      <IconSearch
         className={searchIcon}
-        src={IconSearch}
-        alt={t('searchInput.alt')}
+        aria-label={t('searchInput.alt')}
       />
     </div>
   );

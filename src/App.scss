@@ -33,6 +33,10 @@
   box-sizing: border-box;
 }
 
+svg {
+  transition: color 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
+}
+
 .App {
   font-family: Mont, sans-serif;
   display: flex;
@@ -40,11 +44,15 @@
 
   max-width: 100%;
   min-height: 100vh;
+
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .main-content {
   flex: 1;
-  background-color: var(--color-hover-bg);
   width: 100%;
 }
 

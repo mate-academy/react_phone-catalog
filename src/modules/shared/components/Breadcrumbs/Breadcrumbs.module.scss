@@ -15,7 +15,6 @@
     }
 
     &Active {
-      line-height: 16px;
       color: var(--color-primary);
     }
   }
@@ -40,7 +39,16 @@
   }
 
   &Text {
+    @include flex-center;
     @include font-small;
     color: var(--color-secondary);
   }
+}
+
+.homeIcon {
+  color: var(--color-primary);
+}
+
+.arrowRight {
+  color: var(--color-icons);
 }

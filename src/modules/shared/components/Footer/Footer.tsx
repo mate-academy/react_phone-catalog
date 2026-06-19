@@ -4,11 +4,12 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import arrowUp from '@/assets/svg/arrow-up.svg';
-import logoIcon from '@/assets/svg/logo.svg';
+import { Button } from '../ui/Button';
+
+import LogoIcon from '@/assets/svg/logo.svg?react';
+import ArrowUpIcon from '@/assets/svg/arrow-up.svg?react';
 
 import style from './Footer.module.scss';
-import { Button } from '../ui/Button';
 //#endregion
 
 //#region STYLES
@@ -26,6 +27,9 @@ const {
   scrollBlock,
   scrollText,
   scrollBtn,
+
+  logoIcon,
+  arrowUpIcon,
 } = style;
 //#endregion
 
@@ -49,10 +53,9 @@ export const Footer = () => {
       <div className="container">
         <div className={logo}>
           <Link to="/">
-            <img
-              src={logoIcon}
-              className={logoImg}
-              alt={t('footer.logo.alt')}
+            <LogoIcon
+              className={`${logoImg} ${logoIcon}`}
+              aria-label={t('footer.logo.alt')}
             />
           </Link>
         </div>
@@ -91,7 +94,10 @@ export const Footer = () => {
             aria-label={t('footer.back.aria')}
             onClick={scrollToTop}
           >
-            <img src={arrowUp} alt={t('footer.back.icon')} />
+            <ArrowUpIcon
+              className={arrowUpIcon}
+              aria-label={t('footer.back.icon')}
+            />
           </Button>
         </div>
       </div>

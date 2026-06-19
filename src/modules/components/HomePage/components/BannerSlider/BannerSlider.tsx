@@ -8,8 +8,8 @@ import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/modules/shared/components/ui/Button';
 
-import arrowLeft from '@/assets/svg/arrow-left.svg';
-import arrowRight from '@/assets/svg/arrow-right.svg';
+import ArrowLeft from '@/assets/svg/arrow-left.svg?react';
+import ArrowRight from '@/assets/svg/arrow-right.svg?react';
 
 import bannerPhones from '@/assets/webp/banner_phones.webp';
 import bannerTablets from '@/assets/webp/banner_tablets.webp';
@@ -28,8 +28,9 @@ const {
   sliderPagination,
   sliderDot,
   sliderDotActive,
+  arrowLeft,
+  arrowRight,
 } = styles;
-
 
 const slides = [
   { id: 1, image: bannerPhones },
@@ -70,7 +71,7 @@ export const BannerSlider = () => {
         aria-label={t('bannerSlider.aria.prevSlide')}
         onClick={handlePrev}
       >
-        <img src={arrowLeft} alt={t('bannerSlider.alt.arrowLeft')} />
+        <ArrowLeft className={arrowLeft} aria-label={t('bannerSlider.alt.arrowLeft')} />
       </Button>
 
       <div className={sliderViewport}>
@@ -95,7 +96,7 @@ export const BannerSlider = () => {
         aria-label={t('bannerSlider.aria.nextSlide')}
         onClick={handleNext}
       >
-        <img src={arrowRight} alt={t('bannerSlider.alt.arrowRight')} />
+        <ArrowRight className={arrowRight} aria-label={t('bannerSlider.alt.arrowRight')} />
       </Button>
 
       <div className={sliderPagination}>

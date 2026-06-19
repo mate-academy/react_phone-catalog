@@ -4,7 +4,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import arrowLeft from '@/assets/svg/arrow-left.svg';
+import ArrowLeft from '@/assets/svg/arrow-left.svg?react';
 
 import styles from './BackButton.module.scss';
 //#endregion IMPORTS
@@ -15,6 +15,7 @@ const {
   backButtonBtn,
   backButtonIcon,
   backButtonText,
+  arrowLeft,
 } = styles;
 //#endregion STYLES
 
@@ -33,7 +34,7 @@ export const BackButton = () => {
     <div className={backButton}>
       <button className={backButtonBtn} type="button" onClick={navigateBack}>
         <div className={backButtonIcon} aria-hidden="true">
-          <img src={arrowLeft}/>
+          <ArrowLeft className={arrowLeft} />
         </div>
         <span className={backButtonText}>{t('backButton.text')}</span>
       </button>

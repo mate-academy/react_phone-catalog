@@ -4,7 +4,7 @@
 //#region IMPORTS
 import { useEffect, useRef, useState } from 'react';
 
-import arrowDown from '@/assets/svg/arrow-dropdown-gray.svg';
+import ArrowDown from '@/assets/svg/arrow-dropdown-gray.svg?react';
 
 import styles from './CustomDropdown.module.scss';
 //#endregion IMPORTS
@@ -20,6 +20,7 @@ const {
   dropdownList,
   dropdownItem,
   dropdownItemActive,
+  arrowDown,
 } = styles;
 //#endregion STYLES
 
@@ -77,10 +78,12 @@ export const CustomDropdown: React.FC<Props> = ({
         aria-expanded={isOpen}
       >
         <span>{currentLabel}</span>
-        <img
-          src={arrowDown}
-          className={`${dropdownArrow} ${isOpen ? dropdownArrowActive : ''}`}
-          aria-hidden="true"
+        <ArrowDown
+          className={`
+            ${arrowDown}
+            ${dropdownArrow}
+            ${isOpen ? dropdownArrowActive : ''}
+          `}
         />
       </button>
 

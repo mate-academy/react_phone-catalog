@@ -15,8 +15,8 @@ import { PRODUCT_COLORS_MAP as COLORS } from '@/modules/shared/utils/constants';
 
 import { Button } from '@/modules/shared/components/ui/Button';
 
-import favouriteIcon from '@/assets/svg/heart.svg';
-import favouriteIconActive from '@/assets/svg/heart-filled.svg';
+import FavouriteIcon from '@/assets/svg/heart.svg?react';
+import FavouriteIconActive from '@/assets/svg/heart-filled.svg?react';
 
 import styles from './ProductActions.module.scss';
 //#endregion IMPORTS
@@ -50,6 +50,9 @@ const {
   specBlock,
   specTitle,
   specValue,
+
+  favouriteIcon,
+  favouriteIconActive,
 } = styles;
 //#endregion STYLES
 
@@ -77,20 +80,19 @@ export const ProductActions: React.FC<Props> = ({ product }) => {
   const isActiveFavourite = isFavourite(product.id);
   const isActiveCart = isInCart(product.id);
 
-  const capacityTitleKey = product.category === 'accessories' ? 'size' : 'capacity';
+  const capacityTitleKey =
+    product.category === 'accessories' ? 'size' : 'capacity';
 
   const categoryProducts = productsDetails.filter(
-    item => item.category === product.category
+    item => item.category === product.category,
   );
 
-  const baseProduct = products.find(
-    item => item.itemId === product.id
-  );
+  const baseProduct = products.find(item => item.itemId === product.id);
   //#endregion PRODUCT_CONFINGS
 
   //#region TECH_SPECS_DATA
   const shortSpecs = {
-    screen : product.screen,
+    screen: product.screen,
     resolution: product.resolution,
     processor: product.processor,
     ram: product.ram,
@@ -188,7 +190,9 @@ export const ProductActions: React.FC<Props> = ({ product }) => {
               addToCart(baseProduct);
             }
           }}
-          aria-label={!isActiveCart ? t('productDetailsPage.actions.cart.btnAria') : ''}
+          aria-label={
+            !isActiveCart ? t('productDetailsPage.actions.cart.btnAria') : ''
+          }
         >
           {t('productDetailsPage.actions.cart.btnText', {
             context: isActiveCart ? 'active' : '',
@@ -204,7 +208,11 @@ export const ProductActions: React.FC<Props> = ({ product }) => {
             context: isActiveFavourite ? 'active' : '',
           })}
         >
-          <img src={isActiveFavourite ? favouriteIconActive : favouriteIcon} />
+          {isActiveFavourite ? (
+            <FavouriteIconActive className={favouriteIconActive} />
+          ) : (
+            <FavouriteIcon className={favouriteIcon} />
+          )}
         </Button>
       </div>
 

@@ -25,7 +25,7 @@
 
     &Active {
       background-color: var(--color-primary);
-      color: var(--color-white);
+      color: var((--color-surface-1));
     }
   }
 
@@ -36,6 +36,16 @@
 
     @include font-buttons;
     color: var(--color-secondary);
+  }
+}
+
+.arrow {
+  &Left {
+    color: var(--color-primary);
+  }
+
+  &Right {
+    color: var(--color-primary);
   }
 }
 

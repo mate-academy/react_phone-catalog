@@ -30,7 +30,7 @@
 .actionSettings {
   @include flex-center($gap: 8px);
   padding-right: 16px;
-  
+
   @include on-tablet {
     display: none;
   }
@@ -87,10 +87,10 @@
     padding-top: 1px;
 
     background-color: var(--color-accent);
-    border: 1px solid var(--color-white);
+    border: 1px solid var((--color-surface-1));
     border-radius: 50%;
 
-    color: var(--color-white);
+    color: var((--color-surface-1));
     font-size: 9px;
     font-weight: 700;
     line-height: 1;
@@ -127,4 +127,16 @@
   .actionItemMenu {
     display: flex;
   }
+}
+
+.iconFavourites {
+  color: var(--color-primary);
+}
+
+.iconCart {
+  color: var(--color-primary);
+}
+
+.iconMenu {
+  color: var(--color-primary);
 }

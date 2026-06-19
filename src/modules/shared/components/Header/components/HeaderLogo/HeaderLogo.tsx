@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
-import logoIcon from '@/assets/svg/logo.svg';
-
+import LogoIcon from '@/assets/svg/logo.svg?react';
 import styles from './HeaderLogo.module.scss';
 
 export const HeaderLogo = () => {
@@ -11,11 +9,10 @@ export const HeaderLogo = () => {
   return (
     <div className={styles.logo}>
       <Link to="/">
-        <img
-          src={logoIcon}
-          className={styles.logoImg}
-          alt={t('header.logo.logoIcon')}
-        ></img>
+        <LogoIcon
+          className={`${styles.logoIcon}`}
+          aria-label={t('header.logo.logoIcon')}
+        />
       </Link>
     </div>
   );

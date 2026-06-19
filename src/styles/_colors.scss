@@ -1,35 +1,47 @@
 :root {
-  // Основні акценти
-  --color-accent: #4219D0;
-  --color-secondary-accent: #F4BA47;
+  // 1. BRAND & STATUS (Акценти та системні сповіщення)
+  --color-accent: #4219D0;           // Головні кнопки, активні стани
+  --color-secondary-accent: #F4BA47; // Жовті бейджі або зірочки
+  --color-green: #27AE60;            // Успіх (додано в кошик тощо)
+  --color-red: #EB5757;              // Помилка або видалення
 
-  // Текст та інтерфейс
-  --color-primary: #0F0F11;
-  --color-secondary: #89939A;
-  --color-icons: #B4BDC3;
-  --color-elements: #E2E6E9;
+  // 2. TYPOGRAPHY & MAIN ICONS (Текст та головні іконки)
+  --color-primary: #0F0F11;          // Основний текст, активні іконки
+  --color-secondary: #89939A;        // Додатковий текст, описи
 
-  // Стани інтерактивності (Hover / Backgrounds)
-  --color-hover-bg: #FAFBFC;
-  --color-white: #FFFFFF;
+  // 3. UI ELEMENTS (Інтерфейс, бордери, декоративні іконки)
+  --color-icons: #B4BDC3;            // Неактивні іконки (стрілочки в дропдаунах)
+  --color-elements: #E2E6E9;         // Бордери, роздільники (дівайдери)
 
-  // Системні сповіщення
-  --color-green: #27AE60;
-  --color-red: #EB5757;
+  // 4. BACKGROUNDS & SURFACES (Фони)
+  --color-bg: #FFFFFF;               // Головний фон сторінки
+  --color-surface-1: #FFFFFF;        // Фони карток, хедеру
+  --color-surface-2: #FAFBFC;        // Фони при ховері
+
+  // 5. CONSTANTS (Незмінні кольори для специфічних елементів)
+  --color-white-fixed: #FFFFFF;
+  --color-favourite-active: var(--color-secondary-accent);
 }
 
 [data-theme="dark"] {
+  // 1. BRAND & STATUS
   --color-accent: #905BFF;
   --color-secondary-accent: #F4BA47;
+  --color-green: #27AE60;
+  --color-red: #EB5757;
 
-  --color-primary: #F1F2F9;
+  // 2. TYPOGRAPHY & MAIN ICONS
+  --color-primary: #F1F2F9;          // Світлий текст/іконки на темному фоні
   --color-secondary: #75767F;
+
+  // 3. UI ELEMENTS
   --color-icons: #4A4D58;
   --color-elements: #3B3E4A;
 
-  --color-hover-bg: #0F1121;
+  // 4. BACKGROUNDS & SURFACES
+  --color-bg: #0F1121;               // Глибокий фон сторінки
+  --color-surface-1: #161827;        // Картки товарів, дропдауни, хедер
+  --color-surface-2: #323542;        // Фон при ховері
 
-  --color-white: #161827;
-  --color-green: #27AE60;
-  --color-red: #EB5757;
+  --color-favourite-active: var(--color-red);
 }

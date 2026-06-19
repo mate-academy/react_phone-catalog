@@ -5,8 +5,8 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import arrowRight from '@/assets/svg/arrow-right-gray.svg';
-import homeIcon from '@/assets/svg/home.svg';
+import ArrowRight from '@/assets/svg/arrow-right-gray.svg?react';
+import HomeIcon from '@/assets/svg/home.svg?react';
 
 import styles from './Breadcrumbs.module.scss';
 //#endregion IMPORTS
@@ -19,6 +19,9 @@ const {
   breadcrumbsIcon,
   breadcrumbsArrow,
   breadcrumbsText,
+
+  arrowRight,
+  homeIcon,
 } = styles;
 //#endregion STYLES
 
@@ -28,7 +31,11 @@ interface Props {
   productName?: string;
 }
 
-export const Breadcrumbs: React.FC<Props> = ({ pageTitle, pagePath, productName }) => {
+export const Breadcrumbs: React.FC<Props> = ({
+  pageTitle,
+  pagePath,
+  productName,
+}) => {
   //#region HOOKS
   const { t } = useTranslation();
   //#endregion
@@ -38,9 +45,7 @@ export const Breadcrumbs: React.FC<Props> = ({ pageTitle, pagePath, productName 
     ? pageTitle.charAt(0).toUpperCase() + pageTitle.slice(1)
     : '';
 
-  const targetPath = pagePath
-    ? `/${pagePath}`
-    : `${pageTitle.toLowerCase()}`;
+  const targetPath = pagePath ? `/${pagePath}` : `${pageTitle.toLowerCase()}`;
   //#endregion HANDLERS_&_HELPERS
 
   //#region RENDER
@@ -48,15 +53,14 @@ export const Breadcrumbs: React.FC<Props> = ({ pageTitle, pagePath, productName 
     <nav className={breadcrumbs} aria-label="breadcrumb">
       {/* 1 рівень: Головна */}
       <Link className={breadcrumbsLink} to="/">
-        <img
-          className={breadcrumbsIcon}
-          src={homeIcon}
-          alt={t('header.navigation.home')}
+        <HomeIcon
+          className={`${breadcrumbsIcon} ${homeIcon}`}
+          aria-label={t('header.navigation.home')}
         />
       </Link>
 
       <div className={breadcrumbsArrow} aria-hidden="true">
-        <img src={arrowRight} alt="" />
+        <ArrowRight className={arrowRight} />
       </div>
 
       {/* 2 рівень: Категорія (стає посиланням, лише якщо є productName) */}
@@ -70,7 +74,7 @@ export const Breadcrumbs: React.FC<Props> = ({ pageTitle, pagePath, productName 
           </Link>
 
           <div className={breadcrumbsArrow} aria-hidden="true">
-            <img src={arrowRight} alt="" />
+            <ArrowRight className={arrowRight} />
           </div>
         </>
       ) : (
@@ -78,10 +82,7 @@ export const Breadcrumbs: React.FC<Props> = ({ pageTitle, pagePath, productName 
       )}
 
       {/* 3 рівень: Назва продукту */}
-      {productName &&
-        <span className={breadcrumbsText}>
-          {productName}
-        </span>}
+      {productName && <span className={breadcrumbsText}>{productName}</span>}
     </nav>
   );
   //#endregion RENDER

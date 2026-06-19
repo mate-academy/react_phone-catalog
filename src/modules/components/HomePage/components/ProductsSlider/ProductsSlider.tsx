@@ -12,8 +12,8 @@ import { ProductCard } from '@/modules/shared/components/ProductCard';
 import { Button } from '@/modules/shared/components/ui/Button';
 import { ProductType } from '@/modules/shared/utils/types';
 
-import arrowLeft from '@/assets/svg/arrow-left.svg';
-import arrowRight from '@/assets/svg/arrow-right.svg';
+import ArrowLeft from '@/assets/svg/arrow-left.svg?react';
+import ArrowRight from '@/assets/svg/arrow-right.svg?react';
 
 import styles from './ProductsSlider.module.scss';
 //#endregion
@@ -26,6 +26,8 @@ const {
   sliderActions,
   sliderViewport,
   sliderTrack,
+  arrowLeft,
+  arrowRight,
 } = styles;
 //#endregion
 
@@ -121,7 +123,10 @@ export const ProductsSlider: React.FC<Props> = ({
             disabled={currentIndex === 0}
             aria-label={t('productsSlider.aria.prevItems')}
           >
-            <img src={arrowLeft} alt={t('productsSlider.alt.arrowLeft')} />
+            <ArrowLeft
+              className={arrowLeft}
+              aria-label={t('productsSlider.alt.arrowLeft')}
+            />
           </Button>
           <Button
             variant="icon"
@@ -129,7 +134,10 @@ export const ProductsSlider: React.FC<Props> = ({
             disabled={currentIndex === maxIndex}
             aria-label={t('productsSlider.aria.nextItems')}
           >
-            <img src={arrowRight} alt={t('productsSlider.alt.arrowRight')} />
+            <ArrowRight
+              className={arrowRight}
+              aria-label={t('productsSlider.alt.arrowRight')}
+            />
           </Button>
         </div>
       </div>

@@ -11,7 +11,7 @@ import { ThemeToggler } from '../ThemeToggler';
 
 import { Button } from '../../../ui/Button';
 
-import iconClose from '@/assets/svg/close.svg';
+import IconClose from '@/assets/svg/close.svg?react';
 
 import styles from './BurgerMenu.module.scss';
 //#endregion
@@ -25,6 +25,7 @@ const {
   menuNav,
   menuSettings,
   menuActions,
+  iconClose,
 } = styles;
 //#endregion
 
@@ -60,7 +61,10 @@ export const BurgerMenu: React.FC<Props> = ({ isOpen, onClose }) => {
           onClick={onClose}
           aria-label={t('burgerMenu.closeBtn')}
         >
-          <img src={iconClose} alt={t('burgerMenu.closeIcon')} />
+          <IconClose
+            className={iconClose}
+            aria-label={t('burgerMenu.closeIcon')}
+          />
         </Button>
       </div>
 
