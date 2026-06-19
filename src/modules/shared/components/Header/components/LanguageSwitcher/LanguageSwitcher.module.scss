@@ -1,0 +1,21 @@
+.langSwitcher {
+  @include flex-center($gap: 8px);
+}
+
+.langBtn {
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid var(--color-elements);
+  background-color: transparent;
+
+  color: var(--color-primary);
+  font-weight: 400;
+  transition: all 0.3s ease;
+
+  &Active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-weight: 700;
+  }
+}

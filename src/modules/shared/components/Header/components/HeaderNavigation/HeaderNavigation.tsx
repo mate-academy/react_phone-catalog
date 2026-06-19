@@ -12,7 +12,7 @@ import styles from './HeaderNavigation.module.scss';
 
 //#region STYLES_&_CONSTANTS
 const {
-  mobileNavigation,
+  burgerNavigation,
   navigation,
   navigationLink,
   navigationLinkActive,
@@ -30,10 +30,10 @@ const navLinks = [
 //#endregion
 
 interface Props {
-  isMobileMenu?: boolean;
+  isBurgerMenu?: boolean;
 }
 
-export const HeaderNavigation: React.FC<Props> = ({ isMobileMenu }) => {
+export const HeaderNavigation: React.FC<Props> = ({ isBurgerMenu }) => {
   //#region STATE
   const [isHovered, setIsHovered] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -68,7 +68,7 @@ export const HeaderNavigation: React.FC<Props> = ({ isMobileMenu }) => {
     <nav
       className={`
         ${navigation}
-        ${isMobileMenu ? mobileNavigation : ''}
+        ${isBurgerMenu ? burgerNavigation : ''}
       `}
       onMouseLeave={() => {
         setIsHovered(false);

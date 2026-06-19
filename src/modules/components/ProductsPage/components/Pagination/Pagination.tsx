@@ -80,7 +80,7 @@ export const Pagination: React.FC<Props> = ({
         {visiblePages.map((page, index) => {
           if (page === '...') {
             return (
-              <span key={index} className={paginationEllipsis}>
+              <span key={`ellipsis-${index}`} className={paginationEllipsis}>
                 ...
               </span>
             );

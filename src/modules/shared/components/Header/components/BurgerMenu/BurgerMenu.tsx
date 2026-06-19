@@ -6,6 +6,8 @@ import { useTranslation } from 'react-i18next';
 import { HeaderLogo } from '../HeaderLogo';
 import { HeaderNavigation } from '../HeaderNavigation';
 import { HeaderActions } from '../HeaderActions';
+import { LanguageSwitcher } from '../LanguageSwitcher';
+import { ThemeToggler } from '../ThemeToggler';
 
 import { Button } from '../../../ui/Button';
 
@@ -21,6 +23,7 @@ const {
   menuTop,
   menuCloseBtn,
   menuNav,
+  menuSettings,
   menuActions,
 } = styles;
 //#endregion
@@ -45,22 +48,28 @@ export const BurgerMenu: React.FC<Props> = ({ isOpen, onClose }) => {
     >
       <div className={menuTop}>
         <HeaderLogo />
+
+        <div className={menuSettings}>
+          <LanguageSwitcher />
+          <ThemeToggler />
+        </div>
+
         <Button
           variant="icon"
           className={menuCloseBtn}
           onClick={onClose}
-          aria-label={t('header.burgerMenu.closeBtn')}
+          aria-label={t('burgerMenu.closeBtn')}
         >
-          <img src={iconClose} alt={t('header.burgerMenu.closeIcon')} />
+          <img src={iconClose} alt={t('burgerMenu.closeIcon')} />
         </Button>
       </div>
 
       <div className={menuNav}>
-        <HeaderNavigation isMobileMenu />
+        <HeaderNavigation isBurgerMenu />
       </div>
 
       <div className={menuActions}>
-        <HeaderActions isMobileMenu />
+        <HeaderActions isBurgerMenu />
       </div>
     </div>
   );

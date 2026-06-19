@@ -59,11 +59,11 @@
         "bag": "Іконка кошика",
         "menu": "Іконка меню"
       }
-    },
-    "burgerMenu": {
-      "closeBtn": "Закрити меню",
-      "closeIcon": "Іконка закриття"
     }
+  },
+  "burgerMenu": {
+    "closeBtn": "Закрити меню",
+    "closeIcon": "Іконка закриття"
   },
   "favourites": {
     "title": "Улюблені",

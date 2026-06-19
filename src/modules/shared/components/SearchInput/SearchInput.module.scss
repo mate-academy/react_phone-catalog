@@ -7,10 +7,6 @@
     flex: 1;
     max-width: 300px;
     padding-right: 10px;
-
-    @include on-tablet {
-      max-width: 250px;
-    }
   }
 
   &Field {

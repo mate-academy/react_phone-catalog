@@ -3,7 +3,7 @@
   height: 100%;
   margin: 0 24px;
 
-  &.mobileNavigation {
+  &.burgerNavigation {
     flex-direction: column;
     gap: 32px;
     margin: 0;
@@ -92,7 +92,7 @@
 }
 
 @include on-mobile {
-  .navigation:not(.mobileNavigation) {
+  .navigation:not(.burgerNavigation) {
     display: none;
   }
 }

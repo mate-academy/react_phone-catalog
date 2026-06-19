@@ -59,11 +59,11 @@
         "bag": "Bag icon",
         "menu": "Menu icon"
       }
-    },
-    "burgerMenu": {
-      "closeBtn": "Close menu",
-      "closeIcon": "Close icon"
     }
+  },
+  "burgerMenu": {
+    "closeBtn": "Close menu",
+    "closeIcon": "Close icon"
   },
   "favourites": {
     "title": "Favourites",
