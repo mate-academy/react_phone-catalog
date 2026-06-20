@@ -8,14 +8,8 @@ import styles from './ProductGallery.module.scss';
 //#endregion
 
 //#region STYLES
-const {
-  gallery,
-  thumbsList,
-  thumbsItem,
-  thumbsImage,
-  preview,
-  previewImage,
-} = styles;
+const { gallery, thumbsList, thumbsItem, thumbsImage, preview, previewImage } =
+  styles;
 //#endregion
 
 export const ProductGallerySkeleton = () => {
@@ -23,7 +17,6 @@ export const ProductGallerySkeleton = () => {
   return (
     <div className={gallery}>
       <div className={thumbsList}>
-
         {Array.from({ length: 4 }).map((_, index) => (
           <div className={thumbsItem} key={index}>
             <Skeleton

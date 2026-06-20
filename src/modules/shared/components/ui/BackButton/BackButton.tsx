@@ -10,13 +10,8 @@ import styles from './BackButton.module.scss';
 //#endregion IMPORTS
 
 //#region STYLES
-const {
-  backButton,
-  backButtonBtn,
-  backButtonIcon,
-  backButtonText,
-  arrowLeft,
-} = styles;
+const { backButton, backButtonBtn, backButtonIcon, backButtonText, arrowLeft } =
+  styles;
 //#endregion STYLES
 
 export const BackButton = () => {

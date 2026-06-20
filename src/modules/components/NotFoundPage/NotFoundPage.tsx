@@ -8,12 +8,7 @@ import styles from './NotFoundPage.module.scss';
 //#endregion
 
 //#region STYLES
-const {
-  container,
-  title,
-  subtitle,
-  linkButton,
-} = styles;
+const { container, title, subtitle, linkButton } = styles;
 //#endregion
 
 export const NotFoundPage = () => {

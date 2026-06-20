@@ -12,11 +12,15 @@ interface FavouritesContextType {
   isFavourite: (itemId: string) => boolean;
 }
 
-export const FavouritesContext = createContext<FavouritesContextType | undefined>(undefined);
+export const FavouritesContext = createContext<
+FavouritesContextType | undefined
+>(undefined);
 
-export const FavouritesProvider = (
-  { children }: { children: React.ReactNode }
-) => {
+export const FavouritesProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [favourites, setFavourites] = useState<ProductType[]>(() => {
     const savedFavs = localStorage.getItem('favourites');
 
@@ -29,15 +33,15 @@ export const FavouritesProvider = (
     localStorage.setItem('favourites', JSON.stringify(favourites));
   }, [favourites]);
 
-  function addToFavourites(product: ProductType):void {
+  function addToFavourites(product: ProductType): void {
     setFavourites(prev => [...prev, product]);
   }
 
-  function removeFromFavourites(itemId: string):void {
+  function removeFromFavourites(itemId: string): void {
     setFavourites(prev => prev.filter(pr => pr.itemId !== itemId));
   }
 
-  function isFavourite(itemId: string):boolean {
+  function isFavourite(itemId: string): boolean {
     return favourites.some(pr => pr.itemId === itemId);
   }
 
@@ -57,7 +61,7 @@ export const FavouritesProvider = (
         favourites,
         favouritesCount,
         toggleFavourite,
-        isFavourite
+        isFavourite,
       }}
     >
       {children}

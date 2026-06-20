@@ -1,5 +1,6 @@
 .productPageFilters {
   @include flex-center($direction: row, $content: flex-start, $gap: 16px);
+
   margin-top: 40px;
 
   @include on-mobile {

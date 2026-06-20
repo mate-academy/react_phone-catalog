@@ -27,6 +27,7 @@
 
   &Track {
     @include flex-center($content: flex-start);
+
     gap: var(--grid-gap-column);
 
     width: max-content;

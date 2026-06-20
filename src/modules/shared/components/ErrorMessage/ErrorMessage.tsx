@@ -31,11 +31,7 @@ export const ErrorMessage: React.FC<Props> = ({ message }) => {
     <div className={errorBlock}>
       <p className={errorText}>{displayMessage}</p>
 
-      <button
-        type="button"
-        className={reloadBtn}
-        onClick={handleReload}
-      >
+      <button type="button" className={reloadBtn} onClick={handleReload}>
         {t('errorMessage.tryAgain')}
       </button>
     </div>

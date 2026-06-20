@@ -1,6 +1,7 @@
 .pagination {
   &Container {
     @include flex-center($gap: 16px);
+
     width: 100%;
     margin-top: 40px;
 
@@ -11,6 +12,7 @@
 
   &Pages {
     @include flex-center($gap: 8px);
+
     min-width: 248px;
 
     @include on-mobile {
@@ -21,6 +23,7 @@
 
   &Btn {
     @include font-buttons;
+
     border: 1px solid var(--color-elements);
 
     &Active {
@@ -31,10 +34,12 @@
 
   &Ellipsis {
     @include flex-center;
+
     width: auto;
     height: 32px;
 
     @include font-buttons;
+
     color: var(--color-secondary);
   }
 }

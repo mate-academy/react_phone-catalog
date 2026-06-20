@@ -1,7 +1,9 @@
 .slider {
   &Container {
     grid-column: 1 / -1;
+
     @include flex-center($content: space-between);
+
     align-items: stretch;
     flex-wrap: wrap;
     width: 100%;
@@ -16,13 +18,10 @@
     }
 
     @include on-mobile {
-      margin-top: 24px;
-      margin-bottom: 56px;
+      margin: 24px -16px 56px;
       justify-content: center;
 
       width: calc(100% + 32px);
-      margin-left: -16px;
-      margin-right: -16px;
     }
   }
 
@@ -83,6 +82,7 @@
 
   &Pagination {
     @include flex-center($gap: 14px);
+
     width: 100%;
     margin-top: 18px;
   }

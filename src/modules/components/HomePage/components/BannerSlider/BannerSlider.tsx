@@ -71,7 +71,10 @@ export const BannerSlider = () => {
         aria-label={t('bannerSlider.aria.prevSlide')}
         onClick={handlePrev}
       >
-        <ArrowLeft className={arrowLeft} aria-label={t('bannerSlider.alt.arrowLeft')} />
+        <ArrowLeft
+          className={arrowLeft}
+          aria-label={t('bannerSlider.alt.arrowLeft')}
+        />
       </Button>
 
       <div className={sliderViewport}>
@@ -96,7 +99,10 @@ export const BannerSlider = () => {
         aria-label={t('bannerSlider.aria.nextSlide')}
         onClick={handleNext}
       >
-        <ArrowRight className={arrowRight} aria-label={t('bannerSlider.alt.arrowRight')} />
+        <ArrowRight
+          className={arrowRight}
+          aria-label={t('bannerSlider.alt.arrowRight')}
+        />
       </Button>
 
       <div className={sliderPagination}>

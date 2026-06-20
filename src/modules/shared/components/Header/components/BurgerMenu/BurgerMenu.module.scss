@@ -33,6 +33,7 @@
 
   &CloseBtn {
     all: unset;
+
     @include flex-center;
 
     width: 48px;

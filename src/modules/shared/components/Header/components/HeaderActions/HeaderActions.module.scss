@@ -1,47 +1,6 @@
-.actions {
-  display: flex;
-  height: 100%;
-  margin-left: auto;
-
-  &.burgerActions {
-    width: 100%;
-    margin: 0;
-
-    .actionItem {
-      display: flex;
-      flex: 1;
-
-      width: auto;
-      border-right: 1px solid var(--color-elements);
-      border-left: none;
-
-      &:last-child {
-        border-right: none;
-      }
-    }
-
-    .actionItemCount {
-      right: auto;
-      left: calc(50% + 1px);
-    }
-  }
-}
-
-.actionSettings {
-  @include flex-center($gap: 8px);
-  padding-right: 16px;
-
-  @include on-tablet {
-    display: none;
-  }
-
-  @include on-mobile {
-    display: none;
-  }
-}
-
 .actionItem {
   position: relative;
+
   @include flex-center;
 
   width: 64px;
@@ -80,6 +39,7 @@
     position: absolute;
     top: 18px;
     right: 16px;
+
     @include flex-center;
 
     width: 14px;
@@ -111,6 +71,49 @@
     border-left: 1px solid var(--color-elements);
 
     cursor: pointer;
+  }
+}
+
+.actions {
+  display: flex;
+  height: 100%;
+  margin-left: auto;
+
+  &.burgerActions {
+    width: 100%;
+    margin: 0;
+
+    .actionItem {
+      display: flex;
+      flex: 1;
+
+      width: auto;
+      border-right: 1px solid var(--color-elements);
+      border-left: none;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    .actionItemCount {
+      right: auto;
+      left: calc(50% + 1px);
+    }
+  }
+}
+
+.actionSettings {
+  @include flex-center($gap: 8px);
+
+  padding-right: 16px;
+
+  @include on-tablet {
+    display: none;
+  }
+
+  @include on-mobile {
+    display: none;
   }
 }
 

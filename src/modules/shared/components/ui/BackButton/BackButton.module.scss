@@ -1,4 +1,17 @@
 .backButton {
+  &Icon {
+    @include flex-center;
+
+    height: 16px;
+    width: 16px;
+
+    transition: transform 0.3s ease;
+
+    img {
+      transform: translateY(-0.5px);
+    }
+  }
+
   &Btn {
     all: unset;
     display: inline-flex;
@@ -17,21 +30,9 @@
     }
   }
 
-  &Icon {
-    @include flex-center;
-
-    height: 16px;
-    width: 16px;
-
-    transition: transform 0.3s ease;
-
-    img {
-      transform: translateY(-0.5px);
-    }
-  }
-
   &Text {
     @include font-small;
+
     color: var(--color-secondary);
   }
 }

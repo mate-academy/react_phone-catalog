@@ -31,6 +31,8 @@
 
 .tittle {
   grid-column: 1 / -1;
+
   @include font-h1;
+
   color: var(--color-primary);
 }

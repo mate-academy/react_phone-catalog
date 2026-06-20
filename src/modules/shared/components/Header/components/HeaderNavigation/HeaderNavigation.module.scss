@@ -1,31 +1,11 @@
-.navigation {
-  @include flex-center($gap: 64px);
-  height: 100%;
-  margin: 0 24px;
-
-  &.burgerNavigation {
-    flex-direction: column;
-    gap: 32px;
-    margin: 0;
-    height: auto;
-
-    .navigationLink {
-      height: auto;
-      padding-bottom: 8px;
-
-      &::after {
-        display: block;
-      }
-    }
-  }
-}
-
 .navigationLink {
   @include font-uppercase;
+
   color: var(--color-secondary);
   text-decoration: none;
 
   @include flex-center;
+
   height: 100%;
   position: relative;
   transition: color 0.3s ease;
@@ -80,6 +60,29 @@
     &:hover::after {
       transform: scaleX(1);
       transition-delay: 0s;
+    }
+  }
+}
+
+.navigation {
+  @include flex-center($gap: 64px);
+
+  height: 100%;
+  margin: 0 24px;
+
+  &.burgerNavigation {
+    flex-direction: column;
+    gap: 32px;
+    margin: 0;
+    height: auto;
+
+    .navigationLink {
+      height: auto;
+      padding-bottom: 8px;
+
+      &::after {
+        display: block;
+      }
     }
   }
 }

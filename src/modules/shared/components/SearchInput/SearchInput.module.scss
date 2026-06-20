@@ -20,6 +20,7 @@
     outline: none;
 
     color: var(--color-primary);
+
     @include font-body;
 
     transition: border-color 0.3s ease-in-out;
@@ -28,11 +29,11 @@
       color: var(--color-secondary);
     }
 
-    &:hover:not(:focus) {
+    &:focus {
       border-color: var(--color-primary);
     }
 
-    &:focus {
+    &:hover:not(:focus) {
       border-color: var(--color-primary);
     }
 

@@ -9,7 +9,10 @@ import { useTranslation } from 'react-i18next';
 import { useMemo } from 'react';
 
 import { PerPageType, SortType } from '@/modules/shared/utils/types';
-import { getSortOptions, getPerPageOptions } from '@/modules/shared/utils/constants';
+import {
+  getSortOptions,
+  getPerPageOptions,
+} from '@/modules/shared/utils/constants';
 
 import { CustomDropdown } from '@/modules/shared/components/ui/CustomDropdown';
 
@@ -26,7 +29,8 @@ export const ProductPageFilters = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortBy = (searchParams.get('sort') as SortType) || SortType.Age;
-  const perPage = (searchParams.get('perPage') as PerPageType) || PerPageType.All;
+  const perPage =
+    (searchParams.get('perPage') as PerPageType) || PerPageType.All;
   //#endregion
 
   //#region FILTER_OPTIONS
@@ -82,4 +86,3 @@ export const ProductPageFilters = () => {
   );
   //#endregion
 };
-

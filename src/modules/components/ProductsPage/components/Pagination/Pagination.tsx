@@ -23,7 +23,7 @@ const {
   paginationBtnActive,
 
   arrowLeft,
-  arrowRight
+  arrowRight,
 } = styles;
 //#endregion
 

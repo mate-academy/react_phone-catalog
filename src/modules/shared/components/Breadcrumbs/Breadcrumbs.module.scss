@@ -41,6 +41,7 @@
   &Text {
     @include flex-center;
     @include font-small;
+
     color: var(--color-secondary);
   }
 }

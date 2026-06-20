@@ -14,7 +14,7 @@ interface Props {
 }
 
 const getInitialTheme = (): Theme => {
-  const savedTheme = localStorage.getItem('app-theme') as Theme || 'light';
+  const savedTheme = (localStorage.getItem('app-theme') as Theme) || 'light';
 
   return savedTheme;
 };
@@ -30,7 +30,7 @@ export const ThemeProvider: React.FC<Props> = ({ children }) => {
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prev) => prev === 'light' ? 'dark' : 'light');
+    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
   };
 
   return (

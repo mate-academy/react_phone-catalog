@@ -35,18 +35,12 @@ export const ProductAboutSkeleton = () => {
             </h4>
 
             <div className={aboutParagraph}>
-              <Skeleton
-                width="100%"
-                height={16}
-              />
+              <Skeleton width="100%" height={16} />
               <Skeleton width={index === 1 ? '65%' : '80%'} height={16} />
             </div>
 
             <div className={aboutParagraph}>
-              <Skeleton
-                width="100%"
-                height={16}
-              />
+              <Skeleton width="100%" height={16} />
               <Skeleton width={index === 0 ? '45%' : '70%'} height={16} />
             </div>
           </div>

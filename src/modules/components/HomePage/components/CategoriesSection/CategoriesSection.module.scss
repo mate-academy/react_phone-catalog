@@ -19,6 +19,7 @@
 
   &Title {
     @include font-h2;
+
     color: var(--color-primary);
     margin-bottom: 24px;
   }
@@ -31,20 +32,6 @@
 
     @include on-mobile {
       @include flex-center($direction: column, $gap: 32px);
-    }
-  }
-
-  &Card {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    cursor: pointer;
-
-    &:hover {
-      .categoriesImage {
-        transform: scale(1.05);
-
-      }
     }
   }
 
@@ -67,14 +54,29 @@
     will-change: transform;
   }
 
+  &Card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      .categoriesImage {
+        transform: scale(1.05);
+      }
+    }
+  }
+
   &Name {
     @include font-h4;
+
     color: var(--color-primary);
     margin-bottom: 4px;
   }
 
   &Count {
     @include font-body;
+
     color: var(--color-secondary);
   }
 }

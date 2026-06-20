@@ -31,11 +31,9 @@ const getSuggestedProducts = (
   products: ProductType[],
   currentProductId?: string,
 ) => {
-  const filtered = products.filter(item =>
-    item.itemId !== currentProductId);
+  const filtered = products.filter(item => item.itemId !== currentProductId);
 
-  const shuffled = [...filtered].sort(() =>
-    0.5 - Math.random());
+  const shuffled = [...filtered].sort(() => 0.5 - Math.random());
 
   return shuffled.slice(0, 15);
 };
@@ -58,7 +56,9 @@ export const ProductDetailsPage = () => {
   } = useProducts();
 
   const currentCategory = pathname.split('/')[1] as CategoryType;
-  const productDetails = productId ? getProductDetailById(productId) : undefined;
+  const productDetails = productId
+    ? getProductDetailById(productId)
+    : undefined;
   const categoryProducts = getProductsByCategory(currentCategory);
 
   const pageTitles = useMemo(() => getPageTitles(t), [t]);

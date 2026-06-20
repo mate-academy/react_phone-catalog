@@ -10,12 +10,7 @@ import styles from './CartTotal.module.scss';
 //#endregion
 
 //#region STYLES
-const {
-  cartTotal,
-  cartTotalPrice,
-  cartTotalCount,
-  cartCheckoutBtn,
-} = styles;
+const { cartTotal, cartTotalPrice, cartTotalCount, cartCheckoutBtn } = styles;
 //#endregion
 
 export const CartTotal = () => {
@@ -27,9 +22,7 @@ export const CartTotal = () => {
 
   //#region HANDLERS
   const handleCheckout = () => {
-    const isConfirmed = window.confirm(
-      t('cart.total.confirmation'),
-    );
+    const isConfirmed = window.confirm(t('cart.total.confirmation'));
 
     if (isConfirmed) {
       clearCart();
@@ -40,9 +33,7 @@ export const CartTotal = () => {
   //#region RENDER
   return (
     <div className={cartTotal}>
-      <p className={cartTotalPrice}>
-        {`$${totalPrice}`}
-      </p>
+      <p className={cartTotalPrice}>{`$${totalPrice}`}</p>
 
       <p className={cartTotalCount}>
         {t('cart.total.countSummary', { count: totalCount })}
@@ -59,4 +50,3 @@ export const CartTotal = () => {
   );
   //#endregion
 };
-

@@ -38,7 +38,7 @@ interface Props {
   isLoading?: boolean;
 }
 
-export const  ProductsSlider: React.FC<Props> = ({
+export const ProductsSlider: React.FC<Props> = ({
   title,
   products,
   hasDiscount = false,

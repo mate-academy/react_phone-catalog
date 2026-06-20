@@ -1,6 +1,8 @@
 .gallery {
   grid-column: 1 / 13;
+
   @include flex-center($direction: row, $content: flex-start, $gap: 16px);
+
   width: 100%;
 
   @include on-tablet {
@@ -31,6 +33,7 @@
 
 .thumbsItem {
   @include flex-center;
+
   flex-shrink: 0;
 
   width: 80px;
@@ -77,6 +80,7 @@
 
 .preview {
   @include flex-center;
+
   overflow: hidden;
 
   flex: 1;

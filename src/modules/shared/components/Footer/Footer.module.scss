@@ -6,10 +6,12 @@
   :global(.container) {
     height: 96px;
     width: 100%;
+
     @include flex-center($content: space-between);
 
     @include on-mobile {
       @include flex-center($direction: column, $gap: 32px);
+
       padding-top: 32px;
       padding-bottom: 32px;
       height: auto;
@@ -19,6 +21,7 @@
 
 .logo {
   @include flex-center($content: flex-start);
+
   flex: 1;
 
   @include on-mobile {
@@ -33,6 +36,7 @@
 
 .nav {
   @include flex-center;
+
   flex: 1;
 
   @include on-mobile {
@@ -51,6 +55,7 @@
 
   @include on-mobile {
     @include flex-center($direction: column, $content: flex-start, $gap: 16px);
+
     align-items: flex-start;
   }
 }
@@ -61,6 +66,7 @@
 
 .navLink {
   @include font-uppercase;
+
   color: var(--color-secondary);
   text-decoration: none;
 
@@ -73,6 +79,7 @@
 
 .scrollBlock {
   @include flex-center($content: flex-end, $gap: 16px);
+
   flex: 1;
 
   @include on-mobile {
@@ -84,6 +91,7 @@
 
 .scrollText {
   @include font-small;
+
   font-weight: 400;
   color: var(--color-secondary);
 }

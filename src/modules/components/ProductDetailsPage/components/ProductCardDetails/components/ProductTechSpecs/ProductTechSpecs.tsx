@@ -5,7 +5,10 @@
 //#region IMPORTS
 import { useTranslation } from 'react-i18next';
 
-import { CategoryType, ProductDetailsType as ProductType } from '@/modules/shared/utils/types';
+import {
+  CategoryType,
+  ProductDetailsType as ProductType,
+} from '@/modules/shared/utils/types';
 
 import styles from './ProductTechSpecs.module.scss';
 //#endregion
@@ -26,9 +29,10 @@ const getTechSpecsData = (
   product: ProductType,
   t: (key: string) => string,
 ): Record<string, string> => {
-  const capacityKey = product.category as CategoryType === 'accessories'
-    ? 'size'
-    : 'builtInMemory';
+  const capacityKey =
+    (product.category as CategoryType) === 'accessories'
+      ? 'size'
+      : 'builtInMemory';
 
   const specsData: Record<string, string> = {
     screen: product.screen,
@@ -79,7 +83,9 @@ export const ProductTechSpecs: React.FC<Props> = ({ product }) => {
       <div className={specsList}>
         {Object.entries(techSpecs).map(([label, value]) => (
           <div key={label} className={specsItem}>
-            <p className={specsLabel}>{t(`productDetailsPage.techSpecs.label.${label}`)}</p>
+            <p className={specsLabel}>
+              {t(`productDetailsPage.techSpecs.label.${label}`)}
+            </p>
             <p className={specsValue}>{value}</p>
           </div>
         ))}

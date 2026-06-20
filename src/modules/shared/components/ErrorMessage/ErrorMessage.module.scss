@@ -15,6 +15,7 @@
 
 .reloadBtn {
   all: unset;
+
   @include flex-center;
 
   padding: 8px 16px;

@@ -58,10 +58,7 @@ export const SearchInput = () => {
         onChange={e => setQuery(e.target.value)}
       />
 
-      <IconSearch
-        className={searchIcon}
-        aria-label={t('searchInput.alt')}
-      />
+      <IconSearch className={searchIcon} aria-label={t('searchInput.alt')} />
     </div>
   );
   //#endregion

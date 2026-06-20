@@ -3,8 +3,20 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable max-len */
 
-import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { ProductType, ProductDetailsType, CategoryType, SupportedLanguage } from '../types';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
+import {
+  ProductType,
+  ProductDetailsType,
+  CategoryType,
+  SupportedLanguage,
+} from '../types';
 import { useTranslation } from 'react-i18next';
 
 interface ProductsContextType {
@@ -28,11 +40,15 @@ interface ProductsContextType {
   getProductDetailById: (productId: string) => ProductDetailsType | undefined;
 }
 
-export const ProductsContext = createContext<ProductsContextType | undefined>(undefined);
+export const ProductsContext = createContext<ProductsContextType | undefined>(
+  undefined,
+);
 
-export const ProductsProvider = (
-  { children }: { children: React.ReactNode }
-) => {
+export const ProductsProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const { i18n } = useTranslation();
 
   //? Базова мова додатка, від якої залежить, з якої папки API тягнути дані
@@ -42,7 +58,9 @@ export const ProductsProvider = (
 
   //* СТЕЙТ ВІТРИНИ: Те, що безпосередньо рендериться на екрані користувача
   const [products, setProducts] = useState<ProductType[]>([]);
-  const [productsDetails, setProductsDetails] = useState<ProductDetailsType[]>([]);
+  const [productsDetails, setProductsDetails] = useState<ProductDetailsType[]>(
+    [],
+  );
 
   //* ТІНЬОВИЙ КЕШ: Словники для збереження завантажених даних по мовах. Зміни тут не викликають рендер.
   const productsCache = useRef<Record<string, ProductType[]>>({});
@@ -77,7 +95,9 @@ export const ProductsProvider = (
       setIsError(false);
 
       try {
-        const response = await fetch(`${import.meta.env.BASE_URL}/api/${currentLang}/products.json`);
+        const response = await fetch(
+          `${import.meta.env.BASE_URL}/api/${currentLang}/products.json`,
+        );
 
         if (!response.ok) {
           throw new Error('Помилка завантаження products.json');
@@ -93,8 +113,10 @@ export const ProductsProvider = (
         productsCache.current[currentLang] = data;
 
         // Ініціалізуємо порожні масиви деталей, щоб уникнути помилок undefined у майбутньому
-        if (!detailsCache.current[currentLang]) detailsCache.current[currentLang] = [];
-        if (!categoriesCache.current[currentLang]) categoriesCache.current[currentLang] = [];
+        if (!detailsCache.current[currentLang])
+          detailsCache.current[currentLang] = [];
+        if (!categoriesCache.current[currentLang])
+          categoriesCache.current[currentLang] = [];
 
         // 4. Оновлюємо стейт вітрини, щоб користувач побачив товари
         setProducts(data);
@@ -148,7 +170,9 @@ export const ProductsProvider = (
     setIsError(false);
 
     try {
-      const response = await fetch(`${import.meta.env.BASE_URL}/api/${currentLang}/${category}.json`);
+      const response = await fetch(
+        `${import.meta.env.BASE_URL}/api/${currentLang}/${category}.json`,
+      );
 
       if (!response.ok) {
         throw new Error(`Помилка завантаження ${category}.json`);
@@ -166,7 +190,10 @@ export const ProductsProvider = (
 
       // Відмічаємо категорію як завантажену в кеші
       const currentCategoriesCache = categoriesCache.current[currentLang] || [];
-      categoriesCache.current[currentLang] = [...currentCategoriesCache, category];
+      categoriesCache.current[currentLang] = [
+        ...currentCategoriesCache,
+        category,
+      ];
 
       // Оновлюємо стейт вітрини, об'єднуючи старі деталі з новими
       setProductsDetails(prev => [...prev, ...data]);

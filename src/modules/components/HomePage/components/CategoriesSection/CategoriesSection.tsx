@@ -28,8 +28,7 @@ const {
   categoriesCount,
 } = styles;
 
-const categories:
-  Array<{ id: CategoryType, image: string, path: string }> = [
+const categories: Array<{ id: CategoryType; image: string; path: string }> = [
   { id: 'phones', image: phonesImg, path: '/phones' },
   { id: 'tablets', image: tabletsImg, path: '/tablets' },
   { id: 'accessories', image: accessoriesImg, path: '/accessories' },
@@ -48,12 +47,8 @@ export const CategoriesSection = () => {
       <h2 className={categoriesTitle}>{t('categoriesSection.title')}</h2>
 
       <div className={categoriesGrid}>
-        {categories.map((category) => (
-          <Link
-            to={category.path}
-            className={categoriesCard}
-            key={category.id}
-          >
+        {categories.map(category => (
+          <Link to={category.path} className={categoriesCard} key={category.id}>
             <div className={categoriesImageWrapper}>
               <img
                 src={category.image}

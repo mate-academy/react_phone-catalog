@@ -3,7 +3,6 @@
 /* eslint-disable import/extensions */
 /* eslint-disable prettier/prettier */
 
-
 //#region IMPORTS
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -46,16 +45,18 @@ export const ProductsPage = () => {
 
   //#region URL_PARAMS
   const sortBy = (searchParams.get('sort') as SortType) || SortType.Age;
-  const perPage = (searchParams.get('perPage') as PerPageType) || PerPageType.All;
+  const perPage =
+    (searchParams.get('perPage') as PerPageType) || PerPageType.All;
   const currentPage = Number(searchParams.get('page') || 1);
   const query = searchParams.get('query')?.toLowerCase() || '';
   //#endregion
 
   //#region CATEGORY_DATA
   const currentCategory = pathname.slice(1) as CategoryType;
-  const products = useMemo(() =>
-    getProductsByCategory(currentCategory),
-  [currentCategory, getProductsByCategory]);
+  const products = useMemo(
+    () => getProductsByCategory(currentCategory),
+    [currentCategory, getProductsByCategory],
+  );
 
   const pageTitles = useMemo(() => getPageTitles(t), [t]);
   const currentPageTitle = pageTitles[currentCategory];
@@ -84,7 +85,8 @@ export const ProductsPage = () => {
     });
   }, [filteredProducts, sortBy]);
 
-  const itemsPerPage = perPage === PerPageType.All ? sortedProducts.length : Number(perPage);
+  const itemsPerPage =
+    perPage === PerPageType.All ? sortedProducts.length : Number(perPage);
   const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
 
   const paginatedProducts = useMemo(() => {
@@ -124,9 +126,7 @@ export const ProductsPage = () => {
     <div className={productsPage}>
       <Breadcrumbs pageTitle={currentPageTitle} />
 
-      <h1 className={productsPageTitle}>
-        {currentPageTitle}
-      </h1>
+      <h1 className={productsPageTitle}>{currentPageTitle}</h1>
       <p className={productsPageCount}>
         {t('productsPage.count', { count: filteredProducts.length || 0 })}
       </p>
@@ -147,7 +147,9 @@ export const ProductsPage = () => {
             <>
               {showEmptyCategory && (
                 <p className={noProductsMessage}>
-                  {t('productsPage.message.noCategory', { category: currentCategory })}
+                  {t('productsPage.message.noCategory', {
+                    category: currentCategory,
+                  })}
                 </p>
               )}
 

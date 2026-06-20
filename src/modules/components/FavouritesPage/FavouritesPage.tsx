@@ -15,12 +15,8 @@ import styles from './FavouritesPage.module.scss';
 //#endregion
 
 //#region STYLES
-const {
-  favouritesPage,
-  favouritesTitle,
-  favouritesCount,
-  noProductsMessage,
-} = styles;
+const { favouritesPage, favouritesTitle, favouritesCount, noProductsMessage } =
+  styles;
 //#endregion
 
 export const FavouritesPage = () => {
@@ -56,9 +52,7 @@ export const FavouritesPage = () => {
       </span>
 
       {showEmptyFavourites && (
-        <p className={noProductsMessage}>
-          {t('favourites.message.empty')}
-        </p>
+        <p className={noProductsMessage}>{t('favourites.message.empty')}</p>
       )}
 
       {showEmptySearch && (
@@ -67,9 +61,7 @@ export const FavouritesPage = () => {
         </p>
       )}
 
-      {showProducts && (
-        <ProductsList products={visibleProducts} />
-      )}
+      {showProducts && <ProductsList products={visibleProducts} />}
     </div>
   );
   //#endregion

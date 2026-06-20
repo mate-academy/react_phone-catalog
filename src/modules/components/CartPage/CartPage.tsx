@@ -14,13 +14,7 @@ import styles from './CartPage.module.scss';
 //#endregion
 
 //#region STYLES
-const {
-  cartPage,
-  cartTitle,
-  cartContent,
-  itemList,
-  emptyMessage,
-} = styles;
+const { cartPage, cartTitle, cartContent, itemList, emptyMessage } = styles;
 //#endregion
 
 export const CartPage = () => {
@@ -37,9 +31,7 @@ export const CartPage = () => {
       <h1 className={cartTitle}>{t('cart.page.title')}</h1>
 
       {cart.length === 0 ? (
-        <p className={emptyMessage}>
-          {t('cart.page.emptyMessage')}
-        </p>
+        <p className={emptyMessage}>{t('cart.page.emptyMessage')}</p>
       ) : (
         <div className={cartContent}>
           <div className={itemList}>
@@ -51,7 +43,6 @@ export const CartPage = () => {
           <CartTotal />
         </div>
       )}
-
     </div>
   );
   //#endregion

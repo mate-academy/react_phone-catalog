@@ -22,6 +22,7 @@
     height: 40px;
 
     @include font-body;
+
     color: var(--color-primary);
 
     border: 1px solid var(--color-icons);
@@ -58,7 +59,7 @@
     border: 1px solid var(--color-elements);
     border-radius: 10px;
     background: var(--color-surface-1);
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   }
 
   &Item {

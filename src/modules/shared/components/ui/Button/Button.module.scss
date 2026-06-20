@@ -21,8 +21,8 @@
   border-radius: 24px;
   border: 1px solid transparent;
 
-  &:hover:not(:disabled):not(.selected) {
-    box-shadow: 0px 8px 20px rgba(66, 25, 208, 0.35);
+  :global([data-theme="dark"]) & {
+    color: var(--color-primary);
   }
 
   &.selected {
@@ -31,19 +31,20 @@
     border: 1px solid var(--color-icons);
     box-shadow: none;
     cursor: default;
-  }
 
-  :global([data-theme="dark"]) & {
-    color: var(--color-primary);
-
-    &.selected {
+    :global([data-theme="dark"]) & {
       color: var(--color-primary);
     }
+  }
+
+  &:hover:not(:disabled, .selected) {
+    box-shadow: 0 8px 20px rgba(66, 25, 208, 0.35);
   }
 }
 
 .icon {
   @include font-body;
+
   font-weight: 600;
 
   width: 32px;
@@ -54,7 +55,7 @@
   background-color: var(--color-surface-1);
   color: var(--color-primary);
 
-  &:hover:not(:disabled):not(.selected) {
+  &:hover:not(:disabled, .selected) {
     border-color: var(--color-primary);
   }
 
