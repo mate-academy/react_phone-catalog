@@ -37,13 +37,13 @@
   cursor: pointer;
   width: 32px;
   height: 32px;
-  background-image: url('./img/buttons/slider_button_default.png');
+  background-image: url('./img/buttons/slider_button_right.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 
   &:hover:not(:disabled) {
-    background-image: url('./img/buttons/slider_button_hover.png');
+    background-image: url('./img/buttons/slider_button_hover_right.png');
   }
 
   &:disabled {
@@ -59,14 +59,13 @@
   cursor: pointer;
   width: 32px;
   height: 32px;
-  background-image: url('./img/buttons/slider_button_default.png');
+  background-image: url('./img/buttons/slider_button_left.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  transform: scaleX(-1);
 
   &:hover:not(:disabled) {
-    background-image: url('./img/buttons/slider_button_hover.png');
+    background-image: url('./img/buttons/slider_button_hover_left.png');
   }
 
   &:disabled {
