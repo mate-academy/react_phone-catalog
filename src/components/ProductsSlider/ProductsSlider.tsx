@@ -11,12 +11,8 @@ interface Props {
 export const ProductsSlider = ({ title, products }: Props) => {
   const [position, setPosition] = useState(0);
 
-  //#region handleFunctions
-
   const handleNext = () => setPosition(position + 1);
   const handlePrev = () => setPosition(position - 1);
-
-  //#endregion
 
   return (
     <div className={styles.slider}>
@@ -27,25 +23,13 @@ export const ProductsSlider = ({ title, products }: Props) => {
             onClick={handlePrev}
             disabled={position === 0}
             className={styles.buttonLeft}
-          >
-            <img
-              src={
-                position === 0
-                  ? './img/buttons/slider_button_disabled.png'
-                  : './img/buttons/slider_button_default.png'
-              }
-              alt=""
-              className={styles.arrowLeft}
-            />
-          </button>
+          />
           <button
             type="button"
             onClick={handleNext}
             disabled={position >= products.length - 1}
             className={styles.buttonRight}
-          >
-            <img src="./img/buttons/slider_button_default.png" alt="" />
-          </button>
+          />
         </div>
       </div>
       <div

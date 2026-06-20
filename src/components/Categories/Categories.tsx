@@ -14,18 +14,24 @@ export const Categories = ({ title, products }: Props) => {
       image: './img/category-phones.png',
       link: '/phones',
       category: 'phones',
+      bgColor: '#46354C',
+      objectPosition: 'center',
     },
     {
       title: 'Tablets',
       image: './img/category-tablets.png',
       link: '/tablets',
       category: 'tablets',
+      bgColor: '#8E5A32',
+      objectPosition: 'center',
     },
     {
       title: 'Accessories',
       image: './img/category-accessories.png',
       link: '/accessories',
       category: 'accessories',
+      bgColor: '#6C3550',
+      objectPosition: 'bottom center',
     },
   ];
 
@@ -44,11 +50,17 @@ export const Categories = ({ title, products }: Props) => {
               key={category.category}
               className={styles.link}
             >
-              <img
-                src={category.image}
-                alt={category.title}
-                className={styles.image}
-              />
+              <div
+                className={styles.imageWrapper}
+                style={{ backgroundColor: category.bgColor }}
+              >
+                <img
+                  src={category.image}
+                  alt={category.title}
+                  className={styles.image}
+                  style={{ objectPosition: category.objectPosition }}
+                />
+              </div>
               <h3 className={styles.categoryTitle}>{category.title}</h3>
               <p className={styles.count}>{count} models</p>
             </Link>

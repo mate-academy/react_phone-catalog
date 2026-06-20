@@ -10,22 +10,6 @@ export const Banner = () => {
     './img/banner-tablets.png',
   ];
 
-  //#region handleArrows
-
-  const handleNext = () => {
-    setActiveIndex((activeIndex + 1) % banners.length);
-  };
-
-  const handlePrev = () => {
-    if (activeIndex === 0) {
-      setActiveIndex(banners.length - 1);
-    } else {
-      setActiveIndex(activeIndex - 1);
-    }
-  };
-
-  //#endregion
-
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveIndex(prev => (prev + 1) % banners.length);

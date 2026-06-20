@@ -19,11 +19,18 @@
   color: #313237;
 }
 
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
 .image {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  height: 288px;
-  width: 288px;
-  padding-bottom: 24px;
 }
 
 .categoryTitle {

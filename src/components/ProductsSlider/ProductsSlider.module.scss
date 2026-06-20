@@ -4,8 +4,16 @@
   padding-inline: 16px;
   overflow: hidden;
 }
+.topSlider {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding-bottom: 16px;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .title {
+  grid-column: 1 / 3;
   font-family: Mont;
   font-weight: 800;
   font-style: Bold;
@@ -15,16 +23,11 @@
   color: #313237;
 }
 
-.topSlider {
-  display: flex;
-  padding-bottom: 16px;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .buttons {
+  grid-column: 4/5;
+  justify-self: end;
   display: flex;
-  gap: 8px;
+  gap: 16px;
 }
 
 .buttonRight {
@@ -32,6 +35,21 @@
   border: none;
   padding: 0;
   cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-image: url('./img/buttons/slider_button_default.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover:not(:disabled) {
+    background-image: url('./img/buttons/slider_button_hover.png');
+  }
+
+  &:disabled {
+    background-image: url('./img/buttons/slider_button_disabled.png');
+    cursor: not-allowed;
+  }
 }
 
 .buttonLeft {
@@ -39,6 +57,23 @@
   border: none;
   padding: 0;
   cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-image: url('./img/buttons/slider_button_default.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: scaleX(-1);
+
+  &:hover:not(:disabled) {
+    background-image: url('./img/buttons/slider_button_hover.png');
+  }
+
+  &:disabled {
+    background-image: url('./img/buttons/slider_button_disabled.png');
+    transform: none;
+    cursor: not-allowed;
+  }
 }
 
 .track {
