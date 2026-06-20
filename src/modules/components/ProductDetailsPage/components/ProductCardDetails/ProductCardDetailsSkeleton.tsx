@@ -5,20 +5,16 @@
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-import { ProductGallerySkeleton } from './сomponents/ProductGallery/ProductGallerySkeleton';
-import { ProductActionsSkeleton } from './сomponents/ProductActions/ProductActionsSkeleton';
-import { ProductAboutSkeleton } from './сomponents/ProductAbout/ProductAboutSkeleton';
-import { ProductTechSpecsSkeleton } from './сomponents/ProductTechSpecs/ProductTechSpecsSkeleton';
+import { ProductGallerySkeleton } from './components/ProductGallery/ProductGallerySkeleton';
+import { ProductActionsSkeleton } from './components/ProductActions/ProductActionsSkeleton';
+import { ProductAboutSkeleton } from './components/ProductAbout/ProductAboutSkeleton';
+import { ProductTechSpecsSkeleton } from './components/ProductTechSpecs/ProductTechSpecsSkeleton';
 
 import styles from './ProductCardDetails.module.scss';
 //#endregion
 
 //#region STYLES
-const {
-  detailsContainer,
-  detailsTitle,
-  detailsGrid,
-} = styles;
+const { detailsContainer, detailsTitle, detailsGrid } = styles;
 //#endregion
 
 export const ProductCardDetailsSkeleton = () => {
@@ -26,7 +22,7 @@ export const ProductCardDetailsSkeleton = () => {
   return (
     <div className={detailsContainer}>
       <h2 className={detailsTitle}>
-        <Skeleton width={'75%'} height={'100%'}/>
+        <Skeleton width={'75%'} height={'100%'} />
       </h2>
 
       <div className={detailsGrid}>

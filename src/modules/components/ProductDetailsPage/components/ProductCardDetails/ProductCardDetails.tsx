@@ -2,10 +2,10 @@
 /* eslint-disable prettier/prettier */
 
 //#region IMPORTS
-import { ProductGallery } from './сomponents/ProductGallery';
-import { ProductActions } from './сomponents/ProductActions';
-import { ProductAbout } from './сomponents/ProductAbout';
-import { ProductTechSpecs } from './сomponents/ProductTechSpecs';
+import { ProductGallery } from './components/ProductGallery';
+import { ProductActions } from './components/ProductActions';
+import { ProductAbout } from './components/ProductAbout';
+import { ProductTechSpecs } from './components/ProductTechSpecs';
 
 import { ProductDetailsType } from '@/modules/shared/utils/types';
 
@@ -13,11 +13,7 @@ import styles from './ProductCardDetails.module.scss';
 //#endregion IMPORTS
 
 //#region STYLES
-const {
-  detailsContainer,
-  detailsTitle,
-  detailsGrid,
-} = styles;
+const { detailsContainer, detailsTitle, detailsGrid } = styles;
 //#endregion STYLES
 
 interface Props {
@@ -36,7 +32,6 @@ export const ProductCardDetails: React.FC<Props> = ({ product }) => {
         <ProductAbout description={product.description} />
         <ProductTechSpecs product={product} />
       </div>
-
     </div>
   );
   //#endregion RENDER
