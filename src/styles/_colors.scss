@@ -1,25 +1,23 @@
 :root {
-  // 1. BRAND & STATUS (Акценти та системні сповіщення)
-  --color-accent: #4219D0;           // Головні кнопки, активні стани
-  --color-secondary-accent: #F4BA47; // Жовті бейджі або зірочки
-  --color-green: #27AE60;            // Успіх (додано в кошик тощо)
-  --color-red: #EB5757;              // Помилка або видалення
+  // 1. BRAND & STATUS
+  --color-accent: #4219D0;
+  --color-secondary-accent: #F4BA47;
+  --color-green: #27AE60;
+  --color-red: #EB5757;
 
-  // 2. TYPOGRAPHY & MAIN ICONS (Текст та головні іконки)
-  --color-primary: #0F0F11;          // Основний текст, активні іконки
-  --color-secondary: #89939A;        // Додатковий текст, описи
+  // 2. TYPOGRAPHY & MAIN ICONS
+  --color-primary: #0F0F11;
+  --color-secondary: #89939A;
 
-  // 3. UI ELEMENTS (Інтерфейс, бордери, декоративні іконки)
-  --color-icons: #B4BDC3;            // Неактивні іконки (стрілочки в дропдаунах)
-  --color-elements: #E2E6E9;         // Бордери, роздільники (дівайдери)
+  // 3. UI ELEMENTS
+  --color-icons: #B4BDC3;
+  --color-elements: #E2E6E9;
 
-  // 4. BACKGROUNDS & SURFACES (Фони)
-  --color-bg: #FFFFFF;               // Головний фон сторінки
-  --color-surface-1: #FFFFFF;        // Фони карток, хедеру
-  --color-surface-2: #FAFBFC;        // Фони при ховері
+  // 4. BACKGROUNDS & SURFACES
+  --color-bg: #FAFBFC;
+  --color-surface-1: #FFFFFF;
 
-  // 5. CONSTANTS (Незмінні кольори для специфічних елементів)
-  --color-white-fixed: #FFFFFF;
+  // 5. CONSTANTS
   --color-favourite-active: var(--color-secondary-accent);
 }
 
@@ -31,7 +29,7 @@
   --color-red: #EB5757;
 
   // 2. TYPOGRAPHY & MAIN ICONS
-  --color-primary: #F1F2F9;          // Світлий текст/іконки на темному фоні
+  --color-primary: #F1F2F9;
   --color-secondary: #75767F;
 
   // 3. UI ELEMENTS
@@ -39,9 +37,9 @@
   --color-elements: #3B3E4A;
 
   // 4. BACKGROUNDS & SURFACES
-  --color-bg: #0F1121;               // Глибокий фон сторінки
-  --color-surface-1: #161827;        // Картки товарів, дропдауни, хедер
-  --color-surface-2: #323542;        // Фон при ховері
+  --color-bg: #0F1121;
+  --color-surface-1: #161827;
 
+  // 5. CONSTANTS
   --color-favourite-active: var(--color-red);
 }

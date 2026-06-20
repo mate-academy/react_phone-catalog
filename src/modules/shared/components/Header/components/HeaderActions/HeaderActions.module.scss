@@ -87,13 +87,18 @@
     padding-top: 1px;
 
     background-color: var(--color-accent);
-    border: 1px solid var((--color-surface-1));
+    border: 1px solid var(--color-surface-1);
     border-radius: 50%;
 
-    color: var((--color-surface-1));
+    color: var(--color-surface-1);
     font-size: 9px;
     font-weight: 700;
     line-height: 1;
+
+    :global([data-theme="dark"]) & {
+      color: var(--color-primary);
+      background-color: var(--color-red);
+    }
   }
 
   &Menu {

@@ -26,7 +26,7 @@
 
     border: 1px solid var(--color-icons);
     border-radius: 10px;
-    background-color: var((--color-surface-1));
+    background-color: var(--color-surface-1);
     cursor: pointer;
     transition: all 0.3s ease;
 
@@ -57,7 +57,7 @@
 
     border: 1px solid var(--color-elements);
     border-radius: 10px;
-    background: var((--color-surface-1));
+    background: var(--color-surface-1);
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.05);
   }
 
@@ -70,14 +70,14 @@
     cursor: pointer;
 
     &:hover {
-      background-color: var(--color-hover-bg);
+      background-color: var(--color-bg);
       color: var(--color-primary);
       border-radius: 10px;
     }
 
     &Active {
       color: var(--color-primary);
-      background-color: var(--color-hover-bg);
+      background-color: var(--color-bg);
       border-radius: 10px;
     }
   }

@@ -17,7 +17,7 @@
   width: 100%;
 
   background-color: var(--color-accent);
-  color: var((--color-surface-1));
+  color: var(--color-surface-1);
   border-radius: 24px;
   border: 1px solid transparent;
 
@@ -26,11 +26,19 @@
   }
 
   &.selected {
-    background-color: var((--color-surface-1));
+    background-color: var(--color-surface-1);
     color: var(--color-accent);
     border: 1px solid var(--color-icons);
     box-shadow: none;
     cursor: default;
+  }
+
+  :global([data-theme="dark"]) & {
+    color: var(--color-primary);
+
+    &.selected {
+      color: var(--color-primary);
+    }
   }
 }
 
@@ -43,7 +51,7 @@
 
   border-radius: 50%;
   border: 1px solid var(--color-icons);
-  background-color: var((--color-surface-1));
+  background-color: var(--color-surface-1);
   color: var(--color-primary);
 
   &:hover:not(:disabled):not(.selected) {
@@ -51,7 +59,7 @@
   }
 
   &.selected {
-    color: var((--color-surface-1));
+    color: var(--color-surface-1);
     cursor: default;
 
     &:hover {
@@ -63,7 +71,7 @@
 button.button:disabled {
   cursor: not-allowed;
   border-color: var(--color-elements);
-  background-color: var((--color-surface-1));
+  background-color: var(--color-surface-1);
   color: var(--color-icons);
   opacity: 0.6;
   box-shadow: none;
