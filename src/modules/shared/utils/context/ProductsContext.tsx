@@ -77,7 +77,7 @@ export const ProductsProvider = (
       setIsError(false);
 
       try {
-        const response = await fetch(`/api/${currentLang}/products.json`);
+        const response = await fetch(`${import.meta.env.BASE_URL}/api/${currentLang}/products.json`);
 
         if (!response.ok) {
           throw new Error('Помилка завантаження products.json');
@@ -148,7 +148,7 @@ export const ProductsProvider = (
     setIsError(false);
 
     try {
-      const response = await fetch(`/api/${currentLang}/${category}.json`);
+      const response = await fetch(`${import.meta.env.BASE_URL}/api/${currentLang}/${category}.json`);
 
       if (!response.ok) {
         throw new Error(`Помилка завантаження ${category}.json`);

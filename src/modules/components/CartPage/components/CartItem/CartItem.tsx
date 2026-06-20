@@ -51,7 +51,6 @@ export const CartItem: React.FC<Props> = ({ cart }) => {
           onClick={() => removeCart(cart.product.itemId)}
           aria-label={t('cart.item.aria.removeBtn')}
         >
-          {/* <img src={removeIcon} alt={t('cart.item.alt.removeIcon')} /> */}
           <RemoveIcon
             className={removeIcon}
             aria-label={t('cart.item.alt.removeIcon')}
@@ -60,7 +59,7 @@ export const CartItem: React.FC<Props> = ({ cart }) => {
 
         <img
           className={productImage}
-          src={cart.product.image}
+          src={`${import.meta.env.BASE_URL}/${cart.product.image}`}
           alt={t('cart.item.alt.productImage', { name: cart.product.name })}
         />
 

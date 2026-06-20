@@ -48,11 +48,10 @@ export const ProductGallery: React.FC<Props> = ({ images }) => {
           >
             <img
               className={thumbsImage}
-              src={`/${imgUrl}`}
-              alt={t(
-                'productDetailsPage.gallery.thumbnail',
-                { number: index + 1 }
-              )}
+              src={`${import.meta.env.BASE_URL}/${imgUrl}`}
+              alt={t('productDetailsPage.gallery.thumbnail', {
+                number: index + 1,
+              })}
             />
           </div>
         ))}
@@ -61,7 +60,7 @@ export const ProductGallery: React.FC<Props> = ({ images }) => {
       <div className={preview}>
         <img
           className={previewImage}
-          src={`/${currentPreviewImage}`}
+          src={`${import.meta.env.BASE_URL}/${currentPreviewImage}`}
           alt={t('productDetailsPage.gallery.preview')}
         />
       </div>

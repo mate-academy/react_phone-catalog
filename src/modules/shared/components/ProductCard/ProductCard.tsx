@@ -75,7 +75,7 @@ export const ProductCard: React.FC<Props> = ({
       <Link to={`/${product.category}/${product.itemId}`} className={cardLink}>
         <div className={cardImageBlock}>
           <img
-            src={`/${product.image}`}
+            src={`${import.meta.env.BASE_URL}/${product.image}`}
             alt={product.name}
             className={cardImage}
           />
