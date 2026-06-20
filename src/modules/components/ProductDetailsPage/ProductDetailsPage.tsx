@@ -67,6 +67,10 @@ export const ProductDetailsPage = () => {
 
   //#region EFFECTS
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [productDetails?.namespaceId]);
+
+  useEffect(() => {
     loadCategoryDetails(currentCategory);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentCategory, i18n.language]);
@@ -86,7 +90,6 @@ export const ProductDetailsPage = () => {
   //#region RENDER
   return (
     <div className={productDetailsPage}>
-      
       <Breadcrumbs
         pageTitle={currentPageTitle}
         pagePath={currentCategory}
