@@ -1,3 +1,5 @@
+@import '../../../../styles/variables';
+
 .nav {
   margin-top: 24px;
 }
@@ -36,7 +38,7 @@
 
 .crumbLink {
   text-decoration: none;
-  color: #f1f2f9;
+  color: $text-main;
   font-weight: 700;
   font-size: 12px;
   line-height: 1rem;
@@ -52,7 +54,7 @@
 }
 
 .currentCrumb {
-  color: #75767f;
+  color: $text-secondary;
   font-weight: 700;
   font-size: 12px;
   line-height: 1rem;

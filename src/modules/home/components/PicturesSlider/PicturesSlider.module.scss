@@ -1,3 +1,5 @@
+@import '../../../../styles/variables';
+
 .sliderWrapper {
   width: 100%;
   margin: 0 auto;
@@ -27,7 +29,7 @@
   width: 32px;
   height: 400px;
   flex-shrink: 0;
-  background: #323542;
+  background: $surface-2;
   border: none;
   cursor: pointer;
   display: flex;
@@ -36,7 +38,7 @@
   transition: background-color 0.3s ease;
 
   &:hover {
-    background: #4a4d58;
+    background: $text-icons;
   }
 
   img {
@@ -56,13 +58,13 @@
 .dot {
   width: 14px;
   height: 4px;
-  background: #3b3e4a;
+  background: $elements;
   border: none;
   cursor: pointer;
   padding: 0;
   transition: background-color 0.3s ease;
 
   &.dotActive {
-    background: #f1f2f9;
+    background: $text-main;
   }
 }

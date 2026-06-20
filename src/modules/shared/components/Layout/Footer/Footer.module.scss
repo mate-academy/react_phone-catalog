@@ -1,7 +1,9 @@
+@import '../../../../../styles/variables';
+
 .footer {
   padding: 24px 0;
-  background-color: #0f1121;
-  border-top: 1px solid #323542;
+  background-color: $background;
+  border-top: 1px solid $surface-2;
   transition: background-color 0.3s ease;
 }
 
@@ -53,7 +55,7 @@
   font-size: 12px;
   line-height: 11px;
   letter-spacing: 0.04em;
-  color: #f1f2f9;
+  color: $text-main;
   transition: color 0.3s ease;
 }
 
@@ -66,7 +68,7 @@
 }
 
 .buttonTopText {
-  color: #75767f;
+  color: $text-secondary;
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
@@ -86,7 +88,7 @@
 .backTopButton {
   display: flex;
   align-items: center;
-  background-color: #323542;
+  background-color: $surface-2;
   border: none;
   padding: 0;
   cursor: pointer;
@@ -100,7 +102,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid #905bff;
+    outline: 2px solid $accent;
   }
 }
 

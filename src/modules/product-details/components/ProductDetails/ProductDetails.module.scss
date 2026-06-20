@@ -1,8 +1,10 @@
+@import '../../../../styles/variables';
+
 .productDetails {
   max-width: 1200px;
   margin: 0 auto;
-  background-color: #0f1121;
-  color: #f1f2f9;
+  background-color: $background;
+  color: $text-main;
 }
 
 .backButton {
@@ -17,7 +19,7 @@
   line-height: 1em;
   cursor: pointer;
   background-color: transparent;
-  color: #f1f2f9;
+  color: $text-main;
   padding: 0;
   transition: opacity 0.2s ease;
 
@@ -43,7 +45,7 @@
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -0.01em;
-  color: #f1f2f9;
+  color: $text-main;
   margin: 0;
 }
 
@@ -51,7 +53,7 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 1em;
-  color: #4a4d58;
+  color: $text-icons;
   flex: 1;
 }
 
@@ -77,8 +79,8 @@
   width: 80px;
   height: 80px;
   cursor: pointer;
-  border: 1px solid #3b3e4a;
-  background-color: #0f1121;
+  border: 1px solid $elements;
+  background-color: $background;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,7 +88,7 @@
   transition: border-color 0.2s ease;
 
   &:hover {
-    border-color: #f1f2f9;
+    border-color: $text-main;
   }
 }
 
@@ -124,7 +126,7 @@
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  border-bottom: 1px solid #3b3e4a;
+  border-bottom: 1px solid $elements;
   padding-bottom: 24px;
 }
 
@@ -147,7 +149,7 @@
   height: 30px;
   border-radius: 50%;
   cursor: pointer;
-  border: 1px solid #3b3e4a;
+  border: 1px solid $elements;
   box-shadow: 0 0 0 1px transparent;
   transition: all 0.2s ease;
 
@@ -156,8 +158,8 @@
   }
 
   &.isActive {
-    border-color: #0f1121;
-    box-shadow: 0 0 0 2px #f1f2f9;
+    border-color: $background;
+    box-shadow: 0 0 0 2px $text-main;
   }
 }
 
@@ -180,7 +182,7 @@
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  border-bottom: 1px solid #3b3e4a;
+  border-bottom: 1px solid $elements;
   padding-bottom: 24px;
 }
 
@@ -192,21 +194,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #4a4d58;
+  border: 1px solid $text-icons;
   cursor: pointer;
-  color: #f1f2f9;
-  background-color: #0f1121;
+  color: $text-main;
+  background-color: $background;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #4a4d58;
+    background-color: $text-icons;
   }
 
   &.isActiveButton {
     border: none;
-    color: #0f1121;
-    background-color: #f1f2f9;
-    border-color: #f1f2f9;
+    color: $background;
+    background-color: $text-main;
+    border-color: $text-main;
   }
 }
 
@@ -229,7 +231,7 @@
   font-size: 22px;
   line-height: 1em;
   text-decoration: line-through;
-  color: #75767f;
+  color: $text-secondary;
 }
 
 .actions {
@@ -247,8 +249,8 @@
   border-radius: 4px;
   border: none;
   cursor: pointer;
-  background-color: #905bff;
-  color: #f1f2f9;
+  background-color: $accent;
+  color: $text-main;
   transition: background-color 0.3s ease;
 
   &:hover {
@@ -256,10 +258,10 @@
   }
 
   &.isAdded {
-    background-color: #323542;
+    background-color: $surface-2;
 
     &:hover {
-      background-color: #eb5757;
+      background-color: $red;
     }
   }
 }
@@ -269,22 +271,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #323542;
+  background-color: $surface-2;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #4a4d58;
+    background-color: $text-icons;
   }
 
   &.isFav {
-    border: 1px solid #3b3e4a;
-    background-color: #161827;
+    border: 1px solid $elements;
+    background-color: $surface-1;
 
     &:hover {
-      background-color: #4a4d58;
+      background-color: $text-icons;
     }
   }
 }
@@ -303,7 +305,7 @@
 }
 
 .specTitle {
-  color: #75767f;
+  color: $text-secondary;
   font-weight: 700;
   font-size: 12px;
   line-height: 1em;
@@ -311,7 +313,7 @@
 }
 
 .description {
-  color: #f1f2f9;
+  color: $text-main;
   font-weight: 700;
   font-size: 12px;
   line-height: 1em;
@@ -321,7 +323,7 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 1em;
-  color: #75767f;
+  color: $text-secondary;
   margin-bottom: 8px;
 }
 
@@ -347,7 +349,7 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  color: #75767f;
+  color: $text-secondary;
 }
 
 .characteristic {
@@ -370,7 +372,7 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  color: #75767f;
+  color: $text-secondary;
 }
 
 .techSpecDescription {
@@ -383,7 +385,7 @@
   font-weight: 800;
   font-size: 22px;
   line-height: 1.4em;
-  border-bottom: 1px solid #3b3e4a;
+  border-bottom: 1px solid $elements;
   padding-bottom: 16px;
   margin-bottom: 32px;
 }

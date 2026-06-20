@@ -1,4 +1,4 @@
-import { useCart } from '../../../cart-context/CartContext';
+import { useCart } from '../../../contexts/CartContext';
 import styles from './CartList.module.scss';
 
 export const CartItem = () => {

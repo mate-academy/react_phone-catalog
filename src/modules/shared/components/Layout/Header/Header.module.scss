@@ -1,7 +1,9 @@
+@import '../../../../../styles/variables';
+
 .header {
   width: 100%;
-  background-color: #0f1121;
-  border-bottom: 1px solid #323542;
+  background-color: $background;
+  border-bottom: 1px solid $surface-2;
   transition: background-color 0.3s ease;
 }
 
@@ -54,20 +56,20 @@
   font-weight: 800;
   font-size: 12px;
   letter-spacing: 0.04em;
-  color: #75767f;
+  color: $text-secondary;
   border-bottom: 3px solid transparent;
   transition:
     color 0.3s ease,
     border-color 0.3s ease;
 
   &:hover {
-    color: #f1f2f9;
+    color: $text-main;
   }
 }
 
 .link.isActive {
-  color: #f1f2f9;
-  border-bottom-color: #f1f2f9;
+  color: $text-main;
+  border-bottom-color: $text-main;
 }
 
 .icons {
@@ -85,7 +87,7 @@
   justify-content: center;
   height: 64px;
   width: 64px;
-  border-left: 1px solid #323542;
+  border-left: 1px solid $surface-2;
   border-bottom: 3px solid transparent;
   box-sizing: border-box;
   transition:
@@ -97,12 +99,12 @@
   }
 
   &:last-child {
-    border-right: 1px solid #323542;
+    border-right: 1px solid $surface-2;
   }
 }
 
 .iconLink.isActive {
-  border-bottom-color: #f1f2f9;
+  border-bottom-color: $text-main;
   background-color: rgba(255, 255, 255, 0.05);
 }
 
@@ -117,9 +119,9 @@
   width: 100%;
   height: 40px;
   padding: 0 40px 0 16px;
-  background-color: #161827;
-  color: #f1f2f9;
-  border: 1px solid #323542;
+  background-color: $background;
+  color: $text-main;
+  border: 1px solid $surface-2;
   border-radius: 8px;
   font-weight: 500;
   font-size: 14px;
@@ -127,15 +129,15 @@
   transition: all 0.3s ease;
 
   &::placeholder {
-    color: #75767f;
+    color: $text-secondary;
   }
 
   &:hover {
-    border-color: #4a4d58;
+    border-color: $text-icons;
   }
 
   &:focus {
-    border-color: #905bff;
+    border-color: $accent;
     box-shadow: 0 0 0 3px rgba(144, 91, 255, 0.15);
   }
 
@@ -177,9 +179,9 @@
   padding: 0 4px;
   border-radius: 10px;
 
-  background-color: #eb5757;
-  border: 1px solid #0f1121;
-  color: #f1f2f9;
+  background-color: $red;
+  border: 1px solid $background;
+  color: $text-main;
 
   font-weight: 700;
   font-size: 9px;

@@ -1,9 +1,11 @@
+@import '../../../../styles/variables';
+
 .card {
   display: flex;
   flex-direction: column;
   height: 100%;
   padding: 32px;
-  background-color: #161827;
+  background-color: $surface-1;
   box-sizing: border-box;
 }
 
@@ -15,7 +17,7 @@
 }
 
 .title {
-  color: #f1f2f9;
+  color: $text-main;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
@@ -25,13 +27,13 @@
 .priceContainer {
   display: flex;
   align-items: baseline;
-  border-bottom: 1px solid #3b3e4a;
+  border-bottom: 1px solid $elements;
   padding-bottom: 8px;
   margin-bottom: 8px;
 }
 
 .price {
-  color: #f1f2f9;
+  color: $text-main;
   font-weight: 800;
   font-size: 22px;
   line-height: 1.4rem;
@@ -39,7 +41,7 @@
 }
 
 .discount {
-  color: #75767f;
+  color: $text-secondary;
   font-weight: 600;
   font-size: 22px;
   line-height: 1rem;
@@ -61,7 +63,7 @@
 }
 
 .specTitle {
-  color: #75767f;
+  color: $text-secondary;
   font-weight: 700;
   font-size: 12px;
   line-height: 1rem;
@@ -69,7 +71,7 @@
 }
 
 .description {
-  color: #f1f2f9;
+  color: $text-main;
   font-weight: 700;
   font-size: 12px;
   line-height: 1rem;
@@ -84,8 +86,8 @@
 .addToCart {
   flex: 1;
   height: 40px;
-  background-color: #905bff;
-  color: #f1f2f9;
+  background-color: $accent;
+  color: $text-main;
   border: none;
   border-radius: 4px;
   font-weight: 700;
@@ -95,15 +97,15 @@
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: #a378ff;
+    background-color: $accent-hover;
   }
 }
 
 .isActive {
-  background-color: #323542;
+  background-color: $surface-2;
 
   &:hover {
-    background-color: #eb5757;
+    background-color: $red;
   }
 }
 
@@ -113,14 +115,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #323542;
+  background-color: $surface-2;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #4a4d58;
+    background-color: $text-icons;
   }
 
   img {

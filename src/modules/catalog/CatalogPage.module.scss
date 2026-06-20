@@ -1,5 +1,7 @@
+@import '../../styles/variables';
+
 .homePage {
-  background-color: #0f1121;
+  background-color: $background;
 }
 
 .container {
@@ -16,8 +18,8 @@
   text-align: center;
   min-height: 350px;
   padding: 40px;
-  background-color: #161827;
-  border: 1px solid #323542;
+  background-color: $surface-1;
+  border: 1px solid $surface-2;
   margin: 40px auto 80px;
   max-width: 500px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -27,7 +29,7 @@
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;
-  color: #f1f2f9;
+  color: $text-main;
   letter-spacing: -0.01rem;
   margin-bottom: 24px;
 }
@@ -39,8 +41,8 @@
 
   height: 40px;
   padding: 0 24px;
-  background-color: #323542;
-  color: #f1f2f9;
+  background-color: $surface-2;
+  color: $text-main;
 
   border: none;
   font-style: normal;
@@ -55,16 +57,16 @@
     border-color 0.3s ease;
 
   &:hover {
-    background-color: #3b3e4a;
-    border: 1px solid #4a4d58;
+    background-color: $elements;
+    border: 1px solid $text-icons;
   }
 
   &:active {
-    background-color: #905bff;
+    background-color: $accent;
   }
 
   &:focus-visible {
-    outline: 2px solid #905bff;
+    outline: 2px solid $accent;
     outline-offset: 2px;
   }
 }

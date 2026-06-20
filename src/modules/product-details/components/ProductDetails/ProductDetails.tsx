@@ -3,9 +3,9 @@ import { Phone } from '../../../../types/phone';
 import { Tablet } from '../../../../types/tablet';
 import { Accessorie } from '../../../../types/accessorie';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { useCart } from '../../../../cart-context/CartContext';
-import { useFavorite } from '../../../../favorites-context/FavoritesContext';
+import { useFavorite } from '../../../../contexts/FavoritesContext';
 import { Product } from '../../../../types/product';
+import { useCart } from '../../../../contexts/CartContext';
 
 type AnyProduct = Phone | Tablet | Accessorie;
 

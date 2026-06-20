@@ -1,0 +1,82 @@
+// Колірна палітра Темна тема)
+:root[data-theme='dark'] {
+  --background: #0f1121;
+  --surface-1: #161827;
+  --surface-2: #323542;
+  --elements: #3b3e4a;
+  --text-main: #f1f2f4;
+  --text-secondary: #75767f;
+  --text-icons: #4a4d58;
+}
+
+// Колірна палітра Світла тема
+:root[data-theme='light'] {
+  --background: #fff;
+  --surface-1: #fafbfc;
+  --surface-2: #e4e6eb;
+  --elements: #e2e6e9;
+  --text-main: #313237;
+  --text-secondary: #89939a;
+  --text-icons: #b4bdc3;
+}
+
+$background: var(--background);
+$surface-1: var(--surface-1);
+$surface-2: var(--surface-2);
+$elements: var(--elements);
+$text-main: var(--text-main);
+$text-secondary: var(--text-secondary);
+$text-icons: var(--text-icons);
+
+// Акценти та системні кольори
+:root {
+  --accent: #905bff;
+  --accent-hover: #a378ff;
+  --green: #27ae60;
+  --red: #eb5757;
+}
+
+$accent: var(--accent);
+$accent-hover: var(--accent-hover);
+$green: var(--green);
+$red: var(--red);
+
+// SCSS Міксини для типографіки
+@mixin h1-font {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+}
+
+@mixin h2-font {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin h3-font {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+@mixin h4-font {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+@mixin body-font {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}

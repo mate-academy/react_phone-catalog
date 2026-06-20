@@ -1,9 +1,9 @@
 import React from 'react';
-import { useFavorite } from '../../../../favorites-context/FavoritesContext';
+import { useFavorite } from '../../../../contexts/FavoritesContext';
 import { Product } from '../../../../types/product';
 import styles from './ProductCard.module.scss';
 import { Link } from 'react-router-dom';
-import { useCart } from '../../../../cart-context/CartContext';
+import { useCart } from '../../../../contexts/CartContext';
 
 type Props = {
   product: Product;

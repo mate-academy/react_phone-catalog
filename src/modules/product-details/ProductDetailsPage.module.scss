@@ -1,7 +1,33 @@
+@import '../../styles/variables';
+
 .container {
   padding: 0 152px;
 }
 
 .sliderWrapper {
   margin-top: 80px;
+}
+
+.errorWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 350px;
+  padding: 40px;
+  background-color: $surface-1;
+  border: 1px solid $surface-2;
+  margin: 40px auto 80px;
+  max-width: 500px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.errorMessage {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: $text-main;
+  letter-spacing: -0.01rem;
+  margin-bottom: 24px;
 }

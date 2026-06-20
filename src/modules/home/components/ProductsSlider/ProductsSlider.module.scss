@@ -1,3 +1,5 @@
+@import '../../../../styles/variables';
+
 .sliderWrapper {
   margin-bottom: 80px;
 }
@@ -13,7 +15,7 @@
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -0.01em;
-  color: #f1f2f9;
+  color: $text-main;
   margin: 0;
 }
 
@@ -30,8 +32,8 @@
   height: 32px;
   padding: 0;
 
-  background-color: #323542;
-  border: 1px solid #3b3e4a;
+  background-color: $surface-2;
+  border: 1px solid $elements;
 
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -41,7 +43,7 @@
   }
 
   &:hover {
-    background-color: #4a4d58;
+    background-color: $text-icons;
   }
 
   &:active {
@@ -50,14 +52,14 @@
   }
 
   &:focus-visible {
-    outline: 2px solid #a3a8b4;
+    outline: 2px solid $elements;
     outline-offset: 2px;
   }
 
   &:disabled {
     opacity: 0.25;
-    border-color: #3b3e4a;
-    background-color: #0f1121;
+    border-color: $elements;
+    background-color: $background;
     cursor: not-allowed;
     pointer-events: none;
   }

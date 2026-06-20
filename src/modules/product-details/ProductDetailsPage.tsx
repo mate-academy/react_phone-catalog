@@ -113,7 +113,11 @@ export const ProductDetailsPage = () => {
   }
 
   if (!productDetail) {
-    return <div className={styles.notFound}>Product not found</div>;
+    return (
+      <div className={styles.errorWrapper}>
+        <p className={styles.errorMessage}>Product not found</p>
+      </div>
+    );
   }
 
   return (

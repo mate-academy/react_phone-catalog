@@ -1,3 +1,5 @@
+@import '../../../../styles/variables';
+
 .topBar {
   display: flex;
   flex-direction: column;
@@ -9,7 +11,7 @@
   font-style: bold;
   font-size: 48px;
   line-height: 56px;
-  color: #f1f2f9;
+  color: $text-main;
   letter-spacing: -0.01rem;
 
   &::first-letter {
@@ -22,7 +24,7 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  color: #75767f;
+  color: $text-secondary;
 }
 
 .changes {
@@ -39,7 +41,7 @@
     font-weight: 600;
     font-size: 12px;
     line-height: 1rem;
-    color: #75767f;
+    color: $text-secondary;
 
     p {
       margin: 0;
@@ -59,8 +61,8 @@
   width: 100%;
   height: 40px;
   padding: 0 12px;
-  background-color: #323542;
-  color: #f1f2f9;
+  background-color: $surface-2;
+  color: $text-main;
   border: none;
   border-radius: 0;
   font-style: normal;
@@ -78,17 +80,17 @@
   transition: border 0.3s ease;
 
   &:hover {
-    border: 1px solid #4a4d58;
+    border: 1px solid $text-icons;
   }
 }
 
 .selectOptions {
-  background-color: #0f1121;
+  background-color: $background;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
 
-  color: #75767f;
+  color: $text-secondary;
 }
 
 .listWindow {
@@ -107,8 +109,8 @@
   justify-content: center;
   text-align: center;
   padding: 64px 24px;
-  background-color: #161827;
-  border: 1px solid #323542;
+  background-color: $surface-1;
+  border: 1px solid $surface-2;
   border-radius: 8px;
   margin: 20px 0;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
@@ -118,7 +120,7 @@
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;
-  color: #f1f2f9;
+  color: $text-main;
   letter-spacing: -0.01rem;
   margin: 0;
 
@@ -131,7 +133,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
-  color: #75767f;
+  color: $text-secondary;
   margin-top: 12px;
   margin-bottom: 0;
   max-width: 400px;
@@ -160,21 +162,21 @@
   border: none;
   width: 32px;
   height: 32px;
-  background-color: #161827;
-  color: #f1f2f9;
+  background-color: $surface-1;
+  color: $text-main;
   cursor: pointer;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
 
   &:hover {
-    background-color: #3b3e4a;
+    background-color: $elements;
   }
 
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-    fill: #f1f2f9;
+    fill: $text-main;
   }
 }
 
@@ -185,25 +187,25 @@
   border: none;
   width: 32px;
   height: 32px;
-  background-color: #323542;
-  color: #f1f2f9;
+  background-color: $surface-2;
+  color: $text-main;
   cursor: pointer;
 
   &:hover {
-    background-color: #3b3e4a;
+    background-color: $elements;
   }
 
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-    fill: #f1f2f9;
+    fill: $text-main;
   }
 }
 
 .activePage {
-  background-color: #905bff;
-  color: #f1f2f9;
-  border-color: #000;
+  background-color: $accent;
+  color: $text-main;
+  border-color: $background;
 }
 
 .arrow {

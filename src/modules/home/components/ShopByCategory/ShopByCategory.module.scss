@@ -1,3 +1,5 @@
+@import '../../../../styles/variables';
+
 .categoryWrapper {
   display: flex;
   flex-direction: column;
@@ -6,7 +8,7 @@
 }
 
 .pageTitle {
-  color: #f1f2f9;
+  color: $text-main;
   font-weight: 800;
   font-size: 32px;
   line-height: 41px;
@@ -39,15 +41,15 @@
 }
 
 .bgPhones {
-  background-color: #6d6474;
+  background-color: $accent;
 }
 
 .bgTablets {
-  background-color: #8d8d92;
+  background-color: $green;
 }
 
 .bgAccessories {
-  background-color: #973d5f;
+  background-color: $red;
 }
 
 .categoryImage {
@@ -60,7 +62,7 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 1em;
-  color: #f1f2f9;
+  color: $text-main;
   margin: 24px 0 4px;
 }
 
@@ -68,6 +70,6 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  color: #75767f;
+  color: $text-secondary;
   margin: 0;
 }

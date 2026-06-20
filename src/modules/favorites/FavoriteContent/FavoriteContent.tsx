@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useFavorite } from '../../../favorites-context/FavoritesContext';
+import { useFavorite } from '../../../contexts/FavoritesContext';
 import { ProductList } from '../../shared/components/ProductsList';
 import styles from './FavoriteContent.module.scss';
 

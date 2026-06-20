@@ -1,9 +1,10 @@
 import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
-import { useCart } from '../../../../../cart-context/CartContext';
-import { useFavorite } from '../../../../../favorites-context/FavoritesContext';
+import { useCart } from '../../../../../contexts/CartContext';
+import { useFavorite } from '../../../../../contexts/FavoritesContext';
 import styles from './Header.module.scss';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useDebounce } from '../../../hooks/useDebounce';
+import { ThemeToggler } from '../../UI/ThemeToggler/ThemeToggler';
 
 export const Header = () => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -37,12 +38,7 @@ export const Header = () => {
     setSearchParams(newParams);
   }, [debouncedQuery]);
 
-  const searchAvailableRoutes = [
-    '/phones',
-    '/tablets',
-    '/accessories',
-    '/favorites',
-  ];
+  const searchAvailableRoutes = ['/phones', '/tablets', '/accessories'];
   const isSearchVisible = searchAvailableRoutes.includes(location.pathname);
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -98,6 +94,8 @@ export const Header = () => {
             />
           </div>
         )}
+
+        <ThemeToggler />
 
         <div className={styles.icons}>
           <div>
