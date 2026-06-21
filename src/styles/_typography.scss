@@ -1,0 +1,89 @@
+@use '@/styles/breakpoints' as *;
+
+$font-family-main: 'Mont', sans-serif;
+
+// ЗАГОЛОВКИ
+@mixin font-h1 {
+  font-family: $font-family-main;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+
+  @include on-mobile {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+@mixin font-h2 {
+  font-family: $font-family-main;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-mobile {
+    font-size: 32px;
+    line-height: 31px;
+  }
+}
+
+@mixin font-h3 {
+  font-family: $font-family-main;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 31px;
+
+  @include on-mobile {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 26px;
+  }
+}
+
+@mixin font-h4 {
+  font-family: $font-family-main;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+
+  @include on-mobile {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+// ТЕКСТ ТА UI ЕЛЕМЕНТИ
+@mixin font-uppercase {
+  font-family: $font-family-main;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin font-buttons {
+  font-family: $font-family-main;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin font-body {
+  font-family: $font-family-main;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin font-small {
+  font-family: $font-family-main;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}

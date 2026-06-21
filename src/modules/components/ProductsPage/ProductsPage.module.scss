@@ -1,0 +1,36 @@
+.products {
+  &Page {
+    padding-top: var(--page-padding-top-products);
+    padding-bottom: var(--page-padding-bottom-products);
+
+    @include on-tablet {
+      padding-bottom: var(--page-padding-bottom-products-tablet);
+    }
+
+    @include on-mobile {
+      padding-bottom: var(--page-padding-bottom-products-mobile);
+    }
+
+    &Title {
+      @include font-h1;
+
+      color: var(--color-primary);
+      margin-top: 40px;
+    }
+
+    &Count {
+      @include font-body;
+
+      color: var(--color-secondary);
+      margin-top: 8px;
+    }
+  }
+}
+
+.noProductsMessage {
+  @include font-h2;
+
+  color: var(--color-red);
+  text-align: center;
+  margin-top: 64px;
+}

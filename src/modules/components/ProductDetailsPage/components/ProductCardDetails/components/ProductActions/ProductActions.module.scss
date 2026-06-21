@@ -1,0 +1,183 @@
+.actionsContainer {
+  grid-column: 14 / 21;
+  width: 100%;
+
+  @include on-tablet {
+    grid-column: 8 / -1;
+  }
+
+  @include on-mobile {
+    grid-column: 1 / -1;
+  }
+}
+
+.colors {
+  &Block {
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--color-elements);
+  }
+
+  &Title {
+    color: var(--color-secondary);
+
+    @include font-small;
+  }
+
+  &List {
+    display: flex;
+    gap: 10px;
+    padding-top: 8px;
+  }
+}
+
+.colorBtn {
+  width: 30px;
+  height: 30px;
+
+  border: 2px solid var(--color-surface-1);
+  border-radius: 50%;
+  outline: 1px solid var(--color-elements);
+  outline-offset: 1px;
+
+  cursor: pointer;
+  transition: outline-color 0.3s ease;
+
+  &:hover {
+    outline-color: var(--color-secondary);
+  }
+
+  &Active {
+    outline-color: var(--color-primary);
+  }
+}
+
+.capacity {
+  &Block {
+    margin-top: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--color-elements);
+  }
+
+  &Title {
+    color: var(--color-secondary);
+
+    @include font-small;
+  }
+
+  &List {
+    display: flex;
+    gap: 8px;
+    padding-top: 8px;
+  }
+
+  &Btn {
+    @include flex-center;
+
+    height: 32px;
+    padding: 7px 8px 4px;
+
+    color: var(--color-primary);
+    background-color: var(--color-surface-1);
+    border: 1px solid var(--color-icons);
+    border-radius: 4px;
+
+    text-decoration: none;
+
+    @include font-body;
+
+    transition: all 0.3s ease;
+
+    &Active {
+      color: var(--color-surface-1);
+      background-color: var(--color-primary);
+    }
+
+    &:hover {
+      border-color: var(--color-secondary);
+    }
+  }
+}
+
+.price {
+  &Block {
+    @include flex-center($content: flex-start, $gap: 8px);
+
+    height: 41px;
+    margin-top: 32px;
+  }
+
+  &Current {
+    color: var(--color-primary);
+
+    @include font-h2;
+  }
+
+  &Discount {
+    color: var(--color-secondary);
+    text-decoration: line-through;
+
+    @include font-h3;
+  }
+}
+
+.buttonsBlock {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.button {
+  &Cart {
+    flex: 1;
+  }
+
+  &Favourite {
+    flex-shrink: 0;
+
+    width: 48px;
+    height: 48px;
+    padding: 0;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.shortSpecsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.spec {
+  &Block {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &Title {
+    color: var(--color-secondary);
+    font-weight: 600;
+
+    @include font-small;
+  }
+
+  &Value {
+    color: var(--color-primary);
+    font-weight: 600;
+
+    @include font-small;
+  }
+}
+
+.favouriteIcon {
+  color: var(--color-primary);
+
+  &Active {
+    color: var(--color-favourite-active);
+  }
+}

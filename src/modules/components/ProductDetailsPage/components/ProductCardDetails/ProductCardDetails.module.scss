@@ -1,0 +1,42 @@
+.details {
+  &Container {
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: 80px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-mobile {
+      margin-bottom: 56px;
+    }
+  }
+
+  &Title {
+    @include font-h2;
+
+    color: var(--color-primary);
+  }
+
+  &Grid {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 80px 16px;
+    margin-top: 40px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 64px 16px;
+    }
+
+    @include on-mobile {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 56px 16px;
+      margin-top: 32px;
+    }
+  }
+}
+
+
+

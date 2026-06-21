@@ -1,0 +1,46 @@
+.slider {
+  &Container {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  &Header {
+    @include flex-center($content: space-between);
+
+    margin-bottom: 24px;
+  }
+
+  &Title {
+    @include font-h2;
+
+    color: var(--color-primary);
+  }
+
+  &Actions {
+    @include flex-center($gap: 16px);
+  }
+
+  &Viewport {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &Track {
+    @include flex-center($content: flex-start);
+
+    gap: var(--grid-gap-column);
+
+    width: max-content;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+}
+
+.arrow {
+  &Left {
+    color: var(--color-primary);
+  }
+
+  &Right {
+    color: var(--color-primary);
+  }
+}

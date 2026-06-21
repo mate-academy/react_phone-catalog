@@ -1,0 +1,158 @@
+.productCard {
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--color-surface-1);
+  border: 1px solid var(--color-elements);
+  border-radius: 8px;
+
+  padding: 32px;
+  box-sizing: border-box;
+
+  width: var(--card-width-desktop);
+  height: var(--card-height-desktop);
+
+  @include on-tablet {
+    width: var(--card-width-tablet);
+    height: var(--card-height-tablet);
+  }
+
+  @include on-mobile {
+    width: var(--card-width-mobile);
+    height: var(--card-height-mobile);
+  }
+}
+
+.cardImage {
+  display: block;
+
+  max-width: 100%;
+  max-height: 100%;
+
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.cardLink {
+  text-decoration: none;
+
+  &:hover {
+    .cardImage {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.cardImageBlock {
+  @include flex-center;
+
+  width: 100%;
+  height: 196px;
+
+  @include on-tablet {
+    height: 196px;
+  }
+
+  @include on-mobile {
+    height: 130px;
+  }
+}
+
+.cardTitle {
+  @include font-body;
+
+  font-weight: 600;
+
+  height: 42px;
+  margin-top: 24px;
+  overflow: hidden;
+
+  color: var(--color-primary);
+}
+
+.cardPriceBlock {
+  @include flex-center($direction: row, $content: flex-start, $gap: 8px);
+
+  align-items: baseline;
+  margin-top: 8px;
+}
+
+.priceCurrent {
+  @include font-h2;
+
+  color: var(--color-primary);
+}
+
+.priceDiscount {
+  @include font-h3;
+
+  font-weight: 500;
+
+  color: var(--color-secondary);
+  text-decoration: line-through;
+}
+
+.cardDivider {
+  width: 100%;
+  height: 1px;
+  margin-top: 8px;
+
+  background-color: var(--color-elements);
+}
+
+.cardSpecs {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.specItem {
+  @include flex-center($direction: row, $content: space-between);
+}
+
+.specTitle {
+  @include font-small;
+
+  font-weight: 600;
+
+  color: var(--color-secondary);
+}
+
+.specValue {
+  @include font-small;
+
+  font-weight: 600;
+
+  color: var(--color-primary);
+}
+
+.cardActions {
+  display: flex;
+  gap: 8px;
+
+  width: 100%;
+  margin-top: auto;
+}
+
+.actionCart {
+  flex: 1;
+  height: 40px;
+}
+
+.actionFavourite {
+  flex-shrink: 0;
+
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+
+.favouriteIcon {
+  color: var(--color-primary);
+
+  &Active {
+    color: var(--color-favourite-active);
+  }
+}

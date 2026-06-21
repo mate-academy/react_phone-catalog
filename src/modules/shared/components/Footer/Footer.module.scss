@@ -1,0 +1,113 @@
+.footer {
+  border-top: 1px solid var(--color-elements);
+  width: 100%;
+  background-color: var(--color-surface-1);
+
+  :global(.container) {
+    height: 96px;
+    width: 100%;
+
+    @include flex-center($content: space-between);
+
+    @include on-mobile {
+      @include flex-center($direction: column, $gap: 32px);
+
+      padding-top: 32px;
+      padding-bottom: 32px;
+      height: auto;
+    }
+  }
+}
+
+.logo {
+  @include flex-center($content: flex-start);
+
+  flex: 1;
+
+  @include on-mobile {
+    flex: none;
+    width: 100%;
+  }
+}
+
+.logoImg {
+  display: block;
+}
+
+.nav {
+  @include flex-center;
+
+  flex: 1;
+
+  @include on-mobile {
+    flex: none;
+    width: 100%;
+    justify-content: start;
+  }
+}
+
+.navList {
+  @include flex-center($content: space-between);
+
+  width: 100%;
+  max-width: 380px;
+  list-style: none;
+
+  @include on-mobile {
+    @include flex-center($direction: column, $content: flex-start, $gap: 16px);
+
+    align-items: flex-start;
+  }
+}
+
+.navItem {
+  @include flex-center;
+}
+
+.navLink {
+  @include font-uppercase;
+
+  color: var(--color-secondary);
+  text-decoration: none;
+
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.scrollBlock {
+  @include flex-center($content: flex-end, $gap: 16px);
+
+  flex: 1;
+
+  @include on-mobile {
+    flex: none;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.scrollText {
+  @include font-small;
+
+  font-weight: 400;
+  color: var(--color-secondary);
+}
+
+.scrollBtn {
+  &.scrollBtn {
+    width: 32px;
+    height: 32px;
+    background-color: var(--color-surface-1);
+  }
+}
+
+.logoIcon {
+  color: var(--color-primary);
+}
+
+.arrowUpIcon {
+  color: var(--color-primary);
+}

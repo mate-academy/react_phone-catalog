@@ -1,0 +1,47 @@
+.specs {
+  &Container {
+    grid-column: 14 / -1;
+    width: 100%;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &Title {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-elements);
+
+    color: var(--color-primary);
+
+    @include font-h3;
+  }
+
+  &List {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 25px;
+  }
+
+  &Item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &Label {
+    color: var(--color-secondary);
+
+    @include font-body;
+  }
+
+  &Value {
+    color: var(--color-primary);
+
+    @include font-body;
+  }
+}

@@ -1,0 +1,89 @@
+.dropdown {
+  &Wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    width: 100%;
+    max-width: 176px;
+  }
+
+  &Label {
+    @include font-small;
+
+    color: var(--color-secondary);
+  }
+
+  &Field {
+    @include flex-center($content: space-between);
+
+    padding: 0 12px;
+    height: 40px;
+
+    @include font-body;
+
+    color: var(--color-primary);
+
+    border: 1px solid var(--color-icons);
+    border-radius: 10px;
+    background-color: var(--color-surface-1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: var(--color-secondary);
+    }
+
+    &Active {
+      border-color: var(--color-primary);
+    }
+  }
+
+  &Arrow {
+    transition: transform 0.3s ease;
+
+    &Active {
+      transform: rotate(180deg);
+    }
+  }
+
+  &List {
+    position: absolute;
+    z-index: 10;
+    top: calc(100% + 4px);
+
+    width: 100%;
+    list-style: none;
+
+    border: 1px solid var(--color-elements);
+    border-radius: 10px;
+    background: var(--color-surface-1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  }
+
+  &Item {
+    @include font-body;
+
+    padding: 10px 12px;
+    color: var(--color-secondary);
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-bg);
+      color: var(--color-primary);
+      border-radius: 10px;
+    }
+
+    &Active {
+      color: var(--color-primary);
+      background-color: var(--color-bg);
+      border-radius: 10px;
+    }
+  }
+}
+
+.arrowDown {
+  color: var(--color-icons);
+}

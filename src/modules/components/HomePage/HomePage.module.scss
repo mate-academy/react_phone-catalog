@@ -1,0 +1,38 @@
+.home {
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  justify-content: center;
+  column-gap: 16px;
+
+  padding-top: var(--page-padding-top-main);
+  padding-bottom: var(--page-padding-bottom);
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    padding-top: var(--page-padding-top-main-tablet);
+    padding-bottom: var(--page-padding-bottom-tablet);
+  }
+
+  @include on-mobile {
+    grid-template-columns: repeat(4, 1fr);
+    padding-top: var(--page-padding-top-main-mobile);
+    padding-bottom: var(--page-padding-bottom-mobile);
+  }
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  clip-path: inset(100%);
+  white-space: nowrap;
+}
+
+.tittle {
+  grid-column: 1 / -1;
+
+  @include font-h1;
+
+  color: var(--color-primary);
+}

@@ -1,0 +1,19 @@
+.themeToggler {
+  @include flex-center;
+
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+
+  will-change: transform;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.3);
+  }
+}

@@ -1,0 +1,60 @@
+.cart {
+  &Page {
+    padding-top: var(--page-padding-top-cart);
+    padding-bottom: var(--page-padding-bottom-cart);
+
+    @include on-tablet {
+      padding-bottom: var(--page-padding-bottom-cart-tablet);
+    }
+
+    @include on-mobile {
+      padding-top: var(--page-padding-top-cart-mobile);
+      padding-bottom: var(--page-padding-bottom-cart-mobile);
+    }
+  }
+
+  &Title {
+    @include font-h1;
+
+    color: var(--color-primary);
+    margin-top: 16px;
+  }
+
+  &Content {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    align-items: start;
+
+    gap: 16px;
+    margin-top: 32px;
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @include on-mobile {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+
+.itemList {
+  display: flex;
+  flex-direction: column;
+
+  grid-column: span 16;
+  width: 100%;
+
+  gap: 16px;
+}
+
+.emptyMessage {
+  @include font-h2;
+
+  color: var(--color-red);
+  text-align: center;
+  margin-top: 64px;
+}

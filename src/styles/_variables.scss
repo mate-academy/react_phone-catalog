@@ -1,0 +1,45 @@
+:root {
+ // ProductsPage
+  --page-padding-top-products: 24px;
+  --page-padding-bottom-products: 80px;
+  --page-padding-bottom-products-tablet: 64px;
+  --page-padding-bottom-products-mobile: 64px;
+
+  // ProductDetailsPage
+  --page-padding-top-details: 24px;
+  --page-padding-bottom-details: 80px;
+  --page-padding-bottom-details-tablet: 64px;
+  --page-padding-bottom-details-mobile: 56px;
+
+  // CartPage
+  --page-padding-top-cart: 40px;
+  --page-padding-top-cart-mobile: 24px;
+  --page-padding-bottom-cart: 80px;
+  --page-padding-bottom-cart-tablet: 64px;
+  --page-padding-bottom-cart-mobile: 56px;
+
+  // ProductCard
+  --card-width-desktop: 272px;
+  --card-width-tablet: 282px;
+  --card-width-mobile: 287px;
+  --card-height-desktop: 506px;
+  --card-height-tablet: 506px;
+  --card-height-mobile: 440px;
+  --grid-gap-row: 40px;
+  --grid-gap-column: 16px;
+
+  // FavouritesPage
+  --page-padding-top-fav: 24px;
+  --page-padding-bottom-fav: 80px;
+  --page-padding-bottom-fav-tablet: 64px;
+  --page-padding-bottom-fav-mobile: 56px;
+
+  // REST
+  --page-padding-top-main: 56px;
+  --page-padding-top-main-tablet: 32px;
+  --page-padding-top-main-mobile: 24px;
+  --page-padding-bottom: 80px;
+  --page-padding-bottom-tablet: 64px;
+  --page-padding-bottom-mobile: 64px;
+  --page-padding-top-secondary: 40px;
+}

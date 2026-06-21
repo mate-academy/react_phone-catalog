@@ -1,0 +1,55 @@
+.pagination {
+  &Container {
+    @include flex-center($gap: 16px);
+
+    width: 100%;
+    margin-top: 40px;
+
+    @include on-mobile {
+      gap: 8px;
+    }
+  }
+
+  &Pages {
+    @include flex-center($gap: 8px);
+
+    min-width: 248px;
+
+    @include on-mobile {
+      gap: 4px;
+      min-width: 216px;
+    }
+  }
+
+  &Btn {
+    @include font-buttons;
+
+    border: 1px solid var(--color-elements);
+
+    &Active {
+      background-color: var(--color-primary);
+      color: var(--color-surface-1);
+    }
+  }
+
+  &Ellipsis {
+    @include flex-center;
+
+    width: auto;
+    height: 32px;
+
+    @include font-buttons;
+
+    color: var(--color-secondary);
+  }
+}
+
+.arrow {
+  &Left {
+    color: var(--color-primary);
+  }
+
+  &Right {
+    color: var(--color-primary);
+  }
+}

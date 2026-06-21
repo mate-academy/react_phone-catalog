@@ -1,0 +1,48 @@
+.about {
+  &Container {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / 13;
+    gap: 32px;
+    width: 100%;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &Title {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-elements);
+
+    color: var(--color-primary);
+
+    @include font-h3;
+  }
+
+  &Section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &SubTitle {
+    margin-bottom: 16px;
+    color: var(--color-primary);
+
+    @include font-h4;
+  }
+
+  &Paragraph {
+    color: var(--color-secondary);
+
+    @include font-body;
+
+    & + & {
+      margin-top: 16px;
+    }
+  }
+}

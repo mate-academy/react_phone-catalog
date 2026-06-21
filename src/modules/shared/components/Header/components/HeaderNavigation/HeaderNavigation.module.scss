@@ -1,0 +1,101 @@
+.navigationLink {
+  @include font-uppercase;
+
+  color: var(--color-secondary);
+  text-decoration: none;
+
+  @include flex-center;
+
+  height: 100%;
+  position: relative;
+  transition: color 0.3s ease;
+
+  &.fromLeft {
+    &::after { transform-origin: left; }
+  }
+
+  &.fromRight {
+    &::after { transform-origin: right; }
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--color-primary);
+
+    transform: scaleX(0);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0.05s;
+    will-change: transform;
+  }
+
+  &Active {
+    color: var(--color-primary);
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &:hover {
+    color: var(--color-primary);
+
+    &::after {
+      transform: scaleX(1);
+      transition-delay: 0s;
+    }
+  }
+
+  &HideActive {
+    &::after {
+      transform: scaleX(0);
+      transition-delay: 0.05s;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+      transition-delay: 0s;
+    }
+  }
+}
+
+.navigation {
+  @include flex-center($gap: 64px);
+
+  height: 100%;
+  margin: 0 24px;
+
+  &.burgerNavigation {
+    flex-direction: column;
+    gap: 32px;
+    margin: 0;
+    height: auto;
+
+    .navigationLink {
+      height: auto;
+      padding-bottom: 8px;
+
+      &::after {
+        display: block;
+      }
+    }
+  }
+}
+
+@include on-tablet {
+  .navigation {
+    gap: 32px;
+    margin: 0 16px;
+  }
+}
+
+@include on-mobile {
+  .navigation:not(.burgerNavigation) {
+    display: none;
+  }
+}

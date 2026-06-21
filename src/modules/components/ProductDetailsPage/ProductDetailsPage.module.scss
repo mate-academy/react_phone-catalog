@@ -1,0 +1,20 @@
+.productDetailsPage {
+  padding-top: var(--page-padding-top-details);
+  padding-bottom: var(--page-padding-bottom-details);
+
+  @include on-tablet {
+    padding-bottom: var(--page-padding-bottom-details-tablet);
+  }
+
+  @include on-mobile {
+    padding-bottom: var(--page-padding-bottom-details-mobile);
+  }
+}
+
+.backBtnWrapper {
+  margin-top: 40px;
+
+  @include on-mobile {
+    margin-top: 24px;
+  }
+}

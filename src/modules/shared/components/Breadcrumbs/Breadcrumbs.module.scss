@@ -1,0 +1,55 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &Link {
+    @include flex-center;
+    @include font-small;
+
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &Active {
+      color: var(--color-primary);
+    }
+  }
+
+  &Icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+
+    transform: translateY(-1px);
+  }
+
+  &Arrow {
+    @include flex-center;
+
+    width: 16px;
+    height: 16px;
+
+    img {
+      display: block;
+    }
+  }
+
+  &Text {
+    @include flex-center;
+    @include font-small;
+
+    color: var(--color-secondary);
+  }
+}
+
+.homeIcon {
+  color: var(--color-primary);
+}
+
+.arrowRight {
+  color: var(--color-icons);
+}

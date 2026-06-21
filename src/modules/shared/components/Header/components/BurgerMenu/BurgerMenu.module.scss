@@ -1,0 +1,84 @@
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100vw;
+  height: 100dvh;
+
+  background-color: var(--color-surface-1);
+
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+
+  &Open {
+    transform: translateX(0);
+  }
+
+  &Top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 48px;
+
+    border-bottom: 1px solid var(--color-elements);
+  }
+
+  &CloseBtn {
+    all: unset;
+
+    @include flex-center;
+
+    width: 48px;
+    height: 100%;
+
+    border-left: 1px solid var(--color-elements);
+    cursor: pointer;
+
+    &:hover {
+      border-left: 1px solid var(--color-elements) !important;
+    }
+  }
+
+  &Nav {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
+
+    width: 100%;
+    padding-top: 24px;
+  }
+
+  &Settings {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+    gap: 8px;
+    padding-right: 8px;
+  }
+
+  &Actions {
+    width: 100%;
+    height: 64px;
+
+    border-top: 1px solid var(--color-elements);
+  }
+}
+
+.iconClose {
+  color: var(--color-primary);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.3);
+  }
+}

@@ -1,1 +1,80 @@
-// not empty
+@use './styles/breakpoints';
+@use './styles/colors';
+@use './styles/variables';
+
+// #region FONTS
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;                 /* Regular */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;                 /* SemiBold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;                 /* Bold */
+  font-style: normal;
+}
+
+// #endregion
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overscroll-behavior-y: none;
+}
+
+svg {
+  transition: color 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
+}
+
+.App {
+  font-family: Mont, sans-serif;
+  display: flex;
+  flex-direction: column;
+
+  max-width: 100%;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+
+  padding-left: 32px;
+  padding-right: 32px;
+
+  @include on-tablet {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  @include on-mobile {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+

@@ -1,0 +1,150 @@
+.actionItem {
+  position: relative;
+
+  @include flex-center;
+
+  width: 64px;
+  border-left: 1px solid var(--color-elements);
+
+  transition: color 0.3s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    height: 3px;
+    background-color: var(--color-primary);
+
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+
+  &Active {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &Icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &Count {
+    position: absolute;
+    top: 18px;
+    right: 16px;
+
+    @include flex-center;
+
+    width: 14px;
+    height: 14px;
+    padding-top: 1px;
+
+    background-color: var(--color-accent);
+    border: 1px solid var(--color-surface-1);
+    border-radius: 50%;
+
+    color: var(--color-surface-1);
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1;
+
+    :global([data-theme="dark"]) & {
+      color: var(--color-primary);
+      background-color: var(--color-red);
+    }
+  }
+
+  &Menu {
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    width: 48px;
+    height: 100%;
+    border-left: 1px solid var(--color-elements);
+
+    cursor: pointer;
+  }
+}
+
+.actions {
+  display: flex;
+  height: 100%;
+  margin-left: auto;
+
+  &.burgerActions {
+    width: 100%;
+    margin: 0;
+
+    .actionItem {
+      display: flex;
+      flex: 1;
+
+      width: auto;
+      border-right: 1px solid var(--color-elements);
+      border-left: none;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    .actionItemCount {
+      right: auto;
+      left: calc(50% + 1px);
+    }
+  }
+}
+
+.actionSettings {
+  @include flex-center($gap: 8px);
+
+  padding-right: 16px;
+
+  @include on-tablet {
+    display: none;
+  }
+
+  @include on-mobile {
+    display: none;
+  }
+}
+
+@include on-mobile {
+  .actionItem:not(.actionItemMenu) {
+    display: none;
+  }
+
+  .actionItemMenu {
+    display: flex;
+  }
+}
+
+@include on-tablet {
+  .actionItem:not(.actionItemMenu) {
+    display: none;
+  }
+
+  .actionItemMenu {
+    display: flex;
+  }
+}
+
+.iconFavourites {
+  color: var(--color-primary);
+}
+
+.iconCart {
+  color: var(--color-primary);
+}
+
+.iconMenu {
+  color: var(--color-primary);
+}

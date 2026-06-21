@@ -1,0 +1,82 @@
+.categories {
+  &Container {
+    grid-column: 1 / -1;
+    width: 100%;
+
+    margin-top: 80px;
+    margin-bottom: 80px;
+
+    @include on-tablet {
+      margin-top: 64px;
+      margin-bottom: 64px;
+    }
+
+    @include on-mobile {
+      margin-top: 56px;
+      margin-bottom: 56px;
+    }
+  }
+
+  &Title {
+    @include font-h2;
+
+    color: var(--color-primary);
+    margin-bottom: 24px;
+  }
+
+  &Grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+
+    @include on-mobile {
+      @include flex-center($direction: column, $gap: 32px);
+    }
+  }
+
+  &ImageWrapper {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 24px;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  &Image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+  }
+
+  &Card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      .categoriesImage {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &Name {
+    @include font-h4;
+
+    color: var(--color-primary);
+    margin-bottom: 4px;
+  }
+
+  &Count {
+    @include font-body;
+
+    color: var(--color-secondary);
+  }
+}

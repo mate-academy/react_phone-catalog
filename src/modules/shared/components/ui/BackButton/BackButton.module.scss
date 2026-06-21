@@ -1,0 +1,42 @@
+.backButton {
+  &Icon {
+    @include flex-center;
+
+    height: 16px;
+    width: 16px;
+
+    transition: transform 0.3s ease;
+
+    img {
+      transform: translateY(-0.5px);
+    }
+  }
+
+  &Btn {
+    all: unset;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.7;
+
+      .backButtonIcon {
+        transform: translateX(-2px);
+      }
+    }
+  }
+
+  &Text {
+    @include font-small;
+
+    color: var(--color-secondary);
+  }
+}
+
+.arrowLeft {
+  color: var(--color-primary);
+}
