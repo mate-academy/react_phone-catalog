@@ -1,0 +1,126 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid $color-elements;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.remove {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include hover-transition(opacity);
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+
+  .image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .name {
+    @include body-text;
+
+    color: $color-primary;
+    flex: 1;
+    min-width: 120px;
+  }
+
+  @include hover-scale;
+
+  &:hover .name {
+    color: $color-secondary;
+  }
+}
+
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quantityBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-icons;
+
+  @include button-text;
+
+  color: $color-primary;
+
+  @include hover-transition(border-color);
+
+  &:disabled {
+    color: $color-icons;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+}
+
+.quantityValue {
+  @include h4;
+
+  min-width: 24px;
+  text-align: center;
+}
+
+.price {
+  @include h3;
+
+  color: $color-primary;
+  min-width: 80px;
+  text-align: right;
+}

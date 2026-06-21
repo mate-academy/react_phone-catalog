@@ -1,0 +1,76 @@
+@use '../../styles/mixins' as *;
+
+.homePage {
+  @include page-container;
+}
+
+.productCatalog {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.title {
+  @include h1;
+
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-top: 32px;
+  }
+
+  @include on-desktop {
+    padding-top: 56px;
+  }
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include on-tablet {
+    gap: 64px;
+    padding-top: 32px;
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+    padding-top: 56px;
+    padding-bottom: 80px;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sectionTitle {
+  @include h2;
+}
+
+.cardGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  @include on-tablet {
+    flex-flow: row wrap;
+    gap: 16px;
+
+    & > * {
+      width: 272px;
+    }
+  }
+}

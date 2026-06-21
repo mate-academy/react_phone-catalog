@@ -1,0 +1,393 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.page {
+  @include page-container;
+
+  padding-bottom: 64px;
+}
+
+.pageNotFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding-top: 56px;
+  text-align: center;
+}
+
+// Back button
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: $font-size-small;
+  color: $color-secondary;
+  transition: color $transition;
+
+  &:hover { color: $color-primary; }
+}
+
+.title {
+  @include h2;
+
+  margin-bottom: 32px;
+}
+
+.notFound {
+  @include h2;
+}
+
+.notFoundImage {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  object-fit: contain;
+}
+
+// Main: gallery + controls side-by-side on tablet+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+// Gallery
+.gallery {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    flex: 1;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  @include on-tablet {
+    flex-direction: column;
+  }
+}
+
+.thumb {
+  width: 50px;
+  height: 50px;
+  padding: 4px;
+  border: 1px solid $color-elements;
+  border-radius: 4px;
+  background: $color-white;
+  cursor: pointer;
+  transition: border-color $transition;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &:hover {
+    border-color: $color-primary;
+  }
+}
+
+.thumbActive {
+  border-color: $color-primary;
+}
+
+.mainImage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainImg {
+  width: 100%;
+  max-width: 300px;
+  object-fit: contain;
+
+  @include on-desktop { max-width: 440px; }
+}
+
+// Controls panel
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    width: 237px;
+    flex-shrink: 0;
+  }
+
+  @include on-desktop { width: 320px; }
+}
+
+.optionGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.optionLabel {
+  font-size: $font-size-small;
+  color: $color-secondary;
+}
+
+// Color buttons
+.colorList {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.colorBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid $color-white;
+  outline: 1px solid $color-elements;
+  cursor: pointer;
+  transition: outline-color $transition;
+
+  &:hover { outline-color: $color-secondary; }
+}
+
+.colorBtnActive {
+  outline-color: $color-primary;
+}
+
+// Capacity buttons
+.capacityList {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.capacityBtn {
+  padding: 4px 8px;
+  border: 1px solid $color-icons;
+  background: $color-white;
+  cursor: pointer;
+  font-size: $font-size-button;
+  font-weight: 600;
+  transition: border-color $transition, background $transition, color $transition;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+}
+
+.capacityBtnActive {
+  background: $color-primary;
+  color: $color-white;
+  border-color: $color-primary;
+}
+
+// Divider
+.divider {
+  height: 1px;
+  background: $color-elements;
+}
+
+// Price
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.priceDiscount {
+  font-size: $font-size-h3;
+  font-weight: 700;
+  color: $color-primary;
+}
+
+.priceRegular {
+  font-size: $font-size-body;
+  color: $color-secondary;
+  text-decoration: line-through;
+}
+
+// Actions
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.cartBtn {
+  flex: 1;
+  height: 48px;
+  background: $color-primary;
+  color: $color-white;
+  border: none;
+  cursor: pointer;
+  font-size: $font-size-button;
+  font-weight: 700;
+  transition: background $transition;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) { background: $color-secondary; }
+}
+
+.cartBtnAdded {
+  background: $color-white;
+  color: $color-green;
+  border: 1px solid $color-elements;
+
+  &:hover:not(:disabled) { background: $color-white; }
+}
+
+.favBtn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid $color-icons;
+  background: $color-white;
+  cursor: pointer;
+  font-size: 20px;
+  color: $color-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color $transition;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+}
+
+.favBtnActive {
+  color: $color-red;
+}
+
+// Short specs under actions
+.shortSpecs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    font-size: $font-size-small;
+
+    span:first-child {
+      color: $color-secondary;
+    }
+
+    span:last-child {
+      color: $color-primary;
+      font-weight: 700;
+    }
+  }
+}
+
+// About + Tech specs two-column on desktop
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  margin-bottom: 56px;
+
+  @include on-desktop {
+    flex-direction: row;
+    gap: 64px;
+
+    & > * { flex: 1; }
+  }
+}
+
+.sectionTitle {
+  @include h2;
+
+  margin-bottom: 16px;
+}
+
+.descBlock {
+  margin-top: 32px;
+}
+
+.descTitle {
+  font-size: $font-size-h4;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.descText {
+  font-size: $font-size-body;
+  line-height: $line-height-body;
+  color: $color-secondary;
+
+  & + & { margin-top: 8px; }
+}
+
+.specsList {
+  margin-top: 30px;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include on-tablet {
+    margin-top: 25px;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    font-size: $font-size-body;
+
+    span:first-child {
+      color: $color-secondary;
+    }
+
+    span:last-child {
+      color: $color-primary;
+      font-weight: 700;
+      text-align: right;
+    }
+  }
+}
+
+.suggestedSection {
+  margin-top: 56px;
+}
