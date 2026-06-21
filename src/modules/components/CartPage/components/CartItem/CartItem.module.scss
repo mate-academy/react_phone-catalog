@@ -18,6 +18,8 @@
 
 .itemMain {
   @include flex-center($direction: row, $content: center, $gap: 24px);
+  
+  text-decoration: none;
 
   @include on-mobile {
     width: 100%;

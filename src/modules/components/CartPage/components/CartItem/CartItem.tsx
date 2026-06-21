@@ -2,8 +2,10 @@
 /* eslint-disable prettier/prettier */
 
 //#region IMPORTS
-import { useCart } from '@/modules/shared/utils/context/CartContext';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+
+import { useCart } from '@/modules/shared/utils/context/CartContext';
 
 import { Button } from '@/modules/shared/components/ui/Button';
 import { CartItemType } from '@/modules/shared/utils/types';
@@ -57,13 +59,18 @@ export const CartItem: React.FC<Props> = ({ cart }) => {
           />
         </button>
 
-        <img
-          className={productImage}
-          src={`${import.meta.env.BASE_URL}/${cart.product.image}`}
-          alt={t('cart.item.alt.productImage', { name: cart.product.name })}
-        />
+        <Link
+          to={`/${cart.product.category}/${cart.product.itemId}`}
+          className={itemMain}
+        >
+          <img
+            className={productImage}
+            src={`${import.meta.env.BASE_URL}/${cart.product.image}`}
+            alt={t('cart.item.alt.productImage', { name: cart.product.name })}
+          />
 
-        <p className={productName}>{cart.product.name}</p>
+          <p className={productName}>{cart.product.name}</p>
+        </Link>
       </div>
 
       <div className={itemControls}>
@@ -90,7 +97,7 @@ export const CartItem: React.FC<Props> = ({ cart }) => {
           </Button>
         </div>
 
-        <p className={productPrice}>{`$${cart.product.price}`}</p>
+        <p className={productPrice}>{`$${cart.product.price * cart.quantity}`}</p>
       </div>
     </div>
   );
