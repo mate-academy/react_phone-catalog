@@ -1,0 +1,97 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.page {
+  @include page-container;
+
+  padding-bottom: 64px;
+}
+
+.title {
+  padding-top: 24px;
+
+  @include h1;
+
+  @include on-tablet {
+    padding-top: 16px;
+  }
+}
+
+.content {
+  padding-top: 32px;
+  padding-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-desktop {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.checkout {
+  border: 1px solid $color-elements;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  @include on-desktop {
+    width: 368px;
+    max-height: 206px;
+  }
+}
+
+.total {
+  @include h2;
+
+  color: $color-primary;
+}
+
+.totalLabel {
+  font-size: $font-size-small;
+  line-height: $line-height-small;
+  color: $color-secondary;
+}
+
+.divider {
+  width: 100%;
+  border: none;
+  border-top: 1px solid $color-elements;
+  margin: 8px 0;
+}
+
+.checkoutBtn {
+  width: 100%;
+  height: 40px;
+  background-color: $color-primary;
+  color: $color-white;
+  font-size: $font-size-button;
+  line-height: $line-height-button;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+
+  @include hover-transition(box-shadow);
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+}
+
+.empty {
+  @include h2;
+
+  color: $color-secondary;
+  text-align: center;
+  padding: 40px 0;
+}

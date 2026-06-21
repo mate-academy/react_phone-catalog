@@ -1,0 +1,127 @@
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getProductsByCategory } from '../../api';
+import { Product, Category, SortBy } from '../../types';
+import { ProductsList } from './components/ProductsList';
+import { Dropdown } from '../shared/components/Dropdown';
+import { Loader } from '../shared/components/Loader';
+import { Pagination } from './components/Pagination';
+import { useQueryParams } from '../../hooks';
+import styles from './CategoryPage.module.scss';
+
+const categoryTitles: Record<Category, string> = {
+  phones: 'Mobile Phones',
+  tablets: 'Tablets',
+  accessories: 'Accessories',
+};
+
+const sortOptions: { value: SortBy; label: string }[] = [
+  { value: 'newest', label: 'Newest' },
+  { value: 'alphabetically', label: 'Alphabetically' },
+  { value: 'cheapest', label: 'Cheapest' },
+];
+
+const perPageOptions = [
+  { value: '4', label: '4' },
+  { value: '8', label: '8' },
+  { value: '16', label: '16' },
+  { value: 'all', label: 'All' },
+];
+
+export const CategoryPage = () => {
+  const { category } = useParams<{ category: Category }>();
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
+  const {
+    page,
+    perPage,
+    sortBy,
+    perPageParam,
+    sortParam,
+    setPage,
+    setPerPage,
+    setSortBy,
+  } = useQueryParams();
+
+  // CategoryPageGuard in App.tsx guarantees category is valid here
+  // no guard needed, no fetch wasted on invalid routes
+  useEffect(() => {
+    setLoading(true);
+    setError(false);
+    setProducts([]);
+
+    getProductsByCategory(category as Category)
+      .then(setProducts)
+      .catch(() => setError(true))
+      .finally(() => setLoading(false));
+  }, [category]);
+
+  const title = categoryTitles[category as Category];
+
+  const sorted = [...products].sort((productA, productB) => {
+    switch (sortBy) {
+      case 'alphabetically':
+        return productA.name.localeCompare(productB.name);
+      case 'cheapest':
+        return productA.price - productB.price;
+      case 'newest':
+      default:
+        return productB.year - productA.year;
+    }
+  });
+
+  const total = sorted.length;
+  const totalPages = perPage === 'all' ? 1 : Math.ceil(total / perPage);
+  const paginatedProducts =
+    perPage === 'all'
+      ? sorted
+      : sorted.slice((page - 1) * perPage, page * perPage);
+
+  return (
+    <div className={styles.page}>
+      <h1 className={styles.title}>{title}</h1>
+      <p className={styles.count}>{products.length} models</p>
+
+      {!loading && !error && products.length > 1 && (
+        <div className={styles.controls}>
+          <Dropdown
+            label="Sort by"
+            options={sortOptions}
+            value={sortParam ?? 'newest'}
+            onChange={setSortBy}
+          />
+          <Dropdown
+            label="Items on page"
+            options={perPageOptions}
+            value={perPageParam || 'all'}
+            onChange={setPerPage}
+          />
+        </div>
+      )}
+
+      {loading && <Loader />}
+
+      {!loading && error && <p>Something went wrong. Please try again.</p>}
+
+      {!loading && !error && products.length === 0 && <p>No products found.</p>}
+
+      {!loading && !error && products.length > 0 && (
+        <>
+          <ProductsList products={paginatedProducts} />
+          {perPage !== 'all' && totalPages > 1 && (
+            <div className={styles.pagination}>
+              <Pagination
+                total={total}
+                perPage={perPage}
+                currentPage={page}
+                onPageChange={setPage}
+              />
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  );
+};
