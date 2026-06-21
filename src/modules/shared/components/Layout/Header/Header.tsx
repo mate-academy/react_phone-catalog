@@ -5,6 +5,7 @@ import styles from './Header.module.scss';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useDebounce } from '../../../hooks/useDebounce';
 import { ThemeToggler } from '../../UI/ThemeToggler/ThemeToggler';
+import { useTheme } from '../../../../../contexts/ThemeContext';
 
 export const Header = () => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -12,6 +13,10 @@ export const Header = () => {
 
   const getIconClass = ({ isActive }: { isActive: boolean }) =>
     `${styles.iconLink} ${isActive ? styles.isActive : ''}`;
+
+  const logoDark = '/img/icons/logo.svg';
+  const logoLight = '/img/icons/logo-light.svg';
+  const { theme } = useTheme();
 
   const { totalFavoriteItems } = useFavorite();
   const { totalItems } = useCart();
@@ -52,7 +57,7 @@ export const Header = () => {
           <Link to="/">
             <img
               className={styles.logo}
-              src="/img/icons/logo.svg"
+              src={theme === 'dark' ? logoDark : logoLight}
               alt="Page Logo"
             />
           </Link>
@@ -95,9 +100,11 @@ export const Header = () => {
           </div>
         )}
 
-        <ThemeToggler />
-
         <div className={styles.icons}>
+          <div>
+            <ThemeToggler />
+          </div>
+
           <div>
             <NavLink
               className={getIconClass}

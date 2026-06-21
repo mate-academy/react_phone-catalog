@@ -14,14 +14,58 @@ import { CartPage } from '../modules/cart';
 import { FavoritesPage } from '../modules/favorites';
 import { ReactNode } from 'react';
 import { NotFoundPage } from '../modules/not-found';
+import { getAccessories, getPhones, getTablets } from '../services/product.api';
 
 interface Product {
   id: string;
   name: string;
 }
+
+interface RouterError extends Error {
+  status?: number;
+}
+
 export interface CrumbHandle<T = unknown> {
   crumb: (params: Params, data?: T) => ReactNode;
+  linkTo?: string | ((params: Params) => string);
 }
+
+const productLoader = async ({
+  params,
+}: {
+  params: Params;
+}): Promise<Product> => {
+  const { category, productId } = params;
+  let products: Product[] = [];
+
+  switch (category) {
+    case 'phones':
+      products = await getPhones();
+      break;
+    case 'tablets':
+      products = await getTablets();
+      break;
+    case 'accessories':
+      products = await getAccessories();
+      break;
+    default:
+      const error = new Error('Category Not Found') as RouterError;
+
+      error.status = 404;
+      throw error;
+  }
+
+  const currentProduct = products.find(product => product.id === productId);
+
+  if (!currentProduct) {
+    const error = new Error('Product Not Found') as RouterError;
+
+    error.status = 404;
+    throw error;
+  }
+
+  return currentProduct;
+};
 
 const router = createHashRouter([
   {
@@ -32,16 +76,19 @@ const router = createHashRouter([
 
       {
         path: ':category',
-        element: null,
+        handle: {
+          crumb: (params: Params) => params.category,
+          linkTo: (params: Params) => `/${params.category}`,
+        } as CrumbHandle,
         children: [
           {
             index: true,
             element: <CatalogPage />,
-            handle: { crumb: params => params.category } as CrumbHandle,
           },
           {
             path: 'product/:productId',
             element: <ProductDetailsPage />,
+            loader: productLoader,
             handle: {
               crumb: (_params, product: Product) => product?.name || 'Product',
             } as CrumbHandle<Product>,

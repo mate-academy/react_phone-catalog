@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { useTheme } from '../../../../../contexts/ThemeContext';
 import styles from './Footer.module.scss';
 
 export const Footer = () => {
@@ -5,13 +7,17 @@ export const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const logoDark = '/img/icons/logo.svg';
+  const logoLight = '/img/icons/logo-light.svg';
+  const { theme } = useTheme();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.footerContent}>
           <a href="/">
             <img
-              src="/img/icons/logo.svg"
+              src={theme === 'dark' ? logoDark : logoLight}
               alt="Page Logo"
               className={styles.logo}
             />
@@ -21,24 +27,24 @@ export const Footer = () => {
         <nav className={styles.nav}>
           <ul className={styles.list}>
             <li>
-              <a
-                href="https://github.com/A1daros"
+              <Link
+                to="https://github.com/A1daros"
                 className={styles.link}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Github
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className={styles.link}>
+              <Link to="/" className={styles.link}>
                 Contacts
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className={styles.link}>
+              <Link to="/" className={styles.link}>
                 Rights
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

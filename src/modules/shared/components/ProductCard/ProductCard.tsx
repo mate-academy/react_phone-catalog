@@ -44,12 +44,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <p className={styles.title}>{product.name}</p>
 
       <div className={styles.priceContainer}>
-        <span className={styles.price}>
-          ${product.price || product.fullPrice}
-        </span>
+        <h3 className={styles.price}>${product.price || product.fullPrice}</h3>
 
         {product.price && product.price !== product.fullPrice && (
-          <span className={styles.discount}>${product.fullPrice}</span>
+          <h4 className={styles.discount}>${product.fullPrice}</h4>
         )}
       </div>
 
