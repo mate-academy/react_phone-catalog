@@ -1,0 +1,49 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.breadcrumbs {
+  @include page-container;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+
+  @include on-tablet {
+    margin-bottom: 16px;
+  }
+}
+
+.breadcrumbLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+
+  @include small-text;
+
+  color: $color-primary;
+
+  @include hover-transition(color);
+
+  &:hover {
+    color: $color-secondary;
+  }
+}
+
+.homeIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.breadcrumbArrow {
+  width: 16px;
+  height: 16px;
+}
+
+.breadcrumbCurrent {
+  @include small-text;
+
+  color: $color-secondary;
+}

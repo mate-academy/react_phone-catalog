@@ -1,0 +1,165 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.card {
+  width: 100%;
+  padding: 32px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid $color-elements;
+  background-color: $color-white;
+}
+
+.name {
+  @include button-text;
+
+  color: $color-primary;
+}
+
+.linkContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  gap: 8px;
+
+  @include hover-scale;
+
+  &:hover .name {
+    color: $color-secondary;
+  }
+}
+
+
+.imageWrapper {
+  height: 196px;
+  flex-shrink: 1;     // ← shrinks if long text needs space
+  min-height: 80px;   // ← never goes smaller than this
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  font-size: $font-size-h3;
+  line-height: $line-height-h3;
+  font-weight: 700;
+  color: $color-primary;
+}
+
+.fullPrice {
+  font-size: $font-size-h3;
+  line-height: $line-height-h3;
+  font-weight: 500;
+  color: $color-secondary;
+  text-decoration: line-through;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid $color-elements;
+  margin: 0;
+}
+
+.specs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.specLabel {
+  font-size: $font-size-small;
+  line-height: $line-height-small;
+  font-weight: 600;
+  color: $color-secondary;
+}
+
+.specValue {
+  font-size: $font-size-small;
+  line-height: $line-height-small;
+  font-weight: 600;
+  color: $color-primary;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.addToCart {
+  flex: 1;
+  height: 40px;
+  background-color: $color-primary;
+  color: $color-white;
+  font-size: $font-size-button;
+  line-height: $line-height-button;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: box-shadow $transition;
+
+  @include hover-transition(box-shadow);
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+}
+
+.addToCartActive {
+  background-color: $color-white;
+  color: $color-green;
+  border: 1px solid $color-green;
+}
+
+.favourites {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-white;
+  border: 1px solid $color-icons;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: box-shadow $transition;
+
+  @include hover-transition(box-shadow);
+
+
+  &:hover {
+    border-color: $color-primary;
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}

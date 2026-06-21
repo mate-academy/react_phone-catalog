@@ -1,0 +1,103 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+// Single source of truth for trigger height
+// optionsMenu top derives from this automatically via CSS
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  @include button-text;
+
+  color: $color-secondary;
+}
+
+.selectWrapper {
+  position: relative;
+  width: 100%; // fills whatever the parent gives it
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  background: $color-white;
+  border: 1px solid $color-elements;
+  border-radius: 0;
+
+  @include button-text;
+
+  color: $color-primary;
+  cursor: pointer;
+
+  @include hover-transition(border-color);
+
+  &:hover {
+    border-color: $color-icons;
+  }
+
+  &.triggerOpen {
+    border-color: $color-primary;
+  }
+}
+
+.triggerLabel {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.arrow {
+  flex-shrink: 0;
+  color: $color-secondary;
+
+  @include hover-transition(transform);
+}
+
+.arrowOpen {
+  transform: rotate(180deg);
+}
+
+.optionsMenu {
+  position: absolute;
+  left: 0;
+  top: 44px;
+  width: 100%;
+  list-style: none;
+  background: $color-white;
+  border: 1px solid $color-primary;
+  z-index: 10;
+}
+
+.option {
+  width: 100%;
+  height: 32px;
+  padding: 6px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+
+  @include button-text;
+
+  font-weight: 500;
+  color: $color-secondary;
+  cursor: pointer;
+  text-align: left;
+
+  @include hover-transition(background-color);
+
+  &:hover {
+    background: $color-hover-bg;
+    color: $color-primary;
+  }
+
+  &.optionSelected {
+    color: $color-primary;
+  }
+}

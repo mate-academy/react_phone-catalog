@@ -1,0 +1,278 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 48px;
+  background-color: $color-white;
+  box-shadow: 0 1px 0 0 $color-elements;
+
+  @include on-desktop {
+    height: 64px;
+  }
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 48px;
+  flex-shrink: 0;
+
+  img {
+    width: 64px;
+    height: 22px;
+    object-fit: contain;
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  @include on-desktop {
+    width: 128px;
+    height: 64px;
+  }
+
+  @include hover-scale;
+}
+
+// Tablet+ nav — hidden on mobile
+.nav {
+  display: none;
+  height: 100%;
+
+  @include on-tablet {
+    display: flex;
+    padding-left: 16px;
+  }
+
+  @include on-desktop {
+    padding-left: 24px;
+  }
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  @include nav-link;
+}
+
+.navLinkActive {
+  color: $color-primary;
+
+  &::after {
+    transform: scaleX(1);
+  }
+}
+
+// Right side actions
+.actions {
+  display: flex;
+  align-items: stretch;
+  margin-left: auto;
+  height: 100%;
+}
+
+// Tablet+ icon buttons (favourites, cart) — hidden on mobile
+.iconButton {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid $color-elements;
+    border-bottom: 2px solid transparent;
+    flex-shrink: 0;
+    position: relative;
+
+    @include hover-transition(border-color);
+
+    &:hover {
+      border-color: $color-secondary;
+    }
+
+    &.iconButtonActive {
+      border-bottom: 3px solid $color-primary;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+    }
+  }
+
+  @include on-desktop {
+    height: 64px;
+    width: 64px;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 30%;
+  right: 43%;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-red;
+  color: $color-white;
+  font-size: 9px;
+  font-weight: 700;
+  border-radius: 50%;
+  border: 1px solid $color-white;
+
+  @include on-tablet {
+    top: 25%;
+    right: 25%;
+  }
+
+  @include on-desktop {
+    top: 30%;
+    right: 25%;
+  }
+}
+
+// Mobile-only menu button — hidden on tablet+
+.menuButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: none;
+  border: 1px solid $color-elements;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  @include hover-transition(border-color);
+
+  &:hover {
+    border-color: $color-secondary;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+// Mobile slide-in menu
+.mobileMenu {
+  position: fixed;
+  top: 48px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $color-white;
+  z-index: 95;
+  transform: translateX(-100%);
+  transition: transform 0.7s ease;
+  overflow-y: auto;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.mobileMenuOpen {
+  transform: translateX(0);
+}
+
+.mobileNavList {
+  list-style: none;
+  width: 100%;
+  padding-top: 24px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.mobileNavLink {
+  display: block;
+  padding-bottom: 8px;
+
+  @include nav-link;
+}
+
+.mobileNavLinkActive {
+  color: $color-primary;
+
+  &::after {
+    transform: scaleX(1);
+  }
+}
+
+// Bottom favourites + cart — pinned to bottom of mobile menu
+.menuBottomActions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  border-top: 1px solid $color-elements;
+}
+
+.menuIconButton {
+  flex: 1;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-elements;
+  border-bottom: 2px solid transparent;
+  position: relative;
+
+  @include hover-transition(border-color);
+
+  &:hover {
+    border-color: $color-secondary;
+  }
+
+  &.menuIconButtonActive {
+    border-bottom-color: $color-primary;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
