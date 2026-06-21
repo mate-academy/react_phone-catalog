@@ -14,14 +14,13 @@
   gap: 4px;
   margin-top: 40px;
   border: none;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1em;
   cursor: pointer;
   background-color: transparent;
   color: $text-main;
   padding: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.3s ease;
+
+  @include small-text;
 
   &:hover {
     opacity: 0.7;
@@ -31,7 +30,9 @@
 .back {
   margin: 0;
   border: none;
-  filter: brightness(0) invert(1);
+  display: block;
+  transition: filter 0.3s ease;
+  filter: $filter;
 }
 
 .topBar {
@@ -41,20 +42,18 @@
 
 .title {
   flex: auto;
-  font-weight: 800;
-  font-size: 32px;
-  line-height: 41px;
-  letter-spacing: -0.01em;
   color: $text-main;
   margin: 0;
+
+  @include h2-font;
 }
 
 .productId {
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1em;
-  color: $text-icons;
   flex: 1;
+  text-align: right;
+  color: $text-icons;
+
+  @include small-text;
 }
 
 .mainLayout {
@@ -76,16 +75,18 @@
 }
 
 .selectImage {
-  width: 80px;
-  height: 80px;
-  cursor: pointer;
-  border: 1px solid $elements;
-  background-color: $background;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 80px;
+  height: 80px;
   padding: 0;
-  transition: border-color 0.2s ease;
+  cursor: pointer;
+  background-color: $background;
+  border: 1px solid $elements;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
 
   &:hover {
     border-color: $text-main;
@@ -99,11 +100,12 @@
 }
 
 .mainPreview {
-  width: 464px;
-  height: 464px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 464px;
+  height: 464px;
+  border-radius: 8px;
 }
 
 .mainImage {
@@ -151,7 +153,7 @@
   cursor: pointer;
   border: 1px solid $elements;
   box-shadow: 0 0 0 1px transparent;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 
   &:hover {
     transform: scale(1.05);
@@ -187,18 +189,17 @@
 }
 
 .capacityButton {
-  padding: 7px 8px;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid $text-icons;
+  padding: 7px 8px;
   cursor: pointer;
   color: $text-main;
   background-color: $background;
-  transition: background-color 0.3s ease;
+  border: 1px solid $text-icons;
+  transition: all 0.3s ease;
+
+  @include body-font;
 
   &:hover {
     background-color: $text-icons;
@@ -220,18 +221,14 @@
 }
 
 .price {
-  font-weight: 800;
-  font-size: 32px;
-  line-height: 41px;
-  letter-spacing: -0.01em;
+  @include h2-font;
 }
 
 .discount {
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 1em;
-  text-decoration: line-through;
   color: $text-secondary;
+  text-decoration: line-through;
+
+  @include h3-font;
 }
 
 .actions {
@@ -250,31 +247,33 @@
   border: none;
   cursor: pointer;
   background-color: $accent;
-  color: $text-main;
+  color: $text-on-accent;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #a378ff;
+    background-color: $accent-hover;
   }
 
   &.isAdded {
     background-color: $surface-2;
+    color: $green;
 
     &:hover {
       background-color: $red;
+      color: $text-on-accent;
     }
   }
 }
 
 .favButton {
-  width: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $surface-2;
-  border: none;
+  width: 48px;
+  border: $card-border;
   border-radius: 4px;
   cursor: pointer;
+  background-color: $background;
   transition: background-color 0.3s;
 
   &:hover {
@@ -306,25 +305,22 @@
 
 .specTitle {
   color: $text-secondary;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1em;
   margin: 0;
+
+  @include small-text;
 }
 
 .description {
   color: $text-main;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1em;
+
+  @include small-text;
 }
 
 .paraghTitle {
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1em;
   color: $text-secondary;
   margin-bottom: 8px;
+
+  @include small-text;
 }
 
 .main {
@@ -339,17 +335,15 @@
 }
 
 .aboutTitle {
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 1em;
   margin: 32px 0 16px;
+
+  @include h4-font;
 }
 
 .aboutText {
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
   color: $text-secondary;
+
+  @include body-font;
 }
 
 .characteristic {
@@ -369,23 +363,19 @@
 }
 
 .techSpecTitle {
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
   color: $text-secondary;
+
+  @include body-font;
 }
 
 .techSpecDescription {
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
+  @include body-font;
 }
 
 .sectionTitle {
-  font-weight: 800;
-  font-size: 22px;
-  line-height: 1.4em;
   border-bottom: 1px solid $elements;
-  padding-bottom: 16px;
   margin-bottom: 32px;
+  padding-bottom: 16px;
+
+  @include h3-font;
 }

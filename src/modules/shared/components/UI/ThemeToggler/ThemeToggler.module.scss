@@ -1,3 +1,44 @@
-.root {
-  display: block;
+// src/components/ThemeToggler/ThemeToggler.module.scss
+@import '../../../../../styles/variables';
+
+.togglerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 64px;
+  width: 64px;
+  box-sizing: border-box;
+
+  border-left: 1px solid $surface-2;
+
+  transition: border-color 0.3s ease;
+}
+
+.toggler {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid $elements;
+  border-radius: 50%;
+  background-color: $surface-1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 12px;
+
+  &:hover {
+    background-color: $surface-2;
+    border-color: $text-secondary;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.icon {
+  font-size: 18px;
+  line-height: 1;
 }

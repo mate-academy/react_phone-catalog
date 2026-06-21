@@ -20,14 +20,16 @@
   border: 1px solid $surface-2;
   margin: 40px auto 80px;
   max-width: 500px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: $shadow;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .errorMessage {
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 32px;
   color: $text-main;
-  letter-spacing: -0.01rem;
   margin-bottom: 24px;
+
+  @include h3-font;
 }

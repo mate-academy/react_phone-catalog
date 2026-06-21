@@ -11,25 +11,22 @@
 }
 
 .hiddenTitle {
-  color: $text-main;
-  font-weight: 800;
-  font-size: 48px;
-  line-height: 56px;
-
   position: absolute;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
   width: 1px;
   height: 1px;
   margin: -1px;
   padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
   border: 0;
+  color: $text-main;
+
+  @include h1-font;
 }
 
 .title {
-  color: $text-main;
-  font-weight: 800;
-  font-size: 48px;
-  line-height: 56px;
   margin: 56px 0;
+  color: $text-main;
+
+  @include h1-font;
 }

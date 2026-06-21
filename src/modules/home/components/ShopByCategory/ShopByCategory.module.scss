@@ -8,12 +8,10 @@
 }
 
 .pageTitle {
-  color: $text-main;
-  font-weight: 800;
-  font-size: 32px;
-  line-height: 41px;
-  letter-spacing: -0.01em;
   margin: 0 0 24px;
+  color: $text-main;
+
+  @include h2-font;
 }
 
 .categoryContainer {
@@ -25,19 +23,19 @@
 
 .category {
   display: flex;
+  flex: 1;
   flex-direction: column;
   text-decoration: none;
-  flex: 1;
   min-width: 0;
 }
 
 .imageBox {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  width: 100%;
 }
 
 .bgPhones {
@@ -59,17 +57,15 @@
 }
 
 .title {
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 1em;
-  color: $text-main;
   margin: 24px 0 4px;
+  color: $text-main;
+
+  @include h4-font;
 }
 
 .description {
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
-  color: $text-secondary;
   margin: 0;
+  color: $text-secondary;
+
+  @include body-font;
 }

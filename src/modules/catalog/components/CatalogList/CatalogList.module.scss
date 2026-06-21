@@ -7,12 +7,9 @@
 
 .title {
   margin: 40px 0 8px;
-  font-weight: 800;
-  font-style: bold;
-  font-size: 48px;
-  line-height: 56px;
   color: $text-main;
-  letter-spacing: -0.01rem;
+
+  @include h1-font;
 
   &::first-letter {
     text-transform: uppercase;
@@ -21,10 +18,9 @@
 
 .quantity {
   margin-bottom: 40px;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
   color: $text-secondary;
+
+  @include body-font;
 }
 
 .changes {
@@ -36,12 +32,9 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 1rem;
     color: $text-secondary;
+
+    @include body-font;
 
     p {
       margin: 0;
@@ -60,24 +53,25 @@
 .selects {
   width: 100%;
   height: 40px;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 0;
   padding: 0 12px;
   background-color: $surface-2;
   color: $text-main;
-  border: none;
-  border-radius: 0;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 21px;
-  outline: none;
-  cursor: pointer;
 
   appearance: none;
   background-image: url('/public/img/icons/arrow-down.svg');
   background-repeat: no-repeat;
   background-position: right 12px center;
 
-  transition: border 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+
+  @include buttons;
 
   &:hover {
     border: 1px solid $text-icons;
@@ -85,20 +79,18 @@
 }
 
 .selectOptions {
-  background-color: $background;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
-
   color: $text-secondary;
+  background-color: $background;
+
+  @include body-font;
 }
 
 .listWindow {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   width: 100%;
   min-height: 300px;
-  display: flex;
-  flex-direction: column;
   margin-bottom: 40px;
 }
 
@@ -106,23 +98,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
+  justify-content: center;
+  border-radius: 8px;
+  margin: 20px 0;
   padding: 64px 24px;
   background-color: $surface-1;
   border: 1px solid $surface-2;
-  border-radius: 8px;
-  margin: 20px 0;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: $shadow;
+
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .emptyStateTitle {
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 32px;
-  color: $text-main;
-  letter-spacing: -0.01rem;
   margin: 0;
+  color: $text-main;
+
+  @include h3-font;
 
   &::first-letter {
     text-transform: uppercase;
@@ -130,28 +125,26 @@
 }
 
 .emptyStateSub {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 21px;
-  color: $text-secondary;
-  margin-top: 12px;
-  margin-bottom: 0;
   max-width: 400px;
+  margin: 12px 0 0;
+  color: $text-secondary;
+
+  @include body-font;
 }
 
 .productList {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 40px 16px;
-  transition: transform 0.3s ease;
   margin-bottom: 40px;
+  transition: transform 0.3s ease;
 }
 
 .pagination {
   display: flex;
   justify-content: center;
-  height: 32px;
   gap: 8px;
+  height: 32px;
   margin-bottom: 80px;
 }
 
@@ -159,15 +152,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   border: none;
   width: 32px;
   height: 32px;
   background-color: $surface-1;
   color: $text-main;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
+  transition: all 0.3s ease;
+
+  @include body-font;
 
   &:hover {
     background-color: $elements;
@@ -176,7 +169,6 @@
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-    fill: $text-main;
   }
 }
 
@@ -184,12 +176,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   border: none;
   width: 32px;
   height: 32px;
   background-color: $surface-2;
   color: $text-main;
-  cursor: pointer;
+  transition: all 0.3s ease;
 
   &:hover {
     background-color: $elements;
@@ -204,10 +197,11 @@
 
 .activePage {
   background-color: $accent;
-  color: $text-main;
+  color: $text-on-accent;
   border-color: $background;
 }
 
 .arrow {
-  filter: brightness(0) invert(1);
+  filter: $filter;
+  transition: filter 0.3s ease;
 }

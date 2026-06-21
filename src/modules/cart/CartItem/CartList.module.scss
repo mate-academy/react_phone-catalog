@@ -11,9 +11,10 @@
 
 .cartList {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
   flex: 1;
+  flex-direction: column;
+  border: $card-border;
+  gap: 16px;
   margin-bottom: 80px;
 }
 
@@ -21,20 +22,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px;
   gap: 24px;
+  padding: 24px;
   background-color: $surface-1;
 }
 
 .deleteButton {
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.2s;
+  cursor: pointer;
+  border: none;
+  padding: 4px;
+  background-color: transparent;
+  transition: opacity 0.3s;
 
   &:hover {
     opacity: 0.7;
@@ -60,12 +61,11 @@
 }
 
 .itemName {
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
-  color: $text-main;
-  margin: 0;
   text-align: center;
+  margin: 0;
+  color: $text-main;
+
+  @include body-font;
 }
 
 .itemQuantity {
@@ -94,29 +94,27 @@
 }
 
 .quantityValue {
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
-  min-width: 24px;
   text-align: center;
+  min-width: 24px;
   color: $text-main;
+
+  @include body-font;
 }
 
 .itemPrice {
-  font-weight: 800;
-  font-size: 22px;
-  line-height: 1.4rem;
   color: $text-main;
+
+  @include h3-font;
 }
 
 .summary {
-  box-sizing: border-box;
-  height: fit-content;
+  position: sticky;
   display: flex;
+  flex: 0.5;
   flex-direction: column;
   align-items: center;
-  flex: 0.5;
-  position: sticky;
+  box-sizing: border-box;
+  height: fit-content;
   top: 20px;
   padding: 24px;
   background-color: $surface-1;
@@ -124,39 +122,35 @@
 }
 
 .summaryPrice {
-  font-weight: 800;
-  font-size: 32px;
-  line-height: 41px;
-  letter-spacing: -0.01rem;
   color: $text-main;
+
+  @include h2-font;
 }
 
 .summaryInfo {
-  width: 100%;
   text-align: center;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
-  border-bottom: 1px solid $elements;
-  color: $text-secondary;
+  width: 100%;
   margin: 0 0 24px;
   padding-bottom: 24px;
+  color: $text-secondary;
+  border-bottom: 1px solid $elements;
+
+  @include body-font;
 }
 
 .checkoutButton {
-  width: 100%;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 21px;
-  padding: 14px;
   border: none;
   cursor: pointer;
+  width: 100%;
+  padding: 14px;
   background-color: $accent;
-  color: $text-main;
+  color: $text-on-accent;
   transition: background-color 0.3s;
 
+  @include buttons;
+
   &:hover {
-    background-color: #a378ff;
+    background-color: $accent-hover;
   }
 }
 
@@ -164,22 +158,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
+  justify-content: center;
+  max-width: 500px;
   min-height: 350px;
+  margin: 40px auto 80px;
   padding: 40px;
   background-color: $surface-1;
   border: 1px solid $surface-2;
-  margin: 40px auto 80px;
-  max-width: 500px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: $shadow;
 }
 
 .errorMessage {
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 32px;
-  color: $text-main;
-  letter-spacing: -0.01rem;
   margin-bottom: 24px;
+  color: $text-main;
+
+  @include h3-font;
 }

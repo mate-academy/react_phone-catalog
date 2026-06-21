@@ -2,6 +2,7 @@
 
 .homePage {
   background-color: $background;
+  transition: background-color 0.3s ease;
 }
 
 .container {
@@ -14,55 +15,55 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
+  justify-content: center;
+  max-width: 500px;
   min-height: 350px;
+  margin: 40px auto 80px;
   padding: 40px;
   background-color: $surface-1;
   border: 1px solid $surface-2;
-  margin: 40px auto 80px;
-  max-width: 500px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: $shadow;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .errorMessage {
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 32px;
-  color: $text-main;
-  letter-spacing: -0.01rem;
   margin-bottom: 24px;
+  color: $text-main;
+
+  @include h3-font;
 }
 
 .restartButton {
   display: flex;
   align-items: center;
   justify-content: center;
-
+  border: none;
+  outline: none;
+  cursor: pointer;
   height: 40px;
   padding: 0 24px;
   background-color: $surface-2;
   color: $text-main;
-
-  border: none;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 21px;
-  cursor: pointer;
-  outline: none;
-
   transition:
+    color 0.3s ease,
     background-color 0.3s ease,
-    border-color 0.3s ease;
+    border-color 0.3s ease,
+    transform 0.2s ease;
+
+  @include buttons;
 
   &:hover {
     background-color: $elements;
-    border: 1px solid $text-icons;
+    border: $text-icons;
   }
 
   &:active {
     background-color: $accent;
+    transform: scale(0.98);
   }
 
   &:focus-visible {

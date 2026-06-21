@@ -4,7 +4,7 @@
   width: 100%;
   background-color: $background;
   border-bottom: 1px solid $surface-2;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease border-color 0.3s ease;
 }
 
 .container {
@@ -53,9 +53,9 @@
   height: 100%;
   text-decoration: none;
   text-transform: uppercase;
-  font-weight: 800;
-  font-size: 12px;
-  letter-spacing: 0.04em;
+
+  @include uppercase;
+
   color: $text-secondary;
   border-bottom: 3px solid transparent;
   transition:
@@ -69,7 +69,7 @@
 
 .link.isActive {
   color: $text-main;
-  border-bottom-color: $text-main;
+  border-bottom-color: $accent;
 }
 
 .icons {
@@ -94,18 +94,18 @@
     background-color 0.3s ease,
     border-color 0.3s ease;
 
-  &:hover {
-    background-color: rgba(117, 118, 127, 0.15);
+  img {
+    filter: $filter;
   }
 
-  &:last-child {
-    border-right: 1px solid $surface-2;
+  &:hover {
+    background-color: $surface-1;
   }
 }
 
 .iconLink.isActive {
-  border-bottom-color: $text-main;
-  background-color: rgba(255, 255, 255, 0.05);
+  border-bottom-color: $accent;
+  background-color: $surface-1;
 }
 
 .searchContainer {
@@ -152,6 +152,7 @@
 .searchContainer::after {
   content: '';
   position: absolute;
+  opacity: 0.5;
   right: 14px;
   top: 50%;
   transform: translateY(-50%);
@@ -161,8 +162,7 @@
   background-repeat: no-repeat;
   background-position: center;
   pointer-events: none;
-  opacity: 0.5;
-  filter: brightness(0) invert(1);
+  filter: $filter;
 }
 
 .addedProdutcs {

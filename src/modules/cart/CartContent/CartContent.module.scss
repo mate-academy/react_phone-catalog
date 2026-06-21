@@ -14,16 +14,15 @@
   justify-content: center;
   align-items: center;
   gap: 4px;
-  margin-top: 40px;
-  border: none;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1em;
   cursor: pointer;
+  border: none;
+  margin-top: 40px;
+  padding: 0;
   background-color: transparent;
   color: $text-main;
-  padding: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.3s ease;
+
+  @include small-text;
 
   &:hover {
     opacity: 0.7;
@@ -33,15 +32,12 @@
 .back {
   margin: 0;
   border: none;
-  filter: brightness(0) invert(1);
+  filter: $filter;
 }
 
 .title {
   margin: 16px 0 32px;
-  font-weight: 800;
-  font-style: bold;
-  font-size: 48px;
-  line-height: 56px;
-  letter-spacing: -0.01rem;
   color: $text-main;
+
+  @include h1-font;
 }

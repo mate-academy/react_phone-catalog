@@ -4,7 +4,9 @@
   padding: 24px 0;
   background-color: $background;
   border-top: 1px solid $surface-2;
-  transition: background-color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s eases;
 }
 
 .container {
@@ -25,7 +27,9 @@
 .logo {
   width: 89px;
   height: 32px;
-  transition: opacity 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    filter 0.3s ease;
 
   &:hover,
   &:focus-visible {
@@ -51,12 +55,10 @@
 .link {
   text-decoration: none;
   text-transform: uppercase;
-  font-weight: 800;
-  font-size: 12px;
-  line-height: 11px;
-  letter-spacing: 0.04em;
   color: $text-main;
   transition: color 0.3s ease;
+
+  @include uppercase;
 }
 
 .backTop {
@@ -69,10 +71,9 @@
 
 .buttonTopText {
   color: $text-secondary;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 100%;
   white-space: nowrap;
+
+  @include small-text;
 }
 
 .iconWrapper {
@@ -82,22 +83,23 @@
   width: 32px;
   height: 32px;
   border-radius: 0;
+  background-color: $surface-2;
   transition: background-color 0.3s ease;
 }
 
 .backTopButton {
   display: flex;
   align-items: center;
-  background-color: $surface-2;
+  background-color: transparent;
+  margin-left: 16px;
   border: none;
   padding: 0;
   cursor: pointer;
   outline: none;
-  margin-left: 16px;
 
   &:hover {
     .iconWrapper {
-      background-color: #424656;
+      background-color: $text-icons;
     }
   }
 
@@ -110,6 +112,7 @@
   width: 16px;
   height: auto;
   display: block;
+  transition: filter 0.3s ease;
 
-  filter: brightness(0) invert(1);
+  filter: $filter;
 }

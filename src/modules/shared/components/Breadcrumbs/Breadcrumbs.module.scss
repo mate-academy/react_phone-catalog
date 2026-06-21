@@ -20,13 +20,14 @@
   &:not(:last-child)::after {
     content: '';
     display: inline-block;
-    width: 16px; // Размеры иконки-стрелочки
+    width: 16px;
     height: 16px;
     margin: 0 8px;
     background-image: url('/img/icons/right.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    transition: filter 0.3s ease;
   }
 }
 
@@ -34,15 +35,15 @@
   display: block;
   width: 16px;
   height: 16px;
+  transition: filter 0.3s ease;
 }
 
 .crumbLink {
   text-decoration: none;
   color: $text-main;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1rem;
   transition: opacity 0.3s ease;
+
+  @include small-text;
 
   &:hover {
     opacity: 0.8;
@@ -55,9 +56,8 @@
 
 .currentCrumb {
   color: $text-secondary;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1rem;
+
+  @include small-text;
 
   &::first-letter {
     text-transform: uppercase;

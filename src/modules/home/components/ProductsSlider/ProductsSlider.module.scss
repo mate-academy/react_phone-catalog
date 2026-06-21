@@ -11,12 +11,10 @@
 }
 
 .title {
-  font-weight: 800;
-  font-size: 32px;
-  line-height: 41px;
-  letter-spacing: -0.01em;
-  color: $text-main;
   margin: 0;
+  color: $text-main;
+
+  @include h2-font;
 }
 
 .arrows {
@@ -31,24 +29,24 @@
   width: 32px;
   height: 32px;
   padding: 0;
-
+  cursor: pointer;
   background-color: $surface-2;
   border: 1px solid $elements;
-
-  cursor: pointer;
   transition: all 0.3s ease-in-out;
 
   img {
-    filter: brightness(0) invert(1);
+    filter: $filter;
+    transition: filter 0.3s ease;
   }
 
   &:hover {
     background-color: $text-icons;
+    border-color: $text-secondary;
   }
 
   &:active {
     transform: scale(0.95);
-    background-color: #15172c;
+    background-color: $text-icons;
   }
 
   &:focus-visible {
@@ -62,6 +60,10 @@
     background-color: $background;
     cursor: not-allowed;
     pointer-events: none;
+
+    img {
+      opacity: 0.4;
+    }
   }
 }
 
