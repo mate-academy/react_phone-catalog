@@ -1,17 +1,12 @@
-import { useEffect, useState } from 'react';
 import { Product } from '../types/Product';
-import { getProducts } from '../api/products';
 import { ProductsSlider } from '../components/ProductsSlider/ProductsSlider';
 import { Banner } from '../components/Banner/Banner';
 import { Categories } from '../components/Categories/Categories';
 import { MainTitle } from '../components/MainTitle/MainTitle';
+import { useOutletContext } from 'react-router-dom';
 
 export const HomePage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    getProducts().then(data => setProducts(data));
-  }, []);
+  const products = useOutletContext<Product[]>();
 
   //#region Sort section
 

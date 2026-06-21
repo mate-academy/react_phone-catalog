@@ -9,7 +9,7 @@ export const ProductCard = ({ product }: Props) => {
   return (
     <article className={styles.card}>
       <img
-        src={product.image}
+        src={`/${product.image}`}
         alt={product.name}
         className={styles.specImage}
       />
@@ -38,7 +38,7 @@ export const ProductCard = ({ product }: Props) => {
         </button>
         <button type="button" className={styles.favButton}>
           <img
-            src="./img/icons/add_favourites_button.png"
+            src="../img/icons/add_favourites_button.png"
             alt="Add to favourites"
           />
         </button>

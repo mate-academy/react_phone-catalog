@@ -21,22 +21,26 @@ export const Menu = ({ isOpen, onClose }: Props) => {
       <nav className={styles.nav}>
         <ul className={styles.list}>
           <li>
-            <Link to="/" className={styles.listLink}>
+            <Link to="/" className={styles.listLink} onClick={onClose}>
               Home
             </Link>
           </li>
           <li>
-            <Link to="/phones" className={styles.listLink}>
+            <Link to="/phones" className={styles.listLink} onClick={onClose}>
               Phones
             </Link>
           </li>
           <li>
-            <Link to="/tablets" className={styles.listLink}>
+            <Link to="/tablets" className={styles.listLink} onClick={onClose}>
               Tablets
             </Link>
           </li>
           <li>
-            <Link to="/accessories" className={styles.listLink}>
+            <Link
+              to="/accessories"
+              className={styles.listLink}
+              onClick={onClose}
+            >
               Accessories
             </Link>
           </li>
@@ -44,10 +48,10 @@ export const Menu = ({ isOpen, onClose }: Props) => {
       </nav>
 
       <div className={styles.buttons}>
-        <Link to="/favourites" className={styles.buttonFav}>
+        <Link to="/favourites" className={styles.buttonFav} onClick={onClose}>
           <img src="./img/icons/favourites_icon.png" alt="Favourites icon" />
         </Link>
-        <Link to="/cart" className={styles.buttonCart}>
+        <Link to="/cart" className={styles.buttonCart} onClick={onClose}>
           <img src="./img/icons/cart_icon.png" alt="Cart icon" />
         </Link>
       </div>

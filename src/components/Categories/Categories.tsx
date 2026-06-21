@@ -14,7 +14,7 @@ export const Categories = ({ title, products }: Props) => {
       image: './img/category-phones.png',
       link: '/phones',
       category: 'phones',
-      bgColor: '#46354C',
+      bgColor: '#D4B596',
       objectPosition: 'center',
     },
     {
@@ -22,7 +22,7 @@ export const Categories = ({ title, products }: Props) => {
       image: './img/category-tablets.png',
       link: '/tablets',
       category: 'tablets',
-      bgColor: '#8E5A32',
+      bgColor: '#8A8686',
       objectPosition: 'center',
     },
     {
