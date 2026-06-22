@@ -104,7 +104,6 @@ export const Pagination: React.FC<IPagination> = ({
       {getPageNumbers().map((page, index) => (
         <button
           key={index}
-          // ToDo: Add classNames here
           className={`pagination__button ${currentPage === page ? 'active' : ''}`}
           onClick={() => typeof page === 'number' && handlePage(page)}
           disabled={typeof page !== 'number'}

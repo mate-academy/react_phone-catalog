@@ -116,7 +116,6 @@
     }
   }
 
-  // First row на телефоне: крестик + фото + название
   &__item-first-row {
     display: none;
 
@@ -150,13 +149,11 @@
       opacity: 0.7;
     }
 
-    // На телефоне крестик скрыт из основного потока — он внутри item-first-row
     @include on-phone {
       display: none;
     }
   }
 
-  // Крестик внутри first-row (только телефон)
   &__item-close--mobile {
     display: none;
 
@@ -217,7 +214,6 @@
     }
   }
 
-  // Обёртка для количества и цены — переносится под картинку на телефоне
   &__item-controls {
     display: flex;
     align-items: center;

@@ -20,8 +20,7 @@ export const Header = () => {
     setIsMenuOpen(prev => !prev);
   };
 
-  // Считаем именно количество товаров (quantity), а не число позиций,
-  // чтобы значение совпадало с "Total for X items" на странице корзины
+
   const totalCartItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (

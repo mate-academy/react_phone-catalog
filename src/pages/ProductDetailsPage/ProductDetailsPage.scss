@@ -605,8 +605,8 @@
     background-color: #161827;
     border: 1px solid #3B3E4A;
     padding: 32px;
-    min-height: 506px;    // ← было height: 506px
-    height: auto;         // ← добавь это
+    min-height: 506px;   
+    height: auto;
     box-sizing: border-box;
     transition: box-shadow 0.3s ease;
 
