@@ -19,14 +19,15 @@ export const Phones: React.FC<Props> = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [perPage, setPerPage] = useState(4);
-  const startIndex = (currentPage - 1) * perPage;
-  const lastIndex = startIndex + perPage;
-
   const sortType = searchParams.get('sort') || 'age';
-  // const page = +(searchParams.get('page') || 1);
-  // const perPageParam = searchParams.get('perPage') || 'all';
+  const page = +(searchParams.get('page') || 1);
+  const perPageParam = searchParams.get('perPage') || 'all';
+
+  const perPage = perPageParam === 'all' ? phones.length : +perPageParam;
+
+  // slice //
+  const startIndex = (page - 1) * perPage;
+  const lastIndex = startIndex + perPage;
 
   function setSearchWith(params: any) {
     const search = getSearchWith(params, searchParams);
@@ -34,8 +35,16 @@ export const Phones: React.FC<Props> = () => {
     setSearchParams(search);
   }
 
-  function handleQueryChange(event: React.ChangeEvent<HTMLSelectElement>) {
-    setSearchWith({ sort: event?.target.value });
+  function handleSortChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    setSearchWith({ sort: event.target.value });
+  }
+
+  function handlePerPageChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    setSearchWith({ perPage: event.target.value });
+  }
+
+  function handlePageChange(newPage: number) {
+    setSearchWith({ page: newPage });
   }
 
   const getSortedPhones = () => {
@@ -54,6 +63,8 @@ export const Phones: React.FC<Props> = () => {
   };
 
   const sortedPhones = getSortedPhones();
+  const totalPages = Math.ceil(sortedPhones.length / perPage);
+  const displayedPhones = sortedPhones.slice(startIndex, lastIndex);
 
   useEffect(() => {
     getData<Products[]>('./api/products.json')
@@ -82,53 +93,53 @@ export const Phones: React.FC<Props> = () => {
         <button className={styles.homeButton}>
           <img src="/img/home.svg" alt="home" className={styles.homeImg} />
           <span className={styles.homeGo}>{'>'}</span>
-
           <span className={styles.homeGoTo}>Phones</span>
         </button>
       </Link>
 
-      <h1 className={styles.title}>Mobile phones</h1>
-
-      <p className={styles.phonesModels}>{phones.length} Models</p>
-
-      <div className={styles.bySortedBlock}>
-        <div className={styles.bySorted}>Sort by</div>
-        <select
-          className={styles.select}
-          value={sortType}
-          onChange={handleQueryChange}
-        >
-          <option value="age">Newest</option>
-          <option value="title">Alphabetically</option>
-          <option value="price">Cheapest</option>
-        </select>
+      <div className={styles.phonesProduct}>
+        <h1 className={styles.title}>Mobile phones</h1>
+        <p className={styles.phonesModels}>{phones.length} Models</p>
       </div>
 
-      <div className={styles.byFilteredBlock}>
-        <div className={styles.byItems}>Items on page</div>
-        <select
-          className={styles.select}
-          value={perPage}
-          onChange={event => {
-            setPerPage(Number(event.target.value));
-            setCurrentPage(1);
-          }}
-        >
-          <option value="4">4</option>
-          <option value="8">8</option>
-          <option value="16">16</option>
-          <option value="all">All</option>
-        </select>
+      <div className={styles.dropdown}>
+        <div className={styles.bySortedDropdown}>
+          <p className={styles.bySorted}>Sort by</p>
+          <select
+            className={styles.selectSort}
+            value={sortType}
+            onChange={handleSortChange}
+          >
+            <option value="age">Newest</option>
+            <option value="title">Alphabetically</option>
+            <option value="price">Cheapest</option>
+          </select>
+        </div>
+
+        <div className={styles.byFiltereDropdown}>
+          <div className={styles.byItems}>Items on page</div>
+          <select
+            className={styles.selectFiltre}
+            value={perPageParam}
+            onChange={handlePerPageChange}
+          >
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="16">16</option>
+            <option value="all">All</option>
+          </select>
+        </div>
       </div>
 
       <div className={styles.catalogGrid}>
-        {sortedPhones.map(phone => (
+        {displayedPhones.map(phone => (
           <div key={phone.itemId} className={styles.gridItem}>
             <ProductCarts product={phone} />
           </div>
         ))}
       </div>
-      {/* <div className={styles.pagination}>
+
+      <div className={styles.pagination}>
         <button
           onClick={() => handlePageChange(page - 1)}
           disabled={page === 1}
@@ -142,7 +153,7 @@ export const Phones: React.FC<Props> = () => {
         >
           <img src="/img/vectorRight.svg" alt="next" />
         </button>
-      </div> */}
+      </div>
     </div>
   );
 };

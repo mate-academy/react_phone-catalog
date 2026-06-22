@@ -1,5 +1,3 @@
-import { useSearchParams } from 'react-router-dom';
-
 type Param = string | number;
 
 export type Params = {
@@ -8,7 +6,7 @@ export type Params = {
 
 export const getSearchWith = (
   params: Params,
-  search?: string | URLSearchParams
+  search?: string | URLSearchParams,
 ) => {
   const newParams = new URLSearchParams(search);
 
@@ -25,4 +23,3 @@ export const getSearchWith = (
 
   return newParams.toString();
 };
-
