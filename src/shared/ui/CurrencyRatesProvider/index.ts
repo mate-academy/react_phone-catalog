@@ -1,0 +1,1 @@
+export { CurrencyRatesProvider } from './CurrencyRatesProvider';

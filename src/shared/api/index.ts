@@ -1,0 +1,1 @@
+export { getCurrencyRates } from './getCurrencyRates';

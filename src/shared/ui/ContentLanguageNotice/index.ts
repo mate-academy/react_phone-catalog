@@ -1,0 +1,1 @@
+export { ContentLanguageNotice } from './ContentLanguageNotice';

@@ -1,0 +1,81 @@
+@import 'tailwindcss';
+
+@theme extend {
+  --color-brand-accent: var(--color-accent-800);
+  --color-brand-surface-1: var(--color-surface-1);
+  --color-brand-surface-2: var(--color-surface-2);
+  --color-brand-elements: var(--color-elements);
+  --color-brand-icons: var(--color-icons);
+  --color-brand-secondary: var(--color-secondary);
+  --color-brand-white: var(--color-white);
+  --color-brand-black: var(--color-design-black-700);
+  --color-brand-green: var(--color-green);
+  --color-brand-red: var(--color-red);
+  --color-brand-accent-600: var(--color-accent-600);
+
+  --font-sans: var(--font-custom), sans-serif;
+}
+
+:root {
+  --color-white: #f1f2f9;
+  --color-design-black-700: #0f1121;
+  --color-accent-800: #905bff;
+  --color-accent-600: #a378ff;
+  --color-secondary: #75767f;
+  --color-icons: #4a4d58;
+  --color-elements: #3b3e4a;
+  --color-surface-1: #161827;
+  --color-surface-2: #323542;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+
+  --color-product-black: #1d1d1f;
+  --color-product-white: #f1f2f9;
+  --color-product-silver: #e3e4e5;
+  --color-product-gold: #f9e5c9;
+  --color-product-spacegray: #54585a;
+  --color-product-spaceblack: #1c1c1e;
+  --color-product-graphite: #41424a;
+  --color-product-midnight: #1c1c2e;
+  --color-product-midnightgreen: #4e5b55;
+  --color-product-sierrablue: #a8c5da;
+  --color-product-blue: #215273;
+  --color-product-green: #27ae60;
+  --color-product-yellow: #ffe066;
+  --color-product-red: #eb5757;
+  --color-product-purple: #905bff;
+  --color-product-pink: #f4a7b9;
+  --color-product-coral: #f4694a;
+  --color-product-rosegold: #f7c5b0;
+  --color-product-starlight: #faf5eb;
+}
+
+.light {
+  --color-white: #0f1121;
+  --color-design-black-700: #ffffff;
+
+  --color-surface-1: #f1f2f9;
+  --color-surface-2: #e4e6f2;
+  --color-elements: #d2d4e3;
+  --color-icons: #75767f;
+  --color-secondary: #4a4d58;
+}
+
+html,
+body {
+  height: 100%;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+body {
+  background: var(--color-brand-black);
+  color: var(--color-brand-white);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+main {
+  overflow: hidden !important;
+}
