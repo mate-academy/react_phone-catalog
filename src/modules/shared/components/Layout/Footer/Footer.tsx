@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useTheme } from '../../../../../contexts/ThemeContext';
 import styles from './Footer.module.scss';
 
@@ -27,24 +26,24 @@ export const Footer = () => {
         <nav className={styles.nav}>
           <ul className={styles.list}>
             <li>
-              <Link
-                to="https://github.com/A1daros"
+              <a
+                href="https://github.com/A1daros"
                 className={styles.link}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Github
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="/" className={styles.link}>
+              <a href="/" className={styles.link}>
                 Contacts
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="/" className={styles.link}>
+              <a href="/" className={styles.link}>
                 Rights
-              </Link>
+              </a>
             </li>
           </ul>
         </nav>
