@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-// import styles from './Categories.module.scss';
 import { asset } from '../../utils/paths';
 import styles from './Categories.module.scss';
 

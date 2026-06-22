@@ -1,26 +1,26 @@
 // not empty
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 /* *{
     color: red;
     border: 1px solid red;
 } */
 a {
-    text-decoration: none;
-    color: inherit;
-    display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
 }
 ul,
 li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 h1,
@@ -29,16 +29,18 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0;
+  margin: 0;
 }
 p {
-    margin: 0;
+  margin: 0;
 }
 
 body {
   margin: 0;
 }
-
+.section {
+  margin-top: 54px;
+}
 .title {
   font-family: 'MontExtra', 'Mont', sans-serif;
   font-weight: 800;
@@ -63,10 +65,10 @@ body {
   margin: 0 auto;
 
   padding: 0 32px;
-
 }
+
 @media (max-width: 1199px) {
-  .container{
+  .container {
     padding: 0 24px;
   }
 }

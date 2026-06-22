@@ -1,10 +1,3 @@
-// import { ProductListItem } from './ProductListItem';
-
-// export type ProductCardItem = ProductListItem & {
-//   screen: string;
-//   capacity: string;
-//   ram: string;
-// };
 export type ProductCardItem = {
   id: string;
   name: string;
@@ -16,4 +9,6 @@ export type ProductCardItem = {
   screen: string;
   capacity: string;
   ram: string;
+
+  year: number;
 };

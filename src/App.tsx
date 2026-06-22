@@ -1,29 +1,36 @@
 import { Route, Routes } from 'react-router-dom';
-import './App.scss';
+import styles from './App.module.scss';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 
-import { PhonesPage } from './pages/PhonesPage/PhonesPage';
+// import { CatalogPage, PhonesPage } from './pages/PhonesPage/CatalogPage';
 import { Footer } from './components/Footer';
 import { CartProvider } from './context/CartContext';
 import { FavoritesProvider } from './context/FavoritesContext';
 import { Header } from './components/Header/Header';
+import { CatalogPage } from './pages/CatalogPage/CatalogPage';
+// import { products } from './api/products';
 
 export const App = () => {
   return (
     <CartProvider>
       <FavoritesProvider>
-        <div className="App">
+        <div className={styles.app}>
           <Header />
           {/* <Navbar /> */}
 
-          <div className="section">
-            <div className="container">
+          <div className={styles.section}>
+            <div className={styles.container}>
               <Routes>
                 <Route path="/" element={<HomePage />} />
 
-                <Route path="/phones" element={<PhonesPage />} />
-                {/*<Route path="/tablets" element={<TabletsPage />} />
+                {/* <Route path="/phones" element={<PhonesPage />} /> */}
+                <Route path="/phones" element={<CatalogPage />} />
+                {/* <Route
+                  path="/phones"
+                  element={<PhonesPage name="Mobile phones" items={products} />}
+                /> */}
+                {/* <Route path="/tablets" element={<TabletsPage />} />
       <Route path="/accessories" element={<AccessoriesPage />} />
 
       <Route path="/product/:productId" element={<ProductDetailsPage />} />

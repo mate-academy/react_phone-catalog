@@ -1,29 +1,14 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
-// import { Navigation } from 'swiper/modules';
 import styles from './ProductSlider.module.scss';
 
 import 'swiper/css';
-// import 'swiper/css/navigation';
 
 import { ProductCard } from '../ProductCard/ProductCard';
 import { useEffect, useRef, useState } from 'react';
 import { asset } from '../../utils/paths';
-// import { UIProduct } from '../../types/ui/uiProduct';
-// import { ProductListItem } from '../../types/ProductListItem';
-import { ProductCardItem } from '../../types/ProductCardItem';
 
-// type Phones = {
-//   id: string;
-//   name: string;
-//   price: number;
-//   discount?: number;
-//   showDiscount?: boolean;
-//   image?: string;
-//   screen: string;
-//   capacity: string;
-//   ram: string;
-// };
+import { ProductCardItem } from '../../types/ProductCardItem';
 
 type Props = {
   name: string;

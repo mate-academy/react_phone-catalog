@@ -7,7 +7,7 @@ import styles from './HomePage.module.scss';
 import { useProducts } from '../../hooks/useProducts';
 
 import { isPhone } from '../../utils/typeGuards';
-import { mapProductToCard } from '../../utils/mapProductToCard ';
+import { mapProductToCard } from '../../utils/mapProductToCard';
 
 export const HomePage = () => {
   const { products } = useProducts();

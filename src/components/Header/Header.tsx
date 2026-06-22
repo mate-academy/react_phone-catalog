@@ -51,31 +51,6 @@ export const Header = () => {
           <HeaderNavigation />
         </div>
 
-        {/* <div className={styles.headerRight}>
-          <NavLink
-            to="/favorites"
-            className={`${styles.icon} ${styles.mobileAction}`}
-          >
-            <span className={styles.iconWrapper}>
-              <img src={asset('img/icons/favourites.svg')} alt="favorites" />
-              <span className={styles.badge}>12</span>
-            </span>
-          </NavLink>
-
-          <NavLink
-            to="/cart"
-            className={`${styles.icon} ${styles.iconShoppingBag}`}
-          >
-            <span className={styles.iconWrapper}>
-              <img
-                src={asset('img/icons/shopping-bag.svg')}
-                alt="shopping-bag"
-              />
-              <span className={styles.badge}>5</span>
-            </span>
-          </NavLink>
-        </div> */}
-
         <div className={styles.headerRight}>
           <HeaderActions favouritesCount={12} cartCount={5} />
         </div>

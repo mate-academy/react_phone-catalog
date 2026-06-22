@@ -22,6 +22,7 @@
   max-width: none;
   width: 100%;
   height: auto;
+  transition: transform 0.3s ease;
 }
 .backgroundImg {
   width: 100%;
@@ -35,19 +36,39 @@
 
   overflow: hidden;
 }
+// .categoryLink:hover .categoryImg {
+//   width: 70%;
+//   transform: scale(1.05);
+
+//   &.phones {
+//     transform: translate(50px, 60px);
+//   }
+// }
 .phones {
-  background-color: #6D6474;
-;
+  background-color: #6d6474;
 }
 
 .tablets {
-  background-color: #8D8D92;
-;
-;
+  background-color: #8d8d92;
 }
 
 .accessories {
-  background-color: #973D5F;
+  background-color: #973d5f;
+}
+
+.categoryLink:hover .phones img {
+  width: 80%;
+  transform: translate(0, 0) scale(1.05);
+}
+
+.categoryLink:hover .tablets img {
+   width: 90%;
+  transform: translate(0, 0) scale(1.05);
+}
+
+.categoryLink:hover .accessories img {
+   width: 80%;
+  transform: translate(0, 0) scale(1.05);
 }
 
 .categoryTitle {

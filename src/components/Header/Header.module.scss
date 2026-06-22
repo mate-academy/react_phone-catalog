@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
 
-  // border-bottom: 1px solid #e2e6e9;
+
   color: #89939a;
   position: relative;
   z-index: 1100;
@@ -29,55 +29,12 @@
     transform: scale(1.2);
   }
 }
-// .link {
-//   text-decoration: none;
-//   color: #89939a;
-//   text-transform: uppercase;
-//   letter-spacing: 0.48px;
-
-//   font-family: 'MontExtra', 'Mont', sans-serif;
-//   font-weight: 800;
-//   font-size: 12px;
-//   line-height: 11px;
-
-//   transition: color 0.3s;
-
-//   &:hover {
-//     color: #313237;
-//   }
-// }
 
 .headerRight {
   display: flex;
   align-items: center;
-  // gap: 20px;
 }
 
-// .icon {
-//   position: relative;
-//   padding: 24px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   padding: 24px;
-//   transition: transform 0.3s;
-//   border-left: 1px solid #e2e6e9;
-
-//   img {
-//     transition: transform 0.3s;
-//   }
-//   &:hover img {
-//     transform: scale(1.2);
-//   }
-// }
-
-// .active {
-//   color: #313237;
-
-//   &::after {
-//     background-color: #313237;
-//   }
-// }
 
 .burgerButton {
   display: none;
@@ -106,36 +63,6 @@
 
   z-index: 1000;
 }
-
-// .mobileNav {
-//   flex: 1;
-// }
-
-// .mobileNavList {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-
-//   gap: 32px;
-
-//   padding-top: 24px;
-
-//   list-style: none;
-// }
-
-// .mobileActions {
-//   display: flex;
-
-//   border-top: 1px solid #e2e6e9;
-// }
-
-// .mobileAction {
-//   display: flex;
-//   flex: 1;
-
-//   justify-content: center;
-//   align-items: center;
-// }
 .iconWrapper {
   position: relative;
   display: inline-flex;
@@ -172,9 +99,7 @@
   .headerLeft {
     gap: 16px;
   }
-  // .nav__list {
-  //   gap: 32px;
-  // }
+
   .logo {
     padding: 13px 16px;
   }
@@ -194,9 +119,6 @@
   .logoImg {
     height: 22px;
   }
-  // .nav {
-  //   display: none;
-  // }
 
   .headerRight {
     display: none;
@@ -211,12 +133,5 @@
   .badge {
     transform: translate(50%, -50%);
   }
-
-  //   .mobileNavList {
-  //   gap: 16px;
-  // }
-  // .nav__link {
-  //   height: 27px;
-  // }
 
 }

@@ -12,5 +12,6 @@ export const mapProductToCard = (product: Product): ProductCardItem => {
     screen: product.screen ?? '',
     capacity: product.capacity ?? '',
     ram: product.ram ?? '',
+    year: product.year,
   };
 };
