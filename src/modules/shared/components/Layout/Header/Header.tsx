@@ -1,31 +1,31 @@
 import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
-import { useCart } from '../../../../../contexts/CartContext';
-import { useFavorite } from '../../../../../contexts/FavoritesContext';
 import styles from './Header.module.scss';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useDebounce } from '../../../hooks/useDebounce';
-import { ThemeToggler } from '../../UI/ThemeToggler/ThemeToggler';
 import { useTheme } from '../../../../../contexts/ThemeContext';
+import { Icons } from '../../UI/Icons';
+import { ThemeToggler } from '../../UI/ThemeToggler/ThemeToggler';
 
 export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     `${styles.link} ${isActive ? styles.isActive : ''} `;
-
-  const getIconClass = ({ isActive }: { isActive: boolean }) =>
-    `${styles.iconLink} ${isActive ? styles.isActive : ''}`;
 
   const logoDark = '/img/icons/logo.svg';
   const logoLight = '/img/icons/logo-light.svg';
   const { theme } = useTheme();
 
-  const { totalFavoriteItems } = useFavorite();
-  const { totalItems } = useCart();
   const location = useLocation();
 
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
   const [inputValue, setInputValue] = useState(query);
   const debouncedQuery = useDebounce(inputValue, 300);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     setInputValue(query);
@@ -63,7 +63,7 @@ export const Header = () => {
           </Link>
         </div>
 
-        <nav className={styles.nav}>
+        <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>
           <ul className={styles.list}>
             <li>
               <NavLink to="/" className={getLinkClass}>
@@ -100,41 +100,25 @@ export const Header = () => {
           </div>
         )}
 
-        <div className={styles.icons}>
-          <div>
+        <div
+          className={`${styles.navActions} ${isMenuOpen ? styles.navOpen : ''}`}
+        >
+          <div className={styles.togglerWrapper}>
             <ThemeToggler />
           </div>
 
-          <div>
-            <NavLink
-              className={getIconClass}
-              to="/favorites"
-              aria-label="Favorites"
-            >
-              <img src="/img/icons/favorites.svg" alt="Favorites" />
-
-              {totalFavoriteItems > 0 && (
-                <span className={styles.addedProdutcs}>
-                  {totalFavoriteItems}
-                </span>
-              )}
-            </NavLink>
-          </div>
-
-          <div>
-            <NavLink
-              className={getIconClass}
-              to="/cart"
-              aria-label="Shopping bag"
-            >
-              <img src="/img/icons/shopping-bag.svg" alt="Shopping bag" />
-
-              {totalItems > 0 && (
-                <span className={styles.addedProdutcs}>{totalItems}</span>
-              )}
-            </NavLink>
+          <div className={styles.icons}>
+            <Icons />
           </div>
         </div>
+
+        <button
+          className={`${styles.burger} ${isMenuOpen ? styles.burgerActive : ''}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+        </button>
       </div>
     </header>
   );

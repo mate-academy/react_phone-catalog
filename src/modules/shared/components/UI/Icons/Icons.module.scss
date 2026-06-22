@@ -1,0 +1,87 @@
+@import '../../../../../styles/variables';
+
+.iconsContainer {
+  display: flex;
+  height: 100%;
+  gap: 16px;
+
+  @media (min-width: 768px) {
+    gap: 0;
+  }
+}
+
+.iconLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  border: 1px solid $surface-2;
+
+  @media (min-width: 768px) {
+    width: 48px;
+    height: 100%;
+    border: none;
+    border-left: 1px solid $surface-2;
+    border-radius: 0;
+
+    &:last-child {
+      border-right: 1px solid $surface-2;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    width: 64px;
+  }
+
+  img {
+    filter: $filter;
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    background-color: $surface-2;
+  }
+}
+
+.iconLink.isActive {
+  border-bottom-color: $accent;
+  background-color: $surface-1;
+}
+
+.addedProdutcs {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  border-radius: 50%;
+  background-color: $red;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+
+  @media (min-width: 768px) {
+    top: 6px;
+    right: 6px;
+  }
+
+  @media (min-width: 1024px) {
+    top: 14px;
+    right: 14px;
+    font-size: 10px;
+  }
+}
