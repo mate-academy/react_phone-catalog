@@ -1,0 +1,259 @@
+@use '../../styles/utils/variables' as *;
+
+.cartBlock {
+  margin-top: 24px;
+  padding: 0 16px;
+  margin-bottom: 56px;
+
+  @media (min-width: $tablet) {
+    padding: 0 24px;
+    margin-bottom: 64px;
+    margin-top: 40px;
+  }
+
+  @media (min-width: $desktop) {
+    padding: 0 32px;
+    margin-bottom: 80px;
+  }
+}
+
+.title {
+  margin-top: 24px;
+  color: #f1f2f9;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  @media (min-width: $tablet) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.cartContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+
+  @media (min-width: 1200px) {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: transparent;
+  border: none;
+  color: #f1f2f9;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: capitalize;
+  line-height: 100%;
+  cursor: pointer;
+}
+
+.totalBlock {
+  border: 1px solid #3b3e4a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  width: 100%;
+
+  @media (min-width: 1200px) {
+    width: 320px;
+    flex-shrink: 0;
+  }
+  .totalInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .totalPrice {
+    margin: 0;
+    margin-bottom: 4px;
+    font-weight: 800;
+    color: #f1f2f9;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+  .totalItems {
+    color: #75767f;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    margin: 0;
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+    background-color: #3b3e4a;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+}
+
+.checkoutButton {
+  background-color: #905bff;
+  width: 250px;
+  height: 48px;
+  color: #f1f2f9;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #a378ff;
+  }
+}
+
+.gridItems {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+
+  @media (min-width: 1200px) {
+    flex-grow: 1;
+  }
+}
+
+.cartItem {
+  background-color: #161827;
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (min-width: $tablet) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .itemTop {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @media (min-width: $tablet) {
+      flex-grow: 1;
+    }
+  }
+
+  .removeButton {
+    background: none;
+    border: none;
+    color: #4a4d58;
+    font-size: 16px;
+    cursor: pointer;
+    &:hover {
+      color: #f1f2f9;
+    }
+  }
+
+  .itemImageWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    .itemImage {
+      object-fit: contain;
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  .itemName {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #f1f2f9;
+  }
+
+  .itemBottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (min-width: $tablet) {
+      gap: 48px;
+    }
+
+    .quantityControls {
+      display: flex;
+      align-items: center;
+    }
+
+    .qtyButton {
+      background: transparent;
+      border: none;
+      color: #f1f2f9;
+      width: 32px;
+      height: 32px;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 14px;
+        height: 14px;
+        object-fit: contain;
+        display: block;
+      }
+
+      &:first-child {
+        background-color: transparent;
+        border: 1px solid #3b3e4a;
+      }
+
+      &:last-child {
+        background-color: #3b3e4a;
+        border: 1px solid #3b3e4a;
+      }
+
+      &:disabled {
+        color: #3b3e4a;
+        cursor: default;
+        img {
+          opacity: 0.3;
+        }
+      }
+    }
+
+    .qtyValue {
+      color: #f1f2f9;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+
+  .itemPrice {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    color: #f1f2f9;
+    margin: 0;
+  }
+}

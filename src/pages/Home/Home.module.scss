@@ -1,0 +1,61 @@
+@use '../../styles//utils/variables' as *;
+
+.container {
+  padding: 0 16px;
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
+
+  @media (min-width: $tablet) {
+    padding: 0 24px;
+  }
+
+  @media (min-width: $desktop) {
+    padding: 0 32px;
+  }
+
+  @media (min-width: 1201px) {
+    padding: 0 152px;
+  }
+}
+
+.title {
+  padding-top: 24px;
+
+  @media (min-width: $tablet) {
+    padding-top: 32px;
+  }
+
+  @media (min-width: $desktop) {
+    padding-top: 56px;
+  }
+}
+
+.h1_title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  font-weight: Bold;
+
+  @media (min-width: $tablet) {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -1%;
+    font-weight: 800;
+    color: #f1f2f9;
+  }
+}
+
+// .section {
+//   display: flex;
+//   flex-direction: column;
+// }

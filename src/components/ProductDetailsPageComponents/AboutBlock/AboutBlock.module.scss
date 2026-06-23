@@ -1,0 +1,26 @@
+@use '../../../styles/utils/variables' as *;
+
+.aboutTitle {
+  color: #f1f2f9;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  border-bottom: 1px solid #3b3e4a;
+  padding-bottom: 16px;
+}
+
+.subTitle {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 100%;
+  color: #f1f2f9;
+  margin-top: 32px;
+}
+
+.descriptionText {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+  margin-bottom: 32px;
+}

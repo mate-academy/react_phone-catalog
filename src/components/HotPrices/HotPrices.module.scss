@@ -1,0 +1,121 @@
+@use '../../styles/utils/variables' as *;
+
+.h3_title {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0%;
+
+  @media (min-width: $tablet) {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+}
+
+.title {
+  padding-top: 24px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 56px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// .gridContainer {
+//   display: flex;
+//   grid-template-columns: repeat(2, 1fr);
+//   gap: 16px;
+//   margin-bottom: 64px;
+// }
+.gridContainer {
+  display: flex;
+  gap: 16px;
+
+  // каждый прямой дочерний элемент (карточка)
+  & > * {
+    flex-shrink: 0;
+    width: 212px;
+
+    @media (min-width: $tablet) {
+      width: 237px;
+    }
+
+    @media (min-width: $desktop) {
+      width: 272px;
+    }
+  }
+}
+
+.gridWrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+// .gridContainer {
+//   display: flex;
+//   gap: 16px;
+// }
+.arrows {
+  gap: 16px;
+  display: flex;
+}
+
+.arrow {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  img {
+    width: 16px;
+    height: 16px;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+  }
+
+  &:disabled {
+    background-color: transparent;
+    border: 1px solid #4e5261;
+    cursor: default;
+  }
+
+  &:not(:disabled) {
+    background-color: #323542;
+    border: 1px solid #323542;
+
+    img {
+      opacity: 1;
+      filter: brightness(0) invert(1);
+    }
+
+    &:hover {
+      background-color: #4e5261;
+    }
+  }
+}
+
+.slideCard {
+  flex-shrink: 0;
+  width: 212px;
+  margin-bottom: 64px;
+
+  @media (min-width: $tablet) {
+    width: 237px;
+  }
+
+  @media (min-width: $desktop) {
+    width: 272px;
+    margin-bottom: 80px;
+  }
+}

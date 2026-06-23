@@ -1,0 +1,116 @@
+@use '../../styles/utils/variables' as *;
+
+.slide {
+  min-width: 100%;
+  flex-shrink: 0;
+  height: 100%;
+
+  picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    // object-fit: cover;
+    display: block;
+  }
+}
+
+.slider {
+  min-width: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.screen {
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+
+  @media (min-width: $tablet) {
+    aspect-ratio: unset;
+    height: 189px;
+  }
+
+  @media (min-width: $desktop) {
+    aspect-ratio: unset;
+    height: 400px;
+  }
+}
+
+.photos {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  border: none;
+  background-color: #3b3e4a;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s;
+}
+
+.activeDot {
+  background-color: #fff;
+}
+
+.sliderWrapper {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: $tablet) {
+    flex-direction: row;
+    align-items: center;
+    gap: 19px;
+    padding: 0 24px;
+  }
+
+  @media (min-width: $desktop) {
+    padding: 0 152px;
+  }
+}
+
+.arrowLeft,
+.arrowRight {
+  display: none;
+  flex-shrink: 0;
+  width: 32px;
+
+  // height: 32px;
+  background: #323542;
+  border: none;
+  cursor: pointer;
+  font-size: 32px;
+  color: #f1f2f9;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+
+  @media (min-width: $tablet) {
+    display: flex;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

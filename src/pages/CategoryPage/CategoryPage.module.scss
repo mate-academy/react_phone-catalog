@@ -1,0 +1,175 @@
+@use '../../styles/utils/variables.scss' as *;
+
+.pageContainer {
+  padding: 0 16px;
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
+  padding-bottom: 64px;
+  margin: 0 auto;
+
+  @media (min-width: $tablet) {
+    padding: 0 24px;
+  }
+
+  @media (min-width: $desktop) {
+    padding: 0 300px;
+  }
+}
+
+.headerBlock {
+  .title {
+    color: #f1f2f9;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+  .modelsCount {
+    color: #75767f;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+  }
+}
+
+.label {
+  color: #75767f;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.separator {
+  width: 16px;
+  height: 16px;
+}
+
+.homeIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.breadCrumbs {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.currentCategory {
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #75767f;
+}
+
+.select {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0%;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #323542;
+  color: #f1f2f9;
+  padding: 10px 71px 9px 12px;
+  border: 1px solid #323542;
+
+  background-image: url('/img/icons/arrowDown.png');
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: right 12px center;
+}
+
+.filtersRow {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  margin-top: 32px;
+
+  @media (min-width: $tablet) {
+    width: 176px;
+  }
+}
+
+.filterBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  // margin-bottom: 64px;
+  margin-top: 24px;
+
+  @media (min-width: $tablet) {
+    margin-top: 40px;
+    margin-bottom: 64px;
+  }
+
+  @media (min-width: $desktop) {
+    margin-top: 40px;
+    margin-bottom: 80px;
+  }
+}
+
+.pageButton {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #161827;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: #f1f2f9;
+
+  &:hover {
+    background-color: #3b3e4a;
+  }
+}
+
+.active {
+  background-color: #905bff;
+
+  &:hover {
+    cursor: default;
+  }
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 64px 0;
+
+  .reloadButton {
+    padding: 12px 24px;
+    background-color: #313237;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+
+    &:hover {
+      background-color: #8941ff;
+    }
+  }
+}
