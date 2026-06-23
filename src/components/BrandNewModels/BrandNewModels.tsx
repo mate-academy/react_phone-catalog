@@ -1,0 +1,151 @@
+/* eslint-disable max-len */
+import { useRef } from 'react';
+import { Product } from '../../types/Product';
+import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react';
+import React from 'react';
+import { useFavourites } from '../../store/FavouritesContext';
+import { Card, Image, Button } from '@heroui/react';
+import { Link } from 'react-router-dom';
+import { HeartIcon } from '@phosphor-icons/react';
+import { useCart } from '../../store/CartContext';
+import { getImage } from '../../store/getImage';
+
+type Props = {
+  products: Product[];
+};
+
+export const BrandNewModelsSlider: React.FC<Props> = ({ products }) => {
+  const listRef = useRef<HTMLDivElement>(null);
+  const { isFavourite, toggleFavourite } = useFavourites();
+  const { addToCart, cartItems } = useCart();
+
+  const sorted = [...products].sort((a, b) => b.year - a.year);
+
+  const scroll = (direction: 'left' | 'right') => {
+    const container = listRef.current;
+
+    if (!container) {
+      return;
+    }
+
+    const cardWidth = container.firstElementChild?.clientWidth ?? 320;
+
+    container.scrollBy({
+      left: direction === 'right' ? cardWidth : -cardWidth,
+      behavior: 'smooth',
+    });
+  };
+
+  return (
+    <div className="flex flex-col gap-6">
+      <div className="flex justify-between">
+        <h2 className="font-extrabold text-[22px] sm:text-[32px] text-[#0F0F11]">Brand new models</h2>
+
+        {/* Controls */}
+        <div className="flex gap-2">
+          <Button
+            isIconOnly
+            variant="bordered"
+            radius="full"
+            className="border-gray-300 w-8 h-8 min-w-8 min-h-8 p-0 
+            flex items-center justify-center"
+            onPress={() => scroll('left')}
+          >
+            <CaretLeftIcon size={12} color="#030303" />
+          </Button>
+          <Button
+            isIconOnly
+            variant="bordered"
+            radius="full"
+            className="border-gray-300 w-8 h-8 min-w-8 min-h-8 p-0 
+            flex items-center justify-center"
+            onPress={() => scroll('right')}
+          >
+            <CaretRightIcon size={12} color="#030303" />
+          </Button>
+        </div>
+      </div>
+
+      {/* Slider container */}
+      <div ref={listRef} className="flex gap-6 overflow-x-auto overflow-y-visible scroll-smooth hideScrollBar pb-4">
+        {sorted.map(product => {
+          const fav = isFavourite(product.itemId);
+          const inCartProductCounts = cartItems[product.itemId];
+
+          return (
+            <Card
+              as="div"
+              isPressable={false}
+              key={product.id}
+              shadow="sm"
+              className="min-h-110 sm:min-h-126 min-w-53 sm:min-w-[237px] lg:min-w-68 
+              border-gray-600 rounded-small p-7 shadow-md hover:shadow-lg transition text-[#0F0F11]"
+            >
+              <div className="flex justify-center mb-6">
+                <Link to={`/${product.category}/${product.itemId}`} className="block">
+                  <Image
+                    as="img"
+                    shadow="none"
+                    radius="lg"
+                    width="100%"
+                    alt={product.name}
+                    className="w-full object-contain h-32 sm:h-49"
+                    src={getImage(product.image)}
+                  />
+                </Link>
+              </div>
+
+              <Link to={`/${product.category}/${product.itemId}`}>
+                <h3 className="text-sm mb-3">{product.name}</h3>
+              </Link>
+
+              <div
+                className="flex items-center gap-3 pb-2 mb-4 text-[22px] 
+                border-b-1 border-gray-200"
+              >
+                <span className="font-bold">${product.price}</span>
+              </div>
+
+              {/* Specs */}
+              <div className="flex flex-col gap-2 text-xs font-semibold mb-3">
+                <div className="flex justify-between w-full">
+                  <span className="text-[#89939A]">Screen</span>
+                  <span>{product.screen}</span>
+                </div>
+                <div className="flex justify-between w-full">
+                  <span className="text-[#89939A]">Capacity</span>
+                  <span>{product.capacity}</span>
+                </div>
+                <div className="flex justify-between w-full">
+                  <span className="text-[#89939A]">RAM</span>
+                  <span>{product.ram}</span>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between w-full gap-2">
+                {inCartProductCounts ? (
+                  <Button variant="bordered" radius="full" disabled className="h-10 w-44 sm:w-[118px] flex-1 bg-white text-[#4219d0]">
+                    Added to cart
+                  </Button>
+                ) : (
+                  <Button
+                    variant="bordered"
+                    radius="full"
+                    className="w-44 sm:w-[118px] flex-1 bg-[#4219d0] text-white"
+                    onPress={() => addToCart(product.itemId)}
+                  >
+                    Add to Card
+                  </Button>
+                )}
+
+                <Button isIconOnly variant="bordered" radius="full" className="border-gray-300" onPress={() => toggleFavourite(product.itemId)}>
+                  {fav ? <HeartIcon size={16} color="#f4ba47" weight="fill" /> : <HeartIcon size={16} weight="bold" />}
+                </Button>
+              </div>
+            </Card>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
