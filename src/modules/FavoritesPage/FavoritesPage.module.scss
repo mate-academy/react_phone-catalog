@@ -1,0 +1,24 @@
+.page {
+  display: grid;
+  gap: 28px;
+  width: min(100%, var(--container-width));
+  margin: 0 auto;
+}
+
+.hero {
+  display: grid;
+  gap: 8px;
+}
+
+.title,
+.subtitle {
+  margin: 0;
+}
+
+.title {
+  font-size: clamp(34px, 4vw, 52px);
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+}

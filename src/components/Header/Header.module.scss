@@ -1,0 +1,124 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-header-bg);
+  backdrop-filter: blur(18px);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: min(100%, var(--container-width));
+  min-height: var(--header-height);
+  margin: 0 auto;
+  padding: 16px 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.navLink {
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.navLink:hover,
+.navLinkActive {
+  background-color: var(--color-surface-strong);
+  color: var(--color-text);
+  box-shadow: 0 16px 30px -24px var(--color-shadow);
+}
+
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(100%, 600px);
+}
+
+.iconLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background-color: var(--color-surface-strong);
+  box-shadow: 0 16px 30px -24px var(--color-shadow);
+}
+
+.iconLink:hover,
+.iconLinkActive {
+  transform: translateY(-1px);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 22px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background-color: var(--color-accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (max-width: 1023px) {
+  .inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .brand {
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .tools {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .inner {
+    padding-inline: 16px;
+  }
+
+  .brand {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tools {
+    flex-wrap: wrap;
+  }
+
+  .nav {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+}
