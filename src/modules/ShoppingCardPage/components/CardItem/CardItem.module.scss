@@ -1,0 +1,122 @@
+@import '/src/styles/main';
+
+.item {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+
+  padding: 16px;
+  background: var(--surface1-color);
+
+  @include onTablet {
+    flex-direction: row;
+    column-gap: 24px;
+    justify-content: space-between;
+  }
+}
+
+.itemPart1 {
+  display: flex;
+  column-gap: 16px;
+  align-items: center;
+
+  @include onTablet {
+    column-gap: 24px;
+  }
+}
+
+.itemBtnRemove {
+  cursor: pointer;
+}
+
+.itemIconRemove {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: url('/src/img/icons/close-dark.svg') center / cover no-repeat;
+}
+
+.itemLink {
+  display: flex;
+  column-gap: 16px;
+  align-items: center;
+}
+
+.imgWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.itemImg {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+}
+
+.itemPart2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include onTablet {
+    column-gap: 53px;
+  }
+}
+
+.itemCounter {
+  display: flex;
+}
+
+.itemCounterBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid transparent;
+  background: var(--surface2-color);
+
+  &:disabled {
+    background: var(--surface1-color);
+    border-color: var(--elements-color);
+    cursor: not-allowed;
+  }
+}
+
+.itemCounterIcon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: center / cover no-repeat;
+}
+
+.itemCounterIconMinus {
+  background-image: url('/src/img/icons/minus.svg');
+}
+
+.itemCounterBtn:disabled .itemCounterIconMinus {
+  background-image: url('/src/img/icons/minus-dark.svg');
+}
+
+.itemCounterValue {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+}
+
+.itemCounterIconPlus {
+  background-image: url('/src/img/icons/plus.svg');
+}
+
+.itemPrice {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1.4;
+  letter-spacing: 0;
+}

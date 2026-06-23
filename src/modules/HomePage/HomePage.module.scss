@@ -1,0 +1,44 @@
+@import '/src/styles/main.scss';
+
+.visuallyHidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+}
+
+.homeContent {
+  padding-block: 24px 64px;
+
+  @include onTablet {
+    padding-top: 32px;
+  }
+
+  @include onDesktop {
+    padding-block: 56px 80px;
+  }
+}
+
+.homeTitle {
+  margin-bottom: 24px;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+.homeBody {
+  display: flex;
+  flex-direction: column;
+  row-gap: 56px;
+}
+
+
+
+
+

@@ -1,0 +1,53 @@
+@import '/src/styles/main.scss';
+
+.PhotosGallery {
+  @include onTablet {
+    display: flex;
+  }
+}
+
+.mainSwiper {
+  margin-bottom: 16px;
+
+  @include onTablet {
+    order: 2;
+    margin: 0;
+  }
+}
+
+.mainImage {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  cursor: grab;
+}
+
+.thumbs {
+  display: flex;
+
+  @include onTablet {
+    margin-right: 16px;
+    order: 1;
+    flex: 0 0 10%;
+    height: 100%;
+  }
+
+  @include onDesktop {
+    flex-basis: 14%;
+  }
+}
+
+.thumbSlide {
+  border: 1px solid var(--elements-color);
+  flex: 1 1 15%;
+}
+
+.thumbImage {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+:global(.swiper-slide-thumb-active).thumbSlide {
+  border-color: var(--text-color);
+}

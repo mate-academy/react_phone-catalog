@@ -1,0 +1,63 @@
+@import '/src/styles/main.scss';
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(22, 24, 39, 0.7);
+  z-index: 101;
+  animation: fadeIn $transition-duration ease-out;
+}
+
+.modalBody {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  padding: 40px;
+  border: 1px solid var(--text-color);
+  background: var(--accent-color);
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+  animation: scaleIn $transition-duration ease-out;
+}
+
+.modalBtns {
+  display: flex;
+  column-gap: 15px;
+}
+
+.modalBtn {
+  width: 60px;
+  height: 50px;
+  background: var(--elements-color);
+  border-radius: 10px;
+  @include onHover {
+    background: var(--secondary-color);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,275 @@
+@import '/src/styles/main.scss';
+
+.pageBody {
+  position: relative;
+  padding-block: 24px 56px;
+
+  @include onTablet {
+    @include grid;
+    padding-bottom: 64px;
+  }
+}
+
+/* Skeleton shared style */
+.skeleton {
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Breadcrumbs, backButton, title */
+.breadcrumbs,
+.backButton,
+.titleSkeleton,
+.aboutTitle,
+.specsTitle,
+.sliderTitle {
+  @extend .skeleton;
+}
+
+/* Sizes for top skeleton blocks */
+.breadcrumbs {
+  height: 20px;
+  width: 150px;
+  margin-bottom: 24px;
+
+  @include onTablet {
+    grid-column: 1 / -1;
+    margin-bottom: 40px;
+  }
+}
+
+.backButton {
+  height: 40px;
+  width: 80px;
+  margin-bottom: 16px;
+
+  @include onTablet {
+    grid-column: 1 / -1;
+  }
+}
+
+.titleSkeleton {
+  height: 40px;
+  width: 300px;
+  margin-bottom: 32px;
+
+  @include onTablet {
+    grid-column: 1 / -1;
+    margin-bottom: 40px;
+  }
+}
+
+/* Main content container flex for desktop */
+.mainContent {
+  @include onTablet {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    gap: 32px;
+  }
+}
+
+/* Big image slider placeholder */
+.imagesSliderSkeleton {
+  @extend .skeleton;
+  height: 350px;
+  width: 100%;
+  margin-bottom: 40px;
+
+  @include onTablet {
+    grid-column: span 7;
+    height: 450px;
+  }
+
+  @include onDesktop {
+    grid-column: span 12;
+  }
+}
+
+/* Main controls container */
+.mainControls {
+  @include onTablet {
+    grid-column: span 5;
+  }
+
+  @include onDesktop {
+    grid-column: 14 / 21;
+  }
+}
+
+/* Options wrapper */
+.optionsWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  margin-bottom: 32px;
+}
+
+/* Option block */
+.optionsBlock {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+/* Option label skeleton */
+.labelSkeleton {
+  @extend .skeleton;
+  height: 18px;
+  width: 120px;
+  border-radius: 4px;
+}
+
+/* Options list placeholder */
+.optionsListSkeleton {
+  @extend .skeleton;
+  height: 36px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Price placeholder */
+.priceSkeleton {
+  @extend .skeleton;
+  height: 48px;
+  width: 150px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+}
+
+/* Buttons placeholder */
+.buttonsSkeleton {
+  display: flex;
+  column-gap: 12px;
+  margin-bottom: 32px;
+}
+
+.buttonSkeleton {
+  @extend .skeleton;
+  flex: 1;
+  height: 48px;
+  border-radius: 8px;
+}
+
+/* Specs placeholder */
+.specs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.specsItemSkeleton {
+  @extend .skeleton;
+  height: 18px;
+  width: 100%;
+  border-radius: 6px;
+}
+
+/* About section skeleton */
+.about {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+  margin-bottom: 56px;
+
+  @include onTablet {
+    grid-column: 1 / -1;
+    margin-bottom: 64px;
+  }
+
+  @include onDesktop {
+    grid-column: span 12;
+  }
+}
+
+.aboutTitle {
+  height: 28px;
+  width: 160px;
+  margin-bottom: 0;
+  border-radius: 6px;
+}
+
+.aboutItemTitle {
+  @extend .skeleton;
+  height: 20px;
+  width: 180px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.aboutItemText {
+  @extend .skeleton;
+  height: 60px;
+  width: 100%;
+  border-radius: 6px;
+  color: transparent;
+}
+
+/* Tech specs skeleton */
+.techSpecs {
+  margin-bottom: 56px;
+
+  @include onTablet {
+    grid-column: 1 / -1;
+    margin-bottom: 64px;
+  }
+
+  @include onDesktop {
+    grid-column: 14 / -1;
+  }
+}
+
+.specsTitle {
+  height: 28px;
+  width: 160px;
+  border-radius: 6px;
+  margin-bottom: 30px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--elements-color);
+}
+
+.specsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.specsItemSkeleton {
+  @extend .skeleton;
+  height: 18px;
+  border-radius: 6px;
+}
+
+/* Suggested products slider */
+.suggestedProducts {
+  @include onTablet {
+    grid-column: 1 / -1;
+  }
+}
+
+.sliderTitle {
+  @extend .skeleton;
+  height: 28px;
+  width: 180px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}
+
+.slider {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}

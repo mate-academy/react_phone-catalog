@@ -1,0 +1,48 @@
+@import '/src/styles/main';
+
+.list {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.iconHome {
+  background: url('/src/img/icons/home-dark-theme.svg') center / cover no-repeat;
+}
+
+.iconHomeLight {
+  background: url('/src/img/icons/home-light-theme.svg') center / cover
+    no-repeat;
+}
+
+.iconArrow {
+  background: url('/src/img/icons/arrow-right-dark.svg') center / cover
+    no-repeat;
+}
+
+.item {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+}
+
+.itemLabel {
+  flex: 1 1 0; // allow item to grow and shrink
+  min-width: 0; // allow flex children to shrink below content size
+}
+
+.label {
+  display: block;
+  width: 100%; // take full width of .item
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--secondary-color);
+}

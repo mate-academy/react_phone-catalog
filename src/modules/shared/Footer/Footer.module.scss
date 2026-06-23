@@ -1,0 +1,79 @@
+@import '/src/styles/main.scss';
+
+.content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+  padding-block: 32px;
+
+  @include onTablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: 0;
+  }
+}
+
+.logoImg {
+  width: 89px;
+  height: 32px;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+
+  @include onTablet {
+    flex-direction: row;
+    gap: 0 14px;
+  }
+
+  @include onDesktop {
+    gap: 0 106px;
+  }
+}
+
+.navLink {
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  @include onHover {
+    color: var(--secondary-color);
+  }
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 16px;
+}
+
+.btnText {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: var(--secondary-color);
+
+  @include onHover {
+    color: var(--text-color);
+  }
+}
+
+.btnIcon {
+  padding: 8px;
+  background-color: var(--surface2-color);
+
+  @include onHover {
+    background-color: var(--icon-placeholder-color);
+  }
+}
+
+.btnImg {
+  width: 16px;
+  height: 16px;
+}
