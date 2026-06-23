@@ -188,18 +188,12 @@
 
 .searchContainer {
   position: relative;
+  flex: 1;
+  margin: 0 16px;
 
   @media (min-width: 768px) {
-    order: 0;
-    width: auto;
-    flex: 1;
-    max-width: 250px;
-    margin: 0 16px;
-  }
-
-  @media (min-width: 1024px) {
-    max-width: 350px;
-    margin: 0 32px;
+    margin: 0;
+    margin-right: 16px;
   }
 }
 

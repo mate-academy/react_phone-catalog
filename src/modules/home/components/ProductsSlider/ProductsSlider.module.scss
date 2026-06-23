@@ -95,7 +95,7 @@
   flex-shrink: 0;
   width: calc(100% / 1);
 
-  @media (min-width: 786px) {
+  @media (min-width: 768px) {
     width: calc((100% - 24px) / 2);
   }
 
