@@ -1,0 +1,120 @@
+.cart-item {
+  box-sizing: border-box;
+  border: 1px solid #E2E6E9;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+
+  background-color: var(--card-bg);
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  @include on-desktop {
+    width: 752px;
+  }
+
+  &__top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__remove {
+    width: 16px;
+    height: 16px;
+    border: none;
+    background-color: var(--card-bg);
+    cursor: pointer;
+    background-image: url(/icons/remove.svg);
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: center;
+  }
+
+  &__image {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+
+    &-container {
+      width: 80px;
+      height: 80px;
+
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__name {
+    margin: 0;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+  }
+
+  &__bottom {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      justify-content: flex-end;
+      gap: 53px;
+    }
+  }
+
+  &__quantity-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__quantity {
+    margin: 0;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #B4BDC3;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--disabled {
+      border-color: #E2E6E9;
+      opacity: 0.5;
+      cursor: default;
+    }
+  }
+
+  &__price {
+    margin: 0;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0;
+  }
+}

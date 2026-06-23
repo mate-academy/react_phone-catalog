@@ -1,0 +1,100 @@
+.footer {
+  margin-top: 64px;
+  padding-block: 32px;
+  border-top: 1px solid #b4bdc3;
+
+  background-color: var(--card-bg);
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+  &__content {
+    @include content-padding-inline;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    display: block;
+    width: 89px;
+    height: 32px;
+
+    @include hover(transform, scale(1.1));
+  }
+
+  &__contacts {
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      padding-top: 0;
+      flex-direction: row;
+      gap: 14px;
+    }
+
+    @include on-desktop {
+      gap: 107px;
+    }
+
+    &-link {
+      margin: 0;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      color: $secondary-color;
+    }
+  }
+
+  &__navigation {
+    padding-top: 32px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    cursor: pointer;
+
+    @include on-tablet {
+      padding-top: 0;
+    }
+
+    &-title {
+      margin: 0;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0;
+      color: $secondary-color;
+
+      @include hover(color, $primary-color);
+    }
+
+    &-button {
+      min-width: 32px;
+      height: 32px;
+      border: 1px solid #b4bdc3;
+      border-radius: 50%;
+      background-color: #fff;
+      background-image: url(/icons/arrow-up-black.svg);
+      background-size: 16px;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      cursor: pointer;
+
+      @include hover(border-color, $primary-color);
+    }
+  }
+}
