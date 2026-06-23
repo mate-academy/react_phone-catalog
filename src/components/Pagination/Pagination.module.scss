@@ -1,0 +1,48 @@
+// fin
+@use '../../styles/utils' as *;
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $elements;
+  border-radius: 50%;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: $primary;
+
+  background-color: transparent;
+
+  transition: all 0.3s;
+
+  &:disabled {
+    cursor: default;
+    border-color: $elements;
+    color: $secondary;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $primary;
+  }
+}
+
+.isActive {
+  border-color: $primary;
+  color: $white;
+  background-color: $primary;
+
+  &:hover {
+    background-color: $primary;
+  }
+}

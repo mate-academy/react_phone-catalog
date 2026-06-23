@@ -1,0 +1,481 @@
+// fin
+@use '../../styles/utils' as *;
+
+.container {
+  @include container;
+
+  padding-top: 24px;
+  padding-bottom: 80px;
+}
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  margin-bottom: 24px;
+
+  font-size: 12px;
+  font-weight: 600;
+  color: $secondary;
+}
+
+.homeIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.arrowIcon {
+  width: 12px;
+  height: 12px;
+  opacity: 0.5;
+  filter: grayscale(100%);
+}
+
+.breadLink {
+  color: $primary;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+.breadText {
+  color: $secondary;
+}
+
+.backBtnText {
+  cursor: pointer;
+
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  margin-bottom: 24px;
+  padding: 0;
+  border: none;
+
+  font-size: 12px;
+  font-weight: 700;
+  color: $secondary;
+
+  background: none;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 32px;
+
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 41px;
+  color: $primary;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+    font-size: 32px;
+  }
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 80px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+  width: 100%;
+
+  @include on-tablet {
+    flex-direction: row;
+    width: 50%;
+    height: 450px;
+  }
+
+  @include on-desktop {
+    width: 50%;
+  }
+}
+
+.thumbnails {
+  scrollbar-width: none;
+
+  overflow-x: auto;
+  display: flex;
+  gap: 8px;
+
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include on-tablet {
+    overflow-y: auto;
+    flex-direction: column;
+    flex-shrink: 0;
+    width: 80px;
+  }
+}
+
+.thumbnailWrapper {
+  cursor: pointer;
+
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 80px;
+  height: 80px;
+  border: 1px solid $elements;
+  border-radius: 2px;
+
+  &.active {
+    border-color: $primary;
+  }
+
+  &:hover {
+    border-color: $primary;
+  }
+}
+
+.thumbnail {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.mainImageWrapper {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+
+  height: 300px;
+
+  @include on-tablet {
+    height: 100%;
+  }
+}
+
+.mainImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.details {
+  width: 100%;
+
+  @include on-tablet {
+    flex: 1;
+  }
+
+  @include on-desktop {
+    width: 40%;
+  }
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.labelColors {
+  font-size: 12px;
+  font-weight: 600;
+  color: $secondary;
+}
+
+.idText {
+  font-size: 12px;
+  font-weight: 500;
+  color: $secondary;
+}
+
+.colorsRow {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.colorBtn {
+  cursor: pointer;
+
+  position: relative;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $elements;
+  border-radius: 50%;
+
+  &.selected {
+    &::after {
+      content: '';
+
+      position: absolute;
+      inset: -3px;
+
+      border: 1px solid $primary;
+      border-radius: 50%;
+    }
+  }
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  margin: 24px 0;
+  background-color: $elements;
+}
+
+.selectorBlock {
+  margin-bottom: 24px;
+}
+
+.selectorLabel {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 12px;
+  font-weight: 600;
+  color: $secondary;
+}
+
+.capacityList {
+  display: flex;
+  gap: 8px;
+}
+
+.capacityBtn {
+  cursor: pointer;
+
+  height: 32px;
+  padding: 0 16px;
+  border: 1px solid $elements;
+  border-radius: 4px;
+
+  font-size: 14px;
+  font-weight: 500;
+  color: $primary;
+
+  background-color: $white;
+
+  transition: all 0.2s;
+
+  &.selected {
+    border-color: $primary;
+    color: $white;
+    background-color: $primary;
+  }
+
+  &:hover:not(.selected) {
+    border-color: $primary;
+  }
+}
+
+.priceRow {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.price {
+  font-size: 32px;
+  font-weight: 800;
+  color: $primary;
+}
+
+.fullPrice {
+  font-size: 22px;
+  font-weight: 500;
+  color: $secondary;
+  text-decoration: line-through;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.addToCart {
+  cursor: pointer;
+
+  flex-grow: 1;
+
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: 700;
+  color: $white;
+  text-transform: uppercase;
+
+  background-color: $accent;
+
+  transition: background-color 0.3s;
+
+  &.isAdded {
+    border: 1px solid $elements;
+    color: $green;
+    background-color: $white;
+  }
+}
+
+.favoriteBtn {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+  border: 1px solid $elements;
+  border-radius: 50%;
+
+  background: transparent;
+
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: $primary;
+  }
+
+  &.isFavorite {
+    border-color: $red;
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.specsSmall {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.specName {
+  font-weight: 500;
+  color: $secondary;
+}
+
+.specValue {
+  font-weight: 600;
+  color: $primary;
+}
+
+.aboutSpecs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-bottom: 80px;
+
+  @include on-desktop {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+}
+
+.sectionHeader {
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $elements;
+
+  font-size: 24px;
+  font-weight: 800;
+  color: $primary;
+}
+
+.descTitle {
+  margin: 24px 0 16px;
+  font-size: 20px;
+  font-weight: 700;
+  color: $primary;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.descText {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: $secondary;
+}
+
+.specsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specRowLarge {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 14px;
+}
+
+.suggestions {
+  margin-bottom: 80px;
+}
+
+.sectionTitle {
+  margin-bottom: 32px;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.notFoundContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 400px;
+}
+
+.notFoundImage {
+  width: 300px;
+  max-width: 100%;
+}

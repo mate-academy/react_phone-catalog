@@ -1,0 +1,92 @@
+// fin
+@use '../../styles/utils' as *;
+
+.container {
+  @include container;
+
+  padding-top: 24px;
+  padding-bottom: 80px;
+}
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  margin-bottom: 40px;
+
+  font-size: 12px;
+  font-weight: 500;
+  color: $secondary;
+}
+
+.homeIcon {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+.arrowIcon {
+  font-size: 10px;
+  color: $secondary;
+}
+
+.currentParams {
+  color: $secondary;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 8px;
+
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1%;
+
+  @include on-tablet {
+    font-size: 48px;
+  }
+}
+
+.count {
+  margin-top: 0;
+  margin-bottom: 32px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: $secondary;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 40px;
+  row-gap: 40px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+
+  margin-top: 80px;
+
+  img {
+    width: 200px;
+    opacity: 0.5;
+  }
+}

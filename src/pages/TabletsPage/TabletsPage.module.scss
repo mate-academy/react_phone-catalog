@@ -1,0 +1,63 @@
+// fin
+@use '../../styles/utils' as *;
+
+.container {
+  @include container;
+
+  margin-top: 24px;
+  padding-bottom: 64px;
+}
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+
+  margin-bottom: 40px;
+
+  font-size: 12px;
+  color: $secondary;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 8px;
+
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.modelsCount {
+  margin: 0;
+  margin-bottom: 32px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: $secondary;
+
+  @include on-tablet{
+    margin-bottom: 40px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 40px;
+  row-gap: 40px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -1,0 +1,114 @@
+// fin
+@use '../../styles/utils' as *;
+
+.footer {
+  margin-top: auto;
+  padding: 32px 0;
+  border-top: 1px solid $elements;
+  background-color: $white;
+}
+
+.container {
+  @include container;
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    align-items: center;
+  }
+}
+
+.logo {
+  display: block;
+  width: auto;
+  height: 32px;
+
+  @include on-tablet {
+    justify-self: start;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $elements;
+  border-radius: 50%;
+
+  transition: border-color 0.3s;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.link {
+  font-size: 12px;
+  font-weight: 800;
+  color: $secondary;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  transition: color 0.3s;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+.backToTop {
+  cursor: pointer;
+
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  align-self: center;
+
+  padding: 0;
+  border: none;
+
+  font-size: 12px;
+  font-weight: 700;
+  color: $secondary;
+
+  background: none;
+
+  transition: color 0.3s;
+
+  @include on-tablet {
+    place-self: center end;
+  }
+
+  &:hover {
+    color: $primary;
+
+    .arrow {
+      border-color: $primary;
+    }
+  }
+}

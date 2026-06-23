@@ -1,0 +1,39 @@
+$accent: #216CFF;
+$secondary-accent: #F447AF;
+$primary: #0F0F11;
+$secondary: #89939A;
+$icons: #B4BDC3;
+$elements: #E2E6E9;
+$hover-bg: #FAFBFC;
+$white: #FFF;
+$green: #27AE60;
+$red: #EB5757;
+$tablet: 640px;
+$desktop: 1200px;
+
+@mixin on-tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1200px;
+    padding: 0 32px;
+  }
+}

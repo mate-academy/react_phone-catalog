@@ -1,0 +1,38 @@
+// fin
+@use '../../styles/utils' as *;
+
+.filters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  font-size: 12px;
+  font-weight: 700;
+  color: $secondary;
+}
+
+.select {
+  cursor: pointer;
+
+  min-width: 130px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid $elements;
+  border-radius: 8px;
+
+  font-weight: 700;
+  color: $primary;
+
+  background-color: $white;
+
+
+  &:hover {
+    border-color: $primary;
+  }
+}
