@@ -125,9 +125,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
         Back
       </button>
 
-      <div className={styles.topBar}>
-        <h2 className={styles.title}>{product.name}</h2>
-      </div>
+      <h2 className={styles.title}>{product.name}</h2>
 
       <div className={styles.mainLayout}>
         <div className={styles.mediaColumn}>
@@ -163,7 +161,12 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
 
         <div className={styles.configColumn}>
           <div className={styles.colorSelector}>
-            <p className={styles.paraghTitle}>Available colors</p>
+            <div className={styles.topBar}>
+              <p className={styles.paraghTitle}>Available colors</p>
+              <span className={styles.productId}>
+                ID: {product.namespaceId}
+              </span>
+            </div>
 
             <div className={styles.colorsGrid}>
               {colorsList.map((color, index) => {
@@ -272,8 +275,6 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
             </div>
           </div>
         </div>
-
-        <span className={styles.productId}>ID: {product.namespaceId}</span>
       </div>
 
       <div className={styles.main}>

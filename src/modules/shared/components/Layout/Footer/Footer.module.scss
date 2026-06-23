@@ -19,15 +19,22 @@
   padding: 0 16px;
 
   @media (min-width: 768px) {
-    padding: 0 152px;
+    padding: 0 32px;
     align-items: center;
     flex-direction: row;
+  }
+
+  @media (min-width: 1024px) {
+    height: 64px;
+    padding: 0 152px;
+    flex-wrap: nowrap;
   }
 }
 
 .footerContent {
   flex: 1;
   display: flex;
+  justify-content: flex-start;
 }
 
 .logo {
