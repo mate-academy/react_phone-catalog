@@ -4,21 +4,37 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  padding-bottom: 80px;
+  margin-bottom: 56px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 64px;
+  }
+
+  @media (min-width: 1024px) {
+    margin-bottom: 80px;
+  }
 }
 
 .pageTitle {
   margin: 0 0 24px;
   color: $text-main;
 
-  @include h2-font;
+  @include h2-font-mobile;
+
+  @media (min-width: 768px) {
+    @include h2-font;
+  }
 }
 
 .categoryContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 16px;
   width: 100%;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 }
 
 .category {

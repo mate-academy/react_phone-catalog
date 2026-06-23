@@ -56,7 +56,7 @@ $border: var(--card-border);
 $green: var(--green);
 $red: var(--red);
 
-// SCSS Міксини для типографіки
+// SCSS Міксини для типографіки Desktop
 @mixin h1-font {
   font-family: Mont, sans-serif;
   font-weight: 800;
@@ -110,6 +110,7 @@ $red: var(--red);
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
+  letter-spacing: 0;
 }
 
 @mixin small-text {
@@ -117,4 +118,38 @@ $red: var(--red);
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
+  letter-spacing: 0;
+}
+
+// SCSS Міксини для типографіки Mobile
+@mixin h1-font-mobile {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin h2-font-mobile {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+@mixin h3-font-mobile {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+@mixin h4-font-mobile {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
 }

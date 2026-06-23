@@ -1,7 +1,7 @@
 @import '../../../../../styles/variables';
 
 .header {
-  position: fixed;
+  position: sticky;
   width: 100%;
   background-color: $background;
   border-bottom: 1px solid $surface-2;

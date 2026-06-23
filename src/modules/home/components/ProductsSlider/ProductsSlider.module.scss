@@ -1,7 +1,15 @@
 @import '../../../../styles/variables';
 
 .sliderWrapper {
-  margin-bottom: 80px;
+  margin-bottom: 56px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 64px;
+  }
+
+  @media (min-width: 1024px) {
+    margin-bottom: 80px;
+  }
 }
 
 .topBar {
@@ -14,7 +22,11 @@
   margin: 0;
   color: $text-main;
 
-  @include h2-font;
+  @include h2-font-mobile;
+
+  @media (min-width: 768px) {
+    @include h2-font;
+  }
 }
 
 .arrows {
@@ -78,6 +90,16 @@
 }
 
 .cardWrapper {
+  display: flex;
+  justify-content: center;
   flex-shrink: 0;
-  width: calc((100% - 48px) / 4);
+  width: calc(100% / 1);
+
+  @media (min-width: 786px) {
+    width: calc((100% - 24px) / 2);
+  }
+
+  @media (min-width: 1024px) {
+    width: calc((100% - 48px) / 4);
+  }
 }

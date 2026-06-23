@@ -3,6 +3,7 @@
 .card {
   display: flex;
   flex-direction: column;
+  width: 100%;
   height: 100%;
   padding: 32px;
   background-color: $surface-1;
@@ -48,7 +49,7 @@
   text-decoration: line-through;
   color: $text-secondary;
 
-  @include h3-font;
+  @include h4-font;
 }
 
 .specs {

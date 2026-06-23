@@ -7,7 +7,15 @@
 .container {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 152px;
+  padding: 0 16px;
+
+  @media (min-width: 768px) {
+    padding: 0 32px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0 152px;
+  }
 }
 
 .hiddenTitle {
@@ -21,12 +29,26 @@
   border: 0;
   color: $text-main;
 
-  @include h1-font;
+  @include h1-font-mobile;
+
+  @media (min-width: 768px) {
+    @include h1-font;
+  }
 }
 
 .title {
-  margin: 56px 0;
+  margin: 24px 0;
   color: $text-main;
 
-  @include h1-font;
+  @include h1-font-mobile;
+
+  @media (min-width: 768px) {
+    margin: 32px 0;
+
+    @include h1-font;
+  }
+
+  @media (min-width: 1024px) {
+    margin: 56px 0;
+  }
 }
