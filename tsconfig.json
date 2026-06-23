@@ -2,7 +2,7 @@
   "extends": "@mate-academy/students-ts-config",
   "include": [
     "src"
-  ],
+, "src/components/Footer"  ],
   "compilerOptions": {
     "sourceMap": false,
     "types": ["node", "cypress"]

@@ -53,12 +53,12 @@ export const Footer = () => {
 
       <div className={styles.wrapper}>
         <div className={styles.backToTopWrapper}>
+          <span className={styles.backToTop}>Back to top</span>
           <button
-            className={styles.backToTop}
+            className={styles.backToTopButton}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            Back to top
-            <img src="img/icons/arrow-up.png" alt="" />
+            <img src="img/icons/arrow-up.png" />
           </button>
         </div>
       </div>

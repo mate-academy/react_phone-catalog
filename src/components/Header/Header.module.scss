@@ -7,6 +7,7 @@
   right: 0;
   background-color: #0F1121;
   height: 64px;
+  z-index: 2;
 }
 
 .container {
@@ -37,9 +38,39 @@
 }
 
 .link {
+  position: relative;
   text-decoration: none;
   color: #75767F;
   padding-block: 24px;
+  transition: color 0.3s ease;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background-color: #F1F2F9;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.link:hover {
+  color: #F1F2F9;
+}
+
+.link:hover::after {
+  width: 50%;
+}
+
+.link.active {
+  color: #F1F2F9;
+}
+
+.link.active::after {
+  width: 100%;
 }
 
 .actions {
@@ -47,8 +78,25 @@
 }
 
 .actionLink {
+  position: relative;
   display: flex;
   align-items: center;
   padding: 24px;
   border-left: 1px solid #323542;
+}
+
+.actionLink::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background-color: #F1F2F9;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.actionLink:hover::after {
+  width: 50%;
 }

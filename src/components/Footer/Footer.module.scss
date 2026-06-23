@@ -1,21 +1,26 @@
 .footer {
+  width: 1136px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   height: 96px;
-  padding-inline: 152px;
-  border-top: 1px solid #3B3E4A;
+  margin-inline: auto;
 }
 
 .link {
   text-decoration: none;
-  color: #F1F2F9;
+  color: #75767F;
   font-family: Mont, sans-serif;
   font-weight: 800;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 4%;
+
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #F1F2F9;
+  }
 }
 
 .list {
@@ -25,6 +30,15 @@
   padding: 0;
 }
 
+.wrapper {
+  width: 33.3%;
+}
+
+.backToTopWrapper {
+  display: flex;
+  justify-content: right;
+  gap: 16px;
+}
 
 .backToTop {
   display: flex;
@@ -36,14 +50,21 @@
   color: #89939A;
   background-color: #0F1121;
   border: none;
-  cursor: pointer;
 }
 
-.backToTopWrapper {
+.backToTopButton {
+  background-color: #323542;
+  border: none;
+  width: 32px;
+  height: 32px;
   display: flex;
-  justify-content: right;
-}
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 
-.wrapper {
-  width: 33.3%;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #4A4D58;
+  }
 }

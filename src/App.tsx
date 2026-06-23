@@ -7,6 +7,8 @@ import { PhonesPage } from './modules/PhonesPage/PhonesPage';
 import { TabletsPage } from './modules/TabletsPage/TabletsPage';
 import { AccessoriesPage } from './modules/AccessoriesPage/AccessoriesPage';
 import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
+import { FavoritesPage } from './modules/FavoritesPage/FavoritesPage';
+import { CartPage } from './modules/CartPage/CartPage';
 
 export const App = () => (
   <HashRouter>
@@ -17,6 +19,8 @@ export const App = () => (
       <Route path="/phones" element={<PhonesPage />} />
       <Route path="/tablets" element={<TabletsPage />} />
       <Route path="/accessories" element={<AccessoriesPage />} />
+      <Route path="/favorites" element={<FavoritesPage />} />
+      <Route path="/cart" element={<CartPage />} />
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 
 export const Header = () => {
@@ -12,43 +12,63 @@ export const Header = () => {
         <nav className={styles.nav}>
           <ul className={styles.list}>
             <li className={styles.item}>
-              <Link to="/" className={styles.link}>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `${styles.link} ${isActive ? styles.active : ''}`
+                }
+              >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li className={styles.item}>
-              <Link to="/phones" className={styles.link}>
+              <NavLink
+                to="/phones"
+                className={({ isActive }) =>
+                  `${styles.link} ${isActive ? styles.active : ''}`
+                }
+              >
                 Phones
-              </Link>
+              </NavLink>
             </li>
             <li className={styles.item}>
-              <Link to="/tablets" className={styles.link}>
+              <NavLink
+                to="/tablets"
+                className={({ isActive }) =>
+                  `${styles.link} ${isActive ? styles.active : ''}`
+                }
+              >
                 Tablets
-              </Link>
+              </NavLink>
             </li>
             <li className={styles.item}>
-              <Link to="/accessories" className={styles.link}>
+              <NavLink
+                to="/accessories"
+                className={({ isActive }) =>
+                  `${styles.link} ${isActive ? styles.active : ''}`
+                }
+              >
                 Accessories
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>
 
         <div className={styles.actions}>
-          <a href="" className={styles.actionLink}>
+          <Link to="/favorites" className={styles.actionLink}>
             <img
-              src="img/icons/Vector (Stroke).png"
-              alt="Favourites"
+              src="img/icons/favorite.png"
+              alt="Favorites"
               className={styles.icon}
             />
-          </a>
-          <a href="" className={styles.actionLink}>
+          </Link>
+          <Link to="/cart" className={styles.actionLink}>
             <img
-              src="img/icons/Shopping bag (Cart).png"
+              src="img/icons/cart.png"
               alt="Shopping Cart"
               className={styles.icon}
             />
-          </a>
+          </Link>
         </div>
       </div>
     </header>
