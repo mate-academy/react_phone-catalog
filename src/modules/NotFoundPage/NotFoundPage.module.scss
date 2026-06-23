@@ -1,0 +1,14 @@
+@use '../../styles/' as *;
+
+.container {
+  @include font-desktop1;
+  display: flex;
+  margin: 40px 0;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  img {
+    width: 60%;
+    margin: 40px;
+  }
+}

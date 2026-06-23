@@ -1,0 +1,83 @@
+@use '../../../styles/' as *;
+
+.carousel {
+  @include grid-col;
+
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 24px 0;
+  }
+
+  &__title {
+    @include font-desktop2;
+
+    @include mobile {
+      @include font-mobile2;
+    }
+  }
+
+  &__sliders {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__sliderBtn {
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    border: 1px solid var(--icons-color);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: var(--white-bg-color);
+
+    @include changeSVGColor(--primary-color);
+
+    &:hover {
+      border-color: var(--primary-color);
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      pointer-events: none;
+    }
+  }
+
+  &__btnHidden {
+    border: 1px solid var(--elements-color);
+    @include changeSVGColor(--icons-color);
+
+    &:hover {
+      border-color: var(--elements-color);
+    }
+  }
+
+  &__viewport {
+    overflow-x: hidden;
+  }
+
+  &__track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  &__item {
+    flex: 0 0 calc(25% - 12px); // 4 на desktop
+
+    @include tablet {
+      flex: 0 0 calc(41.6%); // 3
+    }
+
+    @include mobile {
+      flex: 0 0 calc(75%); // 2
+    }
+  }
+}

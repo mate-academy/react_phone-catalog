@@ -1,0 +1,104 @@
+@use '../../../styles/' as *;
+
+.productCard {
+  @include grid-col(6, 5, 3);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--elements-color);
+  gap: 8px;
+  padding: 32px;
+  box-sizing: border-box;
+  height: 100%;
+  justify-content: flex-end;
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0px 2px 16px 0px #0000001a;
+  }
+
+  a {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+
+    img {
+      width: 100%;
+      height: auto;
+      box-sizing: border-box;
+      object-fit: contain;
+      display: block;
+      margin: auto;
+    }
+  }
+
+  &__name {
+    font-family: 'Mont', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    color: var(--primary-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      color: var(--primary-color);
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+
+  &__prices {
+    @include font-desktop3;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__fullPrice {
+    color: var(--secondary-color);
+    text-decoration: line-through;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: var(--elements-color);
+  }
+
+  &__specs {
+    display: flex;
+    margin: 8px 0px;
+
+    flex-direction: column;
+  }
+
+  &__spec {
+    @include font-desktop-small;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    color: var(--secondary-color);
+  }
+
+  &__char {
+    color: var(--primary-color);
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    height: 40px;
+
+    :first-child {
+      flex: 1;
+      @include animate;
+    }
+  }
+}

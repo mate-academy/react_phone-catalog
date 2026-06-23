@@ -1,0 +1,245 @@
+@use '../../../styles/' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  background-color: var(--white-bg-color);
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #e2e6e9;
+  z-index: 100;
+
+  .active {
+    color: var(--primary-color) ;
+    border-bottom-color: #313237 ;
+  }
+
+  &__logo {
+    height: 28px;
+    margin: 18px 24px;
+
+    @include tablet {
+      height: 22px;
+      margin: 13px 16px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    list-style: none;
+    margin: 0px 24px;
+    padding: 0;
+    gap: 64px;
+
+    @include tablet {
+      margin: 0px 16px;
+      gap: 32px;
+    }
+
+    @include mobile {
+      display: none;
+    }
+
+    li {
+      $indent-header-li: 26.5px;
+      $indent-header-li-tablet: 18.5px;
+
+      display: flex;
+      margin: $indent-header-li 0px 0px 0px;
+
+      @include tablet {
+        margin: $indent-header-li-tablet 0px 0px 0px;
+      }
+
+      a {
+        font-family: 'Mont', sans-serif;
+        font-weight: 800;
+        font-size: 12px;
+        line-height: 11px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--secondary-color);
+        text-decoration: none;
+        padding-bottom: calc($indent-header-li - 3px);
+        border-bottom: 3px solid transparent;
+        transition:
+          color 0.3s ease-in-out,
+          border-color 0.3s ease-in-out;
+
+        &:hover {
+          color: var(--primary-color);
+          border-bottom-color: #313237;
+        }
+
+        @include tablet {
+          padding-bottom: calc($indent-header-li-tablet - 3px);
+        }
+      }
+    }
+  }
+
+  &__icons {
+    display: flex;
+    margin-left: auto;
+    position: relative;
+
+    @include mobile {
+      display: none;
+    }
+
+    a {
+      display: inline-block;
+      line-height: 0;
+      position: relative;
+    }
+  }
+
+  &__icon {
+    padding: 24px;
+    border-left: 1px solid #e2e6e9;
+
+    @include tablet {
+      padding: 16px;
+    }
+  }
+
+  &__counter {
+    position: absolute;
+
+    top: 16px;
+    right: 12px;
+
+    font-family: 'Mont', sans-serif;
+    font-weight: 700;
+    font-size: 9px;
+    color: var(--white-bg-color);
+
+    min-width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--red-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2px;
+
+    @include tablet {
+      top: 6px;
+      right: 6px;
+    }
+  }
+
+  &__burger {
+    display: none;
+    margin-left: auto;
+
+    @include mobile {
+      display: flex;
+    }
+  }
+
+  &__button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    line-height: 0;
+  }
+}
+
+.burgerMenu {
+  position: fixed;
+  top: 48.5px;
+  height: calc(100vh - 48.5px);
+  width: 100%;
+  background-color: var(--white-bg-color);
+  left: 0;
+  bottom: 0;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-100%);
+  transition: all 0.4s ease;
+
+  &__open {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  &__list {
+    padding: 0;
+
+    li {
+      margin: 24px 0;
+      display: flex;
+      justify-content: center;
+
+      a {
+        font-family: 'Mont', sans-serif;
+        font-weight: 800;
+        font-size: 12px;
+        text-transform: uppercase;
+        color: var(--secondary-color);
+        text-decoration: none;
+        padding-bottom: 8px;
+        border-bottom: 2px solid transparent;
+        transition: 0.3s;
+
+        &:hover {
+          color: var(--primary-color);
+          border-bottom-color: #313237;
+        }
+      }
+    }
+  }
+
+  // Контейнер иконок (нижняя панель)
+  &__icons {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    border-top: 1px solid #e2e6e9;
+
+    // вертикальная линия по центру
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      height: 100%;
+      width: 1px;
+      background: #e2e6e9;
+    }
+  }
+
+  // КАЖДЫЙ блок = 50% ширины (как было раньше)
+  &__container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-bottom-color: #313237;
+    }
+
+    a {
+      position: relative;
+      display: inline-block;
+      line-height: 0;
+    }
+  }
+
+  &__icon {
+    padding: 16px;
+  }
+}

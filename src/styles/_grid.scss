@@ -1,0 +1,44 @@
+@use './mixins' as m;
+
+@mixin grid-container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(var(--columns), 32px);
+  column-gap: var(--gap);
+
+  @include m.tablet {
+    margin: 0 24px;
+    grid-template-columns: repeat(var(--columns-tablet), 1fr);
+  }
+
+  @include m.mobile {
+    margin: 0 16px;
+    grid-template-columns: repeat(var(--columns-mobile), 1fr);
+  }
+}
+
+@mixin grid-col($desktop: null, $tablet: null, $mobile: null) {
+  @include m.desktop {
+    @if $desktop {
+      grid-column: span $desktop;
+    } @else {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @include m.tablet {
+    @if $tablet {
+      grid-column: span $tablet;
+    } @else {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @include m.mobile {
+    @if $mobile {
+      grid-column: span $mobile;
+    } @else {
+      grid-column: 1 / -1;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+}
+
+$breakpoint-mobile: 639px;
+$breakpoint-tablet: 1199px;
+$breakpoint-desktop: 1200px;
+
+:root {
+  // Color Variables
+  --primary-color: #313237;
+  --secondary-color: #89939a;
+  --icons-color: #b4bdc3;
+  --elements-color: #e2e6e9;
+  --hover-color: #fafbfc;
+  --white-bg-color: #ffffff;
+  --green-color: #27ae60;
+  --red-color: #eb5757;
+
+  --gap: 16px;
+  --columns: 24;
+  --columns-tablet: 12;
+  --columns-mobile: 4;
+
+  --breakpoint-mobile: #{$breakpoint-mobile};
+  --breakpoint-tablet: #{$breakpoint-tablet};
+  --breakpoint-desktop: #{$breakpoint-desktop};
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a img {
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

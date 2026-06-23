@@ -1,0 +1,81 @@
+@use '../../../../styles' as *;
+.categories {
+  @include grid-col;
+
+  &__title {
+    @include font-desktop2;
+    margin-bottom: 24px;
+
+    @include mobile {
+      @include font-mobile2;
+    }
+  }
+
+  &__cards {
+    @include grid-container;
+  }
+
+  &__card {
+    @include grid-col(8, 4);
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__imageBack__phone,
+  &__imageBack__tablet,
+  &__imageBack__accesories {
+    aspect-ratio: 1;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  &__imageBack__phone {
+    background-color: #6d6474;
+  }
+
+  &__imageBack__tablet {
+    background-color: #8d8d92;
+  }
+
+  &__imageBack__accesories {
+    background-color: #973d5f;
+  }
+
+  &__image {
+    position: absolute;
+  }
+
+  &__imageBack__phone &__image {
+    top: 10%;
+    left: 10%;
+    height: 130%;
+  }
+
+  &__imageBack__tablet &__image {
+    height: 130%;
+  }
+
+  &__imageBack__accesories &__image {
+    top: 5%;
+    height: 100%;
+  }
+
+  &__description {
+    margin-top: 24px;
+  }
+
+  &__name {
+    @include font-desktop4;
+    color: var(--primary-color);
+  }
+
+  &__numModels {
+    color: var(--secondary-color);
+    font-family: 'Mont', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+  }
+}
