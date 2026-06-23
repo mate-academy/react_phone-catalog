@@ -1,0 +1,99 @@
+@import '../../styles/main';
+
+.buttonUp {
+  position: sticky;
+  top: 70px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-gray-icons-placeholders);
+  background-color: var(--color-bg);
+  transform: rotate(90deg);
+
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border: 1px solid var(--color-gray-primary);
+    background-color: var(--color-hover);
+  }
+
+
+}
+
+
+body.theme_dark .buttonUp {
+border: 1px solid var(--color-gray-icons-placeholders);
+background-color: none; // var(--color-surface-2);
+
+@include hover(background-color, var(--color-gray-icons-placeholders));
+}
+
+.productsPage {
+  @include content-padding-inline;
+
+  &__title {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: var(--color-gray-primary);
+    margin-bottom: 8px;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__description {
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: var(--color-gray-secondary);
+  }
+
+  &__dropdown {
+    margin-top: 32px;
+    gap: 16px;
+
+    @include page-grid;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+
+    &--sortBy {
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+    }
+
+    &--itemsPerPage {
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 16px;
+    margin-top: 24px;
+  }
+
+  &__no-products {
+    margin-top: 40px;
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: var(--color-gray-secondary);
+    text-align: center;
+  }
+}

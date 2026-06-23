@@ -1,7 +1,16 @@
-import './App.scss';
+import { AppRoutes } from './routes';
+import { GlobalProvider } from './context/GlobalContext';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+export const App = () => {
+  return (
+    <GlobalProvider>
+      <AppRoutes />
+    </GlobalProvider>
+  );
+};
+
+/* app.get('/script.js', (req, res) => {
+  res.setHeader('Content-Type', 'application/javascript');
+  res.sendFile(__dirname + '/script.js');
+});
+*/

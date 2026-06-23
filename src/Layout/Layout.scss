@@ -1,0 +1,45 @@
+@import 'src/styles/main';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.Layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  min-width: 320px;
+
+  scroll-behavior: smooth;
+}
+
+.Layout__content {
+  flex-grow: 1;
+}
+
+.Layout__header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.Layout__menu {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.Layout__footer {
+  background-color: var(--color-bg);
+  padding: 1rem;
+  text-align: center;
+}
+.Layout__loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+body.theme_dark {
+  background-color: var(--color-bg);
+}
