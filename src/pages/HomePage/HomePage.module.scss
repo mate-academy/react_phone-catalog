@@ -1,0 +1,29 @@
+@import '../../styles/utils/variables';
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px 0;
+
+  @media (max-width: 640px) {
+    padding-inline: 16px;
+  }
+}
+
+.h1 {
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  color: $color-text;
+  margin-block: 24px 32px;
+
+  @media (max-width: 640px) {
+    font-size: 28px;
+    line-height: 36px;
+  }
+}
+
+.error {
+  color: #c0392b;
+  padding-block: 24px;
+}

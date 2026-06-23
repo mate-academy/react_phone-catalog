@@ -1,0 +1,16 @@
+@import './styles/utils/variables';
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: $color-page;
+  color: $color-text;
+  transition: background-color $transition-duration ease,
+    color $transition-duration ease;
+}
+
+.main {
+  flex: 1 0 auto;
+  padding-bottom: 80px;
+}

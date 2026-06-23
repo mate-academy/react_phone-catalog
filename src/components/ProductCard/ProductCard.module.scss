@@ -1,0 +1,159 @@
+@import '../../styles/utils/variables';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background: $color-surface;
+  border: 1px solid $color-separator;
+  border-radius: $border-radius-medium;
+  transition: box-shadow $transition-duration ease,
+    transform $transition-duration ease;
+  height: 100%;
+
+  &:hover {
+    box-shadow: 0 2px 15px $color-shadow;
+    transform: translateY(-2px);
+  }
+
+  &:hover .image {
+    transform: scale(1.1);
+  }
+}
+
+.imageWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 196px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  background: $color-image-bg;
+  border-radius: $border-radius-small;
+  padding: 8px;
+}
+
+.image {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+  transition: transform $transition-duration ease;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $color-text;
+  min-height: 42px;
+  margin-bottom: 8px;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.priceCurrent {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 30px;
+  color: $color-text;
+}
+
+.priceOld {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  color: $color-secondary;
+  text-decoration: line-through;
+}
+
+.divider {
+  height: 1px;
+  background: $color-separator;
+  margin-bottom: 8px;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 12px;
+  line-height: 11px;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+
+    span:first-child {
+      color: $color-secondary;
+      font-weight: 600;
+    }
+
+    span:last-child {
+      color: $color-text;
+      font-weight: 700;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.addBtn {
+  flex: 1;
+  height: 40px;
+  background: $color-button-primary-bg;
+  color: $color-button-primary-text;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: $border-radius-medium;
+  transition: box-shadow $transition-duration ease,
+    background $transition-duration ease;
+
+  &:hover {
+    box-shadow: 0 3px 13px $color-shadow;
+  }
+}
+
+.addBtnAdded {
+  background: $color-surface;
+  color: $color-accent;
+  border: 1px solid $color-separator;
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.favBtn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid $color-separator;
+  border-radius: $border-radius-medium;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text;
+  transition: border-color $transition-duration ease,
+    color $transition-duration ease;
+
+  &:hover {
+    border-color: $color-text;
+  }
+}
+
+.favBtnActive {
+  color: #eb5757;
+
+  &:hover {
+    border-color: #eb5757;
+  }
+}

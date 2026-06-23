@@ -1,0 +1,49 @@
+// Color tokens are CSS custom properties so they can switch at runtime
+// based on the [data-theme] attribute. Sizing/timing tokens stay literal.
+
+$color-accent: var(--color-accent);
+$color-text: var(--color-text);
+$color-title-hover: var(--color-title-hover);
+$color-secondary: var(--color-secondary);
+$color-border: var(--color-border);
+$color-separator: var(--color-separator);
+$color-page: var(--color-page);
+$color-surface: var(--color-surface);
+$color-surface-2: var(--color-surface-2);
+$color-image-bg: var(--color-image-bg);
+$color-button-primary-bg: var(--color-button-primary-bg);
+$color-button-primary-text: var(--color-button-primary-text);
+$color-on-accent: var(--color-on-accent);
+$color-shadow: var(--color-shadow);
+$color-overlay: var(--color-overlay);
+
+// Always-white token (kept literal — for text on accent/dark buttons that
+// must read as light no matter the theme).
+$color-white: #ffffff;
+
+$header-height: 60px;
+$header-padding-inline: 50px;
+$card-width: 200px;
+$card-image-width: 160px;
+$card-image-height: 134px;
+$catalog-padding-block: 50px;
+$catalog-padding-inline: 40px;
+$catalog-column-gap: 48px;
+$catalog-row-gap: 46px;
+$border-radius-small: 5px;
+$border-radius-medium: 8px;
+$font-size-tiny: 10px;
+$font-size-small: 12px;
+$font-size-medium: 14px;
+$font-size-large: 16px;
+$line-height-tiny: 14px;
+$line-height-small: 18px;
+$line-height-medium: 16px;
+$space-small: 4px;
+$space-base: 16px;
+$space-large: 24px;
+$space-xl: 40px;
+$nav-column-gap: 20px;
+$star-size: 16px;
+$star-gap: 4px;
+$transition-duration: 300ms;

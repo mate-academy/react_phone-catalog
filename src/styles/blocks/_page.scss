@@ -1,0 +1,44 @@
+.page {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  color: $color-text;
+  background-color: $color-white;
+}
+
+.page *+
+.page *::before,
+.page *::after {
+  box-sizing: border-box;
+}
+
+.page h1,
+.page h2,
+.page p,
+.page ul {
+  margin: 0;
+}
+
+.page ul {
+  padding: 0;
+  list-style: none;
+}
+
+.page a {
+  text-decoration: none;
+}
+
+.page img {
+  display: block;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

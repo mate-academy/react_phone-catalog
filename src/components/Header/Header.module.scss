@@ -1,0 +1,256 @@
+@import '../../styles/utils/variables';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  height: $header-height;
+  padding-left: 24px;
+  background: $color-surface;
+  border-bottom: 1px solid $color-separator;
+  box-shadow: 0 1px 0 $color-shadow;
+  transition: background-color $transition-duration ease,
+    border-color $transition-duration ease;
+}
+
+.left {
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  img {
+    height: 28px;
+    width: auto;
+    filter: var(--icon-filter);
+    transition: transform $transition-duration ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  filter: var(--icon-filter);
+}
+
+.nav {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
+}
+
+.navList {
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+  height: 100%;
+}
+
+.navItem {
+  display: flex;
+  align-items: stretch;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-inline: 4px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $color-secondary;
+  border-bottom: 3px solid transparent;
+  transition: color $transition-duration ease,
+    border-color $transition-duration ease;
+
+  &:hover {
+    color: $color-text;
+  }
+}
+
+.navLinkActive {
+  color: $color-text;
+  border-bottom-color: $color-text;
+}
+
+.right {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-inline: 16px;
+  border-left: 1px solid $color-separator;
+  position: relative;
+  width: 220px;
+
+  @media (max-width: 640px) {
+    width: 140px;
+  }
+}
+
+.searchInput {
+  flex: 1;
+  height: 100%;
+  font-size: 12px;
+  color: $color-text;
+
+  &::placeholder {
+    color: $color-secondary;
+  }
+}
+
+.searchIcon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: $color-secondary;
+  pointer-events: none;
+}
+
+.lang {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  border-left: 1px solid $color-separator;
+}
+
+.langBtn {
+  width: 56px;
+  height: 100%;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: $color-text;
+  border-bottom: 3px solid transparent;
+  transition: color $transition-duration ease,
+    border-color $transition-duration ease;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+.langMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 180px;
+  background: $color-surface;
+  border: 1px solid $color-separator;
+  border-radius: $border-radius-medium;
+  box-shadow: 0 4px 16px $color-shadow;
+  overflow: hidden;
+  z-index: 50;
+}
+
+.langOption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: $color-text;
+  text-align: left;
+  transition: background $transition-duration ease;
+
+  &:hover {
+    background: $color-surface-2;
+  }
+}
+
+.langOptionActive {
+  background: $color-surface-2;
+  font-weight: 700;
+}
+
+.langOptionShort {
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: $color-secondary;
+  width: 24px;
+}
+
+.themeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  border-left: 1px solid $color-separator;
+  color: $color-text;
+  border-bottom: 3px solid transparent;
+  transition: color $transition-duration ease,
+    border-color $transition-duration ease;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+.iconLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 100%;
+  border-left: 1px solid $color-separator;
+  color: $color-text;
+  transition: color $transition-duration ease,
+    border-bottom-color $transition-duration ease;
+  border-bottom: 3px solid transparent;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+.iconLinkActive {
+  border-bottom-color: $color-text;
+}
+
+.badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  min-width: 14px;
+  height: 14px;
+  padding-inline: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 700;
+  color: $color-white;
+  background: $color-accent;
+  border: 1px solid $color-surface;
+  border-radius: 50%;
+}
