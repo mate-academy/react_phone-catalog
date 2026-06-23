@@ -1,0 +1,100 @@
+@use '../../../constants/mixin' as *;
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  gap: 32px;
+
+  @include on-desktop {
+    gap: 48px;
+  }
+
+  &__logo {
+    align-items: center;
+    height: 100%;
+    display: flex;
+
+    @include on-desktop {
+      width: 128px;
+    }
+
+    &__images {
+      display: block;
+      width: 64px;
+      height: 21px;
+
+      @include on-desktop {
+        width: 80px;
+        height: 27px;
+      }
+
+    }
+    &--menu {
+      display: none;
+    }
+  }
+
+  &--menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__table {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      gap: 32px;
+    }
+
+    &--menu {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+
+      gap: 16px;
+      padding-top: 24px;
+
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    text-decoration: none;
+    color: var(--color-text-nav);
+
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+
+    text-transform: uppercase;
+
+    &--menu {
+      height: 27px;
+    }
+  }
+}
+
+.active {
+  position: relative;
+
+  color: var(--active-nav);
+
+  &::after {
+    position: absolute;
+    content: '';
+    bottom: 0;
+
+    height: 3px;
+    width: 100%;
+
+    border-radius: 8px;
+    background-color: var(--active-nav);
+  }
+}

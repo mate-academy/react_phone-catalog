@@ -1,0 +1,14 @@
+@use '../../../../constants/mixin' as *;
+
+.outline {
+  margin-top: 24px;
+  outline: 1px solid var(--color-border-light);
+
+  &--about {
+    margin-top: 16px;
+  }
+
+  &--skeleton{
+    margin: 0;
+  }
+}

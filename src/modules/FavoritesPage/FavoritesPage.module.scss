@@ -1,0 +1,69 @@
+@use '../../constants/mixin' as *;
+
+.favorites {
+  @include page-grit;
+  @include padding-inline;
+  @include padding-block;
+  @include min-height-page;
+
+  background-color: var(--bg-page);
+  row-gap: 24px;
+
+  @include on-tablet {
+    row-gap: 32px;
+  }
+
+  &__info {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+
+    color: var(--black-text);
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+      margin-top: 8px;
+    }
+  }
+
+  &__quantity {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: var(--gray-text);
+
+    margin-bottom: 8px;
+  }
+
+  &__image {
+    grid-column: 1/ -1;
+    height: 40vh;
+    background-image: url(../../../public/img/empty-wishlist.webp);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__list {
+    grid-column: 1 / -1;
+
+    @include page-grit;
+
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    justify-items: center;
+    row-gap: 40px;
+
+    @include on-desktop {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+  }
+}

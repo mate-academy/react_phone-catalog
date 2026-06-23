@@ -1,0 +1,40 @@
+@use '../../constants/mixin' as *;
+
+.not-found {
+  @include min-height-page;
+  @include padding-inline;
+
+  &__title {
+    padding: 10px;
+
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    text-align: center;
+  }
+
+  &__button {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+
+    font-weight: 700;
+    font-size: 12px;
+
+    line-height: 100%;
+
+    &::before {
+      content: '<';
+    }
+  }
+
+  &__style {
+    height: 40vh;
+
+    background-image: url('../../../public/img/page-not-found.png');
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

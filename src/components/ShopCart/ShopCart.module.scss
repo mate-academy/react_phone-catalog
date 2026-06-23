@@ -1,0 +1,149 @@
+@use '../../constants/mixin' as *;
+
+.card {
+  @include transform-theme;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  border: 1px solid var(--product-border);
+  border-radius: var(--border-radius-cart);
+  padding: 16px;
+
+  background-color: var(--bg-product);
+
+  @include on-tablet {
+    grid-column: 1 / -1;
+    flex-direction: row;
+
+    justify-content: space-between;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      align-items: center;
+      gap: 24px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 16px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: 80px;
+
+    @include on-tablet {
+      align-items: center;
+      gap: 24px;
+    }
+  }
+
+  &__photo {
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    margin: 0;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: var(--black-text);
+
+  }
+
+  &__amount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 1.4;
+
+    color: var(--black-text);
+
+    @include on-tablet {
+      width: 80px;
+      text-align: end;
+    }
+  }
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  &__button {
+    background-repeat: no-repeat;
+    background-position: center;
+
+    height: 32px;
+    width: 32px;
+    border: 1px solid var(--color-button-favorite-border-active);
+    border-radius: var(--border-radius-button);
+
+    &:hover {
+      background-color: var(--color-button-favorite-bg);
+      border-color: var(--button-border-hover);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      border-color: var(--color-border-light);
+      background-image: url(../../../public/img/my-icon/diseble-minus.svg);
+      background-color: var(--bg-page);
+    }
+
+    &--add {
+      background-image: url(../../../public/img/my-icon/plus.svg);
+
+      &-dark {
+        background-image: url(../../../public/img/theme-dark/plus.svg);
+        background-color: var(--color-button-favorite-border-active);
+      }
+    }
+
+    &--subtract {
+      background-image: url(../../../public/img/my-icon/minus.svg);
+
+      &-dark {
+        background-color: var(--color-button-favorite-border-active);
+        background-image: url(../../../public/img/theme-dark/minus.svg);
+      }
+    }
+  }
+
+  &__value {
+    font-weight: 600;
+    font-size: 14px;
+
+    line-height: 21px;
+    letter-spacing: 0%;
+
+    text-align: center;
+    width: 5px;
+
+    color: var(--black-text);
+  }
+}

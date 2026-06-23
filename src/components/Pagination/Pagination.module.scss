@@ -1,0 +1,108 @@
+@use '../../constants/mixin' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: var(--black-text);
+
+    border: 1px solid var(--color-border-pagination);
+    border-radius: var(--border-radius-button);
+    background-color: var(--bg-product);
+
+    &:hover {
+      border-color: var(--black-text);
+      background-color: var(--bg-pagination-hover);
+    }
+
+    &--active {
+      color: var(--item-pagination-active);
+      background-color: var(--bg-pagination-active);
+
+      &:hover {
+        border-color: var(--black-text);
+        background-color: var(--bg-pagination-hover-active);
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--border-radius-button);
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--border-arrow-hover);
+      background-color: var(--bg-arrow-hover);
+    }
+
+    &--prev {
+      background-image: url(../../../public/img/my-icon/back.svg);
+
+
+      &-dark {
+        background-color: var(--bg-pagination-arrow);
+        background-image: url(../../../public/img/theme-dark/back.svg);
+      }
+
+      &-disabled {
+        background-color: var(--bg-page);
+        cursor: not-allowed;
+        background-image: url(../../../public/img/my-icon/no-back.svg);
+
+        &:hover {
+          border-color: var(--color-border);
+          background-color: var(--bg-page);
+        }
+      }
+    }
+
+    &--next {
+      background-image: url(../../../public/img/my-icon/next.svg);
+
+      @include on-tablet {
+        order: 2;
+      }
+
+      &-dark {
+        background-image: url(../../../public/img/theme-dark/arrow-right.svg);
+        background-color: var(--bg-pagination-arrow);
+      }
+
+      &-disabled {
+        background-color: var(--bg-page);
+        background-image: url(../../../public/img/my-icon/no-next.svg);
+        cursor: not-allowed;
+
+        &:hover {
+          border-color: var(--white-text);
+        }
+      }
+    }
+  }
+}

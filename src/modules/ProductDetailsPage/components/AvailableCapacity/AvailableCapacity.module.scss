@@ -1,0 +1,50 @@
+@use '../../../../constants/mixin' as *;
+
+.capacityAvailable {
+  &__text {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+
+    margin-bottom: 8px;
+
+    color: var(--gray-text);
+  }
+}
+
+.capacities {
+  display: flex;
+  gap: 8px;
+}
+
+.capacity {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: center;
+
+  color: var(--black-text);
+
+  cursor: pointer;
+
+  height: 32px;
+  border-radius: 4px;
+  padding: 7px 8px 4px;
+  border: 1px solid var(--border-capacity);
+  background-color: var(--bg-page);
+
+  &:hover {
+    border-color: var(--border-capacity-hover);
+  }
+
+  &--active {
+    color: var(--white-text);
+    border-color: var(--border-capacity-active);
+    background-color: var(--black-text);
+
+    &:hover {
+      border-color: var(--border-capacity-active);
+    }
+  }
+}
