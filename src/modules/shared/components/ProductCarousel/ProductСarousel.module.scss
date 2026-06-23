@@ -1,0 +1,83 @@
+@use '@styles/variables/variables.scss' as vars;
+@use '@styles/mixins/mixins.scss' as mixins;
+
+.container {
+  display: flex;
+  overflow: auto;
+  gap: 16px;
+
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  & > * {
+    width: calc(100% - 50px); // 50px to make the next card visible, so it's clear that this is a carousel
+    flex-shrink: 0;
+
+    @media screen and (min-width: vars.$tablet-width) {
+      width: calc(50% - 50px); // 50px to make the next card visible, so it's clear that this is a carousel
+    }
+
+    @media screen and (min-width: vars.$desktop-width) {
+      width: calc(25% - 12px); // 12px = (3 indents of 16 px each) = 48px / 4 cards
+    }
+  }
+
+  @media screen and (min-width: vars.$desktop-width) {
+    overflow: hidden;
+  }
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.container > * {
+  max-width: 280px;
+}
+
+.newModelsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+
+.titleAndControls {
+  display: flex;
+  align-items: center;
+}
+
+.sectionTitle {
+  @include mixins.text-style('h2', true);
+
+  @media screen and (min-width: vars.$tablet-width) {
+    @include mixins.text-style('h2', false);
+  }
+
+  @media screen and (min-width: vars.$desktop-width) {
+    @include mixins.text-style('h2', false);
+  }
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  justify-content: right;
+  flex: 1;
+}
+
+.control {
+  width: 32px;
+  height: 32px;
+  background-color: vars.$white-color;
+  border: 1px solid vars.$icons-color;
+  cursor: pointer;
+
+  transition: border .2s ease-in;
+
+  &:hover {
+    border: 1px solid vars.$primary-color;
+  }
+}

@@ -1,0 +1,12 @@
+@use '@styles/variables/variables.scss' as vars;
+
+.categoryList {
+  display: grid;
+  gap: 32px;
+
+  @media screen and (min-width: vars.$tablet-width) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+

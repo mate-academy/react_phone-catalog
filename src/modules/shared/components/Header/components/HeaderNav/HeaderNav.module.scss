@@ -1,0 +1,42 @@
+@use '@styles/mixins/mixins';
+@use '@styles/variables/variables.scss' as vars;
+
+.nav {
+  display: none;
+  height: 100%;
+
+  @media screen and (min-width: vars.$tablet-width) {
+    display: flex;
+    gap: 32px;
+  }
+
+  @media screen and (min-width: vars.$desktop-width) {
+    gap: 64px;
+  }
+}
+
+.link, .activeLink {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  position: relative;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.link {
+  color: vars.$secondary-color;
+}
+
+.activeLink {
+  color: vars.$primary-color;
+}
+
+.link::after, .activeLink::after {
+  @extend %underline;
+}
+
+.activeLink::after {
+  @extend %activate-underline;
+}

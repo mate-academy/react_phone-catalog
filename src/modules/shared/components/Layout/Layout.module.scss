@@ -1,0 +1,27 @@
+@use '@styles/variables/variables.scss' as vars;
+
+.layoutContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex-grow: 1;
+  width: 100%;
+  padding: 0 16px 64px;
+  margin: 0 auto;
+  max-width: 1200px;
+
+  @media screen and (min-width: vars.$tablet-width) {
+    padding: 0 24px 64px;
+  }
+
+  @media screen and (min-width: vars.$desktop-width) {
+    padding: 0 32px 64px;
+  }
+}
+

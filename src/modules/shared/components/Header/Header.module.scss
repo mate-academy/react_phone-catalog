@@ -1,0 +1,88 @@
+@use '@styles/variables/variables.scss' as vars;
+@use '@styles/mixins/mixins.scss' as mixins;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: vars.$header-height-mobile;
+  background-color: vars.$white-color;
+  padding-left: 16px;
+  box-shadow: 0 1px 0 0 vars.$elements-color;
+
+  @media screen and (min-width: vars.$desktop-width) {
+    height: vars.$header-height-desktop;
+    padding-left: 24px;
+ }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.right {
+  display: flex;
+  align-items: stretch;
+}
+
+.left {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+
+.logo {
+  width: 64px;
+  height: 22px;
+
+ @media screen and (min-width: vars.$desktop-width) {
+    width: 80px;
+    height: 28px;
+  }
+}
+
+.favorites, .cart {
+  display: none;
+  position: relative;
+
+  @media screen and (min-width: vars.$tablet-width) {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    padding: 0 16px;
+  }
+
+  @media screen and (min-width: vars.$desktop-width) {
+    padding: 0 24px;
+  }
+}
+
+.burgerBtn, .favorites, .cart {
+  align-items: center;
+  box-shadow: -1px 0 0 0 vars.$elements-color;
+}
+
+.icon {
+  @extend %underline;
+}
+
+.activeIcon::after {
+  @extend %activate-underline;
+}
+
+.burgerBtn {
+  display: flex;
+  padding: 0 16px;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+
+  @media screen and (min-width: vars.$tablet-width) {
+    display: none;
+  }
+}
+

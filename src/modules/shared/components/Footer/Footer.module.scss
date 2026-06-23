@@ -1,0 +1,89 @@
+@use '@styles/variables/variables.scss' as vars;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 32px;
+  width: 100%;
+  padding: 32px 16px;
+
+  box-shadow: 0 -1px 0 vars.$elements-color;
+
+  @media screen and (min-width: vars.$tablet-width) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &Link {
+    font-size: 12px;
+    font-weight: 800;
+    color: vars.$secondary-color;
+    text-decoration: none;
+
+    transition: color .2s ease-in;
+
+    &:hover {
+      color: vars.$primary-color;
+    }
+  }
+
+  @media screen and (min-width: vars.$tablet-width) {
+    flex-direction: row;
+  }
+
+  @media screen and (min-width: vars.$desktop-width) {
+    gap: 110px;
+  }
+}
+
+.goToTop {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (min-width: vars.$tablet-width) {
+    width: auto;
+  }
+}
+
+.btnLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: vars.$secondary-color;
+  cursor: pointer;
+  transition: color .2s ease-in;
+
+  &:hover {
+    color: vars.$primary-color;
+  }
+}
+
+.btn {
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+
+  border: 1px solid vars.$icons-color;
+  transition: border .2s ease-in;
+
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid vars.$primary-color;
+  }
+
+  &Img {
+    filter: invert(1);
+  }
+}

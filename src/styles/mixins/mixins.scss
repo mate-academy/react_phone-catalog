@@ -1,0 +1,91 @@
+@use '@styles/variables/variables.scss' as vars;
+@use "sass:map";
+
+%underline {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    height: 3px;
+    width: 0;
+
+    background-color: vars.$primary-color;
+
+    transition: all 0.2s ease;
+    transform: scaleX(0);
+    transform-origin: center;
+  }
+}
+
+%activate-underline {
+  &::after {
+    width: 100%;
+    transform: scaleX(1);
+  }
+}
+
+@mixin favorites-btn {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+
+  border: 1px solid vars.$icons-color;
+  background-color: vars.$white-color;
+  cursor: pointer;
+  transition: border .2s ease-in;
+
+  &:hover {
+    border: 1px solid vars.$primary-color;
+  }
+}
+
+@mixin add-btn {
+  background-color: vars.$primary-color;
+  padding: 10px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  color: vars.$white-color;
+
+  border: none;
+  cursor: pointer;
+
+  transition: box-shadow .2s ease-in;
+
+  &:hover {
+    box-shadow: 0 3px 13px vars.$primary-color;
+  }
+
+  &.isActive {
+    color: vars.$green-color;
+    background-color: vars.$white-color;
+    border: solid 1px vars.$elements-color;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
+
+@mixin text-style($style-name, $is-mobile: false) {
+  $map: if($is-mobile, vars.$mobile-typography, vars.$desktop-typography);
+  $style: map.get($map, $style-name);
+
+  @if $style {
+    font-family: vars.$font-family-main;
+    font-size: map.get($style, size);
+    font-weight: map.get(vars.$font-weights, map.get($style, weight));
+    letter-spacing: map.get($style, tracking);
+    color: vars.$primary-color;
+
+    @if map-has-key($style, transform) {
+      text-transform: map.get($map, transform);
+    }
+  } @else {
+      @error "Style '#{$style-name} not found in typography map'"
+    }
+}

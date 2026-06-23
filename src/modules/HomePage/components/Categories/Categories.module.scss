@@ -1,0 +1,24 @@
+@use '@styles/variables/variables.scss' as vars;
+@use '@styles/mixins/mixins.scss' as mixins;
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &Title {
+    @include mixins.text-style('h2', true);
+    
+    color: vars.$primary-color;
+
+
+
+    @media screen and (min-width: vars.$tablet-width) {
+      @include mixins.text-style('h2', false);
+    }
+
+    @media screen and (min-width: vars.$desktop-width) {
+      @include mixins.text-style('h2', false);
+    }
+  }
+}
