@@ -1,0 +1,1 @@
+'favoriteList'; // favorite list

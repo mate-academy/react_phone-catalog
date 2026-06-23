@@ -1,0 +1,53 @@
+@use '../../Mixins/Mixins.scss' as *;
+
+.container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.embla {
+  overflow: hidden;
+  width: auto;
+
+  &__viewport {
+    overflow: hidden;
+    width: 100%;
+  }
+  &__container {
+    display: flex;
+    gap: 16px;
+    
+    @include respond(tablet) {
+      gap: 24px;
+    }
+
+    @include respond(desktop) {
+      gap: 32px;
+    }
+  }
+}
+
+.standart {
+  margin-bottom: 24px;
+
+  @include respond(tablet) {
+    margin-bottom: 40px;
+  }
+
+  &_container {
+    max-width: 304px;
+    display: grid;
+    gap: 40px 16px;
+    grid-template-columns: repeat(auto-fit, 272px);
+    justify-content: start;
+
+    @include respond(tablet) {
+      max-width: 864px;
+    }
+
+    @include respond(desktop){
+      max-width: 1152px;
+      grid-template-columns: repeat(auto-fit, 272px);
+    }
+  }
+}

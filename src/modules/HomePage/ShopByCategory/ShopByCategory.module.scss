@@ -1,0 +1,118 @@
+@use '../../../Mixins/Mixins.scss' as *;
+
+.shopByCategory {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-block: 56px;
+
+  @include respond(tablet) {
+    margin-block: 64px;
+    justify-content: start;
+    align-items: start;
+    text-align: left;
+    height: 327px;
+    width: 100%;
+  }
+
+  @include respond(desktop) {
+    height: 508px;
+    margin-block: 80px;
+  }
+}
+
+.shop_title {
+  margin-bottom: 24px;
+}
+
+.good {
+  &_iphone {
+    display: flex;
+    flex-direction: column;
+    background-color: #6d6474;
+    margin-bottom: 24px;
+  }
+
+  &_tablet {
+    display: flex;
+    flex-direction: column;
+    background-color: #8d8d92;
+    margin-bottom: 24px;
+  }
+
+  &_accessorie {
+    display: flex;
+    flex-direction: column;
+    background-color: #d53c51;
+    margin-bottom: 24px;
+  }
+
+  &_title {
+    margin-bottom: 4px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+  }
+
+  &_quantity {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #75767f;
+  }
+
+  &_product {
+    width: 288px;
+    height: 288px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    @include respond(tablet) {
+      width: 187px;
+      height: 187px;
+    }
+
+    @include respond(desktop) {
+      width: 368px;
+      height: 368px;
+    }
+  }
+
+  &_image {
+    width: 100%;
+    height: 100%;
+    object-fit:contain;
+    transition: transform 0.3s ease;
+  }
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include respond(tablet) {
+    flex-direction: row;
+    justify-content: start;
+    width: 100%;
+    height: 327px;
+    gap: 16px;
+  }
+
+  @include respond(desktop) {
+    height: 508px;
+  }
+
+  &_good {
+    display: flex;
+    flex-direction: column;
+    &:hover .good_image {
+      transform: scale(1.1);
+    }
+  }
+}
+
+

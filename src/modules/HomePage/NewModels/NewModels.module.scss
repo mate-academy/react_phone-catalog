@@ -1,0 +1,43 @@
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+
+  &_title {
+    font-size: 22px;
+    font-style: 800;
+    line-height: 140%;
+    width: 70%;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 40%;
+  gap: 16px;
+}
+
+.button {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background-color: #323542;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+
+  &:hover {
+    background-color: #4A4D58;
+  }
+  &:disabled {
+    border: 1px solid #3B3E4A;
+    background-color: #0F1121;
+  }
+}
+
+

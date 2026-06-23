@@ -1,0 +1,124 @@
+@use '../../../../Mixins/Mixins.scss' as *;
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+
+
+  @include respond(tablet) {
+    flex-direction: row-reverse;
+    justify-content: start;
+    gap: 16px;
+  }
+
+  @include respond(desktop) {
+    gap: 64px;
+  }
+
+  &_main {
+    width: 288px;
+    height: 288px;
+    margin-bottom: 16px;
+
+    @include respond(tablet) {
+      width: 288px;
+      height: 288px;
+      margin: 0;
+    }
+
+    @include respond(desktop) {
+      width: 464px;
+      height: 464px;
+    }
+  }
+
+  &_image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin-bottom: 16px;
+
+    @include respond(tablet) {
+      margin: 0;
+    }
+
+    @include respond(desktop) {
+      width: 100%;
+    }
+  }
+
+  &_list {
+    display: flex;
+    justify-content: start;
+    width: 288px;
+    height: 49px;
+    gap: 8px;
+
+    @include respond(tablet) {
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      width: 35px;
+      height: 207px;
+    }
+
+    @include respond(desktop) {
+      align-items: start;
+      width: 80px;
+      height: 464px;
+      gap: 17px;
+    }
+  }
+
+  &_li {
+    width: 52px;
+    height: 100%;
+
+    @include respond(tablet) {
+      width: 100%;
+      height: 35px;
+    }
+    
+    @include respond(desktop) {
+      width: 100%;
+      height: 80px;
+    }
+  }
+
+  &_miniImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #3b3e4a;
+    }
+    &_active {
+      border: 2px solid gray;
+    }
+  }
+
+  &_button {
+    all: unset;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 100%;
+    background-color: #323542;
+    transition:
+      background-color 0.3s ease,
+      transform 0.1s ease;
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+    &:disabled {
+      border: 1px solid #3b3e4a;
+      background-color: #0f1121;
+    }
+  }
+}

@@ -1,0 +1,108 @@
+@use '../../../../Mixins/Mixins.scss' as *;
+
+.underline {
+  width: 100%;
+  height: 1px;
+  background-color: #3b3e4a;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+
+  @include respond(tablet) {
+    margin-bottom: 64px;
+  }
+
+  @include respond(desktop) {
+    width: 50%;
+  }
+
+  &_title {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  &_sections {
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+    margin-bottom: 56px;
+    gap: 32px;
+  }
+
+  .feature {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    &_title {
+      font-weight: 700;
+      font-size: 16px;
+    }
+    &_text {
+      color: #89939a;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+}
+
+.specifications {
+  display: flex;
+  flex-direction: column;
+  
+  @include respond(desktop) {
+    width: 50%;
+  }
+
+  &_title {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  &_list {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  &_options {
+    display: flex;
+    flex-direction: column;
+  }
+  &_values {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_option {
+    color: #89939a;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &_value {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: right;
+  }
+
+  &_cell {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: right;
+  }
+}
+
+.wrapper {
+  @include respond(desktop) {
+    display: flex;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+}

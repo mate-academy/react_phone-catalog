@@ -1,0 +1,115 @@
+@use '../../../Mixins/Mixins.scss' as *;
+
+.embla__slide {
+  flex: 0 0 auto;
+  max-width: 592px;
+  
+  @include respond(desktop) {
+    max-width: 752px;
+  }
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: #161827;
+  width: 100%;
+  height: 160px;
+  scroll-snap-align: start;
+  padding: 16px;
+  gap: 16px;
+  overflow: hidden;
+
+  @include respond (tablet){
+    flex-direction: row;
+    padding: 24px;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 23px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  &_link {
+    display: flex;
+    width: 80px;
+    height: 80px;
+  }
+
+  &_close {
+    all: unset;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    background-color: #161827;
+  }
+
+  &_image {
+    max-height: 100%;
+    max-width: 100%;
+
+    object-fit: contain;
+  }
+
+  &_name {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+  }
+}
+
+.orderInfo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include respond(tablet) {
+    justify-content: end;
+    width: auto;
+    gap: 24px;
+  }
+
+  &_quantity {
+    width: 96px;
+    height: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &_button {
+    all: unset;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #323542;
+    transition:
+      background-color 0.3s ease,
+      transform 0.1s ease;
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+    &:disabled {
+      border: 1px solid #3b3e4a;
+      background-color: #0f1121;
+    }
+  }
+
+  &_price {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+  }
+}

@@ -1,0 +1,15 @@
+.back {
+  margin-bottom: 16px;
+  padding-left: 5px;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 9px;
+
+  &_link {
+    font-weight: 700;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,33 @@
+@use '../../Mixins/Mixins.scss' as *;
+
+.way {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: capitalize;
+
+  margin-block: 24px;
+  
+  @include respond(tablet){
+    margin-top: 24px;
+    margin-bottom: 40px;
+  }
+
+  &_home{
+    cursor: pointer;
+  }
+  &_category{
+    cursor: pointer;
+  }
+
+  &_adres {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: #89939a;
+    text-transform: capitalize;
+  }
+}
