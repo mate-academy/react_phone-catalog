@@ -1,0 +1,74 @@
+.slider {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  gap: 16px;
+
+    @media (max-width: 639px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.window {
+  overflow: hidden;
+  width: 100%;
+  background: rgba(12, 22, 38, 0.65);
+  box-shadow: var(--shadow-soft);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 10.4 / 4;
+  object-fit: cover;
+  display: block;
+
+   @media (max-width: 639px) {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+.arrow {
+  width: 32px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-button);
+  background: var(--color-button);
+  color: #F1F2F9;
+  cursor: pointer;
+  transition: transform var(--transition), background var(--transition), border-color var(--transition);
+
+    &:hover {
+    transform: translateY(-1px);
+    background: #4A4D58;
+  }
+
+    @media (max-width: 639px) {
+    display: none;
+  }
+}
+
+.dots {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  background: var(--color-border);
+  cursor: pointer;
+  border: none;
+}
+
+.dotActive {
+  background: var(--color-accent);
+  border: none;
+  transform: scale(1.15);
+}

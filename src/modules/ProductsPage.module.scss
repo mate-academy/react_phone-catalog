@@ -1,0 +1,96 @@
+.controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--color-text-grey);
+  font-size: 12px;
+}
+
+select {
+  height: 40px;
+  background-color: var(--color-button);
+  color: white;
+  border: 1px solid var(--color-button);
+  outline: none;
+  padding: 0 12px;
+
+  &:hover {
+    border: 1px solid #4A4D58;
+  }
+
+  &:focus {
+    border-color: #905BFF;
+  }
+
+}
+
+.content {
+  flex: 1;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 8px;
+}
+
+.pageButton {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-border);
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  background: #323542;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: transform var(--transition), background var(--transition), border-color var(--transition);
+
+    &:hover {
+    background: #4A4D58;
+  }
+
+    &:first-child {
+      margin-right: 8px;
+    }
+
+    &:last-child {
+      margin-left: 8px;
+    }
+
+    &:disabled {
+    border: 1px solid var(--color-border);
+    color: var(--color-border);
+    background: none;
+    cursor: default;
+  }
+}
+
+.pageNumber {
+  width: 32px;
+  height: 32px;
+  border: 1px solid transparent;
+  gap: 50px;
+  font-size: 14px;
+  color: white;
+  background: #161827;
+}
+
+.active {
+  background-color: #905BFF;
+  border-color: #905BFF;
+}
+
+.count {
+  color: var( --color-text-grey);
+  font-size: 14px;
+}

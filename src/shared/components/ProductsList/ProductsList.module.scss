@@ -1,0 +1,6 @@
+.grid {
+  display: grid;
+  gap: 40px 16px;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 270px);
+}

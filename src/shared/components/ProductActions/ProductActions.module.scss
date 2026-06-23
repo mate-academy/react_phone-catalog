@@ -1,0 +1,44 @@
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.cartButton {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #111;
+  background: var(--background-button);
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.cartButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cartButton:hover:not(:disabled) {
+  background: var(--background-button-hover);
+  transform: translateY(-1px);
+}
+
+.favButton {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-button);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.favButton:hover {
+  background-color: #4A4D58;
+  transform: translateY(-1px);
+}
+
+.favActive {
+  color: #fff;
+}
+
