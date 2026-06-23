@@ -1,0 +1,70 @@
+@mixin on-desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin on-bigTablet {
+  @media (min-width: 811px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: 640px) and (max-width: 810px) {
+    @content;
+  }
+}
+
+@mixin on-mobile {
+  @media (min-width: 320px) and (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 1fr);
+    max-width: 1136px;
+    column-gap: 16px;
+    padding-left: 24px;
+    padding-right: 24px;
+    row-gap: 80px;
+  }
+
+  @include on-bigTablet {
+    grid-template-columns: repeat(12, 1fr);
+    width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+    column-gap: 16px;
+    box-sizing: border-box;
+    row-gap: 64px;
+  }
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    column-gap: 16px;
+    padding-left: 24px;
+    padding-right: 24px;
+    row-gap: 64px;
+  }
+
+  @include on-mobile {
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    column-gap: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    row-gap: 56px;
+  }
+}

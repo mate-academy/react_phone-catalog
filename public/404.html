@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      const path = window.location.pathname;
+      const base = "/react_phone-catalog";
+
+      if (!path.startsWith(base)) {
+        window.location.replace(base + path);
+      }
+    </script>
+    <meta http-equiv="refresh" content="0; url=/react_phone-catalog/index.html" />
+  </head>
+</html>
