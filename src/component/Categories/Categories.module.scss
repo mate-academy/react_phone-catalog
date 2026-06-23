@@ -1,0 +1,65 @@
+@import '../style/index';
+
+.categories {
+  margin: 50px 0;
+
+  @include padding-inline;
+
+  &__title {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__info {
+    margin-top: 4px;
+    color: #89939A;
+  }
+
+    &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+  }
+
+    &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+   &__image {
+    display: block;
+    width: 100%;
+    object-fit: contain;
+    object-position: right bottom;
+    margin-bottom: 24px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    border-radius: 8px;
+
+    @include scale-on-hover;
+
+    &--phones {
+      background-color: #6D6474;
+    }
+    &--tablets {
+      background-color: #8D8D92;
+    }
+    &--accessories {
+      background-color: #D53C51;
+    }
+
+    @include on-tablet {
+      object-fit: contain;
+      object-position: right bottom;
+    }
+  }
+}

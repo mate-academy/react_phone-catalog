@@ -1,0 +1,54 @@
+@import './../style/index';
+
+.product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include padding-inline;
+
+  &__title {
+    @include on-tablet {
+      font-size: 48px;
+    }
+  }
+
+  &__text {
+    color: #89939A;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &__select {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // 🌟 Виправлено описку: прибрали "s" з "2s"
+    gap: 16px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      grid-template-columns: 187px 136px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: 176px 128px;
+    }
+  }
+
+  &__items {
+    display: grid;                         // 🌟 Перевели з flex на grid сітку
+    grid-template-columns: repeat(1, 1fr); // 1 колонка для мобільних пристроїв
+    gap: 24px;                             // Базовий відступ між картками
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr); // 🌟 Строго 2 колонки для планшета (768px)
+      gap: 40px 16px;                        // 40px між рядами, 16px між колонками
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(4, 1fr); // 🌟 4 колонки для комп'ютера (1200px+)
+      gap: 40px 16px;
+    }
+  }
+}

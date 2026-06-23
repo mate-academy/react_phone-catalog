@@ -1,0 +1,63 @@
+@import './../style/index';
+
+.add-selection {
+  display: flex;
+  gap: 8px;
+  height: 40px;
+  width: 100%;
+  justify-content: space-between;
+
+  &__button-cart {
+    width: 100%;
+    height: 40px;
+    background-color: $color-button;
+    color: $color-white;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    border: none;
+    border-radius: 48px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: transparent;
+      border: 1px solid $color-button;
+      color: $color-button;
+    }
+
+    &--active {
+      background-color: transparent;
+      border: 1px solid $color-button;
+      color: $color-button;
+    }
+  }
+
+  &__button-favourites {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background-color: transparent;
+    border: 1px solid $hover-button;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &--active {
+      border-color: $color-elements;
+    }
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
+}

@@ -1,0 +1,111 @@
+@import './../../style/index';
+
+.selector {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__title {
+    color: $color-grey;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+    margin-bottom: 4px;
+    text-align: left;
+  }
+
+  &__dropdown {
+    position: relative;
+    width: 100%;
+  }
+
+  &__select {
+    background-color: $color-white;
+    border: 1px solid $color-elements;
+    border-radius: 8px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+
+  &__text {
+    font-size: 14px;
+    font-weight: 700;
+    color: $color-primary;
+    margin: 0;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  // Перенесли блок :has сюди, ПІСЛЯ базових &__select та &__icon
+  &__dropdown:has(.selector__menu) {
+    .selector__select {
+      border-color: $color-primary;
+    }
+
+    .selector__icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    border: 1px solid $color-elements;
+    border-radius: 8px;
+    width: 100%;
+    padding: 8px 0;
+    background-color: $color-white;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05); // Виправлено: 0px змінено на 0
+  }
+
+  &__item {
+    cursor: pointer;
+    color: $color-grey;
+    background-color: transparent;
+    padding: 10px 12px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    border: none;
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: #F1F2F4;
+      color: $color-primary;
+    }
+
+    &--active {
+      color: $color-primary;
+      font-weight: 700;
+      background-color: transparent;
+    }
+  }
+}

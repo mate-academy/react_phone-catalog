@@ -1,0 +1,28 @@
+@import './../../style/utils/mexin.module';
+
+.grid-favourites__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 16px;
+  }
+
+  @include on-desktop {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 16px;
+  }
+}
+
+.grid-favourites__item {
+  width: auto;
+
+  @include on-tablet {
+    width: 100%;
+  }
+}
