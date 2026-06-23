@@ -1,1 +1,14 @@
-// not empty
+.App {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(15, 17, 33);
+  height: 100vh;
+}
+
+.main {
+  flex-grow: 1;
+}
+
+.lock {
+  overflow: hidden;
+}

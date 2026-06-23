@@ -1,0 +1,83 @@
+@import '/src/style.scss';
+
+.category {
+  @include sectionPadding;
+
+  &__title {
+    @include section-title;
+  }
+
+  &__item {
+    max-width: 368px;
+    width: 100%;
+  }
+
+  &__list {
+    @include flex-between-center();
+    gap: 16px;
+
+    @include onPhone() {
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+    }
+  }
+
+  &__imageBox {
+    min-height: 368px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 24px;
+
+    &Phones {
+      background-color: rgb(109, 100, 116);
+    }
+
+    &Tablets {
+      background-color: rgb(141, 141, 146);
+    }
+
+    &Accessories {
+      background-color: rgb(213, 60, 81);
+    }
+
+    @include onTablet() {
+      min-height: 187px;
+    }
+
+    @include onPhone() {
+      min-height: 288px;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    height: 100%;
+    left: 35%;
+    bottom: -70px;
+    @include scaleImage();
+  }
+
+  &__name {
+    color: $gray-white-text;
+    font-size: 20px;
+    @extend %mont-700;
+    line-height: 26px;
+    margin-bottom: 4px;
+
+    @include onTablet() {
+      @include mont-400;
+    }
+  }
+
+  &__models {
+    color: $gray-text;
+    font-size: 14px;
+    line-height: 21px;
+    @extend %mont-600;
+
+    @include onTablet() {
+      @include mont-400;
+    }
+  }
+}

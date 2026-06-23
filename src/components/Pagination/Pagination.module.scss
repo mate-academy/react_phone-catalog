@@ -1,0 +1,72 @@
+@import '/src/style.scss';
+
+.pagination {
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &__num {
+    color: $gray-white-text;
+    font-size: 14px;
+    @extend %mont-600;
+    line-height: 21px;
+    background-color: #161827;
+    @include flex-center();
+    width: 32px;
+    height: 32px;
+    transition: background-color 0.3s ease-in;
+
+    &Active {
+      background-color: #905bff;
+    }
+
+    @include onTablet() {
+      @include mont-400();
+    }
+
+    &:hover {
+      background-color: #3b3e4a;
+    }
+  }
+
+  &__nav {
+    background-color: #323542;
+    border: 1px solid transparent;
+
+    &Disabled {
+      background-color: transparent;
+      border: 1px solid #3b3e4a;
+    }
+  }
+
+  &__btn {
+    padding: 8px;
+    transition: background-color 0.3s ease-in;
+    @include flex-center();
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+
+    &Prev {
+      transform: rotate(180deg);
+    }
+
+    &Disabled {
+      background-color: transparent;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}

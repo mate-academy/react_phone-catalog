@@ -1,0 +1,52 @@
+@import '/src/style.scss';
+
+.breadcrumbs {
+  margin-bottom: 40px;
+
+  @include onPhone() {
+    margin-bottom: 24px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__text {
+    display: block;
+  }
+
+  &__icon {
+   @include hoverOpacity();
+  }
+
+  &__item {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__text,
+  &__link {
+    font-size: 12px;
+    @extend %mont-700;
+    line-height: 15px;
+
+    @include onTablet() {
+      @include mont-400();
+    }
+  }
+
+  &__link {
+    color: $gray-white-text;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: #905bff;
+    }
+  }
+
+  &__text {
+    color: $gray-text;
+  }
+}

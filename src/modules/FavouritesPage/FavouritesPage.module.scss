@@ -1,0 +1,51 @@
+@import '../../style.scss';
+
+.favourites {
+  padding: 88px 0 80px 0;
+
+  @include onTablet() {
+    padding-block: 72px 64px;
+  }
+
+  @include onPhone() {
+    padding-bottom: 56px;
+  }
+
+  &__title {
+    color: $gray-white-text;
+    font-size: 48px;
+    line-height: 56px;
+    @extend %mont-700;
+    margin-bottom: 8px;
+
+    @include onTablet() {
+      @include mont-600();
+    }
+
+    @include onPhone() {
+      font-size: 32px;
+      @include mont-400();
+      line-height: 41px;
+    }
+  }
+
+  &__totalItems {
+    color: $gray-text;
+    font-size: 14px;
+    line-height: 21px;
+    @extend %mont-600;
+    display: block;
+    margin-bottom: 40px;
+
+    @include onTablet() {
+      @include mont-400();
+    }
+  }
+
+  &__empty {
+    color: $gray-white-text;
+    font-size: 20px;
+    line-height: 26px;
+    @extend %mont-700;
+  }
+}

@@ -1,0 +1,104 @@
+@import '../../style.scss';
+
+.customSelect {
+  &__label {
+    color: $gray-text;
+    font-size: 12px;
+    @extend %mont-700;
+    line-height: 15px;
+    max-width: 176px;
+    width: 100%;
+
+    @include onTablet() {
+      @include mont-400();
+    }
+
+    & span {
+      display: block;
+      margin-bottom: 4px;
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__select {
+    color: $gray-white-text;
+    font-size: 14px;
+    line-height: 21px;
+    @extend %mont-700;
+    background-color: $gray-dark;
+    border: 1px solid transparent;
+    padding: 10px 28px 10px 12px;
+    width: 100%;
+    cursor: pointer;
+    opacity: 1;
+    position: relative;
+
+    @include onTablet() {
+      @include mont-400();
+    }
+
+    &.open {
+      border: 1px solid #905bff;
+    }
+
+    &:hover .customSelect__dropdownArrow {
+      opacity: 0.6;
+    }
+  }
+
+  &__dropdownArrow {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    right: 12px;
+    transition:
+      transform 0.3s ease-in-out,
+      opacity 0.3s ease-in-out;
+
+    &Reverse {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+
+  &__options {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    border: 1px solid #3b3e4a;
+    box-shadow: 0 2px 15px 0 #0000000d;
+    z-index: 10;
+    max-height: 144px;
+    overflow-y: auto;
+    padding-block: 8px;
+    background-color: #0f1121;
+  }
+
+  &__option {
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 21px;
+    color: $gray-text;
+    cursor: pointer;
+    transition:
+      background-color 0.3s ease-in-out,
+      color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #323542;
+      color: $gray-white-text;
+    }
+  }
+
+  &__active {
+    background-color: #1f2233;
+    color: $gray-white-text;
+    font-weight: 600;
+  }
+}

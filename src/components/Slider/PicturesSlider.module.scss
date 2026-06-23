@@ -1,0 +1,139 @@
+@import '/src/style.scss';
+
+.picturesSlider {
+  padding: 120px 0 80px 0;
+
+  @include onTablet() {
+    padding: 80px 0 64px 0;
+  }
+
+  @include onPhone() {
+    padding: 72px 0 56px 0;
+  }
+
+  &__inner {
+    --columns: 24;
+    display: grid;
+    column-gap: 16px;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    max-width: 1201px;
+    margin-inline: auto;
+    padding: 0 32px;
+
+    @include onTablet() {
+      --columns: 12;
+      padding: 0 24px;
+    }
+
+    @include onPhone() {
+      --columns: 4;
+      padding: 0;
+    }
+  }
+
+  &__title {
+    color: $gray-white-text;
+    font-size: 48px;
+    @extend %mont-700;
+    line-height: 56px;
+    margin-bottom: 56px;
+    grid-column: 1 / -1;
+
+    @include onTablet() {
+      @include mont-600;
+      margin-bottom: 32px;
+    }
+
+    @include onPhone() {
+      font-size: 32px;
+      margin-bottom: 24px;
+      line-height: 41px;
+      padding: 0 16px;
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    justify-content: space-around;
+
+    @include onPhone() {
+      display: none;
+    }
+  }
+
+  &__box {
+    margin-inline: 0 !important;
+    grid-column: 2 / var(--columns) !important;
+    grid-area: none;
+
+    @include onTablet() {
+      grid-column: 2 / var(--columns) !important;
+    }
+
+    @include onPhone() {
+      grid-column: 1 / -1 !important;
+    }
+  }
+
+  &__image {
+    background-color: black;
+    height: 400px;
+    width: 100%;
+
+    @include onTablet() {
+      height: 189px;
+    }
+
+    @include onPhone() {
+      height: 320px;
+    }
+  }
+
+  :global(.swiper-slide) {
+    @include onPhone() {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__btn {
+    background-color: $gray-dark;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 32px;
+    transition: background-color 0.3s ease-in-out;
+    @include flex-center();
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+
+    &Prev {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__pagination {
+    margin-top: 18px;
+    grid-column: 1 / -1;
+    @include flex-center();
+    gap: 14px;
+
+    @include onPhone() {
+      padding: 0 16px;
+    }
+
+    :global(.swiper-pagination-bullet) {
+      width: 14px;
+      height: 4px;
+      background-color: $pagination-color;
+      border-radius: 0 !important;
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    :global(.swiper-pagination-bullet-active) {
+      background-color: $gray-white-text;
+    }
+  }
+}
