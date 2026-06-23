@@ -1,0 +1,12 @@
+@use '../../../../styles/mixins' as *;
+
+.grid {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 16px;
+  padding-top: 24px;
+
+  & > * {
+    width: 272px;
+  }
+}
