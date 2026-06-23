@@ -1,0 +1,156 @@
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap';
+@import '../../mixins';
+
+body {
+  font-family: Montserrat, sans-serif;
+}
+
+.product {
+  height: 440px;
+  flex: 1 1 250px;
+  border: 1px solid #E2E6E9;
+  padding: 32px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 40px;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  @include on-tablet {
+    height: 506px;
+    flex: 1 1 30%;
+  }
+
+  &_block {
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include on-tablet {
+      height: 196px;
+    }
+
+
+    &_img {
+      object-fit: contain;
+      height: 100%;
+      display: block;
+    }
+  }
+
+  &_title {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+    margin: 24px 0 0;
+    height: 42px;
+  }
+
+  &_price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &_discount {
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+      letter-spacing: 0%;
+      margin: 0;
+      padding-top: 0;
+    }
+
+    &_regular {
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 140%;
+      text-decoration: line-through;
+      color: #89939A;
+      margin: 0;
+    }
+  }
+
+  &_border {
+    height: 0;
+    border-bottom: 1px solid #E2E6E9;
+    margin-top: 8px;
+  }
+
+  &_table {
+    width: 100%;
+    margin-top: 8px;
+    padding: 8px 0;
+
+    tr {
+      margin-top: 8px;
+    }
+
+    &_title {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 100%;
+      color: #89939A;
+
+    }
+
+    &_mean {
+      text-align: right;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 100%;
+      color: #313237;
+    }
+  }
+
+  &_buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    gap: 8px;
+    height: 40px;
+
+    &_cart {
+      flex: 1;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+      color: #FFF;
+      background-color: #313237;
+      border: 0;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 #17203166;
+      }
+
+      &_active {
+        background-color: white;
+        flex: 1;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        text-align: center;
+        color: #27AE60;
+        border: 1px solid #E2E6E9;
+      }
+    }
+
+    &_like {
+      height: 40px;
+      width: 40px;
+      background-color: white;
+      border: 1px solid #B4BDC3;
+
+      &:hover {
+        border: 1px solid #313237;
+      }
+
+    }
+  }
+
+}

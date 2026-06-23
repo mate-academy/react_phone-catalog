@@ -1,0 +1,80 @@
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap';
+@import '../../mixins';
+
+.main {
+  margin: 72px 16px 0;
+  font-family: Montserrat, sans-serif;
+
+  @include on-tablet {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+
+  @include on-desktop {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+}
+
+.home {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  @include on-tablet {
+    margin-left: 8px;
+  }
+
+  &_text {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0%;
+    color: #89939A;
+    margin: 0;
+    text-transform: capitalize;
+  }
+}
+
+.title {
+  margin: 24px 0 0;
+  font-weight: 800;
+  font-style: Bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  text-transform: capitalize;
+  color: #313237;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    margin-top: 40px;
+  }
+
+  &_descript {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: #89939A;
+    margin: 8px 0 0;
+  }
+}
+
+.products {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+  gap: 16px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+    width: 1200px;
+  }
+}
+

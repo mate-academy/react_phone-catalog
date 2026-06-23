@@ -1,0 +1,84 @@
+@import '../../mixins';
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap';
+
+.main {
+  margin-top: 64px;
+  box-shadow: 0 -1px 0 0 #E2E6E9;
+  padding: 32px 16px;
+  width: 100%;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+  &_links {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 12px;
+      margin-top: 0;
+    }
+
+    @include on-desktop {
+      gap: 100px;
+    }
+
+    & a {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      text-decoration: none;
+      color: #89939A;
+      text-transform: uppercase;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &_backTo {
+    margin-top: 32px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+
+    @include on-tablet {
+      margin-top: 0;
+    }
+
+    & p {
+      margin: 0;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 100%;
+      text-align: right;
+      color: #89939A;
+    }
+
+    & button {
+      height: 32px;
+      width: 32px;
+      border: 1px solid #B4BDC3;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
