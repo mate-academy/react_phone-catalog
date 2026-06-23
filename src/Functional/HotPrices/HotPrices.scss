@@ -1,0 +1,238 @@
+@use '../../mixins.scss' as *;
+
+.hot-section {
+  position: relative;
+}
+
+.hot {
+  margin-top: 40px;
+  box-sizing: border-box;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    height: 41px;
+  }
+
+  &__title {
+    color: #F1F2F9;
+    font-family: 'Mont', Montserrat, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__nav-btn {
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    border: 1px solid #3B3E4A;
+    color: #F1F2F9;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s ease, opacity 0.3s ease;
+    border-radius: 0;
+    opacity: 0.3;
+    cursor: not-allowed;
+
+    &:hover {
+      border-color: #3B3E4A;
+    }
+
+    &:not(.swiper-button-disabled) {
+      opacity: 1;
+      cursor: pointer;
+
+      &:hover {
+        border-color: #F1F2F9;
+      }
+    }
+  }
+
+  &__swiper {
+    width: 100%;
+  }
+
+  &__slide {
+    height: auto;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    background-color: #161827;
+    border: 1px solid #3B3E4A;
+    padding: 32px;
+    height: 506px;
+    text-align: left;
+    transition: box-shadow 0.3s ease;
+    box-sizing: border-box;
+    width: 100%;
+
+    &:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    a {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+    }
+  }
+
+  &__card-image {
+    width: 208px;
+    height: 196px;
+    object-fit: contain;
+    margin: 0 auto 16px auto;
+    display: block;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+
+    @include on-tablet {
+      width: 224px;
+      height: 196px;
+    }
+
+    @include on-phone {
+      width: 224px;
+      height: 130px;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__card-title {
+    font-family: 'Mont', Montserrat, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: #F1F2F9;
+    line-height: 21px;
+    min-height: 42px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__card-prices {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    align-items: baseline;
+  }
+
+  &__card-price {
+    font-family: 'Mont', Montserrat, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #F1F2F9;
+    line-height: 31px;
+  }
+
+  &__card-old-price {
+    font-family: 'Mont', Montserrat, sans-serif;
+    font-size: 14px;
+    color: #75767F;
+    text-decoration: line-through;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
+  &__card-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 0;
+    border-top: 1px solid #3B3E4A;
+    margin-bottom: 16px;
+  }
+
+  &__card-spec {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__card-spec-label {
+    color: #75767F;
+    font-weight: 700;
+  }
+
+  &__card-spec-value {
+    color: #F1F2F9;
+    font-weight: 700;
+  }
+
+  &__card-actions {
+    margin-top: auto;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__card-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    font-family: 'Mont', Montserrat, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  &__card-btn--add {
+    flex: 1;
+    background-color: #905BFF;
+    color: white;
+    white-space: nowrap;
+
+    &:hover:not(.is-added) {
+      background-color: #A378FF;
+    }
+
+    &.is-added {
+      background-color: #3B3E4A;
+      color: #F1F2F9;
+      cursor: pointer;
+    }
+  }
+
+  &__card-btn--favorite {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: 1px solid #3B3E4A;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    &:hover {
+      border-color: #F1F2F9;
+    }
+  }
+
+  &__card-btn-icon {
+    width: 16px;
+    height: 16px;
+  }
+}

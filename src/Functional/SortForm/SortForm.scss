@@ -1,0 +1,84 @@
+@use '../../mixins.scss' as *;
+
+.sort-form {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 24px;
+
+  @include on-phone {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  &__top {
+    @include on-phone {
+      display: block;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    gap: 24px;
+    align-items: flex-end;
+
+    @include on-phone {
+      width: 100%;
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &__label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #75767F;
+    margin-bottom: 8px;
+    white-space: nowrap;
+  }
+
+  &__input,
+  &__select {
+    color: #F1F2F9;
+    background-color: #323542;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid #3B3E4A;
+    border-radius: 0;
+    outline: none;
+    transition: border-color 0.2s ease;
+    font-family: 'Mont', Montserrat, sans-serif;
+
+    &::placeholder {
+      color: #F1F2F9;
+    }
+
+    &:focus,
+    &:hover {
+      border-color: #F1F2F9;
+    }
+
+    option {
+      background-color: #161827;
+      color: #f9f4f1;
+    }
+  }
+
+  &__select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('./icons/arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px 16px;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+}

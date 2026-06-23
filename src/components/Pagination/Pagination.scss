@@ -1,0 +1,84 @@
+.pagination {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: 639px) {
+    width: 248px;
+    flex-wrap: wrap;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    border: 1px solid #3b3e4a;
+    border-radius: 0;
+    color: #f1f2f9;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+
+    &--arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    &--nav {
+      background-color: transparent;
+      border: 1px solid #3b3e4a;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & img {
+        width: 32px;
+        height: 32px;
+      }
+
+      &:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+
+      &:not(:disabled):hover {
+        background-color: #3b3e4a;
+      }
+    }
+
+    &.active {
+      background-color: #905bff;
+      color: #f1f2f9;
+      border-color: #905bff;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled):not(.active) {
+      border-color: #f1f2f9;
+    }
+  }
+
+  &__arrow-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
