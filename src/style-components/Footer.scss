@@ -1,0 +1,70 @@
+@import 'colors';
+
+footer {    
+    display: flex;
+    background-color: $white;
+    justify-content: space-between;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #6c757d;
+    border-top: 1px solid $icons;
+
+
+    .footer {
+        &_title {
+            margin-top: 10px;
+            margin-left: 10px;
+            align-items: center;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 25px;
+            font-weight: bold;
+            color: $primary;
+
+            &_first {
+                display: flex;
+                align-items: center;
+                height: 20px;
+            }
+
+            &_second {
+                margin: 0;
+            }
+            
+            &_image {
+                width: 10px;
+                height: 15px;
+            }
+        }
+
+        &_image {
+                width: 10px;
+                height: 15px;
+        }
+
+        &_buttons{
+          display: flex;
+          justify-content: space-between;
+        }
+
+        &__button{
+          background-color: transparent;
+          border: none;
+          color: $icons;
+          cursor: pointer;
+
+          &:hover {
+              color: $primary;
+          }            
+          &__right {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+              :hover {
+                 opacity: 0.7;
+              }
+            }
+      }
+  }
+}
