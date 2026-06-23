@@ -1,0 +1,174 @@
+@use '../../Mixins/Mixins.scss' as *;
+
+.embla__slide {
+  flex: 0 0 auto;
+}
+
+.card {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  background-color: #161827;
+  width: 212px;
+  height: 439px;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px;
+  gap: 8px;
+
+  @include respond(desktop) {
+    width: 272px;
+    height: 506px;
+  }
+}
+
+.image_block {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+
+  @include respond(tablet) {
+    max-width: 173px;
+    max-height: 202px;
+  }
+
+  @include respond(desktop) {
+    max-width: 208px;
+    max-height: 196px;
+  }
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &_photo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    padding-bottom: 16px;
+  }
+}
+
+.link_block {
+  display: flex;
+  justify-content: start;
+  width: 100%;
+
+  &_text {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
+
+.price_block {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+
+  &_text {
+    display: block;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+  }
+
+  &_discount {
+    display: block;
+    color: #89939a;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 100%;
+    text-decoration: line-through;
+  }
+}
+
+.border {
+  width: 100%;
+  height: 1px;
+  background-color: #3b3e4a;
+}
+
+.block_parameters {
+  width: 100%;
+  padding-block: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &_parameter {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_parameter_name {
+    color: #89939a;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+  }
+
+  &_parameter_value {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: #f1f2f9;
+  }
+}
+
+.action {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  &_button {
+    all: unset;
+    cursor: pointer;
+  }
+}
+
+.add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #905bff;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  flex: 1;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #a378ff;
+  }
+}
+
+.heart {
+  background-color: #323542;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #4a4d58;
+  }
+
+  &:active {
+    background-color: #3b3e4a;
+  }
+}
