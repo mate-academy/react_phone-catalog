@@ -1,0 +1,48 @@
+import React, { useCallback, useEffect, useState } from 'react';
+import { Catalog } from '../../components/Catalog';
+import { CatalogProducts, CategoriesType } from '../../types/Types';
+import { getProductsByCategory } from '../../api/product';
+
+interface CategoryPageProps {
+  title: string;
+  category: CategoriesType;
+}
+
+export const CategoryPage: React.FC<CategoryPageProps> = ({
+  title,
+  category,
+}) => {
+  const [products, setProducts] = useState<CatalogProducts[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [errorMessage, setErrorMessage] = useState<string>('');
+
+  const fetchProducts = useCallback(async () => {
+    setIsLoading(true);
+    setErrorMessage('');
+
+    try {
+      const data = await getProductsByCategory(category);
+
+      setProducts(data);
+    } catch (error) {
+      setErrorMessage('Something went wrong. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  }, [category]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
+
+  return (
+    <Catalog
+      title={title}
+      products={products}
+      errorMessage={errorMessage}
+      isLoading={isLoading}
+      onReload={fetchProducts}
+      category={category}
+    />
+  );
+};
