@@ -1,0 +1,145 @@
+$white: #f1f2f9;
+$secondary: #89939a;
+$accent: #313237;
+$bg-dark: #0f1117;
+$border-color: #323542;
+
+.cart-page {
+  padding-bottom: 0;
+  padding-top: 48px;
+
+  @media (min-width: 640px) {
+    padding-top: 0;
+  }
+
+  &__container {
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 16px;
+
+    @media (min-width: 640px) {
+      padding: 0 32px;
+    }
+
+    @media (min-width: 1200px) {
+      max-width: 1136px;
+      padding: 0;
+    }
+  }
+
+  &__back {
+    background: none;
+    border: none;
+    color: $white;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 24px 0;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &-icon {
+      width: 16px;
+      height: 16px;
+      display: block;
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  &__title {
+    color: $white;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    margin: 0 0 32px;
+    letter-spacing: -0.01em;
+
+    @media (min-width: 640px) {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+
+    @media (max-width: 991px) {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 32px;
+    }
+  }
+
+  &__list {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.summary {
+  padding: 24px;
+  background-color: #161827;
+  border: 1px solid $border-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+
+  @media (min-width: 992px) {
+    width: 368px;
+    flex-shrink: 0;
+  }
+
+  &__total {
+    color: $white;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    color: $secondary;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background: $border-color;
+    margin-bottom: 24px;
+  }
+
+  &__checkout-btn {
+    width: 100%;
+    height: 48px;
+    background: #8a4fff;
+    color: #fff;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(138, 79, 255, 0.2);
+
+    &:hover {
+      background: #9d6fff;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}

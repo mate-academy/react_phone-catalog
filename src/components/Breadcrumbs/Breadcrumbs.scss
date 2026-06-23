@@ -1,0 +1,58 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  &__home {
+    width: 16px;
+    height: 16px;
+    display: block;
+    background: url('/img/icons/home.svg') no-repeat center;
+    background-size: contain;
+    filter: brightness(0) invert(1);
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__separator {
+    width: 16px;
+    height: 16px;
+    background: url('/img/icons/arrow-right.svg') no-repeat center;
+    background-size: contain;
+    filter: brightness(0) invert(0.6);
+    opacity: 1;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #fff !important;
+    font-weight: 700;
+    font-size: 12px;
+    transition: opacity 0.3s;
+
+    &:visited {
+      color: #fff;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__current {
+    font-weight: 700;
+    font-size: 12px;
+    color: #89939a;
+    cursor: default;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+  }
+}

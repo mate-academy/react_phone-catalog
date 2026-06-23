@@ -1,0 +1,44 @@
+.sort-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #89939a;
+  }
+
+  &__select {
+    height: 40px;
+    padding: 0 12px;
+    background-color: #323542;
+    border: none;
+    color: #f1f2f9;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    border-radius: 0;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 6L8 10L4 6' stroke='%23F1F2F9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+
+    padding-right: 40px;
+
+    &:hover {
+      background-color: #4a4d58;
+      border-color: #4a4d58;
+    }
+
+    option {
+      background-color: #0f1117;
+      color: #f1f2f9;
+    }
+  }
+}

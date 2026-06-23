@@ -1,0 +1,148 @@
+.banner-section {
+  padding-top: 32px;
+  max-width: 1136px;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @media (min-width: 640px) {
+    padding-top: 56px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 24px;
+    text-align: left;
+
+    @media (min-width: 640px) {
+      font-size: 48px;
+      line-height: 56px;
+      margin-bottom: 32px;
+    }
+  }
+}
+
+.banner {
+  &__main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 0;
+    height: 400px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    @media (min-width: 640px) {
+      grid-template-columns: 32px 1fr 32px;
+      grid-column-gap: 16px;
+    }
+  }
+
+  &__viewer {
+    grid-column: 1;
+
+    @media (min-width: 640px) {
+      grid-column: 2;
+    }
+
+    overflow: hidden;
+    height: 100%;
+  }
+
+  &__list {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  &__slide {
+    min-width: 100%;
+    height: 100%;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: 8px;
+  }
+
+  &__btn {
+    display: none;
+
+    @media (min-width: 640px) {
+      display: flex;
+      border: none;
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 32px;
+      background-color: #323542;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #4a4d58;
+      }
+    }
+
+    &--prev {
+      grid-column: 1;
+      &::after {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-left: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        transform: rotate(45deg);
+        margin-left: 4px;
+      }
+    }
+
+    &--next {
+      grid-column: 3;
+      &::after {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-right: 2px solid #fff;
+        border-top: 2px solid #fff;
+        transform: rotate(45deg);
+        margin-right: 4px;
+      }
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  &__dot {
+    border: none;
+    padding: 0;
+    width: 14px;
+    height: 4px;
+    background-color: #323542;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &.is-active {
+      background-color: #f1f2f9;
+    }
+  }
+}

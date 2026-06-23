@@ -1,0 +1,51 @@
+.pagination {
+  display: flex;
+  margin-top: 40px;
+  margin-bottom: 80px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+
+  &__btn {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #323542;
+    background-color: transparent;
+    color: #f1f2f9;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 0;
+
+    // Сначала специфичные состояния (выше hover)
+    &.is-active {
+      background-color: #8e7cea;
+      border-color: #8e7cea;
+      color: #fff;
+    }
+
+    &:disabled {
+      cursor: default;
+      opacity: 0.5;
+    }
+
+    // Hover идет после них
+    &:hover:not(:disabled, .is-active) {
+      border-color: #f1f2f9;
+    }
+
+    &--prev {
+      background: url('../../../public/img/icons/arrow-left.svg') no-repeat center #323542;
+    }
+
+    &--next {
+      background: url('../../../public/img/icons/arrow-left.svg') no-repeat center #323542;
+      transform: rotate(180deg);
+    }
+  }
+}

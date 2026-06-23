@@ -1,0 +1,156 @@
+.product-card {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  flex-shrink: 0;
+  flex-grow: 0;
+  padding: 16px;
+  background-color: #161827;
+  border: 1px solid #3b3e49;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+
+  @media (min-width: 640px) {
+    padding: 32px;
+  }
+
+  &:hover {
+    border-color: #f1f2f9;
+  }
+
+  &__image-container {
+    display: flex;
+    width: 100%;
+    height: 160px;
+    margin-bottom: 24px;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 640px) {
+      height: 196px;
+    }
+  }
+
+  &__image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    margin: 0 0 8px;
+    min-height: 42px;
+    color: #f1f2f9;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
+  &__price {
+    display: flex;
+    margin-bottom: 8px;
+    align-items: baseline;
+    gap: 8px;
+
+    &-new {
+      color: #f1f2f9;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    &-old {
+      color: #75767f;
+      font-size: 14px;
+      text-decoration: line-through;
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    margin-bottom: 8px;
+    background-color: #3b3e49;
+  }
+
+  &__specs {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+
+    &-label {
+      color: #75767f;
+    }
+
+    &-value {
+      font-weight: 600;
+      color: #f1f2f9;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    margin-top: auto;
+    gap: 8px;
+  }
+
+  &__btn-cart {
+    flex: 1;
+    height: 40px;
+    border: none;
+    background-color: #8970ff;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #a38fff;
+    }
+
+    &.is-active {
+      border: 1px solid #3b3e49;
+      background-color: transparent;
+      color: #f1f2f9;
+    }
+  }
+
+  &__btn-fav {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #3b3e49;
+    background-color: #323542;
+    cursor: pointer;
+
+    .product-card__icon-heart {
+      width: 16px;
+      height: 16px;
+      background: url('/img/icons/heart.svg') no-repeat center;
+      background-size: contain;
+    }
+
+    &.is-active .product-card__icon-heart {
+      background: url('/img/icons/heart-filled.svg') no-repeat center;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    width: 272px !important;
+    height: 506px !important;
+    min-width: 272px !important;
+    max-width: 272px !important;
+  }
+}
