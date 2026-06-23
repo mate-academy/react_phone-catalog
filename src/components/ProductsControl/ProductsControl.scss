@@ -1,0 +1,40 @@
+@import '../../styles/variables';
+
+.products-controls {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__label {
+    color: var(--color-secondary);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  &__select {
+    height: 40px;
+    padding: 0 12px;
+    color: var(--color-primary);
+    background-color: var(--color-icons);
+    border: 1px solid var(--color-icons);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid var(--color-hover-bg);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-accent);
+    }
+  }
+}

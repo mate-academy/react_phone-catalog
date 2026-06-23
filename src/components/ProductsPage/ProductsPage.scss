@@ -1,0 +1,39 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.products-page {
+  display: flex;
+  flex-direction: column;
+  
+  &__top {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    margin-top: 40px;
+    margin-bottom: 8px;
+    color: var(--color-primary);
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+  }
+
+  &__amount {
+    color: var(--color-secondary);
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  }
+}

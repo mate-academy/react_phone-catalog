@@ -1,0 +1,24 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.products-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  .product-card {
+    width: 100%;
+  }
+}

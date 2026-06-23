@@ -1,0 +1,36 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 0;
+
+  &__image {
+    width: 320px;
+    margin-bottom: 32px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    color: var(--color-primary);
+    font-size: 48px;
+    font-weight: 800;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 220px;
+    height: 48px;
+    color: var(--color-primary);
+    background-color: var(--color-accent);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+
+    @include hover(background-color, $color-accent-hover);
+  }
+}

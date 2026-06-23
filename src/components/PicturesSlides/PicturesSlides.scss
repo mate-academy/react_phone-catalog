@@ -1,0 +1,69 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.pictures-slider {
+  margin-bottom: 80px;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 32px 1fr 32px;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+
+    @include on-tablet {
+      height: 400px;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__button {
+    color: var(--color-primary);
+    background-color: var(--color-icons);
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-hover-bg);
+    }
+
+    body.light-theme & {
+      background: $color-light-white;
+      border: 1px solid $color-light-icons;
+    }
+
+    body.light-theme &:hover {
+      border: 1px solid $color-dark-surface2;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    padding: 0;
+    background-color: var(--color-elements);
+    border: none;
+    cursor: pointer;
+
+    &--active {
+      background-color: var(--color-primary);
+    }
+  }
+}
