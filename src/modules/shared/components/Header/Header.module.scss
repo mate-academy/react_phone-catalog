@@ -1,0 +1,143 @@
+@import '../../styles/utils/viriables';
+@import '../../styles/utils/mixins';
+
+.header {
+  height: 48px;
+  border-bottom: 1px solid $color-icons;
+  background-color: $color-white;
+  z-index: 100;
+  display: flex;
+  position: sticky;
+  top: 0;
+
+  @include on-desktop {
+    height: 64px;
+  }
+}
+
+.logoLink {
+  display: block;
+}
+
+.logo {
+  height: 22px;
+  width: 64px;
+  margin: 13px 16px;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-desktop {
+    width: 80px;
+    height: 28px;
+    margin: 18px 24px;
+  }
+}
+
+.nav {
+  display: flex;
+  margin-left: 24px;
+  flex: 1;
+  justify-content: end;
+
+  @include on-tablet {
+    justify-content: space-between;
+  }
+}
+
+.navLinks {
+  display: none;
+  gap: 32px;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.navLink {
+  text-decoration: none;
+  position: relative;
+  line-height: 48px;
+  height: 48px;
+  color: $color-secondary;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 4%;
+
+  @include on-desktop {
+    line-height: 64px;
+    height: 64px;
+  }
+
+  @include link-underline($color-primary);
+}
+
+.navList > :first-child {
+  margin-left: 0;
+}
+
+.iconsMobile {
+  display: flex;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.icons {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.iconLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  width: 48px;
+  box-sizing: border-box;
+  border-left: 1px solid $color-icons;
+  position: relative;
+
+  @include on-desktop {
+    height: 64px;
+    width: 64px;
+  }
+
+  @include link-underline($color-primary);
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.counter {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+
+  font-weight: 700;
+  font-size: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-white;
+  background-color: $color-red;
+  border: 1px solid $color-white;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+
+  @include on-desktop {
+    top: 14px;
+    right: 14px;
+  }
+}

@@ -1,0 +1,62 @@
+@import '../../shared/styles/utils/viriables';
+@import '../../shared/styles/utils/mixins';
+
+.sectionTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 800;
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px 16px;
+
+  @include on-tablet {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.categoryLink {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+
+.categoryImg {
+  position: absolute;
+  width: 100%;
+  top: 20%;
+  left: 20%;
+
+  @include hover(transform, scale(1.1));
+}
+
+.categoryInfoTitle {
+  margin-top: 24px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.categoryInfoCount {
+  margin-top: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  color: $color-secondary;
+}
+
+.categoryLinkPhones {
+  background-color: $color-bg-category-phones;
+}
+
+.categoryLinkTablets {
+  background-color: $color-bg-category-tablets;
+}
+
+.categoryLinkAccessories {
+  background-color: $color-bg-category-accessories;
+}

@@ -1,0 +1,20 @@
+@import '../shared/styles/utils/viriables';
+@import '../shared/styles/utils/mixins';
+
+.sectionTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 800;
+  font-size: 32px;
+  margin-bottom: 24px;
+  margin-top: 40px;
+}
+
+.count {
+  font-weight: 600;
+  font-size: 14px;
+  color: $color-secondary;
+  margin-top: 8px;
+  margin-bottom: 40px;
+}

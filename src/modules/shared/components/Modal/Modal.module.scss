@@ -1,0 +1,49 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1000;
+}
+
+.modal {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+
+  width: 90%;
+  max-width: 420px;
+
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+
+  animation: scale-in 0.3s ease;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  font-size: 18px;
+  line-height: 1;
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

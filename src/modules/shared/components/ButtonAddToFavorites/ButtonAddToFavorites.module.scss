@@ -1,0 +1,24 @@
+@import '../../styles/utils/viriables';
+@import '../../styles/utils/mixins';
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  box-sizing: border-box;
+  border: 1px solid $color-icons;
+  background-color: $color-white;
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $color-primary;
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}

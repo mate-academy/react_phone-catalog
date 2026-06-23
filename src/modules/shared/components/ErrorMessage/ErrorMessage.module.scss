@@ -1,0 +1,29 @@
+@import '../../styles/utils/viriables';
+@import '../../styles/utils/mixins';
+
+.errorMessageBlock{
+  margin: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.danger{
+  display: flex;
+  color: $color-red;
+}
+
+.iconLink {
+  margin-left: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  box-sizing: border-box;
+  border: 0.1px solid $color-icons;
+  position: relative;
+}
+
+.iconLinkIcon{
+  color: $color-primary;
+}
