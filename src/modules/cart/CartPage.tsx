@@ -1,6 +1,6 @@
+import styles from './CartPage.module.scss';
 import { useEffect, useState } from 'react';
 import { CartContent } from './CartContent';
-import styles from './CartPage.module.scss';
 import { Loader } from '../shared/components/UI/Loader';
 
 export const CartPage = () => {
@@ -23,7 +23,7 @@ export const CartPage = () => {
   }
 
   return (
-    <div className={styles.conatiner}>
+    <div className={styles.container}>
       <CartContent />
     </div>
   );

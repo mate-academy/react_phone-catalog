@@ -1,7 +1,7 @@
+import styles from './FavoritesPage.module.scss';
 import { useEffect, useState } from 'react';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { FavoriteContent } from './FavoriteContent';
-import styles from './FavoritesPage.module.scss';
 import { Loader } from '../shared/components/UI/Loader';
 
 export const FavoritesPage = () => {

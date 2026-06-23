@@ -6,25 +6,52 @@
 
 .cartContainer {
   display: flex;
-  gap: 16px;
+  flex-direction: column;
+  gap: 32px;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    gap: 16px;
+  }
 }
 
 .cartList {
   display: flex;
   flex: 1;
   flex-direction: column;
-  border: $card-border;
   gap: 16px;
-  margin-bottom: 80px;
+  border: $card-border;
+  margin-bottom: 56px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 64px;
+  }
+
+  @media (min-width: 1024px) {
+    margin-bottom: 80px;
+  }
 }
 
 .itemWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 24px;
   background-color: $surface-1;
+  padding: 16px;
+  gap: 16px;
+
+  display: grid;
+  grid-template-columns: auto 80px 1fr;
+  grid-template-areas:
+    'delete image name'
+    'delete image actions';
+  align-items: center;
+
+  @media (min-width: 768px) {
+    display: flex;
+    grid-template-columns: none;
+    grid-template-areas: none;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px;
+  }
 }
 
 .deleteButton {
@@ -49,29 +76,61 @@
 }
 
 .itemImageWrapper {
-  width: 80px;
-  height: 80px;
+  grid-area: image;
+  width: 68px;
+  height: 68px;
   flex-shrink: 0;
+
+  @media (min-width: 768px) {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 .itemImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .itemName {
-  text-align: center;
+  grid-area: name;
+  text-align: left;
   margin: 0;
   color: $text-main;
+  word-break: break-word; // Захист від занадто довгих назв
 
   @include body-font;
+
+  @media (min-width: 768px) {
+    text-align: center;
+    max-width: 350px; // Обмежуємо ширину тексту на десктопі
+  }
 }
 
 .itemQuantity {
+  grid-area: actions;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between; // Розкидає лічильник та ціну по боках
+  gap: 16px;
+  width: 100%;
+  margin-top: 8px;
+
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+    width: auto;
+    margin-top: 0;
+    gap: 8px;
+  }
+}
+
+.itemPrice {
+  color: $text-main;
+  margin: 0;
+  white-space: nowrap; // Ціна ніколи не розірветься на два рядки
+
+  @include h3-font;
 }
 
 .quantityButton {
@@ -101,28 +160,29 @@
   @include body-font;
 }
 
-.itemPrice {
-  color: $text-main;
-
-  @include h3-font;
-}
-
 .summary {
-  position: sticky;
   display: flex;
-  flex: 0.5;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  height: fit-content;
-  top: 20px;
+  width: 100%; // На мобільних займає всю ширину
   padding: 24px;
   background-color: $surface-1;
   border: 1px solid $surface-2;
+  margin-bottom: 60px;
+
+  @media (min-width: 1024px) {
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+    flex: 0.4; // Фіксована пропорція на десктопі
+    margin-bottom: 0;
+  }
 }
 
 .summaryPrice {
   color: $text-main;
+  margin: 0 0 8px;
 
   @include h2-font;
 }

@@ -1,3 +1,4 @@
+import styles from './HomePage.module.scss';
 import { useEffect, useMemo, useState } from 'react';
 import { Product } from '../../types/product';
 import {
@@ -6,7 +7,6 @@ import {
   getProducts,
   getTablets,
 } from '../../services/product.api';
-import styles from './HomePage.module.scss';
 import { PicturesSlider } from './components/PicturesSlider';
 import { ShopByCategory } from './components/ShopByCategory';
 import { Phone } from '../../types/phone';

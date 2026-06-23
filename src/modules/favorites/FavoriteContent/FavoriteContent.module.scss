@@ -1,10 +1,14 @@
 @import '../../../styles/variables';
 
 .title {
-  margin-top: 40px;
+  margin-top: 24px;
   color: $text-main;
 
   @include h1-font;
+
+  @media (min-width: 768px) {
+    margin-top: 40px;
+  }
 }
 
 .currentQuantity {
@@ -15,7 +19,11 @@
 }
 
 .favoriteList {
-  margin-top: 40px;
+  margin-top: 32px;
+
+  @media (min-width: 768px) {
+    margin-top: 40px;
+  }
 }
 
 .errorWrapper {
