@@ -1,0 +1,326 @@
+@import '../../../../utils/mixin';
+
+.hero {
+  width: auto;
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+
+    @include on-tablets {
+      grid-column: 1 / 9;
+    }
+
+    @include on-desktop {
+      font-size: 48px;
+      line-height: 56px;
+      grid-column: 1 / 17;
+    }
+  }
+
+  &__paragraph {
+    @include content-padding-inline;
+
+    @include on-tablets {
+      @include page-grid;
+    }
+  }
+
+  &__banner {
+    width: 100%;
+    gap: 19px;
+    justify-items: center;
+
+    @include page-grid;
+
+    @include on-tablets {
+      @include content-padding-inline;
+    }
+  }
+
+  &__image-1 {
+    width: 100%;
+    height: 320px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 18px;
+    display: block;
+    background-image: url('/img/heroPhone.png');
+    grid-column: 1 / -1;
+
+    @include on-tablets {
+      background-image: url('/img/herobanner.png');
+
+      height: 189px;
+      border-radius: 8px;
+      grid-column: 2 / 12;
+    }
+
+    @include on-desktop {
+      height: 400px;
+      opacity: 1;
+      border-radius: 8px;
+      grid-column: 2 / 24;
+    }
+  }
+
+  &__image-2 {
+    width: 100%;
+    height: 320px;
+    margin-bottom: 18px;
+    display: block;
+    background-image: url('/img/promax.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include on-tablets {
+      background-image: url('/img/category-accessories.png');
+      height: 189px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+      border-radius: 8px;
+    }
+  }
+
+  &__image-3 {
+    width: 100%;
+    height: 320px;
+    margin-bottom: 18px;
+    display: block;
+    background-size: cover;
+    background-image: url('/img/iphones.png');
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include on-tablets {
+      background-image: url('/img/imgslider3.jpg');
+
+      height: 189px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+      border-radius: 8px;
+    }
+  }
+
+  &__image--arrow-left {
+    rotate: 180deg;
+  }
+
+  &__button {
+    display: none;
+
+    @include on-tablets {
+      cursor: pointer;
+      display: block;
+      width: 32px;
+      height: 189px;
+      border-radius: 48px;
+      border: 1px solid #B4BDC3;
+      opacity: 1;
+      background-color: #FAFBFC;
+      grid-column: 1;
+      grid-row: 1;
+
+      @include on-desktop {
+        width: 32px;
+        height: 400px;
+        opacity: 1;
+        border-width: 1px;
+      }
+    }
+
+    &--grid-align {
+      @include on-tablets {
+        grid-column: 12;
+        grid-row: 1;
+      }
+
+      @include on-desktop {
+        grid-column: 24;
+      }
+    }
+
+    &:hover {
+      border: 1px solid #0F0F11;
+    }
+  }
+
+  &__slider-wrapper {
+    flex-shrink: 0;
+    margin: 0 auto; // Centraliza a moldura
+    width: 100%;
+    overflow: hidden; // É AQUI que o "mágico" acontece!
+     grid-column: 1 / -1;
+
+    @include on-tablets {
+     grid-column: 2 / 12;
+    }
+
+    @include on-desktop {
+      grid-column: 2 / 24;
+    }
+  }
+
+  &__slider-list {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    gap: 8px;
+    list-style: none;
+    width: 100%;
+
+    @include on-tablets {
+      transition: transform 0.5s ease-in-out;
+    }
+  }
+
+  &__slider-item {
+    width: 100%;       // Ocupa exatamente a "janela" visível do wrapper
+  flex-shrink: 0;    // 🔥 Impede que os slides sejam esmagados para caberem juntos
+  list-style: none;
+  }
+
+  &__skip-wrapper {
+    margin-bottom: 66px;
+
+    @include page-grid;
+    @include content-padding-inline;
+
+    @include on-tablets {
+      margin-bottom: 74px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 90px;
+    }
+  }
+
+  &__skip-container-bar {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    grid-column: 2 / 4;
+
+    @include on-tablets {
+      grid-column: 6 / 8;
+    }
+
+    @include on-desktop {
+      grid-column: 12 / 13;
+    }
+  }
+
+  &__skip-image {
+    display: block;
+    width: 14px;
+    height: 4px;
+    background-color: #E2E6E9;
+    border: none;
+    cursor: pointer;
+
+    &--active {
+      background-color: #0F0F11;
+    }
+  }
+
+  &__product {
+    &-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @include content-padding-inline;
+
+      @include on-tablets {
+        @include page-grid;
+      }
+
+      @include on-desktop {
+        width: auto;
+      }
+    }
+
+    &-title {
+      margin: 0;
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-style: Bold;
+      font-size: 22px;
+      line-height: 140%;
+      letter-spacing: 0%;
+
+      @include on-tablets {
+        font-size: 32px;
+        line-height: 41px;
+        letter-spacing: -1%;
+        grid-column: 1 / 8;
+      }
+
+      @include on-desktop {
+        grid-column: 1 / 12;
+      }
+    }
+
+    &-controls {
+      display: flex;
+      gap: 16px;
+
+      @include on-tablets {
+        grid-row: 1;
+        grid-column: 12 / 12;
+      }
+
+      @include on-desktop {
+        gap: 0;
+        grid-column: 24 / 24;
+      }
+    }
+
+    &-button {
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border-radius: 48px;
+      border-width: 1px;
+      background-color: #FAFBFC;
+      padding: 0;
+    }
+  }
+
+  &__product-container {
+    width: 100%;
+    box-sizing: border-box;
+
+    @include content-padding-inline;
+
+    @include on-tablets {
+      padding-right: 0;
+    }
+
+    @include on-desktop {
+      padding-right: 32px;
+    }
+    
+    @include on-large-desktop {
+      padding-inline: 152px;
+    }
+
+    overflow: hidden;
+    margin: 0;
+
+
+
+  }
+}

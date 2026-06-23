@@ -1,0 +1,39 @@
+@import '../../../../utils/mixin';
+
+.product__list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding-inline: 0;
+  margin-bottom: 56px;
+  transition: transform 0.5s ease-in-out;
+
+  @include on-tablets {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    flex-wrap: nowrap;
+    margin-bottom: 80px;
+  }
+
+  &--colum {
+    flex-wrap: wrap;
+    transform: none !important;
+  }
+  &-item {
+    flex-shrink: 0;
+
+  }
+
+  &-wrapper {
+    overflow: hidden; // É AQUI que o "mágico" acontece!
+    margin: 0; // Centraliza a moldura
+
+    &--catalog {
+      width: 100%; // O tamanho que você quer que apareça na tela
+      overflow: visible;
+    }
+  }
+}

@@ -1,0 +1,229 @@
+@import '../../../../utils/mixin';
+
+.top-bar {
+  padding-left: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  box-shadow: #e2e6e9 0 1px 0;
+  position: sticky;
+
+  @include on-tablets {
+    justify-content: flex-start;
+  }
+
+  &__actions-container {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: #E2E6E9 -1px 0 0;
+  }
+
+  &__image-menu {
+    margin-top: 10px;
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+  }
+
+  &__image-logo {
+    width: 64px;
+    height: 20px;
+  }
+}
+
+.menu {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1000; // Garante que o menu fique acima de TODO o site
+  visibility: hidden; // Isso evita que o menu "roube" cliques quando fechado
+
+  &--open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 48px);
+  }
+
+  @include on-desktop {
+    display: none;
+  }
+
+  &__content {
+    @include content-padding-inline;
+    
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.3s ease-in-out;
+
+    &--open {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  &__nav-list {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    gap: 32px;
+    margin-bottom: 0;
+    margin-top: 32px;
+
+    @include on-desktop {
+      margin-left: 48px;
+    }
+  }
+
+  &__nav-link {
+    display: inline-block;
+    text-decoration: none;
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    color: #89939a;
+    position: relative;
+
+    &:hover {
+      color: #0f0f11 !important;
+
+      &::after {
+        content: '';
+        display: block;
+        background-color: #0f0f11;
+        height: 3px;
+        position: absolute;
+        bottom: -10px; // 👈 Joga a barra um pouco mais para baixo do texto
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+}
+
+.bottom__bar-content {
+  margin-top: auto;
+  width: auto;
+  height: 64px;
+  display: flex;
+  flex-direction: row;
+}
+
+.bottom {
+  &__bar-container {
+    width: 160px;
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    box-shadow: #E2E6E9 -1px -1px 0;
+
+    &-image {
+      height: 15px;
+      width: 15px;
+      object-fit: cover;
+    }
+  }
+
+  &__bar-counter-bag {
+    position: absolute;
+    border-radius: 50%;
+    background-color: #F447AF;
+    height: 14px;
+    width: 14px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 100%;
+    letter-spacing: normal;
+    text-align: center;
+    top: 15px; // Sobe um pouquinho para fora do coração
+    right: 65px;
+  }
+
+  &__bar-counter-heart {
+    position: absolute;
+    border-radius: 50%;
+    background-color: #F447AF;
+    height: 14px;
+    width: 14px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 100%;
+    letter-spacing: normal;
+    text-align: center;
+    top: 15px; // Sobe um pouquinho para fora do coração
+    right: 65px;
+  }
+
+  &__bar-container-bag {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      &::before {
+        content: '';
+        position: absolute;
+        display: block;
+        height: 2px;
+        background-color: #0f0f11;
+        bottom: 5px;
+        right: 0;
+        left: 0;
+      }
+    }
+  }
+
+  &__bar-container-heart {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      &::before {
+        content: '';
+        position: absolute;
+        display: block;
+        height: 2px;
+        background-color: #0f0f11;
+        bottom: 5px;
+        right: 0;
+        left: 0;
+      }
+    }
+  }
+}

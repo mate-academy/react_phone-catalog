@@ -1,0 +1,85 @@
+@import '../../utils/mixin';
+
+.favorites {
+  padding-inline: 17px;
+  margin-bottom: 56px;
+
+  @include on-tablets {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 33px;
+  }
+
+  @include on-large-desktop {
+    padding-inline: 152px;
+  }
+
+  &__product {
+    &-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding: 0;
+      width: auto;
+
+      @include on-tablets {
+        flex-flow: row wrap;
+        column-gap: 16px;
+      }
+    }
+
+    &-item {
+      list-style: none;
+    }
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: #0F0F11;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  &__text-counter {
+    margin-top: 0;
+    margin-bottom: 32px;
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: normal;
+    color: #89939A;
+  }
+}
+
+.breadcrumbs {
+  &__icons-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+    margin-bottom: 24px;
+  }
+
+  &__image-arrow {
+    opacity: 0.5;
+  }
+
+  &__text {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: normal;
+    color: #89939A;
+  }
+}

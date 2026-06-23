@@ -1,0 +1,94 @@
+@import '../../../../utils/mixin';
+
+.footer {
+  &__rectangle {
+    width: 100%;
+    height: 257px;
+    box-sizing: border-box;
+    padding-top: 34px;
+
+    @include content-padding-inline;
+    
+    box-shadow: #E2E6E9 0 -1px 0;
+
+    @include on-tablets {
+      height: 96px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+
+    @include on-tablets {
+      flex-direction: row;
+      gap: 14px;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__links {
+    text-decoration: none;
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    color: #89939A;
+  }
+
+  &__button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    @include on-tablets {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    opacity: 1;
+    border-radius: 48px;
+    border: 1px solid #B4BDC3;
+    background-color: #FFF;
+    cursor: pointer;
+
+    &-text {
+      font-family: Mont, sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: normal;
+      text-align: right;
+      color: #89939A;
+    }
+  }
+
+  &__arrow {
+    width: 5px;
+    height: 9px;
+    rotate: -90deg;
+  }
+
+  &__image-logo {
+    width: 89px;
+    height: 30px;
+  }
+}

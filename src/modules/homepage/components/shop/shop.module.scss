@@ -1,0 +1,223 @@
+@import '../../../../utils/mixin';
+
+.shop {
+  @include content-padding-inline;
+
+  &__counter {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: normal;
+    color: #89939A;
+    margin: 0;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: normal;
+    color: #0F0F11;
+    margin-top: 0;
+    margin-bottom: 24px;
+
+    @include on-tablets {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+    }
+  }
+
+  &__category {
+    margin-bottom: 56px;
+
+    @include on-tablets {
+      margin-bottom: 64px;
+
+      @include page-grid;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+
+    &-image--scale {
+      &:hover {
+        scale: 110%;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+
+    &-phone {
+      width: auto;
+      height: 358px;
+      object-position: 50px -10px;
+
+      @include on-tablets {
+        height: 230px;
+        object-position: 20px 10px;
+        object-fit: contain;
+      }
+
+      @include on-desktop {
+        height: 457px;
+        object-position: 40px 10px;
+      }
+    }
+
+    &-title {
+      font-family: Mont, sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 100%;
+      letter-spacing: normal;
+      margin: 24px 0 4px;
+    }
+
+    &-tablets {
+      width: 428px;
+      height: 428px;
+      object-position: 10px 15px;
+      object-fit: cover;
+
+      @include on-tablets {
+        width: 196px;
+        height: 230px;
+        object-position: 20px 20px;
+      }
+
+      @include on-desktop {
+        width: 546px;
+        height: 546px;
+      }
+    }
+
+    &-accessories {
+      width: 500px;
+      height: 800px;
+      object-position: 40px 70px;
+      object-fit: contain;
+
+      @include on-tablets {
+        width: 340px;
+        height: 230px;
+        object-position: 20px 30px;
+      }
+
+      @include on-desktop {
+        width: 740px;
+        height: 800px;
+        object-position: 20px 50px;
+      }
+    }
+    &-rectangle {
+      &-grid1 {
+        margin-bottom: 32px;
+
+        @include on-tablets {
+          grid-column: 1 / 5;
+        }
+
+         @include on-desktop {
+          grid-column: 1 / 9;
+        }
+      }
+
+      &-grid2 {
+        margin-bottom: 32px;
+
+        @include on-tablets {
+          grid-column: 5 / 9;
+        }
+
+         @include on-desktop {
+          grid-column: 9 / 17;
+
+        }
+      }
+
+      &-grid3 {
+        @include on-tablets {
+          grid-column: 9 / 13;
+        }
+
+        @include on-desktop {
+          grid-column: 17 / 25;
+        }
+      }
+    }
+    }
+
+
+  &__rectangle {
+    display: block;
+    width: 100%;
+    height: 288px;
+    background-color: #6D6474;
+    border-radius: 8px;
+    overflow: hidden;
+
+    @include on-tablets {
+      height: 187px;
+      border-radius: 8px;
+      opacity: 1;
+    }
+
+    @include on-desktop {
+      height: 368px;
+      border-radius: 0;
+    }
+
+    &--grey {
+      background-color: #8D8D92;
+      grid-column: 1 / 4;
+
+    }
+
+    &--color {
+      background-color: #973D5F;
+      grid-column: 9 / 12;
+
+    }
+  }
+
+  &__title-pricehot {
+    margin: 0;
+    font-family: Mont, sans-serif;
+    font-style: Bold;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: normal;
+
+
+    @include on-tablets {
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+      grid-column: 1 / 8;
+    }
+  }
+
+  &__header {
+    gap: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablets {
+      @include page-grid;
+    }
+  }
+
+  &__skip-button-container-grid {
+    grid-column: 12 / 13;
+
+    @include on-desktop {
+      grid-column: 24 / 25;
+    }
+  }
+}

@@ -1,0 +1,74 @@
+.pagination {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 64px;
+
+  &-wrapper {
+    overflow: hidden;
+    margin: 0;
+    width: 155px;
+    height: 35px;
+  }
+
+  &-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    list-style: none;
+    align-items: center;
+  }
+}
+
+.page {
+  &-item {
+    list-style: none;
+    width: 32px;
+    height: 32px;
+
+    &--carrousel {
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+
+  &-link {
+    text-decoration: none;
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: normal;
+    text-align: center;
+    color: #0F0F11;
+    width: 32px;
+    height: 32px;
+    border-radius: 48px;
+    border: 1px solid #B4BDC3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--active {
+      background-color: #0F0F11;
+      color: #FFF;
+    }
+  }
+
+  &-buttom {
+    width: 32px;
+    height: 32px;
+    border-radius: 48px;
+    border: 1px solid #B4BDC3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-image-left {
+      rotate: -180deg;
+    }
+  }
+}
