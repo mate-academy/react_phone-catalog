@@ -1,0 +1,14 @@
+@use '../../../../styles/mixins.scss' as *;
+
+
+.brand-new-models {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}

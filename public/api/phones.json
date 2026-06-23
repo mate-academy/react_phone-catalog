@@ -1,4 +1,456 @@
-[
+[ {
+  "id": "google-pixel-9-128gb-obsidian",
+  "category": "phones",
+  "namespaceId": "google-pixel-9",
+  "name": "Google Pixel 9 128GB Obsidian",
+  "capacityAvailable": ["128GB", "256GB"],
+  "capacity": "128GB",
+  "priceRegular": 899,
+  "priceDiscount": 799,
+  "colorsAvailable": [
+    "obsidian",
+    "porcelain"
+  ],
+  "color": "obsidian",
+  "images": [
+    "img/phones/google-pixel-9/obsidian/00.webp",
+    "img/phones/google-pixel-9/obsidian/01.webp",
+    "img/phones/google-pixel-9/obsidian/02.webp"
+  ],
+  "description": [
+    {
+      "title": "The best of Google",
+      "text": [
+        "Google Pixel 9 brings together powerful AI features, a refined design, and Google's latest software innovations.",
+        "With Gemini built in, Pixel helps you search, organize, and create more naturally than ever before."
+      ]
+    },
+    {
+      "title": "Advanced Pixel Camera",
+      "text": [
+        "Capture stunning photos with Google's industry-leading computational photography.",
+        "Night Sight, Magic Editor, and Super Res Zoom help you get incredible results in almost any situation."
+      ]
+    },
+    {
+      "title": "Fast, smart, secure",
+      "text": [
+        "Powered by the Google Tensor G4 chip, Pixel 9 delivers smooth performance and advanced AI capabilities.",
+        "Built-in security features help protect your personal data and keep your device safe."
+      ]
+    }
+  ],
+  "screen": "6.3' OLED",
+  "resolution": "2424x1080",
+  "processor": "Google Tensor G4",
+  "ram": "12GB",
+  "camera": "50 Mp + 48 Mp",
+  "zoom": "Super Res Zoom 8x",
+  "cell": ["GSM", "HSPA", "LTE", "5G"]
+},
+{
+  "id": "google-pixel-9-256gb-obsidian",
+  "category": "phones",
+  "namespaceId": "google-pixel-9",
+  "name": "Google Pixel 9 256GB Obsidian",
+  "capacityAvailable": ["128GB", "256GB"],
+  "capacity": "256GB",
+  "priceRegular": 899,
+  "priceDiscount": 799,
+  "colorsAvailable": [
+    "obsidian",
+    "porcelain"
+  ],
+  "color": "obsidian",
+  "images": [
+    "img/phones/google-pixel-9/obsidian/00.webp",
+    "img/phones/google-pixel-9/obsidian/01.webp",
+    "img/phones/google-pixel-9/obsidian/02.webp"
+  ],
+  "description": [
+    {
+      "title": "The best of Google",
+      "text": [
+        "Google Pixel 9 brings together powerful AI features, a refined design, and Google's latest software innovations.",
+        "With Gemini built in, Pixel helps you search, organize, and create more naturally than ever before."
+      ]
+    },
+    {
+      "title": "Advanced Pixel Camera",
+      "text": [
+        "Capture stunning photos with Google's industry-leading computational photography.",
+        "Night Sight, Magic Editor, and Super Res Zoom help you get incredible results in almost any situation."
+      ]
+    },
+    {
+      "title": "Fast, smart, secure",
+      "text": [
+        "Powered by the Google Tensor G4 chip, Pixel 9 delivers smooth performance and advanced AI capabilities.",
+        "Built-in security features help protect your personal data and keep your device safe."
+      ]
+    }
+  ],
+  "screen": "6.3' OLED",
+  "resolution": "2424x1080",
+  "processor": "Google Tensor G4",
+  "ram": "12GB",
+  "camera": "50 Mp + 48 Mp",
+  "zoom": "Super Res Zoom 8x",
+  "cell": ["GSM", "HSPA", "LTE", "5G"]
+},
+{
+  "id": "google-pixel-9-128gb-porcelain",
+  "category": "phones",
+  "namespaceId": "google-pixel-9",
+  "name": "Google Pixel 9 128GB Porcelain",
+  "capacityAvailable": ["128GB", "256GB"],
+  "capacity": "128GB",
+  "priceRegular": 899,
+  "priceDiscount": 799,
+  "colorsAvailable": [
+    "obsidian",
+    "porcelain"
+  ],
+  "color": "porcelain",
+  "images": [
+    "img/phones/google-pixel-9/porcelain/00.webp",
+    "img/phones/google-pixel-9/porcelain/01.webp",
+    "img/phones/google-pixel-9/porcelain/02.webp"
+  ],
+  "description": [],
+  "screen": "6.3' OLED",
+  "resolution": "2424x1080",
+  "processor": "Google Tensor G4",
+  "ram": "12GB",
+  "camera": "50 Mp + 48 Mp",
+  "zoom": "Super Res Zoom 8x",
+  "cell": ["GSM", "HSPA", "LTE", "5G"]
+},
+{
+  "id": "google-pixel-9-256gb-porcelain",
+  "category": "phones",
+  "namespaceId": "google-pixel-9",
+  "name": "Google Pixel 9 256GB Porcelain",
+  "capacityAvailable": ["128GB", "256GB"],
+  "capacity": "256GB",
+  "priceRegular": 899,
+  "priceDiscount": 799,
+  "colorsAvailable": [
+    "obsidian",
+    "porcelain"
+  ],
+  "color": "porcelain",
+  "images": [
+    "img/phones/google-pixel-9/porcelain/00.webp",
+    "img/phones/google-pixel-9/porcelain/01.webp",
+    "img/phones/google-pixel-9/porcelain/02.webp"
+  ],
+  "description": [],
+  "screen": "6.3' OLED",
+  "resolution": "2424x1080",
+  "processor": "Google Tensor G4",
+  "ram": "12GB",
+  "camera": "50 Mp + 48 Mp",
+  "zoom": "Super Res Zoom 8x",
+  "cell": ["GSM", "HSPA", "LTE", "5G"]
+},
+
+
+  {
+  "id": "samsung-galaxy-s24-ultra-256gb-titanium-black",
+  "category": "phones",
+  "namespaceId": "samsung-galaxy-s24-ultra",
+  "name": "Samsung Galaxy S24 Ultra 256GB Titanium Black",
+  "capacityAvailable": ["256GB", "512GB", "1TB"],
+  "capacity": "256GB",
+  "priceRegular": 1399,
+  "priceDiscount": 1299,
+  "colorsAvailable": [
+    "titanium-black",
+    "titanium-gray"
+  ],
+  "color": "titanium-black",
+  "images": [
+    "img/phones/samsung-galaxy-s24-ultra/titanium-black/00.webp",
+    "img/phones/samsung-galaxy-s24-ultra/titanium-black/01.webp",
+    "img/phones/samsung-galaxy-s24-ultra/titanium-black/02.webp"
+  ],
+  "description": [
+    {
+      "title": "Galaxy AI is here",
+      "text": [
+        "Experience a new era of mobile AI with Galaxy S24 Ultra. Search, translate, summarize, and create with powerful AI tools built directly into your smartphone.",
+        "Powered by cutting-edge hardware and intelligent software, Galaxy S24 Ultra helps you get more done while staying connected and productive."
+      ]
+    },
+    {
+      "title": "Professional-grade camera",
+      "text": [
+        "Capture stunning photos and videos with the advanced quad-camera system. The 200MP main sensor delivers incredible detail, while enhanced Nightography improves low-light photography.",
+        "Powerful zoom capabilities let you get closer to the action without sacrificing image quality."
+      ]
+    },
+    {
+      "title": "Built for performance",
+      "text": [
+        "The Snapdragon 8 Gen 3 for Galaxy processor provides exceptional speed for gaming, multitasking, and AI-powered features.",
+        "A large battery and optimized software ensure all-day performance, while the titanium frame adds durability and a premium feel."
+      ]
+    }
+  ],
+  "screen": "6.8' Dynamic AMOLED 2X",
+  "resolution": "3120x1440",
+  "processor": "Snapdragon 8 Gen 3 for Galaxy",
+  "ram": "12GB",
+  "camera": "200 Mp + 50 Mp + 10 Mp + 12 Mp",
+  "zoom": "Optical 5x, Digital 100x",
+  "cell": ["GSM", "HSPA", "LTE", "5G"]
+},
+{
+  "id": "samsung-galaxy-s24-ultra-512gb-titanium-black",
+  "category": "phones",
+  "namespaceId": "samsung-galaxy-s24-ultra",
+  "name": "Samsung Galaxy S24 Ultra 512GB Titanium Black",
+  "capacityAvailable": ["256GB", "512GB", "1TB"],
+  "capacity": "512GB",
+  "priceRegular": 1399,
+  "priceDiscount": 1299,
+  "colorsAvailable": [
+    "titanium-black",
+    "titanium-gray"
+  ],
+  "color": "titanium-black",
+  "images": [
+    "img/phones/samsung-galaxy-s24-ultra/titanium-black/00.webp",
+    "img/phones/samsung-galaxy-s24-ultra/titanium-black/01.webp",
+    "img/phones/samsung-galaxy-s24-ultra/titanium-black/02.webp"
+
+  ],
+  "description": [
+    {
+      "title": "Galaxy AI is here",
+      "text": [
+        "Experience a new era of mobile AI with Galaxy S24 Ultra. Search, translate, summarize, and create with powerful AI tools built directly into your smartphone.",
+        "Powered by cutting-edge hardware and intelligent software, Galaxy S24 Ultra helps you get more done while staying connected and productive."
+      ]
+    },
+    {
+      "title": "Professional-grade camera",
+      "text": [
+        "Capture stunning photos and videos with the advanced quad-camera system. The 200MP main sensor delivers incredible detail, while enhanced Nightography improves low-light photography.",
+        "Powerful zoom capabilities let you get closer to the action without sacrificing image quality."
+      ]
+    },
+    {
+      "title": "Built for performance",
+      "text": [
+        "The Snapdragon 8 Gen 3 for Galaxy processor provides exceptional speed for gaming, multitasking, and AI-powered features.",
+        "A large battery and optimized software ensure all-day performance, while the titanium frame adds durability and a premium feel."
+      ]
+    }
+  ],
+  "screen": "6.8' Dynamic AMOLED 2X",
+  "resolution": "3120x1440",
+  "processor": "Snapdragon 8 Gen 3 for Galaxy",
+  "ram": "12GB",
+  "camera": "200 Mp + 50 Mp + 10 Mp + 12 Mp",
+  "zoom": "Optical 5x, Digital 100x",
+  "cell": ["GSM", "HSPA", "LTE", "5G"]
+},
+{
+  "id": "samsung-galaxy-s24-ultra-1tb-titanium-black",
+  "category": "phones",
+  "namespaceId": "samsung-galaxy-s24-ultra",
+  "name": "Samsung Galaxy S24 Ultra 1TB Titanium Black",
+  "capacityAvailable": ["256GB", "512GB", "1TB"],
+  "capacity": "1TB",
+  "priceRegular": 1399,
+  "priceDiscount": 1299,
+  "colorsAvailable": [
+    "titanium-black",
+    "titanium-gray"
+  ],
+  "color": "titanium-black",
+  "images": [
+    "img/phones/samsung-galaxy-s24-ultra/titanium-black/00.webp",
+    "img/phones/samsung-galaxy-s24-ultra/titanium-black/01.webp",
+    "img/phones/samsung-galaxy-s24-ultra/titanium-black/02.webp"
+  ],
+  "description": [
+    {
+      "title": "Galaxy AI is here",
+      "text": [
+        "Experience a new era of mobile AI with Galaxy S24 Ultra. Search, translate, summarize, and create with powerful AI tools built directly into your smartphone.",
+        "Powered by cutting-edge hardware and intelligent software, Galaxy S24 Ultra helps you get more done while staying connected and productive."
+      ]
+    },
+    {
+      "title": "Professional-grade camera",
+      "text": [
+        "Capture stunning photos and videos with the advanced quad-camera system. The 200MP main sensor delivers incredible detail, while enhanced Nightography improves low-light photography.",
+        "Powerful zoom capabilities let you get closer to the action without sacrificing image quality."
+      ]
+    },
+    {
+      "title": "Built for performance",
+      "text": [
+        "The Snapdragon 8 Gen 3 for Galaxy processor provides exceptional speed for gaming, multitasking, and AI-powered features.",
+        "A large battery and optimized software ensure all-day performance, while the titanium frame adds durability and a premium feel."
+      ]
+    }
+  ],
+  "screen": "6.8' Dynamic AMOLED 2X",
+  "resolution": "3120x1440",
+  "processor": "Snapdragon 8 Gen 3 for Galaxy",
+  "ram": "12GB",
+  "camera": "200 Mp + 50 Mp + 10 Mp + 12 Mp",
+  "zoom": "Optical 5x, Digital 100x",
+  "cell": ["GSM", "HSPA", "LTE", "5G"]
+},
+{
+  "id": "samsung-galaxy-s24-ultra-256gb-titanium-gray",
+  "category": "phones",
+  "namespaceId": "samsung-galaxy-s24-ultra",
+  "name": "Samsung Galaxy S24 Ultra 256GB Titanium Gray",
+  "capacityAvailable": ["256GB", "512GB", "1TB"],
+  "capacity": "256GB",
+  "priceRegular": 1399,
+  "priceDiscount": 1299,
+  "colorsAvailable": [
+    "titanium-black",
+    "titanium-gray"
+  ],
+  "color": "titanium-gray",
+  "images": [
+    "img/phones/samsung-galaxy-s24-ultra/titanium-gray/00.webp"
+  ],
+  "description": [
+    {
+      "title": "Galaxy AI is here",
+      "text": [
+        "Experience a new era of mobile AI with Galaxy S24 Ultra. Search, translate, summarize, and create with powerful AI tools built directly into your smartphone.",
+        "Powered by cutting-edge hardware and intelligent software, Galaxy S24 Ultra helps you get more done while staying connected and productive."
+      ]
+    },
+    {
+      "title": "Professional-grade camera",
+      "text": [
+        "Capture stunning photos and videos with the advanced quad-camera system. The 200MP main sensor delivers incredible detail, while enhanced Nightography improves low-light photography.",
+        "Powerful zoom capabilities let you get closer to the action without sacrificing image quality."
+      ]
+    },
+    {
+      "title": "Built for performance",
+      "text": [
+        "The Snapdragon 8 Gen 3 for Galaxy processor provides exceptional speed for gaming, multitasking, and AI-powered features.",
+        "A large battery and optimized software ensure all-day performance, while the titanium frame adds durability and a premium feel."
+      ]
+    }
+  ],
+  "screen": "6.8' Dynamic AMOLED 2X",
+  "resolution": "3120x1440",
+  "processor": "Snapdragon 8 Gen 3 for Galaxy",
+  "ram": "12GB",
+  "camera": "200 Mp + 50 Mp + 10 Mp + 12 Mp",
+  "zoom": "Optical 5x, Digital 100x",
+  "cell": ["GSM", "HSPA", "LTE", "5G"]
+},
+{
+  "id": "samsung-galaxy-s24-ultra-512gb-titanium-gray",
+  "category": "phones",
+  "namespaceId": "samsung-galaxy-s24-ultra",
+  "name": "Samsung Galaxy S24 Ultra 512GB Titanium Gray",
+  "capacityAvailable": ["256GB", "512GB", "1TB"],
+  "capacity": "512GB",
+  "priceRegular": 1399,
+  "priceDiscount": 1299,
+  "colorsAvailable": [
+    "titanium-black",
+    "titanium-gray"
+  ],
+  "color": "titanium-gray",
+  "images": [
+    "img/phones/samsung-galaxy-s24-ultra/titanium-gray/00.webp"
+  ],
+  "description": [
+    {
+      "title": "Galaxy AI is here",
+      "text": [
+        "Experience a new era of mobile AI with Galaxy S24 Ultra. Search, translate, summarize, and create with powerful AI tools built directly into your smartphone.",
+        "Powered by cutting-edge hardware and intelligent software, Galaxy S24 Ultra helps you get more done while staying connected and productive."
+      ]
+    },
+    {
+      "title": "Professional-grade camera",
+      "text": [
+        "Capture stunning photos and videos with the advanced quad-camera system. The 200MP main sensor delivers incredible detail, while enhanced Nightography improves low-light photography.",
+        "Powerful zoom capabilities let you get closer to the action without sacrificing image quality."
+      ]
+    },
+    {
+      "title": "Built for performance",
+      "text": [
+        "The Snapdragon 8 Gen 3 for Galaxy processor provides exceptional speed for gaming, multitasking, and AI-powered features.",
+        "A large battery and optimized software ensure all-day performance, while the titanium frame adds durability and a premium feel."
+      ]
+    }
+  ],
+  "screen": "6.8' Dynamic AMOLED 2X",
+  "resolution": "3120x1440",
+  "processor": "Snapdragon 8 Gen 3 for Galaxy",
+  "ram": "12GB",
+  "camera": "200 Mp + 50 Mp + 10 Mp + 12 Mp",
+  "zoom": "Optical 5x, Digital 100x",
+  "cell": ["GSM", "HSPA", "LTE", "5G"]
+},
+{
+  "id": "samsung-galaxy-s24-ultra-1tb-titanium-gray",
+  "category": "phones",
+  "namespaceId": "samsung-galaxy-s24-ultra",
+  "name": "Samsung Galaxy S24 Ultra 1TB Titanium Gray",
+  "capacityAvailable": ["256GB", "512GB", "1TB"],
+  "capacity": "1TB",
+  "priceRegular": 1399,
+  "priceDiscount": 1299,
+  "colorsAvailable": [
+    "titanium-black",
+    "titanium-gray"
+  ],
+  "color": "titanium-gray",
+  "images": [
+    "img/phones/samsung-galaxy-s24-ultra/titanium-gray/00.webp"
+  ],
+  "description": [
+    {
+      "title": "Galaxy AI is here",
+      "text": [
+        "Experience a new era of mobile AI with Galaxy S24 Ultra. Search, translate, summarize, and create with powerful AI tools built directly into your smartphone.",
+        "Powered by cutting-edge hardware and intelligent software, Galaxy S24 Ultra helps you get more done while staying connected and productive."
+      ]
+    },
+    {
+      "title": "Professional-grade camera",
+      "text": [
+        "Capture stunning photos and videos with the advanced quad-camera system. The 200MP main sensor delivers incredible detail, while enhanced Nightography improves low-light photography.",
+        "Powerful zoom capabilities let you get closer to the action without sacrificing image quality."
+      ]
+    },
+    {
+      "title": "Built for performance",
+      "text": [
+        "The Snapdragon 8 Gen 3 for Galaxy processor provides exceptional speed for gaming, multitasking, and AI-powered features.",
+        "A large battery and optimized software ensure all-day performance, while the titanium frame adds durability and a premium feel."
+      ]
+    }
+  ],
+  "screen": "6.8' Dynamic AMOLED 2X",
+  "resolution": "3120x1440",
+  "processor": "Snapdragon 8 Gen 3 for Galaxy",
+  "ram": "12GB",
+  "camera": "200 Mp + 50 Mp + 10 Mp + 12 Mp",
+  "zoom": "Optical 5x, Digital 100x",
+  "cell": ["GSM", "HSPA", "LTE", "5G"]
+},
   {
     "id": "apple-iphone-11-128gb-black",
     "category": "phones",
