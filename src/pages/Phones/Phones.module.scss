@@ -113,9 +113,18 @@ box-sizing: border-box;
  {
       color: #89939A;
       font-weight: 700;
-        font-size: 12px;
-        line-height: 100%;
-        margin-bottom: 4px;
+      font-size: 12px;
+      line-height: 100%;
+      margin-bottom: 4px;
+
+}
+.byItems {
+     flex-direction: row;
+      color: #89939A;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      margin-bottom: 4px;
 }
 
 .selectSort {

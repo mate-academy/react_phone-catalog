@@ -14,7 +14,7 @@ export type Products = {
 };
 
 export type FullProduct = {
-  year: any;
+  year: number;
   id: string;
   category: string;
   namespaceId: string;

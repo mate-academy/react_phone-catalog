@@ -40,7 +40,7 @@ export const Phones: React.FC<Props> = () => {
   }
 
   function handlePerPageChange(event: React.ChangeEvent<HTMLSelectElement>) {
-    setSearchWith({ perPage: event.target.value });
+    setSearchWith({ perPage: event.target.value, page: 1 });
   }
 
   function handlePageChange(newPage: number) {
@@ -146,7 +146,15 @@ export const Phones: React.FC<Props> = () => {
         >
           <img src="/img/vectorLeft.svg" alt="prev" />
         </button>
-        <span>{page}</span>
+        {Array.from({ length: totalPages }, (_, i) => (
+          <button
+            key={i}
+            onClick={() => handlePageChange(i + 1)}
+            disabled={page >= totalPages}
+          >
+            {i + 1}
+          </button>
+        ))}
         <button
           onClick={() => handlePageChange(page + 1)}
           disabled={page >= totalPages}
