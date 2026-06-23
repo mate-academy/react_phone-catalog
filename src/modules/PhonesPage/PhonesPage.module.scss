@@ -1,0 +1,138 @@
+.section {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    color: #F1F2F9;
+    letter-spacing: -1%;
+  }
+}
+
+.navigationButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.navButton {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #3B3E4A;
+  border-radius: 0;
+  background-color: #323542;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+
+  &:hover {
+    background-color: #4A4D58;
+  }
+
+  &:global(.swiper-button-disabled) {
+    cursor: not-allowed;
+    background-color: #0F1121;
+    opacity: 0.5;
+  }
+}
+
+.productCard {
+  padding: 0 32px 32px;
+  background-color: #161827;
+  width: 272px;
+
+  &__link {
+    display: block;
+    color: #F1F2F9;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+
+    transition: transform 0.3s ease;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    color: #F1F2F9;
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 22px;
+    color: #F1F2F9;
+  }
+
+  &__divider {
+    width: 100%;
+    color: #3B3E4A;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__property {
+    font-weight: 700;
+    font-size: 12px;
+    color: #89939A;
+  }
+
+  &__value {
+    font-weight: 700;
+    font-size: 12px;
+    color: #F1F2F9;
+  }
+
+  &__control {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  &__addButton {
+    font-family: Mont, sans-serif;
+    width: 100%;
+    color: #F1F2F9;
+    background-color: #905BFF;
+    border: none;
+  }
+
+  &__favoriteLink {
+    width: 40px;
+    height: 40px;
+    background-color: #323542;
+  }
+
+  &__favoriteIcon {
+    padding: 12px;
+  }
+
+  &:hover .productCard__img {
+    transform: scale(1.05);
+  }
+}
