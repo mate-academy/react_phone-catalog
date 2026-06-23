@@ -1,0 +1,160 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
+
+.footer {
+  width: 100%;
+
+  border-top: 1px solid var(--color-elements);
+
+  padding: 32px 16px;
+
+  background-color: var(--color-white);
+
+  @include on-tablet {
+    height: 96px;
+
+    padding: 32px;
+  }
+
+  @include on-desktop {
+    padding: 32px 152px;
+  }
+}
+
+.footerContent {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+  }
+}
+
+.logo {
+  display: block;
+
+  width: 89px;
+  height: 32px;
+
+  img {
+    width: 89px;
+    height: 32px;
+    object-fit: contain;
+    object-position: left;
+  }
+
+  @include on-tablet {
+    flex: 1;
+    align-self: flex-start;
+  }
+}
+
+.nav {
+  width: 100%;
+
+  @include on-tablet {
+    width: auto;
+  }
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 16px;
+
+  @include on-tablet {
+    gap: 14px;
+
+    flex-direction: row;
+  }
+
+  @include on-desktop {
+    gap: 106px;
+  }
+}
+
+.navLink {
+  @include uppercase;
+
+  color: var(--color-secondary);
+
+  transition: var(--transition-default);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.backToTopText {
+  @include small-text;
+
+  color: var(--color-secondary);
+
+  transition: var(--transition-default);
+
+  white-space: nowrap;
+}
+
+.backToTopButton {
+  position: relative;
+
+  width: 32px;
+  height: 32px;
+
+  padding: 0;
+
+  color: var(--color-primary);
+  background-color: var(--color-white);
+
+  border: 2px solid var(--color-icons);
+  border-radius: 50%;
+
+  transition: var(--transition-default);
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+  }
+}
+
+.backToTop {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 16px;
+
+  cursor: pointer;
+
+  &:hover {
+    .backToTopText {
+      color: var(--color-primary);
+    }
+
+    .backToTopButton {
+      border-color: var(--color-primary);
+    }
+  }
+
+  @include on-tablet {
+    width: auto;
+    flex: 1;
+    justify-content: flex-end;
+  }
+}

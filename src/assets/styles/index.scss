@@ -1,0 +1,114 @@
+@import './variables';
+@import './mixins';
+@import './fonts';
+
+
+* {
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
+
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  font-family: Mont, sans-serif;
+
+  background-color: var(--color-bg);
+
+  color: var(--color-primary);
+
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a.product-image-link:hover img {
+  transform: scale(1.1);
+  transition: var(--transition-default);
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+
+  margin: 0 auto;
+
+  padding: 0 16px;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px;
+  }
+}
+
+// ---------typography---------
+
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 48px;
+
+    line-height: 56px;
+  }
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 800;
+
+  line-height: 31px;
+  letter-spacing: 0;
+
+  @include on-tablet {
+    font-size: 32px;
+
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 700;
+
+  line-height: 26px;
+  letter-spacing: 0;
+
+  @include on-tablet {
+    font-size: 22px;
+    font-weight: 800;
+
+    line-height: 31px;
+  }
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: 700;
+
+  line-height: 20px;
+  letter-spacing: 0;
+
+  @include on-tablet {
+    font-size: 20px;
+
+    line-height: 26px;
+  }
+}

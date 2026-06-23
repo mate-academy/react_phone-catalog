@@ -1,0 +1,167 @@
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/mixins';
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  padding: 16px;
+
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+  border-radius: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 24px;
+  }
+}
+
+.topInfo {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.deleteButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 16px;
+  height: 16px;
+
+  background: transparent;
+
+  border: none;
+
+  cursor: pointer;
+
+  color: var(--color-icons);
+
+  transition: var(--transition-default);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.imageWrapper {
+  width: 80px;
+  height: 80px;
+
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.title {
+  @include body-text;
+
+  color: var(--color-primary);
+
+  @include on-tablet {
+    width: 176px;
+  }
+
+  @include on-desktop {
+    width: 336px;
+  }
+}
+
+.bottomControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    width: 40%;
+  }
+}
+
+.quantityBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 96px;
+}
+
+.qtyButton {
+  position: relative;
+
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+
+  background-color: var(--color-white);
+
+  border: 1px solid var(--color-icons);
+  border-radius: 50%;
+
+  color: var(--color-primary);
+  cursor: pointer;
+
+  transition: var(--transition-default);
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    border-color: var(--color-icons);
+  }
+}
+
+.quanIcon {
+  position: absolute;
+  top: 50;
+  right: 50;
+
+  width: 16px;
+  height: 16px;
+
+  color: var(--color-primary);
+}
+
+.quantity {
+  @include body-text;
+
+  color: var(--color-primary);
+
+  text-align: center;
+}
+
+.price {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0%;
+
+  @include on-tablet {
+    width: 80px;
+
+    text-align: right;
+  }
+}

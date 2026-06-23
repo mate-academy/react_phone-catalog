@@ -1,0 +1,331 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
+
+.header {
+  position: sticky;
+  top: 0;
+  right: 0;
+
+  width: 100%;
+  height: 48px;
+
+  z-index: 100;
+
+  background-color: var(--color-white);
+
+  border-bottom: 1px solid var(--color-elements);
+
+  @include on-desktop {
+    height: 64px;
+  }
+}
+
+.headerContent {
+  height: 100%;
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  @include on-tablet {
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    gap: 24px;
+  }
+}
+
+.logo {
+  width: 96px;
+  height: 48px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include on-desktop {
+    width: 128px;
+    height: 64px;
+  }
+
+  img {
+    width: 64px;
+    height: 21px;
+
+    @include on-desktop {
+      width: 80px;
+      height: 27px;
+    }
+  }
+}
+
+.desktopNav {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.desktopNavList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.mobileNav {
+  width: 100%;
+  height: auto;
+}
+
+.mobileNavList {
+  margin-top: 32px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 24px;
+}
+
+.mobileMenu {
+  position: fixed;
+
+  z-index: 99;
+
+  top: 48px;
+  left: 0;
+
+  width: 100%;
+  height: calc(100vh - 48px);
+
+  background-color: var(--color-white);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transform: translateY(-102%);
+  transition: var(--transition-default);
+
+  @include on-tablet {
+    display: none;
+  }
+
+  &.isOpen {
+    transform: translateY(0);
+  }
+}
+
+.navLink {
+  @include uppercase;
+
+  position: relative;
+
+  color: var(--color-secondary);
+
+  transition: var(--transition-default);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+
+  &.isActive {
+    color: var(--color-primary);
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+
+      width: 100%;
+      height: 2px;
+
+      background-color: var(--color-primary);
+
+      @include on-tablet {
+        height: 3px;
+
+        bottom: -15px;
+      }
+
+      @include on-desktop {
+        bottom: -23px;
+
+        height: 4px;
+      }
+    }
+  }
+}
+
+.actions {
+  flex-grow: 1;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.bottomActions {
+  display: flex;
+  width: 100%;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.actionsButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+
+  height: 64px;
+
+  border-top: 1px solid var(--color-elements);
+
+  position: relative;
+
+  transition: var(--transition-default);
+
+  &:hover {
+    background-color: var(--color-elements);
+  }
+
+  &:first-child {
+    border-right: 1px solid var(--color-elements);
+  }
+
+  &.isActive {
+    color: var(--color-primary);
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      bottom: 0;
+
+      width: 100%;
+      height: 2px;
+
+      background-color: var(--color-primary);
+    }
+  }
+}
+
+.iconButton {
+  display: none;
+
+  @include on-tablet {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 48px;
+    height: 100%;
+
+    border-left: 1px solid var(--color-elements);
+
+    color: var(--color-primary);
+    transition: var(--transition-default);
+
+    &:hover {
+      background-color: var(--color-elements);
+    }
+
+    &.isActive {
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: var(--color-primary);
+      }
+    }
+  }
+
+  @include on-desktop {
+    width: 64px;
+
+    &.isActive {
+      &::after {
+        height: 4px;
+      }
+    }
+  }
+}
+
+.burgerButton {
+  width: 48px;
+  height: 48px;
+
+  border: 1px solid var(--color-elements);
+  background-color: var(--color-white);
+  color: var(--color-primary);
+
+  transition: var(--transition-default);
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 20px;
+  height: 20px;
+}
+
+.badge {
+  @include small-text;
+
+  font-size: 9px;
+
+  position: absolute;
+  top: -3px;
+  right: -3px;
+
+  min-width: 14px;
+  height: 14px;
+
+  padding: 0 2px;
+
+  background-color: var(--color-accent);
+  color: #fff;
+
+  border-radius: 50%;
+  border: 1px solid var(--color-white);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include on-tablet {
+    top: 11px;
+    right: 10px;
+  }
+
+  @include on-desktop {
+    top: 18px;
+    right: 18px;
+  }
+}

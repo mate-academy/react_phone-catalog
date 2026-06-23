@@ -1,0 +1,52 @@
+$bp-tablet: 640px;
+$bp-desktop: 1200px;
+
+@mixin on-desktop {
+  @media (min-width: #{$bp-desktop}) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: #{$bp-tablet}) {
+    @content;
+  }
+}
+
+@mixin uppercase {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+
+  line-height: 11px;
+  letter-spacing: 0.04em;
+
+  text-transform: uppercase;
+}
+
+@mixin buttons-text {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin body-text {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin small-text {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+
+  line-height: 15px;
+  letter-spacing: 0;
+}

@@ -1,0 +1,9 @@
+@import '../../../../assets/styles/mixins';
+
+.list {
+  list-style: none;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}

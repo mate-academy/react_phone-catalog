@@ -1,0 +1,161 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.section {
+  @include on-tablet {
+    margin-top: -8px;
+  }
+
+  @include on-desktop {
+    margin-top: -32px;
+  }
+}
+
+.nav {
+  position: relative;
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.homeLink {
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+
+  color: var(--color-primary);
+
+  transition: var(--transition-default);
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: auto;
+
+  color: var(--color-icons);
+}
+
+.catalogName {
+  @include small-text;
+
+  text-transform: capitalize;
+
+  color: var(--color-secondary);
+}
+
+.title {
+  margin-bottom: 8px;
+}
+
+.count {
+  @include body-text;
+
+  color: var(--color-secondary);
+
+  margin-bottom: 32px;
+}
+
+.contentFilters {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}
+
+.sortDropdown {
+  grid-column: span 1;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+}
+
+.itemsDropdown {
+  grid-column: span 1;
+
+  @include on-tablet {
+    grid-column: span 3;
+  }
+}
+
+.searchGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: 8 / span 5;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / span 11;
+  }
+}
+
+.label {
+  @include small-text;
+
+  color: var(--color-secondary);
+}
+
+.input {
+  @include buttons-text;
+
+  height: 40px;
+
+  padding: 0 12px;
+
+  border-radius: 8px;
+  border: 1px solid var(--color-icons);
+
+  background-color: var(--color-white);
+
+  color: var(--color-primary);
+
+  outline: none;
+
+  transition: var(--transition-default);
+
+  &::placeholder {
+    @include buttons-text;
+
+    color: var(--color-secondary);
+  }
+
+  &:hover {
+    border-color: var(--color-secondary);
+  }
+
+  &:focus {
+    border-color: var(--color-primary);
+  }
+}
