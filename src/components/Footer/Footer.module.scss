@@ -1,0 +1,92 @@
+@import '../src/styles/variables';
+
+.footer {
+  padding-block: 32px;
+  padding-inline: 152px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  border-top: 1px solid $grey-elements-color;
+  margin-top: 80px;
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    gap: 107px;
+  }
+
+  &__link {
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__button {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    &--text {
+      color: $grey-secondary-color;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    &--back-to-top {
+      border: none;
+      background-color: $grey-dark-color;
+      width: 32px;
+      height: 32px;
+
+      &:hover {
+        background-color: $grey-elements-color;
+        cursor: pointer;
+      }
+      &:active {
+        background-color: $purple-accent-color;
+      }
+    }
+
+    &--arrow-up {
+      height: 16px;
+      width: 16px;
+      align-items: center;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    padding-inline: 32px;
+
+    &__nav {
+      gap: 13.5px;
+    }
+  }
+
+  @media (min-width: 320px) and (max-width: 639px) {
+    padding-inline: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+
+    &__logo {
+      align-self: flex-start;
+    }
+
+    &__nav {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &__button {
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
+    }
+  }
+}

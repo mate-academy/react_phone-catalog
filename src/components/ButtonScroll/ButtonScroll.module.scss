@@ -1,0 +1,33 @@
+@import '../src/styles/variables';
+
+.arrow {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+  &Button {
+    border: none;
+    background-color: $grey-dark-color;
+    width: 32px;
+    height: 32px;
+    font-size: 24px;
+    color: $text-color;
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: transparent;
+      border: 1px solid $grey-elements-color;
+      color: $grey-icons-color;
+    }
+
+    &:hover:not(:disabled) {
+      cursor: pointer;
+      background-color: $grey-icons-color;
+    }
+  }
+
+  &Image {
+    width: 16px;
+    height: 16px;
+  }
+}

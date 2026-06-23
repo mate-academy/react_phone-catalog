@@ -1,0 +1,57 @@
+.title__h1 {
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+
+  padding-block: 56px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.title__h2 {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+
+  padding-top: 80px;
+  padding-bottom: 24px;
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  h1 {
+    font-size: 48px;
+
+    padding-block: 32px;
+  }
+
+  h2 {
+    padding-top: 64px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  h1 {
+    font-size: 32px;
+    line-height: 41px;
+
+    padding-block: 24px;
+  }
+
+  h2 {
+    font-size: 22px;
+    line-height: 140%;
+
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}

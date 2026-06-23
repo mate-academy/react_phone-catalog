@@ -1,0 +1,37 @@
+@import '../src/styles/variables';
+
+.select {
+  padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__title {
+    color: #75767f;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+  }
+
+  &__box {
+    width: 187px;
+    background-color: $grey-dark-color;
+    padding-inline: 12px;
+    padding-block: 10px;
+    border: none;
+    color: $text-color;
+    appearance: none;
+    background-image: url('/img/icons/arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+
+    cursor: pointer;
+  }
+
+  @media (min-width: 320px) and (max-width: 639px) {
+    flex: 1;
+    &__box {
+      width: 100%;
+    }
+  }
+}
