@@ -1,0 +1,59 @@
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.title {
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+}
+
+.grid {
+  grid-column: 1 / -1;
+
+  display: grid;
+  gap: 16px;
+
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.pagination {
+  grid-column: 1 / -1;
+
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.pagination button {
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid #e2e6e9;
+  background: white;
+
+  cursor: pointer;
+}
+
+.active {
+  background: black;
+  color: white;
+}
+
+/* tablet */
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit);
+  }
+}
+
+/* desktop */
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit);
+  }
+}

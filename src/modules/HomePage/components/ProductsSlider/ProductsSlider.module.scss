@@ -1,0 +1,57 @@
+.slider {
+  grid-column: 1 / -1;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 24px;
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.buttons button {
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid #E2E6E9;
+  background: #fff;
+  border-radius: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border: 1px solid #B4BDC3;
+  }
+}
+
+.list {
+  display: flex;
+  gap: 16px;
+
+  overflow-x: auto;
+  scroll-behavior: smooth;
+
+  padding-bottom: 4px;
+
+  scrollbar-width: none;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
+}

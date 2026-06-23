@@ -1,0 +1,31 @@
+.pageGrid {
+  display: grid;
+  gap: 16px;
+
+  grid-template-columns: repeat(4, 1fr);
+  padding: 0 16px;
+}
+
+/* MOBILE 320–639 */
+@media (min-width: 320px) {
+  .pageGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* TABLET 640–1199 */
+@media (min-width: 640px) {
+  .pageGrid {
+    grid-template-columns: repeat(12, 1fr);
+    padding: 0 24px;
+  }
+}
+
+/* DESKTOP 1200+ */
+@media (min-width: 1200px) {
+  .pageGrid {
+    grid-template-columns: repeat(24, 32px);
+    justify-content: center;
+    padding: 0;
+  }
+}

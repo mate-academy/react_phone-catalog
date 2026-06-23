@@ -1,0 +1,44 @@
+
+.page {
+  margin-top: 56px;
+}
+
+.visuallyHidden {
+  font-size: 800;
+  grid-column: 1 / -1;
+  margin: 0;
+  margin-bottom: 56px;
+}
+
+.slider {
+  grid-column: 1 / -1;
+  margin-bottom: 56px;
+}
+
+.section {
+  grid-column: 1 / -1;
+}
+
+.section:not(:last-child) {
+  margin-bottom: 56px;
+}
+
+/* tablet */
+@media (min-width: 640px) {
+  .section:not(:last-child) {
+    margin-bottom: 64px;
+  }
+  .slider {
+  margin-bottom: 64px;
+}
+}
+
+/* desktop */
+@media (min-width: 1200px) {
+  .section:not(:last-child) {
+    margin-bottom: 80px;
+  }
+  .slider {
+  margin-bottom: 80px;
+}
+}
