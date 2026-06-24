@@ -1,0 +1,96 @@
+@import '../../utils/mixins';
+@import '../../utils/variable';
+
+.dropdowns {
+  position: relative;
+  width: 100%;
+}
+
+.dropdownsButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 40px;
+  margin-bottom: 4px;
+  padding: 12px;
+  border: 1px solid $gray-secondary;
+  cursor: pointer;
+  transition: border-color $transition-duration $transition-timing;
+
+  background-color: $background-color;
+
+  &:hover {
+    border: 1px solid $gray-main;
+  }
+}
+
+.img {
+  display: block;
+  width: 16px;
+  height: 16px;
+  padding-top: 2px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform $transition-duration $transition-timing;
+}
+
+.iconRotated {
+  transform: rotate(180deg);
+}
+
+.sortList {
+  cursor: pointer;
+
+  position: absolute;
+  z-index: 10;
+  top: 100%;
+  left: 0;
+
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 1px solid $gray-icons;
+
+  list-style: none;
+
+  visibility: hidden;
+  opacity: 0;
+  background-color: $background-color;
+  box-shadow: $shadow-default;
+
+  transition: all $transition-duration $transition-timing;
+}
+
+.sortListOpen {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sortItem {
+  padding: 6px 12px;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $gray-main;
+  text-decoration: none;
+  letter-spacing: 0%;
+  cursor: pointer;
+  transition:
+    color $transition-duration,
+    background-color $transition-duration;
+
+  &:hover {
+    color: $active-link-color;
+  }
+}
+
+.active {
+  color: $active-link-color;
+}

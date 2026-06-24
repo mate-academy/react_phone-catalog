@@ -1,0 +1,96 @@
+@import '../../utils/mixins';
+@import '../../utils/variable';
+
+.container {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-top: 32px;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}
+
+.contentSort {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 136px;
+
+  @include on-tablet {
+    width: 187px;
+  }
+
+  @include on-desktop {
+    width: 176px;
+  }
+}
+
+.contentItems {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 136px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  color: $gray-main;
+  letter-spacing: 0%;
+}
+
+.searchBlock {
+  height: 40px;
+  overflow: hidden;
+  max-width: 0;
+  margin-bottom: 4px;
+  transition:
+    max-width $transition-duration $transition-timing,
+    opacity $transition-duration $transition-timing,
+    margin $transition-duration;
+}
+
+.searchButton {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+
+  height: 40px;
+  width: 40px;
+  background-color: $background-color;
+  border: 1px solid $gray-icons;
+  transition: all $transition-duration;
+
+  &:hover {
+    border-color: $gray-main;
+    background-color: $gray-icons;
+  }
+}
+
+.activeSearch {
+  max-width: 250px;
+
+  opacity: 1;
+}
+
+input {
+  width: 100%;
+  height: 100%;
+  padding: 8px 16px;
+  background-color: $background-color;
+  border: 1px solid $gray-icons;
+  outline: none;
+  transition: border-color $transition-duration;
+
+  &:focus {
+    border-color: $gray-main;
+  }
+}

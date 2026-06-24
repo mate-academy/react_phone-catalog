@@ -1,0 +1,121 @@
+@import '../../utils/mixins';
+@import '../../utils/variable';
+
+.footer {
+  margin-top: auto;
+  padding: 32px 16px;
+  border-top: 1px solid $gray-icons;
+  background-color: $background-color;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 0;
+    align-items: center;
+    justify-content: center;
+
+    height: 96px;
+    padding: 32px 24px;
+  }
+}
+
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 0;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+.logo {
+  display: block;
+
+  transition: opacity $transition-duration;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @include on-desktop {
+    gap: 90px;
+  }
+}
+
+.footerLink {
+  @include footer-link;
+}
+
+.buttonImg {
+  pointer-events: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $gray-secondary;
+  transition: color $transition-duration $transition-timing;
+
+  background: none;
+}
+
+.backToTop {
+  @include footer-link;
+
+  cursor: pointer;
+
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  @include on-tablet {
+    justify-content: flex-end;
+    width: auto;
+    padding: 0;
+  }
+
+  &:hover .buttonImg {
+    background-color: #f0f0f0;
+  }
+}
+
+.backText {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+  text-align: right;
+  text-transform: none;
+  letter-spacing: 0;
+  transition: color $transition-duration $transition-timing;
+}

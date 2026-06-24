@@ -1,0 +1,51 @@
+@import '../../utils/mixins';
+@import '../../utils/variable';
+
+.sliderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.sliderTitle {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  margin: 0;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.sliderButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.sliderButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $gray-icons;
+  background-color: $background-color;
+  transition: all $transition-duration $transition-timing;
+
+  &:hover {
+    border: 1px solid $active-link-color;
+    cursor: pointer;
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+}
+
+.productCardWrapper {
+  flex-shrink: 0; // Забороняємо стискання
+}

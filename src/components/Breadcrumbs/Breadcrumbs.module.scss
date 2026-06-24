@@ -1,0 +1,62 @@
+@import '../../utils/mixins';
+@import '../../utils/variable';
+
+.navContent {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-left: 8px;
+  }
+
+  @include on-desktop {
+    padding-left: 0;
+  }
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+  padding-top: 2px;
+}
+
+.navImg {
+  display: block;
+  transition: transform $transition-duration;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.path {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+  color: $gray-main;
+  text-transform: capitalize;
+  letter-spacing: 0%;
+  text-decoration: none;
+}
+
+.navLink {
+  text-decoration: none;
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+
+  color: $active-link-color;
+  transition: color $transition-duration $transition-timing;
+
+  &:hover {
+    color: $gray-main;
+  }
+}

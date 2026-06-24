@@ -1,0 +1,66 @@
+@import '../../utils/mixins';
+@import '../../utils/variable';
+
+.container {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+}
+
+.title {
+  margin-top: 24px;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  @include on-tablet {
+    margin-top: 40px;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -1%;
+  }
+}
+
+.total {
+  margin-top: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: $gray-main;
+}
+
+.favoritesList {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 40px 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.emptyImg {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+}

@@ -1,0 +1,141 @@
+@import '../../utils/mixins';
+@import '../../utils/variable';
+
+.itemBlock {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid $gray-icons;
+  transition: box-shadow $transition-duration;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    padding: 24px;
+  }
+}
+
+.itemDescription {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  @include on-tablet {
+    flex: 1;
+  }
+}
+
+.deleteButton {
+  width: 16px;
+  height: 16px;
+  background-color: $background-color;
+  border: none;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity $transition-duration;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  text-decoration: none;
+  color: $active-link-color;
+  transition: color $transition-duration;
+
+  &:hover {
+    color: $gray-main;
+  }
+}
+
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+}
+
+.cartItemQuantity {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  @include on-tablet {
+    width: 132px;
+  }
+}
+
+.quantityButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background-color: $background-color;
+  cursor: pointer;
+  border: 1px solid rgba(180, 189, 195, 1);
+  transition: all $transition-duration;
+
+  &:hover {
+    border-color: $active-link-color;
+  }
+}
+
+.disabled {
+  border: 1px solid rgba(226, 230, 233, 1);
+  opacity: 0.5;
+}
+
+.quantity {
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+}
+
+.imageItem {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform $transition-duration $transition-timing;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.itemTitle {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+}
+
+.itemTotal {
+  display: flex;
+  justify-content: space-between;
+
+  @include on-tablet {
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
+  }
+}
+
+.totalPrice {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0%;
+
+  @include on-tablet {
+    width: 80px;
+    text-align: right;
+  }
+}
