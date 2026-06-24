@@ -1,0 +1,32 @@
+.prevIcon {
+  transform: rotate(180deg);
+}
+
+.prevButton,
+.nextButton {
+  top: 0;
+  z-index: 999;
+  position: absolute;
+  height: auto;
+  display: none;
+  transition: background-color var(--time);
+
+  @media (min-width: 640px) {
+    display: initial;
+  }
+}
+
+.prevButton {
+  left: 0;
+  height: 95%;
+}
+
+.nextButton {
+  right: 0;
+  height: 95%;
+}
+
+.extra {
+  height: inherit;
+  position: inherit;
+}

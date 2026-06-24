@@ -1,0 +1,122 @@
+.header {
+  margin: 0;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: var(--color-black);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 48px;
+  padding-left: 16px;
+  border-bottom: 1px solid var(--color-surface-two);
+
+  @media (min-width: 1199px) {
+    padding-left: 24px;
+  }
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+
+  @media (min-width: 1199px) {
+    gap: 24px;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  align-self: stretch;
+}
+
+.controls {
+  display: none;
+
+  @media (min-width: 1199px) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-right: 8px;
+  }
+}
+
+.tabletControls {
+  display: none;
+
+  @media (min-width: 640px) and (max-width: 1198px) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--color-surface-two);
+  }
+}
+
+.desktopSearch {
+  display: none;
+
+  @media (min-width: 1199px) {
+    display: block;
+    width: 280px;
+  }
+}
+
+.mobileSearch {
+  border-bottom: 1px solid var(--color-surface-two);
+
+  @media (min-width: 640px) {
+    display: none;
+  }
+}
+
+.controlButton {
+  border: 1px solid var(--color-elements);
+  background: var(--color-surface-one);
+  color: var(--color-white);
+  font-size: 10px;
+  line-height: 10px;
+  padding: 6px 8px;
+  cursor: pointer;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  background-color: var(--color-black);
+  border: none;
+  border-left: 1px solid var(--color-surface-two);
+  cursor: pointer;
+  flex-shrink: 0;
+
+  @media (min-width: 640px) {
+    display: none;
+  }
+
+  @media (min-width: 1199px) {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.icon {
+  width: 16px;
+}
+
+.iconLight {
+  filter: brightness(0) saturate(100%);
+}

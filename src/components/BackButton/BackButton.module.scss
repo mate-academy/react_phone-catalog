@@ -1,0 +1,15 @@
+.button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-white);
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.arrow {
+  transform: rotate(180deg);
+}

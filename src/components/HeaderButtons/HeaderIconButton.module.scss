@@ -1,0 +1,53 @@
+.icon {
+  width: 16px;
+}
+
+.iconLight {
+  filter: brightness(0) saturate(100%);
+}
+
+.linkButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: red;
+  color: white;
+  border-radius: 999px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  font-size: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.button {
+  display: none;
+  color: white;
+  position: relative;
+  padding: 16px;
+  background-color: var(--color-black);
+  border: none;
+  border-left: 1px solid var(--color-surface-two);
+  border-bottom: 2px solid transparent;
+  box-sizing: border-box;
+
+  @media (min-width: 640px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+  }
+
+  @media (min-width: 1199px) {
+    padding: 24px;
+  }
+}
+
+.underline {
+  border-bottom: 2px solid var(--color-white);
+}

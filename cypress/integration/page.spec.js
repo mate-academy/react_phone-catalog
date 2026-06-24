@@ -1,9 +1,9 @@
-describe('App', () => {
+describe("App", () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.visit("/");
   });
 
-  it('should have h1', () => {
-    cy.get('h1').should('have.text', 'Product Catalog');
+  it("should have h1", () => {
+    cy.get("h1").should("have.text", "Product Catalog");
   });
 });

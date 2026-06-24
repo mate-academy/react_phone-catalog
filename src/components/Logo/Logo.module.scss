@@ -1,0 +1,13 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logoImage {
+  display: block;
+}
+
+.logoImageLight {
+  display: block;
+  filter: brightness(0) saturate(100%);
+}

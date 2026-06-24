@@ -1,0 +1,91 @@
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background-color: var(--color-black);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  border-bottom: 1px solid var(--color-surface-two);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  padding-inline: 16px;
+  padding-block: 13px;
+}
+
+.logoImage {
+  display: block;
+}
+
+.logoImageLight {
+  filter: brightness(0) saturate(100%);
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-left: 1px solid var(--color-surface-two);
+  width: 57px;
+  height: 57px;
+  background-color: transparent;
+}
+
+.closeIcon {
+  display: block;
+}
+
+.closeIconLight {
+  filter: brightness(0) saturate(100%);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 24px;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+}
+
+.controlButton {
+  border: 1px solid var(--color-elements);
+  background: var(--color-surface-one);
+  color: var(--color-white);
+  font-size: 11px;
+  line-height: 11px;
+  padding: 8px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--color-surface-two);
+}
+
+.iconButton {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  height: 64px;
+  border-left: 1px solid var(--color-surface-two);
+  background-color: var(--color-black) !important;
+}
+
+.iconButton:first-child {
+  border-left: none;
+}

@@ -1,0 +1,158 @@
+.cart {
+  padding-top: 24px;
+  padding-bottom: 56px;
+}
+
+.content {
+  @media (min-width: 1199px) {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+}
+
+.tittle {
+  margin-bottom: 32px;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+
+  margin-bottom: 32px;
+
+  @media (min-width: 1199px) {
+    flex-grow: 2;
+  }
+}
+
+.card {
+  background-color: var(--color-surface-one);
+  padding-block: 16px;
+  padding-inline: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.cardBottom,
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  @media (min-width: 640px) {
+    width: 50%;
+  }
+}
+
+.cardBottom {
+  width: 100%;
+  justify-content: space-between;
+
+  @media (min-width: 640px) {
+    width: 50%;
+  }
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.closeButton {
+  align-self: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.countButton {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: var(--color-surface-two);
+  cursor: pointer;
+}
+
+.cardButtons {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardPicture {
+  width: 80px;
+}
+
+.productPrice {
+  width: 100px;
+}
+
+.incrementIcon {
+  transform: rotate(45deg);
+}
+
+.count {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+}
+
+.cartSubtext {
+  color: var(--color-secondary);
+}
+
+.cartSubtext::after {
+  margin-bottom: 16px;
+  margin-top: 16px;
+  display: block;
+  content: "";
+  width: 100%;
+  border-bottom: 1px solid var(--color-surface-two);
+
+  @media (min-width: 1199px) {
+    margin-bottom: 24px;
+    margin-top: 25px;
+  }
+}
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 24px;
+  border: 1px solid var(--color-surface-two);
+  min-width: 288px;
+
+  @media (min-width: 1199px) {
+    flex-grow: 1;
+    min-width: 368px;
+  }
+}
+
+.checkoutButton {
+  border: none;
+  background-color: var(--color-accent);
+  padding: 13.5px;
+  cursor: pointer;
+}
+
+.checkoutButton:hover {
+  background-color: var(--color-primary-hover);
+}

@@ -1,0 +1,13 @@
+.products {
+  overflow: hidden;
+  margin: 0;
+  padding-bottom: 56px;
+
+  @media (min-width: 640px) {
+    padding-bottom: 64px;
+  }
+
+  @media (min-width: 1199px) {
+    padding-bottom: 80px;
+  }
+}

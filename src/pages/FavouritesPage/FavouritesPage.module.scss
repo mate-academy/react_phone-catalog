@@ -1,0 +1,40 @@
+.favorites {
+  padding-top: 24px;
+  padding-bottom: 32px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.products {
+  overflow: hidden;
+  margin: 0;
+  padding-bottom: 56px;
+
+  @media (min-width: 640px) {
+    padding-bottom: 64px;
+  }
+
+  @media (min-width: 1199px) {
+    padding-bottom: 80px;
+  }
+}
+
+.grid {
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1199px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

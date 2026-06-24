@@ -1,0 +1,25 @@
+.slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 100%;
+
+  @media (min-width: 640px) {
+    width: 90%;
+  }
+}
+
+.swiper {
+  margin-bottom: 56px;
+
+  @media (min-width: 640px) {
+    margin-bottom: 64px;
+  }
+
+  @media (min-width: 640px) {
+    margin-bottom: 80px;
+  }
+}

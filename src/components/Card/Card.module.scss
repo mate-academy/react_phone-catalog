@@ -1,0 +1,61 @@
+.item {
+  width: 100%;
+  max-width: 506px;
+  background-color: var(--color-surface-one);
+  padding: 32px;
+  min-width: 212px;
+  transition: border var(--time);
+  border: 1px solid transparent;
+}
+
+.item:hover {
+  border: 1px solid var(--color-surface-two);
+}
+
+.name {
+  height: 42px;
+}
+
+.image {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  margin-bottom: 24px;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.price {
+  border-bottom: 1px solid var(--color-elements);
+}
+
+.characteristics {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 16px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.value {
+  text-align: end;
+}
+
+.action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}

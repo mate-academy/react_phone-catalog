@@ -1,0 +1,89 @@
+.text-h1 {
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  font-family: Mont-bold, sans-serif;
+  font-weight: 700;
+  color: var(--color-white);
+
+  @media (min-width: 640px) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.text-h2 {
+  font-size: 22px;
+  line-height: 31px;
+  font-family: Mont-bold, sans-serif;
+  font-weight: 700;
+  color: var(--color-white);
+
+  @media (min-width: 640px) {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.text-h3 {
+  font-size: 20px;
+  line-height: 26px;
+  font-family: Mont-semibold, sans-serif;
+  font-weight: 600;
+  color: var(--color-white);
+
+  @media (min-width: 640px) {
+    font-size: 22px;
+    line-height: 31px;
+    font-family: Mont-bold, sans-serif;
+    font-weight: 700;
+  }
+}
+
+.text-h4 {
+  font-size: 16px;
+  line-height: 20px;
+  font-family: Mont-semibold, sans-serif;
+  font-weight: 600;
+  color: var(--color-white);
+
+  @media (min-width: 640px) {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+.text-uppercase {
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  font-family: Mont-bold, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-white);
+}
+
+.text-button {
+  font-size: 14px;
+  line-height: 21px;
+  font-family: Mont-semibold, sans-serif;
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.text-body {
+  font-size: 14px;
+  line-height: 21px;
+  font-family: Mont-regular, sans-serif;
+  font-weight: 400;
+  color: var(--color-white);
+}
+
+.text-small {
+  font-size: 12px;
+  line-height: 15px;
+  font-family: Mont-semibold, sans-serif;
+  font-weight: 600;
+  color: var(--color-secondary);
+}

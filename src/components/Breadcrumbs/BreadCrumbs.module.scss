@@ -1,0 +1,55 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  margin-top: 24px;
+
+  @media (min-width: 640px) {
+    margin-bottom: 40px;
+  }
+}
+
+.home {
+  flex-shrink: 0;
+}
+
+.con {
+  width: 16px;
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 8px;
+}
+
+.whiteLink {
+  color: var(--color-white);
+}
+
+.itemCut {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.arrow {
+  width: 16px;
+}
