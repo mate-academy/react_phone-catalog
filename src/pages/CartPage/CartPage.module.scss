@@ -1,0 +1,298 @@
+.container {
+  @include content-padding-in-line;
+
+  &__backbutton {
+    cursor: pointer;
+
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin: 24px 0 16px;
+
+    &__back {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+
+      color: $white-color-text;
+      text-decoration: none;
+
+      &:hover {
+        color: $hover-button-color;
+      }
+    }
+
+    &__button {
+      margin: 0;
+      font-family: Mont-SemiBold, sans-serif;
+      font-size: 12px;
+    }
+
+    &__icon {
+      width: 16px;
+      height: 16px;
+      background: url('../img/icons/ArrowLeft.svg') center / contain no-repeat;
+      transition: background-image .2s;
+    }
+  }
+
+  &__body {
+    &__message {
+      text-align: center;
+    }
+
+    &__empty {
+      text-align: center;
+
+      &__text {
+        font-family: Mont-Regular, sans-serif;
+        font-size: 20px;
+      }
+
+      &__img {
+        width: 280px;
+        height: 280px;
+        object-fit: contain;
+
+        @include on-tablet {
+          width: 350px;
+          height: 350px;
+        }
+
+        @include on-desktop {
+          width: 400px;
+          height: 400px;
+        }
+      }
+    }
+
+    &__title {
+      margin: 0;
+      font-family: Mont-Bold, sans-serif;
+      font-size: 32px;
+    }
+
+    &__text {
+      margin: 0 0 24px;
+      font-family: Mont-Regular, sans-serif;
+      font-size: 14px;
+      color: $grey-color-text;
+    }
+
+    &__item {
+      margin-bottom: 16px;
+      padding: 16px;
+      border-radius: 12px;
+      background-color: $background-light-color;
+
+      &__up {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+
+      &__remove {
+        cursor: pointer;
+        width: 16px;
+        height: 16px;
+      }
+
+      &__img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+      }
+
+      &__text {
+        flex: 1 1 auto;
+        font-family: Mont-Regular, sans-serif;
+        font-size: 14px;
+      }
+
+      &__controls {
+        display: flex;
+        gap: 108px;
+        align-items: center;
+      }
+
+      &__quantity {
+        display: flex;
+        gap: 13px;
+        align-items: center;
+      }
+
+      &__button {
+        cursor: pointer;
+
+        width: 32px;
+        height: 32px;
+        border: 1px solid $grey-color-icons;
+        border-radius: 8px;
+
+        font-size: 16px;
+        color: $white-color-text;
+        text-align: center;
+
+        background: $grey-color-icons;
+
+        &:disabled {
+          cursor: not-allowed;
+
+          border: 1px solid $grey-color-icons;
+
+          color: $grey-color-icons;
+
+          opacity: 0.8;
+          background: $background-color;
+        }
+      }
+
+      &__qty {
+        font-family: Mont-Regular, sans-serif;
+        font-size: 14px;
+      }
+
+      &__price {
+        font-family: Mont-Bold, sans-serif;
+        font-size: 22px;
+      }
+    }
+
+    &__total {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+
+      margin: 32px 0 56px;
+      padding: 0 24px;
+      border: 1px solid $element-color;
+      border-radius: 12px;
+
+      &__price {
+        margin: 24px 0 0;
+        font-family: Mont-Bold, sans-serif;
+        font-size: 32px;
+        text-align: center;
+      }
+
+      &__text {
+        position: relative;
+
+        margin: 0 0 32px;
+
+        font-family: Mont-Regular, sans-serif;
+        font-size: 14px;
+        color: $grey-color-text;
+        text-align: center;
+
+        &::after {
+          content: '';
+
+          position: absolute;
+          bottom: -16px;
+          left: 50%;
+          transform: translateX(-50%);
+
+          width: 100%;
+          height: 1px;
+
+          background: $grey-color-text;
+        }
+      }
+
+      &__button {
+        width: 100%;
+        height: 48px;
+        margin: 0 0 24px;
+        border: none;
+        border-radius: 16px;
+
+        font-family: Mont-SemiBold, sans-serif;
+        font-size: 14px;
+        color: $white-color-text;
+
+        background-color: $button-color;
+      }
+    }
+
+    @include on-tablet {
+      &__item {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+  }
+
+  @include on-desktop {
+    &__body {
+      &__carts {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+      }
+
+      &__products {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      &__total {
+        position: sticky;
+        flex: 0 0 368px;
+        width: 368px;
+        margin: 0;
+      }
+    }
+  }
+}
+
+.container--light {
+  .container {
+    &__backbutton {
+      &__icon {
+        background-image: url('../img/icons/ArrowLLig.svg');
+      }
+
+      &__back {
+        color: $background-color;
+
+        &:hover {
+          color: $button-color;
+        }
+      }
+    }
+
+    &__body__item {
+      border: 1.5px solid $dark-grey;
+      background-color: $white-color-text;
+
+      &__button {
+        border: 1px solid $grey-color-icons;
+        color: $background-color;
+        background: $white-color-text;
+
+        &:hover {
+          border: 1.6px solid $background-color;
+        }
+
+        &:disabled {
+          cursor: not-allowed;
+
+          border: 1px solid $dark-grey;
+
+          color: $background-color;
+
+          opacity: 0.8;
+          background: $grey-color-text;
+        }
+      }
+    }
+  }
+}
+
+.container__backbutton__back:hover .container__backbutton__icon {
+  background-image: url('../img/icons/ArrowLeftHover.svg');
+}

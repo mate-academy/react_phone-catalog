@@ -1,0 +1,167 @@
+.overlay {
+  pointer-events: none;
+
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  &.open {
+    pointer-events: auto;
+    opacity: 1;
+  }
+}
+
+.pageMenu {
+  pointer-events: none;
+
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateX(100%);
+
+  overflow: hidden;
+  width: clamp(320px, 100vw, $tablet-min-width);
+  opacity: 0;
+
+  transition: transform .3s, opacity .3s;
+
+  &.open {
+    pointer-events: auto;
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: $background-color;
+}
+
+.menuContainer {
+  overflow: hidden;
+  flex: 1 0 auto;
+  box-sizing: border-box;
+  padding-top: 24px;
+}
+
+.menuBottom {
+  position: relative;
+  display: flex;
+  flex: 0 0 64px;
+  border-top: 1px solid $grey-color-icons;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 12px;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-0.5px);
+
+    width: 1px;
+
+    background: $grey-color-icons;
+  }
+
+  &__heart, &__cart {
+    cursor: pointer;
+
+    position: relative;
+
+    display: flex;
+    flex: 1 1 50%;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+
+    background: transparent;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transform-origin: left;
+      transform: scaleX(0);
+
+      height: 2px;
+
+      background: $white-color-text;
+
+      transition: transform .25s;
+    }
+
+    &:hover::after,
+    &.isActive::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.iconButton {
+  position: relative;
+
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge {
+  pointer-events: none;
+
+  position: absolute;
+  transform: translate(50%, -50%);
+
+  min-width: 14px;
+  height: 14px;
+  border-radius: 999px;
+
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 9px;
+  line-height: 14px;
+  color: $white-color-text;
+  text-align: center;
+
+  background: #EB5757;
+}
+
+.iconTheme {
+  position: relative;
+
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 20px;
+
+  &__theme {
+    font-size: 14px;
+    color: $grey-color-icons;
+  }
+}
+
+.pageMenu--light {
+  .menu {
+    background-color: $white-color-text;
+  }
+}
