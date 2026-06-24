@@ -1,0 +1,40 @@
+.icon {
+  @extend %hover-transition;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &__filled {
+    opacity: 0;
+  }
+}
+
+.button {
+  @extend %hover-transition;
+
+  flex-shrink: 0;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background: $button;
+  border: 1px solid $icons;
+
+  &__active {
+    border-color: $elements;
+  }
+
+  &__active,
+  &:hover {
+    border-color: $main;
+
+    & .icon {
+      opacity: 0;
+    }
+
+    & .icon__filled {
+      opacity: 1;
+    }
+  }
+}

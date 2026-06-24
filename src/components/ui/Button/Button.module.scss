@@ -1,0 +1,25 @@
+.button {
+  @extend %hover-transition;
+
+  width: 100%;
+  height: 40px;
+  border: 1px solid;
+
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  font-weight: 400;
+  color: $white;
+  background: $buttonCard;
+  border-color: $buttonCard;
+
+  &__active {
+    background: $button;
+    color: $green;
+    border-color: $icons;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+}

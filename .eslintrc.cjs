@@ -92,11 +92,11 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['error'],
     '@typescript-eslint/indent': ['error', 2],
     '@typescript-eslint/ban-types': ['error', {
-        extendDefaults: true,
-        types: {
-          '{}': false,
-        },
+      extendDefaults: true,
+      types: {
+        '{}': false,
       },
+    },
     ],
   },
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'src/vite-env.d.ts', 'cypress'],

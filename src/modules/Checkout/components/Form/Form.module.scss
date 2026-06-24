@@ -1,0 +1,17 @@
+.form {
+  margin-top: 32px;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.title {
+  color: $main;
+}

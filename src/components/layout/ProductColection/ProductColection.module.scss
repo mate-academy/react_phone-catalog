@@ -1,0 +1,35 @@
+.section {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__arrows {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+  }
+}
+
+.content {
+  overflow: hidden;
+  margin-left: -15px;
+  width: calc(100% + 30px);
+}
+
+.hidden {
+  padding: 15px;
+}
+
+.slider {
+  transition: 0.3s ease-in-out;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.card {
+  width: 100%;
+  max-width: 272px;
+  flex-shrink: 0;
+}

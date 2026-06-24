@@ -1,0 +1,98 @@
+.footer {
+  border-top: 1px solid $elements;
+
+  @media (min-width: 601px) {
+    height: 96px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 32px 0;
+  }
+}
+
+.container {
+  @extend %container;
+
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+}
+
+.menu {
+  @media (min-width: 601px) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.list {
+  display: flex;
+  gap: 107px;
+
+  @media (max-width: 1024px) {
+    gap: 4px 17px;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+
+  &__link {
+    @extend %hover-transition;
+
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    color: $secondary;
+
+    &:hover {
+      color: $main;
+    }
+  }
+}
+
+.button {
+  @extend %hover-transition;
+
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 100%;
+  color: $secondary;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+
+  @media (max-width: 600px) {
+    margin: 0 auto;
+  }
+
+  &__icon {
+    @extend %hover-transition;
+
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $elements;
+    margin-left: 16px;
+  }
+
+  &:hover {
+    color: $main;
+    & .button__icon {
+      @extend %hover-transition;
+
+      border-color: $main;
+    }
+  }
+}

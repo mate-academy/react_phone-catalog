@@ -1,0 +1,31 @@
+.container {
+  @extend %container;
+}
+
+.content {
+  @extend %container;
+
+  margin-top: 80px;
+
+  @media (max-width: 768px) {
+    margin-top: 64px;
+  }
+
+  @media (max-width: 425px) {
+    margin-top: 56px;
+  }
+
+  & > section {
+    margin-top: 80px;
+  }
+}
+
+.title {
+  @extend %page-title;
+
+  padding: 56px 0;
+
+  @media (max-width: 768px) {
+    padding: 24px 0;
+  }
+}

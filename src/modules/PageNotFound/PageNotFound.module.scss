@@ -1,0 +1,22 @@
+.container {
+  @extend %container;
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__img {
+    max-width: 420px;
+    width: 100%;
+  }
+
+  &__title {
+    color: $main;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 32px;
+    margin: 32px 0 16px;
+  }
+}

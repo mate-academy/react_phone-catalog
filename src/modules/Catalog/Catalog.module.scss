@@ -1,0 +1,13 @@
+.container {
+  @extend %container;
+}
+
+.content {
+  margin-top: 40px;
+
+  & > section {
+    &:not(:last-child) {
+      margin-bottom: 60px;
+    }
+  }
+}

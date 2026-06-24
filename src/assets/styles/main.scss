@@ -1,0 +1,42 @@
+@import "reset";
+@import "fonts";
+
+body {
+  background: $theme;
+  font-family: Mont, sans-serif;
+
+  &.locked {
+    overflow: hidden;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: $white;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $main;
+  border-radius: 5px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.wrapper {
+  flex-grow: 1;
+  padding-top: 64px;
+  margin-bottom: 80px;
+
+  @media (max-width: 1024px) {
+    padding-top: 48px;
+  }
+}

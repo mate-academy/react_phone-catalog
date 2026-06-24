@@ -1,0 +1,76 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.content {
+  display: flex;
+  gap: 40px;
+}
+
+.gallery {
+  display: flex;
+  gap: 16px;
+}
+
+.thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mainImage {
+  width: 464px;
+}
+
+.info {
+  max-width: 320px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+.price {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  flex: 1;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bottom {
+  display: flex;
+  gap: 40px;
+}
+
+.block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

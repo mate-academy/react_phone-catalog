@@ -1,0 +1,44 @@
+.container {
+  @extend %container;
+}
+
+.title {
+  font-size: 26px;
+  line-height: 32px;
+  font-weight: 600;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  justify-content: start;
+  gap: 16px;
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__img {
+    max-width: 180px;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    color: $main;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 32px;
+    margin-bottom: 6px;
+  }
+
+  &__subtitle {
+    color: $secondary;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 26px;
+    margin-bottom: 12px;
+  }
+}

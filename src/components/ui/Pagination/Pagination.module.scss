@@ -1,0 +1,30 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.pages {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  @extend %hover-transition;
+
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $main;
+  border: 1px solid $elements;
+  background: $button;
+
+  &:hover,
+  &__active {
+    background: $buttonCard;
+    color: $white;
+    border-color: $secondary;
+  }
+}

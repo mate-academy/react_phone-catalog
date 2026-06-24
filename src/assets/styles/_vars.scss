@@ -1,0 +1,78 @@
+:root {
+  --green: #27ae60;
+  --red: #eb5757;
+  --white: #fff;
+}
+
+[data-theme="light"] {
+  --main: #313237;
+  --secondary: #89939a;
+  --icons: #b4bdc3;
+  --elements: #e2e6e9;
+  --hover: #fafbfc;
+  --theme: #fff;
+  --button: #fff;
+  --button-card: #313237;
+}
+
+[data-theme="dark"] {
+  --main: #f1f2f9;
+  --secondary: #75767f;
+  --icons: #4a4d58;
+  --elements: #3b3e4a;
+  --hover: #fafbfc;
+  --white: #fff;
+  --theme: #0f1121;
+  --button: #323542;
+  --button-card: #905bff;
+}
+
+/* SCSS variables */
+$main: var(--main);
+$secondary: var(--secondary);
+$icons: var(--icons);
+$elements: var(--elements);
+$hover: var(--hover);
+$white: var(--white);
+$green: var(--green);
+$red: var(--red);
+$theme: var(--theme);
+$button: var(--button);
+$buttonCard: var(--button-card);
+$transition: 0.2s ease-in;
+
+%hover-transition {
+  transition: $transition;
+
+  &:hover {
+    transition: $transition;
+  }
+}
+
+%container {
+  padding: 0 32px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    padding: 0 24px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
+}
+
+%page-title {
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1%;
+  color: $main;
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}

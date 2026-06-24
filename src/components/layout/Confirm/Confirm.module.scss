@@ -1,0 +1,17 @@
+.container {
+  @extend %container;
+
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+
+.title {
+  font-size: 36px;
+  line-height: 46px;
+  color: $main;
+  text-align: center;
+  font-weight: 700;
+}

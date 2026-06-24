@@ -1,0 +1,76 @@
+.container {
+  @extend %container;
+}
+
+.content {
+  margin-top: 32px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  color: $main;
+  margin-bottom: 12px;
+}
+
+.total {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 32px;
+  color: $main;
+  margin-top: 36px;
+}
+
+.products {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.product {
+  border: 1px solid $elements;
+  padding: 24px;
+  max-width: 320px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @media (max-width: 540px) {
+    flex-direction: column;
+  }
+}
+
+.img {
+  height: 160px;
+  flex-shrink: 0;
+  margin: 0 auto 30px;
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $main;
+}
+
+.price {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $main;
+}
+
+.amount {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $main;
+}

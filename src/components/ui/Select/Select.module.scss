@@ -1,0 +1,109 @@
+.title {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  color: $secondary;
+}
+
+.group {
+  padding-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.select {
+  z-index: 9;
+  background-color: $white;
+  position: relative;
+  width: 176px;
+  height: 40px;
+  outline: 1px solid $icons;
+
+  &:hover {
+    cursor: pointer;
+    border-color: $secondary;
+  }
+
+  &__icon {
+    @extend %hover-transition;
+
+    position: absolute;
+    top: 11px;
+    right: 10px;
+  }
+
+  &__active {
+    border-color: $main;
+
+    & .select__icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__header {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 40px;
+    padding: 0 10px;
+    color: $main;
+    background: $button;
+  }
+}
+
+.order {
+  height: 16px;
+  width: 16px;
+}
+
+.icon {
+  @extend %hover-transition;
+
+  &__desc {
+    transform: rotate(180deg);
+  }
+}
+
+.list {
+  @extend %hover-transition;
+
+  max-height: 320px;
+  overflow-y: auto;
+
+  transform: scaleY(0);
+  transform-origin: top;
+  opacity: 0;
+  pointer-events: none;
+
+  position: absolute;
+  width: 100%;
+  top: 45px;
+  background: $button;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  outline: 1px solid;
+  outline-color: $white;
+
+  &__active {
+    outline-color: $elements;
+
+    transform: scaleY(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &__item {
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary;
+    padding: 10px;
+
+    &:hover,
+    &_active {
+      font-weight: 600;
+      color: $main;
+      background-color: $elements;
+    }
+  }
+}

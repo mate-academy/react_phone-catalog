@@ -1,0 +1,34 @@
+.container {
+  @extend %container;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  justify-content: start;
+  gap: 16px;
+}
+
+.footer {
+  margin-top: 40px;
+}
+
+.empty {
+  margin: 0 auto;
+  &__title {
+    font-size: 67px;
+    font-weight: 800;
+    line-height: 48px;
+    color: $main;
+    text-align: center;
+    padding: 24px 0;
+  }
+
+  &__subtitle {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 48px;
+    color: $main;
+  }
+}
