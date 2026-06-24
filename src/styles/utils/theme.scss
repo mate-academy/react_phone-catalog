@@ -1,0 +1,23 @@
+.light {
+  --main: rgba(255, 255, 255, 1);
+  --background: rgba(250, 251, 252, 1);
+  --elements: rgba(137, 147, 154, 1);
+  --border: rgba(226, 230, 233, 1);
+  --border-hover: rgba(180, 189, 195, 1);
+  --primary: rgba(15, 15, 17, 1);
+  --accent: rgba(66, 25, 208, 1);
+  --accent-secondary: rgba(244, 186, 71, 1);
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
+.dark {
+  --main: rgba(15, 17, 33, 1);
+  --background: rgba(22, 24, 39, 1);
+  --elements: rgba(137, 147, 154, 1);
+  --border: rgba(59, 62, 74, 1);
+  --border-hover: rgba(74, 77, 88, 1);
+  --primary: rgba(241, 242, 249, 1);
+  --accent: rgba(144, 91, 255, 1);
+  --accent-secondary: rgba(235, 87, 87, 1);
+  --shadow: rgba(255, 255, 255, 0.3);
+}
