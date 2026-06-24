@@ -1,0 +1,133 @@
+.menuContainer {
+  position: fixed;
+  top: 48px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 48px);
+  background-color: #fff;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  box-sizing: border-box;
+  border-top: 1px solid #e2e6e9;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.navLink {
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  color: #89939a;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #313237;
+  }
+
+  &.isActive {
+    color: #313237;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 36px;
+      height: 3px;
+      background-color: #313237;
+    }
+  }
+}
+
+.footerButtons {
+  display: flex;
+  width: 100%;
+  height: 48px;
+  border-top: 1px solid #e2e6e9;
+  margin-top: auto;
+  box-sizing: border-box;
+}
+
+.iconButton {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  height: 100%;
+  background-color: #fff;
+  box-sizing: border-box;
+  position: relative;
+
+  &:first-child {
+    border-right: 1px solid #e2e6e9;
+  }
+
+  &:hover {
+    background-color: #f4f6f7;
+  }
+
+  &.activeIconButton {
+    background-color: #fff;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #313237;
+    }
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: #eb5757;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  border-radius: 50%;
+  min-width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2px;
+  box-sizing: border-box;
+  border: 1px solid #fff;
+}
+
+@media (min-width: 640px) {
+  .menuContainer {
+    display: none;
+  }
+}
