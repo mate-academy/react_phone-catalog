@@ -1,0 +1,289 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.title {
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 700;
+  color: #313237;
+}
+
+.hero {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.heroArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  flex-shrink: 0;
+  padding: 0;
+  border: 1px solid #3f4045;
+  color: #6d6f78;
+  background-color: #000;
+  font-size: 36px;
+  line-height: 1;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+  cursor: pointer;
+}
+
+.heroArrow:hover {
+  border-color: #f1f2f9;
+  color: #f1f2f9;
+}
+
+.heroBanner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow: hidden;
+  padding: 22px;
+  border: 1px solid #111;
+  border-radius: 24px;
+  background-color: #000;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 32px 28px;
+  border-radius: 24px;
+  background-color: #242424;
+}
+
+.heroCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.heroText {
+  max-width: 320px;
+  font-size: 36px;
+  line-height: 0.95;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #f1f2f9;
+}
+
+.heroAccent,
+.heroTextLine {
+  display: block;
+}
+
+.heroAccent {
+  color: #7c4dff;
+}
+
+.heroSubtitle {
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 600;
+  color: #9f9fa4;
+}
+
+.heroButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 168px;
+  height: 56px;
+  border: 1px solid #434347;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: transparent;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.heroButton:hover {
+  border-color: #7c4dff;
+  background-color: rgba(124, 77, 255, 0.12);
+}
+
+.heroProduct {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  padding: 12px 12px 0;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(131, 76, 255, 0.35), transparent 34%),
+    #000;
+}
+
+.heroProductInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.heroLabel {
+  font-size: 24px;
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.heroDescription {
+  font-size: 16px;
+  font-weight: 700;
+  color: #7d7d82;
+}
+
+.heroImage {
+  width: 100%;
+  max-width: 540px;
+  margin-top: auto;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.heroDots {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.heroDot {
+  width: 24px;
+  height: 4px;
+  padding: 0;
+  border: 0;
+  background-color: #3b3d46;
+}
+
+.heroDotActive {
+  color: #fff;
+  background-color: #f1f2f9;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sectionTitle {
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 700;
+  color: #313237;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.categoryCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.categoryImage {
+  min-height: 288px;
+  background-position: center;
+  background-size: cover;
+}
+
+.categoryTitle {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+  color: #313237;
+}
+
+.categoryCount {
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+}
+
+@media (min-width: 640px) {
+  .categories {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  .heroBanner {
+    flex: 1;
+    flex-direction: row;
+    min-height: 420px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .heroContent,
+  .heroProduct {
+    flex: 1;
+  }
+
+  .heroContent {
+    margin: 22px 0 22px 22px;
+    padding: 56px 56px 48px;
+  }
+
+  .heroProduct {
+    min-height: 420px;
+    padding: 40px 24px 0;
+  }
+
+  .heroLabel {
+    font-size: 38px;
+  }
+
+  .heroDescription {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .heroText {
+    max-width: 420px;
+    font-size: 58px;
+  }
+
+  .heroSubtitle {
+    font-size: 28px;
+  }
+
+  .heroImage {
+    max-width: 760px;
+  }
+}

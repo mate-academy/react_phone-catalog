@@ -1,0 +1,319 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.back {
+  cursor: pointer;
+  width: max-content;
+  padding: 0;
+  border: none;
+  font-size: 12px;
+  font-weight: 700;
+  color: #89939a;
+  background: none;
+}
+
+.title {
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 700;
+  color: #313237;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+}
+
+.imageBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.galleryImage {
+  width: 100%;
+  max-width: 320px;
+  object-fit: contain;
+}
+
+.thumbs {
+  display: flex;
+  gap: 8px;
+}
+
+.thumb {
+  cursor: pointer;
+  padding: 0;
+  border: 1px solid #e2e6e9;
+  background-color: #fff;
+}
+
+.activeThumb {
+  border-color: #313237;
+}
+
+.thumb img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.buyBlock {
+  width: 100%;
+}
+
+.buyPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.optionSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 24px;
+  border-top: 1px solid #e2e6e9;
+}
+
+.optionSection:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.optionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.optionTitle {
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 700;
+  color: #89939a;
+}
+
+.colorOptions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.colorOption {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e2e6e9;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2px #fff;
+}
+
+.activeColorOption {
+  border-color: #313237;
+}
+
+.capacityOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.capacityOption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 56px;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid #b4bdc3;
+  font-size: 14px;
+  color: #313237;
+}
+
+.activeCapacityOption {
+  border-color: #313237;
+  color: #fff;
+  background-color: #313237;
+}
+
+.priceRow {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  padding-top: 24px;
+  border-top: 1px solid #e2e6e9;
+}
+
+.price {
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 700;
+  color: #313237;
+}
+
+.fullPrice {
+  font-size: 22px;
+  line-height: 28px;
+  color: #89939a;
+  text-decoration: line-through;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  cursor: pointer;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #e2e6e9;
+}
+
+.primary {
+  flex: 1;
+  border-color: #313237;
+  color: #fff;
+  background-color: #313237;
+}
+
+.iconButton {
+  width: 40px;
+  padding: 0;
+  color: #313237;
+  background-color: #fff;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.specLabel {
+  color: #89939a;
+}
+
+.specValue {
+  font-weight: 600;
+  color: #313237;
+  text-align: right;
+}
+
+.infoSections {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e6e9;
+}
+
+.sectionTitle {
+  font-size: 22px;
+  line-height: 31px;
+  font-weight: 700;
+  color: #313237;
+}
+
+.descriptionList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.descriptionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.descriptionTitle {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+  color: #313237;
+}
+
+.descriptionText {
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+}
+
+.techSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.recommendations {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .thumbs {
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 640px) {
+  .gallery {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .thumbs {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .galleryImage {
+    max-width: 440px;
+  }
+
+  .infoSections {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+}
