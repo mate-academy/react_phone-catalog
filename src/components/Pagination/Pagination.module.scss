@@ -1,0 +1,79 @@
+@use '../../styles' as s;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 40px 0 0;
+
+  &__pages {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid var(--pagination-border-color);
+    background: var(--pagination-bg);
+    color: var(--text-main-color);
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    transition:
+      background-color s.$effect-duration ease,
+      border-color s.$effect-duration ease,
+      color s.$effect-duration ease;
+
+    &:disabled {
+      border-color: var(--pagination-disabled-border-color);
+      background: var(--pagination-disabled-bg);
+      color: var(--pagination-disabled-text-color);
+      cursor: default;
+    }
+
+    &:not(:disabled):hover {
+      border-color: var(--pagination-hover-border-color);
+      background: var(--pagination-hover-bg);
+    }
+
+    &--active {
+      border-color: var(--pagination-selected-border-color);
+      background: var(--pagination-selected-bg);
+      color: var(--pagination-selected-text-color);
+      cursor: default;
+
+      &:hover {
+        border-color: var(--pagination-selected-border-color);
+        background: var(--pagination-selected-bg);
+      }
+    }
+  }
+
+  &__button--prev,
+  &__button--next {
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__ellipsis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: var(--text-color-secondary);
+    font-size: 14px;
+    font-weight: 600;
+  }
+}

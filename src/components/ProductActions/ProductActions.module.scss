@@ -1,0 +1,57 @@
+@use '../../styles' as s;
+
+.productActions {
+  &__cartButton,
+  &__favoriteButton {
+    cursor: pointer;
+    transition:
+      background-color s.$effect-duration ease,
+      border-color s.$effect-duration ease,
+      color s.$effect-duration ease,
+  }
+
+  &__cartButton {
+    flex: 1;
+    border: 0;
+    background: var(--button-main-color);
+    color: var(--button-text-color);
+
+    &:hover {
+      background: var(--button-main-color-hover);
+      color: var(--hover-text-color);
+    }
+
+    &--added {
+      border: 1px solid var(--border-color);
+      background: var(--added-button);
+      color: var(--added-text-color);
+    }
+  }
+
+  &__favoriteButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: right;
+    width: 40px;
+    border: 1px solid var(--fav-btn-border);
+    background: var(--fav-btn-bg);
+    color: var(--text-main-color);
+
+    &:hover {
+      border-color: var(--border-color);
+    }
+
+    &--selected {
+      background: var(--fav-btn-bg-active);
+    }
+
+    &:active {
+      transform: scale(0.96);
+    }
+  }
+
+  &__icon {
+    width: 21px;
+    height: 21px;
+  }
+}

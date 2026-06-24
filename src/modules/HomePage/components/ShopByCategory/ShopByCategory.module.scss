@@ -1,0 +1,77 @@
+@use '../../../../styles/' as s;
+
+.shopByCategory {
+  margin-bottom: 56px;
+
+  @include s.on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include s.on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: start;
+
+    @include s.on-tablet {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: inherit;
+    text-decoration: none;
+    transition: transform s.$effect-duration ease;
+
+    &:hover img,
+    &:focus-visible img {
+      transform: scale(1.06);
+    }
+  }
+
+  &__preview {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transform: scale(1);
+    transition: transform s.$effect-duration ease;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__title {
+    color: var(--text-main-color);
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 700;
+  }
+
+  &__count {
+    color: var(--text-color-secondary);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: none;
+  }
+}

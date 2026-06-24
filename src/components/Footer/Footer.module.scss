@@ -1,0 +1,122 @@
+@use '../../styles/' as s;
+
+.footer {
+  border-top: 1px solid var(--border-color);
+  margin-top: 56px;
+
+  @include s.on-tablet {
+    margin-top: 64px;
+  }
+
+  @include s.on-desktop {
+    margin-top: 80px;
+  }
+
+  &__container {
+  @include s.page-container;
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 32px 0;
+    gap: 32px;
+
+    @include s.on-tablet {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 32px 0;
+      gap: 24px;
+    }
+  }
+
+  &__logo {
+    img {
+      width: 64px;
+      height: 22px;
+      display: block;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include s.on-tablet {
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
+      justify-content: center;
+    }
+
+    @include s.on-desktop {
+      gap: 107px;
+    }
+
+  }
+
+  &__link {
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-main-color);
+    text-decoration: none;
+
+    transition: color s.$effect-duration ease;
+
+    &:hover {
+      color: var(--button-main-color);
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    @include s.on-desktop {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+  }
+
+  &__top-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-color-secondary);
+  }
+
+  &__top-btn {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--added-button);
+    color: var(--text-main-color);
+    border: 1px solid var(--fav-btn-border);
+    cursor: pointer;
+
+    transition:
+      border-color s.$effect-duration ease,
+      transform s.$effect-duration ease;
+
+    &:hover {
+      border-color: var(--icons-hover);
+    }
+
+    &:active {
+      transform: scale(0.96);
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@use '../../styles' as s;
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-color-secondary);
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+
+  text-decoration: none;
+  transition: color s.$effect-duration ease;
+
+  &:hover {
+    color: var(--button-main-color);
+  }
+}
