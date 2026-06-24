@@ -1,0 +1,37 @@
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  margin-bottom: 8px;
+
+  @media (max-width: 639px) {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+.count {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: var(--color-secondary);
+  margin-bottom: 32px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+
+  @media (max-width: 1199px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 639px) {
+    grid-template-columns: 1fr;
+  }
+}

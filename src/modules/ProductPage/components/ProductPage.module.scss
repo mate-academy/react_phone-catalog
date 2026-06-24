@@ -1,0 +1,386 @@
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-secondary);
+  margin-bottom: 16px;
+  transition: color 0.2s;
+
+  i {
+    font-size: 10px;
+  }
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  margin-bottom: 40px;
+
+  @media (max-width: 639px) {
+    font-size: 22px;
+    line-height: 31px;
+    margin-bottom: 24px;
+  }
+}
+
+/* Product main layout */
+.product {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 80px;
+
+  @media (max-width: 1199px) {
+    grid-template-columns: 80px 1fr 1fr;
+  }
+
+  @media (max-width: 639px) {
+    grid-template-columns: 1fr;
+    margin-bottom: 40px;
+  }
+}
+
+/* Gallery */
+.gallery {
+  display: contents;
+
+  @media (max-width: 639px) {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 16px;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-self: start;
+
+  @media (max-width: 639px) {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  border: 1px solid var(--color-elements);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-white);
+  transition: border-color 0.2s;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+
+  @media (max-width: 639px) {
+    width: 51px;
+    height: 51px;
+  }
+}
+
+.thumbnailActive {
+  border-color: var(--color-primary);
+}
+
+.mainImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 464px;
+
+  img {
+    max-height: 464px;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  @media (max-width: 639px) {
+    min-height: 288px;
+
+    img {
+      max-height: 288px;
+    }
+  }
+}
+
+/* Info panel */
+.info {
+  padding-left: 16px;
+
+  @media (max-width: 639px) {
+    padding-left: 0;
+    border-left: none;
+  }
+}
+
+.infoSection {
+  margin-bottom: 16px;
+
+  &:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.infoLabel {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-secondary);
+  margin-bottom: 8px;
+}
+
+.colors {
+  display: flex;
+  gap: 8px;
+}
+
+.colorBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--color-white);
+  outline: 1px solid var(--color-elements);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: outline-color 0.2s;
+
+  &:hover {
+    outline-color: var(--color-secondary);
+  }
+}
+
+.colorBtnActive {
+  outline-color: var(--color-primary);
+}
+
+.productId {
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--color-icons);
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  overflow: hidden;
+  width: 100%;
+  max-width: 150px;
+  text-align: right;
+}
+
+.colorDot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: block;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-elements);
+  margin: 16px 0;
+  max-width: 320px;
+}
+
+.capacities {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.capacityBtn {
+  padding: 0 8px;
+  height: 32px;
+  border: 1px solid var(--color-elements);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: var(--color-white);
+  transition: border-color 0.2s;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+}
+
+.capacityBtnActive {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 16px;
+  max-width: 320px;
+}
+
+.price {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  color: var(--color-primary);
+}
+
+.fullPrice {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 31px;
+  color: var(--color-secondary);
+  text-decoration: line-through;
+}
+
+.ctaRow {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  max-width: 320px;
+}
+
+.addToCart {
+  flex: 1;
+  height: 48px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: 600;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.addedToCart {
+  background: var(--color-white);
+  color: var(--color-green);
+  border: 1px solid var(--color-elements);
+
+  &:hover {
+    opacity: 1;
+    background: var(--color-hover);
+  }
+}
+
+.shortSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 320px;
+}
+
+.shortSpecRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shortSpecLabel {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-secondary);
+}
+
+.shortSpecValue {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* About + Tech specs */
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-bottom: 80px;
+
+  @media (max-width: 639px) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+.sectionTitle {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+  margin-bottom: 16px;
+}
+
+.sectionDivider {
+  border: none;
+  border-top: 1px solid var(--color-elements);
+  margin-bottom: 32px;
+}
+
+.aboutSection {
+  margin-bottom: 32px;
+}
+
+.aboutTitle {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  margin-bottom: 16px;
+}
+
+.aboutText {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: var(--color-secondary);
+}
+
+.specsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.techSpecRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-elements);
+}
+
+.techSpecLabel {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-secondary);
+}
+
+.techSpecValue {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-align: right;
+}

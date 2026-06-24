@@ -1,0 +1,34 @@
+.image {
+  width: 560px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+
+  @media (max-width: 639px) {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+.link {
+  height: 48px;
+  padding: 0 32px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

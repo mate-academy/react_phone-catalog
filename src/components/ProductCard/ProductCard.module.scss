@@ -1,0 +1,140 @@
+.card {
+  border: 1px solid var(--color-elements);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s;
+
+  &:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  }
+}
+
+.imageLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 196px;
+  margin-bottom: 8px;
+}
+
+.image {
+  max-height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.nameLink {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: var(--color-primary);
+  min-height: 42px;
+}
+
+.prices {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+  color: var(--color-primary);
+}
+
+.fullPrice {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: var(--color-secondary);
+  text-decoration: line-through;
+}
+
+.card.variant {
+  .fullPrice {
+    display: none;
+  }
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-elements);
+  margin-bottom: 8px;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.specLabel {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  color: var(--color-secondary);
+}
+
+.specValue {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  color: var(--color-primary);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.addToCart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 40px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: 600;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.addedToCart {
+  background: var(--color-white);
+  color: var(--color-green);
+  border: 1px solid var(--color-elements);
+
+  &:hover {
+    opacity: 1;
+    background: var(--color-hover);
+  }
+}

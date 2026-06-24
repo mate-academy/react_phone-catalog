@@ -1,0 +1,30 @@
+.main {
+  flex: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px 56px;
+
+  @media (max-width: 1199px) {
+    padding: 24px 24px 56px;
+  }
+
+  @media (max-width: 639px) {
+    padding: 16px 16px 40px;
+  }
+}
+
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+img:not(:global(.not-scale)) {
+  transition: transform ease-in-out 0.3s;
+}
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+img:not(:global(.not-scale)):hover {
+  transform: scale(1.1);
+}
+
+.not-scale {
+  max-height: calc(100vh - 250px);
+}

@@ -1,0 +1,13 @@
+.heroTitle {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  margin-bottom: 32px;
+
+  @media (max-width: 639px) {
+    font-size: 22px;
+    line-height: 31px;
+    margin: 0 auto 16px;
+    max-width: 1136px;
+  }
+}
