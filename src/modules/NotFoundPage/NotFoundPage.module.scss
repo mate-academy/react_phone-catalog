@@ -1,0 +1,37 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  text-align: center;
+  gap: 24px;
+}
+
+.image {
+  max-width: 320px;
+  width: 100%;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 32px;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  border-radius: 2px;
+  transition: opacity var(--transition-base);
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
