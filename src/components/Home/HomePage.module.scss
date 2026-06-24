@@ -1,0 +1,21 @@
+@import '../../styles/mixins.scss';
+
+.home {
+  padding-inline: 152px;
+
+  @include for-tablet {
+    padding-inline: 32px;
+  }
+
+  @include for-mobile {
+    padding-inline: 16px;
+  }
+
+  h2 {
+    color: $main-text-color;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+  }
+}
