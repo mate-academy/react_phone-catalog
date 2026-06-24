@@ -1,0 +1,83 @@
+@import '../../styles/main';
+
+.category {
+  margin-inline: auto;
+  max-width: 1136px;
+  margin-bottom: 84px;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    max-width: 640px;
+    margin-bottom: 63px;
+  }
+
+  @include on-mobile {
+    max-width: 288px;
+    margin-bottom: 55px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+
+    @include on-mobile {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    font-size: 32px;
+    font-weight: 800;
+
+    @include on-mobile {
+      font-size: 24px;
+    }
+  }
+
+  &__imgWrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+
+    &:hover {
+      .category__img {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__text {
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--primary-color);
+    margin-bottom: 4px;
+  }
+
+  &__countModels {
+    color: var(--secondary-color);
+    font-size: 14px;
+  }
+}

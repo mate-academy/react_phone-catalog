@@ -1,0 +1,218 @@
+@import '../../styles/main';
+
+.page {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 80px 16px;
+
+  @include on-tablet {
+    padding: 80px 24px;
+  }
+
+  @include on-mobile {
+    padding: 64px 24px;
+  }
+
+  .loader {
+    text-align: center;
+    padding: 100px 0;
+    font-size: 20px;
+    color: var(--secondary-color);
+  }
+
+  .error {
+    text-align: center;
+    padding: 60px 0 16px;
+    font-size: 20px;
+    color: var(--secondary-color);
+  }
+
+  .reload {
+    display: block;
+    margin: 0 auto;
+    padding: 8px 24px;
+    background: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .empty {
+    text-align: center;
+    padding: 100px 0;
+    font-size: 20px;
+    color: var(--secondary-color);
+  }
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    font-size: 12px;
+    font-weight: 700;
+
+    &__link {
+      text-decoration: none;
+      color: var(--secondary-color);
+      display: flex;
+      align-items: center;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+
+    &__arrow {
+      color: var(--secondary-color);
+      font-size: 10px;
+    }
+
+    &__current {
+      color: var(--primary-color);
+    }
+  }
+
+  .title {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin: 0 0 8px;
+
+    @include on-mobile {
+      font-size: 22px;
+    }
+  }
+
+  .count {
+    font-size: 14px;
+    color: var(--secondary-color);
+    margin: 0 0 40px;
+  }
+
+  .filters {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+
+    @include on-mobile {
+      flex-direction: column;
+    }
+
+    &__group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    &__label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--secondary-color);
+    }
+
+    &__select {
+      height: 40px;
+      padding: 0 36px 0 12px;
+      border: 1px solid var(--elements-color);
+      background-color: var(--bg-color);
+      color: var(--primary-color);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 7L11 1' stroke='%23313237' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      transition: border-color 0.2s ease;
+
+      &:hover {
+        border-color: var(--primary-color);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: var(--primary-color);
+      }
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 16px;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 16px;
+    }
+
+    @include on-mobile {
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 40px;
+
+    &__btn {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--elements-color);
+      background: var(--bg-color);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s ease;
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      &:hover:not(:disabled) {
+        border-color: var(--primary-color);
+      }
+    }
+
+    &__page {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--elements-color);
+      background: var(--bg-color);
+      color: var(--primary-color);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        border-color: var(--primary-color);
+      }
+
+      &--active {
+        background: var(--primary-color);
+        color: var(--bg-color);
+        border-color: var(--primary-color);
+      }
+    }
+  }
+}

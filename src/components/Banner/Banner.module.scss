@@ -1,0 +1,145 @@
+@import '../../styles/main';
+
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  flex-direction: column;
+  padding: 0 16px;
+  margin: 0 auto 56px;
+  max-width: 1136px;
+
+  @include on-tablet {
+    padding: 0 32px;
+  }
+
+  @include on-mobile {
+    align-items: center;
+    text-align: center;
+  }
+
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 16px;
+    width: 100%;
+
+    @include on-mobile {
+      height: 320px;
+      width: 320px;
+    }
+  }
+
+  &__swiper {
+    flex: 1;
+    min-width: 0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include on-mobile {
+      object-position: 87%;
+      object-fit: auto;
+    }
+  }
+
+  &__button {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      background-color: var(--color-backgroung-arrow);
+      border: 1px solid var(--color-border-arrow);
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: var(--color-hover-arrow);
+        border: 1px solid var(--color-hover-arrow-border);
+      }
+      &:active {
+        background-color: var(--color-select-arrow);
+      }
+    }
+
+    @include on-desktop {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      background-color: var(--color-backgroung-arrow);
+      border: 1px solid var(--color-border-arrow);
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        background-color: var(--color-hover-arrow);
+        border: 1px solid var(--color-hover-arrow-border);
+      }
+      &:active {
+        background-color: var(--color-select-arrow);
+      }
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
+}
+
+.bullet {
+  width: 14px;
+  height: 4px;
+  background-color: var(--pagination-color);
+  cursor: pointer;
+  border-radius: 0;
+  opacity: 1;
+  transition: all 0.3;
+
+  &Active {
+    background-color: var(--pagination-color-active);
+  }
+}
+
+.buttons {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  padding: 24px 50px;
+  background-color: inherit;
+  text-transform: uppercase;
+ border: 1px solid var(--secondary-color);
+  &:hover {
+    background-color: black;
+  }
+  &:active {
+    background-color: rgb(25, 25, 25);
+  }
+
+  @include on-tablet {
+    padding: 15px 18px;
+    font-size: 8px;
+    bottom: 50px;
+    left: 50px;
+  }
+  
+  @include on-mobile {
+    display: none;
+  }
+}

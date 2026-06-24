@@ -1,0 +1,296 @@
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { ProductDetails } from '../../types/ProductDetails';
+import { useCart } from '../../context/CartContext';
+import { Icon } from '../../components/Icon';
+import { toCartProduct, getSuggestedProducts } from '../../utils/productUtils';
+import styles from './ProductDetails.module.scss';
+import { Loader } from '../../components/Loader';
+import { ProductSlider } from '../../components/ProductSlider';
+import { Product } from '../../types/Product';
+import productsData from '../../../public/api/products.json';
+import phonesData from '../../../public/api/phones.json';
+import tabletsData from '../../../public/api/tablets.json';
+import accessoriesData from '../../../public/api/accessories.json';
+
+export const ProductDetailsPage = () => {
+  const { productId } = useParams<{ productId: string }>();
+  const navigate = useNavigate();
+
+  const [product, setProduct] = useState<ProductDetails | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(0);
+  const [suggested, setSuggested] = useState<Product[]>([]);
+
+  const { cart, addToCart, addToFavorites, favorites } = useCart();
+
+  useEffect(() => {
+    if (!productId) {
+      return;
+    }
+
+    setLoading(true);
+    setError(false);
+    setSelectedImage(0);
+
+    try {
+      const allProducts = productsData as {
+        itemId: string;
+        category: string;
+      }[];
+      const found = allProducts.find(p => p.itemId === productId);
+
+      if (!found) {
+        setError(true);
+        setLoading(false);
+
+        return;
+      }
+
+const dataMap: Record<string, ProductDetails[]> = {
+  phones: phonesData as unknown as ProductDetails[],
+  tablets: tabletsData as unknown as ProductDetails[],
+  accessories: accessoriesData as unknown as ProductDetails[],
+};
+
+      const categoryData = dataMap[found.category];
+      const detail = (categoryData as ProductDetails[]).find(
+        p => p.id === productId,
+      );
+
+      if (!detail) {
+        setError(true);
+        setLoading(false);
+      } else {
+        setProduct(detail);
+        getSuggestedProducts(productId).then(setSuggested);
+        setLoading(false);
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      }
+    } catch {
+      setError(true);
+      setLoading(false);
+    }
+  }, [productId]);
+
+  const getNewPath = (newCapacity?: string, newColor?: string) => {
+    if (!product) {
+      return '';
+    }
+
+    const cap = (newCapacity || product.capacity).toLowerCase();
+    const col = (newColor || product.color).toLowerCase();
+    const newId = `${product.namespaceId}-${cap}-${col}`.replaceAll(' ', '-');
+
+    return `/product/${newId}`;
+  };
+
+  if (loading) {
+    return (
+      <div className={styles.page}>
+        <Loader />
+      </div>
+    );
+  }
+
+  if (error || !product) {
+    return (
+      <div className={styles.page}>
+        <button className={styles.backButton} onClick={() => navigate(-1)}>
+          <Icon name="left" />
+          <span>Back</span>
+        </button>
+        <p className={styles.notFound}>Product was not found</p>
+      </div>
+    );
+  }
+
+  const cartProduct = toCartProduct(product);
+  const inCart = cart.some(item => item.itemId === product.id);
+  const inFavorites = favorites.some(item => item.itemId === product.id);
+
+  const techSpecs = [
+    { label: 'Screen', value: product.screen },
+    { label: 'Resolution', value: product.resolution },
+    { label: 'Processor', value: product.processor },
+    { label: 'RAM', value: product.ram },
+    { label: 'Built in memory', value: product.capacity },
+    { label: 'Camera', value: product.camera },
+    { label: 'Zoom', value: product.zoom },
+    { label: 'Cell', value: product.cell?.join(', ') },
+  ].filter(item => item.value);
+
+  const shortSpecs = [
+    { label: 'Screen', value: product.screen },
+    { label: 'Resolution', value: product.resolution },
+    { label: 'Processor', value: product.processor },
+    { label: 'RAM', value: product.ram },
+  ];
+
+  return (
+    <div className={styles.page}>
+      <nav className={styles.breadcrumbs}>
+        <Link to="/" className={styles.breadcrumbs__link}>
+          <Icon name="home" />
+        </Link>
+        <span className={styles.breadcrumbs__arrow}>&gt;</span>
+        <Link to={`/${product.category}`} className={styles.breadcrumbs__link}>
+          {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
+        </Link>
+        <span className={styles.breadcrumbs__arrow}>&gt;</span>
+        <span className={styles.breadcrumbs__current}>{product.name}</span>
+      </nav>
+
+      <button className={styles.backButton} onClick={() => navigate(-1)}>
+        <Icon name="left" />
+        <span>Back</span>
+      </button>
+
+      <h1 className={styles.title}>{product.name}</h1>
+
+      <div className={styles.main}>
+        <div className={styles.gallery}>
+          <div className={styles.gallery__thumbs}>
+            {product.images.map((img, index) => (
+              <button
+                key={img}
+                className={`${styles.gallery__thumb} ${
+                  selectedImage === index
+                    ? styles['gallery__thumb--active']
+                    : ''
+                }`}
+                onClick={() => setSelectedImage(index)}
+              >
+                <img src={img} alt={`${product.name} view ${index + 1}`} />
+              </button>
+            ))}
+          </div>
+
+          <div className={styles.gallery__main}>
+            <img
+              src={product.images[selectedImage]}
+              alt={product.name}
+              className={styles.gallery__image}
+            />
+          </div>
+        </div>
+
+        <div className={styles.options}>
+          <div className={styles.options__section}>
+            <span className={styles.options__label}>Available colors</span>
+            <div className={styles.options__colors}>
+              {product.colorsAvailable.map(color => (
+                <Link
+                  key={color}
+                  to={getNewPath(undefined, color)}
+                  className={`${styles.colorBtn} ${
+                    product.color === color ? styles['colorBtn--active'] : ''
+                  }`}
+                  style={{ backgroundColor: color }}
+                  title={color}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.divider} />
+
+          <div className={styles.options__section}>
+            <span className={styles.options__label}>Select capacity</span>
+            <div className={styles.options__capacities}>
+              {product.capacityAvailable.map(cap => (
+                <Link
+                  key={cap}
+                  to={getNewPath(cap, undefined)}
+                  className={`${styles.capBtn} ${
+                    product.capacity === cap ? styles['capBtn--active'] : ''
+                  }`}
+                >
+                  {cap}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.divider} />
+
+          <div className={styles.price}>
+            <span className={styles.price__current}>
+              ${product.priceDiscount}
+            </span>
+            <span className={styles.price__old}>${product.priceRegular}</span>
+          </div>
+
+          <div className={styles.actions}>
+            <button
+              className={`${styles.actions__cart} ${
+                inCart ? styles['actions__cart--added'] : ''
+              }`}
+              onClick={() => addToCart(cartProduct)}
+            >
+              {inCart ? 'Added to cart' : 'Add to cart'}
+            </button>
+
+            <button
+              className={`${styles.actions__favorite} ${
+                inFavorites ? styles['actions__favorite--active'] : ''
+              }`}
+              onClick={() => addToFavorites(cartProduct)}
+            >
+              <Icon name={inFavorites ? 'favoriteActive' : 'favourite'} />
+            </button>
+          </div>
+
+          <div className={styles.specs}>
+            {shortSpecs.map(({ label, value }) => (
+              <div key={label} className={styles.specs__row}>
+                <span className={styles.specs__label}>{label}</span>
+                <span className={styles.specs__value}>{value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.details}>
+        <section className={styles.about}>
+          <h2 className={styles.section__title}>About</h2>
+          <div className={styles.divider} />
+          {product.description.map(({ title, text }) => (
+            <div key={title} className={styles.about__item}>
+              <h3 className={styles.about__subtitle}>{title}</h3>
+              {text.map((paragraph, i) => (
+                <p key={i} className={styles.about__text}>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          ))}
+        </section>
+
+        <section className={styles.techSpecs}>
+          <h2 className={styles.section__title}>Tech specs</h2>
+          <div className={styles.divider} />
+          {techSpecs.map(({ label, value }) => (
+            <div key={label} className={styles.specs__row}>
+              <span className={styles.specs__label}>{label}</span>
+              <span className={styles.specs__value}>{value}</span>
+            </div>
+          ))}
+        </section>
+      </div>
+      {suggested.length > 0 && (
+        <ProductSlider
+          id="suggested"
+          title="You may also like"
+          products={suggested}
+          autoplay={true}
+        />
+      )}
+    </div>
+  );
+};
