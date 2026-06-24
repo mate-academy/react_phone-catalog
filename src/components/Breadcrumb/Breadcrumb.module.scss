@@ -1,0 +1,50 @@
+@use '../../styles/utils/variables' as vars;
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.breadcrumb_style {
+  margin-bottom: 24px;
+
+  @media (min-width: vars.$tablet) {
+    margin-bottom: 40px;
+  }
+}
+
+.breadcrumb_style a {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  color: vars.$gray-primary;
+
+  &:hover {
+    color: inherit;
+    text-decoration: underline;
+  }
+}
+
+.breadcrumb_style__back a.back {
+  padding: 0;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  color: vars.$secondary-gray;
+  &:hover {
+    color: inherit;
+    text-decoration: underline;
+  }
+}
+
+.breadcrumb_style li.active {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.breadcrumb_style li.active a {
+  font-weight: 600;
+  color: vars.$secondary-gray;
+}

@@ -1,0 +1,84 @@
+/* stylelint-disable no-empty-source */
+@use '../../styles/utils/variables.scss' as vars;
+
+.big_img {
+  width: 288px;
+  height: 288px;
+  margin-bottom: 16px;
+  background-color: vars.$primary-white-color;
+
+  &__figure {
+    width: 287px;
+    height: 287px;
+
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @media screen and (min-width: vars.$widescreen) {
+      width: 442px;
+      height: 442px;
+    }
+  }
+
+  @media screen and (min-width: vars.$widescreen) {
+    width: 464px;
+    height: 464px;
+    padding: 11px;
+  }
+}
+
+.not_found {
+  margin: 0 auto;
+  margin-bottom: 24px;
+  background-color: vars.$hover-and-background-color;
+}
+
+.cart_items_column {
+  @media screen and (max-width: #{vars.$tablet - 1px}) {
+    padding: 0;
+  }
+}
+
+.cart_items_column:not(:last-child) {
+  @media screen and (min-width: 900px) {
+    margin-right: 16px;
+  }
+}
+
+.bottom_bordered {
+  margin-bottom: 24px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid vars.$main-gray;
+}
+
+.checkout_button {
+  width: 240px;
+  height: 48px;
+  padding: 0;
+  border-radius: 8px;
+
+  color: vars.$primary-white-color;
+
+  background-color: vars.$accent-color;
+
+  @media screen and (min-width: vars.$tablet) {
+    width: 320px;
+  }
+}
+
+.box {
+  padding: 24px;
+  border: 1px solid vars.$main-gray;
+  border-radius: 16px;
+  background-color: transparent;
+
+  &__text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: vars.$secondary-gray;
+  }
+}
