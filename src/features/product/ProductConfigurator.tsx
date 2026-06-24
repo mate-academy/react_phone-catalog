@@ -1,0 +1,203 @@
+import styles from '@/pages/Product/ProductPage.module.scss';
+import classNames from 'classnames';
+import { useNavigate, useParams } from 'react-router-dom';
+
+import { ProductDetails } from '@/types/ProductDetails';
+import { Product } from '@/types/Product';
+import { COLOR_MAP } from '@/shared/constants/colors';
+import { Button } from '@/shared/ui/button/Button';
+import { useProductActions } from './hooks/useProductActions';
+
+type ProductConfiguratorProps = {
+  product?: ProductDetails;
+  selectedColor: string;
+  setSelectedColor: React.Dispatch<React.SetStateAction<string>>;
+  selectedCapacity: string;
+  setSelectedCapacity: React.Dispatch<React.SetStateAction<string>>;
+  foundProductFromProducts: Product | undefined;
+};
+
+export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
+  product,
+  selectedColor,
+  setSelectedColor,
+  selectedCapacity,
+  setSelectedCapacity,
+  foundProductFromProducts,
+}) => {
+  const navigate = useNavigate();
+  const { category, productSlug } = useParams();
+  const { inFav, inCart, handleCartClick, handleFav, buttonText } = useProductActions(
+    foundProductFromProducts?.itemId,
+  );
+
+  if (!product) {
+    return null;
+  }
+
+  const normalizeValue = (color: string): string => {
+    return color.replace(' ', '-').toLowerCase();
+  };
+
+  const updateSlug = (type: 'color' | 'capacity', value: string) => {
+    if (!productSlug || !category) {
+      return;
+    }
+
+    if (type === 'color' && value === selectedColor) {
+      return;
+    }
+
+    if (type === 'capacity' && value === selectedCapacity) {
+      return;
+    }
+
+    const normalizedValue = normalizeValue(value);
+
+    const oldPart =
+      type === 'color'
+        ? normalizeValue(selectedColor)
+        : normalizeValue(selectedCapacity);
+
+    const newSlug = productSlug.replace(oldPart, normalizedValue);
+
+    if (type === 'color') {
+      setSelectedColor(value);
+    }
+
+    if (type === 'capacity') {
+      setSelectedCapacity(value);
+    }
+
+    navigate(`/${category}/${newSlug}`, { replace: true });
+  };
+
+  return (
+    <div className={styles['product-configurator']}>
+      <div className={styles['product-configurator__controls']}>
+        <div className={styles['product-configurator__color-container']}>
+          <span className={styles['product-configurator__color-label']}>
+            Available colors
+          </span>
+
+          <div className={styles['product-configurator__color-options']}>
+            {product.colorsAvailable.map(color => (
+              <div
+                key={color}
+                className={classNames(
+                  styles['product-configurator__color-layout'],
+                  {
+                    [styles['product-configurator__color-layout--active']]:
+                      selectedColor === color,
+                  },
+                )}
+                onClick={() => updateSlug('color', color)}
+              >
+                <div
+                  className={styles['product-configurator__color-option']}
+                  style={{ backgroundColor: COLOR_MAP[normalizeValue(color)] }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles['product-configurator__capacity-container']}>
+          <span className={styles['product-configurator__capacity-label']}>
+            Select capacity
+          </span>
+
+          <div className={styles['product-configurator__capacity-options']}>
+            {product.capacityAvailable.map(capacity => (
+              <button
+                key={capacity}
+                className={classNames(
+                  styles['product-configurator__capacity-option'],
+                  {
+                    [styles['product-configurator__capacity-option--active']]:
+                      selectedCapacity === capacity,
+                  },
+                )}
+                onClick={() => updateSlug('capacity', capacity)}
+              >
+                {capacity}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className={styles['product-configurator__buy-section']}>
+        <div className={styles['product-configurator__price-container']}>
+          <span className={styles['product-configurator__price-discount']}>
+            ${product.priceDiscount}
+          </span>
+          <span
+            className={styles['product-configurator__price-regular']}
+            data-text={`$${product.priceRegular}`}
+          >
+            ${product.priceRegular}
+          </span>
+        </div>
+
+        <div className={styles['product-configurator__button-container']}>
+          <Button
+            onClick={handleCartClick}
+            fullWidth
+            variant={inCart ? 'outline' : 'primary'}
+          >
+            {buttonText}
+          </Button>
+
+          <button
+            className={styles['product-configurator__favorite-button']}
+            onClick={handleFav}
+          >
+            <img
+              src={inFav ? 'img/icons/red-heart.svg' : 'img/icons/heart.svg'}
+              alt="Favorite"
+            />
+          </button>
+        </div>
+      </div>
+
+      <div className={styles['product-configurator__description']}>
+        <div className={styles['product-configurator__description-item']}>
+          <span className={styles['product-configurator__description-label']}>
+            Screen
+          </span>
+          <span className={styles['product-configurator__description-value']}>
+            {product.screen}
+          </span>
+        </div>
+
+        <div className={styles['product-configurator__description-item']}>
+          <span className={styles['product-configurator__description-label']}>
+            Resolution
+          </span>
+          <span className={styles['product-configurator__description-value']}>
+            {product.resolution}
+          </span>
+        </div>
+
+        <div className={styles['product-configurator__description-item']}>
+          <span className={styles['product-configurator__description-label']}>
+            Processor
+          </span>
+          <span className={styles['product-configurator__description-value']}>
+            {product.processor}
+          </span>
+        </div>
+
+        <div className={styles['product-configurator__description-item']}>
+          <span className={styles['product-configurator__description-label']}>
+            RAM
+          </span>
+          <span className={styles['product-configurator__description-value']}>
+            {product.ram}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+};

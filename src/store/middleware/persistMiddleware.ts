@@ -1,0 +1,29 @@
+import { Middleware } from '@reduxjs/toolkit';
+
+const CART_KEY = 'shop_cart';
+const FAV_KEY = 'shop_favorites';
+
+export const persistMiddleware: Middleware = store => next => action => {
+  const prevState = store.getState() as any;
+  const result = next(action);
+
+  if ((action as any).meta?.skipPersist) {
+    return result;
+  }
+
+  const nextState = store.getState() as any;
+
+  try {
+    if (prevState.cart.items !== nextState.cart.items) {
+      localStorage.setItem(CART_KEY, JSON.stringify(nextState.cart.items));
+    }
+
+    if (prevState.favorites.ids !== nextState.favorites.ids) {
+      localStorage.setItem(FAV_KEY, JSON.stringify(nextState.favorites.ids));
+    }
+  } catch (error) {
+    console.error('Failed to persist state:', error);
+  }
+
+  return result;
+};

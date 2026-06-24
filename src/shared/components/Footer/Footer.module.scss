@@ -1,0 +1,110 @@
+@use '@/styles/mixins.scss' as *;
+
+.footer {
+  box-shadow: 0 -1px 0 0 var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px 16px;
+  width: 100%;
+  gap: 32px;
+  position: relative;
+
+  @include tablet {
+    padding: 32px;
+  }
+
+  @include desktop {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @include big-desktop {
+    padding: 32px 152px;
+  }
+
+  &__logo {
+    img {
+      display: block;
+      max-width: 100%;
+    }
+  }
+
+  &__link {
+    @include type(
+      $uppercase-size,
+      $uppercase-line,
+      $uppercase-track,
+      $uppercase-weight
+    );
+
+    color: var(--text-secondary);
+    transition: color var(--transition-default);
+
+    &:hover {
+      color: var(--text-main);
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 32px;
+
+    @include desktop {
+      align-items: center;
+      flex-direction: row;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__backtoTopButton {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    align-self: center;
+    transition: opacity var(--transition-default);
+  }
+
+  &__backtoTopText {
+    @include type(
+      $small-size,
+      $small-line,
+      $small-track,
+      700,
+      $font-mont-semibold
+    );
+
+    color: var(--text-secondary);
+    transition: color var(--transition-default);
+
+    .footer__backtoTopButton:hover & {
+      color: var(--text-main);
+    }
+  }
+
+  &__backtoTopIcon {
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all var(--transition-default);
+    color: var(--text-main);
+
+    .footer__backtoTopButton:hover & {
+      border-color: var(--text-main);
+    }
+  }
+}

@@ -1,0 +1,285 @@
+@use '../../styles/variables.scss' as *;
+
+.SliderComponent {
+  &__headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  &__buttonGroup {
+    display: flex;
+    gap: 16px;
+  }
+  &__buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $light-btn-border;
+    cursor: pointer;
+    background-color: #ffffff;
+
+    &:hover {
+      border: 1px solid $light-text-main;
+    }
+
+    &--disabled {
+      border: 1px solid $light-border;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+
+  &__itemsContainer {
+    overflow: hidden;
+    padding: 13px;
+    margin: -13px;
+  }
+  &__itemsWrapper {
+    display: flex;
+    gap: 16px;
+    transition: transform var(--transition-default);
+  }
+
+  &__item {
+    display: flex;
+    padding: 32px;
+    flex-direction: column;
+    width: 100%;
+
+    border: 1px solid $light-border;
+    min-height: 512px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fff;
+    &:hover {
+      box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
+    }
+    &:hover &__imageContainer {
+      transform: scale(1.05);
+      transition: transform var(--transition-default);
+      z-index: 9;
+    }
+
+    &__itemName {
+      min-height: 42px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      line-clamp: 2;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      @include type($body-size, $body-line, $body-track, $body-weight);
+    }
+    &__imageContainer {
+      width: 208px;
+      height: 196px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    &__divider {
+      width: 100%;
+      height: 1px;
+      background-color: #e2e6e9;
+    }
+    &__infoContainer {
+      display: flex;
+      row-gap: 8px;
+      flex-direction: column;
+    }
+    &__priceContainer {
+      display: flex;
+      column-gap: 8px;
+    }
+    &__specContainer {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+      padding: 8px 0;
+
+      div {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    &__infoName {
+      color: $light-text-secondary;
+      @include type($small-size, $small-line, $small-track, $small-weight);
+    }
+    &__infoValue {
+      @include type(12px, normal, 0, 700, $font-mont-semibold);
+    }
+    &__price {
+      @include type($h3-size, $h3-line, $h3-track, $h3-weight, $font-mont-bold);
+    }
+    &__fullPrice {
+      font-weight: 600;
+      color: $light-text-secondary;
+      line-height: normal;
+      font-size: $h3-size;
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+
+      $line-height: 2px;
+      $line-color: $light-text-secondary;
+      $center-pos: 47%;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: $line-height;
+        background-color: $light-text-secondary;
+        z-index: 1;
+
+        top: $center-pos;
+        transform: translateY(-50%);
+      }
+
+      &::after {
+        content: attr(data-text);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        z-index: 2;
+
+        clip-path: inset(
+          calc(#{$center-pos} - #{$line-height} / 2) 0
+            calc(100% - (#{$center-pos} + #{$line-height} / 2)) 0
+        );
+      }
+    }
+
+    &__buttonContainer {
+      display: flex;
+      column-gap: 8px;
+    }
+    &__cartButton {
+      background-color: $light-text-main;
+      flex: 1;
+      height: 40px;
+      border: none;
+      cursor: pointer;
+      color: $color-text-white;
+      @include type($button-size, $button-line, $button-track, $button-weight);
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+      }
+
+      &--added {
+        color: $color-green;
+        background-color: #fff;
+        border: 1px solid $light-border;
+
+        &:hover {
+          box-shadow: none;
+          cursor: default;
+        }
+      }
+    }
+    &__favoriteButton {
+      background: none;
+      width: 40px;
+      height: 40px;
+      border: 1px solid $light-border;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      &:hover {
+        border: 1px solid $light-text-main;
+      }
+    }
+  }
+
+  &__skeleton {
+    pointer-events: none;
+    user-select: none;
+    border-color: transparent;
+
+    @mixin skeleton-bg {
+      background-color: $loading-grey;
+      background: linear-gradient(
+          100deg,
+          rgba(255, 255, 255, 0) 40%,
+          rgba(255, 255, 255, 0.5) 50%,
+          rgba(255, 255, 255, 0) 60%
+        )
+        $loading-grey;
+      background-size: 200% 100%;
+      background-position-x: 180%;
+      animation: 1s loading ease-in-out infinite;
+      color: transparent !important;
+      border-color: transparent !important;
+      border-radius: 4px;
+    }
+
+    .SliderComponent__item__imageContainer {
+      @include skeleton-bg;
+      img {
+        opacity: 0;
+      }
+    }
+
+    .SliderComponent__item__itemName {
+      @include skeleton-bg;
+      height: 1.5rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .SliderComponent__item__fullPrice,
+    .SliderComponent__item__price {
+      @include skeleton-bg;
+      display: inline-block;
+      width: 60px;
+      height: 24px;
+      &::before,
+      &::after {
+        content: none;
+        display: none;
+        background: none;
+      }
+    }
+
+    .SliderComponent__item__infoName,
+    .SliderComponent__item__infoValue {
+      @include skeleton-bg;
+      display: inline-block;
+      width: 40px;
+      height: 14px;
+    }
+
+    .SliderComponent__item__infoValue {
+      width: 60px;
+    }
+
+    .SliderComponent__item__cartButton,
+    .SliderComponent__item__favoriteButton {
+      @include skeleton-bg;
+      border: none;
+      box-shadow: none;
+      img {
+        opacity: 0;
+      }
+    }
+  }
+}

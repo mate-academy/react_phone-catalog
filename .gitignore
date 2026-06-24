@@ -13,3 +13,16 @@ raw_reports
 reports
 cypress/screenshots
 cypress/videos
+
+/memories/
+.agents/
+skills-lock.json
+.eslintcache
+.tsbuildinfo
+.vite/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.github/promts

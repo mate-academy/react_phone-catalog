@@ -1,0 +1,78 @@
+@use './variables' as *;
+@import './fonts';
+@import './normilize';
+@import './typography';
+@import './animations';
+
+:root {
+  --transition-default: 0.2s ease-in-out;
+  --bg-main: #{$light-bg-main};
+  --bg-secondary: #{$light-bg-select};
+  --btn-border: #{$light-btn-border};
+  --btn-bg: #{$light-btn-bg};
+  --btn-main: #{$light-btn-main};
+  --btn-main-hover: #{$light-btn-main-hover};
+  --color-disabled: #{$light-color-disabled};
+  --text-main: #{$light-text-main};
+  --text-secondary: #{$light-text-secondary};
+  --card-border: #{$light-border};
+  --card-bg: #{$light-bg-main};
+  --border-color: #{$light-border};
+  --color-elements: #{$light-border};
+  --status-green: #{$color-green};
+  --status-red: #{$color-red};
+  --btn-hover-color: #{$light-text-main};
+}
+
+[data-theme='dark'] {
+  --bg-main: #{$dark-bg-main};
+  --bg-secondary: #{$dark-bg-card};
+  --card-border: #{$dark-bg-card};
+  --card-bg: #{$dark-bg-card};
+  --btn-bg: #{$dark-btn-bg};
+  --btn-border: #{$dark-btn-bg};
+  --btn-main: #{$dark-btn-main};
+  --btn-main-hover: #{$dark-btn-main-hover};
+  --color-disabled: #{$dark-color-disabled};
+  --color-elements: #{$dark-color-disabled};
+  --text-main: #{$dark-text-main};
+  --text-secondary: #{$dark-text-secondary};
+  --border-color: #{$dark-border};
+  --btn-hover-color: #{$dark-btn-hover};
+}
+
+body {
+  font-family: $font-mont-regular;
+  font-weight: 400;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  transition:
+    background-color var(--transition-default),
+    color var(--transition-default);
+}
+
+.app-toaster {
+  z-index: 9999;
+}
+
+.app-toast {
+  background: var(--card-bg) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  font-family: $font-mont-regular !important;
+  font-size: $body-size !important;
+  line-height: $body-line !important;
+  box-shadow: 0 10px 24px rgba(15, 17, 33, 0.12) !important;
+}
+
+.app-toast--success {
+  border-color: var(--status-green) !important;
+}
+
+.app-toast--error {
+  border-color: var(--status-red) !important;
+}

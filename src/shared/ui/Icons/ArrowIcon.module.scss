@@ -1,0 +1,15 @@
+.arrow {
+  display: inline-block;
+}
+
+.arrow--right {
+  transform: rotate(180deg);
+}
+
+.arrow--up {
+  transform: rotate(90deg);
+}
+
+.arrow--down {
+  transform: rotate(-90deg);
+}
