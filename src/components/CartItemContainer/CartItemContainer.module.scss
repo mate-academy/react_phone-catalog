@@ -1,0 +1,91 @@
+@import '../../shared/index';
+
+.cart {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+
+  @include on-tablet {
+    padding: 24px;
+  }
+
+  .cartTop {
+    display: flex;
+    align-items: center;
+
+
+    &__button {
+      width: 16px;
+      height: 16px;
+      background: no-repeat center url('/public/img/icons/close-icon-grey.svg');
+      margin-right: 24px;
+    }
+
+    &__link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__imgContainer {
+      margin-right: 24px;
+
+      img {
+        height: 80px;
+      }
+    }
+
+    &__itemName {
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+
+  .cartButtom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__count {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    &__countNumber {
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    &__checkoutContainerButtom {
+      @include on-desktop {
+        max-width: 368px;
+      }
+    }
+
+    &__countButtonDecrement {
+      width: 32px;
+      height: 32px;
+      color: var(--icons-color);
+      border: 1px solid var(--elements-color);
+      border-radius: 48px;
+      background: no-repeat center url('/public/img/icons/countDecrement.svg');
+    }
+
+    &__countButtonIncrement {
+      width: 32px;
+      height: 32px;
+      color: var(--primary-color);
+      border: 1px solid var(--icons-color);
+      border-radius: 48px;
+      background: no-repeat center url('/public/img/icons/countIncrement.svg');
+    }
+
+    &__price {
+      font-size: 22px;
+      font-weight: 600;
+    }
+  }
+}

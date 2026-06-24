@@ -1,0 +1,58 @@
+@import '../../shared/index';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px $padding-mobile;
+  border: 1px solid var(--elements-color);
+  background-color: var(--white-color);
+  margin-top: auto;
+
+  @include on-tablet {
+    padding: 32px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    display: block;
+    width: 89px;
+    height: 32px;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 14px;
+    }
+
+    @include on-desktop {
+      gap: 108px;
+    }
+  }
+
+  &__navLink {
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    color: var(--secondary-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    @include hover(color, var(--primary-color));
+  }
+}
