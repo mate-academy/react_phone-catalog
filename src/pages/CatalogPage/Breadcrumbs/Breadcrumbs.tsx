@@ -1,16 +1,18 @@
-import { Link, useLocation, useParams } from 'react-router-dom';
-import './Breadcrumbs.scss';
 import React, { useEffect, useState } from 'react';
-// import { useProductFilters } from '../../../hooks/useProductsFilters';
-// import { ProductUnionType } from '../../ProductInfoPage';
-// import { useTheme } from '../../../components/context/ThemeContext';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
+
+import { getAccessories, getPhones, getTablets } from '../../../services/api';
+
+import { Phone } from '../../../types/Phone';
+import { Tablet } from '../../../types/Tablet';
+import { Accessory } from '../../../types/Accessory';
+
+type ProductUnionType = Phone | Tablet | Accessory;
 
 export const Breadcrumbs: React.FC = () => {
   const location = useLocation();
   const { category, itemId } = useParams();
-  const { getLastSearch } = useProductFilters();
-  const { theme } = useTheme();
 
   const [modelName, setModelName] = useState('');
 
@@ -22,100 +24,91 @@ export const Breadcrumbs: React.FC = () => {
       ? pathname.charAt(0).toUpperCase() + pathname.slice(1)
       : '';
 
-  const backSearch = location.state?.search || location.search || '';
-  const searchToUse = backSearch !== '' ? backSearch : getLastSearch();
-
   const backPath = `/${category || ''}`;
-  const backWithSearch = `${backPath}${searchToUse}`;
 
   useEffect(() => {
-    if (!category || !itemId) {
-      return;
-    }
+    const loadProduct = async () => {
+      if (!category || !itemId) {
+        setModelName('');
 
-    fetch(`/api/${category}.json`)
-      .then(res => res.json())
-      .then(data => {
-        const found = data.find(
-          (product: ProductUnionType) => product.id === itemId,
-        );
+        return;
+      }
 
-        setModelName(found.name || '');
-      });
-  }, [itemId, category]);
+      try {
+        let data: ProductUnionType[] = [];
+
+        switch (category) {
+          case 'phones':
+            data = await getPhones();
+            break;
+
+          case 'tablets':
+            data = await getTablets();
+            break;
+
+          case 'accessories':
+            data = await getAccessories();
+            break;
+
+          default:
+            return;
+        }
+
+        const found = data.find(product => product.id === itemId);
+
+        setModelName(found?.name ?? '');
+      } catch (error) {
+        // console.error('Failed to load product:', error);
+      }
+    };
+
+    loadProduct();
+  }, [category, itemId]);
 
   return (
-    <div className="breadcrumbs">
-      <div className="breadcrumbs__nav">
-        <Link to="/" className="breadcrumbs__link breadcrumbs__link--home">
+    <div className={styles.breadcrumbs}>
+      <div className={styles.breadcrumbs__nav}>
+        <Link
+          to="/"
+          className={`${styles.breadcrumbs__link} ${styles.breadcrumbs__linkHome}`}
+        >
           <img
-            src={
-              theme === 'light'
-                ? './img/icons/Breadcrumbs-Home_icon.svg'
-                : './img/icons/Breadcrumbs-Home_dark.svg'
-            }
-            alt="Home icon"
-            className="icon"
+            src={`${import.meta.env.BASE_URL}img/icons/home-icon.svg`}
+            alt="Home"
+            className={styles.homeIcon}
           />
         </Link>
-        <img
-          src={
-            theme === 'light'
-              ? './img/icons/Breadcrumbs-Separator_icon.svg'
-              : './img/icons/Arrow-Right_dark.svg'
-          }
-          alt="Breadcrumbs Separator"
-          className="icon breadcrumbs__separator"
-        />
+
+        <div className={styles.breadcrumbs__separator}></div>
 
         {itemId ? (
           <Link
-            to={backWithSearch}
-            className="breadcrumbs__link breadcrumbs__link--category"
+            to={backPath}
+            className={`${styles.breadcrumbs__link} ${styles.breadcrumbs__linkCategory}`}
           >
             {pageName}
           </Link>
         ) : (
-          <span className="breadcrumbs__current">{pageName}</span>
+          <span className={styles.breadcrumbs__current}>{pageName}</span>
         )}
 
         {modelName && (
           <>
-            <img
-              src={
-                theme === 'light'
-                  ? './img/icons/Breadcrumbs-Separator_icon.svg'
-                  : './img/icons/Arrow-Right_dark.svg'
-              }
-              alt="Breadcrumbs Separator"
-              className="icon breadcrumbs__separator"
-            />
+            <span className={styles.breadcrumbs__separator}>›</span>
 
             <span
-              className="breadcrumbs__current
-                breadcrumbs__current--product"
+              className={`${styles.breadcrumbs__current} ${styles.breadcrumbs__currentProduct}`}
             >
               {modelName}
             </span>
           </>
         )}
       </div>
-      {modelName && (
-        <div className="breadcrumbs__back">
-          <Link to={backWithSearch} className="breadcrumbs__back--icon">
-            <img
-              src={
-                theme === 'light'
-                  ? './img/icons/Arrow-Left_icon.svg'
-                  : './img/icons/Arrow-Left_dark.svg'
-              }
-              alt="Back Arrow"
-              className="icon"
-            />
-          </Link>
 
-          <Link to={backWithSearch} className="breadcrumbs__back--link">
-            Back
+      {modelName && (
+        <div className={styles.breadcrumbs__back}>
+          <Link to={backPath} className={styles.breadcrumbs__backLink}>
+            ← Back
           </Link>
         </div>
       )}

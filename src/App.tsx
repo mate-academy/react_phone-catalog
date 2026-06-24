@@ -9,6 +9,7 @@ import { CartProvider } from './context/CartContext';
 import { FavoritesProvider } from './context/FavoritesContext';
 import { Header } from './components/Header/Header';
 import { CatalogPage } from './pages/CatalogPage/CatalogPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
 // import { products } from './api/products';
 
 export const App = () => {
@@ -26,6 +27,11 @@ export const App = () => {
 
                 {/* <Route path="/phones" element={<PhonesPage />} /> */}
                 <Route path="/phones" element={<CatalogPage />} />
+                <Route
+                  path="/products/:productId"
+                  element={<ProductDetailsPage />}
+                />
+
                 {/* <Route
                   path="/phones"
                   element={<PhonesPage name="Mobile phones" items={products} />}

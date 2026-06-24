@@ -1,77 +1,70 @@
+import styles from './Pagination.module.scss';
+
 type Props = {
-  total: number;
-  perPage: number;
-  currentPage?: number;
-  onPageChange: (page: number) => void;
+  pages: (number | string)[];
+  currentPage: number;
+  totalPages: number;
+  updateParams: (params: Record<string, string | null>) => void;
 };
 
 export const Pagination: React.FC<Props> = ({
-  total,
-  perPage,
-  currentPage = 1,
-  onPageChange,
+  pages,
+  currentPage,
+  totalPages,
+  updateParams,
 }) => {
-  const pages = Math.ceil(total / perPage);
-
-  const handleChange = (page: number) => {
-    if (page !== currentPage) {
-      onPageChange(page);
-    }
-  };
-
   return (
-    <nav>
-      <ul className="pagination">
-        <li className={currentPage === 1 ? 'disabled' : ''}>
-          <a
-            href="#prev"
-            aria-disabled={currentPage === 1}
-            onClick={e => {
-              e.preventDefault();
+    <div className={styles.paginationCatalog}>
+      <button
+        type="button"
+        className={styles.paginationButton}
+        disabled={currentPage === 1}
+        onClick={() =>
+          updateParams({
+            page: currentPage - 1 === 1 ? null : String(currentPage - 1),
+          })
+        }
+      >
+        {'<'}
+      </button>
 
-              if (currentPage > 1) {
-                handleChange(currentPage - 1);
-              }
-            }}
+      {pages.map((page, index) =>
+        page === '...' ? (
+          <span className={styles.paginationEllipsis} key={`dots-${index}`}>
+            ...
+          </span>
+        ) : (
+          <button
+            key={`page-${page}-${index}`}
+            type="button"
+            className={
+              Number(page) === currentPage
+                ? styles.active
+                : styles.paginationButton
+            }
+            onClick={() =>
+              updateParams({
+                page: Number(page) === 1 ? null : String(page),
+              })
+            }
           >
-            «
-          </a>
-        </li>
+            {page}
+          </button>
+        ),
+      )}
 
-        {Array.from({ length: pages }, (_, i) => {
-          const page = i + 1;
-
-          return (
-            <li key={page} className={page === currentPage ? 'active' : ''}>
-              <a
-                href={`#${page}`}
-                onClick={e => {
-                  e.preventDefault();
-                  handleChange(page);
-                }}
-              >
-                {page}
-              </a>
-            </li>
-          );
-        })}
-
-        <li className={currentPage === pages ? 'disabled' : ''}>
-          <a
-            href="#next"
-            aria-disabled={currentPage === pages}
-            onClick={e => {
-              e.preventDefault();
-
-              if (currentPage < pages) {
-                handleChange(currentPage + 1);
-              }
-            }}
-          >
-            »
-          </a>
-        </li>
-      </ul>
-    </nav>
+      <button
+        type="button"
+        className={styles.paginationButton}
+        disabled={currentPage === totalPages}
+        onClick={() =>
+          updateParams({
+            page: String(currentPage + 1),
+          })
+        }
+      >
+        {'>'}
+      </button>
+    </div>
   );
 };

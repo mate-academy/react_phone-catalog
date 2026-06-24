@@ -1,0 +1,41 @@
+.breadcrumbs {
+  margin-bottom: 40px;
+}
+.breadcrumbs__nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.breadcrumbs__separator {
+  background-image: url('/react_phone-catalog/img/icons/arrow-right.svg');
+  width: 16px;
+  height: 16px;
+}
+.breadcrumbs__link,
+.breadcrumbs__current {
+  display: flex;
+  align-items: center;
+  height: 16px;
+}
+.homeIcon {
+   vertical-align: middle;
+}
+.breadcrumbs__current {
+  font-family: Mont;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  color: var(--secondary);
+
+  align-items: end;
+}
+.breadcrumbs__linkCategory {
+  display: flex;
+  align-items: center;
+
+  font-family: Mont;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: var(--primary);
+}

@@ -1,11 +1,12 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { mapProductToCard } from '../../utils/mapProductToCard';
 import { useProducts } from '../../hooks/useProducts';
 import styles from './CatalogPage.module.scss';
 import { SelectProduct } from './SelectProduct/SelectProduct';
-// import { Pagination } from '../../components/Pagination/Pagination';
-// import { useSearchParams } from 'react-router-dom';
+import { Pagination } from '../../components/Pagination/Pagination';
+import { useSearchParams } from 'react-router-dom';
+import { Breadcrumbs } from './Breadcrumbs/Breadcrumbs';
 
 type SortType = 'age' | 'title' | 'price';
 
@@ -20,8 +21,9 @@ export const CatalogPage = () => {
     [products],
   );
 
-  const [itemsPerPage, setItemsPerPage] = useState(16);
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [itemsPerPage, setItemsPerPage] = useState(16);
+  // const [currentPage, setCurrentPage] = useState(1);
+
   const [sortBy, setSortBy] = useState<SortType>('age');
 
   const sortedPhones = useMemo(() => {
@@ -42,22 +44,93 @@ export const CatalogPage = () => {
     }
   }, [phones, sortBy]);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const currentPage = Math.max(1, Number(searchParams.get('page')) || 1);
+
+  const perPageParam = searchParams.get('perPage') || 'all';
+
+  const itemsPerPage =
+    perPageParam === 'all' || isNaN(Number(perPageParam))
+      ? sortedPhones.length
+      : Number(perPageParam);
+
+  const updateParams = useCallback(
+    (params: Record<string, string | null>) => {
+      const newParams = new URLSearchParams(searchParams);
+
+      Object.entries(params).forEach(([key, value]) => {
+        if (!value) {
+          newParams.delete(key);
+        } else {
+          newParams.set(key, value);
+        }
+      });
+
+      setSearchParams(newParams);
+    },
+    [searchParams, setSearchParams],
+  );
+
+  const totalPages =
+    perPageParam === 'all' ? 1 : Math.ceil(sortedPhones.length / itemsPerPage);
+
+  const visiblePhones =
+    perPageParam === 'all'
+      ? sortedPhones
+      : sortedPhones.slice(
+          (currentPage - 1) * itemsPerPage,
+          currentPage * itemsPerPage,
+        );
+
+  const getPages = (page: number, total: number): (number | string)[] => {
+    const delta = 1;
+
+    const range: (number | string)[] = [];
+
+    const left = Math.max(2, page - delta);
+    const right = Math.min(total - 1, page + delta);
+
+    range.push(1);
+
+    if (left > 2) {
+      range.push('...');
+    }
+
+    for (let i = left; i <= right; i++) {
+      range.push(i);
+    }
+
+    if (right < total - 1) {
+      range.push('...');
+    }
+
+    if (total > 1) {
+      range.push(total);
+    }
+
+    return range;
+  };
+
+  const pages = getPages(currentPage, totalPages);
+
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      updateParams({
+        page: totalPages === 1 ? null : String(totalPages),
+      });
+    }
+  }, [currentPage, totalPages, updateParams]);
+
   if (!products.length) {
     return <p>Loading...</p>;
   }
 
-  const totalPages = Math.ceil(sortedPhones.length / itemsPerPage);
-
-  const startIndex = (currentPage - 1) * itemsPerPage;
-
-  const visiblePhones = sortedPhones.slice(
-    startIndex,
-    startIndex + itemsPerPage,
-  );
-
   return (
     <div className={styles.catalog}>
-      <h1 className={styles.title}>Mobile phones</h1>
+      <Breadcrumbs />
+
+      <h2 className={styles.title}>Mobile phones</h2>
 
       <p className={styles.catalogCount}>{phones.length} models</p>
 
@@ -67,7 +140,10 @@ export const CatalogPage = () => {
           value={sortBy}
           onChange={val => {
             setSortBy(val as SortType);
-            setCurrentPage(1);
+            updateParams({
+              page: null,
+              perPage: perPageParam === 'all' ? null : perPageParam,
+            });
           }}
           options={[
             { label: 'Newest', value: 'age' },
@@ -78,16 +154,18 @@ export const CatalogPage = () => {
 
         <SelectProduct
           label="Items on page"
-          value={itemsPerPage}
+          value={perPageParam}
           onChange={val => {
-            setItemsPerPage(Number(val));
-            setCurrentPage(1);
+            updateParams({
+              page: null,
+              perPage: val === 'all' ? null : String(val),
+            });
           }}
           options={[
-            { label: '4', value: 4 },
-            { label: '8', value: 8 },
-            { label: '16', value: 16 },
-            { label: '32', value: 32 },
+            { label: '4', value: '4' },
+            { label: '8', value: '8' },
+            { label: '16', value: '16' },
+            { label: 'All', value: 'all' },
           ]}
         />
       </div>
@@ -98,20 +176,14 @@ export const CatalogPage = () => {
         ))}
       </div>
 
-      <div className={styles.paginationCatalog}>
-        {Array.from({ length: totalPages }, (_, index) => (
-          <button
-            key={index}
-            type="button"
-            className={styles.pageButton}
-            onClick={() => setCurrentPage(index + 1)}
-          >
-            {index + 1}
-          </button>
-        ))}
-      </div>
-
-      {/* <Pagination /> */}
+      {totalPages > 1 && (
+        <Pagination
+          pages={pages}
+          currentPage={currentPage}
+          totalPages={totalPages}
+          updateParams={updateParams}
+        />
+      )}
     </div>
   );
 };

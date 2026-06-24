@@ -28,6 +28,7 @@ export const ProductCard: React.FC<Props> = ({
       <div className={styles.top}>
         <NavLink
           to={`/products/${id}`}
+          // to={`/${category}/${id}`}
           className={`${styles.icon} ${styles.mobileAction}`}
         >
           <div className={styles.image}>
