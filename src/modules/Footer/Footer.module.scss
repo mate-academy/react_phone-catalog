@@ -1,0 +1,121 @@
+@use '../../Mixins/Mixins.scss' as *;
+
+.footer {
+  width: 100%;
+  display: flex;
+
+  @include respond(tablet) {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+
+    @include respond(tablet) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 50px;
+    }
+
+    @include respond(desktop) {
+      gap: 100px;
+    }
+  }
+
+  &_goTop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: #89939a;
+  }
+
+  &_button {
+    all: unset;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #323542;
+    transition:
+      background-color 0.3s ease,
+      transform 0.1s ease;
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+    &:disabled {
+      border: 1px solid #3b3e4a;
+      background-color: #0f1121;
+    }
+  }
+
+  &_theme {
+    all: unset;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 32px;
+    background-color: #323542;
+    transition:
+      background-color 0.3s ease,
+      transform 0.1s ease;
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+    &:disabled {
+      border: 1px solid #3b3e4a;
+      background-color: #0f1121;
+    }
+  }
+}
+
+.wrapper {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  padding-block: 32px;
+  padding-inline: 16px;
+
+  @include respond(tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 32px;
+  }
+
+  @include respond(desktop) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 32px;
+  }
+}
+
+.underline {
+  height: 1px;
+  background-color: #3b3e4a;
+  width: 100%;
+}
