@@ -1,0 +1,117 @@
+@import '../../styles/global';
+
+.menu {
+  display: none;
+
+  @include on-mobile {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    position: fixed;
+    overflow: hidden;
+    z-index: 15;
+    gap: 24px;
+    inset: 0;
+    background-color: white;
+    cursor: pointer;
+
+    transform: translate(100%, 0);
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 48px;
+  align-items: center;
+  border-bottom: 1px solid var(--color-elements);
+}
+
+.logo {
+  height: 22px;
+  width: 64px;
+  margin-inline: 16px;
+}
+
+.button, .button_footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  width: 48px;
+  border-left: 1px solid var(--color-elements);
+}
+
+.button_footer {
+  width: 50%;
+  height: 64px;
+}
+
+.icon {
+  object-fit: contain;
+  height: 16px;
+  user-select: none;
+}
+
+.icon_cart, .icon_fav {
+  display: flex;
+  position: relative;
+  background-image: url('/img/cart.svg');
+  height: 16px;
+  user-select: none;
+  background-size: contain;
+  aspect-ratio: 1/1;
+}
+
+.icon_fav {
+  background-image: url('/img/favourites-heart.svg');
+}
+
+.items_quantity {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  display: flex;
+  height: 13px;
+  width: 13px;
+  border-radius: 100%;
+  border: 1px solid white;
+  background-color: var(--color-red);
+  justify-content: center;
+  align-items: center;
+
+  font-family: var(--font-family-semibold);
+  font-size: 9px;
+  color: white;
+  padding-top: 1px;
+  text-align: center;
+}
+
+.is_active {
+  position: relative;
+  color: var(--color-primary);
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 2.3px;
+    bottom: 1.5px;
+    width: 100%;
+    background-color: var(--color-primary);
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 64px;
+  border-top: 1px solid var(--color-elements);
+}

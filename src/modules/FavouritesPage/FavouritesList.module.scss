@@ -1,0 +1,19 @@
+@import './../../styles/global';
+
+.favourites_list {
+  display: grid;
+  flex-direction: column;
+}
+
+.title {
+  @extend %h1;
+
+  margin-bottom: 8px;
+}
+
+.amount {
+  @extend %body-text;
+
+  color: var(--color-secondary);
+  margin-bottom: 40px;
+}

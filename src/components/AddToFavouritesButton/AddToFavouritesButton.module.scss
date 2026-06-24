@@ -1,0 +1,25 @@
+@import '../../styles/global';
+
+.add_to_fav_button {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  aspect-ratio: 1/1;
+  border: 1px solid var(--color-icons);
+  background-color: white;
+  cursor: pointer;
+  transition: all var(--transition-duration);
+
+  &:hover {
+    border: 1px solid var(--color-primary);
+  }
+}
+
+.heart {
+  height: 16px;
+  width: 16px;
+  user-select: none;
+}

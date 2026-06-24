@@ -1,0 +1,9 @@
+@import 'bulma/sass/utilities/initial-variables';
+@import 'bulma/sass/utilities/functions';
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+.bulma-scope {
+  @import 'bulma/sass/components/dropdown';
+  @import 'bulma/sass/elements/icon';
+  @import 'bulma/sass/elements/button';
+}

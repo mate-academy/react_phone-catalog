@@ -1,0 +1,181 @@
+@import './fonts';
+@import './mixins';
+
+:root {
+  --font-family-bold: 'Mont-Bold', sans-serif;
+  --font-family-semibold: 'Mont-SemiBold', sans-serif;
+  --font-family-regular: 'Mont-Regular', sans-serif;
+  --color-primary: #313237;
+  --color-secondary: #89939a;
+  --color-icons: #b4bdc3;
+  --color-elements: #e2e6e9;
+  --color-hover-bg: #fafbfc;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --transition-duration: 0.3s;
+  --product-card-width: 272px;
+  --product-card-height: 506px;
+}
+
+/* Titles */
+%h1 {
+  font-family: var(--font-family-bold);
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--color-primary);
+
+  @include on-mobile {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+%h2 {
+  font-family: var(--font-family-bold);
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--color-primary);
+
+  @include on-mobile {
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: 0;
+  }
+}
+
+%h3 {
+  font-family: var(--font-family-bold);
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  margin: 0;
+  color: var(--color-primary);
+
+  @include on-mobile {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+%h4 {
+  font-family: var(--font-family-semibold);
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  margin: 0;
+  color: var(--color-primary);
+
+  @include on-mobile {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+/* Text styles */
+%uppercase {
+  font-family: var(--font-family-bold);
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+%buttons-text {
+  font-family: var(--font-family-semibold);
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+%body-text {
+  font-family: var(--font-family-regular);
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  margin: 0;
+  color: var(--color-primary);
+}
+
+%small-text {
+  font-family: var(--font-family-semibold);
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+%grid {
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  gap: 16px;
+  justify-content: center;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    padding-inline: 24px;
+  }
+
+  @include on-mobile {
+    grid-template-columns: repeat(4, 1fr);
+    padding-inline: 16px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+
+  transition: all var(--transition-duration);
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: fit-content;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body:has(aside.open) {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.open {
+  opacity: 1;
+  pointer-events: all;
+  transition: transform var(--transition-duration) ease-in-out;
+  transform: translate(0, 0);
+}
