@@ -1,0 +1,120 @@
+@import '../../styles/grid';
+@import '../../styles/variables';
+
+/* ─── Slider wrapper ────────────────────────────────────────────────────── */
+.wrapper {
+  @include grid-container;
+
+  grid-template-rows: auto auto; /* row1: content | row2: dots */
+  padding: 0;
+}
+
+/* ─── Swiper ────────────────────────────────────────────────────────────── */
+.swiper {
+  grid-column: 1 / -1; /* mobile: full width (no buttons) */
+  grid-row: 1;
+  width: 100%; /* force Swiper to fill the grid cell */
+  min-width: 0;
+  overflow: hidden;
+
+  @media (min-width: $tablet-min) {
+    grid-column: 2 / 12; /* tablet: cols 2–11 */
+  }
+
+  @media (min-width: $desktop-min) {
+    grid-column: 2 / 24; /* desktop: cols 2–23 */
+  }
+}
+
+/* ─── Slide ─────────────────────────────────────────────────────────────── */
+.slide {
+  display: block;
+  height: 320px; /* mobile */
+  text-decoration: none;
+
+  @media (min-width: $tablet-min) {
+    height: 200px; /* tablet */
+  }
+
+  @media (min-width: $desktop-min) {
+    height: 400px; /* desktop */
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ─── Navigation buttons ────────────────────────────────────────────────── */
+.navBtn {
+  max-width: 40px;
+  grid-row: 1;
+  display: none; /* hidden on mobile */
+  border: 0;
+  background: #323542;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    border-color: #313237;
+  }
+
+  @media (min-width: $tablet-min) {
+    display: flex;
+  }
+}
+
+.prev {
+  grid-column: 1; /* col 1 on tablet and desktop */
+}
+
+.next {
+  grid-column: 12; /* last col on tablet */
+
+  @media (min-width: $desktop-min) {
+    grid-column: 24; /* last col on desktop */
+  }
+}
+
+/* ─── Pagination dots — row 2, centered, rectangular ───────────────────── */
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+:global(.swiper-dots) {
+  grid-column: 1 / -1 !important; /* span all 3 cols */
+  grid-row: 2 !important;
+
+  /* reset Swiper default styles */
+  position: static !important;
+  width: auto !important;
+  transform: none !important;
+
+  /* layout */
+  display: flex !important;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 0 4px;
+}
+
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+:global(.swiper-dots .swiper-pagination-bullet) {
+  width: 14px;
+  height: 4px;
+  border-radius: 1px;
+  opacity: 1;
+  background: #313237;
+  transition: background 200ms ease;
+}
+
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+:global(.swiper-dots .swiper-pagination-bullet-active) {
+  background: #e2e6ef;
+}

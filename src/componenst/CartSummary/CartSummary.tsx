@@ -1,0 +1,49 @@
+import React from 'react';
+import styles from './CartSummary.module.scss';
+import { Product } from '../../types/Product';
+import { useCart } from '../../context/CartContext';
+
+interface Props {
+  products: Product[];
+  onCheckout: () => void;
+}
+
+const CartSummary: React.FC<Props> = ({ products, onCheckout }) => {
+  const { quantities } = useCart();
+
+  const total = products.reduce((sum, product) => {
+    const price =
+      product.priceDiscount ?? product.priceRegular ?? product.price ?? 0;
+    const quantity = quantities[product.id] || 1;
+
+    return sum + price * quantity;
+  }, 0);
+
+  const totalItems = Object.values(quantities).reduce(
+    (sum, qty) => sum + qty,
+    0,
+  );
+
+  return (
+    <div className={styles.cartSummary}>
+      <div className={styles.cartSummary__info}>
+        <div className={styles.cartSummary__total}>${total}</div>
+        <div className={styles.cartSummary__text}>
+          Total for {totalItems} {totalItems === 1 ? 'item' : 'items'}
+        </div>
+      </div>
+
+      <div className={styles.cartSummary__divider} />
+
+      <button
+        type="button"
+        className={styles.cartSummary__checkout}
+        onClick={onCheckout}
+      >
+        Checkout
+      </button>
+    </div>
+  );
+};
+
+export default CartSummary;

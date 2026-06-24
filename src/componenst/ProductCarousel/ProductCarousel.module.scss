@@ -1,0 +1,138 @@
+@import '../../styles/variables';
+
+/* ─── Carousel wrapper ───────────────────────────────────────────────── */
+.carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 16px 0;
+
+  /* do NOT clip — let the swiper bleed to page edges */
+}
+
+/* ─── Header row ─────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  color: #f1f2f9;
+
+  @media (min-width: $tablet-min) {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+/* ─── Navigation buttons ─────────────────────────────────────────────── */
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid #3b3e4a;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease;
+
+  &:hover {
+    background-color: #3b3e4a;
+  }
+
+  &:active {
+    background-color: #4a4d58;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+}
+
+.icon {
+  width: 10px;
+  height: 10px;
+}
+
+/* ─── Full-bleed track: break out of parent container padding ────────── */
+.swiperTrack {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  touch-action: pan-y;
+
+  @media (min-width: $desktop-min) {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* ─── Swiper ─────────────────────────────────────────────────────────── */
+.swiper {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ─── Slide — fixed width so slidesPerView="auto" works correctly ────── */
+.slide {
+  width: 212px !important;
+  height: 100%;
+
+  /*
+   * Gap between slides via margin-left (not spaceBetween/margin-right).
+   * Swiper reads offsetLeft from the DOM, so it correctly accounts for
+   * these CSS margins when calculating snap positions.
+   * Result: every snapped slide has a consistent left indent (the gap value),
+   * because margin-left is included in the snap offset.
+   */
+  margin-left: $mobile-gap; /* 16px gap on all slides */
+
+  /* first slide — use page padding instead of the gap */
+  &:first-child {
+    margin-left: $mobile-padding; /* 16px — same as gap on mobile */
+
+    @media (min-width: $tablet-min) {
+      margin-left: $tablet-padding; /* 24px */
+    }
+
+    @media (min-width: $desktop-min) {
+      margin-left: 0;
+    }
+  }
+
+  /* last slide — right page-edge padding */
+  &:last-child {
+    margin-right: $mobile-padding;
+
+    @media (min-width: $tablet-min) {
+      margin-right: $tablet-padding;
+    }
+
+    @media (min-width: $desktop-min) {
+      margin-right: $tablet-padding;
+    }
+  }
+
+  @media (min-width: $tablet-min) {
+    width: 237px !important;
+  }
+
+  @media (min-width: $desktop-min) {
+    width: 272px !important;
+  }
+}

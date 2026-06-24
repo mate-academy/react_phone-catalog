@@ -1,0 +1,63 @@
+@import '../../styles/variables';
+@import '../../styles/grid';
+
+/* Favourites page layout and grid */
+.favouritesPage {
+  @include container;
+
+  padding-top: 32px;
+  padding-bottom: 48px;
+
+  /* = Title / header */
+  &__title {
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -1%;
+    margin-bottom: 8px;
+    color: $color-text;
+
+    @media (min-width: $tablet-min) {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  /* = Item counter */
+  &__counter {
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0;
+    margin: 0 0 24px;
+    color: #75767f;
+  }
+
+  /* = Grid cell span for each card */
+  &__card {
+    /* Mobile: full width (4 cols)
+       Tablet small (640-899): 2 per row (span 6)
+       Tablet medium (900-1023): 3 per row (span 4)
+       Tablet large (1024-1199): 4 per row (span 3)
+       Desktop (>=1200): 4 per row (span 6 of 24 columns)
+    */
+    @include grid-span(4, 6, 6);
+
+    @media (min-width: 900px) and (max-width: 1023px) {
+      grid-column: span 4; /* 3 per row */
+    }
+
+    @media (min-width: 1024px) and (max-width: 1199px) {
+      grid-column: span 3; /* 4 per row */
+    }
+  }
+
+  /* = Grid wrapper */
+  &__grid {
+    @include grid-container;
+
+    gap: 16px;
+  }
+}
