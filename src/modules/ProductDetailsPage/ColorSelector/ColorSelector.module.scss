@@ -1,0 +1,67 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+@import '../../../styles/typography';
+
+.colorSelector {
+  display: flex;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__availableColors {
+    @include small-text;
+
+    color: var(--text-secondary);
+  }
+
+  &__colors {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__label {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    box-shadow: inset 0 0 0 2px #fff;
+    cursor: pointer;
+
+    @include hover-transition(border-color);
+
+    @include hover {
+      border-color: var(--icon-color);
+    }
+
+    &--active {
+      border-color: var(--text-main);
+    }
+  }
+
+  &__id {
+    @include small-text;
+
+    margin-left: auto;
+    min-width: 85px;
+    text-align: right;
+    color: var(--icon-color);
+
+    @include respond-to('desktop') {
+      min-width: 176px;
+    }
+  }
+
+  &__radio {
+    @include radio-hidden;
+  }
+
+  &__visuallyHidden {
+    @include visually-hidden;
+  }
+}

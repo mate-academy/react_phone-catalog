@@ -1,0 +1,63 @@
+/* src/components/Pagination/Pagination.module.scss */
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/typography';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 64px;
+    margin: 0;
+
+    @include respond-to('desktop') {
+      padding-bottom: 80px;
+    }
+  }
+
+  &__item {
+    &:first-child {
+      margin-right: 8px;
+    }
+
+    &:last-child {
+      margin-left: 8px;
+    }
+
+    button {
+      @include body-text;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      background-color: transparent;
+      cursor: pointer;
+
+      @include hover-transition;
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      @include hover {
+        &:not(:disabled) {
+          border-color: var(--accent);
+        }
+      }
+
+      &.isActive {
+        background-color: var(--btn-bg);
+        color: var(--page-bg);
+        border-color: var(--accent);
+      }
+    }
+  }
+}

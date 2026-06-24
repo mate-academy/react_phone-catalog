@@ -1,1 +1,19 @@
-// not empty
+@import './styles/reset';
+@import './styles/fonts';
+@import './styles/variables';
+@import './styles/mixins';
+@import './styles/typography';
+
+
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+html,
+body {
+  background-color: var(--page-bg);
+  color: var(--text-main);
+
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
