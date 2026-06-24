@@ -1,0 +1,107 @@
+@import '../../styles/utils';
+
+.menu {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 64px);
+  background-color: $color-white;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+
+  /* Mechanizm wysuwania */
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.isOpen {
+    transform: translateX(0);
+  }
+
+  /* Ukrywamy na tablecie i desktopie */
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.content {
+  flex: 1;
+  padding: 40px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.link {
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 16px;
+  color: $color-secondary;
+  transition: color 0.3s;
+
+  &.isActive {
+    color: $color-primary;
+
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 4px;
+      background-color: $color-primary;
+      border-radius: 50%;
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  height: 64px;
+  border-top: 1px solid $color-border;
+  margin-top: auto;
+}
+
+.iconBtn {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid $color-border;
+  transition: background-color 0.3s;
+  text-decoration: none;
+
+  &:last-child {
+    border-right: none;
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s;
+  }
+
+  /* Aktywny stan dla ikon w stopce menu */
+  &.isActive {
+    background-color: $color-bg;
+    
+    img {
+      transform: scale(1.1);
+    }
+  }
+}

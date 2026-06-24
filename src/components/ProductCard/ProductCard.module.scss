@@ -1,0 +1,172 @@
+@use "sass:color";
+@import '../../styles/utils';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  background-color: $color-white;
+  border: 1px solid $color-border;
+  border-radius: 16px;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background-color: color.adjust($color-white, $lightness: -5%);
+  }
+}
+
+.imageLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  margin-bottom: 24px;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.title {
+  font-size: 14px;
+  line-height: 21px;
+  color: $color-primary;
+  text-decoration: none;
+  margin-bottom: 8px;
+  height: 42px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 800;
+  color: $color-primary;
+}
+
+.fullPrice {
+  font-size: 14px;
+  text-decoration: line-through;
+  color: $color-secondary;
+  font-weight: 500;
+}
+
+.divider {
+  height: 1px;
+  background-color: $color-border;
+  margin: 8px 0;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+}
+
+.specName {
+  color: $color-secondary;
+}
+
+.specValue {
+  color: $color-primary;
+  font-weight: 600;
+}
+
+/* Sekcja akcji (Przyciski) */
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.addToCartBtn {
+  flex-grow: 1;
+  height: 48px;
+  background-color: $color-accent;
+  color: $color-white;
+  border: none;
+  border-radius: 32px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border 0.3s;
+
+  &:hover {
+    /* Rozjaśniamy fiolet przy najechaniu */
+    border-color: color.adjust($color-primary, $lightness: 10%);
+  }
+
+  /* Styl po dodaniu do koszyka */
+  &.added {
+    background-color: $color-white;
+    color: $color-green;
+    border: 1px solid $color-border;
+    cursor: default;
+
+    &:hover {
+      background-color: $color-white;
+    }
+  }
+}
+
+.favoriteBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: transparent;
+  border: 1px solid $color-border;
+  border-radius: 32px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+
+  &.isFav {
+    border-color: $color-border;
+  }
+}

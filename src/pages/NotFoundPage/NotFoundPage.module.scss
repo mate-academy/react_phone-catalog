@@ -1,0 +1,42 @@
+@use 'sass:color';
+@import '../../styles/utils';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 16px;
+  text-align: center;
+  min-height: 50vh;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: $color-primary;
+  margin-bottom: 24px;
+}
+
+.image {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 32px;
+}
+
+.homeBtn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: $color-primary;
+  color: $color-white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: color.adjust($color-primary, $lightness: 10%);
+  }
+}

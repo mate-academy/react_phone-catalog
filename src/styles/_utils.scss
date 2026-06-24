@@ -1,0 +1,55 @@
+// === WYMIARY (GRID & LAYOUT) ===
+$header-height: 64px;
+$grid-width: 1136px;
+
+// === KOLORY (Zgodne z UI Kit) ===
+
+// Teksty i Główne elementy
+$color-primary: #313237; // Główny tekst, nagłówki
+$color-secondary: #89939a; // Tekst poboczny
+$color-white: #fff;
+
+// Tła i Ramki
+$color-bg: #fafbfc; // Tło strony / Hover BG
+$color-border: #e2e6e9; // Ramki
+$color-elements: #b4bdc3;
+$color-elements-bg: #e2e6e9;
+
+// Akcenty i Statusy
+$color-accent: #4219d0;
+$color-secondary-accent: #f4a947;
+$color-green: #27ae60; // Sukces
+$color-red: #eb5757; // Błąd
+
+// === MIXINY  ===
+$tablet-width: 640px;
+$desktop-width: 1200px;
+
+// === Font ===
+$font-main: 'Mont', sans-serif;
+
+@mixin on-tablet {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
