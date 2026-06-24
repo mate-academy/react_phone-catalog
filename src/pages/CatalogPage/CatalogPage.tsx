@@ -9,16 +9,33 @@ import { useSearchParams } from 'react-router-dom';
 import { Breadcrumbs } from './Breadcrumbs/Breadcrumbs';
 
 type SortType = 'age' | 'title' | 'price';
+type Category = 'phones' | 'tablets' | 'accessories';
 
-export const CatalogPage = () => {
+type Props = {
+  category: Category;
+};
+
+export const CatalogPage: React.FC<Props> = ({ category }) => {
+  const categoryTitles = {
+    phones: 'Mobile phones',
+    tablets: 'Tablets',
+    accessories: 'Accessories',
+  };
   const { products } = useProducts();
 
-  const phones = useMemo(
+  // const phones = useMemo(
+  //   () =>
+  //     products
+  //       .filter(product => product.category === 'phones')
+  //       .map(mapProductToCard),
+  //   [products],
+  // );
+  const catalogProducts = useMemo(
     () =>
       products
-        .filter(product => product.category === 'phones')
+        .filter(product => product.category === category)
         .map(mapProductToCard),
-    [products],
+    [products, category],
   );
 
   // const [itemsPerPage, setItemsPerPage] = useState(16);
@@ -26,8 +43,8 @@ export const CatalogPage = () => {
 
   const [sortBy, setSortBy] = useState<SortType>('age');
 
-  const sortedPhones = useMemo(() => {
-    const result = [...phones];
+  const sortedProducts = useMemo(() => {
+    const result = [...catalogProducts];
 
     switch (sortBy) {
       case 'title':
@@ -42,7 +59,7 @@ export const CatalogPage = () => {
       default:
         return result;
     }
-  }, [phones, sortBy]);
+  }, [catalogProducts, sortBy]);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -52,7 +69,7 @@ export const CatalogPage = () => {
 
   const itemsPerPage =
     perPageParam === 'all' || isNaN(Number(perPageParam))
-      ? sortedPhones.length
+      ? sortedProducts.length
       : Number(perPageParam);
 
   const updateParams = useCallback(
@@ -73,12 +90,14 @@ export const CatalogPage = () => {
   );
 
   const totalPages =
-    perPageParam === 'all' ? 1 : Math.ceil(sortedPhones.length / itemsPerPage);
-
-  const visiblePhones =
     perPageParam === 'all'
-      ? sortedPhones
-      : sortedPhones.slice(
+      ? 1
+      : Math.ceil(sortedProducts.length / itemsPerPage);
+
+  const visibleProducts =
+    perPageParam === 'all'
+      ? sortedProducts
+      : sortedProducts.slice(
           (currentPage - 1) * itemsPerPage,
           currentPage * itemsPerPage,
         );
@@ -130,9 +149,9 @@ export const CatalogPage = () => {
     <div className={styles.catalog}>
       <Breadcrumbs />
 
-      <h2 className={styles.title}>Mobile phones</h2>
+      <h2 className={styles.title}>{categoryTitles[category]}</h2>
 
-      <p className={styles.catalogCount}>{phones.length} models</p>
+      <p className={styles.catalogCount}>{catalogProducts.length} models</p>
 
       <div className={styles.catalogSorts}>
         <SelectProduct
@@ -142,7 +161,7 @@ export const CatalogPage = () => {
             setSortBy(val as SortType);
             updateParams({
               page: null,
-              perPage: perPageParam === 'all' ? null : perPageParam,
+              perPage: perPageParam === '8' ? null : perPageParam,
             });
           }}
           options={[
@@ -158,7 +177,7 @@ export const CatalogPage = () => {
           onChange={val => {
             updateParams({
               page: null,
-              perPage: val === 'all' ? null : String(val),
+              perPage: val === '8' ? null : String(val),
             });
           }}
           options={[
@@ -171,7 +190,7 @@ export const CatalogPage = () => {
       </div>
 
       <div className={styles.catalogGrid}>
-        {visiblePhones.map(item => (
+        {visibleProducts.map(item => (
           <ProductCard key={item.id} {...item} showDiscount />
         ))}
       </div>

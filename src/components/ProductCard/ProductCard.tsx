@@ -12,6 +12,7 @@ type Props = ProductCardItem & {
 
 export const ProductCard: React.FC<Props> = ({
   id,
+  category,
   name,
   price,
   discount,
@@ -27,8 +28,8 @@ export const ProductCard: React.FC<Props> = ({
     <article className={styles.card}>
       <div className={styles.top}>
         <NavLink
-          to={`/products/${id}`}
-          // to={`/${category}/${id}`}
+          // to={`/products/${id}`}
+          to={`/${category}/${id}`}
           className={`${styles.icon} ${styles.mobileAction}`}
         >
           <div className={styles.image}>

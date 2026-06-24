@@ -10,7 +10,11 @@ import { FavoritesProvider } from './context/FavoritesContext';
 import { Header } from './components/Header/Header';
 import { CatalogPage } from './pages/CatalogPage/CatalogPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
+
 // import { products } from './api/products';
+// type Props = {
+//   category: string;
+// };
 
 export const App = () => {
   return (
@@ -26,9 +30,23 @@ export const App = () => {
                 <Route path="/" element={<HomePage />} />
 
                 {/* <Route path="/phones" element={<PhonesPage />} /> */}
-                <Route path="/phones" element={<CatalogPage />} />
                 <Route
-                  path="/products/:productId"
+                  path="/phones"
+                  element={<CatalogPage category="phones" />}
+                />
+
+                <Route
+                  path="/tablets"
+                  element={<CatalogPage category="tablets" />}
+                />
+
+                <Route
+                  path="/accessories"
+                  element={<CatalogPage category="accessories" />}
+                />
+
+                <Route
+                  path="/:category/:productId"
                   element={<ProductDetailsPage />}
                 />
 

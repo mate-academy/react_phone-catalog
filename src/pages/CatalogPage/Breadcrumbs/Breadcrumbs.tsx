@@ -12,7 +12,7 @@ type ProductUnionType = Phone | Tablet | Accessory;
 
 export const Breadcrumbs: React.FC = () => {
   const location = useLocation();
-  const { category, itemId } = useParams();
+  const { category, productId } = useParams();
 
   const [modelName, setModelName] = useState('');
 
@@ -28,7 +28,7 @@ export const Breadcrumbs: React.FC = () => {
 
   useEffect(() => {
     const loadProduct = async () => {
-      if (!category || !itemId) {
+      if (!category || !productId) {
         setModelName('');
 
         return;
@@ -54,7 +54,7 @@ export const Breadcrumbs: React.FC = () => {
             return;
         }
 
-        const found = data.find(product => product.id === itemId);
+        const found = data.find(product => product.id === productId);
 
         setModelName(found?.name ?? '');
       } catch (error) {
@@ -63,7 +63,7 @@ export const Breadcrumbs: React.FC = () => {
     };
 
     loadProduct();
-  }, [category, itemId]);
+  }, [category, productId]);
 
   return (
     <div className={styles.breadcrumbs}>
@@ -81,7 +81,7 @@ export const Breadcrumbs: React.FC = () => {
 
         <div className={styles.breadcrumbs__separator}></div>
 
-        {itemId ? (
+        {productId ? (
           <Link
             to={backPath}
             className={`${styles.breadcrumbs__link} ${styles.breadcrumbs__linkCategory}`}
@@ -94,7 +94,7 @@ export const Breadcrumbs: React.FC = () => {
 
         {modelName && (
           <>
-            <span className={styles.breadcrumbs__separator}>›</span>
+            <span className={styles.breadcrumbs__separator}></span>
 
             <span
               className={`${styles.breadcrumbs__current} ${styles.breadcrumbs__currentProduct}`}

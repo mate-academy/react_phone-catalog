@@ -1,0 +1,36 @@
+.topContent {
+  display: grid;
+  grid-template-columns: 560px 320px;
+  gap: 64px;
+}
+
+.gallery {
+  display: flex;
+  gap: 16px;
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mainImage img {
+  width: 460px;
+  height: 460px;
+  object-fit: contain;
+}
+
+.bottomContent {
+  margin-top: 80px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+
+.techSpecs li,
+.shortSpecs li {
+  display: flex;
+  justify-content: space-between;
+}
