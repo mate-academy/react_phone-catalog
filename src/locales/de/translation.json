@@ -1,0 +1,98 @@
+{
+  "welcomeMessage": "Willkommen in unserer App",
+  "languageSelector": "Wählen Sie Ihre Sprache",
+  "navigation": {
+    "logo": "LOGO",
+    "home": "Startseite",
+    "phones": "Handys",
+    "tablets": "Tablets",
+    "accessories": "Zubehör",
+    "favorites": "Favoriten",
+    "cart": "Warenkorb",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "services": "Dienstleistungen",
+    "search_placeholder": "Suche",
+    "foundforKeyWord": "gefunden nach Suchergebnissen für",
+    "searchRes": "Suchergebnisse"
+  },
+  "theme": {
+    "title": "Thema auswählen",
+    "theme0": "Original",
+    "theme1": "Original Dunkel",
+    "theme2": "Abgerundet Blau",
+    "theme3": "Abgerundet Lila",
+    "theme4": "Abgerundet Orange"
+  },
+  "home": {
+    "title": "Willkommen im iSupply-Shop!",
+    "subtitle": "Erfahren Sie mehr über unsere Funktionen",
+    "description": "Dies ist ein Beispiel für eine mehrsprachige App mit React, Redux und i18next.",
+    "shop_by_cat": "Nach Kategorien einkaufen",
+    "phones": "Handys",
+    "tablets": "Tablets",
+    "accessories": "Zubehör",
+    "models": "Modelle"
+  },
+  "footer": {
+    "copyright": "© 2025 Ihr Unternehmen. Alle Rechte vorbehalten.",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "termsOfService": "Nutzungsbedingungen",
+    "contacts": "Kontakt",
+    "rights": "Rechtliche Hinweise",
+    "back_to_top": "Nach oben"
+  },
+  "form": {
+    "name": "Name",
+    "email": "E-Mail",
+    "message": "Nachricht",
+    "submit": "Senden"
+  },
+  "recommended": {
+    "brand_new_models": "Neueste Modelle",
+    "hot_prices": "Heiße Angebote",
+    "may_like": "Das könnte Ihnen auch gefallen"
+  },
+  "specs": {
+    "screen": "Bildschirm",
+    "capacity": "Speicher",
+    "ram": "RAM",
+    "cpu": "Prozessor",
+    "select": "Auswählen",
+    "colors": "Verfügbare Farben",
+    "title": "Technische Daten",
+    "resolution": "Auflösung",
+    "built_memory": "Interner Speicher",
+    "camera": "Kamera",
+    "zoom": "Kamera-Zoom",
+    "cell": "Mobilfunkstandards",
+    "about": "Über das Produkt"
+  },
+  "btn": {
+    "in_cart": "Im Warenkorb",
+    "add_to_cart": "In den Warenkorb",
+    "checkout": "Zur Kasse"
+  },
+  "favorites": {
+    "fav_title": "Favoriten",
+    "items": "Artikel"
+  },
+  "cart": {
+    "cart": "Warenkorb",
+    "back": "Zurück",
+    "total_for": "Summe für"
+  },
+  "select": {
+    "sort": {
+      "title": "Sortieren nach",
+      "relevance": "Relevanz",
+      "price_low_high": "Preis: Aufsteigend",
+      "price_high_low": "Preis: Absteigend",
+      "discount_high_low": "Rabatt: Hoch bis Niedrig",
+      "discount_low_high": "Rabatt: Niedrig bis Hoch"
+    },
+    "perPage": {
+      "title": "Artikel pro Seite"
+    }
+  }
+}

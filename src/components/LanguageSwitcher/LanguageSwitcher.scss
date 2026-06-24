@@ -1,0 +1,41 @@
+@import '../../App.scss';
+
+.language-switcher {
+  display: inline-block;
+  text-align: center;
+  height: fit-content;
+
+  color: $color-secondary-grey;
+
+  &.theme1 {
+    color: $theme-dark-white;
+  }
+}
+
+.language-buttons {
+  margin-top: 8px;
+
+  &.theme1 {
+    & button {
+      color: $theme-dark-white;
+      border-color: $theme-dark-elements;
+
+      &:hover {
+        color: $theme-dark-accent;
+      }
+    }
+  }
+
+  & button {
+    @include font-small;
+    line-height: 18px;
+    color: $color-secondary-grey;
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid $color-elements;
+
+    &:hover {
+      color: $color-primary-black;
+      transition: color 0.3s ease-in-out;
+    }
+  }
+}

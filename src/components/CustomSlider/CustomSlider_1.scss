@@ -1,0 +1,134 @@
+$--tablet-width: 640px;
+
+.slider-demo {
+  margin: 0 auto 60px;
+  max-width: 1200px;
+  width: 100%; // Додано для обмеження ширини
+  overflow: hidden; // Запобігає виходу контенту за межі
+}
+
+.slider-wrapper {
+  display: block;
+  margin-bottom: 40px;
+  max-width: 100%; // Змінено з фіксованого значення
+  position: relative; // Додано для позиціонування стрілок
+  width: 100%;
+  overflow: hidden; // Запобігає виходу контенту за межі
+}
+
+.slider {
+  width: 100%;
+  max-width: 100%; // Обмеження ширини
+  aspect-ratio: 16/9; // Фіксоване співвідношення сторін
+  overflow: hidden;
+  background-color: #1a1a1a33;
+  border-radius: 8px;
+  margin: 0 auto; // Центрування
+
+  @media (min-width: $--tablet-width) {
+    max-width: 800px; // Фіксована максимальна ширина для планшетів
+  }
+}
+
+.slider__container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slider__slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slider__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgb(99, 99, 99);
+  background-color: rgba(255, 255, 255, 0.5);
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  z-index: 5;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: $--tablet-width) {
+    width: 30px;
+    height: 30px;
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.slider__arrow--left {
+  left: 10px;
+
+  @media (max-width: $--tablet-width) {
+    left: 5px;
+  }
+}
+
+.slider__arrow--right {
+  right: 10px;
+
+  @media (max-width: $--tablet-width) {
+    right: 5px;
+  }
+}
+
+.slider__pagination {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  z-index: 5;
+  width: 100%;
+  max-width: 100%;
+}
+
+.slider__bullet {
+  width: 24px;
+  height: 4px;
+  background-color: rgb(196, 196, 196);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  padding: 0;
+  border-radius: 2px;
+}
+
+.slider__bullet--active {
+  background-color: black;
+}
+
+.slider__content-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+.slider__image-container {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}

@@ -1,0 +1,35 @@
+@import '../../App.scss';
+
+.theme-selector {
+  color: $color-secondary-grey;
+
+  @media (max-width: calc($screen-tablet - 1px)) {
+      display: block;
+      margin-top: 22px;
+  }
+}
+
+.theme-select {
+  color: $color-secondary-grey;
+  outline: none;
+  transition: color 0.3s ease-in-out;
+
+  &.theme1 {
+    color: $theme-dark-white;
+    background-color: $theme-dark-black;
+
+    &:hover {
+      transition: color 0.3s ease-in-out;
+      color: $theme-dark-accent;
+    }
+  }
+
+  &:focus {
+    border: 1px solid $color-secondary-grey;
+  }
+
+  &-title {
+    &.theme1 {
+      color: $theme-dark-white}
+  }
+}

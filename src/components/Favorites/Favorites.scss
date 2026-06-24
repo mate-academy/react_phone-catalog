@@ -1,0 +1,132 @@
+@import '../../App.scss';
+
+.fav-container {
+  padding: 24px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  & .custom_h1 {
+    @include font-h1;
+    color: $color-primary-black;
+
+    @media (max-width: 639px) {
+      @include font-h1-mob;
+    }
+
+    &.theme1 {
+      color: $theme-dark-white;
+    }
+  }
+
+  &.theme0 {
+    background-color: #ffffff;
+  }
+
+  &.theme1 {
+    background-color: $theme-dark-black;
+  }
+
+  &.theme2 {
+    background-color: #ffffff00;
+  }
+
+  &.theme3 {
+    background-color: #ffffff00;
+  }
+
+  &.theme4 {
+    background-color: #ffffff00;
+  }
+}
+
+.fav--nav-legend, .fav-homeIcon {
+  display: flex;
+  align-items: center;
+}
+
+.arrow-right {
+  width: 16px;
+  color: $color-secondary-grey;
+  margin: 0 8px;
+}
+
+.fav-arrowright {
+  &.theme1 {
+    color: $theme-dark-icons;
+  }
+}
+
+.fav-homeIcon svg {
+  color: $color-primary-black;
+}
+
+.fav-homeIcon {
+  &.theme1 svg {
+    color: $theme-dark-white;
+  }
+}
+
+.fav--link-legend {
+  display: inline;
+  @include font-small;
+  color: $color-secondary-grey;
+  line-height: 16px;
+  text-transform: capitalize;
+
+  &.theme1 {
+    color: $theme-dark-secondary;
+  }
+}
+
+.fav--items-counter {
+  @include font-body;
+  color: $color-secondary-grey;
+  margin-bottom: 32px;
+
+  &.theme1 {
+    color: $theme-dark-secondary;
+  }
+}
+
+.fav-itemCard {
+  border: 1px solid $color-elements;
+  margin-bottom: 40px;
+}
+
+.fav_card {
+  width: 100%;
+  margin-bottom: 40px;
+
+  @media (max-width: 639px) {
+    height: max-content;
+  }
+}
+
+.fav__itemImage img {
+    height: 200px;
+    display: flex;
+    justify-self: center;
+}
+
+.fav__items-wrapper {
+  display: grid;
+  gap: 16px;
+  grid-auto-rows: auto;
+  margin: 0 auto;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 920px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.fav__buttons {
+  position: inherit;
+}

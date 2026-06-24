@@ -1,0 +1,176 @@
+@import '../../App.scss';
+
+#root {
+  background-color: $color-white;
+  overflow-x: hidden;
+
+  &.theme0 {
+    & .filledHeartSVG {
+      color: $color-heart-red;
+    }
+  }
+
+  &.theme1 {
+    background-color: $theme-dark-black;
+
+    & .filledHeartSVG {
+      color: $color-heart-red;
+    }
+  }
+
+  &.theme2,&.theme3,&.theme4 {
+    background-color: $color-hover-BG;
+  }
+
+  &.theme2 {
+    & .filledHeartSVG {
+      color: $color-heart-pink;
+    }
+  }
+
+  &.theme3 {
+    & .filledHeartSVG {
+      color: $theme-purple-secondary-accent;
+    }
+  }
+
+  &.theme4 {
+    & .filledHeartSVG {
+      color: $theme-orange-secondary-accent;
+    }
+  }
+}
+
+.link, .link:visited, .link:hover, link:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.home-main {
+  height: 100%;
+  padding-bottom: 1px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 1199px) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.home__title-greeting {
+  margin: 16px 24px;
+  @include font-h1;
+  color: $color-primary-black;
+  letter-spacing: 0;
+
+  &.theme1 {
+    color: $theme-dark-white;
+  }
+
+  @media (min-width: 1200px) {
+    margin-top: 56px;
+    margin-bottom: 56px;
+  }
+
+
+}
+
+.home__subtitle {
+  margin-bottom: 24px;
+  color: $color-primary-black;
+  @include font-h2-mob;
+
+  @media (min-width: 640px) {
+    @include font-h2;
+  }
+
+  &.theme1 {
+    color: $theme-dark-white;
+  }
+}
+
+.home__shop-container {
+  margin: 56px auto;
+  max-width: 1136px;
+}
+
+.home__shop-categories {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  margin: 0 auto;
+
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+  }
+}
+
+.home__card-desc {
+  margin-top: 24px;
+  margin-bottom: 32px;
+
+  &-title {
+    @include font-h3-mob;
+    color: $color-primary-black;
+
+    &.theme1 {
+      color: $theme-dark-white;
+    }
+  }
+
+  &-qty {
+    @include font-body;
+    color: $color-secondary-grey;
+
+    &.theme1 {
+      color: $theme-dark-secondary;
+    }
+  }
+}
+
+.home__shop_card {
+  flex: 1;
+  transition: transform 0.3s ease-in-out;
+
+  & img {
+      width: 155%;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.home__image-container {
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background-color: grey;
+
+  &.home__phones-banner {
+    & img {
+      transform: translateX(-6%);
+    } // to align left border
+  }
+
+  &.theme2, &.theme3, &.theme4 {
+    border-radius: 8px;
+  }
+}
+
+.home__accessories_banner {
+  & img {
+    width: 190%;
+    transform: translateX(4%) translateY(14%);
+  }
+}
+
+.home__bottom-margin {
+  margin-bottom: 64px;
+
+  @media (min-width: 1200px) {
+    margin-bottom: 80px;
+  }
+}

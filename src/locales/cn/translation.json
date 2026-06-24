@@ -1,0 +1,98 @@
+{
+  "welcomeMessage": "欢迎使用我们的应用程序",
+  "languageSelector": "选择你的语言",
+  "navigation": {
+    "logo": "LOGO",
+    "home": "首页",
+    "phones": "智能手机",
+    "tablets": "平板电脑",
+    "accessories": "配件",
+    "favorites": "收藏夹",
+    "cart": "购物车",
+    "about": "关于我们",
+    "contact": "联系我们",
+    "services": "服务",
+    "search_placeholder": "搜索",
+    "foundforKeyWord": "在搜索结果中找到",
+    "searchRes": "搜索结果"
+  },
+  "theme": {
+    "title": "选择主题",
+    "theme0": "原始",
+    "theme1": "原始深色",
+    "theme2": "圆角蓝色",
+    "theme3": "圆角紫色",
+    "theme4": "圆角橙色"
+  },
+  "home": {
+    "title": "欢迎来到 iSupply 商店！",
+    "subtitle": "了解我们的功能",
+    "description": "这是一个使用 React、Redux 和 i18next 构建的多语言应用示例。",
+    "shop_by_cat": "按类别购物",
+    "phones": "移动电话",
+    "tablets": "平板电脑",
+    "accessories": "配件",
+    "models": "型号"
+  },
+  "footer": {
+    "copyright": "© 2025 您的公司。保留所有权利。",
+    "privacyPolicy": "隐私政策",
+    "termsOfService": "服务条款",
+    "contacts": "联系方式",
+    "rights": "法律信息",
+    "back_to_top": "返回顶部"
+  },
+  "form": {
+    "name": "姓名",
+    "email": "电子邮件",
+    "message": "留言",
+    "submit": "提交"
+  },
+  "recommended": {
+    "brand_new_models": "最新型号",
+    "hot_prices": "热销优惠",
+    "may_like": "你可能也喜欢"
+  },
+  "specs": {
+    "screen": "屏幕",
+    "capacity": "存储容量",
+    "ram": "内存",
+    "cpu": "处理器",
+    "select": "选择",
+    "colors": "可选颜色",
+    "title": "技术规格",
+    "resolution": "分辨率",
+    "built_memory": "内置存储",
+    "camera": "相机",
+    "zoom": "相机变焦",
+    "cell": "网络标准",
+    "about": "关于产品"
+  },
+  "btn": {
+    "in_cart": "已加入购物车",
+    "add_to_cart": "添加到购物车",
+    "checkout": "结账"
+  },
+  "favorites": {
+    "fav_title": "收藏夹",
+    "items": "商品"
+  },
+  "cart": {
+    "cart": "购物车",
+    "back": "返回",
+    "total_for": "总计"
+  },
+  "select": {
+    "sort": {
+      "title": "排序方式",
+      "relevance": "相关性",
+      "price_low_high": "价格：从低到高",
+      "price_high_low": "价格：从高到低",
+      "discount_high_low": "折扣：从高到低",
+      "discount_low_high": "折扣：从低到高"
+    },
+    "perPage": {
+      "title": "每页商品数"
+    }
+  }
+}
