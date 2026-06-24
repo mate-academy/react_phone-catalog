@@ -1,0 +1,39 @@
+@use '../../shared/styles/variables.scss' as *;
+
+.breadcrumbs {
+  padding-top: 12px;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 8px;
+    font-size: 12px;
+    padding: 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__icon,
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $card-contentColor;
+  }
+
+  &_active {
+    color: $card-contentColor;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+  }
+}

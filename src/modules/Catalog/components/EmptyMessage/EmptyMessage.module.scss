@@ -1,0 +1,22 @@
+@use '../../../../shared/styles/variables.scss' as *;
+
+.empty {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 18px;
+  color: $menu-color !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  .image {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.emptyText {
+  color: $menu-color;
+}

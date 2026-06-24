@@ -1,0 +1,22 @@
+@use '../../../../shared/styles/variables.scss' as *;
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.content {
+  width: 48px;
+  height: 48px;
+  border: 5px solid $menu-color;
+  border-top-color: $slider-backColor;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
