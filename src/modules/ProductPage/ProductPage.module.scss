@@ -1,0 +1,129 @@
+@import '/src/styles/mixins.module';
+@import '/src/styles/typography';
+
+.product-page {
+  @include content-padding-inline;
+
+  &__wrapper {
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__title {
+    @extend %h2-style;
+  }
+
+  &__quantity {
+    @extend %quantity-style;
+  }
+
+  &__filters {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    margin-top: 32px;
+
+
+
+    @include on-tablet {
+      margin-top: 40px;
+
+      @include page-grid;
+    }
+  }
+
+  &__sort-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    &__name {
+      color: $main-gray;
+      font-size: 12px;
+      line-height: 100%;
+    }
+
+    &:last-child {
+      grid-column: span 3;
+    }
+  }
+
+  &__dropdown {
+    display: flex;
+    flex-direction: column;
+
+    &__trigger {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      width: 100%;
+      height: 40px;
+      padding-inline: 12px;
+      background-color: $main-white;
+      border: 1px solid $others-gray;
+      cursor: pointer;
+
+      font-family: Mont, sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+
+      &__icon {
+        display: block;
+        width: 12px;
+        height: 12px;
+      }
+
+      &:hover {
+        border: 1px solid $main-gray;
+      }
+    }
+
+    &__list {
+      position: absolute;
+      width: 100%;
+      border: 1px solid $secondary-gray;
+      background-color: $main-white;
+      top: 100%;
+      margin-top: 4px;
+      z-index: 2;
+    }
+
+    &__item {
+      color: $main-gray;
+      font-size: 14px;
+      line-height: 21px;
+      padding: 6px 12px;
+      cursor: pointer;
+
+      &:hover {
+        color: $main-black;
+        background-color: #FAFBFC;
+      }
+    }
+  }
+
+  &__error-message {
+    margin-top: 30px;
+
+    &__text {
+      text-align: center;
+    }
+
+    &__image {
+      object-fit: contain;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

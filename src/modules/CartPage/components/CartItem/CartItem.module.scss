@@ -1,0 +1,136 @@
+@import '/src/styles/vars';
+@import '/src/styles/typography';
+
+.cart-item {
+  border: 1px solid $secondary-gray;
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  @include on-tablet {
+    gap: 24px;
+    padding: 24px;
+  }
+
+
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &__info {
+      gap: 16px;
+      justify-content: space-between;
+
+      @include on-tablet {
+        gap: 24px;
+      }
+    }
+
+    &__price {
+      justify-content: space-between;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &__quantity {
+      display: flex;justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__button {
+    display: block;
+    background-color: $main-white;
+    border: 1px solid $others-gray;
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transition: border $effect-duration;
+
+    &--delete {
+      width: 16px;
+      height: 16px;
+      background-image: url('/react_phone-catalog/img/icons/close.svg');
+      border: none;
+    }
+
+    &--decrease {
+      background-image: url('/react_phone-catalog/img/icons/minus.svg');
+
+      &--disabled {
+        background-image: url('/react_phone-catalog/img/icons/minus-disabled.svg');
+        border: 1px solid $secondary-gray;
+        cursor: default;
+      }
+
+      &:not(&--disabled) {
+        &:hover {
+          border: 1px solid $main-black;
+        }
+      }
+    }
+
+    &--increase {
+      background-image: url('/react_phone-catalog/img/icons/plus.svg');
+
+      &:not(&--disabled) {
+        &:hover {
+          border: 1px solid $main-black;
+        }
+      }
+    }
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    transition: transform $effect-duration;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__name {
+    color: $main-black;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    width: 100%;
+  }
+
+  &__link {
+    width: 128px;
+
+    @include on-tablet {
+      width: 176px;
+    }
+
+    @include on-desktop {
+      width: 336px;
+    }
+  }
+
+  &__price {
+    @extend %price-style;
+
+    align-self: center;
+    margin-left: auto;
+  }
+}
