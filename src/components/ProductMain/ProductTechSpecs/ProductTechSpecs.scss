@@ -1,0 +1,47 @@
+.product-info__tech-specs {
+ grid-column: 1 / -1;
+
+  @media (min-width: 640px) {
+    grid-column: 7 / -1;
+  }
+
+  @media (min-width: 1200px) {
+    grid-column: 14 / -1;
+  }
+}
+
+.product-info__tech-specs--title {
+padding-bottom: 16px;
+border-color: 1px solid;
+border-bottom: 1px solid #E2E6E9;
+
+font-family: Mont, sans-serif;
+font-size: 22px;
+font-weight: 800;
+line-height: 140%;
+}
+
+.product-info__tech-specs--section {
+   display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 16px;
+  align-items: center;
+}
+
+.product-info__tech-spec--label {
+font-family: Mont, sans-serif;
+font-size: 14px;
+font-weight: 500;
+line-height: 150%;
+color: #B4BDC3;
+}
+
+
+
+.product-info__tech-spec--value {
+font-family: Mont, sans-serif;
+font-size: 14px;
+font-weight: 500;
+line-height: 150%;
+text-align: right;
+}

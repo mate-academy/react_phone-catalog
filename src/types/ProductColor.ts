@@ -1,0 +1,17 @@
+export type ProductColor =
+  | 'black'
+  | 'green'
+  | 'yellow'
+  | 'white'
+  | 'purple'
+  | 'red'
+  | 'spacegray'
+  | 'silver'
+  | 'gold'
+  | 'spaceblack'
+  | 'sierrablue'
+  | 'graphite'
+  | 'midnight'
+  | 'coral'
+  | 'starlight'
+  | 'skyblue';

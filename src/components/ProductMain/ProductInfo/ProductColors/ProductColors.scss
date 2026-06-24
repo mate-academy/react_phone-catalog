@@ -1,0 +1,113 @@
+.product-info__color-list {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid #e2e6e9;
+}
+
+.prduct-info__color--title {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #B4BDC3;
+}
+
+.product-info__color {
+  cursor: pointer;
+
+  width: 35px;
+  height: 35px;
+  margin-bottom: 24px;
+  padding: 1px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+
+  background-clip: content-box;
+
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.product-info__color.active {
+  transform: scale(1.1);
+  border-color: black;
+}
+
+.product-info__color--silver {
+  background-color: #f2f2f7;
+}
+
+.product-info__color--space-gray {
+  background-color: #4a4a4a;
+}
+
+.product-info__color--gold {
+ background-color: #f5e1c0;
+}
+
+.product-info__color--spaceblack {
+  background-color: #2c2c2e;
+}
+
+.product-info__color--purple {
+  background-color: #b8a9f3;
+}
+
+.product-info__color--yellow {
+  background-color: #ffe680;
+}
+
+.product-info__color--sierra-blue {
+  background-color: #a7c7e7;
+}
+
+.product-info__color--graphite {
+  background-color: #3a3a3c;
+}
+
+.product-info__color--white {
+  border: 1px solid #d2d2d7;
+  background-color: #f9f9f9;
+}
+
+.product-info__color--midnight {
+  background-color: #1a1a2e;
+}
+
+.product-info__color--green {
+  background-color: #5f8f6f;
+}
+
+.product-info__color--red {
+  background-color: #c62828;
+}
+
+.product-info__color--coral {
+  background-color: coral;
+}
+
+.product-info__color--rosegold {
+  background-color: #b76e79;
+}
+
+.product-info__color--pink {
+  background-color: pink;
+}
+
+.product-info__color--starlight {
+  background-color: #f5f5f7;
+}
+
+.product-info__color--skyblue {
+  background-color: skyblue;
+}
+
+.product-info__color--black {
+  background-color: black;
+}
+
+.product-info__color--spacegray{
+  background-color: #4A4A4A;
+}
+
+.product-info__color--blue {
+  background-color: #1e3a8a;
+}

@@ -1,0 +1,41 @@
+.category__banner {
+  width: 100%;
+  transition: transform 0.3s ease;
+};
+
+.category__banner:hover {
+  transform: scale(1.01);
+}
+
+.category__text {
+font-family: Mont, sans-serif;
+font-size: 20px;
+font-weight: 600;
+line-height: 117%;
+color: black;
+letter-spacing: -0.01em;
+};
+
+.category__count {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 150%;
+  color: #e2e6e9;
+};
+
+.category__image-wrapper {
+ width: 187px;
+ height: 187px;
+
+ @media (min-width: 640px) {
+   width: 288px;
+  height: 288px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 368px;
+    height: 368px;
+  }
+
+}

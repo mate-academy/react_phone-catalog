@@ -1,0 +1,55 @@
+.terms-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-inline: 24px;
+}
+
+.terms-page__title {
+  margin-bottom: 24px;
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.terms-page__container--text {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 16px;
+  width: 100%;
+
+  @media (min-width: 640px) {
+    column-gap: 16px;
+  }
+
+  @media (min-width: 1200px) {
+    column-gap: 24px;
+  }
+}
+
+.terms-page__title--paragraph {
+  margin-bottom: 16px;
+
+  font-family: Mont, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 100%;
+  color: black;
+}
+
+.terms-page__paragraph {
+  grid-column: span 12;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #89939A;
+
+  @media (min-width: 640px) {
+    grid-column: span 6;
+  }
+
+  @media (min-width: 1200px) {
+    grid-column: span 6;
+  }
+}

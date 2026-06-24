@@ -1,0 +1,71 @@
+.catalog__sliders {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.catalog__slider--left--icon,
+.catalog__slider--right--icon {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e2e6e9;
+
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+}
+
+.catalog__slider--left--icon {
+  background-image: url('/public/img/icons/icon--slider--left.svg');
+}
+
+.catalog__slider--left--icon:hover {
+  border: 1px solid black;
+}
+
+.catalog__slider--right--icon {
+  background-image: url('/public/img/icons/icon--slider--right.svg');
+}
+
+.catalog__slider--right--icon:hover {
+  border: 1px solid black;
+}
+
+.catalog__slider--number {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e2e6e9;
+
+font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 150%;
+  color: black;
+  text-decoration: none;
+
+  background-color: white;
+}
+
+.catalog__slider--number:hover {
+  border: 1px solid black;
+}
+
+.catalog__slider--number--active {
+  border: 1px solid black;
+  color: white;
+  background-color: black;
+}

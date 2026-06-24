@@ -1,0 +1,152 @@
+.catalog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin-top: 24px;
+  margin-bottom: 64px;
+  padding-inline: 16px;
+
+  @media (min-width: 640px) {
+    margin-top: 24px;
+    margin-bottom: 80px;
+    padding-inline: 24px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-top: 24px;
+    margin-bottom: 80px;
+    padding-inline: 152px;
+  }
+}
+
+.catalog__top--icons {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.catalog__icon--home {
+  width: 16px;
+  height: 16px;
+
+  background-image: url('../../../../public/img/icons/icon--home.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.catalog__icon--slider--right--gray {
+  width: 16px;
+  height: 16px;
+
+  background-image: url('/public/img/icons/icon--slider--right--gray.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.catalog__top--text {
+  margin: 0;
+
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #b4bdc3;
+}
+
+.catalog__models--counter {
+font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 150%;
+  color: #e2e6e9;
+}
+
+.catalog__sliders {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.catalog__sorts {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+
+  margin-bottom: 24px;
+
+  @media (min-width: 640px) {
+    justify-content: flex-start;
+  }
+
+  @media (min-width: 1200px) {
+    justify-content: flex-start;
+  }
+}
+
+.catalog__sort {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.catalog__sort--1 {
+  width: 50%;
+
+  @media (min-width: 640px) {
+    width: 187px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 187px;
+  }
+}
+
+.catalog__sort--2 {
+  width: 50%;
+
+  @media (min-width: 640px) {
+    width: 128px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 128px;
+  }
+}
+
+.catalog__title--sort {
+  color: #e2e6e9;
+}
+
+.catalog__sort label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #e2e6e9;
+}
+
+.catalog__select {
+  cursor: pointer;
+
+  position: relative;
+
+  width: 100%;
+  border: 1px solid #e2e6e9;
+
+  font-size: 18px;
+
+  appearance: none;
+  background-color: white;
+
+  @media (min-width: 640px) {
+    width: 187px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 187px;
+  }
+}

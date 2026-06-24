@@ -1,0 +1,108 @@
+.basket-card,
+.basket-card__left,
+.basket-card__right {
+  box-sizing: border-box;
+}
+
+.basket-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding-block: 16px;
+  padding-inline: 16px;
+  border: 1px solid #e2e6e9;
+  border-radius: 10px;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    padding-block: 24px;
+    padding-inline: 24px;
+
+  }
+
+  @media (min-width: 1200px) {
+    flex-direction: row;
+    padding-block: 24px;
+    padding-inline: 24px;
+  }
+}
+
+.basket-card:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.basket-card__left {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.basket-card__left,
+.basket-card__right {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.basket-card__button--delete {
+  cursor: pointer;
+
+  width: 16px;
+  height: 16px;
+  border: none;
+
+  background-color: white;
+  background-image: url('/public/img/icons/icon--close.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.basket-card__image {
+  box-sizing: border-box;
+  width: 80px;
+  height: 80px;
+  padding: 7px;
+}
+
+.basket-card__name {
+  width: 100%;
+
+font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 150%;
+  color: black;
+  text-decoration: none;
+}
+
+.basket-card__right {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+
+  width: 100%;
+
+  @media (min-width: 640px) {
+    justify-content: flex-end;
+    width: 50%;
+  }
+
+  @media (min-width: 1200px) {
+    justify-content: flex-end;
+    width: 50%;
+  }
+}
+
+.basket-card__price {
+   width: 50%;
+
+font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  color: black;
+  text-align: right;
+}

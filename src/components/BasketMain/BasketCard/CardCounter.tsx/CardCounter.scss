@@ -1,0 +1,85 @@
+.basket-card__counter {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+
+  width: 50%;
+
+  text-align: left;
+}
+
+.basket-card__counter--decrease {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  border: 1px solid black;
+  border-radius: 5px;
+
+  color: black;
+
+  background-color: white;
+  background-image: url('/public/img/icons/icon--minus.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.basket-card__counter--decrease.active {
+  border: 1px solid #e2e6e9;
+  color: #e2e6e9;
+}
+
+.basket-card__counter--increase {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  border: 1px solid #e2e6e9;
+  border-radius: 5px;
+
+  color: #e2e6e9;
+
+  background-color: white;
+  background-image: url('/public/img/icons/icon--plus.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.basket-card__counter--increase:hover {
+  border: 1px solid black;
+  color: black;
+}
+
+.basket-card__counter--value {
+  cursor: pointer;
+
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+
+font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 150%;
+  color: black;
+}
+

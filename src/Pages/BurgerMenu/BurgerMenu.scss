@@ -1,0 +1,147 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  height: 100vh;
+
+  font-weight: 600;
+  text-transform: uppercase;
+
+  background-color: white;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-block: 24px;
+  padding-inline: 20px;
+  border-bottom: 1px solid #e2e6e9;
+
+  @media (min-width: 640px) {
+    padding-block: 36px;
+  }
+}
+
+.page__menu {
+  pointer-events: none;
+
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  transform: translateX(-100%);
+
+  opacity: 0;
+
+  transition: all 0.3s;
+}
+
+.page__menu.active {
+  pointer-events: auto;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.top-bar__logo {
+  width: 64px;
+  height: 22px;
+  transition: transform 0.3s ease;
+}
+
+.top-bar__logo:hover {
+  transform: scale(1.2);
+}
+
+.top-bar__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+}
+
+.icon--close {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+
+  background-color: white;
+  background-image: url('/public/img/icons/icon--close.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;
+
+  @media (min-width: 640px) {
+    display: none;
+  }
+
+  @media (min-width: 1200px) {
+    display: none;
+  }
+}
+
+.menu__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.menu__item {
+  list-style: none;
+}
+
+.menu__link {
+  position: relative;
+
+  display: inline-block;
+
+font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 92%;
+  color: #e2e6e9;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  transition: color 0.3s;
+}
+
+.menu__link::after {
+  content: '';
+
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+
+  opacity: 0;
+  background-color: black;
+
+  transition: opacity 0.2s ease;
+}
+
+.menu__link:hover {
+  color: black;
+}
+
+.menu__link:hover::after {
+  opacity: 1;
+}

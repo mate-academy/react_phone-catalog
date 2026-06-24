@@ -1,0 +1,35 @@
+.product-info__capacity-list {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  border-bottom: 1px solid #e2e6e9;
+}
+
+.product-info__capacity-item {
+  cursor: pointer;
+
+  margin-bottom: 24px;
+  padding: 7px 8px 4px;
+  border: 1px solid #ccc;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 150%;
+  color: black;
+
+  background: white;
+}
+
+.product-info__capacity-item.active {
+  border-color: black;
+  color: white;
+  background: black;
+}
+
+.product-info__capacity--title {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #B4BDC3;
+}

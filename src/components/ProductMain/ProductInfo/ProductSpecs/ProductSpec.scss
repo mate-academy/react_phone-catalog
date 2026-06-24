@@ -1,0 +1,21 @@
+.product-info__spec {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 16px;
+}
+
+.product-info__spec--label {
+font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 150%;
+  color: #B4BDC3;
+}
+
+.product-info__spec--value {
+font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 150%;
+  text-align: right;
+}
