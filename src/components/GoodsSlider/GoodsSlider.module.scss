@@ -1,0 +1,10 @@
+@use '../../styles/utils/variables.scss' as vars;
+
+.goods_slider__container {
+  gap: 16px;
+  justify-content: center;
+}
+
+.goods_slider__item {
+  max-width: fit-content;
+}

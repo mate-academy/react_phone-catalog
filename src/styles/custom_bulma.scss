@@ -1,0 +1,17 @@
+@use './utils/variables' as vars;
+
+/* stylelint-disable custom-property-pattern */
+
+@use 'bulma/sass' with (
+  $tablet: vars.$tablet,
+  $desktop: vars.$desktop,
+  $widescreen: vars.$widescreen
+);
+
+:root {
+  --bulma-body-color: #{vars.$gray-primary};
+  --bulma-navbar-burger-color: #{vars.$primary-text-color};
+  --bulma-navbar-link-color: #{vars.$primary-text-color};
+  --currentColor: #{vars.$primary-text-color};
+  --bulma-link: #{vars.$primary-text-color};
+}

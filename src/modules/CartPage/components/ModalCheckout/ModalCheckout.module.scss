@@ -1,0 +1,7 @@
+@use '../../../../styles/utils/variables.scss' as vars;
+
+.confirm_button {
+  border-radius: 8px;
+  color: vars.$primary-white-color;
+  background-color: vars.$accent-color;
+}

@@ -1,0 +1,12 @@
+@use './variables' as vars;
+
+@mixin smooth-transition(
+  $props: all,
+  $duration: vars.$animation-duration,
+  $timing: vars.$animation-timing
+) {
+  will-change: transform, opacity;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: #{$props} $duration $timing;
+}

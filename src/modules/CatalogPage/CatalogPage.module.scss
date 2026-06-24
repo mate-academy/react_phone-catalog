@@ -1,0 +1,10 @@
+@use '../../styles/utils/variables' as vars;
+
+.items_info {
+  margin-bottom: 40px;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: vars.$secondary-gray;
+}

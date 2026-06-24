@@ -1,1 +1,208 @@
-// not empty
+@use '../src/styles/utils/variables.scss' as vars;
+
+iframe {
+  display: none;
+}
+
+body {
+  font-family: Mont, sans-serif;
+}
+
+.styled_container {
+  background-color: vars.$hover-and-background-color;
+}
+
+.main {
+  overflow: auto;
+  min-height: calc(100vh - 140px);
+  margin: 0;
+}
+
+.main_container {
+  padding: 24px 16px 64px;
+
+  @media screen and (min-width: vars.$tablet) {
+    padding: 24px 24px 64px;
+  }
+
+  @media screen and (min-width: vars.$widescreen) {
+    padding: 24px 32px 80px;
+  }
+}
+
+@container bulma-fixed-grid (max-width: #{vars.$tablet - 1px - 32px}) {
+  .fixed-grid.has-1-cols-mobile > .grid {
+    --bulma-grid-column-count: 1;
+  }
+}
+
+@container bulma-fixed-grid (min-width: #{vars.$tablet - 48px}) {
+  .fixed-grid.has-2-cols-tablet > .grid {
+    --bulma-grid-column-count: 2;
+  }
+}
+
+@container bulma-fixed-grid (min-width: #{vars.$desktop - 48px}) {
+  .fixed-grid.has-3-cols-desktop > .grid {
+    --bulma-grid-column-count: 3;
+  }
+}
+
+@container bulma-fixed-grid (min-width: calc(1136px - 64px)) {
+  .fixed-grid.has-4-cols-widescreen > .grid {
+    --bulma-grid-column-count: 4;
+  }
+}
+
+@media screen and (min-width: vars.$tablet) {
+  .navbar-menu {
+    justify-content: space-around;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  .navbar-item,
+  .navbar-link {
+    display: flex;
+    align-items: center;
+  }
+  .navbar,
+  .navbar-end {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+}
+
+.columns {
+  margin-inline: 0;
+}
+
+@media screen and (max-width: 900px) {
+  .cart.columns {
+    display: block;
+  }
+}
+
+.column .card {
+  padding: 0 !important;
+
+  .card_image {
+    margin-top: 32px;
+  }
+
+  .card-content {
+    margin: 0 32px 32px;
+  }
+
+  & > .content {
+    margin: 0 10px 32px;
+  }
+}
+
+@media screen and (max-width: #{vars.$tablet - 1px}) {
+  .catalog .grid,
+  .favourites .grid {
+    justify-items: center;
+  }
+
+  .catalog .grid {
+    margin-bottom: 24px;
+  }
+  .pagination-previous {
+    order: 0;
+  }
+}
+
+@media screen and (min-width: vars.$tablet) {
+  .catalog .grid {
+    margin-bottom: 40px;
+  }
+  .pagination-previous {
+    order: 1;
+  }
+}
+
+.pagination-list {
+  margin-left: -10px;
+}
+
+.catalog .cell,
+.favourites .cell {
+  .card {
+    padding: 0 !important;
+
+    .card_image {
+      margin-top: 32px !important;
+    }
+
+    .card-content {
+      margin: 0 32px 32px;
+    }
+
+    & > .content {
+      margin: 0 12px 32px;
+    }
+  }
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+
+  font-size: 0.75rem;
+  color: white;
+
+  background: vars.$secondary-accent;
+}
+
+.icon {
+  position: relative;
+}
+
+.swiper-pagination.swiper-pagination-bullets {
+  position: relative !important;
+
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+
+  margin-top: 18px;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+  top: unset !important;
+  bottom: unset !important;
+}
+
+.swiper-pagination > .swiper-pagination-bullet {
+  width: 14px;
+  height: 4px;
+  border-radius: 0;
+
+  opacity: 1;
+  background-color: vars.$main-gray;
+
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination > .swiper-pagination-bullet-active {
+  background-color: vars.$primary-text-color;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 32px !important;
+  height: 32px !important;
+  color: vars.$secondary-accent !important;
+}

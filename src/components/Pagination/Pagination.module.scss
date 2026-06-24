@@ -1,0 +1,44 @@
+@use '../../styles/utils/variables' as vars;
+
+.current {
+  border: unset;
+  background-color: vars.$primary-text-color;
+}
+
+.pag_link {
+  width: 32px;
+  min-width: unset;
+  height: 32px;
+  border: 1px solid vars.$main-gray;
+}
+
+.relative_position {
+  font-size: 13px;
+
+  @media screen and (max-width: #{vars.$tablet - 1px}) {
+    top: -47px;
+    left: -10px;
+  }
+
+  @media screen and (min-width: vars.$tablet) {
+    top: -59px;
+    left: -6px;
+  }
+}
+
+.pagination_light_theme {
+  width: 32px;
+  min-width: unset;
+  height: 32px;
+  margin-right: 12px;
+
+  @media screen and (min-width: vars.$widescreen) {
+    order: 1;
+  }
+}
+
+.pagination_light_theme_next {
+  width: 32px;
+  min-width: unset;
+  height: 32px;
+}
