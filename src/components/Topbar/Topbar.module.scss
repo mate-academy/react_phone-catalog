@@ -1,0 +1,40 @@
+@use '../../styles/utils' as utils;
+
+.top-bar {
+  display: flex;
+  flex-grow: 1;
+  gap: 16px;
+  justify-content: space-between;
+  height: 48px;
+  position: relative;
+
+  &__button {
+    position: relative;
+    padding-inline: 16px;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid utils.$header-border;
+
+    @include utils.on-tablet {
+      display: none;
+    }
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 100vw;
+    background-color: utils.$header-border;
+    position: absolute;
+    bottom: 0;
+  }
+
+  @include utils.on-tablet {
+    flex-grow: 0;
+  }
+
+  @include utils.on-desktop {
+    height: 64px;
+  }
+}

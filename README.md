@@ -10,6 +10,9 @@ Implement the catalog with a shopping cart and favorites page according to one o
 
 You may also implement color theme switching!
 
+## Deploy
+- Replace `<your_account>` with your Github username in the [DEMO LINK](https://nikitachupahin.github.io/react_phone-catalog/) and add it to the PR description.
+
 ## If you work in a team
 
 Follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)

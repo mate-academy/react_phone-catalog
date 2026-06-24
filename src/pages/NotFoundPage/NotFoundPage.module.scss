@@ -1,0 +1,9 @@
+.page-not-found {
+  grid-column: 1 / -1;
+  justify-content: center;
+  text-align: center;
+
+  &__img {
+    width: 40%;
+  }
+}

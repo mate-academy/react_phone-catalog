@@ -1,0 +1,25 @@
+@use '../../styles/utils' as utils;
+
+.logo {
+  display: flex;
+  padding-inline: 16px;
+
+  &__picture {
+    display: flex;
+    align-items: center;
+  }
+
+  &__img {
+    height: 22px;
+
+    @include utils.hover(transform, scale(1.2));
+  }
+
+  @include utils.on-desktop {
+    padding-inline: 24px;
+
+    &__img {
+      height: 28px;
+    }
+  }
+}
