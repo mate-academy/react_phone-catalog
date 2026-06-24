@@ -1,0 +1,92 @@
+{
+  "nav": {
+    "home": "Головна",
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари",
+    "favourites": "Обране",
+    "cart": "Кошик",
+    "github": "Github",
+    "contacts": "Контакти",
+    "rights": "Права"
+  },
+  "search": {
+    "placeholder": "Пошук...",
+    "srLabel": "Пошук"
+  },
+  "components": {
+    "availableColors": "Доступні кольори",
+    "selectCapacity": "Оберіть пам'ять",
+    "shopByCategory": "Категорії товарів"
+  },
+  "home": {
+    "srTitle": "Каталог товарів",
+    "welcome": "Ласкаво просимо до Nice Gadgets!",
+    "brandNew": "Новинки",
+    "hotPrices": "Гарячі ціни"
+  },
+  "cart": {
+    "title": "Кошик",
+    "empty": "Ваш кошик порожній"
+  },
+  "favourites": {
+    "title": "Обране",
+    "empty": "В обраному нічого немає",
+    "itemCount": "{count, plural, one {# товар} few {# товари} many {# товарів} other {# товари}}",
+    "noResults": "Немає товарів, що відповідають запиту"
+  },
+  "products": {
+    "modelCount": "{count, plural, one {# модель} few {# моделі} many {# моделей} other {# моделі}}",
+    "sortLabel": "Сортування",
+    "perPageLabel": "На сторінці",
+    "noResults": "Немає товарів у категорії «{category}», що відповідають запиту",
+    "sortOptions": {
+      "newest": "Новіші",
+      "alphabetically": "За алфавітом",
+      "cheapest": "Дешевші"
+    },
+    "perPageOptions": {
+      "all": "Всі"
+    }
+  },
+  "productDetails": {
+    "addToCart": "Додати до кошика",
+    "addedToCart": "Додано до кошика",
+    "about": "Про товар",
+    "techSpecs": "Характеристики",
+    "youMayAlsoLike": "Вам також може сподобатись",
+    "specs": {
+      "screen": "Екран",
+      "resolution": "Роздільна здатність",
+      "processor": "Процесор",
+      "ram": "ОЗП",
+      "builtInMemory": "Вбудована пам'ять",
+      "camera": "Камера",
+      "zoom": "Зум",
+      "cell": "Стільниковий зв'язок"
+    },
+    "notFound": "Товар не знайдено"
+  },
+  "misc": {
+    "back": "Назад",
+    "backToTop": "Вгору",
+    "searchPlaceholder": "Пошук...",
+    "checkout": "Оформити замовлення",
+    "totalFor": "Разом за {count, plural, one {# товар} few {# товари} many {# товарів} other {# товари}}",
+    "pageNotFound": "Сторінку не знайдено",
+    "error": "Щось пішло не так",
+    "reload": "Оновити",
+    "goHome": "На головну"
+  },
+  "theme": {
+    "label": "Тема",
+    "light": "Світла",
+    "dark": "Темна",
+    "system": "Системна"
+  },
+  "language": {
+    "label": "Мова",
+    "en": "Англійська",
+    "uk": "Українська"
+  }
+}

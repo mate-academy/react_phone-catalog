@@ -1,0 +1,92 @@
+{
+  "nav": {
+    "home": "Home",
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "favourites": "Favourites",
+    "cart": "Cart",
+    "github": "Github",
+    "contacts": "Contacts",
+    "rights": "Rights"
+  },
+  "search": {
+    "placeholder": "Search...",
+    "srLabel": "Search"
+  },
+  "components": {
+    "availableColors": "Available colors",
+    "selectCapacity": "Select capacity",
+    "shopByCategory": "Shop by category"
+  },
+  "home": {
+    "srTitle": "Product Catalog",
+    "welcome": "Welcome to Nice Gadgets store!",
+    "brandNew": "Brand new models",
+    "hotPrices": "Hot prices"
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty"
+  },
+  "favourites": {
+    "title": "Favourites",
+    "empty": "Favourites is empty",
+    "itemCount": "{count, plural, one {# item} other {# items}}",
+    "noResults": "There are no products matching the query"
+  },
+  "products": {
+    "modelCount": "{count, plural, one {# model} other {# models}}",
+    "sortLabel": "Sort by",
+    "perPageLabel": "Items on page",
+    "noResults": "There are no {category} matching the query",
+    "sortOptions": {
+      "newest": "Newest",
+      "alphabetically": "Alphabetically",
+      "cheapest": "Cheapest"
+    },
+    "perPageOptions": {
+      "all": "All"
+    }
+  },
+  "productDetails": {
+    "addToCart": "Add to cart",
+    "addedToCart": "Added to cart",
+    "about": "About",
+    "techSpecs": "Tech specs",
+    "youMayAlsoLike": "You may also like",
+    "specs": {
+      "screen": "Screen",
+      "resolution": "Resolution",
+      "processor": "Processor",
+      "ram": "RAM",
+      "builtInMemory": "Built in memory",
+      "camera": "Camera",
+      "zoom": "Zoom",
+      "cell": "Cell"
+    },
+    "notFound": "Product not found"
+  },
+  "misc": {
+    "back": "Back",
+    "backToTop": "Back to top",
+    "searchPlaceholder": "Search...",
+    "checkout": "Checkout",
+    "totalFor": "Total for {count, plural, one {# item} other {# items}}",
+    "pageNotFound": "Page not found",
+    "error": "Something went wrong",
+    "reload": "Reload",
+    "goHome": "Go home"
+  },
+  "theme": {
+    "label": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "uk": "Ukrainian"
+  }
+}

@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+  /* --color-*: initial; */
+  --color-primary: #313237;
+  --color-secondary: #89939a;
+  --color-icons: #b4bdc3;
+  --color-elements: #e2e6e9;
+  --color-hover-bg: #fafbfc;
+  --color-hover-bs: #17203166;
+  --color-white: #fff;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --color-d-secondary: #75767f;
+  --color-d-icons: #4a4d58;
+  --color-d-elements: #3b3e4a;
+  --color-d-surface2: #323542;
+  --color-d-surface1: #161827;
+  --color-d-black: #0f1121;
+  --color-d-white: #f1f2f9;
+  --color-d-accent: #905bff;
+  --color-d-hover-bs: #a378ff;
+  --color-d-green: #27ae60;
+  --color-d-red: #eb5757;
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1440px;
+  --font-mont: 'Mont', sans-serif;
+  --shadow-inner: inset 0 0 0 1px;
+  --shadow-outer: 0 0 0 1px;
+  --shadow-top: 0 -1px 0 0;
+  --shadow-bottom: 0 1px 0 0;
+  --shadow-left: -1px 0 0 0;
+  --shadow-right: 1px 0 0 0;
+  --container-px-xs: calc(var(--spacing) * 4);
+  --container-px-sm: calc(var(--spacing) * 6);
+  --container-px-xl: calc(var(--spacing) * 8);
+  --header-height-xs: calc(var(--spacing) * 12);
+  --header-height-xl: calc(var(--spacing) * 16);
+}
+
+@layer base {
+  @font-face {
+    font-family: Mont;
+    font-weight: 400;
+    font-style: normal;
+    src: url('/fonts/Mont-Regular.otf') format('opentype');
+  }
+
+  @font-face {
+    font-family: Mont;
+    font-weight: 600;
+    font-style: normal;
+    src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  }
+
+  @font-face {
+    font-family: Mont;
+    font-weight: 700;
+    font-style: normal;
+    src: url('/fonts/Mont-Bold.otf') format('opentype');
+  }
+
+  html {
+    @apply font-mont text-primary dark:text-d-white scroll-smooth bg-white dark:bg-d-black;
+  }
+
+  button, a {
+    @apply hover:cursor-pointer;
+  }
+
+  button, a, input, textarea, select {
+    @apply outline-none;
+  }
+}
+
+@utility container {
+  @apply mx-auto w-full px-(--container-px-xs) max-w-300 sm:px-(--container-px-sm) sm:max-w-300 xl:px-(--container-px-xl) xl:max-w-300;
+}
+
+@utility pageGrid {
+  @apply grid grid-cols-4 gap-x-4 gap-y-10 sm:grid-cols-12 xl:grid-cols-24;
+}
+
+@utility text-h1 {
+  @apply font-bold text-[32px] leading-10.25 tracking-[-0.01em] sm:text-[48px] sm:leading-14;
+}
+
+@utility text-h2 {
+  @apply font-bold text-[22px] leading-7.75 tracking-[0] sm:text-[32px] sm:leading-10.25 sm:tracking-[-0.01em];
+}
+
+@utility text-h3 {
+  @apply font-semibold text-[20px] leading-6.5 tracking-[0] sm:font-bold sm:text-[22px] sm:leading-7.75;
+}
+
+@utility text-h4 {
+  @apply font-semibold text-[16px] leading-5 tracking-[0] sm:text-[20px] sm:leading-6.5;
+}
+
+@utility text-uppercase {
+  @apply font-bold uppercase text-[12px] leading-2.75 tracking-[0.04em];
+}
+
+@utility text-buttons {
+  @apply font-semibold text-[14px] leading-5.25;
+}
+
+@utility text-body {
+  @apply font-normal text-[14px] leading-5.25;
+}
+
+@utility text-small {
+  @apply font-semibold text-[12px] leading-3.75;
+}
