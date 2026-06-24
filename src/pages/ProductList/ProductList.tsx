@@ -1,21 +1,24 @@
 import { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import React from 'react';
 
 import { Products } from '../../types/Alltypes';
+import { Category } from '../../types/Alltypes';
 import { getData } from '../../fetch/httpClient';
-import styles from './Phones.module.scss';
+import styles from './ProductList.module.scss';
 import { ProductCarts } from '../../Functional/ProductCart/ProductCarts';
 import { getSearchWith } from '../../getSearchWith';
 
 type Props = {
-  phone?: Products[];
+  product?: Products[];
+  title?: boolean;
 };
 
-export const Phones: React.FC<Props> = () => {
+export const ProductList: React.FC<Props> = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { category } = useParams<{ category: string }>();
 
-  const [phones, setPhones] = useState<Products[]>([]);
+  const [item, setItem] = useState<Products[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -23,7 +26,7 @@ export const Phones: React.FC<Props> = () => {
   const page = +(searchParams.get('page') || 1);
   const perPageParam = searchParams.get('perPage') || 'all';
 
-  const perPage = perPageParam === 'all' ? phones.length : +perPageParam;
+  const perPage = perPageParam === 'all' ? item.length : +perPageParam;
 
   // slice //
   const startIndex = (page - 1) * perPage;
@@ -48,7 +51,7 @@ export const Phones: React.FC<Props> = () => {
   }
 
   const getSortedPhones = () => {
-    const sorted = [...phones];
+    const sorted = [...item];
 
     switch (sortType) {
       case 'age':
@@ -69,11 +72,11 @@ export const Phones: React.FC<Props> = () => {
   useEffect(() => {
     getData<Products[]>('./api/products.json')
       .then(data =>
-        setPhones(data.filter(phone => phone.category === 'phones')),
+        setItem(data.filter(product => product.category === category)),
       )
       .catch(() => setError('Something went wrong'))
       .finally(() => setLoading(false));
-  }, []);
+  }, [category, item.length, perPageParam, sortType, page, searchParams]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -98,8 +101,8 @@ export const Phones: React.FC<Props> = () => {
       </Link>
 
       <div className={styles.phonesProduct}>
-        <h1 className={styles.title}>Mobile phones</h1>
-        <p className={styles.phonesModels}>{phones.length} Models</p>
+        <h1 className={styles.name}>{category}</h1>
+        <p className={styles.phonesModels}>{item.length} Models</p>
       </div>
 
       <div className={styles.dropdown}>

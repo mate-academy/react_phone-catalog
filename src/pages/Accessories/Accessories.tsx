@@ -11,6 +11,6 @@ export const Accessories = () => (
         <span className={styles.homeGoTo}>Accessories</span>
       </button>
     </Link>
-    <h1 className="title">Acccessories</h1>
+    <h1 className={styles.title}>Acccessories</h1>
   </div>
 );

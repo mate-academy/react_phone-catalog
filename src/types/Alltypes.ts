@@ -14,18 +14,17 @@ export type Products = {
 };
 
 export type FullProduct = {
-  year: number;
   id: string;
   category: string;
   namespaceId: string;
   name: string;
-  capacityAvailable: string;
+  capacityAvailable: string[];
   capacity: string;
   priceRegular: number;
   priceDiscount: number;
-  colorsAvailable: string;
+  colorsAvailable: string[];
   color: string;
-  images: string;
+  images: string[];
   description?: {
     title: string;
     text: string[];
