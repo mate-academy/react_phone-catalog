@@ -1,0 +1,142 @@
+.product {
+  display: flex;
+  flex-direction: column;
+  height: 440px;
+  width: 100%;
+  box-sizing: border-box;
+
+  border: 1px solid color(gray-secondary);
+  padding: 32px;
+  gap: 8px;
+
+  @include on-tablet {
+    height: 506px;
+  }
+
+  &--all {
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @media (min-width: 768px) {
+      grid-column: span 4;
+    }
+
+    @include on-desctopmin {
+      grid-column: span 6;
+    }
+  }
+
+
+  &__image {
+    overflow: hidden;
+    flex: 1 1 auto;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &__link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    &--phone{
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__title {
+    color: color(gray-primary);
+    padding-top: 16px;
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid color(gray-elements);
+
+    &--sale {
+      color: color(gray-primary);
+    }
+
+    &--fullprice{
+      text-decoration: line-through;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-block: 8px;
+
+
+    &__section {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &--key {
+      &__pageDetail {
+        padding-top: 32px;
+        padding-bottom: 16px;
+      }
+    }
+
+    &--value {
+      color: color(gray-primary);
+    }
+
+    &__title {
+      padding-bottom: 16px;
+      border-bottom: 1px solid color(gray-elements);
+    }
+  }
+
+  &__button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 8px;
+
+    &--cart {
+      width: 100%;
+    }
+
+    &__name {
+      color: color(white);
+      margin: 0;
+      text-align: center;
+      white-space: nowrap;
+      font-size: 12px;
+      line-height: 15px;
+
+      &--active {
+        color: color(green);
+        margin: 0;
+        text-align: center;
+        white-space: nowrap;
+        font-size: 12px;
+        line-height: 15px;
+      }
+
+      @include on-tablet {
+        font-size: 14px;
+        line-height: 21px;
+      }
+    }
+  }
+}

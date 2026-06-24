@@ -1,0 +1,83 @@
+.page {
+  &__top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 16px;
+    gap: 8px;
+    margin-block: 24px;
+
+    &--title {
+      color: color(gray-primary);
+      cursor: pointer;
+    }
+  }
+
+  &__title {
+    color: color(gray-primary);
+    padding-bottom: 8px;
+
+    &__PageDetail {
+      padding-bottom: 32px;
+
+      @include on-tablet {
+      padding-bottom: 40px;
+      }
+    }
+  }
+
+
+  &__back {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    padding-bottom: 16px;
+
+    &--arrow {
+      height: 16px;
+      width: 16px;
+      cursor: pointer;
+    }
+
+    &--title {
+      cursor: pointer;
+    }
+  }
+
+  &-favourites {
+    padding-bottom: 56px;
+
+    @include on-tablet {
+      padding-bottom: 64px;
+    }
+
+    @include on-desctopmin {
+      padding-bottom: 80px;
+    }
+  }
+
+  &__notFound {
+    padding-block: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    @include content-padding-inline;
+  }
+
+    &__amount {
+    padding-bottom: 32px;
+
+    @include on-tablet {
+      padding-bottom: 40px;
+    }
+  }
+
+  &__content {
+    @include page-grid;
+
+      row-gap: 40px;
+    }
+}

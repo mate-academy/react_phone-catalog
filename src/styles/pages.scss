@@ -1,0 +1,11 @@
+.page {
+  background-color: white;
+
+  @include content-padding-inline;
+}
+
+.title {
+  color: color(gray-primary);
+  padding: 0;
+  margin: 0;
+}

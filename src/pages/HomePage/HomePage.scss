@@ -1,0 +1,86 @@
+.home {
+  &__title {
+    color: color(gray-primary);
+    padding-block: 24px;
+
+    @include on-tablet {
+      padding-block: 32px;
+    }
+
+    @include on-desctopmin {
+      padding-block: 56px;
+    }
+  }
+
+  &__category {
+    display: flex;
+    flex-direction: column;
+    padding-inline: 16px;
+    padding-block: 56px;
+
+    @include on-tablet {
+      padding-inline: 24px;
+      padding-block: 64px;
+      flex-direction: row;
+      gap: 16px;
+    }
+
+    @include on-desctopmin {
+      padding-inline: 32px;
+      padding-block: 80px;
+    }
+
+    @include on-desctopmax {
+      padding-inline: 152px;
+    }
+
+    gap: 32px;
+
+    &__section {
+      flex: 1;
+
+      &--img {
+        overflow: hidden;
+        padding-bottom: 24px;
+        display: block;
+      }
+
+      &--title{
+        color: color(gray-primary);
+        padding-bottom: 4px;
+      }
+    }
+  }
+
+  &__section--img {
+    object-fit: cover;
+    height: 288px;
+    width: 100%;
+
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__new-models {
+    padding-bottom: 56px;
+
+    @include on-tablet {
+      padding-bottom: 64px;
+    }
+
+    @include on-desctopmin {
+      padding-bottom: 80px;
+    }
+  }
+}
+
+.hot-prices{
+  padding-bottom: 64px;
+
+  @include on-desctopmin {
+    padding-bottom: 80px;
+  }
+}

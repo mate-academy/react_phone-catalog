@@ -1,0 +1,94 @@
+.top-bar {
+  // @include onDesctopmin {
+  //   display: none;
+  // }
+
+  &-desctop {
+    display: none;
+
+    // @include onDesctopmin {
+    //   display: block;
+    //   justify-content: space-between;
+    //   margin-top: 40px;
+    //   margin-bottom: 81px;
+
+    //   &__top {
+    //     display: flex;
+    //     flex-direction: row;
+    //     gap: 12px;
+    //     align-items: center;
+    //   }
+
+    //   &__title {
+    //     color: $second-color;
+    //     line-height: 18px;
+    //     font-size: 14px;
+    //     font-weight: 400;
+    //     margin: 0;
+    //     text-transform: uppercase;
+    //   }
+    // }
+
+    &__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: left;
+      text-align: left;
+      gap: 40px;
+
+    }
+
+    &__link {
+      // color: $second-color;
+      text-decoration: none;
+      line-height: 27px;
+      font-size: 18px;
+      font-weight: 500;
+
+      &:hover {
+        color: black;
+        transition: 0.5s;
+      }
+    }
+  }
+
+  &__icons {
+    align-items: center;
+    border-image: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    // @include constentPaddingInline;
+
+    // &-header {
+    //   padding-top: 15px;
+    //   padding-bottom: 20px;
+
+    //   @include onTablet {
+    //     padding-top: 23px;
+    //     padding-bottom: 30px;
+    //   }
+    // }
+
+    // &-menu {
+    //   padding-top: 20px;
+
+    //   @include onTablet {
+    //     padding-top: 28px;
+    //   }
+    // }
+
+    // &-product-card {
+    //   padding-top: 15px;
+
+    //   @include onTablet {
+    //     padding-top: 20px;
+    //   }
+    // }
+  }
+}

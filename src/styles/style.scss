@@ -1,0 +1,63 @@
+@import '../utils/vars';
+@import '../utils/mixin';
+@import '../components/Header/Header';
+@import '../components/Navbar/Navbar';
+@import '../components/Footer/Footer';
+@import '../components/Slider/Slider';
+@import '../components/ProductCard/ProductCard';
+@import '../components/Sort/Sort';
+@import '../components/Pagination/Pagination';
+@import '../components/Loader/Loader';
+@import '../pages/HomePage/HomePage';
+@import '../pages/PhonesPage/PhonesPage';
+@import '../pages/ProductDetails/ProductDetailsPage';
+@import '../pages/CartPage/CartPage';
+@import '../pages/ContactsPage/ContactsPage';
+@import './top-bar';
+@import './icon';
+@import './logos';
+@import './pages';
+@import './fonts';
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+
+// #root {
+//   height: 100%;
+// }
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    flex: 1;
+  }
+}
+
+
+h1 {
+  color: color(gray-primary);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.container {
+  padding: 0;
+}

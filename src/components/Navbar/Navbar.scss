@@ -1,0 +1,82 @@
+.navbar {
+  &__container {
+  display: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex-direction: row;
+
+    @include on-tablet {
+      display: flex;
+      gap: 32px;
+    }
+
+    @include on-desctopmin {
+      display: flex;
+      gap: 64px;
+    }
+  }
+
+  &__menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin: 0;
+    padding: 24px 16px ;
+    list-style: none;
+
+    @include on-tablet {
+      display: none;
+    }
+
+    @include on-desctopmin {
+      display: none;
+    }
+  }
+
+  &__item {
+    position: relative;
+    color: color(gray-secondary);
+    text-decoration: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      height: 3px;
+      width: 100%;
+
+      background-color: color(gray-primary);
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+
+      @include on-tablet {
+        bottom: -11.5px;
+      }
+
+      @include on-desctopmin {
+        bottom: -19.5px;
+      }
+    }
+
+    &--active {
+      color: color(gray-primary);
+
+      &::after {
+        transform: scale(1);
+      }
+    }
+
+    &:hover {
+      color: color(gray-primary);
+
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+}
+

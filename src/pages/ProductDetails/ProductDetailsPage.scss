@@ -1,0 +1,266 @@
+.pageDetails {
+  &__top {
+    @include on-tablet {
+      @include page-grid;
+
+        row-gap: 16px;
+      }
+
+    &__img {
+      @include on-tablet {
+        grid-column: span 7
+      }
+
+
+      display: flex;
+      flex-direction: column;
+
+      @include on-tablet {
+        flex-direction: row;
+      }
+    }
+
+    &__section {
+      // grid-column: span 4;
+
+      @include on-tablet {
+        grid-column: span 5
+      }
+
+      @include on-desctopmin {
+        grid-column: 14/21;
+      }
+    }
+  }
+
+  &__img__container {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    // justify-content: space-between;
+
+    @include on-tablet {
+      grid-column: span 1;
+      display: flex;
+      flex-direction: column;
+      width: 35px;
+    }
+
+    @include on-desctopmin {
+      grid-column: 1/3;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+      width: 80px;
+      gap: 16px;
+    }
+  }
+
+  &__imges {
+    border: 1px solid color(gray-elements);
+    height: 100%;
+    width: 100%;
+          cursor: pointer;
+
+    @include on-tablet {
+      height: auto;
+      width: auto;
+    }
+
+    @include on-desctopmin {
+      grid-column: 1/3;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+      width: 80px;
+      gap: 16px;
+    }
+
+
+    &--t {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 49px;
+
+      // height: 100%;
+      width: 100%;
+      object-fit: contain;
+
+      @include on-desctopmin {
+        height: 80px;
+      }
+    }
+  }
+
+
+  &__main--img {
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    padding-bottom: 16px;
+
+    @include on-tablet {
+      grid-column: span 6
+    }
+
+    @include on-desctopmin {
+      grid-column: 3/13;
+    }
+  }
+
+  &__color {
+    border-bottom: 1px solid color(gray-elements);
+    padding-bottom: 24px;
+
+    &__container {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+
+      &--border {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border-radius: 50%;
+        height: 32px;
+        width: 32px;
+        border: 1px solid color(gray-elements);
+        cursor: pointer;
+
+    &--active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      border-radius: 50%;
+        height: 32px;
+        width: 32px;
+      border: 1px solid color(gray-primary);
+    }
+      }
+    }
+
+    &--title {
+      padding-bottom: 8px;
+      padding-top: 24px;
+
+      @include on-tablet {
+        padding-top: 0;
+      }
+    }
+  }
+
+  &__capacity {
+    &--title {
+      padding-bottom: 8px;
+      padding-top: 24px;
+    }
+
+    &__container {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      border-bottom: 1px solid color(gray-elements);
+      padding-bottom: 24px;
+
+      &--border {
+        padding: 7px 8px 4px;
+        border: 1px solid color(gray-primary);
+        cursor: pointer;
+
+       &--active {
+          background-color: color(gray-primary);
+          color: white;
+          cursor: auto;
+        }
+      }
+    }
+    &--option {
+      color: color(gray-primary);
+
+      &--active {
+        color: white;
+      }
+    }
+  }
+
+  &__priceBottom {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-block: 32px;
+
+    &--border {
+      border: 0;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    padding-block: 56px;
+
+    @include on-desctopmin {
+      @include page-grid;
+
+      row-gap: 16px;
+    }
+
+    &__section{
+      grid-column: 1/13;
+
+      &__second {
+        grid-column: 14/-1;
+      }
+    }
+  }
+
+  &__bottomInfo {
+    padding-top: 30px;
+  }
+}
+
+.selectedimg {
+  height: 288px;
+  width: 100%;
+  object-fit: contain;
+
+  @include on-desctopmin {
+    height: 464px;
+  }
+}
+
+.img {
+  &__mobile {
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__desctop {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+}
+
+.product {
+  &__info {
+    &__title {
+      color: color(gray-primary);
+    }
+    &--key {
+      &__pageDetail {
+        color: color(gray-primary);
+      }
+    }
+  }
+}

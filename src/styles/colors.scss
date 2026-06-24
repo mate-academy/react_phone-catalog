@@ -1,0 +1,52 @@
+$colors: (
+  gray-primary: #313237,
+  gray-secondary: #89939A,
+  gray-icons: #B4BDC3,
+  gray-elements: #E2E6E9,
+  gray-hover-bg: #FAFBFC,
+  white: #FFF,
+  green: #27AE60,
+  red: #EB5757,
+);
+
+@function color($name) {
+  @return map-get($colors, $name);
+}
+
+$product-colors: (
+  "black": #000,
+  "white": #fff,
+  "yellow": #ffd60a,
+  "green": #30d158,
+  "purple": #bf5af2,
+  "red": #ff3b30,
+  "pink": #ff375f,
+  "blue": #007aff,
+
+  "silver": #c0c0c0,
+  "gold": #ffd700,
+  "graphite": #1d1d1f,
+  "spacegray": #8e8e93,
+  "space-gray": #8e8e93,
+  "midnight": #1c1c1e,
+  "midnightgreen": #004643,
+  "spaceblack": #000,
+  "rosegold": #b76e79,
+  "coral": #ff6f61,
+  "sierrablue": #5e7ca7,
+  "sky-blue": #87ceeb,
+  "starlight": #f5f5dc
+);
+
+
+.product {
+  @each $name, $color in $product-colors {
+    &-#{$name} {
+      display: flex;
+      background-color: $color;
+      border-radius: 50%;
+      height: 26px;
+      width: 26px;
+    }
+  }
+}

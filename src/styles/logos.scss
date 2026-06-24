@@ -1,0 +1,176 @@
+.logo {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+
+  line-height: 0;
+
+
+  &--home {
+    display: flex;
+    width: 96px;
+    padding: 0;
+    margin: 0;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include on-desctopmin {
+      width: 128px;
+    }
+  }
+
+  &--menu {
+    width: 40px;
+    height: 40px;
+    border-left: 1px solid color(gray-elements);
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__f {
+    display: flex;
+    width: 100%;
+
+    &--footer {
+      width: 50%;
+      height: 64px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &::after {
+        align-items: center;
+        content: "";
+        position: absolute;
+        display: block;
+        height: 2px;
+        width: 50%;
+        bottom: 0;
+
+        background-color: color(gray-primary);
+
+        transition: transform 0.3s;
+        transform: scale(0);
+        transform-origin: left;
+      }
+
+      &:hover {
+        color: color(gray-primary);
+
+        &::after {
+          transform: scale(1);
+        }
+      }
+
+    }
+
+    &--phones {
+      border: 1px solid color(gray-elements);
+      width: 40px;
+      height: 40px;
+    }
+
+
+    &--header {
+      @include on-tablet {
+        border-left: 1px solid color(gray-elements);
+        width: 48px;
+        height: 48px;
+      }
+
+      @include on-desctopmin {
+        width: 64px;
+        height: 64px;
+      }
+    }
+
+    &__count {
+      color: color(red);
+      border-radius: 50%;
+      height: 14px;
+      width: 14px;
+    }
+  }
+
+  &__c {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    @include on-tablet {
+      border-left: 1px solid color(gray-elements);
+      width: 48px;
+      height: 48px;
+    }
+
+    @include on-desctopmin {
+      width: 64px;
+      height: 64px;
+    }
+
+    &--header {
+      border-left: 1px solid color(gray-elements);
+    }
+
+    &--footer {
+      width: 50%;
+      height: 64px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-left: 1px solid color(gray-elements);
+
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        height: 2px;
+        width: 50%;
+        bottom: 0;
+
+        background-color: color(gray-primary);
+
+        transition: transform 0.3s;
+        transform: scale(0);
+        transform-origin: left;
+      }
+
+      &:hover {
+        color: color(gray-primary);
+
+        &::after {
+          transform: scale(1);
+        }
+      }
+    }
+
+    &--phones {
+      height: 40px;
+      width: 100%;
+      background-color: color(gray-primary);
+      border: 1px solid color(gray-primary);
+    }
+    &--active {
+      border: 1px solid color(gray-elements);
+      background-color: color(white);
+    }
+
+  }
+
+  &--close {
+    width: 40px;
+    height: 40px;
+    border-left: 1px solid color(gray-elements);
+  }
+
+  &--product {
+    border: 1px solid color(gray-primary);
+  }
+}
