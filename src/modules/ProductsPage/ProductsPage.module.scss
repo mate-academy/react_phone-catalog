@@ -1,0 +1,113 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.productsPage {
+  margin-top: 24px;
+  margin-bottom: 64px;
+
+  @include page-container;
+
+  &__breadСrumbs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+
+    a {
+      display: flex;
+      align-items: center;
+    }
+
+    img {
+      display: block;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__category {
+    color: $secondary__color;
+
+    @include font-small-text;
+  }
+
+  &__title {
+    margin-top: 24px;
+    color: $primary__color;
+
+    @include font-h1;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__modelsText {
+    margin-top: 8px;
+    color: $secondary__color;
+
+    @include font-body-text;
+  }
+
+  &__selectGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__selects {
+    margin-top: 32px;
+    display: flex;
+    justify-content: space-between;
+
+    @include on-tablet {
+      margin-top: 40px;
+      justify-content: flex-start;
+      gap: 16px;
+    }
+
+    &__text {
+      color: $secondary__color;
+
+      @include font-small-text;
+    }
+  }
+
+  &__cards {
+    margin-top: 24px;
+    display: grid;
+    gap: 40px 16px;
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  }
+
+  &__errorMessage {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 40px;
+
+    &__text {
+      color: $secondary__color;
+
+      @include font-h3;
+    }
+
+    &__btn {
+      padding: 12px 24px;
+      background-color: $primary__color;
+      color: $white__color;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+      &:hover {
+        transform: scale(1.03);
+        box-shadow: 0 3px 13px 0 #17203166;
+      }
+    }
+  }
+}

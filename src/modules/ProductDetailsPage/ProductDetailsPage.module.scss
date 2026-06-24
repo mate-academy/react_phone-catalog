@@ -1,0 +1,99 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.productDetails {
+  margin-top: 24px;
+  margin-bottom: 56px;
+
+  @include page-container;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+  
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__breadСrumbs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+
+    a {
+      display: flex;
+      align-items: center;
+    }
+
+    img {
+      display: block;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__category {
+    color: $primary__color;
+
+    @include font-small-text;
+  }
+
+  &__productId {
+    color: $secondary__color;
+
+    @include font-small-text;
+  }
+
+  &__notFound {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    min-height: 60vh;
+  }
+
+  &__notFoundImg {
+    object-fit: contain;
+    width: 200px;
+
+    @include on-tablet {
+      width: 300px;
+    }
+  }
+
+  &__notFoundText {
+    color: $primary__color;
+
+    @include font-h2;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    @include on-tablet {
+      gap: 64px;
+    }
+
+    @include on-desktop {
+      gap: 80px;
+    }
+  }
+
+  &__containerInformaiton {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 56px;
+
+    @include on-desktop {
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+  }
+}

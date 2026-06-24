@@ -1,0 +1,27 @@
+:root {
+  --primary-color: #313237;
+  --secondary-color: #89939A;
+  --white-color: #ffff;
+  --elements-color: #E2E6E9;
+  --icons-color: #B4BDC3;
+  --bg-color: #FAFBFC;
+  --green-color: #27AE60;
+  --red-color: #EB5757;
+  --default-button: #ffff;
+  --add-button: #313237;
+  --card-background: #ffff;
+}
+
+[data-theme='dark'] {
+  --primary-color: #F1F2F9 ;
+  --secondary-color: #75767F;
+  --white-color: #0F1121;
+  --elements-color: #323542;
+  --icons-color: #323542;
+  --bg-color: #121316;
+  --green-color: #2ECC71;
+  --red-color: #FF6B6B;
+  --default-button: #323542;
+  --add-button: #905BFF;
+  --card-background: #161827;
+}

@@ -1,0 +1,183 @@
+@use './variables.scss' as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin page-container() {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  box-sizing: border-box;
+
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+@mixin font-h1 {
+  font-weight: $fw-bold;
+  letter-spacing: -0.01em;
+  font-size: 32px;
+  line-height: 41px;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin font-h2 {
+  font-weight: $fw-bold;
+  font-size: 22px;
+  line-height: 140%;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin font-h3 {
+  font-weight: $fw-bold;
+  font-size: 22px;
+  line-height: 140%;
+}
+
+@mixin font-h4 {
+  font-weight: $fw-semibold;
+  font-size: 16px;
+  line-height: 100%;
+
+  @include on-tablet {
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin font-uppercase {
+  font-weight: $fw-semibold;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+@mixin font-body-text {
+  font-weight: $fw-regular;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin font-small-text {
+  font-weight: $fw-regular;
+  font-size: 12px;
+  line-height: 100%;
+}
+
+@mixin font-buttons {
+  font-weight: $fw-semibold;
+  font-size: 14px;
+  line-height: 100%;
+}
+
+@mixin default-button {
+  background-color: $default-button-color;
+  border: 1px solid $icons__color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: border 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+  @include font-buttons;
+
+  &:hover {
+    border: 1px solid $primary__color;
+    transform: translateY(-0.5px);
+  }
+
+  &:disabled {
+    border: 1px solid $elements__color;
+    cursor: no-drop;
+    transform: none;
+  }
+}
+
+@mixin add-button {
+  border: 0 solid black;
+  background-color: $add-button-color;
+  color: white;
+  will-change: transform;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+  @include font-buttons;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+}
+
+@mixin added-button {
+  color: $green-color;
+  background-color: $white__color;
+  border: 1px solid $elements__color;
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+@mixin skeleton {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 37%,
+    #f0f0f0 63%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: 4px;
+}
+
+@mixin badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  box-sizing: border-box;
+  border-radius: 100%;
+  background-color: $red-color;
+  border: 1px solid $white__color;
+  color: white;
+  font-size: 9px;
+  font-weight: 800;
+
+  @include on-desktop {
+    top: 16px;
+    right: 16px;
+  }
+}

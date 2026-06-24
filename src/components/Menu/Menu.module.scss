@@ -1,0 +1,133 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.burgerMenu {
+  position: fixed;
+  top: 48px;
+  left: 0;
+  width: 100%;
+  background-color: $white__color;
+  z-index: 1000;
+
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+
+  &.isOpen {
+    transform: translateX(0);
+  }
+}
+
+.navMenu {
+  padding-top: 24px;
+  height: calc(100vh - 48px);
+  display: flex;
+  flex-direction: column;
+  background-color: $white__color;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__item {
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__link {
+    position: relative;
+    color: $secondary__color;
+
+    @include font-uppercase;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 100%;
+      height: 3px;
+      background-color: $secondary__color;
+
+      opacity: 0;
+      transition: opacity 0.2s ease;
+
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  &__link_active {
+    color: $primary__color;
+
+    &::after {
+      opacity: 1;
+      background-color: $primary__color;
+    }
+  }
+
+  &__menuBottomIcons {
+    display: flex;
+    margin-top: auto;
+    padding-bottom: 24px;
+    border-top: 1px solid $elements__color;
+    width: 100%;
+  }
+
+  &__iconLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: 64px;
+    text-decoration: none;
+    position: relative;
+
+    &:not(:last-child) {
+      border-right: 1px solid $elements__color;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $secondary__color;
+
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  &__iconLink_active {
+    color: $primary__color;
+
+    &::after {
+      opacity: 1;
+      background-color: $primary__color;
+    }
+  }
+
+  &__iconWrapper {
+    position: relative;
+    display: inline-flex;
+  }
+
+  &__badge {
+    bottom: 7px;
+    left: 7px;
+
+    @include badge;
+  }
+}

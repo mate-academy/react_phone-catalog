@@ -1,0 +1,47 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  min-height: 70vh;
+
+  &__img {
+    object-fit: contain;
+    width: 200px;
+  }
+
+  &__title {
+    color: $primary__color;
+
+    @include font-h3;
+  }
+
+  &__text {
+    color: $secondary__color;
+
+    @include font-body-text;
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    height: 40px;
+    width: 200px;
+    border: 0;
+    background-color: $primary__color;
+    color: $white__color;
+    transition: box-shadow 0.3s ease-in-out;
+
+    @include font-buttons;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+}

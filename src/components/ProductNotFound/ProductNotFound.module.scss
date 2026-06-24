@@ -1,0 +1,26 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  min-height: 60vh;
+
+  &__img {
+    object-fit: contain;
+    width: 200px;
+
+    @include on-tablet {
+      width: 300px;
+    }
+  }
+
+  &__text {
+    color: $primary__color;
+    
+    @include font-h2;
+  }
+}

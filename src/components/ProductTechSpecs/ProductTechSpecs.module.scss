@@ -1,0 +1,43 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.techSpecs {
+  &__title {
+    color: $primary__color;
+    position: relative;
+
+    @include font-h3;
+
+      &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -16px;
+      width: 100%;
+      border: 1px solid $elements__color;
+    }
+  }
+
+  &__characteristics {
+    margin-top: 46px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__characteristic {
+    display: flex;
+    justify-content: space-between;
+    
+    @include font-body-text;
+
+    span:first-child {
+      color: $secondary__color;
+    }
+
+    span:last-child {
+      color: $primary__color;
+      font-weight: 600;
+    }
+  }
+}

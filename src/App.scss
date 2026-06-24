@@ -1,1 +1,17 @@
-// not empty
+@import './styles/fonts';
+@import './styles/mixins';
+@import './styles/variables';
+@import './styles/themes';
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: $primary__font-family;
+}
+
+.App {
+  background-color: $white__color;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

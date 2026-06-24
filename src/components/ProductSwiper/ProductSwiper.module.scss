@@ -1,0 +1,50 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+
+.textAndButtons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__tiile {
+    max-width: 136px;
+    color: $primary__color;
+
+    @include font-h2;
+
+    @include on-tablet {
+      max-width: 100%;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+
+    &__button {
+      height: 32px;
+      width: 32px;
+      
+      @include default-button;
+
+      &:disabled {
+        border: 1px solid $elements__color;
+        cursor: no-drop;
+        transform: none;
+      }
+    }
+  }
+}
+
+.swiper {
+  padding-left: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.container {
+  overflow: hidden;
+  margin-right: -16px;
+  margin-left: -16px;
+}
