@@ -1,0 +1,155 @@
+@use '../../../styles/utils/mixins' as *;
+@use '../../../styles/utils/variables' as *;
+
+.productCard {
+  display: flex;
+  box-sizing: border-box;
+  width: 212px;
+  min-width: 100%;
+  max-height: 439px;
+  padding: 32px;
+  opacity: 1;
+  transition: transform $effect-duration ease;
+
+  @include on-tablet {
+    width: 237px;
+    max-height: 512px;
+  }
+
+  @include on-desktop {
+    width: 271px;
+    min-height: 506px;
+    margin: 0;
+  }
+
+  &__container {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+
+    margin: 0 16px;
+    gap: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+
+    background-color: var(--main);
+
+    transition:
+      transform $effect-duration ease;
+
+    &:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 18px var(--shadow);
+      border: 1px solid var(--border-hover);
+    }
+
+    @include on-tablet {
+      margin: 0;
+    }
+
+    @include on-desktop {
+      margin: 0;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .price {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 140%;
+      color: var(--primary);
+    }
+
+    .price-old {
+      font-size: 22px;
+      font-weight: 600;
+      text-decoration: line-through;
+      color: var(--elements);
+    }
+  }
+}
+
+.product {
+  &__photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform $effect-duration ease;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__name {
+    display: flex;
+    margin-top: 16px;
+    transition: transform $effect-duration ease;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &--screen,
+    &--capacity,
+    &--ram {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &--name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--elements);
+    }
+
+    &--value {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+  }
+}
+
+.photo {
+  width: 148px;
+  height: 129px;
+  object-fit: contain;
+
+  @include on-tablet {
+    width: 173px;
+    height: 181px;
+  }
+
+  @include on-desktop {
+    width: 208px;
+    height: 196px;
+  }
+}
+
+.name {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.line {
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+}

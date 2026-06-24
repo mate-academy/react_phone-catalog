@@ -1,0 +1,46 @@
+@use '../../styles/utils/mixins' as *;
+
+.titleMate {
+  display: none;
+}
+
+.section {
+  background-color: var(--background);
+  &__title {
+    @include page-grid;
+
+    grid-column: span 4;
+
+    padding: 24px 16px;
+
+    @include on-tablet {
+      padding: 32px 24px;
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+      box-sizing: border-box;
+      padding: 56px 0;
+      justify-content: center;
+    }
+  }
+}
+
+.pageTitle {
+  font-weight: 800;
+  font-size: 32px;
+  grid-column: span 4;
+  color: var(--primary);
+
+  @include on-tablet {
+    font-size: 48px;
+    grid-column: span 12;
+  }
+
+  @include on-desktop {
+    justify-content: center;
+    align-items: center;
+    grid-column: span 24;
+
+  }
+}

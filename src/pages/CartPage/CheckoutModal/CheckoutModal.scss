@@ -1,0 +1,110 @@
+@use '/src/styles/utils/mixins' as *;
+@use '/src/styles/utils/variables' as *;
+
+.modal {
+  background: var(--main);
+  width: 90%;
+  max-width: 400px;
+
+  border-radius: 16px;
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @include on-tablet {
+    max-width: 420px;
+  }
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: var(--primary);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+  }
+  &__title {
+    font-size: 24px;
+    font-weight: 800;
+    text-align: center;
+    color: var(--primary);
+  }
+  &__label {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+    gap: 4px;
+  }
+  &__input {
+    height: 40px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 14px;
+
+    &:focus {
+      border-color: var(--accent);
+      outline: none;
+    }
+  }
+  &__error {
+    font-size: 12px;
+    color: red;
+    margin-top: -4px;
+  }
+  &__button {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    &--confirm {
+      height: 44px;
+      background-color: var(--accent);
+      color: var(--main);
+
+      border-radius: 44px;
+      border: none;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      cursor: pointer;
+      transition: transform $effect-duration ease;
+      &:hover {
+        transform: scale(1.05);
+        background-color: var(--accent);
+        box-shadow: 0 6px 18px var(--shadow);
+
+      }
+    }
+    &--cancel {
+      height: 44px;
+      background-color: var(--main);
+      color: var(--primary);
+
+      border: 1px solid var(--border);
+      border-radius: 44px;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      cursor: pointer;
+      transition: transform $effect-duration ease;
+      &:hover {
+        transform: scale(1.05);
+        background-color: var(--main);
+
+      }
+    }
+  }
+}
