@@ -1,0 +1,97 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.bigSlider {
+  position: relative;
+
+  box-sizing: unset;
+  height: 100vw;
+  margin-bottom: 56px;
+  padding-bottom: 18px;
+
+
+  @include on-tablet {
+    height: 189px;
+    margin-bottom: 64px;
+    padding-inline: 75px;
+  }
+
+  @include on-desktop {
+    height: 400px;
+    margin-bottom: 80px;
+    padding-inline: calc((100vw - 1040px) / 2);
+  }
+
+  :global(.swiper-pagination-bullet) {
+    width: 14px;
+    height: 4px;
+    border-radius: 0;
+    background: $color_secondary;
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    width: 14px;
+    height: 4px;
+    border-radius: 0;
+    background: $color_primary;
+  }
+
+  :global(.swiper-pagination) {
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  :global(.swiper-slide) {
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.button {
+  display: none;
+
+  @include on-tablet {
+    pointer-events: all;
+    cursor: pointer;
+
+    position: absolute;
+    z-index: 2;
+
+    display: block;
+
+    width: 32px;
+    height: 189px;
+    padding: 0;
+    border: none;
+
+    background-color: transparent;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+
+  &Prev {
+    left: 24px;
+
+    @include on-desktop {
+      left: calc((100vw - 1136px) / 2);
+    }
+  }
+
+  &Next {
+    right: 24px;
+
+    @include on-desktop {
+      right: calc((100vw - 1136px) / 2);
+    }
+  }
+}

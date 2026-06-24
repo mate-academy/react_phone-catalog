@@ -1,0 +1,8 @@
+export enum ShoppingCartContextActionType {
+  ADD_TO_CART,
+  ADD_PRODUCTS,
+  REMOVE_FROM_CART,
+  CLEAR_CART,
+  INCREASE_QUANTITY,
+  DECREASE_QUANTITY,
+}

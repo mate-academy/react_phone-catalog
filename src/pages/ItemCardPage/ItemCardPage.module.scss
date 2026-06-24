@@ -1,0 +1,111 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.ItemCardPage {
+  padding-top: 24px;
+}
+
+.BackButton {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 16px;
+  border: none;
+
+  background-color: transparent;
+}
+
+.BackButtonText {
+  color: $color_secondary;
+}
+
+.AboutTitle {
+  height: 42px;
+  border-bottom: 1px solid $color_elements;
+
+  @include on-tablet {
+    height: 48px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}
+
+.AboutContent {
+  @include on-desktop {
+    max-width: 560px;
+  }
+}
+
+.AboutSubtitle {
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.AboutText {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  color: $color_secondary;
+}
+
+.TechSpecs {
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    width: 510px;
+    margin-top: 80px;
+  }
+}
+
+.TechSpecsTitle {
+  height: 42px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid $color_elements;
+
+  @include on-tablet {
+    height: 48px;
+  }
+}
+
+.TechSpecData {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.TechSpecSubtitle {
+  color: $color_secondary;
+}
+
+.TechSpecInfo {
+  max-width: 200px;
+  color: $color_primary;
+
+  @include on-tablet {
+    max-width: unset;
+  }
+}
+
+.SliderContainer {
+  width: 100%;
+  padding-block: 56px;
+}
+
+.ContentContainer {
+  @include on-desktop {
+    display: flex;
+    gap: 64px;
+  }
+}

@@ -1,0 +1,161 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.skeleton {
+  display: block;
+
+  border-radius: 6px;
+
+  background: linear-gradient(
+      90deg,
+      #b4bdc3 25%,
+      #c7d0d6 37%,
+      #b4bdc3 63%
+  );
+  background-size: 400% 100%;
+
+  animation: shimmer 1.4s ease infinite;
+}
+
+.breadcrumbs {
+  width: 180px;
+  height: 16px;
+  margin-bottom: 24px;
+}
+
+.backButton {
+  width: 70px;
+  height: 16px;
+  margin-bottom: 16px;
+}
+
+.title {
+  width: 100%;
+  max-width: 520px;
+  height: 32px;
+}
+
+.mainImage,
+.smallImage {
+  border: none;
+
+  &:hover {
+    transform: none;
+  }
+}
+
+.colorSelector {
+  width: 140px;
+  height: 32px;
+}
+
+.id {
+  width: 72px;
+  height: 14px;
+}
+
+.capacityTitle {
+  width: 110px;
+  height: 14px;
+  margin-bottom: 8px;
+}
+
+.price {
+  width: 140px;
+  height: 32px;
+  margin-bottom: 16px;
+}
+
+.cartButton {
+  flex: 4;
+  height: 48px;
+}
+
+.favoriteButton {
+  flex: 1;
+  height: 48px;
+}
+
+.detailTitle {
+  width: 80px;
+  height: 12px;
+}
+
+.detailText {
+  width: 120px;
+  height: 12px;
+}
+
+.about {
+  width: 100%;
+
+  @include on-desktop {
+    max-width: 560px;
+  }
+}
+
+.sectionTitle {
+  width: 100%;
+}
+
+.aboutSubtitle {
+  width: 180px;
+  height: 20px;
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.aboutText {
+  width: 100%;
+  height: 16px;
+  margin-bottom: 12px;
+}
+
+.aboutTextShort {
+  width: 75%;
+  height: 16px;
+}
+
+.techSpecTitle {
+  width: 120px;
+  height: 12px;
+}
+
+.techSpecValue {
+  width: 160px;
+  height: 12px;
+}
+
+.sliderTitle {
+  width: 260px;
+  height: 32px;
+  margin-bottom: 24px;
+}
+
+.sliderItems {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.sliderItem {
+  height: 440px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
