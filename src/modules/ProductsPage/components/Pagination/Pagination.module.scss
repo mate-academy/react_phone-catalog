@@ -1,0 +1,43 @@
+@use '../../../../styles/utils/breakpoints' as *;
+@use '../../../../styles/utils/colors' as *;
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 24px;
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__page {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $color-header-border;
+    background-color: var($color-primary-button);
+    cursor: pointer;
+
+    &--active {
+      background-color: $color-primary-button;
+      color: $color-white;
+      border: none;
+    }
+
+    &:hover {
+      border: 1px solid $color-hover-nav;
+    }
+
+    &:active {
+      background-color: $color-primary-button;
+      color: $color-white;
+    }
+  }
+
+  @include for-tablet {
+    padding-top: 40px;
+  }
+}

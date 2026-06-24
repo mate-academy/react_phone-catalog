@@ -1,0 +1,30 @@
+@use '../../../styles/utils/colors' as *;
+
+.button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid $color-header-border;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-button);
+
+  &:hover {
+    border: 1px solid $color-hover-nav;
+  }
+
+  &__img {
+    width: 16px;
+    height: 16px;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &--detail {
+    width: 48px;
+    height: 48px;
+  }
+}

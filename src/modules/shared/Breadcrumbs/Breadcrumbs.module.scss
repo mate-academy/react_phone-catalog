@@ -1,0 +1,52 @@
+@use '../../../styles/utils/breakpoints' as *;
+@use '../../../styles/utils/colors' as *;
+@use '../../../styles/utils/typography' as *;
+@use '../../../styles/utils/themes.scss' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+  }
+
+  &__active {
+    @include breadcrumbs-details;
+
+    color: var(--color-text);
+    text-transform: capitalize;
+    text-decoration: none;
+  }
+
+  &__inactive {
+    @include breadcrumbs-details;
+
+    text-transform: capitalize;
+    color: $color-link-navigation;
+    text-decoration: none;
+  }
+
+  &__text {
+    @include breadcrumbs-details;
+
+    color: $color-link-navigation;
+  }
+
+  &__img {
+    object-fit: cover;
+    object-position: center;
+    width: 16px;
+    height: 16px;
+  }
+
+  @include for-tablet {
+    margin-left: 8px;
+  }
+
+  @include for-laptop {
+    margin-left: 0;
+  }
+}
