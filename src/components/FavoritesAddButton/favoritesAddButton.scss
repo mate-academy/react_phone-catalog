@@ -1,0 +1,63 @@
+.add-favorites-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  button {
+    all: unset;
+    cursor: pointer;
+  }
+
+  .add-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid $border-hover-color;
+
+    background: linear-gradient(
+      to top right,
+      rgba(33, 108, 255, 1) 30%,
+      $main-bg-color 75%
+    );
+
+    .button-text {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+      color: black;
+    }
+  }
+
+  .added {
+    border: 1px solid $border-hover-color;
+
+    background: linear-gradient(
+      to top right,
+      $border-hover-color 30%,
+      $main-bg-color 75%
+    );
+
+    .button-text {
+      color: black;
+    }
+  }
+
+  .favorites-button {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 1px solid $border-hover-color;
+
+    background: linear-gradient(
+      to top right,
+      $border-hover-color 30%,
+      $main-bg-color 75%
+    );
+  }
+}
