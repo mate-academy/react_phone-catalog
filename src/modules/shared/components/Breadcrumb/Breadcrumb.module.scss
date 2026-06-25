@@ -1,0 +1,42 @@
+@use '/src/assets/styles/variables.scss' as *;
+@use '/src/assets/styles/mixins.scss' as *;
+
+.navigation__list {
+  display: flex;
+  gap: 8px;
+  padding-top: 24px;
+}
+
+.navigation__link {
+  display: block;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 100%;
+  align-self: center;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: $main-text-color;
+}
+
+.navigation__disable {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 100%;
+  align-self: center;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: $inactive-text-color;
+}
+
+.navigation__link__container {
+  display: flex;
+  gap: 8px;
+}
+
+.navigation__icon__home {
+  @include header-icon('/img/icons/Home.svg', 16px, 16px);
+}
+
+.navigation__icon__arrow {
+  @include header-icon('/img/icons/Chevron_path_right.svg', 16px, 16px);
+}

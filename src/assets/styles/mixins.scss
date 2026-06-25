@@ -1,0 +1,67 @@
+@use './variables.scss' as *;
+
+@mixin on-tablet {
+  @media (max-width: $tablet-screen-size) {
+    @content;
+  }
+}
+
+@mixin on-mobile {
+  @media (max-width: $mobile-screen-size) {
+    @content;
+  }
+}
+
+@mixin header-icon($url, $width: 64px, $height: 64px) {
+  display: block;
+  width: $width;
+  height: $height;
+
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+}
+
+@mixin hero-buttons($url) {
+  padding: 0;
+  width: 32px;
+
+  background-image: url($url);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+
+  border: 1px solid $arrow-button-default-bg-color;
+  border-radius: 16px;
+
+  &:hover {
+    background-color: $main-border-color;
+  }
+}
+
+
+@mixin desktop-grid {
+  display: grid;
+  gap: $grid-gap;
+  grid-template-columns: repeat(24, 1fr);
+}
+
+@mixin tablet-grid {
+  @media (max-width: $tablet-screen-size) {
+    display: grid;
+    gap: $grid-gap;
+    grid-template-columns: repeat(12, 1fr);
+    @content;
+  }
+}
+
+@mixin mobile-grid {
+  @media (max-width: $mobile-screen-size) {
+    display: grid;
+    gap: $grid-gap;
+    grid-template-columns: repeat(4, 1fr);
+    @content;
+  }
+}

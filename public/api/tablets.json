@@ -1698,5 +1698,546 @@
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
+  },
+  {
+    "id": "apple-ipad-13-2024-256gb-spaceblack",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-13-2024",
+    "name": "Apple iPad 13 (2024) 256GB (8th Generation) Space Black",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "256GB",
+    "priceRegular": 1799,
+    "priceDiscount": 1659,
+    "colorsAvailable": ["spaceblack", "silver"],
+    "color": "spaceblack",
+    "images": [
+      "img/tablets/apple-ipad-pro-13-2024/spaceblack/00.webp",
+      "img/tablets/apple-ipad-pro-13-2024/spaceblack/01.webp",
+      "img/tablets/apple-ipad-pro-13-2024/spaceblack/02.webp",
+      "img/tablets/apple-ipad-pro-13-2024/spaceblack/03.webp"
+    ],
+    "description": [
+      {
+        "title": "M5. Creator. Accelerator.",
+        "text": [
+          "The M5 chip pushes the limits of what’s possible on iPad Pro to deliver performance and efficiency like never before. A next-generation 10‑core GPU with powerful new Neural Accelerators dramatically speeds up AI tasks — from large language model (LLM) token generation to generative imagery. And the multithreaded CPU performance and faster memory delivers breakthrough speed for your workflows."
+        ]
+      },
+      {
+        "title": "iPadOS and apps.A tour de workforce.",
+        "text": [
+          "iPadOS 26 introduces a stunning new design with Liquid Glass and game-changing enhancements that put iPad Pro productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games and take on creative projects of any size with an intuitive touch-first experience."
+        ]
+      },
+      {
+        "title": "Ultra Retina XDR. The world’s most advanced display.",
+        "text": [
+          "The Ultra Retina XDR display is built with groundbreaking tandem OLED technology, which generates amazing brightness, precise contrast and extreme dynamic range performance. Advanced technologies like ProMotion and True Tone give you a jaw-dropping visual experience. And you can use Reference Mode for colour-accurate workflows."
+        ]
+      }
+    ],
+    "screen": "13' Ultra Retina XDR",
+    "resolution": "2752x2064",
+    "processor": "Apple M5 chip",
+    "ram": "12GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": ["5G NR", "FDD-LTE", "TD-LTE"]
+  },
+  {
+    "id": "apple-ipad-13-2024-512gb-spaceblack",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-13-2024",
+    "name": "Apple iPad 13 (2024) 512GB (8th Generation) Space Black",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "512GB",
+    "priceRegular": 2079,
+    "priceDiscount": 1999,
+    "colorsAvailable": ["spaceblack", "silver"],
+    "color": "spaceblack",
+    "images": [
+      "img/tablets/apple-ipad-pro-13-2024/spaceblack/00.webp",
+      "img/tablets/apple-ipad-pro-13-2024/spaceblack/01.webp",
+      "img/tablets/apple-ipad-pro-13-2024/spaceblack/02.webp",
+      "img/tablets/apple-ipad-pro-13-2024/spaceblack/03.webp"
+    ],
+    "description": [
+      {
+        "title": "M5. Creator. Accelerator.",
+        "text": [
+          "The M5 chip pushes the limits of what’s possible on iPad Pro to deliver performance and efficiency like never before. A next-generation 10‑core GPU with powerful new Neural Accelerators dramatically speeds up AI tasks — from large language model (LLM) token generation to generative imagery. And the multithreaded CPU performance and faster memory delivers breakthrough speed for your workflows."
+        ]
+      },
+      {
+        "title": "iPadOS and apps.A tour de workforce.",
+        "text": [
+          "iPadOS 26 introduces a stunning new design with Liquid Glass and game-changing enhancements that put iPad Pro productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games and take on creative projects of any size with an intuitive touch-first experience."
+        ]
+      },
+      {
+        "title": "Ultra Retina XDR. The world’s most advanced display.",
+        "text": [
+          "The Ultra Retina XDR display is built with groundbreaking tandem OLED technology, which generates amazing brightness, precise contrast and extreme dynamic range performance. Advanced technologies like ProMotion and True Tone give you a jaw-dropping visual experience. And you can use Reference Mode for colour-accurate workflows."
+        ]
+      }
+    ],
+    "screen": "13' Ultra Retina XDR",
+    "resolution": "2752x2064",
+    "processor": "Apple M5 chip",
+    "ram": "12GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": ["5G NR", "FDD-LTE", "TD-LTE"]
+  },
+  {
+    "id": "apple-ipad-13-2024-1tb-spaceblack",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-13-2024",
+    "name": "Apple iPad 13 (2024) 1TB (8th Generation) Space Black",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "1TB",
+    "priceRegular": 2629,
+    "priceDiscount": 2599,
+    "colorsAvailable": ["spaceblack", "silver"],
+    "color": "spaceblack",
+    "images": [
+      "img/tablets/apple-ipad-pro-13-2024/spaceblack/00.webp",
+      "img/tablets/apple-ipad-pro-13-2024/spaceblack/01.webp",
+      "img/tablets/apple-ipad-pro-13-2024/spaceblack/02.webp",
+      "img/tablets/apple-ipad-pro-13-2024/spaceblack/03.webp"
+    ],
+    "description": [
+      {
+        "title": "M5. Creator. Accelerator.",
+        "text": [
+          "The M5 chip pushes the limits of what’s possible on iPad Pro to deliver performance and efficiency like never before. A next-generation 10‑core GPU with powerful new Neural Accelerators dramatically speeds up AI tasks — from large language model (LLM) token generation to generative imagery. And the multithreaded CPU performance and faster memory delivers breakthrough speed for your workflows."
+        ]
+      },
+      {
+        "title": "iPadOS and apps.A tour de workforce.",
+        "text": [
+          "iPadOS 26 introduces a stunning new design with Liquid Glass and game-changing enhancements that put iPad Pro productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games and take on creative projects of any size with an intuitive touch-first experience."
+        ]
+      },
+      {
+        "title": "Ultra Retina XDR. The world’s most advanced display.",
+        "text": [
+          "The Ultra Retina XDR display is built with groundbreaking tandem OLED technology, which generates amazing brightness, precise contrast and extreme dynamic range performance. Advanced technologies like ProMotion and True Tone give you a jaw-dropping visual experience. And you can use Reference Mode for colour-accurate workflows."
+        ]
+      }
+    ],
+    "screen": "13' Ultra Retina XDR",
+    "resolution": "2752x2064",
+    "processor": "Apple M5 chip",
+    "ram": "16GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": ["5G NR", "FDD-LTE", "TD-LTE"]
+  },
+
+  {
+    "id": "apple-ipad-13-2024-256gb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-13-2024",
+    "name": "Apple iPad 13 (2024) 256GB (8th Generation) Silver",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "256GB",
+    "priceRegular": 1799,
+    "priceDiscount": 1659,
+    "colorsAvailable": ["spaceblack", "silver"],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-pro-13-2024/silver/00.webp",
+      "img/tablets/apple-ipad-pro-13-2024/silver/01.webp",
+      "img/tablets/apple-ipad-pro-13-2024/silver/02.webp",
+      "img/tablets/apple-ipad-pro-13-2024/silver/03.webp"
+    ],
+    "description": [
+      {
+        "title": "M5. Creator. Accelerator.",
+        "text": [
+          "The M5 chip pushes the limits of what’s possible on iPad Pro to deliver performance and efficiency like never before. A next-generation 10‑core GPU with powerful new Neural Accelerators dramatically speeds up AI tasks — from large language model (LLM) token generation to generative imagery. And the multithreaded CPU performance and faster memory delivers breakthrough speed for your workflows."
+        ]
+      },
+      {
+        "title": "iPadOS and apps.A tour de workforce.",
+        "text": [
+          "iPadOS 26 introduces a stunning new design with Liquid Glass and game-changing enhancements that put iPad Pro productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games and take on creative projects of any size with an intuitive touch-first experience."
+        ]
+      },
+      {
+        "title": "Ultra Retina XDR. The world’s most advanced display.",
+        "text": [
+          "The Ultra Retina XDR display is built with groundbreaking tandem OLED technology, which generates amazing brightness, precise contrast and extreme dynamic range performance. Advanced technologies like ProMotion and True Tone give you a jaw-dropping visual experience. And you can use Reference Mode for colour-accurate workflows."
+        ]
+      }
+    ],
+    "screen": "13' Ultra Retina XDR",
+    "resolution": "2752x2064",
+    "processor": "Apple M5 chip",
+    "ram": "12GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": ["5G NR", "FDD-LTE", "TD-LTE"]
+  },
+  {
+    "id": "apple-ipad-13-2024-512gb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-13-2024",
+    "name": "Apple iPad 13 (2024) 512GB (8th Generation) Silver",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "512GB",
+    "priceRegular": 2079,
+    "priceDiscount": 1999,
+    "colorsAvailable": ["spaceblack", "silver"],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-pro-13-2024/silver/00.webp",
+      "img/tablets/apple-ipad-pro-13-2024/silver/01.webp",
+      "img/tablets/apple-ipad-pro-13-2024/silver/02.webp",
+      "img/tablets/apple-ipad-pro-13-2024/silver/03.webp"
+    ],
+    "description": [
+      {
+        "title": "M5. Creator. Accelerator.",
+        "text": [
+          "The M5 chip pushes the limits of what’s possible on iPad Pro to deliver performance and efficiency like never before. A next-generation 10‑core GPU with powerful new Neural Accelerators dramatically speeds up AI tasks — from large language model (LLM) token generation to generative imagery. And the multithreaded CPU performance and faster memory delivers breakthrough speed for your workflows."
+        ]
+      },
+      {
+        "title": "iPadOS and apps.A tour de workforce.",
+        "text": [
+          "iPadOS 26 introduces a stunning new design with Liquid Glass and game-changing enhancements that put iPad Pro productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games and take on creative projects of any size with an intuitive touch-first experience."
+        ]
+      },
+      {
+        "title": "Ultra Retina XDR. The world’s most advanced display.",
+        "text": [
+          "The Ultra Retina XDR display is built with groundbreaking tandem OLED technology, which generates amazing brightness, precise contrast and extreme dynamic range performance. Advanced technologies like ProMotion and True Tone give you a jaw-dropping visual experience. And you can use Reference Mode for colour-accurate workflows."
+        ]
+      }
+    ],
+    "screen": "13' Ultra Retina XDR",
+    "resolution": "2752x2064",
+    "processor": "Apple M5 chip",
+    "ram": "12GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": ["5G NR", "FDD-LTE", "TD-LTE"]
+  },
+  {
+    "id": "apple-ipad-13-2024-1tb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-13-2024",
+    "name": "Apple iPad 13 (2024) 1TB (8th Generation) Silver",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "1TB",
+    "priceRegular": 2629,
+    "priceDiscount": 2599,
+    "colorsAvailable": ["spaceblack", "silver"],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-pro-13-2024/silver/00.webp",
+      "img/tablets/apple-ipad-pro-13-2024/silver/01.webp",
+      "img/tablets/apple-ipad-pro-13-2024/silver/02.webp",
+      "img/tablets/apple-ipad-pro-13-2024/silver/03.webp"
+    ],
+    "description": [
+      {
+        "title": "M5. Creator. Accelerator.",
+        "text": [
+          "The M5 chip pushes the limits of what’s possible on iPad Pro to deliver performance and efficiency like never before. A next-generation 10‑core GPU with powerful new Neural Accelerators dramatically speeds up AI tasks — from large language model (LLM) token generation to generative imagery. And the multithreaded CPU performance and faster memory delivers breakthrough speed for your workflows."
+        ]
+      },
+      {
+        "title": "iPadOS and apps.A tour de workforce.",
+        "text": [
+          "iPadOS 26 introduces a stunning new design with Liquid Glass and game-changing enhancements that put iPad Pro productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games and take on creative projects of any size with an intuitive touch-first experience."
+        ]
+      },
+      {
+        "title": "Ultra Retina XDR. The world’s most advanced display.",
+        "text": [
+          "The Ultra Retina XDR display is built with groundbreaking tandem OLED technology, which generates amazing brightness, precise contrast and extreme dynamic range performance. Advanced technologies like ProMotion and True Tone give you a jaw-dropping visual experience. And you can use Reference Mode for colour-accurate workflows."
+        ]
+      }
+    ],
+    "screen": "13' Ultra Retina XDR",
+    "resolution": "2752x2064",
+    "processor": "Apple M5 chip",
+    "ram": "16GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": ["5G NR", "FDD-LTE", "TD-LTE"]
+  },
+  {
+    "id": "apple-ipad-11-2024-256gb-spaceblack",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-11-2024",
+    "name": "Apple iPad 11 (2024) 256GB (6th Generation) Space Black",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "256GB",
+    "priceRegular": 1399,
+    "priceDiscount": 1259,
+    "colorsAvailable": ["spaceblack", "silver"],
+    "color": "spaceblack",
+    "images": [
+      "img/tablets/apple-ipad-pro-11-2024/spaceblack/00.webp",
+      "img/tablets/apple-ipad-pro-11-2024/spaceblack/01.webp",
+      "img/tablets/apple-ipad-pro-11-2024/spaceblack/02.webp",
+      "img/tablets/apple-ipad-pro-11-2024/spaceblack/03.webp"
+    ],
+    "description": [
+      {
+        "title": "M5. Creator. Accelerator.",
+        "text": [
+          "The M5 chip pushes the limits of what’s possible on iPad Pro to deliver performance and efficiency like never before. A next-generation 10‑core GPU with powerful new Neural Accelerators dramatically speeds up AI tasks — from large language model (LLM) token generation to generative imagery. And the multithreaded CPU performance and faster memory delivers breakthrough speed for your workflows."
+        ]
+      },
+      {
+        "title": "iPadOS and apps.A tour de workforce.",
+        "text": [
+          "iPadOS 26 introduces a stunning new design with Liquid Glass and game-changing enhancements that put iPad Pro productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games and take on creative projects of any size with an intuitive touch-first experience."
+        ]
+      },
+      {
+        "title": "Ultra Retina XDR. The world’s most advanced display.",
+        "text": [
+          "The Ultra Retina XDR display is built with groundbreaking tandem OLED technology, which generates amazing brightness, precise contrast and extreme dynamic range performance. Advanced technologies like ProMotion and True Tone give you a jaw-dropping visual experience. And you can use Reference Mode for colour-accurate workflows."
+        ]
+      }
+    ],
+    "screen": "11' Ultra Retina XDR",
+    "resolution": "2420x1668",
+    "processor": "Apple M5 chip",
+    "ram": "12GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": ["5G NR", "FDD-LTE", "TD-LTE"]
+  },
+  {
+    "id": "apple-ipad-11-2024-512gb-spaceblack",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-11-2024",
+    "name": "Apple iPad 11 (2024) 512GB (6th Generation) Space Black",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "512GB",
+    "priceRegular": 1679,
+    "priceDiscount": 1599,
+    "colorsAvailable": ["spaceblack", "silver"],
+    "color": "spaceblack",
+    "images": [
+      "img/tablets/apple-ipad-pro-11-2024/spaceblack/00.webp",
+      "img/tablets/apple-ipad-pro-11-2024/spaceblack/01.webp",
+      "img/tablets/apple-ipad-pro-11-2024/spaceblack/02.webp",
+      "img/tablets/apple-ipad-pro-11-2024/spaceblack/03.webp"
+    ],
+    "description": [
+      {
+        "title": "M5. Creator. Accelerator.",
+        "text": [
+          "The M5 chip pushes the limits of what’s possible on iPad Pro to deliver performance and efficiency like never before. A next-generation 10‑core GPU with powerful new Neural Accelerators dramatically speeds up AI tasks — from large language model (LLM) token generation to generative imagery. And the multithreaded CPU performance and faster memory delivers breakthrough speed for your workflows."
+        ]
+      },
+      {
+        "title": "iPadOS and apps.A tour de workforce.",
+        "text": [
+          "iPadOS 26 introduces a stunning new design with Liquid Glass and game-changing enhancements that put iPad Pro productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games and take on creative projects of any size with an intuitive touch-first experience."
+        ]
+      },
+      {
+        "title": "Ultra Retina XDR. The world’s most advanced display.",
+        "text": [
+          "The Ultra Retina XDR display is built with groundbreaking tandem OLED technology, which generates amazing brightness, precise contrast and extreme dynamic range performance. Advanced technologies like ProMotion and True Tone give you a jaw-dropping visual experience. And you can use Reference Mode for colour-accurate workflows."
+        ]
+      }
+    ],
+    "screen": "11' Ultra Retina XDR",
+    "resolution": "2420x1668",
+    "processor": "Apple M5 chip",
+    "ram": "12GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": ["5G NR", "FDD-LTE", "TD-LTE"]
+  },
+  {
+    "id": "apple-ipad-11-2024-1tb-spaceblack",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-11-2024",
+    "name": "Apple iPad 11 (2024) 1TB (6th Generation) Space Black",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "1TB",
+    "priceRegular": 2229,
+    "priceDiscount": 2199,
+    "colorsAvailable": ["spaceblack", "silver"],
+    "color": "spaceblack",
+    "images": [
+      "img/tablets/apple-ipad-pro-11-2024/spaceblack/00.webp",
+      "img/tablets/apple-ipad-pro-11-2024/spaceblack/01.webp",
+      "img/tablets/apple-ipad-pro-11-2024/spaceblack/02.webp",
+      "img/tablets/apple-ipad-pro-11-2024/spaceblack/03.webp"
+    ],
+    "description": [
+      {
+        "title": "M5. Creator. Accelerator.",
+        "text": [
+          "The M5 chip pushes the limits of what’s possible on iPad Pro to deliver performance and efficiency like never before. A next-generation 10‑core GPU with powerful new Neural Accelerators dramatically speeds up AI tasks — from large language model (LLM) token generation to generative imagery. And the multithreaded CPU performance and faster memory delivers breakthrough speed for your workflows."
+        ]
+      },
+      {
+        "title": "iPadOS and apps.A tour de workforce.",
+        "text": [
+          "iPadOS 26 introduces a stunning new design with Liquid Glass and game-changing enhancements that put iPad Pro productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games and take on creative projects of any size with an intuitive touch-first experience."
+        ]
+      },
+      {
+        "title": "Ultra Retina XDR. The world’s most advanced display.",
+        "text": [
+          "The Ultra Retina XDR display is built with groundbreaking tandem OLED technology, which generates amazing brightness, precise contrast and extreme dynamic range performance. Advanced technologies like ProMotion and True Tone give you a jaw-dropping visual experience. And you can use Reference Mode for colour-accurate workflows."
+        ]
+      }
+    ],
+    "screen": "11' Ultra Retina XDR",
+    "resolution": "2420x1668",
+    "processor": "Apple M5 chip",
+    "ram": "12GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": ["5G NR", "FDD-LTE", "TD-LTE"]
+  },
+  {
+    "id": "apple-ipad-11-2024-256gb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-11-2024",
+    "name": "Apple iPad 11 (2024) 256GB (6th Generation) Silver",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "256GB",
+    "priceRegular": 1399,
+    "priceDiscount": 1259,
+    "colorsAvailable": ["spaceblack", "silver"],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-pro-11-2024/silver/00.webp",
+      "img/tablets/apple-ipad-pro-11-2024/silver/01.webp",
+      "img/tablets/apple-ipad-pro-11-2024/silver/02.webp",
+      "img/tablets/apple-ipad-pro-11-2024/silver/03.webp"
+    ],
+    "description": [
+      {
+        "title": "M5. Creator. Accelerator.",
+        "text": [
+          "The M5 chip pushes the limits of what’s possible on iPad Pro to deliver performance and efficiency like never before. A next-generation 10‑core GPU with powerful new Neural Accelerators dramatically speeds up AI tasks — from large language model (LLM) token generation to generative imagery. And the multithreaded CPU performance and faster memory delivers breakthrough speed for your workflows."
+        ]
+      },
+      {
+        "title": "iPadOS and apps.A tour de workforce.",
+        "text": [
+          "iPadOS 26 introduces a stunning new design with Liquid Glass and game-changing enhancements that put iPad Pro productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games and take on creative projects of any size with an intuitive touch-first experience."
+        ]
+      },
+      {
+        "title": "Ultra Retina XDR. The world’s most advanced display.",
+        "text": [
+          "The Ultra Retina XDR display is built with groundbreaking tandem OLED technology, which generates amazing brightness, precise contrast and extreme dynamic range performance. Advanced technologies like ProMotion and True Tone give you a jaw-dropping visual experience. And you can use Reference Mode for colour-accurate workflows."
+        ]
+      }
+    ],
+    "screen": "11' Ultra Retina XDR",
+    "resolution": "2420x1668",
+    "processor": "Apple M5 chip",
+    "ram": "12GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": ["5G NR", "FDD-LTE", "TD-LTE"]
+  },
+  {
+    "id": "apple-ipad-11-2024-512gb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-11-2024",
+    "name": "Apple iPad 11 (2024) 512GB (6th Generation) Silver",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "512GB",
+    "priceRegular": 1679,
+    "priceDiscount": 1599,
+    "colorsAvailable": ["spaceblack", "silver"],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-pro-11-2024/silver/00.webp",
+      "img/tablets/apple-ipad-pro-11-2024/silver/01.webp",
+      "img/tablets/apple-ipad-pro-11-2024/silver/02.webp",
+      "img/tablets/apple-ipad-pro-11-2024/silver/03.webp"
+    ],
+    "description": [
+      {
+        "title": "M5. Creator. Accelerator.",
+        "text": [
+          "The M5 chip pushes the limits of what’s possible on iPad Pro to deliver performance and efficiency like never before. A next-generation 10‑core GPU with powerful new Neural Accelerators dramatically speeds up AI tasks — from large language model (LLM) token generation to generative imagery. And the multithreaded CPU performance and faster memory delivers breakthrough speed for your workflows."
+        ]
+      },
+      {
+        "title": "iPadOS and apps.A tour de workforce.",
+        "text": [
+          "iPadOS 26 introduces a stunning new design with Liquid Glass and game-changing enhancements that put iPad Pro productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games and take on creative projects of any size with an intuitive touch-first experience."
+        ]
+      },
+      {
+        "title": "Ultra Retina XDR. The world’s most advanced display.",
+        "text": [
+          "The Ultra Retina XDR display is built with groundbreaking tandem OLED technology, which generates amazing brightness, precise contrast and extreme dynamic range performance. Advanced technologies like ProMotion and True Tone give you a jaw-dropping visual experience. And you can use Reference Mode for colour-accurate workflows."
+        ]
+      }
+    ],
+    "screen": "11' Ultra Retina XDR",
+    "resolution": "2420x1668",
+    "processor": "Apple M5 chip",
+    "ram": "12GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": ["5G NR", "FDD-LTE", "TD-LTE"]
+  },
+  {
+    "id": "apple-ipad-11-2024-1tb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-11-2024",
+    "name": "Apple iPad 11 (2024) 1TB (6th Generation) Silver",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "1TB",
+    "priceRegular": 2229,
+    "priceDiscount": 2199,
+    "colorsAvailable": ["spaceblack", "silver"],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-pro-11-2024/silver/00.webp",
+      "img/tablets/apple-ipad-pro-11-2024/silver/01.webp",
+      "img/tablets/apple-ipad-pro-11-2024/silver/02.webp",
+      "img/tablets/apple-ipad-pro-11-2024/silver/03.webp"
+    ],
+    "description": [
+      {
+        "title": "M5. Creator. Accelerator.",
+        "text": [
+          "The M5 chip pushes the limits of what’s possible on iPad Pro to deliver performance and efficiency like never before. A next-generation 10‑core GPU with powerful new Neural Accelerators dramatically speeds up AI tasks — from large language model (LLM) token generation to generative imagery. And the multithreaded CPU performance and faster memory delivers breakthrough speed for your workflows."
+        ]
+      },
+      {
+        "title": "iPadOS and apps.A tour de workforce.",
+        "text": [
+          "iPadOS 26 introduces a stunning new design with Liquid Glass and game-changing enhancements that put iPad Pro productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games and take on creative projects of any size with an intuitive touch-first experience."
+        ]
+      },
+      {
+        "title": "Ultra Retina XDR. The world’s most advanced display.",
+        "text": [
+          "The Ultra Retina XDR display is built with groundbreaking tandem OLED technology, which generates amazing brightness, precise contrast and extreme dynamic range performance. Advanced technologies like ProMotion and True Tone give you a jaw-dropping visual experience. And you can use Reference Mode for colour-accurate workflows."
+        ]
+      }
+    ],
+    "screen": "11' Ultra Retina XDR",
+    "resolution": "2420x1668",
+    "processor": "Apple M5 chip",
+    "ram": "12GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": ["5G NR", "FDD-LTE", "TD-LTE"]
   }
 ]

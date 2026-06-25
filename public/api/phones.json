@@ -5632,7 +5632,7 @@
       {
         "title": "Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.",
         "text": [
-          "iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with."
+          "iPhone 14 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with."
         ]
       }
     ],
@@ -5679,7 +5679,7 @@
       {
         "title": "Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.",
         "text": [
-          "iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with."
+          "iPhone 14 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with."
         ]
       }
     ],
@@ -5726,7 +5726,7 @@
       {
         "title": "Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.",
         "text": [
-          "iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with."
+          "iPhone 14 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with."
         ]
       }
     ],
@@ -5773,7 +5773,7 @@
       {
         "title": "Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.",
         "text": [
-          "iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with."
+          "iPhone 14 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with."
         ]
       }
     ],
@@ -5820,7 +5820,7 @@
       {
         "title": "Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.",
         "text": [
-          "iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with."
+          "iPhone 14 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with."
         ]
       }
     ],
@@ -5830,6 +5830,594 @@
     "ram": "6GB",
     "camera": "48 Mp + 12 Mp + 12MP + 12Mp",
     "zoom": "Digital 5x, Optical 2x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-16-pro-max-256gb-backtitanium",
+    "category": "phones",
+    "namespaceId": "apple-iphone-16-pro-max",
+    "name": "Apple iPhone 16 Pro Max 256GB Black Titanum",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "256GB",
+    "priceRegular": 1749,
+    "priceDiscount": 1699,
+    "colorsAvailable": ["backtitanium", "deserttitanium", "naturaltitanium", "whitetitanium"],
+    "color": "backtitanium",
+    "images": [
+      "img/phones/apple-iphone-16-pro-max/blacktitanium/00.webp",
+      "img/phones/apple-iphone-16-pro-max/blacktitanium/01.webp",
+      "img/phones/apple-iphone-16-pro-max/blacktitanium/02.webp",
+      "img/phones/apple-iphone-16-pro-max/blacktitanium/03.webp",
+      "img/phones/apple-iphone-16-pro-max/blacktitanium/04.webp"
+    ],
+    "description": [
+      {
+        "title": "A18 Pro chip powers unrivalled intelligence",
+        "text": [
+          "A18 Pro chip enables Apple Intelligence with a faster Neural Engine, improved CPU and GPU, and a big jump in memory bandwidth. It also drives advanced video and photo features and powers AAA gaming.",
+          "An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro."
+        ]
+      },
+      {
+        "title": "Titanium design. Larger display. Even more stunning",
+        "text": [
+          "iPhone 16 Pro Max has a strong and light titanium design with a larger 6.9-inch Super Retina XDR display (The displays have rounded corners. When measured as a rectangle, the screen is 6.86 inches for iPhone Pro Max diagonally. Actual viewable area is less). It’s remarkably durable with the latest-generation Ceramic Shield material that’s 2x tougher than any smartphone glass"
+        ]
+      },
+      {
+        "title": "Take total Camera Control",
+        "text": [
+          "Camera Control gives you an easier way to quickly access camera tools, like zoom or depth of field, so you can take the perfect shot in record time.",
+          "Take your videos to a whole new level with 4K 120fps Dolby Vision, enabled by the 48MP Fusion camera. The improved 48MP Ultra Wide camera lets you capture mesmerizing detail in macro photos and wide-angle shots.",
+          "The latest-generation Photographic Styles give you greater creative flexibility, so you can make every photo even more you. And thanks to advances in the image pipeline, you can now reverse any style, any time"
+        ]
+      }
+    ],
+    "screen": "6.9' Super Retina XDR",
+    "resolution": "2868x1320",
+    "processor": "Apple A18 Pro chip",
+    "ram": "8GB",
+    "camera": "48 Mp + 48 Mp + 12MP + 12Mp",
+    "zoom": "Digital 25x, Optical 5x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-16-pro-max-512gb-backtitanium",
+    "category": "phones",
+    "namespaceId": "apple-iphone-16-pro-max",
+    "name": "Apple iPhone 16 Pro Max 512GB Black Titanum",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "512GB",
+    "priceRegular": 2049,
+    "priceDiscount": 2024,
+    "colorsAvailable": ["backtitanium", "deserttitanium", "naturaltitanium", "whitetitanium"],
+    "color": "backtitanium",
+    "images": [
+      "img/phones/apple-iphone-16-pro-max/blacktitanium/00.webp",
+      "img/phones/apple-iphone-16-pro-max/blacktitanium/01.webp",
+      "img/phones/apple-iphone-16-pro-max/blacktitanium/02.webp",
+      "img/phones/apple-iphone-16-pro-max/blacktitanium/03.webp",
+      "img/phones/apple-iphone-16-pro-max/blacktitanium/04.webp"
+    ],
+    "description": [
+      {
+        "title": "A18 Pro chip powers unrivalled intelligence",
+        "text": [
+          "A18 Pro chip enables Apple Intelligence with a faster Neural Engine, improved CPU and GPU, and a big jump in memory bandwidth. It also drives advanced video and photo features and powers AAA gaming.",
+          "An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro."
+        ]
+      },
+      {
+        "title": "Titanium design. Larger display. Even more stunning",
+        "text": [
+          "iPhone 16 Pro Max has a strong and light titanium design with a larger 6.9-inch Super Retina XDR display (The displays have rounded corners. When measured as a rectangle, the screen is 6.86 inches for iPhone Pro Max diagonally. Actual viewable area is less). It’s remarkably durable with the latest-generation Ceramic Shield material that’s 2x tougher than any smartphone glass"
+        ]
+      },
+      {
+        "title": "Take total Camera Control",
+        "text": [
+          "Camera Control gives you an easier way to quickly access camera tools, like zoom or depth of field, so you can take the perfect shot in record time.",
+          "Take your videos to a whole new level with 4K 120fps Dolby Vision, enabled by the 48MP Fusion camera. The improved 48MP Ultra Wide camera lets you capture mesmerizing detail in macro photos and wide-angle shots.",
+          "The latest-generation Photographic Styles give you greater creative flexibility, so you can make every photo even more you. And thanks to advances in the image pipeline, you can now reverse any style, any time"
+        ]
+      }
+    ],
+    "screen": "6.9' Super Retina XDR",
+    "resolution": "2868x1320",
+    "processor": "Apple A18 Pro chip",
+    "ram": "8GB",
+    "camera": "48 Mp + 48 Mp + 12MP + 12Mp",
+    "zoom": "Digital 25x, Optical 5x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-16-pro-max-1tb-backtitanium",
+    "category": "phones",
+    "namespaceId": "apple-iphone-16-pro-max",
+    "name": "Apple iPhone 16 Pro Max 1TB Black Titanum",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "1TB",
+    "priceRegular": 2349,
+    "priceDiscount": 2330,
+    "colorsAvailable": ["backtitanium", "deserttitanium", "naturaltitanium", "whitetitanium"],
+    "color": "backtitanium",
+    "images": [
+      "img/phones/apple-iphone-16-pro-max/blacktitanium/00.webp",
+      "img/phones/apple-iphone-16-pro-max/blacktitanium/01.webp",
+      "img/phones/apple-iphone-16-pro-max/blacktitanium/02.webp",
+      "img/phones/apple-iphone-16-pro-max/blacktitanium/03.webp",
+      "img/phones/apple-iphone-16-pro-max/blacktitanium/04.webp"
+    ],
+    "description": [
+      {
+        "title": "A18 Pro chip powers unrivalled intelligence",
+        "text": [
+          "A18 Pro chip enables Apple Intelligence with a faster Neural Engine, improved CPU and GPU, and a big jump in memory bandwidth. It also drives advanced video and photo features and powers AAA gaming.",
+          "An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro."
+        ]
+      },
+      {
+        "title": "Titanium design. Larger display. Even more stunning",
+        "text": [
+          "iPhone 16 Pro Max has a strong and light titanium design with a larger 6.9-inch Super Retina XDR display (The displays have rounded corners. When measured as a rectangle, the screen is 6.86 inches for iPhone Pro Max diagonally. Actual viewable area is less). It’s remarkably durable with the latest-generation Ceramic Shield material that’s 2x tougher than any smartphone glass"
+        ]
+      },
+      {
+        "title": "Take total Camera Control",
+        "text": [
+          "Camera Control gives you an easier way to quickly access camera tools, like zoom or depth of field, so you can take the perfect shot in record time.",
+          "Take your videos to a whole new level with 4K 120fps Dolby Vision, enabled by the 48MP Fusion camera. The improved 48MP Ultra Wide camera lets you capture mesmerizing detail in macro photos and wide-angle shots.",
+          "The latest-generation Photographic Styles give you greater creative flexibility, so you can make every photo even more you. And thanks to advances in the image pipeline, you can now reverse any style, any time"
+        ]
+      }
+    ],
+    "screen": "6.9' Super Retina XDR",
+    "resolution": "2868x1320",
+    "processor": "Apple A18 Pro chip",
+    "ram": "8GB",
+    "camera": "48 Mp + 48 Mp + 12MP + 12Mp",
+    "zoom": "Digital 25x, Optical 5x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-16-pro-max-256gb-whitetitanium",
+    "category": "phones",
+    "namespaceId": "apple-iphone-16-pro-max",
+    "name": "Apple iPhone 16 Pro Max 256GB White Titanum",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "256GB",
+    "priceRegular": 1749,
+    "priceDiscount": 1699,
+    "colorsAvailable": ["backtitanium", "deserttitanium", "naturaltitanium", "whitetitanium"],
+    "color": "whitetitanium",
+    "images": [
+      "img/phones/apple-iphone-16-pro-max/whitetitanium/00.webp",
+      "img/phones/apple-iphone-16-pro-max/whitetitanium/01.webp",
+      "img/phones/apple-iphone-16-pro-max/whitetitanium/02.webp",
+      "img/phones/apple-iphone-16-pro-max/whitetitanium/03.webp",
+      "img/phones/apple-iphone-16-pro-max/whitetitanium/04.webp"
+    ],
+    "description": [
+      {
+        "title": "A18 Pro chip powers unrivalled intelligence",
+        "text": [
+          "A18 Pro chip enables Apple Intelligence with a faster Neural Engine, improved CPU and GPU, and a big jump in memory bandwidth. It also drives advanced video and photo features and powers AAA gaming.",
+          "An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro."
+        ]
+      },
+      {
+        "title": "Titanium design. Larger display. Even more stunning",
+        "text": [
+          "iPhone 16 Pro Max has a strong and light titanium design with a larger 6.9-inch Super Retina XDR display (The displays have rounded corners. When measured as a rectangle, the screen is 6.86 inches for iPhone Pro Max diagonally. Actual viewable area is less). It’s remarkably durable with the latest-generation Ceramic Shield material that’s 2x tougher than any smartphone glass"
+        ]
+      },
+      {
+        "title": "Take total Camera Control",
+        "text": [
+          "Camera Control gives you an easier way to quickly access camera tools, like zoom or depth of field, so you can take the perfect shot in record time.",
+          "Take your videos to a whole new level with 4K 120fps Dolby Vision, enabled by the 48MP Fusion camera. The improved 48MP Ultra Wide camera lets you capture mesmerizing detail in macro photos and wide-angle shots.",
+          "The latest-generation Photographic Styles give you greater creative flexibility, so you can make every photo even more you. And thanks to advances in the image pipeline, you can now reverse any style, any time"
+        ]
+      }
+    ],
+    "screen": "6.9' Super Retina XDR",
+    "resolution": "2868x1320",
+    "processor": "Apple A18 Pro chip",
+    "ram": "8GB",
+    "camera": "48 Mp + 48 Mp + 12MP + 12Mp",
+    "zoom": "Digital 25x, Optical 5x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-16-pro-max-512gb-whitetitanium",
+    "category": "phones",
+    "namespaceId": "apple-iphone-16-pro-max",
+    "name": "Apple iPhone 16 Pro Max 512GB White Titanum",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "512GB",
+    "priceRegular": 2049,
+    "priceDiscount": 2024,
+    "colorsAvailable": ["backtitanium", "deserttitanium", "naturaltitanium", "whitetitanium"],
+    "color": "whitetitanium",
+    "images": [
+      "img/phones/apple-iphone-16-pro-max/whitetitanium/00.webp",
+      "img/phones/apple-iphone-16-pro-max/whitetitanium/01.webp",
+      "img/phones/apple-iphone-16-pro-max/whitetitanium/02.webp",
+      "img/phones/apple-iphone-16-pro-max/whitetitanium/03.webp",
+      "img/phones/apple-iphone-16-pro-max/whitetitanium/04.webp"
+    ],
+    "description": [
+      {
+        "title": "A18 Pro chip powers unrivalled intelligence",
+        "text": [
+          "A18 Pro chip enables Apple Intelligence with a faster Neural Engine, improved CPU and GPU, and a big jump in memory bandwidth. It also drives advanced video and photo features and powers AAA gaming.",
+          "An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro."
+        ]
+      },
+      {
+        "title": "Titanium design. Larger display. Even more stunning",
+        "text": [
+          "iPhone 16 Pro Max has a strong and light titanium design with a larger 6.9-inch Super Retina XDR display (The displays have rounded corners. When measured as a rectangle, the screen is 6.86 inches for iPhone Pro Max diagonally. Actual viewable area is less). It’s remarkably durable with the latest-generation Ceramic Shield material that’s 2x tougher than any smartphone glass"
+        ]
+      },
+      {
+        "title": "Take total Camera Control",
+        "text": [
+          "Camera Control gives you an easier way to quickly access camera tools, like zoom or depth of field, so you can take the perfect shot in record time.",
+          "Take your videos to a whole new level with 4K 120fps Dolby Vision, enabled by the 48MP Fusion camera. The improved 48MP Ultra Wide camera lets you capture mesmerizing detail in macro photos and wide-angle shots.",
+          "The latest-generation Photographic Styles give you greater creative flexibility, so you can make every photo even more you. And thanks to advances in the image pipeline, you can now reverse any style, any time"
+        ]
+      }
+    ],
+    "screen": "6.9' Super Retina XDR",
+    "resolution": "2868x1320",
+    "processor": "Apple A18 Pro chip",
+    "ram": "8GB",
+    "camera": "48 Mp + 48 Mp + 12MP + 12Mp",
+    "zoom": "Digital 25x, Optical 5x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-16-pro-max-1tb-whitetitanium",
+    "category": "phones",
+    "namespaceId": "apple-iphone-16-pro-max",
+    "name": "Apple iPhone 16 Pro Max 1TB White Titanum",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "1TB",
+    "priceRegular": 2349,
+    "priceDiscount": 2330,
+    "colorsAvailable": ["backtitanium", "deserttitanium", "naturaltitanium", "whitetitanium"],
+    "color": "whitetitanium",
+    "images": [
+      "img/phones/apple-iphone-16-pro-max/whitetitanium/00.webp",
+      "img/phones/apple-iphone-16-pro-max/whitetitanium/01.webp",
+      "img/phones/apple-iphone-16-pro-max/whitetitanium/02.webp",
+      "img/phones/apple-iphone-16-pro-max/whitetitanium/03.webp",
+      "img/phones/apple-iphone-16-pro-max/whitetitanium/04.webp"
+    ],
+    "description": [
+      {
+        "title": "A18 Pro chip powers unrivalled intelligence",
+        "text": [
+          "A18 Pro chip enables Apple Intelligence with a faster Neural Engine, improved CPU and GPU, and a big jump in memory bandwidth. It also drives advanced video and photo features and powers AAA gaming.",
+          "An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro."
+        ]
+      },
+      {
+        "title": "Titanium design. Larger display. Even more stunning",
+        "text": [
+          "iPhone 16 Pro Max has a strong and light titanium design with a larger 6.9-inch Super Retina XDR display (The displays have rounded corners. When measured as a rectangle, the screen is 6.86 inches for iPhone Pro Max diagonally. Actual viewable area is less). It’s remarkably durable with the latest-generation Ceramic Shield material that’s 2x tougher than any smartphone glass"
+        ]
+      },
+      {
+        "title": "Take total Camera Control",
+        "text": [
+          "Camera Control gives you an easier way to quickly access camera tools, like zoom or depth of field, so you can take the perfect shot in record time.",
+          "Take your videos to a whole new level with 4K 120fps Dolby Vision, enabled by the 48MP Fusion camera. The improved 48MP Ultra Wide camera lets you capture mesmerizing detail in macro photos and wide-angle shots.",
+          "The latest-generation Photographic Styles give you greater creative flexibility, so you can make every photo even more you. And thanks to advances in the image pipeline, you can now reverse any style, any time"
+        ]
+      }
+    ],
+    "screen": "6.9' Super Retina XDR",
+    "resolution": "2868x1320",
+    "processor": "Apple A18 Pro chip",
+    "ram": "8GB",
+    "camera": "48 Mp + 48 Mp + 12MP + 12Mp",
+    "zoom": "Digital 25x, Optical 5x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-16-pro-max-256gb-naturaltitanium",
+    "category": "phones",
+    "namespaceId": "apple-iphone-16-pro-max",
+    "name": "Apple iPhone 16 Pro Max 256GB Natural Titanum",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "256GB",
+    "priceRegular": 1749,
+    "priceDiscount": 1699,
+    "colorsAvailable": ["backtitanium", "deserttitanium", "naturaltitanium", "whitetitanium"],
+    "color": "naturaltitanium",
+    "images": [
+      "img/phones/apple-iphone-16-pro-max/naturaltitanium/00.webp",
+      "img/phones/apple-iphone-16-pro-max/naturaltitanium/01.webp",
+      "img/phones/apple-iphone-16-pro-max/naturaltitanium/02.webp",
+      "img/phones/apple-iphone-16-pro-max/naturaltitanium/03.webp",
+      "img/phones/apple-iphone-16-pro-max/naturaltitanium/04.webp"
+    ],
+    "description": [
+      {
+        "title": "A18 Pro chip powers unrivalled intelligence",
+        "text": [
+          "A18 Pro chip enables Apple Intelligence with a faster Neural Engine, improved CPU and GPU, and a big jump in memory bandwidth. It also drives advanced video and photo features and powers AAA gaming.",
+          "An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro."
+        ]
+      },
+      {
+        "title": "Titanium design. Larger display. Even more stunning",
+        "text": [
+          "iPhone 16 Pro Max has a strong and light titanium design with a larger 6.9-inch Super Retina XDR display (The displays have rounded corners. When measured as a rectangle, the screen is 6.86 inches for iPhone Pro Max diagonally. Actual viewable area is less). It’s remarkably durable with the latest-generation Ceramic Shield material that’s 2x tougher than any smartphone glass"
+        ]
+      },
+      {
+        "title": "Take total Camera Control",
+        "text": [
+          "Camera Control gives you an easier way to quickly access camera tools, like zoom or depth of field, so you can take the perfect shot in record time.",
+          "Take your videos to a whole new level with 4K 120fps Dolby Vision, enabled by the 48MP Fusion camera. The improved 48MP Ultra Wide camera lets you capture mesmerizing detail in macro photos and wide-angle shots.",
+          "The latest-generation Photographic Styles give you greater creative flexibility, so you can make every photo even more you. And thanks to advances in the image pipeline, you can now reverse any style, any time"
+        ]
+      }
+    ],
+    "screen": "6.9' Super Retina XDR",
+    "resolution": "2868x1320",
+    "processor": "Apple A18 Pro chip",
+    "ram": "8GB",
+    "camera": "48 Mp + 48 Mp + 12MP + 12Mp",
+    "zoom": "Digital 25x, Optical 5x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-16-pro-max-512gb-naturaltitanium",
+    "category": "phones",
+    "namespaceId": "apple-iphone-16-pro-max",
+    "name": "Apple iPhone 16 Pro Max 512GB Natural Titanum",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "512GB",
+    "priceRegular": 2049,
+    "priceDiscount": 2024,
+    "colorsAvailable": ["backtitanium", "deserttitanium", "naturaltitanium", "whitetitanium"],
+    "color": "naturaltitanium",
+    "images": [
+      "img/phones/apple-iphone-16-pro-max/naturaltitanium/00.webp",
+      "img/phones/apple-iphone-16-pro-max/naturaltitanium/01.webp",
+      "img/phones/apple-iphone-16-pro-max/naturaltitanium/02.webp",
+      "img/phones/apple-iphone-16-pro-max/naturaltitanium/03.webp",
+      "img/phones/apple-iphone-16-pro-max/naturaltitanium/04.webp"
+    ],
+    "description": [
+      {
+        "title": "A18 Pro chip powers unrivalled intelligence",
+        "text": [
+          "A18 Pro chip enables Apple Intelligence with a faster Neural Engine, improved CPU and GPU, and a big jump in memory bandwidth. It also drives advanced video and photo features and powers AAA gaming.",
+          "An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro."
+        ]
+      },
+      {
+        "title": "Titanium design. Larger display. Even more stunning",
+        "text": [
+          "iPhone 16 Pro Max has a strong and light titanium design with a larger 6.9-inch Super Retina XDR display (The displays have rounded corners. When measured as a rectangle, the screen is 6.86 inches for iPhone Pro Max diagonally. Actual viewable area is less). It’s remarkably durable with the latest-generation Ceramic Shield material that’s 2x tougher than any smartphone glass"
+        ]
+      },
+      {
+        "title": "Take total Camera Control",
+        "text": [
+          "Camera Control gives you an easier way to quickly access camera tools, like zoom or depth of field, so you can take the perfect shot in record time.",
+          "Take your videos to a whole new level with 4K 120fps Dolby Vision, enabled by the 48MP Fusion camera. The improved 48MP Ultra Wide camera lets you capture mesmerizing detail in macro photos and wide-angle shots.",
+          "The latest-generation Photographic Styles give you greater creative flexibility, so you can make every photo even more you. And thanks to advances in the image pipeline, you can now reverse any style, any time"
+        ]
+      }
+    ],
+    "screen": "6.9' Super Retina XDR",
+    "resolution": "2868x1320",
+    "processor": "Apple A18 Pro chip",
+    "ram": "8GB",
+    "camera": "48 Mp + 48 Mp + 12MP + 12Mp",
+    "zoom": "Digital 25x, Optical 5x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-16-pro-max-1tb-naturaltitanium",
+    "category": "phones",
+    "namespaceId": "apple-iphone-16-pro-max",
+    "name": "Apple iPhone 16 Pro Max 1TB Natural Titanum",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "1TB",
+    "priceRegular": 2349,
+    "priceDiscount": 2330,
+    "colorsAvailable": ["backtitanium", "deserttitanium", "naturaltitanium", "whitetitanium"],
+    "color": "naturaltitanium",
+    "images": [
+      "img/phones/apple-iphone-16-pro-max/naturaltitanium/00.webp",
+      "img/phones/apple-iphone-16-pro-max/naturaltitanium/01.webp",
+      "img/phones/apple-iphone-16-pro-max/naturaltitanium/02.webp",
+      "img/phones/apple-iphone-16-pro-max/naturaltitanium/03.webp",
+      "img/phones/apple-iphone-16-pro-max/naturaltitanium/04.webp"
+    ],
+    "description": [
+      {
+        "title": "A18 Pro chip powers unrivalled intelligence",
+        "text": [
+          "A18 Pro chip enables Apple Intelligence with a faster Neural Engine, improved CPU and GPU, and a big jump in memory bandwidth. It also drives advanced video and photo features and powers AAA gaming.",
+          "An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro."
+        ]
+      },
+      {
+        "title": "Titanium design. Larger display. Even more stunning",
+        "text": [
+          "iPhone 16 Pro Max has a strong and light titanium design with a larger 6.9-inch Super Retina XDR display (The displays have rounded corners. When measured as a rectangle, the screen is 6.86 inches for iPhone Pro Max diagonally. Actual viewable area is less). It’s remarkably durable with the latest-generation Ceramic Shield material that’s 2x tougher than any smartphone glass"
+        ]
+      },
+      {
+        "title": "Take total Camera Control",
+        "text": [
+          "Camera Control gives you an easier way to quickly access camera tools, like zoom or depth of field, so you can take the perfect shot in record time.",
+          "Take your videos to a whole new level with 4K 120fps Dolby Vision, enabled by the 48MP Fusion camera. The improved 48MP Ultra Wide camera lets you capture mesmerizing detail in macro photos and wide-angle shots.",
+          "The latest-generation Photographic Styles give you greater creative flexibility, so you can make every photo even more you. And thanks to advances in the image pipeline, you can now reverse any style, any time"
+        ]
+      }
+    ],
+    "screen": "6.9' Super Retina XDR",
+    "resolution": "2868x1320",
+    "processor": "Apple A18 Pro chip",
+    "ram": "8GB",
+    "camera": "48 Mp + 48 Mp + 12MP + 12Mp",
+    "zoom": "Digital 25x, Optical 5x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-16-pro-max-256gb-deserttitanium",
+    "category": "phones",
+    "namespaceId": "apple-iphone-16-pro-max",
+    "name": "Apple iPhone 16 Pro Max 256GB Desert Titanum",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "256GB",
+    "priceRegular": 1749,
+    "priceDiscount": 1699,
+    "colorsAvailable": ["backtitanium", "deserttitanium", "naturaltitanium", "whitetitanium"],
+    "color": "deserttitanium",
+    "images": [
+      "img/phones/apple-iphone-16-pro-max/deserttitanium/00.webp",
+      "img/phones/apple-iphone-16-pro-max/deserttitanium/01.webp",
+      "img/phones/apple-iphone-16-pro-max/deserttitanium/02.webp",
+      "img/phones/apple-iphone-16-pro-max/deserttitanium/03.webp",
+      "img/phones/apple-iphone-16-pro-max/deserttitanium/04.webp"
+    ],
+    "description": [
+      {
+        "title": "A18 Pro chip powers unrivalled intelligence",
+        "text": [
+          "A18 Pro chip enables Apple Intelligence with a faster Neural Engine, improved CPU and GPU, and a big jump in memory bandwidth. It also drives advanced video and photo features and powers AAA gaming.",
+          "An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro."
+        ]
+      },
+      {
+        "title": "Titanium design. Larger display. Even more stunning",
+        "text": [
+          "iPhone 16 Pro Max has a strong and light titanium design with a larger 6.9-inch Super Retina XDR display (The displays have rounded corners. When measured as a rectangle, the screen is 6.86 inches for iPhone Pro Max diagonally. Actual viewable area is less). It’s remarkably durable with the latest-generation Ceramic Shield material that’s 2x tougher than any smartphone glass"
+        ]
+      },
+      {
+        "title": "Take total Camera Control",
+        "text": [
+          "Camera Control gives you an easier way to quickly access camera tools, like zoom or depth of field, so you can take the perfect shot in record time.",
+          "Take your videos to a whole new level with 4K 120fps Dolby Vision, enabled by the 48MP Fusion camera. The improved 48MP Ultra Wide camera lets you capture mesmerizing detail in macro photos and wide-angle shots.",
+          "The latest-generation Photographic Styles give you greater creative flexibility, so you can make every photo even more you. And thanks to advances in the image pipeline, you can now reverse any style, any time"
+        ]
+      }
+    ],
+    "screen": "6.9' Super Retina XDR",
+    "resolution": "2868x1320",
+    "processor": "Apple A18 Pro chip",
+    "ram": "8GB",
+    "camera": "48 Mp + 48 Mp + 12MP + 12Mp",
+    "zoom": "Digital 25x, Optical 5x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-16-pro-max-512gb-deserttitanium",
+    "category": "phones",
+    "namespaceId": "apple-iphone-16-pro-max",
+    "name": "Apple iPhone 16 Pro Max 512GB Desert Titanum",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "512GB",
+    "priceRegular": 2049,
+    "priceDiscount": 2024,
+    "colorsAvailable": ["backtitanium", "deserttitanium", "naturaltitanium", "whitetitanium"],
+    "color": "deserttitanium",
+    "images": [
+      "img/phones/apple-iphone-16-pro-max/deserttitanium/00.webp",
+      "img/phones/apple-iphone-16-pro-max/deserttitanium/01.webp",
+      "img/phones/apple-iphone-16-pro-max/deserttitanium/02.webp",
+      "img/phones/apple-iphone-16-pro-max/deserttitanium/03.webp",
+      "img/phones/apple-iphone-16-pro-max/deserttitanium/04.webp"
+    ],
+    "description": [
+      {
+        "title": "A18 Pro chip powers unrivalled intelligence",
+        "text": [
+          "A18 Pro chip enables Apple Intelligence with a faster Neural Engine, improved CPU and GPU, and a big jump in memory bandwidth. It also drives advanced video and photo features and powers AAA gaming.",
+          "An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro."
+        ]
+      },
+      {
+        "title": "Titanium design. Larger display. Even more stunning",
+        "text": [
+          "iPhone 16 Pro Max has a strong and light titanium design with a larger 6.9-inch Super Retina XDR display (The displays have rounded corners. When measured as a rectangle, the screen is 6.86 inches for iPhone Pro Max diagonally. Actual viewable area is less). It’s remarkably durable with the latest-generation Ceramic Shield material that’s 2x tougher than any smartphone glass"
+        ]
+      },
+      {
+        "title": "Take total Camera Control",
+        "text": [
+          "Camera Control gives you an easier way to quickly access camera tools, like zoom or depth of field, so you can take the perfect shot in record time.",
+          "Take your videos to a whole new level with 4K 120fps Dolby Vision, enabled by the 48MP Fusion camera. The improved 48MP Ultra Wide camera lets you capture mesmerizing detail in macro photos and wide-angle shots.",
+          "The latest-generation Photographic Styles give you greater creative flexibility, so you can make every photo even more you. And thanks to advances in the image pipeline, you can now reverse any style, any time"
+        ]
+      }
+    ],
+    "screen": "6.9' Super Retina XDR",
+    "resolution": "2868x1320",
+    "processor": "Apple A18 Pro chip",
+    "ram": "8GB",
+    "camera": "48 Mp + 48 Mp + 12MP + 12Mp",
+    "zoom": "Digital 25x, Optical 5x",
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
+  },
+  {
+    "id": "apple-iphone-16-pro-max-1tb-deserttitanium",
+    "category": "phones",
+    "namespaceId": "apple-iphone-16-pro-max",
+    "name": "Apple iPhone 16 Pro Max 1TB Desert Titanum",
+    "capacityAvailable": ["256GB", "512GB", "1TB"],
+    "capacity": "1TB",
+    "priceRegular": 2349,
+    "priceDiscount": 2330,
+    "colorsAvailable": ["backtitanium", "deserttitanium", "naturaltitanium", "whitetitanium"],
+    "color": "deserttitanium",
+    "images": [
+      "img/phones/apple-iphone-16-pro-max/deserttitanium/00.webp",
+      "img/phones/apple-iphone-16-pro-max/deserttitanium/01.webp",
+      "img/phones/apple-iphone-16-pro-max/deserttitanium/02.webp",
+      "img/phones/apple-iphone-16-pro-max/deserttitanium/03.webp",
+      "img/phones/apple-iphone-16-pro-max/deserttitanium/04.webp"
+    ],
+    "description": [
+      {
+        "title": "A18 Pro chip powers unrivalled intelligence",
+        "text": [
+          "A18 Pro chip enables Apple Intelligence with a faster Neural Engine, improved CPU and GPU, and a big jump in memory bandwidth. It also drives advanced video and photo features and powers AAA gaming.",
+          "An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro."
+        ]
+      },
+      {
+        "title": "Titanium design. Larger display. Even more stunning",
+        "text": [
+          "iPhone 16 Pro Max has a strong and light titanium design with a larger 6.9-inch Super Retina XDR display (The displays have rounded corners. When measured as a rectangle, the screen is 6.86 inches for iPhone Pro Max diagonally. Actual viewable area is less). It’s remarkably durable with the latest-generation Ceramic Shield material that’s 2x tougher than any smartphone glass"
+        ]
+      },
+      {
+        "title": "Take total Camera Control",
+        "text": [
+          "Camera Control gives you an easier way to quickly access camera tools, like zoom or depth of field, so you can take the perfect shot in record time.",
+          "Take your videos to a whole new level with 4K 120fps Dolby Vision, enabled by the 48MP Fusion camera. The improved 48MP Ultra Wide camera lets you capture mesmerizing detail in macro photos and wide-angle shots.",
+          "The latest-generation Photographic Styles give you greater creative flexibility, so you can make every photo even more you. And thanks to advances in the image pipeline, you can now reverse any style, any time"
+        ]
+      }
+    ],
+    "screen": "6.9' Super Retina XDR",
+    "resolution": "2868x1320",
+    "processor": "Apple A18 Pro chip",
+    "ram": "8GB",
+    "camera": "48 Mp + 48 Mp + 12MP + 12Mp",
+    "zoom": "Digital 25x, Optical 5x",
     "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   }
 ]
