@@ -6,5 +6,7 @@
   "compilerOptions": {
     "sourceMap": false,
     "types": ["node", "cypress"]
-  }
+  },
+  "skipLibCheck": true
 }
+

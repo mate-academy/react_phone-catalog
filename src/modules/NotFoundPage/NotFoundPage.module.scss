@@ -1,0 +1,41 @@
+@use '../../utils/variables.scss' as *;
+@use '../../utils/mixins.scss' as *;
+
+.not_found_container {
+  width: 100vw;
+  height: 100vh;
+  @include flex-centered;
+
+  flex-direction: column;
+}
+
+.not_found_title {
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  height: 48px;
+  line-height: 48px;
+  letter-spacing: -0.01em;
+  width: fit-content;
+  margin: 0 0 20px;
+  color: $main-dark-gray;
+
+  @include on-tablet {
+    font-size: 48px;
+  }
+}
+
+.not_found_image {
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+  transition: all .5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}

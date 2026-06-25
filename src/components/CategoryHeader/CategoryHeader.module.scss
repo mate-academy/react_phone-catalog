@@ -1,0 +1,76 @@
+@use '../../utils/variables.scss' as *;
+@use '../../utils/mixins.scss' as *;
+
+
+.category_path_container {
+  width: 100%;
+  height: 16px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+
+  @include width;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.category_header_icon {
+  width: 16px;
+  height: 16px;
+}
+
+.category_path {
+  font-family: Mont-Regular, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  color: var(--text-color-secondary);
+  text-transform: capitalize;
+}
+
+.category_header {
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 42px;
+  letter-spacing: -0.01em;
+  color: var(--text-color-main);
+  width: 100%;
+  height: 42px;
+  margin: 0 0 8px;
+  text-transform: capitalize;
+  transition: all 0.5s ease-in-out;
+  @include width;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    height: 56px;
+  }
+
+}
+
+.category_models_count {
+  font-family: Mont-Regular, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--text-color-secondary);
+  width: 100%;
+  height: 21px;
+  margin: 0 0 32px;
+
+  @include width;
+
+  @include on-tablet {
+    margin: 0 0 40px;
+  }
+}
+
+.category_header_link {
+  cursor: pointer;
+}

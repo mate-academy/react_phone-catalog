@@ -1,0 +1,77 @@
+@use './variables.scss' as *;
+
+@mixin header-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+
+  width: 48px;
+  height: 48px;
+  border: none;
+  transition: all 0.5s ease-in-out;
+  border-left: 1px solid var(--button-border-disabled);
+  background-color: var(--bg-color);
+}
+
+@mixin on-tablet() {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop() {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin padding-left() {
+  padding-left: calc((100% - 288px) / 2);
+
+  @media (min-width: $tablet-min-width) {
+    padding-left: calc((100% - 592px) / 2);
+  }
+
+  @media (min-width: 768px) {
+    padding-left: calc((100% - 720px) / 2);
+  }
+
+  @media (min-width: $desktop-min-width) {
+    padding-left: calc((100% - 1136px) / 2);
+  }
+}
+
+@mixin width() {
+  width: 288px;
+  @media (min-width: $tablet-min-width) {
+    width: 592px;
+  }
+  @media (min-width: 768px) {
+    width: 720px;
+  }
+  @media (min-width: $desktop-min-width) {
+    width: 1136px;
+  }
+}
+
+@mixin columns-1-grid() {
+  @media (min-width: 320px) {
+    @content;
+  }
+}
+@mixin columns-2-grid() {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+@mixin columns-3-grid() {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+@mixin columns-4-grid() {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
