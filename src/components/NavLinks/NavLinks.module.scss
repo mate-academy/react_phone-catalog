@@ -1,0 +1,40 @@
+@use "/src/mixins.scss" as *;
+@use '/src/vars' as *;
+
+.nav {
+  height: $wight-48;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    gap: $wight-32;
+  }
+
+  @include on-desktop {
+    gap: $wight-64;
+    height: $wight-64;
+  }
+}
+
+.nav a {
+  text-transform: uppercase;
+  font-weight: $font-weight-800;
+  font-size: $wight-12;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  height: 100%;
+
+  color: $secondary;
+  border-bottom: none;
+  padding-bottom: $wight-4;
+  display: flex;
+  align-items: center;
+}
+
+.nav a.active {
+  color: $color-white;
+  border-bottom: $wight-3 solid $color-white;
+  padding-bottom: $wight-4;
+  display: flex;
+  align-items: center;
+}

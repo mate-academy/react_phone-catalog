@@ -1,0 +1,22 @@
+@use '/src/vars' as *;
+
+.blockInform {
+  padding: $wight-8-0;
+  display: flex;
+  flex-direction: column;
+  gap: $wight-8;
+}
+
+.information {
+  display: flex;
+  justify-content: space-between;
+}
+
+.name {
+  color: $secondary;
+
+}
+
+.value {
+ color: $color-white;
+}

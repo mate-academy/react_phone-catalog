@@ -1,0 +1,16 @@
+@use "/src/mixins.scss" as *;
+@use '/src/vars' as *;
+
+.commonButton {
+  display: flex;
+  border: none;
+  height: $wight-32;
+  width: $wight-32;
+  align-items: center;
+  justify-content: center;
+  background-color: $surface-1;
+}
+
+.commonButton img {
+  background-color: inherit;
+}

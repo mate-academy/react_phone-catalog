@@ -1,0 +1,171 @@
+@use '/src/vars' as *;
+@use "/src/mixins.scss" as *;
+
+.containerFirst {
+  height: $wight-320;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  justify-content: center;
+  background-color: black;
+  padding: 0 $wight-20;
+
+  @include on-tablet {
+    height: $wight-190;
+    flex-direction: row;
+    gap: $wight-40;
+    padding: 0;
+  }
+
+  @include on-desktop {
+    height: $wight-400;
+  }
+}
+
+.boxTitle {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-black;
+  margin-top: $wight-30;
+
+  @include on-tablet {
+    background-color: $color-dark-gray;
+    width: 50%;
+    padding: $wight-30;
+    margin: 5px;
+    border-radius: $wight-24;
+    text-align: left;
+    justify-content: space-between;
+  }
+
+  @include on-desktop {
+    padding: $wight-50;
+  }
+}
+
+.containerTitle {
+  background-color: black;
+
+  @include on-tablet {
+    background-color: $color-dark-gray;
+  }
+}
+
+.title {
+  font-weight: $font-weight-800;
+  width: 100%;
+  font-size: $wight-22;
+  background: linear-gradient(90deg, $accent, $accent-hover, $color-red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+
+  @include on-tablet {
+    font-size: $wight-22;
+  }
+
+  @include on-desktop {
+    font-size: $wight-40;
+  }
+}
+
+.smallText,
+.button {
+  display: none;
+
+  @include on-tablet {
+    display: block;
+  }
+}
+
+.smallText {
+  padding-top: $wight-10;
+
+}
+
+.smallText,
+.beyond {
+  font-size: $wight-14;
+  color: $color-grey;
+  font-weight: $font-weight-600;
+  padding-bottom: $wight-15;
+  background-color: inherit;
+
+  @include on-tablet {
+    font-size: $wight-10;
+  }
+
+  @include on-desktop {
+    font-size: $wight-20;
+  }
+}
+
+
+.button {
+  background: none;
+  height: $wight-50;
+  width: 120px;
+  border: 1px solid #444;
+  border-radius: $wight-50;
+  color: $color-white;
+  text-transform: uppercase;
+  font-size: $wight-10;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 20px $accent-hover;
+    transform: translateY(-1px);
+  }
+
+  @include on-desktop {
+    height: 70px;
+    width: 240px;
+    font-size: $wight-15;
+  }
+}
+
+
+.box {
+  background-color: inherit;
+  padding-top: $wight-30;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include on-tablet {
+    width: 50%;
+    padding: 0;
+  }
+
+  @include on-desktop {
+    gap: $wight-8;
+  }
+}
+
+.box img {
+  height: 50%;
+  background-color: inherit;
+  bottom: 0;
+  position: absolute;
+}
+
+.iphone {
+  font-size: $wight-32;
+  color: $color-white;
+  font-weight: $font-weight-600;
+  background-color: inherit;
+
+  @include on-tablet {
+    font-size: $wight-30;
+    padding-top: $wight-30;
+  }
+
+  @include on-desktop {
+    font-size: $wight-35;
+    padding-top: $wight-50;
+  }
+}

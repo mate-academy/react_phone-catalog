@@ -1,0 +1,20 @@
+@use '/src/mixins.scss' as *;
+@use '/src/vars' as *;
+
+.aboutAndTechSpecs {
+  display: flex;
+  flex-direction: column;
+  padding: $wight-56 0;
+  gap: $wight-56;
+
+  @include on-tablet {
+    gap: $wight-64;
+    padding: $wight-64 0;
+  }
+
+  @include on-desktop {
+    flex-direction: row;
+    gap: $wight-64;
+    padding: $wight-80 0;
+  }
+}

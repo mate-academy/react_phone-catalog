@@ -1,0 +1,76 @@
+@use "/src/mixins.scss" as *;
+@use '/src/vars' as *;
+
+.container {
+  @include page-grid;
+
+  gap: $wight-32;
+  color: $color-white;
+
+  @include on-desktop {
+    gap: $wight-16;
+  }
+}
+
+.cartComponent {
+  display: flex;
+  flex-direction: column;
+  padding: $wight-16;
+  background-color: $surface-1;
+  gap: $wight-16;
+
+  @include on-tablet {
+    flex-direction: row;
+    padding: $wight-24;
+    justify-content: space-between;
+    gap: $wight-24;
+  }
+}
+
+.cartContainer {
+  display: flex;
+  flex-direction: column;
+  gap: $wight-16;
+  grid-column: 1/-1;
+  
+  @include on-tablet {
+    grid-column: 1/17;
+  }
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: $wight-16;
+  background-color: inherit;
+  align-items: center;
+
+  @include on-tablet {
+    gap: $wight-24;
+  }
+}
+
+.title {
+  background-color: inherit;
+  font-size: $wight-14;
+  line-height: $wight-21;
+  cursor: pointer;
+}
+
+.picture {
+  height: $wight-66;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.price {
+  font-size: $wight-22;
+  background-color: inherit;
+
+  @include on-tablet {
+    width: $wight-80;
+    text-align: right;
+  }
+}
+

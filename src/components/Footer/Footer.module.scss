@@ -1,0 +1,67 @@
+@use "/src/mixins.scss" as *;
+@use '/src/vars' as *;
+
+.footer {
+  display: flex;
+  bottom: 0;
+  gap: $wight-32;
+  width: 100%;
+  background-color: $color-black;
+  border-top: $border-surface-2;
+  flex-direction: column;
+  padding: $wight-32 $wight-16;
+
+  @include on-tablet {
+    align-items: center;
+    padding: $wight-32;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @include content-padding-inline;
+}
+
+.containerLogo {
+  width: $wight-89;
+}
+
+.containerLogo img {
+  height: 100%;
+  width: 100%;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: $wight-16;
+
+  @include on-tablet {
+    align-items: center;
+    flex-direction: row;
+    gap: $wight-14;
+  }
+}
+
+.nav a {
+  text-transform: uppercase;
+  font-weight: $font-weight-800;
+  font-size: $wight-12;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  height: 100%;
+
+  color: $color-white;
+  border-bottom: none;
+  padding-bottom: $wight-4;
+  display: flex;
+  align-items: center;
+}
+
+.nav a.active {
+  color: $color-white;
+  border-bottom: $wight-3 solid $color-white;
+  display: flex;
+  align-items: center;
+}
+
+

@@ -1,0 +1,68 @@
+@use "/src/mixins.scss" as *;
+@use '/src/vars' as *;
+
+.itemsOnPage,
+.sortBy {
+  grid-column: span 2;
+  position: relative;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+}
+
+.button {
+  background-color: $surface-2;
+  width: 100%;
+  height: $wight-40;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $color-white;
+  padding: $wight-12 $wight-10;
+  margin-top: $wight-4;
+
+  &:hover {
+    border: $border-icons;
+  }
+
+  &:hover img {
+    opacity: 0.5;
+  }
+}
+
+.img {
+  transition: opacity 0.3s ease;
+}
+
+.activeButton {
+  border: $border-accent-hover;
+}
+
+.valueCurrent {
+  background-color: $color-black;
+  border: $border-color-black;
+}
+
+.sortList {
+  position: absolute;
+  top: 100%;
+  margin-top: $wight-4;
+  width: 100%;
+  z-index: 1;
+  border: $border-color-elements;
+  background-color: inherit;
+  padding: $wight-8 0;
+}
+
+.item {
+  cursor: pointer;
+  list-style: none;
+  padding: $wight-6 $wight-12;
+
+  &:hover {
+    color: $color-white;
+    background-color: $surface-2;
+  }
+}

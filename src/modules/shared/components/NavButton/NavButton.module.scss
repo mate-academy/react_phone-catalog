@@ -1,0 +1,44 @@
+@use '/src/vars' as *;
+@use "/src/mixins.scss" as *;
+
+.button {
+  width: $wight-32;
+  height: $wight-32;
+  color: $color-elements;
+  border: $border-surface-2;
+  cursor: pointer;
+  font-size: $wight-16;
+  transition: $all-transition;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $surface-2;
+
+  &:hover {
+    background-color: $icons;
+    color: $color-white;
+  }
+}
+
+.disabled {
+  background: none;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.img {
+  background-color: inherit;
+}
+
+.slider {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    height: 189px;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}

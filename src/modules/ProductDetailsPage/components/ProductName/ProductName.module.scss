@@ -1,0 +1,14 @@
+@use '/src/mixins.scss' as *;
+@use '/src/vars' as *;
+
+.title {
+  font-weight: $font-weight-800;
+  color: $color-white;
+  font-size: $wight-22;
+  line-height: 140%;
+
+  @include on-tablet {
+  font-size: $wight-32;
+  line-height: $wight-41;
+  }
+}

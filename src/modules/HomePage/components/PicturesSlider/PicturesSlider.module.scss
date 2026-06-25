@@ -1,0 +1,59 @@
+@use "/src/mixins.scss" as *;
+@use '/src/vars' as *;
+
+.picturesSlider {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $wight-18;
+}
+
+.sliderTrack {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  gap: $wight-16;
+
+  @include on-tablet {
+    justify-content: space-between;
+
+  }
+}
+
+.button {
+  display: none;
+  width: $wight-32;
+  border: none;
+  background-color: $surface-2;
+  color: $color-white;
+  height: $wight-320;
+
+  @include on-tablet {
+    height: $wight-190;
+    display: block;
+  }
+
+  @include on-desktop {
+    height: $wight-400;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: $wight-8;
+}
+
+.dot {
+  width: $wight-14;
+  height: $wight-4;
+  background-color: $color-elements;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.active {
+  background-color: $color-white;
+}

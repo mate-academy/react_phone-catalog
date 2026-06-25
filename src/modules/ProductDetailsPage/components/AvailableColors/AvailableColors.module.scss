@@ -1,0 +1,43 @@
+@use '/src/mixins.scss' as *;
+@use '/src/vars' as *;
+
+.availableColors {
+  display: flex;
+  flex-direction: column;
+  gap: $wight-8;
+  padding-bottom: $wight-24;
+}
+
+.titleAvailable {
+  display: flex;
+  justify-content: space-between;
+  color: $secondary;
+  font-size: $wight-12;
+}
+
+.colorsContainer {
+  display: flex;
+  gap: $wight-8;
+}
+
+.color {
+  height: $wight-32;
+  width: $wight-32;
+  border-radius: 50%;
+}
+
+.colorBorder {
+  border-radius: 50%;
+  padding: $wight-3;
+  border: $border-color-elements;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $secondary;
+  }
+}
+
+.activeColor {
+  border-color: $color-white;
+
+}

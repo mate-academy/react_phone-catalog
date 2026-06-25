@@ -1,0 +1,57 @@
+@use '/src/vars' as *;
+
+.blockButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: $wight-8;
+  height: $wight-40;
+}
+
+.productPage {
+  height: $wight-48;
+}
+
+.add {
+  background-color: $accent;
+  border: none;
+  color: $color-white;
+  width: 100%;
+
+  &:hover {
+    background-color: $accent-hover;
+  }
+}
+
+.addedToCart {
+  background-color: $surface-2;
+  cursor: not-allowed;
+
+  &:hover {
+    background-color: $surface-2;
+  }
+}
+
+.favourites {
+  height: 100%;
+  width: $wight-40;
+  background-color: $surface-2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: $all-transition;
+  border: $border-surface-2;
+
+  &:hover {
+    background-color: $icons;
+  }
+}
+
+.productPageFavourites {
+  width: $wight-48;
+}
+
+.favourites img {
+  width: $wight-16;
+  height: $wight-16;
+  background-color: inherit;
+}
