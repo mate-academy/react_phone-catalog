@@ -1,0 +1,13 @@
+@use '../../styles/variables' as *;
+
+.Right {
+  transform: rotate(180deg);
+}
+
+.Up {
+  transform: rotate(90deg);
+}
+
+.Down {
+  transform: rotate(270deg);
+}

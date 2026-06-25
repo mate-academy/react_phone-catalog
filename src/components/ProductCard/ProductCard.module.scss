@@ -1,0 +1,114 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding: 32px;
+  border: 1px solid $color_elements;
+
+}
+
+.productImage {
+  display: flex;
+  justify-content: center;
+  height: 130px;
+
+  @include hover(transform, scale(1.1));
+
+  @include on-tablet {
+    height: 202px;
+  }
+}
+
+.title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+
+  height: 58px;
+  padding-top: 16px;
+
+  color: $color_primary;
+
+  @include hover(color, $color_red);
+}
+
+.prices {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.newPrice {
+  color: $color_primary;
+}
+
+.oldPrice {
+  position: relative;
+
+  font-family: Mont, serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 100%;
+  color: $color_secondary;
+  letter-spacing: 0;
+
+  &::after {
+    pointer-events: none;
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+
+    width: 100%;
+    height: 1.5px;
+
+    background: currentColor;
+  }
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-block: 8px;
+}
+
+.detailsInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detailTitle {
+  color: $color_secondary;
+}
+
+.detailText {
+  color: $color_primary;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+
+  & button:first-child {
+    flex: 4;
+  }
+
+  & button:last-child {
+    flex: 1;
+  }
+}
+
+.horizontalLine {
+  content: '';
+  width: 100%;
+  border-bottom: 1px solid $color_elements;
+}

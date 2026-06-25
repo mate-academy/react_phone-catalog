@@ -1,0 +1,30 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.addToCartButton {
+  cursor: pointer;
+
+  width: 100%;
+  height: 40px;
+  border: none;
+
+  color: $color_white;
+
+  background-color: $color_primary;
+
+  @include hover(box-shadow, 0 3px 13px 0 #17203166);
+}
+
+.selected {
+  cursor: pointer;
+
+  width: 100%;
+  height: 40px;
+  border: 1px solid $color_elements;
+
+  color: $color_green;
+
+  background-color: transparent;
+
+  @include hover(box-shadow, 0 3px 13px 0 #17203166);
+}

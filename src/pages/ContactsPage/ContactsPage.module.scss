@@ -1,0 +1,41 @@
+.contactsPage {
+  font-family: Mont;
+  padding-block: 24px 56px;
+}
+
+.title {
+  color: #313237;
+  margin-bottom: 24px;
+}
+
+.content {
+  color: #313237;
+  max-width: 640px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  margin-top: 24px;
+  padding-left: 20px;
+}
+
+.iconBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  width: 24px;
+}
+
+a {
+  transition: 0.3s ease;
+}
+
+a:hover {
+  color: #EB5757;
+}

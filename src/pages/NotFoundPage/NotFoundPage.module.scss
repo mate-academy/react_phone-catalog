@@ -1,0 +1,9 @@
+.imageBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__image {
+    width: 500px;
+  }
+}
