@@ -1,5 +1,5 @@
-@use "../../styles/mixins" as *;
-@use "../../styles/variables" as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
 
 .navigation {
   display: none;
@@ -32,7 +32,7 @@
   color: $color_primary;
 
   &::after {
-    content: "";
+    content: '';
 
     position: absolute;
     bottom: -15.5px;
@@ -51,7 +51,6 @@
 }
 
 .navigationLinkActiveBurger {
-
   &::after {
     bottom: -6px;
     height: 2px;
@@ -72,7 +71,7 @@
 
   &Active {
     &::after {
-      content: "";
+      content: '';
 
       position: absolute;
       bottom: 0;
@@ -87,9 +86,8 @@
   }
 }
 
-
 .buttonActionCount {
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   position: absolute;
   top: 20px;
   right: 83px;
@@ -107,7 +105,7 @@
   font-size: 9px;
   color: $color_white;
 
-  background-color: #EB5757;
+  background-color: #eb5757;
 
   @include on-tablet {
     top: 10px;

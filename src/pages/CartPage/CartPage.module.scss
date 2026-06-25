@@ -1,8 +1,8 @@
-@use "../../styles/variables" as *;
-@use "../../styles/mixins" as *;
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .CartPage {
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   padding-top: 24px;
   padding-bottom: 56px;
 
