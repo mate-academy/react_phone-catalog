@@ -64,6 +64,7 @@ module.exports = {
     'implicit-arrow-linebreak:': 0,
 
     // React
+    'react/react-in-jsx-scope': 'off',
     'react/prop-types': 0,
     'react/require-default-props': 0,
     'import/prefer-default-export': 0,
@@ -84,7 +85,6 @@ module.exports = {
       allowChildren: true,
     }],
     'react/jsx-uses-react': 'off',
-    'react/react-in-jsx-scope': 'off',
 
     // Typescript
     '@typescript-eslint/explicit-function-return-type': 'off',

@@ -1,0 +1,145 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.footer {
+  box-shadow: 0 -1px 0 0 $color-elements;
+  margin-top: auto;
+}
+
+.container {
+  @include page-container;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 32px;
+  padding-bottom: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    padding-top: 42.5px;
+    padding-bottom: 42.5px;
+    justify-content: space-between;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-bottom: 32px;
+
+  img {
+    width: 64px;
+    height: 22px;
+    object-fit: contain;
+  }
+
+  @include hover-scale;
+
+  @include on-tablet {
+    margin-bottom: 0;
+    margin-right: 0;
+    justify-content: flex-start;
+  }
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 13.5px;
+    margin: 0;
+    justify-content: flex-start;
+    flex: 1;
+  }
+
+  @include on-desktop {
+    gap: 107px;
+  }
+}
+
+.navLink {
+  display: block;
+  font-family: $font-family;
+  font-size: $font-size-uppercase;
+  font-weight: 800;
+  line-height: $line-height-uppercase;
+  letter-spacing: $letter-spacing-uppercase;
+  text-transform: uppercase;
+  color: $color-secondary;
+  text-decoration: none;
+
+  @include hover-transition(color);
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.backToTopArrow {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-icons;
+  flex-shrink: 0;
+  transition: border-color $transition, background-color $transition;
+
+  img {
+    width: 16px;
+    height: 16px;
+    transform: rotate(180deg);
+    transition: filter $transition;
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  align-self: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: $font-family;
+  font-size: $font-size-uppercase;
+  font-weight: 800;
+  line-height: $line-height-uppercase;
+  letter-spacing: $letter-spacing-uppercase;
+  text-transform: uppercase;
+  color: $color-secondary;
+
+  @include hover-transition(color);
+
+  &:hover {
+    color: $color-primary;
+
+    .backToTopArrow {
+      border-color: $color-primary;
+    }
+  }
+
+  &:active {
+    .backToTopArrow {
+      background-color: $color-primary;
+      border-color: $color-primary;
+
+      img {
+        filter: invert(1);
+      }
+    }
+  }
+
+  @include on-tablet {
+    flex-shrink: 0;
+  }
+}
