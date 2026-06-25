@@ -1,0 +1,52 @@
+@use '../../styles/grid' as *;
+@use '../../styles/breakpoints' as *;
+
+.productlist {
+  row-gap: 40px;
+
+  @include grid;
+}
+
+.productItem {
+  @include span(6, 6, 4);
+}
+
+.box {
+  @include container;
+
+  margin-bottom: 80px;
+}
+
+.title {
+  @include span(24);
+
+  margin: 0;
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1%;
+
+  color: var(--color-primary);
+
+  @include tablet {
+    @include span(8);
+  }
+
+  @include mobile {
+    @include span(4);
+
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.lengthitm {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+
+  color: var(--color-secondary);
+}

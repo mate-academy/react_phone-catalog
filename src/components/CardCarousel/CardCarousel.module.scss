@@ -1,0 +1,92 @@
+@use '../../styles/grid' as *;
+@use '../../styles/breakpoints' as *;
+
+.sliderSection {
+  @include container;
+
+  margin-top: 80px;
+
+  margin-bottom: 80px;
+}
+
+.header {
+  @include span(24, 12, 4);
+  @include grid;
+
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.slider {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: $gutter;
+
+  grid-auto-columns: calc((100% - 23 * #{$gutter}) / 24 * 6 + 5 * #{$gutter});
+
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
+  padding-bottom: 8px;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: 1199px) {
+    grid-auto-columns: calc((100% - 11 * #{$gutter}) / 12 * 5 + 4 * #{$gutter});
+  }
+
+  @media (max-width: 639px) {
+    grid-auto-columns: calc((100% - 3 * #{$gutter}) / 4 * 3 + 2 * #{$gutter});
+  }
+}
+
+.titleh2 {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  margin: 0;
+
+  color: var(--color-primary);
+
+  @include span(18, 9, 3);
+
+  @include mobile {
+  font-size: 22px;
+  line-height: 140%;
+  width: 180px;
+  }
+}
+
+.naxigatearrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  border: 1px solid var(--color-elements);
+  transition: border-color 0.3s ease;
+
+  &:hover {
+  border-color: var(--color-icons);
+  }
+}
+
+.buttons {
+  @include span(6, 3, 1);
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
