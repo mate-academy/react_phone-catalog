@@ -1,0 +1,123 @@
+.main {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+
+  @media (max-width: 640px) {
+    padding: 24px 16px 64px;
+  }
+}
+
+.pageHeader {
+  margin-bottom: 32px;
+}
+
+.pageTitle {
+  font-family: var(--font-bold);
+  font-size: 48px;
+  color: var(--color-text-primary);
+  margin: 0 0 8px;
+
+  @media (max-width: 640px) { font-size: 32px; }
+}
+
+.count {
+  font-family: var(--font-regular);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.selectGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.selectLabel {
+  font-family: var(--font-semibold);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.select {
+  height: 40px;
+  min-width: 160px;
+  padding: 0 36px 0 12px;
+  background-color: var(--color-bg-1);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%2375767f' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  appearance: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-semibold);
+  font-size: 14px;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: border-color 0.2s;
+
+  option {
+    background: var(--color-bg-1);
+    color: var(--color-text-primary);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-border-hover);
+  }
+}
+
+.searchGroup {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.searchInput {
+  height: 40px;
+  padding: 0 16px;
+  background: var(--color-bg-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-regular);
+  font-size: 14px;
+  color: var(--color-text-primary);
+  width: 100%;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: var(--color-text-secondary);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.emptyMsg {
+  font-family: var(--font-semibold);
+  font-size: 20px;
+  color: var(--color-text-primary);
+  text-align: center;
+  padding: 80px 0;
+}

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Dark background circle -->
+  <circle cx="16" cy="16" r="16" fill="#161827"/>
+
+  <!-- Letter N — Nice -->
+  <text
+    x="5"
+    y="22"
+    font-family="Arial, sans-serif"
+    font-weight="900"
+    font-size="18"
+    fill="#905bff"
+  >N</text>
+
+  <!-- Letter G — Gadgets -->
+  <text
+    x="16"
+    y="22"
+    font-family="Arial, sans-serif"
+    font-weight="900"
+    font-size="18"
+    fill="#f1f2f9"
+  >G</text>
+</svg>

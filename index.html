@@ -3,7 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <title>Nice Gadgets</title>
+    <link rel="icon" type="image/svg+xml" href="/public/img/favicon.svg" />
+    <script>
+      (function () {
+        var redirect = sessionStorage.getItem('redirect');
+        if (redirect) {
+          sessionStorage.removeItem('redirect');
+          var base = '/react_phone-catalog';
+          var route = redirect.startsWith(base)
+            ? redirect.slice(base.length)
+            : redirect;
+          window.history.replaceState(null, null, base + route);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
