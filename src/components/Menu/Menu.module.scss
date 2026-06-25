@@ -1,0 +1,40 @@
+.menu {
+  position: fixed;
+  inset: 0;
+  background-color: #fff;
+  height: 100vh;
+  width: 100%;
+  transition: transform 0.3s ease-out;
+  transform: translateX(100%);
+
+  &--open {
+    transform: translateX(0);
+  }
+
+  z-index: 100;
+
+  &__button-links {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    border-top: 1px solid #e2e6e9;
+  }
+
+  &__button-link {
+    width: 50%;
+    height: 64px;
+    max-height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: 2px solid transparent;
+    transition: border 0.3s;
+
+    &:active {
+      border-bottom-color: #313237;
+    }
+  }
+}

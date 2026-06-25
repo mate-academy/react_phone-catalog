@@ -1,0 +1,27 @@
+.info-block {
+  &__title {
+    width: 100%;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 32px;
+  }
+
+  &__about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 30px;
+  }
+}
