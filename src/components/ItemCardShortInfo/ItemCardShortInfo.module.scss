@@ -1,5 +1,5 @@
-@use "../../styles/variables" as *;
-@use "../../styles/mixins" as *;
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .Title {
   color: #313131;
@@ -189,14 +189,43 @@
 
 .ContentWrapper {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
 
   @include on-desktop {
+    flex-direction: row;
+    justify-content: space-between;
     gap: 64px;
   }
 }
 
+.AdditionalInfoWrapper {
+  width: 100%;
+
+  @include on-tablet {
+    width: 50%;
+  }
+
+  @include on-desktop {
+    width: 45%;
+  }
+}
+
 .AdditionalInfoContainer {
-  width: 512px;
+  width: 100%;
+
+  @include on-tablet {
+    width: 360px;
+  }
+
+  @include on-desktop {
+    width: 320px;
+  }
 }
 
 .HorizontalLine {
