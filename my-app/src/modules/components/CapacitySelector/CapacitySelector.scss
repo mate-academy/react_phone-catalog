@@ -1,0 +1,42 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.capacity-selector {
+  &__label {
+    @include text-style($small-text);
+    color: $color-secondary;
+    margin: 0 0 $spacing-sm;
+  }
+
+  &__options {
+    display: flex;
+    gap: $spacing-sm;
+    flex-wrap: wrap;
+  }
+
+  &__option {
+    @include text-style($button-text);
+    color: $color-white;
+    background: transparent;
+    border: 1px solid $color-elements;
+    border-radius: $radius-sm;
+    padding: $spacing-xs $spacing-md;
+    cursor: pointer;
+    transition:
+      background $transition-fast,
+      border-color $transition-fast,
+      color $transition-fast;
+    min-width: 56px;
+    text-align: center;
+
+    &:hover {
+      border-color: $color-white;
+    }
+
+    &--active {
+      background: $color-white;
+      border-color: $color-white;
+      color: $color-black;
+    }
+  }
+}

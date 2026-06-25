@@ -1,0 +1,43 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+
+  &__label {
+    @include text-style($small-text);
+    color: $color-secondary;
+  }
+
+  &__select {
+    @include text-style($button-text);
+    color: $dropdown-text;
+    background-color: $dropdown-bg;
+    border: 1px solid $dropdown-border;
+    border-radius: $dropdown-radius;
+    padding: 0 $spacing-md;
+    height: 40px;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%23f1f3f9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right $spacing-sm center;
+    padding-right: $spacing-xl;
+
+    &:hover {
+      border-color: $color-white;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $color-white;
+    }
+
+    option {
+      background-color: $dropdown-bg;
+      color: $dropdown-text;
+    }
+  }
+}

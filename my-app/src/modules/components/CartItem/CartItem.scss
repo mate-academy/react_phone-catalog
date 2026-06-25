@@ -1,0 +1,130 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.cart-item {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto auto;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md 0;
+  border-bottom: 1px solid $color-elements;
+
+  @include phone {
+    grid-template-columns: auto auto 1fr;
+    grid-template-rows: auto auto;
+    gap: $spacing-sm;
+  }
+
+  &__remove {
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    opacity: 0.6;
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: $radius-sm;
+    background: $color-surface-1;
+
+    @include phone {
+      width: 66px;
+      height: 66px;
+    }
+  }
+
+  &__name {
+    @include text-style($button-text);
+    color: $color-white;
+    margin: 0;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-accent;
+    }
+
+    @include phone {
+      grid-column: 3;
+      grid-row: 1;
+    }
+  }
+
+  &__stepper {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    flex-shrink: 0;
+
+    @include phone {
+      grid-column: 2 / 4;
+      grid-row: 2;
+    }
+  }
+
+  &__stepper-btn {
+    @include text-style($button-text);
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-elements;
+    border-radius: $radius-sm;
+    background: transparent;
+    color: $color-white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color $transition-fast;
+
+    &:hover:not(:disabled) {
+      border-color: $color-white;
+    }
+
+    &:disabled {
+      color: $color-secondary;
+      border-color: $color-elements;
+      cursor: default;
+    }
+  }
+
+  &__quantity {
+    @include text-style($button-text);
+    color: $color-white;
+    min-width: 20px;
+    text-align: center;
+  }
+
+  &__price {
+    @include text-style($h4-desktop);
+    color: $color-white;
+    margin: 0;
+    flex-shrink: 0;
+    text-align: right;
+    min-width: 60px;
+
+    @include phone {
+      grid-column: 3;
+      grid-row: 2;
+      text-align: right;
+    }
+  }
+}

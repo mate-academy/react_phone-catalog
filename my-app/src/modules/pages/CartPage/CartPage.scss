@@ -1,0 +1,87 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.cart-page {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+
+  &__title {
+    @include text-style($h1-desktop);
+    color: $color-white;
+    margin: 0;
+
+    @include phone {
+      @include text-style($h1-mobile);
+    }
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 368px;
+    gap: $spacing-2xl;
+    align-items: start;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+    }
+
+    @include phone {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__summary {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    padding: $spacing-lg;
+    background: $color-surface-1;
+    border: 1px solid $color-elements;
+    border-radius: $radius-md;
+
+    @include tablet {
+      max-width: 368px;
+    }
+  }
+
+  &__total-price {
+    @include text-style($h2-desktop);
+    color: $color-white;
+    text-align: center;
+  }
+
+  &__total-label {
+    @include text-style($body-text);
+    color: $color-secondary;
+    margin: 0;
+    text-align: center;
+  }
+
+  &__summary-divider {
+    height: 1px;
+    background: $color-elements;
+  }
+
+  &__checkout-btn {
+    @include text-style($button-text);
+    width: 100%;
+    height: 48px;
+    padding-inline: $spacing-md;
+    border-radius: $radius-md;
+    border: none;
+    cursor: pointer;
+    background: $btn-primary-bg;
+    color: $btn-primary-text;
+    transition: background $transition-fast;
+
+    &:hover {
+      background: $btn-primary-hover;
+    }
+  }
+}

@@ -1,0 +1,74 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.product-slider {
+  &__header {
+    @include flex-between;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__title {
+    @include text-style($h2-desktop);
+    color: $color-white;
+    margin: 0;
+
+    @include phone {
+      @include text-style($h2-mobile);
+    }
+  }
+
+  &__arrows {
+    display: flex;
+    gap: $spacing-sm;
+  }
+
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-surface-2;
+    border: 1px solid $color-elements;
+    border-radius: $radius-md;
+    color: $color-white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: border-color $transition-fast, background-color $transition-fast;
+
+    &:hover:not(:disabled) {
+      border-color: $color-white;
+    }
+
+    &:disabled {
+      color: $color-secondary;
+      border-color: $color-elements;
+      cursor: default;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: $grid-gutter;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__item {
+    flex: 0 0 212px;
+    scroll-snap-align: start;
+
+    @include tablet {
+      flex: 0 0 237px;
+    }
+
+    @include desktop-big {
+      flex: 0 0 272px;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.catalog-page {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+
+  &__title {
+    @include text-style($h1-desktop);
+    color: $color-white;
+    margin: 0;
+
+    @include phone {
+      @include text-style($h1-mobile);
+    }
+  }
+
+  &__count {
+    @include text-style($body-text);
+    color: $color-secondary;
+    margin: -$spacing-lg 0 0;
+  }
+
+  &__controls {
+    display: flex;
+    gap: $spacing-xl;
+
+    @include phone {
+      flex-direction: column;
+      gap: $spacing-md;
+    }
+  }
+
+  &__loading {
+    @include text-style($body-text);
+    color: $color-secondary;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $grid-gutter;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include desktop-big {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}

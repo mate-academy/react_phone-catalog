@@ -1,0 +1,34 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+
+  &__segment {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &__separator {
+    @include text-style($small-text);
+    color: $color-secondary;
+  }
+
+  &__link {
+    @include text-style($small-text);
+    color: $color-secondary;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-white;
+    }
+  }
+
+  &__current {
+    @include text-style($small-text);
+    color: $color-white;
+  }
+}

@@ -1,0 +1,44 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.tech-specs {
+  &__title {
+    @include text-style($h3-desktop);
+    color: $color-white;
+    margin: 0 0 $spacing-lg;
+
+    @include phone {
+      @include text-style($h3-mobile);
+    }
+  }
+
+  &__table {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    gap: $spacing-md;
+    padding: $spacing-sm 0;
+    border-bottom: 1px solid $color-elements;
+
+    &:first-child {
+      border-top: 1px solid $color-elements;
+    }
+  }
+
+  &__label {
+    @include text-style($body-text);
+    color: $color-secondary;
+    flex-shrink: 0;
+  }
+
+  &__value {
+    @include text-style($body-text);
+    color: $color-white;
+    text-align: right;
+  }
+}

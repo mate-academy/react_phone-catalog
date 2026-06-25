@@ -1,0 +1,211 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+$header-height: 64px;
+$header-height-mobile: 48px;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: $z-header;
+  height: $header-height;
+  display: flex;
+  align-items: stretch;
+  background-color: $color-black;
+  border-bottom: 1px solid $color-elements;
+
+  @include phone {
+    height: $header-height-mobile;
+  }
+
+  @include tablet {
+    height: $header-height-mobile;
+  }
+}
+
+// ── Inner container (constrains content width on ultra-wide screens) ──────────
+
+.header__inner {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+// ── Logo ──────────────────────────────────────────────────────────────────────
+
+.header__logo-link {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding-inline: $spacing-lg;
+}
+
+.header__logo {
+  width: 80px;
+  height: 28px;
+  object-fit: contain;
+}
+
+// ── Nav ───────────────────────────────────────────────────────────────────────
+
+.header__nav {
+  display: none;
+
+  @include tablet {
+    display: flex;
+    align-items: stretch;
+  }
+
+  @include desktop-big {
+    display: flex;
+    align-items: stretch;
+  }
+}
+
+.header__nav-list {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+  gap: 0;
+
+  li {
+    display: flex;
+  }
+
+  @include tablet {
+    gap: $spacing-xl;
+  }
+
+  @include desktop-big {
+    gap: $spacing-3xl;
+  }
+}
+
+.header__nav-link {
+  display: flex;
+  align-items: center;
+  padding-block: 0;
+  @include text-style($uppercase-label);
+  color: $color-secondary;
+  text-transform: uppercase;
+  text-decoration: none;
+  position: relative;
+  transition: color $transition-fast;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: $color-white;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform $transition-normal;
+  }
+
+  &:hover {
+    color: $color-white;
+  }
+
+  &:hover::after,
+  &--active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  &--active {
+    color: $color-white;
+  }
+}
+
+// ── Actions bar ───────────────────────────────────────────────────────────────
+
+.header__actions {
+  display: flex;
+  align-items: stretch;
+  margin-left: auto;
+  height: 100%;
+}
+
+.header__icon-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $header-height;
+  height: 100%;
+  border-left: 1px solid $color-elements;
+  transition: background-color $transition-fast;
+
+  // hide favourites + cart on mobile — shown in BurgerMenu
+  &:not(.header__burger) {
+    @include phone {
+      display: none;
+    }
+  }
+
+  &:hover {
+    background-color: $color-surface-1;
+  }
+
+  &--active {
+    border-bottom: 3px solid $color-white;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  @include tablet {
+    width: $header-height-mobile;
+  }
+}
+
+// ── Badge ─────────────────────────────────────────────────────────────────────
+
+.header__badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: $radius-full;
+  background-color: $color-red;
+  color: $color-white;
+  font-family: $font-bold;
+  font-size: 10px;
+  line-height: 16px;
+  text-align: center;
+}
+
+// ── Burger button (mobile only) ───────────────────────────────────────────────
+
+.header__burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: $header-height-mobile;
+  height: 100%;
+  border-left: 1px solid $color-elements;
+  background: none;
+  cursor: pointer;
+  transition: background-color $transition-fast;
+
+  @include phone {
+    display: flex;
+  }
+
+  &:hover,
+  &--active {
+    background-color: $color-black;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}

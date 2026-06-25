@@ -1,0 +1,222 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.product-details-page {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+
+  &__back {
+    @include text-style($small-text);
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    color: $color-secondary;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: color $transition-fast;
+    width: fit-content;
+
+    &:hover {
+      color: $color-white;
+    }
+  }
+
+  &__title {
+    @include text-style($h2-desktop);
+    color: $color-white;
+    margin: 0;
+
+    @include phone {
+      @include text-style($h2-mobile);
+    }
+  }
+
+  &__main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-2xl;
+    align-items: start;
+
+    @include phone {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__gallery {
+    // ImageGallery fills the cell
+  }
+
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+
+  &__divider {
+    height: 1px;
+    background: $color-elements;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &__price-current {
+    @include text-style($h3-desktop);
+    color: $color-white;
+  }
+
+  &__price-regular {
+    @include text-style($h4-desktop);
+    color: $color-secondary;
+    text-decoration: line-through;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-sm;
+  }
+
+  &__btn-cart {
+    @include text-style($button-text);
+    flex: 1;
+    height: 48px;
+    padding-inline: $spacing-md;
+    border-radius: $radius-md;
+    border: none;
+    cursor: pointer;
+    background: $btn-primary-bg;
+    color: $btn-primary-text;
+    transition: background $transition-fast;
+
+    &:hover:not(:disabled) {
+      background: $btn-primary-hover;
+    }
+
+    &--added,
+    &:disabled {
+      background: $color-surface-2;
+      color: $color-green;
+      cursor: default;
+    }
+  }
+
+  &__btn-fav {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: $radius-md;
+    border: 1px solid $color-elements;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color $transition-fast;
+
+    &:hover {
+      border-color: $color-white;
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__short-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: $spacing-xs;
+  }
+
+  &__spec-row {
+    @include flex-between;
+    padding: $spacing-xs 0;
+  }
+
+  &__spec-label {
+    @include text-style($small-text);
+    color: $color-secondary;
+  }
+
+  &__spec-value {
+    @include text-style($small-text);
+    color: $color-white;
+    text-align: right;
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-2xl;
+    align-items: start;
+
+    @include phone {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__section-title {
+    @include text-style($h2-desktop);
+    color: $color-white;
+    margin: 0 0 $spacing-lg;
+
+    @include phone {
+      @include text-style($h2-mobile);
+    }
+  }
+
+  &__description-section {
+    margin-bottom: $spacing-xl;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__description-title {
+    @include text-style($h4-desktop);
+    color: $color-white;
+    margin: 0 0 $spacing-md;
+  }
+
+  &__description-text {
+    @include text-style($body-text);
+    color: $color-secondary;
+    margin: 0 0 $spacing-sm;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-4xl;
+    color: $color-secondary;
+    @include text-style($body-text);
+
+    button {
+      @include text-style($button-text);
+      color: $color-accent;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  &__suggested {
+    margin-top: $spacing-xl;
+  }
+}

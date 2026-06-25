@@ -1,0 +1,153 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.card {
+  box-sizing: border-box;
+  background-color: $color-surface-1;
+  border: 1px solid $card-border;
+  border-radius: $card-radius;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    padding: $card-padding;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &__link {
+    display: contents;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__image {
+    width: 148px;
+    height: 129px;
+    padding-bottom: $spacing-sm;
+    align-self: center;
+    object-fit: contain;
+
+    @include tablet {
+      width: 173px;
+      height: 202px;
+    }
+
+    @include desktop-big {
+      width: 208px;
+      height: 196px;
+      padding-bottom: $spacing-lg;
+    }
+  }
+
+  &__title {
+    @include text-style($body-text);
+    padding-bottom: $spacing-sm;
+    min-height: 42px; // reserve space for 2 lines so all cards align
+  }
+
+  &__price {
+    display: flex;
+    gap: $spacing-sm;
+    align-items: baseline;
+    padding-bottom: $spacing-sm;
+  }
+
+  &__price-current {
+    @include text-style($h4-desktop);
+    color: $color-white;
+  }
+
+  &__price-full {
+    @include text-style($body-text);
+    color: $color-secondary;
+    text-decoration: line-through;
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background-color: $color-elements;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: $spacing-sm;
+  }
+
+  &__spec-name {
+    @include text-style($small-text);
+    color: $color-secondary;
+  }
+
+  &__spec-value {
+    @include text-style($small-text);
+    color: $color-white;
+    text-align: right;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: $spacing-sm;
+    padding-top: $spacing-sm;
+    margin-top: auto;
+  }
+
+  &__button-cart {
+    flex: 1;
+    height: 40px;
+    @include text-style($button-text);
+    color: $btn-primary-text;
+    background-color: $btn-primary-bg;
+    border: none;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: $btn-primary-hover;
+    }
+
+    &--added {
+      background-color: transparent;
+      border: 1px solid $color-elements;
+      color: $color-green;
+
+      &:hover {
+        background-color: transparent;
+        border-color: $color-green;
+      }
+    }
+  }
+
+  &__button-like {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-surface-2;
+    border: 1px solid $color-elements;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition: border-color $transition-fast;
+
+    &:hover {
+      border-color: $color-white;
+    }
+
+    &--active {
+      background-color: $color-elements;
+      border-color: $color-elements;
+    }
+  }
+
+  &__button-like-icon {
+    width: 16px;
+    height: 16px;
+  }
+}

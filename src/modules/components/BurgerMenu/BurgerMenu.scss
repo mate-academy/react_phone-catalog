@@ -1,0 +1,120 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+$header-height-mobile: 48px;
+
+.burger-overlay {
+  display: none;
+  position: fixed;
+  inset: $header-height-mobile 0 0 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: $z-burger - 1;
+  opacity: 0;
+  transition: opacity $transition-normal;
+
+  @include phone {
+    display: block;
+  }
+
+  &--active {
+    opacity: 1;
+  }
+}
+
+.burger-menu {
+  position: fixed;
+  top: $header-height-mobile;
+  right: 0;
+  width: 100%;
+  height: calc(100dvh - #{$header-height-mobile});
+  background-color: $color-black;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform $transition-normal;
+  z-index: $z-burger;
+  overflow-y: auto;
+
+  &--open {
+    transform: translateX(0);
+  }
+}
+
+.burger-menu__nav {
+  flex: 1;
+}
+
+.burger-menu__list {
+  display: flex;
+  flex-direction: column;
+  padding-top: $spacing-lg;
+}
+
+.burger-menu__item {
+  // no separators — reference design uses only spacing between items
+}
+
+.burger-menu__link {
+  display: block;
+  padding: $spacing-xl $spacing-md;
+  @include text-style($uppercase-label);
+  color: $color-secondary;
+  text-transform: uppercase;
+  text-align: center;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-white;
+  }
+
+  &--active {
+    color: $color-white;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 2px;
+  }
+}
+
+.burger-menu__bottom {
+  display: flex;
+  border-top: 1px solid $color-elements;
+}
+
+.burger-menu__icon-btn {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  transition: background-color $transition-fast;
+
+  &:first-child {
+    border-right: 1px solid $color-elements;
+  }
+
+  &:hover {
+    background-color: $color-surface-2;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.burger-menu__badge {
+  position: absolute;
+  top: 12px;
+  right: calc(50% - 16px);
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: $radius-full;
+  background-color: $color-red;
+  color: $color-white;
+  font-family: $font-bold;
+  font-size: 10px;
+  line-height: 16px;
+  text-align: center;
+}

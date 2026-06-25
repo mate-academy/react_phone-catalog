@@ -1,0 +1,57 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.shop-by-category {
+  &__title {
+    @include text-style($h2-desktop);
+    color: $color-white;
+    margin: 0 0 $spacing-xl;
+
+    @include phone {
+      @include text-style($h2-mobile);
+    }
+  }
+
+  &__grid {
+    display: flex;
+    flex-direction: row;
+    gap: $grid-gutter;
+
+    @include phone {
+      flex-direction: column;
+    }
+  }
+
+  &__item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    background-color: $color-surface-2;
+    border-radius: $radius-md;
+    transition: opacity $transition-fast;
+
+    .shop-by-category__item:hover & {
+      opacity: 0.8;
+    }
+  }
+
+  &__name {
+    @include text-style($h4-desktop);
+    color: $color-white;
+    margin: $spacing-lg 0 $spacing-xs;
+  }
+
+  &__count {
+    @include text-style($body-text);
+    color: $color-secondary;
+    margin: 0;
+  }
+}

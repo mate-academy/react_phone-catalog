@@ -1,0 +1,105 @@
+// =============================================================================
+// _mixins.scss — Responsive breakpoints + typography helper
+// Import in every component SCSS: @use '../../styles/mixins' as *;
+// =============================================================================
+
+@use 'sass:map';
+@use 'variables' as *;
+
+// =============================================================================
+// BREAKPOINTS
+// Mobile-first: write base styles for mobile, then override upward.
+//
+// Usage:
+//   .foo { font-size: 14px; }               ← mobile base
+//   @include tablet { .foo { font-size: 16px; } }
+//   @include desktop-big { .foo { font-size: 18px; } }
+// =============================================================================
+
+@mixin phone {
+  @media (min-width: 320px) and (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 640px) and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (width: 1200px) {
+    @content;
+  }
+}
+
+@mixin desktop-big {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+// =============================================================================
+// TYPOGRAPHY
+// Usage: @include text-style($h1-desktop);
+// =============================================================================
+
+@mixin text-style($map) {
+  font-family:    map.get($map, font-family);
+  font-size:      map.get($map, size);
+  line-height:    map.get($map, line-height);
+
+  @if map.has-key($map, letter-spacing) {
+    letter-spacing: map.get($map, letter-spacing);
+  }
+}
+
+// =============================================================================
+// LAYOUT — page-level horizontal padding
+// Usage: @include page-padding;
+// =============================================================================
+
+@mixin page-padding {
+  padding-inline: $padding-mobile;
+
+  @include tablet {
+    padding-inline: $padding-tablet;
+  }
+
+  @include desktop-big {
+    padding-inline: $padding-desktop;
+  }
+}
+
+// =============================================================================
+// VISUALLY HIDDEN — accessible hide (screen readers still read it)
+// =============================================================================
+
+@mixin visually-hidden {
+  position:   absolute;
+  width:      1px;
+  height:     1px;
+  padding:    0;
+  margin:     -1px;
+  overflow:   hidden;
+  clip:       rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border:     0;
+}
+
+// =============================================================================
+// FLEX UTILS
+// =============================================================================
+
+@mixin flex-center {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+}

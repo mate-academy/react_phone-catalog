@@ -1,0 +1,22 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.loader {
+  @include flex-center;
+  padding: $spacing-4xl;
+
+  &__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid $color-elements;
+    border-top-color: $color-accent;
+    border-radius: $radius-full;
+    animation: loader-spin 0.8s linear infinite;
+  }
+}
+
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

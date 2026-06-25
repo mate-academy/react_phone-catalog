@@ -1,0 +1,26 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-mobile;
+
+  @include tablet {
+    gap: $gap-tablet;
+  }
+
+  @include desktop-big {
+    gap: $gap-desktop;
+  }
+
+  &__title {
+    @include text-style($h1-mobile);
+    color: $color-white;
+    margin: 0;
+
+    @include desktop-big {
+      @include text-style($h1-desktop);
+    }
+  }
+}
