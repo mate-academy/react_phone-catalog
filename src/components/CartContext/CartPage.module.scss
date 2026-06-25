@@ -1,0 +1,265 @@
+.cartPage {
+  min-height: 100vh;
+  padding: 24px 0 80px;
+  color: #fff;
+  background-color: #0f1117;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.backButton {
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 20px;
+  padding: 0;
+  border: none;
+  font-size: 12px;
+  color: #75767f;
+  background: none;
+  width: fit-content;
+
+  &:hover {
+    color: #ffffff;
+  }
+}
+
+.title {
+  margin-bottom: 32px;
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+
+  @media (max-width: 576px) {
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
+}
+
+.content {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.itemsList {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cartItem {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  padding: 24px;
+  border: 1px solid #323542;
+  border-radius: 0;
+  background: #161921;
+  position: relative;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    padding-top: 40px; // Место для кнопки удаления сверху
+  }
+
+  .removeBtn {
+    cursor: pointer;
+    padding: 0;
+    border: none;
+    opacity: 0.5;
+    background: none;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: 576px) {
+      position: absolute;
+      top: 12px;
+      left: 16px;
+    }
+  }
+
+  // 1. Сначала объявляем базовые стили контента и самого имени товара
+  .itemInfo {
+    display: flex;
+    flex: 1;
+    gap: 24px;
+    align-items: center;
+    pointer-events: none;
+
+    @media (max-width: 576px) {
+      gap: 16px;
+      width: 100%;
+    }
+
+    .itemImage {
+      width: 66px;
+      height: 66px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .itemName {
+      font-size: 14px;
+      line-height: 21px;
+      color: #f1f2f9;
+      margin: 0;
+      text-decoration: none !important;
+    }
+  }
+
+  // 2. Ссылку ставим ниже, чтобы её правила для :hover корректно переопределяли свойства базового .itemName
+  a {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    cursor: pointer;
+
+    &, &:link, &:visited, &:hover, &:active, &:focus {
+      text-decoration: none !important;
+      border-bottom: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+      color: inherit !important;
+    }
+
+    &:hover {
+      .itemName {
+        color: #a378ff;
+        transition: color 0.2s ease;
+      }
+    }
+  }
+}
+
+.rightBlock {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+
+  @media (max-width: 576px) {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0;
+    border-top: 1px solid #323542;
+    padding-top: 12px;
+  }
+
+  .itemPrice {
+    width: 80px;
+    font-size: 20px;
+    font-weight: 800;
+    text-align: right;
+
+    @media (max-width: 576px) {
+      width: auto;
+    }
+  }
+}
+
+.quantityControls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  .qtyBtn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #4a4d58;
+    border-radius: 50%;
+    color: #fff;
+    background: transparent;
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.2;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: #fff;
+    }
+  }
+
+  .qtyValue {
+    width: 16px;
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+.checkoutPanel {
+  width: 368px;
+  padding: 24px;
+  border: 1px solid #323542;
+  text-align: center;
+  background: #161921;
+
+  @media (max-width: 992px) {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .totalPrice {
+    margin-bottom: 8px;
+    font-size: 32px;
+    font-weight: 800;
+  }
+
+  .totalCount {
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: #75767f;
+  }
+
+  .divider {
+    height: 1px;
+    margin-bottom: 24px;
+    background: #323542;
+  }
+
+  .checkoutBtn {
+    cursor: pointer;
+    width: 100%;
+    height: 48px;
+    border: none;
+    font-weight: 700;
+    color: #fff;
+    background: #a378ff;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #905cff;
+    }
+  }
+}
+
+.empty {
+  font-size: 24px;
+  color: #75767f;
+  text-align: center;
+  margin-top: 40px;
+}

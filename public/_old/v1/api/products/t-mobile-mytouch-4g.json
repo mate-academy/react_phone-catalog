@@ -21,7 +21,8 @@
     }, 
     "connectivity": {
         "bluetooth": "Bluetooth 2.0", 
-        "cell": "GSM: 850, 900, 1800, 1900; UMTS: Band I/IV", 
+        "cell": "GSM: 850, 900, 1800, 1900;
+ UMTS: Band I/IV", 
         "gps": true, 
         "infrared": false, 
         "wifi": "802.11 b/g/n"

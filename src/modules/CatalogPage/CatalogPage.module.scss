@@ -1,0 +1,195 @@
+.catalogPage {
+  min-height: 100vh;
+  padding: 24px 0 80px;
+  background-color: #0f1117;
+  color: #fff;
+}
+
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.crumbLink {
+  display: flex;
+  align-items: center;
+}
+
+.arrowIcon {
+  display: flex;
+  align-items: center;
+  opacity: 0.3;
+}
+
+.currentCrumb {
+  font-size: 12px;
+  font-weight: 600;
+  color: #75767f;
+  text-transform: capitalize;
+}
+
+.title {
+  margin: 0 0 8px 0;
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+
+  @media (max-width: 576px) {
+    font-size: 32px;
+  }
+}
+
+.count {
+  margin: 0 0 40px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #75767f;
+}
+
+// Сетка контролов (выпадашек)
+.controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.controlGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  // Фиксированная ширина для дропдауна сортировки
+  &:first-child {
+    width: 176px;
+    @media (max-width: 576px) {
+      width: 100%;
+    }
+  }
+
+  // Фиксированная ширина для дропдауна количества
+  &:last-child {
+    width: 128px;
+    @media (max-width: 576px) {
+      width: 100%;
+    }
+  }
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #75767f;
+}
+
+// Обертка для позиционирования меню
+.dropdownWrapper {
+  position: relative; // КРИТИЧНО! Меню не улетит вверх страницы
+  width: 100%;
+}
+
+// Кастомная кнопка вместо селекта
+.selectButton {
+  width: 100%;
+  height: 48px;
+  padding: 0 12px;
+  background-color: #161921;
+  border: 1px solid #4a4d58;
+  color: #f1f2f9;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+
+  &:hover {
+    border-color: #75767f;
+  }
+
+  &.activeButton {
+    border-color: #fff;
+  }
+}
+
+.arrow {
+  font-size: 9px;
+  color: #75767f;
+  transition: transform 0.2s ease;
+  pointer-events: none;
+}
+
+.arrowOpen {
+  transform: rotate(180deg);
+  color: #fff;
+}
+
+// Выпадающее меню списком
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  background-color: #161921;
+  border: 1px solid #323542;
+  border-radius: 4px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  z-index: 150; // Поверх карточек товаров
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+
+  li {
+    padding: 12px;
+    font-size: 14px;
+    color: #75767f;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+
+    &:hover {
+      background-color: #232733;
+      color: #fff;
+    }
+
+    &.selectedOption {
+      color: #fff;
+      background-color: #323542;
+    }
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 16px;
+  margin-bottom: 40px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 16px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}

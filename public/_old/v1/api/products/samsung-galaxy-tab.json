@@ -1,5 +1,8 @@
 {
-    "additionalFeatures": "Adobe\u00ae Flash\u00ae Player compatible; 1.3MP front-facing camera for video chat; eReader pre-loaded; Swype text input technology\r\n", 
+    "additionalFeatures": "Adobe\u00ae Flash\u00ae Player compatible;
+ 1.3MP front-facing camera for video chat;
+ eReader pre-loaded;
+ Swype text input technology\r\n", 
     "android": {
         "os": "Android 2.2", 
         "ui": "TouchWiz"
@@ -24,7 +27,9 @@
     }, 
     "connectivity": {
         "bluetooth": "Bluetooth 3.0", 
-        "cell": "AT&T: GSM/EDGE : 850/900/1800/1900; 3G : 850/1900/2100\r\n\r\nSprint: CDMA : 850/1900MHz\r\n\r\nT-Mobile: GSM/EDGE : 850/900/1800/1900; 3G : 1700/1900\r\n\r\nVerizon: CDMA : 800MHz/1900MHz", 
+        "cell": "AT&T: GSM/EDGE : 850/900/1800/1900;
+ 3G : 850/1900/2100\r\n\r\nSprint: CDMA : 850/1900MHz\r\n\r\nT-Mobile: GSM/EDGE : 850/900/1800/1900;
+ 3G : 1700/1900\r\n\r\nVerizon: CDMA : 800MHz/1900MHz", 
         "gps": true, 
         "infrared": false, 
         "wifi": "802.11 b/g/n"

@@ -1,0 +1,94 @@
+.picturesSlider {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.container {
+  display: flex;
+  align-items: stretch;
+  height: 400px;
+  border-radius: 12px;
+  background-color: #0f1117;
+
+  // Добавляем адаптивность по высоте, чтобы на маленьких экранах баннер не вытягивался
+  @media (max-width: 639px) {
+    height: 200px;
+  }
+}
+
+.window {
+  position: relative;
+  overflow: hidden; // Прячет картинки, которые выходят за пределы экрана
+  flex: 1;
+  border-radius: 12px;
+}
+
+.tape {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  // Магия анимации: делает сдвиг картинок плавным
+  transition: transform 0.5s ease-in-out;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0; // Запрещает картинкам сжиматься внутри flex
+  object-fit: cover;
+  object-position: center;
+}
+
+.arrow {
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  border: none;
+  background-color: #21232e;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #323542;
+  }
+
+  &IconLeft,
+  &IconRight {
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #f1f2f9;
+    border-left: 2px solid #f1f2f9;
+  }
+
+  &IconLeft {
+    transform: rotate(-45deg);
+  }
+  &IconRight {
+    transform: rotate(135deg);
+  }
+}
+
+.dots {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.dot {
+  cursor: pointer;
+  width: 14px;
+  height: 4px;
+  background-color: #3b3e4a;
+  transition: all 0.3s ease-in-out; // Плавное удлинение активной полосочки
+
+  &Active {
+    width: 24px;
+    background-color: #fff;
+  }
+}

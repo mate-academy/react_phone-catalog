@@ -1,5 +1,10 @@
 {
-    "additionalFeatures": "3.2\u201d Full touch screen with Advanced anti smudge, anti reflective and anti scratch glass; Swype text input for easy and fast message creation; multiple messaging options, including text with threaded messaging for organized, easy-to-follow text; Social Community support, including Facebook and MySpace; Next generation Address book; Visual Voice Mail\n", 
+    "additionalFeatures": "3.2\u201d Full touch screen with Advanced anti smudge, anti reflective and anti scratch glass;
+ Swype text input for easy and fast message creation;
+ multiple messaging options, including text with threaded messaging for organized, easy-to-follow text;
+ Social Community support, including Facebook and MySpace;
+ Next generation Address book;
+ Visual Voice Mail\n", 
     "android": {
         "os": "Android 2.1", 
         "ui": "TouchWiz"

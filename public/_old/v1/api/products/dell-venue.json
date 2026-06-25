@@ -23,7 +23,9 @@
     }, 
     "connectivity": {
         "bluetooth": "Bluetooth 2.1", 
-        "cell": "850/1900/2100 3G; 850/900/1800/1900 GSM/GPRS/EDGE\n900/1700/2100 3G; 850/900/1800/1900 GSM/GPRS/EDGE", 
+        "cell": "850/1900/2100 3G;
+ 850/900/1800/1900 GSM/GPRS/EDGE\n900/1700/2100 3G;
+ 850/900/1800/1900 GSM/GPRS/EDGE", 
         "gps": true, 
         "infrared": false, 
         "wifi": "802.11 b/g/n"
