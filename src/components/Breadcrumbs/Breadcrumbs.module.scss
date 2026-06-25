@@ -1,0 +1,52 @@
+@import '../../styles/utils';
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 16px;
+    height: 16px;
+    filter: grayscale(100%) opacity(0.5);
+  }
+}
+
+.link {
+  font-size: 12px;
+  font-weight: 600;
+  color: $secondary;
+  text-decoration: none;
+
+  transition: color 0.3s;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+.lastItem {
+  font-size: 12px;
+  font-weight: 600;
+  color: $secondary;
+}

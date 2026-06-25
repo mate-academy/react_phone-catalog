@@ -1,0 +1,140 @@
+.homepage {
+  &__slider {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    margin-block: 52px;
+
+    font-family: Mont, sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    font-style: Bold;
+    color: #313237;
+    letter-spacing: -1%;
+  }
+
+  &__products {
+    &-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+
+    &-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &-title {
+      margin: 0;
+
+      font-size: 32px;
+      font-weight: 800;
+      color: #313237;
+      letter-spacing: -1%;
+    }
+
+    &-buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    &-button {
+      display: block;
+      align-items: center;
+
+      width: 32px;
+      height: 32px;
+
+      text-align: center;
+    }
+
+    &-models {
+      display: flex;
+      gap: 43px;
+    }
+  }
+
+  &__category {
+    margin-bottom: 80px;
+
+    &-title {
+      margin-block: 52px;
+
+      font-size: 48px;
+      font-weight: 800;
+      font-style: Bold;
+      color: #313237;
+      letter-spacing: -1%;
+    }
+
+    &-items {
+      display: flex;
+      gap: 16px;
+      justify-content: space-between;
+    }
+
+    &-image {
+      position: relative;
+
+      overflow: hidden;
+      display: block;
+
+      width: 368px;
+      height: 368px;
+      margin-bottom: 24px;
+
+      &--phones {
+        background-color: #6d6474;
+      }
+
+      &--tablets {
+        background-color: gray;
+      }
+
+      &--accessories {
+        background-color: #973d5f;
+      }
+
+      &-phones {
+        position: absolute;
+        top: 70px;
+        left: 65px;
+        height: 450px;
+      }
+
+      &-tablets {
+        position: absolute;
+        top: 30px;
+        left: 65px;
+        height: 450px;
+      }
+
+      &-accessories {
+        position: absolute;
+        top: 50px;
+        left: 65px;
+        height: 330px;
+      }
+    }
+
+    &-text {
+      margin: 0;
+      margin-bottom: 4px;
+
+      font-size: 20px;
+      font-weight: 600;
+      color: #313237;
+    }
+
+    &-models {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 500;
+      color: #89939A;
+    }
+  }
+}

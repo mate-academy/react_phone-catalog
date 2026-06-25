@@ -1,0 +1,186 @@
+@use "sass:color";
+
+@import '../../../../styles/utils';
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  height: 506px;
+  padding: 32px 0;
+  border: 1px solid #E2E6E9;
+
+  background-color: $white;
+
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+
+    .image {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.imageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 208px;
+  height: 196px;
+  margin-bottom: 24px;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  width: 208px;
+  height: 58px;
+  font-size: 14px;
+  color: $primary;
+}
+
+.priceContainer {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 108px;
+  height: 31px;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  color: $primary;
+  letter-spacing: 0%;
+}
+
+.fullPrice {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 100%;
+  color: $secondary;
+  text-decoration: line-through;
+  letter-spacing: 0%;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  margin: 8px 0;
+  background-color: #E2E6E9;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: space-between;
+
+  width: 208px;
+  height: 77px;
+}
+
+.spec {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+
+  span:first-child {
+    color: $secondary;
+  }
+
+  span:last-child {
+    color:  #313237;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+
+  width: 208px;
+  height: 40px;
+  margin-top: 16px;
+}
+
+.addToCart {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 160px;
+  height: 40px;
+  border: none;
+
+  font-weight: 700;
+  color: $white;
+
+  background-color: $primary;
+
+  transition: backgroundcolor 0.3s;
+
+  &:hover {
+    background-color: color.adjust($primary, $lightness: 5%);
+  }
+
+
+}
+
+.added {
+    background-color: #8d3b01;
+
+    &:hover {
+      background-color: #8d3b01;
+    }
+  }
+
+.addToFavorite {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  border: 1px solid #B4BDC3;
+
+  background: transparent;
+
+  transition: border-color 0.3s background-color 0.3s;
+
+  &:hover {
+    border-color: $primary;
+  }
+}

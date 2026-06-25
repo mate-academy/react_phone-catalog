@@ -1,0 +1,101 @@
+.banner {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  &__elements {
+    display: flex;
+    gap: 16px;
+    height: 400px;
+  }
+
+  &__button {
+    border: 1px #89939a solid;
+    color: #313237;
+  }
+
+  &__news {
+    width: 100%;
+
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+
+    transition: background-image 300ms;
+
+    &-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      width: 35%;
+      height: 280px;
+      margin: 10px;
+      padding: 50px;
+
+      background-color: #262626;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    margin-bottom: 7px;
+
+    font-size: 48px;
+    font-weight: 800;
+    font-style: Bold;
+    line-height: 60px;
+    color: transparent;
+
+    background-image: linear-gradient(to right, #70f, #dd78ff);
+    background-clip: text;
+  }
+
+  &__subtext {
+    margin: 0;
+    font-weight: 500;
+    color: #89939a;
+  }
+
+  &__order {
+    &-button {
+      cursor: pointer;
+
+      padding: 12px 30px;
+      border: 1px solid #444;
+
+      font-weight: 500;
+      color: white;
+      text-transform: uppercase;
+
+      background: transparent;
+
+      transition: 300ms;
+
+      &:hover {
+        color: black;
+        background: white;
+      }
+    }
+  }
+
+  &__dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  &__dot {
+    width: 15px;
+    height: 3px;
+    background: #89939a;
+
+
+    &--active {
+      background: #313237;
+    }
+  }
+}

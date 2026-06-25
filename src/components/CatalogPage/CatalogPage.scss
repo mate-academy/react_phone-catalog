@@ -1,0 +1,108 @@
+.catalog-page {
+  &__path {
+    display: flex;
+    gap: 8px;
+    margin-top: 24px;
+    margin-bottom: 40px;
+
+    &-home {
+      display: flex;
+      width: 16px;
+      height: 16px;
+      background-image: url('/icons/home.svg');
+    }
+
+    &-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 16px;
+      height: 16px;
+
+      color: #b4bdc3;
+    }
+
+    &-name {
+      margin: 0;
+      font-size: 12px;
+      font-weight: 600;
+      color: #89939a;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 8px;
+
+    font-size: 48px;
+    font-weight: 800;
+    font-style: Bold;
+    color: #323137;
+    letter-spacing: -1%;
+  }
+
+  &__subtext {
+    margin: 0;
+    margin-bottom: 40px;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: #89939a;
+  }
+
+  &__params {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    &-text {
+      margin: 0;
+      font-size: 12px;
+      font-weight: 700;
+      color: #89939a;
+    }
+
+    &-select {
+      height: 40px;
+      border: 1px #b4bdc3 solid;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    row-gap: 40px;
+  }
+}
+
+.pagination {
+  margin-block: 40px 80px;
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  &__button {
+    cursor: pointer;
+
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ccc;
+
+    color: #313237;
+    text-align: center;
+
+    background-color: white;
+
+    &--active {
+      color: white;
+      background-color: #313237;
+    }
+  }
+}
