@@ -1,0 +1,33 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xl) 0;
+  text-align: center;
+}
+
+.image {
+  width: 100%;
+  max-width: 320px;
+}
+
+.title {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+}
+
+.link {
+  padding: var(--space-xs) var(--space-md);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+
+  &:hover:not(:disabled) {
+    filter: brightness(0.92);
+  }
+}

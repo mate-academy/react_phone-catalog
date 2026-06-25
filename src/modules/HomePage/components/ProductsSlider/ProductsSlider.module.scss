@@ -1,0 +1,45 @@
+@import '../../../../styles/mixins';
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.title {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+}
+
+.controls {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--space-xs);
+}
+
+.arrow {
+  @include icon-button(40px);
+}
+
+.track {
+  display: flex;
+  gap: var(--space-sm);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.item {
+  flex-shrink: 0;
+  width: 200px;
+  scroll-snap-align: start;
+
+  @include tablet-up {
+    width: 232px;
+  }
+}

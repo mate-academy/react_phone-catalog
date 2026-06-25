@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="70%" stop-color="#F5F5F7" />
+      <stop offset="100%" stop-color="#E2E6E9" />
+    </linearGradient>
+
+    <linearGradient id="screen-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F86800" />
+      <stop offset="35%" stop-color="#FF7A1A" />
+      <stop offset="75%" stop-color="#0F0F11" />
+      <stop offset="100%" stop-color="#476DF4" />
+    </linearGradient>
+
+    <linearGradient id="metal-edge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B4BDC3" />
+      <stop offset="50%" stop-color="#89939A" />
+      <stop offset="100%" stop-color="#0F0F11" />
+    </linearGradient>
+
+    <filter id="ipad-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="8" dy="20" stdDeviation="18" flood-color="#0F0F11" flood-opacity="0.14" />
+    </filter>
+    
+    <filter id="pencil-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="4" dy="10" stdDeviation="7" flood-color="#0F0F11" flood-opacity="0.09" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="480" fill="url(#bg-gradient)" />
+
+  <circle cx="850" cy="240" r="280" fill="#F86800" opacity="0.02" />
+  <circle cx="1050" cy="120" r="150" fill="#476DF4" opacity="0.015" />
+
+  <g transform="translate(90, 0)">
+    <text x="0" y="165" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="13" font-weight="600" letter-spacing="1.8" fill="#F86800" text-transform="uppercase">The new</text>
+    <text x="0" y="220" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="46" font-weight="700" letter-spacing="-0.8" fill="#0F0F11">iPad Pro</text>
+    <text x="0" y="268" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="22" font-weight="400" letter-spacing="-0.3" fill="#89939A">Thinpossible.</text>
+    <text x="0" y="318" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="14" font-weight="400" fill="#0F0F11" opacity="0.65">Mind-blowing Ultra Retina XDR display. Extraordinarily powerful.</text>
+  </g>
+
+  <g transform="translate(730, 240)" filter="url(#ipad-shadow)">
+    <rect x="-210" y="-145" width="420" height="290" rx="24" fill="url(#metal-edge)" />
+    <rect x="-208" y="-143" width="416" height="286" rx="22" fill="#0F0F11" />
+    <rect x="-196" y="-131" width="392" height="262" rx="14" fill="#0F0F11" />
+    <rect x="-192" y="-127" width="384" height="254" rx="11" fill="url(#screen-gradient)" />
+    
+    <path d="M -192,40 C -80,60 10,-80 192,-30 L 192,127 L -192,127 Z" fill="#0F0F11" opacity="0.18" />
+    <path d="M -120,127 C -20,30 80,90 192,0 L 192,127 Z" fill="#476DF4" opacity="0.25" />
+    <path d="M -192,-127 C -60,-40 20,-100 192,-60 L 192,-127 Z" fill="#FFFFFF" opacity="0.07" />
+    <rect x="-18" y="-131" width="36" height="4" rx="2" fill="#1C1C1E" />
+  </g>
+
+  <g transform="translate(740, 75) rotate(-1.5)" filter="url(#pencil-shadow)">
+    <rect x="-140" y="-4" width="280" height="8" rx="4" fill="#FFFFFF" />
+    <rect x="-140" y="0" width="280" height="4" rx="0" fill="#E2E6E9" opacity="0.4" />
+    <path d="M 140,-4 L 140,4 L 152,0 Z" fill="#E2E6E9" />
+    <path d="M 146,-2 L 146,2 L 152,0 Z" fill="#B4BDC3" />
+    <line x1="-122" y1="-4" x2="-122" y2="4" stroke="#B4BDC3" stroke-width="0.7" />
+  </g>
+</svg>

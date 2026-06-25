@@ -1,0 +1,149 @@
+@import '../../styles/mixins';
+
+.page > :not(:first-child) {
+  margin-top: var(--space-md);
+}
+
+.title {
+  font-size: var(--fs-h1);
+  font-weight: 700;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+
+  @include tablet-up {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
+
+.searchField {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: var(--space-sm);
+  color: var(--color-icons);
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  height: 40px;
+  padding-right: 40px;
+  padding-left: 40px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+
+  &::placeholder {
+    color: var(--color-icons);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-icons);
+  }
+}
+
+.clearButton {
+  @include button-reset;
+
+  display: flex;
+  color: var(--color-icons);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+
+  @include tablet-up {
+    width: 176px;
+  }
+}
+
+.fieldLabel {
+  font-size: 12px;
+  color: var(--color-secondary);
+}
+
+.select {
+  height: 40px;
+  padding-inline: var(--space-sm);
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-icons);
+  }
+}
+
+.count {
+  font-size: 12px;
+  color: var(--color-secondary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sm);
+
+  @include tablet-up {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include desktop-up {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.message {
+  padding: var(--space-xl) 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-secondary);
+  text-align: center;
+}
+
+.reloadButton {
+  display: block;
+  margin: var(--space-md) auto 0;
+  padding: var(--space-xs) var(--space-md);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+  text-transform: uppercase;
+  background-color: var(--color-accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+
+  &:hover {
+    filter: brightness(0.92);
+  }
+}

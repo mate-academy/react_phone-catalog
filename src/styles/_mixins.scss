@@ -1,0 +1,80 @@
+@import 'variables';
+
+@mixin tablet-up {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: var(--space-sm);
+
+  @include tablet-up {
+    padding-inline: var(--space-md);
+  }
+
+  @include desktop-up {
+    padding-inline: 0;
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@mixin line-clamp($lines) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+}
+
+@mixin button-reset {
+  padding: 0;
+  font-family: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@mixin icon-button($size: 40px) {
+  @include button-reset;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $size;
+  height: $size;
+  color: var(--color-icons);
+  border: 1px solid var(--color-elements);
+  border-radius: var(--radius-full);
+  transition: var(--transition);
+
+  &:hover {
+    color: var(--color-primary);
+    border-color: var(--color-icons);
+  }
+
+  &:disabled {
+    color: var(--color-icons);
+    cursor: default;
+    opacity: 0.5;
+  }
+}

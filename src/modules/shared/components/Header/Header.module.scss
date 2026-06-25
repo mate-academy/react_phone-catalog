@@ -1,0 +1,83 @@
+@import '../../../../styles/mixins';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-elements);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+
+  @include container;
+}
+
+.logo {
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-primary);
+  transition: opacity var(--transition);
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.logoAccent {
+  color: var(--color-accent);
+}
+
+.nav {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: var(--space-xs);
+}
+
+.iconButton {
+  position: relative;
+
+  @include icon-button(40px);
+}
+
+.iconButtonActive {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 16px;
+  height: 16px;
+  padding-inline: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 16px;
+  color: var(--color-white);
+  text-align: center;
+  background-color: var(--color-accent);
+  border-radius: var(--radius-full);
+}
+
+.burger {
+  @include icon-button(40px);
+
+  @include tablet-up {
+    display: none;
+  }
+}

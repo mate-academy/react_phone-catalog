@@ -1,0 +1,65 @@
+:root {
+  --color-primary: #0f0f11;
+  --color-secondary: #89939a;
+  --color-icons: #b4bdc3;
+  --color-elements: #e2e6e9;
+  --color-body: #fafbfc;
+  --color-white: #fff;
+  --color-accent: #f86800;
+  --color-accent-secondary: #476df4;
+  --color-error: #eb5757;
+  --color-success: #27ae60;
+  --fs-h1: 32px;
+  --lh-h1: 41px;
+  --ls-h1: -0.01em;
+  --fs-h2: 22px;
+  --lh-h2: 31px;
+  --ls-h2: 0;
+  --fs-h3: 20px;
+  --lh-h3: 26px;
+  --ls-h3: 0;
+  --fs-h4: 16px;
+  --lh-h4: 20px;
+  --fs-uppercase: 12px;
+  --lh-uppercase: 11px;
+  --ls-uppercase: 0.04em;
+  --fs-button: 14px;
+  --lh-button: 21px;
+  --fs-body: 14px;
+  --lh-body: 21px;
+  --fs-small: 12px;
+  --lh-small: 15px;
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-full: 50%;
+  --shadow-card: 0 2px 16px rgb(0 0 0 / 10%);
+  --transition: 0.2s ease-in-out;
+  --container-width: 1136px;
+  --header-height: 64px;
+  --z-header: 100;
+  --z-modal: 1000;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --fs-h1: 48px;
+    --lh-h1: 56px;
+    --fs-h2: 32px;
+    --lh-h2: 41px;
+    --ls-h2: -0.01em;
+    --fs-h3: 22px;
+    --lh-h3: 31px;
+    --fs-h4: 20px;
+    --lh-h4: 26px;
+  }
+}
+
+$tablet: 640px;
+$desktop: 1200px;
