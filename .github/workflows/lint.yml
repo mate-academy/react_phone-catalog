@@ -2,13 +2,12 @@ name: Lint
 
 on:
   pull_request:
-    branches: [ develop, master ]
+    branches: [develop, master]
   push:
-    branches: [ develop ]
+    branches: [develop]
 
 jobs:
   run_linter:
-
     runs-on: ubuntu-latest
 
     strategy:
