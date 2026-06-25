@@ -9,6 +9,12 @@ import { useRef } from 'react';
 import classNames from 'classnames';
 import { Arrow } from '../Arrow';
 import { ArrowDirection } from '../../shared/IconArrow';
+import slider0 from '../../imgs/slider/slider_0.png';
+import slider1 from '../../imgs/slider/slider_1.png';
+import slider2 from '../../imgs/slider/slider_2.png';
+import sliderMobile0 from '../../imgs/slider/slider_mobile_0.png';
+import sliderMobile1 from '../../imgs/slider/slider_mobile_1.png';
+import sliderMobile2 from '../../imgs/slider/slider_mobile_2.png';
 
 type SliderImage = {
   desktop: string;
@@ -16,17 +22,11 @@ type SliderImage = {
 };
 
 function prepareSliderImages(): SliderImage[] {
-  const images: SliderImage[] = [];
-  const imagesPath = '/img/slider/slider_';
-
-  for (let i = 0; i < 3; i += 1) {
-    images.push({
-      desktop: `${imagesPath}${i}.png`,
-      mobile: `${imagesPath}mobile_${i}.png`,
-    });
-  }
-
-  return images;
+  return [
+    { desktop: slider0, mobile: sliderMobile0 },
+    { desktop: slider1, mobile: sliderMobile1 },
+    { desktop: slider2, mobile: sliderMobile2 },
+  ];
 }
 
 export const BigSlider = () => {
