@@ -1,0 +1,16 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.app__main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
+}
+.app__title {
+  position: absolute;
+  visibility: hidden;
+  left: -100%;
+}/*# sourceMappingURL=App.module.css.map */

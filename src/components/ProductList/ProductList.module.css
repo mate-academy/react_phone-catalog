@@ -1,0 +1,10 @@
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  gap: 40px 16px;
+}
+@media (max-width: 1199px) {
+  .product-list {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+}/*# sourceMappingURL=ProductList.module.css.map */

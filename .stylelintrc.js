@@ -1,4 +1,7 @@
 module.exports = {
   extends: "@mate-academy/stylelint-config",
-  rules: {}
+  rules: {
+    "rule-empty-line-before": null,
+    "at-rule-empty-line-before": null,
+  }
 };

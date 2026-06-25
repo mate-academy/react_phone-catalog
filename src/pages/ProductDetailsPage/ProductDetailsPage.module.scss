@@ -1,0 +1,199 @@
+@import '../../utils/mixins';
+@import '../../utils/mediaQuery';
+@import '../../utils/gridTemplate';
+
+.productDetailsPage{
+    @include grid;
+
+    padding: 24px 0 81px;
+
+    @include tablet{
+        @include grid-tablet;
+
+        width: 100%;
+        padding: 24px 24px 64px;
+    }
+
+    @include mobile{
+        @include grid-mobile;
+
+        padding: 24px 16px 64px;
+    }
+    
+    & > * {
+        grid-column: 1/-1;
+
+       
+    }
+
+    &__back{
+        margin-top: 40px;
+
+        @include mobile {
+            margin-top: 24px;
+        }
+    }
+    
+    &__title{
+        @include h2-title;
+
+        margin-top: 16px; 
+
+        @include mobile{
+            @include h2-mobile;
+        }
+    }
+
+    &__media{
+        grid-column: 1/3;
+        margin-top: 40px;
+
+        @include tablet{
+            grid-column: 1/2
+        }
+
+        @include mobile{
+            grid-column: 1/-1;
+            margin-top: 32px;
+            grid-row: 5;
+            
+        }
+    }
+
+    &__main-photo{
+        grid-column: 3/13;
+        margin-top: 40px;
+
+        @include tablet {
+                grid-column: 2/8
+            }
+        
+        @include mobile {
+            grid-column: 1/-1;
+            margin-top: 32px;
+            grid-row: 4;
+       
+        }
+    }
+
+    &__img{
+        width: 100%;
+        object-fit: contain;
+        aspect-ratio: 1 / 1;
+    }
+
+    &__info{
+        grid-column: 14/21;
+        display: flex;
+        flex-direction: column;
+        gap:32px;
+        margin-top: 40px;
+
+        @include tablet{
+            grid-column: 8/13;
+        }
+
+        @include mobile{
+            grid-column: 1/-1;
+        }
+    }  
+
+    &__options{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    
+    &__price-block{
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    &__price-discount{
+        @include h2-title;
+
+        color: #F1F2F9;
+        
+    }
+
+    &__price-full{
+        font-weight: 600;
+        font-size: 22px;
+        text-decoration: line-through;
+        color: #75767F;
+    }
+
+    &__action {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+    }
+    
+    &__desc{
+        grid-column:1/-1;
+        display: flex;
+        gap: 64px;
+        margin-top: 80px;
+
+        @include tablet{
+            flex-direction: column;
+            margin-top: 64px;
+        }
+
+        @include mobile{
+            margin-top: 56px;
+            gap:56px;
+        }
+    }
+
+    &__desc-line {
+        height: 1px;
+        width: 100%;
+        background-color: #3B3E4A;
+        margin-top: 16px;
+    }
+
+    &__about{
+        width: 560px;
+
+        @include tablet{
+            width: 100%;
+        }
+    }
+
+    &__about-desc{
+        margin-top: 32px;
+    }
+
+    &__tech-info{
+        width: 512px;
+
+        @include tablet {
+            width: 100%;
+        }
+    }
+
+    &__tech-desc{
+        margin-top: 25px;
+    }
+
+    &__subtitle{
+        @include h3-title;
+
+        @include mobile{
+            @include h3-mobile;
+        }
+    }
+
+    &__suggestions{
+        grid-column: 1/-1;
+        margin-top: 80px;
+
+        @include mobile{
+            margin-top: 56px;
+        }
+    }
+
+}

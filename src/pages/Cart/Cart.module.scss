@@ -1,0 +1,143 @@
+@import '../../utils/mixins';
+@import '../../utils/gridTemplate';
+@import '../../utils/mediaQuery';
+
+.cart{
+    display: flex;
+    flex-direction: column;
+    width: 1136px;
+    padding: 40px 0 80px;
+
+    @include tablet{
+        width: 100%;
+        padding: 40px 24px 64px;
+    }
+
+    @include mobile{
+        padding: 24px 16px 56px;
+    }
+
+    &__container{
+        @include grid;
+
+        margin-top: 32px;
+
+        @include tablet {
+            @include grid-tablet;
+
+             width: 100%;
+        }
+
+        @include mobile {
+            @include grid-mobile;
+        }
+    }
+
+    &__title{
+        @include h1-title;
+
+        margin-top: 16px;
+    }
+
+    &__list{
+        grid-column: 1/17;
+        display: flex;
+        flex-direction: column;
+        gap:16px;
+
+        @include tablet{
+            grid-column: 1/-1;
+        }
+    }
+
+    &__checkout{
+        grid-column: 17/25;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap:24px;
+        border: 1px solid #3B3E4A;
+        padding: 24px;
+        align-self: flex-start;
+
+        @include tablet {
+            grid-column: 1/-1;
+            gap:16px;
+        }
+
+    }
+
+    &__total-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+   &__total{
+        @include h2-title;
+   }
+
+   &__desc{
+    @include body-text;
+
+    color: #75767F;
+   }
+
+   &__line{
+    width: 100%;
+    height: 1px;
+    background-color: #3B3E4A;
+   }
+
+   &__checkout-button{
+    @include button;
+
+    width: 100%;
+    height: 48px;
+    background-color: #905BFF;
+    border: none;
+    color: #F1F2F9;
+   }
+
+   &__modal{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    pointer-events: all;
+
+        &--open {
+            display: block;
+        }
+   }
+
+   &__modal-content{
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%);
+
+ 
+   }
+
+   &__btns{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+   }
+
+   &__modal-btn{
+    @include button;
+   
+    width: 100px;
+    height: 30px;
+    background-color:#323542;
+    color: #F1F2F9;
+    border: 0.5px solid #161827;
+
+
+    &:hover{
+        background-color: #75767F;
+    }
+   }
+}

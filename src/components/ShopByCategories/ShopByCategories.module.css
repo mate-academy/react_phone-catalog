@@ -1,0 +1,99 @@
+.shop-by-categories {
+  width: 100%;
+}
+.shop-by-categories__title {
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 0 0 24px;
+}
+@media (max-width: 639px) {
+  .shop-by-categories__title {
+    font-size: 22px;
+    line-height: 31px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+}
+.shop-by-categories__container {
+  display: grid;
+  grid-template-columns: repeat(3, 368px);
+  width: 100%;
+  -moz-column-gap: 16px;
+       column-gap: 16px;
+}
+@media (max-width: 1199px) {
+  .shop-by-categories__container {
+    grid-template-columns: repeat(3, minmax(187px, 1fr));
+  }
+}
+@media (max-width: 639px) {
+  .shop-by-categories__container {
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+  }
+}
+.shop-by-categories__item {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+.shop-by-categories__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.shop-by-categories__subtitle {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #F1F2F9;
+  text-decoration: none;
+}
+.shop-by-categories__subtitle:hover {
+  color: #905BFF;
+}
+.shop-by-categories__counter {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #75767F;
+  margin: 0;
+}
+.shop-by-categories__link {
+  position: relative;
+  width: 368px;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+@media (max-width: 1199px) {
+  .shop-by-categories__link {
+    width: 100%;
+  }
+}
+.shop-by-categories__link--phones {
+  background-color: #8D8D92;
+}
+.shop-by-categories__link--tablets {
+  background-color: #6D6474;
+}
+.shop-by-categories__link--accessories {
+  background-color: #D53C51;
+}
+.shop-by-categories__link:hover img {
+  transform: scale(1.1);
+}
+.shop-by-categories__img {
+  position: absolute;
+  display: block;
+  width: 90%;
+  left: 30%;
+  bottom: -20%;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}/*# sourceMappingURL=ShopByCategories.module.css.map */

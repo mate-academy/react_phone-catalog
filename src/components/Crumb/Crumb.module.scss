@@ -1,0 +1,43 @@
+@import '../../utils/mixins';
+
+.crumb{
+    display: block;
+    
+    &__list{
+        display: flex;
+        list-style: none;
+        gap: 8px;
+        padding: 0;
+    }
+
+    &__item{
+        display: flex;
+        gap: 8px;
+    }
+
+    &__link{
+        @include small-text;
+
+        text-decoration: none;
+        color: #75767F;
+        align-self: center;
+
+        &:hover{
+            color: #905BFF;
+        }
+
+    }
+
+    &__text{
+        font-size: 12px;
+        color: #75767F;
+        align-self: center;
+    }
+
+
+    &__icon{
+        width: 16px;
+        height: 16px;
+       object-fit:none;
+    }
+}

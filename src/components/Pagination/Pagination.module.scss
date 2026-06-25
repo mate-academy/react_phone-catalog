@@ -1,0 +1,39 @@
+@import '../../utils/mixins';
+
+.pagination{
+    display: flex;
+    gap: 8px;
+
+    &__list{
+        display: flex;
+        gap: 8px;
+        list-style: none;
+    }
+
+    &__button, &__button-next, &__button-prev{
+        @include body-text;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #161827;
+        border: none;
+        width: 32px;
+        height: 32px;
+        color: #F1F2F9;
+
+        &:hover {
+                background-color: #4A4D58;
+            }
+
+        &-active{
+            background-color: #905BFF;
+
+            &:hover {
+                    background-color:#905BFF;
+                }
+        }
+
+        
+    }
+}

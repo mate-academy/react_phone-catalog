@@ -1,0 +1,13 @@
+.backButton {
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 700;
+  letter-spacing: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #F1F2F9;
+  background-color: #0F1121;
+  border: none;
+  cursor: pointer;
+}/*# sourceMappingURL=BackButton.module.css.map */

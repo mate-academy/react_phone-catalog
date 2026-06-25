@@ -1,0 +1,29 @@
+@import '../../../../utils/mixins';
+
+.add-button{
+     @include button;
+
+        color: #F1F2F9;
+        background-color: #905BFF;
+        height: 40px;
+        border: none;
+        flex-grow: 1;
+        cursor: pointer;
+    
+        &:hover {
+            background-color: #A378FF;
+        }
+
+    &--medium{
+        height: 48px;
+    }
+    
+    &--disabled{
+        background-color: #75767F;
+
+        &:hover{
+            background-color: #75767F;
+        }
+    }
+        
+}

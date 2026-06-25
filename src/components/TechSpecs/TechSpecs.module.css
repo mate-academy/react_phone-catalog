@@ -1,0 +1,28 @@
+.techSpecs {
+  width: 100%;
+}
+.techSpecs__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding: 7px 0;
+}
+.techSpecs__info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.techSpecs__char {
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #75767F;
+}
+.techSpecs__value {
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 700;
+  letter-spacing: 0;
+}/*# sourceMappingURL=TechSpecs.module.css.map */

@@ -1,0 +1,25 @@
+.empty {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+@media (max-width: 639px) {
+  .empty {
+    flex-direction: column;
+  }
+}
+.empty__title {
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #75767F;
+  text-align: center;
+}
+.empty__img {
+  width: 300px;
+  height: 300px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}/*# sourceMappingURL=Empty.module.css.map */

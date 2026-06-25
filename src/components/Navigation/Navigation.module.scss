@@ -1,0 +1,75 @@
+@import '../../utils/mixins';
+@import '../../utils/mediaQuery';
+
+.navigation{    
+    &__list{
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        gap: 64px;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+
+        @include tablet {
+            gap: 32px;
+        }
+
+        @include mobile{
+            width:100%;
+            background-color: #0F1121;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    &__item{
+        @include uppercase;
+
+        position: relative;
+        display: flex;
+        border:0;
+        height: 100%;
+        align-items: center;
+    }
+    
+
+    &__link{
+        color: #75767F;
+        text-decoration: none;
+
+        &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                height: 3px;
+                width: 0;
+                background-color: #F1F2F9;
+                bottom: 0;
+                transition: width 100ms ease-in;
+                
+        }
+
+
+        &:hover{
+            color: #905BFF;
+            &::after {
+                    width: 100%;
+                    transition: width 1s ease-out;
+                }
+
+        }
+
+        &--active{
+            color: #F1F2F9;
+
+            &:hover {
+                    color: #F1F2F9;
+            }
+
+            &::after{
+                width: 100%;
+            }
+        }
+    }
+}

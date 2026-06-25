@@ -1,0 +1,129 @@
+   @import '../../utils/mixins';
+   
+   .options{
+        display: flex;
+        flex-direction: column;
+
+        &__title {
+            @include small-text;
+
+            color: #89939A;
+        }
+
+        &__list {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        &__capacity {
+            @include body-text;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 56px;
+            height: 32px;
+            border: 1px solid #4A4D58;
+            color: #F1F2F9;
+        
+            &:hover {
+                border: 1px solid #F1F2F9;
+            }
+        
+            &--active {
+                background-color: #F1F2F9;
+                color: #0F1121
+                }
+        }
+
+        &__color {
+                    display: block;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    border: 1px solid #3B3E4A;
+        
+        
+                    &--gold {
+                        background-color: #FCDBC1;
+                    }
+        
+                    &--black {
+                        background-color: #0F1121;
+                    }
+        
+                    &--silver {
+                        background-color: #F0F0F0;
+                    }
+        
+                    &--rosegold {
+                        background-color: #B76E79;
+                    }
+        
+                    &--midnightgreen {
+                        background-color: #4C6256;
+                    }
+        
+                    &--midnight {
+                        background-color: #191D24;
+                    }
+        
+                    &--spacegrey {
+                        background-color: #1D1D1F;
+                    }
+        
+                    &--white {
+                        background-color: #FFF;
+                    }
+        
+                    &--yellow {
+                        background-color: #FFD60A;
+                    }
+        
+                    &--red {
+                        background-color: #FF3B30;
+                    }
+        
+                    &--coral {
+                        background-color: #FF6F61;
+                    }
+        
+                    &--blue {
+                        background-color: #007AFF;
+                    }
+        
+                    &--pink {
+                        background-color: #FF2D55;
+                    }
+
+                    &--green{
+                        background-color: #30D158;
+                    }
+
+                    &--purple{
+                        background-color: #BF5AF2;
+                    }
+        
+                    &--active {
+                        border: 2px solid #F0F0F0;
+                    }
+                }
+
+        &__btn {
+            display: none;
+        }
+
+        &__line{
+            height: 1px;
+            width: 100%;
+            background-color: #3B3E4A;
+            margin-top: 24px;
+        }
+   }
+
+
+
+
+  

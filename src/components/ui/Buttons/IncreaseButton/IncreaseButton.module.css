@@ -1,0 +1,10 @@
+.increaseButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: #323542;
+  border: none;
+  cursor: pointer;
+}/*# sourceMappingURL=IncreaseButton.module.css.map */

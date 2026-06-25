@@ -1,0 +1,43 @@
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.notFound__img {
+  width: 300px;
+  height: 300px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.notFound__title {
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #75767F;
+}
+.notFound__subTitle {
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #75767F;
+}
+.notFound__btn {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 700;
+  letter-spacing: 0;
+  background-color: #0F1121;
+  border: none;
+  cursor: pointer;
+}
+.notFound__link {
+  text-decoration: none;
+  color: #F1F2F9;
+}
+.notFound__link:hover {
+  color: #905BFF;
+}/*# sourceMappingURL=NotFound.module.css.map */

@@ -1,0 +1,32 @@
+.pagination {
+  display: flex;
+  gap: 8px;
+}
+.pagination__list {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+}
+.pagination__button, .pagination__button-next, .pagination__button-prev {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  letter-spacing: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #161827;
+  border: none;
+  width: 32px;
+  height: 32px;
+  color: #F1F2F9;
+}
+.pagination__button:hover, .pagination__button-next:hover, .pagination__button-prev:hover {
+  background-color: #4A4D58;
+}
+.pagination__button-active, .pagination__button-next-active, .pagination__button-prev-active {
+  background-color: #905BFF;
+}
+.pagination__button-active:hover, .pagination__button-next-active:hover, .pagination__button-prev-active:hover {
+  background-color: #905BFF;
+}/*# sourceMappingURL=Pagination.module.css.map */

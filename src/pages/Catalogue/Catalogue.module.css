@@ -1,0 +1,104 @@
+.catalogue {
+  display: flex;
+  flex-direction: column;
+  width: 1136px;
+  padding: 24px 0 80px;
+}
+@media (max-width: 1199px) {
+  .catalogue {
+    width: 100%;
+    padding: 24px 24px 64px;
+  }
+}
+@media (max-width: 639px) {
+  .catalogue {
+    padding: 24px 16px 64px;
+  }
+}
+.catalogue__product-container {
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  grid-auto-rows: max-content;
+  -moz-column-gap: 16px;
+       column-gap: 16px;
+  margin-top: 40px;
+}
+@media (max-width: 1199px) {
+  .catalogue__product-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: max-content;
+    -moz-column-gap: 16px;
+         column-gap: 16px;
+  }
+}
+@media (max-width: 639px) {
+  .catalogue__product-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: max-content;
+    -moz-column-gap: 16px;
+         column-gap: 16px;
+    margin-top: 32px;
+  }
+}
+.catalogue__title {
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-top: 40px;
+}
+@media (max-width: 639px) {
+  .catalogue__title {
+    font-size: 32px;
+    line-height: 41px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin-top: 24px;
+  }
+}
+.catalogue__count {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #75767F;
+  margin-top: 8px;
+}
+.catalogue__filter-sort {
+  grid-column: 1/5;
+}
+@media (max-width: 639px) {
+  .catalogue__filter-sort {
+    grid-column: 1/3;
+  }
+}
+.catalogue__filter-perPage {
+  grid-column: 5/8;
+}
+@media (max-width: 639px) {
+  .catalogue__filter-perPage {
+    grid-column: 3/5;
+  }
+}
+.catalogue__filter-label {
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #75767F;
+}
+.catalogue__product-list {
+  grid-column: 1/-1;
+  margin-top: 24px;
+}
+.catalogue__pagination {
+  margin: 0 auto;
+  margin-top: 40px;
+}
+@media (max-width: 639px) {
+  .catalogue__pagination {
+    margin-top: 24px;
+  }
+}/*# sourceMappingURL=Catalogue.module.css.map */

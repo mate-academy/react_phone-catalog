@@ -1,0 +1,57 @@
+@import '../../utils/mixins';
+@import '../../utils/mediaQuery';
+@import '../../utils/gridTemplate';
+
+.home-page{
+    @include grid;
+
+    padding: 56px 0 80px;
+
+    @include tablet{
+        @include grid-tablet;
+
+        width: 100%;
+        padding: 32px 24px 64px;
+    }
+
+    @include mobile{
+        @include grid-mobile;
+
+        padding: 24px 16px 64px;
+    }
+
+    & > *{
+        grid-column: 1/-1;
+    }
+
+    &__title{
+        @include h1-title;
+
+        margin: 0; 
+        
+        @include mobile{
+            @include h1-mobile;
+        }
+    }
+
+    &__main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 80px;
+        width: 100%;
+        margin-top: 56px;
+        
+        @include tablet{
+            gap:64px;
+            margin-top: 32px;
+        }
+
+        @include mobile{
+            gap:56px;
+            margin-top: 24px;
+        }
+        
+    }
+}
