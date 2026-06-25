@@ -1,0 +1,53 @@
+@use '../../styles/variables' as *;
+
+.page {
+  padding: $spacing-md 0;
+  margin-bottom: $spacing-xl;
+
+  @media (min-width: $breakpoint-tablet) {
+    margin-bottom: $spacing-2xl;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    margin-bottom: $spacing-3xl;
+  }
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: $spacing-xs;
+
+  @media (min-width: $breakpoint-desktop) {
+    font-size: $font-size-3xl;
+  }
+}
+
+.count {
+  font-size: $font-size-sm;
+  color: var(--color-secondary);
+  margin-bottom: $spacing-lg;
+}
+
+.empty {
+  text-align: center;
+  color: var(--color-secondary);
+  padding: $spacing-xl;
+  font-size: $font-size-lg;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-md;
+  justify-items: center;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

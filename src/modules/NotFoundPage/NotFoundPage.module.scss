@@ -1,0 +1,54 @@
+@use '../../styles/variables' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-3xl $container-padding-mobile;
+  text-align: center;
+  min-height: 50vh;
+}
+
+.image {
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: $spacing-lg;
+
+  @media (min-width: $breakpoint-tablet) {
+    max-width: 500px;
+  }
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: $spacing-md;
+
+  @media (min-width: $breakpoint-desktop) {
+    font-size: $font-size-3xl;
+  }
+}
+
+.text {
+  font-size: $font-size-md;
+  color: var(--color-secondary);
+  margin-bottom: $spacing-lg;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 $spacing-lg;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: $font-size-sm;
+  font-weight: 700;
+  transition: $transition;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+  }
+}

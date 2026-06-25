@@ -1,0 +1,60 @@
+@use '../../../../styles/variables' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-md;
+}
+
+.home {
+  display: flex;
+  align-items: center;
+  transition: $transition;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+}
+
+.link {
+  font-size: $font-size-xs;
+  font-weight: 600;
+  color: var(--color-primary);
+  transition: $transition;
+
+  &:hover {
+    color: var(--color-secondary);
+  }
+}
+
+.current {
+  font-size: $font-size-xs;
+  font-weight: 600;
+  color: var(--color-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 165px;
+
+  @media (min-width: $breakpoint-tablet) {
+    max-width: none;
+  }
+}

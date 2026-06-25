@@ -1,0 +1,42 @@
+@use '../../styles/variables' as *;
+
+.homePage {
+  padding: $spacing-md 0;
+
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.title {
+  text-align: left;
+  font-size: $font-size-2xl;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: $spacing-md;
+  margin-top: $spacing-md;
+  max-width: 300px;
+
+
+  @media (min-width: $breakpoint-tablet) {
+    max-width: 400px;
+    font-size: $font-size-3xl;
+    margin-top: $spacing-lg;
+    margin-bottom: $spacing-lg;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    max-width: none;
+    margin-top: $spacing-xl;
+    margin-bottom: $spacing-xl;
+  }
+}

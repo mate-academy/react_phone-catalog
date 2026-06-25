@@ -1,0 +1,101 @@
+@use '../../../../styles/variables' as *;
+
+.slider {
+  margin-top: $spacing-xl;
+
+  @media (min-width: $breakpoint-tablet) {
+    margin-top: $spacing-2xl;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    margin-top: $spacing-3xl;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.title {
+  font-size: $font-size-xl;
+  font-weight: 800;
+  color: var(--color-primary);
+  max-width: 136px;
+
+  @media (min-width: $breakpoint-tablet) {
+    max-width: none;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    font-size: $font-size-2xl;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-elements);
+  transition: $transition;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--color-primary);
+  }
+
+}
+
+.listWrapper {
+  overflow: hidden;
+  width: 100%;
+
+  // @media (min-width: $breakpoint-tablet) {
+  //   margin-right: -$container-padding-tablet;
+  // }
+
+  // @media (min-width: $breakpoint-desktop) {
+  //   margin-right: 0;
+  //   width: 100%;
+
+  // }
+}
+
+.list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: $spacing-sm;
+  transition: transform 0.3s ease;
+  transform: translateX(calc(-1 * var(--mobile-offset, 0px)));
+
+  @media (min-width: $breakpoint-tablet) {
+    transform: translateX(calc(-1 * var(--tablet-offset, 0px)));
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    transform: translateX(calc(-1 * var(--desktop-offset, 0px)));
+  }
+
+}
+
+.item {
+  min-width: 0;
+}

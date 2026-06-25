@@ -1,0 +1,149 @@
+@use '../../../../styles/variables' as *;
+
+.page {
+  padding: $spacing-md 0;
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: $spacing-xs;
+
+  @media (min-width: $breakpoint-desktop) {
+    font-size: $font-size-3xl;
+  }
+}
+
+.count {
+  font-size: $font-size-sm;
+  color: var(--color-secondary);
+  margin-bottom: $spacing-lg;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+  align-items: flex-end;
+
+  & > * {
+    flex: 0 0 auto;
+  }
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.filterLabel {
+  font-size: $font-size-xs;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.select {
+  height: 40px;
+  padding: 0 $spacing-sm;
+  border: 1px solid var(--color-elements);
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: $transition;
+  background-color: var(--color-white);
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+}
+
+// Grid
+.grid {
+  display: grid;
+  grid-template-columns: 1fr; // mobile — 1 column
+  gap: $spacing-md;
+  justify-items: center;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: repeat(2, 1fr); // tablet — 2 col
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    grid-template-columns: repeat(4, 1fr); // desktop — 4 col
+  }
+}
+
+// Pagination
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-top: $spacing-xl;
+}
+
+.pageBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-elements);
+  font-size: $font-size-sm;
+  font-weight: 700;
+  color: var(--color-primary);
+  transition: $transition;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--color-primary);
+  }
+}
+
+.pageBtnActive {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+.loader {
+  padding: $spacing-xl;
+  text-align: center;
+}
+
+.error {
+  padding: $spacing-xl;
+  text-align: center;
+
+  button {
+    margin-top: $spacing-sm;
+    padding: $spacing-xs $spacing-md;
+    border: 1px solid var(--color-primary);
+    font-weight: 700;
+    transition: $transition;
+
+    &:hover {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+  }
+}
+
+.empty {
+  text-align: center;
+  color: var(--color-secondary);
+  padding: $spacing-xl;
+}

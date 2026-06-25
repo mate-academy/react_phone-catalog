@@ -1,0 +1,93 @@
+@use '../../../../styles/variables' as *;
+
+.categories {
+  margin-top: $spacing-xl;
+
+  @media (min-width: $breakpoint-tablet) {
+    margin-top: $spacing-2xl;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    margin-top: $spacing-3xl;
+  }
+
+}
+
+.title {
+  font-size: $font-size-xl;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: $spacing-md;
+
+  @media (min-width: $breakpoint-desktop) {
+    font-size: $font-size-2xl;
+  }
+}
+
+.list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-lg;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: repeat(3, 1fr); // tablet+ — 3 columns
+    gap: $spacing-sm;
+  }
+}
+
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  overflow: hidden;
+  transition: $transition;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  transition: $transition;
+
+  &:hover .imageWrapper {
+    transform: scale(1.05);
+  }
+
+  &:nth-child(1) .imageWrapper {
+    background-color: $color-category-phone;
+  }
+  &:nth-child(2) .imageWrapper {
+    background-color: $color-category-tablets;
+  }
+  &:nth-child(3) .imageWrapper {
+    background-color: $color-category-accessories;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.itemTitle {
+  font-size: $font-size-lg;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-top: $spacing-md;
+
+  @media (min-width: $breakpoint-tablet) {
+    font-weight: 600;
+  }
+}
+
+.itemCount {
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: var(--color-secondary);
+  margin-top: $spacing-xs;
+
+  @media (min-width: $breakpoint-tablet) {
+    font-weight: 500;
+  }
+}

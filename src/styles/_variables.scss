@@ -1,0 +1,65 @@
+// Colors
+$color-primary: #313237;
+$color-secondary: #89939a;
+$color-icons: #b4bdc3;
+$color-elements: #e2e6e9;
+$color-bg: #fafbfc;
+$color-hover: #f0f0f0;
+$color-white: #fff;
+$color-green: #27ae60;
+$color-red: #eb5757;
+$color-category-phone: #6D6474;
+$color-category-tablets: #8D8D92;
+$color-category-accessories: #973D5F;
+
+// Typography
+$font-family: 'Mont', 'Helvetica', sans-serif;
+
+// Font sizes
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-md: 16px;
+$font-size-lg: 20px;
+$font-size-xl: 22px;
+$font-size-2xl: 32px;
+$font-size-3xl: 48px;
+
+// Breakpoints
+$breakpoint-tablet: 640px;
+$breakpoint-desktop: 1200px;
+$breakpoint-desktop-xl: 1440px;
+
+// Spacing
+$spacing-xs: 8px;
+$spacing-sm: 16px;
+$spacing-md: 24px;
+$spacing-lg: 32px;
+$spacing-xl: 56px;
+$spacing-2xl: 64px;
+$spacing-3xl: 80px;
+
+// Container (width of page)
+$container-max-width: 1440px;
+$container-padding-mobile: 16px;
+$container-padding-tablet: 24px;
+$container-padding-desktop: 32px;
+$container-padding-desktop-xl: 152px;
+
+// Grid
+$grid-gap: 16px;
+$grid-columns-mobile: 4;
+$grid-columns-tablet: 12;
+$grid-columns-desktop: 24;
+$grid-column-width-desktop: 32px;
+
+// Transition
+$transition: 0.3s ease;
+
+// CSS vars
+$c-primary: var(--color-primary);
+$c-secondary: var(--color-secondary);
+$c-bg: var(--color-bg);
+$c-white: var(--color-white);
+$c-elements: var(--color-elements);
+$c-icons: var(--color-icons);
+$c-hover: var(--color-hover);

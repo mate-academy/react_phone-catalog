@@ -1,0 +1,84 @@
+@use '../../../../styles/variables' as *;
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  width: fit-content;
+}
+
+.label {
+  font-size: $font-size-xs;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  width: 100%;
+  padding: 0 $spacing-sm;
+  border: 1px solid var(--color-elements);
+  background-color: var(--color-white);
+  cursor: pointer;
+  transition: $transition;
+  user-select: none;
+  min-width: 136px;
+  box-sizing: border-box;
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+}
+
+.selectOpen {
+  border-color: var(--color-primary);
+}
+
+.selected {
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+  z-index: 10;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  min-width: 100%; 
+  width: max-content;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 $spacing-sm;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: $transition;
+
+  &:hover {
+    background-color: var(--color-hover);
+    color: var(--color-primary);
+  }
+}
+
+.optionActive {
+  color: var(--color-secondary);
+}
