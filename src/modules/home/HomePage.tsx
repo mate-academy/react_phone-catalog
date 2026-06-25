@@ -14,6 +14,7 @@ import { Tablet } from '../../types/tablet';
 import { Accessorie } from '../../types/accessorie';
 import { ProductSlider } from './components/ProductsSlider';
 import { Loader } from '../shared/components/UI/Loader';
+import { useTranslation } from 'react-i18next';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -21,6 +22,8 @@ export const HomePage = () => {
   const [tablets, setTablets] = useState<Tablet[]>([]);
   const [accessories, setAccessories] = useState<Accessorie[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     setLoading(true);
@@ -67,21 +70,27 @@ export const HomePage = () => {
   return (
     <div className={styles.homePage}>
       <div className={styles.container}>
-        <h1 className={styles.hiddenTitle}>Product Catalog</h1>
-        <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
+        <h1 className={styles.hiddenTitle}>{t('homePage.hiddenTitle')}</h1>
+        <h2 className={styles.title}>{t('homePage.title')}</h2>
 
         <PicturesSlider />
 
-        <ProductSlider products={newestProducts} title="Brand new models" />
+        <ProductSlider
+          products={newestProducts}
+          title={t('homePage.productSlider.titleNew')}
+        />
 
         <ShopByCategory
           phones={phones}
           tablets={tablets}
           accessories={accessories}
-          title="Shop by category"
+          title={t('homePage.shopByCategory.title')}
         />
 
-        <ProductSlider products={hotPricesProducts} title="Hot prices" />
+        <ProductSlider
+          products={hotPricesProducts}
+          title={t('homePage.productSlider.titleHot')}
+        />
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import { usePagination } from '../../../shared/hooks/usePagination';
 import { SortOption, useSort } from '../../hooks/useSort';
 import { ProductList } from '../../../shared/components/ProductsList';
 import { useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export type AnyProduct = Phone | Tablet | Accessorie;
 
@@ -40,14 +41,16 @@ export const CatalogList: React.FC<Props> = ({ products, title }) => {
   const { sort, setSort } = useSort();
   const { page, perPage, setPagination } = usePagination();
 
-  const pageHeading = useMemo(() => {
-    const formattedTitle =
-      title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
+  const { t } = useTranslation();
 
-    return formattedTitle.endsWith('page')
-      ? formattedTitle
-      : `${formattedTitle} page`;
-  }, [title]);
+  // const pageHeading = useMemo(() => {
+  //   const formattedTitle =
+  //     title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
+
+  //   return formattedTitle.endsWith('page')
+  //     ? formattedTitle
+  //     : `${formattedTitle} page`;
+  // }, [title]);
 
   const mappedProducts = useMemo(() => products.map(mapToProduct), [products]);
 
@@ -133,13 +136,15 @@ export const CatalogList: React.FC<Props> = ({ products, title }) => {
   return (
     <div className={styles.listWrapper}>
       <div className={styles.topBar}>
-        <h1 className={styles.title}>{pageHeading}</h1>
+        <h1 className={styles.title}>{title}</h1>
 
-        <div className={styles.quantity}>{currentProductsQuantity} models</div>
+        <div className={styles.quantity}>
+          {t('catalog.modelsCount', { count: products.length })}
+        </div>
 
         <div className={styles.changes}>
           <label htmlFor="sort-select" className={styles.label}>
-            <p>Sort by</p>
+            <p>{t('catalog.sortBy')}</p>
 
             <select
               id="sort-select"
@@ -148,19 +153,19 @@ export const CatalogList: React.FC<Props> = ({ products, title }) => {
               onChange={handleSortChange}
             >
               <option value="age" className={styles.selectOptions}>
-                Newest
+                {t('catalog.sortOptions.newest')}
               </option>
               <option value="title" className={styles.selectOptions}>
-                Alphabetically
+                {t('catalog.sortOptions.alphabetically')}
               </option>
               <option value="price" className={styles.selectOptions}>
-                Cheapest
+                {t('catalog.sortOptions.cheapest')}
               </option>
             </select>
           </label>
 
           <label htmlFor="per-page-select" className={styles.label}>
-            <p>Items on page</p>
+            <p>{t('catalog.itemsOnPage')}</p>
 
             <select
               id="per-page-select"
@@ -178,7 +183,7 @@ export const CatalogList: React.FC<Props> = ({ products, title }) => {
                 16
               </option>
               <option value="all" className={styles.selectOptions}>
-                All
+                {t('catalog.sortOptions.all')}
               </option>
             </select>
           </label>
@@ -191,16 +196,20 @@ export const CatalogList: React.FC<Props> = ({ products, title }) => {
         ) : !query ? (
           <div className={styles.emptyState}>
             <h2 className={styles.emptyStateTitle}>
-              There are no {title.toLowerCase()} yet
+              {t('catalog.emptyState.noProductsTitle', {
+                category: title.toLowerCase(),
+              })}
             </h2>
             <p className={styles.emptyStateSub}>
-              Please check back later or try changing your filters.
+              {t('catalog.emptyState.noProductsSub')}
             </p>
           </div>
         ) : (
           <div className={styles.emptyState}>
             <h2 className={styles.emptyStateTitle}>
-              There are no {title.toLowerCase()} matching the query
+              {t('catalog.emptyState.noResultsTitle', {
+                category: title.toLowerCase(),
+              })}
             </h2>
           </div>
         )}

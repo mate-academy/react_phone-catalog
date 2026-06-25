@@ -152,6 +152,7 @@
     position: static;
     width: auto;
     height: 100%;
+    gap: 0;
     background-color: transparent;
     border-top: none;
     padding: 0;
@@ -160,11 +161,16 @@
 }
 
 .togglerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
   @media (min-width: 768px) {
     display: flex;
     align-items: center;
+    gap: 0;
     height: 100%;
-    margin-left: auto;
     border: none;
   }
 }

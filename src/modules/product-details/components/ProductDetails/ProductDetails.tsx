@@ -6,6 +6,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useFavorite } from '../../../../contexts/FavoritesContext';
 import { Product } from '../../../../types/product';
 import { useCart } from '../../../../contexts/CartContext';
+import { useTranslation } from 'react-i18next';
 
 type AnyProduct = Phone | Tablet | Accessorie;
 
@@ -32,13 +33,14 @@ const convertToProduct = (item: AnyProduct): Product => {
 
 export const ProductDetails: React.FC<Props> = ({ product }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const { addToCart, removeFromCart, cart } = useCart();
   const { addToFavorite, removeFromFavorite, favorite } = useFavorite();
 
   if (!product) {
-    return <div>Product was not found</div>;
+    return <div>{t('productDetails.notFound')}</div>;
   }
 
   const currentPriceColor = product.color.toLowerCase();
@@ -113,6 +115,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
     <div className={styles.productDetails}>
       <button
         className={styles.backButton}
+        aria-label={t('productDetails.back')}
         onClick={() => {
           if (window.history.length > 1) {
             navigate(-1);
@@ -122,7 +125,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
         }}
       >
         <img src="/img/icons/left.svg" alt="" className={styles.back} />
-        Back
+        {t('productDetails.back')}
       </button>
 
       <h2 className={styles.title}>{product.name}</h2>
@@ -146,7 +149,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
                 </button>
               ))
             ) : (
-              <p>Images are loading...</p>
+              <p>{t('productDetails.loadingImages')}</p>
             )}
           </div>
 
@@ -162,7 +165,9 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
         <div className={styles.configColumn}>
           <div className={styles.colorSelector}>
             <div className={styles.topBar}>
-              <p className={styles.paraghTitle}>Available colors</p>
+              <p className={styles.paraghTitle}>
+                {t('productDetails.availableColors')}
+              </p>
               <span className={styles.productId}>
                 ID: {product.namespaceId}
               </span>
@@ -199,7 +204,9 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
           </div>
 
           <div className={styles.capacity}>
-            <p className={styles.paraghTitle}>Select capacity</p>
+            <p className={styles.paraghTitle}>
+              {t('productDetails.selectCapacity')}
+            </p>
 
             <div className={styles.capacityGrid}>
               {capacityList.map(capacity => {
@@ -236,12 +243,14 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
                 onClick={handleCartClick}
                 className={`${styles.buyButton} ${isInCart ? styles.isAdded : ''}`}
               >
-                {isInCart ? 'Added' : 'Add to cart'}
+                {isInCart
+                  ? t('productDetails.buttons.added')
+                  : t('productDetails.buttons.addToCart')}
               </button>
               <button
                 type="button"
                 className={`${styles.favButton} ${isInFavorite ? styles.isFav : ''}`}
-                aria-label="Toggle favorites"
+                aria-label={t('productDetails.buttons.toggleFavorites')}
                 onClick={handleFavoriteClick}
               >
                 <img
@@ -258,19 +267,27 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
 
           <div className={styles.specs}>
             <div className={styles.specRow}>
-              <p className={styles.specTitle}>Screen</p>
+              <p className={styles.specTitle}>
+                {t('productDetails.specs.screen')}
+              </p>
               <span className={styles.description}>{product.screen}</span>
             </div>
             <div className={styles.specRow}>
-              <p className={styles.specTitle}>Resolution</p>
+              <p className={styles.specTitle}>
+                {t('productDetails.specs.resolution')}
+              </p>
               <span className={styles.description}>{product.resolution}</span>
             </div>
             <div className={styles.specRow}>
-              <p className={styles.specTitle}>Processor</p>
+              <p className={styles.specTitle}>
+                {t('productDetails.specs.processor')}
+              </p>
               <span className={styles.description}>{product.processor}</span>
             </div>
             <div className={styles.specRow}>
-              <p className={styles.specTitle}>RAM</p>
+              <p className={styles.specTitle}>
+                {t('productDetails.specs.ram')}
+              </p>
               <span className={styles.description}>{product.ram}</span>
             </div>
           </div>
@@ -279,7 +296,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
 
       <div className={styles.main}>
         <section className={styles.about}>
-          <h3 className={styles.sectionTitle}>About</h3>
+          <h3 className={styles.sectionTitle}>{t('productDetails.about')}</h3>
 
           {product.description?.map((prod, index) => (
             <div key={prod.title || index} className={styles.aboutContainer}>
@@ -290,40 +307,54 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
         </section>
 
         <section className={styles.characteristic}>
-          <h3 className={styles.sectionTitle}>Tech specs</h3>
+          <h3 className={styles.sectionTitle}>
+            {t('productDetails.techSpecs')}
+          </h3>
 
           <div className={styles.techSpecs}>
             <div className={styles.techSpecRow}>
-              <p className={styles.techSpecTitle}>Screen</p>
+              <p className={styles.techSpecTitle}>
+                {t('productDetails.specs.screen')}
+              </p>
               <span className={styles.techSpecDescription}>
                 {product.screen}
               </span>
             </div>
             <div className={styles.techSpecRow}>
-              <p className={styles.techSpecTitle}>Resolution</p>
+              <p className={styles.techSpecTitle}>
+                {t('productDetails.specs.resolution')}
+              </p>
               <span className={styles.techSpecDescription}>
                 {product.resolution}
               </span>
             </div>
             <div className={styles.techSpecRow}>
-              <p className={styles.techSpecTitle}>Processor</p>
+              <p className={styles.techSpecTitle}>
+                {t('productDetails.specs.processor')}
+              </p>
               <span className={styles.techSpecDescription}>
                 {product.processor}
               </span>
             </div>
             <div className={styles.techSpecRow}>
-              <p className={styles.techSpecTitle}>RAM</p>
+              <p className={styles.techSpecTitle}>
+                {t('productDetails.specs.ram')}
+              </p>
               <span className={styles.techSpecDescription}>{product.ram}</span>
             </div>
             <div className={styles.techSpecRow}>
-              <p className={styles.techSpecTitle}>Built in memory</p>
+              <p className={styles.techSpecTitle}>
+                {t('productDetails.specs.builtInMemory')}
+              </p>
               <span className={styles.techSpecDescription}>
                 {product.capacity}
               </span>
             </div>
             {'camera' in product && (
               <div className={styles.techSpecRow}>
-                <p className={styles.techSpecTitle}>Camera</p>
+                <p className={styles.techSpecTitle}>
+                  {t('productDetails.specs.camera')}
+                </p>
                 <span className={styles.techSpecDescription}>
                   {product.camera}
                 </span>
@@ -331,14 +362,18 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
             )}
             {'zoom' in product && (
               <div className={styles.techSpecRow}>
-                <p className={styles.techSpecTitle}>Zoom</p>
+                <p className={styles.techSpecTitle}>
+                  {t('productDetails.specs.zoom')}
+                </p>
                 <span className={styles.techSpecDescription}>
                   {product.zoom}
                 </span>
               </div>
             )}
             <div className={styles.techSpecRow}>
-              <p className={styles.techSpecTitle}>Cell</p>
+              <p className={styles.techSpecTitle}>
+                {t('productDetails.specs.zoom')}
+              </p>
               <span className={styles.techSpecDescription}>
                 {product.cell?.join(', ') || ''}
               </span>

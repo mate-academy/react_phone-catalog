@@ -7,7 +7,7 @@ import React, {
   useState,
 } from 'react';
 
-import { Product } from '../../types/product';
+import { Product } from '../types/product';
 interface CartItem {
   product: Product;
   quantity: number;
@@ -74,7 +74,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   const totalPrice = useMemo(
     () =>
       cart.reduce((sum, item) => {
-        const actualPrice = item.product.price || item.product.fullPrice;
+        const actualPrice = item.product.price ?? item.product.fullPrice ?? 0;
 
         return sum + actualPrice * item.quantity;
       }, 0),

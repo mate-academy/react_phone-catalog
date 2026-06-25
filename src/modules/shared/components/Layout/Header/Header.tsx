@@ -5,6 +5,8 @@ import { useDebounce } from '../../../hooks/useDebounce';
 import { useTheme } from '../../../../../contexts/ThemeContext';
 import { Icons } from '../../UI/Icons';
 import { ThemeToggler } from '../../UI/ThemeToggler/ThemeToggler';
+import { LanguageToggler } from '../../UI/LanguageToggler';
+import { useTranslation } from 'react-i18next';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,6 +17,8 @@ export const Header = () => {
   const logoDark = '/img/icons/logo.svg';
   const logoLight = '/img/icons/logo-light.svg';
   const { theme } = useTheme();
+
+  const { t } = useTranslation();
 
   const location = useLocation();
 
@@ -58,7 +62,7 @@ export const Header = () => {
             <img
               className={styles.logo}
               src={theme === 'dark' ? logoDark : logoLight}
-              alt="Page Logo"
+              alt={t('header.logoAlt')}
             />
           </Link>
         </div>
@@ -67,22 +71,22 @@ export const Header = () => {
           <ul className={styles.list}>
             <li>
               <NavLink to="/" className={getLinkClass}>
-                Home
+                {t('header.home')}
               </NavLink>
             </li>
             <li>
               <NavLink to="/phones" className={getLinkClass}>
-                Phones
+                {t('header.phones')}
               </NavLink>
             </li>
             <li>
               <NavLink to="/tablets" className={getLinkClass}>
-                Tablets
+                {t('header.tablets')}
               </NavLink>
             </li>
             <li>
               <NavLink to="/accessories" className={getLinkClass}>
-                Accessories
+                {t('header.accessories')}
               </NavLink>
             </li>
           </ul>
@@ -92,7 +96,7 @@ export const Header = () => {
           <div className={styles.searchContainer}>
             <input
               type="search"
-              placeholder="Search..."
+              placeholder={t('header.searchPlaceholder')}
               value={inputValue}
               onChange={handleSearchChange}
               className={styles.searchInput}
@@ -105,6 +109,8 @@ export const Header = () => {
         >
           <div className={styles.togglerWrapper}>
             <ThemeToggler />
+
+            <LanguageToggler />
           </div>
 
           <div className={styles.icons}>

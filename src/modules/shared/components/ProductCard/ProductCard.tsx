@@ -4,6 +4,7 @@ import { Product } from '../../../../types/product';
 import styles from './ProductCard.module.scss';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../../../contexts/CartContext';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   product: Product;
@@ -12,6 +13,8 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { addToCart, removeFromCart, cart } = useCart();
   const isInCart = cart.some(item => item.product.id === product.id);
+
+  const { t } = useTranslation();
 
   const handleCartClick = () => {
     if (isInCart) {
@@ -53,15 +56,15 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className={styles.specs}>
         <div className={styles.specRow}>
-          <p className={styles.specTitle}>Screen</p>
+          <p className={styles.specTitle}>{t('productCard.specs.screen')}</p>
           <span className={styles.description}>{product.screen}</span>
         </div>
         <div className={styles.specRow}>
-          <p className={styles.specTitle}>Capacity</p>
+          <p className={styles.specTitle}>{t('productCard.specs.capacity')}</p>
           <span className={styles.description}>{product.capacity}</span>
         </div>
         <div className={styles.specRow}>
-          <p className={styles.specTitle}>RAM</p>
+          <p className={styles.specTitle}>{t('productCard.specs.ram')}</p>
           <span className={styles.description}>{product.ram}</span>
         </div>
       </div>
@@ -69,16 +72,18 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <div className={styles.buttons}>
         <button
           className={`${styles.addToCart} ${isInCart ? styles.isActive : ''}`}
-          aria-label="Toggle cart"
+          aria-label={t('productCard.buttons.toggleCart')}
           onClick={handleCartClick}
         >
-          {isInCart ? 'Added' : 'Add to cart'}
+          {isInCart
+            ? t('productCard.buttons.added')
+            : t('productCard.buttons.addToCart')}
         </button>
         <div>
           <button
             type="button"
             className={styles.iconLink}
-            aria-label="Toggle favorites"
+            aria-label={t('productCard.buttons.toggleFavorites')}
             onClick={handleFavoriteClick}
           >
             <img

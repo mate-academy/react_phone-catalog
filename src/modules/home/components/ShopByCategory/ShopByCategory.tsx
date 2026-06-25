@@ -4,6 +4,7 @@ import { Phone } from '../../../../types/phone';
 import { Tablet } from '../../../../types/tablet';
 import { Accessorie } from '../../../../types/accessorie';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   phones: Phone[];
@@ -22,6 +23,8 @@ export const ShopByCategory: React.FC<Props> = ({
   const tabletsQuantity = tablets.length;
   const accessoriesQuantity = accessories.length;
 
+  const { t } = useTranslation();
+
   return (
     <div className={styles.categoryWrapper}>
       <h2 className={styles.pageTitle}>{title}</h2>
@@ -35,8 +38,14 @@ export const ShopByCategory: React.FC<Props> = ({
               className={styles.categoryImage}
             />
           </div>
-          <h4 className={styles.title}>Mobile phones</h4>
-          <p className={styles.description}>{phonesQuantity} models</p>
+          <h4 className={styles.title}>
+            {t('homePage.shopByCategory.phones')}
+          </h4>
+          <p className={styles.description}>
+            {t('homePage.shopByCategory.modelsCount', {
+              count: phonesQuantity,
+            })}
+          </p>
         </Link>
 
         <Link className={styles.category} to="/tablets">
@@ -47,8 +56,14 @@ export const ShopByCategory: React.FC<Props> = ({
               className={styles.categoryImage}
             />
           </div>
-          <h4 className={styles.title}>Tablets</h4>
-          <p className={styles.description}>{tabletsQuantity} models</p>
+          <h4 className={styles.title}>
+            {t('homePage.shopByCategory.tablets')}
+          </h4>
+          <p className={styles.description}>
+            {t('homePage.shopByCategory.modelsCount', {
+              count: tabletsQuantity,
+            })}
+          </p>
         </Link>
 
         <Link className={styles.category} to="/accessories">
@@ -59,8 +74,14 @@ export const ShopByCategory: React.FC<Props> = ({
               className={styles.categoryImage}
             />
           </div>
-          <h4 className={styles.title}>Accessories</h4>
-          <p className={styles.description}>{accessoriesQuantity} models</p>
+          <h4 className={styles.title}>
+            {t('homePage.shopByCategory.accessories')}
+          </h4>
+          <p className={styles.description}>
+            {t('homePage.shopByCategory.modelsCount', {
+              count: accessoriesQuantity,
+            })}
+          </p>
         </Link>
       </div>
     </div>

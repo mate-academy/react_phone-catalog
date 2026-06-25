@@ -1,6 +1,6 @@
-import { Outlet } from 'react-router-dom';
-import './styles/App.module.scss';
 import styles from './styles/App.module.scss';
+import './styles/App.module.scss';
+import { Outlet } from 'react-router-dom';
 import { Header } from './modules/shared/components/Layout/Header';
 import { Footer } from './modules/shared/components/Layout/Footer';
 import { FavoriteProvider } from './contexts/FavoritesContext';

@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import { useCart } from '../../../contexts/CartContext';
 import styles from './CartList.module.scss';
+import { useTranslation } from 'react-i18next';
 
 export const CartItem = () => {
   const {
@@ -10,6 +12,8 @@ export const CartItem = () => {
     totalItems,
     totalPrice,
   } = useCart();
+
+  const { t } = useTranslation();
 
   const handleAddItem = (itemId: string) => {
     const findItemId = cart.find(item => item.product.id === itemId);
@@ -30,9 +34,7 @@ export const CartItem = () => {
   };
 
   const handleCheckout = () => {
-    const isConfirmed = window.confirm(
-      'Checkout is not implemented yet. Do you want to clear the Cart?',
-    );
+    const isConfirmed = window.confirm(t('cart.confirmCheckout'));
 
     if (isConfirmed === true) {
       clearCart();
@@ -42,7 +44,7 @@ export const CartItem = () => {
   if (cart.length === 0) {
     return (
       <div className={styles.errorWrapper}>
-        <p className={styles.errorMessage}>Your cart is empty</p>
+        <p className={styles.errorMessage}>{t('cart.empty')}</p>
       </div>
     );
   }
@@ -57,24 +59,28 @@ export const CartItem = () => {
                 <button
                   onClick={() => removeFromCart(product.product.id)}
                   className={styles.deleteButton}
+                  aria-label={t('cart.deleteItemAlt')}
                 >
                   <div className={styles.closeButton}>
                     <img
                       src="/img/icons/close.svg"
-                      alt=""
+                      alt={t('cart.deleteItemAlt')}
                       className={styles.closeButtonImage}
                     />
                   </div>
                 </button>
               </div>
 
-              <div className={styles.itemImageWrapper}>
+              <Link
+                to={`/${product.product.category}/product/${product.product.itemId || product.product.id}`}
+                className={styles.itemImageWrapper}
+              >
                 <img
                   src={product.product.image}
                   alt={product.product.name}
                   className={styles.itemImage}
                 />
-              </div>
+              </Link>
 
               <h2 className={styles.itemName}>{product.product.name}</h2>
 
@@ -82,6 +88,7 @@ export const CartItem = () => {
                 <button
                   onClick={() => handleRemoveItem(product.product.id)}
                   className={styles.quantityButton}
+                  aria-label="Decrease quantity"
                 >
                   -
                 </button>
@@ -89,6 +96,7 @@ export const CartItem = () => {
                 <button
                   onClick={() => handleAddItem(product.product.id)}
                   className={styles.quantityButton}
+                  aria-label="Increase quantity"
                 >
                   +
                 </button>
@@ -103,9 +111,11 @@ export const CartItem = () => {
 
         <div className={styles.summary}>
           <h2 className={styles.summaryPrice}>${totalPrice}</h2>
-          <p className={styles.summaryInfo}>Total for {totalItems} items</p>
+          <p className={styles.summaryInfo}>
+            {t('cart.totalFor', { count: totalItems })}
+          </p>
           <button className={styles.checkoutButton} onClick={handleCheckout}>
-            Checkout
+            {t('cart.checkout')}
           </button>
         </div>
       </div>

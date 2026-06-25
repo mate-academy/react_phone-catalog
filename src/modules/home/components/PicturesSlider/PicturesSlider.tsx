@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './PicturesSlider.module.scss';
-import { BANNERS } from '../../../../constants/constants';
+import { BANNERS, BANNERS_MOBILE } from '../../../../constants/constants';
 
 export const PicturesSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -58,11 +58,18 @@ export const PicturesSlider = () => {
         </button>
 
         <div className={styles.slide}>
-          <img
-            src={BANNERS[currentIndex].src}
-            alt={BANNERS[currentIndex].alt}
-            className={styles.slideImage}
-          />
+          <picture>
+            <source
+              media="(min-width: 768px)"
+              srcSet={BANNERS[currentIndex].src}
+            />
+
+            <img
+              src={BANNERS_MOBILE[currentIndex].src}
+              alt={BANNERS[currentIndex].alt}
+              className={styles.slideImage}
+            />
+          </picture>
         </div>
 
         <button

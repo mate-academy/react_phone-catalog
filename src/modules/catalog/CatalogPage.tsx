@@ -9,12 +9,15 @@ import {
 } from '../../services/product.api';
 import { Loader } from '../shared/components/UI/Loader';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
+import { useTranslation } from 'react-i18next';
 
 export const CatalogPage = () => {
   const { category } = useParams<{ category: string }>();
   const [products, setProducts] = useState<AnyProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
+
+  const { t } = useTranslation();
 
   const fetchData = useCallback(async () => {
     if (!category) {
@@ -43,11 +46,11 @@ export const CatalogPage = () => {
 
       setProducts(data);
     } catch {
-      setErrorMessage('Something went wrong');
+      setErrorMessage(t('catalog.error'));
     } finally {
       setLoading(false);
     }
-  }, [category]);
+  }, [category, t]);
 
   useEffect(() => {
     fetchData();
@@ -75,22 +78,22 @@ export const CatalogPage = () => {
           className={styles.restartButton}
           onClick={handleRestart}
         >
-          Restart
+          {t('catalog.restart')}
         </button>
       </div>
     );
   }
 
-  const pageTitle = category
-    ? category.charAt(0).toUpperCase() + category.slice(1)
-    : 'Catalog';
+  const titleKey = category
+    ? `catalog.titles.${category}`
+    : 'catalog.titles.catalog';
 
   return (
     <div className={styles.catalogPage}>
       <div className={styles.container}>
         <Breadcrumbs />
 
-        <CatalogList products={products} title={pageTitle} />
+        <CatalogList products={products} title={t(titleKey)} />
       </div>
     </div>
   );

@@ -7,9 +7,9 @@ export const ThemeToggler = () => {
   return (
     <div className={styles.togglerWrapper}>
       <button
-        onClick={toggleTheme}
         className={styles.toggler}
         aria-label="Toggle theme"
+        onClick={toggleTheme}
         title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
       >
         <span className={styles.icon}>{theme === 'light' ? '🌙' : '☀️'}</span>

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../../../../contexts/ThemeContext';
 import styles from './Footer.module.scss';
 
@@ -9,6 +10,8 @@ export const Footer = () => {
   const logoDark = '/img/icons/logo.svg';
   const logoLight = '/img/icons/logo-light.svg';
   const { theme } = useTheme();
+
+  const { t } = useTranslation();
 
   return (
     <footer className={styles.footer}>
@@ -37,19 +40,19 @@ export const Footer = () => {
             </li>
             <li>
               <a href="/" className={styles.link}>
-                Contacts
+                {t('footer.contacts')}
               </a>
             </li>
             <li>
               <a href="/" className={styles.link}>
-                Rights
+                {t('footer.rights')}
               </a>
             </li>
           </ul>
         </nav>
 
         <div className={styles.backTop}>
-          <span className={styles.buttonTopText}>Back to top</span>
+          <span className={styles.buttonTopText}>{t('footer.backToTop')}</span>
           <button
             className={styles.backTopButton}
             onClick={scrollTop}
@@ -58,7 +61,7 @@ export const Footer = () => {
             <div className={styles.iconWrapper}>
               <img
                 src="/img/icons/back-up.svg"
-                alt="Back to up"
+                alt={t('footer.backToTopIconAlt')}
                 aria-hidden="true"
                 className={styles.icon}
               />
