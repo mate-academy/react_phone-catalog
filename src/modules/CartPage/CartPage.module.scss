@@ -1,0 +1,124 @@
+.cartPage {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.clearButton {
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  &:hover {
+    background: #ff1f2d;
+  }
+}
+
+.list {
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.name {
+  font-size: 18px;
+  color: #222;
+}
+
+.price {
+  color: #888;
+  margin-top: 4px;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  button {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #ccc;
+    background: #f7f7f7;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      background: #eaeaea;
+    }
+  }
+}
+
+.subtotal {
+  font-weight: 600;
+  color: #333;
+  min-width: 80px;
+  text-align: right;
+}
+
+.removeButton {
+  background: transparent;
+  border: none;
+  color: #ff4d4f;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    color: #ff1f2d;
+  }
+}
+
+.total {
+  text-align: right;
+  margin-top: 30px;
+  font-size: 24px;
+  font-weight: 700;
+
+  span {
+    color: #222;
+  }
+}
+
+/* Página vazia */
+.empty {
+  padding: 50px;
+  text-align: center;
+  color: #666;
+  font-size: 20px;
+}

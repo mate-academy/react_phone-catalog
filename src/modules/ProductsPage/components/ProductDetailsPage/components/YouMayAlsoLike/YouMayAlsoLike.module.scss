@@ -1,0 +1,21 @@
+.card {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fafafa;
+  font-family: Arial, sans-serif;
+  margin-bottom: 20px;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+}

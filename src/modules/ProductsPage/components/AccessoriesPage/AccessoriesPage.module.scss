@@ -1,0 +1,168 @@
+.accessoriesPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  animation: fade-in 0.6s ease-out;
+
+  @media (max-width: 768px) {
+    padding: 20px 16px;
+  }
+}
+
+.header {
+  margin-bottom: 32px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 24px;
+  }
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 800;
+  color: #313237;
+  margin: 0 0 8px;
+  line-height: 1.2;
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 28px;
+  }
+}
+
+.modelsCount {
+  font-size: 14px;
+  color: #89939a;
+  margin: 0;
+  font-weight: 600;
+}
+
+.filterControls {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 40px;
+  animation: fade-in 0.8s ease-out;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 12px;
+  }
+}
+
+.sortWrapper,
+.perPageWrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #89939a;
+  white-space: nowrap;
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
+}
+
+.accessoriesList {
+  margin-bottom: 64px;
+  animation: fade-in 1s ease-out;
+
+  @media (max-width: 768px) {
+    margin-bottom: 48px;
+  }
+}
+
+.noResults {
+  text-align: center;
+  font-size: 16px;
+  color: #89939a;
+  padding: 40px 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin: 40px 0;
+}
+
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+
+  @media (max-width: 768px) {
+    margin-top: 32px;
+  }
+}
+
+.loadingState,
+.errorState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.errorState {
+  background: #fff5f5;
+  border: 1px solid #fed7d7;
+  border-radius: 8px;
+  padding: 40px;
+  margin: 40px 0;
+
+  p {
+    color: #e53e3e;
+    margin: 0 0 16px;
+    font-weight: 600;
+  }
+
+  button {
+    background: #e53e3e;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background: #c53030;
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modificator {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}

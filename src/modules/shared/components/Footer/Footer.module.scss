@@ -1,0 +1,207 @@
+$primary-color: #313237;
+$secondary-color: #89939A;
+$border-color: #E2E6E9;
+$bg-white: #fff;
+$text-dark: #313237;
+$text-light: #89939A;
+$blue-primary: #4219D0;
+$yellow-accent: #FACC15;
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 40px;
+  background-color: $bg-white;
+  border-top: 1px solid $border-color;
+  font-family: $font-family;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
+  margin-top: auto;
+  min-height: 96px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  color: $primary-color;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logoAccent {
+  color: $yellow-accent;
+  font-size: 1.2em;
+  vertical-align: middle;
+  display: inline-block;
+  margin-left: 4px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.navLinks {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.navLink {
+  color: $text-light;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+  position: relative;
+
+  &:hover {
+    color: $blue-primary;
+  }
+
+  &:focus {
+    outline: 2px solid $blue-primary;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: $blue-primary;
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.backToTopContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.backToTopText {
+  color: $text-light;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.backToTopButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $border-color;
+  background-color: $bg-white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+
+  &:hover {
+    border-color: $blue-primary;
+    background-color: rgba(66, 25, 208, 0.05);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  }
+
+  &:focus {
+    outline: 2px solid $blue-primary;
+    outline-offset: 2px;
+  }
+}
+
+.arrowIcon {
+  font-size: 12px;
+  color: $text-light;
+  line-height: 1;
+  display: block;
+  transition: color 0.3s ease;
+
+  .backToTopButton:hover & {
+    color: $blue-primary;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 20px;
+    text-align: center;
+    min-height: auto;
+  }
+
+  .logo {
+    align-items: center;
+    font-size: 20px;
+  }
+
+  .navLinks {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .backToTopContainer {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 20px 16px;
+    gap: 20px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .navLinks {
+    gap: 12px;
+  }
+
+  .navLink {
+    font-size: 11px;
+  }
+
+  .backToTopText {
+    font-size: 11px;
+  }
+
+  .backToTopButton {
+    width: 28px;
+    height: 28px;
+  }
+
+  .arrowIcon {
+    font-size: 10px;
+  }
+}
+
+.footer.sticky {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+}
