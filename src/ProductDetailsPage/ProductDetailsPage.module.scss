@@ -1,0 +1,143 @@
+@import '../mixin.scss';
+
+.containerPhones {
+padding: 0 32px;
+
+@include on-tablet {
+  padding: 0 24px;
+}
+
+@include on-phone {
+  padding: 0 16px;
+  align-items: center;
+}
+}
+
+.home {
+  text-decoration: none;
+}
+
+.homeButton {
+  margin: 24px 0 40px;
+   border: none;
+  color: #313237;
+  background: white;
+  display: flex;
+  font-weight: 600;
+    font-family: Mont;
+      gap: 8px;
+        align-items: center;
+
+}
+
+.homeImg {
+  width: 16px;
+  height: 16px;
+}
+
+.homePhones {
+  pointer-events: none;
+
+}
+
+.homeGo,
+.homeGoTo {
+color: #B4BDC3;
+text-decoration: none;
+}
+
+.homeGoTo {
+color: #313237;
+text-decoration: none;
+}
+
+.backButton{
+  display: flex;
+  border: none;
+  background: white;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.backImg{
+  width: 16px;
+  height: 16px;
+}
+
+.back {
+  align-items: center;
+  font-weight: 700;
+  font-size: 12px;
+  color: #89939A;
+}
+
+.linkId {
+font-weight: 800;
+font-size: 32px;
+line-height: 41px;
+letter-spacing: -1%;
+text-decoration: none;
+color: #313237;
+margin-bottom: 40px;
+@include on-phone {
+  margin-bottom: 32px;
+}
+}
+
+.blockDetailsRight {
+  box-sizing: border-box;
+}
+
+.imagesAll {
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  @include on-phone {
+      flex-direction: column-reverse;
+       justify-content: center;
+      width: 100%;
+    }
+}
+
+.imagesByOne {
+  height: 80px;
+  width: 80px;
+  display: flex;
+  background: white;
+    border: 1px solid #E2E6E9;
+    object-fit: contain;
+    justify-content: center;
+
+      @include on-tablet {
+          height: 64px;
+          width: 64px;
+        }
+
+        @include on-phone {
+          height: 50px;
+          width: 50px;
+        }
+}
+
+.mainImageBlock {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 464px;
+  width: 464px;
+
+      @include on-tablet {
+        height: 287px;
+        width: 287px;
+      }
+
+      @include on-phone {
+        height: 288px;
+        width: 288px;
+      }
+}
+
+.mainImage {
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}

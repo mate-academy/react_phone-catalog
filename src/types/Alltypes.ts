@@ -25,7 +25,7 @@ export type FullProduct = {
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description?: {
+  description: {
     title: string;
     text: string[];
   }[];

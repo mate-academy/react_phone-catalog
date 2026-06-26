@@ -3,7 +3,6 @@ import { Link, useParams, useSearchParams } from 'react-router-dom';
 import React from 'react';
 
 import { Products } from '../../types/Alltypes';
-import { Category } from '../../types/Alltypes';
 import { getData } from '../../fetch/httpClient';
 import styles from './ProductList.module.scss';
 import { ProductCarts } from '../../Functional/ProductCart/ProductCarts';
@@ -95,8 +94,12 @@ export const ProductList: React.FC<Props> = () => {
       <Link to="/" className={styles.home}>
         <button className={styles.homeButton}>
           <img src="/img/home.svg" alt="home" className={styles.homeImg} />
-          <span className={styles.homeGo}>{'>'}</span>
-          <span className={styles.homeGoTo}>Phones</span>
+          <img
+            className={styles.homeGo}
+            src="/img/vectorRight.svg"
+            alt="right"
+          />
+          <span className={styles.homeGoTo}>{category}</span>
         </button>
       </Link>
 
