@@ -43,17 +43,24 @@ export const ProductCard: React.FC<Props> = ({
     return null;
   }
 
-  const displayPrice = fullPriceOnly
-    ? product.fullPrice
-    : product.price || product.fullPrice;
+  const hasDiscount = Boolean(
+    product.price && product.price < (product.fullPrice ?? 0),
+  );
 
-  const displayDiscountPrice =
-    !fullPriceOnly && product.price && product.price !== product.fullPrice;
+  const displayPrice = fullPriceOnly
+    ? (product.fullPrice ?? 0)
+    : product.price || product.fullPrice || 0;
+
+  const displayDiscountPrice = !fullPriceOnly && hasDiscount;
+
+  const safeProductImage = (product.image ?? '').startsWith('/')
+    ? product.image
+    : `/${product.image}`;
 
   return (
     <article className={styles.card}>
       <Link to={`/${product.category}/product/${product.itemId || product.id}`}>
-        <img src={product.image} alt={product.name} className={styles.img} />
+        <img src={safeProductImage} alt={product.name} className={styles.img} />
       </Link>
       <p className={styles.title}>{product.name}</p>
 

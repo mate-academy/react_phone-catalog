@@ -134,20 +134,26 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
         <div className={styles.mediaColumn}>
           <div className={styles.thumbsSlider}>
             {product?.images?.length ? (
-              product.images.map((image, index) => (
-                <button
-                  key={image + index}
-                  type="button"
-                  className={styles.selectImage}
-                  onClick={() => handleChangeImage(image)}
-                >
-                  <img
-                    src={image}
-                    alt={`Product shot ${index + 1}`}
-                    className={styles.sliderImage}
-                  />
-                </button>
-              ))
+              product.images.map((image, index) => {
+                const safeImageUrl = image.startsWith('/')
+                  ? image
+                  : `/${image}`;
+
+                return (
+                  <button
+                    key={image + index}
+                    type="button"
+                    className={styles.selectImage}
+                    onClick={() => handleChangeImage(image)}
+                  >
+                    <img
+                      src={safeImageUrl}
+                      alt={`Product shot ${index + 1}`}
+                      className={styles.sliderImage}
+                    />
+                  </button>
+                );
+              })
             ) : (
               <p>{t('productDetails.loadingImages')}</p>
             )}
@@ -156,7 +162,9 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
           <div className={styles.mainPreview}>
             <img
               className={styles.mainImage}
-              src={currentImage}
+              src={
+                currentImage.startsWith('/') ? currentImage : `/${currentImage}`
+              }
               alt={product.name}
             />
           </div>

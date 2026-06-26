@@ -1,11 +1,4 @@
-import {
-  createHashRouter,
-  // HashRouter,
-  Params,
-  // Route,
-  RouterProvider,
-  // Routes,
-} from 'react-router-dom';
+import { createBrowserRouter, Params, RouterProvider } from 'react-router-dom';
 import { App } from '../App';
 import { HomePage } from '../modules/home';
 import { CatalogPage } from '../modules/catalog';
@@ -67,7 +60,7 @@ const productLoader = async ({
   return currentProduct;
 };
 
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,

@@ -22,7 +22,7 @@ export const Icons = () => {
       <NavLink className={getIconClass} to="/cart" aria-label="Shopping bag">
         <img src="/img/icons/shopping-bag.svg" alt="Shopping bag" />
         {totalItems > 0 && (
-          <span className={styles.addedProdutcs}>{totalItems}</span>
+          <span className={styles.addedProducts}>{totalItems}</span>
         )}
       </NavLink>
     </div>
