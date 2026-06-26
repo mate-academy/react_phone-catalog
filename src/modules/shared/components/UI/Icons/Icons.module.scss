@@ -26,7 +26,7 @@
   border: 1px solid $surface-2;
 
   @media (min-width: 768px) {
-    width: 48px;
+    width: 64px;
     height: 100%;
     border: none;
     border-left: 1px solid $surface-2;
@@ -53,11 +53,16 @@
 }
 
 .iconLink.isActive {
-  border-bottom-color: $accent;
   background-color: $surface-1;
+  border-bottom: 2px solid $accent;
+
+  @media (min-width: 768px) {
+    box-shadow: inset 0 -3px 0 0 $accent;
+    border-bottom: none;
+  }
 }
 
-.addedProdutcs {
+.addedProducts {
   position: absolute;
   top: 6px;
   right: 6px;

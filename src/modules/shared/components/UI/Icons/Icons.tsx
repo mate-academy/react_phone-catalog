@@ -15,7 +15,7 @@ export const Icons = () => {
       <NavLink className={getIconClass} to="/favorites" aria-label="Favorites">
         <img src="/img/icons/favorites.svg" alt="Favorites" />
         {totalFavoriteItems > 0 && (
-          <span className={styles.addedProdutcs}>{totalFavoriteItems}</span>
+          <span className={styles.addedProducts}>{totalFavoriteItems}</span>
         )}
       </NavLink>
 
