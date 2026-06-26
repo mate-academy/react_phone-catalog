@@ -7,9 +7,14 @@ import { Product } from '../../../../types/product';
 type Props = {
   products: Product[];
   title: string;
+  fullPriceOnly?: boolean;
 };
 
-export const ProductSlider: React.FC<Props> = ({ products, title }) => {
+export const ProductSlider: React.FC<Props> = ({
+  products,
+  title,
+  fullPriceOnly = false,
+}) => {
   const {
     currentSlide,
     sliderRef,
@@ -54,7 +59,7 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
         >
           {products.map(product => (
             <div key={product.id} className={styles.cardWrapper} data-card>
-              <ProductCard product={product} />
+              <ProductCard product={product} fullPriceOnly={fullPriceOnly} />
             </div>
           ))}
         </section>

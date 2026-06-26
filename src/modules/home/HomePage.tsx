@@ -78,6 +78,7 @@ export const HomePage = () => {
         <ProductSlider
           products={newestProducts}
           title={t('homePage.productSlider.titleNew')}
+          fullPriceOnly={true}
         />
 
         <ShopByCategory

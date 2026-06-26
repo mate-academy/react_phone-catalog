@@ -8,9 +8,13 @@ import { useTranslation } from 'react-i18next';
 
 type Props = {
   product: Product;
+  fullPriceOnly?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  fullPriceOnly = false,
+}) => {
   const { addToCart, removeFromCart, cart } = useCart();
   const isInCart = cart.some(item => item.product.id === product.id);
 
@@ -39,6 +43,13 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     return null;
   }
 
+  const displayPrice = fullPriceOnly
+    ? product.fullPrice
+    : product.price || product.fullPrice;
+
+  const displayDiscountPrice =
+    !fullPriceOnly && product.price && product.price !== product.fullPrice;
+
   return (
     <article className={styles.card}>
       <Link to={`/${product.category}/product/${product.itemId || product.id}`}>
@@ -47,9 +58,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <p className={styles.title}>{product.name}</p>
 
       <div className={styles.priceContainer}>
-        <h3 className={styles.price}>${product.price || product.fullPrice}</h3>
+        <h3 className={styles.price}>${displayPrice}</h3>
 
-        {product.price && product.price !== product.fullPrice && (
+        {displayDiscountPrice && (
           <h4 className={styles.discount}>${product.fullPrice}</h4>
         )}
       </div>
