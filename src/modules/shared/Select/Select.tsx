@@ -21,7 +21,13 @@ const Select: React.FC<Props> = ({
     control: (_provided, state) => ({
       borderColor: hideBorder ? (state.isFocused ? '' : 'transparent') : '',
     }),
-    menu: provided => ({ top: provided.top, bottom: provided.bottom }),
+    menu: () => {
+      if (top) {
+        return { bottom: 'calc(100% + 4px)' };
+      }
+
+      return { top: 'calc(100% + 4px)' };
+    },
     option: () => ({}),
     placeholder: () => ({}),
   };
@@ -31,6 +37,7 @@ const Select: React.FC<Props> = ({
       className="select__container"
       classNamePrefix="select"
       options={options}
+      // menuIsOpen={false}
       onChange={onChange}
       value={value}
       menuPlacement={top ? 'top' : 'bottom'}

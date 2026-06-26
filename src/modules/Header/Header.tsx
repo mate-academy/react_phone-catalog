@@ -7,6 +7,7 @@ import MobileMenu from './MobileMenu';
 import IconWithCounter from './IconWithCounter';
 import { useAppSelector } from '../../store/hooks';
 import InputSearch from './InputSearch';
+import Logo from '../shared/Logo';
 
 export const Header = () => {
   const location = useLocation();
@@ -37,7 +38,7 @@ export const Header = () => {
       <header className={styles.header}>
         <div className={styles.nav}>
           <NavLink className={styles.nav__logo} to="/">
-            <img className={styles.nav__image} src="/img/assets/logo.svg"></img>
+            <Logo />
           </NavLink>
           <Navigation />
           <div className={styles.nav__buttons}>
@@ -46,13 +47,19 @@ export const Header = () => {
                 href="favorites"
                 count={favoritesCount}
                 image={'favorites'}
+                mobileMenu
               />
-              <IconWithCounter href="cart" count={itemsCount} image={'cart'} />
+              <IconWithCounter
+                href="cart"
+                count={itemsCount}
+                image={'cart'}
+                mobileMenu
+              />
             </div>
             <Icon
               onClick={handleMobileMenuClick}
               iconStyles={{
-                icon: 'type_mobile',
+                icon: ['type_mobile', 'type_mobile_menu'],
                 image: showMobile ? 'close' : 'menu',
               }}
             />

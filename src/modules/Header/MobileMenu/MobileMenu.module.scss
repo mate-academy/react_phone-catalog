@@ -4,29 +4,18 @@
   position: absolute;
   top: 48px;
   left: 0;
-  height: calc(100dvh - 48px);
-  width: 100dvw;
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   justify-content: space-between;
-  flex-grow: 1;
+  width: 100dvw;
+  height: calc(100dvh - 48px);
   background-color: $body-background-color;
 }
 
 .buttons {
   display: flex;
   height: 64px;
-}
 
-.button {
-  display: flex;
-  height: 100%;
-  flex-grow: 1;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-
-  &_active {
-    border-bottom: 2px solid #313237;
-  }
+  border-top: theme-get('mobile-menu-btn', 'border-top');
 }

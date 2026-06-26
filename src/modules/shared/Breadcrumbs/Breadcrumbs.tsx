@@ -18,7 +18,7 @@ const Breadcrumbs: React.FC<Props> = ({ lastSegment }) => {
     <nav className={styles.breadcrumbs} aria-label="breadcrumb">
       <ol className={styles.breadcrumbs__list}>
         <li className={styles.breadcrumbs__item} key="home">
-          <Icon href={'/'} iconStyles={{ image: 'home' }} />
+          <Icon href={'/'} iconStyles={{ image: ['home', 'home__active'] }} />
         </li>
         {pathSegments.map((segment, index) => {
           currentPath += `/${segment}`;

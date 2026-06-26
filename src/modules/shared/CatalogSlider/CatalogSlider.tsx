@@ -162,21 +162,31 @@ const CatalogSlider: React.FC<Props> = ({
         <div className={styles.catalog__buttons}>
           <Icon
             onClick={scrollLeft}
+            /* eslint-disable @typescript-eslint/indent */
             iconStyles={
               leftButtonDisabled
-                ? { image: ['arrowLeft', 'disabled'] }
-                : { icon: 'border', image: ['arrowLeft'] }
+                ? {
+                    icon: ['type_slider__disabled'],
+                    image: ['arrowLeft', 'disabled'],
+                  }
+                : { icon: ['type_slider'], image: 'arrowLeft' }
             }
+            /* eslint-enable @typescript-eslint/indent */
             disabled={leftButtonDisabled}
           />
           <Icon
             onClick={scrollRight}
+            /* eslint-disable @typescript-eslint/indent */
             iconStyles={
               rightButtonDisabled
-                ? { image: ['arrowRight', 'disabled'] }
-                : { icon: 'border', image: ['arrowRight'] }
+                ? {
+                    icon: ['type_slider__disabled'],
+                    image: ['arrowRight', 'disabled'],
+                  }
+                : { icon: ['type_slider'], image: 'arrowRight' }
             }
             disabled={rightButtonDisabled}
+            /* eslint-enable @typescript-eslint/indent */
           />
         </div>
       </div>

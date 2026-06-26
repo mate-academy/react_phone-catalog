@@ -6,6 +6,8 @@ import Icon from '../shared/Icon';
 import { SelectOption } from '../../types/SelectOptions';
 import { siteLanguages } from '../constants';
 import Select from '../shared/Select';
+import ThemeSwitcher from './ThemeSwitcher';
+import Logo from '../shared/Logo';
 
 export const Footer = () => {
   const { i18n } = useTranslation();
@@ -52,7 +54,7 @@ export const Footer = () => {
         <div className={styles.footer__content}>
           <div className={styles.footer__left}>
             <NavLink className={styles.footer__logo} to="/">
-              <img src="/img/assets/logo.svg" alt="logo"></img>
+              <Logo />
             </NavLink>
           </div>
           <div className={styles.footer__menu}>
@@ -71,13 +73,14 @@ export const Footer = () => {
               onChange={selectLanguage}
               menuPlacementTop
             />
+            <ThemeSwitcher />
           </div>
           <div className={styles.footer__right}>
             <a>Back to top</a>
             <Icon
               onClick={scrollToTop}
               iconStyles={{
-                icon: 'border',
+                icon: 'type_slider',
                 image: ['arrowRight', 'rotate_90'],
               }}
             />

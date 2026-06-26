@@ -2,9 +2,9 @@
 
 .pagination {
   display: flex;
+  gap: 8px;
   width: fit-content;
   height: 32px;
-  gap: 8px;
   margin-inline: auto;
 
   &:first-child {
@@ -12,21 +12,33 @@
   }
 
   &__link {
+    box-sizing: border-box;
     display: flex;
-    width: fit-content;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    width: fit-content;
     height: 100%;
     aspect-ratio: 1/1;
-    border: 1px solid transparent;
-    box-sizing: border-box;
+    color: theme-get('pg-btn', 'color');
+    background-color: theme-get('pg-btn', 'bg');
+    border: 1px solid theme-get('pg-btn', 'border');
 
     @extend %body-text;
-    @include hover(border-color, $primary-color);
+
+    &:hover {
+      background-color: theme-get('pg-btn', 'bg-hover');
+      border-color: theme-get('pg-btn', 'border-hover');
+    }
 
     &_active {
-      color: $body-background-color;
-      background-color: $primary-color;
+      color: theme-get('pg-btn', 'selected');
+      cursor: default;
+      background-color: theme-get('pg-btn', 'selected-hover-bg');
+
+      &:hover {
+        color: theme-get('pg-btn', 'selected');
+        background-color: theme-get('pg-btn', 'selected-hover-bg');
+      }
     }
   }
 

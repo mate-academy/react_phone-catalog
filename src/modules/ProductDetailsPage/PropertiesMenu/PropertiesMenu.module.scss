@@ -8,63 +8,66 @@
   &__title {
     @extend %small-text;
 
-    color: $secondary-color;
-    font-weight: 600;
-
     display: block;
+    font-weight: 600;
+    color: $secondary-color;
   }
 
   &__menu {
     display: flex;
-    gap: 8px;
     flex-wrap: wrap;
+    gap: 8px;
   }
 
   &__input {
     position: absolute;
-    opacity: 0;
     cursor: pointer;
+    opacity: 0;
   }
 
   &__linkColor {
+    box-sizing: border-box;
     display: block;
-
-    border: 1px solid $body-background-color;
 
     width: 30px;
     height: 30px;
+    cursor: pointer;
+
+    border: 1px solid $body-background-color;
 
     border-radius: 50%;
-    box-sizing: border-box;
-    cursor: pointer;
-    box-shadow: 0 0 0 1px $grey-color;
+    box-shadow: 0 0 0 1px $elements-color;
+
+    &:hover {
+      border-color: red;
+    }
 
     &_active {
-      box-shadow: 0 0 0 1px $primary-color;
+      pointer-events: none;
 
       cursor: default;
-      pointer-events: none;
+      box-shadow: 0 0 0 1px $primary-color;
     }
   }
 
   &__linkCapacity {
     @extend %body-text;
+    box-sizing: border-box;
 
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 8px 7px 4px;
+    justify-content: center;
     height: 32px;
-    border: 1px solid $icon-color;
-    box-sizing: border-box;
+    padding: 8px 7px 4px;
     cursor: pointer;
+    border: 1px solid $icon-color;
 
     &_active {
       color: $body-background-color;
-      background: $border-color-hover;
+      pointer-events: none;
 
       cursor: default;
-      pointer-events: none;
+      background: $primary-color;
     }
   }
 }

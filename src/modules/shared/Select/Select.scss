@@ -2,12 +2,12 @@
 
 .select {
   &__indicator {
-    margin: 12px;
     width: 16px;
     height: 16px;
+    margin: 12px;
     background-color: $icon-color;
-    transform: rotate(90deg);
     mask-image: url('img/assets/icons/arrow_right.svg');
+    transform: rotate(90deg);
 
     & > svg {
       display: none;
@@ -15,31 +15,32 @@
   }
 
   &__indicators {
+    width: fit-content;
     height: 40px;
     aspect-ratio: 1 / 1;
-    width: fit-content;
   }
 
   &__control {
     position: relative;
+    box-sizing: border-box;
     display: flex;
     align-items: stretch;
     color: $primary-color;
-    transition: all 100ms;
-    box-sizing: border-box;
-    border: 1px solid $icon-color;
     cursor: default;
+    background-color: theme-get('dropdown', 'select-bg');
+    border: 1px solid theme-get('dropdown', 'select-border');
+    transition: all 100ms;
 
     @extend %buttons;
 
-    &:hover,
-    &:focus {
-      border-color: $secondary-color;
+    &:focus,
+    &:hover {
+      border-color: theme-get('dropdown', 'select-border-hover');
     }
 
     &--is-focused,
     &--is-focused:hover {
-      border-color: $primary-color;
+      border-color: theme-get('dropdown', 'select-border-focus');
     }
 
     &--menu-is-open .select__indicator {
@@ -49,27 +50,29 @@
 
   &__menu {
     position: absolute;
-    width: 100%;
     z-index: 1;
     box-sizing: border-box;
+    width: 100%;
+    background-color: theme-get('dropdown', 'option-bg');
+    border: 1px solid theme-get('dropdown', 'menu-border-color');
+    box-shadow: theme-get('dropdown', 'menu-box-shadow');
   }
 
   &__option {
+    box-sizing: border-box;
     display: block;
+    width: 100%;
     padding: 6px 12px 5px;
     font-size: inherit;
-    width: 100%;
-    user-select: none;
-    box-sizing: border-box;
-    background-color: $body-background-color;
     color: grey;
-    cursor: pointer;
+    user-select: none;
+    background-color: theme-get('dropdown', 'option-bg');
 
     @extend %body-text;
 
     &--is-focused {
-      color: black;
-      background-color: $background-color;
+      color: theme-get('dropdown', 'option-color-hover');
+      background-color: theme-get('dropdown', 'option-bg-hover');
     }
   }
 

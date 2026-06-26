@@ -4,18 +4,18 @@
   @extend %small-text;
 
   display: flex;
-  align-items: flex-end;
   gap: 4px;
+  align-items: flex-end;
 
   width: 66px;
   height: 16px;
   margin-top: 24px;
-  border: none;
-
-  color: $secondary-color;
   font-weight: 700;
 
   line-height: 100%;
+
+  color: theme-get('back-btn', 'color');
+  border: none;
 
   @include on-tablet {
     margin-top: 40px;

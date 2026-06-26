@@ -2,32 +2,32 @@
 
 .priceTag {
   display: flex;
-  height: 31px;
-  align-items: stretch;
   gap: 8px;
+  align-items: stretch;
+  height: 31px;
 
   @extend %h3;
   &__price {
     display: flex;
     align-items: center;
-    color: $primary-color;
     line-height: 140%;
+    color: $primary-color;
 
     &_old {
       position: relative;
-      color: $secondary-color-inverted;
       font-weight: 600;
+      color: $secondary-inverted-color;
       isolation: isolate;
-      filter: invert(100%);
+      filter: $old-price-filter;
 
       &::after {
-        content: '';
         position: absolute;
+        top: 44%;
         left: 0;
         width: 100%;
-        top: 44%;
         height: 2px;
-        background-color: $secondary-color-inverted;
+        content: '';
+        background-color: $secondary-inverted-color;
         mix-blend-mode: difference;
       }
     }

@@ -8,6 +8,8 @@
   &__title {
     margin-block: 24px;
 
+    color: $primary-color;
+
     @extend %h1;
 
     @include on-tablet {

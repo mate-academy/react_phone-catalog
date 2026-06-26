@@ -1,14 +1,14 @@
 @use '../../../scss/main.scss' as *;
 
 .icon {
-  display: flex;
-  height: 100%;
-  width: fit-content;
-  aspect-ratio: 1 / 1;
-  justify-content: center;
-  align-items: center;
-  background-color: $body-background-color;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: $body-background-color;
   border: none;
 
   &__link {
@@ -23,8 +23,6 @@
 
   &_border {
     border: 1px solid $icon-color;
-
-    @include hover(border-color, $primary-color);
   }
 
   &_border_bottom {
@@ -45,20 +43,51 @@
     }
   }
 
+  &_type_slider {
+    background-color: theme-get('slider-btn', 'bg');
+    @include hover(background-color, theme-get('slider-btn', 'bg-hover'));
+
+    &__disabled {
+      background-color: theme-get('slider-btn', 'bg-border-disabled');
+      border: 1px solid theme-get('slider-btn', 'border-disabled');
+    }
+  }
+
+  &_type_add {
+    background-color: theme-get('add-btn', 'bg');
+    border: theme-get('add-btn', 'border');
+    @include hover(background-color, theme-get('add-btn', 'bg-hover'));
+
+    &:hover {
+      background-color: theme-get('add-btn', 'bg-hover');
+      border: theme-get('add-btn', 'border-hover');
+    }
+
+    &__selected {
+      background-color: theme-get('add-btn', 'bg-selected');
+      border: theme-get('add-btn', 'border-selected');
+    }
+  }
+
+  &_type_mobile_menu {
+    box-shadow: theme-get('mobile-menu-btn', 'box-shadow');
+  }
+
   &_width_100 {
     width: 100%;
   }
 
   &__img {
-    height: 16px;
-    flex: 0 0 16px;
-    border: none;
     box-sizing: border-box;
-    background-position: center center;
+    flex: 0 0 16px;
+    height: 16px;
     background-repeat: no-repeat;
+    background-position: center center;
+    border: none;
 
     &_favorites {
-      background-image: url('/img/assets/icons/favorites.svg');
+      background-color: $primary-color;
+      mask-image: url('/img/assets/icons/favorites.svg');
 
       &_active {
         background-image: url('/img/assets/icons/favorites-selected.svg');
@@ -66,21 +95,28 @@
     }
 
     &_cart {
-      background-image: url('/img/assets/icons/cart.svg');
+      background-color: $primary-color;
+      mask-image: url('/img/assets/icons/cart.svg');
     }
 
     &_close {
-      background-image: url('/img/assets/icons/close.svg');
+      background-color: $primary-color;
+      mask-image: url('/img/assets/icons/close.svg');
     }
 
     &_home {
       background-color: $icon-color;
       mask-image: url('/img/assets/icons/home.svg');
       mask-position: center center;
+
+      &__active {
+        background-color: $primary-color;
+      }
     }
 
     &_menu {
-      background-image: url('/img/assets/icons/menu.svg');
+      background-color: $primary-color;
+      mask-image: url('/img/assets/icons/menu.svg');
     }
 
     &_arrowLeft {
@@ -95,12 +131,26 @@
       mask-position: center center;
     }
 
+    &_sun {
+      background-color: $primary-color;
+      mask-image: url('/img/assets/icons/sun.svg');
+      mask-position: center center;
+      mask-size: contain;
+    }
+
+    &_moon {
+      background-color: $primary-color;
+      mask-image: url('/img/assets/icons/moon.svg');
+      mask-position: center center;
+      mask-size: contain;
+    }
+
     &_rotate_90 {
       transform: rotate(-90deg);
     }
 
     &_disabled {
-      background-color: $icon-color;
+      background-color: theme-get('slider-btn', 'color-disabled');
     }
   }
 }

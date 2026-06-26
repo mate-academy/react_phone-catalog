@@ -8,9 +8,15 @@ interface Props {
   href: string;
   count: number;
   image: IconImageModifiers | IconImageModifiers[];
+  mobileMenu?: boolean;
 }
 
-const IconWithCounter: React.FC<Props> = ({ href, count, image }) => {
+const IconWithCounter: React.FC<Props> = ({
+  href,
+  count,
+  image,
+  mobileMenu,
+}) => {
   const isActiveLink = location.pathname.startsWith('/' + href);
 
   return (
@@ -19,7 +25,13 @@ const IconWithCounter: React.FC<Props> = ({ href, count, image }) => {
         [styles.counter_linkActive]: isActiveLink,
       })}
     >
-      <Icon href={href} iconStyles={{ icon: 'width_100', image }} />
+      <Icon
+        href={href}
+        iconStyles={{
+          icon: mobileMenu ? ['width_100', 'type_mobile_menu'] : 'width_100',
+          image,
+        }}
+      />
       {count != 0 && <span className={styles.counter__number}>{count}</span>}
     </div>
   );

@@ -57,11 +57,16 @@ const ProductPagination: React.FC<Props> = ({
       <Icon
         className={styles.pagination__button_marginRight}
         onClick={handleDecreaseRegion}
+        /* eslint-disable @typescript-eslint/indent */
         iconStyles={
           increaseDisabled
-            ? { image: ['arrowLeft', 'disabled'] }
-            : { icon: 'border', image: ['arrowLeft'] }
+            ? {
+                icon: ['type_slider__disabled'],
+                image: ['arrowLeft', 'disabled'],
+              }
+            : { icon: ['border', 'type_slider'], image: ['arrowLeft'] }
         }
+        /* eslint-enable @typescript-eslint/indent */
         disabled={increaseDisabled}
       />
       {numbers.map(number => (
@@ -83,11 +88,16 @@ const ProductPagination: React.FC<Props> = ({
       <Icon
         className={styles.pagination__button_marginLeft}
         onClick={handleIncreaseRegion}
+        /* eslint-disable @typescript-eslint/indent */
         iconStyles={
           decreaseDisabled
-            ? { image: ['arrowRight', 'disabled'] }
-            : { icon: 'border', image: ['arrowRight'] }
+            ? {
+                icon: ['type_slider__disabled'],
+                image: ['arrowRight', 'disabled'],
+              }
+            : { icon: ['border', 'type_slider'], image: ['arrowRight'] }
         }
+        /* eslint-enable @typescript-eslint/indent */
         disabled={decreaseDisabled}
       />
     </div>

@@ -6,23 +6,22 @@ $icon-gap: 2px;
 .inputSearch {
   position: sticky;
   top: 48px;
+  z-index: 100;
+  box-sizing: content-box;
   width: 100%;
   height: $input-height;
   padding-block: 4 * $icon-gap;
-  box-sizing: content-box;
 
   background-color: $body-background-color;
-
-  z-index: 100;
 
   @include page-grid;
 
   &__container {
     position: relative;
+    box-sizing: border-box;
     grid-column: 1/-1;
     width: 100%;
     height: 100%;
-    box-sizing: border-box;
 
     @include on-tablet {
       grid-column: span 6 / -1;
@@ -32,30 +31,28 @@ $icon-gap: 2px;
   &__input {
     @extend %small-text;
 
-    font-weight: 500;
-    display: block;
-    height: 100%;
-    width: 100%;
-
-    padding-left: $input-height + $icon-gap;
     box-sizing: border-box;
-
-    border: none;
-    border-bottom: 1px solid $icon-color;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-left: $input-height + $icon-gap;
+    font-weight: 500;
 
     background-color: $body-background-color;
+    border: none;
+    border-bottom: 1px solid $icon-color;
 
     &:focus-visible {
       outline: none;
     }
 
     &:focus {
-      border-color: $border-color-hover;
+      border-color: $primary-color;
     }
 
     &::placeholder {
-      opacity: 0.3;
       color: $primary-color;
+      opacity: 0.3;
     }
   }
 
@@ -63,10 +60,10 @@ $icon-gap: 2px;
     position: absolute;
     top: 50%;
     left: $icon-gap;
-    transform: translateY(-50%);
     width: $input-height - $icon-gap;
     height: $input-height - $icon-gap;
     color: $icon-color;
+    transform: translateY(-50%);
   }
 
   &__close {
@@ -75,23 +72,23 @@ $icon-gap: 2px;
     position: absolute;
     top: 50%;
     right: 0;
-    transform: translateY(-50%);
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     width: $input-height;
     height: $input-height;
-    border: none;
 
     color: $icon-color;
+    cursor: pointer;
 
     background-color: transparent;
-    cursor: pointer;
+    border: none;
+    transform: translateY(-50%);
 
     &:hover {
       @include hover(transform, translateY(-50%) scale($text_hover_transform));
-      @include hover(color, $border-color-hover);
+      @include hover(color, $primary-color);
     }
   }
 }

@@ -6,6 +6,7 @@
   row-gap: 32px;
 
   &__title {
+    color: $primary-color;
     @extend %h2;
   }
 
@@ -15,9 +16,9 @@
 
   &__category {
     display: flex;
-    gap: 24px;
     flex-direction: column;
     grid-column: 1 / -1;
+    gap: 24px;
 
     @include on-tablet {
       grid-column: span 4;
@@ -30,19 +31,19 @@
 
   &__categoryLink {
     display: block;
-    aspect-ratio: 1 / 1;
     height: fit-content;
+    aspect-ratio: 1 / 1;
 
     @include hover(transform, scale($image_hover_transform));
   }
 
   &__categoryImage {
+    box-sizing: border-box;
     display: block;
     width: 100%;
     height: 100%;
-    box-sizing: border-box;
-    padding-left: 20%;
     padding-top: 20%;
+    padding-left: 20%;
     object-fit: cover;
 
     &_bg_phones {
@@ -65,6 +66,8 @@
   }
 
   &__categoryName {
+    color: $primary-color;
+
     @extend %h4;
     @include hover(transform, scale($text_hover_transform));
   }

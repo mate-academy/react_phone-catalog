@@ -3,9 +3,8 @@
 .counter {
   position: relative;
   display: flex;
-  justify-content: center;
-
   flex-grow: 1;
+  justify-content: center;
 
   height: 100%;
 
@@ -20,12 +19,18 @@
   }
 
   &_linkActive {
+    box-shadow: theme-get('mobile-menu-btn', 'box-shadow');
+
+    @include on-tablet {
+      box-shadow: none;
+    }
+
     &::after {
       position: absolute;
       bottom: 0;
       width: 100%;
       content: '';
-      border-bottom: $border-color-hover solid 3px;
+      border-bottom: $primary-color solid 3px;
     }
   }
 
@@ -35,20 +40,20 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateY(-100%);
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     width: 14px;
     height: 14px;
 
-    border: 1px solid $body-background-color;
-    border-radius: 50%;
-
-    color: $background-color;
-    background-color: $red-color;
+    color: $white-color;
 
     pointer-events: none;
+    background-color: $red-color;
+
+    border: 1px solid $body-background-color;
+    border-radius: 50%;
+    transform: translateY(-100%);
   }
 }

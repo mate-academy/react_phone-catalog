@@ -38,7 +38,7 @@ const ProductActionsInner = React.memo(function ProductActionsInner({
       <Icon
         onClick={() => onToggle(product.id)}
         iconStyles={{
-          icon: 'border',
+          icon: isFavorite ? 'type_add__selected' : 'type_add',
           image: isFavorite ? 'favorites_active' : 'favorites',
         }}
       />

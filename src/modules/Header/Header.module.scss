@@ -2,56 +2,56 @@
 
 .header {
   position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   justify-self: center;
   width: 100%;
   max-width: $header-max-width;
   margin-inline: auto;
-  top: 0;
-  display: flex;
-  flex-direction: column;
   background-color: $body-background-color;
-  z-index: 100;
 }
 
 .nav {
   display: flex;
   gap: 24px;
   height: 48px;
+  box-shadow: theme-get(header, box-shadow);
 
   @include on-desktop {
     height: 64px;
   }
 
   &__logo {
-    display: flex;
+    box-sizing: border-box;
+    display: inline-flex;
     flex-shrink: 0;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     width: 96px;
-    height: 100%;
-  }
-
-  &__image {
-    width: 64px;
-    height: 22px;
-    object-fit: cover;
+    height: 48px;
+    padding: 13px 16px;
+    color: $primary-color;
 
     @include on-desktop {
-      width: 80px;
-      height: 28px;
+      width: 128px;
+      height: 64px;
+      padding: 18px 24px;
     }
   }
 
   &__buttons {
-    width: 183px;
+    display: flex;
     flex-grow: 1;
     flex-shrink: 0;
-    border: none;
+    align-items: center;
+    justify-content: end;
+    width: 183px;
 
     height: 100%;
-    display: flex;
-    justify-content: end;
-    align-items: center;
+    border: none;
 
     &Links {
       display: none;

@@ -5,6 +5,8 @@
   flex-direction: column;
   gap: 24px;
 
+  background-color: $body-background-color;
+
   &__top {
     display: flex;
     justify-content: space-between;
@@ -12,6 +14,7 @@
 
   &__title {
     grid-column: span 2;
+    color: $primary-color;
 
     @extend %h2;
 
@@ -21,12 +24,12 @@
   }
 
   &__buttons {
-    grid-column: span 2;
-    place-self: center end;
     display: flex;
+    grid-column: span 2;
+    gap: 8px;
+    place-self: center end;
     justify-content: end;
     height: 32px;
-    gap: 8px;
 
     @include on-tablet {
       grid-column: span 12;
@@ -35,19 +38,19 @@
 
   &__slider {
     display: grid;
+    grid-auto-columns: 3 * $grid-column-mobile + 2 * $grid-gap-mobile;
+    grid-auto-flow: column;
+    gap: $grid-gap-desktop;
     width: 100%;
     padding-right: $mobile-padding-inline;
     margin-right: $mobile-padding-inline;
-    gap: $grid-gap-desktop;
-    grid-auto-columns: 3 * $grid-column-mobile + 2 * $grid-gap-mobile;
-    grid-auto-flow: column;
     overflow-x: scroll;
     scrollbar-width: none;
 
     @include on-tablet {
+      grid-auto-columns: 6 * $grid-column-desktop + 5 * $grid-gap-desktop;
       padding-right: $tablet-padding-inline;
       margin-right: $tablet-padding-inline;
-      grid-auto-columns: 6 * $grid-column-desktop + 5 * $grid-gap-desktop;
     }
 
     @include on-desktop {

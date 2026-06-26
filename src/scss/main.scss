@@ -2,6 +2,7 @@
 @forward 'fonts';
 @forward 'mixins';
 @forward 'variables';
+@forward 'utils';
 @forward 'extends';
 @forward 'global';
 
@@ -17,17 +18,19 @@ p,
 dl,
 button,
 picture {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 body {
   min-width: $body-min-width;
+  color: $primary-color;
+  background-color: $body-background-color;
 }
 
 menu,
 ul {
-  margin: 0;
   padding: 0;
+  margin: 0;
   list-style: none;
 }

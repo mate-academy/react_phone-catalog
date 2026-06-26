@@ -20,9 +20,9 @@
   }
 
   @include on-desktop {
-    margin-inline: auto;
     max-width: $desktop-min-width;
     padding-inline: $desktop-padding-inline;
+    margin-inline: auto;
   }
 }
 
@@ -45,6 +45,7 @@
 }
 
 @mixin hover($property, $to-value) {
+  /* stylelint-disable-next-line CssSyntaxError */
   transition: #{$property} 0.3s;
 
   &:hover {

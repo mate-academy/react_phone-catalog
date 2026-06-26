@@ -17,8 +17,14 @@ const MobileMenu: React.FC = () => {
           href="favorites"
           count={favoritesCount}
           image={'favorites'}
+          mobileMenu
         />
-        <IconWithCounter href="cart" count={itemsCount} image={'cart'} />{' '}
+        <IconWithCounter
+          href="cart"
+          count={itemsCount}
+          image={'cart'}
+          mobileMenu
+        />{' '}
       </div>
     </div>
   );

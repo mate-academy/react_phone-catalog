@@ -2,6 +2,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 import styles from './HomeSlider.module.scss';
 import { HOME_SLIDER_TIME } from '../../constants';
+import svgArrowLeft from '../../shared/assets/Icons/arrow_left.svg?raw';
+import svgArrowRight from '../../shared/assets/Icons/arrow_right.svg?raw';
 
 const slides = [
   {
@@ -99,7 +101,7 @@ const HomeSlider = () => {
 
   useEffect(() => {
     goToSlide(1);
-  }, []);
+  }, [goToSlide]);
 
   useEffect(() => {
     /* eslint-disable @typescript-eslint/indent */
@@ -130,6 +132,7 @@ const HomeSlider = () => {
           styles.homeSlider__button_left,
         )}
         onClick={() => goToSlide(currentSlide - 1, 'smooth')}
+        dangerouslySetInnerHTML={{ __html: svgArrowLeft }}
       ></button>
       <div
         ref={sliderRef}
@@ -167,6 +170,7 @@ const HomeSlider = () => {
           styles.homeSlider__button_right,
         )}
         onClick={() => goToSlide(currentSlide + 1, 'smooth')}
+        dangerouslySetInnerHTML={{ __html: svgArrowRight }}
       ></button>
       <div className={styles.dots}>
         {slides.map(slide => (

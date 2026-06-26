@@ -1,13 +1,13 @@
 @use './../../../scss/main.scss' as *;
 
 .breadcrumbs {
-  margin-top: 24px;
   height: 16px;
+  margin-top: 24px;
 
   &__list {
     display: flex;
-    height: 100%;
     gap: 8px;
+    height: 100%;
   }
 
   &__item {
@@ -16,10 +16,10 @@
   }
 
   &__segment {
-    color: $secondary-color;
     font-size: 12px;
     font-weight: 600;
     line-height: 100%;
+    color: $secondary-color;
     text-transform: capitalize;
   }
 }
