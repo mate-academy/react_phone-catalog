@@ -149,14 +149,16 @@ export const ProductList: React.FC<Props> = () => {
         <button
           onClick={() => handlePageChange(page - 1)}
           disabled={page === 1}
+          className={styles.vectorButton}
         >
-          <img src="/img/vectorLeft.svg" alt="prev" />
+          <img src="/img/vectorLeft.svg" alt="prev" className={styles.vector} />
         </button>
         {Array.from({ length: totalPages }, (_, i) => (
           <button
             key={i}
             onClick={() => handlePageChange(i + 1)}
-            disabled={page >= totalPages}
+            disabled={i + 1 === page}
+            className={styles.vectorCount}
           >
             {i + 1}
           </button>
@@ -164,8 +166,13 @@ export const ProductList: React.FC<Props> = () => {
         <button
           onClick={() => handlePageChange(page + 1)}
           disabled={page >= totalPages}
+          className={styles.vectorButton}
         >
-          <img src="/img/vectorRight.svg" alt="next" />
+          <img
+            src="/img/vectorRight.svg"
+            alt="next"
+            className={styles.vector}
+          />
         </button>
       </div>
     </div>
