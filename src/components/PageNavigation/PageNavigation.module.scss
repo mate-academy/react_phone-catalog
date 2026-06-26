@@ -1,0 +1,115 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.navigation {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    gap: 32px;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.navigationVertical {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.navigationLink {
+  color: $color_secondary;
+
+  @include hover(color, $color_primary);
+}
+
+.navigationLinkActive {
+  position: relative;
+  color: $color_primary;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    bottom: -15.5px;
+
+    display: block;
+
+    width: 100%;
+    height: 3px;
+
+    background-color: $color_primary;
+
+    @include on-desktop {
+      bottom: -23.5px;
+    }
+  }
+}
+
+.navigationLinkActiveBurger {
+  &::after {
+    bottom: -6px;
+    height: 2px;
+  }
+}
+
+.buttonAction {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  background-repeat: no-repeat;
+
+  &Active {
+    &::after {
+      content: '';
+
+      position: absolute;
+      bottom: 0;
+
+      display: block;
+
+      width: 100%;
+      height: 3px;
+
+      background-color: $color_primary;
+    }
+  }
+}
+
+.buttonActionIcon {
+  position: relative;
+
+  display: flex;
+}
+
+.buttonActionCount {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 14px;
+  height: 14px;
+  border: 1px solid white;
+  border-radius: 50%;
+
+  font-family: Mont, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  color: $color_white;
+
+  background-color: #eb5757;
+}

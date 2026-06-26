@@ -1,0 +1,25 @@
+.rightsPage {
+  padding-block: 24px 56px;
+}
+
+.title {
+  color: #313237;
+  margin-bottom: 24px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 128px;
+
+  @media (max-width: 639px) {
+    width: 300px;
+  }
+}
+
+.contentTitle {
+  color: #313237;
+  font-family: Mont, sans-serif;
+  letter-spacing: -1%;
+}

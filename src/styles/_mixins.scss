@@ -1,0 +1,83 @@
+@use 'sass:map';
+@use 'variables' as *;
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} $animation-speed;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin set-font($fontProperties) {
+  $size-map: map.get($fontProperties, size);
+  $weight_map: map.get($fontProperties, weight);
+  $spacing_map: map.get($fontProperties, spacing);
+  $height_map: map.get($fontProperties, height);
+
+  font-family: Mont, serif;
+  font-size: resolve-property($size-map, mobile);
+  font-weight: resolve-property($weight_map, mobile);
+  line-height: resolve-property($height_map, mobile);
+  text-transform: map.get($fontProperties, transform);
+  letter-spacing: resolve-property($spacing_map, mobile);
+
+  @include on-tablet {
+    font-size: resolve-property($size-map, tablet, mobile);
+    font-weight: resolve-property($weight_map, tablet, mobile);
+    line-height: resolve-property($height_map, tablet, mobile);
+    letter-spacing: resolve-property($spacing_map, tablet, mobile);
+  }
+}
+
+@function resolve-property($map, $keys...) {
+  @each $key in $keys {
+    @if map.has-key($map, $key) {
+      @return map.get($map, $key);
+    }
+  }
+
+  @return null;
+}
+
+@mixin content-padding-inline {
+  --padding: 16px;
+
+  padding-inline: var(--padding);
+
+  @include on-tablet {
+    --padding: 24px;
+  }
+
+  @include on-desktop {
+    --padding: calc((100vw - 1136px) / 2);
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 16px;
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+

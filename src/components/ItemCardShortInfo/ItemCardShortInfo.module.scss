@@ -1,0 +1,237 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.Title {
+  color: #313131;
+  margin-bottom: 32px;
+}
+
+.ImageContainer {
+  @include on-tablet {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+    justify-content: start;
+  }
+}
+
+.MainImage {
+  width: 288px;
+  height: 288px;
+  margin-bottom: 16px;
+
+  object-fit: contain;
+
+  -webkit-user-drag: none;
+
+  @include on-desktop {
+    width: 464px;
+    height: 464px;
+  }
+}
+
+.SmallImages {
+  display: flex;
+  gap: 8px;
+
+  width: 100%;
+  height: 49px;
+  margin-bottom: 40px;
+
+  @include on-tablet {
+    flex-direction: column;
+    width: 35px;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+    width: 80px;
+    height: 464px;
+  }
+}
+
+.SmallImage {
+  cursor: pointer;
+
+  width: 51px;
+  height: 49px;
+  border: 1px solid $color_elements;
+
+  object-fit: contain;
+
+  @include hover(scale, 1.1);
+
+  @include on-tablet {
+    width: 35px;
+    height: 35px;
+  }
+
+  @include on-desktop {
+    width: 80px;
+    height: 80px;
+  }
+
+  &Active {
+    border: 1px solid $color_primary;
+  }
+}
+
+.ColorSelectorSection {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 24px;
+  color: $color_secondary;
+}
+
+.CapacitySection {
+  padding-block: 24px;
+}
+
+.CapacityButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.CapacityButtonWrapper {
+  width: 60px;
+  height: 32px;
+}
+
+.CapacitySubtitle {
+  display: block;
+  margin-bottom: 8px;
+  color: $color_secondary;
+}
+
+.PriceAndButtons {
+  padding-top: 32px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    width: 320px;
+  }
+}
+
+.Prices {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.NewPrice {
+  color: $color_primary;
+}
+
+.OldPrice {
+  position: relative;
+
+  font-family: Mont, serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 100%;
+  color: $color_secondary;
+  letter-spacing: 0;
+
+  &::after {
+    pointer-events: none;
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+
+    width: 100%;
+    height: 1.5px;
+
+    background: currentColor;
+  }
+}
+
+.Details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.DetailsInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.DetailTitle {
+  color: $color_secondary;
+}
+
+.DetailText {
+  color: $color_primary;
+}
+
+.Buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 32px;
+
+  & button:first-child {
+    flex: 4;
+  }
+
+  & button:last-child {
+    flex: 1;
+  }
+}
+
+.ContentWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+
+  @include on-desktop {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 64px;
+  }
+}
+
+.AdditionalInfoWrapper {
+  width: 100%;
+
+  @include on-tablet {
+    width: 50%;
+  }
+
+  @include on-desktop {
+    width: 45%;
+  }
+}
+
+.AdditionalInfoContainer {
+  width: 100%;
+
+  @include on-tablet {
+    width: 360px;
+  }
+
+  @include on-desktop {
+    width: 320px;
+  }
+}
+
+.HorizontalLine {
+  border-bottom: 1px solid $color_elements;
+
+  @include on-desktop {
+    width: 320px;
+  }
+}

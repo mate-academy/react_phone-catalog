@@ -1,0 +1,65 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.FavouritesPage {
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+}
+
+.FavouritesSectionGrid {
+  @include page-grid;
+
+  row-gap: 40px;
+}
+
+.FavouritesSectionGridItem {
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+  @include on-desktop {
+    grid-column: span 6;
+  }
+}
+
+.FavouritesCounter {
+  margin-bottom: 32px;
+  color: $color_secondary;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.FavouritesTitle {
+  color: #313237;
+  margin-bottom: 8px;
+}
+
+.NotAddedProducts {
+  display: flex;
+  justify-content: center;
+  margin-top: 128px;
+}
+
+.NotAddedTitle {
+  color: #313237;
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -1%;
+
+  @media (max-width: 639px) {
+    font-size: 24px;
+  }
+}
