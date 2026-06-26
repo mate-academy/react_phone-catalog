@@ -16,7 +16,7 @@ export const Footer = () => {
       <div className={styles.container}>
         <div className={styles.logoLink}>
           <a href="#">
-            <img src="img/logo.svg" alt="Logo" className={styles.logo} />
+            <img src="/img/logo.svg" alt="Logo" className={styles.logo} />
           </a>
         </div>
         <div className={styles.footerNavUl}>
@@ -40,7 +40,7 @@ export const Footer = () => {
           aria-label="Back to top"
         >
           <p className={styles.topBackToTop}>Back to top</p>
-          <img src="img/vector.svg" alt="vector" className={styles.vector} />
+          <img src="/img/vector.svg" alt="vector" className={styles.vector} />
         </a>
       </div>
     </footer>
