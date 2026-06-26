@@ -29,16 +29,16 @@ export const FavoritesPage = () => {
             {favouritesProducts.length} items
           </p>
           {favouritesProducts.length > 0 ? (
-            favouritesProducts.map(product => (
-              <section
-                key={product.id}
-                className={favouritesPageStyle.FavouritesSectionGrid}
-              >
-                <div className={favouritesPageStyle.FavouritesSectionGridItem}>
+            <section className={favouritesPageStyle.FavouritesSectionGrid}>
+              {favouritesProducts.map(product => (
+                <div
+                  key={product.id}
+                  className={favouritesPageStyle.FavouritesSectionGridItem}
+                >
                   <ProductCard product={product} />
                 </div>
-              </section>
-            ))
+              ))}
+            </section>
           ) : (
             <div className={favouritesPageStyle.NotAddedProducts}>
               <h2 className={favouritesPageStyle.NotAddedTitle}>

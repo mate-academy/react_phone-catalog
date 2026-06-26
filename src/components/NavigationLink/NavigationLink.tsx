@@ -23,26 +23,26 @@ const defineComponentByType = (
   switch (type) {
     case NavigationLinks.Favorite:
       return (
-        <>
+        <span className={pageNavigation.buttonActionIcon}>
           <IconFavorite />
           {favoritesCount > 0 && (
             <span className={pageNavigation.buttonActionCount}>
               {favoritesCount}
             </span>
           )}
-        </>
+        </span>
       );
 
     case NavigationLinks.Cart:
       return (
-        <>
+        <span className={pageNavigation.buttonActionIcon}>
           <IconShoppingCart />
           {shoppingCartCount > 0 && (
             <span className={pageNavigation.buttonActionCount}>
               {shoppingCartCount}
             </span>
           )}
-        </>
+        </span>
       );
   }
 
