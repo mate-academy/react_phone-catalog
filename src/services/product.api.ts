@@ -1,5 +1,7 @@
+const BASE_URL = import.meta.env.BASE_URL;
+
 export const getProducts = () => {
-  return fetch('/api/products.json').then(response => {
+  return fetch(`${BASE_URL}api/products.json`).then(response => {
     if (!response.ok) {
       throw new Error('Unable to load products');
     }
@@ -9,7 +11,7 @@ export const getProducts = () => {
 };
 
 export const getPhones = () => {
-  return fetch('/api/phones.json').then(response => {
+  return fetch(`${BASE_URL}api/phones.json`).then(response => {
     if (!response.ok) {
       throw new Error('Unable to load phones');
     }
@@ -19,7 +21,7 @@ export const getPhones = () => {
 };
 
 export const getTablets = () => {
-  return fetch('/api/tablets.json').then(response => {
+  return fetch(`${BASE_URL}api/tablets.json`).then(response => {
     if (!response.ok) {
       throw new Error('Unable to load tablets');
     }
@@ -29,7 +31,7 @@ export const getTablets = () => {
 };
 
 export const getAccessories = () => {
-  return fetch('/api/accessories.json').then(response => {
+  return fetch(`${BASE_URL}api/accessories.json`).then(response => {
     if (!response.ok) {
       throw new Error('Unable to load accessories');
     }
