@@ -21,7 +21,7 @@ export const ProductDetailsPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    getData<FullProduct[]>(`/api/${category}.json`)
+    getData<FullProduct[]>(`./api/${category}.json`)
       .then(data => {
         const product = data.find(item => item.id === productId);
 
@@ -105,7 +105,7 @@ export const ProductDetailsPage = () => {
         </div>
         <div className={styles.mainImageBlock}>
           <img
-            src={`../img/${category}/${selectedImages}`}
+            src={`../../img/${category}/${selectedImages}`}
             alt={name}
             className={styles.mainImage}
           />
