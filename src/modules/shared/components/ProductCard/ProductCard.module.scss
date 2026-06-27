@@ -20,6 +20,11 @@
   height: 196px;
   object-fit: contain;
   margin-bottom: 24px;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .title {

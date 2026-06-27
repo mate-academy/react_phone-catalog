@@ -41,12 +41,14 @@
   width: 89px;
   height: 32px;
   transition:
+    transform 0.2s ease-in-out,
     opacity 0.3s ease,
     filter 0.3s ease;
 
   &:hover,
   &:focus-visible {
     opacity: 0.7;
+    transform: scale(1.1);
   }
 }
 

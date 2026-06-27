@@ -39,15 +39,19 @@
 .logo {
   width: 64px;
   display: block;
-  transition: opacity 0.3s ease;
-
-  @media (min-width: 1024px) {
-    width: 80px;
-  }
+  transition:
+    transform 0.2s ease-in-out,
+    opacity 0.3s ease,
+    filter 0.3s ease;
 
   &:hover,
   &:focus-visible {
     opacity: 0.7;
+    transform: scale(1.1);
+  }
+
+  @media (min-width: 1024px) {
+    width: 80px;
   }
 }
 

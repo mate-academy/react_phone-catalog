@@ -31,19 +31,6 @@ body {
   width: 100%;
 }
 
-a:has(img) {
-  display: inline-block;
-  overflow: hidden;
-}
-
-a:has(img) img {
-  transition: transform 0.2s ease-in-out;
-}
-
-a:has(img):hover img {
-  transform: scale(1.1);
-}
-
 .appLayout {
   display: flex;
   flex-direction: column;

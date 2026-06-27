@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../../../contexts/CartContext';
-import styles from './CartList.module.scss';
+import styles from './CartItem.module.scss';
 import { useTranslation } from 'react-i18next';
 
-export const CartList = () => {
+export const CartItem = () => {
   const {
     cart,
     removeFromCart,
