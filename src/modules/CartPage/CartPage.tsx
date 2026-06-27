@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 import BackButton from '../shared/BackButton';
 import { Link } from 'react-router-dom';
-import { CURRENCY_SYMBOL } from '../constants';
+import { BASE_URL, CURRENCY_SYMBOL } from '../constants';
 import Button from '../shared/Button';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { itemsActions } from '../../store/index';
@@ -59,7 +59,7 @@ const CartPage = () => {
                     >
                       <img
                         className={styles.item__image}
-                        src={'/' + product.image}
+                        src={BASE_URL + `/` + product.image}
                         alt={product.name}
                       />
                     </Link>

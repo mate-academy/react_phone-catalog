@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 import styles from './HomeSlider.module.scss';
-import { HOME_SLIDER_TIME } from '../../constants';
+import { BASE_URL, HOME_SLIDER_TIME } from '../../constants';
 import svgArrowLeft from '../../shared/assets/Icons/arrow_left.svg?raw';
 import svgArrowRight from '../../shared/assets/Icons/arrow_right.svg?raw';
 
@@ -10,19 +10,19 @@ const slides = [
     id: 1,
     title: 'iPhone 14 Pro',
     description: 'Pro. Beyond',
-    img: 'img/assets/homepage/banner_iphone14.png',
+    img: BASE_URL + '/img/assets/homepage/banner_iphone14.png',
   },
   {
     id: 2,
     title: 'iPhone 13 Pro',
     description: 'Pro. Beyond',
-    img: 'img/assets/homepage/banner_iphone13.png',
+    img: BASE_URL + '/img/assets/homepage/banner_iphone13.png',
   },
   {
     id: 3,
     title: 'iPhone 12 Pro',
     description: 'Pro. Beyond',
-    img: 'img/assets/homepage/banner_iphone12.png',
+    img: BASE_URL + '/img/assets/homepage/banner_iphone12.png',
   },
 ];
 

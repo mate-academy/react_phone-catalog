@@ -1,7 +1,9 @@
-const BASE_URL = '/api/';
+import { BASE_URL } from '../modules/constants';
+
+const API_URL = `${BASE_URL}/api/`;
 
 export function request<T>(url: string): Promise<T> {
-  return fetch(BASE_URL + url).then(response => {
+  return fetch(API_URL + url).then(response => {
     if (!response.ok) {
       throw new Error();
     }

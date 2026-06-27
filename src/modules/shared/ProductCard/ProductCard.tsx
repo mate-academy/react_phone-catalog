@@ -1,7 +1,7 @@
 import styles from './ProductCard.module.scss';
 
 import { ProductCatalogItem } from '../../../types/ProductCatalogItem';
-import { CATALOG_SPECS_LIST } from '../../constants';
+import { BASE_URL, CATALOG_SPECS_LIST } from '../../constants';
 import { Link } from 'react-router-dom';
 import ProductSpecs from '../ProductSpecs';
 import PriceTag from '../PriceTag';
@@ -20,7 +20,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
       >
         <img
           className={styles.product__image}
-          src={'/' + product.image}
+          src={BASE_URL + '/' + product.image}
           alt={product.name}
         />
       </Link>

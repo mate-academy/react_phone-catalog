@@ -4,6 +4,7 @@ import styles from './HomeCategories.module.scss';
 import { useContext } from 'react';
 import { ProductCatalogContext } from '../../../ProductCatalogContext';
 import { NavLink } from 'react-router-dom';
+import { BASE_URL } from '../../constants';
 
 const HomeCategories: React.FC = () => {
   const { t } = useTranslation();
@@ -29,7 +30,7 @@ const HomeCategories: React.FC = () => {
                     styles,
                   )
                 }
-                src={`/img/assets/categories/${category}.png`}
+                src={BASE_URL + `/img/assets/categories/${category}.png`}
                 alt={category}
               />
             </NavLink>

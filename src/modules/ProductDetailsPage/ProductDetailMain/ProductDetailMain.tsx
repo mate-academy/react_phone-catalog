@@ -12,7 +12,7 @@ import {
 } from '../../../ProductCatalogContext';
 import PropertiesMenu from '../PropertiesMenu';
 import ProductSpecs from '../../shared/ProductSpecs';
-import { DETAIL_SPECS_LIST } from '../../constants';
+import { BASE_URL, DETAIL_SPECS_LIST } from '../../constants';
 import PriceTag from '../../shared/PriceTag';
 import ProductActions from '../../shared/ProductActions';
 
@@ -36,8 +36,8 @@ const ProductDetailMain: React.FC<Props> = ({ product }) => {
       <section className={styles.productDetailMain}>
         <img
           className={styles.mainPhoto}
-          src={'/' + product.images[activeSlide]}
-          alt="{productDetail.name}"
+          src={BASE_URL + '/' + product.images[activeSlide]}
+          alt={product.name}
         />
 
         <div className={styles.photos__previews}>
@@ -48,7 +48,7 @@ const ProductDetailMain: React.FC<Props> = ({ product }) => {
                   [styles.photos__previewsImage_active]: index === activeSlide,
                 })}
                 key={index}
-                src={'/' + image}
+                src={BASE_URL + '/' + image}
                 onClick={() => handleSliderClick(index)}
               ></img>
             ))}

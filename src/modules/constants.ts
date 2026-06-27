@@ -1,3 +1,5 @@
+export const BASE_URL =
+  import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 export const SLIDER_COUNT = 8;
 export const CURRENCY_SYMBOL = `$`;
 export const HOME_SLIDER_TIME = 5000;

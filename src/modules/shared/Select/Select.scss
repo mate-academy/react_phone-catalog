@@ -6,7 +6,7 @@
     height: 16px;
     margin: 12px;
     background-color: $icon-color;
-    mask-image: url('img/assets/icons/arrow_right.svg');
+    mask-image: url('/img/assets/icons/arrow_right.svg');
     transform: rotate(90deg);
 
     & > svg {

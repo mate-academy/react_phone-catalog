@@ -13,7 +13,7 @@ import FavoritesPage from './modules/FavoritesPage';
 import CartPage from './modules/CartPage';
 
 export const Root = () => (
-  <Router>
+  <Router basename={import.meta.env.BASE_URL}>
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
@@ -28,7 +28,7 @@ export const Root = () => (
         <Route path="product">
           <Route path=":productId" element={<ProductDetailsPage />} />
         </Route>
-        <Route path="/home" element={<Navigate to="/" replace />} />
+        <Route path="home" element={<Navigate to="/" replace />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
