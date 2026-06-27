@@ -14,6 +14,7 @@ import { ProductDetailsList } from './components/ProductDetailsList';
 import { ProductSlider } from '../home/components/ProductsSlider';
 import { Product } from '../../types/product';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
+import { BackButton } from '../shared/components/UI/BackButton';
 
 type AnyProduct = Phone | Tablet | Accessorie;
 
@@ -124,6 +125,8 @@ export const ProductDetailsPage = () => {
     <div className={styles.productDetailsPage}>
       <div className={styles.container}>
         <Breadcrumbs />
+
+        <BackButton />
 
         <ProductDetailsList
           products={[productDetail]}

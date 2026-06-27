@@ -113,21 +113,6 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
 
   return (
     <div className={styles.productDetails}>
-      <button
-        className={styles.backButton}
-        aria-label={t('productDetails.back')}
-        onClick={() => {
-          if (window.history.length > 1) {
-            navigate(-1);
-          } else {
-            navigate(`/${product.category}`);
-          }
-        }}
-      >
-        <img src="./img/icons/left.svg" alt="" className={styles.back} />
-        {t('productDetails.back')}
-      </button>
-
       <h2 className={styles.title}>{product.name}</h2>
 
       <div className={styles.mainLayout}>
@@ -382,7 +367,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
             )}
             <div className={styles.techSpecRow}>
               <p className={styles.techSpecTitle}>
-                {t('productDetails.specs.zoom')}
+                {t('productDetails.specs.cell')}
               </p>
               <span className={styles.techSpecDescription}>
                 {product.cell?.join(', ') || ''}

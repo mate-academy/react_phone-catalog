@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../../../../contexts/ThemeContext';
 import styles from './Footer.module.scss';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   const scrollTop = () => {
@@ -17,13 +18,13 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.footerContent}>
-          <a href="/">
+          <Link to="/">
             <img
               src={theme === 'dark' ? logoDark : logoLight}
               alt="Page Logo"
               className={styles.logo}
             />
-          </a>
+          </Link>
         </div>
 
         <nav className={styles.nav}>

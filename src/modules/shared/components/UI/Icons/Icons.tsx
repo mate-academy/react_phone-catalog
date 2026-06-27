@@ -13,14 +13,14 @@ export const Icons = () => {
   return (
     <div className={styles.iconsContainer}>
       <NavLink className={getIconClass} to="/favorites" aria-label="Favorites">
-        <img src="/img/icons/favorites.svg" alt="Favorites" />
+        <img src="./img/icons/favorites.svg" alt="Favorites" />
         {totalFavoriteItems > 0 && (
           <span className={styles.addedProducts}>{totalFavoriteItems}</span>
         )}
       </NavLink>
 
       <NavLink className={getIconClass} to="/cart" aria-label="Shopping bag">
-        <img src="/img/icons/shopping-bag.svg" alt="Shopping bag" />
+        <img src="./img/icons/shopping-bag.svg" alt="Shopping bag" />
         {totalItems > 0 && (
           <span className={styles.addedProducts}>{totalItems}</span>
         )}

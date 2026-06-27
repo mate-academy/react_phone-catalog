@@ -3,7 +3,7 @@ import { useCart } from '../../../contexts/CartContext';
 import styles from './CartList.module.scss';
 import { useTranslation } from 'react-i18next';
 
-export const CartItem = () => {
+export const CartList = () => {
   const {
     cart,
     removeFromCart,

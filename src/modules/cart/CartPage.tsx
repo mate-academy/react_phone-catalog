@@ -2,6 +2,7 @@ import styles from './CartPage.module.scss';
 import { useEffect, useState } from 'react';
 import { CartContent } from './CartContent';
 import { Loader } from '../shared/components/UI/Loader';
+import { BackButton } from '../shared/components/UI/BackButton';
 
 export const CartPage = () => {
   const [loading, setLoading] = useState(true);
@@ -24,6 +25,8 @@ export const CartPage = () => {
 
   return (
     <div className={styles.container}>
+      <BackButton />
+
       <CartContent />
     </div>
   );
