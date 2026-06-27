@@ -1,0 +1,206 @@
+@import '../../styles/variables';
+
+.cart {
+  padding: 48px 0;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 16px 0 24px;
+  }
+
+  &__empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    font-size: 20px;
+    color: $c-secondary;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onDesktop {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: transparent;
+    border: 1px solid $c-elements;
+
+    @include onDesktop {
+      flex: 1;
+    }
+  }
+
+  &__checkout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 16px;
+    border: 1px solid $c-elements;
+    background-color: $c-surface-1;
+
+    @include onDesktop {
+      width: 368px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 24px;
+    }
+  }
+
+  &__totalPrice {
+    font-size: 22px;
+    font-weight: 800;
+    margin: 0;
+  }
+
+  &__totalItems {
+    font-size: 14px;
+    color: $c-secondary;
+    margin: 0;
+  }
+
+  &__checkoutBtn {
+    width: 100%;
+    padding: 16px;
+    background-color: $c-accent;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $c-accent;
+    }
+  }
+}
+
+.cartItem {
+  display: grid;
+  grid-template-columns: 16px 80px 1fr;
+  grid-template-rows: auto auto;
+  gap: 16px;
+  padding: 16px;
+  background-color: $c-surface-1;
+  align-items: center;
+
+  @include onTablet {
+    grid-template-columns: 16px 80px 1fr auto auto;
+    grid-template-rows: 1fr;
+  }
+
+  &__remove {
+    grid-column: 1;
+    grid-row: 1;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $c-secondary;
+    font-size: 20px;
+    line-height: 1;
+    padding: 0;
+    align-self: center;
+
+    &:hover {
+      color: $c-white;
+    }
+  }
+
+  &__imgWrapper {
+    grid-column: 2;
+    grid-row: 1;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__name {
+    grid-column: 3;
+    grid-row: 1;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: $c-white;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__actions {
+    grid-column: 2 / 3;
+    grid-row: 2;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include onTablet {
+      grid-column: 4;
+      grid-row: 1;
+    }
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $c-elements;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: $c-white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $c-white;
+    }
+  }
+
+  &__quantity {
+    font-size: 14px;
+    font-weight: 700;
+    min-width: 16px;
+    text-align: center;
+  }
+
+  &__price {
+    grid-column: 3;
+    grid-row: 2;
+    font-size: 20px;
+    font-weight: 800;
+    margin: 0;
+    text-align: right;
+
+    @include onTablet {
+      grid-column: 5;
+      grid-row: 1;
+    }
+  }
+}

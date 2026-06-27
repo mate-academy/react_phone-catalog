@@ -1,0 +1,24 @@
+@import '../../styles/variables';
+
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.mainContent {
+  flex: 1;
+  width: 100%;
+
+  padding-inline: 16px;
+
+  @include onTablet {
+    padding-inline: 24px;
+  }
+
+  @include onDesktop {
+    padding-inline: 32px;
+  }
+}

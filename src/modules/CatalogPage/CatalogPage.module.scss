@@ -1,0 +1,65 @@
+@import '../../styles/variables';
+
+.catalog {
+  width: 100%;
+  grid-column: 1 / -1;
+
+  &__container {
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    margin: 0 0 8px;
+    text-transform: capitalize;
+  }
+
+  &__count {
+    font-size: 14px;
+    color: $c-secondary;
+    margin: 0 0 32px;
+  }
+
+  &__filters {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    margin-top: 32px;
+  }
+
+  &__filterGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__filterLabel {
+    font-size: 12px;
+    color: $c-secondary;
+  }
+
+  &__placeholder {
+    height: 40px;
+    width: 136px;
+    border: 1px solid $c-secondary;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    color: $c-secondary;
+  }
+
+  &__content {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  &__pagination {
+    margin-top: 40px;
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+  }
+}

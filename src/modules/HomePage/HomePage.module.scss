@@ -1,0 +1,56 @@
+@import '../../styles/variables';
+
+.home {
+  grid-column: 1 / -1;
+
+  &__title {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @media (min-width: 640px) {
+      margin-top: 32px;
+      margin-bottom: 32px;
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-style: normal;
+      font-size: 48px;
+      line-height: 56px;
+      letter-spacing: -1%;
+    }
+
+    @media (min-width: 1200px) {
+      margin-top: 56px;
+      margin-bottom: 56px;
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-style: normal;
+      font-size: 48px;
+      line-height: 56px;
+      letter-spacing: -1%;
+
+      grid-template-columns: max-content max-content;
+      column-gap: 12px;
+    }
+  }
+
+  &__section {
+    margin-bottom: 56px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (min-width: 1200px) {
+      margin-bottom: 80px;
+    }
+  }
+}

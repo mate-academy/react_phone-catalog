@@ -1,0 +1,381 @@
+@import '../../styles/variables';
+@import '../../styles/utils/mixins';
+
+.gallery {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+  margin-top: 32px;
+
+  @include onTablet {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  &__thumbs {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    @include onTablet {
+      flex-direction: column;
+    }
+  }
+
+  &__thumbButton {
+    width: 50px;
+    height: 48px;
+    flex-shrink: 0;
+    padding: 0;
+    background-color: transparent;
+    border: 1px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+
+    &--active {
+      border-color: $c-white;
+    }
+
+    @include onTablet {
+      width: 35px;
+      height: 35px;
+    }
+
+    @include onDesktop {
+      width: 78px;
+      height: 78px;
+    }
+  }
+
+  &__thumbImage {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+  }
+
+  &__main {
+    flex-shrink: 0;
+    width: 287px;
+    height: 288px;
+    position: relative;
+
+    @include onTablet {
+      width: 287px;
+      height: 287px;
+    }
+
+    @include onDesktop {
+      width: 464px;
+      height: 464px;
+    }
+  }
+
+  &__mainImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.productDetails {
+  &__overview {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    margin-bottom: 56px;
+
+    @include onTablet {
+      flex-direction: row;
+      align-items: flex-start;
+      column-gap: 17px;
+    }
+
+    @include onDesktop {
+      flex-direction: row;
+      align-items: flex-start;
+      column-gap: 140px;
+    }
+  }
+
+  &__additional {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    margin-bottom: 64px;
+
+    @include onDesktop {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 64px;
+    }
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 40px;
+
+  @include onTablet {
+    width: 237px;
+    flex-shrink: 0;
+  }
+
+  &__colorsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  &__label {
+    font-size: 12px;
+    font-weight: 600;
+    color: $c-secondary;
+    display: block;
+    margin-bottom: 0;
+  }
+
+  &__id {
+    font-size: 12px;
+    font-weight: 600;
+    color: $c-secondary;
+  }
+
+  &__colorsList {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__colorLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid $c-secondary;
+    transition: border-color 0.3s;
+
+    &--active {
+      border-color: $c-white;
+    }
+  }
+
+  &__colorCircle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: block;
+
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  }
+
+  &__capacityList {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__capacityLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid $c-secondary;
+    color: $c-white;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: $c-white;
+    }
+
+    &--active {
+      background-color: $c-white;
+      color: $c-black;
+      border-color: $c-white;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    &Discount {
+      font-size: 32px;
+      font-weight: 800;
+      color: $c-white;
+    }
+
+    &Regular {
+      font-size: 22px;
+      font-weight: 600;
+      color: #89939a;
+      text-decoration: line-through;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__addToCart {
+    flex: 1;
+    height: 48px;
+    background-color: $c-accent;
+    color: $c-white;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $c-hover;
+    }
+  }
+
+  &__favorite {
+    width: 48px;
+    height: 48px;
+    background-color: transparent;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: $c-white;
+    }
+
+    &--active {
+      border-color: $c-white;
+    }
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__specRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+
+  &__specName {
+    color: #89939a;
+    font-weight: 600;
+  }
+
+  &__specValue {
+    color: #313237;
+    font-weight: 600;
+  }
+}
+
+.about {
+  flex: 1;
+
+  @include onDesktop {
+    width: 559px;
+    flex-shrink: 0;
+  }
+
+  &__mainTitle {
+    font-size: 24px;
+    font-weight: 800;
+    color: #313237;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #313237;
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #89939a;
+    margin-bottom: 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.techSpecs {
+  @include onDesktop {
+    width: 512px;
+    flex-shrink: 0;
+  }
+
+  &__mainTitle {
+    font-size: 24px;
+    font-weight: 800;
+    color: #313237;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 8px;
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #89939a;
+  }
+
+  &__value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #313237;
+  }
+}

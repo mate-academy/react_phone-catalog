@@ -1,0 +1,51 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  margin-top: 24px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  &__home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    text-decoration: none;
+    color: $c-surface-1;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__separator {
+    color: $c-secondary;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $c-surface-2;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $c-white;
+    }
+  }
+
+  &__current {
+    color: $c-secondary;
+    pointer-events: none;
+  }
+}
+
+.icon {
+  font-size: 16px;
+}

@@ -1,0 +1,143 @@
+@import '../../styles/variables';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  height: 100%;
+  border: 1px solid $c-border;
+  background-color: $c-surface-1;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 16px $c-black;
+  }
+
+  &__imageContainer {
+    display: block;
+    height: 130px;
+    margin-bottom: 24px;
+    text-align: center;
+
+    @include onTablet {
+      height: 181px;
+      margin-bottom: 32px;
+    }
+
+    @include onDesktop {
+      height: 196px;
+    }
+  }
+
+  &__image {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+  }
+
+  &__titleLink {
+    text-decoration: none;
+    margin-bottom: 8px;
+  }
+
+  &__title {
+    font-size: 14px;
+    color: $c-white;
+    line-height: 21px;
+    margin: 0;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  &__priceOld {
+    font-size: 14px;
+    color: $c-secondary;
+    text-decoration: line-through;
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: $c-surface-1;
+    margin: 8px 0 16px;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+
+  &__specName {
+    color: $c-secondary;
+  }
+
+  &__specValue {
+    font-weight: 700;
+    color: $c-white;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  &__btnCart {
+    flex: 1;
+    height: 40px;
+    width: 100px;
+    background-color: $c-accent;
+    color: $c-white;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__btnFav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+
+    border: 1px solid $c-surface-2;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+
+    &:hover {
+      border-color: $c-white;
+    }
+
+    &--active {
+      border-color: $c-black;
+
+      img {
+        transform: scale(1.1);
+        transition: transform 0.2s ease;
+      }
+    }
+  }
+}

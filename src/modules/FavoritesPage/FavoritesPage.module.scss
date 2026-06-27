@@ -1,0 +1,36 @@
+@import '../../styles/variables';
+
+.favorites {
+  padding-bottom: 80px;
+
+  &__title {
+    margin-top: 40px;
+    margin-bottom: 8px;
+    font-size: 32px;
+    font-weight: 800;
+    color: $c-white;
+  }
+
+  &__count {
+    margin-bottom: 32px;
+    font-size: 14px;
+    font-weight: 600;
+    color: $c-secondary;
+  }
+
+  &__content {
+    margin-top: 32px;
+  }
+
+  &__empty {
+    margin-top: 64px;
+    text-align: center;
+    color: $c-secondary;
+
+    h2 {
+      color: $c-white;
+      margin-bottom: 16px;
+    }
+  }
+
+}
