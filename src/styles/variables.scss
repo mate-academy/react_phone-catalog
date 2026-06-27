@@ -1,0 +1,147 @@
+// Color palette Dark theme
+:root[data-theme='dark'] {
+  --background: #0f1121;
+  --surface-1: #161827;
+  --surface-2: #323542;
+  --elements: #3b3e4a;
+  --text-main: #f1f2f4;
+  --text-secondary: #75767f;
+  --text-icons: #4a4d58;
+  --accent: #905bff;
+  --accent-hover: #a378ff;
+  --text-on-accent: #f1f2f4;
+  --shadow-main: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --filter: brightness(0) invert(1);
+  --card-border: transparent;
+}
+
+// Color palette Light theme
+:root[data-theme='light'] {
+  --background: #fff;
+  --surface-1: #fafbfc;
+  --surface-2: #e4e6eb;
+  --elements: #e2e6e9;
+  --text-main: #313237;
+  --text-secondary: #89939a;
+  --text-icons: #b4bdc3;
+  --accent: #313237;
+  --accent-hover: #4b4d54;
+  --text-on-accent: #fff;
+  --shadow-main: 0 8px 32px rgba(49, 50, 55, 0.08);
+  --filter: brightness(0) invert(0.2);
+  --card-border: 1px solid #e2e6e9;
+}
+
+$background: var(--background);
+$surface-1: var(--surface-1);
+$surface-2: var(--surface-2);
+$elements: var(--elements);
+$text-main: var(--text-main);
+$text-secondary: var(--text-secondary);
+$text-icons: var(--text-icons);
+$accent: var(--accent);
+$accent-hover: var(--accent-hover);
+$text-on-accent: var(--text-on-accent);
+$card-border: var(--card-border);
+$shadow: var(--shadow-main);
+$filter: var(--filter);
+$border: var(--card-border);
+
+// Accents and system colors
+:root {
+  --green: #27ae60;
+  --red: #eb5757;
+}
+
+$green: var(--green);
+$red: var(--red);
+
+// SCSS Mixins for Desktop Typography
+@mixin h1-font {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+}
+
+@mixin h2-font {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin h3-font {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+@mixin h4-font {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+@mixin uppercase {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+@mixin buttons {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin body-font {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin small-text {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+// SCSS Mixins for Mobile Typography
+@mixin h1-font-mobile {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin h2-font-mobile {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+@mixin h3-font-mobile {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+@mixin h4-font-mobile {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}

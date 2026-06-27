@@ -1,4 +1,10 @@
-import { createRoot } from 'react-dom/client';
-import { App } from './App';
+import { AppRoutes } from './router';
+import ReactDOM from 'react-dom/client';
+import React from 'react';
+import './modules/shared/components/i18n';
 
-createRoot(document.getElementById('root') as HTMLElement).render(<App />);
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <AppRoutes />
+  </React.StrictMode>,
+);

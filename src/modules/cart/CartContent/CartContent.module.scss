@@ -1,0 +1,39 @@
+@import '../../../styles/variables';
+
+.topBar {
+  display: flex;
+  align-items: center;
+}
+
+.backButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  border: none;
+  margin-top: 40px;
+  padding: 0;
+  background-color: transparent;
+  color: $text-main;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  @include small-text;
+}
+
+.back {
+  margin: 0;
+  border: none;
+  filter: $filter;
+}
+
+.title {
+  margin: 16px 0 32px;
+  color: $text-main;
+
+  @include h1-font;
+}

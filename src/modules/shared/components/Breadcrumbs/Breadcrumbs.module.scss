@@ -1,0 +1,65 @@
+@import '../../../../styles/variables';
+
+.nav {
+  margin-top: 24px;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+
+  &:not(:last-child)::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: 0 8px;
+    background-image: url('/img/icons/right.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: filter 0.3s ease;
+  }
+}
+
+.homeIcon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  transition: filter 0.3s ease;
+}
+
+.crumbLink {
+  text-decoration: none;
+  color: $text-main;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+
+  @include small-text;
+}
+
+.currentCrumb {
+  color: $text-secondary;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+
+  @include small-text;
+}

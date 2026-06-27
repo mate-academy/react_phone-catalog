@@ -1,0 +1,105 @@
+@import '../../../../styles/variables';
+
+.sliderWrapper {
+  margin-bottom: 56px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 64px;
+  }
+
+  @media (min-width: 1024px) {
+    margin-bottom: 80px;
+  }
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  margin: 0;
+  color: $text-main;
+
+  @include h2-font-mobile;
+
+  @media (min-width: 768px) {
+    @include h2-font;
+  }
+}
+
+.arrows {
+  display: flex;
+  gap: 16px;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  cursor: pointer;
+  background-color: $surface-2;
+  border: 1px solid $elements;
+  transition: all 0.3s ease-in-out;
+
+  img {
+    filter: $filter;
+    transition: filter 0.3s ease;
+  }
+
+  &:hover {
+    background-color: $text-icons;
+    border-color: $text-secondary;
+  }
+
+  &:active {
+    transform: scale(0.95);
+    background-color: $text-icons;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $elements;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.25;
+    border-color: $elements;
+    background-color: $background;
+    cursor: not-allowed;
+    pointer-events: none;
+
+    img {
+      opacity: 0.4;
+    }
+  }
+}
+
+.sliderWindow {
+  overflow: hidden;
+}
+
+.productSlider {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.3s ease;
+}
+
+.cardWrapper {
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  width: calc(100% / 1);
+
+  @media (min-width: 768px) {
+    width: calc((100% - 24px) / 2);
+  }
+
+  @media (min-width: 1024px) {
+    width: calc((100% - 48px) / 4);
+  }
+}

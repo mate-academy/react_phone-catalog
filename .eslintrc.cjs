@@ -11,6 +11,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'plugin:cypress/recommended',
+    "prettier",
   ],
   overrides: [
     {
@@ -85,6 +86,10 @@ module.exports = {
     }],
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
+
+    'indent': 'off',
+    '@typescript-eslint/indent': 'off',
+    'react/jsx-indent': 'off',
 
     // Typescript
     '@typescript-eslint/explicit-function-return-type': 'off',

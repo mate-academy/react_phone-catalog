@@ -1,0 +1,95 @@
+@import '../../../../styles/variables';
+
+.categoryWrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-bottom: 56px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 64px;
+  }
+
+  @media (min-width: 1024px) {
+    margin-bottom: 80px;
+  }
+}
+
+.pageTitle {
+  margin: 0 0 24px;
+  color: $text-main;
+
+  @include h2-font-mobile;
+
+  @media (min-width: 768px) {
+    @include h2-font;
+  }
+}
+
+.categoryContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.category {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  text-decoration: none;
+  min-width: 0;
+}
+
+.imageBox {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+
+  img {
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.bgPhones {
+  background-color: $accent;
+}
+
+.bgTablets {
+  background-color: $green;
+}
+
+.bgAccessories {
+  background-color: $red;
+}
+
+.categoryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.title {
+  margin: 24px 0 4px;
+  color: $text-main;
+
+  @include h4-font;
+}
+
+.description {
+  margin: 0;
+  color: $text-secondary;
+
+  @include body-font;
+}

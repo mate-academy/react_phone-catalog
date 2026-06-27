@@ -1,0 +1,121 @@
+{
+  "header": {
+    "logoAlt": "Логотип сторінки",
+    "home": "Головна",
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари",
+    "searchPlaceholder": "Пошук..."
+  },
+
+  "footer": {
+    "contacts": "Контакти",
+    "rights": "Права",
+    "backToTop": "Повернутися вгору",
+    "backToTopIconAlt": "Повернутися вгору"
+  },
+
+  "homePage": {
+    "hiddenTitle": "Каталог Товарів",
+    "title": "Ласкаво просимо до магазину Nice Gadgets!",
+    "productSlider": {
+      "titleNew": "Нові моделі",
+      "titleHot": "Гарячі ціни"
+    },
+    "shopByCategory": {
+      "title": "Купуйте за категоріями",
+      "phones": "Мобільні телефони",
+      "tablets": "Планшети",
+      "accessories": "Аксесуари",
+      "modelsCount_few": "{{count}} моделі",
+      "modelsCount_many": "{{count}} моделей"
+    }
+  },
+
+  "productCard": {
+    "specs": {
+      "screen": "Екран",
+      "capacity": "Пам'ять",
+      "ram": "ОЗП"
+    },
+    "buttons": {
+      "addToCart": "Додати в кошик",
+      "added": "Додано",
+      "toggleCart": "Перемкнути кошик",
+      "toggleFavorites": "Перемкнути улюблене"
+    }
+  },
+
+  "catalog": {
+    "error": "Щось пішло не так",
+    "restart": "Повторити",
+    "modelsCount_one": "{{count}} модель",
+    "modelsCount_few": "{{count}} моделі",
+    "modelsCount_many": "{{count}} моделей",
+    "sortBy": "Сортувати за",
+    "itemsOnPage": "Товарів на сторінці",
+    "sortOptions": {
+      "newest": "Найновіші",
+      "alphabetically": "За алфавітом",
+      "cheapest": "Найдешевші",
+      "all": "Усі"
+    },
+    "emptyState": {
+      "noProductsTitle": "Товарів у категорії «{{category}}» ще немає",
+      "noProductsSub": "Будь ласка, завітайте сюди пізніше або змініть фільтри.",
+      "noResultsTitle": "Немає товарів у категорії «{{category}}», які відповідають вашому запиту"
+    },
+    "titles": {
+      "phones": "Мобільні телефони",
+      "tablets": "Планшети",
+      "accessories": "Аксесуари",
+      "catalog": "Каталог"
+    }
+  },
+
+  "productDetails": {
+    "notFound": "Товар не знайдено",
+    "recommendedTitle": "Вам також може сподобатися",
+    "back": "Назад",
+    "loadingImages": "Зображення завантажуються...",
+    "availableColors": "Доступні кольори",
+    "selectCapacity": "Оберіть об'єм пам'яті",
+    "about": "Про пристрій",
+    "techSpecs": "Технічні характеристики",
+    "buttons": {
+      "addToCart": "Додати в кошик",
+      "added": "Додано",
+      "toggleFavorites": "Перемкнути улюблене"
+    },
+    "specs": {
+      "screen": "Екран",
+      "resolution": "Роздільна здатність",
+      "processor": "Процесор",
+      "ram": "ОЗП",
+      "builtInMemory": "Вбудована пам'ять",
+      "camera": "Камера",
+      "zoom": "Зум",
+      "cell": "Зв'язок"
+    }
+  },
+
+  "favorites": {
+    "title": "Улюблені товари",
+    "empty": "Ваш список улюблених товарів порожній",
+    "itemsCount_one": "{{count}} товар",
+    "itemsCount_few": "{{count}} товари",
+    "itemsCount_many": "{{count}} товарів"
+  },
+
+  "cart": {
+    "empty": "Ваш кошик порожній",
+    "totalFor_one": "Разом за {{count}} товар",
+    "totalFor_few": "Разом за {{count}} товари",
+    "totalFor_many": "Разом за {{count}} товарів",
+    "checkout": "Оформити замовлення",
+    "confirmCheckout": "Оформлення замовлення ще не реалізовано. Бажаєте очистити кошик?",
+    "deleteItemAlt": "Видалити товар",
+    "title": "Кошик",
+    "back": "Назад"
+  }
+}

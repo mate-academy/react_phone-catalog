@@ -1,0 +1,33 @@
+@import '../../../../../styles/variables';
+
+.backButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin-top: 24px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  color: $text-main;
+  padding: 0;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  @include small-text;
+
+  @media (min-width: 768px) {
+    margin-top: 40px;
+  }
+}
+
+.back {
+  margin: 0;
+  border: none;
+  display: block;
+  transition: filter 0.3s ease;
+  filter: $filter;
+}

@@ -1,0 +1,57 @@
+@import '../../styles/variables';
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @media (min-width: 768px) {
+    padding: 0 24px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 0 32px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0 152px;
+  }
+}
+
+.errorWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 350px;
+  padding: 40px;
+  background-color: $surface-1;
+  border: 1px solid $surface-2;
+  margin: 40px auto 80px;
+  max-width: 500px;
+  box-shadow: $shadow;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.errorMessage {
+  color: $text-main;
+  margin-bottom: 24px;
+
+  @include h3-font;
+}
+
+.sliderWrapper {
+  margin-top: 56px;
+
+  @media (min-width: 768px) {
+    margin-top: 64px;
+  }
+
+  @media (min-width: 1024px) {
+    margin-top: 80px;
+  }
+}
