@@ -1,3 +1,8 @@
+import { Accessorie } from '../types/accessorie';
+import { Phone } from '../types/phone';
+import { Product } from '../types/product';
+import { Tablet } from '../types/tablet';
+
 const BASE_URL = import.meta.env.BASE_URL;
 
 const buildUrl = (path: string): string => {
@@ -17,13 +22,13 @@ const request = <T>(path: string, errorMessage: string): Promise<T> => {
 };
 
 export const getProducts = () =>
-  request('api/products.json', 'Unable to load products');
+  request<Product[]>('api/products.json', 'Unable to load products');
 
 export const getPhones = () =>
-  request('api/phones.json', 'Unable to load phones');
+  request<Phone[]>('api/phones.json', 'Unable to load phones');
 
 export const getTablets = () =>
-  request('api/tablets.json', 'Unable to load tablets');
+  request<Tablet[]>('api/tablets.json', 'Unable to load tablets');
 
 export const getAccessories = () =>
-  request('api/accessories.json', 'Unable to load accessories');
+  request<Accessorie[]>('api/accessories.json', 'Unable to load accessories');

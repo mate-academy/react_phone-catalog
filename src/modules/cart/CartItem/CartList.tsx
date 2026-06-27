@@ -63,7 +63,7 @@ export const CartItem = () => {
                 >
                   <div className={styles.closeButton}>
                     <img
-                      src="/img/icons/close.svg"
+                      src="./img/icons/close.svg"
                       alt={t('cart.deleteItemAlt')}
                       className={styles.closeButtonImage}
                     />

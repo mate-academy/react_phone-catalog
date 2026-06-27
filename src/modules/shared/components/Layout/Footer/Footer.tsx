@@ -7,8 +7,8 @@ export const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const logoDark = '/img/icons/logo.svg';
-  const logoLight = '/img/icons/logo-light.svg';
+  const logoDark = './img/icons/logo.svg';
+  const logoLight = './img/icons/logo-light.svg';
   const { theme } = useTheme();
 
   const { t } = useTranslation();
@@ -60,7 +60,7 @@ export const Footer = () => {
           >
             <div className={styles.iconWrapper}>
               <img
-                src="/img/icons/back-up.svg"
+                src="./img/icons/back-up.svg"
                 alt={t('footer.backToTopIconAlt')}
                 aria-hidden="true"
                 className={styles.icon}

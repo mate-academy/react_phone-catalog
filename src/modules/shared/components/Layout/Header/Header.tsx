@@ -14,8 +14,8 @@ export const Header = () => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     `${styles.link} ${isActive ? styles.isActive : ''} `;
 
-  const logoDark = '/img/icons/logo.svg';
-  const logoLight = '/img/icons/logo-light.svg';
+  const logoDark = './img/icons/logo.svg';
+  const logoLight = './img/icons/logo-light.svg';
   const { theme } = useTheme();
 
   const { t } = useTranslation();

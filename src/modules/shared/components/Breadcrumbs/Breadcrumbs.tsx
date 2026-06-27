@@ -5,8 +5,8 @@ import { useTheme } from '../../../../contexts/ThemeContext';
 
 export const Breadcrumbs = () => {
   const { theme } = useTheme();
-  const homeDark = '/img/icons/home.svg';
-  const homeLight = '/img/icons/home-light.svg';
+  const homeDark = './img/icons/home.svg';
+  const homeLight = './img/icons/home-light.svg';
 
   const matches = useMatches() as UIMatch<unknown, CrumbHandle<unknown>>[];
   const crumbs = matches.filter(match => match.handle?.crumb);

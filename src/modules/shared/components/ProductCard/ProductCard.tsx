@@ -55,7 +55,7 @@ export const ProductCard: React.FC<Props> = ({
 
   const safeProductImage = (product.image ?? '').startsWith('/')
     ? product.image
-    : `/${product.image}`;
+    : `./${product.image}`;
 
   return (
     <article className={styles.card}>
@@ -107,8 +107,8 @@ export const ProductCard: React.FC<Props> = ({
             <img
               src={
                 isInFavorite
-                  ? '/img/icons/favorites-field.svg'
-                  : '/img/icons/favorites.svg'
+                  ? './img/icons/favorites-field.svg'
+                  : './img/icons/favorites.svg'
               }
               alt=""
             />

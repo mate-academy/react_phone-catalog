@@ -9,6 +9,7 @@ import { SortOption, useSort } from '../../hooks/useSort';
 import { ProductList } from '../../../shared/components/ProductsList';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Pagination } from '../../../shared/components/Pagination';
 
 export type AnyProduct = Phone | Tablet | Accessorie;
 
@@ -42,15 +43,6 @@ export const CatalogList: React.FC<Props> = ({ products, title }) => {
   const { page, perPage, setPagination } = usePagination();
 
   const { t } = useTranslation();
-
-  // const pageHeading = useMemo(() => {
-  //   const formattedTitle =
-  //     title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
-
-  //   return formattedTitle.endsWith('page')
-  //     ? formattedTitle
-  //     : `${formattedTitle} page`;
-  // }, [title]);
 
   const mappedProducts = useMemo(() => products.map(mapToProduct), [products]);
 
@@ -107,31 +99,6 @@ export const CatalogList: React.FC<Props> = ({ products, title }) => {
 
     setPagination({ page: 1, perPage: nextPerPage });
   };
-
-  const pageNumbers = useMemo(() => {
-    const maxVisiblePages = 4;
-
-    if (totalPages <= maxVisiblePages) {
-      return Array.from({ length: totalPages }, (_, index) => index + 1);
-    }
-
-    let startPage = Math.max(1, page - Math.floor(maxVisiblePages / 2));
-    let endPage = startPage + maxVisiblePages - 1;
-
-    if (endPage > totalPages) {
-      endPage = totalPages;
-      startPage = Math.max(1, endPage - maxVisiblePages + 1);
-    }
-
-    if (startPage === 0) {
-      startPage = 1;
-    }
-
-    return Array.from(
-      { length: endPage - startPage + 1 },
-      (_, index) => startPage + index,
-    );
-  }, [totalPages, page]);
 
   return (
     <div className={styles.listWrapper}>
@@ -216,33 +183,12 @@ export const CatalogList: React.FC<Props> = ({ products, title }) => {
       </div>
 
       {currentProductsQuantity > 0 && perPage !== 'all' && totalPages > 1 && (
-        <div className={styles.pagination}>
-          <button
-            className={styles.paginationButtonArrow}
-            onClick={() => setPagination({ page: page - 1 })}
-            disabled={page === 1}
-          >
-            <img src="/img/icons/left.svg" alt="" className={styles.arrow} />
-          </button>
-
-          {pageNumbers.map(num => (
-            <button
-              key={num}
-              className={`${styles.paginationButton} ${page === num ? styles.activePage : ''}`}
-              onClick={() => setPagination({ page: num })}
-            >
-              {num}
-            </button>
-          ))}
-
-          <button
-            className={styles.paginationButtonArrow}
-            onClick={() => setPagination({ page: page + 1 })}
-            disabled={page === totalPages}
-          >
-            <img src="/img/icons/right.svg" alt="" className={styles.arrow} />
-          </button>
-        </div>
+        <Pagination
+          currentPage={page}
+          perPage={perPage}
+          totalItems={searchedProducts.length}
+          onPageChange={nextPage => setPagination({ page: nextPage })}
+        />
       )}
     </div>
   );

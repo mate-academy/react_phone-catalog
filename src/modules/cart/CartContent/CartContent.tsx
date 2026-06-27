@@ -19,7 +19,7 @@ export const CartContent = () => {
             }
           }}
         >
-          <img src="/img/icons/left.svg" alt="" className={styles.back} />
+          <img src="./img/icons/left.svg" alt="" className={styles.back} />
           {t('cart.back')}
         </button>
 

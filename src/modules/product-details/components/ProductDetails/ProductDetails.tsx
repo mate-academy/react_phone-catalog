@@ -124,7 +124,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
           }
         }}
       >
-        <img src="/img/icons/left.svg" alt="" className={styles.back} />
+        <img src="./img/icons/left.svg" alt="" className={styles.back} />
         {t('productDetails.back')}
       </button>
 
@@ -137,7 +137,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
               product.images.map((image, index) => {
                 const safeImageUrl = image.startsWith('/')
                   ? image
-                  : `/${image}`;
+                  : `./${image}`;
 
                 return (
                   <button
@@ -163,7 +163,9 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
             <img
               className={styles.mainImage}
               src={
-                currentImage.startsWith('/') ? currentImage : `/${currentImage}`
+                currentImage.startsWith('/')
+                  ? currentImage
+                  : `./${currentImage}`
               }
               alt={product.name}
             />
@@ -264,8 +266,8 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
                 <img
                   src={
                     isInFavorite
-                      ? '/img/icons/favorites-field.svg'
-                      : '/img/icons/favorites.svg'
+                      ? './img/icons/favorites-field.svg'
+                      : './img/icons/favorites.svg'
                   }
                   alt=""
                 />

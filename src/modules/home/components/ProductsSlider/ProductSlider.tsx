@@ -36,7 +36,7 @@ export const ProductSlider: React.FC<Props> = ({
             onClick={handlePrevSlide}
             aria-label="Previous slide"
           >
-            <img src="/img/icons/left.svg" alt="" />
+            <img src="./img/icons/left.svg" alt="" />
           </button>
 
           <button
@@ -45,7 +45,7 @@ export const ProductSlider: React.FC<Props> = ({
             onClick={handleNextSlide}
             aria-label="Next slide"
           >
-            <img src="/img/icons/right.svg" alt="" />
+            <img src="./img/icons/right.svg" alt="" />
           </button>
         </div>
       </div>

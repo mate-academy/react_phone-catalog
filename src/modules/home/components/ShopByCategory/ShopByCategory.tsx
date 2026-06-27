@@ -33,7 +33,7 @@ export const ShopByCategory: React.FC<Props> = ({
         <Link className={styles.category} to="/phones">
           <div className={`${styles.imageBox} ${styles.bgPhones}`}>
             <img
-              src="/img/category-phones.png"
+              src="./img/category-phones.png"
               alt="Phones section"
               className={styles.categoryImage}
             />
@@ -51,7 +51,7 @@ export const ShopByCategory: React.FC<Props> = ({
         <Link className={styles.category} to="/tablets">
           <div className={`${styles.imageBox} ${styles.bgTablets}`}>
             <img
-              src="/img/category-tablets.png"
+              src="./img/category-tablets.png"
               alt="Tablets section"
               className={styles.categoryImage}
             />
@@ -69,7 +69,7 @@ export const ShopByCategory: React.FC<Props> = ({
         <Link className={styles.category} to="/accessories">
           <div className={`${styles.imageBox} ${styles.bgAccessories}`}>
             <img
-              src="/img/category-accessories.png"
+              src="./img/category-accessories.png"
               alt="Accessories section"
               className={styles.categoryImage}
             />

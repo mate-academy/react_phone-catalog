@@ -2,15 +2,15 @@ import { getAccessories, getPhones, getTablets } from '../services/product.api';
 import { BaseProduct } from '../types/types';
 
 export const BANNERS = [
-  { id: 1, src: '/img/slider/banner.jpg', alt: 'Iphone 14 pro' },
-  { id: 2, src: '/img/slider/banner2.jpg', alt: 'Iphone 14 pro' },
-  { id: 3, src: '/img/slider/banner3.jpg', alt: 'Iphone 14 pro' },
+  { id: 1, src: './img/slider/banner.jpg', alt: 'Iphone 14 pro' },
+  { id: 2, src: './img/slider/banner2.jpg', alt: 'Iphone 14 pro' },
+  { id: 3, src: './img/slider/banner3.jpg', alt: 'Iphone 14 pro' },
 ];
 
 export const BANNERS_MOBILE = [
-  { id: 1, src: '/img/slider/banner-phones.png', alt: 'Iphone 14 pro' },
-  { id: 2, src: '/img/slider/banner-tablets.png', alt: 'Iphone 14 pro' },
-  { id: 3, src: '/img/slider/banner-accessories.png', alt: 'Iphone 14 pro' },
+  { id: 1, src: './img/slider/banner-phones.png', alt: 'Iphone 14 pro' },
+  { id: 2, src: './img/slider/banner-tablets.png', alt: 'Iphone 14 pro' },
+  { id: 3, src: './img/slider/banner-accessories.png', alt: 'Iphone 14 pro' },
 ];
 
 export const sortOptions = [
