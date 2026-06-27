@@ -78,11 +78,11 @@
   color: $text-main;
   transition: color 0.3s ease;
 
-  @include uppercase;
-
   &:hover {
     color: $accent-hover;
   }
+
+  @include uppercase;
 }
 
 .backTop {

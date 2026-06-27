@@ -98,13 +98,13 @@
   text-align: left;
   margin: 0;
   color: $text-main;
-  word-break: break-word; // Захист від занадто довгих назв
+  word-break: break-word;
 
   @include body-font;
 
   @media (min-width: 768px) {
     text-align: center;
-    max-width: 350px; // Обмежуємо ширину тексту на десктопі
+    max-width: 350px;
   }
 }
 
@@ -112,7 +112,7 @@
   grid-area: actions;
   display: flex;
   align-items: center;
-  justify-content: space-between; // Розкидає лічильник та ціну по боках
+  justify-content: space-between;
   gap: 16px;
   width: 100%;
   margin-top: 8px;
@@ -128,7 +128,7 @@
 .itemPrice {
   color: $text-main;
   margin: 0;
-  white-space: nowrap; // Ціна ніколи не розірветься на два рядки
+  white-space: nowrap;
 
   @include h3-font;
 }
@@ -165,7 +165,7 @@
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  width: 100%; // На мобільних займає всю ширину
+  width: 100%;
   padding: 24px;
   background-color: $surface-1;
   border: 1px solid $surface-2;
@@ -175,7 +175,7 @@
     position: sticky;
     top: 20px;
     height: fit-content;
-    flex: 0.4; // Фіксована пропорція на десктопі
+    flex: 0.4;
     margin-bottom: 0;
   }
 }
@@ -207,11 +207,11 @@
   color: $text-on-accent;
   transition: background-color 0.3s;
 
-  @include buttons;
-
   &:hover {
     background-color: $accent-hover;
   }
+
+  @include buttons;
 }
 
 .errorWrapper {

@@ -43,8 +43,6 @@
   color: $text-main;
   transition: opacity 0.3s ease;
 
-  @include small-text;
-
   &:hover {
     opacity: 0.8;
   }
@@ -52,14 +50,16 @@
   &::first-letter {
     text-transform: uppercase;
   }
+
+  @include small-text;
 }
 
 .currentCrumb {
   color: $text-secondary;
 
-  @include small-text;
-
   &::first-letter {
     text-transform: uppercase;
   }
+
+  @include small-text;
 }

@@ -1,4 +1,4 @@
-// Колірна палітра Темна тема)
+// Color palette Dark theme
 :root[data-theme='dark'] {
   --background: #0f1121;
   --surface-1: #161827;
@@ -15,7 +15,7 @@
   --card-border: transparent;
 }
 
-// Колірна палітра Світла тема
+// Color palette Light theme
 :root[data-theme='light'] {
   --background: #fff;
   --surface-1: #fafbfc;
@@ -47,7 +47,7 @@ $shadow: var(--shadow-main);
 $filter: var(--filter);
 $border: var(--card-border);
 
-// Акценти та системні кольори
+// Accents and system colors
 :root {
   --green: #27ae60;
   --red: #eb5757;
@@ -56,7 +56,7 @@ $border: var(--card-border);
 $green: var(--green);
 $red: var(--red);
 
-// SCSS Міксини для типографіки Desktop
+// SCSS Mixins for Desktop Typography
 @mixin h1-font {
   font-family: Mont, sans-serif;
   font-weight: 800;
@@ -78,7 +78,6 @@ $red: var(--red);
   font-weight: 800;
   font-size: 22px;
   line-height: 31px;
-  letter-spacing: 0;
 }
 
 @mixin h4-font {
@@ -86,7 +85,6 @@ $red: var(--red);
   font-weight: 700;
   font-size: 20px;
   line-height: 26px;
-  letter-spacing: 0;
 }
 
 @mixin uppercase {
@@ -102,7 +100,6 @@ $red: var(--red);
   font-weight: 700;
   font-size: 14px;
   line-height: 21px;
-  letter-spacing: 0;
 }
 
 @mixin body-font {
@@ -110,7 +107,6 @@ $red: var(--red);
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  letter-spacing: 0;
 }
 
 @mixin small-text {
@@ -118,10 +114,9 @@ $red: var(--red);
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
-  letter-spacing: 0;
 }
 
-// SCSS Міксини для типографіки Mobile
+// SCSS Mixins for Mobile Typography
 @mixin h1-font-mobile {
   font-family: Mont, sans-serif;
   font-weight: 800;
@@ -135,7 +130,6 @@ $red: var(--red);
   font-weight: 800;
   font-size: 22px;
   line-height: 31px;
-  letter-spacing: 0;
 }
 
 @mixin h3-font-mobile {
@@ -143,7 +137,6 @@ $red: var(--red);
   font-weight: 700;
   font-size: 20px;
   line-height: 26px;
-  letter-spacing: 0;
 }
 
 @mixin h4-font-mobile {
@@ -151,5 +144,4 @@ $red: var(--red);
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
-  letter-spacing: 0;
 }

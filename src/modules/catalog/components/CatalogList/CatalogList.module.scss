@@ -9,11 +9,11 @@
   margin: 24px 0 8px;
   color: $text-main;
 
-  @include h1-font-mobile;
-
   &::first-letter {
     text-transform: uppercase;
   }
+
+  @include h1-font-mobile;
 
   @media (min-width: 768px) {
     margin: 40px 0 8px;
@@ -71,11 +71,11 @@
     border-color 0.3s ease,
     color 0.3s ease;
 
-  @include buttons;
-
   &:hover {
     border: 1px solid $text-icons;
   }
+
+  @include buttons;
 }
 
 .selectOptions {
@@ -116,11 +116,11 @@
   margin: 0;
   color: $text-main;
 
-  @include h3-font;
-
   &::first-letter {
     text-transform: uppercase;
   }
+
+  @include h3-font;
 }
 
 .emptyStateSub {

@@ -18,11 +18,11 @@
   color: $text-main;
   transition: opacity 0.3s ease;
 
-  @include small-text;
-
   &:hover {
     opacity: 0.7;
   }
+
+  @include small-text;
 }
 
 .back {

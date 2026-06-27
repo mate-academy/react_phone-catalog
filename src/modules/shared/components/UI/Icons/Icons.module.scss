@@ -25,6 +25,16 @@
   border-radius: 8px;
   border: 1px solid $surface-2;
 
+  img {
+    filter: $filter;
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    background-color: $surface-2;
+  }
+
   @media (min-width: 768px) {
     width: 64px;
     height: 100%;
@@ -39,16 +49,6 @@
 
   @media (min-width: 1024px) {
     width: 64px;
-  }
-
-  img {
-    filter: $filter;
-    width: 16px;
-    height: 16px;
-  }
-
-  &:hover {
-    background-color: $surface-2;
   }
 }
 

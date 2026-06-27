@@ -24,8 +24,6 @@
   color: $text-main;
   transition: all 0.3s ease;
 
-  @include body-font;
-
   &:hover {
     background-color: $elements;
   }
@@ -34,6 +32,8 @@
     opacity: 0.5;
     cursor: not-allowed;
   }
+
+  @include body-font;
 }
 
 .paginationButtonArrow {

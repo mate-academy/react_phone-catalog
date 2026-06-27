@@ -11,11 +11,11 @@
   color: $text-main;
   margin: 16px 0 32px;
 
+  @include h2-font-mobile;
+
   @media (min-width: 768px) {
     margin: 16px 0 40px;
   }
-
-  @include h2-font-mobile;
 
   @media (min-width: 768px) {
     @include h2-font;
@@ -211,8 +211,6 @@
   border: 1px solid $text-icons;
   transition: all 0.3s ease;
 
-  @include body-font;
-
   &:hover {
     background-color: $text-icons;
   }
@@ -223,6 +221,8 @@
     background-color: $text-main;
     border-color: $text-main;
   }
+
+  @include body-font;
 }
 
 .priceContainer {

@@ -66,8 +66,6 @@
     border-color 0.3s ease,
     transform 0.2s ease;
 
-  @include buttons;
-
   &:hover {
     background-color: $elements;
     border: $text-icons;
@@ -82,4 +80,6 @@
     outline: 2px solid $accent;
     outline-offset: 2px;
   }
+
+  @include buttons;
 }
