@@ -23,13 +23,6 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
   };
   const { products } = useProducts();
 
-  // const phones = useMemo(
-  //   () =>
-  //     products
-  //       .filter(product => product.category === 'phones')
-  //       .map(mapProductToCard),
-  //   [products],
-  // );
   const catalogProducts = useMemo(
     () =>
       products
@@ -37,9 +30,6 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
         .map(mapProductToCard),
     [products, category],
   );
-
-  // const [itemsPerPage, setItemsPerPage] = useState(16);
-  // const [currentPage, setCurrentPage] = useState(1);
 
   const [sortBy, setSortBy] = useState<SortType>('age');
 

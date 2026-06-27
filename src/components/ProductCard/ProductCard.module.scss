@@ -107,78 +107,78 @@
   color: #0f0f11;
 }
 
-.cardButtons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  margin-top: auto;
-}
+// .cardButtons {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   gap: 8px;
+//   margin-top: auto;
+// }
 
-.buttonAddToCart {
-  flex: 1;
-  height: 40px;
+// .buttonAddToCart {
+//   flex: 1;
+//   height: 40px;
 
-  border: none;
-  background: var(--accent);
-  color: #fff;
+//   border: none;
+//   background: var(--accent);
+//   color: #fff;
 
-  cursor: pointer;
+//   cursor: pointer;
 
-  transition: box-shadow 0.3s ease;
+//   transition: box-shadow 0.3s ease;
 
-  border-radius: 8px;
+//   border-radius: 8px;
 
-  &:hover {
-    box-shadow: 0px 3px 13px 0px #17203166;
-  }
-}
-.buttonPrimary {
-  background: var(--accent);
-}
+//   &:hover {
+//     box-shadow: 0px 3px 13px 0px #17203166;
+//   }
+// }
+// .buttonPrimary {
+//   background: var(--accent);
+// }
 
-.buttonSelected {
-  background: #e2e6e9;
-  color: var(--accent);
-  border: 1px solid #e2e6e9;
-}
+// .buttonSelected {
+//   background: #e2e6e9;
+//   color: var(--accent);
+//   border: 1px solid #e2e6e9;
+// }
 
-.buttonAddFavorites {
-  max-height: 40px;
-  width: 40px;
-  height: 40px;
+// .buttonAddFavorites {
+//   max-height: 40px;
+//   width: 40px;
+//   height: 40px;
 
-  // flex-shrink: 0;
+//   // flex-shrink: 0;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
 
-  border-radius: 50%;
-  border: 1px solid #b4bdc3;
+//   border-radius: 50%;
+//   border: 1px solid #b4bdc3;
 
-  background: #fff;
+//   background: #fff;
 
-  cursor: pointer;
+//   cursor: pointer;
 
-  transition: all 0.3s ease;
-}
+//   transition: all 0.3s ease;
+// }
 
-.buttonAddFavorites:hover {
-  border: 1px solid #0f0f11;
-}
+// .buttonAddFavorites:hover {
+//   border: 1px solid #0f0f11;
+// }
 
-.selected {
-  // background: #476df4;
-  border: 1px solid #e2e6e9;
-}
+// .selected {
+//   // background: #476df4;
+//   border: 1px solid #e2e6e9;
+// }
 
-.heart {
-  width: 16px;
-  height: 16px;
+// .heart {
+//   width: 16px;
+//   height: 16px;
 
-  // background-image: url('/img/icons/heart.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-}
+//   // background-image: url('/img/icons/heart.svg');
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   background-size: contain;
+// }

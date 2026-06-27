@@ -106,11 +106,14 @@ export const Breadcrumbs: React.FC = () => {
       </div>
 
       {modelName && (
-        <div className={styles.breadcrumbs__back}>
-          <Link to={backPath} className={styles.breadcrumbs__backLink}>
-            ← Back
-          </Link>
-        </div>
+        <>
+          <div className={styles.breadcrumbs__back}>
+            <span className={styles.breadcrumb__back}></span>
+            <Link to={backPath} className={styles.breadcrumbs__backLink}>
+              Back
+            </Link>
+          </div>
+        </>
       )}
     </div>
   );

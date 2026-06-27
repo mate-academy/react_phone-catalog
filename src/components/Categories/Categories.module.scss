@@ -36,14 +36,7 @@
 
   overflow: hidden;
 }
-// .categoryLink:hover .categoryImg {
-//   width: 70%;
-//   transform: scale(1.05);
 
-//   &.phones {
-//     transform: translate(50px, 60px);
-//   }
-// }
 .phones {
   background-color: #6d6474;
 }
@@ -117,16 +110,11 @@
     margin: 0 auto;
   }
   .category {
-    // align-items: center;
-    // flex-direction: column;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
   }
   .backgroundImg {
     width: 100%;
-    // max-width: 288px;
-    // height: 288px;
     aspect-ratio: 1 / 1;
-    // margin: 0 auto;
   }
 }

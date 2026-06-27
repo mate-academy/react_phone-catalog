@@ -1,7 +1,5 @@
-.breadcrumbs {
-  margin-bottom: 40px;
-}
 .breadcrumbs__nav {
+  margin-bottom: 40px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -18,7 +16,7 @@
   height: 16px;
 }
 .homeIcon {
-   vertical-align: middle;
+  vertical-align: middle;
 }
 .breadcrumbs__current {
   font-family: Mont;
@@ -31,11 +29,27 @@
 }
 .breadcrumbs__linkCategory {
   display: flex;
-  align-items: center;
+  align-items: end;
 
   font-family: Mont;
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
   color: var(--primary);
+}
+.breadcrumbs__back {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  margin-bottom: 16px;
+
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--secondary);
+}
+.breadcrumb__back {
+  background-image: url('/react_phone-catalog/img/icons/arrow-left-action.svg');
+  width: 16px;
+  height: 16px;
 }

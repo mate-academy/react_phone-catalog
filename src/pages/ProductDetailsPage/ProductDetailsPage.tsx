@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { asset } from '../../utils/paths';
 import { usePhones } from '../../hooks/usePhones';
@@ -6,6 +6,13 @@ import { useAccessories } from '../../hooks/useAccessories';
 import { useTablets } from '../../hooks/useTablets';
 import styles from './ProductDetailsPage.module.scss';
 import { Breadcrumbs } from '../CatalogPage/Breadcrumbs/Breadcrumbs';
+import { useNavigate } from 'react-router-dom';
+import { ProductColors } from './ProductOptions/ProductColors';
+import { ProductCapacities } from './ProductOptions/ProductCapacities';
+import { CardButton } from '../../components/ProductCard/CardButton/CardButton';
+import { ProductSlider } from '../../components/ProductSlider/ProductSlider';
+import { useProducts } from '../../hooks/useProducts';
+import { mapProductToCard } from '../../utils/mapProductToCard';
 
 export const ProductDetailsPage = () => {
   const { category, productId } = useParams();
@@ -31,6 +38,87 @@ export const ProductDetailsPage = () => {
   }, [category, productId, phones, tablets, accessories]);
 
   const [activeImage, setActiveImage] = useState(0);
+
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [isInCart, setIsInCart] = useState(false);
+
+  const { products } = useProducts();
+  const recommendedProducts = useMemo(() => {
+    if (!product) {
+      return [];
+    }
+
+    return products
+      .filter(p => p.id !== product.id)
+      .sort((a, b) => {
+        const aScore =
+          Number(a.namespaceId === product.namespaceId) +
+          Number(a.category === category);
+
+        const bScore =
+          Number(b.namespaceId === product.namespaceId) +
+          Number(b.category === category);
+
+        return bScore - aScore;
+      })
+      .slice(0, 10)
+      .map(mapProductToCard);
+  }, [products, product, category]);
+
+  const navigate = useNavigate();
+
+  const currentProducts =
+    category === 'phones'
+      ? phones
+      : category === 'tablets'
+        ? tablets
+        : accessories;
+
+  const catalogProduct = useMemo(() => {
+    if (!product) {
+      return null;
+    }
+
+    return products.find(p => p.itemId === product.id);
+  }, [products, product]);
+
+  const handleColorChange = (selectedColor: string) => {
+    if (!product) {
+      return;
+    }
+
+    const newProduct = currentProducts.find(
+      p =>
+        p.namespaceId === product.namespaceId &&
+        p.color === selectedColor &&
+        p.capacity === product.capacity,
+    );
+
+    if (newProduct) {
+      navigate(`/${category}/${newProduct.id}`);
+    }
+  };
+
+  const handleCapacityChange = (selectedCapacity: string) => {
+    if (!product) {
+      return;
+    }
+
+    const newProduct = currentProducts.find(
+      p =>
+        p.namespaceId === product.namespaceId &&
+        p.color === product.color &&
+        p.capacity === selectedCapacity,
+    );
+
+    if (newProduct) {
+      navigate(`/${category}/${newProduct.id}`);
+    }
+  };
+
+  useEffect(() => {
+    setActiveImage(0);
+  }, [product?.id]);
 
   if (!product) {
     return <div>Loading...</div>;
@@ -62,33 +150,19 @@ export const ProductDetailsPage = () => {
         </div>
 
         <div className={styles.info}>
-          {'colorsAvailable' in product && (
-            <>
-              <p className={styles.label}>Available colors</p>
+          {/* <p className={styles.label}>ID: {catalogProduct?.id}</p> */}
+          <ProductColors
+            colors={product.colorsAvailable}
+            selectedColor={product.color}
+            onColorSelect={handleColorChange}
+            productId={catalogProduct?.id}
+          />
 
-              <div className={styles.colors}>
-                {product.colorsAvailable.map(color => (
-                  <button
-                    key={color}
-                    className={styles.color}
-                    style={{ backgroundColor: color }}
-                  />
-                ))}
-              </div>
-            </>
-          )}
-
-          {'capacityAvailable' in product && (
-            <>
-              <p className={styles.label}>Select capacity</p>
-
-              <div className={styles.capacities}>
-                {product.capacityAvailable.map(capacity => (
-                  <button key={capacity}>{capacity}</button>
-                ))}
-              </div>
-            </>
-          )}
+          <ProductCapacities
+            capacities={product.capacityAvailable}
+            selectedCapacity={product.capacity}
+            onCapacitySelect={handleCapacityChange}
+          />
 
           <div className={styles.price}>
             <span className={styles.discount}>${product.priceDiscount}</span>
@@ -96,23 +170,30 @@ export const ProductDetailsPage = () => {
             <span className={styles.regular}>${product.priceRegular}</span>
           </div>
 
-          <div className={styles.actions}>
-            <button>Add to cart</button>
-            <button>❤</button>
-          </div>
+          <CardButton
+            isFavorite={isFavorite}
+            isInCart={isInCart}
+            onToggleFavorite={() => setIsFavorite(prev => !prev)}
+            onToggleCart={() => setIsInCart(prev => !prev)}
+          />
 
           <ul className={styles.shortSpecs}>
-            <li>
+            <li className={styles.shortSpec}>
               <span>Screen</span>
               <span>{product.screen}</span>
             </li>
 
-            <li>
+            <li className={styles.shortSpec}>
+              <span>Resolution</span>
+              <span>{product.resolution}</span>
+            </li>
+
+            <li className={styles.shortSpec}>
               <span>Capacity</span>
               <span>{product.capacity}</span>
             </li>
 
-            <li>
+            <li className={styles.shortSpec}>
               <span>RAM</span>
               <span>{product.ram}</span>
             </li>
@@ -126,10 +207,12 @@ export const ProductDetailsPage = () => {
 
           {product.description.map(section => (
             <article key={section.title}>
-              <h3>{section.title}</h3>
+              <h3 className={styles.subtitle}>{section.title}</h3>
 
               {section.text.map(text => (
-                <p key={text}>{text}</p>
+                <p key={text} className={styles.text}>
+                  {text}
+                </p>
               ))}
             </article>
           ))}
@@ -138,47 +221,47 @@ export const ProductDetailsPage = () => {
         <div className={styles.techSpecs}>
           <h2>Tech specs</h2>
 
-          <ul>
-            <li>
+          <ul className={styles.techSpecs__list}>
+            <li className={styles.techSpec}>
               <span>Screen</span>
               <span>{product.screen}</span>
             </li>
 
             {'resolution' in product && (
-              <li>
+              <li className={styles.techSpec}>
                 <span>Resolution</span>
                 <span>{product.resolution}</span>
               </li>
             )}
 
             {'processor' in product && (
-              <li>
+              <li className={styles.techSpec}>
                 <span>Processor</span>
                 <span>{product.processor}</span>
               </li>
             )}
 
-            <li>
+            <li className={styles.techSpec}>
               <span>RAM</span>
               <span>{product.ram}</span>
             </li>
 
             {'camera' in product && (
-              <li>
+              <li className={styles.techSpec}>
                 <span>Camera</span>
                 <span>{product.camera}</span>
               </li>
             )}
 
             {'zoom' in product && (
-              <li>
+              <li className={styles.techSpec}>
                 <span>Zoom</span>
                 <span>{product.zoom}</span>
               </li>
             )}
 
             {'cell' in product && (
-              <li>
+              <li className={styles.techSpec}>
                 <span>Cell</span>
                 <span>{product.cell.join(', ')}</span>
               </li>
@@ -186,6 +269,12 @@ export const ProductDetailsPage = () => {
           </ul>
         </div>
       </div>
+
+      <ProductSlider
+        name="You may also like"
+        items={recommendedProducts}
+        showDiscount={true}
+      />
     </section>
   );
 };

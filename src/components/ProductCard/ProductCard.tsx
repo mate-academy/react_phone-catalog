@@ -5,6 +5,7 @@ import { asset } from '../../utils/paths';
 import { NavLink } from 'react-router-dom';
 // import { mapProductToUIProduct } from '../../utils/mapProductToUIProduct';
 import { ProductCardItem } from '../../types/ProductCardItem';
+import { CardButton } from './CardButton/CardButton';
 
 type Props = ProductCardItem & {
   showDiscount?: boolean;
@@ -23,6 +24,7 @@ export const ProductCard: React.FC<Props> = ({
   ram,
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isInCart, setIsInCart] = useState(false);
 
   return (
     <article className={styles.card}>
@@ -68,7 +70,7 @@ export const ProductCard: React.FC<Props> = ({
           </li>
         </ul>
       </div>
-
+      {/*
       <div className={styles.cardButtons}>
         <button className={styles.buttonAddToCart}>Add to cart</button>
 
@@ -94,7 +96,14 @@ export const ProductCard: React.FC<Props> = ({
             }}
           />
         </button>
-      </div>
+      </div> */}
+
+      <CardButton
+        isFavorite={isFavorite}
+        isInCart={isInCart}
+        onToggleFavorite={() => setIsFavorite(prev => !prev)}
+        onToggleCart={() => setIsInCart(prev => !prev)}
+      />
     </article>
   );
 };
