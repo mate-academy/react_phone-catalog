@@ -29,22 +29,25 @@
     width: 32px;
     height: 100%;
     min-height: 189px;
-    display: flex;
+
+    /* 1. ХОВАЄМО НА МОБІЛЦІ */
+    display: none;
+
+    /* Ці властивості чекатимуть свого часу, поки display не стане flex */
     justify-content: center;
     align-items: center;
+
     background-color: $c-surface-1;
     border: 1px solid $c-elements;
     cursor: pointer;
     transition: border-color 0.3s ease;
 
-
     @media (min-width: 640px) {
       position: static;
       transform: none;
-
       grid-column: span 1;
+
       display: flex;
-      justify-content: center;
     }
 
     @media (min-width: 1200px) {
