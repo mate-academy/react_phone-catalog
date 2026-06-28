@@ -108,6 +108,10 @@
     color: $c-white;
     border: none;
     cursor: pointer;
+
+    &:hover {
+      background-color: rgba($c-accent, 0.5);
+    }
   }
 
   &__btnFav {

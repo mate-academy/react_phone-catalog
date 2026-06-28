@@ -17,6 +17,7 @@
     align-items: center;
     width: 32px;
     height: 32px;
+    color: $c-white;
     border: 1px solid $c-white;
     background-color: transparent;
     font-family: inherit;
@@ -26,9 +27,9 @@
 
     &__page {
       &--active {
-        background-color: $c-black;
+        background-color: $c-accent;
         color: $c-white;
-        border-color: $c-black;
+        border-color: $c-white;
       }
     }
 
@@ -39,6 +40,7 @@
 
     &:hover:not(:disabled) {
       border-color: $c-black;
+      background-color: $c-accent;
     }
   }
 }

@@ -16,9 +16,11 @@
 
   @include onTablet {
     padding-inline: 24px;
+    margin-bottom: 60px;
   }
 
   @include onDesktop {
-    padding-inline: 32px;
+    padding-inline: 60px;
+    margin-bottom: 80px;
   }
 }
