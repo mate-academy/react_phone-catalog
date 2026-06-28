@@ -79,13 +79,15 @@ export const ProductCatalogProvider = ({
     [products],
   );
 
-  const productDetailIdToProductId: ProductDetailIdToProductId = useMemo(
-    () =>
-      Object.fromEntries(
-        products.map(product => [getProductDetailId(product), product.id]),
-      ),
-    [products],
-  );
+  const productDetailIdToProductId: ProductDetailIdToProductId = useMemo(() => {
+    const result = Object.fromEntries(
+      products
+        .filter(Boolean)
+        .map(product => [getProductDetailId(product), product.id]),
+    );
+
+    return result;
+  }, [products]);
 
   useEffect(() => {
     setLoading(true);
@@ -93,7 +95,18 @@ export const ProductCatalogProvider = ({
     setLoaded(false);
     getProducts()
       .then(loadedProducts => {
-        setProducts(loadedProducts);
+        const reindexedProduct = loadedProducts.reduce<ProductCatalogItem[]>(
+          (acc, p) => {
+            const result = acc;
+
+            result[p.id] = p;
+
+            return result;
+          },
+          [],
+        );
+
+        setProducts(reindexedProduct);
         setLoaded(true);
       })
       .catch(fetchError => {

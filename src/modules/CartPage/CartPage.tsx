@@ -87,7 +87,7 @@ const CartPage = () => {
                       ></button>
                     </div>
                     <p className={styles.item__price}>
-                      {CURRENCY_SYMBOL + product.price}
+                      {CURRENCY_SYMBOL + product.price * quantity}
                     </p>
                   </div>
                 </li>

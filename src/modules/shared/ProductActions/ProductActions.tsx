@@ -13,7 +13,7 @@ interface InnerProps {
   isFavorite: boolean;
   isItemAdded: boolean;
   onToggle: (productId: number) => void;
-  onAddToCart: (product: ProductCatalogItem) => void;
+  onCartAction: (product: ProductCatalogItem) => void;
   product: ProductCatalogItem;
   additionalStyles: string;
 }
@@ -22,7 +22,7 @@ const ProductActionsInner = React.memo(function ProductActionsInner({
   isFavorite,
   isItemAdded,
   onToggle,
-  onAddToCart,
+  onCartAction,
   product,
   additionalStyles,
 }: InnerProps) {
@@ -30,7 +30,7 @@ const ProductActionsInner = React.memo(function ProductActionsInner({
   const text = isItemAdded
     ? t('product-card.item_added')
     : t('product-card.add_to_cart');
-  const handleClick = () => onAddToCart(product);
+  const handleClick = () => onCartAction(product);
 
   return (
     <div className={styles.buttons + ' ' + additionalStyles}>
@@ -67,8 +67,11 @@ const ProductActions: React.FC<Props> = ({
     [dispatch, product],
   );
 
-  const addToCart = useCallback(
-    () => isItemAdded || dispatch(itemsActions.add(product)),
+  const handleCartAction = useCallback(
+    () =>
+      isItemAdded
+        ? dispatch(itemsActions.remove(product))
+        : dispatch(itemsActions.add(product)),
     [isItemAdded, dispatch, product],
   );
 
@@ -77,7 +80,7 @@ const ProductActions: React.FC<Props> = ({
       isFavorite={isFavorite}
       isItemAdded={isItemAdded}
       onToggle={toggle}
-      onAddToCart={addToCart}
+      onCartAction={handleCartAction}
       product={product}
       additionalStyles={additionalStyles}
     />

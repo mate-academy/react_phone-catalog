@@ -9,9 +9,10 @@ import ProductActions from '../ProductActions';
 
 interface Props {
   product: ProductCatalogItem;
+  showDiscount?: boolean;
 }
 
-const ProductCard: React.FC<Props> = ({ product }) => {
+const ProductCard: React.FC<Props> = ({ product, showDiscount = true }) => {
   return (
     <div className={styles.product}>
       <Link
@@ -32,7 +33,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
         {product.name}
       </Link>
 
-      <PriceTag {...product} />
+      <PriceTag {...product} showDiscount={showDiscount} />
 
       <ProductSpecs product={product} specsList={CATALOG_SPECS_LIST} />
       <ProductActions product={product} />

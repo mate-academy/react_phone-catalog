@@ -24,13 +24,16 @@ function getSuggestedProducts(
 
   const seenIndices = new Set<number>();
   const suggested = [];
+  let count = 0;
 
   while (
-    seenIndices.size < SLIDER_COUNT ||
-    seenIndices.size < catalogProducts.length - 1
+    seenIndices.size < Math.min(SLIDER_COUNT, catalogProducts.length - 1) &&
+    count < catalogProducts.length
   ) {
     const randomIndex = Math.floor(Math.random() * catalogProducts.length);
     const currentItem = catalogProducts[randomIndex];
+
+    count++;
 
     if (
       !seenIndices.has(randomIndex) &&

@@ -233,18 +233,31 @@ $text-grey: #9b9b9b;
 .dots {
   display: flex;
   grid-column: 1 / -1;
+  gap: 4px;
   align-items: end;
   justify-content: center;
-  margin-top: 8px;
+  margin-top: 3px;
 
   &__dot {
+    box-sizing: content-box;
+    display: block;
     width: 14px;
     height: 4px;
-    margin: 10px 5px;
+    // margin: 10px 5px;
+    cursor: pointer;
     background-color: $elements-color;
+    background-clip: padding-box;
+    border-top: 10px solid transparent;
+    border-right: 3px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 3px solid transparent;
+    @include hover(transform, scale($image-hover-transform));
 
     &_active {
+      cursor: default;
       background-color: $primary-color;
+
+      @include hover(transform, scale(1));
     }
   }
 }

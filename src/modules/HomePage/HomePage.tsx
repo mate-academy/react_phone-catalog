@@ -49,6 +49,7 @@ export const HomePage = () => {
             <CatalogSlider
               title={t('home.brand_new')}
               products={brandNewProducts}
+              showDiscount={false}
             />
             <HomeCategories />
             <CatalogSlider

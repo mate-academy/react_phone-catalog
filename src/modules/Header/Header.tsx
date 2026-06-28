@@ -8,14 +8,14 @@ import IconWithCounter from './IconWithCounter';
 import { useAppSelector } from '../../store/hooks';
 import InputSearch from './InputSearch';
 import Logo from '../shared/Logo';
+import { selectTotalCount } from '../../store/slices/itemsSlice';
 
 export const Header = () => {
   const location = useLocation();
   const [showMobile, setShowMobile] = useState(false);
-  const items = useAppSelector(state => state.items);
   const favorites = useAppSelector(state => state.favorites);
   const favoritesCount = Object.keys(favorites).length;
-  const itemsCount = Object.keys(items).length;
+  const totalCount = useAppSelector(selectTotalCount);
 
   const handleMobileMenuClick = () => {
     setShowMobile(!showMobile);
@@ -51,7 +51,7 @@ export const Header = () => {
               />
               <IconWithCounter
                 href="cart"
-                count={itemsCount}
+                count={totalCount}
                 image={'cart'}
                 mobileMenu
               />

@@ -174,10 +174,11 @@ const HomeSlider = () => {
       ></button>
       <div className={styles.dots}>
         {slides.map(slide => (
-          <div
+          <button
             key={slide.id}
             className={`${styles.dots__dot} ${slide.id === currentSlide ? styles.dots__dot_active : ''}`}
-          ></div>
+            onClick={() => goToSlide(slide.id)}
+          ></button>
         ))}
       </div>
     </div>

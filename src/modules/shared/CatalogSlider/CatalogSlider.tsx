@@ -10,12 +10,14 @@ interface Props {
   title: string;
   products: ProductCatalogItem[];
   additionalStyles?: string;
+  showDiscount?: boolean;
 }
 
 const CatalogSlider: React.FC<Props> = ({
   title,
   products,
   additionalStyles = '',
+  showDiscount = true,
 }) => {
   const [leftButtonDisabled, setLeftButtonDisabled] = useState(true);
   const [rightButtonDisabled, setRightButtonDisabled] = useState(false);
@@ -192,7 +194,11 @@ const CatalogSlider: React.FC<Props> = ({
       </div>
       <div ref={sliderRef} className={styles.catalog__slider}>
         {products.map(product => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard
+            key={product.id}
+            product={product}
+            showDiscount={showDiscount}
+          />
         ))}
       </div>
     </div>
