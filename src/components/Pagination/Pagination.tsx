@@ -20,7 +20,24 @@ export const Pagination: React.FC<Props> = ({
     return null;
   }
 
-  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+  // Обмеження: показуємо максимум 4 кнопки пагінації (за макетом Figma)
+  const MAX_VISIBLE_PAGES = 4;
+
+  // Намагаємось тримати поточну сторінку ближче до початку списку
+  let startPage = Math.max(1, currentPage - 1);
+  let endPage = startPage + MAX_VISIBLE_PAGES - 1;
+
+  // Якщо вікно "вилізло" за межі загальної кількості сторінок, коригуємо його назад
+  if (endPage > totalPages) {
+    endPage = totalPages;
+    startPage = Math.max(1, endPage - MAX_VISIBLE_PAGES + 1);
+  }
+
+  // Генеруємо масив тільки з видимих сторінок
+  const visiblePages = Array.from(
+    { length: endPage - startPage + 1 },
+    (_, i) => startPage + i,
+  );
 
   return (
     <div className={styles.pagination}>
@@ -33,7 +50,7 @@ export const Pagination: React.FC<Props> = ({
       </button>
 
       <div className={styles.pagination__pages}>
-        {pages.map(page => {
+        {visiblePages.map(page => {
           const pageClass = `${styles.pagination__page} ${
             page === currentPage ? styles['pagination__page--active'] : ''
           }`;

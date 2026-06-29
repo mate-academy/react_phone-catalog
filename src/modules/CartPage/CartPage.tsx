@@ -49,7 +49,7 @@ export const CartPage: React.FC = () => {
                   </button>
 
                   <Link
-                    to={`/product/${item.product.itemId}`}
+                    to={`/${item.product.category}/${item.product.itemId}`}
                     className={styles.cartItem__imgWrapper}
                   >
                     <img
@@ -61,7 +61,7 @@ export const CartPage: React.FC = () => {
 
                   {/* Назва */}
                   <Link
-                    to={`/product/${item.product.itemId}`}
+                    to={`/${item.product.category}/${item.product.itemId}`}
                     className={styles.cartItem__name}
                   >
                     {item.product.name}

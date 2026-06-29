@@ -99,6 +99,29 @@
       background-color: $c-white;
     }
   }
+
+  &__badge {
+    position: absolute;
+    top: 16px;
+    left: calc(50% + 4px);
+    z-index: 2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+
+    background-color: $c-red;
+    color: $c-white;
+    font-size: 9px;
+    font-weight: 700;
+
+    border-radius: 50px;
+    border: 2px solid $c-black;
+  }
 }
 
 .closeBtn {

@@ -20,7 +20,7 @@ import { CartContext } from '../shared/context/CartContext';
 import { FavoritesContext } from '../shared/context/FavoritesContext';
 
 export const ProductDetailsPage: React.FC = () => {
-  const { productId } = useParams();
+  const { category, productId } = useParams();
 
   const [product, setProduct] = useState<ProductDetails | null>(null);
 
@@ -142,7 +142,7 @@ export const ProductDetailsPage: React.FC = () => {
                       return (
                         <Link
                           key={color}
-                          to={`/product/${newId}`}
+                          to={`/${category}/${newId}`}
                           className={`${styles.info__colorLink} ${
                             product.color === color
                               ? styles['info__colorLink--active']
@@ -170,7 +170,7 @@ export const ProductDetailsPage: React.FC = () => {
                       return (
                         <Link
                           key={capacity}
-                          to={`/product/${newId}`}
+                          to={`/${category}/${newId}`}
                           className={`${styles.info__capacityLink} ${
                             product.capacity === capacity
                               ? styles['info__capacityLink--active']

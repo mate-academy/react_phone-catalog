@@ -99,7 +99,12 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      <BurgerMenu isOpen={isMenuOpen} onClose={toggleMenu} />
+      <BurgerMenu
+        isOpen={isMenuOpen}
+        onClose={toggleMenu}
+        favoritesCount={favoritesCount}
+        cartCount={cartCount}
+      />
     </header>
   );
 };

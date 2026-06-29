@@ -34,7 +34,7 @@
     flex-direction: column;
     gap: 16px;
     background-color: transparent;
-    border: 1px solid $c-elements;
+
 
     @include onDesktop {
       flex: 1;
@@ -89,7 +89,7 @@
 
 .cartItem {
   display: grid;
-  grid-template-columns: 16px 80px 1fr;
+  grid-template-columns: 16px minmax(80px, max-content) 1fr;
   grid-template-rows: auto auto;
   gap: 16px;
   padding: 16px;

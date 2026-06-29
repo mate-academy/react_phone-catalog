@@ -33,7 +33,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <article className={styles.card}>
       <Link
-        to={`/product/${product.itemId}`}
+        to={`/${product.category}/${product.itemId}`}
         className={styles.card__imageContainer}
       >
         <img
@@ -44,7 +44,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </Link>
 
       <Link
-        to={`/product/${product.itemId}`}
+        to={`/${product.category}/${product.itemId}`}
         className={styles.card__titleLink}
       >
         <h3 className={styles.card__title}>{product.name}</h3>

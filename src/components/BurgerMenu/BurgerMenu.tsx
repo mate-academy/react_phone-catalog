@@ -5,9 +5,16 @@ import styles from './BurgerMenu.module.scss';
 interface Props {
   isOpen: boolean;
   onClose: () => void;
+  favoritesCount: number;
+  cartCount: number;
 }
 
-export const BurgerMenu: React.FC<Props> = ({ isOpen, onClose }) => {
+export const BurgerMenu: React.FC<Props> = ({
+  isOpen,
+  onClose,
+  favoritesCount,
+  cartCount,
+}) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -71,9 +78,18 @@ export const BurgerMenu: React.FC<Props> = ({ isOpen, onClose }) => {
           onClick={onClose}
         >
           <img src="/icons/heart-empty.svg" alt="Favorites" />
+
+          {favoritesCount > 0 && (
+            <span className={styles.menu__badge}>{favoritesCount}</span>
+          )}
         </NavLink>
+
         <NavLink to="/cart" className={getBottomNavClass} onClick={onClose}>
           <img src="/icons/cart.svg" alt="Cart" />
+
+          {cartCount > 0 && (
+            <span className={styles.menu__badge}>{cartCount}</span>
+          )}
         </NavLink>
       </div>
     </aside>
