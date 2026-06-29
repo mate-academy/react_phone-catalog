@@ -12,7 +12,11 @@
   border: none;
 
   &__link {
-    @include hover(transform, scale($image_hover_transform));
+    transition: scale $hover_time_transition;
+  }
+
+  &__link:hover &__img {
+    transform: scale($image_hover_transform);
   }
 
   &__button {
@@ -45,7 +49,12 @@
 
   &_type_slider {
     background-color: theme-get('slider-btn', 'bg');
-    @include hover(background-color, theme-get('slider-btn', 'bg-hover'));
+    border: 1px solid theme-get('slider-btn', 'border');
+
+    &:hover {
+      background-color: theme-get('slider-btn', 'bg-hover');
+      border: 1px solid theme-get('slider-btn', 'border-hover');
+    }
 
     &__disabled {
       background-color: theme-get('slider-btn', 'bg-border-disabled');

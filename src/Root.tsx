@@ -11,26 +11,30 @@ import ProductPage from './modules/ProductPage';
 import ProductDetailsPage from './modules/ProductDetailsPage';
 import FavoritesPage from './modules/FavoritesPage';
 import CartPage from './modules/CartPage';
+import { Provider } from 'react-redux';
+import store from './store';
 
 export const Root = () => (
-  <Router basename={import.meta.env.BASE_URL}>
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Route index element={<HomePage />} />
-        <Route path="phones" element={<ProductPage />} />
-        <Route path="phones/:itemId" element={<ProductDetailsPage />} />
-        <Route path="tablets" element={<ProductPage />} />
-        <Route path="tablets/:itemId" element={<ProductDetailsPage />} />
-        <Route path="accessories" element={<ProductPage />} />
-        <Route path="accessories/:itemId" element={<ProductDetailsPage />} />
-        <Route path="favorites" element={<FavoritesPage />} />
-        <Route path="cart" element={<CartPage />} />
-        <Route path="product">
-          <Route path=":productId" element={<ProductDetailsPage />} />
+  <Provider store={store}>
+    <Router basename={import.meta.env.BASE_URL}>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<HomePage />} />
+          <Route path="phones" element={<ProductPage />} />
+          <Route path="phones/:itemId" element={<ProductDetailsPage />} />
+          <Route path="tablets" element={<ProductPage />} />
+          <Route path="tablets/:itemId" element={<ProductDetailsPage />} />
+          <Route path="accessories" element={<ProductPage />} />
+          <Route path="accessories/:itemId" element={<ProductDetailsPage />} />
+          <Route path="favorites" element={<FavoritesPage />} />
+          <Route path="cart" element={<CartPage />} />
+          <Route path="product">
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
+          <Route path="home" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
-        <Route path="home" element={<Navigate to="/" replace />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Route>
-    </Routes>
-  </Router>
+      </Routes>
+    </Router>
+  </Provider>
 );

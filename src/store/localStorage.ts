@@ -1,9 +1,11 @@
 import { Favorites } from './slices/favoritesSlice';
 import { CartItem } from './slices/itemsSlice';
+import { LayoutThemeState } from './slices/layoutThemeSlice';
 
 export interface PersistedState {
   items: Record<number, CartItem>;
   favorites: Favorites;
+  layoutTheme: LayoutThemeState;
 }
 
 export function loadState(): PersistedState | undefined {

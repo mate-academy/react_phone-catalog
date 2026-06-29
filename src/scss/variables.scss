@@ -90,6 +90,10 @@ $button-theme: (
         light: transparent,
         dark: var(--icons),
       ),
+      'border': (
+        light: var(--icons),
+        dark: var(transparent),
+      ),
       'border-hover': (
         light: var(--primary),
         dark: var(--icons),
@@ -166,12 +170,16 @@ $button-theme: (
   'mobile-menu-btn':
     (
       'border-top': (
-        light: none,
+        light: 1px solid var(--elements),
         dark: 1px solid var(--elements),
       ),
       'box-shadow': (
-        light: none,
-        dark: -1px 0px 0px 0px var(--surface2),
+        light: -1px 0 0px 0px var(--elements),
+        dark: -1px 0 0px 0px var(--surface2),
+      ),
+      'box-shadow-hover': (
+        light: -1px 1px 0px 0px var(--elements),
+        dark: -1px 1px 0px 0px var(--surface2),
       ),
     ),
   // #endregion MobileMenu Button ThemeMobileMenu
@@ -186,7 +194,7 @@ $button-theme: (
 
   header: (
     'box-shadow': (
-      light: none,
+      light: 0px 1px 0px 0px var(--elements),
       dark: 0px 1px 0px 0px var(--elements),
     ),
   ),
@@ -236,6 +244,12 @@ $button-theme: (
     ),
   ),
 
+  header-lan: (
+    'select-bg': (
+      light: var(--white),
+      dark: var(--body-background),
+    ),
+  ),
   // #endregion Another Theme
 );
 
@@ -287,3 +301,5 @@ $desktop-padding-inline: 32px;
 $image_hover_transform: 1.1;
 $text_hover_transform: 1.07;
 // #endregion Global Layout Variables
+
+$hover_time_transition: 0.3s;

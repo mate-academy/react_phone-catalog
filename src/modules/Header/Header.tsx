@@ -9,6 +9,8 @@ import { useAppSelector } from '../../store/hooks';
 import InputSearch from './InputSearch';
 import Logo from '../shared/Logo';
 import { selectTotalCount } from '../../store/slices/itemsSlice';
+import ThemeSwitcher from '../shared/ThemeSwitcher';
+import HeaderLangSelect from './HeaderLangSelect';
 
 export const Header = () => {
   const location = useLocation();
@@ -55,6 +57,8 @@ export const Header = () => {
                 image={'cart'}
                 mobileMenu
               />
+              <HeaderLangSelect />
+              <ThemeSwitcher header={true} />
             </div>
             <Icon
               onClick={handleMobileMenuClick}

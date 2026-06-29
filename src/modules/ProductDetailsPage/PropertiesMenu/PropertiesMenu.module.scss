@@ -38,10 +38,6 @@
     border-radius: 50%;
     box-shadow: 0 0 0 1px $elements-color;
 
-    &:hover {
-      border-color: red;
-    }
-
     &_active {
       pointer-events: none;
 

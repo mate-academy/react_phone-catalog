@@ -4,6 +4,7 @@ import styles from './HomeSlider.module.scss';
 import { BASE_URL, HOME_SLIDER_TIME } from '../../constants';
 import svgArrowLeft from '../../shared/assets/Icons/arrow_left.svg?raw';
 import svgArrowRight from '../../shared/assets/Icons/arrow_right.svg?raw';
+import { useNavigate } from 'react-router-dom';
 
 const slides = [
   {
@@ -11,29 +12,39 @@ const slides = [
     title: 'iPhone 14 Pro',
     description: 'Pro. Beyond',
     img: BASE_URL + '/img/assets/homepage/banner_iphone14.png',
+    detailUrl: '/phones/apple-iphone-14-pro-128gb-spaceblack',
   },
   {
     id: 2,
     title: 'iPhone 13 Pro',
     description: 'Pro. Beyond',
     img: BASE_URL + '/img/assets/homepage/banner_iphone13.png',
+    detailUrl: '/phones/apple-iphone-13-pro-max-128gb-sierrablue',
   },
   {
     id: 3,
     title: 'iPhone 12 Pro',
     description: 'Pro. Beyond',
     img: BASE_URL + '/img/assets/homepage/banner_iphone12.png',
+    detailUrl: '/phones/apple-iphone-12-64gb-black',
   },
 ];
 
 const HomeSlider = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [isSliderHovered, setSliderHovered] = useState(false);
   const firstSlide = { ...slides[slides.length - 1] };
   const lastSlide = { ...slides[0] };
   const fullSlides = [firstSlide, ...slides, lastSlide];
   const lastSlideNumber = slides.length;
+
+  const handleOrderNow = () => {
+    const index = slides.findIndex(slide => slide.id === currentSlide);
+
+    navigate(slides[index].detailUrl);
+  };
 
   const goToSlide = useCallback(
     (number: number, behavior: ScrollBehavior = 'instant') => {
@@ -149,7 +160,9 @@ const HomeSlider = () => {
                 </span>
               </p>
               <p className={styles.slide__motto}>Be the first</p>
-              <button className={styles.slide__order}>Order now</button>
+              <button className={styles.slide__order} onClick={handleOrderNow}>
+                Order now
+              </button>
             </div>
             <div className={styles.slide__bottom}>
               <p className={styles.slide__title}>{slide.title}</p>

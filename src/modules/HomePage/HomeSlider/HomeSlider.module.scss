@@ -160,6 +160,8 @@ $text-grey: #9b9b9b;
 
   &__order {
     display: none;
+    cursor: pointer;
+    @include hover(transform, scale($image-hover-transform));
 
     @include on-tablet {
       display: block;

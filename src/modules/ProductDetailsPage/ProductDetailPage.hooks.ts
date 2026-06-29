@@ -32,7 +32,7 @@ export function useSelectedProductDetail() {
   useEffect(() => {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        window.scrollTo({ top: 0, behavior: 'instant' });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
   }, [pathname]);

@@ -1,22 +1,12 @@
+import './HeaderLangSelect.scss';
 import ReactSelect, { StylesConfig } from 'react-select';
 import { SelectOption } from '../../../types/SelectOptions';
-import './Select.scss';
+import { useLangSelect } from '../../hooks';
 
-interface Props {
-  value: SelectOption;
-  options: SelectOption[];
-  onChange: (selectedOption: SelectOption | null) => void;
-  hideBorder?: boolean;
-  menuPlacementTop?: boolean;
-}
+const HeaderLangSelect: React.FC = () => {
+  const hideBorder = true;
+  const menuPlacementTop = false;
 
-const Select: React.FC<Props> = ({
-  value,
-  options,
-  onChange,
-  hideBorder,
-  menuPlacementTop,
-}) => {
   const customStyles: StylesConfig<SelectOption, false> = {
     control: (_provided, state) => ({
       borderColor: hideBorder ? (state.isFocused ? '' : 'transparent') : '',
@@ -32,15 +22,17 @@ const Select: React.FC<Props> = ({
     placeholder: () => ({}),
   };
 
+  const { language, langOptions, selectLanguage } = useLangSelect();
+
   return (
     <ReactSelect<SelectOption>
-      className="select__container"
-      classNamePrefix="select"
-      options={options}
+      className="langSelect__container"
+      classNamePrefix="langSelect"
+      options={langOptions}
       // menuIsOpen={false}
-      onChange={onChange}
-      value={value}
-      menuPlacement={menuPlacementTop ? 'top' : 'bottom'}
+      onChange={selectLanguage}
+      value={language}
+      menuPlacement={'bottom'}
       isSearchable={false}
       unstyled={true}
       styles={customStyles}
@@ -48,4 +40,4 @@ const Select: React.FC<Props> = ({
   );
 };
 
-export default Select;
+export default HeaderLangSelect;

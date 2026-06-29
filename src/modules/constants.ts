@@ -1,3 +1,5 @@
+import { LanguageType } from '../types/LangTypes';
+
 export const BASE_URL =
   import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 export const SLIDER_COUNT = 8;
@@ -29,7 +31,7 @@ export const APPLE_COLORS: Record<string, string> = {
   sierrablue: '#7396B0',
 };
 
-export const siteLanguages = {
+export const siteLanguages: Record<LanguageType, string> = {
   uk: 'UA',
   en: 'EN',
 };

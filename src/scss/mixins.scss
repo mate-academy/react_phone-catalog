@@ -46,7 +46,7 @@
 
 @mixin hover($property, $to-value) {
   /* stylelint-disable-next-line CssSyntaxError */
-  transition: #{$property} 0.3s;
+  transition: #{$property} $hover_time_transition;
 
   &:hover {
     #{$property}: $to-value;

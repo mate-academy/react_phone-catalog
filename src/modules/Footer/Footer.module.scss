@@ -86,28 +86,4 @@
     justify-content: stretch;
     height: 32px;
   }
-
-  &__lang {
-    display: flex;
-    justify-content: stretch;
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 11px;
-    color: $primary-color;
-    letter-spacing: 0.04em;
-  }
-
-  &__langOption {
-    color: $secondary-color;
-    background-color: red;
-
-    &_checked {
-      color: $primary-color;
-      background-color: green;
-    }
-  }
-
-  &__topButton {
-    width: 32px;
-  }
 }

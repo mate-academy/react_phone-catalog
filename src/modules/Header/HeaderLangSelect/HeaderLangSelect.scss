@@ -1,0 +1,93 @@
+@use './../../../scss/main.scss' as *;
+
+.langSelect {
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 70px;
+    padding-inline: 4px;
+    box-shadow: theme-get('mobile-menu-btn', 'box-shadow');
+  }
+
+  &__indicator {
+    width: 16px;
+    height: 16px;
+    background-color: $icon-color;
+    mask-image: url('/img/assets/icons/arrow_right.svg');
+    transform: rotate(90deg);
+
+    & > svg {
+      display: none;
+    }
+  }
+
+  &__indicators {
+    width: 20px;
+    height: 40px;
+  }
+
+  &__control {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    align-items: stretch;
+    color: $primary-color;
+    cursor: default;
+    background-color: theme-get('header-lan', 'select-bg');
+    border: 1px solid theme-get('dropdown', 'select-border');
+    transition: all 100ms;
+
+    @extend %buttons;
+
+    &:focus,
+    &:hover {
+      border-color: theme-get('dropdown', 'select-border-hover');
+    }
+
+    &--is-focused,
+    &--is-focused:hover {
+      border-color: theme-get('dropdown', 'select-border-focus');
+    }
+
+    &--menu-is-open .select__indicator {
+      transform: rotate(-90deg);
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    z-index: 200;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: theme-get('dropdown', 'option-bg');
+    border: 1px solid theme-get('dropdown', 'menu-border-color');
+    box-shadow: theme-get('dropdown', 'menu-box-shadow');
+  }
+
+  &__option {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 6px 12px 5px;
+    font-size: 12px;
+    color: grey;
+    user-select: none;
+    background-color: theme-get('dropdown', 'option-bg');
+
+    @extend %body-text;
+
+    &--is-focused {
+      color: theme-get('dropdown', 'option-color-hover');
+      background-color: theme-get('dropdown', 'option-bg-hover');
+    }
+  }
+
+  &__single-value {
+    padding: 10px 12px 9px;
+
+    @include on-tablet {
+      padding-inline: 4px;
+    }
+  }
+}

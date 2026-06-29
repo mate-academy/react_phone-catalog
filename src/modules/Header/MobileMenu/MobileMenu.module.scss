@@ -1,15 +1,17 @@
 @use './../../../scss/main.scss' as *;
 
+$header-height: 49px;
+
 .menu {
   position: absolute;
-  top: 48px;
+  top: $header-height;
   left: 0;
   display: flex;
   flex-grow: 1;
   flex-direction: column;
   justify-content: space-between;
   width: 100dvw;
-  height: calc(100dvh - 48px);
+  height: calc(100dvh - $header-height);
   background-color: $body-background-color;
 }
 
