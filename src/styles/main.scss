@@ -1,0 +1,49 @@
+@import './utils/variables';
+@import './utils/mixins';
+@import './typography';
+@import './font';
+
+body {
+  font-family: Mont, sans-serif;
+  background-color: $main-bg-color;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  margin-inline: 32px;
+
+  @include on-tablet {
+    margin-inline: 24px;
+  }
+
+  @include on-mobile {
+    margin-inline: 16px;
+  }
+}

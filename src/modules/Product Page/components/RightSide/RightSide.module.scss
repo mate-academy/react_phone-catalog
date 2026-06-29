@@ -1,0 +1,295 @@
+@import '../../../../styles/main';
+
+.rs {
+  grid-column: span 11 / -1;
+  display: flex;
+  flex-direction: column;
+
+  @include on-tablet {
+    grid-column: span 5;
+  }
+
+  @include on-mobile {
+    grid-column: span 4;
+  }
+
+  &__colors {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__title {
+      font-family: Mont, sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      color: $secondary-text-color;
+      line-height: 100%;
+      letter-spacing: 0%;
+      width: 98px;
+      height: 15px;
+    }
+
+    &__ID {
+      font-family: Mont, sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      color: $secondary-text-color;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-align: right;
+      width: 85px;
+      height: 15px;
+    }
+
+    &__list {
+      display: flex;
+      list-style: none;
+      gap: 8px;
+    }
+
+    &__item {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid $border-color;
+      border-radius: 36px;
+
+      &__active {
+        border: 1px solid $primary-color;
+        pointer-events: none;
+      }
+    }
+
+    &__button {
+      display: flex;
+      width: 30px;
+      height: 30px;
+      opacity: 1;
+      border: 2px solid $bg-color;
+      border-radius: 36px;
+      cursor: pointer;
+    }
+  }
+
+  &__line {
+    width: 320px;
+    height: 1px;
+    background-color: $border-color;
+    margin-top: 16px;
+
+    @include on-tablet {
+      width: 100%;
+    }
+
+    @include on-mobile {
+      width: 100%;
+    }
+  }
+
+  &__capacity {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &__title {
+      font-family: Mont, sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      color: $secondary-text-color;
+      line-height: 100%;
+      letter-spacing: 0%;
+      width: 98px;
+      height: 15px;
+      margin-top: 24px;
+    }
+
+    &__list {
+      display: flex;
+      list-style: none;
+      gap: 8px;
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__button {
+      display: flex;
+      opacity: 1;
+      border: 1px solid $icon-color;
+      cursor: pointer;
+      background-color: $bg-color;
+      font-family: Mont, sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      color: $primary-color;
+      line-height: 21px;
+      letter-spacing: 0%;
+      text-align: center;
+      height: 32px;
+      width: 100%;
+      align-items: center;
+      box-sizing: border-box;
+
+      &__active {
+        background-color: $primary-color;
+        color: $main-bg-color;
+        pointer-events: none;
+        border: none;
+      }
+    }
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 320px;
+
+    @include on-tablet {
+      width: 100%;
+    }
+
+    @include on-mobile {
+      width: 100%;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__add-to-cart {
+    flex: 1;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+    background-color: $primary-color;
+    color: $bg-color;
+    width: 100%;
+    height: 48px;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
+
+    &--picked {
+      background-color: $bg-color;
+      color: $green-color;
+      border: 1px solid $icon-color;
+    }
+  }
+
+  &__add-to-fav {
+    display: flex;
+
+    box-sizing: border-box;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    text-decoration: none;
+    background: none;
+    border: 1px solid $icon-color;
+    text-align: center;
+    background-image: url(/public/img/my/Favourites_Heart_Like.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    transition: border 0.3s ease-in-out;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    &--active {
+      background-image: url(/public/img/my/Favourites_heart_like_red.svg);
+    }
+  }
+}
+
+.prices {
+  &__price {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+
+    color: $primary-color;
+
+    &--full {
+      font-weight: 500;
+      font-size: 22px;
+      color: $secondary-text-color;
+      text-decoration: line-through;
+    }
+  }
+}
+
+.details {
+  display: flex;
+  margin-top: 32px;
+  width: 320px;
+
+  @include on-tablet {
+    width: 100%;
+  }
+
+  @include on-mobile {
+    width: 100%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: $secondary-text-color;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+
+  &__desc {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: $primary-color;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: right;
+  }
+}

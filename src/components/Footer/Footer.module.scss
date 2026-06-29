@@ -1,0 +1,140 @@
+@import '../../styles/main';
+
+.footer {
+  height: $footer-height-desktop-or-tablet;
+  background-color: $bg-color;
+  box-shadow: 0 -1px 0 0 $border-color;
+  align-content: center;
+
+  @include on-mobile {
+    height: $footer-height-mobile;
+  }
+
+  &__content {
+    @include page-grid;
+
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  &__logo {
+    grid-column: 1 / 8;
+
+    @include on-tablet {
+      grid-column: 1 / 4;
+      margin-inline: 24px;
+    }
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+      margin-inline: 16px;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__logo__img {
+    width: 89px;
+    height: 31px;
+  }
+
+  &__icon {
+    grid-column: 17 / -1;
+    text-decoration: none;
+    color: $secondary-text-color;
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 4%;
+    display: inline-flex;
+    justify-self: end;
+    justify-content: center;
+    align-items: center;
+    padding-right: 40px;
+    height: 32px;
+    background-color: transparent;
+
+    background-image: url(/public/img/my/Slider_button_Default_.svg);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 32px;
+    cursor: pointer;
+    border: none;
+
+    @include on-tablet {
+      grid-column: 10 / -1;
+    }
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+      margin-inline: 16px;
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      background-position: right 130px center;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    @include on-tablet {
+      flex-direction: column;
+      gap: 32px;
+      justify-self: center;
+    }
+  }
+
+  &__nav {
+    grid-column: 9 / 17;
+
+    @include on-tablet {
+      grid-column: 5 / 9;
+    }
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+    }
+
+    &__list {
+      display: flex;
+      list-style: none;
+      justify-content: space-between;
+
+      @include on-mobile {
+        flex-direction: column;
+        gap: 16px;
+        margin-inline: 16px;
+      }
+    }
+
+    &__item {
+      display: flex;
+    }
+
+    &__link {
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      text-transform: uppercase;
+      color: $secondary-text-color;
+      text-decoration: none;
+      display: flex;
+      justify-self: center;
+    }
+  }
+}

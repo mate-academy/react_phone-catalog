@@ -1,0 +1,184 @@
+@import '../../../styles/main';
+
+.card {
+  height: 506px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: $bg-color;
+  border: 1px solid $border-color;
+
+  @include on-mobile {
+    height: 440px;
+  }
+
+  &__wrapper {
+    margin: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__img {
+    height: 100%;
+    max-height: 202px;
+    object-fit: contain;
+    align-self: center;
+    transition: transform 0.3s ease-in-out;
+
+    @include on-mobile {
+      max-height: 130px;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__name {
+    height: 42px;
+    text-decoration: none;
+    color: $primary-color;
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    padding-top: 16px;
+    display: flex;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__price {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: $primary-color;
+
+    &--full {
+      font-weight: 600;
+      color: $secondary-text-color;
+      text-decoration: line-through;
+    }
+  }
+
+  &__line {
+    height: 1px;
+    width: 100%;
+    background-color: $border-color;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  &__buttons {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__buttonAddToCart {
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+    text-decoration: none;
+    background: none;
+    border: none;
+    background-color: $primary-color;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: $bg-color;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
+  }
+
+  &__buttonAddedToCart {
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+    text-decoration: none;
+    background: none;
+    background-color: $bg-color;
+    color: $green-color;
+    border: 1px solid $icon-color;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
+  }
+
+  &__buttonAddToFav {
+    display: flex;
+    flex: 0 0 40px;
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    text-decoration: none;
+    background: none;
+    border: 1px solid $icon-color;
+    text-align: center;
+    background-image: url(/public/img/my/Favourites_Heart_Like.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    transition: border 0.3s ease-in-out;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    &__active {
+      background-image: url(/public/img/my/Favourites_heart_like_red.svg);
+    }
+  }
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  height: 15px;
+  align-items: center;
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: $secondary-text-color;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+
+  &__value {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: $primary-color;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: right;
+  }
+}

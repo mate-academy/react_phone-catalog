@@ -1,0 +1,58 @@
+@import '../../../../styles/main';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__button {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: $primary-color;
+
+    height: 32px;
+    width: 32px;
+    border: 1px solid $icon-color;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    transition: border 0.3s ease-in-out;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    &__prev {
+      transform: scaleX(-1);
+      background-image: url(/public/img/my/Slider_button_Default_right.svg);
+    }
+
+    &__next {
+      background-image: url(/public/img/my/Slider_button_Default_right.svg);
+    }
+
+    &__active{
+      background-color: $primary-color;
+      color: $bg-color;
+    }
+  }
+
+  &__pages{
+    display: flex;
+    gap: 8px;
+  }
+
+  &__dots{
+    color: $primary-color;
+  }
+}
