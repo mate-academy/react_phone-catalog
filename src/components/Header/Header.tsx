@@ -28,7 +28,7 @@ export const Header: React.FC<Props> = ({
     <header className={styles.header}>
       <div className={styles.container}>
         <NavLink to="/" className={styles.logo}>
-          <img src="/img/logo.svg" alt="Logo" className="logo" />
+          <img src="./img/logo.svg" alt="Logo" className="logo" />
         </NavLink>
 
         <nav>
@@ -72,7 +72,7 @@ export const Header: React.FC<Props> = ({
             aria-label="Favorites"
           >
             <img
-              src="/img/favorites.svg"
+              src="./img/favorites.svg"
               className={styles.iconImgFavorites}
               alt="Favourites"
             />
@@ -83,7 +83,7 @@ export const Header: React.FC<Props> = ({
 
           <NavLink to="/cart" className={styles.icon} aria-label="Cart">
             <img
-              src="/img/cart.svg"
+              src="./img/cart.svg"
               className={styles.iconImgCart}
               alt="Cart"
             />
@@ -94,7 +94,7 @@ export const Header: React.FC<Props> = ({
         <div className={styles.burgerMenuMaxWidth}>
           <button className={styles.burgerMenu} onClick={menu.toggleMenu}>
             <img
-              src="/img/burger-mob.svg"
+              src="./img/burger-mob.svg"
               alt="BurgerMenu"
               className={styles.iconImgBurgerMob}
             />

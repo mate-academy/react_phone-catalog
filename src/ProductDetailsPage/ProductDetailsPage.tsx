@@ -26,6 +26,7 @@ export const ProductDetailsPage = () => {
         const product = data.find(item => item.id === productId);
 
         setProducts(product || null);
+        setSelectedImages(product?.images[0] || '');
       })
       .catch(() => setError('Something went wrong'))
       .finally(() => setLoading(false));
@@ -58,28 +59,31 @@ export const ProductDetailsPage = () => {
     cell,
     zoom,
     name,
+    images,
+    colorsAvailable,
+    capacityAvailable,
   } = products;
 
   return (
     <div className={styles.containerPhones}>
       <Link to={`/${category}`} className={styles.home}>
         <button className={styles.homeButton}>
-          <img src="/img/home.svg" alt="home" className={styles.homeImg} />
+          <img src="./img/home.svg" alt="home" className={styles.homeImg} />
           <img
-            src="/img/vectorRight.svg"
+            src="./img/vectorRight.svg"
             alt="right"
             className={styles.homeGo}
           />
           <span className={styles.homeGoTo}>{category}</span>
           <img
-            src="/img/vectorRight.svg"
+            src="./img/vectorRight.svg"
             alt="right"
             className={styles.homeGo}
           />
         </button>
       </Link>
       <button className={styles.backButton}>
-        <img src="/img/left.svg" alt="back" className={styles.backImg} />
+        <img src="./img/left.svg" alt="back" className={styles.backImg} />
         <span className={styles.back}>Back</span>
       </button>
       <h2 className={styles.linkId}>
@@ -90,143 +94,148 @@ export const ProductDetailsPage = () => {
         </strong>
       </h2>
 
-      <div className={styles.imagesContainer}>
-        <div className={styles.imagesAll}>
-          {products.images.map(img => (
-            <button
-              key={img}
-              name="img"
-              onClick={() => setSelectedImages(img)}
-              className={styles.imagesByOne}
-            >
-              <img src={`../${img}`} alt="img" />
-            </button>
-          ))}
-        </div>
-        <div className={styles.mainImageBlock}>
-          <img
-            src={`../../img/${category}/${selectedImages}`}
-            alt={name}
-            className={styles.mainImage}
-          />
-        </div>
-      </div>
+      <section className={styles.container}>
+        <div className={styles.titleContainer}>
+          <div className={styles.imagesAll}>
+            {images.map(img => (
+              <button
+                key={img}
+                type="button"
+                onClick={() => setSelectedImages(img)}
+                className={`${styles.imagesByOne} ${selectedImages === img ? styles.activeImg : ''}`}
+              >
+                <img src={`/${img}`} alt="thumbnail" />
+              </button>
+            ))}
+          </div>
 
-      <aside className={styles.blockDetailsRight}>
-        <div className={styles.colorsAvailableBlock}>
-          {products.colorsAvailable.map(color => (
-            <label key={color}>
-              <input
-                type="radio"
-                name="color"
-                value={color}
-                checked={selectedColor === color}
-                onChange={() => setSelectedColor(color)}
-              />
-              {color}
-            </label>
-          ))}
-        </div>
-
-        <div className={styles.capacityAvailableBlock}>
-          {products.capacityAvailable.map(cap => (
-            <label key={cap}>
-              <input
-                type="radio"
-                name="capacity"
-                value={cap}
-                checked={selectedCapacity === cap}
-                onChange={() => setSelectedCapacity(cap)}
-              />
-              {cap}
-            </label>
-          ))}
-        </div>
-
-        <div className={styles.cardPriceGoup}>
-          <span className={styles.cardPriceHot}>${priceDiscount}</span>
-          <span className={styles.cardfullPriceHot}>${priceRegular}</span>
-        </div>
-        <div className={styles.actions}>
-          <button className={styles.cardToAdd}>Add to cart</button>
-          <button className={styles.buttonToFavorites}>
+          <div className={styles.mainImageBlock}>
             <img
-              src="/img/favorites.svg"
-              className={styles.iconImgFavorites}
-              alt="Favourites"
+              src={`/${selectedImages}`}
+              alt={name}
+              className={styles.mainImage}
             />
-          </button>
+          </div>
         </div>
-        <div className={styles.cardSpes}>
-          <div className={styles.screen}>
+
+        <aside className={styles.blockDetailsRight}>
+          <div className={styles.colorsAvailableBlock}>
+            {colorsAvailable.map(color => (
+              <label key={color}>
+                <input
+                  type="radio"
+                  name="color"
+                  value={color}
+                  checked={selectedColor === color}
+                  onChange={() => setSelectedColor(color)}
+                  className={styles.hiddenRadio}
+                />
+                {color}
+              </label>
+            ))}
+          </div>
+
+          <div className={styles.capacityAvailableBlock}>
+            <div className={styles.capacityAvailableInBlock}>
+              {capacityAvailable.map(cap => (
+                <label key={cap}>
+                  <input
+                    type="radio"
+                    name="capacity"
+                    value={cap}
+                    checked={selectedCapacity === cap}
+                    onChange={() => setSelectedCapacity(cap)}
+                  />
+                  <span>{cap}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.cardPriceGoup}>
+            <span className={styles.cardPriceHot}>${priceDiscount}</span>
+            <span className={styles.cardfullPriceHot}>${priceRegular}</span>
+          </div>
+
+          <div className={styles.actions}>
+            <button className={styles.cardToAdd}>Add to cart</button>
+            <button className={styles.buttonToFavorites}>
+              <img
+                src="/img/favorites.svg"
+                className={styles.iconImgFavorites}
+                alt="Favourites"
+              />
+            </button>
+          </div>
+
+          <div className={styles.cardSpes}>
+            <div className={styles.screen}>
+              <span>Screen</span>
+              <strong className={styles.strong}>{screen}</strong>
+            </div>
+            <div className={styles.resolution}>
+              <span>Resolution</span>
+              <strong className={styles.strong}>{resolution}</strong>
+            </div>
+            <div className={styles.processor}>
+              <span>Processor</span>
+              <strong className={styles.strong}>{processor}</strong>
+            </div>
+            <div className={styles.ram}>
+              <span>Ram</span>
+              <strong className={styles.strong}>{ram}</strong>
+            </div>
+          </div>
+        </aside>
+
+        <div className={styles.about}>
+          <h3 className={styles.aboutH}>About</h3>
+          <div className={styles.aboutSolid}></div>
+          <div className={styles.aboutDescription}>
+            {products.description.map((des, index) => (
+              <div key={index} className={styles.aboutSection}>
+                <strong className={styles.aboutTitle}>{des.title}</strong>
+                <p className={styles.aboutText}>{des.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.techSpecs}>
+          <h3>Tech specs</h3>
+          <div className={styles.specRow}>
             <span>Screen</span>
             <strong className={styles.strong}>{screen}</strong>
           </div>
-
-          <div className={styles.resolution}>
+          <div className={styles.specRow}>
             <span>Resolution</span>
             <strong className={styles.strong}>{resolution}</strong>
           </div>
-
-          <div className={styles.processor}>
+          <div className={styles.specRow}>
             <span>Processor</span>
             <strong className={styles.strong}>{processor}</strong>
           </div>
-
-          <div className={styles.ram}>
+          <div className={styles.specRow}>
             <span>Ram</span>
             <strong className={styles.strong}>{ram}</strong>
           </div>
+          <div className={styles.specRow}>
+            <span>Camera</span>
+            <strong className={styles.strong}>{camera}</strong>
+          </div>
+          <div className={styles.specRow}>
+            <span>Zoom</span>
+            <strong className={styles.strong}>{zoom}</strong>
+          </div>
+          <div className={styles.specRow}>
+            <span>Cell</span>
+            <strong className={styles.strong}>{cell}</strong>
+          </div>
         </div>
-      </aside>
+      </section>
 
-      <div className={styles.about}>
-        <h3>About</h3>
-        <div className={styles.aboutDescription}>
-          {products.description.map((des, index) => (
-            <div key={index}>
-              <strong className={styles.aboutTitle}>{des.title} </strong>
-              <span className={styles.aboutText}>{des.text} </span>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className={styles.TechSpecs}>
-        <span>Tech specs</span>
-        <div className={styles.screen}>
-          <span>Screen</span>
-          <strong className={styles.strong}>{screen}</strong>
-        </div>
-
-        <div className={styles.resolution}>
-          <span>Resolution</span>
-          <strong className={styles.strong}>{resolution}</strong>
-        </div>
-
-        <div className={styles.processor}>
-          <span>Processor</span>
-          <strong className={styles.strong}>{processor}</strong>
-        </div>
-
-        <div className={styles.ram}>
-          <span>Ram</span>
-          <strong className={styles.strong}>{ram}</strong>
-        </div>
-
-        <div className={styles.camera}>
-          <span>Camera</span>
-          <strong className={styles.strong}>{camera}</strong>
-        </div>
-
-        <div className={styles.zoom}>
-          <span>Zoom</span>
-          <strong className={styles.strong}>{zoom}</strong>
-        </div>
-
-        <div className={styles.cell}>
-          <span>Cell</span>
-          <strong className={styles.strong}>{cell}</strong>
-        </div>
+      <div className={styles.blockYouMayAlso}>
+        <h2>You may also like</h2>
       </div>
     </div>
   );

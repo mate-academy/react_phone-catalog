@@ -1,0 +1,51 @@
+@import '../../mixin.scss';
+
+.containerHotPrice {
+  // box-sizing: border-box;
+  // width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hotPrice {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  padding: 80px 0 24px;
+  align-items: center;
+  display: flex;
+
+  @include on-tablet {
+    padding: 64px 0 24px;
+  }
+
+  @include on-phone {
+    padding: 56px 0 24px;
+  }
+}
+
+.buttonsGroup {
+  box-sizing: border-box;
+  display: flex;
+  background: none;
+  cursor: pointer;
+  margin-left: auto;
+  gap: 8px;
+
+}
+
+.hotPriceImg {
+  height: 16px;
+  width: 16px;
+}
+
+.buttonHotPrice {
+  border: 1px solid #B4BDC3;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+}

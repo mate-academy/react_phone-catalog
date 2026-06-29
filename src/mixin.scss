@@ -27,21 +27,21 @@
 }
 
 
-@mixin page-grid {
-  display: grid;
-  --columns: 24; //колона//
-  column-gap: 32px; //проміжок між колонами//
-  grid-template-columns: repeat(var(--columns), 1fr);
+// @mixin page-grid {
+//   display: grid;
+//   --columns: 24; //колона//
+//   column-gap: 32px; //проміжок між колонами//
+//   grid-template-columns: repeat(var(--columns), 1fr);
 
-  @include on-tablet {
-    --columns: 12;
+//   @include on-tablet {
+//     --columns: 12;
 
-    column-gap: 24px;
-  }
+//     column-gap: 24px;
+//   }
 
-  @include on-phone {
-    --columns: 4;
+//   @include on-phone {
+//     --columns: 4;
 
-    column-gap: 16px;
-  }
-}
+//     column-gap: 16px;
+//   }
+// }
