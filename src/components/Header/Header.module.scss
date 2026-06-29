@@ -1,0 +1,10 @@
+@import '../../styles/index';
+
+.header {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  top: 0;
+  background-color: $bg-color;
+  box-shadow: 0 1px 0 $elements-color;
+}

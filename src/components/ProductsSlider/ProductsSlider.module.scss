@@ -1,0 +1,44 @@
+@import '../../styles/index';
+
+.productsSlider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+
+  &Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &Buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+.carousel {
+  display: flex;
+  width: 100%;
+  height: var(--height);
+  gap: 16px;
+
+  overflow: auto hidden;
+
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  scrollbar-width: none;
+
+  -ms-overflow-style: none;
+
+  &CardContainer {
+    min-width: var(--width);
+  }
+}

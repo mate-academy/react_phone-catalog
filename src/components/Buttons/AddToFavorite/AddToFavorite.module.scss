@@ -1,0 +1,6 @@
+@import '../../../styles/index';
+
+.addToFavorite {
+  @include round-button(var(--button-size));
+  @include hover(transform, translateY(-1px));
+}

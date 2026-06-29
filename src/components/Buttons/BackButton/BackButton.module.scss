@@ -1,0 +1,15 @@
+@import '../../../styles/index';
+
+.backButton {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  color: $secondary-color;
+  cursor: pointer;
+}

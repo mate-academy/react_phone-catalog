@@ -1,0 +1,13 @@
+@import '../../../styles/index';
+
+.arrow {
+  @include round-button;
+
+  display: none;
+  height: 100%;
+  border-radius: 48px;
+
+  @include on-tablet {
+    display: flex;
+  }
+}

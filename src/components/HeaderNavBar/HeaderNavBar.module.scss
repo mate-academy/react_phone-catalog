@@ -1,0 +1,35 @@
+@import '../../styles/index';
+
+.headerNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: $header-nav-mobile-height;
+  border: 1px solid $elements-color;
+
+  @include on-desktop {
+    height: $header-nav-desktop-height;
+  }
+}
+
+.headerLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 16px;
+
+  @include on-desktop {
+    padding: 18px 24px;
+  }
+}
+
+.headerImg {
+  height: 22px;
+  width: 64px;
+
+  @include on-desktop {
+    height: 28px;
+    width: 80px;
+  }
+}

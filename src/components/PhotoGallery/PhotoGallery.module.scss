@@ -1,0 +1,78 @@
+@import '../../styles/index';
+
+.galleryContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+
+  @include on-tablet {
+    flex-direction: row-reverse;
+  }
+}
+
+.viewport {
+  padding: 8px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: fade-in 0.5s ease;
+}
+
+.previewsImages {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  @include on-tablet {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+  }
+}
+
+.previewButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  background: transparent;
+
+  border-radius: 4px;
+  border: 1px solid $elements-color;
+  cursor: pointer;
+
+  @include on-tablet {
+    height: 35px;
+    width: 35px;
+  }
+
+  @include on-desktop {
+    height: 80px;
+    width: 80px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.isActive {
+  border-color: $primary-color;
+  transition: border-color 0.3s;
+}

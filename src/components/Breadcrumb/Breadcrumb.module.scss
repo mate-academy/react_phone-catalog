@@ -1,0 +1,47 @@
+@import '../../styles/index';
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+
+  & .list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style-type: none;
+  }
+
+  & .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  & .link {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+    color: $primary-color;
+    text-decoration: none;
+  }
+
+  & .current {
+    font-size: 12px;
+    font-weight: 600;
+    color: $secondary-color;
+  }
+}
+
+.homeIcon {
+  display: flex;
+  align-items: center;
+}
+
+.arrowIcon {
+  display: flex;
+  align-items: center;
+  opacity: 0.4;
+}

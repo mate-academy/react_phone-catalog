@@ -1,0 +1,98 @@
+@import '../../styles/index';
+
+.dropdownContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0;
+  width: 100%;
+}
+
+.dropdownTitle {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: $secondary-color;
+  line-height: 100%;
+}
+
+.dropdownWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.dropdownTrigger {
+  width: 100%;
+  border: 1px solid $icons-color;
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: $primary-color;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  background-color: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+  @include hover(border-color, $secondary-color);
+}
+
+.dropdown {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: calc(100% + 4px);
+  width: 100%;
+  background: $hover-bg-color;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  border: 1px solid $elements-color;
+  border-radius: 8px;
+  list-style: none;
+
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  pointer-events: none;
+
+  &Open {
+    padding: 8px 1px;
+    max-height: 100vh;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    z-index: 10;
+  }
+
+  &Item {
+    width: 100%;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 8px;
+
+    color: $secondary-color;
+    background-color: $bg-color;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    cursor: pointer;
+
+    transition:
+      background-color 0.3s,
+      color 0.3s;
+
+    &:hover {
+      color: $primary-color;
+      background-color: $hover-bg-color;
+    }
+  }
+}

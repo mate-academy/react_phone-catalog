@@ -1,0 +1,66 @@
+@import '../../styles/index';
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 32px;
+  background-color: $bg-color;
+  border-radius: 8px;
+  border: 1px solid $elements-color;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  gap: 8px;
+  transition:
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+
+  &:hover {
+    background-color: $hover-bg-color;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  &Buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    height: 40px;
+  }
+}
+
+.imgContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 109px;
+  flex-grow: 2;
+}
+
+.productImg {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  cursor: pointer;
+
+  @include hover(scale, 1.1);
+}
+
+.productTitle {
+  margin: 0;
+  margin-top: 8px;
+
+  line-height: 21px;
+  font-size: 14px;
+
+  &Link {
+    font-weight: 600;
+    color: $primary-color;
+    text-decoration: none;
+  }
+}
+
+.productSpecs {
+  margin-block: 8px;
+}

@@ -1,0 +1,22 @@
+@import '../../styles/index';
+
+.priceWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  margin: 0;
+  font-size: var(--price-font-size);
+  line-height: 140%;
+}
+
+.fullPrice {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 100%;
+  text-decoration: line-through;
+  color: $secondary-color;
+}

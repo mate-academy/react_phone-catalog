@@ -1,0 +1,73 @@
+@import '../../styles/index';
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  &Content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &Trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+
+  &Input {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: -32px;
+    padding: 8px;
+    width: 124px;
+    height: 32px;
+    background: $bg-color;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid $elements-color;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    color: $primary-color;
+
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(-6px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+    pointer-events: none;
+
+    &:focus {
+      background: $bg-color;
+    }
+
+    &Open {
+      opacity: 1;
+      transform: translateY(0);
+      z-index: 4;
+      pointer-events: auto;
+
+      @include on-tablet {
+        height: 36px;
+        width: 132px;
+      }
+
+      @include on-desktop {
+        height: 42px;
+        width: 172px;
+      }
+    }
+  }
+}

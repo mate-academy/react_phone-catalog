@@ -1,0 +1,56 @@
+@import '../../styles/index';
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  gap: 24px;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+
+  &Img {
+    width: 50%;
+
+    @include on-tablet {
+      width: clamp(200px, 40vw, 400px);
+    }
+  }
+
+  &Info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &Title {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: $primary-color;
+
+    @include on-desktop {
+      font-size: 32px;
+    }
+  }
+
+  &Action {
+    width: 100%;
+    height: 42px;
+  }
+
+  &Link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+    @include button-primary;
+  }
+}

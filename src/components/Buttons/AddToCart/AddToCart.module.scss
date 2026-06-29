@@ -1,0 +1,11 @@
+@import '../../../styles/index';
+
+.addToCart {
+  @include button-primary;
+}
+
+.isAdded {
+  color: $accent-color;
+  background-color: transparent;
+  border: 1px solid $elements-color;
+}
