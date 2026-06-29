@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/utils/mixins';
 
 .header {
   background-color: $c-black;
@@ -7,7 +8,7 @@
   position: relative;
   z-index: 10;
 
-  @media (min-width: 1200px) {
+  @include onDesktop {
     height: 64px;
   }
 
@@ -18,7 +19,7 @@
     height: 100%;
     padding: 0;
 
-    @media (min-width: 1200px) {
+    @include onDesktop {
       margin: 0 auto;
     }
   }
@@ -29,8 +30,8 @@
     padding-left: 16px;
     text-decoration: none;
 
-    @media (min-width: 1200px) {
-      padding-left: 0;
+    @include onDesktop {
+      padding-left: 60px;
     }
 
     img {
@@ -43,7 +44,7 @@
   &__nav {
     display: none;
 
-    @media (min-width: 640px) {
+    @include onTablet {
       display: flex;
       margin-right: auto;
       margin-left: 32px;
@@ -94,6 +95,10 @@
         width: 100%;
         height: 2px;
         background-color: $c-white;
+
+        @include onDesktop {
+          bottom: 0;
+        }
       }
     }
   }
@@ -106,7 +111,7 @@
   &__icons {
     display: none;
 
-    @media (min-width: 640px) {
+    @include onTablet {
       display: flex;
     }
   }
@@ -146,6 +151,10 @@
     border-radius: 50%;
     border: 1px solid $c-black;
     z-index: 5;
+
+    @include onDesktop {
+      top: 18px;
+    }
   }
 
   &__menuBtn {
@@ -166,7 +175,7 @@
       background-color: $c-surface-2;
     }
 
-    @media (min-width: 640px) {
+    @include onTablet {
       display: none;
     }
 
