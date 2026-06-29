@@ -1,0 +1,80 @@
+@use './../../../scss/main.scss' as *;
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+
+  &__title {
+    color: $primary-color;
+    @extend %h2;
+  }
+
+  &__content {
+    @include page-grid;
+  }
+
+  &__category {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1;
+    gap: 24px;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__categoryLink {
+    display: block;
+    height: fit-content;
+    aspect-ratio: 1 / 1;
+
+    @include hover(transform, scale($image_hover_transform));
+  }
+
+  &__categoryImage {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-top: 20%;
+    padding-left: 20%;
+    object-fit: cover;
+
+    &_bg_phones {
+      background-color: #6d6474;
+    }
+
+    &_bg_tablets {
+      background-color: #8d8d92;
+    }
+
+    &_bg_accessories {
+      background-color: #973d5f;
+    }
+  }
+
+  &__categoryBottom {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+  }
+
+  &__categoryName {
+    color: $primary-color;
+
+    @extend %h4;
+    @include hover(transform, scale($text_hover_transform));
+  }
+
+  &__categoryDescription {
+    color: $secondary-color;
+
+    @extend %body-text;
+  }
+}

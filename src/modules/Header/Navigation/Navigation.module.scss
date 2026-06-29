@@ -1,0 +1,56 @@
+@use '../../../scss/main.scss' as *;
+
+.nav {
+  display: none;
+  max-width: 465px;
+
+  &_mobileMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    max-width: none;
+    margin: 23px 16px 0;
+  }
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+.item {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 8px 0;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 11px;
+
+  color: $secondary-color;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  &__active {
+    color: $primary-color;
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      content: '';
+      border-bottom: $primary-color solid 3px;
+    }
+  }
+
+  @include on-tablet {
+    padding: 0;
+  }
+
+  @include hover(transform, scale(1.07));
+}

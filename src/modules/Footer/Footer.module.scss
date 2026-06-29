@@ -1,0 +1,89 @@
+@use './../../scss/main.scss' as *;
+
+.footer {
+  display: flex;
+  flex-grow: 1;
+  align-items: end;
+
+  &__content {
+    @include page-grid;
+
+    grid-row-gap: 32px;
+    padding-block: 32px;
+    margin-top: 64px;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    color: $secondary-color;
+    letter-spacing: 0.04em;
+
+    @include on-tablet {
+      margin-top: 80px;
+    }
+  }
+
+  &__left {
+    grid-column: 1 / -1;
+    height: 32px;
+
+    @include on-tablet {
+      grid-column: span 2;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1;
+    gap: 16px;
+    align-items: start;
+    justify-content: center;
+    text-transform: uppercase;
+
+    @include on-tablet {
+      flex-direction: row;
+      grid-column: span 8;
+      gap: 13.5px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @include on-desktop {
+      grid-column: span 14;
+    }
+  }
+
+  &__link {
+    @include hover(transform, scale($text-hover-transform));
+  }
+
+  &__right {
+    display: flex;
+    grid-column: 1 / -1;
+    gap: 16px;
+    place-self: center center;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    height: 32px;
+
+    @include on-tablet {
+      grid-column: span 2;
+      justify-self: end;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: stretch;
+    height: 32px;
+  }
+}

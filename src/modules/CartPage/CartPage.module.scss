@@ -1,0 +1,181 @@
+@use './../../scss/main.scss' as *;
+
+.cart {
+  display: grid;
+
+  @include page-grid;
+
+  &__title {
+    grid-column: 1/-1;
+    margin-top: 24px;
+
+    @extend %h1;
+
+    @include on-desktop {
+      margin-top: 40px;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1;
+    gap: 16px;
+
+    @include on-desktop {
+      grid-column: span 16;
+    }
+  }
+
+  &__total {
+    display: grid;
+    grid-template-rows: auto auto auto 48px;
+    grid-column: 1/-1;
+    height: fit-content;
+    padding: 24px;
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+
+    &Price {
+      @extend %h2;
+
+      font-weight: 800;
+      color: $primary-color;
+      text-align: center;
+      letter-spacing: -0.01em;
+    }
+
+    &Amount {
+      @extend %body-text;
+
+      color: $primary-color;
+
+      text-align: center;
+    }
+
+    &Divider {
+      width: 100%;
+      margin-block: 16px;
+      border-top: $elements-color 1px solid;
+    }
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: stretch;
+  padding: 15px;
+
+  border: $elements-color 1px solid;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+
+  &__firstRow {
+    display: flex;
+    flex-grow: 1;
+    gap: 16px;
+    align-items: center;
+    height: 80px;
+  }
+
+  &__buttonClose {
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+
+    background-color: $icon-color;
+    border: none;
+    mask-image: url('/img/assets/icons/close.svg');
+    mask-position: center center;
+
+    @include hover(background-color, $primary-color);
+  }
+
+  &__photo {
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: 80px;
+    height: 100%;
+    padding: 7px;
+    border: none;
+
+    @include hover(transform, scale($image-hover-transform));
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  &__productName {
+    @extend %body-text;
+    font-weight: 600;
+
+    color: $primary-color;
+
+    @include hover(transform, scale($text-hover-transform));
+  }
+
+  &__secondRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__price {
+    @extend %h3;
+
+    color: $primary-color;
+    text-align: right;
+
+    @include on-tablet {
+      width: 80px;
+    }
+  }
+}
+
+.itemAmount {
+  display: flex;
+
+  &__button {
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    color: $primary-color;
+
+    background-color: transparent;
+    border: 1px solid $secondary-color;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    &:disabled {
+      color: $icon-color;
+      border: none;
+    }
+  }
+
+  &__value {
+    @extend %body-text;
+
+    display: grid;
+    place-items: center;
+    min-width: 32px;
+
+    font-weight: 600;
+  }
+}

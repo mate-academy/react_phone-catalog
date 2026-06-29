@@ -1,0 +1,265 @@
+@use '../../../scss/main.scss' as *;
+
+$text-grey: #9b9b9b;
+
+.homeSlider {
+  flex-direction: column;
+
+  @include page-grid;
+
+  @include on-tablet {
+    margin-inline: 0;
+  }
+
+  &__button {
+    position: relative;
+    display: none;
+    padding: 0;
+    background-color: theme-get('slider-btn', 'bg');
+    border: 1px solid theme-get('slider-btn', 'border');
+
+    &:hover {
+      background-color: theme-get('slider-btn', 'bg-hover');
+      border: 1px solid theme-get('slider-btn', 'border-hover');
+    }
+
+    @include on-tablet {
+      display: block;
+    }
+
+    &_left {
+      color: $primary-color;
+    }
+
+    &_right {
+      color: $primary-color;
+    }
+  }
+}
+
+.slider {
+  display: flex;
+  flex-direction: row;
+  grid-row: 1;
+  grid-column: 1 / -1;
+
+  height: 320px;
+  overflow: hidden;
+  overflow-x: scroll;
+  scroll-behavior: auto;
+  font-weight: bold;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  @include on-tablet {
+    grid-column: 2 / -2;
+    height: 189px;
+  }
+
+  @include on-desktop {
+    height: 432px;
+  }
+}
+
+.slide {
+  box-sizing: border-box;
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  scroll-snap-align: center;
+  background-color: #000;
+
+  @include on-tablet {
+    flex-direction: row;
+    &__top {
+      flex-grow: 1;
+      flex-basis: 224px;
+      margin: 7px;
+      background-color: #222;
+      border-radius: 9px;
+
+      @include on-desktop {
+        margin: 10px;
+        border-radius: 25px;
+      }
+    }
+
+    &__bottom {
+      display: flex;
+      flex-grow: 1;
+      flex-basis: 260px;
+      flex-direction: column;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 42px;
+    margin-top: 32px;
+    font-size: 22px;
+    line-height: 100%;
+    color: transparent;
+    text-align: center;
+    background-image: linear-gradient(to right, #6f47de, #d15df3);
+    background-clip: text;
+
+    @include on-tablet {
+      height: 42px;
+      margin-top: 24px;
+      margin-left: 11%;
+      font-size: 16px;
+      text-align: left;
+    }
+
+    @include on-desktop {
+      height: 82px;
+      margin-top: 54px;
+      margin-left: 11%;
+      font-size: 33px;
+      text-align: left;
+    }
+
+    &_ok {
+      display: none;
+      width: 1em;
+      height: 1.2em;
+      margin-left: 0.3em;
+      background: url('img/assets/icons/ok_icon.svg') no-repeat center center /
+        cover;
+
+      @include on-tablet {
+        display: inline-block;
+      }
+    }
+  }
+
+  &__motto {
+    display: none;
+    font-size: 8px;
+    color: $text-grey;
+
+    @include on-tablet {
+      display: block;
+      margin-top: 10px;
+      margin-left: 11%;
+      text-align: left;
+    }
+
+    @include on-desktop {
+      display: block;
+      margin-top: 24px;
+      margin-left: 11%;
+      font-size: 16px;
+      text-align: left;
+    }
+  }
+
+  &__order {
+    display: none;
+    cursor: pointer;
+    @include hover(transform, scale($image-hover-transform));
+
+    @include on-tablet {
+      display: block;
+      padding: 12px 24px;
+      margin-top: 32px;
+      margin-left: 11%;
+      font-size: 8px;
+      color: #fff;
+      text-transform: uppercase;
+      background-color: transparent;
+      border: 0.5px solid #444;
+      border-radius: 16px;
+    }
+
+    @include on-desktop {
+      display: block;
+      padding: 24px 52px;
+      margin-top: 100px;
+      margin-left: 11%;
+      font-size: 14px;
+      text-align: left;
+      border-radius: 31px;
+    }
+  }
+
+  &__title {
+    margin-top: 48px;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 100%;
+    color: #fff;
+    text-align: center;
+
+    transform: scaleX(0.95);
+
+    @include on-tablet {
+      margin-top: 22px;
+    }
+
+    @include on-desktop {
+      margin-top: 48px;
+    }
+  }
+
+  &__description {
+    margin-top: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 100%;
+    color: $text-grey;
+    text-align: center;
+    transform: scaleX(0.95);
+
+    @include on-tablet {
+      margin-top: 8px;
+    }
+
+    @include on-tablet {
+      margin-top: 16px;
+    }
+  }
+
+  &__photo {
+    flex-grow: 1;
+    height: 136px;
+    color: #fff;
+    background: center bottom / contain no-repeat;
+  }
+}
+
+.dots {
+  display: flex;
+  grid-column: 1 / -1;
+  gap: 4px;
+  align-items: end;
+  justify-content: center;
+  margin-top: 3px;
+
+  &__dot {
+    box-sizing: content-box;
+    display: block;
+    width: 14px;
+    height: 4px;
+    // margin: 10px 5px;
+    cursor: pointer;
+    background-color: $elements-color;
+    background-clip: padding-box;
+    border-top: 10px solid transparent;
+    border-right: 3px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 3px solid transparent;
+    @include hover(transform, scale($image-hover-transform));
+
+    &_active {
+      cursor: default;
+      background-color: $primary-color;
+
+      @include hover(transform, scale(1));
+    }
+  }
+}

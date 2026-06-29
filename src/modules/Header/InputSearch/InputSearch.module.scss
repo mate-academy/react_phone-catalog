@@ -1,0 +1,94 @@
+@use '../../../scss/main.scss' as *;
+
+$input-height: 15px;
+$icon-gap: 2px;
+
+.inputSearch {
+  position: sticky;
+  top: 48px;
+  z-index: 100;
+  box-sizing: content-box;
+  width: 100%;
+  height: $input-height;
+  padding-block: 4 * $icon-gap;
+
+  background-color: $body-background-color;
+
+  @include page-grid;
+
+  &__container {
+    position: relative;
+    box-sizing: border-box;
+    grid-column: 1/-1;
+    width: 100%;
+    height: 100%;
+
+    @include on-tablet {
+      grid-column: span 6 / -1;
+    }
+  }
+
+  &__input {
+    @extend %small-text;
+
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-left: $input-height + $icon-gap;
+    font-weight: 500;
+
+    background-color: $body-background-color;
+    border: none;
+    border-bottom: 1px solid $icon-color;
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    &:focus {
+      border-color: $primary-color;
+    }
+
+    &::placeholder {
+      color: $primary-color;
+      opacity: 0.3;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: $icon-gap;
+    width: $input-height - $icon-gap;
+    height: $input-height - $icon-gap;
+    color: $icon-color;
+    transform: translateY(-50%);
+  }
+
+  &__close {
+    @extend %small-text;
+
+    position: absolute;
+    top: 50%;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $input-height;
+    height: $input-height;
+
+    color: $icon-color;
+    cursor: pointer;
+
+    background-color: transparent;
+    border: none;
+    transform: translateY(-50%);
+
+    &:hover {
+      @include hover(transform, translateY(-50%) scale($text_hover_transform));
+      @include hover(color, $primary-color);
+    }
+  }
+}

@@ -1,0 +1,54 @@
+@use './../../../scss/main.scss' as *;
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  width: fit-content;
+  height: 32px;
+  margin-inline: auto;
+
+  &:first-child {
+    margin-right: 8px;
+  }
+
+  &__link {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: 100%;
+    aspect-ratio: 1/1;
+    color: theme-get('pg-btn', 'color');
+    background-color: theme-get('pg-btn', 'bg');
+    border: 1px solid theme-get('pg-btn', 'border');
+
+    @extend %body-text;
+
+    &:hover {
+      background-color: theme-get('pg-btn', 'bg-hover');
+      border-color: theme-get('pg-btn', 'border-hover');
+    }
+
+    &_active {
+      color: theme-get('pg-btn', 'selected');
+      cursor: default;
+      background-color: theme-get('pg-btn', 'selected-hover-bg');
+
+      &:hover {
+        color: theme-get('pg-btn', 'selected');
+        background-color: theme-get('pg-btn', 'selected-hover-bg');
+      }
+    }
+  }
+
+  &__button {
+    &_marginLeft {
+      margin-left: 8px;
+    }
+
+    &_marginRight {
+      margin-right: 8px;
+    }
+  }
+}

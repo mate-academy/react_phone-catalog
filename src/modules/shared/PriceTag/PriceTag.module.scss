@@ -1,0 +1,35 @@
+@use '../../../scss/main.scss' as *;
+
+.priceTag {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+  height: 31px;
+
+  @extend %h3;
+  &__price {
+    display: flex;
+    align-items: center;
+    line-height: 140%;
+    color: $primary-color;
+
+    &_old {
+      position: relative;
+      font-weight: 600;
+      color: $secondary-inverted-color;
+      isolation: isolate;
+      filter: $old-price-filter;
+
+      &::after {
+        position: absolute;
+        top: 44%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        content: '';
+        background-color: $secondary-inverted-color;
+        mix-blend-mode: difference;
+      }
+    }
+  }
+}

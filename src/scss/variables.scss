@@ -1,0 +1,305 @@
+@use 'sass:map';
+@use 'sass:string';
+
+:root[data-theme='light'] {
+  --primary: #313237;
+  --secondary: #89939a;
+  --secondary-inverted: #766c65;
+  --surface1: #3b3e4a;
+  --surface2: #3b3e4a;
+  --border: #b4bdc4;
+  --icons: #b4bdc3;
+  --white: #fff;
+  --red: #eb5757;
+  --green: #27ae60;
+  --elements: #e2e6e9;
+  --black: #000;
+  --error-background: #b87e7e80;
+  --body-background: var(--white);
+  --old-price-filter: invert(100%);
+}
+
+:root[data-theme='dark'] {
+  --black: #0f1121;
+  --secondary: #75767f;
+  --surface1: #161827;
+  --surface2: #323542;
+  --icons: #4a4d58;
+  --white: #f1f2f9;
+  --accent: #905bff;
+  --red: #eb5757;
+  --elements: #3b3e4a;
+  --primary: var(--white);
+  --body-background: var(--black);
+  --secondary-inverted: #8a8980;
+  --old-price-filter: none;
+}
+
+/* #region Button */
+
+$button-theme: (
+  // #region Pagination Button Theme
+  'pg-btn':
+    (
+      'border': (
+        light: var(--elements),
+        dark: var(--surface1),
+      ),
+      'color': (
+        light: var(--black),
+        dark: var(--white),
+      ),
+      'bg': (
+        light: transparent,
+        dark: var(--surface1),
+      ),
+      'border-hover': (
+        light: var(--primary),
+        dark: var(--icons),
+      ),
+      'bg-hover': (
+        light: var(--white),
+        dark: var(--icons),
+      ),
+      'selected': (
+        light: var(--white),
+        dark: var(--white),
+      ),
+      'selected-hover-bg': (
+        light: var(--primary),
+        dark: var(--accent),
+      ),
+    ),
+  // #endregion Pagination Button Theme
+  // #region Slider Button Theme
+  'slider-btn':
+    (
+      'color': (
+        light: var(--primary),
+        dark: var(--white),
+      ),
+      'color-disabled': (
+        light: var(--icons),
+        dark: var(--icons),
+      ),
+      'bg': (
+        light: transparent,
+        dark: var(--surface2),
+      ),
+      'bg-hover': (
+        light: transparent,
+        dark: var(--icons),
+      ),
+      'border': (
+        light: var(--icons),
+        dark: var(transparent),
+      ),
+      'border-hover': (
+        light: var(--primary),
+        dark: var(--icons),
+      ),
+      'border-disabled': (
+        light: var(--white),
+        dark: var(--icons),
+      ),
+    ),
+  // #endregion Slider Button Theme
+  // #region Primary Button Theme
+  'primary-btn':
+    (
+      'color': (
+        light: var(--white),
+        dark: var(--white),
+      ),
+      'bg': (
+        light: var(--primary),
+        dark: var(--accent),
+      ),
+      'bg-hover': (
+        light: var(--primary),
+        dark: #a378ff,
+      ),
+      'hover-shadow': (
+        light: 0px 3px 13px 0px #17203166,
+        dark: none,
+      ),
+      'color-selected': (
+        light: var(--green),
+        dark: var(--primary),
+      ),
+      'border-selected': (
+        light: var(--elements),
+        dark: var(--surface2),
+      ),
+      'bg-selected': (
+        light: transparent,
+        dark: var(--surface2),
+      ),
+    ),
+  // #endregion Primary Button Theme
+  // #region Add Button Theme
+  'add-btn':
+    (
+      'bg': (
+        light: transparent,
+        dark: var(--surface2),
+      ),
+      'border': (
+        light: 1px solid var(--icons),
+        dark: none,
+      ),
+      'bg-hover': (
+        light: transparent,
+        dark: var(--icons),
+      ),
+      'border-hover': (
+        light: 1px solid var(--primary),
+        dark: none,
+      ),
+      'bg-selected': (
+        light: transparent,
+        dark: transparent,
+      ),
+      'border-selected': (
+        light: 1px solid var(--elements),
+        dark: 1px solid var(--elements),
+      ),
+    ),
+  // #endregion Add Button Theme
+  // #region MobileMenu Button Theme
+  'mobile-menu-btn':
+    (
+      'border-top': (
+        light: 1px solid var(--elements),
+        dark: 1px solid var(--elements),
+      ),
+      'box-shadow': (
+        light: -1px 0 0px 0px var(--elements),
+        dark: -1px 0 0px 0px var(--surface2),
+      ),
+      'box-shadow-hover': (
+        light: -1px 1px 0px 0px var(--elements),
+        dark: -1px 1px 0px 0px var(--surface2),
+      ),
+    ),
+  // #endregion MobileMenu Button ThemeMobileMenu
+  // #region Another Theme
+  back-btn:
+    (
+      'color': (
+        light: var(--secondary),
+        dark: var(--white),
+      ),
+    ),
+
+  header: (
+    'box-shadow': (
+      light: 0px 1px 0px 0px var(--elements),
+      dark: 0px 1px 0px 0px var(--elements),
+    ),
+  ),
+
+  dropdown: (
+    'select-bg': (
+      light: var(--white),
+      dark: var(--surface2),
+    ),
+    'select-border': (
+      light: var(--icons),
+      dark: var(--surface2),
+    ),
+    'select-border-hover': (
+      light: var(--elements),
+      dark: var(--icons),
+    ),
+
+    'select-border-focus': (
+      light: var(--primary),
+      dark: var(--accent),
+    ),
+
+    'menu-border-color': (
+      light: var(--elements),
+      dark: var(--elements),
+    ),
+    'menu-box-shadow': (
+      light: none,
+      dark: 0px 2px 15px 0px #0000000d,
+    ),
+    'option-color': (
+      light: var(--primary),
+      dark: var(--secondary),
+    ),
+    'option-bg': (
+      light: var(--white),
+      dark: var(--black),
+    ),
+    'option-color-hover': (
+      light: var(--primary),
+      dark: var(--white),
+    ),
+    'option-bg-hover': (
+      light: var(--white),
+      dark: var(--surface2),
+    ),
+  ),
+
+  header-lan: (
+    'select-bg': (
+      light: var(--white),
+      dark: var(--body-background),
+    ),
+  ),
+  // #endregion Another Theme
+);
+
+@each $theme in ('light', 'dark') {
+  :root[data-theme='#{$theme}'] {
+    @each $btn-name, $properties in $button-theme {
+      @each $prop-key, $theme-map in $properties {
+        @if map.has-key($theme-map, $theme) {
+          --#{$btn-name}-#{$prop-key}: #{map.get($theme-map, $theme)};
+        }
+      }
+    }
+  }
+}
+
+/* #endregion Button */
+
+// #region Global Color Variables
+$primary-color: var(--primary);
+$secondary-color: var(--secondary);
+$secondary-inverted-color: var(--secondary-inverted);
+$surface1-color: var(--surface1);
+$surface2-color: var(--surface2);
+$border-color: var(--border);
+$error-background-color: var(--error-background);
+$selected-button-color: var(--selected-button);
+$icon-color: var(--icons);
+$background-color: var(--background);
+$body-background-color: var(--body-background);
+$white-color: var(--white);
+$red-color: var(--red);
+$elements-color: var(--elements);
+$old-price-filter: var(--old-price-filter);
+// #endregion Global Color Variables
+
+// #region Global Layout Variables
+$header-max-width: 1440px;
+$body-min-width: 320px;
+$grid-column-desktop: 32px;
+$grid-gap-mobile: 16px;
+$grid-gap-desktop: 16px;
+$grid-column-mobile: 68px;
+$mobile-max-width: 320px;
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+$mobile-padding-inline: 16px;
+$tablet-padding-inline: 24px;
+$desktop-padding-inline: 32px;
+$image_hover_transform: 1.1;
+$text_hover_transform: 1.07;
+// #endregion Global Layout Variables
+
+$hover_time_transition: 0.3s;

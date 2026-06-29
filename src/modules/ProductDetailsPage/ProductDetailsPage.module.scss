@@ -1,0 +1,25 @@
+@use './../../scss/main.scss' as *;
+
+.productDetail {
+  &__title {
+    margin-top: 16px;
+
+    @extend %h2;
+  }
+
+  &__slider_marginTop {
+    margin-top: 56px;
+
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-desktop {
+      margin-top: 80px;
+    }
+  }
+
+  &__loader {
+    margin-top: 40px;
+  }
+}

@@ -1,0 +1,40 @@
+@use './../../../scss/main.scss' as *;
+
+.listMenu {
+  @include page-grid;
+
+  &__sort {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+  }
+
+  &__items {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+  }
+
+  &__title {
+    display: inline-block;
+    width: 100%;
+    color: $secondary-color;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @extend %small-text;
+  }
+
+  &_marginTop {
+    margin-top: 32px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@use '../../scss/main.scss' as *;
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+
+  &__title {
+    margin-block: 24px;
+
+    color: $primary-color;
+
+    @extend %h1;
+
+    @include on-tablet {
+      margin-block: 32px;
+    }
+
+    @include on-desktop {
+      margin-block: 56px;
+    }
+  }
+}
+
+.slider-wrapper {
+  margin-inline: $mobile-padding-inline * -1;
+
+  @include on-desktop {
+    margin-inline: 0;
+  }
+}

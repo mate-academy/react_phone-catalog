@@ -1,0 +1,33 @@
+@use '../../../scss/main.scss' as *;
+
+.specs {
+  display: flex;
+  padding-block: 8px;
+  flex-direction: column;
+  gap: 8px;
+
+  &__line {
+    @extend %small-text;
+
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+
+    &.specs__fontWeight_600 {
+      font-weight: 600;
+    }
+
+    &.specs__fontSize_14 {
+      @extend %body-text;
+    }
+
+    &__lineTitle {
+      color: $secondary-color;
+      text-transform: capitalize;
+    }
+
+    &__lineValue {
+      color: $primary-color;
+    }
+  }
+}

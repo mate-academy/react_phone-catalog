@@ -1,0 +1,8 @@
+@use './../../../scss/main.scss' as *;
+
+.productsList {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  column-gap: $grid-gap-mobile;
+}

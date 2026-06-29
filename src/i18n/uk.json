@@ -1,0 +1,104 @@
+{
+  "nav": {
+    "home": "Головна",
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксессуари"
+  },
+
+  "bread_crumps": {
+    "home": "Головна",
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксессуари",
+    "favorites": "Обране"
+  },
+
+  "home": {
+    "title": "Каталог продукції",
+    "welcome_to_store": "Ласкаво просимо до магазину гарних гаджетів!",
+    "brand_new": "Новинки",
+    "hot_prices": "Гарячі ціни",
+    "shop_by_category": "Товари за категоріями",
+    "category_phones": "Мобільні телефони",
+    "category_tablets": "Планшети",
+    "category_accessories": "Аксесуари",
+    "models": "моделей"
+  },
+
+  "products_page": {
+    "phones": "Мобільні телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари",
+    "models_one": "{{count}} модель",
+    "models_few": "{{count}} моделі",
+    "models_many": "{{count}} моделей",
+    "menu_sort": "Сортувати по",
+    "menu_sort_values": {
+      "age": "Найновіші",
+      "title": "за алфавітом",
+      "price": "Найдешевші"
+    },
+    "menu_items": "Продуктів на сторінці",
+    "menu_items_values": { "all": "всі" },
+    "search": "Я шукаю ..."
+  },
+
+  "product-card": {
+    "screen": "Екран",
+    "capacity": "Ємність",
+    "ram": "ОЗП",
+    "resolution": "Роздільність",
+    "processor": "Процесор",
+    "add_to_cart": "До кошика",
+    "item_added": "Товар додано"
+  },
+
+  "product-detail": {
+    "color_title": "Доступні кольори",
+    "capacity_title": "Виберіть місткість",
+    "tech_specs": "Технічні характеристики",
+    "about": "About",
+    "screen": "Екран",
+    "capacity": "Вбудована пам'ять",
+    "ram": "ОЗП",
+    "resolution": "Роздільна здатність",
+    "processor": "Процесор",
+    "camera": "Камера",
+    "zoom": "Зум",
+    "cell": "Мережі",
+    "may_like": "Тобі можливо сподобається",
+    "back": "Назад"
+  },
+
+  "favorites": {
+    "title": "Обране",
+    "items_one": "{{count}} пристрій",
+    "items_few": "{{count}} пристрої",
+    "items_many": "{{count}} пристроїв"
+  },
+
+  "cart": {
+    "title": "Корзина",
+    "checkout": "Оформити замовлення",
+    "items_one": "Всього за 1 товар",
+    "items_few": "Всього за {{ count }} товари",
+    "items_many": "Всього за {{ count }} товарів",
+    "empty_cart": "Твоя корзина пуста"
+  },
+
+  "messages": {
+    "phones": "Телефонів",
+    "tablets": "Планшетів",
+    "accessories": "Аксесуарів",
+    "wrong": "Щось пошло не так!",
+    "emptyList": "{{category}} поки що немає.",
+    "emptyQueryResult": "Немає {{category}}, що відповідають запиту.",
+    "reload": "Перезавантажити"
+  },
+
+  "dialog": {
+    "submit": "Прийняти",
+    "cancel": "Відхилити"
+  }
+}

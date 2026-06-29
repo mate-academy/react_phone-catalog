@@ -1,0 +1,54 @@
+@use './variables.scss' as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: $mobile-padding-inline;
+
+  @include on-tablet {
+    padding-inline: $tablet-padding-inline;
+  }
+
+  @include on-desktop {
+    max-width: $desktop-min-width;
+    padding-inline: $desktop-padding-inline;
+    margin-inline: auto;
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: $grid-gap-mobile;
+
+  @include on-tablet {
+    --columns: 12;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+
+@mixin hover($property, $to-value) {
+  /* stylelint-disable-next-line CssSyntaxError */
+  transition: #{$property} $hover_time_transition;
+
+  &:hover {
+    #{$property}: $to-value;
+  }
+}

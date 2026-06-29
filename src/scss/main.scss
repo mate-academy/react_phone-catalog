@@ -1,0 +1,36 @@
+@use './variables.scss' as *;
+@forward 'fonts';
+@forward 'mixins';
+@forward 'variables';
+@forward 'utils';
+@forward 'extends';
+@forward 'global';
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+dl,
+button,
+picture {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-width: $body-min-width;
+  color: $primary-color;
+  background-color: $body-background-color;
+}
+
+menu,
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}

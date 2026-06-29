@@ -1,0 +1,101 @@
+{
+  "nav": {
+    "home": "Home",
+    "phones": "Phones",
+    "tablets": "tablets",
+    "accessories": "Accessories"
+  },
+
+  "bread_crumps": {
+    "home": "Home",
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "favorites": "Favorites"
+  },
+
+  "home": {
+    "title": "Product Catalog",
+    "welcome_to_store": "Welcome to Nice Gadgets store!",
+    "brand_new": "Brand new models",
+    "hot_prices": "Hot prices",
+    "shop_by_category": "Shop by category",
+    "category_phones": "Mobile phones",
+    "category_tablets": "Tablets",
+    "category_accessories": "Accessories",
+    "models": "models"
+  },
+
+  "products_page": {
+    "phones": "Mobile phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "models": "{{count}} models",
+    "models_one": "1 model",
+    "menu_sort": "Sort by",
+    "menu_sort_values": {
+      "age": "Newest",
+      "title": "Alphabetically",
+      "price": "Cheapest"
+    },
+    "menu_items": "Items on page",
+    "menu_items_values": { "all": "all" },
+    "search": "I am searching ..."
+  },
+
+  "product-card": {
+    "screen": "screen",
+    "capacity": "Capacity",
+    "ram": "RAM",
+    "resolution": "Resolution",
+    "processor": "Processor",
+    "add_to_cart": "Add to cart",
+    "item_added": "Item added"
+  },
+
+  "product-detail": {
+    "color_title": "Available colors",
+    "capacity_title": "Select capacity",
+    "about": "About",
+    "tech_specs": "Tech specs",
+    "screen": "Screen",
+    "capacity": "Built in memory",
+    "ram": "RAM",
+    "resolution": "Resolution",
+    "processor": "Processor",
+    "camera": "Camera",
+    "zoom": "Zoom",
+    "cell": "Cell",
+    "may_like": "You may also like",
+    "back": "Back"
+  },
+
+  "favorites": {
+    "title": "Favorites",
+    "items": "{{count}} items",
+    "items_one": "1 item"
+  },
+
+  "cart": {
+    "title": "Cart",
+    "items": "Total for {{ count }} items",
+    "items_one": "Total for 1 item",
+    "checkout": "Checkout",
+    "empty_cart": "Your cart is empty"
+  },
+
+  "messages": {
+    "phones": "phones",
+    "tablets": "tablets",
+    "accessories": "accessories",
+    "wrong": "Something went wrong!",
+    "emptyList": "There are no {{category}} yet.",
+    "emptyQueryResult": "There are no {{category}} matching the query.",
+    "reload": "Reload"
+  },
+
+  "dialog": {
+    "submit": "Submit",
+    "cancel": "Cancel"
+  }
+}

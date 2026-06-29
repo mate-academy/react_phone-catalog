@@ -1,0 +1,40 @@
+@use '../../../scss/main.scss' as *;
+
+.modal {
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 500px;
+    padding: 24px;
+    box-sizing: border-box;
+
+    background: $body-background-color;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  &__footer {
+    height: 40px;
+    margin-top: 14px;
+    padding: 5px;
+    display: flex;
+    gap: 30%;
+    justify-content: space-around;
+  }
+}

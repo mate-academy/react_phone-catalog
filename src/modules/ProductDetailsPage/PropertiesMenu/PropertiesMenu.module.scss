@@ -1,0 +1,69 @@
+@use './../../../scss/main.scss' as *;
+
+.properties {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__title {
+    @extend %small-text;
+
+    display: block;
+    font-weight: 600;
+    color: $secondary-color;
+  }
+
+  &__menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__input {
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+  }
+
+  &__linkColor {
+    box-sizing: border-box;
+    display: block;
+
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    border: 1px solid $body-background-color;
+
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px $elements-color;
+
+    &_active {
+      pointer-events: none;
+
+      cursor: default;
+      box-shadow: 0 0 0 1px $primary-color;
+    }
+  }
+
+  &__linkCapacity {
+    @extend %body-text;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    padding: 8px 7px 4px;
+    cursor: pointer;
+    border: 1px solid $icon-color;
+
+    &_active {
+      color: $body-background-color;
+      pointer-events: none;
+
+      cursor: default;
+      background: $primary-color;
+    }
+  }
+}

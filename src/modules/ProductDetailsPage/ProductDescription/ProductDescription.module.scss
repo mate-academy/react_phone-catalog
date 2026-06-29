@@ -1,0 +1,46 @@
+@use '../../../scss/main.scss' as *;
+
+.description {
+  &__title {
+    @extend %h3;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    margin-top: 48px;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__title {
+    @extend %h4;
+
+    color: $primary-color;
+    font-weight: 700;
+
+    @include on-tablet {
+      font-weight: 700;
+    }
+
+    @include on-desktop {
+      font-weight: 600;
+    }
+  }
+
+  &__text {
+    @extend %body-text;
+
+    color: $secondary-color;
+
+    @include on-desktop {
+      font-weight: 500;
+    }
+  }
+}
