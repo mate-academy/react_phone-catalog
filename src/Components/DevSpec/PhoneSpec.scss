@@ -1,0 +1,658 @@
+@import '../../utils/mixins';
+
+.phone {
+  &__container {
+    margin-bottom: 80px;
+  }
+
+  &__path {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 41px;
+
+    gap: 8px;
+
+    &-phones {
+      margin: 0;
+
+      color: #F1F2F9;
+
+      font-family: 'Mont regular', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+
+      text-decoration: none;
+    }
+
+    &-name {
+      margin: 0;
+
+      color: #75767F;
+
+      font-family: 'Mont regular', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+    }
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+
+    text-decoration: none;
+    margin-bottom: 16px;
+
+    &-back {
+      margin: 0;
+
+      color: #F1F2F9;
+
+      font-family: 'Mont regular', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+  }
+
+  &__title {
+    margin: 0;
+
+    color: #F1F2F9;
+
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__images {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    flex-direction: row;
+    flex: 0 0 auto;
+
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      gap: 16px;
+      flex-direction: column;
+      margin-bottom: 0;
+    }
+  }
+
+  &__main-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    aspect-ratio: 1 / 1;
+
+    cursor: pointer;
+  }
+
+  &__image {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+
+    &-main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 464px;
+      min-width: 0;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+
+      margin-bottom: 16px;
+
+      @include on-tablet {
+        margin-bottom: 0;
+      }
+
+      &__first {
+        @include on-tablet {
+          display: none;
+        }
+      }
+
+      &__second {
+        display: none;
+
+      @include on-tablet {
+        width: 100%;
+        min-width: 287px;
+
+        display: flex;
+      }
+
+      @include on-desktop {
+        width: 100%;
+        min-width: 464px;
+
+        display: flex;
+      }
+    }
+  }
+
+    @include on-tablet {
+      min-width: 0;
+      flex-direction: row;
+      gap: 8px;
+    }
+  }
+
+  &__imgs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    border: 1px solid #3B3E4A;
+
+    height: 100%;
+    width: 100%;
+    min-width: 50px;
+    aspect-ratio: 1 / 1;
+    transition: 0.3s;
+
+    &:hover {
+      border: 1px solid #75767F;
+      transition: 0.3s;
+    }
+
+    &-active {
+      border: 1px solid #F1F2F9;
+      transition: 0.3s;
+    }
+
+    @include on-tablet {
+      height: 80px;
+      width: 80px;
+    }
+  }
+
+  &__img {
+    height: 100%;
+    padding: 5px;
+
+    @include on-tablet {
+      height: 66px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+
+    gap: 8px;
+
+    margin-bottom: 32px;
+  }
+
+  &__specs {
+    width: 100%;
+    max-width: 320px;
+
+    &-capacities {
+      display: flex;
+      gap: 8px;
+    }
+
+    &-border {
+      width: 100%;
+      height: 1px;
+      background-color: #3B3E4A;
+
+      margin-bottom: 25px;
+
+      // border: 1px solid #3B3E4A;
+    }
+
+    &-cap {
+      color: #75767F;
+
+      font-family: 'Mont regular', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+
+      &-text {
+        margin: 0;
+        margin-bottom: 8px;
+      }
+    }
+
+    &-capacity {
+      margin-bottom: 25px;
+
+      cursor: pointer;
+
+      color: #F1F2F9;
+
+      font-family: 'Mont regular', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+
+
+      width: 63px;
+      height: 32px;
+
+      border: 1px solid #4A4D58;
+
+      background-color: inherit;
+
+      &-active {
+        background-color: #fff;
+        color: #0F1121;
+      }
+    }
+  }
+  &__main {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 80px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 64px;
+      }
+    }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+
+    margin-bottom: 25px;
+
+    &-text {
+      margin: 0;
+
+      margin-bottom: 8px;
+
+      color: #75767F;
+
+      font-family: 'Mont regular', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+    }
+  }
+
+  &__color {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    height: 32px;
+    width: 32px;
+    border: 1px solid #3B3E4A;
+
+    border-radius: 50%;
+
+    transition: 0.3s;
+
+    &-active {
+      border: 1px solid #F1F2F9;
+    }
+
+    &-color {
+      height: 26px;
+      width: 26px;
+
+      border-radius: 50%;
+    }
+
+    &-beige {
+      background-color: #FCDBC1;
+    }
+
+    &-green {
+      background-color: #5F7170;
+    }
+
+    &-gray {
+      background-color: #4C4C4C;
+    }
+
+    &-white {
+      background-color: #F0F0F0;
+    }
+
+    &-purple {
+      background-color: #905BFF;
+    }
+
+    &-red {
+      background-color: #EB5757;
+    }
+
+    &-yellow {
+      background-color: #F2C94C;
+    }
+
+    &-black {
+      background-color: #000;
+    }
+
+    &-rosegold {
+      background-color: #B76E79;
+    }
+
+    &-gold {
+      background-color: #F2C94C;
+    }
+
+    &-silver {
+      background-color: #C0C0C0;
+    }
+
+    &-spacegray {
+      background-color: #808080;
+    }
+
+    &-coral {
+      background-color: #FF6F61;
+    }
+
+    &-midnight {
+      background-color: #1A1A1A;
+    }
+
+    &-graphite {
+      background-color: #4B4B4B;
+    }
+
+    &-sierrablue {
+      background-color: #5F9EA0;
+    }
+
+    &-pink {
+      background-color: #FF69B4;
+    }
+
+    &-blue {
+      background-color: #4169E1;
+    }
+
+    &:hover {
+      border: 1px solid #75767F;
+      transition: 0.3s;
+    }
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+
+    margin-bottom: 16px;
+
+    align-items: center;
+
+    &-full {
+      margin: 0;
+
+      color: #F1F2F9;
+
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+    }
+
+    &-discount {
+      margin: 0;
+
+      color: #75767F;
+
+      font-family: 'Mont semibold', sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 100%;
+      text-decoration: line-through;
+    }
+  }
+
+
+  &__add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    cursor: pointer;
+
+    width: 100%;
+    max-width: 263px;
+    height: 48px;
+
+    background-color: #905BFF;
+
+    color: #F1F2F9;
+
+    font-family: 'Mont regular', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    transition: 0.3s;
+
+    &-link {
+      text-decoration: none;
+
+      width: 100%;
+      height: 48px;
+    }
+
+    &-added {
+      background-color: #323542;
+    }
+
+    &:hover {
+      transition: 0.3s;
+      background-color: #A378FF;
+    }
+  }
+
+  &__fav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 48px;
+    width: 48px;
+
+    background-color: #323542;
+    border: 1px solid #323542;
+
+    cursor: pointer;
+    transition: 0.3s;
+
+    &-added {
+      background-color: transparent;
+      border: 1px solid #3B3E4A;
+
+      &:hover {
+        background-color: none;
+      }
+    }
+
+    &:hover {
+      transition: 0.3s;
+      background-color: #4A4D58;
+    }
+  }
+
+  &__specifications {
+    &-text {
+      margin: 0;
+
+      display: flex;
+      justify-content: space-between;
+
+      margin-bottom: 8px;
+
+      color: #75767F;
+
+      font-family: 'Mont regular', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+    }
+
+    &-span {
+      color: #F1F2F9;
+
+      font-family: 'Mont regular', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+    }
+  }
+
+  &__about {
+    width: 100%;
+    max-width: 560px;
+
+    &-border {
+      height: 1px;
+      width: 100%;
+
+      margin-bottom: 32px;
+
+      background-color: #3B3E4A;
+    }
+
+    &-title {
+      margin: 0;
+
+      color: #F1F2F9;
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+
+      margin-bottom: 16px;
+    }
+
+    &-article-title {
+      color: #F1F2F9;
+
+      font-family: 'Mont regular', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 100%;
+
+      margin-bottom: 16px;
+    }
+
+    &-article-subtitle {
+      color: #75767F;
+
+      font-family: 'Mont regular', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    &-article {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__tech {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    max-width: 560px;
+
+    &-title {
+      color: #F1F2F9;
+
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+
+      margin-bottom: 16px;
+    }
+
+    &-border {
+      width: 100%;
+      height: 1px;
+
+      margin-bottom: 25px;
+
+      background-color: #3B3E4A;
+    }
+
+     &-text {
+      display: flex;
+
+      margin: 0;
+
+      justify-content: space-between;
+
+      color: #75767F;
+
+      font-family: 'Mont regular', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+
+      margin-bottom: 8px;
+    }
+
+    &-span {
+      color: #F1F2F9;
+
+      font-family: 'Mont regular', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+
+    margin-bottom: 80px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 64px;
+    }
+  }
+
+  &__footer {
+    &-fixed {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+
+      background-color: #0F1121;
+    }
+  }
+}

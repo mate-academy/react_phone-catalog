@@ -1,0 +1,409 @@
+@import '../../utils/mixins';
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  place-items: center;
+  min-height: 100vh;
+  min-width: 100%;
+
+  &__items {
+    width: 100%;
+    flex: 2 1 0;
+    min-width: 0;
+
+    &-empty {
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+
+      @include on-tablet {
+        font-size: 48px;
+        line-height: 56px;
+      }
+    }
+  }
+
+  &__header {
+    width: 100%;
+  }
+
+  &__content {
+    @include content-padding-inline;
+
+    width: 100%;
+
+    margin-bottom: 56px;
+
+    margin-inline: 16px;
+
+    @include on-tablet {
+      margin-inline: 24px;
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 0;
+      margin-inline: 32px;
+    }
+  }
+
+  &__path {
+    margin-top: 25px;
+    margin-bottom: 40px;
+
+    display: flex;
+    gap: 8px;
+    text-align: center;
+    align-items: center;
+
+    &-name {
+      color: #75767F;
+      font-family: Mont, sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+    }
+  }
+
+  &__sub {
+    margin-top: 8px;
+    font-family: 'Mont Regular', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #75767F;
+
+    margin-bottom: 32px;
+  }
+
+  &__footer {
+    position: relative;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 40px;
+  }
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    width: 100%;
+
+    margin-bottom: 80px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+
+    width: 100%;
+    background-color: #161827;
+    justify-content: space-between;
+
+    border: #161827 solid 1px;
+
+    // padding-left: 25px;
+    // padding-right: 25px;
+
+    max-width: none;
+
+    text-decoration: none;
+    color: #F1F2F9;
+
+    transition: 0.3s;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 24px;
+      align-items: center;
+    }
+
+    &:hover {
+      border: #323542 solid 1px;
+      transition: 0.3s;
+    }
+  }
+
+  &__right {
+    flex: 0 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+
+    @include on-tablet {
+      justify-content: end;
+    }
+  }
+
+  &__left {
+    gap: 16px;
+    display: flex;
+    align-items: center;
+    flex: 1 1 auto;
+    min-width: 0;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__img {
+    flex: 0 0 auto;
+  }
+
+  &__image {
+    height: 80px;
+    width: auto;
+    display: block;
+  }
+
+  &__title {
+    margin: 0;
+
+    font-family: 'Mont Regular', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+
+    flex: 1 1 auto;
+  }
+
+  &__quantity {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    &-button {
+      cursor: pointer;
+
+      display: flex;
+      height: 32px;
+      width: 32px;
+      background-color: #323542;
+      align-items: center;
+      justify-content: center;
+
+      @include on-tablet {
+        width: auto;
+        min-width: 32px;
+        padding: 0 8px;
+      }
+
+      border: #161827 solid 1px;
+
+      &--disabled {
+        cursor: not-allowed;
+        background-color: transparent;
+        border: #3B3E4A solid 1px;
+
+        opacity: 0.5;
+      }
+
+      &:hover:not(.cart__quantity-button--disabled) {
+        background-color: #4A4D58;
+        transition: 0.3s;
+      }
+    }
+  }
+
+  &__price {
+    margin-inline: 0;
+
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    text-align: right;
+
+    @include on-tablet {
+      margin-inline: 24px;
+    }
+  }
+
+  &__delete {
+    padding: 0;
+
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: transparent;
+    border: none;
+
+    width: 32px !important;
+    height: 32px;
+
+    transition: 0.3s;
+
+    &-icon {
+      display: flex;
+      width: 16px;
+      height: 16px;
+      color: #F1F2F9;
+    }
+  }
+
+  &__container {
+    @include on-desktop {
+      display: flex;
+      align-items: top;
+      gap: 16px;
+    }
+
+  }
+
+  &__total {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 206px;
+    padding-inline: 24px;
+    width: auto;
+
+    border: #3B3E4A solid 1px;
+
+    justify-content: center;
+    align-items: center;
+
+    display: flex;
+    flex-direction: column;
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+
+    &-subtotal {
+      color: #75767F;
+      font-family: 'Mont Regular', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+
+      margin-bottom: 25px;
+    }
+
+    &-none {
+      display: none;
+    }
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: #3B3E4A;
+
+    margin-bottom: 25px;
+  }
+
+  &__checkout {
+    color: #F1F2F9;
+
+    width: 100%;
+    height: 48px;
+    background-color: #905BFF;
+
+    font-family: 'Mont Regular', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      transition: 0.3s;
+      background-color: #A378FF;
+    }
+  }
+
+  &__check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    &-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+
+      padding-inline: 24px;
+
+      width: 400px;
+      height: 230px;
+
+      background-color: transparent;
+      border: #3B3E4A solid 1px;
+    }
+
+    &-title {
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+
+      margin-bottom: 10px;
+    }
+
+    &-close {
+      width: 120px;
+      height: 48px;
+
+      background-color: #905BFF;
+
+      font-family: 'Mont Regular', sans-serif;
+      color: #F1F2F9;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        transition: 0.3s;
+        background-color: #A378FF;
+      }
+    }
+  }
+
+  &__title-cart {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+}

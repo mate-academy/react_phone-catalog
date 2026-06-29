@@ -1,0 +1,45 @@
+.new__models {
+  &-arr {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &-title {
+    width: 136px;
+
+    @include on-tablet {
+      width: 100%;
+    }
+  }
+
+  &-arrows {
+    display: flex;
+    gap: 16px;
+  }
+
+  &-arrow {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    background-color: #323542;
+    border: 1px solid #3B3E4A;
+    transition: 0.3s;
+
+    &-disabled {
+      background-color: transparent;
+      cursor: not-allowed;
+      opacity: 0.5;
+      border-color: #3B3E4A;
+    }
+
+    &:hover {
+      background-color: #4A4D58;
+      border-color: #525761;
+      transition: 0.3s;
+    }
+  }
+}

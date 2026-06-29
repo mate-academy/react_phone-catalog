@@ -1,0 +1,157 @@
+
+@import '../../utils/mixins';
+
+.footer {
+  width: 100%;
+  min-height: auto;
+
+  @include on-tablet {
+    height: 96px;
+  }
+
+  &__navs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+
+    @include on-tablet {
+      display: flex;
+      width: auto;
+      flex-direction: row;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__line {
+    margin: 0;
+    border: 0.5px solid #323542;
+  }
+
+  &__container {
+    @include content-padding-inline;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    margin-top: 16px;
+    margin-bottom: 16px;
+    align-items: center;
+    justify-content: center;
+
+    @include on-tablet {
+      flex-direction: row;
+      display: flex;
+      gap: 32px;
+      margin-top: 30px;
+      height: 100%;
+      justify-content: space-between;
+    }
+
+    &-link {
+      font-family: 'Mont semibold', sans-serif;
+      color: #F1F2F9;
+      font-weight: 800;
+      font-size: 10px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: 0.3s;
+
+      &:hover {
+        color: #A378FF;
+        transition: 0.3s;
+      }
+
+      @include on-tablet {
+        font-size: 12px;
+      }
+    }
+
+    &-list {
+      list-style: none;
+      display: flex;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+
+    @include on-tablet {
+      width: auto;
+      justify-content: left;
+    }
+
+    &-img {
+      height: 24px;
+
+      @include on-tablet {
+        height: 32px;
+      }
+    }
+  }
+
+  &__back {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 0;
+    flex-direction: column-reverse;
+    width: 100%;
+
+    @include on-tablet {
+      margin-bottom: 0;
+      flex-direction: row;
+      gap: 16px;
+      justify-content: flex-end;
+      width: auto;
+    }
+    &-text {
+      color: #75767F;
+      font-family: 'Mont regular', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-align: center;
+
+      @include on-tablet {
+        font-size: 12px;
+        text-align: right;
+      }
+    }
+
+    &-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+      border: 0;
+      height: 32px;
+      width: 32px;
+      background-color: #323542;
+      transition: 0.3s;
+
+      &-img {
+        height: 16px;
+      }
+
+      &:hover {
+        background-color: #4A4D58;
+        transition: 0.3s;
+      }
+    }
+  }
+}

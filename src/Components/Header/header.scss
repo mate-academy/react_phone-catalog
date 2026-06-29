@@ -1,0 +1,213 @@
+
+@import '../../utils/mixins';
+
+.header {
+  display: grid;
+  align-items: center;
+  min-height: 48px;
+  box-shadow: 0 1px #323542;
+  padding-left: 16px;
+
+  align-content: center;
+
+  @include on-tablet {
+    padding-left: 24px;
+  }
+
+  @include on-desktop {
+    height: 64px;
+    padding-left: 24px;
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    @include on-tablet {
+      display: none;
+    }
+
+     &-img {
+      height: 16px;
+     }
+  }
+
+  &__container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__vectors {
+    display: none;
+    min-height: 48px;
+    min-width: 48px;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      justify-content: right;
+    }
+
+    @include on-desktop {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 64px;
+      min-width: 64px;
+    }
+
+    &-selected {
+      &::after {
+        content: '';
+        display: block;
+
+        width: 100%;
+        height: 3px;
+        background: #F1F2F9;
+
+        animation: slide-in-right 0.5s ease-out;
+
+        @include on-tablet {
+          position: relative;
+          top: 0;
+        }
+
+        @include on-desktop {
+          position: static;
+          left: 0;
+          top: 200px;
+          bottom: 0;
+        }
+      }
+    }
+  }
+
+  &__fav {
+    &-img {
+      height: 16px;
+    }
+  }
+
+  &__button {
+    display: none;
+    height: 48px;
+    width: 48px;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @include on-desktop {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 64px;
+      width: 64px;
+    }
+
+    cursor: pointer;
+    background-color: #0F1121;
+
+    border: none;
+
+    align-content: center;
+    box-shadow: -1px 0 #323542;
+
+    &-menu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__count {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    align-items: center;
+
+    border: 1px #0F1121 solid;
+    text-align: center;
+
+    border-radius: 50%;
+
+    width: 14px;
+    height: 14px;
+    background-color: #EB5757;
+
+    @include on-tablet {
+      top: 10px;
+      right: 10px;
+    }
+
+    @include on-desktop {
+      top: 18px;
+      right: 18px;
+    }
+
+    &-fav {
+      right: 81px;
+    }
+
+    &-number {
+      color: #F1F2F9;
+
+      font-family: 'Mont regular', sans-serif;
+      font-weight: 700;
+      font-size: 9px;
+      line-height: 100%;
+      text-align: center;
+    }
+
+    &-left {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px #0F1121 solid;
+
+      position: absolute;
+
+      @include on-tablet {
+        top: -1px;
+        right: 48px;
+      }
+
+      @include on-desktop {
+        top: -1px;
+        right: 63px;
+      }
+
+      width: 14px;
+      height: 14px;
+
+      background-color: #EB5757;
+      border-radius: 50%;
+
+    }
+  }
+
+  &__basket {
+    &-img {
+      height: 16px;
+    }
+
+  }
+}
+
+@keyframes slide-in-right {
+   from {
+       transform:scaleX(0);
+       opacity: 0;
+   }
+   to {
+       transform: scaleX(100%);
+       opacity: 1;
+   }
+}

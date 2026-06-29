@@ -1,0 +1,157 @@
+.filter {
+  display: flex;
+  gap: 16px;
+
+  margin-bottom: 24px;
+
+  &__number {
+    position: absolute;
+    z-index: 10;
+
+    display: flex;
+    flex-direction: column;
+
+    border: #323542 1px solid;
+
+    &-option {
+      cursor: pointer;
+
+      height: 40px;
+      width: 128px;
+
+      color: #75767F;
+      font-family: 'Mont Regular', sans-serif;
+      text-align: left;
+
+      border: none;
+      padding-left: 12px;
+
+      background-color: #0F1121;
+
+      transition: 0.3s;
+
+      &:hover {
+        color: #F1F2F9;
+        background-color: #323542;
+        transition: 0.3s;
+      }
+    }
+  }
+
+  &__options {
+    opacity: 0;
+    z-index: -10;
+    transform: translateX(-200px);
+
+    border: 1px solid #323542;
+
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+
+    background-color: #0F1121;
+    transition: 0.5s;
+
+    &-active {
+      transition: 0.5s;
+      opacity: 1;
+      z-index: 10;
+      transform: translateX(0);
+    }
+  }
+
+  &__option {
+    padding-left: 12px;
+
+    cursor: pointer;
+
+    background-color: #0F1121;
+
+    height: 32px;
+    width: 174px;
+
+    border: none;
+
+    color: #75767F;
+    font-family: "Mont Regular", sans-serif;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    transition: 0.3s;
+
+    &:hover {
+      color: #F1F2F9;
+      background-color: #323542;
+      transition: 0.3s;
+    }
+
+    &-first {
+      padding-top: 8px;
+    }
+
+    &-last {
+      padding-bottom: 8px;
+    }
+  }
+
+  &__newest {
+    &-title {
+      color: #75767F;
+      margin-bottom: 4px;
+
+      font-family: "Mont Regular", sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+    }
+
+    &-checkbox {
+      z-index: 15;
+
+      height: 40px;
+      width: 176px;
+
+      cursor: pointer;
+
+      color: #F1F2F9;
+
+      font-family: "Mont Regular", sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+
+      padding-left: 12px;
+
+      background-color: #323542;
+      border: 1px solid #323542;
+
+
+      margin-bottom: 4px;
+      transition: 0.3s;
+
+      &-number {
+        width: 128px;
+      }
+
+      &-active {
+        transition: 0.3s;
+        border: 1px solid #905BFF;
+      }
+    }
+
+    &-option {
+      display: flex;
+      justify-content: space-between;
+
+      &-arrow {
+        transition: 0.3s;
+          &-active {
+          transition: 0.3s;
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}
