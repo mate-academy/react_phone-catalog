@@ -2,13 +2,19 @@ import { NavLink } from 'react-router-dom';
 
 import styles from './HeaderActions.module.scss';
 import { asset } from '../../../utils/paths';
+import { useFavorites } from '../../../context/FavoritesContext';
+import { useCart } from '../../../context/CartContext';
 
-type Props = {
-  favouritesCount: number;
-  cartCount: number;
-};
+export const HeaderActions = () => {
+  const { favoriteIds } = useFavorites();
+  const { cart } = useCart();
 
-export const HeaderActions = ({ favouritesCount, cartCount }: Props) => {
+  const totalItems = cart.reduce(
+    (sum, item) => sum + Number(item.quantity ?? 0),
+    0,
+  );
+  // console.log('cart', cart);
+
   return (
     <>
       <NavLink
@@ -17,7 +23,7 @@ export const HeaderActions = ({ favouritesCount, cartCount }: Props) => {
       >
         <span className={styles.iconWrapper}>
           <img src={asset('img/icons/favourites.svg')} alt="favorites" />
-          <span className={styles.badge}>{favouritesCount}</span>
+          <span className={styles.badge}>{favoriteIds.length}</span>
         </span>
       </NavLink>
       <NavLink
@@ -26,7 +32,7 @@ export const HeaderActions = ({ favouritesCount, cartCount }: Props) => {
       >
         <span className={styles.iconWrapper}>
           <img src={asset('img/icons/shopping-bag.svg')} alt="shopping-bag" />
-          <span className={styles.badge}>{cartCount}</span>
+          <span className={styles.badge}>{totalItems}</span>
         </span>
       </NavLink>
     </>

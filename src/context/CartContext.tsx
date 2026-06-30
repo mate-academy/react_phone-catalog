@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 type CartItem = {
   id: string;
@@ -7,26 +7,56 @@ type CartItem = {
 
 type CartContextType = {
   cart: CartItem[];
-  addToCart: (id: string) => void;
-  removeFromCart: (id: string) => void;
-};
 
-type Props = {
-  children: ReactNode;
+  addToCart: (id: string) => void;
+  decreaseFromCart: (id: string) => void;
+  removeFromCart: (id: string) => void;
+  clearCart: () => void;
+
+  isInCart: (id: string) => boolean;
 };
 
 const CartContext = createContext<CartContextType | null>(null);
 
-export const CartProvider = ({ children }: Props) => {
-  const [cart, setCart] = useState<CartItem[]>([]);
+export const CartProvider: React.FC<{
+  children: React.ReactNode;
+}> = ({ children }) => {
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    const saved = localStorage.getItem('cart');
+
+    if (!saved) {
+      return [];
+    }
+
+    try {
+      const parsed = JSON.parse(saved);
+
+      if (
+        Array.isArray(parsed) &&
+        parsed.every(
+          item =>
+            typeof item === 'object' &&
+            item !== null &&
+            typeof item.id === 'string' &&
+            typeof item.quantity === 'number',
+        )
+      ) {
+        return parsed;
+      }
+
+      return [];
+    } catch {
+      return [];
+    }
+  });
 
   const addToCart = (id: string) => {
     setCart(prev => {
-      const exists = prev.find(item => item.id === id);
+      const item = prev.find(i => i.id === id);
 
-      if (exists) {
-        return prev.map(item =>
-          item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
+      if (item) {
+        return prev.map(i =>
+          i.id === id ? { ...i, quantity: i.quantity + 1 } : i,
         );
       }
 
@@ -34,23 +64,52 @@ export const CartProvider = ({ children }: Props) => {
     });
   };
 
+  const decreaseFromCart = (id: string) => {
+    setCart(prev =>
+      prev
+        .map(i => (i.id === id ? { ...i, quantity: i.quantity - 1 } : i))
+        .filter(i => i.quantity > 0),
+    );
+  };
+
   const removeFromCart = (id: string) => {
-    setCart(prev => prev.filter(item => item.id !== id));
+    setCart(prev => prev.filter(i => i.id !== id));
+  };
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
+  const isInCart = (id: string) => {
+    return cart.some(item => item.id === id);
+  };
+
+  const clearCart = () => {
+    setCart([]);
   };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        decreaseFromCart,
+        removeFromCart,
+        clearCart,
+        isInCart,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
 };
 
 export const useCart = () => {
-  const ctx = useContext(CartContext);
+  const context = useContext(CartContext);
 
-  if (!ctx) {
-    throw new Error('useCart must be used inside provider');
+  if (!context) {
+    throw new Error('useCart must be used within CartProvider');
   }
 
-  return ctx;
+  return context;
 };

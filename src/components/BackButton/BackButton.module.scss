@@ -1,0 +1,16 @@
+.breadcrumbs__back {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  margin-bottom: 16px;
+
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--secondary);
+}
+.breadcrumb__back {
+  background-image: url('/react_phone-catalog/img/icons/arrow-left-action.svg');
+  width: 16px;
+  height: 16px;
+}

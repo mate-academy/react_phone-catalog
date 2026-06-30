@@ -68,15 +68,11 @@
   line-height: 140%;
 }
 .discount {
-  // font-family: Mont;
   color: var(--secondary);
    text-decoration: line-through;
   font-weight: 600;
   font-size: 22px;
-  // leading-trim: NONE;
   line-height: 100%;
-  // letter-spacing: 0%;
-  // text-decoration: line-through;
 }
 
 .specs {
@@ -106,79 +102,3 @@
 .spec span:last-child {
   color: #0f0f11;
 }
-
-// .cardButtons {
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   gap: 8px;
-//   margin-top: auto;
-// }
-
-// .buttonAddToCart {
-//   flex: 1;
-//   height: 40px;
-
-//   border: none;
-//   background: var(--accent);
-//   color: #fff;
-
-//   cursor: pointer;
-
-//   transition: box-shadow 0.3s ease;
-
-//   border-radius: 8px;
-
-//   &:hover {
-//     box-shadow: 0px 3px 13px 0px #17203166;
-//   }
-// }
-// .buttonPrimary {
-//   background: var(--accent);
-// }
-
-// .buttonSelected {
-//   background: #e2e6e9;
-//   color: var(--accent);
-//   border: 1px solid #e2e6e9;
-// }
-
-// .buttonAddFavorites {
-//   max-height: 40px;
-//   width: 40px;
-//   height: 40px;
-
-//   // flex-shrink: 0;
-
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-
-//   border-radius: 50%;
-//   border: 1px solid #b4bdc3;
-
-//   background: #fff;
-
-//   cursor: pointer;
-
-//   transition: all 0.3s ease;
-// }
-
-// .buttonAddFavorites:hover {
-//   border: 1px solid #0f0f11;
-// }
-
-// .selected {
-//   // background: #476df4;
-//   border: 1px solid #e2e6e9;
-// }
-
-// .heart {
-//   width: 16px;
-//   height: 16px;
-
-//   // background-image: url('/img/icons/heart.svg');
-//   background-repeat: no-repeat;
-//   background-position: center;
-//   background-size: contain;
-// }

@@ -1,15 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import styles from './HeaderBurgerMenu.module.scss';
-import { Dispatch, SetStateAction } from 'react';
-// import { asset } from '../../../utils/paths';
 import { HeaderActions } from '../HeaderActions/HeaderActions';
 
-type Props = {
-  setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
-};
-
-export const HeaderBurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
-  // const [isMenuOpen, setIsMenuOpen] = useState(false);
+export const HeaderBurgerMenu = () => {
   return (
     <aside className={`${styles.mobileMenu}`}>
       <nav className={`${styles.mobileNav}`}>
@@ -20,7 +13,6 @@ export const HeaderBurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
               className={({ isActive }) =>
                 `${styles.nav__link} ${isActive ? styles.active : ''}`
               }
-              onClick={() => setIsMenuOpen(false)}
             >
               Home
             </NavLink>
@@ -32,7 +24,6 @@ export const HeaderBurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
               className={({ isActive }) =>
                 `${styles.nav__link} ${isActive ? styles.active : ''}`
               }
-              onClick={() => setIsMenuOpen(false)}
             >
               Phones
             </NavLink>
@@ -44,7 +35,6 @@ export const HeaderBurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
               className={({ isActive }) =>
                 `${styles.nav__link} ${isActive ? styles.active : ''}`
               }
-              onClick={() => setIsMenuOpen(false)}
             >
               Tablets
             </NavLink>
@@ -56,7 +46,6 @@ export const HeaderBurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
               className={({ isActive }) =>
                 `${styles.nav__link} ${isActive ? styles.active : ''}`
               }
-              onClick={() => setIsMenuOpen(false)}
             >
               Accessories
             </NavLink>
@@ -65,7 +54,7 @@ export const HeaderBurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
       </nav>
 
       <div className={styles.mobileActions}>
-        <HeaderActions favouritesCount={12} cartCount={5} />
+        <HeaderActions />
       </div>
     </aside>
   );

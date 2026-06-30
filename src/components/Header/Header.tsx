@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { useEffect, useState } from 'react';
 import { asset } from '../../utils/paths';
@@ -8,6 +8,11 @@ import { HeaderActions } from './HeaderActions/HeaderActions';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -52,7 +57,7 @@ export const Header = () => {
         </div>
 
         <div className={styles.headerRight}>
-          <HeaderActions favouritesCount={12} cartCount={5} />
+          <HeaderActions />
         </div>
 
         <button
@@ -69,7 +74,7 @@ export const Header = () => {
         </button>
       </header>
 
-      {isMenuOpen && <HeaderBurgerMenu setIsMenuOpen={setIsMenuOpen} />}
+      {isMenuOpen && <HeaderBurgerMenu />}
     </>
   );
 };

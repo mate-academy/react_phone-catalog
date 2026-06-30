@@ -7,6 +7,7 @@ import { getAccessories, getPhones, getTablets } from '../../../services/api';
 import { Phone } from '../../../types/Phone';
 import { Tablet } from '../../../types/Tablet';
 import { Accessory } from '../../../types/Accessory';
+import { BackButton } from '../../../components/BackButton/BackButton';
 
 type ProductUnionType = Phone | Tablet | Accessory;
 
@@ -105,16 +106,7 @@ export const Breadcrumbs: React.FC = () => {
         )}
       </div>
 
-      {modelName && (
-        <>
-          <div className={styles.breadcrumbs__back}>
-            <span className={styles.breadcrumb__back}></span>
-            <Link to={backPath} className={styles.breadcrumbs__backLink}>
-              Back
-            </Link>
-          </div>
-        </>
-      )}
+      {modelName && <BackButton />}
     </div>
   );
 };

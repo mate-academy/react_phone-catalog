@@ -55,7 +55,7 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
 
   const currentPage = Math.max(1, Number(searchParams.get('page')) || 1);
 
-  const perPageParam = searchParams.get('perPage') || 'all';
+  const perPageParam = searchParams.get('perPage') || '8';
 
   const itemsPerPage =
     perPageParam === 'all' || isNaN(Number(perPageParam))

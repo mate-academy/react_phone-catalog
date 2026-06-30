@@ -1,11 +1,11 @@
-import { useState } from 'react';
 import styles from './ProductCard.module.scss';
-// import './styles/global.scss';
 import { asset } from '../../utils/paths';
 import { NavLink } from 'react-router-dom';
-// import { mapProductToUIProduct } from '../../utils/mapProductToUIProduct';
+
 import { ProductCardItem } from '../../types/ProductCardItem';
 import { CardButton } from './CardButton/CardButton';
+import { useFavorites } from '../../context/FavoritesContext';
+import { useCart } from '../../context/CartContext';
 
 type Props = ProductCardItem & {
   showDiscount?: boolean;
@@ -23,8 +23,8 @@ export const ProductCard: React.FC<Props> = ({
   capacity,
   ram,
 }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [isInCart, setIsInCart] = useState(false);
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const { addToCart, removeFromCart, isInCart } = useCart();
 
   return (
     <article className={styles.card}>
@@ -70,39 +70,18 @@ export const ProductCard: React.FC<Props> = ({
           </li>
         </ul>
       </div>
-      {/*
-      <div className={styles.cardButtons}>
-        <button className={styles.buttonAddToCart}>Add to cart</button>
-
-        <button
-          type="button"
-          aria-label="Add to favorites"
-          onClick={() => setIsFavorite(prev => !prev)}
-          className={`${styles.buttonAddFavorites} ${
-            isFavorite ? styles.selected : ''
-          }`}
-        >
-          <span
-            // className={`${styles.heart} ${
-            //   isFavorite ? styles.heartSelected : ''
-            // }`}
-            className={styles.heart}
-            style={{
-              backgroundImage: `url(${asset(
-                isFavorite
-                  ? 'img/icons/heart-filled.svg'
-                  : 'img/icons/heart.svg',
-              )})`,
-            }}
-          />
-        </button>
-      </div> */}
 
       <CardButton
-        isFavorite={isFavorite}
-        isInCart={isInCart}
-        onToggleFavorite={() => setIsFavorite(prev => !prev)}
-        onToggleCart={() => setIsInCart(prev => !prev)}
+        isFavorite={isFavorite(id)}
+        isInCart={isInCart(id)}
+        onToggleFavorite={() => toggleFavorite(id)}
+        onToggleCart={() => {
+          if (isInCart(id)) {
+            removeFromCart(id);
+          } else {
+            addToCart(id);
+          }
+        }}
       />
     </article>
   );

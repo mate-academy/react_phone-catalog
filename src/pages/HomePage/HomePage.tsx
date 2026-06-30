@@ -46,12 +46,6 @@ export const HomePage = () => {
 
   const hotPhones = phonesApi;
 
-  // useEffect(() => {
-  //   fetch(`${import.meta.env.BASE_URL}api/phones.json`)
-  //     .then(res => res.json())
-  //     .then(setPhones);
-  // }, []);
-
   return (
     <main className={styles.home}>
       {/* Slider */}

@@ -13,6 +13,8 @@ import { CardButton } from '../../components/ProductCard/CardButton/CardButton';
 import { ProductSlider } from '../../components/ProductSlider/ProductSlider';
 import { useProducts } from '../../hooks/useProducts';
 import { mapProductToCard } from '../../utils/mapProductToCard';
+import { useFavorites } from '../../context/FavoritesContext';
+import { useCart } from '../../context/CartContext';
 
 export const ProductDetailsPage = () => {
   const { category, productId } = useParams();
@@ -39,8 +41,11 @@ export const ProductDetailsPage = () => {
 
   const [activeImage, setActiveImage] = useState(0);
 
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [isInCart, setIsInCart] = useState(false);
+  // const [isFavorite, setIsFavorite] = useState(false);
+  const { isFavorite, toggleFavorite } = useFavorites();
+  // const [isInCart, setIsInCart] = useState(false);
+  // const { toggleCart, isInCart } = useCart();
+  const { addToCart, removeFromCart, isInCart } = useCart();
 
   const { products } = useProducts();
   const recommendedProducts = useMemo(() => {
@@ -81,6 +86,8 @@ export const ProductDetailsPage = () => {
 
     return products.find(p => p.itemId === product.id);
   }, [products, product]);
+
+  const itemId = catalogProduct?.itemId;
 
   const handleColorChange = (selectedColor: string) => {
     if (!product) {
@@ -125,7 +132,7 @@ export const ProductDetailsPage = () => {
   }
 
   return (
-    <section className={styles.details}>
+    <div className={styles.details}>
       <Breadcrumbs />
 
       <h1 className={styles.title}>{product.name}</h1>
@@ -171,10 +178,24 @@ export const ProductDetailsPage = () => {
           </div>
 
           <CardButton
-            isFavorite={isFavorite}
-            isInCart={isInCart}
-            onToggleFavorite={() => setIsFavorite(prev => !prev)}
-            onToggleCart={() => setIsInCart(prev => !prev)}
+            isFavorite={itemId ? isFavorite(itemId) : false}
+            isInCart={itemId ? isInCart(itemId) : false}
+            onToggleFavorite={() => {
+              if (itemId) {
+                toggleFavorite(itemId);
+              }
+            }}
+            onToggleCart={() => {
+              if (!itemId) {
+                return;
+              }
+
+              if (isInCart(itemId)) {
+                removeFromCart(itemId);
+              } else {
+                addToCart(itemId);
+              }
+            }}
           />
 
           <ul className={styles.shortSpecs}>
@@ -275,6 +296,6 @@ export const ProductDetailsPage = () => {
         items={recommendedProducts}
         showDiscount={true}
       />
-    </section>
+    </div>
   );
 };
