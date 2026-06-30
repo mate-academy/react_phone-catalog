@@ -4,6 +4,8 @@
   position: fixed;
   inset-inline: 0;
   top: var(--header-height);
+  bottom: var(--header-height);
+  overflow-y: auto;
   display: none;
   background-color: var(--color-white);
   border-top: 1px solid var(--color-elements);
@@ -13,6 +15,8 @@
     position: static;
     inset-inline: auto;
     top: auto;
+    bottom: auto;
+    overflow-y: visible;
     display: block;
     background: none;
     border: none;
@@ -27,29 +31,43 @@
 .list {
   display: flex;
   flex-direction: column;
-  padding-inline: var(--space-sm);
+  align-items: center;
+  gap: var(--space-sm);
+  padding-top: var(--space-md);
+  padding-inline: 0;
 
   @include tablet-up {
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
+    height: var(--header-height);
     gap: var(--space-md);
+    padding-top: 0;
     padding-inline: 0;
+  }
+
+  @include desktop-up {
+    gap: var(--space-lg);
   }
 }
 
 .item {
-  border-bottom: 1px solid var(--color-elements);
+  display: flex;
+  justify-content: center;
 
   @include tablet-up {
-    border-bottom: none;
+    align-items: stretch;
   }
 }
 
 .link {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  height: 56px;
+  justify-content: center;
+  min-height: 27px;
+  line-height: var(--lh-uppercase);
+  padding-top: var(--space-xs);
+  padding-bottom: var(--mobile-nav-link-bottom-gap);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -63,23 +81,31 @@
 
   @include tablet-up {
     height: var(--header-height);
+    min-height: 0;
+    padding-block: 0;
     padding-inline: var(--space-2xs);
+  }
+
+  @include desktop-up {
+    height: 64px;
   }
 }
 
 .linkActive {
   color: var(--color-primary);
 
-  @include tablet-up {
-    &::after {
-      position: absolute;
+  &::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    content: '';
+    background-color: var(--color-primary);
+
+    @include tablet-up {
       bottom: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      content: '';
-      background-color: var(--color-accent);
-      border-radius: var(--radius-sm);
+      height: 3px;
     }
   }
 }

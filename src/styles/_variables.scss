@@ -36,13 +36,15 @@
   --space-lg: 32px;
   --space-xl: 48px;
   --space-2xl: 64px;
+  --mobile-nav-link-bottom-gap: 8px;
+  --radius-none: 0;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-full: 50%;
   --shadow-card: 0 2px 16px rgb(0 0 0 / 10%);
   --transition: 0.2s ease-in-out;
   --container-width: 1136px;
-  --header-height: 64px;
+  --header-height: 48px;
   --z-header: 100;
   --z-modal: 1000;
 }
@@ -58,6 +60,12 @@
     --lh-h3: 31px;
     --fs-h4: 20px;
     --lh-h4: 26px;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --header-height: 64px;
   }
 }
 

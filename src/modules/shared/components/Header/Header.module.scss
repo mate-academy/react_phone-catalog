@@ -1,3 +1,4 @@
+@import '../../../../styles/variables';
 @import '../../../../styles/mixins';
 
 .header {
@@ -10,52 +11,96 @@
 
 .row {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
   height: var(--header-height);
 
-  @include container;
-}
-
-.logo {
-  flex-shrink: 0;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--color-primary);
-  transition: opacity var(--transition);
-
-  &:hover {
-    opacity: 0.7;
+  @include desktop-up {
+    height: 64px;
   }
 }
 
-.logoAccent {
-  color: var(--color-accent);
+.left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  gap: var(--space-sm);
+  padding-inline-start: var(--space-sm);
+
+  @include tablet-up {
+    gap: var(--space-md);
+    padding-inline-start: var(--space-md);
+  }
+
+  @include desktop-up {
+    padding-inline-start: 32px;
+  }
 }
 
-.nav {
+.logo {
   display: flex;
-  flex: 1;
-  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent-secondary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+}
+
+.logoImg {
+  display: block;
+  height: 22px;
+  width: auto;
+
+  @include desktop-up {
+    height: 24px;
+  }
 }
 
 .actions {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   flex-shrink: 0;
-  gap: var(--space-xs);
+  border-left: 1px solid var(--color-elements);
+}
+
+.desktopActions {
+  display: none;
+  align-self: stretch;
+  align-items: stretch;
+
+  @include tablet-up {
+    display: flex;
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  display: inline-flex;
 }
 
 .iconButton {
-  position: relative;
+  @include nav-action-button(var(--header-height));
 
-  @include icon-button(40px);
+  @include desktop-up {
+    width: 64px;
+    height: 64px;
+  }
+
+  &+& {
+    border-left: 1px solid var(--color-elements);
+  }
 }
 
 .iconButtonActive {
-  color: var(--color-accent);
-  border-color: var(--color-accent);
+  color: var(--color-accent-secondary);
+
+  &:hover {
+    color: var(--color-accent-secondary);
+  }
 }
 
 .badge {
@@ -70,14 +115,84 @@
   line-height: 16px;
   color: var(--color-white);
   text-align: center;
-  background-color: var(--color-accent);
+  background-color: var(--color-accent-secondary);
+  border: 1.5px solid var(--color-white);
   border-radius: var(--radius-full);
+  pointer-events: none;
 }
 
 .burger {
-  @include icon-button(40px);
+  @include button-reset;
+
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--header-height);
+  height: 100%;
+  color: var(--color-primary);
+  transition: color var(--transition);
+
+  &:hover {
+    color: var(--color-secondary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent-secondary);
+    outline-offset: 2px;
+  }
 
   @include tablet-up {
     display: none;
+  }
+}
+
+.mobileActions {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: var(--z-header);
+  display: none;
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-elements);
+
+  @include tablet-up {
+    display: none !important;
+  }
+}
+
+.mobileActionsOpen {
+  display: flex;
+}
+
+.mobileActionButton {
+  flex: 1;
+  color: var(--color-primary);
+
+  @include nav-action-button(48px);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+
+  &:first-child {
+    border-right: 1px solid var(--color-elements);
+  }
+}
+
+.mobileActionButtonActive {
+  color: var(--color-primary);
+
+  &::after {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 2px;
+    content: '';
+    background-color: var(--color-primary);
+  }
+
+  &:hover {
+    color: var(--color-primary);
   }
 }
