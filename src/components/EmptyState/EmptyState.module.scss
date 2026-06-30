@@ -1,0 +1,33 @@
+@use '../../styles/' as *;
+
+.emptyState {
+  @include content-padding-inline;
+
+  margin-bottom: 20px;
+  text-align: center;
+
+  &__title {
+    @include h4-style;
+
+    margin-bottom: 32px;
+    text-align: center;
+    color: $secondary;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 36px;
+    }
+
+    @include on-desktop {
+      font-size: 38px;
+      line-height: 48px;
+    }
+  }
+
+  &__image {
+    display: block;
+    margin: 0 auto;
+    max-width: 300px;
+    width: 80%;
+  }
+}

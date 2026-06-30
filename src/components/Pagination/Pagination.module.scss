@@ -1,0 +1,33 @@
+@use '../../styles/' as *;
+
+.pagination {
+  @include center;
+
+  gap: 8px;
+  margin-top: 24px;
+  
+  @include on-tablet {
+    margin-top: 40px;
+    
+  }
+
+  &__arrow, &__page, &__ellipsis {
+    @include button-icon-style;
+    
+    font-weight: 600;
+  }
+  
+  &__page {
+    color: $primary;
+
+    &--active {
+      background: $primary;
+      color: $white;
+    }
+  }
+
+  &__ellipsis {
+    pointer-events: none;
+    border: none;
+  }
+}

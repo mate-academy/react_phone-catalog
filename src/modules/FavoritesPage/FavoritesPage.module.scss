@@ -1,0 +1,40 @@
+@use '../../styles/' as *;
+
+.favoritesPage {
+  @include section-style;
+  @include content-padding-inline;
+  
+  &__empty {
+    text-align: center;
+  }
+  
+  &__emptyTitle {
+    @include h4-style;
+
+    margin: 24px;
+    text-align: center;
+    color: $secondary;
+  }
+  
+  &__emptyImage {
+    display: block;
+    margin: 0 auto;
+    max-width: 260px;
+    width: 80%;
+  }
+  
+  &__itemsList {
+    display: grid;
+    gap: 16px;
+    row-gap: 40px;
+    grid-template-columns: repeat(1, 1fr);
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}

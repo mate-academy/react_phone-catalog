@@ -1,0 +1,32 @@
+@use '../../styles' as *;
+
+.loader {
+  @include center;
+
+  gap: 10px;
+  margin-top: 64px;
+
+  &__ball {
+    width: 20px;
+    height: 20px;
+    background-color: $secondary;
+    border-radius: 50%;
+    animation: pulse 1.4s infinite ease-in-out both;
+
+    &--1 {
+      animation-delay: -0.32s;
+    }
+    &--2 {
+      animation-delay: -0.16s;
+    }
+  }
+
+  @keyframes pulse {
+    0%, 80%, 100% {
+      transform: scale(0.1);
+    }
+    40% {
+      transform: scale(1);
+    }
+  }
+}

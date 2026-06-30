@@ -1,0 +1,68 @@
+@use '../../../../styles/' as *;
+
+.header {
+  --header-height: 48px;
+
+  position: sticky;
+  width: 100%;
+  height: var(--header-height);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 16px;
+  box-shadow: 0 1px 0 0 $elements;
+  top: 0;
+  left: 0;
+  z-index: 300;
+  background-color: $white;
+
+  @include on-tablet {
+    justify-content: start;
+    gap: 32px;
+  }
+  
+  @include on-desktop {
+    --header-height: 64px;
+    
+    padding-left: 24px;
+    gap: 48px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__logoImg {
+    height: 22px;
+    width: auto;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-desktop {
+      height: 28px;
+    }
+  }
+
+  &__button {
+    width: var(--header-height);
+    background-color: $white;
+    text-align: right;
+    border: none;
+    border-left: 1px solid $elements;
+    height: 100%;
+
+    @include center;
+
+    @include on-tablet {
+      display: none;
+    }
+
+  }
+
+  &__icon{
+    @include hover(transform, scale(1.3));
+  }
+}

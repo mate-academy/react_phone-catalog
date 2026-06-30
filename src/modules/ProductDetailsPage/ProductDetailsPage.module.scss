@@ -1,0 +1,167 @@
+@use '../../styles/' as *;
+
+.productDetails {
+  @include section-style;
+  @include content-padding-inline;
+
+  &__title {
+    @include h2-style;
+
+    margin: -40px 0 32px;
+    
+    @include on-tablet {
+      margin: -64px 0 40px;
+    }
+  }
+
+  &__mainGrid {
+    @include page-grid;
+    
+    align-items: start;
+  }
+
+  &__infoBlock {
+    @include section-style;
+
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 8 / span 5;
+      grid-row: 1;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / span 7;
+      
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__pricesBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__pricesRow {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+
+  }
+
+  &__price {
+    margin: 0;
+    padding: 0;
+    color: $primary;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-shadow: $black-text-shadow;
+  }
+
+  &__oldPrice {
+    font-size: 22px;
+    color: $secondary;
+    text-decoration: line-through;
+    line-height: 100%;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__cartBtn {
+    height: 48px;
+  }
+
+  &__favBtn {
+    width: 48px;
+    height: 48px;
+  }
+
+  &__id {
+    @include small-text-style;
+
+    font-size: 11px;
+    color: $placeholders;
+    line-height: 100%;
+    grid-column: -3 / -1;
+    grid-row: 2;
+    text-align: right;
+
+    @include on-tablet {
+      grid-row: 1;
+    }
+  }
+
+  &__aboutBlock {
+    @include section-style;
+
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__blockTitle {
+    @include h3-style;
+
+    padding-bottom: 16px;
+  }
+
+  &__aboutSection {
+    padding-bottom: 32px;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  &__aboutTitle {
+    @include h4-style;
+    
+    padding: 0;
+    padding-bottom: 20px;
+    line-height: 100%;
+
+    @include on-tablet {
+      padding-bottom: 16px;
+    }
+  }
+
+  &__aboutText {
+    @include body-text-style;
+
+    padding-bottom: 24px;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    @include on-tablet {
+      padding-bottom: 20px;
+    }
+  }
+
+  &__techSpecsBlock {
+    @include section-style;
+
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 14 / -1;
+    }
+  }
+}

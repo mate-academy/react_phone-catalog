@@ -1,0 +1,85 @@
+@use '../../styles/' as *;
+
+.productCard {
+  @include shadow-box;
+
+  flex-flow: column nowrap;
+  gap: 8px;
+  display: flex;
+  border: 1px solid $elements;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 32px;
+
+  &__link {
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__image {
+    @include hover(transform, scale(1.05));
+
+    width: auto;
+    max-width: 100%;
+    height: 118px;
+    object-fit: contain;
+
+    @include on-tablet {
+      height: 180px;
+    }
+  }
+
+  &__title {
+    @include body-text-style;
+
+    min-height: 58px;
+    padding-top: 16px;
+    font-weight: 600;
+    color: $primary;
+  }
+
+  &__prices {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    display: flex;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+    color: $primary;
+    text-shadow: $black-text-shadow-small;
+  }
+
+  &__price {
+    margin: 0;
+    padding: 0;
+    color: $primary;
+  }
+
+  &__oldPrice {
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    text-decoration: line-through;
+    text-shadow: none;
+    color: $secondary;
+  }
+
+  &__line {
+    @include line-style;
+  }
+
+  &__actions {
+    align-items: center;
+    gap: 8px;
+    display: flex;
+    width: 100%;
+    margin-top: 8px;
+  }
+}

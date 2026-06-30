@@ -1,0 +1,19 @@
+@use '../../../styles/' as *;
+
+.button {
+  @include button-style;
+
+  flex: 1;
+  cursor: pointer;
+
+  &--active {
+    background: $white;
+    color: $green-2;
+    border: 1px solid $elements;
+    cursor: default;
+    
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
