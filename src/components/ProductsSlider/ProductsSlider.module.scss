@@ -1,8 +1,11 @@
 .slider {
   display: flex;
   flex-direction: column;
-  padding-inline: 16px;
   overflow: hidden;
+
+  @media (max-width: 639px) {
+    padding-inline: 0;
+  }
 }
 .topSlider {
   display: grid;
@@ -47,7 +50,7 @@
   }
 
   &:disabled {
-    background-image: url('./img/buttons/slider_button_disabled.png');
+    background-image: url('./img/buttons/slider_button_disabled_right.png');
     cursor: not-allowed;
   }
 }
@@ -69,7 +72,7 @@
   }
 
   &:disabled {
-    background-image: url('./img/buttons/slider_button_disabled.png');
+    background-image: url('./img/buttons/slider_button_disabled_left.png');
     transform: none;
     cursor: not-allowed;
   }

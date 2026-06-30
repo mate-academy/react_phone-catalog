@@ -13,6 +13,126 @@
   border: 1px solid #e2e6e9;
 }
 
+.cardLink {
+  text-decoration: none;
+}
+
+.catalogCard {
+  width: 287px;
+  height: 440px;
+  border-radius: 8px;
+  border-width: 1px;
+  padding: 32px;
+  gap: 8px;
+  opacity: 1;
+
+  .cartButton {
+    cursor: pointer;
+    background-color: #f86800;
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    font-family: Mont;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .specImage {
+    margin-top: 0;
+  }
+
+  .specName {
+    margin-top: 0;
+  }
+
+  .divider {
+    border: none;
+    width: 223px;
+    min-height: 1px;
+    border-width: 1px;
+    opacity: 1;
+    background-color: #e2e6e9 !important;
+    margin-bottom: 8px;
+  }
+
+  .actions {
+    margin-top: 14px;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 639px) {
+    width: calc(100vw - 32px);
+    height: auto;
+    padding: calc((100vw - 32px) * 32 / 287);
+    gap: calc((100vw - 32px) * 8 / 287);
+
+    .specImage {
+      margin-top: 0;
+      align-self: center;
+      width: calc((100vw - 32px) * 148 / 287);
+      height: calc((100vw - 32px) * 129 / 287);
+      margin-bottom: calc((100vw - 32px) * 8 / 287);
+    }
+
+    .specName {
+      margin-top: 0;
+      font-size: calc((100vw - 32px) * 14 / 287);
+      line-height: calc((100vw - 32px) * 21 / 287);
+    }
+
+    .priceSection {
+      gap: calc((100vw - 32px) * 8 / 287);
+      margin-bottom: calc((100vw - 32px) * 8 / 287);
+    }
+
+    .specPrice {
+      font-size: calc((100vw - 32px) * 22 / 287);
+    }
+    .specFullPrice {
+      font-size: calc((100vw - 32px) * 22 / 287);
+    }
+
+    .divider {
+      width: 100%;
+      margin-bottom: calc((100vw - 32px) * 8 / 287);
+    }
+
+    .specRow {
+      font-size: calc((100vw - 32px) * 12 / 287);
+      margin-bottom: calc((100vw - 32px) * 8 / 287);
+    }
+
+    .specLabel,
+    .specChar {
+      font-size: calc((100vw - 32px) * 12 / 287);
+    }
+
+    .actions {
+      margin-top: calc((100vw - 32px) * 14 / 287);
+      margin-bottom: 0;
+      gap: calc((100vw - 32px) * 8 / 287);
+    }
+
+    .cartButton {
+      width: 100%;
+      height: calc((100vw - 32px) * 40 / 287);
+      font-size: calc((100vw - 32px) * 14 / 287);
+      line-height: calc((100vw - 32px) * 21 / 287);
+    }
+
+    .favButton {
+      flex-shrink: 0;
+      width: calc((100vw - 32px) * 40 / 287);
+      height: calc((100vw - 32px) * 40 / 287);
+    }
+  }
+}
+
 .specImage {
   object-fit: contain;
   width: 148px;

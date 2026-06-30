@@ -5,13 +5,16 @@ import { CategoryTitle } from '../components/CategoryTitle/CategoryTitle';
 import { Dropdown } from '../components/Dropdown/Dropdown';
 import { ProductsList } from '../components/ProductsList/ProductsList';
 import { Pagination } from '../components/Pagination/Pagination';
+import styles from './ProductsPage.module.scss';
 
 type SortType = 'newest' | 'cheapest' | 'alphabetically';
 type ItemsPerPage = '4' | '8' | '16' | 'all';
 
 export const ProductsPage = () => {
   const { category } = useParams() as { category: string };
-  const products = useOutletContext<Product[]>();
+  const { products } = useOutletContext<{
+    products: Product[];
+  }>();
   const [sortType, setSortType] = useState<SortType>('newest');
   const [countItems, setCountItems] = useState<ItemsPerPage>('16');
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -48,32 +51,36 @@ export const ProductsPage = () => {
   //#endregion
 
   return (
-    <>
+    <div className={styles.productsPage}>
       <CategoryTitle category={category} filteredProducts={filteredProducts} />
-      <Dropdown
-        id="sortBy"
-        label="Sort By"
-        options={[
-          { value: 'newest', label: 'Newest' },
-          { value: 'cheapest', label: 'Cheapest' },
-          { value: 'alphabetically', label: 'Alphabetically' },
-        ]}
-        value={sortType}
-        onChange={value => setSortType(value as SortType)}
-      />
 
-      <Dropdown
-        id="sortItems"
-        label="Items on page"
-        options={[
-          { value: '4', label: '4' },
-          { value: '8', label: '8' },
-          { value: '16', label: '16' },
-          { value: 'all', label: 'All' },
-        ]}
-        value={countItems}
-        onChange={value => setCountItems(value as ItemsPerPage)}
-      />
+      <div className={styles.sortControl}>
+        <Dropdown
+          id="sortBy"
+          label="Sort By"
+          options={[
+            { value: 'newest', label: 'Newest' },
+            { value: 'cheapest', label: 'Cheapest' },
+            { value: 'alphabetically', label: 'Alphabetically' },
+          ]}
+          value={sortType}
+          onChange={value => setSortType(value as SortType)}
+        />
+
+        <Dropdown
+          id="sortItems"
+          label="Items on page"
+          options={[
+            { value: '4', label: '4' },
+            { value: '8', label: '8' },
+            { value: '16', label: '16' },
+            { value: 'all', label: 'All' },
+          ]}
+          value={countItems}
+          onChange={value => setCountItems(value as ItemsPerPage)}
+        />
+      </div>
+
       <ProductsList products={sortedItems} />
       <Pagination
         total={sortedProducts.length}
@@ -81,6 +88,6 @@ export const ProductsPage = () => {
         currentPage={currentPage}
         onPageChange={setCurrentPage}
       />
-    </>
+    </div>
   );
 };

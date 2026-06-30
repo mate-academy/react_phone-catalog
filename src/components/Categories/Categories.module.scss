@@ -1,6 +1,9 @@
 .section {
   padding-bottom: 56px;
-  padding-inline: 16px;
+
+  @media (max-width: 639px) {
+    padding-inline: 0;
+  }
 }
 
 .link {

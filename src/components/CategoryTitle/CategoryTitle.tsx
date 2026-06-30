@@ -1,4 +1,5 @@
 import { Product } from '../../types/Product';
+import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import styles from './CategoryTitle.module.scss';
 
 interface Props {
@@ -14,9 +15,10 @@ const categoryTitles: Record<string, string> = {
 
 export const CategoryTitle = ({ category, filteredProducts }: Props) => {
   return (
-    <div className={styles.title}>
-      <h1>{categoryTitles[category]}</h1>
-      <p>{filteredProducts.length} models</p>
+    <div>
+      <Breadcrumbs category={category} />
+      <h1 className={styles.title}>{categoryTitles[category]}</h1>
+      <p className={styles.countModels}>{filteredProducts.length} models</p>
     </div>
   );
 };

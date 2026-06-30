@@ -6,7 +6,9 @@ import { MainTitle } from '../components/MainTitle/MainTitle';
 import { useOutletContext } from 'react-router-dom';
 
 export const HomePage = () => {
-  const products = useOutletContext<Product[]>();
+  const { products } = useOutletContext<{
+    products: Product[];
+  }>();
 
   //#region Sort section
 

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from './Dropdown.module.scss';
 
 interface Props {
@@ -9,15 +10,25 @@ interface Props {
 }
 
 export const Dropdown = ({ id, label, options, value, onChange }: Props) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
-      <div>
-        <label htmlFor={id}>{label}</label>
+      <div className={styles.dropdown}>
+        <label htmlFor={id} className={styles.label}>
+          {label}
+        </label>
         <select
           value={value}
           name="dropdown"
           id={id}
-          onChange={e => onChange(e.target.value)}
+          onChange={e => {
+            onChange(e.target.value);
+            setIsOpen(false);
+          }}
+          className={isOpen ? styles.selectionOpen : styles.selection}
+          onFocus={() => setIsOpen(true)}
+          onBlur={() => setIsOpen(false)}
         >
           {options.map(option => (
             <option key={option.value} value={option.value}>

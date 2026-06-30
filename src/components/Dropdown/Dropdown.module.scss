@@ -1,0 +1,56 @@
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-family: Mont;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #89939a;
+}
+
+.selection {
+  width: 136px;
+  height: 40px;
+  opacity: 1;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: #b4bdc3;
+  border-style: solid;
+  color: #0f0f11;
+  padding-inline: 16px;
+  appearance: none;
+  background-image: url('./img/arrows/arrow_down.png');
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  font-family: Mont;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+}
+
+.selectionOpen {
+  background-image: url('./img/arrows/arrow_up.png');
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  width: 136px;
+  height: 40px;
+  opacity: 1;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: #b4bdc3;
+  border-style: solid;
+  color: #0f0f11;
+  padding-inline: 16px;
+  appearance: none;
+  font-family: Mont;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+}

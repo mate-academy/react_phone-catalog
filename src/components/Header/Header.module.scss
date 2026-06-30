@@ -6,6 +6,10 @@
   opacity: 1;
   gap: 16px;
   margin-bottom: 24px;
+
+  @media (max-width: 639px) {
+    margin-inline: -16px;
+  }
 }
 
 .button {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './Banner.module.scss';
 import cn from 'classnames';
 
@@ -9,6 +9,7 @@ export const Banner = () => {
     './img/banner-accessories.png',
     './img/banner-tablets.png',
   ];
+  const touchStartX = useRef(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -17,6 +18,26 @@ export const Banner = () => {
 
     return () => clearInterval(timer);
   }, []);
+
+  //#region  Handle banner slider
+  const handleNext = () => setActiveIndex(activeIndex + 1);
+  const handlePrev = () => setActiveIndex(activeIndex - 1);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX;
+
+    if (diff > 50) {
+      handleNext();
+    } else if (diff < -50) {
+      handlePrev();
+    }
+  };
+  //#endregion
 
   return (
     <div className={styles.banner}>
@@ -30,6 +51,8 @@ export const Banner = () => {
             alt="Banner"
             className={styles.image}
             key={banner}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
           />
         ))}
       </div>

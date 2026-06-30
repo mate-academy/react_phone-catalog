@@ -15,16 +15,22 @@ export const Pagination = ({
 }: Props) => {
   const totalPages = Math.ceil(total / perPage);
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
+  const groupSize = 4;
+  const numberGroup = Math.ceil(currentPage / groupSize);
+  const firstPage = (numberGroup - 1) * groupSize + 1;
+  const lastPage = Math.min(firstPage + groupSize - 1, totalPages);
+  const visiblePages = pages.filter(
+    page => page >= firstPage && page <= lastPage,
+  );
 
   return (
     <ul className={styles.buttons}>
       <button
         className={styles.buttonPrev}
         onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
-      >
-        <img src="../img/buttons/slider_button_disabled.png" alt="" />
-      </button>
-      {pages.map(page => (
+        disabled={currentPage === 1}
+      ></button>
+      {visiblePages.map(page => (
         <li key={page} className={styles.buttonsList}>
           <button
             onClick={() => onPageChange(page)}
@@ -37,9 +43,8 @@ export const Pagination = ({
       <button
         className={styles.buttonNext}
         onClick={() => onPageChange(Math.min(currentPage + 1, totalPages))}
-      >
-        <img src="../img/buttons/slider_button_right.png" alt="" />
-      </button>
+        disabled={currentPage === totalPages}
+      ></button>
     </ul>
   );
 };
