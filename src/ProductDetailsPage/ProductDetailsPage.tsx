@@ -1,10 +1,11 @@
 /* eslint-disable import/extensions */
 import styles from './ProductDetailsPage.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { FullProduct } from '../types/Alltypes';
 import { useEffect, useState } from 'react';
 import { getData } from '../fetch/httpClient';
+import { UseSwiper } from '../Functional/Swiper/Swiper';
 
 export const ProductDetailsPage = () => {
   const { slug: productId, category } = useParams<{
@@ -18,6 +19,7 @@ export const ProductDetailsPage = () => {
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedCapacity, setSelectedCapacity] = useState('');
   const [selectedImages, setSelectedImages] = useState('');
+  // const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
@@ -82,10 +84,13 @@ export const ProductDetailsPage = () => {
           />
         </button>
       </Link>
-      <button className={styles.backButton}>
-        <img src="./img/left.svg" alt="back" className={styles.backImg} />
-        <span className={styles.back}>Back</span>
-      </button>
+      <Link to={`/${category}`} className={styles.backButton}>
+        <button className={styles.backButton}>
+          <img src="./img/left.svg" alt="back" className={styles.backImg} />
+          <span className={styles.back}>Back</span>
+        </button>
+      </Link>
+
       <h2 className={styles.linkId}>
         <strong>
           <Link to={`/${category}/${productId}`} className={styles.linkId}>
@@ -121,7 +126,7 @@ export const ProductDetailsPage = () => {
         <aside className={styles.blockDetailsRight}>
           <div className={styles.colorsAvailableBlock}>
             {colorsAvailable.map(color => (
-              <label key={color}>
+              <label key={color} className={styles.linkAvailable}>
                 <input
                   type="radio"
                   name="color"
@@ -134,6 +139,7 @@ export const ProductDetailsPage = () => {
               </label>
             ))}
           </div>
+          <span className={styles.uderLine}></span>
 
           <div className={styles.capacityAvailableBlock}>
             <div className={styles.capacityAvailableInBlock}>
@@ -151,6 +157,7 @@ export const ProductDetailsPage = () => {
               ))}
             </div>
           </div>
+          <span className={styles.uderLine}></span>
 
           <div className={styles.cardPriceGoup}>
             <span className={styles.cardPriceHot}>${priceDiscount}</span>
@@ -188,21 +195,25 @@ export const ProductDetailsPage = () => {
           </div>
         </aside>
 
-        <div className={styles.about}>
-          <h3 className={styles.aboutH}>About</h3>
-          <div className={styles.aboutSolid}></div>
-          <div className={styles.aboutDescription}>
-            {products.description.map((des, index) => (
-              <div key={index} className={styles.aboutSection}>
-                <strong className={styles.aboutTitle}>{des.title}</strong>
-                <p className={styles.aboutText}>{des.text}</p>
-              </div>
-            ))}
+        <section className={styles.about}>
+          <div className={styles.aboutDiv}>
+            <h3 className={styles.aboutTitle}>About</h3>
+            <div className={styles.uderLine}></div>
+            <div className={styles.aboutDescription}>
+              {products.description.map((des, index) => (
+                <div key={index} className={styles.aboutSection}>
+                  <strong className={styles.aboutTitle}>{des.title}</strong>
+                  <p className={styles.aboutText}>{des.text}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
 
         <div className={styles.techSpecs}>
-          <h3>Tech specs</h3>
+          <h3 className={styles.techSpecsTitle}>Tech specs</h3>
+          <div className={styles.uderLine}></div>
+
           <div className={styles.specRow}>
             <span>Screen</span>
             <strong className={styles.strong}>{screen}</strong>
@@ -234,8 +245,9 @@ export const ProductDetailsPage = () => {
         </div>
       </section>
 
-      <div className={styles.blockYouMayAlso}>
-        <h2>You may also like</h2>
+      <div className={styles.containerYouMayAlso}>
+        <h2 className={styles.blockYouMayAlso}>You may also like</h2>
+        <UseSwiper />
       </div>
     </div>
   );
