@@ -1,0 +1,76 @@
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 24px;
+}
+
+.buttonsList {
+  list-style: none;
+}
+
+.button {
+  background: none;
+  border: none;
+  height: 32px;
+  width: 32px;
+  align-items: center;
+  background-image: url('./img/buttons/background_button.png');
+  font-family: Mont;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.active {
+  background-image: url('./img/buttons/background_button_active.png');
+  color: #fff;
+}
+
+.buttonPrev {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-image: url('./img/buttons/slider_button_left.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover:not(:disabled) {
+    background-image: url('./img/buttons/slider_button_hover_left.png');
+  }
+
+  &:disabled {
+    background-image: url('./img/buttons/slider_button_disabled_left.png');
+    transform: none;
+    cursor: not-allowed;
+  }
+}
+
+.buttonNext {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-image: url('./img/buttons/slider_button_right.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover:not(:disabled) {
+    background-image: url('./img/buttons/slider_button_hover_right.png');
+  }
+
+  &:disabled {
+    background-image: url('./img/buttons/slider_button_disabled_right.png');
+    cursor: not-allowed;
+  }
+}

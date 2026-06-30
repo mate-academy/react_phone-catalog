@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 1px 0px 0px #e2e6e9;
+  height: 48px;
+  opacity: 1;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  @media (max-width: 639px) {
+    margin-inline: -16px;
+  }
+}
+
+.button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  width: 48px;
+  height: 48px;
+  box-shadow: -1px 0px 0px 0px #e2e6e9;
+}
