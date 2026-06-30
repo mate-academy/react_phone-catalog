@@ -45,7 +45,11 @@ export const HomePage = () => {
       </section>
 
       <section className={styles.home__section}>
-        <ProductsSlider title="Brand new models" products={brandNewProducts} />
+        <ProductsSlider
+          title="Brand new models"
+          products={brandNewProducts}
+          hideDiscount={true}
+        />
       </section>
 
       <section className={styles.home__section}>

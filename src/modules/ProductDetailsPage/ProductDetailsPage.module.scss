@@ -4,13 +4,13 @@
 .gallery {
   display: flex;
   flex-direction: column-reverse;
-  gap: 16px;
+  gap: 20px;
   margin-top: 32px;
 
   @include onTablet {
     flex-direction: row;
     align-items: flex-start;
-    gap: 16px;
+    gap: 35px;
   }
 
   &__thumbs {
@@ -96,13 +96,13 @@
     @include onTablet {
       flex-direction: row;
       align-items: flex-start;
-      column-gap: 17px;
+      column-gap: 20px;
     }
 
     @include onDesktop {
       flex-direction: row;
       align-items: flex-start;
-      column-gap: 140px;
+      column-gap: 180px;
     }
   }
 
@@ -127,7 +127,7 @@
   margin-top: 40px;
 
   @include onTablet {
-    width: 237px;
+    width: 290px;
     flex-shrink: 0;
   }
 

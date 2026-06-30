@@ -6,9 +6,14 @@ import { Product } from '../../../../types/Product';
 interface Props {
   title: string;
   products: Product[];
+  hideDiscount?: boolean;
 }
 
-export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
+export const ProductsSlider: React.FC<Props> = ({
+  title,
+  products,
+  hideDiscount = false,
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [stepSize, setStepSize] = useState(0);
 
@@ -96,7 +101,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
         >
           {products.map(product => (
             <div className={styles.slider__item} key={product.id}>
-              <ProductCard product={product} />
+              <ProductCard product={product} hideDiscount={hideDiscount} />
             </div>
           ))}
         </div>

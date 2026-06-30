@@ -25,13 +25,13 @@
     cursor: pointer;
     transition: all 0.2s ease;
 
-    &__page {
+
       &--active {
         background-color: $c-accent;
         color: $c-white;
         border-color: $c-white;
       }
-    }
+
 
     &:disabled {
       opacity: 0.4;

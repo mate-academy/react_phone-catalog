@@ -41,7 +41,13 @@ export const ProductDetailsPage: React.FC = () => {
   );
 
   const handleAddToCart = () => {
-    if (!isInCart && productAsCard) {
+    if (!productAsCard) {
+      return;
+    }
+
+    if (isInCart) {
+      cartContext?.removeFromCart(productAsCard.id);
+    } else {
       cartContext?.addToCart(productAsCard);
     }
   };

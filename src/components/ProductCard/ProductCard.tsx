@@ -9,9 +9,13 @@ import { FavoritesContext } from '../../modules/shared/context/FavoritesContext'
 
 interface Props {
   product: Product;
+  hideDiscount?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  hideDiscount = false,
+}) => {
   const cartContext = useContext(CartContext);
   const favoritesContext = useContext(FavoritesContext);
 
@@ -25,7 +29,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   };
 
   const handleAddToCartClick = () => {
-    if (!isInCart) {
+    if (isInCart) {
+      cartContext?.removeFromCart(product.id);
+    } else {
       cartContext?.addToCart(product);
     }
   };
@@ -51,8 +57,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </Link>
 
       <div className={styles.card__prices}>
-        <span className={styles.card__price}>${product.price}</span>
-        {product.fullPrice > product.price && (
+        <span className={styles.card__price}>
+          ${hideDiscount ? product.fullPrice : product.price}
+        </span>
+
+        {!hideDiscount && product.fullPrice > product.price && (
           <span className={styles.card__priceOld}>${product.fullPrice}</span>
         )}
       </div>
