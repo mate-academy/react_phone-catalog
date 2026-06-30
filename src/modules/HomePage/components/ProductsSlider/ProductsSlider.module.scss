@@ -1,0 +1,70 @@
+@import '../../../../styles/variables';
+
+.slider {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0;
+
+    @media (min-width: 640px) {
+      font-size: 32px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $c-elements;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $c-surface-2;
+    }
+  }
+
+  &__window {
+    overflow: hidden;
+  }
+
+  &__track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  &__item {
+    flex-shrink: 0;
+
+    width: 212px;
+
+    @include onTablet {
+      width: 237px;
+    }
+
+    @include onDesktop {
+      width: calc((100% - 48px) / 4);
+    }
+  }
+}

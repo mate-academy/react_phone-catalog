@@ -1,0 +1,25 @@
+@import '../../styles/utils/mixins';
+
+.list {
+  --columns: 4;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: 16px;
+
+  @include onTablet {
+    --columns: 12;
+  }
+
+  @include onDesktop {
+    --columns: 24;
+  }
+
+  & > * {
+    grid-column: span 4;
+
+    @include onTablet {
+      grid-column: span 6;
+    }
+  }
+}

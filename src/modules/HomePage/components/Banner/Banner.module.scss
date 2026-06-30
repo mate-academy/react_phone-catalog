@@ -1,0 +1,136 @@
+@import '../../../../styles/variables';
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 24px;
+
+    @media (min-width: 640px) {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 16px;
+      align-items: center;
+
+      @media (min-width: 1200px) {
+        grid-template-columns: repeat(24, minmax(0, 1fr));
+      }
+    }
+  }
+
+  &__button {
+    width: 32px;
+    height: 100%;
+    min-height: 189px;
+
+    /* 1. ХОВАЄМО НА МОБІЛЦІ */
+    display: none;
+
+    /* Ці властивості чекатимуть свого часу, поки display не стане flex */
+    justify-content: center;
+    align-items: center;
+
+    background-color: $c-surface-1;
+    border: 1px solid $c-elements;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+
+    @media (min-width: 640px) {
+      position: static;
+      transform: none;
+      grid-column: span 1;
+
+      display: flex;
+    }
+
+    @media (min-width: 1200px) {
+      min-height: 400px;
+    }
+
+    &:hover {
+      border-color: $c-white;
+    }
+  }
+
+  &__imageContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin: 0 -16px;
+
+    @media (min-width: 640px) {
+      grid-column: 2 / 12;
+    }
+
+    @media (min-width: 1200px) {
+      grid-column: 2 / 24;
+    }
+
+    picture {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+
+    @media (min-width: 640px) {
+      aspect-ratio: auto;
+      height: 189px;
+
+      @media (min-width: 1200px) {
+        height: 400px;
+      }
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: 640px) {
+      margin-top: 8px;
+
+      @media (min-width: 1200px) {
+        margin-top: 24px;
+      }
+    }
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    background-color: $c-elements;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    & + & {
+      margin-left: 16px;
+    }
+
+    &:hover {
+      background-color: $c-secondary;
+    }
+
+    &--active {
+      background-color: $c-white;
+    }
+  }
+}

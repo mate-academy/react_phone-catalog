@@ -1,0 +1,46 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__btn,
+  &__page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    color: $c-white;
+    border: 1px solid $c-white;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+
+      &--active {
+        background-color: $c-accent;
+        color: $c-white;
+        border-color: $c-white;
+      }
+
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $c-black;
+      background-color: $c-accent;
+    }
+  }
+}
