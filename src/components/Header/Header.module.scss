@@ -273,16 +273,18 @@ input[type="search" i]:enabled:read-write:-webkit-any(:focus, :hover)::-webkit-s
   z-index: 999;
   display: flex;
   flex-direction: column;
-
-  @media (min-width: 769px) {
-    display: none;
-  }
-
+  
   opacity: 0;
   transform: translateY(-20px);
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+@media (min-width: 769px) {
+  .menuOverlay {
+    display: none;
+  }
 }
 
 .menuOverlayOpen {
