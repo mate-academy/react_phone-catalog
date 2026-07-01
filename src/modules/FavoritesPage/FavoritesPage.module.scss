@@ -1,60 +1,37 @@
 @import '../../styles/mixins';
 
-.page > :not(:first-child) {
-  margin-top: var(--space-md);
+.page {
+  @include page-top-spacing;
+  @include page-stack-spacing;
 }
 
 .title {
-  font-size: var(--fs-h1);
-  font-weight: 700;
+  @include page-title;
 }
 
 .count {
-  font-size: 12px;
-  color: var(--color-secondary);
+  @include page-count;
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-sm);
-
-  @include tablet-up {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @include desktop-up {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  @include products-grid;
 }
 
-.empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-sm);
+.message {
+  @include empty-state-text;
+
   padding: var(--space-xl) 0;
   text-align: center;
 }
 
+.empty {
+  @include empty-state-block;
+}
+
 .emptyText {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--color-secondary);
+  @include empty-state-text(320px);
 }
 
 .emptyLink {
-  padding: var(--space-xs) var(--space-md);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--color-white);
-  text-transform: uppercase;
-  background-color: var(--color-accent);
-  border-radius: var(--radius-sm);
-  transition: var(--transition);
-
-  &:hover {
-    filter: brightness(0.92);
-  }
+  @include primary-button(40px);
 }

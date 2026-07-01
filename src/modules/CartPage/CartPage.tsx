@@ -36,7 +36,7 @@ export const CartPage = () => {
         <div className={styles.empty}>
           <img
             src="/img/cart-is-empty.png"
-            alt="Carrinho vazio"
+            alt="Empty cart"
             className={styles.emptyImage}
           />
           <p className={styles.emptyText}>Your cart is empty</p>
@@ -60,13 +60,13 @@ export const CartPage = () => {
                 type="button"
                 className={styles.removeButton}
                 onClick={() => removeFromCart(item.id)}
-                aria-label={`Remover ${item.product.name} do carrinho`}
+                aria-label={`Remove ${item.product.name} from cart`}
               >
                 <CloseIcon />
               </button>
 
               <Link
-                to={`/${item.product.category}/${item.product.itemId}`}
+                to={`/product/${item.product.itemId}`}
                 className={styles.itemImageLink}
               >
                 <img
@@ -77,7 +77,7 @@ export const CartPage = () => {
               </Link>
 
               <Link
-                to={`/${item.product.category}/${item.product.itemId}`}
+                to={`/product/${item.product.itemId}`}
                 className={styles.itemName}
               >
                 {item.product.name}

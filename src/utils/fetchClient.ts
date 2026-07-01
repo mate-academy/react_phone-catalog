@@ -7,10 +7,18 @@ export const getProducts = async (): Promise<Product[]> => {
 
 export const getProductDetails = async (
   itemId: string,
-  category: string,
 ): Promise<ProductDetails> => {
-  const products = await client.get<ProductDetails[]>(`/${category}.json`);
-  const product = products.find(p => p.id === itemId);
+  const products = await getProducts();
+  const productFromList = products.find(p => p.itemId === itemId);
+
+  if (!productFromList) {
+    throw new Error('Product not found');
+  }
+
+  const productsByCategory = await client.get<ProductDetails[]>(
+    `/${productFromList.category}.json`,
+  );
+  const product = productsByCategory.find(p => p.id === itemId);
 
   if (!product) {
     throw new Error('Product not found');

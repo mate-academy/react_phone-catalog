@@ -10,12 +10,7 @@
   flex: 1;
 }
 
-.container {
-  padding-block: var(--space-md);
-
+.content {
   @include container;
-
-  @include tablet-up {
-    padding-block: var(--space-lg);
-  }
+  @include section-spacing;
 }

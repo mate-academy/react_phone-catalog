@@ -1,21 +1,16 @@
 @import '../../styles/mixins';
 
-.page > :not(:first-child) {
-  margin-top: var(--space-md);
+.page {
+  @include page-top-spacing;
+  @include page-stack-spacing;
 }
 
 .title {
-  font-size: var(--fs-h1);
-  font-weight: 700;
+  @include page-title;
 }
 
 .empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-xl) 0;
-  text-align: center;
+  @include empty-state-block;
 }
 
 .emptyImage {
@@ -23,25 +18,11 @@
 }
 
 .emptyText {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--color-secondary);
+  @include empty-state-text;
 }
 
 .emptyLink {
-  padding: var(--space-xs) var(--space-md);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--color-white);
-  text-transform: uppercase;
-  background-color: var(--color-accent);
-  border-radius: var(--radius-sm);
-  transition: var(--transition);
-
-  &:hover {
-    filter: brightness(0.92);
-  }
+  @include primary-button(40px);
 }
 
 .layout {
@@ -64,22 +45,33 @@
 
 .item {
   display: grid;
-  grid-template-columns: auto auto 1fr auto auto;
+  grid-template-columns: auto 64px minmax(0, 1fr);
+  grid-template-areas:
+    'remove image name'
+    '. quantity price';
   align-items: center;
-  gap: var(--space-sm);
+  column-gap: var(--space-sm);
+  row-gap: var(--space-xs);
   padding: var(--space-sm);
   background-color: var(--color-white);
   border: 1px solid var(--color-elements);
   border-radius: var(--radius-md);
+
+  @include desktop-up {
+    grid-template-columns: auto auto 1fr auto auto;
+    grid-template-areas: 'remove image name quantity price';
+    gap: var(--space-sm);
+  }
 }
 
 .removeButton {
-  border: none;
+  grid-area: remove;
 
   @include icon-button(24px);
 }
 
 .itemImageLink {
+  grid-area: image;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,25 +86,36 @@
 }
 
 .itemName {
+  grid-area: name;
+  min-width: 0;
   font-size: 14px;
   font-weight: 600;
   color: var(--color-primary);
   transition: color var(--transition);
 
   &:hover {
-    color: var(--color-accent);
+    color: var(--color-secondary);
   }
 }
 
 .quantity {
+  grid-area: quantity;
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
+
+  @include desktop-up {
+    gap: var(--space-sm);
+  }
 }
 
 .quantityButton {
   font-size: 14px;
   font-weight: 700;
+  flex-shrink: 0;
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
 
   @include icon-button(24px);
 }
@@ -125,6 +128,8 @@
 }
 
 .itemPrice {
+  grid-area: price;
+  justify-self: end;
   font-size: 16px;
   font-weight: 700;
   color: var(--color-primary);
@@ -164,19 +169,6 @@
 
 .checkoutButton {
   width: 100%;
-  height: 44px;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--color-white);
-  text-transform: uppercase;
-  background-color: var(--color-accent);
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: var(--transition);
 
-  &:hover {
-    filter: brightness(0.92);
-  }
+  @include primary-button(44px);
 }

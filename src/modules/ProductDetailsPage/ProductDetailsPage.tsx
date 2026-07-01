@@ -40,10 +40,7 @@ const COLOR_MAP: Record<string, string> = {
 };
 
 export const ProductDetailsPage = () => {
-  const { productId, category } = useParams<{
-    productId: string;
-    category: string;
-  }>();
+  const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
 
   const [product, setProduct] = useState<ProductDetails | null>(null);
@@ -57,20 +54,20 @@ export const ProductDetailsPage = () => {
   const { favorites, toggleFavorite } = useFavorites();
 
   useEffect(() => {
-    if (!productId || !category) {
+    if (!productId) {
       return;
     }
 
     setLoading(true);
     setSelectedImageIndex(0);
 
-    getProductDetails(productId, category)
+    getProductDetails(productId)
       .then(prod => {
         setProduct(prod);
         setSelectedColor(prod.colorsAvailable[0]);
         setSelectedCapacity(prod.capacityAvailable[0]);
 
-        return getSuggestedProducts(category, productId);
+        return getSuggestedProducts(prod.category, productId);
       })
       .then(setSuggested)
       .catch(() => {
@@ -79,17 +76,27 @@ export const ProductDetailsPage = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, [productId, category]);
+  }, [productId]);
 
   if (loading) {
     return <Loader />;
   }
 
-  if (!product || !category) {
-    return <p className={styles.notFound}>Product was not found</p>;
+  if (!product) {
+    return (
+      <div className={styles.notFound}>
+        <img
+          src="/img/product-not-found.png"
+          alt="Product was not found"
+          className={styles.notFoundImage}
+        />
+        <p className={styles.notFoundText}>Product was not found</p>
+      </div>
+    );
   }
 
   const isFavorite = favorites.some(item => item.itemId === product.id);
+  const category = product.category;
   const categoryTitle = category.charAt(0).toUpperCase() + category.slice(1);
   const currentImage = product.images[selectedImageIndex];
 
@@ -239,7 +246,7 @@ export const ProductDetailsPage = () => {
               })}
               onClick={() => toggleFavorite(productAsItem)}
               aria-label={
-                isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'
+                isFavorite ? 'Remove from favorites' : 'Add to favorites'
               }
               aria-pressed={isFavorite}
             >

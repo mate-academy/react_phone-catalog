@@ -1,10 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useFavorites } from '../../context/FavoritesContext';
-import { ProductCard } from '../shared/components/ProductCard';
+import { ProductsList } from '../ProductPage/components/ProductsList';
 import styles from './FavoritesPage.module.scss';
 
 export const FavoritesPage = () => {
+  const [searchParams] = useSearchParams();
   const { favorites } = useFavorites();
+  const query = (searchParams.get('query') || '').trim().toLowerCase();
+  const filteredFavorites = favorites.filter(product =>
+    product.name.toLowerCase().includes(query),
+  );
+  const itemLabel = filteredFavorites.length === 1 ? 'item' : 'items';
 
   return (
     <div className={styles.page}>
@@ -17,14 +23,12 @@ export const FavoritesPage = () => {
             Go shopping
           </Link>
         </div>
+      ) : filteredFavorites.length === 0 ? (
+        <p className={styles.message}>There are no products matching the query</p>
       ) : (
         <>
-          <p className={styles.count}>{favorites.length} items</p>
-          <div className={styles.grid}>
-            {favorites.map(product => (
-              <ProductCard key={product.itemId} product={product} />
-            ))}
-          </div>
+          <p className={styles.count}>{filteredFavorites.length} {itemLabel}</p>
+          <ProductsList products={filteredFavorites} className={styles.grid} />
         </>
       )}
     </div>

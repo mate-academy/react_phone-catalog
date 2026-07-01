@@ -43,6 +43,8 @@
   --radius-full: 50%;
   --shadow-card: 0 2px 16px rgb(0 0 0 / 10%);
   --transition: 0.2s ease-in-out;
+  --transition-image: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  --image-hover-scale: 1.025;
   --container-width: 1136px;
   --header-height: 48px;
   --z-header: 100;

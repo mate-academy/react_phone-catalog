@@ -1,12 +1,26 @@
-import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
+import debounce from 'lodash.debounce';
 import { Navbar } from './components/Navbar';
 import { useCart } from '../../../../context/CartContext';
 import { useFavorites } from '../../../../context/FavoritesContext';
-import { HeartIcon, CartIcon, MenuIcon, CloseIcon } from '../../ui/Icons/Icons';
+import {
+  HeartIcon,
+  CartIcon,
+  MenuIcon,
+  CloseIcon,
+  SearchIcon,
+} from '../../ui/Icons/Icons';
 import styles from './Header.module.scss';
 import logo from '../../../../../public/img/Logo.svg';
+
+const SEARCHABLE_PATHS = new Set([
+  '/phones',
+  '/tablets',
+  '/accessories',
+  '/favorites',
+]);
 
 interface ActionButtonsProps {
   buttonClass: string;
@@ -29,7 +43,7 @@ const ActionButtons = ({
       className={cn(buttonClass, {
         [activeClass]: currentPath === '/favorites',
       })}
-      aria-label={`Favoritos (${favoritesCount})`}
+      aria-label={`Favorites (${favoritesCount})`}
     >
       <span className={styles.iconWrapper}>
         <HeartIcon />
@@ -44,7 +58,7 @@ const ActionButtons = ({
       className={cn(buttonClass, {
         [activeClass]: currentPath === '/cart',
       })}
-      aria-label={`Carrinho (${cartCount})`}
+      aria-label={`Cart (${cartCount})`}
     >
       <span className={styles.iconWrapper}>
         <CartIcon />
@@ -54,21 +68,59 @@ const ActionButtons = ({
   </>
 );
 
-// ─── Header ──────────────────────────────────────────────────────────────────
-
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
   const { cartItems } = useCart();
   const { favorites } = useFavorites();
   const location = useLocation();
+  const query = searchParams.get('query') || '';
+  const [localQuery, setLocalQuery] = useState(query);
+  const cartItemsCount = cartItems.reduce(
+    (sum, item) => sum + item.quantity,
+    0,
+  );
+  const showSearch = SEARCHABLE_PATHS.has(location.pathname);
 
-  // Fecha o menu ao navegar
+  const searchPlaceholder =
+    location.pathname === '/favorites'
+      ? 'Search in favorites...'
+      : `Search in ${location.pathname.slice(1)}...`;
+
+  const updateQuery = useMemo(
+    () =>
+      debounce((value: string) => {
+        setSearchParams(params => {
+          const newParams = new URLSearchParams(params);
+
+          if (value.trim()) {
+            newParams.set('query', value.trim());
+          } else {
+            newParams.delete('query');
+          }
+
+          newParams.delete('page');
+
+          return newParams;
+        });
+      }, 500),
+    [setSearchParams],
+  );
+
+  useEffect(() => {
+    setLocalQuery(query);
+  }, [query]);
+
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname, location.search]);
 
-  // Trava o scroll enquanto o menu mobile está aberto.
-  // O cleanup garante que o overflow seja restaurado se o componente desmontar.
+  useEffect(() => {
+    return () => {
+      updateQuery.cancel();
+    };
+  }, [updateQuery]);
+
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : '';
 
@@ -79,7 +131,7 @@ export const Header = () => {
 
   const sharedProps = {
     favoritesCount: favorites.length,
-    cartCount: cartItems.length,
+    cartCount: cartItemsCount,
     currentPath: location.pathname,
   };
 
@@ -90,13 +142,44 @@ export const Header = () => {
           <Link
             to="/"
             className={styles.logo}
-            aria-label="Nice Gadgets — página inicial"
+            aria-label="Nice Gadgets — home page"
           >
             <img src={logo} alt="" className={styles.logoImg} />
           </Link>
 
           <Navbar isOpen={isMenuOpen} />
         </div>
+
+        {showSearch && (
+          <label className={styles.searchField}>
+            <SearchIcon className={styles.searchIcon} />
+
+            <input
+              type="search"
+              className={styles.searchInput}
+              placeholder={searchPlaceholder}
+              value={localQuery}
+              onChange={event => {
+                setLocalQuery(event.target.value);
+                updateQuery(event.target.value);
+              }}
+            />
+
+            {localQuery && (
+              <button
+                type="button"
+                className={styles.clearButton}
+                aria-label="Clear search"
+                onClick={() => {
+                  setLocalQuery('');
+                  updateQuery('');
+                }}
+              >
+                <CloseIcon />
+              </button>
+            )}
+          </label>
+        )}
 
         <div className={styles.actions}>
           <div className={styles.desktopActions}>
@@ -111,7 +194,7 @@ export const Header = () => {
             type="button"
             className={styles.burger}
             onClick={() => setIsMenuOpen(open => !open)}
-            aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-action-bar"
           >

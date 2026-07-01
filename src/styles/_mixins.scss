@@ -27,6 +27,14 @@
   }
 }
 
+@mixin section-spacing {
+  padding-block: var(--space-md);
+
+  @include tablet-up {
+    padding-block: var(--space-lg);
+  }
+}
+
 @mixin visually-hidden {
   position: absolute;
   width: 1px;
@@ -69,12 +77,119 @@
 
   &:hover {
     color: var(--color-primary);
-    border-color: var(--color-icons);
+    border-color: var(--color-primary);
   }
 
   &:disabled {
     color: var(--color-icons);
+    border-color: var(--color-elements);
     cursor: default;
-    opacity: 0.5;
+    opacity: 1;
   }
+}
+
+@mixin nav-action-button($size: 48px) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $size;
+  height: $size;
+  color: var(--color-icons);
+  transition: color var(--transition);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent-secondary);
+    outline-offset: 2px;
+  }
+}
+
+@mixin primary-button($height: 40px) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: $height;
+  padding-inline: var(--space-md);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+  background-color: var(--color-accent);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 3px 13px rgb(23 32 49 / 40%);
+  }
+}
+
+@mixin primary-button-selected {
+  color: var(--color-accent);
+  background-color: var(--color-white);
+  border-color: var(--color-elements);
+  box-shadow: none;
+  cursor: default;
+}
+
+@mixin page-top-spacing {
+  padding-top: var(--space-md);
+
+  @include tablet-up {
+    padding-top: var(--space-lg);
+  }
+}
+
+@mixin page-stack-spacing($gap: var(--space-md)) {
+  > :not(:first-child) {
+    margin-top: $gap;
+  }
+}
+
+@mixin products-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+
+  @include tablet-up {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include desktop-up {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@mixin empty-state-block($padding: var(--space-xl) 0) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: $padding;
+  text-align: center;
+}
+
+@mixin empty-state-text($max-width: null) {
+  @if $max-width {
+    max-width: $max-width;
+  }
+
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+@mixin page-title {
+  font-size: var(--fs-h1);
+  font-weight: 700;
+}
+
+@mixin page-count {
+  font-size: 12px;
+  color: var(--color-secondary);
 }

@@ -1,87 +1,248 @@
 @import '../../../../styles/mixins';
 
 .slider {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.track {
   position: relative;
+
+  @include tablet-up {
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr) 24px;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  @include desktop-up {
+    grid-template-columns: 32px minmax(0, 1fr) 32px;
+  }
+}
+
+.arrow {
+  display: none;
+  position: static;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: auto;
+  color: var(--color-icons);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+  border-radius: 32px;
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition);
+
+  &:hover {
+    color: var(--color-primary);
+    border-color: var(--color-icons);
+  }
+
+  @include tablet-up {
+    display: flex;
+  }
+
+  @include desktop-up {
+    width: 32px;
+    border-width: 1.5px;
+    border-radius: 48px;
+  }
 }
 
 .viewport {
   position: relative;
-  aspect-ratio: 4 / 3;
+  width: 100%;
   overflow: hidden;
   border-radius: var(--radius-md);
-  background-color: var(--color-elements);
+  background: var(--slide-gradient);
 
   @include tablet-up {
-    aspect-ratio: 16 / 7;
+    height: clamp(300px, 40vw, 380px);
+  }
+
+  @include desktop-up {
+    height: clamp(420px, 34vw, 560px);
   }
 }
 
-.imageLink {
-  display: block;
+.slide,
+.slideLink {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
   height: 100%;
+  padding: 14px;
+
+  @include tablet-up {
+    display: grid;
+    grid-template-columns: minmax(260px, 44%) minmax(0, 1fr);
+    grid-template-areas: 'content media';
+    align-items: center;
+    gap: 20px;
+    padding: 20px 24px;
+  }
+
+  @include desktop-up {
+    grid-template-columns: minmax(320px, 38%) minmax(0, 1fr);
+    gap: 24px;
+    padding: 28px 32px;
+  }
+}
+
+.slideLink {
+  color: inherit;
+}
+
+.slideMedia {
+  position: relative;
+  height: 210px;
+  overflow: visible;
+  z-index: 1;
+
+  @include tablet-up {
+    grid-area: media;
+    height: 100%;
+  }
+}
+
+.slideContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding-inline: 2px;
+  z-index: 1;
+
+  @include tablet-up {
+    grid-area: content;
+    max-width: 100%;
+    min-width: 240px;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  @include desktop-up {
+    gap: 10px;
+  }
+}
+
+.badge {
+  font-size: 11px;
+  line-height: 14px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: rgb(15 15 17 / 70%);
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  font-weight: 800;
+  color: var(--color-primary);
+
+  @include tablet-up {
+    font-size: 36px;
+  }
+
+  @include desktop-up {
+    font-size: 40px;
+  }
+}
+
+.subtitle {
+  font-size: 13px;
+  line-height: 1.35;
+  font-weight: 500;
+  color: rgb(15 15 17 / 72%);
+
+  @include tablet-up {
+    font-size: 16px;
+  }
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding-inline: 14px;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  background-color: rgb(255 255 255 / 86%);
+  border: 1px solid rgb(15 15 17 / 20%);
+  border-radius: 999px;
+  transition: var(--transition);
+
+  @include tablet-up {
+    height: 38px;
+    padding-inline: 18px;
+    font-size: 13px;
+  }
+}
+
+.slideLink:hover .cta {
+  background-color: var(--color-white);
+  border-color: rgb(15 15 17 / 34%);
 }
 
 .image {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-}
+  object-fit: contain;
+  object-position: var(--slide-object-position, center);
+  filter: saturate(0.88) contrast(0.9) brightness(1.04);
+  transform: scale(1.02);
+  transition: transform var(--transition-image);
 
-.arrow {
-  position: absolute;
-  top: 50%;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  color: var(--color-icons);
-  background-color: var(--color-white);
-  border: none;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  transform: translateY(-50%);
-  transition: var(--transition);
+  @include tablet-up {
+    object-position: var(
+      --slide-tablet-object-position,
+      var(--slide-object-position, center)
+    );
+  }
 
-  &:hover {
-    color: var(--color-accent);
+  @media (min-width: 850px) {
+    object-position: center 48%;
   }
 }
 
-.arrowLeft {
-  left: var(--space-sm);
-}
-
-.arrowRight {
-  right: var(--space-sm);
+.slideLink:hover .image {
+  transform: scale(1.05);
 }
 
 .dots {
-  position: absolute;
-  bottom: var(--space-sm);
-  left: 50%;
-  z-index: 1;
   display: flex;
-  gap: var(--space-xs);
-  transform: translateX(-50%);
+  align-self: center;
+  gap: 8px;
 }
 
 .dot {
   @include button-reset;
 
-  width: 24px;
+  width: 14px;
   height: 4px;
-  background-color: rgb(255 255 255 / 60%);
+  background-color: var(--color-elements);
   border-radius: var(--radius-sm);
   transition: var(--transition);
 
   &:hover {
-    background-color: rgb(255 255 255 / 85%);
+    background-color: var(--color-icons);
   }
 }
 
 .dotActive {
-  background-color: var(--color-white);
+  background-color: var(--color-primary);
 }

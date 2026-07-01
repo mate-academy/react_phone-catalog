@@ -1,39 +1,59 @@
 @import '../../../../styles/mixins';
 
 .footer {
+  margin-top: var(--space-xl);
   background-color: var(--color-white);
   border-top: 1px solid var(--color-elements);
+
+  @include tablet-up {
+    margin-top: var(--space-2xl);
+  }
 }
 
 .row {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-md);
-  padding-block: var(--space-md);
-
-  @include container;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  padding-block: var(--space-lg);
 
   @include tablet-up {
     flex-direction: row;
-    justify-content: space-between;
-    padding-block: var(--space-sm);
+    align-items: center;
+    gap: var(--space-md);
+    padding-block: var(--space-md);
   }
 }
 
 .logo {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-xs);
+
+  @include tablet-up {
+    margin-bottom: 0;
+  }
 }
 
-.logoAccent {
-  color: var(--color-accent);
+.logoImg {
+  display: block;
+  height: 22px;
+  width: auto;
 }
 
 .links {
   display: flex;
-  gap: var(--space-md);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+
+  @include tablet-up {
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-md);
+  }
 }
 
 .link {
@@ -50,7 +70,61 @@
 }
 
 .backToTop {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  gap: var(--space-xs);
+  padding: 0;
   border-radius: var(--radius-sm);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
 
-  @include icon-button(40px);
+  @include tablet-up {
+    align-self: auto;
+  }
+}
+
+.backToTopLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-secondary);
+  white-space: nowrap;
+
+  @include tablet-up {
+    font-size: 14px;
+  }
+}
+
+.backToTopIcon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--color-icons);
+  border: 1px solid var(--color-elements);
+  border-radius: var(--radius-full);
+  transition: color var(--transition), border-color var(--transition);
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .backToTop:hover & {
+    color: var(--color-primary);
+    border-color: var(--color-icons);
+  }
+
+  @include tablet-up {
+    width: 40px;
+    height: 40px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
 }

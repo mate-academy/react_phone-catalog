@@ -1,12 +1,12 @@
 @import '../../styles/mixins';
 
-.page > :not(:first-child) {
-  margin-top: var(--space-md);
+.page {
+  @include page-top-spacing;
+  @include page-stack-spacing;
 }
 
 .title {
-  font-size: var(--fs-h1);
-  font-weight: 700;
+  @include page-title;
 }
 
 .toolbar {
@@ -55,13 +55,36 @@
     outline: none;
     border-color: var(--color-icons);
   }
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    appearance: none;
+    display: none;
+  }
+
+  &::-ms-clear,
+  &::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+  }
 }
 
 .clearButton {
   @include button-reset;
 
+  position: absolute;
+  top: 50%;
+  right: 12px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
   color: var(--color-icons);
+  transform: translateY(-50%);
 
   &:hover {
     color: var(--color-primary);
@@ -83,41 +106,67 @@
   color: var(--color-secondary);
 }
 
+.selectWrap {
+  position: relative;
+  display: block;
+}
+
+.selectChevron {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 16px;
+  height: 16px;
+  color: var(--color-icons);
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: var(--transition);
+}
+
+.selectWrap:hover .selectChevron {
+  color: var(--color-primary);
+}
+
+.selectWrap:focus-within .selectChevron {
+  color: var(--color-primary);
+  transform: translateY(-50%) rotate(180deg);
+}
+
 .select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
   height: 40px;
-  padding-inline: var(--space-sm);
+  padding: 0 36px 0 var(--space-sm);
   font-family: inherit;
   font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
   color: var(--color-primary);
   background-color: var(--color-white);
+  background-image: none;
   border: 1px solid var(--color-elements);
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: var(--transition);
 
+  &:hover {
+    border-color: var(--color-icons);
+  }
+
   &:focus {
     outline: none;
-    border-color: var(--color-icons);
+    border-color: var(--color-primary);
   }
 }
 
 .count {
-  font-size: 12px;
-  color: var(--color-secondary);
+  @include page-count;
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-sm);
-
-  @include tablet-up {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @include desktop-up {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  @include products-grid;
 }
 
 .message {
@@ -131,19 +180,6 @@
 .reloadButton {
   display: block;
   margin: var(--space-md) auto 0;
-  padding: var(--space-xs) var(--space-md);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--color-white);
-  text-transform: uppercase;
-  background-color: var(--color-accent);
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: var(--transition);
 
-  &:hover {
-    filter: brightness(0.92);
-  }
+  @include primary-button(40px);
 }

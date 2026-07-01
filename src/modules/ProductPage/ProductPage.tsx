@@ -1,35 +1,40 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
-import debounce from 'lodash.debounce';
 import { Product } from '../../types/Product';
 import { getProducts } from '../../utils/fetchClient';
-import { ProductCard } from '../shared/components/ProductCard';
 import { sortProducts } from '../../utils/sortProducts';
 import { Pagination } from './components/Pagination';
+import { ProductsList } from './components/ProductsList';
 import { Loader } from '../shared/ui/Loader/Loader';
-import { SearchIcon, CloseIcon } from '../shared/ui/Icons/Icons';
+import { ChevronDownIcon } from '../shared/ui/Icons/Icons';
 import styles from './ProductPage.module.scss';
 
 const PER_PAGE_OPTIONS = ['4', '8', '16', 'all'];
+const SORT_OPTIONS = ['age', 'title', 'price'];
 
-export const ProductPage = () => {
+type Props = {
+  category?: Product['category'];
+};
+
+export const ProductPage = ({ category: categoryProp }: Props) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [categoryProducts, setCategoryProducts] = useState<Product[]>([]);
-  const [localQuery, setLocalQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
-  const { category = '' } = useParams<{ category: string }>();
+  const { category: categoryFromParams = '' } = useParams<{ category: string }>();
+  const category = categoryProp || categoryFromParams;
   const categoryTitle = category.charAt(0).toUpperCase() + category.slice(1);
 
-  const sort = searchParams.get('sort') || '';
+  const sortParam = searchParams.get('sort') || 'age';
+  const sort = SORT_OPTIONS.includes(sortParam) ? sortParam : 'age';
   const query = searchParams.get('query') || '';
-  const perPageParam = searchParams.get('perPage') || '8';
-  const page = Number(searchParams.get('page')) || 1;
-
-  useEffect(() => {
-    setLocalQuery(query);
-  }, [query]);
+  const perPageRaw = searchParams.get('perPage') || 'all';
+  const perPageParam = PER_PAGE_OPTIONS.includes(perPageRaw)
+    ? perPageRaw
+    : 'all';
+  const pageRaw = Number(searchParams.get('page'));
+  const page = Number.isInteger(pageRaw) && pageRaw > 0 ? pageRaw : 1;
 
   useEffect(() => {
     setIsLoading(true);
@@ -45,30 +50,12 @@ export const ProductPage = () => {
       .finally(() => setIsLoading(false));
   }, [category]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleSearchChange = useCallback(
-    debounce((value: string) => {
-      setSearchParams(params => {
-        const newParams = new URLSearchParams(params);
-
-        if (value) {
-          newParams.set('query', value);
-        } else {
-          newParams.delete('query');
-        }
-
-        newParams.delete('page');
-
-        return newParams;
-      });
-    }, 500),
-    [],
-  );
-
   const handleSortChange = (value: string) => {
     const newParams = new URLSearchParams(searchParams);
 
-    if (value) {
+    if (value === 'age') {
+      newParams.delete('sort');
+    } else if (value) {
       newParams.set('sort', value);
     } else {
       newParams.delete('sort');
@@ -81,7 +68,7 @@ export const ProductPage = () => {
   const handlePerPageChange = (value: string) => {
     const newParams = new URLSearchParams(searchParams);
 
-    if (value === '8') {
+    if (value === 'all') {
       newParams.delete('perPage');
     } else {
       newParams.set('perPage', value);
@@ -114,7 +101,9 @@ export const ProductPage = () => {
 
   const perPage =
     perPageParam === 'all' ? products.length || 1 : Number(perPageParam);
-  const start = (page - 1) * perPage;
+  const pageCount = Math.max(1, Math.ceil(products.length / perPage));
+  const currentPage = Math.min(page, pageCount);
+  const start = (currentPage - 1) * perPage;
   const paginatedProducts = products.slice(start, start + perPage);
 
   const renderContent = () => {
@@ -153,17 +142,13 @@ export const ProductPage = () => {
       <>
         <p className={styles.count}>{products.length} models</p>
 
-        <div className={styles.grid}>
-          {paginatedProducts.map(product => (
-            <ProductCard key={product.itemId} product={product} />
-          ))}
-        </div>
+        <ProductsList products={paginatedProducts} className={styles.grid} />
 
-        {perPage < products.length && (
+        {pageCount > 1 && (
           <Pagination
             total={products.length}
             perPage={perPage}
-            currentPage={page}
+            currentPage={currentPage}
             onPageChange={handlePageChange}
           />
         )}
@@ -173,62 +158,41 @@ export const ProductPage = () => {
 
   return (
     <div className={styles.page}>
-      <h1 className={styles.title}>{categoryTitle}</h1>
+      <h1 className={styles.title}>{categoryTitle} page</h1>
 
       <div className={styles.toolbar}>
-        <label className={styles.searchField}>
-          <SearchIcon className={styles.searchIcon} />
-          <input
-            type="search"
-            className={styles.searchInput}
-            placeholder={`Search in ${category}...`}
-            value={localQuery}
-            onChange={event => {
-              setLocalQuery(event.target.value);
-              handleSearchChange(event.target.value);
-            }}
-          />
-          {localQuery && (
-            <button
-              type="button"
-              className={styles.clearButton}
-              aria-label="Limpar busca"
-              onClick={() => {
-                setLocalQuery('');
-                handleSearchChange('');
-              }}
-            >
-              <CloseIcon />
-            </button>
-          )}
-        </label>
-
         <label className={styles.field}>
           <span className={styles.fieldLabel}>Sort by</span>
-          <select
-            className={styles.select}
-            value={sort}
-            onChange={event => handleSortChange(event.target.value)}
-          >
-            <option value="age">Newest</option>
-            <option value="title">Alphabetically</option>
-            <option value="price">Cheapest</option>
-          </select>
+          <span className={styles.selectWrap}>
+            <select
+              className={styles.select}
+              value={sort}
+              onChange={event => handleSortChange(event.target.value)}
+            >
+              <option value="age">Newest</option>
+              <option value="title">Alphabetically</option>
+              <option value="price">Cheapest</option>
+            </select>
+            <ChevronDownIcon className={styles.selectChevron} />
+          </span>
         </label>
 
         <label className={styles.field}>
           <span className={styles.fieldLabel}>Items on page</span>
-          <select
-            className={styles.select}
-            value={perPageParam}
-            onChange={event => handlePerPageChange(event.target.value)}
-          >
-            {PER_PAGE_OPTIONS.map(option => (
-              <option key={option} value={option}>
-                {option === 'all' ? 'All' : option}
-              </option>
-            ))}
-          </select>
+          <span className={styles.selectWrap}>
+            <select
+              className={styles.select}
+              value={perPageParam}
+              onChange={event => handlePerPageChange(event.target.value)}
+            >
+              {PER_PAGE_OPTIONS.map(option => (
+                <option key={option} value={option}>
+                  {option === 'all' ? 'All' : option}
+                </option>
+              ))}
+            </select>
+            <ChevronDownIcon className={styles.selectChevron} />
+          </span>
         </label>
       </div>
 

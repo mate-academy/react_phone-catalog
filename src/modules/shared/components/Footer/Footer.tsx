@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import { ArrowUpIcon } from '../../ui/Icons/Icons';
+import logo from '../../../../../public/img/Logo.svg';
 
-// TODO: troque pelo link do seu repositório no GitHub
-const GITHUB_URL = 'https://github.com/SEU-USUARIO/react_phone-catalog';
+const GITHUB_URL = 'https://github.com/cassiaqueiroz/react_phone-catalog';
 
 export const Footer = () => {
   const scrollToTop = () => {
@@ -12,9 +12,9 @@ export const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.row}>
+      <div className={`${styles.row} container`}>
         <Link to="/" className={styles.logo}>
-          Nice<span className={styles.logoAccent}>Gadgets</span>
+          <img src={logo} alt="Nice Gadgets" className={styles.logoImg} />
         </Link>
 
         <nav className={styles.links}>
@@ -40,7 +40,10 @@ export const Footer = () => {
           onClick={scrollToTop}
           aria-label="Voltar ao topo"
         >
-          <ArrowUpIcon />
+          <span className={styles.backToTopLabel}>Back to top</span>
+          <span className={styles.backToTopIcon} aria-hidden="true">
+            <ArrowUpIcon />
+          </span>
         </button>
       </div>
     </footer>

@@ -8,7 +8,7 @@ export const Layout = () => (
     <Header />
 
     <main className={styles.main}>
-      <div className={styles.container}>
+      <div className={`${styles.content} container`}>
         <Outlet />
       </div>
     </main>

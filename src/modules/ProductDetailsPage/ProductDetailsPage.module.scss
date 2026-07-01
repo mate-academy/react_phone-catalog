@@ -1,20 +1,29 @@
 @import '../../styles/mixins';
 
-.page > :not(:first-child) {
-  margin-top: var(--space-md);
+.page {
+  @include page-top-spacing;
+  @include page-stack-spacing;
 }
 
 .notFound {
-  padding: var(--space-xl) 0;
+  @include empty-state-block(var(--space-xl) 0);
+}
+
+.notFoundImage {
+  width: 100%;
+  max-width: 320px;
+}
+
+.notFoundText {
   font-size: 16px;
   font-weight: 600;
   color: var(--color-secondary);
-  text-align: center;
 }
 
 .breadcrumbs {
   display: flex;
   align-items: center;
+  min-width: 0;
   gap: var(--space-xs);
   font-size: 12px;
   color: var(--color-secondary);
@@ -34,6 +43,8 @@
 }
 
 .breadcrumbCurrent {
+  flex: 1;
+  min-width: 0;
   overflow: hidden;
   color: var(--color-primary);
   text-overflow: ellipsis;
@@ -58,13 +69,19 @@
 
 .title {
   font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-h2);
   font-weight: 700;
 }
 
 .overview {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-lg);
+  gap: var(--space-md);
+
+  @include tablet-up {
+    gap: var(--space-lg);
+  }
 
   @include desktop-up {
     grid-template-columns: 1.2fr 1fr;
@@ -87,6 +104,11 @@
   flex-shrink: 0;
   gap: var(--space-xs);
   overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @include tablet-up {
     flex-direction: column;
@@ -101,12 +123,17 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   overflow: hidden;
   border: 1px solid var(--color-elements);
   border-radius: var(--radius-sm);
   transition: var(--transition);
+
+  @include tablet-up {
+    width: 56px;
+    height: 56px;
+  }
 
   img {
     max-width: 80%;
@@ -120,7 +147,7 @@
 }
 
 .thumbnailActive {
-  border-color: var(--color-accent);
+  border: 1px solid var(--color-primary);
 }
 
 .mainImageWrapper {
@@ -134,14 +161,22 @@
 }
 
 .mainImage {
-  width: 60%;
+  width: 68%;
   object-fit: contain;
+
+  @include tablet-up {
+    width: 60%;
+  }
 }
 
 .info {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: var(--space-md);
+
+  @include tablet-up {
+    gap: var(--space-lg);
+  }
 }
 
 .optionGroup {
@@ -152,6 +187,7 @@
 
 .optionLabel {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   font-size: 12px;
   font-weight: 600;
@@ -195,7 +231,7 @@
 }
 
 .colorInput:checked ~ .colorSwatch {
-  outline: 2px solid var(--color-accent);
+  outline: 1px solid var(--color-primary);
   outline-offset: 2px;
 }
 
@@ -259,57 +295,48 @@
 
 .actions {
   display: flex;
+  align-items: stretch;
   gap: var(--space-xs);
 }
 
 .addButton {
   flex: 1;
-  height: 44px;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--color-white);
-  text-transform: uppercase;
-  background-color: var(--color-accent);
-  border: 1px solid transparent;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: var(--transition);
+  font-weight: 600;
+  line-height: var(--lh-button);
+  white-space: nowrap;
+  padding-inline: var(--space-sm);
 
-  &:hover:not(:disabled) {
-    filter: brightness(0.92);
-  }
+  @include primary-button(40px);
 }
 
 .addButtonActive {
-  color: var(--color-accent);
-  background-color: var(--color-white);
-  border-color: var(--color-accent);
-  cursor: default;
+  @include primary-button-selected;
 }
 
 .favoriteButton {
   flex-shrink: 0;
+  width: 40px;
 
-  @include icon-button(44px);
+  @include icon-button(40px);
 }
 
 .favoriteButtonActive {
   color: var(--color-accent-secondary);
-  border-color: var(--color-accent-secondary);
+  border-color: var(--color-elements);
 }
 
 .quickSpecs {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: var(--space-sm);
   padding-top: var(--space-md);
   border-top: 1px solid var(--color-elements);
 
   li {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-2xs);
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-sm);
     font-size: 12px;
 
     span:first-child {
@@ -319,6 +346,7 @@
     span:last-child {
       font-weight: 600;
       color: var(--color-primary);
+      text-align: right;
     }
   }
 }
@@ -326,7 +354,11 @@
 .details {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-lg);
+  gap: var(--space-md);
+
+  @include tablet-up {
+    gap: var(--space-lg);
+  }
 
   @include desktop-up {
     grid-template-columns: 1.2fr 1fr;
@@ -368,9 +400,14 @@
   li {
     display: flex;
     justify-content: space-between;
+    gap: var(--space-sm);
     padding-bottom: var(--space-sm);
-    font-size: 14px;
+    font-size: 12px;
     border-bottom: 1px solid var(--color-elements);
+
+    @include tablet-up {
+      font-size: 14px;
+    }
 
     span:first-child {
       color: var(--color-secondary);
@@ -385,15 +422,5 @@
 }
 
 .suggestedGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-sm);
-
-  @include tablet-up {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @include desktop-up {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  @include products-grid;
 }

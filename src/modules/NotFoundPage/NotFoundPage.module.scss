@@ -1,10 +1,7 @@
+@import '../../styles/mixins';
+
 .page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-xl) 0;
-  text-align: center;
+  @include empty-state-block;
 }
 
 .image {
@@ -18,16 +15,5 @@
 }
 
 .link {
-  padding: var(--space-xs) var(--space-md);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--color-white);
-  text-transform: uppercase;
-  border-radius: var(--radius-sm);
-  transition: var(--transition);
-
-  &:hover:not(:disabled) {
-    filter: brightness(0.92);
-  }
+  @include primary-button(40px);
 }

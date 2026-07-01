@@ -1,5 +1,6 @@
 import cn from 'classnames';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Product } from '../../../../types/Product';
 import { useCart } from '../../../../context/CartContext';
 import { useFavorites } from '../../../../context/FavoritesContext';
@@ -11,17 +12,22 @@ type Props = {
 };
 
 export const ProductCard = ({ product }: Props) => {
+  const [isFavoriteHovered, setIsFavoriteHovered] = useState(false);
+  const location = useLocation();
   const { cartItems, addToCart } = useCart();
   const { favorites, toggleFavorite } = useFavorites();
 
   const isInCart = cartItems.some(item => item.id === product.itemId);
   const isFavorite = favorites.some(item => item.itemId === product.itemId);
+  const isFavoritesPage = location.pathname === '/favorites';
+  const shouldShowFilledHeart = isFavorite
+    && !(isFavoritesPage && isFavoriteHovered);
   const hasDiscount = product.fullPrice > product.price;
 
   return (
     <article className={styles.card} data-cy="cardsContainer">
       <Link
-        to={`/${product.category}/${product.itemId}`}
+        to={`/product/${product.itemId}`}
         className={styles.imageLink}
       >
         <img
@@ -32,7 +38,7 @@ export const ProductCard = ({ product }: Props) => {
       </Link>
 
       <Link
-        to={`/${product.category}/${product.itemId}`}
+        to={`/product/${product.itemId}`}
         className={styles.name}
       >
         {product.name}
@@ -69,7 +75,7 @@ export const ProductCard = ({ product }: Props) => {
           onClick={() => addToCart(product)}
           disabled={isInCart}
         >
-          {isInCart ? 'Added to cart' : 'Add to cart'}
+          {isInCart ? 'Added' : 'Add to cart'}
         </button>
 
         <button
@@ -78,12 +84,14 @@ export const ProductCard = ({ product }: Props) => {
             [styles.favoriteButtonActive]: isFavorite,
           })}
           onClick={() => toggleFavorite(product)}
+          onMouseEnter={() => setIsFavoriteHovered(true)}
+          onMouseLeave={() => setIsFavoriteHovered(false)}
           aria-label={
-            isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'
+            isFavorite ? 'Remove from favorites' : 'Add to favorites'
           }
           aria-pressed={isFavorite}
         >
-          <HeartIcon filled={isFavorite} />
+          <HeartIcon filled={shouldShowFilledHeart} />
         </button>
       </div>
     </article>
