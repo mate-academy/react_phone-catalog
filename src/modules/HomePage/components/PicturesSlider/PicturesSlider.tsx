@@ -106,9 +106,6 @@ export const PicturesSlider = ({ items, interval = 5000 }: Props) => {
         {current.subtitle && (
           <p className={styles.subtitle}>{current.subtitle}</p>
         )}
-        {current.link && (
-          <span className={styles.cta}>{current.ctaLabel || 'Shop now'}</span>
-        )}
       </div>
     </>
   );
