@@ -7,6 +7,8 @@ import { PicturesSlider, SlideItem } from './components/PicturesSlider';
 import { ProductsSlider } from './components/ProductsSlider';
 import styles from './HomePage.module.scss';
 
+const IMG_BASE = import.meta.env.BASE_URL;
+
 type CategoryItem = {
   to: string;
   label: string;
@@ -18,7 +20,7 @@ type CategoryItem = {
 
 const BANNERS: SlideItem[] = [
   {
-    image: '/img/banners/banner-phone-device.png',
+    image: `${IMG_BASE}/img/banners/banner-phone-device.png`,
     tabletObjectPosition: 'center',
     imageScale: '0.8',
     tabletImageScale: '0.82',
@@ -35,7 +37,7 @@ const BANNERS: SlideItem[] = [
     link: '/phones',
   },
   {
-    image: '/img/banners/banner-tablet-device.png',
+    image: `${IMG_BASE}/img/banners/banner-tablet-device.png`,
     tabletObjectPosition: 'center',
     imageScale: '1',
     tabletImageScale: '1.02',
@@ -52,7 +54,7 @@ const BANNERS: SlideItem[] = [
     link: '/tablets',
   },
   {
-    image: '/img/banners/banner-accessory-device.png',
+    image: `${IMG_BASE}/img/banners/banner-accessory-device.png`,
     tabletObjectPosition: 'center',
     imageScale: '0.8',
     tabletImageScale: '0.82',
@@ -74,22 +76,23 @@ const CATEGORIES: CategoryItem[] = [
   {
     to: '/phones',
     label: 'Phones',
-    image: '/img/categories/category-phones-mobile.png',
-    tabletImage: '/img/categories/category-phones-tablet.png',
-    desktopImage: '/img/categories/category-phones-desktop.png',
+    image: `${IMG_BASE}/img/categories/category-phones-mobile.png`,
+    tabletImage: `${IMG_BASE}/img/categories/category-phones-tablet.png`,
+    desktopImage: `${IMG_BASE}/img/categories/category-phones-desktop.png`,
     type: 'phones',
   },
   {
     to: '/tablets',
     label: 'Tablets',
-    image: '/img/categories/category-tablets-mobile.png',
-    tabletImage: '/img/categories/category-tablets-tablet.png',
+    image: `${IMG_BASE}/img/categories/category-tablets-mobile.png`,
+    tabletImage: `${IMG_BASE}/img/categories/category-tablets-tablet.png`,
+    desktopImage: `${IMG_BASE}/img/categories/category-tablets-desktop.png`,
     type: 'tablets',
   },
   {
     to: '/accessories',
     label: 'Accessories',
-    image: '/img/categories/category-accessories.webp',
+    image: `${IMG_BASE}/img/categories/category-accessories.webp`,
     type: 'accessories',
   },
 ];
