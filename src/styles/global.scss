@@ -1,0 +1,16 @@
+@import './reset.scss';
+@import './variables.scss';
+
+body {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  background: var(--gray);
+  color: var(--primary);
+  font-size: 32px;
+  line-height: 41px;
+
+  @media (max-width: 639px) {
+    font-size: 22px;
+    line-height: 140%;
+  }
+}

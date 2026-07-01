@@ -1,0 +1,44 @@
+html {
+    box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+/* *{
+    color: red;
+    border: 1px solid red;
+} */
+a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+ul,
+li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+p {
+    margin: 0;
+}
+
+body {
+  margin: 0;
+}
+
+button{
+  padding: 0;
+  box-sizing: border-box;
+}
