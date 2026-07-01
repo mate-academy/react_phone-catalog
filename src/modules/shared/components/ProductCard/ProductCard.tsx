@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Product } from '../../../../types/Product';
 import { useCart } from '../../../../context/CartContext';
 import { useFavorites } from '../../../../context/FavoritesContext';
@@ -15,15 +15,12 @@ type Props = {
 
 export const ProductCard = ({ product }: Props) => {
   const [isFavoriteHovered, setIsFavoriteHovered] = useState(false);
-  const location = useLocation();
   const { cartItems, addToCart } = useCart();
   const { favorites, toggleFavorite } = useFavorites();
 
   const isInCart = cartItems.some(item => item.id === product.itemId);
   const isFavorite = favorites.some(item => item.itemId === product.itemId);
-  const isFavoritesPage = location.pathname === '/favorites';
-  const shouldShowFilledHeart =
-    isFavorite && !(isFavoritesPage && isFavoriteHovered);
+  const shouldShowFilledHeart = isFavorite && !isFavoriteHovered;
   const hasDiscount = product.fullPrice > product.price;
 
   return (
