@@ -317,18 +317,6 @@
   @include primary-button-selected;
 }
 
-.favoriteButton {
-  flex-shrink: 0;
-  width: 40px;
-
-  @include icon-button(40px);
-}
-
-.favoriteButtonActive {
-  color: var(--color-accent-secondary);
-  border-color: var(--color-elements);
-}
-
 .quickSpecs {
   display: flex;
   flex-direction: column;

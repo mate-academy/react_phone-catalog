@@ -10,8 +10,9 @@ import { Loader } from '../shared/ui/Loader/Loader';
 import { ProductCard } from '../shared/components/ProductCard';
 import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoritesContext';
-import { ChevronLeftIcon, HeartIcon } from '../shared/ui/Icons/Icons';
+import { ChevronLeftIcon } from '../shared/ui/Icons/Icons';
 import styles from './ProductDetailsPage.module.scss';
+import { FavoriteButton } from '../shared/ui/FavoriteButton';
 
 const IMG_BASE = import.meta.env.BASE_URL;
 const COLOR_MAP: Record<string, string> = {
@@ -243,19 +244,10 @@ export const ProductDetailsPage = () => {
               {isInCart ? 'Added to cart' : 'Add to cart'}
             </button>
 
-            <button
-              type="button"
-              className={cn(styles.favoriteButton, {
-                [styles.favoriteButtonActive]: isFavorite,
-              })}
-              onClick={() => toggleFavorite(productAsItem)}
-              aria-label={
-                isFavorite ? 'Remove from favorites' : 'Add to favorites'
-              }
-              aria-pressed={isFavorite}
-            >
-              <HeartIcon filled={isFavorite} />
-            </button>
+            <FavoriteButton
+              isFavorite={isFavorite}
+              onToggle={() => toggleFavorite(productAsItem)}
+            />
           </div>
 
           <ul className={styles.quickSpecs}>
