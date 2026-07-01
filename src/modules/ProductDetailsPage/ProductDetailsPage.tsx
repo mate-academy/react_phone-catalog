@@ -182,7 +182,7 @@ export const ProductDetailsPage = () => {
             <div className={styles.colors}>
               {product.colorsAvailable.map(color => (
                 <label key={color} className={styles.colorOption}>
-                  <span className="visually-hidden">{color}</span>
+                  <span className={styles.visuallyHidden}>{color}</span>
                   <input
                     type="radio"
                     name="color"

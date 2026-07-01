@@ -1,5 +1,9 @@
 @import '../../styles/mixins';
 
+.visuallyHidden {
+  @include visually-hidden;
+}
+
 .page {
   @include page-top-spacing;
   @include page-stack-spacing;
