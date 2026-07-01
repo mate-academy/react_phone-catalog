@@ -126,17 +126,21 @@ export const ProductDetailsPage = () => {
         <aside className={styles.blockDetailsRight}>
           <div className={styles.colorsAvailableBlock}>
             {colorsAvailable.map(color => (
-              <label key={color} className={styles.linkAvailable}>
+              <Link
+                to={`/${category} /${colorsAvailable}`}
+                key={color}
+                className={styles.linkAvailable}
+              >
                 <input
                   type="radio"
                   name="color"
                   value={color}
-                  checked={selectedColor === color}
+                  // checked={selectedColor === color}
                   onChange={() => setSelectedColor(color)}
-                  className={styles.hiddenRadio}
+                  className={`${styles.imagesByColor} ${selectedColor === color ? styles.activeColor : ''}`}
                 />
                 {color}
-              </label>
+              </Link>
             ))}
           </div>
           <span className={styles.uderLine}></span>
