@@ -1,22 +1,32 @@
 .checkoutProduct {
   padding: 24px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--elements);
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 24px;
-  flex-wrap: wrap;
+
+  background-color: var(--white);
+  border-radius: 8px;
 }
 
 .remove {
+  order: 1;
   border: none;
   background: transparent;
   background-image: url('/react_phone-catalog/img/icons/close.svg');
   cursor: pointer;
   flex-shrink: 0;
-  width: 16px;height: 16px;
+  width: 16px;
+  height: 16px;
 }
-
+.categoryLink {
+  order: 2;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
 .image {
   width: 80px;
   height: 80px;
@@ -26,51 +36,77 @@
 
 .name {
   flex: 1;
+  min-width: 0;
   font-size: 14px;
   font-weight: 600;
+  font-family: Mont;
+  line-height: 21px;
 }
 
 .counter {
+  order: 3;
   display: flex;
   align-items: center;
   gap: 12px;
   flex-shrink: 0;
 }
+.counter__but {
+  width: 32px;
+  height: 32px;
 
+  border: 1px solid var(--elements);
+  border-radius: 50%;
+  cursor: pointer;
+
+  background-repeat: no-repeat;
+  background-color: var(--white);
+  background-position: center;
+  background-size: 16px 16px;
+  transition: border 0.3s ease;
+  &:hover {
+    border: 1px solid var(--primary);
+  }
+}
+.counter__butMinus {
+  background-image: url('/react_phone-catalog/img/icons/minus.svg');
+}
+.counter__butPlus {
+  background-image: url('/react_phone-catalog/img/icons/plus.svg');
+}
+.counter__num {
+  font-family: Mont;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  color: var(--primary);
+}
 .price {
+  order: 4;
   min-width: 80px;
   text-align: right;
   font-size: 22px;
   font-weight: 800;
+  font-family: Mont;
+  line-height: 140%;
+  text-align: right;
 }
+
 @media (max-width: 640px) {
   .checkoutProduct {
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
   }
-
-
-  .remove {
-    order: 1;
+  .categoryLink {
+    flex: 1 1 calc(100% - 120px);
   }
-
-  .image {
-    order: 2;
-  }
-
-  .name {
-    order: 3;
-    flex: 1 1 calc(90% - 120px);
-  }
-
 
   .counter {
-    order: 4;
     flex: 1;
     margin-top: 16px;
   }
 
   .price {
-    order: 5;
     flex: 1;
     margin-top: 16px;
     text-align: right;

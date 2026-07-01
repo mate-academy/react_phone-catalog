@@ -4,7 +4,7 @@ import { asset } from '../../utils/paths';
 import { usePhones } from '../../hooks/usePhones';
 import { useAccessories } from '../../hooks/useAccessories';
 import { useTablets } from '../../hooks/useTablets';
-import styles from './ProductDetailsPage.module.scss';
+import styles from './ProductDetails.module.scss';
 import { Breadcrumbs } from '../CatalogPage/Breadcrumbs/Breadcrumbs';
 import { useNavigate } from 'react-router-dom';
 import { ProductColors } from './ProductOptions/ProductColors';

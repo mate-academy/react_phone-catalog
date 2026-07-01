@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styles from './CartItem.module.scss';
 import { asset } from '../../utils/paths';
 import { useCart } from '../../context/CartContext';
@@ -7,28 +8,42 @@ type Props = {
   image: string;
   name: string;
   price: number;
+  link: string;
 };
 
-export const CartItem: React.FC<Props> = ({ id, image, name, price }) => {
-  const { cart, addToCart, decreaseFromCart } = useCart();
+export const CartItem: React.FC<Props> = ({ id, image, name, price, link }) => {
+  const { cart, addToCart, decreaseFromCart, removeFromCart } = useCart();
 
   const item = cart.find(i => i.id === id);
-  const quantity = item?.quantity ?? 1;
+  const quantity = item?.quantity ?? 0;
+
+  if (!item) {
+    return null;
+  }
 
   return (
     <article className={styles.checkoutProduct}>
-      <button className={styles.remove}></button>
+      <button
+        className={styles.remove}
+        onClick={() => removeFromCart(id)}
+      ></button>
+      <NavLink to={link} className={styles.categoryLink}>
+        <img src={asset(image)} alt={name} className={styles.image} />
 
-      <img src={asset(image)} alt={name} className={styles.image} />
-
-      <h3 className={styles.name}>{name}</h3>
-
+        <h3 className={styles.name}>{name}</h3>
+      </NavLink>
       <div className={styles.counter}>
-        <button onClick={() => decreaseFromCart(id)}>-</button>
+        <button
+          className={`${styles.counter__but} ${styles.counter__butMinus}`}
+          onClick={() => decreaseFromCart(id)}
+        ></button>
 
-        <span>{quantity}</span>
+        <span className={styles.counter__num}>{quantity}</span>
 
-        <button onClick={() => addToCart(id)}>+</button>
+        <button
+          className={`${styles.counter__but} ${styles.counter__butPlus}`}
+          onClick={() => addToCart(id)}
+        ></button>
       </div>
 
       <p className={styles.price}>${price * quantity}</p>

@@ -8,7 +8,7 @@ import { CartProvider } from './context/CartContext';
 import { FavoritesProvider } from './context/FavoritesContext';
 import { Header } from './components/Header/Header';
 import { CatalogPage } from './pages/CatalogPage/CatalogPage';
-import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetails';
 import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
 import { CartPage } from './pages/CartPage/CartPage';
 
@@ -46,18 +46,6 @@ export const App = () => {
 
                 <Route path="/favorites" element={<FavoritesPage />} />
                 <Route path="/cart" element={<CartPage />} />
-
-                {/* <Route
-                  path="/phones"
-                  element={<PhonesPage name="Mobile phones" items={products} />}
-                /> */}
-                {/* <Route path="/tablets" element={<TabletsPage />} />
-      <Route path="/accessories" element={<AccessoriesPage />} />
-
-      <Route path="/product/:productId" element={<ProductDetailsPage />} />
-
-      <Route path="/cart" element={<CartPage />} />
-      <Route path="/favorites" element={<FavoritesPage />} />*/}
 
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>

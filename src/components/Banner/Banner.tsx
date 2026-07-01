@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 
-// import ArrowLeft from './arrow-left.svg?react';
 import styles from './Banner.module.scss';
 import { asset } from '../../utils/paths';
 

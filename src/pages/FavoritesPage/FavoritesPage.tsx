@@ -28,7 +28,15 @@ export const FavoritesPage = () => {
       <p className={styles.favoritesCount}>{favoritesProducts.length} items</p>
 
       {favoritesProducts.length === 0 ? (
-        <p className={styles.emptyMessage}>No favorite products yet</p>
+        // <p className={styles.emptyMessage}>No favorite products yet</p>
+        <div className={styles.cart__empty}>
+          <h3 className={styles.cart__emptyText}>No favorite products yet</h3>
+          <img
+            className={styles.cart__emptyImg}
+            src="./img/product-not-found.png"
+            alt="Cart is empty"
+          />
+        </div>
       ) : (
         <div className={styles.catalogGrid}>
           {favoritesProducts.map(product => (

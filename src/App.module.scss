@@ -38,8 +38,15 @@ p {
 body {
   margin: 0;
 }
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .section {
   margin-top: 54px;
+  flex: 1;
 }
 .title {
   font-family: 'MontExtra', 'Mont', sans-serif;
