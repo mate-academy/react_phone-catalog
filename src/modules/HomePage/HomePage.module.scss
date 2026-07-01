@@ -1,10 +1,14 @@
 @import '../../styles/mixins';
 
+.visuallyHidden {
+  @include visually-hidden;
+}
+
 .page {
   @include page-top-spacing;
 }
 
-.page > :not(:global(.visually-hidden)) + :not(:global(.visually-hidden)) {
+.page > :not(.visuallyHidden) + :not(.visuallyHidden) {
   margin-top: var(--space-lg);
 
   @include tablet-up {
@@ -49,6 +53,7 @@
 
 .categoryCard {
   display: block;
+
   --category-ratio-mobile: 1 / 1;
   --category-ratio-tablet: 1 / 1;
   --category-image-fit-mobile: contain;

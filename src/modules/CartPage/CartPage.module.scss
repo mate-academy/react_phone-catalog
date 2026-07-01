@@ -50,8 +50,7 @@
     'remove image name'
     '. quantity price';
   align-items: center;
-  column-gap: var(--space-sm);
-  row-gap: var(--space-xs);
+  gap: var(--space-xs) var(--space-sm);
   padding: var(--space-sm);
   background-color: var(--color-white);
   border: 1px solid var(--color-elements);

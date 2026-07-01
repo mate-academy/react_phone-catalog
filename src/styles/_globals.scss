@@ -21,6 +21,7 @@ body {
   background-color: var(--color-body);
 }
 
+/* stylelint-disable-next-line selector-max-id */
 #root {
   min-height: 100vh;
 }
@@ -94,10 +95,6 @@ a img {
 
 a:hover img {
   transform: scale(var(--image-hover-scale));
-}
-
-.visually-hidden {
-  @include visually-hidden;
 }
 
 .container {
