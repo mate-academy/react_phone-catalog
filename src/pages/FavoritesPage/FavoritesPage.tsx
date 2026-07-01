@@ -16,10 +16,13 @@ export const FavoritesPage: React.FC = () => {
   }, []);
 
   const query = (searchParams.get('query') || '').trim().toLowerCase();
+  const queryWords = query.split(/\s+/).filter(Boolean);
 
-  const filteredFavorites = favorites.filter(p =>
-    p.name.toLowerCase().includes(query),
-  );
+  const filteredFavorites = favorites.filter(p => {
+    const nameLower = p.name.toLowerCase();
+
+    return queryWords.every(word => nameLower.includes(word));
+  });
 
   const handleClearSearch = () => {
     setSearchParams({ query: '' });

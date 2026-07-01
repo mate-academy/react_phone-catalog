@@ -89,6 +89,10 @@ export const ProductDetailsPage: React.FC = () => {
   }, [productId]);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [productId]);
+
+  useEffect(() => {
     if (loading) {
       document.title = 'Loading... | Gadgets';
     } else if (error || !details) {
@@ -184,7 +188,7 @@ export const ProductDetailsPage: React.FC = () => {
 
       <button
         type="button"
-        onClick={() => navigate(-1)}
+        onClick={() => navigate(`/${details.category}`)}
         className={styles.backBtn}
       >
         <i className="fa-solid fa-chevron-left" />

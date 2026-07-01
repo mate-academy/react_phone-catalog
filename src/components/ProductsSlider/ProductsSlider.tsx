@@ -55,7 +55,9 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   return (
     <section className={styles.sliderContainer} data-testid="products-slider">
       <div className={styles.header}>
-        <h2 className={styles.title}>{title}</h2>
+        <h2 className={styles.title}>
+          {title} {products.length > 0 ? `(${products.length})` : ''}
+        </h2>
         <div className={styles.buttons}>
           <button
             type="button"

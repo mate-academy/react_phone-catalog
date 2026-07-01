@@ -74,7 +74,9 @@ export const HomePage: React.FC = () => {
     .filter(p => p.fullPrice > p.price)
     .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price));
 
-  const brandNewProducts = [...products].sort((a, b) => b.year - a.year);
+  const brandNewProducts = [...products]
+    .filter(p => p.price === p.fullPrice)
+    .sort((a, b) => b.year - a.year);
 
   const phonesCount = products.filter(p => p.category === 'phones').length;
   const tabletsCount = products.filter(p => p.category === 'tablets').length;
@@ -88,8 +90,8 @@ export const HomePage: React.FC = () => {
 
       <PicturesSlider />
 
-      {hotPriceProducts.length > 0 && (
-        <ProductsSlider products={hotPriceProducts} title="Hot prices" />
+      {brandNewProducts.length > 0 && (
+        <ProductsSlider products={brandNewProducts} title="Brand new models" />
       )}
 
       <section className={styles.categoriesSection}>
@@ -133,8 +135,8 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {brandNewProducts.length > 0 && (
-        <ProductsSlider products={brandNewProducts} title="Brand new" />
+      {hotPriceProducts.length > 0 && (
+        <ProductsSlider products={hotPriceProducts} title="Hot prices" />
       )}
     </div>
   );

@@ -90,6 +90,7 @@ export const PicturesSlider: React.FC = () => {
                 key={index}
                 to={slide.link}
                 className={styles.slide}
+                title={slide.alt}
                 aria-label={`Go to ${slide.alt}`}
               >
                 <img src={getAssetUrl(slide.image)} alt={slide.alt} />

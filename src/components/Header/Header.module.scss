@@ -30,6 +30,15 @@ input[type="search" i]:enabled:read-write:-webkit-any(:focus, :hover)::-webkit-s
   i {
     font-size: 20px;
   }
+
+  @media (max-width: 640px) {
+    font-size: 14px;
+    gap: 6px;
+    
+    i {
+      font-size: 16px;
+    }
+  }
 }
 
 .nav {
@@ -38,9 +47,25 @@ input[type="search" i]:enabled:read-write:-webkit-any(:focus, :hover)::-webkit-s
   height: 100%;
   margin-left: 48px;
   margin-right: auto;
+
+  @media (max-width: 1024px) {
+    overflow: hidden;
+    max-width: 600px;
+    opacity: 1;
+    transition: max-width 0.4s ease, opacity 0.3s ease, margin-left 0.4s ease;
+  }
   
   @media (max-width: 768px) {
     display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .navSearchFocused {
+    max-width: 0;
+    opacity: 0;
+    margin-left: 0;
+    pointer-events: none;
   }
 }
 
@@ -68,28 +93,34 @@ input[type="search" i]:enabled:read-write:-webkit-any(:focus, :hover)::-webkit-s
 
 .searchContainer {
   position: relative;
-  width: 264px;
+  max-width: 300px;
   margin: -1px;
+  width: 100%;
   
-  @media (max-width: 640px) {
-    width: 150px;
+  @media (max-width: 1024px) {
+    transition: max-width 0.4s ease;
+  }
+
+  @media (max-width: 768px) {
+    max-width: none;
   }
 }
 
 .searchInput {
   width: 100%;
   height: var(--header-height);
-  padding: 0 36px;
+  padding-left: 36px;
   border: 1px solid var(--color-border);
 
   background-color: var(--color-background);
   font-size: 13px;
   outline: none;
   transition: all var(--transition-speed) ease;
+
+  text-overflow: ellipsis;
   
   &:focus {
     border: 1px solid var(--color-text-primary);
-
   }
 }
 
@@ -129,10 +160,26 @@ input[type="search" i]:enabled:read-write:-webkit-any(:focus, :hover)::-webkit-s
   align-items: center;
   height: 100%;
   padding-left: 16px;
+  margin-left: auto;
 
   & > a,
   & > button {
     border-left: 1px solid var(--color-border);
+  }
+
+  @media (max-width: 1024px) {
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+}
+
+.searchContainerFocused {
+  @media (min-width: 769px) and (max-width: 1024px) {
+    max-width: 500px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: none;
   }
 }
 
@@ -150,6 +197,10 @@ input[type="search" i]:enabled:read-write:-webkit-any(:focus, :hover)::-webkit-s
   
   &:hover {
     background-color: var(--color-surface);
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 }
 
@@ -192,15 +243,129 @@ input[type="search" i]:enabled:read-write:-webkit-any(:focus, :hover)::-webkit-s
   &:hover {
     background-color: var(--color-surface);
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .hamburger {
   display: none;
   font-size: 20px;
   cursor: pointer;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  border: none;
+  background: none;
+  color: var(--color-text-primary);
+  justify-content: center;
+  align-items: center;
   
   @media (max-width: 768px) {
-    display: block;
-    margin-right: 16px;
+    display: flex;
   }
+}
+
+.menuOverlay {
+  position: fixed;
+  inset: var(--header-height) 0 0 0;
+  background-color: var(--color-background);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+
+  opacity: 0;
+  transform: translateY(-20px);
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.menuOverlayOpen {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.menuNav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.menuNavLink {
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  padding: 12px;
+  width: 100%;
+  text-align: center;
+  border-radius: 8px;
+  transition: all var(--transition-speed) ease;
+
+  &:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-surface);
+  }
+}
+
+.menuNavLinkActive {
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
+}
+
+.menuActions {
+  width: 100%;
+  border-top: 1px solid var(--color-border);
+  padding-top: 24px;
+  margin-top: auto;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.menuActionBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-card-bg);
+  color: var(--color-text-primary);
+  font-size: 20px;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  
+  &:hover {
+    background-color: var(--color-surface);
+    border-color: var(--color-text-primary);
+  }
+}
+
+.menuActionBtnActive {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background-color: var(--color-surface);
 }

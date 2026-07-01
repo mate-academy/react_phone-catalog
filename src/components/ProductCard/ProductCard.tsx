@@ -13,7 +13,7 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { addToCart, isInCart } = useCart();
+  const { addToCart, isInCart, removeFromCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
 
   const { itemId, name, fullPrice, price, screen, capacity, ram, image } =
@@ -28,6 +28,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
     if (!inCart) {
       addToCart(product);
+    }
+
+    if (inCart) {
+      removeFromCart(itemId);
     }
   };
 
@@ -70,29 +74,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
 
       <div className={styles.buttons}>
-        {inCart ? (
-          <Link
-            to="/cart"
-            className={`${styles.btnCart} ${styles.btnCartActive}`}
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-            aria-label="Added to cart"
-          >
-            Added to cart
-          </Link>
-        ) : (
-          <button
-            type="button"
-            onClick={handleCartClick}
-            className={styles.btnCart}
-            aria-label="Add to cart"
-          >
-            Add to cart
-          </button>
-        )}
+        <button
+          type="button"
+          onClick={handleCartClick}
+          className={`${styles.btnCart} ${inCart ? styles.btnCartActive : ''}`}
+          aria-label={inCart ? 'Added to cart' : 'Add to cart'}
+        >
+          {inCart ? 'Added to cart' : 'Add to cart'}
+        </button>
 
         <button
           type="button"

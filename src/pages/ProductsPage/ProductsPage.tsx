@@ -107,9 +107,12 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
 
   const categoryProducts = products.filter(p => p.category === category);
 
-  const filteredProducts = categoryProducts.filter(p =>
-    p.name.toLowerCase().includes(query),
-  );
+  const queryWords = query.split(/\s+/).filter(Boolean);
+  const filteredProducts = categoryProducts.filter(p => {
+    const nameLower = p.name.toLowerCase();
+
+    return queryWords.every(word => nameLower.includes(word));
+  });
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     switch (sort) {

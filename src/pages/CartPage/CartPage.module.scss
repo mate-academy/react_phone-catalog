@@ -223,14 +223,14 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 60px 0;
+  padding: 24px 0;
 }
 
 .emptyImage {
-  width: 320px;
+  width: 220px;
   max-width: 80%;
   height: auto;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   object-fit: contain;
 }
 
@@ -243,7 +243,7 @@
 
 .emptyText {
   color: var(--color-text-secondary);
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 .shopBtn {
