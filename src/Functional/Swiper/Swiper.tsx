@@ -37,7 +37,7 @@ export const UseSwiper: React.FC = () => {
   }
 
   return (
-    <section>
+    <section className={styles.swiperBlock}>
       <div className={styles.buttonsGroup}>
         <button className={styles.buttonHotPrice} id="hot-prev-button">
           <img

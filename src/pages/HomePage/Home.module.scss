@@ -8,14 +8,14 @@
    .main {
     padding: 0 32px;
 
-@include on-tablet {
+   @include on-tablet {
     padding: 0px 24px;
   }
 
   @include on-phone {
     padding: 0 16px;
-  }
    }
+  }
 
 .mainWellcome {
   font-weight: 800;

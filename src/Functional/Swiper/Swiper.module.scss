@@ -1,5 +1,14 @@
 @import '../../mixin.scss';
 
+.swiperBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.swiperNewBlock {
+  overflow: auto hidden;
+}
+
 .buttonsGroup {
   box-sizing: border-box;
   display: flex;

@@ -180,19 +180,19 @@ export const ProductDetailsPage = () => {
           </div>
 
           <div className={styles.cardSpes}>
-            <div className={styles.screen}>
+            <div className={styles.specRow}>
               <span>Screen</span>
               <strong className={styles.strong}>{screen}</strong>
             </div>
-            <div className={styles.resolution}>
+            <div className={styles.specRow}>
               <span>Resolution</span>
               <strong className={styles.strong}>{resolution}</strong>
             </div>
-            <div className={styles.processor}>
+            <div className={styles.specRow}>
               <span>Processor</span>
               <strong className={styles.strong}>{processor}</strong>
             </div>
-            <div className={styles.ram}>
+            <div className={styles.specRow}>
               <span>Ram</span>
               <strong className={styles.strong}>{ram}</strong>
             </div>
@@ -214,39 +214,40 @@ export const ProductDetailsPage = () => {
           </div>
         </section>
 
-        <div className={styles.techSpecs}>
-          <h3 className={styles.techSpecsTitle}>Tech specs</h3>
-          <div className={styles.uderLine}></div>
-
+        <section className={styles.techSpecs}>
+          <div className={styles.techSpecsDiv}>
+            <h3 className={styles.techSpecsTitle}>Tech specs</h3>
+            <div className={styles.uderLine}></div>
+          </div>
           <div className={styles.specRow}>
             <span>Screen</span>
-            <strong className={styles.strong}>{screen}</strong>
+            <strong className={styles.strongTech}>{screen}</strong>
           </div>
           <div className={styles.specRow}>
             <span>Resolution</span>
-            <strong className={styles.strong}>{resolution}</strong>
+            <strong className={styles.strongTech}>{resolution}</strong>
           </div>
           <div className={styles.specRow}>
             <span>Processor</span>
-            <strong className={styles.strong}>{processor}</strong>
+            <strong className={styles.strongTech}>{processor}</strong>
           </div>
           <div className={styles.specRow}>
             <span>Ram</span>
-            <strong className={styles.strong}>{ram}</strong>
+            <strong className={styles.strongTech}>{ram}</strong>
           </div>
           <div className={styles.specRow}>
             <span>Camera</span>
-            <strong className={styles.strong}>{camera}</strong>
+            <strong className={styles.strongTech}>{camera}</strong>
           </div>
           <div className={styles.specRow}>
             <span>Zoom</span>
-            <strong className={styles.strong}>{zoom}</strong>
+            <strong className={styles.strongTech}>{zoom}</strong>
           </div>
           <div className={styles.specRow}>
             <span>Cell</span>
-            <strong className={styles.strong}>{cell}</strong>
+            <strong className={styles.strongTech}>{cell}</strong>
           </div>
-        </div>
+        </section>
       </section>
 
       <div className={styles.containerYouMayAlso}>

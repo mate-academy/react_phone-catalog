@@ -1,0 +1,54 @@
+@import '../../mixin.scss';
+
+.container {
+  padding: 0 32px;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-phone {
+    padding: 0 16px;
+    align-items: center;
+  }
+}
+
+.home {
+  text-decoration: none;
+}
+
+.homeButton {
+  border: none;
+  background: white;
+  display: flex;
+
+}
+
+.homeButton {
+  margin: 24px 0 40px;
+  font-weight: 600;
+  font-family: Mont;
+  text-decoration: none;
+  font-size: 12px;
+  align-items: center;
+  gap: 8px;
+
+  @include on-phone {
+    margin: 24px 0 24px;
+  }
+
+}
+
+.homeImg {
+  width: 16px;
+  height: 16px;
+}
+
+.homePhones {
+  pointer-events: none;
+}
+
+.homeGo,
+.homeGoTo {
+  color: #89939A;
+}

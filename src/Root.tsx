@@ -9,8 +9,8 @@ import './App.module.scss';
 import { HomePage } from './pages/HomePage/Home';
 import { ProductList } from './pages/ProductList/ProductList';
 import { NotFound } from './pages/NotFound';
-import { Favorites } from './pages/Favorites';
-import { Cart } from './pages/Cart';
+import { Favorites } from './pages/Favorites/Favorites';
+import { Cart } from './pages/Cart/Cart';
 import { ProductDetailsPage } from './ProductDetailsPage/ProductDetailsPage';
 
 export const Root = () => (

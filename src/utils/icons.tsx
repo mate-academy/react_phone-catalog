@@ -1,17 +1,17 @@
-import { NavLink } from 'react-router-dom';
-import React from 'react';
+// import { NavLink } from 'react-router-dom';
+// import React from 'react';
 
-export const FavoritesIcon: React.FC<{ count: string | number }> = ({
-  count,
-}) => {
-  const num = Number(count);
+// export const FavoritesIcon: React.FC<{ count: string | number }> = ({
+//   count,
+// }) => {
+//   const num = Number(count);
 
-  return (
-    <div className="actions">
-      <NavLink to="/favorites" className="icon" aria-label="Favorites">
-        <img src="/img/favorites.svg" className="img-icon" alt="Favourites" />
-        {num > 0 && <span className="badge">{count}</span>}
-      </NavLink>
-    </div>
-  );
-};
+//   return (
+//     <div className="actions">
+//       <NavLink to="/favorites" className="icon" aria-label="Favorites">
+//         <img src="/img/favorites.svg" className="img-icon" alt="Favourites" />
+//         {num > 0 && <span className="badge">{count}</span>}
+//       </NavLink>
+//     </div>
+//   );
+// };

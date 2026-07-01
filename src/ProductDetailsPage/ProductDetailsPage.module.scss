@@ -147,7 +147,7 @@ margin-bottom: 40px;
     grid-column: 1 / 13;
     font-weight: 700;
     font-size: 20px;
-      row-gap: px;
+    row-gap: 16px;
 
     @include on-tablet {
       grid-column: 1 / -1;
@@ -342,19 +342,6 @@ margin-bottom: 40px;
   line-height: 100%;
 }
 
-.capacity,
-.resolution,
-.processor,
-.ram {
-  margin: 8px 0;
-  color: #89939A;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 100%;
-  letter-spacing: 0;
-  display: flex;
-  justify-content: space-between;
-}
 
 .containerYouMayAlso {
   display: flex;
@@ -371,14 +358,50 @@ margin-bottom: 40px;
 
 }
 
-.aboutDiv {
+.aboutDiv,
+.techSpecsDiv {
     display: flex;
     flex-direction: column;
+    gap: 16px;
  }
 
-.aboutTitle,
-.techSpecsTitle {
-  display: flex;
-  gap: 16px;
+ .specRow {
+    margin: 8px 0;
+    color: #89939A;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0;
+    display: flex;
+    justify-content: space-between;
+ }
+
+.strongTech {
+    color: #313237;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
 }
 
+.containerYouMayAlso {
+    display: flex;
+    flex-direction: column;
+}
+
+.blockYouMayAlso {
+  font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    padding: 80px 0 24px;
+    align-items: center;
+    display: flex;
+
+    @include on-tablet {
+      padding: 64px 0 24px;
+    }
+
+    @include on-phone {
+      padding: 56px 0 24px;
+    }
+}
