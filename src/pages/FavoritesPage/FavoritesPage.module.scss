@@ -1,0 +1,80 @@
+.favoritesPage {
+  padding-bottom: 80px;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  color: var(--color-text-primary);
+}
+
+.count {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 32px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 16px;
+  margin-bottom: 24px;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.emptyState {
+  text-align: center;
+  padding: 32px 0;
+
+  p {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    margin-bottom: 16px;
+  }
+}
+
+.shopBtn {
+  display: inline-block;
+  padding: 12px 32px;
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+  font-weight: 700;
+  transition: background-color var(--transition-speed);
+  
+  &:hover {
+    background-color: var(--color-accent-hover);
+  }
+}
+
+.clearSearchBtn {
+  flex-grow: 1;
+  height: 40px;
+  padding: 0 12px;
+  border: none;
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  
+  &:hover:not(:disabled) {
+    background-color: var(--color-accent-hover);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+}

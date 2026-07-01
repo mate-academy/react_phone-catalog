@@ -1,0 +1,119 @@
+.skeletonCard {
+  border: 1px solid var(--color-border);
+  background-color: var(--color-card-bg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent
+  );
+  animation: loading 1.5s infinite;
+}
+
+[data-theme="light"] .shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 0, 0, 0.05) 50%,
+    transparent
+  );
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.image {
+  height: 196px;
+  background-color: var(--color-surface);
+  border-radius: 4px;
+  margin-bottom: 24px;
+}
+
+.title {
+  height: 20px;
+  background-color: var(--color-surface);
+  border-radius: 4px;
+  margin-bottom: 16px;
+  width: 90%;
+}
+
+.priceContainer {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.price {
+  height: 24px;
+  width: 60px;
+  background-color: var(--color-surface);
+  border-radius: 4px;
+}
+
+.specs {
+  border-top: 1px solid var(--color-border);
+  padding-top: 16px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.specLabel {
+  height: 12px;
+  width: 40px;
+  background-color: var(--color-surface);
+  border-radius: 4px;
+}
+
+.specVal {
+  height: 12px;
+  width: 60px;
+  background-color: var(--color-surface);
+  border-radius: 4px;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.btnMain {
+  flex-grow: 1;
+  height: 40px;
+  background-color: var(--color-surface);
+  border-radius: 4px;
+}
+
+.btnSquare {
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-surface);
+  border-radius: 4px;
+}
