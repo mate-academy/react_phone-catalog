@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import cn from 'classnames';
 import { HeartIcon } from '../Icons/Icons';
 import styles from './FavoriteButton.module.scss';
@@ -9,9 +8,6 @@ type Props = {
 };
 
 export const FavoriteButton = ({ isFavorite, onToggle }: Props) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const shouldShowFilledHeart = isFavorite && !isHovered;
-
   return (
     <button
       type="button"
@@ -19,12 +15,10 @@ export const FavoriteButton = ({ isFavorite, onToggle }: Props) => {
         [styles.favoriteButtonActive]: isFavorite,
       })}
       onClick={onToggle}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
       aria-pressed={isFavorite}
     >
-      <HeartIcon filled={shouldShowFilledHeart} />
+      <HeartIcon filled={isFavorite} />
     </button>
   );
 };
