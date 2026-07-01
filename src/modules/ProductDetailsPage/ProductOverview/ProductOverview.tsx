@@ -197,7 +197,7 @@ export const ProductOverview: React.FC<Props> = ({
                 })}
                 onClick={handleCartClick}
               >
-                {isAddedToCart ? 'Added' : 'Add to cart'}
+                {isAddedToCart ? 'Added to cart' : 'Add to cart'}
               </button>
               <button
                 type="button"

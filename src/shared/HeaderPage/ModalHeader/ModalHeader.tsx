@@ -76,7 +76,7 @@ export const ModalHeader: React.FC<Props> = ({ onClose, isModal }) => {
 
       <div className={styles.header_icons}>
         <NavLink
-          to="/favourites"
+          to="/favorites"
           className={styles.header_favorites}
           onClick={onClose}
         >

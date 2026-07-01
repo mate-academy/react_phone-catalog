@@ -122,8 +122,16 @@
 
   &_empty {
     display: flex;
+    flex-direction: column;
     flex-grow: 1;
+    gap: 24px;
     align-items: center;
     justify-content: center;
+  }
+
+  &_emptyText {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 20px;
+    line-height: 28px;
   }
 }

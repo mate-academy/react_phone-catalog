@@ -192,6 +192,37 @@
       background-color: #fafbfc;
     }
   }
+
+  &_message {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+
+    margin-top: 32px;
+
+    font-size: 18px;
+    line-height: 26px;
+
+    button {
+      cursor: pointer;
+
+      height: 40px;
+      padding-inline: 24px;
+      border: 1px solid $textColor;
+
+      font-family: Mont, sans-serif;
+      color: $white;
+
+      background-color: $textColor;
+
+      transition: box-shadow $animation;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 #17203166;
+      }
+    }
+  }
 }
 
 .loader {

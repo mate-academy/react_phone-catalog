@@ -102,6 +102,44 @@
     }
   }
 
+  &_search {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    width: min(260px, 28vw);
+    height: 100%;
+    margin-left: auto;
+    padding-inline: 16px;
+    border-left: 1px solid $borderColor;
+  }
+
+  &_searchIcon {
+    flex: 0 0 $iconWidth;
+
+    width: $iconWidth;
+    height: $iconHeight;
+
+    background-image: url('../../../images/icons/search.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &_searchInput {
+    width: 100%;
+    border: 0;
+
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    color: $textColor;
+
+    outline: 0;
+
+    &::placeholder {
+      color: $textSecondaryColor;
+    }
+  }
+
   &_heartIcon {
     position: relative;
 
@@ -226,4 +264,8 @@
       background-color: $textColor;
     }
   }
+}
+
+.header_search + .header_favourites {
+  margin-left: 0;
 }

@@ -48,11 +48,14 @@ export const CartPage: React.FC = () => {
         <h1 className={styles.cart_title}>Cart</h1>
 
         {cartItems.length === 0 ? (
-          <img
-            src={cartIsEmpty}
-            alt="Empty cart"
-            className={styles.cart_emptyImg}
-          />
+          <div className={styles.cart_empty}>
+            <p className={styles.cart_emptyText}>Your cart is empty</p>
+            <img
+              src={cartIsEmpty}
+              alt="Empty cart"
+              className={styles.cart_emptyImg}
+            />
+          </div>
         ) : (
           <>
             <div className={styles.cart_container}>

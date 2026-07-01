@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { RootState } from '../../app/store/store';
 import { ProductCard } from '../../shared/ProductCard/ProductCard';
 import styles from './FavouritesPage.module.scss';
@@ -9,11 +9,20 @@ import homeIcon from '../../images/icons/home.svg';
 
 export const FavouritesPage: React.FC = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const favouriteItems = useSelector(
     (state: RootState) => state.favourites.items,
   );
 
-  const totalCount = favouriteItems.length;
+  const query = searchParams.get('query')?.trim().toLowerCase() || '';
+  const filteredItems = useMemo(
+    () =>
+      favouriteItems.filter(product =>
+        product.name.toLowerCase().includes(query),
+      ),
+    [favouriteItems, query],
+  );
+  const totalCount = filteredItems.length;
   const itemsLabel = useMemo(
     () => (totalCount === 1 ? 'item' : 'items'),
     [totalCount],
@@ -46,14 +55,14 @@ export const FavouritesPage: React.FC = () => {
           </span>
         </div>
 
-        <h1 className={styles.favourites_title}>Favourites</h1>
+        <h1 className={styles.favourites_title}>Favorites</h1>
         <p className={styles.favourites_count}>
           {totalCount} {itemsLabel}
         </p>
 
         {totalCount > 0 ? (
           <ul className={styles.favourites_list}>
-            {favouriteItems.map(product => (
+            {filteredItems.map(product => (
               <ProductCard
                 key={product.id}
                 {...product}
@@ -66,6 +75,11 @@ export const FavouritesPage: React.FC = () => {
           </ul>
         ) : (
           <div className={styles.favourites_empty}>
+            <p className={styles.favourites_emptyText}>
+              {query
+                ? 'There are no products matching the query'
+                : 'No favorites yet'}
+            </p>
             <img
               src={productNotFound}
               alt="No favourites found"

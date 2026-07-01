@@ -8,18 +8,14 @@ import { FavouritesPage } from './modules/FavouritesPage/FavouritesPage';
 import { CartPage } from './modules/CartPage/CartPage';
 import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 import { ProductDetails } from './modules/ProductDetailsPage/ProductDetails/ProductDetails';
+import { ProductDetailsRoute } from './modules/ProductDetailsPage/ProductDetailsRoute';
 
 const PHONES = 'phones';
 const TABLETS = 'tablets';
 const ACCESSORIES = 'accessories';
 
 export const Root = () => (
-  <Routes
-    future={{
-      v7_startTransition: true,
-      v7_relativeSplatPath: true,
-    }}
-  >
+  <Routes>
     <Route path="/" element={<App />}>
       <Route index element={<HomePage />} />
       <Route path="home" element={<Navigate to="/" replace />} />
@@ -42,7 +38,9 @@ export const Root = () => (
         />
       </Route>
 
-      <Route path="favourites" element={<FavouritesPage />} />
+      <Route path="product/:itemId" element={<ProductDetailsRoute />} />
+      <Route path="favorites" element={<FavouritesPage />} />
+      <Route path="favourites" element={<Navigate to="/favorites" replace />} />
       <Route path="cart" element={<CartPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>

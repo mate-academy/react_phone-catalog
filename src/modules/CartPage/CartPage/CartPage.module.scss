@@ -87,6 +87,20 @@
     }
   }
 
+  &_empty {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &_emptyText {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 24px;
+    line-height: 32px;
+  }
+
   &_container {
     @include on-desktop {
       display: flex;

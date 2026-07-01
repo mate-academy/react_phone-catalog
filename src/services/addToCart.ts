@@ -1,5 +1,5 @@
 import { AppDispatch } from '../app/store/store';
-import { deleteCarts, setCarts } from '../app/reducers/cart';
+import { setCarts } from '../app/reducers/cart';
 import { Props } from '../shared/ProductCard/ProductCard';
 
 export const handleAddToCart = (
@@ -47,7 +47,5 @@ export const handleAddToCart = (
         },
       ]),
     );
-  } else {
-    dispatch(deleteCarts(itemId ? itemId : id));
   }
 };

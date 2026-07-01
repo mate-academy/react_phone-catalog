@@ -64,10 +64,26 @@
     }
   }
 
+  &_link {
+    color: inherit;
+    text-decoration: none;
+  }
+
   &_title {
+    display: block;
+
     min-height: 44px;
     margin-top: 16px;
     margin-bottom: 8px;
+
+    color: inherit;
+    text-decoration: none;
+
+    transition: color $animation;
+
+    &:hover {
+      color: $textSecondaryColor;
+    }
   }
 
   &_priceBlock {

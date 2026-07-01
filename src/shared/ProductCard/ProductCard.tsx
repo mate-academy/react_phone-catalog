@@ -1,5 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { RootState } from '../../app/store/store';
 import { handleAddToCart } from '../../services/addToCart';
@@ -90,6 +91,11 @@ export const ProductCard: React.FC<Props> = ({
   const handleCartClick = useCallback(
     (event: React.MouseEvent) => {
       event.stopPropagation();
+
+      if (isInCart) {
+        return;
+      }
+
       handleAddToCart(
         id,
         itemId,
@@ -102,18 +108,43 @@ export const ProductCard: React.FC<Props> = ({
         dispatch,
       );
     },
-    [id, itemId, image, name, price, category, cartProducts, dispatch],
+    [
+      id,
+      itemId,
+      image,
+      name,
+      price,
+      category,
+      cartProducts,
+      dispatch,
+      isInCart,
+    ],
+  );
+
+  const handleProductLinkClick = useCallback(
+    (event: React.MouseEvent<HTMLAnchorElement>) => {
+      event.stopPropagation();
+      onClick?.();
+    },
+    [onClick],
   );
 
   return (
     <div className={classNames(styles.phones_card, className)}>
-      <img
-        src={image}
-        alt="name"
-        className={styles.phones_img}
-        onClick={onClick}
-      />
-      <p className={styles.phones_title}>{name}</p>
+      <Link
+        to={`/product/${itemId}`}
+        className={styles.phones_link}
+        onClick={handleProductLinkClick}
+      >
+        <img src={image} alt={name} className={styles.phones_img} />
+      </Link>
+      <Link
+        to={`/product/${itemId}`}
+        className={styles.phones_title}
+        onClick={handleProductLinkClick}
+      >
+        {name}
+      </Link>
       <div className={`${styles.phones_priceBlock} flex`}>
         <p className={styles.phones_priceFull}>${price}</p>
         {isNew && <p className={styles.phones_priceHot}>${fullPrice}</p>}
@@ -134,14 +165,16 @@ export const ProductCard: React.FC<Props> = ({
       </div>
       <div className={styles.phones_buttonsContainer}>
         <button
+          type="button"
           className={classNames(styles.phones_buttonAdd, {
             [styles.added]: isInCart,
           })}
           onClick={handleCartClick}
         >
-          {isInCart ? 'Added' : 'Add to cart'}
+          {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
         <button
+          type="button"
           className={styles.phones_favourites}
           onClick={handleFavoriteClick}
         >

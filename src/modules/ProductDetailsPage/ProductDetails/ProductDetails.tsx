@@ -11,6 +11,7 @@ import { handleAddToFavourites } from '../../../services/addToFavourites';
 import { fetchPhones, resetStatus } from '../../../app/reducers/phones';
 import { fetchTablets } from '../../../app/reducers/tablets';
 import { fetchAccessories } from '../../../app/reducers/accessories';
+import { fetchProducts } from '../../../app/reducers/products';
 import { setName } from '../../../app/reducers/productName';
 import { Product } from '../../../types/Product';
 import { Accessories } from '../../../types/Accessories';
@@ -39,6 +40,9 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
   );
   const allGeneralProducts = useSelector(
     (state: RootState) => state.products.items,
+  );
+  const productsStatus = useSelector(
+    (state: RootState) => state.products.status,
   );
 
   const phones = useSelector((state: RootState) => state.phones.items);
@@ -122,6 +126,12 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
   const [showNotFound, setShowNotFound] = useState(false);
 
   useEffect(() => {
+    if (productsStatus === 'start') {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, productsStatus]);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(resetStatus());
 
@@ -153,6 +163,8 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
     }
 
     setShowNotFound(false);
+
+    return undefined;
   }, [productWithUpdatedPrice, status]);
 
   const handleImageClick = useCallback((image: string | undefined) => {
