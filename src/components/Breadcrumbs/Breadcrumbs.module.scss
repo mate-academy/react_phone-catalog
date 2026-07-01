@@ -1,0 +1,35 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0 40px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.link {
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.homeIcon {
+  font-size: 14px;
+}
+
+.chevron {
+  font-size: 10px;
+  color: var(--color-text-secondary);
+}
+
+.current {
+  color: var(--color-text-secondary);
+  pointer-events: none;
+  text-transform: capitalize;
+}
