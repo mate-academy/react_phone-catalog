@@ -15,6 +15,9 @@ export type SlideItem = {
   desktopImage?: string;
   objectPosition?: string;
   tabletObjectPosition?: string;
+  imageScale?: string;
+  tabletImageScale?: string;
+  desktopImageScale?: string;
   gradient?: string;
   badge?: string;
   title?: string;
@@ -75,6 +78,14 @@ export const PicturesSlider = ({ items, interval = 5000 }: Props) => {
     '--slide-object-position': current.objectPosition || 'center',
     '--slide-tablet-object-position':
       current.tabletObjectPosition || current.objectPosition || 'center',
+    '--slide-image-scale': current.imageScale || '1',
+    '--slide-tablet-image-scale':
+      current.tabletImageScale || current.imageScale || '1',
+    '--slide-desktop-image-scale':
+      current.desktopImageScale ||
+      current.tabletImageScale ||
+      current.imageScale ||
+      '1',
     '--slide-gradient':
       current.gradient ||
       'linear-gradient(125deg, rgb(238 244 255 / 90%) 0%, ' +

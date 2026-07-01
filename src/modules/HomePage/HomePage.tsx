@@ -20,6 +20,9 @@ const BANNERS: SlideItem[] = [
   {
     image: '/img/banners/banner-phone-device.png',
     tabletObjectPosition: 'center',
+    imageScale: '0.8',
+    tabletImageScale: '0.82',
+    desktopImageScale: '0.84',
     badge: 'Summer drop',
     title: 'Flagship phones',
     subtitle: 'Premium design, amazing cameras, and top-tier performance.',
@@ -34,6 +37,9 @@ const BANNERS: SlideItem[] = [
   {
     image: '/img/banners/banner-tablet-device.png',
     tabletObjectPosition: 'center',
+    imageScale: '1',
+    tabletImageScale: '1.02',
+    desktopImageScale: '1.03',
     badge: 'Work and chill',
     title: 'Tablets for flow',
     subtitle: 'Productivity and entertainment with a large, fluid display.',
@@ -48,6 +54,9 @@ const BANNERS: SlideItem[] = [
   {
     image: '/img/banners/banner-accessory-device.png',
     tabletObjectPosition: 'center',
+    imageScale: '0.8',
+    tabletImageScale: '0.82',
+    desktopImageScale: '0.84',
     badge: 'Final touch',
     title: 'Accessories that match',
     subtitle: 'Choose the right details to complete your setup.',

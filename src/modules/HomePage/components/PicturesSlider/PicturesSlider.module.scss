@@ -207,7 +207,7 @@
   object-fit: contain;
   object-position: var(--slide-object-position, center);
   filter: saturate(0.88) contrast(0.9) brightness(1.04);
-  transform: scale(1);
+  transform: scale(var(--slide-image-scale, 1));
   transition: transform var(--transition-image);
 
   @include tablet-up {
@@ -215,12 +215,40 @@
       --slide-tablet-object-position,
       var(--slide-object-position, center)
     );
+    transform: scale(
+      var(--slide-tablet-image-scale, var(--slide-image-scale, 1))
+    );
   }
 
+  @include desktop-up {
+    transform: scale(
+      var(
+        --slide-desktop-image-scale,
+        var(--slide-tablet-image-scale, var(--slide-image-scale, 1))
+      )
+    );
+  }
 }
 
 .slideLink:hover .image {
-  transform: scale(1.01);
+  transform: scale(calc(var(--slide-image-scale, 1) + 0.01));
+
+  @include tablet-up {
+    transform: scale(
+      calc(var(--slide-tablet-image-scale, var(--slide-image-scale, 1)) + 0.01)
+    );
+  }
+
+  @include desktop-up {
+    transform: scale(
+      calc(
+        var(
+            --slide-desktop-image-scale,
+            var(--slide-tablet-image-scale, var(--slide-image-scale, 1))
+          ) + 0.01
+      )
+    );
+  }
 }
 
 .dots {
