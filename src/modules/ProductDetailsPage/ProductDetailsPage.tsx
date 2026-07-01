@@ -13,6 +13,7 @@ import { useFavorites } from '../../context/FavoritesContext';
 import { ChevronLeftIcon, HeartIcon } from '../shared/ui/Icons/Icons';
 import styles from './ProductDetailsPage.module.scss';
 
+const IMG_BASE = import.meta.env.BASE_URL;
 const COLOR_MAP: Record<string, string> = {
   black: '#2c2c2c',
   blue: '#2f6fed',
@@ -86,7 +87,7 @@ export const ProductDetailsPage = () => {
     return (
       <div className={styles.notFound}>
         <img
-          src="/img/product-not-found.png"
+          src={`${IMG_BASE}/img/product-not-found.png`}
           alt="Product was not found"
           className={styles.notFoundImage}
         />
@@ -155,14 +156,17 @@ export const ProductDetailsPage = () => {
                 onClick={() => setSelectedImageIndex(idx)}
                 aria-label={`Ver imagem ${idx + 1}`}
               >
-                <img src={`/${img}`} alt={`${product.name} ${idx + 1}`} />
+                <img
+                  src={`${IMG_BASE}/${img}`}
+                  alt={`${product.name} ${idx + 1}`}
+                />
               </button>
             ))}
           </div>
 
           <div className={styles.mainImageWrapper}>
             <img
-              src={`/${currentImage}`}
+              src={`${IMG_BASE}/${currentImage}`}
               alt={product.name}
               className={styles.mainImage}
             />

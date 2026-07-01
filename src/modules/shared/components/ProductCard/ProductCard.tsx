@@ -7,6 +7,8 @@ import { useFavorites } from '../../../../context/FavoritesContext';
 import { HeartIcon } from '../../ui/Icons/Icons';
 import styles from './ProductCard.module.scss';
 
+const IMG_BASE = import.meta.env.BASE_URL;
+
 type Props = {
   product: Product;
 };
@@ -28,7 +30,7 @@ export const ProductCard = ({ product }: Props) => {
     <article className={styles.card} data-cy="cardsContainer">
       <Link to={`/product/${product.itemId}`} className={styles.imageLink}>
         <img
-          src={`/${product.image}`}
+          src={`${IMG_BASE}/${product.image}`}
           alt={product.name}
           className={styles.image}
         />

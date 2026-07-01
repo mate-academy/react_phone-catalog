@@ -3,6 +3,8 @@ import { useCart } from '../../context/CartContext';
 import { CloseIcon } from '../shared/ui/Icons/Icons';
 import styles from './CartPage.module.scss';
 
+const IMG_BASE = import.meta.env.BASE_URL;
+
 export const CartPage = () => {
   const {
     cartItems,
@@ -35,7 +37,7 @@ export const CartPage = () => {
         <h1 className={styles.title}>Cart</h1>
         <div className={styles.empty}>
           <img
-            src="/img/cart-is-empty.png"
+            src={`${IMG_BASE}/img/cart-is-empty.png`}
             alt="Empty cart"
             className={styles.emptyImage}
           />
@@ -70,7 +72,7 @@ export const CartPage = () => {
                 className={styles.itemImageLink}
               >
                 <img
-                  src={`/${item.product.image}`}
+                  src={`${IMG_BASE}/${item.product.image}`}
                   alt={item.product.name}
                   className={styles.itemImage}
                 />
