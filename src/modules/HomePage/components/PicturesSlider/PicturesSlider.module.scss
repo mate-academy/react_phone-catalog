@@ -59,11 +59,12 @@
   background: var(--slide-gradient);
 
   @include tablet-up {
-    height: clamp(300px, 40vw, 380px);
+    min-height: clamp(340px, 44vw, 480px);
+    height: auto;
   }
 
   @include desktop-up {
-    height: clamp(420px, 34vw, 560px);
+    min-height: clamp(500px, 36vw, 640px);
   }
 }
 
@@ -84,13 +85,14 @@
     grid-template-areas: 'content media';
     align-items: center;
     gap: 20px;
-    padding: 20px 24px;
+    padding: 24px;
+    min-height: inherit;
   }
 
   @include desktop-up {
     grid-template-columns: minmax(320px, 38%) minmax(0, 1fr);
     gap: 24px;
-    padding: 28px 32px;
+    padding: 32px;
   }
 }
 
@@ -107,6 +109,7 @@
   @include tablet-up {
     grid-area: media;
     height: 100%;
+    min-height: 260px;
   }
 }
 
@@ -204,7 +207,7 @@
   object-fit: contain;
   object-position: var(--slide-object-position, center);
   filter: saturate(0.88) contrast(0.9) brightness(1.04);
-  transform: scale(1.02);
+  transform: scale(1);
   transition: transform var(--transition-image);
 
   @include tablet-up {
@@ -214,13 +217,10 @@
     );
   }
 
-  @media (min-width: 850px) {
-    object-position: center 48%;
-  }
 }
 
 .slideLink:hover .image {
-  transform: scale(1.05);
+  transform: scale(1.01);
 }
 
 .dots {

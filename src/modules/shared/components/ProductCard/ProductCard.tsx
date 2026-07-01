@@ -20,16 +20,13 @@ export const ProductCard = ({ product }: Props) => {
   const isInCart = cartItems.some(item => item.id === product.itemId);
   const isFavorite = favorites.some(item => item.itemId === product.itemId);
   const isFavoritesPage = location.pathname === '/favorites';
-  const shouldShowFilledHeart = isFavorite
-    && !(isFavoritesPage && isFavoriteHovered);
+  const shouldShowFilledHeart =
+    isFavorite && !(isFavoritesPage && isFavoriteHovered);
   const hasDiscount = product.fullPrice > product.price;
 
   return (
     <article className={styles.card} data-cy="cardsContainer">
-      <Link
-        to={`/product/${product.itemId}`}
-        className={styles.imageLink}
-      >
+      <Link to={`/product/${product.itemId}`} className={styles.imageLink}>
         <img
           src={`/${product.image}`}
           alt={product.name}
@@ -37,10 +34,7 @@ export const ProductCard = ({ product }: Props) => {
         />
       </Link>
 
-      <Link
-        to={`/product/${product.itemId}`}
-        className={styles.name}
-      >
+      <Link to={`/product/${product.itemId}`} className={styles.name}>
         {product.name}
       </Link>
 
@@ -86,9 +80,7 @@ export const ProductCard = ({ product }: Props) => {
           onClick={() => toggleFavorite(product)}
           onMouseEnter={() => setIsFavoriteHovered(true)}
           onMouseLeave={() => setIsFavoriteHovered(false)}
-          aria-label={
-            isFavorite ? 'Remove from favorites' : 'Add to favorites'
-          }
+          aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
           aria-pressed={isFavorite}
         >
           <HeartIcon filled={shouldShowFilledHeart} />

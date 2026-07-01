@@ -22,7 +22,9 @@ export const ProductPage = ({ category: categoryProp }: Props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
-  const { category: categoryFromParams = '' } = useParams<{ category: string }>();
+  const { category: categoryFromParams = '' } = useParams<{
+    category: string;
+  }>();
   const category = categoryProp || categoryFromParams;
   const categoryTitle = category.charAt(0).toUpperCase() + category.slice(1);
 

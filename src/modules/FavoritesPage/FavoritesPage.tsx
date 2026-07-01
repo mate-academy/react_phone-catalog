@@ -24,10 +24,14 @@ export const FavoritesPage = () => {
           </Link>
         </div>
       ) : filteredFavorites.length === 0 ? (
-        <p className={styles.message}>There are no products matching the query</p>
+        <p className={styles.message}>
+          There are no products matching the query
+        </p>
       ) : (
         <>
-          <p className={styles.count}>{filteredFavorites.length} {itemLabel}</p>
+          <p className={styles.count}>
+            {filteredFavorites.length} {itemLabel}
+          </p>
           <ProductsList products={filteredFavorites} className={styles.grid} />
         </>
       )}

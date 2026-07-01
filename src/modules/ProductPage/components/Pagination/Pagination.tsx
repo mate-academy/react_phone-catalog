@@ -43,10 +43,7 @@ const getVisiblePages = (
   const tailStart = pageCount - (maxVisible - 2);
 
   if (currentPage <= headWindow) {
-    const leftRange = Array.from(
-      { length: maxVisible - 1 },
-      (_, i) => i + 1,
-    );
+    const leftRange = Array.from({ length: maxVisible - 1 }, (_, i) => i + 1);
 
     return [...leftRange, 'dots-right', pageCount];
   }

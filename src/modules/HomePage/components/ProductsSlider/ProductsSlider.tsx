@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Product } from '../../../../types/Product';
 import { ProductCard } from '../../../shared/components/ProductCard';
-import { ChevronLeftIcon, ChevronRightIcon } from '../../../shared/ui/Icons/Icons';
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from '../../../shared/ui/Icons/Icons';
 import styles from './ProductsSlider.module.scss';
 
 type Props = {
