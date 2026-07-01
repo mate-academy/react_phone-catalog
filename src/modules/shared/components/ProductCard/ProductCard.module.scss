@@ -131,6 +131,10 @@
   flex-shrink: 0;
 
   @include icon-button(40px);
+
+  &:hover {
+    color: inherit;
+  }
 }
 
 .favoriteButtonActive {

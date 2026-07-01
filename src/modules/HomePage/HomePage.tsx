@@ -85,8 +85,6 @@ const CATEGORIES: CategoryItem[] = [
     to: '/tablets',
     label: 'Tablets',
     image: `${IMG_BASE}/img/categories/category-tablets-mobile.png`,
-    tabletImage: `${IMG_BASE}/img/categories/category-tablets-tablet.png`,
-    desktopImage: `${IMG_BASE}/img/categories/category-tablets-desktop.png`,
     type: 'tablets',
   },
   {
