@@ -1,0 +1,104 @@
+@import '../../mainStyles/main';
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 24px;
+
+  transition: all $animation;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &_list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &_button {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: $buttonWidth;
+    height: $buttonHeight;
+    border: 1px solid $borderColor;
+
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+
+    background-color: $white;
+
+    transition: all $animation;
+
+    &:hover {
+      border: 1px solid $textColor;
+    }
+
+    &_arrow {
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: $buttonWidth;
+      height: $buttonHeight;
+      border: 1px solid $borderColorDark;
+
+      background-color: $white;
+
+      transition: all $animation;
+
+      &:disabled {
+        cursor: default;
+        opacity: 0.5;
+      }
+
+      &:not(:disabled):hover {
+        border: 1px solid $textColor;
+      }
+    }
+
+    &_iconLeft,
+    &_iconRight {
+      width: $iconWidth;
+      height: $iconHeight;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+
+      transition: all $animation;
+    }
+
+    &_iconLeft {
+      background-image: url('../../images/icons/chevron_arrow_left.svg');
+    }
+
+    &_iconRight {
+      background-image: url('../../images/icons/сhevron_arrow_right.svg');
+    }
+  }
+
+  &_button_arrow:not(:disabled):hover .pagination_button_iconLeft {
+    transform: translateX(-3px);
+  }
+
+  &_button_arrow:not(:disabled):hover .pagination_button_iconRight {
+    transform: translateX(3px);
+  }
+
+  &_active {
+    border-color: $textColor;
+    color: $white;
+    background-color: $textColor;
+    transition: all $animation;
+  }
+}

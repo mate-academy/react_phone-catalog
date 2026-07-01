@@ -1,0 +1,137 @@
+@import '../../../mainStyles/main';
+
+.productDetails {
+  min-height: calc(100vh - $headerHeightSmallScreen - $footerHeightSmallScreen);
+  padding-bottom: 56px;
+  padding-inline: 16px;
+
+  font-family: Mont, sans-serif;
+  color: $textColor;
+
+  @include on-tablet {
+    min-height: calc(100vh - $headerHeightSmallScreen - $footerHeightBigScreen);
+    padding-bottom: 64px;
+    padding-inline: 0;
+  }
+
+  @include on-desktop {
+    min-height: calc(100vh - $headerHeightBigScreen - $footerHeightBigScreen);
+    padding-bottom: 81px;
+  }
+
+  &_navContainer {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding-top: 24px;
+
+    &_img {
+      cursor: pointer;
+      display: block;
+      width: $iconWidth;
+      height: $iconHeight;
+    }
+
+    &_category {
+      display: flex;
+      align-items: flex-end;
+
+      font-size: 12px;
+      line-height: 15.34px;
+      color: $textSecondaryColor;
+      text-transform: capitalize;
+
+      &::before {
+        content: '';
+
+        display: block;
+
+        width: $iconWidth;
+        height: $iconHeight;
+        margin-right: 8px;
+
+        color: $textSecondaryColor;
+
+        background-image: url('../../../images/icons/сhevron_arrow_right.svg');
+        background-repeat: no-repeat;
+      }
+
+      &:hover {
+        cursor: pointer;
+        color: $textColor;
+      }
+    }
+
+    &_name {
+      display: flex;
+      align-items: flex-end;
+
+      font-size: 12px;
+      line-height: 15.34px;
+      color: $textSecondaryColor;
+
+      &::before {
+        content: '';
+
+        display: block;
+
+        width: $iconWidth;
+        height: $iconHeight;
+        margin-right: 8px;
+
+        color: $textSecondaryColor;
+
+        background-image: url('../../../images/icons/сhevron_arrow_right.svg');
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  &_backContainer {
+    padding-top: 24px;
+    padding-bottom: 16px;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+  }
+
+  &_backText {
+    display: flex;
+    align-items: flex-end;
+
+    max-width: fit-content;
+
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $textSecondaryColor;
+
+    &::before {
+      content: '';
+
+      display: block;
+
+      width: $iconWidth;
+      height: $iconHeight;
+
+      background-image: url('../../../images/icons/chevron_arrow_left.svg');
+      background-repeat: no-repeat;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: $textColor;
+    }
+  }
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5vh;
+
+  @include on-tablet {
+    margin-top: 20vh;
+  }
+}

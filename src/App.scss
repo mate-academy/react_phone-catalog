@@ -1,1 +1,35 @@
-// not empty
+@import './styles/variables';
+@import './styles/mixins';
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+}
+
+.is-hidden {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  clip: rect(0, 0, 0, 0);
+}

@@ -1,0 +1,125 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+@import '../../styles/fonts';
+
+.footer {
+  --column: 4;
+
+  bottom: 0;
+  left: 0;
+
+  display: grid;
+  grid-template-columns: repeat(var(--column), 1fr);
+  flex-direction: column;
+  gap: 32px 16px;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: 32px 16px;
+  border-top: 1px solid #E2E6E9;
+
+  @include on-tablet {
+    --column: 12;
+
+    flex-direction: row;
+    row-gap: 0;
+    justify-content: center;
+    padding-inline: 32px;
+  }
+
+  @include on-desktop {
+    --column: 24;
+
+    grid-template-columns: repeat(var(--column), 32px);
+  }
+
+  &__logo {
+    grid-column: 1/-1;
+    width: 89px;
+    height: 32px;
+
+    @include on-tablet {
+      grid-column: 1/5;
+    }
+
+    @include on-desktop {
+      grid-column: 1/9;
+    }
+  }
+
+  &__list {
+    display: flex;
+    grid-column: 1/-1;
+    flex-direction: column;
+    gap: 16px;
+    align-items:flex-start;
+    justify-content: space-between;
+
+    margin: 0;
+    padding: 0;
+
+    list-style-type: none;
+
+    @include on-tablet {
+      grid-column: 5/9;
+      flex-direction: row;
+    }
+
+    @include on-desktop {
+      grid-column: 9/17;
+    }
+  }
+
+  &__link {
+    line-height: 11px;
+    color: $secondary-color;
+    text-decoration: none;
+
+    @include font-uppercase;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__back {
+    display: flex;
+    grid-column: 1/-1;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+
+    @include on-tablet {
+      grid-column: 9/-1;
+      justify-content: end;
+    }
+
+    @include on-desktop {
+      grid-column: 17/-1;
+    }
+
+    &__text {
+      margin: 0;
+      font-weight: 700;
+      color: $secondary-color;
+
+      @include font-small-text;
+    }
+
+    &__button {
+      box-sizing: border-box;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      border: 1px solid $elements-color;
+
+      background-color: $white-color;
+      background-image: url(/public/img/icons/icon-arrow-up.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+
+      @include hover (border-color, $primary-color);
+    }
+  }
+}

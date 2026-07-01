@@ -1,0 +1,271 @@
+@import '../../../mainStyles/main';
+
+.header {
+  font-family: Mont, sans-serif;
+  box-shadow: 0 1px 1px 0 $borderColor;
+
+  &_container {
+    padding-right: 16px;
+    padding-left: 16px;
+
+    @include on-tablet {
+      padding-right: 0;
+      padding-left: 24px;
+    }
+
+    @include on-desktop {
+      padding-left: 32px;
+    }
+  }
+
+  &_block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+
+    @include on-tablet {
+      justify-content: normal;
+    }
+
+    @include on-desktop {
+      height: 64px;
+    }
+  }
+
+  &_logo {
+    user-select: none;
+    width: 64px;
+    height: 22px;
+
+    @include on-tablet {
+      margin-right: 32px;
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+      margin-right: 48px;
+    }
+  }
+
+  &_list {
+    @include on-tablet {
+      display: flex;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &_link {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+    border-bottom: 3px solid $white;
+
+    font-family: Mont-Bold, sans-serif;
+    font-size: 12px;
+    line-height: 11px;
+    color: $textSecondaryColor;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  &_nav {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &_favourites {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 48px;
+    max-height: 48px;
+    margin-left: auto;
+    border-left: 1px solid $borderColor;
+
+    @include on-desktop {
+      min-width: 64px;
+      max-height: 64px;
+    }
+  }
+
+  &_search {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    width: min(260px, 28vw);
+    height: 100%;
+    margin-left: auto;
+    padding-inline: 16px;
+    border-left: 1px solid $borderColor;
+  }
+
+  &_searchIcon {
+    flex: 0 0 $iconWidth;
+
+    width: $iconWidth;
+    height: $iconHeight;
+
+    background-image: url('../../../images/icons/search.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &_searchInput {
+    width: 100%;
+    border: 0;
+
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    color: $textColor;
+
+    outline: 0;
+
+    &::placeholder {
+      color: $textSecondaryColor;
+    }
+  }
+
+  &_heartIcon {
+    position: relative;
+
+    display: block;
+
+    width: $iconWidth;
+    height: $iconHeight;
+
+    background-image: url('../../../images/icons/favourites_heart_like.svg');
+    background-size: cover;
+
+    transition:
+      background-image 0.5s ease,
+      transform 0.5s ease;
+  }
+
+  &_cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 48px;
+    max-height: 48px;
+    border-right: 1px solid $borderColor;
+    border-left: 1px solid $borderColor;
+
+    @include on-desktop {
+      min-width: 64px;
+      max-height: 64px;
+    }
+  }
+
+  &_cartIcon {
+    position: relative;
+
+    display: block;
+
+    width: $iconWidth;
+    height: $iconHeight;
+
+    background-image: url('../../../images/icons/shopping_\ bag_cart.svg');
+    background-size: cover;
+
+    transition:
+      background-image 0.5s ease,
+      transform 0.5s ease;
+  }
+
+  &_countIcon {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 14px;
+    min-height: 14px;
+    border-radius: 50%;
+
+    font-size: 9px;
+    line-height: 11.5px;
+    color: $white;
+
+    background-color: $favouritesIconColor;
+    background-size: cover;
+  }
+
+  &_icon {
+    display: block;
+    width: $iconWidth;
+    height: $iconHeight;
+    background-size: cover;
+
+    &_open {
+      background-image: url('../../../images/icons/menu.svg');
+    }
+
+    &_close {
+      background-image: url('../../../images/icons/close.svg');
+    }
+  }
+
+  &_modalMenu {
+    align-content: center;
+    height: 48px;
+    padding-left: 16px;
+    box-shadow: -1px 1px 1px 0 $borderColor;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+}
+
+.header_favourites:hover .header_heartIcon,
+.header_cart:hover .header_cartIcon {
+  transform: $standartScale;
+}
+
+.is_active {
+  border-bottom: 3px solid $textColor;
+  color: $textColor;
+}
+
+.header_favourites,
+.header_cart {
+  position: relative;
+
+  &:hover {
+    &::after {
+      content: '';
+
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+
+      width: 100%;
+      height: 3px;
+
+      background-color: $textColor;
+    }
+  }
+}
+
+.header_search + .header_favourites {
+  margin-left: 0;
+}

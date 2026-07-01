@@ -1,0 +1,28 @@
+@import '/src/styles/fonts';
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
+
+.page {
+  margin-top: 24px;
+
+  &__title {
+    display: block;
+    color: $primary-color;
+    text-align: center;
+
+    @include font-h4;
+  }
+
+  &__img {
+    display: block;
+
+    width: 280px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 20px;
+
+    @include on-tablet {
+      width: 380px;
+    }
+  }
+};

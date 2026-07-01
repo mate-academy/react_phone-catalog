@@ -1,0 +1,203 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+@import '../../styles/fonts';
+
+.header {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100vw;
+  height: $header-height-mobile;
+
+  background-color: $white-color;
+  box-shadow: 0 1px 0 0 #E2E6E9;
+
+  @include on-desktop {
+    height: $header-height-desktop;
+  }
+
+  &__logo {
+    padding-block: 13px;
+    padding-inline: 16px;
+
+    &__img {
+      display: block;
+      width: 64px;
+      height: 22px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+
+    &__list {
+      display: none;
+      gap: 32px;
+      align-items: center;
+      justify-content: center;
+
+      margin: 0;
+      padding: 0;
+
+      list-style-type: none;
+
+      @include on-tablet {
+        display: flex;
+      }
+    }
+
+    &__item {
+      display: flex;
+      height: 100%;
+    }
+
+    &__link {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+
+      height: $header-height-mobile;
+
+      color: $secondary-color;
+      text-decoration: none;
+
+      @include font-uppercase;
+
+      @include on-desktop {
+        height: $header-height-desktop;
+      }
+
+      &--active {
+        color: $primary-color;
+
+        &::after {
+          content: '';
+
+          position: absolute;
+          bottom: 0;
+
+          width: 100%;
+          height: 3px;
+
+          background-color: $primary-color;
+
+          transition: background-color 0.3s;
+        }
+      }
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__button {
+    cursor: pointer;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: $header-height-mobile;
+    height: $header-height-mobile;
+    border: none;
+
+    background-color: $white-color;
+    box-shadow: -1px 0 0 0 #e2e6e9;
+
+    @include on-desktop {
+      width: $header-height-desktop;
+      height: $header-height-desktop;
+    }
+
+    &--active {
+      &::after {
+        content: '';
+
+        position: absolute;
+        bottom: 0;
+
+        width: 100%;
+        height: 3px;
+
+        background-color: $primary-color;
+
+        transition: background-color 0.3s;
+      }
+    }
+
+    &--menu {
+      @include on-tablet {
+        display: none;
+      }
+    }
+
+    &--heart {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+      }
+    }
+
+    &--bag {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+      }
+    }
+  }
+
+  &__iconWrapper {
+    position: relative;
+    width: 28px;
+    height: 28px;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    padding: 6px;
+
+    @include hover (transform, scale(1.1));
+  }
+
+  &__iconNumber {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+
+    width: 14px;
+    height: 14px;
+    border: 1px solid $white-color;
+    border-radius: 50%;
+
+    font-family: MontRegular, sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 14px;
+    color: $white-color;
+    text-align: center;
+    letter-spacing: 0%;
+
+    background-color: $red-color;
+  }
+}

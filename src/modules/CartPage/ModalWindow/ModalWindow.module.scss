@@ -1,0 +1,102 @@
+@import '../../../mainStyles/main';
+
+.overlay {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  visibility: hidden;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.6);
+
+  transition: $animation;
+
+  &.show {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.modal {
+  transform: scale(0.9);
+
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 12px;
+
+  text-align: center;
+
+  background: $textColor;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+  transition: transform $animation;
+
+  .overlay.show & {
+    transform: scale(1);
+  }
+
+  &_message {
+    margin-bottom: 20px;
+    font-size: 20px;
+    line-height: 1.5;
+    color: $white;
+  }
+
+  &_buttonsContainer {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+}
+
+.confirm {
+  cursor: pointer;
+
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  padding: 8px;
+  border-radius: 8px;
+
+  font-family: Mont-Bold, sans-serif;
+  font-size: 18px;
+  color: $textColor;
+
+  background-color: $whiteGreen;
+
+  transition: all $animation;
+
+  &:hover {
+    color: $white;
+    background-color: #239e58;
+  }
+}
+
+.cancel {
+  cursor: pointer;
+
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  padding: 8px;
+  border-radius: 8px;
+
+  font-family: Mont-Bold, sans-serif;
+  font-size: 18px;
+  color: $textColor;
+
+  background-color: #e74c3c;
+
+  transition: all $animation;
+
+  &:hover {
+    color: $white;
+    background-color: #c0392b;
+  }
+}
