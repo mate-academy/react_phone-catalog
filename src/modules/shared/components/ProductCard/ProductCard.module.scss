@@ -1,0 +1,128 @@
+@import '../../../../styles/mixins';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: var(--space-xs);
+  padding: var(--space-sm);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card);
+
+  @include tablet-up {
+    padding: 24px;
+  }
+
+  @include desktop-up {
+    padding: 31px;
+  }
+}
+
+.imageLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  padding: 2px 0 4px;
+  overflow: hidden;
+
+  @include desktop-up {
+    padding: 2px 0 6px;
+  }
+}
+
+.image {
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform var(--transition-image);
+}
+
+.imageLink:hover .image {
+  transform: scale(var(--image-hover-scale));
+}
+
+.name {
+  @include line-clamp(2);
+
+  min-height: 40px;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  color: var(--color-primary);
+  transition: color var(--transition);
+
+  @include tablet-up {
+    min-height: 42px;
+  }
+
+  &:hover {
+    color: var(--color-secondary);
+  }
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-elements);
+
+  @include tablet-up {
+    padding-bottom: var(--space-md);
+  }
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.fullPrice {
+  font-size: 14px;
+  color: var(--color-secondary);
+  text-decoration: line-through;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.specItem {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+
+  span:first-child {
+    color: var(--color-secondary);
+  }
+
+  span:last-child {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.addButton {
+  flex: 1;
+  font-weight: 600;
+  line-height: var(--lh-button);
+  white-space: nowrap;
+  padding-inline: var(--space-sm);
+
+  @include primary-button(40px);
+}
+
+.addButtonActive {
+  @include primary-button-selected;
+}

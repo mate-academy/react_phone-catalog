@@ -1,0 +1,19 @@
+@import '../../styles/mixins';
+
+.page {
+  @include empty-state-block;
+}
+
+.image {
+  width: 100%;
+  max-width: 320px;
+}
+
+.title {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+}
+
+.link {
+  @include primary-button(40px);
+}

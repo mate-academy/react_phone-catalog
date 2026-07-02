@@ -1,0 +1,85 @@
+@import '../../../../styles/mixins';
+
+.section {
+  width: 100%;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+
+  @include tablet-up {
+    margin-bottom: var(--space-md);
+  }
+}
+
+.title {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-h2);
+  font-weight: 700;
+}
+
+.controls {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--space-2xs);
+
+  @include tablet-up {
+    gap: var(--space-xs);
+  }
+}
+
+.arrow {
+  @include icon-button(32px);
+
+  @include tablet-up {
+    width: 40px;
+    height: 40px;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  @include tablet-up {
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.track {
+  display: flex;
+  gap: var(--space-sm);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include desktop-up {
+    gap: var(--space-md);
+  }
+}
+
+.item {
+  flex-shrink: 0;
+  width: 212px;
+  scroll-snap-align: start;
+
+  @include tablet-up {
+    width: 237px;
+  }
+
+  @include desktop-up {
+    width: 272px;
+  }
+}

@@ -1,0 +1,37 @@
+@import '../../styles/mixins';
+
+.page {
+  @include page-top-spacing;
+  @include page-stack-spacing;
+}
+
+.title {
+  @include page-title;
+}
+
+.count {
+  @include page-count;
+}
+
+.grid {
+  @include products-grid;
+}
+
+.message {
+  @include empty-state-text;
+
+  padding: var(--space-xl) 0;
+  text-align: center;
+}
+
+.empty {
+  @include empty-state-block;
+}
+
+.emptyText {
+  @include empty-state-text(320px);
+}
+
+.emptyLink {
+  @include primary-button(40px);
+}

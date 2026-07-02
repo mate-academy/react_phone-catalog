@@ -1,0 +1,175 @@
+@import '../../styles/mixins';
+
+.page {
+  @include page-top-spacing;
+  @include page-stack-spacing;
+}
+
+.title {
+  @include page-title;
+}
+
+.empty {
+  @include empty-state-block;
+}
+
+.emptyImage {
+  width: 200px;
+}
+
+.emptyText {
+  @include empty-state-text;
+}
+
+.emptyLink {
+  @include primary-button(40px);
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+
+  @include desktop-up {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: auto 64px minmax(0, 1fr);
+  grid-template-areas:
+    'remove image name'
+    '. quantity price';
+  align-items: center;
+  gap: var(--space-xs) var(--space-sm);
+  padding: var(--space-sm);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+  border-radius: var(--radius-md);
+
+  @include desktop-up {
+    grid-template-columns: auto auto 1fr auto auto;
+    grid-template-areas: 'remove image name quantity price';
+    gap: var(--space-sm);
+  }
+}
+
+.removeButton {
+  grid-area: remove;
+
+  @include icon-button(24px);
+}
+
+.itemImageLink {
+  grid-area: image;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  min-width: 0; 
+  overflow: hidden;
+}
+
+.itemImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.itemName {
+  grid-area: name;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary);
+  transition: color var(--transition);
+
+  &:hover {
+    color: var(--color-secondary);
+  }
+}
+
+.quantity {
+  grid-area: quantity;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+
+  @include desktop-up {
+    gap: var(--space-sm);
+  }
+}
+
+.quantityButton {
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+
+  @include icon-button(24px);
+}
+
+.quantityValue {
+  min-width: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.itemPrice {
+  grid-area: price;
+  justify-self: end;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2xs);
+  padding: var(--space-lg);
+  text-align: center;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+  border-radius: var(--radius-md);
+
+  @include desktop-up {
+    width: 320px;
+  }
+}
+
+.summaryTotal {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.summaryQuantity {
+  margin-bottom: var(--space-md);
+  font-size: 12px;
+  color: var(--color-secondary);
+  border-bottom: 1px solid var(--color-elements);
+  padding-bottom: var(--space-md);
+  width: 100%;
+}
+
+.checkoutButton {
+  width: 100%;
+
+  @include primary-button(44px);
+}

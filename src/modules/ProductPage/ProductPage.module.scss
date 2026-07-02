@@ -1,0 +1,185 @@
+@import '../../styles/mixins';
+
+.page {
+  @include page-top-spacing;
+  @include page-stack-spacing;
+}
+
+.title {
+  @include page-title;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+
+  @include tablet-up {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
+
+.searchField {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: var(--space-sm);
+  color: var(--color-icons);
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  height: 40px;
+  padding-right: 40px;
+  padding-left: 40px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+
+  &::placeholder {
+    color: var(--color-icons);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-icons);
+  }
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    appearance: none;
+    display: none;
+  }
+
+  &::-ms-clear,
+  &::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+}
+
+.clearButton {
+  @include button-reset;
+
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: var(--color-icons);
+  transform: translateY(-50%);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+
+  @include tablet-up {
+    width: 176px;
+  }
+}
+
+.fieldLabel {
+  font-size: 12px;
+  color: var(--color-secondary);
+}
+
+.selectWrap {
+  position: relative;
+  display: block;
+}
+
+.selectChevron {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 16px;
+  height: 16px;
+  color: var(--color-icons);
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: var(--transition);
+}
+
+.selectWrap:hover .selectChevron {
+  color: var(--color-primary);
+}
+
+.selectWrap:focus-within .selectChevron {
+  color: var(--color-primary);
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  height: 40px;
+  padding: 0 36px 0 var(--space-sm);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  background-image: none;
+  border: 1px solid var(--color-elements);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+
+  &:hover {
+    border-color: var(--color-icons);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+}
+
+.count {
+  @include page-count;
+}
+
+.grid {
+  @include products-grid;
+}
+
+.message {
+  padding: var(--space-xl) 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-secondary);
+  text-align: center;
+}
+
+.reloadButton {
+  display: block;
+  margin: var(--space-md) auto 0;
+
+  @include primary-button(40px);
+}

@@ -1,0 +1,17 @@
+@import '../../../../styles/mixins';
+
+.favoriteButton {
+  flex-shrink: 0;
+
+  @include icon-button(40px);
+}
+
+.favoriteButtonActive {
+  color: var(--color-accent-secondary);
+  border-color: var(--color-elements);
+}
+
+.favoriteButtonActive:hover {
+  color: var(--color-accent-secondary);
+  border-color: var(--color-elements);
+}
