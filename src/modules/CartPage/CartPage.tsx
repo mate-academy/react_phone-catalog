@@ -75,6 +75,8 @@ export const CartPage = () => {
                   src={`${IMG_BASE}/${item.product.image}`}
                   alt={item.product.name}
                   className={styles.itemImage}
+                  width={64}
+                  height={64}
                 />
               </Link>
 

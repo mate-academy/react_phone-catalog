@@ -76,6 +76,8 @@
   justify-content: center;
   width: 64px;
   height: 64px;
+  min-width: 0; 
+  overflow: hidden;
 }
 
 .itemImage {
