@@ -6,8 +6,7 @@ import { getProducts } from '../../utils/fetchClient';
 import { PicturesSlider, SlideItem } from './components/PicturesSlider';
 import { ProductsSlider } from './components/ProductsSlider';
 import styles from './HomePage.module.scss';
-
-const IMG_BASE = import.meta.env.BASE_URL;
+import { IMG_BASE } from '../../utils/imgBase';
 
 type CategoryItem = {
   to: string;

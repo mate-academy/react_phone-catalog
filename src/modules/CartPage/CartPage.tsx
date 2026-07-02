@@ -2,8 +2,7 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { CloseIcon } from '../shared/ui/Icons/Icons';
 import styles from './CartPage.module.scss';
-
-const IMG_BASE = import.meta.env.BASE_URL;
+import { IMG_BASE } from '../../utils/imgBase';
 
 export const CartPage = () => {
   const {

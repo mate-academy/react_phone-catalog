@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './NotFoundPage.module.scss';
-
-const IMG_BASE = import.meta.env.BASE_URL;
+import { IMG_BASE } from '../../utils/imgBase';
 
 export const NotFoundPage = () => (
   <div className={styles.page}>

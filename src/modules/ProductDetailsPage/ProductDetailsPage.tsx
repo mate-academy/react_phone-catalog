@@ -13,8 +13,8 @@ import { useFavorites } from '../../context/FavoritesContext';
 import { ChevronLeftIcon } from '../shared/ui/Icons/Icons';
 import styles from './ProductDetailsPage.module.scss';
 import { FavoriteButton } from '../shared/ui/FavoriteButton';
+import { IMG_BASE } from '../../utils/imgBase';
 
-const IMG_BASE = import.meta.env.BASE_URL;
 const COLOR_MAP: Record<string, string> = {
   black: '#2c2c2c',
   blue: '#2f6fed',

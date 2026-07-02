@@ -5,8 +5,7 @@ import { useCart } from '../../../../context/CartContext';
 import { useFavorites } from '../../../../context/FavoritesContext';
 import { FavoriteButton } from '../../ui/FavoriteButton';
 import styles from './ProductCard.module.scss';
-
-const IMG_BASE = import.meta.env.BASE_URL;
+import { IMG_BASE } from '../../../../utils/imgBase';
 
 type Props = {
   product: Product;
