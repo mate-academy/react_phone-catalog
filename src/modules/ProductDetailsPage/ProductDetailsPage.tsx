@@ -102,6 +102,12 @@ export const ProductDetailsPage = () => {
   const categoryTitle = category.charAt(0).toUpperCase() + category.slice(1);
   const currentImage = product.images[selectedImageIndex];
 
+  const goToVariant = (color: string, capacity: string) => {
+    const newId = `${product.namespaceId}-${capacity.toLowerCase()}-${color}`;
+
+    navigate(`/product/${newId}`);
+  };
+
   const productAsItem: Product = {
     id: 0,
     category: category as Category,
@@ -189,7 +195,7 @@ export const ProductDetailsPage = () => {
                     name="color"
                     value={color}
                     checked={selectedColor === color}
-                    onChange={event => setSelectedColor(event.target.value)}
+                    onChange={() => goToVariant(color, selectedCapacity)}
                     className={styles.colorInput}
                   />
                   <span
@@ -216,7 +222,7 @@ export const ProductDetailsPage = () => {
                     name="capacity"
                     value={cap}
                     checked={selectedCapacity === cap}
-                    onChange={event => setSelectedCapacity(event.target.value)}
+                    onChange={() => goToVariant(selectedColor, cap)}
                     className={styles.capacityInput}
                   />
                   {cap}
