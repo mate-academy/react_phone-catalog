@@ -84,6 +84,23 @@
   }
 }
 
+.mobileSearch {
+  display: flex;
+  padding: var(--space-sm);
+  border-top: 1px solid var(--color-elements);
+
+  @include tablet-up {
+    display: none;
+  }
+
+  .searchField {
+    display: flex;
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+  }
+}
+
 .searchIcon {
   position: absolute;
   left: var(--space-sm);

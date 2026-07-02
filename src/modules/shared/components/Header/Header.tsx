@@ -82,10 +82,7 @@ export const Header = () => {
   );
   const showSearch = SEARCHABLE_PATHS.has(location.pathname);
 
-  const searchPlaceholder =
-    location.pathname === '/favorites'
-      ? 'Search in favorites...'
-      : `Search in ${location.pathname.slice(1)}...`;
+  const searchPlaceholder = 'Search';
 
   const updateQuery = useMemo(
     () =>
@@ -105,6 +102,37 @@ export const Header = () => {
         });
       }, 500),
     [setSearchParams],
+  );
+
+  const renderSearchField = () => (
+    <label className={styles.searchField}>
+      <SearchIcon className={styles.searchIcon} />
+
+      <input
+        type="search"
+        className={styles.searchInput}
+        placeholder={searchPlaceholder}
+        value={localQuery}
+        onChange={event => {
+          setLocalQuery(event.target.value);
+          updateQuery(event.target.value);
+        }}
+      />
+
+      {localQuery && (
+        <button
+          type="button"
+          className={styles.clearButton}
+          aria-label="Clear search"
+          onClick={() => {
+            setLocalQuery('');
+            updateQuery('');
+          }}
+        >
+          <CloseIcon />
+        </button>
+      )}
+    </label>
   );
 
   useEffect(() => {
@@ -150,36 +178,7 @@ export const Header = () => {
           <Navbar isOpen={isMenuOpen} />
         </div>
 
-        {showSearch && (
-          <label className={styles.searchField}>
-            <SearchIcon className={styles.searchIcon} />
-
-            <input
-              type="search"
-              className={styles.searchInput}
-              placeholder={searchPlaceholder}
-              value={localQuery}
-              onChange={event => {
-                setLocalQuery(event.target.value);
-                updateQuery(event.target.value);
-              }}
-            />
-
-            {localQuery && (
-              <button
-                type="button"
-                className={styles.clearButton}
-                aria-label="Clear search"
-                onClick={() => {
-                  setLocalQuery('');
-                  updateQuery('');
-                }}
-              >
-                <CloseIcon />
-              </button>
-            )}
-          </label>
-        )}
+        {showSearch && renderSearchField()}
 
         <div className={styles.actions}>
           <div className={styles.desktopActions}>
@@ -202,6 +201,10 @@ export const Header = () => {
           </button>
         </div>
       </div>
+
+      {showSearch && (
+        <div className={styles.mobileSearch}>{renderSearchField()}</div>
+      )}
 
       <div
         id="mobile-action-bar"
