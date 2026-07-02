@@ -28,7 +28,9 @@
 }
 
 @mixin section-spacing {
-  padding-block: var(--space-md);
+  & {
+    padding-block: var(--space-md);
+  }
 
   @include tablet-up {
     padding-block: var(--space-lg);
