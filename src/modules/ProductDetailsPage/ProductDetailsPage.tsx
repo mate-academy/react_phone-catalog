@@ -66,8 +66,8 @@ export const ProductDetailsPage = () => {
     getProductDetails(productId)
       .then(prod => {
         setProduct(prod);
-        setSelectedColor(prod.colorsAvailable[0]);
-        setSelectedCapacity(prod.capacityAvailable[0]);
+        setSelectedColor(prod.color);
+        setSelectedCapacity(prod.capacity);
 
         return getSuggestedProducts(prod.category, productId);
       })
