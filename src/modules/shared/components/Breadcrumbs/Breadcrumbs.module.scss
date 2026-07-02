@@ -1,0 +1,57 @@
+.breadcrumbs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 20px;
+  font-size: 12px;
+
+  @media (min-width: 640px) {
+    margin-left: 5px;
+    margin-bottom: 35px;
+  }
+}
+
+.breadcrumbItem {
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 287px;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumbLink {
+  display: flex;
+  color: #89939a;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #313237;
+  }
+}
+
+.breadcrumbCurrent {
+  color: var(--color-secondary);
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.separator {
+  // width: 16px;
+  display: flex;
+  color: #b4bdc4;
+  margin-right: 10px;
+}
+
+.icon {
+  margin-right: 5px;
+  color: var(--color-primary);
+}
+
+.rotate {
+  transform: rotate(180deg); // Разворачивает SVG на 180 градусов
+}

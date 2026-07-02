@@ -1,0 +1,158 @@
+.arrowLeft,
+.arrowRight {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+
+  svg rect {
+    transition: stroke 0.3s ease;
+  }
+
+  svg path {
+    transition: fill 0.3s ease;
+  }
+
+  /* Когда активна (можно нажать) */
+  &:not(:disabled) {
+    cursor: pointer;
+
+    svg rect {
+      stroke: var(--color-elements);
+    }
+
+    svg path {
+      fill: var(--color-primary);
+    }
+  }
+
+  /* Когда disabled (в начале/конце) */
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    svg rect {
+      stroke: var(--color-bg);
+    }
+
+    svg path {
+      fill: var(--color-elements);
+    }
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+
+  @media (min-width: 640px) {
+    margin-bottom: 26px;
+  }
+}
+
+.title {
+  max-width: 136px;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  letter-spacing: 0%;
+  color: var(--color-primary);
+
+  @media (min-width: 640px) {
+    max-width: 491px;
+    font-size: 32px;
+    letter-spacing: -1%;
+    line-height: 41px;
+  }
+
+  @media (min-width: 1200px) {
+    // font-size: 28px;
+  }
+}
+
+/* Контейнер для кнопок */
+.controls {
+  display: flex;
+  height: 32px;
+  gap: 16px;
+
+  @media (min-width: 640px) {
+    gap: 16px;
+  }
+}
+
+.sliderWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 56px;
+
+  @media (min-width: 640px) {
+    gap: 16px;
+    margin-bottom: 64px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-bottom: 80px;
+  }
+}
+
+.slider {
+  flex: 1;
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+
+  //при прокрутки слайдера с новой карточки. слева ++
+  scroll-snap-type: x mandatory;
+  padding-right: 16px;
+
+  /* Скрыть scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+
+.slideItem {
+  border: 1px solid var(--color-bg);
+  padding: 32px;
+  flex: 0 0 clamp(212px, calc(50% - 8px), 100%);
+  min-width: 0; // Предотвращает увеличение
+
+  //при прокрутки слайдера с новой карточки. слева
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  @media (min-width: 640px) {
+    flex: 0 0 calc(43.333% - 14px);
+    padding: 31px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 30px;
+    flex: 0 0 calc(25% - 8px);
+    // border: 1px solid red;
+  }
+}
+
+.sectionHot {
+  // Стили только для "Hot prices"
+  .slideItem {
+    // Если нужны другие отступы в карточках
+    margin-bottom: 8px;
+  }
+}

@@ -1,0 +1,31 @@
+@use '../../styles/mixins' as *;
+
+.nav {
+  display: none;
+
+  @media (min-width: 640px) {
+    display: flex;
+    gap: 32px;
+    height: 100%;
+  }
+
+  @media (min-width: 1200px) {
+    gap: 64px;
+    margin-left: -31%;
+  }
+}
+
+.link {
+  @include nav-link;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.active {
+  @include nav-link-active;
+  padding: 0;
+  padding-top: 3px;
+}

@@ -1,0 +1,175 @@
+.PhonesPage {
+  padding-top: 23px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -1%;
+  margin-bottom: 8px;
+
+  @media (min-width: 640px) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.count {
+  font-weight: 600;
+  line-height: 21px;
+  margin-bottom: 32px;
+
+  @media (min-width: 640px) {
+    margin-bottom: 40px;
+  }
+}
+
+.phoneCard {
+  @media (min-width: 640px) {
+    grid-column: span 6;
+    max-width: 100%;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 40px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 16px;
+    row-gap: 40px;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(24, 1fr);
+    row-gap: 33px;
+  }
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}
+
+.filters > :nth-child(2) {
+  @media (min-width: 640px) {
+    grid-column: span 3;
+  }
+}
+
+.filterGroup {
+  grid-column: span 2;
+
+  @media (min-width: 640px) {
+    grid-column: span 4;
+  }
+}
+
+.select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 2px;
+  margin-bottom: 24px;
+  border: 1px solid var(--color-elements);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('/public/img/Chevron.svg');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+
+  &:hover {
+    border: 1px solid var(--color-secondary);
+  }
+  &:focus {
+    border: 1px solid var(--color-primary);
+  }
+}
+
+.phoneCard {
+  padding: 32px;
+}
+
+.phoneCard > :nth-child(1) {
+  @media (min-width: 640px) {
+    margin: 0 auto;
+    margin-bottom: 35px;
+  }
+}
+
+.phoneCard > :nth-child(2) {
+  @media (min-width: 640px) {
+    h3 {
+      height: 41px;
+    }
+  }
+
+  // @media (min-width:1200px) {
+  //   h3 {
+  //     height: 40px;
+  //   }
+  // }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+  margin-bottom: 65px;
+
+  @media (min-width: 640px) {
+    margin-top: 45px;
+    margin-bottom: 60px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-top: 40px;
+    margin-bottom: 80px;
+  }
+}
+
+.pageNumbers {
+  display: flex;
+  gap: 8px;
+}
+
+.pageBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #b4bdc3;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.3s;
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: #313237;
+  }
+}
+
+.pageActive {
+  background: #313237; // Темный фон для активной страницы
+  color: #fff;
+  border-color: #313237;
+}

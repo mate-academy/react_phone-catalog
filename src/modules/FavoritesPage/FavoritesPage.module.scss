@@ -1,0 +1,123 @@
+.favoritesPage {
+  padding: 24px 0;
+  min-height: 100vh;
+
+  h1 {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -1%;
+    margin-bottom: 7px;
+
+    @media (min-width: 640px) {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+}
+
+.count {
+  font-size: 14px;
+  color: #89939a;
+  margin-bottom: 30px;
+
+  @media (min-width: 640px) {
+    margin-bottom: 45px;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 40px;
+  margin-bottom: 32px;
+
+  @media (min-width: 640px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 38px 16px;
+    margin-bottom: 30px;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 50px;
+  }
+}
+
+.slideItem {
+  border: 1px solid var(--color-bg);
+  padding: 32px;
+  // flex: 0 0 clamp(212px, calc(50% - 8px), 100%);
+  min-width: 0; // Предотвращает увеличение
+
+  //при прокрутки слайдера с новой карточки. слева
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  @media (min-width: 640px) {
+    display: flex;
+    // justify-content: center;
+    // display: flex;
+    // justify-content: center;
+    // flex: 0 0 calc(50% - 11px);
+    // padding: 31px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 30px;
+    flex: 0 0 calc(25% - 8px);
+    // border: 1px solid red;
+  }
+}
+
+.favoriteCard {
+  width: 288px;
+
+  .child:nth-child(1) {
+    background-color: green;
+  }
+}
+
+.favoriteCard > :nth-child(1) {
+  @media (min-width: 640px) {
+    margin: 0 auto;
+    margin-bottom: 33px;
+  }
+}
+
+.favoriteCard > :nth-child(2) {
+  @media (min-width: 640px) {
+    h3 {
+      height: auto;
+    }
+  }
+}
+.favoriteCard > :nth-child(2) > :nth-child(4) {
+  width: 218px;
+}
+
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #313237;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 16px;
+    color: #89939a;
+  }
+}
+
+.error {
+  padding: 20px;
+  background-color: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 4px;
+  color: #856404;
+  margin: 20px 0;
+}

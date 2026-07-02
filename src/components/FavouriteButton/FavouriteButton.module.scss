@@ -1,0 +1,32 @@
+.favourite_button {
+  @media (min-width: 640px) {
+    display: flex;
+    cursor: pointer;
+  }
+}
+
+.icon_btn {
+  background: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+
+  &:hover  {
+    border: 1px solid var(--color-primary);
+  }
+
+
+}
+
+.icon_btn_active {
+  border: 1px solid var(--color-bg);
+  path {
+    fill: #dc0808;
+  }
+}

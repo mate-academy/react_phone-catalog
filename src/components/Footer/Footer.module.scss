@@ -1,0 +1,142 @@
+.footer {
+  background: #fff;
+  border-top: 1px solid #e2e2e2;
+  // padding: 32px 0;
+}
+
+.logo--footer {
+  line-height: 0;
+  margin-left: 0;
+  padding-top: 15px;
+
+  @media (min-width: 640px) {
+    margin-left: 5px;
+    padding-top: 0;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0;
+    margin-left: 0;
+  }
+
+  & svg {
+    width: 89px;
+    height: 32px;
+  }
+}
+
+.inner {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 32px;
+  padding: 15px 0;
+
+  @media (min-width: 640px) {
+    align-items: center;
+
+    padding: 27px 0;
+    flex-direction: row;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 15px 0px;
+  }
+}
+
+.nav {
+  flex: 1;
+
+  @media (min-width: 640px) {
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    // padding-bottom: 8px;
+  }
+}
+
+.navList {
+  display: grid;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 16px;
+
+  & Li {
+    height: 11px;
+    line-height: 0;
+  }
+
+  @media (min-width: 640px) {
+    display: flex;
+    gap: 13.5px;
+    margin-left: 25px;
+  }
+
+  @media (min-width: 1200px) {
+    gap: 106.83px;
+    margin-left: 35px;
+  }
+}
+
+.navLink {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  color: var(--color-secondary);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+// .navLink:hover { color: #0f0f11; }
+
+/* Back to top */
+.backToTop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+  margin: 0 auto;
+
+  @media (min-width: 640px) {
+    padding-right: 10px;
+  }
+
+  @media (min-width: 1200px) {
+    padding-right: 0;
+  }
+}
+
+.backToTopLabel {
+  font-size: 12px;
+  font-weight: 700;
+  // letter-spacing: 0.08em;
+  color: var(--color-secondary);
+
+  @media (min-width: 640px) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.backToTopBtn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-secondary);
+  background: transparent;
+  color: var(--color-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+
+  &:hover {
+    border-color: #0f0f11;
+  }
+}

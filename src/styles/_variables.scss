@@ -1,0 +1,42 @@
+// цвета, шрифты, отступы
+@font-face {
+  font-family: 'Mont';
+  src: url('../../public/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../../public/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../../public/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  // Цвета из макета
+  --color-primary: #313237; // черный
+  --color-secondary: #89939a; // серый
+  --color-elements: #b4bdc3; // icons + placeholder
+  --color-icons: #75767f; // иконки
+  --color-white: #fafbfc; // почти белый
+  --color-bg: #e2e6e9; // фон (Gray/Elements)
+  --color-accent: #f86800; // оранжевый
+  --color-green: #27ae60; // зеленый (success)
+  --color-red: #eb5757; // красный (sale/error)
+
+  // Шрифты
+  --font-family: 'Mont', sans-serif;
+  --font-size-base: 14px;
+
+  // Отступы
+  --container-width: 1200px;
+  --container-padding: 16px;
+}

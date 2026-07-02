@@ -1,0 +1,49 @@
+.homePage {
+  padding-top: 24px;
+  // gap: 56px;
+
+  @media (min-width: 640px) {
+    padding-top: 32px;
+  }
+
+  @media (min-width: 1200px) {
+    padding-top: 55px;
+  }
+}
+
+.categoriesSection {
+  margin-bottom: 25px;
+
+  @media (min-width: 640px) {
+    margin-bottom: 28px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-bottom: 50px;
+  }
+}
+
+.categoriesTitle {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  margin-bottom: 24px;
+
+  @media (min-width: 640px) {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    margin-bottom: 28px;
+  }
+}
+
+.categoriesGrid {
+  @media (min-width: 640px) {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.hotPricesSlider {
+  margin-bottom: 63px;
+}
