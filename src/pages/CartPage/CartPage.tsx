@@ -3,8 +3,9 @@ import { flushSync } from 'react-dom';
 import { Link, useNavigate } from 'react-router-dom';
 
 import styles from './CartPage.module.scss';
-import { useLanguage } from '../../context/LanguageContext';
 
+import { AnimatedPrice } from '../../components/AnimatedPrice/AnimatedPrice';
+import { useLanguage } from '../../context/LanguageContext';
 import { useCart } from '../../context/CartContext';
 import { getAssetUrl } from '../../utils/helpers';
 
@@ -23,6 +24,10 @@ export const CartPage: React.FC = () => {
   useEffect(() => {
     document.title = t('cart.documentTitle');
   }, [t]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const handleRemove = (id: string) => {
     if ('startViewTransition' in document) {
@@ -144,7 +149,9 @@ export const CartPage: React.FC = () => {
           </div>
 
           <div className={styles.summaryCard}>
-            <div className={styles.totalPrice}>${totalPrice}</div>
+            <div className={styles.totalPrice}>
+              <AnimatedPrice value={totalPrice} />
+            </div>
             <div className={styles.totalCount}>
               {totalQuantity === 1
                 ? t('cart.totalForCount_1', { count: totalQuantity })

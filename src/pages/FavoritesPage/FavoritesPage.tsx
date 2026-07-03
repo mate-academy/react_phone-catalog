@@ -17,6 +17,10 @@ export const FavoritesPage: React.FC = () => {
     document.title = t('favorites.documentTitle');
   }, [t]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   const query = (searchParams.get('query') || '').trim().toLowerCase();
   const queryWords = query.split(/\s+/).filter(Boolean);
 

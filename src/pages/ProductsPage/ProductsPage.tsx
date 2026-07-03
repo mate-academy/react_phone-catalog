@@ -51,6 +51,10 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   }, [t]);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [category]);
+
+  useEffect(() => {
     document.title = t('products.documentTitle', {
       category: t(`categories.${category}`),
     });

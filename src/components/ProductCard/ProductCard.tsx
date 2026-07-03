@@ -1,13 +1,14 @@
 import React from 'react';
+import { flushSync } from 'react-dom';
 import { Link } from 'react-router-dom';
 
 import styles from './ProductCard.module.scss';
 
-import { Product } from '../../types/Product';
 import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoritesContext';
-import { getAssetUrl } from '../../utils/helpers';
 import { useLanguage } from '../../context/LanguageContext';
+import { Product } from '../../types/Product';
+import { getAssetUrl } from '../../utils/helpers';
 
 interface ProductCardProps {
   product: Product;
@@ -36,11 +37,32 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const handleFavoriteClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    toggleFavorite(product);
+
+    if (favorited && 'startViewTransition' in document) {
+      (
+        document as unknown as {
+          startViewTransition: (cb: () => void) => void;
+        }
+      ).startViewTransition(() => {
+        flushSync(() => {
+          toggleFavorite(product);
+        });
+      });
+    } else {
+      toggleFavorite(product);
+    }
   };
 
   return (
-    <div className={styles.card} data-testid="product-card">
+    <div
+      className={styles.card}
+      data-testid="product-card"
+      style={
+        {
+          viewTransitionName: `product-card-${product.id}`,
+        } as React.CSSProperties
+      }
+    >
       <Link to={`/product/${itemId}`} className={styles.imageLink}>
         <img src={getAssetUrl(image)} alt={name} loading="lazy" />
       </Link>
@@ -72,16 +94,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
 
       <div className={styles.buttons}>
-        <button
-          type="button"
-          onClick={handleCartClick}
-          className={`${styles.btnCart} ${inCart ? styles.btnCartActive : ''}`}
-          aria-label={
-            inCart ? t('productCard.addedToCart') : t('productCard.addToCart')
-          }
-        >
-          {inCart ? t('productCard.addedToCart') : t('productCard.addToCart')}
-        </button>
+        {inCart ? (
+          <div className={styles.btnCartActive}>
+            {t('productCard.addedToCart')}
+          </div>
+        ) : (
+          <button
+            type="button"
+            onClick={handleCartClick}
+            className={styles.btnCart}
+            aria-label={t('productCard.addToCart')}
+          >
+            {t('productCard.addToCart')}
+          </button>
+        )}
 
         <button
           type="button"

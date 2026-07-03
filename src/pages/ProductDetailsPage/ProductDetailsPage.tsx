@@ -373,20 +373,20 @@ export const ProductDetailsPage: React.FC = () => {
 
           {catalogProduct && (
             <div className={styles.actions}>
-              <button
-                type="button"
-                onClick={handleAddToCart}
-                className={`${styles.btnCart} ${inCart ? styles.btnCartActive : ''}`}
-                title={
-                  inCart
-                    ? t('productCard.addedToCart')
-                    : t('productCard.addToCart')
-                }
-              >
-                {inCart
-                  ? t('productCard.addedToCart')
-                  : t('productCard.addToCart')}
-              </button>
+              {inCart ? (
+                <div className={styles.btnCartActive}>
+                  {t('productCard.addedToCart')}
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handleAddToCart}
+                  className={styles.btnCart}
+                  title={t('productCard.addToCart')}
+                >
+                  {t('productCard.addToCart')}
+                </button>
+              )}
 
               <button
                 type="button"
