@@ -15,7 +15,7 @@ export const Footer = () => {
       <div className={styles.container}>
         <NavLink to="/" className={`${styles.footerLogo}`}>
           <img
-            src={asset('img/icons/Logo.svg')}
+            src={asset('/img/icons/Logo.svg')}
             alt="logo"
             className={styles.footerLogoImg}
           />

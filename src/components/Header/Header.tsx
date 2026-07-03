@@ -39,7 +39,6 @@ export const Header = () => {
       document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
-  // console.log(asset('img/icons/Logo.svg'));
 
   return (
     <>
@@ -47,7 +46,7 @@ export const Header = () => {
         <div className={styles.headerLeft}>
           <NavLink to="/" className={styles.logo}>
             <img
-              src={asset('img/icons/Logo.svg')}
+              src={asset('/img/icons/Logo.svg')}
               alt="logo"
               className={styles.logoImg}
             />
@@ -67,7 +66,9 @@ export const Header = () => {
         >
           <img
             src={asset(
-              isMenuOpen ? 'img/icons/close.svg' : 'img/icons/menu-burger.svg',
+              isMenuOpen
+                ? '/img/icons/close.svg'
+                : '/img/icons/menu-burger.svg',
             )}
             alt="menu"
           />

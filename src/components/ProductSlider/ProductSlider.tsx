@@ -54,8 +54,8 @@ export const ProductSlider: React.FC<Props> = ({
             <img
               src={asset(
                 isBeginning
-                  ? 'img/icons/arrow-left.svg'
-                  : 'img/icons/arrow-left-action.svg',
+                  ? '/img/icons/arrow-left.svg'
+                  : '/img/icons/arrow-left-action.svg',
               )}
               alt=""
             />
@@ -73,8 +73,8 @@ export const ProductSlider: React.FC<Props> = ({
             <img
               src={asset(
                 isEnd
-                  ? 'img/icons/arrow-right.svg'
-                  : 'img/icons/arrow-right-action.svg',
+                  ? '/img/icons/arrow-right.svg'
+                  : '/img/icons/arrow-right-action.svg',
               )}
               alt=""
             />

@@ -12,7 +12,7 @@ export const Navbar = () => {
         <div className={styles.headerLeft}>
           <NavLink to="/" className={styles.logo}>
             <img
-              src={asset('img/icons/Logo.svg')}
+              src={asset('/img/icons/Logo.svg')}
               alt="logo"
               className={styles.logoImg}
             />
@@ -73,7 +73,7 @@ export const Navbar = () => {
             className={`${styles.icon} ${styles.mobileAction}`}
           >
             <span className={styles.iconWrapper}>
-              <img src={asset('img/icons/favourites.svg')} alt="favorites" />
+              <img src={asset('/img/icons/favourites.svg')} alt="favorites" />
               <span className={styles.badge}>12</span>
             </span>
           </NavLink>
@@ -84,7 +84,7 @@ export const Navbar = () => {
           >
             <span className={styles.iconWrapper}>
               <img
-                src={asset('img/icons/shopping-bag.svg')}
+                src={asset('/img/icons/shopping-bag.svg')}
                 alt="shopping-bag"
               />
               <span className={styles.badge}>5</span>

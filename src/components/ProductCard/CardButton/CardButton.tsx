@@ -37,7 +37,9 @@ export const CardButton: React.FC<Props> = ({
           className={styles.heart}
           style={{
             backgroundImage: `url(${asset(
-              isFavorite ? 'img/icons/heart-filled.svg' : 'img/icons/heart.svg',
+              isFavorite
+                ? '/img/icons/heart-filled.svg'
+                : '/img/icons/heart.svg',
             )})`,
           }}
         />
