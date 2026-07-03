@@ -3,9 +3,9 @@ import { ProductDetails } from '../types/ProductDetails';
 import { buildUrl } from '../utils/buildUrl';
 
 const categoryFileMap: Record<string, string> = {
-  phones: '/api/phones.json',
-  tablets: '/api/tablets.json',
-  accessories: '/api/accessories.json',
+  phones: 'api/phones.json',
+  tablets: 'api/tablets.json',
+  accessories: 'api/accessories.json',
 };
 
 export const getProductDetails = async (
@@ -30,7 +30,7 @@ export const getProductDetails = async (
     return null;
   }
 
-  const detailsResponse = await fetch(detailsFile);
+  const detailsResponse = await fetch(buildUrl(detailsFile));
 
   if (!detailsResponse.ok) {
     throw new Error('Failed to fetch product details');
