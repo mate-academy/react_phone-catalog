@@ -204,9 +204,14 @@ export const Header: React.FC = () => {
             aria-label="Favorites page"
             unstable_viewTransition
           >
-            <i className="fa-regular fa-heart" />
-            {favorites.length > 0 && (
-              <span className={styles.badge}>{favorites.length}</span>
+            {({ isActive }) => (
+              <>
+                <i className="fa-regular fa-heart" />
+                {favorites.length > 0 && (
+                  <span className={styles.badge}>{favorites.length}</span>
+                )}
+                {isActive && <span className={styles.activeIndicator} />}
+              </>
             )}
           </NavLink>
 
@@ -218,9 +223,14 @@ export const Header: React.FC = () => {
             aria-label="Cart page"
             unstable_viewTransition
           >
-            <i className="fa-solid fa-bag-shopping" />
-            {totalQuantity > 0 && (
-              <span className={styles.badge}>{totalQuantity}</span>
+            {({ isActive }) => (
+              <>
+                <i className="fa-solid fa-bag-shopping" />
+                {totalQuantity > 0 && (
+                  <span className={styles.badge}>{totalQuantity}</span>
+                )}
+                {isActive && <span className={styles.activeIndicator} />}
+              </>
             )}
           </NavLink>
 

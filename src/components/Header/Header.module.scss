@@ -214,10 +214,7 @@ input[type="search" i]:enabled:read-write:-webkit-any(:focus, :hover)::-webkit-s
   }
 }
 
-.iconLinkActive {
-  border-bottom: 2px solid var(--color-text-primary);
-  margin-bottom: -2px;
-}
+
 
 .badge {
   position: absolute;
