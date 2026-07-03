@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import React from 'react';
 import { useContext } from 'react';
 import styles from './Header.module.scss';
@@ -6,16 +6,16 @@ import cn from 'classnames';
 import '../../mixin.scss';
 import { Asaid } from '../Asaid/Asaid';
 import { MenuContext } from '../../context/MenuContext';
+import { useCart } from '../../context/CartContext';
 
 type Props = {
   cartCount?: number;
   favoritesCount?: number;
 };
 
-export const Header: React.FC<Props> = ({
-  cartCount = 0,
-  favoritesCount = 0,
-}) => {
+export const Header: React.FC<Props> = () => {
+  const { cart, favorites, totalQuantity } = useCart();
+
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     `navbar-item  ${isActive ? 'isActive' : ''}`;
   const menu = useContext(MenuContext);
@@ -66,29 +66,29 @@ export const Header: React.FC<Props> = ({
         </nav>
 
         <div className={styles.actionsIcon}>
-          <NavLink
-            to="/favorites"
-            className={styles.icon}
-            aria-label="Favorites"
-          >
-            <img
-              src="./img/favorites.svg"
-              className={styles.iconImgFavorites}
-              alt="Favourites"
-            />
-            {favoritesCount > 0 && (
-              <span className="badge">{favoritesCount}</span>
-            )}
-          </NavLink>
+          <Link to="/favorites" className={styles.icon} aria-label="Favorites">
+            <div className={styles.iconPosiyon}>
+              <img
+                src="./img/favorites.svg"
+                className={styles.iconImgFavorites}
+                alt="Favourites"
+              />
+              {favorites.length > 0 && (
+                <span className={styles.badge}>{favorites.length}</span>
+              )}
+            </div>
+          </Link>
 
-          <NavLink to="/cart" className={styles.icon} aria-label="Cart">
+          <Link to="/cart" className={styles.icon} aria-label="Cart">
             <img
               src="./img/cart.svg"
               className={styles.iconImgCart}
               alt="Cart"
             />
-            {cartCount > 0 && <span className="badge">{cartCount}</span>}
-          </NavLink>
+            {totalQuantity > 0 && (
+              <span className={styles.badge}>{totalQuantity}</span>
+            )}
+          </Link>
         </div>
 
         <div className={styles.burgerMenuMaxWidth}>

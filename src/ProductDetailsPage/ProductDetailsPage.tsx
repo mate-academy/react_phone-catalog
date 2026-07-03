@@ -1,11 +1,11 @@
-/* eslint-disable import/extensions */
 import styles from './ProductDetailsPage.module.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { FullProduct } from '../types/Alltypes';
 import { useEffect, useState } from 'react';
 import { getData } from '../fetch/httpClient';
 import { UseSwiper } from '../Functional/Swiper/Swiper';
+import { useCart } from '../context/CartContext';
 
 export const ProductDetailsPage = () => {
   const { slug: productId, category } = useParams<{
@@ -19,7 +19,9 @@ export const ProductDetailsPage = () => {
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedCapacity, setSelectedCapacity] = useState('');
   const [selectedImages, setSelectedImages] = useState('');
-  // const navigate = useNavigate();
+
+  const { cart, favorites, addToCart, removeFromCart, toggleFavorite } =
+    useCart();
 
   useEffect(() => {
     setLoading(true);
@@ -27,8 +29,14 @@ export const ProductDetailsPage = () => {
       .then(data => {
         const product = data.find(item => item.id === productId);
 
-        setProducts(product || null);
-        setSelectedImages(product?.images[0] || '');
+        if (product) {
+          setProducts(product || null);
+          setSelectedImages(product?.images[0] || '');
+          setSelectedColor(product?.color || '');
+          setSelectedCapacity(product?.capacity || '');
+        } else {
+          setProducts(null);
+        }
       })
       .catch(() => setError('Something went wrong'))
       .finally(() => setLoading(false));
@@ -51,10 +59,13 @@ export const ProductDetailsPage = () => {
   }
 
   const {
+    id,
     priceDiscount,
     priceRegular,
     screen,
     resolution,
+    namespaceId,
+    capacity,
     processor,
     ram,
     camera,
@@ -65,6 +76,17 @@ export const ProductDetailsPage = () => {
     colorsAvailable,
     capacityAvailable,
   } = products;
+
+  const isProductInCart = cart.some(item => item.id === id);
+  const isProductFavorite = favorites.includes(id);
+
+  const handleCartClick = () => {
+    if (isProductInCart) {
+      removeFromCart(products);
+    } else {
+      addToCart(products);
+    }
+  };
 
   return (
     <div className={styles.containerPhones}>
@@ -127,7 +149,7 @@ export const ProductDetailsPage = () => {
           <div className={styles.colorsAvailableBlock}>
             {colorsAvailable.map(color => (
               <Link
-                to={`/${category} /${colorsAvailable}`}
+                to={`/${category}/${namespaceId}-${capacity.toLowerCase()}-${color.toLowerCase()}`}
                 key={color}
                 className={styles.linkAvailable}
               >
@@ -135,7 +157,7 @@ export const ProductDetailsPage = () => {
                   type="radio"
                   name="color"
                   value={color}
-                  // checked={selectedColor === color}
+                  checked={selectedColor === color}
                   onChange={() => setSelectedColor(color)}
                   className={`${styles.imagesByColor} ${selectedColor === color ? styles.activeColor : ''}`}
                 />
@@ -148,16 +170,20 @@ export const ProductDetailsPage = () => {
           <div className={styles.capacityAvailableBlock}>
             <div className={styles.capacityAvailableInBlock}>
               {capacityAvailable.map(cap => (
-                <label key={cap}>
+                <Link
+                  to={`/${category}/${namespaceId}-${cap.toLowerCase()}-${selectedColor.toLowerCase()}`}
+                  key={cap}
+                >
                   <input
                     type="radio"
                     name="capacity"
                     value={cap}
                     checked={selectedCapacity === cap}
                     onChange={() => setSelectedCapacity(cap)}
+                    // className={`${styles.byCap} ${selectedCapacity === cap ? styles.activeCap : ''}`}
                   />
                   <span>{cap}</span>
-                </label>
+                </Link>
               ))}
             </div>
           </div>

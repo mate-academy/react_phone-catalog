@@ -52,3 +52,65 @@
 .homeGoTo {
   color: #89939A;
 }
+
+
+.gridContainer {
+  display: grid;
+  --columns: 24;
+  column-gap: 32px;
+  row-gap: 80px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  box-sizing: border-box;
+
+  @include on-tablet {
+    --columns: 12;
+    column-gap: 24px;
+    row-gap: 64px;
+  }
+
+  @include on-phone {
+    --columns: 4;
+    column-gap: 16px;
+    row-gap: 56px;
+
+  }
+
+    .gridCartBlock {
+      grid-column: 1 / 16;
+      display: flex; // Выстраивает миниатюры
+      flex-direction: row;
+      gap: 16px;
+      align-items: flex-start;
+
+      @include on-tablet {
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+      }
+
+      @include on-phone {
+        grid-template-columns: repeat(4, 1fr);
+         align-items: center;
+        gap: 16px;
+      }
+    }
+
+        .totalPriceBlock {
+          grid-column: 17 / -1;
+            display: flex; // Выстраивает миниатюры
+            flex-direction: row;
+            gap: 16px;
+            align-items: flex-start;
+
+            @include on-tablet {
+              grid-template-columns: repeat(12, 1fr);
+              align-items: center;
+              gap: 12px;
+            }
+
+            @include on-phone {
+              grid-template-columns: repeat(4, 1fr);
+              align-items: center;
+              gap: 16px;
+            }
+        }
+  }
