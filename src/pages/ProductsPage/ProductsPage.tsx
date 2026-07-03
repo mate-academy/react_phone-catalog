@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import styles from './ProductsPage.module.scss';
+import { useLanguage } from '../../context/LanguageContext';
 
 import { Product } from '../../types/Product';
 import { getProducts } from '../../utils/api';
@@ -19,6 +20,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   category,
   title,
 }) => {
+  const { t } = useLanguage();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -32,7 +34,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
 
   const currentPage = parseInt(pageStr, 10) || 1;
 
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -40,18 +42,20 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
 
       setProducts(data);
     } catch (err) {
-      setError('Could not load products. Something went wrong.');
+      setError(t('products.error'));
     } finally {
       setTimeout(() => {
         setLoading(false);
       }, 300);
     }
-  };
+  }, [t]);
 
   useEffect(() => {
-    document.title = `${title} | Gadgets`;
+    document.title = t('products.documentTitle', {
+      category: t(`categories.${category}`),
+    });
     loadData();
-  }, [category, title]);
+  }, [category, title, loadData, t]);
 
   const updateUrlParams = (newParams: Record<string, string | null>) => {
     const nextParams = new URLSearchParams(searchParams);
@@ -94,11 +98,14 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   if (error) {
     return (
       <div className={`${styles.productsPage} container`}>
-        <Breadcrumbs category={category} categoryLabel={title} />
+        <Breadcrumbs
+          category={category}
+          categoryLabel={t(`categories.${category}`)}
+        />
         <div className={styles.errorState}>
           <p>{error}</p>
           <button type="button" onClick={loadData} className={styles.retryBtn}>
-            Reload
+            {t('home.reload')}
           </button>
         </div>
       </div>
@@ -144,13 +151,18 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
 
   return (
     <div className={`${styles.productsPage} container`}>
-      <Breadcrumbs category={category} categoryLabel={title} />
+      <Breadcrumbs
+        category={category}
+        categoryLabel={t(`categories.${category}`)}
+      />
 
-      <h1 className={styles.title}>{title} page</h1>
+      <h1 className={styles.title}>
+        {t('products.pageTitle', { category: t(`categories.${category}`) })}
+      </h1>
 
       {loading ? (
         <>
-          <div className={styles.count}>Loading catalog...</div>
+          <div className={styles.count}>{t('products.loading')}</div>
           <div className={styles.grid}>
             {Array.from({ length: perPageStr === 'all' ? 8 : perPage }).map(
               (_, idx) => (
@@ -160,26 +172,38 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
           </div>
         </>
       ) : categoryProducts.length === 0 ? (
-        <div className={styles.noItems}>There are no {category} yet</div>
+        <div className={styles.noItems}>
+          {t('products.noItems', {
+            category: t(`categories.${category}`).toLowerCase(),
+          })}
+        </div>
       ) : filteredProducts.length === 0 ? (
         <div className={styles.noItems}>
-          <p>There are no {category} matching the query</p>
+          <p>
+            {t('products.noItemsMatching', {
+              category: t(`categories.${category}`).toLowerCase(),
+            })}
+          </p>
 
           <button
             type="button"
             className={styles.clearSearchBtn}
             onClick={handleClearSearch}
           >
-            Clear search
+            {t('products.clearSearch')}
           </button>
         </div>
       ) : (
         <>
-          <div className={styles.count}>{totalItems} models</div>
+          <div className={styles.count}>
+            {totalItems === 1
+              ? t('products.modelsCount_1', { count: totalItems })
+              : t('products.modelsCount', { count: totalItems })}
+          </div>
 
           <div className={styles.filters}>
             <div className={styles.filterGroup}>
-              <span className={styles.label}>Sort by</span>
+              <span className={styles.label}>{t('products.sortBy')}</span>
               <div className={styles.selectWrapper}>
                 <select
                   value={sort}
@@ -187,9 +211,11 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                   className={styles.select}
                   aria-label="Sort products by"
                 >
-                  <option value="age">Newest</option>
-                  <option value="title">Alphabetically</option>
-                  <option value="price">Cheapest</option>
+                  <option value="age">{t('products.sortNewest')}</option>
+                  <option value="title">
+                    {t('products.sortAlphabetical')}
+                  </option>
+                  <option value="price">{t('products.sortCheapest')}</option>
                 </select>
                 <i
                   className={`fa-solid fa-chevron-down ${styles.selectArrow}`}
@@ -207,7 +233,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
             </div>
 
             <div className={styles.filterGroup}>
-              <span className={styles.label}>Items on page</span>
+              <span className={styles.label}>{t('products.itemsOnPage')}</span>
               <div className={styles.selectWrapper} style={{ width: '128px' }}>
                 <select
                   value={perPageStr}

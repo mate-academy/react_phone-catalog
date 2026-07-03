@@ -3,6 +3,9 @@ import { flushSync } from 'react-dom';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import styles from './ProductDetailsPage.module.scss';
+import { useLanguage } from '../../context/LanguageContext';
+
+import { DescriptionSection } from '../../types/ProductDetails';
 
 import { Product } from '../../types/Product';
 import { ProductDetails } from '../../types/ProductDetails';
@@ -21,6 +24,7 @@ import { ProductsSlider } from '../../components/ProductsSlider';
 import { getAssetUrl, getColorHex } from '../../utils/helpers';
 
 export const ProductDetailsPage: React.FC = () => {
+  const { t } = useLanguage();
   const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
 
@@ -159,13 +163,13 @@ export const ProductDetailsPage: React.FC = () => {
 
   useEffect(() => {
     if (loading) {
-      document.title = 'Loading... | Gadgets';
+      document.title = t('productDetails.loadingTitle');
     } else if (error || !details) {
-      document.title = 'Product Not Found | Gadgets';
+      document.title = t('productDetails.notFoundTitle');
     } else {
       document.title = `${details.name} | Gadgets`;
     }
-  }, [loading, error, details]);
+  }, [loading, error, details, t]);
 
   if (loading) {
     return (
@@ -181,16 +185,21 @@ export const ProductDetailsPage: React.FC = () => {
         className={`${styles.notFound} container`}
         data-testid="product-not-found"
       >
-        <h1 className={styles.notFoundTitle}>Product was not found</h1>
-        <p className={styles.notFoundText}>
-          The product with the requested ID does not exist or has been removed.
-        </p>
+        <h1 className={styles.notFoundTitle}>
+          {t('productDetails.errorTitle')}
+        </h1>
+        <p className={styles.notFoundText}>{t('productDetails.errorText')}</p>
         <Link to="/" className={styles.notFoundBtn}>
-          Back to Home
+          {t('productDetails.backToHome')}
         </Link>
       </div>
     );
   }
+
+  const localizedDescription =
+    t(details.id, details.category) !== details.id
+      ? (t(details.id, details.category) as DescriptionSection[])
+      : details.description;
 
   const handleVariantClick = (color: string, capacity: string) => {
     let variant = categoryDetails.find(
@@ -245,9 +254,7 @@ export const ProductDetailsPage: React.FC = () => {
     <div className={`${styles.detailsPage} container`}>
       <Breadcrumbs
         category={details.category}
-        categoryLabel={
-          details.category.charAt(0).toUpperCase() + details.category.slice(1)
-        }
+        categoryLabel={t(`categories.${details.category}`)}
         productName={details.name}
       />
 
@@ -257,7 +264,7 @@ export const ProductDetailsPage: React.FC = () => {
         className={styles.backBtn}
       >
         <i className="fa-solid fa-chevron-left" />
-        <span>Back</span>
+        <span>{t('productDetails.back')}</span>
       </button>
 
       <h1 className={styles.title}>{details.name}</h1>
@@ -300,7 +307,9 @@ export const ProductDetailsPage: React.FC = () => {
 
         <div className={styles.panel}>
           <div className={styles.optionsSection}>
-            <span className={styles.sectionTitle}>Available colors</span>
+            <span className={styles.sectionTitle}>
+              {t('productDetails.availableColors')}
+            </span>
             <div className={styles.colorsList}>
               {details.colorsAvailable.map(colorVal => {
                 const isActive =
@@ -328,7 +337,9 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
 
           <div className={styles.optionsSection}>
-            <span className={styles.sectionTitle}>Select capacity</span>
+            <span className={styles.sectionTitle}>
+              {t('productDetails.selectCapacity')}
+            </span>
             <div className={styles.capacityList}>
               {details.capacityAvailable.map(capVal => {
                 const isActive =
@@ -366,16 +377,26 @@ export const ProductDetailsPage: React.FC = () => {
                 type="button"
                 onClick={handleAddToCart}
                 className={`${styles.btnCart} ${inCart ? styles.btnCartActive : ''}`}
-                title={inCart ? 'Added to cart' : 'Add to cart'}
+                title={
+                  inCart
+                    ? t('productCard.addedToCart')
+                    : t('productCard.addToCart')
+                }
               >
-                {inCart ? 'Added to cart' : 'Add to cart'}
+                {inCart
+                  ? t('productCard.addedToCart')
+                  : t('productCard.addToCart')}
               </button>
 
               <button
                 type="button"
                 onClick={handleToggleFavorite}
                 className={`${styles.btnFavorite} ${favorited ? styles.btnFavoriteActive : ''}`}
-                aria-label="Add to favorites"
+                aria-label={
+                  favorited
+                    ? t('productCard.removeFromFavorites')
+                    : t('productCard.addToFavorites')
+                }
               >
                 <i
                   className={
@@ -388,21 +409,29 @@ export const ProductDetailsPage: React.FC = () => {
 
           <div className={styles.smallSpecs}>
             <div className={styles.smallSpecRow}>
-              <span className={styles.smallSpecLabel}>Screen</span>
+              <span className={styles.smallSpecLabel}>
+                {t('productCard.screen')}
+              </span>
               <span className={styles.smallSpecValue}>{details.screen}</span>
             </div>
             <div className={styles.smallSpecRow}>
-              <span className={styles.smallSpecLabel}>Resolution</span>
+              <span className={styles.smallSpecLabel}>
+                {t('productDetails.resolution')}
+              </span>
               <span className={styles.smallSpecValue}>
                 {details.resolution}
               </span>
             </div>
             <div className={styles.smallSpecRow}>
-              <span className={styles.smallSpecLabel}>Processor</span>
+              <span className={styles.smallSpecLabel}>
+                {t('productDetails.processor')}
+              </span>
               <span className={styles.smallSpecValue}>{details.processor}</span>
             </div>
             <div className={styles.smallSpecRow}>
-              <span className={styles.smallSpecLabel}>RAM</span>
+              <span className={styles.smallSpecLabel}>
+                {t('productCard.ram')}
+              </span>
               <span className={styles.smallSpecValue}>{details.ram}</span>
             </div>
           </div>
@@ -411,8 +440,8 @@ export const ProductDetailsPage: React.FC = () => {
 
       <div className={styles.infoGrid}>
         <div>
-          <h2 className={styles.aboutTitle}>About</h2>
-          {details.description.map((desc, idx) => (
+          <h2 className={styles.aboutTitle}>{t('productDetails.about')}</h2>
+          {localizedDescription.map((desc, idx) => (
             <section key={idx} className={styles.aboutSection}>
               <h3 className={styles.aboutSub}>{desc.title}</h3>
               {desc.text.map((paragraph, pIdx) => (
@@ -425,41 +454,55 @@ export const ProductDetailsPage: React.FC = () => {
         </div>
 
         <div>
-          <h2 className={styles.specsTitle}>Tech specs</h2>
+          <h2 className={styles.specsTitle}>{t('productDetails.techSpecs')}</h2>
           <div className={styles.specsList}>
             <div className={styles.specRowFull}>
-              <span className={styles.specLabelFull}>Screen</span>
+              <span className={styles.specLabelFull}>
+                {t('productCard.screen')}
+              </span>
               <span className={styles.specValueFull}>{details.screen}</span>
             </div>
             <div className={styles.specRowFull}>
-              <span className={styles.specLabelFull}>Resolution</span>
+              <span className={styles.specLabelFull}>
+                {t('productDetails.resolution')}
+              </span>
               <span className={styles.specValueFull}>{details.resolution}</span>
             </div>
             <div className={styles.specRowFull}>
-              <span className={styles.specLabelFull}>Processor</span>
+              <span className={styles.specLabelFull}>
+                {t('productDetails.processor')}
+              </span>
               <span className={styles.specValueFull}>{details.processor}</span>
             </div>
             <div className={styles.specRowFull}>
-              <span className={styles.specLabelFull}>RAM</span>
+              <span className={styles.specLabelFull}>
+                {t('productCard.ram')}
+              </span>
               <span className={styles.specValueFull}>{details.ram}</span>
             </div>
 
             {details.camera && (
               <div className={styles.specRowFull}>
-                <span className={styles.specLabelFull}>Camera</span>
+                <span className={styles.specLabelFull}>
+                  {t('productDetails.camera')}
+                </span>
                 <span className={styles.specValueFull}>{details.camera}</span>
               </div>
             )}
 
             {details.zoom && (
               <div className={styles.specRowFull}>
-                <span className={styles.specLabelFull}>Zoom</span>
+                <span className={styles.specLabelFull}>
+                  {t('productDetails.zoom')}
+                </span>
                 <span className={styles.specValueFull}>{details.zoom}</span>
               </div>
             )}
 
             <div className={styles.specRowFull}>
-              <span className={styles.specLabelFull}>Cell</span>
+              <span className={styles.specLabelFull}>
+                {t('productDetails.cell')}
+              </span>
               <span className={styles.specValueFull}>
                 {details.cell.join(', ')}
               </span>
@@ -472,7 +515,7 @@ export const ProductDetailsPage: React.FC = () => {
         <div style={{ marginTop: '80px' }}>
           <ProductsSlider
             products={suggestedProducts}
-            title="You may also like"
+            title={t('productDetails.youMayLike')}
           />
         </div>
       )}
@@ -490,7 +533,7 @@ export const ProductDetailsPage: React.FC = () => {
               e.stopPropagation();
               handleCloseModal();
             }}
-            aria-label="Close zoom view"
+            aria-label={t('productDetails.closeZoom')}
           >
             <i className="fa-solid fa-xmark" />
           </button>

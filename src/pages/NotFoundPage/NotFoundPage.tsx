@@ -2,13 +2,16 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './NotFoundPage.module.scss';
+import { useLanguage } from '../../context/LanguageContext';
 
 import { getAssetUrl } from '../../utils/helpers';
 
 export const NotFoundPage: React.FC = () => {
+  const { t } = useLanguage();
+
   useEffect(() => {
-    document.title = 'Page Not Found | Gadgets';
-  }, []);
+    document.title = t('notFound.documentTitle');
+  }, [t]);
 
   return (
     <div
@@ -17,16 +20,13 @@ export const NotFoundPage: React.FC = () => {
     >
       <img
         src={getAssetUrl('img/page-not-found.png')}
-        alt="Page not found"
+        alt={t('notFound.title')}
         className={styles.image}
       />
-      <h1 className={styles.title}>Page not found</h1>
-      <p className={styles.text}>
-        The page you are looking for might have been removed or is temporarily
-        unavailable.
-      </p>
+      <h1 className={styles.title}>{t('notFound.title')}</h1>
+      <p className={styles.text}>{t('notFound.text')}</p>
       <Link to="/" className={styles.homeBtn}>
-        Go to Home
+        {t('notFound.goHome')}
       </Link>
     </div>
   );

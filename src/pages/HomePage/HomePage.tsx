@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './HomePage.module.scss';
+import { useLanguage } from '../../context/LanguageContext';
 
 import { Product } from '../../types/Product';
 import { getProducts } from '../../utils/api';
@@ -11,11 +12,12 @@ import { Loader } from '../../components/Loader';
 import { getAssetUrl } from '../../utils/helpers';
 
 export const HomePage: React.FC = () => {
+  const { t } = useLanguage();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -23,16 +25,16 @@ export const HomePage: React.FC = () => {
 
       setProducts(data);
     } catch (err) {
-      setError('Could not load catalog products.');
+      setError(t('home.error'));
     } finally {
       setLoading(false);
     }
-  };
+  }, [t]);
 
   useEffect(() => {
-    document.title = 'Product Catalog | Gadgets';
+    document.title = t('home.documentTitle');
     loadData();
-  }, []);
+  }, [t, loadData]);
 
   if (loading) {
     return (
@@ -64,7 +66,7 @@ export const HomePage: React.FC = () => {
             fontWeight: 700,
           }}
         >
-          Reload
+          {t('home.reload')}
         </button>
       </div>
     );
@@ -86,16 +88,19 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className={`${styles.homePage} container`}>
-      <h1 className="sr-only">Product Catalog</h1>
+      <h1 className="sr-only">{t('home.title')}</h1>
 
       <PicturesSlider />
 
       {brandNewProducts.length > 0 && (
-        <ProductsSlider products={brandNewProducts} title="Brand new models" />
+        <ProductsSlider
+          products={brandNewProducts}
+          title={t('home.brandNewTitle')}
+        />
       )}
 
       <section className={styles.categoriesSection}>
-        <h2 className={styles.categoryTitle}>Shop by category</h2>
+        <h2 className={styles.categoryTitle}>{t('home.shopByCategory')}</h2>
         <div className={styles.categoryGrid}>
           <Link to="/phones" className={styles.categoryCard}>
             <div className={styles.imageWrapper}>
@@ -105,8 +110,12 @@ export const HomePage: React.FC = () => {
                 loading="lazy"
               />
             </div>
-            <h3 className={styles.cardTitle}>Phones</h3>
-            <span className={styles.countLabel}>{phonesCount} models</span>
+            <h3 className={styles.cardTitle}>{t('categories.phones')}</h3>
+            <span className={styles.countLabel}>
+              {phonesCount === 1
+                ? t('home.modelsCount_1', { count: phonesCount })
+                : t('home.modelsCount', { count: phonesCount })}
+            </span>
           </Link>
 
           <Link to="/tablets" className={styles.categoryCard}>
@@ -117,8 +126,12 @@ export const HomePage: React.FC = () => {
                 loading="lazy"
               />
             </div>
-            <h3 className={styles.cardTitle}>Tablets</h3>
-            <span className={styles.countLabel}>{tabletsCount} models</span>
+            <h3 className={styles.cardTitle}>{t('categories.tablets')}</h3>
+            <span className={styles.countLabel}>
+              {tabletsCount === 1
+                ? t('home.modelsCount_1', { count: tabletsCount })
+                : t('home.modelsCount', { count: tabletsCount })}
+            </span>
           </Link>
 
           <Link to="/accessories" className={styles.categoryCard}>
@@ -129,14 +142,21 @@ export const HomePage: React.FC = () => {
                 loading="lazy"
               />
             </div>
-            <h3 className={styles.cardTitle}>Accessories</h3>
-            <span className={styles.countLabel}>{accessoriesCount} models</span>
+            <h3 className={styles.cardTitle}>{t('categories.accessories')}</h3>
+            <span className={styles.countLabel}>
+              {accessoriesCount === 1
+                ? t('home.modelsCount_1', { count: accessoriesCount })
+                : t('home.modelsCount', { count: accessoriesCount })}
+            </span>
           </Link>
         </div>
       </section>
 
       {hotPriceProducts.length > 0 && (
-        <ProductsSlider products={hotPriceProducts} title="Hot prices" />
+        <ProductsSlider
+          products={hotPriceProducts}
+          title={t('home.hotPricesTitle')}
+        />
       )}
     </div>
   );

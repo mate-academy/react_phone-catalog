@@ -1,0 +1,114 @@
+{
+  "header": {
+    "home": "Головна",
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари",
+    "searchPlaceholder": "Пошук у {category}...",
+    "switchToDark": "Перемкнути на темну тему",
+    "switchToLight": "Перемкнути на світлу тему",
+    "favoritesAria": "Сторінка улюблених товарів",
+    "cartAria": "Сторінка кошика",
+    "menuOpen": "Відкрити меню",
+    "menuClose": "Закрити меню"
+  },
+  "footer": {
+    "github": "Github",
+    "contacts": "Контакти",
+    "rights": "Права",
+    "backToTop": "Вгору",
+    "selectLanguage": "Виберіть мову"
+  },
+  "categories": {
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари",
+    "favorites": "Улюблене"
+  },
+  "home": {
+    "documentTitle": "Каталог товарів | Gadgets",
+    "title": "Каталог товарів",
+    "error": "Не вдалося завантажити товари каталогу.",
+    "reload": "Оновити",
+    "brandNewTitle": "Нові моделі",
+    "shopByCategory": "Категорії товарів",
+    "modelsCount": "{count} моделей",
+    "modelsCount_1": "{count} модель",
+    "hotPricesTitle": "Гарячі ціни"
+  },
+  "products": {
+    "documentTitle": "{category} | Gadgets",
+    "pageTitle": "Сторінка {category}",
+    "error": "Не вдалося завантажити товари. Щось пішло не так.",
+    "loading": "Завантаження каталогу...",
+    "noItems": "Тут поки що немає товарів з категорії {category}",
+    "noItemsMatching": "Немає товарів з категорії {category}, що відповідають запиту",
+    "clearSearch": "Очистити пошук",
+    "sortBy": "Сортувати за",
+    "sortNewest": "Новинками",
+    "sortAlphabetical": "Алфавітом",
+    "sortCheapest": "Дешевшими",
+    "itemsOnPage": "Товарів на сторінці",
+    "modelsCount": "{count} моделей",
+    "modelsCount_1": "{count} модель"
+  },
+  "productCard": {
+    "screen": "Екран",
+    "capacity": "Ємність",
+    "ram": "ОЗП",
+    "addToCart": "У кошик",
+    "addedToCart": "Додано",
+    "removeFromFavorites": "Видалити з улюблених",
+    "addToFavorites": "Додати до улюблених"
+  },
+  "productDetails": {
+    "loadingTitle": "Завантаження... | Gadgets",
+    "notFoundTitle": "Товар не знайдено | Gadgets",
+    "errorTitle": "Товар не знайдено",
+    "errorText": "Товар із вказаним ідентифікатором не існує або був видалений.",
+    "backToHome": "Назад на головну",
+    "back": "Назад",
+    "availableColors": "Доступні кольори",
+    "selectCapacity": "Оберіть ємність",
+    "resolution": "Роздільна здатність",
+    "processor": "Процесор",
+    "about": "Про товар",
+    "techSpecs": "Технічні характеристики",
+    "camera": "Камера",
+    "zoom": "Зум",
+    "cell": "Зв'язок",
+    "youMayLike": "Рекомендуємо також",
+    "closeZoom": "Закрити повний перегляд"
+  },
+  "cart": {
+    "documentTitle": "Кошик | Gadgets",
+    "back": "Назад",
+    "title": "Кошик",
+    "emptyTitle": "Ваш кошик порожній",
+    "emptyText": "Але це ніколи не пізно виправити!",
+    "startShopping": "Почати покупки",
+    "removeItem": "Видалити {name} з кошика",
+    "decreaseQty": "Зменшити кількість",
+    "increaseQty": "Збільшити кількість",
+    "totalForCount": "Разом за {count} товарів",
+    "totalForCount_1": "Разом за {count} товар",
+    "checkout": "Оформити замовлення",
+    "checkoutAlert": "Оформлення замовлення ще не реалізовано. Бажаєте очистити кошик?"
+  },
+  "favorites": {
+    "documentTitle": "Улюблене | Gadgets",
+    "title": "Улюблене",
+    "emptyText": "У вас ще немає улюблених товарів.",
+    "findGadgets": "Знайти гаджети",
+    "noItemsMatching": "Немає товарів, що відповідають запиту",
+    "clearSearch": "Очистити пошук",
+    "itemsCount": "{count} товарів",
+    "itemsCount_1": "{count} товар"
+  },
+  "notFound": {
+    "documentTitle": "Сторінку не знайдено | Gadgets",
+    "title": "Сторінку не знайдено",
+    "text": "Сторінка, яку ви шукаєте, могла бути видалена або тимчасово недоступна.",
+    "goHome": "На головну"
+  }
+}

@@ -6,6 +6,7 @@ import styles from './Header.module.scss';
 import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoritesContext';
 import { useTheme } from '../../context/ThemeContext';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const Header: React.FC = () => {
   const { pathname } = useLocation();
@@ -13,6 +14,7 @@ export const Header: React.FC = () => {
   const { totalQuantity } = useCart();
   const { favorites } = useFavorites();
   const { theme, toggleTheme } = useTheme();
+  const { t } = useLanguage();
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 
   const query = searchParams.get('query') || '';
@@ -103,7 +105,7 @@ export const Header: React.FC = () => {
           >
             {({ isActive }) => (
               <>
-                Home
+                {t('header.home')}
                 {isActive && <span className={styles.activeIndicator} />}
               </>
             )}
@@ -117,7 +119,7 @@ export const Header: React.FC = () => {
           >
             {({ isActive }) => (
               <>
-                Phones
+                {t('header.phones')}
                 {isActive && <span className={styles.activeIndicator} />}
               </>
             )}
@@ -131,7 +133,7 @@ export const Header: React.FC = () => {
           >
             {({ isActive }) => (
               <>
-                Tablets
+                {t('header.tablets')}
                 {isActive && <span className={styles.activeIndicator} />}
               </>
             )}
@@ -145,7 +147,7 @@ export const Header: React.FC = () => {
           >
             {({ isActive }) => (
               <>
-                Accessories
+                {t('header.accessories')}
                 {isActive && <span className={styles.activeIndicator} />}
               </>
             )}
@@ -163,7 +165,9 @@ export const Header: React.FC = () => {
                 onFocus={() => setIsSearchFocused(true)}
                 onBlur={() => setIsSearchFocused(false)}
                 onChange={handleSearchChange}
-                placeholder={`Search in ${pathname.slice(1)}...`}
+                placeholder={t('header.searchPlaceholder', {
+                  category: t(`categories.${pathname.slice(1)}`),
+                })}
                 className={styles.searchInput}
                 aria-label="Search items"
               />
@@ -187,7 +191,11 @@ export const Header: React.FC = () => {
             type="button"
             onClick={toggleTheme}
             className={styles.themeBtn}
-            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+            aria-label={
+              theme === 'light'
+                ? t('header.switchToDark')
+                : t('header.switchToLight')
+            }
           >
             {theme === 'light' ? (
               <i className="fa-solid fa-moon" />
@@ -201,7 +209,7 @@ export const Header: React.FC = () => {
             className={({ isActive }) =>
               `${styles.iconLink} ${isActive ? styles.iconLinkActive : ''}`
             }
-            aria-label="Favorites page"
+            aria-label={t('header.favoritesAria')}
             unstable_viewTransition
           >
             {({ isActive }) => (
@@ -220,7 +228,7 @@ export const Header: React.FC = () => {
             className={({ isActive }) =>
               `${styles.iconLink} ${isActive ? styles.iconLinkActive : ''}`
             }
-            aria-label="Cart page"
+            aria-label={t('header.cartAria')}
             unstable_viewTransition
           >
             {({ isActive }) => (
@@ -238,7 +246,9 @@ export const Header: React.FC = () => {
             type="button"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className={styles.hamburger}
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={
+              isMenuOpen ? t('header.menuClose') : t('header.menuOpen')
+            }
           >
             {isMenuOpen ? (
               <i className="fa-solid fa-xmark" />
@@ -259,7 +269,7 @@ export const Header: React.FC = () => {
               `${styles.menuNavLink} ${isActive ? styles.menuNavLinkActive : ''}`
             }
           >
-            Home
+            {t('header.home')}
           </NavLink>
           <NavLink
             to="/phones"
@@ -267,7 +277,7 @@ export const Header: React.FC = () => {
               `${styles.menuNavLink} ${isActive ? styles.menuNavLinkActive : ''}`
             }
           >
-            Phones
+            {t('header.phones')}
           </NavLink>
           <NavLink
             to="/tablets"
@@ -275,7 +285,7 @@ export const Header: React.FC = () => {
               `${styles.menuNavLink} ${isActive ? styles.menuNavLinkActive : ''}`
             }
           >
-            Tablets
+            {t('header.tablets')}
           </NavLink>
           <NavLink
             to="/accessories"
@@ -283,7 +293,7 @@ export const Header: React.FC = () => {
               `${styles.menuNavLink} ${isActive ? styles.menuNavLinkActive : ''}`
             }
           >
-            Accessories
+            {t('header.accessories')}
           </NavLink>
         </nav>
 
@@ -292,7 +302,11 @@ export const Header: React.FC = () => {
             type="button"
             onClick={toggleTheme}
             className={styles.menuActionBtn}
-            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+            aria-label={
+              theme === 'light'
+                ? t('header.switchToDark')
+                : t('header.switchToLight')
+            }
           >
             {theme === 'light' ? (
               <i className="fa-solid fa-moon" />
@@ -306,7 +320,7 @@ export const Header: React.FC = () => {
             className={({ isActive }) =>
               `${styles.menuActionBtn} ${isActive ? styles.menuActionBtnActive : ''}`
             }
-            aria-label="Favorites page"
+            aria-label={t('header.favoritesAria')}
           >
             <i className="fa-regular fa-heart" />
             {favorites.length > 0 && (
@@ -319,7 +333,7 @@ export const Header: React.FC = () => {
             className={({ isActive }) =>
               `${styles.menuActionBtn} ${isActive ? styles.menuActionBtnActive : ''}`
             }
-            aria-label="Cart page"
+            aria-label={t('header.cartAria')}
           >
             <i className="fa-solid fa-bag-shopping" />
             {totalQuantity > 0 && (

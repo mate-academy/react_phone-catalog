@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './Footer.module.scss';
+import { useLanguage, Language } from '../../context/LanguageContext';
 
 export const Footer: React.FC = () => {
+  const { language, setLanguage, t } = useLanguage();
+
   const handleScrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -31,7 +34,7 @@ export const Footer: React.FC = () => {
             rel="noopener noreferrer"
             className={styles.link}
           >
-            Github
+            {t('footer.github')}
           </a>
           <a
             href="https://www.linkedin.com/in/ivan-boiko-84a171112/"
@@ -39,7 +42,7 @@ export const Footer: React.FC = () => {
             rel="noopener noreferrer"
             className={styles.link}
           >
-            Contacts
+            {t('footer.contacts')}
           </a>
           <a
             href="https://github.com/mate-academy/react_phone-catalog"
@@ -47,17 +50,32 @@ export const Footer: React.FC = () => {
             rel="noopener noreferrer"
             className={styles.link}
           >
-            Rights
+            {t('footer.rights')}
           </a>
+        </div>
+
+        <div className={styles.selectContainer}>
+          <div className={styles.selectWrapper}>
+            <select
+              value={language}
+              onChange={e => setLanguage(e.target.value as Language)}
+              className={styles.select}
+              aria-label={t('footer.selectLanguage')}
+            >
+              <option value="en">English</option>
+              <option value="uk">Українська</option>
+            </select>
+            <i className={`fa-solid fa-chevron-down ${styles.selectArrow}`} />
+          </div>
         </div>
 
         <button
           type="button"
           onClick={handleScrollToTop}
           className={styles.backToTop}
-          aria-label="Scroll back to top"
+          aria-label={t('footer.backToTop')}
         >
-          <span>Back to top</span>
+          <span>{t('footer.backToTop')}</span>
           <span className={styles.arrowBtn}>
             <i className="fa-solid fa-arrow-up" />
           </span>

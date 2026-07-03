@@ -2,12 +2,14 @@ import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import styles from './CartPage.module.scss';
+import { useLanguage } from '../../context/LanguageContext';
 
 import { useCart } from '../../context/CartContext';
 import { getAssetUrl } from '../../utils/helpers';
 
 export const CartPage: React.FC = () => {
   const navigate = useNavigate();
+  const { t } = useLanguage();
   const {
     cartItems,
     removeFromCart,
@@ -18,13 +20,11 @@ export const CartPage: React.FC = () => {
   } = useCart();
 
   useEffect(() => {
-    document.title = 'Cart | Gadgets';
-  }, []);
+    document.title = t('cart.documentTitle');
+  }, [t]);
 
   const handleCheckout = () => {
-    const confirmClear = window.confirm(
-      'Checkout is not implemented yet. Do you want to clear the Cart?',
-    );
+    const confirmClear = window.confirm(t('cart.checkoutAlert'));
 
     if (confirmClear) {
       clearCart();
@@ -39,10 +39,10 @@ export const CartPage: React.FC = () => {
         className={styles.backBtn}
       >
         <i className="fa-solid fa-chevron-left" />
-        <span>Back</span>
+        <span>{t('cart.back')}</span>
       </button>
 
-      <h1 className={styles.title}>Cart</h1>
+      <h1 className={styles.title}>{t('cart.title')}</h1>
 
       {cartItems.length === 0 ? (
         <div className={styles.emptyState}>
@@ -51,12 +51,10 @@ export const CartPage: React.FC = () => {
             alt="Cart is empty"
             className={styles.emptyImage}
           />
-          <h2 className={styles.emptyTitle}>Your cart is empty</h2>
-          <p className={styles.emptyText}>
-            But it&apos;s never too late to fix it!
-          </p>
+          <h2 className={styles.emptyTitle}>{t('cart.emptyTitle')}</h2>
+          <p className={styles.emptyText}>{t('cart.emptyText')}</p>
           <Link to="/" className={styles.shopBtn}>
-            Start Shopping
+            {t('cart.startShopping')}
           </Link>
         </div>
       ) : (
@@ -75,7 +73,7 @@ export const CartPage: React.FC = () => {
                     type="button"
                     onClick={() => removeFromCart(id)}
                     className={styles.removeBtn}
-                    aria-label={`Remove ${product.name} from cart`}
+                    aria-label={t('cart.removeItem', { name: product.name })}
                   >
                     <i className="fa-solid fa-xmark" />
                   </button>
@@ -100,7 +98,7 @@ export const CartPage: React.FC = () => {
                       onClick={() => updateQuantity(id, quantity - 1)}
                       disabled={quantity <= 1}
                       className={styles.qtyBtn}
-                      aria-label="Decrease quantity"
+                      aria-label={t('cart.decreaseQty')}
                     >
                       <i className="fa-solid fa-minus" />
                     </button>
@@ -109,7 +107,7 @@ export const CartPage: React.FC = () => {
                       type="button"
                       onClick={() => updateQuantity(id, quantity + 1)}
                       className={styles.qtyBtn}
-                      aria-label="Increase quantity"
+                      aria-label={t('cart.increaseQty')}
                     >
                       <i className="fa-solid fa-plus" />
                     </button>
@@ -126,14 +124,16 @@ export const CartPage: React.FC = () => {
           <div className={styles.summaryCard}>
             <div className={styles.totalPrice}>${totalPrice}</div>
             <div className={styles.totalCount}>
-              Total for {totalQuantity} {totalQuantity === 1 ? 'item' : 'items'}
+              {totalQuantity === 1
+                ? t('cart.totalForCount_1', { count: totalQuantity })
+                : t('cart.totalForCount', { count: totalQuantity })}
             </div>
             <button
               type="button"
               onClick={handleCheckout}
               className={styles.checkoutBtn}
             >
-              Checkout
+              {t('cart.checkout')}
             </button>
           </div>
         </div>

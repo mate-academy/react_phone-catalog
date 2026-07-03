@@ -12,6 +12,7 @@ import './App.scss';
 import { ThemeProvider } from './context/ThemeContext';
 import { CartProvider } from './context/CartContext';
 import { FavoritesProvider } from './context/FavoritesContext';
+import { LanguageProvider } from './context/LanguageContext';
 
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -88,13 +89,15 @@ const router = createHashRouter([
 
 export const App: React.FC = () => {
   return (
-    <ThemeProvider>
-      <CartProvider>
-        <FavoritesProvider>
-          <RouterProvider router={router} />
-        </FavoritesProvider>
-      </CartProvider>
-    </ThemeProvider>
+    <LanguageProvider>
+      <ThemeProvider>
+        <CartProvider>
+          <FavoritesProvider>
+            <RouterProvider router={router} />
+          </FavoritesProvider>
+        </CartProvider>
+      </ThemeProvider>
+    </LanguageProvider>
   );
 };
 
