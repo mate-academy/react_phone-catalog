@@ -38,11 +38,13 @@ export const ProductCard: React.FC<Props> = ({
           className={`${styles.icon} ${styles.mobileAction}`}
         >
           <div className={styles.image}>
-            {image ? (
+            {/* {image ? (
               <img src={asset(image)} alt={name} />
             ) : (
               <span>No image</span>
-            )}
+            )} */}
+
+            {image ? <img src={image} alt={name} /> : <span>No image</span>}
           </div>
 
           <h3 className={styles.title}>{name}</h3>
