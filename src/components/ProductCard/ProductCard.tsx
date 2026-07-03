@@ -25,7 +25,9 @@ export const ProductCard: React.FC<Props> = ({
 }) => {
   const { isFavorite, toggleFavorite } = useFavorites();
   const { addToCart, removeFromCart, isInCart } = useCart();
-  console.log(image);
+
+  // console.log('image:', image);
+  // console.log('asset(image):', asset(image));
 
   return (
     <article className={styles.card}>

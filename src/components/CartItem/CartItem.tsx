@@ -17,6 +17,10 @@ export const CartItem: React.FC<Props> = ({ id, image, name, price, link }) => {
   const item = cart.find(i => i.id === id);
   const quantity = item?.quantity ?? 0;
 
+  // console.log(asset(image));
+  // console.log(name);
+  // console.log(price);
+
   if (!item) {
     return null;
   }
@@ -28,7 +32,7 @@ export const CartItem: React.FC<Props> = ({ id, image, name, price, link }) => {
         onClick={() => removeFromCart(id)}
       ></button>
       <NavLink to={link} className={styles.categoryLink}>
-        <img src={asset(`/image`)} alt={name} className={styles.image} />
+        <img src={asset(`/${image}`)} alt={name} className={styles.image} />
 
         <h3 className={styles.name}>{name}</h3>
       </NavLink>
