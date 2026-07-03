@@ -13,7 +13,7 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { addToCart, isInCart, removeFromCart } = useCart();
+  const { addToCart, isInCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
 
   const { itemId, name, fullPrice, price, screen, capacity, ram, image } =
@@ -28,10 +28,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
     if (!inCart) {
       addToCart(product);
-    }
-
-    if (inCart) {
-      removeFromCart(itemId);
     }
   };
 

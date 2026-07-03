@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { flushSync } from 'react-dom';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import styles from './ProductDetailsPage.module.scss';
@@ -32,9 +33,73 @@ export const ProductDetailsPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<boolean>(false);
   const [mainPhoto, setMainPhoto] = useState<string>('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { addToCart, isInCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isModalOpen]);
+
+  const handleThumbClick = (img: string) => {
+    if (!document.startViewTransition) {
+      setMainPhoto(img);
+
+      return;
+    }
+
+    const transition = document.startViewTransition(() => {
+      flushSync(() => {
+        setMainPhoto(img);
+      });
+    });
+
+    transition.ready.catch(() => {});
+    transition.finished.catch(() => {});
+  };
+
+  const handleOpenModal = () => {
+    if (!document.startViewTransition) {
+      setIsModalOpen(true);
+
+      return;
+    }
+
+    const transition = document.startViewTransition(() => {
+      flushSync(() => {
+        setIsModalOpen(true);
+      });
+    });
+
+    transition.ready.catch(() => {});
+    transition.finished.catch(() => {});
+  };
+
+  const handleCloseModal = () => {
+    if (!document.startViewTransition) {
+      setIsModalOpen(false);
+
+      return;
+    }
+
+    const transition = document.startViewTransition(() => {
+      flushSync(() => {
+        setIsModalOpen(false);
+      });
+    });
+
+    transition.ready.catch(() => {});
+    transition.finished.catch(() => {});
+  };
 
   useEffect(() => {
     const loadProductData = async () => {
@@ -205,18 +270,31 @@ export const ProductDetailsPage: React.FC = () => {
                 key={idx}
                 type="button"
                 className={`${styles.thumbBtn} ${mainPhoto === img ? styles.thumbBtnActive : ''}`}
-                onClick={() => setMainPhoto(img)}
+                onClick={() => handleThumbClick(img)}
               >
                 <img
                   src={getAssetUrl(img)}
                   alt={`${details.name} view ${idx + 1}`}
                 />
+                {mainPhoto === img && (
+                  <span className={styles.activeThumbBorder} />
+                )}
               </button>
             ))}
           </div>
 
-          <div className={styles.mainPhotoWrapper}>
-            <img src={getAssetUrl(mainPhoto)} alt={details.name} />
+          <div className={styles.mainPhotoWrapper} onClick={handleOpenModal}>
+            <img
+              src={getAssetUrl(mainPhoto)}
+              alt={details.name}
+              style={
+                {
+                  viewTransitionName: isModalOpen
+                    ? 'none'
+                    : 'main-details-photo',
+                } as React.CSSProperties
+              }
+            />
           </div>
         </div>
 
@@ -288,6 +366,7 @@ export const ProductDetailsPage: React.FC = () => {
                 type="button"
                 onClick={handleAddToCart}
                 className={`${styles.btnCart} ${inCart ? styles.btnCartActive : ''}`}
+                title={inCart ? 'Added to cart' : 'Add to cart'}
               >
                 {inCart ? 'Added to cart' : 'Add to cart'}
               </button>
@@ -395,6 +474,41 @@ export const ProductDetailsPage: React.FC = () => {
             products={suggestedProducts}
             title="You may also like"
           />
+        </div>
+      )}
+
+      {isModalOpen && (
+        <div
+          className={styles.modalOverlay}
+          onClick={handleCloseModal}
+          data-testid="photo-modal"
+        >
+          <button
+            type="button"
+            className={styles.modalCloseBtn}
+            onClick={e => {
+              e.stopPropagation();
+              handleCloseModal();
+            }}
+            aria-label="Close zoom view"
+          >
+            <i className="fa-solid fa-xmark" />
+          </button>
+          <div
+            className={styles.modalContent}
+            onClick={e => e.stopPropagation()}
+          >
+            <img
+              src={getAssetUrl(mainPhoto)}
+              alt={details.name}
+              className={styles.modalImage}
+              style={
+                {
+                  viewTransitionName: 'main-details-photo',
+                } as React.CSSProperties
+              }
+            />
+          </div>
         </div>
       )}
     </div>

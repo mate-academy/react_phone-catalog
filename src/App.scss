@@ -166,6 +166,16 @@ button, input, select {
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+::view-transition-group(active-thumb-indicator) {
+  animation-duration: 0.25s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::view-transition-group(main-details-photo) {
+  animation-duration: 0.3s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 @keyframes fade-out {
   from {
     opacity: 1;
