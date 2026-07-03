@@ -1,0 +1,18 @@
+.closeIcon {
+  width: 16px;
+  height: 16px;
+
+  &>path {
+    fill: var(--primary-color);
+
+    transition: fill 0.3s;
+  }
+
+  &.delete>path {
+    fill: var(--icons-secondary-color);
+  }
+
+  &:hover.delete>path {
+    fill: var(--primary-color);
+  }
+}

@@ -1,0 +1,8 @@
+{ 
+  "emptyFavorites":"Nie ma jeszcze ulubionych",
+  "favorites":"ulubione",
+  "items_one": "{{count}} pozycja",
+  "items_few": "{{count}} pozycje",
+  "items_many": "{{count}} pozycji",
+  "products": "produktów"
+}

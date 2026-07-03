@@ -1,0 +1,17 @@
+.homePage {
+  @include flex-gap(56px, column);
+
+  padding-block: 24px 64px;
+
+  @include container;
+
+  @include on-tablet {
+    gap: 64px;
+    padding-top: 32px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+    padding-block: 56px 80px;
+  }
+}

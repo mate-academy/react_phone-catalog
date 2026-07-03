@@ -1,0 +1,11 @@
+.title {
+  @include bottom-divider(16px);
+}
+
+.about, .descriptionBlock {
+  @include flex-gap(32px, column);
+}
+
+.description {
+  @include flex-gap(16px, column);
+}

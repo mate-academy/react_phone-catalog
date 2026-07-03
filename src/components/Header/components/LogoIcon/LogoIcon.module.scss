@@ -1,0 +1,19 @@
+.logoIcon {
+  width: 64px;
+  height: 22px;
+
+  @include on-desktop {
+    width: 80px;
+    height: 28px;
+  }
+
+  &>g>path:not(:last-of-type) {
+    fill: var(--logo-color);
+  }
+}
+
+.medium {
+  width: 89px;
+  height: 32px;
+}
+

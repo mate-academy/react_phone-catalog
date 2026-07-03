@@ -1,0 +1,76 @@
+.bodyWithMenu {
+  overflow-y: hidden;
+}
+
+.header {
+  // #region vars  
+  --header-boder: 1px solid var(--elements-color);
+  --box-shadow: none;
+
+  @include on-tablet {
+    --header-boder: none;
+    --box-shadow: 0 1px 0 0 var(--header-shadow);
+  }
+
+  // #endregion
+
+  position: sticky;
+  top: 0;
+  z-index: 2;
+
+  @include flex-box(space-between);
+
+  height: 48px;
+
+  background-color: var(--background-secondary-color);
+
+  box-shadow: var(--box-shadow);
+  border-bottom: var(--header-boder);
+
+  @include on-desktop {
+    height: 64px;
+  }
+}
+
+.leftBar {
+  @include flex-gap(16px);
+
+  height: 100%;
+
+  @include on-tablet {
+    gap: 0;
+  }
+
+  @include on-desktop {
+    gap: 24px;
+  }
+}
+
+.navList {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    align-items: stretch;
+  }
+}
+
+.rightBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headerActions {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.menuLink {
+  @include on-tablet {
+    display: none;
+  }
+}

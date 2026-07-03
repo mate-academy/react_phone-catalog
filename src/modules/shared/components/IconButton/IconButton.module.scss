@@ -1,0 +1,14 @@
+.button {
+  @include flex-box;
+
+  background-color: var(--select-bg-color);
+
+  border: 1px solid var(--icons-primary-color);
+
+  @include hover(border-color, var(--border-hover-color));
+
+  &:disabled {
+    border-color: var(--elements-color);
+    background-color: transparent;
+  }
+}

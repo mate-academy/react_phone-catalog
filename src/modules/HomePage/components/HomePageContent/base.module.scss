@@ -1,0 +1,33 @@
+.homePage {
+  @include container;
+
+  padding-bottom: 64px;
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+}
+
+.title {
+  margin-block: 24px;
+
+  @include on-tablet {
+    margin-block: 32px;
+  }
+
+  @include on-desktop {
+    margin-block: 56px;
+  }
+}
+
+.main {
+  @include flex-gap(56px, column);
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+  }
+}

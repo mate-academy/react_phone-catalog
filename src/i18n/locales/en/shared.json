@@ -1,0 +1,12 @@
+{
+  "addToFavorites": "add to favorites",
+  "breadcrumbs": "Breadcrumb",
+  "home": "home",
+  "nextSlide": "next slide",
+  "noMatch": "There are no {{category}} matching the query",
+  "previousSlide": "previous slide",
+  "productSlides": "product slides",
+  "removeFromFavorites": "remove from favorites",
+  "searchClear": "search clear",
+  "searchProduct": "Product search"
+}

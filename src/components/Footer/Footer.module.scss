@@ -1,0 +1,55 @@
+.footer {
+  // #region vars  
+  --nav-color: #{$secondary-color};
+  --box-shadow: 0 -1px 0 0 var(--elements-color);
+  --border-top: none;
+
+  @include dark-theme {
+    --nav-color: #{$primary-color-dark};
+    --box-shadow: none;
+    --border-top: 1px solid var(--elements-color);
+  }
+
+  // #endregion
+
+  background-color: var(--background-secondary-color);
+  box-shadow: var(--box-shadow);
+  border-top: var(--border-top);
+}
+
+.footerContent {
+  @include container;
+  @include flex-gap(32px, column);
+
+  align-items: start;
+  padding-block: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.navList {
+  @include flex-gap(16px, column);
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 13.5px;
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+}
+
+.navLink {
+  @include link-font(11px,
+    var(--nav-color),
+    var(--hover-color));
+}
+
+.topButton {
+  align-self: center;
+}

@@ -1,0 +1,64 @@
+.card {
+  --card-shaddow: #0000001A;
+
+  @include dark-theme {
+    --card-shaddow: #ffffff1a;
+  }
+
+  color: var(--primary-color);
+
+  @include hover(box-shadow, 0 2px 16px 0 var(--card-shaddow));
+}
+
+.productLink {
+  flex-grow: 1;
+
+  @include flex-gap(8px, column);
+}
+
+.image {
+  object-fit: contain;
+}
+
+.name {
+  padding-top: 16px;
+  font-size: 14px;
+
+  font-weight: 600;
+  line-height: 21px;
+  color: var(--primary-color);
+}
+
+.currentPrice {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+}
+
+.oldPrice {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 100%;
+
+  color: var(--secondary-color);
+  text-decoration: line-through;
+}
+
+.characteristic {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.characteristicName {
+  text-transform: capitalize;
+  color: var(--secondary-color);
+}
+
+.bottomButtons {
+  @include flex-gap(8px, column);
+
+  width: 100%;
+}

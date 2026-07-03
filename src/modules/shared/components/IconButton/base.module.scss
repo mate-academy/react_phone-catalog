@@ -1,0 +1,12 @@
+.button {
+  flex-shrink: 0;
+
+  @include slider-button;
+}
+
+.oval {
+  @include on-tablet {
+    height: auto;
+  }
+}
+

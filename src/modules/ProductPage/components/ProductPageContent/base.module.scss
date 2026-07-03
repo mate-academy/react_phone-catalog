@@ -1,0 +1,32 @@
+.titleWrapper {
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.dropdowns {
+  @include grid;
+
+  margin-bottom: 24px;
+
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.sortDropdown {
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+}
+
+.perPageDropdown {
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 3;
+  }
+}

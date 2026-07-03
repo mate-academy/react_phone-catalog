@@ -1,0 +1,11 @@
+.techSpecs {
+  @include flex-gap(30px, column);
+
+  @include on-tablet {
+    gap: 25px;
+  }
+}
+
+.title {
+  @include bottom-divider(16px);
+}

@@ -1,0 +1,17 @@
+{
+  "categories": {
+    "accessories": "accessories",
+    "tablets": "tablets",
+    "phones": "phones"
+  },
+  "categoriesNames": {
+    "phones": "mobile phones",
+    "accessories": "accessories",
+    "tablets": "tablets"
+  },
+  "categoriesGen": {
+    "accessories": "accessories",
+    "tablets": "tablets",
+    "phones": "phones"
+  }
+}

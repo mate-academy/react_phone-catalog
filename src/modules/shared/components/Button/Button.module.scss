@@ -1,0 +1,49 @@
+.button {
+  // #region vars
+  --selected-color: #{$accent-color};
+  --selected-border: 1px solid var(--header-shadow);
+  --hover-shaddow: 0px 3px 13px 0px #17203166;
+  --hover-background: #{$accent-color};
+
+  @include dark-theme {
+    --selected-color: #{$primary-color-dark};
+    --selected-border: none;
+    --hover-shaddow: none;
+    --hover-background: #A378FF;
+  }
+
+  // #endregion
+
+  flex-shrink: 1;
+
+  @include flex-box;
+
+  background-color: var(--accent-color);
+
+  font-family: $mainFont;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0;
+
+  color: var(--white-color);
+
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: var(--hover-background);
+    box-shadow: var(--hover-shaddow);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.selected {
+  background-color: var(--select-bg-color);
+  border: var(--selected-border);
+  color: var(--selected-color);
+
+  pointer-events: none;
+}

@@ -1,0 +1,18 @@
+.colorItem {
+  border: 1px solid var(--elements-color);
+  cursor: pointer;
+
+  transition: border-color 0.3s;
+}
+
+.selected {
+  border-color: var(--primary-color);
+}
+
+.color {
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--param-color);
+
+  border-radius: 36px;
+}

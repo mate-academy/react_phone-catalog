@@ -1,0 +1,43 @@
+.navList {
+  list-style: none;
+}
+
+.homeLink {
+  @include flex-box;
+  @include icon-link-hover;
+}
+
+.link,
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+
+  text-transform: capitalize;
+  letter-spacing: 0;
+}
+
+.link {
+  position: relative;
+  color: var(--primary-color);
+
+  &::after {
+    position: absolute;
+    bottom: -3px;
+
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: var(--primary-color);
+    transition: transform 0.3s;
+
+    transform: scaleX(0);
+    content: "";
+  }
+
+  &:hover {
+    &::after {
+      transform: scaleX(100%);
+    }
+  }
+}

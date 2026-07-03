@@ -1,0 +1,17 @@
+{
+  "categories": {
+    "accessories": "аксесуари",
+    "tablets": "планшети",
+    "phones": "телефони"
+  },
+  "categoriesNames": {
+    "phones": "мобільні телефони",
+    "accessories": "аксесуари",
+    "tablets": "планшети"
+  },
+  "categoriesGen": {
+    "accessories": "аксесуарів",
+    "tablets": "планшетів",
+    "phones": "телефонів"
+  }
+}

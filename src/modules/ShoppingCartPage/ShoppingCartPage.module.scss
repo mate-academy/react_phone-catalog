@@ -1,0 +1,21 @@
+.cart {
+  @include container;
+
+  padding-block: 24px 56px;
+
+  @include on-tablet {
+    padding-block: 40px 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+}
+
+.backButton {
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 16px;
+  }
+}

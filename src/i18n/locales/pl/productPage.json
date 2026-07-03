@@ -1,0 +1,24 @@
+{
+  "categoriesEmpty": {
+    "tablets": "tabletów",
+    "phones": "telefonów",
+    "accessories": "akcesoriów"
+  },
+  "sortOptions": {
+    "newest": "najnowszy",
+    "alphabetically": "alfabetycznie",
+    "cheapest": "najtańszy"
+  },
+  "all": "wszystko",
+  "loading": "ładowanie strony produktu",
+  "models_one": "{{count}} model",
+  "models_few": "{{count}} modele",
+  "models_many": "{{count}} modeli",
+  "nextPage": "Następna strona",
+  "sortBy": "Sortuj według",
+  "itemsOnPage": "Elementy na stronie",
+  "emptyProductsPage": "Nie ma jeszcze {{ category }}",
+  "page": "strona",
+  "pagination": "Nawigacja stron",
+  "previousPage": "Poprzednia strona"
+}

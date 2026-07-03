@@ -1,0 +1,14 @@
+.title {
+  width: 300px;
+  height: 42px;
+
+  @include on-tablet {
+    width: 400px;
+    height: 58px;
+  }
+}
+
+.count {
+  width: 120px;
+  height: 24px;
+}

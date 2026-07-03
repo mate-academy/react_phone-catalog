@@ -1,0 +1,81 @@
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin icon-hover {
+  @include hover(transform, scale(1.1));
+}
+
+@mixin icon-link-hover {
+  svg {
+    transition: 0.3s;
+  }
+
+  &:hover svg {
+    transform: scale(1.1);
+  }
+}
+
+@mixin container {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+    max-width: 1200px;
+    margin: auto;
+  }
+}
+
+@mixin dark-theme {
+  :global(html.dark) & {
+    @content;
+  }
+}
+
+@mixin grid {
+  display: grid;
+  align-items: start;
+  align-content: flex-start;
+  column-gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}
+
+@mixin flex-box($justify: center, $align: center, $direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin flex-gap($gap, $direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+@mixin slider-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 48px;
+}
+
+@mixin bottom-divider($paddingBottom) {
+  border-bottom: 1px solid var(--elements-color);
+  padding-bottom: $paddingBottom;
+}

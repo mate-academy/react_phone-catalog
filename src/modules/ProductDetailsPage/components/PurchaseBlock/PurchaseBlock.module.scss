@@ -1,0 +1,16 @@
+.currentPrice {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: var(--primary-color);
+}
+
+.fullPrice {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: var(--secondary-color);
+  text-decoration: line-through;
+}

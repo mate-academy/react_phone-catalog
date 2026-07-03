@@ -1,0 +1,21 @@
+.specificationName {
+  width: 120px;
+  height: 22px;
+}
+
+.specificationValue {
+  width: 175px;
+  height: 22px;
+}
+
+.specification.summary {
+  & .specificationName {
+    width: 70px;
+    height: 16px;
+  }
+
+  & .specificationValue {
+    width: 140px;
+    height: 16px;
+  }
+}

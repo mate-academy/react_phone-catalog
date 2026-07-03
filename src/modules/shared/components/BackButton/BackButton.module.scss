@@ -1,0 +1,40 @@
+.backButton {
+  // #region vars
+  --arrow-hover-color: #{$primary-color};
+  --gray-color: #{$secondary-color};
+
+  @include dark-theme {
+    --arrow-hover-color: #{$accent-color-dark};
+    --gray-color: #{$primary-color-dark};
+  }
+
+  // #endregion
+
+  @include flex-gap(4px);
+
+  align-items: center;
+
+  width: fit-content;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0;
+
+  color: var(--gray-color);
+  transition: all 0.3s;
+
+  &>.arrowIcon>path {
+    fill: var(--primary-color);
+    transition: fill 0.3s;
+  }
+
+  &:hover {
+    color: var(--hover-color);
+
+    &>.arrowIcon>path {
+      fill: var(--arrow-hover-color);
+    }
+  }
+}

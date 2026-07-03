@@ -1,0 +1,11 @@
+.emptyCart {
+  @include flex-gap(10px, column);
+
+  align-items: center;
+
+  @include fade-in-animation;
+}
+
+.emptyCartImg {
+  max-height: 400px;
+}

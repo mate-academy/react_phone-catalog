@@ -1,0 +1,12 @@
+{
+  "cart": "cart",
+  "closeMenu":"close menu",
+  "favorites": "favorites",
+  "home": "home",
+  "mainNavigation": "main navigation",
+  "menu":"menu",
+  "openMenu": "open menu",
+  "switchToDark": "switch to dark",
+  "switchToLight": "switch to light",
+  "userActions": "user actions"
+}

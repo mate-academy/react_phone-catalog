@@ -1,0 +1,10 @@
+.paramSelector {
+  @include flex-gap(8px, column);
+  @include bottom-divider(24px);
+}
+
+.paramList {
+  @include flex-gap(8px);
+
+  flex-wrap: wrap;
+}

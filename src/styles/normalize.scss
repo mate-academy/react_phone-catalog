@@ -1,0 +1,45 @@
+@import './helpers';
+
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: Mont, sans-serif;
+}
+
+section {
+  width: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  font-family: $mainFont;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+}

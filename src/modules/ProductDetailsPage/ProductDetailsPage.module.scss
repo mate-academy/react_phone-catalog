@@ -1,0 +1,18 @@
+.productDetails {
+  @include container;
+
+  display: flex;
+  flex-direction: column;
+
+  padding-block: 24px 56px;
+
+  @include fade-in-animation;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 81px;
+  }
+}

@@ -1,0 +1,7 @@
+.dropdown {
+  @include flex-gap(4px, column);
+}
+
+.select {
+  border-radius: 8px;
+}

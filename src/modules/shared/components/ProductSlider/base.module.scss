@@ -1,0 +1,37 @@
+.slider {
+  @include flex-gap(24px, column);
+}
+
+.topBar {
+  @include flex-box(space-between);
+}
+
+.sliderButtons {
+  @include flex-gap(16px);
+}
+
+.mainContainer {
+  margin-right: -16px;
+  overflow: hidden;
+
+  @include on-tablet {
+    @include grid;
+  }
+
+  @include on-desktop {
+    margin-right: 0;
+  }
+}
+
+.container {
+  width: 287px;
+
+  @include on-tablet {
+    grid-column: span 5;
+    width: 100%;
+  }
+
+  @include on-desktop {
+    grid-column: span 6;
+  }
+}

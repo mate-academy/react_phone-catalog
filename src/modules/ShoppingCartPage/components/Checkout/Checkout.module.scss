@@ -1,0 +1,77 @@
+.modalDialog {
+  --modal-dialog-color: #{$accent-color};
+  --box-shadow-color: #17203166;
+
+  @include dark-theme {
+    --modal-dialog-color: #800080;
+    --box-shadow-color: #800080;
+  }
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  max-width:520px;
+
+  padding: 30px 70px;
+
+  background-color: var(--surface-color);
+  border-radius: 16px;
+
+  transform: translate(-50%, -50%);
+
+  border-color: var(--modal-dialog-color);
+
+  &::backdrop {
+    background-color: #000;
+    opacity: 0.7;
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.text {
+  margin-bottom: 30px;
+  font-size: 22px;
+  font-weight: 500;
+
+  line-height: 1.2;
+  text-align: center;
+  color: var(--modal-dialog-color);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.button {
+  @include flex-box;
+
+  padding: 15px 30px;
+
+  background-color: var(--accent-color);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: var(--surface-color);
+
+  @include hover(box-shadow, 0 3px 13px 0 var(--box-shadow-color));
+
+  @include on-tablet {
+    padding-inline: 50px;
+  }
+}
+
+.cancel {
+  background-color: var(--surface-color);
+  border: 3px solid var(--accent-color);
+  color: var(--accent-color);
+}

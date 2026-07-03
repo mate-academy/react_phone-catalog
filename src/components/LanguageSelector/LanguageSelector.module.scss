@@ -1,0 +1,88 @@
+.selector {
+  // #region vars
+  --selector-color: #ffc0cb;
+  --option-border: #e6a0b0;
+  --selected-color: #e6a0b0;
+  --option-hover-color: #e9a4b9;
+
+  @include dark-theme {
+    --selector-color: #0c2a83;
+    --option-border: #1538c4c5;
+    --selected-color: #4159ba;
+    --option-hover-color: #2645be;
+  }
+
+  position: relative;
+
+  // #endregion
+
+  display: flex;
+  flex-direction: column;
+}
+
+.selected {
+  @include flex-box;
+
+  gap: 5px;
+  padding: 7px 5px;
+
+  background-color: var(--selector-color);
+  border-radius: 15%;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--primary-color);
+
+  box-sizing: content-box;
+}
+
+.withOptions {
+  border-radius: 15% 15% 0 0;
+}
+
+.flag {
+  width: 20px;
+  height: 20px;
+}
+
+.options {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+
+  display: none;
+  flex-direction: column;
+}
+
+.showed {
+  display: flex;
+}
+
+.option {
+  gap: 5px;
+  width: 100%;
+
+  @include flex-box;
+
+  padding: 5px;
+  background-color: var(--selector-color);
+
+  text-transform: uppercase;
+  color: var(--primary-color);
+  cursor: pointer;
+  border-top: 1px solid var(--option-border);
+
+  @include hover(background-color, var(--option-hover-color));
+}
+
+.options>li:last-child>.option {
+  border-radius: 0 0 15% 15%;
+}
+
+.selectedOption {
+  background-color: var(--selected-color);
+  pointer-events: none;
+}

@@ -1,0 +1,49 @@
+.pagination {
+  --highlight-color: #{$primary-color};
+  --button-hvr-color: #{$white-color};
+
+  @include dark-theme {
+    --highlight-color: #{$elements-color-dark};
+    --button-hvr-color: #{$elements-color-dark};
+  }
+
+  @include flex-box;
+
+  gap: 16px;
+}
+
+.pageButtons {
+  @include flex-gap(8px);
+
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.pageButton {
+  @include slider-button;
+
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: var(--digit-color);
+
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: var(--button-hvr-color);
+    color: var(--digit-color);
+    border-color: var(--highlight-color);
+  }
+}
+
+.selected {
+  background-color: var(--hover-color);
+  border-color: var(--hover-color);
+  color: var(--white-color);
+
+  pointer-events: none;
+}

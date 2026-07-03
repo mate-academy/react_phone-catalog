@@ -1,0 +1,43 @@
+.bannerSlider {
+  @include flex-gap(8px, column);
+
+  margin-inline: -16px;
+
+  @include on-tablet {
+    margin-inline: 0;
+  }
+}
+
+.banner {
+  @include on-tablet {
+    @include flex-gap(19px);
+  }
+
+  @include on-desktop {
+    gap: 16px;
+  }
+}
+
+.button {
+  display: none;
+
+  @include on-tablet {
+    display: contents;
+  }
+}
+
+.currentSlide {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  @include on-tablet {
+    flex-grow: 1;
+    width: auto;
+    height: 189px;
+    aspect-ratio: auto;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}

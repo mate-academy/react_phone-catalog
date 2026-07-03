@@ -18,6 +18,18 @@ module.exports = {
       'rules': {
         'react/jsx-filename-extension': ['off'],
       }
+    },
+    {
+      'files': ["**/*Icon.tsx"],
+      'rules': {
+        "max-len": "off",
+      }
+    },
+    {
+      'files': ["**/*Slice.ts"],
+      'rules': {
+        "no-param-reassign": ["error", { "props": false }]
+      }
     }
   ],
   parser: '@typescript-eslint/parser',
@@ -92,11 +104,11 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['error'],
     '@typescript-eslint/indent': ['error', 2],
     '@typescript-eslint/ban-types': ['error', {
-        extendDefaults: true,
-        types: {
-          '{}': false,
-        },
+      extendDefaults: true,
+      types: {
+        '{}': false,
       },
+    },
     ],
   },
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'src/vite-env.d.ts', 'cypress'],

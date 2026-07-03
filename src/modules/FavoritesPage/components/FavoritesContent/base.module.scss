@@ -1,0 +1,7 @@
+.favorites {
+  @include flex-gap(32px, column);
+
+  @include on-tablet {
+    gap: 40px;
+  }
+}

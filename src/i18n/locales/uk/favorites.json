@@ -1,0 +1,8 @@
+{
+  "emptyFavorites":"Ще немає улюблених",
+  "favorites":"улюблені",
+  "items_one": "{{count}} товар",
+  "items_few": "{{count}} товари",
+  "items_many": "{{count}} товарів",
+  "products": "товарів"
+}

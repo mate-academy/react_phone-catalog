@@ -1,0 +1,23 @@
+.cart {
+  @include flex-gap(32px, column);
+}
+
+.main {
+  @include flex-gap(32px, column);
+
+  @include on-desktop {
+    @include grid;
+  }
+}
+
+.cartList {
+  @include on-desktop {
+    grid-column: 1 / 17;
+  }
+}
+
+.total {
+  @include on-desktop {
+    grid-column: 17 / -1;
+  }
+}

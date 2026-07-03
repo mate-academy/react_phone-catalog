@@ -1,0 +1,43 @@
+@mixin shimmer {
+  --shimmer-gradient: linear-gradient(90deg,
+      #EDEDED 30%,
+      #DCDCDC 50%,
+      #EDEDED 70%);
+
+  @include dark-theme {
+--shimmer-gradient: linear-gradient(90deg,
+      #1e1f29 30%,
+      #2a2b35 50%,
+      #1e1f29 70%);
+  }
+
+  background: var(--shimmer-gradient);
+
+  background-size: 400%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+@mixin fade-in-animation {
+  opacity: 0;
+  animation: fade-in 0.5s ease-in-out forwards;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+};
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 100%;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}

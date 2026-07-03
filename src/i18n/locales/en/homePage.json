@@ -1,0 +1,18 @@
+{
+  "banner": "banner",
+  "bannerSubtitle": "Be the first!",
+  "bannerTitle": "Now available in our store!",
+  "brandNewModels": "Brand new models",
+  "categories": "Shop by category",
+  "errorPage": "error page",
+  "homePage": "home page",
+  "hotPrices": "Hot prices",
+  "models_one": "{{count}} model",
+  "models_other": "{{count}} models",
+  "nextSlide": "next slide",
+  "orderNow":"order now",
+  "previousSlide": "previous slide",
+  "slide": "slide {{number}}",
+  "somethingWentWrong": "Something went wrong...",
+  "welcome": "Welcome to Nice Gadgets store!"
+}

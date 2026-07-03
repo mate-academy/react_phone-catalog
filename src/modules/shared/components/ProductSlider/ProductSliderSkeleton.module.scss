@@ -1,0 +1,8 @@
+.title {
+  width: 50%;
+  height: 32px;
+
+  @include on-tablet {
+    height: 45px;
+  }
+}

@@ -1,0 +1,10 @@
+.searchInput {
+  width: 100%;
+  height: 40px;
+
+  border-radius: 8px;
+
+  @include on-tablet {
+    width: 50%;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "back":"Powrót",
+  "cart": "Wózek",
+  "close": "zamknąć",
+  "cancel":"Anuluj",
+  "checkout":"Zamówienie",
+  "confirm":"Potwierdź",
+  "decreaseQuantity":"Zmniejsz ilość",
+  "dialogText":"Zakupy nie zostały jeszcze wdrożone. Czy chcesz wyczyścić koszyk?",
+  "emptyCart":"Twój koszyk jest pusty",
+  "increaseQuantity":"Zwiększ ilość",
+  "loading": "wózek załadowczy",
+  "quantitySelector":"Wybór ilości",
+  "totalForItems_one":"Razem za {{count}} pozycja",
+  "totalForItems_few":"Razem za {{count}} pozycje",
+  "totalForItems_many":"Razem za {{count}} pozycji"
+}

@@ -1,0 +1,28 @@
+.categories {
+  @include flex-gap(24px, column);
+}
+
+.categoriesList {
+  @include flex-gap(32px, column);
+
+  align-items: center;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+.category {
+  width: 100%;
+  max-width: 368px;
+}
+
+.categoryImg {
+  width: 100%;
+  margin-bottom: 24px;
+
+  border-radius: 8px;
+  aspect-ratio: 1 / 1;
+}
