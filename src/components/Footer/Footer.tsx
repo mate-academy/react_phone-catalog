@@ -67,6 +67,7 @@ export const Footer: React.FC = () => {
               <option value="de">Deutsch</option>
               <option value="pl">Polski</option>
               <option value="es">Español</option>
+              <option value="it">Italiano</option>
             </select>
             <i className={`fa-solid fa-chevron-down ${styles.selectArrow}`} />
           </div>
