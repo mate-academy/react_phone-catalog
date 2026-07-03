@@ -1,0 +1,111 @@
+@import '../../../../../../styles/mixins';
+
+.nav {
+  position: fixed;
+  inset-inline: 0;
+  top: var(--header-height);
+  bottom: var(--header-height);
+  overflow-y: auto;
+  display: none;
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-elements);
+  box-shadow: 0 1px 0 0 var(--color-elements);
+
+  @include tablet-up {
+    position: static;
+    inset-inline: auto;
+    top: auto;
+    bottom: auto;
+    overflow-y: visible;
+    display: block;
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+.navOpen {
+  display: block;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-top: var(--space-md);
+  padding-inline: 0;
+
+  @include tablet-up {
+    flex-direction: row;
+    align-items: stretch;
+    height: var(--header-height);
+    gap: var(--space-md);
+    padding-top: 0;
+    padding-inline: 0;
+  }
+
+  @include desktop-up {
+    gap: var(--space-lg);
+  }
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+
+  @include tablet-up {
+    align-items: stretch;
+  }
+}
+
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 27px;
+  line-height: var(--lh-uppercase);
+  padding-top: var(--space-xs);
+  padding-bottom: var(--mobile-nav-link-bottom-gap);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  transition: color var(--transition);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+
+  @include tablet-up {
+    height: var(--header-height);
+    min-height: 0;
+    padding-block: 0;
+    padding-inline: var(--space-2xs);
+  }
+
+  @include desktop-up {
+    height: 64px;
+  }
+}
+
+.linkActive {
+  color: var(--color-primary);
+
+  &::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    content: '';
+    background-color: var(--color-primary);
+
+    @include tablet-up {
+      bottom: 0;
+      height: 3px;
+    }
+  }
+}

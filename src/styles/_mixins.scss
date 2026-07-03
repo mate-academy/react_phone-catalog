@@ -1,0 +1,197 @@
+@import 'variables';
+
+@mixin tablet-up {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: var(--space-sm);
+
+  @include tablet-up {
+    padding-inline: var(--space-md);
+  }
+
+  @include desktop-up {
+    padding-inline: 0;
+  }
+}
+
+@mixin section-spacing {
+  & {
+    padding-block: var(--space-md);
+  }
+
+  @include tablet-up {
+    padding-block: var(--space-lg);
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@mixin line-clamp($lines) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+}
+
+@mixin button-reset {
+  padding: 0;
+  font-family: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@mixin icon-button($size: 40px) {
+  @include button-reset;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $size;
+  height: $size;
+  color: var(--color-icons);
+  border: 1px solid var(--color-elements);
+  border-radius: var(--radius-full);
+  transition: var(--transition);
+
+  &:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  &:disabled {
+    color: var(--color-icons);
+    border-color: var(--color-elements);
+    cursor: default;
+    opacity: 1;
+  }
+}
+
+@mixin nav-action-button($size: 48px) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $size;
+  height: $size;
+  color: var(--color-icons);
+  transition: color var(--transition);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent-secondary);
+    outline-offset: 2px;
+  }
+}
+
+@mixin primary-button($height: 40px) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: $height;
+  padding-inline: var(--space-md);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+  background-color: var(--color-accent);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 3px 13px rgb(23 32 49 / 40%);
+  }
+}
+
+@mixin primary-button-selected {
+  color: var(--color-accent);
+  background-color: var(--color-white);
+  border-color: var(--color-elements);
+  box-shadow: none;
+  cursor: default;
+}
+
+@mixin page-top-spacing {
+  padding-top: var(--space-md);
+
+  @include tablet-up {
+    padding-top: var(--space-lg);
+  }
+}
+
+@mixin page-stack-spacing($gap: var(--space-md)) {
+  > :not(:first-child) {
+    margin-top: $gap;
+  }
+}
+
+@mixin products-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+
+  @include tablet-up {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include desktop-up {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@mixin empty-state-block($padding: var(--space-xl) 0) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: $padding;
+  text-align: center;
+}
+
+@mixin empty-state-text($max-width: null) {
+  @if $max-width {
+    max-width: $max-width;
+  }
+
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+@mixin page-title {
+  font-size: var(--fs-h1);
+  font-weight: 700;
+}
+
+@mixin page-count {
+  font-size: 12px;
+  color: var(--color-secondary);
+}
