@@ -1,0 +1,64 @@
+// src/styles/_grid.scss
+@use 'sass:map';
+@use 'breakpoints' as *;
+
+$grid-desktop: (
+    type: fixed,
+    columns: 24,
+    column-width: 32px,
+    gutter: 16px,
+);
+
+$grid-tablet: (
+    type: stretch,
+    columns: 12,
+    gutter: 16px,
+    margin: 24px,
+);
+
+$grid-mobile: (
+    type: stretch,
+    columns: 4,
+    gutter: 16px,
+    margin: 16px,
+);
+
+// Desktop max-width = (24 × 32px) + (23 gutters × 16px) = 768px + 368px = 1136px content
+// Add the two 32px edge margins some designs imply, or read directly off the frame if given.
+$grid-desktop-max-width: (24 * 32px) + (23 * 16px); // 1136px
+
+// src/styles/_grid.scss (continued)
+
+@mixin container {
+    width: 100%;
+    margin-inline: auto;
+
+    padding-inline: map.get($grid-mobile, margin);
+
+    @include respond(tablet) {
+        padding-inline: map.get($grid-tablet, margin);
+    }
+
+    @include respond(desktop) {
+        padding-inline: 0;
+        max-width: $grid-desktop-max-width;
+    }
+}
+
+// src/styles/_grid.scss (continued)
+
+@mixin grid {
+    display: grid;
+    gap: map.get($grid-mobile, gutter);
+    grid-template-columns: repeat(map.get($grid-mobile, columns), 1fr);
+
+    @include respond(tablet) {
+        gap: map.get($grid-tablet, gutter);
+        grid-template-columns: repeat(map.get($grid-tablet, columns), 1fr);
+    }
+
+    @include respond(desktop) {
+        gap: map.get($grid-desktop, gutter);
+        grid-template-columns: repeat(map.get($grid-desktop, columns), map.get($grid-desktop, column-width));
+    }
+}
