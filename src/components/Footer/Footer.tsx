@@ -2,7 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './Footer.module.scss';
-import { useLanguage, Language } from '../../context/LanguageContext';
+import {
+  useLanguage,
+  Language,
+  languageList,
+} from '../../context/LanguageContext';
 
 export const Footer: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -62,12 +66,11 @@ export const Footer: React.FC = () => {
               className={styles.select}
               aria-label={t('footer.selectLanguage')}
             >
-              <option value="en">English</option>
-              <option value="uk">Українська</option>
-              <option value="de">Deutsch</option>
-              <option value="pl">Polski</option>
-              <option value="es">Español</option>
-              <option value="it">Italiano</option>
+              {languageList.map(({ value, label }) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
             </select>
             <i className={`fa-solid fa-chevron-down ${styles.selectArrow}`} />
           </div>

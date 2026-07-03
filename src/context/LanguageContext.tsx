@@ -1,31 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { createContext, useContext, useState } from 'react';
-import generalEn from '../locales/en/general.json';
-import generalUk from '../locales/uk/general.json';
-import generalDe from '../locales/de/general.json';
-import phonesEn from '../locales/en/phones.json';
-import phonesUk from '../locales/uk/phones.json';
-import phonesDe from '../locales/de/phones.json';
-import tabletsEn from '../locales/en/tablets.json';
-import tabletsUk from '../locales/uk/tablets.json';
-import tabletsDe from '../locales/de/tablets.json';
-import accessoriesEn from '../locales/en/accessories.json';
-import accessoriesUk from '../locales/uk/accessories.json';
-import accessoriesDe from '../locales/de/accessories.json';
-import generalPl from '../locales/pl/general.json';
-import phonesPl from '../locales/pl/phones.json';
-import tabletsPl from '../locales/pl/tablets.json';
-import accessoriesPl from '../locales/pl/accessories.json';
-import generalEs from '../locales/es/general.json';
-import phonesEs from '../locales/es/phones.json';
-import tabletsEs from '../locales/es/tablets.json';
-import accessoriesEs from '../locales/es/accessories.json';
-import generalIt from '../locales/it/general.json';
-import phonesIt from '../locales/it/phones.json';
-import tabletsIt from '../locales/it/tablets.json';
-import accessoriesIt from '../locales/it/accessories.json';
+import React, { createContext, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export type Language = 'en' | 'uk' | 'de' | 'pl' | 'es' | 'it';
+
+export const languageList: { value: Language; label: string }[] = [
+  { value: 'en', label: 'English' },
+  { value: 'uk', label: 'Українська' },
+  { value: 'de', label: 'Deutsch' },
+  { value: 'pl', label: 'Polski' },
+  { value: 'es', label: 'Español' },
+  { value: 'it', label: 'Italiano' },
+];
 
 interface LanguageContextType {
   language: Language;
@@ -41,80 +27,15 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
   undefined,
 );
 
-const translations = {
-  en: {
-    general: generalEn,
-    phones: phonesEn,
-    tablets: tabletsEn,
-    accessories: accessoriesEn,
-  },
-  uk: {
-    general: generalUk,
-    phones: phonesUk,
-    tablets: tabletsUk,
-    accessories: accessoriesUk,
-  },
-  de: {
-    general: generalDe,
-    phones: phonesDe,
-    tablets: tabletsDe,
-    accessories: accessoriesDe,
-  },
-  pl: {
-    general: generalPl,
-    phones: phonesPl,
-    tablets: tabletsPl,
-    accessories: accessoriesPl,
-  },
-  es: {
-    general: generalEs,
-    phones: phonesEs,
-    tablets: tabletsEs,
-    accessories: accessoriesEs,
-  },
-  it: {
-    general: generalIt,
-    phones: phonesIt,
-    tablets: tabletsIt,
-    accessories: accessoriesIt,
-  },
-};
-
-const getNestedValue = (
-  obj: Record<string, unknown>,
-  path: string,
-): unknown => {
-  return path.split('.').reduce<unknown>((acc, part) => {
-    if (acc && typeof acc === 'object' && part in acc) {
-      return (acc as Record<string, unknown>)[part];
-    }
-
-    return undefined;
-  }, obj);
-};
-
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [language, setLanguageState] = useState<Language>(() => {
-    const saved = localStorage.getItem('lang');
+  const { t: i18nT, i18n } = useTranslation();
 
-    if (
-      saved === 'en' ||
-      saved === 'uk' ||
-      saved === 'de' ||
-      saved === 'pl' ||
-      saved === 'es' ||
-      saved === 'it'
-    ) {
-      return saved;
-    }
-
-    return 'en';
-  });
+  const language = (i18n.language || 'en') as Language;
 
   const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
+    i18n.changeLanguage(lang);
     localStorage.setItem('lang', lang);
   };
 
@@ -132,37 +53,13 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
       vars = nsOrVariables;
     }
 
-    const langDict = translations[language] || translations.en;
-    const nsDict = (langDict[ns as keyof typeof langDict] ||
-      langDict.general) as Record<string, unknown>;
-    let val = getNestedValue(nsDict, key);
+    const result = i18nT(key, { ns, returnObjects: true, ...vars });
 
-    if (val === undefined) {
-      const fallbackLangDict = translations.en;
-      const fallbackNsDict = (fallbackLangDict[
-        ns as keyof typeof fallbackLangDict
-      ] || fallbackLangDict.general) as Record<string, unknown>;
-
-      val = getNestedValue(fallbackNsDict, key);
+    if (typeof result === 'string' && result === key) {
+      return i18nT(key, { ns: 'general', returnObjects: true, ...vars });
     }
 
-    if (val === undefined) {
-      return key;
-    }
-
-    if (typeof val === 'string') {
-      if (vars) {
-        return Object.entries(vars).reduce((acc, [k, v]) => {
-          return acc
-            .replace(new RegExp(`\\{\\{${k}\\}\\}`, 'g'), String(v))
-            .replace(new RegExp(`\\{${k}\\}`, 'g'), String(v));
-        }, val);
-      }
-
-      return val;
-    }
-
-    return val;
+    return result;
   };
 
   return (
