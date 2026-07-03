@@ -16,8 +16,12 @@ import generalPl from '../locales/pl/general.json';
 import phonesPl from '../locales/pl/phones.json';
 import tabletsPl from '../locales/pl/tablets.json';
 import accessoriesPl from '../locales/pl/accessories.json';
+import generalEs from '../locales/es/general.json';
+import phonesEs from '../locales/es/phones.json';
+import tabletsEs from '../locales/es/tablets.json';
+import accessoriesEs from '../locales/es/accessories.json';
 
-export type Language = 'en' | 'uk' | 'de' | 'pl';
+export type Language = 'en' | 'uk' | 'de' | 'pl' | 'es';
 
 interface LanguageContextType {
   language: Language;
@@ -58,6 +62,12 @@ const translations = {
     tablets: tabletsPl,
     accessories: accessoriesPl,
   },
+  es: {
+    general: generalEs,
+    phones: phonesEs,
+    tablets: tabletsEs,
+    accessories: accessoriesEs,
+  },
 };
 
 const getNestedValue = (
@@ -83,7 +93,8 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
       saved === 'en' ||
       saved === 'uk' ||
       saved === 'de' ||
-      saved === 'pl'
+      saved === 'pl' ||
+      saved === 'es'
     ) {
       return saved;
     }
