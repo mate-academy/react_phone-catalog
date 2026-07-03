@@ -1,0 +1,65 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  height: 16px;
+
+  &__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: $c-text-secondary;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $c-text-primary;
+
+      img {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__current {
+    color: $c-text-secondary;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+
+    @include tablet {
+      max-width: 300px;
+    }
+
+    @include desktop {
+      max-width: 500px;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+  }
+
+  &__divider {
+    width: 16px;
+    height: 16px;
+    display: block;
+    object-fit: contain;
+    opacity: 0.5;
+  }
+}
