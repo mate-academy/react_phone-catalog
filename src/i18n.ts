@@ -7,6 +7,7 @@ import generalDe from './locales/de/general.json';
 import generalPl from './locales/pl/general.json';
 import generalEs from './locales/es/general.json';
 import generalIt from './locales/it/general.json';
+import generalPt from './locales/pt/general.json';
 
 import phonesEn from './locales/en/phones.json';
 import phonesUk from './locales/uk/phones.json';
@@ -14,6 +15,7 @@ import phonesDe from './locales/de/phones.json';
 import phonesPl from './locales/pl/phones.json';
 import phonesEs from './locales/es/phones.json';
 import phonesIt from './locales/it/phones.json';
+import phonesPt from './locales/pt/phones.json';
 
 import tabletsEn from './locales/en/tablets.json';
 import tabletsUk from './locales/uk/tablets.json';
@@ -21,6 +23,7 @@ import tabletsDe from './locales/de/tablets.json';
 import tabletsPl from './locales/pl/tablets.json';
 import tabletsEs from './locales/es/tablets.json';
 import tabletsIt from './locales/it/tablets.json';
+import tabletsPt from './locales/pt/tablets.json';
 
 import accessoriesEn from './locales/en/accessories.json';
 import accessoriesUk from './locales/uk/accessories.json';
@@ -28,6 +31,7 @@ import accessoriesDe from './locales/de/accessories.json';
 import accessoriesPl from './locales/pl/accessories.json';
 import accessoriesEs from './locales/es/accessories.json';
 import accessoriesIt from './locales/it/accessories.json';
+import accessoriesPt from './locales/pt/accessories.json';
 
 const resources = {
   en: {
@@ -65,6 +69,12 @@ const resources = {
     phones: phonesIt,
     tablets: tabletsIt,
     accessories: accessoriesIt,
+  },
+  pt: {
+    general: generalPt,
+    phones: phonesPt,
+    tablets: tabletsPt,
+    accessories: accessoriesPt,
   },
 };
 
