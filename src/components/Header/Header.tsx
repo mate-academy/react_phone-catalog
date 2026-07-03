@@ -12,6 +12,7 @@ import { HeaderButton } from './components/HeaderButton';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '../../store/hooks';
+import { selectTotalQuantity } from '../../store/selectors/cart';
 import styles from './Header.module.scss';
 // #endregion
 
@@ -21,7 +22,7 @@ export const Header = () => {
   //#region consts
   const [isMenuShowed, setIsMenuShowed] = useState(false);
   const favorites = useAppSelector(state => state.favorites);
-  const cart = useAppSelector(state => state.cart);
+  const totalQuantity = useAppSelector(selectTotalQuantity);
   //#endregion
 
   useEffect(() => {
@@ -64,7 +65,11 @@ export const Header = () => {
             <FavIcon />
           </NavigationLink>
 
-          <NavigationLink to="/cart" count={cart.length} aria-label={t('cart')}>
+          <NavigationLink
+            to="/cart"
+            count={totalQuantity}
+            aria-label={t('cart')}
+          >
             <CartIcon />
           </NavigationLink>
         </nav>

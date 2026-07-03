@@ -25,7 +25,7 @@ export const CartContent: FC<Props> = ({ cartItems }) => {
         </div>
 
         <div className={baseStyles.total}>
-          <Total cartItems={cartItems} />
+          <Total />
         </div>
       </div>
     </div>

@@ -14,6 +14,7 @@ import { useTranslation } from 'react-i18next';
 import { useCloseOnLinkClick } from './hooks/useCloseOnLinkClick';
 import { useCloseOnEscape } from '../../../../modules/shared/hooks/useCloseOnEscape';
 import { useCloseOnDesktop } from './hooks/useCloseOnDesktop';
+import { selectTotalQuantity } from '../../../../store/selectors/cart';
 import styles from './Menu.module.scss';
 // #endregion
 
@@ -31,7 +32,7 @@ export const Menu: React.FC<Props> = ({ isOpen, setOpen }) => {
   };
 
   const favorites = useAppSelector(state => state.favorites);
-  const cart = useAppSelector(state => state.cart);
+  const totalQuantity = useAppSelector(selectTotalQuantity);
 
   useCloseOnLinkClick(menuRef, onMenuClose);
   useCloseOnEscape(onMenuClose);
@@ -67,7 +68,7 @@ export const Menu: React.FC<Props> = ({ isOpen, setOpen }) => {
           <FavIcon />
         </NavigationLink>
 
-        <NavigationLink to="/cart" count={cart.length} aria-label={t('cart')}>
+        <NavigationLink to="/cart" count={totalQuantity} aria-label={t('cart')}>
           <CartIcon />
         </NavigationLink>
       </div>
