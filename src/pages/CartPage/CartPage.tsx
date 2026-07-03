@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { flushSync } from 'react-dom';
 import { Link, useNavigate } from 'react-router-dom';
 
 import styles from './CartPage.module.scss';
@@ -22,6 +23,22 @@ export const CartPage: React.FC = () => {
   useEffect(() => {
     document.title = t('cart.documentTitle');
   }, [t]);
+
+  const handleRemove = (id: string) => {
+    if ('startViewTransition' in document) {
+      (
+        document as unknown as {
+          startViewTransition: (cb: () => void) => void;
+        }
+      ).startViewTransition(() => {
+        flushSync(() => {
+          removeFromCart(id);
+        });
+      });
+    } else {
+      removeFromCart(id);
+    }
+  };
 
   const handleCheckout = () => {
     const confirmClear = window.confirm(t('cart.checkoutAlert'));
@@ -68,10 +85,15 @@ export const CartPage: React.FC = () => {
                   key={id}
                   className={styles.cartItem}
                   data-testid="cart-item"
+                  style={
+                    {
+                      viewTransitionName: `cart-item-${id}`,
+                    } as React.CSSProperties
+                  }
                 >
                   <button
                     type="button"
-                    onClick={() => removeFromCart(id)}
+                    onClick={() => handleRemove(id)}
                     className={styles.removeBtn}
                     aria-label={t('cart.removeItem', { name: product.name })}
                   >
