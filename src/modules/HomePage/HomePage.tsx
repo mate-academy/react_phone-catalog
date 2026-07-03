@@ -1,5 +1,4 @@
 import styles from './HomePage.module.scss';
-import { Footer } from '../../components/Footer/Footer';
 
 import 'swiper/swiper.css';
 import 'swiper/css/navigation';
@@ -9,7 +8,19 @@ import { NewModels } from '../../components/NewModels/NewModels';
 import { Categories } from '../../components/Categories/Categories';
 import { HotPrices } from '../../components/HotPrices/HotPrices';
 
-export const HomePage = () => {
+type Props = {
+  cart: number[];
+  toggleCart: (id: number) => void;
+  favorites: number[];
+  toggleFavorites: (id: number) => void;
+};
+
+export const HomePage: React.FC<Props> = ({
+  cart,
+  toggleCart,
+  favorites,
+  toggleFavorites,
+}) => {
   return (
     <>
       <main className={styles.main}>
@@ -23,7 +34,12 @@ export const HomePage = () => {
           </section>
 
           <section className={styles.section}>
-            <NewModels />
+            <NewModels
+              cart={cart}
+              toggleCart={toggleCart}
+              favorites={favorites}
+              toggleFavorites={toggleFavorites}
+            />
           </section>
 
           <section className={styles.section}>
@@ -31,13 +47,15 @@ export const HomePage = () => {
           </section>
 
           <section className={styles.section}>
-            <HotPrices />
+            <HotPrices
+              cart={cart}
+              toggleCart={toggleCart}
+              favorites={favorites}
+              toggleFavorites={toggleFavorites}
+            />
           </section>
         </div>
       </main>
-
-      <hr className={styles.footerDivider} />
-      <Footer />
     </>
   );
 };

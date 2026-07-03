@@ -1,0 +1,29 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  min-height: 400px;
+  justify-content: center;
+
+  &__text {
+    font-weight: 600;
+    font-size: 20px;
+    color: #F1F2F9;
+  }
+
+  &__button {
+    font-family: Mont, sans-serif;
+    padding: 12px 32px;
+    background-color: #905BFF;
+    color: #F1F2F9;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #A378FF;
+    }
+  }
+}

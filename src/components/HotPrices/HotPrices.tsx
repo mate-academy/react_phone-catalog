@@ -6,43 +6,23 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { useState } from 'react';
+import React from 'react';
+import { Product } from '../../modules/shared/types/Product';
+import { Link } from 'react-router-dom';
 
-type Product = {
-  id: number;
-  category: string;
-  itemId: string;
-  name: string;
-  fullPrice: number;
-  price: number;
-  screen: string;
-  capacity: string;
-  color: string;
-  ram: string;
-  year: number;
-  image: string;
+type Props = {
+  cart: number[];
+  toggleCart: (id: number) => void;
+  favorites: number[];
+  toggleFavorites: (id: number) => void;
 };
 
-export const HotPrices = () => {
-  const [cart, setCart] = useState<number[]>([]);
-  const [favorites, setFavorites] = useState<number[]>([]);
-
-  const toggleCart = (productId: number) => {
-    setCart(prevCart =>
-      prevCart.includes(productId)
-        ? prevCart.filter(id => id !== productId)
-        : [...prevCart, productId],
-    );
-  };
-
-  const toggleFavorites = (productId: number) => {
-    setFavorites(prevFavorites =>
-      prevFavorites.includes(productId)
-        ? prevFavorites.filter(id => id !== productId)
-        : [...prevFavorites, productId],
-    );
-  };
-
+export const HotPrices: React.FC<Props> = ({
+  cart,
+  toggleCart,
+  favorites,
+  toggleFavorites,
+}) => {
   function getHotPriceProducts(products: Product[]) {
     return [...products].sort(
       (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
@@ -93,18 +73,24 @@ export const HotPrices = () => {
           return (
             <SwiperSlide key={product.id}>
               <article className={styles.productCard}>
-                <a href="" className={styles.productCard__link}>
+                <Link
+                  to={`/product/${product.itemId}`}
+                  className={styles.productCard__link}
+                >
                   <img
                     src={product.image}
                     alt="Product Image"
                     className={styles.productCard__img}
                   />
-                </a>
+                </Link>
 
                 <div className={styles.productCard__body}>
-                  <a href="" className={styles.productCard__title}>
+                  <Link
+                    to={`/product/${product.itemId}`}
+                    className={styles.productCard__title}
+                  >
                     {product.name}
-                  </a>
+                  </Link>
                   <div className={styles.productCard__price}>
                     <span>${product.price}</span>
                     <span className={styles.productCard__discount}>

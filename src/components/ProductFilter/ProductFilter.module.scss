@@ -1,0 +1,46 @@
+.filtersContainer {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filterGroupSort {
+  width: 176px  ;
+}
+
+.filterGroupItems {
+  width: 128px  ;
+}
+
+.filterText {
+  color: #89939A;
+  font-weight: 700;
+  font-size: 12px;
+
+}
+
+.select {
+  color: #F1F2F9;
+  border: none;
+  background-color: #323542;
+  font-weight: 700;
+  font-size: 14px;
+  height: 40px;
+  padding-left: 12px;
+  cursor: pointer;
+
+  background-image: url(../../../public/img/icons/arrow-down-gray.png);
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+}

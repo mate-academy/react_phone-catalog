@@ -1,7 +1,13 @@
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
+import React from 'react';
 
-export const Header = () => {
+type Props = {
+  cartCount: number;
+  favoritesCount: number;
+};
+
+export const Header: React.FC<Props> = ({ cartCount, favoritesCount }) => {
   return (
     <header className={styles.header}>
       <Link to="/" className={styles.logo}>
@@ -56,18 +62,30 @@ export const Header = () => {
 
         <div className={styles.actions}>
           <Link to="/favorites" className={styles.actionLink}>
-            <img
-              src="img/icons/favorite.png"
-              alt="Favorites"
-              className={styles.icon}
-            />
+            <div className={styles.iconContainer}>
+              <img
+                src="img/icons/favorite.png"
+                alt="Favorites"
+                className={styles.icon}
+              />
+
+              {favoritesCount > 0 && (
+                <span className={styles.badge}>{favoritesCount}</span>
+              )}
+            </div>
           </Link>
           <Link to="/cart" className={styles.actionLink}>
-            <img
-              src="img/icons/cart.png"
-              alt="Shopping Cart"
-              className={styles.icon}
-            />
+            <div className={styles.iconContainer}>
+              <img
+                src="img/icons/cart.png"
+                alt="Shopping Cart"
+                className={styles.icon}
+              />
+
+              {cartCount > 0 && (
+                <span className={styles.badge}>{cartCount}</span>
+              )}
+            </div>
           </Link>
         </div>
       </div>

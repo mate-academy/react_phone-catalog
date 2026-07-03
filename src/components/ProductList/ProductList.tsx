@@ -1,0 +1,233 @@
+import styles from './ProductList.module.scss';
+
+import { useMemo } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
+import { ProductFilter } from '../ProductFilter/ProductFilter';
+import { SortType } from '../../modules/shared/types/SortType';
+import { ItemsPerPage } from '../../modules/shared/types/ItemsPerPage';
+import { Product } from '../../modules/shared/types/Product';
+
+type Props = {
+  products: Product[];
+  cart: number[];
+  favorites: number[];
+  toggleCart: (id: number) => void;
+  toggleFavorites: (id: number) => void;
+  emptyMessage: string;
+};
+
+export const ProductsList: React.FC<Props> = ({
+  products,
+  cart,
+  favorites,
+  toggleCart,
+  toggleFavorites,
+  emptyMessage,
+}) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const sortBy = (searchParams.get('sort') as SortType) || 'newest';
+  const itemsPerPage = (searchParams.get('perPage') as ItemsPerPage) || 'all';
+  const page = Number(searchParams.get('page')) || 1;
+
+  const setSortBy = (value: SortType) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (value === 'newest') {
+      params.delete('sort');
+    } else {
+      params.set('sort', value);
+    }
+
+    params.delete('page');
+    setSearchParams(params);
+  };
+
+  const setItemsPerPage = (value: ItemsPerPage) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (value === 'all') {
+      params.delete('perPage');
+    } else {
+      params.set('perPage', value);
+    }
+
+    params.delete('page');
+    setSearchParams(params);
+  };
+
+  const setPage = (value: number) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (value === 1) {
+      params.delete('page');
+    } else {
+      params.set('page', String(value));
+    }
+
+    setSearchParams(params);
+  };
+
+  const sortedProducts = useMemo(() => {
+    const copy = [...products];
+
+    switch (sortBy) {
+      case 'cheapest':
+        return copy.sort((a, b) => a.price - b.price);
+      case 'alphabetically':
+        return copy.sort((a, b) => a.name.localeCompare(b.name));
+      case 'newest':
+      default:
+        return copy.sort((a, b) => b.year - a.year);
+    }
+  }, [products, sortBy]);
+
+  const totalPages =
+    itemsPerPage === 'all'
+      ? 1
+      : Math.ceil(sortedProducts.length / Number(itemsPerPage));
+
+  const visibleProducts = useMemo(() => {
+    if (itemsPerPage === 'all') {
+      return sortedProducts;
+    }
+
+    const perPage = Number(itemsPerPage);
+    const start = (page - 1) * perPage;
+
+    return sortedProducts.slice(start, start + perPage);
+  }, [sortedProducts, itemsPerPage, page]);
+
+  if (products.length === 0) {
+    return <p className={styles.emptyMessage}>{emptyMessage}</p>;
+  }
+
+  return (
+    <>
+      <ProductFilter
+        sortBy={sortBy}
+        onSortChange={setSortBy}
+        itemsPerPage={itemsPerPage}
+        onItemsPerPageChange={setItemsPerPage}
+      />
+
+      <div className={styles.productsGrid}>
+        {visibleProducts.map(product => {
+          const isAddedToCart = cart.includes(product.id);
+          const isFavorite = favorites.includes(product.id);
+
+          return (
+            <article key={product.id} className={styles.productCard}>
+              <Link
+                to={`/product/${product.itemId}`}
+                className={styles.productCard__link}
+              >
+                <img
+                  src={product.image}
+                  alt="Product Image"
+                  className={styles.productCard__img}
+                />
+              </Link>
+
+              <div className={styles.productCard__body}>
+                <Link
+                  to={`/product/${product.itemId}`}
+                  className={styles.productCard__title}
+                >
+                  {product.name}
+                </Link>
+                <div className={styles.productCard__price}>
+                  <span>${product.price}</span>
+                  <span className={styles.productCard__discount}>
+                    ${product.fullPrice}
+                  </span>
+                </div>
+                <hr className={styles.productCard__divider} />
+                <div className={styles.productCard__description}>
+                  <div className={styles.productCard__item}>
+                    <span className={styles.productCard__property}>Screen</span>
+                    <strong className={styles.productCard__value}>
+                      {product.screen}
+                    </strong>
+                  </div>
+                  <div className={styles.productCard__item}>
+                    <span className={styles.productCard__property}>
+                      Capacity
+                    </span>
+                    <strong className={styles.productCard__value}>
+                      {product.capacity}
+                    </strong>
+                  </div>
+                  <div className={styles.productCard__item}>
+                    <span className={styles.productCard__property}>RAM</span>
+                    <strong className={styles.productCard__value}>
+                      {product.ram}
+                    </strong>
+                  </div>
+                </div>
+                <div className={styles.productCard__control}>
+                  <button
+                    className={`${styles.productCard__addButton} ${isAddedToCart ? styles['productCard__addButton--active'] : ''}`}
+                    onClick={() => toggleCart(product.id)}
+                  >
+                    {isAddedToCart ? 'Added to cart' : 'Add to cart'}
+                  </button>
+                  <button
+                    className={styles.productCard__favoriteButton}
+                    onClick={() => toggleFavorites(product.id)}
+                  >
+                    {isFavorite ? (
+                      <img
+                        src="img/icons/favorite-filled.png"
+                        alt="Added to Favorites"
+                        className={`${styles.productCard__favoriteIcon} ${styles['productCard__favoriteIcon--active']}`}
+                      />
+                    ) : (
+                      <img
+                        src="img/icons/favorite.png"
+                        alt="Add to Favorites"
+                        className={styles.productCard__favoriteIcon}
+                      />
+                    )}
+                  </button>
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      {itemsPerPage !== 'all' && totalPages > 1 && (
+        <div className={styles.pagination}>
+          <button
+            className={styles.pageArrow}
+            onClick={() => setPage(Math.max(page - 1, 1))}
+            disabled={page === 1}
+          >
+            ‹
+          </button>
+
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button
+              key={i}
+              className={`${styles.pageButton} ${
+                page === i + 1 ? styles['pageButton--active'] : ''
+              }`}
+              onClick={() => setPage(i + 1)}
+            >
+              {i + 1}
+            </button>
+          ))}
+
+          <button
+            className={styles.pageArrow}
+            onClick={() => setPage(Math.min(page + 1, totalPages))}
+            disabled={page === totalPages}
+          >
+            ›
+          </button>
+        </div>
+      )}
+    </>
+  );
+};
