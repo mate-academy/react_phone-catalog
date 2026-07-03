@@ -244,7 +244,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                   <option value="4">4</option>
                   <option value="8">8</option>
                   <option value="16">16</option>
-                  <option value="all">all</option>
+                  <option value="all">{t('products.all')}</option>
                 </select>
                 <i
                   className="fa-solid fa-chevron-down"

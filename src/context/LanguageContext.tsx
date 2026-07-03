@@ -2,14 +2,18 @@
 import React, { createContext, useContext, useState } from 'react';
 import generalEn from '../locales/en/general.json';
 import generalUk from '../locales/uk/general.json';
+import generalDe from '../locales/de/general.json';
 import phonesEn from '../locales/en/phones.json';
 import phonesUk from '../locales/uk/phones.json';
+import phonesDe from '../locales/de/phones.json';
 import tabletsEn from '../locales/en/tablets.json';
 import tabletsUk from '../locales/uk/tablets.json';
+import tabletsDe from '../locales/de/tablets.json';
 import accessoriesEn from '../locales/en/accessories.json';
 import accessoriesUk from '../locales/uk/accessories.json';
+import accessoriesDe from '../locales/de/accessories.json';
 
-export type Language = 'en' | 'uk';
+export type Language = 'en' | 'uk' | 'de';
 
 interface LanguageContextType {
   language: Language;
@@ -38,6 +42,12 @@ const translations = {
     tablets: tabletsUk,
     accessories: accessoriesUk,
   },
+  de: {
+    general: generalDe,
+    phones: phonesDe,
+    tablets: tabletsDe,
+    accessories: accessoriesDe,
+  },
 };
 
 const getNestedValue = (
@@ -59,7 +69,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
   const [language, setLanguageState] = useState<Language>(() => {
     const saved = localStorage.getItem('lang');
 
-    if (saved === 'en' || saved === 'uk') {
+    if (saved === 'en' || saved === 'uk' || saved === 'de') {
       return saved;
     }
 
