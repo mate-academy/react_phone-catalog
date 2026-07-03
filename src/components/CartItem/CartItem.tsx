@@ -28,7 +28,7 @@ export const CartItem: React.FC<Props> = ({ id, image, name, price, link }) => {
         onClick={() => removeFromCart(id)}
       ></button>
       <NavLink to={link} className={styles.categoryLink}>
-        <img src={asset(image)} alt={name} className={styles.image} />
+        <img src={asset(`/image`)} alt={name} className={styles.image} />
 
         <h3 className={styles.name}>{name}</h3>
       </NavLink>

@@ -10,16 +10,16 @@ export const Banner = () => {
 
   const slides = [
     {
-      desktop: '/img/banner-iPhone14Pro.png',
-      mobile: '/img/banner-tablets-mobile.png',
+      desktop: 'img/banner-iPhone14Pro.png',
+      mobile: 'img/banner-tablets-mobile.png',
     },
     {
-      desktop: '/img/banner-phones.png',
-      mobile: '/img/banner-iPhone14Pro-mobile.png',
+      desktop: 'img/banner-phones.png',
+      mobile: 'img/banner-iPhone14Pro-mobile.png',
     },
     {
-      desktop: '/img/banner-tablets.png',
-      mobile: '/img/banner-phones-mobile.png',
+      desktop: 'img/banner-tablets.png',
+      mobile: 'img/banner-phones-mobile.png',
     },
   ];
 
@@ -81,7 +81,7 @@ export const Banner = () => {
           <picture>
             <source
               media="(max-width: 639px)"
-              srcSet={slides[currentSlide].mobile}
+              srcSet={asset(slides[currentSlide].mobile)}
             />
 
             <img
