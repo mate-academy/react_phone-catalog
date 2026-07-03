@@ -1,0 +1,115 @@
+{
+  "header": {
+    "home": "Strona główna",
+    "phones": "Telefony",
+    "tablets": "Tablety",
+    "accessories": "Akcesoria",
+    "searchPlaceholder": "Szukaj w {category}...",
+    "switchToDark": "Przełącz na ciemny motyw",
+    "switchToLight": "Przełącz na jasny motyw",
+    "favoritesAria": "Strona ulubionych",
+    "cartAria": "Strona koszyka",
+    "menuOpen": "Otwórz menu",
+    "menuClose": "Zamknij menu"
+  },
+  "footer": {
+    "github": "Github",
+    "contacts": "Kontakt",
+    "rights": "Prawa",
+    "backToTop": "Do góry",
+    "selectLanguage": "Wybierz język"
+  },
+  "categories": {
+    "phones": "Telefony",
+    "tablets": "Tablety",
+    "accessories": "Akcesoria",
+    "favorites": "Ulubione"
+  },
+  "home": {
+    "documentTitle": "Katalog produktów | Gadgets",
+    "title": "Katalog produktów",
+    "error": "Nie udało się załadować produktów katalogu.",
+    "reload": "Odśwież",
+    "brandNewTitle": "Najnowsze modele",
+    "shopByCategory": "Kupuj według kategorii",
+    "modelsCount": "{count} modeli",
+    "modelsCount_1": "{count} model",
+    "hotPricesTitle": "Gorące ceny"
+  },
+  "products": {
+    "documentTitle": "{category} | Gadgets",
+    "pageTitle": "Strona {category}",
+    "error": "Nie udało się załadować produktów. Coś poszło nie tak.",
+    "loading": "Ładowanie katalogu...",
+    "noItems": "Nie ma jeszcze produktów z kategorii {category}",
+    "noItemsMatching": "Brak produktów z kategorii {category} pasujących do zapytania",
+    "clearSearch": "Wyczyść wyszukiwanie",
+    "sortBy": "Sortuj według",
+    "sortNewest": "Najnowsze",
+    "sortAlphabetical": "Alfabetycznie",
+    "sortCheapest": "Najtańsze",
+    "itemsOnPage": "Produktów na stronie",
+    "all": "Wszystkie",
+    "modelsCount": "{count} modeli",
+    "modelsCount_1": "{count} model"
+  },
+  "productCard": {
+    "screen": "Ekran",
+    "capacity": "Pojemność",
+    "ram": "RAM",
+    "addToCart": "Dodaj do koszyka",
+    "addedToCart": "Dodano do koszyka",
+    "removeFromFavorites": "Usuń z ulubionych",
+    "addToFavorites": "Dodaj do ulubionych"
+  },
+  "productDetails": {
+    "loadingTitle": "Ładowanie... | Gadgets",
+    "notFoundTitle": "Nie znaleziono produktu | Gadgets",
+    "errorTitle": "Nie znaleziono produktu",
+    "errorText": "Produkt o podanym identyfikatorze nie istnieje lub został usunięty.",
+    "backToHome": "Powrót do strony głównej",
+    "back": "Wstecz",
+    "availableColors": "Dostępne kolory",
+    "selectCapacity": "Wybierz pojemność",
+    "resolution": "Rozdzielczość",
+    "processor": "Procesor",
+    "about": "O produkcie",
+    "techSpecs": "Specyfikacja techniczna",
+    "camera": "Aparat",
+    "zoom": "Zoom",
+    "cell": "Sieć komórkowa",
+    "youMayLike": "Może Ci się spodobać",
+    "closeZoom": "Zamknij powiększenie"
+  },
+  "cart": {
+    "documentTitle": "Koszyk | Gadgets",
+    "back": "Wstecz",
+    "title": "Koszyk",
+    "emptyTitle": "Twój koszyk jest pusty",
+    "emptyText": "Ale nigdy nie jest za późno, żeby to zmienić!",
+    "startShopping": "Zacznij zakupy",
+    "removeItem": "Usuń {name} z koszyka",
+    "decreaseQty": "Zmniejsz ilość",
+    "increaseQty": "Zwiększ ilość",
+    "totalForCount": "Razem za {count} produktów",
+    "totalForCount_1": "Razem za {count} produkt",
+    "checkout": "Do kasy",
+    "checkoutAlert": "Kasa nie jest jeszcze zaimplementowana. Czy chcesz wyczyścić koszyk?"
+  },
+  "favorites": {
+    "documentTitle": "Ulubione | Gadgets",
+    "title": "Ulubione",
+    "emptyText": "Nie masz jeszcze ulubionych produktów.",
+    "findGadgets": "Znajdź gadżety",
+    "noItemsMatching": "Brak produktów pasujących do zapytania",
+    "clearSearch": "Wyczyść wyszukiwanie",
+    "itemsCount": "{count} produktów",
+    "itemsCount_1": "{count} produkt"
+  },
+  "notFound": {
+    "documentTitle": "Nie znaleziono strony | Gadgets",
+    "title": "Nie znaleziono strony",
+    "text": "Strona, której szukasz, mogła zostać usunięta lub jest tymczasowo niedostępna.",
+    "goHome": "Przejdź do strony głównej"
+  }
+}

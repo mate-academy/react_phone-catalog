@@ -12,8 +12,12 @@ import tabletsDe from '../locales/de/tablets.json';
 import accessoriesEn from '../locales/en/accessories.json';
 import accessoriesUk from '../locales/uk/accessories.json';
 import accessoriesDe from '../locales/de/accessories.json';
+import generalPl from '../locales/pl/general.json';
+import phonesPl from '../locales/pl/phones.json';
+import tabletsPl from '../locales/pl/tablets.json';
+import accessoriesPl from '../locales/pl/accessories.json';
 
-export type Language = 'en' | 'uk' | 'de';
+export type Language = 'en' | 'uk' | 'de' | 'pl';
 
 interface LanguageContextType {
   language: Language;
@@ -48,6 +52,12 @@ const translations = {
     tablets: tabletsDe,
     accessories: accessoriesDe,
   },
+  pl: {
+    general: generalPl,
+    phones: phonesPl,
+    tablets: tabletsPl,
+    accessories: accessoriesPl,
+  },
 };
 
 const getNestedValue = (
@@ -69,7 +79,12 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
   const [language, setLanguageState] = useState<Language>(() => {
     const saved = localStorage.getItem('lang');
 
-    if (saved === 'en' || saved === 'uk' || saved === 'de') {
+    if (
+      saved === 'en' ||
+      saved === 'uk' ||
+      saved === 'de' ||
+      saved === 'pl'
+    ) {
       return saved;
     }
 
