@@ -23,7 +23,7 @@
 .left {
   display: flex;
   align-items: center;
-  flex: 1;
+  flex-shrink: 0;
   min-width: 0;
   gap: var(--space-sm);
   padding-inline-start: var(--space-sm);
@@ -71,6 +71,8 @@
   position: relative;
   display: none;
   align-items: center;
+  flex: 1 1 160px;
+  min-width: 0;
   width: 100%;
   max-width: 327px;
   margin-inline: var(--space-sm);
