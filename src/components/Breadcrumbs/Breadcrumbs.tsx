@@ -20,7 +20,12 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
       aria-label="Breadcrumb"
       data-testid="breadcrumbs"
     >
-      <Link to="/" className={styles.link} aria-label="Home">
+      <Link
+        to="/"
+        className={styles.link}
+        aria-label="Home"
+        unstable_viewTransition
+      >
         <i className={`fa-solid fa-house ${styles.homeIcon}`} />
       </Link>
 
@@ -28,7 +33,11 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
         <>
           <i className={`fa-solid fa-chevron-right ${styles.chevron}`} />
           {productName ? (
-            <Link to={`/${category}`} className={styles.link}>
+            <Link
+              to={`/${category}`}
+              className={styles.link}
+              unstable_viewTransition
+            >
               {categoryLabel || category}
             </Link>
           ) : (

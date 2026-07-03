@@ -1,5 +1,10 @@
 import React from 'react';
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
+import {
+  createHashRouter,
+  RouterProvider,
+  Navigate,
+  Outlet,
+} from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import './App.scss';
@@ -18,60 +23,75 @@ import { CartPage } from './pages/CartPage';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
+const AppLayout: React.FC = () => {
+  return (
+    <div className="App">
+      <Header />
+
+      <main className="main-content">
+        <Outlet />
+      </main>
+
+      <Footer />
+    </div>
+  );
+};
+
+const router = createHashRouter([
+  {
+    path: '/',
+    element: <AppLayout />,
+    children: [
+      {
+        path: '',
+        element: <HomePage />,
+      },
+      {
+        path: 'home',
+        element: <Navigate to="/" replace />,
+      },
+      {
+        path: 'phones',
+        element: <ProductsPage category="phones" title="Phones" />,
+      },
+      {
+        path: 'tablets',
+        element: <ProductsPage category="tablets" title="Tablets" />,
+      },
+      {
+        path: 'accessories',
+        element: <ProductsPage category="accessories" title="Accessories" />,
+      },
+      {
+        path: 'product/:productId',
+        element: <ProductDetailsPage />,
+      },
+      {
+        path: 'cart',
+        element: <CartPage />,
+      },
+      {
+        path: 'favorites',
+        element: <FavoritesPage />,
+      },
+      {
+        path: 'not-found',
+        element: <NotFoundPage />,
+      },
+      {
+        path: '*',
+        element: <Navigate to="/not-found" replace />,
+      },
+    ],
+  },
+]);
+
 export const App: React.FC = () => {
   return (
     <ThemeProvider>
       <CartProvider>
         <FavoritesProvider>
-          <HashRouter>
-            <div className="App">
-              <Header />
-
-              <main className="main-content">
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/home" element={<Navigate to="/" replace />} />
-
-                  <Route
-                    path="/phones"
-                    element={<ProductsPage category="phones" title="Phones" />}
-                  />
-                  <Route
-                    path="/tablets"
-                    element={
-                      <ProductsPage category="tablets" title="Tablets" />
-                    }
-                  />
-                  <Route
-                    path="/accessories"
-                    element={
-                      <ProductsPage
-                        category="accessories"
-                        title="Accessories"
-                      />
-                    }
-                  />
-
-                  <Route
-                    path="/product/:productId"
-                    element={<ProductDetailsPage />}
-                  />
-
-                  <Route path="/cart" element={<CartPage />} />
-
-                  <Route path="/favorites" element={<FavoritesPage />} />
-
-                  <Route path="/not-found" element={<NotFoundPage />} />
-                  <Route
-                    path="*"
-                    element={<Navigate to="/not-found" replace />}
-                  />
-                </Routes>
-              </main>
-
-              <Footer />
-            </div>
-          </HashRouter>
+          <RouterProvider router={router} />
         </FavoritesProvider>
       </CartProvider>
     </ThemeProvider>

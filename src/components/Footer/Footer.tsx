@@ -18,6 +18,7 @@ export const Footer: React.FC = () => {
           to="/"
           className={styles.logoLink}
           aria-label="Phone Catalog Home"
+          unstable_viewTransition
         >
           <i className="fa-solid fa-mobile-screen-button" />
           <span>GADGETS</span>

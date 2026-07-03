@@ -81,7 +81,12 @@ export const Header: React.FC = () => {
   return (
     <>
       <header className={styles.header} data-testid="header">
-        <Link to="/" className={styles.logoRow} aria-label="Phone Catalog Home">
+        <Link
+          to="/"
+          className={styles.logoRow}
+          aria-label="Phone Catalog Home"
+          unstable_viewTransition
+        >
           <i className="fa-solid fa-mobile-screen-button" />
           <span>GADGETS</span>
         </Link>
@@ -94,32 +99,56 @@ export const Header: React.FC = () => {
             className={({ isActive }) =>
               `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
             }
+            unstable_viewTransition
           >
-            Home
+            {({ isActive }) => (
+              <>
+                Home
+                {isActive && <span className={styles.activeIndicator} />}
+              </>
+            )}
           </NavLink>
           <NavLink
             to="/phones"
             className={({ isActive }) =>
               `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
             }
+            unstable_viewTransition
           >
-            Phones
+            {({ isActive }) => (
+              <>
+                Phones
+                {isActive && <span className={styles.activeIndicator} />}
+              </>
+            )}
           </NavLink>
           <NavLink
             to="/tablets"
             className={({ isActive }) =>
               `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
             }
+            unstable_viewTransition
           >
-            Tablets
+            {({ isActive }) => (
+              <>
+                Tablets
+                {isActive && <span className={styles.activeIndicator} />}
+              </>
+            )}
           </NavLink>
           <NavLink
             to="/accessories"
             className={({ isActive }) =>
               `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
             }
+            unstable_viewTransition
           >
-            Accessories
+            {({ isActive }) => (
+              <>
+                Accessories
+                {isActive && <span className={styles.activeIndicator} />}
+              </>
+            )}
           </NavLink>
         </nav>
 
@@ -173,6 +202,7 @@ export const Header: React.FC = () => {
               `${styles.iconLink} ${isActive ? styles.iconLinkActive : ''}`
             }
             aria-label="Favorites page"
+            unstable_viewTransition
           >
             <i className="fa-regular fa-heart" />
             {favorites.length > 0 && (
@@ -186,6 +216,7 @@ export const Header: React.FC = () => {
               `${styles.iconLink} ${isActive ? styles.iconLinkActive : ''}`
             }
             aria-label="Cart page"
+            unstable_viewTransition
           >
             <i className="fa-solid fa-bag-shopping" />
             {totalQuantity > 0 && (

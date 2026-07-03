@@ -147,3 +147,39 @@ button, input, select {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-text-secondary);
 }
+
+/* View Transitions */
+::view-transition-group(root) {
+  animation-duration: 0.2s;
+}
+
+::view-transition-old(root) {
+  animation: 80ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 160ms cubic-bezier(0, 0, 0.2, 1) both fade-in;
+}
+
+::view-transition-group(active-nav-indicator) {
+  animation-duration: 0.3s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
