@@ -15,6 +15,7 @@ import { useProducts } from '../../hooks/useProducts';
 import { mapProductToCard } from '../../utils/mapProductToCard';
 import { useFavorites } from '../../context/FavoritesContext';
 import { useCart } from '../../context/CartContext';
+import { Loader } from '../../components/Loader/Loader';
 
 export const ProductDetailsPage = () => {
   const { category, productId } = useParams();
@@ -127,8 +128,18 @@ export const ProductDetailsPage = () => {
     setActiveImage(0);
   }, [product?.id]);
 
-  if (!product) {
-    return <div>Loading...</div>;
+  const [showLoader, setShowLoader] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLoader(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (showLoader || !product) {
+    return <Loader />;
   }
 
   return (

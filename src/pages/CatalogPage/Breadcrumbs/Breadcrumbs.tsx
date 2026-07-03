@@ -74,7 +74,7 @@ export const Breadcrumbs: React.FC = () => {
           className={`${styles.breadcrumbs__link} ${styles.breadcrumbs__linkHome}`}
         >
           <img
-            src={`${import.meta.env.BASE_URL}img/icons/home-icon.svg`}
+            src={`${import.meta.env.BASE_URL}/img/icons/home-icon.svg`}
             alt="Home"
             className={styles.homeIcon}
           />

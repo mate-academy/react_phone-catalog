@@ -7,6 +7,7 @@ import { SelectProduct } from './SelectProduct/SelectProduct';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { useSearchParams } from 'react-router-dom';
 import { Breadcrumbs } from './Breadcrumbs/Breadcrumbs';
+import { Loader } from '../../components/Loader/Loader';
 
 type SortType = 'age' | 'title' | 'price';
 type Category = 'phones' | 'tablets' | 'accessories';
@@ -131,8 +132,22 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
     }
   }, [currentPage, totalPages, updateParams]);
 
-  if (!products.length) {
-    return <p>Loading...</p>;
+  // if (!products.length) {
+  //   return <Loader />;
+  // }
+
+  const [showLoader, setShowLoader] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLoader(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (showLoader || !products) {
+    return <Loader />;
   }
 
   return (
