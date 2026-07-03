@@ -183,3 +183,9 @@ button, input, select {
     opacity: 1;
   }
 }
+
+.no-transitions,
+.no-transitions * {
+  transition: none !important;
+  animation: none !important;
+}

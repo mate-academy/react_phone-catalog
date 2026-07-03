@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { flushSync } from 'react-dom';
 
 type Theme = 'light' | 'dark';
 
@@ -32,7 +33,26 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+    const nextTheme = theme === 'light' ? 'dark' : 'light';
+
+    if (!document.startViewTransition) {
+      setTheme(nextTheme);
+
+      return;
+    }
+
+    document.documentElement.classList.add('no-transitions');
+
+    const transition = document.startViewTransition(() => {
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      flushSync(() => {
+        setTheme(nextTheme);
+      });
+    });
+
+    transition.ready.then(() => {
+      document.documentElement.classList.remove('no-transitions');
+    });
   };
 
   return (
