@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Product } from '../types/Product';
+import { buildUrl } from '../utils/buildUrl';
 
 type UseProductsResult = {
   products: Product[];
@@ -17,7 +18,7 @@ export const useProducts = (): UseProductsResult => {
     setIsLoading(true);
     setHasError(false);
 
-    fetch('/api/products.json')
+    fetch(buildUrl('api/products.json'))
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch products');

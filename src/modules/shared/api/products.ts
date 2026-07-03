@@ -1,5 +1,6 @@
 import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
+import { buildUrl } from '../utils/buildUrl';
 
 const categoryFileMap: Record<string, string> = {
   phones: '/api/phones.json',
@@ -10,7 +11,7 @@ const categoryFileMap: Record<string, string> = {
 export const getProductDetails = async (
   itemId: string,
 ): Promise<{ details: ProductDetails; numericId: number } | null> => {
-  const productsResponse = await fetch('/api/products.json');
+  const productsResponse = await fetch(buildUrl('api/products.json'));
 
   if (!productsResponse.ok) {
     throw new Error('Failed to fetch products');
@@ -49,7 +50,7 @@ export const getSuggestedProducts = async (
   category: string,
   excludeId: number,
 ): Promise<Product[]> => {
-  const response = await fetch('/api/products.json');
+  const response = await fetch(buildUrl('api/products.json'));
 
   if (!response.ok) {
     throw new Error('Failed to fetch suggested products');
