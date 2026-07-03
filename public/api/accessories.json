@@ -1426,5 +1426,323 @@
     "processor": "Apple S5",
     "ram": "1GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+  },
+      {
+    "id": "apple-watch-series-3-38mm-space-gray-new-207",
+    "category": "accessories",
+    "namespaceId": "apple-watch-series-3",
+    "name": "Apple Watch Series 3 38mm Space Gray (V207)",
+    "capacityAvailable": [
+      "38mm",
+      "42mm"
+    ],
+    "capacity": "38mm",
+    "priceRegular": 199,
+    "priceDiscount": 199,
+    "colorsAvailable": [
+      "space gray",
+      "silver",
+      "gold"
+    ],
+    "color": "space gray",
+    "images": [
+      "img/accessories/apple-watch-series-3/space-gray/00.webp",
+      "img/accessories/apple-watch-series-3/space-gray/01.webp",
+      "img/accessories/apple-watch-series-3/space-gray/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Monitor your health",
+        "text": [
+          "The Apple Watch Series 3 is equipped with sensors to track your heart rate, calories burned, and other fitness metrics throughout the day. It can even track your workouts and suggest personalized fitness goals."
+        ]
+      },
+      {
+        "title": "Stay connected on the go",
+        "text": [
+          "With cellular connectivity, you can make calls and send texts from your wrist even without your iPhone nearby. And with Siri, you can get directions, send messages, and set reminders hands-free."
+        ]
+      },
+      {
+        "title": "Stream your favorite music",
+        "text": [
+          "With Apple Music and Siri, you can stream over 75 million songs on your Apple Watch Series 3. Or listen to your favorite podcasts, audiobooks, and radio stations."
+        ]
+      }
+    ],
+    "screen": "1.3' OLED",
+    "resolution": "272x340",
+    "processor": "Apple S3",
+    "ram": "768MB",
+    "cell": [
+      "Wi-Fi",
+      "Bluetooth",
+      "LTE"
+    ]
+  },
+  {
+    "id": "apple-watch-series-3-42mm-space-gray-new-208",
+    "category": "accessories",
+    "namespaceId": "apple-watch-series-3",
+    "name": "Apple Watch Series 3 42mm Space Gray (V208)",
+    "capacityAvailable": [
+      "38mm",
+      "42mm"
+    ],
+    "capacity": "42mm",
+    "priceRegular": 250,
+    "priceDiscount": 250,
+    "colorsAvailable": [
+      "space gray",
+      "silver",
+      "gold"
+    ],
+    "color": "space gray",
+    "images": [
+      "img/accessories/apple-watch-series-3/space-gray/00.webp",
+      "img/accessories/apple-watch-series-3/space-gray/01.webp",
+      "img/accessories/apple-watch-series-3/space-gray/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Monitor your health",
+        "text": [
+          "The Apple Watch Series 3 is equipped with sensors to track your heart rate, calories burned, and other fitness metrics throughout the day. It can even track your workouts and suggest personalized fitness goals."
+        ]
+      },
+      {
+        "title": "Stay connected on the go",
+        "text": [
+          "With cellular connectivity, you can make calls and send texts from your wrist even without your iPhone nearby. And with Siri, you can get directions, send messages, and set reminders hands-free."
+        ]
+      },
+      {
+        "title": "Stream your favorite music",
+        "text": [
+          "With Apple Music and Siri, you can stream over 75 million songs on your Apple Watch Series 3. Or listen to your favorite podcasts, audiobooks, and radio stations."
+        ]
+      }
+    ],
+    "screen": "1.3' OLED",
+    "resolution": "272x340",
+    "processor": "Apple S3",
+    "ram": "768MB",
+    "cell": [
+      "Wi-Fi",
+      "Bluetooth",
+      "LTE"
+    ]
+  },
+  {
+    "id": "apple-watch-series-3-38mm-gold-new-209",
+    "category": "accessories",
+    "namespaceId": "apple-watch-series-3",
+    "name": "Apple Watch Series 3 38mm Gold (V209)",
+    "capacityAvailable": [
+      "38mm",
+      "42mm"
+    ],
+    "capacity": "38mm",
+    "priceRegular": 199,
+    "priceDiscount": 199,
+    "colorsAvailable": [
+      "space gray",
+      "silver",
+      "gold"
+    ],
+    "color": "gold",
+    "images": [
+      "img/accessories/apple-watch-series-3/gold/00.webp",
+      "img/accessories/apple-watch-series-3/gold/01.webp",
+      "img/accessories/apple-watch-series-3/gold/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Monitor your health",
+        "text": [
+          "The Apple Watch Series 3 is equipped with sensors to track your heart rate, calories burned, and other fitness metrics throughout the day. It can even track your workouts and suggest personalized fitness goals."
+        ]
+      },
+      {
+        "title": "Stay connected on the go",
+        "text": [
+          "With cellular connectivity, you can make calls and send texts from your wrist even without your iPhone nearby. And with Siri, you can get directions, send messages, and set reminders hands-free."
+        ]
+      },
+      {
+        "title": "Stream your favorite music",
+        "text": [
+          "With Apple Music and Siri, you can stream over 75 million songs on your Apple Watch Series 3. Or listen to your favorite podcasts, audiobooks, and radio stations."
+        ]
+      }
+    ],
+    "screen": "1.3' OLED",
+    "resolution": "272x340",
+    "processor": "Apple S3",
+    "ram": "768MB",
+    "cell": [
+      "Wi-Fi",
+      "Bluetooth",
+      "LTE"
+    ]
+  },
+  {
+    "id": "apple-watch-series-3-42mm-gold-new-210",
+    "category": "accessories",
+    "namespaceId": "apple-watch-series-3",
+    "name": "Apple Watch Series 3 42mm Gold (V210)",
+    "capacityAvailable": [
+      "38mm",
+      "42mm"
+    ],
+    "capacity": "42mm",
+    "priceRegular": 250,
+    "priceDiscount": 250,
+    "colorsAvailable": [
+      "space gray",
+      "silver",
+      "gold"
+    ],
+    "color": "gold",
+    "images": [
+      "img/accessories/apple-watch-series-3/gold/00.webp",
+      "img/accessories/apple-watch-series-3/gold/01.webp",
+      "img/accessories/apple-watch-series-3/gold/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Monitor your health",
+        "text": [
+          "The Apple Watch Series 3 is equipped with sensors to track your heart rate, calories burned, and other fitness metrics throughout the day. It can even track your workouts and suggest personalized fitness goals."
+        ]
+      },
+      {
+        "title": "Stay connected on the go",
+        "text": [
+          "With cellular connectivity, you can make calls and send texts from your wrist even without your iPhone nearby. And with Siri, you can get directions, send messages, and set reminders hands-free."
+        ]
+      },
+      {
+        "title": "Stream your favorite music",
+        "text": [
+          "With Apple Music and Siri, you can stream over 75 million songs on your Apple Watch Series 3. Or listen to your favorite podcasts, audiobooks, and radio stations."
+        ]
+      }
+    ],
+    "screen": "1.3' OLED",
+    "resolution": "272x340",
+    "processor": "Apple S3",
+    "ram": "768MB",
+    "cell": [
+      "Wi-Fi",
+      "Bluetooth",
+      "LTE"
+    ]
+  },
+  {
+    "id": "apple-watch-series-3-38mm-silver-new-211",
+    "category": "accessories",
+    "namespaceId": "apple-watch-series-3",
+    "name": "Apple Watch Series 3 38mm Silver (V211)",
+    "capacityAvailable": [
+      "38mm",
+      "42mm"
+    ],
+    "capacity": "38mm",
+    "priceRegular": 199,
+    "priceDiscount": 199,
+    "colorsAvailable": [
+      "space gray",
+      "silver",
+      "gold"
+    ],
+    "color": "silver",
+    "images": [
+      "img/accessories/apple-watch-series-3/silver/00.webp",
+      "img/accessories/apple-watch-series-3/silver/01.webp",
+      "img/accessories/apple-watch-series-3/silver/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Monitor your health",
+        "text": [
+          "The Apple Watch Series 3 is equipped with sensors to track your heart rate, calories burned, and other fitness metrics throughout the day. It can even track your workouts and suggest personalized fitness goals."
+        ]
+      },
+      {
+        "title": "Stay connected on the go",
+        "text": [
+          "With cellular connectivity, you can make calls and send texts from your wrist even without your iPhone nearby. And with Siri, you can get directions, send messages, and set reminders hands-free."
+        ]
+      },
+      {
+        "title": "Stream your favorite music",
+        "text": [
+          "With Apple Music and Siri, you can stream over 75 million songs on your Apple Watch Series 3. Or listen to your favorite podcasts, audiobooks, and radio stations."
+        ]
+      }
+    ],
+    "screen": "1.3' OLED",
+    "resolution": "272x340",
+    "processor": "Apple S3",
+    "ram": "768MB",
+    "cell": [
+      "Wi-Fi",
+      "Bluetooth",
+      "LTE"
+    ]
+  },
+  {
+    "id": "apple-watch-series-3-42mm-silver-new-212",
+    "category": "accessories",
+    "namespaceId": "apple-watch-series-3",
+    "name": "Apple Watch Series 3 42mm Silver (V212)",
+    "capacityAvailable": [
+      "38mm",
+      "42mm"
+    ],
+    "capacity": "42mm",
+    "priceRegular": 250,
+    "priceDiscount": 250,
+    "colorsAvailable": [
+      "space gray",
+      "silver",
+      "gold"
+    ],
+    "color": "silver",
+    "images": [
+      "img/accessories/apple-watch-series-3/silver/00.webp",
+      "img/accessories/apple-watch-series-3/silver/01.webp",
+      "img/accessories/apple-watch-series-3/silver/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Monitor your health",
+        "text": [
+          "The Apple Watch Series 3 is equipped with sensors to track your heart rate, calories burned, and other fitness metrics throughout the day. It can even track your workouts and suggest personalized fitness goals."
+        ]
+      },
+      {
+        "title": "Stay connected on the go",
+        "text": [
+          "With cellular connectivity, you can make calls and send texts from your wrist even without your iPhone nearby. And with Siri, you can get directions, send messages, and set reminders hands-free."
+        ]
+      },
+      {
+        "title": "Stream your favorite music",
+        "text": [
+          "With Apple Music and Siri, you can stream over 75 million songs on your Apple Watch Series 3. Or listen to your favorite podcasts, audiobooks, and radio stations."
+        ]
+      }
+    ],
+    "screen": "1.3' OLED",
+    "resolution": "272x340",
+    "processor": "Apple S3",
+    "ram": "768MB",
+    "cell": [
+      "Wi-Fi",
+      "Bluetooth",
+      "LTE"
+    ]
   }
 ]

@@ -1,0 +1,115 @@
+{
+  "header": {
+    "home": "Startseite",
+    "phones": "Handys",
+    "tablets": "Tablets",
+    "accessories": "Zubehör",
+    "searchPlaceholder": "Suche in {category}...",
+    "switchToDark": "Zum dunklen Thema wechseln",
+    "switchToLight": "Zum hellen Thema wechseln",
+    "favoritesAria": "Favoriten Seite",
+    "cartAria": "Warenkorb Seite",
+    "menuOpen": "Menü öffnen",
+    "menuClose": "Menü schließen"
+  },
+  "footer": {
+    "github": "Github",
+    "contacts": "Kontakte",
+    "rights": "Rechte",
+    "backToTop": "Zurück nach oben",
+    "selectLanguage": "Sprache auswählen"
+  },
+  "categories": {
+    "phones": "Handys",
+    "tablets": "Tablets",
+    "accessories": "Zubehör",
+    "favorites": "Favoriten"
+  },
+  "home": {
+    "documentTitle": "Produktkatalog | Gadgets",
+    "title": "Produktkatalog",
+    "error": "Katalogprodukte konnten nicht geladen werden.",
+    "reload": "Neu laden",
+    "brandNewTitle": "Brandneue Modelle",
+    "shopByCategory": "Nach Kategorie shoppen",
+    "modelsCount": "{count} Modelle",
+    "modelsCount_1": "{count} Modell",
+    "hotPricesTitle": "Heißpreise"
+  },
+  "products": {
+    "documentTitle": "{category} | Gadgets",
+    "pageTitle": "{category} Seite",
+    "error": "Konnte Produkte nicht laden. Etwas ist schiefgelaufen.",
+    "loading": "Katalog wird geladen...",
+    "noItems": "Es gibt noch keine {category}",
+    "noItemsMatching": "Keine {category} passen zur Suche",
+    "clearSearch": "Suche zurücksetzen",
+    "sortBy": "Sortieren nach",
+    "sortNewest": "Neueste",
+    "sortAlphabetical": "Alphabetisch",
+    "sortCheapest": "Günstigste",
+    "itemsOnPage": "Artikel pro Seite",
+    "all": "Alle",
+    "modelsCount": "{count} Modelle",
+    "modelsCount_1": "{count} Modell"
+  },
+  "productCard": {
+    "screen": "Bildschirm",
+    "capacity": "Kapazität",
+    "ram": "RAM",
+    "addToCart": "In den Warenkorb",
+    "addedToCart": "Im Warenkorb",
+    "removeFromFavorites": "Aus Favoriten entfernen",
+    "addToFavorites": "Zu Favoriten hinzufügen"
+  },
+  "productDetails": {
+    "loadingTitle": "Laden... | Gadgets",
+    "notFoundTitle": "Produkt nicht gefunden | Gadgets",
+    "errorTitle": "Produkt wurde nicht gefunden",
+    "errorText": "Das Produkt mit der angeforderten ID existiert nicht oder wurde entfernt.",
+    "backToHome": "Zurück zur Startseite",
+    "back": "Zurück",
+    "availableColors": "Verfügbare Farben",
+    "selectCapacity": "Kapazität wählen",
+    "resolution": "Auflösung",
+    "processor": "Prozessor",
+    "about": "Über das Produkt",
+    "techSpecs": "Technische Daten",
+    "camera": "Kamera",
+    "zoom": "Zoom",
+    "cell": "Zelle",
+    "youMayLike": "Weitere Produkte",
+    "closeZoom": "Zoom schließen"
+  },
+  "cart": {
+    "documentTitle": "Warenkorb | Gadgets",
+    "back": "Zurück",
+    "title": "Warenkorb",
+    "emptyTitle": "Ihr Warenkorb ist leer",
+    "emptyText": "Aber es ist nie zu spät, das zu ändern!",
+    "startShopping": "Jetzt shoppen",
+    "removeItem": "{name} aus dem Warenkorb entfernen",
+    "decreaseQty": "Menge verringern",
+    "increaseQty": "Menge erhöhen",
+    "totalForCount": "Gesamt für {count} Artikel",
+    "totalForCount_1": "Gesamt für {count} Artikel",
+    "checkout": "Zur Kasse",
+    "checkoutAlert": "Checkout ist noch nicht implementiert. Warenkorb leeren?"
+  },
+  "favorites": {
+    "documentTitle": "Favoriten | Gadgets",
+    "title": "Favoriten",
+    "emptyText": "Sie haben noch keine Lieblingsprodukte.",
+    "findGadgets": "Finden Sie Gadgets",
+    "noItemsMatching": "Keine Produkte passen zur Suche",
+    "clearSearch": "Suche zurücksetzen",
+    "itemsCount": "{count} Artikel",
+    "itemsCount_1": "{count} Artikel"
+  },
+  "notFound": {
+    "documentTitle": "Seite nicht gefunden | Gadgets",
+    "title": "Seite nicht gefunden",
+    "text": "Die gesuchte Seite wurde eventuell entfernt oder ist vorübergehend nicht verfügbar.",
+    "goHome": "Zur Startseite gehen"
+  }
+}

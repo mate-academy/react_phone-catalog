@@ -1,0 +1,115 @@
+{
+  "header": {
+    "home": "Início",
+    "phones": "Telemóveis",
+    "tablets": "Tablets",
+    "accessories": "Acessórios",
+    "searchPlaceholder": "Pesquisar em {category}...",
+    "switchToDark": "Mudar para tema escuro",
+    "switchToLight": "Mudar para tema claro",
+    "favoritesAria": "Página de favoritos",
+    "cartAria": "Página do carrinho",
+    "menuOpen": "Abrir menu",
+    "menuClose": "Fechar menu"
+  },
+  "footer": {
+    "github": "Github",
+    "contacts": "Contactos",
+    "rights": "Direitos",
+    "backToTop": "Voltar ao topo",
+    "selectLanguage": "Selecionar idioma"
+  },
+  "categories": {
+    "phones": "Telemóveis",
+    "tablets": "Tablets",
+    "accessories": "Acessórios",
+    "favorites": "Favoritos"
+  },
+  "home": {
+    "documentTitle": "Catálogo de Produtos | Gadgets",
+    "title": "Catálogo de Produtos",
+    "error": "Não foi possível carregar os produtos do catálogo.",
+    "reload": "Recarregar",
+    "brandNewTitle": "Modelos novos",
+    "shopByCategory": "Comprar por categoria",
+    "modelsCount": "{count} modelos",
+    "modelsCount_1": "{count} modelo",
+    "hotPricesTitle": "Preços quentes"
+  },
+  "products": {
+    "documentTitle": "{category} | Gadgets",
+    "pageTitle": "Página de {category}",
+    "error": "Não foi possível carregar os produtos. Ocorreu um erro.",
+    "loading": "A carregar catálogo...",
+    "noItems": "Ainda não existem {category}",
+    "noItemsMatching": "Não existem {category} que correspondam à pesquisa",
+    "clearSearch": "Limpar pesquisa",
+    "sortBy": "Ordenar por",
+    "sortNewest": "Mais recentes",
+    "sortAlphabetical": "Alfabeticamente",
+    "sortCheapest": "Mais baratos",
+    "itemsOnPage": "Itens por página",
+    "all": "Todos",
+    "modelsCount": "{count} modelos",
+    "modelsCount_1": "{count} modelo"
+  },
+  "productCard": {
+    "screen": "Ecrã",
+    "capacity": "Capacidade",
+    "ram": "RAM",
+    "addToCart": "Adicionar ao carrinho",
+    "addedToCart": "Adicionado ao carrinho",
+    "removeFromFavorites": "Remover dos favoritos",
+    "addToFavorites": "Adicionar aos favoritos"
+  },
+  "productDetails": {
+    "loadingTitle": "A carregar... | Gadgets",
+    "notFoundTitle": "Produto Não Encontrado | Gadgets",
+    "errorTitle": "O produto não foi encontrado",
+    "errorText": "O produto com o ID solicitado não existe ou foi removido.",
+    "backToHome": "Voltar ao Início",
+    "back": "Voltar",
+    "availableColors": "Cores disponíveis",
+    "selectCapacity": "Selecionar capacidade",
+    "resolution": "Resolução",
+    "processor": "Processador",
+    "about": "Sobre",
+    "techSpecs": "Especificações técnicas",
+    "camera": "Câmara",
+    "zoom": "Zoom",
+    "cell": "Rede móvel",
+    "youMayLike": "Também pode gostar",
+    "closeZoom": "Fechar zoom"
+  },
+  "cart": {
+    "documentTitle": "Carrinho | Gadgets",
+    "back": "Voltar",
+    "title": "Carrinho",
+    "emptyTitle": "O seu carrinho está vazio",
+    "emptyText": "Mas nunca é tarde para mudar isso!",
+    "startShopping": "Começar a Comprar",
+    "removeItem": "Remover {name} do carrinho",
+    "decreaseQty": "Diminuir quantidade",
+    "increaseQty": "Aumentar quantidade",
+    "totalForCount": "Total de {count} itens",
+    "totalForCount_1": "Total de {count} item",
+    "checkout": "Finalizar compra",
+    "checkoutAlert": "A finalização da compra ainda não está implementada. Deseja esvaziar o Carrinho?"
+  },
+  "favorites": {
+    "documentTitle": "Favoritos | Gadgets",
+    "title": "Favoritos",
+    "emptyText": "Ainda não tem produtos favoritos.",
+    "findGadgets": "Encontrar gadgets",
+    "noItemsMatching": "Não existem produtos que correspondam à pesquisa",
+    "clearSearch": "Limpar pesquisa",
+    "itemsCount": "{count} itens",
+    "itemsCount_1": "{count} item"
+  },
+  "notFound": {
+    "documentTitle": "Página Não Encontrada | Gadgets",
+    "title": "Página não encontrada",
+    "text": "A página que procura pode ter sido removida ou está temporariamente indisponível.",
+    "goHome": "Ir para o Início"
+  }
+}

@@ -1,0 +1,60 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 0;
+
+  position: sticky;
+  bottom: 0;
+  background-color: var(--color-background);
+  z-index: 10;
+  border-top: 1px solid var(--color-border);
+
+  &.pagination {
+    grid-column: 1 / -1;
+  }
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-border);
+
+  aspect-ratio: 1 / 1;
+
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: var(--color-card-bg);
+  transition: all var(--transition-speed) ease;
+  user-select: none;
+  
+  &:hover:not(.disabled, .active) {
+    border-color: var(--color-text-primary);
+  }
+}
+
+.active {
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+  border-color: var(--color-accent);
+  cursor: default;
+}
+
+.disabled {
+  color: var(--color-border);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.dots {
+  border: none;
+  cursor: default;
+  background: none;
+  pointer-events: none;
+  color: var(--color-text-secondary);
+}

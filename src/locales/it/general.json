@@ -1,0 +1,115 @@
+{
+  "header": {
+    "home": "Home",
+    "phones": "Telefoni",
+    "tablets": "Tablet",
+    "accessories": "Accessori",
+    "searchPlaceholder": "Cerca in {category}...",
+    "switchToDark": "Passa al tema scuro",
+    "switchToLight": "Passa al tema chiaro",
+    "favoritesAria": "Pagina dei preferiti",
+    "cartAria": "Pagina del carrello",
+    "menuOpen": "Apri menu",
+    "menuClose": "Chiudi menu"
+  },
+  "footer": {
+    "github": "Github",
+    "contacts": "Contatti",
+    "rights": "Diritti",
+    "backToTop": "Torna su",
+    "selectLanguage": "Seleziona lingua"
+  },
+  "categories": {
+    "phones": "Telefoni",
+    "tablets": "Tablet",
+    "accessories": "Accessori",
+    "favorites": "Preferiti"
+  },
+  "home": {
+    "documentTitle": "Catalogo prodotti | Gadgets",
+    "title": "Catalogo prodotti",
+    "error": "Impossibile caricare i prodotti del catalogo.",
+    "reload": "Ricarica",
+    "brandNewTitle": "Nuovi modelli",
+    "shopByCategory": "Acquista per categoria",
+    "modelsCount": "{count} modelli",
+    "modelsCount_1": "{count} modello",
+    "hotPricesTitle": "Prezzi caldi"
+  },
+  "products": {
+    "documentTitle": "{category} | Gadgets",
+    "pageTitle": "Pagina {category}",
+    "error": "Impossibile caricare i prodotti. Qualcosa è andato storto.",
+    "loading": "Caricamento catalogo...",
+    "noItems": "Non ci sono ancora {category}",
+    "noItemsMatching": "Non ci sono {category} corrispondenti alla ricerca",
+    "clearSearch": "Cancella ricerca",
+    "sortBy": "Ordina per",
+    "sortNewest": "Più recenti",
+    "sortAlphabetical": "Alfabeticamente",
+    "sortCheapest": "Più economici",
+    "itemsOnPage": "Articoli per pagina",
+    "all": "Tutti",
+    "modelsCount": "{count} modelli",
+    "modelsCount_1": "{count} modello"
+  },
+  "productCard": {
+    "screen": "Schermo",
+    "capacity": "Capacità",
+    "ram": "RAM",
+    "addToCart": "Aggiungi al carrello",
+    "addedToCart": "Aggiunto al carrello",
+    "removeFromFavorites": "Rimuovi dai preferiti",
+    "addToFavorites": "Aggiungi ai preferiti"
+  },
+  "productDetails": {
+    "loadingTitle": "Caricamento... | Gadgets",
+    "notFoundTitle": "Prodotto non trovato | Gadgets",
+    "errorTitle": "Prodotto non trovato",
+    "errorText": "Il prodotto con l'ID richiesto non esiste o è stato rimosso.",
+    "backToHome": "Torna alla Home",
+    "back": "Indietro",
+    "availableColors": "Colori disponibili",
+    "selectCapacity": "Seleziona capacità",
+    "resolution": "Risoluzione",
+    "processor": "Processore",
+    "about": "Informazioni",
+    "techSpecs": "Specifiche tecniche",
+    "camera": "Fotocamera",
+    "zoom": "Zoom",
+    "cell": "Rete cellulare",
+    "youMayLike": "Potrebbe piacerti anche",
+    "closeZoom": "Chiudi vista ingrandita"
+  },
+  "cart": {
+    "documentTitle": "Carrello | Gadgets",
+    "back": "Indietro",
+    "title": "Carrello",
+    "emptyTitle": "Il tuo carrello è vuoto",
+    "emptyText": "Ma non è mai troppo tardi per rimediare!",
+    "startShopping": "Inizia lo shopping",
+    "removeItem": "Rimuovi {name} dal carrello",
+    "decreaseQty": "Diminuisci quantità",
+    "increaseQty": "Aumenta quantità",
+    "totalForCount": "Totale per {count} articoli",
+    "totalForCount_1": "Totale per {count} articolo",
+    "checkout": "Pagamento",
+    "checkoutAlert": "Il pagamento non è ancora implementato. Vuoi svuotare il carrello?"
+  },
+  "favorites": {
+    "documentTitle": "Preferiti | Gadgets",
+    "title": "Preferiti",
+    "emptyText": "Non hai ancora prodotti preferiti.",
+    "findGadgets": "Trova gadget",
+    "noItemsMatching": "Nessun prodotto corrisponde alla ricerca",
+    "clearSearch": "Cancella ricerca",
+    "itemsCount": "{count} articoli",
+    "itemsCount_1": "{count} articolo"
+  },
+  "notFound": {
+    "documentTitle": "Pagina non trovata | Gadgets",
+    "title": "Pagina non trovata",
+    "text": "La pagina che stai cercando potrebbe essere stata rimossa o è temporaneamente non disponibile.",
+    "goHome": "Vai alla Home"
+  }
+}
