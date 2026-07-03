@@ -141,7 +141,7 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowLoader(false);
-    }, 1000);
+    }, 200);
 
     return () => clearTimeout(timer);
   }, []);

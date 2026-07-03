@@ -133,7 +133,7 @@ export const ProductDetailsPage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowLoader(false);
-    }, 1000);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, []);
