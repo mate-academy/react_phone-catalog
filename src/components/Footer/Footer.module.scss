@@ -1,0 +1,136 @@
+.footer {
+  border-top: 1px solid #e2e6e9;
+  padding: 32px 0;
+
+  &Logo {
+    display: flex;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &Img {
+      height: 32px;
+      max-width: 89px;
+    }
+  }
+}
+
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
+
+  padding: 0 32px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+  gap: 64px;
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+  color: #89939a;
+}
+
+.links a {
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.48px;
+
+  color: #89939a;
+
+  transition: color 0.2s;
+}
+
+.links a:hover {
+  color: #313237;
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.backToTopText {
+  color: #89939a;
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+}
+
+.backToTopButton {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #b4bdc3;
+  border-radius: 50%;
+  background: #fff;
+
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.backToTopButton:hover {
+  border-color: #0f0f11;
+}
+
+.arrow {
+  width: 8px;
+  height: 8px;
+
+  border-top: 1.5px solid #313237;
+  border-right: 1.5px solid #313237;
+
+  transform: rotate(-45deg);
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .container {
+    padding: 0 32px;
+  }
+
+  .links {
+    gap: 32px;
+  }
+}
+
+// @media (min-width: 320px) and (max-width: 639px) {
+@media (max-width: 639px) {
+  .footer {
+    padding: 32px 16px;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+
+    padding: 0;
+  }
+
+  .links {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .backToTop {
+    align-self: center;
+  }
+}

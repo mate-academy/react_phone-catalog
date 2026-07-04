@@ -1,0 +1,95 @@
+// not empty
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* *{
+    color: red;
+    border: 1px solid red;
+} */
+
+a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  margin-top: 54px;
+  flex: 1;
+}
+
+.title {
+  font-family: MontExtra, Mont, sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  color: #313237;
+}
+
+.subtitle {
+  font-family: Mont, sans-serif;
+  font-weight: 600; // Mont-SemiBold
+}
+
+.text {
+  font-family: Mont, sans-serif;
+  font-weight: 400; // Mont-Regular
+}
+
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+@media (max-width: 1199px) {
+  .container {
+    padding: 0 24px;
+  }
+  .section {
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 639px) {
+  .container {
+    padding: 0 16px;
+  }
+}

@@ -1,0 +1,80 @@
+.labels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.label {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin-bottom: 8px;
+  color: var(--secondary);
+}
+
+.labelWithMargin {
+  margin-top: 24px;
+}
+
+.colors {
+  display: flex;
+  align-items: center;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--elements);
+}
+
+.colors button,
+.capacities button {
+  cursor: pointer;
+}
+
+.color {
+  margin-right: 8px;
+  width: 32px;
+  height: 32px;
+  border: 1px opacity var(--white);
+  border-radius: 50%;
+}
+
+.activeColor {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.capacities {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--elements);
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.capacity {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: center;
+  padding: 5px 8px;
+  border: 1px solid var(--icons);
+  border-radius: 5px;
+  background-color: var(--white);
+  color: var(--primary);
+}
+
+.activeCapacity {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: center;
+  padding: 5px 8px;
+  background-color: var(--primary);
+  color: var(--white);
+  border: 1px solid var(--primary);
+  border-radius: 5px;
+}

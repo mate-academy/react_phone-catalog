@@ -1,0 +1,72 @@
+.slider {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 24px;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.sliderButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--elements);
+  background: var(--white);
+  color: var(--primary);
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.sliderButton:disabled {
+  border-color: var(--elements);
+  color: var(--icons);
+  cursor: default;
+}
+
+.sliderButton:hover:not(:disabled) {
+  border-color: var(--primary);
+}
+
+.swiper-wrapper {
+  display: flex;
+}
+
+.swiper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.swiper-slide {
+  height: auto;
+  display: flex;
+}
+
+@media (max-width: 1199px) {
+  .fullBleed {
+    margin-right: -24px;
+  }
+}
+
+@media (max-width: 639px) {
+  .fullBleed {
+    margin-right: -16px;
+  }
+}
