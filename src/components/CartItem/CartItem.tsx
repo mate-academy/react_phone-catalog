@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styles from './CartItem.module.scss';
-import { asset } from '../../utils/paths';
+// import { asset } from '../../utils/paths';
 import { useCart } from '../../context/CartContext';
 
 type Props = {
@@ -21,9 +21,9 @@ export const CartItem: React.FC<Props> = ({ id, image, name, price, link }) => {
     return null;
   }
 
-console.log(import.meta.env.BASE_URL);
-console.log(image);
-console.log(asset(image));
+  // console.log(import.meta.env.BASE_URL);
+  // console.log(image);
+  // console.log(asset(image));
 
   return (
     <article className={styles.checkoutProduct}>
@@ -32,7 +32,8 @@ console.log(asset(image));
         onClick={() => removeFromCart(id)}
       ></button>
       <NavLink to={link} className={styles.categoryLink}>
-        <img src={asset(image)} alt={name} className={styles.image} />
+        {/* <img src={asset(image)} alt={name} className={styles.image} /> */}
+        <img src={image} alt={name} className={styles.image} />
 
         <h3 className={styles.name}>{name}</h3>
       </NavLink>

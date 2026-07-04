@@ -1,5 +1,5 @@
 import styles from './ProductCard.module.scss';
-// import { asset } from '../../utils/paths';
+import { asset } from '../../utils/paths';
 import { NavLink } from 'react-router-dom';
 
 import { ProductCardItem } from '../../types/ProductCardItem';
@@ -26,8 +26,9 @@ export const ProductCard: React.FC<Props> = ({
   const { isFavorite, toggleFavorite } = useFavorites();
   const { addToCart, removeFromCart, isInCart } = useCart();
 
-  console.log('image:', image);
+  // console.log('image:', image);
   // console.log('asset(image):', asset(image));
+  // console.log('PRODUCT CARD RENDER', image);
 
   return (
     <article className={styles.card}>
@@ -45,11 +46,7 @@ export const ProductCard: React.FC<Props> = ({
             )} */}
 
             {/* {image ? <img src={image} alt={name} /> : <span>No image</span>} */}
-            {image ? (
-              <img src={`./${image}`} alt={name} />
-            ) : (
-              <span>No image</span>
-            )}
+            {image ? <img src={image} alt={name} /> : <span>No image</span>}
           </div>
 
           <h3 className={styles.title}>{name}</h3>
