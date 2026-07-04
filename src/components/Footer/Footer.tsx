@@ -23,16 +23,16 @@ export const Footer = () => {
 
         <nav className={styles.links}>
           <a
-            href="https://github.com/your-username/product-catalog"
+            href="https://github.com/ValyaMeln/react_phone-catalog"
             target="_blank"
             rel="noreferrer"
           >
             Github
           </a>
 
-          <a href="/">Contacts</a>
+          <a href="https://github.com/ValyaMeln">Contacts</a>
 
-          <a href="/">Rights</a>
+          <a href="https://github.com/ValyaMeln/react_phone-catalog">Rights</a>
         </nav>
 
         <div className={styles.backToTop}>
