@@ -41,6 +41,11 @@ export const CardButton: React.FC<Props> = ({
                 ? '/img/icons/heart-filled.svg'
                 : '/img/icons/heart.svg',
             )})`,
+            // backgroundImage: `url(${
+            //   isFavorite
+            //     ? '/img/icons/heart-filled.svg'
+            //     : '/img/icons/heart.svg'
+            // })`,
           }}
         />
       </button>

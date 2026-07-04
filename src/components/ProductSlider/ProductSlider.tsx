@@ -6,7 +6,7 @@ import 'swiper/css';
 
 import { ProductCard } from '../ProductCard/ProductCard';
 import { useEffect, useRef, useState } from 'react';
-import { asset } from '../../utils/paths';
+// import { asset } from '../../utils/paths';
 
 import { ProductCardItem } from '../../types/ProductCardItem';
 
@@ -52,11 +52,16 @@ export const ProductSlider: React.FC<Props> = ({
             aria-label="Previous slide"
           >
             <img
-              src={asset(
+              // src={asset(
+              //   isBeginning
+              //     ? '/img/icons/arrow-left.svg'
+              //     : '/img/icons/arrow-left-action.svg',
+              // )}
+              src={
                 isBeginning
                   ? '/img/icons/arrow-left.svg'
-                  : '/img/icons/arrow-left-action.svg',
-              )}
+                  : '/img/icons/arrow-left-action.svg'
+              }
               alt=""
             />
           </button>
@@ -71,11 +76,16 @@ export const ProductSlider: React.FC<Props> = ({
             aria-label="Next slide"
           >
             <img
-              src={asset(
+              // src={asset(
+              //   isEnd
+              //     ? '/img/icons/arrow-right.svg'
+              //     : '/img/icons/arrow-right-action.svg',
+              // )}
+              src={
                 isEnd
                   ? '/img/icons/arrow-right.svg'
-                  : '/img/icons/arrow-right-action.svg',
-              )}
+                  : '/img/icons/arrow-right-action.svg'
+              }
               alt=""
             />
           </button>
