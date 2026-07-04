@@ -1,0 +1,149 @@
+@use '../../styles/abstract/variables' as *;
+@use '../../styles/abstract/mixins' as *;
+@use '../../styles/base/global' as *;
+
+.main {
+  color: $main-text-color;
+  @include container(16px);
+
+  .welcome {
+
+    @include onTablet() {
+      @include container($tablet-padding-lr);
+    }
+    
+    &__title {
+      margin-top: 24px; //for first indentation
+      margin-bottom: 24px;
+      @include text(32px, 41px, 800);
+      font-style: bold;
+      letter-spacing: -1%;
+      padding: 0 $phone-padding-lr;
+
+      @include onTablet() {
+        margin-top: 32px; //for first indentation
+        margin-bottom: 32px;
+      }
+
+      @include onDesktop() {
+        margin-top: 56px; //for first indentation
+        margin-bottom: 56px;
+      }
+    }
+
+    &__swiper {
+      overflow: hidden;
+      &__swiper {
+        width: 100%;
+        overflow: visible !important;
+        padding-bottom: 32px !important;
+
+        :global(.swiper-pagination-bullet) {
+          width: 14px;
+          height: 4px;
+          border-radius: 2px;
+          background: $elements-color;
+          opacity: 1;
+        }
+
+        :global(.swiper-pagination-bullet-active) {
+          background: $main-text-color;
+        }
+
+        &__img {
+          width: 100%;
+
+          @include onTablet() {
+            display: none;
+          }
+        }
+
+        &__imgTablet {
+          width: 100%;
+          display: none;
+
+          @include onTablet() {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  .new {
+    @include container($phone-padding-lr);
+    margin-top: 56px;
+
+    &__title {
+      @include text(22px,140%,800);
+      font-style: bold;
+    }
+    &__topblock {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__title {
+      max-width: 140px;
+    }
+
+    &__divider {
+      display: flex;
+      gap: 16px;
+    }
+
+    &__slider {
+      margin-top: 24px;
+    }
+
+    &__btn {
+      height: 32px;
+      width: 32px;
+      background-color: #fff;
+      border: 1px, solid, $icons-color;
+    }
+
+    @include onTablet() {
+      @include container($tablet-padding-lr);
+    }
+  }
+
+  .category {
+    margin-top: 56px;
+    @include container($phone-padding-lr);
+    &__title {
+      @include text(22px,140%,800);
+      font-style: bold;
+    }
+
+    &__cards {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns : 1fr;
+      gap: 32px;
+
+      @include onTablet() {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    &__card {
+      &__img {
+        width: 100%;
+      }
+      &__title {
+        margin-top: 24px;
+        @include text(20px,100%,700);
+      }
+      &__counter {
+        margin-top: 4px;
+        @include text(14px,21px,600);
+        color: $secondary-text-color;
+      }
+    }
+
+    @include onTablet() {
+      @include container($tablet-padding-lr);
+    }
+  }
+}

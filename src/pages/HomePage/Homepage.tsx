@@ -1,0 +1,212 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import styles from './HomePage.module.scss';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
+import 'swiper/swiper-bundle.css';
+import { BrandCard } from '../../components/BrandCard';
+import { useState } from 'react';
+import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer';
+
+export function HomePage() {
+  const mockmodels = 95;
+  const mockmodels2 = 24;
+  const mockmodels3 = 105;
+  const [newSwiper, setNewSwiper] = useState<any>(null);
+  const [hotSwiper, setHotSwiper] = useState<any>(null);
+
+  return (
+    <div className={styles.homepage}>
+      <Header />
+
+      <main className={styles.main}>
+        <div className={styles.welcome}>
+          <h1 className={styles.welcome__title}>
+            Welcome to Nice Gadgets store!
+          </h1>
+
+          <div className={styles.welcome__swiper}>
+            <Swiper
+              modules={[Pagination]}
+              pagination={{ clickable: true }}
+              loop={true}
+              slidesPerView={1}
+              className={styles.welcome__swiper__swiper}
+            >
+              <SwiperSlide>
+                <img
+                  className={styles.welcome__swiper__swiper__img}
+                  src="./img/slider1.png"
+                  alt="Swiper 1"
+                />
+                <img
+                  className={styles.welcome__swiper__swiper__imgTablet}
+                  src="./img/Banner.png"
+                  alt="Swiper 2"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                {/* You can replace this with different images for each slide */}
+                <img
+                  className={styles.welcome__swiper__swiper__img}
+                  src="./img/slider1.png"
+                  alt="Swiper 2"
+                />
+                <img
+                  className={styles.welcome__swiper__swiper__imgTablet}
+                  src="./img/Banner.png"
+                  alt="Swiper 2"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                {/* You can replace this with different images for each slide */}
+                <img
+                  className={styles.welcome__swiper__swiper__img}
+                  src="./img/slider1.png"
+                  alt="Swiper 3"
+                />
+                <img
+                  className={styles.welcome__swiper__swiper__imgTablet}
+                  src="./img/Banner.png"
+                  alt="Swiper 2"
+                />
+              </SwiperSlide>
+            </Swiper>
+          </div>
+        </div>
+        <div className={styles.new}>
+          <div className={styles.new__topblock}>
+            <h1 className={styles.new__title}>Brand new models</h1>
+            <div className={styles.new__divider}>
+              <button
+                onClick={() => newSwiper?.slidePrev()}
+                className={styles.new__btn}
+              >
+                ‹
+              </button>
+              <button
+                onClick={() => newSwiper?.slideNext()}
+                className={styles.new__btn}
+              >
+                ›
+              </button>
+            </div>
+          </div>
+          <div className={styles.new__slider}>
+            <Swiper
+              modules={[Navigation]}
+              onSwiper={setNewSwiper}
+              slidesPerView={1.2}
+              breakpoints={{
+                640: {
+                  slidesPerView: 2.5,
+                },
+                1200: {
+                  slidesPerView: 4,
+                },
+              }}
+              spaceBetween={16}
+            >
+              <SwiperSlide>
+                <BrandCard />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BrandCard />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BrandCard />
+              </SwiperSlide>
+            </Swiper>
+          </div>
+        </div>
+        <div className={styles.category}>
+          <h1 className={styles.category__title}>Shop by category</h1>
+          <div className={styles.category__cards}>
+            <div className={styles.category__card}>
+              <img
+                className={styles.category__card__img}
+                src="./img/Phones.png"
+                alt="Phones"
+              />
+              <h2 className={styles.category__card__title}>Phones</h2>
+              <p className={styles.category__card__counter}>
+                {mockmodels} models
+              </p>
+            </div>
+            <div className={styles.category__card}>
+              <img
+                className={styles.category__card__img}
+                src="./img/Tablets.png"
+                alt="Tablets"
+              />
+              <h2 className={styles.category__card__title}>Tablets</h2>
+              <p className={styles.category__card__counter}>
+                {mockmodels2} models
+              </p>
+            </div>
+            <div className={styles.category__card}>
+              <img
+                className={styles.category__card__img}
+                src="./img/Accessories.png"
+                alt="Accessories"
+              />
+              <h2 className={styles.category__card__title}>Accessories</h2>
+              <p className={styles.category__card__counter}>
+                {mockmodels3} models
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.new}>
+          <div className={styles.new__topblock}>
+            <h1 className={styles.new__title}>Hot prices</h1>
+            <div className={styles.new__divider}>
+              <button
+                onClick={() => hotSwiper?.slidePrev()}
+                className={styles.new__btn}
+              >
+                ‹
+              </button>
+              <button
+                onClick={() => hotSwiper?.slideNext()}
+                className={styles.new__btn}
+              >
+                ›
+              </button>
+            </div>
+          </div>
+          <div className={styles.new__slider}>
+            <Swiper
+              modules={[Navigation]}
+              onSwiper={setHotSwiper}
+              slidesPerView={1.2}
+              spaceBetween={16}
+              breakpoints={{
+                640: {
+                  slidesPerView: 2.5,
+                },
+                1200: {
+                  slidesPerView: 4,
+                },
+              }}
+            >
+              <SwiperSlide>
+                <BrandCard />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BrandCard />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BrandCard />
+              </SwiperSlide>
+            </Swiper>
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </div>
+  );
+}

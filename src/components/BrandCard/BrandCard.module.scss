@@ -1,0 +1,71 @@
+@use '../../styles/abstract/variables' as *;
+@use '../../styles/abstract/mixins' as *;
+@use '../../styles/base/global' as *;
+
+.brandCard {
+  border: 1px solid $elements-color;
+  padding: 32px;
+  color: $main-text-color;
+
+  &__img {
+    width: 100%;
+  }
+
+  &__title {
+    margin-top: 24px;
+    @include text(14px, 21px, 600);
+  }
+
+  &__price {
+    margin-top: 8px;
+    @include text(22px, 140%, 800);
+  }
+
+  &__divider {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 8px 0;
+  }
+
+  &__params {
+    margin-top: 12px;
+    &__item {
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__title {
+      @include text(12px, 100%, 700);
+      color: $secondary-text-color;
+    }
+
+    &__value {
+      @include text(12px, 100%, 700);
+    }
+  }
+
+  &__buttons {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    &__cart {
+      color: #fff;
+      background-color: $main-text-color;
+      @include text(14px,21px,700px);
+      border: none;
+      padding: 10px;
+    }
+
+    &__fav {
+      background-color: #fff;
+      padding: 12px;
+      border: 1px, solid, $icons-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+}

@@ -1,0 +1,115 @@
+@use '../../styles/abstract/variables' as *;
+@use '../../styles/abstract/mixins' as *;
+@use '../../styles/base/global' as *;
+
+
+.main {
+  margin-top: 24px;
+  color: $main-text-color;
+  min-height: 100vh;
+  @include container($phone-padding-lr);
+}
+
+.BreadCrumbs {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  &__link {
+    text-decoration: none;
+    color: $secondary-text-color;
+    @include text(12px,100%,600)
+  }
+}
+
+.controls {
+  margin-top: 24px;
+  &__title {
+    @include text(32px,41px,800);
+    letter-spacing: -1%;
+  }
+
+  &__models {
+    @include text(14px,21px,600);
+    color: $secondary-text-color;
+  } 
+}
+
+.menu {
+  margin-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  &__block {
+    width: 50%;
+    &__title {
+      @include text(12px,100%,700);
+      color: $secondary-text-color;
+    }
+  }
+}
+
+.listbox {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  &__button {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 4px;
+    padding: 12px  10px;
+    width: 100%;
+    background-color: #fff;
+    border: 1px $icons-color solid;
+  }
+  &__options {
+    width: 100%;
+    top: calc(100% + 2px);
+    position: absolute;
+    border: 1px $elements-color solid;
+    background-color: #fff; 
+  }
+  &__option {
+    padding: 12px 5px;
+  }
+}
+
+.grid {
+  margin-top: 24px;
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+} 
+
+.pagination {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 8px;
+    border: 1px $icons-color solid;
+  }
+}
+
+.agination {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  &__link {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    border: 1px $elements-color solid;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: $main-text-color;
+  }
+}

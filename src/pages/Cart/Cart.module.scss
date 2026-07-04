@@ -1,0 +1,24 @@
+@use '../../styles/abstract/variables' as *;
+@use '../../styles/abstract/mixins' as *;
+@use '../../styles/base/global' as *;
+
+
+.main {
+  margin-top: 24px;
+  color: $main-text-color;
+  min-height: 100vh;
+  @include container($phone-padding-lr);
+}
+
+.BreadCrumbs {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__link {
+    text-decoration: none;
+    color: $secondary-text-color;
+    @include text(12px, 100%, 600);
+  }
+}

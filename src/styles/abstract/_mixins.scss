@@ -1,0 +1,23 @@
+@mixin text($size: 12px, $line-height: normal, $weight: 400) {
+  font-size: $size;
+  line-height: $line-height;
+  font-weight: $weight;
+}
+
+@mixin container($padding: 0) {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 $padding;
+}
+
+@mixin onTablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}

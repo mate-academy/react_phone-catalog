@@ -1,0 +1,107 @@
+@use '../../styles/abstract/variables' as *;
+@use '../../styles/abstract/mixins' as *;
+@use '../../styles/base/global' as *;
+
+.header {
+  border: 1px solid #E2E6E9;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 $phone-padding-lr;
+
+  &__nav {
+    display: none;
+    
+
+
+    &__link {
+      @include text(12px,11px,800);
+      position: relative;
+      text-decoration: none;
+      color: $secondary-text-color;
+      letter-spacing: 4%;
+      &.active {
+        color: $main-text-color;
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -18px;
+          left: 0;
+          width: 100%;
+          height: 3px;
+          background: $main-text-color;
+        }
+      }
+
+    }
+
+    @include onTablet {
+      display: flex;
+      gap: 32px;
+    }
+  }
+
+
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  &__right {
+    display: flex;
+  }
+
+  &__burger {
+    border-left: 1px solid #E2E6E9;
+    padding: $phone-padding-tb 0 $phone-padding-tb $phone-padding-lr;
+
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &__cart {
+    display: none;
+
+    @include onTablet {
+      display: block;
+      border-left: 1px solid #E2E6E9;
+      padding: $phone-padding-lr 0 $phone-padding-lr $phone-padding-lr;
+    }
+  }
+
+  &__fav {
+    display: none;
+
+    @include onTablet {
+      display: block;
+      border-left: 1px solid #E2E6E9;
+      padding: $phone-padding-lr;
+    }
+  }
+
+  &__navlink {
+    position: relative;
+    &.active {
+      color: $main-text-color;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: $main-text-color;
+      }
+    }
+
+    &__cart {
+      &.active {
+        &::after {
+          width: 150%;
+        }
+      }
+    }
+  }
+
+}
