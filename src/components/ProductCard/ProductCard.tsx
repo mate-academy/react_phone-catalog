@@ -26,10 +26,6 @@ export const ProductCard: React.FC<Props> = ({
   const { isFavorite, toggleFavorite } = useFavorites();
   const { addToCart, removeFromCart, isInCart } = useCart();
 
-  // console.log('image:', image);
-  // console.log('asset(image):', asset(image));
-  // console.log('PRODUCT CARD RENDER', image);
-
   return (
     <article className={styles.card}>
       <div className={styles.top}>
@@ -39,13 +35,6 @@ export const ProductCard: React.FC<Props> = ({
           className={`${styles.icon} ${styles.mobileAction}`}
         >
           <div className={styles.image}>
-            {/* {image ? (
-              <img src={asset(image)} alt={name} />
-            ) : (
-              <span>No image</span>
-            )} */}
-
-            {/* {image ? <img src={image} alt={name} /> : <span>No image</span>} */}
             {image ? <img src={image} alt={name} /> : <span>No image</span>}
           </div>
 

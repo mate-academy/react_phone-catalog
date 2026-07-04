@@ -30,7 +30,6 @@ export const Categories: React.FC<Props> = ({ categories }) => {
               >
                 <img
                   src={asset(category.image)}
-                  // src={category.image}
                   alt={category.title}
                   className={styles.categoryImg}
                 />

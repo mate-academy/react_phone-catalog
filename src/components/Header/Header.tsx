@@ -47,7 +47,6 @@ export const Header = () => {
           <NavLink to="/" className={styles.logo}>
             <img
               src={asset('/img/icons/Logo.svg')}
-              // src={'/img/icons/Logo.svg'}
               alt="logo"
               className={styles.logoImg}
             />
@@ -71,9 +70,6 @@ export const Header = () => {
                 ? '/img/icons/close.svg'
                 : '/img/icons/menu-burger.svg',
             )}
-            // src={
-            //   isMenuOpen ? '/img/icons/close.svg' : '/img/icons/menu-burger.svg'
-            // }
             alt="menu"
           />
         </button>

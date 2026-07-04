@@ -13,7 +13,6 @@ export const Navbar = () => {
           <NavLink to="/" className={styles.logo}>
             <img
               src={asset('/img/icons/Logo.svg')}
-              // src={'/img/icons/Logo.svg'}
               alt="logo"
               className={styles.logoImg}
             />
@@ -75,7 +74,6 @@ export const Navbar = () => {
           >
             <span className={styles.iconWrapper}>
               <img src={asset('/img/icons/favourites.svg')} alt="favorites" />
-              {/* <img src={'/img/icons/favourites.svg'} alt="favorites" /> */}
               <span className={styles.badge}>12</span>
             </span>
           </NavLink>
@@ -87,7 +85,6 @@ export const Navbar = () => {
             <span className={styles.iconWrapper}>
               <img
                 src={asset('/img/icons/shopping-bag.svg')}
-                // src={'/img/icons/shopping-bag.svg'}
                 alt="shopping-bag"
               />
               <span className={styles.badge}>5</span>

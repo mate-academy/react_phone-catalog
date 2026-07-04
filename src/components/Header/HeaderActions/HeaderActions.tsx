@@ -23,7 +23,6 @@ export const HeaderActions = () => {
       >
         <span className={styles.iconWrapper}>
           <img src={asset('/img/icons/favourites.svg')} alt="favorites" />
-          {/* <img src={'/img/icons/favourites.svg'} alt="favorites" /> */}
           {favoriteIds.length > 0 && (
             <span className={styles.badge}>{favoriteIds.length}</span>
           )}
@@ -35,7 +34,6 @@ export const HeaderActions = () => {
       >
         <span className={styles.iconWrapper}>
           <img src={asset('/img/icons/shopping-bag.svg')} alt="shopping-bag" />
-          {/* <img src={'/img/icons/shopping-bag.svg'} alt="shopping-bag" /> */}
           {totalItems > 0 && <span className={styles.badge}>{totalItems}</span>}
         </span>
       </NavLink>

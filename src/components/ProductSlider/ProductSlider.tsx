@@ -6,7 +6,6 @@ import 'swiper/css';
 
 import { ProductCard } from '../ProductCard/ProductCard';
 import { useEffect, useRef, useState } from 'react';
-// import { asset } from '../../utils/paths';
 
 import { ProductCardItem } from '../../types/ProductCardItem';
 
@@ -52,15 +51,10 @@ export const ProductSlider: React.FC<Props> = ({
             aria-label="Previous slide"
           >
             <img
-              // src={asset(
-              //   isBeginning
-              //     ? '/img/icons/arrow-left.svg'
-              //     : '/img/icons/arrow-left-action.svg',
-              // )}
               src={
                 isBeginning
-                  ? '/img/icons/arrow-left.svg'
-                  : '/img/icons/arrow-left-action.svg'
+                  ? './img/icons/arrow-left.svg'
+                  : './img/icons/arrow-left-action.svg'
               }
               alt=""
             />
@@ -76,15 +70,10 @@ export const ProductSlider: React.FC<Props> = ({
             aria-label="Next slide"
           >
             <img
-              // src={asset(
-              //   isEnd
-              //     ? '/img/icons/arrow-right.svg'
-              //     : '/img/icons/arrow-right-action.svg',
-              // )}
               src={
                 isEnd
-                  ? '/img/icons/arrow-right.svg'
-                  : '/img/icons/arrow-right-action.svg'
+                  ? './img/icons/arrow-right.svg'
+                  : './img/icons/arrow-right-action.svg'
               }
               alt=""
             />
@@ -94,7 +83,6 @@ export const ProductSlider: React.FC<Props> = ({
       {items.length > 0 && (
         <div className={styles.fullBleed}>
           <Swiper
-            // modules={[Navigation]}
             onSwiper={swiper => {
               swiperRef.current = swiper;
               setIsBeginning(swiper.isBeginning);
@@ -104,9 +92,7 @@ export const ProductSlider: React.FC<Props> = ({
               setIsBeginning(swiper.isBeginning);
               setIsEnd(swiper.isEnd);
             }}
-            // navigation
             spaceBetween={16}
-            // slidesPerView={4}
             breakpoints={{
               320: { slidesPerView: 1.3 },
               640: { slidesPerView: 2.5 },

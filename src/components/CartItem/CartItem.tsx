@@ -21,10 +21,6 @@ export const CartItem: React.FC<Props> = ({ id, image, name, price, link }) => {
     return null;
   }
 
-  // console.log(import.meta.env.BASE_URL);
-  // console.log(image);
-  // console.log(asset(image));
-
   return (
     <article className={styles.checkoutProduct}>
       <button
@@ -32,7 +28,6 @@ export const CartItem: React.FC<Props> = ({ id, image, name, price, link }) => {
         onClick={() => removeFromCart(id)}
       ></button>
       <NavLink to={link} className={styles.categoryLink}>
-        {/* <img src={asset(image)} alt={name} className={styles.image} /> */}
         <img src={image} alt={name} className={styles.image} />
 
         <h3 className={styles.name}>{name}</h3>

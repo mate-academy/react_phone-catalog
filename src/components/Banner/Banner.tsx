@@ -81,12 +81,10 @@ export const Banner = () => {
           <picture>
             <source
               media="(max-width: 639px)"
-              // srcSet={asset(slides[currentSlide].mobile)}
               srcSet={slides[currentSlide].mobile}
             />
 
             <img
-              // src={asset(slides[currentSlide].desktop)}
               src={slides[currentSlide].desktop}
               className={styles.bannerImg}
               alt={`banner-${currentSlide + 1}`}
