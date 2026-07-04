@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { asset } from '../../utils/paths';
+// import { asset } from '../../utils/paths';
 import { usePhones } from '../../hooks/usePhones';
 import { useAccessories } from '../../hooks/useAccessories';
 import { useTablets } from '../../hooks/useTablets';
@@ -157,13 +157,15 @@ export const ProductDetailsPage = () => {
                 onClick={() => setActiveImage(index)}
                 className={index === activeImage ? styles.active : ''}
               >
-                <img src={asset(img)} alt={product.name} />
+                {/* <img src={asset(img)} alt={product.name} /> */}
+                <img src={img} alt={product.name} />
               </button>
             ))}
           </div>
 
           <div className={styles.mainImage}>
-            <img src={asset(product.images[activeImage])} alt={product.name} />
+            {/* <img src={asset(product.images[activeImage])} alt={product.name} /> */}
+            <img src={product.images[activeImage]} alt={product.name} />
           </div>
         </div>
 

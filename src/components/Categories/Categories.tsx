@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { asset } from '../../utils/paths';
+// import { asset } from '../../utils/paths';
 import styles from './Categories.module.scss';
 
 type Category = {
@@ -29,7 +29,8 @@ export const Categories: React.FC<Props> = ({ categories }) => {
                 }`}
               >
                 <img
-                  src={asset(category.image)}
+                  // src={asset(category.image)}
+                  src={category.image}
                   alt={category.title}
                   className={styles.categoryImg}
                 />

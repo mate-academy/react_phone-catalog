@@ -1,5 +1,5 @@
 import styles from './ProductCard.module.scss';
-import { asset } from '../../utils/paths';
+// import { asset } from '../../utils/paths';
 import { NavLink } from 'react-router-dom';
 
 import { ProductCardItem } from '../../types/ProductCardItem';
