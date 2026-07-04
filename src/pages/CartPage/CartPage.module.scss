@@ -32,7 +32,7 @@
 
   font-size: 32px;
   font-weight: 800;
-  font-family: Mont;
+  font-family: Mont, sans-serif;
 
   line-height: 41px;
   letter-spacing: -1%;
@@ -43,7 +43,7 @@
   margin-bottom: 24px;
   border-bottom: 1px solid var(--elements);
 
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
@@ -62,7 +62,7 @@
   background-color: var(--accent);
   color: var(--white);
 
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   font-weight: 700;
   font-size: 14px;
 
@@ -72,7 +72,7 @@
   transition: all 0.3s ease;
 
   &:hover {
-    box-shadow: 0px 3px 13px 0px #17203166;
+    box-shadow: 0 3px 13px 0 #17203166;
   }
 }
 
@@ -111,6 +111,7 @@
     position: static;
   }
 }
+
 @media (max-width: 640px) {
   .checkoutProducts {
     align-items: flex-start;

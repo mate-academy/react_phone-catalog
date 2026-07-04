@@ -8,7 +8,7 @@
   position: relative;
   z-index: 1100;
   background-color: var(--white);
-  box-shadow: 0px 1px 0px 0px #E2E6E9;
+  box-shadow: 0 1px 0 0 #E2E6E9;
 
 }
 
@@ -36,7 +36,7 @@
     text-decoration: none;
     color: #89939a;
 
-    font-family: 'MontExtra', 'Mont', sans-serif;
+    font-family: MontExtra, Mont, sans-serif;
     font-weight: 800;
     font-size: 12px;
     letter-spacing: 0.48px;
@@ -78,13 +78,13 @@
     transform: scale(1.2);
   }
 }
+
 .link {
   text-decoration: none;
   color: #89939a;
   text-transform: uppercase;
   letter-spacing: 0.48px;
-
-  font-family: 'MontExtra', 'Mont', sans-serif;
+  font-family: MontExtra, Mont, sans-serif;
   font-weight: 800;
   font-size: 12px;
   line-height: 11px;
@@ -107,7 +107,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
   transition: transform 0.3s;
   border-left: 1px solid #e2e6e9;
 
@@ -141,14 +140,8 @@
 
 .mobileMenu {
   position: fixed;
-
-  top: 48px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  background: #fff;
-
+  inset: 48px 0 0;
+  background: var(--white);
   display: flex;
   flex-direction: column;
 
@@ -180,10 +173,12 @@
   justify-content: center;
   align-items: center;
 }
+
 .iconWrapper {
   position: relative;
   display: inline-flex;
 }
+
 .badge {
   position: absolute;
   top: 0;

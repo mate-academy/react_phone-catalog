@@ -5,7 +5,7 @@
 }
 
 .title {
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
   font-weight: 800;
   font-size: 32px;
   line-height: 41px;
@@ -84,6 +84,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .price {
   display: flex;
   gap: 8px;
@@ -104,7 +105,7 @@
   list-style: none;
   padding: 0;
   padding-top: 16px;
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
@@ -153,7 +154,7 @@
 
 .about h2,
 .techSpecs h2 {
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
   font-size: 22px;
   font-weight: 800;
   border-bottom: 1px solid #e2e6e9;
@@ -170,7 +171,7 @@
 }
 
 .text {
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
@@ -203,6 +204,10 @@
   .info {
     grid-column: 6 / 9;
     min-width: 0;
+  }
+
+  .thumbnails {
+    gap: 8px;
   }
 
   .thumbnails button {
@@ -238,7 +243,9 @@
 @media (max-width: 639px) {
   .details {
     margin: 0 auto 56px;
+    padding: 0;
   }
+
   .topContent {
     grid-template-columns: 1fr;
   }
@@ -266,19 +273,23 @@
   }
 
   .thumbnails {
-    flex-direction: row;
     order: 2;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    width: 100%;
+  }
+
+  .thumbnails button {
+    width: 100%;
+    aspect-ratio: 1;
+    height: auto;
+    padding: 4px;
   }
 
   .mainImage {
     order: 1;
     height: 280px;
-  }
-
-  .thumbnails button {
-    width: 50px;
-    height: 50px;
   }
 }
 

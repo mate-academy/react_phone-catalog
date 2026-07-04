@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
@@ -20,33 +20,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-   border-radius: 50%;
+  border-radius: 50%;
 }
 
 .paginationButton {
   border: 1px solid var(--elements);
   background: var(--gray);
   color: var(--primary);
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
 }
 
 .active {
-
-
   border: 1px solid var(--primary);
   background: var(--primary);
   color: var(--elements);
 }
 
 .paginationEllipsis {
-  font-family: Mont;
-font-weight: 600;
-font-size: 14px;
-line-height: 21px;
-// text-align: center;
- line-height: 1;
-//  margin-top: 40px;margin-bottom: 80px;
-
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  line-height: 1;
 }

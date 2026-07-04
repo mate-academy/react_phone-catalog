@@ -1,5 +1,5 @@
 .catalog {
-  font-family: Mont;
+  font-family: Mont, sans-serif;
 }
 
 .title {
@@ -10,7 +10,7 @@
 
 .catalogCount{
   margin-top: 8px;
-  font-family: Mont;
+  font-family: Mont, sans-serif;
 font-weight: 600;
 font-size: 14px;
 
@@ -58,16 +58,19 @@ color: var(--secondary);
   height: 40px;
   cursor: pointer;
 }
+
 @media (max-width: 1199px) {
   .catalogGrid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
 @media (min-width: 768px) and (max-width: 1199px) {
   .catalogGrid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
 @media (min-width: 640px) and (max-width: 767px) {
   .catalogGrid {
     grid-template-columns: repeat(2, 1fr);

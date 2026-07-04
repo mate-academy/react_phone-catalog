@@ -4,7 +4,7 @@
 }
 
 .label {
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   font-weight: 600;
   font-size: 12px;
   line-height: 100%;
@@ -23,6 +23,7 @@
   padding-bottom: 18px;
   border-bottom: 1px solid var(--elements);
 }
+
 .colors button,
 .capacities button {
   cursor: pointer;
@@ -40,6 +41,7 @@
   outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
+
 .capacities {
   display: flex;
   gap: 8px;
@@ -48,8 +50,9 @@
     flex-wrap: wrap;
     justify-content: left;
 }
+
 .capacity {
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
@@ -61,8 +64,9 @@
   background-color: var(--white);
   color: var(--primary);
 }
+
 .activeCapacity {
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;

@@ -6,7 +6,7 @@
   &Link {
     display: flex;
     flex-direction: column;
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-weight: 700;
     font-size: 20px;
 
@@ -18,12 +18,14 @@
     flex: 1;
   }
 }
+
 .categoryImg {
   max-width: none;
   width: 100%;
   height: auto;
   transition: transform 0.3s ease;
 }
+
 .backgroundImg {
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -49,6 +51,19 @@
   background-color: #973d5f;
 }
 
+.phones img {
+  transform: translate(70px, 120px);
+}
+
+.tablets img {
+  transform: translate(50px, 70px);
+}
+
+.accessories img {
+  transform: translate(30px, 60px);
+  width: 90%;
+}
+
 .categoryLink:hover .phones img {
   width: 80%;
   transform: translate(0, 0) scale(1.05);
@@ -66,14 +81,15 @@
 
 .categoryTitle {
   margin-top: 24px;
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   font-weight: 700;
   font-size: 20px;
   color: var(--primary);
 }
+
 .categoryCount {
   margin-top: 4px;
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   font-weight: 500;
   font-size: 14px;
 
@@ -81,24 +97,14 @@
 
   color: var(--secondary);
 }
-.phones img {
-  transform: translate(70px, 120px);
-}
 
-.tablets img {
-  transform: translate(50px, 70px);
-}
-
-.accessories img {
-  transform: translate(30px, 60px);
-  width: 90%;
-}
 
 @media (min-width: 640px) and (max-width: 1199px) {
   .category {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
+
   .backgroundImg {
     width: 100%;
     aspect-ratio: 1 / 1;
@@ -109,10 +115,12 @@
   .categoryWrapper {
     margin: 0 auto;
   }
+
   .category {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
   }
+
   .backgroundImg {
     width: 100%;
     aspect-ratio: 1 / 1;

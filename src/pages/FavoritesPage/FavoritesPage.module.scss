@@ -1,14 +1,17 @@
 .favorites {
   margin-bottom: 80px;
 }
+
 .catalogGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
 }
+
 .title {
   margin-bottom: 8px;
 }
+
 .favoritesCount {
   font-weight: 600;
   font-size: 14px;
@@ -22,9 +25,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   text-align: center;
-
   gap: 24px;
 }
 
@@ -47,18 +48,20 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
 @media (min-width: 768px) and (max-width: 1199px) {
   .catalogGrid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
 @media (min-width: 640px) and (max-width: 767px) {
   .catalogGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 639px) {
+@media (max-width: 639px) { 
   .favorites {
     margin-bottom: 56px;
   }
@@ -70,7 +73,7 @@
   .favoritesCount {
     margin-bottom: 32px;
   }
-      .cart__emptyImg {
+  .cart__emptyImg {
     max-width: 220px;
   }
 

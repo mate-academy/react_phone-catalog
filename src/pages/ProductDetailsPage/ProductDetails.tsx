@@ -42,10 +42,8 @@ export const ProductDetailsPage = () => {
 
   const [activeImage, setActiveImage] = useState(0);
 
-  // const [isFavorite, setIsFavorite] = useState(false);
   const { isFavorite, toggleFavorite } = useFavorites();
-  // const [isInCart, setIsInCart] = useState(false);
-  // const { toggleCart, isInCart } = useCart();
+
   const { addToCart, removeFromCart, isInCart } = useCart();
 
   const { products } = useProducts();

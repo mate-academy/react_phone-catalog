@@ -4,16 +4,14 @@
   gap: 4px;
 
   margin-bottom: 16px;
-
-  // font-weight: 700;
-  // font-size: 12px;
-  // color: var(--secondary);
 }
+
 .breadcrumb__back {
   background-image: url('/react_phone-catalog/img/icons/arrow-left-action.svg');
   width: 16px;
   height: 16px;
 }
+
 .breadcrumbs__backLink {
   background: none;
   border: none;
@@ -28,5 +26,5 @@
   display: inline-flex;
   align-items: center;
 
-  font-family: Mont;
+  font-family: Mont, sans-serif;
 }

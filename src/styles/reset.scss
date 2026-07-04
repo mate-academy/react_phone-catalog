@@ -1,20 +1,24 @@
 html {
     box-sizing: border-box;
 }
+
 *,
 *::before,
 *::after {
     box-sizing: inherit;
 }
-/* *{
+
+ *{
     color: red;
     border: 1px solid red;
-} */
+} 
+
 a {
     text-decoration: none;
     color: inherit;
     display: inline-block;
 }
+
 ul,
 li {
     margin: 0;
@@ -30,6 +34,7 @@ h5,
 h6 {
     margin: 0;
 }
+
 p {
     margin: 0;
 }
