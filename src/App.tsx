@@ -11,6 +11,7 @@ import { CatalogPage } from './pages/CatalogPage/CatalogPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetails';
 import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
 import { CartPage } from './pages/CartPage/CartPage';
+import { ScrollToTop } from './components/ScrollToTop/ScrollToTop';
 
 export const App = () => {
   return (
@@ -21,6 +22,7 @@ export const App = () => {
 
           <div className={styles.section}>
             <div className={styles.container}>
+              <ScrollToTop />
               <Routes>
                 <Route path="/" element={<HomePage />} />
 
