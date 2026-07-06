@@ -11,6 +11,7 @@ import { Product } from '../../../shared/types/Product';
 import { useTranslation } from 'react-i18next';
 import { useMemo } from 'react';
 import { useSuggestedProducts } from '../../hooks/useSuggestedProducts';
+import { usePageTitle } from '../../../shared/hooks/usePageTitle';
 import { extractTechSpecs } from '../../services/extractTechSpecs';
 import baseStyles from './base.module.scss';
 // #endregion
@@ -38,6 +39,8 @@ export const ProductDetailsContent: React.FC<Props> = ({
   );
 
   const suggestedProducts = useSuggestedProducts();
+
+  usePageTitle(productDetails.name);
 
   return (
     <div>

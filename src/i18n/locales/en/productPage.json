@@ -1,9 +1,4 @@
 {
-  "categoriesEmpty": {
-    "phones": "mobile phones",
-    "accessories": "accessories",
-    "tablets": "tablets"
-  },
   "sortOptions": {
     "newest": "newest",
     "alphabetically": "alphabetically",

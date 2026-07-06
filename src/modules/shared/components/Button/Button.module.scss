@@ -45,5 +45,11 @@
   border: var(--selected-border);
   color: var(--selected-color);
 
-  pointer-events: none;
+  &:hover {
+    background-color: var(--select-bg-color); 
+    color: var(--hover-background);
+
+    border-color: var(--selected-color);
+    box-shadow: none;
+  }
 }

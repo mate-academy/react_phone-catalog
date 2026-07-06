@@ -1,6 +1,5 @@
 {
   "about": "O produkcie",
-  "added": "dodano",
   "techSpecsList": {
     "camera": "Kamera",
     "cell": "Komórka",
@@ -11,7 +10,6 @@
     "zoom": "Zoom",
     "builtInMemory": "Wbudowana pamięć"
   },
-  "addToCart": "Dodaj do koszyka",
   "availableColors": "Dostępne kolory",
   "selectCapacity": "Wybierz pojemność",
   "loading": "ładowanie szczegółów produktu",

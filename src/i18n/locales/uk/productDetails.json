@@ -1,6 +1,5 @@
 {
   "about": "Про продукт",
-  "added": "додано",
   "techSpecsList": {
     "camera": "Камера",
     "cell": "Основна камера",
@@ -11,7 +10,6 @@
     "zoom": "Зум",
     "builtInMemory": "Вбудована пам'ять"
   },
-  "addToCart": "Додати до кошика",
   "availableColors": "Доступні кольори",
   "selectCapacity": "Виберіть ємність",
   "loading": "завантаження деталей продукту",

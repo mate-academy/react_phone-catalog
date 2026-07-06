@@ -16,13 +16,17 @@ export const useCart = (id: string, product?: Product) => {
   const cart = useAppSelector(state => state.cart);
   const isInCart = cart.some(item => item.id === id);
 
+  const toggleCart = () => {
+    if (isInCart) {
+      dispatch(remove(id));
+    } else if (product) {
+      dispatch(add(product));
+    }
+  };
+
   return {
     isInCart,
-    addToCart: () => {
-      if (product) {
-        dispatch(add(product));
-      }
-    },
+    toggleCart,
     removeFromCart: () => dispatch(remove(id)),
     clearCart: () => dispatch(clear()),
     increase: () => dispatch(increaseQuantity(id)),

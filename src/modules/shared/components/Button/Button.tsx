@@ -8,7 +8,6 @@ import styles from './Button.module.scss';
 type Props = {
   name: string;
   isSelected?: boolean;
-  selectedName?: string;
   size?: 'small' | 'medium';
   isDisabled?: boolean;
   onClick: () => void;
@@ -17,7 +16,6 @@ type Props = {
 export const Button: React.FC<Props> = ({
   name,
   isSelected = false,
-  selectedName = name,
   size = 'small',
   isDisabled = false,
   onClick,
@@ -31,6 +29,6 @@ export const Button: React.FC<Props> = ({
     onClick={onClick}
     aria-pressed={isSelected}
   >
-    {isSelected ? capitalizeFirstWord(selectedName) : capitalizeFirstWord(name)}
+    {capitalizeFirstWord(name)}
   </button>
 );

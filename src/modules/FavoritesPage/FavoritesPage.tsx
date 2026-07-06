@@ -8,6 +8,7 @@ import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { useAppSelector } from '../../store/hooks';
 import { useLoading } from '../shared/hooks/useLoading';
 import { useTranslation } from 'react-i18next';
+import { usePageTitle } from '../shared/hooks/usePageTitle';
 import styles from './FavoritesPage.module.scss';
 // #endregion
 
@@ -16,6 +17,8 @@ export const FavoritesPage = () => {
 
   const favorites = useAppSelector(state => state.favorites);
   const isLoading = useLoading();
+
+  usePageTitle(t('favorites'));
 
   return (
     <section className={styles.favorites} aria-label={t('favorites')}>

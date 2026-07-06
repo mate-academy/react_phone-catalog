@@ -17,9 +17,9 @@ type Props = {
 };
 
 export const PurchaseBlock: FC<Props> = ({ product, price, fullPrice }) => {
-  const { t } = useTranslation('productDetails');
+  const { t } = useTranslation('productCard');
 
-  const { isInCart, addToCart } = useCart(product.itemId, product);
+  const { isInCart, toggleCart } = useCart(product.itemId, product);
   const { isFavourite, toggleFavorites } = useFavorites(
     product.itemId,
     product,
@@ -35,11 +35,10 @@ export const PurchaseBlock: FC<Props> = ({ product, price, fullPrice }) => {
 
       <div className={baseStyles.buttons}>
         <Button
-          name={t('addToCart')}
+          name={isInCart ? t('removeFromCart') : t('addToCart')}
           isSelected={isInCart}
-          selectedName={t('added')}
           size="medium"
-          onClick={addToCart}
+          onClick={toggleCart}
         />
 
         <FavButton

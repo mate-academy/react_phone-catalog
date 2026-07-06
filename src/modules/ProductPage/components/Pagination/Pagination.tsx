@@ -3,6 +3,8 @@ import cn from 'classnames';
 import { SliderButton } from '../../../shared/components/SliderButton';
 import { useTranslation } from 'react-i18next';
 import styles from './Pagination.module.scss';
+import { useMemo } from 'react';
+import { getPageNumbers } from './services/getPageNumbers';
 //#endregion
 
 type Props = {
@@ -21,6 +23,11 @@ export const Pagination: React.FC<Props> = ({
   const { t } = useTranslation('productPage');
   const pageQuantity = Math.ceil(total / perPage);
 
+  const pages = useMemo(
+    () => getPageNumbers(page, pageQuantity),
+    [page, pageQuantity],
+  );
+
   return (
     <nav className={styles.pagination} aria-label={t('pagination')}>
       <SliderButton
@@ -31,10 +38,14 @@ export const Pagination: React.FC<Props> = ({
       />
 
       <ul className={styles.pageButtons}>
-        {Array.from({ length: pageQuantity }).map((_, i) => {
-          const pageNumber = i + 1;
+        {pages.map((number, i) => {
+          const pageNumber = +number;
 
-          return (
+          return isNaN(pageNumber) ? (
+            <li key={`dots-${i}`}>
+              <span aria-hidden="true">...</span>
+            </li>
+          ) : (
             <li key={pageNumber}>
               <button
                 className={cn(styles.pageButton, {

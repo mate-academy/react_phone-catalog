@@ -11,8 +11,8 @@ export const NotFoundPage = () => {
   const { isDark } = useTheme();
 
   const imgSrc = isDark
-    ? '/img/darkTheme/page-not-found.png'
-    : '/img/page-not-found.png';
+    ? 'img/darkTheme/page-not-found.png'
+    : 'img/page-not-found.png';
 
   return (
     <section className={styles.notFoundPage} aria-label={t('pageNotFound')}>

@@ -6,6 +6,7 @@ import { CartSkeleton } from './components/CartContent/CartSkeleton';
 import { useAppSelector } from '../../store/hooks';
 import { useLoading } from '../shared/hooks/useLoading';
 import { useTranslation } from 'react-i18next';
+import { usePageTitle } from '../shared/hooks/usePageTitle';
 import styles from './ShoppingCartPage.module.scss';
 // #endregion
 
@@ -14,6 +15,8 @@ export const ShoppingCartPage = () => {
   const cart = useAppSelector(state => state.cart);
 
   const isLoading = useLoading();
+
+  usePageTitle(t('cart'));
 
   return (
     <section className={styles.cart} aria-label={t('cart')}>

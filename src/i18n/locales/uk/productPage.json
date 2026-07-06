@@ -1,9 +1,4 @@
 {
-  "categoriesEmpty": {
-    "tablets": "планшетів",
-    "phones": "телефонів",
-    "accessories": "аксесуарів"
-  },
   "sortOptions": {
     "newest": "найновіші",
     "alphabetically": "за алфавітом",

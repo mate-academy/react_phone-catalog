@@ -4,19 +4,16 @@
 }
 
 .favButton {
-  --hover-btn: #{$white-color};
+  --hover-btn: transparent;
 
   @include dark-theme {
     --hover-btn: #{$icons-color-dark};
   }
 
-  
   @include flex-box;
 
-  background-color: var(--hover-btn);
-
+  background-color: var(--select-bg-color);
   border: 1px solid var(--icons-primary-color);
-
   transition: all 0.3s;
 
   &:hover {
@@ -37,7 +34,10 @@
   background-color: transparent;
   border-color: var(--elements-color);
 
-  & .iconFill, & .iconStroke {
+  & .iconFill,
+  & .iconStroke {
     fill: var(--secondary-accent-color);
   }
-};
+}
+
+;

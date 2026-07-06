@@ -7,6 +7,7 @@ import {
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { useProductsLoading } from './hooks/useProductsLoading';
 import { useTranslation } from 'react-i18next';
+import { usePageTitle } from '../shared/hooks/usePageTitle';
 import { Category } from '../shared/constants/categories';
 import styles from './ProductPage.module.scss';
 // #endregion
@@ -20,9 +21,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
 
   const { products, isLoading } = useProductsLoading(category);
 
-  if (!isLoading && !products.length) {
-    return <ProductPageEmpty category={category} />;
-  }
+  usePageTitle(t(`categories.${category}`));
 
   return (
     <section
@@ -31,9 +30,13 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
     >
       <Breadcrumbs items={[{ label: t(`categories.${category}`) }]} />
 
-      {isLoading ? (
-        <ProductPageSkeleton />
-      ) : (
+      {isLoading && <ProductPageSkeleton />}
+
+      {!isLoading && !products.length && (
+        <ProductPageEmpty category={category} />
+      )}
+
+      {!isLoading && products.length > 0 && (
         <ProductPageContent category={category} products={products} />
       )}
     </section>

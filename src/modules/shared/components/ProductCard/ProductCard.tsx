@@ -29,7 +29,7 @@ export const ProductCard: React.FC<Props> = ({
   const { itemId, image, name, price, fullPrice } = product;
 
   const { isFavourite, toggleFavorites } = useFavorites(itemId, product);
-  const { isInCart, addToCart } = useCart(itemId, product);
+  const { isInCart, toggleCart } = useCart(itemId, product);
 
   const characteristics: Characteristic[] = useMemo(
     () => [
@@ -79,9 +79,9 @@ export const ProductCard: React.FC<Props> = ({
 
       <div className={baseStyles.actions}>
         <Button
-          name={isInCart ? t('added') : t('addToCart')}
+          name={isInCart ? t('removeFromCart') : t('addToCart')}
           isSelected={isInCart}
-          onClick={addToCart}
+          onClick={toggleCart}
         />
 
         <FavButton isSelected={isFavourite} onClick={toggleFavorites} />

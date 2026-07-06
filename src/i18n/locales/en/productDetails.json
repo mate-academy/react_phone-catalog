@@ -1,6 +1,5 @@
 {
   "about": "about",
-  "added": "added",
   "techSpecsList": {
     "camera": "Camera",
     "cell": "Cell",
@@ -11,7 +10,6 @@
     "zoom": "Zoom",
     "builtInMemory": "Built in memory"
   },
-  "addToCart": "Add to cart",
   "availableColors": "Available colors",
   "loading": "loading product details",
   "selectCapacity": "Select capacity",

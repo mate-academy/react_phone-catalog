@@ -1,9 +1,4 @@
 {
-  "categoriesEmpty": {
-    "tablets": "tabletów",
-    "phones": "telefonów",
-    "accessories": "akcesoriów"
-  },
   "sortOptions": {
     "newest": "najnowszy",
     "alphabetically": "alfabetycznie",

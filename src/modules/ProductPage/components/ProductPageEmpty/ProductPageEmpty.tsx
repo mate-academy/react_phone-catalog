@@ -11,9 +11,10 @@ type Props = {
 
 export const ProductPageEmpty: React.FC<Props> = ({ category }) => {
   const { t } = useTranslation('productPage');
+  const { t: tCategories } = useTranslation('categories');
   const { isDark } = useTheme();
 
-  const categoryLabel = t(`categoriesEmpty.${category}`);
+  const categoryLabel = tCategories(`categoriesGen.${category}`);
   const imgSrc = isDark
     ? './img/darkTheme/no-category.png'
     : './img/no-category.png';
