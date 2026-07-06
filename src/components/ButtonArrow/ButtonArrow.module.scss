@@ -1,0 +1,28 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+
+.button {
+  @include border(var(--light-elements));
+
+  height: $big-icon-size;
+  width: $big-icon-size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--light-bg);
+
+  &:hover {
+    @include border(var(--light-primary));
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &:hover {
+      @include border(var(--light-elements));
+    }
+  }
+
+}

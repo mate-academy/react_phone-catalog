@@ -1,0 +1,89 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+footer {
+  margin: 0;
+  padding: 32px 0;
+  width: 100%;
+  border-top: var(--light-elements) solid 1px;
+}
+
+.container {
+  @include content-padding-inline;
+  @include flex-col(32px);
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.img {
+  height: $big-icon-size;
+  width: 89px;
+}
+
+.logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex: 1;
+}
+
+.navList {
+  flex: 1;
+  align-items: start;
+  padding: 0;
+  margin: 0;
+
+  @include flex-col(16px);
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.navItem {
+  list-style: none;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  position: relative;
+  display: flex;
+
+  @include on-tablet {
+    align-items: center;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: var(--light-secondary);
+  padding: 0;
+}
+
+.wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+
+  @include on-tablet {
+    justify-content: flex-end;
+  }
+}
+
+.backToTop {
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--light-secondary);
+
+  @include flex-row(16px);
+  @include light-text-font(600);
+}

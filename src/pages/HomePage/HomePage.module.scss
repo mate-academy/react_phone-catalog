@@ -1,0 +1,119 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.homePage {
+  @include section-margin;
+  @include flex-col(56px);
+
+  @include on-tablet {
+    @include flex-col(64px);
+    @include section-margin(32px);
+  }
+
+  @include on-desktop {
+    @include flex-col(80px);
+    @include section-margin(56px);
+  }
+}
+
+.front {
+  @include flex-col(24px);
+
+  @include on-tablet {
+    @include flex-col(32px);
+  }
+
+  @include on-desktop {
+    @include flex-col(56px);
+  }
+}
+
+.welcome {
+  @include title-font;
+}
+
+.categories {
+ @include flex-col(24px);
+}
+
+.categoriesWrapper {
+  margin-inline: auto;
+
+  @include flex-col(32px);
+
+  @include on-tablet {
+    @include flex-row(16px);
+  }
+}
+
+.sectionTitle {
+  margin: 0;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  color: var(--light-primary);
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.imgWrapper {
+  overflow: hidden;
+  height: 288px;
+  width: 288px;
+
+  @include on-tablet {
+    height: 187px;
+    width: 187px;
+  }
+
+  @include on-desktop {
+    height: 368px;
+    width: 368px;
+  }
+}
+
+.phones {
+  background-color: $phones-bg;
+}
+
+.tablets {
+  background-color: $tablets-bg;
+}
+
+.accessories {
+  background-color: $accessories-bg;
+}
+
+.categoryImg {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: 40px 40px;
+}
+
+.infoBlock {
+  margin-top: 24px;
+
+  @include flex-col(4px);
+}
+
+.categoryTitle {
+  @include medium-title-font;
+}
+
+.categoryInfo {
+  @include light-font;
+
+  margin: 0;
+  color: var(--light-secondary);
+}
+
+.categoryLink {
+  text-decoration: none;
+  flex: 1;
+}
+
+

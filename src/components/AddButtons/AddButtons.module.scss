@@ -1,0 +1,37 @@
+@use '../../styles/mixins' as *;
+
+.buttonsBlock {
+  height: 40px;
+
+  @include flex-row(8px);
+}
+
+.addToCart {
+  flex: 1;
+  border: none;
+  height: 100%;
+  color: var(--light-bg);
+  background-color: var(--light-primary);
+
+  @include light-font;
+  @include hover-shadow;
+}
+
+.addToFavourites {
+  @include border(var(--light-icons));
+
+  width: 40px;
+  height: 100%;
+  background-color: var(--light-bg);
+
+  &:hover {
+    @include border(var(--light-primary));
+  }
+}
+
+.activeCart {
+  @include border(var(--light-elements));
+  
+  background-color: var(--light-bg);
+  color: var(--color-green);
+}

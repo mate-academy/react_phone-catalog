@@ -1,0 +1,38 @@
+@use '../../styles/mixins' as *;
+
+.errorWrapper {
+  grid-column: 1 / -1;
+  margin-inline: auto;
+  padding: 40px 20px;
+  align-items: center;
+  justify-content: center;
+
+  @include flex-col(20px);
+}
+
+.errorMessage {
+  margin: 0;
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--light-primary);
+
+  @include on-tablet {
+    font-size: 32px;
+  }
+}
+
+.reload {
+  border: none;
+  width: 60px;
+  height: 20px;
+  background-color: var(--light-primary);
+  color: var(--light-bg);
+  font-size: 14px;
+
+  @include on-tablet {
+    width: 80px;
+    height: 30px;
+
+    font-size: 16px;
+  }
+}

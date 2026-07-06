@@ -1,0 +1,20 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.counter {
+  z-index: 100;
+  border-radius: 50%;
+  background-color: var(--color-red);
+  height: $icon-size;
+  width: $icon-size;
+  color: var(--light-bg);
+  font-size: 9px;
+  line-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  transform: translateY(-5px) translateX(10px);
+
+  @include border(var(--light-bg));
+}

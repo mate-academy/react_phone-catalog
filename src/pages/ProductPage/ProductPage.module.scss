@@ -1,0 +1,142 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.productsContainer {
+  @include flex-col(24px);
+  @include section-margin;
+}
+
+.productsList {
+  max-width: 100%;
+}
+
+.title {
+  @include title-font;
+}
+
+.infoProducts {
+  @include light-font;
+
+  margin: 0;
+  color: var(--light-secondary);
+}
+
+.selectorsBlock {
+  @include flex-row(16px);
+}
+
+.selector {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('/img/icons/arrow-down.svg');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+
+  @include border(var(--light-icons));
+
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  margin-top: 4px;
+
+  font-family: Mont, sans-serif;
+  color: var(--light-primary);
+  
+  @include light-font;
+
+  &:hover {
+    @include border(var(--light-primary));
+  }
+}
+
+
+.sortBy {
+  width: 136px;
+
+  @include on-tablet {
+    width: 187px;
+  }
+
+  @include on-desktop {
+    width: 176px;
+  }
+}
+
+.pagination {
+  width: 136px;
+
+  @include on-desktop {
+    width: 128px;
+  }
+}
+
+.label {
+  margin-top: 32px;
+  color: var(--light-secondary);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}
+
+.pageButtons {
+  margin: 0 auto;
+  flex-wrap: wrap; // do I have to limit amount of visible pages by '...'
+
+  @include flex-row(8px);
+
+   > *:first-child {
+    margin-right: 8px;
+  }
+
+  > *:last-child {
+    margin-left: 8px;
+  }
+}
+
+.pageButton {
+  height: $big-icon-size;
+  width: $big-icon-size;
+  background-color: var(--light-bg);
+
+  @include border(var(--light-elements));
+
+  &:hover {
+    @include border(var(--light-primary));
+  }
+}
+
+.active {
+  background-color: var(--light-primary);
+  color: var(--light-bg);
+  border: none;
+}
+
+.errorContainer {
+  @include flex-col;
+
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.errorMessage {
+  font-size: 14px;
+
+  @include on-tablet {
+    font-size: 18px;
+  }
+
+  @include on-desktop {
+    font-size: 24px;
+  }
+}
+
+.notFoundImg {
+  width: inherit;
+}

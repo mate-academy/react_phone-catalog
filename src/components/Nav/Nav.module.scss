@@ -1,0 +1,146 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.nav {
+  height: calc(100vh - 48px);
+  position: fixed;
+  top: 48px;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  background-color: var(--light-bg);
+  z-index: 100;
+
+  @include flex-col;
+
+  @include on-tablet {
+    height: 100%;
+    flex: 1;
+    opacity: 1;
+    pointer-events: all;
+    position: static;
+
+    @include flex-row(24px);
+  }
+}
+
+.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.navList {
+  padding: 24px 0 0;
+  margin: 0;
+  flex: 1;
+  justify-content: start;
+  align-items: center;
+
+  @include flex-col(16px);
+
+  @include on-tablet {
+    padding: 0;
+
+    @include flex-row(64px);
+  }
+}
+
+.navItem {
+  list-style: none;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  height: min-content;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  @include on-tablet {
+    height: 100%;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: var(--light-secondary);
+  padding: 8px 0;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 100%;
+  background: none;
+  border: none;
+  border-left: var(--light-elements) solid 1px;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 0;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.iconLink {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border-left: var(--light-elements) solid 1px;
+
+  width: 100%;
+  text-decoration: none;
+
+  @include on-tablet {
+    flex: none;
+    height: 100%;
+    width: 48px;
+  }
+
+  @include on-desktop {
+    width: 64px;
+  }
+}
+
+.icon {
+  height: $icon-size;
+  width: $icon-size;
+}
+
+.iconsBlock {
+  width: 100%;
+  height: 64px;
+  border-top: var(--light-elements) solid 1px;
+
+  @include flex-row;
+
+  @include on-tablet {
+    border: none;
+    justify-content: flex-end;
+    height: 100%;
+    margin-left: auto;
+  }
+}
+
+.link::after {
+  @include underline-after;
+}
+
+.iconLink::after {
+  @include underline-after;
+}
+
+.active {
+  color: var(--light-primary);
+}
+
+.active::after {
+  transform: scaleX(1);
+}
+

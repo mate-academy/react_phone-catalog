@@ -1,0 +1,96 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.item {
+  height: 164px;
+  padding: 16px;
+  color: var(--light-primary);
+
+  @include border(var(--light-elements));
+  @include flex-col(16px);
+
+  @include on-tablet {
+    height: 128px;
+    justify-content: space-between;
+
+    @include flex-row(24px);
+  }
+}
+
+.cartItemRow {
+  align-items: center;
+  justify-content: space-between;
+
+  @include flex-row(16px);
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.closeButton {
+  padding: 0;
+  height: $icon-size;
+  width: $icon-size;
+  border: none;
+  background-color: var(--light-bg);
+}
+
+
+.productImage {
+  width: 80px;
+  height: 80px;
+  padding: 7px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.title {
+  @include light-font;
+}
+
+.quantityCounter {
+  width: min-content;
+  position: relative;
+
+  @include flex-row(32px);
+}
+
+.counter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.quantityIcon {
+  height: $big-icon-size;
+  width: $big-icon-size;
+  background-color: var(--light-bg);
+
+  @include border(var(--light-icons));
+
+  &:hover {
+    @include border(var(--light-primary));
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &:hover {
+      @include border(var(--light-icons));
+    }
+  }
+
+}
+
+.price {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+}

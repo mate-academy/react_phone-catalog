@@ -1,0 +1,31 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.container {
+  align-items: center;
+
+  @include light-text-font;
+  @include flex-row(8px);
+}
+
+.breadcrumbLink {
+  color: var(--light-primary);
+  text-decoration: none;
+}
+
+.homeIcon {
+  height: $icon-size;
+  width: $icon-size;
+}
+
+.currentPage {
+  color: var(--light-secondary);
+}
+
+.separator {
+  height: $icon-size;
+  width: $icon-size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,23 @@
+@use '../../styles/mixins' as *;
+
+.infoBlock {
+  justify-content: space-evenly;
+
+  @include flex-col(8px);
+}
+
+.infoRow {
+  justify-content: space-between;
+
+  @include flex-row;
+}
+
+.info {
+  color: var(--light-secondary);
+
+  @include light-text-font(600);
+}
+
+.infoValue {
+  color: var(--light-primary);
+}

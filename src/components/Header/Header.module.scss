@@ -1,0 +1,77 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+header {
+  margin: 0;
+  padding: 0;
+  height: 48px;
+  width: 100%;
+  background-color: var(--light-bg);
+  border-bottom: var(--light-elements) solid 1px;
+
+  position: sticky;
+  top: 0;
+  z-index: 200;
+
+  @include on-desktop {
+    height: 64px;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  position: relative;
+
+  @include flex-row(24px);
+}
+
+.img {
+  height: 100%;
+  width: 100%;
+}
+
+.logo {
+  height: 100%;
+  width: 96px;
+  padding: 13px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include on-desktop {
+    width: 128px;
+    padding: 18px 24px;
+  }
+}
+
+.searchInput {
+  z-index: 200;
+  width: 136px;
+  padding: 4px 0 4px 24px;
+  background: url('/img/icons/icon-search.svg') no-repeat left 4px center;
+
+  @include border(var(--light-icons));
+
+  @include on-tablet {
+    position: absolute;
+    right: 100px;
+    width: 100px;
+  }
+
+  @include on-desktop {
+    right: 136px;
+    width: 136px;
+  }
+
+  &:hover {
+    @include border(var(--light-primary))
+  }
+
+  &::placeholder {
+  color: var(--light-secondary);
+  font-family: Mont, sans-serif;
+  opacity: 1;
+}
+}

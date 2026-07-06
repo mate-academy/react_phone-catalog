@@ -1,0 +1,26 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.button {
+  padding: 0;
+  border: none;
+  background-color: var(--light-bg);
+  align-items: center;
+
+  @include flex-row (4px);
+}
+
+.icon {
+  width: $icon-size;
+  height: $icon-size;
+}
+
+.text {
+  color: var(--light-secondary);
+  
+  @include light-text-font;
+
+  &:hover {
+    color: var(--light-primary);
+  }
+}

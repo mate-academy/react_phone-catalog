@@ -1,0 +1,103 @@
+@use '../../styles/mixins' as *;
+
+.cartPage {
+  padding-top: 16px;
+}
+
+.cartContent {
+  @include page-grid;
+
+  row-gap: 32px;
+}
+
+.cartItemContainer {
+  grid-column: 1 / -1;
+
+  @include flex-col(16px);
+
+  @include on-desktop {
+    grid-column: 1 / 17;
+  }
+}
+
+.emptyCart {
+  grid-column: 1 / -1;
+  align-items: center;
+
+  @include flex-col(50px);
+}
+
+.emptyCartImg {
+  width: 100%;
+}
+
+.emptyCartText {
+  margin: 0;
+  font-weight: 700;
+  font-size: 14px;
+
+  @include on-tablet {
+    font-size: 18px;
+  }
+}
+
+.cartTitle {
+  @include title-font;
+}
+
+.cartTop {
+  @include flex-col(24px);
+
+  @include on-tablet {
+    @include flex-col(16px);
+  }
+}
+
+.checkoutBlock {
+  @include flex-col(16px);
+  @include border(var(--light-elements));
+
+  grid-column: 1 / -1;
+  align-items: center;
+  height: 190px;
+  padding: 24px;
+
+
+  @include on-desktop {
+    height: 206px;
+    grid-column: 17 / -1;
+  }
+}
+
+.decoration {
+  height: 1px;
+  width: 100%;
+  background-color: var(--light-elements);
+}
+
+.priceBlock {
+  align-items: center;
+
+  @include flex-col;
+  @include light-font;
+}
+
+.totalPrice {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  color: var(--light-primary);
+}
+
+.priceText {
+  color: var(--light-secondary);
+}
+
+.checkoutButton {
+  height: 48px;
+  width: 100%;
+  background-color: var(--light-primary);
+  color: var(--light-bg);
+
+  @include hover-shadow;
+}
