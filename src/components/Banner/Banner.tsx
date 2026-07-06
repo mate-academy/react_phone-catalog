@@ -20,8 +20,9 @@ export const Banner = () => {
   }, []);
 
   //#region  Handle banner slider
-  const handleNext = () => setActiveIndex(activeIndex + 1);
-  const handlePrev = () => setActiveIndex(activeIndex - 1);
+  const handleNext = () =>
+    setActiveIndex(prev => Math.min(prev + 1, banners.length - 1));
+  const handlePrev = () => setActiveIndex(prev => Math.max(prev - 1, 0));
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;

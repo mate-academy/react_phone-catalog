@@ -1,0 +1,93 @@
+.cartPage {
+  padding-inline: 16px;
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.title {
+  margin: 0 0 16px;
+
+  font-family: Mont;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  color: #0f0f11;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.checkoutBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  margin-top: 32px;
+  padding: 24px;
+
+  border: 1px solid #e2e6e9;
+  border-radius: 16px;
+}
+
+.checkoutPrice {
+  margin: 0;
+  text-align: center;
+
+  font-family: Mont;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  color: #0f0f11;
+}
+
+.checkoutItems {
+  margin: 0;
+  text-align: center;
+
+  font-family: Mont;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+
+  color: #89939a;
+}
+
+.checkoutDivider {
+  width: 100%;
+  height: 1px;
+  background: #e2e6e9;
+}
+
+.checkoutButton {
+  width: 100%;
+  height: 48px;
+  padding: 0;
+
+  background: #f86800;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  font-family: Mont;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+
+  color: #ffffff;
+  text-align: center;
+
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}

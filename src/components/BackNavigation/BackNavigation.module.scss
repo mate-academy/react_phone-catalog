@@ -1,7 +1,7 @@
 .backBlock {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   width: auto;
   height: 16px;
   background: none;
@@ -11,11 +11,13 @@
   padding: 0;
 
   font-family: Mont;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 12px;
   line-height: 100%;
-  letter-spacing: 0%;
-  color: #313237;
+  letter-spacing: 0;
+  color: #89939a;
+
+  transition: color 0.2s ease;
 
   &:hover {
     color: #0f0f11;
@@ -23,6 +25,9 @@
 }
 
 .arrow {
+  display: block;
+  flex-shrink: 0;
   width: 16px;
   height: 16px;
+  object-fit: contain;
 }

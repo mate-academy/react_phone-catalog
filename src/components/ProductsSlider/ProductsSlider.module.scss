@@ -1,10 +1,17 @@
 .slider {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 
   @media (max-width: 639px) {
     padding-inline: 0;
+  }
+}
+
+.trackWrapper {
+  overflow: hidden;
+
+  @media (max-width: 639px) {
+    margin-right: calc(-1 * var(--slider-bleed, 16px));
   }
 }
 .topSlider {

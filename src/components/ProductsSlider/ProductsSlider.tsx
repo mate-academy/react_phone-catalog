@@ -6,15 +6,17 @@ import { ProductCard } from '../ProductCard/ProductCard';
 interface Props {
   title: string;
   products: Product[];
+  className?: string;
 }
 
-export const ProductsSlider = ({ title, products }: Props) => {
+export const ProductsSlider = ({ title, products, className }: Props) => {
   const [position, setPosition] = useState(0);
   const touchStartX = useRef(0);
 
   //#region Handle slider
-  const handleNext = () => setPosition(position + 1);
-  const handlePrev = () => setPosition(position - 1);
+  const maxPosition = products.length - 1;
+  const handleNext = () => setPosition(prev => Math.min(prev + 1, maxPosition));
+  const handlePrev = () => setPosition(prev => Math.max(prev - 1, 0));
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -33,7 +35,7 @@ export const ProductsSlider = ({ title, products }: Props) => {
   //#endregion
 
   return (
-    <div className={styles.slider}>
+    <div className={`${styles.slider} ${className ?? ''}`}>
       <div className={styles.topSlider}>
         <h2 className={styles.title}>{title}</h2>
         <div className={styles.buttons}>
@@ -45,20 +47,26 @@ export const ProductsSlider = ({ title, products }: Props) => {
           <button
             type="button"
             onClick={handleNext}
-            disabled={position >= products.length - 1}
+            disabled={position >= maxPosition}
             className={styles.buttonRight}
           />
         </div>
       </div>
-      <div
-        className={styles.track}
-        style={{ transform: `translateX(${-position * 228}px)` }}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
-        {products.map(product => (
-          <ProductCard product={product} key={product.id} variant={'slider'} />
-        ))}
+      <div className={styles.trackWrapper}>
+        <div
+          className={styles.track}
+          style={{ transform: `translateX(${-position * 228}px)` }}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          {products.map(product => (
+            <ProductCard
+              product={product}
+              key={product.id}
+              variant={'slider'}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

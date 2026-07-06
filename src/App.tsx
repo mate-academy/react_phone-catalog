@@ -9,6 +9,7 @@ import { ProductDetails } from './types/ProductDetails';
 import { getPhones } from './api/phones';
 import { getTablets } from './api/tablets';
 import { getAccessories } from './api/accessories';
+import { CartProvider } from './context/CartContext';
 
 export const App = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -36,10 +37,12 @@ export const App = () => {
   //#endregion
 
   return (
-    <div className="wrapper">
-      <Header />
-      <Outlet context={{ products, phones, tablets, accessories }} />
-      <Footer />
-    </div>
+    <CartProvider>
+      <div className="wrapper">
+        <Header />
+        <Outlet context={{ products, phones, tablets, accessories }} />
+        <Footer />
+      </div>
+    </CartProvider>
   );
 };

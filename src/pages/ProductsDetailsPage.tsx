@@ -1,11 +1,17 @@
 import { useOutletContext, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Product } from '../types/Product';
 import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 import { BackNavigation } from '../components/BackNavigation/BackNavigaton';
 import { ProductDetails } from '../types/ProductDetails';
 import styles from './ProductDetailsPage.module.scss';
+import { TechSpec } from '../components/TechSpec/TechSpec';
+import { TechSpecShort } from '../components/TechSpecShort/TechSpecShort';
+import { AboutProduct } from '../components/AboutProduct/AboutProduct';
+import { SuggestedProducts } from '../components/SuggestedProducts/SuggestedProducts';
+import { useCart } from '../context/CartContext';
 
+//#region Constants
 const colorMap: Record<string, string> = {
   black: '#000000',
   white: '#f9f6ef',
@@ -26,8 +32,10 @@ const colorMap: Record<string, string> = {
   coral: '#ff7f50',
   rosegold: '#eecdc6',
 };
+//#endregion
 
 export const ProductsDetailsPage = () => {
+  //#region Params and Context
   const { category, itemId } = useParams() as {
     category: string;
     itemId: string;
@@ -43,6 +51,10 @@ export const ProductsDetailsPage = () => {
 
   const product = products.find(item => item.itemId === itemId);
   const productDetails = currentItems?.find(item => item.id === itemId);
+  const touchStartX = useRef(0);
+  //#endregion
+
+  //#region State
   const [currentProduct, setCurrentPhone] = useState<ProductDetails | null>(
     productDetails ?? null,
   );
@@ -50,6 +62,9 @@ export const ProductsDetailsPage = () => {
   const [activeImage, setActiveImage] = useState(
     currentProduct?.images[0] ?? '',
   );
+
+  const { addToCart } = useCart();
+  //#endregion
 
   //#region useEffect and blocks IF
 
@@ -68,6 +83,43 @@ export const ProductsDetailsPage = () => {
 
   //#endregion
 
+  //#region HandleSwipe
+
+  const handleNext = () => {
+    const currentIndex =
+      currentProduct?.images.findIndex(item => item === activeImage) ?? 0;
+    const nextIndex = Math.min(
+      (currentProduct?.images.length ?? 0) - 1,
+      currentIndex + 1,
+    );
+
+    setActiveImage(currentProduct?.images[nextIndex] ?? '');
+  };
+
+  const handlePrev = () => {
+    const currentIndex =
+      currentProduct?.images.findIndex(item => item === activeImage) ?? 0;
+    const nextIndex = Math.max(0, currentIndex - 1);
+
+    setActiveImage(currentProduct?.images[nextIndex] ?? '');
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX;
+
+    if (diff > 50) {
+      handleNext();
+    } else if (diff < -50) {
+      handlePrev();
+    }
+  };
+
+  //#endregion
   return (
     <>
       <Breadcrumbs
@@ -79,12 +131,15 @@ export const ProductsDetailsPage = () => {
         <h1 className={styles.productName}>
           {currentProduct?.name ?? productDetails.name}
         </h1>
+        {/* Image gallery */}
+
         <img
           src={activeImage}
           alt={productDetails.name}
           className={styles.mainImage}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         />
-
         <div className={styles.blockImages}>
           {currentProduct?.images.map(image => (
             <button
@@ -96,6 +151,7 @@ export const ProductsDetailsPage = () => {
             </button>
           ))}
         </div>
+        {/* Color selector */}
 
         <div className={styles.colors}>
           <div className={styles.textBlockColors}>
@@ -104,27 +160,33 @@ export const ProductsDetailsPage = () => {
           </div>
 
           <div className={styles.colorsList}>
-            {productDetails.colorsAvailable.map(color => (
-              <button
-                className={`${styles.colorButton} ${currentProduct?.color === color ? styles.colorButtonActive : ''}`}
-                key={color}
-                style={{ backgroundColor: colorMap[color] }}
-                onClick={() => {
-                  const newId = `${productDetails.namespaceId}-${productDetails.capacity.toLowerCase()}-${color}`;
-                  const found = currentItems?.find(item => item.id === newId);
+            {productDetails.colorsAvailable
+              .filter(color => {
+                const id = `${productDetails.namespaceId}-${(currentProduct?.capacity ?? productDetails.capacity).toLowerCase()}-${color}`;
 
-                  if (found) {
-                    setCurrentPhone(found);
-                    setActiveImage(found.images[0]);
-                  }
-                }}
-              ></button>
-            ))}
+                return currentItems?.some(item => item.id === id);
+              })
+              .map(color => (
+                <button
+                  className={`${styles.colorButton} ${currentProduct?.color === color ? styles.colorButtonActive : ''}`}
+                  key={color}
+                  style={{ backgroundColor: colorMap[color] }}
+                  onClick={() => {
+                    const newId = `${productDetails.namespaceId}-${(currentProduct?.capacity ?? productDetails.capacity).toLowerCase()}-${color}`;
+                    const found = currentItems?.find(item => item.id === newId);
+
+                    if (found) {
+                      setCurrentPhone(found);
+                      setActiveImage(found.images[0]);
+                    }
+                  }}
+                ></button>
+              ))}
           </div>
         </div>
-
         <hr className={styles.divider} />
 
+        {/* Capacity selector */}
         <div>
           <p className={styles.textColor}>Select capacity</p>
           <div className={styles.capacityList}>
@@ -147,9 +209,9 @@ export const ProductsDetailsPage = () => {
             ))}
           </div>
         </div>
-
         <hr className={styles.dividerBottom} />
 
+        {/* Price block */}
         <div className={styles.blockPrices}>
           <span className={styles.price}>${currentProduct?.priceDiscount}</span>
           {currentProduct?.priceRegular !== currentProduct?.priceDiscount && (
@@ -159,8 +221,20 @@ export const ProductsDetailsPage = () => {
           )}
         </div>
 
+        {/* Action buttons */}
         <div className={styles.blockButtons}>
-          <button type="button" className={styles.cartButton}>
+          <button
+            type="button"
+            className={styles.cartButton}
+            onClick={() =>
+              addToCart({
+                id: productDetails.id,
+                image: productDetails.images[0],
+                name: productDetails.name,
+                price: `$${productDetails.priceDiscount}`,
+              })
+            }
+          >
             Add to cart
           </button>
           <button type="button" className={styles.favButton}>
@@ -169,6 +243,46 @@ export const ProductsDetailsPage = () => {
               alt="Add to favourites"
             />
           </button>
+        </div>
+
+        {/* Short specs under buttons */}
+        <div className={styles.techSpecShortWrapper}>
+          <TechSpecShort
+            screen={currentProduct?.screen ?? ''}
+            resolution={currentProduct?.resolution ?? ''}
+            processor={currentProduct?.processor ?? ''}
+            ram={currentProduct?.ram ?? ''}
+          />
+        </div>
+
+        {/*About section*/}
+
+        <div className={styles.aboutSection}>
+          <h2 className={styles.aboutHeader}>About</h2>
+          <AboutProduct description={currentProduct?.description ?? []} />
+        </div>
+
+        {/*TechSpec region*/}
+        <div className={styles.techSpecFullBlock}>
+          <TechSpec
+            screen={currentProduct?.screen ?? ''}
+            resolution={currentProduct?.resolution ?? ''}
+            processor={currentProduct?.processor ?? ''}
+            ram={currentProduct?.ram ?? ''}
+            capacity={currentProduct?.capacity ?? ''}
+            camera={currentProduct?.camera ?? ''}
+            zoom={currentProduct?.zoom ?? ''}
+            cell={currentProduct?.cell ?? []}
+          />
+        </div>
+
+        {/*Suggested Items region*/}
+        <div className={styles.suggestedItemsBlock}>
+          <SuggestedProducts
+            itemId={itemId}
+            currentItems={currentItems ?? []}
+            category={category}
+          />
         </div>
       </div>
     </>

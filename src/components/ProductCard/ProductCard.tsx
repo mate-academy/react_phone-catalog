@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import styles from './ProductCard.module.scss';
+import { useCart } from '../../context/CartContext';
 
 type Variant = 'catalog' | 'slider';
 interface Props {
@@ -9,6 +10,8 @@ interface Props {
 }
 
 export const ProductCard = ({ product, variant }: Props) => {
+  const { addToCart } = useCart();
+
   return (
     <article
       className={`${styles.card} ${variant === 'catalog' ? styles.catalogCard : ''}`}
@@ -43,7 +46,18 @@ export const ProductCard = ({ product, variant }: Props) => {
       </Link>
 
       <div className={styles.actions}>
-        <button type="button" className={styles.cartButton}>
+        <button
+          type="button"
+          className={styles.cartButton}
+          onClick={() =>
+            addToCart({
+              id: product.id,
+              image: product.image,
+              name: product.name,
+              price: `$${product.price}`,
+            })
+          }
+        >
           Add to cart
         </button>
         <button type="button" className={styles.favButton}>
