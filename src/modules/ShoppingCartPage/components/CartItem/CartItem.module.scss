@@ -1,0 +1,33 @@
+.deleteBtn {
+  cursor: pointer;
+}
+
+.imgFrame {
+  @include flex-box;
+}
+
+.image {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+}
+
+.name {
+  flex-shrink: 1;
+  font-size: 14px;
+
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0;
+
+  color: var(--primary-color);
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  letter-spacing: 0%;
+
+  color: var(--primary-color);
+}

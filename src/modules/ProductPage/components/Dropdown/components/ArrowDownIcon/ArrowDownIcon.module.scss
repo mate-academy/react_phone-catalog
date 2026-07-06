@@ -1,0 +1,11 @@
+.arrowIcon {
+  transition: transform 0.3s;
+
+  &>path {
+    fill: var(--arrow-color);
+  }
+};
+
+.reversed {
+  transform: scaleY(-1);
+};

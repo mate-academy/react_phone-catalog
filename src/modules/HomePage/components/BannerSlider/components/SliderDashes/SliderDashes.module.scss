@@ -1,0 +1,25 @@
+.sliderDashes {
+  display: flex;
+  align-self: center;
+  gap: 4px;
+}
+
+.dashButton {
+  @include flex-box;
+
+  width: 24px;
+  height: 24px;
+
+  cursor: pointer;
+}
+
+.dash {
+  width: 14px;
+  height: 4px;
+
+  background-color: var(--elements-color);
+}
+
+.active {
+  background-color: var(--primary-color);
+}

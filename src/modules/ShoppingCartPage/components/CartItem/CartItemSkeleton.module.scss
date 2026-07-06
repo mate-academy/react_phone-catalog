@@ -1,0 +1,19 @@
+.deleteBtn {
+  width: 18px;
+  height: 18px;
+
+  border-radius: 5px;
+}
+
+.name {
+  flex-grow: 1;
+  width: 50%;
+
+  max-width: 350px;
+  height: 24px;
+}
+
+.price {
+  width: 55px;
+  height: 30px;
+}

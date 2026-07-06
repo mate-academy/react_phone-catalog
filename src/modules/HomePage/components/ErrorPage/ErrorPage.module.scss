@@ -1,0 +1,22 @@
+.errorPage {
+  @include container;
+  @include fade-in-animation;
+  @include flex-gap(20px, column);
+
+  align-items: center;
+
+  padding-top: 20px;
+
+  @include on-tablet {
+    padding-top: 30px;
+  }
+}
+
+.errorImg {
+  width: fit-content;
+  max-height: 400px;
+
+  @include on-tablet {
+    max-height: 500px;
+  }
+}

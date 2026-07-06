@@ -1,0 +1,23 @@
+.favoritesEmpty {
+  @include flex-gap(10px, column);
+
+  align-items: center;
+  padding-top: 30px;
+
+  @include fade-in-animation;
+
+  @include on-tablet {
+    padding-top: 50px;
+  }
+}
+
+.noFavoritesImg {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+
+  @include on-tablet {
+    width: 450px;
+    height: 450px;
+  }
+}

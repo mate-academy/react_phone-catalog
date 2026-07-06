@@ -1,0 +1,9 @@
+.icon>path {
+  fill: var(--primary-color);
+
+  transition: fill 0.3s;
+}
+
+.disabledIcon>path {
+  fill: var(--icons-secondary-color);
+}

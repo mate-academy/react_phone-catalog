@@ -1,0 +1,69 @@
+.switch {
+  // #region vars
+  --switch-color: linear-gradient(#00d1ff, #00a3ff);
+  --slider-color: #ff8a00;
+  --theme-switch-bg-img: url(../../../public/img/icons/clouds.svg);
+
+  @include dark-theme {
+    --switch-color: linear-gradient(#0066fe, #000);
+    --slider-color: #c2c2c2;
+    --theme-switch-bg-img: url(../../../public/img/icons/stars.svg);
+  }
+
+  // #endregion
+
+  position: relative;
+  width: 36px;
+  padding: 5px;
+  background-image: var(--switch-color);
+  border-radius: 130px;
+
+  box-sizing: content-box;
+  aspect-ratio: 2 / 1;
+
+  @include on-desktop {
+    width: 60px;
+    height: 20px;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 2px;
+
+      display: block;
+      width: 50%;
+      height: 100%;
+      background-image: var(--theme-switch-bg-img);
+      border-radius: 130px;
+      transition: all 0.3s;
+      content: "";
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+  }
+
+  &.darkTheme {
+    &::after {
+      left: 0;
+    }
+  }
+}
+
+.slider {
+  height: 100%;
+  aspect-ratio: 1;
+  background-color: var(--slider-color);
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.darkTheme {
+  & .slider {
+    transform: translateX(100%);
+
+    @include on-desktop {
+      transform: translateX(200%);
+    }
+  }
+}

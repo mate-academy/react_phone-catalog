@@ -1,0 +1,45 @@
+:root {
+  --primary-color: #{$primary-color};
+  --secondary-color: #{$secondary-color};
+  --accent-color: #{$accent-color};
+  --secondary-accent-color: #{$secondary-accent-color};
+  --surface-color: #{$white-color};
+  --icons-primary-color: #{$icons-color};
+  --icons-secondary-color: #{$icons-color};
+  --elements-color: #{$elements-color};
+  --background-color: #{$background-color};
+  --background-secondary-color: #{$white-color};
+  --hover-color:#{$primary-color};
+  --border-hover-color: #{$primary-color};
+  --arrow-color: #{$icons-color};
+  --header-shadow: #{$elements-color};
+  --select-bg-color: transparent;
+  --border-color: #{$elements-color};
+  --digit-color: #000;
+  --logo-color: #{$secondary-accent-color};
+  --param-color: #{$white-color};
+  --white-color: #{$white-color};
+}
+
+html.dark {
+  --primary-color: #{$primary-color-dark};
+  --secondary-color: #{$secondary-color-dark};
+  --accent-color: #{$accent-color-dark};
+  --secondary-accent-color: #{$red-color-dark};
+  --surface-color: #{$surface-color};
+  --icons-primary-color: #{$surface-second-color};
+  --icons-secondary-color: #{$icons-color-dark};
+  --elements-color: #{$elements-color-dark};
+  --background-color: #{$black-color-dark};
+  --background-secondary-color: #0f1121;
+  --hover-color: #{$accent-color-dark};
+  --border-hover-color: #{$icons-color-dark};
+  --arrow-color: #{$secondary-color-dark};
+  --header-shadow: #{$surface-second-color};
+  --select-bg-color: #{$surface-second-color};
+  --border-color: #{$surface-color};
+  --digit-color: #{$primary-color-dark};
+  --logo-color: #{$primary-color-dark};
+  --param-color: #{$black-color-dark};
+  --white-color: #{$primary-color-dark};
+}

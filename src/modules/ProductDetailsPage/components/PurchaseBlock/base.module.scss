@@ -1,0 +1,15 @@
+.purchaseBlock {
+  @include flex-gap(16px, column);
+}
+
+.priceBox {
+  @include flex-gap(8px);
+
+  align-items: center;
+}
+
+.buttons {
+  @include flex-gap(8px);
+
+  width: 100%;
+}

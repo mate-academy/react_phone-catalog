@@ -1,0 +1,43 @@
+.iconWrapper {
+  @include slider-button;
+  @include flex-box;
+
+  background-color: var(--select-bg-color);
+
+  border: 1px solid var(--icons-primary-color);
+
+  transition: all 0.3s;
+}
+
+.icon {
+  &>path {
+    fill: var(--primary-color);
+    transition: fill 0.3s;
+  }
+}
+
+.topButton {
+  @include flex-box;
+
+  gap: 16px;
+
+  font-family: $mainFont;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+
+  color: var(--secondary-color);
+
+  @include hover(color, var(--hover-color));
+
+  &:hover {
+    &>.iconWrapper {
+      border-color: var(--hover-color);
+      background-color: var(--hover-color);
+    }
+
+    & .icon>path {
+      fill: var(--white-color);
+    }
+  }
+}

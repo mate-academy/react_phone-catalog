@@ -1,0 +1,11 @@
+export { default as categories } from './categories.json';
+export { default as homePage } from './homePage.json';
+export { default as cart } from './cart.json';
+export { default as header } from './header.json';
+export { default as footer } from './footer.json';
+export { default as favorites } from './favorites.json';
+export { default as productPage } from './productPage.json';
+export { default as productCard } from './productCard.json';
+export { default as productDetails } from './productDetails.json';
+export { default as notFoundPage } from './notFoundPage.json';
+export { default as shared } from './shared.json';

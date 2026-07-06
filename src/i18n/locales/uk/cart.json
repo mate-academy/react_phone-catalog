@@ -1,0 +1,17 @@
+{
+  "back": "Назад",
+  "cart": "Кошик",
+  "close": "закрити",
+  "cancel": "Скасувати",
+  "checkout": "Оформлення замовлення",
+  "confirm": "Підтвердити",
+  "decreaseQuantity": "Зменшити кількість",
+  "dialogText": "Оформлення замовлення ще не реалізовано. Ви хочете очистити кошик?",
+  "emptyCart": "Ваш кошик порожній",
+  "increaseQuantity": "Збільшити кількість",
+  "loading": "завантаження кошику",
+  "quantitySelector": "Вибір кількості",
+  "totalForItems_one": "Разом за {{count}} товар",
+  "totalForItems_few": "Разом за {{count}} товари",
+  "totalForItems_many": "Разом за {{count}} товарів"
+}

@@ -1,0 +1,14 @@
+.title {
+  width: 100%;
+  height: 45px;
+  background-color: red;
+
+  @include on-tablet {
+    width: 550px;
+    height: 60px;
+  }
+
+  @include on-desktop {
+    width: 900px;
+  }
+}

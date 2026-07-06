@@ -1,0 +1,18 @@
+{
+  "sortOptions": {
+    "newest": "newest",
+    "alphabetically": "alphabetically",
+    "cheapest": "cheapest"
+  },
+  "all": "all",
+  "loading": "product page loading",
+  "models_one": "{{count}} model",
+  "models_other": "{{count}} models",
+  "nextPage": "Next page",
+  "sortBy": "Sort by",
+  "itemsOnPage": "Items on page",
+  "emptyProductsPage": "There are no {{ category }} yet",
+  "page": "page",
+  "pagination": "pagination",
+  "previousPage": "previous page"
+}

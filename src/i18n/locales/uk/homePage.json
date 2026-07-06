@@ -1,0 +1,19 @@
+{
+  "banner": "банер",
+  "bannerSubtitle": "Будь першим!",
+  "bannerTitle": "Тепер доступно в нашому магазині!",
+  "brandNewModels": "Абсолютно нові моделі",
+  "categories": "Купуйте за категорією",
+  "errorPage": "сторінка з помилкою",
+  "homePage": "домашня сторінка",
+  "hotPrices": "Гарячі ціни",
+  "models_one": "{{count}} модель",
+  "models_few": "{{count}} моделі",
+  "models_many": "{{count}} моделей",
+  "nextSlide": "наступний слайд",
+  "orderNow":"замовити зараз",
+  "previousSlide": "попередній слайд",
+  "slide": "слайд {{number}}",
+  "somethingWentWrong": "Щось пішло не так...",
+  "welcome": "Ласкаво просимо до магазину Nice Gadgets!"
+}

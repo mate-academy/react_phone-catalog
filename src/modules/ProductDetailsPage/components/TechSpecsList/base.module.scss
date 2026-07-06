@@ -1,0 +1,7 @@
+.techSpecsList {
+  @include flex-gap(8px, column);
+}
+
+.specification {
+  @include flex-box(space-between);
+}

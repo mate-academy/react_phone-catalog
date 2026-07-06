@@ -1,0 +1,24 @@
+.title {
+  width: 50%;
+  height: 32px;
+  
+  @include on-tablet {
+    height: 42px;
+  }
+
+  @include on-desktop {
+    width: 35%;
+  }
+}
+
+.categoryName {
+  width: 50%;
+  height: 24px;
+
+  margin-bottom: 8px;
+}
+
+.modelsAmount {
+  width: 30%;
+  height: 22px;
+}

@@ -1,0 +1,43 @@
+.cartItem {
+  @include flex-gap(16px, column);
+
+  padding: 16px;
+
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 24px;
+  }
+}
+
+.main {
+  display: flex;
+
+  flex-grow: 1;
+  align-items: center;
+
+  gap: 16px;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.imgFrame {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+}
+
+.cost {
+  @include flex-box(space-between);
+
+  @include on-tablet {
+    gap: 53px;
+  }
+}

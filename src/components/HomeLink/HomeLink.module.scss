@@ -1,0 +1,13 @@
+.homeLink {
+  @include flex-box;
+
+  width: 96px;
+  height: 48px;
+
+  @include on-desktop {
+    width: 128px;
+    height: 64px;
+  }
+
+  @include icon-hover;
+}

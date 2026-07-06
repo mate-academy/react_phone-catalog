@@ -1,0 +1,7 @@
+{
+  "emptyFavorites":"There are no favorites yet",
+  "favorites":"favorites",
+  "items_one": "{{count}} item",
+  "items_other":"{{count}} items",
+  "products": "products"
+}

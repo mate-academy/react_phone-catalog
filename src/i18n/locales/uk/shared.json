@@ -1,0 +1,12 @@
+{
+  "addToFavorites":"додати до улюблених",
+  "breadcrumbs": "Навігація",
+  "home": "Головна сторінка",
+  "nextSlide": "наступний слайд",
+  "noMatch": "Немає {{category}}, що відповідають запиту",
+  "previousSlide": "попередній слайд",
+  "productSlides": "слайди продукту",
+  "removeFromFavorites":"видалити з улюблених",
+  "searchClear": "очищення пошуку",
+  "searchProduct": "Пошук товару"
+}

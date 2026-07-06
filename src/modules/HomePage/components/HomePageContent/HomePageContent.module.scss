@@ -1,0 +1,7 @@
+.homePage {
+  @include fade-in-animation;
+}
+
+.title {
+  @include h1;
+}

@@ -1,0 +1,19 @@
+{
+  "sortOptions": {
+    "newest": "найновіші",
+    "alphabetically": "за алфавітом",
+    "cheapest": "найдешевші"
+  },
+  "all": "все",
+  "loading": "завантаження сторінки товару",
+  "models_one": "{{count}} модель",
+  "models_few": "{{count}} моделі",
+  "models_many": "{{count}} моделей",
+  "nextPage": "наступна сторінка",
+  "sortBy": "Сортувати за",
+  "itemsOnPage": "Елементи на сторінці",
+  "emptyProductsPage": "Ще немає {{ category }}",
+  "page": "сторінка",
+  "pagination": "Навігація по сторінках",
+  "previousPage": "попередня сторінка"
+}

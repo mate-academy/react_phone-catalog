@@ -1,0 +1,19 @@
+{
+  "banner": "transparent",
+  "bannerSubtitle": "Bądź pierwszy!",
+  "bannerTitle": "Teraz dostępne w naszym sklepie!",
+  "brandNewModels": "Całkowicie nowe modele",
+  "categories": "Kupuj według kategorii",
+  "errorPage": "strona błędu",
+  "homePage": "strona główna",
+  "hotPrices": "Gorące ceny",
+  "models_one": "{{count}} model",
+  "models_few": "{{count}} modele",
+  "models_many": "{{count}} modeli",
+  "nextSlide": "następny slajd",
+  "orderNow": "zamów teraz",
+  "previousSlide": "poprzedni slajd",
+  "slide": "slajd {{number}}",
+  "somethingWentWrong": "Coś poszło nie tak...",
+  "welcome": "Witamy w sklepie Nice Gadgets!"
+}

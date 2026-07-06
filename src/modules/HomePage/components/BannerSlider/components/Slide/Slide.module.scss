@@ -1,0 +1,157 @@
+.slide {
+  position: relative;
+
+  @include on-tablet {
+    gap: 5px;
+    padding: 5px;
+
+    background-color: #000;
+  }
+
+  @include on-desktop {
+    gap: 15px;
+    padding: 10px;
+  }
+}
+
+.promoBlock {
+  display: none;
+
+  @include on-tablet {
+    @include flex-box(space-between, start, column);
+
+    width: 50%;
+    height: 100%;
+
+    padding: 20px;
+    background-color: #252735;
+    border-radius: 20px;
+  }
+
+  @include on-desktop {
+    padding: 30px;
+  }
+}
+
+.titleBlock {
+  @include flex-gap(5px, column);
+
+  @include on-desktop {
+    gap: 10px;
+  }
+}
+
+.promoTitle {
+  --gradient-text: linear-gradient(90deg, #fa0 0%, #eb31cc 50%, #3905f5 100%);
+
+  @include dark-theme {
+    --gradient-text: linear-gradient(90deg, #F5C518, #C879C8, #6B4FE0);
+  }
+
+  @include gradient-text(var(--gradient-text));
+
+  position: relative;
+
+  font-size: 20px;
+  text-align: left;
+
+  @include on-tablet {
+    font-size: 22px;
+    line-height: 1.05;
+  }
+
+  @include on-desktop {
+    font-size: 46px;
+  }
+}
+
+.promoSubtitle {
+  font-size: 12px;
+  font-weight: normal;
+
+  @include on-tablet {
+    font-size: 14px;
+  }
+}
+
+.orderButton {
+  padding: 10px 25px;
+  border: 1px solid gray;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #fff;
+
+  transition: all 0.3s;
+
+  @include on-desktop {
+    padding: 20px 45px;
+    font-size: 14px;
+  }
+
+  &:hover {
+    background-color: #aaa;
+    border-color: #aaa;
+    color: #000;
+  }
+}
+
+.slideImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+
+  @include on-tablet {
+    width: 50%;
+    object-fit: contain;
+  }
+}
+
+.slideCaption {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  left: 10px;
+
+  display: flex;
+  justify-content: space-between;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.titleText {
+  @include gradient-text(linear-gradient(90deg, #fff 60%, #f7f5f9 82%, #e4dfe8));
+
+  position: relative;
+
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background, 0.3s;
+
+  &::after {
+    position: absolute;
+    bottom: -2px;
+    display: block;
+    width: 100%;
+    height: 2px;
+
+    background: linear-gradient(90deg, #fff 60%, #E8E0F0 82%, #C9B8D8);
+    content: '';
+    background-size: inherit;
+    background-position: inherit;
+  }
+
+  &:hover {
+    @include gradient-text(linear-gradient(90deg, #fbe0e0, #fbeee0, #d0d0a1, #fbe0e0));
+
+    &::after {
+      background: linear-gradient(90deg, #fbe0e0, #fbeee0, #d0d0a1, #fbe0e0);
+    }
+  }
+}

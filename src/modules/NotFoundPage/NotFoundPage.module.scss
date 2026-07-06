@@ -1,0 +1,45 @@
+.notFoundPage {
+  @include fade-in-animation;
+  @include container;
+
+  padding-block: 30px;
+  align-items: center;
+  height: 100%;
+
+  @include flex-gap(5px, column);
+}
+
+.image {
+  width: 300px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+
+  @include on-tablet {
+    width: 400px;
+  }
+}
+
+.homeLink {
+  padding: 15px 40px;
+
+  background-color: transparent;
+  border: 1px solid var(--accent-color);
+  border-radius: 40px;
+
+  font-size: 14px;
+  text-align: center;
+  color: var(--accent-color);
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: var(--accent-color);
+    color: var(--surface-color);
+  }
+
+  @include on-tablet {
+    font-size: 16px;
+
+    padding-block: 20px;
+    padding-inline: 80px;
+  }
+}

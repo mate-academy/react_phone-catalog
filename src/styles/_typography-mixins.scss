@@ -1,0 +1,33 @@
+@mixin gradient-text($gradient) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin link-font($lineHight, $color, $hoverColor) {
+  font-family: $mainFont;
+  font-size: 12px;
+  font-weight: 800;
+
+  line-height: $lineHight;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  color: $color;
+
+  @include hover(color, $hoverColor);
+}
+
+@mixin h1 {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: var(--primary-color);
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "back":"Back",
+  "cart": "Cart",
+  "close": "close",
+  "cancel":"Cancel",
+  "checkout":"Checkout",
+  "confirm":"Confirm",
+  "decreaseQuantity":"Decrease quantity",
+  "dialogText":"Checkout is not implemented yet. Do you want to clear the Cart?",
+  "emptyCart":"Your cart is empty",
+  "increaseQuantity":"Increase quantity",
+  "loading": "loading cart",
+  "quantitySelector":"Quantity selector",
+  "totalForItems_one": "Total for {{count}} item",
+  "totalForItems_other": "Total for {{count}} items"
+}

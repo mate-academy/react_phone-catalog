@@ -1,0 +1,38 @@
+.menu {
+  position: fixed;
+  top: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: var(--background-secondary-color);
+  transition: transform 0.3s;
+
+  transform: translateX(-100%);
+}
+
+.active {
+  transform: translateX(0);
+}
+
+.topBar {
+  @include flex-box(space-between);
+
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--elements-color);
+}
+
+.navList {
+  flex-grow: 1;
+}
+
+.bottomButtons {
+  display: flex;
+
+  width: 100%;
+
+  border: 1px solid var(--elements-color);
+}

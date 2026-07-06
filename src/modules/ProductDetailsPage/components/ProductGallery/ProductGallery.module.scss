@@ -1,0 +1,35 @@
+.selectedImage {
+  width: 95%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+
+  animation: fade-in 0.3s ease-in-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.smallImgWrapper {
+  @include flex-box;
+
+  padding: 4px;
+
+  border: 1px solid var(--elements-color);
+  cursor: pointer;
+
+  transition: all 0.3s;
+
+  @include hover(transform, scale(1.05));
+}
+
+.active {
+  border-color: var(--primary-color);
+}
+
+.smallImg {
+  width: 95%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}

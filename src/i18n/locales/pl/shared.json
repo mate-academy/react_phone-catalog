@@ -1,0 +1,12 @@
+{
+  "addToFavorites":"dodaj do ulubionych",
+  "breadcrumbs": "Nawigacja",
+  "home": "Strona główna",
+  "nextSlide": "następny slajd",
+  "noMatch": "Brak {{category}} odpowiadających zapytaniu",
+  "previousSlide": "poprzedni slajd",
+  "productSlides": "slajdy produktów",
+  "removeFromFavorites":"usuń z ulubionych",
+  "searchClear": "wyszukaj wyczyść",
+  "searchProduct": "Wyszukiwanie produktów"
+}

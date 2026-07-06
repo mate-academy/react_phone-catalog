@@ -1,0 +1,12 @@
+{
+  "cart": "koszyk",
+  "closeMenu":"zamknij menu",
+  "favorites": "ulubione",
+  "home": "Strona główna",
+  "mainNavigation": "główna nawigacja",
+  "menu":"menu",
+  "openMenu": "otwórz menu",
+  "switchToDark": "przełącz na tryb ciemny",
+  "switchToLight": "przełącz na jasny motyw",
+  "userActions": "działania użytkownika"
+}
