@@ -1,0 +1,22 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+.button {
+  box-sizing: border-box;
+  display: inline-flex; // flex, щоб центрувати вміст
+  flex-shrink: 0; 
+  align-items: center; // по вертикалі
+  justify-content: center; // по горизонталі
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid $icons-color;
+  background-color: $hover-BG-color;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary-text-color;
+  }
+}
+

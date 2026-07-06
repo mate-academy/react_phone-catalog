@@ -1,0 +1,40 @@
+@import '../../../shared/styles/mixins';
+@import '../../../shared/styles/variables';
+
+.container {
+  @include content-padding-inline;
+}
+
+.title {
+  padding-bottom: 8px;
+}
+
+.info {
+  color: $secondary-text-color;
+  padding-bottom: 32px;
+
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
+}
+
+.specsBlock {
+  display: flex;
+  gap: 16px;
+}
+
+.specsTitle {
+  color: $secondary-text-color;
+}
+
+.pageButtonsBar {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 64px;
+  gap: 16px;
+
+  @include on-tablet {
+    padding-bottom: 80px;
+  }
+}
+

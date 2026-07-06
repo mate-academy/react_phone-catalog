@@ -1,0 +1,97 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.sortByBlock {
+  width: 136px;
+  height: 59px;
+
+  @include on-desktop {
+    width: 128px;
+  }
+}
+
+.specsTitle {
+  padding-bottom: 4px;
+  color: $secondary-text-color;
+}
+
+.selectWrapper {
+  position: relative;
+  width: 136px;
+
+  @include on-desktop {
+    width: 128px;
+  }
+}
+
+.sortSelect {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  height: 40px;
+  border: 1px solid $icons-color;
+  border-radius: 8px;
+  padding-left: 12px;
+  cursor: pointer;
+  
+  &:hover {
+    border: 1px solid $secondary-text-color
+  }
+}
+
+.value {
+  color: $primary-text-color;
+}
+
+.arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  transition: transform 0.2s;
+}
+
+.arrowOpen {
+  position: absolute;
+  right: 12px;
+
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  width: 136px;
+  background-color: $white-color;
+  border: 1px solid $elements-color;
+  border-radius: 8px;
+  list-style: none;
+  padding-left: 0;
+  padding-block: 8px;
+
+  @include on-desktop {
+    width: 128px;
+  }
+}
+
+.listItem {
+  color: $secondary-text-color;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  padding-block: 6px 5px;
+  padding-left: 12px;
+  border-radius: 8px;
+
+  &:hover {
+    color: $primary-text-color;
+    background-color: $hover-BG-color;
+  }
+}
+

@@ -1,0 +1,23 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+.addButton {
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+  background-color: $accent-color;
+  color: $white-color;
+  border: 0;
+  padding: 0;
+}
+
+.addedButton {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid $elements-color;
+  background-color: $white-color;
+  color: $accent-color;
+  padding: 0;
+}

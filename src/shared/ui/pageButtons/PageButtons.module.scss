@@ -1,0 +1,41 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.pageButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  display: inline-flex; // flex, щоб центрувати вміст
+  align-items: center; // по вертикалі
+  justify-content: center; // по горизонталі
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  border: 1px solid $elements-color;
+  color: $primary-text-color;
+  background-color: $hover-BG-color;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary-text-color;
+  }
+}
+
+.buttonActive {
+  display: inline-flex; // flex, щоб центрувати вміст
+  align-items: center; // по вертикалі
+  justify-content: center; // по горизонталі
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  color: $white-color;
+  border: 1px solid $elements-color;
+  background-color: $primary-text-color;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary-text-color;
+  }
+}

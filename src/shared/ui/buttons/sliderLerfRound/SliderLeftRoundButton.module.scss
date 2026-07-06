@@ -1,0 +1,40 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+.icon {
+  width: 16px;
+  height: 16px;
+
+  mask-image: url('/img/icons/arrowLeft.svg');
+  mask-size: cover;
+
+  background-color: $primary-text-color;
+}
+
+.button {
+  display: inline-flex; // flex, щоб центрувати вміст
+  align-items: center; // по вертикалі
+  justify-content: center; // по горизонталі
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  border: 1px solid $icons-color;
+  background-color: $hover-BG-color;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary-text-color;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    border: 1px solid $elements-color;
+    cursor: not-allowed;
+  }
+
+  &:disabled .icon {
+    background-color: $icons-color;
+  }
+}
+
+
