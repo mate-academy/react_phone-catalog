@@ -30,6 +30,5 @@ export const App = () => (
     </main>
 
     <Footer />
-    {/* <h1>Product Catalog</h1> */}
   </>
 );

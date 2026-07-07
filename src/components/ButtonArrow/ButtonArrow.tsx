@@ -16,13 +16,13 @@ export const ButtonArrow: React.FC<Props> = ({
     {direction === 'left' ? (
       <img
         className={styles.icon}
-        src="/img/icons/arrow-left.svg"
+        src="img/icons/arrow-left.svg"
         alt="Arrow left"
       />
     ) : (
       <img
         className={styles.icon}
-        src="/img/icons/arrow-right.svg"
+        src="img/icons/arrow-right.svg"
         alt="Arrow right"
       />
     )}

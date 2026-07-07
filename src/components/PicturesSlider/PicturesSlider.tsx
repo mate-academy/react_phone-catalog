@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import styles from './PicturesSlider.module.scss';
 
 const images = [
-  '/img/banners/banner-1.webp',
-  '/img/banners/banner-2.webp',
-  '/img/banners/banner-3.webp',
-  '/img/banners/banner-4.jpeg',
-  '/img/banners/banner-5.webp',
+  'img/banners/banner-1.webp',
+  'img/banners/banner-2.webp',
+  'img/banners/banner-3.webp',
+  'img/banners/banner-4.jpeg',
+  'img/banners/banner-5.webp',
 ];
 
 export const PicturesSlider = () => {
@@ -32,7 +32,7 @@ export const PicturesSlider = () => {
         >
           <img
             className={styles.icon}
-            src="/img/icons/arrow-left.svg"
+            src="img/icons/arrow-left.svg"
             alt="Arrow left"
           />
         </button>
@@ -51,7 +51,7 @@ export const PicturesSlider = () => {
         >
           <img
             className={styles.icon}
-            src="/img/icons/arrow-right.svg"
+            src="img/icons/arrow-right.svg"
             alt="Arrow right"
           />
         </button>

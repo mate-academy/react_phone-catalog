@@ -18,7 +18,7 @@ export const BreadCrumbs: React.FC<Props> = ({ elements }) => (
               {el.label === 'Home' ? (
                 <img
                   className={styles.homeIcon}
-                  src="/img/icons/icon-home.svg"
+                  src="img/icons/icon-home.svg"
                   alt="Icon home"
                 />
               ) : (
@@ -30,7 +30,7 @@ export const BreadCrumbs: React.FC<Props> = ({ elements }) => (
           )}
           {!isLast && (
             <span className={styles.separator}>
-              <img src="/img/icons/icon-right-gray.svg" alt="Arrow right" />
+              <img src="img/icons/icon-right-gray.svg" alt="Arrow right" />
             </span>
           )}
         </React.Fragment>

@@ -29,7 +29,7 @@
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-image: url('/img/icons/arrow-down.svg');
+  background-image: url('img/icons/arrow-down.svg');
   background-repeat: no-repeat;
   background-position: right 12px center;
 
@@ -43,7 +43,7 @@
 
   font-family: Mont, sans-serif;
   color: var(--light-primary);
-  
+
   @include light-font;
 
   &:hover {

@@ -26,13 +26,13 @@ export const Nav = () => {
         {!isOpen ? (
           <img
             className={styles.icon}
-            src="/img/icons/burger-menu.svg"
+            src="img/icons/burger-menu.svg"
             alt="Menu button"
           />
         ) : (
           <img
             className={styles.icon}
-            src="/img/icons/icon-close.svg"
+            src="img/icons/icon-close.svg"
             alt="Close button"
           />
         )}
@@ -65,7 +65,7 @@ export const Nav = () => {
           >
             <img
               className={styles.icon}
-              src="/img/icons/fav-icon.svg"
+              src="img/icons/fav-icon.svg"
               alt="Favorites icon"
             />
 
@@ -83,7 +83,7 @@ export const Nav = () => {
           >
             <img
               className={styles.icon}
-              src="/img/icons/cart-icon.svg"
+              src="img/icons/cart-icon.svg"
               alt="Cart icon"
             />
 

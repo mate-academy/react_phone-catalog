@@ -11,7 +11,17 @@ export const Header = () => {
   const searchContext = useContext(SearchContext);
 
   useEffect(() => {
-    const timer = setTimeout(() => setSearchParams({ query: currQuery }), 1000);
+    const timer = setTimeout(() => {
+      const params = new URLSearchParams(searchParams);
+
+      if (currQuery.length === 0) {
+        params.delete('query');
+      } else {
+        params.set('query', currQuery);
+      }
+
+      setSearchParams(params);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, [currQuery]);
@@ -28,7 +38,7 @@ export const Header = () => {
         <Link to="/" className={styles.logo}>
           <img
             className={styles.img}
-            src="/img/Logo.png"
+            src="img/Logo.png"
             alt="Nice gadgets logo"
           />
         </Link>
