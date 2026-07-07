@@ -72,15 +72,15 @@
     gap: calc((100vw - 32px) * 8 / 287);
 
     .specImage {
-      margin-top: 0;
       align-self: center;
       width: calc((100vw - 32px) * 148 / 287);
       height: calc((100vw - 32px) * 129 / 287);
-      margin-bottom: calc((100vw - 32px) * 8 / 287);
+      margin: 0 auto calc((100vw - 32px) * 8 / 287);
     }
 
     .specName {
       margin-top: 0;
+      min-height: calc((100vw - 32px) * 42 / 287);
       font-size: calc((100vw - 32px) * 14 / 287);
       line-height: calc((100vw - 32px) * 21 / 287);
     }
@@ -134,15 +134,22 @@
 }
 
 .specImage {
+  display: block;
+  align-self: center;
   object-fit: contain;
   width: 148px;
   height: 129px;
   opacity: 1;
-  margin-bottom: 8px;
-  margin-top: 32px;
+  margin: 32px auto 8px;
 }
 
 .specName {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  min-height: 42px;
+  overflow: hidden;
+
   font-family: Mont;
   font-weight: 400;
   font-size: 14px;

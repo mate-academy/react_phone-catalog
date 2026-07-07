@@ -1,0 +1,47 @@
+.favouritesPage {
+  margin: 0 auto;
+  min-width: 320px;
+  align-items: center;
+
+  @media (max-width: 639px) {
+    padding-inline: 0;
+  }
+
+  article {
+    margin-top: 40px;
+
+    &:first-of-type {
+      margin-top: 32px;
+    }
+  }
+}
+
+.titlePage {
+  font-family: 'Mont', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  color: #0f0f11;
+  width: 288px;
+}
+
+.favouritesItems {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: #89939a;
+  width: 288px;
+  margin-top: 8px;
+}
+
+.emptyPage {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #89939a;
+  text-align: center;
+  padding-top: 40px;
+}

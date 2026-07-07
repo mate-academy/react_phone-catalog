@@ -78,3 +78,38 @@
     border-right: 1px solid #e2e6e9;
   }
 }
+
+.cartIconWrapper,
+.favIconWrapper {
+  position: relative;
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+}
+
+.totalItems,
+.totalFav {
+  position: absolute;
+  bottom: 14px;
+  transform: translate(50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #3b82f6;
+  display: grid;
+  place-items: center;
+  font-family: 'Mont', sans-serif;
+  font-weight: 400;
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: center;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+
+  &:empty {
+    display: none;
+  }
+}
+

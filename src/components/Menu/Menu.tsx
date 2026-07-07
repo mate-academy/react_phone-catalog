@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './Menu.module.scss';
+import { useCart } from '../../context/CartContext';
+import { useFavourite } from '../../context/FavContext';
 
 interface Props {
   isOpen: boolean;
@@ -7,6 +9,13 @@ interface Props {
 }
 
 export const Menu = ({ isOpen, onClose }: Props) => {
+  const { items } = useCart();
+  const { favourites } = useFavourite();
+
+  const totalItems = items.reduce((acc, item) => {
+    return acc + item.count;
+  }, 0);
+
   return (
     <div className={`${styles.menu} ${isOpen ? styles.open : ''}`}>
       <div className={styles.menuHeader}>
@@ -49,10 +58,20 @@ export const Menu = ({ isOpen, onClose }: Props) => {
 
       <div className={styles.buttons}>
         <Link to="/favourites" className={styles.buttonFav} onClick={onClose}>
-          <img src="./img/icons/favourites_icon.png" alt="Favourites icon" />
+          <span className={styles.favIconWrapper}>
+            <img src="./img/icons/favourites_icon.png" alt="Favourites icon" />
+            <p className={styles.totalFav}>
+              {favourites.length > 0 ? favourites.length : ''}
+            </p>
+          </span>
         </Link>
         <Link to="/cart" className={styles.buttonCart} onClick={onClose}>
-          <img src="./img/icons/cart_icon.png" alt="Cart icon" />
+          <span className={styles.cartIconWrapper}>
+            <img src="./img/icons/cart_icon.png" alt="Cart icon" />
+            <p className={styles.totalItems}>
+              {totalItems > 0 ? totalItems : ''}
+            </p>
+          </span>
         </Link>
       </div>
     </div>
