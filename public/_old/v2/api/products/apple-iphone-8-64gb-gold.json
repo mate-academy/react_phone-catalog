@@ -9,10 +9,10 @@
 	"colorsAvailable": ["spacegray", "gold", "silver"],
 	"color": "gold",
 	"images": [
-		"img/phones/apple-iphone-8/gold/00.jpg",
-		"img/phones/apple-iphone-8/gold/01.jpg",
-		"img/phones/apple-iphone-8/gold/02.jpg",
-		"img/phones/apple-iphone-8/gold/03.jpg"
+		"/img/phones/apple-iphone-8/gold/00.jpg",
+		"/img/phones/apple-iphone-8/gold/01.jpg",
+		"/img/phones/apple-iphone-8/gold/02.jpg",
+		"/img/phones/apple-iphone-8/gold/03.jpg"
 	],
 	"description": [
 		{

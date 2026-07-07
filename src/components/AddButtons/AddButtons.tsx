@@ -38,7 +38,7 @@ export const AddButtons: React.FC<Props> = ({ product }) => {
         onClick={() => toggleFavorite(itemId)}
       >
         <img
-          src={`img/icons/${
+          src={`/img/icons/${
             isInFavorites ? 'active-fav-icon.svg' : 'fav-icon.svg'
           }`}
           alt="Favourites"

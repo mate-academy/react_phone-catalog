@@ -47,7 +47,7 @@ export const HomePage = () => {
             <div className={`${styles.imgWrapper} ${styles.phones}`}>
               <img
                 className={styles.categoryImg}
-                src="img/category-phones.webp"
+                src="/img/category-phones.webp"
                 alt="Category phones"
               />
             </div>
@@ -63,7 +63,7 @@ export const HomePage = () => {
             <div className={`${styles.imgWrapper} ${styles.tablets}`}>
               <img
                 className={styles.categoryImg}
-                src="img/category-tablets.png"
+                src="/img/category-tablets.png"
                 alt="Category tablets"
               />
             </div>
@@ -79,7 +79,7 @@ export const HomePage = () => {
             <div className={`${styles.imgWrapper} ${styles.accessories}`}>
               <img
                 className={styles.categoryImg}
-                src="img/category-accessories.png"
+                src="/img/category-accessories.png"
                 alt="Category accessories"
               />
             </div>

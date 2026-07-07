@@ -56,7 +56,7 @@ export const Favorites = () => {
           </p>
           <img
             className={styles.notFoundImg}
-            src="img/product-not-found.png"
+            src="/img/product-not-found.png"
             alt="Products is not found"
           />
         </div>

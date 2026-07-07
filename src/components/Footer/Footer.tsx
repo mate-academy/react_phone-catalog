@@ -9,7 +9,7 @@ export const Footer = () => {
         <Link to="/" className={styles.logo}>
           <img
             className={styles.img}
-            src="img/Logo.png"
+            src="/img/Logo.png"
             alt="Nice gadgets logo"
           />
         </Link>
@@ -36,7 +36,7 @@ export const Footer = () => {
           >
             <span>Back to top</span>
 
-            <img src="img/icons/back-to-top.svg" alt="Arrow up" />
+            <img src="/img/icons/back-to-top.svg" alt="Arrow up" />
           </button>
         </div>
       </div>

@@ -9,11 +9,11 @@
 	"colorsAvailable": ["black", "rosegold", "gold", "silver"],
 	"color": "rosegold",
 	"images": [
-		"img/phones/apple-iphone-7/rosegold/00.jpg",
-		"img/phones/apple-iphone-7/rosegold/01.jpg",
-		"img/phones/apple-iphone-7/rosegold/02.jpg",
-		"img/phones/apple-iphone-7/rosegold/03.jpg",
-		"img/phones/apple-iphone-7/rosegold/04.jpg"
+		"/img/phones/apple-iphone-7/rosegold/00.jpg",
+		"/img/phones/apple-iphone-7/rosegold/01.jpg",
+		"/img/phones/apple-iphone-7/rosegold/02.jpg",
+		"/img/phones/apple-iphone-7/rosegold/03.jpg",
+		"/img/phones/apple-iphone-7/rosegold/04.jpg"
 	],
 	"description": [
 		{

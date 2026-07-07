@@ -24,7 +24,7 @@ export const CartListProduct: React.FC<Props> = ({ cartItem }) => {
           onClick={() => removeFromCart(cartItem.id)}
         >
           <img
-            src="img/icons/icon-close.svg"
+            src="/img/icons/icon-close.svg"
             alt="Close"
             className={styles.iconClose}
           />
@@ -45,7 +45,7 @@ export const CartListProduct: React.FC<Props> = ({ cartItem }) => {
             disabled={cartItem.quantity === 1}
           >
             <img
-              src="img/icons/icon-minus.svg"
+              src="/img/icons/icon-minus.svg"
               alt="Decrease quantity"
               className={styles.icon}
             />
@@ -58,7 +58,7 @@ export const CartListProduct: React.FC<Props> = ({ cartItem }) => {
             onClick={() => increaseQuantity(cartItem.id)}
           >
             <img
-              src="img/icons/icon-plus.svg"
+              src="/img/icons/icon-plus.svg"
               alt="Decrease quantity"
               className={styles.icon}
             />

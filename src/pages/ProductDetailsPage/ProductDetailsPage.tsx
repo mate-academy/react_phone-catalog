@@ -40,7 +40,7 @@ export const ProductDetailsPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [product, setProduct] = useState<ProductDetails | undefined>();
-  const [currImgInd, setCurrImgInd] = useState(0);
+  const [currimgInd, setCurrimgInd] = useState(0);
   const [suggestedProducts, setSuggestedProducts] = useState<Product[] | null>(
     null,
   );
@@ -96,11 +96,11 @@ export const ProductDetailsPage = () => {
     }
 
     if (distance > 0) {
-      setCurrImgInd(
-        (currImgInd - 1 + product.images.length) % product.images.length,
+      setCurrimgInd(
+        (currimgInd - 1 + product.images.length) % product.images.length,
       );
     } else {
-      setCurrImgInd((currImgInd + 1) % product.images.length);
+      setCurrimgInd((currimgInd + 1) % product.images.length);
     }
   };
 
@@ -120,9 +120,9 @@ export const ProductDetailsPage = () => {
         <div className={styles.imagesBlock}>
           <div className={styles.mainImgWrapper}>
             <img
-              src={`/${product.images[currImgInd]}`}
+              src={`/${product.images[currimgInd]}`}
               alt={product.name}
-              className={styles.mainImg}
+              className={styles.mainimg}
               onTouchStart={e => (startX.current = e.touches[0].clientX)}
               onTouchEnd={e =>
                 getSwipe(e.changedTouches[0].clientX, startX.current)
@@ -134,9 +134,9 @@ export const ProductDetailsPage = () => {
             {product.images.map((img, i) => (
               <button
                 key={img}
-                onClick={() => setCurrImgInd(i)}
+                onClick={() => setCurrimgInd(i)}
                 className={`${styles.imgButton} ${
-                  i === currImgInd ? styles.active : ''
+                  i === currimgInd ? styles.active : ''
                 }`}
               >
                 <img src={`/${img}`} className={styles.imagePrevue} />

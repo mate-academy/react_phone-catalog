@@ -50,7 +50,7 @@ header {
   z-index: 200;
   width: 136px;
   padding: 4px 0 4px 24px;
-  background: url('img/icons/icon-search.svg') no-repeat left 4px center;
+  background: url('/img/icons/icon-search.svg') no-repeat left 4px center;
 
   @include border(var(--light-icons));
 

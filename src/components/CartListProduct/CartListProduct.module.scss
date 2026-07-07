@@ -77,7 +77,7 @@
   &:hover {
     @include border(var(--light-primary));
   }
-  
+
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;

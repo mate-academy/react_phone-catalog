@@ -14,7 +14,7 @@ export const NotFoundPage: React.FC<Props> = ({ isNotFoundPage = true }) => {
       <div className={styles.topContent}>
         <p className={styles.text}>{message}</p>
 
-        <img src="img/icons/icon-right-gray.svg" alt="Arrow right" />
+        <img src="/img/icons/icon-right-gray.svg" alt="Arrow right" />
 
         <Link to={'/'} className={styles.link}>
           <p className={styles.text}>Home</p>
@@ -24,13 +24,13 @@ export const NotFoundPage: React.FC<Props> = ({ isNotFoundPage = true }) => {
       {isNotFoundPage ? (
         <img
           className={styles.notFoundImg}
-          src="img/page-not-found.png"
+          src="/img/page-not-found.png"
           alt="Page not found"
         />
       ) : (
         <img
           className={styles.notFoundImg}
-          src="img/product-not-found.png"
+          src="/img/product-not-found.png"
           alt="Product not found"
         />
       )}
