@@ -3,6 +3,7 @@ import { Product } from '../../types/Product';
 import styles from './ProductCard.module.scss';
 import { useCart } from '../../context/CartContext';
 import { useFavourite } from '../../context/FavContext';
+import { useEffect, useState } from 'react';
 
 type Variant = 'catalog' | 'slider';
 interface Props {
@@ -14,6 +15,17 @@ export const ProductCard = ({ product, variant }: Props) => {
   const { addToCart } = useCart();
   const { favourites, toggleFavourite } = useFavourite();
   const isFavourite = Boolean(favourites.find(fav => fav.id === product.id));
+  const [isAdded, setIsAdded] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isAdded === true) {
+      const timer = setTimeout(() => {
+        setIsAdded(false);
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
+  });
 
   return (
     <article
@@ -52,16 +64,17 @@ export const ProductCard = ({ product, variant }: Props) => {
         <button
           type="button"
           className={styles.cartButton}
-          onClick={() =>
+          onClick={() => {
             addToCart({
               id: product.id,
               image: product.image,
               name: product.name,
               price: `$${product.price}`,
-            })
-          }
+            });
+            setIsAdded(true);
+          }}
         >
-          Add to cart
+          {isAdded ? 'Added ✓' : 'Add to cart'}
         </button>
         <button
           type="button"
