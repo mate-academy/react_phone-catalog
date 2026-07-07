@@ -7,11 +7,14 @@ import { HomePage } from './modules/HomePage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 
+import { Header } from './components/Header';
+
 import './App.scss';
 
 export const App = () => {
   return (
     <div className="App">
+      <Header />
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />

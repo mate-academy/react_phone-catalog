@@ -1,4 +1,4 @@
-import styles from './HomePage.module.css';
+import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
   return (
