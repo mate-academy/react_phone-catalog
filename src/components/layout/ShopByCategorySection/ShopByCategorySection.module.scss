@@ -1,0 +1,73 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+.section {
+  @include respond-to('desktop') {
+    padding: 0 $padding-desktop;
+  }
+}
+
+.title {
+  margin-bottom: 32px;
+
+  @include subtitle;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+
+  @include respond-to('tablet') {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.card {
+  display: block;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+}
+
+.imageWrapper {
+  position: absolute;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 110%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.categoryName {
+  font-size: 20px;
+  font-weight: 700;
+  color: $color-primary;
+  margin-bottom: 4px;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $bg-accent;
+  }
+}
+
+.count {
+  font-size: 14px;
+  font-weight: 500;
+  color: $color-secondary;
+  line-height: 21px;
+}

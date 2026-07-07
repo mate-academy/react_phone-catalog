@@ -1,0 +1,158 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  border: 1px solid $border-color;
+  border-radius: 16px;
+  background: $bg-color-card;
+  gap: 24px;
+
+  @include respond-to(640px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+}
+
+.itemTop {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+  min-width: 0;
+
+  @include respond-to(640px) {
+    width: 100%;
+  }
+}
+
+.removeBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: $color-secondary;
+  padding: 4px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  flex-shrink: 0;
+
+  @include respond-to(640px) {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.name {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-primary;
+  line-height: 150%;
+  text-decoration: none;
+  transition: color 0.2s;
+
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  &:hover {
+    color: $bg-accent;
+  }
+}
+
+.itemBottom {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-shrink: 0;
+
+  @include respond-to(640px) {
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 8px;
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.controlBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $border-color;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-primary;
+  transition: border-color 0.2s;
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+}
+
+
+.quantity {
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-primary;
+  min-width: 16px;
+  text-align: center;
+}
+
+.quantityWrapper {
+  height: 32px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 16px;
+  position: relative;
+
+  @include respond-to(640px) {
+    min-width: auto;
+  }
+}
+
+.price {
+  display: block;
+  font-size: 22px;
+  font-weight: 800;
+  color: $color-primary;
+  line-height: 32px;
+  min-width: 100px;
+  text-align: right;
+  white-space: nowrap;
+
+  @include respond-to(640px) {
+    min-width: auto;
+  }
+}

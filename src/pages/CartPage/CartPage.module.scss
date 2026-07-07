@@ -1,0 +1,64 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  padding:40px 0 80px;
+
+  @include respond-to('desktop') {
+    padding: 40px $padding-desktop 80px;
+  }
+}
+
+.title {
+  padding-bottom: 24px;
+
+  @include title;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 368px;
+  gap: 16px;
+  align-items: start;
+
+  @include respond-to(980px) {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.imageWrapper {
+  width: clamp(500px, 50vw, 560px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+  :global([data-theme='dark']) & {
+    filter: invert(1);
+  }
+}
+
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  font-size: 20px;
+  font-weight: 600;
+  color: $color-secondary;
+}

@@ -1,4 +1,5 @@
 # React Product Catalog
+[DEMO LINK](https://YuliiaKosenchuk.github.io/react_phone-catalog/)
 
 Implement the catalog with a shopping cart and favorites page according to one of the next designs:
 

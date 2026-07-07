@@ -1,0 +1,27 @@
+@use './normalize';
+@use './variables' as *;
+@use './typography' as *;
+@use './mixins' as *;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $bg-color-body;
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+
+  @include respond-to('tablet') {
+    max-width: 600px;
+  }
+
+  @include respond-to('mobile') {
+    max-width: 320px;
+  }
+}

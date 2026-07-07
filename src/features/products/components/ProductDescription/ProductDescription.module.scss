@@ -1,0 +1,42 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.description {
+  display: flex;
+  flex-direction: column;
+  width: 560px;
+
+  @include respond-to(900px) {
+    width: 100%;
+  }
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  color: $color-primary;
+  margin-bottom: 16px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: $border-color;
+  margin-bottom: 32px;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: $color-primary;
+  margin-bottom: 16px;
+}
+
+.paragraph {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: $color-secondary;
+  line-height: 150%;
+  margin-bottom: 32px;
+}

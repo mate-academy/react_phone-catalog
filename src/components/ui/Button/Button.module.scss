@@ -1,0 +1,60 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+.btn-cart {
+  // width: 161px;
+   width: auto;      // замість width: 161px
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;  // текст не переноситься
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 9px 35px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  border-radius: 48px;
+  transition: all 0.3s ease;
+  user-select: none;
+
+  &--primary {
+    background-color:$bg-accent;
+    border: 1px solid $bg-accent;
+    color: #F1F2F9;
+
+    &:hover:not(:disabled) {
+      background-color: $bg-accent-hover;
+      border: 1px solid $bg-accent-hover;
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(1px);
+    }
+  }
+
+  &--selected {
+    background-color: $bg-color-hover;
+    border: 1px solid $border-color;
+    color: $color-primary;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &__loader {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

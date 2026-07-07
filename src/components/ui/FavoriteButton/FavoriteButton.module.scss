@@ -1,0 +1,39 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+.favoriteBtn {
+  // padding: 12px;
+  border: 1px solid $border-icons;
+  border-radius: 50%;
+  background: transparent;
+  transition: color 0.2s ease, transform 0.2s ease;
+  width: 40px;
+  height: 40px;
+  aspect-ratio: 1;
+  flex-shrink: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 2px;
+    color: $color-primary;
+    fill: none;
+  }
+
+  &:hover {
+    border: 1px solid $color-primary;
+  }
+
+  &.selected {
+    color: $bg-favorite-btn;
+
+    svg {
+      fill: $bg-favorite-btn;
+      stroke: $bg-favorite-btn;
+    }
+  }
+}

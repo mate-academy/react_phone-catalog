@@ -1,0 +1,131 @@
+{
+  "notFound": {
+    "title": "Page not found",
+    "description": "Looks like this page got lost in space. Let's get you back home.",
+    "button": "Go Home"
+  },
+
+  "productNotFound": {
+    "title": "Product not found",
+    "description": "Looks like this product vanished into thin air. Let's get you back.",
+    "button": "Go back"
+  },
+
+  "nav": {
+    "home": "HOME",
+    "phones": "PHONES",
+    "tablets": "TABLETS",
+    "accessories": "ACCESSORIES"
+  },
+
+  "footer": {
+    "github": "GITHUB",
+    "contacts": "CONTACTS",
+    "rights": "RIGHTS"
+  },
+
+  "btn": {
+    "back": "Back to top",
+    "backArr": "Back"
+  },
+
+  "banners": {
+    "iphone": {
+      "subtitle": "Now available in our store!"
+    },
+
+    "ipad": {
+      "subtitle": "Supercharged by M2"
+    },
+
+    "watch": {
+      "subtitle": "Smarter. Brighter. Mightier."
+    }
+  },
+
+  "home": {
+    "orderNow": "ORDER NOW"
+  },
+
+  "titles": {
+    "homePageTitle": "Welcome to Nice Gadgets store!",
+    "brandNew": "Brand new models",
+    "hotPrices": "Hot prices",
+    "YML": "You may also like"
+  },
+
+  "products": {
+    "specs": {
+      "screen": "Screen",
+      "capacity": "Capacity",
+      "resolution": "Resolution",
+      "processor": "Processor",
+      "ram": "RAM",
+      "builtInMemory": "Built in memory",
+      "camera": "Camera",
+      "zoom": "Zoom",
+      "cell": "Cell"
+    },
+    "actions": {
+      "addToCart": "Add to cart",
+      "added": "Added"
+    }
+  },
+
+  "product": {
+    "about": "About",
+    "techSpecs": "Tech specs",
+    "availableColors": "Available colors",
+    "selectCapacity": "Select capacity"
+  },
+
+  "categories": {
+    "title": "Shop by category",
+    "phones": "Mobile phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "models_one": "{{count}} model",
+    "models_other": "{{count}} models"
+  },
+
+  "breadcrumbs": {
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "favorites": "Favorites"
+  },
+  "catalog": {
+    "controls": {
+      "sortBy": "Sort by",
+      "itemsOnPage": "Items on page",
+      "all": "All"
+    },
+    "sort": {
+      "newest": "Newest",
+      "priceDesc": "Price: High to Low",
+      "priceAsc": "Price: Low to High"
+    }
+  },
+
+  "favorites": {
+    "title": "Favourites",
+    "count_one": "{{count}} item",
+    "count_other": "{{count}} items",
+    "empty": "No favourite items yet"
+  },
+  "cart": {
+    "title": "Cart",
+    "totalFor_one": "Total for {{count}} item",
+    "totalFor_other": "Total for {{count}} items",
+    "checkout": "Checkout",
+    "empty": "Your cart is empty",
+    "checkoutAlert": "Thank you for your order!"
+  },
+
+  "checkoutPopup": {
+    "title": "Hold your horses! 🐎",
+    "message": "The checkout feature is still brewing. Don't worry, your wallet is safe!. But hey, since you're here, why not check out the developer who built this store?",
+    "githubBtn": "Meet the Developer on GitHub",
+    "clearCartBtn": "Empty my imaginary cart"
+  }
+}

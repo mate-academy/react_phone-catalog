@@ -1,0 +1,29 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 8px 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  margin-bottom: 16px;
+
+  &:hover {
+    color:$bg-accent;
+  }
+}
+
+.icon {
+  color: $color-primary; // Чорний колір для шеврона
+}
+
+.text {
+  font-size: 12px;
+  font-weight: 600;
+  color: $color-secondary; // Сірий колір тексту "Back"
+}

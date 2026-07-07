@@ -1,0 +1,37 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+
+.sectionLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-secondary;
+  margin-bottom: 8px;
+}
+
+.capacities {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.capacityBtn {
+  padding: 7px 8px;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: $color-primary;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &.active {
+    background: $color-primary;
+    border-color: $color-primary;
+    color: $bg-color-card;
+  }
+}

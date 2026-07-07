@@ -1,0 +1,36 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+.section {
+  padding: 80px 0;
+
+  @include respond-to('desktop') {
+    padding: 80px $padding-desktop;
+  }
+}
+
+.title {
+  @include subtitle;
+}
+
+.skeletonGrid {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  padding: 20px $padding-desktop;
+}
+
+.skeletonItem {
+  flex: 1;
+  &:nth-child(n + 2) {
+   @include respond-to( 640px) {
+      display: none;
+    }
+  }
+
+  &:nth-child(n + 3) {
+    @include respond-to(1024px) {
+      display: none;
+    }
+  }
+}

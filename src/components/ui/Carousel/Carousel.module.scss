@@ -1,0 +1,67 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+.section {
+  padding: 80px 0;
+
+  @include respond-to('desktop') {
+    padding: 80px $padding-desktop;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  margin-right: 8px;
+}
+
+.title {
+  @include subtitle;
+}
+
+.navButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.navBtn {
+  @include arrow-icon-style;
+}
+
+.leftArr {
+  margin-right: 2px;
+}
+
+.rightArr {
+  margin-left: 2px;
+}
+
+.embla {
+  overflow: hidden;
+}
+
+.emblaContainer {
+  display: flex;
+  gap: 8px;
+  margin-left: -8px;
+}
+
+.emblaSlide {
+  flex: 0 0 calc(25% - 8px);
+  min-width: 0;
+  padding-left: 8px;
+
+  @include respond-to(1024px) {
+    flex: 0 0 calc(33.33% - 8px);
+  }
+
+  @include respond-to(768px) {
+    flex: 0 0 calc(50% - 8px);
+  }
+
+  @include respond-to('tablet') {
+    flex: 0 0 calc(100% - 8px);
+  }
+}
