@@ -85,8 +85,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const toggleFavorite = (product: Products) => {
     setFavorites(prevFavorites =>
-      // eslint-disable-next-line @typescript-eslint/no-shadow
-      prevFavorites.some(favorites => favorites.itemId === product.itemId)
+      prevFavorites.some(fav => fav.itemId === product.itemId)
         ? prevFavorites.filter(fav => fav.itemId !== product.itemId)
         : [...prevFavorites, product],
     );

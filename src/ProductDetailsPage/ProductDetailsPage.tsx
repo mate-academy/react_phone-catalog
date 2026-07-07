@@ -77,8 +77,8 @@ export const ProductDetailsPage = () => {
     capacityAvailable,
   } = products;
 
-  const isProductInCart = cart.some(item => item.id === id);
-  const isProductFavorite = favorites.includes(id);
+  const isProductInCart = cart.some(item => item.products.id === id);
+  const isProductFavorite = favorites.some(item => item.id === id);
 
   const handleCartClick = () => {
     if (isProductInCart) {

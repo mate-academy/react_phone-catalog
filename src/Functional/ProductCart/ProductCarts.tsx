@@ -11,10 +11,6 @@ type Props = {
 };
 
 export const ProductCarts: React.FC<Props> = ({ product, isNew }) => {
-  if (!product) {
-    return null;
-  }
-
   const { cart, favorites, addToCart, toggleFavorite } =
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useCart();
@@ -33,13 +29,17 @@ export const ProductCarts: React.FC<Props> = ({ product, isNew }) => {
   } = product;
 
   const isProductInCart = cart.some(item => item.product.id === id);
-  const isProductFavorite = favorites.includes(itemId);
+  const isProductFavorite = favorites.some(p => p.itemId === product.itemId);
 
   const handleCartClick = () => {
     if (!isProductInCart) {
       addToCart(product);
     }
   };
+
+  if (!product) {
+    return null;
+  }
 
   return (
     <article className={styles.container}>
@@ -84,7 +84,7 @@ export const ProductCarts: React.FC<Props> = ({ product, isNew }) => {
         <button
           type="button"
           className={`${styles.buttonToFavorites} ${isProductFavorite ? styles.favoriteActive : ''}`}
-          onClick={() => toggleFavorite(itemId)}
+          onClick={() => toggleFavorite(product)}
         >
           <img
             src={isProductFavorite ? '/img/filled.svg' : '/img/favorites.svg'}
