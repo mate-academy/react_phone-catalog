@@ -6,5 +6,5 @@ import { App } from './App';
 createRoot(document.getElementById('root') as HTMLElement).render(
   <BrowserRouter>
     <App />
-  </BrowserRouter>
+  </BrowserRouter>,
 );
