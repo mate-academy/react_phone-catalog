@@ -39,28 +39,51 @@ export const Cart = () => {
       <h1 className={styles.titleContainer}>Cart</h1>
       <div className={styles.gridContainer}>
         <div className={styles.gridCartBlock}>
-          {cart.map(item => (
-            <div key={item.product.id}>
-              <button onClick={() => removeFromCart(item.product)}>×</button>
-              <img src={item.product.image} alt={item.product.name} />
-              <h3>{item.product.name}</h3>
-              <button
-                onClick={() => updateQuantity(item.product, item.quantity - 1)}
-              >
-                -
-              </button>
-              <span>{item.quantity}</span>
-              <button
-                onClick={() => updateQuantity(item.product, item.quantity + 1)}
-              >
-                +
-              </button>
-              {/* <div className={styles.cardPriceGoup}>
-                <span className={styles.cardPriceHot}>${priceDiscount}</span>
-                <span className={styles.cardfullPriceHot}>${priceRegular}</span>
-              </div> */}
-            </div>
-          ))}
+          <div className={styles.cartItem}>
+            {cart.map(item => (
+              <article key={item.product.id} className={styles.cartBlock}>
+                <button
+                  className={styles.buttonCartBlock}
+                  onClick={() => removeFromCart(item.product)}
+                >
+                  <img
+                    className={styles.imgClose}
+                    src="./img/union.svg"
+                    alt="close"
+                  />
+                </button>
+                <img
+                  className={styles.imgCartBlock}
+                  src={item.product.image}
+                  alt={item.product.name}
+                />
+                <h3>{item.product.name}</h3>
+                <button
+                  onClick={() =>
+                    updateQuantity(item.product, item.quantity - 1)
+                  }
+                >
+                  -
+                </button>
+                <span>{item.quantity}</span>
+                <button
+                  onClick={() =>
+                    updateQuantity(item.product, item.quantity + 1)
+                  }
+                >
+                  +
+                </button>
+                <div className={styles.cardPriceGoup}>
+                  <span className={styles.cardPriceHot}>
+                    ${item.product.price}
+                  </span>
+                  {/* <span className={styles.cardfullPriceHot}>
+                    ${item.product.fullPrice}
+                  </span> */}
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
         <div className={styles.totalPriceBlock}>
           <strong className={styles.cardTotal}>${totalPrice}</strong>

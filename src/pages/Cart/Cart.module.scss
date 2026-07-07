@@ -50,67 +50,106 @@
 
 .homeGo,
 .homeGoTo {
+
   color: #89939A;
 }
 
 
 .gridContainer {
+
   display: grid;
   --columns: 24;
   column-gap: 32px;
-  row-gap: 80px;
+  row-gap: 16px;
   grid-template-columns: repeat(var(--columns), 1fr);
   box-sizing: border-box;
 
   @include on-tablet {
     --columns: 12;
     column-gap: 24px;
-    row-gap: 64px;
+    row-gap: 32px;
   }
 
   @include on-phone {
     --columns: 4;
     column-gap: 16px;
-    row-gap: 56px;
+    row-gap: 32px;
 
   }
 
     .gridCartBlock {
-      grid-column: 1 / 16;
+
+       grid-column: span 16;
       display: flex; // Выстраивает миниатюры
-      flex-direction: row;
+      flex-direction: column;
       gap: 16px;
-      align-items: flex-start;
+      margin-top: 32px;
+      // align-items: flex-start;
 
       @include on-tablet {
-        grid-template-columns: repeat(12, 1fr);
-        gap: 12px;
+        grid-columns: span 12;
+        margin-top: 24px;
+
       }
 
       @include on-phone {
-        grid-template-columns: repeat(4, 1fr);
-         align-items: center;
-        gap: 16px;
+        grid-columns: span 4;
+        align-items: center;
+        margin-top: 24px;
       }
     }
 
         .totalPriceBlock {
-          grid-column: 17 / -1;
+            border: 1px solid #E2E6E9;
+            grid-column: span 8;;
             display: flex; // Выстраивает миниатюры
-            flex-direction: row;
+            flex-direction: column;
             gap: 16px;
-            align-items: flex-start;
+            // align-items: flex-start;
 
             @include on-tablet {
-              grid-template-columns: repeat(12, 1fr);
+              grid-column: span 12;
               align-items: center;
               gap: 12px;
             }
 
             @include on-phone {
-              grid-template-columns: repeat(4, 1fr);
+              grid-column: span 4;
               align-items: center;
               gap: 16px;
             }
         }
+  }
+
+    .cartItem {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .cartBlock {
+      display: flex;
+       justify-content: space-between;
+       border: 1px solid #E2E6E9;
+       flex-direction: row;
+        align-items: center;
+        padding: 24px;
+
+        @include on-tablet {
+          padding: 16px;
+        }
+        @include on-phone {
+          padding: 16px;
+        }
+  }
+
+  .buttonCartBlock {
+    background: none;
+    border: none;
+    color: #B4BDC3;
+  }
+
+  .imgCartBlock {
+    height: 80px;
+    width: 80px;
   }

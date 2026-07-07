@@ -8,11 +8,11 @@ type CartItem = {
 
 type CartContextType = {
   cart: CartItem[];
-  favorites: string[];
+  favorites: Products[];
   addToCart: (product: Products) => void;
   removeFromCart: (product: Products) => void;
   updateQuantity: (product: Products, quantity: number) => void;
-  toggleFavorite: (id: string) => void;
+  toggleFavorite: (product: Products) => void;
   clearCart: () => void;
   totalQuantity: number;
 };
@@ -27,7 +27,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
 
     return savedCart ? JSON.parse(savedCart) : [];
   });
-  const [favorites, setFavorites] = useState<string[]>(() => {
+  const [favorites, setFavorites] = useState<Products[]>(() => {
     const savedFavorites = localStorage.getItem('favorites');
 
     return savedFavorites ? JSON.parse(savedFavorites) : [];
@@ -83,11 +83,12 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     );
   };
 
-  const toggleFavorite = (id: string) => {
+  const toggleFavorite = (product: Products) => {
     setFavorites(prevFavorites =>
-      prevFavorites.includes(id)
-        ? prevFavorites.filter(favId => favId !== id)
-        : [...prevFavorites, id],
+      // eslint-disable-next-line @typescript-eslint/no-shadow
+      prevFavorites.some(favorites => favorites.itemId === product.itemId)
+        ? prevFavorites.filter(fav => fav.itemId !== product.itemId)
+        : [...prevFavorites, product],
     );
   };
 
