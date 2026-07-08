@@ -30,17 +30,19 @@
   object-fit: contain;
 }
 
-.productCart {
+.productIdCartName{
   margin: 24px 0 8px;
+}
+
+.productCartName {
   text-decoration: none;
   font-weight: 600;
   letter-spacing: 0;
   font-size: 14px;
   color: #313237;
   line-height: 21px;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
 }
+
 
 .cardPriceGoup {
   display: flex;

@@ -73,18 +73,23 @@ text-decoration: none;
   color: #89939A;
 }
 
-.linkId {
-font-weight: 800;
-font-size: 32px;
-line-height: 41px;
-letter-spacing: -1%;
-text-decoration: none;
-color: #313237;
+.linkName {
+
 margin-bottom: 40px;
 @include on-phone {
   margin-bottom: 32px;
 }
 }
+
+.linkIdName {
+font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  text-decoration: none;
+  color: #313237;
+}
+
 
 .container {
   display: grid;

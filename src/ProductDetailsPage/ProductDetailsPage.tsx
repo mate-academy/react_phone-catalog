@@ -1,7 +1,7 @@
 import styles from './ProductDetailsPage.module.scss';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { FullProduct } from '../types/Alltypes';
+import { FullProduct, Products } from '../types/Alltypes';
 import { useEffect, useState } from 'react';
 import { getData } from '../fetch/httpClient';
 import { UseSwiper } from '../Functional/Swiper/Swiper';
@@ -77,14 +77,27 @@ export const ProductDetailsPage = () => {
     capacityAvailable,
   } = products;
 
-  const isProductInCart = cart.some(item => item.products.id === id);
-  const isProductFavorite = favorites.some(item => item.id === id);
+  const notFullProduct: Products = {
+    id: id,
+    category: products.category,
+    itemId: id,
+    name: name,
+    fullPrice: priceRegular,
+    screen: products.screen,
+    capacity: products.capacity,
+    color: products.color,
+    ram: products.ram,
+    image: images[0],
+  };
+
+  const isProductInCart = cart.some(item => item.product.itemId === id);
+  const isProductFavorite = favorites.some(item => item.itemId === id);
 
   const handleCartClick = () => {
     if (isProductInCart) {
-      removeFromCart(products);
+      removeFromCart(notFullProduct);
     } else {
-      addToCart(products);
+      addToCart(notFullProduct);
     }
   };
 
@@ -113,9 +126,9 @@ export const ProductDetailsPage = () => {
         </button>
       </Link>
 
-      <h2 className={styles.linkId}>
+      <h2 className={styles.linkName}>
         <strong>
-          <Link to={`/${category}/${productId}`} className={styles.linkId}>
+          <Link to={`/${category}/${productId}`} className={styles.linkIdName}>
             {products.name}
           </Link>
         </strong>
@@ -180,7 +193,7 @@ export const ProductDetailsPage = () => {
                     value={cap}
                     checked={selectedCapacity === cap}
                     onChange={() => setSelectedCapacity(cap)}
-                    // className={`${styles.byCap} ${selectedCapacity === cap ? styles.activeCap : ''}`}
+                    className={`${styles.byCap} ${selectedCapacity === cap ? styles.activeCap : ''}`}
                   />
                   <span>{cap}</span>
                 </Link>
@@ -195,10 +208,20 @@ export const ProductDetailsPage = () => {
           </div>
 
           <div className={styles.actions}>
-            <button className={styles.cardToAdd}>Add to cart</button>
-            <button className={styles.buttonToFavorites}>
+            <button
+              className={`${styles.cardToAdd} ${isProductInCart ? styles.added : ''}`}
+              onClick={handleCartClick}
+            >
+              {isProductInCart ? 'Added' : 'Add to cart'}
+            </button>
+            <button
+              className={`${styles.buttonToFavorites} ${isProductFavorite ? styles.favoriteActive : ''}`}
+              onClick={() => toggleFavorite(id)}
+            >
               <img
-                src="/img/favorites.svg"
+                src={
+                  isProductFavorite ? '/img/filled.svg' : '/img/favorites.svg'
+                }
                 className={styles.iconImgFavorites}
                 alt="Favourites"
               />

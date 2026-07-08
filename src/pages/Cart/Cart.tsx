@@ -4,12 +4,23 @@ import styles from './Cart.module.scss';
 import { useCart } from '../../context/CartContext';
 
 export const Cart = () => {
-  const { cart, removeFromCart, updateQuantity, totalQuantity } = useCart();
+  const { cart, removeFromCart, updateQuantity, totalQuantity, clearCart } =
+    useCart();
 
   const totalPrice = cart.reduce(
     (sum, item) => sum + item.product.price * item.quantity,
     0,
   );
+
+  const handleCheckout = () => {
+    const isConfirmed = confirm(
+      'Checkout is not implemented yet. Do you want to clear the Cart?',
+    );
+
+    if (isConfirmed) {
+      clearCart();
+    }
+  };
 
   if (cart.length === 0) {
     return (
@@ -42,44 +53,62 @@ export const Cart = () => {
           <div className={styles.cartItem}>
             {cart.map(item => (
               <article key={item.product.id} className={styles.cartBlock}>
-                <button
-                  className={styles.buttonCartBlock}
-                  onClick={() => removeFromCart(item.product)}
-                >
+                <div className={styles.cartWithOutPrice}>
+                  <button
+                    type="button"
+                    className={styles.buttonClose}
+                    onClick={() => removeFromCart(item.product)}
+                  >
+                    <img
+                      className={styles.imgClose}
+                      src="./img/union.svg"
+                      alt="close"
+                    />
+                  </button>
+                  {/* <Link
+                  to={`/${item.product.category}/${item.product.itemId}`}
+                  className={styles.productLink} */}
+                  {/* > */}
                   <img
-                    className={styles.imgClose}
-                    src="./img/union.svg"
-                    alt="close"
+                    className={styles.imgCartBlock}
+                    src={item.product.image}
+                    alt={item.product.name}
                   />
-                </button>
-                <img
-                  className={styles.imgCartBlock}
-                  src={item.product.image}
-                  alt={item.product.name}
-                />
-                <h3>{item.product.name}</h3>
-                <button
-                  onClick={() =>
-                    updateQuantity(item.product, item.quantity - 1)
-                  }
-                >
-                  -
-                </button>
-                <span>{item.quantity}</span>
-                <button
-                  onClick={() =>
-                    updateQuantity(item.product, item.quantity + 1)
-                  }
-                >
-                  +
-                </button>
-                <div className={styles.cardPriceGoup}>
-                  <span className={styles.cardPriceHot}>
-                    ${item.product.price}
-                  </span>
-                  {/* <span className={styles.cardfullPriceHot}>
-                    ${item.product.fullPrice}
-                  </span> */}
+                  <h3 className={styles.imgCartName}>{item.product.name}</h3>
+                  {/* </Link> */}
+                </div>
+
+                <div className={styles.cardButtonGroupS}>
+                  <div className={styles.cardButtonGroup}>
+                    <button
+                      type="button"
+                      className={styles.buttonMinus}
+                      onClick={() =>
+                        updateQuantity(item.product, item.quantity - 1)
+                      }
+                    >
+                      -
+                    </button>
+                    <span>{item.quantity}</span>
+                    <button
+                      type="button"
+                      className={styles.buttonPlus}
+                      onClick={() =>
+                        updateQuantity(item.product, item.quantity + 1)
+                      }
+                    >
+                      +
+                    </button>
+                  </div>
+
+                  <div className={styles.cardPriceGoup}>
+                    <span className={styles.cardPriceHot}>
+                      ${item.product.price}
+                    </span>
+                    {/* <span className={styles.cardfullPriceHot}>
+                      ${item.product.fullPrice}
+                    </span> */}
+                  </div>
                 </div>
               </article>
             ))}
@@ -88,7 +117,9 @@ export const Cart = () => {
         <div className={styles.totalPriceBlock}>
           <strong className={styles.cardTotal}>${totalPrice}</strong>
           <p className={styles.cardTotalFor}>Total for {totalQuantity} item</p>
-          <button className={styles.checkOut}>Checkout</button>
+          <button className={styles.checkOut} onClick={handleCheckout}>
+            Checkout
+          </button>
         </div>
       </div>
     </section>

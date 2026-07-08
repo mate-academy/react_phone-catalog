@@ -23,35 +23,38 @@
   height: 96px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   @include on-phone {
-    height: 257px;
+    height: auto;
     padding: 0 16px;
     flex-direction: column;
     gap: 32px;
     text-align: center;
   }
 }
-
-.logoLink{
-      margin-right: auto;
+.logoLink {
+  display: flex;
+@include on-phone {
+  margin-top: 32px;
+  margin-right: auto;
+  }
 }
 
-.logo {
-  margin-right: auto;
-  margin: 32px 0;
-  }
+// .logo {
+//   margin-right: auto;
+//   // margin-top: 32px;
+//   }
 
 .footerNavUl {
   display: flex;
   list-style: none;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
-        gap: 16px;
+  gap: 16px;
 
     @include on-phone {
-      margin-right: auto;
+        margin-right: auto;
         flex-direction: column;
         gap: 16px;
 }
@@ -62,7 +65,6 @@ margin-right: auto;
 }
 
 .footerA,
-.footerNav,
 .footerNav {
   text-decoration: none;
   color: #89939A;

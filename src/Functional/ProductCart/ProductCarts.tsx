@@ -46,8 +46,9 @@ export const ProductCarts: React.FC<Props> = ({ product, isNew }) => {
       <Link to={`/${category}/${itemId}`} className={styles.productCart}>
         <img className={styles.cardPhoto} src={image} alt={name} />
       </Link>
-      <Link to={`/${category}/${itemId}`}>
-        <h2 className={styles.productCart}>{name}</h2>
+
+      <Link to={`/${category}/${itemId}`} className={styles.productIdCartName}>
+        <h2 className={styles.productCartName}>{name}</h2>
       </Link>
 
       <div className={styles.cardPriceGoup}>

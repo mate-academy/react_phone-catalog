@@ -132,18 +132,25 @@
        justify-content: space-between;
        border: 1px solid #E2E6E9;
        flex-direction: row;
-        align-items: center;
-        padding: 24px;
+       align-items: center;
+       padding: 24px;
 
-        @include on-tablet {
-          padding: 16px;
-        }
-        @include on-phone {
+           @include on-phone {
           padding: 16px;
         }
   }
 
-  .buttonCartBlock {
+  .cartWithOutPrice {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+        @include on-phone {
+            gap: 16px;
+          }
+  }
+
+  .buttonClose {
     background: none;
     border: none;
     color: #B4BDC3;
@@ -152,4 +159,26 @@
   .imgCartBlock {
     height: 80px;
     width: 80px;
+    object-fit: contain;
   }
+
+.imgCartName{
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #313237;
+}
+
+.cardButtonGroupS {
+justify-content: flex-start;
+flex-direction: row;
+}
+
+
+.cardButtonGroup {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-direction: row;
+  align-items: center;
+}
