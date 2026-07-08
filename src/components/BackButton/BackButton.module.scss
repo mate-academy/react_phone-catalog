@@ -2,10 +2,14 @@
 @use '../../styles/mixins' as *;
 
 .button {
+  cursor: pointer;
+
+  align-items: center;
+
   padding: 0;
   border: none;
+
   background-color: var(--light-bg);
-  align-items: center;
 
   @include flex-row (4px);
 }
@@ -17,7 +21,7 @@
 
 .text {
   color: var(--light-secondary);
-  
+
   @include light-text-font;
 
   &:hover {

@@ -9,13 +9,14 @@
 }
 
 .breadcrumbLink {
+  cursor: pointer;
   color: var(--light-primary);
   text-decoration: none;
 }
 
 .homeIcon {
-  height: $icon-size;
   width: $icon-size;
+  height: $icon-size;
 }
 
 .currentPage {
@@ -23,9 +24,10 @@
 }
 
 .separator {
-  height: $icon-size;
-  width: $icon-size;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: $icon-size;
+  height: $icon-size;
 }

@@ -1,38 +1,42 @@
 @use '../../styles/mixins' as *;
 
 .container {
-  margin-inline: auto;
-  height: 320px;
   justify-content: center;
+  height: 320px;
+  margin-inline: auto;
 
   @include flex-row(16px);
 
   @include on-tablet {
     gap: 19px;
-    height: 189px;
     width: 592px;
+    height: 189px;
   }
 
   @include on-desktop {
-    height: 400px;
-    width: 1136px;
     gap: 16px;
+    width: 1136px;
+    height: 400px;
   }
 
 }
 
 .button {
-  display: none;
   pointer-events: none;
+  display: none;
 
   @include on-tablet {
+    pointer-events: all;
+    cursor: pointer;
+
+    display: block;
+
     width: 32px;
     height: 189px;
-    display: block;
-    pointer-events: all;
-    background-color: var(--light-bg);
-    padding: 0;
     margin: 0;
+    padding: 0;
+
+    background-color: var(--light-bg);
 
     @include border(var(--light-icons));
   }
@@ -47,15 +51,15 @@
   margin-inline: -16px;
 
   @include on-tablet {
+    width: 490px;
+    height: 189px;
     margin: 0;
     padding: 0;
-    height: 189px;
-    width: 490px;
   }
 
   @include on-desktop {
-    height: 400px;
     width: 1040px;
+    height: 400px;
   }
 }
 
@@ -66,18 +70,19 @@
 }
 
 .dashes {
-  margin-top: 8px;
   justify-content: center;
+  margin-top: 8px;
 
   @include flex-row;
 }
 
 .dash {
-  height: 4px;
   width: 14px;
-  background-color: var(--light-elements);
-  border: none;
+  height: 4px;
   margin: 10px;
+  border: none;
+
+  background-color: var(--light-elements);
 }
 
 .active {

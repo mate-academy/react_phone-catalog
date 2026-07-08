@@ -10,8 +10,8 @@
   @include flex-col(16px);
 
   @include on-tablet {
-    height: 128px;
     justify-content: space-between;
+    height: 128px;
 
     @include flex-row(24px);
   }
@@ -29,10 +29,13 @@
 }
 
 .closeButton {
-  padding: 0;
-  height: $icon-size;
+  cursor: pointer;
+
   width: $icon-size;
+  height: $icon-size;
+  padding: 0;
   border: none;
+
   background-color: var(--light-bg);
 }
 
@@ -53,9 +56,22 @@
   @include light-font;
 }
 
+.productLink {
+  align-items: center;
+  justify-content: space-between;
+  color: var(--light-primary);
+  text-decoration: none;
+
+  @include flex-row(16px);
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
 .quantityCounter {
-  width: min-content;
   position: relative;
+  width: min-content;
 
   @include flex-row(32px);
 }
@@ -68,8 +84,9 @@
 }
 
 .quantityIcon {
-  height: $big-icon-size;
+  cursor: pointer;
   width: $big-icon-size;
+  height: $big-icon-size;
   background-color: var(--light-bg);
 
   @include border(var(--light-icons));
@@ -79,8 +96,8 @@
   }
 
   &:disabled {
-    opacity: 0.5;
     cursor: not-allowed;
+    opacity: 0.5;
 
     &:hover {
       @include border(var(--light-icons));
@@ -90,7 +107,7 @@
 }
 
 .price {
-  font-weight: 800;
   font-size: 22px;
+  font-weight: 800;
   line-height: 140%;
 }

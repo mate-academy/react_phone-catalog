@@ -2,18 +2,19 @@
 
 .errorWrapper {
   grid-column: 1 / -1;
-  margin-inline: auto;
-  padding: 40px 20px;
   align-items: center;
   justify-content: center;
+
+  margin-inline: auto;
+  padding: 40px 20px;
 
   @include flex-col(20px);
 }
 
 .errorMessage {
   margin: 0;
-  font-weight: 600;
   font-size: 24px;
+  font-weight: 600;
   color: var(--light-primary);
 
   @include on-tablet {
@@ -22,17 +23,20 @@
 }
 
 .reload {
-  border: none;
+  cursor: pointer;
+
   width: 60px;
   height: 20px;
-  background-color: var(--light-primary);
-  color: var(--light-bg);
+  border: none;
+
   font-size: 14px;
+  color: var(--light-bg);
+
+  background-color: var(--light-primary);
 
   @include on-tablet {
     width: 80px;
     height: 30px;
-
     font-size: 16px;
   }
 }

@@ -17,6 +17,8 @@ function isProductType(value: string): value is ProductType {
   return (Object.values(ProductType) as string[]).includes(value);
 }
 
+const MAX_VISIBLE_PAGES = 4;
+
 export const ProductPage = () => {
   const { type } = useParams();
   const [loading, setLoading] = useState(false);
@@ -133,7 +135,13 @@ export const ProductPage = () => {
     { label: capitalize },
   ];
 
-  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+  const pageStart = Math.max(1, page - (MAX_VISIBLE_PAGES - 1));
+  const pageEnd = Math.min(totalPages, pageStart + MAX_VISIBLE_PAGES - 1);
+  const windowLength = pageEnd - pageStart + 1;
+  const visiblePages = Array.from(
+    { length: windowLength },
+    (_, i) => pageStart + i,
+  );
 
   return (
     <section className={styles.productsContainer}>
@@ -214,7 +222,7 @@ export const ProductPage = () => {
               direction="left"
             />
 
-            {pages.map(p => (
+            {visiblePages.map(p => (
               <button
                 key={p}
                 className={`${styles.pageButton} ${p === page ? styles.active : ''}`}
@@ -223,6 +231,12 @@ export const ProductPage = () => {
                 {p}
               </button>
             ))}
+
+            {pageEnd < totalPages && (
+              <button className={`${styles.pageButton} ${styles.dots}`}>
+                ...
+              </button>
+            )}
 
             <ButtonArrow
               onClick={() => updateParams('page', (page + 1).toString())}

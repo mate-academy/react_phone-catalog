@@ -5,20 +5,24 @@
 .button {
   @include border(var(--light-elements));
 
-  height: $big-icon-size;
-  width: $big-icon-size;
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: $big-icon-size;
+  height: $big-icon-size;
+
   background-color: var(--light-bg);
 
   &:hover {
     @include border(var(--light-primary));
   }
-  
+
   &:disabled {
-    opacity: 0.5;
     cursor: not-allowed;
+    opacity: 0.5;
 
     &:hover {
       @include border(var(--light-elements));

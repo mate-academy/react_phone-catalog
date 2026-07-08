@@ -20,7 +20,7 @@ export const AddButtons: React.FC<Props> = ({ product }) => {
   const { addToCart, cartItems } = cartContext;
   const { favoritesItemsIds, toggleFavorite } = favoritesContext;
 
-  const itemId = 'itemId' in product ? product.itemId : product.namespaceId;
+  const itemId = 'itemId' in product ? product.itemId : product.id;
   const isInCart = cartItems.some(item => item.id === itemId);
   const isInFavorites = favoritesItemsIds.some((el: string) => el === itemId);
 

@@ -23,6 +23,8 @@
 .emptyCart {
   grid-column: 1 / -1;
   align-items: center;
+  max-width: 50%;
+  margin: 0 auto;
 
   @include flex-col(50px);
 }
@@ -33,8 +35,8 @@
 
 .emptyCartText {
   margin: 0;
-  font-weight: 700;
   font-size: 14px;
+  font-weight: 700;
 
   @include on-tablet {
     font-size: 18px;
@@ -64,14 +66,14 @@
 
 
   @include on-desktop {
-    height: 206px;
     grid-column: 17 / -1;
+    height: 206px;
   }
 }
 
 .decoration {
-  height: 1px;
   width: 100%;
+  height: 1px;
   background-color: var(--light-elements);
 }
 
@@ -83,8 +85,8 @@
 }
 
 .totalPrice {
-  font-weight: 800;
   font-size: 32px;
+  font-weight: 800;
   line-height: 41px;
   color: var(--light-primary);
 }
@@ -94,10 +96,14 @@
 }
 
 .checkoutButton {
-  height: 48px;
+  cursor: pointer;
+
   width: 100%;
-  background-color: var(--light-primary);
+  height: 48px;
+
   color: var(--light-bg);
+
+  background-color: var(--light-primary);
 
   @include hover-shadow;
 }

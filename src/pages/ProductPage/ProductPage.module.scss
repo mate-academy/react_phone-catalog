@@ -26,23 +26,26 @@
 }
 
 .selector {
-  appearance: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  height: 40px;
+  margin-top: 4px;
+  padding-left: 12px;
+
+  font-family: Mont, sans-serif;
+  color: var(--light-primary);
+
   -webkit-appearance: none;
   -moz-appearance: none;
+  appearance: none;
   background-image: url('/img/icons/arrow-down.svg');
   background-repeat: no-repeat;
   background-position: right 12px center;
 
   @include border(var(--light-icons));
-
-  height: 40px;
-  display: flex;
-  align-items: center;
-  padding-left: 12px;
-  margin-top: 4px;
-
-  font-family: Mont, sans-serif;
-  color: var(--light-primary);
 
   @include light-font;
 
@@ -74,10 +77,11 @@
 
 .label {
   margin-top: 32px;
-  color: var(--light-secondary);
-  font-weight: 600;
+
   font-size: 14px;
+  font-weight: 600;
   line-height: 100%;
+  color: var(--light-secondary);
 
   @include on-tablet {
     margin-top: 40px;
@@ -85,8 +89,8 @@
 }
 
 .pageButtons {
-  margin: 0 auto;
   flex-wrap: wrap; // do I have to limit amount of visible pages by '...'
+  margin: 0 auto;
 
   @include flex-row(8px);
 
@@ -100,8 +104,9 @@
 }
 
 .pageButton {
-  height: $big-icon-size;
+  cursor: pointer;
   width: $big-icon-size;
+  height: $big-icon-size;
   background-color: var(--light-bg);
 
   @include border(var(--light-elements));
@@ -112,17 +117,25 @@
 }
 
 .active {
-  background-color: var(--light-primary);
-  color: var(--light-bg);
   border: none;
+  color: var(--light-bg);
+  background-color: var(--light-primary);
+}
+
+.dots {
+  pointer-events: none;
+  
+  &:hover {
+    @include border(var(--light-elements));
+  }
 }
 
 .errorContainer {
   @include flex-col;
 
-  width: 100%;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .errorMessage {

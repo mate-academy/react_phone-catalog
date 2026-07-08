@@ -11,6 +11,7 @@ function mapToCartItemProduct(
   if ('itemId' in product) {
     return {
       id: product.itemId,
+      category: product.category,
       image: product.image,
       title: product.name,
       finalPrice: product.price,
@@ -18,7 +19,8 @@ function mapToCartItemProduct(
   }
 
   return {
-    id: product.namespaceId,
+    id: product.id,
+    category: product.category,
     image: product.images[0],
     title: product.name,
     finalPrice: product.priceDiscount,

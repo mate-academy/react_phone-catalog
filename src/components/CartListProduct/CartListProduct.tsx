@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { CartItem } from '../../types/CartItem';
 import styles from './CartListProduct.module.scss';
 import { CartContext } from '../../context/CartContext';
+import { Link } from 'react-router-dom';
 
 type Props = {
   cartItem: CartItem;
@@ -30,11 +31,20 @@ export const CartListProduct: React.FC<Props> = ({ cartItem }) => {
           />
         </button>
 
-        <div className={styles.productImage}>
-          <img src={product.image} alt={product.title} className={styles.img} />
-        </div>
+        <Link
+          to={`/${product.category}/${product.id}`}
+          className={styles.productLink}
+        >
+          <div className={styles.productImage}>
+            <img
+              src={product.image}
+              alt={product.title}
+              className={styles.img}
+            />
+          </div>
 
-        <span className={styles.title}>{product.title}</span>
+          <span className={styles.title}>{product.title}</span>
+        </Link>
       </div>
 
       <div className={styles.cartItemRow}>

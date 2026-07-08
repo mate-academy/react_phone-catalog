@@ -4,23 +4,23 @@
   @include section-margin;
   @include flex-col(20px);
 
-  width: 100%;
   align-items: center;
+  width: 100%;
   color: var(--light-primary);
 
 }
 
 .topContent {
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
 
   @include flex-row(16px);
 }
 
 .text {
   margin: 0;
-  font-weight: 600;
   font-size: 14px;
+  font-weight: 600;
 
   @include on-tablet {
     font-size: 18px;
@@ -36,9 +36,10 @@
 }
 
 .link {
+  cursor: pointer;
   align-items: flex-start;
-  text-decoration: none;
   color: var(--light-primary);
+  text-decoration: none;
 
   @include flex-row(4px);
 }
