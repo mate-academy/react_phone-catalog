@@ -3,7 +3,11 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 
-const logoSrc = `${import.meta.env.BASE_URL}img/logo.svg`;
+const logoSrc = (logoName: string) =>
+  `${import.meta.env.BASE_URL}img/logo/${logoName}`;
+
+const iconSrc = (iconName: string) =>
+  `${import.meta.env.BASE_URL}img/icons/${iconName}`;
 
 const navItems = [
   { to: '/', label: 'Home' },
@@ -20,62 +24,6 @@ const getMobileNavLinkClassName = ({ isActive }: { isActive: boolean }) =>
     ? `${styles.navLink} ${styles.mobileNavLink} ${styles.navLinkActive}`
     : `${styles.navLink} ${styles.mobileNavLink}`;
 
-const HeartIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-    <path
-      d={[
-        'M8 14s-6-3.6-6-8.2A3.4 3.4 0 0 1 8 3.7',
-        'a3.4 3.4 0 0 1 6 2.1C14 10.4 8 14 8 14Z',
-      ].join(' ')}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const CartIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-    <path
-      d="M4 5h8l-.7 8H4.7L4 5Z"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M6 5a2 2 0 1 1 4 0"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-const MenuIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-    <path
-      d="M3 5h10M3 8h10M3 11h10"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-const CloseIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-    <path
-      d="M4 4l8 8M12 4l-8 8"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
@@ -91,8 +39,20 @@ export const Header = () => {
   return (
     <>
       <header className={styles.header}>
-        <Link to="/" className={styles.logoLink}>
-          <img src={logoSrc} alt="Nice Gadgets" className={styles.logo} />
+        <Link to="/" className={styles.logoLink} aria-label="Nice Gadgets home">
+          <span className={styles.logo}>
+            <img
+              src={logoSrc('logo-ng.svg')}
+              alt=""
+              className={styles.logoNg}
+            />
+
+            <img
+              src={logoSrc('logo-ok.svg')}
+              alt=""
+              className={styles.logoOk}
+            />
+          </span>
         </Link>
 
         <nav className={styles.nav}>
@@ -109,11 +69,19 @@ export const Header = () => {
             className={styles.actionLink}
             aria-label="Favorites"
           >
-            <HeartIcon />
+            <img
+              src={iconSrc('heart.svg')}
+              alt=""
+              className={styles.actionIcon}
+            />
           </NavLink>
 
           <NavLink to="/cart" className={styles.actionLink} aria-label="Cart">
-            <CartIcon />
+            <img
+              src={iconSrc('cart.svg')}
+              alt=""
+              className={styles.actionIcon}
+            />
           </NavLink>
         </div>
 
@@ -123,7 +91,11 @@ export const Header = () => {
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           onClick={toggleMenu}
         >
-          {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+          <img
+            src={iconSrc(isMenuOpen ? 'close.svg' : 'menu.svg')}
+            alt=""
+            className={styles.menuIcon}
+          />
         </button>
       </header>
 
@@ -147,7 +119,11 @@ export const Header = () => {
               }
               aria-label="Favorites"
             >
-              <HeartIcon />
+              <img
+                src={iconSrc('heart.svg')}
+                alt=""
+                className={styles.mobileActionIcon}
+              />
             </NavLink>
 
             <NavLink
@@ -159,7 +135,11 @@ export const Header = () => {
               }
               aria-label="Cart"
             >
-              <CartIcon />
+              <img
+                src={iconSrc('cart.svg')}
+                alt=""
+                className={styles.mobileActionIcon}
+              />
             </NavLink>
           </div>
         </div>
