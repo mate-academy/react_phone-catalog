@@ -8,14 +8,12 @@ $grid-desktop: (
     column-width: 32px,
     gutter: 16px,
 );
-
 $grid-tablet: (
     type: stretch,
     columns: 12,
     gutter: 16px,
     margin: 24px,
 );
-
 $grid-mobile: (
     type: stretch,
     columns: 4,
