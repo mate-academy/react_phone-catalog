@@ -1,0 +1,84 @@
+.categories {
+  @include page-grid;
+}
+
+.title {
+  @include fullsize-grid;
+
+  @include for-tablet {
+    font-size: $h2-fs;
+    line-height: $h2-lh;
+    letter-spacing: $h2-ls;
+  }
+
+  font-family: $font-family;
+  font-size: $h2-fs-mobile;
+  line-height: $h2-lh-mobile;
+  margin-bottom: 24px;
+}
+
+.block-link {
+  @include for-desktop {
+    grid-column: span 8;
+  }
+
+  width: 100%;
+  margin: 0 0 24px;
+  aspect-ratio: 1 / 1;
+  background-position: center;
+  background-size: 100%;
+  transition: $transition;
+
+  &--phones{
+    background-image: url('./assets/images/Phones.jpg');
+  }
+
+  &--tablets{
+    background-image: url('./assets/images/Tablets.jpg');
+  }
+
+  &--accessories{
+    background-image: url('./assets/images/Accessories.jpg');
+  }
+
+  &:hover {
+    background-size: 110%;
+    transition: $transition;
+  }
+}
+
+.link {
+  @include for-tablet {
+    margin: 0;
+  }
+
+  @include for-desktop {
+    grid-column: span 8;
+  }
+
+  margin: 0 0 32px;
+  text-decoration: none;
+
+  grid-column: span 4;
+}
+
+.categories .link:nth-last-of-type(1) {
+  margin-bottom: 0;
+}
+
+.category-title {
+  margin-bottom: 4px;
+  font-family: $font-family;
+  font-size: $h3-fs-mobile;
+  font-weight: $text-fw;
+  line-height: $h3-lh-mobile;
+  color: $color-primary;
+}
+
+.sub-text {
+  font-family: $font-family;
+  font-size: $body-text-fs;
+  font-weight: $text-fw;
+  line-height: $body-text-lh;
+  color: $color-secondary;
+}

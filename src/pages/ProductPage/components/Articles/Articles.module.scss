@@ -1,0 +1,28 @@
+.articles {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.title {
+  @include for-tablet {
+    font-size: $h4-fs;
+    line-height: $h4-lh;
+  }
+
+  margin: 0 0 16px;
+  font-size: $h4-fs-mobile;
+  font-weight: $h4-fw-mobile;
+  line-height: $h4-lh-mobile;
+  color: $color-primary;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: $body-text-fs;
+  font-weight: 400;
+  line-height: $body-text-lh;
+  color: $color-secondary;
+}

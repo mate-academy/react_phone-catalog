@@ -1,0 +1,28 @@
+.specRow {
+  display: flex;
+  justify-content: space-between;
+
+
+  &--primary {
+    font-size: $st-fs;
+    font-weight: 600;
+    line-height: $st-lh;
+  }
+
+  &--secondary {
+    font-size: $body-text-fs;
+    font-weight: 500;
+    line-height: $body-text-lh;
+  }
+}
+
+.specLabel {
+  color: $color-secondary;
+}
+
+.specValue {
+  display: flex;
+  justify-content: end;
+  text-align: end;
+  width: 50%;
+}

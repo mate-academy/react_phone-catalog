@@ -98,6 +98,9 @@ module.exports = {
         },
       },
     ],
+
+    // FIX REACT QUERY ESLINT
+    'import/no-extraneous-dependencies': 'off',
   },
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'src/vite-env.d.ts', 'cypress'],
   settings: {

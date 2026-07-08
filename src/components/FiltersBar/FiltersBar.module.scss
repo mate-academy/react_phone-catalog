@@ -1,0 +1,28 @@
+.filtersBar {
+  @include fullsize-grid;
+
+  @include for-tablet {
+    @include page-grid;
+
+    padding: 0;
+  }
+
+  display: flex;
+  gap: 16px;
+  margin: 0 0 24px;
+  padding: 0 16px;
+}
+
+.selectBlock {
+  width: 100%;
+
+   @include for-tablet {
+    grid-column: span 4;
+  }
+}
+
+.perPageSelect {
+  @include for-tablet {
+    grid-column: span 3;
+  }
+}

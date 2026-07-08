@@ -1,0 +1,263 @@
+.cart {
+  @include page-grid;
+
+  @include for-tablet {
+    padding: 0 24px;
+  }
+
+  @include for-desktop {
+    padding: 0 32px;
+  }
+
+  padding: 0 16px;
+}
+
+.loader {
+  @include for-desktop {
+    height: calc(100dvh - 65px);
+  }
+
+  height: calc(100dvh - 49px);
+}
+
+.title {
+  @include fullsize-grid;
+
+  @include for-tablet {
+    margin: 71px 0 32px;
+    font-size: $h1-fs;
+    font-weight: $h1-fw;
+    line-height: $h1-lh;
+    letter-spacing: $h1-ls;
+  }
+
+  margin: 63px 0 32px;
+  font-size: $h1-fs-mobile;
+  font-weight: $h1-fw-mobile;
+  line-height: $h1-lh-mobile;
+  letter-spacing: $h1-ls-mobile;
+  text-transform: capitalize;
+  color: $color-primary;
+}
+
+.smallText {
+  @include fullsize-grid;
+}
+
+.cartList {
+  @include fullsize-grid;
+
+  @include for-desktop {
+    grid-column: span 16;
+    margin: 0 0 80px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 0 32px;
+}
+
+
+.cartItem {
+  @include for-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+    height: 128px;
+  }
+
+  box-sizing: border-box;
+  padding: 16px;
+  border: 1px solid $color-elements;
+}
+
+.cartInfo {
+  @include for-tablet {
+    margin: 0;
+  }
+
+  display: flex;
+  gap: 16px;
+  margin: 0 0 16px;
+}
+
+.cartCounter {
+  @include for-tablet {
+    gap: 53px;
+    align-self: center;
+  }
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.counterControl {
+  display: flex;
+
+  & > p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    font-size: $body-text-fs;
+    font-weight: 400;
+    line-height: $body-text-lh;
+    color: $color-primary
+  }
+}
+
+.button {
+    all: unset;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $color-icons;
+    transition: $transition;
+
+    &:hover {
+      border: 1px solid $color-primary;
+      transition: $transition;
+    }
+
+    &--disabled {
+      border: 1px solid $color-elements;
+      transition: $transition;
+
+      &:hover {
+        border: 1px solid $color-elements;
+      }
+    }
+  }
+
+.icon {
+  height: 16px;
+  width: 16px;
+}
+
+.itemDeleteButton {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 16px;
+  height: 16px;
+  border: 1px solid $color-white;
+  transition: $transition;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $color-elements;
+    transition: $transition;
+  }
+}
+
+.itemName {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  font-size: $body-text-fs;
+  font-weight: 400;
+  line-height: $body-text-lh;
+  color: $color-primary;
+  cursor: pointer;
+}
+
+.itemImg {
+  flex-shrink: 0;
+  align-self: center;
+  height: 66px;
+  width: 66px;
+  padding: 7px;
+  object-fit: contain;
+}
+
+.itemPrice {
+  font-size: $h3-fs;
+  font-weight: $h3-fw;
+  line-height: $h3-lh;
+  color: $color-primary;
+}
+
+.checkoutSection {
+  @include fullsize-grid;
+
+  @include for-desktop {
+    height: 206px;
+    padding: 23px 24px 24px;
+    grid-column: span 8;
+  }
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 190px;
+  margin: 0 0 56px;
+  padding: 24px;
+  border: 1px solid $color-elements;
+
+  & > h2 {
+    font-size: $h2-fs;
+    font-weight: $h2-fw;
+    line-height: $h2-lh;
+    letter-spacing: $h2-ls;
+    color: $color-primary;
+  }
+
+  & > p {
+    @include for-desktop {
+      margin: 0 0 24px;
+    }
+
+    margin: 0 0 16px;
+    font-size: $body-text-fs;
+    font-weight: 400;
+    line-height: $body-text-lh;
+    color: $color-secondary
+  }
+
+  & > hr {
+    @include for-desktop {
+      margin: 0 0 24px;
+    }
+
+    all: unset;
+    box-sizing: border-box;
+    display: block;
+    height: 1px;
+    width: 100%;
+    margin: 0 0 16px;
+    background-color: $color-elements;
+  }
+}
+
+.checkoutButton {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 100%;
+  font-size: $body-text-fs;
+  font-weight: 400;
+  line-height: $body-text-lh;
+  text-transform: capitalize;
+  color: $color-white;
+  background-color: $color-primary;
+  transition: $transition;
+
+   &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+    transition: $transition
+  }
+}

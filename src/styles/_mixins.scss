@@ -1,0 +1,40 @@
+@mixin for-tablet() {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin for-desktop() {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+
+  @include for-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 16px;
+  }
+
+  @include for-desktop {
+    grid-template-columns: repeat(24, 32px);
+    column-gap: 16px;
+  }
+}
+
+@mixin fullsize-grid {
+  grid-column: span 4;
+
+  @include for-tablet {
+    grid-column: span 12;
+  }
+
+  @include for-desktop {
+    grid-column: span 24;
+  }
+}

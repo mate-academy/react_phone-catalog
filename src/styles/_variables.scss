@@ -1,0 +1,85 @@
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+// fonts
+$font-family: 'Mont', sans-serif;
+
+// h1
+$h1-fs: 48px;
+$h1-fw: bold;
+$h1-lh: 56px;
+$h1-ls: -0.01em;
+$h1-fs-mobile: 32px;
+$h1-fw-mobile: bold;
+$h1-lh-mobile: 41px;
+$h1-ls-mobile: -0.01em;
+
+// h2
+$h2-fs: 32px;
+$h2-fw: bold;
+$h2-lh: 41px;
+$h2-ls: -0.01em;
+$h2-fs-mobile: 22px;
+$h2-lh-mobile: 31px;
+
+// h3
+$h3-fs: 22px;
+$h3-fw: bold;
+$h3-lh: 31px;
+$h3-fs-mobile: 20px;
+$h3-fw-mobile: bold;
+$h3-lh-mobile: 26px;
+
+// h4
+$h4-fs: 20px;
+$h4-fw: bold;
+$h4-lh: 26px;
+$h4-fs-mobile: 16px;
+$h4-fw-mobile: bold;
+$h4-lh-mobile: 20px;
+
+// body-text
+$body-text-fs: 14px;
+$body-text-lh: 21px;
+$text-fw: 400;
+
+// small-text
+$st-fs: 12px;
+$st-fw: 400;
+$st-lh: 15px;
+
+// uppercase
+$uppercase-fs: 12px;
+$uppercase-lh: 11px;
+$uppercase-ls: 0.04em;
+
+// colors
+$color-background: #FAFBFC;
+$color-elements: #E2E6E9;
+$color-icons: #B4BDC3;
+$color-primary: #313237;
+$color-secondary: #89939A;
+$color-white: #FFF;
+$color-green: #27AE60;
+$color-red: #EB5757;
+
+// transitions
+$transition: 0.3s ease;
