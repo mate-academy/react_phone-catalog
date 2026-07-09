@@ -1,0 +1,92 @@
+@import '../../variables';
+@import '../../utils/mixins';
+
+.categories {
+  width: 100%;
+  max-width: 1136px;
+  margin: 64px auto;
+
+  @include grid;
+
+  &__title {
+    grid-column: 1 / -1;
+    font-family: $font-family;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: $Primary;
+    margin-bottom: 24px;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-phone {
+      grid-column: span 4;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 24px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &_phones {
+      background-image: url('../../../public/img/category-phones.png');
+      background-color: #89939A;
+    }
+    &_tablets {
+      background-image: url('../../../public/img/category-tablets.png');
+      background-color: #E2E6E9;
+    }
+    &_accessories {
+      background-image: url('../../../public/img/category-accessories.png');
+      background-color: #D53C51;
+    }
+  }
+
+  &__linkTitle {
+    font-family: $font-family;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $Primary;
+    text-decoration: none;
+    margin-bottom: 4px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__count {
+    font-family: $font-family;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+
+    color: $Secondary;
+    margin: 0;
+  }
+}

@@ -1,0 +1,25 @@
+@import '../../variables';
+
+.loader {
+  flex-grow: 1;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 40px 0;
+
+  &__spinner {
+    width: 48px;
+    height: 48px;
+    border: 5px solid $Elements;
+    border-top: 5px solid $Primary;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

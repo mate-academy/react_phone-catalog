@@ -1,0 +1,108 @@
+@import '../../variables';
+@import '../../utils/mixins';
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid $Elements;
+
+  @include on-desktop {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+
+    @include on-desktop {
+      justify-content: flex-end;
+    }
+  }
+
+  .deleteItem {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: $Icons;
+    transition: color 0.3s;
+    &:hover { color: $Primary; }
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+  }
+
+  .image {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+  }
+
+  .name {
+    font-family: $font-family;
+    font-size: 14px;
+    font-weight: 500;
+    color: $Primary;
+  }
+
+  .counter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+.button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $Icons;
+    background: $white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    transition: all 0.3s;
+    outline: none;
+    &:hover:not(.disabled) {
+      border-color: $Primary;
+    }
+
+    &.disabled {
+      cursor: default;
+      border-color: $Elements;
+      color: $Elements;
+    }
+  }
+
+  .countItem {
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+  }
+
+  .price {
+    font-family: $font-family;
+    font-size: 22px;
+    font-weight: 800;
+    color: $Primary;
+    min-width: 80px;
+    text-align: right;
+  }
+}

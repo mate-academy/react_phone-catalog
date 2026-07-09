@@ -1,1 +1,35 @@
 // not empty
+@import './variables';
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.App{
+  font-family: $font-family;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  min-height: 100vh;
+}
+
+.is-hidden{
+  display: none;
+}
+
+.line{
+  height: 1px;
+  width: 100%;
+  background-color: $Elements;
+  margin: 0;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.pages{
+  flex-grow: 1;
+}

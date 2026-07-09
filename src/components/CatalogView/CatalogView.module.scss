@@ -1,0 +1,144 @@
+@import '../../variables';
+@import '../../utils/mixins';
+
+.catalog {
+  @include inline-padding;
+
+  padding-bottom: 80px;
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-block: 24px;
+  }
+
+  &__title {
+    font-family: $font-family;
+    font-size: 32px;
+    font-weight: 800;
+    margin-block: 24px 8px;
+  }
+
+  &__models-count {
+    color: $Secondary;
+    font-weight: 600;
+    margin-bottom: 40px;
+  }
+
+  &__filters {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: $Secondary;
+    margin-bottom: 4px;
+  }
+
+  &__select {
+    height: 40px;
+    padding-inline: 12px;
+    border: 1px solid $Icons;
+    background-color: $white;
+    font-family: $font-family;
+    font-weight: 700;
+    cursor: pointer;
+    min-width: 128px;
+
+    &:hover { border-color: $Secondary; }
+  }
+
+  &__grid {
+    @include grid;
+
+    row-gap: 40px;
+    margin-bottom: 80px;
+    align-items: stretch;
+    &-container{
+      @include grid;
+    }
+      &-card {
+    @include on-desktop {
+      grid-column: span 6;
+    }
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-phone {
+      grid-column: span 4;
+    }
+
+    display: flex;
+  }
+
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $Icons;
+    background: $white;
+    cursor: pointer;
+    font-family: $font-family;
+    font-weight: 600;
+    transition: all 0.3s;
+
+    &--active {
+      background: $Primary;
+      color: $white;
+      border-color: $Primary;
+    }
+
+    &:hover:not(&--active) {
+      border-color: $Primary;
+    }
+  }
+
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $Icons;
+    background: $white no-repeat center;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.5;
+       cursor: default;
+    }
+    &--left {
+       background-image: url('../../../public/img/icons/Arrow_Left.png');
+    }
+    &--right {
+      background-image: url('../../../public/img/icons/Arrow_Right.png');
+    }
+  }
+}
+
+.catalogView{
+  margin: 0 auto;
+}
