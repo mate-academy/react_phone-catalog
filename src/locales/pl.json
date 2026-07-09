@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "home": "Start",
+    "phones": "Telefony",
+    "tablets": "Tablety",
+    "accessories": "Akcesoria",
+    "catalog": "Katalog"
+  },
+  "home": {
+    "welcome": "Witaj w sklepie Nice Gadgets!",
+    "newModels": "Najnowsze modele",
+    "shopByCategory": "Kupuj według kategorii",
+    "hotPrices": "Gorące okazje"
+  },
+  "favorites": {
+    "title": "Ulubione",
+    "empty": "Twoja lista ulubionych jest pusta",
+    "items_one": "produkt",
+    "items_few": "produkty",
+    "items_many": "produktów"
+  },
+  "categories": {
+    "phones": "Telefony komórkowe",
+    "tablets": "Tablety",
+    "accessories": "Akcesoria"
+  },
+  "cart": {
+    "title": "Koszyk",
+    "checkout": "Przejdź do kasy",
+    "total": "Razem za {{count}} produkt",
+    "total_plural": "Razem za {{count}} produktów",
+    "total_one": "Razem za {{count}} produkt",
+    "total_few": "Razem za {{count}} produkty",
+    "total_many": "Razem za {{count}} produktów",
+    "total_other": "Razem za {{count}} produktów",
+    "checkoutMessage": "Płatność nie jest jeszcze wdrożona. Czy chcesz wyczyścić koszyk?",
+    "confirmClear": "Wyczyść koszyk",
+    "cancel": "Anuluj"
+  },
+  "footer": {
+    "github": "Github",
+    "contacts": "Kontakt",
+    "rights": "Prawa zastrzeżone"
+  },
+  "buttons": {
+    "addToCart": "Do koszyka",
+    "added": "W koszyku",
+    "back": "Wróć",
+    "backToHome": "Wróć do strony głównej",
+    "backToTop": "Do góry"
+  },
+  "catalog": {
+    "modelsCount_one": "{{count}} model",
+    "modelsCount_few": "{{count}} modele",
+    "modelsCount_many": "{{count}} modeli",
+    "modelsCount_other": "{{count}} modeli",
+    "sortBy": "Sortuj według",
+    "itemsOnPage": "Ilość na stronie",
+    "sortOptions": {
+      "newest": "Najnowsze",
+      "alphabetically": "Alfabetycznie",
+      "cheapest": "Najtańsze",
+      "all": "Wszystkie"
+    },
+    "likesSlider": "To również może ci się spodobać"
+  },
+  "empty": {
+    "cart": {
+      "title": "Twój koszyk jest pusty",
+      "text": "Ale nie musi taki być! Sprawdź nasze najnowsze gadżety."
+    },
+    "favorites": {
+      "title": "Nie polubiłeś jeszcze niczego",
+      "text": "Zapisz tutaj swoje ulubione produkty, aby łatwo je później znaleźć."
+    },
+    "product": {
+      "title": "Nie znaleziono produktu",
+      "text": "Model, którego szukasz, jest obecnie niedostępny lub nie istnieje."
+    },
+    "page404": {
+      "title": "Nie znaleziono strony"
+    },
+    "back": "Wróć do strony głównej"
+  },
+  "error": {
+    "title": "Ups! Coś poszło nie tak",
+    "reload": "Odśwież stronę",
+    "default": "Wystąpił nieoczekiwany błąd",
+    "productsLoad": "Nie udało się załadować produktów. Spróbuj odświeżyć stronę.",
+    "notFound": "Nie znaleziono produktu."
+  },
+  "search": {
+    "placeholder": "Szukaj...",
+    "resultsTitle": "Wyniki wyszukiwania",
+    "resultsFor": "Wyniki dla „{{query}}”",
+    "resultsCount": "Znaleziono {{count}} produktów dla „{{query}}”",
+    "noResults": "Brak produktów pasujących do wyszukiwania.",
+    "categories": {
+      "phones": "telefony",
+      "tablets": "tablety",
+      "accessories": "akcesoria",
+      "products": "produkty"
+    },
+    "tryAgain": "Spróbuj wpisać inną nazwę lub wybierz jedną z kategorii poniżej."
+  }
+}

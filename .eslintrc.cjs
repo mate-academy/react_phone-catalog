@@ -21,13 +21,16 @@ module.exports = {
     }
   ],
   parser: '@typescript-eslint/parser',
+
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 12,
-    project: './tsconfig.json',
+    ecmaVersion: 'latest',
+    project: ['./tsconfig.json', './tsconfig.eslint.json'],
+    tsconfigRootDir: __dirname,
     sourceType: 'module',
+    extraFileExtensions: ['.scss'],
   },
   plugins: [
     'jsx-a11y',
@@ -98,8 +101,11 @@ module.exports = {
         },
       },
     ],
+    'import/extensions': 'off',
+    'import/no-unresolved': 'off',
+
   },
-  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'src/vite-env.d.ts', 'cypress'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'src/vite-env.d.ts', 'cypress', 'node_modules'],
   settings: {
     react: {
       version: 'detect',

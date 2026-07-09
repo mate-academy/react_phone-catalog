@@ -1,0 +1,74 @@
+.overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba($color-page-bg, 0.01);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  background: $color-page-bg;
+  padding: 32px;
+  border-radius: 12px;
+  max-width: 280px;
+  text-align: center;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.05),
+    0 20px 50px rgba(0, 0, 0, 0.2);
+  border: 1px solid $color-primary;
+
+  @include tablet {
+     max-width: 400px;
+
+  }
+
+  .message {
+    @include desktop-body;
+    margin-bottom: 24px;
+    color: $color-primary;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+
+    @include tablet {
+      flex-direction: row;
+    }
+
+    button {
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      @include desktop-small-text;
+      font-weight: 800;
+      transition: 0.2s;
+    }
+
+    .confirm {
+      background: $color-accent;
+      color: $color-white;
+      border: none;
+
+      &:hover {
+        background: $color-accent;
+        color: $color-white;
+      }
+    }
+
+    .cancel {
+      background: $color-page-bg;
+      color: $color-primary;
+      border: 1px solid $color-icons;
+      &:hover {
+        background: $color-accent;
+        color: $color-white;
+      }
+    }
+  }
+}

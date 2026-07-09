@@ -1,0 +1,48 @@
+
+.skeleton {
+  padding: 32px;
+  border: 1px solid $color-elements;
+  background-color: $color-surface-1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__image, &__title, &__price, &__specRow, &__buttons {
+    background-color: $color-elements;
+    border-radius: 4px;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+
+  &__image {
+    height: 196px;
+    width: 100%;
+  }
+
+  &__title {
+    height: 20px;
+    width: 80%;
+  }
+
+  &__price {
+    height: 30px;
+    width: 40%;
+  }
+
+  &__specRow {
+    height: 12px;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  &__buttons {
+    height: 48px;
+    width: 100%;
+    margin-top: auto;
+  }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}

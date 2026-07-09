@@ -1,0 +1,25 @@
+.home__section {
+  margin-bottom: 56px;
+
+  @include tablet {
+    margin-bottom: 64px;
+  }
+
+  @include desktop {
+    margin-bottom: 80px;
+
+  }
+
+  &:last-child{
+    margin:0
+  }
+}
+
+// .topHeading {
+//   margin-top: 24px;
+
+//   @include tablet {
+
+//   }
+
+// }

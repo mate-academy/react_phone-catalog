@@ -1,0 +1,35 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+  min-height: 300px;
+
+  &__title {
+    @include desktop-h2;
+    color: $color-primary;
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    @include desktop-body;
+    color: $color-secondary;
+    margin-bottom: 24px;
+  }
+
+  &__button {
+    padding: 12px 24px;
+    background-color: $color-primary;
+    color:$color-page-bg;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

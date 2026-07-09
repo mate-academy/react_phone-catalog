@@ -1,0 +1,47 @@
+.toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  color: $color-primary;
+  transition: background-color 0.3s ease;
+  padding: 0;
+
+  @include desktop {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include desktop {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.icon {
+  color: $color-primary;
+  position: absolute;
+  opacity: 0;
+  transform: scale(0.5) rotate(-45deg);
+  transition:
+    opacity 0.3s ease,
+    transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  &Visible {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
