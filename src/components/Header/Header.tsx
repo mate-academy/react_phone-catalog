@@ -1,0 +1,141 @@
+import { useEffect, useMemo, useState } from 'react';
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from 'react-router-dom';
+import { useCart } from '../../contexts/CartContext';
+import { useFavorites } from '../../contexts/FavoritesContext';
+import { getAssetPath } from '../../utils/assets';
+import styles from './Header.module.scss';
+
+const searchRoutes = ['/phones', '/tablets', '/accessories', '/favorites'];
+const favoriteIcon = getAssetPath('img/figma/Vector (Stroke).svg');
+const cartIcon = getAssetPath('img/figma/Group 17.svg');
+
+export const Header = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [value, setValue] = useState(searchParams.get('query') ?? '');
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { totalQuantity } = useCart();
+  const { count } = useFavorites();
+  const isFavoritesActive = location.pathname.startsWith('/favorites');
+  const isCartActive = location.pathname.startsWith('/cart');
+
+  const isSearchPage = useMemo(
+    () => searchRoutes.some(route => location.pathname.startsWith(route)),
+    [location.pathname],
+  );
+
+  useEffect(() => {
+    setValue(new URLSearchParams(location.search).get('query') ?? '');
+    setIsMenuOpen(false);
+  }, [location.search]);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!isSearchPage) {
+      return undefined;
+    }
+
+    const timer = window.setTimeout(() => {
+      const nextParams = new URLSearchParams(searchParams);
+
+      if (value) {
+        nextParams.set('query', value);
+      } else {
+        nextParams.delete('query');
+      }
+
+      setSearchParams(nextParams, { replace: true });
+    }, 300);
+
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [value, isSearchPage, searchParams, setSearchParams]);
+
+  return (
+    <header className={styles.header}>
+      <div className={styles.container}>
+        <Link to="/" className={styles.logo}>
+          <span>Nice Gadgets</span>
+        </Link>
+
+        <button
+          type="button"
+          className={styles.menuButton}
+          onClick={() => setIsMenuOpen(current => !current)}
+          aria-label="Toggle navigation"
+          aria-expanded={isMenuOpen}
+        >
+          <i
+            className={isMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'}
+            aria-hidden="true"
+          />
+        </button>
+
+        <nav
+          className={`${styles.navigation} ${
+            isMenuOpen ? styles.navigationOpen : ''
+          }`}
+        >
+          <Link to="/phones">Phones</Link>
+          <Link to="/tablets">Tablets</Link>
+          <Link to="/accessories">Accessories</Link>
+          <Link to="/favorites">Favorites</Link>
+          <Link to="/cart">Cart</Link>
+        </nav>
+
+        <div
+          className={`${styles.actions} ${
+            isSearchFocused ? styles.actionsWithFocusedSearch : ''
+          }`}
+        >
+          {isSearchPage && (
+            <input
+              className={styles.search}
+              type="search"
+              placeholder="Search products"
+              value={value}
+              onChange={event => setValue(event.target.value)}
+              onBlur={() => setIsSearchFocused(false)}
+              onFocus={() => setIsSearchFocused(true)}
+            />
+          )}
+          <button
+            type="button"
+            className={`${styles.navButton} ${
+              isFavoritesActive ? styles.navButtonActive : ''
+            }`}
+            onClick={() => navigate('/favorites')}
+            aria-label="Open favorites"
+          >
+            <img src={favoriteIcon} alt="" className={styles.actionIcon} />
+            {count > 0 && <span className={styles.badge}>{count}</span>}
+          </button>
+          <button
+            type="button"
+            className={`${styles.navButton} ${
+              isCartActive ? styles.navButtonActive : ''
+            }`}
+            onClick={() => navigate('/cart')}
+            aria-label="Open cart"
+          >
+            <img src={cartIcon} alt="" className={styles.actionIcon} />
+            {totalQuantity > 0 && (
+              <span className={styles.badge}>{totalQuantity}</span>
+            )}
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+};

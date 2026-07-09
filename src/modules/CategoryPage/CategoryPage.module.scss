@@ -1,0 +1,89 @@
+.page {
+  display: grid;
+  gap: 24px;
+}
+
+.page h1 {
+  margin-bottom: 0;
+  font-size: 48px;
+  line-height: 56px;
+}
+
+.count {
+  margin: -16px 0 16px;
+  color: var(--color-secondary);
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+label {
+  display: inline-flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--color-secondary);
+  font-size: 12px;
+  line-height: 15px;
+}
+
+select {
+  appearance: none;
+  min-width: 176px;
+  height: 40px;
+  border: 1px solid var(--color-icons);
+  padding: 0 40px 0 12px;
+  border-radius: 0;
+  background-color: var(--color-white);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--color-primary) 50%),
+    linear-gradient(135deg, var(--color-primary) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 12px) 50%;
+  background-repeat: no-repeat;
+  background-size: 6px 6px;
+  color: var(--color-primary);
+  text-align: left;
+  cursor: pointer;
+}
+
+@media (max-width: 560px) {
+  .toolbar {
+    justify-content: stretch;
+  }
+
+  label {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  select {
+    min-width: 150px;
+  }
+}
+
+.message {
+  padding: 32px;
+  text-align: center;
+  border: 1px solid var(--color-elements);
+  border-radius: 0;
+  background: var(--color-white);
+  color: var(--color-secondary);
+}
+
+button {
+  height: 40px;
+  border: 1px solid var(--color-icons);
+  background: var(--color-white);
+  color: var(--color-primary);
+  padding: 0 16px;
+  border-radius: 0;
+  cursor: pointer;
+}
