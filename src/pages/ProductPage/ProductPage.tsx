@@ -215,34 +215,36 @@ export const ProductPage = () => {
             <ProductsList productItems={visibleProducts} />
           </div>
 
-          <div className={styles.pageButtons}>
-            <ButtonArrow
-              onClick={() => updateParams('page', (page - 1).toString())}
-              disabled={page === 1}
-              direction="left"
-            />
+          <div className={styles.buttonsWrapper}>
+            <div className={styles.pageButtons}>
+              <ButtonArrow
+                onClick={() => updateParams('page', (page - 1).toString())}
+                disabled={page === 1}
+                direction="left"
+              />
 
-            {visiblePages.map(p => (
-              <button
-                key={p}
-                className={`${styles.pageButton} ${p === page ? styles.active : ''}`}
-                onClick={() => updateParams('page', p.toString())}
-              >
-                {p}
-              </button>
-            ))}
+              {visiblePages.map(p => (
+                <button
+                  key={p}
+                  className={`${styles.pageButton} ${p === page ? styles.active : ''}`}
+                  onClick={() => updateParams('page', p.toString())}
+                >
+                  {p}
+                </button>
+              ))}
 
-            {pageEnd < totalPages && (
-              <button className={`${styles.pageButton} ${styles.dots}`}>
-                ...
-              </button>
-            )}
+              {pageEnd < totalPages && (
+                <button className={`${styles.pageButton} ${styles.dots}`}>
+                  ...
+                </button>
+              )}
 
-            <ButtonArrow
-              onClick={() => updateParams('page', (page + 1).toString())}
-              disabled={page === totalPages}
-              direction="right"
-            />
+              <ButtonArrow
+                onClick={() => updateParams('page', (page + 1).toString())}
+                disabled={page === totalPages}
+                direction="right"
+              />
+            </div>
           </div>
         </>
       )}

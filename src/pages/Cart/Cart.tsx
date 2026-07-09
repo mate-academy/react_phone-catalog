@@ -28,7 +28,7 @@ export const Cart = () => {
     <section className={styles.cartPage}>
       <div className={styles.cartContent}>
         <div className={styles.cartTop}>
-          <BackButton />
+          <BackButton path="/" />
 
           <h1 className={styles.cartTitle}>Cart</h1>
         </div>

@@ -2,58 +2,67 @@
 @use '../../styles/variables' as *;
 
 footer {
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
   margin: 0;
   padding: 32px 0;
-  width: 100%;
   border-top: var(--light-elements) solid 1px;
 }
 
-.container {
+.content {
+  width: 100%;
+
   @include content-padding-inline;
   @include flex-col(32px);
 
   @include on-tablet {
-    flex-direction: row;
-    align-items: center;
+    @include flex-row;
+
+    justify-content: space-between;
   }
 }
 
+
+
 .img {
-  height: $big-icon-size;
   width: 89px;
+  height: $big-icon-size;
 }
 
 .logo {
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: start;
-  flex: 1;
+  height: 100%;
 }
 
 .navList {
-  flex: 1;
+  flex: 4;
   align-items: start;
-  padding: 0;
   margin: 0;
+  padding: 0;
 
   @include flex-col(16px);
 
   @include on-tablet {
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-evenly;
   }
 }
 
 .navItem {
-  list-style: none;
-  font-weight: 800;
+  position: relative;
+
+  display: flex;
+
   font-size: 12px;
+  font-weight: 800;
   line-height: 11px;
   letter-spacing: 4%;
-  position: relative;
-  display: flex;
+  list-style: none;
 
   @include on-tablet {
     align-items: center;
@@ -61,29 +70,30 @@ footer {
 }
 
 .link {
-  text-decoration: none;
-  color: var(--light-secondary);
   padding: 0;
+  color: var(--light-secondary);
+  text-decoration: none;
 }
 
-.wrapper {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-
-  @include on-tablet {
-    justify-content: flex-end;
-  }
-}
 
 .backToTop {
-  align-items: center;
-  background: none;
-  border: none;
   cursor: pointer;
+
+  flex: 1;
+  align-items: center;
+  align-self: center;
+
   padding: 0;
+  border: none;
+
   color: var(--light-secondary);
+
+  background: none;
 
   @include flex-row(16px);
   @include light-text-font(600);
+
+  @include on-tablet {
+    justify-content: end;
+  }
 }

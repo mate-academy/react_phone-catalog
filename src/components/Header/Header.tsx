@@ -12,15 +12,17 @@ export const Header = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      const params = new URLSearchParams(searchParams);
+      setSearchParams(prevParams => {
+        if (currQuery.length === 0) {
+          prevParams.delete('query');
+        } else {
+          prevParams.set('query', currQuery);
+        }
 
-      if (currQuery.length === 0) {
-        params.delete('query');
-      } else {
-        params.set('query', currQuery);
-      }
+        prevParams.delete('page');
 
-      setSearchParams(params);
+        return prevParams;
+      });
     }, 1000);
 
     return () => clearTimeout(timer);

@@ -1,11 +1,14 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './BackButton.module.scss';
+import React from 'react';
 
-export const BackButton = () => {
-  const navigate = useNavigate();
+type Props = {
+  path: string;
+};
 
+export const BackButton: React.FC<Props> = ({ path }) => {
   return (
-    <button className={styles.button} onClick={() => navigate(-1)}>
+    <Link to={path} className={styles.backLink}>
       <img
         className={styles.icon}
         src="/img/icons/arrow-left.svg"
@@ -13,6 +16,6 @@ export const BackButton = () => {
       />
 
       <span className={styles.text}>Back</span>
-    </button>
+    </Link>
   );
 };

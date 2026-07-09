@@ -5,7 +5,7 @@ import { FooterNav } from '../../types/FooterNav';
 export const Footer = () => {
   return (
     <footer>
-      <div className={styles.container}>
+      <div className={styles.content}>
         <Link to="/" className={styles.logo}>
           <img
             className={styles.img}
@@ -29,16 +29,14 @@ export const Footer = () => {
           ))}
         </ul>
 
-        <div className={styles.wrapper}>
-          <button
-            className={styles.backToTop}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          >
-            <span>Back to top</span>
+        <button
+          className={styles.backToTop}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <span>Back to top</span>
 
-            <img src="/img/icons/back-to-top.svg" alt="Arrow up" />
-          </button>
-        </div>
+          <img src="/img/icons/back-to-top.svg" alt="Arrow up" />
+        </button>
       </div>
     </footer>
   );

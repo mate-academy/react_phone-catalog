@@ -56,6 +56,7 @@ export const ProductDetailsPage = () => {
       .then(setProduct)
       .catch(() => setError(true))
       .finally(() => setLoading(false));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [type, id]);
 
   useEffect(() => {
@@ -110,7 +111,7 @@ export const ProductDetailsPage = () => {
         <BreadCrumbs elements={breadCrumbsElements} />
 
         <div className={styles.elementsOfTop}>
-          <BackButton />
+          <BackButton path={`/${type}`} />
 
           <h1 className={styles.title}>{product.name}</h1>
         </div>
