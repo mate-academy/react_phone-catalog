@@ -1,0 +1,44 @@
+@import '../../styles/fonts';
+@import '../../styles/variables';
+
+.colorPicker {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__label,
+  &__id {
+    @include font-small-text;
+
+    color: $secondary-color;
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    outline: 2px solid #e2e6e9;
+    cursor: pointer;
+    transition: outline-color 0.2s;
+
+    &--active {
+      outline-color: #313237;
+    }
+
+    &:hover:not(&--active) {
+      outline-color: #b4bdc3;
+    }
+  }
+}

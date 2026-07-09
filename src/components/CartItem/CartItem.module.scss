@@ -1,0 +1,109 @@
+// CartItem.module.scss
+@import '../../styles/variables';
+@import '../../styles/fonts';
+@import '../../styles/mixins';
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid $elements-color;
+  width: 100%;
+
+  @include on-tablet {
+    flex-direction: row; // планшет — один рядок
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      flex: 1;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__remove {
+    flex-shrink: 0;
+    opacity: 0.4;
+    cursor: pointer;
+    background: none;
+    border: none;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  &__name {
+    @include font-body;
+
+    color: $primary-color;
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    &__btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid #b4bdc3;
+      background: transparent;
+      cursor: pointer;
+
+      @include font-body;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+    }
+
+    &__value {
+      @include font-body;
+
+      color: $primary-color;
+
+      width: 24px;
+      text-align: center;
+    }
+  }
+
+  &__price {
+    @include font-h3;
+
+    color: $primary-color;
+    min-width: 80px;
+  }
+}

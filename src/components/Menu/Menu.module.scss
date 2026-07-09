@@ -1,0 +1,136 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $white-color;
+
+  &__actions {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #e2e6e9;
+    &__btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 64px;
+      width: 50vw;
+      box-sizing: border-box;
+      background-color: $white-color;
+      cursor: pointer;
+      &:last-child {
+        border-left: 1px solid #e2e6e9;
+      }
+
+      &--active {
+        position: relative;
+
+        &::after {
+          background-color: $primary-color;
+          content: '';
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          height: 3px;
+        }
+      }
+    }
+  }
+
+  &__list {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 16px;
+    &__item {
+      &__link {
+        @include font-uppercase;
+
+        text-decoration: none;
+        font-weight: 800px;
+        font-size: 12px;
+        line-height: 11px;
+        letter-spacing: 4%;
+        color: $secondary-color;
+
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0; // ← було 16px — не працювало
+          right: 0; // ← було 16px — не працювало
+          height: 3px;
+          background: $primary-color;
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.2s ease;
+        }
+
+        &:hover::after {
+          // ← додай hover
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    border-bottom: 1px solid $elements-color;
+    height: $header-height-mobile;
+    box-shadow: 0 1px 0 0 #e2e6e9;
+    &__close {
+      margin-left: auto;
+      display: flex;
+      box-sizing: border-box;
+      border-right: 1px solid $elements-color;
+      border-left: 1px solid $elements-color;
+      padding: 16px;
+      &img {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &__logo {
+      padding-inline: 16px;
+      padding-block: 13px;
+
+      &img {
+        display: block;
+        width: 64px;
+        height: 22px;
+      }
+    }
+  }
+}
+
+.isActive {
+  color: $primary-color;
+
+  &::after {
+    // ← це було відсутнє!
+    transform: scaleX(1);
+  }
+}

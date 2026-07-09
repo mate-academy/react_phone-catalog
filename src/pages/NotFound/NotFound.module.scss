@@ -1,0 +1,23 @@
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.notFound {
+  &__title {
+    @include font-h1-mobile;
+
+    @include on-tablet {
+      @include font-h1;
+    }
+  }
+
+  &__img {
+    object-fit: cover;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

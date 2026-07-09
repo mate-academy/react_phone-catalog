@@ -1,0 +1,49 @@
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.favorites {
+  &__flex {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    padding-inline: 16px;
+
+    @include on-tablet {
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      padding-inline: 32px;
+    }
+  }
+  &__title {
+    margin-top: 24px;
+
+    @include font-h1-mobile;
+
+    @include on-tablet {
+      margin-top: 40px;
+
+      @include font-h1;
+    }
+  }
+
+  &__quentites {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: #89939a;
+  }
+  &__productsList {
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+}

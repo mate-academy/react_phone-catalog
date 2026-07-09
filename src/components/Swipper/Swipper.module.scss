@@ -1,0 +1,127 @@
+@import '/src/styles/mixins';
+@import '/src/styles/variables';
+
+.wrapper {
+  position: relative;
+  display: flex;
+
+  align-items: center;
+  width: 100%;
+
+  &__swiper {
+    width: 100%;
+    height: 352px;
+
+    @include on-tablet {
+      height: 189px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+
+    :global(.swiper-slide) {
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+    }
+  }
+
+  &__button {
+    display: none;
+    background-color: #fff;
+
+    &--left {
+      order: -1;
+
+      @include on-tablet {
+        margin-right: 19px;
+      }
+
+      @include on-desktop {
+        margin-right: 16px;
+      }
+    }
+
+    &--right {
+      order: 1;
+
+      @include on-tablet {
+        margin-left: 19px;
+      }
+
+      @include on-desktop {
+        margin-left: 16px;
+      }
+    }
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 32px;
+      height: 189px;
+      border: 1px solid $elements-color;
+
+      background: none;
+      cursor: pointer;
+      transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+      z-index: 10;
+
+      img {
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
+      }
+
+      &:hover {
+        border-color: $primary-color;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+}
+
+.pagination {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+
+  :global(.swiper-pagination-bullet) {
+    width: 14px !important;
+    height: 4px !important;
+    border-radius: 2px !important;
+    background: $primary-color !important;
+    opacity: 0.4 !important;
+    transition:
+      opacity 0.2s ease,
+      width 0.2s ease;
+    cursor: pointer;
+    margin: 0 !important;
+    display: inline-block !important; // ← Swiper іноді ставить display:none
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    opacity: 1 !important;
+    width: 20px !important;
+  }
+}

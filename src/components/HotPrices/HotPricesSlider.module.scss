@@ -1,0 +1,90 @@
+@import '../../styles/fonts';
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.slider {
+  &__titleBreak {
+    display: block;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__btns {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid $icons-color;
+    background-color: $white-color;
+    cursor: pointer;
+
+    background-repeat: no-repeat;
+    background-position: center;
+
+    transition: all 0.2s ease;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $primary-color;
+    }
+    &--left {
+      background-image: url(/public/img/icons/arrowLeftBtn.svg);
+    }
+    &--right {
+      background-image: url(/public/img/icons/arrowRightBtn.svg);
+    }
+  }
+  &__title {
+    @include font-h2-mobile;
+
+    @include on-tablet {
+      @include font-h2;
+    }
+  }
+  &__container {
+    :global(.swiper-slide) {
+      height: auto !important;
+      width: 212px !important;
+
+      @include on-tablet {
+        width: 237px !important;
+      }
+
+      @include on-desktop {
+        width: auto !important;
+      }
+    }
+
+    &__swSlider {
+      height: auto !important;
+      width: 212px !important;
+
+      @include on-tablet {
+        width: 237px !important;
+      }
+
+      @include on-desktop {
+        width: auto !important;
+      }
+    }
+  }
+}

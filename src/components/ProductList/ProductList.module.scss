@@ -1,0 +1,17 @@
+@import '../../styles/mixins';
+
+.productsList {
+  margin-top: 24px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr;
+  gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

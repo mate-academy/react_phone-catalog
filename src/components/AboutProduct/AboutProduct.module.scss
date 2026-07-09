@@ -1,0 +1,41 @@
+@import '../../styles/fonts';
+@import '../../styles/mixins';
+
+.AboutProduct {
+  &__top {
+    width: 100%;
+    margin-bottom: 16px;
+    &__title {
+      @include font-h3-mobile;
+
+      @include on-tablet {
+        @include font-h3;
+      }
+    }
+  }
+  &__main {
+    margin-bottom: 32px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    background: #e2e6e9;
+  }
+  &__titelSection {
+    margin-bottom: 16px;
+
+    @include font-h4-mobile;
+
+    @include on-tablet {
+      @include font-h4;
+    }
+  }
+  &__text {
+    @include font-body;
+
+    color: $secondary-color;
+  }
+}

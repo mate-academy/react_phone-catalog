@@ -1,0 +1,117 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.footer {
+  --column: 4;
+
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(var(--column), 1fr);
+  flex-direction: column;
+  align-items: center;
+  gap: 32px 16px;
+  border-top: 1px solid #e2e6e9;
+  box-sizing: border-box;
+  padding: 32px 16px;
+
+  @include on-tablet {
+    --column: 12;
+
+    flex-direction: row;
+    justify-content: center;
+
+    padding-inline: 32px;
+    row-gap: 0;
+  }
+
+  @include on-desktop {
+    --column: 24;
+
+    grid-template-columns: repeat(var(--column), 32px);
+  }
+  &__logo {
+    grid-column: 1/-1;
+    height: 32px;
+    width: 89px;
+
+    @include on-tablet {
+      grid-column: 1/5;
+    }
+
+    @include on-desktop {
+      grid-column: 1/9;
+    }
+  }
+
+  &__list {
+    grid-column: 1/-1;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      grid-column: 5/9;
+    }
+
+    @include on-desktop {
+      grid-column: 9/17;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $secondary-color;
+
+    @include font-uppercase;
+
+    line-height: 11px;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__back {
+    grid-column: 1/-1;
+    display: flex;
+    justify-content: center;
+    color: $secondary-color;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      grid-column: 9/-1;
+      justify-content: end;
+    }
+
+    @include on-desktop {
+      grid-column: 17/-1;
+    }
+    &__text {
+      margin: 0;
+
+      @include font-small-text;
+    }
+    &__button {
+      width: 32px;
+      height: 32px;
+      background-image: url('/img/icons/BtnBack.svg');
+      border: 1px solid $elements-color;
+      cursor: pointer;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: $white-color;
+    }
+  }
+}

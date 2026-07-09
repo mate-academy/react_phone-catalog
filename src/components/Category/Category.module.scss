@@ -1,0 +1,57 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+.category {
+  &__info {
+    margin-top: 24px;
+    &__title {
+      @include font-h3-mobile;
+
+      margin-bottom: 4px;
+    }
+    &__quentites {
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      color: #89939a;
+    }
+  }
+  &__content {
+    row-gap: 32px;
+
+    @include on-grid;
+
+    @include on-tablet {
+      row-gap: 0;
+    }
+  }
+  &__item {
+    grid-column: 1/-1;
+    min-width: 0;
+
+    @include on-tablet {
+      grid-column: span 4;
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+  &__link {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease-in-out;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
