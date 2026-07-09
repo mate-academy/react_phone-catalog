@@ -1,0 +1,47 @@
+@use '../../../../styles/mixins.scss';
+
+.techSpecs {
+    @include mixins.on-desktop {
+        flex-basis: 512px;
+    }
+}
+
+.title {
+    margin: 0;
+    margin-bottom: 30px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-surface-devider);
+
+    @include mixins.typography(700, 20px, 1);
+    
+    color: var(--color-primary);
+
+    @include mixins.on-tablet {
+        @include mixins.typography(800, 22px, 1.4);
+    }
+}
+
+.list {
+    @include mixins.flex-column(8px);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 8px;
+    align-items: start;
+}
+
+.label {
+    @include mixins.typography(500, 14px, 21px);
+
+    color: var(--color-secondary);
+}
+
+.value {
+    @include mixins.typography(500, 14px, 21px);
+
+    color: var(--color-primary);
+    text-align: right;
+    word-break: break-word;
+}

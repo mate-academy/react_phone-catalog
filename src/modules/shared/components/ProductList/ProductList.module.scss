@@ -1,0 +1,23 @@
+@use '../../../../styles/variables.scss' as v;
+@use '../../../../styles/mixins.scss';
+
+.sliderTrack {
+  display: flex;
+  gap: 16px;
+  transition: v.$transition;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+
+  @include mixins.on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  @include mixins.on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

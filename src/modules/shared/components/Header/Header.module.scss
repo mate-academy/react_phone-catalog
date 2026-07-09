@@ -1,0 +1,254 @@
+@use '../../../../styles/variables.scss' as v;
+@use '../../../../styles/mixins.scss';
+
+.header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 110;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  background-color: var(--color-bg);
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background-color: var(--color-surface-devider);
+  }
+
+  @include mixins.on-tablet {
+    gap: 16px;
+  }
+
+  @include mixins.on-desktop {
+    height: 64px;
+    gap: 24px;
+  }
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  padding: 13px 16px;
+  overflow: hidden;
+
+  @include mixins.on-desktop {
+    padding: 18px 24px;
+  }
+}
+
+.logo {
+  display: block;
+}
+
+.nav {
+  height: 100%;
+  display: none;
+
+  @include mixins.on-tablet {
+    display: block;
+  }
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @include mixins.on-desktop {
+    gap: 64px;
+  }
+}
+
+.navItem {
+  @include mixins.on-tablet {
+    height: 100%;
+  }
+}
+
+.actions {
+  display: none;
+
+  @include mixins.on-tablet {
+    display: flex;
+    margin-left: auto;
+  }
+
+  @include mixins.on-desktop {
+    height: 64px;
+  }
+}
+
+.actionsLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-left: 1px solid var(--color-surface-devider);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-primary);
+
+    opacity: 0;
+    transition: opacity v.$transition;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
+  @include mixins.on-desktop {
+    padding: 24px;
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+
+  @include mixins.on-desktop {
+    width: 24px;
+    height: 24px;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.cartBadge {
+  @include mixins.flex-center;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  min-width: 14px;
+  height: 14px;
+
+  @include mixins.typography(600, 9px, 1);
+
+  color: var(--color-white);
+  background-color: var(--color-badge);
+  border-radius: 50%;
+  transition:
+    background-color v.$transition,
+    color v.$transition;
+}
+
+.search {
+  width: 40%;
+  height: 40px;
+  padding: 0 10px;
+
+  border: 1px solid var(--color-surface-devider);
+  border-radius: var(--radius-button);
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+
+  @include mixins.typography(600, 14px, 21px);
+
+  outline: none;
+
+  transition:
+    border-color v.$transition,
+    box-shadow v.$transition,
+    background-color v.$transition;
+
+  &::placeholder {
+    color: var(--color-secondary);
+  }
+
+  &:hover {
+    border-color: var(--color-select-hover-border);
+    background-color: var(--color-control);
+  }
+
+  &:focus {
+    border-color: var(--color-select-focus);
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  @include mixins.on-tablet {
+    display: none;
+  }
+}
+
+.menuLink {
+  @include mixins.typography(800, 12px, 11px, 0.04em);
+
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--color-nav-text-header);
+
+  @include mixins.on-tablet {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    transition: color v.$transition;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background-color: var(--color-nav-hover);
+      opacity: 0;
+    }
+
+    &:hover {
+      color: var(--color-nav-hover);
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  @include mixins.on-desktop {
+    padding: 26px 0;
+  }
+}
+
+.menuButton {
+  @include mixins.flex-center;
+
+  padding: 16px;
+  border: none;
+  border-left: 1px solid var(--color-surface-devider);
+  background-color: transparent;
+  cursor: pointer;
+
+  @include mixins.on-tablet {
+    display: none;
+  }
+}

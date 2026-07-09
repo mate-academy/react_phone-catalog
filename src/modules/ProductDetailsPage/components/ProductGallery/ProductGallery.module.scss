@@ -1,0 +1,81 @@
+@use '../../../../styles/variables.scss' as v;
+@use '../../../../styles/mixins.scss';
+
+.gallery {
+    margin-bottom: 40px;
+
+    @include mixins.on-tablet {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 16px;
+        margin-bottom: 0;
+    }
+}
+
+.mainImageWrapper {
+    @include mixins.flex-center;
+
+    width: 100%;
+    max-width: 288px;
+    aspect-ratio: 1/1;
+    margin-bottom: 16px;
+
+    @include mixins.on-tablet {
+        margin-bottom: 0;
+    }
+}
+
+.mainImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    @include mixins.on-tablet {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+}
+
+.thumbnail {
+    @include mixins.flex-center;
+
+    width: 51px;
+    height: 49px;
+    padding: 0;
+    border: 1px solid var(--color-control-disabled);
+    border-radius: var(--radius-details);
+    background-color: var(--color-bg);
+    transition: border-color v.$transition;
+    cursor: pointer;
+
+    &:not(.active):hover {
+        border-color: var(--color-hover);
+    }
+
+    @include mixins.on-tablet {
+        width: 35px;
+        height: 35px;
+    }
+
+    @include mixins.on-desktop {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+.active {
+    border-color: var(--color-primary);
+    cursor: not-allowed;
+}
+
+.thumbnailImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

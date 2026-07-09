@@ -1,0 +1,40 @@
+@use '../../styles/mixins.scss';
+
+.main {
+    margin-bottom: 56px;
+
+    @include mixins.on-tablet {
+        margin-bottom: 64px;
+    }
+
+    @include mixins.on-desktop {
+        margin-bottom: 80px;
+    }
+}
+
+.title {
+    margin: 0;
+    margin-bottom: 8px;
+
+    @include mixins.typography(800, 32px, 41px, -0.01em);
+    
+    color: var(--color-primary);
+
+    @include mixins.on-tablet {
+        font-size: 48px;
+        line-height: 56px;
+    }
+}
+
+.amount {
+    margin: 0;
+    margin-bottom: 32px;
+
+    @include mixins.typography(600, 14px, 21px);
+
+    color: var(--color-secondary);
+
+    @include mixins.on-tablet {
+        margin-bottom: 40px;
+    }
+}

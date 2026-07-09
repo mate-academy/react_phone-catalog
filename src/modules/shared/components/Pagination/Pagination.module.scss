@@ -1,0 +1,70 @@
+@use '../../../../styles/variables.scss' as v;
+@use '../../../../styles/mixins.scss';
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+  margin-bottom: 64px;
+
+  @include mixins.on-tablet {
+    margin-top: 40px;
+  }
+
+  @include mixins.on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.pageList {
+    display: flex;
+    gap: 8px;
+}
+
+.arrowButton {
+  @include mixins.flex-center;
+
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-control);
+  border: 1px solid var(--color-icons);
+  border-radius: var(--radius-button);
+  transition:
+    border-color v.$transition,
+    background-color v.$transition;
+  cursor: pointer;
+
+  &:disabled {
+    border: 1px solid var(--color-control-disabled);
+    background-color: var(--color-bg);
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):hover {
+    border-color: var(--color-control-hover-border);
+    background-color: var(--color-control-hover-bg);
+  }
+}
+
+.pageButton {
+  width: 32px;
+  height: 32px;
+  color: var(--color-primary);
+  border: 1px solid var(--color-surface-border);
+  border-radius: var(--radius-button);
+  background-color: var(--color-surface);
+  transition: border-color v.$transition;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--color-control-hover-border);
+  }
+}
+
+.active {
+  color: var(--color-control-default-text);
+  background-color: var(--color-control-default-bg);
+  border: var(--color-control-default-border);
+}

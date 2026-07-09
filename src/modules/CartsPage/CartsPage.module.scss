@@ -1,0 +1,139 @@
+@use '../../styles/variables.scss' as v;
+@use '../../styles/mixins.scss';
+
+.main {
+    margin: 24px 0 56px;
+
+    @include mixins.on-tablet {
+        margin: 40px 0 64px;
+    }
+
+    @include mixins.on-desktop {
+        margin-bottom: 80px;
+    }
+}
+
+.back {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 24px;
+}
+
+.backButton {
+    display: flex;
+    align-items: center;
+
+    @include mixins.typography(700, 12px, 1);
+
+    color: var(--color-nav-text-footer);
+    text-decoration: none;
+    border: none;
+    background-color: transparent;
+    transition: color v.$transition;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--color-primary);
+    }
+}
+
+.title {
+    margin: 0;
+    margin-bottom: 32px;
+
+    @include mixins.typography(800, 32px, 41px, -0.01em);
+
+    color: var(--color-primary);
+}
+
+.empty {
+    margin: 0;
+
+    @include mixins.typography(600, 14px, 21px);
+
+    color: var(--color-secondary);
+}
+
+.cartContent {
+    display: block;
+
+    @include mixins.on-desktop {
+        display: flex;
+        gap: 16px;
+    }
+}
+
+.list {
+    @include mixins.flex-column(16px);
+
+    margin-bottom: 32px;
+
+    @include mixins.on-desktop {
+        margin-bottom: 0;
+    }
+}
+
+.summary {
+    border: 1px solid var(--color-control-disabled);
+    border-radius: var(--radius-add-card);
+    transition: border-color v.$transition;
+
+    &:hover {
+        border-color: var(--color-hover);
+    }
+
+    @include mixins.on-desktop {
+        height: 206px;
+        flex: 1;
+    }
+}
+
+.summaryContent {
+    margin-bottom: 16px;
+    padding: 24px 24px 0;
+}
+
+.summaryPrice {
+    margin: 0;
+
+    @include mixins.typography(800, 32px, 41px, -0.01em);
+
+    text-align: center;
+    color: var(--color-primary);
+}
+
+.summaryText {
+    margin: 0;
+
+    @include mixins.typography(600, 14px, 21px);
+
+    text-align: center;
+    color: var(--color-secondary);
+
+    border-bottom: 1px solid var(--color-surface-devider);
+    padding-bottom: 16px;
+}
+
+.summaryAction {
+    padding: 0 24px 24px;
+}
+
+.checkoutButton {
+    @include mixins.flex-center;
+
+    width: 100%;
+    height: 48px;
+    padding: 0;
+    border: none;
+
+    @include mixins.typography(700, 14px, 21px);
+    
+    color: var(--color-white);
+    background-color: var(--color-button-primary);
+    transition: box-shadow v.$transition;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: v.$shadow-hover;
+    }
+}

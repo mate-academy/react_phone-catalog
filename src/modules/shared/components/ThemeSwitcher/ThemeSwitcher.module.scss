@@ -1,0 +1,56 @@
+@use '../../../../styles/mixins.scss';
+@use '../../../../styles/variables.scss' as v;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.label {
+  @include mixins.typography(600, 14px, 21px);
+
+  color: var(--color-secondary);
+  text-transform: uppercase;
+}
+
+.themeSwitcher {
+  display: flex;
+  align-items: center;
+  width: 36px;
+  height: 20px;
+  padding: 2px;
+  border: none;
+  border-radius: 20px;
+  background-color: var(--color-control-disabled);
+  cursor: pointer;
+  transition: background-color v.$transition;
+
+  @include mixins.on-desktop {
+    width: 40px;
+    height: 24px;
+  }
+}
+
+.active {
+  background-color: var(--color-accent);
+}
+
+.thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  transform: translateX(0);
+  transition: transform v.$transition;
+
+  @include mixins.on-desktop {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.active .thumb {
+  transform: translateX(16px);
+}

@@ -1,0 +1,245 @@
+@use '../../../../styles/variables.scss' as v;
+@use '../../../../styles/mixins.scss';
+
+.section {
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.title {
+    margin: 0;
+
+    @include mixins.typography(600, 12px, 1);
+    
+    color: var(--color-secondary);
+}
+
+.productId {
+    margin-left: auto;
+
+    @include mixins.typography(700, 12px, 1);
+
+    color: var(--color-secondary);
+}
+
+.inner {
+    @include mixins.on-desktop {
+        max-width: 320px;
+    }
+}
+
+.colors {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--color-surface-devider);
+}
+
+.colorButton {
+    @include mixins.flex-center;
+
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 36px;
+    border: 1px solid var(--color-circle-default-border);
+    transition: border-color v.$transition;
+    cursor: pointer;
+
+    &:not(.active):hover {
+        border-color: var(--color-circle-hover-border);
+    }
+
+    &.active {
+      border-color: var(--color-primary);
+      cursor: not-allowed;
+    }
+}
+
+.colorCircle {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 36px;
+    border: 2px solid var(--color-circle);
+}
+
+.sect {
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--color-surface-devider);
+}
+
+.sectionTitle {
+    margin: 0;
+    margin-bottom: 8px;
+
+    @include mixins.typography(600, 12px, 1);
+
+    color: var(--color-secondary);
+}
+
+.margin {
+    margin-top: 24px;
+    margin-bottom: 32px;
+}
+
+.capacityList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.capacityButton {
+    @include mixins.typography(500, 14px, 21px);
+
+    height: 32px;
+    padding: 0;
+    padding-inline: 8px;
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    border: 1px solid var(--color-hover);
+    border-radius: var(--radius-details);
+    transition:
+      border-color v.$transition,
+      box-shadow v.$transition;
+    cursor: pointer;
+
+    &:not(.capacityButtonActive):hover {
+      border-color: var(--color-primary);
+      box-shadow: v.$shadow-hover;
+    }
+}
+
+.capacityButtonActive {
+    padding: 0;
+    padding-inline: 8px;
+    color: var(--color-bg);
+    background-color: var(--color-primary);
+    border: none;
+    cursor: not-allowed;
+}
+
+.priceSection {
+    margin-bottom: 32px;
+}
+
+.price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.currentPrice {
+    @include mixins.typography(800, 32px, 41px, -0.01em);
+
+    color: var(--color-primary);
+}
+
+.oldPrice {
+    @include mixins.typography(500, 22px, 1);
+
+    text-decoration: line-through;
+    color: var(--color-secondary);
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.selected {
+    flex: 1;
+    
+    @include mixins.typography(700, 14px, 21px);
+
+    color: var(--color-control-selected-text);
+    background-color: var(--color-control-selected-bg);
+    border: 1px solid var(--color-control-selected-border);
+    border-radius: var(--radius-button-main);
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+.addToCart {
+    @include mixins.flex-center;
+    @include mixins.typography(700, 14px, 21px);
+
+    flex: 1;
+    padding: 0;
+    height: 48px;
+    color: var(--color-control-default-text);
+    background-color: var(--color-control-default-bg);
+    border: var(--color-control-default-border);
+    border-radius: var(--radius-button-main);
+    transition: box-shadow v.$transition;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: v.$shadow-hover;
+    }
+
+    &:disabled {
+      color: var(--color-control-selected-text);
+      background-color: var(--color-control-selected-bg);
+      cursor: default;
+      box-shadow: none;
+    }
+
+    &:not(:disabled):hover {
+      box-shadow: v.$shadow-hover;
+    }
+}
+
+.favouriteButton {
+    @include mixins.flex-center;
+
+    padding: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-button);
+    transition:
+    border v.$transition,
+    background-color v.$transition;
+    border: 1px solid var(--color-icons);
+    background-color: var(--color-control);
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-control-hover-bg);
+      border: 1px solid var(--color-control-hover-border);
+    }
+}
+
+.favouriteButtonActive {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-control-disabled);
+}
+
+.specs {
+    @include mixins.flex-column(8px);
+}
+
+.specRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.specName {
+    @include mixins.typography(600, 12px, 1);
+
+    color: var(--color-secondary);
+}
+
+.specValue {
+    @include mixins.typography(600, 12px, 1);
+
+    color: var(--color-primary);
+}

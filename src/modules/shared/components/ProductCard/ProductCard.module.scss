@@ -1,0 +1,198 @@
+@use '../../../../styles/variables.scss' as v;
+@use '../../../../styles/mixins.scss';
+
+.card {
+  flex: 0 0 212px;
+  border: 1px solid var(--color-surface-border);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-card);
+  transition: border-color v.$transition;
+
+  @include mixins.on-tablet {
+    flex: 0 0 237px;
+  }
+
+  @include mixins.on-desktop {
+    flex: 0 0 272px;
+  }
+
+  &:hover {
+    border-color: var(--color-icons);
+  }
+}
+
+.cardContent {
+  display: grid;
+  row-gap: 8px;
+  grid-template-rows: auto auto auto 1fr auto;
+  height: 100%;
+  padding: 32px;
+}
+
+.imageLink {
+  @include mixins.flex-center;
+
+  height: 129px;
+  text-decoration: none;
+  
+  @include mixins.on-tablet {
+    height: 173px;
+  }
+
+  @include mixins.on-desktop {
+    height: 196px;
+  }
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform v.$transition;
+}
+
+.imageLink:hover .image {
+  transform: scale(1.1);
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: flex-end;
+  min-height: 63px;
+}
+
+.title {
+  margin: 0;
+  
+  @include mixins.typography(600, 14px, 21px);
+
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.priceBlock {
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-surface-devider);
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  margin: 0;
+  margin-right: 8px;
+
+  @include mixins.typography(800, 22px, 1.4);
+
+  color: var(--color-primary);
+}
+
+.oldPrice {
+  @include mixins.typography(600, 22px, 1);
+
+  color: var(--color-secondary);
+  text-decoration: line-through;
+}
+
+.specs {
+  @include mixins.flex-column(8px);
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.specName {
+  @include mixins.typography(700, 12px, 1);
+
+  color: var(--color-secondary);
+}
+
+.specValue {
+  @include mixins.typography(700, 12px, 1);
+
+  color: var(--color-primary);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  align-self: end;
+}
+
+.addToCart {
+  flex: 1;
+  height: 40px;
+
+  @include mixins.typography(700, 14px, 21px);
+
+  text-align: center;
+  padding: 0;
+  color: var(--color-control-default-text);
+  background-color: var(--color-control-default-bg);
+  border: var(--color-control-default-border);
+  border-radius: var(--radius-button-main);
+  transition: box-shadow v.$transition;
+  cursor: pointer;
+  
+  &:hover {
+    box-shadow: v.$shadow-hover;
+  }
+
+  &:disabled {
+    color: var(--color-control-selected-text);
+    background-color: var(--color-control-selected-bg);
+    cursor: default;
+    box-shadow: none;
+  }
+
+  &:not(:disabled):hover {
+    box-shadow: v.$shadow-hover;
+  }
+}
+
+.selected {
+  flex: 1;
+  height: 40px;
+
+  @include mixins.typography(700, 14px, 21px);
+
+  text-align: center;
+  padding: 0;
+  color: var(--color-control-selected-text);
+  background-color: var(--color-control-selected-bg);
+  border: 1px solid var(--color-control-selected-border);
+  border-radius: var(--radius-button-main);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.favouriteButton {
+  @include mixins.flex-center;
+
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--color-icons);
+  border-radius: var(--radius-button);
+  background-color: var(--color-control);
+  transition:
+    border-color v.$transition,
+    background-color v.$transition;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-control-hover-bg);
+    border: 1px solid var(--color-control-hover-border);
+  }
+}
+
+.favouriteButtonActive {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-control-disabled);
+}

@@ -1,0 +1,25 @@
+@use '../../../../styles/mixins';
+
+.main {
+    margin: 24px 0 64px;
+
+    @include mixins.on-tablet {
+        margin: 32px 0 64px;
+    }
+
+    @include mixins.on-desktop {
+        margin: 56px 0 80px;
+    }
+}
+
+.sections {
+    @include mixins.flex-column(56px);
+    
+    @include mixins.on-tablet {
+        gap: 64px;
+    }
+
+    @include mixins.on-desktop {
+        gap: 80px;
+    }
+}

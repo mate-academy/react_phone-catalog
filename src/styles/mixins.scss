@@ -1,0 +1,44 @@
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin grid-columns($columns, $column-width: 1fr, $gap) {
+  display: grid;
+  grid-template-columns: repeat($columns, $column-width);
+  gap: $gap;
+}
+
+@mixin hover-scale($scale: 1.1) {
+  overflow: hidden;
+
+  &:hover .image {
+    transform: scale($scale);
+  }
+}
+
+@mixin typography($weight, $size, $line-height, $letter-spacing: 0) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column($gap: 0) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}

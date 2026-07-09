@@ -1,0 +1,131 @@
+@use '../../../../styles/variables.scss' as v;
+@use '../../../../styles/mixins';
+
+.bannerSlider {
+  margin-bottom: 56px;
+
+  @include mixins.on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include mixins.on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.bannerInner {
+  @include mixins.on-tablet {
+    max-width: v.$container-width;
+    margin: 0 auto;
+    padding-inline: 24px;
+  }
+
+  @include mixins.on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+.arrowLeft {
+  display: none;
+
+  @include mixins.on-tablet {
+    display: flex;
+    grid-column: 1 / 2;
+  }
+}
+
+.arrowRight {
+  display: none;
+
+  @include mixins.on-tablet {
+    display: flex;
+    grid-column: 12 / 13;
+  }
+
+  @include mixins.on-desktop {
+    grid-column: -1 / -2;
+  }
+}
+
+.arrowLeft,
+.arrowRight {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0;
+  border: 1px solid var(--color-icons);
+  border-radius: var(--radius-button);
+  background-color: var(--color-control);
+  transition:
+    border-color v.$transition,
+    border-radius v.$transition;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--color-control-hover-border);
+    background-color: var(--color-control-hover-bg);
+  }
+}
+
+.viewport {
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  grid-column: 1 / -1;
+
+  @include mixins.on-tablet {
+    grid-column: 2 / 12;
+    aspect-ratio: 490 / 189;
+  }
+
+  @include mixins.on-desktop {
+    grid-column: 2 / -2;
+    aspect-ratio: 1040 / 400;
+  }
+}
+
+.track {
+  display: flex;
+  height: 100%;
+  transition: transform v.$transition;
+}
+
+.slide {
+  flex: 0 0 100%;
+  height: 100%;
+}
+
+.slideImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dots {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.dot {
+  @include mixins.flex-center;
+
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    width: 14px;
+    height: 4px;
+    background-color: var(--color-control-disabled);
+  }
+}
+
+.activeDot::before {
+  background-color: var(--color-primary);
+}
