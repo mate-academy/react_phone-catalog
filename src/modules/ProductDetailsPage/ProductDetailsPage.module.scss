@@ -1,0 +1,408 @@
+.productDetailsPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font: Montserrat, sans-serif;
+
+  .loader,
+  .error {
+    text-align: center;
+    padding: 50px;
+  }
+
+  .error {
+    p {
+      font-size: 18px;
+      color: #dc3545;
+    }
+  }
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #6c757d;
+
+    .backButton {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 16px;
+      transition: background 0.3s;
+
+      &:hover {
+        background: #e9ecef;
+      }
+    }
+  }
+
+  .productContent {
+    display: grid;
+    grid-template-columns: auto 1fr 380px;
+    gap: 20px 40px;
+    margin-bottom: 60px;
+    align-items: start;
+
+    .productImages {
+      grid-column: 1 / 2;
+      grid-row: 1;
+      display: flex;
+      gap: 12px;
+
+      .mainImage {
+        order: 2;
+        margin-left: 8px;
+
+        img {
+          width: 380px;
+          height: 380px;
+          object-fit: contain;
+          background: #f8f9fa;
+          border-radius: 8px;
+        }
+      }
+
+      .thumbnailImages {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        order: 1;
+
+        img {
+          width: 56px;
+          height: 56px;
+          object-fit: cover;
+          cursor: pointer;
+          border-radius: 6px;
+          opacity: 0.6;
+          transition: opacity 0.3s, border 0.3s;
+          border: 2px solid transparent;
+
+          &.active {
+            opacity: 1;
+            border-color: #313237;
+          }
+
+          &:hover {
+            opacity: 1;
+            border-color: #313237;
+          }
+        }
+      }
+    }
+
+    .productInfo {
+      grid-column: 3;
+      grid-row: 1;
+
+      h1 {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        line-height: 1.3;
+      }
+
+      .price {
+        margin-bottom: 24px;
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+
+        .currentPrice {
+          font-size: 32px;
+          font-weight: 700;
+          color: #222;
+        }
+
+        .oldPrice {
+          font-size: 18px;
+          color: #7a7a7a;
+          text-decoration: line-through;
+        }
+      }
+
+      .options {
+        margin-bottom: 24px;
+
+        .option {
+          margin-bottom: 24px;
+
+          > span {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            color: #222;
+            margin-bottom: 12px;
+          }
+
+          .colorOptions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+          }
+
+          .colorOption {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid #e9ecef;
+            cursor: pointer;
+            transition: border-color 0.3s, transform 0.2s;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: none;
+            padding: 0;
+
+            &.active {
+              border-color: #222;
+              transform: scale(1.1);
+            }
+
+            &:hover {
+              border-color: #222;
+            }
+
+            // Color backgrounds - map common color names
+            &[title="Black"] {
+              background: #000;
+            }
+            &[title="black"] {
+              background: #000;
+            }
+            &[title="White"] {
+              background: #fff;
+              border-color: #ccc;
+            }
+            &[title="white"] {
+              background: #fff;
+              border-color: #ccc;
+            }
+            &[title="Gold"] {
+              background: #d4af37;
+            }
+            &[title="gold"] {
+              background: #d4af37;
+            }
+            &[title="Silver"] {
+              background: #c0c0c0;
+            }
+            &[title="silver"] {
+              background: #c0c0c0;
+            }
+            &[title="Graphite"] {
+              background: #565656;
+            }
+            &[title="graphite"] {
+              background: #565656;
+            }
+            &[title="Blue"] {
+              background: #1f4788;
+            }
+            &[title="blue"] {
+              background: #1f4788;
+            }
+            &[title="Green"] {
+              background: #2d5016;
+            }
+            &[title="green"] {
+              background: #2d5016;
+            }
+            &[title="Purple"] {
+              background: #9b59b6;
+            }
+            &[title="purple"] {
+              background: #9b59b6;
+            }
+            &[title="Red"] {
+              background: #e74c3c;
+            }
+            &[title="red"] {
+              background: #e74c3c;
+            }
+            &[title="Pink"] {
+              background: #ffb6c1;
+            }
+            &[title="pink"] {
+              background: #ffb6c1;
+            }
+          }
+
+          .capacityOptions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+          }
+
+          .capacityOption {
+            padding: 8px 14px;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+            font-size: 14px;
+
+            input {
+              opacity: 0;
+              width: 0;
+              height: 0;
+              margin: 0;
+              padding: 0;
+            }
+
+            span {
+              font-size: 14px;
+              color: #222;
+              font-weight: 500;
+            }
+
+            &:hover {
+              border-color: #222;
+            }
+
+            &:has(input:checked) {
+              border-color: #222;
+              background: #f5f5f5;
+              color: #222;
+            }
+          }
+        }
+      }
+
+      .actions {
+        display: flex;
+        gap: 12px;
+
+        .addToCartButton {
+          flex: 1;
+          background: #222;
+          color: white;
+          border: none;
+          padding: 14px 20px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: 600;
+          transition: background 0.3s;
+
+          &:hover {
+            background: #111;
+          }
+        }
+
+        .favoriteButton {
+          width: 48px;
+          height: 48px;
+          background: white;
+          border: 1px solid #e9ecef;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 20px;
+          color: #666;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s;
+
+          &:hover {
+            border-color: #222;
+            color: #222;
+          }
+
+          &.active {
+            background: #dc3545;
+            border-color: #dc3545;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  .suggestedProducts h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  .productDetails {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+
+    .about {
+      h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #222;
+      }
+
+      > div {
+        margin-bottom: 32px;
+
+        h3 {
+          font-size: 16px;
+          margin-bottom: 10px;
+          color: #222;
+          font-weight: 600;
+        }
+
+        p {
+          margin-bottom: 16px;
+          line-height: 1.7;
+          color: #6c757d;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .techSpecs {
+      h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #222;
+      }
+
+      .specs {
+        display: grid;
+        gap: 12px;
+
+        .spec {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 12px 0;
+          border-bottom: 1px solid #e9ecef;
+
+          .specName {
+            font-size: 14px;
+            color: #6c757d;
+            font-weight: 500;
+          }
+
+          .specValue {
+            font-size: 14px;
+            color: #222;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+
+  .suggestedProducts {
+    .suggestedGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+  }
+}
