@@ -1,0 +1,250 @@
+@use '../../../mixins.scss' as *;
+
+.cart {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  background-color: var(--background);
+  color: var(--text-color);
+  font-family: Inter, sans-serif;
+
+  &__back {
+    margin-bottom: 16px;
+  }
+
+  &__back-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--text-color);
+    }
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 32px;
+  }
+
+  &__empty {
+    font-size: 24px;
+    text-align: center;
+    color: var(--text-muted);
+  }
+
+  &__items {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: 32px 80px 1fr auto;
+    gap: 16px;
+    align-items: center;
+
+    @include card-box;
+
+    padding: 16px;
+  }
+
+  &__item-remove-icon {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: start;
+
+    &:hover {
+      color: var(--text-color);
+    }
+  }
+
+  &__item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  &__item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__item-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  &__item-spec {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  &__item-price {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  &__item-controls {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    justify-self: end;
+  }
+
+  &__item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 4px;
+  }
+
+  &__quantity-btn {
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s;
+
+    &:disabled {
+      color: var(--border-color);
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      color: var(--primary-color);
+    }
+  }
+
+  &__quantity-display {
+    width: 30px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 32px;
+
+    @include on-tablet {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @include on-phone {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+
+  &__summary {
+    @include card-box;
+
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: fit-content;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @include on-phone {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__summary-total {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  &__summary-text {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  &__checkout {
+    width: 100%;
+    padding: 12px 24px;
+    background-color: #a855f7;
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #9333ea;
+    }
+  }
+
+  &__notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #22c55e;
+    color: white;
+    padding: 20px 32px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    animation: slideInNotification 0.3s ease-out;
+  }
+}
+
+@keyframes slide-in-notification {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.section {
+  position: relative;
+}

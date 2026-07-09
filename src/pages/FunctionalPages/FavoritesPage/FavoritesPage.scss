@@ -1,0 +1,126 @@
+@use '../../../mixins.scss' as *;
+
+.favorites {
+  padding: 32px;
+  color: #F1F2F9;
+
+  @include on-tablet {
+    padding: 24px;
+  }
+
+  @include on-phone {
+    padding: 16px;
+  }
+
+  &__title {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    margin-bottom: 32px;
+    color: #F1F2F9;
+  }
+
+  &__empty {
+    font-size: 24px;
+    text-align: center;
+    color: #75767F;
+    padding: 40px 0;
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    background-color: #161827;
+    border: 1px solid #3B3E4A;
+    border-radius: 0;
+    padding: 32px;
+    transition: box-shadow 0.3s ease;
+    box-sizing: border-box;
+
+    &:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  &__item-image {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 16px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__item-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #F1F2F9;
+    line-height: 21px;
+    margin-bottom: 8px;
+  }
+
+  &__item-price {
+    font-size: 22px;
+    font-weight: 800;
+    color: #F1F2F9;
+    margin-bottom: 16px;
+  }
+
+  &__item-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  &__item-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex: 1;
+    background-color: #905BFF;
+    color: white;
+
+    &.added {
+      background-color: #3B3E4A;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(.added) {
+      background-color: #A378FF;
+    }
+
+    &--favorite {
+      flex: 0;
+      width: 40px;
+      height: 40px;
+      background-color: transparent;
+      border: 1px solid #3B3E4A;
+      border-radius: 0;
+
+      &:hover {
+        border-color: #F1F2F9;
+      }
+    }
+  }
+
+  &__item-btn-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
