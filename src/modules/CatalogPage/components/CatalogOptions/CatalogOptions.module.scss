@@ -1,0 +1,90 @@
+@use './../../../../styles/global.scss' as *;
+@use './../../../../styles/variables.scss' as *;
+
+.catalogOptions {
+  display: flex;
+  gap: 16px;
+
+  margin-top: 40px;
+}
+
+.title {
+  margin-bottom: 4px;
+  color: $secondary__text-color;
+}
+
+.trigger {
+  width: 176px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 14px;
+  padding: 10px 12px;
+
+  color: $primary__text-color;
+  background-color: $secondary__element-color;
+  border: 1px solid $secondary__element-color;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    border: 1px solid $secondary__text-color;
+  }
+}
+
+.triggerActive {
+  border-color: $accent__color;
+}
+
+.icon {
+  margin-left: 8px;
+  font-size: 12px;
+
+  color: $secondary__text-color;
+  transition: all 0.3s ease;
+}
+
+.iconOpen {
+  transform: rotate(180deg);
+}
+
+.content {
+  border: 1px solid $secondary__element-color;
+
+  width: var(--radix-select-trigger-width);
+  background: #fff;
+  border-radius: 0;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.item {
+  padding: 10px 12px;
+  cursor: pointer;
+  color: $secondary__text-color;
+  font-weight: 600;
+
+  background-color: $primary__background-color;
+
+  &[data-highlighted] {
+    border: none;
+    outline: none;
+    color: $primary__text-color;
+    background-color: $secondary__element-color;
+  }
+
+  &[data-state='checked'] {
+    background: $secondary__element-color;
+    color: $primary__text-color;
+  }
+}
+
+@media (max-width: 639px) {
+  .trigger {
+    width: 135px;
+  }
+  .catalogOptions {
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,113 @@
+@use './../../../../styles/variables.scss' as *;
+
+.card__cart {
+  display: flex;
+  gap: 16px;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__content__cart {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+  padding: 24px;
+
+  width: 100%;
+
+  background-color: $secondary__background-color;
+}
+
+.delete__cart {
+  font-size: 16px;
+  color: $secondary__element-color;
+  cursor: pointer;
+}
+
+.card__img__cart img {
+  height: 80px;
+  width: 80px;
+  object-fit: contain;
+}
+
+.quantity {
+  display: flex;
+}
+
+.card__title__cart {
+  max-width: 300px;
+
+  font-family: 'Mont', sans-serif;
+  color: $primary__text-color;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+
+  transition: all 0.3s ease;
+}
+
+.card__title__cart:hover {
+  color: $accent__color-hover;
+}
+
+.card__price__cart {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: $primary__text-color;
+  font-size: 22px;
+  line-height: 140%;
+  font-weight: 800;
+}
+
+.minus,
+.plus {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $secondary__element-color;
+  color: $primary__text-color;
+  background-color: $secondary__element-color;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+.minus__disabled {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $secondary__element-color;
+  color: $primary__text-color;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.count {
+  width: 50px;
+  height: 32px;
+  color: $primary__text-color;
+
+  user-select: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 639px) {
+  .card__content__cart {
+    flex-direction: column;
+  }
+}
