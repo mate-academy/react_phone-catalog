@@ -1,0 +1,74 @@
+@import '../../styles/mixins';
+@import '../../styles/variable';
+@import '../../styles/font';
+
+// .slider {
+//   padding-left: $container-pading-mobile;
+
+//   @include on-tablet {
+//     padding-left: $container-pading-tablet;
+//   }
+
+//   @include on-desktop {
+//     padding-left: 0;
+//   }
+// }
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+
+  margin-right: $container-pading-mobile;
+
+   @include on-tablet {
+    margin-right: $container-pading-tablet;
+  }
+
+  @include on-desktop {
+    margin-right: 0;
+    width: 100%;
+  }
+}
+
+.title {
+  margin: 0;
+  color: $primary-black-color;
+
+  @include h2;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $gray-secondary-color;
+  border-radius: 50%;
+  background-color: $white-color;
+  color: $primary-black-color;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.slide {
+  height: auto;
+  min-width: 212px;
+  width: auto;
+}

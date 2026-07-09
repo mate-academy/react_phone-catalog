@@ -1,0 +1,38 @@
+@import '../../styles/variable';
+@import '../../styles/font';
+
+.input {
+   position: absolute;
+  opacity: 0;
+}
+
+.capacityVariants {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.capacityButton {
+  width: 60px;
+  display: flex;
+  height: 32px;
+  border: 1px $gray-icons solid;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.capacityActive {
+  background-color: black;
+  color: #E2E6E9;
+}
+
+.title {
+  color: $gray-secondary-color;
+  margin: 0;
+
+  @include small-text;
+}
+
+

@@ -1,1 +1,52 @@
-// not empty
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+// браузер залишає місце під scrollbar завжди, тому коли я  відкриваєш модалку і блокуєш скрол — layout не змінюється.
+html {
+  scrollbar-gutter: stable;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: Mont, sans-serif;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+// * {
+//   outline: 1px solid red;
+// }
+
+
+
+.App {
+  display: flex;
+  flex-direction: column;  // grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.main {
+  width: 100%;
+  flex: 1;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+
+

@@ -1,0 +1,54 @@
+@import '../../styles/mixins';
+@import '../../styles/font';
+@import '../../styles/variable';
+
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+.categories {
+  width: 100%;
+}
+
+.imgBackground {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.photo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  right: -15%;
+  bottom: -15%;
+
+  transition: transform 0.5s ease;
+}
+
+.photo:hover {
+  transform: scale(1.1);
+}
+
+.info__name {
+  color: $primary-gray;
+
+  @include h4;
+}
+
+.info__number {
+  @include body-semi-bold;
+}
+
+
