@@ -1,0 +1,37 @@
+/* stylelint-disable */
+/* stylelint-enable */
+@import '@/styles/variables';
+/* stylelint-disable */
+/* stylelint-enable */
+@import '@/styles/mixins';
+
+.page {
+  max-width: 1800px;
+  margin: auto;
+
+  @include page-paddings;
+
+  &__content {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  &__container {
+    @include grid;
+  }
+
+  &__header {
+    margin-top: 56px;
+
+    @include h1;
+
+    @include tablet {
+      margin-top: 32px;
+    }
+
+    @include mobile {
+      margin-top: 24px;
+    }
+  }
+}

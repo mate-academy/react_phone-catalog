@@ -1,0 +1,210 @@
+/* stylelint-disable */
+/* stylelint-enable */
+@import '@/styles/variables';
+/* stylelint-disable */
+/* stylelint-enable */
+@import '@/styles/mixins';
+
+.cart {
+  max-width: 1800px;
+  margin: auto;
+  min-height: 60vh;
+
+  @include page-paddings;
+
+  &__content {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  &__container {
+    @include grid;
+  }
+
+  &__header {
+    margin-top: 56px;
+
+    @include h1;
+
+    @include tablet {
+      margin-top: 32px;
+    }
+
+    @include mobile {
+      margin-top: 24px;
+    }
+  }
+
+  &__wrap {
+    display: flex;
+    flex-direction: row;
+    margin-top: 32px;
+    gap: 16px;
+
+    @include tablet {
+      flex-direction: column;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      max-width: 100%;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    width: 765px;
+
+    @include tablet {
+      width: 100%;
+    }
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid $color-elements;
+    text-align: center;
+    align-items: center;
+    padding: 31px 24px;
+    gap: 24px;
+    justify-content: space-between;
+
+    &--main {
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      align-items: center;
+      gap: 24px;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    &--button-cross {
+      width: 10px;
+      height: 10px;
+      background: url('/img/CrossIconGray.svg') no-repeat center / contain;
+    }
+
+    &--image {
+      max-width: 80px;
+      max-height: 80px;
+    }
+
+    &--title {
+      width: 80%;
+      font-weight: $font-weight-semi;
+      font-size: 14px;
+      color: $color-primary;
+      text-align: left;
+    }
+
+    &--buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 14px;
+      align-items: center;
+
+      @include mobile {
+        justify-content: space-between;
+        width: 100%;
+      }
+    }
+    &--link {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+    }
+
+    &--btns {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
+    }
+
+    &--button-amount {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $color-elements;
+    }
+
+    &--price {
+      font-size: 22px;
+      font-weight: $font-weight-extra-bold;
+      line-height: 140%;
+      margin-left: 24px;
+    }
+  }
+
+  &__price {
+    &-container {
+      max-width: 370px;
+      border: 1px solid $color-elements;
+      max-height: 206px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      width: 100%;
+      padding: 24px;
+
+      @include tablet {
+        margin-top: 32px;
+        max-width: 100%;
+      }
+
+      @include mobile {
+        margin-top: 32px;
+        max-width: 100%;
+      }
+    }
+
+    &--price {
+      font-size: 31px;
+      line-height: 41px;
+      font-weight: $font-weight-extra-bold;
+    }
+
+    &--text {
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: $font-weight-semi;
+      color: $color-secondary;
+
+      &::after {
+        @include product-details-line;
+
+        margin-top: 25px;
+      }
+    }
+    &--button {
+      margin-top: 24px;
+      width: 100%;
+      background-color: $color-primary;
+      height: 48px;
+      color: $color-white;
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: $font-weight-semi;
+    }
+  }
+}

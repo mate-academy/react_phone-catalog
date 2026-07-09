@@ -1,0 +1,134 @@
+/* stylelint-disable */
+/* stylelint-enable */
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.slider {
+  margin-top: 56px;
+
+  @include tablet {
+    margin-top: 32px;
+  }
+
+  @include mobile {
+    margin: 24px -16px 0;
+  }
+
+  &__container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+
+    @include tablet {
+      gap: 20px;
+    }
+
+    @include mobile {
+      display: block;
+      gap: 0;
+      width: 100%;
+    }
+  }
+
+  &__window {
+    flex-grow: 1;
+    overflow: hidden;
+    border-radius: 0;
+    position: relative;
+    touch-action: pan-y;
+  }
+
+  &__images {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+
+    @include animation-transition;
+
+    @include mobile {
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  &__slide {
+    width: 100%;
+    flex-shrink: 0;
+    display: block;
+
+    @include mobile {
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    margin: 0 auto;
+    object-position: 87.5% 50%;
+
+    @include mobile {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  &__button {
+    border: 1px solid $color-elements;
+
+    @include animation-transition;
+
+    @include mobile {
+      display: none;
+    }
+
+    &--left,
+    &--right {
+      width: 10em;
+
+      @include tablet {
+        width: 15em;
+      }
+    }
+
+    &--left::before {
+      content: '❮';
+    }
+
+    &--right::before {
+      content: '❯';
+    }
+
+    &:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    border: none;
+    background-color: $color-elements;
+    cursor: pointer;
+
+    @include animation-transition;
+
+    &--active {
+      background-color: $color-primary;
+    }
+
+    &:hover:not(&--active) {
+      background-color: $color-secondary;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+/* stylelint-disable */
+/* stylelint-enable */
+@import '@/styles/variables';
+/* stylelint-disable */
+/* stylelint-enable */
+@import '@/styles/mixins';
+
+.breadcrumb {
+  display: flex;
+  flex-direction: row;
+  margin-top: 24px;
+  gap: 8px;
+
+  &__icon-home {
+    width: 16px;
+    height: 16px;
+    background: url('/img/HomeIcon.svg') no-repeat center / contain;
+    color: $color-primary;
+  }
+
+  &__icon-arrow {
+    width: 16px;
+    height: 16px;
+    background: url('/img/ArrowRightIcon.svg') no-repeat center / contain;
+  }
+
+  &__item {
+    font-size: 12px;
+    font-weight: $font-weight-regular;
+    text-decoration: none;
+
+    &--link {
+      color: $color-primary;
+
+      @include animation-transition;
+
+      &:hover {
+        color: $color-secondary;
+      }
+    }
+
+    &--current {
+      color: $color-secondary;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+}

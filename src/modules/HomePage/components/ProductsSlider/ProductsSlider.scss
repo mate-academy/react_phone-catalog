@@ -1,0 +1,147 @@
+/* stylelint-disable */
+/* stylelint-enable */
+@import '@/styles/variables';
+/* stylelint-disable */
+/* stylelint-enable */
+@import '@/styles/mixins';
+
+.products-slider {
+  margin-top: 80px;
+
+  @include tablet {
+    margin-top: 64px;
+  }
+
+  @include mobile {
+    margin: 56px -16px 0;
+  }
+
+  &__title {
+    @include h2;
+  }
+
+  &__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+
+    @include tablet {
+      gap: 20px;
+    }
+
+    @include mobile {
+      gap: 20px;
+      width: 100%;
+    }
+
+    &--header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      @include mobile {
+        margin: 0 16px;
+      }
+    }
+
+    &--buttons {
+      display: flex;
+      gap: 16px;
+
+      @include mobile {
+        margin-right: 16px;
+      }
+    }
+  }
+
+  &__window {
+    padding: 9px 10px 10px 3px;
+    flex-grow: 1;
+    border-radius: 0;
+    position: relative;
+    touch-action: pan-y;
+    overflow: hidden;
+
+    @include mobile {
+      overflow: hidden;
+    }
+  }
+  &__cards {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    box-sizing: border-box;
+    width: 100%;
+
+    @include mobile {
+      padding: 0 16px;
+    }
+
+    @include animation-transition;
+
+    transform: translateX(
+      calc(var(--current-index) * -1 * (100% + 16px) / var(--visible-cards))
+    );
+
+    @include mobile {
+      transform: translateX(calc(var(--current-index) * -1 * (100% - 16px)));
+    }
+  }
+  &__card-wrapper {
+    flex-shrink: 0;
+    width: calc((100% + 16px) / var(--visible-cards) - 16px);
+
+    @include mobile {
+      width: 100%;
+    }
+
+    @include tablet {
+      width: calc((100% + 16px) / var(--visible-cards) - 16px);
+    }
+  }
+
+  &__image {
+    width: 100%;
+    flex-shrink: 0;
+    display: block;
+    object-fit: cover;
+    margin: 0 auto;
+    object-position: 87.5% 50%;
+  }
+
+  &__button {
+    border: 1px solid $color-icons;
+
+    @include animation-transition;
+
+    cursor: pointer;
+
+    &--left,
+    &--right {
+      width: 48px;
+      height: 48px;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      border-color: $color-elements;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      border-color: $color-primary;
+    }
+
+    &--left::before {
+      content: '❮';
+    }
+    &--right::before {
+      content: '❯';
+    }
+  }
+}

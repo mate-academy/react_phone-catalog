@@ -1,0 +1,62 @@
+/* stylelint-disable */
+/* stylelint-enable */
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 40px;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    padding: 7px;
+    border: 1px solid $color-elements;
+    text-align: center;
+    line-height: 100%;
+    justify-content: center;
+    font-weight: $font-weight-regular;
+
+    @include animation-transition;
+
+    &--active {
+      color: $color-white;
+      background-color: $color-primary;
+      border: 0;
+      border: 1px solid $color-icons;
+    }
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+    &:disabled {
+      border: 1px solid $color-elements;
+      background-color: $color-white;
+      cursor: default;
+    }
+  }
+
+  &__back,
+  &__forward {
+    background-color: $color-primary;
+    mask: url('/img/ArrowRightIcon.svg') no-repeat center / contain;
+    -webkit-mask: url('/img/ArrowRightIcon.svg') no-repeat center / contain;
+    width: 100%;
+    height: 100%;
+
+    &--inactive {
+      mask: url('/img/ArrowRightIcon.svg') no-repeat center / contain;
+      -webkit-mask: url('/img/ArrowRightIcon.svg') no-repeat center / contain;
+      width: 100%;
+      height: 100%;
+      border: 1px solid $color-elements;
+      background-color: $color-elements;
+      cursor: default;
+    }
+  }
+
+  &__back {
+    transform: rotate(180deg);
+  }
+}
