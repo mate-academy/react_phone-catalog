@@ -1,0 +1,533 @@
+@use 'sass:color';
+
+@import '../variables';
+@import '../mixins';
+
+.product-details {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @media (min-width: 1200px) {
+    padding: 0;
+  }
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 24px;
+    margin-bottom: 24px;
+    font-size: 12px;
+    font-weight: $font-bold;
+
+    &__link {
+      display: flex;
+      align-items: center;
+      color: $text-primary;
+      line-height: 15px;
+      text-decoration: none;
+      transition: opacity $transition-duration;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    &__icon,
+    &__arrow-img {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+    }
+
+    &__current {
+      color: $text-secondary;
+      line-height: 15px;
+    }
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    font-size: 12px;
+    font-weight: $font-bold;
+    line-height: 15px;
+    color: $text-primary;
+    text-decoration: none;
+  }
+
+  .back-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+    font-size: 32px;
+    font-weight: 800;
+    color: $text-primary;
+  }
+
+  &__main-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 80px;
+
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 17px;
+    }
+
+    @media (min-width: 1200px) {
+      column-gap: 64px;
+    }
+  }
+
+  .gallery {
+    display: flex;
+    grid-column: 1 / -1;
+    gap: 16px;
+
+    @media (max-width: 639px) {
+      flex-direction: column-reverse;
+    }
+
+    @media (min-width: 640px) {
+      grid-column: 1 / 8;
+    }
+
+    &__thumbnails {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      @media (max-width: 639px) {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+
+    &__thumb {
+      width: 80px;
+      height: 80px;
+      padding: 4px;
+      cursor: pointer;
+      background-color: transparent;
+      border: 1px solid $color-elements;
+      transition: border-color $transition-duration;
+
+      @media (min-width: 640px) and (max-width: 1199px) {
+        width: 35px;
+        height: 35px;
+        padding: 2px;
+      }
+
+      @media (max-width: 639px) {
+        width: 50px;
+        height: 50px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      &--active {
+        border-color: $text-primary;
+      }
+
+      &:hover:not(&--active) {
+        border-color: $text-secondary;
+      }
+    }
+
+    &__main-image {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      max-width: 100%;
+      aspect-ratio: 1 / 1;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+      }
+    }
+  }
+
+  .checkout {
+    grid-column: 1 / -1;
+
+    @media (min-width: 640px) {
+      grid-column: 8 / 13;
+    }
+
+    @media (min-width: 1200px) {
+      grid-column: 8 / 12;
+    }
+
+    &__id-wrapper {
+      margin-bottom: 8px;
+      text-align: right;
+    }
+
+    &__id-label {
+      font-size: 12px;
+      color: $text-secondary;
+    }
+
+    &__section-label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 12px;
+      font-weight: $font-bold;
+      color: $text-secondary;
+    }
+
+    &__colors,
+    &__capacities {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    &__color-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 34px;
+      height: 34px;
+      cursor: pointer;
+      border: 1px solid $color-elements;
+      border-radius: 50%;
+
+      &--active {
+        border-color: $text-primary;
+      }
+    }
+
+    &__color {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+
+    &__capacity {
+      min-width: 60px;
+      height: 32px;
+      padding: 0 12px;
+      cursor: pointer;
+      color: $text-primary;
+      background: transparent;
+      border: 1px solid $color-elements;
+
+      &--active {
+        color: $bg-main;
+        background: $text-primary;
+        border-color: $text-primary;
+      }
+    }
+
+    &__divider {
+      height: 1px;
+      margin-bottom: 24px;
+      background-color: $color-elements;
+    }
+
+    &__price-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    &__price-current {
+      font-size: 32px;
+      font-weight: $font-bold;
+    }
+
+    &__price-old {
+      font-size: 22px;
+      color: $text-secondary;
+      text-decoration: line-through;
+    }
+
+    &__buttons {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    &__btn-add {
+      flex-grow: 1;
+      height: 48px;
+      font-weight: $font-bold;
+      color: white;
+      cursor: pointer;
+      background-color: $color-accent;
+      border: none;
+
+      &--active {
+        color: white;
+        background-color: $color-surface2;
+        border: 1px solid $color-elements;
+      }
+
+      &:hover:not(&--active) {
+        background-color: color.adjust($color-accent, $lightness: 5%);
+      }
+    }
+
+    &__icon-heart {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      cursor: pointer;
+      background-color: $color-surface2;
+      background-image: url('/images/button-icon/Heart-Like.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      border: 1px solid transparent;
+      transition: all $transition-duration;
+
+      &:hover {
+        background-color: $color-icons;
+      }
+
+      &--active {
+        background-color: $bg-main;
+        background-image: url('/images/button-icon/Heart-Full.svg');
+        border-color: $color-elements;
+      }
+    }
+
+    &__short-specs {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+    &__spec-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+
+      span:first-child {
+        color: #8e8e93;
+      }
+
+      span:last-child {
+        color: #fff;
+        text-align: right;
+      }
+    }
+  }
+
+  .about {
+    grid-column: 1 / -1;
+
+    @media (min-width: 640px) {
+      grid-column: 1 / 8;
+    }
+
+    &__subtitle {
+      margin-bottom: 16px;
+      font-size: 24px;
+      font-weight: $font-bold;
+    }
+
+    &__divider {
+      height: 1px;
+      margin-bottom: 16px;
+      background-color: $color-elements;
+    }
+
+    &__article {
+      margin-top: 32px;
+
+      &-title {
+        margin-bottom: 16px;
+        font-size: 20px;
+        font-weight: $font-bold;
+      }
+    }
+
+    &__text {
+      margin-bottom: 16px;
+      font-size: 14px;
+      line-height: 21px;
+      color: $text-secondary;
+    }
+  }
+
+  .tech-specs {
+    grid-column: 1 / -1;
+
+    @media (min-width: 640px) {
+      grid-column: 8 / 13;
+    }
+
+    &__subtitle {
+      margin-bottom: 16px;
+      font-size: 24px;
+      font-weight: $font-bold;
+    }
+
+    &__divider {
+      height: 1px;
+      margin-bottom: 16px;
+      background-color: $color-elements;
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 32px;
+    }
+
+    &__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      line-height: 15px;
+
+      span:first-child {
+        color: $text-secondary;
+      }
+
+      span:last-child {
+        padding-left: 8px;
+        font-weight: $font-semibold;
+        color: $text-primary;
+        text-align: right;
+      }
+    }
+  }
+
+  &__related {
+    margin-top: 80px;
+
+    @media (max-width: 639px) {
+      margin-top: 56px;
+    }
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    &-title {
+      font-size: 32px;
+      font-weight: 800;
+
+      @media (max-width: 639px) {
+        font-size: 22px;
+      }
+    }
+  }
+
+  &__related-list {
+    display: flex;
+    gap: 16px;
+    padding-bottom: 56px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+
+    @include onScreen640 {
+      padding-bottom: 64px;
+    }
+
+    @include onScreen1200 {
+      padding-bottom: 80px;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    & > * {
+      flex: 0 0 212px;
+      min-width: 0;
+
+      @include onScreen640 {
+        flex: 0 0 272px;
+      }
+
+      @include onScreen1200 {
+        flex: 0 0 calc((100% - (16px * 3)) / 4);
+      }
+    }
+  }
+
+  &__slider-btn {
+    --btn-rotate: 0deg;
+    --btn-scale: 1;
+
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    background-color: $color-surface2;
+    background-image: url('/images/button-icon/default.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: 1px solid transparent;
+    border-radius: 0;
+    transform: rotate(var(--btn-rotate)) scale(var(--btn-scale));
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+      background-color: transparent;
+      background-image: url('/images/button-icon/disabled.svg');
+      border-color: $color-elements;
+    }
+
+    &:hover:not(:disabled) {
+      background-image: url('/images/button-icon/hover.svg');
+    }
+
+    &:active:not(:disabled) {
+      --btn-scale: 0.95;
+    }
+  }
+
+  &__slider-controls {
+    display: flex;
+    gap: 8px;
+
+    .product-details__slider-btn:first-child {
+      --btn-rotate: 180deg;
+
+      background-color: transparent;
+      border-color: $color-elements;
+    }
+  }
+}

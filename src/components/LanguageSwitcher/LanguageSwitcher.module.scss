@@ -1,0 +1,80 @@
+@import '../../styles/utils/variables';
+
+.lang-switcher {
+  position: relative;
+  display: inline-block;
+
+  &__selected {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: transparent;
+    border: none;
+    color: $text-primary;
+    font-family: $font-main;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 8px;
+    text-transform: uppercase;
+  }
+
+  &__arrow {
+    width: 10px;
+    height: 10px;
+    background: url('/images/icons/arrow-down.svg') no-repeat center;
+    background-size: contain;
+    transition: transform 0.3s;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__list {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 70px;
+    background-color: #0f1121;
+    list-style: none;
+    padding: 4px 0;
+    margin: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+  }
+
+  &__option {
+    width: 100%;
+    padding: 10px 12px;
+    background: transparent;
+    border: none;
+    color: #75767f;
+    text-align: left;
+    cursor: pointer;
+    font-family: $font-main;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: #1a1c2e;
+      color: #fff;
+    }
+
+    &--active {
+      color: #fff;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 6px;
+        left: 12px;
+        right: 12px;
+        height: 1px;
+        background-color: #fff;
+      }
+    }
+  }
+}

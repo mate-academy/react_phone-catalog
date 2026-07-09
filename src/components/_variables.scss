@@ -1,0 +1,33 @@
+$header-hight: 48px;
+$footer-hight: 257px;
+
+// Base colors
+$color-secondary: #75767F;
+$color-icons: #4A4D58;
+$color-elements: #3B3E4A;
+$color-surface2: #323542;
+$color-surface1: #161827;
+$color-black: #0F1121;
+$color-white: #f1f2f9;
+$color-accent: #905bff;
+$color-green: #27ae60;
+$color-red: #eb5757;
+
+// Semantic colors
+$bg-main: $color-black;
+$text-primary: $color-white;
+$text-secondary: $color-secondary;
+
+// font
+$font-main: 'Mont', sans-serif;
+$font-regular: 400;
+$font-semibold: 600;
+$font-bold: 700;
+
+// duration
+$transition-duration: 0.3s;
+
+// otnainer
+$container-max-width: 1200px;
+$container-padding-mobile: 16px;
+$container-padding-desktop: 32px;

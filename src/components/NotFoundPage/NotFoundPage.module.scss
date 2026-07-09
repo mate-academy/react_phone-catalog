@@ -1,0 +1,35 @@
+@import '../variables';
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 16px;
+  background-color: $bg-main;
+
+  &__icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 32px;
+    opacity: 0.5;
+  }
+
+  &__title {
+    font-size: 32px;
+    color: $text-primary;
+    margin-bottom: 32px;
+  }
+
+  &__button {
+    height: 48px;
+    padding: 0 32px;
+    background-color: $color-accent;
+    color: white;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.3s;
+  }
+}

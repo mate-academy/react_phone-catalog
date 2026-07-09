@@ -1,0 +1,185 @@
+@import './variables';
+
+// --- Responsive Breakpoints ---
+@mixin onScreen640 {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin onScreen1200 {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin onScreen1201 {
+  @media (min-width: 1201px) {
+    @content;
+  }
+}
+
+// --- Interactive Effects ---
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s ease;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+// --- Layout & Main Sections ---
+@mixin main {
+  @include onScreen1200 {
+    margin-bottom: 80px;
+  }
+}
+
+@mixin mainSection {
+  @include onScreen640 {
+    margin-top: 64px;
+    margin-left: 24px;
+  }
+
+  @include onScreen1200 {
+    margin-top: 80px;
+    margin-inline: 32px;
+  }
+
+  @include onScreen1201 {
+    margin-inline: 152px;
+  }
+}
+
+@mixin marginInline {
+  @include onScreen640 {
+    margin-inline: 24px;
+  }
+
+  @include onScreen1200 {
+    margin-inline: 32px;
+  }
+
+  @include onScreen1201 {
+    margin-inline: 152px;
+  }
+}
+
+// --- Category Grids ---
+@mixin categoriesContainer {
+  @include onScreen640 {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    width: 100%;
+  }
+
+  @include onScreen1200 {
+    gap: 16px;
+  }
+}
+
+@mixin categories {
+  @include onScreen640 {
+    margin-right: 24px;
+  }
+
+  @include onScreen1200 {
+    margin: 0;
+  }
+}
+
+// --- Product Cards & Catalog ---
+@mixin productCard {
+  @include onScreen640 {
+    width: 237px;
+    height: 512px;
+  }
+
+  @include onScreen1200 {
+    width: 272px;
+    height: 506px;
+  }
+}
+
+@mixin productCardItemPhoto {
+  @include onScreen640 {
+    width: 173px;
+    height: 181px;
+  }
+
+  @include onScreen1200 {
+    width: 208px;
+    height: 196px;
+  }
+}
+
+@mixin pagination {
+  @include onScreen640 {
+    margin: 40px 196px 64px;
+  }
+
+  @include onScreen1200 {
+    margin: 40px 476px 80px;
+  }
+
+  @include onScreen1201 {
+    margin-inline: 596px;
+  }
+}
+
+// --- Cart Helpers ---
+@mixin itemContainer {
+  @include onScreen1200 {
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: start;
+    width: 100%;
+  }
+}
+
+@mixin actionButtonBase {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0;
+  width: 48px;
+  height: 100%;
+  background: transparent;
+  text-decoration: none;
+  border-left: 1px solid $color-elements;
+  cursor: pointer;
+  transition: 0.3s;
+
+  @include onScreen1200 {
+    width: 64px;
+  }
+
+  @include hover(background-color, $color-surface2);
+}
+
+@mixin navBtnBase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background-color: $color-surface2;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}

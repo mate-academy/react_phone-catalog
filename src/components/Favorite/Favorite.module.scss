@@ -1,0 +1,125 @@
+@import '../variables';
+@import '../mixins';
+
+.favorite-page {
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include onScreen1200 {
+    padding-bottom: 80px;
+  }
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+
+    @include onScreen640 {
+      padding: 0 32px;
+    }
+  }
+
+  &__title {
+    font-family: $font-main;
+    font-size: 32px;
+    font-weight: $font-bold;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+    color: $text-primary;
+
+    @include onScreen640 {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__count {
+    font-family: $font-main;
+    font-size: 14px;
+    line-height: 21px;
+    color: $text-secondary;
+    margin-bottom: 32px;
+  }
+
+  &__grid {
+    display: grid;
+    gap: 16px;
+    justify-items: stretch;
+    grid-template-columns: 1fr;
+
+    @include onScreen640 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include onScreen1200 {
+      grid-template-columns: repeat(4, 1fr);
+      row-gap: 40px;
+    }
+  }
+
+  &__empty {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0;
+
+    h2 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: $font-regular;
+      color: $text-secondary;
+    }
+  }
+}
+
+.breadcrumb {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+
+    &:not(:last-child)::after {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background-image: url('/images/icons/arrow-right.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0 8px;
+    }
+  }
+
+  &__link {
+    color: $text-primary;
+    text-decoration: none;
+
+    @include hover(color, $color-accent);
+  }
+
+  &__current {
+    color: $text-secondary;
+  }
+
+  &__home-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+}
