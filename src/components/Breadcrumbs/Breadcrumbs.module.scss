@@ -1,0 +1,41 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.home_icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.separator {
+  color: #75767f;
+  font-size: 12px;
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+}
+
+.link {
+  font-size: 12px;
+  color: #f1f2f9;
+  text-decoration: none;
+
+  &:hover {
+    color: #323542;
+  }
+}
+
+.current {
+  font-size: 12px;
+  color: #75767f;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 240px;
+}

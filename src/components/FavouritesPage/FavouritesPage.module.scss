@@ -1,0 +1,156 @@
+.page {
+  min-height: calc(100vh - 64px);
+  padding-bottom: 80px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+
+  @media (min-width: 640px) {
+    padding: 0 24px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0 32px;
+  }
+}
+
+// Обгортка яка вирівнює заголовок і грід по одній лінії
+.inner {
+  width: 100%;
+  max-width: 272px;
+
+  @media (min-width: 640px) {
+    max-width: calc(272px * 2 + 16px);
+  }
+
+  @media (min-width: 1200px) {
+    max-width: calc(272px * 4 + 16px * 3);
+  }
+}
+
+.homeImage {
+  height: 16px;
+  width: 16px;
+}
+
+.arrowR {
+  height: 16px;
+  width: 16px;
+}
+
+// --- Breadcrumbs ---
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 0 40px;
+  font-size: 12px;
+  color: #89939a;
+}
+
+.breadcrumb_home {
+  display: flex;
+  align-items: center;
+  color: #89939a;
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #f1f2f9;
+  }
+}
+
+.card_link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+.breadcrumb_separator {
+  color: #89939a;
+  font-size: 14px;
+}
+
+.breadcrumb_current {
+  color: #f1f2f9;
+}
+
+// --- Title ---
+.title {
+  font-size: 48px;
+  font-weight: 800;
+  color: #f1f2f9;
+  margin: 0 0 8px;
+  line-height: 1.1;
+
+  @media (max-width: 639px) {
+    font-size: 32px;
+  }
+}
+
+.count {
+  font-size: 14px;
+  color: #89939a;
+  margin: 0 0 40px;
+}
+
+// --- Products Grid ---
+.products_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+
+  grid-template-columns: minmax(0, 272px);
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, minmax(0, 272px));
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, minmax(0, 272px));
+  }
+}
+
+.products_item {
+  display: flex;
+}
+
+// --- Empty State ---
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 80px 0;
+}
+
+.empty_text {
+  font-size: 20px;
+  color: #89939a;
+  text-align: center;
+}
+
+.empty_link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 32px;
+  background-color: #905BFF;
+  color: #f1f2f9;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #A378FF;
+  }
+}
