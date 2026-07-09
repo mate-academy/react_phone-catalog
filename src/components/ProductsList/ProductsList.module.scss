@@ -1,0 +1,126 @@
+
+@use '../../utils/vars.scss' as *;
+@import '../../utils/mixins';
+
+
+.productsList {
+   @include page-grid;
+
+  &__title {
+    grid-column: 1/3;
+    grid-row: 1;
+
+    height: 32px;
+    display: block;
+
+     @include on-tablet {
+        grid-column: 1/4;
+      }
+
+      @include on-desktop {
+        grid-column: 1/4;
+      }
+
+  }
+
+  h3 {
+      display: inline;
+    }
+
+
+  &__content {
+    box-sizing: border-box;
+    grid-column: 1/3;
+
+      @include on-tablet {
+        grid-column: 1/-1;
+      }
+
+       @include on-desktop {
+        grid-column: 1/-1;
+      }
+
+    }
+
+
+   &__list {
+    @include page-grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+    gap: 40px 16px;
+
+    box-sizing: border-box;
+
+    justify-content: center;
+    align-items: center;
+    margin-inline: auto;
+
+    @include on-tablet {
+        grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+        grid-column: 1/-1;
+    }
+
+     @include on-desktop {
+       grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+
+      }
+
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    box-sizing: border-box;
+
+    border-radius: 50%;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    border: 1px solid $icons-color;
+
+
+    &:hover {
+       background-color: $hover-bg-color;
+       border-color: $primary-color;
+
+       @include hover(color, $hover-bg-color(1.1));
+    }
+
+    &.disabled, &[disabled] {
+      pointer-events: none;
+      cursor: not-allowed;
+      background: $hover-bg-color;
+      border-color: $icons-color;
+
+      transform: none;
+      box-shadow: none;
+  }
+
+ }
+
+ &__product {
+  display: grid;
+
+
+  box-sizing: border-box;
+  min-width: 212px;
+
+  @include on-tablet {
+    min-width: 237px;
+  }
+
+  @include on-desktop {
+    min-width: 272px;
+  }
+}
+
+
+}

@@ -1,0 +1,55 @@
+@use '../../../utils/vars' as *;
+@import '../../../utils/mixins' ;
+
+.nav {
+  box-sizing: border-box;
+
+  @include on-tablet {
+    padding-inline: 16px;
+  }
+
+  @include on-desktop {
+     padding-inline: 24px;
+  }
+
+
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    text-align: center ;
+    box-sizing: border-box;
+
+    @include on-tablet {
+      flex-direction: row;
+       gap: 32px;
+    }
+  }
+
+  &__link {
+    color: $menu-color;
+    text-decoration: none;
+    position: relative;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+
+    padding-block: 8px;
+
+    &.is-active {
+      color: $active-menu-color;
+      border-bottom: 2px solid $active-menu-color;
+    }
+
+    &[aria-current="page"] {
+      color: $active-menu-color;
+      border-bottom: 2px solid $active-menu-color;
+    }
+  }
+}

@@ -1,0 +1,130 @@
+@use '../../utils/vars' as *;
+@import '../../utils/mixins' ;
+
+.cartPage {
+  @include page-grid;
+
+  &__nav {
+    margin-block: 24px;
+    grid-column: 1/-1;
+  }
+
+  &__content {
+  @include page-grid;
+
+    grid-column: 1/-1;
+
+  }
+
+  &__title {
+    @include page-grid;
+
+    grid-column: 1/-1;
+  }
+
+  &__productInfo {
+    min-width: 288px;
+
+    padding: 32px;
+    margin-block: 16px ;
+    border-radius: 8px;
+    border: 1px solid $elements-color;
+    background: #FFF;
+    box-sizing: border-box;
+    
+    @include page-grid;
+
+    grid-column: 1/-1;
+
+    @include on-tablet {
+        grid-column: 1/-1;
+        grid-row: span 5;
+      }
+
+      @include on-desktop {
+       // width: fit-content;
+        grid-column: 16 / -1;
+        grid-row: 1;
+        box-sizing: border-box;
+
+        gap: 0;
+        margin: 0;
+      }
+  }
+
+  &__checkout {
+    background-color: $accent-color;
+    grid-column: 1/-1;
+    margin: 16px 24px 24px;
+    padding-block: 13px;
+
+    @include on-desktop {
+      width: 320px;
+
+    }
+  }
+
+  &__productPrice {
+  font-weight: 800;
+  font-size: 32px;
+  grid-column: 1/-1;
+  margin-block: auto;
+  place-items: center;
+  margin-bottom: 8px;
+
+}
+
+&__totalQuantity {
+  font-size: 14px;
+  font-weight: 600;
+  color: $secondary-color;
+  white-space: nowrap;
+  margin: 0 auto;
+  place-items: center;
+
+  display: block;
+  grid-column: 1/-1;
+  margin-bottom: 16px;
+}
+
+  &__summary {
+  @include page-grid;
+
+     align-content: center;
+      justify-items: center;
+      grid-column: 1 / -1;
+      border-bottom: 1px solid $icons-color ;
+      margin: auto;
+    }
+
+   &__list {
+    @include page-grid;
+
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+
+     @include on-desktop {
+      grid-column: 1 / 16;
+      }
+    }
+
+  .modalBackdrop {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+  }
+
+}
+

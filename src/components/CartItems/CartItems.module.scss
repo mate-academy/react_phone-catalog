@@ -1,0 +1,169 @@
+@use '../../utils/vars.scss' as *;
+@import '../../utils/mixins';
+
+.productCard {
+   @include page-grid;
+
+  &__productInfo {
+    min-width: 288px;
+
+    padding: 32px;
+    margin-block: 16px ;
+    border-radius: 8px;
+    border: 1px solid $elements-color;
+    background: #FFF;
+
+    @include page-grid;
+
+    grid-column: 1/-1;
+    grid-auto-rows: minmax(min-content, auto);
+
+    @include on-tablet {
+        min-width: 592px;
+        grid-column: 1/-1;
+        align-items: center;
+      }
+
+      @include on-desktop {
+        align-items: center;
+        grid-column: 1 / -1;
+        margin-block: 0 16px ;
+        margin-right: 16px;
+        box-sizing: border-box;
+
+      }
+  }
+
+  &__productImageContainer {
+    height: 80px;
+    grid-column: span 1;
+
+     @include on-tablet {
+        min-width: 80px;
+        grid-column: 2 / 3 ;
+        grid-row: 1;
+      }
+
+       @include on-desktop {
+        min-width: 80px;
+        grid-column: 2 / 3 ;
+        grid-row: 1;
+      }
+
+    }
+
+  &__productImage {
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+
+     @include on-tablet {
+        grid-column: span 2;
+      }
+    }
+
+    &__removeIcon {
+       grid-column: 1;
+       grid-row: 1;
+    }
+
+    &__productName  {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      a {
+        color: $primary-color;
+
+      }
+
+      min-width: 128px;
+      grid-column: 4 / 6;
+      grid-row: 1;
+
+      @include on-tablet {
+        min-width: 176px;
+        grid-column: 4 / 6;
+        grid-row: 1;
+       }
+
+      @include on-desktop{
+        grid-column: 4 / 10;
+        grid-row: 1;
+        max-width: 336px;
+       }
+
+    }
+
+    &__buttons {
+       @include page-grid;
+
+        align-content: center;
+        justify-items: center;
+        grid-column: span 2;
+
+       @include on-tablet {
+        min-width: 96px;
+        height: 32px;
+        grid-column: 6 / 10;
+        grid-row: 1;
+       }
+
+        @include on-desktop {
+        grid-column: 10 / 12;
+        grid-row: 1;
+       }
+    }
+
+    &__quantity {
+      margin-block: auto;
+      place-items: center;
+    }
+
+    &__productPrice {
+      font-size: 22px;
+      line-height: 140%;
+      letter-spacing: 0%;
+      font-weight: bold;
+      color: #0F0F11;
+      height: 22px;
+      grid-column: 4;
+      grid-row: 2;
+      place-self: end end;
+      text-align: right;
+      min-width: 128px;
+
+      @include on-tablet {
+         grid-column: 13 / 14;
+          grid-row: 1;
+      align-self: center;
+         min-width: 80px;
+       }
+
+       @include on-desktop {
+         grid-column: 13 / 23;
+          grid-row: 1;
+          min-width: 80px;
+          justify-self: end;
+          text-align: center;
+       }
+    }
+}
+
+.button {
+  background-color: transparent;
+
+
+    &.disabled, &[disabled] {
+      pointer-events: none;
+      cursor: not-allowed;
+      background-color: $hover-bg-color;
+      border-color: $icons-color;
+      color: $icons-color;
+      transform: none;
+      box-shadow: none;
+  }
+
+
+}

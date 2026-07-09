@@ -1,0 +1,18 @@
+@use '../../utils/vars' as *;
+@import '../../utils/mixins' ;
+
+.menu {
+  box-sizing: border-box;
+  background-color: $menu-background-color;
+  font-weight: 800;
+  font-size: 12px;
+
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+
+  text-decoration: none;
+  color: $menu-color;
+}
+
+

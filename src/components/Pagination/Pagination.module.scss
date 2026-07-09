@@ -1,0 +1,102 @@
+
+@use '../../utils/vars.scss' as *;
+@import '../../utils/mixins';
+
+.pagination {
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+
+    height: 120px;
+
+    @include on-tablet {
+      height: 136px;
+    }
+
+    @include on-desktop {
+      height: 152px;
+    }
+  }
+
+    .list {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.button,
+.icon {
+     width: 32px;
+    height: 32px;
+    padding: 0;
+
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    box-sizing: border-box;
+
+    border-radius: 50%;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    border: 1px solid $icons-color;
+
+color: $primary-color;
+    &:hover {
+       background-color: $icons-color;
+       border: 1px solid $primary-color;
+
+      @include hover(color, primary-color(1.1));
+    }
+      &.disabled, &[disabled] {
+    pointer-events: none;
+    cursor: not-allowed;
+    background: $hover-bg-color;
+    border-color: $icons-color;
+    transform: none;
+    box-shadow: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+
+  }
+  &--button-left {
+    background-image: url('/img/icons/icon-button-left-2x.png');
+    &:hover {
+      background-color: $hover-bg-color;
+      border-color: $primary-color;
+
+      @include hover(color, $hover-bg-color(1.1));
+  }
+    &.disabled, &[disabled] {
+    background-image: url('/img/icons/icon-button-left-disabled-2x.png');
+  }
+  }
+
+  &--button-right {
+    background-image: url(/img/icons/icon-button-right-2x.png);
+    justify-self: end;
+      &:hover {
+      background-color: $hover-bg-color;
+      border-color: $primary-color;
+
+      @include hover(color, $hover-bg-color(1.1));
+  }
+    &.disabled, &[disabled] {
+    background-image: url('/img/icons/icon-button-right-disabled-2x.png');
+  }
+  }
+}
+}
+
+.button[aria-current="page"] {
+  background: $primary-color;
+  color: #fff;
+    border-color: $primary-color;
+}

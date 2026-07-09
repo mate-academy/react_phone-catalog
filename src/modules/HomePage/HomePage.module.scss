@@ -1,0 +1,205 @@
+@use '../../utils/vars' as *;
+@import '../../utils/mixins' ;
+
+
+.homePage {
+   a {
+    text-decoration: none;
+  }
+  &__content {
+      display: flex;
+      flex-direction: column;
+      max-width: $max-width;
+      box-sizing: border-box;
+  }
+
+  &__bottom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__up {
+    width: 100%;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: auto 0;
+
+    @include on-tablet {
+      height: 176px;
+      margin: auto 0;
+    }
+
+    @include on-desktop {
+      height: 168px;
+    }
+
+  }
+
+  &__title-welcome {
+    margin: auto 0;
+
+    @include on-tablet {
+      width: 500px;
+      display: block;
+    }
+
+    @include on-desktop {
+      width: auto;
+
+      margin: auto 0;
+    }
+  }
+
+  &__dots {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    padding-top: 8px;
+    margin: auto;
+
+    img {
+      width: 80px;
+      height: 24px;
+    }
+
+  }
+    &__shopByCategory {
+    @include page-grid;
+
+      grid-column: 1/-1;
+      gap: 107px 16px;
+
+      a:hover {
+      @include hover(transform, scale(1.1));
+    }
+
+      @include on-tablet {
+        gap: 16px;
+      }
+
+    }
+
+    &__categoryCard {
+      grid-column: span 4;
+      grid-row: span 4;
+
+    @include on-tablet {
+      grid-column: span 4;
+      grid-row: span 4;
+    }
+
+    @include on-desktop {
+      grid-column:  span 7;
+      grid-row: span 8;
+    }
+  }
+
+  &__categoryImg {
+     display: block;
+     background-color: transparent;
+     background-repeat: no-repeat;
+     background-position: center;
+     background-size: cover;
+     box-sizing: border-box;
+     aspect-ratio: 1 / 1;
+     margin: 10px;
+  }
+
+  &__categoryImg--phones {
+      background-image: url(/img/category-phones-mobile-2x.png);
+
+      @include on-tablet {
+        background-image: url(/img/category-phones-tablet-2x.png);
+
+      }
+
+      @include on-desktop {
+        background-image: url(/img/category-phones-desktop-2x.png);
+
+      }
+  }
+
+  &__categoryImg--tablets {
+      background-image: url(/img/category-tablets-mobile-2x.png);
+
+       @include on-tablet {
+        background-image: url(/img/category-tablets-tablet-2x.png);
+
+      }
+
+       @include on-desktop {
+        background-image: url(/img/category-tablets-desktop-2x.png);
+
+      }
+  }
+
+  &__categoryImg--accessories {
+      background-image: url(/img/category-accessories-mobile-2x.png);
+
+       @include on-tablet {
+        background-image: url(/img/category-accessories-tablet-2x.png);
+
+      }
+
+      @include on-desktop {
+        background-image: url(/img/category-accessories-desktop-2x.png);
+
+      }
+  }
+
+  &__categoryTitle {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $primary-color;
+    text-decoration: none;
+    padding-top: 24px;
+    grid-column: 1 / -1;
+
+     @include on-tablet {
+        grid-column: 1 / 4;
+      }
+
+      @include on-tablet {
+        grid-column: 1 / 8;
+      }
+  }
+
+  &__categoryTotal {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $secondary-color;
+
+    padding-top: 4px;
+  }
+
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
