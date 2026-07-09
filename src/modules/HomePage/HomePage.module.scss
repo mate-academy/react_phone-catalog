@@ -1,0 +1,32 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.page {
+  @include content-width;
+}
+
+.hiddenTitle {
+  @include visually-hidden;
+}
+
+.pageTitle {
+  margin-top: $spacing-lg;
+  margin-bottom: $spacing-lg;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+
+  @include media-up($breakpoint-tablet) {
+    margin-top: $spacing-xl;
+    margin-bottom: $spacing-xl;
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  @include media-up($breakpoint-desktop) {
+    margin-top: 56px;
+    margin-bottom: 56px;
+  }
+}

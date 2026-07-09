@@ -1,0 +1,87 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  @include media-up($breakpoint-tablet) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: row;
+  gap: $spacing-sm;
+  order: 2;
+  overflow-x: auto;
+
+  @include media-up($breakpoint-tablet) {
+    flex-direction: column;
+    order: 1;
+  }
+
+  @include media-up($breakpoint-desktop) {
+    gap: $spacing-md;
+  }
+}
+
+.thumb {
+  flex-shrink: 0;
+  width: 51px;
+  aspect-ratio: 51 / 49;
+  padding: 0;
+  background: none;
+  border: 1px solid $color-elements;
+  cursor: pointer;
+  transition: border-color $transition-base;
+
+  @include media-up($breakpoint-tablet) {
+    width: 35px;
+    height: 35px;
+  }
+
+  @include media-up($breakpoint-desktop) {
+    width: 80px;
+    height: 80px;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.thumb:hover {
+  border-color: $color-icons;
+}
+
+.thumbActive {
+  border-color: $color-primary;
+}
+
+.mainImage {
+  order: 1;
+  min-width: 0;
+
+  @include media-up($breakpoint-tablet) {
+    order: 2;
+    flex: 1;
+  }
+}
+
+.swiper {
+  width: 100%;
+}
+
+.slide {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+}

@@ -1,0 +1,98 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.section {
+  width: 100%;
+  margin-top: $spacing-2xl;
+  margin-bottom: $spacing-2xl;
+
+  :global(.swiper) {
+    padding: $spacing-sm;
+    margin: -$spacing-sm;
+  }
+
+  :global(.swiper-wrapper) {
+    align-items: stretch;
+  }
+
+  :global(.swiper-slide) {
+    width: 212px;
+    height: auto;
+
+    @include media-up($breakpoint-tablet) {
+      width: 237px;
+    }
+
+    @include media-up($breakpoint-desktop) {
+      width: auto;
+    }
+  }
+}
+
+.header {
+  @include flex-between;
+
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+
+  @include media-up($breakpoint-tablet) {
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.title {
+  margin: 0;
+  font-family: $font-family-base;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  color: $color-primary;
+
+  @include media-up($breakpoint-tablet) {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.navBtn {
+  @include flex-center;
+
+  flex-shrink: 0;
+
+  width: 32px;
+  height: 32px;
+  background: $color-white;
+  border: 1px solid $color-icons;
+  cursor: pointer;
+  color: $color-primary;
+  transition: border-color $transition-base,
+  color $transition-base;
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+}
+
+.navBtnLeft {
+  img {
+    transform: rotate(180deg);
+  }
+}
+
+.navBtnDisabled {
+  border-color: $color-elements;
+  cursor: default;
+  color: $color-icons;
+
+  img {
+    opacity: 0.4;
+  }
+}

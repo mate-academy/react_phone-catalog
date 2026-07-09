@@ -1,0 +1,148 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: $color-white;
+  border: 1px solid $color-elements;
+
+  @include media-up($breakpoint-tablet) {
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing-lg;
+    padding: $spacing-lg;
+  }
+}
+
+.topRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $spacing-md;
+
+  @include media-up($breakpoint-tablet) {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.closeBtn {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  background: none;
+  border: none;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity $transition-base;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  img {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.image {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.name {
+  flex-grow: 1;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: $color-primary;
+}
+
+.bottomRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 32px;
+
+  @include media-up($breakpoint-tablet) {
+    flex-shrink: 0;
+    gap: $spacing-lg;
+    height: auto;
+  }
+}
+
+.counter {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: 96px;
+  height: 32px;
+}
+
+.counterBtn {
+  @include flex-center;
+
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background: none;
+  cursor: pointer;
+  transition: border-color $transition-base;
+
+  img {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+}
+
+.counterMinus {
+  border: 1px solid $color-elements;
+
+  &:not(:disabled):hover {
+    border-color: $color-primary;
+  }
+}
+
+.counterPlus {
+  border: 1px solid $color-icons;
+
+  &:not(:disabled):hover {
+    border-color: $color-primary;
+  }
+}
+
+.counterValue {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  color: $color-primary;
+}
+
+.price {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.4;
+  white-space: nowrap;
+  color: $color-primary;
+}

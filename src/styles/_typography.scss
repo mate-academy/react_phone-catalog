@@ -1,0 +1,103 @@
+@use 'variables' as *;
+
+body {
+  font-family: $font-family-base;
+  color: $color-primary;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: $font-family-base;
+  color: $color-primary;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @media (min-width: $breakpoint-tablet) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+  letter-spacing: 0;
+
+  @media (min-width: $breakpoint-tablet) {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: 0;
+
+  @media (min-width: $breakpoint-tablet) {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+  }
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0;
+
+  @media (min-width: $breakpoint-tablet) {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+.body-text,
+p {
+  margin: 0;
+  font-family: $font-family-base;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $color-primary;
+}
+
+.button-text {
+  font-family: $font-family-base;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+.small-text {
+  font-family: $font-family-base;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+.uppercase-text {
+  font-family: $font-family-base;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}

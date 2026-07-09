@@ -1,0 +1,84 @@
+import { Link } from 'react-router-dom';
+import heartIcon from '@/assets/icons/icon-favorites.svg';
+import heartIconSelected from '@/assets/icons/icon-favorites-selected.svg';
+import type { Product } from '@/types/Product';
+import { useFavorites } from '@/contexts/FavoritesContext';
+import { useCart } from '@/contexts/CartContext';
+import styles from './ProductCard.module.scss';
+
+type Props = {
+  product: Product;
+  hideOldPrice?: boolean;
+};
+
+export const ProductCard = ({ product, hideOldPrice = false }: Props) => {
+  const hasDiscount = !hideOldPrice && product.fullPrice > product.price;
+  const { toggleFavorite, isFavorite } = useFavorites();
+  const isProductFavorited = isFavorite(product.id);
+  const { toggleCart, isInCart } = useCart();
+  const isProductInCart = isInCart(product.id);
+
+  return (
+    <div className={styles.card}>
+      <div className={styles.imageWrapper}>
+        <Link to={`/product/${product.itemId}`}>
+          <img
+            src={`./${product.image}`}
+            alt={product.name}
+            className={styles.image}
+          />
+        </Link>
+      </div>
+
+      <div className={styles.titleWrapper}>
+        <Link to={`/product/${product.itemId}`} className={styles.title}>
+          {product.name}
+        </Link>
+      </div>
+
+      <div className={styles.price}>
+        <span className={styles.currentPrice}>${product.price}</span>
+        {hasDiscount && (
+          <span className={styles.oldPrice}>${product.fullPrice}</span>
+        )}
+      </div>
+
+      <div className={styles.divider} />
+
+      <div className={styles.specs}>
+        <div className={styles.spec}>
+          <span className={styles.specLabel}>Screen</span>
+          <span className={styles.specValue}>{product.screen}</span>
+        </div>
+        <div className={styles.spec}>
+          <span className={styles.specLabel}>Capacity</span>
+          <span className={styles.specValue}>{product.capacity}</span>
+        </div>
+        <div className={styles.spec}>
+          <span className={styles.specLabel}>RAM</span>
+          <span className={styles.specValue}>{product.ram}</span>
+        </div>
+      </div>
+
+      <div className={styles.buttons}>
+        <button
+          className={styles.addToCart}
+          onClick={() => toggleCart(product)}
+        >
+          {isProductInCart ? 'Added to cart' : 'Add to cart'}
+        </button>
+        <button
+          className={styles.addToFavorites}
+          aria-label="Add to favourites"
+          onClick={() => toggleFavorite(product)}
+        >
+          <img
+            src={isProductFavorited ? heartIconSelected : heartIcon}
+            alt=""
+            aria-hidden="true"
+          />
+        </button>
+      </div>
+    </div>
+  );
+};

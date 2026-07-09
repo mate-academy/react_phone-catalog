@@ -1,7 +1,12 @@
 import './App.scss';
+import { AppRouter } from './AppRouter';
+import { FavoritesProvider } from './contexts/FavoritesContext';
+import { CartProvider } from './contexts/CartContext';
 
 export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
+  <CartProvider>
+    <FavoritesProvider>
+      <AppRouter />
+    </FavoritesProvider>
+  </CartProvider>
 );
