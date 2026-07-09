@@ -1,0 +1,42 @@
+@import '../../styles/main';
+
+.page {
+  @include page-default;
+
+  .title {
+    padding: 40px 0;
+
+    @include on-desktop {
+      padding: 24px 0 32px
+    }
+
+    .count {
+      @include font-dt-body-text;
+
+      color: $secondary-color;
+    }
+  }
+
+  .empty {
+    display: flex;
+    justify-content: center;
+
+    &__image {
+      width: 100%;
+      max-width: 500px;
+    }
+  }
+
+  .items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 40px 16px;
+    justify-items: center;
+
+    @include on-desktop {
+      grid-template-columns: repeat(4, 1fr);
+      max-width: $desktop-content-max-width;
+    }
+  }
+}
+

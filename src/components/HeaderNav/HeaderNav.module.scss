@@ -1,0 +1,162 @@
+@import '../../styles/main';
+
+.nav {
+  display: none;
+
+  @include on-tablet {
+    display: inline-block;
+    width: 100%;
+  }
+
+  @include on-desktop {
+    display: inline-block;
+    width: 100%;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &__list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include on-desktop {
+      gap: 64px;
+    }
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+}
+
+.link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  height: $header-height-desktop;
+
+  font-size: 12px;
+  font-weight: 700;
+  color: $secondary-color;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition: color $transition-time cubic-bezier(0.16, 1, 0.3, 1),
+  transform $transition-time cubic-bezier(0.16, 1, 0.3, 1);
+
+  @include font-dt-uppercase;
+
+  @include on-tablet {
+    height: $header-height-tablet;
+  }
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform-origin: center;
+    transform: scaleX(0);
+
+    width: 100%;
+    height: 2px;
+
+    background-color: $primary-color;
+
+    transition: transform $transition-time cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+    color: $primary-color;
+
+    &::after {
+      transform: scaleX(0.5);
+    }
+  }
+
+  &--active {
+    color: $primary-color;
+
+    &::after {
+      transform: scaleX(1) !important;
+    }
+  }
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-left: auto;
+
+  .line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform-origin: center;
+    transform: scaleX(0);
+
+    width: 100%;
+    height: 2px;
+
+    background-color: $primary-color;
+
+    transition: transform $transition-time cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .icon {
+    cursor: pointer;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    border: none;
+
+    text-decoration: none;
+
+    box-shadow: -1.1px 0 0 0 $elements-color;
+
+    transition: background-color 0.2s ease;
+
+    &--active {
+      .line {
+        transform: scaleX(1) !important;
+      }
+    }
+
+    &:hover {
+      background-color: rgba($primary-color, 0.02);
+
+      .line {
+        transform: scaleX(0.4);
+      }
+    }
+
+    .theme {
+      width: 16px;
+      height: 16px;
+      border: 2px solid $primary-color;
+      border-radius: 50%;
+
+      background-color: $accent-color;
+
+      transition: all $transition-time ease;
+    }
+  }
+}

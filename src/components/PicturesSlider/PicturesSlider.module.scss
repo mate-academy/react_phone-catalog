@@ -1,0 +1,124 @@
+@import '../../styles/main';
+
+$image-border-radius: 8px;
+
+.slider {
+  @include on-tablet {
+    width: 100%;
+    height: 100%;
+  }
+
+  @include on-mobile {
+    margin: 0 -18px;
+  }
+
+  .container {
+    display: flex;
+
+    @include on-tablet {gap: 20px}
+
+    @include on-desktop {gap: 16px}
+
+    button {
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 32px;
+      border: 1px solid $icon-color;
+      border-radius: 25px;
+
+      background-color: $white-color;
+
+      transition: all 0.3s ease;
+
+      @include on-mobile {
+        display: none;
+      }
+
+      .icon {
+        transition: transform 0.3s ease;
+      }
+
+      &:hover {
+        border-color: $primary-color;
+
+        .icon {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+
+  .swiper {
+    overflow: hidden;
+    aspect-ratio: 13 / 5;
+    width: 100%;
+
+    @include on-mobile {
+      aspect-ratio: 1 / 1;
+    }
+
+    @include on-tablet {
+      height: fit-content;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+
+    &-wrapper {
+      height: 100% !important;
+    }
+
+    &-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100% !important;
+    }
+
+    .img {
+      justify-content: center;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center;
+
+      @include on-tablet { border-radius: $image-border-radius; }
+
+      @include on-desktop { border-radius: $image-border-radius; }
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+
+  height: 24px;
+  padding-top: 8px;
+}
+
+.bullet {
+  cursor: pointer;
+
+  width: 14px;
+  height: 4px;
+  border-radius: 0;
+
+  opacity: 1;
+  background-color: $elements-color;
+
+  transition: all $transition-time ease;
+
+  &Active {
+    background-color: $primary-color;
+  }
+}
