@@ -1,0 +1,50 @@
+@import '../../../style/extends';
+@import '../../../style/vars';
+
+.cartTotal {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  &__priceTitle {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    text-align: center;
+    color: var(--text-main);
+  }
+
+  &__totalItems {
+    display: block;
+    color: var(--text-secondary);
+    width: 100%;
+    text-align: center;
+
+    @extend %body-text-14;
+  }
+
+  &__hr {
+    margin: 0;
+    border: none;
+    height: 2px;
+    width: 100%;
+    background-color: var(--border);
+  }
+
+  &__checkout {
+    width: 100%;
+    height: 48px;
+    border-radius: 48px;
+    border: none;
+    color: var(--btn-text);
+    background-color: var(--btn-bg);
+
+    @include hover(box-shadow, 0 3px 13px 0 var(--shadow-add-bt));
+    @extend %buttons;
+  }
+}

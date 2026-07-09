@@ -1,0 +1,127 @@
+@import '../../../style/mixins';
+@import '../../../style/vars';
+@import '../../../style/extends';
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background-color: var(--page-bg);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  &__info {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    width: auto;
+
+    @include on-tablet {
+      gap: 24px;
+      flex-grow: 1;
+    }
+  }
+
+  &__buttonClose {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    color: var(--border-sl-bt);
+  }
+
+  &__imgLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__img {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+  }
+
+  &__name {
+    color: var(--text-main);
+
+    @include on-tablet {
+      width: 176px;
+    }
+
+    @include on-desktop {
+      width: 336px;
+    }
+
+    @include hover(color, var(--icon-bc-ar));
+    @extend %body-text-14;
+  }
+
+  &__action {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  &__control {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  &__buttonQuantity {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid var(--border-sl-bt);
+    cursor: pointer;
+
+    @include hover(border-color, var(--text-main));
+
+    &:hover .cartItem__icon {
+      color: var(--text-main);
+
+      &--disabled {
+      color: var(--border-sl-bt);
+    }
+    }
+
+    &:disabled {
+      border-color: var(--border);
+      cursor: default;
+    }
+  }
+
+  &__quantity {
+    @extend %body-text-14;
+  }
+
+  &__price {
+    font-family: Mont, serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0;
+    width: 100%;
+    text-align: right;
+  }
+}

@@ -1,0 +1,61 @@
+.skeleton-box {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--skelet-bg);
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+      90deg,
+      rgba(var(--skeleton-shimmer), 0) 0,
+      rgba(var(--skeleton-shimmer), 0.2) 20%,
+      rgba(var(--skeleton-shimmer), 0.5) 60%,
+      rgba(var(--skeleton-shimmer), 0)
+    );
+    animation: shimmer 5s infinite;
+    content: '';
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
+
+.blog-post {
+  &__headline {
+    font-size: 1.25em;
+    font-weight: bold;
+  }
+
+  &__meta {
+    font-size: 0.85em;
+    color: var(--skelet-meta-text);
+  }
+}
+
+.o-media {
+  display: flex;
+
+  &__body {
+    flex-grow: 1;
+    margin-left: 1em;
+  }
+}
+
+.o-vertical-spacing {
+  > :not(:first-child) {
+    margin-top: 0.75em;
+  }
+
+  &--l {
+    > :not(:first-child) {
+      margin-top: 2em;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+@import '../../../style/extends';
+@import '../../../style/vars';
+@import '../../../style/mixins';
+
+.colorOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__headerContainer {
+    display: flex;
+    justify-content: space-between;
+
+    position: relative;
+  }
+
+  &__header {
+    @extend %small-text-12;
+
+    font-weight: 600;
+    color: var(--text-secondary);
+
+    &--id {
+      font-weight: 700;
+      color: var(--text-id);
+
+      @include on-desktop {
+        position: absolute;
+        right: -192px;
+      }
+    }
+  }
+
+  &__bottomContainer {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__label {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    box-shadow: inset 0 0 0 2px $lt-white;
+    cursor: pointer;
+
+    @include hover(border-color, $lt-bt-sl-bd);
+
+    &--active {
+      border-color: var(--text-main);
+    }
+  }
+
+  &__hidden {
+    @extend %visually-hidden;
+  }
+
+  &__radio {
+    @extend %hidden-radio;
+  }
+}

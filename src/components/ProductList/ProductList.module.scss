@@ -1,0 +1,26 @@
+@import '../../style/mixins';
+@import '../../style/vars';
+
+.productList {
+  row-gap: 40px;
+  padding: 0;
+  margin: 0;
+
+  @include page-grid;
+  
+  &__item {
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-tablet-md {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+}

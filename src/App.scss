@@ -1,1 +1,20 @@
-// not empty
+@import './style/normalize';
+@import './style/mixins';
+@import './style/vars';
+@import './style/extends';
+@import './style/fonts';
+
+html,
+body {
+  background-color: var(--main-bg);
+  color: var(--text-main);
+  transition:
+    color $transition ease,
+    background-color $transition ease;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}

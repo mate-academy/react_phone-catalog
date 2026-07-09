@@ -1,0 +1,152 @@
+@import '../../style/mixins';
+@import '../../style/vars';
+
+.skeleton {
+  row-gap: 40px;
+  padding: 0;
+  margin: 0;
+
+  @include page-grid;
+
+  &__container {
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-tablet-md {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__movie--isloading {
+    height: 252px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 15px;
+  }
+
+  &__movie--isloading &__loading-image {
+    height: 190px;
+    background-image: linear-gradient(
+      to right,
+      var(--skeleton-lg-a) 0,
+      var(--skeleton-lg-b) 40px,
+      var(--skeleton-lg-c) 80px
+    );
+    background-size: 250px;
+    -webkit-animation: shine-loading-image 2s infinite ease-out;
+    animation: shine-loading-image 2s infinite ease-out;
+  }
+
+  &__movie--isloading &__loading-content {
+    background: var(--skeleton-bg);
+    padding: 15px;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  &__movie--isloading &__loading-content &__loading-text-container {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+  }
+
+  &__movie--isloading &__loading-content &__loading-main-text {
+    height: 10px;
+    width: 65%;
+    margin-bottom: 10px;
+    background: var(--skeleton-lg-a);
+    background-image: linear-gradient(
+      90deg,
+      var(--skeleton-text-a) 0,
+      var(--skeleton-text-b) 40px,
+      var(--skeleton-text-c) 80px
+    );
+    background-size: 250px;
+    border-radius: 10px;
+    -webkit-animation: shine-loading-container-items 2s infinite ease-out;
+    animation: shine-loading-container-items 2s infinite ease-out;
+  }
+
+  &__movie--isloading &__loading-content &__loading-sub-text {
+    height: 10px;
+    width: 50%;
+    background: var(--skeleton-lg-a);
+    background-image: linear-gradient(
+      to right,
+      var(--skeleton-text-a) 0,
+      var(--skeleton-text-b) 40px,
+      var(--skeleton-text-c) 80px
+    );
+    background-size: 250px;
+    border-radius: 10px;
+    -webkit-animation: shine-loading-container-items 2s infinite ease-out;
+    animation: shine-loading-container-items 2s infinite ease-out;
+  }
+
+  &__movie--isloading &__loading-content &__loading-btn {
+    width: 60px;
+    height: 25px;
+    background: var(--skeleton-lg-a);
+    background-image: linear-gradient(
+      to right,
+      var(--skeleton-text-a) 0,
+      var(--skeleton-text-b) 40px,
+      var(--skeleton-text-c) 80px
+    );
+    background-size: 250px;
+    border-radius: 3px;
+    -webkit-animation: shine-loading-container-items 2s infinite ease-out;
+    animation: shine-loading-container-items 2s infinite ease-out;
+  }
+
+  @keyframes shine-loading-image {
+    0% {
+      background-position: -32px;
+    }
+    40%,
+    100% {
+      background-position: 208px;
+    }
+  }
+
+  @keyframes shine-loading-image {
+    0% {
+      background-position: -32px;
+    }
+    40%,
+    100% {
+      background-position: 208px;
+    }
+  }
+
+  @keyframes shine-loading-container-items {
+    0% {
+      background-position: -100px;
+    }
+    40%,
+    100% {
+      background-position: 140px;
+    }
+  }
+
+  @keyframes shine-loading-container-items {
+    0% {
+      background-position: -100px;
+    }
+    40%,
+    100% {
+      background-position: 140px;
+    }
+  }
+}

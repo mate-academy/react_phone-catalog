@@ -1,0 +1,295 @@
+@import '../../style/mixins';
+@import '../../style/vars';
+@import '../../style/extends';
+
+.productDetails {
+  @include content-padding-inline;
+  @include page-grid;
+
+  &__breadcrumbs {
+    grid-column: 1 / -1;
+  }
+
+  &__containerBack {
+    grid-column: 1 / -1;
+  }
+
+  &__buttonBack {
+    display: flex;
+    height: 16px;
+    gap: 4px;
+    align-items: center;
+    padding: 0;
+    border: none;
+    background-color: var(--main-bg);
+    cursor: pointer;
+  }
+
+  &__iconBack {
+    width: 16px;
+    height: 16px;
+    color: var(--text-main);
+
+    color: star;
+  }
+
+  &__back {
+    color: var(--text-secondary);
+    font-family: Mont, serif;
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  &__title {
+    @extend %h2;
+
+    grid-column: 1 / -1;
+    margin-block: 16px 32px;
+
+    @include on-tablet {
+      margin-block: 16px 40px;
+    }
+  }
+
+  &__gallery {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / span 7;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / span 12;
+    }
+  }
+
+  &__optionsActionContainer {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 8 / span 5;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / span 7;
+    }
+  }
+
+  &__hr {
+    border: 1px solid var(--border);
+    margin-block: 24px;
+
+    &--bottom {
+      margin-block: 24px 32px;
+    }
+  }
+
+  &__priceContainer {
+    @extend %h3;
+
+    color: var(--text-main);
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    font-size: 32px;
+  }
+
+  &__fullPrice {
+    display: flex;
+    align-items: center;
+    font-family: Mont, sans-serif;
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-decoration: line-through;
+    color: var(--text-secondary);
+  }
+
+  &__actionContainer {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__actionAdd {
+    height: 40px;
+    flex-grow: 1;
+    border: none;
+    padding: 0;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border-radius: 48px;
+
+    @include hover(box-shadow, 0 3px 13px 0 var(--shadow-add-bt));
+
+    &--selected {
+      background-color: transparent;
+      color: var(--btn-bg);
+      border: 1px solid var(--border);
+    }
+  }
+
+  &__actonFavorite {
+    display: flex;
+    margin: auto;
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 0;
+    border: 1px solid var(--border-sl-bt);
+    background-color: var(--sl-bt-bg);
+
+    @include hover(border-color, var(--text-main));
+  }
+
+  &__favoriteIcon {
+    color: var(--text-main);
+    width: 16px;
+    height: 16px;
+    display: flex;
+    margin: auto;
+  }
+
+  &__specContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__specName {
+    @extend %small-text-12;
+
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  &__specValue {
+    font-family: Mont, serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: right;
+    color: var(--text-main);
+  }
+
+  &__aboutTitle {
+    @extend %h3;
+
+    color: var(--text-main);
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    padding-block: 56px;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      gap: 64px;
+      padding-block: 64px;
+    }
+
+    @include on-desktop {
+      // flex-direction: row;
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      column-gap: 16px;
+    }
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-desktop {
+      grid-column: 1 / span 12;
+    }
+  }
+
+  &__hrAbout {
+    margin-block: 16px 30px;
+    border: 1px solid var(--border);
+  }
+
+  &__article {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__articleTitle {
+    @extend %h4;
+
+    font-size: 16px;
+    color: var(--text-main);
+
+    @include on-tablet {
+      font-size: 20px;
+    }
+  }
+
+  &__paragraph {
+    color: var(--text-secondary);
+  }
+
+  &__specs {
+    @include on-desktop {
+      grid-column: 14 / span 11;
+    }
+  }
+
+  &__titleTech {
+    @extend %h3;
+  }
+
+  &__suggested {
+    grid-column: 1 / -1;
+    margin-inline: -16px;
+
+    @include on-tablet {
+      margin-inline: -24px;
+    }
+
+    @include on-desktop {
+      margin-inline: -32px;
+    }
+  }
+
+  &__skeleton {
+    grid-column: 1 / -1;
+
+    margin-block: 16px 32px;
+
+    @include on-tablet {
+      margin-block: 16px 40px;
+    }
+  }
+
+  &__notFound {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--text-main);
+
+    @extend %body-text-14;
+
+    font-size: 20px;
+    margin-block: 16px 32px;
+
+    @include on-tablet {
+      margin-block: 16px 40px;
+    }
+  }
+}
