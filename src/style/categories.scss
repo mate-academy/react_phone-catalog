@@ -1,0 +1,116 @@
+@use './mixins.scss' as *;
+@use './variables.scss' as *;
+
+.categories {
+  @include on-grid;
+
+  @include on-tablet {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  @include on-mobile {
+    box-sizing: border-box;
+    padding: 0 24px;
+
+    // width: 100%;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+
+    margin-bottom: 24px;
+  }
+
+  &__card {
+    display: flex;
+
+    flex-direction: column;
+
+    grid-column: span 8;
+
+    color: $primary;
+
+    text-decoration: none;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    &-img {
+      position: absolute;
+
+      top: 40px;
+
+      left: 50px;
+
+      width: 100%;
+
+      transition-duration: 0.3s;
+
+      &-wrapper {
+        width: 100%;
+
+        aspect-ratio: 1 / 1;
+
+        overflow: hidden;
+
+        position: relative;
+
+        margin-bottom: 24px;
+      }
+    }
+
+    &-title {
+      position: relative;
+
+      display: inline-block;
+
+      align-self: flex-start;
+
+      &::before {
+        content: '';
+
+        position: absolute;
+
+        bottom: -5px;
+
+        left: 0;
+
+        width: 0;
+
+        height: 1px;
+
+        background-color: $primary;
+
+        transition: width 0.3s;
+      }
+    }
+
+    &:hover &-img {
+      width: 110%;
+    }
+
+    &:hover &-title::before {
+      width: 100%;
+    }
+
+    &-quantity {
+      color: $secondary;
+
+      margin-top: 4px;
+    }
+  }
+
+  &--pink {
+    background-color: #973d5f;
+  }
+
+  &--gray {
+    background-color: #6d6474;
+  }
+
+  &--light {
+    background-color: $secondary;
+  }
+}

@@ -1,0 +1,210 @@
+<main className="main">
+        <section className="welcome">
+          <h1 className="welcome__title">Welcome to Nice Gadgets store!</h1>
+          <div className="welcome__wrapper">
+            <button
+              className="button welcome__button"
+              onClick={() => {
+                handlePrev();
+                setIsAnimated(false);
+                setTimeout(() => {
+                  setIsAnimated(true);
+                }, 2000);
+              }}
+            >
+              <div className="icon icon--left"></div>
+            </button>
+            <div className="welcome__image-wrapper">
+              <div
+                className="welcome__image-slider"
+                style={{ transform: `translateX(-${currentSlide}00%)` }}
+              >
+                <img
+                  src="/img/banner.png"
+                  alt="banner"
+                  className="welcome__banner"
+                />
+                <img
+                  src="/img/banner.png"
+                  alt="banner"
+                  className="welcome__banner"
+                />
+                <img
+                  src="/img/banner.png"
+                  alt="banner"
+                  className="welcome__banner"
+                />
+              </div>
+            </div>
+
+            <button
+              className="button welcome__button"
+              onClick={() => {
+                handleNext();
+                setIsAnimated(false);
+                setTimeout(() => {
+                  setIsAnimated(true);
+                }, 2000);
+              }}
+            >
+              <div className="icon icon--right"></div>
+            </button>
+          </div>
+
+          <ul className="welcome__slider">
+            <li className="welcome__slider-item">
+              <div
+                className={classNames(
+                  'welcome__slider-icon',
+                  currentSlide === 0 ? 'is-active' : '',
+                )}
+              ></div>
+            </li>
+            <li className="welcome__slider-item">
+              <div
+                className={classNames(
+                  'welcome__slider-icon',
+                  currentSlide === 1 ? 'is-active' : '',
+                )}
+              ></div>
+            </li>
+            <li className="welcome__slider-item">
+              <div
+                className={classNames(
+                  'welcome__slider-icon',
+                  currentSlide === 2 ? 'is-active' : '',
+                )}
+              ></div>
+            </li>
+          </ul>
+        </section>
+
+        <section className="slider">
+          <h2 className="slider__title">Brand new models</h2>
+          <button
+            className="slider__button button"
+            onClick={() => {
+              if (sliderOne !== 0) {
+                setSliderOne(p => p - 1);
+              }
+            }}
+          >
+            <div className="icon icon--left"></div>
+          </button>
+          <button
+            className="slider__button button"
+            disabled={sliderOne === visibleProducts.length - 4}
+            onClick={() => {
+              setSliderOne(p => p + 1);
+            }}
+          >
+            <div className="icon icon--right"></div>
+          </button>
+
+          <div
+            className="slider__wrapper"
+            style={{
+              transform: `translateX(calc(-${sliderOne} * var(--card-width) - ${sliderOne} * var(--gap)))`,
+            }}
+          >
+            {[...visibleProducts]
+              .sort((p1, p2) => p2.year - p1.year)
+              .map(product => (
+                <ProductCard
+                  product={product}
+                  key={product.id}
+                  discounted={false}
+                />
+              ))}
+          </div>
+        </section>
+
+        <section className="categories">
+          <h2 className="categories__title">Shop by category</h2>
+
+          <a href="/" className="categories__card">
+            <div className="categories__card-img-wrapper categories--gray">
+              <img
+                src="/img/category-phones.webp"
+                alt="caategory image"
+                className="categories__card-img"
+              />
+            </div>
+            <h4 className="categories__card-title">Mobile phones</h4>
+            <div className="categories__card-quantity body-text">
+              {phonesQ} models
+            </div>
+          </a>
+          <a href="/" className="categories__card">
+            <div className="categories__card-img-wrapper categories--light">
+              <img
+                src="/img/category-tablets.webp"
+                alt="caategory image"
+                className="categories__card-img"
+              />
+            </div>
+            <h4 className="categories__card-title">Tablets</h4>
+            <div className="categories__card-quantity body-text">
+              {tabletsQ} models
+            </div>
+          </a>
+          <a href="/" className="categories__card">
+            <div className="categories__card-img-wrapper categories--pink">
+              <img
+                src="/img/category-accessories.webp"
+                alt="caategory image"
+                className="categories__card-img"
+              />
+            </div>
+            <h4 className="categories__card-title">Accessories</h4>
+            <div className="categories__card-quantity body-text">
+              {accessoriesQ} models
+            </div>
+          </a>
+        </section>
+
+        <section className="slider">
+          <h2 className="slider__title">Brand new models</h2>
+          <button
+            className="slider__button button"
+            onClick={() => {
+              if (sliderTwo !== 0) {
+                setSliderTwo(p => p - 1);
+              }
+            }}
+          >
+            <div className="icon icon--left"></div>
+          </button>
+          <button
+            className="slider__button button"
+            disabled={sliderTwo === visibleProducts.length - 4}
+            onClick={() => {
+              setSliderTwo(p => p + 1);
+            }}
+          >
+            <div className="icon icon--right"></div>
+          </button>
+
+          <div
+            className="slider__wrapper"
+            style={{
+              transform: `translateX(calc(-${sliderTwo} * var(--card-width) - ${sliderTwo} * var(--gap)))`,
+            }}
+          >
+            {[...visibleProducts]
+              .sort((p1, p2) => {
+                const d1 = p1.fullPrice - p1.price;
+                const d2 = p2.fullPrice - p2.price;
+
+                return d2 - d1;
+              })
+              .map(product => (
+                <ProductCard
+                  product={product}
+                  key={product.id}
+                  discounted={true}
+                />
+              ))}
+          </div>
+        </section>
+      </main>

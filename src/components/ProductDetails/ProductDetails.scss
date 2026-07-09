@@ -1,0 +1,376 @@
+@use '../../style/variables.scss' as *;
+@use '../../style/mixins.scss' as *;
+
+.product-details {
+  display: flex;
+
+  width: 100%;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  &__wrapper {
+    @include on-grid;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+
+    margin-bottom: 40px;
+  }
+
+  &__images {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+
+    list-style: none;
+
+    margin: 0;
+
+    padding: 0;
+
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 1;
+    }
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+
+      flex-direction: row;
+      grid-row: 4;
+
+      margin-bottom: 40px;
+    }
+  }
+
+  &__image {
+    aspect-ratio: 1 / 1;
+
+    width: 100%;
+  }
+
+  &__img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    margin-bottom: 0;
+  }
+
+  &__main-image {
+    grid-column: span 10;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+
+      margin-bottom: 16px;
+    }
+  }
+
+  &__main-img {
+    aspect-ratio: 1 / 1;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    margin-bottom: 80px;
+  }
+
+  &__characteristics {
+    display: flex;
+
+    flex-direction: column;
+
+    grid-column: span 7;
+
+    @include on-tablet {
+      grid-column: span 5;
+    }
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__colors {
+    display: flex;
+
+    flex-direction: row;
+
+    gap: 8px;
+
+    margin: 8px 0 0;
+
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__line {
+    height: 1px;
+
+    width: 100%;
+
+    margin-top: 24px;
+
+    background-color: $elements;
+  }
+
+  &__capacity {
+    display: flex;
+
+    flex-direction: row;
+
+    gap: 8px;
+
+    margin: 0;
+
+    padding: 0;
+
+    list-style: none;
+
+    &-title {
+      margin: 24px 0 8px;
+    }
+
+    &-button {
+      height: 32px;
+
+      width: max-content;
+
+      padding: 8px;
+
+      text-decoration: none;
+    }
+  }
+
+  &-price {
+    &-wrapper {
+      display: flex;
+
+      gap: 8px;
+
+      margin-top: 32px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+
+    flex-direction: row;
+
+    gap: 8px;
+
+    margin-top: 16px;
+  }
+
+  &__button {
+    width: 263px;
+
+    height: 48px;
+  }
+
+  &__favourite {
+    width: 48px;
+
+    height: 48px;
+  }
+
+  &__description {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-around;
+
+    gap: 0;
+
+    list-style: none;
+
+    margin: 32px 0 0;
+
+    padding: 0;
+
+    height: 77px;
+  }
+
+  &__item {
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    height: 15px;
+  }
+
+  &__param {
+    color: $secondary;
+  }
+
+  &__blank {
+    grid-column: span 1;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__value {
+    font-family: Mont, sans-serif;
+
+    font-weight: 300;
+
+    font-size: 12px;
+
+    line-height: 100%;
+
+    letter-spacing: 0%;
+
+    text-align: right;
+
+    color: $primary;
+  }
+
+  &__block-description {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-around;
+
+    gap: 8px;
+
+    list-style: none;
+
+    margin: 32px 0 0;
+
+    padding: 0;
+
+    height: 77px;
+  }
+
+  &__block-item {
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    height: 15px;
+  }
+
+  &__block-param {
+    color: $secondary;
+  }
+
+  &__block-blank {
+    grid-column: span 1;
+  }
+
+  &__block-value {
+    font-family: Mont, sans-serif;
+
+    font-weight: 300;
+
+    font-size: 12px;
+
+    line-height: 100%;
+
+    letter-spacing: 0%;
+
+    text-align: right;
+
+    color: $primary;
+  }
+
+  &__id {
+    text-align: right;
+
+    color: $icons;
+
+    grid-column: span 4;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__about {
+    margin-top: 80px;
+
+    grid-column: span 12;
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+    }
+
+  }
+
+  &__line-des {
+    height: 1px;
+
+    width: 100%;
+
+    margin: 16px 0 32px;
+
+    background-color: $elements;
+  }
+
+  &__specs {
+    margin-top: 80px;
+
+    grid-column: span 11;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+
+      margin-bottom: 64px;
+    }
+  }
+
+  &__block {
+    margin: 32px 0;
+
+    &-text {
+      color: $icons;
+
+      margin-top: 16px;
+    }
+  }
+
+  &__slider {
+    padding: 0;
+  }
+}
+
+.image-button {
+  background-color: transparent;
+
+  border: 1px solid $elements;
+
+  &--active {
+    border: 1px solid $primary;
+  }
+}

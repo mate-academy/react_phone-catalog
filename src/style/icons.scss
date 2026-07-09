@@ -1,0 +1,101 @@
+@use './mixins.scss' as *;
+@use './typography.scss' as *;
+@use './variables.scss' as *;
+
+.icon {
+  width: 16px;
+
+  height: 16px;
+
+  display: flex;
+
+  background-color: $primary;
+
+  -webkit-mask-repeat: no-repeat;
+
+  -webkit-mask-position: center;
+
+  -webkit-mask-size: contain;
+
+  mask-repeat: no-repeat;
+
+  mask-position: center;
+
+  mask-size: contain;
+
+
+
+  &--cart {
+    -webkit-mask-image: url('/react_phone-catalog/img/icons/icon__cart.svg');
+
+    mask-image: url('/react_phone-catalog/img/icons/icon__cart.svg');
+  }
+
+  &--home {
+    -webkit-mask-image: url('/react_phone-catalog/img/icons/icon__home.svg');
+
+    mask-image: url('/react_phone-catalog/img/icons/icon__home.svg');
+  }
+
+  &--menu {
+    -webkit-mask-image: url('/react_phone-catalog/img/icons/Menu.svg');
+
+    mask-image: url('/react_phone-catalog/img/icons/Menu.svg');
+  }
+
+  &--favourite {
+    -webkit-mask-image: url('/react_phone-catalog/img/icons/icon__favourite.svg');
+
+    mask-image: url('/react_phone-catalog/img/icons/icon__favourite.svg');
+  }
+
+  &--favourite-filled {
+    background-color: $red;
+
+    -webkit-mask-image: url('/react_phone-catalog/img/icons/icon__favourites-filled.svg');
+
+    mask-image: url('/react_phone-catalog/img/icons/icon__favourites-filled.svg');
+  }
+
+  &--close {
+    -webkit-mask-image: url('/react_phone-catalog/img/icons/icon__close.svg');
+
+    mask-image: url('/react_phone-catalog/img/icons/icon__close.svg');
+  }
+
+  &--left {
+    -webkit-mask-image: url('/react_phone-catalog/img/icons/icon__left.svg');
+
+    mask-image: url('/react_phone-catalog/img/icons/icon__left.svg');
+  }
+
+  &--right {
+    -webkit-mask-image: url('/react_phone-catalog/img/icons/icon__right.svg');
+
+    mask-image: url('/react_phone-catalog/img/icons/icon__right.svg');
+  }
+
+  &--up {
+    -webkit-mask-image: url('/react_phone-catalog/img/icons/icon__up.svg');
+
+    mask-image: url('/react_phone-catalog/img/icons/icon__up.svg');
+  }
+
+  &--down {
+    -webkit-mask-image: url('/react_phone-catalog/img/icons/icon__down.svg');
+
+    mask-image: url('/react_phone-catalog/img/icons/icon__down.svg');
+  }
+
+  &--plus {
+    -webkit-mask-image: url('/react_phone-catalog/img/icons/icon__plus.svg');
+
+    mask-image: url('/react_phone-catalog/img/icons/icon__plus.svg');
+  }
+
+  &--minus {
+    -webkit-mask-image: url('/react_phone-catalog/img/icons/icon__minus.svg');
+
+    mask-image: url('/react_phone-catalog/img/icons/icon__minus.svg');
+  }
+}

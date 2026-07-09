@@ -1,0 +1,28 @@
+@mixin on-mobile {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin on-grid {
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  column-gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    padding: 0 24px;
+  }
+
+  @include on-mobile {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0 16px;
+    column-gap: 16px;
+  }
+}

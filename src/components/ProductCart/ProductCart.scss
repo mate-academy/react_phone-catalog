@@ -1,0 +1,177 @@
+@use '../../style/variables.scss' as *;
+@use '../../style/mixins.scss' as *;
+
+.product-cart {
+  display: flex;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  &__wrapper {
+    @include on-grid;
+
+    box-sizing: border-box;
+
+    @include on-tablet {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+  }
+
+  &__subtitle {
+    grid-column: 1 / -1;
+  }
+
+  &__products {
+    grid-column: span 16;
+
+    margin-top: 40px;
+
+    margin-bottom: 80px;
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__card {
+    box-sizing: border-box;
+
+    height: 128px;
+
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 24px;
+
+    grid-column: span 16;
+
+    border: 1px solid $elements;
+
+    &-wrapper {
+      display: flex;
+
+      flex-direction: row;
+
+      gap: 24px;
+
+      align-items: center;
+    }
+
+    &-image {
+      box-sizing: border-box;
+
+      width: 80px;
+
+      height: 80px;
+
+      padding: 7px;
+    }
+
+    &-img {
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: contain;
+    }
+
+    &-name {
+      color: $primary;
+      text-decoration: none;
+      flex: 1;
+    }
+
+    &-title {
+      width: 80px;
+
+      text-align: right;
+
+      flex-shrink: 0;
+    }
+
+    &-buttons {
+      display: flex;
+
+      flex-direction: row;
+    }
+
+    &-button {
+      box-sizing: border-box;
+
+      width: 32px;
+
+      height: 32px;
+    }
+
+    &-quantity {
+      width: 32px;
+
+      border: none;
+    }
+  }
+
+  &__empty {
+    grid-column: 1 / -1;
+    width: 320px;
+    max-width: 100%;
+    margin: 40px auto;
+  }
+
+  &__order {
+    box-sizing: border-box;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    grid-column: span 8;
+
+    padding: 24px;
+
+    margin-top: 40px;
+
+    border: 1px solid $elements;
+
+    height: min-content;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+
+      width: 100%;
+    }
+  }
+
+  &__line {
+    width: 100%;
+
+    height: 1px;
+
+    margin-top: 24px;
+
+    margin-bottom: 24px;
+
+    background-color: $elements;
+  }
+
+}
