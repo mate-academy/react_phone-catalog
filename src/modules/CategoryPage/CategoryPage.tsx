@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { getProducts } from '../../api/products';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { CategoryControls } from '../../components/CategoryControls';
+import { PageNavigation } from '../../components/PageNavigation';
 import { ProductCard } from '../../components/ProductCard';
 import { Product, ProductCategory } from '../../types/Product';
 
@@ -30,6 +31,7 @@ export const CategoryPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [sortBy, setSortBy] = useState('newest');
   const [itemsPerPage, setItemsPerPage] = useState('16');
+  const [currentPage, setCurrentPage] = useState(1);
 
   const category = getCategoryFromPathname(pathname);
   const title = categoryTitles[category];
@@ -37,6 +39,10 @@ export const CategoryPage = () => {
   useEffect(() => {
     getProducts().then(setProducts);
   }, []);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [category, sortBy, itemsPerPage]);
 
   const categoryProducts = useMemo(() => {
     return products.filter(product => product.category === category);
@@ -64,13 +70,28 @@ export const CategoryPage = () => {
     }
   }, [categoryProducts, sortBy]);
 
+  const totalPages = useMemo(() => {
+    if (itemsPerPage === 'all') {
+      return 1;
+    }
+
+    return Math.ceil(sortedProducts.length / Number(itemsPerPage));
+  }, [sortedProducts.length, itemsPerPage]);
+
   const visibleProducts = useMemo(() => {
     if (itemsPerPage === 'all') {
       return sortedProducts;
     }
 
-    return sortedProducts.slice(0, Number(itemsPerPage));
-  }, [sortedProducts, itemsPerPage]);
+    const firstProductIndex = (currentPage - 1) * Number(itemsPerPage);
+    const lastProductIndex = firstProductIndex + Number(itemsPerPage);
+
+    return sortedProducts.slice(firstProductIndex, lastProductIndex);
+  }, [sortedProducts, itemsPerPage, currentPage]);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   return (
     <section className={styles.categoryPage}>
@@ -92,6 +113,14 @@ export const CategoryPage = () => {
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
+
+      {itemsPerPage !== 'all' && totalPages > 1 && (
+        <PageNavigation
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      )}
     </section>
   );
 };
