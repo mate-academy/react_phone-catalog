@@ -101,6 +101,8 @@ export const ProductDetailsPage = () => {
     }
   };
 
+  console.log(colorsAvailable);
+
   return (
     <div className={styles.containerPhones}>
       <Link to={`/${category}`} className={styles.home}>
@@ -176,7 +178,6 @@ export const ProductDetailsPage = () => {
             ))}
           </div>
           <span className={styles.uderLine}></span>
-
           <div className={styles.capacityAvailableBlock}>
             <div className={styles.capacityAvailableInBlock}>
               {capacityAvailable.map(cap => (
@@ -198,12 +199,10 @@ export const ProductDetailsPage = () => {
             </div>
           </div>
           <span className={styles.uderLine}></span>
-
           <div className={styles.cardPriceGoup}>
             <span className={styles.cardPriceHot}>${priceDiscount}</span>
             <span className={styles.cardfullPriceHot}>${priceRegular}</span>
           </div>
-
           <div className={styles.actions}>
             <button
               className={`${styles.cardToAdd} ${isProductInCart ? styles.added : ''}`}
@@ -224,7 +223,6 @@ export const ProductDetailsPage = () => {
               />
             </button>
           </div>
-
           <div className={styles.cardSpes}>
             <div className={styles.specRow}>
               <span>Screen</span>
