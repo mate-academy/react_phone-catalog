@@ -1,0 +1,69 @@
+@use '../../shared/styles/variables.scss' as *;
+@use '../../shared/styles/mixins.scss' as *;
+
+.isLoading {
+  @include grid;
+  @include section-margin;
+
+  margin-top: 50px;
+  grid-column: 1 / -1;
+
+  .title {
+    grid-column: 1 / -1;
+    height: 40px;
+    background-size: 350px;
+    background-image: linear-gradient(90deg, $grayElements 0, $graySecondary 40px, $grayElements 80px);
+    animation: shimmer 2s infinite linear;
+  }
+
+  .main {
+    @include section-margin;
+
+    grid-column: 1 / -1;
+    width: 100%;
+    height: 400px;
+    background-size: 350px;
+    background-image: linear-gradient(90deg, $grayElements 0, $graySecondary 40px, $grayElements 80px);
+    animation: shimmer 2s infinite linear;
+  }
+
+  .section {
+    grid-column: 1 / -1;
+    width: 20%;
+    height: 40px;
+    background-size: 350px;
+    background-image: linear-gradient(90deg, $grayElements 0, $graySecondary 40px, $grayElements 80px);
+    animation: shimmer 2s infinite linear;
+  }
+
+  .descriptions {
+    @include section-margin;
+
+    grid-column: 1 / -1;
+    width: 100%;
+    height: 300px;
+    background-size: 350px;
+    background-image: linear-gradient(90deg, $grayElements 0, $graySecondary 40px, $grayElements 80px);
+    animation: shimmer 2s infinite linear;
+  }
+
+  .specs {
+    grid-column: 2 / -2;
+    margin-bottom: 5px;
+    width: 100%;
+    height: 20px;
+    background-size: 350px;
+    background-image: linear-gradient(90deg, $grayElements 0, $graySecondary 40px, $grayElements 80px);
+    animation: shimmer 2s infinite linear;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -250px;
+  }
+
+  100% {
+    background-position: 250px;
+  }
+}

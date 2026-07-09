@@ -1,0 +1,213 @@
+@use '../shared/styles/mixins.scss' as *;
+@use '../shared/styles/variables.scss' as *;
+
+
+.cartpage {
+  @include grid;
+
+  align-self: start;
+
+  .breadcrumb {
+    @include font-small-text;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    grid-column: 1 / -1;
+    gap: 8px;
+    margin-block: 24px;
+
+
+
+    img {
+      filter: invert(1);
+
+      &:hover {
+        filter: invert(43%) sepia(72%) saturate(3825%) hue-rotate(237deg) brightness(100%) contrast(102%);
+      }
+
+    }
+
+    &_icon {
+      @include flex-center;
+
+      width: 16px;
+      height: 16px;
+
+    }
+
+
+    &_page {
+      text-transform: capitalize;
+      text-decoration: none;
+      color: $white;
+
+      @include font-small-text;
+
+      &:hover {
+        color: $color-accent;
+
+      }
+
+    }
+  }
+
+  .title {
+    @include font-h1(32px, 41px);
+
+    grid-column: 1 / -1;
+  }
+
+  .main {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+    margin-bottom: 56px;
+
+    @media (min-width: $tablet-breakpoint) {
+      margin-bottom: 64px;
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+      margin-bottom: 80px;
+    }
+
+
+    .products {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .product {
+        width: 100%;
+      }
+
+    }
+
+    .total {
+      width: 288px;
+      top: 90px;
+      bottom: 40px;
+      position: sticky;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      align-items: center;
+      padding: 24px;
+      margin-top: 16px;
+      border: $border-default;
+      background-color: $black;
+
+      @media (min-width: $tablet-breakpoint) {
+        width: 592px;
+      }
+
+      @media (min-width: $desktop-breakpoint) {
+        max-width: 30%;
+        margin-top: 0;
+      }
+
+
+
+
+      .priceblock {
+        width: 100%;
+        padding-bottom: 16px;
+        border-bottom: $border-default;
+      }
+
+      .totalPrice {
+        @include flex-center;
+        @include font-h2;
+
+        color: $white;
+      }
+
+      .countProducts {
+        @include flex-center;
+        @include font-body-text;
+
+        color: $graySecondary;
+      }
+
+      .checkoutButton {
+        margin-top: 16px;
+        width: 100%;
+        height: 48px;
+        border: none;
+        background-color: $color-accent;
+        color: $white;
+        text-align: center;
+        transition: all 0.15s ease;
+
+        @include font-buttons;
+
+        &:hover {
+          background-color: $btn-text-hover;
+        }
+
+        &:disabled {
+          opacity: 0.5;
+          pointer-events: none;
+        }
+
+      }
+
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+
+    @include flex-center;
+  }
+
+  .modal {
+    border: 1px solid $green;
+    background: $surface_1;
+    padding: 24px 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    max-width: 400px;
+
+    @media (min-width: $tablet-breakpoint) {
+      padding: 40px;
+      width: 480px;
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+      width: 560px;
+    }
+
+    button {
+      background: $color-accent;
+      color: $white;
+      border: none;
+      margin: 0 auto;
+      width: 50%;
+      padding: 12px 24px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $btn-text-hover;
+      }
+    }
+  }
+}

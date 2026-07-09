@@ -1,0 +1,1 @@
+export { BannerSlider } from './BannerSlider';

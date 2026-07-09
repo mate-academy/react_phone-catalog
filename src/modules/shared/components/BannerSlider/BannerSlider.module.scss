@@ -1,0 +1,124 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.bannerSlider {
+  box-sizing: border-box;
+  width: 100%;
+
+
+  .slider_content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    @media (min-width: $tablet-breakpoint) {
+      flex-direction: row;
+      align-items: stretch;
+      gap: 19px;
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+      gap: 16px;
+    }
+  }
+
+  .images {
+    flex: 1;
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    position: relative;
+    perspective: 1000px;
+
+    @media (min-width: $tablet-breakpoint) {
+      aspect-ratio: 8/3;
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+      aspect-ratio: 13 / 5;
+    }
+
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: rotateY(0deg);
+      transition: transform 0.5s ease, opacity 1.5s ease;
+
+      &.active {
+        opacity: 1;
+        transform: rotateY(0deg);
+        transition-delay: 0.3s;
+      }
+
+      &.prevNext {
+        transform: rotateY(90deg);
+      }
+
+      &.prevPrev {
+        transform: rotateY(-90deg);
+      }
+    }
+  }
+
+  .buttons {
+    @include flex-center;
+
+    gap: 4px;
+    padding: 16px 0;
+
+    .button {
+      @include flex-center;
+
+      width: 24px;
+      height: 24px;
+
+      button {
+        @include flex-center;
+
+        width: 14px;
+        height: 4px;
+        background-color: $graySecondary;
+        border: none;
+        cursor: pointer;
+
+        &.active {
+          background-color: $white;
+        }
+      }
+    }
+
+
+
+  }
+
+  .icon {
+    display: none;
+    transition: all 0.5s ease;
+
+
+    img {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+
+      filter: invert(1);
+    }
+
+    &:hover {
+      background-color: $icon-bg-hover;
+    }
+
+    @media (min-width: $tablet-breakpoint) {
+      width: 32px;
+      border: none;
+      background-color: $surface_2;
+
+      @include flex-center;
+    }
+  }
+}

@@ -1,0 +1,185 @@
+@use '/src/modules/shared/styles/mixins.scss' as *;
+@use '/src/modules/shared/styles/variables.scss' as *;
+
+
+.footer {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 0 16px;
+
+  border-top: $border-default;
+
+
+
+  .footerLogo {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: start;
+    justify-self: center;
+    align-items: center;
+
+    height: 30px;
+    width: 89px;
+    margin: 32px 0;
+
+  }
+
+
+  .links {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: $tablet-gap-footer-item;
+    width: max-content;
+
+    .link {
+      @include font-uppercase;
+
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: $white;
+      text-transform: uppercase;
+      text-decoration: none;
+
+      &:hover {
+        color: $graySecondary;
+      }
+    }
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+    margin: 32px 0;
+    gap: $tablet-gap-footer-item;
+    background-color: $black;
+    height: 40px;
+    color: $graySecondary;
+    border: none;
+    cursor: pointer;
+
+    .icon {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $icon-bg-default;
+      width: 32px;
+      height: 32px;
+
+      img {
+        width: 16px;
+        height: 16px;
+
+        filter: invert(1);
+
+      }
+
+      &:hover {
+        background-color: $icon-bg-hover;
+
+      }
+    }
+  }
+
+
+
+
+  @media (min-width: 840px) {
+    flex-direction: row;
+    align-items: center;
+    height: 96px;
+    padding: 0 80px;
+
+    .links {
+      flex-direction: row;
+      gap: 89px;
+    }
+
+    .button {
+      width: auto;
+    }
+  }
+
+  @media (min-width: 1140px) {
+    padding: 0 152px;
+
+    .links {
+      gap: 106px;
+    }
+
+  }
+}
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  border: 1px solid $green;
+  background: $surface_1;
+  padding: 24px 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 80%;
+  max-width: 400px;
+
+  .title {
+    margin-bottom: 15px;
+  }
+
+  a {
+    color: $white;
+    text-decoration: none;
+    transition: all 0.15s ease-in-out;
+
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
+  @media (min-width: $tablet-breakpoint) {
+    padding: 40px;
+    width: 480px;
+  }
+
+  button {
+    background: $color-accent;
+    color: $white;
+    border: none;
+    margin: 0 auto;
+    width: 40%;
+    padding: 12px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+
+
+    &:hover {
+      background-color: $btn-text-hover;
+    }
+  }
+}

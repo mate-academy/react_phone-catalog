@@ -1,0 +1,32 @@
+@use '../../../styles/variables.scss' as *;
+
+.isLoading {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  @media (min-width: $tablet-breakpoint) {
+    aspect-ratio: 8 / 3;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    aspect-ratio: 13 / 5;
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+    background-size: 350px;
+    background-image: linear-gradient(90deg, $grayElements 0, $graySecondary 40px, $grayElements 80px);
+    animation: shimmer 2s infinite linear;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -250px;
+  }
+
+  100% {
+    background-position: 250px;
+  }
+}

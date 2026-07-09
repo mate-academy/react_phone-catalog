@@ -1,0 +1,42 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+
+.errors {
+  @include grid;
+
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 60vh;
+  margin: 56px 0;
+  gap: 55px;
+
+
+  .title {
+    @include font-h2;
+  }
+
+  .subtitle {
+    @include font-h4;
+  }
+}
+
+.img {
+  width: 90%;
+  object-fit: contain;
+
+  @media (min-width: $tablet-breakpoint) {
+    width: 50%;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    width: 40%;
+  }
+
+
+  filter: brightness(2);
+
+}
