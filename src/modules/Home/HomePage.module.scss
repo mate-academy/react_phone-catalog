@@ -1,0 +1,33 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.homePage {
+  max-width: $bp-desktop;
+  margin: 0 auto $spacing-3xl;
+}
+
+.mainTitle {
+  @include hero-title;
+
+  margin-block: $spacing-m;
+
+  @include on-tablet {
+    margin-block: $spacing-l;
+  }
+
+  @include on-desktop {
+    margin-block: $spacing-xxl;
+  }
+}
+
+.section {
+  margin-bottom: $spacing-xxl;
+
+  @include on-tablet {
+    margin-bottom: $spacing-3xl;
+  }
+
+  @include on-desktop {
+    margin-bottom: $spacing-4xl;
+  }
+}

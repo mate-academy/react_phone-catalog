@@ -1,0 +1,14 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.categoryGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-l;
+  margin-top: $spacing-m;
+
+  @include on-tablet {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-s;
+  }
+}

@@ -1,0 +1,12 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl $spacing-s;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}

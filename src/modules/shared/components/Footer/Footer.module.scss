@@ -1,0 +1,113 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.footer {
+  background-color: $c-white;
+  border-top: 1px solid $c-elements;
+  padding: $spacing-l 0;
+  margin-top: auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $spacing-l;
+
+  max-width: $bp-desktop;
+  margin: 0 auto;
+  padding: 0 $spacing-s;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    padding: 0 $spacing-l;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+
+  &Image {
+    height: 24px;
+    width: auto;
+    object-fit: contain;
+
+    @include on-desktop {
+      height: 32px;
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-s;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: $spacing-l;
+  }
+
+  &__link {
+    @include text-nav-link;
+
+    text-decoration: none;
+    color: $c-secondary;
+    transition: $transition-color;
+
+    &:hover {
+      color: $c-primary;
+    }
+  }
+}
+
+.backToTopWrapper {
+  align-self: center;
+
+  @include on-tablet {
+    align-self: auto;
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  gap: $spacing-s;
+  color: $c-secondary;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  transition: $transition-color;
+
+  &__text {
+    @include text-small-bold;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: $size-action-btn;
+    height: $size-action-btn;
+
+    color: $c-primary;
+    border: 1px solid $c-elements;
+    transition: $transition-color;
+  }
+
+  &:hover {
+    color: $c-primary;
+
+    .backToTop__icon {
+      border-color: $c-primary;
+    }
+  }
+}

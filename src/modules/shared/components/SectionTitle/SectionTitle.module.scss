@@ -1,0 +1,6 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.sectionTitle {
+  @include text-section-title;
+}

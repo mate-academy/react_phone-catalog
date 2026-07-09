@@ -1,0 +1,43 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.imageWrapper {
+  aspect-ratio: 1 / 1;
+  background-color: $c-elements;
+  border-radius: $border-radius-default;
+  overflow: hidden;
+  margin-bottom: $spacing-m;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+    transition: $transition-transform;
+  }
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+
+  &:hover {
+    img {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.title {
+  @include text-subtitle;
+
+  margin-bottom: $spacing-xxs;
+  margin-top: 0;
+}
+
+.count {
+  @include text-secondary-regular;
+
+  margin: 0;
+}

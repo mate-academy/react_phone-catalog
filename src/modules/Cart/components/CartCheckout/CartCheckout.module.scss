@@ -1,0 +1,37 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.cartCheckout {
+  border: 1px solid $c-elements;
+  background-color: $c-white;
+  padding: $spacing-m;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-s;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.price {
+  @include text-price-massive;
+}
+
+.text {
+  @include text-secondary-semibold;
+}
+
+.divider {
+  height: 1px;
+  background-color: $c-elements;
+  width: 100%;
+}
+
+.button {
+  @include primary-button;
+
+  width: 100%;
+}

@@ -1,0 +1,8 @@
+@import '../../../../styles/variables';
+
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-s;
+  width: 100%;
+}

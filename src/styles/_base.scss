@@ -1,0 +1,79 @@
+@import './reset';
+@import './variables';
+@import './fonts';
+@import './mixins';
+
+.root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  font-family: $font-family;
+  color: $c-primary;
+  background-color: $c-white;
+}
+
+.page-container {
+  @include page-container;
+
+  padding-left: $spacing-s;
+  padding-right: $spacing-s;
+  width: 100%;
+}
+
+body, html {
+  font-family: $font-family;
+  background-color: $c-white;
+  color: $c-primary;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: $transition-transform;
+
+  &--down {
+    transform: rotate(180deg);
+  }
+
+  &--left {
+    transform: rotate(-90deg);
+  }
+
+  &--right {
+    transform: rotate(90deg);
+  }
+}
+
+.app-initial-state {
+  @include flex-center;
+
+  flex-direction: column;
+  flex: 1;
+  height: 100vh;
+  gap: $spacing-m;
+  background-color: $c-bg-hover;
+}
+
+.error-title {
+  font-size: 32px;
+  font-weight: $fw-bold-h;
+  margin: 0;
+}
+
+.reload-button {
+  @include primary-button;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

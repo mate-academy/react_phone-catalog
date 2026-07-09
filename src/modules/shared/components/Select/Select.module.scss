@@ -1,0 +1,51 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+  min-width: 128px;
+}
+
+.label {
+  @include text-small-bold;
+
+  color: $c-secondary;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select {
+  appearance: none;
+  width: 100%;
+  padding: 10px 40px 10px 12px;
+  background: $c-white;
+  border: 1px solid $c-elements;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: $transition-color;
+
+  @include text-primary-semibold;
+
+  &:hover { border-color: $c-icons; }
+  &:focus { border-color: $c-primary; }
+}
+
+.icon {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  display: flex;
+  color: $c-secondary;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}

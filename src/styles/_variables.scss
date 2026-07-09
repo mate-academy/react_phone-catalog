@@ -1,0 +1,68 @@
+$c-primary: #313237;
+$c-secondary: #89939a;
+$c-icons: #b4bdc3;
+$c-elements: #e2e6e9;
+$c-bg-hover: #fafbfc;
+$c-white: #fff;
+$c-green: #27AE60;
+$c-red: #EB5757;
+$font-family: 'Mont', 'Montserrat', sans-serif;
+$bp-mobile: 320px;
+$bp-tablet: 640px;
+$bp-desktop: 1200px;
+
+/* =========================================
+   ANIMATION TOKENS
+   ========================================= */
+$transition-default: all 0.3s ease;
+$transition-transform: transform 0.3s ease;
+$transition-color: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+
+/* =========================================
+   SPACING SCALE (8-point grid system)
+   ========================================= */
+$spacing-xxs: 4px;
+$spacing-xs: 8px;
+$spacing-s: 16px;
+$spacing-m: 24px;
+$spacing-l: 32px;
+$spacing-xl: 40px;
+$spacing-2xl: 48px;
+$spacing-xxl: 56px;
+$spacing-3xl: 64px;
+$spacing-4xl: 80px;
+
+/* =========================================
+   UI SIZING TOKENS
+   ========================================= */
+$border-radius-default: 0;
+$height-button: 48px;
+$size-action-btn: 32px; /* The 32x32 square buttons */
+$size-primary-btn-height: 48px;
+$size-img-cart: 80px;
+$size-price-col: 80px;
+$size-header-mobile: 48px;
+$size-header-desktop: 64px;
+
+/* =========================================
+   TYPOGRAPHY TOKENS
+   ========================================= */
+$fw-regular: 500;
+$fw-semibold: 600;
+$fw-semibold-h: 700;
+$fw-bold: 700;
+$fw-bold-h: 800;
+
+/* =========================================
+   ELEVATION & SHADOWS
+   ========================================= */
+$shadow-sm: 0 4px 8px rgba(23, 32, 49, 0.4);
+$shadow-md: 0 2px 16px rgba(0, 0, 0, 0.1);
+
+/* =========================================
+   Z-INDEX (LAYERS)
+   ========================================= */
+$z-dropdown: 90;
+$z-menu: 99;
+$z-header: 100;
+$z-modal: 1000;

@@ -1,0 +1,27 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+  padding-top: $spacing-2xl;
+  padding-inline: $spacing-s;
+
+  max-width: $bp-desktop;
+  width: 100%;
+  margin: 0 auto;
+
+  @include on-tablet {
+    padding-inline: $spacing-m;
+  }
+
+  @include on-desktop {
+    padding-inline: $spacing-l;
+    padding-top: $spacing-3xl;
+  }
+}

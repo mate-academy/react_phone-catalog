@@ -1,0 +1,10 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.title {
+  @include hero-title;
+
+  font-family: inherit;
+
+  margin: 0 0 $spacing-xs;
+}

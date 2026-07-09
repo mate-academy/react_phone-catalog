@@ -1,0 +1,56 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+
+  max-width: 248px;
+  margin: 0 auto;
+}
+
+.paginationList {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  overflow-x: auto;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  scrollbar-width: none;
+}
+
+.item {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.button {
+  @include action-square-button;
+
+  /* Active state (Specific to Pagination numbers) */
+  &.active {
+    background-color: $c-primary;
+    border-color: $c-primary;
+    color: $c-white;
+    cursor: default;
+  }
+
+  /* Arrow SVG sizing */
+  &.arrow {
+    svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+  }
+}

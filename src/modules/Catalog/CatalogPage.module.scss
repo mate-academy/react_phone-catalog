@@ -1,0 +1,47 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.container {
+  @include page-container;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+
+  margin-top: $spacing-m;
+  margin-bottom: $spacing-l;
+
+  @include on-tablet {
+    margin-top: $spacing-xl;
+    margin-bottom: $spacing-xl;
+  }
+
+  > :first-child {
+    margin-bottom: 0;
+  }
+}
+
+.count {
+  @include text-secondary-semibold;
+
+  margin: 0;
+}
+
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: $spacing-m;
+
+  @include on-tablet {
+    margin-top: $spacing-xl;
+  }
+}
+
+.noProducts {
+  @include empty-state-container;
+  @include text-subtitle;
+
+  color: $c-secondary;
+}

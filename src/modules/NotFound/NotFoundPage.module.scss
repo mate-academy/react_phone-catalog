@@ -1,0 +1,45 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.container {
+  @include empty-state-container;
+
+  margin: 0 auto;
+  max-width: $bp-desktop;
+}
+
+.image {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  margin-bottom: $spacing-l;
+  object-fit: contain;
+
+  @include on-tablet {
+    max-width: 350px;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.title {
+  @include page-title;
+
+  margin-bottom: $spacing-s;
+}
+
+.description {
+  @include text-secondary-regular;
+
+  margin: 0 0 $spacing-l;
+  max-width: 400px;
+
+  @include on-tablet {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.button {
+  @include primary-button;
+}

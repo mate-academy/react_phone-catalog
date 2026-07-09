@@ -1,0 +1,74 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: $transition-transform;
+}
+
+.card {
+  padding: $spacing-l;
+  border: 1px solid $c-elements;
+  background-color: $c-white;
+  display: flex;
+  flex-direction: column;
+  height: clamp(439px, 366px + 22.8vw, 512px);
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: $shadow-md;
+
+    .image {
+      transform: scale(1.1);
+    }
+  }
+
+  @include on-desktop {
+    height: 506px;
+  }
+}
+
+.imageLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.title {
+  @include text-primary-semibold;
+
+  margin-bottom: $spacing-xs;
+  padding-top: $spacing-s;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-xs;
+}
+
+.price {
+  @include text-price-medium;
+}
+
+.fullPrice {
+  font-size: 14px;
+  color: $c-secondary;
+  text-decoration: line-through;
+}
+
+.divider {
+  height: 1px;
+  background-color: $c-elements;
+  margin: 0 0 $spacing-xs;
+}
+
+.specs {
+  margin-bottom: $spacing-xs;
+}

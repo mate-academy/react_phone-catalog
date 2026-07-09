@@ -1,0 +1,49 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  @include on-desktop {
+    display: grid;
+    grid-template-columns: 320px auto;
+    gap: $spacing-l;
+  }
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.productId {
+  @include text-small-bold;
+
+  color: $c-secondary;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.priceBlock {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-s;
+}
+
+.priceDiscount {
+  @include text-price-massive;
+}
+
+.priceRegular {
+  font-size: 22px;
+  font-weight: $fw-regular;
+  color: $c-secondary;
+  text-decoration: line-through;
+}
+
+.buttonsRow { margin-bottom: $spacing-l; }

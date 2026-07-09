@@ -1,0 +1,20 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.container {
+  @include page-container;
+}
+
+.count {
+  @include text-secondary-semibold;
+
+  margin-bottom: $spacing-l;
+
+  @include on-tablet {
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.emptyMessage {
+  @include page-title;
+}

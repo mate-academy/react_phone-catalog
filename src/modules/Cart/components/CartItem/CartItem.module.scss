@@ -1,0 +1,99 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.cartItem {
+  display: flex;
+  background-color: $c-white;
+  border: 1px solid $c-elements;
+
+  flex-wrap: wrap;
+  align-items: center;
+  padding: $spacing-s;
+  gap: $spacing-s;
+
+  @include on-tablet {
+    flex-wrap: nowrap;
+    padding: $spacing-m;
+    gap: $spacing-m;
+  }
+}
+
+.removeBtn {
+  order: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $c-secondary;
+  transition: $transition-color;
+
+  &:hover {
+    color: $c-primary;
+  }
+}
+
+.imageBox {
+  order: 2;
+  width: $size-img-cart;
+  height: $size-img-cart;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.nameLink {
+  order: 3;
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  @include text-primary-semibold;
+
+  margin: 0;
+}
+
+.footer {
+  order: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  @include on-tablet {
+    width: auto;
+    flex: 1;
+    justify-content: flex-end;
+    gap: $spacing-m;
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+}
+
+.controlBtn {
+  @include action-square-button;
+}
+
+.quantity {
+  @include text-primary-semibold;
+
+  width: $size-action-btn;
+  text-align: center;
+}
+
+.price {
+  @include text-price-medium;
+
+  text-align: right;
+  white-space: nowrap;
+
+  @include on-tablet {
+    width: $size-price-col;
+  }
+}
