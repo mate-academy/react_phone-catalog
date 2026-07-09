@@ -1,0 +1,73 @@
+@import '../../styles/global';
+
+.productActions {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+
+  &__add {
+    padding: 0;
+    flex: 1;
+    height: 40px;
+    background-color: #313237;
+    border: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    font: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+    }
+
+    &:disabled {
+      background: #fff;
+      border: 1px solid #E2E6E9;
+      color: $colors-green;
+      cursor: default;
+      box-shadow: none;
+      transform: none;
+    }
+  }
+
+  .iconImg {
+    width: 15px;
+    height: auto;
+    display: block;
+    transition: transform 120ms ease;
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+
+  .iconPop {
+    animation: pop 550ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes pop {
+    0% {
+      transform: scale(1) rotate(0deg);
+    }
+
+    30% {
+      transform: scale(1.25) rotate(-8deg);
+    }
+
+    55% {
+      transform: scale(0.95) rotate(4deg);
+    }
+
+    75% {
+      transform: scale(1.08) rotate(-2deg);
+    }
+
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+  }
+
+
+}

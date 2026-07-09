@@ -1,0 +1,150 @@
+@import '../../styles/global';
+
+.cart {
+  @include pageGrid;
+
+  &__header {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    grid-column: 1 / -1;
+    margin-bottom: 32px;
+  }
+
+  &__back {
+    display: inline-flex;
+    width: fit-content;
+    flex-direction: row;
+    gap: 9px;
+    align-items: baseline;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  &__backIcon {
+    stroke: $colors-primary;
+  }
+
+  &__title {
+    margin: 0;
+    color: $colors-primary;
+
+    @include h1-text;
+  }
+
+  &__products {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    grid-column: 1 / -1;
+
+    @include onDesktop {
+      grid-column: 1 / 17;
+
+    }
+  }
+
+  &__summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    grid-column: 1 / -1;
+    padding: 24px;
+    border: 1px solid $colors-elements;
+    align-self: start;
+    box-sizing: border-box;
+    margin-top: 32px;
+
+    @include onDesktop {
+      grid-column: 17 / -1;
+      margin-top: 0;
+    }
+  }
+
+  &__summaryPrice {
+    color: $colors-primary;
+    margin: 0;
+
+    @include h2-text;
+  }
+
+  &__summaryItem {
+    color: $colors-secondary;
+
+    @include body-text;
+  }
+
+  &__summaryLine {
+    width: 100%;
+    height: 1px;
+    background-color: $colors-elements;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+
+  &__checkoutButton {
+    padding: 0;
+    height: 40px;
+    background-color: $colors-primary;
+    border: none;
+    color: $colors-white;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+
+    @include button-text;
+
+    width: 100%;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+    }
+
+    &:disabled {
+      background: $colors-white;
+      border: 1px solid $colors-elements;
+      color: $colors-green;
+      cursor: default;
+      box-shadow: none;
+      transform: none;
+    }
+  }
+}
+
+.cartEmpty {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 150px;
+
+  &__img {
+    width: 200px;
+    height: auto;
+  }
+
+  &__title {
+    color: $colors-primary;
+    margin: 0;
+
+    @include h2-text;
+  }
+
+  &__link {
+    color: $colors-secondary;
+    margin: 0;
+
+    @include body-text;
+
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $colors-primary;
+    }
+  }
+}

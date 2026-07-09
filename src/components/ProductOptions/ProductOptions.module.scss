@@ -1,0 +1,96 @@
+@import '../../styles/global';
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__colors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__colorLabel {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 2px;
+    border: 1px solid $colors-elements;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+
+    &:hover {
+      border-color: $colors-secondary;
+    }
+
+    &:has(input:checked) {
+      border-color: $colors-primary;
+    }
+  }
+
+  &__colorCircle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  &__capacities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__capacityLabel {
+    display: inline-flex;
+  }
+
+  &__capacityValue {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    padding: 8px 12px;
+    border: 1px solid $colors-secondary;
+    color: $colors-primary;
+
+    @include body-text;
+
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease;
+
+    &:hover {
+      cursor: pointer;
+      border-color: $colors-primary;
+    }
+  }
+
+  &__capacityLabel:has(input:checked) &__capacityValue {
+    background-color: $colors-primary;
+    border-color: $colors-primary;
+    color: $colors-white;
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background-color: $colors-elements;
+  }
+}

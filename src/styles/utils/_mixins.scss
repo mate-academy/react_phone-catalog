@@ -1,0 +1,41 @@
+@mixin pageGrid {
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include onTablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(24, 1fr);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+@mixin innerGrid {
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include onTablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}

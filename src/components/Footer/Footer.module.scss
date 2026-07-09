@@ -1,0 +1,87 @@
+@import '../../styles/global';
+
+.footer {
+  background-color: $colors-white;
+  border-top: 1px solid $colors-elements;
+  margin-top: 64px;
+  min-height: 257px;
+
+  display: flex;
+  align-items: stretch;
+
+  @include onTablet {
+    min-height: 96px;
+  }
+
+  @include onDesktop {
+    margin-top: 80px;
+  }
+}
+
+.container {
+  min-height: inherit;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+
+  @include onTablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.logo {
+  display: inline-flex;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.mainLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include onTablet {
+    flex-flow: row wrap;
+    gap: clamp(24px, 6vw, 106px);
+  }
+
+  &__link {
+    @include uppercase-text;
+
+    text-decoration: none;
+    color: $colors-secondary;
+
+    transition: transform 0.3s ease;
+
+    &:hover {
+      color: #6c6c6c;
+      transform: translateY(-1px) scale(1.01);
+    }
+  }
+}
+
+.backToTop {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-self: center;
+  align-items: center;
+
+  &__text {
+    @include small-text;
+
+    color: $colors-secondary;
+  }
+
+}
