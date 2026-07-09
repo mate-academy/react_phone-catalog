@@ -1,0 +1,35 @@
+
+/* Mobile — за замовчуванням (<640px) */
+.tablets-page{
+  max-width: 1200px; // Або 1280px, залежно від макету
+  margin: 0 auto;    // Центрує контент
+  padding: 0 16px;   // Мінімальні відступи для мобілок, щоб текст не лип до країв
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-items: center;
+  }
+}
+
+/* Tablet */
+@media (min-width: 640px) {
+  .tablets-page__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Small desktop */
+@media (min-width: 1040px) {
+  .tablets-page__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktop large */
+@media (min-width: 1200px) {
+  .tablets-page__list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

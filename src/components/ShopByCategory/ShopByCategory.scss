@@ -1,0 +1,89 @@
+.shopByCategory {
+  text-align: center;
+
+  &__h1 {
+    display: flex;
+    margin-bottom: 24px;
+    font-size: 32px;
+    font-weight: 800;
+    color: #313237;
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    justify-content: center;
+    margin: 0 auto;
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      gap: 12px; // Трохи збільшив відступ для повітря
+      text-decoration: none;
+      text-align: left;
+      overflow: hidden; // Щоб картинка не вилазила за межі при збільшенні
+
+      // Ефекти при наведенні на ВСЮ картку
+      &:hover {
+        .shopByCategory__items__item__image-container img {
+          transform: scale(1.05); // Збільшуємо фото
+        }
+
+        .shopByCategory__items__item__title {
+          color: #000; // Робимо заголовок чіткішим
+        }
+      }
+
+      &__image-container {
+        width: 100%;
+        aspect-ratio: 1 / 1; // Робимо контейнер квадратним
+        background-color: #F4F6F8; // Фоновий колір для "заглушки"
+        border-radius: 24px; // Закруглення як на макетах Apple-style
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.4s ease; // Плавність ховеру
+        }
+      }
+
+      &__title {
+        color: #313237;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 100%;
+        transition: color 0.3s ease;
+        margin-top: 8px;
+      }
+
+      &__models {
+        color: #89939A;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+      }
+    }
+  }
+}
+
+/* Планшет 640px – 1199px */
+@media (min-width: 640px) and (max-width: 1199px) {
+  .shopByCategory__items {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px; // Збільшуємо відступи на планшеті
+  }
+}
+
+/* Десктоп 1200px+ */
+@media (min-width: 1200px) {
+  .shopByCategory__items {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px; // Максимальні відступи для десктопа
+  }
+}

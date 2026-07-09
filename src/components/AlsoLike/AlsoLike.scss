@@ -1,0 +1,50 @@
+.also-like {
+  margin: 100px auto 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    leading-trim: NONE;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+
+  &__header {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    gap: 16px; /* Збільшив відступ для гармонії з картками */
+    justify-content: center; /* Центрування для мобільних */
+  }
+
+  &__arrows {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc3;
+    background-color: #fff;
+    display: flex; /* Додано для центрування стрілочки */
+    align-items: center;
+    justify-content: center; /* Центрування по горизонталі */
+    cursor: pointer;
+
+    img {
+      height: 16px;
+      width: 16px;
+    }
+  }
+}

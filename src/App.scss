@@ -1,1 +1,21 @@
-// not empty
+.App{
+margin-right: auto;
+margin-left: auto;}
+
+@font-face {
+  font-family: Mont;
+  src: url('/public/fonts/Mont-Regular.otf') format('woff2');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/public/fonts/Mont-SemiBold.otf') format('otf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/public/fonts/Mont-Bold.otf') format('woff2');
+  font-weight: 700;
+}

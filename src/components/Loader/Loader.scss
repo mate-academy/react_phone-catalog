@@ -1,0 +1,77 @@
+// Змінні для зручного керування розмірами
+$header-height: 64px;
+$footer-height: 98px;
+$loader-color: #EB5757;
+
+.loader-container {
+  // Те, що було в Tailwind: absolute, z-10, scale-[15]
+  position: absolute;
+  z-index: 10;
+
+  // Розрахунок центру: right-[calc(50%-1px)]
+  right: calc(50% - 1px);
+
+  // Розрахунок висоти: top-[calc(calc(100vh-64px-98px)/2-12px)]
+  top: calc((100vh - #{$header-height} - #{$footer-height}) / 2 - 12px);
+
+  // Масштабування
+  transform: scale(15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+[class*="loader-"] {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  color: inherit;
+  vertical-align: middle;
+  pointer-events: none;
+}
+
+.loader-39 {
+  color: $loader-color;
+  position: relative;
+  width: 0.15em;
+  height: 0.15em;
+  background-color: currentColor;
+  border-radius: 100%;
+  animation: loader-39-1 30s infinite linear;
+
+  &::before,
+  &::after {
+    content: '';
+    border-radius: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &::before {
+    width: 0.3em;
+    height: 1em;
+    animation: loader-39-2 0.8s linear infinite;
+  }
+
+  &::after {
+    width: 1em;
+    height: 0.3em;
+    animation: loader-39-2 1.2s linear infinite;
+  }
+}
+
+// Анімації залишаємо без змін, але перевіряємо валідність синтаксису
+@keyframes loader-39-1 {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes loader-39-2 {
+  0%   { box-shadow: 0.04em -0.04em 0 0.02em currentColor; }
+  25%  { box-shadow: 0.04em 0.04em 0 0.02em currentColor; }
+  50%  { box-shadow: -0.04em 0.04em 0 0.02em currentColor; }
+  75%  { box-shadow: -0.04em -0.04em 0 0.02em currentColor; }
+  100% { box-shadow: 0.04em -0.04em 0 0.02em currentColor; }
+}
