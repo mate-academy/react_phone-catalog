@@ -11,9 +11,7 @@ type Props = {
 };
 
 export const ProductCarts: React.FC<Props> = ({ product, isNew }) => {
-  const { cart, favorites, addToCart, toggleFavorite } =
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useCart();
+  const { cart, favorites, addToCart, toggleFavorite } = useCart();
 
   const {
     id,

@@ -20,11 +20,11 @@ export const Favorites: React.FC = () => {
       <Link to="/" className={styles.home}>
         <button className={styles.homeButton}>
           <img src="/img/home.svg" alt="home" className={styles.homeImg} />
-          <span className={styles.homeGo}>{'>'}</span>
+          <img src="/img/arrow.svg" alt="arrow" className={styles.arrow} />
           <span className={styles.homeGoTo}>Favorites</span>
         </button>
       </Link>
-      <h1 className="title">Favorites</h1>
+      <h1 className={styles.title}>Favorites</h1>
       <div className={styles.totalBlock}>
         <p className={styles.cardTotalFor}>{totalQuantity} item</p>
       </div>

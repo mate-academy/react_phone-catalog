@@ -21,6 +21,12 @@
   font-weight: bold;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
 
 html,
 body,
@@ -46,3 +52,4 @@ button {
   display: flex;
   flex-direction: column;
 }
+

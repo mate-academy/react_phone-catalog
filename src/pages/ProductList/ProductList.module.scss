@@ -99,13 +99,30 @@ margin-bottom: 40px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 16px;
   margin-bottom: 24px;
-
+  width: 100%;
 }
 
-.bySortedDropdown {
-flex-direction: column  ;
-box-sizing: border-box;
+.bySortedDropdown{
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: 60px;
+  width: 187px;
+}
+
+
+.byFiltereDropdown {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  width: 136px;
+  height: 60px;
+
 }
 
 .bySorted,
@@ -116,8 +133,9 @@ box-sizing: border-box;
       font-size: 12px;
       line-height: 100%;
       margin-bottom: 4px;
-
+      white-space: nowrap; // Текст не будет переноситься на новую строку
 }
+
 .byItems {
      flex-direction: row;
       color: #89939A;
@@ -134,10 +152,10 @@ box-sizing: border-box;
   height: 40px;
 }
 
-.byFiltereDropdown {
-// display: flex;
-margin-left: auto;
-}
+// .byFiltereDropdown {
+// // display: flex;
+// margin-left: auto;
+// }
 
 .byItems{
   display: flex;

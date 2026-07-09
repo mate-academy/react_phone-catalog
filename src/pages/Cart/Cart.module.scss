@@ -48,15 +48,12 @@
   pointer-events: none;
 }
 
-.homeGo,
 .homeGoTo {
-
   color: #89939A;
 }
 
 
 .gridContainer {
-
   display: grid;
   --columns: 24;
   column-gap: 32px;
@@ -78,13 +75,11 @@
   }
 
     .gridCartBlock {
-
-       grid-column: span 16;
-      display: flex; // Выстраивает миниатюры
+      grid-column: span 16;
+      display: flex;
       flex-direction: column;
       gap: 16px;
       margin-top: 32px;
-      // align-items: flex-start;
 
       @include on-tablet {
         grid-columns: span 12;
@@ -101,16 +96,15 @@
 
         .totalPriceBlock {
             border: 1px solid #E2E6E9;
-            grid-column: span 8;;
-            display: flex; // Выстраивает миниатюры
+            grid-column: span 8;
+            display: flex;
             flex-direction: column;
-            gap: 16px;
-            // align-items: flex-start;
+            gap: 24px;
 
             @include on-tablet {
               grid-column: span 12;
               align-items: center;
-              gap: 12px;
+              gap: 16px;
             }
 
             @include on-phone {
@@ -137,6 +131,8 @@
 
            @include on-phone {
           padding: 16px;
+          flex-direction: column;
+          gap: 16px;
         }
   }
 
@@ -162,16 +158,20 @@
     object-fit: contain;
   }
 
-.imgCartName{
+.cartName {
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
   color: #313237;
+
 }
 
-.cardButtonGroupS {
-justify-content: flex-start;
+.cardGroup {
+display: flex;
+justify-content: space-between;
 flex-direction: row;
+// flex: 1;
+gap: 24px;
 }
 
 
@@ -180,5 +180,79 @@ flex-direction: row;
   align-items: center;
   gap: 14px;
   flex-direction: row;
+}
+
+.buttonMinus,
+.buttonPlus {
+height: 32px;
+width: 32px;
+background: none;
+border: 1px solid #E2E6E9;
+}
+
+.cardPriceHot{
+font-weight: 800;
+font-size: 22px;
+line-height: 140%;
+// gap: 24px;
+}
+
+.totalPriceBlock {
+  display: flex;
+  box-sizing: border-box;
   align-items: center;
+  height: 206px;
+  width: 368px;
+
+  @include on-tablet {
+    height: 190px;
+    width: 592px;
+  }
+
+  @include on-phone {
+    height: 190px;
+    width: 288px;
+  }
+}
+
+.cardTotal {
+  margin-top: 24px;
+}
+
+.underLine {
+border: 1px solid #e2e6e9;
+width: 100%;
+}
+
+.totalPrice {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 42px;
+  color: #313237;
+}
+.cardTotalFor {
+  font-weight: 500;
+  font-size: 14px;
+    line-height: 21px;
+    color: #89939A;
+}
+
+.checkOut {
+background: #313237;
+color: white;
+height: 48px;
+width: 320px;
+font-weight: 700;
+font-size: 14px;
+ line-height: 21px;
+
+  @include on-tablet {
+    height: 190px;
+    width: 592px;
+  }
+
+  @include on-phone {
+    height: 48px;
+    width: 240px;
+  }
 }

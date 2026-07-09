@@ -48,9 +48,16 @@ padding: 0 32px;
   pointer-events: none;
 }
 
-.homeGo,
 .homeGoTo {
   color: #89939A;
+}
+
+.totalBlock {
+  padding: 8px 0 40px;
+
+  @include on-phone {
+    padding: 8px 0 32px;
+  }
 }
 
 .gridCartBlock {
@@ -70,4 +77,12 @@ padding: 0 32px;
   @media (max-width: 480px) {
     grid-template-columns: repeat(1, 1fr);
   }
+}
+
+
+.emptyTex {
+  font-weight: 700;
+  font-size: 50px;
+  align-items: center;
+  padding: 50px;
 }

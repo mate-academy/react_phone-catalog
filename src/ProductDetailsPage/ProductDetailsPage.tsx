@@ -78,11 +78,11 @@ export const ProductDetailsPage = () => {
   } = products;
 
   const notFullProduct: Products = {
-    id: id,
-    category: products.category,
     itemId: id,
+    category: products.category,
     name: name,
     fullPrice: priceRegular,
+    price: priceDiscount,
     screen: products.screen,
     capacity: products.capacity,
     color: products.color,
@@ -159,12 +159,13 @@ export const ProductDetailsPage = () => {
         </div>
 
         <aside className={styles.blockDetailsRight}>
+          <div className={styles.productSelectors}></div>
           <div className={styles.colorsAvailableBlock}>
             {colorsAvailable.map(color => (
               <Link
                 to={`/${category}/${namespaceId}-${capacity.toLowerCase()}-${color.toLowerCase()}`}
                 key={color}
-                className={styles.linkAvailable}
+                className={`${styles.linkAvailable} ${selectedColor === color ? styles.activeColorLink : ''}`}
               >
                 <input
                   type="radio"
@@ -216,7 +217,7 @@ export const ProductDetailsPage = () => {
             </button>
             <button
               className={`${styles.buttonToFavorites} ${isProductFavorite ? styles.favoriteActive : ''}`}
-              onClick={() => toggleFavorite(id)}
+              onClick={() => toggleFavorite(notFullProduct)}
             >
               <img
                 src={

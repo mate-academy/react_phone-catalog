@@ -7,6 +7,7 @@ import { getData } from '../../fetch/httpClient';
 import styles from './ProductList.module.scss';
 import { ProductCarts } from '../../Functional/ProductCart/ProductCarts';
 import { getSearchWith } from '../../getSearchWith';
+import { Loader } from '../../components/Loader/Loader';
 
 type Props = {
   product?: Products[];
@@ -27,7 +28,6 @@ export const ProductList: React.FC<Props> = () => {
 
   const perPage = perPageParam === 'all' ? item.length : +perPageParam;
 
-  // slice //
   const startIndex = (page - 1) * perPage;
   const lastIndex = startIndex + perPage;
 
@@ -78,7 +78,11 @@ export const ProductList: React.FC<Props> = () => {
   }, [category, item.length, perPageParam, sortType, page, searchParams]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className={styles.loaderCenter}>
+        <Loader />
+      </div>
+    );
   }
 
   if (error) {
@@ -94,11 +98,7 @@ export const ProductList: React.FC<Props> = () => {
       <Link to="/" className={styles.home}>
         <button className={styles.homeButton}>
           <img src="/img/home.svg" alt="home" className={styles.homeImg} />
-          <img
-            className={styles.homeGo}
-            src="/img/vectorRight.svg"
-            alt="right"
-          />
+          <img className={styles.arrow} src="/img/arrow.svg" alt="arrow" />
           <span className={styles.homeGoTo}>{category}</span>
         </button>
       </Link>

@@ -43,7 +43,7 @@ export const Cart = () => {
       <Link to="/" className={styles.home}>
         <button className={styles.homeButton}>
           <img src="/img/home.svg" alt="home" className={styles.homeImg} />
-          <span className={styles.homeGo}>{'>'}</span>
+          <img src="/img/arrow.svg" alt="arrow" className={styles.arrow} />
           <span className={styles.homeGoTo}>Cart</span>
         </button>
       </Link>
@@ -74,11 +74,13 @@ export const Cart = () => {
                     src={item.product.image}
                     alt={item.product.name}
                   />
-                  <h3 className={styles.imgCartName}>{item.product.name}</h3>
+                  <div className={styles.cartNameBlock}>
+                    <h3 className={styles.cartName}>{item.product.name}</h3>
+                  </div>
                   {/* </Link> */}
                 </div>
 
-                <div className={styles.cardButtonGroupS}>
+                <div className={styles.cardGroup}>
                   <div className={styles.cardButtonGroup}>
                     <button
                       type="button"
@@ -114,9 +116,15 @@ export const Cart = () => {
             ))}
           </div>
         </div>
+
         <div className={styles.totalPriceBlock}>
-          <strong className={styles.cardTotal}>${totalPrice}</strong>
-          <p className={styles.cardTotalFor}>Total for {totalQuantity} item</p>
+          <div className={styles.cardTotal}>
+            <strong className={styles.totalPrice}>${totalPrice}</strong>
+            <p className={styles.cardTotalFor}>
+              Total for {totalQuantity} item
+            </p>
+          </div>
+          <span className={styles.underLine}></span>
           <button className={styles.checkOut} onClick={handleCheckout}>
             Checkout
           </button>
