@@ -1,0 +1,365 @@
+// Змінні для чистоти
+$color-border: #e2e6e9;
+$color-gray: #89939a;
+$color-black: #000;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100000;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  border-bottom: 1px solid $color-border;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    padding: 18px 24px;
+    cursor: pointer;
+  }
+
+  &__nav {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    margin-left: 24px;
+  }
+
+  &__cart,
+  &__favorites {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    box-shadow: -1px 0 0 $color-border;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: -1px 1px 5px $color-border;
+    }
+
+    &.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $color-black;
+    }
+
+    &__count {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 14px;
+      height: 14px;
+      border: 1px solid white;
+      border-radius: 50%;
+      background-color: red;
+      color: white;
+      font-size: 9px;
+
+      @media (max-width: 1024px) {
+        top: 10px;
+        right: 10px;
+      }
+    }
+  }
+
+  .burger {
+    display: none;
+  }
+}
+
+// Виносимо .menu, щоб уникнути занадто глибокої вкладеність
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  padding: 0;
+  list-style: none;
+  color: $color-gray;
+
+  // font-family: Mont, sans-serif, serif;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: $color-gray;
+
+    // font-family: Mont, sans-serif, serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    text-decoration: none;
+
+
+    &:hover {
+      color: $color-black;
+      cursor: pointer;
+    }
+  }
+
+  .active {
+    position: relative;
+    color: $color-black;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $color-black;
+    }
+  }
+}
+
+// Медіа-запити для header та burger
+@media (min-width: 640px) and (max-width: 1024px) {
+  .header {
+    &__logo {
+      padding: 13px 16px;
+    }
+
+    &__nav {
+      margin-left: 16px;
+
+      .menu {
+        gap: 2rem;
+      }
+    }
+
+    &__cart,
+    &__favorites {
+      // height: min-content;
+      padding: 16px;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .header {
+    border-bottom: 1px solid $color-border;
+
+    &__logo {
+      padding: 13px 16px;
+    }
+
+    &__nav {
+      margin-left: 16px;
+
+      .menu {
+        gap: 2rem;
+      }
+    }
+
+    &__cart,
+    &__favorites {
+      padding: 16px;
+    }
+  }
+
+  .burger {
+    display: block;
+    padding: 16px;
+    border: none;
+    outline: none;
+    box-shadow: -1px 0 0 $color-border;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: -1px 1px 0 $color-black;
+    }
+  }
+}
+
+@media (max-width: 639px) {
+  .header {
+    &__logo {
+      padding: 13px 16px;
+
+      img {
+        width: 64px;
+        height: 22px;
+      }
+    }
+
+    &__nav,
+    &__cart,
+    &__favorites {
+      display: none;
+    }
+
+    .burger {
+      display: block;
+      padding: 16px;
+      background-color: transparent;
+    }
+  }
+}
+
+/* ── Мобільне бокове меню ───────────────────────────────── */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  background: white;
+  transform: translateY(100%);
+  transition: transform 0.28s ease;
+
+  &--open {
+    transform: translateY(0);
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__title {
+    padding: 13px 16px;
+
+    img {
+      width: 64px;
+      height: 22px;
+    }
+  }
+
+  &__close {
+    padding: 16px;
+    background: none;
+    border: none;
+    box-shadow: -1px 0 0 $color-border;
+    line-height: 1;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: -1px 1px 0 $color-black;
+    }
+  }
+
+  &__nav {
+    flex: 1;
+    padding: 40px 20px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    color: $color-gray;
+
+    // font-family: Mont, sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    list-style: none;
+    text-transform: uppercase;
+
+    li {
+      position: relative;
+      cursor: pointer;
+
+      &:hover {
+        color: $color-black;
+      }
+
+      &.active {
+        color: $color-black;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -4px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: $color-black;
+        }
+      }
+    }
+
+    .active {
+      position: relative;
+      color: $color-black;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $color-black;
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 -1px 0 $color-border;
+  }
+
+  &__action {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 72px;
+    box-shadow: -1px 0 0 $color-border;
+    cursor: pointer;
+
+    &:hover {
+      transform: none;
+      outline: 1px solid $color-black;
+    }
+
+    &.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $color-black;
+    }
+
+    .header__favorites__count,
+    .header__cart__count {
+      top: 20px;
+      right: 85px;
+    }
+  }
+}
+
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: rgba(0, 0, 0, 0.4);
+}

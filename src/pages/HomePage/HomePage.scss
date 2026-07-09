@@ -1,0 +1,61 @@
+.grid {
+  display: grid;
+  gap: 16px; /* gutter */
+  grid-template-columns: repeat(4, 32px); /* мобілка */
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(12, 32px);
+    justify-content: center;
+    margin: 0 12px;
+  }
+}
+
+// @media (min-width: 1024px) {
+//   .grid { grid-template-columns: repeat(12, 1fr); }
+// }
+
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(24, 32px); /* точно як у макеті */
+    justify-content: center; /* центруємо */
+    max-width: 1200px; /* або твій max-width */
+    margin: 0 auto;
+  }
+}
+
+.item-2 {
+  grid-column: span 2;
+}
+
+.item-8 {
+  grid-column: span 8;
+}
+
+.item-12 {
+  grid-column: span 12;
+}
+
+.item-18 {
+  grid-column: span 18;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.home-title {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.1;
+
+  padding: 32px 24px;
+
+  // text-transform: uppercase;
+
+  @media (max-width: 639px) {
+    font-size: 32px;
+    padding: 24px 16px;
+  }
+}

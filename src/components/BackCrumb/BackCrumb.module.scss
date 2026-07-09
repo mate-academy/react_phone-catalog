@@ -1,0 +1,30 @@
+.back_crumb {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 4px;
+  grid-column: 1 / -1;
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    
+    padding: 0; 
+    margin: 0; 
+    appearance: none; 
+
+    img {
+      display: block;
+      filter: brightness(0);
+    }
+  }
+
+  &__text {
+    color: #89939A;
+    line-height: 1;
+    transform: translateY(1px); 
+  }
+}
