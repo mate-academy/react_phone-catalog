@@ -1,0 +1,144 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0F1121;
+  border-top: 1px solid #3b3e4a;
+  margin-top: 64px;
+  padding: 32px 16px;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (min-width: 640px) {
+    padding: 32px 24px;
+    margin-top: 80px;
+  }
+
+  &Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    @media (min-width: 640px) {
+      align-items: center;
+      flex-direction: row;
+      max-width: 100%;
+    }
+
+    @media (min-width: 1200px) {
+      align-items: center;
+      max-width: 1136px;
+    }
+  }
+
+  &Logo {
+    display: flex;
+
+    &Img {
+      height: 32px;
+      width: 89px;
+      object-fit: contain;
+      display: block;
+    }
+
+    @media (min-width: 640px) {
+      margin-bottom: 0;
+    }
+  }
+
+  &Nav {
+    @media (min-width: 640px) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &NavList {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin-top: 32px;
+
+    @media (min-width: 640px) {
+      align-items: center;
+      flex-direction: row;
+      gap: 32px;
+    }
+
+    @media (min-width: 1200px) {
+      gap: 64px;
+    }
+  }
+
+  &NavLink {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #f1f2f9;
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #905bff;
+    }
+  }
+
+  &BackToTop {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 32px auto 0;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    outline: none;
+
+    @media (min-width: 640px) {
+      margin: 0;
+    }
+
+    &Text {
+      font-family: Mont, sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      color: #75767f;
+      user-select: none;
+      transition: color 0.3s;
+    }
+
+    &Button {
+      width: 32px;
+      height: 32px;
+      background-color: #323542;
+      border: 1px solid #3b3e4a;
+      background-image: url('../../assets/img/chevron-arron-right.png');
+      background-position: center;
+      transform: rotate(270deg);
+      background-repeat: no-repeat;
+      background-size: 16px;
+      pointer-events: none;
+      display: inline-block;
+      box-sizing: border-box;
+      transition: border-color 0.3s, background-color 0.3s;
+    }
+
+    &:hover {
+      .footerBackToTopText {
+        color: #f1f2f9;
+      }
+
+      .footerBackToTopButton {
+        border-color: #f1f2f9;
+        background-color: #3d4152;
+      }
+    }
+  }
+}

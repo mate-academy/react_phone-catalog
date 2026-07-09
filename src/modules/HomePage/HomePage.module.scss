@@ -1,0 +1,212 @@
+.container {
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: 100%;
+
+
+  @media (min-width: 640px) {
+    margin-top: 72px;
+    max-width: 662px;
+    padding: 0 24px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1136px;
+    width: 100%;
+    padding-inline: 0;
+  }
+}
+
+.homePage {
+  &Title {
+    font-family: Mont, sans-serif;
+    padding: 0 16px;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    color: #F1F2F9;
+    margin: 24px 0;
+  }
+
+  &Section {
+    padding: 0 16px;
+    overflow: visible;
+    margin: 0 auto;
+    margin-top: 56px;
+    min-width: 288px;
+
+    @media (min-width: 640px) {
+      padding-block: 24px;
+    }
+
+    @media (min-width: 1200px) {
+      max-width: 1136px;
+      padding: 0;
+    }
+  }
+
+  &SectionHeader {
+    display: flex;
+    gap: 72px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 20;
+  }
+
+  &SectionTitle {
+    font-size: 22px;
+    font-weight: 800;
+    color: #F1F2F9;
+
+    @media (min-width: 640px) {
+      font-size: 32px;
+    }
+  }
+
+  &NavButtons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &ProductListContainer {
+    width: 100%;
+    overflow: hidden;
+    padding: 24px 0;
+    margin: -24px 0;
+    position: relative;
+  }
+
+  &ProductList {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.5s ease;
+    width: max-content;
+    padding: 0;
+    overflow: visible;
+  }
+}
+
+.navButton {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #4A4D58;
+  background-color: #161827;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  &:not(:disabled):hover {
+    border-color: #F1F2F9;
+    background-color: #323542;
+  }
+
+  &Left {
+    background-image: url('../../assets/img/chevron-arron-left.png');
+  }
+
+  &Right {
+    background-image: url('../../assets/img/chevron-arron-right.png');
+  }
+}
+
+.categories {
+  &Container {
+    box-sizing: border-box;
+    display: grid;
+    justify-items: center;
+    gap: 48px;
+    grid-template-columns: repeat(1, 1fr);
+    padding: 16px 0;
+
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+  }
+
+  &Item {
+    flex: 1;
+    width: 100%;
+    max-width: 288px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+
+    @media (min-width: 640px) {
+      max-width: 100%;
+    }
+
+    &:hover {
+      z-index: 10;
+      transform: scale(1.05);
+    }
+  }
+
+  &ImageWrapper {
+    aspect-ratio: 1 / 1;
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: flex-end;
+
+    &Phones {
+      background-color: #6D6474;
+    }
+
+    &Tablets {
+      background-color: #89939A;
+    }
+
+    &Accessories {
+      background-color: #97345A;
+    }
+  }
+
+  &Image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  &Name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #F1F2F9;
+    margin-bottom: 4px;
+  }
+
+  &Count {
+    font-size: 14px;
+    color: #89939A;
+  }
+}
+
+  .visuallyHidden {
+    visibility: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
