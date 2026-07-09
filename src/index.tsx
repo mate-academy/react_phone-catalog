@@ -1,4 +1,8 @@
 import { createRoot } from 'react-dom/client';
-import { App } from './App';
 
-createRoot(document.getElementById('root') as HTMLElement).render(<App />);
+import 'bulma/css/bulma.css';
+import { Root } from './Root';
+import './index.scss';
+import './utils/i18n';
+
+createRoot(document.getElementById('root') as HTMLElement).render(<Root />);

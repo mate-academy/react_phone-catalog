@@ -1,0 +1,69 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.productsSlider {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+  overflow: hidden;
+
+  &__upperBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    letter-spacing: -1%;
+    color: #F1F2F9;
+
+    @include on-mobile {
+      font-size: 22px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__btnRight {
+    margin-left: 16px;
+  }
+
+  &__btnLeft,
+  &__btnRight {
+    width: 32px;
+    height: 32px;
+    background-color: $surface-color-2;
+
+    &:hover {
+          background-color: $icons-hover-color;
+        }
+  }
+
+  &__slider {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__slide {
+    display: flex;
+    min-height: 272px;
+    height: 100%;
+  }
+
+   &__product {
+    display: flex;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  display: none;
+}

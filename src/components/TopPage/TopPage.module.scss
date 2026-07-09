@@ -1,0 +1,70 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.topPage {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  &__path {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  margin-top: 24px;
+  }
+
+  &__pathHomeLink {
+    display: flex;
+    align-items: center;
+    height: 16px;
+  }
+
+  &__pathArrow {
+    width: 16px;
+    height: 16px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__pathTitle {
+    font-weight: 700;
+    font-size: 12px;
+    color: $secondary-color;
+  }
+
+  &__patTitleWhite {
+    font-weight: 700;
+    font-size: 12px;
+    color: white;
+  }
+
+  &__pathName {
+    font-weight: 700;
+    font-size: 12px;
+    color: $secondary-color;
+  }
+
+  &__mainTitle {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__mainTitleLible {
+    font-weight: 800;
+    font-size: 48px;
+    color: white;
+
+    @include on-mobile {
+      font-size: 32px;
+    }
+  }
+
+  &__mainTitleCounter {
+    font-weight: 600;
+    font-size: 14px;
+    color: $secondary-color;
+  }
+}

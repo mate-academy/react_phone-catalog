@@ -1,0 +1,148 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  gap: 8px;
+  background-color: $surface-color-1;
+  height: 100%;
+
+  &:hover {
+    box-shadow: inset 0 0 0 1px $surface-color-2;
+  }
+
+  &__imgLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 196px;
+  }
+
+  &__img {
+    max-width: 208px;
+    max-height: 196px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__modelName {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding-top: 16px;
+    margin: 0;
+    width: 100%;
+    font-weight: 600;
+    font-size: 18px;
+    color: #F1F2F9;
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: row;
+    gap: 8px ;
+  }
+
+  &__newPrice,
+  &__oldPrice {
+    margin: 0;
+    font-weight: 600;
+    font-size: 22px;
+  }
+
+  &__newPrice {
+    color: #F1F2F9;
+  }
+
+  &__oldPrice {
+    color: $secondary-color;
+    text-decoration: line-through;
+  }
+
+  &__line {
+    width: 100%;
+    height: 0;
+    border: $box-shadow-settings;
+  }
+
+  &__specs {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    padding-block: 8px;
+    gap: 8px;
+  }
+
+  &__specsRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  &__specsLabel,
+  &__specsValue  {
+    margin: 0;
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  &__specsLabel {
+    color: $secondary-color;
+  }
+
+  &__specsValue {
+    color: #F1F2F9;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin: 0;
+  }
+
+  &__addBtn {
+    width: 100%;
+    background-color: $accent;
+    font-weight: 700;
+    font-size: 14px;
+    color: #F1F2F9;
+
+    &:hover {
+      background-color: #A378FF;
+    }
+  }
+
+  &__addBtnAdded {
+    background-color: $surface-color-2;
+  }
+
+  &__favBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 40px;
+    height: 40px;
+    background-color: $surface-color-2;
+
+    &:hover {
+      background-color: $icons-hover-color;
+    }
+  }
+
+  &__favBtn img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
+
+  &__favBtnAdded {
+    background-color: $surface-color-1;
+    border: $box-shadow-settings;
+  }
+}
