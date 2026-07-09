@@ -167,15 +167,11 @@ export const ProductDetailsPage = () => {
                 key={color}
                 className={`${styles.linkAvailable} ${selectedColor === color ? styles.activeColorLink : ''}`}
               >
-                <input
-                  type="radio"
-                  name="color"
-                  value={color}
-                  checked={selectedColor === color}
-                  onChange={() => setSelectedColor(color)}
-                  className={`${styles.imagesByColor} ${selectedColor === color ? styles.activeColor : ''}`}
+                <span
+                  className={`${styles.colorCircle} ${selectedColor === color ? styles.activeColor : ''}`}
+                  style={{ backgroundColor: color.toLowerCase() }}
+                  onClick={() => setSelectedColor(color)}
                 />
-                {color}
               </Link>
             ))}
           </div>
