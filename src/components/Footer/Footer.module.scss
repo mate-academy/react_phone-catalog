@@ -1,0 +1,60 @@
+@import './../../styles/mixins';
+@import './../../styles/typography';
+
+
+.footer {
+  border-top: 1px solid var(--color-elements);
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-block: 32px;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      gap: 13px;
+    }
+
+    @include on-desktop {
+      flex-direction: row;
+      align-items: center;
+      gap: 106px;
+    }
+  }
+
+  &__item {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+
+    @include uppercase;
+  }
+
+  &__toTop {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    color: var(--color-secondary);
+
+    @include small-text;
+  }
+}

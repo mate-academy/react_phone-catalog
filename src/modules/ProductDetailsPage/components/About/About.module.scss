@@ -1,0 +1,44 @@
+@import './../../../../styles/typography';
+
+.about {
+  &__title {
+    margin-block: 0 32px;
+    padding-bottom: 16px;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--color-elements);
+    
+    @include h3;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__itemTitle {
+    margin: 0;
+    color: var(--color-primary-dark);
+
+    @include h4;
+  }
+
+  &__texts {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: var(--color-secondary);
+
+    @include body-text;
+  }
+
+  &__text {
+    margin: 0;
+  }
+}

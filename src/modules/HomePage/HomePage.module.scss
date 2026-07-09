@@ -1,0 +1,40 @@
+@import './../../styles/mixins';
+@import './../../styles/typography';
+
+.homePage {
+  &__name {
+    display: none;
+  }
+
+  &__title {
+    color: var(--color-primary-dark);
+    margin-block: 24px;
+
+    @include h1;
+
+    @include on-tablet {
+      margin-block: 32px;
+    }
+
+    @include on-desktop {
+      margin-block: 56px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    padding-block: 56px;
+
+    @include on-tablet {
+      gap: 64px;
+      padding-block: 64px;
+    }
+
+    @include on-desktop {
+      gap: 80px;
+      padding-block: 80px;
+    }
+  }
+}

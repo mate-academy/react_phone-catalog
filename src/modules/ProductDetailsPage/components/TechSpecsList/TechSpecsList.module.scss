@@ -1,0 +1,24 @@
+@import './../../../../styles/typography';
+
+.specsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__label {
+    color: var(--color-secondary);
+
+    @include body-text;
+  }
+
+  &__value {
+    color: var(--color-primary-dark);
+
+    @include body-text;
+  }
+}

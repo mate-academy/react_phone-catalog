@@ -1,0 +1,68 @@
+@import './../../../../styles/typography';
+@import './../../../../styles/mixins';
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--color-elements);
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__firstRow {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__delButton {
+    all: unset;
+  }
+
+  &__img {
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
+  }
+
+  &__name {
+    flex: 1;
+    text-decoration: none;
+    color: var(--color-primary-dark);
+
+    @include body-text;
+  }
+
+  &__secondRow {
+    display: flex;
+    justify-content: space-between;
+
+    @include on-tablet {
+    gap: 16px;
+    justify-content: space-between;
+  }
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    @include body-text;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    color: var(--color-primary-dark);
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    min-width: 80px;
+  }
+}

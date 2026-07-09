@@ -1,0 +1,144 @@
+@import './../../../../styles/mixins';
+
+.banner {
+  margin-left: -16px;
+  margin-right: -16px;
+  width: calc(100% + 32px);
+
+  @include on-tablet {
+    margin: 0;
+    width: 100%;
+    display: flex;
+
+    @include page-grid;
+  }
+
+  &__button {
+    display: none;
+
+    @include on-tablet {
+      margin-bottom: 20px;
+      display: block;
+      grid-column: span 1;
+    }
+  }
+
+  &__swiperWrapper {
+    width: 100%;
+
+    @include on-tablet {
+      grid-column: span 10;
+    }
+
+    @include on-desktop {
+      grid-column: span 22;
+    }
+  }
+
+  &__swiper {
+    :global {
+      .swiper-pagination {
+        position: static;
+        margin-top: 16px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .swiper-pagination-bullet {
+        width: 14px;
+        height: 4px;
+        border-radius: 0;
+        background-color: var(--color-elements);
+        opacity: 1;
+      }
+
+      .swiper-pagination-bullet-active {
+        background-color: var(--color-primary-dark);
+      }
+    }
+  }
+
+  &__slide {
+    height: 100%;
+  }
+
+  &__slideCard {
+    aspect-ratio: 1 / 1;
+
+    @include on-tablet {
+      aspect-ratio: 1 / 0.4;
+    }
+  }
+
+  
+}
+
+.slide {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 32px;
+  border-radius: 20px;
+  overflow: hidden;
+
+  // 👉 главное требование
+  aspect-ratio: 1 / 0.4;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    aspect-ratio: 1 / 1;
+  }
+
+  &__content {
+    z-index: 2;
+    max-width: 400px;
+  }
+
+  &__subtitle {
+    color: #a855f7;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__desc {
+    color: #aaa;
+    margin: 10px 0 20px;
+  }
+
+  &__btn {
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: none;
+    background: white;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__image {
+    height: 90%;
+    object-fit: contain;
+    z-index: 1;
+
+    @media (max-width: 768px) {
+      height: 50%;
+      margin-top: 20px;
+    }
+  }
+}

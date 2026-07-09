@@ -1,0 +1,115 @@
+@import './../../styles/mixins';
+
+.header {
+  display: flex;
+  gap: 16px;
+  border-bottom: 1px solid var(--color-elements);
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+
+  @include on-desktop {
+    gap: 24px;
+    height: 64px;
+  }
+
+  &__logo-link {
+    padding: 13px 16px;
+
+    @include on-desktop {
+      padding: 18px 24px;
+    }
+  }
+
+  &__logo {
+    height: 22px;
+    width: 64px;
+
+    @include on-desktop {
+      height: 28px;
+      width: 80px;
+    }
+  }
+
+  &__nav {
+    height: 100%;
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__favorites-cart {
+    display: none;
+
+    @include on-tablet {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      height: 100%;
+    }
+  }
+
+  &__favorites,
+  &__cart {
+    padding: 16px;
+    border-left: 1px solid var(--color-elements);
+    box-sizing: border-box;
+    position: relative;
+
+    @include on-desktop {
+      padding: 24px;
+    }
+
+    &--active {
+      &::after {
+        content: '';
+        height: 3px;
+        width: 100%;
+        background: var(--color-primary-dark);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    padding-inline: 16px;
+    border-left: 1px solid var(--color-elements);
+    height: 100%;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__iconWrap {
+    display: flex;
+    position: relative;
+  }
+
+  &__counter {
+    position: absolute;
+    top: -6px;
+    left: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-red);
+    box-sizing: border-box;
+    border: 1px solid white;
+    border-radius: 50%;
+    color: white;
+    height: 14px;
+    width: 14px;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    padding-top: 2px;
+  }
+}

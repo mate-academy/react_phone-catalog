@@ -1,0 +1,70 @@
+@import './../../styles/typography';
+@import './../../styles/mixins';
+
+.catalog {
+  &__title {
+    margin-bottom: 8px;
+
+    @include h1;
+  }
+
+  &__amount {
+    color: var(--color-secondary);
+    margin: 0;
+  }
+
+  &__filters {
+    margin-bottom: 24px;
+    margin-top: 32px;
+
+    @include page-grid;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__filterSort {
+    grid-column: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    @include on-tablet {
+      grid-column: 1 / 5;
+    }
+  }
+
+  &__filterPage {
+    grid-column: 3 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    @include on-tablet {
+      grid-column: 5 / 8;
+    }
+  }
+
+  &__filterName {
+    color: var(--color-secondary);
+
+    @include small-text;
+  }
+
+  &__products {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__pagination {
+    margin-bottom: 64px;
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+}

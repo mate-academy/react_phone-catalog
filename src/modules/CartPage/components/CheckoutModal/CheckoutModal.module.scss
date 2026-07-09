@@ -1,0 +1,68 @@
+@import './../../../../styles/typography';
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal {
+  width: 100%;
+  max-width: 420px;
+  background-color: var(--color-white);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-align: center;
+    color: var(--color-primary-dark);
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    color: var(--color-secondary);
+    margin-bottom: 24px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__button {
+    flex: 1;
+    height: 48px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    transition: 0.3s;
+
+    @include button-text;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &__buttonCancel {
+    background-color: var(--color-elements);
+    color: var(--color-primary-dark);
+  }
+
+  &__buttonConfirm {
+    background-color: var(--color-primary-dark);
+    color: white;
+  }
+}
