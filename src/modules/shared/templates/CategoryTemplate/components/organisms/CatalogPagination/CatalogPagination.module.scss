@@ -1,0 +1,37 @@
+$gap: 8px;
+
+.container {
+  display: flex;
+  gap: var(--field-gap, $gap);
+
+  justify-content: center;
+
+  &__page {
+    --bgcolor: var(--surface1-color);
+
+    background-color: var(--bgcolor);
+
+    &:hover {
+      --bgcolor: var(--elements-color);
+    }
+
+    &--active {
+      --bgcolor: var(--purple-accent-color);
+
+      &:hover {
+        --bgcolor: var(--purple-hover-color);
+      }
+    }
+
+    &--active &-text {
+      color: var(--buttons-text-color-primary-active);
+    }
+  }
+
+  &__pages {
+    display: flex;
+    gap: var(--field-gap, $gap);
+
+    justify-content: space-between;
+  }
+}

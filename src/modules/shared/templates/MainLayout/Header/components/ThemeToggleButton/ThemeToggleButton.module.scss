@@ -1,0 +1,7 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.icon {
+  background-color: transparent;
+
+  @include underline-animate;
+}

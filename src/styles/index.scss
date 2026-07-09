@@ -1,0 +1,60 @@
+@use './utils/font.scss';
+@use 'normalize-scss' as *;
+@use './themes/light';
+@use './themes/dark';
+@use './themes/variables';
+@use './utils/normalize.scss';
+@include normalize;
+
+:root {
+  font-family: Mont, system-ui, Ubuntu, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page {
+  line-height: 1.5;
+
+  &__body {
+    min-height: 100vh;
+    min-width: 320px;
+
+    justify-content: center;
+
+    background-color: var(--main-background-color);
+
+    &[data-modal-open='true'],
+    // &[data-settings-open='true'],
+    &[data-menu-open='true'] {
+      overflow: hidden;
+    }
+  }
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background-color: var(--main-background-color);
+}
+
+input {
+  background-color: var(--surface1-color);
+  color: var(--main-text-color-primary);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--surface1-color) inset;
+  -webkit-text-fill-color: var(--main-text-color-primary) !important;
+  caret-color: var(--main-text-color-primary);
+  background-color: var(--surface1-color) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}

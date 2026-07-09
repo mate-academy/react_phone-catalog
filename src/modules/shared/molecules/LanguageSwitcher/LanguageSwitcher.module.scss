@@ -1,0 +1,31 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.lang_switcher {
+  display: flex;
+
+  align-items: center;
+
+  // padding: 4px;
+
+  &__option:hover &__language {
+    color: var(--buttons-text-color-primary);
+    transition: color var(--animation-duration, 0.3s) ease;
+  }
+
+  &__option {
+    padding: 4px;
+
+    background-color: transparent;
+
+    &--active {
+      color: var(--buttons-text-color-primary);
+      transition: color var(--animation-duration, 0.3s);
+    }
+
+    @include underline-animate;
+
+    &--active::after {
+      transform: scaleX(1);
+    }
+  }
+}
