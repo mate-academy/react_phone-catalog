@@ -1,0 +1,81 @@
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.header {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  background: var(--color-white);
+  border: 1px solid var(--color-elements);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color $transition-base;
+
+  &:hover {
+    border-color: var(--color-icons);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+
+}
+
+.select {
+  color: var(--color-primary);
+}
+
+.arrow {
+  transition: transform $transition-base;
+  font-size: 10px;
+  display: flex;
+  color: var(--color-icons);
+
+  &Open {
+    transform: rotate(180deg);
+  }
+}
+
+.list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  background: var(--color-white);
+  border: 1px solid var(--color-elements);
+  border-radius: 8px;
+
+  @include shadow('dropdown');
+
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+}
+
+.item {
+  width: 100%;
+
+  .itemButton {
+    width: 100%;
+    padding: 10px 12px;
+    text-align: left;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all $transition-base;
+
+    &:hover {
+      background-color: var(--color-hover-bg);
+      color: var(--color-primary);
+      border-radius: 8px;
+    }
+  }
+}

@@ -1,0 +1,73 @@
+.categoryItem {
+  grid-column: span 8;
+  cursor: pointer;
+  text-decoration: none;
+
+
+  @include respond-to('tablet') {
+    grid-column: span 4;
+  }
+
+   @include respond-to('mobile') {
+    grid-column: span 8;
+  }
+
+  &:hover {
+    text-decoration: underline solid 1.2px var(--color-elements);
+    text-underline-offset: 4px;
+  }
+}
+
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  margin-bottom: 24px;
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  @include flex-center;
+
+  position: relative;
+
+  &:hover {
+    transform: scale(1.02);
+
+    @include shadow('category');
+  }
+
+  @include respond-to('tablet') {
+    border-radius: 8px;
+  }
+
+  &.bgPhones { background-color: #6D6474; }
+  &.bgTablets { background-color: #8a8a8e; }
+  &.bgAccessories { background-color: #a33853; }
+}
+
+.categoryImage {
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.imgPhones {
+  width: 150%;
+  height: 150%;
+  transform: translate(15%, 17%);
+}
+
+.imgTablets {
+  width: 160%;
+  height: 160%;
+  transform: translate(22%, 22%);
+}
+
+.imgAccessories {
+  width: 185%;
+  height: 185%;
+  transform: translate(30%, 4%);
+}
+
+.title {
+  margin-bottom: 4px;
+}
+

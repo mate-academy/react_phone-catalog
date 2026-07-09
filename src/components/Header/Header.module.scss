@@ -1,0 +1,85 @@
+.header {
+  width: 100%;
+  height: $header-height-desktop;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-elements);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  @include respond-to('tablet') {
+    height: $header-height-mobile;
+  }
+}
+
+.content {
+  height: 100%;
+  align-items: center;
+
+  @include respond-to('mobile') {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.rightSection {
+  grid-column: 21 / span 4;
+  display: flex;
+  justify-content: flex-end;
+  height: 100%;
+
+  @include respond-to('tablet') {
+    grid-column: 14 / span 4;
+    justify-self: end;
+  }
+
+
+}
+
+.togglerWrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
+
+  @include respond-to('mobile') {
+    display: none;
+  }
+}
+
+.headerLogo {
+  grid-column: span 2;
+  width: max-content;
+  height: 100%;
+  padding-left: 24px;
+
+  img {
+    width: 80px;
+    transition: width $transition-base;
+  }
+
+  @include respond-to('tablet') {
+    grid-column: span 2;
+    padding-left: 24px;
+
+    img {
+      width: 64px;
+    }
+  }
+
+  @include respond-to('mobile') {
+    padding-left: 16px;
+  }
+}
+
+.burger {
+  display: none;
+
+  @include respond-to('mobile') {
+    @include flex-center;
+
+      width: 48px;
+      height: 100%;
+      border-left: 1px solid var(--color-elements);
+      cursor: pointer;
+  }
+}

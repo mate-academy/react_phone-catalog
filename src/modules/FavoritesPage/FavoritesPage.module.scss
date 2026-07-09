@@ -1,0 +1,53 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+.breadcrumbCurrent {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: var(--color-secondary);
+  margin-top: 3px;
+}
+
+
+.breadcrumbArrow {
+  display: flex;
+  align-items: center;
+  color: var(--color-icons);
+}
+
+.catalog {
+  margin: 40px 0 80px;
+
+   @include respond-to('tablet') {
+    margin-bottom: 64px;
+  }
+
+  @include respond-to('mobile') {
+    margin: 32px 0 56px;
+  }
+}
+
+.emptyFavorites {
+  @include flex-center;
+
+  grid-column: span 24;
+  min-height: 200px;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--color-secondary);
+  text-align: center;
+
+  @include respond-to('mobile') {
+    font-size: 16px;
+    min-height: 100px;
+  }
+}
+
+

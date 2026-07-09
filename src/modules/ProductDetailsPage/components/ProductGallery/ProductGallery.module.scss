@@ -1,0 +1,107 @@
+.galleryBlock {
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  margin-top: -16px;
+
+  @include respond-to('tablet') {
+    grid-column: span 7;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+  }
+
+  @include respond-to('mobile') {
+    grid-column: span 4;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 16px;
+  }
+}
+
+.photoPreviews {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include respond-to('tablet') {
+    grid-column: span 1;
+  }
+
+  @include respond-to('mobile') {
+   grid-column: span 4;
+    order: 2;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .preview {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    padding: 8px;
+    object-fit: contain;
+    border: 1px solid var(--color-elements);
+    cursor: pointer;
+    background-color: var(--color-hover-bg);
+    transition: all $transition-base;
+    border-radius: 8px;
+
+    @include respond-to('mobile') {
+      width: 48px;
+      height: 48px;
+      padding: 4px;
+    }
+
+    &:hover {
+      border-color: var(--color-primary);
+    }
+
+
+    &.active {
+      border-color: var(--color-primary);
+    }
+  }
+}
+
+.mainPhoto {
+  grid-column: span 10;
+  min-width: 0;
+  min-height: 0;
+  object-fit: contain;
+
+  @include respond-to('tablet') {
+    grid-column: span 6;
+    max-height: none;
+  }
+
+  @include respond-to('mobile') {
+    grid-column: span 4;
+    order: 1;
+    width: 100%;
+    max-height: 288px;
+    display: flex;
+    justify-content: center;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 464px;
+    object-fit: contain;
+
+    @include respond-to('mobile') {
+      max-height: 300px;
+    }
+  }
+}

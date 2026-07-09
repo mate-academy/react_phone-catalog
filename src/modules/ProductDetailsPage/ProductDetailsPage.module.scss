@@ -1,0 +1,20 @@
+.mainLable {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.recomendationSection {
+  grid-column: 1 / -1;
+  margin-top: 40px;
+  margin-bottom: 80px;
+
+  @include respond-to('tablet') {
+   margin-top: 24px;
+   margin-bottom: 64px;
+  }
+
+  @include respond-to('mobile') {
+   margin-top: 16px;
+    margin-bottom: 56px;
+  }
+}

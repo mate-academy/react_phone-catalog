@@ -1,0 +1,20 @@
+.rightsWrapper {
+  grid-column: 1 / -1;
+  margin-bottom: 80px;
+}
+
+.title {
+  grid-column: 1 / -1;
+  margin-bottom: -16px;
+}
+
+.text {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.section {
+  grid-column: 1 / -1;
+  max-width: 800px;
+}

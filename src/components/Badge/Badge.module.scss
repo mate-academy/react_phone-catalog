@@ -1,0 +1,25 @@
+.container {
+  position: relative;
+  display: inline-flex;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -6px;
+
+  min-width: 14px;
+  height: 14px;
+  padding: 0 2px;
+
+  font-size: 9px;
+
+  @include flex-center;
+
+  border-radius: 50%;
+  color: #FFF;
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-white);
+  padding-top: 1px;
+  padding-right: 0,5px;
+}
