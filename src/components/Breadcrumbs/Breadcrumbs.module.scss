@@ -1,0 +1,34 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 16px;
+  margin-bottom: 40px;
+
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+
+  text-decoration: none;
+}
+
+.homeIcon,
+.separatorIcon {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.current {
+  color: #89939a;
+}

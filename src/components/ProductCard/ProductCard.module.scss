@@ -1,0 +1,138 @@
+.card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 272px;
+  height: 506px;
+  padding: 32px;
+  gap: 8px;
+
+  background-color: #fff;
+  border: 1px solid #e2e6e9;
+}
+
+.imageLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 208px;
+  height: 196px;
+}
+
+.image {
+  display: block;
+  max-width: 100%;
+  max-height: 196px;
+  object-fit: contain;
+}
+
+.title {
+  width: 208px;
+  min-height: 42px;
+  padding-top: 16px;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #313237;
+  text-decoration: none;
+}
+
+.priceBlock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 31px;
+}
+
+.price {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 140%;
+  color: #313237;
+}
+
+.fullPrice {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 100%;
+  color: #89939a;
+  text-decoration: line-through;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #e2e6e9;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 8px 0;
+  padding: 8px 0;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+
+  dt {
+    color: #89939a;
+  }
+
+  dd {
+    margin: 0;
+    color: #313237;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.addButton {
+  flex: 1;
+  height: 40px;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  color: #fff;
+
+  background-color: #313237;
+  border: 0;
+  cursor: pointer;
+}
+
+.favoriteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  padding: 0;
+
+  background-color: #fff;
+  border: 1px solid #b4bdc3;
+  cursor: pointer;
+}
+
+.heartIcon {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
