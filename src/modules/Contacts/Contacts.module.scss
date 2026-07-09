@@ -1,0 +1,9 @@
+@use '../shared/styles/typography' as *;
+
+.contacts {
+  padding: 24px 16px;
+}
+
+.contacts__title {
+  @include typography(h1);
+}

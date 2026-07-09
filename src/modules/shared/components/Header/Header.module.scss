@@ -1,0 +1,14 @@
+@use '../../styles/variables' as *;
+@use '../../styles/typography' as *;
+
+.header {
+    padding: 24px 16px;
+    border-bottom: 1px solid $color-elements;
+    background-color: $color-white;
+}
+
+.header__title {
+    color: $color-primary;
+
+    @include typography(h1);
+}

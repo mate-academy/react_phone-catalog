@@ -103,8 +103,13 @@ $type-mobile: (
         line-height: 15px,
         letter-spacing: 0,
     ),
-    // Reuse desktop values for missing mobile-specific entries.
-    uppercase: map.get($type-desktop, uppercase),
+    uppercase: (
+        weight: $font-weight-bold,
+        size: 12px,
+        line-height: 11px,
+        letter-spacing: 0.04em,
+        transform: uppercase,
+    ),
     button: map.get($type-desktop, button),
 );
 
