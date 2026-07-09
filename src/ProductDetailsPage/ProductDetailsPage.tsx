@@ -169,7 +169,7 @@ export const ProductDetailsPage = () => {
               >
                 <span
                   className={`${styles.colorCircle} ${selectedColor === color ? styles.activeColor : ''}`}
-                  style={{ backgroundColor: color.toLowerCase() }}
+                  style={{ backgroundColor: color }}
                   onClick={() => setSelectedColor(color)}
                 />
               </Link>
