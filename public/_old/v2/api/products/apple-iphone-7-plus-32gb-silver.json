@@ -9,11 +9,11 @@
 	"colorsAvailable": ["black", "rosegold", "gold", "silver"],
 	"color": "silver",
 	"images": [
-		"img/phones/apple-iphone-7-plus/silver/00.jpg",
-		"img/phones/apple-iphone-7-plus/silver/01.jpg",
-		"img/phones/apple-iphone-7-plus/silver/02.jpg",
-		"img/phones/apple-iphone-7-plus/silver/03.jpg",
-		"img/phones/apple-iphone-7-plus/silver/04.jpg"
+		"/img/phones/apple-iphone-7-plus/silver/00.jpg",
+		"/img/phones/apple-iphone-7-plus/silver/01.jpg",
+		"/img/phones/apple-iphone-7-plus/silver/02.jpg",
+		"/img/phones/apple-iphone-7-plus/silver/03.jpg",
+		"/img/phones/apple-iphone-7-plus/silver/04.jpg"
 	],
 	"description": [
 		{

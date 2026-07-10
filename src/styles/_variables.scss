@@ -1,0 +1,23 @@
+
+$tablet-min-width: 640px;
+$content-max-width: 1200px;
+$phones-bg: #6D6474;
+$tablets-bg: #8D8D92;
+$accessories-bg: #973D5F;
+$icon-size: 16px;
+$big-icon-size: 32px;
+
+:root {
+  --color-green: #27AE60;
+  --color-red: #EB5757;
+}
+
+[data-theme='light'] {
+  --light-bg: #FFF;
+  --light-primary: #313237;
+  --light-secondary: #89939A;
+  --light-icons: #B4BDC3;
+  --light-elements: #E2E6E9;
+  --light-hover: #FAFBFC;
+}
+

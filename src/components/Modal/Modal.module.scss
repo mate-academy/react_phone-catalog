@@ -1,0 +1,49 @@
+@use '../../styles/mixins' as *;
+
+.overlay {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  width: 90%;
+  max-width: 400px;
+  padding: 32px;
+  background-color: var(--light-bg);
+
+  @include flex-col(32px);
+}
+
+.modalButtons {
+  justify-content: space-evenly;
+
+  @include flex-row;
+}
+
+.modalButton {
+  cursor: pointer;
+
+  padding: 7px;
+  border: none;
+
+  color: var(--light-bg);
+
+  background-color: var(--light-primary);
+}
+
+.modalText {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+
+  @include on-tablet {
+    font-size: 18px;
+  }
+}

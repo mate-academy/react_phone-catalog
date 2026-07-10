@@ -1,0 +1,168 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.productsContainer {
+  @include flex-col(24px);
+  @include section-margin;
+}
+
+.productsList {
+  max-width: 100%;
+}
+
+.title {
+  @include title-font;
+}
+
+.infoProducts {
+  @include light-font;
+
+  margin: 0;
+  color: var(--light-secondary);
+}
+
+.selectorsBlock {
+  @include flex-row(16px);
+}
+
+.selector {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  height: 40px;
+  margin-top: 4px;
+  padding-left: 12px;
+
+  font-family: Mont, sans-serif;
+  color: var(--light-primary);
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('/img/icons/arrow-down.svg');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+
+  @include border(var(--light-icons));
+
+  @include light-font;
+
+  &:hover {
+    @include border(var(--light-primary));
+  }
+}
+
+
+.sortBy {
+  width: 136px;
+
+  @include on-tablet {
+    width: 187px;
+  }
+
+  @include on-desktop {
+    width: 176px;
+  }
+}
+
+.pagination {
+  width: 136px;
+
+  @include on-desktop {
+    width: 128px;
+  }
+}
+
+.label {
+  margin-top: 32px;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 100%;
+  color: var(--light-secondary);
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}
+
+.buttonsWrapper {
+  position: relative;
+  width: 100%;
+  height: 48px;
+  margin-top: auto;
+}
+
+.pageButtons {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+
+  @include flex-row(8px);
+
+   > *:first-child {
+    margin-right: 8px;
+  }
+
+  > *:last-child {
+    margin-left: 8px;
+  }
+}
+
+.pageButton {
+  cursor: pointer;
+  width: $big-icon-size;
+  height: $big-icon-size;
+  background-color: var(--light-bg);
+
+  @include border(var(--light-elements));
+
+  &:hover {
+    @include border(var(--light-primary));
+  }
+}
+
+.active {
+  border: none;
+  color: var(--light-bg);
+  background-color: var(--light-primary);
+}
+
+.dots {
+  pointer-events: none;
+
+  &:hover {
+    @include border(var(--light-elements));
+  }
+}
+
+.errorContainer {
+  @include flex-col;
+
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.errorMessage {
+  font-size: 14px;
+
+  @include on-tablet {
+    font-size: 18px;
+  }
+
+  @include on-desktop {
+    font-size: 24px;
+  }
+}
+
+.notFoundImg {
+   width: 100%;
+
+  @include on-tablet {
+    width: 50%;
+  }
+}

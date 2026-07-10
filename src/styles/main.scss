@@ -1,0 +1,56 @@
+@use './mixins' as *;
+@use './variables' as *;
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+html, body {
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  font-family: Mont, sans-serif;
+}
+
+.root {
+  min-height: 100%;
+
+  @include flex-col;
+}
+
+body {
+  background-color: var(--light-bg);
+}
+
+main {
+  @include content-padding-inline;
+
+  flex: 1;
+  max-width: $content-max-width;
+  width: 100%;
+  margin-inline: auto;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}

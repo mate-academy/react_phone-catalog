@@ -1,0 +1,65 @@
+@use '../../styles/mixins' as *;
+
+.favoritesPage {
+  @include section-margin;
+}
+
+.title {
+  @include title-font;
+}
+
+.infoProducts {
+  @include light-font;
+
+  margin: 0;
+  color: var(--light-secondary)
+}
+
+.favoritesList {
+  @include section-margin(32px);
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+  gap: 16px;
+  row-gap: 40px;
+
+  padding: 0;
+}
+
+.wrapper {
+  @include flex-col(8px);
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  margin-top: 24px
+}
+
+.errorContainer {
+  @include flex-col;
+
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.errorMessage {
+  font-size: 14px;
+
+  @include on-tablet {
+    font-size: 18px;
+  }
+
+  @include on-desktop {
+    font-size: 24px;
+  }
+}
+
+.notFoundImg {
+  width: 100%;
+
+  @include on-tablet {
+    width: 50%;
+  }
+}

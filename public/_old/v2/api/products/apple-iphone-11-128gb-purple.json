@@ -9,11 +9,11 @@
 	"colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
 	"color": "purple",
 	"images": [
-		"img/phones/apple-iphone-11/purple/00.jpg",
-		"img/phones/apple-iphone-11/purple/01.jpg",
-		"img/phones/apple-iphone-11/purple/02.jpg",
-		"img/phones/apple-iphone-11/purple/03.jpg",
-		"img/phones/apple-iphone-11/purple/04.jpg"
+		"/img/phones/apple-iphone-11/purple/00.jpg",
+		"/img/phones/apple-iphone-11/purple/01.jpg",
+		"/img/phones/apple-iphone-11/purple/02.jpg",
+		"/img/phones/apple-iphone-11/purple/03.jpg",
+		"/img/phones/apple-iphone-11/purple/04.jpg"
 	],
 	"description": [
 		{

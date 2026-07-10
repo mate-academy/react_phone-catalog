@@ -9,11 +9,11 @@
 	"colorsAvailable": ["spacegray", "gold"],
 	"color": "gold",
 	"images": [
-		"img/phones/apple-iphone-xs/gold/00.jpg",
-		"img/phones/apple-iphone-xs/gold/01.jpg",
-		"img/phones/apple-iphone-xs/gold/02.jpg",
-		"img/phones/apple-iphone-xs/gold/03.jpg",
-		"img/phones/apple-iphone-xs/gold/04.jpg"
+		"/img/phones/apple-iphone-xs/gold/00.jpg",
+		"/img/phones/apple-iphone-xs/gold/01.jpg",
+		"/img/phones/apple-iphone-xs/gold/02.jpg",
+		"/img/phones/apple-iphone-xs/gold/03.jpg",
+		"/img/phones/apple-iphone-xs/gold/04.jpg"
 	],
 	"description": [
 		{

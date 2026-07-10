@@ -1,0 +1,32 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.backLink {
+  cursor: pointer;
+
+  align-items: center;
+
+  padding: 0;
+  border: none;
+
+  text-decoration: none;
+
+  background-color: var(--light-bg);
+
+  @include flex-row (4px);
+}
+
+.icon {
+  width: $icon-size;
+  height: $icon-size;
+}
+
+.text {
+  color: var(--light-secondary);
+
+  @include light-text-font;
+
+  &:hover {
+    color: var(--light-primary);
+  }
+}

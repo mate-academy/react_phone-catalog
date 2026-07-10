@@ -1,0 +1,75 @@
+@use '../../styles/mixins' as *;
+
+.container {
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+  padding: 32px;
+  color: var(--light-primary);
+
+  @include flex-col(8px);
+  @include border(var(--light-elements));
+}
+
+.title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.priceBlock {
+  align-items: center;
+
+  @include flex-row(8px);
+}
+
+.price {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0%;
+}
+
+.fullPrice {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: var(--light-secondary);
+  text-decoration: line-through;
+}
+
+.decoration {
+  height: 1px;
+  width: 100%;
+  background-color: var(--light-elements);
+}
+
+.imageWrapper {
+  height: 129px;
+  width: 100%;
+
+  @include on-tablet {
+    height: 181px;
+  }
+
+  @include on-desktop {
+    height: 196px;
+  }
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.productLink {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: var(--light-primary)
+}

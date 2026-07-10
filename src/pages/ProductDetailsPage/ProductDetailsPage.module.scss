@@ -1,0 +1,315 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.productDetailsContainer {
+  @include section-margin;
+}
+
+.topContent {
+  @include flex-col(24px);
+
+  @include on-tablet {
+    @include flex-col(40px);
+  }
+}
+
+.elementsOfTop {
+  @include flex-col(16px);
+}
+
+.title {
+  margin: 0;
+
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  color: var(--light-primary);
+}
+
+.middleContent {
+  @include page-grid;
+  @include section-margin(32px);
+
+  @include on-tablet {
+    @include section-margin(40px);
+  }
+}
+
+.imagesBlock {
+  @include flex-col(16px);
+
+  grid-column: 1 / -1;
+  align-items: center;
+
+  @include on-tablet {
+    grid-column: 1 / 8;
+    flex-direction: row;
+    align-items: start;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+}
+
+.mainImgWrapper {
+  display: flex;
+  justify-content: center;
+  width: 288px;
+  height: 288px;
+
+  @include on-tablet {
+    justify-content: start;
+    width: 287px;
+    height: 287px;
+  }
+
+  @include on-desktop {
+    width: 464px;
+    height: 464px;
+  }
+}
+
+.mainImg {
+  height: 100%;
+}
+
+.imagesPrevue {
+  width: 100%;
+
+  @include flex-row(8px);
+
+  @include on-tablet {
+    flex-direction: column;
+    order: -1;
+    width: min-content;
+    height: 207px;
+  }
+}
+
+.imgButton {
+  @include border(var(--light-elements));
+
+  flex: 1;
+  height: 49px;
+  background-color: var(--light-bg);
+  transition: transform 0.3s ease;
+
+
+  @include on-tablet {
+    height: 35px;
+  }
+
+  @include on-desktop {
+    height: 80px;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.imagePrevue {
+  height: 100%;
+}
+
+.active {
+  @include border(var(--light-primary));
+}
+
+.characteristics {
+  @include flex-col(24px);
+
+  grid-column: 1 / -1;
+  margin-top: 40px;
+
+  @include on-tablet {
+    grid-column: 8 / -1;
+    margin-top: 0;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / 20;
+  }
+}
+
+.productDetailsBlock {
+  @include page-grid;
+
+  row-gap: 56px;
+
+  @include on-tablet {
+    row-gap: 64px;
+  }
+
+  @include on-desktop {
+    row-gap: 80px;
+  }
+}
+
+.charWrapper {
+  @include flex-col(8px);
+}
+
+.charBlock {
+  @include flex-row(8px);
+}
+
+.colorWrapper {
+  @include border(var(--light-elements));
+
+  width: $big-icon-size;
+  height: $big-icon-size;
+  padding: 2px;
+  border-radius: 50%;
+
+  &:hover {
+    @include border(var(--light-primary));
+  }
+}
+
+.colorLink {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+
+  opacity: 0.8;
+}
+
+.activeColor {
+  @include border(var(--light-primary));
+}
+
+.charTitle {
+  margin-bottom: 8px;
+  color: var(--light-secondary);
+
+  @include light-text-font;
+}
+
+.decoration {
+  width: 100%;
+  height: 1px;
+  background-color: var(--light-elements);
+}
+
+.capacityLink {
+  @include border(var(--light-icons));
+  @include light-font;
+
+  width: min-content;
+  height: 32px;
+  padding: 7px 8px 4px;
+
+  color: var(--light-primary);
+  text-decoration: none;
+
+  background-color: var(--light-bg);
+
+  &:hover {
+    @include border(var(--light-primary));
+  }
+}
+
+.activeCapacity {
+  border: none;
+  color: var(--light-bg);
+  background-color: var(--light-primary);
+}
+
+.toBuyBlock {
+  @include flex-col(16px);
+}
+
+.priceBlock {
+  align-items: center;
+
+  @include flex-row(8px);
+}
+
+.priceDiscount {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  color: var(--light-primary);
+}
+
+.priceRegular {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 100%;
+  color: var(--light-secondary);
+  text-decoration: line-through;
+}
+
+.about {
+  @include flex-col(32px);
+
+  grid-column: 1 / -1;
+  color: var(--light-primary);
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+}
+
+.acticleTitle {
+  @include flex-col(16px);
+}
+
+.titleText {
+  @include medium-title-font;
+}
+
+.desBlock {
+  @include flex-col(16px);
+}
+
+.desTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.desText {
+  margin: 0;
+  color: var(--light-secondary);
+
+  @include light-font;
+}
+
+.techSpecs {
+  @include flex-col(30px);
+
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    gap: 25;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / -1;
+  }
+}
+
+.infoBlock {
+  @include flex-col(8px);
+}
+
+.infoRow {
+  @include light-font;
+  @include flex-row;
+
+  justify-content: space-between;
+  color: var(--light-primary);
+}
+
+.infoKey {
+  color: var(--light-secondary);
+}
+
+.suggestionBlock {
+  grid-column: 1 / -1;
+}

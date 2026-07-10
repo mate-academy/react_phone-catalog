@@ -1,0 +1,99 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+footer {
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+  margin: 0;
+  padding: 32px 0;
+  border-top: var(--light-elements) solid 1px;
+}
+
+.content {
+  width: 100%;
+
+  @include content-padding-inline;
+  @include flex-col(32px);
+
+  @include on-tablet {
+    @include flex-row;
+
+    justify-content: space-between;
+  }
+}
+
+
+
+.img {
+  width: 89px;
+  height: $big-icon-size;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  height: 100%;
+}
+
+.navList {
+  flex: 4;
+  align-items: start;
+  margin: 0;
+  padding: 0;
+
+  @include flex-col(16px);
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}
+
+.navItem {
+  position: relative;
+
+  display: flex;
+
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 4%;
+  list-style: none;
+
+  @include on-tablet {
+    align-items: center;
+  }
+}
+
+.link {
+  padding: 0;
+  color: var(--light-secondary);
+  text-decoration: none;
+}
+
+
+.backToTop {
+  cursor: pointer;
+
+  flex: 1;
+  align-items: center;
+  align-self: center;
+
+  padding: 0;
+  border: none;
+
+  color: var(--light-secondary);
+
+  background: none;
+
+  @include flex-row(16px);
+  @include light-text-font(600);
+
+  @include on-tablet {
+    justify-content: end;
+  }
+}

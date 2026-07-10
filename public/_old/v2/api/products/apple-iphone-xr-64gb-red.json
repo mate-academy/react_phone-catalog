@@ -9,11 +9,11 @@
 	"colorsAvailable": ["white", "yellow", "red", "coral"],
 	"color": "red",
 	"images": [
-		"img/phones/apple-iphone-xr/red/00.jpg",
-		"img/phones/apple-iphone-xr/red/01.jpg",
-		"img/phones/apple-iphone-xr/red/02.jpg",
-		"img/phones/apple-iphone-xr/red/03.jpg",
-		"img/phones/apple-iphone-xr/red/04.jpg"
+		"/img/phones/apple-iphone-xr/red/00.jpg",
+		"/img/phones/apple-iphone-xr/red/01.jpg",
+		"/img/phones/apple-iphone-xr/red/02.jpg",
+		"/img/phones/apple-iphone-xr/red/03.jpg",
+		"/img/phones/apple-iphone-xr/red/04.jpg"
 	],
 	"description": [
 		{

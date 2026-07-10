@@ -1,0 +1,50 @@
+@use '../../styles/mixins' as *;
+
+.wrapper {
+  @include section-margin;
+  @include flex-col(20px);
+
+  align-items: center;
+  width: 100%;
+  color: var(--light-primary);
+
+}
+
+.topContent {
+  align-items: center;
+  justify-content: space-around;
+
+  @include flex-row(16px);
+}
+
+.text {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+
+  @include on-tablet {
+    font-size: 18px;
+  }
+}
+
+.text:hover {
+  color: var(--light-secondary);
+}
+
+.notFoundImg {
+   width: 100%;
+
+  @include on-tablet {
+    width: 50%;
+  }
+}
+
+.link {
+  cursor: pointer;
+  align-items: flex-start;
+  color: var(--light-primary);
+  text-decoration: none;
+
+  @include flex-row(4px);
+}
+

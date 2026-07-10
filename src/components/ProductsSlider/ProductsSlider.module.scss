@@ -1,0 +1,57 @@
+@use '../../styles/mixins' as *;
+
+.container {
+  @include flex-col(24px);
+}
+
+.sliderTop {
+  justify-content: space-between;
+
+  @include flex-row;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.sliderButtons {
+  @include flex-row(16px);
+}
+
+.productsSlider {
+  overflow: hidden;
+
+  @include flex-row;
+}
+
+.cardsTrack {
+  transition: transform 0.3s ease;
+
+  @include flex-row(16px);
+}
+
+.productCard {
+  padding: 0;
+  margin: 0;
+  width: 212px;
+  height: 439px;
+
+  @include border(var(--light-elements));
+
+  @include on-tablet {
+    width: 237px;
+    height: 512px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    height: 506px;
+  }
+}

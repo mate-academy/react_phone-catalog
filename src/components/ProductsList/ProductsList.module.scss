@@ -1,0 +1,13 @@
+@use '../../styles/mixins' as *;
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+  gap: 16px;
+  row-gap: 40px;
+  padding: 0;
+}
+
+.listItem {
+  list-style: none;
+}
