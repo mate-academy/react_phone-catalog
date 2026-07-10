@@ -410,3 +410,42 @@ font-weight: 800;
       padding: 56px 0 24px;
     }
 }
+
+.capacity {
+  display: flex;
+
+  .capacityBlock {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .capacityLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 63px;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid #b4bdc3;
+    box-sizing: border-box;
+    color: #313237;
+    background: #fff;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-decoration: none;
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+
+    :hover {
+      border-color: #313237;
+    }
+
+    :active {
+      border-color: #313237;
+      background: #313237;
+      color: #fff;
+    }
+  }
+}

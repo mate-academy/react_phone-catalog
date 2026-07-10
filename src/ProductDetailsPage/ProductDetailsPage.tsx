@@ -31,9 +31,9 @@ export const ProductDetailsPage = () => {
 
         if (product) {
           setProducts(product || null);
-          setSelectedImages(product?.images[0] || '');
-          setSelectedColor(product?.color || '');
-          setSelectedCapacity(product?.capacity || '');
+          setSelectedImages(product.images[0] || '');
+          setSelectedColor(product.color || '');
+          setSelectedCapacity(product.capacity || '');
         } else {
           setProducts(null);
         }
@@ -101,6 +101,38 @@ export const ProductDetailsPage = () => {
     }
   };
 
+  const productColors: Record<string, string> = {
+    black: '#1f2020',
+    white: '#f5f5f0',
+    yellow: '#f4d06f',
+    green: '#5f8f72',
+    purple: '#b8afe6',
+    red: '#c91c1c',
+    gold: '#f3d6a3',
+    silver: '#e3e5e8',
+    spacegray: '#4c4c4c',
+    rosegold: '#f6c7b5',
+    midnightgreen: '#4e5f58',
+    coral: '#ff7f6e',
+    midnight: '#171e27',
+    starlight: '#f5f1e6',
+    blue: '#4f7cae',
+    pink: '#f5b8c8',
+    graphite: '#4a4a4d',
+    sierrablue: '#9bb5ce',
+    skyblue: '#b7d7ee',
+  };
+
+  const getColorValue = (color: string) => {
+    if (!color) {
+      return 'transparent';
+    }
+
+    const preparedColor = color.toLowerCase().replace(/[\s-]+/g, '_');
+
+    return productColors[preparedColor] || color;
+  };
+
   console.log(colorsAvailable);
 
   return (
@@ -161,38 +193,34 @@ export const ProductDetailsPage = () => {
         </div>
 
         <aside className={styles.blockDetailsRight}>
-          <div className={styles.productSelectors}></div>
-          <div className={styles.colorsAvailableBlock}>
-            {colorsAvailable.map(color => (
-              <Link
-                to={`/${category}/${namespaceId}-${capacity.toLowerCase()}-${color.toLowerCase()}`}
-                key={color}
-                className={`${styles.linkAvailable} ${selectedColor === color ? styles.activeColorLink : ''}`}
-              >
-                <span
-                  className={`${styles.colorCircle} ${selectedColor === color ? styles.activeColor : ''}`}
-                  style={{ backgroundColor: color }}
+          <div className={styles.colors}>
+            <div className={styles.colorsBlock}>
+              {colorsAvailable.map(color => (
+                <Link
+                  to={`/${category}/${namespaceId}-${capacity.toLowerCase()}-${color.toLowerCase()}`}
+                  key={color}
+                  className={`${styles.colorsLink} ${selectedColor === color ? styles.activeColorLink : ''}`}
                   onClick={() => setSelectedColor(color)}
-                />
-              </Link>
-            ))}
+                >
+                  <span
+                    className={`${styles.colorCircle} ${selectedColor === color ? styles.activeColor : ''}`}
+                    style={{ backgroundColor: getColorValue(color) }}
+                  />
+                </Link>
+              ))}
+            </div>
           </div>
           <span className={styles.uderLine}></span>
-          <div className={styles.capacityAvailableBlock}>
-            <div className={styles.capacityAvailableInBlock}>
+
+          <div className={styles.capacity}>
+            <div className={styles.capacityBlock}>
               {capacityAvailable.map(cap => (
                 <Link
                   to={`/${category}/${namespaceId}-${cap.toLowerCase()}-${selectedColor.toLowerCase()}`}
                   key={cap}
+                  onClick={() => setSelectedCapacity(cap)}
+                  className={`${styles.capacityLink} ${selectedCapacity === cap ? styles.capacityLinkActive : ''}`}
                 >
-                  <input
-                    type="radio"
-                    name="capacity"
-                    value={cap}
-                    checked={selectedCapacity === cap}
-                    onChange={() => setSelectedCapacity(cap)}
-                    className={`${styles.byCap} ${selectedCapacity === cap ? styles.activeCap : ''}`}
-                  />
                   <span>{cap}</span>
                 </Link>
               ))}

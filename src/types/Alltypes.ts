@@ -37,3 +37,5 @@ export type FullProduct = {
   zoom?: string;
   cell?: string;
 };
+
+
