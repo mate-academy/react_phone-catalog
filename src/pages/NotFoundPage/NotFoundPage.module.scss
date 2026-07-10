@@ -32,7 +32,11 @@
 }
 
 .notFoundImg {
-  width: inherit;
+   width: 100%;
+
+  @include on-tablet {
+    width: 50%;
+  }
 }
 
 .link {

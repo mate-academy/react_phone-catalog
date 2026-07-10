@@ -46,13 +46,28 @@ export const Header = () => {
         </Link>
 
         {search && (
-          <input
-            className={styles.searchInput}
-            type="search"
-            placeholder="Search"
-            value={currQuery}
-            onChange={e => setCurrQuery(e.target.value)}
-          />
+          <div className={styles.inputWrapper}>
+            <input
+              className={styles.searchInput}
+              type="search"
+              placeholder="Search"
+              value={currQuery}
+              onChange={e => setCurrQuery(e.target.value)}
+            />
+
+            {currQuery.length > 0 && (
+              <button
+                className={styles.inputClear}
+                onClick={() => setCurrQuery('')}
+              >
+                <img
+                  src="/img/icons/icon-close.svg"
+                  alt="Clear"
+                  className={styles.inputIcon}
+                />
+              </button>
+            )}
+          </div>
         )}
 
         <Nav />

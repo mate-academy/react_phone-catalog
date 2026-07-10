@@ -4,7 +4,6 @@ import { Product } from '../../types/Product';
 import styles from './Favorites.module.scss';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { Loader } from '../../components/Loader';
-import { ErrorMessage } from '../../components/ErrorMessage';
 import { ProductCard } from '../../components/ProductCard';
 import { FavoritesContext } from '../../context/FavoritesContext';
 
@@ -16,22 +15,29 @@ export const Favorites = () => {
   }
 
   const { favoritesItemsIds } = favoritesContext;
-  const [favoritesList, setFavoritesList] = useState<Product[] | null>(null);
+  const [favoritesList, setFavoritesList] = useState<Product[]>([]);
   const [errorMessage, setErrorMessage] = useState(false);
   const [loading, setLoading] = useState(false);
-  const fetchFavorites = () => {
+
+  useEffect(() => {
+    let isActive = true;
+
     setLoading(true);
     getProducts()
       .then(products =>
         products.filter(p => favoritesItemsIds.includes(p.itemId)),
       )
-      .then(setFavoritesList)
+      .then(products => {
+        if (isActive) {
+          setFavoritesList(products);
+        }
+      })
       .catch(() => setErrorMessage(true))
       .finally(() => setLoading(false));
-  };
 
-  useEffect(() => {
-    fetchFavorites();
+    return () => {
+      isActive = false;
+    };
   }, [favoritesItemsIds]);
 
   const breadCrumbsElements = [
@@ -47,9 +53,15 @@ export const Favorites = () => {
 
       {loading && <Loader />}
 
-      {errorMessage && <ErrorMessage onReload={() => fetchFavorites()} />}
+      <div className={styles.wrapper}>
+        <h1 className={styles.title}>Favorites</h1>
 
-      {!loading && !errorMessage && favoritesItemsIds.length === 0 && (
+        <p className={styles.infoProducts}>
+          {`${favoritesItemsIds.length} items`}
+        </p>
+      </div>
+
+      {!loading && (errorMessage || favoritesItemsIds.length === 0) && (
         <div className={styles.errorContainer}>
           <p className={styles.errorMessage}>
             {`There are no favorites products yet`}
@@ -62,16 +74,8 @@ export const Favorites = () => {
         </div>
       )}
 
-      {!loading && !errorMessage && favoritesList && (
+      {!loading && !errorMessage && favoritesList?.length > 0 && (
         <>
-          <div className={styles.wrapper}>
-            <h1 className={styles.title}>Favorites</h1>
-
-            <p className={styles.infoProducts}>
-              {`${favoritesItemsIds.length} items`}
-            </p>
-          </div>
-
           <div className={styles.favoritesList}>
             {favoritesList.map(item => (
               <div key={item.itemId} className={styles.favoriteItem}>
