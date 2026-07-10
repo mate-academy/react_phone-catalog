@@ -1,0 +1,18 @@
+.add-to-cart-button {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  &__button-left {
+    flex: 1;
+  }
+
+  &__button-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--elements-color);
+  }
+}

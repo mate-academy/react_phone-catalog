@@ -1,0 +1,1 @@
+export { MainLogo } from './MainLogo';

@@ -1,0 +1,70 @@
+@use '../styles/mixins.scss' as *;
+
+@font-face {
+  font-family: Mont-Regular;
+  src: url('/fonts/Mont-Regular.otf');
+}
+
+@font-face {
+  font-family: Mont-Bold;
+  src: url('/fonts/Mont-Bold.otf');
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url('/fonts/Mont-SemiBold.otf');
+}
+
+:root {
+  --main-color: #FFF;
+  --primary-color: #313237;
+  --secondary-color: #89939A;
+  --icons-color: #B4BDC3;
+  --elements-color: #E2E6E9;
+  --hover-color: #FAFBFC;
+  --text-button-color: #27AE60;
+  --red-color: #EB5757;
+  --button-color: var(--primary-color);
+  --surface-2: var(--main-color);
+  --gray-white: #F1F2F9;
+  --white-color: #FFF;
+  --settings-color: #b4bdc3e0;
+  --black-color: #000;
+  --skeleton-color: #e5e5e5;
+  --line-skeleton-color: #d5d4d4;
+
+  --mont-regular-font: 'Mont-Regular', sans-serif;
+  --mont-semibold-font: 'Mont-SemiBold', sans-serif;
+  --mont-bold-font: 'Mont-Bold', sans-serif;
+  --height-header: 48px;
+  --border-radius: 10px;
+
+  @include up($md) {
+    --height-header: 64px;
+  }
+}
+
+* {
+  @include transition(background-color 0.3s ease, color 0.3s ease);
+}
+
+body[data-theme="dark"] {
+  --main-color: #0F1121;
+  --primary-color: #F1F2F9;
+  --secondary-color: #75767F;
+  --icons-color: #4A4D58;
+  --elements-color: #3B3E4A;
+  --hover-color: #3B3E4A;
+  --text-button-color: #27AE60;
+  --red-color: #EB5757;
+  --button-color: #905BFF;
+  --surface-1: var(--icons-color);
+  --surface-2: var(--elements-color);
+  --gray-white: #F1F2F9;
+  --white-color: #FFF;
+  --settings-color: #4a4d58dd;
+  --black-color: #000;
+  --skeleton-color: #727171;
+  --line-skeleton-color: #868686;
+}
+

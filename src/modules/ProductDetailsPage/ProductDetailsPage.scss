@@ -1,0 +1,36 @@
+@use '../../styles/mixins.scss' as *;
+
+.product-details-page {
+  &__breadcrumbs {
+    margin-top: 24px;
+  }
+
+  &__not-found-title {
+    margin-top: 24px;
+  }
+
+  &__not-found-img {
+    width: 100%;
+  }
+}
+
+.section {
+  &--head {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include up($sm) {
+      gap: 40px;
+    }
+  }
+
+  &--products-slider {
+    margin-top: 56px;
+  }
+
+  &--body {
+    margin-top: 16px;
+  }
+}
+

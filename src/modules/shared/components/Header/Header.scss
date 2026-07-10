@@ -1,0 +1,137 @@
+@use '../../../../styles/mixins.scss' as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  height: var(--height-header);
+  border-bottom: 1px solid var(--elements-color);
+  position: relative;
+
+  &__logo {
+    padding: 13px 16px;
+    height: 100%;
+  }
+
+  &__navbar {
+    display: none;
+    gap: 32px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-width: 329px;
+    max-width: 425px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+    flex: 1;
+  }
+
+  &__settings {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    min-height: 40px;
+    gap: 5px;
+    top: var(--height-header);
+    width: max-content;
+    background-color: var(--settings-color);
+    z-index: 1000;
+    margin: 5px;
+    border-radius: var(--border-radius);
+  }
+
+  &__theme-switch {
+    display: flex;
+    align-items: center;
+    max-height: 20px;
+    width: 60px;
+    padding-inline: 6px;
+  }
+
+  &__language-switch {
+    display: flex;
+    align-items: center;
+    max-height: 20px;
+    width: 60px;
+    padding: 6px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    border: none;
+    border-left: 1px solid var(--elements-color);
+
+    &--dagger {
+      display: flex;
+    }
+
+    &--menu {
+      display: flex;
+    }
+
+    &--favourites {
+      display: none;
+    }
+
+    &--shopping-bag {
+      display: none;
+    }
+  }
+
+  &__burger-menu {
+    position: fixed;
+    top: var(--height-header);
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    opacity: 0.8;
+    transform: translateX(100%);
+    z-index: 100;
+    overflow-y: auto;
+
+    @include transition(opacity 0.5s ease, transform 0.5s ease);
+
+    &--is-active {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @include up($sm) {
+    &__navbar {
+      display: flex;
+    }
+
+    &__button {
+      &--dagger {
+        display: none;
+      }
+
+      &--menu {
+        display: none;
+      }
+
+      &--favourites {
+        display: flex;
+      }
+
+      &--shopping-bag {
+        display: flex;
+      }
+    }
+  }
+
+  @include up($md) {
+    &__logo {
+      padding: 18px 24px;
+    }
+  }
+}

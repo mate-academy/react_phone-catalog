@@ -1,0 +1,108 @@
+@use '../styles/mixins.scss' as *;
+
+*,
+body {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  min-width: 0;
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--main-color);
+}
+
+html {
+  overflow-x: hidden;
+}
+
+button,
+a {
+  color: var(--primary-color);
+  cursor: pointer;
+  border: 1px solid transparent;
+  background-color: var(--main-color);
+}
+
+html.menu-open {
+  overflow: hidden;
+}
+
+html.menu-open body {
+  padding-right: var(--scrollbar-width, 0);
+}
+
+@include up($sm) {
+  html.menu-open {
+    overflow: auto;
+  }
+
+  html.menu-open body {
+    padding-right: 0;
+  }
+}
+
+h1 {
+  font-family: var(--mont-bold-font);
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: var(--primary-color);
+
+  @include up($sm) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+h2 {
+  font-family: var(--mont-bold-font);
+  font-size: 22px;
+  line-height: 31px;
+  color: var(--primary-color);
+
+  @include up($sm) {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+h3 {
+  font-family: var(--mont-semibold-font);
+  font-size: 20px;
+  line-height: 26px;
+  color: var(--primary-color);
+
+  @include up($sm) {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+h4 {
+  font-family: var(--mont-semibold-font);
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--primary-color);
+
+  @include up($sm) {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+input {
+  border: 1px solid var(--icons-color);
+}
+
+// * {
+//   outline: 1px solid red;
+// }
+
+select,
+input {
+  background-color: var(--main-color);
+}

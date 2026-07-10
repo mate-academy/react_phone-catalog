@@ -1,0 +1,37 @@
+.search {
+  &__text {
+    color: var(--secondary-color);
+    font-family: var(--mont-semibold-font);
+    font-size: 12px;
+  }
+
+  &__input {
+    display: block;
+    height: 40px;
+    width: 100%;
+    padding-left: 32px;
+    color: var(--primary-color);
+    font-family: var(--mont-regular-font);
+    font-size: 12px;
+    border-radius: 24px;
+
+    &::placeholder {
+      color: var(--icons-color);
+      font-family: var(--mont-regular-font);
+      font-size: 12px;
+    }
+  }
+
+  &__wrapper-input {
+    position: relative;
+    width: 100%;
+  }
+
+  &__icon {
+    position: absolute;
+    left: 8px;
+    top: calc(50% - 8px);
+    pointer-events: none;
+    color: var(--icons-color);
+  }
+}

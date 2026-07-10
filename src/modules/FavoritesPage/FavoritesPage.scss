@@ -1,0 +1,17 @@
+.favorites-page {
+  &__breadcrumbs {
+    margin-top: 24px;
+  }
+
+  &__count {
+    margin-top: 8px;
+    font-family: var(--mont-regular-font);
+    font-size: 14px;
+    color: var(--secondary-color);
+  }
+}
+
+
+.container--favorites {
+  gap: 40px;
+}

@@ -1,0 +1,57 @@
+@use '../../../../../../styles/mixins.scss' as *;
+
+.button-header {
+  position: relative;
+
+  &__img {
+    width: 16px;
+    height: 16px;
+    object-fit: cover;
+    transform: scale(1);
+
+    @include transition(transform 0.3s ease);
+  }
+
+  &__wrapper-number-elements {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: calc(49% - 14px);
+    right: calc(49% - 14px);
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--main-color);
+    border-radius: 50%;
+    background-color: var(--red-color);
+  }
+
+  &__number-elements {
+    font-family: var(--mont-semibold-font);
+    color: var(--gray-white);
+    font-size: 9px;
+  }
+
+  &:hover &__img {
+    transform: scale(1.1);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+
+    @include transition(transform 0.1s ease);
+  }
+
+  &--is-active {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}

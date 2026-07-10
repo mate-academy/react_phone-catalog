@@ -1,0 +1,13 @@
+@use '../../../../styles/mixins.scss' as *;
+
+.products-list {
+  @include grid-container;
+
+  &__item {
+    grid-column: span 4;
+
+    @include up($sm) {
+      grid-column: span 6;
+    }
+  }
+}

@@ -1,0 +1,193 @@
+@use '../../../../styles/mixins.scss' as *;
+
+.product-details-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+
+  &__breadcrumbs {
+    height: 16px;
+    min-width: 0;
+    max-width: 416px;
+    margin-top: 24px;
+  }
+
+  &__button-back {
+    height: 16px;
+    min-width: 0;
+    max-width: 66px;
+  }
+
+  &__title {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 50px;
+  }
+
+  &__region-item {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__photo {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__main-photo {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__photo-previews {
+    width: 100%;
+    height: 69px;
+  }
+
+  &__main-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 100%;
+  }
+
+  &__section {
+    height: 55px;
+    width: 100%;
+  }
+
+  &__section-price {
+    height: 105px;
+    width: 100%;
+  }
+
+  &__section-specs {
+    height: 84px;
+    width: 100%;
+  }
+
+  &__region-description {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    margin-top: 24px;
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__about-title {
+    height: 42px;
+    width: 50%;
+  }
+
+  &__description {
+    height: 150px;
+    width: 100%;
+  }
+
+  &__region-specs-product {
+    display: flex;
+    flex-direction: column;
+    gap: 41px;
+  }
+
+  &__subtitle {
+    width: 50%;
+    height: 31px;
+  }
+
+  &__wrapper-speck {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__specs {
+    max-width: 100%;
+    height: 21px;
+  }
+
+  &__header-slider {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title-slider {
+    height: 41px;
+    width: 50%;
+  }
+
+  &__button-slider {
+    height: 41px;
+    width: 20%;
+  }
+
+  &__list {
+    width: 100%;
+    height: 495px;
+  }
+
+  @include up($sm) {
+    &__region-item {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    &__photo {
+      flex-direction: row-reverse;
+    }
+
+    &__title {
+      height: 60px;
+    }
+
+    &__photo-previews {
+      min-height: 207px;
+      min-width: 35px;
+    }
+
+    &__main-photo {
+      flex: 1;
+      min-width: 287px;
+      max-width: 464px;
+    }
+
+    &__main-controls {
+      min-width: 264px;
+      max-width: 320px;
+    }
+  }
+
+  @include up($md) {
+    &__region-description {
+      flex-direction: row;
+    }
+
+    &__about {
+      flex: 1;
+    }
+
+    &__region-specs-product {
+      flex: 1;
+    }
+
+    &__photo-previews {
+      min-height: 464px;
+      min-width: 80px;
+    }
+  }
+}
+
+.skeleton {
+  @include skeleton-shimmer;
+
+  border-radius: var(--border-radius);
+}

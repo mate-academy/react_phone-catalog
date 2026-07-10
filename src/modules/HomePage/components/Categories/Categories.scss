@@ -1,0 +1,44 @@
+@use '../../../../styles/mixins.scss' as *;
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    gap: 8px;
+  }
+
+  &__count {
+    font-family: var(--mont-regular-font);
+    font-size: 14px;
+    color: var(--secondary-color);
+  }
+
+  @include up($sm) {
+    &__body {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+}

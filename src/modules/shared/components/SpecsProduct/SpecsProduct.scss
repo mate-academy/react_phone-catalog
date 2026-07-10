@@ -1,0 +1,23 @@
+.specs-product {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  
+  &__section {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  &__text-right {
+    font-family: var(--mont-regular-font);
+    font-size: 12px;
+    color: var(--primary-color);
+  }
+
+  &__text-left {
+    font-family: var(--mont-semibold-font);
+    font-size: 12px;
+    color: var(--secondary-color);
+  }
+}

@@ -1,0 +1,30 @@
+@use '../../../../../styles/mixins.scss' as *;
+
+.icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--icons-color);
+  background-color: var(--main-color);
+  color: var(--primary-color);
+
+  @include transition(border 0.3s ease, border-radius 0.3s ease);
+
+  &--disabled {
+    border: 1px solid var(--elements-color);
+    cursor: auto;
+    transition: none;
+    pointer-events: none;
+    color: var(--icon-color);
+  }
+
+  &__icon {
+    object-fit: cover;
+    color: var(--icon-color);
+  }
+
+  @include hover {
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+  }
+}
