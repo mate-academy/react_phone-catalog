@@ -14,8 +14,8 @@ export const MainLogo: React.FC<Props> = ({ className }) => {
       <img
         src={
           themeColor === 'dark'
-            ? '/icon/main-logo-dark.svg'
-            : '/icon/main-logo-light.svg'
+            ? 'icon/main-logo-dark.svg'
+            : 'icon/main-logo-light.svg'
         }
         alt="main logo"
         className="logo__img"

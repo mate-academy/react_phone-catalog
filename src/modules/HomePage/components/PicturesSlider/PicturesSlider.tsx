@@ -15,23 +15,23 @@ type Slides = {
 
 const slides: Slides[] = [
   {
-    mobileImg: '/img/pictures-slider/mobile/banner-slider-mobile__first.png',
-    desktopImg: '/img/pictures-slider/desktop/banner-slider-desktop__first.png',
+    mobileImg: 'img/pictures-slider/mobile/banner-slider-mobile__first.png',
+    desktopImg: 'img/pictures-slider/desktop/banner-slider-desktop__first.png',
     id: 0,
   },
   {
-    mobileImg: '/img/pictures-slider/mobile/banner-slider-mobile__second.png',
-    desktopImg: '/img/category-accessories.png',
+    mobileImg: 'img/pictures-slider/mobile/banner-slider-mobile__second.png',
+    desktopImg: 'img/category-accessories.png',
     id: 1,
   },
   {
-    mobileImg: '/img/pictures-slider/mobile/banner-slider-mobile__third.jpg',
-    desktopImg: '/img/banner-phones.png',
+    mobileImg: 'img/pictures-slider/mobile/banner-slider-mobile__third.jpg',
+    desktopImg: 'img/banner-phones.png',
     id: 2,
   },
   {
-    mobileImg: '/img/category-tablets.png',
-    desktopImg: '/img/banner-tablets.png',
+    mobileImg: 'img/category-tablets.png',
+    desktopImg: 'img/banner-tablets.png',
     id: 3,
   },
 ];

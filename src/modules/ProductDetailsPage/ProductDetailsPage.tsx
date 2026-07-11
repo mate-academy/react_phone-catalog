@@ -72,7 +72,7 @@ export const ProductDetailsPage = () => {
         </h1>
         <img
           className="product-details-page__not-found-img"
-          src="/img/product-not-found.png"
+          src="img/product-not-found.png"
           alt="product-not-found"
         />
       </section>

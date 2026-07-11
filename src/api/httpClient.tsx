@@ -1,6 +1,6 @@
 type Method = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
-const BASE_URL = '/api';
+const BASE_URL = import.meta.env.BASE_URL + 'api';
 
 async function request<T>(url: string, method: Method = 'GET'): Promise<T> {
   const finishedUrl = BASE_URL + url;

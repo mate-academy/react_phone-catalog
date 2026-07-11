@@ -30,7 +30,7 @@ export const CartPage = () => {
             <div className="cart-page__body">
               <img
                 className="cart-page__cart-is-empty-img"
-                src="/img/cart-is-empty.png"
+                src="img/cart-is-empty.png"
                 alt="cart-is-empty"
               />
             </div>

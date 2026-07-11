@@ -18,21 +18,21 @@ type Category = {
 
 const categories: Category[] = [
   {
-    img: '/img/categories/categories-phones.png',
+    img: 'img/categories/categories-phones.png',
     title: 'mobilePhones',
     class: 'phones',
     link: 'phones',
     id: 0,
   },
   {
-    img: '/img/categories/categories-tablets.png',
+    img: 'img/categories/categories-tablets.png',
     title: 'tablets',
     class: 'tablets',
     link: 'tablets',
     id: 1,
   },
   {
-    img: '/img/categories/categories-accessories.png',
+    img: 'img/categories/categories-accessories.png',
     title: 'accessories',
     class: 'accessories',
     link: 'accessories',
