@@ -21,7 +21,7 @@ export const BurgerMenu: React.FC<Props> = ({ className, closeMenu }) => {
   return (
     <div className={`burger-menu ${className}`}>
       <div className="burger-menu__body">
-        <Navbar className="burger-menu__navbar" closeMenu={() => closeMenu} />
+        <Navbar className="burger-menu__navbar" closeMenu={() => closeMenu()} />
       </div>
       <div className="burger-menu__footer">
         <ButtonHeader

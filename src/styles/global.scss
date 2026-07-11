@@ -26,24 +26,6 @@ a {
   background-color: var(--main-color);
 }
 
-html.menu-open {
-  overflow: hidden;
-}
-
-html.menu-open body {
-  padding-right: var(--scrollbar-width, 0);
-}
-
-@include up($sm) {
-  html.menu-open {
-    overflow: auto;
-  }
-
-  html.menu-open body {
-    padding-right: 0;
-  }
-}
-
 h1 {
   font-family: var(--mont-bold-font);
   font-size: 32px;
@@ -97,10 +79,6 @@ h4 {
 input {
   border: 1px solid var(--icons-color);
 }
-
-// * {
-//   outline: 1px solid red;
-// }
 
 select,
 input {

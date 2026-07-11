@@ -11,10 +11,13 @@ import { useGlobalContext } from '../../../../context/GlobalContext';
 import { ThemeSwitch } from './components/ThemeSwitch';
 import { LanguageSwitch } from './components/LanguageSwitch';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useLockBodyScroll } from '../../../../hooks/useLockBodyScroll';
 
 type Props = {
   className: string;
 };
+
+const MOBILE_BREAKPOINT = 640;
 
 export const Header: React.FC<Props> = ({ className }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -22,26 +25,19 @@ export const Header: React.FC<Props> = ({ className }) => {
   const { cartItems, favoritesItems } = useGlobalContext();
   const navigate = useNavigate();
 
-  const openMenu = () => {
-    const scrollbarWidth =
-      window.innerWidth - document.documentElement.clientWidth;
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > MOBILE_BREAKPOINT) {
+        setMenuOpen(false);
+      }
+    };
 
-    window.scrollTo({ top: 0 });
+    window.addEventListener('resize', handleResize);
 
-    document.documentElement.style.setProperty(
-      '--scrollbar-width',
-      `${scrollbarWidth}px`,
-    );
-    document.documentElement.classList.add('menu-open');
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
-    setMenuOpen(true);
-  };
-
-  const closeMenu = () => {
-    document.documentElement.classList.remove('menu-open');
-    document.documentElement.style.removeProperty('--scrollbar-width');
-    setMenuOpen(false);
-  };
+  useLockBodyScroll(menuOpen);
 
   const openSettings = () => {
     if (settingsOpen) {
@@ -55,19 +51,11 @@ export const Header: React.FC<Props> = ({ className }) => {
     navigate(path);
   };
 
-  useEffect(() => {
-    return () => {
-      document.documentElement.classList.remove('menu-open');
-      document.documentElement.style.removeProperty('--scrollbar-width');
-    };
-  }, []);
-
   return (
     <header className={`header ${className}`}>
       <MainLogo className="header__logo" />
       <Navbar className="header__navbar" />
       <div className="header__buttons">
-        {/*  */}
         <Button
           className="header__button header__button--settings"
           name="settings"
@@ -91,13 +79,13 @@ export const Header: React.FC<Props> = ({ className }) => {
           <Button
             className="header__button header__button--dagger"
             name="close"
-            onClick={() => closeMenu()}
+            onClick={() => setMenuOpen(false)}
           />
         ) : (
           <Button
             className="header__button header__button--menu"
             name="menu"
-            onClick={() => openMenu()}
+            onClick={() => setMenuOpen(true)}
           />
         )}
         <ButtonHeader
@@ -119,7 +107,7 @@ export const Header: React.FC<Props> = ({ className }) => {
         className={classNames('header__burger-menu', {
           'header__burger-menu--is-active': menuOpen,
         })}
-        closeMenu={() => closeMenu()}
+        closeMenu={() => setMenuOpen(false)}
       />
     </header>
   );
