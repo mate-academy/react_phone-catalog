@@ -51,6 +51,11 @@ export const Header: React.FC<Props> = ({ className }) => {
     navigate(path);
   };
 
+  const openMenu = () => {
+    window.scrollTo({ top: 0 });
+    setMenuOpen(true);
+  };
+
   return (
     <header className={`header ${className}`}>
       <MainLogo className="header__logo" />
@@ -85,7 +90,7 @@ export const Header: React.FC<Props> = ({ className }) => {
           <Button
             className="header__button header__button--menu"
             name="menu"
-            onClick={() => setMenuOpen(true)}
+            onClick={() => openMenu()}
           />
         )}
         <ButtonHeader
