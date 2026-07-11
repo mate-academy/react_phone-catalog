@@ -3,6 +3,7 @@ import React, {
   ReactNode,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 import { Product } from '../types/Product';
@@ -16,6 +17,7 @@ type Props = {
 type GlobalContextType = {
   allProducts: Product[];
   cartItems: CartItem[];
+  totalCartItem: number;
   favoritesItems: Product[];
   setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
   setFavoritesItems: React.Dispatch<React.SetStateAction<Product[]>>;
@@ -50,6 +52,12 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
     });
   }, []);
 
+  const totalCartItem = useMemo(() => {
+    return cartItems.reduce((previousValue, currentItem) => {
+      return previousValue + currentItem.quantity;
+    }, 0);
+  }, [cartItems]);
+
   useEffect(() => {
     localStorage.setItem('CartItems', JSON.stringify(cartItems));
   }, [cartItems]);
@@ -63,6 +71,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       value={{
         allProducts,
         cartItems,
+        totalCartItem,
         favoritesItems,
         setCartItems,
         setFavoritesItems,

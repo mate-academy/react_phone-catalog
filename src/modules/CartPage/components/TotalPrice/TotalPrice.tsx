@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const TotalPrice: React.FC<Props> = ({ className }) => {
-  const { cartItems, setCartItems } = useGlobalContext();
+  const { cartItems, totalCartItem, setCartItems } = useGlobalContext();
   const { texts } = useLanguage();
   const totalPrice = cartItems.reduce(
     (previousValue, item) => previousValue + item.product.price * item.quantity,
@@ -33,7 +33,7 @@ export const TotalPrice: React.FC<Props> = ({ className }) => {
       <div className="total-price__price">
         <h2 className="total-price__text-price">{`$${totalPrice}`}</h2>
         <p className="total-price__count-item">
-          {`${texts.totalFor} ${cartItems.length} ${texts.items}`}
+          {`${texts.totalFor} ${totalCartItem} ${texts.items}`}
         </p>
       </div>
       <Line className="total-price__line" />
