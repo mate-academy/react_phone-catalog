@@ -1,0 +1,39 @@
+@import './_fonts.scss';
+@import 'variables';
+@import 'mixins';
+@import 'typography';
+@import 'grid';
+
+body {
+  font-family: map-get($font-families, mont);
+  color: map-get($colors, gray-primary);
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  padding-inline: 0;
+  padding-block: 0;
+  border: none;
+  background-color: map-get($colors, white);
+  font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-block: 0;
+  margin-inline: 0;
+}
+
+img {
+  margin: 0;
+}

@@ -1,0 +1,10 @@
+.transition {
+  opacity: 1;
+  pointer-events: all;
+
+  transition: opacity map-get($duration, '0.3');
+  &__isUpdating {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
