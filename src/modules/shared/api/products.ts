@@ -64,5 +64,5 @@ export const getSuggestedProducts = async (
 
   const shuffled = [...sameCategory].sort(() => Math.random() - 0.5);
 
-  return shuffled.slice(0, 4);
+  return shuffled.slice(0, 10);
 };

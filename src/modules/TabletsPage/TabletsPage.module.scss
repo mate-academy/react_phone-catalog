@@ -1,3 +1,5 @@
+@use '../../styles/variables' as *;
+
 .main {
   margin-top: 87px;
   max-width: 1136px;
@@ -27,5 +29,5 @@
 .modelsCount {
   font-weight: 600;
   font-size: 14px;
-  color: #75767F;
+  color: $secondary;
 }

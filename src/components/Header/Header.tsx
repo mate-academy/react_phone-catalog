@@ -1,13 +1,13 @@
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import React from 'react';
+import { useCart } from '../../modules/shared/contexts/CartContext';
+import { useFavorites } from '../../modules/shared/contexts/FavoritesContext';
 
-type Props = {
-  cartCount: number;
-  favoritesCount: number;
-};
+export const Header: React.FC = () => {
+  const { totalQuantity } = useCart();
+  const { favorites } = useFavorites();
 
-export const Header: React.FC<Props> = ({ cartCount, favoritesCount }) => {
   return (
     <header className={styles.header}>
       <Link to="/" className={styles.logo}>
@@ -69,8 +69,8 @@ export const Header: React.FC<Props> = ({ cartCount, favoritesCount }) => {
                 className={styles.icon}
               />
 
-              {favoritesCount > 0 && (
-                <span className={styles.badge}>{favoritesCount}</span>
+              {favorites.length > 0 && (
+                <span className={styles.badge}>{favorites.length}</span>
               )}
             </div>
           </Link>
@@ -82,8 +82,8 @@ export const Header: React.FC<Props> = ({ cartCount, favoritesCount }) => {
                 className={styles.icon}
               />
 
-              {cartCount > 0 && (
-                <span className={styles.badge}>{cartCount}</span>
+              {totalQuantity > 0 && (
+                <span className={styles.badge}>{totalQuantity}</span>
               )}
             </div>
           </Link>

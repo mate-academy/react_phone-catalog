@@ -1,3 +1,6 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+
 * {
   box-sizing: border-box;
 }
@@ -13,6 +16,14 @@
   gap: 16px;
 
   padding: 120px 0 56px;
+
+  @include tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .title {
@@ -22,6 +33,10 @@
   font-size: 48px;
   font-weight: 800;
   letter-spacing: -1%;
+
+  @include mobile {
+    font-size: 32px;
+  }
 }
 
 .content {
@@ -29,6 +44,14 @@
   grid-template-columns: repeat(24, 1fr);
   margin-inline: auto;
   column-gap: 16px;
+
+  @include tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .section {
@@ -60,8 +83,8 @@
 }
 
 .swiper {
-  background-color: #323542;
-  border: solid 1px #3B3E4A;
+  background-color: $surface-2;
+  border: solid 1px $elements;
   padding: 8px;
   height: 32px;
   width: 32px;
@@ -69,7 +92,7 @@
 
 .footerDivider {
   height: 1px;
-  color: #3B3E4A;
+  color: $elements;
   margin: 0;
 }
 

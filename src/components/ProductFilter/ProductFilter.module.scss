@@ -1,3 +1,5 @@
+@use '../../styles/variables' as *;
+
 .filtersContainer {
   display: flex;
   gap: 16px;
@@ -28,7 +30,7 @@
 .select {
   color: #F1F2F9;
   border: none;
-  background-color: #323542;
+  background-color: $surface-2;
   font-weight: 700;
   font-size: 14px;
   height: 40px;

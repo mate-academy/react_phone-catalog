@@ -7,19 +7,7 @@ import { useProducts } from '../shared/hooks/useProducts';
 import { ProductsList } from '../../components/ProductList/ProductList';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
-type Props = {
-  cart: number[];
-  favorites: number[];
-  toggleCart: (id: number) => void;
-  toggleFavorites: (id: number) => void;
-};
-
-export const PhonesPage: React.FC<Props> = ({
-  cart,
-  favorites,
-  toggleCart,
-  toggleFavorites,
-}) => {
+export const PhonesPage: React.FC = () => {
   const { products, isLoading, hasError, reload } = useProducts();
   const phones = products.filter(product => product.category === 'phones');
 
@@ -40,14 +28,7 @@ export const PhonesPage: React.FC<Props> = ({
         {!isLoading && hasError && <ErrorMessage onReload={reload} />}
 
         {!isLoading && !hasError && (
-          <ProductsList
-            products={phones}
-            cart={cart}
-            favorites={favorites}
-            toggleCart={toggleCart}
-            toggleFavorites={toggleFavorites}
-            emptyMessage=""
-          />
+          <ProductsList products={phones} emptyMessage="" />
         )}
       </div>
     </main>

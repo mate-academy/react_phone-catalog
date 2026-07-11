@@ -1,11 +1,13 @@
+@use '../../styles/variables' as *;
+
 .header {
   display: flex;
-  border-bottom: 1px solid #323542;
+  border-bottom: 1px solid $surface-2;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: #0F1121;
+  background-color: $primary;
   height: 64px;
   z-index: 2;
 }
@@ -40,7 +42,7 @@
 .link {
   position: relative;
   text-decoration: none;
-  color: #75767F;
+  color: $secondary;
   padding-block: 24px;
   transition: color 0.3s ease;
 }
@@ -82,7 +84,7 @@
   display: flex;
   align-items: center;
   padding: 24px;
-  border-left: 1px solid #323542;
+  border-left: 1px solid $surface-2;
 }
 
 .iconContainer {

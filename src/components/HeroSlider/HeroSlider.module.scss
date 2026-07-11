@@ -1,3 +1,6 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+
 .container {
   position: relative;
   display: flex;
@@ -7,7 +10,7 @@
 
 .prevBtn,
 .nextBtn {
-  background-color: #323542;
+  background-color: $surface-2;
   border: none;
   flex: 0 0 32px;
   cursor: pointer;
@@ -17,7 +20,11 @@
 
 .navButton {
   &:hover {
-    background-color: #4A4D58;
+    background-color: $icons;
+  }
+
+  @include mobile {
+    display: none;
   }
 }
 
@@ -28,6 +35,15 @@
 .image {
   height: 100%;
   width: 100%;
+
+  @include tablet {
+    max-height: 250px;
+  }
+
+  @include mobile {
+    max-height: 639px;
+    max-width: 639px;
+  }
 }
 
 :global(.swiper) {
@@ -35,7 +51,7 @@
   --swiper-pagination-bullet-height: 4px;
   --swiper-pagination-bullet-width: 14px;
   --swiper-pagination-bullet-border-radius: 0%;
-  --swiper-pagination-bullet-inactive-color: #3B3E4A;
+  --swiper-pagination-bullet-inactive-color: $elements;
 }
 
 :global(.swiper-pagination-bullet) {

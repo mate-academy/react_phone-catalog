@@ -1,9 +1,11 @@
+@use '../../styles/variables' as *;
+
 .container {
-  border-top: 1px solid #3B3E4A;
+  border-top: 1px solid $elements;
 }
 
 .footer {
-  width: 1136px;
+  max-width: 1136px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,7 +15,7 @@
 
 .link {
   text-decoration: none;
-  color: #75767F;
+  color: $secondary;
   font-family: Mont, sans-serif;
   font-weight: 800;
   font-size: 12px;
@@ -52,12 +54,12 @@
   font-weight: 700;
   font-size: 12px;
   color: #89939A;
-  background-color: #0F1121;
+  background-color: $primary;
   border: none;
 }
 
 .backToTopButton {
-  background-color: #323542;
+  background-color: $surface-2;
   border: none;
   width: 32px;
   height: 32px;
@@ -69,6 +71,6 @@
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: #4A4D58;
+    background-color: $icons;
   }
 }

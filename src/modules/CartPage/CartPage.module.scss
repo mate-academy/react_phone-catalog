@@ -1,0 +1,245 @@
+@use '../../styles/variables' as *;
+
+.main {
+  padding-bottom: 80px;
+  margin: 95px auto 0;
+  max-width: 1136px;
+}
+
+.title {
+  margin: 16px 0 32px;
+
+  font-weight: 800;
+  font-size: 48px;
+  color: #F1F2F9;
+
+  letter-spacing: -1%;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.itemsList {
+  grid-column: span 16;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  background-color: $surface-1;
+
+  padding-inline: 24px;
+
+  &__removeButton {
+    background-color: transparent;
+    border: none;
+
+    width: 16px;
+    height: 16px;
+
+    cursor: pointer;
+  }
+
+  &__image {
+    height: 80px;
+    width: 80px;
+
+    margin-block: 24px;
+  }
+
+  &__name {
+    padding: 0;
+    font-weight: 600;
+    font-size: 14px;
+
+    color: #F1F2F9;
+    width: 336px;
+  }
+
+  &__quantityControl {
+    display: flex;
+    align-items: center;
+  }
+
+  &__quantityButton {
+    width: 32px;
+    height: 32px;
+
+    background-color: $surface-2;
+    border: none;
+
+    color: #F1F2F9;
+
+    &:hover {
+      background-color: $icons;
+    }
+
+    &:disabled {
+      background-color: transparent;
+      border: 1px solid $elements;
+    }
+  }
+
+  &__quantity {
+    padding-inline: 14px;
+
+    font-weight: 600;
+    font-size: 14px;
+
+    color: #F1F2F9;
+  }
+
+  &__price {
+    display: flex;
+    justify-content: right;
+
+    font-weight: 800;
+    font-size: 22px;
+
+    width: 80px;
+
+    color: #F1F2F9;
+  }
+}
+
+.summary {
+  grid-column: 17 / -1;
+
+  padding: 24px;
+
+  border: 1px solid $elements;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center ;
+  align-items: center;
+
+  &__total {
+    font-weight: 800;
+    font-size: 32px;
+
+    color: #F1F2F9;
+
+    letter-spacing: -1%;
+  }
+
+  &__quantity {
+    font-weight: 600;
+    font-size: 14px;
+
+    color: $secondary;
+  }
+
+  &__divider {
+    color: $elements;
+
+    margin: 25px 0 24px;
+
+    width: 100%;
+  }
+
+  &__checkoutButton {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    background-color: $button;
+    border: none;
+    color: $font;
+
+    font-weight: 700;
+    font-size: 14px;
+
+    &:hover {
+      background-color: $button-hover;
+    }
+  }
+}
+
+.imageWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  width: 360px;
+}
+
+.emptyMessage {
+  font-weight: 600;
+  font-size: 20px;
+  color: $secondary;
+  margin-top: 24px;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 17, 33, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background-color: $primary;
+  border: 1px solid $elements;
+  padding: 32px;
+  max-width: 400px;
+  text-align: center;
+
+  &__text {
+    font-weight: 600;
+    font-size: 16px;
+    color: #F1F2F9;
+    margin-bottom: 24px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__cancelButton {
+    flex: 1;
+    height: 40px;
+    background: $surface-1;
+    border: 1px solid $elements;
+    color: #F1F2F9;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $elements;
+    }
+  }
+
+  &__confirmButton {
+    flex: 1;
+    height: 40px;
+    background-color: $button;
+    border: none;
+    color: $font;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $button-hover;
+    }
+  }
+}

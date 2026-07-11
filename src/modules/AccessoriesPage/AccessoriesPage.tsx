@@ -7,19 +7,7 @@ import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { useProducts } from '../shared/hooks/useProducts';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
-type Props = {
-  cart: number[];
-  favorites: number[];
-  toggleCart: (id: number) => void;
-  toggleFavorites: (id: number) => void;
-};
-
-export const AccessoriesPage: React.FC<Props> = ({
-  cart,
-  favorites,
-  toggleCart,
-  toggleFavorites,
-}) => {
+export const AccessoriesPage: React.FC = () => {
   const { products, isLoading, hasError, reload } = useProducts();
   const accessories = products.filter(
     product => product.category === 'accessories',
@@ -32,7 +20,7 @@ export const AccessoriesPage: React.FC<Props> = ({
 
         <div className={styles.titleContainer}>
           <h1 className={styles.title}>Mobile phones</h1>
-          {isLoading && !hasError && (
+          {!isLoading && !hasError && (
             <div className={styles.modelsCount}>
               {accessories.length} models
             </div>
@@ -44,14 +32,7 @@ export const AccessoriesPage: React.FC<Props> = ({
         {!isLoading && hasError && <ErrorMessage onReload={reload} />}
 
         {!isLoading && !hasError && (
-          <ProductsList
-            products={accessories}
-            cart={cart}
-            favorites={favorites}
-            toggleCart={toggleCart}
-            toggleFavorites={toggleFavorites}
-            emptyMessage=""
-          />
+          <ProductsList products={accessories} emptyMessage="" />
         )}
       </div>
     </main>

@@ -6,24 +6,23 @@ import { ProductFilter } from '../ProductFilter/ProductFilter';
 import { SortType } from '../../modules/shared/types/SortType';
 import { ItemsPerPage } from '../../modules/shared/types/ItemsPerPage';
 import { Product } from '../../modules/shared/types/Product';
+import { useCart } from '../../modules/shared/contexts/CartContext';
+import { useFavorites } from '../../modules/shared/contexts/FavoritesContext';
 
 type Props = {
   products: Product[];
-  cart: number[];
-  favorites: number[];
-  toggleCart: (id: number) => void;
-  toggleFavorites: (id: number) => void;
   emptyMessage: string;
+  showFilter?: boolean;
 };
 
 export const ProductsList: React.FC<Props> = ({
   products,
-  cart,
-  favorites,
-  toggleCart,
-  toggleFavorites,
   emptyMessage,
+  showFilter = true,
 }) => {
+  const { isInCart, addToCart } = useCart();
+  const { isFavorite, toggleFavorites } = useFavorites();
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortBy = (searchParams.get('sort') as SortType) || 'newest';
@@ -69,6 +68,10 @@ export const ProductsList: React.FC<Props> = ({
   };
 
   const sortedProducts = useMemo(() => {
+    if (!showFilter) {
+      return products;
+    }
+
     const copy = [...products];
 
     switch (sortBy) {
@@ -80,15 +83,15 @@ export const ProductsList: React.FC<Props> = ({
       default:
         return copy.sort((a, b) => b.year - a.year);
     }
-  }, [products, sortBy]);
+  }, [products, sortBy, showFilter]);
 
   const totalPages =
-    itemsPerPage === 'all'
+    !showFilter || itemsPerPage === 'all'
       ? 1
       : Math.ceil(sortedProducts.length / Number(itemsPerPage));
 
   const visibleProducts = useMemo(() => {
-    if (itemsPerPage === 'all') {
+    if (!showFilter || itemsPerPage === 'all') {
       return sortedProducts;
     }
 
@@ -96,7 +99,7 @@ export const ProductsList: React.FC<Props> = ({
     const start = (page - 1) * perPage;
 
     return sortedProducts.slice(start, start + perPage);
-  }, [sortedProducts, itemsPerPage, page]);
+  }, [sortedProducts, itemsPerPage, page, showFilter]);
 
   if (products.length === 0) {
     return <p className={styles.emptyMessage}>{emptyMessage}</p>;
@@ -104,17 +107,19 @@ export const ProductsList: React.FC<Props> = ({
 
   return (
     <>
-      <ProductFilter
-        sortBy={sortBy}
-        onSortChange={setSortBy}
-        itemsPerPage={itemsPerPage}
-        onItemsPerPageChange={setItemsPerPage}
-      />
+      {showFilter && (
+        <ProductFilter
+          sortBy={sortBy}
+          onSortChange={setSortBy}
+          itemsPerPage={itemsPerPage}
+          onItemsPerPageChange={setItemsPerPage}
+        />
+      )}
 
       <div className={styles.productsGrid}>
         {visibleProducts.map(product => {
-          const isAddedToCart = cart.includes(product.id);
-          const isFavorite = favorites.includes(product.id);
+          const isAddedToCart = isInCart(product.id);
+          const isProductFavorite = isFavorite(product.id);
 
           return (
             <article key={product.id} className={styles.productCard}>
@@ -168,7 +173,11 @@ export const ProductsList: React.FC<Props> = ({
                 <div className={styles.productCard__control}>
                   <button
                     className={`${styles.productCard__addButton} ${isAddedToCart ? styles['productCard__addButton--active'] : ''}`}
-                    onClick={() => toggleCart(product.id)}
+                    onClick={() => {
+                      if (!isAddedToCart) {
+                        addToCart(product);
+                      }
+                    }}
                   >
                     {isAddedToCart ? 'Added to cart' : 'Add to cart'}
                   </button>
@@ -176,7 +185,7 @@ export const ProductsList: React.FC<Props> = ({
                     className={styles.productCard__favoriteButton}
                     onClick={() => toggleFavorites(product.id)}
                   >
-                    {isFavorite ? (
+                    {isProductFavorite ? (
                       <img
                         src="img/icons/favorite-filled.png"
                         alt="Added to Favorites"
@@ -197,7 +206,7 @@ export const ProductsList: React.FC<Props> = ({
         })}
       </div>
 
-      {itemsPerPage !== 'all' && totalPages > 1 && (
+      {showFilter && itemsPerPage !== 'all' && totalPages > 1 && (
         <div className={styles.pagination}>
           <button
             className={styles.pageArrow}

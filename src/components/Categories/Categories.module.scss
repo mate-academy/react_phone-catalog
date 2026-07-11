@@ -1,3 +1,5 @@
+@use '../../styles/mixins.scss' as *;
+
 .section {
   margin-bottom: 80px;
   grid-column: 1 / -1;
@@ -24,6 +26,14 @@
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   gap: 16px;
+
+  @include tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(4, 1fr);
+  }
 
   &__item {
     grid-column: span 8;

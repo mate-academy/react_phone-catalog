@@ -1,6 +1,10 @@
 @use '../../styles/variables' as *;
 
 .section {
+  &__wrapper {
+    margin-bottom: 81px;
+  }
+
   &__header {
     display: flex;
     justify-content: space-between;
@@ -43,7 +47,7 @@
   }
 }
 
-.productCard {
+.suggestedCard {
   padding: 0 32px 32px;
   background-color: $surface-1;
   width: 272px;
@@ -95,7 +99,7 @@
 
   &__divider {
     width: 100%;
-    color: $elements
+    color: $elements;
   }
 
   &__description {
@@ -142,11 +146,10 @@
 
     &--active {
       background-color: $surface-2;
-      cursor: default;
-    }
 
-    &:hover {
-      background-color: $surface-2;
+      &:hover {
+        background-color: $icons;
+      }
     }
   }
 

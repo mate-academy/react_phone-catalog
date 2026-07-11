@@ -1,3 +1,5 @@
+@use '../../styles/variables' as *;
+
 .productsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -19,8 +21,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #3B3E4A;
-  background-color: #161827;
+  border: 1px solid $elements;
+  background-color: $surface-1;
   color: #F1F2F9;
   font-weight: 600;
   font-size: 14px;
@@ -28,7 +30,7 @@
   transition: background-color 0.2s ease;
 
   &:hover:not(:disabled) {
-    background-color: #323542;
+    background-color: $surface-2;
   }
 
   &:disabled {
@@ -53,14 +55,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #3B3E4A;
-  background-color: #161827;
+  border: 1px solid $elements;
+  background-color: $surface-1;
   color: #F1F2F9;
   cursor: pointer;
   transition: background-color 0.2s ease;
 
   &:hover:not(:disabled) {
-    background-color: #323542;
+    background-color: $surface-2;
   }
 
   &:disabled {
@@ -71,7 +73,7 @@
 
 .productCard {
   padding: 0 32px 32px;
-  background-color: #161827;
+  background-color: $surface-1;
   &__link {
     display: block;
     color: #F1F2F9;
@@ -112,7 +114,7 @@
   }
   &__divider {
     width: 100%;
-    color: #3B3E4A;
+    color: $elements;
   }
   &__description {
     display: flex;
@@ -150,9 +152,11 @@
       background-color: #A378FF;
     }
     &--active {
-      background-color: #323542;
+      background-color: $surface-2;
+      cursor: default;
+
       &:hover {
-        background-color: #4A4D58;
+        background-color: $surface-2;
       }
     }
   }
@@ -164,16 +168,16 @@
     cursor: pointer;
   }
   &__favoriteIcon {
-    background-color: #323542;
+    background-color: $surface-2;
     padding: 12px;
     height: 40px;
     width: 40px;
     &--active {
-      background-color: #161827;
-      border: 1px solid #3B3E4A;
+      background-color: $surface-1;
+      border: 1px solid $elements;
     }
     &:hover {
-      background-color: #4A4D58;
+      background-color: $icons;
     }
   }
   &:hover .productCard__img {

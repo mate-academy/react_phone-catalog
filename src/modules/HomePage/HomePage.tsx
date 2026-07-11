@@ -7,20 +7,11 @@ import { HeroSlider } from '../../components/HeroSlider/HeroSlider';
 import { NewModels } from '../../components/NewModels/NewModels';
 import { Categories } from '../../components/Categories/Categories';
 import { HotPrices } from '../../components/HotPrices/HotPrices';
+import { useFavorites } from '../shared/contexts/FavoritesContext';
 
-type Props = {
-  cart: number[];
-  toggleCart: (id: number) => void;
-  favorites: number[];
-  toggleFavorites: (id: number) => void;
-};
+export const HomePage: React.FC = () => {
+  const { favorites, toggleFavorites } = useFavorites();
 
-export const HomePage: React.FC<Props> = ({
-  cart,
-  toggleCart,
-  favorites,
-  toggleFavorites,
-}) => {
   return (
     <>
       <main className={styles.main}>
@@ -35,8 +26,6 @@ export const HomePage: React.FC<Props> = ({
 
           <section className={styles.section}>
             <NewModels
-              cart={cart}
-              toggleCart={toggleCart}
               favorites={favorites}
               toggleFavorites={toggleFavorites}
             />
@@ -48,8 +37,6 @@ export const HomePage: React.FC<Props> = ({
 
           <section className={styles.section}>
             <HotPrices
-              cart={cart}
-              toggleCart={toggleCart}
               favorites={favorites}
               toggleFavorites={toggleFavorites}
             />

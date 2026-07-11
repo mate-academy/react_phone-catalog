@@ -1,5 +1,22 @@
+@use './styles/variables' as *;
+
 body {
-  background-color: #0F1121;
+  background-color: $primary;
   margin: 0;
   font-family: Mont, sans-serif;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__content {
+    flex: 1 0 auto;
+  }
 }

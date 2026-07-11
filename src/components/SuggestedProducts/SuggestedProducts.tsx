@@ -1,38 +1,40 @@
-import styles from './NewModels.module.scss';
-
-import data from '../../../public/api/products.json';
+import styles from './SuggestedProducts.module.scss';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Product } from '../../modules/shared/types/Product';
+import { getSuggestedProducts } from '../../modules/shared/api/products';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../modules/shared/contexts/CartContext';
+import { useFavorites } from '../../modules/shared/contexts/FavoritesContext';
 
 type Props = {
-  favorites: number[];
-  toggleFavorites: (id: number) => void;
+  category: string;
+  excludeId: number;
 };
 
-export const NewModels: React.FC<Props> = ({ favorites, toggleFavorites }) => {
+export const SuggestedProducts: React.FC<Props> = ({ category, excludeId }) => {
   const { isInCart, addToCart } = useCart();
+  const { favorites, toggleFavorites } = useFavorites();
+  const [suggested, setSuggested] = useState<Product[]>([]);
 
-  const getNewestProducts = (products: Product[]): Product[] => {
-    const maxYear = Math.max(...products.map(p => p.year));
+  useEffect(() => {
+    getSuggestedProducts(category, excludeId)
+      .then(setSuggested)
+      .catch(() => setSuggested([]));
+  }, [category, excludeId]);
 
-    return products.filter(p => p.year === maxYear);
-  };
-
-  const newestPhones = getNewestProducts(data).sort(
-    (a, b) => b.price - a.price,
-  );
+  if (suggested.length === 0) {
+    return null;
+  }
 
   return (
     <div className={styles.section__wrapper}>
       <div className={styles.section__header}>
-        <h2 className={styles.section__title}>Brand new models</h2>
+        <h2 className={styles.section__title}>Hot prices</h2>
 
         <div className={styles.navigationButtons}>
           <button className={`${styles.navButton} js-swiper-prev`}>
@@ -64,85 +66,90 @@ export const NewModels: React.FC<Props> = ({ favorites, toggleFavorites }) => {
           },
         }}
       >
-        {newestPhones.map(product => {
+        {suggested.map(product => {
           const isAddedToCart = isInCart(product.id);
           const isFavorite = favorites.includes(product.id);
 
           return (
             <SwiperSlide key={product.id}>
-              <article className={styles.productCard}>
+              <article className={styles.suggestedCard}>
                 <Link
                   to={`/product/${product.itemId}`}
-                  className={styles.productCard__link}
+                  className={styles.suggestedCard__link}
                 >
                   <img
                     src={product.image}
                     alt="Product Image"
-                    className={styles.productCard__img}
+                    className={styles.suggestedCard__img}
                   />
                 </Link>
 
-                <div className={styles.productCard__body}>
+                <div className={styles.suggestedCard__body}>
                   <Link
                     to={`/product/${product.itemId}`}
-                    className={styles.productCard__title}
+                    className={styles.suggestedCard__title}
                   >
                     {product.name}
                   </Link>
-                  <div className={styles.productCard__price}>
-                    ${product.price}
+                  <div className={styles.suggestedCard__price}>
+                    <span>${product.price}</span>
+                    <span className={styles.suggestedCard__discount}>
+                      ${product.fullPrice}
+                    </span>
                   </div>
-                  <hr className={styles.productCard__divider} />
-                  <div className={styles.productCard__description}>
-                    <div className={styles.productCard__item}>
-                      <span className={styles.productCard__property}>
+                  <hr className={styles.suggestedCard__divider} />
+                  <div className={styles.suggestedCard__description}>
+                    <div className={styles.suggestedCard__item}>
+                      <span className={styles.suggestedCard__property}>
                         Screen
                       </span>
-                      <strong className={styles.productCard__value}>
+                      <strong className={styles.suggestedCard__value}>
                         {product.screen}
                       </strong>
                     </div>
-                    <div className={styles.productCard__item}>
-                      <span className={styles.productCard__property}>
+                    <div className={styles.suggestedCard__item}>
+                      <span className={styles.suggestedCard__property}>
                         Capacity
                       </span>
-                      <strong className={styles.productCard__value}>
+                      <strong className={styles.suggestedCard__value}>
                         {product.capacity}
                       </strong>
                     </div>
-                    <div className={styles.productCard__item}>
-                      <span className={styles.productCard__property}>RAM</span>
-                      <strong className={styles.productCard__value}>
+                    <div className={styles.suggestedCard__item}>
+                      <span className={styles.suggestedCard__property}>
+                        RAM
+                      </span>
+                      <strong className={styles.suggestedCard__value}>
                         {product.ram}
                       </strong>
                     </div>
                   </div>
-                  <div className={styles.productCard__control}>
+                  <div className={styles.suggestedCard__control}>
                     <button
-                      className={`${styles.productCard__addButton} ${isAddedToCart ? styles['productCard__addButton--active'] : ''}`}
+                      className={`${styles.suggestedCard__addButton} ${isAddedToCart ? styles['suggestedCard__addButton--active'] : ''}`}
                       onClick={() => {
                         if (!isAddedToCart) {
                           addToCart(product);
                         }
                       }}
                     >
-                      {isAddedToCart ? 'Added to cart' : 'Add to cart'}
+                      {isAddedToCart ? 'Added' : 'Add to cart'}
                     </button>
                     <button
-                      className={styles.productCard__favoriteButton}
+                      className={`${styles.suggestedCard__favoriteButton} ${isFavorite ? styles['suggestedCard__favoriteButton--active'] : ''}`}
                       onClick={() => toggleFavorites(product.id)}
                     >
                       {isFavorite ? (
                         <img
                           src="img/icons/favorite-filled.png"
                           alt="Added to Favorites"
-                          className={`${styles.productCard__favoriteIcon} ${styles['productCard__favoriteIcon--active']}`}
+                          className={styles.suggestedCard__favoriteIcon}
                         />
                       ) : (
                         <img
                           src="img/icons/favorite.png"
                           alt="Add to Favorites"
-                          className={styles.productCard__favoriteIcon}
+                          className={styles.suggestedCard__favoriteIcon}
                         />
                       )}
                     </button>

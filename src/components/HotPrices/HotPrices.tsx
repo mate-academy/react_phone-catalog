@@ -9,20 +9,16 @@ import 'swiper/css/navigation';
 import React from 'react';
 import { Product } from '../../modules/shared/types/Product';
 import { Link } from 'react-router-dom';
+import { useCart } from '../../modules/shared/contexts/CartContext';
 
 type Props = {
-  cart: number[];
-  toggleCart: (id: number) => void;
   favorites: number[];
   toggleFavorites: (id: number) => void;
 };
 
-export const HotPrices: React.FC<Props> = ({
-  cart,
-  toggleCart,
-  favorites,
-  toggleFavorites,
-}) => {
+export const HotPrices: React.FC<Props> = ({ favorites, toggleFavorites }) => {
+  const { isInCart, addToCart } = useCart();
+
   function getHotPriceProducts(products: Product[]) {
     return [...products].sort(
       (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
@@ -67,7 +63,7 @@ export const HotPrices: React.FC<Props> = ({
         }}
       >
         {hotProducts.map(product => {
-          const isAddedToCart = cart.includes(product.id);
+          const isAddedToCart = isInCart(product.id);
           const isFavorite = favorites.includes(product.id);
 
           return (
@@ -125,9 +121,13 @@ export const HotPrices: React.FC<Props> = ({
                   <div className={styles.productCard__control}>
                     <button
                       className={`${styles.productCard__addButton} ${isAddedToCart ? styles['productCard__addButton--active'] : ''}`}
-                      onClick={() => toggleCart(product.id)}
+                      onClick={() => {
+                        if (!isAddedToCart) {
+                          addToCart(product);
+                        }
+                      }}
                     >
-                      {isAddedToCart ? 'Added' : 'Add to cart'}
+                      {isAddedToCart ? 'Added to cart' : 'Add to cart'}
                     </button>
                     <button
                       className={`${styles.productCard__favoriteButton} ${isFavorite ? styles['productCard__favoriteButton--active'] : ''}`}

@@ -7,19 +7,7 @@ import { Loader } from '../../components/Loader/Loader';
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
-type Props = {
-  cart: number[];
-  favorites: number[];
-  toggleCart: (id: number) => void;
-  toggleFavorites: (id: number) => void;
-};
-
-export const TabletsPage: React.FC<Props> = ({
-  cart,
-  favorites,
-  toggleCart,
-  toggleFavorites,
-}) => {
+export const TabletsPage: React.FC = () => {
   const { products, isLoading, hasError, reload } = useProducts();
   const tablets = products.filter(product => product.category === 'tablets');
 
@@ -40,14 +28,7 @@ export const TabletsPage: React.FC<Props> = ({
         {!isLoading && hasError && <ErrorMessage onReload={reload} />}
 
         {!isLoading && !hasError && (
-          <ProductsList
-            products={tablets}
-            cart={cart}
-            favorites={favorites}
-            toggleCart={toggleCart}
-            toggleFavorites={toggleFavorites}
-            emptyMessage=""
-          />
+          <ProductsList products={tablets} emptyMessage="" />
         )}
       </div>
     </main>

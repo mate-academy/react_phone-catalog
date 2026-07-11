@@ -1,3 +1,5 @@
+@use '../../styles/variables' as *;
+
 .section {
   &__header {
     display: flex;
@@ -21,9 +23,9 @@
 .navButton {
   width: 32px;
   height: 32px;
-  border: 1px solid #3B3E4A;
+  border: 1px solid $elements;
   border-radius: 0;
-  background-color: #323542;
+  background-color: $surface-2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,19 +33,19 @@
   transition: background-color 0.3s ease, opacity 0.3s ease;
 
   &:hover {
-    background-color: #4A4D58;
+    background-color: $icons;
   }
 
   &:global(.swiper-button-disabled) {
     cursor: not-allowed;
-    background-color: #0F1121;
+    background-color: $primary;
     opacity: 0.5;
   }
 }
 
 .productCard {
   padding: 0 32px 32px;
-  background-color: #161827;
+  background-color: $surface-1;
 
   &__link {
     display: block;
@@ -83,7 +85,7 @@
 
   &__divider {
     width: 100%;
-    color: #3B3E4A;
+    color: $elements;
   }
 
   &__description {
@@ -120,19 +122,20 @@
     width: 100%;
     height: 40px;
     color: #F1F2F9;
-    background-color: #905BFF;
+    background-color: $button;
     border: none;
     cursor: pointer;
 
     &:hover {
-      background-color: #A378FF;
+      background-color: $button-hover;
     }
 
     &--active {
-      background-color: #323542;
+      background-color: $surface-2;
+      cursor: default;
 
       &:hover {
-        background-color: #4A4D58;
+        background-color: $surface-2;
       }
     }
   }
@@ -146,18 +149,18 @@
   }
 
   &__favoriteIcon {
-    background-color: #323542;
+    background-color: $surface-2;
     padding: 12px;
     height: 40px;
     width: 40px;
 
     &--active {
-      background-color: #161827;
-      border: 1px solid #3B3E4A;
+      background-color: $surface-1;
+      border: 1px solid $elements;
     }
 
     &:hover {
-      background-color: #4A4D58;
+      background-color: $icons;
     }
   }
 
