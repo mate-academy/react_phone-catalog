@@ -24,7 +24,7 @@ const footerItems: FooterItem[] = [
   {
     name: 'rights',
     id: 3,
-    path: '/rights',
+    path: 'https://github.com/SerhiyShimko/react_phone-catalog',
   },
 ];
 
