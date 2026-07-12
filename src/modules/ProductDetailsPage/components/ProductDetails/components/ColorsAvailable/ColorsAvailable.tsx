@@ -1,7 +1,7 @@
 import React from 'react';
 import './ColorsAvailable.scss';
 import classNames from 'classnames';
-import { useLanguage } from '../../../../context/LanguageContext';
+import { useLanguage } from '../../../../../../context/LanguageContext';
 
 type Props = {
   className: string;

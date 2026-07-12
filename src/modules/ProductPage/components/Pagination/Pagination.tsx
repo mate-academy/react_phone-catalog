@@ -44,6 +44,7 @@ export const Pagination: React.FC<Props> = ({
 
       if (arrayNumbers[arrayNumbers.length - 1] < totalPages) {
         finalArray.push('...');
+        finalArray.push(totalPages);
       }
 
       return finalArray;

@@ -2,17 +2,17 @@ import React, { useEffect, useState } from 'react';
 import './ProductDetails.scss';
 import { ProductCompleted } from '../../../../types/ProductCompleted';
 import classNames from 'classnames';
-import { ColorsAvailable } from '../../../shared/components/ColorsAvailable';
 import { Line } from '../../../shared/components/Line';
 import { BlockPrice } from '../../../shared/components/BlockPrice';
 import { SpecsProduct } from '../../../shared/components/SpecsProduct';
 // eslint-disable-next-line max-len
-import { CapacityAvailable } from '../../../shared/components/CapacityAvailable';
+import { CapacityAvailable } from './components/CapacityAvailable';
 import { useNavigate } from 'react-router-dom';
 // eslint-disable-next-line max-len
 import { AddToCartButton } from '../../../shared/components/Buttons/AddToCartButton';
 import { useGlobalContext } from '../../../../context/GlobalContext';
 import { useLanguage } from '../../../../context/LanguageContext';
+import { ColorsAvailable } from './components/ColorsAvailable';
 
 type Props = {
   className: string;

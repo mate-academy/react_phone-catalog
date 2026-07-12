@@ -79,12 +79,17 @@
       margin: 32px 0;
       gap: 16px;
     }
+
+    &--colors {
+      gap: 16px;
+    }
   }
 
   &__id {
     font-family: var(--mont-semibold-font);
     font-size: 12px;
     color: var(--icons-color);
+    min-width: 0;
   }
 
   &__line {

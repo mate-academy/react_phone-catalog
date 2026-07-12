@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
 import './CapacityAvailable.scss';
-import { useLanguage } from '../../../../context/LanguageContext';
+import { useLanguage } from '../../../../../../context/LanguageContext';
 
 type Props = {
   className: string;
