@@ -64,10 +64,10 @@ export const PicturesSlider: React.FC<Props> = ({ className }) => {
   //#endregion
 
   useEffect(() => {
-    const inervalNext = setInterval(() => nextSlide(), 5000);
+    const intervalNext = setInterval(() => nextSlide(), 5000);
 
-    return () => clearInterval(inervalNext);
-  }, [nextSlide]);
+    return () => clearInterval(intervalNext);
+  }, [currentSlide, nextSlide]);
 
   //#region touches
 
