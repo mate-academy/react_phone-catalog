@@ -9,5 +9,14 @@
     @include up($sm) {
       grid-column: span 6;
     }
+
+    @include up($m) {
+      grid-column: span 4;
+    }
+
+    @include up($md) {
+      grid-column: span 6;
+    }
+
   }
 }
