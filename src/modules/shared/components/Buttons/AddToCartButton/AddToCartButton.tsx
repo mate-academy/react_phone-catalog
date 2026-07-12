@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import './AddToCartButton.scss';
 import { TextButton } from '../TextButton';
 import { IconButton } from '../IconButton';
@@ -28,20 +28,28 @@ export const AddToCartButton: React.FC<Props> = ({ className, item }) => {
     );
   }
 
-  const addToCart = () => {
-    if (!showAddedCart && item) {
-      setCartItems(current => [
-        ...current,
-        {
-          id: item.id,
-          quantity: 1,
-          product: item,
-        },
-      ]);
-    }
-  };
+  const addToCart = useCallback(() => {
+    if (cartItems.some(cartItem => cartItem.id === item?.id)) {
+      const newCartItems = cartItems.filter(
+        favriteItem => favriteItem.id !== item?.id,
+      );
 
-  const addToFavorites = () => {
+      setCartItems(newCartItems);
+    } else {
+      if (!showAddedCart && item) {
+        setCartItems(current => [
+          ...current,
+          {
+            id: item.id,
+            quantity: 1,
+            product: item,
+          },
+        ]);
+      }
+    }
+  }, [cartItems, item, showAddedCart, setCartItems]);
+
+  const addToFavorites = useCallback(() => {
     if (favoritesItems.some(favriteItem => favriteItem.id === item?.id)) {
       const newFavoritesItems = favoritesItems.filter(
         favriteItem => favriteItem.id !== item?.id,
@@ -53,7 +61,7 @@ export const AddToCartButton: React.FC<Props> = ({ className, item }) => {
         setFavoritesItems(current => [...current, item]);
       }
     }
-  };
+  }, [favoritesItems, item, showActiveIcon, setFavoritesItems]);
 
   return (
     <div className={`add-to-cart-button ${className}`}>
