@@ -3,6 +3,7 @@ import { Product } from '../../../../types/Product';
 import { ProductCard } from '../../../shared/components/ProductCard';
 import './ProductsSlider.scss';
 import { IconButton } from '../../../shared/components/Buttons/IconButton';
+import { breakpoint } from '../../../../utils/breakpoint';
 
 type Props = {
   title: string;
@@ -11,6 +12,18 @@ type Props = {
   className: string;
 };
 
+function getShowCards(width: number): number {
+  if (width > breakpoint.md) {
+    return 4;
+  } else if (width > breakpoint.m) {
+    return 3;
+  } else if (width > breakpoint.sm) {
+    return 2;
+  }
+
+  return 1;
+}
+
 export const ProductsSlider: React.FC<Props> = ({
   title,
   items,
@@ -18,7 +31,30 @@ export const ProductsSlider: React.FC<Props> = ({
   className,
 }) => {
   const [currentItem, setCurrentItem] = useState(0);
+  const [showCards, setShowCards] = useState(() =>
+    getShowCards(window.innerWidth),
+  );
   const track = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+
+      if (width > breakpoint.md) {
+        setShowCards(4);
+      } else if (width > breakpoint.m) {
+        setShowCards(3);
+      } else if (width > breakpoint.sm) {
+        setShowCards(2);
+      } else {
+        setShowCards(1);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     setCurrentItem(0);
@@ -60,13 +96,13 @@ export const ProductsSlider: React.FC<Props> = ({
             className="product-slider__button"
             onClick={() => pastSlide()}
             name="arrow-left"
-            disabled={currentItem === 0}
+            disabled={currentItem <= 0}
           />
           <IconButton
             className="product-slider__button"
             onClick={() => nextSlide()}
             name="arrow-right"
-            disabled={currentItem === items.length - 1}
+            disabled={currentItem >= items.length - showCards}
           />
         </div>
       </div>

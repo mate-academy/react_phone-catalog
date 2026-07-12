@@ -12,12 +12,11 @@ import { ThemeSwitch } from './components/ThemeSwitch';
 import { LanguageSwitch } from './components/LanguageSwitch';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLockBodyScroll } from '../../../../hooks/useLockBodyScroll';
+import { breakpoint } from '../../../../utils/breakpoint';
 
 type Props = {
   className: string;
 };
-
-const MOBILE_BREAKPOINT = 640;
 
 export const Header: React.FC<Props> = ({ className }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -27,7 +26,7 @@ export const Header: React.FC<Props> = ({ className }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > MOBILE_BREAKPOINT) {
+      if (window.innerWidth > breakpoint.sm) {
         setMenuOpen(false);
       }
     };
