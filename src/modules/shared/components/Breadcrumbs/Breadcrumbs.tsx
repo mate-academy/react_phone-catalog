@@ -3,6 +3,7 @@ import './Breadcrumbs.scss';
 import { Link } from 'react-router-dom';
 import { Icon } from '../Icon';
 import { Category } from '../../../../types/Category';
+import { useLanguage } from '../../../../context/LanguageContext';
 
 type Props = {
   className: string;
@@ -15,9 +16,9 @@ export const Breadcrumbs: React.FC<Props> = ({
   category,
   productName,
 }) => {
+  const { texts } = useLanguage();
   const linkToCategory = category.toLowerCase();
-  const correactCategory =
-    category.slice(0, 1).toUpperCase() + category.slice(1);
+  const correctedCategoryText = texts[category];
 
   return (
     <div className={`breadcrumb ${className}`}>
@@ -26,7 +27,7 @@ export const Breadcrumbs: React.FC<Props> = ({
       </Link>
       <Icon className="breadcrumb__icon-arrow-right" name="arrow-right" />
       <Link className="breadcrumb__text" to={`/${linkToCategory}`}>
-        {correactCategory}
+        {correctedCategoryText}
       </Link>
       {productName && (
         <>

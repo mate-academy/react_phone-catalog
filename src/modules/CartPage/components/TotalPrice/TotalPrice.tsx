@@ -41,7 +41,7 @@ export const TotalPrice: React.FC<Props> = ({ className }) => {
         <TextButton
           className="total-price__button"
           onClick={() => dialogRef.current?.showModal()}
-          text="Checkout"
+          text={texts.checkout}
         />
       )}
       <dialog className="dialog" ref={dialogRef}>
@@ -58,7 +58,7 @@ export const TotalPrice: React.FC<Props> = ({ className }) => {
         <TextButton
           className="dialog__button-clear"
           onClick={() => clearCart()}
-          text="Clear cart"
+          text={texts.clearCart}
         />
       </dialog>
     </div>

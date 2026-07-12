@@ -49,4 +49,5 @@ export const uk: typeof en = {
   thereAreNoProductsInThisCategory: 'Немає продуктів цієї категорії',
   thereAreNoProductsInThisCategoryForYourSearch:
     'Немає продуктів цієї категорії за вашим запитом',
+  clearCart: 'Очистити кошик',
 };

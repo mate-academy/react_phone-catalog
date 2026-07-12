@@ -47,4 +47,5 @@ export const en = {
   thereAreNoProductsInThisCategory: 'There are no products in this category',
   thereAreNoProductsInThisCategoryForYourSearch:
     'There are no products in this category',
+  clearCart: 'Clear cart',
 };
