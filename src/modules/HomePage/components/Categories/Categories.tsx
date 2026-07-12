@@ -48,32 +48,36 @@ export const Categories: React.FC<Props> = ({ className }) => {
     <div className={`categories ${className}`}>
       <h2 className="categories__heading">{texts.shopByCategory}</h2>
       <div className="categories__body">
-        {categories.map(category => (
-          <div
-            className={`categories__item categories__item--${category.class}`}
-            key={category.id}
-          >
-            <Link to={`/${category.link}`}>
-              <img
-                src={category.img}
-                alt="photo category"
-                className="categories__img"
-              />
-            </Link>
-            <div className="categories__info">
+        {categories.map(category => {
+          const numberOfProducts = allProducts.filter(
+            product => product.category === category.class,
+          ).length;
+
+          return (
+            <div
+              className={`categories__item categories__item--${category.class}`}
+              key={category.id}
+            >
               <Link to={`/${category.link}`}>
-                <h4 className="categories__title">{texts[category.title]}</h4>
+                <img
+                  src={category.img}
+                  alt="photo category"
+                  className="categories__img"
+                />
               </Link>
-              <p className="categories__count">
-                {
-                  allProducts.filter(
-                    product => product.category === category.class,
-                  ).length
-                }
-              </p>
+              <div className="categories__info">
+                <Link to={`/${category.link}`}>
+                  <h4 className="categories__title">{texts[category.title]}</h4>
+                </Link>
+                <p className="categories__count">
+                  {numberOfProducts === 1
+                    ? `${numberOfProducts} ${texts.item}`
+                    : `${numberOfProducts} ${texts.items}`}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
