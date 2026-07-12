@@ -6,6 +6,7 @@ import { FavoritesPage } from './modules/FavoritesPage';
 import { HomePage } from './modules/HomePage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
+import { Footer } from './components/Footer/Footer';
 
 import { Header } from './components/Header';
 
@@ -33,6 +34,8 @@ export const App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
+
+      <Footer />
     </div>
   );
 };

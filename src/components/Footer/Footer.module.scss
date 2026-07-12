@@ -1,0 +1,142 @@
+.footer {
+  background-color: #fff;
+  box-shadow: 0 -1px 0 #e2e6e9;
+}
+
+.content {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  width: 100%;
+  padding: 32px 16px;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 96px;
+    padding: 32px 24px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px;
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 1440px;
+    padding: 32px 152px;
+  }
+}
+
+.logoLink {
+  display: block;
+  width: 89px;
+  height: 32px;
+}
+
+.logo {
+  position: relative;
+
+  display: block;
+  width: 89px;
+  height: 32px;
+}
+
+.logoNg {
+  display: block;
+  width: 89px;
+  height: 32px;
+}
+
+.logoOk {
+  position: absolute;
+  top: -4px;
+  left: 44px;
+
+  width: 18px;
+  height: 18px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (min-width: 640px) {
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    gap: 64px;
+  }
+
+  @media (min-width: 1200px) {
+    gap: 106px;
+  }
+}
+
+.link {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  color: #89939a;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition: color 0.3s;
+}
+
+.link:hover {
+  color: #313237;
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  gap: 16px;
+
+  padding: 0;
+
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+
+  @media (min-width: 640px) {
+    align-self: auto;
+  }
+}
+
+.backToTopText {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  color: #89939a;
+}
+
+.backToTopButton {
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid #b4bdc3;
+}
+
+.backToTopIcon {
+  width: 16px;
+  height: 16px;
+  transform: rotate(0deg);
+}
