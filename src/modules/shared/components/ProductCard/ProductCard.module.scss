@@ -1,0 +1,100 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/fonts';
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  width: $card-width-mobile;
+  height: $card-height-mobile;
+  border-radius: $border-radius;
+  border: 1px solid $elements-color;
+  padding: 32px;
+  font-family: $font-family-main;
+  background-color: $white;
+  align-items: stretch;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  @include desktop {
+    width: $card-width-desktop;
+    height: $card-height-desktop;
+  }
+
+  @include tablet {
+    width: 100%;
+    height: $card-height-tablet;
+  }
+
+  @include mobile {
+    width: 100%;
+    height: auto;
+    min-height: $card-height-mobile;
+  }
+}
+
+.product-card__image {
+  object-fit: contain;
+  width: $card-image-width-mobile;
+  height: $card-image-height-mobile;
+  margin: 0 auto;
+
+  @include desktop {
+    width: $card-image-width-desktop;
+    height: $card-image-height-desktop;
+  }
+
+  @include tablet {
+    width: $card-image-width-tablet;
+    height: $card-image-height-tablet;
+  }
+}
+
+.product-card__title {
+  padding-top: 24px;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  width: 100%;
+}
+
+.product-card__prices {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0;
+  width: 100%;
+  font-size: $font-size-price;
+  font-weight: $font-weight-extrabold;
+  color: $black;
+}
+
+.product-card__price-regular-strike {
+  color: $secondary-color;
+  font-weight: $font-weight-semibold;
+  text-decoration: line-through;
+}
+
+.product-card__divider {
+  width: 100%;
+  height: 1px;
+  background-color: $elements-color;
+  margin: 8px 0 16px;
+}
+
+.product-card__title,
+.product-card__prices,
+.product-card-specs,
+.card-actions {
+  width: 100%;
+}
+
+.product-card__link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  width: 100%;
+}

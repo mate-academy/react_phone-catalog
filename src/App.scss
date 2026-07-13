@@ -1,1 +1,24 @@
-// not empty
+@use './modules/shared/styles/mixins';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Mont, sans-serif;
+  color: #0f0f11;
+  background-color: #FAFBFC;
+  min-height: 100vh;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.mainContent {
+  flex: 1;
+}

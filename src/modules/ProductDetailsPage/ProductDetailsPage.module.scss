@@ -1,0 +1,39 @@
+@use '../shared/styles/variables' as *;
+@use '../shared/styles/mixins' as *;
+
+.product-details-page {
+  @include margins;
+}
+
+.product-details-page__back-link {
+  text-decoration: none;
+  color: $secondary-color;
+  font-size: 12px;
+  display: flex;
+  gap: 4px;
+  margin-top: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+
+  &:hover {
+    color: $black;
+  }
+}
+
+.product-details-page__back-icon {
+  display: inline-block;
+}
+
+.product-details-page__loader-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.product-details-page__error-text {
+  margin: 32px 0;
+  color: $secondary-color;
+}

@@ -1,0 +1,17 @@
+@use '../shared/styles/mixins' as *;
+@use '../shared/styles/variables' as *;
+
+.home_page {
+  @include margins;
+}
+
+.home_page__loader_container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.home_page__error_text {
+  margin: 32px 0;
+  color: $secondary-color;
+}

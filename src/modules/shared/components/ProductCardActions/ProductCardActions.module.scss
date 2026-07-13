@@ -1,0 +1,87 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  height: $action-button-size;
+  margin-top: auto;
+  width: 100%;
+}
+
+.card-actions__button-cart {
+  flex: 1;
+  border: 1px solid transparent;
+  border-radius: $border-radius;
+  background-color: $primary-color;
+  color: $white;
+  cursor: pointer;
+  font-family: $font-family-main;
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  transition: $transition-fast;
+
+  &:hover {
+    box-shadow: $shadow-button;
+  }
+}
+
+.card-actions__button-cart--active {
+  border-color: $elements-color;
+  background-color: $white;
+  color: $primary-color;
+  box-shadow: none;
+}
+
+.card-actions__button-favorite {
+  @include flex-center;
+
+  position: relative;
+  width: $action-button-size;
+  border: 1px solid $icons-color;
+  border-radius: $border-radius-circle;
+  background-color: $white;
+  cursor: pointer;
+  transition: border-color $transition-fast;
+
+  img {
+    position: absolute;
+
+    @include icon;
+
+    transition:
+      transform $transition cubic-bezier(0.17, 0.89, 0.32, 1.27),
+      opacity $transition ease;
+  }
+
+  &:hover {
+    border-color: $black;
+  }
+
+  &:active {
+    border-color: $elements-color;
+  }
+}
+
+.card-actions__icon-heart-empty {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.card-actions__icon-heart-pink {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.card-actions__button-favorite--active {
+  .card-actions__icon-heart-empty {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  .card-actions__icon-heart-pink {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,24 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.product-card-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 0;
+  width: 100%;
+  font-size: $font-size-small;
+}
+
+.product-card-specs__item {
+  @include flex-between;
+}
+
+.product-card-specs__label {
+  color: $secondary-color;
+}
+
+.product-card-specs__value {
+  font-weight: $font-weight-semibold;
+  color: $black;
+}

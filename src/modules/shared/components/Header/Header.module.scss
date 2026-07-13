@@ -1,0 +1,188 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/fonts';
+
+.header {
+  @include flex-between;
+
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: $white;
+  padding: 0 0 0 16px;
+  height: $header-height-mobile;
+  border-bottom: 1px solid $elements-color;
+  box-shadow: $shadow-light;
+
+  @include desktop {
+    height: $header-height-desktop;
+    padding: 0 0 0 24px;
+  }
+
+  &__left-section {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    @include desktop {
+      gap: 48px;
+    }
+  }
+
+  &__nav {
+    display: none;
+    gap: 32px;
+
+    @include tablet {
+      display: flex;
+    }
+
+    @include desktop {
+      display: flex;
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    font-family: $font-family-main;
+    text-decoration: none;
+    color: $secondary-color;
+    font-weight: $font-weight-extrabold;
+    font-size: $font-size-small;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    height: $header-height-mobile;
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: color $transition;
+    user-select: none;
+
+    @include desktop {
+      height: $header-height-desktop;
+    }
+
+    &:hover {
+      color: $black;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $black;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform $transition ease;
+    }
+
+    &--active {
+      color: $black;
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  &__icons {
+    display: flex;
+  }
+
+  &__icon-item {
+    @include flex-center;
+
+    text-decoration: none;
+    position: relative;
+    font-size: 20px;
+    width: $mobile-icon-button;
+    height: $mobile-icon-button;
+    border-left: 1px solid $elements-color;
+    flex-shrink: 0;
+    flex-grow: 0;
+    user-select: none;
+
+    @include desktop {
+      width: $desktop-icon-button;
+      height: $desktop-icon-button;
+    }
+
+    img {
+      @include icon;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 100%;
+      height: 3px;
+      background-color: $black;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform $transition ease;
+    }
+
+    &--active {
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  &__logo {
+    display: block;
+    height: $logo-height-mobile;
+
+    @include desktop {
+      height: $logo-height-desktop;
+    }
+
+    img {
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+    }
+  }
+
+  &__hide-on-mobile {
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__hide-on-desktop {
+    @include tablet {
+      display: none;
+    }
+
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &__icon-wrapper {
+    position: relative;
+    display: flex;
+  }
+
+  &__badge {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    background-color: #F447AF;
+    color: $white;
+    font-size: 9px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+
+    @include flex-center;
+
+    border: 1px solid $white;
+  }
+}
