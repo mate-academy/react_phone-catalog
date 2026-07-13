@@ -11,7 +11,7 @@ export const NotFoundPage = () => {
       </Link>
 
       <img
-        src="/img/page-not-found.png"
+        src={`${import.meta.env.BASE_URL}img/page-not-found.png`}
         alt="Page not found img"
         className={styles.not_found_page__img}
       />

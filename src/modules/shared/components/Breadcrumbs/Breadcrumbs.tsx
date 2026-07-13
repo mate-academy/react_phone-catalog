@@ -41,7 +41,7 @@ export const Breadcrumbs: React.FC<Props> = ({
       {!pageName && category && (
         <>
           <img
-            src="/img/icons/arrow-to-right.svg"
+            src={`${import.meta.env.BASE_URL}img/icons/arrow-to-right.svg`}
             alt=">"
             className={styles.breadcrumbs__separator}
           />
@@ -61,7 +61,7 @@ export const Breadcrumbs: React.FC<Props> = ({
       {!pageName && productName && (
         <>
           <img
-            src="/img/icons/arrow-to-right.svg"
+            src={`${import.meta.env.BASE_URL}img/icons/arrow-to-right.svg`}
             alt=">"
             className={styles.breadcrumbs__separator}
           />

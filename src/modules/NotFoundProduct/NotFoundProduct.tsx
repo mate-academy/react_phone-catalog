@@ -11,7 +11,7 @@ export const NotFoundProduct = () => {
       </Link>
 
       <img
-        src="/img/product-not-found.png"
+        src={`${import.meta.env.BASE_URL}img/product-not-found.png`}
         alt="product not found img"
         className={styles.not_found_product__img}
       />

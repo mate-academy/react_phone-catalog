@@ -92,7 +92,7 @@ export const ProductDetailsPage: React.FC = () => {
         className={styles['product-details-page__back-link']}
       >
         <img
-          src="/img/icons/arrow-to-left.svg"
+          src={`${import.meta.env.BASE_URL}img/icons/arrow-to-left.svg`}
           alt="Arrow to left"
           className={styles['product-details-page__back-icon']}
         />

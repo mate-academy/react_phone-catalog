@@ -74,7 +74,7 @@ export const BannerSlider: React.FC = () => {
           onClick={handlePrev}
         >
           <img
-            src="/img/icons/arrow-to-left.svg"
+            src={`${import.meta.env.BASE_URL}img/icons/arrow-to-left.svg`}
             alt="<"
             className={styles.pictures_slider__icon}
           />
@@ -99,7 +99,7 @@ export const BannerSlider: React.FC = () => {
                       srcSet={slide.imgMobile}
                     />
                   )}
-                  <img src={slide.img} alt={`Banner ${slide.id}`} />
+                  <img src={`${import.meta.env.BASE_URL}${slide.img}`} alt={`Banner ${slide.id}`} />
                 </picture>
               </div>
             ))}
@@ -111,7 +111,7 @@ export const BannerSlider: React.FC = () => {
           onClick={handleNext}
         >
           <img
-            src="/img/icons/arrow-to-right.svg"
+            src={`${import.meta.env.BASE_URL}img/icons/arrow-to-right.svg`}
             alt=">"
             className={styles.pictures_slider__icon}
           />

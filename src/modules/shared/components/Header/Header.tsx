@@ -39,7 +39,7 @@ export const Header: React.FC = () => {
         <div className={styles['header__left-section']}>
           <div className={styles.header__logo}>
             <Link to="/">
-              <img src="/img/Logo.svg" alt="Nice Gadgets Logo" />
+              <img src={`${import.meta.env.BASE_URL}/img/Logo.svg`} alt="Nice Gadgets Logo" />
             </Link>
           </div>
 
@@ -64,7 +64,7 @@ export const Header: React.FC = () => {
 
           <NavLink to="/favorites" className={getIconClass}>
             <div className={styles['header__icon-wrapper']}>
-              <img src="/img/icons/heart.svg" alt="Favourites" />
+              <img src={`${import.meta.env.BASE_URL}/img/icons/heart.svg`} alt="Favourites" />
               {totalFavourites > 0 && (
                 <span className={styles.header__badge}>{totalFavourites}</span>
               )}
@@ -73,7 +73,7 @@ export const Header: React.FC = () => {
 
           <NavLink to="/cart" className={getIconClass}>
             <div className={styles['header__icon-wrapper']}>
-              <img src="/img/icons/busket.svg" alt="Cart" />
+              <img src={`${import.meta.env.BASE_URL}img/icons/busket.svg`} alt="Cart" />
               {totalItems > 0 && (
                 <span className={styles.header__badge}>{totalItems}</span>
               )}
@@ -90,7 +90,7 @@ export const Header: React.FC = () => {
               padding: 0,
             }}
           >
-            <img src="/img/icons/menu.svg" alt="Burger menu" />
+            <img src={`${import.meta.env.BASE_URL}img/icons/menu.svg`} alt="Burger menu" />
           </button>
         </div>
       </header>

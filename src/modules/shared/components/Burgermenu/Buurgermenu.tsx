@@ -26,11 +26,11 @@ export const BurgerMenu: React.FC<Props> = ({ isOpen, onClose }) => {
     <aside className={styles.menu}>
       <div className={styles.menu__header}>
         <Link to="/" onClick={onClose} className={styles.menu__logo}>
-          <img src="/img/LogoBlack.svg" alt="Nice Gadgets Logo" />
+          <img src={`${import.meta.env.BASE_URL}img/LogoBlack.svg`} alt="Nice Gadgets Logo" />
         </Link>
         <button className={styles.menu__close} onClick={onClose}>
           <img
-            src="/img/icons/close.svg"
+            src={`${import.meta.env.BASE_URL}img/icons/close.svg`}
             alt="Close menu"
             className={styles.menu__closeIcon}
           />
@@ -54,10 +54,10 @@ export const BurgerMenu: React.FC<Props> = ({ isOpen, onClose }) => {
 
       <div className={styles.menu__footer}>
         <NavLink to="/favourites" className={getIconClass} onClick={onClose}>
-          <img src="/img/icons/heart.svg" alt="Favourites" />
+          <img src={`${import.meta.env.BASE_URL}img/icons/heart.svg`} alt="Favourites" />
         </NavLink>
         <NavLink to="/cart" className={getIconClass} onClick={onClose}>
-          <img src="/img/icons/busket.svg" alt="Cart" />
+          <img src={`${import.meta.env.BASE_URL}img/icons/busket.svg`} alt="Cart" />
         </NavLink>
       </div>
     </aside>

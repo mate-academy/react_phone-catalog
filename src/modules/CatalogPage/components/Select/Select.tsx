@@ -57,7 +57,7 @@ export const Select = <T extends string | number>({
           className={`${styles.select__arrow} ${isOpen ? styles.select__arrow_up : ''}`}
         >
           <img
-            src="/img/icons/arrow-down-grey.svg"
+            src={`${import.meta.env.BASE_URL}img/icons/arrow-down-grey.svg`}
             alt="arrow"
             className={styles.select__icon}
           />

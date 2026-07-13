@@ -61,12 +61,12 @@ export const ProductCardActions: React.FC<Props> = ({ product }) => {
         }}
       >
         <img
-          src="/img/icons/heart.svg"
+          src={`${import.meta.env.BASE_URL}img/icons/heart.svg`}
           alt="Empty"
           className={styles['card-actions__icon-heart-empty']}
         />
         <img
-          src="/img/icons/heart-active.svg"
+          src={`${import.meta.env.BASE_URL}img/icons/heart-active.svg`}
           alt="Pink"
           className={styles['card-actions__icon-heart-pink']}
         />

@@ -3,7 +3,7 @@ import { Product, ProductDetail } from '../types/Product';
 const cache: Record<string, ProductDetail> = {};
 
 export const getPhones = async (): Promise<ProductDetail[]> => {
-  const response = await fetch('/api/phones.json');
+  const response = await fetch(`${import.meta.env.BASE_URL}api/products.json`);
 
   if (!response.ok) {
     throw new Error('Failed to retrieve phones from the server');
@@ -13,7 +13,7 @@ export const getPhones = async (): Promise<ProductDetail[]> => {
 };
 
 export const getAccessories = async (): Promise<ProductDetail[]> => {
-  const response = await fetch('/api/accessories.json');
+  const response = await fetch(`${import.meta.env.BASE_URL}api/products.json`);
 
   if (!response.ok) {
     throw new Error('Failed to retrieve accessories from the server');
@@ -23,7 +23,7 @@ export const getAccessories = async (): Promise<ProductDetail[]> => {
 };
 
 export const getProducts = async (): Promise<Product[]> => {
-  const response = await fetch('/api/products.json');
+  const response = await fetch(`${import.meta.env.BASE_URL}api/products.json`);
 
   if (!response.ok) {
     throw new Error('Failed to retrieve products from the server');
@@ -33,7 +33,7 @@ export const getProducts = async (): Promise<Product[]> => {
 };
 
 export const getTablets = async (): Promise<ProductDetail[]> => {
-  const response = await fetch('/api/tablets.json');
+  const response = await fetch(`${import.meta.env.BASE_URL}api/products.json`);
 
   if (!response.ok) {
     throw new Error('Failed to retrieve tablets from the server');

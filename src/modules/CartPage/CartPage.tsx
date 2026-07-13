@@ -23,7 +23,7 @@ export const CartPage: React.FC = () => {
         className={styles.cart_page__back_link}
       >
         <img
-          src="/img/icons/arrow-to-left.svg"
+          src={`${import.meta.env.BASE_URL}img/icons/arrow-to-left.svg`}
           alt="Arrow to left"
           className={styles.cart_page__back_icon}
         />
@@ -36,7 +36,7 @@ export const CartPage: React.FC = () => {
         <div className={styles.cart_page__emptyContainer}>
           <h2>Your cart is empty</h2>
           <img
-            src="img/cart-is-empty.png"
+            src={`${import.meta.env.BASE_URL}img/cart-is-empty.png`}
             alt="Cart is empty"
             className={styles.cart_page__empty}
           />
@@ -55,7 +55,7 @@ export const CartPage: React.FC = () => {
 
                 <Link to={`/product/${item.id}`}>
                   <img
-                    src={item.img}
+                    src={`${import.meta.env.BASE_URL}${item.img}`}
                     alt={item.name}
                     className={styles.cart_item__img}
                   />

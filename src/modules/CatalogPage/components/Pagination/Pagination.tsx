@@ -65,7 +65,7 @@ export const Pagination: React.FC<Props> = ({
         disabled={currentPage === 1}
       >
         <img
-          src="/img/icons/arrow-to-left.svg"
+          src={`${import.meta.env.BASE_URL}img/icons/arrow-to-left.svg`}
           alt="Prev"
           className={styles.pagination__icon}
         />
@@ -99,7 +99,7 @@ export const Pagination: React.FC<Props> = ({
         disabled={currentPage === totalPages}
       >
         <img
-          src="/img/icons/arrow-to-right.svg"
+          src={`${import.meta.env.BASE_URL}img/icons/arrow-to-right.svg`}
           alt="Next"
           className={styles.pagination__icon}
         />

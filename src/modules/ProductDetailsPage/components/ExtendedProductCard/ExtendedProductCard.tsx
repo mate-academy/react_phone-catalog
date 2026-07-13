@@ -143,7 +143,7 @@ export const ExtendedProductCard: React.FC<ProductDetail> = ({
                   onClick={() => setActiveImage(img)}
                 >
                   <img
-                    src={`/${img}`}
+                    src={`${import.meta.env.BASE_URL}${img}`}
                     alt={`Thumbnail ${index + 1}`}
                     className={styles['extended-product-card__thumbnail-image']}
                   />
@@ -155,7 +155,7 @@ export const ExtendedProductCard: React.FC<ProductDetail> = ({
               className={styles['extended-product-card__main-image-container']}
             >
               <img
-                src={`/${activeImage}`}
+                src={`${import.meta.env.BASE_URL}${activeImage}`}
                 alt={name}
                 className={styles['extended-product-card__main-image']}
               />
