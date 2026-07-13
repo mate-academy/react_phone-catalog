@@ -1,7 +1,7 @@
 @use './styles/theme.scss';
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
 
   src: url('/public/fonts/Mont-Regular.otf') format('opentype');
 
@@ -11,7 +11,7 @@
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
 
   src: url('/public/fonts/Mont-SemiBold.otf') format('opentype');
 
@@ -21,7 +21,7 @@
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
 
   src: url('/public/fonts/Mont-Bold.otf') format('opentype');
 
@@ -36,7 +36,7 @@
 
 body {
   margin: 0;
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
 
   background-color: var(--background-color);
   color: var(--primary-color);

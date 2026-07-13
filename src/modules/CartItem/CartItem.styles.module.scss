@@ -92,13 +92,13 @@
   background: var(--white-color);
   cursor: pointer;
 
-  &:hover:not(:disabled) {
-    border-color: var(--primary-color);
-  }
-
   &:disabled {
     border-color: var(--elements-color);
     cursor: default;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--primary-color);
   }
 }
 

@@ -64,13 +64,13 @@
     border-color 0.3s,
     opacity 0.3s;
 
-  &:hover:not(:disabled) {
-    border-color: var(--primary-color);
-  }
-
-  &:disabled {
+    &:disabled {
     border-color: var(--elements-color);
     cursor: default;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--primary-color);
   }
 }
 

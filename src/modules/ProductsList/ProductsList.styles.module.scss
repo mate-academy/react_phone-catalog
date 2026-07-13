@@ -3,8 +3,7 @@
 
 .products {
   display: grid;
-  column-gap: 16px;
-  row-gap: 40px;
+  gap: 16px 40px;
 
   grid-template-columns: 1fr;
 

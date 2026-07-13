@@ -32,7 +32,7 @@ export const CatalogPage = () => {
     setIsLoading(true);
     setErrorMessage('');
 
-    fetch('/api/products.json')
+    fetch(`${import.meta.env.BASE_URL}api/products.json`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to load products');

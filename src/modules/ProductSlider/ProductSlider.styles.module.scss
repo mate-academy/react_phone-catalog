@@ -58,6 +58,12 @@
   }
 }
 
+.arrowLeft svg,
+.arrowRight svg {
+  width: 16px;
+  height: 16px;
+}
+
 .arrowLeft,
 .arrowRight {
   width: 32px;
@@ -76,8 +82,8 @@
     border-color 0.3s,
     opacity 0.3s;
 
-  &:hover:not(:disabled) {
-    border-color: var(--primary-color);
+  &:disabled svg {
+    opacity: 0.3;
   }
 
   &:disabled {
@@ -85,13 +91,7 @@
     cursor: default;
   }
 
-  &:disabled svg {
-    opacity: 0.3;
+  &:hover:not(:disabled) {
+    border-color: var(--primary-color);
   }
-}
-
-.arrowLeft svg,
-.arrowRight svg {
-  width: 16px;
-  height: 16px;
 }
