@@ -1,7 +1,7 @@
 @use '../shared/styles/mixins' as *;
 @use '../shared/styles/variables' as *;
 
-.not_found_page {
+.not_found_product {
   @include margins;
 
   display: flex;
@@ -9,16 +9,16 @@
   align-items: center;
 }
 
-.not_found_page__title {
+.not_found_product__title {
   margin-bottom: 24px;
 }
 
-.not_found_page__link {
+.not_found_product__link {
   color: $black;
 }
 
-.not_found_page__img {
+.not_found_product__img {
   height: 300px;
-  width: 300px;
+  width: 350px;
   margin-top: 24px;
 }

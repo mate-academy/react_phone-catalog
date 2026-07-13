@@ -11,12 +11,11 @@ import {
   CarouselProduct,
 } from '../shared/types/Product';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
+import { NotFoundProduct } from '../NotFoundProduct';
+import { getSuggestedProducts } from '../shared/utils/getSuggestedProducts';
 
 export const ProductDetailsPage: React.FC = () => {
-  const { category, id } = useParams<{
-    category: string;
-    id: string;
-  }>();
+  const { productId } = useParams<{ productId: string }>();
 
   const navigate = useNavigate();
 
@@ -26,41 +25,42 @@ export const ProductDetailsPage: React.FC = () => {
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
-    if (!id) {
+    if (!productId) {
       return;
     }
 
     setIsLoading(true);
     setHasError(false);
 
-    Promise.all([getProductById(id), getProducts()])
+    Promise.all([getProductById(productId), getProducts()])
       .then(([productData, allProducts]) => {
         setProduct(productData);
 
-        const mappedForCarousel: CarouselProduct[] = allProducts
-          .filter((p: Product) => p.itemId !== id)
-          .slice(0, 10)
-          .map((p: Product) => ({
-            id: p.itemId,
-            img: p.image,
-            name: p.name,
-            category: p.category,
-            capacity: p.capacity,
-            priceRegular: p.fullPrice,
-            priceDiscount: p.price,
-            ram: p.ram,
-            screen: p.screen,
-          }));
+        const mappedForCarousel = getSuggestedProducts(
+          allProducts,
+          productId,
+        ).map((p: Product) => ({
+          id: p.itemId,
+          img: p.image,
+          name: p.name,
+          category: p.category,
+          capacity: p.capacity,
+          priceRegular: p.fullPrice,
+          priceDiscount: p.price,
+          ram: p.ram,
+          screen: p.screen,
+        }));
 
         setSuggested(mappedForCarousel);
       })
       .catch(() => {
         setHasError(true);
+        setProduct(null);
       })
       .finally(() => {
         setIsLoading(false);
       });
-  }, [id, category]);
+  }, [productId]);
 
   if (isLoading) {
     return (
@@ -70,23 +70,29 @@ export const ProductDetailsPage: React.FC = () => {
     );
   }
 
-  if (hasError || !product) {
+  if (hasError) {
     return (
-      <h2 className={styles['product-details-page__error-text']}>
-        Product not found
-      </h2>
+      <div className={styles.error}>
+        <h2>Something went wrong</h2>
+
+        <button onClick={() => window.location.reload()}>Reload</button>
+      </div>
     );
+  }
+
+  if (!product) {
+    return <NotFoundProduct />;
   }
 
   return (
     <div className={styles['product-details-page']}>
-      <Breadcrumbs category={category} productName={product?.name} />
+      <Breadcrumbs category={product?.category} productName={product?.name} />
       <button
         onClick={() => navigate(-1)}
         className={styles['product-details-page__back-link']}
       >
         <img
-          src="/public/img/icons/arrow-to-left.svg"
+          src="/img/icons/arrow-to-left.svg"
           alt="Arrow to left"
           className={styles['product-details-page__back-icon']}
         />

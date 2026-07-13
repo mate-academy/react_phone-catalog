@@ -15,3 +15,16 @@
   margin: 32px 0;
   color: $secondary-color;
 }
+
+.home_page__hidden_text {
+  position: absolute;
+  opacity: 0;
+}
+
+.home_page__text {
+  font-size: 48px;
+
+  @include mobile {
+    font-size: 32px;
+  }
+}

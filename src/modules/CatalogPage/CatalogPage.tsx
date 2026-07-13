@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import styles from './CatalogPage.module.scss';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs/Breadcrumbs';
 import { ProductCard } from '../shared/components/ProductCard';
@@ -16,7 +16,7 @@ const categoryTitles: Record<string, string> = {
 };
 
 const sortOptions = [
-  { value: 'newest', label: 'Newest' },
+  { value: 'age', label: 'Newest' },
   { value: 'alphabetically', label: 'Alphabetically' },
   { value: 'cheapest', label: 'Cheapest' },
   { value: 'expensive', label: 'Expensive' },
@@ -34,10 +34,32 @@ export const CatalogPage: React.FC = () => {
 
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query')?.toLowerCase() || '';
+  const [hasError, setHasError] = useState(false);
 
-  const [sortBy, setSortBy] = useState('newest');
-  const [itemsPerPage, setItemsPerPage] = useState(16);
-  const [currentPage, setCurrentPage] = useState(1);
+  const sortBy = searchParams.get('sort') || 'age';
+
+  const itemsPerPage =
+    searchParams.get('perPage') === 'all'
+      ? 0
+      : Number(searchParams.get('perPage')) || 16;
+
+  const currentPage = Number(searchParams.get('page')) || 1;
+
+  const updateSearchParams = (params: Record<string, string | null>) => {
+    const newParams = new URLSearchParams(searchParams);
+
+    Object.entries(params).forEach(([key, value]) => {
+      if (value === null) {
+        newParams.delete(key);
+      } else {
+        newParams.set(key, value);
+      }
+    });
+
+    setSearchParams(newParams);
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -49,15 +71,30 @@ export const CatalogPage: React.FC = () => {
 
         setProducts(filteredData);
       })
+      .catch(() => {
+        setHasError(true);
+      })
       .finally(() => setIsLoading(false));
   }, [category]);
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [category, sortBy, itemsPerPage]);
+    updateSearchParams({
+      page: null,
+    });
+  }, [category]);
+
+  const filteredProducts = useMemo(() => {
+    if (!query) {
+      return products;
+    }
+
+    return products.filter(product =>
+      product.name.toLowerCase().includes(query),
+    );
+  }, [products, query]);
 
   const sortedProducts = useMemo(() => {
-    const copy = [...products];
+    const copy = [...filteredProducts];
 
     switch (sortBy) {
       case 'alphabetically':
@@ -66,11 +103,11 @@ export const CatalogPage: React.FC = () => {
         return copy.sort((a, b) => a.price - b.price);
       case 'expensive':
         return copy.sort((a, b) => b.price - a.price);
-      case 'newest':
+      case 'age':
       default:
-        return copy.reverse();
+        return copy.sort((a, b) => b.year - a.year);
     }
-  }, [products, sortBy]);
+  }, [filteredProducts, sortBy]);
 
   const visibleProducts = useMemo(() => {
     if (itemsPerPage === 0) {
@@ -89,6 +126,40 @@ export const CatalogPage: React.FC = () => {
     ? categoryTitles[category] || 'Catalog'
     : 'Catalog';
 
+  if (!isLoading && filteredProducts.length === 0 && query) {
+    return (
+      <div className={styles.catalog_page}>
+        <Breadcrumbs category={category} />
+
+        <h1>{pageTitle}</h1>
+
+        <h2>There are no {category} matching the query</h2>
+      </div>
+    );
+  }
+
+  if (!isLoading && products.length === 0) {
+    return (
+      <div className={styles.catalog_page}>
+        <Breadcrumbs category={category} />
+
+        <h1>{pageTitle}</h1>
+
+        <h2>There are no {category} yet</h2>
+      </div>
+    );
+  }
+
+  if (hasError) {
+    return (
+      <div className={styles.catalog_page}>
+        <h2>Something went wrong</h2>
+
+        <button onClick={() => window.location.reload()}>Reload</button>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.catalog_page}>
       <Breadcrumbs category={category} />
@@ -104,7 +175,12 @@ export const CatalogPage: React.FC = () => {
             label="Sort by"
             value={sortBy}
             options={sortOptions}
-            onChange={setSortBy}
+            onChange={value =>
+              updateSearchParams({
+                sort: value === 'age' ? null : String(value),
+                page: null,
+              })
+            }
             customClass={styles.catalog_page__filter_sort}
           />
         </div>
@@ -114,7 +190,12 @@ export const CatalogPage: React.FC = () => {
             label="Items on page"
             value={itemsPerPage}
             options={perPageOptions}
-            onChange={setItemsPerPage}
+            onChange={value =>
+              updateSearchParams({
+                perPage: Number(value) === 0 ? null : String(value),
+                page: null,
+              })
+            }
             customClass={styles.catalog_page__filter_items}
           />
         </div>
@@ -145,7 +226,11 @@ export const CatalogPage: React.FC = () => {
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}
-              onPageChange={setCurrentPage}
+              onPageChange={page =>
+                updateSearchParams({
+                  page: page === 1 ? null : String(page),
+                })
+              }
             />
           )}
         </>

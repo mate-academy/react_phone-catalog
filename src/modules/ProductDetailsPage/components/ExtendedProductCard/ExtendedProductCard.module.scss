@@ -313,3 +313,53 @@
   flex-direction: column;
   gap: 16px;
 }
+
+.radioInput {
+  display: none;
+}
+
+.buttonLabel {
+  cursor: pointer;
+}
+
+.capacityLabel {
+  cursor: pointer;
+}
+
+.colorCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $elements-color;
+  display: block;
+  padding: 2px;
+  transition: border-color $transition-fast;
+}
+
+.colorCircleActive {
+  border: 2px solid $black;
+}
+
+.capacityButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 8px 12px;
+  border: 1px solid $icons-color;
+  background: $bg-color;
+  color: $black;
+  transition: all $transition-fast;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+
+  &:hover {
+    border-color: $black;
+  }
+}
+
+.capacityButtonActive {
+  background: $black;
+  color: $white;
+}

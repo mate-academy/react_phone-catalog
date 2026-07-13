@@ -1,5 +1,20 @@
+import { Link } from 'react-router-dom';
 import styles from './NotFoundPage.module.scss';
 
 export const NotFoundPage = () => {
-  return <h1 className={styles.not_found_page__title}>Page not found</h1>;
+  return (
+    <div className={styles.not_found_page}>
+      <h1 className={styles.not_found_page__title}>Page not found</h1>
+
+      <Link to="/" className={styles.not_found_page__link}>
+        Go Home
+      </Link>
+
+      <img
+        src="/img/page-not-found.png"
+        alt="Page not found img"
+        className={styles.not_found_page__img}
+      />
+    </div>
+  );
 };

@@ -55,12 +55,19 @@ export const HomePage: React.FC = () => {
   }
 
   if (hasError || !products) {
-    return <h2 className={styles.home_page__error_text}>Product not found</h2>;
+    return (
+      <div className={styles.error}>
+        <h2>Something went wrong</h2>
+
+        <button onClick={() => window.location.reload()}>Reload</button>
+      </div>
+    );
   }
 
   return (
     <div className={styles.home_page}>
-      <h1>Product Catalog</h1>
+      <h1 className={styles.home_page__hidden_text}>Product Catalog</h1>
+      <h2 className={styles.home_page__text}>Welcome to Nice Gadgets store!</h2>
       <BannerSlider />
       <Carousel title="Brand new models" cards={newModels} />
       <Categories />

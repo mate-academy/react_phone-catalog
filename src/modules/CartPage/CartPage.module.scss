@@ -5,6 +5,18 @@
   @include margins;
 
   user-select: none;
+
+  &__emptyContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__empty{
+    height: 300px;
+    width: 350px;
+    margin-top: 24px;
+  }
 }
 
 .cart_item__name_link {

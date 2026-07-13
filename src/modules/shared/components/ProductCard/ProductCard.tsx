@@ -27,7 +27,7 @@ export const ProductCard: React.FC<Prop> = ({
   ram,
   screen,
 }) => {
-  const productPath = id ? `/${category}/${id}` : '/';
+  const productPath = id ? `/product/${id}` : '/';
 
   return (
     <Link to={productPath} className={styles['product-card__link']}>
@@ -40,25 +40,27 @@ export const ProductCard: React.FC<Prop> = ({
 
         <h3 className={styles['product-card__title']}>{name}</h3>
 
-        <div className={styles['product-card__prices']}>
-          {priceDiscount ? (
-            <>
-              <span className={styles['product-card__price-discount']}>
-                ${priceDiscount}
-              </span>
-              <span className={styles['product-card__price-regular-strike']}>
+        <div className={styles['product-card__content']}>
+          <div className={styles['product-card__prices']}>
+            {priceDiscount ? (
+              <>
+                <span className={styles['product-card__price-discount']}>
+                  ${priceDiscount}
+                </span>
+                <span className={styles['product-card__price-regular-strike']}>
+                  ${priceRegular}
+                </span>
+              </>
+            ) : (
+              <span className={styles['product-card__price-regular']}>
                 ${priceRegular}
               </span>
-            </>
-          ) : (
-            <span className={styles['product-card__price-regular']}>
-              ${priceRegular}
-            </span>
-          )}
-        </div>
+            )}
+          </div>
 
-        <div className={styles['product-card__divider']} />
-        <ProductCardSpecs screen={screen} capacity={capacity} ram={ram} />
+          <div className={styles['product-card__divider']} />
+          <ProductCardSpecs screen={screen} capacity={capacity} ram={ram} />
+        </div>
         <ProductCardActions
           product={{
             id: id,

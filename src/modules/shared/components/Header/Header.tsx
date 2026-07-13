@@ -1,9 +1,10 @@
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoritesContext';
 import { BurgerMenu } from '../Burgermenu';
 import React, { useState } from 'react';
+import { Search } from '../Search';
 
 export const Header: React.FC = () => {
   const { cart } = useCart();
@@ -22,6 +23,15 @@ export const Header: React.FC = () => {
     isActive
       ? `${styles['header__icon-item']} ${styles['header__icon-item--active']} ${styles['header__hide-on-mobile']}`
       : `${styles['header__icon-item']} ${styles['header__hide-on-mobile']}`;
+
+  const location = useLocation();
+
+  const showSearch = [
+    '/phones',
+    '/tablets',
+    '/accessories',
+    '/favorites',
+  ].includes(location.pathname);
 
   return (
     <>
@@ -50,7 +60,9 @@ export const Header: React.FC = () => {
         </div>
 
         <div className={styles.header__icons}>
-          <NavLink to="/favourites" className={getIconClass}>
+          {showSearch && <Search />}
+
+          <NavLink to="/favorites" className={getIconClass}>
             <div className={styles['header__icon-wrapper']}>
               <img src="/img/icons/heart.svg" alt="Favourites" />
               {totalFavourites > 0 && (

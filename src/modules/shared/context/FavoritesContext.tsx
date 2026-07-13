@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 type FavoriteItem = {
   id: string;
@@ -20,7 +20,15 @@ const FavoritesContext = createContext<FavoritesContextType | undefined>(
 export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
+  const [favorites, setFavorites] = useState<FavoriteItem[]>(() => {
+    const saved = localStorage.getItem('favorites');
+
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
 
   const toggleFavorite = (item: FavoriteItem) => {
     setFavorites(prev => {

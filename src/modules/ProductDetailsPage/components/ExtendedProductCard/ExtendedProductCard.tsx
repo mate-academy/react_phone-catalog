@@ -126,137 +126,166 @@ export const ExtendedProductCard: React.FC<ProductDetail> = ({
     const formattedCapacity = newCapacity.toLowerCase();
     const newProductId = `${namespaceId}-${formattedCapacity}-${formattedColor}`;
 
-    navigate(`/${category}/${newProductId}`);
+    navigate(`/product/${newProductId}`);
   };
 
   return (
-    <div className={styles['extended-product-card']}>
-      <h2 className={styles['extended-product-card__title']}>{name}</h2>
-      <div className={styles['extended-product-card__main']}>
-        <div className={styles['extended-product-card__images']}>
-          <div className={styles['extended-product-card__thumbnails']}>
-            {images.map((img, index) => (
-              <button
-                key={img}
-                className={`${styles['extended-product-card__thumbnail-button']} ${activeImage === img ? styles['extended-product-card__thumbnail-button--active'] : ''}`}
-                onClick={() => setActiveImage(img)}
-              >
-                <img
-                  src={`/${img}`}
-                  alt={`Thumbnail ${index + 1}`}
-                  className={styles['extended-product-card__thumbnail-image']}
-                />
-              </button>
-            ))}
-          </div>
-
-          <div
-            className={styles['extended-product-card__main-image-container']}
-          >
-            <img
-              src={`/${activeImage}`}
-              alt={name}
-              className={styles['extended-product-card__main-image']}
-            />
-          </div>
-        </div>
-
-        <div className={styles['extended-product-card__specs-panel']}>
-          <div className={styles['extended-product-card__color-header-row']}>
-            <div className={styles['extended-product-card__specs-header']}>
-              Available colors
-            </div>
-            <div
-              className={`${styles['extended-product-card__specs-header']} ${styles['extended-product-card__specs-header--id']}`}
-            >
-              ID: {id}
-            </div>
-          </div>
-
-          <div className={styles['extended-product-card__options']}>
-            {colorsAvailable.map(colorName => (
-              <button
-                key={colorName}
-                className={`${styles['extended-product-card__color-button']} ${color === colorName ? styles['extended-product-card__color-button--active'] : ''}`}
-                onClick={() => handleVariantChange(colorName, capacity)}
-              >
-                <div
-                  className={styles['extended-product-card__color-swatch']}
-                  style={{ backgroundColor: colorMap[colorName] || colorName }}
-                ></div>
-              </button>
-            ))}
-          </div>
-
-          <div className={styles['extended-product-card__divider']}></div>
-          <div className={styles['extended-product-card__specs-header']}>
-            Select capacity
-          </div>
-          <div className={styles['extended-product-card__options']}>
-            {capacityAvailable.map(capacityName => (
-              <button
-                key={capacityName}
-                className={`${styles['extended-product-card__capacity-button']} ${capacity === capacityName ? styles['extended-product-card__capacity-button--active'] : ''}`}
-                onClick={() => handleVariantChange(color, capacityName)}
-              >
-                {capacityName}
-              </button>
-            ))}
-          </div>
-
-          <div className={styles['extended-product-card__divider']}></div>
-          <div className={styles['extended-product-card__prices']}>
-            {priceDiscount ? (
-              <>
-                <span
-                  className={styles['extended-product-card__price-discount']}
+    <>
+      <div className={styles['extended-product-card']}>
+        <h2 className={styles['extended-product-card__title']}>{name}</h2>
+        <div className={styles['extended-product-card__main']}>
+          <div className={styles['extended-product-card__images']}>
+            <div className={styles['extended-product-card__thumbnails']}>
+              {images.map((img, index) => (
+                <button
+                  key={img}
+                  className={`${styles['extended-product-card__thumbnail-button']} ${activeImage === img ? styles['extended-product-card__thumbnail-button--active'] : ''}`}
+                  onClick={() => setActiveImage(img)}
                 >
-                  ${priceDiscount}
-                </span>
+                  <img
+                    src={`/${img}`}
+                    alt={`Thumbnail ${index + 1}`}
+                    className={styles['extended-product-card__thumbnail-image']}
+                  />
+                </button>
+              ))}
+            </div>
+
+            <div
+              className={styles['extended-product-card__main-image-container']}
+            >
+              <img
+                src={`/${activeImage}`}
+                alt={name}
+                className={styles['extended-product-card__main-image']}
+              />
+            </div>
+          </div>
+
+          <div className={styles['extended-product-card__specs-panel']}>
+            <div className={styles['extended-product-card__color-header-row']}>
+              <div className={styles['extended-product-card__specs-header']}>
+                Available colors
+              </div>
+              <div
+                className={`${styles['extended-product-card__specs-header']} ${styles['extended-product-card__specs-header--id']}`}
+              >
+                ID: {id}
+              </div>
+            </div>
+
+            <div className={styles['extended-product-card__options']}>
+              {colorsAvailable.map(colorName => (
+                <label key={colorName} className={styles.buttonLabel}>
+                  <input
+                    type="radio"
+                    name="color"
+                    value={colorName}
+                    checked={color === colorName}
+                    disabled={color === colorName}
+                    onChange={() => handleVariantChange(colorName, capacity)}
+                    className={styles.radioInput}
+                  />
+
+                  <span
+                    aria-label={colorName}
+                    className={`${styles.colorCircle} ${
+                      color === colorName ? styles.colorCircleActive : ''
+                    }`}
+                    style={{
+                      backgroundColor: colorMap[colorName],
+                    }}
+                  />
+                </label>
+              ))}
+            </div>
+
+            <div className={styles['extended-product-card__divider']}></div>
+            <div className={styles['extended-product-card__specs-header']}>
+              Select capacity
+            </div>
+            <div className={styles['extended-product-card__options']}>
+              {capacityAvailable.map(capacityName => (
+                <label key={capacityName} className={styles.capacityLabel}>
+                  <input
+                    type="radio"
+                    name="capacity"
+                    value={capacityName}
+                    checked={capacity === capacityName}
+                    disabled={capacity === capacityName}
+                    onChange={() => handleVariantChange(color, capacityName)}
+                    className={styles.radioInput}
+                  />
+
+                  <span
+                    className={`${styles.capacityButton} ${
+                      capacity === capacityName
+                        ? styles.capacityButtonActive
+                        : ''
+                    }`}
+                  >
+                    {capacityName}
+                  </span>
+                </label>
+              ))}
+            </div>
+
+            <div className={styles['extended-product-card__divider']}></div>
+            <div className={styles['extended-product-card__prices']}>
+              {priceDiscount ? (
+                <>
+                  <span
+                    className={styles['extended-product-card__price-discount']}
+                  >
+                    ${priceDiscount}
+                  </span>
+                  <span
+                    className={
+                      styles['extended-product-card__price-regular-strike']
+                    }
+                  >
+                    ${priceRegular}
+                  </span>
+                </>
+              ) : (
                 <span
-                  className={
-                    styles['extended-product-card__price-regular-strike']
-                  }
+                  className={styles['extended-product-card__price-regular']}
                 >
                   ${priceRegular}
                 </span>
-              </>
-            ) : (
-              <span className={styles['extended-product-card__price-regular']}>
-                ${priceRegular}
-              </span>
-            )}
+              )}
+            </div>
+            <ProductCardActions
+              product={{
+                id: id,
+                name: name,
+                price: priceDiscount ? priceDiscount : priceRegular,
+                img: `/${images[0]}`,
+                category: category,
+              }}
+            />
+            <div className={styles['extended-product-card__tech-specs']}>
+              <TechSpecs arraySpecs={productSpecs} />
+            </div>
           </div>
-          <ProductCardActions
-            product={{
-              id: id,
-              name: name,
-              price: priceDiscount ? priceDiscount : priceRegular,
-              img: `/${images[0]}`,
-              category: category,
-            }}
-          />
-          <div className={styles['extended-product-card__tech-specs']}>
-            <TechSpecs arraySpecs={productSpecs} />
+        </div>
+        <div className={styles['extended-product-card__details']}>
+          <div className={styles['extended-product-card__about']}>
+            <h3 className={styles['extended-product-card__section-title']}>
+              About
+            </h3>
+            <div className={styles['extended-product-card__divider']}></div>
+            <Specs arraySpecs={description} />
+          </div>
+          <div className={styles['extended-product-card__tech-specs-section']}>
+            <h3 className={styles['extended-product-card__section-title']}>
+              Tech specs
+            </h3>
+            <div className={styles['extended-product-card__divider']}></div>
+            <TechSpecs arraySpecs={allSpecs} />
           </div>
         </div>
       </div>
-      <div className={styles['extended-product-card__details']}>
-        <div className={styles['extended-product-card__about']}>
-          <h3 className={styles['extended-product-card__section-title']}>
-            About
-          </h3>
-          <div className={styles['extended-product-card__divider']}></div>
-          <Specs arraySpecs={description} />
-        </div>
-        <div className={styles['extended-product-card__tech-specs-section']}>
-          <h3 className={styles['extended-product-card__section-title']}>
-            Tech specs
-          </h3>
-          <div className={styles['extended-product-card__divider']}></div>
-          <TechSpecs arraySpecs={allSpecs} />
-        </div>
-      </div>
-    </div>
+    </>
   );
 };

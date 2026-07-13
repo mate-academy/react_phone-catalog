@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // Додав Link
+import { useNavigate, Link } from 'react-router-dom';
 import styles from './CartPage.module.scss';
 import { useCart } from '../shared/context/CartContext';
 
 export const CartPage: React.FC = () => {
-  const { cart, removeFromCart, updateQuantity } = useCart();
+  const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
 
   const totalItems = useMemo(() => {
     return cart.reduce((acc, item) => acc + item.quantity, 0);
@@ -33,7 +33,14 @@ export const CartPage: React.FC = () => {
       <h1 className={styles.cart_page__title}>Cart</h1>
 
       {cart.length === 0 ? (
-        <h2>Cart is empty</h2>
+        <div className={styles.cart_page__emptyContainer}>
+          <h2>Your cart is empty</h2>
+          <img
+            src="img/cart-is-empty.png"
+            alt="Cart is empty"
+            className={styles.cart_page__empty}
+          />
+        </div>
       ) : (
         <div className={styles.cart_page__content}>
           <div className={styles.cart_page__list}>
@@ -46,7 +53,7 @@ export const CartPage: React.FC = () => {
                   ✕
                 </button>
 
-                <Link to={`/${item.category}/${item.id}`}>
+                <Link to={`/product/${item.id}`}>
                   <img
                     src={item.img}
                     alt={item.name}
@@ -55,7 +62,7 @@ export const CartPage: React.FC = () => {
                 </Link>
 
                 <Link
-                  to={`/${item.category}/${item.id}`}
+                  to={`/product/${item.id}`}
                   className={styles.cart_item__name_link}
                 >
                   <p className={styles.cart_item__name}>{item.name}</p>
@@ -90,7 +97,20 @@ export const CartPage: React.FC = () => {
               Total for {totalItems} items
             </p>
             <div className={styles.checkout_summary__divider}></div>
-            <button className={styles.checkout_summary__btn}>Checkout</button>
+            <button
+              className={styles.checkout_summary__btn}
+              onClick={() => {
+                const confirmOrder = window.confirm(
+                  `Checkout is not implemented yet. Do you want to clear the Cart?`,
+                );
+
+                if (confirmOrder) {
+                  clearCart();
+                }
+              }}
+            >
+              Checkout
+            </button>
           </div>
         </div>
       )}

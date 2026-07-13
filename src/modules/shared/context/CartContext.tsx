@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 export type CartItem = {
   id: string;
@@ -14,6 +14,7 @@ type CartContextType = {
   addToCart: (item: Omit<CartItem, 'quantity'>) => void;
   removeFromCart: (id: string) => void;
   updateQuantity: (id: string, amount: number) => void;
+  clearCart: () => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -21,7 +22,15 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    const saved = localStorage.getItem('cart');
+
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (product: Omit<CartItem, 'quantity'>) => {
     setCart(prevCart => {
@@ -37,6 +46,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
 
       return [...prevCart, { ...product, quantity: 1 }];
     });
+  };
+
+  const clearCart = () => {
+    setCart([]);
   };
 
   const removeFromCart = (id: string) => {
@@ -59,7 +72,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, updateQuantity }}
+      value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart }}
     >
       {children}
     </CartContext.Provider>

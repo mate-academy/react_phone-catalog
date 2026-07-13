@@ -1,0 +1,63 @@
+@use '../../styles/variables' as *;
+
+.search {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 0 12px;
+
+  &__clear {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 9px;
+      height: 9px;
+    }
+  }
+
+  &__input {
+    width: clamp(60px, 15vw, 250px);
+    height: 35px;
+    font-family: Mont, sans-serif;
+    padding: 0 12px;
+
+
+    overflow: hidden;
+    border: 1px solid $icons-color;
+    border-radius: 16px;
+
+    font-size: 14px;
+
+    transition: border-color 0.3s ease;
+
+    &::-webkit-search-cancel-button {
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $secondary-color;
+      color: $black;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    &::placeholder {
+      font-family: Mont, sans-serif;
+      font-weight: 600;
+      color: $secondary-color;
+    }
+  }
+}

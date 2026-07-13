@@ -19,7 +19,7 @@ export const FavoritesPage: React.FC = () => {
 
       {favorites.length === 0 ? (
         <h2 className={styles['favourites-page__empty']}>
-          Favourites is empty
+          Your favorites is empty
         </h2>
       ) : (
         <div className={styles['favourites-page__grid']}>
