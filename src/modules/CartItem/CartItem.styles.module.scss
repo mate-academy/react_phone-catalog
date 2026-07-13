@@ -1,0 +1,117 @@
+@use '../../utils/variables/variables.scss' as *;
+@use '../../utils/mixin/mixin.scss' as *;
+
+.cartItem {
+  width: 100%;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding: 16px;
+
+  border: 1px solid var(--elements-color);
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+  }
+}
+
+.cartItemHead {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @include on-tablet {
+    flex: 1;
+  }
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: none;
+  border: none;
+
+  cursor: pointer;
+}
+
+.image {
+  width: 66px;
+  height: 66px;
+  flex-shrink: 0;
+
+  object-fit: contain;
+  display: block;
+}
+
+.cartItemName {
+  flex: 1;
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.cartItemBot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-shrink: 0;
+
+  @include on-tablet {
+    width: auto;
+    gap: 24px;
+  }
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+}
+
+.counterButton {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--icons-color);
+  background: var(--white-color);
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    border-color: var(--primary-color);
+  }
+
+  &:disabled {
+    border-color: var(--elements-color);
+    cursor: default;
+  }
+}
+
+.quantity {
+  min-width: 32px;
+  text-align: center;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--primary-color);
+}

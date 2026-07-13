@@ -1,0 +1,96 @@
+@use '../../utils/mixin/mixin.scss' as *;
+@use '../../utils/variables/variables.scss' as *;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+
+  gap: 32px;
+
+  padding: 32px 16px;
+
+  border-top: 1px solid var(--elements-color);
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 32px 32px;
+  }
+
+  @include on-desktop {
+    padding: 32px 152px;
+  }
+}
+
+.nav {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+
+    align-items: center;
+
+    gap: 64px;
+  }
+}
+
+.footerLink {
+  text-decoration: none;
+
+  color: var(--secondary-color);
+
+  font-size: 12px;
+  font-weight: 800;
+
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  @include on-tablet {
+    justify-content: flex-end;
+  }
+}
+
+.backText {
+  color: var(--secondary-color);
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.backToUp {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--icons-color);
+
+  background: none;
+
+  cursor: pointer;
+
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: var(--primary-color);
+  }
+}

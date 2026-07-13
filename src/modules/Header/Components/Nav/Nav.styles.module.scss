@@ -1,0 +1,66 @@
+@use '../../../../utils/mixin/mixin.scss' as *;
+@use '../../../../utils/variables/variables.scss' as *;
+
+.nav {
+  display: flex;
+}
+
+.desktop {
+  align-items: center;
+  gap: 32px;
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.mobile {
+  flex-direction: column;
+  align-items: center;
+
+  gap: 24px;
+
+  padding-top: 24px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+
+  text-decoration: none;
+
+  color: var(--secondary-color);
+
+  font-size: 12px;
+  font-weight: 800;
+
+  border-bottom: 3px solid transparent;
+
+  transition:
+    color 0.3s,
+    border-color 0.3s;
+
+  &:hover {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+  }
+}
+
+.desktop .link {
+  height: 48px;
+
+  @include on-desktop {
+    height: 64px;
+  }
+}
+
+.mobile .link {
+  height: auto;
+
+  padding-bottom: 8px;
+}
+
+.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}

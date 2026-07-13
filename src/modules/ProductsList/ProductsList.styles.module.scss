@@ -1,0 +1,18 @@
+@use '../../utils/variables/variables.scss' as *;
+@use '../../utils/mixin/mixin.scss' as *;
+
+.products {
+  display: grid;
+  column-gap: 16px;
+  row-gap: 40px;
+
+  grid-template-columns: 1fr;
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

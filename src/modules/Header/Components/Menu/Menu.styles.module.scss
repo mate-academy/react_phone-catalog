@@ -1,0 +1,117 @@
+@use '../../../../utils/variables/variables.scss' as *;
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+
+  height: 100vh;
+  background-color: var(--white-color);
+
+  display: flex;
+  flex-direction: column;
+
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+}
+
+.open {
+  transform: translateX(0);
+}
+
+.top {
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid var(--elements-color);
+}
+
+.logoWrapper {
+  padding: 13px 0 13px 16px;
+}
+
+.close {
+  width: 48px;
+  height: 48px;
+
+  border: none;
+  border-left: 1px solid var(--elements-color);
+  background: none;
+
+  cursor: pointer;
+}
+
+.navWrapper {
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+
+  padding-top: 24px;
+}
+
+.bottom {
+  height: 64px;
+
+  display: flex;
+}
+
+.favoritesBag,
+.favoritesHeart {
+  flex: 1;
+
+  border: none;
+  background: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-top: 1px solid var(--elements-color);
+  border-bottom: 3px solid transparent;
+}
+
+.favoritesBag {
+  border-left: 1px solid var(--elements-color);
+}
+
+.active {
+  border-bottom-color: var(--primary-color);
+}
+
+.iconWrapper {
+  position: relative;
+
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+
+  min-width: 14px;
+  height: 14px;
+  padding: 0 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--white-color);
+  border-radius: 50%;
+  background-color: #eb5757;
+
+  color: var(--white-color);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+}

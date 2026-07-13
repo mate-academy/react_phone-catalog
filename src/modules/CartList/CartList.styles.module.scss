@@ -1,0 +1,8 @@
+@use '../../utils/variables/variables.scss' as *;
+@use '../../utils/mixin/mixin.scss' as *;
+
+.cartItems {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

@@ -1,0 +1,47 @@
+@use './styles/theme.scss';
+
+@font-face {
+  font-family: 'Mont';
+
+  src: url('/public/fonts/Mont-Regular.otf') format('opentype');
+
+  font-weight: 400;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+
+  src: url('/public/fonts/Mont-SemiBold.otf') format('opentype');
+
+  font-weight: 600;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+
+  src: url('/public/fonts/Mont-Bold.otf') format('opentype');
+
+  font-weight: 700;
+
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Mont', sans-serif;
+
+  background-color: var(--background-color);
+  color: var(--primary-color);
+
+  transition:
+    background-color .3s,
+    color .3s;
+}

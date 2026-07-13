@@ -1,0 +1,46 @@
+@use '../../utils/variables/variables.scss' as *;
+@use '../../utils/mixin/mixin.scss' as *;
+
+.switch {
+  width: 36px;
+  height: 20px;
+
+  padding: 2px;
+
+  display: flex;
+  align-items: center;
+
+  border: none;
+  border-radius: 999px;
+
+  background-color: var(--elements-color);
+
+  cursor: pointer;
+
+  transition: background-color 0.3s;
+}
+
+.thumb {
+  width: 16px;
+  height: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background-color: var(--white-color);
+
+  font-size: 14px;
+
+  transform: translateX(0);
+
+  transition:
+    transform 0.3s,
+    background-color 0.3s;
+}
+
+.dark {
+  transform: translateX(16px);
+}

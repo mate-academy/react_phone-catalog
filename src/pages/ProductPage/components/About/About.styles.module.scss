@@ -1,0 +1,41 @@
+@use '../../../../utils/variables/variables.scss' as *;
+
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.aboutTitle {
+  margin: 0;
+  padding-bottom: 16px;
+
+  border-bottom: 1px solid var(--elements-color);
+
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--primary-color);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionTitle {
+  margin: 0;
+
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.text {
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  color: var(--secondary-color);
+}

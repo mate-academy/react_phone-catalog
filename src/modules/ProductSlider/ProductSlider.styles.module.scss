@@ -1,0 +1,97 @@
+@use '../../utils/variables/variables.scss' as *;
+@use '../../utils/mixin/mixin.scss' as *;
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 22px;
+  letter-spacing: 0%;
+  font-weight: 800;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+}
+
+.controls {
+  display: flex;
+
+  gap: 16px;
+}
+
+.viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.products {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+
+  transition: transform 0.3s;
+}
+
+.product {
+  min-width: 0;
+
+  flex: 0 0 calc((100% - 16px) / 1.5);
+
+  @include on-tablet {
+    flex-basis: calc((100% - 32px) / 2.5);
+  }
+
+  @include on-desktop {
+    flex-basis: calc((100% - 48px) / 4);
+  }
+}
+
+.arrowLeft,
+.arrowRight {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: none;
+  border: 1px solid var(--icons-color);
+  border-radius: 50%;
+  cursor: pointer;
+
+  transition:
+    border-color 0.3s,
+    opacity 0.3s;
+
+  &:hover:not(:disabled) {
+    border-color: var(--primary-color);
+  }
+
+  &:disabled {
+    border-color: var(--elements-color);
+    cursor: default;
+  }
+
+  &:disabled svg {
+    opacity: 0.3;
+  }
+}
+
+.arrowLeft svg,
+.arrowRight svg {
+  width: 16px;
+  height: 16px;
+}

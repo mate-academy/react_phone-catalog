@@ -1,0 +1,105 @@
+@use '../../utils/variables/variables.scss' as *;
+@use '../../utils/mixin/mixin.scss' as *;
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+
+  gap: 24px;
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include on-tablet {
+    gap: 40px;
+    padding-top: 40px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.models {
+  font-size: 14px;
+  color: var(--secondary-color);
+  font-weight: 600;
+  margin: 0;
+}
+
+.title {
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 8px;
+  margin-top: 40px;
+  max-width: 100%;
+}
+
+.paginationButtons {
+  width: 32px;
+  height: 32px;
+  background: none;
+
+  border: 1px solid var(--icons-color);
+  cursor: pointer;
+
+  transition:
+    border-color 0.3s,
+    opacity 0.3s;
+
+  &:hover:not(:disabled) {
+    border-color: var(--primary-color);
+  }
+
+  &:disabled {
+    border-color: var(--elements-color);
+    cursor: default;
+  }
+}
+
+.activePage {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border-color: var(--primary-color);
+}
+
+.sortDropdown {
+  width: 136px;
+
+  @include on-tablet {
+    width: 187px;
+  }
+
+  @include on-desktop {
+    width: 176px;
+  }
+}
+
+.perPageDropdown {
+  width: 136px;
+
+  @include on-tablet {
+    width: 128px;
+  }
+
+  @include on-desktop {
+    width: 128px;
+  }
+}
