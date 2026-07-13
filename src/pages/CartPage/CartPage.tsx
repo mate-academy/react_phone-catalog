@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { CartList } from '../../modules/CartList/CartList';
 import { useCart } from '../../context/CartContext';
 import { CartSummary } from '../../modules/CartSummary';
+import emptyCart from '../../../public/img/cart-is-empty.png';
 
 export const CartPage = () => {
   const { cart } = useCart();
@@ -24,11 +25,7 @@ export const CartPage = () => {
 
       {cart.length === 0 ? (
         <div className={styles.emptyState}>
-          <img
-            src={`${import.meta.env.BASE_URL}img/cart-is-empty.png`}
-            alt="Empty cart"
-            className={styles.emptyImage}
-          />
+          <img src={emptyCart} alt="Empty cart" className={styles.emptyImage} />
 
           <h2 className={styles.emptyTitle}>Your cart is empty</h2>
 
