@@ -63,7 +63,7 @@ export const CartPage = () => {
             <div className={styles.totalPriceTextSecton}>
               <h2 className={styles.totalPriceTitle}>${totalPrice}</h2>
               <p className={styles.totalPriceText}>
-                {t('Total')} {totalQuantity} {t('items')}
+                {t('Total')} {totalQuantity} {t('Items')}
               </p>
             </div>
             <button

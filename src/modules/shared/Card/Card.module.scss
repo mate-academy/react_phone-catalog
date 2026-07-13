@@ -136,6 +136,8 @@
 }
 
 .add {
+  @include buttons;
+
   cursor: pointer;
 
   width: 100%;
@@ -148,8 +150,6 @@
   background-color: #313237;
 
   transition: all 0.3s ease;
-
-  @include buttons;
 
   &:hover {
     box-shadow: 0 3px 13px 0 #17203166;
