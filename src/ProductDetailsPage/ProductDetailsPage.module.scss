@@ -436,16 +436,60 @@ font-weight: 800;
     font-weight: 500;
     line-height: 21px;
     text-decoration: none;
-    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+    transition: border-color 0.2s ease, color 0.2s ease,
+    background-color 0.2s ease;
 
-    :hover {
+    &:hover {
       border-color: #313237;
     }
 
-    :active {
+        &.capacityLinkActive {
       border-color: #313237;
       background: #313237;
       color: #fff;
     }
   }
 }
+
+.colors {
+  display: flex;
+}
+
+.colorsBlock {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .colorCircle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #e2e6e9;
+    border-radius: 50%;
+    box-sizing: border-box;
+    background-color: #fff;
+    text-decoration: none;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: #b4bdc3;
+    }
+
+     &.activeColorLink {
+      border-color: #313237;
+    }
+  }
+
+ .colorCircle {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+

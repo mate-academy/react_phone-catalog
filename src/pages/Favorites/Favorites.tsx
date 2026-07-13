@@ -10,7 +10,7 @@ export const Favorites: React.FC = () => {
   if (favorites.length === 0) {
     return (
       <div>
-        <p className={styles.emptyTex}>Your cart is empty</p>
+        <p className={styles.emptyTex}>Favorites is empty</p>
       </div>
     );
   }

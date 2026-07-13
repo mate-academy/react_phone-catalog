@@ -124,16 +124,10 @@ export const ProductDetailsPage = () => {
   };
 
   const getColorValue = (color: string) => {
-    if (!color) {
-      return 'transparent';
-    }
-
     const preparedColor = color.toLowerCase().replace(/[\s-]+/g, '_');
 
     return productColors[preparedColor] || color;
   };
-
-  console.log(colorsAvailable);
 
   return (
     <div className={styles.containerPhones}>

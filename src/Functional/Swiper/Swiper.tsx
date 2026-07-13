@@ -63,7 +63,7 @@ export const UseSwiper: React.FC = () => {
             clickable: true,
           }}
           breakpoints={{
-            320: { slidesPerView: 2, spaceBetween: 16 },
+            320: { slidesPerView: 1, spaceBetween: 16 },
             640: { slidesPerView: 3, spaceBetween: 16 },
             1200: { slidesPerView: 4, spaceBetween: 16 },
           }}
