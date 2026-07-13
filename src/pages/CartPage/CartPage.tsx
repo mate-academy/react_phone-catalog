@@ -25,7 +25,7 @@ export const CartPage = () => {
       {cart.length === 0 ? (
         <div className={styles.emptyState}>
           <img
-            src="/img/cart-is-empty.png"
+            src={`${import.meta.env.BASE_URL}img/cart-is-empty.png`}
             alt="Empty cart"
             className={styles.emptyImage}
           />
