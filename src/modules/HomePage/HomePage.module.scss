@@ -1,0 +1,24 @@
+@import '../../styles/typography';
+
+.homePage {
+  padding-top: 56px;
+
+  @media (max-width: 639px) {
+    margin-bottom: 8px;
+    padding-top: 24px;
+  }
+}
+
+.title {
+  @include h1;
+
+  margin-bottom: 56px;
+
+  @media (max-width: 1199px) {
+    margin-bottom: 32px;
+  }
+
+  @media (max-width: 639px) {
+    margin-bottom: 24px;
+  }
+}

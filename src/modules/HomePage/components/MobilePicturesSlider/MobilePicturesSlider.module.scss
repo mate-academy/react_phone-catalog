@@ -1,0 +1,68 @@
+.sliderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: calc(100% + 32px);
+  margin-right: -16px;
+  margin-bottom: 56px;
+  margin-left: -16px;
+}
+
+.window {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+
+  overflow-x: auto;
+
+  width: 100%;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.tape {
+  display: flex;
+  width: 100%;
+}
+
+.banner {
+  scroll-snap-align: start;
+
+  flex-shrink: 0;
+
+  aspect-ratio: 1 / 1;
+  width: 100%;
+
+  object-fit: cover;
+}
+
+.position {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.positionButton {
+  cursor: pointer;
+
+  position: relative;
+
+  width: 14px;
+  height: 4px;
+  border: none;
+
+  background-color: #e2e6e9;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+  }
+
+  &:hover {
+    background-color: #b4bdc3;
+  }
+}
