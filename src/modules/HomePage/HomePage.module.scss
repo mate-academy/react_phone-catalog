@@ -1,10 +1,10 @@
 .homePage {
-  padding-top: 56px;
+  padding-top: 24px;
 }
 
 .title {
   max-width: 1136px;
-  margin: 0 auto 56px;
+  margin: 0 auto 24px;
   padding: 0 16px;
 
   font-family: Mont, sans-serif;
@@ -14,13 +14,28 @@
   color: #313237;
 
   @media (min-width: 640px) {
+    margin-bottom: 32px;
     padding: 0 24px;
 
     font-size: 48px;
     line-height: 56px;
+    letter-spacing: -0.01em;
   }
 
   @media (min-width: 1200px) {
+    margin-bottom: 56px;
     padding: 0;
+  }
+}
+
+@media (min-width: 640px) {
+  .homePage {
+    padding-top: 32px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .homePage {
+    padding-top: 56px;
   }
 }

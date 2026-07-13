@@ -9,7 +9,7 @@
   background-color: #fff;
   box-shadow: 0 1px 0 #e2e6e9;
 
-  @media (min-width: 640px) {
+  @media (min-width: 1200px) {
     height: 64px;
   }
 }
@@ -25,7 +25,7 @@
   height: 48px;
   padding: 13px 16px;
 
-  @media (min-width: 640px) {
+  @media (min-width: 1200px) {
     width: 128px;
     height: 64px;
     padding: 18px 24px;
@@ -39,7 +39,7 @@
   width: 64px;
   height: 22px;
 
-  @media (min-width: 640px) {
+  @media (min-width: 1200px) {
     width: 80px;
     height: 28px;
   }
@@ -61,7 +61,7 @@
   top: -5px;
   left: 32px;
 
-  @media (min-width: 640px) {
+  @media (min-width: 1200px) {
     width: 18px;
     height: 18px;
     top: -5px;
@@ -74,10 +74,15 @@
 
   @media (min-width: 640px) {
     display: flex;
-    gap: 64px;
-    height: 64px;
+    gap: 32px;
+    height: 48px;
     margin-left: 24px;
     margin-right: 24px;
+  }
+
+  @media (min-width: 1200px) {
+    gap: 64px;
+    height: 64px;
   }
 }
 
@@ -87,7 +92,7 @@
   display: flex;
   align-items: center;
   width: max-content;
-  height: 64px;
+  height: 48px;
   padding: 0;
 
   font-family: Mont, sans-serif;
@@ -100,6 +105,10 @@
   text-transform: uppercase;
 
   transition: color 0.3s;
+
+  @media (min-width: 1200px) {
+    height: 64px;
+  }
 }
 
 .navLink:hover,
@@ -122,8 +131,12 @@
 
   @media (min-width: 640px) {
     display: flex;
-    height: 64px;
+    height: 48px;
     margin-left: auto;
+  }
+
+  @media (min-width: 1200px) {
+    height: 64px;
   }
 }
 
@@ -134,8 +147,8 @@
   align-items: center;
   justify-content: center;
 
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
 
   color: #313237;
   box-shadow: -1px 0 0 #e2e6e9;
@@ -143,6 +156,11 @@
   transition:
     color 0.3s,
     background-color 0.3s;
+
+  @media (min-width: 1200px) {
+    width: 64px;
+    height: 64px;
+  }
 }
 
 .actionLink:hover {
@@ -225,7 +243,7 @@
   text-decoration: none;
 }
 
-.mobileActionLink + .mobileActionLink {
+.mobileActionLink+.mobileActionLink {
   border-left: 1px solid #e2e6e9;
 }
 
@@ -244,4 +262,34 @@
   display: block;
   width: 16px;
   height: 16px;
+}
+
+.badge {
+  position: absolute;
+  top: 9px;
+  left: 25px;
+
+  display: grid;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  place-items: center;
+
+  color: #fff;
+  background-color: #eb5757;
+  border: 1px solid #fff;
+  border-radius: 50%;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  @media (min-width: 1200px) {
+    top: 17px;
+    left: 33px;
+  }
+}
+
+.mobileActionLink .badge {
+  top: 14px;
+  left: calc(50% + 5px);
 }
