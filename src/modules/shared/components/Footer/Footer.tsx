@@ -13,7 +13,9 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.footer__logo}>
         <Link to="/">
-          <img src={`${import.meta.env.BASE_URL}img/Logo.svg" alt="Nice Gadgets Logo`} />
+          <img
+            src={`${import.meta.env.BASE_URL}img/Logo.svg`} alt="Nice Gadgets Logo"
+          />
         </Link>
       </div>
 
@@ -38,7 +40,10 @@ export const Footer = () => {
         <button onClick={scrollToTop} className={styles['footer__back-to-top']}>
           <span className={styles['footer__back-text']}>Back to top</span>
           <div className={styles['footer__arrow-circle']}>
-            <img src={`${import.meta.env.BASE_URL}img/icons/arrow_up_black.svg`} alt="Arrow Up" />
+            <img
+              src={`${import.meta.env.BASE_URL}img/icons/arrow_up_black.svg`}
+              alt="Arrow Up"
+            />
           </div>
         </button>
       </div>

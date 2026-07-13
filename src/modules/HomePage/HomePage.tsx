@@ -59,7 +59,12 @@ export const HomePage: React.FC = () => {
       <div className={styles.error}>
         <h2>Something went wrong</h2>
 
-        <button onClick={() => window.location.reload()}>Reload</button>
+        <button
+          className={styles.home_page__reload_button}
+          onClick={() => window.location.reload()}
+        >
+          Reload
+        </button>
       </div>
     );
   }

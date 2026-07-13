@@ -99,7 +99,10 @@ export const BannerSlider: React.FC = () => {
                       srcSet={slide.imgMobile}
                     />
                   )}
-                  <img src={`${import.meta.env.BASE_URL}${slide.img}`} alt={`Banner ${slide.id}`} />
+                  <img
+                    src={`${import.meta.env.BASE_URL}${slide.img}`}
+                    alt={`Banner ${slide.id}`}
+                  />
                 </picture>
               </div>
             ))}

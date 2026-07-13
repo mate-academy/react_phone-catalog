@@ -1,5 +1,6 @@
 @use '../shared/styles/mixins' as *;
 @use '../shared/styles/variables' as *;
+@use '../shared/styles/fonts';
 
 .home_page {
   @include margins;
@@ -9,6 +10,14 @@
   display: flex;
   justify-content: center;
   padding: 40px 0;
+}
+
+.home_page__reload_button {
+  border: 1px solid $secondary-color;
+  background-color: $secondary-color;
+  color: white;
+  font-family: Mont, sans-serif;
+  margin-right: 24px;
 }
 
 .home_page__error_text {

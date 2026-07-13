@@ -71,6 +71,10 @@
     top: 13%;
     left: 5%;
     object-fit: contain;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 }
 

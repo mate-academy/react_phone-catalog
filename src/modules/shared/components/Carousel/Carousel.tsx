@@ -48,14 +48,20 @@ export const Carousel: React.FC<Props> = ({ cards, title }) => {
             onClick={() => scroll('left')}
             disabled={!canScrollLeft}
           >
-            <img src={`${import.meta.env.BASE_URL}img/icons/arrow-to-left.svg`} alt="Back"></img>
+            <img
+              src={`${import.meta.env.BASE_URL}img/icons/arrow-to-left.svg`}
+              alt="Back"
+            ></img>
           </button>
           <button
             className={styles.carousel__button}
             onClick={() => scroll('right')}
             disabled={!canScrollRight}
           >
-            <img src={`${import.meta.env.BASE_URL}img/icons/arrow-to-right.svg`} alt="Forward"></img>
+            <img
+              src={`${import.meta.env.BASE_URL}img/icons/arrow-to-right.svg`}
+              alt="Forward"
+            ></img>
           </button>
         </div>
       </div>

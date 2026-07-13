@@ -21,7 +21,7 @@ export const Breadcrumbs: React.FC<Props> = ({
     <nav className={styles.breadcrumbs}>
       <Link to="/" className={styles.breadcrumbs__home_link}>
         <img
-          src="/img/icons/home.svg"
+          src={`${import.meta.env.BASE_URL}img/icons/home.svg`}
           alt="Home"
           className={styles.breadcrumbs__icon}
         />
@@ -30,7 +30,7 @@ export const Breadcrumbs: React.FC<Props> = ({
       {pageName && (
         <>
           <img
-            src="/img/icons/arrow-to-right.svg"
+            src={`${import.meta.env.BASE_URL}img/icons/arrow-to-right.svg`}
             alt=">"
             className={styles.breadcrumbs__separator}
           />
