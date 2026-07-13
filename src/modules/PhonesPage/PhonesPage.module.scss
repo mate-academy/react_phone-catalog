@@ -1,0 +1,75 @@
+// Define global variables for consistency
+$primary-color: #0070f3;
+$hover-color: #005bb5;
+$disabled-color: #ccc;
+$error-color: red;
+$border-radius: 8px;
+$spacing: 1rem;
+
+// Main container
+.phonesPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing;
+}
+
+// Controls section
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing;
+  margin-bottom: $spacing;
+
+  label {
+    font-weight: bold;
+
+    select {
+      margin-left: 0.5rem;
+      padding: 0.2rem;
+    }
+  }
+}
+
+// Pagination section
+// General button styles (Defined first)
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #0070f3;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+// Disabled button styling (Comes after general styles)
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+// Pagination section (Specific rules come after general button styles)
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #0070f3;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: #005bb5;
+    }
+  }
+}

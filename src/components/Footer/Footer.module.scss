@@ -1,0 +1,101 @@
+.footer {
+  height: 64px;
+  width: 100%; /* Matches the header height */
+  padding: 16px; /* Consistent padding */
+  background-color: #e2e6e9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  display: flex;
+  align-items: center;
+  position: fixed;
+  justify-content: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  gap: 16px; /* Space between logo, GitHub, and Back to top button */
+  border-radius: 5px;
+  border: 1px solid #9747ff;
+}
+
+.footerContent {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 40px;
+  -webkit-filter: invert(1);
+  filter: invert(1);
+
+  justify-content: flex-start;
+  margin-right: 24px;
+  margin-left: 16px;
+  align-self: flex-start;
+}
+
+.middleSection {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex: 1;
+}
+
+.middleSection a {
+  text-decoration: none;
+  color: #0070f3;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #005bb5;
+  }
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+}
+
+.githubLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #0070f3;
+  font-size: 1rem;
+  gap: 8px;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #005bb5;
+  }
+}
+
+.backToTop {
+  background-color: #0070f3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #005bb5;
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    gap: 8px;
+    height: auto;
+  }
+  .middleSection {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
