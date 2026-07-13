@@ -196,7 +196,7 @@ export const Header = () => {
             }
             onClick={closeMenu}
           >
-            home
+            {t('Home')}
           </NavLink>
           <NavLink
             to="/phones"
@@ -207,7 +207,7 @@ export const Header = () => {
             }
             onClick={closeMenu}
           >
-            phones
+            {t('Phones')}
           </NavLink>
           <NavLink
             to="/tablets"
@@ -218,7 +218,7 @@ export const Header = () => {
             }
             onClick={closeMenu}
           >
-            tablets
+            {t('Tablets')}
           </NavLink>
           <NavLink
             to="/accessories"
@@ -229,7 +229,7 @@ export const Header = () => {
             }
             onClick={closeMenu}
           >
-            accessories
+            {t('Accessories')}
           </NavLink>
         </nav>
 
