@@ -5,7 +5,7 @@
   --slider-button-width: 32px;
   --slider-gap: 16px;
   --slider-dots-offset: 8px;
-  --next-section-offset: 88px;
+  --next-section-offset: 56px;
 
   box-sizing: border-box;
 
@@ -16,14 +16,14 @@
 
   @media (min-width: 640px) {
     --slider-gap: 19px;
-    --next-section-offset: 96px;
+    --next-section-offset: 64px;
 
     padding: 0 24px;
   }
 
   @media (min-width: 1200px) {
     --slider-gap: 16px;
-    --next-section-offset: 112px;
+    --next-section-offset: 80px;
 
     padding: 0;
   }

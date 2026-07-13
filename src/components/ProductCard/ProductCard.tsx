@@ -1,19 +1,37 @@
 import { Link } from 'react-router-dom';
 
 import { Product } from '../../types/Product';
+import { useStore } from '../../context/StoreContext';
 
 import styles from './ProductCard.module.scss';
 
 type Props = {
   product: Product;
+  className?: string;
 };
 
-export const ProductCard = ({ product }: Props) => {
+export const ProductCard = ({ product, className = '' }: Props) => {
+  const { cart, favorites, addToCart, toggleFavorite } = useStore();
+
   const imageSrc = `${import.meta.env.BASE_URL}${product.image}`;
+
   const heartIconSrc = `${import.meta.env.BASE_URL}img/icons/heart.svg`;
 
+  const heartFilledIconSrc = `${import.meta.env.BASE_URL}img/icons/heart-filled.svg`;
+
+  const isInCart = Boolean(cart[product.id]);
+  const isFavorite = favorites.includes(product.id);
+
+  const handleAddToCart = () => {
+    addToCart(product.id);
+  };
+
+  const handleToggleFavorite = () => {
+    toggleFavorite(product.id);
+  };
+
   return (
-    <article className={styles.card}>
+    <article className={`${styles.card} ${className}`}>
       <Link to={`/product/${product.itemId}`} className={styles.imageLink}>
         <img src={imageSrc} alt={product.name} className={styles.image} />
       </Link>
@@ -24,6 +42,7 @@ export const ProductCard = ({ product }: Props) => {
 
       <div className={styles.priceBlock}>
         <span className={styles.price}>${product.price}</span>
+
         <span className={styles.fullPrice}>${product.fullPrice}</span>
       </div>
 
@@ -47,16 +66,30 @@ export const ProductCard = ({ product }: Props) => {
       </dl>
 
       <div className={styles.actions}>
-        <button type="button" className={styles.addButton}>
-          Add to cart
+        <button
+          type="button"
+          className={`${styles.addButton} ${
+            isInCart ? styles.addedButton : ''
+          }`}
+          onClick={handleAddToCart}
+        >
+          {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
 
         <button
           type="button"
-          className={styles.favoriteButton}
-          aria-label="Add to favorites"
+          className={`${styles.favoriteButton} ${
+            isFavorite ? styles.favoriteButtonActive : ''
+          }`}
+          aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+          aria-pressed={isFavorite}
+          onClick={handleToggleFavorite}
         >
-          <img src={heartIconSrc} alt="" className={styles.heartIcon} />
+          <img
+            src={isFavorite ? heartFilledIconSrc : heartIconSrc}
+            alt=""
+            className={styles.heartIcon}
+          />
         </button>
       </div>
     </article>

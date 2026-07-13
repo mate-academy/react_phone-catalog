@@ -39,3 +39,24 @@
     padding-top: 56px;
   }
 }
+
+.message {
+  display: grid;
+  min-height: 240px;
+  padding: 0 16px;
+  place-content: center;
+  gap: 16px;
+
+  text-align: center;
+  color: #89939a;
+}
+
+.message button {
+  height: 40px;
+  padding: 0 24px;
+
+  color: #fff;
+  background-color: #313237;
+  border: 0;
+  cursor: pointer;
+}

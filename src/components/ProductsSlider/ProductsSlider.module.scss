@@ -1,0 +1,143 @@
+.slider {
+  --card-width: 212px;
+  --card-height: 439px;
+  --section-bottom-offset: 56px;
+  --page-padding: 16px;
+
+  box-sizing: border-box;
+
+  width: 100%;
+  max-width: 1136px;
+  margin: 0 auto var(--section-bottom-offset);
+  padding-left: var(--page-padding);
+  overflow: hidden;
+
+  @media (min-width: 640px) {
+    --card-width: 237px;
+    --card-height: 512px;
+    --section-bottom-offset: 64px;
+    --page-padding: 24px;
+
+    padding-right: var(--page-padding);
+  }
+
+  @media (min-width: 1200px) {
+    --card-width: 272px;
+    --card-height: 506px;
+    --section-bottom-offset: 80px;
+    --page-padding: 0px;
+
+    padding: 0;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 24px;
+  padding-right: var(--page-padding);
+
+  @media (min-width: 1200px) {
+    padding-right: 0;
+  }
+}
+
+.title {
+  max-width: 136px;
+  margin: 0;
+
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+  letter-spacing: 0;
+  color: #313237;
+
+  @media (min-width: 640px) {
+    max-width: none;
+
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex: 0 0 80px;
+  gap: 16px;
+
+  width: 80px;
+  height: 32px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  background-color: #fff;
+  border: 1px solid #b4bdc3;
+  cursor: pointer;
+
+  transition: border-color 0.3s;
+}
+
+.button:disabled {
+  border-color: #e2e6e9;
+  cursor: default;
+}
+
+.button:hover:not(:disabled) {
+  border-color: #313237;
+}
+
+.buttonIcon {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.button:disabled .buttonIcon {
+  opacity: 0.35;
+}
+
+.viewport {
+  width: calc(100% + var(--page-padding));
+  overflow: auto hidden;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.track {
+  display: flex;
+  gap: 16px;
+
+  width: max-content;
+}
+
+.slide {
+  flex: 0 0 var(--card-width);
+
+  width: var(--card-width);
+  height: var(--card-height);
+
+  scroll-snap-align: start;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+}
