@@ -1,0 +1,93 @@
+.slider {
+  box-sizing: border-box;
+
+  width: 100%;
+  max-width: 1136px;
+  margin: 0 auto 112px;
+  padding: 0 16px;
+
+  @media (min-width: 640px) {
+    padding: 0 24px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0;
+  }
+}
+
+.sliderRow {
+  display: block;
+}
+
+.arrowButton {
+  display: none;
+}
+
+.banner {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+
+  width: 80px;
+  height: 24px;
+  margin: 8px auto 0;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  margin: 10px 0 0;
+  padding: 0;
+
+  background-color: #e2e6e9;
+  border: 0;
+  cursor: pointer;
+}
+
+.dotActive {
+  background-color: #313237;
+}
+
+@media (min-width: 640px) {
+  .sliderRow {
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr) 32px;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .arrowButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 400px;
+    padding: 0;
+
+    background-color: #fff;
+    border: 1px solid #b4bdc3;
+    cursor: pointer;
+  }
+
+  .arrowIcon {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  .banner {
+    height: 400px;
+    aspect-ratio: auto;
+
+    object-fit: cover;
+  }
+}

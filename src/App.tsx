@@ -6,7 +6,7 @@ import { FavoritesPage } from './modules/FavoritesPage';
 import { HomePage } from './modules/HomePage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
-import { Footer } from './components/Footer/Footer';
+import { Footer } from './components/Footer';
 
 import { Header } from './components/Header';
 

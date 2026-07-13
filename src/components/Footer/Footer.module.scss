@@ -18,7 +18,7 @@
     align-items: center;
     justify-content: space-between;
 
-    height: 96px;
+    min-height: 96px;
     padding: 32px 24px;
   }
 
@@ -138,5 +138,13 @@
 .backToTopIcon {
   width: 16px;
   height: 16px;
-  transform: rotate(0deg);
+transform: rotate(0deg);
+}
+
+.backToTop:hover .backToTopText {
+  color: #313237;
+}
+
+.backToTop:hover .backToTopButton {
+  border-color: #313237;
 }

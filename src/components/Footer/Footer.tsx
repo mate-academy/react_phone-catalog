@@ -41,11 +41,13 @@ export const Footer = () => {
               src={iconSrc('logo-ng.svg')}
               alt=""
               className={styles.logoNg}
+              aria-hidden="true"
             />
             <img
               src={iconSrc('logo-ok.svg')}
               alt=""
               className={styles.logoOk}
+              aria-hidden="true"
             />
           </span>
         </a>
