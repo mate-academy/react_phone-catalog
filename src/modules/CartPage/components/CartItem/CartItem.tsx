@@ -28,7 +28,7 @@ export const CartItem: React.FC<Props> = ({
           className={styles.deleteButton}
           onClick={() => removeFromCart(id)}
         >
-          <img src="/img/icons/icon_delete.svg" alt="" />
+          <img src="img/icons/icon_delete.svg" alt="" />
         </button>
 
         <Link to={`/product/${id}`} className={styles.productImage}>
@@ -50,14 +50,14 @@ export const CartItem: React.FC<Props> = ({
             onClick={() => updateQuantity(id, -1)}
             disabled={quantity === 1}
           >
-            <img src="/img/icons/icon_minus.svg" alt="" />
+            <img src="img/icons/icon_minus.svg" alt="" />
           </button>
           <p className={styles.quantityText}>{quantity}</p>
           <button
             className={styles.quantityButton}
             onClick={() => updateQuantity(id, 1)}
           >
-            <img src="/img/icons/icon_plus.svg" alt="" />
+            <img src="img/icons/icon_plus.svg" alt="" />
           </button>
         </div>
 

@@ -8,9 +8,9 @@ export const MobilePicturesSlider = () => {
   const isAutoScrolling = useRef(false);
 
   const pictures = [
-    '/img/Banner-1_small.png',
-    '/img/Banner-2_small.png',
-    '/img/Banner-3_small.png',
+    'img/Banner-1_small.png',
+    'img/Banner-2_small.png',
+    'img/Banner-3_small.png',
   ];
 
   const moveNext = useCallback(() => {

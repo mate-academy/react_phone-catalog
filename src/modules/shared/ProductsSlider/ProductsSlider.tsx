@@ -48,14 +48,14 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
             onClick={movePrev}
             disabled={isPrevDisabled}
           >
-            <img src="/img/icons/arrow_left.svg" alt="Previous" />
+            <img src="img/icons/arrow_left.svg" alt="Previous" />
           </button>
           <button
             className={`${styles.button} ${isNextDisabled ? styles.buttonDisable : ''}`}
             onClick={moveNext}
             disabled={isNextDisabled}
           >
-            <img src="/img/icons/arrow_right.svg" alt="Next" />
+            <img src="img/icons/arrow_right.svg" alt="Next" />
           </button>
         </div>
       </div>

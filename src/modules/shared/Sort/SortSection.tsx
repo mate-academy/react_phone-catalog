@@ -74,7 +74,7 @@ export const SortSection: React.FC<SortSectionProps> = ({
           >
             <span>{sortLabels[sort]}</span>
             <img
-              src="/img/icons/arrow_down_noactive.svg"
+              src="img/icons/arrow_down_noactive.svg"
               alt=""
               className={classNames(styles.arrow, {
                 [styles.arrowActive]: isSortOpen,
@@ -118,7 +118,7 @@ export const SortSection: React.FC<SortSectionProps> = ({
           >
             <span>{perPageLabels[perPage]}</span>
             <img
-              src="/img/icons/arrow_down_noactive.svg"
+              src="img/icons/arrow_down_noactive.svg"
               alt=""
               className={classNames(styles.arrow, {
                 [styles.arrowActive]: isPerPageOpen,

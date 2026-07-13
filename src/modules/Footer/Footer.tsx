@@ -16,7 +16,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.logo}>
-          <img src="/img/Logo.svg" alt="" />
+          <img src="img/Logo.svg" alt="" />
         </div>
         <div className={styles.links}>
           <Link
@@ -35,7 +35,7 @@ export const Footer = () => {
         <div className={styles.backToTop} onClick={scrollToTop}>
           <p className={styles.buttonText}>{t('BackToTop')}</p>
           <button className={styles.topButton}>
-            <img src="/img/icons/arrow_right.svg" alt="" />
+            <img src="img/icons/arrow_right.svg" alt="" />
           </button>
         </div>
       </div>

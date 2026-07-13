@@ -4,11 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 export const PicturesSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const pictures = [
-    '/img/Banner-1.png',
-    '/img/Banner-2.png',
-    '/img/Banner-3.png',
-  ];
+  const pictures = ['img/Banner-1.png', 'img/Banner-2.png', 'img/Banner-3.png'];
 
   const translateX = -100 * currentIndex;
 
@@ -44,7 +40,7 @@ export const PicturesSlider = () => {
     <div className={styles.pictureSlider}>
       <div className={styles.carousel}>
         <button className={styles.button} onClick={movePrev}>
-          <img src="/img/icons/arrow_left.svg" alt="" />
+          <img src="img/icons/arrow_left.svg" alt="" />
         </button>
         <div className={styles.window}>
           {pictures.map(banner => (
@@ -58,7 +54,7 @@ export const PicturesSlider = () => {
           ))}
         </div>
         <button className={styles.button} onClick={moveNext}>
-          <img src="/img/icons/arrow_right.svg" alt="" />
+          <img src="img/icons/arrow_right.svg" alt="" />
         </button>
       </div>
       <div className={styles.position}>

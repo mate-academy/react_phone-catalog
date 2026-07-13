@@ -37,7 +37,7 @@ export const Pagination: React.FC<Props> = ({
           }
         }}
       >
-        <img src="/img/icons/arrow_left.svg" alt="" />
+        <img src="img/icons/arrow_left.svg" alt="" />
       </button>
       <div className={styles.pages}>
         {pages.map((page, index) => {
@@ -80,7 +80,7 @@ export const Pagination: React.FC<Props> = ({
           }
         }}
       >
-        <img src="/img/icons/arrow_right.svg" alt="" />
+        <img src="img/icons/arrow_right.svg" alt="" />
       </button>
     </div>
   );

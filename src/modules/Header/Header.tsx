@@ -55,7 +55,7 @@ export const Header = () => {
     <>
       <header>
         <Link to="/" className={styles.logo}>
-          <img src="/img/Logo.svg" alt="" />
+          <img src="img/Logo.svg" alt="" />
         </Link>
         <nav>
           <NavLink
@@ -102,7 +102,7 @@ export const Header = () => {
             aria-label="Select language"
           >
             <img
-              src="/img/icons/icon_language.svg"
+              src="img/icons/icon_language.svg"
               alt="Language"
               className={styles.langIcon}
             />
@@ -139,7 +139,7 @@ export const Header = () => {
             <div className={styles.iconBox}>
               <img
                 className={styles.buttonsItem}
-                src="/img/icons/icon_favorite.svg"
+                src="img/icons/icon_favorite.svg"
                 alt="Cart"
               />
               {favouriteItems.length > 0 && (
@@ -156,7 +156,7 @@ export const Header = () => {
             <div className={styles.iconBox}>
               <img
                 className={styles.buttonsItem}
-                src="/img/icons/icon_cart.svg"
+                src="img/icons/icon_cart.svg"
                 alt="Cart"
               />
               {items.length > 0 && (
@@ -174,8 +174,8 @@ export const Header = () => {
           <img
             src={
               isMenuOpen
-                ? '/img/icons/icon_burger_closed_menu.svg'
-                : '/img/icons/icon_burger_menu.svg'
+                ? 'img/icons/icon_burger_closed_menu.svg'
+                : 'img/icons/icon_burger_menu.svg'
             }
             alt="Menu"
           />
@@ -244,7 +244,7 @@ export const Header = () => {
             onClick={closeMenu}
           >
             <div className={styles.iconBox}>
-              <img src="/img/icons/icon_favorite.svg" alt="Favorites" />
+              <img src="img/icons/icon_favorite.svg" alt="Favorites" />
               {favouriteItems.length > 0 && (
                 <div className={styles.quantity}>{favouriteItems.length}</div>
               )}
@@ -260,7 +260,7 @@ export const Header = () => {
             onClick={closeMenu}
           >
             <div className={styles.iconBox}>
-              <img src="/img/icons/icon_cart.svg" alt="Cart" />
+              <img src="img/icons/icon_cart.svg" alt="Cart" />
               {items.length > 0 && (
                 <div className={styles.quantity}>{items.length}</div>
               )}

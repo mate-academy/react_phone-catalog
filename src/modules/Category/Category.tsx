@@ -27,7 +27,7 @@ export const Category: React.FC<Props> = ({
           className={`${styles.section} ${styles.firstSection}`}
         >
           <div className={`${styles.sectionBox} ${styles.firstSectionBox}`}>
-            <img src="/img/category-phones.png" alt="" />
+            <img src="img/category-phones.png" alt="" />
           </div>
           <div className={styles.sectionText}>
             <h4 className={styles.sectionTitle}>{t('Mobile')}</h4>
@@ -42,7 +42,7 @@ export const Category: React.FC<Props> = ({
           className={`${styles.section} ${styles.secondSection}`}
         >
           <div className={`${styles.sectionBox} ${styles.secondSectionBox}`}>
-            <img src="/img/category-tablets.png" alt="" />
+            <img src="img/category-tablets.png" alt="" />
           </div>
           <div className={styles.sectionText}>
             <h4 className={styles.sectionTitle}>{t('Tablets')}</h4>
@@ -57,7 +57,7 @@ export const Category: React.FC<Props> = ({
           className={`${styles.section} ${styles.thirdSection}`}
         >
           <div className={`${styles.sectionBox} ${styles.thirdSectionBox}`}>
-            <img src="/img/category-accessories.png" alt="" />
+            <img src="img/category-accessories.png" alt="" />
           </div>
           <div className={styles.sectionText}>
             <h4 className={styles.sectionTitle}>{t('Accessories')}</h4>

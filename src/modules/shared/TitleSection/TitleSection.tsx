@@ -20,11 +20,11 @@ export const TitleSection: React.FC<Props> = ({
     <div className={styles.titleSection}>
       <div className={styles.history}>
         <Link className={styles.iconLink} to="/">
-          <img src="/img/icons/icon_home.svg" alt="" />
+          <img src="img/icons/icon_home.svg" alt="" />
         </Link>
         <img
           className={styles.arrowIcon}
-          src="/img/icons/history_arrow_right.svg"
+          src="img/icons/history_arrow_right.svg"
           alt=""
         />
         <p className={styles.historyText}>{historyText}</p>

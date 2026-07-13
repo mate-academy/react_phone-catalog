@@ -128,7 +128,7 @@ export const Card = forwardRef<HTMLDivElement, Props>((props, ref) => {
             >
               <img
                 className={styles.favoriteImage}
-                src="/img/icons/icon_favorite_active.svg"
+                src="img/icons/icon_favorite_active.svg"
                 alt=""
               />
             </button>
@@ -143,7 +143,7 @@ export const Card = forwardRef<HTMLDivElement, Props>((props, ref) => {
             >
               <img
                 className={styles.favoriteImage}
-                src="/img/icons/icon_favorite.svg"
+                src="img/icons/icon_favorite.svg"
                 alt=""
               />
             </button>

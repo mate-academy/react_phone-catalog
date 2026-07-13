@@ -144,11 +144,11 @@ export const ProductDetailsPage: React.FC = () => {
     <div className={styles.productDetailsPage}>
       <div className={styles.history}>
         <Link className={styles.iconLink} to="/">
-          <img src="/img/icons/icon_home.svg" alt="" />
+          <img src="img/icons/icon_home.svg" alt="" />
         </Link>
         <img
           className={styles.arrowIcon}
-          src="/img/icons/history_arrow_right.svg"
+          src="img/icons/history_arrow_right.svg"
           alt=""
         />
         <Link to={`/${product.category}`} className={styles.navCategory}>
@@ -156,13 +156,13 @@ export const ProductDetailsPage: React.FC = () => {
         </Link>
         <img
           className={styles.arrowIcon}
-          src="/img/icons/history_arrow_right.svg"
+          src="img/icons/history_arrow_right.svg"
           alt=""
         />
         <p className={styles.historyText}>{product.name}</p>
       </div>
       <button className={styles.back} onClick={() => navigate(-1)}>
-        <img src="/img/icons/arrow_left.svg" alt="back" />
+        <img src="img/icons/arrow_left.svg" alt="back" />
         <p className={styles.backText}>{t('Back')}</p>
       </button>
       <div className={styles.title}>{product.name}</div>
@@ -287,7 +287,7 @@ export const ProductDetailsPage: React.FC = () => {
                   >
                     <img
                       className={styles.favoriteImage}
-                      src="/img/icons/icon_favorite_active.svg"
+                      src="img/icons/icon_favorite_active.svg"
                       alt=""
                     />
                   </button>
@@ -302,7 +302,7 @@ export const ProductDetailsPage: React.FC = () => {
                   >
                     <img
                       className={styles.favoriteImage}
-                      src="/img/icons/icon_favorite.svg"
+                      src="img/icons/icon_favorite.svg"
                       alt=""
                     />
                   </button>
