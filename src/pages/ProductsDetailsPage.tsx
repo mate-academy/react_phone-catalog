@@ -130,7 +130,7 @@ export const ProductsDetailsPage = () => {
         category={product.category}
         productName={currentProduct?.name ?? product.name}
       />
-      <BackNavigation />
+      <BackNavigation to={`/${category}`} />
       <div className={styles.productPage}>
         <h1 className={styles.productName}>{productDetails.name}</h1>
         {/* Image gallery */}

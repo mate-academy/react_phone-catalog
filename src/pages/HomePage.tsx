@@ -31,7 +31,11 @@ export const HomePage = () => {
       </section>
 
       <section>
-        <ProductsSlider title="Brand new models" products={brandNew} />
+        <ProductsSlider
+          title="Brand new models"
+          products={brandNew}
+          showDiscount={false}
+        />
       </section>
 
       <section>

@@ -25,6 +25,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Mont', sans-serif;
   background-color: #fff;

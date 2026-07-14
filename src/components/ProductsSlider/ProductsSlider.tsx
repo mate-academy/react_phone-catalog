@@ -7,17 +7,29 @@ interface Props {
   title: string;
   products: Product[];
   className?: string;
+  showDiscount?: boolean;
 }
 
-export const ProductsSlider = ({ title, products, className }: Props) => {
+export const ProductsSlider = ({
+  title,
+  products,
+  className,
+  showDiscount = true,
+}: Props) => {
   const [position, setPosition] = useState(0);
   const touchStartX = useRef(0);
 
   //#region Handle slider
   const getCardStep = () => {
-    if (window.innerWidth >= 1200) return 288; // 272px card + 16px gap
-    if (window.innerWidth >= 640) return 253; // 237px card + 16px gap
-    return 228; // 212px card + 16px gap
+    if (window.innerWidth >= 1200) {
+      return 288;
+    }
+
+    if (window.innerWidth >= 640) {
+      return 253;
+    }
+
+    return 228;
   };
 
   const maxPosition = products.length - 1;
@@ -70,6 +82,7 @@ export const ProductsSlider = ({ title, products, className }: Props) => {
               product={product}
               key={product.id}
               variant={'slider'}
+              showDiscount={showDiscount}
             />
           ))}
         </div>

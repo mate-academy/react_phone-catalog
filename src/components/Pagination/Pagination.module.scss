@@ -3,7 +3,10 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding-top: 24px;
+  padding-block: 24px;
+  position: sticky;
+  bottom: 0;
+  background-color: #fff;
 }
 
 .buttonsList {

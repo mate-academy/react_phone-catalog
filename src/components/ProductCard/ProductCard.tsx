@@ -8,9 +8,10 @@ type Variant = 'catalog' | 'slider';
 interface Props {
   product: Product;
   variant: Variant;
+  showDiscount?: boolean;
 }
 
-export const ProductCard = ({ product, variant }: Props) => {
+export const ProductCard = ({ product, variant, showDiscount = true }: Props) => {
   const { addToCart, removeFromCart, items } = useCart();
   const { favourites, toggleFavourite } = useFavourite();
   const isFavourite = Boolean(favourites.find(fav => fav.id === product.id));
@@ -32,7 +33,9 @@ export const ProductCard = ({ product, variant }: Props) => {
         <h3 className={styles.specName}>{product.name}</h3>
         <div className={styles.priceSection}>
           <p className={styles.specPrice}>${product.price}</p>
-          <del className={styles.specFullPrice}>${product.fullPrice}</del>
+          {showDiscount && (
+            <del className={styles.specFullPrice}>${product.fullPrice}</del>
+          )}
         </div>
         <div className={styles.divider} />
         <p className={styles.specRow}>
