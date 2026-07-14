@@ -1,9 +1,9 @@
 import styles from './CartItemCard.module.scss';
 import { useCart } from '../../context/CartContext';
-import minusActive from './img/buttons/minus-active.png';
-import minusDisabled from './img/buttons/minus-disabled.png';
-import plusActive from './img/buttons/plus-active.png';
-import deleteIcon from './img/buttons/delete.png';
+import minusActive from './img/buttons/minus-active.svg';
+import minusDisabled from './img/buttons/minus-disabled.svg';
+import plusActive from './img/buttons/plus-active.svg';
+import deleteIcon from './img/buttons/delete.svg';
 
 interface Props {
   id: string;

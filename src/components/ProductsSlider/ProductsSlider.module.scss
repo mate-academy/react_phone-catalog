@@ -5,6 +5,17 @@
   @media (max-width: 639px) {
     padding-inline: 0;
   }
+
+  @media (min-width: 640px) {
+    padding-inline: 24px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1136px;
+    margin-inline: auto;
+    padding-inline: 0;
+    width: 100%;
+  }
 }
 
 .trackWrapper {
@@ -12,6 +23,14 @@
 
   @media (max-width: 639px) {
     margin-right: calc(-1 * var(--slider-bleed, 16px));
+  }
+
+  @media (min-width: 640px) {
+    margin-right: -24px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-right: 0;
   }
 }
 .topSlider {
@@ -47,17 +66,19 @@
   cursor: pointer;
   width: 32px;
   height: 32px;
-  background-image: url('./img/buttons/slider_button_right.png');
+  background-image: url('./img/buttons/slider_button_right.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 
-  &:hover:not(:disabled) {
-    background-image: url('./img/buttons/slider_button_hover_right.png');
+  @media (min-width: 640px) {
+    &:hover:not(:disabled) {
+      background-image: url('./img/buttons/slider_button_hover_right.svg');
+    }
   }
 
   &:disabled {
-    background-image: url('./img/buttons/slider_button_disabled_right.png');
+    background-image: url('./img/buttons/slider_button_disabled_right.svg');
     cursor: not-allowed;
   }
 }
@@ -69,17 +90,19 @@
   cursor: pointer;
   width: 32px;
   height: 32px;
-  background-image: url('./img/buttons/slider_button_left.png');
+  background-image: url('./img/buttons/slider_button_left.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 
-  &:hover:not(:disabled) {
-    background-image: url('./img/buttons/slider_button_hover_left.png');
+  @media (min-width: 640px) {
+    &:hover:not(:disabled) {
+      background-image: url('./img/buttons/slider_button_hover_left.svg');
+    }
   }
 
   &:disabled {
-    background-image: url('./img/buttons/slider_button_disabled_left.png');
+    background-image: url('./img/buttons/slider_button_disabled_left.svg');
     transform: none;
     cursor: not-allowed;
   }

@@ -14,6 +14,37 @@
       margin-top: 32px;
     }
   }
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+    padding-inline: 24px;
+
+    article {
+      margin-top: 16px;
+
+      &:first-of-type {
+        margin-top: 16px;
+      }
+    }
+  }
+
+  @media (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 16px;
+    max-width: 1136px;
+    padding-inline: 0;
+
+    article {
+      margin-top: 16px;
+
+      &:first-of-type {
+        margin-top: 16px;
+      }
+    }
+  }
 }
 
 .titlePage {
@@ -24,6 +55,11 @@
   letter-spacing: -1%;
   color: #0f0f11;
   width: 288px;
+
+  @media (min-width: 640px) {
+    width: auto;
+    grid-column: 1 / -1;
+  }
 }
 
 .favouritesItems {
@@ -35,6 +71,11 @@
   color: #89939a;
   width: 288px;
   margin-top: 8px;
+
+  @media (min-width: 640px) {
+    width: auto;
+    grid-column: 1 / -1;
+  }
 }
 
 .emptyPage {

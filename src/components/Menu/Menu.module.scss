@@ -50,15 +50,37 @@
   list-style: none;
 
   .listLink {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 8px;
     text-decoration: none;
     font-family: Mont;
     font-weight: 800;
     font-size: 12px;
     line-height: 11px;
-    letter-spacing: 4%;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-
     color: #89939a;
+    transition: color 0.3s;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: transparent;
+      transition: background-color 0.3s;
+    }
+
+    &:hover {
+      color: #0f1121;
+
+      &::after {
+        background: #0f1121;
+      }
+    }
   }
 }
 
@@ -67,11 +89,37 @@
   border-top: 1px solid #e2e6e9;
 
   a {
+    position: relative;
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 64px;
+
+    img {
+      transition: transform 0.3s;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: transparent;
+      transition: background-color 0.3s;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+
+      &::after {
+        background: #0f1121;
+      }
+    }
   }
 
   a:first-child {

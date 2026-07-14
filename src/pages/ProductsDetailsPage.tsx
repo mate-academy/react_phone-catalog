@@ -10,6 +10,7 @@ import { TechSpecShort } from '../components/TechSpecShort/TechSpecShort';
 import { AboutProduct } from '../components/AboutProduct/AboutProduct';
 import { SuggestedProducts } from '../components/SuggestedProducts/SuggestedProducts';
 import { useCart } from '../context/CartContext';
+import { useFavourite } from '../context/FavContext';
 
 //#region Constants
 const colorMap: Record<string, string> = {
@@ -63,7 +64,10 @@ export const ProductsDetailsPage = () => {
     currentProduct?.images[0] ?? '',
   );
 
-  const { addToCart } = useCart();
+  const { addToCart, removeFromCart, items } = useCart();
+  const isInCart = Boolean(items.find(item => item.id === productDetails?.id));
+  const { favourites, toggleFavourite } = useFavourite();
+  const isFavourite = Boolean(favourites.find(fav => fav.id === product?.id));
   //#endregion
 
   //#region useEffect and blocks IF
@@ -128,9 +132,7 @@ export const ProductsDetailsPage = () => {
       />
       <BackNavigation />
       <div className={styles.productPage}>
-        <h1 className={styles.productName}>
-          {currentProduct?.name ?? productDetails.name}
-        </h1>
+        <h1 className={styles.productName}>{productDetails.name}</h1>
         {/* Image gallery */}
 
         <img
@@ -187,7 +189,7 @@ export const ProductsDetailsPage = () => {
         <hr className={styles.divider} />
 
         {/* Capacity selector */}
-        <div>
+        <div className={styles.capacity}>
           <p className={styles.textColor}>Select capacity</p>
           <div className={styles.capacityList}>
             {productDetails.capacityAvailable.map(capacity => (
@@ -226,20 +228,32 @@ export const ProductsDetailsPage = () => {
           <button
             type="button"
             className={styles.cartButton}
-            onClick={() =>
-              addToCart({
-                id: productDetails.id,
-                image: productDetails.images[0],
-                name: productDetails.name,
-                price: `$${productDetails.priceDiscount}`,
-              })
-            }
+            onClick={() => {
+              if (!isInCart) {
+                addToCart({
+                  id: productDetails.id,
+                  image: productDetails.images[0],
+                  name: productDetails.name,
+                  price: `$${productDetails.priceDiscount}`,
+                });
+              } else {
+                removeFromCart(productDetails.id);
+              }
+            }}
           >
-            Add to cart
+            {isInCart ? 'Added ✓' : 'Add to cart'}
           </button>
-          <button type="button" className={styles.favButton}>
+          <button
+            type="button"
+            className={styles.favButton}
+            onClick={() => toggleFavourite(product)}
+          >
             <img
-              src="./img/icons/add_favourites_button.png"
+              src={
+                isFavourite
+                  ? './img/icons/favourites_icon_selected.svg'
+                  : './img/icons/add_favourites_button.svg'
+              }
               alt="Add to favourites"
             />
           </button>

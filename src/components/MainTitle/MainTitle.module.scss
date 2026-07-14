@@ -7,4 +7,21 @@
   letter-spacing: -1%;
   padding-inline: 16px;
   color: #313237;
+
+  @media (max-width: 639px) {
+    color: #0f0f11;
+  }
+
+  @media (min-width: 640px) {
+    padding-inline: 24px;
+    font-size: 48px;
+    line-height: 56px;
+    color: #0f0f11;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1136px;
+    margin-inline: auto;
+    padding-inline: 0;
+  }
 }

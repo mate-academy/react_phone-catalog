@@ -11,6 +11,26 @@
     margin-inline: -16px;
     padding-inline: 16px;
   }
+
+  @media (min-width: 640px) {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    column-gap: 16px;
+    min-height: auto;
+    padding: 32px;
+  }
+
+  @media (min-width: 1200px) {
+    padding-block: 32px;
+    padding-inline: max(0px, calc((100% - 1136px) / 2));
+  }
+}
+
+.logo {
+  @media (min-width: 640px) {
+    justify-self: start;
+  }
 }
 
 .backToTop {
@@ -22,6 +42,10 @@
   border: none;
   cursor: pointer;
 
+  @media (min-width: 640px) {
+    justify-self: end;
+  }
+
   .backToTopText {
     font-family: Mont;
     font-weight: 400;
@@ -30,12 +54,37 @@
     letter-spacing: 0%;
     text-align: right;
     color: #89939a;
+    white-space: nowrap;
+  }
+
+  .backToTopCircle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc4;
+    border-radius: 50%;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
   }
 }
 
 .list {
   display: grid;
   gap: 16px;
+
+  @media (min-width: 640px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    gap: 32px;
+  }
 
   .listContent {
     font-family: Mont;
@@ -46,6 +95,10 @@
     text-transform: uppercase;
     list-style: none;
     color: #89939a;
+
+    @media (min-width: 640px) {
+      white-space: nowrap;
+    }
   }
 
   .listLink {

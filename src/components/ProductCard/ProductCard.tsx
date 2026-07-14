@@ -3,7 +3,6 @@ import { Product } from '../../types/Product';
 import styles from './ProductCard.module.scss';
 import { useCart } from '../../context/CartContext';
 import { useFavourite } from '../../context/FavContext';
-import { useEffect, useState } from 'react';
 
 type Variant = 'catalog' | 'slider';
 interface Props {
@@ -12,20 +11,10 @@ interface Props {
 }
 
 export const ProductCard = ({ product, variant }: Props) => {
-  const { addToCart } = useCart();
+  const { addToCart, removeFromCart, items } = useCart();
   const { favourites, toggleFavourite } = useFavourite();
   const isFavourite = Boolean(favourites.find(fav => fav.id === product.id));
-  const [isAdded, setIsAdded] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (isAdded === true) {
-      const timer = setTimeout(() => {
-        setIsAdded(false);
-      }, 1000);
-
-      return () => clearTimeout(timer);
-    }
-  });
+  const isInCart = Boolean(items.find(item => item.id === product.id));
 
   return (
     <article
@@ -65,16 +54,19 @@ export const ProductCard = ({ product, variant }: Props) => {
           type="button"
           className={styles.cartButton}
           onClick={() => {
-            addToCart({
-              id: product.id,
-              image: product.image,
-              name: product.name,
-              price: `$${product.price}`,
-            });
-            setIsAdded(true);
+            if (!isInCart) {
+              addToCart({
+                id: product.id,
+                image: product.image,
+                name: product.name,
+                price: `$${product.price}`,
+              });
+            } else {
+              removeFromCart(product.id);
+            }
           }}
         >
-          {isAdded ? 'Added ✓' : 'Add to cart'}
+          {isInCart ? 'Added ✓' : 'Add to cart'}
         </button>
         <button
           type="button"
@@ -84,8 +76,8 @@ export const ProductCard = ({ product, variant }: Props) => {
           <img
             src={
               isFavourite
-                ? './img/icons/favourites_icon_selected.png'
-                : './img/icons/add_favourites_button.png'
+                ? './img/icons/favourites_icon_selected.svg'
+                : './img/icons/add_favourites_button.svg'
             }
             alt="Add to favourites"
           />

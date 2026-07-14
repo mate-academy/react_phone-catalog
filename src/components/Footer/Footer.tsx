@@ -10,7 +10,7 @@ export const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <Link to="/">
+      <Link to="/" className={styles.logo}>
         <img src="./img/logo/logo.png" alt="Nice Gadgets Logo" />
       </Link>
       <ul className={styles.list}>
@@ -43,7 +43,9 @@ export const Footer = () => {
         className={styles.backToTop}
       >
         <span className={styles.backToTopText}>Back to top</span>
-        <img src="./img/icons/button_top_icon.png" alt="" />
+        <span className={styles.backToTopCircle}>
+          <img src="./img/icons/button_top_icon.svg" alt="" />
+        </span>
       </button>
     </footer>
   );

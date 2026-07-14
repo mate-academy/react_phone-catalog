@@ -4,6 +4,19 @@
   @media (max-width: 639px) {
     padding-inline: 0;
   }
+
+  @media (min-width: 640px) {
+    padding-inline: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 16px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1136px;
+    margin-inline: auto;
+    padding-inline: 0;
+  }
 }
 
 .link {
@@ -20,6 +33,10 @@
   line-height: 140%;
   letter-spacing: 0%;
   color: #313237;
+
+  @media (min-width: 640px) {
+    grid-column: 1 / -1;
+  }
 }
 
 .imageWrapper {

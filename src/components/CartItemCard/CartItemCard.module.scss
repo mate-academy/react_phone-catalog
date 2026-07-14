@@ -8,6 +8,17 @@
   background: #ffffff;
   border: 1px solid #e2e6e9;
   border-radius: 16px;
+
+  @media (max-width: 639px) {
+    padding: 16px;
+  }
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    padding: 24px;
+  }
 }
 
 .topRow {
@@ -15,6 +26,11 @@
   flex-direction: row;
   align-items: center;
   gap: 16px;
+
+  @media (min-width: 640px) {
+    flex: 1;
+    min-width: 0;
+  }
 }
 
 .deleteButton {
@@ -40,8 +56,10 @@
     object-fit: contain;
   }
 
-  &:hover {
-    opacity: 1;
+  @media (min-width: 640px) {
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 
@@ -71,6 +89,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+
+  @media (min-width: 640px) {
+    flex-shrink: 0;
+    width: auto;
+    gap: 32px;
+  }
 }
 
 .buttons {
@@ -103,8 +127,10 @@
     object-fit: contain;
   }
 
-  &:hover:not(:disabled) {
-    opacity: 0.7;
+  @media (min-width: 640px) {
+    &:hover:not(:disabled) {
+      opacity: 0.7;
+    }
   }
 
   &:disabled {

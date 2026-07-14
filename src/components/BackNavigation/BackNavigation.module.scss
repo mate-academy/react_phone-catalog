@@ -19,8 +19,19 @@
 
   transition: color 0.2s ease;
 
-  &:hover {
-    color: #0f0f11;
+  @media (min-width: 640px) {
+    &:hover {
+      color: #0f0f11;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    margin-left: 24px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-left: calc((100% - 1136px) / 2);
+    grid-column: 1 / -1;
   }
 }
 

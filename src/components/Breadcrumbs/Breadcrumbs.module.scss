@@ -4,10 +4,22 @@
   align-items: center;
   padding-bottom: 24px;
   overflow: hidden;
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    padding-inline: 24px;
+    grid-column: 1 / -1;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1136px;
+    width: 100%;
+    margin-inline: auto;
+    grid-column: 1 / -1;
+  }
 }
 
 .homeButton {
-  background-image: url('./img/buttons/home_button.png');
+  background-image: url('./img/buttons/home_button.svg');
   cursor: pointer;
   height: 16px;
   width: 16px;

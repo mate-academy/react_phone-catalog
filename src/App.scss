@@ -31,10 +31,12 @@ body {
 }
 
 .wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-
   @media (max-width: 639px) {
     padding: 0 16px;
+  }
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    max-width: 1200px;
+    margin: 0 auto;
   }
 }

@@ -6,6 +6,15 @@
   @media (max-width: 639px) {
     padding-inline: 0;
   }
+
+  @media (min-width: 640px) {
+    padding-inline: 24px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1136px;
+    padding-inline: 0;
+  }
 }
 
 .sortControl {

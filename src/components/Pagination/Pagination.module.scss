@@ -16,7 +16,7 @@
   height: 32px;
   width: 32px;
   align-items: center;
-  background-image: url('./img/buttons/background_button.png');
+  background-image: url('./img/buttons/background_button.svg');
   font-family: Mont;
   font-weight: 600;
   font-size: 14px;
@@ -26,7 +26,7 @@
 }
 
 .active {
-  background-image: url('./img/buttons/background_button_active.png');
+  background-image: url('./img/buttons/background_button_active.svg');
   color: #fff;
 }
 
@@ -37,17 +37,19 @@
   cursor: pointer;
   width: 32px;
   height: 32px;
-  background-image: url('./img/buttons/slider_button_left.png');
+  background-image: url('./img/buttons/slider_button_left.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 
-  &:hover:not(:disabled) {
-    background-image: url('./img/buttons/slider_button_hover_left.png');
+  @media (min-width: 640px) {
+    &:hover:not(:disabled) {
+      background-image: url('./img/buttons/slider_button_hover_left.svg');
+    }
   }
 
   &:disabled {
-    background-image: url('./img/buttons/slider_button_disabled_left.png');
+    background-image: url('./img/buttons/slider_button_disabled_left.svg');
     transform: none;
     cursor: not-allowed;
   }
@@ -60,17 +62,19 @@
   cursor: pointer;
   width: 32px;
   height: 32px;
-  background-image: url('./img/buttons/slider_button_right.png');
+  background-image: url('./img/buttons/slider_button_right.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 
-  &:hover:not(:disabled) {
-    background-image: url('./img/buttons/slider_button_hover_right.png');
+  @media (min-width: 640px) {
+    &:hover:not(:disabled) {
+      background-image: url('./img/buttons/slider_button_hover_right.svg');
+    }
   }
 
   &:disabled {
-    background-image: url('./img/buttons/slider_button_disabled_right.png');
+    background-image: url('./img/buttons/slider_button_disabled_right.svg');
     cursor: not-allowed;
   }
 }

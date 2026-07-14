@@ -14,6 +14,12 @@ export const ProductsSlider = ({ title, products, className }: Props) => {
   const touchStartX = useRef(0);
 
   //#region Handle slider
+  const getCardStep = () => {
+    if (window.innerWidth >= 1200) return 288; // 272px card + 16px gap
+    if (window.innerWidth >= 640) return 253; // 237px card + 16px gap
+    return 228; // 212px card + 16px gap
+  };
+
   const maxPosition = products.length - 1;
   const handleNext = () => setPosition(prev => Math.min(prev + 1, maxPosition));
   const handlePrev = () => setPosition(prev => Math.max(prev - 1, 0));
@@ -55,7 +61,7 @@ export const ProductsSlider = ({ title, products, className }: Props) => {
       <div className={styles.trackWrapper}>
         <div
           className={styles.track}
-          style={{ transform: `translateX(${-position * 228}px)` }}
+          style={{ transform: `translateX(${-position * getCardStep()}px)` }}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >

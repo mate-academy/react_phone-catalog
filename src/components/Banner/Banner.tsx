@@ -42,21 +42,44 @@ export const Banner = () => {
 
   return (
     <div className={styles.banner}>
-      <div
-        className={styles.track}
-        style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+      <button
+        type="button"
+        onClick={handlePrev}
+        disabled={activeIndex === 0}
+        className={cn(styles.navButton, styles.navButtonLeft)}
+        aria-label="Previous banner"
       >
-        {banners.map(banner => (
-          <img
-            src={banner}
-            alt="Banner"
-            className={styles.image}
-            key={banner}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-          />
-        ))}
+        <img src="./img/icons/arrow_nav.svg" alt="" className={styles.navIconLeft} />
+      </button>
+
+      <div className={styles.trackWrapper}>
+        <div
+          className={styles.track}
+          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+        >
+          {banners.map(banner => (
+            <img
+              src={banner}
+              alt="Banner"
+              className={styles.image}
+              key={banner}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            />
+          ))}
+        </div>
       </div>
+
+      <button
+        type="button"
+        onClick={handleNext}
+        disabled={activeIndex === banners.length - 1}
+        className={cn(styles.navButton, styles.navButtonRight)}
+        aria-label="Next banner"
+      >
+        <img src="./img/icons/arrow_nav.svg" alt="" className={styles.navIcon} />
+      </button>
+
       <div className={styles.buttons}>
         {banners.map((banner, index) => (
           <button
