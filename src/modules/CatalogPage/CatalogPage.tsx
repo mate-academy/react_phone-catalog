@@ -84,12 +84,18 @@ export const CatalogPage: React.FC = () => {
   }, [category]);
 
   const filteredProducts = useMemo(() => {
-    if (!query) {
+    if (!query.trim()) {
       return products;
     }
 
+    const words = query.toLowerCase().split(/\s+/);
+
     return products.filter(product =>
-      product.name.toLowerCase().includes(query),
+      words.every(
+        word =>
+          product.name.toLowerCase().includes(word) ||
+          product.color.toLowerCase().includes(word),
+      ),
     );
   }, [products, query]);
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './PicturesSlider.module.scss';
+import { Link } from 'react-router-dom';
 
 type Slide = {
   id: number;
@@ -61,7 +62,7 @@ export const BannerSlider: React.FC = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(handleNext, 5000);
+    const interval = setInterval(handleNext, 100000000000000);
 
     return () => clearInterval(interval);
   }, []);
@@ -95,15 +96,23 @@ export const BannerSlider: React.FC = () => {
                 <picture className={styles.pictures_slider__picture}>
                   {slide.imgMobile && (
                     <source
-                      media="(max-width: 639px)"
-                      srcSet={slide.imgMobile}
+                      media="(max-width:639px)"
+                      srcSet={`${import.meta.env.BASE_URL}${slide.imgMobile}`}
                     />
                   )}
+
                   <img
                     src={`${import.meta.env.BASE_URL}${slide.img}`}
                     alt={`Banner ${slide.id}`}
                   />
                 </picture>
+
+                {slide.id === 1 && (
+                  <Link
+                    to="/phones"
+                    className={styles.pictures_slider__order_button}
+                  ></Link>
+                )}
               </div>
             ))}
           </div>

@@ -5,6 +5,10 @@
   @include margins;
 
   user-select: none;
+  min-height: calc(100vh - 96px - 96px);
+
+  display: flex;
+  flex-direction: column;
 }
 
 .catalog_page__title {
@@ -57,4 +61,5 @@
   gap: 16px;
   justify-content: center;
   align-items: center;
+  flex-grow: 1;
 }

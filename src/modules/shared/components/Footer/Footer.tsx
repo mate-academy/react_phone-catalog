@@ -14,7 +14,8 @@ export const Footer = () => {
       <div className={styles.footer__logo}>
         <Link to="/">
           <img
-            src={`${import.meta.env.BASE_URL}img/Logo.svg`} alt="Nice Gadgets Logo"
+            src={`${import.meta.env.BASE_URL}img/Logo.svg`}
+            alt="Nice Gadgets Logo"
           />
         </Link>
       </div>

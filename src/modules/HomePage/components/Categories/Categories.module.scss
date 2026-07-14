@@ -35,6 +35,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform .3s;
   }
 
   @include tablet {
@@ -71,10 +72,6 @@
     top: 13%;
     left: 5%;
     object-fit: contain;
-
-    &:hover {
-      transform: scale(1.2);
-    }
   }
 }
 
@@ -87,4 +84,8 @@
     transform: scale(2);
     transform-origin: 5% -1%;
   }
+}
+
+.categories__card:hover .categories__image {
+  transform: scale(1.2);
 }

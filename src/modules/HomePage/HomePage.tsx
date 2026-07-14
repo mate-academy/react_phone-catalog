@@ -28,21 +28,27 @@ export const HomePage: React.FC = () => {
       .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
       .slice(0, 10);
 
-    const mapToCarousel = (p: Product): CarouselProduct => ({
+    const mapToCarousel = (
+      p: Product,
+      showDiscount = true,
+    ): CarouselProduct => ({
       id: p.itemId,
       img: p.image,
       name: p.name,
       category: p.category,
       capacity: p.capacity,
-      priceRegular: p.fullPrice,
-      priceDiscount: p.price,
+
+      priceRegular: showDiscount ? p.fullPrice : p.price,
+      priceDiscount: showDiscount ? p.price : undefined,
+
       ram: p.ram,
       screen: p.screen,
     });
 
     return {
-      newModels: newModelsData.map(mapToCarousel),
-      hotPrices: hotPricesData.map(mapToCarousel),
+      newModels: newModelsData.map(product => mapToCarousel(product, false)),
+
+      hotPrices: hotPricesData.map(product => mapToCarousel(product, true)),
     };
   }, [products]);
 

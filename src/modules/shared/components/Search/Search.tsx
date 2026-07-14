@@ -45,7 +45,10 @@ export const Search: React.FC = () => {
           onClick={() => setValue('')}
           type="button"
         >
-          <img src="/img/icons/close.svg" alt="Clear" />
+          <img
+            src={`${import.meta.env.BASE_URL}img/icons/close.svg`}
+            alt="Clear"
+          />
         </button>
       )}
     </div>

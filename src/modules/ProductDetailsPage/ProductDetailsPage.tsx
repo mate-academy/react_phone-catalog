@@ -25,6 +25,13 @@ export const ProductDetailsPage: React.FC = () => {
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [productId]);
+
+  useEffect(() => {
     if (!productId) {
       return;
     }
@@ -88,7 +95,7 @@ export const ProductDetailsPage: React.FC = () => {
     <div className={styles['product-details-page']}>
       <Breadcrumbs category={product?.category} productName={product?.name} />
       <button
-        onClick={() => navigate(-1)}
+        onClick={() => navigate(`/${product.category}`)}
         className={styles['product-details-page__back-link']}
       >
         <img
