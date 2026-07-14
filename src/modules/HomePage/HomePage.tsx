@@ -23,7 +23,7 @@ export const HomePage = () => {
     <div className={classNames(styles['home-page'], 'container')}>
       <section className={classNames(styles.section, styles['section--hero'])}>
         <div className={styles.section__header}>
-          <h1 className={styles['home-page__title']}>Product catalog</h1>
+          <h1 className={styles['home-page__title']}>Product Catalog</h1>
         </div>
 
         <div

@@ -77,7 +77,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           onClick={() => dispatch({ type: 'addProduct', product })}
           selected={isProductInCart}
         >
-          {!isProductInCart ? 'Add to cart' : 'Added to cart'}
+          {!isProductInCart ? 'Add to cart' : 'Added'}
         </SquareButton>
         <FavoriteButton
           className={styles['product-card__fav']}
