@@ -12,7 +12,7 @@ export const ShopByCategory: React.FC = () => {
         <Link to={`/phones/`} className={styles.categoryPhones}>
           <img
             className={styles.categoryImg}
-            src="/img/category-phones.webp"
+            src="./img/category-phones.webp"
             alt="Mobile phones"
           />
           <h3 className={styles.categoryGadgets}>Mobile phones</h3>
@@ -22,7 +22,7 @@ export const ShopByCategory: React.FC = () => {
         <Link to={`/tablets/`} className={styles.categoryTablets}>
           <img
             className={styles.categoryImg}
-            src="/img/category-tablets.webp"
+            src="./img/category-tablets.webp"
             alt="Tablets"
           />
           <h3 className={styles.categoryGadgets}>Tablets</h3>
@@ -32,7 +32,7 @@ export const ShopByCategory: React.FC = () => {
         <Link to={`/accessories/`} className={styles.categoryAccessories}>
           <img
             className={styles.categoryImg}
-            src="/img/category-accessories.webp"
+            src="./img/category-accessories.webp"
             alt="Accessories"
           />
           <h3 className={styles.categoryGadgets}>Accessories</h3>

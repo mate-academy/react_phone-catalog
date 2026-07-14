@@ -33,11 +33,11 @@ export const Asaid: React.FC<Props> = ({ onClose: onClose }) => {
     <aside className={`${styles.menuTop} ${styles.isOpen}`}>
       <div className={styles.menuTopLogo}>
         <Link to="/" className={styles.logoMenu}>
-          <img src="/img/logo.svg" alt="Logo" className="logo" />
+          <img src="./img/logo.svg" alt="Logo" className="logo" />
         </Link>
         <div className={styles.close}>
           <button className={styles.closeBtn} onClick={closeMenu}>
-            <img src="/img/close.svg" alt="Close" />
+            <img src="./img/close.svg" alt="Close" />
           </button>
         </div>
       </div>
@@ -69,7 +69,7 @@ export const Asaid: React.FC<Props> = ({ onClose: onClose }) => {
 
         <Link to="/cart" className={styles.icon} aria-label="Cart">
           <img
-            src="/img/cart.svg"
+            src="./img/cart.svg"
             className={styles.iconImgCart}
             alt="Cart"
             onClick={onClose}

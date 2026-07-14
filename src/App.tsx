@@ -1,4 +1,4 @@
-import './App.module.scss';
+import styles from './App.module.scss';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { Outlet } from 'react-router-dom';
@@ -9,9 +9,11 @@ export const App: React.FC = () => {
   return (
     <MenuProvider>
       <CartProvider>
-        <div data-cy="app">
+        <div data-cy="app" className={styles.app}>
           <Header />
-          <Outlet />
+          <div className={styles.outlet}>
+            <Outlet />
+          </div>
           <Footer />
         </div>
       </CartProvider>

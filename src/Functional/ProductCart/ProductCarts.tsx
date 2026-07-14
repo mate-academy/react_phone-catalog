@@ -14,7 +14,6 @@ export const ProductCarts: React.FC<Props> = ({ product, isNew }) => {
   const { cart, favorites, addToCart, toggleFavorite } = useCart();
 
   const {
-    id,
     category,
     itemId,
     fullPrice,
@@ -86,7 +85,7 @@ export const ProductCarts: React.FC<Props> = ({ product, isNew }) => {
           onClick={() => toggleFavorite(product)}
         >
           <img
-            src={isProductFavorite ? '/img/filled.svg' : '/img/favorites.svg'}
+            src={isProductFavorite ? './img/filled.svg' : './img/favorites.svg'}
             className={styles.iconImgFavorites}
             alt="Favourites"
           />

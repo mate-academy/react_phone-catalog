@@ -1,17 +1,11 @@
 @import '../../mixin.scss';
 
 .footer {
-  left: 0;
-  right: 0;
-  z-index: 100; // Чтобы футер не перекрывался карточками товаров при скролле
-  background-color: white;
-  position: fixed;
-  bottom: 0;
-
   display: flex;
   align-items: stretch;
   border-top: 1px solid #E2E6E9;
   margin-top: 80px;
+  background-color: white;
 
   @include on-tablet {
       margin-top: 64px;

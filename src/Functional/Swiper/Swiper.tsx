@@ -41,14 +41,14 @@ export const UseSwiper: React.FC = () => {
       <div className={styles.buttonsGroup}>
         <button className={styles.buttonHotPrice} id="hot-prev-button">
           <img
-            src="/img/left.svg"
+            src="./img/left.svg"
             alt="left"
             className={styles.hotPriceGroup}
           />
         </button>
         <button className={styles.buttonHotPrice} id="hot-next-button">
           <img
-            src="/img/right.svg"
+            src="./img/right.svg"
             alt="right"
             className={styles.hotPriceImg}
           />

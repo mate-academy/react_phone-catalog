@@ -260,15 +260,25 @@ font-size: 14px;
 .containerEmpty {
 box-sizing: border-box;
 margin: 32px;
+    position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1000;
 }
 
 .emptyImg {
-  width: 200px;
+  width: 300px;
   height: auto;
 }
 
+.emptyText{
+  display: flex;
+  align-items: center;
+}
+
 .backHome{
-  text-decoration: none;
+  // text-decoration: none;
   color: #313237;
 }
 

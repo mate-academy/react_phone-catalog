@@ -1,6 +1,6 @@
 @font-face {
   font-family: Mont;
-  src: url(fonts/Mont-Regular.otf);
+  src: url(./fonts/Mont-Regular.otf);
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: Mont;
-  src: url(fonts/Mont-SemiBold.otf);
+  src: url(./fonts/Mont-SemiBold.otf);
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: Mont;
-  src: url(fonts/Mont-Bold.otf);
+  src: url(./fonts/Mont-Bold.otf);
   font-weight: 800;
   font-weight: bold;
 }
@@ -53,3 +53,12 @@ button {
   flex-direction: column;
 }
 
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.outlet {
+  flex-grow: 1;
+}

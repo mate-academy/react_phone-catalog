@@ -6,13 +6,11 @@ import styles from './BrandNewModels.module.scss';
 import React, { useState, useEffect } from 'react';
 import { getData } from '../../fetch/httpClient';
 import { ProductCarts } from '../ProductCart/ProductCarts';
-import { useCart } from '../../context/CartContext';
 
 export const BrandNewModels: React.FC = () => {
   const [products, setProducts] = useState<Products[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const { cart, totalQuantity, totalPrice } = useCart();
 
   useEffect(() => {
     getData<Products[]>('./api/products.json')
@@ -20,6 +18,14 @@ export const BrandNewModels: React.FC = () => {
       .catch(() => setError('Something went wrong'))
       .finally(() => setLoading(false));
   }, []);
+
+  if (loading) {
+    return <div>Loading slider...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   const newProducts = [...products].sort((a, b) => b.year - a.year);
 
@@ -30,14 +36,14 @@ export const BrandNewModels: React.FC = () => {
         <div className={styles.buttonsGroup}>
           <button className={styles.buttonNewModels} id="brand-prev-button">
             <img
-              src="/img/left.svg"
+              src="./img/left.svg"
               alt="left"
               className={styles.newModelsGroup}
             />
           </button>
           <button className={styles.buttonNewModels} id="brand-next-button">
             <img
-              src="/img/right.svg"
+              src="./img/right.svg"
               alt="right"
               className={styles.newModelsImg}
             />

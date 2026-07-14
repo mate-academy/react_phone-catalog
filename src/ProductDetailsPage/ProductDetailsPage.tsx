@@ -24,7 +24,6 @@ export const ProductDetailsPage = () => {
     useCart();
 
   useEffect(() => {
-    setLoading(true);
     getData<FullProduct[]>(`./api/${category}.json`)
       .then(data => {
         const product = data.find(item => item.id === productId);

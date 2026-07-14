@@ -6,13 +6,11 @@ import styles from './HotPrice.module.scss';
 import React, { useState, useEffect } from 'react';
 import { getData } from '../../fetch/httpClient';
 import { ProductCarts } from '../ProductCart/ProductCarts';
-import { useCart } from '../../context/CartContext';
 
 export const HotPrice: React.FC = () => {
   const [products, setProducts] = useState<Products[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const { cart, totalQuantity, totalPrice } = useCart();
 
   useEffect(() => {
     getData<Products[]>('./api/products.json')
@@ -20,6 +18,14 @@ export const HotPrice: React.FC = () => {
       .catch(() => setError('Something went wrong'))
       .finally(() => setLoading(false));
   }, []);
+
+  if (loading) {
+    return <div>Loading slider...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   const withDiscount = [...products].sort((a, b) => {
     const discountA = a.fullPrice - a.price;
@@ -35,14 +41,14 @@ export const HotPrice: React.FC = () => {
         <div className={styles.buttonsGroup}>
           <button className={styles.buttonHotPrice} id="hot-prev-button">
             <img
-              src="/img/left.svg"
+              src="./img/left.svg"
               alt="left"
               className={styles.hotPriceGroup}
             />
           </button>
           <button className={styles.buttonHotPrice} id="hot-next-button">
             <img
-              src="/img/right.svg"
+              src="./img/right.svg"
               alt="right"
               className={styles.hotPriceImg}
             />

@@ -14,7 +14,7 @@ export const BannerSlider = () => {
     <div>
       <div className={styles.container}>
         <button className={styles.sliderButton} id="main-prev-button">
-          <img src="/img/left.svg" alt="left" className={styles.leftButton} />
+          <img src="./img/left.svg" alt="left" className={styles.leftButton} />
         </button>
         <div className={styles.mainSwiper}>
           <Swiper
@@ -45,7 +45,7 @@ export const BannerSlider = () => {
 
         <button className={styles.sliderButton} id="main-next-button">
           <img
-            src="/img/right.svg"
+            src="./img/right.svg"
             alt="right"
             className={styles.rightButton}
           />
