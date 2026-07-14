@@ -1,0 +1,95 @@
+@use '/src/modules/shared/styles/variables' as v;
+@use '/src/modules/shared/styles/mixins' as m;
+@use '/src/modules/shared/styles/typography' as t;
+
+.dropdown {
+  position: relative;
+
+  width: 150px;
+
+  @include m.flex(column, 4px);
+
+  @include m.respond-to(tablet) {
+    width: 176px;
+  }
+
+  &__button {
+    width: 100%;
+    height: 40px;
+    padding: 10px 12px;
+
+    @include m.flex(row, 0, space-between, center);
+
+    background: none;
+    color: v.$color-primary;
+    border: 1px solid v.$color-icons;
+    border-radius: 8px;
+
+    @include t.text-button;
+
+    &:hover {
+      border-color: v.$color-secondary;
+    }
+
+    &--open {
+      border-color: v.$color-primary;
+
+      &::after {
+        transform: rotate(180deg);
+      }
+    }
+
+    &::after {
+      content: '';
+      width: 16px;
+      height: 16px;
+      right: 12px;
+
+      position: absolute;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url('/icons/arrow-bottom.svg');
+
+      transition: transform v.$duration-fast ease;
+      pointer-events: none;
+    }
+  }
+
+  &__list {
+    width: 100%;
+
+    @include t.text-body;
+    @include m.flex(column, 0, center);
+
+    position: absolute;
+    top: 44px;
+    z-index: 3;
+
+    background-color: v.$color-white;
+
+    border: 1px solid v.$color-elements;
+    border-radius: 8px;
+  }
+
+  &__item {
+    cursor: pointer;
+
+    @include m.flex(row, 0, flex-start, center);
+
+    padding-inline: 12px;
+    height: 32px;
+
+    color: v.$color-secondary;
+    &:hover {
+      color: v.$color-primary;
+    }
+
+    &:first-child {
+      margin-top: 8px;
+    }
+
+    &:last-child {
+      margin-bottom: 8px;
+    }
+  }
+}

@@ -1,0 +1,1 @@
+export { ShortSpec } from './ShortSpec';

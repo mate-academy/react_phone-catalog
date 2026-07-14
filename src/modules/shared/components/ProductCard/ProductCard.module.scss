@@ -1,0 +1,97 @@
+@use '../../../shared/styles/typography' as t;
+@use '../../../shared/styles/variables' as v;
+@use '../../../shared/styles/mixins' as m;
+
+.product-card {
+  width: 100%;
+  position: relative;
+
+  @include m.flex(column, 8px, center);
+
+  padding: 32px;
+
+  background-color: v.$color-white;
+  border: 1px solid v.$color-elements;
+  border-radius: 8px;
+
+  &__photo {
+    height: 100%;
+    object-fit: contain;
+
+    &-wrapper {
+      align-self: center;
+
+      height: 181px;  // 129px
+
+      @include m.respond-to(tablet) {
+        height: 181px;
+      }
+
+      @include m.respond-to(desktop) {
+        height: 196px;
+      }
+    }
+  }
+
+  &__text {
+    @include t.text-body;
+  }
+
+  &__price-row {
+    @include m.flex(row, 8px, flex-start, flex-start);
+  }
+
+  &__price-current {
+    @include t.heading-2;
+  }
+
+  &__price-old {
+    font-family: v.$main-font;
+    color: v.$color-secondary;
+    font-weight: 400;
+    font-size: 22px;
+    text-decoration: line-through;
+  }
+
+  &__line {
+    width: auto;
+    height: 1px;
+
+    background-color: v.$color-elements;
+  }
+
+  &__product-manager {
+    z-index: 2;
+    position: relative;
+
+    display: flex;
+    gap: 8px;
+  }
+
+  &__cart {
+    flex: 1;
+  }
+
+  &__fav {
+    flex: 0 0 40px;
+  }
+
+  &__short-spec {
+    @include t.text-small;
+  }
+
+  &__link {
+    @include m.flex(column, 8px, flex-start);
+
+    flex-grow: 1;
+    text-decoration: none;
+    color: inherit;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+  }
+}

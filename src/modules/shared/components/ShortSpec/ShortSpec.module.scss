@@ -1,0 +1,33 @@
+@use '../../../shared/styles/typography' as t;
+@use '../../../shared/styles/variables' as v;
+@use '../../../shared/styles/mixins' as m;
+
+.short-spec {
+  &__list {
+    width: 100%;
+
+    list-style: none;
+
+    @include m.flex(column, 8px);
+  }
+
+  &__item {
+    @include m.flex(row, 0, space-between);
+
+    &:first-child {
+      margin-top: 8px;
+    }
+
+    &:last-child {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__key {
+    color: v.$color-secondary;
+  }
+
+  &__value {
+    color: v.$color-primary;
+  }
+}

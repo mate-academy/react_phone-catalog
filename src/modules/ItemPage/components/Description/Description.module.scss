@@ -1,0 +1,34 @@
+@use '../../../shared/styles/typography' as t;
+@use '../../../shared/styles/variables' as v;
+@use '../../../shared/styles/mixins' as m;
+
+.description {
+  @include m.flex(column, 32px);
+
+  &__title {
+    padding-bottom: 16px;
+    border-bottom: 1px solid v.$color-elements;
+    
+    @include t.heading-3;
+  }
+
+  &__list {
+    color: v.$color-primary;
+
+    @include m.flex(column, 32px);
+  }
+
+  &__item {
+    @include m.flex(column, 16px);
+  }
+
+  &__term {
+    @include t.heading-4;
+  }
+
+  &__definition {
+    color: v.$color-secondary;
+
+    @include t.text-body;
+  }
+}

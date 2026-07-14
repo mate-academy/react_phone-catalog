@@ -1,0 +1,7 @@
+@use '../../../shared/styles/mixins' as m;
+
+.cart-list {
+  @include m.flex(column, 16px);
+
+  list-style: none;
+}

@@ -1,0 +1,143 @@
+@use '/src/modules/shared/styles/variables' as v;
+@use '/src/modules/shared/styles/mixins' as m;
+@use '/src/modules/shared/styles/typography' as t;
+
+.carousel {
+  --card-width: 100vw;
+
+  @include m.respond-to(tablet) {
+    margin-inline: 0;
+    
+    --card-width: 100%;
+  }
+
+  @include m.respond-to(desktop) {
+    --card-width: 1040px;
+  }
+
+  &__main {
+    @include m.flex(row, 19px, center, stretch);
+
+    @include m.respond-to(desktop) {
+      @include m.flex(row, 16px, center, stretch);
+    }
+
+    &-arrows {
+      display: none;
+
+      @include m.respond-to(tablet) {
+        @include m.flex(row, 0, center, center);
+
+        height: auto;
+
+        flex: 0 0 auto;
+
+        border: 1px solid v.$color-elements;
+        border-radius: 24px;
+      }
+    }
+  }
+
+  &__wrapper {
+    width: var(--card-width);
+    overflow: hidden;
+  }
+
+  &__collection {
+    display: flex;
+    list-style: none;
+  }
+
+  &__item {
+    flex: 0 0 100%;
+    min-width: 0;
+
+    width: var(--card-width);
+
+    aspect-ratio: 1/1;
+
+    @include m.respond-to(tablet) {
+      aspect-ratio: 490/189;
+    }
+  }
+
+  &__banner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    &-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    &-action {
+      display: none;
+      background: none;
+      padding: 1.5em 2.95em;
+
+      border: 1px solid #2f2f2f;
+      border-radius: 40px;
+
+      cursor: pointer;
+
+      transition: background-color v.$duration-fast ease-in-out;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      @include m.respond-to(tablet) {
+        display: block;
+        position: absolute;
+
+        left: 5.8%;
+        bottom: 15%;
+        z-index: 3;
+
+        @include t.text-uppercase;
+
+        font-size: 1.2vw;
+        color: v.$color-white;
+        font-weight: 600;
+      }
+
+      @include m.respond-to(desktop) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__button {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+
+    &-item {
+      position: relative;
+      width: 24px;
+      height: 24px;
+
+      cursor: pointer;
+
+      &::after {
+        position: absolute;
+        content: '';
+        left: 5px;
+        top: 10px;
+        display: inline-block;
+        width: 14px;
+        height: 4px;
+        background-color: v.$color-elements;
+      }
+
+      &--active {
+        &::after {
+          background-color: v.$color-primary;
+        }
+      }
+    }
+  }
+}

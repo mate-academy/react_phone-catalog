@@ -1,0 +1,37 @@
+@use '../../../shared/styles/typography' as t;
+@use '../../../shared/styles/variables' as v;
+
+.btn {
+  @include t.text-button;
+  
+  color: v.$color-white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: v.$color-accent;
+
+  height: 40px;
+  width: 176px;
+
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  transition: box-shadow v.$duration-normal v.$ease-out-quart,
+  color v.$duration-normal v.$ease-out-quart,
+  background-color v.$duration-normal v.$ease-out-quart;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+
+  &--active,
+  &:active {
+    box-shadow: none;
+    border: 1px v.$color-elements solid;
+    color: v.$color-accent;
+    background-color: v.$color-white;
+  }
+}

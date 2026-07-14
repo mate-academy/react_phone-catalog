@@ -1,0 +1,22 @@
+@use '../../../shared/styles/typography' as t;
+@use '../../../shared/styles/variables' as v;
+@use '../../../shared/styles/mixins' as m;
+
+.tech-specs {
+  @include m.flex(column, 30px);
+
+  @include m.respond-to(tablet) {
+    gap: 25px;
+  }
+
+  &__title {
+    padding-bottom: 16px;
+    border-bottom: 1px solid v.$color-elements;
+    
+    @include t.heading-3;
+  }
+
+  &__short-spec {
+    @include t.text-body;
+  }
+}

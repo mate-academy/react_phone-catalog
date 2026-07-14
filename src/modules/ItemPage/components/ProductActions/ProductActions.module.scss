@@ -1,0 +1,18 @@
+@use '../../../shared/styles/typography' as t;
+@use '../../../shared/styles/variables' as v;
+@use '../../../shared/styles/mixins' as m;
+
+.product-actions {
+  width: 100%;
+  
+  @include m.flex(column, 24px);
+
+  & > *:not(:last-child) {
+    border-bottom: 1px solid v.$color-elements;
+    padding-bottom: 24px;
+  }
+
+  &:last-child {
+    padding-top: 32px;
+  }
+}

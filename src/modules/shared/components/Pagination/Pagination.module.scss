@@ -1,0 +1,10 @@
+@use '../../../shared/styles/typography' as t;
+@use '../../../shared/styles/mixins' as m;
+
+.pagination {
+  @include m.flex(row, 16px, center, center);
+
+  &__pages {
+    @include m.flex(row, 8px, center, center);
+  }
+}

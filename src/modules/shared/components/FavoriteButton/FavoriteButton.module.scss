@@ -1,0 +1,31 @@
+@use '../../../shared/styles/typography' as t;
+@use '../../../shared/styles/variables' as v;
+
+.btn {
+  @include t.text-button;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: v.$favorite-button-size;
+  width: v.$favorite-button-size;
+
+  border: 1px v.$color-icons solid;
+  border-radius: 48px;
+  background: none;
+
+  cursor: pointer;
+
+  transition: border v.$duration-fast v.$ease-out-quart;
+
+  &:hover {
+    border: 1px v.$color-primary solid;
+  }
+
+  &--selected,
+  &:active,
+  &:disabled {
+    border: 1px v.$color-elements solid;
+  }
+}

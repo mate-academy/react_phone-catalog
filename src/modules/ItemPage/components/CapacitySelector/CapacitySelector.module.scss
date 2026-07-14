@@ -1,0 +1,42 @@
+@use '../../../shared/styles/typography' as t;
+@use '../../../shared/styles/mixins' as m;
+@use '../../../shared/styles/variables' as v;
+
+.capacity-selector {
+  @include m.flex(column, 8px);
+
+  &__header {
+    color: v.$color-icons;
+
+    @include m.flex(row, 0, space-between);
+    @include t.text-small;
+  }
+
+  &__list {
+    list-style: none;
+    height: 32px;
+
+    @include m.flex(row, 8px);
+  }
+
+  &__option {
+    width: auto;
+    height: 32px;
+    padding-inline: 8px;
+
+    border: 1px v.$color-icons solid;
+    color: v.$color-primary;
+    background-color: v.$color-white;
+    border-radius: 4px;
+
+    @include t.text-body;
+    @include m.flex(row, 0, center, center);
+
+    &--active,
+    &:active {
+      color: v.$color-white;
+      background-color: v.$color-primary;
+      border: 1px v.$color-primary solid;
+    }
+  }
+}

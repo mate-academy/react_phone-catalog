@@ -1,0 +1,66 @@
+@use '/src/modules/shared/styles/variables' as v;
+@use '/src/modules/shared/styles/mixins' as m;
+@use '/src/modules/shared/styles/typography' as t;
+
+.card {
+  width: 100%;
+
+  &__image {
+    height: 100%;
+    object-fit: contain;
+
+    position: absolute;
+
+    transition: transform v.$duration-normal linear;
+
+    &--mobile {
+      height: 115%;
+      bottom: -24%;
+      right: -15%;
+    }
+
+    &--tablets {
+      bottom: -15%;
+      right: -15%;
+    }
+
+    &--accessories {
+      bottom: -17%;
+      right: -35%;
+    }
+  }
+
+  &__background {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    position: relative;
+
+    background-color: #6d6474;
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    &:hover .card__image {
+      transform: scale(1.05);
+      transform-origin: bottom;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: v.$color-primary;
+  }
+
+  &__title {
+    margin-top: 24px;
+
+    @include t.heading-3;
+  }
+
+  &__count {
+    color: v.$color-secondary;
+    margin-top: 4px;
+
+    @include t.text-body;
+  }
+}

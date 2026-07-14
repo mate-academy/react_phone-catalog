@@ -1,0 +1,13 @@
+@use '/src/modules/shared/styles/variables' as v;
+@use '/src/modules/shared/styles/mixins' as m;
+@use '/src/modules/shared/styles/typography' as t;
+
+.list {
+  list-style: none;
+
+  @include m.flex(column, 32px, center, center);
+
+  @include m.respond-to(tablet) {
+    @include m.flex(row, 16px, center, center);
+  }
+}

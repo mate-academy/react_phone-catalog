@@ -1,0 +1,28 @@
+@use 'sass:map';
+
+$breakpoints: (
+  'mobile': 320px,
+  'tablet': 640px,
+  'desktop': 1200px,
+  'widescreen': 1440px,
+);
+
+@mixin respond-to($breakpoint-name) {
+  @if map.has-key($breakpoints, $breakpoint-name) {
+    $width: map.get($breakpoints, $breakpoint-name);
+
+    @media (min-width: $width) {
+      @content;
+    }
+  } @else {
+    @warn #{$breakpoint-name}" wasn`t found in map $breakpoints";
+  }
+}
+
+@mixin flex($direction: row, $gap: 0, $justify: stretch, $align: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
