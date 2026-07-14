@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './Footer.module.scss';
 
 export const Footer = () => {
@@ -7,6 +7,7 @@ export const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   //#endregion
+  const navigation = useNavigate();
 
   return (
     <footer className={styles.footer}>
@@ -34,7 +35,17 @@ export const Footer = () => {
             Contacts
           </a>
         </li>
-        <li className={styles.listContent}>Rights</li>
+        <li className={styles.listContent}>
+          {' '}
+          <a
+            onClick={() => navigation('/rights')}
+            target="_blank"
+            rel="noreferrer"
+            className={styles.listLink}
+          >
+            Rights
+          </a>
+        </li>
       </ul>
 
       <button

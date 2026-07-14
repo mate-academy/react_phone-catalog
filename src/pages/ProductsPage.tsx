@@ -6,6 +6,7 @@ import { Dropdown } from '../components/Dropdown/Dropdown';
 import { ProductsList } from '../components/ProductsList/ProductsList';
 import { Pagination } from '../components/Pagination/Pagination';
 import styles from './ProductsPage.module.scss';
+import { NotFoundPage } from './NotFoundPage';
 
 type SortType = 'newest' | 'cheapest' | 'alphabetically';
 type ItemsPerPage = '4' | '8' | '16' | 'all';
@@ -18,6 +19,11 @@ export const ProductsPage = () => {
   const [sortType, setSortType] = useState<SortType>('newest');
   const [countItems, setCountItems] = useState<ItemsPerPage>('16');
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const validCategories = ['phones', 'tablets', 'accessories'];
+
+  if (!validCategories.includes(category)) {
+    return <NotFoundPage />;
+  }
 
   const filteredProducts = products.filter(
     product => product.category === category,

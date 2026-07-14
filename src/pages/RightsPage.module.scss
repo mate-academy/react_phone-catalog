@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.text {
+  font-family: Mont;
+  font-weight: 800;
+  font-style: Bold;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1%;
+}
+
+.listLink {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  font-family: Mont;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  list-style: none;
+  color: #89939a;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    background-image: url('./img/icons/address_card.svg');
+    height: 16px;
+    width: 16px;
+  }
+}

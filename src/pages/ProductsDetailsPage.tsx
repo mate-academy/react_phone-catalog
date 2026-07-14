@@ -227,7 +227,7 @@ export const ProductsDetailsPage = () => {
         <div className={styles.blockButtons}>
           <button
             type="button"
-            className={styles.cartButton}
+            className={`${styles.cartButton} ${isInCart ? styles.cartButtonAdded : ''}`}
             onClick={() => {
               if (!isInCart) {
                 addToCart({

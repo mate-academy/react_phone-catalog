@@ -48,10 +48,10 @@
 
   .backToTopText {
     font-family: Mont;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 12px;
     line-height: 100%;
-    letter-spacing: 0%;
+    letter-spacing: normal;
     text-align: right;
     color: #89939a;
     white-space: nowrap;
@@ -64,7 +64,7 @@
     flex-shrink: 0;
     width: 32px;
     height: 32px;
-    border: 1px solid #b4bdc4;
+    border: 1px solid #b4bdc3;
     border-radius: 50%;
 
     img {
@@ -91,7 +91,7 @@
     font-weight: 700;
     font-size: 12px;
     line-height: 11px;
-    letter-spacing: 4%;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     list-style: none;
     color: #89939a;
@@ -104,5 +104,6 @@
   .listLink {
     text-decoration: none;
     color: inherit;
+    cursor: pointer;
   }
 }

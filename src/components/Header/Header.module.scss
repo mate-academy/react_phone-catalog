@@ -15,6 +15,7 @@
 .logo {
   display: flex;
   align-items: center;
+  padding: 0 24px;
 
   img {
     transition: transform 0.3s;
@@ -113,11 +114,12 @@
     transition: background-color 0.3s;
   }
 
-  &:hover {
-    color: #0f1121;
+  &:hover,
+  &:global(.active) {
+    color: #0f0f11;
 
     &::after {
-      background: #0f1121;
+      background: #0f0f11;
     }
   }
 }
@@ -152,7 +154,7 @@
     }
 
     &::after {
-      background: #0f1121;
+      background: #0f0f11;
     }
   }
 }

@@ -11,6 +11,7 @@
   @media (min-width: 1200px) {
     display: grid;
     grid-template-columns: 1fr 368px;
+    align-content: start;
     column-gap: 16px;
     max-width: 1136px;
     padding-inline: 0;
@@ -113,11 +114,20 @@
   color: #ffffff;
   text-align: center;
 
-  transition: opacity 0.2s ease;
+  transition: box-shadow 0.2s ease;
 
   @media (min-width: 640px) {
     &:hover {
-      opacity: 0.9;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
     }
   }
+}
+
+.emptyCartMessage {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #89939a;
+  text-align: center;
+  padding-top: 40px;
 }

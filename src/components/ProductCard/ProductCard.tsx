@@ -52,7 +52,7 @@ export const ProductCard = ({ product, variant }: Props) => {
       <div className={styles.actions}>
         <button
           type="button"
-          className={styles.cartButton}
+          className={`${styles.cartButton} ${isInCart ? styles.cartButtonAdded : ''}`}
           onClick={() => {
             if (!isInCart) {
               addToCart({

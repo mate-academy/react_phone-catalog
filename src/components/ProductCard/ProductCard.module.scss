@@ -4,8 +4,6 @@
   height: 439px;
   width: 212px;
   padding-inline: 32px;
-  border-width: 1px;
-  opacity: 1;
   border-radius: 8px;
   flex-shrink: 0;
 
@@ -31,10 +29,8 @@
   width: 287px;
   height: 440px;
   border-radius: 8px;
-  border-width: 1px;
   padding: 32px;
   gap: 8px;
-  opacity: 1;
   transition: box-shadow 0.2s ease;
 
   .cartButton {
@@ -45,17 +41,27 @@
     border-radius: 8px;
     border: none;
     font-family: Mont;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 14px;
     line-height: 21px;
-    letter-spacing: 0%;
     text-align: center;
     color: #ffffff;
+    transition: box-shadow 0.2s;
 
     @media (min-width: 640px) {
       flex: 1;
       width: auto;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+      }
     }
+  }
+
+  .cartButtonAdded {
+    background-color: transparent;
+    border: 1px solid #e2e6e9;
+    color: #f86800;
   }
 
   .specImage {
@@ -70,9 +76,7 @@
     border: none;
     width: 223px;
     min-height: 1px;
-    border-width: 1px;
-    opacity: 1;
-    background-color: #e2e6e9 !important;
+    background-color: #e2e6e9;
     margin-bottom: 8px;
   }
 
@@ -190,10 +194,9 @@
   overflow: hidden;
 
   font-family: Mont;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  letter-spacing: 0%;
   margin-top: 16px;
 
   color: #0f0f11;
@@ -202,32 +205,24 @@
 .priceSection {
   display: flex;
   align-items: center;
-
-  font-family: Mont;
-  font-weight: 800;
-  font-size: 22px;
-  line-height: 140%;
-  letter-spacing: 0%;
   gap: 8px;
   margin-bottom: 8px;
 }
 
 .specPrice {
   font-family: Mont;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 22px;
   line-height: 140%;
-  letter-spacing: 0%;
 
   color: #0f0f11;
 }
 
 .specFullPrice {
   font-family: Mont;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 22px;
   line-height: 100%;
-  letter-spacing: 0%;
 
   color: #89939a;
 }
@@ -241,20 +236,18 @@
 
 .specLabel {
   font-family: Mont;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 12px;
   line-height: 100%;
-  letter-spacing: 0%;
 
   color: #89939a;
 }
 
 .specChar {
   font-family: Mont;
-  font-weight: 400;
+  font-weight: 700;
   font-size: 12px;
   line-height: 100%;
-  letter-spacing: 0%;
   text-align: right;
 
   color: #0f0f11;
@@ -275,16 +268,26 @@
   border-radius: 8px;
   border: none;
   font-family: Mont;
-  font-weight: 400;
+  font-weight: 700;
   font-size: 14px;
   line-height: 21px;
-  letter-spacing: 0%;
   text-align: center;
   color: #ffffff;
+  transition: box-shadow 0.2s;
 
   @media (min-width: 640px) {
     flex: 1;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
   }
+}
+
+.cartButtonAdded {
+  background-color: transparent;
+  border: 1px solid #e2e6e9;
+  color: #f86800;
 }
 
 .favButton {
@@ -293,15 +296,19 @@
   cursor: pointer;
   padding: 0;
   flex-shrink: 0;
+
+  @media (min-width: 640px) {
+    &:hover img {
+      content: url('/img/icons/favourites_icon_hover.svg');
+    }
+  }
 }
 
 .divider {
   border: none;
   width: 148px;
   min-height: 1px;
-  border-width: 1px;
-  opacity: 1;
-  background-color: #e2e6e9 !important;
+  background-color: #e2e6e9;
   margin-bottom: 8px;
 
   @media (min-width: 640px) {
