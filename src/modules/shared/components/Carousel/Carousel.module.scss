@@ -52,6 +52,10 @@
   display: flex;
   justify-content: space-between;
   gap: 16px;
+
+  @include mobile {
+    display: none;
+  }
 }
 
 .carousel__button {

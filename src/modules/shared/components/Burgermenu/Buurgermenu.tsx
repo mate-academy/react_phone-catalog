@@ -56,10 +56,10 @@ export const BurgerMenu: React.FC<Props> = ({ isOpen, onClose }) => {
       </nav>
 
       <div className={styles.menu__footer}>
-        <NavLink to="/favourites" className={getIconClass} onClick={onClose}>
+        <NavLink to="/favorites" className={getIconClass} onClick={onClose}>
           <img
             src={`${import.meta.env.BASE_URL}img/icons/heart.svg`}
-            alt="Favourites"
+            alt="Favorites"
           />
         </NavLink>
         <NavLink to="/cart" className={getIconClass} onClick={onClose}>

@@ -10,6 +10,7 @@
   @include mobile {
     flex-direction: column;
     gap: 32px;
+    align-items: center;
   }
 }
 
@@ -84,8 +85,4 @@
     transform: scale(2);
     transform-origin: 5% -1%;
   }
-}
-
-.categories__card:hover .categories__image {
-  transform: scale(1.2);
 }
