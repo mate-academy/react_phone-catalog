@@ -1,0 +1,101 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+@use '../../styles/fonts';
+
+.carousel {
+  width: 100%;
+}
+
+.carousel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.carousel__title {
+  font-size: 24px;
+}
+
+.carousel__cards {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 8px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include tablet {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow-x: visible;
+    padding-inline: 0;
+  }
+
+  @include mobile {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow-x: visible;
+    justify-items: center;
+    padding-inline: 16px;
+    scroll-padding-inline: 16px;
+  }
+}
+
+.carousel__buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.carousel__button {
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px $icons-color solid;
+  background-color: $bg-color;
+  cursor: pointer;
+  caret-color: transparent;
+
+  &:hover {
+    border-color: $black;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      border-color: $icons-color;
+    }
+  }
+}
+
+.carousel__card_wrapper {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  width: fit-content;
+
+  @include tablet {
+    width: 100%;
+    scroll-snap-align: unset;
+  }
+
+  @include mobile {
+    width: 100%;
+    scroll-snap-align: unset;
+  }
+}

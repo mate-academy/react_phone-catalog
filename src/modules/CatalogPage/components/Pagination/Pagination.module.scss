@@ -1,0 +1,61 @@
+@use '../../../shared/styles/mixins' as *;
+@use '../../../shared/styles/variables' as *;
+
+@mixin button {
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  background-color: $bg-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $black;
+  }
+}
+
+.pagination__arrow_button {
+  @include button;
+
+  border: 1px $icons-color solid;
+
+  &:disabled {
+    opacity: 0.5;
+
+    &:hover {
+      border-color: $icons-color;
+      cursor: default;
+    }
+  }
+}
+
+.pagination__container {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  justify-content: center;
+  margin-top: 40px;
+
+  @include mobile {
+    margin-top: 24px;
+  }
+}
+
+.pagination__pages_list {
+  display: flex;
+  gap: 8px;
+}
+
+.pagination__page_button {
+  @include button;
+
+  border: 1px $elements-color solid;
+}
+
+.pagination__page_button_active {
+  background-color: $black;
+  border: $black;
+  color: $white;
+}

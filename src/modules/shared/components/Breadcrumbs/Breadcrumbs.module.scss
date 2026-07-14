@@ -1,0 +1,52 @@
+@use '../../styles/variables' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 0;
+}
+
+.breadcrumbs__home_link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.breadcrumbs__icon {
+  width: 16px;
+  height: 16px;
+}
+
+.breadcrumbs__separator {
+  width: 12px;
+  height: 12px;
+  opacity: 0.5;
+}
+
+.breadcrumbs__link {
+  text-decoration: none;
+  color: #313237;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #89939A;
+  }
+}
+
+.breadcrumbs__current {
+  color: #89939A;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+}

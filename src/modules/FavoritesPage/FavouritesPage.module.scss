@@ -1,0 +1,43 @@
+@use '../shared/styles/mixins' as *;
+@use '../shared/styles/variables' as *;
+
+.favourites-page {
+  @include margins;
+
+  padding-bottom: 80px;
+
+  &__header {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    color: #89939a;
+    font-size: 14px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
+  }
+
+  &__empty {
+    margin-top: 40px;
+    color: $black;
+  }
+}

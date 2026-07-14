@@ -1,0 +1,136 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/fonts';
+
+.footer {
+  display: flex;
+  position: sticky;
+  top: 0;
+  flex-direction: column;
+  gap: 32px;
+  z-index: 10;
+  background-color: $white;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 32px 16px;
+  height: $footer-height-mobile;
+  border-bottom: 1px solid $elements-color;
+  box-shadow: $shadow-light;
+
+  @include tablet {
+    height: $footer-height-desktop;
+    padding: 0 24px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @include desktop {
+    padding: 0 152px;
+    flex-direction: row;
+    align-items: center;
+    height: $footer-height-desktop;
+  }
+}
+
+.footer__nav {
+  display: flex;
+  flex: 1;
+  max-width: 280px;
+  justify-content: space-between;
+
+  @include desktop {
+    max-width: 400px;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: auto;
+    max-width: none;
+    gap: 16px;
+  }
+}
+
+.footer__link {
+  font-family: $font-family-main;
+  text-decoration: none;
+  color: $secondary-color;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-small;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: color $transition;
+
+  &:hover {
+    color: $black;
+  }
+
+  @include desktop {
+    height: $footer-height-desktop;
+  }
+}
+
+.footer__logo {
+  display: block;
+  height: $footer-logo-height;
+
+  img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+  }
+}
+
+.footer__button-back-to-top {
+  @include mobile {
+    align-self: center;
+  }
+}
+
+.footer__arrow-circle {
+  @include flex-center;
+
+  width: 32px;
+  height: 32px;
+  border-radius: $border-radius-circle;
+  border: 1px solid $icons-color;
+  transition: background-color $transition ease;
+
+  &:hover {
+    border-color: $black;
+  }
+
+  img {
+    @include icon;
+
+    object-fit: contain;
+  }
+}
+
+.footer__back-to-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  &:hover .footer__arrow-circle {
+    background-color: $bg-color;
+  }
+}
+
+.footer__back-text {
+  color: $secondary-color;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-small;
+  transition: color $transition;
+
+  &:hover {
+    color: $black;
+  }
+}
