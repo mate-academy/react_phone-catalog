@@ -68,7 +68,9 @@ export const ProductPage = () => {
         setCardProduct(shortProduct);
         setCategory(shortProduct.category as Category);
 
-        return fetch(`/api/${shortProduct.category}.json`);
+        return fetch(
+          `${import.meta.env.BASE_URL}/api/${shortProduct.category}.json`,
+        );
       })
       .then(response => {
         if (!response.ok) {
