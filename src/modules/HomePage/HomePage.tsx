@@ -19,6 +19,17 @@ export const HomePage = () => {
       .slice(0, 12);
   }, [products]);
 
+  const hotPriceProducts = useMemo(() => {
+    return [...products]
+      .sort((productA, productB) => {
+        const discountA = productA.fullPrice - productA.price;
+        const discountB = productB.fullPrice - productB.price;
+
+        return discountB - discountA || productA.price - productB.price;
+      })
+      .slice(0, 12);
+  }, [products]);
+
   return (
     <section className={styles.homePage}>
       <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
@@ -45,6 +56,8 @@ export const HomePage = () => {
           />
 
           <ShopByCategory products={products} />
+
+          <ProductsSlider title="Hot prices" products={hotPriceProducts} />
         </>
       )}
     </section>
