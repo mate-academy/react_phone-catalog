@@ -1,20 +1,23 @@
 import styles from './Footer.module.scss';
 
-const iconSrc = (iconName: string) =>
-  `${import.meta.env.BASE_URL}img/icons/${iconName}`;
+const projectUrl = 'https://github.com/Inna-code10/react_phone-catalog';
+
+const iconSrc = (iconName: string) => {
+  return `${import.meta.env.BASE_URL}img/icons/${iconName}`;
+};
 
 const footerLinks = [
   {
-    href: 'https://github.com/Inna-code10/react_phone-catalog',
     label: 'Github',
+    ariaLabel: 'Open the project repository on GitHub',
   },
   {
-    href: '#contacts',
     label: 'Contacts',
+    ariaLabel: 'Open the project repository on GitHub',
   },
   {
-    href: '#rights',
     label: 'Rights',
+    ariaLabel: 'Open the project repository on GitHub',
   },
 ];
 
@@ -30,11 +33,11 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.content}>
         <a
-          href="https://github.com/Inna-code10/react_phone-catalog"
+          href={projectUrl}
           className={styles.logoLink}
-          aria-label="Nice Gadgets"
+          aria-label="Open the project on GitHub"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
         >
           <span className={styles.logo}>
             <img
@@ -43,6 +46,7 @@ export const Footer = () => {
               className={styles.logoNg}
               aria-hidden="true"
             />
+
             <img
               src={iconSrc('logo-ok.svg')}
               alt=""
@@ -53,13 +57,14 @@ export const Footer = () => {
         </a>
 
         <nav className={styles.links} aria-label="Footer navigation">
-          {footerLinks.map(({ href, label }) => (
+          {footerLinks.map(({ label, ariaLabel }) => (
             <a
               key={label}
-              href={href}
+              href={projectUrl}
               className={styles.link}
-              target={href.startsWith('http') ? '_blank' : undefined}
-              rel={href.startsWith('http') ? 'noreferrer' : undefined}
+              aria-label={ariaLabel}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               {label}
             </a>
@@ -69,6 +74,7 @@ export const Footer = () => {
         <button
           type="button"
           className={styles.backToTop}
+          aria-label="Back to the top of the page"
           onClick={handleBackToTop}
         >
           <span className={styles.backToTopText}>Back to top</span>

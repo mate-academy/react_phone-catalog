@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import { BannerSlider } from '../../components/BannerSlider';
 import { Loader } from '../../components/Loader';
 import { ProductsSlider } from '../../components/ProductsSlider';
+import { ShopByCategory } from '../../components/ShopByCategory';
 import { useStore } from '../../context/StoreContext';
 
 import styles from './HomePage.module.scss';
@@ -37,7 +38,14 @@ export const HomePage = () => {
       )}
 
       {!isLoading && !error && (
-        <ProductsSlider title="Brand new models" products={brandNewProducts} />
+        <>
+          <ProductsSlider
+            title="Brand new models"
+            products={brandNewProducts}
+          />
+
+          <ShopByCategory products={products} />
+        </>
       )}
     </section>
   );
