@@ -1,0 +1,68 @@
+@import './../../style/index';
+
+.pagination {
+  height:32px;
+  display: flex;
+  justify-content: center;
+
+  &__item {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__page {
+    width: 32px;
+    background-color: $background-color;
+    border: 1px solid $color-grey;
+    border-radius: 20px;
+    color: $color-primary;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+
+    &--active {
+      background-color: $color-primary;
+      color: $color-white ;
+    }
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: $background-color;
+    border: 1px solid $color-grey;
+    border-radius:  15px;
+
+    &:disabled {
+      border: 1px solid #3B3E4A;
+      background-color: $background-color;
+    }
+
+
+
+    &--prev,
+    &--next {
+      .product-slider__btn-icon {
+        filter: brightness(1);
+      }
+    }
+
+    &--prev:hover,
+    &--next:hover {
+      border: 1px solid $color-primary;
+    }
+
+    &--prev:disabled,
+    &--next:disabled {
+      .product-slider__btn-icon {
+        filter: brightness(0.5);
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@import './../../style/index';
+
+.productNav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  &__item {
+    display:flex;
+    gap:8px;
+    align-items: center;
+
+    &:not(:last-child)::after {
+      content: '';
+      height: 12px;
+      width: 12px;
+      background-image: url('/public/icon/Vector\ Left\ \(Stroke\).png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+  }
+}
+
+&__link {
+    height: 16px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  &__logo {
+    width: 16px;
+
+    &-arrow {
+      width: 16px;
+    }
+  }
+
+  &__current {
+    font-size: 12px;
+    color: $color-grey;
+    font-weight: 700;
+  }
+}

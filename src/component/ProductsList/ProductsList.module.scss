@@ -1,0 +1,44 @@
+@import './../style/index';
+
+.product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include padding-inline;
+
+  &__title {
+    @include on-tablet {
+      font-size: 48px;
+    }
+  }
+
+  &__text {
+    color: #89939A;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &__select {
+    display: grid;
+    grid-template-columns: repeat(2s, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      grid-template-columns: 187px 136px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: 176px 128px;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+}
