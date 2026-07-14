@@ -15,6 +15,7 @@ type CartContextType = {
   toggleFavorite: (product: Products) => void;
   clearCart: () => void;
   totalQuantity: number;
+  totalQuantityFav: number;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -45,30 +46,30 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     // dodae tovar //
     setCart(prevCart => {
       const existingItem = prevCart.find(
-        cartItem => cartItem.product.id === item.id,
+        cartItem => cartItem.product.itemId === item.itemId,
       );
 
       if (existingItem) {
         return prevCart.map(cartItem =>
-          cartItem.product.id === item.id
+          cartItem.product.itemId === item.itemId
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem,
         );
       }
 
-      return [...prevCart, { id: item, quantity: 1, product: item }];
+      return [...prevCart, { quantity: 1, product: item }];
     });
   };
 
   const removeFromCart = (product: Products) => {
     //vidalye tovar //
     setCart(prevCart =>
-      prevCart.filter(item => item.product.id !== product.id),
+      prevCart.filter(item => item.product.itemId !== product.itemId),
     );
   };
 
   const updateQuantity = (product: Products, quantity: number) => {
-    const productId = product.id;
+    const productId = product.itemId;
 
     if (quantity <= 0) {
       removeFromCart(product);
@@ -78,7 +79,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
 
     setCart(prevCart =>
       prevCart.map(item =>
-        item.product.id === productId ? { ...item, quantity } : item,
+        item.product.itemId === productId ? { ...item, quantity } : item,
       ),
     );
   };
@@ -96,6 +97,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const totalQuantityFav = favorites.length;
 
   return (
     <CartContext.Provider
@@ -107,6 +109,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         updateQuantity,
         toggleFavorite,
         totalQuantity,
+        totalQuantityFav,
         clearCart,
       }}
     >

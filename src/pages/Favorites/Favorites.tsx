@@ -5,7 +5,7 @@ import { useCart } from '../../context/CartContext';
 import { ProductCarts } from '../../Functional/ProductCart/ProductCarts';
 
 export const Favorites: React.FC = () => {
-  const { favorites, totalQuantity } = useCart();
+  const { favorites, totalQuantityFav } = useCart();
 
   if (favorites.length === 0) {
     return (
@@ -26,7 +26,7 @@ export const Favorites: React.FC = () => {
       </Link>
       <h1 className={styles.title}>Favorites</h1>
       <div className={styles.totalBlock}>
-        <p className={styles.cardTotalFor}>{totalQuantity} item</p>
+        <p>{totalQuantityFav} item</p>
       </div>
       <div className={styles.gridCartBlock}>
         {favorites.map(product => (

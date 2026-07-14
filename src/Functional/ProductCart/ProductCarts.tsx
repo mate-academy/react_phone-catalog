@@ -26,7 +26,7 @@ export const ProductCarts: React.FC<Props> = ({ product, isNew }) => {
     ram,
   } = product;
 
-  const isProductInCart = cart.some(item => item.product.id === id);
+  const isProductInCart = cart.some(item => item.product.itemId === itemId);
   const isProductFavorite = favorites.some(p => p.itemId === product.itemId);
 
   const handleCartClick = () => {

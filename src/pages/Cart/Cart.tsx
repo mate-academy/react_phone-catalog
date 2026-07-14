@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom';
 
 import styles from './Cart.module.scss';
 import { useCart } from '../../context/CartContext';
+import { useState } from 'react';
 
 export const Cart = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { cart, removeFromCart, updateQuantity, totalQuantity, clearCart } =
     useCart();
 
@@ -12,14 +14,27 @@ export const Cart = () => {
     0,
   );
 
-  const handleCheckout = () => {
-    const isConfirmed = confirm(
-      'Checkout is not implemented yet. Do you want to clear the Cart?',
-    );
+  // const handleCheckout = () => {
+  //   const isConfirmed = confirm(
+  //     'Checkout is not implemented yet. Do you want to clear the Cart?',
+  //   );
 
-    if (isConfirmed) {
-      clearCart();
-    }
+  //   if (isConfirmed) {
+  //     clearCart();
+  //   }
+  // };
+
+  const handleCheckout = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleClearCart = () => {
+    clearCart();
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
   };
 
   if (cart.length === 0) {
@@ -52,7 +67,7 @@ export const Cart = () => {
         <div className={styles.gridCartBlock}>
           <div className={styles.cartItem}>
             {cart.map(item => (
-              <article key={item.product.id} className={styles.cartBlock}>
+              <article key={item.product.itemId} className={styles.cartBlock}>
                 <div className={styles.cartWithOutPrice}>
                   <button
                     type="button"
@@ -129,6 +144,22 @@ export const Cart = () => {
             Checkout
           </button>
         </div>
+        {isModalOpen && (
+          <div className={styles.modal}>
+            <div className={styles.modalContent}>
+              <h3>Checkout is not implemented yet.</h3>
+              <p className={styles.modalClear}>
+                Do you want to clear the Cart?
+              </p>
+              <div className={styles.modalButton}>
+                <button className={styles.modalCancel} onClick={handleCancel}>
+                  Cancel
+                </button>
+                <button onClick={handleClearCart}>Clear Cart</button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

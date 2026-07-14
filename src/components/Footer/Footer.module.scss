@@ -1,11 +1,12 @@
 @import '../../mixin.scss';
 
 .footer {
-  // left: 0;
-  // right: 0;
-  // z-index: 100; // Чтобы футер не перекрывался карточками товаров при скролле
+  left: 0;
+  right: 0;
+  z-index: 100; // Чтобы футер не перекрывался карточками товаров при скролле
   background-color: white;
-  // bottom: 0;
+  position: fixed;
+  bottom: 0;
 
   display: flex;
   align-items: stretch;

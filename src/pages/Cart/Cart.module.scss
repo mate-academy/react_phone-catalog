@@ -271,3 +271,40 @@ margin: 32px;
   text-decoration: none;
   color: #313237;
 }
+
+.modal {
+position: fixed;
+top: 50%; /* Центрирование по вертикали */
+left: 50%;  /* Центрирование по горизонтали */
+transform: translate(-50%, -50%);  /* Сдвиг на половину ширины и высоты */
+z-index: 1000;
+display: flex;
+opacity: 1;
+background-color: #fff;
+// width: 400px;
+height: 200px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+cursor: pointer;
+}
+
+.modalContent{
+  padding: 24px;
+  cursor: pointer;
+}
+
+.modalClear {
+  color: grey;
+  font-weight: 7px;
+  padding: 16px 0 56px;
+}
+
+.modalButton {
+display: flex;
+justify-content: flex-end;
+gap: 16px;
+}
+
+.modalCancel {
+  display: flex;
+  justify-content: space-between;
+}
