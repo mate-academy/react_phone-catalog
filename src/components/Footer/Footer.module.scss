@@ -7,7 +7,7 @@
   margin-top: 64px;
   border: 1px solid #E2E6E9;
 
-  @include onTablet() {
+  @include on-tablet {
     display: flex;
     justify-content: space-between;
   }
@@ -17,7 +17,7 @@
     flex-direction: column;
     margin-bottom: 16px;
 
-    @include onTablet() {
+    @include on-tablet {
       flex-direction: row;
       justify-content: space-between;
       gap: 100px;
@@ -30,10 +30,12 @@
     margin-top: 16px;
     color: $secondary-text-color;
     text-decoration: none;
+
     @include text(12px,11px,800);
+
     letter-spacing: 4%;
 
-    @include onTablet(){
+    @include on-tablet{
       margin: 0;
     }
 
@@ -46,13 +48,15 @@
     justify-content: center;
     align-items: center;
 
-    @include onTablet(){
+    @include on-tablet {
       margin: 0;
     }
+
     &__text {
       color: $secondary-text-color;
-      @include text(12px,11px,800);
       letter-spacing: 4%;
+
+      @include text(12px,11px,800);
     }
   }
 }

@@ -3,6 +3,10 @@
 @use '../../styles/base/global' as *;
 
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: #fff;
   border: 1px solid #E2E6E9;
   display: flex;
   justify-content: space-between;
@@ -15,6 +19,7 @@
 
     &__link {
       @include text(12px,11px,800);
+
       position: relative;
       text-decoration: none;
       color: $secondary-text-color;
@@ -34,10 +39,17 @@
 
     }
 
-    @include onTablet {
+    @include on-tablet {
       display: flex;
       gap: 32px;
     }
+  }
+
+  &__switch {
+    border: 0;
+    background-color: #fff;
+    padding: 0;
+    height: 48px;
   }
 
 
@@ -55,7 +67,7 @@
     border-left: 1px solid #E2E6E9;
     padding: $phone-padding-tb 0 $phone-padding-tb $phone-padding-lr;
 
-    @include onTablet {
+    @include on-tablet {
       display: none;
     }
   }
@@ -63,7 +75,7 @@
   &__cart {
     display: none;
 
-    @include onTablet {
+    @include on-tablet {
       display: block;
       border-left: 1px solid #E2E6E9;
       padding: $phone-padding-lr 0 $phone-padding-lr $phone-padding-lr;
@@ -73,7 +85,7 @@
   &__fav {
     display: none;
 
-    @include onTablet {
+    @include on-tablet {
       display: block;
       border-left: 1px solid #E2E6E9;
       padding: $phone-padding-lr;
@@ -98,10 +110,47 @@
     &__cart {
       &.active {
         &::after {
-          width: 150%;
+          width: 145.5%;
         }
       }
     }
   }
 
+}
+
+.mobile {
+  position: fixed;
+  top: 50px;
+  height: 100vh;
+  width: 100%;
+  background-color: white;
+  z-index: 99;
+
+  &__nav {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+}
+
+.mobileBot {
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+  display: flex;
+  flex-shrink: 0;
+
+  &__nav {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    border: 1px $elements-color solid;
+    border-bottom: 0;
+  }
+
+  &__cart, &__fav {
+    padding: 24px;
+  }
 }

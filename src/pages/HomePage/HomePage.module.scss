@@ -4,29 +4,30 @@
 
 .main {
   color: $main-text-color;
+
   @include container(16px);
 
   .welcome {
-
-    @include onTablet() {
+    @include on-tablet {
       @include container($tablet-padding-lr);
     }
     
     &__title {
-      margin-top: 24px; //for first indentation
+      margin-top: 24px;
       margin-bottom: 24px;
-      @include text(32px, 41px, 800);
       font-style: bold;
       letter-spacing: -1%;
       padding: 0 $phone-padding-lr;
 
-      @include onTablet() {
-        margin-top: 32px; //for first indentation
+      @include text(32px, 41px, 800);
+
+      @include on-tablet {
+        margin-top: 32px;
         margin-bottom: 32px;
       }
 
-      @include onDesktop() {
-        margin-top: 56px; //for first indentation
+      @include on-desktop {
+        margin-top: 56px;
         margin-bottom: 56px;
       }
     }
@@ -38,6 +39,7 @@
         overflow: visible !important;
         padding-bottom: 32px !important;
 
+        /* stylelint-disable selector-pseudo-class-no-unknown */
         :global(.swiper-pagination-bullet) {
           width: 14px;
           height: 4px;
@@ -49,11 +51,12 @@
         :global(.swiper-pagination-bullet-active) {
           background: $main-text-color;
         }
+        /* stylelint-enable selector-pseudo-class-no-unknown */
 
         &__img {
           width: 100%;
 
-          @include onTablet() {
+          @include on-tablet {
             display: none;
           }
         }
@@ -62,7 +65,7 @@
           width: 100%;
           display: none;
 
-          @include onTablet() {
+          @include on-tablet {
             display: block;
           }
         }
@@ -71,20 +74,25 @@
   }
 
   .new {
-    @include container($phone-padding-lr);
     margin-top: 56px;
 
+    @include container($phone-padding-lr);
+
     &__title {
-      @include text(22px,140%,800);
+      max-width: 140px;
       font-style: bold;
+
+      @include text(22px,140%,800);
+
+      @include on-tablet {
+        max-width: 100%;
+      }
     }
+
     &__topblock {
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-    &__title {
-      max-width: 140px;
     }
 
     &__divider {
@@ -94,6 +102,7 @@
 
     &__slider {
       margin-top: 24px;
+      padding-bottom: 16px;
     }
 
     &__btn {
@@ -103,17 +112,20 @@
       border: 1px, solid, $icons-color;
     }
 
-    @include onTablet() {
+    @include on-tablet {
       @include container($tablet-padding-lr);
     }
   }
 
   .category {
     margin-top: 56px;
+
     @include container($phone-padding-lr);
+
     &__title {
-      @include text(22px,140%,800);
       font-style: bold;
+
+      @include text(22px,140%,800);
     }
 
     &__cards {
@@ -122,7 +134,7 @@
       grid-template-columns : 1fr;
       gap: 32px;
 
-      @include onTablet() {
+      @include on-tablet {
         grid-template-columns: 1fr 1fr 1fr;
       }
     }
@@ -131,18 +143,22 @@
       &__img {
         width: 100%;
       }
+
       &__title {
         margin-top: 24px;
+
         @include text(20px,100%,700);
       }
+
       &__counter {
         margin-top: 4px;
-        @include text(14px,21px,600);
         color: $secondary-text-color;
+
+        @include text(14px,21px,600);
       }
     }
 
-    @include onTablet() {
+    @include on-tablet {
       @include container($tablet-padding-lr);
     }
   }

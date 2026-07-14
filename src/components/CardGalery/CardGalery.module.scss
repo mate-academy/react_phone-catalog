@@ -4,15 +4,16 @@
 
 
 .gallery {
-
-  @include onTablet {
+  @include on-tablet {
     display: flex;
     flex-direction: row-reverse;
   }
 }
+
 .mainSwiper {
   width: 80%;
 }
+
 .mainWrapper {
   display: flex;
   justify-content: center;
@@ -27,7 +28,7 @@
   width: 100%;
   height: 60px;
 
-  @include onTablet {
+  @include on-tablet {
     width: 60px;
     height: 288px;
   }

@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/fonts/Mont-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
@@ -7,7 +7,7 @@
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
@@ -15,7 +15,7 @@
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/fonts/Mont-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
@@ -23,19 +23,5 @@
 }
 
 html {
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
 }
-//Colors
-$main-text-color:#313237;
-$secondary-text-color:#89939A;
-$elements-color:#E2E6E9;
-$icons-color: #B4BDC3;
-
-//#region paddings 
-$phone-padding-lr: 16px;
-$phone-padding-tb: 16px;
-
-$tablet-padding-lr: 24px;
-$tablet-padding-tb: 24px;
-//#endregion
-

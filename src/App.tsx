@@ -10,10 +10,10 @@ export const App = () => (
   <Routes>
     <Route path="/">
       <Route index element={<HomePage />} />
-      <Route path="Phones" element={<PhonesPage />} />
-      <Route path="Phones/:id" element={<ItemCard />} />
       <Route path="favorites" element={<Favorites />} />
       <Route path="cart" element={<Cart />} />
+      <Route path=":category/:id" element={<ItemCard />} />
+      <Route path="/:category" element={<PhonesPage />} />
     </Route>
   </Routes>
 );

@@ -7,6 +7,7 @@
   margin-top: 24px;
   color: $main-text-color;
   min-height: 100vh;
+
   @include container($phone-padding-lr);
 }
 
@@ -19,6 +20,7 @@
   &__link {
     text-decoration: none;
     color: $secondary-text-color;
+
     @include text(12px, 100%, 600);
   }
 }
@@ -27,14 +29,16 @@
   margin-top: 24px;
 
   &__title {
-    @include text(32px,41px,800);
     letter-spacing: -1%;
+
+    @include text(32px,41px,800);
   }
 
   &__items {
     margin-top: 8px;
-    @include text(14px,21px,600);
     color: $secondary-text-color;
+
+    @include text(14px,21px,600);
   }
 }
 

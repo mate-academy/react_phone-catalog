@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
+//#region imports
 import styles from './HomePage.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
@@ -9,6 +9,9 @@ import { BrandCard } from '../../components/BrandCard';
 import { useState } from 'react';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
+import productsData from '../../../public/api/products.json';
+import { Product } from '../../types';
+//#endregion
 
 export function HomePage() {
   const mockmodels = 95;
@@ -16,6 +19,10 @@ export function HomePage() {
   const mockmodels3 = 105;
   const [newSwiper, setNewSwiper] = useState<any>(null);
   const [hotSwiper, setHotSwiper] = useState<any>(null);
+
+  //#region Products
+  const products = productsData as Product[];
+  //#endregion
 
   return (
     <div className={styles.homepage}>
@@ -109,15 +116,11 @@ export function HomePage() {
               }}
               spaceBetween={16}
             >
-              <SwiperSlide>
-                <BrandCard />
-              </SwiperSlide>
-              <SwiperSlide>
-                <BrandCard />
-              </SwiperSlide>
-              <SwiperSlide>
-                <BrandCard />
-              </SwiperSlide>
+              {products.slice(0, 8).map(product => (
+                <SwiperSlide key={product.id}>
+                  <BrandCard product={product} />
+                </SwiperSlide>
+              ))}
             </Swiper>
           </div>
         </div>
@@ -127,7 +130,7 @@ export function HomePage() {
             <div className={styles.category__card}>
               <img
                 className={styles.category__card__img}
-                src="./img/Phones.png"
+                src="./img/phones.png"
                 alt="Phones"
               />
               <h2 className={styles.category__card__title}>Phones</h2>
@@ -138,7 +141,7 @@ export function HomePage() {
             <div className={styles.category__card}>
               <img
                 className={styles.category__card__img}
-                src="./img/Tablets.png"
+                src="./img/tablets.png"
                 alt="Tablets"
               />
               <h2 className={styles.category__card__title}>Tablets</h2>
@@ -149,7 +152,7 @@ export function HomePage() {
             <div className={styles.category__card}>
               <img
                 className={styles.category__card__img}
-                src="./img/Accessories.png"
+                src="./img/accessories.png"
                 alt="Accessories"
               />
               <h2 className={styles.category__card__title}>Accessories</h2>
@@ -193,15 +196,11 @@ export function HomePage() {
                 },
               }}
             >
-              <SwiperSlide>
-                <BrandCard />
-              </SwiperSlide>
-              <SwiperSlide>
-                <BrandCard />
-              </SwiperSlide>
-              <SwiperSlide>
-                <BrandCard />
-              </SwiperSlide>
+              {products.slice(0, 8).map(product => (
+                <SwiperSlide key={product.id}>
+                  <BrandCard product={product} />
+                </SwiperSlide>
+              ))}
             </Swiper>
           </div>
         </div>
