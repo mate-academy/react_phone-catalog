@@ -51,6 +51,7 @@
 
 .container {
   &--product-page {
+    justify-content: space-between;
     gap: 24px;
 
     @include up($sm) {

@@ -4,7 +4,7 @@ import { ProductsList } from '../shared/components/ProductsList';
 import { Filter } from './components/Filter';
 import { Pagination } from './components/Pagination';
 import { Product } from '../../types/Product';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { getSearchWith } from '../../utils/getSearchWith';
 import { useGlobalContext } from '../../context/GlobalContext';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
@@ -47,13 +47,11 @@ const itemsPage: Option[] = [
 ];
 
 export const ProductPage = () => {
-  const { allProducts } = useGlobalContext();
+  const { allProducts, searchParams, setSearchParams } = useGlobalContext();
   const { texts } = useLanguage();
   const location = useLocation();
   const category = location.pathname.slice(1);
   const activeCategory = location.pathname.slice(1) as Category;
-
-  const [searchParams, setSearchParams] = useSearchParams();
 
   const perPage = useMemo(() => {
     return (searchParams.get('perPage') as ItemsPage) || '4';

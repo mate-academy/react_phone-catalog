@@ -28,7 +28,7 @@ export const Search: React.FC<Props> = ({
   value,
   onChange,
 }) => {
-  const [newValue, setNewValue] = useState(value);
+  const [newValue, setNewValue] = useState(() => value);
   const debouncedSearch = debounce(onChange, 500);
 
   const changeValue = useCallback(

@@ -8,6 +8,7 @@
     border: 1px solid var(--icons-color);
     background-color: var(--main-color);
     border-radius: 25px;
+    cursor: pointer;
   }
 
   &__lever {
@@ -18,7 +19,6 @@
     background-color: var(--secondary-color);
     border-radius: 25px;
     border: 1px solid var(--main-color);
-    cursor: pointer;
 
     @include transition(left 0.4s ease);
 

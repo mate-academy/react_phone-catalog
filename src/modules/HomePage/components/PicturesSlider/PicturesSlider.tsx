@@ -2,6 +2,9 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import './PicturesSlider.scss';
 import { IconButton } from '../../../shared/components/Buttons/IconButton';
+import { useNavigate } from 'react-router-dom';
+import { AllAvailablePages } from '../../../../types/allAvailablePages';
+import { Banner } from './components';
 
 type Props = {
   className: string;
@@ -16,27 +19,28 @@ type Slides = {
 const slides: Slides[] = [
   {
     mobileImg: 'img/pictures-slider/mobile/banner-slider-mobile__first.png',
-    desktopImg: 'img/pictures-slider/desktop/banner-slider-desktop__first.png',
+    desktopImg: 'img/pictures-slider/desktop/banner-slider-desktop__firsts.jpg',
     id: 0,
   },
   {
     mobileImg: 'img/pictures-slider/mobile/banner-slider-mobile__second.png',
-    desktopImg: 'img/category-accessories.png',
+    desktopImg: 'img/pictures-slider/desktop/banner-slider-desktop__second.jpg',
     id: 1,
   },
   {
     mobileImg: 'img/pictures-slider/mobile/banner-slider-mobile__third.jpg',
-    desktopImg: 'img/banner-phones.png',
+    desktopImg: 'img/pictures-slider/desktop/banner-slider-desktop__third.jpg',
     id: 2,
-  },
-  {
-    mobileImg: 'img/category-tablets.png',
-    desktopImg: 'img/banner-tablets.png',
-    id: 3,
   },
 ];
 
 export const PicturesSlider: React.FC<Props> = ({ className }) => {
+  const navigate = useNavigate();
+
+  const openPage = (path: AllAvailablePages): void => {
+    navigate(path);
+  };
+
   const [currentSlide, setCurrentSlide] = useState(0);
 
   //#region track movement functions
@@ -126,6 +130,10 @@ export const PicturesSlider: React.FC<Props> = ({ className }) => {
               </picture>
             ))}
           </div>
+          <Banner
+            className="pictures-slider__banner"
+            openPage={val => openPage(val)}
+          />
         </div>
         <IconButton
           className="pictures-slider__button pictures-slider__button--right"

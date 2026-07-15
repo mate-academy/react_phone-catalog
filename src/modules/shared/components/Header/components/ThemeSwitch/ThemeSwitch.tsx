@@ -23,12 +23,11 @@ export const ThemeSwitch: React.FC<Props> = ({ className }) => {
 
   return (
     <div className={`theme-switch ${className}`}>
-      <div className="theme-switch__wrapper">
+      <div className="theme-switch__wrapper" onClick={() => changeTheme()}>
         <div
           className={classNames('theme-switch__lever', {
             'theme-switch__lever--dark': activeDark,
           })}
-          onClick={() => changeTheme()}
         />
       </div>
     </div>

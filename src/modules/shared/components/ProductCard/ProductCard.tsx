@@ -46,11 +46,11 @@ export const ProductCard: React.FC<Props> = ({
       <Line />
       <SpecsProduct
         className="product-card__specs-product"
-        specs={{
-          RAM: item.ram,
-          Screen: item.screen,
-          Capacity: item.capacity,
-        }}
+        specs={[
+          { key: 'ram', value: item.ram },
+          { key: 'screen', value: item.screen },
+          { key: 'capacity', value: item.capacity },
+        ]}
       />
       <AddToCartButton
         className="product-card__add-to-cart-button"

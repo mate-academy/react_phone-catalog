@@ -27,7 +27,6 @@ export const ProductDetailsPage = () => {
 
   useEffect(() => {
     window.scrollTo({
-      behavior: 'instant',
       top: 0,
     });
   }, [activeProduct]);

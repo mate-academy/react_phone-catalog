@@ -4,6 +4,7 @@ import { Navbar } from '../Navbar';
 import { ButtonHeader } from '../ButtonHeader';
 import { useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../../../../../../context/GlobalContext';
+import { AllAvailablePages } from '../../../../../../types/allAvailablePages';
 
 type Props = {
   className: string;
@@ -14,7 +15,7 @@ export const BurgerMenu: React.FC<Props> = ({ className, closeMenu }) => {
   const navigate = useNavigate();
   const { cartItems, favoritesItems } = useGlobalContext();
 
-  const openPage = (path: string) => {
+  const openPage = (path: AllAvailablePages) => {
     navigate(path);
   };
 

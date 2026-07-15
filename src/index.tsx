@@ -6,13 +6,16 @@ import './styles/global.scss';
 import { GlobalProvider } from './context/GlobalContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
+import { HashRouter } from 'react-router-dom';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <GlobalProvider>
-    <ThemeProvider>
-      <LanguageProvider>
-        <App />
-      </LanguageProvider>
-    </ThemeProvider>
-  </GlobalProvider>,
+  <HashRouter>
+    <GlobalProvider>
+      <ThemeProvider>
+        <LanguageProvider>
+          <App />
+        </LanguageProvider>
+      </ThemeProvider>
+    </GlobalProvider>
+  </HashRouter>,
 );

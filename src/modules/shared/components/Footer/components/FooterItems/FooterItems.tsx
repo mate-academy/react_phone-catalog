@@ -1,3 +1,5 @@
+import { useLanguage } from '../../../../../../context/LanguageContext';
+import { en } from '../../../../../../i18n/translations/en';
 import './FooterItems.scss';
 
 type Props = {
@@ -5,7 +7,7 @@ type Props = {
 };
 
 type FooterItem = {
-  name: string;
+  name: keyof Pick<typeof en, 'github' | 'contacts' | 'rights'>;
   id: number;
   path: string;
 };
@@ -29,6 +31,8 @@ const footerItems: FooterItem[] = [
 ];
 
 export const FooterItems: React.FC<Props> = ({ className }) => {
+  const { texts } = useLanguage();
+
   return (
     <div className={`footerItems ${className}`}>
       {footerItems.map(item => (
@@ -37,7 +41,7 @@ export const FooterItems: React.FC<Props> = ({ className }) => {
           className={`footerItems__element footerItems__element--${item.name}`}
           key={item.id}
         >
-          {item.name}
+          {texts[item.name]}
         </a>
       ))}
     </div>

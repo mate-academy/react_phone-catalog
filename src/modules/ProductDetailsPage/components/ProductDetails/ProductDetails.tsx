@@ -165,12 +165,12 @@ export const ProductDetails: React.FC<Props> = ({
           >
             <SpecsProduct
               className="product-details__specs-product"
-              specs={{
-                RAM: activeProduct.ram,
-                Screen: activeProduct.screen,
-                Capacity: activeProduct.capacity,
-                Processor: activeProduct.processor,
-              }}
+              specs={[
+                { key: 'ram', value: activeProduct.ram },
+                { key: 'screen', value: activeProduct.screen },
+                { key: 'processor', value: activeProduct.processor },
+                { key: 'capacity', value: activeProduct.capacity },
+              ]}
             />
           </div>
         </div>
@@ -204,16 +204,16 @@ export const ProductDetails: React.FC<Props> = ({
           <Line />
           <SpecsProduct
             className="product-details__all-specs-product"
-            specs={{
-              Screen: activeProduct.screen,
-              Resolution: activeProduct.resolution,
-              Processor: activeProduct.processor,
-              RAM: activeProduct.ram,
-              'Built in memory': activeProduct.capacity,
-              Camera: activeProduct.camera,
-              Zoom: activeProduct.zoom,
-              Cell: activeProduct.cell,
-            }}
+            specs={[
+              { key: 'screen', value: activeProduct.screen },
+              { key: 'resolution', value: activeProduct.resolution },
+              { key: 'processor', value: activeProduct.processor },
+              { key: 'ram', value: activeProduct.ram },
+              { key: 'builtInMemory', value: activeProduct.capacity },
+              { key: 'camera', value: activeProduct.camera },
+              { key: 'zoom', value: activeProduct.zoom },
+              { key: 'cell', value: activeProduct.cell },
+            ]}
           />
         </div>
       </div>

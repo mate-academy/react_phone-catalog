@@ -13,6 +13,7 @@ import { LanguageSwitch } from './components/LanguageSwitch';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLockBodyScroll } from '../../../../hooks/useLockBodyScroll';
 import { breakpoint } from '../../../../utils/breakpoint';
+import { AllAvailablePages } from '../../../../types/allAvailablePages';
 
 type Props = {
   className: string;
@@ -46,7 +47,7 @@ export const Header: React.FC<Props> = ({ className }) => {
     }
   };
 
-  const openPage = (path: string) => {
+  const openPage = (path: AllAvailablePages) => {
     navigate(path);
   };
 

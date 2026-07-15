@@ -9,6 +9,7 @@ import React, {
 import { Product } from '../types/Product';
 import { getProducts } from '../api/functionsRequestsApi';
 import { CartItem } from '../types/CartItem';
+import { SetURLSearchParams, useSearchParams } from 'react-router-dom';
 
 type Props = {
   children: ReactNode;
@@ -19,14 +20,17 @@ type GlobalContextType = {
   cartItems: CartItem[];
   totalCartItem: number;
   favoritesItems: Product[];
+  searchParams: URLSearchParams;
   setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
   setFavoritesItems: React.Dispatch<React.SetStateAction<Product[]>>;
+  setSearchParams: SetURLSearchParams;
 };
 
 const GlobalContext = createContext<GlobalContextType | null>(null);
 
 export const GlobalProvider: React.FC<Props> = ({ children }) => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [searchParams, setSearchParams] = useSearchParams();
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
     const localCartItems = localStorage.getItem('CartItems');
 
@@ -73,8 +77,10 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
         cartItems,
         totalCartItem,
         favoritesItems,
+        searchParams,
         setCartItems,
         setFavoritesItems,
+        setSearchParams,
       }}
     >
       {children}

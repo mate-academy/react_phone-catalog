@@ -1,4 +1,4 @@
-import { HashRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { MainLayout } from './MainLayout';
 import { HomePage } from './modules/HomePage';
 import { ProductPage } from './modules/ProductPage';
@@ -7,9 +7,11 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { CartPage } from './modules/CartPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { NotFoundPage } from './modules/NotFoundPage';
+import { ScrollToTop } from './context/ScrollToTop';
 
 export const App = () => (
-  <HashRouter>
+  <>
+    <ScrollToTop />
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
@@ -23,5 +25,5 @@ export const App = () => (
       </Route>
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
-  </HashRouter>
+  </>
 );
