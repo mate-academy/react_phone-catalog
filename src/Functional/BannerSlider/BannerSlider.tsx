@@ -5,9 +5,9 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 export const BannerSlider = () => {
   const images = [
-    '/img/banner-phones.png',
-    '/img/banner-accessories.png',
-    '/img/banner-tablets.png',
+    './img/banner-phones.png',
+    './img/banner-accessories.png',
+    './img/banner-tablets.png',
   ];
 
   return (

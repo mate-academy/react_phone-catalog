@@ -9,7 +9,7 @@ export type Products = {
   capacity: string;
   color: string;
   ram?: string;
-  year?: number;
+  year: number;
   image: string;
 };
 
@@ -37,5 +37,3 @@ export type FullProduct = {
   zoom?: string;
   cell?: string;
 };
-
-

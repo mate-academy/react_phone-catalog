@@ -14,7 +14,7 @@ type Props = {
 };
 
 export const Header: React.FC<Props> = () => {
-  const { cart, favorites, totalQuantity } = useCart();
+  const { favorites, totalQuantity } = useCart();
 
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     `navbar-item  ${isActive ? 'isActive' : ''}`;

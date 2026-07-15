@@ -31,6 +31,7 @@ export const ProductList: React.FC<Props> = () => {
   const startIndex = (page - 1) * perPage;
   const lastIndex = startIndex + perPage;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function setSearchWith(params: any) {
     const search = getSearchWith(params, searchParams);
 

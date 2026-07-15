@@ -14,16 +14,6 @@ export const Cart = () => {
     0,
   );
 
-  // const handleCheckout = () => {
-  //   const isConfirmed = confirm(
-  //     'Checkout is not implemented yet. Do you want to clear the Cart?',
-  //   );
-
-  //   if (isConfirmed) {
-  //     clearCart();
-  //   }
-  // };
-
   const handleCheckout = () => {
     setIsModalOpen(true);
   };
@@ -122,9 +112,6 @@ export const Cart = () => {
                     <span className={styles.cardPriceHot}>
                       ${item.product.price}
                     </span>
-                    {/* <span className={styles.cardfullPriceHot}>
-                      ${item.product.fullPrice}
-                    </span> */}
                   </div>
                 </div>
               </article>
