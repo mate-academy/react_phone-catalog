@@ -1,0 +1,34 @@
+@use '../../../shared/styles/mixins' as m;
+@use '../../../shared/styles/typography' as t;
+@use '../../../shared/styles/variables' as v;
+
+.cart-summary {
+  border: 1px solid v.$color-elements;
+  border-radius: 16px;
+  padding: 24px;
+
+  @include m.flex(column, 16px, stretch, center);
+
+  &__header {
+    @include m.flex(column, 0, stretch, center);
+
+    width: 100%;
+    padding-bottom: 16px;
+    border-bottom: 1px solid v.$color-elements;
+  }
+
+  &__price {
+    @include t.heading-2;
+  }
+
+  &__text {
+    color: v.$color-secondary;
+
+    @include t.text-body;
+  }
+
+  &__button {
+    width: 100%;
+    height: 48px;
+  }
+}

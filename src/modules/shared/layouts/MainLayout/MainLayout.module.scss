@@ -1,0 +1,16 @@
+@use '/src/modules/shared/styles/variables' as v;
+
+.layout {
+  background-color: v.$color-gray;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}

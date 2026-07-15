@@ -1,0 +1,57 @@
+@use '../../../shared/styles/typography' as t;
+@use '../../../shared/styles/variables' as v;
+
+.btn {
+  @include t.text-button;
+
+  color: v.$color-primary;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: v.$icon-button-size;
+  width: v.$icon-button-size;
+
+  background: none;
+  border: 1px v.$color-icons solid;
+  border-radius: 48px;
+
+  cursor: pointer;
+
+  transition:
+    border v.$duration-normal v.$ease-out-quart,
+    background-color v.$duration-normal v.$ease-out-quart;
+
+  img {
+    transition: filter v.$duration-normal v.$ease-out-quart;
+  }
+
+  &:hover {
+    border: 1px v.$color-primary solid;
+  }
+
+  &--active,
+  &:active {
+    border: none;
+    color: v.$color-white;
+    background-color: v.$color-primary;
+
+    img {
+      filter: invert(1) brightness(100);
+    }
+  }
+
+  &:disabled {
+    border: 1px v.$color-elements solid;
+    background-color: v.$color-white;
+
+    color: v.$color-elements;
+
+    cursor: default;
+
+    img {
+      filter: invert(1) brightness(0.6);
+    }
+  }
+}

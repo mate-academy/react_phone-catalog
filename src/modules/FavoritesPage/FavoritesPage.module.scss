@@ -1,0 +1,31 @@
+@use '../shared/styles/typography' as t;
+@use '../shared/styles/mixins' as m;
+@use '../shared/styles/variables' as v;
+
+.favorites-page {
+  padding-block: 24px 56px;
+
+  &__header {
+    margin-top: 24px;
+    margin-bottom: 32px;
+
+    @include m.flex(column, 8px);
+
+    @include m.respond-to(tablet) {
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    color: v.$color-primary;
+
+    @include t.heading-1;
+  }
+
+  &__count {
+    color: v.$color-secondary;
+    
+    @include t.text-body;
+  }
+}

@@ -1,0 +1,35 @@
+@use '../../styles/typography' as t;
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.section {
+  width: 100%;
+
+  &__headline {
+    @include t.heading-1;
+  }
+
+  &__title {
+    @include t.heading-2;
+  }
+
+  &__content {
+    margin-top: 24px;
+
+    &--hero {
+      margin: 24px -16px 0;
+
+      @include m.respond-to(tablet) {
+        margin: 32px 0 0;
+      }
+    }
+  }
+
+  &__header {
+    @include m.flex(row, 72px, space-between);
+  }
+
+  &__actions {
+    @include m.flex(row, 16px, stretch, center);
+  }
+}

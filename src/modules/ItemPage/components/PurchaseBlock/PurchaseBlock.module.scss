@@ -1,0 +1,39 @@
+@use '../../../shared/styles/typography' as t;
+@use '../../../shared/styles/variables' as v;
+@use '../../../shared/styles/mixins' as m;
+
+.purchase-block {
+  @include m.flex(column, 16px);
+
+  &__price-row {
+    @include m.flex(row, 8px, flex-start, center);
+  }
+
+  &__discount-price {
+    @include t.heading-1;
+  }
+
+  &__regular-price {
+    font-family: v.$main-font;
+    color: v.$color-secondary;
+    font-weight: 400;
+    font-size: 22px;
+    text-decoration: line-through;
+  }
+
+  &__manager {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__cart {
+    height: 48px;
+    flex: 1;
+  }
+  
+  &__fav {
+    height: 48px;
+    width: 48px;
+    flex: 0 0 48px;
+  }
+}

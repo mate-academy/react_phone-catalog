@@ -1,0 +1,102 @@
+@use 'mixins' as m;
+@use 'variables' as v;
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: v.$main-font;
+  color: v.$color-primary;
+}
+
+@mixin heading-1 {
+  font-family: v.$main-font;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  font-weight: 700; // Bold
+
+  @include m.respond-to('tablet') {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin heading-2 {
+  font-family: v.$main-font;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  font-weight: 700; // Bold
+
+  @include m.respond-to('tablet') {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin heading-3 {
+  font-family: v.$main-font;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  font-weight: 600; // SemiBold
+
+  @include m.respond-to('tablet') {
+    font-size: 22px;
+    line-height: 31px;
+    font-weight: 700; // Bold
+  }
+}
+
+@mixin heading-4 {
+  font-family: v.$main-font;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+  font-weight: 600; // SemiBold
+
+  @include m.respond-to('tablet') {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+@mixin text-uppercase {
+  font-family: v.$main-font;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  font-weight: 700; // Bold
+  text-transform: uppercase;
+}
+
+@mixin text-button {
+  font-family: v.$main-font;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  font-weight: 600; // SemiBold
+}
+
+@mixin text-body {
+  font-family: v.$main-font;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  font-weight: 400; // Regular
+}
+
+@mixin text-small {
+  font-family: v.$main-font;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+  font-weight: 600; // SemiBold
+}

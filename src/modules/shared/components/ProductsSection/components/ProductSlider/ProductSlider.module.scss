@@ -1,0 +1,38 @@
+@use '/src/modules/shared/styles/variables' as v;
+@use '/src/modules/shared/styles/mixins' as m;
+
+.carousel {
+  --item-width: 212px;
+  --gap: 16px;
+
+  margin-right: -16px;
+
+  @include m.respond-to(tablet) {
+    --item-width: 237px;
+  }
+
+  @include m.respond-to(desktop) {
+    --item-width: 272px;
+
+    margin-right: 0;
+  }
+
+  &__wrapper {
+    overflow: hidden;
+  }
+
+  &__collection {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+
+    gap: var(--gap);
+    list-style: none;
+  }
+
+  &__item {
+    min-width: 0;
+
+    flex: 0 0 var(--item-width);
+  }
+}

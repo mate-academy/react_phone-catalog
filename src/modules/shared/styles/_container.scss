@@ -1,0 +1,17 @@
+@use './mixins' as m;
+
+.container {
+  width: 100%;
+  min-width: 320px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 16px;
+
+  @include m.respond-to(tablet) {
+    padding-inline: 24px;
+  }
+
+  @include m.respond-to(desktop) {
+    padding-inline: 32px;
+  }
+}

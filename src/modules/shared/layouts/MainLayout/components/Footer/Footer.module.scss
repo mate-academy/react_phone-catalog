@@ -1,0 +1,72 @@
+@use '/src/modules/shared/styles/mixins' as m;
+@use '/src/modules/shared/styles/typography' as t;
+@use '/src/modules/shared/styles/variables' as v;
+
+.footer {
+  color: v.$color-secondary;
+  background-color: v.$color-white;
+  border-top: 1px solid v.$color-elements;
+
+  width: 100%;
+  height: 257px;
+  padding-inline: 16px;
+
+  @include m.flex(column, 32px, center, stretch);
+
+  @include m.respond-to(tablet) {
+    @include m.flex(row, 0, space-between, center);
+
+    height: 96px;
+    padding-inline: 32px;
+  }
+
+  @include m.respond-to(widescreen) {
+    padding-inline: 152px;
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+  }
+
+  &__list {
+    list-style: none;
+
+    @include m.flex(column, 16px, space-between, flex-start);
+    
+    @include m.respond-to(tablet) {
+      @include m.flex(row, 14px, stretch, center);
+    }
+
+    @include m.respond-to(desktop) {
+      @include m.flex(row, 106px, stretch, center);
+    }
+  }
+
+  &__item {
+    line-height: 0;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: v.$color-secondary;
+
+    @include t.text-uppercase;
+
+    transition: color v.$duration-normal v.$ease-out-quart;
+
+    &:hover {
+      color: v.$color-primary;
+    }
+  }
+
+  &__button {
+    align-self: center;
+
+    @include m.flex(row, 16px, space-between, center);
+
+    color: v.$color-secondary;
+
+    @include t.text-button;
+  }
+}

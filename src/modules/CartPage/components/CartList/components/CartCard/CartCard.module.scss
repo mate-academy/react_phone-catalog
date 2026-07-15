@@ -1,0 +1,77 @@
+@use '../../../../../shared/styles/typography' as t;
+@use '../../../../../shared/styles/mixins' as m;
+@use '../../../../../shared/styles/variables' as v;
+
+.cart-card {
+  border: 1px solid v.$color-elements;
+  border-radius: 16px;
+
+  padding: 16px;
+  display: grid;
+  gap: 16px;
+  align-items: center;
+
+  grid-template-columns: 16px 80px 1fr;
+  grid-template-areas:
+    'delete image title'
+    'controls controls price';
+
+  @include t.text-body;
+
+  @include m.respond-to(tablet) {
+    gap: 24px;
+    grid-template-columns: 16px 80px 1fr 96px 80px;
+    grid-template-areas: 'delete image title controls price';
+  }
+
+  &__delete {
+    grid-area: delete;
+
+    @include m.flex(row, 0, center, center);
+
+    width: 16px;
+    height: 16px;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  &__image {
+    grid-area: image;
+    object-fit: contain;
+    height: 80px;
+    width: 80px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: v.$color-primary;
+  }
+
+  &__title {
+    grid-area: title;
+    justify-self: left;
+
+    @include m.respond-to(tablet) {
+      justify-self: center;
+    }
+  }
+
+  &__controls {
+    grid-area: controls;
+    width: 96px;
+
+    @include m.flex(row, 0, space-between, center);
+  }
+
+  &__price {
+    grid-area: price;
+    justify-self: end;
+
+    @include t.heading-2;
+
+    @include m.respond-to(tablet) {
+      @include t.heading-3;
+    }
+  }
+}

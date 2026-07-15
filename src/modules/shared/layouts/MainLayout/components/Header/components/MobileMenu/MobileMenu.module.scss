@@ -1,0 +1,118 @@
+@use '/src/modules/shared/styles/variables' as v;
+@use '/src/modules/shared/styles/mixins' as m;
+@use '/src/modules/shared/styles/typography' as t;
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+
+  background-color: v.$color-white;
+
+  transform: translateX(100%);
+  transition: transform v.$duration-normal v.$ease-out-quart;
+
+  @include m.respond-to(tablet) {
+    display: none;
+  }
+
+  &--open {
+    transform: translateX(0);
+  }
+
+  &__header {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom: 1px solid v.$color-elements;
+  }
+
+  &__logo {
+    width: 96px;
+
+    @include m.flex(row, 0, center, center);
+
+    &-image {
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__close-button {
+    height: 100%;
+    aspect-ratio: 1/1;
+
+    background: none;
+    border: none;
+    border-left: 1px solid v.$color-elements;
+
+    cursor: pointer;
+  }
+
+  &__list {
+    margin-top: 24px;
+    list-style: none;
+
+    @include m.flex(column, 16px, center, center);
+  }
+
+  &__link {
+    padding: 8px;
+    position: relative;
+
+    text-decoration: none;
+    color: v.$color-secondary;
+
+    @include m.flex(row, 0, center, center);
+    @include t.text-uppercase;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      width: 100%;
+      height: 2px;
+      background-color: v.$color-primary;
+
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform v.$duration-normal v.$ease-out-quart;
+    }
+
+    &:active {
+      color: v.$color-primary;
+
+      &::after {
+        transform: scaleX(1.2);
+      }
+    }
+
+    &--active {
+      color: v.$color-primary;
+
+      &::after {
+        transform: scaleX(1);
+      }
+
+      &:active {
+        &::after {
+          transform: scaleX(1.2);
+        }
+      }
+    }
+  }
+
+  &__actions {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 64px;
+    border-top: 1px solid v.$color-elements;
+    
+    @include m.flex(row, 0);
+  }
+}

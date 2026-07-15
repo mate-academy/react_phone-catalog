@@ -1,0 +1,39 @@
+@use '../../../shared/styles/typography' as t;
+@use '../../../shared/styles/variables' as v;
+@use '../../../shared/styles/mixins' as m;
+
+.breadcrumbs {
+  &__list {
+    list-style: none;
+
+    @include m.flex(row, 0, flex-start, center);
+  }
+
+  &__item {
+    color: v.$color-secondary;
+
+    @include t.text-small;
+    @include m.flex(row, 0, stretch, center);
+
+    &:not(:last-child)::after {
+      content: '';
+      display: inline-block;
+      margin-inline: 8px;
+
+      background-color: v.$color-secondary;
+      mask-image: url('/icons/arrow-right.svg');
+      mask-repeat: no-repeat;
+      mask-position: center;
+
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: v.$color-primary;
+    
+    @include m.flex;
+  }
+}

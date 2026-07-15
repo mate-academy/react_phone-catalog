@@ -1,0 +1,48 @@
+@use '../../../shared/styles/variables' as v;
+@use '../../../shared/styles/typography' as t;
+@use '../../../shared/styles/mixins' as m;
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+
+  z-index: 9999;
+  position: fixed;
+  inset: 0;
+
+  @include m.flex(column, 0, center, center);
+}
+
+.modal {
+  opacity: 1;
+  padding: 24px;
+  max-width: 280px;
+  max-height: 300px;
+
+  background-color: v.$color-white;
+  border: 1px solid v.$color-elements;
+  border-radius: 8px;
+
+  @include m.flex(column, 20px, center, space-between);
+
+  @include m.respond-to(tablet) {
+    max-width: 320px;
+  }
+  &__title {
+    @include t.text-body;
+  }
+
+  &__actions {
+    @include m.flex(row, 0, space-between, center);
+  }
+
+  &__button {
+    width: 40%;
+    &--cancel {
+      background-color: v.$color-red;
+    }
+
+    &--confirm {
+      background-color: v.$color-accent;
+    }
+  }
+}

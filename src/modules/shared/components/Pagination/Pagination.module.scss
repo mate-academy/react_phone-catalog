@@ -1,0 +1,17 @@
+@use '../../../shared/styles/typography' as t;
+@use '../../../shared/styles/mixins' as m;
+@use '../../../shared/styles/variables' as v;
+
+.pagination {
+  @include m.flex(row, 16px, center, center);
+
+  &__pages {
+    @include m.flex(row, 8px, center, center);
+  }
+
+  &__button-active {
+    color: v.$color-white;
+    background-color: v.$color-primary;
+    border: none;
+  }
+}

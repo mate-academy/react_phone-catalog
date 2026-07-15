@@ -1,0 +1,80 @@
+@use '/src/modules/shared/styles/variables' as v;
+@use '/src/modules/shared/styles/mixins' as m;
+@use '/src/modules/shared/styles/typography' as t;
+
+.catalog-page {
+  padding-block: 24px 64px;
+
+  @include m.respond-to(desktop) {
+    padding-block: 24px 80px;
+  }
+
+  &__not-found {
+    flex: 1;
+
+    @include t.heading-1;
+  }
+
+  &__header {
+    margin-top: 24px;
+
+    @include m.flex(column, 8px);
+
+    @include m.respond-to(tablet) {
+      margin-top: 40px;
+    }
+  }
+
+  &__title {
+    color: v.$color-primary;
+
+    @include t.heading-1;
+  }
+
+  &__count {
+    color: v.$color-secondary;
+
+    @include t.text-body;
+  }
+
+  &__actions {
+    margin-top: 32px;
+    color: v.$color-secondary;
+
+    @include m.flex(row, 16px);
+    @include t.text-small;
+
+    @include m.respond-to(tablet) {
+      margin-top: 40px;
+    }
+  }
+
+  &__group {
+    @include m.flex(column, 16px);
+  }
+
+  &__product-list {
+    margin-top: 24px;
+  }
+
+  &__pagination {
+    margin-top: 24px;
+
+    @include m.respond-to(tablet) {
+      margin-top: 40px;
+    }
+  }
+
+  &__loader {
+    flex: 1;
+
+    @include m.flex(row, 0, center, center);
+  }
+
+  &__error {
+    flex: 1;
+
+    @include m.flex(column, 20px, center, center);
+    @include t.heading-1;
+  }
+}

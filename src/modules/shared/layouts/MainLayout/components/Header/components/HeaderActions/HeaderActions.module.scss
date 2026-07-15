@@ -1,0 +1,84 @@
+@use '/src/modules/shared/styles/variables' as v;
+@use '/src/modules/shared/styles/mixins' as m;
+@use '/src/modules/shared/styles/typography' as t;
+
+.header-actions {
+  list-style: none;
+  height: 100%;
+
+  display: flex;
+
+  @include m.respond-to(tablet) {
+    width: 96px;
+  }
+
+  @include m.respond-to(desktop) {
+    width: 128px;
+  }
+
+  &__item {
+    height: 100%;
+    width: 100%;
+
+    border-left: 1px solid v.$color-elements;
+  }
+
+  &__wrapper {
+    position: relative;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__count {
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    
+    @include m.flex(row, 0, center, flex-end);
+
+    color: v.$color-white;
+    background-color: v.$color-secondary-accent;
+    border-radius: 50%;
+
+    outline: 1px solid v.$color-white;
+
+    top: -6px;
+    right: -6px;
+
+    font-size: 9px;
+  }
+
+  &__link {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    text-decoration: none;
+    color: v.$color-primary;
+
+    @include m.flex(row, 0, center, center);
+    @include t.text-uppercase;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      width: 100%;
+      height: 3px;
+      background-color: v.$color-primary;
+
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform v.$duration-normal v.$ease-out-quart;
+    }
+
+    &--active {
+      &::after {
+        transform: scaleX(1);
+        transform-origin: center;
+      }
+    }
+  }
+}

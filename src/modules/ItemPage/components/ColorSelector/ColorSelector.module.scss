@@ -1,0 +1,40 @@
+@use '../../../shared/styles/typography' as t;
+@use '../../../shared/styles/mixins' as m;
+@use '../../../shared/styles/variables' as v;
+
+.color-selector {
+  @include m.flex(column, 8px);
+
+  &__header {
+    color: v.$color-icons;
+
+    @include m.flex(row, 0, space-between);
+    @include t.text-small;
+  }
+
+  &__list {
+    list-style: none;
+    height: 32px;
+
+    @include m.flex(row, 8px);
+  }
+
+  &__swatch {
+    border: 3px solid v.$color-white;
+    background-clip: padding-box;
+
+    outline: 1px solid v.$color-elements;
+
+    transition: outline-color v.$duration-fast ease-in-out;
+
+    &:hover {
+      outline-color: v.$color-secondary;
+      border: 3px solid v.$color-white;
+    }
+
+    &--active,
+    &:focus {
+      outline-color: v.$color-primary;
+    }
+  }
+}

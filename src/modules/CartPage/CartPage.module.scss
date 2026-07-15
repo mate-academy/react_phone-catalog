@@ -1,0 +1,32 @@
+@use '../shared/styles/typography' as t;
+@use '../shared/styles/mixins' as m;
+@use '../shared/styles/variables' as v;
+
+.catalog-page {
+  padding-block: 24px 56px;
+
+  &__title {
+    color: v.$color-primary;
+    margin-top: 24px;
+    margin-bottom: 32px;
+
+    @include t.heading-1;
+
+    @include m.respond-to(tablet) {
+      margin-top: 16px;
+    }
+  }
+
+  &__info {
+    display: grid;
+
+    gap: 32px 16px;
+
+    grid-template-columns: 1fr;
+    align-items: start;
+
+    @include m.respond-to(desktop) {
+      grid-template-columns: 1fr 368px;
+    }
+  }
+}
