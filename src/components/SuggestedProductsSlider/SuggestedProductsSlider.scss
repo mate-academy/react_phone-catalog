@@ -1,0 +1,14 @@
+@use '../../styles/colors';
+@use '../../styles/typography';
+
+.SuggestedProductsSlider {
+  .swiper-slide {
+    height: auto;
+    display: flex;
+
+    & > * {
+      width: 100%;
+    }
+  }
+}
+

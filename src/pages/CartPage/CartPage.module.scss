@@ -1,0 +1,213 @@
+@use '../../styles/typography' as typography;
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cartPage {
+  padding-top: 24px;
+  padding-bottom: 24px;
+
+  @media (min-width: 640px) {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @media (min-width: 640px) {
+    padding: 0 24px;
+  }
+}
+
+.backButton {
+  @include typography.text-small;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: none;
+  color: var(--color-secondary);
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 16px;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.title {
+  @include typography.text-h1;
+
+  color: var(--color-primary);
+  margin: 0 0 32px;
+}
+
+.empty {
+  @include typography.text-body;
+
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+.emptyImage {
+  display: block;
+  max-width: 280px;
+  height: auto;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 368px;
+  gap: 16px;
+  align-items: start;
+
+  @media (max-width: 1199px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fade-in 0.25s ease-out;
+}
+
+.summary {
+  border: 1px solid var(--color-elements);
+  background-color: var(--color-white);
+  padding: 24px;
+  text-align: center;
+}
+
+.totalPrice {
+  @include typography.text-h2;
+
+  --text-h2-weight: var(--font-weight-extra-bold);
+
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+.totalItems {
+  @include typography.text-body;
+
+  color: var(--color-secondary);
+  margin-bottom: 24px;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--color-elements);
+  margin-bottom: 24px;
+}
+
+.checkout {
+  @include typography.text-buttons;
+
+  width: 100%;
+  height: 48px;
+  border: none;
+  background-color: var(--color-accent);
+  color: var(--color-text-on-accent);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: var(--color-accent);
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+  }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: var(--color-white);
+  border-radius: 8px;
+  padding: 32px;
+  max-width: 500px;
+  margin: 16px;
+  outline: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.modalText {
+  @include typography.text-body;
+
+  color: var(--color-primary);
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.modalButtons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.confirmButton,
+.cancelButton {
+  @include typography.text-buttons;
+
+  min-width: 120px;
+  height: 48px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.confirmButton {
+  background-color: var(--color-accent);
+  color: var(--color-text-on-accent);
+
+  &:hover {
+    background-color: var(--color-accent);
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+  }
+}
+
+.cancelButton {
+  background-color: var(--color-elements);
+  color: var(--color-primary);
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+[data-theme='dark'] .checkout:hover,
+[data-theme='dark'] .confirmButton:hover {
+  background-color: var(--color-accent-hover);
+  box-shadow: none;
+}

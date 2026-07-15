@@ -1,0 +1,13 @@
+@use '../../styles/colors';
+@use '../../styles/typography';
+
+.NewProductsSlider {
+  .swiper-slide {
+    height: auto;
+    display: flex;
+
+    & > * {
+      width: 100%;
+    }
+  }
+}
