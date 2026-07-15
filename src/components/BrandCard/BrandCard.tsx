@@ -31,13 +31,13 @@ export function BrandCard({ product }: Props) {
     >
       <div className={styles.brandCard__imgblock}>
         <img
-          src={`${import.meta.env.BASE_URL}${image}`}
+          src={`${import.meta.env.BASE_URL}/${image}`}
           alt={name}
           className={styles.brandCard__img}
         />
       </div>
       <h2 className={styles.brandCard__title}>{name}</h2>
-      <p className={styles.brandCard__price}>{price}</p>
+      <p className={styles.brandCard__price}>${price}</p>
       <hr className={styles.brandCard__divider} />
       <div className={styles.brandCard__params}>
         <div className={styles.brandCard__params__item}>
