@@ -6,7 +6,7 @@ import { AppProviders } from './context/AppProviders';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <AppProviders>
-    <Router>
+    <Router basename="/react_phone-catalog">
       <StrictMode>
         <App />
       </StrictMode>
