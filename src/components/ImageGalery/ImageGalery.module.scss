@@ -1,0 +1,81 @@
+.image-galery {
+  @include on-tablet {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 16px;
+  }
+
+  &__main-slider {
+    margin-bottom: 16px;
+  }
+
+  &__main-slider.swiper {
+    height: 288px;
+
+    @include on-tablet {
+      flex: 1;
+      height: 40vw;
+      margin: 0;
+    }
+  }
+
+  &__main-slide.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+  }
+
+  &__main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    @include on-tablet {
+      width: 95%;
+      height: 95%;
+      object-position: center 1px;
+    }
+  }
+
+  &__thumbs-slider.swiper {
+    @include on-tablet {
+      flex: 0 0 35px;
+      height: 200px;
+      margin: 0;
+    }
+
+    @include on-tablet {
+      flex: 0 0 80px;
+      height: 400px;
+    }
+  }
+
+  &__thumbs-slide.swiper-slide {
+    position: relative;
+    padding-bottom: calc(20% - 10px);
+    border: 1px solid $border-color;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.swiper-slide-thumb-active {
+      border-color: $primary-gray;
+    }
+
+    @include on-tablet {
+      padding-bottom: 0;
+
+    }
+  }
+
+  &__thumbs-image {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    object-fit: contain;
+  }
+}
