@@ -18,6 +18,8 @@ type Action =
   | { type: 'decrementQuantity'; productId: string };
 
 function getInitialState() {
+  localStorage.removeItem('cartItems');
+
   const localData = localStorage.getItem('cartItems');
 
   return localData ? { cartItems: JSON.parse(localData) } : { cartItems: [] };

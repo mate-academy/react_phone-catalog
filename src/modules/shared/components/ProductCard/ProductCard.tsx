@@ -77,7 +77,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           className={styles['product-card__cart']}
           onClick={() =>
             !isProductInCart
-              ? dispatch({ type: 'addProduct', product: parsedProduct })
+              ? dispatch({ type: 'addProduct', product: product })
               : navigate(`/cart/`)
           }
           selected={isProductInCart}
