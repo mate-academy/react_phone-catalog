@@ -131,7 +131,7 @@ export function HomePage() {
             <div className={styles.category__card}>
               <img
                 className={styles.category__card__img}
-                src="./img/phones.png"
+                src="./img/Phones.png"
                 alt="Phones"
               />
               <h2 className={styles.category__card__title}>Phones</h2>
@@ -142,7 +142,7 @@ export function HomePage() {
             <div className={styles.category__card}>
               <img
                 className={styles.category__card__img}
-                src="./img/tablets.png"
+                src="./img/Tablets.png"
                 alt="Tablets"
               />
               <h2 className={styles.category__card__title}>Tablets</h2>
@@ -153,7 +153,7 @@ export function HomePage() {
             <div className={styles.category__card}>
               <img
                 className={styles.category__card__img}
-                src="./img/accessories.png"
+                src="./img/Accessories.png"
                 alt="Accessories"
               />
               <h2 className={styles.category__card__title}>Accessories</h2>

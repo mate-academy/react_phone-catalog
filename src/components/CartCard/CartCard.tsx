@@ -28,7 +28,7 @@ export function CartCard({ product, quantity }: Props) {
         />
         <img
           className={styles.top__img}
-          src={`${import.meta.env.BASE_URL}${product.image}`}
+          src={`${import.meta.env.BASE_URL}/${product.image}`}
           alt=""
         />
         <h2 className={styles.top__title}>{product.name}</h2>
