@@ -133,7 +133,7 @@ margin-bottom: 40px;
       font-size: 12px;
       line-height: 100%;
       margin-bottom: 4px;
-      white-space: nowrap; // Текст не будет переноситься на новую строку
+      white-space: nowrap;
 }
 
 .byItems {
@@ -151,11 +151,6 @@ margin-bottom: 40px;
   width: 176px;
   height: 40px;
 }
-
-// .byFiltereDropdown {
-// // display: flex;
-// margin-left: auto;
-// }
 
 .byItems{
   display: flex;

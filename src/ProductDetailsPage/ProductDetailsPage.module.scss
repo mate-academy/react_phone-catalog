@@ -53,7 +53,6 @@ text-decoration: none;
 
 .backButton {
   display: flex;
-  // border: none;
   background: white;
   border: none;
   gap: 4px;
@@ -114,7 +113,7 @@ font-weight: 800;
 
   .titleContainer {
     grid-column: 1 / 13;
-    display: flex; // Выстраивает миниатюры
+    display: flex;
     flex-direction: row;
     gap: 16px;
     align-items: flex-start;
@@ -126,7 +125,7 @@ font-weight: 800;
 
     @include on-phone {
       grid-column: 1 / -1;
-      flex-direction: column-reverse; // упали ПОД главное фото
+      flex-direction: column-reverse;
       align-items: center;
       gap: 16px;
     }
@@ -231,7 +230,7 @@ font-weight: 800;
 
 
 .mainImageBlock {
-  flex: 1; // занимает всё доступное пространство рядом с миниатюрами
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -254,7 +253,7 @@ font-weight: 800;
 .mainImage {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; //  от искажений
+  object-fit: contain;
 }
 
 .uderLine {

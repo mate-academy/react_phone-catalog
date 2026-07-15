@@ -284,14 +284,13 @@ margin: 32px;
 
 .modal {
 position: fixed;
-top: 50%; /* Центрирование по вертикали */
-left: 50%;  /* Центрирование по горизонтали */
-transform: translate(-50%, -50%);  /* Сдвиг на половину ширины и высоты */
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
 z-index: 1000;
 display: flex;
 opacity: 1;
 background-color: #fff;
-// width: 400px;
 height: 200px;
 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 cursor: pointer;

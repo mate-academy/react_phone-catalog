@@ -43,7 +43,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [favorites]);
 
   const addToCart = (item: Products) => {
-    // dodae tovar //
     setCart(prevCart => {
       const existingItem = prevCart.find(
         cartItem => cartItem.product.itemId === item.itemId,
@@ -62,7 +61,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const removeFromCart = (product: Products) => {
-    //vidalye tovar //
     setCart(prevCart =>
       prevCart.filter(item => item.product.itemId !== product.itemId),
     );
