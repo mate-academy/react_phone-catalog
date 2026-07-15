@@ -125,7 +125,7 @@ export function ItemCard() {
           <img src={Left} alt="" className={styles.back__img} />
           <p className={styles.back__text}>Back</p>
         </div>
-        <h1 className={styles.galery__title}>{product.name}</h1>
+        <h2 className={styles.galery__title}>{product.name}</h2>
         <div className={styles.galeryBlock}>
           <div className={styles.galery}>
             <CardGalery images={product.images} />
@@ -147,7 +147,7 @@ export function ItemCard() {
             </div>
             <hr className={styles.divider} />
             <div className={styles.cap}>
-              <h1 className={styles.cap__title}>Select capacity</h1>
+              <h2 className={styles.cap__title}>Select capacity</h2>
               <div className={styles.variants}>
                 {product.capacityAvailable.map(capacityOption => (
                   <span
@@ -206,7 +206,7 @@ export function ItemCard() {
 
         <div className={styles.bot}>
           <div className={styles.about}>
-            <h1 className={styles.about__title}>About</h1>
+            <h2 className={styles.about__title}>About</h2>
             <hr className={styles.divider} />
             <div className={styles.aboutpage}>
               {product.description.map(block => (
@@ -237,7 +237,7 @@ export function ItemCard() {
 
         <div className={styles.new}>
           <div className={styles.new__topblock}>
-            <h1 className={styles.new__title}>You may also like</h1>
+            <h2 className={styles.new__title}>You may also like</h2>
             <div className={styles.new__divider}>
               <button
                 onClick={() => newSwiper?.slidePrev()}

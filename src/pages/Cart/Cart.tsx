@@ -30,7 +30,7 @@ export function Cart() {
             Cart
           </Link>
         </div>
-        <h1 className={styles.title}>Cart</h1>
+        <h2 className={styles.title}>Cart</h2>
         <div className={styles.cart}>
           <div className={styles.products}>
             {cart.map(item => (

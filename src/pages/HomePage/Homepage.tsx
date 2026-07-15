@@ -29,10 +29,11 @@ export function HomePage() {
       <Header />
 
       <main className={styles.main}>
+        <h1 className={styles.visually_hidden}>Product Catalog</h1>
         <div className={styles.welcome}>
-          <h1 className={styles.welcome__title}>
+          <h2 className={styles.welcome__title}>
             Welcome to Nice Gadgets store!
-          </h1>
+          </h2>
 
           <div className={styles.welcome__swiper}>
             <Swiper
@@ -85,7 +86,7 @@ export function HomePage() {
         </div>
         <div className={styles.new}>
           <div className={styles.new__topblock}>
-            <h1 className={styles.new__title}>Brand new models</h1>
+            <h2 className={styles.new__title}>Brand new models</h2>
             <div className={styles.new__divider}>
               <button
                 onClick={() => newSwiper?.slidePrev()}
@@ -125,7 +126,7 @@ export function HomePage() {
           </div>
         </div>
         <div className={styles.category}>
-          <h1 className={styles.category__title}>Shop by category</h1>
+          <h2 className={styles.category__title}>Shop by category</h2>
           <div className={styles.category__cards}>
             <div className={styles.category__card}>
               <img
@@ -165,7 +166,7 @@ export function HomePage() {
 
         <div className={styles.new}>
           <div className={styles.new__topblock}>
-            <h1 className={styles.new__title}>Hot prices</h1>
+            <h2 className={styles.new__title}>Hot prices</h2>
             <div className={styles.new__divider}>
               <button
                 onClick={() => hotSwiper?.slidePrev()}

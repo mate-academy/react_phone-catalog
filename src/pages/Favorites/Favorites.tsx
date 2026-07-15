@@ -33,7 +33,7 @@ export function Favorites() {
         </div>
 
         <div className={styles.Top}>
-          <h1 className={styles.Top__title}>Favourites</h1>
+          <h2 className={styles.Top__title}>Favourites</h2>
           <p className={styles.Top__items}>{favorites.length} items</p>
         </div>
 

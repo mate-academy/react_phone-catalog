@@ -73,11 +73,11 @@ export function PhonesPage() {
         </div>
         <div className={styles.controls}>
           {category === 'phones' ? (
-            <h1 className={styles.controls__title}>Mobile phones</h1>
+            <h2 className={styles.controls__title}>Mobile phones</h2>
           ) : category === 'tablets' ? (
-            <h1 className={styles.controls__title}>Tablets</h1>
+            <h2 className={styles.controls__title}>Tablets</h2>
           ) : (
-            <h1 className={styles.controls__title}>Accessories</h1>
+            <h2 className={styles.controls__title}>Accessories</h2>
           )}
           <p className={styles.controls__models}>{total} models</p>
         </div>

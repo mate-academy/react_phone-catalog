@@ -36,7 +36,7 @@ export function BrandCard({ product }: Props) {
           className={styles.brandCard__img}
         />
       </div>
-      <h1 className={styles.brandCard__title}>{name}</h1>
+      <h2 className={styles.brandCard__title}>{name}</h2>
       <p className={styles.brandCard__price}>{price}</p>
       <hr className={styles.brandCard__divider} />
       <div className={styles.brandCard__params}>

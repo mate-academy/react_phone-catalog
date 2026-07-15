@@ -31,7 +31,7 @@ export function CartCard({ product, quantity }: Props) {
           src={`${import.meta.env.BASE_URL}${product.image}`}
           alt=""
         />
-        <h1 className={styles.top__title}>{product.name}</h1>
+        <h2 className={styles.top__title}>{product.name}</h2>
       </div>
       <div className={styles.bot}>
         <div className={styles.buttons}>
