@@ -1,14 +1,20 @@
+import { useNavigate } from 'react-router-dom';
 import { FavoriteButton } from '../../../shared/components/FavoriteButton';
 import { SquareButton } from '../../../shared/components/SquareButton';
-import { useCartDispatch } from '../../../shared/store/CartContext';
+import {
+  useCartDispatch,
+  useCartState,
+} from '../../../shared/store/CartContext';
 import { useFavorites } from '../../../shared/store/FavoritesContext';
-import { Product } from '../../../shared/types/Product';
+import { ProductDetails } from '../../../shared/types/ProductDetails';
+// eslint-disable-next-line max-len
+import { parseProductDetailsToProduct } from '../../../shared/utils/normalizeProductToCart';
 import styles from './PurchaseBlock.module.scss';
 
 interface Props {
   priceDiscount: number;
   priceRegular: number;
-  product: Product;
+  product: ProductDetails;
 }
 
 export const PurchaseBlock: React.FC<Props> = ({
@@ -18,6 +24,14 @@ export const PurchaseBlock: React.FC<Props> = ({
 }) => {
   const { toggleFavorite, isFavorite } = useFavorites();
   const dispatch = useCartDispatch();
+  const state = useCartState();
+  const navigate = useNavigate();
+
+  const parsedProduct = parseProductDetailsToProduct(product);
+
+  const isProductInCart = state.cartItems.some(
+    item => item.product.itemId === parsedProduct.itemId,
+  );
 
   return (
     <div className={styles['purchase-block']}>
@@ -33,14 +47,19 @@ export const PurchaseBlock: React.FC<Props> = ({
       <div className={styles['purchase-block__manager']}>
         <SquareButton
           className={styles['purchase-block__cart']}
-          onClick={() => dispatch({ type: 'addProduct', product })}
+          onClick={() =>
+            !isProductInCart
+              ? dispatch({ type: 'addProduct', product: parsedProduct })
+              : navigate(`/cart/`)
+          }
+          selected={isProductInCart}
         >
-          Add to cart
+          {!isProductInCart ? 'Add to cart' : 'Added'}
         </SquareButton>
         <FavoriteButton
           className={styles['purchase-block__fav']}
-          onClick={() => toggleFavorite(product)}
-          selected={isFavorite(product.itemId)}
+          onClick={() => toggleFavorite(parsedProduct)}
+          selected={isFavorite(parsedProduct.itemId)}
         />
       </div>
     </div>

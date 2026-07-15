@@ -2,7 +2,7 @@ import styles from './ProductCard.module.scss';
 import { Product } from '../../types/Product';
 import { SquareButton } from '../SquareButton';
 import { FavoriteButton } from '../FavoriteButton';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ProgressiveImage } from '../ProgressiveImage/ProgressiveImage';
 import { ShortSpec } from '../ShortSpec';
 import { SpecItem } from '../ShortSpec/types';
@@ -18,6 +18,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const dispatch = useCartDispatch();
   const state = useCartState();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const specs: SpecItem[] = [
     { key: 'Screen', value: product.screen },
@@ -74,7 +75,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <div className={styles['product-card__product-manager']}>
         <SquareButton
           className={styles['product-card__cart']}
-          onClick={() => dispatch({ type: 'addProduct', product })}
+          onClick={() =>
+            !isProductInCart
+              ? dispatch({ type: 'addProduct', product: parsedProduct })
+              : navigate(`/cart/`)
+          }
           selected={isProductInCart}
         >
           {!isProductInCart ? 'Add to cart' : 'Added'}

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { IconButton } from '../../../../../shared/components/IconButton';
 import {
   CartItem,
@@ -28,7 +29,10 @@ export const CartCard: React.FC<Props> = ({ item }) => {
         className={styles['cart-card__image']}
         alt={name}
       />
-      <span className={styles['cart-card__title']}>{name}</span>
+
+      <Link to={`/product/${itemId}`} className={styles['cart-card__link']}>
+        <span className={styles['cart-card__title']}>{name}</span>
+      </Link>
 
       <div className={styles['cart-card__controls']}>
         <IconButton

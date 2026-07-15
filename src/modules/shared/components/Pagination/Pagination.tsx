@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { getImageUrl } from '../../utils/getImageUrl';
 import { IconButton } from '../IconButton';
 import styles from './Pagination.module.scss';
@@ -32,7 +33,13 @@ export const Pagination: React.FC<Props> = ({
           }
 
           return (
-            <IconButton key={page} onClick={() => handleChangePage(page)}>
+            <IconButton
+              key={page}
+              onClick={() => handleChangePage(+page)}
+              className={classNames({
+                [styles['pagination__button-active']]: currentPage == page,
+              })}
+            >
               {page}
             </IconButton>
           );

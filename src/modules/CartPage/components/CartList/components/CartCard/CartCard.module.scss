@@ -43,6 +43,11 @@
     width: 80px;
   }
 
+  &__link {
+    text-decoration: none;
+    color: v.$color-primary;
+  }
+
   &__title {
     grid-area: title;
     justify-self: left;
@@ -55,7 +60,7 @@
   &__controls {
     grid-area: controls;
     width: 96px;
-    
+
     @include m.flex(row, 0, space-between, center);
   }
 
