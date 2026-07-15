@@ -1,0 +1,56 @@
+.variant {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e2e6e9;
+
+  &__text {
+    font-size: 12px;
+    line-height: 100%;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__color {
+    all: unset;
+    width: 32px;
+    height: 32px;
+    border-radius: 36px;
+    border: 2px #fff solid;
+    outline: 1px #e2e6e9 solid;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &--active {
+      outline: 1px #313237 solid;
+      transition: outline 0.3s;
+    }
+  }
+
+  &__capacity {
+    all: unset;
+    border: 1px #b4bdc3 solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 8px 4px;
+    background-color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    color: #313237;
+    cursor: pointer;
+
+    &--active {
+      background-color: #313237;
+      color: #fff;
+      border: 0;
+      transition:
+        outline 0.3s,
+        color 0.3s;
+    }
+  }
+}
