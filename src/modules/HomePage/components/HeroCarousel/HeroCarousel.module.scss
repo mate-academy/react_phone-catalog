@@ -7,7 +7,7 @@
 
   @include m.respond-to(tablet) {
     margin-inline: 0;
-    
+
     --card-width: 100%;
   }
 
@@ -78,7 +78,7 @@
       background: none;
       padding: 1.5em 2.95em;
 
-      border: 1px solid #2f2f2f;
+      border: 1px solid #3a3a3a;
       border-radius: 40px;
 
       cursor: pointer;

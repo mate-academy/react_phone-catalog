@@ -13,7 +13,7 @@
 
   @include m.respond-to(desktop) {
     --item-width: 272px;
-    
+
     margin-right: 0;
   }
 
@@ -24,6 +24,8 @@
   &__collection {
     display: flex;
     align-items: stretch;
+    height: 100%;
+
     gap: var(--gap);
     list-style: none;
   }

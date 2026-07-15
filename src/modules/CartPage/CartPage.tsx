@@ -5,7 +5,7 @@ import { Back } from '../shared/components/Back';
 import { useCartDispatch, useCartState } from '../shared/store/CartContext';
 import { CartList } from './components/CartList';
 import { CartSummary } from './components/CartSummary';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { EmptyState } from '../shared/components/EmptyState';
 import { Modal } from '../shared/components/Modal';
 
@@ -34,10 +34,6 @@ export const CartPage = () => {
       ),
     [state.cartItems],
   );
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
 
   return (
     <div className={classNames(styles['catalog-page'], 'container')}>

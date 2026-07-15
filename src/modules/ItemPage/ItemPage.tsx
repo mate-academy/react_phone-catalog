@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 
 import styles from './ItemPage.module.scss';
@@ -27,7 +27,6 @@ export const ItemPage = () => {
     detailedSpecs,
   } = useItem();
 
-  const location = useLocation();
   const navigate = useNavigate();
 
   if (isLoading) {
@@ -48,7 +47,7 @@ export const ItemPage = () => {
     );
   }
 
-  const backLink = location.state?.from || `/category/${category || ''}`;
+  const backLink = `/catalog/${category || ''}`;
 
   const links: BreadcrumbLink[] = [
     {

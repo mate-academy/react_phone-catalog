@@ -28,12 +28,18 @@ export const Footer = () => {
           </Link>
         </li>
         <li className={styles.footer__item}>
-          <Link to={'tel:+000-000-000-0000'} className={styles.footer__link}>
+          <Link
+            to={'mailto:rooostik2016@gmail.com'}
+            className={styles.footer__link}
+          >
             Contacts
           </Link>
         </li>
         <li className={styles.footer__item}>
-          <Link to={'/Rights'} className={styles.footer__link}>
+          <Link
+            to={'https://opensource.org/license/mit'}
+            className={styles.footer__link}
+          >
             Rights
           </Link>
         </li>
