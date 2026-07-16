@@ -11,9 +11,9 @@
   }
 
   &__not-found-title {
-    @include heading-xl;
-
     margin-top: 24px;
+
+    @include heading-xl;
   }
 }
 

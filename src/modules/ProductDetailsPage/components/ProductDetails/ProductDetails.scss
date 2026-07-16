@@ -9,6 +9,7 @@
 
   &__title {
     margin-bottom: 32px;
+
     @include heading-xl;
   }
 
@@ -115,6 +116,7 @@
 
   &__subtitle {
     margin-bottom: 16px;
+
     @include heading-md;
   }
 
