@@ -171,7 +171,7 @@ export const ProductPage = () => {
                 className="product-page__search"
                 placeholder={texts.enterText}
                 label={texts.productSearch}
-                value={searchValue}
+                searchValue={searchValue}
                 onChange={val => handleSearchParams('query', val)}
               />
             </div>

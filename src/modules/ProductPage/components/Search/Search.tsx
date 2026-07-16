@@ -1,40 +1,36 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './Search.scss';
 import { Icon } from '../../../shared/components/Icon';
+import { useDebounce } from '../../../../hooks/useDebounce';
 
 type Props = {
   className: string;
   placeholder: string;
   label: string;
-  value: string;
+  searchValue: string;
   onChange: (value: string) => void;
-};
-
-const debounce = (callback: (value: string) => void, delay: number) => {
-  let timerId: NodeJS.Timeout;
-
-  return (args: string) => {
-    clearTimeout(timerId);
-    timerId = setTimeout(() => {
-      callback(args);
-    }, delay);
-  };
 };
 
 export const Search: React.FC<Props> = ({
   className,
   placeholder,
   label,
-  value,
+  searchValue,
   onChange,
 }) => {
-  const [newValue, setNewValue] = useState(() => value);
-  const debouncedSearch = debounce(onChange, 500);
+  const [newValue, setNewValue] = useState(searchValue);
+  const debouncedSearch = useDebounce(onChange, 500);
+
+  useEffect(() => {
+    if (searchValue === '') {
+      setNewValue('');
+    }
+  }, [searchValue]);
 
   const changeValue = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      setNewValue(e.target.value);
       debouncedSearch(e.target.value);
+      setNewValue(e.target.value);
     },
     [debouncedSearch],
   );
