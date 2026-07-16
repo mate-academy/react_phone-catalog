@@ -1,16 +1,19 @@
 @use '../../styles/mixins.scss' as *;
+@use '../../styles/typography.scss' as *;
 
 .product-details-page {
   &__breadcrumbs {
     margin-top: 24px;
   }
 
-  &__not-found-title {
-    margin-top: 24px;
-  }
-
   &__not-found-img {
     width: 100%;
+  }
+
+  &__not-found-title {
+    @include heading-xl;
+
+    margin-top: 24px;
   }
 }
 
@@ -25,12 +28,13 @@
     }
   }
 
-  &--products-slider {
-    margin-top: 56px;
-  }
-
   &--body {
     margin-top: 16px;
   }
 }
 
+.container {
+  &--product-details-page {
+    gap: 56px;
+  }
+}

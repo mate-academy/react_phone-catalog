@@ -21,7 +21,7 @@ export const ButtonHeader: React.FC<Props> = ({
   kind,
   showGuantity,
 }) => {
-  const { totalCartItem, favoritesItems } = useGlobalContext();
+  const { totalCartItem, favouritesItems } = useGlobalContext();
   const [count, setCount] = useState(0);
   const location = useLocation();
   const category = location.pathname.slice(1);
@@ -33,13 +33,13 @@ export const ButtonHeader: React.FC<Props> = ({
         break;
 
       case 'favourites':
-        setCount(favoritesItems.length);
+        setCount(favouritesItems.length);
         break;
 
       default:
         break;
     }
-  }, [totalCartItem, favoritesItems, kind]);
+  }, [totalCartItem, favouritesItems, kind]);
 
   return (
     <button

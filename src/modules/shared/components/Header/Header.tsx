@@ -22,7 +22,7 @@ type Props = {
 export const Header: React.FC<Props> = ({ className }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const { cartItems, favoritesItems } = useGlobalContext();
+  const { cartItems, favouritesItems } = useGlobalContext();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -98,7 +98,7 @@ export const Header: React.FC<Props> = ({ className }) => {
           onClick={() => openPage('/favourites')}
           name="heart-like"
           kind="favourites"
-          showGuantity={favoritesItems.length > 0}
+          showGuantity={favouritesItems.length > 0}
         />
         <ButtonHeader
           className="header__button header__button--shopping-bag"

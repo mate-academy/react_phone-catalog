@@ -13,7 +13,7 @@ type Props = {
 
 export const BurgerMenu: React.FC<Props> = ({ className, closeMenu }) => {
   const navigate = useNavigate();
-  const { cartItems, favoritesItems } = useGlobalContext();
+  const { cartItems, favouritesItems } = useGlobalContext();
 
   const openPage = (path: AllAvailablePages) => {
     navigate(path);
@@ -33,7 +33,7 @@ export const BurgerMenu: React.FC<Props> = ({ className, closeMenu }) => {
           }}
           name="heart-like"
           kind="favourites"
-          showGuantity={favoritesItems.length > 0}
+          showGuantity={favouritesItems.length > 0}
         />
         <ButtonHeader
           className="burger-menu__button"

@@ -37,7 +37,7 @@ export const HomePage = () => {
     <div className="home-page">
       <div className="container container--home">
         <section className="hero section section--hero">
-          <h1 className="hero__title">{texts.welcomeToNiceGadgetsStore}</h1>
+          <h2 className="hero__title">{texts.welcomeToNiceGadgetsStore}</h2>
           <PicturesSlider className="hero__pictures-slider" />
         </section>
         <section className="section section--products-slider">

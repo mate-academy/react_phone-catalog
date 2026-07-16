@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const AddToCartButton: React.FC<Props> = ({ className, item }) => {
-  const { cartItems, setCartItems, favoritesItems, setFavoritesItems } =
+  const { cartItems, setCartItems, favouritesItems, setFavouritesItems } =
     useGlobalContext();
   const { texts } = useLanguage();
   let showAddedCart = false;
@@ -22,8 +22,8 @@ export const AddToCartButton: React.FC<Props> = ({ className, item }) => {
     showAddedCart = cartItems.some(cartItem => cartItem.id === item?.id);
   }
 
-  if (favoritesItems.length > 0) {
-    showActiveIcon = favoritesItems.some(
+  if (favouritesItems.length > 0) {
+    showActiveIcon = favouritesItems.some(
       favoritesItem => favoritesItem.id === item?.id,
     );
   }
@@ -50,18 +50,18 @@ export const AddToCartButton: React.FC<Props> = ({ className, item }) => {
   }, [cartItems, item, showAddedCart, setCartItems]);
 
   const addToFavorites = useCallback(() => {
-    if (favoritesItems.some(favriteItem => favriteItem.id === item?.id)) {
-      const newFavoritesItems = favoritesItems.filter(
+    if (favouritesItems.some(favriteItem => favriteItem.id === item?.id)) {
+      const newFavoritesItems = favouritesItems.filter(
         favriteItem => favriteItem.id !== item?.id,
       );
 
-      setFavoritesItems(newFavoritesItems);
+      setFavouritesItems(newFavoritesItems);
     } else {
       if (!showActiveIcon && item) {
-        setFavoritesItems(current => [...current, item]);
+        setFavouritesItems(current => [...current, item]);
       }
     }
-  }, [favoritesItems, item, showActiveIcon, setFavoritesItems]);
+  }, [favouritesItems, item, showActiveIcon, setFavouritesItems]);
 
   return (
     <div className={`add-to-cart-button ${className}`}>

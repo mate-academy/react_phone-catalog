@@ -3,8 +3,8 @@ import './TotalPrice.scss';
 import { Line } from '../../../shared/components/Line';
 import { TextButton } from '../../../shared/components/Buttons/TextButton';
 import { useGlobalContext } from '../../../../context/GlobalContext';
-import { Button } from '../../../shared/components/Buttons/Button';
 import { useLanguage } from '../../../../context/LanguageContext';
+import { Dialog } from '../Dialog';
 
 type Props = {
   className: string;
@@ -31,7 +31,7 @@ export const TotalPrice: React.FC<Props> = ({ className }) => {
   return (
     <div className={`total-price ${className}`}>
       <div className="total-price__price">
-        <h2 className="total-price__text-price">{`$${totalPrice}`}</h2>
+        <h2 className="total-price__title-price">{`$${totalPrice}`}</h2>
         <p className="total-price__count-item">
           {`${texts.totalFor} ${totalCartItem} ${texts.items}`}
         </p>
@@ -44,23 +44,7 @@ export const TotalPrice: React.FC<Props> = ({ className }) => {
           text={texts.checkout}
         />
       )}
-      <dialog className="dialog" ref={dialogRef}>
-        <div className="dialog__header">
-          <h3 className="dialog__text">
-            {texts.checkoutIsNotImplementedYetDoYouWantToClearTheCart}
-          </h3>
-          <Button
-            className="cart-items__button-close"
-            name="close"
-            onClick={() => dialogRef.current?.close()}
-          />
-        </div>
-        <TextButton
-          className="dialog__button-clear"
-          onClick={() => clearCart()}
-          text={texts.clearCart}
-        />
-      </dialog>
+      <Dialog dialogRef={dialogRef} clearCart={() => clearCart()} />
     </div>
   );
 };

@@ -66,9 +66,9 @@ export const ProductDetailsPage = () => {
   } else if (status === 'error') {
     return (
       <section className="section section--product-was-not-found">
-        <h1 className="product-details-page__not-found-title">
+        <h2 className="product-details-page__not-found-title">
           {texts.productWasNotFound}
-        </h1>
+        </h2>
         <img
           className="product-details-page__not-found-img"
           src="img/product-not-found.png"

@@ -46,7 +46,7 @@ export const Categories: React.FC<Props> = ({ className }) => {
 
   return (
     <div className={`categories ${className}`}>
-      <h2 className="categories__heading">{texts.shopByCategory}</h2>
+      <h2 className="categories__title">{texts.shopByCategory}</h2>
       <div className="categories__body">
         {categories.map(category => {
           const numberOfProducts = allProducts.filter(
@@ -67,7 +67,9 @@ export const Categories: React.FC<Props> = ({ className }) => {
               </Link>
               <div className="categories__info">
                 <Link to={`/${category.link}`}>
-                  <h4 className="categories__title">{texts[category.title]}</h4>
+                  <h4 className="categories__category-name">
+                    {texts[category.title]}
+                  </h4>
                 </Link>
                 <p className="categories__count">
                   {numberOfProducts === 1

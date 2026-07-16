@@ -1,13 +1,16 @@
 @use '../../../../styles/mixins.scss' as *;
+@use '../../../../styles/typography.scss' as *;
 
 .product-slider {
   display: flex;
   flex-direction: column;
   gap: 24px;
   min-width: 0;
-
-  // width: 100%;
   overflow: hidden;
+
+  &__title {
+    @include heading-lg;
+  }
 
   &__header {
     display: flex;
@@ -60,8 +63,4 @@
     flex-shrink: 0;
     width: clamp(212px, 6.82vw + 197px, 272px);
   }
-
-  // @include up($md) {
-
-  // }
 }

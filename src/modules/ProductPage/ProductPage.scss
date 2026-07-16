@@ -1,8 +1,13 @@
 @use '../../styles/mixins.scss' as *;
+@use '../../styles/typography.scss' as *;
 
 .product-page {
   min-height: 100%;
   width: 100%;
+
+  &__title {
+    @include heading-xl;
+  }
 
   &__breadcrumbs {
     margin-top: 24px;
@@ -42,6 +47,10 @@
     color: var(--secondary-color);
     font-family: var(--mont-regular-font);
     font-size: 14px;
+  }
+
+  &__no-products-yet {
+    @include heading-lg;
   }
 
   &__not-found-product {

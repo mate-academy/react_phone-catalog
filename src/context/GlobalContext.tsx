@@ -19,10 +19,10 @@ type GlobalContextType = {
   allProducts: Product[];
   cartItems: CartItem[];
   totalCartItem: number;
-  favoritesItems: Product[];
+  favouritesItems: Product[];
   searchParams: URLSearchParams;
   setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
-  setFavoritesItems: React.Dispatch<React.SetStateAction<Product[]>>;
+  setFavouritesItems: React.Dispatch<React.SetStateAction<Product[]>>;
   setSearchParams: SetURLSearchParams;
 };
 
@@ -40,7 +40,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       return [];
     }
   });
-  const [favoritesItems, setFavoritesItems] = useState<Product[]>(() => {
+  const [favouritesItems, setFavouritesItems] = useState<Product[]>(() => {
     const localFavoritesItems = localStorage.getItem('FavoritesItems');
 
     if (localFavoritesItems) {
@@ -67,8 +67,8 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
   }, [cartItems]);
 
   useEffect(() => {
-    localStorage.setItem('FavoritesItems', JSON.stringify(favoritesItems));
-  }, [favoritesItems]);
+    localStorage.setItem('FavouritesItems', JSON.stringify(favouritesItems));
+  }, [favouritesItems]);
 
   return (
     <GlobalContext.Provider
@@ -76,10 +76,10 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
         allProducts,
         cartItems,
         totalCartItem,
-        favoritesItems,
+        favouritesItems,
         searchParams,
         setCartItems,
-        setFavoritesItems,
+        setFavouritesItems,
         setSearchParams,
       }}
     >

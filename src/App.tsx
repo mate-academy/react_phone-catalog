@@ -5,9 +5,9 @@ import { ProductPage } from './modules/ProductPage';
 // eslint-disable-next-line max-len
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { CartPage } from './modules/CartPage';
-import { FavoritesPage } from './modules/FavoritesPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { ScrollToTop } from './context/ScrollToTop';
+import { FavouritesPage } from './modules/FavouritesPage';
 
 export const App = () => (
   <>
@@ -21,7 +21,7 @@ export const App = () => (
         <Route path="accessories" element={<ProductPage />} />
         <Route path="product/:productId" element={<ProductDetailsPage />} />
         <Route path="cart" element={<CartPage />} />
-        <Route path="favourites" element={<FavoritesPage />} />
+        <Route path="favourites" element={<FavouritesPage />} />
       </Route>
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

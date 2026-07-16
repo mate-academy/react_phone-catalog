@@ -1,9 +1,15 @@
+@use '../../styles/typography.scss' as *;
+
 .not-found-page {
   display: flex;
   flex-direction: column;
   padding: 24px;
   width: 100%;
   background-color: var(--main-color);
+
+  &__title {
+    @include heading-xl;
+  }
 
   &__img {
     width: 100%;

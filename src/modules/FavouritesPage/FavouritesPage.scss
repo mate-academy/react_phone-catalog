@@ -1,4 +1,10 @@
-.favorites-page {
+@use '../../styles/typography.scss' as *;
+
+.favourites-page {
+  &__title {
+    @include heading-xl;
+  }
+
   &__breadcrumbs {
     margin-top: 24px;
   }

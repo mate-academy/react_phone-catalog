@@ -1,9 +1,14 @@
 @use '../../../../styles/mixins.scss' as *;
+@use '../../../../styles/typography.scss' as *;
 
 .categories {
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  &__title {
+    @include heading-lg;
+  }
 
   &__body {
     display: flex;
@@ -27,6 +32,10 @@
     flex-direction: column;
     width: max-content;
     gap: 8px;
+  }
+
+  &__category-name {
+    @include heading-sm;
   }
 
   &__count {

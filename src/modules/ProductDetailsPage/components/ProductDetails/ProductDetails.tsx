@@ -74,7 +74,7 @@ export const ProductDetails: React.FC<Props> = ({
 
   return (
     <div className={`product-details ${className}`}>
-      <h1 className="product-details__title">{activeProduct.name}</h1>
+      <h2 className="product-details__title">{activeProduct.name}</h2>
       <div className="product-details__region-item">
         <div className="product-details__photo">
           <div className="product-details__photo-wrapper">

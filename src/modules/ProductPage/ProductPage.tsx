@@ -155,7 +155,7 @@ export const ProductPage = () => {
         </section>
         <section className="section section--main">
           <div className="main">
-            <h1 className="product-page__title">{`${texts[activeCategory]}`}</h1>
+            <h2 className="product-page__title">{`${texts[activeCategory]}`}</h2>
             <p className="product-page__count">{`${categoryProducts.length} ${texts.models}`}</p>
           </div>
           {categoryProducts.length > 0 && (
