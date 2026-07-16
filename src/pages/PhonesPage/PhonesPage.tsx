@@ -11,11 +11,10 @@ import {
   ListboxOption,
   ListboxOptions,
 } from '@headlessui/react';
-import { useState } from 'react';
 import Home from '../../icons/Home.svg';
 import Right from '../../icons/Right.svg';
 import Left from '../../icons/Left.svg';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { BrandCard } from '../../components/BrandCard';
 import { Product } from '../../types';
 import productsData from '../../../public/api/products.json';
@@ -33,14 +32,54 @@ const sorts: { sort: SortType }[] = [
 const products = productsData as Product[];
 
 export function PhonesPage() {
-  const [selectedItem, setSelectedItem] = useState(items[0]);
-  const [selectedSort, setSelectedSort] = useState(sorts[0]);
-  const [page, setPage] = useState(1);
-
   const { category } = useParams<{ category: string }>();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   if (!category || !isValidCategory(category)) {
     return <div>Страница не найдена</div>;
+  }
+
+  const sortParam = (searchParams.get('sort') as SortType) || 'new';
+  const pageParam = Number(searchParams.get('page')) || 1;
+  const perPageParam = searchParams.get('perPage') || '16';
+  const itemsPerPage = perPageParam === 'all' ? Infinity : Number(perPageParam);
+
+  function handleSortChange(newSort: SortType) {
+    const params = new URLSearchParams(searchParams);
+
+    if (newSort === 'new') {
+      params.delete('sort');
+    } else {
+      params.set('sort', newSort);
+    }
+
+    params.delete('page');
+    setSearchParams(params);
+  }
+
+  function handleItemsPerPageChange(newCount: number | 'all') {
+    const params = new URLSearchParams(searchParams);
+
+    if (newCount === 16) {
+      params.delete('perPage');
+    } else {
+      params.set('perPage', String(newCount));
+    }
+
+    params.delete('page');
+    setSearchParams(params);
+  }
+
+  function handlePageChange(newPage: number) {
+    const params = new URLSearchParams(searchParams);
+
+    if (newPage === 1) {
+      params.delete('page');
+    } else {
+      params.set('page', String(newPage));
+    }
+
+    setSearchParams(params);
   }
 
   const {
@@ -50,12 +89,12 @@ export function PhonesPage() {
   } = getVisibleProducts({
     products,
     category: category,
-    sortType: selectedSort.sort,
-    itemsPerPage: selectedItem.count,
-    currentPage: page,
+    sortType: sortParam,
+    itemsPerPage,
+    currentPage: pageParam,
   });
 
-  const paginationRange = getPagination(page, totalPages, 1);
+  const paginationRange = getPagination(pageParam, totalPages, 1);
 
   return (
     <div className={styles.phonesPage}>
@@ -68,7 +107,7 @@ export function PhonesPage() {
           </Link>
           <img src={Right} alt="" />
           <Link to={`/${category}`} className={styles.BreadCrumbs__link}>
-            Phones
+            {category}
           </Link>
         </div>
         <div className={styles.controls}>
@@ -86,16 +125,15 @@ export function PhonesPage() {
           <div className={styles.menu__block}>
             <h2 className={styles.menu__block__title}>Sort by</h2>
             <div className={styles.listbox}>
-              <Listbox value={selectedSort} onChange={setSelectedSort}>
+              <Listbox value={sortParam} onChange={handleSortChange}>
                 <ListboxButton className={styles.listbox__button}>
-                  {' '}
-                  {selectedSort.sort}
+                  {sortParam}
                 </ListboxButton>
                 <ListboxOptions className={styles.listbox__options}>
                   {sorts.map(sort => (
                     <ListboxOption
                       key={sort.sort}
-                      value={sort}
+                      value={sort.sort}
                       className={styles.listbox__option}
                     >
                       {sort.sort}
@@ -108,15 +146,18 @@ export function PhonesPage() {
           <div className={styles.menu__block}>
             <h2 className={styles.menu__block__title}>Items on page</h2>
             <div className={styles.listbox}>
-              <Listbox value={selectedItem} onChange={setSelectedItem}>
+              <Listbox
+                value={perPageParam === 'all' ? 'all' : Number(perPageParam)}
+                onChange={handleItemsPerPageChange}
+              >
                 <ListboxButton className={styles.listbox__button}>
-                  {selectedItem.count}
+                  {perPageParam === 'all' ? 'all' : perPageParam}
                 </ListboxButton>
                 <ListboxOptions className={styles.listbox__options}>
                   {items.map(item => (
                     <ListboxOption
                       key={item.count}
-                      value={item}
+                      value={item.count}
                       className={styles.listbox__option}
                     >
                       {item.count}
@@ -133,7 +174,11 @@ export function PhonesPage() {
           ))}
         </div>
         <div className={styles.pagination}>
-          <button className={styles.pagination__button}>
+          <button
+            className={styles.pagination__button}
+            disabled={pageParam === 1}
+            onClick={() => handlePageChange(Math.max(1, pageParam - 1))}
+          >
             <img src={Left} alt="" className={styles.pagination__img} />
           </button>
           <div className={styles.agination}>
@@ -145,8 +190,8 @@ export function PhonesPage() {
               ) : (
                 <button
                   key={item}
-                  onClick={() => setPage(item)}
-                  className={styles.agination__link}
+                  onClick={() => handlePageChange(item)}
+                  className={`${styles.agination__link} ${item === pageParam ? styles.agination__link_active : ''}`}
                 >
                   {item}
                 </button>

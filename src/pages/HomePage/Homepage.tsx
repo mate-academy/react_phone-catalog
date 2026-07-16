@@ -11,6 +11,7 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import productsData from '../../../public/api/products.json';
 import { Product } from '../../types';
+import { useNavigate } from 'react-router-dom';
 //#endregion
 
 export function HomePage() {
@@ -19,7 +20,7 @@ export function HomePage() {
   const mockmodels3 = 105;
   const [newSwiper, setNewSwiper] = useState<any>(null);
   const [hotSwiper, setHotSwiper] = useState<any>(null);
-
+  const navigate = useNavigate();
   //#region Products
   const products = productsData as Product[];
   //#endregion
@@ -133,6 +134,7 @@ export function HomePage() {
                 className={styles.category__card__img}
                 src="./img/Phones.png"
                 alt="Phones"
+                onClick={() => navigate('phones')}
               />
               <h2 className={styles.category__card__title}>Phones</h2>
               <p className={styles.category__card__counter}>
@@ -141,6 +143,7 @@ export function HomePage() {
             </div>
             <div className={styles.category__card}>
               <img
+                onClick={() => navigate('tablets')}
                 className={styles.category__card__img}
                 src="./img/Tablets.png"
                 alt="Tablets"
@@ -152,6 +155,7 @@ export function HomePage() {
             </div>
             <div className={styles.category__card}>
               <img
+                onClick={() => navigate('accessories')}
                 className={styles.category__card__img}
                 src="./img/Accessories.png"
                 alt="Accessories"

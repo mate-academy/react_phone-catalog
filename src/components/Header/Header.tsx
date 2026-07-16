@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { useState } from 'react';
+import { Badge } from '../Badge';
 
 //#region svgs
 import Logo from '../../icons/Logo.svg';
@@ -8,12 +9,16 @@ import Burger from '../../icons/Burger.svg';
 import Cart from '../../icons/Cart.svg';
 import Like from '../../icons/like.svg';
 import Close from '../../icons/Close.svg';
+import { useFavorites } from '../../context/FavoritesContext';
+import { useCart } from '../../context/CartContext';
 //#endregion
 
 export function Header() {
   const nav = useNavigate();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { favorites } = useFavorites();
+  const { totalItems } = useCart();
 
   return (
     <>
@@ -23,7 +28,7 @@ export function Header() {
             className={styles.header__logo}
             src={Logo}
             alt="Logo"
-            onClick={() => nav('/')}
+            onClick={() => nav(`/`)}
           />
           <nav className={styles.header__nav}>
             <NavLink
@@ -95,6 +100,9 @@ export function Header() {
             }
           >
             <img className={styles.header__fav} src={Like} alt="Favorites" />
+            <div className={styles.header__badge}>
+              <Badge count={favorites.length} />
+            </div>
           </NavLink>
 
           <NavLink
@@ -106,6 +114,9 @@ export function Header() {
             }
           >
             <img className={styles.header__cart} src={Cart} alt="Cart" />
+            <div className={styles.header__badge}>
+              <Badge count={totalItems} />
+            </div>
           </NavLink>
         </div>
       </header>
@@ -163,22 +174,24 @@ export function Header() {
               className={styles.mobileBot__nav}
               onClick={() => setIsMenuOpen(false)}
             >
-              <img
-                className={styles.mobileBot__fav}
-                src={Like}
-                alt="Favorites"
-              />
+              <span className={styles.iconWrapper}>
+                <img
+                  className={styles.mobileBot__fav}
+                  src={Like}
+                  alt="Favorites"
+                />
+                <Badge count={favorites.length} />
+              </span>
             </NavLink>
             <NavLink
               to={'/cart'}
               className={styles.mobileBot__nav}
               onClick={() => setIsMenuOpen(false)}
             >
-              <img
-                className={styles.mobileBot__cart}
-                src={Cart}
-                alt="Cartaaa"
-              />
+              <span className={styles.iconWrapper}>
+                <img className={styles.mobileBot__cart} src={Cart} alt="Cart" />
+                <Badge count={totalItems} />
+              </span>
             </NavLink>
           </div>
         </div>

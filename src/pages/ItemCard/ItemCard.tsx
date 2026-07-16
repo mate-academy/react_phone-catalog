@@ -27,6 +27,7 @@ import tabletsData from '../../../public/api/tablets.json';
 import accessoriesData from '../../../public/api/accessories.json';
 import productsData from '../../../public/api/products.json';
 import { useFavorites } from '../../context/FavoritesContext';
+import { useCart } from '../../context/CartContext';
 //#endregion
 
 //data
@@ -43,8 +44,9 @@ export function ItemCard() {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const product = allProductDetails.find(item => item.id === id);
-  //fav
+  //fav/cart
   const { toggleFavorite, isFavorite } = useFavorites();
+  const { toggleCart, isInCart } = useCart();
 
   //colorselect
   const handleColorSelect = (newColor: string) => {
@@ -93,10 +95,10 @@ export function ItemCard() {
     return <div>Товар не найден</div>;
   }
 
-  //fav
+  //fav/cart
   const productCardData = products.find(p => p.itemId === product.id);
   const isLiked = isFavorite(product.id);
-
+  const inCart = isInCart(product.id);
   const recommendations = products
     .filter(p => p.category === product.category && p.itemId !== product.id)
     .slice(0, 8);
@@ -110,7 +112,12 @@ export function ItemCard() {
             <img src={Home} alt="" className={styles.BreadCrumbs__img} />
           </Link>
           <img src={Right} alt="" />
-          <span className={styles.BreadCrumbs__link}>Phones</span>
+          <Link
+            to={`../${product.category}`}
+            className={styles.BreadCrumbs__link}
+          >
+            {product.category}
+          </Link>
 
           <img src={Right} alt="" />
 
@@ -118,7 +125,7 @@ export function ItemCard() {
             to={''}
             className={`${styles.BreadCrumbs__link} ${styles.BreadCrumbs__last}`}
           >
-            Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
+            {product.name}
           </Link>
         </div>
         <div className={styles.back}>
@@ -175,9 +182,19 @@ export function ItemCard() {
                 </div>
               </div>
               <div className={styles.buttons}>
-                <button className={styles.buttons__cart}>Add to cart</button>
                 <button
-                  className={`${styles.brandCard__buttons__fav}`}
+                  className={styles.buttons__cart}
+                  onClick={e => {
+                    e.stopPropagation();
+                    if (productCardData) {
+                      toggleCart(productCardData);
+                    }
+                  }}
+                >
+                  {inCart ? 'Added to cart' : 'Add to Cart'}
+                </button>
+                <button
+                  className={`${styles.buttons__fav}`}
                   onClick={e => {
                     e.stopPropagation();
                     if (productCardData) {

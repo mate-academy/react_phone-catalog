@@ -115,5 +115,11 @@
     align-items: center;
     justify-content: center;
     color: $main-text-color;
+    background-color: #fff;
+
+    &_active {
+      color: #fff;
+      background-color: $main-text-color;
+    }
   }
 }

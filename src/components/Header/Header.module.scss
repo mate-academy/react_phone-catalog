@@ -10,7 +10,6 @@
   border: 1px solid #E2E6E9;
   display: flex;
   justify-content: space-between;
-  padding: 0 $phone-padding-lr;
 
   &__nav {
     display: none;
@@ -34,6 +33,10 @@
           width: 100%;
           height: 3px;
           background: $main-text-color;
+
+          @include on-desktop {
+            bottom: -27px;
+          }
         }
       }
 
@@ -55,9 +58,14 @@
 
 
   &__left {
+    padding-left: 16px;
     display: flex;
     align-items: center;
     gap: 32px;
+
+    @include on-desktop {
+      padding-left: 24px;
+    }
   }
   &__right {
     display: flex;
@@ -78,7 +86,11 @@
     @include on-tablet {
       display: block;
       border-left: 1px solid #E2E6E9;
-      padding: $phone-padding-lr 0 $phone-padding-lr $phone-padding-lr;
+      padding: $phone-padding-lr;
+
+      @include on-desktop {
+        padding: 24px;
+      }
     }
   }
 
@@ -89,6 +101,10 @@
       display: block;
       border-left: 1px solid #E2E6E9;
       padding: $phone-padding-lr;
+
+      @include on-desktop {
+        padding:  24px;
+      }
     }
   }
 
@@ -153,4 +169,18 @@
   &__cart, &__fav {
     padding: 24px;
   }
+}
+
+
+.header__badge {
+  display: none;
+
+  @include on-tablet {
+    display: block;
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  display: inline-flex;
 }

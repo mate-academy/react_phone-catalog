@@ -36,7 +36,11 @@ export function CardGalery({ images }: { images: string[] }) {
       >
         {images.map((img, i) => (
           <SwiperSlide key={i} className={styles.mainWrapper}>
-            <img src={img} alt={`Photo ${i + 1}`} className={styles.mainImg} />
+            <img
+              src={`${import.meta.env.BASE_URL}/${img}`}
+              alt={`Photo ${i + 1}`}
+              className={styles.mainImg}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -53,7 +57,11 @@ export function CardGalery({ images }: { images: string[] }) {
       >
         {images.map((img, i) => (
           <SwiperSlide key={i} className={styles.thumbSlide}>
-            <img src={img} alt={`Thumb ${i + 1}`} className={styles.thumbImg} />
+            <img
+              src={`${import.meta.env.BASE_URL}/${img}`}
+              alt={`Thumb ${i + 1}`}
+              className={styles.thumbImg}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
