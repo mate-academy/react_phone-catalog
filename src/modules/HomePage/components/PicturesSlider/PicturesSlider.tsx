@@ -1,10 +1,17 @@
+import { FirstBanner } from './components/FirstBanner';
+import { SecondBanner } from './components/SecondBanner';
+import { ThirdBanner } from './components/ThirdBanner';
 import styles from './PicturesSlider.module.scss';
 import { useCallback, useEffect, useState } from 'react';
 
 export const PicturesSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const pictures = ['img/Banner-1.png', 'img/Banner-2.png', 'img/Banner-3.png'];
+  const banners = [
+    <FirstBanner key="1" />,
+    <SecondBanner key="2" />,
+    <ThirdBanner key="3" />,
+  ];
 
   const translateX = -100 * currentIndex;
 
@@ -12,16 +19,16 @@ export const PicturesSlider = () => {
     setCurrentIndex(prev => {
       const nextIndex = prev + 1;
 
-      return nextIndex > pictures.length - 1 ? 0 : nextIndex;
+      return nextIndex > banners.length - 1 ? 0 : nextIndex;
     });
-  }, [pictures.length]);
+  }, [banners.length]);
 
   const movePrev = () => {
     setCurrentIndex(prev => {
       const next = prev - 1;
 
       if (next < 0) {
-        return pictures.length - 1;
+        return banners.length - 1;
       }
 
       return Math.max(next, 0);
@@ -43,14 +50,14 @@ export const PicturesSlider = () => {
           <img src="img/icons/arrow_left.svg" alt="" />
         </button>
         <div className={styles.window}>
-          {pictures.map(banner => (
-            <img
-              key={banner}
+          {banners.map(banner => (
+            <div
+              key={banner.key}
               className={styles.banner}
               style={{ transform: `translateX(${translateX}%)` }}
-              src={banner}
-              alt="Banner"
-            />
+            >
+              {banner}
+            </div>
           ))}
         </div>
         <button className={styles.button} onClick={moveNext}>
@@ -58,9 +65,9 @@ export const PicturesSlider = () => {
         </button>
       </div>
       <div className={styles.position}>
-        {pictures.map((button, index) => (
+        {banners.map((button, index) => (
           <button
-            key={button}
+            key={button.key}
             style={index === currentIndex ? { backgroundColor: '#313237' } : {}}
             className={styles.positionButton}
             onClick={() => setCurrentIndex(index)}

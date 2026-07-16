@@ -73,6 +73,12 @@ main {
   }
 }
 
+.buttonText {
+  @include small-text;
+
+  text-align: right;
+}
+
 .backToTop {
   cursor: pointer;
 
@@ -80,10 +86,11 @@ main {
   gap: 16px;
   align-items: center;
 
-  transition: all 0.2s ease;
+  color: #89939a;
+
+  transition: color 0.2s ease;
 
   &:hover {
-    transform: scale(1.1);
     color: #000000c6;
     button {
       background-color: #b4bdc3;
@@ -96,12 +103,6 @@ main {
   }
 }
 
-.buttonText {
-  @include small-text;
-
-  color: #89939a;
-  text-align: right;
-}
 
 .topButton {
   cursor: pointer;

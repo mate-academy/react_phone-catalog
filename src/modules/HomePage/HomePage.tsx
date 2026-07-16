@@ -46,12 +46,16 @@ export const HomePage = () => {
     return discountB - discountA;
   });
 
+  const arrayWithoutFullPrice = phoneSortByNew.map(
+    ({ fullPrice, ...phone }) => phone,
+  );
+
   return (
     <div className={styles.homePage}>
       <h1 className={styles.title}>{t('Welcome')}</h1>
 
       {isMobile ? <MobilePicturesSlider /> : <PicturesSlider />}
-      <ProductsSlider title={t('New')} products={phoneSortByNew} />
+      <ProductsSlider title={t('New')} products={arrayWithoutFullPrice} />
       <Category
         phoneQuantity={phones.length}
         tabletsQuantity={tablets.length}

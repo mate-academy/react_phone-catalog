@@ -79,7 +79,7 @@ export const Card = forwardRef<HTMLDivElement, Props>((props, ref) => {
         <Link to={`/product/${id}`} className={styles.nameText}>
           {name}
         </Link>
-        {price ? (
+        {fullPrice ? (
           <div className={styles.priceSector}>
             <h3 className={styles.price}>${price}</h3>
             <h3 className={styles.fullPrice}>${fullPrice}</h3>

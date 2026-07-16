@@ -51,9 +51,18 @@ export const ProductDetailsPage: React.FC = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       setIsLoading(false);
     }, 1000);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }, [productId]);
 
   if (isLoading) {
@@ -161,7 +170,10 @@ export const ProductDetailsPage: React.FC = () => {
         />
         <p className={styles.historyText}>{product.name}</p>
       </div>
-      <button className={styles.back} onClick={() => navigate(-1)}>
+      <button
+        className={styles.back}
+        onClick={() => navigate(`../${product.category}`)}
+      >
         <img src="img/icons/arrow_left.svg" alt="back" />
         <p className={styles.backText}>{t('Back')}</p>
       </button>

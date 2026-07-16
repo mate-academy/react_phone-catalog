@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './MobilePicturesSlider.module.scss';
 import { useCallback, useEffect, useState, useRef } from 'react';
 
@@ -7,19 +8,28 @@ export const MobilePicturesSlider = () => {
 
   const isAutoScrolling = useRef(false);
 
-  const pictures = [
-    'img/Banner-1_small.png',
-    'img/Banner-2_small.png',
-    'img/Banner-3_small.png',
+  const banners = [
+    {
+      img: 'img/Banner-1_small.png',
+      link: '/phones',
+    },
+    {
+      img: 'img/Banner-2_small.png',
+      link: '/tablets',
+    },
+    {
+      img: 'img/Banner-3_small.png',
+      link: '/accessories',
+    },
   ];
 
   const moveNext = useCallback(() => {
     setCurrentIndex(prev => {
       const nextIndex = prev + 1;
 
-      return nextIndex > pictures.length - 1 ? 0 : nextIndex;
+      return nextIndex > banners.length - 1 ? 0 : nextIndex;
     });
-  }, [pictures.length]);
+  }, [banners.length]);
 
   const handleScroll = () => {
     if (!windowRef.current || isAutoScrolling.current) {
@@ -70,19 +80,16 @@ export const MobilePicturesSlider = () => {
     <div className={styles.sliderContainer}>
       <div className={styles.window} ref={windowRef} onScroll={handleScroll}>
         <div className={styles.tape}>
-          {pictures.map(banner => (
-            <img
-              key={banner}
-              className={styles.banner}
-              src={banner}
-              alt="Mobile Banner"
-            />
+          {banners.map(banner => (
+            <Link to={banner.link} key={banner.img} className={styles.banner}>
+              <img src={banner.img} alt="Mobile Banner" />
+            </Link>
           ))}
         </div>
       </div>
 
       <div className={styles.position}>
-        {pictures.map((_, index) => (
+        {banners.map((_, index) => (
           <button
             key={index}
             style={index === currentIndex ? { backgroundColor: '#313237' } : {}}
