@@ -214,7 +214,7 @@ export const ProductPage = () => {
             </h2>
           )}
         </section>
-        {showPagination && (
+        {showPagination && filteredProducts.length > +perPage && (
           <section className="section section--pagination">
             <Pagination
               totalProducts={filteredProducts.length}

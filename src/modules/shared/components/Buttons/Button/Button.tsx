@@ -1,7 +1,7 @@
 import React from 'react';
 import './Button.scss';
 import { Icon } from '../../Icon';
-import { Icons } from '../../Icon/iconsMap';
+import { Icons } from '../../Icon/IconsMap';
 
 type Props = {
   className: string;
