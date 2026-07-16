@@ -57,6 +57,7 @@
         margin-bottom: 32px;
         margin-left: 16px;
         margin-right: 16px;
+        cursor: pointer;
 
         @include on-tablet {
           display: block;
