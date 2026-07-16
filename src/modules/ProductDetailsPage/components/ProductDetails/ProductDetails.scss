@@ -8,9 +8,8 @@
   width: 100%;
 
   &__title {
-    @include heading-xl;
-
     margin-bottom: 32px;
+    @include heading-xl;
   }
 
   &__region-item {
@@ -115,9 +114,8 @@
   }
 
   &__subtitle {
-    @include heading-md;
-
     margin-bottom: 16px;
+    @include heading-md;
   }
 
   &__description-title {
