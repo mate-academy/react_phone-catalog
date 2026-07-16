@@ -204,6 +204,7 @@
     background-color: $main-text-color;
     color: #fff;
     border: 0;
+    cursor: pointer;
 
     @include text(14px, 21px, 700);
   }
@@ -215,6 +216,7 @@
     background-color: #fff;
     border: 1px $elements-color solid;
     padding: 16px;
+    cursor: pointer;
   }
 }
 

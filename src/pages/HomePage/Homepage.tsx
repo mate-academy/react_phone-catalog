@@ -11,7 +11,7 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import productsData from '../../../public/api/products.json';
 import { Product } from '../../types';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 //#endregion
 
 export function HomePage() {
@@ -20,6 +20,7 @@ export function HomePage() {
   const mockmodels3 = 105;
   const [newSwiper, setNewSwiper] = useState<any>(null);
   const [hotSwiper, setHotSwiper] = useState<any>(null);
+  const [welcomeSwiper, setWelcomeSwiper] = useState<any>(null);
   const navigate = useNavigate();
   //#region Products
   const products = productsData as Product[];
@@ -37,52 +38,54 @@ export function HomePage() {
           </h2>
 
           <div className={styles.welcome__swiper}>
+            <button
+              className={styles.welcome__swiper__pag}
+              onClick={() => welcomeSwiper?.slidePrev()}
+            >
+              ‹
+            </button>
             <Swiper
-              modules={[Pagination]}
+              modules={[Pagination, Navigation]}
+              onSwiper={setWelcomeSwiper}
               pagination={{ clickable: true }}
               loop={true}
               slidesPerView={1}
               className={styles.welcome__swiper__swiper}
             >
-              <SwiperSlide>
-                <img
-                  className={styles.welcome__swiper__swiper__img}
-                  src="./img/slider1.png"
-                  alt="Swiper 1"
-                />
-                <img
-                  className={styles.welcome__swiper__swiper__imgTablet}
-                  src="./img/Banner.png"
-                  alt="Swiper 2"
-                />
+              <SwiperSlide className={styles.welcome__swiper__slide}>
+                <Link to="./phones/apple-iphone-14-pro-128gb-spaceblack">
+                  <img
+                    className={styles.welcome__swiper__swiper__imgTablet}
+                    src="./img/Banner.png"
+                    alt="Swiper 2"
+                  />
+                </Link>
               </SwiperSlide>
-              <SwiperSlide>
-                {/* You can replace this with different images for each slide */}
-                <img
-                  className={styles.welcome__swiper__swiper__img}
-                  src="./img/slider1.png"
-                  alt="Swiper 2"
-                />
-                <img
-                  className={styles.welcome__swiper__swiper__imgTablet}
-                  src="./img/Banner.png"
-                  alt="Swiper 2"
-                />
+              <SwiperSlide className={styles.welcome__swiper__slide}>
+                <Link to="./phones/apple-iphone-14-pro-128gb-spaceblack">
+                  <img
+                    className={styles.welcome__swiper__swiper__imgTablet}
+                    src="./img/Banner.png"
+                    alt="Swiper 2"
+                  />
+                </Link>
               </SwiperSlide>
-              <SwiperSlide>
-                {/* You can replace this with different images for each slide */}
-                <img
-                  className={styles.welcome__swiper__swiper__img}
-                  src="./img/slider1.png"
-                  alt="Swiper 3"
-                />
-                <img
-                  className={styles.welcome__swiper__swiper__imgTablet}
-                  src="./img/Banner.png"
-                  alt="Swiper 2"
-                />
+              <SwiperSlide className={styles.welcome__swiper__slide}>
+                <Link to="./phones/apple-iphone-14-pro-128gb-spaceblack">
+                  <img
+                    className={styles.welcome__swiper__swiper__imgTablet}
+                    src="./img/Banner.png"
+                    alt="Swiper 2"
+                  />
+                </Link>
               </SwiperSlide>
             </Swiper>
+            <button
+              className={styles.welcome__swiper__pag}
+              onClick={() => welcomeSwiper?.slideNext()}
+            >
+              ›
+            </button>
           </div>
         </div>
         <div className={styles.new}>

@@ -47,9 +47,24 @@
 
     &__swiper {
       overflow: hidden;
+      display: flex;
+
+      &__pag {
+        display: none;
+        width: 32px;
+        background-color: #fff;
+        border: 1px $icons-color solid;
+        margin-bottom: 32px;
+        margin-left: 16px;
+        margin-right: 16px;
+
+        @include on-tablet {
+          display: block;
+        }
+      }
+
       &__swiper {
         width: 100%;
-        overflow: visible !important;
         padding-bottom: 32px !important;
 
         /* stylelint-disable selector-pseudo-class-no-unknown */
@@ -66,28 +81,21 @@
         }
         /* stylelint-enable selector-pseudo-class-no-unknown */
 
-        &__img {
-          width: 100%;
-
-          @include on-tablet {
-            display: none;
-          }
-        }
-
         &__imgTablet {
           width: 100%;
-          display: none;
+          cursor: pointer;
 
           @include on-tablet {
             display: block;
           }
         }
+
       }
     }
   }
 
   .new {
-    margin-top: 56px;
+    margin-top: 56px !important;
 
     @include container($phone-padding-lr);
 

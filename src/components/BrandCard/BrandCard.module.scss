@@ -8,6 +8,7 @@
   color: $main-text-color;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 
   .brandCard__imgblock {
     width: 100%;
@@ -68,6 +69,7 @@
       border: none;
       padding: 10px;
       width: 100%;
+      cursor: pointer;
 
       @include text(14px,21px,700px);
     }
@@ -79,6 +81,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
     }
   }
 
