@@ -187,7 +187,7 @@
 }
 
 .skeleton {
-  @include skeleton-shimmer;
-
   border-radius: var(--border-radius);
+
+  @include skeleton-shimmer;
 }

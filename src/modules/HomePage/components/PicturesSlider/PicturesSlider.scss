@@ -70,14 +70,13 @@
     width: 14px;
     height: 4px;
     border-radius: 5px;
-
     background-color: var(--elements-color);
+
+    @include transition(transform 0.3s ease);
 
     &--is-active {
       background-color: var(--primary-color);
     }
-
-    @include transition(transform 0.3s ease);
 
     @include hover {
       transform: scale(1.1);

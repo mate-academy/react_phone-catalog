@@ -79,9 +79,20 @@ export const ProductPage = () => {
     );
 
     if (searchValue.length > 0) {
-      sorted = sorted.filter(product =>
-        product.name.toLowerCase().includes(searchValue.toLowerCase()),
-      );
+      sorted = sorted.filter(product => {
+        const productName = product.name.toLowerCase().split(' ');
+        const value = searchValue.includes(' ')
+          ? searchValue.toLowerCase().trim().split(' ')
+          : searchValue.toLowerCase().trim();
+
+        if (Array.isArray(value)) {
+          return value.every(part =>
+            productName.some(partProduct => partProduct.includes(part)),
+          );
+        } else {
+          return productName.some(part => part.includes(value));
+        }
+      });
     }
 
     switch (sort) {

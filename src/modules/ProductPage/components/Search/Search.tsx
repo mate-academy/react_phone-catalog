@@ -29,8 +29,10 @@ export const Search: React.FC<Props> = ({
 
   const changeValue = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      debouncedSearch(e.target.value);
-      setNewValue(e.target.value);
+      const value = e.target.value;
+
+      debouncedSearch(value);
+      setNewValue(value);
     },
     [debouncedSearch],
   );
@@ -48,7 +50,7 @@ export const Search: React.FC<Props> = ({
           className="search__input"
           placeholder={placeholder}
           value={newValue}
-          onChange={e => changeValue(e)}
+          onChange={changeValue}
         />
         <Icon className="search__icon" name="search" />
       </div>
