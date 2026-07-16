@@ -73,7 +73,7 @@
 
   &__burger {
     border-left: 1px solid #E2E6E9;
-    padding: $phone-padding-tb 0 $phone-padding-tb $phone-padding-lr;
+    padding: $phone-padding-tb;
 
     @include on-tablet {
       display: none;
@@ -167,7 +167,11 @@
   }
 
   &__cart, &__fav {
-    padding: 24px;
+    padding: 16px;
+
+    @include on-desktop {
+      padding: 24px;
+    }
   }
 }
 

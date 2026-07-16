@@ -55,7 +55,7 @@ export function BrandCard({ product }: Props) {
       </div>
       <div className={styles.brandCard__buttons}>
         <button
-          className={styles.brandCard__buttons__cart}
+          className={`${styles.brandCard__buttons__cart} ${inCart ? styles.brandCard__buttons__cart_added : ''}`}
           onClick={e => {
             e.stopPropagation();
             toggleCart(product);

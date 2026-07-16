@@ -18,8 +18,6 @@
 .main {
   color: $main-text-color;
 
-  @include container(16px);
-
   .welcome {
     @include on-tablet {
       @include container($tablet-padding-lr);

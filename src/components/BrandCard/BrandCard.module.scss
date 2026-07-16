@@ -72,6 +72,12 @@
       cursor: pointer;
 
       @include text(14px,21px,700px);
+
+      &_added {
+        background-color: #fff;
+        color: #27AE60;
+        border: 1px, #E2E6E9, solid;
+      }
     }
 
     &__fav {

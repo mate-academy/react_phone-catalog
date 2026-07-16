@@ -9,6 +9,10 @@
   min-height: 100vh;
 
   @include container($phone-padding-lr);
+
+  @include on-desktop {
+    @include container(150px);
+  }
 }
 
 .BreadCrumbs {
@@ -42,7 +46,7 @@
 .menu {
   margin-top: 32px;
   display: flex;
-  justify-content: space-between;
+  width: 40%;
   gap: 16px;
   &__block {
     width: 50%;
