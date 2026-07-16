@@ -1,3 +1,5 @@
+@use '../../../../styles/mixins.scss' as *;
+
 .cart-items {
   display: flex;
   flex-direction: column;
@@ -6,6 +8,7 @@
   &__item {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 100%;
     border: 1px solid var(--elements-color);
     padding: 16px;
@@ -47,7 +50,9 @@
 
   &__second-row {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    gap: 24px;
   }
 
   &__counter {
@@ -68,5 +73,11 @@
     width: 32px;
     height: 32px;
     color: var(--primary-color);
+  }
+
+  @include up($sm) {
+    &__item {
+      flex-direction: row;
+    }
   }
 }

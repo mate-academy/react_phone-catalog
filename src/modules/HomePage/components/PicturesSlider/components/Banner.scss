@@ -6,18 +6,18 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 12px;
+    gap: 20px;
   }
 
   &__title {
     font-family: var(--mont-bold-font);
-    font-size: 3vw;
+    font-size: 2.5vw;
     line-height: 110%;
     letter-spacing: 0.1vw;
     color: transparent;
     background: linear-gradient(45deg, #d56bff, #8223fd, #d56bff);
     background-clip: text;
-    
+
     --webkit-text-fill-color: text;
   }
 
@@ -29,9 +29,11 @@
   }
 
   &__button {
+    display: flex;
+    align-items: center;
     background-color: transparent;
     width: max-content;
-    height: 4vw;
+    height: 20%;
     border: 1px solid var(--gray-white);
     border-radius: 4vw;
     padding-inline: 20px;
