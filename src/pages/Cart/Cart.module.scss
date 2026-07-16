@@ -1,0 +1,83 @@
+@use '../../styles/abstract/variables' as *;
+@use '../../styles/abstract/mixins' as *;
+@use '../../styles/base/global' as *;
+
+.main {
+  margin-top: 24px;
+  color: $main-text-color;
+  min-height: 100vh;
+
+  @include container($phone-padding-lr);
+}
+ 
+.BreadCrumbs {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+ 
+  &__link {
+    text-decoration: none;
+    color: $secondary-text-color;
+
+    @include text(12px, 100%, 600);
+  }
+}
+
+.title {
+  letter-spacing: -1%;
+  margin-top: 24px;
+
+  @include text(32px,41px,800);
+}
+
+.cart {
+  @include on-desktop{
+    display: flex;
+    gap: 16px;
+  }
+}
+ 
+.products {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-desktop{
+    width: 70%;
+  }
+}
+ 
+.total {
+  border: 1px, $elements-color, solid;
+  padding: 24px;
+  margin-top: 32px;
+
+  @include on-desktop{
+    width: 30%;
+  }
+  &__price {
+    text-align: center;
+    letter-spacing: -1%;
+
+    @include text(32px,41px,800);
+  }
+ 
+  &__items {
+    text-align: center;
+    color: $secondary-text-color;
+    
+    @include text(14px,21px,600);
+  }
+ 
+  &__button {
+    width: 100%;
+    border: 0;
+    color: #fff;
+    background-color: $main-text-color;
+    padding: 14px 0;
+
+    @include text(14px, 21px, 700);
+  }
+}
