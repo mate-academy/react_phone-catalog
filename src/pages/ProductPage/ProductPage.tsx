@@ -38,6 +38,11 @@ export const ProductPage = () => {
   };
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
     if (!productId) {
       return;
     }

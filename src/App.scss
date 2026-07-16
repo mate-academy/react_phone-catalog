@@ -1,5 +1,16 @@
 @use './utils/mixin/mixin.scss' as *;
 
+.App {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+}
+
 .container {
   padding-inline: 16px;
 

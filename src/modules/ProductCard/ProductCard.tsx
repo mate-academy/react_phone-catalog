@@ -10,9 +10,13 @@ import classNames from 'classnames';
 
 type Props = {
   product: Product;
+  showDiscount?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  showDiscount = true,
+}) => {
   const { toggleFavorite, isFavorite } = useFavorites();
   const { addToCart, isInCart } = useCart();
 
@@ -28,8 +32,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <h3 className={styles.card__name}>{product.name}</h3>
       </Link>
       <div className={styles.card__price}>
-        <span className={styles.price__discount}>${product.price}</span>
-        <span className={styles.price__regular}>${product.fullPrice}</span>
+        {showDiscount ? (
+          <>
+            <span className={styles.price__discount}>${product.price}</span>
+            <span className={styles.price__regular}>${product.fullPrice}</span>
+          </>
+        ) : (
+          <span className={styles.price__discount}>${product.fullPrice}</span>
+        )}
       </div>
       <div className={styles.card__info}>
         <div className={styles.infoRow}>

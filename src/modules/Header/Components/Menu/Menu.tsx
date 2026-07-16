@@ -6,7 +6,7 @@ import { Nav } from '../Nav';
 import CloseButton from '../../../../assets/icons/closebutton.svg?react';
 import FavoritesHeart from '../../../../assets/icons/favouritesheart.svg?react';
 import FavoritesBag from '../../../../assets/icons/shoppingbag.svg?react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useFavorites } from '../../../../context';
 import { useCart } from '../../../../context/CartContext';
 
@@ -18,6 +18,7 @@ type Props = {
 export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
   const { favorites } = useFavorites();
   const { cart } = useCart();
+  const location = useLocation();
 
   return (
     <aside
@@ -64,6 +65,7 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
 
         <NavLink
           to="/cart"
+          state={{ from: location.pathname }}
           className={({ isActive }) =>
             classNames(styles.favoritesBag, {
               [styles.active]: isActive,

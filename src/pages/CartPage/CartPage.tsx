@@ -1,6 +1,6 @@
 import styles from './CartPage.styles.module.scss';
 import ArrowLeft from '../../assets/icons/VectorLeft.svg?react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { CartList } from '../../modules/CartList/CartList';
 import { useCart } from '../../context/CartContext';
 import { CartSummary } from '../../modules/CartSummary';
@@ -9,9 +9,10 @@ import emptyCart from '../../../public/img/cart-is-empty.png';
 export const CartPage = () => {
   const { cart } = useCart();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleBack = () => {
-    navigate(-1);
+    navigate(location.state?.from || '/phones');
   };
 
   return (

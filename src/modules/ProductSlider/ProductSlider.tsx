@@ -11,9 +11,14 @@ import { Product } from '../../types/Products';
 type Props = {
   title: string;
   products: Product[];
+  showDiscount?: boolean;
 };
 
-export const ProductSlider: React.FC<Props> = ({ title, products }) => {
+export const ProductSlider: React.FC<Props> = ({
+  title,
+  products,
+  showDiscount = true,
+}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slideStep, setSlideStep] = useState(0);
 
@@ -80,7 +85,7 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
               ref={index === 0 ? firstProductRef : null}
               className={styles.product}
             >
-              <ProductCard product={product} />
+              <ProductCard product={product} showDiscount={showDiscount} />
             </div>
           ))}
         </div>

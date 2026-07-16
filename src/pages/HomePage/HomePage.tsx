@@ -33,7 +33,11 @@ export const HomePage = () => {
         <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
         <BannerSlider />
 
-        <ProductSlider title="Brand new models" products={newModels} />
+        <ProductSlider
+          title="Brand new models"
+          products={newModels}
+          showDiscount={false}
+        />
 
         <ShopByCategory />
 

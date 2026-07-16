@@ -4,7 +4,7 @@ import BurgerIcon from '../../../../assets/icons/menu.svg?react';
 import { Nav } from '../Nav';
 import FavoritesHeart from '../../../../assets/icons/favouritesheart.svg?react';
 import FavoritesBag from '../../../../assets/icons/shoppingbag.svg?react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { useFavorites } from '../../../../context';
 import { useCart } from '../../../../context/CartContext';
@@ -17,6 +17,7 @@ type Props = {
 export const TopBar = ({ onMenuToggle }: Props) => {
   const { favorites } = useFavorites();
   const { cart } = useCart();
+  const location = useLocation();
 
   return (
     <div className={styles.topBar}>
@@ -53,6 +54,7 @@ export const TopBar = ({ onMenuToggle }: Props) => {
 
         <NavLink
           to="/cart"
+          state={{ from: location.pathname }}
           className={({ isActive }) =>
             classNames(styles.favoritesBag, {
               [styles.active]: isActive,
