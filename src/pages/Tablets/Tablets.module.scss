@@ -1,4 +1,4 @@
-@import '../../mixin.scss';
+@import '../../mixin';
 
 .home {
   text-decoration: none;
@@ -8,13 +8,9 @@
   border: none;
   background: white;
   display: flex;
-
-}
-
-.homeButton {
   margin: 24px 32px 40px;
   font-weight: 600;
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   text-decoration: none;
   align-items: center;
   gap: 8px;

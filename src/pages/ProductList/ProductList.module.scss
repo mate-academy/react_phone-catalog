@@ -1,4 +1,4 @@
-@import '../../mixin.scss';
+@import '../../mixin';
 
 .containerPhones {
 padding: 0 32px;
@@ -21,19 +21,16 @@ padding: 0 32px;
   border: none;
   background: white;
   display: flex;
-
-}
-
-.homeButton {
   margin: 24px 0 40px;
   font-weight: 600;
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   text-decoration: none;
   font-size: 12px;
   align-items: center;
   gap: 8px;
+
   @include on-phone {
-    margin: 24px 0 24px;
+    margin: 24px 0;
   }
 
 }
@@ -76,6 +73,7 @@ display: flex;
 flex-direction: column;
 gap: 8px;
 margin-bottom: 40px;
+
 @include on-phone {
   margin-bottom: 32px;
 }
@@ -125,8 +123,7 @@ margin-bottom: 40px;
 
 }
 
-.bySorted,
-.byItems
+.bySorted
  {
       color: #89939A;
       font-weight: 700;
@@ -137,7 +134,7 @@ margin-bottom: 40px;
 }
 
 .byItems {
-     flex-direction: row;
+      display: flex;
       color: #89939A;
       font-weight: 700;
       font-size: 12px;
@@ -152,10 +149,6 @@ margin-bottom: 40px;
   height: 40px;
 }
 
-.byItems{
-  display: flex;
-  flex-direction: column;
-}
 .selectFiltre {
     box-sizing: border-box;
       border: 1px solid #89939A;

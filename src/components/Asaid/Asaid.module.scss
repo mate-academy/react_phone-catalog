@@ -1,11 +1,8 @@
-@import '../../mixin.scss';
+@import '../../mixin';
 
 .menuTop {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 1200;
   background-color: #FAFBFC;
   box-sizing: border-box;
@@ -36,7 +33,7 @@
     @include on-phone {
       display: block;
       border-left: 1px solid #E2E6E9;
-      padding: 16px 16px;
+      padding: 16px;
     }
 }
 
@@ -95,7 +92,6 @@
     .icon {
       flex: 1;
       display: flex;
-      padding: 8px;
       align-items: center;
       justify-content: center;
       border-left: 1px solid #E2E6E9;

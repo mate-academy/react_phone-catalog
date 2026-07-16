@@ -1,4 +1,4 @@
-@import '../../mixin.scss';
+@import '../../mixin';
 
 .footer {
   display: flex;
@@ -10,6 +10,7 @@
   @include on-tablet {
       margin-top: 64px;
   }
+
   @include on-phone {
       margin-top: 64px;
   }

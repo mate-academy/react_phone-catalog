@@ -1,4 +1,4 @@
-@import '../mixin.scss';
+@import '../mixin';
 
 .containerPhones {
 padding: 0 32px;
@@ -24,9 +24,9 @@ padding: 0 32px;
   background: white;
   display: flex;
   font-weight: 600;
-    font-family: Mont;
-      gap: 8px;
-        align-items: center;
+  font-family: Mont, sans-serif;
+  gap: 8px;
+  align-items: center;
 
 }
 
@@ -73,8 +73,8 @@ text-decoration: none;
 }
 
 .linkName {
-
 margin-bottom: 40px;
+
 @include on-phone {
   margin-bottom: 32px;
 }
@@ -92,23 +92,24 @@ font-weight: 800;
 
 .container {
   display: grid;
+
   --columns: 24;
-  column-gap: 32px;
+
+  gap: 32px;
   row-gap: 80px;
   grid-template-columns: repeat(var(--columns), 1fr);
   box-sizing: border-box;
 
   @include on-tablet {
     --columns: 12;
-    column-gap: 24px;
-      row-gap: 64px;
+
+    gap: 24px 64px;
   }
 
   @include on-phone {
     --columns: 4;
-    column-gap: 16px;
-    row-gap: 56px;
 
+    gap: 16px 56px;
   }
 
   .titleContainer {
@@ -234,7 +235,7 @@ font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
+  background: #fff;
   border: 1px solid #E2E6E9;
   height: 464px;
   box-sizing: border-box;
@@ -299,16 +300,19 @@ font-weight: 800;
   padding: 0;
   border: none;
   background: #313237;
-  color: #FFFFFF;
+  color: #FFF;
   height: 48px;
   width: 236px;
+
   transition: all .3s ease;
   line-height: 21px;
   font-size: 14px;
+
   @include on-tablet {
     height: 48px;
       width: 180px;
   }
+
   @include on-phone {
     height: 48px;
       width: 231px;
@@ -386,11 +390,6 @@ font-weight: 800;
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
-}
-
-.containerYouMayAlso {
-    display: flex;
-    flex-direction: column;
 }
 
 .blockYouMayAlso {
@@ -472,7 +471,16 @@ font-weight: 800;
     box-sizing: border-box;
     background-color: #fff;
     text-decoration: none;
+
     transition: border-color 0.2s ease;
+
+      display: block;
+        width: 30px;
+        height: 30px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        box-sizing: border-box;
+        cursor: pointer;
 
     &:hover {
       border-color: #b4bdc3;
@@ -483,13 +491,5 @@ font-weight: 800;
     }
   }
 
- .colorCircle {
-    display: block;
-    width: 30px;
-    height: 30px;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    box-sizing: border-box;
-    cursor: pointer;
-  }
+
 

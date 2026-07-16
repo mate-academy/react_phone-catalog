@@ -1,4 +1,4 @@
-@import '../../mixin.scss';
+@import '../../mixin';
 
 .container {
   padding: 0 32px;
@@ -17,24 +17,21 @@
   text-decoration: none;
 }
 
+
 .homeButton {
   border: none;
   background: white;
   display: flex;
-
-}
-
-.homeButton {
   margin: 24px 0 40px;
   font-weight: 600;
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   text-decoration: none;
   font-size: 12px;
   align-items: center;
   gap: 8px;
 
   @include on-phone {
-    margin: 24px 0 24px;
+    margin: 24px 0;
   }
 
 }
@@ -55,22 +52,23 @@
 
 .gridContainer {
   display: grid;
+
   --columns: 24;
-  column-gap: 32px;
-  row-gap: 16px;
+
+  gap: 32px 16px;
   grid-template-columns: repeat(var(--columns), 1fr);
   box-sizing: border-box;
 
   @include on-tablet {
     --columns: 12;
-    column-gap: 24px;
-    row-gap: 32px;
+
+   gap: 24px 32px;
   }
 
   @include on-phone {
     --columns: 4;
-    column-gap: 16px;
-    row-gap: 32px;
+
+    gap: 16px 32px;
 
   }
 
@@ -141,6 +139,7 @@
     display: flex;
     align-items: center;
     gap: 24px;
+
         @include on-phone {
             gap: 16px;
           }
@@ -170,7 +169,6 @@
 display: flex;
 justify-content: space-between;
 flex-direction: row;
-// flex: 1;
 gap: 24px;
 }
 
@@ -230,6 +228,7 @@ width: 100%;
   line-height: 42px;
   color: #313237;
 }
+
 .cardTotalFor {
   font-weight: 500;
   font-size: 14px;

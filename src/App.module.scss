@@ -1,5 +1,5 @@
 @font-face {
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   src: url(./fonts/Mont-Regular.otf);
   font-weight: 500;
   font-style: normal;
@@ -7,7 +7,7 @@
 }
 
 @font-face {
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   src: url(./fonts/Mont-SemiBold.otf);
   font-weight: 600;
   font-style: normal;
@@ -15,17 +15,18 @@
 }
 
 @font-face {
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   src: url(./fonts/Mont-Bold.otf);
   font-weight: 800;
   font-weight: bold;
 }
 
 html,
-body,
-#root {
+body {
   height: 100%;
   margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 html,
@@ -38,20 +39,13 @@ h2,
 h3,
 a,
 p,
-h2,
 section,
 span,
 button {
-
   margin: 0;
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   padding: 0;
   }
-
-#root {
-  display: flex;
-  flex-direction: column;
-}
 
 .app {
   display: flex;

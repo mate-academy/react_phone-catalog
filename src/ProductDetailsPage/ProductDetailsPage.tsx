@@ -87,6 +87,7 @@ export const ProductDetailsPage = () => {
     color: products.color,
     ram: products.ram,
     image: images[0],
+    year: 0,
   };
 
   const isProductInCart = cart.some(item => item.product.itemId === id);

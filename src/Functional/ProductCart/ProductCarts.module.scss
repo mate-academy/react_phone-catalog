@@ -1,4 +1,4 @@
-@import '../../mixin.scss';
+@import '../../mixin';
 
 .container {
   box-sizing: border-box;
@@ -17,6 +17,7 @@
   min-height: 512px;
   max-width: 237px;
   }
+
   @include on-phone {
   min-height: 439px;
   max-width: 212px;
@@ -98,7 +99,7 @@ font-weight: 800;
 }
 
 .capacity {
-  padding: 8px 0 8px;
+  padding: 8px 0;
   color: #89939A;
   font-weight: 700;
   font-size: 12px;
@@ -128,7 +129,7 @@ gap: 8px;
   padding: 0;
   border: none;
   background: #313237;
-  color: #FFFFFF;
+  color: #FFF;
   height: 40px;
   width: 160px;
   transition: all .3s ease;

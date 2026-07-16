@@ -1,4 +1,4 @@
-@import '../../mixin.scss';
+@import '../../mixin';
 
 .container{
 padding: 0 32px;
@@ -17,24 +17,21 @@ padding: 0 32px;
   text-decoration: none;
 }
 
+
 .homeButton {
   border: none;
   background: white;
   display: flex;
-
-}
-
-.homeButton {
   margin: 24px 0 40px;
   font-weight: 600;
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   text-decoration: none;
   font-size: 12px;
   align-items: center;
   gap: 8px;
 
   @include on-phone {
-    margin: 24px 0 24px;
+    margin: 24px 0;
   }
 
 }
