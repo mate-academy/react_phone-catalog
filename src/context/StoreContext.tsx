@@ -79,10 +79,11 @@ export const StoreProvider = ({ children }: PropsWithChildren) => {
     0,
   );
 
-  const cartTotal = products.reduce(
-    (total, product) => total + product.price * (cart[product.id] || 0),
-    0,
-  );
+  const cartTotal = products.reduce((total, product) => {
+    const productQuantity = cart[product.id] || 0;
+
+    return total + product.price * productQuantity;
+  }, 0);
 
   const value = useMemo<StoreContextValue>(
     () => ({
@@ -95,11 +96,10 @@ export const StoreProvider = ({ children }: PropsWithChildren) => {
       cartTotal,
 
       addToCart: productId => {
-        setCart(currentCart =>
-          currentCart[productId]
-            ? currentCart
-            : { ...currentCart, [productId]: 1 },
-        );
+        setCart(currentCart => ({
+          ...currentCart,
+          [productId]: (currentCart[productId] || 0) + 1,
+        }));
       },
 
       removeFromCart: productId => {
@@ -113,10 +113,23 @@ export const StoreProvider = ({ children }: PropsWithChildren) => {
       },
 
       changeQuantity: (productId, delta) => {
-        setCart(currentCart => ({
-          ...currentCart,
-          [productId]: Math.max(1, (currentCart[productId] || 1) + delta),
-        }));
+        setCart(currentCart => {
+          const currentQuantity = currentCart[productId] || 0;
+          const nextQuantity = currentQuantity + delta;
+
+          if (nextQuantity <= 0) {
+            const nextCart = { ...currentCart };
+
+            delete nextCart[productId];
+
+            return nextCart;
+          }
+
+          return {
+            ...currentCart,
+            [productId]: nextQuantity,
+          };
+        });
       },
 
       clearCart: () => {

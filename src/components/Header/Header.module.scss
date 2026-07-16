@@ -5,6 +5,7 @@
 
   display: flex;
   height: 48px;
+  overflow: visible;
 
   background-color: #fff;
   box-shadow: 0 1px 0 #e2e6e9;
@@ -53,19 +54,19 @@
 
 .logoOk {
   position: absolute;
+  top: -5px;
+  left: 32px;
 
   display: block;
   width: 14px;
   height: 14px;
 
-  top: -5px;
-  left: 32px;
-
   @media (min-width: 1200px) {
-    width: 18px;
-    height: 18px;
     top: -5px;
     left: 40px;
+
+    width: 18px;
+    height: 18px;
   }
 }
 
@@ -76,8 +77,8 @@
     display: flex;
     gap: 32px;
     height: 48px;
-    margin-left: 24px;
     margin-right: 24px;
+    margin-left: 24px;
   }
 
   @media (min-width: 1200px) {
@@ -123,11 +124,13 @@
   inset: auto 0 0;
 
   height: 3px;
+
   background-color: #313237;
 }
 
 .actions {
   display: none;
+  overflow: visible;
 
   @media (min-width: 640px) {
     display: flex;
@@ -149,8 +152,11 @@
 
   width: 48px;
   height: 48px;
+  overflow: visible;
 
   color: #313237;
+  text-decoration: none;
+
   box-shadow: -1px 0 0 #e2e6e9;
 
   transition:
@@ -181,6 +187,7 @@
   background-color: #fff;
   border: 0;
   box-shadow: -1px 0 0 #e2e6e9;
+
   cursor: pointer;
 
   @media (min-width: 640px) {
@@ -227,6 +234,7 @@
 .mobileActions {
   display: flex;
   height: 64px;
+  overflow: visible;
 
   border-top: 1px solid #e2e6e9;
 }
@@ -238,6 +246,8 @@
   flex: 1;
   align-items: center;
   justify-content: center;
+
+  overflow: visible;
 
   color: #313237;
   text-decoration: none;
@@ -254,6 +264,7 @@
   inset: auto 0 0;
 
   height: 3px;
+
   background-color: #313237;
 }
 
@@ -266,30 +277,40 @@
 
 .badge {
   position: absolute;
-  top: 9px;
-  left: 25px;
+  z-index: 10;
+  top: 7px;
+  right: 7px;
 
-  display: grid;
-  min-width: 14px;
-  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  min-width: 16px;
+  height: 16px;
   padding: 0 3px;
-  place-items: center;
 
-  color: #fff;
-  background-color: #eb5757;
-  border: 1px solid #fff;
-  border-radius: 50%;
-
+  font-family: Mont, sans-serif;
   font-size: 9px;
   font-weight: 700;
+  line-height: 12px;
+  color: #fff;
+  white-space: nowrap;
+
+  background-color: #eb5757;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgb(49 50 55 / 30%);
+
+  pointer-events: none;
 
   @media (min-width: 1200px) {
-    top: 17px;
-    left: 33px;
+    top: 14px;
+    right: 14px;
   }
 }
 
 .mobileActionLink .badge {
-  top: 14px;
-  left: calc(50% + 5px);
+  top: 12px;
+  right: calc(50% - 22px);
 }

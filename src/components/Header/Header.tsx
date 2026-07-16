@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 
+import { useStore } from '../../context/StoreContext';
+
 import styles from './Header.module.scss';
 
 const logoSrc = (logoName: string) =>
@@ -25,7 +27,10 @@ const getMobileNavLinkClassName = ({ isActive }: { isActive: boolean }) =>
     : `${styles.navLink} ${styles.mobileNavLink}`;
 
 export const Header = () => {
+  const { cartCount, favorites } = useStore();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const location = useLocation();
 
   useEffect(() => {
@@ -35,6 +40,10 @@ export const Header = () => {
   const toggleMenu = () => {
     setIsMenuOpen(currentValue => !currentValue);
   };
+
+  const displayedCartCount = cartCount > 99 ? '99+' : cartCount;
+  const displayedFavoritesCount =
+    favorites.length > 99 ? '99+' : favorites.length;
 
   return (
     <>
@@ -55,7 +64,7 @@ export const Header = () => {
           </span>
         </Link>
 
-        <nav className={styles.nav}>
+        <nav className={styles.nav} aria-label="Main navigation">
           {navItems.map(({ to, label }) => (
             <NavLink key={to} to={to} className={getNavLinkClassName}>
               {label}
@@ -67,21 +76,37 @@ export const Header = () => {
           <NavLink
             to="/favorites"
             className={styles.actionLink}
-            aria-label="Favorites"
+            aria-label={`Favorites, ${favorites.length} items`}
           >
             <img
               src={iconSrc('heart.svg')}
               alt=""
               className={styles.actionIcon}
             />
+
+            {favorites.length > 0 && (
+              <span className={styles.badge} aria-hidden="true">
+                {displayedFavoritesCount}
+              </span>
+            )}
           </NavLink>
 
-          <NavLink to="/cart" className={styles.actionLink} aria-label="Cart">
+          <NavLink
+            to="/cart"
+            className={styles.actionLink}
+            aria-label={`Cart, ${cartCount} items`}
+          >
             <img
               src={iconSrc('cart.svg')}
               alt=""
               className={styles.actionIcon}
             />
+
+            {cartCount > 0 && (
+              <span className={styles.badge} aria-hidden="true">
+                {displayedCartCount}
+              </span>
+            )}
           </NavLink>
         </div>
 
@@ -89,6 +114,7 @@ export const Header = () => {
           type="button"
           className={styles.menuButton}
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMenuOpen}
           onClick={toggleMenu}
         >
           <img
@@ -101,7 +127,7 @@ export const Header = () => {
 
       {isMenuOpen && (
         <div className={styles.mobileMenu}>
-          <nav className={styles.mobileNav}>
+          <nav className={styles.mobileNav} aria-label="Mobile navigation">
             {navItems.map(({ to, label }) => (
               <NavLink key={to} to={to} className={getMobileNavLinkClassName}>
                 {label}
@@ -117,13 +143,19 @@ export const Header = () => {
                   ? `${styles.mobileActionLink} ${styles.mobileActionLinkActive}`
                   : styles.mobileActionLink
               }
-              aria-label="Favorites"
+              aria-label={`Favorites, ${favorites.length} items`}
             >
               <img
                 src={iconSrc('heart.svg')}
                 alt=""
                 className={styles.mobileActionIcon}
               />
+
+              {favorites.length > 0 && (
+                <span className={styles.badge} aria-hidden="true">
+                  {displayedFavoritesCount}
+                </span>
+              )}
             </NavLink>
 
             <NavLink
@@ -133,13 +165,19 @@ export const Header = () => {
                   ? `${styles.mobileActionLink} ${styles.mobileActionLinkActive}`
                   : styles.mobileActionLink
               }
-              aria-label="Cart"
+              aria-label={`Cart, ${cartCount} items`}
             >
               <img
                 src={iconSrc('cart.svg')}
                 alt=""
                 className={styles.mobileActionIcon}
               />
+
+              {cartCount > 0 && (
+                <span className={styles.badge} aria-hidden="true">
+                  {displayedCartCount}
+                </span>
+              )}
             </NavLink>
           </div>
         </div>
