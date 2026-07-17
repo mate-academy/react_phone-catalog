@@ -67,7 +67,7 @@ export const HomePage = () => {
       <PicturesSlider />
 
       <div className={styles.block}>
-        <ProductsSlider title="Hot prices" products={hotPrices} />
+        <ProductsSlider title="Brand new models" products={brandNew} />
       </div>
 
       <section className={styles.categories}>
@@ -96,7 +96,7 @@ export const HomePage = () => {
       </section>
 
       <div className={styles.block}>
-        <ProductsSlider title="Brand new models" products={brandNew} />
+        <ProductsSlider title="Hot prices" products={hotPrices} />
       </div>
     </div>
   );

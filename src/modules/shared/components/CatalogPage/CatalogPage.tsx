@@ -29,7 +29,7 @@ export const CatalogPage = ({ category, title }: Props) => {
 
   const sort = (searchParams.get('sort') as SortOption) || 'age';
   const page = Number(searchParams.get('page')) || 1;
-  const perPageParam = searchParams.get('perPage') || 'all';
+  const perPageParam = searchParams.get('perPage') || '16';
   const perPage = perPageParam === 'all' ? 'all' : Number(perPageParam) || 16;
 
   const load = () => {
@@ -72,7 +72,7 @@ export const CatalogPage = ({ category, title }: Props) => {
         value === null ||
         value === '' ||
         (key === 'page' && value === '1') ||
-        (key === 'perPage' && value === 'all') ||
+        (key === 'perPage' && value === '16') ||
         (key === 'sort' && value === 'age')
       ) {
         next.delete(key);

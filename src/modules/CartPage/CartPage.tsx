@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import { Icon } from '../shared/components/Icon';
 import { useCart } from '../shared/context';
 import styles from './CartPage.module.scss';
 
 export const CartPage = () => {
+  const navigate = useNavigate();
   const {
     cart,
     cartCount,
@@ -23,9 +25,17 @@ export const CartPage = () => {
     }
   };
 
+  const backButton = (
+    <button type="button" className={styles.back} onClick={() => navigate(-1)}>
+      <Icon name="arrow-left" />
+      <span>Back</span>
+    </button>
+  );
+
   if (cart.length === 0) {
     return (
       <div className={`container ${styles.empty}`}>
+        {backButton}
         <h1 className={styles.title}>Cart</h1>
         <p>Your cart is empty</p>
         <img src="img/cart-is-empty.png" alt="" className={styles.emptyImage} />
@@ -35,6 +45,7 @@ export const CartPage = () => {
 
   return (
     <div className={`container ${styles.page}`}>
+      {backButton}
       <h1 className={styles.title}>Cart</h1>
 
       <div className={styles.content}>

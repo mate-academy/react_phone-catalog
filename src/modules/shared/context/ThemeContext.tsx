@@ -26,7 +26,7 @@ function getInitialTheme(): Theme {
     return saved;
   }
 
-  return 'light';
+  return 'dark';
 }
 
 interface Props {

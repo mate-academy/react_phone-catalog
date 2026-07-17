@@ -4,7 +4,8 @@
   z-index: 100;
   height: var(--header-height);
   background-color: var(--color-surface);
-  border-bottom: 1px solid var(--color-elements);
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--color-elements) 55%, transparent);
 }
 
 .inner {
@@ -83,11 +84,22 @@
   width: 48px;
   height: 100%;
   border: none;
-  border-left: 1px solid var(--color-elements);
+  border-left: 1px solid
+    color-mix(in srgb, var(--color-elements) 55%, transparent);
   background: transparent;
   color: var(--color-text);
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+.iconActive::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background-color: var(--color-text);
 }
 
 @media (min-width: 1200px) {
@@ -142,7 +154,8 @@
   flex-direction: column;
   min-height: calc(100vh - var(--header-height));
   background-color: var(--color-surface);
-  border-top: 1px solid var(--color-elements);
+  border-top: 1px solid
+    color-mix(in srgb, var(--color-elements) 55%, transparent);
 }
 
 @media (min-width: 640px) {
@@ -186,7 +199,8 @@
 .mobileActions {
   display: flex;
   margin-top: auto;
-  border-top: 1px solid var(--color-elements);
+  border-top: 1px solid
+    color-mix(in srgb, var(--color-elements) 55%, transparent);
 }
 
 .mobileIcon {
@@ -196,10 +210,26 @@
   align-items: center;
   justify-content: center;
   height: 64px;
-  color: var(--color-text);
-  border-right: 1px solid var(--color-elements);
+  color: var(--color-secondary);
+  border-right: 1px solid
+    color-mix(in srgb, var(--color-elements) 55%, transparent);
+  transition: color 0.3s ease;
 }
 
 .mobileIcon:last-child {
   border-right: none;
+}
+
+.mobileIconActive {
+  color: var(--color-text);
+}
+
+.mobileIconActive::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background-color: var(--color-text);
 }

@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './Header.module.scss';
-import { useCart, useFavorites, useTheme } from '../../context';
+import { useCart, useFavorites } from '../../context';
 import { Logo } from '../Logo';
 import { Icon } from '../Icon';
 
@@ -16,7 +16,6 @@ const navItems = [
 export const Header = () => {
   const { cartCount } = useCart();
   const { favoritesCount } = useFavorites();
-  const { theme, toggleTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -42,34 +41,33 @@ export const Header = () => {
         </div>
 
         <div className={styles.actions}>
-          <button
-            type="button"
-            className={styles.iconButton}
-            onClick={toggleTheme}
-            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
-          >
-            <Icon name={theme === 'light' ? 'moon' : 'sun'} />
-          </button>
-
-          <Link
+          <NavLink
             to="/favorites"
-            className={classNames(styles.iconButton, styles.hideMobile)}
+            className={({ isActive }) =>
+              classNames(styles.iconButton, styles.hideMobile, {
+                [styles.iconActive]: isActive,
+              })
+            }
             aria-label="Favorites"
           >
             <Icon name="heart" />
             {favoritesCount > 0 && (
               <span className={styles.badge}>{favoritesCount}</span>
             )}
-          </Link>
+          </NavLink>
 
-          <Link
+          <NavLink
             to="/cart"
-            className={classNames(styles.iconButton, styles.hideMobile)}
+            className={({ isActive }) =>
+              classNames(styles.iconButton, styles.hideMobile, {
+                [styles.iconActive]: isActive,
+              })
+            }
             aria-label="Cart"
           >
             <Icon name="cart" />
             {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
-          </Link>
+          </NavLink>
 
           <button
             type="button"
@@ -102,26 +100,36 @@ export const Header = () => {
             ))}
           </nav>
           <div className={styles.mobileActions}>
-            <Link
+            <NavLink
               to="/favorites"
-              className={styles.mobileIcon}
+              className={({ isActive }) =>
+                classNames(styles.mobileIcon, {
+                  [styles.mobileIconActive]: isActive,
+                })
+              }
               onClick={() => setMenuOpen(false)}
+              aria-label="Favorites"
             >
               <Icon name="heart" />
               {favoritesCount > 0 && (
                 <span className={styles.badge}>{favoritesCount}</span>
               )}
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/cart"
-              className={styles.mobileIcon}
+              className={({ isActive }) =>
+                classNames(styles.mobileIcon, {
+                  [styles.mobileIconActive]: isActive,
+                })
+              }
               onClick={() => setMenuOpen(false)}
+              aria-label="Cart"
             >
               <Icon name="cart" />
               {cartCount > 0 && (
                 <span className={styles.badge}>{cartCount}</span>
               )}
-            </Link>
+            </NavLink>
           </div>
         </div>
       )}
