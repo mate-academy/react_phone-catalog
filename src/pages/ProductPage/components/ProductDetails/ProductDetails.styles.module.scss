@@ -28,11 +28,14 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--secondary-color);
 }
 
 .colorsTitle,
-.capacityTitle
-.productId {
+.capacityTitle {
   font-size: 12px;
   font-weight: 700;
   color: var(--secondary-color);
