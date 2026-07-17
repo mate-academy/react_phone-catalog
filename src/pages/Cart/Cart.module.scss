@@ -80,13 +80,13 @@
       margin-top: 32px;
 
       @include on-tablet {
-        grid-columns: span 12;
+        grid-column: span 12;
         margin-top: 24px;
 
       }
 
       @include on-phone {
-        grid-columns: span 4;
+        grid-column: span 4;
         align-items: center;
         margin-top: 24px;
       }
@@ -192,7 +192,6 @@ border: 1px solid #E2E6E9;
 font-weight: 800;
 font-size: 22px;
 line-height: 140%;
-// gap: 24px;
 }
 
 .totalPriceBlock {
