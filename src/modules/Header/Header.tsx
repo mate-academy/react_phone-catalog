@@ -12,7 +12,7 @@ export const Header = () => {
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const { items } = useCart();
+  const { items, totalQuantity } = useCart();
   const { favouriteItems } = useFavourites();
 
   const { t, i18n } = useTranslation();
@@ -159,8 +159,8 @@ export const Header = () => {
                 src="img/icons/icon_cart.svg"
                 alt="Cart"
               />
-              {items.length > 0 && (
-                <div className={styles.quantity}>{items.length}</div>
+              {totalQuantity > 0 && (
+                <div className={styles.quantity}>{totalQuantity}</div>
               )}
             </div>
           </NavLink>

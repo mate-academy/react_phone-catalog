@@ -157,14 +157,9 @@
 }
 
 .activeAdd {
-  cursor: default;
   border: 1px solid #e2e6e9;
   color: #27ae60;
   background-color: #ffff;
-
-  &:hover {
-    box-shadow: none;
-  }
 }
 
 .favorite {

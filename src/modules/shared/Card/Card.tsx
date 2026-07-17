@@ -25,7 +25,7 @@ interface Props {
 
 export const Card = forwardRef<HTMLDivElement, Props>((props, ref) => {
   const { id, image, name, fullPrice, price, screen, capacity, ram } = props;
-  const { addToCart, items } = useCart();
+  const { addToCart, items, removeFromCart } = useCart();
   const { addToFavourites, favouriteItems, removeFromFavourites } =
     useFavourites();
   const { t } = useTranslation();
@@ -104,19 +104,32 @@ export const Card = forwardRef<HTMLDivElement, Props>((props, ref) => {
           </div>
         </div>
         <div className={styles.buttons}>
-          <button
-            className={classNames(
-              styles.add,
-              items.some(item => id === item.id) && styles.activeAdd,
-            )}
-            onClick={e => {
-              e.preventDefault();
-              e.stopPropagation();
-              handleAddToCart(id);
-            }}
-          >
-            {items.some(item => id === item.id) ? t('Added') : t('Add')}
-          </button>
+          {items.some(item => id === item.id) ? (
+            <button
+              className={classNames(
+                styles.add,
+                items.some(item => id === item.id) && styles.activeAdd,
+              )}
+              onClick={e => {
+                e.preventDefault();
+                e.stopPropagation();
+                removeFromCart(id);
+              }}
+            >
+              {t('Added')}
+            </button>
+          ) : (
+            <button
+              className={styles.add}
+              onClick={e => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleAddToCart(id);
+              }}
+            >
+              {t('Add')}
+            </button>
+          )}
           {favouriteItems.some(item => id === item.id) ? (
             <button
               className={classNames(styles.favorite, styles.avtiveFavorite)}
