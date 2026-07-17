@@ -1,7 +1,151 @@
 .favoritesPage {
-  padding: 24px 0;
+  box-sizing: border-box;
+
+  width: 100%;
+  max-width: 1200px;
+  min-height: 500px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+
+  @media (min-width: 640px) {
+    padding: 24px 24px 64px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 24px 32px 80px;
+  }
 }
 
 .title {
+  margin: 40px 0 8px;
+
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: #313237;
+
+  @media (min-width: 640px) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.count {
+  margin: 0 0 32px;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: #89939a;
+
+  @media (min-width: 640px) {
+    margin-bottom: 40px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 272px;
+  justify-content: center;
+  gap: 40px 16px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 272px);
+  }
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(3, 272px);
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 272px);
+  }
+}
+
+.loaderContainer {
+  display: grid;
+  min-height: 60vh;
+  place-items: center;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  min-height: 60vh;
+
+  text-align: center;
+}
+
+.messageText {
   margin: 0;
+
+  font-family: Mont, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #89939a;
+}
+
+.reloadButton {
+  min-width: 120px;
+  height: 40px;
+  padding: 0 16px;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #fff;
+
+  background-color: #313237;
+  border: 1px solid #313237;
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+
+  &:hover {
+    background-color: #212224;
+    box-shadow: 0 3px 13px rgb(23 32 49 / 26%);
+  }
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 40vh;
+
+  text-align: center;
+}
+
+.emptyTitle {
+  margin: 0 0 8px;
+
+  font-family: Mont, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  color: #313237;
+}
+
+.emptyText {
+  max-width: 320px;
+  margin: 0;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: #89939a;
 }

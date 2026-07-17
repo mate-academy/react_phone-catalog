@@ -84,7 +84,6 @@ export const CartPage = () => {
           alt=""
           className={styles.backIcon}
         />
-
         Back
       </button>
 
