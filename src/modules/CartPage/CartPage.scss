@@ -24,8 +24,14 @@
     height: max-content;
   }
 
-  &__cart-is-empty-img {
+  &__wrapper-cart-is-empty {
+    display: flex;
+    justify-content: center;
     width: 100%;
+  }
+
+  &__cart-is-empty-img {
+    width: 50%;
     aspect-ratio: 1 / 1;
     object-fit: contain;
   }

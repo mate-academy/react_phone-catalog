@@ -27,7 +27,7 @@ export const CartPage = () => {
             </div>
           )}
           {cartItems.length === 0 && (
-            <div className="cart-page__body">
+            <div className="cart-page__wrapper-cart-is-empty">
               <img
                 className="cart-page__cart-is-empty-img"
                 src="img/cart-is-empty.png"

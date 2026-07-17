@@ -61,6 +61,7 @@ export const ProductDetailsPage = () => {
   }, [activeProduct, allProducts]);
 
   //#endregion functions
+
   if (status === 'loading') {
     return <ProductDetailsSkeleton />;
   } else if (status === 'error') {
@@ -69,11 +70,13 @@ export const ProductDetailsPage = () => {
         <h2 className="product-details-page__not-found-title">
           {texts.productWasNotFound}
         </h2>
-        <img
-          className="product-details-page__not-found-img"
-          src="img/product-not-found.png"
-          alt="product-not-found"
-        />
+        <div className="product-details-page__wrapper-not-found-img">
+          <img
+            className="product-details-page__not-found-img"
+            src="img/product-not-found.png"
+            alt="product-not-found"
+          />
+        </div>
       </section>
     );
   } else {

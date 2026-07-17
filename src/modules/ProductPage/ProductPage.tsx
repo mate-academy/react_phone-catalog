@@ -27,6 +27,7 @@ const sortBy: Option[] = [
     id: 2,
   },
 ];
+
 const itemsPage: Option[] = [
   {
     value: '4',
@@ -201,11 +202,13 @@ export const ProductPage = () => {
                 {`${texts.thereAreNoProductsInThisCategoryForYourSearch}:
                 ${searchParams.get('query')}`}
               </h2>
-              <img
-                className="product-page__not-found-product"
-                src="img/product-not-found.png"
-                alt="product-not-found"
-              />
+              <div className="product-details-page__wrapper-not-found-img">
+                <img
+                  className="product-details-page__not-found-img"
+                  src="img/product-not-found.png"
+                  alt="product-not-found"
+                />
+              </div>
             </>
           )}
           {categoryProducts.length === 0 && (
