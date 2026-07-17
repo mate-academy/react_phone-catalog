@@ -1,0 +1,150 @@
+@use '../../../../utils/mixin/mixin.scss' as *;
+@use '../../../../utils/variables/variables.scss' as *;
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 48px;
+
+  @include on-desktop {
+    height: 64px;
+  }
+}
+
+.left {
+  display: flex;
+  align-items: center;
+
+  gap: 24px;
+}
+
+.logoWrapper {
+  padding: 13px 0 13px 16px;
+}
+
+.right {
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+
+  @include on-desktop {
+    height: 64px;
+  }
+}
+
+.favoritesHeart,
+.favoritesBag,
+.burger {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-left: 1px solid var(--elements-color);
+  background: none;
+
+  cursor: pointer;
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.favoritesHeart,
+.favoritesBag {
+  display: none;
+
+  text-decoration: none;
+
+  border-bottom: 3px solid transparent;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.favoritesBag {
+  border-left: 1px solid var(--elements-color);
+}
+
+.burger {
+  border: none;
+  border-left: 1px solid var(--elements-color);
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.burger svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.active {
+  border-bottom-color: var(--primary-color);
+}
+
+.desktopNav {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.themeWrapper {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-left: 1px solid var(--elements-color);
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.counter {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+
+  min-width: 14px;
+  height: 14px;
+  padding: 0 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--white-color);
+  border-radius: 50%;
+  background-color: #eb5757;
+
+  color: var(--white-color);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+}

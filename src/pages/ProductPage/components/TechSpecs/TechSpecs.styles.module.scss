@@ -1,0 +1,45 @@
+@use '../../../../utils/variables/variables.scss' as *;
+@use '../../../../utils/mixin/mixin.scss' as *;
+
+.techSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.techSpecsTitle {
+  margin: 0;
+  padding-bottom: 16px;
+
+  border-bottom: 1px solid var(--elements-color);
+
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--primary-color);
+}
+
+.techSpecsPreview {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.techSpecLabel {
+  color: var(--secondary-color);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.techSpecValue {
+  text-align: right;
+
+  color: var(--primary-color);
+  font-size: 14px;
+  font-weight: 500;
+}

@@ -1,0 +1,154 @@
+@use '../../utils/variables/variables.scss' as *;
+@use '../../utils/mixin/mixin.scss' as *;
+
+.card {
+  width: 100%;
+
+  padding: 32px;
+
+  border: 1px solid var(--elements-color);
+
+  font-family: Mont, sans-serif;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  box-sizing: border-box;
+
+  flex-shrink: 0;
+
+  &__name {
+    min-height: 42px;
+
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding-bottom: 8px;
+
+    border-bottom: 1px solid var(--elements-color);
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+    padding-top: 8px;
+  }
+
+  &__buttons {
+    display: flex;
+
+    gap: 8px;
+  }
+}
+
+.image {
+  width: 148px;
+  height: 129px;
+  object-fit: contain;
+
+  display: block;
+
+  margin: 0 auto;
+
+  @include on-tablet {
+    width: 173px;
+    height: 202px;
+  }
+
+  @include on-desktop {
+    width: 208px;
+    height: 196px;
+  }
+}
+
+.price {
+  &__discount {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+  }
+
+  &__regular {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 100%;
+
+    color: var(--secondary-color);
+
+    text-decoration-color: var(--secondary-color);
+    text-decoration-thickness: 2px;
+    text-decoration-line: line-through;
+  }
+}
+
+.addToCart {
+  flex: 1;
+  height: 40px;
+
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  cursor: pointer;
+
+  transition:
+    box-shadow 0.3s,
+    background-color 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+  }
+
+  &.added {
+    background-color: var(--white-color);
+    border: 1px solid var(--elements-color);
+
+    color: $green-color;
+  }
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.infoLabel {
+  color: var(--secondary-color);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.infoValue {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.addToFavorite {
+  width: 40px;
+  height: 40px;
+
+  border: 1px solid var(--elements-color);
+
+  background: none;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid var(--primary-color);
+  }
+}
+
+.productLink {
+  text-decoration: none;
+  color: inherit;
+}

@@ -1,0 +1,45 @@
+@use '../../utils/variables/variables.scss' as *;
+@use '../../utils/mixin/mixin.scss' as *;
+
+.favoritesPage {
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 64px 16px;
+}
+
+.emptyImage {
+  width: 200px;
+  max-width: 100%;
+  margin-bottom: 24px;
+}
+
+.emptyTitle {
+  margin-bottom: 8px;
+
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.emptyText {
+  text-align: center;
+
+  font-size: 14px;
+  color: var(--secondary-color);
+}
