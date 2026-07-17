@@ -2,7 +2,7 @@ import { useCart } from '../../context/CartContext';
 import styles from './CartSummary.styles.module.scss';
 
 export const CartSummary = () => {
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = cart.reduce(
@@ -11,7 +11,13 @@ export const CartSummary = () => {
   );
 
   const handleCheckout = () => {
-    alert('Checkout is not implemented yet');
+    const confirmed = window.confirm(
+      'Checkout is not implemented yet. Do you want to clear the cart?',
+    );
+
+    if (confirmed) {
+      clearCart();
+    }
   };
 
   return (
