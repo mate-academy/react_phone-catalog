@@ -4,6 +4,7 @@ import CloseButton from '../../assets/icons/closebutton.svg?react';
 import AddIcon from '../../assets/icons/add.svg?react';
 import DisabledIcon from '../../assets/icons/disabled.svg?react';
 import { useCart } from '../../context/CartContext';
+import { Link } from 'react-router-dom';
 
 type Props = {
   item: CartItemType;
@@ -27,7 +28,14 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           src={item.product.image}
           alt={item.product.name}
         />
-        <h4 className={styles.cartItemName}>{item.product.name}</h4>
+        <h4 className={styles.cartItemName}>
+          <Link
+            to={`/product/${item.product.itemId}`}
+            className={styles.productLink}
+          >
+            {item.product.name}
+          </Link>
+        </h4>
       </div>
 
       <div className={styles.cartItemBot}>

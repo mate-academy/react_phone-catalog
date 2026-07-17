@@ -48,7 +48,7 @@ export const ProductDetails: React.FC<Props> = ({ product, cardProduct }) => {
       <div className={styles.colors}>
         <div className={styles.availableTitle}>
           <span className={styles.colorsTitle}>Available colors</span>
-          <span className={styles.productId}>id:</span>
+          <span className={styles.productId}>id: {product.id}</span>
         </div>
         <div className={styles.colorOptions}>
           {product.colorsAvailable.map(color => (

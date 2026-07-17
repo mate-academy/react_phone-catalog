@@ -10,6 +10,10 @@ export const CartSummary = () => {
     0,
   );
 
+  const handleCheckout = () => {
+    alert('Checkout is not implemented yet');
+  };
+
   return (
     <article className={styles.cartSummary}>
       <div className={styles.price}>
@@ -23,7 +27,7 @@ export const CartSummary = () => {
         <button
           type="button"
           className={styles.checkoutButton}
-          onClick={() => {}}
+          onClick={handleCheckout}
         >
           Checkout
         </button>

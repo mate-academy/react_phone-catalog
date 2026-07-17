@@ -61,6 +61,11 @@
   color: var(--primary-color);
 }
 
+.productLink {
+  color: inherit;
+  text-decoration: none;
+}
+
 .cartItemBot {
   display: flex;
   align-items: center;

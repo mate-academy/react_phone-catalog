@@ -2,6 +2,7 @@ import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { useFavorites } from '../../context';
 import { ProductsList } from '../../modules/ProductsList';
 import styles from './FavoritesPage.styles.module.scss';
+import emptyFavorites from '../../assets/emptyFavorites.png';
 
 export const FavoritesPage = () => {
   const { favorites } = useFavorites();
@@ -16,7 +17,7 @@ export const FavoritesPage = () => {
       {favorites.length === 0 ? (
         <div className={styles.emptyState}>
           <img
-            src={`${import.meta.env.BASE_URL}img/emptyFavorites.png`}
+            src={emptyFavorites}
             alt="No favourites products"
             className={styles.emptyImage}
           />
