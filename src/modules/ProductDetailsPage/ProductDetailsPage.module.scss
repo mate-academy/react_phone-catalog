@@ -109,6 +109,15 @@
   }
 }
 
+.gallery,
+.configuration {
+  transition: opacity 0.18s ease;
+}
+
+.variantChanging {
+  opacity: 0.6;
+}
+
 .thumbnails {
   display: flex;
   gap: 8px;
@@ -217,9 +226,22 @@
   object-fit: contain;
 
   transition: transform 0.3s;
+  animation: show-product-image 0.22s ease;
 
   &:hover {
     transform: scale(1.1);
+  }
+}
+
+@keyframes show-product-image {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -233,11 +255,15 @@
 }
 
 .optionBlock {
-  margin-bottom: 24px;
+  margin: 0 0 24px;
+  padding: 0;
+
+  border: 0;
 }
 
 .optionLabel {
   margin: 0 0 8px;
+  padding: 0;
 
   font-family: Mont, sans-serif;
   font-size: 12px;
@@ -253,8 +279,31 @@
   gap: 8px;
 }
 
-.colorButton {
+.colorOption,
+.capacityOption {
   position: relative;
+
+  display: block;
+
+  cursor: pointer;
+}
+
+.colorInput,
+.capacityInput {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+
+  opacity: 0;
+}
+
+.colorControl {
+  box-sizing: border-box;
+
+  display: block;
 
   width: 32px;
   height: 32px;
@@ -263,11 +312,11 @@
   background-color: #fff;
   border: 1px solid #e2e6e9;
   border-radius: 50%;
-  cursor: pointer;
 
   transition:
     border-color 0.3s,
-    transform 0.3s;
+    transform 0.3s,
+    opacity 0.3s;
 
   &::after {
     content: '';
@@ -280,20 +329,24 @@
     background-color: var(--product-color);
     border-radius: 50%;
   }
-
-  &:disabled {
-    cursor: default;
-    opacity: 0.35;
-  }
-
-  &:hover:not(:disabled) {
-    border-color: #b4bdc3;
-    transform: scale(1.1);
-  }
 }
 
-.colorButtonActive {
+.colorInput:checked+.colorControl {
   border-color: #313237;
+}
+
+.colorInput:focus-visible+.colorControl {
+  outline: 2px solid #313237;
+  outline-offset: 2px;
+}
+
+.colorInput:disabled+.colorControl {
+  opacity: 0.35;
+}
+
+.colorOption:hover .colorInput:not(:disabled)+.colorControl {
+  border-color: #b4bdc3;
+  transform: scale(1.1);
 }
 
 .divider {
@@ -304,7 +357,13 @@
   background-color: #e2e6e9;
 }
 
-.capacityButton {
+.capacityControl {
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   min-width: 56px;
   height: 32px;
   padding: 0 8px;
@@ -317,27 +376,47 @@
 
   background-color: #fff;
   border: 1px solid #b4bdc3;
-  cursor: pointer;
 
   transition:
     color 0.3s,
     background-color 0.3s,
     border-color 0.3s;
-
-  &:disabled {
-    cursor: default;
-    opacity: 0.35;
-  }
-
-  &:hover:not(:disabled) {
-    border-color: #313237;
-  }
 }
 
-.capacityButtonActive {
+.capacityInput:checked+.capacityControl {
   color: #fff;
+
   background-color: #313237;
   border-color: #313237;
+}
+
+.capacityInput:focus-visible+.capacityControl {
+  outline: 2px solid #313237;
+  outline-offset: 2px;
+}
+
+.capacityInput:disabled+.capacityControl {
+  opacity: 0.35;
+}
+
+.capacityOption:hover .capacityInput:not(:disabled)+.capacityControl {
+  border-color: #313237;
+}
+
+.visuallyHidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
 }
 
 .priceBlock {
@@ -403,6 +482,7 @@
 
 .addButtonActive {
   color: #27ae60;
+
   background-color: #fff;
   border-color: #e2e6e9;
   box-shadow: none;
@@ -694,6 +774,7 @@
   gap: 4px;
 
   box-sizing: border-box;
+
   width: 100%;
   max-width: 200px;
   height: 48px;

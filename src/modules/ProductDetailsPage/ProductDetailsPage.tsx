@@ -1,4 +1,10 @@
-import { type CSSProperties, useEffect, useMemo, useState } from 'react';
+import {
+  type CSSProperties,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { getProductDetails } from '../../api/products';
@@ -72,14 +78,20 @@ export const ProductDetailsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
   const [requestKey, setRequestKey] = useState(0);
+  const [isVariantChanging, setIsVariantChanging] = useState(false);
+  const hasLoadedProductRef = useRef(false);
 
   const catalogProduct = useMemo(() => {
     return products.find(item => item.itemId === productId);
   }, [productId, products]);
 
   useEffect(() => {
+    let isRequestActive = true;
+
     if (isProductsLoading) {
-      return;
+      return () => {
+        isRequestActive = false;
+      };
     }
 
     if (!catalogProduct) {
@@ -88,28 +100,53 @@ export const ProductDetailsPage = () => {
       setActiveImage('');
       setError('');
       setIsLoading(false);
+      setIsVariantChanging(false);
+      hasLoadedProductRef.current = false;
 
-      return;
+      return () => {
+        isRequestActive = false;
+      };
     }
 
-    setIsLoading(true);
+    if (!hasLoadedProductRef.current) {
+      setIsLoading(true);
+    }
+
     setError('');
 
     getProductDetails(catalogProduct.category, productId)
       .then(result => {
+        if (!isRequestActive) {
+          return;
+        }
+
         setProduct(result.product);
         setVariants(result.variants);
         setActiveImage(result.product?.images[0] || '');
+        setIsVariantChanging(false);
+        hasLoadedProductRef.current = true;
       })
       .catch(() => {
+        if (!isRequestActive) {
+          return;
+        }
+
         setProduct(null);
         setVariants([]);
         setActiveImage('');
         setError('Something went wrong while loading the product.');
+        setIsVariantChanging(false);
+        hasLoadedProductRef.current = false;
       })
       .finally(() => {
-        setIsLoading(false);
+        if (isRequestActive) {
+          setIsLoading(false);
+        }
       });
+
+    return () => {
+      isRequestActive = false;
+    };
   }, [catalogProduct, isProductsLoading, productId, requestKey]);
 
   const suggestedProducts = useMemo(() => {
@@ -155,6 +192,7 @@ export const ProductDetailsPage = () => {
       variants.find(item => item.capacity === capacity);
 
     if (variant) {
+      setIsVariantChanging(true);
       navigate(`/product/${variant.id}`);
     }
   };
@@ -169,6 +207,7 @@ export const ProductDetailsPage = () => {
       variants.find(item => item.color === color);
 
     if (variant) {
+      setIsVariantChanging(true);
       navigate(`/product/${variant.id}`);
     }
   };
@@ -193,7 +232,9 @@ export const ProductDetailsPage = () => {
             <button
               type="button"
               className={styles.reloadButton}
-              onClick={() => setRequestKey(currentKey => currentKey + 1)}
+              onClick={() => {
+                setRequestKey(currentKey => currentKey + 1);
+              }}
             >
               Reload
             </button>
@@ -265,7 +306,11 @@ export const ProductDetailsPage = () => {
         <h1 className={styles.title}>{product.name}</h1>
 
         <div className={styles.productMain}>
-          <div className={styles.gallery}>
+          <div
+            className={`${styles.gallery} ${
+              isVariantChanging ? styles.variantChanging : ''
+            }`}
+          >
             <div className={styles.thumbnails}>
               {product.images.map(image => (
                 <button
@@ -288,6 +333,7 @@ export const ProductDetailsPage = () => {
 
             <div className={styles.mainImageWrapper}>
               <img
+                key={activeImage}
                 src={getImageSrc(activeImage)}
                 alt={product.name}
                 className={styles.mainImage}
@@ -295,9 +341,13 @@ export const ProductDetailsPage = () => {
             </div>
           </div>
 
-          <div className={styles.configuration}>
-            <div className={styles.optionBlock}>
-              <p className={styles.optionLabel}>Available colors</p>
+          <div
+            className={`${styles.configuration} ${
+              isVariantChanging ? styles.variantChanging : ''
+            }`}
+          >
+            <fieldset className={styles.optionBlock}>
+              <legend className={styles.optionLabel}>Available colors</legend>
 
               <div className={styles.colors}>
                 {product.colorsAvailable.map(color => {
@@ -305,33 +355,44 @@ export const ProductDetailsPage = () => {
                     findVariant(product.capacity, color) ||
                     variants.find(item => item.color === color);
 
+                  const isSelected = product.color === color;
+
                   return (
-                    <button
+                    <label
                       key={color}
-                      type="button"
-                      className={`${styles.colorButton} ${
-                        product.color === color ? styles.colorButtonActive : ''
-                      }`}
-                      style={
-                        {
-                          '--product-color': getColorValue(color),
-                        } as CSSProperties
-                      }
-                      aria-label={`Select ${color} color`}
-                      aria-pressed={product.color === color}
                       title={color}
-                      disabled={!variant}
-                      onClick={() => handleColorChange(color)}
-                    />
+                      className={styles.colorOption}
+                    >
+                      <input
+                        type="radio"
+                        name="product-color"
+                        value={color}
+                        className={styles.colorInput}
+                        checked={isSelected}
+                        disabled={!variant}
+                        onChange={() => handleColorChange(color)}
+                      />
+
+                      <span
+                        className={styles.colorControl}
+                        style={
+                          {
+                            '--product-color': getColorValue(color),
+                          } as CSSProperties
+                        }
+                      />
+
+                      <span className={styles.visuallyHidden}>{color}</span>
+                    </label>
                   );
                 })}
               </div>
-            </div>
+            </fieldset>
 
             <div className={styles.divider} />
 
-            <div className={styles.optionBlock}>
-              <p className={styles.optionLabel}>Select capacity</p>
+            <fieldset className={styles.optionBlock}>
+              <legend className={styles.optionLabel}>Select capacity</legend>
 
               <div className={styles.capacities}>
                 {product.capacityAvailable.map(capacity => {
@@ -339,28 +400,29 @@ export const ProductDetailsPage = () => {
                     findVariant(capacity, product.color) ||
                     variants.find(item => item.capacity === capacity);
 
+                  const isSelected = product.capacity === capacity;
+
                   return (
-                    <button
-                      key={capacity}
-                      type="button"
-                      className={`${styles.capacityButton} ${
-                        product.capacity === capacity
-                          ? styles.capacityButtonActive
-                          : ''
-                      }`}
-                      aria-pressed={product.capacity === capacity}
-                      disabled={!variant}
-                      onClick={() => handleCapacityChange(capacity)}
-                    >
-                      {capacity}
-                    </button>
+                    <label key={capacity} className={styles.capacityOption}>
+                      <input
+                        type="radio"
+                        name="product-capacity"
+                        value={capacity}
+                        className={styles.capacityInput}
+                        checked={isSelected}
+                        disabled={!variant}
+                        onChange={() => handleCapacityChange(capacity)}
+                      />
+
+                      <span className={styles.capacityControl}>{capacity}</span>
+                    </label>
                   );
                 })}
               </div>
-            </div>
+            </fieldset>
 
             <div className={styles.priceBlock}>
-              <span className={styles.price}>${product.priceDiscount}</span>
+              <span className={styles.price}> ${product.priceDiscount}</span>
 
               <span className={styles.regularPrice}>
                 ${product.priceRegular}
