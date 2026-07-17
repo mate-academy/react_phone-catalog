@@ -1,4 +1,9 @@
-import { Category, Product, ProductDetails, SortOption } from '../types/Product';
+import {
+  Category,
+  Product,
+  ProductDetails,
+  SortOption,
+} from '../types/Product';
 
 const BASE = 'api';
 
