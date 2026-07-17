@@ -5,7 +5,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { CategoryControls } from '../../components/CategoryControls';
 import { Loader } from '../../components/Loader';
 import { PageNavigation } from '../../components/PageNavigation';
-import { ProductCard } from '../../components/ProductCard';
+import { ProductsList } from '../../components/ProductsList';
 import { useStore } from '../../context/StoreContext';
 import type { ProductCategory } from '../../types/Product';
 
@@ -29,11 +29,26 @@ const emptyMessages: Record<ProductCategory, string> = {
   accessories: 'There are no accessories yet',
 };
 
-const validSortValues = ['newest', 'alphabetically', 'cheapest'];
-const validItemsPerPageValues = ['4', '8', '16', 'all'];
+const validSortValues = ['newest', 'alphabetically', 'cheapest'] as const;
+
+const validItemsPerPageValues = ['4', '8', '16', 'all'] as const;
+
+type SortValue = (typeof validSortValues)[number];
+
+type ItemsPerPageValue = (typeof validItemsPerPageValues)[number];
+
+const isSortValue = (value: string): value is SortValue => {
+  return validSortValues.some(sortValue => sortValue === value);
+};
+
+const isItemsPerPageValue = (value: string): value is ItemsPerPageValue => {
+  return validItemsPerPageValues.some(
+    itemsPerPageValue => itemsPerPageValue === value,
+  );
+};
 
 const getCategoryFromPathname = (pathname: string): ProductCategory => {
-  return pathname.slice(1) as ProductCategory;
+  return pathname.split('/').filter(Boolean)[0] as ProductCategory;
 };
 
 export const CategoryPage = () => {
@@ -43,21 +58,23 @@ export const CategoryPage = () => {
   const { products, isLoading, error, reloadProducts } = useStore();
 
   const category = getCategoryFromPathname(pathname);
+
   const title = categoryTitles[category];
+  const breadcrumbTitle = breadcrumbTitles[category];
+  const emptyMessage = emptyMessages[category];
 
   const sortParam = searchParams.get('sort') || 'newest';
   const perPageParam = searchParams.get('perPage') || 'all';
-
   const parsedPage = Number(searchParams.get('page'));
+
+  const sortBy: SortValue = isSortValue(sortParam) ? sortParam : 'newest';
+
+  const itemsPerPage: ItemsPerPageValue = isItemsPerPageValue(perPageParam)
+    ? perPageParam
+    : 'all';
 
   const pageParam =
     Number.isInteger(parsedPage) && parsedPage > 0 ? parsedPage : 1;
-
-  const sortBy = validSortValues.includes(sortParam) ? sortParam : 'newest';
-
-  const itemsPerPage = validItemsPerPageValues.includes(perPageParam)
-    ? perPageParam
-    : 'all';
 
   const categoryProducts = useMemo(() => {
     return products.filter(product => {
@@ -133,6 +150,7 @@ export const CategoryPage = () => {
   useEffect(() => {
     window.scrollTo({
       top: 0,
+      left: 0,
       behavior: 'smooth',
     });
   }, [currentPage]);
@@ -217,7 +235,7 @@ export const CategoryPage = () => {
 
   return (
     <section className={styles.categoryPage}>
-      <Breadcrumbs currentPage={breadcrumbTitles[category]} />
+      <Breadcrumbs currentPage={breadcrumbTitle} />
 
       <h1 className={styles.title}>{title}</h1>
 
@@ -228,7 +246,7 @@ export const CategoryPage = () => {
 
       {categoryProducts.length === 0 ? (
         <div className={styles.empty}>
-          <p className={styles.emptyText}>{emptyMessages[category]}</p>
+          <p className={styles.emptyText}>{emptyMessage}</p>
         </div>
       ) : (
         <>
@@ -249,11 +267,7 @@ export const CategoryPage = () => {
             }}
           />
 
-          <div className={styles.productsGrid}>
-            {visibleProducts.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          <ProductsList products={visibleProducts} />
 
           {itemsPerPage !== 'all' && totalPages > 1 && (
             <PageNavigation

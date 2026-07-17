@@ -2,22 +2,22 @@
   box-sizing: border-box;
 
   width: 100%;
-  max-width: 1200px;
+  max-width: 1136px;
   min-height: 500px;
   margin: 0 auto;
-  padding: 24px 16px 64px;
+  padding: 24px 16px 80px;
 
   @media (min-width: 640px) {
-    padding: 24px 24px 64px;
+    padding-inline: 24px;
   }
 
   @media (min-width: 1200px) {
-    padding: 24px 32px 80px;
+    padding-inline: 0;
   }
 }
 
 .title {
-  margin: 40px 0 8px;
+  margin: 0 0 8px;
 
   font-family: Mont, sans-serif;
   font-size: 32px;
@@ -33,52 +33,28 @@
 }
 
 .count {
-  margin: 0 0 32px;
+  margin: 0 0 40px;
 
   font-family: Mont, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
   color: #89939a;
-
-  @media (min-width: 640px) {
-    margin-bottom: 40px;
-  }
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 272px;
-  justify-content: center;
-  gap: 40px 16px;
-
-  @media (min-width: 640px) {
-    grid-template-columns: repeat(2, 272px);
-  }
-
-  @media (min-width: 900px) {
-    grid-template-columns: repeat(3, 272px);
-  }
-
-  @media (min-width: 1200px) {
-    grid-template-columns: repeat(4, 272px);
-  }
 }
 
 .loaderContainer {
   display: grid;
-  min-height: 60vh;
-  place-items: center;
+  min-height: 50vh;
+  place-content: center;
 }
 
 .message {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  min-height: 240px;
+  place-content: center;
   gap: 16px;
 
-  min-height: 60vh;
+  padding: 24px;
 
   text-align: center;
 }
@@ -96,7 +72,7 @@
 .reloadButton {
   min-width: 120px;
   height: 40px;
-  padding: 0 16px;
+  padding: 0 24px;
 
   font-family: Mont, sans-serif;
   font-size: 14px;
@@ -109,38 +85,49 @@
   cursor: pointer;
 
   transition:
+    color 0.3s,
     background-color 0.3s,
     box-shadow 0.3s;
 
   &:hover {
-    background-color: #212224;
-    box-shadow: 0 3px 13px rgb(23 32 49 / 26%);
+    box-shadow: 0 3px 13px rgb(23 32 49 / 40%);
+  }
+
+  &:active {
+    color: #27ae60;
+    background-color: #fff;
+    box-shadow: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #313237;
+    outline-offset: 2px;
   }
 }
 
 .empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  min-height: 240px;
+  place-content: center;
+  gap: 8px;
 
-  min-height: 40vh;
+  padding: 24px;
 
   text-align: center;
 }
 
 .emptyTitle {
-  margin: 0 0 8px;
+  margin: 0;
 
   font-family: Mont, sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 26px;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
   color: #313237;
 }
 
 .emptyText {
-  max-width: 320px;
+  max-width: 360px;
   margin: 0;
 
   font-family: Mont, sans-serif;

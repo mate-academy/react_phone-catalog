@@ -38,23 +38,6 @@
   color: #89939a;
 }
 
-.productsGrid {
-  display: grid;
-  grid-template-columns: 272px;
-  justify-content: center;
-  row-gap: 40px;
-
-  @media (min-width: 640px) {
-    grid-template-columns: repeat(2, 272px);
-    column-gap: 16px;
-  }
-
-  @media (min-width: 1200px) {
-    grid-template-columns: repeat(4, 272px);
-    column-gap: 16px;
-  }
-}
-
 .loaderContainer {
   display: grid;
   min-height: 50vh;
@@ -107,6 +90,12 @@
 
 .reloadButton:hover {
   box-shadow: 0 3px 13px rgb(23 32 49 / 40%);
+}
+
+.reloadButton:active {
+  color: #27ae60;
+  background-color: #fff;
+  box-shadow: none;
 }
 
 .reloadButton:focus-visible {
