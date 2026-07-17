@@ -22,9 +22,16 @@
   justify-content: space-between;
 }
 
-.colorsTitle,
-.capacityTitle,
 .productId {
+  max-width: 140px;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.colorsTitle,
+.capacityTitle {
   font-size: 12px;
   font-weight: 700;
   color: var(--secondary-color);
