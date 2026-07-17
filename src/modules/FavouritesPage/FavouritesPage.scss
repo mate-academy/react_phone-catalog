@@ -18,6 +18,8 @@
 }
 
 
-.container--favorites {
-  gap: 40px;
+.container {
+  &--favourites {
+    gap: 40px;
+  }
 }

@@ -50,6 +50,9 @@
   }
 
   &__price {
+    min-width: 80px;
+    text-align: end;
+
     @include heading-md;
   }
 

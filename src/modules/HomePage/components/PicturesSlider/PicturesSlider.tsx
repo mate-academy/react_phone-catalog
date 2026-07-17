@@ -19,11 +19,11 @@ type Slides = {
 const slides: Slides[] = [
   {
     mobileImg: 'img/pictures-slider/mobile/banner-slider-mobile__first.png',
-    desktopImg: 'img/pictures-slider/desktop/banner-slider-desktop__firsts.jpg',
+    desktopImg: 'img/pictures-slider/desktop/banner-slider-desktop__first.jpg',
     id: 0,
   },
   {
-    mobileImg: 'img/pictures-slider/mobile/banner-slider-mobile__second.png',
+    mobileImg: 'img/pictures-slider/mobile/banner-slider-mobile__second.jpg',
     desktopImg: 'img/pictures-slider/desktop/banner-slider-desktop__second.jpg',
     id: 1,
   },
