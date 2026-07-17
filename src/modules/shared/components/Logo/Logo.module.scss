@@ -1,0 +1,18 @@
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.nice {
+  font-size: 18px;
+  color: var(--color-text);
+}
+
+.gadgets {
+  font-size: 12px;
+  color: var(--color-primary);
+}

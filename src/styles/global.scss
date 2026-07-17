@@ -1,5 +1,5 @@
-@import './fonts.scss';
-@import './tokens.scss';
+@import './fonts';
+@import './tokens';
 
 *,
 *::before,
@@ -45,11 +45,13 @@ select {
 img {
   display: block;
   max-width: 100%;
+}
+
+a img {
   transition: transform 0.3s ease;
 }
 
-a:hover img,
-button:hover img {
+a:hover img {
   transform: scale(1.1);
 }
 
