@@ -1,0 +1,46 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/breakpoints' as *;
+@use '../../../../styles/typography' as *;
+
+.mobileMenu {
+    padding: 24px 16px 0;
+    position: fixed;
+    inset: 48px 0 0; // starts below the navbar, not at the very top
+    z-index: 90;
+    background: $color-white;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+
+    @include respond(tablet) {
+        display: none; // menu only exists on mobile — nav links show inline from tablet up
+    }
+}
+
+.mobileMenu--open {
+    transform: translateX(0);
+}
+
+.mobileMenu__navLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    @include typography(h4);
+
+    color: $color-secondary;
+    padding-block: 16px;
+    text-decoration: none;
+}
+
+.link {
+    display: block;
+    padding: 8px 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.link:hover {
+    color: $color-primary;
+    border-bottom: 2px solid $color-primary;
+}

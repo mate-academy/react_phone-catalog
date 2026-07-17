@@ -1,0 +1,9 @@
+@use '../shared/styles/typography' as *;
+
+.notFoundPage {
+  padding: 24px 16px;
+}
+
+.notFoundPage__title {
+  @include typography(h1);
+}
