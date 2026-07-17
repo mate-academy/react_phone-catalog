@@ -7,11 +7,12 @@ import {
 } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
-import { getProductDetails } from '../../api/products';
+import { getProductDetails, getSuggestedProducts } from '../../api/products';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Loader } from '../../components/Loader';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { useStore } from '../../context/StoreContext';
+import type { Product } from '../../types/Product';
 import type { ProductDetails } from '../../types/ProductDetails';
 
 import styles from './ProductDetailsPage.module.scss';
@@ -79,6 +80,7 @@ export const ProductDetailsPage = () => {
   const [error, setError] = useState('');
   const [requestKey, setRequestKey] = useState(0);
   const [isVariantChanging, setIsVariantChanging] = useState(false);
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const hasLoadedProductRef = useRef(false);
 
   const catalogProduct = useMemo(() => {
@@ -108,6 +110,8 @@ export const ProductDetailsPage = () => {
       };
     }
 
+    // Loader показується лише при першому відкритті сторінки товару.
+    // При зміні кольору або місткості попередній товар не зникає.
     if (!hasLoadedProductRef.current) {
       setIsLoading(true);
     }
@@ -149,26 +153,33 @@ export const ProductDetailsPage = () => {
     };
   }, [catalogProduct, isProductsLoading, productId, requestKey]);
 
-  const suggestedProducts = useMemo(() => {
+  useEffect(() => {
+    let isRequestActive = true;
+
     if (!catalogProduct) {
-      return [];
+      setSuggestedProducts([]);
+
+      return () => {
+        isRequestActive = false;
+      };
     }
 
-    const availableProducts = products.filter(
-      item => item.id !== catalogProduct.id,
-    );
+    getSuggestedProducts(catalogProduct.id)
+      .then(suggestions => {
+        if (isRequestActive) {
+          setSuggestedProducts(suggestions);
+        }
+      })
+      .catch(() => {
+        if (isRequestActive) {
+          setSuggestedProducts([]);
+        }
+      });
 
-    for (let index = availableProducts.length - 1; index > 0; index -= 1) {
-      const randomIndex = Math.floor(Math.random() * (index + 1));
-
-      [availableProducts[index], availableProducts[randomIndex]] = [
-        availableProducts[randomIndex],
-        availableProducts[index],
-      ];
-    }
-
-    return availableProducts.slice(0, 12);
-  }, [catalogProduct, products]);
+    return () => {
+      isRequestActive = false;
+    };
+  }, [catalogProduct]);
 
   const isInCart = catalogProduct ? Boolean(cart[catalogProduct.id]) : false;
 
@@ -422,7 +433,7 @@ export const ProductDetailsPage = () => {
             </fieldset>
 
             <div className={styles.priceBlock}>
-              <span className={styles.price}> ${product.priceDiscount}</span>
+              <span className={styles.price}>${product.priceDiscount}</span>
 
               <span className={styles.regularPrice}>
                 ${product.priceRegular}
@@ -556,7 +567,12 @@ export const ProductDetailsPage = () => {
         </div>
       </div>
 
-      <ProductsSlider title="You may also like" products={suggestedProducts} />
+      {suggestedProducts.length > 0 && (
+        <ProductsSlider
+          title="You may also like"
+          products={suggestedProducts}
+        />
+      )}
     </section>
   );
 };

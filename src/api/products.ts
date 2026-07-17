@@ -19,6 +19,27 @@ export const getProducts = (): Promise<Product[]> => {
   return request<Product[]>('products.json');
 };
 
+export const getSuggestedProducts = async (
+  productId: number,
+): Promise<Product[]> => {
+  const products = await getProducts();
+
+  const availableProducts = products.filter(product => {
+    return product.id !== productId;
+  });
+
+  for (let index = availableProducts.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+
+    [availableProducts[index], availableProducts[randomIndex]] = [
+      availableProducts[randomIndex],
+      availableProducts[index],
+    ];
+  }
+
+  return availableProducts.slice(0, 12);
+};
+
 export const getCategoryDetails = (
   category: ProductCategory,
 ): Promise<ProductDetails[]> => {
