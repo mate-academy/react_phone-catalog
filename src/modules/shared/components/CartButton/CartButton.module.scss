@@ -1,11 +1,11 @@
 @use '../../styles/variables' as *;
+@use '../../styles/breakpoints' as *;
 
 .cartButton {
     flex: 1;
     height: 100%;
     margin-left: -1px;
     border: 1px solid $color-elements;
-    border-bottom: 2px solid transparent;
     transition: border-bottom 0.3s ease-in-out;
     background-color: $color-white;
     color: $color-primary;
@@ -16,6 +16,23 @@
      &:active,
      &:hover {
         border-bottom: 2px solid $color-primary;
+    }
+
+     @include respond(desktop) {
+        width: 64px;
+        height: 64px;
+        border-left: 1px solid $color-elements;
+        border-top: none;
+        border-bottom: 2px solid transparent;
+        
+    }
+
+    @include respond(tablet) {
+        width: 48px;
+        height: 48px;
+        border-left: 1px solid $color-elements;
+        border-top: none;
+        border-bottom: 2px solid transparent;
     }
 }
 
