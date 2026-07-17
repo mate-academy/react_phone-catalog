@@ -1,0 +1,29 @@
+.page {
+  width: 100%;
+}
+
+.title {
+  margin-bottom: 8px;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+}
+
+@media (min-width: 640px) {
+  .title {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.count {
+  margin-bottom: 40px;
+  color: var(--color-secondary);
+}
+
+.empty {
+  padding: 48px 0;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+}
