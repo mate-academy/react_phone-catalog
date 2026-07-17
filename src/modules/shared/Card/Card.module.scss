@@ -1,0 +1,193 @@
+@import '../../../styles/typography';
+
+.card {
+  flex-shrink: 0;
+
+  width: 272px;
+  padding: 32px;
+  border: 1px solid #e2e6e9;
+
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 2px 16px 0 #0000004f;
+  }
+
+  @media (max-width: 1199px) {
+    width: 237px;
+    min-height: 512px;
+  }
+
+  @media (max-width: 639px) {
+    width: 100%;
+    min-height: 439px;
+  }
+}
+
+.topSide {
+  margin-bottom: 8px;
+}
+
+.imageSection {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.image {
+  overflow: hidden;
+
+  width: 208px;
+  height: 196px;
+  margin-bottom: 24px;
+
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 1199px) {
+    width: 173px;
+    height: 202px;
+  }
+
+  @media (max-width: 639px) {
+    width: 148px;
+    height: 129px;
+  }
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.nameText {
+  overflow: hidden;
+  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+
+  height: 42px;
+  margin-bottom: 8px;
+
+  color: #313237;
+  text-decoration: none;
+
+  @include body-text;
+}
+
+.priceSector {
+  display: flex;
+  gap: 8px;
+}
+
+.price {
+  @include h3;
+
+  color: #313237;
+}
+
+.fullPrice {
+  @include h3;
+
+  font-weight: 500;
+  color: #89939a;
+  text-decoration: line-through;
+}
+
+.bottomSide {
+  padding-top: 8px;
+  border-top: 1px solid #e2e6e9;
+}
+
+.characteristics {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin-bottom: 8px;
+  padding: 8px 0;
+}
+
+.textSection {
+  display: flex;
+  justify-content: space-between;
+}
+
+.smallText {
+  @include small-text;
+
+  color: #89939a;
+}
+
+.bodyText {
+  @include small-text;
+
+  text-align: right;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.add {
+  @include buttons;
+
+  cursor: pointer;
+
+  width: 100%;
+  height: 40px;
+  border: none;
+
+  color: #fff;
+  text-align: center;
+
+  background-color: #313237;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+}
+
+.activeAdd {
+  border: 1px solid #e2e6e9;
+  color: #27ae60;
+  background-color: #ffff;
+}
+
+.favorite {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 40px;
+  height: 40px;
+  border: 1px solid #b4bdc3;
+
+  background-color: #ffff;
+
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: #313237;
+  }
+}
+
+.favoriteImage {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.avtiveFavorite {
+  border-color: #e2e6e9;
+}

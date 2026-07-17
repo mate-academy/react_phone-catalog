@@ -1,0 +1,199 @@
+@import '/src/styles/typography';
+
+.firstBanner {
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+  min-height: 189px;
+
+  background-color: black;
+}
+
+.leftSection {
+  width: 50%;
+  padding: 16px;
+}
+
+.rightSection {
+  width: 50%;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  padding: 10%;
+  border-radius: 25px;
+
+  background-color: #1e1e21;
+
+  @media (max-width: 1199px) {
+    padding: 16px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
+}
+
+.topSide {
+  height: 50%;
+}
+
+.textSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.backgroundTitle {
+  @include h1;
+
+  cursor: default;
+
+  color: transparent;
+
+  background: linear-gradient(90deg, #6b17e8 10%, #da70d6 110%);
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  @media (max-width: 1199px) {
+    font-size: 32px;
+  }
+
+  @media (max-width: 768px) {
+    @include h2;
+
+    font-size: 25px;
+  }
+}
+
+.backgroundText {
+  @include small-text;
+
+  cursor: default;
+  font-weight: 500;
+  color: #b4bdc3;
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
+}
+
+.bottomSide {
+  display: flex;
+  align-items: end;
+  height: 50%;
+
+  @media (max-width: 881px) {
+    justify-content: end;
+  }
+}
+
+.orderButton {
+  @include uppercase;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 170px;
+  height: 50px;
+  border: 1px solid #89939a;
+  border-radius: 25px;
+
+  font-weight: 500;
+  color: #fff;
+
+  background-color: #1e1e21;
+
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #313237;
+  }
+
+  @media (max-width: 1199px) {
+    width: 150px;
+    height: 45px;
+  }
+
+  @media (max-width: 768px) {
+    width: 120px;
+    height: 35px;
+    font-size: 10px;
+  }
+}
+
+.textSide {
+  cursor: default;
+  width: 100%;
+  padding-top: 25px;
+  text-align: center;
+}
+
+.rightSectionTitle {
+  @include h2;
+
+  color: #fff;
+
+  @media (max-width: 768px) {
+    @include h3;
+
+    color: #fff;
+  }
+}
+
+.rightSectionText {
+  @include small-text;
+
+  font-weight: 500;
+  color: #89939a;
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
+}
+
+.imgSide {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  img {
+    position: absolute;
+    bottom: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    transition:
+      transform 0.3s ease,
+      filter 0.5s ease;
+
+    &:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 30px #a200cf);
+    }
+  }
+
+  @media (max-width: 1199px) {
+    bottom: -25px;
+    height: 70%;
+  }
+
+  @media (max-width: 881px) {
+    bottom: -15px;
+    height: 70%;
+  }
+
+  @media (max-width: 768px) {
+    bottom: -5px;
+  }
+}

@@ -1,0 +1,76 @@
+@import '../../../styles/typography';
+
+.ProductsSlider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 100%;
+  margin-bottom: 80px;
+
+  @media (max-width: 639px) {
+    margin-bottom: 56px;
+  }
+}
+
+.window {
+  overflow: hidden;
+  width: 100%;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  @include h2;
+
+  @media (max-width: 639px) {
+    width: 50%;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.button {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid #b4bdc3;
+
+  background-color: #fff;
+
+
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #b4bdc3;
+  }
+
+}
+
+.buttonDisable {
+  cursor: default;
+  border: none;
+  background-color: #b4bdc37b;
+
+  &:hover {
+    background-color: #b4bdc37b;
+  }
+}
+
+.cards {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.3s ease;
+}

@@ -1,1 +1,50 @@
-// not empty
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  font-family: Mont, sans-serif;
+  color: #313237;
+  background-color: #fff;
+}
+
+.App {
+  scroll-behavior: smooth;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @media (max-width: 1199px) {
+    min-width: 592px;
+    padding: 0 24px;
+  }
+
+  @media (max-width: 639px) {
+    min-width: 288px;
+    padding: 0 16px;
+  }
+}
+
+main {
+  flex: 1 0 auto;
+  width: 100%;
+}

@@ -1,0 +1,63 @@
+@import '../../../styles/typography';
+
+.history {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.iconLink {
+  width: 16px;
+  height: 16px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.arrowIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.historyText {
+  cursor: pointer;
+
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+  color: #89939a;
+  letter-spacing: 0%;
+
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #43484b;
+  }
+}
+
+.textSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.title {
+  @include h1;
+
+  color: #313237;
+}
+
+.quantity {
+  @include body-text;
+
+  color: #89939a;
+}
