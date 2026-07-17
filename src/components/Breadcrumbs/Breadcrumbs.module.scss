@@ -29,6 +29,11 @@
   text-decoration: none;
 }
 
+.homeLink:focus-visible {
+  outline: 2px solid #313237;
+  outline-offset: 2px;
+}
+
 .homeIcon,
 .separatorIcon {
   display: block;
@@ -36,6 +41,15 @@
 
   width: 16px;
   height: 16px;
+}
+
+.homeIcon {
+  transition: transform 0.3s;
+}
+
+.homeLink:hover .homeIcon,
+.homeLink:focus-visible .homeIcon {
+  transform: scale(1.1);
 }
 
 .categoryLink {

@@ -119,8 +119,9 @@
   object-fit: contain;
 }
 
-.category:hover .image {
-  transform: scale(1.03);
+.category:hover .image,
+.category:focus-visible .image {
+  transform: scale(1.1);
 }
 
 .categoryTitle {

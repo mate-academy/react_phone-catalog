@@ -40,10 +40,17 @@
   width: 64px;
   height: 22px;
 
+  transition: transform 0.3s;
+
   @media (min-width: 1200px) {
     width: 80px;
     height: 28px;
   }
+}
+
+.logoLink:hover .logo,
+.logoLink:focus-visible .logo {
+  transform: scale(1.1);
 }
 
 .logoNg {
@@ -92,6 +99,7 @@
 
   display: flex;
   align-items: center;
+
   width: max-content;
   height: 48px;
   padding: 0;
@@ -184,10 +192,10 @@
   padding: 0;
 
   color: #313237;
+
   background-color: #fff;
   border: 0;
   box-shadow: -1px 0 0 #e2e6e9;
-
   cursor: pointer;
 
   @media (min-width: 640px) {
@@ -286,6 +294,7 @@
   justify-content: center;
 
   box-sizing: border-box;
+
   min-width: 16px;
   height: 16px;
   padding: 0 3px;
