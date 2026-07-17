@@ -96,10 +96,16 @@ export const StoreProvider = ({ children }: PropsWithChildren) => {
       cartTotal,
 
       addToCart: productId => {
-        setCart(currentCart => ({
-          ...currentCart,
-          [productId]: (currentCart[productId] || 0) + 1,
-        }));
+        setCart(currentCart => {
+          if (currentCart[productId]) {
+            return currentCart;
+          }
+
+          return {
+            ...currentCart,
+            [productId]: 1,
+          };
+        });
       },
 
       removeFromCart: productId => {

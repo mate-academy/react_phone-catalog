@@ -1,5 +1,5 @@
-import { Product, ProductCategory } from '../types/Product';
-import { ProductDetails } from '../types/ProductDetails';
+import type { Product, ProductCategory } from '../types/Product';
+import type { ProductDetails } from '../types/ProductDetails';
 
 const getApiUrl = (fileName: string) => {
   return `${import.meta.env.BASE_URL}api/${fileName}`;

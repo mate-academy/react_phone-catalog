@@ -7,7 +7,7 @@ import { Loader } from '../../components/Loader';
 import { PageNavigation } from '../../components/PageNavigation';
 import { ProductCard } from '../../components/ProductCard';
 import { useStore } from '../../context/StoreContext';
-import { ProductCategory } from '../../types/Product';
+import type { ProductCategory } from '../../types/Product';
 
 import styles from './CategoryPage.module.scss';
 
@@ -38,15 +38,20 @@ const getCategoryFromPathname = (pathname: string): ProductCategory => {
 
 export const CategoryPage = () => {
   const { pathname } = useLocation();
-  const { products, isLoading, error, reloadProducts } = useStore();
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const { products, isLoading, error, reloadProducts } = useStore();
 
   const category = getCategoryFromPathname(pathname);
   const title = categoryTitles[category];
 
   const sortParam = searchParams.get('sort') || 'newest';
   const perPageParam = searchParams.get('perPage') || 'all';
-  const pageParam = Number(searchParams.get('page')) || 1;
+
+  const parsedPage = Number(searchParams.get('page'));
+
+  const pageParam =
+    Number.isInteger(parsedPage) && parsedPage > 0 ? parsedPage : 1;
 
   const sortBy = validSortValues.includes(sortParam) ? sortParam : 'newest';
 
@@ -55,8 +60,10 @@ export const CategoryPage = () => {
     : 'all';
 
   const categoryProducts = useMemo(() => {
-    return products.filter(product => product.category === category);
-  }, [products, category]);
+    return products.filter(product => {
+      return product.category === category;
+    });
+  }, [category, products]);
 
   const sortedProducts = useMemo(() => {
     const productsToSort = [...categoryProducts];
@@ -75,7 +82,7 @@ export const CategoryPage = () => {
       case 'newest':
       default:
         return productsToSort.sort((productA, productB) => {
-          return productB.year - productA.year;
+          return productB.year - productA.year || productB.id - productA.id;
         });
     }
   }, [categoryProducts, sortBy]);
@@ -85,18 +92,21 @@ export const CategoryPage = () => {
       return 1;
     }
 
-    return Math.max(1, Math.ceil(sortedProducts.length / Number(itemsPerPage)));
+    const productsPerPage = Number(itemsPerPage);
+
+    return Math.max(1, Math.ceil(sortedProducts.length / productsPerPage));
   }, [itemsPerPage, sortedProducts.length]);
 
-  const currentPage = Math.min(Math.max(pageParam, 1), totalPages);
+  const currentPage = Math.min(pageParam, totalPages);
 
   const visibleProducts = useMemo(() => {
     if (itemsPerPage === 'all') {
       return sortedProducts;
     }
 
-    const firstProductIndex = (currentPage - 1) * Number(itemsPerPage);
-    const lastProductIndex = firstProductIndex + Number(itemsPerPage);
+    const productsPerPage = Number(itemsPerPage);
+    const firstProductIndex = (currentPage - 1) * productsPerPage;
+    const lastProductIndex = firstProductIndex + productsPerPage;
 
     return sortedProducts.slice(firstProductIndex, lastProductIndex);
   }, [currentPage, itemsPerPage, sortedProducts]);
@@ -128,6 +138,10 @@ export const CategoryPage = () => {
   }, [currentPage]);
 
   useEffect(() => {
+    if (isLoading || error) {
+      return;
+    }
+
     const hasInvalidSort = sortParam !== sortBy;
     const hasInvalidPerPage = perPageParam !== itemsPerPage;
     const hasInvalidPage = pageParam !== currentPage;
@@ -157,9 +171,13 @@ export const CategoryPage = () => {
       }
     }
 
-    setSearchParams(nextParams, { replace: true });
+    setSearchParams(nextParams, {
+      replace: true,
+    });
   }, [
     currentPage,
+    error,
+    isLoading,
     itemsPerPage,
     pageParam,
     perPageParam,
@@ -203,7 +221,10 @@ export const CategoryPage = () => {
 
       <h1 className={styles.title}>{title}</h1>
 
-      <p className={styles.count}>{categoryProducts.length} models</p>
+      <p className={styles.count}>
+        {categoryProducts.length}{' '}
+        {categoryProducts.length === 1 ? 'model' : 'models'}
+      </p>
 
       {categoryProducts.length === 0 ? (
         <div className={styles.empty}>
