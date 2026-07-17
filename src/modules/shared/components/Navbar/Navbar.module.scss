@@ -23,12 +23,15 @@
     background: none;
     cursor: pointer;
     display: flex;
+
     @include respond(tablet) {
         display: none; // menu only exists on mobile — nav links show inline from tablet up
     }
+
     @include respond(desktop) {
         display: none; // menu only exists on mobile — nav links show inline from tablet up
     }
+
     align-items: center;
     padding: 0 16px;
     border-left: 1px solid $color-elements;
@@ -39,6 +42,7 @@
     align-items: center;
     padding: 0 16px;
     margin-right: 16px;
+
     @include respond(desktop) {
         margin-right: 24px;
     }
@@ -47,6 +51,7 @@
 .navbar__logoImage {
     width: 64px;
     height: 22px;
+
     @include respond(desktop) {
         width: 80px;
         height: 28px;
@@ -60,11 +65,14 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
     @include typography(small);
+
     color: $color-secondary;
     
     text-decoration: none;
     width: fit-content;
+
     @include respond(tablet) {
         width: 329px;
     }
@@ -85,6 +93,7 @@
     height: 48px;
     border-bottom: 2px solid transparent;
     transition: all 0.3s ease-in-out;
+
     @include respond(desktop) {
         height: 64px;
     }
@@ -103,9 +112,11 @@
     @include respond(mobile) {
         display: none; // buttons only show inline from tablet up
     }
+
     @include respond(desktop) {
         width: 128px;
     }
+
     margin-left: auto;
     display: flex;
     width: 96px;

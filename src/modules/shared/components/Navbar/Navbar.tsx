@@ -44,12 +44,11 @@ export const Navbar = () => {
           <img src={isMenuOpen ? closeIcon : hamburgerIcon} alt="Menu" />
         </button>
         <div className={styles.navbar__BtnContainer}>
-        <FavButton />
-        <CartButton />
-      </div>
+          <FavButton />
+          <CartButton />
+        </div>
       </nav>
       <MobileMenu isOpen={isMenuOpen} onClose={handleMenuClose} />
-      
     </>
   );
 };
