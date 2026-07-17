@@ -1,0 +1,62 @@
+@use '../shared/styles/variables' as *;
+@use '../shared/styles/typography' as *;
+
+.favorites {
+    padding: 24px 16px;
+}
+
+.favorites__title {
+    @include typography(h1);
+}
+
+.favorites__empty {
+    margin-top: 24px;
+    color: $color-secondary;
+
+    @include typography(h3);
+}
+
+.favorites__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.favorites__item {
+    position: relative;
+    padding: 24px 16px;
+    border: 1px solid $color-elements;
+}
+
+.favorites__remove {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-elements;
+    background-color: $color-white;
+    color: $color-secondary;
+    cursor: pointer;
+}
+
+.favorites__image {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+}
+
+.favorites__name {
+    margin-top: 16px;
+    color: $color-primary;
+
+    @include typography(small);
+}
+
+.favorites__price {
+    margin-top: 8px;
+    color: $color-primary;
+
+    @include typography(h4);
+}

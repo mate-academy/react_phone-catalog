@@ -1,0 +1,29 @@
+@use '../../styles/variables' as *;
+
+.favButton {
+    flex: 1;
+    height: 100%;
+    border: 1px solid $color-elements;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.3s ease-in-out;
+    background-color: $color-white;
+    color: $color-primary;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ &:active,
+ &:hover {
+        border-bottom: 2px solid $color-primary;
+    }
+}
+
+.favButton:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.favButtonIcon {
+    width: 16px;
+    height: 16px;
+}

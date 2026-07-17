@@ -13,6 +13,10 @@ export const Navbar = () => {
     setIsMenuOpen(prev => !prev);
   };
 
+  const handleMenuClose = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <>
       <nav className={styles.navbar}>
@@ -29,7 +33,7 @@ export const Navbar = () => {
           <img src={isMenuOpen ? closeIcon : hamburgerIcon} alt="Menu" />
         </button>
       </nav>
-      <MobileMenu isOpen={isMenuOpen} />
+      <MobileMenu isOpen={isMenuOpen} onClose={handleMenuClose} />
     </>
   );
 };
