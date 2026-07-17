@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Menu.styles.module.scss';
 import classNames from 'classnames';
 import { Logo } from '../../../../components/Logo';
@@ -19,6 +19,18 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
   const { favorites } = useFavorites();
   const { cart } = useCart();
   const location = useLocation();
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   return (
     <aside

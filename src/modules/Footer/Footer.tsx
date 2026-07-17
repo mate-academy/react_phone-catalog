@@ -25,7 +25,13 @@ export const Footer = () => {
 
         <nav className={styles.nav}>
           {footerLinks.map(link => (
-            <a key={link.href} href={link.href} className={styles.footerLink}>
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.footerLink}
+            >
               {link.label}
             </a>
           ))}
