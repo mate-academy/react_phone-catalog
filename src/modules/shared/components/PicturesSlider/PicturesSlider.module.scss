@@ -12,7 +12,7 @@
   .frame {
     grid-template-columns: 32px 1fr 32px;
     gap: 16px;
-    align-items: stretch;
+    align-items: center;
   }
 }
 
@@ -20,7 +20,10 @@
   display: none;
   align-items: center;
   justify-content: center;
+  width: 32px;
+  height: 32px;
   border: 1px solid var(--color-icons);
+  border-radius: 50%;
   background-color: var(--color-surface);
   color: var(--color-text);
   cursor: pointer;
@@ -42,6 +45,7 @@
   width: 100%;
   aspect-ratio: 2 / 1;
   max-height: 400px;
+  border-radius: var(--radius-md);
   background-color: var(--color-surface-2);
 }
 
