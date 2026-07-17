@@ -25,6 +25,7 @@ export const Footer = () => {
   const handleBackToTop = () => {
     window.scrollTo({
       top: 0,
+      left: 0,
       behavior: 'smooth',
     });
   };
@@ -32,19 +33,12 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.content}>
-        <a
-          href={projectUrl}
-          className={styles.logoLink}
-          aria-label="Open the project on GitHub"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <div className={styles.logoLink}>
           <span className={styles.logo}>
             <img
               src={iconSrc('logo-ng.svg')}
-              alt=""
+              alt="Nice Gadgets"
               className={styles.logoNg}
-              aria-hidden="true"
             />
 
             <img
@@ -54,7 +48,7 @@ export const Footer = () => {
               aria-hidden="true"
             />
           </span>
-        </a>
+        </div>
 
         <nav className={styles.links} aria-label="Footer navigation">
           {footerLinks.map(({ label, ariaLabel }) => (

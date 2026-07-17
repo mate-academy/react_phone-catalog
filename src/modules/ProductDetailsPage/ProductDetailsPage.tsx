@@ -1,5 +1,5 @@
 import { type CSSProperties, useEffect, useMemo, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { getProductDetails } from '../../api/products';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
@@ -207,16 +207,34 @@ export const ProductDetailsPage = () => {
     return (
       <section className={styles.page}>
         <div className={styles.content}>
-          <h1 className={styles.notFound}>Product was not found</h1>
+          <div className={styles.notFoundState}>
+            <h1 className={styles.notFoundTitle}>Product was not found</h1>
 
-          <button
-            type="button"
-            className={styles.backButton}
-            onClick={() => navigate(-1)}
-          >
-            <img src={getIconSrc('chevron-arrow-left.svg')} alt="" />
-            Back
-          </button>
+            <img
+              src={getImageSrc('img/product-not-found.png')}
+              alt="Product was not found"
+              className={styles.notFoundImage}
+            />
+
+            <p className={styles.notFoundText}>
+              We could not find the product you are looking for.
+            </p>
+
+            <div className={styles.notFoundActions}>
+              <button
+                type="button"
+                className={styles.notFoundBackButton}
+                onClick={() => navigate(-1)}
+              >
+                <img src={getIconSrc('chevron-arrow-left.svg')} alt="" />
+                Back
+              </button>
+
+              <Link to="/" className={styles.notFoundHomeLink}>
+                Go to home page
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     );
