@@ -5,7 +5,7 @@ import { App } from './App';
 import { StoreProvider } from './context/StoreContext';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <BrowserRouter>
+  <BrowserRouter basename={import.meta.env.BASE_URL}>
     <StoreProvider>
       <App />
     </StoreProvider>
