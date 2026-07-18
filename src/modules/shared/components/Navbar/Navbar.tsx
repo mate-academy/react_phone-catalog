@@ -1,5 +1,6 @@
 export type NavbarProps = Record<string, never>;
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { NAV_LINKS } from './navLinks';
 import hamburgerIcon from '../../../../assets/icons/Menu.svg';
@@ -11,6 +12,7 @@ import { FavButton } from '../FavButton';
 import { CartButton } from '../CartButton';
 
 export const Navbar = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuToggle = () => {
@@ -44,8 +46,16 @@ export const Navbar = () => {
           <img src={isMenuOpen ? closeIcon : hamburgerIcon} alt="Menu" />
         </button>
         <div className={styles.navbar__BtnContainer}>
-          <FavButton />
-          <CartButton />
+          <FavButton
+            onClick={() => {
+              navigate('/favorites');
+            }}
+          />
+          <CartButton
+            onClick={() => {
+              navigate('/cart');
+            }}
+          />
         </div>
       </nav>
       <MobileMenu isOpen={isMenuOpen} onClose={handleMenuClose} />
