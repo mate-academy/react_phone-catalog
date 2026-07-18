@@ -1,0 +1,48 @@
+
+  @use '../../../../../../styles/mixins.scss' as *;
+
+.capacity-available {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+
+  &__title {
+    font-family: var(--mont-semibold-font);
+    font-size: 12px;
+    color: var(--secondary-color);
+  }
+
+  &__options {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__option-capacity {
+    height: 32px;
+    width: max-content;
+    background-color: var(--main-color);
+    border: 1px solid var(--icons-color);
+    padding-inline: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    @include transition(background-color 0.3s ease, border 0.3s ease);
+
+    &--is-active {
+      border: 1px solid var(--primary-color);
+      background-color: var(--primary-color);
+    }
+  }
+
+  &__value-capacity {
+    font-size: 14px;
+    font-family: var(--mont-regular-font);
+    line-height: 21px;
+    color: var(--primary-color);
+
+    &--is-active {
+      color: var(--main-color);
+    }
+  }
+}

@@ -1,0 +1,41 @@
+@use '../../../../../../styles/mixins.scss' as *;
+
+.burger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--main-color);
+
+  &__body {
+    margin: 24px 16px;
+  }
+
+  &__navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 156px;
+    gap: 16px;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    min-height: 64px;
+    width: 100%;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    border-top: 1px solid var(--icons-color);
+    border-left: 1px solid var(--icons-color);
+  }
+
+  @include up($sm) {
+    display: none;
+  }
+}

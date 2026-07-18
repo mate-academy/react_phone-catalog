@@ -1,0 +1,15 @@
+.back-default {
+  width: max-content;
+  display: flex;
+  gap: 4px;
+
+  &__text {
+    font-family: var(--mont-regular-font);
+    font-size: 12px;
+  }
+
+  &__img {
+    width: 16px;
+    height: 16px;
+  }
+}

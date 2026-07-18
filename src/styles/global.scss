@@ -1,0 +1,36 @@
+@use '../styles/mixins.scss' as *;
+
+*,
+body {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  min-width: 0;
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--main-color);
+}
+
+html {
+  overflow-x: hidden;
+}
+
+button,
+a {
+  color: var(--primary-color);
+  cursor: pointer;
+  border: 1px solid transparent;
+  background-color: var(--main-color);
+}
+
+input {
+  border: 1px solid var(--icons-color);
+}
+
+select,
+input {
+  background-color: var(--main-color);
+}

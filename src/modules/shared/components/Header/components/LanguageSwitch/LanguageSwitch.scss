@@ -1,0 +1,22 @@
+.language-switch {
+  position: relative;
+
+  &__select {
+    font-family: var(--mont-bold-font);
+    color: var(--secondary-color);
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+    border: 1px solid var(--icons-color);
+    border-radius: 25px;
+    appearance: none;
+  }
+
+  &__icon {
+    position: absolute;
+    right: 7px;
+    bottom: calc(50% - 8px);
+    width: 16px;
+    pointer-events: none;
+  }
+}

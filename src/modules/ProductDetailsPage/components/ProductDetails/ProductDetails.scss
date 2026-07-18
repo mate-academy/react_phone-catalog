@@ -1,0 +1,207 @@
+@use '../../../../styles/mixins.scss' as *;
+@use '../../../../styles/typography.scss' as *;
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+
+  &__title {
+    margin-bottom: 32px;
+
+    @include heading-xl;
+  }
+
+  &__region-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__photo {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__region-description {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    margin-top: 24px;
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__photo-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__main-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+
+  &__photo-previews {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+
+  &__photo-preview {
+    flex: 1;
+    flex-shrink: 0;
+    min-width: 0;
+    max-width: 134px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border: 1px solid var(--elements-color);
+    cursor: pointer;
+
+    @include transition(border 0.4s ease);
+
+    &--is-active {
+      border: 1px solid var(--primary-color);
+    }
+  }
+
+  &__section {
+    display: flex;
+    justify-content: space-between;
+
+    &--price {
+      flex-direction: column;
+      margin: 32px 0;
+      gap: 16px;
+    }
+
+    &--colors {
+      gap: 16px;
+    }
+  }
+
+  &__id {
+    font-family: var(--mont-semibold-font);
+    font-size: 12px;
+    color: var(--icons-color);
+    min-width: 0;
+  }
+
+  &__line {
+    margin: 24px 0;
+  }
+
+  &__region-specs-product {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__specs-product {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__block-price {
+    font-size: 32px;
+  }
+
+  &__subtitle {
+    margin-bottom: 16px;
+
+    @include heading-md;
+  }
+
+  &__description-title {
+    font-family: var(--mont-semibold-font);
+    font-size: 16px;
+    color: var(--primary-color);
+  }
+
+  &__text {
+    font-family: var(--mont-regular-font);
+    font-size: 12px;
+    color: var(--secondary-color);
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__main-controls {
+    width: 100%;
+  }
+
+  &__all-specs-product {
+    margin-top: 25px;
+  }
+
+  @include up($sm) {
+    &__region-item {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    &__photo {
+      flex-direction: row-reverse;
+    }
+
+    &__photo-previews {
+      flex-direction: column;
+      width: max-content;
+    }
+
+    &__photo-preview {
+      max-width: 35px;
+      max-height: 35px;
+    }
+
+    &__photo-wrapper {
+      flex: 1;
+      max-width: 284px;
+    }
+
+    &__main-controls {
+      min-width: 264px;
+      max-width: 320px;
+    }
+
+    &__id {
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  @include up($md) {
+    &__photo-wrapper {
+      width: 464px;
+    }
+
+    &__photo-preview {
+      max-width: 80px;
+      max-height: 80px;
+    }
+
+    &__region-description {
+      flex-direction: row;
+    }
+
+    &__about {
+      flex: 1;
+    }
+
+    &__region-specs-product {
+      flex: 1;
+    }
+  }
+}

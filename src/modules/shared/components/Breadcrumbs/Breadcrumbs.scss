@@ -1,0 +1,27 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  max-width: max-content;
+  height: 16px;
+  gap: 8px;
+
+  &__text {
+    color: var(--secondary-color);
+    font-family: var(--mont-regular-font);
+    font-size: 12px;
+    height: 16px;
+  }
+
+  &__icon-home-wrapper {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__icon-home {
+    color: var(--primary-color);
+  }
+
+  &__icon-arrow-right {
+    color: var(--icons-color);
+  }
+}

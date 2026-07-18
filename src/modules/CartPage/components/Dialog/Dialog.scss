@@ -1,0 +1,24 @@
+@use '../../../../styles/typography.scss' as *;
+
+.dialog {
+  border: 1px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  background-color: var(--main-color);
+
+  &__title {
+    @include heading-md;
+  }
+
+  &__header {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__button-clear {
+    margin-top: 15px;
+    width: 100%;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+  }
+}

@@ -1,0 +1,109 @@
+@use '../../../../styles/mixins.scss' as *;
+
+.pictures-slider {
+  &__body {
+    display: flex;
+    min-height: 189px;
+    align-items: stretch;
+    gap: 19px;
+    height: 100%;
+  }
+
+  &__window {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    flex-grow: 1;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__banner {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    inset: 10px 50% 10px 10px;
+    background-color: #212121e9;
+    border-radius: 20px;
+    padding: 20px;
+  }
+
+  &__track {
+    display: flex;
+    flex-shrink: 0;
+
+    @include transition(transform 0.3s ease);
+  }
+
+  &__picture {
+    height: 100%;
+    width: 100%;
+    flex-shrink: 0;
+    object-position: center;
+    object-fit: cover;
+    background-color: var(--black-color);
+  }
+
+  &__img {
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    width: 100%;
+    object-position: center;
+    object-fit: cover;
+  }
+
+  &__button {
+    display: none;
+    align-self: stretch;
+    width: 32px;
+  }
+
+  &__rectangles {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 5px;
+  }
+
+  &__rectangle {
+    display: inline-block;
+    width: 14px;
+    height: 4px;
+    border-radius: 5px;
+    background-color: var(--elements-color);
+
+    @include transition(transform 0.3s ease);
+
+    &--is-active {
+      background-color: var(--primary-color);
+    }
+
+    @include hover {
+      transform: scale(1.1);
+    }
+  }
+
+  @include up($sm) {
+    &__window {
+      aspect-ratio: 490 / 189;
+    }
+
+    &__img {
+      aspect-ratio: 490 / 189;
+    }
+
+    &__button {
+      display: flex;
+    }
+
+    &__banner {
+      display: flex;
+    }
+  }
+
+  @include up($m) {
+    &__banner {
+      padding: 40px;
+    }
+  }
+}

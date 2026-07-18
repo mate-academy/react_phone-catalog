@@ -1,0 +1,78 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/typography.scss' as *;
+
+.cart-page {
+  height: 100%;
+  width: 100%;
+
+  &__title {
+    @include heading-xl;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__cart-items {
+    width: 100%;
+  }
+
+  &__total-price {
+    width: 100%;
+    height: max-content;
+  }
+
+  &__wrapper-cart-is-empty {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex: 1;
+  }
+
+  &__cart-is-empty-img {
+    max-width: 35%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+
+  @include up($sm) {
+    &__cart-is-empty-img {
+      max-width: 30%;
+    }
+  }
+
+  @include up($md) {
+    &__body {
+      flex-direction: row;
+    }
+
+    &__cart-items {
+      flex: 1.2;
+    }
+
+    &__total-price {
+      flex: 0.8;
+    }
+
+    &__cart-is-empty-img {
+      max-width: 25%;
+    }
+  }
+}
+
+.container {
+  @include container-styles;
+
+  &--cart-item {
+    margin-top: 24px;
+  }
+}
+
+.section--body {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}

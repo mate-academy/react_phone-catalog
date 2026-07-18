@@ -1,0 +1,51 @@
+@use '../styles/mixins.scss' as *;
+
+@mixin heading-xl {
+  font-family: var(--mont-bold-font);
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: var(--primary-color);
+
+  @include up($sm) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin heading-lg {
+  font-family: var(--mont-bold-font);
+  font-size: 22px;
+  line-height: 31px;
+  color: var(--primary-color);
+
+  @include up($sm) {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin heading-md {
+  font-family: var(--mont-semibold-font);
+  font-size: 20px;
+  line-height: 26px;
+  color: var(--primary-color);
+
+  @include up($sm) {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+@mixin heading-sm {
+  font-family: var(--mont-semibold-font);
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--primary-color);
+
+  @include up($sm) {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}

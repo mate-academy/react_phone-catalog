@@ -1,0 +1,40 @@
+.pagination {
+  display: flex;
+  gap: 16px;
+  height: 32px;
+  width: max-content;
+
+  &__button {
+    height: 32px;
+    width: 32px;
+  }
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+    width: max-content;
+  }
+
+  &__onePage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--icons-color);
+
+    &--is-active {
+      background-color: var(--primary-color);
+      color: var(--main-color);
+      border: none;
+    }
+  }
+
+  &__number {
+    color: var(--primary-color);
+
+    &--is-active {
+      color: var(--main-color);
+    }
+  }
+}

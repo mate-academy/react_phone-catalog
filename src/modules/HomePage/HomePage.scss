@@ -1,0 +1,68 @@
+@use './../../styles/mixins.scss' as *;
+@use './../../styles/typography.scss' as *;
+
+.home-page {
+  min-height: 100%;
+  width: 100%;
+}
+
+.section {
+  padding-inline: 16px;
+
+  @include section-styles;
+
+  &--hero {
+    padding-inline: 0;
+  }
+
+  &--products-slider {
+    padding-right: 0;
+  }
+
+  @include up($sm) {
+    padding-inline: 24px;
+
+    &--products-slider {
+      padding-right: 0;
+    }
+  }
+
+  @include up($md) {
+    margin-inline: auto;
+  }
+}
+
+.hero {
+  width: 100%;
+
+  &__title {
+    padding: 24px 16px;
+
+    @include heading-xl;
+  }
+
+  &__pictures-slider {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+    align-items: center;
+  }
+}
+
+.container {
+  @include container-styles;
+
+  &--home {
+    gap: 56px;
+
+    @include up($sm) {
+      gap: 64px;
+    }
+
+    @include up($md) {
+      gap: 80px;
+    }
+  }
+}

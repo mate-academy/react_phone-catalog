@@ -1,0 +1,46 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/typography.scss' as *;
+
+.product-details-page {
+  &__breadcrumbs {
+    margin-top: 24px;
+  }
+
+  &__wrapper-not-found-img {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__not-found-img {
+    width: 40%;
+  }
+
+  &__not-found-title {
+    margin-top: 24px;
+
+    @include heading-xl;
+  }
+}
+
+.section {
+  &--head {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include up($sm) {
+      gap: 40px;
+    }
+  }
+
+  &--body {
+    margin-top: 16px;
+  }
+}
+
+.container {
+  &--product-details-page {
+    gap: 56px;
+  }
+}

@@ -1,0 +1,66 @@
+@use '../../../../styles/mixins.scss' as *;
+@use '../../../../styles/typography.scss' as *;
+
+.product-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+  overflow: hidden;
+
+  &__title {
+    @include heading-lg;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 72px;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    height: 32px;
+    gap: 16px;
+    margin-right: 16px;
+
+    @include up($sm) {
+      margin-right: 24px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+  }
+
+  &__wrapper-window {
+    flex: 1;
+    width: 100%;
+  }
+
+  &__window {
+    overflow: hidden;
+    min-width: 0;
+    width: 100%;
+  }
+
+  &__track {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+    will-change: transform;
+
+    @include transition(transform 0.3s ease);
+  }
+
+  &__product-card {
+    flex-shrink: 0;
+    width: clamp(212px, 6.82vw + 197px, 272px);
+  }
+}

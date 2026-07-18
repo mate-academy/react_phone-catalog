@@ -1,0 +1,45 @@
+@use '../../../../styles/mixins.scss' as *;
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 32px;
+  background-color: var(--main-color);
+  border: 1px solid var(--elements-color);
+  height: 440px;
+
+  &__block-image {
+    width: 100%;
+    min-height: 0;
+    flex: 1 1 auto;
+  }
+
+  &__image {
+    width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    font-family: var(--mont-regular-font);
+    font-size: 14px;
+    margin-top: 24px;
+    color: var(--primary-color);
+  }
+
+  &__specs-product {
+    margin: 8px 0;
+  }
+
+  &__add-to-cart-button {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  @include up($sm) {
+    height: 504px;
+  }
+}

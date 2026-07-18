@@ -1,0 +1,16 @@
+@use '../../../../../../styles/mixins.scss' as *;
+
+.footerItems {
+  &__element {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: var(--mont-semibold-font);
+    color: var(--secondary-color);
+
+    @include transition(color 0.4s ease);
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.block-price {
+  display: flex;
+  gap: 8px;
+
+  &__price {
+    display: flex;
+    align-items: center;
+    font-family: var(--mont-bold-font);
+    color: var(--primary-color);
+  }
+
+  &__price-discount {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-family: var(--mont-regular-font);
+    color: var(--secondary-color);
+    text-decoration: line-through;
+  }
+}

@@ -1,0 +1,54 @@
+@use '../../../../../styles/mixins.scss' as *;
+
+.banner {
+
+  &__region-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  &__title {
+    font-family: var(--mont-bold-font);
+    font-size: 2.5vw;
+    line-height: 110%;
+    letter-spacing: 0.1vw;
+    color: transparent;
+    background: linear-gradient(45deg, #d56bff, #8223fd, #d56bff);
+    background-clip: text;
+
+    --webkit-text-fill-color: text;
+  }
+
+  &__subtitle {
+    font-family: var(--mont-regular-font);
+    color: var(--gray-white);
+    font-size: 1vw;
+    letter-spacing: 0.1vw;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    width: max-content;
+    height: 20%;
+    border: 1px solid var(--gray-white);
+    border-radius: 4vw;
+    padding-inline: 20px;
+
+    @include transition(box-shadow 0.4s ease);
+
+    @include hover {
+      box-shadow: 0 0 20px 1px var(--gray-white);
+    }
+  }
+
+  &__button-text {
+    font-family: var(--mont-regular-font);
+    color: var(--gray-white);
+    font-size: 1vw;
+    letter-spacing: 0.1vw;
+  }
+}
