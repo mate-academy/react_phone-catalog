@@ -23,9 +23,9 @@ export const CategoryControls = ({
           value={sortBy}
           onChange={event => onSortChange(event.target.value)}
         >
-          <option value="newest">Newest</option>
+          <option value="age">Newest</option>
           <option value="alphabetically">Alphabetically</option>
-          <option value="cheapest">Cheapest</option>
+          <option value="price">Cheapest</option>
         </select>
       </label>
 

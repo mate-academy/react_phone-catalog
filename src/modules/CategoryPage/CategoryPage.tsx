@@ -29,7 +29,7 @@ const emptyMessages: Record<ProductCategory, string> = {
   accessories: 'There are no accessories yet',
 };
 
-const validSortValues = ['newest', 'alphabetically', 'cheapest'];
+const validSortValues = ['age', 'alphabetically', 'price'];
 const validItemsPerPageValues = ['4', '8', '16', 'all'];
 
 const getCategoryFromPathname = (pathname: string): ProductCategory => {
@@ -45,7 +45,7 @@ export const CategoryPage = () => {
   const category = getCategoryFromPathname(pathname);
   const title = categoryTitles[category];
 
-  const sortParam = searchParams.get('sort') || 'newest';
+  const sortParam = searchParams.get('sort') || 'age';
   const perPageParam = searchParams.get('perPage') || 'all';
   const searchQuery = searchParams.get('query') || '';
   const normalizedQuery = searchQuery.trim().toLocaleLowerCase();
@@ -55,7 +55,7 @@ export const CategoryPage = () => {
   const pageParam =
     Number.isInteger(parsedPage) && parsedPage > 0 ? parsedPage : 1;
 
-  const sortBy = validSortValues.includes(sortParam) ? sortParam : 'newest';
+  const sortBy = validSortValues.includes(sortParam) ? sortParam : 'age';
 
   const itemsPerPage = validItemsPerPageValues.includes(perPageParam)
     ? perPageParam
@@ -84,12 +84,12 @@ export const CategoryPage = () => {
           return productA.name.localeCompare(productB.name);
         });
 
-      case 'cheapest':
+      case 'price':
         return productsToSort.sort((productA, productB) => {
           return productA.price - productB.price;
         });
 
-      case 'newest':
+      case 'age':
       default:
         return productsToSort.sort((productA, productB) => {
           return productB.year - productA.year || productB.id - productA.id;
@@ -128,7 +128,7 @@ export const CategoryPage = () => {
       const isDefaultValue =
         (key === 'page' && value === '1') ||
         (key === 'perPage' && value === 'all') ||
-        (key === 'sort' && value === 'newest');
+        (key === 'sort' && value === 'age');
 
       if (isDefaultValue) {
         nextParams.delete(key);
@@ -162,7 +162,7 @@ export const CategoryPage = () => {
 
     const nextParams = new URLSearchParams(searchParams);
 
-    if (sortBy === 'newest') {
+    if (sortBy === 'age') {
       nextParams.delete('sort');
     } else {
       nextParams.set('sort', sortBy);
