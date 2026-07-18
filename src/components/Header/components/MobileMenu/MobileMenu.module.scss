@@ -1,0 +1,32 @@
+@use '/src/styles';
+
+.mobileMenu {
+  position: fixed;
+  top: styles.get-size(header-height-base);
+  right: 0;
+  left: 0;
+  transform: translateX(-100%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  height: calc(100dvh - styles.get-size(header-height-base));
+  padding-top: 24px;
+  padding-bottom: env(safe-area-inset-bottom);
+
+  opacity: 0;
+  background-color: styles.get-color(white);
+
+  transition: all 0.3s;
+
+  &--open {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  @include styles.media(tablet) {
+    display: none;
+  }
+}

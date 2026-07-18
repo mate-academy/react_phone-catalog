@@ -1,0 +1,50 @@
+@use '/src/styles';
+
+.nav {
+  font-weight: 800;
+
+  @include styles.media(tablet) {
+    height: 100%;
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+
+    height: 100%;
+
+    @include styles.media(tablet) {
+      flex-direction: row;
+      gap: 32px;
+    }
+
+    @include styles.media(desktop) {
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    height: 27px;
+    margin: auto 0;
+
+    @include styles.media(tablet) {
+      height: 100%;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    color: styles.get-color(secondary);
+
+    @include styles.typography(uppercase);
+
+    @include styles.hover-styles {
+      color: styles.get-color(primary);
+    }
+  }
+}

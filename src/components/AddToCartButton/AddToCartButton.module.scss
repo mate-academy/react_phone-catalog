@@ -1,0 +1,11 @@
+@use '/src/styles';
+
+.addToCartButton {
+  flex: 1;
+
+  &--selected {
+    border: 1px solid styles.get-color(elements);
+    color: styles.get-color(selected-cart);
+    background-color: styles.get-color(white);
+  }
+}

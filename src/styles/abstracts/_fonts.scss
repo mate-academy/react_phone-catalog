@@ -1,0 +1,16 @@
+@use 'functions' as func;
+
+$font-family-base: 'Mont', sans-serif;
+$font-weights: (
+  regular: 600,
+  semibold: 700,
+  bold: 800,
+);
+
+@function get-font-weight($weight) {
+  @return func.get-map($font-weights, $weight);
+}
+
+@function get-font-family-base() {
+  @return $font-family-base;
+}

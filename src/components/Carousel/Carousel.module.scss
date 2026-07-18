@@ -1,0 +1,69 @@
+@use '/src/styles';
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+
+  &__sliderWrapper {
+    display: flex;
+    flex-direction: row;
+
+    @include styles.page-grid;
+  }
+
+  &__prevButton,
+  &__nextButton,
+  &__slider {
+    grid-row: 1;
+  }
+
+  &__prevButton,
+  &__nextButton {
+    display: none;
+    width: 32px;
+    height: 100%;
+
+    @include styles.media(tablet) {
+      display: flex;
+    }
+  }
+
+  &__prevButton {
+    grid-column: 1;
+
+  }
+
+  &__nextButton {
+    grid-column: 12;
+    justify-self: end;
+
+    @include styles.media(desktop) {
+      grid-column: 24;
+    }
+  }
+
+  &__slider {
+    grid-column: 1 / -1;
+
+    @include styles.media(tablet) {
+      grid-column: 2 / -2;
+    }
+  }
+
+  &__slide {
+    box-sizing: border-box;
+    height: 320px;
+    padding: 8px;
+    padding: 0;
+
+    @include styles.media(tablet) {
+      height: 280px;
+    }
+
+    @include styles.media(desktop) {
+      height: 400px;
+    }
+  }
+}

@@ -1,0 +1,138 @@
+@use 'sass:map';
+@use '../abstracts/fonts';
+@use '../abstracts/functions' as func;
+@use '../abstracts/breakpoints';
+
+$typography: (
+  h1: (
+    weight: fonts.get-font-weight(bold),
+    letter-spacing: -1%,
+    text-transform: none,
+    variants: (
+      tablet: (
+        size: 48px,
+        line-height: 56px,
+      ),
+      mobile: (
+        size: 32px,
+        line-height: 41px,
+      ),
+    ),
+  ),
+  h2: (
+    weight: fonts.get-font-weight(bold),
+    text-transform: none,
+    variants: (
+      tablet: (
+        size: 32px,
+        line-height: 41px,
+        letter-spacing: -1%,
+      ),
+      mobile: (
+        size: 22px,
+        line-height: 140%,
+        letter-spacing: 0%,
+      ),
+    ),
+  ),
+  h3: (
+    letter-spacing: 0%,
+    text-transform: none,
+    variants: (
+      tablet: (
+        size: 22px,
+        line-height: 140%,
+        weight: fonts.get-font-weight(bold),
+      ),
+      mobile: (
+        size: 20px,
+        line-height: 100%,
+        weight: fonts.get-font-weight(semibold),
+      ),
+    ),
+  ),
+  h4: (
+    weight: fonts.get-font-weight(semibold),
+    line-height: 100%,
+    letter-spacing: 0%,
+    text-transform: none,
+    variants: (
+      tablet: (
+        size: 20px,
+        line-height: 140%,
+      ),
+      mobile: (
+        size: 16px,
+        line-height: 100%,
+      ),
+    ),
+  ),
+  uppercase: (
+    size: 12px,
+    weight: fonts.get-font-weight(bold),
+    line-height: 11px,
+    letter-spacing: 4%,
+    text-transform: uppercase,
+  ),
+  button: (
+    size: 14px,
+    weight: fonts.get-font-weight(semibold),
+    line-height: 21px,
+    letter-spacing: 0%,
+    text-transform: none,
+  ),
+  body: (
+    size: 14px,
+    weight: fonts.get-font-weight(regular),
+    line-height: 21px,
+    letter-spacing: 0%,
+    text-transform: none,
+  ),
+  small: (
+    size: 12px,
+    weight: fonts.get-font-weight(semibold),
+    line-height: 100%,
+    letter-spacing: 0%,
+    text-transform: none,
+  ),
+
+);
+
+@function get-typography($device, $style, $property) {
+  $style-map: func.get-map($typography, $style);
+
+  @if map.has-key($style-map, variants) {
+    $variants-map: func.get-map($style-map, variants);
+    $device-map: func.get-map($variants-map, $device);
+
+    @if map.has-key($device-map, $property) {
+      @return func.get-map($device-map, $property);
+    }
+  }
+
+  @return func.get-map($style-map, $property);
+}
+
+@mixin apply-typography-properties($device, $style) {
+  $properties: (
+    font-size: size,
+    font-weight: weight,
+    line-height: line-height,
+    letter-spacing: letter-spacing,
+    text-transform: text-transform,
+  );
+
+  @each $css-prop, $map-key in $properties {
+    #{$css-prop}: get-typography($device, $style, $map-key);
+  }
+}
+
+@mixin typography($style) {
+  font-family: fonts.$font-family-base;
+
+  @include apply-typography-properties(mobile, $style);
+
+  @include breakpoints.media(tablet) {
+    @include apply-typography-properties(tablet, $style);
+  }
+}

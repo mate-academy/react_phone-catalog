@@ -1,0 +1,40 @@
+@use '/src/styles';
+
+.button {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid styles.get-color(icons);
+
+  background-color: styles.get-color(white);
+
+  @include styles.hover-styles {
+    border-color: styles.get-color(primary);
+  }
+
+  &--active {
+    color: styles.get-color(white);
+    background-color: styles.get-color(primary);
+  }
+
+  &--disabled {
+    pointer-events: none;
+    border-color: styles.get-color(elements);
+    color: styles.get-color(elements);
+
+    @include styles.hover-styles {
+      border-color: styles.get-color(elements);
+    }
+  }
+
+  &__icon {
+    color: styles.get-color(primary);
+
+    &--disabled {
+      color: styles.get-color(elements);
+    }
+  }
+}

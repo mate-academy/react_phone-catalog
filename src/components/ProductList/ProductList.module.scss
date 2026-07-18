@@ -1,0 +1,24 @@
+@use '/src/styles';
+
+.products {
+  &__list {
+    @include styles.page-grid;
+  }
+
+  &__listItem {
+    grid-column: 1 / -1;
+
+    @include styles.media(tablet) {
+      grid-column: span 6;
+    }
+
+    @media (min-width: 768px) {
+      grid-column: span 4;
+    }
+
+    @include styles.media(desktop) {
+      grid-column: span 6;
+    }
+  }
+}
+

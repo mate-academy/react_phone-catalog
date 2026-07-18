@@ -1,0 +1,61 @@
+@use '/src/styles';
+
+.gallery {
+  &__swiper {
+    width: 100%;
+
+  }
+
+  &__slide {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__largeImage {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__item {
+    cursor: pointer;
+
+    overflow: hidden;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    aspect-ratio: 1;
+    width: 100%;
+    padding: 3px;
+    border: 1px solid styles.get-color(elements);
+
+    &--active {
+      cursor: default;
+      border-color: styles.get-color(primary);
+    }
+
+    @include styles.media(tablet) {
+      flex: none;
+    }
+  }
+
+  &__image {
+    display: block;
+
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+
+    object-fit: contain;
+  }
+}
