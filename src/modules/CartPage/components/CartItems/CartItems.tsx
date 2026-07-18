@@ -52,7 +52,12 @@ export const CartItems: React.FC<Props> = ({ className }) => {
                   onClick={() => navigate(`/product/${item.product.itemId}`)}
                 />
               </div>
-              <p className="cart-items__title">{item.product.name}</p>
+              <p
+                className="cart-items__title"
+                onClick={() => navigate(`/product/${item.product.itemId}`)}
+              >
+                {item.product.name}
+              </p>
             </div>
             <div className="cart-items__second-row">
               <div className="cart-items__counter">

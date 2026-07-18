@@ -2,7 +2,7 @@
 @use '../../styles/typography.scss' as *;
 
 .cart-page {
-  min-height: 100%;
+  height: 100%;
   width: 100%;
 
   &__title {
@@ -28,12 +28,20 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    flex: 1;
   }
 
   &__cart-is-empty-img {
-    width: 50%;
+    max-width: 35%;
+    height: auto;
     aspect-ratio: 1 / 1;
     object-fit: contain;
+  }
+
+  @include up($sm) {
+    &__cart-is-empty-img {
+      max-width: 30%;
+    }
   }
 
   @include up($md) {
@@ -47,6 +55,10 @@
 
     &__total-price {
       flex: 0.8;
+    }
+
+    &__cart-is-empty-img {
+      max-width: 25%;
     }
   }
 }

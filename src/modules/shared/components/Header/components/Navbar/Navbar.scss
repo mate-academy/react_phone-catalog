@@ -12,6 +12,8 @@
     font-family: var(--mont-semibold-font);
     position: relative;
 
+    @include transition(color 0.4s ease);
+
     &::after {
       content: '';
       position: absolute;
@@ -31,6 +33,10 @@
       &::after {
         transform: scaleX(1);
       }
+    }
+
+    @include hover {
+      color: var(--primary-color);
     }
   }
 }
