@@ -29,26 +29,11 @@ const emptyMessages: Record<ProductCategory, string> = {
   accessories: 'There are no accessories yet',
 };
 
-const validSortValues = ['newest', 'alphabetically', 'cheapest'] as const;
-
-const validItemsPerPageValues = ['4', '8', '16', 'all'] as const;
-
-type SortValue = (typeof validSortValues)[number];
-
-type ItemsPerPageValue = (typeof validItemsPerPageValues)[number];
-
-const isSortValue = (value: string): value is SortValue => {
-  return validSortValues.some(sortValue => sortValue === value);
-};
-
-const isItemsPerPageValue = (value: string): value is ItemsPerPageValue => {
-  return validItemsPerPageValues.some(
-    itemsPerPageValue => itemsPerPageValue === value,
-  );
-};
+const validSortValues = ['newest', 'alphabetically', 'cheapest'];
+const validItemsPerPageValues = ['4', '8', '16', 'all'];
 
 const getCategoryFromPathname = (pathname: string): ProductCategory => {
-  return pathname.split('/').filter(Boolean)[0] as ProductCategory;
+  return pathname.slice(1) as ProductCategory;
 };
 
 export const CategoryPage = () => {
@@ -58,32 +43,40 @@ export const CategoryPage = () => {
   const { products, isLoading, error, reloadProducts } = useStore();
 
   const category = getCategoryFromPathname(pathname);
-
   const title = categoryTitles[category];
-  const breadcrumbTitle = breadcrumbTitles[category];
-  const emptyMessage = emptyMessages[category];
 
   const sortParam = searchParams.get('sort') || 'newest';
   const perPageParam = searchParams.get('perPage') || 'all';
+  const searchQuery = searchParams.get('query') || '';
+  const normalizedQuery = searchQuery.trim().toLocaleLowerCase();
+
   const parsedPage = Number(searchParams.get('page'));
-
-  const sortBy: SortValue = isSortValue(sortParam) ? sortParam : 'newest';
-
-  const itemsPerPage: ItemsPerPageValue = isItemsPerPageValue(perPageParam)
-    ? perPageParam
-    : 'all';
 
   const pageParam =
     Number.isInteger(parsedPage) && parsedPage > 0 ? parsedPage : 1;
 
+  const sortBy = validSortValues.includes(sortParam) ? sortParam : 'newest';
+
+  const itemsPerPage = validItemsPerPageValues.includes(perPageParam)
+    ? perPageParam
+    : 'all';
+
   const categoryProducts = useMemo(() => {
-    return products.filter(product => {
-      return product.category === category;
-    });
+    return products.filter(product => product.category === category);
   }, [category, products]);
 
+  const matchedProducts = useMemo(() => {
+    if (!normalizedQuery) {
+      return categoryProducts;
+    }
+
+    return categoryProducts.filter(product => {
+      return product.name.toLocaleLowerCase().includes(normalizedQuery);
+    });
+  }, [categoryProducts, normalizedQuery]);
+
   const sortedProducts = useMemo(() => {
-    const productsToSort = [...categoryProducts];
+    const productsToSort = [...matchedProducts];
 
     switch (sortBy) {
       case 'alphabetically':
@@ -102,7 +95,7 @@ export const CategoryPage = () => {
           return productB.year - productA.year || productB.id - productA.id;
         });
     }
-  }, [categoryProducts, sortBy]);
+  }, [matchedProducts, sortBy]);
 
   const totalPages = useMemo(() => {
     if (itemsPerPage === 'all') {
@@ -150,7 +143,6 @@ export const CategoryPage = () => {
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      left: 0,
       behavior: 'smooth',
     });
   }, [currentPage]);
@@ -235,7 +227,7 @@ export const CategoryPage = () => {
 
   return (
     <section className={styles.categoryPage}>
-      <Breadcrumbs currentPage={breadcrumbTitle} />
+      <Breadcrumbs currentPage={breadcrumbTitles[category]} />
 
       <h1 className={styles.title}>{title}</h1>
 
@@ -246,7 +238,7 @@ export const CategoryPage = () => {
 
       {categoryProducts.length === 0 ? (
         <div className={styles.empty}>
-          <p className={styles.emptyText}>{emptyMessage}</p>
+          <p className={styles.emptyText}>{emptyMessages[category]}</p>
         </div>
       ) : (
         <>
@@ -267,18 +259,28 @@ export const CategoryPage = () => {
             }}
           />
 
-          <ProductsList products={visibleProducts} />
+          {matchedProducts.length === 0 ? (
+            <div className={styles.empty}>
+              <p className={styles.emptyText}>
+                There are no {category} matching the query
+              </p>
+            </div>
+          ) : (
+            <>
+              <ProductsList products={visibleProducts} />
 
-          {itemsPerPage !== 'all' && totalPages > 1 && (
-            <PageNavigation
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={page => {
-                updateParams({
-                  page: String(page),
-                });
-              }}
-            />
+              {itemsPerPage !== 'all' && totalPages > 1 && (
+                <PageNavigation
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={page => {
+                    updateParams({
+                      page: String(page),
+                    });
+                  }}
+                />
+              )}
+            </>
           )}
         </>
       )}

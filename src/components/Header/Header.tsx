@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { type ChangeEvent, useEffect, useState } from 'react';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 import { useStore } from '../../context/StoreContext';
 
@@ -18,6 +18,10 @@ const navItems = [
   { to: '/accessories', label: 'Accessories' },
 ];
 
+const productListPaths = ['/phones', '/tablets', '/accessories', '/favorites'];
+
+const searchDelay = 300;
+
 const getNavLinkClassName = ({ isActive }: { isActive: boolean }) =>
   isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink;
 
@@ -30,15 +34,72 @@ export const Header = () => {
   const { cartCount, favorites } = useStore();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
 
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const isProductListPage = productListPaths.includes(location.pathname);
 
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+
+    setSearchValue(params.get('query') || '');
+  }, [location.pathname, location.search]);
+
+  useEffect(() => {
+    if (!isProductListPage) {
+      return undefined;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      const params = new URLSearchParams(location.search);
+      const query = searchValue.trim();
+
+      if ((params.get('query') || '') === query) {
+        return;
+      }
+
+      if (query) {
+        params.set('query', query);
+      } else {
+        params.delete('query');
+      }
+
+      params.delete('page');
+
+      const nextSearch = params.toString();
+
+      navigate(
+        {
+          pathname: location.pathname,
+          search: nextSearch ? `?${nextSearch}` : '',
+        },
+        { replace: true },
+      );
+    }, searchDelay);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [
+    isProductListPage,
+    location.pathname,
+    location.search,
+    navigate,
+    searchValue,
+  ]);
+
   const toggleMenu = () => {
     setIsMenuOpen(currentValue => !currentValue);
+  };
+
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
   };
 
   const displayedCartCount = cartCount > 99 ? '99+' : cartCount;
@@ -71,6 +132,21 @@ export const Header = () => {
             </NavLink>
           ))}
         </nav>
+
+        {isProductListPage && (
+          <label className={styles.search}>
+            <span className={styles.visuallyHidden}>Search products</span>
+
+            <input
+              type="search"
+              className={styles.searchInput}
+              value={searchValue}
+              placeholder="Search"
+              aria-label="Search products"
+              onChange={handleSearchChange}
+            />
+          </label>
+        )}
 
         <div className={styles.actions}>
           <NavLink
@@ -127,6 +203,21 @@ export const Header = () => {
 
       {isMenuOpen && (
         <div className={styles.mobileMenu}>
+          {isProductListPage && (
+            <label className={styles.mobileSearch}>
+              <span className={styles.visuallyHidden}>Search products</span>
+
+              <input
+                type="search"
+                className={styles.searchInput}
+                value={searchValue}
+                placeholder="Search"
+                aria-label="Search products"
+                onChange={handleSearchChange}
+              />
+            </label>
+          )}
+
           <nav className={styles.mobileNav} aria-label="Mobile navigation">
             {navItems.map(({ to, label }) => (
               <NavLink key={to} to={to} className={getMobileNavLinkClassName}>

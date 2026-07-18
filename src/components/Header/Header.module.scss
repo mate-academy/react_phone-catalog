@@ -94,6 +94,74 @@
   }
 }
 
+.search {
+  display: none;
+  min-width: 0;
+
+  @media (min-width: 640px) {
+      display: flex;
+      flex: 1 1 80px;
+      align-items: center;
+
+      max-width: 160px;
+    }
+
+  @media (min-width: 1200px) {
+    flex-basis: 200px;
+
+    max-width: 240px;
+  }
+}
+
+.searchInput {
+  box-sizing: border-box;
+
+  width: 100%;
+  height: 32px;
+  padding: 0 12px;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: #313237;
+
+  background-color: #fff;
+  border: 1px solid #b4bdc3;
+  outline: none;
+
+  transition: border-color 0.3s;
+
+  &::placeholder {
+    color: #89939a;
+  }
+
+  &:hover {
+    border-color: #89939a;
+  }
+
+  &:focus-visible {
+    border-color: #313237;
+    outline: 2px solid #313237;
+    outline-offset: 2px;
+  }
+}
+
+.visuallyHidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
 .navLink {
   position: relative;
 
@@ -224,6 +292,14 @@
   }
 }
 
+.mobileSearch {
+  display: block;
+
+  padding: 16px;
+
+  border-bottom: 1px solid #e2e6e9;
+}
+
 .mobileNav {
   display: flex;
   flex: 1;
@@ -232,6 +308,10 @@
   gap: 32px;
 
   padding-top: 64px;
+}
+
+.mobileSearch + .mobileNav {
+  padding-top: 32px;
 }
 
 .mobileNavLink {
@@ -261,7 +341,7 @@
   text-decoration: none;
 }
 
-.mobileActionLink+.mobileActionLink {
+.mobileActionLink + .mobileActionLink {
   border-left: 1px solid #e2e6e9;
 }
 
@@ -322,4 +402,16 @@
 .mobileActionLink .badge {
   top: 12px;
   right: calc(50% - 22px);
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .nav {
+    gap: 16px;
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+
+  .navLink {
+    font-size: 10px;
+  }
 }

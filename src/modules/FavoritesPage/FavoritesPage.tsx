@@ -1,3 +1,6 @@
+import { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
+
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Loader } from '../../components/Loader';
 import { ProductsList } from '../../components/ProductsList';
@@ -7,22 +10,40 @@ import styles from './FavoritesPage.module.scss';
 
 export const FavoritesPage = () => {
   const { products, favorites, isLoading, error, reloadProducts } = useStore();
+  const [searchParams] = useSearchParams();
 
-  const favoriteProducts = products.filter(product =>
-    favorites.includes(product.id),
-  );
+  const searchQuery = searchParams.get('query') || '';
+  const normalizedQuery = searchQuery.trim().toLocaleLowerCase();
+
+  const favoriteProducts = useMemo(() => {
+    return products.filter(product => favorites.includes(product.id));
+  }, [favorites, products]);
+
+  const matchedFavoriteProducts = useMemo(() => {
+    if (!normalizedQuery) {
+      return favoriteProducts;
+    }
+
+    return favoriteProducts.filter(product => {
+      return product.name.toLocaleLowerCase().includes(normalizedQuery);
+    });
+  }, [favoriteProducts, normalizedQuery]);
+
+  const favoritesCount = favoriteProducts.length;
 
   if (isLoading) {
     return (
-      <div className={styles.loaderContainer}>
-        <Loader />
-      </div>
+      <section className={styles.favoritesPage}>
+        <div className={styles.loaderContainer}>
+          <Loader />
+        </div>
+      </section>
     );
   }
 
   if (error) {
     return (
-      <main className={styles.favoritesPage}>
+      <section className={styles.favoritesPage}>
         <div className={styles.message}>
           <p className={styles.messageText}>{error}</p>
 
@@ -34,32 +55,41 @@ export const FavoritesPage = () => {
             Reload
           </button>
         </div>
-      </main>
+      </section>
     );
   }
 
   return (
-    <main className={styles.favoritesPage}>
+    <section className={styles.favoritesPage}>
       <Breadcrumbs currentPage="Favorites" />
 
-      <h1 className={styles.title}>Favourites</h1>
+      <h1 className={styles.title}>Favorites</h1>
 
       <p className={styles.count}>
-        {favoriteProducts.length}{' '}
-        {favoriteProducts.length === 1 ? 'item' : 'items'}
+        {favoritesCount} {favoritesCount === 1 ? 'item' : 'items'}
       </p>
 
       {favoriteProducts.length === 0 ? (
         <div className={styles.empty}>
-          <h2 className={styles.emptyTitle}>Your favourites list is empty</h2>
+          <p className={styles.emptyTitle}>You have no favorite products yet</p>
 
           <p className={styles.emptyText}>
-            Add products to favourites and they will appear here.
+            Add products to favorites by clicking the heart button.
+          </p>
+        </div>
+      ) : matchedFavoriteProducts.length === 0 ? (
+        <div className={styles.empty}>
+          <p className={styles.emptyTitle}>
+            No favorite products match the query
+          </p>
+
+          <p className={styles.emptyText}>
+            Try changing or clearing the search query.
           </p>
         </div>
       ) : (
-        <ProductsList products={favoriteProducts} />
+        <ProductsList products={matchedFavoriteProducts} />
       )}
-    </main>
+    </section>
   );
 };
