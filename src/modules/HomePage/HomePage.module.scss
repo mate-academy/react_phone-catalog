@@ -1,3 +1,42 @@
+@use '../shared/styles/variables' as *;
+@use '../shared/styles/breakpoints' as *;
+@use '../shared/styles/typography' as *;
+@use '../shared/styles/grid' as *;
+
 .homePage {
 	display: block;
+    margin: 0 16px;
+
+    @include respond(tablet) {
+        margin: 0 24px;
+    }
+
+    @include respond(desktop) {
+        margin: 0 32px;
+    }
+
+    @include respond(desktop-over) {
+        margin: 0 152px;
+    }
+}
+
+.homePage__title__hidden {
+    color: black;
+    @include typography(h1);
+    margin-top: 24px;
+    display: none;
+}
+
+.homePage__header {
+    @include typography(h2);
+    margin-top: 24px;
+    
+    @include respond(tablet) {
+        margin-top: 56px;
+    }
+
+    @include respond(desktop) {
+        margin-top: 56px;
+    }
+
 }

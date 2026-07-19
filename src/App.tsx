@@ -1,5 +1,6 @@
 import { Navbar } from './modules/shared/components/Navbar';
 import './App.scss';
+import { HomePage } from './modules/HomePage';
 import { Footer } from './modules/shared/components/Footer';
 import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
@@ -26,7 +27,7 @@ export const App = () => (
 
     <main className="App__body">
       <Routes>
-        <Route path="/" element={<h1>Home</h1>} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/github" element={<h1>GitHub</h1>} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/rights" element={<Rights />} />

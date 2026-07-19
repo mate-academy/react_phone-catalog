@@ -4,6 +4,7 @@
 $breakpoint-mobile: 320px;  // 320–639
 $breakpoint-tablet: 640px;  // 640–1199
 $breakpoint-desktop: 1200px; // 1200+
+$breakpoint-desktop-over: 1201px; // strictly over 1200
 
 // src/styles/_breakpoints.scss (continued)
 
@@ -26,7 +27,12 @@ $breakpoint-desktop: 1200px; // 1200+
         }
     } @else if $breakpoint == desktop {
         // 1200+
-        @media (min-width: 1200px) {
+        @media (min-width: $breakpoint-desktop) {
+        @content;
+        }
+    } @else if $breakpoint == desktop-over {
+        // 1201+
+        @media (min-width: $breakpoint-desktop-over) {
         @content;
         }
     } @else {
