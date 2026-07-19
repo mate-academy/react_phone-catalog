@@ -1,0 +1,146 @@
+.slider {
+  --desktop-slider-width: 1136px;
+  --desktop-banner-width: 1040px;
+  --desktop-banner-height: 400px;
+  --slider-button-width: 32px;
+  --slider-gap: 16px;
+  --slider-dots-offset: 8px;
+  --next-section-offset: 56px;
+
+  box-sizing: border-box;
+
+  width: 100%;
+  max-width: var(--desktop-slider-width);
+  margin: 0 auto var(--next-section-offset);
+  padding: 0;
+
+  @media (min-width: 640px) {
+    --slider-gap: 19px;
+    --next-section-offset: 64px;
+
+    padding: 0 24px;
+  }
+
+  @media (min-width: 1200px) {
+    --slider-gap: 16px;
+    --next-section-offset: 80px;
+
+    padding: 0;
+  }
+}
+
+.sliderRow {
+  display: block;
+  touch-action: pan-y;
+}
+
+.arrowButton {
+  display: none;
+}
+
+.bannerPicture {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.banner {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+
+  width: fit-content;
+  min-width: 80px;
+  height: 24px;
+  margin: var(--slider-dots-offset) auto 0;
+}
+
+.dot {
+  flex: 0 0 14px;
+
+  width: 14px;
+  height: 4px;
+  margin: 10px 0 0;
+  padding: 0;
+
+  background-color: #e2e6e9;
+  border: 0;
+  cursor: pointer;
+}
+
+.dot:hover {
+  background-color: #b4bdc3;
+}
+
+.dotActive,
+.dotActive:hover {
+  background-color: #313237;
+}
+
+@media (min-width: 640px) {
+  .sliderRow {
+    display: grid;
+    grid-template-columns:
+      var(--slider-button-width) minmax(0, 1fr) var(--slider-button-width);
+    gap: var(--slider-gap);
+    align-items: stretch;
+  }
+
+  .arrowButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: var(--slider-button-width);
+    height: 100%;
+    padding: 0;
+
+    background-color: #fff;
+    border: 1px solid #b4bdc3;
+    cursor: pointer;
+  }
+
+  .arrowButton:hover {
+    border-color: #89939a;
+  }
+
+  .arrowIcon {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  .bannerPicture {
+    height: auto;
+    aspect-ratio: 1040 / 400;
+  }
+
+  .banner {
+    object-fit: cover;
+  }
+}
+
+@media (min-width: 1200px) {
+  .sliderRow {
+    grid-template-columns:
+      var(--slider-button-width) var(--desktop-banner-width) var(--slider-button-width);
+  }
+
+  .arrowButton,
+  .bannerPicture {
+    height: var(--desktop-banner-height);
+  }
+
+  .bannerPicture {
+    aspect-ratio: auto;
+  }
+}

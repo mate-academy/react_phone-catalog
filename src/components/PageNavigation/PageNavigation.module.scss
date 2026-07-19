@@ -1,0 +1,68 @@
+.pageNavigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  margin-top: 40px;
+  margin-bottom: 80px;
+}
+
+.pages {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #313237;
+
+  background-color: #fff;
+  border: 1px solid #e2e6e9;
+  cursor: pointer;
+
+  transition:
+    border-color 0.3s,
+    color 0.3s,
+    background-color 0.3s;
+}
+
+.button:hover {
+  border-color: #313237;
+}
+
+.button:disabled {
+  color: #b4bdc3;
+
+  border-color: #e2e6e9;
+  cursor: default;
+}
+
+.buttonActive {
+  color: #fff;
+
+  background-color: #313237;
+  border-color: #313237;
+}
+
+.prevIcon,
+.nextIcon {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.prevIcon {
+  transform: rotate(180deg);
+}

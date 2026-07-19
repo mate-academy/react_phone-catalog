@@ -1,0 +1,138 @@
+.favoritesPage {
+  box-sizing: border-box;
+
+  width: 100%;
+  max-width: 1136px;
+  min-height: 500px;
+  margin: 0 auto;
+  padding: 24px 16px 80px;
+
+  @media (min-width: 640px) {
+    padding-inline: 24px;
+  }
+
+  @media (min-width: 1200px) {
+    padding-inline: 0;
+  }
+}
+
+.title {
+  margin: 0 0 8px;
+
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: #313237;
+
+  @media (min-width: 640px) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.count {
+  margin: 0 0 40px;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: #89939a;
+}
+
+.loaderContainer {
+  display: grid;
+  min-height: 50vh;
+  place-content: center;
+}
+
+.message {
+  display: grid;
+  min-height: 240px;
+  place-content: center;
+  gap: 16px;
+
+  padding: 24px;
+
+  text-align: center;
+}
+
+.messageText {
+  margin: 0;
+
+  font-family: Mont, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #89939a;
+}
+
+.reloadButton {
+  min-width: 120px;
+  height: 40px;
+  padding: 0 24px;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #fff;
+
+  background-color: #313237;
+  border: 1px solid #313237;
+  cursor: pointer;
+
+  transition:
+    color 0.3s,
+    background-color 0.3s,
+    box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgb(23 32 49 / 40%);
+  }
+
+  &:active {
+    color: #27ae60;
+    background-color: #fff;
+    box-shadow: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #313237;
+    outline-offset: 2px;
+  }
+}
+
+.empty {
+  display: grid;
+  min-height: 240px;
+  place-content: center;
+  gap: 8px;
+
+  padding: 24px;
+
+  text-align: center;
+}
+
+.emptyTitle {
+  margin: 0;
+
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+  color: #313237;
+}
+
+.emptyText {
+  max-width: 360px;
+  margin: 0;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: #89939a;
+}

@@ -1,0 +1,94 @@
+.homePage {
+  padding-top: 24px;
+}
+
+.visuallyHidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
+.title {
+  max-width: 1136px;
+  margin: 0 auto 24px;
+  padding: 0 16px;
+
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  color: #313237;
+
+  @media (min-width: 640px) {
+    margin-bottom: 32px;
+    padding: 0 24px;
+
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+  }
+
+  @media (min-width: 1200px) {
+    margin-bottom: 56px;
+    padding: 0;
+  }
+}
+
+@media (min-width: 640px) {
+  .homePage {
+    padding-top: 32px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .homePage {
+    padding-top: 56px;
+  }
+}
+
+.message {
+  display: grid;
+  min-height: 240px;
+  padding: 0 16px;
+  place-content: center;
+  gap: 16px;
+
+  text-align: center;
+  color: #89939a;
+}
+
+.message button {
+  height: 40px;
+  padding: 0 24px;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #fff;
+
+  background-color: #313237;
+  border: 1px solid #313237;
+  cursor: pointer;
+
+  transition: box-shadow 0.3s;
+}
+
+.message button:hover {
+  box-shadow: 0 3px 13px rgb(23 32 49 / 40%);
+}
+
+.message button:focus-visible {
+  outline: 2px solid #313237;
+  outline-offset: 2px;
+}

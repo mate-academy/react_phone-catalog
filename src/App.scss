@@ -1,1 +1,61 @@
-// not empty
+:root {
+  --color-primary: #313237;
+  --color-secondary: #89939a;
+  --color-icons: #b4bdc3;
+  --color-elements: #e2e6e9;
+  --color-bg: #fafbfc;
+  --color-white: #fff;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+}
+
+@font-face {
+  font-family: Mont;
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  font-style: normal;
+  font-weight: 700 800;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: Mont, sans-serif;
+  color: var(--color-primary);
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
+}
+
+.App > main {
+  flex: 1 0 auto;
+}

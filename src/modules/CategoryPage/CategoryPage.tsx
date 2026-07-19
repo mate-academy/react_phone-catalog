@@ -1,0 +1,289 @@
+import { useEffect, useMemo } from 'react';
+import { useLocation, useSearchParams } from 'react-router-dom';
+
+import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { CategoryControls } from '../../components/CategoryControls';
+import { Loader } from '../../components/Loader';
+import { PageNavigation } from '../../components/PageNavigation';
+import { ProductsList } from '../../components/ProductsList';
+import { useStore } from '../../context/StoreContext';
+import type { ProductCategory } from '../../types/Product';
+
+import styles from './CategoryPage.module.scss';
+
+const categoryTitles: Record<ProductCategory, string> = {
+  phones: 'Mobile phones',
+  tablets: 'Tablets',
+  accessories: 'Accessories',
+};
+
+const breadcrumbTitles: Record<ProductCategory, string> = {
+  phones: 'Phones',
+  tablets: 'Tablets',
+  accessories: 'Accessories',
+};
+
+const emptyMessages: Record<ProductCategory, string> = {
+  phones: 'There are no phones yet',
+  tablets: 'There are no tablets yet',
+  accessories: 'There are no accessories yet',
+};
+
+const validSortValues = ['age', 'alphabetically', 'price'];
+const validItemsPerPageValues = ['4', '8', '16', 'all'];
+
+const getCategoryFromPathname = (pathname: string): ProductCategory => {
+  return pathname.slice(1) as ProductCategory;
+};
+
+export const CategoryPage = () => {
+  const { pathname } = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const { products, isLoading, error, reloadProducts } = useStore();
+
+  const category = getCategoryFromPathname(pathname);
+  const title = categoryTitles[category];
+
+  const sortParam = searchParams.get('sort') || 'age';
+  const perPageParam = searchParams.get('perPage') || 'all';
+  const searchQuery = searchParams.get('query') || '';
+  const normalizedQuery = searchQuery.trim().toLocaleLowerCase();
+
+  const parsedPage = Number(searchParams.get('page'));
+
+  const pageParam =
+    Number.isInteger(parsedPage) && parsedPage > 0 ? parsedPage : 1;
+
+  const sortBy = validSortValues.includes(sortParam) ? sortParam : 'age';
+
+  const itemsPerPage = validItemsPerPageValues.includes(perPageParam)
+    ? perPageParam
+    : 'all';
+
+  const categoryProducts = useMemo(() => {
+    return products.filter(product => product.category === category);
+  }, [category, products]);
+
+  const matchedProducts = useMemo(() => {
+    if (!normalizedQuery) {
+      return categoryProducts;
+    }
+
+    return categoryProducts.filter(product => {
+      return product.name.toLocaleLowerCase().includes(normalizedQuery);
+    });
+  }, [categoryProducts, normalizedQuery]);
+
+  const sortedProducts = useMemo(() => {
+    const productsToSort = [...matchedProducts];
+
+    switch (sortBy) {
+      case 'alphabetically':
+        return productsToSort.sort((productA, productB) => {
+          return productA.name.localeCompare(productB.name);
+        });
+
+      case 'price':
+        return productsToSort.sort((productA, productB) => {
+          return productA.price - productB.price;
+        });
+
+      case 'age':
+      default:
+        return productsToSort.sort((productA, productB) => {
+          return productB.year - productA.year || productB.id - productA.id;
+        });
+    }
+  }, [matchedProducts, sortBy]);
+
+  const totalPages = useMemo(() => {
+    if (itemsPerPage === 'all') {
+      return 1;
+    }
+
+    const productsPerPage = Number(itemsPerPage);
+
+    return Math.max(1, Math.ceil(sortedProducts.length / productsPerPage));
+  }, [itemsPerPage, sortedProducts.length]);
+
+  const currentPage = Math.min(pageParam, totalPages);
+
+  const visibleProducts = useMemo(() => {
+    if (itemsPerPage === 'all') {
+      return sortedProducts;
+    }
+
+    const productsPerPage = Number(itemsPerPage);
+    const firstProductIndex = (currentPage - 1) * productsPerPage;
+    const lastProductIndex = firstProductIndex + productsPerPage;
+
+    return sortedProducts.slice(firstProductIndex, lastProductIndex);
+  }, [currentPage, itemsPerPage, sortedProducts]);
+
+  const updateParams = (updates: Record<string, string>) => {
+    const nextParams = new URLSearchParams(searchParams);
+
+    Object.entries(updates).forEach(([key, value]) => {
+      const isDefaultValue =
+        (key === 'page' && value === '1') ||
+        (key === 'perPage' && value === 'all') ||
+        (key === 'sort' && value === 'age');
+
+      if (isDefaultValue) {
+        nextParams.delete(key);
+      } else {
+        nextParams.set(key, value);
+      }
+    });
+
+    setSearchParams(nextParams);
+  };
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [currentPage]);
+
+  useEffect(() => {
+    if (isLoading || error) {
+      return;
+    }
+
+    const hasInvalidSort = sortParam !== sortBy;
+    const hasInvalidPerPage = perPageParam !== itemsPerPage;
+    const hasInvalidPage = pageParam !== currentPage;
+
+    if (!hasInvalidSort && !hasInvalidPerPage && !hasInvalidPage) {
+      return;
+    }
+
+    const nextParams = new URLSearchParams(searchParams);
+
+    if (sortBy === 'age') {
+      nextParams.delete('sort');
+    } else {
+      nextParams.set('sort', sortBy);
+    }
+
+    if (itemsPerPage === 'all') {
+      nextParams.delete('perPage');
+      nextParams.delete('page');
+    } else {
+      nextParams.set('perPage', itemsPerPage);
+
+      if (currentPage === 1) {
+        nextParams.delete('page');
+      } else {
+        nextParams.set('page', String(currentPage));
+      }
+    }
+
+    setSearchParams(nextParams, {
+      replace: true,
+    });
+  }, [
+    currentPage,
+    error,
+    isLoading,
+    itemsPerPage,
+    pageParam,
+    perPageParam,
+    searchParams,
+    setSearchParams,
+    sortBy,
+    sortParam,
+  ]);
+
+  if (isLoading) {
+    return (
+      <section className={styles.categoryPage}>
+        <div className={styles.loaderContainer}>
+          <Loader />
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className={styles.categoryPage}>
+        <div className={styles.message}>
+          <p className={styles.messageText}>{error}</p>
+
+          <button
+            type="button"
+            className={styles.reloadButton}
+            onClick={reloadProducts}
+          >
+            Reload
+          </button>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className={styles.categoryPage}>
+      <Breadcrumbs currentPage={breadcrumbTitles[category]} />
+
+      <h1 className={styles.title}>{title}</h1>
+
+      <p className={styles.count}>
+        {categoryProducts.length}{' '}
+        {categoryProducts.length === 1 ? 'model' : 'models'}
+      </p>
+
+      {categoryProducts.length === 0 ? (
+        <div className={styles.empty}>
+          <p className={styles.emptyText}>{emptyMessages[category]}</p>
+        </div>
+      ) : (
+        <>
+          <CategoryControls
+            sortBy={sortBy}
+            itemsPerPage={itemsPerPage}
+            onSortChange={value => {
+              updateParams({
+                sort: value,
+                page: '1',
+              });
+            }}
+            onItemsPerPageChange={value => {
+              updateParams({
+                perPage: value,
+                page: '1',
+              });
+            }}
+          />
+
+          {matchedProducts.length === 0 ? (
+            <div className={styles.empty}>
+              <p className={styles.emptyText}>
+                There are no {category} matching the query
+              </p>
+            </div>
+          ) : (
+            <>
+              <ProductsList products={visibleProducts} />
+
+              {itemsPerPage !== 'all' && totalPages > 1 && (
+                <PageNavigation
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={page => {
+                    updateParams({
+                      page: String(page),
+                    });
+                  }}
+                />
+              )}
+            </>
+          )}
+        </>
+      )}
+    </section>
+  );
+};
