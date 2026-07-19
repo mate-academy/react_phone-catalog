@@ -1,6 +1,15 @@
 .footer {
+  flex: 0 0 auto;
+
+  width: 100%;
+  height: 257px;
+
   background-color: #fff;
   box-shadow: 0 -1px 0 #e2e6e9;
+
+  @media (min-width: 640px) {
+    height: 96px;
+  }
 }
 
 .content {
@@ -11,6 +20,7 @@
   gap: 32px;
 
   width: 100%;
+  height: 100%;
   padding: 32px 16px;
 
   @media (min-width: 640px) {
@@ -18,19 +28,18 @@
     align-items: center;
     justify-content: space-between;
 
-    min-height: 96px;
-    padding: 32px 24px;
+    padding: 0 24px;
   }
 
   @media (min-width: 1200px) {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 32px;
+    padding: 0 32px;
   }
 
   @media (min-width: 1440px) {
     max-width: 1440px;
-    padding: 32px 152px;
+    padding: 0 152px;
   }
 }
 
@@ -69,9 +78,7 @@
   gap: 16px;
 
   @media (min-width: 640px) {
-    flex: 1;
     flex-direction: row;
-    justify-content: center;
     gap: 64px;
   }
 
@@ -93,8 +100,15 @@
   transition: color 0.3s;
 }
 
-.link:hover {
+.link:hover,
+.link:focus-visible {
   color: #313237;
+}
+
+.link:focus-visible,
+.backToTop:focus-visible {
+  outline: 2px solid #313237;
+  outline-offset: 4px;
 }
 
 .backToTop {
