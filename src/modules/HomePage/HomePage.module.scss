@@ -22,13 +22,16 @@
 
 .homePage__title__hidden {
     color: black;
+
     @include typography(h1);
+
     margin-top: 24px;
     display: none;
 }
 
 .homePage__header {
     @include typography(h2);
+
     margin-top: 24px;
     
     @include respond(tablet) {
