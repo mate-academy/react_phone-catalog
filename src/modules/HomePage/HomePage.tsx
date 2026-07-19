@@ -55,6 +55,7 @@ export const HomePage = () => {
           <ProductsSlider
             title="Brand new models"
             products={brandNewProducts}
+            showDiscount={false}
           />
 
           <ShopByCategory products={products} />

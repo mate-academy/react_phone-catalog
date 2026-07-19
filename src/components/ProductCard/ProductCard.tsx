@@ -8,9 +8,14 @@ import styles from './ProductCard.module.scss';
 type Props = {
   product: Product;
   className?: string;
+  showDiscount?: boolean;
 };
 
-export const ProductCard = ({ product, className = '' }: Props) => {
+export const ProductCard = ({
+  product,
+  className = '',
+  showDiscount = true,
+}: Props) => {
   const { cart, favorites, addToCart, removeFromCart, toggleFavorite } =
     useStore();
 
@@ -45,6 +50,8 @@ export const ProductCard = ({ product, className = '' }: Props) => {
     });
   };
 
+  const displayedPrice = showDiscount ? product.price : product.fullPrice;
+
   return (
     <article className={`${styles.card} ${className}`}>
       <Link
@@ -64,9 +71,11 @@ export const ProductCard = ({ product, className = '' }: Props) => {
       </Link>
 
       <div className={styles.priceBlock}>
-        <span className={styles.price}>${product.price}</span>
+        <span className={styles.price}>${displayedPrice}</span>
 
-        <span className={styles.fullPrice}>${product.fullPrice}</span>
+        {showDiscount && (
+          <span className={styles.fullPrice}>${product.fullPrice}</span>
+        )}
       </div>
 
       <div className={styles.divider} />

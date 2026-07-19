@@ -8,6 +8,7 @@ import styles from './ProductsSlider.module.scss';
 type Props = {
   title: string;
   products: Product[];
+  showDiscount?: boolean;
 };
 
 const cardsGap = 16;
@@ -16,7 +17,11 @@ const iconSrc = (iconName: string) => {
   return `${import.meta.env.BASE_URL}img/icons/${iconName}`;
 };
 
-export const ProductsSlider = ({ title, products }: Props) => {
+export const ProductsSlider = ({
+  title,
+  products,
+  showDiscount = true,
+}: Props) => {
   const viewportRef = useRef<HTMLDivElement>(null);
   const [canScrollBack, setCanScrollBack] = useState(false);
   const [canScrollForward, setCanScrollForward] = useState(false);
@@ -118,7 +123,11 @@ export const ProductsSlider = ({ title, products }: Props) => {
               data-slide
               role="listitem"
             >
-              <ProductCard product={product} className={styles.card} />
+              <ProductCard
+                product={product}
+                className={styles.card}
+                showDiscount={showDiscount}
+              />
             </div>
           ))}
         </div>
