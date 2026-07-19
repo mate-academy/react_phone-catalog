@@ -11,7 +11,8 @@ type Props = {
 };
 
 export const ProductCard = ({ product, className = '' }: Props) => {
-  const { cart, favorites, addToCart, toggleFavorite } = useStore();
+  const { cart, favorites, addToCart, removeFromCart, toggleFavorite } =
+    useStore();
 
   const imageSrc = `${import.meta.env.BASE_URL}${product.image}`;
 
@@ -23,6 +24,12 @@ export const ProductCard = ({ product, className = '' }: Props) => {
   const isFavorite = favorites.includes(product.id);
 
   const handleAddToCart = () => {
+    if (isInCart) {
+      removeFromCart(product.id);
+
+      return;
+    }
+
     addToCart(product.id);
   };
 
@@ -68,6 +75,7 @@ export const ProductCard = ({ product, className = '' }: Props) => {
       <div className={styles.actions}>
         <button
           type="button"
+          aria-label={isInCart ? 'Remove from cart' : 'Add to cart'}
           className={`${styles.addButton} ${
             isInCart ? styles.addedButton : ''
           }`}
