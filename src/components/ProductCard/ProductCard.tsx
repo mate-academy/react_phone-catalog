@@ -37,13 +37,29 @@ export const ProductCard = ({ product, className = '' }: Props) => {
     toggleFavorite(product.id);
   };
 
+  const handleProductNavigation = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'auto',
+    });
+  };
+
   return (
     <article className={`${styles.card} ${className}`}>
-      <Link to={`/product/${product.itemId}`} className={styles.imageLink}>
+      <Link
+        to={`/product/${product.itemId}`}
+        className={styles.imageLink}
+        onClick={handleProductNavigation}
+      >
         <img src={imageSrc} alt={product.name} className={styles.image} />
       </Link>
 
-      <Link to={`/product/${product.itemId}`} className={styles.title}>
+      <Link
+        to={`/product/${product.itemId}`}
+        className={styles.title}
+        onClick={handleProductNavigation}
+      >
         {product.name}
       </Link>
 
