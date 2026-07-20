@@ -1,5 +1,5 @@
 import styles from './HomePage.module.scss';
-import { HeroSlider } from './components/HeroSlider/HeroSlider';
+import { PicturesSlider } from './components/PicturesSlider/PicturesSlider';
 
 export const HomePage = () => {
   return (
@@ -10,7 +10,7 @@ export const HomePage = () => {
           Welcome to Nice Gadgets store!
         </h2>
       </header>
-      <HeroSlider />
+      <PicturesSlider />
     </section>
   );
 };

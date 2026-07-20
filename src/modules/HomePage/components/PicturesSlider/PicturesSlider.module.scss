@@ -1,0 +1,395 @@
+@use '../../../shared/styles/variables' as *;
+@use '../../../shared/styles/typography' as *;
+@use '../../../shared/styles/breakpoints' as *;
+
+// Height tokens used by viewport and slide image blocks.
+$tablet-height: 189px;
+$desktop-height: 400px;
+
+.picturesSlider {
+  // Root container and overflow clipping.
+  width: 100%;
+  overflow: hidden;
+  background-color: #fff;
+  
+
+  &__carousel {
+    display: flex;
+  }
+
+  // Viewport and track define the visible sliding area.
+  &__viewport {
+    width: 100%;
+    overflow: hidden;
+    background-color: #000;
+    aspect-ratio: 1 / 1;
+
+    @include respond(tablet) {
+      aspect-ratio: 2 / 1;
+      min-height: $tablet-height;
+      width: 100%;
+      margin: 0 16px;
+    }
+
+    @include respond(desktop) {
+      aspect-ratio: 2 / 1;
+      min-height: $tablet-height;
+      width: 100%;
+      margin: 0 16px;
+    }
+
+    @include respond(desktop-over) {
+      aspect-ratio: 2 / 1;
+      min-height: $tablet-height;
+      width: 100%;
+      margin: 0 16px;
+    }
+  }
+
+  &__track {
+    display: flex;
+    transition: transform 500ms ease;
+    height: 100%;
+  }
+
+  &__slide {
+    display: flex;
+    overflow: hidden;
+    min-width: 100%;
+    padding-top: 32px;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+
+    @include respond(tablet) {
+      flex-direction: row;
+      padding: 12px;
+      align-items: start;
+    }
+
+    @include respond(desktop) {
+      flex-direction: row;
+      padding: 12px;
+      align-items: start;
+    }
+
+    @include respond(desktop-over) {
+      flex-direction: row;
+      padding: 12px;
+      align-items: start;
+    }
+  }
+
+  // Heading block and product metadata.
+  &__headingContainer {
+    display: flex;
+    flex-direction: column;
+    width: min(70%, 320px);
+    margin: 0;
+
+    @include respond(tablet) {
+      flex: 1;
+      border-radius: 16px;
+      background-color: $color-primary;
+      height: 100%;
+      text-align: left;
+      padding-top: 32px;
+      padding-left: 32px;
+      padding-bottom: 32px;
+
+    }
+
+    @include respond(desktop) {
+      flex: 1;
+      border-radius: 16px;
+      background-color: $color-primary;
+      height: 100%;
+      text-align: left;
+      padding-top: 48px;
+      padding-left: 32px;
+      padding-bottom: 32px;
+    }
+
+    @include respond(desktop-over) {
+      flex: 1;
+      border-radius: 16px;
+      background-color: $color-primary;
+      height: 100%;
+      text-align: left;
+      padding-top: 48px;
+      padding-left: 32px;
+      padding-bottom: 32px;
+    }
+  }
+
+  &__heading {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.1;
+    background: linear-gradient(to right, #7b61ff, #d946ef);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    @include respond(tablet) {
+      width: 90%;
+      font-size: 32px;
+    }
+    
+
+    @include respond(desktop) {
+      width: 90%;
+      font-size: 48px;
+    }
+
+    @include respond(desktop-over) {
+      width: 90%;
+      font-size: 48px;
+    }
+  }
+
+  &__orderNow {
+    display: none;
+
+    @include respond(tablet) {
+      display: block;
+      padding: 12px 32px;
+      background-color: transparent;
+      color: $color-white;
+      border: 1px solid $color-secondary;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 32px;
+      cursor: pointer;
+      width: fit-content;
+      margin-top: auto;
+    }
+
+    @include respond(tablet-down) {
+        font-size: 16px;
+    }
+
+    @include respond(desktop) {
+      display: block;
+      margin-top: 24px;
+      padding: 12px 24px;
+     background-color: transparent;
+      color: $color-white;
+      border: 1px solid $color-secondary;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 32px;
+      cursor: pointer;
+      width: fit-content;
+      margin-top: auto;
+    }
+
+    @include respond(desktop-over) {
+      display: block;
+      margin-top: 24px;
+      background-color: transparent;
+      color: $color-white;
+      border: 1px solid $color-secondary;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 32px;
+      cursor: pointer;
+      width: fit-content;
+      margin-top: auto;
+    }
+  }
+
+  &__product {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+
+    @include respond(tablet) {
+      flex: 1;
+      margin-top: 0;
+    }
+
+    @include respond(desktop) {
+      flex: 1;
+      margin-top: 0;
+    }
+
+    @include respond(desktop-over) {
+      flex: 1;
+      margin-top: 0;
+    }
+  }
+
+  &__productName {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.1;
+
+    @include respond(tablet) {
+      font-size: 32px;
+      padding-top: 24px;
+
+    }
+
+    @include respond(tablet-down) {
+      font-size: 32px;
+      padding-top: 24px;
+
+    }
+
+    @include respond(desktop) {
+      font-size: 48px;
+      padding-top: 32px;
+
+    }
+
+    @include respond(desktop-over) {
+      font-size: 48px;
+      padding-top: 32px;
+
+    }
+  }
+
+  &__tagline {
+    margin: 12px  0;
+    color: $color-secondary;
+    font-size: 1rem;
+    font-weight: 400;
+    @include respond(tablet) {
+      margin-top: 12px;
+      font-size: .75rem;
+
+    }
+
+    @include respond(tablet-down) {
+      margin-top: 12px;
+      font-size: 1rem;
+
+    }
+
+    @include respond(desktop) {
+      margin-top: 12px;
+      font-size: 1rem;
+
+    }
+
+    @include respond(desktop-over) {
+      margin-top: 12px;
+      font-size: 1rem;
+
+    }
+  }
+
+  &__tagline_2 {
+    display: none;
+
+    @include respond(mobile) {
+      display: none;
+    }
+
+    width: fit-content;
+
+    @include respond(tablet) {
+      display: block;
+      font-size: .75rem;
+      color: $color-secondary;
+      font-weight: 400;
+    }
+
+    @include respond(desktop) {
+      display: block;
+      font-size: 1rem;
+      color: $color-secondary;
+      font-weight: 400;
+    }
+
+    @include respond(desktop-over) {
+      display: block;
+      font-size: 1rem;
+      color: $color-secondary;
+      font-weight: 400;
+    }
+  }
+
+  // Product media.
+  &__imageContainer {
+    width: 100%;
+    height: 330px;
+    overflow: hidden;
+
+    @include respond(tablet) {
+      flex: 1;
+      height: 100%;
+      margin-top: 12px;
+    }
+
+    @include respond(desktop) {
+      flex: 1;
+      height: 100%;
+      margin-top: 12px;
+
+    }
+
+    @include respond(desktop-over) {
+      flex: 1;
+      height: 100%;
+      margin-top: 12px;
+
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    object-fit: contain;
+    object-position: center -20px;
+  }
+
+  // Pagination indicators.
+  &__indicators {
+    display: flex;
+    min-height: 74px;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    background-color: #fff;
+  }
+
+  &__indicator {
+    width: 30px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    background-color: #e1e5e8;
+    cursor: pointer;
+    transition: background-color 200ms ease;
+
+    &--active {
+      background-color: #303136;
+    }
+  }
+
+  // Previous/next navigation arrows.
+  &__arrow {
+    @include respond(mobile) {
+      display: none;
+    }
+
+    flex: 0 0 32px;
+    align-self: stretch;
+    width: 32px;
+    cursor: pointer;
+
+    span {
+      font-size: 16px;
+      line-height: 1;
+    }
+  }
+
+}
