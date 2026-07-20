@@ -1,0 +1,55 @@
+@import '../../mixin';
+
+.containerNewModels {
+  display: flex;
+  flex-direction: column;
+}
+
+.newModels{
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  padding: 80px 0 24px;
+  align-items: center;
+  display: flex;
+
+@include on-tablet {
+padding: 64px 0 24px;
+}
+
+@include on-phone {
+padding: 56px 0 24px;
+}
+}
+
+.buttonsGroup {
+  box-sizing: border-box;
+  display: flex;
+  background: none;
+  cursor: pointer;
+  margin-left: auto;
+  gap: 8px;
+
+}
+
+.newModelsImg {
+  height: 16px;
+  width: 16px;
+}
+
+.buttonNewModels {
+    border: 1px solid #B4BDC3;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    transition: border-color 0.2s ease, color 0.2s ease,
+    background-color 0.2s ease;
+
+  &:hover {
+    border-color: #313237;
+  }
+  }

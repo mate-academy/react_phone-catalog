@@ -1,0 +1,36 @@
+@import '../../mixin';
+
+ .visuallyHidden {
+  display: none;
+
+   }
+
+   .main {
+    padding: 0 32px;
+
+   @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-phone {
+    padding: 0 16px;
+   }
+  }
+
+.mainWellcome {
+  font-weight: 800;
+  padding: 56px 0;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1%;
+
+    @include on-tablet {
+      padding: 32px 0;
+    }
+
+    @include on-phone {
+      padding: 24px 0;
+        font-size: 32px;
+          line-height: 41px;
+}
+}

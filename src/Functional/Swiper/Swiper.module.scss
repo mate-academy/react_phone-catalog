@@ -1,0 +1,35 @@
+@import '../../mixin';
+
+.swiperBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.swiperNewBlock {
+  overflow: auto hidden;
+}
+
+.buttonsGroup {
+  box-sizing: border-box;
+  display: flex;
+  background: none;
+  cursor: pointer;
+  margin-left: auto;
+  gap: 8px;
+
+}
+
+.hotPriceImg {
+  height: 16px;
+  width: 16px;
+}
+
+.buttonHotPrice {
+  border: 1px solid #B4BDC3;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+}

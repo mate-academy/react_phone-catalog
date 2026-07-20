@@ -1,0 +1,317 @@
+@import '../../mixin';
+
+.container {
+  padding: 0 32px;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-phone {
+    padding: 0 16px;
+    align-items: center;
+  }
+}
+
+.home {
+  text-decoration: none;
+}
+
+
+.homeButton {
+  border: none;
+  background: white;
+  display: flex;
+  margin: 24px 0 40px;
+  font-weight: 600;
+  font-family: Mont, sans-serif;
+  text-decoration: none;
+  font-size: 12px;
+  align-items: center;
+  gap: 8px;
+
+  @include on-phone {
+    margin: 24px 0;
+  }
+
+}
+
+.homeImg {
+  width: 16px;
+  height: 16px;
+}
+
+.homePhones {
+  pointer-events: none;
+}
+
+.homeGoTo {
+  color: #89939A;
+}
+
+.totalPriceBlock {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  height: 206px;
+  width: 368px;
+
+  @include on-tablet {
+    height: 190px;
+    width: 592px;
+  }
+
+  @include on-phone {
+    height: 190px;
+    width: 288px;
+  }
+}
+
+.gridContainer {
+  display: grid;
+
+  --columns: 24;
+
+  gap: 32px 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  box-sizing: border-box;
+
+  @include on-tablet {
+    --columns: 12;
+
+   gap: 24px 32px;
+  }
+
+  @include on-phone {
+    --columns: 4;
+
+    gap: 16px 32px;
+
+  }
+
+    .gridCartBlock {
+      grid-column: span 16;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 32px;
+
+      @include on-tablet {
+        grid-column: span 12;
+        margin-top: 24px;
+
+      }
+
+      @include on-phone {
+        grid-column: span 4;
+        align-items: center;
+        margin-top: 24px;
+      }
+    }
+
+        .totalPriceBlock {
+            border: 1px solid #E2E6E9;
+            grid-column: span 8;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+
+            @include on-tablet {
+              grid-column: span 12;
+              align-items: center;
+              gap: 16px;
+            }
+
+            @include on-phone {
+              grid-column: span 4;
+              align-items: center;
+              gap: 16px;
+            }
+        }
+  }
+
+    .cartItem {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .cartBlock {
+      display: flex;
+       justify-content: space-between;
+       border: 1px solid #E2E6E9;
+       flex-direction: row;
+       align-items: center;
+       padding: 24px;
+
+           @include on-phone {
+          padding: 16px;
+          flex-direction: column;
+          gap: 16px;
+        }
+  }
+
+  .cartWithOutPrice {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+        @include on-phone {
+            gap: 16px;
+          }
+  }
+
+  .buttonClose {
+    background: none;
+    border: none;
+    color: #B4BDC3;
+  }
+
+  .imgCartBlock {
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
+  }
+
+.cartName {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #313237;
+
+}
+
+.cardGroup {
+display: flex;
+justify-content: space-between;
+flex-direction: row;
+gap: 24px;
+}
+
+
+.cardButtonGroup {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-direction: row;
+}
+
+.buttonMinus,
+.buttonPlus {
+height: 32px;
+width: 32px;
+background: none;
+border: 1px solid #E2E6E9;
+}
+
+.cardPriceHot{
+font-weight: 800;
+font-size: 22px;
+line-height: 140%;
+}
+
+
+.cardTotal {
+  margin-top: 24px;
+}
+
+.underLine {
+border: 1px solid #e2e6e9;
+width: 100%;
+}
+
+.totalPrice {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 42px;
+  color: #313237;
+}
+
+.cardTotalFor {
+  font-weight: 500;
+  font-size: 14px;
+    line-height: 21px;
+    color: #89939A;
+}
+
+.checkOut {
+background: #313237;
+color: white;
+height: 48px;
+width: 320px;
+font-weight: 700;
+font-size: 14px;
+ line-height: 21px;
+
+  @include on-tablet {
+    height: 190px;
+    width: 592px;
+  }
+
+  @include on-phone {
+    height: 48px;
+    width: 240px;
+  }
+}
+
+.containerEmpty {
+box-sizing: border-box;
+margin: 32px;
+    position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1000;
+}
+
+.emptyImg {
+  width: 300px;
+  height: auto;
+}
+
+.emptyText{
+  display: flex;
+  align-items: center;
+}
+
+.backHome{
+  // text-decoration: none;
+  color: #313237;
+}
+
+.modal {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+z-index: 1000;
+display: flex;
+opacity: 1;
+background-color: #fff;
+height: 200px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+cursor: pointer;
+}
+
+.modalContent{
+  padding: 24px;
+  cursor: pointer;
+}
+
+.modalClear {
+  color: grey;
+  font-weight: 7px;
+  padding: 16px 0 56px;
+}
+
+.modalButton {
+display: flex;
+justify-content: flex-end;
+gap: 16px;
+}
+
+.modalCancel {
+  display: flex;
+  justify-content: space-between;
+}

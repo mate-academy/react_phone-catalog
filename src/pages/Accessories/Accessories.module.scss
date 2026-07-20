@@ -1,0 +1,37 @@
+@import '../../mixin';
+
+.home {
+  text-decoration: none;
+}
+
+.homeButton {
+  border: none;
+  background: white;
+  display: flex;
+  margin: 24px 32px 40px;
+  font-weight: 600;
+  font-family: Mont, sans-serif;
+  text-decoration: none;
+  align-items: center;
+  gap: 8px;
+
+  @include on-phone {
+    margin: 24px 16px;
+  }
+
+}
+
+.homeImg {
+  width: 16px;
+  height: 16px;
+}
+
+.homePhones {
+  pointer-events: none;
+}
+
+.homeGo,
+.homeGoTo {
+  color: #89939A;
+
+}
