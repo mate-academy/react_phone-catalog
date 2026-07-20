@@ -4,20 +4,23 @@
 @use '../shared/styles/grid' as *;
 
 .homePage {
-	display: block;
-    margin: 0 16px;
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
 
-    @include respond(tablet) {
-        margin: 0 24px;
-    }
+  @include respond(tablet) {
+    padding: 0 24px;
+  }
 
-    @include respond(desktop) {
-        margin: 0 32px;
-    }
+  @include respond(desktop) {
+    padding: 0 32px;
+  }
 
-    @include respond(desktop-over) {
-        margin: 0 152px;
-    }
+  @include respond(desktop-over) {
+    padding: 0 32px;
+  }
 }
 
 .homePage__title__hidden {

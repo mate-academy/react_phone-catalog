@@ -173,9 +173,8 @@ $desktop-height: 400px;
 
     @include respond(desktop) {
       display: block;
-      margin-top: 24px;
       padding: 12px 24px;
-     background-color: transparent;
+      background-color: transparent;
       color: $color-white;
       border: 1px solid $color-secondary;
       font-size: 16px;
@@ -188,7 +187,6 @@ $desktop-height: 400px;
 
     @include respond(desktop-over) {
       display: block;
-      margin-top: 24px;
       background-color: transparent;
       color: $color-white;
       border: 1px solid $color-secondary;
@@ -259,6 +257,7 @@ $desktop-height: 400px;
     color: $color-secondary;
     font-size: 1rem;
     font-weight: 400;
+
     @include respond(tablet) {
       margin-top: 12px;
       font-size: .75rem;

@@ -5,6 +5,8 @@
 .navbar {
     display: flex;
     width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
     padding: 0;
     height: auto;
     position: sticky;
@@ -12,8 +14,7 @@
     z-index: 100;
     background-color: $color-white;
     border-bottom: 1px solid $color-elements;
-    
-    
+    border-left: 1px solid $color-elements;
 }
 
 .navbar__menuButton {
