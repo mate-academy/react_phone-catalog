@@ -4,11 +4,13 @@
 @use 'breakpoints' as *;
 
 // Font family
-$font-family-base: 'Montserrat', sans-serif;
+$font-family-base: 'Mont', sans-serif;
 
 // Font weights
+$font-weight-smallText: 600;
 $font-weight-regular: 500;
 $font-weight-semibold: 600;
+$font-weight-medium: 700;
 $font-weight-bold: 700;
 
 
@@ -33,13 +35,13 @@ $type-desktop: (
         letter-spacing: 0,
     ),
     h4: (
-        weight: $font-weight-semibold,
+        weight: $font-weight-medium,
         size: 20px,
         line-height: 26px,
         letter-spacing: 0,
     ),
     uppercase: (
-        weight: $font-weight-bold,
+        weight: $font-weight-medium,
         size: 12px,
         line-height: 11px,
         letter-spacing: 0.04em,
@@ -58,7 +60,7 @@ $type-desktop: (
         letter-spacing: 0,
     ),
     small: (
-        weight: $font-weight-semibold,
+        weight: $font-weight-smallText,
         size: 12px,
         line-height: 15px,
         letter-spacing: 0,
@@ -86,7 +88,7 @@ $type-mobile: (
         letter-spacing: 0,
     ),
     h4: (
-        weight: $font-weight-semibold,
+        weight: $font-weight-medium,
         size: 16px,
         line-height: 20px,
         letter-spacing: 0,
@@ -98,13 +100,13 @@ $type-mobile: (
         letter-spacing: 0,
     ),
     small: (
-        weight: $font-weight-semibold,
+        weight: $font-weight-smallText,
         size: 12px,
         line-height: 15px,
         letter-spacing: 0,
     ),
     uppercase: (
-        weight: $font-weight-bold,
+        weight: $font-weight-medium,
         size: 12px,
         line-height: 11px,
         letter-spacing: 0.04em,
@@ -129,7 +131,7 @@ $type-mobile: (
         text-transform: map.get($desktop, transform);
     }
 
-    @media (max-width: $breakpoint-tablet) {
+    @include respond(mobile) {
         font-weight: map.get($mobile, weight);
         font-size: map.get($mobile, size);
         line-height: map.get($mobile, line-height);

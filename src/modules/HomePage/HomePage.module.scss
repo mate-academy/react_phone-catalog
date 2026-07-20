@@ -30,16 +30,23 @@
 }
 
 .homePage__header {
-    @include typography(h2);
-
     margin-top: 24px;
+    margin-bottom: 24px;
     
     @include respond(tablet) {
-        margin-top: 56px;
+        margin-top: 32px;
+        margin-bottom: 32px;
     }
 
     @include respond(desktop) {
         margin-top: 56px;
+        margin-bottom: 56px;
     }
 
+}
+
+.homePage__header__title {
+    @include typography(h1);
+
+    margin: 0;
 }
