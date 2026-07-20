@@ -49,6 +49,23 @@
   color: #89939A;
 }
 
+.totalPriceBlock {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  height: 206px;
+  width: 368px;
+
+  @include on-tablet {
+    height: 190px;
+    width: 592px;
+  }
+
+  @include on-phone {
+    height: 190px;
+    width: 288px;
+  }
+}
 
 .gridContainer {
   display: grid;
@@ -194,23 +211,6 @@ font-size: 22px;
 line-height: 140%;
 }
 
-.totalPriceBlock {
-  display: flex;
-  box-sizing: border-box;
-  align-items: center;
-  height: 206px;
-  width: 368px;
-
-  @include on-tablet {
-    height: 190px;
-    width: 592px;
-  }
-
-  @include on-phone {
-    height: 190px;
-    width: 288px;
-  }
-}
 
 .cardTotal {
   margin-top: 24px;
