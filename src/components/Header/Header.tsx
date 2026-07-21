@@ -24,7 +24,7 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.left}>
         <NavLink to="/" end className={styles.logo}>
-          <img src={getAssetUrl('/img/logo.png')} alt="Nice Gadgets" />
+          <img src="img/logo.svg" alt="Nice Gadgets" />
         </NavLink>
 
         <nav className={styles.nav}>
@@ -51,10 +51,10 @@ export const Header = () => {
       </div>
 
       <button className={styles.menuBtn} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-        <img
-          src={getAssetUrl(isMenuOpen ? '/img/close.png' : '/img/menu.png')}
-          alt="Menu"
-        />
+      <img
+  src={getAssetUrl(isMenuOpen ? '/img/close.svg' : '/img/menu.svg')}
+  alt="Menu"
+/>
       </button>
 
       <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />

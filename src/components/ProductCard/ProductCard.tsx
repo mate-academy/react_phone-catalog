@@ -2,14 +2,14 @@ import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoritesContext';
-import { getAssetUrl } from '../../utils/getAssetUrl';
 import styles from './ProductCard.module.scss';
 
 interface Props {
   product: Product;
+  hideDiscount?: boolean;
 }
 
-export const ProductCard = ({ product }: Props) => {
+export const ProductCard = ({ product, hideDiscount }: Props) => {
   const { items, addToCart, removeFromCart } = useCart();
   const { items: favoriteItems, toggleFavorite } = useFavorites();
   const isFavorite = favoriteItems.some(item => item.itemId === product.itemId);
@@ -26,11 +26,7 @@ export const ProductCard = ({ product }: Props) => {
   return (
     <div className={styles.card}>
       <Link to={`/product/${product.itemId}`} className={styles.imageLink}>
-        <img
-          src={getAssetUrl(product.image)}
-          alt={product.name}
-          className={styles.image}
-        />
+        <img src={product.image} alt={product.name} className={styles.image} />
       </Link>
 
       <Link to={`/product/${product.itemId}`} className={styles.title}>
@@ -39,7 +35,7 @@ export const ProductCard = ({ product }: Props) => {
 
       <div className={styles.prices}>
         <span className={styles.priceCurrent}>${product.price}</span>
-        {product.fullPrice !== product.price && (
+        {!hideDiscount && product.fullPrice !== product.price && (
           <span className={styles.priceFull}>${product.fullPrice}</span>
         )}
       </div>
@@ -72,12 +68,7 @@ export const ProductCard = ({ product }: Props) => {
           className={styles.buttonFav}
           onClick={() => toggleFavorite(product)}
         >
-          <img
-            src={getAssetUrl(
-              isFavorite ? '/img/favouritesheartlike.svg' : '/img/heart.svg',
-            )}
-            alt="Favorite"
-          />
+          <img src={isFavorite ? 'img/favouritesheartlike.svg' : 'img/heart.svg'} alt="Favorite" />
         </button>
       </div>
     </div>

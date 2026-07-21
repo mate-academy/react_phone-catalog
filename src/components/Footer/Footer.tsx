@@ -6,7 +6,7 @@ export const Footer = () => (
   <footer className={styles.footer}>
     <div className={styles.content}>
       <NavLink to="/" className={styles.logo}>
-        <img src={getAssetUrl('/img/logo.png')} alt="Nice Gadgets" />
+        <img src="img/logo.svg" alt="Nice Gadgets" />
       </NavLink>
 
       <div className={styles.links}>
