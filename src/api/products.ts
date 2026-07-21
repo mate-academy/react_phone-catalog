@@ -1,6 +1,6 @@
 import { Product, ProductDetails } from '../types/Product';
 
-const BASE_URL = '/api';
+const BASE_URL = `${import.meta.env.BASE_URL}api`;
 
 function getData<T>(url: string): Promise<T> {
   return fetch(`${BASE_URL}${url}`).then(response => response.json());

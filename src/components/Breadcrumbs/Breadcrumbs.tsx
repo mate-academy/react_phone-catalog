@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { getAssetUrl } from '../../utils/getAssetUrl';
 import styles from './Breadcrumbs.module.scss';
 
 interface Props {
@@ -10,12 +11,16 @@ export const Breadcrumbs = ({ category, productName }: Props) => {
   return (
     <nav className={styles.breadcrumbs}>
       <Link to="/" className={styles.homeLink}>
-        <img src="/img/home.png" alt="Home" />
+        <img src={getAssetUrl('/img/home.png')} alt="Home" />
       </Link>
 
       {category && (
         <>
-          <img src="/img/arrow-right.png" alt=">" className={styles.divider} />
+          <img
+            src={getAssetUrl('/img/arrow-right.png')}
+            alt=">"
+            className={styles.divider}
+          />
           {productName ? (
             <Link to={`/${category}`} className={styles.link}>
               {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -30,7 +35,11 @@ export const Breadcrumbs = ({ category, productName }: Props) => {
 
       {productName && (
         <>
-          <img src="/img/arrow-right.png" alt=">" className={styles.divider} />
+          <img
+            src={getAssetUrl('/img/arrow-right.png')}
+            alt=">"
+            className={styles.divider}
+          />
           <span className={styles.current}>{productName}</span>
         </>
       )}

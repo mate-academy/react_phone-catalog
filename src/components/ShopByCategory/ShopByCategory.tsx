@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { getAssetUrl } from '../../utils/getAssetUrl';
 import styles from './ShopByCategory.module.scss';
 
 export const ShopByCategory = () => {
@@ -9,7 +10,7 @@ export const ShopByCategory = () => {
         <Link to="/phones" className={styles.card}>
           <div className={styles.photoWrap}>
             <img
-              src="/img/category-phones.png"
+              src={getAssetUrl('/img/category-phones.png')}
               alt="Phones"
               className={styles.photo}
             />
@@ -19,7 +20,7 @@ export const ShopByCategory = () => {
         <Link to="/tablets" className={styles.card}>
           <div className={styles.photoWrap}>
             <img
-              src="/img/category-tablets.png"
+              src={getAssetUrl('/img/category-tablets.png')}
               alt="Tablets"
               className={styles.photo}
             />
@@ -29,7 +30,7 @@ export const ShopByCategory = () => {
         <Link to="/accessories" className={styles.card}>
           <div className={styles.photoWrap}>
             <img
-              src="/img/category-accessories.png"
+              src={getAssetUrl('/img/category-accessories.png')}
               alt="Accessories"
               className={styles.photo}
             />

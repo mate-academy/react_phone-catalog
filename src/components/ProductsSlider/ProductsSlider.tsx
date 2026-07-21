@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
+import { getAssetUrl } from '../../utils/getAssetUrl';
 import styles from './ProductsSlider.module.scss';
 
 interface Props {
@@ -55,14 +56,20 @@ export const ProductsSlider = ({ title, products }: Props) => {
             onClick={scrollLeft}
             disabled={!canScrollLeft}
           >
-            <img src="/img/button-right-default.png" alt="Previous" />
+            <img
+              src={getAssetUrl('/img/button-right-default.png')}
+              alt="Previous"
+            />
           </button>
           <button
             className={styles.btnRight}
             onClick={scrollRight}
             disabled={!canScrollRight}
           >
-            <img src="/img/button-right-default.png" alt="Next" />
+            <img
+              src={getAssetUrl('/img/button-right-default.png')}
+              alt="Next"
+            />
           </button>
         </div>
       </div>

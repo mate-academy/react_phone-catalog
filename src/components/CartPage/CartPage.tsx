@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
+import { getAssetUrl } from '../../utils/getAssetUrl';
 import styles from './CartPage.module.scss';
 
 export const CartPage = () => {
@@ -51,7 +52,7 @@ export const CartPage = () => {
                   className={styles.cartItemImageLink}
                 >
                   <img
-                    src={item.product.image}
+                    src={getAssetUrl(item.product.image)}
                     alt={item.product.name}
                     className={styles.cartItemImage}
                   />

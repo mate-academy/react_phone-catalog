@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
+import { getAssetUrl } from '../../utils/getAssetUrl';
 import styles from './PicturesSlider.module.scss';
 
 const images = [
   '/img/banner-phones.png',
   '/img/banner-tablets.png',
   '/img/banner-accessories.png',
-];
+].map(getAssetUrl);
 
 export const PicturesSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -30,7 +31,10 @@ export const PicturesSlider = () => {
     <div className={styles.banner}>
       <div className={styles.container}>
         <button className={styles.btnLeft} onClick={goToPrev}>
-          <img src="/img/button-right-default.png" alt="Previous" />
+          <img
+            src={getAssetUrl('/img/button-right-default.png')}
+            alt="Previous"
+          />
         </button>
         <div className={styles.window}>
           <img
@@ -40,7 +44,10 @@ export const PicturesSlider = () => {
           />
         </div>
         <button className={styles.btnRight} onClick={goToNext}>
-          <img src="/img/button-right-default.png" alt="Next" />
+          <img
+            src={getAssetUrl('/img/button-right-default.png')}
+            alt="Next"
+          />
         </button>
       </div>
       <div className={styles.dots}>
