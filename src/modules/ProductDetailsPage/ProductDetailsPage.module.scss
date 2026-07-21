@@ -223,7 +223,7 @@
   color: $font;
 }
 
-.priceDiscount {
+.priceRegular {
   font-size: 22px;
   font-weight: 600;
   color: $secondary;
@@ -253,9 +253,10 @@
 
   &--active {
     background-color: $surface-2;
+    cursor: default;
 
     &:hover {
-      background-color: $icons;
+      background-color: $surface-2;
     }
   }
 }

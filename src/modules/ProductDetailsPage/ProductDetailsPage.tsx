@@ -159,7 +159,6 @@ export const ProductDetailsPage: React.FC = () => {
               alt={product.name}
             />
           </div>
-
           <div className={styles.info}>
             <div className={styles.optionGroup}>
               <h3 className={styles.optionGroup__title}>Available colors</h3>
@@ -192,9 +191,9 @@ export const ProductDetailsPage: React.FC = () => {
               </div>
             </div>
             <div className={styles.price}>
-              <span>${product.priceRegular}</span>
-              <span className={styles.priceDiscount}>
-                ${product.priceDiscount}
+              <span>${product.priceDiscount}</span>
+              <span className={styles.priceRegular}>
+                ${product.priceRegular}
               </span>
             </div>
             <div className={styles.actions}>

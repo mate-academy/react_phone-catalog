@@ -33,7 +33,7 @@ export const Header: React.FC = () => {
     <>
       <header className={styles.header}>
         <Link to="/" className={styles.logo} onClick={closeMenu}>
-          <img src={buildUrl('img/icons/logo-top.png')} alt="Logo" />
+          <img src={buildUrl('img/icons/logo-top.svg')} alt="Logo" />
         </Link>
 
         <div className={styles.container}>
@@ -66,7 +66,7 @@ export const Header: React.FC = () => {
             <Link to="/favorites" className={styles.actionLink}>
               <div className={styles.iconContainer}>
                 <img
-                  src={buildUrl('img/icons/favorite.png')}
+                  src={buildUrl('img/icons/favorite.svg')}
                   alt="Favorites"
                   className={styles.icon}
                 />
@@ -79,7 +79,7 @@ export const Header: React.FC = () => {
             <Link to="/cart" className={styles.actionLink}>
               <div className={styles.iconContainer}>
                 <img
-                  src={buildUrl('img/icons/cart.png')}
+                  src={buildUrl('img/icons/cart.svg')}
                   alt="Shopping Cart"
                   className={styles.icon}
                 />
