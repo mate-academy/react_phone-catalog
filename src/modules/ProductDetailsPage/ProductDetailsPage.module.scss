@@ -252,8 +252,8 @@
   }
 
   &--active {
-    background-color: $surface-2;
     cursor: default;
+    background-color: $surface-2;
 
     &:hover {
       background-color: $surface-2;
