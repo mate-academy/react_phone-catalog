@@ -3,10 +3,12 @@
 
 .card {
   width: 100%;
+  height: 100%;
   background-color: $c-bg-card;
   padding: 24px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   transition: box-shadow 0.3s ease;
 
   @include tablet {
@@ -50,6 +52,11 @@
   line-height: 21px;
   font-weight: 600;
   margin-bottom: 8px;
+  min-height: 42px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 
   &:hover {
     text-decoration: underline;

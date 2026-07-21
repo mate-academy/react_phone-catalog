@@ -95,3 +95,9 @@
   background-color: $c-primary;
   border-color: $c-primary;
 }
+.dots {
+  display: flex;
+  align-items: center;
+  color: $c-text-secondary;
+  padding: 0 4px;
+}

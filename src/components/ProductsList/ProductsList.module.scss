@@ -5,10 +5,10 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
-  justify-items: stretch;
+  align-items: stretch;
 
   @include tablet {
     grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
-    justify-items: center;
+    justify-items: stretch;
   }
 }

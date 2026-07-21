@@ -59,7 +59,35 @@ export const CategoryPage = ({ category }: Props) => {
 
   const totalPages =
     perPage === 'all' ? 1 : Math.ceil(visibleProducts.length / Number(perPage));
-  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  const getVisiblePages = (): (number | string)[] => {
+    const delta = 1;
+    const range: number[] = [];
+    const rangeWithDots: (number | string)[] = [];
+    let last: number | undefined;
+
+    for (let i = 1; i <= totalPages; i++) {
+      if (i === 1 || i === totalPages || (i >= page - delta && i <= page + delta)) {
+        range.push(i);
+      }
+    }
+
+    range.forEach(i => {
+      if (last) {
+        if (i - last === 2) {
+          rangeWithDots.push(last + 1);
+        } else if (i - last > 2) {
+          rangeWithDots.push('...');
+        }
+      }
+      rangeWithDots.push(i);
+      last = i;
+    });
+
+    return rangeWithDots;
+  };
+
+  const visiblePages = getVisiblePages();
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newParams = new URLSearchParams(searchParams);
@@ -148,18 +176,22 @@ export const CategoryPage = ({ category }: Props) => {
 
       {totalPages > 1 && (
         <div className={styles.pagination}>
-          {pages.map(pageNumber => (
-            <button
-              key={pageNumber}
-              className={
-                pageNumber === page
-                  ? `${styles.pageButton} ${styles.pageButtonActive}`
-                  : styles.pageButton
-              }
-              onClick={() => handlePageChange(pageNumber)}
-            >
-              {pageNumber}
-            </button>
+          {visiblePages.map((pageNumber, index) => (
+            typeof pageNumber === 'number' ? (
+              <button
+                key={pageNumber}
+                className={
+                  pageNumber === page
+                    ? `${styles.pageButton} ${styles.pageButtonActive}`
+                    : styles.pageButton
+                }
+                onClick={() => handlePageChange(pageNumber)}
+              >
+                {pageNumber}
+              </button>
+            ) : (
+              <span key={`dots-${index}`} className={styles.dots}>...</span>
+            )
           ))}
         </div>
       )}

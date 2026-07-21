@@ -1,17 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ProductDetails, Product } from '../../types/Product';
-import {
-  getProductDetails,
-  getSuggestedProducts,
-  getProducts,
-} from '../../api/products';
+import { getProductDetails, getSuggestedProducts, getProducts } from '../../api/products';
 import { Loader } from '../Loader';
 import { ProductsSlider } from '../ProductsSlider';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoritesContext';
-import { getAssetUrl } from '../../utils/getAssetUrl';
 import styles from './ProductDetailsPage.module.scss';
 
 export const ProductDetailsPage = () => {
@@ -24,7 +19,7 @@ export const ProductDetailsPage = () => {
   const navigate = useNavigate();
   const [allProducts, setAllProducts] = useState<ProductDetails[]>([]);
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
-  const { items: cartItems, addToCart } = useCart();
+  const { items: cartItems, addToCart, removeFromCart } = useCart();
   const { items: favoriteItems, toggleFavorite } = useFavorites();
 
   useEffect(() => {
@@ -40,14 +35,10 @@ export const ProductDetailsPage = () => {
           setProduct(result.product);
           setSelectedImage(result.product.images[0]);
           setAllProducts(result.allProducts);
-          getSuggestedProducts(result.product.category).then(
-            setSuggestedProducts,
-          );
+          getSuggestedProducts(result.product.category).then(setSuggestedProducts);
 
           getProducts('products').then(allShortProducts => {
-            const match = allShortProducts.find(
-              p => p.itemId === result.product?.id,
-            );
+            const match = allShortProducts.find(p => p.itemId === result.product?.id);
 
             if (match) {
               setNumericId(match.id);
@@ -76,10 +67,9 @@ export const ProductDetailsPage = () => {
 
   const handleCapacitySelect = (newCapacity: string) => {
     const variant = allProducts.find(
-      p =>
-        p.namespaceId === product.namespaceId &&
-        p.color === product.color &&
-        p.capacity === newCapacity,
+      p => p.namespaceId === product.namespaceId
+        && p.color === product.color
+        && p.capacity === newCapacity,
     );
 
     if (variant) {
@@ -89,10 +79,9 @@ export const ProductDetailsPage = () => {
 
   const handleColorSelect = (newColor: string) => {
     const variant = allProducts.find(
-      p =>
-        p.namespaceId === product.namespaceId &&
-        p.capacity === product.capacity &&
-        p.color === newColor,
+      p => p.namespaceId === product.namespaceId
+        && p.capacity === product.capacity
+        && p.color === newColor,
     );
 
     if (variant) {
@@ -118,15 +107,20 @@ export const ProductDetailsPage = () => {
   const isInCart = cartItems.some(item => item.product.itemId === product.id);
   const isFavorite = favoriteItems.some(item => item.itemId === product.id);
 
+  const handleCartClick = () => {
+    if (isInCart) {
+      removeFromCart(product.id);
+    } else {
+      addToCart(shortProduct);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <Breadcrumbs category={product.category} productName={product.name} />
 
-      <button
-        className={styles.backButton}
-        onClick={() => navigate(`/${product.category}`)}
-      >
-        <img src={getAssetUrl('/img/arrow-left.png')} alt="Back" />
+      <button className={styles.backButton} onClick={() => navigate(`/${product.category}`)}>
+        <img src="/img/arrow-left.png" alt="Back" />
         Back
       </button>
 
@@ -138,19 +132,15 @@ export const ProductDetailsPage = () => {
             {product.images.map(image => (
               <button
                 key={image}
-                className={
-                  image === selectedImage
-                    ? `${styles.thumb} ${styles.thumbactive}`
-                    : styles.thumb
-                }
+                className={image === selectedImage ? `${styles.thumb} ${styles.thumbactive}` : styles.thumb}
                 onClick={() => setSelectedImage(image)}
               >
-                <img src={getAssetUrl(image)} alt={product.name} />
+                <img src={image} alt={product.name} />
               </button>
             ))}
           </div>
           <div className={styles.mainImage}>
-            <img src={getAssetUrl(selectedImage)} alt={product.name} />
+            <img src={selectedImage} alt={product.name} />
           </div>
         </div>
 
@@ -164,11 +154,7 @@ export const ProductDetailsPage = () => {
               {product.colorsAvailable.map(color => (
                 <button
                   key={color}
-                  className={
-                    color === product.color
-                      ? `${styles.colorCircle} ${styles.colorCircleActive}`
-                      : styles.colorCircle
-                  }
+                  className={color === product.color ? `${styles.colorCircle} ${styles.colorCircleActive}` : styles.colorCircle}
                   style={{ backgroundColor: color }}
                   onClick={() => handleColorSelect(color)}
                 />
@@ -182,11 +168,7 @@ export const ProductDetailsPage = () => {
               {product.capacityAvailable.map(capacity => (
                 <button
                   key={capacity}
-                  className={
-                    capacity === product.capacity
-                      ? `${styles.capBox} ${styles.capBoxActive}`
-                      : styles.capBox
-                  }
+                  className={capacity === product.capacity ? `${styles.capBox} ${styles.capBoxActive}` : styles.capBox}
                   onClick={() => handleCapacitySelect(capacity)}
                 >
                   {capacity}
@@ -196,24 +178,16 @@ export const ProductDetailsPage = () => {
           </div>
 
           <div className={styles.priceBlock}>
-            <span className={styles.priceDiscount}>
-              ${product.priceDiscount}
-            </span>
+            <span className={styles.priceDiscount}>${product.priceDiscount}</span>
             {product.priceRegular !== product.priceDiscount && (
-              <span className={styles.priceRegular}>
-                ${product.priceRegular}
-              </span>
+              <span className={styles.priceRegular}>${product.priceRegular}</span>
             )}
           </div>
 
           <div className={styles.actions}>
             <button
-              className={
-                isInCart
-                  ? `${styles.addToCart} ${styles.added}`
-                  : styles.addToCart
-              }
-              onClick={() => addToCart(shortProduct)}
+              className={isInCart ? `${styles.addToCart} ${styles.added}` : styles.addToCart}
+              onClick={handleCartClick}
             >
               {isInCart ? 'Added to cart' : 'Add to cart'}
             </button>
@@ -221,12 +195,7 @@ export const ProductDetailsPage = () => {
               className={styles.favButton}
               onClick={() => toggleFavorite(shortProduct)}
             >
-              <img
-                src={getAssetUrl(
-                  isFavorite ? '/img/favouritesheartlike.png' : '/img/heart.png',
-                )}
-                alt="Favorite"
-              />
+              <img src={isFavorite ? '/img/favouritesheartlike.svg' : '/img/heart.svg'} alt="Favorite" />
             </button>
           </div>
 
@@ -300,10 +269,7 @@ export const ProductDetailsPage = () => {
       </div>
 
       <div className={styles.suggested}>
-        <ProductsSlider
-          title="You may also like"
-          products={suggestedProducts}
-        />
+        <ProductsSlider title="You may also like" products={suggestedProducts} />
       </div>
     </div>
   );
