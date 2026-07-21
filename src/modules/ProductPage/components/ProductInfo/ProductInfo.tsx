@@ -24,7 +24,8 @@ const getProductPath = (
 };
 
 export const ProductInfo: FC<Props> = ({ productDetails, product }) => {
-  const { addToCart, isInCart, isFavorite, toggleFavorite } = useShop();
+  const { addToCart, removeFromCart, isInCart, isFavorite, toggleFavorite } =
+    useShop();
   const isProductInCart = isInCart(product.id);
   const isProductFavorite = isFavorite(product.id);
 
@@ -95,8 +96,9 @@ export const ProductInfo: FC<Props> = ({ productDetails, product }) => {
         <AddToCartButton
           className={styles.info__cartButton}
           isSelected={isProductInCart}
-          disabled={isProductInCart}
-          onClick={() => addToCart(product)}
+          onClick={() =>
+            isProductInCart ? removeFromCart(product.id) : addToCart(product)
+          }
         >
           {isProductInCart ? 'Added to cart' : 'Add to cart'}
         </AddToCartButton>

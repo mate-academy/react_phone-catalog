@@ -24,9 +24,14 @@ const RIGHT_ARROW_PATH =
 type Props = {
   title: string;
   products: Product[];
+  showDiscount?: boolean;
 };
 
-export const ProductsSlider: FC<Props> = ({ title, products }) => {
+export const ProductsSlider: FC<Props> = ({
+  title,
+  products,
+  showDiscount = true,
+}) => {
   const viewportRef = useRef<HTMLDivElement>(null);
 
   const [isAtStart, setIsAtStart] = useState(true);
@@ -131,7 +136,7 @@ export const ProductsSlider: FC<Props> = ({ title, products }) => {
         <ul className={styles.slider__list}>
           {products.map(product => (
             <li className={styles.slider__slide} key={product.id}>
-              <ProductCard product={product} />
+              <ProductCard product={product} showDiscount={showDiscount} />
             </li>
           ))}
         </ul>

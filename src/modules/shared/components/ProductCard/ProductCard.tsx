@@ -8,13 +8,15 @@ import { useShop } from '../../../../context/ShopContext';
 
 type Props = {
   product: Product;
+  showDiscount?: boolean;
 };
 
-export const ProductCard: FC<Props> = ({ product }) => {
+export const ProductCard: FC<Props> = ({ product, showDiscount = true }) => {
   const capacityLabel =
     product.category === 'accessories' ? 'Size' : 'Capacity';
 
-  const { addToCart, isInCart, isFavorite, toggleFavorite } = useShop();
+  const { addToCart, removeFromCart, isInCart, isFavorite, toggleFavorite } =
+    useShop();
   const isProductInCart = isInCart(product.id);
   const isProductFavorite = isFavorite(product.id);
 
@@ -36,8 +38,12 @@ export const ProductCard: FC<Props> = ({ product }) => {
       </Link>
 
       <div className={styles.card__prices}>
-        <p className={styles.card__price}>{`$${product.price}`}</p>
-        <p className={styles.card__fullPrice}>{`$${product.fullPrice}`}</p>
+        <p className={styles.card__price}>
+          {`$${showDiscount ? product.price : product.fullPrice}`}
+        </p>
+        {showDiscount && (
+          <p className={styles.card__fullPrice}>{`$${product.fullPrice}`}</p>
+        )}
       </div>
 
       <span className={styles.card__divider} />
@@ -60,8 +66,9 @@ export const ProductCard: FC<Props> = ({ product }) => {
       <div className={styles.card__actions}>
         <AddToCartButton
           isSelected={isProductInCart}
-          onClick={() => addToCart(product)}
-          disabled={isProductInCart}
+          onClick={() =>
+            isProductInCart ? removeFromCart(product.id) : addToCart(product)
+          }
           className={styles.card__cartButton}
         >
           {isProductInCart ? 'Added to cart' : 'Add to cart'}
