@@ -4,6 +4,22 @@
 @import './container';
 @import './fonts';
 
+.is-hidden,
+.visually-hidden {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
 html {
   scroll-behavior: smooth;
 }

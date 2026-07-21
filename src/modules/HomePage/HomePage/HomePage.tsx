@@ -33,6 +33,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <section className="container">
+      <h1 className="visually-hidden">Product Catalog</h1>
       <Banner />
       <NewModels products={newModels} />
       <Categories />
