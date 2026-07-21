@@ -7,6 +7,7 @@ import { ProductsSlider } from '../ProductsSlider';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoritesContext';
+import { getAssetUrl } from '../../utils/getAssetUrl';
 import styles from './ProductDetailsPage.module.scss';
 
 export const ProductDetailsPage = () => {
@@ -120,7 +121,7 @@ export const ProductDetailsPage = () => {
       <Breadcrumbs category={product.category} productName={product.name} />
 
       <button className={styles.backButton} onClick={() => navigate(`/${product.category}`)}>
-        <img src="/img/arrow-left.png" alt="Back" />
+        <img src={getAssetUrl('/img/arrow-left.png')} alt="Back" />
         Back
       </button>
 
@@ -135,12 +136,12 @@ export const ProductDetailsPage = () => {
                 className={image === selectedImage ? `${styles.thumb} ${styles.thumbactive}` : styles.thumb}
                 onClick={() => setSelectedImage(image)}
               >
-                <img src={image} alt={product.name} />
+                <img src={getAssetUrl(image)} alt={product.name} />
               </button>
             ))}
           </div>
           <div className={styles.mainImage}>
-            <img src={selectedImage} alt={product.name} />
+            <img src={getAssetUrl(selectedImage)} alt={product.name} />
           </div>
         </div>
 
@@ -195,7 +196,12 @@ export const ProductDetailsPage = () => {
               className={styles.favButton}
               onClick={() => toggleFavorite(shortProduct)}
             >
-              <img src={isFavorite ? '/img/favouritesheartlike.svg' : '/img/heart.svg'} alt="Favorite" />
+              <img
+                src={getAssetUrl(
+                  isFavorite ? '/img/favouritesheartlike.svg' : '/img/heart.svg',
+                )}
+                alt="Favorite"
+              />
             </button>
           </div>
 

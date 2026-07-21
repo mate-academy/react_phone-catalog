@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoritesContext';
+import { getAssetUrl } from '../../utils/getAssetUrl';
 import styles from './ProductCard.module.scss';
 
 interface Props {
@@ -25,7 +26,11 @@ export const ProductCard = ({ product }: Props) => {
   return (
     <div className={styles.card}>
       <Link to={`/product/${product.itemId}`} className={styles.imageLink}>
-        <img src={product.image} alt={product.name} className={styles.image} />
+        <img
+          src={getAssetUrl(product.image)}
+          alt={product.name}
+          className={styles.image}
+        />
       </Link>
 
       <Link to={`/product/${product.itemId}`} className={styles.title}>
@@ -67,7 +72,12 @@ export const ProductCard = ({ product }: Props) => {
           className={styles.buttonFav}
           onClick={() => toggleFavorite(product)}
         >
-          <img src={isFavorite ? '/img/favouritesheartlike.svg' : '/img/heart.svg'} alt="Favorite" />
+          <img
+            src={getAssetUrl(
+              isFavorite ? '/img/favouritesheartlike.svg' : '/img/heart.svg',
+            )}
+            alt="Favorite"
+          />
         </button>
       </div>
     </div>
