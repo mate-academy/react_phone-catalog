@@ -10,9 +10,13 @@
     "src/mainStyles/**/*",
     "src/modules/**/*",
     "src/shared/**/*",
-    "src/types/**/*"
+    "src/types/**/*",
+    "src/components/**/*",
+    "src/context/**/*",
+    "src/pages/**/*"
   ],
   "compilerOptions": {
+    "baseUrl": ".",
     "sourceMap": false,
     "ignoreDeprecations": "6.0",
     "types": ["node", "cypress"]

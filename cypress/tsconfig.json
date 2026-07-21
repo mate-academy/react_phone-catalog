@@ -1,6 +1,7 @@
 {
   "extends": "@mate-academy/students-ts-config",
   "compilerOptions": {
+    "baseUrl": "..",
     "sourceMap": false
   }
 }
