@@ -157,18 +157,28 @@ export const Header: React.FC = () => {
               className={mobileIconClass}
               onClick={closeMenu}
             >
-              <img
-                src={buildUrl('img/icons/favorite.png')}
-                alt="Favorites"
-                className={styles.icon}
-              />
+              <div className={styles.iconContainer}>
+                <img
+                  src={buildUrl('img/icons/favorite.png')}
+                  alt="Favorites"
+                  className={styles.icon}
+                />
+                {favorites.length > 0 && (
+                  <span className={styles.badge}>{favorites.length}</span>
+                )}
+              </div>
             </NavLink>
             <NavLink to="/cart" className={mobileIconClass} onClick={closeMenu}>
-              <img
-                src={buildUrl('img/icons/cart.png')}
-                alt="Shopping Cart"
-                className={styles.icon}
-              />
+              <div className={styles.iconContainer}>
+                <img
+                  src={buildUrl('img/icons/cart.png')}
+                  alt="Shopping Cart"
+                  className={styles.icon}
+                />
+                {totalQuantity > 0 && (
+                  <span className={styles.badge}>{totalQuantity}</span>
+                )}
+              </div>
             </NavLink>
           </div>
         </div>

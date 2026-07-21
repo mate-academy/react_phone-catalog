@@ -1,9 +1,17 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
 
 .main {
   max-width: 1136px;
-  margin: 95px auto 0;
-  padding-bottom: 80px;
+  margin: 95px auto 80px;
+
+  @include tablet {
+    margin: 72px 24px 64px;
+  }
+
+  @include mobile {
+    margin: 72px 16px 56px;
+  }
 }
 
 .title {
@@ -13,6 +21,10 @@
   font-weight: 800;
   color: $font;
   letter-spacing: -1%;
+
+  @include mobile {
+    font-size: 32px;
+  }
 }
 
 .content {
@@ -20,6 +32,16 @@
   grid-template-columns: repeat(24, 1fr);
   gap: 16px;
   align-items: start;
+
+  @include tablet {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 32px;
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
 }
 
 .itemsList {
@@ -28,6 +50,11 @@
   flex-direction: column;
   gap: 16px;
 
+  grid-column: 1 / 17;
+
+  @include tablet-and-down {
+    grid-column: 1 / -1;
+  }
 }
 
 .cartItem {
@@ -56,7 +83,7 @@
   }
 
   &__name {
-    width: 336px;
+    flex: 1;
     padding: 0;
 
     font-size: 14px;
@@ -107,6 +134,52 @@
   }
 }
 
+@include mobile {
+  .cartItem {
+    display: grid;
+    grid-template-columns: 16px 80px 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 16px;
+    row-gap: 16px;
+
+    padding: 16px;
+    align-items: center;
+  }
+
+  .cartItem__removeButton {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .cartItem__image {
+    grid-column: 2;
+    grid-row: 1;
+
+    margin: 0;
+  }
+
+  .cartItem__name {
+    grid-column: 3;
+    grid-row: 1;
+
+    width: auto;
+  }
+
+  .cartItem__quantityControl {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+  }
+
+  .cartItem__price {
+    grid-column: 3;
+    grid-row: 2;
+
+    justify-self: end;
+    width: auto;
+  }
+}
+
 .summary {
   display: flex;
   grid-column: 17 / -1;
@@ -116,6 +189,12 @@
 
   padding: 24px;
   border: 1px solid $elements;
+
+  grid-column: 17 / -1;
+
+  @include tablet-and-down {
+    grid-column: 1 / -1;
+  }
 
   &__total {
     font-size: 32px;
