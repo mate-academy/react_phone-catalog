@@ -45,9 +45,8 @@
 }
 
 .itemsList {
-  grid-column: 1 / 17;
-
   display: flex;
+  grid-column: 1 / 17;
   flex-direction: column;
   gap: 16px;
 
