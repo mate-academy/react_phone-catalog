@@ -7,31 +7,42 @@
 
 .main {
   max-width: 1136px;
-  margin-inline: auto;
+  margin: 64px auto 80px;
+
+  @include tablet {
+    margin: 48px 24px 64px;
+  }
+
+  @include mobile {
+    margin: 48px 16px 64px;
+  }
 }
 
 .titleContainer {
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   gap: 16px;
-
-  padding: 120px 0 56px;
+  margin-block: 120px 56px;
 
   @include tablet {
     grid-template-columns: repeat(12, 1fr);
+    margin-block: 80px 32px;
   }
 
   @include mobile {
     grid-template-columns: repeat(4, 1fr);
+    margin-block: 72px 24px;
   }
 }
 
 .title {
   grid-column: 1 / -1;
+
   margin: 0;
-  color: #F1F2F9;
+
   font-size: 48px;
   font-weight: 800;
+  color: $font;
   letter-spacing: -1%;
 
   @include mobile {
@@ -41,27 +52,33 @@
 
 .content {
   display: grid;
+  display: flex;
   grid-template-columns: repeat(24, 1fr);
-  margin-inline: auto;
+  flex-direction: column;
+  gap: 80px;
   column-gap: 16px;
+
+  margin-inline: auto;
 
   @include tablet {
     grid-template-columns: repeat(12, 1fr);
+    gap: 64px;
   }
 
   @include mobile {
     grid-template-columns: repeat(4, 1fr);
+    gap: 56px;
   }
 }
 
 .section {
-  margin-bottom: 80px;
   grid-column: 1 / -1;
 
   &__header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+
     height: 41px;
     margin-bottom: 24px;
   }
@@ -69,9 +86,10 @@
   &__title {
     margin: 0;
     padding: 0;
-    color: #F1F2F9;
+
     font-size: 32px;
     font-weight: 800;
+    color: $font;
     letter-spacing: -1%;
   }
 
@@ -83,16 +101,17 @@
 }
 
 .swiper {
-  background-color: $surface-2;
-  border: solid 1px $elements;
-  padding: 8px;
-  height: 32px;
   width: 32px;
+  height: 32px;
+  padding: 8px;
+  border: solid 1px $elements;
+
+  background-color: $surface-2;
 }
 
 .footerDivider {
   height: 1px;
-  color: $elements;
   margin: 0;
+  color: $elements;
 }
 

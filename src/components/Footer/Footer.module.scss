@@ -1,72 +1,110 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
 
 .container {
   border-top: 1px solid $elements;
+
+  @include tablet {
+    padding-inline: 32px;
+  }
+
+  @include mobile {
+    padding: 32px 16px;
+  }
 }
 
 .footer {
-  max-width: 1136px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+
+  max-width: 1136px;
   height: 96px;
   margin-inline: auto;
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    height: 257px;
+  }
 }
 
 .link {
-  text-decoration: none;
-  color: $secondary;
   font-family: Mont, sans-serif;
-  font-weight: 800;
   font-size: 12px;
+  font-weight: 800;
+  color: $secondary;
+  text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 4%;
 
   transition: color 0.3s ease;
 
   &:hover {
-    color: #F1F2F9;
+    color: $font;
   }
 }
 
 .list {
   display: flex;
   justify-content: space-between;
-  list-style: none;
   padding: 0;
+  list-style: none;
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+  }
 }
 
 .wrapper {
   width: 33.3%;
+
+  @include mobile {
+    width: 100%;
+  }
 }
 
 .backToTopWrapper {
   display: flex;
-  justify-content: right;
   gap: 16px;
+  justify-content: right;
+
+  @include mobile {
+    justify-content: center;
+  }
 }
 
 .backToTop {
   display: flex;
-  align-items: center;
   gap: 16px;
-  font-family: Mont, sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  color: #89939A;
-  background-color: $primary;
+  align-items: center;
+
   border: none;
+
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: $secondary;
+
+  background-color: $primary;
 }
 
 .backToTopButton {
-  background-color: $surface-2;
-  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 32px;
   height: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+  border: none;
+
+  background-color: $surface-2;
 
   transition: background-color 0.2s ease;
 

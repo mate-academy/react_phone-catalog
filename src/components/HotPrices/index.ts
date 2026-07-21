@@ -1,1 +1,1 @@
-import './HotPrices';
+export { HotPrices } from './HotPrices';

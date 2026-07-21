@@ -1,1 +1,1 @@
-import './ErrorMessage';
+export { ErrorMessage } from './ErrorMessage';

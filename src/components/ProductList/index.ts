@@ -1,1 +1,1 @@
-import './ProductList';
+export { ProductsList } from './ProductList';

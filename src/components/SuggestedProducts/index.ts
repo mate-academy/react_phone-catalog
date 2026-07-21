@@ -1,1 +1,1 @@
-import './SuggestedProducts';
+export { SuggestedProducts } from './SuggestedProducts';

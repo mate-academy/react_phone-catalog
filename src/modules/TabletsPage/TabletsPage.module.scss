@@ -1,10 +1,17 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
 
 .main {
-  margin-top: 87px;
   max-width: 1136px;
-  margin-inline: auto;
+  margin: 88px auto 0;
 
+  @include tablet {
+    margin: 72px 24px 0;
+  }
+
+  @include mobile {
+    margin: 72px 16px 0;
+  }
 }
 
 .titleContainer {
@@ -15,19 +22,22 @@
 }
 
 .title {
-  font-weight: 800;
-  font-size: 48px;
-  letter-spacing: -1%;
-  color: #F1F2F9;
   height: 56px;
-
-  line-height: 56px;
-
   margin: 0;
+
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  color: $font;
+  letter-spacing: -1%;
+
+  @include mobile {
+    font-size: 32px;
+  }
 }
 
 .modelsCount {
-  font-weight: 600;
   font-size: 14px;
+  font-weight: 600;
   color: $secondary;
 }

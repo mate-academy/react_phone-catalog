@@ -1,11 +1,12 @@
 @use './styles/variables' as *;
 
 body {
-  background-color: $primary;
   margin: 0;
   font-family: Mont, sans-serif;
+  background-color: $primary;
 }
 
+/* stylelint-disable-next-line selector-max-id */
 html, body, #root {
   height: 100%;
   margin: 0;

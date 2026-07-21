@@ -8,6 +8,8 @@ import { ItemsPerPage } from '../../modules/shared/types/ItemsPerPage';
 import { Product } from '../../modules/shared/types/Product';
 import { useCart } from '../../modules/shared/contexts/CartContext';
 import { useFavorites } from '../../modules/shared/contexts/FavoritesContext';
+// eslint-disable-next-line max-len
+import { getPaginationRange } from '../../modules/shared/utils/getPaginationRange';
 
 type Props = {
   products: Product[];
@@ -216,17 +218,21 @@ export const ProductsList: React.FC<Props> = ({
             ‹
           </button>
 
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              key={i}
-              className={`${styles.pageButton} ${
-                page === i + 1 ? styles['pageButton--active'] : ''
-              }`}
-              onClick={() => setPage(i + 1)}
-            >
-              {i + 1}
-            </button>
-          ))}
+          {getPaginationRange(page, totalPages).map((item, index) =>
+            item === 'dots' ? (
+              <span key={`dots-${index}`} className={styles.pageDots}>
+                ...
+              </span>
+            ) : (
+              <button
+                key={item}
+                className={`${styles.pageButton} ${page === item ? styles['pageButton--active'] : ''}`}
+                onClick={() => setPage(item)}
+              >
+                {item}
+              </button>
+            ),
+          )}
 
           <button
             className={styles.pageArrow}

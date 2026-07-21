@@ -6,14 +6,23 @@
   display: flex;
   gap: 16px;
   max-height: 400px;
+
+
+  @include mobile {
+    max-width: 100%;
+    max-height: 639px;
+  }
 }
 
 .prevBtn,
 .nextBtn {
-  background-color: $surface-2;
-  border: none;
-  flex: 0 0 32px;
   cursor: pointer;
+
+  flex: 0 0 32px;
+
+  border: none;
+
+  background-color: $surface-2;
 
   transition: background-color 0.3s ease;
 }
@@ -30,28 +39,23 @@
 
 .swiper {
   flex: 1;
+
+  @include mobile {
+    margin-inline: -16px;
+  }
 }
 
 .image {
-  height: 100%;
   width: 100%;
-
-  @include tablet {
-    max-height: 250px;
-  }
-
-  @include mobile {
-    max-height: 639px;
-    max-width: 639px;
-  }
+  height: 100%;
 }
 
 :global(.swiper) {
-  --swiper-theme-color: #F1F2F9;
+  --swiper-theme-color: #{$font};
   --swiper-pagination-bullet-height: 4px;
   --swiper-pagination-bullet-width: 14px;
   --swiper-pagination-bullet-border-radius: 0%;
-  --swiper-pagination-bullet-inactive-color: $elements;
+  --swiper-pagination-bullet-inactive-color: #{$elements};
 }
 
 :global(.swiper-pagination-bullet) {

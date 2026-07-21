@@ -7,11 +7,8 @@ import { HeroSlider } from '../../components/HeroSlider/HeroSlider';
 import { NewModels } from '../../components/NewModels/NewModels';
 import { Categories } from '../../components/Categories/Categories';
 import { HotPrices } from '../../components/HotPrices/HotPrices';
-import { useFavorites } from '../shared/contexts/FavoritesContext';
 
 export const HomePage: React.FC = () => {
-  const { favorites, toggleFavorites } = useFavorites();
-
   return (
     <>
       <main className={styles.main}>
@@ -25,10 +22,7 @@ export const HomePage: React.FC = () => {
           </section>
 
           <section className={styles.section}>
-            <NewModels
-              favorites={favorites}
-              toggleFavorites={toggleFavorites}
-            />
+            <NewModels />
           </section>
 
           <section className={styles.section}>
@@ -36,10 +30,7 @@ export const HomePage: React.FC = () => {
           </section>
 
           <section className={styles.section}>
-            <HotPrices
-              favorites={favorites}
-              toggleFavorites={toggleFavorites}
-            />
+            <HotPrices />
           </section>
         </div>
       </main>

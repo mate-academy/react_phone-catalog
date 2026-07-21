@@ -153,7 +153,6 @@ export const ProductDetailsPage: React.FC = () => {
               ))}
             </div>
           </div>
-
           <div className={styles.galleryMain}>
             <img
               src={buildUrl(product.images[selectedImage])}
@@ -175,10 +174,8 @@ export const ProductDetailsPage: React.FC = () => {
                   />
                 ))}
               </div>
-
               <hr className={styles.optionGroup__divider} />
             </div>
-
             <div className={styles.optionGroup}>
               <h3 className={styles.optionGroup__title}>Select capacity</h3>
               <div className={styles.capacityOptions}>
@@ -194,14 +191,12 @@ export const ProductDetailsPage: React.FC = () => {
                 ))}
               </div>
             </div>
-
             <div className={styles.price}>
               <span>${product.priceRegular}</span>
               <span className={styles.priceDiscount}>
                 ${product.priceDiscount}
               </span>
             </div>
-
             <div className={styles.actions}>
               <button
                 className={`${styles.addButton} ${isAddedToCart ? styles['addButton--active'] : ''}`}
@@ -228,23 +223,19 @@ export const ProductDetailsPage: React.FC = () => {
                 )}
               </button>
             </div>
-
             <div className={styles.description}>
               <div className={styles.item}>
                 <span className={styles.property}>Screen</span>
                 <strong className={styles.value}>{product.screen}</strong>
               </div>
-
               <div className={styles.item}>
                 <span className={styles.property}>Resolution</span>
                 <strong className={styles.value}>{product.resolution}</strong>
               </div>
-
               <div className={styles.item}>
                 <span className={styles.property}>Processor</span>
                 <strong className={styles.value}>{product.processor}</strong>
               </div>
-
               <div className={styles.item}>
                 <span className={styles.property}>Ram</span>
                 <strong className={styles.value}>{product.ram}</strong>

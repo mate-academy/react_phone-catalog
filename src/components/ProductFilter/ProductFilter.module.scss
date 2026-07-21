@@ -21,28 +21,29 @@
 }
 
 .filterText {
-  color: #89939A;
-  font-weight: 700;
   font-size: 12px;
+  font-weight: 700;
+  color: $secondary;
 
 }
 
 .select {
-  color: #F1F2F9;
-  border: none;
-  background-color: $surface-2;
-  font-weight: 700;
-  font-size: 14px;
-  height: 40px;
-  padding-left: 12px;
   cursor: pointer;
 
+  height: 40px;
+  padding-left: 12px;
+  border: none;
+
+  font-size: 14px;
+  font-weight: 700;
+  color: $font;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: $surface-2;
   background-image: url(../../../public/img/icons/arrow-down-gray.png);
   background-repeat: no-repeat;
   background-position: right 12px center;
-
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 
 }

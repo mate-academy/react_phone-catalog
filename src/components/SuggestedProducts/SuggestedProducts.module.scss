@@ -1,21 +1,23 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
 
 .section {
-  &__wrapper {
-    margin-bottom: 81px;
-  }
-
   &__header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    margin-block: 64px 24px;
   }
 
   &__title {
-    font-weight: 800;
     font-size: 32px;
-    color: #F1F2F9;
+    font-weight: 800;
+    color: $font;
     letter-spacing: -1%;
+
+    @include mobile {
+      font-size: 22px;
+    }
   }
 }
 
@@ -25,15 +27,19 @@
 }
 
 .navButton {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 32px;
   height: 32px;
   border: 1px solid $elements;
   border-radius: 0;
+
   background-color: $surface-2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+
   transition: background-color 0.3s ease, opacity 0.3s ease;
 
   &:hover {
@@ -42,26 +48,26 @@
 
   &:global(.swiper-button-disabled) {
     cursor: not-allowed;
-    background-color: $primary;
     opacity: 0.5;
+    background-color: $primary;
   }
 }
 
 .suggestedCard {
+  width: 272px;
   padding: 0 32px 32px;
   background-color: $surface-1;
-  width: 272px;
 
   &__link {
     display: block;
-    color: #F1F2F9;
+    color: $font;
   }
 
   &__img {
     width: 196px;
     height: 208px;
-    padding: 32px;
     margin-bottom: 8px;
+    padding: 32px;
 
     transition: transform 0.3s ease;
   }
@@ -75,25 +81,28 @@
   &__title {
     display: flex;
     gap: 2px;
-    font-weight: 600;
-    font-size: 14px;
-    text-decoration: none;
-    color: #F1F2F9;
+
     height: 42px;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: $font;
+    text-decoration: none;
   }
 
   &__price {
     display: flex;
-    align-items: center;
     gap: 8px;
-    font-weight: 800;
+    align-items: center;
+
     font-size: 22px;
-    color: #F1F2F9;
+    font-weight: 800;
+    color: $font;
   }
 
   &__discount {
-    color: #89939A;
     font-weight: 600;
+    color: $secondary;
     text-decoration: line-through;
   }
 
@@ -114,15 +123,15 @@
   }
 
   &__property {
-    font-weight: 700;
     font-size: 12px;
-    color: #89939A;
+    font-weight: 700;
+    color: $secondary;
   }
 
   &__value {
-    font-weight: 700;
     font-size: 12px;
-    color: #F1F2F9;
+    font-weight: 700;
+    color: $font;
   }
 
   &__control {
@@ -132,16 +141,19 @@
   }
 
   &__addButton {
-    font-family: Mont, sans-serif;
-    width: 100%;
-    height: 40px;
-    color: #F1F2F9;
-    background-color: #905BFF;
-    border: none;
     cursor: pointer;
 
+    width: 100%;
+    height: 40px;
+    border: none;
+
+    font-family: Mont, sans-serif;
+    color: $font;
+
+    background-color: $button;
+
     &:hover {
-      background-color: #A378FF;
+      background-color: $button-hover;
     }
 
     &--active {
@@ -154,18 +166,19 @@
   }
 
   &__favoriteButton {
-    border: none;
-    padding: 0;
+    cursor: pointer;
+
     width: 40px;
     height: 40px;
-    cursor: pointer;
+    padding: 0;
+    border: none;
   }
 
   &__favoriteIcon {
-    background-color: $surface-2;
-    padding: 12px;
-    height: 40px;
     width: 40px;
+    height: 40px;
+    padding: 12px;
+    background-color: $surface-2;
 
     &:hover {
       background-color: $icons;

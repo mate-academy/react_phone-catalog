@@ -14,6 +14,20 @@ export const FavoritesPage = () => {
     favorites.includes(product.id),
   );
 
+  if (favorites.length === 0) {
+    return (
+      <main className={styles.main}>
+        <div className={styles.container}>
+          <div className={styles.emptyMessageContainer}>
+            <p className={styles.emptyMessage}>
+              You have no favorite products yet.
+            </p>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main className={styles.main}>
       <div className={styles.container}>

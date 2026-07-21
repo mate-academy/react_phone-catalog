@@ -1,35 +1,42 @@
 @use '../../styles/variables' as *;
 
 .main {
-  margin: 88px auto 80px;
   max-width: 1136px;
+  margin: 88px auto 80px;
 }
 
 .titleContainer {
-  margin: 40px 0 0;
-
-
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 40px 0 0;
 }
 
 .title {
   margin: 0;
 
-  font-weight: 800;
   font-size: 48px;
-
-  letter-spacing: -1%;
-
+  font-weight: 800;
   color: $font;
+  letter-spacing: -1%;
 }
 
 .modelsCount {
-  font-weight: 600;
-  font-size: 14px;
-
-  color: $secondary;
-
   margin-bottom: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  color: $secondary;
+}
+
+.emptyMessageContainer {
+  display: flex;
+  justify-content: center;
+  border: 1px solid $elements;
+}
+
+.emptyMessage {
+  margin-top: 24px;
+  font-size: 20px;
+  font-weight: 600;
+  color: $secondary;
 }

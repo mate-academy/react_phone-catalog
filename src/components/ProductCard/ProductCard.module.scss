@@ -1,64 +1,40 @@
 @use '../../styles/variables' as *;
-
-.section {
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__title {
-    font-weight: 800;
-    font-size: 32px;
-    color: #F1F2F9;
-    letter-spacing: -1%;
-  }
-}
-
-.navigationButtons {
-  display: flex;
-  gap: 16px;
-}
-
-.navButton {
-  width: 32px;
-  height: 32px;
-  border: 1px solid $elements;
-  border-radius: 0;
-  background-color: $surface-2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease, opacity 0.3s ease;
-
-  &:hover {
-    background-color: $icons;
-  }
-
-  &:global(.swiper-button-disabled) {
-    cursor: not-allowed;
-    background-color: $primary;
-    opacity: 0.5;
-  }
-}
+@use '../../styles/mixins.scss' as *;
 
 .productCard {
   padding: 0 32px 32px;
   background-color: $surface-1;
-
   &__link {
     display: block;
-    color: #F1F2F9;
-  }
-
-  &__img {
     width: 196px;
     height: 208px;
-    padding: 32px;
-    margin-bottom: 8px;
+    color: $font;
+
+    @include tablet {
+      width: 173px;
+      height: 202px;
+    }
+
+    @include mobile {
+      width: 148px;
+      height: 129px;
+    }
+  }
+  &__img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+    margin: 0 auto 8px;
+    padding-block: 32px;
+
+    object-fit: contain;
 
     transition: transform 0.3s ease;
+
+    @include mobile {
+      padding-block: 16px;
+    }
   }
 
   &__body {
@@ -70,17 +46,29 @@
   &__title {
     display: flex;
     gap: 2px;
-    font-weight: 600;
-    font-size: 14px;
-    text-decoration: none;
-    color: #F1F2F9;
+
     height: 42px;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: $font;
+    text-decoration: none;
   }
 
   &__price {
-    font-weight: 800;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
     font-size: 22px;
-    color: #F1F2F9;
+    font-weight: 800;
+    color: $font;
+  }
+
+  &__discount {
+    font-weight: 600;
+    color: $secondary;
+    text-decoration: line-through;
   }
 
   &__divider {
@@ -100,15 +88,15 @@
   }
 
   &__property {
-    font-weight: 700;
     font-size: 12px;
-    color: #89939A;
+    font-weight: 700;
+    color: $secondary;
   }
 
   &__value {
-    font-weight: 700;
     font-size: 12px;
-    color: #F1F2F9;
+    font-weight: 700;
+    color: $font;
   }
 
   &__control {
@@ -118,22 +106,24 @@
   }
 
   &__addButton {
-    font-family: Mont, sans-serif;
+    cursor: pointer;
+
     width: 100%;
     height: 40px;
-    color: #F1F2F9;
-    background-color: $button;
     border: none;
-    cursor: pointer;
+
+    font-family: Mont, sans-serif;
+    color: $font;
+
+    background-color: $button;
 
     &:hover {
       background-color: $button-hover;
     }
 
     &--active {
-      background-color: $surface-2;
       cursor: default;
-
+      background-color: $surface-2;
       &:hover {
         background-color: $surface-2;
       }
@@ -141,22 +131,23 @@
   }
 
   &__favoriteButton {
-    border: none;
-    padding: 0;
+    cursor: pointer;
+
     width: 40px;
     height: 40px;
-    cursor: pointer;
+    padding: 0;
+    border: none;
   }
 
   &__favoriteIcon {
-    background-color: $surface-2;
-    padding: 12px;
-    height: 40px;
     width: 40px;
+    height: 40px;
+    padding: 12px;
+    background-color: $surface-2;
 
     &--active {
-      background-color: $surface-1;
       border: 1px solid $elements;
+      background-color: $surface-1;
     }
 
     &:hover {

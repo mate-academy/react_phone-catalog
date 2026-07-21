@@ -1,4 +1,5 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
 
 .productNotFound {
   width: 100%;
@@ -13,11 +14,19 @@
 
 .notFoundTitle {
   font-size: 50px;
-  color: #F1F2F9;
+  color: $font;
 }
 
 .main {
-  margin-top: 88px;
+  margin: 88px 0 80px;
+
+  @include tablet {
+    margin: 72px 24px 64px;
+  }
+
+  @include mobile {
+    margin: 72px 16px 56px;
+  }
 }
 
 .container {
@@ -25,43 +34,66 @@
   margin-inline: auto;
 }
 
-.titleContainer {
-  margin-bottom: 40px;
-}
-
 .title {
   margin: 0;
-
   font-weight: 800;
+  color: $font;
   letter-spacing: -1%;
-  color: #F1F2F9;
+
+  @include mobile {
+    font-size: 22px;
+  }
 }
 
 .topSection {
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   gap: 16px;
+  margin: 40px 0 80px;
 
-  grid-column: 1 / -1;
+  @include tablet {
+    grid-template-columns: repeat(12, 1fr);
+    margin: 40px 0 64px;
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(4, 1fr);
+    margin: 32px 0 56px;
+  }
 }
 
 .thumbsWrapper {
   grid-column: span 2;
+
+  @include tablet {
+    grid-column: span 1;
+  }
+
+  @include mobile {
+    grid-column: 1 / -1;
+    order: 2;
+  }
 }
 
 .galleryThumbs {
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  @include mobile {
+    flex-direction: row;
+  }
 }
 
 .galleryThumb {
-  width: 80px;
-  height: 80px;
+  cursor: pointer;
+
+  aspect-ratio: 1 / 1;
+  width: 100%;
   padding: 0;
   border: 1px solid $elements;
+
   background-color: transparent;
-  cursor: pointer;
 
   img {
     width: 100%;
@@ -70,18 +102,26 @@
   }
 
   &--active {
-    border-color: #905BFF;
+    border-color: $button;
   }
 
   &:hover {
-    border-color: #905BFF;
+    border-color: $button;
   }
 }
 
 .galleryMain {
   grid-column: span 10;
-  max-height: 464px;
-  max-width: 464px;
+  aspect-ratio: 1 / 1;
+
+  @include tablet {
+    grid-column: 2 / 8;
+  }
+
+  @include mobile {
+    grid-column: 1 / -1;
+    order: 1;
+  }
 
   img {
     width: 100%;
@@ -92,6 +132,16 @@
 
 .info {
   grid-column: 14 / 21;
+  margin-top: 40px;
+
+  @include tablet {
+    grid-column: 8 / 12;
+  }
+
+  @include mobile {
+    grid-column: 1 / -1;
+    order: 3;
+  }
 }
 
 .optionGroup {
@@ -104,16 +154,14 @@
   }
 
   &__divider {
-    width: 320px;
-    color: $elements;
     margin: 24px 0;
+    color: $elements;
   }
 }
 
 .optionGroup__title, .productId {
-  font-weight: 700;
   font-size: 12px;
-
+  font-weight: 700;
   color: $secondary;
 }
 
@@ -123,11 +171,13 @@
 }
 
 .colorButton {
+  cursor: pointer;
+
   width: 30px;
   height: 30px;
-  border-radius: 50%;
   border: 2px solid $primary;
-  cursor: pointer;
+  border-radius: 50%;
+
   transition: 0.2s;
 
   &--active {
@@ -142,41 +192,40 @@
 }
 
 .capacityButton {
-  border: 1px solid $icons;
-  border-radius: 0;
-
-  font-weight: 600;
-  font-size: 14px;
-  color: #F1F2F9;
-  background-color: $primary;
+  cursor: pointer;
 
   width: 60px;
   height: 32px;
+  border: 1px solid $icons;
+  border-radius: 0;
 
-  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: $font;
+
+  background-color: $primary;
 
   &--active {
-    background-color: #F1F2F9;
     color: $primary;
+    background-color: $font;
   }
 }
 
 .price {
   display: flex;
-  align-items: center;
   gap: 8px;
-
-  font-weight: 800;
-  font-size: 32px;
-  color: #F1F2F9;
+  align-items: center;
 
   margin-block: 8px 16px;
+
+  font-size: 32px;
+  font-weight: 800;
+  color: $font;
 }
 
 .priceDiscount {
-  font-weight: 600;
   font-size: 22px;
-
+  font-weight: 600;
   color: $secondary;
   text-decoration: line-through;
 }
@@ -187,16 +236,19 @@
 }
 
 .addButton {
-  font-family: Mont, sans-serif;
-  width: 100%;
-  height: 40px;
-  color: #F1F2F9;
-  background-color: #905BFF;
-  border: none;
   cursor: pointer;
 
+  width: 100%;
+  height: 40px;
+  border: none;
+
+  font-family: Mont, sans-serif;
+  color: $font;
+
+  background-color: $button;
+
   &:hover {
-    background-color: #A378FF;
+    background-color: $button-hover;
   }
 
   &--active {
@@ -209,18 +261,19 @@
 }
 
 .favoriteButton {
-  border: none;
-  padding: 0;
+  cursor: pointer;
+
   width: 40px;
   height: 40px;
-  cursor: pointer;
+  padding: 0;
+  border: none;
 }
 
 .favoriteIcon {
-  background-color: $surface-2;
-  padding: 12px;
-  height: 40px;
   width: 40px;
+  height: 40px;
+  padding: 12px;
+  background-color: $surface-2;
 
   &:hover {
     background-color: $icons;
@@ -231,7 +284,6 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-
   margin-top: 32px;
 }
 
@@ -241,17 +293,15 @@
 }
 
 .property {
-  font-weight: 700;
   font-size: 12px;
-
+  font-weight: 700;
   color: $secondary;
 }
 
 .value {
-  font-weight: 700;
   font-size: 12px;
-
-  color: #F1F2F9;
+  font-weight: 700;
+  color: $font;
 }
 
 .bottomSection {
@@ -259,27 +309,42 @@
   grid-template-columns: repeat(24, 1fr);
   gap: 16px;
 
-  margin-top: 80px;
+  @include tablet {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(4, 1fr  );
+  }
 }
 
 .sectionAbout {
   grid-column: 1 / 13;
+
+  @include tablet-and-down {
+    grid-column: 1 / -1;
+  }
 }
 
 .sectionTechSpecs {
   grid-column: 14 / 25;
 
-  display: flex;
-  flex-direction: column;
+  @include tablet-and-down {
+    grid-column: 1 / -1;
+  }
 }
 
 .sectionTitle {
   margin: 0;
-
-  font-weight: 800;
   font-size: 22px;
+  font-weight: 800;
+  color: $font;
 
-  color: #F1F2F9;
+  @include mobile {
+    font-size: 20px;
+    font-weight: 700;
+  }
 }
 
 .divider {
@@ -293,19 +358,19 @@
 
 .subtitle {
   margin: 0 0 16px;
-
-  font-weight: 700;
   font-size: 20px;
+  font-weight: 700;
+  color: $font;
 
-  color: #F1F2F9;
+  @include mobile {
+    font-size: 16px;
+  }
 }
 
 .paragraph {
   margin: 0;
-
-  font-weight: 600;
   font-size: 14px;
-
+  font-weight: 600;
   color: $secondary;
 }
 

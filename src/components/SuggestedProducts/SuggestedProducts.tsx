@@ -32,9 +32,9 @@ export const SuggestedProducts: React.FC<Props> = ({ category, excludeId }) => {
   }
 
   return (
-    <div className={styles.section__wrapper}>
+    <>
       <div className={styles.section__header}>
-        <h2 className={styles.section__title}>Hot prices</h2>
+        <h2 className={styles.section__title}>You may also like</h2>
 
         <div className={styles.navigationButtons}>
           <button className={`${styles.navButton} js-swiper-prev`}>
@@ -45,7 +45,6 @@ export const SuggestedProducts: React.FC<Props> = ({ category, excludeId }) => {
           </button>
         </div>
       </div>
-
       <Swiper
         modules={[Navigation]}
         navigation={{
@@ -160,6 +159,6 @@ export const SuggestedProducts: React.FC<Props> = ({ category, excludeId }) => {
           );
         })}
       </Swiper>
-    </div>
+    </>
   );
 };

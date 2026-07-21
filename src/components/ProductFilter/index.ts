@@ -1,1 +1,1 @@
-import './ProductFilter';
+export { ProductFilter } from './ProductFilter';

@@ -1,1 +1,1 @@
-import './NewModels';
+export { NewModels } from './NewModels';

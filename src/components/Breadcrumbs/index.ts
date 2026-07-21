@@ -1,1 +1,1 @@
-import './Breadcrumbs';
+export { Breadcrumbs } from './Breadcrumbs';

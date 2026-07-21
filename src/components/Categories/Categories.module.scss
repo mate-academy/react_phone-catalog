@@ -1,13 +1,29 @@
+@use '../../styles/variables' as *;
 @use '../../styles/mixins.scss' as *;
 
 .section {
-  margin-bottom: 80px;
   grid-column: 1 / -1;
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 16px;
+
+    @include tablet {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
 
   &__header {
     display: flex;
-    justify-content: space-between;
+    grid-column: 1 / -1;
     align-items: center;
+    justify-content: space-between;
+
     height: 41px;
     margin-bottom: 24px;
   }
@@ -15,29 +31,35 @@
   &__title {
     margin: 0;
     padding: 0;
-    color: #F1F2F9;
+
     font-size: 32px;
     font-weight: 800;
+    color: $font;
     letter-spacing: -1%;
+
+    @include mobile {
+      font-size: 22px;
+    }
   }
 }
 
 .category {
-  display: grid;
-  grid-template-columns: repeat(24, 1fr);
+  display: flex;
+  grid-column: 1 / -1;
   gap: 16px;
 
-  @include tablet {
-    grid-template-columns: repeat(12, 1fr);
+  @include mobile {
+    flex-direction: column;
+    gap: 32px;
   }
 
-  @include mobile {
-    grid-template-columns: repeat(4, 1fr);
+  &__image {
+    width: 100%;
+    margin-bottom: 24px;
+    transition: transform 0.3s ease;
   }
 
   &__item {
-    grid-column: span 8;
-
     &:hover .category__image {
       transform: scale(1.05);
     }
@@ -47,12 +69,6 @@
     text-decoration: none;
   }
 
-  &__image {
-    width: 100%;
-    margin-bottom: 24px;
-
-    transition: transform 0.3s ease;
-  }
 
   &__header {
     display: flex;
@@ -62,17 +78,19 @@
 
   &__title {
     margin: 0;
-    color: #F1F2F9;
+
     font-family: Mont, sans-serif;
-    font-weight: 700;
     font-size: 20px;
+    font-weight: 700;
+    color: $font;
   }
 
   &__count {
     margin: 0;
-    color: #89939A;
+
     font-family: Mont, sans-serif;
-    font-weight: 600;
     font-size: 14px;
+    font-weight: 600;
+    color: $secondary;
   }
 }

@@ -1,1 +1,1 @@
-import './TabletsPage';
+export { TabletsPage } from './TabletsPage';

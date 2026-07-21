@@ -1,1 +1,1 @@
-import './HeroSlider';
+export { HeroSlider } from './HeroSlider';

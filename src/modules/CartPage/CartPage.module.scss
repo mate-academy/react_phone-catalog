@@ -1,18 +1,17 @@
 @use '../../styles/variables' as *;
 
 .main {
-  padding-bottom: 80px;
-  margin: 95px auto 0;
   max-width: 1136px;
+  margin: 95px auto 0;
+  padding-bottom: 80px;
 }
 
 .title {
   margin: 16px 0 32px;
 
-  font-weight: 800;
   font-size: 48px;
-  color: #F1F2F9;
-
+  font-weight: 800;
+  color: $font;
   letter-spacing: -1%;
 }
 
@@ -24,9 +23,8 @@
 }
 
 .itemsList {
-  grid-column: span 16;
-
   display: flex;
+  grid-column: span 16;
   flex-direction: column;
   gap: 16px;
 
@@ -34,37 +32,36 @@
 
 .cartItem {
   display: flex;
-  align-items: center;
   gap: 24px;
-
-  background-color: $surface-1;
+  align-items: center;
 
   padding-inline: 24px;
 
+  background-color: $surface-1;
+
   &__removeButton {
-    background-color: transparent;
-    border: none;
+    cursor: pointer;
 
     width: 16px;
     height: 16px;
+    border: none;
 
-    cursor: pointer;
+    background-color: transparent;
   }
 
   &__image {
-    height: 80px;
     width: 80px;
-
+    height: 80px;
     margin-block: 24px;
   }
 
   &__name {
-    padding: 0;
-    font-weight: 600;
-    font-size: 14px;
-
-    color: #F1F2F9;
     width: 336px;
+    padding: 0;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: $font;
   }
 
   &__quantityControl {
@@ -75,94 +72,85 @@
   &__quantityButton {
     width: 32px;
     height: 32px;
-
-    background-color: $surface-2;
     border: none;
 
-    color: #F1F2F9;
+    color: $font;
+
+    background-color: $surface-2;
 
     &:hover {
       background-color: $icons;
     }
 
     &:disabled {
-      background-color: transparent;
       border: 1px solid $elements;
+      background-color: transparent;
     }
   }
 
   &__quantity {
     padding-inline: 14px;
-
-    font-weight: 600;
     font-size: 14px;
-
-    color: #F1F2F9;
+    font-weight: 600;
+    color: $font;
   }
 
   &__price {
     display: flex;
     justify-content: right;
 
-    font-weight: 800;
-    font-size: 22px;
-
     width: 80px;
 
-    color: #F1F2F9;
+    font-size: 22px;
+    font-weight: 800;
+    color: $font;
   }
 }
 
 .summary {
+  display: flex;
   grid-column: 17 / -1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center ;
 
   padding: 24px;
-
   border: 1px solid $elements;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center ;
-  align-items: center;
-
   &__total {
-    font-weight: 800;
     font-size: 32px;
-
-    color: #F1F2F9;
-
+    font-weight: 800;
+    color: $font;
     letter-spacing: -1%;
   }
 
   &__quantity {
-    font-weight: 600;
     font-size: 14px;
-
+    font-weight: 600;
     color: $secondary;
   }
 
   &__divider {
-    color: $elements;
-
-    margin: 25px 0 24px;
-
     width: 100%;
+    margin: 25px 0 24px;
+    color: $elements;
   }
 
   &__checkoutButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 100%;
     height: 48px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border: none;
+
+    font-size: 14px;
+    font-weight: 700;
+    color: $font;
 
 
     background-color: $button;
-    border: none;
-    color: $font;
-
-    font-weight: 700;
-    font-size: 14px;
 
     &:hover {
       background-color: $button-hover;
@@ -173,8 +161,8 @@
 .imageWrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .image {
@@ -182,34 +170,38 @@
 }
 
 .emptyMessage {
-  font-weight: 600;
-  font-size: 20px;
-  color: $secondary;
   margin-top: 24px;
+  font-size: 20px;
+  font-weight: 600;
+  color: $secondary;
 }
 
 .modalOverlay {
   position: fixed;
+  z-index: 100;
   inset: 0;
-  background-color: rgba(15, 17, 33, 0.7);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 100;
+
+  background-color: rgba(15, 17, 33, 0.7);
 }
 
 .modal {
-  background-color: $primary;
-  border: 1px solid $elements;
-  padding: 32px;
   max-width: 400px;
+  padding: 32px;
+  border: 1px solid $elements;
+
   text-align: center;
 
+  background-color: $primary;
+
   &__text {
-    font-weight: 600;
-    font-size: 16px;
-    color: #F1F2F9;
     margin-bottom: 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: $font;
   }
 
   &__actions {
@@ -218,12 +210,16 @@
   }
 
   &__cancelButton {
-    flex: 1;
-    height: 40px;
-    background: $surface-1;
-    border: 1px solid $elements;
-    color: #F1F2F9;
     cursor: pointer;
+
+    flex: 1;
+
+    height: 40px;
+    border: 1px solid $elements;
+
+    color: $font;
+
+    background: $surface-1;
 
     &:hover {
       background-color: $elements;
@@ -231,12 +227,16 @@
   }
 
   &__confirmButton {
-    flex: 1;
-    height: 40px;
-    background-color: $button;
-    border: none;
-    color: $font;
     cursor: pointer;
+
+    flex: 1;
+
+    height: 40px;
+    border: none;
+
+    color: $font;
+
+    background-color: $button;
 
     &:hover {
       background-color: $button-hover;
