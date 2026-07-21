@@ -46,11 +46,9 @@
 
 .itemsList {
   display: flex;
-  grid-column: span 16;
   flex-direction: column;
-  gap: 16px;
-
   grid-column: 1 / 17;
+  gap: 16px;
 
   @include tablet-and-down {
     grid-column: 1 / -1;
@@ -84,6 +82,7 @@
 
   &__name {
     flex: 1;
+
     padding: 0;
 
     font-size: 14px;
@@ -139,11 +138,10 @@
     display: grid;
     grid-template-columns: 16px 80px 1fr;
     grid-template-rows: auto auto;
-    column-gap: 16px;
-    row-gap: 16px;
+    gap: 16px;
+    align-items: center;
 
     padding: 16px;
-    align-items: center;
   }
 
   .cartItem__removeButton {
@@ -154,14 +152,12 @@
   .cartItem__image {
     grid-column: 2;
     grid-row: 1;
-
     margin: 0;
   }
 
   .cartItem__name {
     grid-column: 3;
     grid-row: 1;
-
     width: auto;
   }
 
@@ -174,7 +170,6 @@
   .cartItem__price {
     grid-column: 3;
     grid-row: 2;
-
     justify-self: end;
     width: auto;
   }
@@ -189,8 +184,6 @@
 
   padding: 24px;
   border: 1px solid $elements;
-
-  grid-column: 17 / -1;
 
   @include tablet-and-down {
     grid-column: 1 / -1;
