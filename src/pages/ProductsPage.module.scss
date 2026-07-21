@@ -1,7 +1,9 @@
 .productsPage {
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
   min-width: 320px;
-  align-items: center;
+  align-items: stretch;
 
   @media (max-width: 639px) {
     padding-inline: 0;
