@@ -1,0 +1,191 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+
+.section {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block: 64px 24px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    color: $font;
+    letter-spacing: -1%;
+
+    @include mobile {
+      font-size: 22px;
+    }
+  }
+}
+
+.navigationButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.navButton {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $elements;
+  border-radius: 0;
+
+  background-color: $surface-2;
+
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+
+  &:hover {
+    background-color: $icons;
+  }
+
+  &:global(.swiper-button-disabled) {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: $primary;
+  }
+}
+
+.suggestedCard {
+  width: 272px;
+  padding: 0 32px 32px;
+  background-color: $surface-1;
+
+  &__link {
+    display: block;
+    color: $font;
+  }
+
+  &__img {
+    width: 196px;
+    height: 208px;
+    margin-bottom: 8px;
+    padding: 32px;
+
+    transition: transform 0.3s ease;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    display: flex;
+    gap: 2px;
+
+    height: 42px;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: $font;
+    text-decoration: none;
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    font-size: 22px;
+    font-weight: 800;
+    color: $font;
+  }
+
+  &__discount {
+    font-weight: 600;
+    color: $secondary;
+    text-decoration: line-through;
+  }
+
+  &__divider {
+    width: 100%;
+    color: $elements;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__property {
+    font-size: 12px;
+    font-weight: 700;
+    color: $secondary;
+  }
+
+  &__value {
+    font-size: 12px;
+    font-weight: 700;
+    color: $font;
+  }
+
+  &__control {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  &__addButton {
+    cursor: pointer;
+
+    width: 100%;
+    height: 40px;
+    border: none;
+
+    font-family: Mont, sans-serif;
+    color: $font;
+
+    background-color: $button;
+
+    &:hover {
+      background-color: $button-hover;
+    }
+
+    &--active {
+      background-color: $surface-2;
+
+      &:hover {
+        background-color: $icons;
+      }
+    }
+  }
+
+  &__favoriteButton {
+    cursor: pointer;
+
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+  }
+
+  &__favoriteIcon {
+    width: 40px;
+    height: 40px;
+    padding: 12px;
+    background-color: $surface-2;
+
+    &:hover {
+      background-color: $icons;
+    }
+  }
+
+  &:hover .productCard__img {
+    transform: scale(1.05);
+  }
+}

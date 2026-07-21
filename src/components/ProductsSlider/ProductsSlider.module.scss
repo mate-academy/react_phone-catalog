@@ -1,0 +1,67 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+
+.section {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    margin: 0 0 24px;
+
+    font-size: 32px;
+    font-weight: 800;
+    color: $font;
+    letter-spacing: -1%;
+
+    @include mobile {
+      font-size: 22px;
+    }
+  }
+}
+
+.navigationButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.navButton {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $elements;
+  border-radius: 0;
+
+  background-color: $surface-2;
+
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+
+  &:hover {
+    background-color: $icons;
+  }
+
+  &:global(.swiper-button-disabled) {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: $primary;
+  }
+}
+
+.slide {
+  width: 272px;
+
+  @include tablet {
+    width: 237px;
+  }
+
+  @include mobile {
+    width: 212px;
+  }
+}

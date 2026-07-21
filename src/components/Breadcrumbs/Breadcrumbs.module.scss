@@ -1,0 +1,46 @@
+@use '../../styles/variables' as *;
+
+.breadcrumbs {
+  margin-bottom: 40px;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+
+    height: 16px;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__link {
+    height: 16px;
+
+    font-size: 12px;
+    font-weight: 700;
+    color: $secondary;
+    text-decoration: none;
+
+    &:hover {
+      color: $font;
+    }
+  }
+
+  &__separator {
+    height: 16px;
+  }
+
+  &__current {
+    font-size: 12px;
+    font-weight: 700;
+    color: $secondary;
+  }
+}

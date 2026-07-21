@@ -1,0 +1,17 @@
+@use '../../styles/variables' as *;
+
+.backButton {
+  cursor: pointer;
+
+  display: flex;
+  gap: 4px;
+
+  margin-bottom: 16px;
+  border: none;
+
+  font-size: 12px;
+  font-weight: 700;
+  color: $font;
+
+  background-color: $primary;
+}

@@ -1,0 +1,114 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+
+.container {
+  border-top: 1px solid $elements;
+
+  @include tablet {
+    padding-inline: 32px;
+  }
+
+  @include mobile {
+    padding: 32px 16px;
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 1136px;
+  height: 96px;
+  margin-inline: auto;
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    height: 257px;
+  }
+}
+
+.link {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  color: $secondary;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 4%;
+
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $font;
+  }
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  list-style: none;
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+  }
+}
+
+.wrapper {
+  width: 33.3%;
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.backToTopWrapper {
+  display: flex;
+  gap: 16px;
+  justify-content: right;
+
+  @include mobile {
+    justify-content: center;
+  }
+}
+
+.backToTop {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  border: none;
+
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: $secondary;
+
+  background-color: $primary;
+}
+
+.backToTopButton {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: none;
+
+  background-color: $surface-2;
+
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $icons;
+  }
+}

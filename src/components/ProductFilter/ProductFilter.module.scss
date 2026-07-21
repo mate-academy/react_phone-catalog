@@ -1,0 +1,49 @@
+@use '../../styles/variables' as *;
+
+.filtersContainer {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filterGroupSort {
+  width: 176px  ;
+}
+
+.filterGroupItems {
+  width: 128px  ;
+}
+
+.filterText {
+  font-size: 12px;
+  font-weight: 700;
+  color: $secondary;
+
+}
+
+.select {
+  cursor: pointer;
+
+  height: 40px;
+  padding-left: 12px;
+  border: none;
+
+  font-size: 14px;
+  font-weight: 700;
+  color: $font;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: $surface-2;
+  background-image: url(../../../public/img/icons/arrow-down-gray.png);
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+
+}

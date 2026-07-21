@@ -1,1 +1,23 @@
-// not empty
+@use './styles/variables' as *;
+
+body {
+  margin: 0;
+  font-family: Mont, sans-serif;
+  background-color: $primary;
+}
+
+/* stylelint-disable-next-line selector-max-id */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__content {
+    flex: 1 0 auto;
+  }
+}

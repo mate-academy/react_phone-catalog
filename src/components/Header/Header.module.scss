@@ -1,0 +1,338 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+
+.header {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  display: flex;
+
+  height: 64px;
+  border-bottom: 1px solid $surface-2;
+
+  background-color: $primary;
+
+  @include tablet {
+    height: 48px;
+  }
+
+  @include mobile {
+    height: 48px;
+  }
+}
+
+.logo img {
+  width: 128px;
+  height: 64px;
+
+  @include tablet {
+    width: 96px;
+    height: 48px;
+  }
+
+  @include mobile {
+    width: 96px;
+    height: 48px;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  @include mobile {
+    justify-content: right;
+  }
+}
+
+.nav {
+  display: flex;
+
+  padding-left: 24px;
+
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+
+  @include tablet {
+    padding-left: 16px;
+  }
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 425px;
+  padding: 0;
+}
+
+.item {
+  letter-spacing: 4%;
+  list-style: none;
+}
+
+.link {
+  position: relative;
+
+  padding-block: 24px;
+
+  color: $secondary;
+  text-decoration: none;
+
+  transition: color 0.3s ease;
+}
+
+.link::after {
+  content: "";
+
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 0;
+  height: 3px;
+
+  background-color: $font;
+
+  transition: width 0.3s ease;
+
+  @include tablet {
+    bottom: 9px;
+  }
+}
+
+.link:hover {
+  color: $font;
+}
+
+.link:hover::after {
+  width: 50%;
+}
+
+.link.active {
+  color: $font;
+}
+
+.link.active::after {
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.actionLink {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 64px;
+  height: 64px;
+  padding: 24px;
+  border-left: 1px solid $surface-2;
+
+  @include tablet {
+    width: 48px;
+    height: 48px;
+  }
+
+  @include mobile {
+    display: none ;
+  }
+}
+
+.actionLink:hover {
+  color: $font;
+}
+
+.actionLink::after {
+  content: "";
+
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 0;
+  height: 3px;
+
+  background-color: $font;
+
+  transition: width 0.3s ease;
+}
+
+.actionLink:hover::after {
+  width: 50%;
+}
+
+.actionLink.active {
+  color: $font;
+}
+
+.actionLink.active::after {
+  width: 100%;
+}
+
+.iconContainer {
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+
+  font-size: 9px;
+  font-weight: 700;
+  color: $font;
+
+  background-color: $red;
+}
+
+.burgerButton {
+  cursor: pointer;
+
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-left: 1px solid $elements;
+
+  background: none;
+
+  @include mobile {
+    display: flex;
+  }
+
+  &__line {
+    width: 20px;
+    height: 2px;
+    background-color: $font;
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+
+  background-color: $surface-1;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 48px;
+    border-bottom: 1px solid $elements;
+  }
+
+  &__nav {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    justify-content: left;
+
+    margin: 24px 16px 0;
+  }
+
+  &__link {
+    border-bottom: 2px solid transparent;
+
+    font-size: 12px;
+    font-weight: 800;
+    color: $secondary;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4%;
+
+    &.active {
+      border-bottom-color: $font;
+      color: $font;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    border-top: 1px solid $elements;
+  }
+
+  &__actionLink {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+
+    height: 64px;
+    border-right: 1px solid $elements;
+
+    color: $font;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &.active {
+      margin-top: -1px;
+      border-top: 2px solid $font;
+    }
+  }
+}
+
+.closeButton {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-left: 1px solid $elements;
+
+  background: none;
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+}

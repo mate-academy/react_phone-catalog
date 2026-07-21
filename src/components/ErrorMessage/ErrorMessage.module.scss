@@ -1,0 +1,35 @@
+@use '../../styles/variables' as *;
+
+.error {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 400px;
+
+  &__text {
+    font-size: 20px;
+    font-weight: 600;
+    color: $font;
+  }
+
+  &__button {
+    cursor: pointer;
+
+    padding: 12px 32px;
+    border: none;
+
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: $font;
+
+    background-color: $button;
+
+    &:hover {
+      background-color: $button-hover;
+    }
+  }
+}

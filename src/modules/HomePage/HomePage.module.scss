@@ -1,0 +1,117 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+
+* {
+  box-sizing: border-box;
+}
+
+.main {
+  max-width: 1136px;
+  margin: 64px auto 80px;
+
+  @include tablet {
+    margin: 48px 24px 64px;
+  }
+
+  @include mobile {
+    margin: 48px 16px 64px;
+  }
+}
+
+.titleContainer {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 16px;
+  margin-block: 120px 56px;
+
+  @include tablet {
+    grid-template-columns: repeat(12, 1fr);
+    margin-block: 80px 32px;
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(4, 1fr);
+    margin-block: 72px 24px;
+  }
+}
+
+.title {
+  grid-column: 1 / -1;
+
+  margin: 0;
+
+  font-size: 48px;
+  font-weight: 800;
+  color: $font;
+  letter-spacing: -1%;
+
+  @include mobile {
+    font-size: 32px;
+  }
+}
+
+.content {
+  display: grid;
+  display: flex;
+  grid-template-columns: repeat(24, 1fr);
+  flex-direction: column;
+  gap: 80px;
+  column-gap: 16px;
+
+  margin-inline: auto;
+
+  @include tablet {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 64px;
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 56px;
+  }
+}
+
+.section {
+  grid-column: 1 / -1;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 41px;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+
+    font-size: 32px;
+    font-weight: 800;
+    color: $font;
+    letter-spacing: -1%;
+  }
+
+  &__buttons {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 16px;
+  }
+}
+
+.swiper {
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  border: solid 1px $elements;
+
+  background-color: $surface-2;
+}
+
+.footerDivider {
+  height: 1px;
+  margin: 0;
+  color: $elements;
+}
+
