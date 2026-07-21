@@ -1,9 +1,24 @@
 @use '../shared/styles/typography' as *;
+@use '../shared/styles/variables' as *;
+@use '../shared/styles/breakpoints' as *;
 
 .contacts {
   padding: 24px 16px;
 }
 
 .contacts__title {
+  margin-top: 24px;
+  margin-bottom: 24px;
+
   @include typography(h1);
+
+  @include respond(tablet) {
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+
+  @include respond(desktop) {
+    margin-top: 56px;
+    margin-bottom: 56px;
+  }
 }

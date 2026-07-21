@@ -1,5 +1,6 @@
 @use '../../styles/variables' as *;
 @use '../../styles/typography' as *;
+@use '../../styles/breakpoints' as *;
 
 .footer {
     display: flex;
@@ -7,19 +8,96 @@
     height: 100%;
     padding: 32px 16px;
     border-top: 1px solid $color-elements;
+    border-bottom: 1px solid $color-elements;
+    
     background-color: $color-white;
+    max-width: 1440px;
+   
+
+    @include respond(tablet) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 96px;
+    }
+
+    @include respond(desktop) {
+        width: 100%;
+        margin: 0 auto;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 96px;
+      
+    }
+
+    @include respond(desktop-over) {
+        width: 100%;
+        margin: 0 auto;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 96px;
+        border-left: 1px solid $color-elements;
+    border-right: 1px solid $color-elements;
+    }
+}
+
+.footer__logoContainer {
+    margin-bottom: 32px;
+
+    @include respond(tablet) {
+        flex: 1;
+        margin-bottom: 0;
+    }
+
+    @include respond(desktop) {
+        flex: 1;
+        margin-bottom: 0;
+    }
+
+    @include respond(desktop-over) {
+        flex: 1;
+        margin-bottom: 0;
+    }
 }
 
 .footer__logo {
     width: 89px;
     height: 32px;
-    margin-bottom: 32px;
+
+    @include respond(tablet) {
+        display: block;
+    }
+
+    @include respond(desktop) {
+        display: block;
+    }
+
+    @include respond(desktop-over) {
+        display: block;
+    }
 }
 
 .footer__backToTop {
-   display: flex;
-   align-items: center;
-   justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include respond(tablet) {
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+    @include respond(desktop) {
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+    @include respond(desktop-over) {
+        flex: 1;
+        justify-content: flex-end;
+    }
 }
 
 .footer__backToTopButton {
@@ -39,6 +117,8 @@
         height: 100%;
         display: block;
     }
+
+    
 }
 
 .footer__backToTopText {
@@ -47,22 +127,45 @@
     @include typography(small);
 
     margin-right: 16px;
+   
 }
 
 .footer__backToTopButtonIcon {
     height: 16px;
     width: 16px;
     stroke: $color-primary;
+   
 }
 
 .footer__links {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    margin-top: 32px;
+    align-items: flex-start;
+
+    @include respond(tablet) {
+        flex: 1;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 0;
+    }
+
+    @include respond(desktop) {
+        flex: 1;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 0;
+    }
+
+    @include respond(desktop-over) {
+        flex: 1;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 0;
+    }
 
     @include typography(uppercase);
 
     color: $color-secondary;
-
-    margin-top: 32px;
 }

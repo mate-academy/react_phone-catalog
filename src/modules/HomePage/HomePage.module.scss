@@ -47,8 +47,10 @@
     }
 
 }
+
 .homePage__header__title {
     @include typography(h1);
+
     width: 100%;
     margin: 0;
 }

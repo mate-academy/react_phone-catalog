@@ -3,39 +3,44 @@
 @use '../../styles/typography' as *;
 
 .navbar {
-    display: flex;
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0;
-    height: auto;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background-color: $color-white;
-    border-bottom: 1px solid $color-elements;
+  display: flex;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0;
+  height: auto;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: $color-white;
+  border-bottom: 1px solid $color-elements;
+
+  @include respond(desktop) {
     border-left: 1px solid $color-elements;
+  }
 }
 
 .navbar__menuButton {
-    height: 48px;
-    margin-left: auto;
-    border: none;
-    background: none;
-    cursor: pointer;
-    display: flex;
+  height: 48px;
+  margin-left: auto;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
 
-    @include respond(tablet) {
-        display: none; // menu only exists on mobile — nav links show inline from tablet up
-    }
+  @include respond(tablet) {
+    // menu only exists on mobile — nav links show inline from tablet up
+    display: none;
+  }
 
-    @include respond(desktop) {
-        display: none; // menu only exists on mobile — nav links show inline from tablet up
-    }
+  @include respond(desktop) {
+    // menu only exists on mobile — nav links show inline from tablet up
+    display: none;
+  }
 
-    align-items: center;
-    padding: 0 16px;
-    border-left: 1px solid $color-elements;
+  align-items: center;
+  padding: 0 16px;
+  border-left: 1px solid $color-elements;
 }
 
 .navbar__logo {

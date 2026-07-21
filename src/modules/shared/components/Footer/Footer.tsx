@@ -8,7 +8,9 @@ const UP_CHEVRON_PATH = `M3.52876 10.4714C3.26841 10.211 3.26841 9.7889 3.52876 
 export const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <img src={logo} alt="Logo" className={styles.footer__logo} />
+      <div className={styles.footer__logoContainer}>
+        <img src={logo} alt="Logo" className={styles.footer__logo} />
+      </div>
 
       <div className={styles.footer__links}>
         <a

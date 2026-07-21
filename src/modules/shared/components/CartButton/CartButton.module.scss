@@ -25,6 +25,7 @@
         border-top: none;
         border-bottom: 2px solid transparent;
         
+        
     }
 
     @include respond(tablet) {
@@ -33,6 +34,7 @@
         border-left: 1px solid $color-elements;
         border-top: none;
         border-bottom: 2px solid transparent;
+        border-right: none;
     }
 }
 
