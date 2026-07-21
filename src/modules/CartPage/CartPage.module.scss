@@ -109,9 +109,11 @@
   }
 
   &__quantityButton {
+    cursor: pointer;
+
     width: 32px;
     height: 32px;
-    cursor: pointer;
+
     border: none;
 
 
