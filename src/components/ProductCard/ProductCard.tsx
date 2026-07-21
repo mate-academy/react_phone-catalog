@@ -68,7 +68,10 @@ export const ProductCard = ({ product, hideDiscount }: Props) => {
           className={styles.buttonFav}
           onClick={() => toggleFavorite(product)}
         >
-          <img src={isFavorite ? 'img/favouritesheartlike.svg' : 'img/heart.svg'} alt="Favorite" />
+          <img
+            src={isFavorite ? 'img/favouritesheartlike.svg' : 'img/heart.svg'}
+            alt="Favorite"
+          />
         </button>
       </div>
     </div>

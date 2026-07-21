@@ -49,10 +49,17 @@ export const PicturesSlider = () => {
     <div className={styles.banner}>
       <div className={styles.container}>
         <button className={styles.btnLeft} onClick={goToPrev}>
-          <img src={getAssetUrl('/img/button-right-default.png')} alt="Previous" />
+          <img
+            src={getAssetUrl('/img/button-right-default.png')}
+            alt="Previous"
+          />
         </button>
         <div className={styles.window}>
-          <img src={images[currentIndex]} alt="banner" className={styles.image} />
+          <img
+            src={images[currentIndex]}
+            alt="banner"
+            className={styles.image}
+          />
         </div>
         <button className={styles.btnRight} onClick={goToNext}>
           <img src={getAssetUrl('/img/button-right-default.png')} alt="Next" />
@@ -62,7 +69,11 @@ export const PicturesSlider = () => {
         {images.map((image, index) => (
           <button
             key={image}
-            className={index === currentIndex ? `${styles.dot} ${styles.dotActive}` : styles.dot}
+            className={
+              index === currentIndex
+                ? `${styles.dot} ${styles.dotActive}`
+                : styles.dot
+            }
             onClick={() => goToIndex(index)}
           />
         ))}

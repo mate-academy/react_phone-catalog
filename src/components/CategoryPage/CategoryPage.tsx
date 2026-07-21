@@ -67,7 +67,11 @@ export const CategoryPage = ({ category }: Props) => {
     let last: number | undefined;
 
     for (let i = 1; i <= totalPages; i++) {
-      if (i === 1 || i === totalPages || (i >= page - delta && i <= page + delta)) {
+      if (
+        i === 1 ||
+        i === totalPages ||
+        (i >= page - delta && i <= page + delta)
+      ) {
         range.push(i);
       }
     }
@@ -80,6 +84,7 @@ export const CategoryPage = ({ category }: Props) => {
           rangeWithDots.push('...');
         }
       }
+
       rangeWithDots.push(i);
       last = i;
     });
@@ -176,7 +181,7 @@ export const CategoryPage = ({ category }: Props) => {
 
       {totalPages > 1 && (
         <div className={styles.pagination}>
-          {visiblePages.map((pageNumber, index) => (
+          {visiblePages.map((pageNumber, index) =>
             typeof pageNumber === 'number' ? (
               <button
                 key={pageNumber}
@@ -190,9 +195,11 @@ export const CategoryPage = ({ category }: Props) => {
                 {pageNumber}
               </button>
             ) : (
-              <span key={`dots-${index}`} className={styles.dots}>...</span>
-            )
-          ))}
+              <span key={`dots-${index}`} className={styles.dots}>
+                ...
+              </span>
+            ),
+          )}
         </div>
       )}
     </div>

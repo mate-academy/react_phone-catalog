@@ -22,7 +22,9 @@ export const ProductsSlider = ({ title, products, hideDiscount }: Props) => {
     }
 
     setCanScrollLeft(track.scrollLeft > 0);
-    setCanScrollRight(track.scrollLeft + track.clientWidth < track.scrollWidth - 1);
+    setCanScrollRight(
+      track.scrollLeft + track.clientWidth < track.scrollWidth - 1,
+    );
   };
 
   useEffect(() => {
@@ -40,11 +42,17 @@ export const ProductsSlider = ({ title, products, hideDiscount }: Props) => {
   };
 
   const scrollLeft = () => {
-    trackRef.current?.scrollBy({ left: -getScrollDistance(), behavior: 'smooth' });
+    trackRef.current?.scrollBy({
+      left: -getScrollDistance(),
+      behavior: 'smooth',
+    });
   };
 
   const scrollRight = () => {
-    trackRef.current?.scrollBy({ left: getScrollDistance(), behavior: 'smooth' });
+    trackRef.current?.scrollBy({
+      left: getScrollDistance(),
+      behavior: 'smooth',
+    });
   };
 
   if (products.length === 0) {
@@ -59,16 +67,28 @@ export const ProductsSlider = ({ title, products, hideDiscount }: Props) => {
           <span className={styles.count}>{products.length} models</span>
         </div>
         <div className={styles.buttons}>
-          <button className={styles.btnLeft} onClick={scrollLeft} disabled={!canScrollLeft}>
+          <button
+            className={styles.btnLeft}
+            onClick={scrollLeft}
+            disabled={!canScrollLeft}
+          >
             <img src="img/button-right-default.png" alt="Previous" />
           </button>
-          <button className={styles.btnRight} onClick={scrollRight} disabled={!canScrollRight}>
+          <button
+            className={styles.btnRight}
+            onClick={scrollRight}
+            disabled={!canScrollRight}
+          >
             <img src="img/button-right-default.png" alt="Next" />
           </button>
         </div>
       </div>
       <div className={styles.trackContainer}>
-        <div className={styles.track} ref={trackRef} onScroll={updateScrollState}>
+        <div
+          className={styles.track}
+          ref={trackRef}
+          onScroll={updateScrollState}
+        >
           {products.map(product => (
             <div key={product.itemId} className={styles.item}>
               <ProductCard product={product} hideDiscount={hideDiscount} />

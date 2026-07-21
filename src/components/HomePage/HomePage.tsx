@@ -21,7 +21,11 @@ export const HomePage = () => {
       <PicturesSlider />
       <ProductsSlider title="Hot prices" products={hotProducts} />
       <ShopByCategory />
-      <ProductsSlider title="Brand new" products={brandNewProducts} hideDiscount />
+      <ProductsSlider
+        title="Brand new"
+        products={brandNewProducts}
+        hideDiscount
+      />
     </div>
   );
 };

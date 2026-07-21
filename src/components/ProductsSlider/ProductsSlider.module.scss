@@ -31,6 +31,10 @@
   gap: 8px;
 }
 
+.btnLeft img {
+  transform: scaleX(-1);
+}
+
 .btnLeft,
 .btnRight {
   width: 56px;
@@ -49,10 +53,6 @@
     transition: opacity 0.3s;
   }
 
-  &:hover:not(:disabled) img {
-    opacity: 1;
-  }
-
   &:disabled {
     cursor: not-allowed;
 
@@ -60,10 +60,10 @@
       opacity: 0.3;
     }
   }
-}
 
-.btnLeft img {
-  transform: scaleX(-1);
+  &:hover:not(:disabled) img {
+    opacity: 1;
+  }
 }
 
 .trackContainer {
