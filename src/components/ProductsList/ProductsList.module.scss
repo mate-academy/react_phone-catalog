@@ -1,0 +1,18 @@
+@import '../../styles/mixins';
+
+.list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: stretch;
+
+  @include tablet {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: stretch;
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  }
+}

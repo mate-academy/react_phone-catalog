@@ -1,0 +1,106 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+  flex: 1;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: $c-text-primary;
+  margin-bottom: 8px;
+  text-transform: capitalize;
+}
+
+.count {
+  display: block;
+  font-size: 14px;
+  color: $c-text-secondary;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.filters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: $c-text-secondary;
+}
+
+.select {
+  height: 40px;
+  padding: 0 16px;
+  background-color: #323542;
+  border: 1px solid $c-border;
+  color: $c-text-primary;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 176px;
+
+  option {
+    background-color: $c-bg-elements;
+    color: $c-text-primary;
+  }
+
+  &:hover {
+    border-color: $c-primary;
+  }
+}
+
+.message {
+  text-align: center;
+  padding: 40px;
+  color: $c-text-secondary;
+  font-size: 18px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.pageButton {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: 1px solid $c-border;
+  color: $c-text-primary;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: $c-primary;
+  }
+}
+
+.pageButtonActive {
+  background-color: $c-primary;
+  border-color: $c-primary;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  color: $c-text-secondary;
+  padding: 0 4px;
+}
