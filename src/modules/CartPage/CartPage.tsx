@@ -3,6 +3,7 @@ import styles from './CartPage.module.scss';
 import { useCart } from '../shared/contexts/CartContext';
 import { BackButton } from '../../components/BackButton/BackButton';
 import { buildUrl } from '../shared/utils/buildUrl';
+import { Link } from 'react-router-dom';
 
 export const CartPage: React.FC = () => {
   const {
@@ -66,13 +67,18 @@ export const CartPage: React.FC = () => {
                   <img src="img/icons/remove.png" alt="Remove" />
                 </button>
 
-                <img
-                  src={buildUrl(item.product.image)}
-                  alt={item.product.name}
-                  className={styles.cartItem__image}
-                />
+                <Link
+                  to={`/product/${item.product.itemId}`}
+                  className={styles.cartItem__product}
+                >
+                  <img
+                    src={buildUrl(item.product.image)}
+                    alt={item.product.name}
+                    className={styles.cartItem__image}
+                  />
 
-                <p className={styles.cartItem__name}>{item.product.name}</p>
+                  <p className={styles.cartItem__name}>{item.product.name}</p>
+                </Link>
 
                 <div className={styles.cartItem__quantityControl}>
                   <button

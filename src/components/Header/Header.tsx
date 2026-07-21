@@ -63,7 +63,12 @@ export const Header: React.FC = () => {
           </nav>
 
           <div className={styles.actions}>
-            <Link to="/favorites" className={styles.actionLink}>
+            <NavLink
+              to="/favorites"
+              className={({ isActive }) =>
+                `${styles.actionLink} ${isActive ? styles.active : ''}`
+              }
+            >
               <div className={styles.iconContainer}>
                 <img
                   src={buildUrl('img/icons/favorite.svg')}
@@ -75,8 +80,13 @@ export const Header: React.FC = () => {
                   <span className={styles.badge}>{favorites.length}</span>
                 )}
               </div>
-            </Link>
-            <Link to="/cart" className={styles.actionLink}>
+            </NavLink>
+            <NavLink
+              to="/cart"
+              className={({ isActive }) =>
+                `${styles.actionLink} ${isActive ? styles.active : ''}`
+              }
+            >
               <div className={styles.iconContainer}>
                 <img
                   src={buildUrl('img/icons/cart.svg')}
@@ -88,7 +98,7 @@ export const Header: React.FC = () => {
                   <span className={styles.badge}>{totalQuantity}</span>
                 )}
               </div>
-            </Link>
+            </NavLink>
 
             <button
               className={styles.burgerButton}

@@ -64,6 +64,19 @@
 
   background-color: $surface-1;
 
+  &__product {
+    display: flex;
+    flex: 1;
+    gap: 24px;
+    align-items: center;
+
+    text-decoration: none;
+
+    @include mobile {
+      display: contents;
+    }
+  }
+
   &__removeButton {
     cursor: pointer;
 
@@ -102,6 +115,8 @@
 
     color: $font;
 
+    cursor: pointer;
+
     background-color: $surface-2;
 
     &:hover {
@@ -109,6 +124,7 @@
     }
 
     &:disabled {
+      cursor: not-allowed;
       border: 1px solid $elements;
       background-color: transparent;
     }

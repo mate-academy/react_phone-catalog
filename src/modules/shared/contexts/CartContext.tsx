@@ -9,6 +9,7 @@ type CartContextType = {
   isInCart: (productId: number) => boolean;
   addToCart: (product: Product) => void;
   removeFromCart: (productId: number) => void;
+  toggleCart: (product: Product) => void;
   incrementQuantity: (productId: number) => void;
   decrementQuantity: (productId: number) => void;
   clearCart: () => void;
@@ -77,6 +78,14 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     setCartItems(prev => prev.filter(item => item.id !== productId));
   };
 
+  const toggleCart = (product: Product) => {
+    if (isInCart(product.id)) {
+      removeFromCart(product.id);
+    } else {
+      addToCart(product);
+    }
+  };
+
   const incrementQuantity = (productId: number) => {
     setCartItems(prev =>
       prev.map(item =>
@@ -122,6 +131,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         isInCart,
         addToCart,
         removeFromCart,
+        toggleCart,
         incrementQuantity,
         decrementQuantity,
         clearCart,

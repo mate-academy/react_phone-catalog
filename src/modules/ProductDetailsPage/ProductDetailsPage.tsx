@@ -22,7 +22,7 @@ const categoryLabels: Record<string, string> = {
 };
 
 export const ProductDetailsPage: React.FC = () => {
-  const { isInCart, addToCart } = useCart();
+  const { isInCart, toggleCart } = useCart();
   const { favorites, toggleFavorites } = useFavorites();
 
   const { productId = '' } = useParams();
@@ -53,7 +53,7 @@ export const ProductDetailsPage: React.FC = () => {
   };
 
   const handleAddToCart = () => {
-    if (!product || numericId === null || isInCart(numericId)) {
+    if (!product || numericId === null) {
       return;
     }
 
@@ -72,7 +72,7 @@ export const ProductDetailsPage: React.FC = () => {
       image: product.images[0],
     };
 
-    addToCart(shortProduct);
+    toggleCart(shortProduct);
   };
 
   if (isLoading) {
@@ -201,7 +201,7 @@ export const ProductDetailsPage: React.FC = () => {
                 className={`${styles.addButton} ${isAddedToCart ? styles['addButton--active'] : ''}`}
                 onClick={handleAddToCart}
               >
-                {isAddedToCart ? 'Added' : 'Add to cart'}
+                {isAddedToCart ? 'Added to cart' : 'Add to cart'}
               </button>
               <button
                 className={`${styles.favoriteButton} ${isFavorite ? styles['favoriteButton--active'] : ''}`}

@@ -157,6 +157,38 @@
   }
 }
 
+.actionLink:hover {
+  color: $font;
+}
+
+.actionLink::after {
+  content: "";
+
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 0;
+  height: 3px;
+
+  background-color: $font;
+
+  transition: width 0.3s ease;
+}
+
+.actionLink:hover::after {
+  width: 50%;
+}
+
+.actionLink.active {
+  color: $font;
+}
+
+.actionLink.active::after {
+  width: 100%;
+}
+
 .iconContainer {
   position: relative;
   width: 16px;
@@ -181,26 +213,6 @@
   color: $font;
 
   background-color: $red;
-}
-
-.actionLink::after {
-  content: "";
-
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-
-  width: 0;
-  height: 3px;
-
-  background-color: $font;
-
-  transition: width 0.3s ease;
-}
-
-.actionLink:hover::after {
-  width: 50%;
 }
 
 .burgerButton {

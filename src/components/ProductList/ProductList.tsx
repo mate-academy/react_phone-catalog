@@ -22,7 +22,7 @@ export const ProductsList: React.FC<Props> = ({
   emptyMessage,
   showFilter = true,
 }) => {
-  const { isInCart, addToCart } = useCart();
+  const { isInCart, toggleCart } = useCart();
   const { isFavorite, toggleFavorites } = useFavorites();
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -174,12 +174,12 @@ export const ProductsList: React.FC<Props> = ({
                 </div>
                 <div className={styles.productCard__control}>
                   <button
-                    className={`${styles.productCard__addButton} ${isAddedToCart ? styles['productCard__addButton--active'] : ''}`}
-                    onClick={() => {
-                      if (!isAddedToCart) {
-                        addToCart(product);
-                      }
-                    }}
+                    className={`${styles.productCard__addButton} ${
+                      isAddedToCart
+                        ? styles['productCard__addButton--active']
+                        : ''
+                    }`}
+                    onClick={() => toggleCart(product)}
                   >
                     {isAddedToCart ? 'Added to cart' : 'Add to cart'}
                   </button>

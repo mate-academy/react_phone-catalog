@@ -252,11 +252,10 @@
   }
 
   &--active {
-    cursor: default;
     background-color: $surface-2;
 
     &:hover {
-      background-color: $surface-2;
+      background-color: $icons;
     }
   }
 }
