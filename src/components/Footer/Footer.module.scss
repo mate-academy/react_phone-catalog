@@ -1,0 +1,86 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.footer {
+  border-top: 1px solid $c-border;
+  background-color: $c-bg-dark;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  @include tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    padding: 0 24px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  color: $c-text-primary;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 16px;
+  margin-top: -6px;
+
+  img {
+    height: 36px;
+    width: auto;
+    display: block;
+  }
+}
+
+.links {
+  display: flex;
+  gap: 56px;
+}
+
+.link {
+  color: $c-text-secondary;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $c-text-primary;
+  }
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: $c-text-secondary;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  transition: color 0.3s, transform 0.2s;
+
+  &:hover {
+    color: $c-text-primary;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.backIcon {
+  width: 20px;
+  height: 20px;
+}

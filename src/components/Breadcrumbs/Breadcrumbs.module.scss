@@ -1,0 +1,40 @@
+@import '../../styles/variables';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: $c-text-secondary;
+  font-size: 12px;
+  margin-bottom: 24px;
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+  height: 16px;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.divider {
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+}
+
+.link {
+  color: $c-text-secondary;
+  text-decoration: none;
+
+  &:hover {
+    color: $c-text-primary;
+  }
+}
+
+.current {
+  color: $c-text-secondary;
+}

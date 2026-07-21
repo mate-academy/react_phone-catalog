@@ -1,0 +1,83 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.banner {
+  width: 100%;
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 200px;
+  margin-bottom: 16px;
+  gap: 16px;
+
+  @include tablet {
+    height: 400px;
+  }
+}
+
+.btnLeft,
+.btnRight {
+  width: 32px;
+  height: 100%;
+  background-color: $c-selected;
+  border: 1px solid transparent;
+  color: $c-text-primary;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s, background-color 0.3s;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    border-color: $c-border;
+    background-color: #4A4D58;
+  }
+}
+
+.btnLeft img {
+  transform: scaleX(-1);
+}
+
+.window {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dots {
+  display: flex;
+  gap: 16px;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  background-color: $c-border;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dotActive {
+  width: 24px;
+  background-color: $c-text-primary;
+}

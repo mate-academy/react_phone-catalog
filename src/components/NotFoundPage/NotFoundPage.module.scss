@@ -1,0 +1,23 @@
+@import '../../styles/variables';
+
+.page {
+  text-align: center;
+  padding: 100px 20px;
+  width: 100%;
+}
+
+.title {
+  font-size: 32px;
+  margin-bottom: 24px;
+  color: $c-text-primary;
+}
+
+.link {
+  color: $c-primary;
+  text-decoration: underline;
+  font-size: 18px;
+
+  &:hover {
+    color: $c-primary-hover;
+  }
+}
