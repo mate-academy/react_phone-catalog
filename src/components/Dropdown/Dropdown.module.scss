@@ -1,0 +1,104 @@
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-family: Mont;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  color: #89939a;
+}
+
+.selection {
+  width: 136px;
+  height: 40px;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: #b4bdc3;
+  border-style: solid;
+  color: #0f0f11;
+  padding-inline: 16px;
+  appearance: none;
+  background-image: url('./img/arrows/arrow_down.svg');
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  font-family: Mont;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.selectionOpen {
+  background-image: url('./img/arrows/arrow_up.svg');
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  width: 136px;
+  height: 40px;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: #b4bdc3;
+  border-style: solid;
+  color: #0f0f11;
+  padding-inline: 16px;
+  appearance: none;
+  font-family: Mont;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.selection option,
+.selectionOpen option {
+  font-family: Mont, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #89939a;
+  background-color: #fff;
+}
+
+@supports (appearance: base-select) {
+  .selection,
+  .selectionOpen {
+    appearance: base-select;
+    display: flex;
+    align-items: center;
+
+    &::picker-icon {
+      display: none;
+    }
+
+    &::picker(select) {
+      appearance: base-select;
+      margin-top: 4px;
+      padding: 8px 0;
+      border: 1px solid #e2e6e9;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    option {
+      padding: 8px 16px;
+      line-height: 21px;
+      color: #89939a;
+      background: #fff;
+
+      &::checkmark {
+        display: none;
+      }
+
+      &:hover,
+      &:focus {
+        background: #fafbfc;
+        color: #0f0f11;
+      }
+
+      &:checked {
+        color: #0f0f11;
+      }
+    }
+  }
+}

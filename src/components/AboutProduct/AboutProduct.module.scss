@@ -1,0 +1,40 @@
+.AboutBlock {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: transparent;
+}
+
+.divider {
+  border: none;
+  min-height: 1px;
+  background-color: #e2e6e9;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.AboutSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  & + & {
+    margin-top: 32px;
+  }
+}
+
+.aboutTitle {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 100%;
+  color: #0f0f11;
+}
+
+.aboutText {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+}

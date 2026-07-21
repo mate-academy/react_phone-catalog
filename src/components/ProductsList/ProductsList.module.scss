@@ -1,0 +1,16 @@
+.cardsList {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @media (min-width: 640px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 16px;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 40px;
+  }
+}

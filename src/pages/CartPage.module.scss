@@ -1,0 +1,133 @@
+.cartPage {
+  padding-inline: 16px;
+  max-width: 640px;
+  margin-inline: auto;
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    max-width: none;
+    padding-inline: 24px;
+  }
+
+  @media (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: 1fr 368px;
+    align-content: start;
+    column-gap: 16px;
+    max-width: 1136px;
+    padding-inline: 0;
+  }
+}
+
+.title {
+  margin: 0 0 16px;
+
+  font-family: Mont;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  color: #0f0f11;
+
+  @media (min-width: 1200px) {
+    grid-column: 1 / -1;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (min-width: 1200px) {
+    grid-column: 1;
+  }
+}
+
+.checkoutBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  margin-top: 32px;
+  padding: 24px;
+
+  border: 1px solid #e2e6e9;
+  border-radius: 16px;
+
+  @media (min-width: 1200px) {
+    grid-column: 2;
+    grid-row: 3;
+    align-self: start;
+    margin-top: 0;
+  }
+}
+
+.checkoutPrice {
+  margin: 0;
+  text-align: center;
+
+  font-family: Mont;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  color: #0f0f11;
+}
+
+.checkoutItems {
+  margin: 0;
+  text-align: center;
+
+  font-family: Mont;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+
+  color: #89939a;
+}
+
+.checkoutDivider {
+  width: 100%;
+  height: 1px;
+  background: #e2e6e9;
+}
+
+.checkoutButton {
+  width: 100%;
+  height: 48px;
+  padding: 0;
+
+  background: #f86800;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  font-family: Mont;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+
+  color: #ffffff;
+  text-align: center;
+
+  transition: box-shadow 0.2s ease;
+
+  @media (min-width: 640px) {
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
+  }
+}
+
+.emptyCartMessage {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #89939a;
+  text-align: center;
+  padding-top: 40px;
+}

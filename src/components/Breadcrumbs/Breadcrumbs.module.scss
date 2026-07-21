@@ -1,0 +1,49 @@
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding-bottom: 24px;
+  overflow: hidden;
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    padding-inline: 24px;
+    grid-column: 1 / -1;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1136px;
+    width: 100%;
+    margin-inline: auto;
+    grid-column: 1 / -1;
+  }
+}
+
+.homeButton {
+  background-image: url('./img/buttons/home_button.svg');
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+}
+
+.currentPage {
+  font-family: Mont;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  color: #89939a;
+  text-transform: capitalize;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.categoryLink {
+  font-family: Mont;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  color: #313237;
+  text-decoration: none;
+  text-transform: capitalize;
+}

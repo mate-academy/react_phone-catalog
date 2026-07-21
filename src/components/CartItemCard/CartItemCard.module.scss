@@ -1,0 +1,164 @@
+.CartItemCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding: 16px 24px;
+
+  background: #ffffff;
+  border: 1px solid #e2e6e9;
+  border-radius: 16px;
+
+  @media (max-width: 639px) {
+    padding: 16px;
+  }
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    padding: 24px;
+  }
+}
+
+.topRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+
+  @media (min-width: 640px) {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.deleteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 16px;
+  height: 16px;
+  padding: 0;
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+
+  img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
+
+  @media (min-width: 640px) {
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.productImage {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.productName {
+  flex: 1;
+  margin: 0;
+
+  font-family: Mont;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+
+  color: #0f0f11;
+}
+
+.bottomRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  @media (min-width: 640px) {
+    flex-shrink: 0;
+    width: auto;
+    gap: 32px;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 96px;
+}
+
+.quantityButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  transition: opacity 0.2s ease;
+
+  img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+
+  @media (min-width: 640px) {
+    &:hover:not(:disabled) {
+      opacity: 0.7;
+    }
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.count {
+  min-width: 12px;
+  text-align: center;
+
+  font-family: Mont;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+
+  color: #0f0f11;
+}
+
+.productPrice {
+  margin: 0;
+  text-align: right;
+
+  font-family: Mont;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0;
+
+  color: #0f0f11;
+}

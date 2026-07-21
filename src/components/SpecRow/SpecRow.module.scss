@@ -1,0 +1,27 @@
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+
+  span:first-child {
+    font-family: Mont, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+    flex-shrink: 0;
+  }
+
+  span:last-child {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: right;
+    color: #313237;
+    flex: 1;
+    min-width: 0;
+  }
+}

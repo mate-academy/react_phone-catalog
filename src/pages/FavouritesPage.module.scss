@@ -1,0 +1,91 @@
+.favouritesPage {
+  margin: 0 auto;
+  min-width: 320px;
+  align-items: center;
+
+  @media (max-width: 639px) {
+    padding-inline: 0;
+  }
+
+  article {
+    margin-top: 40px;
+
+    &:first-of-type {
+      margin-top: 32px;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-content: start;
+    column-gap: 16px;
+    padding-inline: 24px;
+
+    article {
+      margin-top: 16px;
+
+      &:first-of-type {
+        margin-top: 16px;
+      }
+    }
+  }
+
+  @media (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-content: start;
+    column-gap: 16px;
+    max-width: 1136px;
+    padding-inline: 0;
+
+    article {
+      margin-top: 16px;
+
+      &:first-of-type {
+        margin-top: 16px;
+      }
+    }
+  }
+}
+
+
+
+.titlePage {
+  font-family: 'Mont', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: #0f0f11;
+  width: 288px;
+
+  @media (min-width: 640px) {
+    width: auto;
+    grid-column: 1 / -1;
+  }
+}
+
+.favouritesItems {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+  width: 288px;
+  margin-top: 8px;
+
+  @media (min-width: 640px) {
+    width: auto;
+    grid-column: 1 / -1;
+  }
+}
+
+.emptyPage {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #89939a;
+  text-align: center;
+  padding-top: 40px;
+}
