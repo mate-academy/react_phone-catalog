@@ -1,0 +1,41 @@
+@use 'src/styles/vars' as *;
+@use 'src/styles/mixins' as *;
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: $primary;
+  background-color: $white;
+  border: 1px solid $icons;
+  border-radius: 50%;
+  cursor: pointer;
+
+  @include transition((color, border-color));
+
+  @include hover {
+    border-color: $primary;
+  }
+
+  &:disabled {
+    color: $elements;
+    border-color: $elements;
+    cursor: default;
+  }
+}
+
+.buttonSelected {
+  color: $secondary-accent;
+  border-color: $elements;
+
+  @include hover {
+    border-color: $elements;
+  }
+}
+
+.button__icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+}

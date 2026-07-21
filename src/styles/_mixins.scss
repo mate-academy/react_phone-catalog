@@ -1,0 +1,220 @@
+@use './vars' as *;
+
+// DEVICES SCREENS
+@mixin on-tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+// GLOBAL PADDING
+@mixin padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+}
+
+// GRID
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 16px;
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+
+    grid-template-columns: repeat(var(--columns), 32px);
+  }
+}
+
+
+// TYPOGRAPHY
+@mixin body-text($size: 14px, $weight: 600) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: 21px;
+  color: $primary;
+  letter-spacing: 0;
+}
+
+@mixin small-text($size: 12px, $weight: 700) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: 15px;
+  color: $primary;
+  letter-spacing: 0;
+}
+
+@mixin uppercase($size: 12px, $weight: 800) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin button-text($size: 14px, $weight: 700) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: 21px;
+  color: $primary;
+  letter-spacing: 0;
+}
+
+@mixin heading-1 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin heading-2 {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin heading-3 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0;
+
+  @include on-tablet {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
+
+@mixin heading-4 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0;
+
+  @include on-tablet {
+    font-size: 20px;
+  }
+}
+
+// HOVER
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+
+  &:active {
+    @content;
+  }
+}
+
+// TRANSITIONS
+@mixin transition(
+  $properties: all,
+  $duration: $transition-duration,
+  $timing-function: $transition-timing-function
+) {
+  transition-property: $properties;
+  transition-duration: $duration;
+  transition-timing-function: $timing-function;
+}
+
+@mixin animated-underline(
+  $color: $primary,
+  $height: 2px,
+  $tablet-height: 3px
+) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: $height;
+    background-color: $color;
+    transform: scaleX(0);
+    transform-origin: left;
+
+    @include transition(transform);
+
+    @include on-tablet {
+      height: $tablet-height;
+    }
+  }
+}
+
+@mixin animated-underline-active {
+  &::after {
+    transform: scaleX(1);
+  }
+}
+
+@mixin navigation-link {
+  color: $secondary;
+  text-decoration: none;
+
+  @include transition(color);
+  @include animated-underline;
+
+  @include hover {
+    color: $primary;
+  }
+}
+
+@mixin navigation-link-active {
+  color: $primary;
+
+  @include animated-underline-active;
+}
+
+@mixin icon-action-link($line-height: 2px, $tablet-line-height: 3px) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $primary;
+
+  @include animated-underline($primary, $line-height, $tablet-line-height);
+
+  @include hover {
+    @include animated-underline-active;
+  }
+}

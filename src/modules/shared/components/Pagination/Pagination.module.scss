@@ -1,0 +1,75 @@
+@use 'src/styles/vars' as *;
+@use 'src/styles/mixins' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 100%;
+  align-self: center;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    background-color: $white;
+
+    border: 1px solid $elements;
+    border-radius: 48px;
+    text-align: center;
+    color: $primary;
+    cursor: pointer;
+
+    @include body-text(14px, 500);
+    @include transition((color, background-color, border-color));
+
+    @include hover {
+      border-color: $primary;
+    }
+  }
+
+  &__buttonActive {
+    color: $white;
+    background-color: $primary;
+    border-color: $primary;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    min-width: 0;
+    overflow: auto hidden;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  &__arrowButton {
+    border-color: $icons;
+
+    @include hover {
+      border-color: $primary;
+    }
+
+    &:disabled {
+      cursor: default;
+      border-color: $elements;
+      color: $icons;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+
+    @include body-text(14px, 500);
+  }
+}

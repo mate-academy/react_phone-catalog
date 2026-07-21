@@ -1,0 +1,137 @@
+@use 'src/styles/vars' as *;
+@use 'src/styles/mixins' as *;
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 16px;
+  background: $white;
+  border: 1px solid $elements;
+  border-radius: 16px;
+
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  &__mainContent {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__removeButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    color: $icons;
+
+    @include transition(color);
+
+    @include hover {
+      color: $primary;
+    }
+  }
+
+  &__imageLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    padding: 7px;
+
+  }
+
+  &__image {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+
+    @include transition(transform);
+
+    @include hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__titleLink {
+    @include body-text;
+
+    color: $primary;
+    text-decoration: none;
+
+    @include transition(color);
+
+    @include hover {
+      color: $accent;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__quantityButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+    padding: 0;
+
+    background-color: transparent;
+    border: 1px solid $icons;
+    border-radius: 48px;
+    color: $primary;
+
+    @include transition((color, border-color));
+
+    @include hover {
+      border-color: $primary;
+    }
+
+    &:disabled {
+      color: $elements;
+      border-color: $elements;
+      cursor: default;
+    }
+  }
+
+  &__icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__quantity {
+    @include body-text;
+
+    color: $primary;
+  }
+
+  &__price {
+    text-align: right;
+    color: $primary;
+  }
+}

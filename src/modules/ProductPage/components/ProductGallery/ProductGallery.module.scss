@@ -1,0 +1,107 @@
+@use "src/styles/vars" as *;
+@use "src/styles/mixins" as *;
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+
+  &__thumbs {
+    display: flex;
+    gap: 8px;
+    order: 1;
+
+    @include on-tablet {
+      flex-direction: column;
+      order: 0;
+    }
+  }
+
+  &__thumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+    overflow: hidden;
+    padding: 5px;
+    background-color: $white;
+    border: 1px solid $elements;
+    border-radius: 4px;
+
+    @include transition(border-color);
+
+    @include hover {
+      border-color: $icons;
+    }
+
+    @include on-tablet {
+      width: 35px;
+    }
+
+    @include on-desktop {
+      width: 80px;
+      border-radius: 8px;
+    }
+
+  }
+
+  &__thumbActive {
+    border-color: $primary;
+
+    @include hover {
+      border-color: $primary;
+    }
+  }
+
+  &__thumbImage {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+  }
+
+  &__preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    max-height: 464px;
+
+    order: 0;
+    overflow: hidden;
+
+    @include on-tablet {
+      order: 1;
+      flex: 1;
+    }
+  }
+
+  &__track {
+    display: flex;
+    height: 100%;
+  }
+
+  &__slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+    flex: 0 0 100%;
+  }
+
+  &__image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}

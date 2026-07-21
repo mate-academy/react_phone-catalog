@@ -1,0 +1,52 @@
+@use 'src/styles/vars' as *;
+@use 'src/styles/mixins' as *;
+
+.breadcrumbs {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__homeLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $primary;
+    text-decoration: none;
+
+    @include transition(color);
+
+    @include hover {
+      color: $accent;
+    }
+  }
+
+  &__homeIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    color: $icons;
+  }
+
+  &__label {
+    @include small-text(12px, 600);
+
+    color: $secondary;
+    text-decoration: none;
+  }
+
+  a#{&}__label {
+    @include transition(color);
+
+    @include hover {
+      color: $primary;
+    }
+  }
+}

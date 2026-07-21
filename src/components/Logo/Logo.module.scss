@@ -1,0 +1,19 @@
+@use '../../styles/mixins' as *;
+
+.logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    @include transition(transform);
+
+    @include hover {
+      transform: scale(1.1);
+    }
+  }
+}

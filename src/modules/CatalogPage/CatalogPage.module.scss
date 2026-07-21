@@ -1,0 +1,81 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  padding-bottom: 64px;
+
+  @include on-tablet {
+    padding-bottom: 80px;
+  }
+
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__totalModels {
+    @include body-text;
+
+    color: $secondary;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__controls {
+    row-gap: 16px;
+
+    @include page-grid;
+  }
+
+  &__sortBy {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+  }
+
+  &__itemsOnPage {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+  }
+
+  &__state {
+    display: flex;
+    min-height: 60vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__loader {
+    width: 48px;
+    height: 48px;
+  }
+
+  &__emptyMessage {
+    @include body-text;
+
+    color: $secondary;
+  }
+}
