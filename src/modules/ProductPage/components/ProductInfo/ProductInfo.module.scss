@@ -1,0 +1,149 @@
+@use 'src/styles/vars' as *;
+@use 'src/styles/mixins' as *;
+
+.info {
+  &__section {
+    padding-bottom: 24px;
+    border-bottom: 1px solid $elements;
+
+    &:not(:first-child) {
+      padding-top: 24px;
+    }
+  }
+
+  &__label {
+    @include small-text(12px, 600);
+
+    color: $secondary;
+  }
+
+  &__productId {
+    position: absolute;
+    right: 0;
+
+    @include small-text(12px, 600);
+
+    color: $icons;
+  }
+
+  &__options {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  &__color {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+    padding: 3px;
+
+    background-color: $white;
+    border: 1px solid $elements;
+    border-radius: 50%;
+
+    @include transition(border-color);
+
+    @include hover {
+      border-color: $icons;
+    }
+  }
+
+  &__colorSwatch {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  &__colorActive {
+    border-color: $primary;
+
+    @include hover {
+      border-color: $primary;
+    }
+  }
+
+  &__capacity {
+    @include body-text;
+
+    text-align: center;
+    color: $primary;
+    background-color: $white;
+
+    padding: 7px 8px 4px;
+    border: 1px solid #b4bdc4;
+    border-radius: 4px;
+
+    @include transition((color, background-color, border-color));
+
+    @include hover {
+      border-color: $primary;
+    }
+  }
+
+  &__capacityActive {
+    color: $white;
+    background-color: $primary;
+    border-color: $primary;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  &__priceDiscount {
+    color: $primary;
+  }
+
+  &__priceRegular {
+    color: $secondary;
+    text-decoration: line-through;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    height: 48px;
+    margin-top: 16px;
+  }
+
+  &__cartButton {
+    flex: 1;
+  }
+
+  &__favoriteButton {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 32px 0 0;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__specName {
+    @include small-text(12px, 600);
+
+    color: $secondary;
+  }
+
+  &__specValue {
+    @include small-text;
+
+    color: $primary;
+  }
+}

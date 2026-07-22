@@ -1,0 +1,43 @@
+@use "src/styles/vars" as *;
+@use "src/styles/mixins" as *;
+
+.techSpecs {
+   &__title {
+     padding-bottom: 16px;
+     border-bottom: 1px solid $elements;
+     margin-bottom: 30px;
+
+     @include on-tablet {
+       margin-bottom: 25px;
+     }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+  }
+
+  &__item {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__name {
+    margin: 0;
+
+    @include body-text(14px, 500);
+
+    color: $secondary;
+  }
+
+  &__value {
+    margin: 0 0 0 auto;
+
+    @include body-text;
+
+    color: $primary;
+    text-align: right;
+  }
+}

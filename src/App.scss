@@ -1,1 +1,10 @@
-// not empty
+.app {
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+}

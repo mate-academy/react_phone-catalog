@@ -1,0 +1,56 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/vars.scss' as *;
+
+.card {
+  &__link {
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+    text-decoration: none;
+
+  }
+
+  &__imageBox {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 24px;
+    border-radius: 8px;
+  }
+
+  &__image {
+    position: absolute;
+
+    top: 20%;
+    left: 30%;
+    height: 100%;
+
+    @include transition(transform);
+
+    @include hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__imageBoxPhones {
+    background-color: #6d6474;
+  }
+
+  &__imageBoxTablets {
+    background-color: #8d8d92;
+  }
+
+  &__imageBoxAccessories {
+    background-color: #9b2b55;
+  }
+
+  &__title {
+    margin: 0 0 4px;
+  }
+
+  &__count {
+    @include body-text;
+
+    color: $secondary;
+  }
+}

@@ -1,0 +1,38 @@
+@use "src/styles/vars" as *;
+@use "src/styles/mixins" as *;
+
+.favoritesPage {
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
+  &__title {
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__itemsCount {
+    @include body-text;
+
+    color: $secondary;
+    margin-top: 8px;
+  }
+
+  &__content {
+    margin-top: 32px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+}

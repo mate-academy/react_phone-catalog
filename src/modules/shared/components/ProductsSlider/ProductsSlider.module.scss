@@ -1,0 +1,74 @@
+@use 'src/styles/mixins' as *;
+@use 'src/styles/vars' as *;
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    color: $primary;
+    background-color: $white;
+    border: 1px solid $icons;
+    border-radius: 50%;
+    cursor: pointer;
+
+    @include transition((color, border-color));
+
+    @include hover {
+      border-color: $primary;
+    }
+
+    &:disabled {
+      color: $icons;
+      border-color: $elements;
+      cursor: default;
+    }
+  }
+
+  &__viewport {
+    overflow: hidden;
+    scroll-snap-type: x mandatory;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__slide {
+    min-width: 0;
+    flex: 0 0 212px;
+    scroll-snap-align: start;
+
+    @include on-tablet {
+      flex-basis: 237px;
+    }
+
+    @include on-desktop {
+      flex-basis: calc((100% - 48px) / 4);
+    }
+  }
+}

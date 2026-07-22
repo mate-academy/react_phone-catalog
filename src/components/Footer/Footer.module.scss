@@ -1,0 +1,121 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/vars' as *;
+
+.footer {
+  padding-block: 32px;
+  background-color: $white;
+  box-shadow: 0 -1px 0 $elements;
+
+  &__content {
+    row-gap: 32px;
+
+    @include page-grid;
+
+    @include on-tablet {
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    grid-column: 1 / -1;
+    width: 89px;
+    height: 32px;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__nav {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      align-self: center;
+      grid-column: span 6;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__list {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    @include on-desktop {
+      gap: 107px;
+    }
+  }
+
+  &__link {
+    @include uppercase;
+
+    color: $secondary;
+    text-decoration: none;
+
+    @include transition(color);
+
+    @include hover {
+      color: $primary;
+    }
+  }
+
+  &__backToTop {
+    grid-column: 1 / -1;
+    justify-self: start;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: transparent;
+    color: $secondary;
+    cursor: pointer;
+
+    @include small-text;
+    @include transition(color);
+
+    @include hover {
+      color: $primary;
+    }
+
+    @include on-tablet {
+      grid-column: span 3;
+      justify-self: end;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__backToTopIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid $icons;
+    border-radius: 50%;
+    color: $primary;
+
+    @include transition(border-color);
+
+    @include hover {
+      border-color: $primary;
+    }
+  }
+}

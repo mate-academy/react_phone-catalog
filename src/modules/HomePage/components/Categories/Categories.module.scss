@@ -1,0 +1,23 @@
+@use 'src/styles/mixins' as *;
+
+.categories {
+  &__title {
+    margin: 0 0 24px;
+  }
+
+  &__list {
+    @include page-grid;
+  }
+
+  &__item {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@use 'src/styles/mixins' as *;
+@use 'src/styles/vars' as *;
+
+.errorMessage {
+  display: flex;
+  min-height: 60vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  text-align: center;
+
+  &__title {
+    color: $primary;
+  }
+
+  &__button {
+    @include button-text;
+
+    padding: 12px 24px;
+    color: $white;
+    background-color: $accent;
+    border-radius: 48px;
+
+    @include transition(box-shadow);
+
+    @include hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+    }
+  }
+}

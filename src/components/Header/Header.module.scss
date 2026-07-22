@@ -1,0 +1,157 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+
+.header {
+  height: 48px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  background: $white;
+  box-shadow: 0 1px 0 $elements;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 100%;
+  }
+
+  &__actions {
+    justify-content: flex-end;
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__actionLink {
+    width: 48px;
+    height: 48px;
+
+    box-shadow: -1px 0 0 $elements;
+
+    @include icon-action-link;
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  &__actionLinkActive {
+    @include animated-underline-active;
+  }
+
+  &__counter {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+
+    display: block;
+    width: 14px;
+    height: 14px;
+
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 14px;
+    text-align: center;
+
+    color: $white;
+    background-color: $accent;
+    border: 1px solid $white;
+    border-radius: 50%;
+
+    @include on-desktop {
+      top: 18px;
+    }
+  }
+
+  &__actionIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__burgerButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    color: $primary;
+    background: $white;
+    border: none;
+    cursor: pointer;
+    box-shadow: -1px 0 0 0 $elements;
+
+    @include transition(color);
+
+    @include on-tablet {
+      display: none;
+    }
+
+    @include hover {
+      color: $accent;
+    }
+  }
+
+  &__burgerIcon {
+    width: 16px;
+    height: 16px;
+
+    @include transition(transform);
+
+    @include hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__logo {
+    box-sizing: content-box;
+    width: 64px;
+    height: 22px;
+    padding-inline: 16px;
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+      padding-inline: 24px;
+    }
+  }
+}
+
+.nav {
+  display: none;
+  gap: 32px;
+  height: 100%;
+
+  &__link {
+    display: flex;
+    align-items: center;
+
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    @include navigation-link;
+  }
+
+  &__linkActive {
+    @include navigation-link-active;
+  }
+
+  @include on-tablet {
+    display: flex;
+  }
+}

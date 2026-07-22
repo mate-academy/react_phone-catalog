@@ -1,0 +1,12 @@
+@use './vars' as *;
+@use './mixins';
+@use './normalize';
+@use './typography';
+@use 'bulma/sass/base/animations';
+@use 'bulma/sass/elements/loader';
+@use 'bulma/sass/helpers/visibility';
+
+:root {
+  --bulma-border: #{$elements};
+  --bulma-radius-rounded: 9999px;
+}
