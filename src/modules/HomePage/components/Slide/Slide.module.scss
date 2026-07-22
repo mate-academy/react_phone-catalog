@@ -87,7 +87,8 @@
     border-radius: 32px;
     color: $white;
     background-image: linear-gradient(to right, $white 50%, transparent 50%);
-    background-position: right bottom;
+    background-position: calc(100% - 1px) bottom;
+    background-repeat: no-repeat;
     background-size: 200% 100%;
     text-transform: uppercase;
 
