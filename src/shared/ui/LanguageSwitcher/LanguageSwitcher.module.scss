@@ -1,0 +1,31 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.button {
+  font-family: inherit;
+  font-size: 10px;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  transition: color $effectDuration ease;
+
+  @include on-desktop {
+    font-size: 14px;
+  }
+
+  &:hover {
+    color: var(--primary);
+  }
+}
+
+.active {
+  color: var(--primary);
+  text-decoration: underline;
+}

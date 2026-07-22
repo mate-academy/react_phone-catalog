@@ -1,0 +1,159 @@
+:root {
+  --primary: #313237;
+  --secondary: #89939a;
+  --gray: #b4bdc3;
+  --elements: #e2e6e9;
+  --green: #27ae60;
+  --white: #fff;
+  --black-shadow: rgba(0, 0, 0, 0.1);
+  --shadow-color: var(--elements);
+  --shadow-card-hover: var(--black-shadow);
+  --button-capacity-bg: transparent;
+  --text-color: var(--white);
+  --background: var(--white);
+  --theme-color: #ffffce;
+
+  // SkeletonColors
+  --skeleton-base: #ebebeb;
+  --skeleton-highlight: #f5f5f5;
+
+  // ImageColors
+  --logo-color: var(--primary);
+  --color-arrow-dropdown: var(--gray);
+  --hover-arrow-dropdown: var(--gray);
+
+  // BackLink
+  --back-link-color: var(--secondary);
+  --back-link-color-hover: var(--primary);
+
+  // Borders
+  --border-element: var(--gray);
+  --badge-border: var(--white);
+  --border-thumb: var(--elements);
+  --border-circle: var(--white);
+
+  // Card
+  --border-card: var(--elements);
+  --border-card-hover: var(--elements);
+  --background-card: var(--white);
+
+  // Pagination
+  --button-pagination-bg: var(--white);
+  --button-pagination-bg-hover: var(--white);
+  --button-pagination-border: var(--gray);
+  --button-pagination-border-hover: var(--primary);
+  --button-pagination-focus: var(--primary);
+
+  // Dropdown
+  --border-dropdown: var(--elements);
+  --border-dropdown-hover: var(--secondary);
+  --border-dropdown-focus: var(--primary);
+  --dropdown-bg: var(--white);
+  --dropdown-bg-hover-active: #fafbfc;
+
+  //  Buttons
+  --button-bg: var(--primary);
+  --button-color: var(--white);
+  --button-hover-bg: var(--primary);
+  --button-hover-shadow: rgba(23, 32, 49, 0.4);
+  --button-added: var(--white);
+  --button-added-text: var(--green);
+  --button-added-border: var(--elements);
+  --border-button: var(--gray);
+  --button-disabled-border: var(--elements);
+  --button-disabled-bg: transparent;
+
+  // FavouriteButton
+  --favourite-btn-bg: var(--white);
+  --favourite-btn-bg-hover: var(--white);
+  --favourite-btn-border-hover: var(--primary);
+  --favourite-btn-selected-bg: transparent;
+  --favourite-btn-selected-border: var(--elements);
+
+  // ArrowButton
+  --arrow-button-bg: var(--white);
+  --arrow-button-hover-border: var(--primary);
+  --arrow-button-hover-bg: transparent;
+}
+
+[data-theme='dark'] {
+  --primary: #f1f2f9;
+  --secondary: #75767f;
+  --surface1: #161827;
+  --surface2: #323542;
+  --black: #0f1121;
+  --purple: #905bff;
+  --light-purple: #a378ff;
+  --gray: #4a4d58;
+  --elements: #3b3e4a;
+  --white-shadow: rgba(241, 242, 249, 0.1);
+  --white: var(--primary);
+  --shadow-color: var(--surface2);
+  --shadow-card-hover: var(--white-shadow);
+  --button-capacity-bg: transparent;
+  --text-color: var(--black);
+  --background: var(--black);
+  --theme-color: #905bff;
+
+  // SkeletonColors
+  --skeleton-base: var(--surface2);
+  --skeleton-highlight: #464a57;
+
+  // ImageColors
+  --logo-color: var(--primary);
+  --color-arrow-dropdown: var(--secondary);
+  --hover-arrow-dropdown: var(--gray);
+
+  // BackLink
+  --back-link-color: var(--primary);
+  --back-link-color-hover: var(--purple);
+
+  // Borders
+  --border-element: transparent;
+  --border-thumb: var(--elements);
+  --badge-border: var(--black);
+  --border-circle: var(--black);
+
+  // Card
+  --border-card: transparent;
+  --border-card-hover: var(--surface2);
+  --background-card: var(--surface1);
+
+  // Pagination
+  --button-pagination-bg: var(--surface1);
+  --button-pagination-bg-hover: var(--elements);
+  --button-pagination-border: transparent;
+  --button-pagination-border-hover: transparent;
+  --button-pagination-focus: var(--purple);
+
+  // Dropdown
+  --border-dropdown: var(--elements);
+  --border-dropdown-hover: var(--gray);
+  --border-dropdown-focus: var(--purple);
+  --dropdown-bg: var(--surface2);
+  --dropdown-bg-hover-active: var(--surface2);
+
+  // Buttons
+  --button-bg: var(--purple);
+  --button-color: var(--primary);
+  --button-hover-bg: var(--light-purple);
+  --button-hover-shadow: transparent;
+  --button-added: var(--surface2);
+  --button-added-text: var(--primary);
+  --button-added-border: transparent;
+  --border-button: transparent;
+  --button-disabled-border: var(--elements);
+  --button-disabled-bg: transparent;
+
+  // FavouriteButton
+  --favourite-btn-bg: var(--surface2);
+  --favourite-btn-bg-hover: var(--gray);
+  --favourite-btn-border-hover: transparent;
+  --favourite-btn-selected-bg: transparent;
+  --favourite-btn-selected-border: var(--elements);
+
+  // ArrowButton
+  --arrow-button-bg: var(--surface2);
+  --arrow-button-hover-border: transparent;
+  --arrow-button-hover-bg: var(--gray);
+}

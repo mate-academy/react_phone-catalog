@@ -1,0 +1,47 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.title {
+  margin-bottom: 10px;
+
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--secondary);
+}
+
+.capacity {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+
+  &Option {
+    padding: 0.5em 0.65em;
+    border: 1px solid var(--gray);
+
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--primary);
+    text-transform: uppercase;
+
+    background-color: var(--button-capacity-bg);
+
+    transition:
+      background-color $effectDuration ease,
+      color $effectDuration ease,
+      border-color $effectDuration ease;
+
+    &:hover {
+      border-color: transparent;
+      color: var(--text-color);
+      background-color: var(--primary);
+    }
+  }
+
+  &Active {
+    border-color: transparent;
+    color: var(--text-color);
+    background-color: var(--primary);
+  }
+}

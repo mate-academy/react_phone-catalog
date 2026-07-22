@@ -1,0 +1,28 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.about {
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+
+  &Title {
+    margin-bottom: 16px;
+  }
+
+  &Wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &Text {
+    color: var(--secondary);
+  }
+}
+
+.deskriptionTitle {
+  margin-bottom: 16px;
+}

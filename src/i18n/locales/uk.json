@@ -1,0 +1,118 @@
+{
+  "nav": {
+    "home": "Головна",
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари"
+  },
+
+  "homePage": {
+    "title": "Ласкаво просимо до Nice Gadgets!",
+    "brandNew": "Нові моделі",
+    "shopByCategory": "Купуйте за категоріями",
+    "hotPrices": "Гарячі ціни"
+  },
+
+  "specs": {
+    "screen": "Екран",
+    "capacity": "Обсяг пам'яті",
+    "ram": "Оперативна пам'ять",
+    "resolution": "Роздільна здатність",
+    "processor": "Процесор",
+    "builtInMemory": "Вбудована пам'ять",
+    "camera": "Камера",
+    "zoom": "Зум",
+    "cell": "Мережа"
+  },
+
+  "buttons": {
+    "addToCard": "До кошика",
+    "added": "Додано",
+    "checkout": "Оформити замовлення",
+    "reload": "Повторити"
+  },
+
+  "breadCrumbs": {
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари"
+  },
+
+  "categories": {
+    "mobilePhones": "Мобільні телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари",
+    "models": "моделі"
+  },
+
+  "dropdown": {
+    "sortBy": "Сортувати за",
+    "itemsOnPage": "На сторінці"
+  },
+
+  "sorting": {
+    "newest": "Найновіші",
+    "alphabetically": "По алфавітному",
+    "cheapest": "Найдешевші",
+    "all": "Всі"
+  },
+
+  "product": {
+    "availableColors": "Доступні кольори",
+    "selectCapacity": "Оберіть обсяг пам'яті",
+
+    "techSpecs": "Технічні характеристики",
+    "youMayAlsoLike": "Вам також може сподобатися"
+  },
+
+  "favourites": {
+    "title": "Обрані",
+    "items": "елементи",
+    "message": "Ще немає обраного"
+  },
+
+  "cart": {
+    "title": "Кошик",
+    "total": "Разом за",
+    "message": "Ваш кошик порожній",
+    "checkoutConfirm": "Оформлення замовлення ще не реалізовано. Бажаєте очистити кошик?"
+  },
+
+  "items": {
+    "item_one": "товар",
+    "item_few": "товари",
+    "item_many": "товарів",
+    "item_other": "товару"
+  },
+
+  "models": {
+    "model_one": "модель",
+    "model_few": "моделі",
+    "model_many": "моделей",
+    "model_other": "моделі"
+  },
+
+  "back": {
+    "back": "Назад"
+  },
+
+  "input": {
+    "placeholder": "Пошук товарів"
+  },
+
+  "noResults": {
+    "message": "Не знайдено товарів, що відповідають вашому запиту"
+  },
+
+  "errorMessage": {
+    "message": "Щось пішло не так..."
+  },
+
+  "pageNotFound": {
+    "message": "Сторінку не знайдено"
+  },
+
+  "footer": {
+    "backToTop": "Вгору"
+  }
+}

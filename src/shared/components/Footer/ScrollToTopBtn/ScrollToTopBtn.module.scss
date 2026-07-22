@@ -1,0 +1,28 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.scrollToTopBtn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border-button);
+
+  background-color: var(--arrow-button-bg);
+  transition:
+    border-color $effectDuration ease,
+    background-color $effectDuration ease;
+
+  &:hover {
+    border-color: var(--arrow-button-hover-border);
+    background-color: var(--arrow-button-hover-bg);
+  }
+}
+
+.scrollToTopIcon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: 0 auto;
+  color: var(--primary);
+
+  transform: rotate(-90deg);
+}

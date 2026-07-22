@@ -1,0 +1,17 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  row-gap: 56px;
+
+  @include on-tablet {
+    row-gap: 64px;
+  }
+
+  @include on-desktop {
+    row-gap: 80px;
+  }
+}

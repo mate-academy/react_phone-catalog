@@ -1,0 +1,15 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.error {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 40px;
+
+  &Button {
+    width: 100%;
+    max-width: 100px;
+  }
+}

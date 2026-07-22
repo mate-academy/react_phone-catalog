@@ -1,0 +1,16 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.categories {
+  &Content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+    margin-top: 24px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+}

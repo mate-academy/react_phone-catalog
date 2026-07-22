@@ -1,0 +1,36 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.techSpecs {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-desktop {
+    grid-column: 14 / -1;
+  }
+
+  &Product {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  &Card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &Title {
+    font-weight: 500;
+    color: var(--secondary);
+  }
+
+  &Value {
+    font-weight: 500;
+    color: var(--primary);
+  }
+}
