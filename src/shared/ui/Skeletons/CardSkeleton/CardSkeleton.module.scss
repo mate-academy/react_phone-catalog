@@ -1,0 +1,92 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.card {
+  width: 212px;
+  height: auto;
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 6px;
+
+  border: 1px solid var(--elements);
+
+  @include on-tablet {
+    width: 237px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+  }
+
+  &ImageWrapper {
+    position: relative;
+  }
+
+  &ImageSkeleton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
+    color: var(--gray);
+    z-index: 1;
+  }
+
+  &Image {
+    height: 180px;
+
+    @include on-tablet {
+      height: 202px;
+    }
+
+    @include on-desktop {
+      height: 196px;
+    }
+  }
+
+  &Title {
+    height: 42px;
+    margin-top: 16px;
+  }
+
+  &Prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &Info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+  }
+
+  &Specs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &Buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &ButtonMain {
+    flex: 1;
+  }
+
+  &ButtonFavourite {
+    width: 40px;
+    flex-shrink: 0;
+  }
+}
+
+.cardProductsPage {
+  width: 100%;
+}

@@ -1,0 +1,36 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.favouriteBtn {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border: 1px solid var(--border-element);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--favourite-btn-bg);
+
+  transition:
+    border-color $effectDuration ease,
+    background-color $effectDuration ease;
+
+  &:hover {
+    border-color: var(--favourite-btn-border-hover);
+    background-color: var(--favourite-btn-bg-hover);
+  }
+}
+
+.favouriteIcon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  color: var(--primary);
+}
+
+.isActive {
+  border-color: var(--favourite-btn-selected-border);
+  background-color: var(--favourite-btn-selected-bg);
+}

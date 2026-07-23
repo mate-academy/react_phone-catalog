@@ -1,0 +1,138 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  &Label {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--secondary);
+  }
+
+  &Icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-left: 8px;
+    color: var(--color-arrow-dropdown);
+
+    transition: transform $effectDuration ease;
+    transform: rotate(90deg);
+  }
+
+  &Select {
+    cursor: pointer;
+
+    width: 100%;
+    height: 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px 12px;
+    border: 1px solid var(--border-element);
+
+    font-family: inherit;
+    font-weight: 600;
+    color: var(--primary);
+
+    background-color: var(--dropdown-bg);
+
+    transition:
+      border-color $effectDuration ease,
+      background-color $effectDuration ease;
+
+    &:hover {
+      border-color: var(--border-dropdown-hover);
+
+      .dropdownIcon {
+        color: var(--hover-arrow-dropdown);
+      }
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--border-dropdown-focus);
+    }
+  }
+
+  &SelectedText {
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &IconOpen {
+    transform: rotate(-90deg);
+  }
+
+  &List {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 1;
+    padding: 8px 0;
+
+    border: 1px solid var(--border-dropdown);
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+
+    background-color: var(--background);
+
+    transform-origin: top center;
+    animation: dropdown-open $effectDuration ease-in-out;
+
+    &.isClosing {
+      animation: dropdown-close 0.15s ease-in-out forwards;
+    }
+  }
+
+  @keyframes dropdown-open {
+    from {
+      opacity: 0;
+      transform: translateY(-8px) scaleY(0.9);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0) scaleY(1);
+    }
+  }
+
+  @keyframes dropdown-close {
+    from {
+      opacity: 1;
+      transform: translateY(0) scaleY(1);
+    }
+
+    to {
+      opacity: 0;
+      transform: translateY(-8px) scaleY(0.9);
+    }
+  }
+
+  &Option {
+    cursor: pointer;
+    padding: 6px 12px;
+    font-weight: 500;
+    color: var(--secondary);
+
+    &:hover {
+      color: var(--primary);
+      background-color: var(--dropdown-bg-hover-active);
+    }
+  }
+
+  .isActive {
+    color: var(--primary);
+    background-color: var(--dropdown-bg-hover-active);
+  }
+}

@@ -1,0 +1,9 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.productSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}

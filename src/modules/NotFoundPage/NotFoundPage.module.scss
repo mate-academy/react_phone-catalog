@@ -1,0 +1,14 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.title {
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 32px;
+  }
+
+  @include on-desktop {
+    margin-top: 40px;
+  }
+}

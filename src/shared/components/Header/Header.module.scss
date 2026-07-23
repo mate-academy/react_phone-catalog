@@ -1,0 +1,102 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background-color: var(--background);
+  box-shadow: 0 1px 0 0 var(--shadow-color);
+
+  transition:
+    box-shadow $effectDuration ease,
+    background-color $effectDuration ease;
+
+  &Container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &LeftSide {
+    display: flex;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      gap: 24px;
+    }
+  }
+
+  &Logo {
+    display: block;
+    width: 64px;
+    height: 22px;
+    color: var(--logo-color);
+
+    transition: transform $effectDuration ease;
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  &LogoLink {
+    padding: 13px 16px;
+
+    &:hover .headerLogo {
+      @include on-desktop {
+        transform: scale(1.1);
+      }
+    }
+
+    @include on-desktop {
+      padding: 18px 24px;
+    }
+  }
+
+  &RightSide {
+    display: flex;
+    align-items: center;
+  }
+
+  &Switcher {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-right: 10px;
+
+    @include on-desktop {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+    }
+  }
+
+  &BurgerMenuButton {
+    padding: 16px;
+    box-shadow: -1px 0 0 0 var(--shadow-color);
+
+    transition: box-shadow $effectDuration ease;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &BurgerMenu {
+    display: block;
+    width: 16px;
+    height: 16px;
+    color: var(--primary);
+
+    transition: transform $effectDuration ease;
+  }
+}

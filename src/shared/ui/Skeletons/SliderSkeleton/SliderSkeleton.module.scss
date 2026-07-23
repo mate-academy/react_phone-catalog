@@ -1,0 +1,44 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.titleWrapper {
+  width: 136px;
+  height: 52px;
+
+  @include on-tablet {
+    width: 400px;
+    height: 31px;
+  }
+
+  @include on-desktop {
+    width: 560px;
+  }
+}
+
+.products {
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 34px;
+}
+
+.productWrapper {
+  padding-left: 16px;
+
+  @include on-tablet {
+    padding-left: 24px;
+  }
+
+  @include on-desktop {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-inline: 32px;
+  }
+}
+
+.cards {
+  display: flex;
+  gap: 16px;
+}

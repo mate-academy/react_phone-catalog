@@ -1,0 +1,78 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.nav {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  &List {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &ListMobile {
+    flex-direction: column;
+  }
+
+  &Link {
+    padding-block: 15px;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    color: var(--secondary);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    transition: color $effectDuration ease;
+
+    @include on-desktop {
+      padding-block: 23px;
+    }
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+
+  .isActive {
+    position: relative;
+    color: var(--primary);
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      bottom: 1px;
+      left: 0;
+
+      display: block;
+      width: 100%;
+      height: 3px;
+
+      background-color: var(--primary);
+    }
+  }
+
+  .navLinkMobile.isActive {
+    &::after {
+      height: 2px;
+      bottom: 8px;
+    }
+  }
+}
+
+.navMobile {
+  display: flex;
+  justify-content: center;
+}

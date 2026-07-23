@@ -1,0 +1,119 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.pageHeader {
+  grid-column: 1 / -1;
+  padding-top: 24px;
+  padding-bottom: 32px;
+
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
+
+  &Nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 25px;
+    min-width: 0;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &HomeLink {
+    display: flex;
+    transition: transform $effectDuration ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &Icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--primary);
+  }
+
+  &ArrowIcon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--gray);
+  }
+
+  &IconBack {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--primary);
+
+    transition: color $effectDuration ease;
+
+    transform: rotate(180deg);
+  }
+
+  &Link {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--primary);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &Name {
+    display: inline-block;
+
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 600;
+    color: var(--secondary);
+
+    min-width: 0;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &Title {
+    margin: 0;
+  }
+
+  &Subtitle {
+    margin-top: 8px;
+    color: var(--secondary);
+  }
+
+  &BackLink {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 16px;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--back-link-color);
+
+    transition: color $effectDuration ease;
+
+    &:hover {
+      color: var(--back-link-color-hover);
+
+      .pageHeaderIconBack {
+        color: var(--back-link-color-hover);
+      }
+    }
+  }
+}
