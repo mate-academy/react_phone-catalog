@@ -59,6 +59,8 @@
   --button-added: var(--white);
   --button-added-text: var(--green);
   --button-added-border: var(--elements);
+  --button-added-border-hover: var(--primary);
+  --button-added-bg-hover: transparent;
   --border-button: var(--gray);
   --button-disabled-border: var(--elements);
   --button-disabled-bg: transparent;
@@ -141,6 +143,8 @@
   --button-added: var(--surface2);
   --button-added-text: var(--primary);
   --button-added-border: transparent;
+  --button-added-border-hover: transparent;
+  --button-added-bg-hover: var(--gray);
   --border-button: transparent;
   --button-disabled-border: var(--elements);
   --button-disabled-bg: transparent;

@@ -59,7 +59,7 @@ function reducer(state: State, action: Action): State {
 
 export const CartContext = React.createContext<{
   items: CartItemType[];
-  addToCart: (product: Product) => void;
+  toggleCartItem: (product: Product) => void;
   removeFromCart: (itemId: string) => void;
   increaseQuantity: (itemId: string) => void;
   decreaseQuantity: (itemId: string) => void;
@@ -86,11 +86,11 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     localStorage.setItem('cart', JSON.stringify(items));
   }, [items]);
 
-  const addToCart = (product: Product) => {
+  const toggleCartItem = (product: Product) => {
     const exists = items.some(item => item.product.itemId === product.itemId);
 
     if (exists) {
-      dispatch({ type: 'increment', payload: product.itemId });
+      dispatch({ type: 'remove', payload: product.itemId });
     } else {
       dispatch({ type: 'add', payload: product });
     }
@@ -119,7 +119,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     <CartContext.Provider
       value={{
         items,
-        addToCart,
+        toggleCartItem,
         removeFromCart,
         increaseQuantity,
         decreaseQuantity,

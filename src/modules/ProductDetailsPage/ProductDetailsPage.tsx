@@ -42,7 +42,7 @@ export const ProductDetailsPage: React.FC = () => {
   const { productId = '' } = useParams();
   const navigate = useNavigate();
   const { toggle, isFavourite } = useFavourites();
-  const { addToCart, isInCart } = useCart();
+  const { toggleCartItem: addToCart, isInCart } = useCart();
   const { t } = useTranslation();
 
   const { product, isInitialLoading, isChangingVariant, hasError } =

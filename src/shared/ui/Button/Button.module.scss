@@ -7,6 +7,8 @@
   min-width: 100px;
   min-height: 40px;
 
+  border: 1px solid transparent;
+
   font-family: inherit;
   font-size: 14px;
   font-weight: 500;
@@ -27,13 +29,17 @@
 }
 
 .buttonAdded {
-  cursor: not-allowed;
   color: var(--button-added-text);
-  border: 1px solid var(--button-added-border);
+  border-color: var(--button-added-border);
   background-color: var(--button-added);
+
+  transition:
+    border-color $effectDuration ease,
+    background-color $effectDuration ease;
 
   &:hover {
     box-shadow: none;
-    background-color: var(--button-added);
+    border-color: var(--button-added-border-hover);
+    background-color: var(--button-added-bg-hover);
   }
 }

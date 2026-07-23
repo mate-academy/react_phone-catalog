@@ -23,7 +23,7 @@ type Props = {
 export const ProductCard = forwardRef<HTMLDivElement, Props>(
   ({ product, showOldPrice = true, className }, ref) => {
     const { toggle, isFavourite } = useFavourites();
-    const { addToCart, isInCart } = useCart();
+    const { toggleCartItem: toggleCartItem, isInCart } = useCart();
     const { t } = useTranslation();
 
     const specs = getShortSpecs(product);
@@ -69,9 +69,8 @@ export const ProductCard = forwardRef<HTMLDivElement, Props>(
           <Button
             onClick={e => {
               e.preventDefault();
-              addToCart(product);
+              toggleCartItem(product);
             }}
-            disabled={isInCart(product.itemId)}
             isActive={isInCart(product.itemId)}
           >
             {isInCart(product.itemId)
