@@ -44,7 +44,7 @@ export const ImageGallery: React.FC<Props> = ({ images }) => {
         {images.map(image => (
           <div key={image} className={styles.galleryImageSlide}>
             <img
-              src={`/${image}`}
+              src={image}
               alt="product"
               className={styles.galleryImageProduct}
             />
@@ -63,7 +63,7 @@ export const ImageGallery: React.FC<Props> = ({ images }) => {
             onClick={() => scrollToIndex(index)}
           >
             <img
-              src={`/${image}`}
+              src={image}
               alt="thumbnail"
               className={styles.galleryThumbImage}
             />

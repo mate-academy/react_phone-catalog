@@ -1,4 +1,6 @@
-const BASE_URL = '/api';
+import { API_URL } from '@shared/constants/paths';
+
+const BASE_URL = API_URL;
 
 const delay = (ms: number): Promise<void> =>
   new Promise(resolve => setTimeout(resolve, ms));

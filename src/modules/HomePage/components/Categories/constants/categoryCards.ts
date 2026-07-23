@@ -1,22 +1,24 @@
+import { IMG_URL } from '@shared/constants/paths';
+
 export const CATEGORY_CARDS = [
   {
     translationKey: 'categories.mobilePhones',
     count: 95,
-    image: '/img/categories/mobile-phones.png',
+    image: `${IMG_URL}/categories/mobile-phones.png`,
     link: '/phones',
   },
 
   {
     translationKey: 'categories.tablets',
     count: 24,
-    image: '/img/categories/tablets.png',
+    image: `${IMG_URL}/categories/tablets.png`,
     link: '/tablets',
   },
 
   {
     translationKey: 'categories.accessories',
     count: 100,
-    image: '/img/categories/accessories.png',
+    image: `${IMG_URL}/categories/accessories.png`,
     link: '/accessories',
   },
 ];
