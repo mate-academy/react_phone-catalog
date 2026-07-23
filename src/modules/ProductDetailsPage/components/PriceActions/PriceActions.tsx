@@ -36,7 +36,6 @@ export const PriveActions: React.FC<Props> = ({
         <Button
           className={styles.addBtn}
           onClick={onAddToCart}
-          disabled={isInCart}
           isActive={isInCart}
         >
           {isInCart ? t('buttons.added') : t('buttons.addToCard')}

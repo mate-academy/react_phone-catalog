@@ -50,7 +50,9 @@
     padding: 13px 16px;
 
     &:hover .headerLogo {
-      transform: scale(1.1);
+      @include on-desktop {
+        transform: scale(1.1);
+      }
     }
 
     @include on-desktop {

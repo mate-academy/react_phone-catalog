@@ -39,7 +39,9 @@
     height: 32px;
 
     &:hover .footerLogo {
-      transform: scale(1.1);
+      @include on-desktop {
+        transform: scale(1.1);
+      }
     }
   }
 

@@ -42,7 +42,7 @@ export const ProductDetailsPage: React.FC = () => {
   const { productId = '' } = useParams();
   const navigate = useNavigate();
   const { toggle, isFavourite } = useFavourites();
-  const { toggleCartItem: addToCart, isInCart } = useCart();
+  const { toggleCartItem: toggleCartItem, isInCart } = useCart();
   const { t } = useTranslation();
 
   const { product, isInitialLoading, isChangingVariant, hasError } =
@@ -109,7 +109,7 @@ export const ProductDetailsPage: React.FC = () => {
     e.preventDefault();
 
     if (currentProduct) {
-      addToCart(currentProduct);
+      toggleCartItem(currentProduct);
     }
   };
 
