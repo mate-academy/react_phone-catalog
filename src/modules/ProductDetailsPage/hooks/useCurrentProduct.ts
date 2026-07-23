@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getProductByItemId } from '../../../api/products';
+import { getProductByItemId } from '@api/products';
 import { Product } from 'src/types/Product';
 import { ProductDetails } from 'src/types/ProductDetails';
 
