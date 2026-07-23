@@ -136,7 +136,7 @@ export const ProductsPage: React.FC<Props> = ({
           onClear={handleClear}
         />
 
-        {hasNoResults && (
+        {hasNoResults && !isLoading && (
           <FadeIn className={styles.productsNoMatching}>
             <Typography variant="h2">{t('noResults.message')}</Typography>
           </FadeIn>
