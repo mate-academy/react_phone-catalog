@@ -18,13 +18,13 @@ export const Footer = () => {
           Github
         </Link>
         <Link
-          to={'https://maps.app.goo.gl/pTgsfkGy98EQWmSu5'}
+          to={'https://www.linkedin.com/in/artem-kushko-987387420/'}
           className={style.links}
         >
           Contacts
         </Link>
         <Link
-          to={'https://maps.app.goo.gl/pTgsfkGy98EQWmSu5'}
+          to={'https://policies.google.com/privacy?hl=en-US&client_theme=dark'}
           className={style.links}
         >
           Rights

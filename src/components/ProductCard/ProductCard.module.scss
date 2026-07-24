@@ -11,6 +11,8 @@
   padding: 32px;
   box-sizing: border-box;
 
+  @include hover(transform, scale(1.01));
+
   grid-column: span 4;
 
   @include on-tablet {

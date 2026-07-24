@@ -87,7 +87,7 @@ export const DetailsPage = ({ list }: { list: ItemPreview[] }) => {
 
         <button
           className={style.back}
-          onClick={() => navigate(-1)}
+          onClick={() => navigate(`/${item.category}`)}
           aria-label="Go back"
         >
           <img className={style.arrow} src={arrow} alt="" />
