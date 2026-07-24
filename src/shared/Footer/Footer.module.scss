@@ -1,0 +1,124 @@
+@import '../../../src/mainStyles/main';
+
+.footer {
+  width: 100%;
+  padding-block: 32px;
+  padding-inline: 16px;
+  border-top: 1px solid $borderColor;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+
+  &_container {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+
+  &_block {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start;
+    justify-content: center;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &_logo {
+    user-select: none;
+    display: block;
+    width: 89px;
+    height: 32px;
+  }
+
+  &_list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    justify-content: center;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &_item {
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.02);
+    }
+  }
+
+  &_link {
+    display: block;
+
+    height: 100%;
+
+    font-family: Mont-Bold, sans-serif;
+    font-size: 12px;
+    line-height: 11px;
+    color: $textSecondaryColor;
+    text-transform: uppercase;
+
+    &:hover {
+      color: $textColor;
+    }
+  }
+
+  &_toTop {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    align-self: center;
+  }
+
+  &_toTopText {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $textSecondaryColor;
+
+    &:hover {
+      cursor: pointer;
+      color: $textColor;
+    }
+  }
+
+  &_toTopLink {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: $buttonWidth;
+    height: $buttonHeight;
+    border: 1px solid $borderColorDark;
+
+    &::after {
+      content: '';
+
+      width: $iconWidth;
+      height: $iconHeight;
+
+      background-image: url('../../images/icons/chevron_arrow_up.svg');
+      background-size: cover;
+       }
+  }
+}

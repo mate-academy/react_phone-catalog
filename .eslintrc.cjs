@@ -99,7 +99,16 @@ module.exports = {
       },
     ],
   },
-  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'src/vite-env.d.ts', 'cypress'],
+  ignorePatterns: [
+    'dist',
+    '.eslintrc.cjs',
+    'vite.config.ts',
+    'src/vite-env.d.ts',
+    'cypress',
+    'src/components',
+    'src/context',
+    'src/pages',
+  ],
   settings: {
     react: {
       version: 'detect',

@@ -1,10 +1,25 @@
 {
   "extends": "@mate-academy/students-ts-config",
   "include": [
-    "src"
+    "src/App.tsx",
+    "src/Root.tsx",
+    "src/index.tsx",
+    "src/vite-env.d.ts",
+    "src/app/**/*",
+    "src/images/**/*",
+    "src/mainStyles/**/*",
+    "src/modules/**/*",
+    "src/shared/**/*",
+    "src/types/**/*",
+    "src/components/**/*",
+    "src/context/**/*",
+    "src/pages/**/*",
+    "cypress.config.ts",
   ],
   "compilerOptions": {
+    "baseUrl": ".",
     "sourceMap": false,
+    "ignoreDeprecations": "5.0",
     "types": ["node", "cypress"]
   }
 }
