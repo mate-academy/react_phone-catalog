@@ -1,0 +1,26 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.image {
+  display: block;
+  width: 64px;
+  height: auto;
+  object-fit: contain;
+  transition:
+    filter 0.3s ease,
+    transform 0.3s ease;
+}
+
+@media (min-width: 1200px) {
+  .image {
+    width: 80px;
+  }
+}
+
+/* Logo asset is white (Figma Dark); invert for Light theme visibility */
+.light {
+  filter: brightness(0);
+}

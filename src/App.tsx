@@ -1,7 +1,9 @@
-import './App.scss';
+import { HashRouter } from 'react-router-dom';
+import './styles/global.scss';
+import { Root } from './Root';
 
 export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
+  <HashRouter>
+    <Root />
+  </HashRouter>
 );

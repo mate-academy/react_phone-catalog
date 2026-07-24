@@ -1,0 +1,200 @@
+.page {
+  width: 100%;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 16px;
+  border: none;
+  background: transparent;
+  color: var(--color-text);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.back:hover {
+  color: var(--color-primary);
+}
+
+.title {
+  margin-bottom: 32px;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+}
+
+@media (min-width: 640px) {
+  .title {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.content {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 1200px) {
+  .content {
+    grid-template-columns: 1fr 368px;
+    gap: 16px;
+    align-items: start;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: auto 80px 1fr;
+  grid-template-areas:
+    'remove image name'
+    'qty qty price';
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid var(--color-elements);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+@media (min-width: 640px) {
+  .item {
+    grid-template-columns: auto 80px 1fr auto auto;
+    grid-template-areas: 'remove image name qty price';
+    padding: 24px;
+  }
+}
+
+.remove {
+  grid-area: remove;
+  display: flex;
+  border: none;
+  background: transparent;
+  color: var(--color-icons);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.remove:hover {
+  color: var(--color-text);
+}
+
+.image {
+  grid-area: image;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.name {
+  grid-area: name;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.quantity {
+  grid-area: qty;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.qtyButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-icons);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.qtyButton:disabled {
+  color: var(--color-icons);
+  cursor: default;
+}
+
+.price {
+  grid-area: price;
+  font-size: 22px;
+  font-weight: 700;
+  justify-self: end;
+}
+
+.checkout {
+  padding: 24px;
+  border: 1px solid var(--color-elements);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  text-align: center;
+}
+
+.total {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+}
+
+.totalLabel {
+  margin-bottom: 24px;
+  color: var(--color-secondary);
+}
+
+.divider {
+  height: 1px;
+  margin-bottom: 24px;
+  background: var(--color-elements);
+}
+
+.checkoutButton {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.checkoutButton:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.empty .title {
+  margin-bottom: 0;
+  align-self: stretch;
+  text-align: left;
+}
+
+.empty p {
+  align-self: stretch;
+  text-align: center;
+}
+
+.emptyImage {
+  align-self: center;
+  max-width: 320px;
+}
