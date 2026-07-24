@@ -1,0 +1,157 @@
+@use '../../styles/utils/mixins' as *;
+
+.card {
+  width: 287px;
+  height: 440px;
+  border: 1px solid $border-color;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
+  box-sizing: border-box;
+
+  @include hover(transform, scale(1.01));
+
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 6;
+    width: 288px;
+    height: 506px;
+  }
+
+  @include on-desktop {
+    grid-column: span 6;
+    width: 272px;
+    height: 506px;
+  }
+
+  &__infoBlock {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    margin-top: 24px;
+  }
+
+
+  &__title {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+
+    font-weight: 600;
+    font-size: 14px;
+    font-family: $font-primary;
+    text-align: left;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__image {
+    height: 196px;
+    object-fit: contain;
+  }
+
+  &__heart__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border: 1px solid $border-color_2;
+    background-color: white;
+
+    &:hover {
+      border-color: $main-text-color;
+    }
+  }
+
+  &__button {
+    width: 160px;
+    height: 40px;
+    background-color: $main-text-color;
+  }
+
+  &__button__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration-line: none;
+    width: 160px;
+    height: 40px;
+    color: #27ae60;
+    background-color: white;
+    border: 1px solid #e2e6e9;
+  }
+
+  &__button__text__added {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration-line: none;
+    width: 160px;
+    height: 40px;
+    color: #fff;
+    background-color: $main-text-color;
+    border: 0;
+  }
+
+  &__buy_box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
+  }
+}
+
+.regularPrice {
+  text-decoration: line-through;
+  color: #89939a;
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+}
+
+.price {
+  color: #313237;
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+}
+
+.card__image__box {
+  height: 196px;
+  width: 208px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card_spec_box {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.card_spec_box_main {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.priceBlock {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+  }
+}

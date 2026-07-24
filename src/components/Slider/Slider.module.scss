@@ -1,0 +1,48 @@
+@import '../../styles/utils/mixins';
+
+
+.slider__image {
+  width: 1040px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.slider {
+  margin-top: 56px;
+  display: flex;
+  gap: 16px;
+  height: 400px;
+
+  &__button {
+    border: 1px solid #B4BDC3;
+    background-color: white;
+    cursor: pointer;
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+      grid-column: span 24;
+    }
+  }
+}
+
+.arrow {
+
+  &__left {
+    transform: rotate(180deg);
+  }
+}
+
+.notselected {
+  opacity: 30%;
+}

@@ -1,0 +1,21 @@
+@font-face {
+  font-family: Mont;
+  src: url('../assets/fonts/Mont-HeavyDEMO.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: MontLight;
+  src: url('../assets/fonts/Mont-ExtraLightDEMO.otf') format('opentype');
+  font-style: normal;
+}
+
+$tablet-min-width: 576px;
+$desktop-min-width: 1024px;
+$effectDuration: 0.3s;
+$main-text-color: #313237;
+$secondary-text-color: #89939A;
+$border-color: #E2E6E9;
+$border-color_2: #B4BDC3;
+$font-primary: "Urbanist", sans-serif;;
