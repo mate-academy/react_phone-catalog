@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useMemo, useState } from 'react';
 
 import { ItemPreview } from '../../types/Product';
@@ -26,6 +26,7 @@ const createSlug = (value: string) => {
 
 export const DetailsPage = ({ list }: { list: ItemPreview[] }) => {
   const path = useLocation().pathname;
+  const navigate = useNavigate();
 
   const { favorites, toggleFavorite } = useFavorites();
   const { addedToCart, addToCart } = useAddedToCart();
@@ -83,6 +84,15 @@ export const DetailsPage = ({ list }: { list: ItemPreview[] }) => {
 
           <span className={style.textName}>{item.name}</span>
         </div>
+
+        <button
+          className={style.back}
+          onClick={() => navigate(-1)}
+          aria-label="Go back"
+        >
+          <img className={style.arrow} src={arrow} alt="" />
+          Back
+        </button>
 
         <div className={style.grid}>
           <h1 className={style.title}>{fullItem.name}</h1>
@@ -188,7 +198,7 @@ export const DetailsPage = ({ list }: { list: ItemPreview[] }) => {
                 </button>
               </div>
             </div>
-            <div>
+            <div className={style.specBox}>
               <div className={style.specFlex}>
                 <span className={style.smallText}>Screen</span>
                 <span>{fullItem.screen}</span>

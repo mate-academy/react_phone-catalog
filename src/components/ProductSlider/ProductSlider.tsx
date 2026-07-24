@@ -12,7 +12,7 @@ export const ProductSlider = ({ products, text }: Props) => {
   const [currentCards, setCurrentCards] = useState(0);
 
   return (
-    <div style={{ overflow: 'hidden' }}>
+    <div className={style.slider} style={{ overflow: 'hidden' }}>
       <div className={style.card__slider}>
         <h2>{text}</h2>
         <div className={style.button__box}>
@@ -38,7 +38,10 @@ export const ProductSlider = ({ products, text }: Props) => {
       >
         {products.map(product => (
           <div key={product.id}>
-            <ProductCard item={product} />
+            <ProductCard
+              item={product}
+              discount={text === 'Brand new models' ? false : true}
+            />
           </div>
         ))}
       </div>

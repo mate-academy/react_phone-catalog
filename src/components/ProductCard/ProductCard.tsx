@@ -6,8 +6,15 @@ import style from './ProductCard.module.scss';
 import { useFavorites } from '../../context/FavoritesContext';
 import { useAddedToCart } from '../../context/AddedToCartContext';
 import { Link } from 'react-router-dom';
+import { scrollToTop } from '../../styles/utils/ScrollTop';
 
-export const ProductCard = ({ item }: { item: ItemPreview }) => {
+export const ProductCard = ({
+  item,
+  discount,
+}: {
+  item: ItemPreview;
+  discount: boolean;
+}) => {
   const { favorites, toggleFavorite } = useFavorites();
   const { addedToCart, addToCart } = useAddedToCart();
   const isFavorite = favorites.includes(String(item.id));
@@ -20,6 +27,7 @@ export const ProductCard = ({ item }: { item: ItemPreview }) => {
       <Link
         to={`/${item.category}/${item.itemId}`}
         className={style.card__image__box}
+        onClick={() => scrollToTop()}
       >
         <img src={item.image} alt={item.name} className={style.card__image} />
       </Link>
@@ -27,7 +35,7 @@ export const ProductCard = ({ item }: { item: ItemPreview }) => {
         <h2 className={style.card__title}>{item.name}</h2>
       </div>
       <div className={style.priceBlock}>
-        {item.fullPrice !== undefined ? (
+        {item.fullPrice !== undefined && discount === true ? (
           <div className={style.priceBlock__prices}>
             <span className={style.price}>${item.price}</span>
             <span className={style.regularPrice}>${item.fullPrice}</span>

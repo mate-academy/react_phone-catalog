@@ -1,3 +1,5 @@
+@import '../../styles/utils/mixins';
+
 .card__slider__product {
   display: flex;
   gap: 16px;
@@ -32,4 +34,16 @@
 *:disabled {
   opacity: 30%;
   cursor: default;
+}
+
+.slider {
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 12;
+  }
+
+  @include on-tablet {
+    grid-column: span 24;
+  }
 }

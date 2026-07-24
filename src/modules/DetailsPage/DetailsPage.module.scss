@@ -121,6 +121,7 @@
   align-items: center;
   justify-content: center;
   color: $main-text-color;
+  padding: 5px;
 
 }
 
@@ -195,3 +196,21 @@
     margin-top: 16px;
   }
 
+.back {
+  background-color: white;
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.arrow {
+  width: 16px;
+  transform: rotate(180deg);
+}
+
+.specBox {
+  margin-top: 20px;
+}

@@ -22,14 +22,14 @@ export const HomePage = () => {
     <Container>
       <div className={style.body}>
         <span className={style.title}>Welcome to Nice Gadgets store!</span>
-        <h1>Product Catalog</h1>
+        <h1 className={style.subHeader}>Product Catalog</h1>
         <Slider />
         <ProductSlider
           products={brandNew.map(item => item)}
           text="Brand new models"
         />
         <div className={`${style.body}`}>
-          <h2>Shop by category</h2>
+          <h2 className={style.subHeader}>Shop by category</h2>
           <div className={`${style.category__block}`}>
             <Link
               to={'/phones'}

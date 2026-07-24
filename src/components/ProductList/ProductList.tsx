@@ -123,40 +123,45 @@ export const ProductList = ({ list, type }: ProductListProps) => {
           .sort(handleSort)
           .slice(...handleSlice())
           .map(item => (
-            <ProductCard key={item.id} item={item} />
+            <ProductCard key={item.id} item={item} discount={true} />
           ))}
       </div>
-      <div className={style.pagination}>
-        <SearchLink
-          params={{
-            page: Number(page) - 1 === 1 ? null : `${Number(page) - 1}`,
-          }}
-        >
-          <button disabled={Number(page) === 1} className={style.paginationBox}>
-            <img src={arrow} alt="leftArrow" className={style.leftArrow} />
-          </button>
-        </SearchLink>
-        {pagesList.slice(start - 1, start + 3).map(number => (
+      {list.length >= 5 && (
+        <div className={style.pagination}>
           <SearchLink
-            className={`${style.paginationBox}${page === `${number}` ? ` ${style.paginationBoxChoosen}` : ''}`}
-            key={number}
-            params={{ page: number === 1 ? null : `${number}` }}
+            params={{
+              page: Number(page) - 1 === 1 ? null : `${Number(page) - 1}`,
+            }}
           >
-            {number}
+            <button
+              disabled={Number(page) === 1}
+              className={style.paginationBox}
+            >
+              <img src={arrow} alt="leftArrow" className={style.leftArrow} />
+            </button>
           </SearchLink>
-        ))}
-        {pagesList.length !== Number(page) && (
-          <div className={style.paginationBox}>...</div>
-        )}
-        <SearchLink params={{ page: `${Number(page) + 1}` }}>
-          <button
-            className={style.paginationBox}
-            disabled={page === `${pagesNumber}`}
-          >
-            <img src={arrow} alt="rightArrow" />
-          </button>
-        </SearchLink>
-      </div>
+          {pagesList.slice(start - 1, start + 3).map(number => (
+            <SearchLink
+              className={`${style.paginationBox}${page === `${number}` ? ` ${style.paginationBoxChoosen}` : ''}`}
+              key={number}
+              params={{ page: number === 1 ? null : `${number}` }}
+            >
+              {number}
+            </SearchLink>
+          ))}
+          {pagesList.length !== Number(page) && (
+            <div className={style.paginationBox}>...</div>
+          )}
+          <SearchLink params={{ page: `${Number(page) + 1}` }}>
+            <button
+              className={style.paginationBox}
+              disabled={page === `${pagesNumber}`}
+            >
+              <img src={arrow} alt="rightArrow" />
+            </button>
+          </SearchLink>
+        </div>
+      )}
     </div>
   );
 };
