@@ -13,12 +13,13 @@
     "src/types/**/*",
     "src/components/**/*",
     "src/context/**/*",
-    "src/pages/**/*"
+    "src/pages/**/*",
+    "cypress.config.ts",
   ],
   "compilerOptions": {
     "baseUrl": ".",
     "sourceMap": false,
-    "ignoreDeprecations": "6.0",
+    "ignoreDeprecations": "5.0",
     "types": ["node", "cypress"]
   }
 }
