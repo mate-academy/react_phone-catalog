@@ -1,6 +1,7 @@
-const { defineConfig } = require('cypress');
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { defineConfig } from 'cypress';
 
-module.exports = defineConfig({
+export default defineConfig({
   e2e: {
     baseUrl: 'http://localhost:3000',
     specPattern: 'cypress/integration/**/*.spec.{js,ts,jsx,tsx}',
