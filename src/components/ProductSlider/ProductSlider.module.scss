@@ -1,0 +1,35 @@
+.card__slider__product {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.3s ease;
+}
+
+.card__slider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 80px;
+
+}
+
+.arrow__left {
+  transform: rotate(180deg);
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  border: 1px solid #B4BDC3;
+  cursor: pointer;
+
+  &__box {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+*:disabled {
+  opacity: 30%;
+  cursor: default;
+}

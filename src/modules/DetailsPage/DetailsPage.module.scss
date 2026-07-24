@@ -1,0 +1,197 @@
+@import '../../styles/variables';
+@import '../../styles/utils/mixins';
+
+.main{
+  margin-top: 88px;
+  font-family: $font-primary;
+  color: #313237;
+}
+
+.path {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.textCategory {
+  text-decoration: none;
+  text-transform: capitalize;
+  color: $main-text-color;
+}
+
+.textName{
+  color: $secondary-text-color;
+}
+
+.smallImages {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  grid-column: span 2;
+}
+
+.smallImage{
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border: 1px solid #E2E6E9;
+  cursor: pointer;
+}
+
+.grid {
+  @include page-grid;
+}
+
+.title {
+  grid-column: span 24;
+}
+
+.image {
+  width: 464px;
+  height: 464px;
+  object-fit: contain;
+  grid-column: span 10;
+}
+
+.colorDot {
+  border-radius: 50%;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  padding: 0;
+  border: 1px solid #b4bdc3;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+
+.colors {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aboutBox {
+  grid-column: span 12;
+}
+
+.techSpecBox {
+  grid-column: 14/24;
+}
+
+.productSlider {
+  grid-column: span 24;
+}
+
+.specFlex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detailsBox {
+  grid-column: 14/21;
+}
+
+.lineBox::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #E2E6E9;
+  margin-bottom: 25px;
+}
+
+.smallText {
+  color: $secondary-text-color;
+}
+
+.colorBox {
+  margin-bottom: 24px;
+}
+
+.capacity {
+  border: 1px solid #B4BDC3;
+  background-color: white;
+  height: 32px;
+  margin-top: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $main-text-color;
+
+}
+
+.choosen {
+  background-color: $main-text-color;
+  color: white;
+}
+
+.priceBox {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.priceDiscount {
+  font-size: 32px;
+}
+
+.priceFull {
+  text-decoration: line-through;
+  font-size: 22px;
+  color: $secondary-text-color;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.heartBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    border: 1px solid $border-color_2;
+    background-color: white;
+
+    &:hover {
+      border-color: $main-text-color;
+    }
+  }
+
+.buttonText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration-line: none;
+    width: 263px;
+    height: 48px;
+    color: #27ae60;
+    background-color: white;
+    border: 1px solid #e2e6e9;
+  }
+
+.buttonTextAdded {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration-line: none;
+    width: 263px;
+    height: 48px;
+    color: #fff;
+    background-color: $main-text-color;
+    border: 0;
+  }
+
+.buyBox {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+
