@@ -1,0 +1,96 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/_mixins' as mixins;
+
+.imageCarousel {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) 32px;
+  flex-direction: row;
+  gap: 16px;
+
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @include mixins.tablet {
+    padding: 0 24px;
+  }
+
+  @include mixins.mobile {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0;
+  }
+
+  &__button {
+    cursor: pointer;
+    border: 1px solid vars.$secondary-color;
+    background-color: transparent;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: vars.$primary-color;
+    }
+
+    &:disabled {
+      opacity: 0.3;
+    }
+
+    @include mixins.mobile {
+      display: none;
+    }
+  }
+
+  &__viewport {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    min-width: 0;
+  }
+
+  &__track {
+    display: flex;
+    width: 100%; // 🔥 важливо
+    transition: transform 0.3s ease;
+  }
+
+  &__slide {
+    display: flex;
+    flex: 0 0 100%;
+    flex-shrink: 0;
+    min-width: 100%;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto; // 🔥 важливо
+      object-fit: contain; // 🔥 показує повністю без обрізання
+    }
+  }
+
+  &__indicators {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  &__indicator {
+    cursor: pointer;
+
+    width: 24px;
+    height: 3px;
+
+    opacity: 0.3;
+    background-color: vars.$secondary-color;
+
+    transition: all 0.3s ease;
+
+    &_active {
+      opacity: 1;
+      background-color: vars.$primary-color;
+    }
+  }
+}

@@ -1,0 +1,168 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/_mixins' as mixins;
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @include mixins.tablet {
+    padding: 0 24px;
+  }
+
+  @include mixins.mobile {
+    padding: 0 16px;
+  }
+
+  &__title {
+    width: 100%;
+
+    font-family: vars.$font-primary;
+    font-size: 48px;
+    font-weight: 800;
+    color: vars.$primary-color;
+    text-align: left;
+
+    @include mixins.mobile {
+      font-size: 32px;
+    }
+  }
+
+  &__count {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    font-family: vars.$font-primary;
+    font-size: 14px;
+    font-weight: 600;
+    color: vars.$secondary-color;
+    text-align: left;
+  }
+
+  &__labels {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin: 40px 0 24px;
+
+    @include mixins.mobile {
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+
+      @include mixins.mobile {
+        flex: 1;
+        width: 100%;
+        min-width: 0;
+      }
+    }
+
+    &_label {
+      margin-bottom: 10px;
+
+      font-family: vars.$font-primary;
+      font-size: 12px;
+      font-weight: 700;
+      color: vars.$secondary-color;
+      white-space: nowrap;
+    }
+
+    &_select {
+      cursor: pointer;
+
+      width: 100%;
+      padding: 10px 36px 10px 14px;
+      border: 1px solid vars.$secondary-color;
+      border-radius: 1px;
+
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+
+      appearance: none;
+      background-color: white;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23333' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 12px;
+
+      transition: all 0.2s;
+
+      &:hover {
+        border-color: vars.$primary-color;
+      }
+
+      &:focus {
+        border-color: vars.$primary-color;
+        outline: none;
+      }
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    justify-items: center;
+
+    margin-bottom: 40px;
+
+    @include mixins.tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include mixins.mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    width: 100%;
+  }
+
+  &__empty {
+    grid-column: 1 / -1;
+    margin: 60px 0;
+    text-align: center;
+
+    &_img {
+      width: 100%;
+      max-width: 320px;
+      margin-bottom: 32px;
+      opacity: 0.9;
+
+      @include mixins.mobile {
+        max-width: 240px;
+      }
+    }
+
+    &_text {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: vars.$secondary-color;
+    }
+  }
+
+  .loading,
+  .error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+
+    h1 {
+      font-size: 24px;
+      color: vars.$secondary-color;
+    }
+  }
+}

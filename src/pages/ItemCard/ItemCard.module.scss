@@ -1,0 +1,87 @@
+@use '../../styles/_mixins' as mixins;
+@use '../../styles/_variables' as vars;
+
+.itemCard {
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  text-align: left;
+
+  @include mixins.tablet {
+    padding: 0 24px;
+  }
+
+  @include mixins.mobile {
+    padding: 0 16px;
+  }
+
+  &__back {
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+
+    width: fit-content;
+    margin: 40px 0 16px;
+
+    font-family: vars.$font-primary;
+    font-size: 12px;
+    font-weight: 700;
+    color: vars.$secondary-color;
+    text-decoration: none;
+
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: vars.$primary-color;
+    }
+
+    &_icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__title {
+    font-family: vars.$font-primary;
+    font-size: 32px;
+    font-weight: 800;
+    color: vars.$primary-color;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include mixins.tablet {
+      flex-direction: column;
+    }
+
+    @include mixins.mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+    @include mixins.tablet {
+      flex-direction: column;
+    }
+
+    @include mixins.mobile {
+      flex-direction: column;
+    }
+  }
+}

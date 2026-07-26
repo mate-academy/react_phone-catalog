@@ -1,7 +1,18 @@
+import { Footer } from './components/Footer';
+import { Header } from './components/Header';
+import { AppRouter } from './router/AppRouter';
 import './App.scss';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+const App = () => {
+  return (
+    <>
+      <Header />
+      <main>
+        <AppRouter />
+      </main>
+      <Footer />
+    </>
+  );
+};
+
+export default App;

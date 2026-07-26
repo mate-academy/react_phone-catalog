@@ -1,0 +1,328 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/_mixins' as mixins;
+
+.cart {
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  @include mixins.mobile {
+    padding: 0 16px;
+  }
+
+  /* Back button */
+  &__back {
+    cursor: pointer;
+
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    margin: 40px 0 16px;
+    padding: 0;
+    border: none;
+
+    font-family: vars.$font-primary;
+    font-size: 12px;
+    font-weight: 700;
+    color: vars.$secondary-color;
+
+    background: transparent;
+
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: vars.$primary-color;
+    }
+
+    &_icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  /* Title */
+  &__title {
+    margin: 0 0 32px;
+
+    font-family: vars.$font-primary;
+    font-size: 48px;
+    font-weight: 800;
+    color: vars.$primary-color;
+
+    @include mixins.mobile {
+      font-size: 32px;
+    }
+  }
+
+  /* GRID LAYOUT */
+  &__items {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 24px;
+    align-items: start;
+
+    width: 100%;
+
+    @include mixins.tablet {
+      grid-template-columns: 1fr;
+    }
+
+    @include mixins.mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* LEFT COLUMN */
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+  }
+
+  /* PRODUCT CARD */
+  &__item {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    width: 100%;
+    padding: 24px;
+    border: 1px solid #e2e2e2;
+
+    background-color: #fff;
+
+    @include mixins.mobile {
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 16px;
+    }
+  }
+
+  /* ЛІВИЙ БЛОК */
+  &__item_left {
+    cursor: pointer;
+
+    display: flex;
+    flex: 1;
+    gap: 16px;
+    align-items: center;
+
+    min-width: 0;
+  }
+
+  /* ПРАВИЙ БЛОК */
+  &__item_right {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+
+    @include mixins.mobile {
+      flex: 1;
+      gap: 12px;
+      justify-content: space-between;
+      width: 100%; // На мобільних, явно на всю ширину
+    }
+  }
+
+  /* Delete button */
+  &__item_btn {
+    cursor: pointer;
+    padding: 0;
+    border: none;
+    background: transparent;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  /* Product details */
+  &__item_detail {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+
+    @include mixins.mobile {
+      flex-direction: row;
+      gap: 16px;
+      align-items: flex-start;
+    }
+  }
+
+  &__item_img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+
+    @include mixins.mobile {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  /* Info row */
+  &__item_info {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 24px;
+    align-items: center;
+
+    width: 100%;
+
+    @include mixins.mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+
+  &__item_info_title {
+    overflow: hidden;
+
+    margin: 0;
+
+    font-family: vars.$font-primary;
+    font-size: 14px;
+    font-weight: 600;
+    color: vars.$primary-color;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include mixins.mobile {
+      font-size: 12px;
+      white-space: wrap;
+    }
+  }
+
+  /* Quantity */
+  &__item__quantity {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    p {
+      width: 24px; // фіксована ширина
+      text-align: center; // число по центру
+    }
+
+    &_btn {
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 32px;
+      height: 32px;
+      border: 1px solid vars.$elements-color;
+
+      background: white;
+
+      transition: border 0.2s ease;
+
+      &:hover {
+        border-color: vars.$primary-color;
+      }
+
+      &_minus {
+        opacity: 0.5;
+
+        &:hover {
+          cursor: default;
+          border-color: vars.$elements-color;
+        }
+      }
+    }
+  }
+
+  /* Price */
+  &__item_info_price {
+    margin: 0;
+
+    font-family: vars.$font-primary;
+    font-size: 18px;
+    font-weight: 700;
+    color: vars.$primary-color;
+  }
+
+  /* RIGHT COLUMN (TOTAL) */
+  &__total {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+
+    height: fit-content;
+    padding: 24px;
+    border: 1px solid #e2e2e2;
+
+    font-family: vars.$font-primary;
+    color: vars.$primary-color;
+
+    @include mixins.mobile {
+      margin-top: 24px;
+      padding: 16px;
+    }
+
+    &_price {
+      margin: 0;
+      font-size: 32px;
+      font-weight: 800;
+    }
+
+    &_text {
+      margin: 0;
+
+      font-size: 14px;
+      font-weight: 600;
+      color: vars.$secondary-color;
+      text-align: center;
+    }
+
+    &_line {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: vars.$elements-color;
+    }
+
+    &_btn {
+      cursor: pointer;
+
+      width: 100%;
+      height: 48px;
+      border: none;
+
+      font-weight: 600;
+      color: white;
+
+      background: #313237;
+
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: #000;
+      }
+    }
+  }
+
+  &__empty {
+    font-size: 16px;
+    color: vars.$secondary-color;
+  }
+}

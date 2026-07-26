@@ -1,0 +1,113 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/_mixins' as mixins;
+
+.itemCardImg {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+  @include mixins.tablet {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @include mixins.mobile {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__gallery_thumbs {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    gap: 16px;
+
+    @include mixins.tablet {
+      flex-direction: row;
+      justify-content: center;
+      order: 2;
+    }
+
+    @include mixins.mobile {
+      flex-flow: row wrap;
+      justify-content: center;
+      order: 2;
+    }
+  }
+
+  &__gallery_thumb {
+    cursor: pointer;
+
+    flex-shrink: 0;
+
+    width: 80px;
+    height: 80px;
+    padding: 4px;
+    border: 1px solid vars.$icons-color;
+
+    background-color: white;
+
+    transition: all 0.3s ease;
+
+    @include mixins.mobile {
+      width: 60px;
+      height: 60px;
+    }
+
+    &:hover {
+      border-color: vars.$primary-color;
+    }
+
+    &_active {
+      border-color: vars.$primary-color;
+      border-width: 2px;
+    }
+
+    &_img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__gallery_main {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+
+    width: 464px;
+    height: 464px;
+
+    background: white;
+
+    @include mixins.tablet {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      max-width: 464px;
+      height: auto;
+    }
+
+    @include mixins.mobile {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    &_inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      height: 100%;
+    }
+
+    &_img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}

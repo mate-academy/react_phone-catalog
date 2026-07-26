@@ -1,0 +1,42 @@
+@use '../../styles/_mixins' as mixins;
+
+@use '../../styles/variables' as vars;
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 24px 0 0;
+
+  &_link {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: vars.$font-primary;
+    font-size: 12px;
+    font-weight: 600;
+    color: vars.$secondary-color;
+
+    @include mixins.tablet {
+      font-size: 10px;
+    }
+
+    @include mixins.mobile {
+      font-size: 8px;
+    }
+  }
+
+  &_arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
