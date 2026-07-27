@@ -3,9 +3,14 @@ import FavoriteIcon from '../../../../assets/icons/Favorites.svg';
 export type FavButtonProps = {
     onClick?: () => void;
     disabled?: boolean;
+    count?: number;
 };
 
-export const FavButton = ({ onClick, disabled = false }: FavButtonProps) => {
+export const FavButton = ({
+    onClick,
+    disabled = false,
+    count = 0,
+}: FavButtonProps) => {
     return (
         <button
             className={styles.favButton}
@@ -19,6 +24,9 @@ export const FavButton = ({ onClick, disabled = false }: FavButtonProps) => {
                 alt="Favorite"
                 className={styles.favButtonIcon}
             />
+            {count > 0 && (
+                <span className={styles.favButton__count}>{count}</span>
+            )}
         </button>
     );
 };

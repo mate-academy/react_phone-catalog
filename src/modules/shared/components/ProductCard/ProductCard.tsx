@@ -13,6 +13,8 @@ export interface ProductCardProps {
     ram?: string;
     isFavorite?: boolean;
     onFavoriteToggle?: (id: number) => void;
+    isInCart?: boolean;
+    onAddToCart?: (id: number) => void;
     onSelect?: () => void;
 }
 
@@ -27,6 +29,8 @@ export const ProductCard = ({
     ram,
     isFavorite = false,
     onFavoriteToggle,
+    isInCart = false,
+    onAddToCart,
     onSelect,
 }: ProductCardProps) => {
     const handleFavoriteClick = (
@@ -34,6 +38,13 @@ export const ProductCard = ({
     ) => {
         event.stopPropagation();
         onFavoriteToggle?.(id);
+    };
+
+    const handleAddToCartClick = (
+        event: React.MouseEvent<HTMLButtonElement>,
+    ) => {
+        event.stopPropagation();
+        onAddToCart?.(id);
     };
 
     return (
@@ -81,14 +92,14 @@ export const ProductCard = ({
             </div>
             <div className={styles.productCard__buttonContainer}>
                 <button
-                    className={styles.productCard__button}
+                    className={`${styles.productCard__button} ${
+                        isInCart ? styles['productCard__button--added'] : ''
+                    }`}
                     type="button"
-                    onClick={event => {
-                        event.stopPropagation();
-                        onSelect?.();
-                    }}
+                    onClick={handleAddToCartClick}
+                    disabled={isInCart}
                 >
-                    Add to cart
+                    {isInCart ? 'Added to cart' : 'Add to cart'}
                 </button>
                 <button
                     className={styles.productCard__favorite}

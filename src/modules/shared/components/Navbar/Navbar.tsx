@@ -10,10 +10,12 @@ import styles from './Navbar.module.scss';
 import { MobileMenu } from './components/MobileMenu';
 import { FavButton } from '../FavButton';
 import { CartButton } from '../CartButton';
+import { useShopState } from '../../hooks';
 
 export const Navbar = () => {
     const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { favoriteIds, cartIds } = useShopState();
 
     const handleMenuToggle = () => {
         setIsMenuOpen(prev => !prev);
@@ -57,11 +59,13 @@ export const Navbar = () => {
                         onClick={() => {
                             navigate('/favorites');
                         }}
+                        count={favoriteIds.length}
                     />
                     <CartButton
                         onClick={() => {
                             navigate('/cart');
                         }}
+                        count={cartIds.length}
                     />
                 </div>
             </nav>

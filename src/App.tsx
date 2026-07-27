@@ -12,6 +12,7 @@ import { Favorites } from './modules/Favorites';
 import { Phones } from './modules/Phones';
 import { Tablets } from './modules/Tablets';
 import { Accessories } from './modules/Accessories';
+import { ShopStateProvider } from './modules/shared/hooks';
 
 const ScrollToTop = () => {
     const { pathname } = useLocation();
@@ -24,25 +25,27 @@ const ScrollToTop = () => {
 };
 
 export const App = () => (
-    <div className="App" id="top">
-        <ScrollToTop />
-        <Navbar />
+    <ShopStateProvider>
+        <div className="App" id="top">
+            <ScrollToTop />
+            <Navbar />
 
-        <main className="App__body">
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/phones" element={<Phones />} />
-                <Route path="/tablets" element={<Tablets />} />
-                <Route path="/accessories" element={<Accessories />} />
-                <Route path="/github" element={<h1>GitHub</h1>} />
-                <Route path="/contacts" element={<Contacts />} />
-                <Route path="/rights" element={<Rights />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/favorites" element={<Favorites />} />
-                <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-        </main>
+            <main className="App__body">
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/phones" element={<Phones />} />
+                    <Route path="/tablets" element={<Tablets />} />
+                    <Route path="/accessories" element={<Accessories />} />
+                    <Route path="/github" element={<h1>GitHub</h1>} />
+                    <Route path="/contacts" element={<Contacts />} />
+                    <Route path="/rights" element={<Rights />} />
+                    <Route path="/cart" element={<Cart />} />
+                    <Route path="/favorites" element={<Favorites />} />
+                    <Route path="*" element={<NotFoundPage />} />
+                </Routes>
+            </main>
 
-        <Footer />
-    </div>
+            <Footer />
+        </div>
+    </ShopStateProvider>
 );

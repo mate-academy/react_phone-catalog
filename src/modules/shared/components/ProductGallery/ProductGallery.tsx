@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import SectionHeader from '../SectionHeader/SectionHeader';
-import type { Product } from '../../hooks';
+import { useShopState, type Product } from '../../hooks';
 import styles from './ProductGallery.module.scss';
 import { ProductCard } from '../ProductCard';
 
@@ -15,10 +15,10 @@ export const ProductGallery = ({
     products,
     showFullPrice = true,
 }: ProductGalleryProps) => {
-    const [favoriteIds, setFavoriteIds] = useState<number[]>([]);
     const [canScrollPrevious, setCanScrollPrevious] = useState(false);
     const [canScrollNext, setCanScrollNext] = useState(false);
     const viewportRef = useRef<HTMLDivElement>(null);
+    const { favoriteIds, cartIds, toggleFavorite, addToCart } = useShopState();
 
     const updateNavigationState = () => {
         const viewport = viewportRef.current;
@@ -80,14 +80,6 @@ export const ProductGallery = ({
         });
     };
 
-    const handleFavoriteToggle = (id: number) => {
-        setFavoriteIds(currentIds =>
-            currentIds.includes(id)
-                ? currentIds.filter(currentId => currentId !== id)
-                : [...currentIds, id],
-        );
-    };
-
     useEffect(() => {
         const viewport = viewportRef.current;
 
@@ -137,7 +129,9 @@ export const ProductGallery = ({
                                 capacity={product.capacity}
                                 ram={product.ram}
                                 isFavorite={favoriteIds.includes(product.id)}
-                                onFavoriteToggle={handleFavoriteToggle}
+                                onFavoriteToggle={toggleFavorite}
+                                isInCart={cartIds.includes(product.id)}
+                                onAddToCart={addToCart}
                             />
                         </div>
                     ))}

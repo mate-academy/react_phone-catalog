@@ -2,6 +2,7 @@
 @use '../../styles/breakpoints' as *;
 
 .favButton {
+    position: relative;
     flex: 1;
     height: 100%;
     border: 1px solid $color-elements;
@@ -42,4 +43,28 @@
 .favButtonIcon {
     width: 16px;
     height: 16px;
+}
+
+.favButton__count {
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    display: flex;
+    min-width: 14px;
+    height: 14px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    border-radius: 50%;
+    background-color: #eb5757;
+    border: 1px solid $color-white;
+    color: $color-white;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1;
+    
+    @include respond(mobile) {
+        top: 18px;
+        right: 82px;
+    }
 }

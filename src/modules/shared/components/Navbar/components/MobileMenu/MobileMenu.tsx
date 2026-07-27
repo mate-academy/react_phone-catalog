@@ -4,6 +4,7 @@ import styles from './MobileMenu.module.scss';
 import { CartButton } from '../../../CartButton';
 import { FavButton } from '../../../FavButton';
 import { NAV_LINKS } from '../../navLinks';
+import { useShopState } from '../../../../hooks';
 
 export type MobileMenuProps = {
     isOpen: boolean;
@@ -12,6 +13,7 @@ export type MobileMenuProps = {
 
 export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
     const navigate = useNavigate();
+    const { favoriteIds, cartIds } = useShopState();
 
     const mobileMenuClassName = classNames(styles.mobileMenu, {
         [styles['mobileMenu--open']]: isOpen,
@@ -37,12 +39,14 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                         navigate('/favorites');
                         onClose();
                     }}
+                    count={favoriteIds.length}
                 />
                 <CartButton
                     onClick={() => {
                         navigate('/cart');
                         onClose();
                     }}
+                    count={cartIds.length}
                 />
             </footer>
         </aside>

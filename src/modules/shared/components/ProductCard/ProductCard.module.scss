@@ -98,12 +98,23 @@
 .productCard__button {
     flex: 1;
     min-height: 40px;
-    border: 0;
+    border: 1px solid $color-primary;
     background-color: $color-primary;
     color: $color-white;
     cursor: pointer;
+    transition:
+        border-color 200ms ease,
+        background-color 200ms ease,
+        color 200ms ease;
 
     @include typography(button);
+}
+
+.productCard__button--added {
+    border-color: $color-elements;
+    background-color: $color-white;
+    color: $color-green;
+    cursor: default;
 }
 
 .productCard__favorite {

@@ -3,9 +3,14 @@ import CartIcon from '../../../../assets/icons/Cart.svg';
 export type CartButtonProps = {
     onClick?: () => void;
     disabled?: boolean;
+    count?: number;
 };
 
-export const CartButton = ({ onClick, disabled = false }: CartButtonProps) => {
+export const CartButton = ({
+    onClick,
+    disabled = false,
+    count = 0,
+}: CartButtonProps) => {
     return (
         <button
             className={styles.cartButton}
@@ -15,6 +20,9 @@ export const CartButton = ({ onClick, disabled = false }: CartButtonProps) => {
             aria-label="Add to cart"
         >
             <img src={CartIcon} alt="Cart" className={styles.cartButtonIcon} />
+            {count > 0 && (
+                <span className={styles.cartButton__count}>{count}</span>
+            )}
         </button>
     );
 };
