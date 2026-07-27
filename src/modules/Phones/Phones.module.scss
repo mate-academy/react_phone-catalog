@@ -1,0 +1,12 @@
+@use '../shared/styles/typography' as *;
+
+.phones {
+  display: flex;
+  flex-direction: column;
+}
+
+.phones__title {
+  margin: 0;
+
+  @include typography(h1);
+}

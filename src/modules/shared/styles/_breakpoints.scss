@@ -1,8 +1,8 @@
 // src/styles/_breakpoints.scss
 
 // Based on Home page v2 designs
-$breakpoint-mobile: 320px;  // 320–639
-$breakpoint-tablet: 640px;  // 640–1199
+$breakpoint-mobile: 320px; // 320–639
+$breakpoint-tablet: 640px; // 640–1199
 $breakpoint-desktop: 1200px; // 1200+
 $breakpoint-desktop-over: 1201px; // strictly over 1200
 
@@ -13,27 +13,27 @@ $breakpoint-desktop-over: 1201px; // strictly over 1200
     @if $breakpoint == mobile {
         // 320–639
         @media (max-width: 639px) {
-        @content;
+            @content;
         }
     } @else if $breakpoint == tablet {
         // 640–1199
         @media (min-width: 640px) and (max-width: 1199px) {
-        @content;
+            @content;
         }
     } @else if $breakpoint == tablet-down {
         // anything below desktop: 320–1199
         @media (max-width: 1199px) {
-        @content;
+            @content;
         }
     } @else if $breakpoint == desktop {
         // 1200+
         @media (min-width: $breakpoint-desktop) {
-        @content;
+            @content;
         }
     } @else if $breakpoint == desktop-over {
         // 1201+
         @media (min-width: $breakpoint-desktop-over) {
-        @content;
+            @content;
         }
     } @else {
         @warn "Unknown breakpoint: #{$breakpoint}";

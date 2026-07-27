@@ -23,12 +23,11 @@
     flex-direction: column;
     align-items: center;
     gap: 16px;
-
-    @include typography(h4);
-
     color: $color-secondary;
     padding-block: 16px;
     text-decoration: none;
+
+    @include typography(h4);
 }
 
 .link {

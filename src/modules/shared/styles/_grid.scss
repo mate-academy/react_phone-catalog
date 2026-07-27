@@ -57,6 +57,9 @@ $grid-desktop-max-width: (24 * 32px) + (23 * 16px); // 1136px
 
     @include respond(desktop) {
         gap: map.get($grid-desktop, gutter);
-        grid-template-columns: repeat(map.get($grid-desktop, columns), map.get($grid-desktop, column-width));
+        grid-template-columns: repeat(
+            map.get($grid-desktop, columns),
+            map.get($grid-desktop, column-width)
+        );
     }
 }

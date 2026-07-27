@@ -1,9 +1,9 @@
 @use '../shared/styles/typography' as *;
 
 .rights {
-  padding: 24px 16px;
+    padding: 24px 16px;
 }
 
 .rights__title {
-  @include typography(h1);
+    @include typography(h1);
 }

@@ -3,116 +3,115 @@
 @use '../../../shared/styles/breakpoints' as *;
 
 .heroSlider {
-  width: 100%;
-  overflow: hidden;
-  background-color: #fff;
- 
-
-  &__viewport {
-   aspect-ratio: 1 / 1;
-    min-width: 320px;
-    overflow: hidden;
-    background-color: #000;
-
-@include respond(tablet) {
-      max-height: 221px;
-    }
-
-    @include respond(desktop) {
-    max-height: 432px;
-    }
-  }
-
-  &__track {
-    display: flex;
-    aspect-ratio: 1 / 1;
-    min-width: 320px;
-    transition: transform 500ms ease;
-  }
-
-  &__slide {
-    display: flex;
-    min-width: 100%;
-    padding-top: 48px;
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-  }
-
-  &__heading {
-    width: min(60%, 320px);
-    margin: 0;
-    background: linear-gradient(to right, #7b61ff, #d946ef);
-
-  /* Clips the background to the shape of the text */
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  /* Makes the actual text transparent so the background is visible */
-  color: transparent;
-   font-size: 32px;
-    font-weight: 700;
-    line-height: 1.1;
-  }
-  &__product {
-    display: flex;
     width: 100%;
-    margin-top: 52px;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  &__productName {
-    margin: 0;
-    font-size: 40px;
-    font-weight: 600;
-  }
-
-  &__tagline {
-    margin: 12px 0;
-    color: $color-secondary;
-    font-weight: 400;
-    font-size: 1rem;
-  }
-
-  &__imageContainer {
-    width: 100%;
-    height: 330px;
     overflow: hidden;
-  }
-
-  &__image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-    object-fit: cover;
-    object-position: center -50px;
-  }
-
-  &__indicators {
-    display: flex;
-    min-height: 74px;
-    align-items: center;
-    justify-content: center;
-    gap: 28px;
     background-color: #fff;
-  }
 
-  &__indicator {
-    width: 14px;
-    height: 4px;
-    padding: 0;
-    border: 0;
-    background-color: #e1e5e8;
-    cursor: pointer;
-    transition: background-color 200ms ease;
+    &__viewport {
+        aspect-ratio: 1 / 1;
+        min-width: 320px;
+        overflow: hidden;
+        background-color: #000;
 
-    &--active {
-      background-color: #303136;
+        @include respond(tablet) {
+            max-height: 221px;
+        }
+
+        @include respond(desktop) {
+            max-height: 432px;
+        }
     }
-  }
+
+    &__track {
+        display: flex;
+        aspect-ratio: 1 / 1;
+        min-width: 320px;
+        transition: transform 500ms ease;
+    }
+
+    &__slide {
+        display: flex;
+        min-width: 100%;
+        padding-top: 48px;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+    }
+
+    &__heading {
+        width: min(60%, 320px);
+        margin: 0;
+        background: linear-gradient(to right, #7b61ff, #d946ef);
+
+        /* Clips the background to the shape of the text */
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        /* Makes the actual text transparent so the background is visible */
+        color: transparent;
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 1.1;
+    }
+    &__product {
+        display: flex;
+        width: 100%;
+        margin-top: 52px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__productName {
+        margin: 0;
+        font-size: 40px;
+        font-weight: 600;
+    }
+
+    &__tagline {
+        margin: 12px 0;
+        color: $color-secondary;
+        font-weight: 400;
+        font-size: 1rem;
+    }
+
+    &__imageContainer {
+        width: 100%;
+        height: 330px;
+        overflow: hidden;
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        object-fit: cover;
+        object-position: center -50px;
+    }
+
+    &__indicators {
+        display: flex;
+        min-height: 74px;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+        background-color: #fff;
+    }
+
+    &__indicator {
+        width: 14px;
+        height: 4px;
+        padding: 0;
+        border: 0;
+        background-color: #e1e5e8;
+        cursor: pointer;
+        transition: background-color 200ms ease;
+
+        &--active {
+            background-color: #303136;
+        }
+    }
 }

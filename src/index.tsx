@@ -4,7 +4,7 @@ import { App } from './App';
 import './modules/shared/global.scss';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>,
 );

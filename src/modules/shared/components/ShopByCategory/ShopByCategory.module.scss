@@ -1,0 +1,92 @@
+@use '../../styles/variables' as *;
+@use '../../styles/typography' as *;
+@use '../../styles/breakpoints' as *;
+
+.shopByCategory {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 56px;
+
+    @include respond(tablet) {
+        margin-top: 64px;
+    }
+
+    @include respond(desktop) {
+        margin-top: 80px;
+        
+    }
+
+    @include respond(desktop-over) {
+        margin-top: 80px;
+    }
+}
+
+.shopByCategory__title {
+    margin: 0;
+
+    @include typography(h2);
+
+    color: $color-primary;
+}
+
+.shopByCategory__grid {
+    display: grid;
+    gap: 32px 16px;
+
+    @include respond(tablet) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    @include respond(desktop) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    @include respond(desktop-over) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+    }
+}
+
+.shopByCategory__card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+}
+
+.shopByCategory__imageLink {
+    display: block;
+}
+
+.shopByCategory__image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+
+    &:hover {
+        transform: scale(1.01);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    cursor: pointer;
+}
+
+.shopByCategory__cardTitle {
+    margin: 0;
+
+    @include typography(h3);
+
+    color: $color-primary;
+}
+
+.shopByCategory__count {
+    margin: 0;
+
+    @include typography(body);
+
+    color: $color-secondary;
+}

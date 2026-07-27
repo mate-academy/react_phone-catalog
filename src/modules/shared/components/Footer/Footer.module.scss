@@ -9,10 +9,9 @@
     padding: 32px 16px;
     border-top: 1px solid $color-elements;
     border-bottom: 1px solid $color-elements;
-    
+
     background-color: $color-white;
     max-width: 1440px;
-   
 
     @include respond(tablet) {
         flex-direction: row;
@@ -28,7 +27,6 @@
         justify-content: space-between;
         align-items: center;
         height: 96px;
-      
     }
 
     @include respond(desktop-over) {
@@ -39,7 +37,7 @@
         align-items: center;
         height: 96px;
         border-left: 1px solid $color-elements;
-    border-right: 1px solid $color-elements;
+        border-right: 1px solid $color-elements;
     }
 }
 
@@ -117,24 +115,19 @@
         height: 100%;
         display: block;
     }
-
-    
 }
 
 .footer__backToTopText {
     color: $color-secondary;
+    margin-right: 16px;
 
     @include typography(small);
-
-    margin-right: 16px;
-   
 }
 
 .footer__backToTopButtonIcon {
     height: 16px;
     width: 16px;
     stroke: $color-primary;
-   
 }
 
 .footer__links {
@@ -143,29 +136,28 @@
     gap: 16px;
     margin-top: 32px;
     align-items: flex-start;
+    color: $color-secondary;
+
+    @include typography(uppercase);
 
     @include respond(tablet) {
         flex: 1;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-evenly;
         margin-top: 0;
     }
 
     @include respond(desktop) {
         flex: 1;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-evenly;
         margin-top: 0;
     }
 
     @include respond(desktop-over) {
         flex: 1;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-evenly;
         margin-top: 0;
     }
-
-    @include typography(uppercase);
-
-    color: $color-secondary;
 }

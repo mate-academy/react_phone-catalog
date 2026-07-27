@@ -9,34 +9,40 @@ import { Rights } from './modules/Rights';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { Cart } from './modules/Cart';
 import { Favorites } from './modules/Favorites';
+import { Phones } from './modules/Phones';
+import { Tablets } from './modules/Tablets';
+import { Accessories } from './modules/Accessories';
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+    const { pathname } = useLocation();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
 
-  return null;
+    return null;
 };
 
 export const App = () => (
-  <div className="App" id="top">
-    <ScrollToTop />
-    <Navbar />
+    <div className="App" id="top">
+        <ScrollToTop />
+        <Navbar />
 
-    <main className="App__body">
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/github" element={<h1>GitHub</h1>} />
-        <Route path="/contacts" element={<Contacts />} />
-        <Route path="/rights" element={<Rights />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/favorites" element={<Favorites />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </main>
+        <main className="App__body">
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/phones" element={<Phones />} />
+                <Route path="/tablets" element={<Tablets />} />
+                <Route path="/accessories" element={<Accessories />} />
+                <Route path="/github" element={<h1>GitHub</h1>} />
+                <Route path="/contacts" element={<Contacts />} />
+                <Route path="/rights" element={<Rights />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/favorites" element={<Favorites />} />
+                <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+        </main>
 
-    <Footer />
-  </div>
+        <Footer />
+    </div>
 );

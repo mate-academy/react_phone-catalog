@@ -3,44 +3,44 @@
 @use '../../styles/typography' as *;
 
 .navbar {
-  display: flex;
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0;
-  height: auto;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background-color: $color-white;
-  border-bottom: 1px solid $color-elements;
+    display: flex;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0;
+    height: auto;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: $color-white;
+    border-bottom: 1px solid $color-elements;
+    border-top: 1px solid $color-elements;
 
-  @include respond(desktop) {
-    border-left: 1px solid $color-elements;
-  }
+    @include respond(desktop) {
+        border-left: 1px solid $color-elements;
+    }
 }
 
 .navbar__menuButton {
-  height: 48px;
-  margin-left: auto;
-  border: none;
-  background: none;
-  cursor: pointer;
-  display: flex;
+    height: 48px;
+    margin-left: auto;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-left: 1px solid $color-elements;
 
-  @include respond(tablet) {
-    // menu only exists on mobile — nav links show inline from tablet up
-    display: none;
-  }
+    @include respond(tablet) {
+        // menu only exists on mobile — nav links show inline from tablet up
+        display: none;
+    }
 
-  @include respond(desktop) {
-    // menu only exists on mobile — nav links show inline from tablet up
-    display: none;
-  }
-
-  align-items: center;
-  padding: 0 16px;
-  border-left: 1px solid $color-elements;
+    @include respond(desktop) {
+        // menu only exists on mobile — nav links show inline from tablet up
+        display: none;
+    }
 }
 
 .navbar__logo {
@@ -71,19 +71,17 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-
-    @include typography(small);
-
     color: $color-secondary;
-    
     text-decoration: none;
     width: fit-content;
+
+    @include typography(small);
 
     @include respond(tablet) {
         width: 329px;
     }
 
-     @include respond(desktop) {
+    @include respond(desktop) {
         width: 425px;
     }
 
@@ -115,6 +113,10 @@
 }
 
 .navbar__BtnContainer {
+    margin-left: auto;
+    display: flex;
+    width: 96px;
+
     @include respond(mobile) {
         display: none; // buttons only show inline from tablet up
     }
@@ -122,8 +124,4 @@
     @include respond(desktop) {
         width: 128px;
     }
-
-    margin-left: auto;
-    display: flex;
-    width: 96px;
 }
