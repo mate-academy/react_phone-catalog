@@ -1,0 +1,24 @@
+@use '../../styles/mixins' as *;
+
+.page {
+  @include page-container;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding-top: 56px;
+  padding-bottom: 64px;
+  text-align: center;
+}
+
+.title {
+  @include h2;
+}
+
+.image {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  object-fit: contain;
+}

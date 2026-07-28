@@ -1,0 +1,59 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.item {
+  flex: 1;
+}
+
+.link {
+  display: block;
+  text-decoration: none;
+
+  @include hover-scale;
+}
+
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: $color-surface-1;
+  margin-bottom: 16px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  @include hover-transition(transform);
+}
+
+.title {
+  @include button-text;
+
+  font-weight: 600;
+  color: $color-primary;
+  padding-bottom: 4px;
+}
+
+.count {
+  @include body-text;
+
+  font-weight: 500;
+  color: $color-secondary;
+}
