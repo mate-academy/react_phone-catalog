@@ -15,6 +15,18 @@ import { Loader } from '../shared/components/Loader';
 import { ProductsSlider } from '../HomePage/components/ProductsSlider';
 import styles from './ProductDetailsPage.module.scss';
 
+const toSlugPart = (value: string) =>
+  value.trim().toLowerCase().replace(/\s+/g, '-');
+
+const colorMap: Record<string, string> = {
+  'space gray': '#4c4c4c',
+  spacegray: '#4c4c4c',
+  midnightgreen: '#4e5851',
+  spaceblack: '#1f2020',
+  rosegold: '#f6c7b8',
+  starlight: '#f6f2e8',
+};
+
 export const ProductDetailsPage = () => {
   const { category, productId } = useParams<{
     category: string;
@@ -31,16 +43,17 @@ export const ProductDetailsPage = () => {
   const [error, setError] = useState(false);
   const touchStartX = useRef<number>(0);
 
-  const { addToCart, isInCart } = useCart();
+  const { addToCart, isInCart, removeFromCart } = useCart();
   const { isFavorite, toggleFavorite } = useProducts();
 
   // Validate category from URL
   const validCategory = CATEGORIES.includes(category as Category)
     ? (category as Category)
     : null;
+  const normalizedProductId = productId?.replace(/\s+/g, '-');
 
   useEffect(() => {
-    if (!validCategory || !productId) {
+    if (!validCategory || !normalizedProductId) {
       setNotFound(true);
 
       return;
@@ -52,9 +65,9 @@ export const ProductDetailsPage = () => {
     setActiveImage(0);
 
     Promise.all([
-      getProductDetails(validCategory, productId),
+      getProductDetails(validCategory, normalizedProductId),
       getProducts(),
-      getSuggestedProducts(productId),
+      getSuggestedProducts(normalizedProductId),
     ])
       .then(([detail, allProducts, suggest]) => {
         if (!detail) {
@@ -67,13 +80,13 @@ export const ProductDetailsPage = () => {
         setSuggested(suggest);
 
         const match =
-          allProducts.find(prod => prod.itemId === productId) ?? null;
+          allProducts.find(prod => prod.itemId === normalizedProductId) ?? null;
 
         setProduct(match);
       })
       .catch(() => setError(true))
       .finally(() => setLoading(false));
-  }, [productId, validCategory]);
+  }, [normalizedProductId, validCategory]);
 
   // Navigate to a variant by rebuilding the productId string
   const goToVariant = (color?: string, capacity?: string) => {
@@ -81,8 +94,8 @@ export const ProductDetailsPage = () => {
       return;
     }
 
-    const newColor = color ?? details.color;
-    const newCapacity = (capacity ?? details.capacity).toLowerCase();
+    const newColor = toSlugPart(color ?? details.color);
+    const newCapacity = toSlugPart(capacity ?? details.capacity);
 
     // id pattern: {namespaceId}-{capacity}-{color}  e.g. apple-iphone-11-128gb-black
     const newId = `${details.namespaceId}-${newCapacity}-${newColor}`;
@@ -195,7 +208,7 @@ export const ProductDetailsPage = () => {
                 <li key={color}>
                   <button
                     className={`${styles.colorBtn} ${color === details.color ? styles.colorBtnActive : ''}`}
-                    style={{ backgroundColor: color }}
+                    style={{ backgroundColor: colorMap[color] ?? color }}
                     onClick={() => goToVariant(color, undefined)}
                     aria-label={color}
                     title={color}
@@ -236,7 +249,17 @@ export const ProductDetailsPage = () => {
           <div className={styles.actions}>
             <button
               className={`${styles.cartBtn} ${inCart ? styles.cartBtnAdded : ''}`}
-              onClick={() => product && !inCart && addToCart(product)}
+              onClick={() => {
+                if (!product) {
+                  return;
+                }
+
+                if (inCart) {
+                  removeFromCart(product.id);
+                } else {
+                  addToCart(product);
+                }
+              }}
               disabled={!product}
             >
               {inCart ? 'Added to cart' : 'Add to cart'}

@@ -1,5 +1,4 @@
-import React, { useState, useRef } from 'react';
-import { useInterval } from '../../../../hooks';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ICONS } from '../../../../constants';
 import styles from './PicturesSlider.module.scss';
 
@@ -18,14 +17,48 @@ const SWIPE_THRESHOLD = 10;
 
 export const PicturesSlider = ({ slides }: Props) => {
   const [current, setCurrent] = useState(0);
+  const [timerResetKey, setTimerResetKey] = useState(0);
   const total = slides.length;
   const touchStartX = useRef<number>(0); // only need start, end computed in handler
+  const autoplayTimer = useRef<number | null>(null);
 
-  const goTo = (index: number) => setCurrent((index + total) % total);
+  const clearAutoplayTimer = useCallback(() => {
+    if (autoplayTimer.current !== null) {
+      window.clearTimeout(autoplayTimer.current);
+      autoplayTimer.current = null;
+    }
+  }, []);
+
+  const resetAutoplayTimer = useCallback(() => {
+    clearAutoplayTimer();
+    setTimerResetKey(key => key + 1);
+  }, [clearAutoplayTimer]);
+
+  const goTo = useCallback(
+    (index: number, shouldResetTimer = true) => {
+      if (shouldResetTimer) {
+        resetAutoplayTimer();
+      }
+
+      setCurrent((index + total) % total);
+    },
+    [resetAutoplayTimer, total],
+  );
+
   const goPrev = () => goTo(current - 1);
   const goNext = () => goTo(current + 1);
 
-  useInterval(goNext, AUTOPLAY_DELAY);
+  useEffect(() => {
+    if (total <= 1) {
+      return clearAutoplayTimer;
+    }
+
+    autoplayTimer.current = window.setTimeout(() => {
+      setCurrent(prev => (prev + 1) % total);
+    }, AUTOPLAY_DELAY);
+
+    return clearAutoplayTimer;
+  }, [clearAutoplayTimer, current, timerResetKey, total]);
 
   const handleTouchStart = (event: React.TouchEvent) => {
     touchStartX.current = event.touches[0].clientX;

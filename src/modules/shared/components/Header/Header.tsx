@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AppRoutes } from '../../../../utils/routes';
 import { ICONS } from '../../../../constants';
@@ -9,6 +9,16 @@ export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { favorites } = useProducts();
   const { totalQuantity } = useCart();
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = menuOpen ? 'hidden' : previousOverflow;
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [menuOpen]);
 
   const navLinks = [
     { to: AppRoutes.HOME, label: 'Home' },
