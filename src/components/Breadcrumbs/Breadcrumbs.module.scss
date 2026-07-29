@@ -1,0 +1,49 @@
+@use '@/styles/mixins' as *;
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.homeLink {
+  @include transition(color);
+
+  display: flex;
+  color: var(--color-icon);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.separator {
+  width: 12px;
+  height: 12px;
+  color: var(--color-icon);
+}
+
+.link {
+  @include font-small;
+  @include transition(color);
+
+  color: var(--color-secondary);
+  font-weight: 400;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.current {
+  @include font-small;
+
+  color: var(--color-secondary);
+  font-weight: 400;
+}

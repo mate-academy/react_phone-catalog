@@ -1,5 +1,6 @@
 .idea
 .vscode
+.claude
 build
 dist
 node_modules

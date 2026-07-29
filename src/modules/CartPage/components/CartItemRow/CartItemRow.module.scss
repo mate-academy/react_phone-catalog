@@ -1,0 +1,89 @@
+@use '@/styles/mixins' as *;
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--color-elements);
+
+  & + & {
+    border-top: none;
+  }
+}
+
+.remove {
+  @include transition(color);
+
+  display: flex;
+  color: var(--color-icon);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.image {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.name {
+  @include font-body;
+
+  flex: 1;
+  color: var(--color-primary);
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quantityButton {
+  @include transition(background-color, color, border-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: var(--color-primary);
+  border: 1px solid var(--color-elements);
+
+  &:disabled {
+    color: var(--color-icon);
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-hover);
+  }
+
+  svg {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.quantityValue {
+  @include font-body;
+
+  width: 16px;
+  text-align: center;
+}
+
+.price {
+  width: 80px;
+  text-align: right;
+
+  @include font-h4;
+}

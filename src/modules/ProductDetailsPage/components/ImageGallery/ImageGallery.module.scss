@@ -1,0 +1,53 @@
+@use '@/styles/mixins' as *;
+
+.gallery {
+  display: flex;
+  gap: 16px;
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 64px;
+  flex-shrink: 0;
+}
+
+.thumbnailButton {
+  @include transition(border-color);
+
+  display: flex;
+  width: 64px;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--color-elements);
+
+  &:hover {
+    border-color: var(--color-secondary);
+  }
+}
+
+.thumbnailButtonActive {
+  border-color: var(--color-primary);
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.mainImageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  aspect-ratio: 1 / 1;
+  max-width: 464px;
+  border: 1px solid var(--color-elements);
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

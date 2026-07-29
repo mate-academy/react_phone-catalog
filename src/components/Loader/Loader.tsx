@@ -1,0 +1,7 @@
+import styles from './Loader.module.scss';
+
+export const Loader = () => (
+  <div className={styles.loader} role="status" aria-label="Loading">
+    <span className={styles.spinner} />
+  </div>
+);

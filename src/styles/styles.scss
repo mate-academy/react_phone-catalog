@@ -1,0 +1,18 @@
+@use 'variables';
+@use 'mixins' as *;
+@use 'reset';
+
+body {
+  @include font-body;
+
+  color: var(--color-primary);
+  background-color: var(--color-white);
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+.image-link {
+  @include image-link-hover;
+}

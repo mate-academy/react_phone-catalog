@@ -1,0 +1,134 @@
+@use '@/styles/mixins' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+
+  @include transition(box-shadow);
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+  }
+}
+
+.imageLink {
+  display: block;
+  margin-bottom: 24px;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 208 / 200;
+  object-fit: contain;
+}
+
+.name {
+  @include font-body;
+  @include transition(color);
+
+  display: block;
+  margin-bottom: 8px;
+  color: var(--color-primary);
+
+  &:hover {
+    color: var(--color-secondary);
+  }
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.price {
+  @include font-h4;
+}
+
+.fullPrice {
+  @include font-body;
+
+  color: var(--color-secondary);
+  text-decoration: line-through;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-elements);
+}
+
+.specRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 15px;
+
+  span:first-child {
+    color: var(--color-secondary);
+  }
+
+  span:last-child {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.addToCart {
+  @include font-button;
+  @include transition(background-color, color, border-color);
+
+  flex: 1;
+  padding: 8px 12px;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+  }
+}
+
+.added {
+  color: var(--color-green);
+  background-color: var(--color-white);
+  border-color: var(--color-elements);
+}
+
+.favourite {
+  @include transition(background-color, border-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  color: var(--color-primary);
+  border: 1px solid var(--color-elements);
+
+  &:hover {
+    background-color: var(--color-hover);
+  }
+}
+
+.favouriteActive {
+  color: var(--color-red);
+  border-color: var(--color-primary);
+}

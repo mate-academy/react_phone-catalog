@@ -1,0 +1,49 @@
+@use '@/styles/mixins' as *;
+
+.picker {
+  border: none;
+}
+
+.legend {
+  @include font-small;
+
+  margin-bottom: 8px;
+  color: var(--color-secondary);
+}
+
+.options {
+  display: flex;
+  gap: 8px;
+}
+
+.option {
+  position: relative;
+  display: flex;
+}
+
+.swatch {
+  @include transition(outline-color);
+
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--color-elements);
+  cursor: pointer;
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+
+  &:checked + .swatch {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  &:focus-visible + .swatch {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+  }
+}

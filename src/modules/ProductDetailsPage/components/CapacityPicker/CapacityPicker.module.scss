@@ -1,0 +1,49 @@
+@use '@/styles/mixins' as *;
+
+.picker {
+  border: none;
+}
+
+.legend {
+  @include font-small;
+
+  margin-bottom: 8px;
+  color: var(--color-secondary);
+}
+
+.options {
+  display: flex;
+  gap: 8px;
+}
+
+.option {
+  @include font-button;
+  @include transition(background-color, color, border-color);
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--color-secondary);
+  }
+}
+
+.optionActive {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}

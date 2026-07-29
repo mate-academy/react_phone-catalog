@@ -1,0 +1,60 @@
+@use '@/styles/mixins' as *;
+
+.slider {
+  margin-top: 40px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  @include font-h2;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+}
+
+.arrow {
+  @include transition(background-color, border-color, color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+
+  &:hover {
+    background-color: var(--color-hover);
+  }
+
+  &:disabled {
+    color: var(--color-icon);
+    cursor: not-allowed;
+  }
+}
+
+.track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.item {
+  flex: 0 0 240px;
+  scroll-snap-align: start;
+}
