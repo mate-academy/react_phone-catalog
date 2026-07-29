@@ -1,0 +1,139 @@
+@use '../../styles/utils/mixins' as *;
+
+.container {
+  margin-top: 115px;
+  font-family: $font-primary;
+}
+
+.main {
+  @include page-grid;
+}
+
+.cardsList {
+  grid-column: 4;
+
+  @include on-desktop {
+    grid-column: 1/16;
+  }
+}
+
+.card {
+  height: 128px;
+  border: 1px solid #E2E6E9;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 24px;
+  padding: 0 24px;
+
+  &Name {
+    flex: 1;
+    min-width: 0;
+    white-space: normal;
+    overflow: break-word;
+  }
+
+  &Price {
+    flex-shrink: 0;
+    width: 70px;
+    text-align: right;
+  }
+
+  &Quantity {
+    display: flex;
+    flex-shrink: 0;
+
+    &Text {
+      height: 32px;
+      width: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &Image {
+    width: 66px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  &Buttons {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+    background-color: white;
+    border: 1px solid #B4BDC3;
+  }
+
+  &Button {
+    width: 16px;
+    opacity: 0.3;
+    cursor: pointer;
+    flex-shrink: 0;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.total {
+  &Box {
+    width: 368px;
+    height: 206px;
+    grid-column: span 4;
+    border: 1px solid #E2E6E9;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+
+  @include on-tablet {
+    grid-column: span 12;
+  }
+
+  @include on-desktop {
+    grid-column: 16/24;
+  }
+  }
+
+  &Quantity {
+    color: $secondary-text-color;
+    font-family: $font-primary;
+    font-size: 14px;
+  }
+
+  &Price {
+    font-size: 32px;
+    color: $main-text-color;
+    font-family: $font-primary;
+    font-weight: 800;
+  }
+
+  &Button {
+    width: 320px;
+    height: 48px;
+    color: white;
+    background-color: $main-text-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &Text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}

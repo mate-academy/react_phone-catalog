@@ -1,0 +1,105 @@
+@use '../../styles/utils/mixins' as *;
+
+
+.body {
+  margin-top: 112px;
+  font-family: $font-primary;
+  font-weight: 800;
+
+  @include page-grid;
+}
+
+.product {
+  &__photo {
+    object-position: right bottom;
+    position: absolute;
+    top: 40px;
+    left: 49px;
+    height: 457px;
+    pointer-events: none;
+  }
+}
+
+.mainText {
+  font-family: $font-primary;
+  font-size: 20px;
+  color: #313237;
+  font-weight: 600;
+  margin-bottom: 0;
+  margin-top: 24px;
+}
+
+.secondaryText {
+  font-family: $font-primary;
+  line-height: 21px;
+  font-size: 14px;
+  color: #89939A;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+.category {
+  position: relative;
+  overflow: hidden;
+  width: 368px;
+  height: 368px;
+
+
+  @include hover(transform, scale(1.05));
+
+  &__block {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__card {
+    height: 443px;
+    text-decoration: none;
+
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__phones {
+    background-color: #6D6474;
+  }
+  &__tablets {
+    background-color: #8D8D92;
+  }
+  &__accessories {
+    background-color: #D53C51;
+  }
+}
+
+.title {
+  font-size: 48px;
+  line-height: 56px;
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 12;
+  }
+
+  @include on-desktop {
+    grid-column: span 24;
+  }
+}
+
+.subHeader {
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 12;
+  }
+
+  @include on-desktop {
+    grid-column: span 24;
+  }
+}

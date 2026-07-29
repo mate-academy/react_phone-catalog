@@ -1,0 +1,61 @@
+@use '../../styles/utils/mixins' as *;
+
+.slider {
+  grid-column: span 4;
+  overflow: visible;
+
+  @include on-tablet {
+    grid-column: span 12;
+  }
+
+  @include on-desktop {
+    grid-column: span 24;
+  }
+
+  &__viewport {
+    --hover-space: 12px;
+
+    overflow: hidden;
+
+    padding: var(--hover-space);
+
+    margin: calc(var(--hover-space) * -1);
+  }
+}
+
+.card__slider__product {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  overflow: visible;
+  transition: transform 0.3s ease;
+}
+
+.card__slider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.arrow__left {
+  transform: rotate(180deg);
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  border: 1px solid #b4bdc3;
+  cursor: pointer;
+
+  &__box {
+    display: flex;
+    gap: 16px;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+}
