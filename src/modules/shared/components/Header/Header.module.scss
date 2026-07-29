@@ -87,6 +87,12 @@
   gap: 8px;
 }
 
+.desktopIcon {
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
 .burger {
   display: none;
   align-items: center;
@@ -108,20 +114,27 @@
 
 .mobileNav {
   display: none;
+  flex-direction: column;
   border-top: 1px solid var(--color-elements);
 
   @media (max-width: 767px) {
-    display: block;
+    position: fixed;
+    inset: var(--header-height) 0 0;
+    display: flex;
+    background-color: var(--color-white);
   }
 }
 
 .mobileNavList {
   display: flex;
   flex-direction: column;
+  flex: 1;
 
   .navLink {
+    justify-content: center;
     height: auto;
     padding: 16px;
+    text-align: center;
     border-left: 3px solid transparent;
 
     &::after {
@@ -131,5 +144,22 @@
 
   .navLinkActive {
     border-left-color: var(--color-primary);
+  }
+}
+
+.mobileNavIcons {
+  display: flex;
+  align-items: stretch;
+  height: 48px;
+  border-top: 1px solid var(--color-elements);
+}
+
+.mobileNavIcon {
+  flex: 1;
+  height: auto;
+  border-right: 1px solid var(--color-elements);
+
+  &:last-child {
+    border-right: none;
   }
 }

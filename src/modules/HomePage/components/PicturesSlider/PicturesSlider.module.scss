@@ -8,17 +8,25 @@
 
 .row {
   display: flex;
-  align-items: center;
-  gap: 16px;
+  align-items: stretch;
+  gap: 8px;
   width: 100%;
+
+  @media (min-width: 640px) {
+    gap: 16px;
+  }
 }
 
 .track {
   position: relative;
   flex: 1;
   overflow: hidden;
-  aspect-ratio: 335 / 216;
+  aspect-ratio: 288 / 216;
   border: 1px solid var(--color-elements);
+
+  @media (min-width: 480px) {
+    aspect-ratio: 335 / 216;
+  }
 
   @media (min-width: 640px) {
     aspect-ratio: 1040 / 400;
@@ -31,10 +39,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px;
+  padding: 16px;
   background-color: var(--color-primary);
 
   @include transition(transform);
+
+  @media (min-width: 480px) {
+    padding: 24px;
+  }
 
   @media (min-width: 640px) {
     padding: 32px 64px;
@@ -48,7 +60,11 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
-  max-width: 260px;
+  max-width: 55%;
+
+  @media (min-width: 480px) {
+    max-width: 260px;
+  }
 }
 
 .title {
@@ -92,8 +108,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: auto;
   flex-shrink: 0;
   color: var(--color-primary);
   background-color: var(--color-white);
@@ -101,6 +117,10 @@
 
   &:hover {
     background-color: var(--color-hover);
+  }
+
+  @media (min-width: 480px) {
+    width: 32px;
   }
 }
 

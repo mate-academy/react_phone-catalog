@@ -53,12 +53,14 @@ export const Header = () => {
             iconName="favourites"
             label="Favourites"
             count={favourites.length}
+            className={styles.desktopIcon}
           />
           <IconButton
             to="/cart"
             iconName="cart"
             label="Cart"
             count={cartItems.length}
+            className={styles.desktopIcon}
           />
 
           <button
@@ -93,6 +95,25 @@ export const Header = () => {
               </li>
             ))}
           </ul>
+
+          <div className={styles.mobileNavIcons}>
+            <IconButton
+              to="/favourites"
+              iconName="favourites"
+              label="Favourites"
+              count={favourites.length}
+              onClick={() => setIsMenuOpen(false)}
+              className={styles.mobileNavIcon}
+            />
+            <IconButton
+              to="/cart"
+              iconName="cart"
+              label="Cart"
+              count={cartItems.length}
+              onClick={() => setIsMenuOpen(false)}
+              className={styles.mobileNavIcon}
+            />
+          </div>
         </nav>
       )}
     </header>

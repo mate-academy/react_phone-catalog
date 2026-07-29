@@ -2,15 +2,26 @@
 
 .gallery {
   display: flex;
+  flex-flow: column-reverse nowrap;
   gap: 16px;
+  width: 100%;
+
+  @media (min-width: 640px) {
+    flex-flow: row nowrap;
+    width: auto;
+  }
 }
 
 .thumbnails {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   gap: 8px;
-  width: 64px;
   flex-shrink: 0;
+
+  @media (min-width: 640px) {
+    flex-flow: column nowrap;
+    width: 64px;
+  }
 }
 
 .thumbnailButton {
@@ -41,6 +52,7 @@
   align-items: center;
   justify-content: center;
   flex: 1;
+  min-width: 0;
   aspect-ratio: 1 / 1;
   max-width: 464px;
   border: 1px solid var(--color-elements);

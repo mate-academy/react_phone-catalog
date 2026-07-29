@@ -53,6 +53,7 @@ export const HomePage = () => {
           <ProductsSlider
             title="Brand new models"
             products={brandNewProducts.slice(0, 10)}
+            showDiscount={false}
           />
           <ShopByCategory products={products} />
           <ProductsSlider

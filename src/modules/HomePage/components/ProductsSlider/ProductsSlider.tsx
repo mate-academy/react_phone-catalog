@@ -7,11 +7,16 @@ import styles from './ProductsSlider.module.scss';
 type Props = {
   title: string;
   products: Product[];
+  showDiscount?: boolean;
 };
 
 const SCROLL_AMOUNT = 288;
 
-export const ProductsSlider = ({ title, products }: Props) => {
+export const ProductsSlider = ({
+  title,
+  products,
+  showDiscount = true,
+}: Props) => {
   const trackRef = useRef<HTMLUListElement>(null);
 
   const scrollBy = (offset: number) => {
@@ -50,7 +55,7 @@ export const ProductsSlider = ({ title, products }: Props) => {
       <ul className={styles.track} ref={trackRef}>
         {products.map(product => (
           <li key={product.itemId} className={styles.item}>
-            <ProductCard product={product} />
+            <ProductCard product={product} showDiscount={showDiscount} />
           </li>
         ))}
       </ul>

@@ -57,7 +57,11 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  width: 260px;
+  width: 100%;
+
+  @media (min-width: 640px) {
+    width: 260px;
+  }
 }
 
 .priceRow {

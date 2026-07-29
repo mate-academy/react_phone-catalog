@@ -1,6 +1,10 @@
 import { useEffect, useRef } from 'react';
 
-export function useInterval(callback: () => void, delay: number | null) {
+export function useInterval(
+  callback: () => void,
+  delay: number | null,
+  resetKey?: unknown,
+) {
   const savedCallback = useRef(callback);
 
   useEffect(() => {
@@ -15,5 +19,6 @@ export function useInterval(callback: () => void, delay: number | null) {
     const id = setInterval(() => savedCallback.current(), delay);
 
     return () => clearInterval(id);
-  }, [delay]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- resetKey intentionally restarts the interval
+  }, [delay, resetKey]);
 }

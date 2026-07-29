@@ -45,6 +45,7 @@ const slides: Slide[] = [
 
 export const PicturesSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [resetKey, setResetKey] = useState(0);
 
   const goToNext = () => {
     setActiveIndex(current => (current + 1) % slides.length);
@@ -54,7 +55,17 @@ export const PicturesSlider = () => {
     setActiveIndex(current => (current - 1 + slides.length) % slides.length);
   };
 
-  useInterval(goToNext, SLIDE_DURATION);
+  const handleNextClick = () => {
+    goToNext();
+    setResetKey(key => key + 1);
+  };
+
+  const handlePreviousClick = () => {
+    goToPrevious();
+    setResetKey(key => key + 1);
+  };
+
+  useInterval(goToNext, SLIDE_DURATION, resetKey);
 
   return (
     <div className={styles.slider}>
@@ -63,7 +74,7 @@ export const PicturesSlider = () => {
           type="button"
           className={styles.arrowLeft}
           aria-label="Previous slide"
-          onClick={goToPrevious}
+          onClick={handlePreviousClick}
         >
           <Icon name="chevron-left" />
         </button>
@@ -98,7 +109,7 @@ export const PicturesSlider = () => {
           type="button"
           className={styles.arrowRight}
           aria-label="Next slide"
-          onClick={goToNext}
+          onClick={handleNextClick}
         >
           <Icon name="chevron-right" />
         </button>

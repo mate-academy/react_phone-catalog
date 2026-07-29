@@ -8,9 +8,10 @@ import styles from './ProductCard.module.scss';
 
 type Props = {
   product: Product;
+  showDiscount?: boolean;
 };
 
-export const ProductCard = ({ product }: Props) => {
+export const ProductCard = ({ product, showDiscount = true }: Props) => {
   const { addToCart, isInCart } = useCart();
   const { toggleFavourite, isFavourite } = useFavourites();
 
@@ -35,8 +36,10 @@ export const ProductCard = ({ product }: Props) => {
       </Link>
 
       <div className={styles.priceRow}>
-        <span className={styles.price}>${product.price}</span>
-        {product.fullPrice > product.price && (
+        <span className={styles.price}>
+          ${showDiscount ? product.price : product.fullPrice}
+        </span>
+        {showDiscount && product.fullPrice > product.price && (
           <span className={styles.fullPrice}>${product.fullPrice}</span>
         )}
       </div>
