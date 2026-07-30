@@ -19,6 +19,8 @@ export const Header = () => {
   const { cartItems } = useCart();
   const { favourites } = useFavourites();
 
+  const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <header className={styles.header}>
       <div className={styles.content}>
@@ -59,7 +61,7 @@ export const Header = () => {
             to="/cart"
             iconName="cart"
             label="Cart"
-            count={cartItems.length}
+            count={cartCount}
             className={styles.desktopIcon}
           />
 
@@ -109,7 +111,7 @@ export const Header = () => {
               to="/cart"
               iconName="cart"
               label="Cart"
-              count={cartItems.length}
+              count={cartCount}
               onClick={() => setIsMenuOpen(false)}
               className={styles.mobileNavIcon}
             />

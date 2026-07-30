@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { CartItem } from '@/types/CartItem';
 import { getImageUrl } from '@/utils/getImageUrl';
 import { Icon } from '@/components/Icon';
@@ -23,13 +24,17 @@ export const CartItemRow = ({ item, onRemove, onQuantityChange }: Props) => {
         <Icon name="close" />
       </button>
 
-      <img
-        src={getImageUrl(product.image)}
-        alt={product.name}
-        className={styles.image}
-      />
+      <Link to={`/product/${product.itemId}`} className={styles.imageLink}>
+        <img
+          src={getImageUrl(product.image)}
+          alt={product.name}
+          className={styles.image}
+        />
+      </Link>
 
-      <span className={styles.name}>{product.name}</span>
+      <Link to={`/product/${product.itemId}`} className={styles.name}>
+        {product.name}
+      </Link>
 
       <div className={styles.quantity}>
         <button
