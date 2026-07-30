@@ -1,0 +1,41 @@
+@import '../../styles/utils/mixin';
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56px 0 80px;
+  overflow: hidden;
+
+  @include on-tablet {
+    padding: 32px 0 64px;
+  }
+
+  @include on-mobile {
+    padding-top: 24px;
+  }
+
+  &__main-title {
+    visibility: hidden;
+    display: none;
+  }
+
+  &__title {
+    align-self: start;
+    font-size: 48px;
+    line-height: 56px;
+    overflow-wrap: break-word;
+
+    @include on-tablet {
+      max-width: 592px;
+      padding-inline: 24px;
+    }
+
+    @include on-mobile {
+      max-width: 288px;
+      font-size: 32px;
+      line-height: 41px;
+      align-self: center;
+    }
+  }
+}

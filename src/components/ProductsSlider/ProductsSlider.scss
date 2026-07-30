@@ -1,0 +1,19 @@
+@import '../../styles/utils/mixin';
+@import '../../styles/utils/variables';
+
+.new-models__slider {
+  width: 100%;
+  max-width: 1136px;
+  overflow: hidden;
+}
+
+.new-models__slider .swiper-products-2 {
+  @include on-tablet {
+    width: 100vw;
+  }
+}
+
+.new-models__slider .swiper-slide {
+  width: auto;
+  flex-shrink: 0;
+}

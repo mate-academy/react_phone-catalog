@@ -1,0 +1,110 @@
+@import '../../styles/utils/mixin';
+@import '../../styles/utils/variables';
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+
+  @include on-tablet {
+    padding-top: 64px;
+  }
+
+  @include on-mobile {
+    padding-top: 56px;
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  &__categories {
+    display: flex;
+    width: 100%;
+    gap: 16px;
+    padding-top: 24px;
+
+    @include on-mobile {
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+  }
+}
+
+.categories {
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 368px;
+    width: 100%;
+    height: 100%;
+
+    @include on-tablet {
+      min-width: 187px;
+      height: 262px;
+    }
+
+    @include on-mobile {
+      min-width: 288px;
+      height: auto;
+    }
+  }
+
+  &__link {
+    width: 368px;
+    height: 368px;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include on-tablet {
+      width: 187px;
+      height: 187px;
+    }
+
+    @include on-mobile {
+      min-width: 288px;
+      min-height: 288px;
+    }
+
+    &--phones {
+      background-color: #6D6474;
+      background-image: url('../../../public/img/category-phones.png');
+    }
+
+    &--tablets {
+      background-color: #D53C51;
+      background-image: url('../../../public/img/category-tablets.png');
+    }
+
+    &--accessories {
+      background-color: #973D5F;
+      background-image: url('../../../public/img/category-accessories.png');
+    }
+  }
+
+  &__title {
+    &--category {
+      font-family: Mont-SemiBold, sans-serif;
+      font-size: 20px;
+      line-height: 25.56px;
+
+      @include on-tablet {
+        font-family: Mont-Bold, sans-serif;
+      }
+    }
+
+    &--models {
+      font-family: Mont-Regular, sans-serif;
+      font-style: 14px;
+      line-height: 21px;
+      color: $secondary-text-color;
+
+      @include on-tablet {
+        font-family: Mont-SemiBold, sans-serif;
+      }
+    }
+  }
+}

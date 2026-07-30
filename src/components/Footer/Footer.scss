@@ -1,0 +1,110 @@
+@import '../../styles/utils/mixin';
+@import '../../styles/utils/variables';
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 96px;
+  border-top: 1px solid $elements-gray-color;
+  margin-top: auto;
+
+  @include on-mobile {
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 32px;
+    padding: 32px 16px;
+    height: auto;
+  }
+
+  &__logo {
+    width: 379px;
+    cursor: pointer;
+
+    @include on-tablet {
+      width: 192px;
+    }
+  }
+
+  &__button-up {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 16px;
+    width: 379px;
+
+    @include on-tablet {
+      width: 192px;
+    }
+
+    @include on-mobile {
+      width: auto;
+      align-self: center;
+    }
+  }
+}
+
+.footer-list {
+  display: flex;
+  justify-content: space-between;
+  min-width: 378px;
+
+  @include on-tablet {
+    min-width: 192px;
+  }
+
+  @include on-mobile {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item {
+    list-style-type: none;
+  }
+
+  &__link {
+    text-decoration: none;
+    font-family: Mont-Bold, sans-serif;
+    color: $secondary-text-color;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 11px;
+  }
+}
+
+.button-up {
+  &__title {
+    font-family: Mont-Regular, sans-serif;
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $secondary-text-color;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons-gray-color;
+    background-color: $white-color;
+    position: relative;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      width: 16px;
+      height: 16px;
+      background-image: url(../../../public/img/icons/arrow-up.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &:hover {
+      border: 1px solid $main-text-color;
+    }
+  }
+}
