@@ -36,30 +36,32 @@ export const CartItemRow = ({ item, onRemove, onQuantityChange }: Props) => {
         {product.name}
       </Link>
 
-      <div className={styles.quantity}>
-        <button
-          type="button"
-          className={styles.quantityButton}
-          aria-label="Decrease quantity"
-          disabled={quantity <= 1}
-          onClick={() => onQuantityChange(item.id, quantity - 1)}
-        >
-          <Icon name="minus" />
-        </button>
+      <div className={styles.footer}>
+        <div className={styles.quantity}>
+          <button
+            type="button"
+            className={styles.quantityButton}
+            aria-label="Decrease quantity"
+            disabled={quantity <= 1}
+            onClick={() => onQuantityChange(item.id, quantity - 1)}
+          >
+            <Icon name="minus" />
+          </button>
 
-        <span className={styles.quantityValue}>{quantity}</span>
+          <span className={styles.quantityValue}>{quantity}</span>
 
-        <button
-          type="button"
-          className={styles.quantityButton}
-          aria-label="Increase quantity"
-          onClick={() => onQuantityChange(item.id, quantity + 1)}
-        >
-          <Icon name="plus" />
-        </button>
+          <button
+            type="button"
+            className={styles.quantityButton}
+            aria-label="Increase quantity"
+            onClick={() => onQuantityChange(item.id, quantity + 1)}
+          >
+            <Icon name="plus" />
+          </button>
+        </div>
+
+        <span className={styles.price}>${product.price * quantity}</span>
       </div>
-
-      <span className={styles.price}>${product.price * quantity}</span>
     </li>
   );
 };

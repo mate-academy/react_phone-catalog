@@ -46,7 +46,7 @@ export const ProductDetailsPage = () => {
   const [suggested, setSuggested] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
-  const { addToCart, isInCart } = useCart();
+  const { addToCart, removeFromCart, isInCart } = useCart();
   const { toggleFavourite, isFavourite } = useFavourites();
 
   useEffect(() => {
@@ -114,8 +114,6 @@ export const ProductDetailsPage = () => {
   return (
     <div className={styles.page}>
       <div className={styles.top}>
-        <Breadcrumbs crumbs={crumbs} />
-
         <button
           type="button"
           className={styles.back}
@@ -124,6 +122,8 @@ export const ProductDetailsPage = () => {
           <Icon name="chevron-left" />
           Back
         </button>
+
+        <Breadcrumbs crumbs={crumbs} />
       </div>
 
       <h1 className={styles.title}>{product.name}</h1>
@@ -157,8 +157,11 @@ export const ProductDetailsPage = () => {
               className={[styles.addToCart, inCart ? styles.added : ''].join(
                 ' ',
               )}
-              onClick={() => addToCart(productAsProduct)}
-              disabled={inCart}
+              onClick={() =>
+                inCart
+                  ? removeFromCart(product.id)
+                  : addToCart(productAsProduct)
+              }
             >
               {inCart ? 'Added to cart' : 'Add to cart'}
             </button>

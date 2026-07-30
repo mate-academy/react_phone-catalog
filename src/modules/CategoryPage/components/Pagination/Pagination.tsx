@@ -8,6 +8,39 @@ type Props = {
   onPageChange: (page: number) => void;
 };
 
+const PAGE_SIBLINGS = 1;
+
+function getPageItems(
+  currentPage: number,
+  pageCount: number,
+): (number | '…')[] {
+  const pages = new Set<number>([
+    1,
+    pageCount,
+    currentPage,
+    ...Array.from(
+      { length: PAGE_SIBLINGS * 2 + 1 },
+      (_, index) => currentPage - PAGE_SIBLINGS + index,
+    ),
+  ]);
+
+  const sorted = Array.from(pages)
+    .filter(page => page >= 1 && page <= pageCount)
+    .sort((a, b) => a - b);
+
+  const items: (number | '…')[] = [];
+
+  sorted.forEach((page, index) => {
+    if (index > 0 && page - sorted[index - 1] > 1) {
+      items.push('…');
+    }
+
+    items.push(page);
+  });
+
+  return items;
+}
+
 export const Pagination = ({
   total,
   perPage,
@@ -20,7 +53,7 @@ export const Pagination = ({
     return null;
   }
 
-  const pages = Array.from({ length: pageCount }, (_, index) => index + 1);
+  const pages = getPageItems(currentPage, pageCount);
 
   return (
     <nav className={styles.pagination} aria-label="Pagination">
@@ -35,21 +68,27 @@ export const Pagination = ({
       </button>
 
       <ul className={styles.list}>
-        {pages.map(page => (
-          <li key={page}>
-            <button
-              type="button"
-              className={[
-                styles.page,
-                page === currentPage ? styles.pageActive : '',
-              ].join(' ')}
-              aria-current={page === currentPage}
-              onClick={() => onPageChange(page)}
-            >
+        {pages.map((page, index) =>
+          page === '…' ? (
+            <li key={`ellipsis-${index}`} className={styles.ellipsis}>
               {page}
-            </button>
-          </li>
-        ))}
+            </li>
+          ) : (
+            <li key={page}>
+              <button
+                type="button"
+                className={[
+                  styles.page,
+                  page === currentPage ? styles.pageActive : '',
+                ].join(' ')}
+                aria-current={page === currentPage}
+                onClick={() => onPageChange(page)}
+              >
+                {page}
+              </button>
+            </li>
+          ),
+        )}
       </ul>
 
       <button

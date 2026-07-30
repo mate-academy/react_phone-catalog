@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const ProductCard = ({ product, showDiscount = true }: Props) => {
-  const { addToCart, isInCart } = useCart();
+  const { addToCart, removeFromCart, isInCart } = useCart();
   const { toggleFavourite, isFavourite } = useFavourites();
 
   const inCart = isInCart(product.itemId);
@@ -63,8 +63,9 @@ export const ProductCard = ({ product, showDiscount = true }: Props) => {
         <button
           type="button"
           className={[styles.addToCart, inCart ? styles.added : ''].join(' ')}
-          onClick={() => addToCart(product)}
-          disabled={inCart}
+          onClick={() =>
+            inCart ? removeFromCart(product.itemId) : addToCart(product)
+          }
         >
           {inCart ? 'Added to cart' : 'Add to cart'}
         </button>
