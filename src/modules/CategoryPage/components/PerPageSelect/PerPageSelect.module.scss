@@ -1,0 +1,29 @@
+@use '@/styles/mixins' as *;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 128px;
+}
+
+.label {
+  @include font-small;
+
+  color: var(--color-secondary);
+}
+
+.select {
+  @include font-button;
+  @include transition(border-color);
+
+  padding: 12px 16px;
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+
+  &:hover,
+  &:focus {
+    border-color: var(--color-primary);
+  }
+}

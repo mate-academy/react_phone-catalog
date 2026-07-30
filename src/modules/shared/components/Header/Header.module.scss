@@ -1,0 +1,165 @@
+@use '@/styles/mixins' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-elements);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+
+  @include page-content;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.nav {
+  height: 100%;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+.navList {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+  margin-left: 32px;
+
+  li {
+    display: flex;
+    height: 100%;
+  }
+}
+
+.navLink {
+  @include font-uppercase;
+  @include transition(color);
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-inline: 16px;
+  color: var(--color-secondary);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 24px;
+    height: 2px;
+    background-color: transparent;
+    transform: translateX(-50%);
+
+    @include transition(background-color);
+  }
+}
+
+.navLinkActive {
+  color: var(--color-primary);
+
+  &::after {
+    background-color: var(--color-primary);
+  }
+}
+
+.right {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+  gap: 8px;
+}
+
+.desktopIcon {
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+.burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--color-primary);
+
+  @include transition(background-color);
+
+  &:hover {
+    background-color: var(--color-hover);
+  }
+
+  @media (max-width: 767px) {
+    display: flex;
+  }
+}
+
+.mobileNav {
+  display: none;
+  flex-direction: column;
+  border-top: 1px solid var(--color-elements);
+
+  @media (max-width: 767px) {
+    position: fixed;
+    inset: var(--header-height) 0 0;
+    display: flex;
+    background-color: var(--color-white);
+  }
+}
+
+.mobileNavList {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  .navLink {
+    justify-content: center;
+    height: auto;
+    padding: 16px;
+    text-align: center;
+    border-left: 3px solid transparent;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .navLinkActive {
+    border-left-color: var(--color-primary);
+  }
+}
+
+.mobileNavIcons {
+  display: flex;
+  align-items: stretch;
+  height: 48px;
+  border-top: 1px solid var(--color-elements);
+}
+
+.mobileNavIcon {
+  flex: 1;
+  height: auto;
+  border-right: 1px solid var(--color-elements);
+
+  &:last-child {
+    border-right: none;
+  }
+}

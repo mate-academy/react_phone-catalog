@@ -1,0 +1,29 @@
+@use '@/styles/mixins' as *;
+
+.page {
+  padding-block: 24px 64px;
+
+  @include page-content;
+}
+
+.title {
+  @include font-h1;
+}
+
+.count {
+  @include font-body;
+
+  margin-top: 4px;
+  color: var(--color-secondary);
+}
+
+.emptyMessage {
+  @include font-body;
+
+  margin-top: 40px;
+  color: var(--color-secondary);
+}
+
+.list {
+  margin-top: 32px;
+}
