@@ -1,0 +1,70 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/media' as *;
+
+.header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: 'logo menu actions';
+  align-items: center;
+  height: 64px;
+  border-bottom: 1px solid #E2E6E9;
+
+  position: sticky;
+  z-index: 2;
+  background: #fff;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  @include on-mobile {
+    display: none;
+  }
+}
+
+.navbar__title {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  text-decoration: none;
+  box-sizing: border-box;
+  color: #89939A;
+  margin: 20px;
+}
+
+.navbar__logo{
+  grid-area: 'logo';
+
+}
+
+.navbar__start{
+  gap: 20px;
+  grid-area: 'menu';
+}
+
+.navbar__end{
+  grid-area: 'action';
+  padding: 20px;
+  margin: 0;
+  border: 0;
+  border-inline: 1px solid #e2e6e9;
+}
+
+.active {
+  color: #313237;
+  border-bottom: 3px solid #313237;
+}
+
+.menu{
+  display: none;
+
+  @include on-mobile {
+    display: flex;
+    justify-self: end;
+  }
+}

@@ -1,0 +1,16 @@
+.footer{
+  height: 96px;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #E2E6E9;
+}
+
+.footer__title{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-inline: 20px;
+  text-decoration: none;
+  box-sizing: border-box;
+  color: #89939A;
+}

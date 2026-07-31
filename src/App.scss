@@ -1,1 +1,94 @@
 // not empty
+@use './styles/variables' as *;
+@use './styles/media' as *;
+
+@font-face {
+  // stylelint-disable-next-line font-family-name-quotes
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  // stylelint-disable-next-line font-family-name-quotes
+  font-family: 'Mont';
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  // stylelint-disable-next-line font-family-name-quotes
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+html{
+  font-family: Mont, sans-serif;;
+  font-weight: 700;
+  scroll-behavior: smooth;
+}
+
+body{
+  margin: 0;
+}
+
+.app__outlet{
+  padding-inline: $page-padding-desktop;
+
+  @include on-tablet {
+    padding-inline: $page-padding-tablet;
+  }
+
+  @include on-mobile {
+    padding-inline: $page-padding-mobile;
+  }
+
+}
+
+.block{
+  width: $cataloge-width-height;
+  height: $cataloge-width-height;
+
+  @include on-tablet {
+    width: $cataloge-width-height-tablet;
+    height: $cataloge-width-height-tablet;
+  }
+
+  @include on-mobile {
+    width: $cataloge-width-height-mobile;
+    height: $cataloge-width-height-mobile;
+  }
+
+  margin-bottom: 20px;
+}
+
+.icons{
+  border: 1px solid #B4BDC3;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.arrow{
+  display: flex;
+}
+
+.icons:hover{
+  border: 1px solid #313237;
+  transition: transform, 0.2s ease;
+
+  .logo, .arrow{
+    transform: scale(1.1);
+  }
+}
+
+.iconArrow{
+  margin-inline: 10px;
+}
+
+
+
