@@ -1,11 +1,15 @@
 .notFound {
-  background-image: url('/public/img/page-not-found.png');
+  background-image: url('/img/page-not-found.png');
   height: 90vh;
   display: flex;
   flex-direction: row;
-  align-items:end;
+  align-items: end;
   justify-content: center;
   background-position: center top;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   background-size: 40%;
+}
+
+.text {
+  margin: 0;
 }

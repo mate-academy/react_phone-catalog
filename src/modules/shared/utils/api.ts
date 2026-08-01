@@ -1,5 +1,4 @@
-import { Products } from '../types/Products';
-
+import { Products, CatalogProduct } from '../types/Products';
 const PhoneUrl = `${import.meta.env.BASE_URL}/api/phones.json `;
 const TabletsUrl = `${import.meta.env.BASE_URL}/api/tablets.json`;
 const AccessoriesUrl = `${import.meta.env.BASE_URL}/api/accessories.json`;
@@ -57,15 +56,23 @@ export async function getAccessoriesUrlFromApi() {
 }
 
 export async function getProductsFromApi() {
-  const newUrl = ProductsUrl;
+  const response = await fetch(ProductsUrl);
 
-  const responce = await fetch(newUrl);
-
-  if (!responce.ok) {
+  if (!response.ok) {
     throw new Error('Error upload data from server');
   }
 
-  const products: Products[] = await responce.json();
+  const products: CatalogProduct[] = await response.json();
 
   return products;
+}
+
+export async function getAllDetailedProducts(): Promise<Products[]> {
+  const [phones, tablets, accessories] = await Promise.all([
+    getPhonesFromApi(),
+    getTabletsFromApi(),
+    getAccessoriesUrlFromApi(),
+  ]);
+
+  return [...phones, ...tablets, ...accessories];
 }

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import './ProductsSlider.scss';
-import { Products } from '../../../types/Products';
 import classNames from 'classnames';
-import { getProductsPerSlide } from '../../../utils/variables';
+import styles from './ProductsSlider.module.scss';
+import { Products } from '../../../shared/types/Products';
+import { getProductsPerSlide } from '../../../shared/utils/variables';
 
 interface ProductsSliderProps {
   phones: Products[];
@@ -70,13 +70,13 @@ export const ProductsSlider = ({
   }, [addedPhone]);
 
   return (
-    <div className="brandSlider">
-      <div className="sliderInfo">
-        <h2 className="sliderInfo__title">Brand new models</h2>
-        <div className="sliderNav">
+    <div className={styles.brandSlider}>
+      <div className={styles.sliderInfo}>
+        <h2 className={styles.sliderInfoTitle}>Brand new models</h2>
+        <div className={styles.sliderNav}>
           <button
             type="button"
-            className="icons scroll"
+            className={classNames('icons', styles.scroll)}
             disabled={slideCount === 0}
             aria-label="Previous slide"
             onClick={() => setSlideCount(count => count - 1)}
@@ -90,7 +90,7 @@ export const ProductsSlider = ({
 
           <button
             type="button"
-            className="icons scroll"
+            className={classNames('icons', styles.scroll)}
             disabled={slideCount >= lastSlideIndex}
             aria-label="Next slide"
             onClick={() => setSlideCount(count => count + 1)}
@@ -104,7 +104,7 @@ export const ProductsSlider = ({
         </div>
       </div>
 
-      <div className="products">
+      <div className={styles.products}>
         {slidedPhones.map(phone => {
           const {
             id,
@@ -120,44 +120,48 @@ export const ProductsSlider = ({
           const isFavourite = favIconsId.includes(id);
 
           return (
-            <div className="catalog" key={id}>
-              <img src={images[0]} alt="photo" className="catalog__photo" />
+            <div className={styles.catalog} key={id}>
+              <img
+                src={images[0]}
+                alt="photo"
+                className={styles.catalogPhoto}
+              />
 
-              <p className="catalog__name">{name}</p>
-              <div className="catalog__price">
-                <p className="catalog__current-price">
+              <p className={styles.catalogName}>{name}</p>
+              <div className={styles.catalogPrice}>
+                <p className={styles.catalogCurrentPrice}>
                   ${priceDiscount || priceRegular}
                 </p>
 
                 {isShowDiscount && priceDiscount && (
-                  <p className="catalog__old-price">${priceRegular}</p>
+                  <p className={styles.catalogOldPrice}>${priceRegular}</p>
                 )}
               </div>
 
-              <div className="catalog__settings">
-                <table className="table">
+              <div className={styles.catalogSettings}>
+                <table className={styles.table}>
                   <tbody>
                     <tr>
-                      <td className="title">screen</td>
-                      <td className="result">{screen}</td>
+                      <td className={styles.title}>screen</td>
+                      <td className={styles.result}>{screen}</td>
                     </tr>
                     <tr>
-                      <td className="title">capacity</td>
-                      <td className="result">{capacity}</td>
+                      <td className={styles.title}>capacity</td>
+                      <td className={styles.result}>{capacity}</td>
                     </tr>
                     <tr>
-                      <td className="title">RAM</td>
-                      <td className="result">{ram}</td>
+                      <td className={styles.title}>RAM</td>
+                      <td className={styles.result}>{ram}</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
 
-              <div className="catalog__buttons">
+              <div className={styles.catalogButtons}>
                 <button
-                  className={classNames('button', {
-                    selectedPhone: addedPhone.includes(id),
-                    buttons__buy: !addedPhone.includes(id),
+                  className={classNames(styles.button, {
+                    [styles.selectedPhone]: addedPhone.includes(id),
+                    [styles.buttonsBuy]: !addedPhone.includes(id),
                   })}
                   onClick={() => {
                     toggleFunction(id, setAddedPhone);
@@ -166,7 +170,11 @@ export const ProductsSlider = ({
                   {addedPhone.includes(id) ? 'Selected' : 'Add to card'}
                 </button>
                 <button
-                  className="button buttons__like icons"
+                  className={classNames(
+                    styles.button,
+                    styles.buttonsLike,
+                    'icons',
+                  )}
                   onClick={() => {
                     toggleFunction(id, setFavIconsId);
                   }}
@@ -174,7 +182,7 @@ export const ProductsSlider = ({
                   <img
                     src={`${import.meta.env.BASE_URL}/img/${isFavourite ? 'likeClicked.svg' : 'like.svg'}`}
                     alt="logo"
-                    className="logo isClicked"
+                    className="logo"
                   />
                 </button>
               </div>

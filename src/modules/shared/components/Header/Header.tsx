@@ -1,49 +1,63 @@
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import './Header.scss';
 import classNames from 'classnames';
+import styles from './Header.module.scss';
 import { scrollToTop } from '../../utils/functions';
 
 export const Header = () => {
   const location = useLocation();
 
   return (
-    <div className="header">
-      <Link to="" className="navbar__title navbar__logo" onClick={scrollToTop}>
+    <div className={styles.header}>
+      <Link
+        to=""
+        className={classNames(styles.navbarTitle, styles.navbarLogo)}
+        onClick={scrollToTop}
+      >
         <img src={`${import.meta.env.BASE_URL}/img/Logo.svg`} alt="logo" />
       </Link>
-      <div className="navbar navbar__start">
+
+      <div className={classNames(styles.navbar, styles.navbarStart)}>
         <NavLink
           to="home"
-          className={classNames('navbar__title', {
-            active: location.pathname === '/',
+          className={classNames(styles.navbarTitle, {
+            [styles.active]: location.pathname === '/',
           })}
           onClick={scrollToTop}
         >
           Home
         </NavLink>
-        <NavLink to="phones" className="navbar__title" onClick={scrollToTop}>
+        <NavLink
+          to="phones"
+          className={styles.navbarTitle}
+          onClick={scrollToTop}
+        >
           Phones
         </NavLink>
-        <NavLink to="tablets" className="navbar__title" onClick={scrollToTop}>
+        <NavLink
+          to="tablets"
+          className={styles.navbarTitle}
+          onClick={scrollToTop}
+        >
           Tablets
         </NavLink>
         <NavLink
           to="accessories"
-          className="navbar__title"
+          className={styles.navbarTitle}
           onClick={scrollToTop}
         >
           Accessories
         </NavLink>
       </div>
-      <div className="navbar">
-        <a className="navbar__end icons">
+
+      <div className={styles.navbar}>
+        <a className={classNames(styles.navbarEnd, 'icons')}>
           <img
             src={`${import.meta.env.BASE_URL}/img/like.svg`}
             alt="logo"
             className="logo"
           />
         </a>
-        <a className="navbar__end icons">
+        <a className={classNames(styles.navbarEnd, 'icons')}>
           <img
             src={`${import.meta.env.BASE_URL}/img/buy.svg`}
             alt="logo"
@@ -51,7 +65,8 @@ export const Header = () => {
           />
         </a>
       </div>
-      <a className="navbar__end icons menu">
+
+      <a className={classNames(styles.navbarEnd, 'icons', styles.menu)}>
         <img
           src={`${import.meta.env.BASE_URL}/img/Menu.svg`}
           alt="logo"

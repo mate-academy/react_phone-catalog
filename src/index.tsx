@@ -1,8 +1,8 @@
 import { createRoot } from 'react-dom/client';
 import { App } from './App';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { NotFoundPage } from './Components/NotFoundPage/NotFoundPage';
-import { PicturesSlider } from './Components/Home/PicturesSlider';
+import { NotFoundPage } from './modules/shared/components/NotFoundPage';
+import { PicturesSlider } from './modules/HomePage/components/PicturesSlider';
 
 const Root = () => {
   return (

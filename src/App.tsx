@@ -1,7 +1,8 @@
 import { Outlet } from 'react-router-dom';
-import './App.scss';
-import { Header } from './Components/Header/Header';
-import { Footer } from './Components/Footer/Footer';
+import './modules/shared/styles/global.scss';
+import './modules/shared/styles/icons.scss';
+import { Header } from './modules/shared/components/Header';
+import { Footer } from './modules/shared/components/Footer';
 
 export const App = () => {
   return (

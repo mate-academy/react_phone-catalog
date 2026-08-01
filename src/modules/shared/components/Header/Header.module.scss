@@ -7,8 +7,8 @@
   grid-template-areas: 'logo menu actions';
   align-items: center;
   box-sizing: border-box;
-  height: 64px;
-  border-bottom: 1px solid #E2E6E9;
+  height: 75px;
+  border-bottom: 1px solid #e2e6e9;
 
   position: sticky;
   z-index: 2;
@@ -28,33 +28,32 @@
   }
 }
 
-.navbar__title {
+.navbarTitle {
   display: flex;
   align-items: center;
   height: 100%;
   text-decoration: none;
   box-sizing: border-box;
-  color: #89939A;
-  margin: 20px;
-
+  color: #89939a;
+  margin: 0 20px;
 }
 
-.navbar__logo{
+.navbarLogo {
   grid-area: 'logo';
   margin-left: 20px;
 }
 
-.navbar__start{
+.navbarStart {
   gap: auto;
   grid-area: 'menu';
 }
 
-.navbar__end{
+.navbarEnd {
   grid-area: 'action';
-  padding: 20px;
+  padding: 25px;
   margin: 0;
   border: 0;
-  border-inline: 1px solid #e2e6e9;
+  border: 1px solid #e2e6e9;
 }
 
 .active {
@@ -62,8 +61,9 @@
   border-bottom: 3px solid #313237;
 }
 
-.menu{
+.menu {
   display: none;
+  padding: 28px;
 
   @include on-mobile {
     display: flex;

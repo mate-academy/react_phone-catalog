@@ -1,6 +1,5 @@
-// not empty
-@use './styles/variables' as *;
-@use './styles/media' as *;
+@use './variables' as *;
+@use './media' as *;
 
 @font-face {
   // stylelint-disable-next-line font-family-name-quotes
@@ -26,18 +25,18 @@
   font-style: normal;
 }
 
-
-html{
-  font-family: Mont, sans-serif;;
+html {
+  font-family: Mont, sans-serif;
   font-weight: 700;
   scroll-behavior: smooth;
 }
 
-body{
+body {
   margin: 0;
+  padding: 0;
 }
 
-.app__outlet{
+.app__outlet {
   padding-inline: $page-padding-desktop;
 
   @include on-tablet {
@@ -47,48 +46,16 @@ body{
   @include on-mobile {
     padding-inline: $page-padding-mobile;
   }
-
 }
 
-.block{
-  width: $cataloge-width-height;
-  height: $cataloge-width-height;
-
-  @include on-tablet {
-    width: $cataloge-width-height-tablet;
-    height: $cataloge-width-height-tablet;
-  }
-
-  @include on-mobile {
-    width: $cataloge-width-height-mobile;
-    height: $cataloge-width-height-mobile;
-  }
-
-  margin-bottom: 20px;
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
-
-.icons{
-  border: 1px solid #B4BDC3;
-  padding: 10px;
-  text-decoration: none;
-}
-
-.arrow{
-  display: flex;
-}
-
-.icons:hover{
-  border: 1px solid #313237;
-  transition: transform, 0.2s ease;
-
-  .logo, .arrow{
-    transform: scale(1.1);
-  }
-}
-
-.iconArrow{
-  margin-inline: 10px;
-}
-
-
-
