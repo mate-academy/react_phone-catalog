@@ -1,0 +1,285 @@
+@use '@shared/styles/variables' as *;
+@use '@shared/styles/mixins' as *;
+
+.header {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+
+  background-color: $c-surface;
+  box-shadow: 0 1px 0 $c-elements;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  height: $header-height-mobile;
+
+  @include on-desktop {
+    height: $header-height-desktop;
+  }
+}
+
+.logo {
+  flex-shrink: 0;
+  width: 64px;
+  height: 22px;
+  margin-inline: 16px;
+
+  @include on-desktop {
+    width: 80px;
+    height: 28px;
+    margin-inline: 24px;
+  }
+}
+
+.nav {
+  display: none;
+  align-self: stretch;
+  margin-left: 16px;
+
+  @include on-tablet {
+    display: block;
+  }
+
+  @include on-desktop {
+    margin-left: 24px;
+  }
+}
+
+.nav-list {
+  display: flex;
+  gap: 32px;
+
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.nav-item {
+  display: flex;
+  align-self: stretch;
+}
+
+.nav-link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  height: 100%;
+
+  color: $c-secondary;
+
+  @include text-uppercase;
+  @include hover(color, $c-primary);
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    height: 3px;
+
+    background-color: transparent;
+
+    transition: background-color $transition;
+  }
+}
+
+.nav-link-active {
+  color: $c-primary;
+
+  &::after {
+    background-color: $c-primary;
+  }
+}
+
+.icons {
+  display: flex;
+  align-self: stretch;
+  margin-left: auto;
+}
+
+// Theme and language live in the bar from tablet up, and inside the burger
+// menu below that — the mobile bar has no room for them.
+.settings {
+  display: none;
+  gap: 8px;
+  align-items: center;
+  padding-right: 8px;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+    padding-right: 16px;
+  }
+}
+
+.menu-settings {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  padding-block: 24px;
+}
+
+.icon-link,
+.menu-button {
+  position: relative;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  width: $header-height-mobile;
+
+  box-shadow: -1px 0 0 $c-elements;
+
+  @include on-desktop {
+    width: $header-height-desktop;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+    transition: transform $transition;
+  }
+
+  &:hover img {
+    transform: scale(1.2);
+  }
+}
+
+.icon-box {
+  position: relative;
+  display: flex;
+}
+
+.counter {
+  position: absolute;
+  top: -5px;
+  left: 9px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 14px;
+  height: 14px;
+  padding-inline: 3px;
+  border: 1px solid $c-surface;
+  border-radius: $radius-round;
+
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1;
+  color: $c-on-accent;
+
+  background-color: $c-secondary-accent;
+}
+
+.icon-link {
+  @include on-tablet {
+    display: flex;
+  }
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    height: 3px;
+
+    background-color: transparent;
+
+    transition: background-color $transition;
+  }
+}
+
+.icon-link-active::after {
+  background-color: $c-primary;
+}
+
+.menu-button {
+  display: flex;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.menu {
+  position: fixed;
+  z-index: 9;
+  inset: $header-height-mobile 0 0;
+  transform: translateX(-100%);
+
+  // The burger menu owns the full viewport, so the list has to scroll.
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding-top: 24px;
+
+  background-color: $c-surface;
+
+  transition: transform $transition;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.menu-open {
+  transform: translateX(0);
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  .nav-link {
+    padding-block: 8px;
+  }
+}
+
+.menu-icons {
+  display: flex;
+  height: 64px;
+  border-top: 1px solid $c-elements;
+
+  .icon-link {
+    display: flex;
+    flex: 1;
+    width: auto;
+
+    &:first-child {
+      box-shadow: none;
+    }
+  }
+}

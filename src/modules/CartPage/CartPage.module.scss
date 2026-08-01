@@ -1,0 +1,159 @@
+@use '@shared/styles/variables' as *;
+@use '@shared/styles/mixins' as *;
+
+.page {
+  padding-block: 24px 56px;
+
+  @include content-container;
+
+  @include on-tablet {
+    padding-block: 24px 64px;
+  }
+
+  @include on-desktop {
+    padding-block: 24px 80px;
+  }
+}
+
+.back {
+  cursor: pointer;
+
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  color: $c-secondary;
+
+  background-color: transparent;
+
+  @include text-small;
+  @include hover(color, $c-primary);
+}
+
+.back-icon {
+  transform: rotate(180deg);
+  width: 16px;
+  height: 16px;
+}
+
+.title {
+  margin-top: 16px;
+
+  @include h1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 32px;
+
+  @include on-desktop {
+    flex-direction: row;
+    gap: 16px;
+    align-items: flex-start;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  @include on-desktop {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+
+  padding: 24px;
+  border: 1px solid $c-elements;
+  border-radius: $radius-small;
+
+  text-align: center;
+
+  background-color: $c-surface;
+
+  @include on-desktop {
+    flex-shrink: 0;
+    width: 368px;
+  }
+}
+
+.total-price {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+.total-count {
+  color: $c-secondary;
+
+  @include text-body;
+}
+
+.divider {
+  margin-block: 16px;
+  border-top: 1px solid $c-elements;
+
+  @include on-desktop {
+    margin-block: 24px;
+  }
+}
+
+.checkout {
+  height: 48px;
+  border-radius: $radius-small;
+  color: $c-on-accent;
+  background-color: $c-accent;
+
+  @include text-buttons;
+  @include hover(box-shadow, $shadow-button);
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+
+  padding-block: 40px;
+
+  text-align: center;
+}
+
+.empty-title {
+  @include h3;
+}
+
+.empty-image {
+  width: 100%;
+  max-width: 400px;
+}
+
+.empty-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 48px;
+  padding-inline: 32px;
+  border-radius: $radius-small;
+
+  color: $c-on-accent;
+
+  background-color: $c-accent;
+
+  @include text-buttons;
+  @include hover(box-shadow, $shadow-button);
+}

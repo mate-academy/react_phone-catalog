@@ -1,143 +1,106 @@
-# React Product Catalog
+# Nice Gadgets — React Product Catalog
 
-Implement the catalog with a shopping cart and favorites page according to one of the next designs:
+An e-commerce front end for a gadget store: 194 phones, tablets and accessories with
+search, sorting, pagination, a product details page, a cart and a favourites list.
+Built with React, TypeScript and SCSS modules — no UI kit, no state library, every
+component written from scratch against the Figma design.
 
-- [Original](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)
-- [Original Dark](https://www.figma.com/design/WMdJ24eHk4EkSr25mrt7Y2/Phone-catalog--V2--Original-Dark)
-- [Rounded Blue](https://www.figma.com/file/FRxncC4lfyhs6og1L6FGEU/Phone-catalog-(V2)-Rounded-Style-2?node-id=0%3A1)
-- [Rounded Purple](https://www.figma.com/file/xMK2Dy0mfBbJJSNctmOuLW/Phone-catalog-(V2)-Rounded-Style-1?node-id=0%3A1)
-- [Rounded Orange](https://www.figma.com/file/7JTa0q8n3dTSAyMNaA0u8o/Phone-catalog-(V2)-Rounded-Style-3?node-id=0%3A1)
+**[Live demo →](https://maksbtw.github.io/react_phone-catalog/)**
 
-You may also implement color theme switching!
+## Features
 
-## If you work in a team
+- Category pages with search, sorting and pagination — all kept in the URL
+  (`?sort=price&page=2&perPage=8&query=iphone`), so a view survives a reload and can
+  be shared.
+- Product details page with an image gallery, tech specs, colour and capacity
+  pickers that switch to the matching variant, and a "You may also like" block.
+- Cart and favourites with live totals, header counters and `localStorage`
+  persistence.
+- Light and dark theme, following the system preference by default.
+- English and Ukrainian interface, including correct Ukrainian plural forms.
+- Responsive from 320px up, with skeleton loaders, error states and
+  keyboard-accessible controls.
 
-Follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)
+## Tech stack
 
-## Project Setup from scratch
+| Area | Choice |
+| --- | --- |
+| UI | React 18, React Router 6 (`HashRouter`) |
+| Language | TypeScript (strict) |
+| Styles | SCSS modules, custom properties for theming |
+| State | React Context + a `useLocalStorage` hook |
+| Build | Vite 5 |
+| Quality | ESLint (Airbnb + a11y), Stylelint, Prettier, Cypress |
+| CI/CD | GitHub Actions → GitHub Pages |
 
-Follow the [Instruction](https://github.com/mate-academy/react_phone-catalog/blob/master/setup.md) to setup your project, add Eslint, Prettier, Husky and enable auto deploy.
+No component library and no Redux — the cart, favourites, theme and language each
+live in a small context whose value is memoised, which is all a catalog of this size
+needs.
 
-## Data
+## Architecture
 
-Use the data from `/public/api` and images from `/public/img` folders. You can reorganize them the way you like.
+The app is split by feature, not by file type. Each page is a module that owns its
+own components, constants and helpers; anything used by two modules moves down into
+`shared`.
 
-## App
+```
+src/
+├── App.tsx              # layout: header, routed outlet, footer
+├── index.tsx            # router and context providers
+└── modules/
+    ├── <Page>/          # one module per page
+    │   ├── components/  # components used only by this page
+    │   ├── constants.ts
+    │   └── utils.ts
+    └── shared/          # everything used by more than one page
+        ├── api/         # data fetching and product selectors
+        ├── components/  # header, footer, product card, ...
+        ├── context/     # cart, favourites, theme, language
+        ├── hooks/       # useLocalStorage, useDebounce
+        ├── i18n/        # UI text in English and Ukrainian
+        ├── styles/      # variables, mixins
+        └── types/
+```
 
-1. Put components into the `src/components` folder.
-   - Each component should be a folder with `index.ts`, `ComponentName.tsx`, `ComponentName.module.scss` files.
-   - Use CSS modules.
-   - Keep `.module.scss` files together with their components.
-2. Advanced project structure:
-   - `src/modules` folder. Inside per page modules `HomePage`, `CartPage`, etc., and `shared` folder with shared content between modules.
-   - Inside each module its own `components` folder with the structure described above. And optionally other files/folders: `hooks`, `constants`, and so on.
-3. Add the sticky header with a logo, navigation, favorites, and cart.
-4. The footer with the link to the GitHub repo and `Back to top` button.
-   - The content should be limited to the same width as the page content;
-   - `Back to top` button should scroll to the top smoothly;
-5. Add `NotFoundPage` containing text `Page not found` for all the unknown URLs.
-6. All changes the hover effects should be smooth.
-7. Scale all image links by 10% on hover.
-8. Implement all form elements and icons according to the UI Kit.
+Every component is a folder with `Component.tsx`, `Component.module.scss` and an
+`index.ts` barrel. Path aliases (`@`, `@modules`, `@shared`) keep imports flat.
 
-## Home page
+Product data is served as static JSON from `public/api`, so the API layer is a thin
+module of `fetch` calls plus the selectors on top of it.
 
-Implement Home page at available at `/`.
+## Getting started
 
-1. `<h1>Product Catalog</h1>` should be visually hidden.
-2. `PicturesSlider`:
-   - Find your own images to personalize the App;
-   - Change pictures automatically every 5 seconds;
-   - The next buttons should show the first image after the last one;
-   - Dashes at the bottom should allow choosing an exact picture.
-3. `ProductsSlider` for the `Hot prices` block:
-   - The products with a discount starting from the biggest absolute value;
-   - `<` and `>` buttons should scroll products.
-4. `Shop by category` block with links to `/phones`, `/tablets`, and `/accessories`.
-5. Add Brand new block using ProductsSlider with products that are the newest according to the year field.
+Requires Node.js 20+.
 
-## Product pages
+```bash
+git clone https://github.com/maksbtw/react_phone-catalog.git
+cd react_phone-catalog
+npm install
+npm start
+```
 
-There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
+The dev server prints its URL in the terminal and opens it in the browser.
 
-1. Each page loads the data of the required `type`.
-2. Add an `h1` with `Phones/Tablets/Accessories page` (choose required).
-3. Add `ProductsList` component showing all the `products`.
-4. Implement a `Loader` to show it while waiting for the data from the server.
-5. In case of a loading error show the something went wrong message with a reload button.
-6. If there are no products available show the `There are no phones/tablets/accessories yet` message (choose required).
-7. Add a `<select>` with the `Newest`, `Alphabetically`, and `Cheapest` options to sort products by `age`, `title`, or `price` (after discount).
-   - Save the sort value in the URL `?sort=age` and apply it after the page reload.
-8. Add `Pagination` buttons and `Items on page` select element with `4`, `8`, `16`, and `all` options.
-   - It should limit the products you show to the user;
-   - Save pagination params in the URL `?page=2&perPage=8` (`page=1` and `perPage=all` are the default values and should not be added to the URL;
-   - Hide pagination elements if they do not make sense;
-   - You can use the logic explained in [the React Pagination task](https://github.com/mate-academy/react_pagination#react-pagination).
+### Scripts
 
-## Product details page
+| Command | Description |
+| --- | --- |
+| `npm start` | Start the Vite dev server |
+| `npm run build` | Production build into `dist/` |
+| `npm test` | Run the Cypress end-to-end suite |
+| `npm run lint` | Stylelint + Prettier + ESLint over the whole source |
+| `npm run deploy` | Manual deploy to GitHub Pages |
 
-Create `ProductDetailsPage` available at `/product/:productId`.
+## Deployment
 
-1. `ProductCard` image and title should be links to the product details page.
-2. Use `Loader` when fetching the product details.
-3. Show the details on the page:
-   - Display the available colors from colorsAvailable and the capacities from capacityAvailable as radio inputs, allowing the selection of one value from the offered options;
-   - `About` section should contain a subheader with description;
-   - Choose `Tech specs` you want to show.
-4. Add the ability to choose a picture.
-5. Implement `You may also like` block with products chosen randomly:
-   - Create `getSuggestedProducts` method fetching the suggested products.
-6. Add `Back` button working the same way as a Browser `Back` button.
-7. Add `Breadcrumbs` at the top with:
-   - A Home page link;
-   - A category page link (`Phones`, `Tablets`, `Accessories`);
-   - The name of the product (just a text).
-8. Show `Product was not found` if there is no product with a given id on the server.
+Pushing to `main` triggers the GitHub Actions workflow in
+`.github/workflows/deploy.yml`, which builds the app and publishes `dist/` to the
+`gh-pages` branch. The app uses `HashRouter` so deep links work on Pages' static
+hosting without a rewrite rule.
 
-## Shopping Cart page
+## Credits
 
-Create a Cart page with a list of `CartItem`s at `/cart`.
-Each item should have an `id`, `quantity`, and a `product`.
-Use React Context or Redux to store Items.
-
-1. `Add to cart` button in the `ProductCard` should add a product to the `Cart`.
-2. If the product is already in the `Cart` the button should say `Added to cart` and do nothing.
-3. Add the ability to remove items from the `Cart` with an `x` button next to a `CartItem`.
-4. Add a message `Your cart is empty` when there are no products in the `Cart`.
-5. Add the ability to change the item quantity in the `Cart` with `-` and `+` buttons (it should be > 0).
-6. Total amount and quantity should be calculated automatically.
-7. Show the quantity at the `Cart` icon in the header.
-8. Save the `Cart` to `localStorage` on each change and read it on page load.
-9. `Checkout` button should show a modal dialog with the text `Checkout is not implemented yet. Do you want to clear the Cart?`:
-   - Clear the Cart if the user confirms the order;
-   - Keep the Cart items and close the confirmation on cancel;
-   - Use the `confirm` function if you don't have a better solution.
-
-## Favorites page
-
-Create `Favorites` page with a `ProductsList` showing favorite products at `/favorites`.
-
-1. Add/remove a product to favorites by pressing a heart button in the `ProductCard` element.
-2. The heart should be highlighted if the product is already added to the favorites.
-3. Use React Context or Redux to store the favorites.
-4. Show the number of favorites at the `Favorites` icon in the header.
-5. Save favorites to `localStorage` on each change and load them on page load.
-
-## Other tasks
-
-1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`.
-2. Implement the `Product was not found` state for the `ProductDetailsPage`.
-
-## (*) Advanced tasks
-
-- Implement color theme switching!
-- Use [skeletons](https://freefrontend.com/css-skeleton-loadings/) to make loading more natural.
-- Add the ability to change page language.
-
-### Search
-
-Show `input:search` in the header when a page contains a `ProductList` to search in.
-
-1. Save the `Search` value in the URL as a `?query=value` to apply on page load.
-2. Show `There are no phones/tablets/accessories/products matching the query` instead of `ProductList` when needed.
-3. Add `debounce` to the search field.
+Built by [Maksym Savchenko](https://github.com/maksbtw) from the
+[Phone catalog (V2)](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)
+Figma design, as a project for [Mate Academy](https://mate.academy/).
+Product data and images are provided with the original task.

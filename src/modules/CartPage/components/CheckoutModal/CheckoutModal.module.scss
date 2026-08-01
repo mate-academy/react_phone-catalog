@@ -1,0 +1,63 @@
+@use '@shared/styles/variables' as *;
+@use '@shared/styles/mixins' as *;
+
+.overlay {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 100%;
+  max-width: 368px;
+  padding: 24px;
+  border-radius: $radius-small;
+
+  text-align: center;
+
+  background-color: $c-surface;
+}
+
+.text {
+  @include text-body;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.cancel,
+.confirm {
+  flex: 1;
+  height: 48px;
+  border-radius: $radius-small;
+
+  @include text-buttons;
+}
+
+.cancel {
+  border: 1px solid $c-elements;
+  background-color: $c-surface;
+
+  @include hover(border-color, $c-primary);
+}
+
+.confirm {
+  color: $c-on-accent;
+  background-color: $c-accent;
+
+  @include hover(box-shadow, $shadow-button);
+}

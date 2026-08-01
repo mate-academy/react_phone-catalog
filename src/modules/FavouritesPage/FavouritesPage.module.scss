@@ -1,0 +1,65 @@
+@use '@shared/styles/variables' as *;
+@use '@shared/styles/mixins' as *;
+
+.page {
+  padding-block: 24px 56px;
+
+  @include content-container;
+
+  @include on-tablet {
+    padding-block: 24px 64px;
+  }
+
+  @include on-desktop {
+    padding-block: 24px 80px;
+  }
+}
+
+.title {
+  margin-top: 24px;
+
+  @include h1;
+
+  @include on-desktop {
+    margin-top: 40px;
+  }
+}
+
+.count {
+  margin-top: 8px;
+  color: $c-secondary;
+
+  @include text-body;
+}
+
+.list {
+  margin-top: 24px;
+
+  @include on-desktop {
+    margin-top: 40px;
+  }
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+
+  padding-block: 40px;
+
+  @include h3;
+}
+
+.reload-button {
+  height: 40px;
+  padding-inline: 32px;
+  border-radius: $radius-small;
+
+  color: $c-on-accent;
+
+  background-color: $c-accent;
+
+  @include text-buttons;
+  @include hover(box-shadow, $shadow-button);
+}

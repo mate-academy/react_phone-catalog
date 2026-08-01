@@ -1,0 +1,65 @@
+@use '@shared/styles/variables' as *;
+@use '@shared/styles/mixins' as *;
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.pages {
+  display: flex;
+  gap: 8px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.arrow,
+.page {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $c-elements;
+  border-radius: $radius-round;
+
+  background-color: $c-surface;
+
+  @include text-buttons;
+  @include hover(border-color, $c-primary);
+}
+
+.arrow {
+  border-color: $c-icons;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:disabled {
+    cursor: default;
+    border-color: $c-elements;
+
+    img {
+      opacity: 0.4;
+    }
+  }
+}
+
+.arrow-icon-prev {
+  transform: rotate(180deg);
+}
+
+.page-active {
+  border-color: $c-primary;
+  color: $c-on-primary;
+  background-color: $c-primary;
+}

@@ -1,0 +1,158 @@
+@use '@shared/styles/variables' as *;
+@use '@shared/styles/mixins' as *;
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding: 16px;
+  border: 1px solid $c-elements;
+  border-radius: $radius-small;
+
+  background-color: $c-surface;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 24px;
+  }
+}
+
+.info {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  @include on-tablet {
+    gap: 24px;
+    min-width: 0;
+  }
+}
+
+.remove {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+
+  @include hover(opacity, 0.6);
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.photo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform $transition;
+}
+
+.photo-link {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 66px;
+  height: 80px;
+
+  &:hover .photo {
+    transform: scale(1.1);
+  }
+}
+
+.title {
+  @include text-body;
+  @include hover(color, $c-accent);
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.quantity {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.quantity-button {
+  position: relative;
+
+  flex-shrink: 0;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $c-elements;
+  border-radius: $radius-round;
+
+  background-color: $c-surface;
+
+  @include hover(border-color, $c-primary);
+
+  // The UI Kit draws `-` and `+` as plain 12px bars.
+  &::before,
+  &::after {
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 12px;
+    height: 1px;
+
+    background-color: $c-primary;
+  }
+
+  &::after {
+    display: none;
+  }
+
+  &:disabled {
+    cursor: default;
+    border-color: $c-elements;
+
+    &::before,
+    &::after {
+      background-color: $c-icons;
+    }
+  }
+}
+
+.plus::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  display: block;
+}
+
+.count {
+  min-width: 32px;
+  text-align: center;
+
+  @include text-body;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 140%;
+  text-align: right;
+}

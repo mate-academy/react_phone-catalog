@@ -1,0 +1,16 @@
+@use '@shared/styles/mixins' as *;
+
+// The page grid from the UI Kit: 4 columns on mobile, 12 on tablet, 24 on desktop.
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}

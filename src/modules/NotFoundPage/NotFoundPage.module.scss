@@ -1,0 +1,41 @@
+@use '@shared/styles/variables' as *;
+@use '@shared/styles/mixins' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+
+  padding-block: 56px;
+
+  text-align: center;
+
+  @include content-container;
+}
+
+.title {
+  @include h1;
+}
+
+.image {
+  width: 100%;
+  max-width: 400px;
+}
+
+.home-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 48px;
+  padding-inline: 32px;
+  border-radius: $radius-small;
+
+  color: $c-on-accent;
+
+  background-color: $c-accent;
+
+  @include text-buttons;
+  @include hover(box-shadow, $shadow-button);
+}

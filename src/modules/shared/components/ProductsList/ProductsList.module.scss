@@ -1,0 +1,23 @@
+@use '@shared/styles/variables' as *;
+
+.list {
+  display: grid;
+
+  // 272px is the card width from the design, so the columns fall into place
+  // on their own: 1 on mobile, 2 on tablet and 4 on desktop.
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 272px), 1fr));
+  gap: 40px 16px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.item {
+  display: flex;
+
+  > * {
+    width: 100%;
+  }
+}

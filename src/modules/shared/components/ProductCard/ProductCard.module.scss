@@ -1,0 +1,157 @@
+@use '@shared/styles/variables' as *;
+@use '@shared/styles/mixins' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+
+  padding: 24px;
+  border: 1px solid $c-elements;
+  border-radius: $radius-small;
+
+  background-color: $c-surface;
+
+  transition: box-shadow $transition;
+
+  @include on-tablet {
+    padding: 32px;
+  }
+
+  &:hover {
+    box-shadow: $shadow-card;
+  }
+}
+
+.photo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform $transition;
+}
+
+.photo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 196px;
+
+  &:hover .photo {
+    transform: scale(1.1);
+  }
+}
+
+.title {
+  flex-grow: 1;
+  margin-top: 16px;
+
+  @include text-body;
+  @include hover(color, $c-accent);
+}
+
+.price {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.current-price {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 140%;
+}
+
+.full-price {
+  font-size: 22px;
+  font-weight: 400;
+  color: $c-secondary;
+  text-decoration: line-through;
+}
+
+.divider {
+  margin-top: 8px;
+  border-top: 1px solid $c-elements;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin: 16px 0 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.spec {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include text-small;
+}
+
+.spec-title {
+  color: $c-secondary;
+}
+
+.spec-value {
+  color: $c-primary;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.add-to-cart {
+  flex: 1;
+
+  height: 40px;
+  border-radius: $radius-small;
+
+  color: $c-on-accent;
+
+  background-color: $c-accent;
+
+  transition:
+    box-shadow $transition,
+    background-color $transition;
+
+  @include text-buttons;
+
+  &:hover {
+    box-shadow: $shadow-button;
+  }
+}
+
+.add-to-cart-active {
+  border: 1px solid $c-elements;
+  color: $c-accent;
+  background-color: $c-surface;
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.favourite {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  border: 1px solid $c-icons;
+  border-radius: $radius-round;
+
+  @include hover(border-color, $c-primary);
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}

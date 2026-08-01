@@ -1,0 +1,45 @@
+@use '@shared/styles/variables' as *;
+@use '@shared/styles/mixins' as *;
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.home {
+  display: flex;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.separator {
+  width: 16px;
+  height: 16px;
+}
+
+.link {
+  @include text-small;
+  @include hover(color, $c-accent);
+}
+
+.current {
+  color: $c-secondary;
+
+  @include text-small;
+}

@@ -1,1 +1,158 @@
-// not empty
+@use '@shared/styles/variables' as *;
+
+@font-face {
+  font-family: Mont;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// The palettes behind the `$c-*` tokens in `_variables.scss`.
+// `ThemeContext` puts `data-theme` on <html>.
+:root,
+:root[data-theme='light'] {
+  --c-accent: #216cff;
+  --c-secondary-accent: #f447af;
+  --c-primary: #0f0f11;
+  --c-secondary: #89939a;
+  --c-icons: #b4bdc3;
+  --c-elements: #e2e6e9;
+  --c-hover-bg: #fafbfc;
+  --c-surface: #fff;
+  --c-on-accent: #fff;
+  --c-on-primary: #fff;
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-button: 0 3px 13px rgba(23, 32, 49, 0.4);
+
+  // The icon assets are drawn dark, so they need no correction here.
+  --icon-filter: none;
+  --icon-filter-muted: none;
+}
+
+:root[data-theme='dark'] {
+  --c-accent: #4d84ff;
+  --c-secondary-accent: #f447af;
+  --c-primary: #f1f2f9;
+  --c-secondary: #75767f;
+  --c-icons: #4a4d58;
+  --c-elements: #3b3e4a;
+  --c-hover-bg: #0f1121;
+  --c-surface: #161827;
+  --c-on-accent: #fff;
+  --c-on-primary: #0f1121;
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.6);
+  --shadow-button: 0 3px 13px rgba(0, 0, 0, 0.6);
+
+  // Repaints the dark icon assets light. Both are grayscale, so flattening
+  // to black first keeps the two source colors from drifting apart.
+  --icon-filter: brightness(0) invert(1);
+  --icon-filter-muted: brightness(0) invert(0.55);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: $c-primary;
+
+  background-color: $c-hover-bg;
+
+  transition:
+    color $transition,
+    background-color $transition;
+}
+
+// Global helpers for the single-color icon assets, which cannot be recolored
+// through CSS while they are rendered as <img>.
+.icon {
+  filter: var(--icon-filter);
+}
+
+.icon-muted {
+  filter: var(--icon-filter-muted);
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+
+  padding: 0;
+  border: none;
+
+  font-family: inherit;
+
+  // Without this the browser default wins, leaving unstyled buttons dark on
+  // the dark theme's surfaces.
+  color: inherit;
+
+  background: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App__main {
+  flex: 1 0 auto;
+}
+
+.visually-hidden {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  white-space: nowrap;
+
+  clip: rect(0 0 0 0);
+}

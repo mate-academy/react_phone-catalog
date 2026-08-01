@@ -1,0 +1,81 @@
+@use '@shared/styles/variables' as *;
+@use '@shared/styles/mixins' as *;
+
+.gallery {
+  display: flex;
+
+  // The photos come first on mobile, the thumbnails go under them.
+  flex-direction: column-reverse;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  gap: 8px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  @include on-tablet {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.thumbnail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 50px;
+  height: 50px;
+  padding: 4px;
+  border: 1px solid $c-elements;
+  border-radius: $radius-small;
+
+  background-color: $c-surface;
+
+  @include hover(border-color, $c-primary);
+
+  @include on-desktop {
+    width: 80px;
+    height: 80px;
+    padding: 8px;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+.thumbnail-active {
+  border-color: $c-primary;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+
+  aspect-ratio: 1 / 1;
+  min-width: 0;
+  padding: 16px;
+  border-radius: $radius-small;
+
+  background-color: $c-surface;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}

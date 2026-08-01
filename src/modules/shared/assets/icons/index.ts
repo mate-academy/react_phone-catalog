@@ -1,0 +1,9 @@
+export { default as chevronDownGrayIcon } from './chevron-down-gray.svg';
+export { default as chevronRightIcon } from './chevron-right.svg';
+export { default as chevronRightGrayIcon } from './chevron-right-gray.svg';
+export { default as closeIcon } from './close.svg';
+export { default as favouritesIcon } from './favourites.svg';
+export { default as favouritesFilledIcon } from './favourites-filled.svg';
+export { default as homeIcon } from './home.svg';
+export { default as menuIcon } from './menu.svg';
+export { default as shoppingBagIcon } from './shopping-bag.svg';

@@ -1,0 +1,271 @@
+@use '@shared/styles/variables' as *;
+@use '@shared/styles/mixins' as *;
+
+.page {
+  padding-block: 24px 56px;
+
+  @include content-container;
+
+  @include on-tablet {
+    padding-block: 24px 64px;
+  }
+
+  @include on-desktop {
+    padding-block: 24px 80px;
+  }
+}
+
+.back {
+  cursor: pointer;
+
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  margin-top: 24px;
+
+  color: $c-secondary;
+
+  background-color: transparent;
+
+  @include text-small;
+  @include hover(color, $c-primary);
+}
+
+.back-icon {
+  transform: rotate(180deg);
+  width: 16px;
+  height: 16px;
+}
+
+.title {
+  margin-top: 16px;
+
+  @include h2;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+    margin-top: 40px;
+  }
+}
+
+.top > :first-child {
+  @include on-tablet {
+    flex: 1;
+    min-width: 0;
+  }
+
+  @include on-desktop {
+    flex: 0 0 560px;
+  }
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include on-tablet {
+    flex: 0 0 237px;
+  }
+
+  @include on-desktop {
+    flex: 0 0 320px;
+  }
+}
+
+.divider {
+  border-top: 1px solid $c-elements;
+}
+
+.price {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.current-price {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+}
+
+.full-price {
+  font-size: 22px;
+  font-weight: 400;
+  color: $c-secondary;
+  text-decoration: line-through;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.add-to-cart {
+  flex: 1;
+
+  height: 48px;
+  border-radius: $radius-small;
+
+  color: $c-on-accent;
+
+  background-color: $c-accent;
+
+  transition:
+    box-shadow $transition,
+    background-color $transition;
+
+  @include text-buttons;
+
+  &:hover {
+    box-shadow: $shadow-button;
+  }
+}
+
+.add-to-cart-active {
+  border: 1px solid $c-elements;
+  color: $c-accent;
+  background-color: $c-surface;
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.favourite {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+  border: 1px solid $c-icons;
+  border-radius: $radius-round;
+
+  background-color: $c-surface;
+
+  @include hover(border-color, $c-primary);
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  margin-top: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    flex-direction: row;
+    gap: 64px;
+    align-items: flex-start;
+    margin-top: 80px;
+  }
+}
+
+.about {
+  @include on-desktop {
+    flex: 0 0 560px;
+  }
+}
+
+.specs {
+  @include on-desktop {
+    flex: 0 0 512px;
+  }
+}
+
+.section-title {
+  padding-bottom: 16px;
+  border-bottom: 1px solid $c-elements;
+
+  @include h3;
+}
+
+.about-block {
+  margin-top: 32px;
+}
+
+.about-title {
+  margin-bottom: 16px;
+
+  @include h4;
+}
+
+.about-text {
+  color: $c-secondary;
+
+  @include text-body;
+
+  + .about-text {
+    margin-top: 16px;
+  }
+}
+
+.specs .section-title {
+  margin-bottom: 24px;
+}
+
+.suggested {
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+
+  padding-block: 40px;
+
+  @include h3;
+}
+
+.message-image {
+  width: 100%;
+  max-width: 400px;
+}
+
+.reload-button {
+  height: 40px;
+  padding-inline: 32px;
+  border-radius: $radius-small;
+
+  color: $c-on-accent;
+
+  background-color: $c-accent;
+
+  @include text-buttons;
+  @include hover(box-shadow, $shadow-button);
+}

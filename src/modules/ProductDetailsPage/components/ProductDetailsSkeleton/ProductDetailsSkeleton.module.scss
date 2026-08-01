@@ -1,0 +1,96 @@
+@use '@shared/styles/variables' as *;
+@use '@shared/styles/mixins' as *;
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.title {
+  margin-bottom: 16px;
+}
+
+// Mirrors the real layout so nothing jumps once the data arrives.
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+
+  @include on-tablet {
+    flex: 1;
+    flex-direction: row;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  gap: 8px;
+
+  @include on-tablet {
+    flex-direction: column;
+  }
+}
+
+.main-photo {
+  flex: 1;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include on-tablet {
+    width: 320px;
+  }
+}
+
+.row {
+  margin-bottom: 16px;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+
+  > *:first-child {
+    flex: 1;
+  }
+
+  > *:last-child {
+    flex-shrink: 0;
+  }
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 40px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 64px;
+  }
+}
+
+.column {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+}

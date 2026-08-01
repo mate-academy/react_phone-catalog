@@ -1,0 +1,90 @@
+@use '@shared/styles/variables' as *;
+@use '@shared/styles/mixins' as *;
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  @include h2;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.button {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $c-icons;
+  border-radius: $radius-round;
+
+  @include hover(border-color, $c-primary);
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:disabled {
+    cursor: default;
+    border-color: $c-elements;
+
+    img {
+      opacity: 0.4;
+    }
+  }
+}
+
+.icon-prev {
+  transform: rotate(180deg);
+}
+
+.list {
+  scrollbar-width: none;
+
+  overflow-x: auto;
+  display: flex;
+  gap: 16px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.item {
+  display: flex;
+  flex-shrink: 0;
+  width: 212px;
+
+  @include on-tablet {
+    width: 237px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+  }
+
+  > * {
+    width: 100%;
+  }
+}

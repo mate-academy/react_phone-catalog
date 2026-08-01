@@ -1,0 +1,57 @@
+@use '@shared/styles/variables' as *;
+@use '@shared/styles/mixins' as *;
+
+.dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  // The chevron sits above the select instead of inside it, so the dark
+  // theme can repaint it the same way as every other icon.
+  &::after {
+    pointer-events: none;
+    content: '';
+
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+
+    width: 16px;
+    height: 16px;
+
+    background-image: url('@shared/assets/icons/chevron-down-gray.svg');
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    filter: var(--icon-filter-muted);
+  }
+}
+
+.label {
+  color: $c-secondary;
+
+  @include text-small;
+}
+
+.select {
+  cursor: pointer;
+
+  height: 40px;
+  padding: 0 32px 0 12px;
+  border: 1px solid $c-icons;
+  border-radius: $radius-small;
+
+  font-family: inherit;
+  color: $c-primary;
+
+  appearance: none;
+  background-color: $c-surface;
+
+  @include text-buttons;
+  @include hover(border-color, $c-primary);
+
+  &:focus-visible {
+    border-color: $c-primary;
+    outline: none;
+  }
+}

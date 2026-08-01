@@ -104,5 +104,12 @@ module.exports = {
     react: {
       version: 'detect',
     },
+    // Teaches the import rules about the @/, @modules/ and @shared/ aliases
+    // declared in tsconfig.json.
+    'import/resolver': {
+      typescript: {
+        project: './tsconfig.json',
+      },
+    },
   },
 };

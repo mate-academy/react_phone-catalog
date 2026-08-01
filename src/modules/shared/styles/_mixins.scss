@@ -1,0 +1,111 @@
+@use 'variables' as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min) {
+    @content;
+  }
+}
+
+@mixin content-container {
+  box-sizing: content-box;
+  max-width: $content-max-width;
+  margin-inline: auto;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+@mixin hover($property, $to-value) {
+  transition: #{$property} $transition;
+
+  &:hover {
+    #{$property}: $to-value;
+  }
+}
+
+// Typography
+
+@mixin h1 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin h2 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin h3 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+
+  @include on-tablet {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+  }
+}
+
+@mixin h4 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+
+  @include on-tablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+@mixin text-uppercase {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+@mixin text-buttons {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+@mixin text-body {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+@mixin text-small {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}

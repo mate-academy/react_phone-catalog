@@ -1,0 +1,70 @@
+@use '@shared/styles/variables' as *;
+@use '@shared/styles/mixins' as *;
+
+.picker {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.label {
+  padding: 0;
+  color: $c-secondary;
+
+  @include text-small;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.capacity {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 32px;
+  padding-inline: 8px;
+  border: 1px solid $c-icons;
+  border-radius: $radius-small;
+
+  background-color: $c-surface;
+
+  transition:
+    color $transition,
+    background-color $transition,
+    border-color $transition;
+
+  @include text-body;
+
+  &:hover {
+    border-color: $c-primary;
+  }
+
+  &:has(input:disabled) {
+    cursor: default;
+    opacity: 0.4;
+  }
+
+  &:has(input:focus-visible) {
+    border-color: $c-primary;
+  }
+}
+
+.capacity-selected {
+  border-color: $c-primary;
+  color: $c-on-primary;
+  background-color: $c-primary;
+
+  &:hover {
+    border-color: $c-primary;
+  }
+}

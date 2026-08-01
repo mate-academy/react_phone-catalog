@@ -1,0 +1,32 @@
+@use '@shared/styles/variables' as *;
+@use '@shared/styles/mixins' as *;
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+}
+
+.spec {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.label {
+  color: $c-secondary;
+}
+
+.value {
+  margin: 0;
+  text-align: right;
+}
+
+.specs-compact {
+  .label,
+  .value {
+    @include text-small;
+  }
+}

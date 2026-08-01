@@ -1,0 +1,96 @@
+@use '@shared/styles/variables' as *;
+@use '@shared/styles/mixins' as *;
+
+.footer {
+  flex-shrink: 0;
+  box-shadow: 0 -1px 0 $c-elements;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-block: 32px;
+
+  @include content-container;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.logo-wrapper {
+  flex-shrink: 0;
+
+  @include on-tablet {
+    flex: 1;
+  }
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  @include on-tablet {
+    flex: 1;
+    flex-direction: row;
+    gap: 14px;
+    justify-content: space-between;
+  }
+}
+
+.link {
+  color: $c-secondary;
+
+  @include text-uppercase;
+  @include hover(color, $c-primary);
+}
+
+.back-to-top-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $c-icons;
+  border-radius: $radius-round;
+
+  transition: border-color $transition;
+}
+
+.back-to-top {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  @include on-tablet {
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  &:hover .back-to-top-button {
+    border-color: $c-primary;
+  }
+}
+
+.back-to-top-label {
+  color: $c-secondary;
+
+  @include text-small;
+  @include hover(color, $c-primary);
+}
+
+.back-to-top-icon {
+  transform: rotate(-90deg);
+  width: 16px;
+  height: 16px;
+}

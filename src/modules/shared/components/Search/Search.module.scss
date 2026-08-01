@@ -1,0 +1,103 @@
+@use '@shared/styles/variables' as *;
+@use '@shared/styles/mixins' as *;
+
+.search {
+  position: relative;
+
+  display: flex;
+  flex: 1;
+  align-items: center;
+
+  min-width: 0;
+  max-width: 240px;
+  margin-inline: 32px;
+
+  @include on-desktop {
+    margin-inline: 64px;
+  }
+}
+
+.input {
+  width: 100%;
+  height: 32px;
+  padding: 0 32px 0 12px;
+  border: 1px solid $c-elements;
+  border-radius: $radius-round;
+
+  font-family: inherit;
+  color: $c-primary;
+
+  background-color: $c-surface;
+
+  transition: border-color $transition;
+
+  &::placeholder {
+    color: $c-secondary;
+  }
+
+  // The clear button below replaces the browser's own.
+  &::-webkit-search-cancel-button {
+    appearance: none;
+  }
+
+  &:hover {
+    border-color: $c-icons;
+  }
+
+  &:focus {
+    border-color: $c-primary;
+    outline: none;
+  }
+
+  @include text-body;
+}
+
+.clear,
+.glass {
+  position: absolute;
+  right: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.clear {
+  @include hover(opacity, 0.6);
+}
+
+// A magnifier drawn in CSS — the UI Kit icon set has no search glyph.
+.glass {
+  pointer-events: none;
+
+  &::before {
+    content: '';
+
+    width: 11px;
+    height: 11px;
+    border: 1.5px solid $c-icons;
+    border-radius: $radius-round;
+  }
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    right: 1px;
+    bottom: 1px;
+    transform: rotate(45deg);
+
+    width: 5px;
+    height: 1.5px;
+
+    background-color: $c-icons;
+  }
+}
