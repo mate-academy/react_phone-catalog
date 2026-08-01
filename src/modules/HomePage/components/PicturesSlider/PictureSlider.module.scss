@@ -1,0 +1,194 @@
+@use '../../../../styles/utils/mixins' as *;
+@use '../../../../styles/utils/typography' as *;
+@use '../../../../styles/utils/colors' as *;
+@use '../../../../styles/utils/breakpoints' as *;
+@use '../../../../styles/utils/themes.scss' as *;
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+
+  &--margin {
+    margin-top: 24px;
+  }
+
+  @include for-tablet {
+    margin-top: 32px;
+    padding: 0 16px;
+  }
+
+  @include for-laptop {
+    margin-top: 56px;
+    padding: 0 24px;
+  }
+
+  &__arrow {
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+
+    &:hover {
+      border-color: $color-hover-nav;
+    }
+
+    @include for-mobile {
+      display: none;
+    }
+
+    @include for-tablet {
+      display: block;
+      border-radius: 16px;
+      border: 1px solid $color-header-border;
+      padding: 0 8px;
+      background-color: var(--color-button);
+    }
+  }
+}
+
+.arrow {
+  transform: rotate(180deg);
+}
+
+.container {
+  @include for-tablet {
+    display: flex;
+    gap: 19px;
+    width: 100%;
+  }
+
+  @include for-laptop {
+    gap: 16px;
+  }
+}
+
+.pictureSlider {
+  padding: 16px;
+  background-color: $color-black;
+  width: 100vw;
+
+  @include for-tablet {
+    padding: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    aspect-ratio: auto;
+    border-radius: 6px;
+  }
+}
+
+.sliderLeft {
+  @include for-mobile {
+    display: none;
+  }
+
+  @include for-tablet {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border-radius: 8px;
+    width: 50%;
+    background-color: $color-slider-left;
+
+    &__title {
+      @include h3-desktop;
+
+      color: #fff;
+      background-image: linear-gradient(90deg, #7c4af4, #d862ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+
+      @include for-laptop {
+        @include h1-desktop;
+      }
+    }
+
+    &__emoji {
+      margin-left: 3px;
+      height: 18px;
+      transform: translateY(2px);
+
+      @include for-laptop {
+        height: 40px;
+        transform: translateY(4px);
+      }
+    }
+
+    &__text {
+      @include body-text;
+
+      color: $color-link-navigation;
+      margin-bottom: 30px;
+
+      @include for-laptop {
+        margin-bottom: 80px;
+      }
+    }
+
+    &__button {
+      align-self: start;
+      padding: 14px 26px;
+      background-color: transparent;
+      border: 1px solid $color-link-navigation;
+      color: $color-white;
+      border-radius: 16px;
+      text-transform: uppercase;
+      margin-top: auto;
+
+      @include button-slider;
+    }
+
+    @include for-laptop {
+      padding: 24px;
+    }
+  }
+}
+
+.sliderRight {
+  width: 100%;
+  height: 320px;
+  display: flex;
+  justify-content: center;
+
+  &__img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+
+    &--fade {
+      opacity: 0;
+    }
+
+    @include for-tablet {
+      justify-self: center;
+      width: auto;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  @include for-tablet {
+    width: 50%;
+  }
+}
+
+.dashes {
+  display: flex;
+  gap: 14px;
+
+  &__item {
+    width: 14px;
+    height: 4px;
+    background-color: var(--color-bg-dashes);
+    cursor: pointer;
+
+    &--active {
+      background-color: var(--color-bg-dashes-active);
+    }
+  }
+}

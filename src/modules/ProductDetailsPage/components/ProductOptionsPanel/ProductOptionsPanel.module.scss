@@ -1,0 +1,117 @@
+@use '../../../../styles/utils/breakpoints' as *;
+@use '../../../../styles/utils/colors' as *;
+@use '../../../../styles/utils/typography' as *;
+
+.productOptions {
+  display: flex;
+  flex-direction: column;
+
+  @include for-tablet {
+    order: 3;
+    flex-grow: 2;
+  }
+
+  @include for-laptop {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.colorWrapper {
+  display: flex;
+  padding: 40px 0 24px;
+
+  @include for-tablet {
+    padding: 0 0 24px;
+  }
+
+  @include for-laptop {
+   justify-content: space-between;
+  }
+}
+
+.colors {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.palette {
+  display: flex;
+  gap: 9px;
+
+  &__item {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    background-color: var(--color-phone);
+    padding: 2px;
+
+    &--active {
+      border-color: var(--color-select);
+    }
+
+    &:hover {
+      border-color: var(--color-select);
+    }
+  }
+
+  &__value {
+    border: none;
+    background-color: #fcdbc1;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+}
+
+.value {
+  @include small-text-details;
+
+  color: $color-link-navigation;
+}
+
+.verticalLine {
+  width: 100%;
+  height: 1px;
+  background-color: $color-header-border;
+
+  &--margin {
+    margin-bottom: 32px;
+  }
+}
+
+.capacityWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding: 24px 0;
+}
+
+.capacityValue {
+  display: flex;
+  gap: 8px;
+  &__item {
+    @include capacity;
+
+    padding: 5px 8px;
+    border: 1px solid $color-select;
+    background-color: transparent;
+    border-radius: 4px;
+    color: var(--color-text);
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-hover-nav;
+    }
+
+    &--active {
+      background-color: var(--color-capacity-bg);
+      color: var(--color-capacity);
+    }
+  }
+}

@@ -1,0 +1,52 @@
+@use '../../../../styles/utils/typography' as *;
+@use '../../../../styles/utils/breakpoints' as *;
+
+.sectionNewModels {
+  padding-left: 16px;
+
+
+  @include for-tablet {
+    padding-left: 24px;
+  }
+
+  &--margin {
+    padding-left: 0;
+  }
+}
+
+.headerSlider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 72px;
+  padding-right: 16px;
+  margin-bottom: 24px;
+
+  &--size {
+    gap: 0;
+    padding-right: 0
+  }
+
+  &__title {
+    @include h2-mobile;
+
+    @include for-tablet {
+      @include h2-desktop;
+    }
+  }
+
+  &__items {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.mainSlider {
+  overflow: hidden;
+
+  &__track {
+    display: flex;
+    gap: 22px;
+    will-change: transform;
+  }
+}

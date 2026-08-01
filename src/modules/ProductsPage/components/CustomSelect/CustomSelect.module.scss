@@ -1,0 +1,104 @@
+@use '../../../../styles/utils/breakpoints' as *;
+@use '../../../../styles/utils/typography' as *;
+@use '../../../../styles/utils/colors' as *;
+
+.select {
+  position: relative;
+  width: 100%;
+  max-width: 136px;
+
+  &__label {
+    @include small-text;
+
+    color: $color-link-navigation;
+  }
+
+  &__custom {
+    @include body-text;
+
+    margin-top: 4px;
+    padding: 10px 12px;
+    border: 1px solid $color-select;
+    border-radius: 8px;
+    background-color: white;
+    color: $color-hover-nav;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+
+    &:hover {
+      border-color: $color-link-navigation;
+    }
+
+    &:focus,
+
+    &--open {
+      border-color: $color-hover-nav;
+      outline: none;
+    }
+  }
+
+  &__arrow {
+    background-image: url('/icons/arrow_down.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+
+    &--up {
+      rotate: 180deg;
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid $color-select;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px 0 #0000000D;
+    z-index: 10;
+    list-style: none;
+    padding: 4px 0;
+  }
+
+
+  &__option {
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: $color-link-navigation;
+
+    @include body-text;
+
+    &:hover {
+      background-color: $color-select-dropdown;
+      color: $color-hover-nav;
+    }
+  }
+
+  &--bigger {
+    @include for-tablet {
+      max-width: 187px
+    }
+
+    @include for-laptop {
+      max-width: 176px;
+    }
+  }
+
+  &--smaller {
+    @include for-laptop {
+      max-width: 128px;
+    }
+  }
+
+
+}

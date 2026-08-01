@@ -1,0 +1,11 @@
+.arrow {
+  display: flex;
+  align-items: center;
+
+  &__img {
+    object-fit: cover;
+    object-position: center;
+    width: 16px;
+    height: 16px;
+  }
+}

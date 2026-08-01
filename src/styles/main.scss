@@ -1,0 +1,10 @@
+@use './utils/reset';
+@use './utils/fonts';
+@use './utils/themes' as *;
+@include theme;
+
+body {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  transition: all 0.3s ease;
+}

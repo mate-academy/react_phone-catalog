@@ -1,0 +1,57 @@
+@use '../../styles/utils/breakpoints' as *;
+@use '../../styles/utils/colors' as *;
+@use '../../styles/utils/typography' as *;
+
+.main {
+  padding: 24px 16px 64px;
+  &__title {
+    @include h2-desktop;
+
+    margin: 24px 0 8px;
+
+    @include for-tablet {
+      @include h1-desktop;
+
+      margin: 40px 0 8px;
+    }
+  }
+
+  &__text {
+    @include body-text;
+
+    color: $color-link-navigation;
+  }
+
+  @include for-tablet {
+    padding: 24px 24px 64px;
+  }
+
+  @include for-laptop {
+    padding: 24px 32px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 40px;
+
+  button {
+    margin-top: 12px;
+    background-color: #333;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.noData {
+  @include body-text;
+
+  color: $color-link-navigation;
+  text-align: center;
+  margin: 40px 0;
+}
