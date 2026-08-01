@@ -6,7 +6,12 @@ import { Category } from '../Category';
 import { Products } from '../../../types/Products';
 import { getPhonesFromApi } from '../../../utils/api';
 
-const slides = ['iphone14pro', 'iphone17Pro', 'iPad', 'watch'];
+const slidesNotebook = ['iphone14pro', 'iphone17Pro', 'iPad', 'watch'];
+const slidesPhone = ['iphone14pro-mobile', 'iPad', 'watch'];
+const slides =
+  640 > window.innerWidth && window.innerWidth > 340
+    ? slidesPhone
+    : slidesNotebook;
 
 export const PicturesSlider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -45,11 +50,18 @@ export const PicturesSlider = () => {
       null,
   );
 
+  const currentLink = `${import.meta.env.BASE_URL}/img/${currentSlide}`;
+
+  const photo =
+    currentLink + '.jpg' ||
+    currentLink + '.png' ||
+    currentLink + '.svg' ||
+    currentLink + '.webp';
+
   return (
     <>
       <div className="main">
         <h1>Welcome to Nice Gadgets store!</h1>
-
         <div className="info">
           <button
             type="button"
@@ -63,7 +75,7 @@ export const PicturesSlider = () => {
           <div className="info__title">
             <img
               key={currentSlide}
-              src={`${import.meta.env.BASE_URL}/img/${currentSlide}.jpg`}
+              src={photo}
               alt={currentSlide}
               className="info__photo"
             />

@@ -6,6 +6,7 @@
   grid-template-columns: auto 1fr auto;
   grid-template-areas: 'logo menu actions';
   align-items: center;
+  box-sizing: border-box;
   height: 64px;
   border-bottom: 1px solid #E2E6E9;
 
@@ -35,15 +36,16 @@
   box-sizing: border-box;
   color: #89939A;
   margin: 20px;
+
 }
 
 .navbar__logo{
   grid-area: 'logo';
-
+  margin-left: 20px;
 }
 
 .navbar__start{
-  gap: 20px;
+  gap: auto;
   grid-area: 'menu';
 }
 

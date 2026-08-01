@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './Category.scss';
 import { getProductsFromApi } from '../../../utils/api';
 import { Products } from '../../../types/Products';
+import { Link } from 'react-router-dom';
 
 export const Category = () => {
   const [products, setProducts] = useState<Products[]>([]);
@@ -22,9 +23,9 @@ export const Category = () => {
 
   return (
     <div className="main">
-      Shop by category
+      <h2>Shop by category</h2>
       <div className="category">
-        <div className="category__info">
+        <Link to="phones" className="category__info">
           <div className="block phone">
             <img
               src={`${import.meta.env.BASE_URL}/img/category-phones.webp`}
@@ -34,8 +35,8 @@ export const Category = () => {
           </div>
           <p className="title">Mobile phones</p>
           <p className="count">{phoneCount} models</p>
-        </div>
-        <div className="category__info">
+        </Link>
+        <Link to="tablets" className="category__info">
           <div className="block tablets">
             <img
               src={`${import.meta.env.BASE_URL}/img/category-tablets.png`}
@@ -45,8 +46,8 @@ export const Category = () => {
           </div>
           <p className="title">Tablets</p>
           <p className="count">{tabletCount} models</p>
-        </div>
-        <div className="category__info">
+        </Link>
+        <Link to="accessories" className="category__info">
           <div className="block accessories">
             <img
               src={`${import.meta.env.BASE_URL}/img/category-accessories.png`}
@@ -56,7 +57,7 @@ export const Category = () => {
           </div>
           <p className="title">Accessories</p>
           <p className="count">{accsessoriesCount} models</p>
-        </div>
+        </Link>
       </div>
     </div>
   );

@@ -1,13 +1,14 @@
 import { Link, NavLink } from 'react-router-dom';
 import './Footer.scss';
+import { scrollToTop } from '../../utils/functions';
 
 export const Footer = () => {
   return (
     <div className="footer">
-      <Link to="" className="footer__title">
+      <Link to="" className="footer__title footer__logo">
         <img src={`${import.meta.env.BASE_URL}/img/Logo.svg`} alt="logo" />
       </Link>
-      <div className="navbar">
+      <div className="footer__navbar">
         <NavLink
           to="https://github.com/PavloMolytovnyk/react_phone-catalog"
           className="footer__title"
@@ -20,21 +21,30 @@ export const Footer = () => {
         >
           Contacts
         </NavLink>
-        <NavLink to="" className="footer__title">
+        <NavLink
+          // eslint-disable-next-line max-len
+          to="https://github.com/PavloMolytovnyk/react_phone-catalog/blob/master/LICENSE"
+          className="footer__title"
+        >
           Rights
         </NavLink>
       </div>
       <div className="buttonUp">
-        <a href="#app" className="footer__title">
+        <div className="buttonUp__link">
           Back to top
-          <div className="icons iconArrow">
+          <button
+            className="icons iconArrow scroll"
+            onClick={() => {
+              scrollToTop();
+            }}
+          >
             <img
               src={`${import.meta.env.BASE_URL}/img/arrowUp.svg`}
               alt="arrowUp"
               className="arrow"
             />
-          </div>
-        </a>
+          </button>
+        </div>
       </div>
     </div>
   );

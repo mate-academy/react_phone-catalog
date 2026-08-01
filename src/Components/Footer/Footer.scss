@@ -1,16 +1,72 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/media' as *;
+
+.buttonUp {
+  grid-area: tohome;
+  align-self: center;
+}
+
 .footer{
-  height: 96px;
-  display: flex;
-  justify-content: space-around;
+  height:60px;
+  padding-block: 20px;
+  display: grid;
+  grid-template-areas: "logo menu tohome";
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
   border-top: 1px solid #E2E6E9;
+
+  &__logo{
+    padding-left:20px ;
+  }
+
+  .buttonUp{
+    margin-inline-end:50px ;
+  }
+
+  @include on-mobile {
+    display: block;
+    height:200px;
+
+    &__navbar{
+      padding-left:20px ;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+
+    &__title{
+      margin-block:8px ;
+    }
+
+    .buttonUp{
+      display: flex;
+      justify-content: center;
+      padding-block:30px;
+    }
+  }
+}
+
+.footer__navbar{
+  grid-area: menu;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  gap: auto;
 }
 
 .footer__title{
-  display: flex;
-  align-items: center;
-  height: 100%;
-  margin-inline: 20px;
+  grid-area: logo;
   text-decoration: none;
   box-sizing: border-box;
   color: #89939A;
 }
+
+.buttonUp__link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  color: #89939a;
+  text-decoration: none;
+}
+
