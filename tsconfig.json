@@ -4,8 +4,9 @@
     "src"
   ],
   "compilerOptions": {
+    "baseUrl": ".",
     "sourceMap": false,
     "types": ["node", "cypress"],
-    "ignoreDeprecations": "6.0"
+    "ignoreDeprecations": "5.0"
   }
 }

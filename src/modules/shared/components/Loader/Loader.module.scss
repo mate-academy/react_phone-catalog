@@ -1,0 +1,28 @@
+@use '../../styles/variables' as *;
+
+.loader {
+    display: flex;
+    width: 100%;
+    padding: 80px 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid $color-elements;
+    border-top-color: $color-primary;
+    border-radius: 50%;
+    animation: loader-spin 700ms linear infinite;
+}
+
+@keyframes loader-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -34,7 +34,6 @@
     color: $color-primary;
     text-overflow: ellipsis;
     white-space: nowrap;
-    
 }
 
 .dropdown__chevron {
@@ -61,8 +60,7 @@
     border: 1px solid $color-elements;
     background-color: $color-white;
     list-style: none;
-    box-shadow: 0 2px 15px 0 #0000000D;
-
+    box-shadow: 0 2px 15px 0 #0000000d;
 }
 
 .dropdown__item {

@@ -14,7 +14,6 @@
 
     @include respond(desktop) {
         margin-top: 80px;
-        
     }
 
     @include respond(desktop-over) {
@@ -54,7 +53,6 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-
 }
 
 .shopByCategory__imageLink {

@@ -70,7 +70,6 @@
     }
 
     @include respond(desktop) {
-
         &__button {
             width: 80px;
             height: 32px;

@@ -1,9 +1,12 @@
+import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 import favoriteIcon from '../../../../assets/icons/Favorites.svg';
 import favoriteFilledIcon from '../../../../assets/icons/Favorites-Filled.svg';
 import styles from './ProductCard.module.scss';
 
 export interface ProductCardProps {
     id: string | number;
+    detailsPath: string;
     image: string;
     title: string;
     price: number;
@@ -15,11 +18,12 @@ export interface ProductCardProps {
     onFavoriteToggle?: (id: string | number) => void;
     isInCart?: boolean;
     onAddToCart?: (id: string | number) => void;
-    onSelect?: () => void;
+    hoverEffect?: boolean;
 }
 
 export const ProductCard = ({
     id,
+    detailsPath,
     image,
     title,
     price,
@@ -31,7 +35,7 @@ export const ProductCard = ({
     onFavoriteToggle,
     isInCart = false,
     onAddToCart,
-    onSelect,
+    hoverEffect = true,
 }: ProductCardProps) => {
     const handleFavoriteClick = (
         event: React.MouseEvent<HTMLButtonElement>,
@@ -48,7 +52,17 @@ export const ProductCard = ({
     };
 
     return (
-        <article className={styles.productCard} onClick={onSelect}>
+        <article
+            className={classNames(styles.productCard, {
+                [styles['productCard--noHover']]: !hoverEffect,
+            })}
+        >
+            <Link
+                to={detailsPath}
+                className={styles.productCard__stretchedLink}
+                aria-label={title}
+            />
+
             <img
                 className={styles.productCard__image}
                 src={image}

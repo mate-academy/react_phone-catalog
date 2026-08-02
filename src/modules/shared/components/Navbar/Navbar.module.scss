@@ -2,6 +2,18 @@
 @use '../../styles/breakpoints' as *;
 @use '../../styles/typography' as *;
 
+.navbarWrapper {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-top: 1px solid $color-elements;
+    background-color: $color-white;
+}
+
+.navbarWrapper--withSearch {
+    border-bottom: 1px solid $color-elements;
+}
+
 .navbar {
     display: flex;
     width: 100%;
@@ -9,16 +21,16 @@
     margin: 0 auto;
     padding: 0;
     height: auto;
-    position: sticky;
-    top: 0;
-    z-index: 100;
     background-color: $color-white;
     border-bottom: 1px solid $color-elements;
-    border-top: 1px solid $color-elements;
 
     @include respond(desktop) {
         border-left: 1px solid $color-elements;
     }
+}
+
+.navbarWrapper--withSearch .navbar {
+    border-bottom: 0;
 }
 
 .navbar__menuButton {
@@ -124,4 +136,30 @@
     @include respond(desktop) {
         width: 128px;
     }
+}
+
+.navbar__searchRow {
+    border-top: 1px solid $color-elements;
+}
+
+.navbar__searchInner {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 8px 16px 12px;
+
+    @include respond(desktop) {
+        border-left: 1px solid $color-elements;
+    }
+}
+
+.navbar__searchInput {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid $color-elements;
+    background-color: $color-white;
+    color: $color-primary;
+
+    @include typography(body);
 }

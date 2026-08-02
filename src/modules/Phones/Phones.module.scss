@@ -2,22 +2,22 @@
 @use '../shared/styles/typography' as *;
 
 .phones {
-  display: flex;
-  flex-direction: column;
-  padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
 }
 
 .phones__title {
-  margin: 0;
-  margin-top: 24px;
+    margin: 0;
+    margin-top: 24px;
 
-  @include typography(h1);
+    @include typography(h1);
 }
 
 .phones__count {
-  margin: 0;
-  margin-top: 8px;
-  color: $color-secondary;
+    margin: 0;
+    margin-top: 8px;
+    color: $color-secondary;
 
-  @include typography(body);
+    @include typography(body);
 }

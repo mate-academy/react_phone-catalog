@@ -2,6 +2,7 @@
 @use '../../styles/typography' as *;
 
 .productCard {
+    position: relative;
     display: flex;
     padding: 32px;
     border: 1px solid $color-elements;
@@ -9,6 +10,23 @@
     flex-direction: column;
     gap: 16px;
     height: 100%;
+
+    &:hover {
+        box-shadow: 0 2px 16px 0 #0000001a;
+        cursor: pointer;
+    }
+}
+
+.productCard--noHover {
+    &:hover {
+        box-shadow: none;
+    }
+}
+
+.productCard__stretchedLink {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
 }
 
 .productCard__content {
@@ -91,6 +109,8 @@
 }
 
 .productCard__buttonContainer {
+    position: relative;
+    z-index: 2;
     display: flex;
     gap: 8px;
 }

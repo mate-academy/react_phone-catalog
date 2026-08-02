@@ -18,7 +18,7 @@ export const ProductGallery = ({
     const [canScrollPrevious, setCanScrollPrevious] = useState(false);
     const [canScrollNext, setCanScrollNext] = useState(false);
     const viewportRef = useRef<HTMLDivElement>(null);
-    const { favoriteIds, cartIds, toggleFavorite, addToCart } = useShopState();
+    const { favoriteIds, isInCart, toggleFavorite, addToCart } = useShopState();
 
     const updateNavigationState = () => {
         const viewport = viewportRef.current;
@@ -116,8 +116,9 @@ export const ProductGallery = ({
                             className={styles.productGallery__item}
                         >
                             <ProductCard
-                                id={product.id}
-                                image={product.image}
+                                id={product.itemId}
+                                detailsPath={`/product/${product.itemId}`}
+                                image={`/${product.image}`}
                                 title={product.name}
                                 price={product.price}
                                 fullPrice={
@@ -128,10 +129,13 @@ export const ProductGallery = ({
                                 screen={product.screen}
                                 capacity={product.capacity}
                                 ram={product.ram}
-                                isFavorite={favoriteIds.includes(product.id)}
+                                isFavorite={favoriteIds.includes(
+                                    product.itemId,
+                                )}
                                 onFavoriteToggle={toggleFavorite}
-                                isInCart={cartIds.includes(product.id)}
+                                isInCart={isInCart(product.itemId)}
                                 onAddToCart={addToCart}
+                                hoverEffect={false}
                             />
                         </div>
                     ))}

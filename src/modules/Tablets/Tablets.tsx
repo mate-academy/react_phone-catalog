@@ -4,5 +4,11 @@ import { useTablets } from '../shared/hooks';
 export const Tablets = () => {
     const { tablets } = useTablets();
 
-    return <CatalogPage title="Tablets" items={tablets} />;
+    return (
+        <CatalogPage
+            title="Tablets"
+            items={tablets}
+            searchEmptyLabel="tablets"
+        />
+    );
 };
