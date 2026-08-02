@@ -28,21 +28,27 @@ export const Header = () => {
         </NavLink>
         <NavLink
           to="phones"
-          className={styles.navbarTitle}
+          className={classNames(styles.navbarTitle, {
+            [styles.active]: location.pathname === '/phones',
+          })}
           onClick={scrollToTop}
         >
           Phones
         </NavLink>
         <NavLink
           to="tablets"
-          className={styles.navbarTitle}
+          className={classNames(styles.navbarTitle, {
+            [styles.active]: location.pathname === '/tablets',
+          })}
           onClick={scrollToTop}
         >
           Tablets
         </NavLink>
         <NavLink
           to="accessories"
-          className={styles.navbarTitle}
+          className={classNames(styles.navbarTitle, {
+            [styles.active]: location.pathname === '/accessories',
+          })}
           onClick={scrollToTop}
         >
           Accessories

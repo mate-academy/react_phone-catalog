@@ -19,7 +19,7 @@ export async function getPhonesFromApi() {
     throw new Error('Error upload phones from api');
   }
 
-  await wait(3000);
+  await wait(1500);
   const phone: Products[] = await response.json();
 
   return phone;
@@ -34,7 +34,7 @@ export async function getTabletsFromApi() {
     throw new Error('Error upload phones from api');
   }
 
-  await wait(3000);
+  await wait(1500);
   const tablets: Products[] = await response.json();
 
   return tablets;
@@ -49,7 +49,7 @@ export async function getAccessoriesUrlFromApi() {
     throw new Error('Error upload phones from api');
   }
 
-  // await wait(3000);
+  await wait(1500);
   const accessories: Products[] = await response.json();
 
   return accessories;

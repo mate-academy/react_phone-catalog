@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import styles from './PicturesSlider.module.scss';
 
@@ -9,8 +9,12 @@ const slides =
     ? slidesPhone
     : slidesNotebook;
 
+const SWIPE_THRESHOLD = 50;
+
 export const PicturesSlider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   const changeSlide = (direction: number) => {
     setSlideIndex(currentIndex => {
@@ -26,13 +30,45 @@ export const PicturesSlider = () => {
     return () => window.clearInterval(intervalId);
   }, [slideIndex]);
 
+  const handleTouchStart = (event: React.TouchEvent) => {
+    touchStartX.current = event.touches[0].clientX;
+  };
+
+  const handleTouchMove = (event: React.TouchEvent) => {
+    touchEndX.current = event.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const distance = touchStartX.current - touchEndX.current;
+
+    if (Math.abs(distance) < SWIPE_THRESHOLD) {
+      return;
+    }
+
+    if (distance > 0) {
+      changeSlide(1);
+    } else {
+      changeSlide(-1);
+    }
+
+    touchStartX.current = 0;
+    touchEndX.current = 0;
+  };
+
   const currentSlide = slides[slideIndex];
   const currentLink = `${import.meta.env.BASE_URL}/img/${currentSlide}`;
   const photo = currentLink + '.jpg';
 
   return (
     <div className={styles.main}>
-      <div className={styles.info}>
+      <h1>Welcome to Nice Gadgets store!</h1>
+
+      <div
+        className={styles.info}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <button
           type="button"
           className={styles.infoScroll}

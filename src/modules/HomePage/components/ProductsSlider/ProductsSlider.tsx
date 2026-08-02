@@ -1,26 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import styles from './ProductsSlider.module.scss';
 import { Products } from '../../../shared/types/Products';
 import { getProductsPerSlide } from '../../../shared/utils/variables';
+import { toggleFunction } from '../../../shared/utils/functions';
 
 interface ProductsSliderProps {
   phones: Products[];
   isShowDiscount?: boolean;
 }
-
-const toggleFunction = (
-  productsId: Products['id'],
-  state: React.Dispatch<React.SetStateAction<string[]>>,
-) => {
-  state(currentIds => {
-    if (currentIds.includes(productsId)) {
-      return currentIds.filter(current => current !== productsId);
-    } else {
-      return [...currentIds, productsId];
-    }
-  });
-};
 
 export const ProductsSlider = ({
   phones,
