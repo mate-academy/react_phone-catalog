@@ -3,8 +3,9 @@ import { ShopByCategory } from '../shared/components/ShopByCategory';
 import {
     useAccessories,
     usePhones,
-    useProducts,
     useTablets,
+    type Device,
+    type Product,
 } from '../shared/hooks';
 import styles from './HomePage.module.scss';
 import { PicturesSlider } from './components/PicturesSlider/PicturesSlider';
@@ -12,29 +13,62 @@ import phoneImage from '../../assets/img/phones.png';
 import tabletImage from '../../assets/img/tablet.png';
 import accessoryImage from '../../assets/img/accessories.png';
 
+const mapDeviceToProduct = (device: Device): Product => ({
+    id: Number(device.id.replace(/\D/g, '')) || 0,
+    category: device.category,
+    itemId: device.id,
+    name: device.name,
+    fullPrice: device.priceRegular,
+    price: device.priceDiscount,
+    screen: device.screen,
+    capacity: device.capacity,
+    color: device.color,
+    ram: device.ram,
+    year: 0,
+    image: device.images[0],
+});
+
 export const HomePage = () => {
-    const { products, isLoading, error } = useProducts();
-    const { phones } = usePhones();
-    const { tablets } = useTablets();
-    const { accessories } = useAccessories();
-    const brandNewModels = products.filter(
-        product =>
-            product.name.includes('iPhone 14') ||
-            product.name.includes('iPhone 13'),
-    );
-    const hotPriceModels = [...products]
+    const {
+        phones,
+        isLoading: isPhonesLoading,
+        error: phonesError,
+    } = usePhones();
+    const {
+        tablets,
+        isLoading: isTabletsLoading,
+        error: tabletsError,
+    } = useTablets();
+    const {
+        accessories,
+        isLoading: isAccessoriesLoading,
+        error: accessoriesError,
+    } = useAccessories();
+    const allDevices = [...phones, ...tablets, ...accessories];
+    const isLoading =
+        isPhonesLoading || isTabletsLoading || isAccessoriesLoading;
+    const error = phonesError || tabletsError || accessoriesError;
+    const brandNewModels = allDevices
         .filter(
             product =>
-                product.fullPrice > product.price &&
+                product.name.includes('iPhone 14') ||
+                product.name.includes('iPhone 13'),
+        )
+        .map(mapDeviceToProduct);
+    const hotPriceModels = [...allDevices]
+        .filter(
+            product =>
+                product.priceRegular > product.priceDiscount &&
                 !product.name.includes('iPhone 14') &&
                 !product.name.includes('iPhone 13'),
         )
         .sort(
             (firstProduct, secondProduct) =>
-                secondProduct.fullPrice -
-                secondProduct.price -
-                (firstProduct.fullPrice - firstProduct.price),
-        );
+                secondProduct.priceRegular -
+                secondProduct.priceDiscount -
+                (firstProduct.priceRegular - firstProduct.priceDiscount),
+        )
+        .map(mapDeviceToProduct);
     const categoryItems = [
         {
             id: 'phones',
