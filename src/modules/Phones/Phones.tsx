@@ -1,9 +1,8 @@
-import styles from './Phones.module.scss';
+import { CatalogPage } from '../shared/components/CatalogPage';
+import { usePhones } from '../shared/hooks';
 
 export const Phones = () => {
-    return (
-        <section className={styles.phones}>
-            <h1 className={styles.phones__title}>Phones page</h1>
-        </section>
-    );
+    const { phones } = usePhones();
+
+    return <CatalogPage title="Mobile phones" items={phones} />;
 };

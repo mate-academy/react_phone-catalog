@@ -1,9 +1,8 @@
-import styles from './Tablets.module.scss';
+import { CatalogPage } from '../shared/components/CatalogPage';
+import { useTablets } from '../shared/hooks';
 
 export const Tablets = () => {
-    return (
-        <section className={styles.tablets}>
-            <h1 className={styles.tablets__title}>Tablets page</h1>
-        </section>
-    );
+    const { tablets } = useTablets();
+
+    return <CatalogPage title="Tablets" items={tablets} />;
 };

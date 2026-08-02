@@ -1,6 +1,6 @@
 export type NavbarProps = Record<string, never>;
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { NAV_LINKS } from './navLinks';
 import hamburgerIcon from '../../../../assets/icons/Menu.svg';
@@ -28,13 +28,13 @@ export const Navbar = () => {
     return (
         <>
             <nav className={styles.navbar}>
-                <div className={styles.navbar__logo}>
+                <Link to="/" className={styles.navbar__logo}>
                     <img
                         src={logo}
                         alt="Logo"
                         className={styles.navbar__logoImage}
                     />
-                </div>
+                </Link>
                 <div className={styles.navLinks}>
                     {NAV_LINKS.map(({ label, to }) => (
                         <NavLink key={to} to={to} className={styles.link}>

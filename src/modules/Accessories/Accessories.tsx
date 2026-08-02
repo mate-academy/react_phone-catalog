@@ -1,9 +1,8 @@
-import styles from './Accessories.module.scss';
+import { CatalogPage } from '../shared/components/CatalogPage';
+import { useAccessories } from '../shared/hooks';
 
 export const Accessories = () => {
-    return (
-        <section className={styles.accessories}>
-            <h1 className={styles.accessories__title}>Accessories page</h1>
-        </section>
-    );
+    const { accessories } = useAccessories();
+
+    return <CatalogPage title="Accessories" items={accessories} />;
 };

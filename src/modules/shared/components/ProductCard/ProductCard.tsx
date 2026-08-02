@@ -3,7 +3,7 @@ import favoriteFilledIcon from '../../../../assets/icons/Favorites-Filled.svg';
 import styles from './ProductCard.module.scss';
 
 export interface ProductCardProps {
-    id: number;
+    id: string | number;
     image: string;
     title: string;
     price: number;
@@ -12,9 +12,9 @@ export interface ProductCardProps {
     capacity?: string;
     ram?: string;
     isFavorite?: boolean;
-    onFavoriteToggle?: (id: number) => void;
+    onFavoriteToggle?: (id: string | number) => void;
     isInCart?: boolean;
-    onAddToCart?: (id: number) => void;
+    onAddToCart?: (id: string | number) => void;
     onSelect?: () => void;
 }
 
