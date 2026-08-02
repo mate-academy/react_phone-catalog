@@ -40,7 +40,7 @@ export async function getTabletsFromApi() {
   return tablets;
 }
 
-export async function getAccessoriesUrlFromApi() {
+export async function getAccessoriesFromApi() {
   const newUrl = AccessoriesUrl;
 
   const response = await fetch(newUrl);
