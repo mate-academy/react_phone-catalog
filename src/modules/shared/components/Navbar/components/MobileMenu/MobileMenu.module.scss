@@ -1,0 +1,58 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/breakpoints' as *;
+@use '../../../../styles/typography' as *;
+
+.mobileMenu {
+    display: flex;
+    flex-direction: column;
+
+    position: fixed;
+    inset: 48px 0 0; // starts below the navbar, not at the very top
+    z-index: 90;
+    background: $color-white;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.mobileMenu--withSearch {
+    inset: 104px 0 0;
+}
+
+.mobileMenu--open {
+    transform: translateX(0);
+}
+
+.mobileMenu__navLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    color: $color-secondary;
+    padding-block: 16px;
+    text-decoration: none;
+
+    @include typography(h4);
+}
+
+.link {
+    display: block;
+    padding: 8px 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.link:hover {
+    color: $color-primary;
+    border-bottom: 2px solid $color-primary;
+}
+
+.link:active {
+    border-bottom: 2px solid $color-primary;
+}
+
+.mobileMenu__footer {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    margin-top: auto;
+}

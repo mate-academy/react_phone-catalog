@@ -1,0 +1,54 @@
+@use '../shared/styles/variables' as *;
+@use '../shared/styles/breakpoints' as *;
+@use '../shared/styles/typography' as *;
+@use '../shared/styles/grid' as *;
+
+.homePage {
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+
+    @include respond(tablet) {
+        padding: 0 16px;
+    }
+
+    @include respond(desktop) {
+        padding: 0 32px;
+    }
+
+    @include respond(desktop-over) {
+        padding: 0;
+    }
+}
+
+.homePage__title__hidden {
+    color: black;
+    margin-top: 24px;
+    display: none;
+
+    @include typography(h1);
+}
+
+.homePage__header {
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    @include respond(tablet) {
+        margin-top: 32px;
+        margin-bottom: 32px;
+    }
+
+    @include respond(desktop) {
+        margin-top: 56px;
+        margin-bottom: 56px;
+    }
+}
+
+.homePage__header__title {
+    width: 100%;
+    margin: 0;
+
+    @include typography(h1);
+}

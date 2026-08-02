@@ -1,0 +1,45 @@
+@use './styles/reset' as *;
+@use './styles/variables' as *;
+@use './styles/typography' as *;
+@use './styles/grid' as *;
+@use './styles/breakpoints' as *;
+
+@font-face {
+    font-family: Mont;
+    src: url('../../assets/fonts/Mont-Regular.otf') format('opentype');
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Mont;
+    src: url('../../assets/fonts/Mont-SemiBold.otf') format('opentype');
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Mont;
+    src: url('../../assets/fonts/Mont-Bold.otf') format('opentype');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Mont;
+    src: url('../../assets/fonts/Mont-Heavy.otf') format('opentype');
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+}
+
+body {
+    font-family: Mont, sans-serif;
+    color: $color-primary;
+    background-color: $color-white;
+
+    @include typography(body);
+}

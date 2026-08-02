@@ -1,0 +1,73 @@
+@use '../../styles/variables' as *;
+@use '../../styles/typography' as *;
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.pagination__button {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $color-elements;
+    background-color: $color-white;
+    color: $color-primary;
+    cursor: pointer;
+
+    @include typography(button);
+
+    &:disabled {
+        color: $color-secondary;
+        cursor: not-allowed;
+    }
+
+    &--active {
+        border-color: $color-primary;
+        background-color: $color-primary;
+        color: $color-white;
+    }
+}
+
+.pagination__button__prev {
+    margin-right: 8px;
+    display: flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $color-elements;
+    background-color: $color-white;
+    color: $color-primary;
+    cursor: pointer;
+
+    @include typography(button);
+
+    &:disabled {
+        color: $color-secondary;
+        cursor: not-allowed;
+    }
+}
+
+.pagination__button__next {
+    margin-left: 8px;
+    display: flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $color-elements;
+    background-color: $color-white;
+    color: $color-primary;
+    cursor: pointer;
+
+    @include typography(button);
+
+    &:disabled {
+        color: $color-secondary;
+        cursor: not-allowed;
+    }
+}

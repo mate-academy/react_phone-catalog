@@ -1,0 +1,68 @@
+@use '../../styles/variables' as *;
+@use '../../styles/typography' as *;
+@use '../../styles/breakpoints' as *;
+
+.catalogPage {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 16px 40px;
+}
+
+.catalogPage__title {
+    margin: 0;
+
+    @include typography(h1);
+}
+
+.catalogPage__count {
+    margin: -16px 0 0;
+    color: $color-secondary;
+
+    @include typography(body);
+}
+
+.catalogPage__controls {
+    display: flex;
+    gap: 16px;
+}
+
+.catalogPage__control {
+    display: flex;
+    min-width: 136px;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.catalogPage__controlLabel {
+    color: $color-secondary;
+
+    @include typography(small);
+}
+
+.catalogPage__grid {
+    display: grid;
+    gap: 32px 16px;
+
+    @include respond(tablet) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    @include respond(desktop) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    @include respond(desktop-over) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+    }
+}
+
+.catalogPage__empty {
+    margin: 0;
+    color: $color-secondary;
+
+    @include typography(h3);
+}

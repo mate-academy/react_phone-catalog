@@ -1,0 +1,79 @@
+@use '../../styles/variables' as *;
+@use '../../styles/breakpoints' as *;
+
+.favButton {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    border: 1px solid $color-elements;
+    transition: border-bottom 0.3s ease-in-out;
+    background-color: $color-white;
+    color: $color-primary;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:active,
+    &:hover {
+        border-bottom: 2px solid $color-primary;
+    }
+
+    @include respond(desktop) {
+        width: 64px;
+        height: 64px;
+        border-left: 1px solid $color-elements;
+        border-top: none;
+        border-bottom: 2px solid transparent;
+    }
+
+    @include respond(tablet) {
+        width: 48px;
+        height: 48px;
+        border-left: 1px solid $color-elements;
+        border-top: none;
+        border-bottom: 2px solid transparent;
+    }
+}
+
+.favButton--active {
+    border-bottom: 2px solid $color-primary;
+}
+
+.favButton:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.favButtonIcon {
+    width: 16px;
+    height: 16px;
+}
+
+.favButton__count {
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    display: flex;
+    min-width: 14px;
+    height: 14px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    border-radius: 50%;
+    background-color: #eb5757;
+    border: 1px solid $color-white;
+    color: $color-white;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1;
+
+    @include respond(mobile) {
+        top: 18px;
+        right: 82px;
+    }
+
+    @include respond(desktop) {
+        top: 18px;
+        right: 18px;
+    }
+}

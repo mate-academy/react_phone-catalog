@@ -1,0 +1,139 @@
+// src/styles/_typography.scss
+
+@use 'sass:map';
+@use 'breakpoints' as *;
+
+// Font family
+$font-family-base: 'Mont', sans-serif;
+
+// Font weights
+$font-weight-smallText: 600;
+$font-weight-regular: 500;
+$font-weight-semibold: 600;
+$font-weight-medium: 700;
+$font-weight-bold: 700;
+
+// Desktop / Tablet
+$type-desktop: (
+    h1: (
+        weight: $font-weight-bold,
+        size: 48px,
+        line-height: 56px,
+        letter-spacing: -0.01em,
+    ),
+    h2: (
+        weight: $font-weight-bold,
+        size: 32px,
+        line-height: 41px,
+        letter-spacing: -0.01em,
+    ),
+    h3: (
+        weight: $font-weight-bold,
+        size: 22px,
+        line-height: 31px,
+        letter-spacing: 0,
+    ),
+    h4: (
+        weight: $font-weight-medium,
+        size: 20px,
+        line-height: 26px,
+        letter-spacing: 0,
+    ),
+    uppercase: (
+        weight: $font-weight-medium,
+        size: 12px,
+        line-height: 11px,
+        letter-spacing: 0.04em,
+        transform: uppercase,
+    ),
+    button: (
+        weight: $font-weight-semibold,
+        size: 14px,
+        line-height: 21px,
+        letter-spacing: 0,
+    ),
+    body: (
+        weight: $font-weight-regular,
+        size: 14px,
+        line-height: 21px,
+        letter-spacing: 0,
+    ),
+    small: (
+        weight: $font-weight-smallText,
+        size: 12px,
+        line-height: 15px,
+        letter-spacing: 0,
+    ),
+);
+
+// Mobile
+$type-mobile: (
+    h1: (
+        weight: $font-weight-bold,
+        size: 32px,
+        line-height: 41px,
+        letter-spacing: -0.01em,
+    ),
+    h2: (
+        weight: $font-weight-bold,
+        size: 22px,
+        line-height: 31px,
+        letter-spacing: 0,
+    ),
+    h3: (
+        weight: $font-weight-semibold,
+        size: 20px,
+        line-height: 26px,
+        letter-spacing: 0,
+    ),
+    h4: (
+        weight: $font-weight-medium,
+        size: 16px,
+        line-height: 20px,
+        letter-spacing: 0,
+    ),
+    body: (
+        weight: $font-weight-regular,
+        size: 14px,
+        line-height: 21px,
+        letter-spacing: 0,
+    ),
+    small: (
+        weight: $font-weight-smallText,
+        size: 12px,
+        line-height: 15px,
+        letter-spacing: 0,
+    ),
+    uppercase: (
+        weight: $font-weight-medium,
+        size: 12px,
+        line-height: 11px,
+        letter-spacing: 0.04em,
+        transform: uppercase,
+    ),
+    button: map.get($type-desktop, button),
+);
+
+// Mixin to apply typography styles based on the style name passed in
+
+@mixin typography($style) {
+    $desktop: map.get($type-desktop, $style);
+    $mobile: map.get($type-mobile, $style);
+
+    font-family: $font-family-base;
+    font-weight: map.get($desktop, weight);
+    font-size: map.get($desktop, size);
+    line-height: map.get($desktop, line-height);
+    letter-spacing: map.get($desktop, letter-spacing);
+
+    @if map.has-key($desktop, transform) {
+        text-transform: map.get($desktop, transform);
+    }
+
+    @include respond(mobile) {
+        font-weight: map.get($mobile, weight);
+        font-size: map.get($mobile, size);
+        line-height: map.get($mobile, line-height);
+        letter-spacing: map.get($mobile, letter-spacing);
+    }
+}

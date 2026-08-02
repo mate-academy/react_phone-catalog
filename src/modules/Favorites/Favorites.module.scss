@@ -1,0 +1,44 @@
+@use '../shared/styles/variables' as *;
+@use '../shared/styles/typography' as *;
+@use '../shared/styles/breakpoints' as *;
+
+.favorites {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 16px 64px;
+}
+
+.favorites__title {
+    margin: 0;
+
+    @include typography(h1);
+}
+
+.favorites__count {
+    margin: -16px 0 0;
+    color: $color-secondary;
+
+    @include typography(body);
+}
+
+.favorites__empty {
+    margin: 0;
+    color: $color-secondary;
+
+    @include typography(h3);
+}
+
+.favorites__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px 16px;
+
+    @include respond(tablet) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include respond(desktop) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}

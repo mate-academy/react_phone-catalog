@@ -1,0 +1,165 @@
+@use '../../styles/variables' as *;
+@use '../../styles/breakpoints' as *;
+@use '../../styles/typography' as *;
+
+.navbarWrapper {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-top: 1px solid $color-elements;
+    background-color: $color-white;
+}
+
+.navbarWrapper--withSearch {
+    border-bottom: 1px solid $color-elements;
+}
+
+.navbar {
+    display: flex;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0;
+    height: auto;
+    background-color: $color-white;
+    border-bottom: 1px solid $color-elements;
+
+    @include respond(desktop) {
+        border-left: 1px solid $color-elements;
+    }
+}
+
+.navbarWrapper--withSearch .navbar {
+    border-bottom: 0;
+}
+
+.navbar__menuButton {
+    height: 48px;
+    margin-left: auto;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-left: 1px solid $color-elements;
+
+    @include respond(tablet) {
+        // menu only exists on mobile — nav links show inline from tablet up
+        display: none;
+    }
+
+    @include respond(desktop) {
+        // menu only exists on mobile — nav links show inline from tablet up
+        display: none;
+    }
+}
+
+.navbar__logo {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    margin-right: 16px;
+
+    @include respond(desktop) {
+        margin-right: 24px;
+    }
+}
+
+.navbar__logoImage {
+    width: 64px;
+    height: 22px;
+
+    @include respond(desktop) {
+        width: 80px;
+        height: 28px;
+    }
+}
+
+// Nav Links
+
+.navLinks {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: $color-secondary;
+    text-decoration: none;
+    width: fit-content;
+
+    @include typography(small);
+
+    @include respond(tablet) {
+        width: 329px;
+    }
+
+    @include respond(desktop) {
+        width: 425px;
+    }
+
+    @include respond(mobile) {
+        display: none; // nav links only show inline from tablet up
+    }
+}
+
+.link {
+    display: block;
+    display: flex;
+    align-items: center;
+    height: 48px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease-in-out;
+
+    @include respond(desktop) {
+        height: 64px;
+    }
+}
+
+.link:hover {
+    color: $color-primary;
+    border-bottom: 2px solid $color-primary;
+}
+
+.link:active {
+    border-bottom: 2px solid $color-primary;
+}
+
+.navbar__BtnContainer {
+    margin-left: auto;
+    display: flex;
+    width: 96px;
+
+    @include respond(mobile) {
+        display: none; // buttons only show inline from tablet up
+    }
+
+    @include respond(desktop) {
+        width: 128px;
+    }
+}
+
+.navbar__searchRow {
+    border-top: 1px solid $color-elements;
+}
+
+.navbar__searchInner {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 8px 16px 12px;
+
+    @include respond(desktop) {
+        border-left: 1px solid $color-elements;
+    }
+}
+
+.navbar__searchInput {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid $color-elements;
+    background-color: $color-white;
+    color: $color-primary;
+
+    @include typography(body);
+}

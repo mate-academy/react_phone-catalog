@@ -1,0 +1,67 @@
+@use '../../styles/variables' as *;
+@use '../../styles/typography' as *;
+@use '../../styles/breakpoints' as *;
+
+.productGallery {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 56px;
+    margin-bottom: 64px;
+
+    @include respond(tablet) {
+        margin-top: 64px;
+    }
+
+    @include respond(desktop) {
+        margin-top: 80px;
+    }
+
+    @include respond(desktop-over) {
+        margin-top: 80px;
+    }
+}
+
+.productGallery__title {
+    margin: 0;
+
+    @include typography(h2);
+
+    color: $color-primary;
+}
+
+.productGallery__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.productGallery__viewport {
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.productGallery__track {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+}
+
+.productGallery__item {
+    flex: 0 0 min(272px, calc(100vw - 48px));
+    scroll-snap-align: start;
+
+    @include respond(tablet) {
+        flex-basis: 237px;
+    }
+
+    @include respond(desktop) {
+        flex-basis: 272px;
+    }
+}

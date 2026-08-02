@@ -1,0 +1,35 @@
+@use '../shared/styles/typography' as *;
+@use '../shared/styles/variables' as *;
+@use '../shared/styles/breakpoints' as *;
+
+.notFoundPage {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 24px;
+}
+
+.notFoundPage__title {
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    @include typography(h1);
+
+    @include respond(tablet) {
+        margin-top: 32px;
+        margin-bottom: 32px;
+    }
+
+    @include respond(desktop) {
+        margin-top: 56px;
+        margin-bottom: 56px;
+    }
+}
+
+.notFoundPage__link {
+    width: fit-content;
+    color: $color-primary;
+    text-decoration: underline;
+
+    @include typography(body);
+}

@@ -1,0 +1,12 @@
+@use '../shared/styles/typography' as *;
+
+.accessories {
+    display: flex;
+    flex-direction: column;
+}
+
+.accessories__title {
+    margin: 0;
+
+    @include typography(h1);
+}
