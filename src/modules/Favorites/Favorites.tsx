@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Breadcrumb } from '../shared/components/Breadcrumb';
 import { ProductCard } from '../shared/components/ProductCard';
+import { getPublicPath } from '../shared/utils/getPublicPath';
 import {
     useAccessories,
     usePhones,
@@ -65,7 +66,7 @@ export const Favorites = () => {
                             key={product.id}
                             id={product.id}
                             detailsPath={`/product/${product.id}`}
-                            image={`/${product.images[0]}`}
+                            image={getPublicPath(product.images[0])}
                             title={product.name}
                             price={product.priceDiscount}
                             fullPrice={product.priceRegular}

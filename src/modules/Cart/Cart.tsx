@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import chevronLeftIcon from '../../assets/icons/Chevron-Left.svg';
 import { CartItem } from '../shared/components/CartItem';
+import { getPublicPath } from '../shared/utils/getPublicPath';
 import {
     useAccessories,
     usePhones,
@@ -97,7 +98,7 @@ export const Cart = () => {
                         {items.map(item => (
                             <CartItem
                                 key={item.id}
-                                image={`/${item.product.images[0]}`}
+                                image={getPublicPath(item.product.images[0])}
                                 name={item.product.name}
                                 price={item.product.priceDiscount}
                                 quantity={item.quantity}

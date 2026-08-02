@@ -6,6 +6,7 @@ import { Loader } from '../shared/components/Loader';
 import { ProductGallery } from '../shared/components/ProductGallery';
 import { getSuggestedProducts } from '../shared/utils/getSuggestedProducts';
 import { getColorHex } from '../shared/utils/colorHexMap';
+import { getPublicPath } from '../shared/utils/getPublicPath';
 import chevronLeftIcon from '../../assets/icons/Chevron-Left.svg';
 import styles from './ProductDetailsPage.module.scss';
 
@@ -137,7 +138,7 @@ export const ProductDetailsPage = () => {
                                 aria-current={selectedImage === index}
                             >
                                 <img
-                                    src={`/${image}`}
+                                    src={getPublicPath(image)}
                                     alt={`${product.name} ${index + 1}`}
                                     className={
                                         styles.productDetailsPage__thumbnail
@@ -148,7 +149,9 @@ export const ProductDetailsPage = () => {
                     </div>
 
                     <img
-                        src={`/${product.images[selectedImage] ?? product.images[0]}`}
+                        src={getPublicPath(
+                            product.images[selectedImage] ?? product.images[0],
+                        )}
                         alt={product.name}
                         className={styles.productDetailsPage__mainImage}
                     />

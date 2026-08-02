@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import SectionHeader from '../SectionHeader/SectionHeader';
 import { useShopState, type Product } from '../../hooks';
+import { getPublicPath } from '../../utils/getPublicPath';
 import styles from './ProductGallery.module.scss';
 import { ProductCard } from '../ProductCard';
 
@@ -118,7 +119,7 @@ export const ProductGallery = ({
                             <ProductCard
                                 id={product.itemId}
                                 detailsPath={`/product/${product.itemId}`}
-                                image={`/${product.images[0]}`}
+                                image={getPublicPath(product.images[0])}
                                 title={product.name}
                                 price={product.priceDiscount}
                                 fullPrice={

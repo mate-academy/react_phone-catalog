@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { getPublicPath } from '../utils/getPublicPath';
 
 type UseFetchListResult<T> = {
     data: T[];
@@ -13,15 +14,16 @@ export const useFetchList = <T>(url: string): UseFetchListResult<T> => {
 
     useEffect(() => {
         let isCancelled = false;
+        const requestUrl = getPublicPath(url);
 
         setIsLoading(true);
         setError(null);
 
-        fetch(url)
+        fetch(requestUrl)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(
-                        `Failed to load ${url}: ${response.status}`,
+                        `Failed to load ${requestUrl}: ${response.status}`,
                     );
                 }
 

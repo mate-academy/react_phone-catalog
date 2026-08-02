@@ -5,6 +5,7 @@ import { Breadcrumb } from '../Breadcrumb';
 import { Dropdown } from '../Dropdown';
 import { Pagination } from '../Pagination';
 import { ProductCard } from '../ProductCard';
+import { getPublicPath } from '../../utils/getPublicPath';
 import styles from './CatalogPage.module.scss';
 
 const PER_PAGE_OPTIONS = ['4', '8', '16', 'all'] as const;
@@ -227,7 +228,7 @@ export const CatalogPage = ({
                                 key={item.id}
                                 id={item.id}
                                 detailsPath={`/product/${item.id}`}
-                                image={`/${item.images[0]}`}
+                                image={getPublicPath(item.images[0])}
                                 title={item.name}
                                 price={item.priceDiscount}
                                 fullPrice={item.priceRegular}
