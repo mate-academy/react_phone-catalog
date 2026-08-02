@@ -1,69 +1,70 @@
-import { useState } from 'react';
+import { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { Breadcrumb } from '../shared/components/Breadcrumb';
+import { ProductCard } from '../shared/components/ProductCard';
+import { useProducts, useShopState } from '../shared/hooks';
 import styles from './Favorites.module.scss';
 
-type FavoriteItemData = {
-    id: string;
-    image: string;
-    name: string;
-    price: number;
-};
-
-const INITIAL_FAVORITES: FavoriteItemData[] = [
-    {
-        id: 'apple-iphone-11-pro-max-64gb-silver',
-        image: '/img/phones/apple-iphone-11-pro-max/silver/00.webp',
-        name: 'Apple iPhone 11 Pro Max 64GB Silver',
-        price: 1099,
-    },
-    {
-        id: 'apple-iphone-11-pro-max-64gb-spacegray',
-        image: '/img/phones/apple-iphone-11-pro-max/spacegray/00.webp',
-        name: 'Apple iPhone 11 Pro Max 64GB Space Gray',
-        price: 1099,
-    },
-];
-
 export const Favorites = () => {
-    const [items, setItems] = useState<FavoriteItemData[]>(INITIAL_FAVORITES);
+    const [searchParams] = useSearchParams();
+    const { products, isLoading } = useProducts();
+    const { favoriteIds, isInCart, toggleFavorite, addToCart } = useShopState();
+    const queryParam = searchParams.get('query')?.trim().toLowerCase() ?? '';
 
-    const handleRemove = (id: string) => {
-        setItems(current => current.filter(item => item.id !== id));
-    };
+    const favoriteProducts = useMemo(
+        () =>
+            favoriteIds
+                .map(favoriteId =>
+                    products.find(product => product.itemId === favoriteId),
+                )
+                .filter(product => product !== undefined),
+        [favoriteIds, products],
+    );
+    const visibleProducts = useMemo(
+        () =>
+            favoriteProducts.filter(product =>
+                product.name.toLowerCase().includes(queryParam),
+            ),
+        [favoriteProducts, queryParam],
+    );
 
     return (
         <section className={styles.favorites}>
+            <Breadcrumb />
+
             <h1 className={styles.favorites__title}>Favorites</h1>
+            <p className={styles.favorites__count}>
+                {visibleProducts.length} item
+                {visibleProducts.length === 1 ? '' : 's'}
+            </p>
 
-            {items.length === 0 ? (
+            {!isLoading && favoriteProducts.length === 0 ? (
                 <p className={styles.favorites__empty}>No favorites yet</p>
+            ) : !isLoading && visibleProducts.length === 0 ? (
+                <p className={styles.favorites__empty}>
+                    There are no products matching the query
+                </p>
             ) : (
-                <ul className={styles.favorites__list}>
-                    {items.map(item => (
-                        <li key={item.id} className={styles.favorites__item}>
-                            <button
-                                type="button"
-                                className={styles.favorites__remove}
-                                onClick={() => handleRemove(item.id)}
-                                aria-label="Remove from favorites"
-                            >
-                                &times;
-                            </button>
-
-                            <img
-                                src={item.image}
-                                alt={item.name}
-                                className={styles.favorites__image}
-                            />
-
-                            <p className={styles.favorites__name}>
-                                {item.name}
-                            </p>
-                            <p className={styles.favorites__price}>
-                                ${item.price}
-                            </p>
-                        </li>
+                <div className={styles.favorites__grid}>
+                    {visibleProducts.map(product => (
+                        <ProductCard
+                            key={product.itemId}
+                            id={product.itemId}
+                            detailsPath={`/product/${product.itemId}`}
+                            image={`/${product.image}`}
+                            title={product.name}
+                            price={product.price}
+                            fullPrice={product.fullPrice}
+                            screen={product.screen}
+                            capacity={product.capacity}
+                            ram={product.ram}
+                            isFavorite={favoriteIds.includes(product.itemId)}
+                            onFavoriteToggle={toggleFavorite}
+                            isInCart={isInCart(product.itemId)}
+                            onAddToCart={addToCart}
+                        />
                     ))}
-                </ul>
+                </div>
             )}
         </section>
     );

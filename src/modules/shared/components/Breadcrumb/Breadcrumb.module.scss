@@ -25,14 +25,10 @@
 .breadcrumb__link {
     display: flex;
     align-items: center;
-    color: $color-secondary;
+    color: $color-primary;
     text-decoration: none;
 
     @include typography(small);
-
-    &:hover {
-        color: $color-primary;
-    }
 }
 
 .breadcrumb__homeIcon {
@@ -42,13 +38,14 @@
 }
 
 .breadcrumb__current {
-    color: $color-primary;
+    color: $color-icons;
 
     @include typography(small);
 }
 
 .breadcrumb__separator {
+    display: block;
+    width: 12px;
+    height: 12px;
     color: $color-icons;
-
-    @include typography(small);
 }

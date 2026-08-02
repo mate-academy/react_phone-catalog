@@ -1,85 +1,105 @@
-import { useState } from 'react';
+import { useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import chevronLeftIcon from '../../assets/icons/Chevron-Left.svg';
 import { CartItem } from '../shared/components/CartItem';
+import { useProducts, useShopState } from '../shared/hooks';
 import styles from './Cart.module.scss';
 
-type CartItemData = {
-    id: string;
-    image: string;
-    name: string;
-    price: number;
-    quantity: number;
-};
-
-const INITIAL_CART_ITEMS: CartItemData[] = [
-    {
-        id: 'apple-iphone-11-pro-max-64gb-silver',
-        image: '/img/phones/apple-iphone-11-pro-max/silver/00.webp',
-        name: 'Apple iPhone 11 Pro Max 64GB Silver',
-        price: 1099,
-        quantity: 1,
-    },
-    {
-        id: 'apple-iphone-11-pro-max-64gb-gold',
-        image: '/img/phones/apple-iphone-11-pro-max/gold/00.webp',
-        name: 'Apple iPhone 11 Pro Max 64GB Gold',
-        price: 1099,
-        quantity: 2,
-    },
-];
-
 export const Cart = () => {
-    const [items, setItems] = useState<CartItemData[]>(INITIAL_CART_ITEMS);
+    const navigate = useNavigate();
+    const { products, isLoading } = useProducts();
+    const { cartItems, removeFromCart, updateCartQuantity, clearCart } =
+        useShopState();
 
-    const handleQuantityChange = (id: string, diff: number) => {
-        setItems(current =>
-            current.map(item =>
-                item.id === id
-                    ? { ...item, quantity: Math.max(1, item.quantity + diff) }
-                    : item,
-            ),
-        );
-    };
+    const items = useMemo(
+        () =>
+            cartItems
+                .map(item => {
+                    const product = products.find(
+                        currentProduct => currentProduct.itemId === item.id,
+                    );
 
-    const handleRemove = (id: string) => {
-        setItems(current => current.filter(item => item.id !== id));
-    };
+                    if (!product) {
+                        return null;
+                    }
+
+                    return {
+                        id: item.id,
+                        quantity: item.quantity,
+                        product,
+                    };
+                })
+                .filter(
+                    (
+                        item,
+                    ): item is {
+                        id: string;
+                        quantity: number;
+                        product: (typeof products)[number];
+                    } => item !== null,
+                ),
+        [cartItems, products],
+    );
 
     const total = items.reduce(
-        (sum, item) => sum + item.price * item.quantity,
+        (sum, item) => sum + item.product.price * item.quantity,
         0,
     );
     const itemsCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
+    const handleCheckout = () => {
+        const shouldClearCart = window.confirm(
+            'Checkout is not implemented yet. Do you want to clear the Cart?',
+        );
+
+        if (shouldClearCart) {
+            clearCart();
+        }
+    };
+
     return (
         <section className={styles.cart}>
+            <button
+                type="button"
+                className={styles.cart__back}
+                onClick={() => navigate(-1)}
+            >
+                <img
+                    src={chevronLeftIcon}
+                    alt=""
+                    aria-hidden="true"
+                    className={styles.cart__backIcon}
+                />
+                <span>Back</span>
+            </button>
+
             <h1 className={styles.cart__title}>Cart</h1>
 
-            {items.length === 0 ? (
-                <div className={styles.cart__empty}>
-                    <img
-                        src="/img/cart-is-empty.png"
-                        alt="Cart is empty"
-                        className={styles.cart__emptyImage}
-                    />
-                    <p className={styles.cart__emptyText}>Your cart is empty</p>
-                </div>
+            {!isLoading && items.length === 0 ? (
+                <p className={styles.cart__emptyText}>Your cart is empty</p>
             ) : (
-                <>
+                <div className={styles.cart__content}>
                     <ul className={styles.cart__list}>
                         {items.map(item => (
                             <CartItem
                                 key={item.id}
-                                image={item.image}
-                                name={item.name}
-                                price={item.price}
+                                image={`/${item.product.image}`}
+                                name={item.product.name}
+                                price={item.product.price}
                                 quantity={item.quantity}
                                 onIncrease={() =>
-                                    handleQuantityChange(item.id, 1)
+                                    updateCartQuantity(
+                                        item.id,
+                                        item.quantity + 1,
+                                    )
                                 }
                                 onDecrease={() =>
-                                    handleQuantityChange(item.id, -1)
+                                    updateCartQuantity(
+                                        item.id,
+                                        item.quantity - 1,
+                                    )
                                 }
-                                onRemove={() => handleRemove(item.id)}
+                                onRemove={() => removeFromCart(item.id)}
                             />
                         ))}
                     </ul>
@@ -90,8 +110,16 @@ export const Cart = () => {
                             Total for {itemsCount} item
                             {itemsCount === 1 ? '' : 's'}
                         </p>
+
+                        <button
+                            type="button"
+                            className={styles.cart__checkout}
+                            onClick={handleCheckout}
+                        >
+                            Checkout
+                        </button>
                     </div>
-                </>
+                </div>
             )}
         </section>
     );

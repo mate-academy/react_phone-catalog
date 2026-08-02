@@ -12,6 +12,7 @@ import { Favorites } from './modules/Favorites';
 import { Phones } from './modules/Phones';
 import { Tablets } from './modules/Tablets';
 import { Accessories } from './modules/Accessories';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { ShopStateProvider } from './modules/shared/hooks';
 
 const ScrollToTop = () => {
@@ -36,6 +37,10 @@ export const App = () => (
                     <Route path="/phones" element={<Phones />} />
                     <Route path="/tablets" element={<Tablets />} />
                     <Route path="/accessories" element={<Accessories />} />
+                    <Route
+                        path="/product/:productId"
+                        element={<ProductDetailsPage />}
+                    />
                     <Route path="/github" element={<h1>GitHub</h1>} />
                     <Route path="/contacts" element={<Contacts />} />
                     <Route path="/rights" element={<Rights />} />

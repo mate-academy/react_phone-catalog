@@ -3,6 +3,9 @@
 @use '../shared/styles/breakpoints' as *;
 
 .notFoundPage {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     padding: 0 24px;
 }
 
@@ -21,4 +24,12 @@
         margin-top: 56px;
         margin-bottom: 56px;
     }
+}
+
+.notFoundPage__link {
+    width: fit-content;
+    color: $color-primary;
+    text-decoration: underline;
+
+    @include typography(body);
 }

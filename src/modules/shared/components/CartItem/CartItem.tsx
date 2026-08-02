@@ -19,20 +19,28 @@ export const CartItem = ({
     onDecrease,
     onRemove,
 }: CartItemProps) => {
+    const totalPrice = price * quantity;
+
     return (
         <li className={styles.cartItem}>
-            <button
-                type="button"
-                className={styles.cartItem__remove}
-                onClick={onRemove}
-                aria-label="Remove from cart"
-            >
-                &times;
-            </button>
+            <div className={styles.cartItem__product}>
+                <button
+                    type="button"
+                    className={styles.cartItem__remove}
+                    onClick={onRemove}
+                    aria-label="Remove from cart"
+                >
+                    &times;
+                </button>
 
-            <img src={image} alt={name} className={styles.cartItem__image} />
+                <img
+                    src={image}
+                    alt={name}
+                    className={styles.cartItem__image}
+                />
 
-            <p className={styles.cartItem__name}>{name}</p>
+                <p className={styles.cartItem__name}>{name}</p>
+            </div>
 
             <div className={styles.cartItem__quantity}>
                 <button
@@ -59,7 +67,7 @@ export const CartItem = ({
                 </button>
             </div>
 
-            <p className={styles.cartItem__price}>${price * quantity}</p>
+            <p className={styles.cartItem__price}>${totalPrice}</p>
         </li>
     );
 };

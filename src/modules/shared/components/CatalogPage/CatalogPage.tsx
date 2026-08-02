@@ -29,6 +29,7 @@ const DEFAULT_SORT = 'newest';
 export interface CatalogPageProps {
     title: string;
     items: Device[];
+    searchEmptyLabel: string;
 }
 
 const getValidPerPage = (value: string | null) => {
@@ -53,13 +54,18 @@ const getValidSort = (value: string | null) => {
     return DEFAULT_SORT;
 };
 
-export const CatalogPage = ({ title, items }: CatalogPageProps) => {
+export const CatalogPage = ({
+    title,
+    items,
+    searchEmptyLabel,
+}: CatalogPageProps) => {
     const [searchParams, setSearchParams] = useSearchParams();
-    const { favoriteIds, cartIds, toggleFavorite, addToCart } = useShopState();
+    const { favoriteIds, isInCart, toggleFavorite, addToCart } = useShopState();
     const { products } = useProducts();
 
     const perPageParam = getValidPerPage(searchParams.get('perPage'));
     const sortParam = getValidSort(searchParams.get('sort'));
+    const queryParam = searchParams.get('query')?.trim().toLowerCase() ?? '';
     const rawPage = Number(searchParams.get('page') || DEFAULT_PAGE);
     const currentPage =
         Number.isNaN(rawPage) || rawPage < 1 ? DEFAULT_PAGE : rawPage;
@@ -69,8 +75,13 @@ export const CatalogPage = ({ title, items }: CatalogPageProps) => {
         () => new Map(products.map(product => [product.itemId, product.year])),
         [products],
     );
+    const filteredItems = useMemo(
+        () =>
+            items.filter(item => item.name.toLowerCase().includes(queryParam)),
+        [items, queryParam],
+    );
     const sortedItems = useMemo(() => {
-        const sorted = [...items];
+        const sorted = [...filteredItems];
 
         switch (sortParam) {
             case 'alphabetically':
@@ -102,7 +113,7 @@ export const CatalogPage = ({ title, items }: CatalogPageProps) => {
         }
 
         return sorted;
-    }, [items, productYears, sortParam]);
+    }, [filteredItems, productYears, sortParam]);
     const totalPages = Math.max(
         1,
         Math.ceil(sortedItems.length / itemsPerPage),
@@ -168,7 +179,9 @@ export const CatalogPage = ({ title, items }: CatalogPageProps) => {
         <section className={styles.catalogPage}>
             <Breadcrumb />
             <h1 className={styles.catalogPage__title}>{title}</h1>
-            <p className={styles.catalogPage__count}>{items.length} models</p>
+            <p className={styles.catalogPage__count}>
+                {sortedItems.length} models
+            </p>
 
             <div className={styles.catalogPage__controls}>
                 <div className={styles.catalogPage__control}>
@@ -202,32 +215,41 @@ export const CatalogPage = ({ title, items }: CatalogPageProps) => {
                 </div>
             </div>
 
-            <div className={styles.catalogPage__grid}>
-                {visibleItems.map(item => (
-                    <ProductCard
-                        key={item.id}
-                        id={item.id}
-                        image={`/${item.images[0]}`}
-                        title={item.name}
-                        price={item.priceDiscount}
-                        fullPrice={item.priceRegular}
-                        screen={item.screen}
-                        capacity={item.capacity}
-                        ram={item.ram}
-                        isFavorite={favoriteIds.includes(item.id)}
-                        onFavoriteToggle={toggleFavorite}
-                        isInCart={cartIds.includes(item.id)}
-                        onAddToCart={addToCart}
-                    />
-                ))}
-            </div>
+            {sortedItems.length === 0 ? (
+                <p className={styles.catalogPage__empty}>
+                    There are no {searchEmptyLabel} matching the query
+                </p>
+            ) : (
+                <>
+                    <div className={styles.catalogPage__grid}>
+                        {visibleItems.map(item => (
+                            <ProductCard
+                                key={item.id}
+                                id={item.id}
+                                detailsPath={`/product/${item.id}`}
+                                image={`/${item.images[0]}`}
+                                title={item.name}
+                                price={item.priceDiscount}
+                                fullPrice={item.priceRegular}
+                                screen={item.screen}
+                                capacity={item.capacity}
+                                ram={item.ram}
+                                isFavorite={favoriteIds.includes(item.id)}
+                                onFavoriteToggle={toggleFavorite}
+                                isInCart={isInCart(item.id)}
+                                onAddToCart={addToCart}
+                            />
+                        ))}
+                    </div>
 
-            <Pagination
-                total={sortedItems.length}
-                perPage={itemsPerPage}
-                currentPage={safeCurrentPage}
-                onPageChange={handlePageChange}
-            />
+                    <Pagination
+                        total={sortedItems.length}
+                        perPage={itemsPerPage}
+                        currentPage={safeCurrentPage}
+                        onPageChange={handlePageChange}
+                    />
+                </>
+            )}
         </section>
     );
 };
