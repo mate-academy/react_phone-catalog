@@ -8,7 +8,7 @@ import {
     type Product,
 } from '../shared/hooks';
 import styles from './HomePage.module.scss';
-import { PicturesSlider } from './components/PicturesSlider/PicturesSlider';
+import { HeroSlider } from './components/HeroSlider';
 import phoneImage from '../../assets/img/phones.png';
 import tabletImage from '../../assets/img/tablet.png';
 import accessoryImage from '../../assets/img/accessories.png';
@@ -18,14 +18,14 @@ const mapDeviceToProduct = (device: Device): Product => ({
     category: device.category,
     itemId: device.id,
     name: device.name,
-    fullPrice: device.priceRegular,
-    price: device.priceDiscount,
+    priceRegular: device.priceRegular,
+    priceDiscount: device.priceDiscount,
     screen: device.screen,
     capacity: device.capacity,
     color: device.color,
     ram: device.ram,
     year: 0,
-    image: device.images[0],
+    images: [device.images[0]],
 });
 
 export const HomePage = () => {
@@ -101,7 +101,7 @@ export const HomePage = () => {
                     Welcome to Nice Gadgets store!
                 </h2>
             </header>
-            <PicturesSlider />
+            <HeroSlider />
 
             {isLoading && <p>Loading products...</p>}
             {error && <p>{error}</p>}

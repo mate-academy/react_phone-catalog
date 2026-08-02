@@ -118,12 +118,12 @@ export const ProductGallery = ({
                             <ProductCard
                                 id={product.itemId}
                                 detailsPath={`/product/${product.itemId}`}
-                                image={`/${product.image}`}
+                                image={`/${product.images[0]}`}
                                 title={product.name}
-                                price={product.price}
+                                price={product.priceDiscount}
                                 fullPrice={
                                     showFullPrice
-                                        ? product.fullPrice
+                                        ? product.priceRegular
                                         : undefined
                                 }
                                 screen={product.screen}
