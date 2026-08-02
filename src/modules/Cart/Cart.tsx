@@ -2,21 +2,35 @@ import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import chevronLeftIcon from '../../assets/icons/Chevron-Left.svg';
 import { CartItem } from '../shared/components/CartItem';
-import { useProducts, useShopState } from '../shared/hooks';
+import {
+    useAccessories,
+    usePhones,
+    useShopState,
+    useTablets,
+    type Device,
+} from '../shared/hooks';
 import styles from './Cart.module.scss';
 
 export const Cart = () => {
     const navigate = useNavigate();
-    const { products, isLoading } = useProducts();
+    const { phones, isLoading: isPhonesLoading } = usePhones();
+    const { tablets, isLoading: isTabletsLoading } = useTablets();
+    const { accessories, isLoading: isAccessoriesLoading } = useAccessories();
     const { cartItems, removeFromCart, updateCartQuantity, clearCart } =
         useShopState();
+    const products = useMemo<Device[]>(
+        () => [...phones, ...tablets, ...accessories],
+        [phones, tablets, accessories],
+    );
+    const isLoading =
+        isPhonesLoading || isTabletsLoading || isAccessoriesLoading;
 
     const items = useMemo(
         () =>
             cartItems
                 .map(item => {
                     const product = products.find(
-                        currentProduct => currentProduct.itemId === item.id,
+                        currentProduct => currentProduct.id === item.id,
                     );
 
                     if (!product) {
@@ -42,7 +56,7 @@ export const Cart = () => {
     );
 
     const total = items.reduce(
-        (sum, item) => sum + item.product.price * item.quantity,
+        (sum, item) => sum + item.product.priceDiscount * item.quantity,
         0,
     );
     const itemsCount = items.reduce((sum, item) => sum + item.quantity, 0);
@@ -83,9 +97,9 @@ export const Cart = () => {
                         {items.map(item => (
                             <CartItem
                                 key={item.id}
-                                image={`/${item.product.image}`}
+                                image={`/${item.product.images[0]}`}
                                 name={item.product.name}
-                                price={item.product.price}
+                                price={item.product.priceDiscount}
                                 quantity={item.quantity}
                                 onIncrease={() =>
                                     updateCartQuantity(

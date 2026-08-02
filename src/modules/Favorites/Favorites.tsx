@@ -2,20 +2,34 @@ import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Breadcrumb } from '../shared/components/Breadcrumb';
 import { ProductCard } from '../shared/components/ProductCard';
-import { useProducts, useShopState } from '../shared/hooks';
+import {
+    useAccessories,
+    usePhones,
+    useShopState,
+    useTablets,
+    type Device,
+} from '../shared/hooks';
 import styles from './Favorites.module.scss';
 
 export const Favorites = () => {
     const [searchParams] = useSearchParams();
-    const { products, isLoading } = useProducts();
+    const { phones, isLoading: isPhonesLoading } = usePhones();
+    const { tablets, isLoading: isTabletsLoading } = useTablets();
+    const { accessories, isLoading: isAccessoriesLoading } = useAccessories();
     const { favoriteIds, isInCart, toggleFavorite, addToCart } = useShopState();
     const queryParam = searchParams.get('query')?.trim().toLowerCase() ?? '';
+    const products = useMemo<Device[]>(
+        () => [...phones, ...tablets, ...accessories],
+        [phones, tablets, accessories],
+    );
+    const isLoading =
+        isPhonesLoading || isTabletsLoading || isAccessoriesLoading;
 
     const favoriteProducts = useMemo(
         () =>
             favoriteIds
                 .map(favoriteId =>
-                    products.find(product => product.itemId === favoriteId),
+                    products.find(product => product.id === favoriteId),
                 )
                 .filter(product => product !== undefined),
         [favoriteIds, products],
@@ -48,19 +62,19 @@ export const Favorites = () => {
                 <div className={styles.favorites__grid}>
                     {visibleProducts.map(product => (
                         <ProductCard
-                            key={product.itemId}
-                            id={product.itemId}
-                            detailsPath={`/product/${product.itemId}`}
-                            image={`/${product.image}`}
+                            key={product.id}
+                            id={product.id}
+                            detailsPath={`/product/${product.id}`}
+                            image={`/${product.images[0]}`}
                             title={product.name}
-                            price={product.price}
-                            fullPrice={product.fullPrice}
+                            price={product.priceDiscount}
+                            fullPrice={product.priceRegular}
                             screen={product.screen}
                             capacity={product.capacity}
                             ram={product.ram}
-                            isFavorite={favoriteIds.includes(product.itemId)}
+                            isFavorite={favoriteIds.includes(product.id)}
                             onFavoriteToggle={toggleFavorite}
-                            isInCart={isInCart(product.itemId)}
+                            isInCart={isInCart(product.id)}
                             onAddToCart={addToCart}
                         />
                     ))}
