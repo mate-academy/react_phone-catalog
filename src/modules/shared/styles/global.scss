@@ -37,6 +37,7 @@ body {
 }
 
 .app__outlet {
+  min-height: 75vh;
   padding-inline: $page-padding-desktop;
 
   @include on-tablet {

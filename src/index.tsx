@@ -3,9 +3,9 @@ import { App } from './App';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { NotFoundPage } from './modules/shared/components/NotFoundPage';
 import { HomePage } from './modules/HomePage';
-import { Phones } from './modules/ProductPage/components/Phones';
-import { Tablets } from './modules/ProductPage/components/Tablets';
-import { Accessories } from './modules/ProductPage/components/Accessories';
+import { Phones } from './modules/ProductList/components/Phones';
+import { Tablets } from './modules/ProductList/components/Tablets';
+import { Accessories } from './modules/ProductList/components/Accessories';
 
 const Root = () => {
   return (
