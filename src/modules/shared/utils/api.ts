@@ -1,5 +1,5 @@
 import { Products, CatalogProduct } from '../types/Products';
-const PhoneUrl = `${import.meta.env.BASE_URL}/api/phones.json `;
+const PhoneUrl = `${import.meta.env.BASE_URL}/api/phones.json`;
 const TabletsUrl = `${import.meta.env.BASE_URL}/api/tablets.json`;
 const AccessoriesUrl = `${import.meta.env.BASE_URL}/api/accessories.json`;
 const ProductsUrl = `${import.meta.env.BASE_URL}/api/products.json`;

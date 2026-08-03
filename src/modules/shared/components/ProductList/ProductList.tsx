@@ -1,22 +1,26 @@
 import classNames from 'classnames';
 import styles from './ProductList.module.scss';
 import { Link, useSearchParams } from 'react-router-dom';
-import { toggleFunction } from '../shared/utils/functions';
-import { CatalogProduct, Products } from '../shared/types/Products';
+import { toggleFunction } from '../../utils/functions';
+import { CatalogProduct, Products } from '../../types/Products';
 import { useEffect, useMemo, useState } from 'react';
-import { getProductsFromApi } from '../shared/utils/api';
-import { Loader } from '../shared/components/Loader';
+import { getProductsFromApi } from '../../utils/api';
+import { Loader } from '../Loader';
 
 interface ProductPageProps {
   category: Products[];
   categoryType: 'Phones' | 'Tablets' | 'Accessories';
   showLoader: boolean;
+  errorMessage: string;
+  onReload: () => void;
 }
 
 export const ProductList = ({
   category,
   categoryType,
   showLoader,
+  errorMessage,
+  onReload,
 }: ProductPageProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [catalog, setCatalog] = useState<CatalogProduct[]>([]);
@@ -77,7 +81,12 @@ export const ProductList = ({
   const goToPage = (value: number) => {
     const params = new URLSearchParams(searchParams);
 
-    params.set('page', String(value));
+    if (value === 1) {
+      params.delete('page');
+    } else {
+      params.set('page', String(value));
+    }
+
     setSearchParams(params);
   };
 
@@ -93,8 +102,13 @@ export const ProductList = ({
     const optionValue = option.currentTarget.value;
     const params = new URLSearchParams(searchParams);
 
-    params.set('perPage', optionValue);
+    if (optionValue === '0') {
+      params.delete('perPage');
+    } else {
+      params.set('perPage', optionValue);
+    }
 
+    params.delete('page');
     setSearchParams(params);
   };
 
@@ -107,8 +121,8 @@ export const ProductList = ({
     setSearchParams(params);
   };
 
-  const phones = useMemo(() => {
-    const sortedPhones = [...category].sort((prev, next) => {
+  const categoryArray = useMemo(() => {
+    const sortedDevice = [...category].sort((prev, next) => {
       switch (sortField) {
         case 'newest': {
           const prevYear = yearById.get(prev.id) ?? 0;
@@ -135,11 +149,18 @@ export const ProductList = ({
     });
 
     return perPageValue
-      ? sortedPhones.slice((page - 1) * perPageValue, page * perPageValue)
-      : sortedPhones;
+      ? sortedDevice.slice((page - 1) * perPageValue, page * perPageValue)
+      : sortedDevice;
   }, [perPageValue, category, page, sortField, yearById]);
 
-  return (
+  return errorMessage ? (
+    <div className={styles.errorMessage}>
+      <p className={styles.errorText}>{errorMessage}</p>
+      <button className={styles.errorButton} onClick={onReload}>
+        Reset
+      </button>
+    </div>
+  ) : (
     <div className={styles.phone}>
       <div className={styles.navigation}>
         <Link to="/">
@@ -185,12 +206,17 @@ export const ProductList = ({
           </select>
         </div>
       </div>
-      {showLoader ? (
-        <Loader />
-      ) : (
+
+      {showLoader && <Loader />}
+
+      {!showLoader && category.length === 0 && (
+        <div className={styles.products}>There are no {categoryType} yet</div>
+      )}
+
+      {!showLoader && category.length > 0 && (
         <>
           <div className={styles.products}>
-            {phones.map(phone => {
+            {categoryArray.map(phone => {
               const {
                 id,
                 name,

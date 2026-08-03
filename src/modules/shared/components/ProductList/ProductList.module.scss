@@ -191,10 +191,38 @@
   }
 }
 
-  .isActive{
-    background-color: #313237;
-    border: none;
-    color: white;
+.isActive{
+  background-color: #313237;
+  border: none;
+  color: white;
+}
+
+.errorMessage{
+  color: #EB5757;
+  margin: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.errorText{
+  margin: 0 auto;
+}
+
+.errorButton{
+  width: 100px;
+  height: 30px;
+  margin: 0 auto;
+
+  background-color: #fff;
+  border: 1px solid #313237;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba($color: #17203166, $alpha: 0.4);
+    transform: scale(1.1);
   }
+}
+
 
 

@@ -14,7 +14,7 @@
 .category {
   display: flex;
   flex-direction: row;
-  gap: 16px;
+  gap: 40px;
   margin-top: 30px;
 
   @include on-mobile {
@@ -31,7 +31,7 @@
   transition: transform, 0.3s ease;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
 
   @include on-mobile {
