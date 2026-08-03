@@ -1,10 +1,12 @@
+@use '../../styles/media.scss' as *;
+
 .navigation{
   display: flex;
   align-items: center;
   margin: 0;
   gap: 15px;
   margin-block:20px;
-  color: #89939A;
+  color: #313237;
 
   a{
     display: flex;
@@ -27,6 +29,7 @@
 .sortblocks{
   display: flex;
   gap: 20px;
+  margin-bottom: 30px;
 }
 
 .selectWrapper {
@@ -90,12 +93,19 @@
   margin: 0;
   font-size: 14px;
   font-weight: 400;
+  color: #313237;
 }
 
 .catalogPrice {
   display: flex;
   gap: 8px;
   margin: 0;
+}
+
+.catalogLink{
+  display: flex;
+  flex-direction: column;
+  text-decoration:none;
 }
 
 .catalogCurrentPrice,
@@ -172,11 +182,13 @@
   display: flex;
 }
 
-.buttonSlides{
-  margin: 20px;
+.buttonSlides {
+  margin: 20px auto;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .buttonScroll{

@@ -16,11 +16,7 @@ export const Phones = () => {
       .then(phonesFromApi => {
         setAllPhones(phonesFromApi);
       })
-      .catch(phones => {
-        if (phones.length === 0) {
-          return;
-        }
-
+      .catch(() => {
         setLoader(false);
         setPhonesErrorMessage(
           'Wrong upload data from the server, please try again',

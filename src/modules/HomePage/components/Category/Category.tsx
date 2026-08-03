@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './Category.module.scss';
 import { getProductsFromApi } from '../../../shared/utils/api';
-import { Products } from '../../../shared/types/Products';
+import { CatalogProduct } from '../../../shared/types/Products';
 
 export const Category = () => {
-  const [products, setProducts] = useState<Products[]>([]);
+  const [products, setProducts] = useState<CatalogProduct[]>([]);
 
   useEffect(() => {
     getProductsFromApi().then(goods => {

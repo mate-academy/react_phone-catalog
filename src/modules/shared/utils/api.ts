@@ -76,3 +76,24 @@ export async function getAllDetailedProducts(): Promise<Products[]> {
 
   return [...phones, ...tablets, ...accessories];
 }
+
+const fetchersByCategory: Record<string, () => Promise<Products[]>> = {
+  phones: getPhonesFromApi,
+  tablets: getTabletsFromApi,
+  accessories: getAccessoriesFromApi,
+};
+
+export async function getDetailedProductByCategory(
+  category: string,
+  id: string,
+): Promise<Products | undefined> {
+  const fetcher = fetchersByCategory[category];
+
+  if (!fetcher) {
+    return undefined;
+  }
+
+  const products = await fetcher();
+
+  return products.find(product => product.id === id);
+}

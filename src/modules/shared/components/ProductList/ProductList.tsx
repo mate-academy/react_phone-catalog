@@ -195,14 +195,14 @@ export const ProductList = ({
           <select
             name="sortPage"
             id="sortPage"
-            defaultValue={searchParams.get('perPage') || '4'}
+            defaultValue={searchParams.get('perPage') || '0'}
             className={styles.sort}
             onChange={paginationPage}
           >
+            <option value="0">all </option>
             <option value="4">4</option>
             <option value="8">8</option>
             <option value="16">16 </option>
-            <option value="0">all </option>
           </select>
         </div>
       </div>
@@ -232,13 +232,17 @@ export const ProductList = ({
 
               return (
                 <div className={styles.catalog} key={id}>
-                  <img
-                    src={images[0]}
-                    alt="photo"
-                    className={styles.catalogPhoto}
-                  />
+                  <Link to={`product/${id}`} className={styles.catalogLink}>
+                    <img
+                      src={images[0]}
+                      alt="photo"
+                      className={styles.catalogPhoto}
+                    />
+                  </Link>
+                  <Link to={`product/${id}`} className={styles.catalogLink}>
+                    <p className={styles.catalogName}>{name}</p>
+                  </Link>
 
-                  <p className={styles.catalogName}>{name}</p>
                   <div className={styles.catalogPrice}>
                     <p className={styles.catalogCurrentPrice}>
                       ${priceDiscount || priceRegular}

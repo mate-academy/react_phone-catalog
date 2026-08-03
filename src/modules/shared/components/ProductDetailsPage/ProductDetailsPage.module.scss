@@ -1,0 +1,96 @@
+
+
+.navigation{
+  display: flex;
+  align-items: center;
+  margin: 0;
+  gap: 15px;
+  margin-block:20px;
+  color: #313237;
+}
+
+a{
+  display: flex;
+  align-items: center;
+}
+
+.title{
+  text-transform: capitalize;
+  text-decoration: none;
+  color: #313237;
+}
+
+.back{
+  display: flex;
+  margin-bottom: 30px;
+  gap: 15px;
+
+  a {
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  p{
+    color: #89939A;
+  }
+
+  img{
+    height: 16px;
+    width: 16px;
+  }
+}
+
+.productTitle{
+  display: flex;
+  margin-bottom: 20px;
+  gap: 200px;
+}
+
+.allPhotos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.currentPhoto{
+  height: 500px;
+  width: 400px;
+}
+
+.images {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #E2E6E9;
+  object-fit: contain;
+  padding: 6px;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.images:hover {
+  border-color: #313237;
+}
+
+.productColors{
+  display: flex;
+  gap: 10px;
+}
+
+.colorBlock{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #89939A;
+  padding: 3px;
+  background-clip: content-box;
+  transition: transform 0.3s ease;
+
+  &:hover{
+    border-color: #313237;
+    cursor: pointer;
+  }
+}

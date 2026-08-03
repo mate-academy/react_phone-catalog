@@ -6,6 +6,8 @@ import { HomePage } from './modules/HomePage';
 import { Phones } from './modules/Phones';
 import { Tablets } from './modules/Tablets';
 import { Accessories } from './modules/Accessories';
+// eslint-disable-next-line max-len
+import { ProductDetailsPage } from './modules/shared/components/ProductDetailsPage';
 
 const Root = () => {
   return (
@@ -13,10 +15,16 @@ const Root = () => {
       <Routes>
         <Route element={<App />}>
           <Route path="/" element={<HomePage />} />
-          <Route path="phones" element={<Phones />} />
           <Route path="home" element={<Navigate to="/" replace />} />
+
+          <Route path="phones" element={<Phones />} />
           <Route path="tablets" element={<Tablets />} />
           <Route path="accessories" element={<Accessories />} />
+
+          <Route
+            path=":category/product/:productId"
+            element={<ProductDetailsPage />}
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

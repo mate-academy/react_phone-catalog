@@ -25,6 +25,9 @@
 
 .categoryInfo {
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   color: #313237;
   flex: 1 1 0;
   min-width: 0;
