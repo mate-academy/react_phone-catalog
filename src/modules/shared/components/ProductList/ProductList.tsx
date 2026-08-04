@@ -6,10 +6,11 @@ import { CatalogProduct, Products } from '../../types/Products';
 import { useEffect, useMemo, useState } from 'react';
 import { getProductsFromApi } from '../../utils/api';
 import { Loader } from '../Loader';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 interface ProductPageProps {
   category: Products[];
-  categoryType: 'Phones' | 'Tablets' | 'Accessories';
+  categoryType: 'phones' | 'tablets' | 'accessories';
   showLoader: boolean;
   errorMessage: string;
   onReload: () => void;
@@ -30,31 +31,15 @@ export const ProductList = ({
   const sortField = searchParams.get('sort') || 'newest';
   const perPageValue = +(searchParams.get('perPage') || 0);
 
-  const [addedDevice, setAddedDevice] = useState<Products['id'][]>(() => {
-    const savedPhones = localStorage.getItem(`addedProduct-${categoryType}`);
+  const [addedDevice, setAddedDevice] = useLocalStorage<Products['id'][]>(
+    `addedProduct`,
+    [],
+  );
 
-    return savedPhones ? JSON.parse(savedPhones) : [];
-  });
-
-  const [favIconsId, setFavIconsId] = useState<Products['id'][]>(() => {
-    const savedIcons = localStorage.getItem(`favouriteProduct-${categoryType}`);
-
-    return savedIcons ? JSON.parse(savedIcons) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem(
-      `addedProduct-${categoryType}`,
-      JSON.stringify(addedDevice),
-    );
-  }, [addedDevice, categoryType]);
-
-  useEffect(() => {
-    localStorage.setItem(
-      `favouriteProduct-${categoryType}`,
-      JSON.stringify(favIconsId),
-    );
-  }, [favIconsId, categoryType]);
+  const [favIconsId, setFavIconsId] = useLocalStorage<Products['id'][]>(
+    `favouriteProduct`,
+    [],
+  );
 
   useEffect(() => {
     getProductsFromApi().then(product => {
@@ -167,11 +152,11 @@ export const ProductList = ({
           <img src="./img/home.svg" alt="homePhoto" />
         </Link>
         <img src="./img/arrowRight.svg" alt="arrowLeft" />
-        <p>{categoryType}</p>
+        <p className={styles.model}>{categoryType}</p>
       </div>
 
       <div className={styles.title}>
-        <h1>{categoryType} page</h1>
+        <h1 className={styles.model}>{categoryType} page</h1>
         <p className={styles.text}>{category.length} models</p>
       </div>
 
@@ -232,14 +217,14 @@ export const ProductList = ({
 
               return (
                 <div className={styles.catalog} key={id}>
-                  <Link to={`product/${id}`} className={styles.catalogLink}>
+                  <Link to={`/product/${id}`} className={styles.catalogLink}>
                     <img
                       src={images[0]}
                       alt="photo"
                       className={styles.catalogPhoto}
                     />
                   </Link>
-                  <Link to={`product/${id}`} className={styles.catalogLink}>
+                  <Link to={`/product/${id}`} className={styles.catalogLink}>
                     <p className={styles.catalogName}>{name}</p>
                   </Link>
 

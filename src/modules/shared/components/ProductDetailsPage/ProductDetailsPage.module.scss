@@ -78,13 +78,24 @@ a{
 .productColors{
   display: flex;
   gap: 10px;
+  padding-bottom: 20px;
+  width: 320px;
+  border-bottom: 1px solid #E2E6E9;
+}
+
+.productSettings{
+  p{
+    color: #E2E6E9;
+    margin: 20px 0 10px;
+  }
 }
 
 .colorBlock{
+  appearance: none;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 1px solid #89939A;
+  border: 1px solid #E2E6E9;
   padding: 3px;
   background-clip: content-box;
   transition: transform 0.3s ease;
@@ -94,3 +105,56 @@ a{
     cursor: pointer;
   }
 }
+
+.productCapacity{
+  display: flex;
+  gap: 10px;
+  text-align: center;
+  padding-bottom: 30px;
+
+  border-bottom: 1px solid #E2E6E9;
+}
+
+.capacityLabel{
+  appearance: none;
+
+  display: inline-flex;
+  text-align: center;
+
+  font-weight: 500;
+
+  height: 32px;
+
+  border: 1px solid #E2E6E9;
+  background-color: white;
+
+  padding: 3px;
+  margin: 0;
+
+  transition: transform 0.3s ease;
+
+  &:hover{
+    border-color: #313237;
+    cursor: pointer;
+  }
+
+  input{
+    display: none;
+  }
+
+  span{
+    padding: 5px;
+  }
+}
+
+.capacityActive{
+  background-color: #313237;
+  border: none;
+  color: #FFF;
+
+}
+
+.colorActive{
+  border-color: #313237;
+}
+

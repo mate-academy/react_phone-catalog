@@ -4,28 +4,29 @@ import styles from './ProductsSlider.module.scss';
 import { Products } from '../../../shared/types/Products';
 import { getProductsPerSlide } from '../../../shared/utils/variables';
 import { toggleFunction } from '../../../shared/utils/functions';
+import { Link } from 'react-router-dom';
+import { useLocalStorage } from '../../../shared/hooks/useLocalStorage';
 
 interface ProductsSliderProps {
-  phones: Products[];
+  product: Products[];
   isShowDiscount?: boolean;
 }
 
 export const ProductsSlider = ({
-  phones,
+  product,
   isShowDiscount = false,
 }: ProductsSliderProps) => {
   const [slideCount, setSlideCount] = useState(0);
 
-  const [addedPhone, setAddedPhone] = useState<Products['id'][]>(() => {
-    const savedPhones = localStorage.getItem('addedProduct');
+  const [addedDevice, setAddedDevice] = useLocalStorage<Products['id'][]>(
+    `addedProduct`,
+    [],
+  );
 
-    return savedPhones ? JSON.parse(savedPhones) : [];
-  });
-  const [favIconsId, setFavIconsId] = useState<Products['id'][]>(() => {
-    const savedIcons = localStorage.getItem('favouriteProduct');
-
-    return savedIcons ? JSON.parse(savedIcons) : [];
-  });
+  const [favIconsId, setFavIconsId] = useLocalStorage<Products['id'][]>(
+    `favouriteProduct`,
+    [],
+  );
 
   const [productsPerSlide, setProductsPerSlide] = useState(getProductsPerSlide);
 
@@ -41,21 +42,13 @@ export const ProductsSlider = ({
 
   const lastSlideIndex = Math.max(
     0,
-    Math.ceil(phones.length / productsPerSlide) - 1,
+    Math.ceil(product.length / productsPerSlide) - 1,
   );
 
   const countStart = slideCount * productsPerSlide;
   const countEnd = countStart + productsPerSlide;
 
-  const slidedPhones = phones.slice(countStart, countEnd);
-
-  useEffect(() => {
-    localStorage.setItem('favouriteProduct', JSON.stringify(favIconsId));
-  }, [favIconsId]);
-
-  useEffect(() => {
-    localStorage.setItem('addedProduct', JSON.stringify(addedPhone));
-  }, [addedPhone]);
+  const slidedDevice = product.slice(countStart, countEnd);
 
   return (
     <div className={styles.brandSlider}>
@@ -93,7 +86,7 @@ export const ProductsSlider = ({
       </div>
 
       <div className={styles.products}>
-        {slidedPhones.map(phone => {
+        {slidedDevice.map(device => {
           const {
             id,
             name,
@@ -103,19 +96,22 @@ export const ProductsSlider = ({
             capacity,
             ram,
             images,
-          } = phone;
+          } = device;
 
           const isFavourite = favIconsId.includes(id);
 
           return (
             <div className={styles.catalog} key={id}>
-              <img
-                src={images[0]}
-                alt="photo"
-                className={styles.catalogPhoto}
-              />
-
-              <p className={styles.catalogName}>{name}</p>
+              <Link to={`product/${id}`} className={styles.catalogLink}>
+                <img
+                  src={images[0]}
+                  alt="photo"
+                  className={styles.catalogPhoto}
+                />
+              </Link>
+              <Link to={`product/${id}`} className={styles.catalogLink}>
+                <p className={styles.catalogName}>{name}</p>
+              </Link>
               <div className={styles.catalogPrice}>
                 <p className={styles.catalogCurrentPrice}>
                   ${priceDiscount || priceRegular}
@@ -148,14 +144,14 @@ export const ProductsSlider = ({
               <div className={styles.catalogButtons}>
                 <button
                   className={classNames(styles.button, {
-                    [styles.selectedPhone]: addedPhone.includes(id),
-                    [styles.buttonsBuy]: !addedPhone.includes(id),
+                    [styles.selectedPhone]: addedDevice.includes(id),
+                    [styles.buttonsBuy]: !addedDevice.includes(id),
                   })}
                   onClick={() => {
-                    toggleFunction(id, setAddedPhone);
+                    toggleFunction(id, setAddedDevice);
                   }}
                 >
-                  {addedPhone.includes(id) ? 'Selected' : 'Add to card'}
+                  {addedDevice.includes(id) ? 'Selected' : 'Add to card'}
                 </button>
                 <button
                   className={classNames(

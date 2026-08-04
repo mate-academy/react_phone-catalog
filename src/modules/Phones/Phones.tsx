@@ -34,7 +34,7 @@ export const Phones = () => {
   return (
     <ProductList
       category={allPhones}
-      categoryType="Phones"
+      categoryType="phones"
       showLoader={loader}
       errorMessage={phonesErrorMessage}
       onReload={loadPhoned}

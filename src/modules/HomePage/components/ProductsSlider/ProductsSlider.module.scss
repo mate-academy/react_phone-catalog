@@ -66,6 +66,13 @@
   object-fit: contain;
 }
 
+.catalogLink{
+  display: flex;
+  flex-direction: column;
+  text-decoration:none;
+  color: #313237;
+}
+
 .catalogName {
   margin: 0;
   font-size: 14px;

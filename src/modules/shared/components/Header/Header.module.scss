@@ -5,8 +5,7 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
   grid-template-areas: 'logo menu actions';
-  align-items: center;
-  box-sizing: border-box;
+  align-items: stretch;
   height: 75px;
   border-bottom: 1px solid #e2e6e9;
 
@@ -20,7 +19,6 @@
 
 .navbar {
   display: flex;
-  align-items: center;
   height: 100%;
 
   @include on-mobile {
@@ -31,7 +29,6 @@
 .navbarTitle {
   display: flex;
   align-items: center;
-  height: 100%;
   text-decoration: none;
   box-sizing: border-box;
   color: #89939a;
@@ -63,7 +60,7 @@
 
 .menu {
   display: none;
-  padding: 28px;
+  padding: 25px;
 
   @include on-mobile {
     display: flex;

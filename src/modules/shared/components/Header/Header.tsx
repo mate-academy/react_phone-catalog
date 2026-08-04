@@ -71,7 +71,6 @@ export const Header = () => {
           />
         </a>
       </div>
-
       <a className={classNames(styles.navbarEnd, 'icons', styles.menu)}>
         <img
           src={`${import.meta.env.BASE_URL}/img/Menu.svg`}

@@ -34,7 +34,7 @@ export const Tablets = () => {
   return (
     <ProductList
       category={allTablets}
-      categoryType="Tablets"
+      categoryType="tablets"
       showLoader={loader}
       errorMessage={tabletsErrorMessage}
       onReload={loadTablets}

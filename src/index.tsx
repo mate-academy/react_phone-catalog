@@ -21,10 +21,7 @@ const Root = () => {
           <Route path="tablets" element={<Tablets />} />
           <Route path="accessories" element={<Accessories />} />
 
-          <Route
-            path=":category/product/:productId"
-            element={<ProductDetailsPage />}
-          />
+          <Route path="product/:productId" element={<ProductDetailsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

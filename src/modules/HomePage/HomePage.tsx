@@ -38,9 +38,9 @@ export const HomePage = () => {
     <>
       <h1 className="visually-hidden">Product Catalog</h1>
       <PicturesSlider />
-      <ProductsSlider phones={hotPriceProducts} isShowDiscount />
+      <ProductsSlider product={hotPriceProducts} isShowDiscount />
       <Category />
-      <ProductsSlider phones={newestProducts} />
+      <ProductsSlider product={newestProducts} />
     </>
   );
 };

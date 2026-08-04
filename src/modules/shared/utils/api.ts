@@ -86,7 +86,7 @@ const fetchersByCategory: Record<string, () => Promise<Products[]>> = {
 export async function getDetailedProductByCategory(
   category: string,
   id: string,
-): Promise<Products | undefined> {
+): Promise<Products> {
   const fetcher = fetchersByCategory[category];
 
   if (!fetcher) {

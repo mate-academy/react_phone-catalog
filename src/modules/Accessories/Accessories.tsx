@@ -34,7 +34,7 @@ export const Accessories = () => {
   return (
     <ProductList
       category={allAccessories}
-      categoryType="Accessories"
+      categoryType="accessories"
       showLoader={loader}
       errorMessage={accessoriesErrorMessage}
       onReload={loadAccessories}

@@ -6,6 +6,9 @@ import {
   getDetailedProductByCategory,
 } from '../../utils/api';
 import { Products } from '../../types/Products';
+import classNames from 'classnames';
+import { toggleFunction } from '../../utils/functions';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 const colorsPrograms: Record<string, string> = {
   midnight: '#191970',
@@ -28,21 +31,37 @@ const colorsPrograms: Record<string, string> = {
 };
 
 export const ProductDetailsPage = () => {
-  const [detailedDevice, setDetailedDevice] = useState<Products | null>(null);
+  const [detailedDevice, setDetailedDevice] = useState<Products>();
+
+  const [addedDevice, setAddedDevice] = useLocalStorage<Products['id'][]>(
+    `addedProduct`,
+    [],
+  );
+
+  const [favIconsId, setFavIconsId] = useLocalStorage<Products['id'][]>(
+    `favouriteProduct`,
+    [],
+  );
+
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [clickedPhoto, setClickedPhoto] = useState(0);
 
   const navigate = useNavigate();
+  const { productId } = useParams();
 
-  const { category, productId } = useParams();
-
-  const phoneWithoutColor = productId?.split('-').slice(0, -1).join('-');
+  const phoneWithoutColor = detailedDevice?.id
+    .split('-')
+    .slice(0, -1)
+    .join('-');
+  const phoneWithoutMemory = detailedDevice?.id
+    .split('-')
+    .slice(0, -2)
+    .join('-');
 
   useEffect(() => {
     setIsLoading(true);
     setErrorMessage('');
-    setDetailedDevice(null);
 
     getProductsFromApi()
       .then(async devicesFromApi => {
@@ -81,9 +100,12 @@ export const ProductDetailsPage = () => {
     return <p>Loading...</p>;
   }
 
-  if (errorMessage) {
-    return <p>{errorMessage}</p>;
+  if (errorMessage || !detailedDevice) {
+    return <p>{errorMessage || 'Product not found'}</p>;
   }
+
+  const { color, capacity, priceDiscount, priceRegular, screen, ram, id } =
+    detailedDevice;
 
   return (
     <div className={styles.productPage}>
@@ -142,20 +164,108 @@ export const ProductDetailsPage = () => {
         <div className={styles.productSettings}>
           <p>Available colors</p>
           <div className={styles.productColors}>
-            {detailedDevice?.colorsAvailable.map(color => {
+            {detailedDevice?.colorsAvailable.map(availableColor => (
+              <input
+                type="radio"
+                name="color"
+                checked={availableColor === color}
+                className={classNames(styles.colorBlock, {
+                  [styles.colorActive]: availableColor === color,
+                })}
+                key={availableColor}
+                style={{ backgroundColor: colorsPrograms[availableColor] }}
+                onChange={() =>
+                  navigate(`/product/${phoneWithoutColor}-${availableColor}`)
+                }
+              />
+            ))}
+          </div>
+
+          <p>Select capacity</p>
+          <div className={styles.productCapacity}>
+            {detailedDevice?.capacityAvailable.map(memory => {
               return (
-                <div
-                  className={styles.colorBlock}
-                  key={color}
-                  style={{ backgroundColor: colorsPrograms[color] }}
-                  onClick={() => {
-                    navigate(
-                      `/${category}/product/${phoneWithoutColor}-${color}`,
-                    );
-                  }}
-                ></div>
+                <label
+                  key={memory}
+                  className={classNames(styles.capacityLabel, {
+                    [styles.capacityActive]: memory.toLowerCase() === capacity,
+                  })}
+                >
+                  <input
+                    type="radio"
+                    name="capacity"
+                    checked={memory.toLowerCase() === capacity}
+                    onChange={() => {
+                      navigate(
+                        `/product/${phoneWithoutMemory}-${memory.toLowerCase()}-${color}`,
+                      );
+                    }}
+                  />
+                  <span>{memory}</span>
+                </label>
               );
             })}
+          </div>
+
+          <div className={styles.productCount}>
+            <div className={styles.catalogPrice}>
+              <p className={styles.catalogCurrentPrice}>
+                ${priceDiscount || priceRegular}
+              </p>
+
+              {priceDiscount && (
+                <p className={styles.catalogOldPrice}>${priceRegular}</p>
+              )}
+            </div>
+
+            <div className={styles.catalogSettings}>
+              <table className={styles.table}>
+                <tbody>
+                  <tr>
+                    <td className={styles.title}>screen</td>
+                    <td className={styles.result}>{screen}</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.title}>capacity</td>
+                    <td className={styles.result}>{capacity}</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.title}>RAM</td>
+                    <td className={styles.result}>{ram}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className={styles.catalogButtons}>
+              <button
+                className={classNames(styles.button, {
+                  [styles.selectedPhone]: addedDevice.includes(id),
+                  [styles.buttonsBuy]: !addedDevice.includes(id),
+                })}
+                onClick={() => {
+                  toggleFunction(id, setAddedDevice);
+                }}
+              >
+                {addedDevice.includes(id) ? 'Selected' : 'Add to card'}
+              </button>
+              <button
+                className={classNames(
+                  styles.button,
+                  styles.buttonsLike,
+                  'icons',
+                )}
+                onClick={() => {
+                  toggleFunction(id, setFavIconsId);
+                }}
+              >
+                <img
+                  src={`${import.meta.env.BASE_URL}/img/${favIconsId.includes(id) ? 'likeClicked.svg' : 'like.svg'}`}
+                  alt="logo"
+                  className="logo"
+                />
+              </button>
+            </div>
           </div>
         </div>
       </div>
