@@ -56,20 +56,23 @@ export const Header = () => {
       </div>
 
       <div className={styles.navbar}>
-        <a className={classNames(styles.navbarEnd, 'icons')}>
+        <Link
+          to={'favorites'}
+          className={classNames(styles.navbarEnd, 'icons')}
+        >
           <img
             src={`${import.meta.env.BASE_URL}/img/like.svg`}
             alt="logo"
             className="logo"
           />
-        </a>
-        <a className={classNames(styles.navbarEnd, 'icons')}>
+        </Link>
+        <Link to={'cart'} className={classNames(styles.navbarEnd, 'icons')}>
           <img
             src={`${import.meta.env.BASE_URL}/img/buy.svg`}
             alt="logo"
             className="logo"
           />
-        </a>
+        </Link>
       </div>
       <a className={classNames(styles.navbarEnd, 'icons', styles.menu)}>
         <img

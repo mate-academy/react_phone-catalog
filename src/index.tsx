@@ -8,6 +8,8 @@ import { Tablets } from './modules/Tablets';
 import { Accessories } from './modules/Accessories';
 // eslint-disable-next-line max-len
 import { ProductDetailsPage } from './modules/shared/components/ProductDetailsPage';
+import { Favorites } from './modules/shared/components/Favorites';
+import { CartItems } from './modules/shared/components/CartItems';
 
 const Root = () => {
   return (
@@ -22,6 +24,10 @@ const Root = () => {
           <Route path="accessories" element={<Accessories />} />
 
           <Route path="product/:productId" element={<ProductDetailsPage />} />
+
+          <Route path="favorites" element={<Favorites />} />
+          <Route path="cart" element={<CartItems />} />
+
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

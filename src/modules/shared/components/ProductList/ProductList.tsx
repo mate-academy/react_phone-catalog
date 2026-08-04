@@ -1,19 +1,18 @@
 import classNames from 'classnames';
 import styles from './ProductList.module.scss';
 import { Link, useSearchParams } from 'react-router-dom';
-import { toggleFunction } from '../../utils/functions';
 import { CatalogProduct, Products } from '../../types/Products';
 import { useEffect, useMemo, useState } from 'react';
 import { getProductsFromApi } from '../../utils/api';
 import { Loader } from '../Loader';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { useFavourites } from '../../contexts/FavouritesContext';
 
 interface ProductPageProps {
   category: Products[];
-  categoryType: 'phones' | 'tablets' | 'accessories';
-  showLoader: boolean;
-  errorMessage: string;
-  onReload: () => void;
+  categoryType?: 'phones' | 'tablets' | 'accessories';
+  showLoader?: boolean;
+  errorMessage?: string;
+  onReload?: () => void;
 }
 
 export const ProductList = ({
@@ -31,15 +30,8 @@ export const ProductList = ({
   const sortField = searchParams.get('sort') || 'newest';
   const perPageValue = +(searchParams.get('perPage') || 0);
 
-  const [addedDevice, setAddedDevice] = useLocalStorage<Products['id'][]>(
-    `addedProduct`,
-    [],
-  );
-
-  const [favIconsId, setFavIconsId] = useLocalStorage<Products['id'][]>(
-    `favouriteProduct`,
-    [],
-  );
+  const { addedDevice, favIconsId, toggleAdded, toggleFavourite } =
+    useFavourites();
 
   useEffect(() => {
     getProductsFromApi().then(product => {
@@ -264,7 +256,7 @@ export const ProductList = ({
                         [styles.buttonsBuy]: !addedDevice.includes(id),
                       })}
                       onClick={() => {
-                        toggleFunction(id, setAddedDevice);
+                        toggleAdded(id);
                       }}
                     >
                       {addedDevice.includes(id) ? 'Selected' : 'Add to card'}
@@ -276,7 +268,7 @@ export const ProductList = ({
                         'icons',
                       )}
                       onClick={() => {
-                        toggleFunction(id, setFavIconsId);
+                        toggleFavourite(id);
                       }}
                     >
                       <img

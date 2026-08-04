@@ -8,9 +8,8 @@ import {
 } from '../../utils/api';
 import { Products } from '../../types/Products';
 import classNames from 'classnames';
-import { toggleFunction } from '../../utils/functions';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { ProductsSlider } from '../../../HomePage/components/ProductsSlider';
+import { useFavourites } from '../../contexts/FavouritesContext';
 
 const colorsPrograms: Record<string, string> = {
   midnight: '#191970',
@@ -36,15 +35,8 @@ export const ProductDetailsPage = () => {
   const [detailedDevice, setDetailedDevice] = useState<Products>();
   const [shuffledDevices, setShuffledDevices] = useState<Products[]>();
 
-  const [addedDevice, setAddedDevice] = useLocalStorage<Products['id'][]>(
-    `addedProduct`,
-    [],
-  );
-
-  const [favIconsId, setFavIconsId] = useLocalStorage<Products['id'][]>(
-    `favouriteProduct`,
-    [],
-  );
+  const { addedDevice, favIconsId, toggleAdded, toggleFavourite } =
+    useFavourites();
 
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
@@ -266,7 +258,7 @@ export const ProductDetailsPage = () => {
                   [styles.buttonsBuy]: !addedDevice.includes(id),
                 })}
                 onClick={() => {
-                  toggleFunction(id, setAddedDevice);
+                  toggleAdded(id);
                 }}
               >
                 {addedDevice.includes(id) ? 'Selected' : 'Add to card'}
@@ -278,7 +270,7 @@ export const ProductDetailsPage = () => {
                   'icons',
                 )}
                 onClick={() => {
-                  toggleFunction(id, setFavIconsId);
+                  toggleFavourite(id);
                 }}
               >
                 <img

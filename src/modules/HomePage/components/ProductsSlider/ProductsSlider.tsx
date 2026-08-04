@@ -3,9 +3,8 @@ import classNames from 'classnames';
 import styles from './ProductsSlider.module.scss';
 import { Products } from '../../../shared/types/Products';
 import { getProductsPerSlide } from '../../../shared/utils/variables';
-import { toggleFunction } from '../../../shared/utils/functions';
 import { Link } from 'react-router-dom';
-import { useLocalStorage } from '../../../shared/hooks/useLocalStorage';
+import { useFavourites } from '../../../shared/contexts/FavouritesContext';
 
 interface ProductsSliderProps {
   product: Products[];
@@ -20,15 +19,8 @@ export const ProductsSlider = ({
 }: ProductsSliderProps) => {
   const [slideCount, setSlideCount] = useState(0);
 
-  const [addedDevice, setAddedDevice] = useLocalStorage<Products['id'][]>(
-    `addedProduct`,
-    [],
-  );
-
-  const [favIconsId, setFavIconsId] = useLocalStorage<Products['id'][]>(
-    `favouriteProduct`,
-    [],
-  );
+  const { addedDevice, favIconsId, toggleAdded, toggleFavourite } =
+    useFavourites();
 
   const [productsPerSlide, setProductsPerSlide] = useState(getProductsPerSlide);
 
@@ -150,7 +142,7 @@ export const ProductsSlider = ({
                     [styles.buttonsBuy]: !addedDevice.includes(id),
                   })}
                   onClick={() => {
-                    toggleFunction(id, setAddedDevice);
+                    toggleAdded(id);
                   }}
                 >
                   {addedDevice.includes(id) ? 'Selected' : 'Add to card'}
@@ -161,9 +153,7 @@ export const ProductsSlider = ({
                     styles.buttonsLike,
                     'icons',
                   )}
-                  onClick={() => {
-                    toggleFunction(id, setFavIconsId);
-                  }}
+                  onClick={() => toggleFavourite(id)}
                 >
                   <img
                     src={`${import.meta.env.BASE_URL}/img/${isFavourite ? 'likeClicked.svg' : 'like.svg'}`}
