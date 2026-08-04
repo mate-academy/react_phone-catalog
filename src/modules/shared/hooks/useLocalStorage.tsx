@@ -8,12 +8,6 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
   });
 
   useEffect(() => {
-    const saved = localStorage.getItem(key);
-
-    setValue(saved ? JSON.parse(saved) : initialValue);
-  }, [key]);
-
-  useEffect(() => {
     localStorage.setItem(key, JSON.stringify(value));
   }, [key, value]);
 
