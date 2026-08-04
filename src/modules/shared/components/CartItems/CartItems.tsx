@@ -8,14 +8,21 @@ import { Loader } from '../Loader';
 
 export const CartItems = () => {
   const [products, setProducts] = useState<Products[] | null>(null);
+  const [errorMessage, setErrorMessage] = useState('');
   const [loader, setLoader] = useState(false);
 
   const navigate = useNavigate();
+
+  const { addedDevice, toggleAdded } = useFavourites();
 
   useEffect(() => {
     setLoader(true);
     getAllDetailedProducts()
       .then(setProducts)
+      .catch(() => {
+        setErrorMessage('Something wrong, please try again');
+        setLoader(false);
+      })
       .finally(() => setLoader(false));
   }, []);
 
@@ -43,11 +50,40 @@ export const CartItems = () => {
     }));
   };
 
-  const { addedDevice } = useFavourites();
-
   const devices = useMemo(() => {
     return products?.filter(product => addedDevice.includes(product.id)) ?? [];
   }, [products, addedDevice]);
+
+  let sum = 0;
+
+  for (const ch in cartCounts) {
+    sum +=
+      cartCounts[ch] *
+        devices.find(device => device.id === ch)?.priceDiscount ||
+      devices.find(device => device.id === ch)?.priceRegular ||
+      0;
+  }
+
+  const deleteSelectedCart = (id: string) => {
+    if (errorMessage) {
+      return;
+    }
+
+    toggleAdded(id);
+
+    setCartCounts(prev => {
+      const updated = { ...prev };
+
+      delete updated[id];
+
+      return updated;
+    });
+  };
+
+  const totalItems = Object.values(cartCounts).reduce(
+    (prev, next) => prev + next,
+    0,
+  );
 
   return (
     <div className={styles.cartPage}>
@@ -64,6 +100,8 @@ export const CartItems = () => {
         </div>
         {loader ? (
           <Loader />
+        ) : errorMessage ? (
+          <div className={styles.error}>{errorMessage}</div>
         ) : (
           <div className={styles.cartsPage}>
             <div className={styles.cartsList}>
@@ -74,6 +112,9 @@ export const CartItems = () => {
                       src="img/close.svg"
                       alt="closeIcon"
                       className={styles.closeIcon}
+                      onClick={() => {
+                        deleteSelectedCart(device.id);
+                      }}
                     />
                     <img
                       src={`${device.images[0]}`}
@@ -91,7 +132,10 @@ export const CartItems = () => {
                       </button>
 
                       <p>{cartCounts[device.id] || 1}</p>
-                      <button onClick={() => increaseCount(device.id)}>
+                      <button
+                        className={styles.devicesButton}
+                        onClick={() => increaseCount(device.id)}
+                      >
                         <img src="img/plus.svg" alt="plusPhoto" />
                       </button>
                     </div>
@@ -105,8 +149,10 @@ export const CartItems = () => {
 
             <div className={styles.cartsBuy}>
               <div className={styles.cartsInfo}>
-                <p className={styles.cartsPrice}>$2657</p>
-                <p className={styles.cartCounts}>Total for 3 items</p>
+                <p className={styles.cartsPrice}>${sum}</p>
+                <p className={styles.cartCounts}>
+                  Total for {totalItems} items
+                </p>
                 <div className={styles.catalogButtons}>
                   <button className={styles.buttonsBuy}>Checkout</button>
                 </div>
