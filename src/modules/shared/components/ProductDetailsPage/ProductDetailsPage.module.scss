@@ -9,15 +9,12 @@
   color: #313237;
 }
 
-a{
-  display: flex;
-  align-items: center;
-}
-
 .title{
   text-transform: capitalize;
   text-decoration: none;
   color: #313237;
+  background-color: white;
+  border: none;
 }
 
 .back{
@@ -25,16 +22,19 @@ a{
   margin-bottom: 30px;
   gap: 15px;
 
-  a {
+  button {
     transition: transform 0.3s ease;
 
     &:hover {
+      cursor: pointer;
       transform: scale(1.1);
     }
   }
 
   p{
     color: #89939A;
+    font-weight: 700;
+    font-size: 15px;
   }
 
   img{
@@ -156,5 +156,131 @@ a{
 
 .colorActive{
   border-color: #313237;
+}
+
+.catalogPrice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+
+  .catalogCurrentPrice {
+    color: #313237;
+
+    font-weight: 800;
+    font-size: 32px;
+  }
+
+  .catalogOldPrice {
+    color: #89939a;
+    text-decoration: line-through;
+
+    font-weight: 500;
+    font-size: 22px;
+  }
+}
+
+
+
+.catalogSettings {
+  padding-top: 10px;
+  margin-top: 30px;
+  font-size: 12px;
+  font-weight: 400;
+
+  .table {
+    width: 100%;
+  }
+
+  .title {
+    color: #89939a;
+  }
+
+  .result {
+    text-align: right;
+  }
+}
+
+.catalogButtons {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+
+  .button {
+    height: 40px;
+    cursor: pointer;
+  }
+
+  .buttonsBuy {
+    flex: 1;
+    background-color: #313237;
+    color: #fff;
+    border: 0;
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba($color: #17203166, $alpha: 0.4);
+    }
+  }
+
+  .buttonsLike {
+    flex: 0 0 40px;
+    margin: 0;
+    background-color: #fff;
+  }
+
+  .selectedPhone{
+    flex: 1;
+    color: #27ae60;
+    border: 1px solid #e2e6e9;
+    background-color: #fff;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba($color: #17203166, $alpha: 0.4);
+    }
+  }
+}
+
+.catalogLegend{
+  width: 100%;
+  margin-top: 80px;
+  display: flex;
+  gap: 64px;
+
+  .legendText{
+    color: #89939A;
+  }
+
+  .legendName{
+    border-bottom: 1px solid #E2E6E9;
+    padding-bottom: 16px;
+    font-weight: 800;
+    font-size: 22px;
+  }
+
+  .legendTitle{
+    font-weight: 600;
+  }
+
+  .description{
+    margin-bottom: 70px;
+  }
+}
+
+.legendAbout{
+  width: 50%;
+}
+
+.legendTechSpecs{
+  width: 50%;
+  .legendTable{
+    width: 100%;
+    .result{
+      display: flex;
+      justify-content: flex-end;
+      color: #313237;
+      font-weight: 500;
+    }
+  }
 }
 

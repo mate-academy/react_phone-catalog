@@ -69,7 +69,7 @@ export const ProductDetailsPage = () => {
           allDevices => allDevices.itemId === productId,
         );
 
-        if (!foundInCatalog) {
+        if (!foundInCatalog || !productId) {
           setErrorMessage('Product not found');
 
           return;
@@ -104,8 +104,22 @@ export const ProductDetailsPage = () => {
     return <p>{errorMessage || 'Product not found'}</p>;
   }
 
-  const { color, capacity, priceDiscount, priceRegular, screen, ram, id } =
-    detailedDevice;
+  const {
+    color,
+    capacity,
+    priceDiscount,
+    priceRegular,
+    screen,
+    ram,
+    id,
+    resolution,
+    processor,
+    camera,
+    zoom,
+    cell,
+  } = detailedDevice;
+
+  const cellItems = cell.slice('').join(', ');
 
   return (
     <div className={styles.productPage}>
@@ -115,7 +129,7 @@ export const ProductDetailsPage = () => {
             <img src="./img/home.svg" alt="homePhoto" />
           </Link>
           <img src="./img/arrowRight.svg" alt="arrowLeft" />
-          <Link to="./../../" className={styles.title}>
+          <Link to={`/${detailedDevice?.category}`} className={styles.title}>
             <p>{detailedDevice?.category}</p>
           </Link>
           <img src="./img/arrowRight.svg" alt="arrowLeft" />
@@ -123,12 +137,24 @@ export const ProductDetailsPage = () => {
         </div>
 
         <div className={styles.back}>
-          <Link to="./../../" className={styles.title}>
+          <button
+            className={styles.title}
+            onClick={e => {
+              e.preventDefault();
+              navigate(-1);
+            }}
+          >
             <img src="./img/arrowLeft.svg" alt="arrowLeft" />
-          </Link>
-          <Link to="./../../" className={styles.title}>
+          </button>
+          <button
+            className={styles.title}
+            onClick={e => {
+              e.preventDefault();
+              navigate(-1);
+            }}
+          >
             <p>Back</p>
-          </Link>
+          </button>
         </div>
       </div>
 
@@ -218,25 +244,6 @@ export const ProductDetailsPage = () => {
               )}
             </div>
 
-            <div className={styles.catalogSettings}>
-              <table className={styles.table}>
-                <tbody>
-                  <tr>
-                    <td className={styles.title}>screen</td>
-                    <td className={styles.result}>{screen}</td>
-                  </tr>
-                  <tr>
-                    <td className={styles.title}>capacity</td>
-                    <td className={styles.result}>{capacity}</td>
-                  </tr>
-                  <tr>
-                    <td className={styles.title}>RAM</td>
-                    <td className={styles.result}>{ram}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
             <div className={styles.catalogButtons}>
               <button
                 className={classNames(styles.button, {
@@ -266,9 +273,88 @@ export const ProductDetailsPage = () => {
                 />
               </button>
             </div>
+
+            <div className={styles.catalogSettings}>
+              <table className={styles.table}>
+                <tbody>
+                  <tr>
+                    <td className={styles.title}>screen</td>
+                    <td className={styles.result}>{screen}</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.title}>Resolution</td>
+                    <td className={styles.result}>{resolution}</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.title}>Processor</td>
+                    <td className={styles.result}>{processor}</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.title}>RAM</td>
+                    <td className={styles.result}>{ram}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
+
+      <div className={styles.catalogLegend}>
+        <div className={styles.legendAbout}>
+          <p className={styles.legendName}>About</p>
+
+          {detailedDevice.description.map(legend => {
+            return (
+              <div className={styles.description} key={legend.title}>
+                <p className={styles.legendTitle}>{legend.title}</p>
+                <p className={styles.legendText}>{legend.text}</p>
+              </div>
+            );
+          })}
+        </div>
+        <div className={styles.legendTechSpecs}>
+          <p className={styles.legendName}>Tech specs</p>
+          <table className={styles.legendTable}>
+            <tbody>
+              <tr>
+                <td className={styles.legendText}>screen</td>
+                <td className={styles.result}>{screen}</td>
+              </tr>
+              <tr>
+                <td className={styles.legendText}>Resolution</td>
+                <td className={styles.result}>{resolution}</td>
+              </tr>
+              <tr>
+                <td className={styles.legendText}>Processor</td>
+                <td className={styles.result}>{processor}</td>
+              </tr>
+              <tr>
+                <td className={styles.legendText}>RAM</td>
+                <td className={styles.result}>{ram}</td>
+              </tr>
+              <tr>
+                <td className={styles.legendText}>Built in memory</td>
+                <td className={styles.result}>{capacity}</td>
+              </tr>
+              <tr>
+                <td className={styles.legendText}>Camera</td>
+                <td className={styles.result}>{camera}</td>
+              </tr>
+              <tr>
+                <td className={styles.legendText}>Zoom</td>
+                <td className={styles.result}>{zoom}</td>
+              </tr>
+              <tr>
+                <td className={styles.legendText}>Cell</td>
+                <td className={styles.result}>{cellItems}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className={styles.catalogCommonProducts}></div>
     </div>
   );
 };
