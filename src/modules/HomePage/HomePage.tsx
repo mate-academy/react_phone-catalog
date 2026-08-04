@@ -41,10 +41,10 @@ export const HomePage = () => {
       <ProductsSlider
         product={hotPriceProducts}
         isShowDiscount
-        title="Brand new models"
+        title="Hot prices"
       />
       <Category />
-      <ProductsSlider product={newestProducts} title="Hot prices" />
+      <ProductsSlider product={newestProducts} title="Brand new models" />
     </>
   );
 };

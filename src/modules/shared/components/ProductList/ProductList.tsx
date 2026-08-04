@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { getProductsFromApi } from '../../utils/api';
 import { Loader } from '../Loader';
 import { useFavourites } from '../../contexts/FavouritesContext';
+import { useCart } from '../../contexts/CartContext';
 
 interface ProductPageProps {
   category: Products[];
@@ -30,8 +31,8 @@ export const ProductList = ({
   const sortField = searchParams.get('sort') || 'newest';
   const perPageValue = +(searchParams.get('perPage') || 0);
 
-  const { addedDevice, favIconsId, toggleAdded, toggleFavourite } =
-    useFavourites();
+  const { favIconsId, toggleFavourite } = useFavourites();
+  const { isInCart, addToCart } = useCart();
 
   useEffect(() => {
     getProductsFromApi().then(product => {
@@ -134,7 +135,7 @@ export const ProductList = ({
     <div className={styles.errorMessage}>
       <p className={styles.errorText}>{errorMessage}</p>
       <button className={styles.errorButton} onClick={onReload}>
-        Reset
+        Reload
       </button>
     </div>
   ) : (
@@ -252,14 +253,15 @@ export const ProductList = ({
                   <div className={styles.catalogButtons}>
                     <button
                       className={classNames(styles.button, {
-                        [styles.selectedPhone]: addedDevice.includes(id),
-                        [styles.buttonsBuy]: !addedDevice.includes(id),
+                        [styles.selectedPhone]: isInCart(id),
+                        [styles.buttonsBuy]: !isInCart(id),
                       })}
+                      disabled={isInCart(id)}
                       onClick={() => {
-                        toggleAdded(id);
+                        addToCart(id);
                       }}
                     >
-                      {addedDevice.includes(id) ? 'Selected' : 'Add to card'}
+                      {isInCart(id) ? 'Added to cart' : 'Add to cart'}
                     </button>
                     <button
                       className={classNames(

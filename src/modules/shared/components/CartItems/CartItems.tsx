@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './CartItems.module.scss';
-import { useFavourites } from '../../contexts/FavouritesContext';
+import { useCart } from '../../contexts/CartContext';
 import { useEffect, useMemo, useState } from 'react';
 import { Products } from '../../types/Products';
 import { getAllDetailedProducts } from '../../utils/api';
@@ -10,10 +10,18 @@ export const CartItems = () => {
   const [products, setProducts] = useState<Products[] | null>(null);
   const [errorMessage, setErrorMessage] = useState('');
   const [loader, setLoader] = useState(false);
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
   const navigate = useNavigate();
 
-  const { addedDevice, toggleAdded } = useFavourites();
+  const {
+    cartItems,
+    totalQuantity,
+    removeFromCart,
+    increaseQuantity,
+    decreaseQuantity,
+    clearCart,
+  } = useCart();
 
   useEffect(() => {
     setLoader(true);
@@ -26,64 +34,35 @@ export const CartItems = () => {
       .finally(() => setLoader(false));
   }, []);
 
-  const [cartCounts, setCartCounts] = useState<Record<string, number>>(() => {
-    const saved = localStorage.getItem('cartCounts');
-
-    return saved ? JSON.parse(saved) : {};
-  });
-
-  useEffect(() => {
-    localStorage.setItem('cartCounts', JSON.stringify(cartCounts));
-  }, [cartCounts]);
-
-  const increaseCount = (id: string) => {
-    setCartCounts(prev => ({
-      ...prev,
-      [id]: (prev[id] || 0) + 1,
-    }));
-  };
-
-  const decreaseCount = (id: string) => {
-    setCartCounts(prev => ({
-      ...prev,
-      [id]: Math.max((prev[id] || 1) - 1, 1),
-    }));
-  };
-
   const devices = useMemo(() => {
-    return products?.filter(product => addedDevice.includes(product.id)) ?? [];
-  }, [products, addedDevice]);
+    return (
+      products?.filter(product =>
+        cartItems.some(item => item.id === product.id),
+      ) ?? []
+    );
+  }, [products, cartItems]);
 
-  let sum = 0;
+  const getQuantity = (id: string) =>
+    cartItems.find(item => item.id === id)?.quantity ?? 1;
 
-  for (const ch in cartCounts) {
-    sum +=
-      cartCounts[ch] *
-        devices.find(device => device.id === ch)?.priceDiscount ||
-      devices.find(device => device.id === ch)?.priceRegular ||
-      0;
-  }
+  const sum = devices.reduce((total, device) => {
+    const price = device.priceDiscount || device.priceRegular;
 
-  const deleteSelectedCart = (id: string) => {
-    if (errorMessage) {
-      return;
-    }
+    return total + price * getQuantity(device.id);
+  }, 0);
 
-    toggleAdded(id);
-
-    setCartCounts(prev => {
-      const updated = { ...prev };
-
-      delete updated[id];
-
-      return updated;
-    });
+  const handleCheckout = () => {
+    setIsCheckoutOpen(true);
   };
 
-  const totalItems = Object.values(cartCounts).reduce(
-    (prev, next) => prev + next,
-    0,
-  );
+  const confirmCheckout = () => {
+    clearCart();
+    setIsCheckoutOpen(false);
+  };
+
+  const cancelCheckout = () => {
+    setIsCheckoutOpen(false);
+  };
 
   return (
     <div className={styles.cartPage}>
@@ -102,19 +81,21 @@ export const CartItems = () => {
           <Loader />
         ) : errorMessage ? (
           <div className={styles.error}>{errorMessage}</div>
+        ) : devices.length === 0 ? (
+          <div className={styles.empty}>Your cart is empty</div>
         ) : (
           <div className={styles.cartsPage}>
             <div className={styles.cartsList}>
               {devices.map(device => {
+                const quantity = getQuantity(device.id);
+
                 return (
                   <div className={styles.cart} key={device.id}>
                     <img
                       src="img/close.svg"
                       alt="closeIcon"
                       className={styles.closeIcon}
-                      onClick={() => {
-                        deleteSelectedCart(device.id);
-                      }}
+                      onClick={() => removeFromCart(device.id)}
                     />
                     <img
                       src={`${device.images[0]}`}
@@ -124,23 +105,24 @@ export const CartItems = () => {
                     <p className={styles.devicesName}>{device.name}</p>
                     <div className={styles.devicesCount}>
                       <button
-                        onClick={() => decreaseCount(device.id)}
-                        disabled={(cartCounts[device.id] || 1) <= 1}
+                        onClick={() => decreaseQuantity(device.id)}
+                        disabled={quantity <= 1}
                         className={styles.devicesButton}
                       >
                         <img src="img/minus.svg" alt="minusPhoto" />
                       </button>
 
-                      <p>{cartCounts[device.id] || 1}</p>
+                      <p>{quantity}</p>
                       <button
                         className={styles.devicesButton}
-                        onClick={() => increaseCount(device.id)}
+                        onClick={() => increaseQuantity(device.id)}
                       >
                         <img src="img/plus.svg" alt="plusPhoto" />
                       </button>
                     </div>
                     <p className={styles.devicesPrice}>
-                      ${device.priceDiscount}
+                      $
+                      {(device.priceDiscount || device.priceRegular) * quantity}
                     </p>
                   </div>
                 );
@@ -151,16 +133,42 @@ export const CartItems = () => {
               <div className={styles.cartsInfo}>
                 <p className={styles.cartsPrice}>${sum}</p>
                 <p className={styles.cartCounts}>
-                  Total for {totalItems} items
+                  Total for {totalQuantity} items
                 </p>
                 <div className={styles.catalogButtons}>
-                  <button className={styles.buttonsBuy}>Checkout</button>
+                  <button
+                    className={styles.buttonsBuy}
+                    onClick={handleCheckout}
+                  >
+                    Checkout
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         )}
       </div>
+
+      {isCheckoutOpen && (
+        <div className={styles.modalOverlay} onClick={cancelCheckout}>
+          <div
+            className={styles.modal}
+            onClick={event => event.stopPropagation()}
+          >
+            <p className={styles.modalText}>
+              Checkout is not implemented yet. Do you want to clear the Cart?
+            </p>
+            <div className={styles.modalButtons}>
+              <button className={styles.buttonsBuy} onClick={confirmCheckout}>
+                Clear cart
+              </button>
+              <button className={styles.button} onClick={cancelCheckout}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { Products } from '../../../shared/types/Products';
 import { getProductsPerSlide } from '../../../shared/utils/variables';
 import { Link } from 'react-router-dom';
 import { useFavourites } from '../../../shared/contexts/FavouritesContext';
+import { useCart } from '../../../shared/contexts/CartContext';
 
 interface ProductsSliderProps {
   product: Products[];
@@ -19,8 +20,8 @@ export const ProductsSlider = ({
 }: ProductsSliderProps) => {
   const [slideCount, setSlideCount] = useState(0);
 
-  const { addedDevice, favIconsId, toggleAdded, toggleFavourite } =
-    useFavourites();
+  const { favIconsId, toggleFavourite } = useFavourites();
+  const { isInCart, addToCart } = useCart();
 
   const [productsPerSlide, setProductsPerSlide] = useState(getProductsPerSlide);
 
@@ -138,14 +139,15 @@ export const ProductsSlider = ({
               <div className={styles.catalogButtons}>
                 <button
                   className={classNames(styles.button, {
-                    [styles.selectedPhone]: addedDevice.includes(id),
-                    [styles.buttonsBuy]: !addedDevice.includes(id),
+                    [styles.selectedPhone]: isInCart(id),
+                    [styles.buttonsBuy]: !isInCart(id),
                   })}
+                  disabled={isInCart(id)}
                   onClick={() => {
-                    toggleAdded(id);
+                    addToCart(id);
                   }}
                 >
-                  {addedDevice.includes(id) ? 'Selected' : 'Add to card'}
+                  {isInCart(id) ? 'Added to cart' : 'Add to cart'}
                 </button>
                 <button
                   className={classNames(

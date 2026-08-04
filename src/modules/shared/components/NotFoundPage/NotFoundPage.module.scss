@@ -2,9 +2,10 @@
   background-image: url('/img/page-not-found.png');
   height: 90vh;
   display: flex;
-  flex-direction: row;
-  align-items: end;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
   background-position: center top;
   background-repeat: no-repeat;
   background-size: 40%;
@@ -12,4 +13,14 @@
 
 .text {
   margin: 0;
+}
+
+.homeLink {
+  color: #313237;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #89939a;
+  }
 }

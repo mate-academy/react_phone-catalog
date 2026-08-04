@@ -10,6 +10,8 @@ import { Products } from '../../types/Products';
 import classNames from 'classnames';
 import { ProductsSlider } from '../../../HomePage/components/ProductsSlider';
 import { useFavourites } from '../../contexts/FavouritesContext';
+import { useCart } from '../../contexts/CartContext';
+import { Loader } from '../Loader';
 
 const colorsPrograms: Record<string, string> = {
   midnight: '#191970',
@@ -35,8 +37,8 @@ export const ProductDetailsPage = () => {
   const [detailedDevice, setDetailedDevice] = useState<Products>();
   const [shuffledDevices, setShuffledDevices] = useState<Products[]>();
 
-  const { addedDevice, favIconsId, toggleAdded, toggleFavourite } =
-    useFavourites();
+  const { favIconsId, toggleFavourite } = useFavourites();
+  const { isInCart, addToCart } = useCart();
 
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
@@ -65,7 +67,7 @@ export const ProductDetailsPage = () => {
         );
 
         if (!foundInCatalog || !productId) {
-          setErrorMessage('Product not found');
+          setErrorMessage('Product was not found');
 
           return;
         }
@@ -76,7 +78,7 @@ export const ProductDetailsPage = () => {
         );
 
         if (!detailed) {
-          setErrorMessage('Product not found');
+          setErrorMessage('Product was not found');
 
           return;
         }
@@ -104,11 +106,11 @@ export const ProductDetailsPage = () => {
   }, [productId]);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   if (errorMessage || !detailedDevice) {
-    return <p>{errorMessage || 'Product not found'}</p>;
+    return <p>{errorMessage || 'Product was not found'}</p>;
   }
 
   const {
@@ -165,7 +167,7 @@ export const ProductDetailsPage = () => {
         </div>
       </div>
 
-      <h1>{detailedDevice?.name}</h1>
+      <h1 className={styles.detailedName}>{detailedDevice?.name}</h1>
 
       <div className={styles.productTitle}>
         <div className={styles.ptohos}>
@@ -254,14 +256,15 @@ export const ProductDetailsPage = () => {
             <div className={styles.catalogButtons}>
               <button
                 className={classNames(styles.button, {
-                  [styles.selectedPhone]: addedDevice.includes(id),
-                  [styles.buttonsBuy]: !addedDevice.includes(id),
+                  [styles.selectedPhone]: isInCart(id),
+                  [styles.buttonsBuy]: !isInCart(id),
                 })}
+                disabled={isInCart(id)}
                 onClick={() => {
-                  toggleAdded(id);
+                  addToCart(id);
                 }}
               >
-                {addedDevice.includes(id) ? 'Selected' : 'Add to card'}
+                {isInCart(id) ? 'Added to cart' : 'Add to cart'}
               </button>
               <button
                 className={classNames(
@@ -363,7 +366,7 @@ export const ProductDetailsPage = () => {
 
       <div className={styles.catalogCommonProducts}>
         <ProductsSlider
-          product={shuffledDevices}
+          product={shuffledDevices ?? []}
           title="You may also like"
           isShowDiscount
         />

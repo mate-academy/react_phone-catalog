@@ -6,7 +6,7 @@
   grid-template-columns: auto 1fr auto;
   grid-template-areas: 'logo menu actions';
   align-items: stretch;
-  height: 75px;
+  height: 85px;
   border-bottom: 1px solid #e2e6e9;
 
   position: sticky;
@@ -47,10 +47,31 @@
 
 .navbarEnd {
   grid-area: 'action';
-  padding: 25px;
+  padding:20px;
   margin: 0;
   border: 0;
   border: 1px solid #e2e6e9;
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 10px;
+  height: 20px;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #ee4b4b;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  border: 2px solid #fff;
+  box-sizing: content-box;
 }
 
 .active {
@@ -58,12 +79,113 @@
   border-bottom: 3px solid #313237;
 }
 
+.headerIcon {
+  width: 32px;
+  height: auto;
+}
+
+.activeIcon {
+  border-bottom: 3px solid #313237 !important;
+}
+
 .menu {
   display: none;
   padding: 25px;
+  background: transparent;
+  cursor: pointer;
 
   @include on-mobile {
     display: flex;
     justify-self: end;
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileMenuTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 75px;
+  padding: 0 16px 0 20px;
+  border-bottom: 1px solid #e2e6e9;
+  flex-shrink: 0;
+
+  .navbarLogo {
+    margin-left: 0;
+  }
+}
+
+.mobileMenuClose {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.mobileMenuNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 40px 0;
+}
+
+.mobileMenuLink {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #89939a;
+  padding-bottom: 4px;
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    color: #313237;
+  }
+
+  &.active {
+    color: #313237;
+    border-bottom-color: #313237;
+  }
+}
+
+.mobileMenuBottom {
+  margin-top: auto;
+  display: flex;
+  border-top: 1px solid #e2e6e9;
+  flex-shrink: 0;
+}
+
+.mobileMenuBottomLink {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  border-left: 1px solid #e2e6e9;
+  position: relative;
+  text-decoration: none;
+
+  &:first-child {
+    border-left: none;
   }
 }

@@ -1,3 +1,5 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/media' as *;
 
 .cartPage{
   margin-top: 40px;
@@ -43,25 +45,59 @@
     border-color: #e2e6e9;
   }
   }
+
+  @include on-mobile {
+    grid-area: count;
+    margin: 8px 0 0 5px;
+  }
 }
 
-.cartsList{
+.cartsList {
+  flex: 1;
+  min-width: 560px;
   display: flex;
   flex-direction: column;
+
+  @include on-mobile {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 .cart{
-  width: 752px;
+  width: 100%;
   height: 128px;
   border: 1px solid #E2E6E9;
   display: flex;
   margin-bottom: 20px;
   justify-content: space-around;
+
+  @include on-mobile {
+    display: grid;
+    grid-template-columns: auto 60px 1fr;
+    grid-template-areas:
+      'close image name'
+      'count count price';
+    align-items: center;
+    gap: 16px;
+    height: auto;
+    padding: 16px 0;
+  }
 }
 
 .cartsPage{
   display: flex;
-  gap: 16px;
+  gap: 20px;
+
+  @include on-tablet{
+    flex-direction: column;
+  }
+
+  @include on-mobile{
+    flex-direction: column;
+  }
 }
 
 .closeIcon{
@@ -76,6 +112,11 @@
     transform: scale(1.3);
     cursor: pointer;
   }
+
+  @include on-mobile {
+    grid-area: close;
+    margin: 0 0 0 5px;
+  }
 }
 
 .devicesName,
@@ -88,26 +129,51 @@
   height: 70px;
 
   margin: auto 0;
+
+  @include on-mobile {
+    grid-area: image;
+    margin: 0;
+  }
 }
 
 .devicesName{
   font-weight: 600;
   font-size: 14px;
+
+  @include on-mobile {
+    grid-area: name;
+    margin: 0;
+  }
 }
 
 .devicesPrice{
   font-weight: 800;
   font-size: 22px;
+
+  @include on-mobile {
+    grid-area: price;
+    justify-self: end;
+    margin: 8px 5px 0 0;
+  }
 }
 
 .cartsBuy{
   width: 368px;
+  min-width: 250px;
   height: 206px;
   display: flex;
   flex-direction: column;
   text-align: center;
 
   border: 1px solid #E2E6E9;
+
+  @include on-tablet{
+    width: 100%;
+  }
+
+  @include on-mobile{
+    width: 100%;
+  }
 }
 
 .cartsPrice{
@@ -145,6 +211,57 @@
     box-shadow: 0 3px 13px rgba($color: #17203166, $alpha: 0.4);
   }
 
+}
+
+.empty {
+  margin-top: 40px;
+  font-size: 18px;
+  color: #89939a;
+  text-align: center;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(23, 32, 49, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 8px;
+  padding: 32px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+}
+
+.modalText {
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+
+.modalButtons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.button {
+  height: 40px;
+  padding: 0 20px;
+  background-color: #fff;
+  color: #313237;
+  border: 1px solid #b4bdc3;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    cursor: pointer;
+    border-color: #313237;
+  }
 }
 
 

@@ -5,17 +5,20 @@ import { Header } from './modules/shared/components/Header';
 import { Footer } from './modules/shared/components/Footer';
 // eslint-disable-next-line max-len
 import { FavouritesProvider } from './modules/shared/contexts/FavouritesContext';
+import { CartProvider } from './modules/shared/contexts/CartContext';
 
 export const App = () => {
   return (
     <FavouritesProvider>
-      <div className="app" id="app">
-        <Header />
-        <div className="app__outlet">
-          <Outlet />
+      <CartProvider>
+        <div className="app" id="app">
+          <Header />
+          <div className="app__outlet">
+            <Outlet />
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
+      </CartProvider>
     </FavouritesProvider>
   );
 };

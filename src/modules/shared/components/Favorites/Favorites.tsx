@@ -4,6 +4,7 @@ import { Products } from '../../types/Products';
 import { useEffect, useMemo, useState } from 'react';
 import { getAllDetailedProducts } from '../../utils/api';
 import { useFavourites } from '../../contexts/FavouritesContext';
+import { useCart } from '../../contexts/CartContext';
 import { Loader } from '../Loader';
 import classNames from 'classnames';
 
@@ -11,8 +12,8 @@ export const Favorites = () => {
   const [products, setProducts] = useState<Products[] | null>(null);
   const [loader, setLoader] = useState(false);
 
-  const { addedDevice, favIconsId, toggleAdded, toggleFavourite } =
-    useFavourites();
+  const { favIconsId, toggleFavourite } = useFavourites();
+  const { isInCart, addToCart } = useCart();
 
   useEffect(() => {
     setLoader(true);
@@ -113,14 +114,15 @@ export const Favorites = () => {
                     <div className={styles.catalogButtons}>
                       <button
                         className={classNames(styles.button, {
-                          [styles.selectedPhone]: addedDevice.includes(id),
-                          [styles.buttonsBuy]: !addedDevice.includes(id),
+                          [styles.selectedPhone]: isInCart(id),
+                          [styles.buttonsBuy]: !isInCart(id),
                         })}
+                        disabled={isInCart(id)}
                         onClick={() => {
-                          toggleAdded(id);
+                          addToCart(id);
                         }}
                       >
-                        {addedDevice.includes(id) ? 'Selected' : 'Add to card'}
+                        {isInCart(id) ? 'Added to cart' : 'Add to cart'}
                       </button>
                       <button
                         className={classNames(

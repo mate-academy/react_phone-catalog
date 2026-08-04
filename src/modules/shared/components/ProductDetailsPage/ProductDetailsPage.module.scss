@@ -1,3 +1,7 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/media' as *;
+
+// ptohos currentphoto productSettings
 
 
 .navigation{
@@ -47,17 +51,70 @@
   display: flex;
   margin-bottom: 20px;
   gap: 100px;
+
+  @include on-tablet{
+    gap: 50px;
+    justify-content: center;
+  }
+
+  @include on-mobile{
+    display: flex;
+    flex-direction: column;
+  }
 }
+
 
 .allPhotos {
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  @include on-mobile {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+
+    flex-flow: row wrap;
+  }
+
+  @include on-tablet {
+    gap: 50px;
+    justify-content: center;
+  }
+
+}
+
+.currentphoto {
+  @include on-mobile {
+    order: 1;
+  }
+}
+
+.ptohos {
+  @include on-mobile {
+    order: 2;
+  }
+}
+
+.productSettings{
+  p{
+    color: #E2E6E9;
+    margin: 20px 0 10px;
+  }
+
+  @include on-mobile {
+    order: 3;
+  }
 }
 
 .currentPhoto{
   height: 500px;
   width: 400px;
+
+  @include on-tablet{
+    height: 270px;
+    width: 170px;
+  }
 }
 
 .images {
@@ -69,6 +126,11 @@
   background: white;
   cursor: pointer;
   transition: border-color 0.3s ease;
+
+  @include on-tablet{
+    width: 35px;
+    height: 35px;
+  }
 }
 
 .images:hover {
@@ -81,13 +143,6 @@
   padding-bottom: 20px;
   width: 320px;
   border-bottom: 1px solid #E2E6E9;
-}
-
-.productSettings{
-  p{
-    color: #E2E6E9;
-    margin: 20px 0 10px;
-  }
 }
 
 .colorBlock{
@@ -264,6 +319,24 @@
 
   .description{
     margin-bottom: 70px;
+  }
+
+  @include on-tablet{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @include on-mobile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.detailedName{
+  @include on-tablet{
+    text-align: center;
   }
 }
 

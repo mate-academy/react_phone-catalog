@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './Footer.module.scss';
 import { scrollToTop } from '../../utils/functions';
@@ -11,25 +11,29 @@ export const Footer = () => {
       </Link>
 
       <div className={styles.footerNavbar}>
-        <NavLink
-          to="https://github.com/PavloMolytovnyk/react_phone-catalog"
+        <a
+          href="https://github.com/PavloMolytovnyk/react_phone-catalog"
+          target="_blank"
+          rel="noopener noreferrer"
           className={styles.footerTitle}
         >
           Github
-        </NavLink>
-        <NavLink
-          to="mailto:pavelmolitovnik@gmail.com"
+        </a>
+        <a
+          href="mailto:pavelmolitovnik@gmail.com"
           className={styles.footerTitle}
         >
           Contacts
-        </NavLink>
-        <NavLink
+        </a>
+        <a
           // eslint-disable-next-line max-len
-          to="https://github.com/PavloMolytovnyk/react_phone-catalog/blob/master/LICENSE"
+          href="https://github.com/PavloMolytovnyk/react_phone-catalog/blob/master/LICENSE"
+          target="_blank"
+          rel="noopener noreferrer"
           className={styles.footerTitle}
         >
           Rights
-        </NavLink>
+        </a>
       </div>
 
       <div className={styles.buttonUp}>
