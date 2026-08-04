@@ -1,0 +1,45 @@
+@use '../../utils/variables' as v;
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+
+  background-color: v.$color-accent;
+  border-radius: 50%;
+
+  animation: loader-bounce 600ms ease-in-out infinite alternate;
+
+  &:nth-child(2) {
+    animation-delay: 150ms;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 300ms;
+  }
+}
+
+@keyframes loader-bounce {
+  from {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+
+  to {
+    transform: translateY(-8px);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .circle {
+    animation: none;
+    opacity: 1;
+  }
+}

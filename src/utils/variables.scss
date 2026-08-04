@@ -1,0 +1,88 @@
+// FONT //
+
+$font-family-main: 'Mont', Arial, sans-serif;
+$font-weight-regular: 600;
+$font-weight-semibold: 700;
+$font-weight-bold: 800;
+
+// color palette //
+
+$color-secondary: #75767f;
+$color-icons: #4a4d58;
+$color-elements: #3b3e4a;
+$color-surface-2: #323542;
+$color-surface-1: #161827;
+$color-background: #0f1121;
+$color-white: #f1f2f9;
+$color-accent: #905bff;
+$color-green: #27ae60;
+$color-red: #eb5757;
+
+// BREAKPOINTS //
+
+$tablet: 640px;
+$desktop: 1200px;
+$mobile-max: 639px;
+$tablet-max: 1199px;
+
+// LAYOUT //
+
+$page-max-width: 1200px;
+$content-max-width: 1136px;
+$page-padding-mobile: 16px;
+$page-padding-tablet: 24px;
+$page-padding-desktop: 32px;
+$grid-gap: 16px;
+
+// HEADER //
+
+$header-height-mobile: 48px;
+$header-height-desktop: 64px;
+$header-padding-mobile: 16px;
+$header-padding-tablet: 24px;
+$header-padding-desktop: 24px;
+$header-logo-width-mobile: 64px;
+$header-logo-width-desktop: 80px;
+
+// SPACING //
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 20px;
+$space-6: 24px;
+$space-7: 32px;
+$space-8: 40px;
+$space-9: 48px;
+$space-10: 56px;
+$space-11: 64px;
+$space-12: 80px;
+$page-top-mobile: 24px;
+$page-top-tablet: 40px;
+$page-top-desktop: 40px;
+$section-gap-mobile: 56px;
+$section-gap-tablet: 64px;
+$section-gap-desktop: 80px;
+
+// COMPONENTS SIZES //
+
+$button-height: 40px;
+$icon-button-size: 40px;
+$small-icon-button-size: 32px;
+$input-height: 40px;
+$select-height: 40px;
+$pagination-button-size: 32px;
+$product-card-min-height: 506px;
+$product-card-image-height: 196px;
+$category-image-height-mobile: 288px;
+$category-image-height-desktop: 368px;
+
+// BERDERS //
+
+$border-width: 1px;
+$border-radius: 0;
+
+// TRANSITIONS //
+
+$transition-duration: 0.3s;
+$transition-timing: ease;

@@ -1,0 +1,151 @@
+@use '../../utils/mixins' as m;
+@use '../../utils/variables' as v;
+
+.footer {
+  border-top: 1px solid v.$color-elements;
+  background-color: v.$color-background;
+}
+
+.container {
+  @include m.page-container;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+
+  min-height: 257px;
+  padding-block: 32px;
+
+  @include m.on-tablet {
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 16px;
+
+    min-height: 96px;
+    padding-block: 0;
+  }
+}
+
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+
+  width: fit-content;
+
+  text-decoration: none;
+}
+
+.logo {
+  display: block;
+
+  width: 89px;
+  height: auto;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+
+  @include m.on-tablet {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+  }
+
+  @include m.on-desktop {
+    gap: 64px;
+  }
+}
+
+.navLink {
+  color: v.$color-white;
+
+  font-family: v.$font-family-main;
+  font-size: 12px;
+  font-weight: v.$font-weight-bold;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition: color
+    v.$transition-duration
+    v.$transition-timing;
+
+  &:hover {
+    color: v.$color-accent;
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  margin-top: auto;
+
+  @include m.on-tablet {
+    justify-content: flex-end;
+    margin-top: 0;
+  }
+}
+
+.backToTopText {
+  color: v.$color-secondary;
+
+  font-family: v.$font-family-main;
+  font-size: 12px;
+  font-weight: v.$font-weight-regular;
+  line-height: 15px;
+}
+
+.backToTopButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  color: v.$color-white;
+  background-color: v.$color-surface-2;
+  border: 1px solid v.$color-icons;
+
+  cursor: pointer;
+
+  transition:
+    background-color v.$transition-duration
+      v.$transition-timing,
+    border-color v.$transition-duration
+      v.$transition-timing;
+
+  &:hover {
+    background-color: v.$color-icons;
+    border-color: v.$color-white;
+  }
+
+  &:focus-visible {
+    outline: 2px solid v.$color-accent;
+    outline-offset: 2px;
+  }
+}
+
+.icon {
+  display: block;
+
+  width: 16px;
+  height: 16px;
+}
+
+span.navLink {
+  cursor: default;
+
+  &:hover {
+    color: v.$color-white;
+  }
+}

@@ -1,0 +1,215 @@
+@use '../../utils/variables' as v;
+@use '../../utils/mixins' as m;
+
+.page {
+  padding-block: 24px 64px;
+
+  @include m.on-tablet {
+    padding-block: 32px 64px;
+  }
+
+  @include m.on-desktop {
+    padding-block: 56px 80px;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1136px;
+  margin-inline: auto;
+  padding-inline: 16px;
+
+  @include m.on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include m.on-desktop {
+    padding-inline: 0;
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 24px;
+
+  color: v.$color-secondary;
+
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+.title {
+  margin: 0 0 8px;
+
+  color: v.$color-white;
+
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+
+  @include m.on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.count {
+  margin: 0 0 32px;
+
+  color: v.$color-secondary;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+
+  @include m.on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+
+  margin-bottom: 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+
+  &:first-child {
+    width: 176px;
+  }
+
+  &:last-child {
+    width: 128px;
+  }
+}
+
+.label {
+  color: v.$color-secondary;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+}
+
+.select {
+  width: 100%;
+  height: 40px;
+  padding-inline: 12px 36px;
+
+  color: v.$color-white;
+  background-color: v.$color-surface-2;
+  border: 1px solid v.$color-icons;
+
+  font: inherit;
+  cursor: pointer;
+
+  &:hover {
+    border-color: v.$color-secondary;
+  }
+
+  &:focus {
+    border-color: v.$color-accent;
+    outline: none;
+  }
+}
+
+.homeLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 16px;
+  height: 16px;
+
+  color: v.$color-white;
+  text-decoration: none;
+
+  transition: color
+    v.$transition-duration
+    v.$transition-timing;
+
+  &:hover {
+    color: v.$color-accent;
+  }
+}
+
+.breadcrumbArrow {
+  color: v.$color-icons;
+}
+
+.current {
+  color: v.$color-secondary;
+}
+
+.loaderWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 320px;
+}
+
+.messageBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  min-height: 320px;
+  padding-top: 80px;
+}
+
+.errorMessage,
+.emptyMessage {
+  margin: 0;
+
+  color: v.$color-white;
+
+  font-size: 22px;
+  font-weight: v.$font-weight-bold;
+  line-height: 31px;
+  text-align: center;
+}
+
+.reloadButton {
+  min-width: 120px;
+  height: 40px;
+  padding-inline: 24px;
+
+  color: v.$color-white;
+  background-color: v.$color-accent;
+  border: 1px solid v.$color-accent;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: v.$font-weight-semibold;
+
+  cursor: pointer;
+
+  transition:
+    background-color v.$transition-duration
+      v.$transition-timing,
+    transform 150ms ease;
+
+  &:hover {
+    background-color: #a378ff;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.emptyMessage {
+  padding-top: 80px;
+}

@@ -1,0 +1,351 @@
+@use './variables' as v;
+
+// ==========================================================
+// MEDIA QUERIES
+// ==========================================================
+
+@mixin on-tablet {
+  @media (min-width: v.$tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: v.$desktop) {
+    @content;
+  }
+}
+
+@mixin only-mobile {
+  @media (max-width: v.$mobile-max) {
+    @content;
+  }
+}
+
+@mixin only-tablet {
+  @media (min-width: v.$tablet) and (max-width: v.$tablet-max) {
+    @content;
+  }
+}
+
+// ==========================================================
+// PAGE CONTAINER
+// ==========================================================
+
+@mixin page-container {
+  width: 100%;
+  max-width: v.$page-max-width;
+  margin-inline: auto;
+  padding-inline: v.$page-padding-mobile;
+
+  @include on-tablet {
+    padding-inline: v.$page-padding-tablet;
+  }
+
+  @include on-desktop {
+    padding-inline: v.$page-padding-desktop;
+  }
+}
+
+// max-width без padding
+
+@mixin content-container {
+  width: 100%;
+  max-width: v.$content-max-width;
+  margin-inline: auto;
+}
+
+@mixin header-padding {
+ padding-inline: v.$header-padding-mobile;
+
+   @include on-tablet {
+    padding-inline: v.$header-padding-tablet;
+  }
+
+  @include on-desktop {
+    padding-inline: v.$header-padding-desktop;
+  }
+}
+
+// ==========================================================
+// GRID
+// ==========================================================
+
+@mixin page-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: v.$grid-gap;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, minmax(0, 1fr));
+  }
+}
+
+// ==========================================================
+// INTERACTIVE ELEMENTS
+// ==========================================================
+
+@mixin interactive {
+  cursor: pointer;
+  transition: v.$transition-default;
+}
+
+@mixin focus-visible {
+  &:focus-visible {
+    outline: 2px solid v.$color-accent;
+    outline-offset: 2px;
+  }
+}
+
+@mixin button-reset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: none;
+  font: inherit;
+}
+
+@mixin link-reset {
+  color: inherit;
+  text-decoration: none;
+}
+
+// ==========================================================
+// BUTTONS
+// ==========================================================
+
+@mixin primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: v.$button-height;
+  padding-inline: 16px;
+
+  border: 1px solid v.$color-accent;
+  border-radius: v.$border-radius;
+
+  color: v.$color-white;
+  background-color: v.$color-accent;
+
+  font-family: v.$font-family-primary;
+  font-size: 14px;
+  font-weight: v.$font-weight-semibold;
+  line-height: 21px;
+
+  @include interactive;
+  @include focus-visible;
+
+  &:hover {
+    border-color: #a378ff;
+    background-color: #a378ff;
+  }
+
+  &:active {
+    border-color: v.$color-surface-2;
+    background-color: v.$color-surface-2;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    border-color: v.$color-elements;
+    color: v.$color-secondary;
+    background-color: v.$color-surface-1;
+  }
+}
+
+@mixin secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: v.$button-height;
+  padding-inline: 16px;
+
+  border: 1px solid v.$color-surface-2;
+  border-radius: v.$border-radius;
+
+  color: v.$color-white;
+  background-color: v.$color-surface-2;
+
+  font-family: v.$font-family-primary;
+  font-size: 14px;
+  font-weight: v.$font-weight-semibold;
+  line-height: 21px;
+
+  @include interactive;
+  @include focus-visible;
+
+  &:hover {
+    border-color: v.$color-icons;
+    background-color: v.$color-icons;
+  }
+
+  &:active {
+    border-color: v.$color-elements;
+    background-color: v.$color-elements;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    border-color: v.$color-elements;
+    color: v.$color-secondary;
+    background-color: v.$color-surface-1;
+  }
+}
+
+@mixin icon-button($size: v.$icon-button-size) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: $size;
+  height: $size;
+  flex: 0 0 $size;
+
+  padding: 0;
+  border: 1px solid v.$color-surface-2;
+  border-radius: v.$border-radius;
+
+  color: v.$color-white;
+  background-color: v.$color-surface-2;
+
+  @include interactive;
+  @include focus-visible;
+
+  &:hover {
+    border-color: v.$color-icons;
+    background-color: v.$color-icons;
+  }
+
+  &:active,
+  &.is-active {
+    border-color: v.$color-elements;
+    background-color: v.$color-elements;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    border-color: v.$color-elements;
+    color: v.$color-icons;
+    background-color: transparent;
+  }
+}
+
+// ==========================================================
+// CARD
+// ==========================================================
+
+@mixin product-card {
+  display: flex;
+  flex-direction: column;
+
+  padding: 32px;
+
+  border: 1px solid v.$color-surface-2;
+  border-radius: v.$border-radius;
+
+  background-color: v.$color-surface-1;
+
+  transition: v.$transition-default;
+
+  &:hover {
+    border-color: v.$color-elements;
+  }
+}
+
+// ==========================================================
+// FORM CONTROLS
+// ==========================================================
+
+@mixin form-control {
+  width: 100%;
+  height: v.$input-height;
+  padding-inline: 12px;
+
+  border: 1px solid v.$color-surface-2;
+  border-radius: v.$border-radius;
+  outline: none;
+
+  color: v.$color-white;
+  background-color: v.$color-surface-2;
+
+  font-family: v.$font-family-primary;
+  font-size: 14px;
+  font-weight: v.$font-weight-semibold;
+  line-height: 21px;
+
+  transition: v.$transition-default;
+
+  &::placeholder {
+    color: v.$color-secondary;
+  }
+
+  &:hover {
+    border-color: v.$color-icons;
+  }
+
+  &:focus {
+    border-color: v.$color-accent;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    color: v.$color-secondary;
+    opacity: v.$disabled-opacity;
+  }
+}
+
+// ==========================================================
+// IMAGE LINK
+// ==========================================================
+
+@mixin image-link-hover {
+  overflow: hidden;
+
+  img {
+    transition: transform v.$transition-duration v.$transition-timing;
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+}
+
+// ==========================================================
+// TEXT UTILITIES
+// ==========================================================
+
+@mixin text-overflow($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines;
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+
+  border: 0;
+  white-space: nowrap;
+}
