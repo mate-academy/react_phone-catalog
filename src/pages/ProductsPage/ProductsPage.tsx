@@ -3,6 +3,8 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
 import { getProducts } from '../../api/products';
+import arrowDownIcon from '../../assets/icons/arrow-down.svg';
+import homeIcon from '../../assets/icons/home-button.svg';
 import { Loader } from '../../components/Loader/Loader';
 import { Pagination } from '../../components/Pagination';
 import { ProductsGrid } from '../../components/ProductsGrid';
@@ -22,7 +24,6 @@ const DEFAULT_SORT: SortType = 'age';
 const DEFAULT_PER_PAGE: PerPage = 'all';
 
 const SORT_VALUES: SortType[] = ['age', 'alphabetically', 'cheapest'];
-
 const PER_PAGE_VALUES: PerPage[] = ['4', '8', '16', 'all'];
 
 export const ProductsPage = ({ category, title }: Props) => {
@@ -124,7 +125,6 @@ export const ProductsPage = ({ category, title }: Props) => {
     }
 
     const startIndex = (safeCurrentPage - 1) * itemsPerPage;
-
     const endIndex = startIndex + itemsPerPage;
 
     return sortedProducts.slice(startIndex, endIndex);
@@ -188,10 +188,10 @@ export const ProductsPage = ({ category, title }: Props) => {
       <div className={styles.container}>
         <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
           <Link to="/" className={styles.homeLink} aria-label="Home">
-            ⌂
+            <img src={homeIcon} alt="" className={styles.homeIcon} />
           </Link>
 
-          <span className={styles.breadcrumbArrow}>›</span>
+          <img src={arrowDownIcon} alt="" className={styles.breadcrumbArrow} />
 
           <span className={styles.current}>{title}</span>
         </nav>
@@ -249,9 +249,7 @@ export const ProductsPage = ({ category, title }: Props) => {
                   }}
                 >
                   <option value="age">Newest</option>
-
                   <option value="alphabetically">Alphabetically</option>
-
                   <option value="cheapest">Cheapest</option>
                 </select>
               </label>

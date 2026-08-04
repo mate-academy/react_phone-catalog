@@ -7,6 +7,14 @@ type Props = {
   products: Product[];
 };
 
+const getPublicImagePath = (fileName: string) => {
+  const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+
+  return `${baseUrl}img/${fileName}`;
+};
+
 export const Categories = ({ products }: Props) => {
   const phonesCount = products.filter(product => {
     return product.category === 'phones';
@@ -28,7 +36,7 @@ export const Categories = ({ products }: Props) => {
         <CategoryCard
           title="Mobile phones"
           count={phonesCount}
-          image="/img/category-phones.png"
+          image={getPublicImagePath('category-phones.png')}
           path="/phones"
           imageWrapperClassName={styles.phonesWrapper}
           imageClassName={styles.phonesImage}
@@ -37,7 +45,7 @@ export const Categories = ({ products }: Props) => {
         <CategoryCard
           title="Tablets"
           count={tabletsCount}
-          image="/img/category-tablets.png"
+          image={getPublicImagePath('category-tablets.png')}
           path="/tablets"
           imageWrapperClassName={styles.tabletsWrapper}
           imageClassName={styles.tabletsImage}
@@ -46,7 +54,7 @@ export const Categories = ({ products }: Props) => {
         <CategoryCard
           title="Accessories"
           count={accessoriesCount}
-          image="/img/category-accessories.png"
+          image={getPublicImagePath('category-accessories.png')}
           path="/accessories"
           imageWrapperClassName={styles.accessoriesWrapper}
           imageClassName={styles.accessoriesImage}

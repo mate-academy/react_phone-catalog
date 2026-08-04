@@ -71,7 +71,19 @@ export const ProductCard = ({ product }: Props) => {
   return (
     <article className={styles.card}>
       <Link to={productLink} className={styles.imageLink}>
-        <img src={image} alt={name} className={styles.image} />
+        <img
+          src={image}
+          alt={name}
+          className={classNames(styles.image, {
+            [styles.imageScaled]:
+              image.includes('apple-iphone-14-pro') ||
+              image.includes('apple-iphone-14') ||
+              image.includes('apple-iphone-15') ||
+              image.includes('apple-iphone-15-pro') ||
+              image.includes('apple-iphone-15-plus') ||
+              image.includes('apple-iphone-15-pro-max'),
+          })}
+        />
       </Link>
 
       <Link to={productLink} className={styles.title}>

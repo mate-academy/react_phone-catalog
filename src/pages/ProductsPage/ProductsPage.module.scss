@@ -38,17 +38,78 @@
   color: v.$color-secondary;
 
   font-size: 12px;
-  font-weight: 600;
+  font-weight: v.$font-weight-regular;
   line-height: 15px;
+}
+
+.homeLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex: 0 0 16px;
+
+  width: 16px;
+  height: 16px;
+
+  text-decoration: none;
+
+  transition:
+    opacity v.$transition-duration
+    v.$transition-timing;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:focus-visible {
+    outline: 2px solid v.$color-accent;
+    outline-offset: 2px;
+  }
+}
+
+.homeIcon {
+  display: block;
+
+  width: 16px;
+  height: 16px;
+
+  object-fit: contain;
+
+  pointer-events: none;
+}
+
+.breadcrumbArrow {
+  display: block;
+
+  flex: 0 0 16px;
+
+  width: 16px;
+  height: 16px;
+
+  opacity: 0.6;
+
+  transform: rotate(-90deg);
+
+  pointer-events: none;
+}
+
+.current {
+  overflow: hidden;
+
+  color: v.$color-secondary;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .title {
   margin: 0 0 8px;
 
-  color: v.$color-white;
+  color: v.$color-primary;
 
   font-size: 32px;
-  font-weight: 800;
+  font-weight: v.$font-weight-bold;
   line-height: 41px;
 
   @include m.on-tablet {
@@ -63,7 +124,7 @@
   color: v.$color-secondary;
 
   font-size: 14px;
-  font-weight: 600;
+  font-weight: v.$font-weight-regular;
   line-height: 21px;
 
   @include m.on-tablet {
@@ -82,6 +143,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+
   min-width: 0;
 
   &:first-child {
@@ -97,7 +159,7 @@
   color: v.$color-secondary;
 
   font-size: 12px;
-  font-weight: 700;
+  font-weight: v.$font-weight-semibold;
   line-height: 15px;
 }
 
@@ -106,12 +168,18 @@
   height: 40px;
   padding-inline: 12px 36px;
 
-  color: v.$color-white;
+  color: v.$color-primary;
   background-color: v.$color-surface-2;
   border: 1px solid v.$color-icons;
 
   font: inherit;
+
   cursor: pointer;
+
+  transition:
+    color v.$transition-duration v.$transition-timing,
+    background-color v.$transition-duration v.$transition-timing,
+    border-color v.$transition-duration v.$transition-timing;
 
   &:hover {
     border-color: v.$color-secondary;
@@ -121,34 +189,6 @@
     border-color: v.$color-accent;
     outline: none;
   }
-}
-
-.homeLink {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 16px;
-  height: 16px;
-
-  color: v.$color-white;
-  text-decoration: none;
-
-  transition: color
-    v.$transition-duration
-    v.$transition-timing;
-
-  &:hover {
-    color: v.$color-accent;
-  }
-}
-
-.breadcrumbArrow {
-  color: v.$color-icons;
-}
-
-.current {
-  color: v.$color-secondary;
 }
 
 .loaderWrapper {
@@ -167,13 +207,15 @@
 
   min-height: 320px;
   padding-top: 80px;
+
+  text-align: center;
 }
 
 .errorMessage,
 .emptyMessage {
   margin: 0;
 
-  color: v.$color-white;
+  color: v.$color-primary;
 
   font-size: 22px;
   font-weight: v.$font-weight-bold;
@@ -186,23 +228,32 @@
   height: 40px;
   padding-inline: 24px;
 
-  color: v.$color-white;
+  color: v.$color-on-accent;
   background-color: v.$color-accent;
   border: 1px solid v.$color-accent;
 
   font-family: inherit;
   font-size: 14px;
   font-weight: v.$font-weight-semibold;
+  line-height: 21px;
 
   cursor: pointer;
 
   transition:
     background-color v.$transition-duration
       v.$transition-timing,
+    border-color v.$transition-duration
+      v.$transition-timing,
     transform 150ms ease;
 
+  &:focus-visible {
+    outline: 2px solid v.$color-primary;
+    outline-offset: 2px;
+  }
+
   &:hover {
-    background-color: #a378ff;
+    background-color: v.$color-accent-hover;
+    border-color: v.$color-accent-hover;
   }
 
   &:active {
@@ -212,4 +263,28 @@
 
 .emptyMessage {
   padding-top: 80px;
+}
+
+@media (max-width: 639px) {
+  .controls {
+    gap: 16px;
+  }
+
+  .field {
+    &:first-child {
+      width: min(176px, calc(60% - 8px));
+    }
+
+    &:last-child {
+      width: min(128px, calc(40% - 8px));
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .homeLink,
+  .select,
+  .reloadButton {
+    transition: none;
+  }
 }

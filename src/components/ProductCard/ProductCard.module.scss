@@ -32,8 +32,7 @@
   width: 100%;
   height: 196px;
   margin-bottom: 16px;
-
-  overflow: hidden;
+  padding: 8px;
 
   text-decoration: none;
 }
@@ -41,19 +40,33 @@
 .image {
   display: block;
 
-  width: 100%;
-  max-width: 208px;
-  height: 100%;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 180px;
 
   object-fit: contain;
+  object-position: center;
+
+  transform-origin: center;
 
   transition:
-    transform v.$transition-duration v.$transition-timing;
+    transform v.$transition-duration
+    v.$transition-timing;
 }
 
-.imageLink:hover .image {
+.imageScaled {
+  transform: scale(1.17);
+}
+
+.imageLink:hover .imageScaled {
+  transform: scale(1.30);
+}
+
+.imageLink:hover .image:not(.imageScaled) {
   transform: scale(1.1);
 }
+
 
 .title {
   display: block;

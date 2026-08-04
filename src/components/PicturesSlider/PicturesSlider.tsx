@@ -1,23 +1,27 @@
 import { useEffect, useState } from 'react';
 
-import arrowLeftIcon from '../../assets/icons/arrow-left.svg';
-
 import styles from './PicturesSlider.module.scss';
+
+const BASE_URL = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+const IMAGE_PATH = `${BASE_URL}img`;
 
 const slides = [
   {
     id: 1,
-    image: '/img/banner-phones.png',
+    image: `${IMAGE_PATH}/banner-phones.png`,
     alt: 'Phones banner',
   },
   {
     id: 2,
-    image: '/img/banner-tablets.png',
+    image: `${IMAGE_PATH}/banner-tablets.png`,
     alt: 'Tablets banner',
   },
   {
     id: 3,
-    image: '/img/banner-accessories.png',
+    image: `${IMAGE_PATH}/banner-accessories.png`,
     alt: 'Accessories banner',
   },
 ];
@@ -28,22 +32,22 @@ export const PicturesSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const showPreviousSlide = () => {
-    setCurrentSlide(current =>
-      current === 0 ? slides.length - 1 : current - 1,
-    );
+    setCurrentSlide(current => {
+      return current === 0 ? slides.length - 1 : current - 1;
+    });
   };
 
   const showNextSlide = () => {
-    setCurrentSlide(current =>
-      current === slides.length - 1 ? 0 : current + 1,
-    );
+    setCurrentSlide(current => {
+      return current === slides.length - 1 ? 0 : current + 1;
+    });
   };
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
-      setCurrentSlide(current =>
-        current === slides.length - 1 ? 0 : current + 1,
-      );
+      setCurrentSlide(current => {
+        return current === slides.length - 1 ? 0 : current + 1;
+      });
     }, SLIDE_INTERVAL);
 
     return () => {
@@ -60,7 +64,7 @@ export const PicturesSlider = () => {
           onClick={showPreviousSlide}
           aria-label="Previous banner"
         >
-          <img src={arrowLeftIcon} alt="" className={styles.arrowIcon} />
+          <span aria-hidden="true">‹</span>
         </button>
 
         <div className={styles.viewport}>
@@ -88,11 +92,7 @@ export const PicturesSlider = () => {
           onClick={showNextSlide}
           aria-label="Next banner"
         >
-          <img
-            src={arrowLeftIcon}
-            alt=""
-            className={`${styles.arrowIcon} ${styles.arrowIconRight}`}
-          />
+          <span aria-hidden="true">›</span>
         </button>
       </div>
 

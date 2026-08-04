@@ -350,8 +350,6 @@
   min-width: 0;
   min-height: 288px;
 
-  overflow: hidden;
-
   @include m.on-tablet {
     min-height: 400px;
   }
@@ -525,7 +523,7 @@
 }
 
 .capacityButtonActive {
-  color: v.$color-accent;
+  color: v.$color-on-accent;
   background-color: v.$color-accent;
   border-color: v.$color-accent;
 }
