@@ -46,7 +46,7 @@
 .productTitle{
   display: flex;
   margin-bottom: 20px;
-  gap: 200px;
+  gap: 100px;
 }
 
 .allPhotos {
@@ -245,7 +245,7 @@
   width: 100%;
   margin-top: 80px;
   display: flex;
-  gap: 64px;
+  gap: 150px;
 
   .legendText{
     color: #89939A;
@@ -272,7 +272,7 @@
 }
 
 .legendTechSpecs{
-  width: 50%;
+  flex: 1;
   .legendTable{
     width: 100%;
     .result{

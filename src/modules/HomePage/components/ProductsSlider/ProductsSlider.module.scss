@@ -24,12 +24,10 @@
   text-decoration: none;
   background-color: #fff;
   margin-inline: 10px;
-
   &:disabled {
     cursor: not-allowed;
     opacity: 0.4;
     border-color: #e2e6e9;
-
   }
 }
 
@@ -41,17 +39,16 @@
   gap: 16px;
 }
 
+
 .catalog {
   box-sizing: border-box;
   min-width: 0;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #e2e6e9;
-
   display: grid;
   grid-template-rows: 190px 48px 36px 1fr 40px;
   gap: 10px;
-
   transition: transform 0.3s ease-in;
 
   &:hover {
@@ -71,6 +68,7 @@
   flex-direction: column;
   text-decoration:none;
   color: #313237;
+
 }
 
 .catalogName {
@@ -113,6 +111,7 @@
   .result {
     text-align: right;
   }
+
 }
 
 .catalogButtons {
@@ -121,8 +120,7 @@
   margin: 0;
 
   .button {
-    height: 40px;
-    cursor: pointer;
+    height: 40px; cursor: pointer;
   }
 
   .buttonsBuy {
@@ -130,11 +128,13 @@
     background-color: #313237;
     color: #fff;
     border: 0;
-    transition: box-shadow 0.3s ease;
+    transition:
+    box-shadow 0.3s ease;
 
     &:hover {
       box-shadow: 0 3px 13px rgba($color: #17203166, $alpha: 0.4);
     }
+
   }
 
   .buttonsLike {
@@ -142,6 +142,7 @@
     margin: 0;
     background-color: #fff;
   }
+
 }
 
 .selectedPhone {
@@ -153,6 +154,7 @@
   &:hover {
     box-shadow: 0 3px 13px rgba($color: #17203166, $alpha: 0.4);
   }
+
 }
 
 .sliderNav {

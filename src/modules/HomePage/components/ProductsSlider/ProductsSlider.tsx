@@ -10,11 +10,13 @@ import { useLocalStorage } from '../../../shared/hooks/useLocalStorage';
 interface ProductsSliderProps {
   product: Products[];
   isShowDiscount?: boolean;
+  title: string;
 }
 
 export const ProductsSlider = ({
   product,
   isShowDiscount = false,
+  title,
 }: ProductsSliderProps) => {
   const [slideCount, setSlideCount] = useState(0);
 
@@ -53,7 +55,7 @@ export const ProductsSlider = ({
   return (
     <div className={styles.brandSlider}>
       <div className={styles.sliderInfo}>
-        <h2 className={styles.sliderInfoTitle}>Brand new models</h2>
+        <h2 className={styles.sliderInfoTitle}>{title}</h2>
         <div className={styles.sliderNav}>
           <button
             type="button"

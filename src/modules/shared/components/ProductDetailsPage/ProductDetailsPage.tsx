@@ -4,11 +4,13 @@ import { useEffect, useState } from 'react';
 import {
   getProductsFromApi,
   getDetailedProductByCategory,
+  getSuggestedProducts,
 } from '../../utils/api';
 import { Products } from '../../types/Products';
 import classNames from 'classnames';
 import { toggleFunction } from '../../utils/functions';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { ProductsSlider } from '../../../HomePage/components/ProductsSlider';
 
 const colorsPrograms: Record<string, string> = {
   midnight: '#191970',
@@ -32,6 +34,7 @@ const colorsPrograms: Record<string, string> = {
 
 export const ProductDetailsPage = () => {
   const [detailedDevice, setDetailedDevice] = useState<Products>();
+  const [shuffledDevices, setShuffledDevices] = useState<Products[]>();
 
   const [addedDevice, setAddedDevice] = useLocalStorage<Products['id'][]>(
     `addedProduct`,
@@ -94,6 +97,18 @@ export const ProductDetailsPage = () => {
       .finally(() => {
         setIsLoading(false);
       });
+
+    getSuggestedProducts()
+      .then(products => {
+        if (!products) {
+          return;
+        }
+
+        setShuffledDevices(products);
+      })
+      .catch(() => {
+        setErrorMessage('Error, please try again');
+      });
   }, [productId]);
 
   if (isLoading) {
@@ -119,7 +134,7 @@ export const ProductDetailsPage = () => {
     cell,
   } = detailedDevice;
 
-  const cellItems = cell.slice('').join(', ');
+  const cellItems = cell.join(', ');
 
   return (
     <div className={styles.productPage}>
@@ -214,13 +229,13 @@ export const ProductDetailsPage = () => {
                 <label
                   key={memory}
                   className={classNames(styles.capacityLabel, {
-                    [styles.capacityActive]: memory.toLowerCase() === capacity,
+                    [styles.capacityActive]: memory === capacity,
                   })}
                 >
                   <input
                     type="radio"
                     name="capacity"
-                    checked={memory.toLowerCase() === capacity}
+                    checked={memory === capacity}
                     onChange={() => {
                       navigate(
                         `/product/${phoneWithoutMemory}-${memory.toLowerCase()}-${color}`,
@@ -354,7 +369,13 @@ export const ProductDetailsPage = () => {
         </div>
       </div>
 
-      <div className={styles.catalogCommonProducts}></div>
+      <div className={styles.catalogCommonProducts}>
+        <ProductsSlider
+          product={shuffledDevices}
+          title="You may also like"
+          isShowDiscount
+        />
+      </div>
     </div>
   );
 };
