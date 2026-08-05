@@ -1,0 +1,37 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins' as m;
+@use '../utils/typography' as t;
+
+html {
+  color: v.$color-white;
+  background-color: v.$color-background;
+  font-family: v.$font-family-main;
+}
+
+body {
+  color: v.$color-white;
+  background-color: v.$color-background;
+
+  @include t.body-text;
+}
+
+::selection {
+  color: v.$color-white;
+  background-color: v.$color-accent;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  @include m.focus-visible;
+}
+
+.page-container {
+  @include m.page-container;
+}
+
+.visually-hidden {
+  @include m.visually-hidden;
+}

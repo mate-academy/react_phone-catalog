@@ -1,0 +1,164 @@
+@use '../../utils/variables' as v;
+@use '../../utils/mixins' as m;
+
+.slider {
+  width: 100%;
+  min-width: 0;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) 32px;
+  gap: 16px;
+
+  width: 100%;
+  height: 320px;
+
+  @include m.on-desktop {
+    height: 400px;
+  }
+}
+
+.viewport {
+  min-width: 0;
+  height: 100%;
+
+  overflow: hidden;
+
+  background-color: #080a16;
+}
+
+.track {
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  flex: 0 0 100%;
+
+  min-width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  background-color: #080a16;
+}
+
+.image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+.arrowButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 100%;
+  padding: 0;
+
+  background-color: v.$color-surface-2;
+  border: 1px solid v.$color-icons;
+
+  cursor: pointer;
+
+  transition:
+    background-color v.$transition-duration v.$transition-timing,
+    border-color v.$transition-duration v.$transition-timing;
+
+  &:hover {
+    background-color: v.$color-icons;
+    border-color: v.$color-white;
+  }
+
+  &:focus-visible {
+    outline: 2px solid v.$color-accent;
+    outline-offset: 2px;
+  }
+}
+
+.arrowIcon {
+  display: block;
+
+  width: 16px;
+  height: 16px;
+
+  pointer-events: none;
+}
+
+.arrowIconRight {
+  transform: rotate(180deg);
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+
+  margin-top: 18px;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  padding: 0;
+
+  background-color: v.$color-elements;
+  border: 0;
+
+  cursor: pointer;
+
+  transition:
+    background-color v.$transition-duration v.$transition-timing;
+
+  &:hover {
+    background-color: v.$color-secondary;
+  }
+}
+
+.dotActive {
+  background-color: v.$color-white;
+
+  &:hover {
+    background-color: v.$color-white;
+  }
+}
+
+@media (max-width: 639px) {
+  .content {
+    display: block;
+
+    width: calc(100% + 32px);
+    height: auto;
+    margin-inline: -16px;
+  }
+
+  .viewport {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  .arrowButton {
+    display: none;
+  }
+
+  .image {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .dots {
+    margin-top: 8px;
+  }
+}

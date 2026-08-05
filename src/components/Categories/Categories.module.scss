@@ -1,0 +1,117 @@
+@use '../../utils/variables' as v;
+@use '../../utils/mixins' as m;
+
+.section {
+  width: 100%;
+  min-width: 0;
+}
+
+.title {
+  margin: 0 0 24px;
+
+  color: v.$color-white;
+
+  font-size: 22px;
+  font-weight: v.$font-weight-bold;
+  line-height: 31px;
+
+  @include m.on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px;
+
+  width: 100%;
+
+  @include m.on-tablet {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+.phonesWrapper {
+  background-color: #6d6474;
+}
+
+.tabletsWrapper {
+  background-color: #8d8f93;
+}
+
+.accessoriesWrapper {
+  background-color: #973d5f;
+}
+
+.phonesImage {
+  right: -18%;
+  bottom: -34%;
+
+  height: 138%;
+}
+
+.tabletsImage {
+  right: -28%;
+  bottom: -28%;
+
+  height: 122%;
+}
+
+.accessoriesImage {
+  right: -100%;
+  bottom: -2%;
+
+  height: 88%;
+}
+
+/* Tablet: 640–1199px */
+
+@include m.on-tablet {
+  .phonesImage {
+    right: -18%;
+    bottom: -43%;
+
+    height: 145%;
+  }
+
+  .tabletsImage {
+    right: -27%;
+    bottom: -32%;
+
+    height: 127%;
+  }
+
+  .accessoriesImage {
+    right: -100%;
+    bottom: -2%;
+
+    height: 90%;
+  }
+}
+
+@include m.on-desktop {
+  .phonesImage {
+    right: -18%;
+    bottom: -45%;
+
+    height: 150%;
+  }
+
+  .tabletsImage {
+    right: -27%;
+    bottom: -35%;
+
+    height: 130%
+
+  }
+
+  .accessoriesImage {
+    right: -100%;
+    bottom: -2%;
+
+    height: 91%;
+  }
+}

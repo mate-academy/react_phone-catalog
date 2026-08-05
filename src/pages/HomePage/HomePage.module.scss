@@ -1,0 +1,131 @@
+@use '../../utils/variables' as v;
+@use '../../utils/mixins' as m;
+@use '../../utils/typography' as t;
+
+.page {
+  flex-grow: 1;
+
+  padding-block: 24px 64px;
+
+  background-color: v.$color-background;
+
+  @include m.on-tablet {
+    padding-block: 32px 64px;
+  }
+
+  @include m.on-desktop {
+    padding-block: 56px 80px;
+  }
+}
+
+.container {
+  @include m.page-container;
+
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include m.on-tablet {
+    gap: 64px;
+  }
+
+  @include m.on-desktop {
+    gap: 80px;
+  }
+}
+
+.visuallyHidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  overflow: hidden;
+
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+
+  border: 0;
+}
+
+.title {
+  margin: 0;
+
+  color: v.$color-white;
+
+  @include t.heading-1;
+}
+
+.loaderWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 240px;
+}
+
+.messageBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  min-height: 240px;
+
+  text-align: center;
+}
+
+.errorMessage,
+.emptyMessage {
+  margin: 0;
+
+  color: v.$color-white;
+
+  font-size: 22px;
+  font-weight: v.$font-weight-bold;
+  line-height: 31px;
+  text-align: center;
+}
+
+.reloadButton {
+  min-width: 120px;
+  height: 40px;
+  padding-inline: 24px;
+
+  color: v.$color-white;
+  background-color: v.$color-accent;
+  border: 1px solid v.$color-accent;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: v.$font-weight-semibold;
+  line-height: 21px;
+
+  cursor: pointer;
+
+  transition:
+    background-color v.$transition-duration v.$transition-timing,
+    border-color v.$transition-duration v.$transition-timing,
+    transform 150ms ease;
+
+  &:hover {
+    background-color: #a378ff;
+    border-color: #a378ff;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &:focus-visible {
+    outline: 2px solid v.$color-white;
+    outline-offset: 2px;
+  }
+}
+
+.emptyMessage {
+  min-height: 240px;
+}

@@ -1,0 +1,829 @@
+@use '../../utils/variables' as v;
+@use '../../utils/mixins' as m;
+
+.page {
+  flex-grow: 1;
+
+  padding-block: 24px 64px;
+
+  background-color: v.$color-background;
+
+  transition:
+    background-color v.$transition-duration v.$transition-timing;
+
+  @include m.on-tablet {
+    padding-block: 32px 64px;
+  }
+
+  @include m.on-desktop {
+    padding-block: 56px 80px;
+  }
+}
+
+.container {
+  @include m.page-container;
+}
+
+.loaderWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 400px;
+}
+
+.errorBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  min-height: 400px;
+  padding-top: 80px;
+
+  text-align: center;
+}
+
+.reloadButton {
+  min-width: 120px;
+  height: 40px;
+  padding-inline: 24px;
+
+  color: v.$color-on-accent;
+  background-color: v.$color-accent;
+  border: 1px solid v.$color-accent;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: v.$font-weight-semibold;
+  line-height: 21px;
+
+  cursor: pointer;
+
+  transition:
+    color v.$transition-duration v.$transition-timing,
+    background-color v.$transition-duration v.$transition-timing,
+    border-color v.$transition-duration v.$transition-timing,
+    transform 150ms ease;
+
+  &:focus-visible {
+    outline: 2px solid v.$color-primary;
+    outline-offset: 2px;
+  }
+
+  &:hover {
+    background-color: v.$color-accent-hover;
+    border-color: v.$color-accent-hover;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 24px;
+
+  color: v.$color-secondary;
+
+  font-size: 12px;
+  font-weight: v.$font-weight-regular;
+  line-height: 15px;
+}
+
+.homeLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex: 0 0 16px;
+
+  width: 16px;
+  height: 16px;
+
+  text-decoration: none;
+
+  transition:
+    opacity v.$transition-duration v.$transition-timing;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.homeIcon {
+  display: block;
+
+  width: 16px;
+  height: 16px;
+
+  pointer-events: none;
+}
+
+.breadcrumbArrow {
+  display: block;
+
+  flex: 0 0 16px;
+
+  width: 16px;
+  height: 16px;
+
+  opacity: 0.6;
+
+  transform: rotate(-90deg);
+
+  pointer-events: none;
+}
+
+.categoryLink {
+  color: v.$color-primary;
+
+  text-decoration: none;
+  text-transform: capitalize;
+
+  transition:
+    color v.$transition-duration v.$transition-timing;
+
+  &:hover {
+    color: v.$color-accent;
+  }
+}
+
+.current {
+  overflow: hidden;
+
+  max-width: 150px;
+
+  color: v.$color-secondary;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @include m.on-tablet {
+    max-width: 400px;
+  }
+
+  @include m.on-desktop {
+    max-width: 600px;
+  }
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  margin-bottom: 16px;
+  padding: 0;
+
+  color: v.$color-secondary;
+  background-color: transparent;
+  border: 0;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: v.$font-weight-semibold;
+  line-height: 15px;
+
+  cursor: pointer;
+
+  transition:
+    color v.$transition-duration v.$transition-timing;
+
+  &:focus-visible {
+    outline: 2px solid v.$color-accent;
+    outline-offset: 2px;
+  }
+
+  &:hover {
+    color: v.$color-primary;
+  }
+}
+
+.backIcon {
+  display: block;
+
+  width: 16px;
+  height: 16px;
+
+  pointer-events: none;
+}
+
+.title {
+  margin: 0 0 32px;
+
+  color: v.$color-primary;
+
+  font-size: 22px;
+  font-weight: v.$font-weight-bold;
+  line-height: 31px;
+
+  @include m.on-tablet {
+    margin-bottom: 40px;
+
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.product {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 40px;
+
+  margin-bottom: 56px;
+
+  @include m.on-tablet {
+    grid-template-columns: minmax(0, 1fr) minmax(237px, 320px);
+    gap: 48px;
+  }
+
+  @include m.on-desktop {
+    grid-template-columns: 560px 320px;
+    gap: 64px;
+
+    margin-bottom: 80px;
+  }
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+
+  min-width: 0;
+
+  @include m.on-tablet {
+    grid-template-columns: 50px minmax(0, 1fr);
+  }
+
+  @include m.on-desktop {
+    grid-template-columns: 80px minmax(0, 1fr);
+  }
+}
+
+.thumbnails {
+  display: flex;
+  gap: 8px;
+
+  order: 2;
+
+  overflow-x: auto;
+  padding-bottom: 4px;
+
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include m.on-tablet {
+    flex-direction: column;
+    order: 0;
+
+    overflow: visible;
+    padding-bottom: 0;
+  }
+}
+
+.thumbnailButton {
+  flex: 0 0 50px;
+
+  width: 50px;
+  height: 50px;
+  padding: 4px;
+
+  background-color: transparent;
+  border: 1px solid v.$color-elements;
+
+  cursor: pointer;
+
+  transition:
+    border-color v.$transition-duration v.$transition-timing,
+    transform 150ms ease;
+
+  &:focus-visible {
+    outline: 2px solid v.$color-accent;
+    outline-offset: 2px;
+  }
+
+  &:hover {
+    border-color: v.$color-secondary;
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  @include m.on-desktop {
+    flex-basis: 80px;
+
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.thumbnailButtonActive {
+  border-color: v.$color-primary;
+}
+
+.thumbnail {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  pointer-events: none;
+}
+
+.mainImageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 0;
+  min-height: 288px;
+
+  @include m.on-tablet {
+    min-height: 400px;
+  }
+
+  @include m.on-desktop {
+    min-height: 464px;
+  }
+}
+
+.mainImage {
+  display: block;
+
+  width: 100%;
+  max-width: 464px;
+  height: 100%;
+  max-height: 464px;
+
+  object-fit: contain;
+
+  transition:
+    transform v.$transition-duration v.$transition-timing;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.info {
+  min-width: 0;
+}
+
+.options {
+  min-width: 0;
+  margin: 0 0 24px;
+  padding: 0;
+
+  border: 0;
+}
+
+.optionLabel {
+  display: block;
+
+  margin: 0 0 8px;
+  padding: 0;
+
+  color: v.$color-secondary;
+
+  font-size: 12px;
+  font-weight: v.$font-weight-semibold;
+  line-height: 15px;
+}
+
+.colors,
+.capacities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.optionInput {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  overflow: hidden;
+
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+
+  border: 0;
+}
+
+.colorButton {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+  padding: 2px;
+
+  background-color: transparent;
+  border: 1px solid v.$color-elements;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  transition:
+    border-color v.$transition-duration v.$transition-timing,
+    transform 150ms ease;
+
+  &:hover {
+    border-color: v.$color-secondary;
+  }
+
+  &:active {
+    transform: scale(0.94);
+  }
+
+  &:has(.optionInput:focus-visible) {
+    outline: 2px solid v.$color-accent;
+    outline-offset: 2px;
+  }
+}
+
+.colorButtonActive {
+  border-color: v.$color-primary;
+}
+
+.color {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  border: 1px solid v.$color-background;
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.capacityButton {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 56px;
+  height: 32px;
+  padding-inline: 8px;
+
+  color: v.$color-primary;
+  background-color: transparent;
+  border: 1px solid v.$color-icons;
+
+  font-size: 14px;
+  font-weight: v.$font-weight-regular;
+  line-height: 21px;
+
+  cursor: pointer;
+
+  transition:
+    color v.$transition-duration v.$transition-timing,
+    background-color v.$transition-duration v.$transition-timing,
+    border-color v.$transition-duration v.$transition-timing,
+    transform 150ms ease;
+
+  &:hover {
+    border-color: v.$color-primary;
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  &:has(.optionInput:focus-visible) {
+    outline: 2px solid v.$color-accent;
+    outline-offset: 2px;
+  }
+
+  span {
+    pointer-events: none;
+  }
+}
+
+.capacityButtonActive {
+  color: v.$color-on-accent;
+  background-color: v.$color-accent;
+  border-color: v.$color-accent;
+}
+
+.divider,
+.sectionDivider {
+  width: 100%;
+  height: 1px;
+
+  background-color: v.$color-elements;
+}
+
+.divider {
+  margin-bottom: 24px;
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 16px;
+}
+
+.price {
+  color: v.$color-primary;
+
+  font-size: 32px;
+  font-weight: v.$font-weight-bold;
+  line-height: 41px;
+}
+
+.fullPrice {
+  color: v.$color-secondary;
+
+  font-size: 22px;
+  font-weight: v.$font-weight-regular;
+  line-height: 31px;
+  text-decoration: line-through;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 48px;
+  gap: 8px;
+
+  margin-bottom: 32px;
+}
+
+.cartButton,
+.favoriteButton {
+  height: 48px;
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition:
+    color v.$transition-duration v.$transition-timing,
+    background-color v.$transition-duration v.$transition-timing,
+    border-color v.$transition-duration v.$transition-timing,
+    transform 150ms ease;
+}
+
+.cartButton {
+  padding-inline: 16px;
+
+  color: v.$color-on-accent;
+  background-color: v.$color-accent;
+  border: 1px solid v.$color-accent;
+
+  font-size: 14px;
+  font-weight: v.$font-weight-semibold;
+  line-height: 21px;
+
+  &:focus-visible {
+    outline: 2px solid v.$color-primary;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: v.$color-accent-hover;
+    border-color: v.$color-accent-hover;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+}
+
+.cartButtonAdded {
+  color: v.$color-selected-text;
+  background-color: v.$color-surface-1;
+  border-color: v.$color-elements;
+
+  opacity: 1;
+}
+
+.favoriteButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+
+  color: v.$color-primary;
+  background-color: transparent;
+  border: 1px solid v.$color-icons;
+
+  &:focus-visible {
+    outline: 2px solid v.$color-accent;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: v.$color-surface-2;
+    border-color: v.$color-primary;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+}
+
+.favoriteButtonActive {
+  border-color: v.$color-elements;
+}
+
+.favoriteIcon {
+  display: block;
+
+  width: 16px;
+  height: 16px;
+
+  object-fit: contain;
+
+  pointer-events: none;
+
+  transition:
+    transform v.$transition-duration v.$transition-timing;
+}
+
+.favoriteButton:hover .favoriteIcon {
+  transform: scale(1.1);
+}
+
+.specs,
+.techList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin: 0;
+}
+
+.spec,
+.techItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  font-size: 12px;
+  font-weight: v.$font-weight-regular;
+  line-height: 15px;
+
+  dt,
+  dd {
+    margin: 0;
+  }
+
+  dt {
+    color: v.$color-secondary;
+  }
+
+  dd {
+    color: v.$color-primary;
+
+    text-align: right;
+  }
+}
+
+.description {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 56px;
+
+  margin-bottom: 56px;
+
+  @include m.on-desktop {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 64px;
+
+    margin-bottom: 80px;
+  }
+}
+
+.about,
+.techSpecs {
+  min-width: 0;
+}
+
+.sectionTitle {
+  margin: 0 0 16px;
+
+  color: v.$color-primary;
+
+  font-size: 22px;
+  font-weight: v.$font-weight-bold;
+  line-height: 31px;
+}
+
+.sectionDivider {
+  margin-bottom: 32px;
+}
+
+.article {
+  &:not(:last-child) {
+    margin-bottom: 32px;
+  }
+}
+
+.articleTitle {
+  margin: 0 0 16px;
+
+  color: v.$color-primary;
+
+  font-size: 20px;
+  font-weight: v.$font-weight-semibold;
+  line-height: 26px;
+}
+
+.text {
+  margin: 0;
+
+  color: v.$color-secondary;
+
+  font-size: 14px;
+  font-weight: v.$font-weight-regular;
+  line-height: 21px;
+
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+}
+
+.notFound {
+  margin: 0 0 24px;
+
+  color: v.$color-primary;
+
+  font-size: 22px;
+  font-weight: v.$font-weight-bold;
+  line-height: 31px;
+
+  @include m.on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.backLink {
+  display: inline-block;
+
+  color: v.$color-accent;
+
+  font-size: 14px;
+  font-weight: v.$font-weight-semibold;
+  line-height: 21px;
+  text-decoration: none;
+
+  transition:
+    color v.$transition-duration v.$transition-timing;
+
+  &:hover {
+    color: v.$color-primary;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mainImage,
+  .thumbnailButton,
+  .colorButton,
+  .capacityButton,
+  .cartButton,
+  .favoriteButton,
+  .favoriteIcon,
+  .reloadButton {
+    transition: none;
+  }
+
+  .mainImage:hover,
+  .favoriteButton:hover .favoriteIcon {
+    transform: none;
+  }
+}

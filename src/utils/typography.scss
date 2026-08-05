@@ -1,0 +1,104 @@
+@use './variables' as v;
+@use './mixins' as m;
+
+// ==========================================================
+// HEADINGS
+// ==========================================================
+
+@mixin heading-1 {
+  margin: 0;
+
+  font-family: v.$font-family-main;
+  font-size: 32px;
+  font-weight: v.$font-weight-bold;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include m.on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin heading-2 {
+  margin: 0;
+
+  font-family: v.$font-family-main;
+  font-size: 22px;
+  font-weight: v.$font-weight-bold;
+  line-height: 31px;
+
+  @include m.on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin heading-3 {
+  margin: 0;
+
+  font-family: v.$font-family-main;
+  font-size: 20px;
+  font-weight: v.$font-weight-bold;
+  line-height: 26px;
+
+  @include m.on-tablet {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+@mixin heading-4 {
+  margin: 0;
+
+  font-family: v.$font-family-main;
+  font-size: 20px;
+  font-weight: v.$font-weight-semibold;
+  line-height: 26px;
+}
+
+// ==========================================================
+// BODY TEXT
+// ==========================================================
+
+@mixin body-text {
+  font-family: v.$font-family-main;
+  font-size: 14px;
+  font-weight: v.$font-weight-regular;
+  line-height: 21px;
+}
+
+@mixin body-text-bold {
+  font-family: v.$font-family-main;
+  font-size: 14px;
+  font-weight: v.$font-weight-semibold;
+  line-height: 21px;
+}
+
+@mixin small-text {
+  font-family: v.$font-family-main;
+  font-size: 12px;
+  font-weight: v.$font-weight-semibold;
+  line-height: 15px;
+}
+
+// ==========================================================
+// BUTTONS AND NAVIGATION
+// ==========================================================
+
+@mixin button-text {
+  font-family: v.$font-family-main;
+  font-size: 14px;
+  font-weight: v.$font-weight-semibold;
+  line-height: 21px;
+}
+
+@mixin uppercase-text {
+  font-family: v.$font-family-main;
+  font-size: 12px;
+  font-weight: v.$font-weight-bold;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}

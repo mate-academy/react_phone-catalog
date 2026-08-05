@@ -1,0 +1,73 @@
+@use '../../utils/variables' as v;
+@use '../../utils/mixins' as m;
+
+.card {
+  min-width: 0;
+}
+
+.image {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  display: block;
+
+  width: auto;
+  max-width: none;
+  height: auto;
+
+  transition: transform
+    v.$transition-duration
+    v.$transition-timing;
+}
+
+.imageLink {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  margin-bottom: 24px;
+
+  overflow: hidden;
+
+  text-decoration: none;
+
+  &:hover .image {
+    transform: scale(1.1);
+  }
+}
+
+
+.title {
+  display: inline-block;
+
+  margin-bottom: 4px;
+
+  color: v.$color-white;
+
+  font-size: 20px;
+  font-weight: v.$font-weight-semibold;
+  line-height: 26px;
+  text-decoration: none;
+
+  transition: color
+    v.$transition-duration
+    v.$transition-timing;
+
+  &:hover {
+    color: v.$color-accent;
+  }
+}
+
+.count {
+  margin: 0;
+
+  color: v.$color-secondary;
+
+  font-size: 14px;
+  font-weight: v.$font-weight-regular;
+  line-height: 21px;
+}
