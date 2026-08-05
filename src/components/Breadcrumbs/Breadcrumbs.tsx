@@ -2,6 +2,9 @@
 import styles from './Breadcrumbs.module.scss';
 import { Link } from 'react-router-dom';
 
+import home from '/icons/home.svg';
+import chevronArrowRight from '/icons/chevron-arrow-right.svg';
+
 interface BreadcrumbsProps {
   category: string;
   productName?: string;
@@ -14,17 +17,13 @@ export const Breadcrumbs = ({ category, productName }: BreadcrumbsProps) => {
         {/* 1. Іконка додому */}
         <li className={styles.li}>
           <Link to="/" className={styles.link}>
-            <img src="/icons/home.svg" alt="Home" className={styles.iconHome} />
+            <img src={home} alt="Home" className={styles.iconHome} />
           </Link>
         </li>
 
         {/* Перша стрілочка */}
         <li className={styles.li} aria-hidden="true">
-          <img
-            src="/icons/chevron-arrow-right.svg"
-            alt="arrow"
-            className={styles.arrow}
-          />
+          <img src={chevronArrowRight} alt="arrow" className={styles.arrow} />
         </li>
 
         {/* 2. Категорія (Phones / Tablets / Accessories) */}
@@ -49,7 +48,7 @@ export const Breadcrumbs = ({ category, productName }: BreadcrumbsProps) => {
             {/* Друга стрілочка */}
             <li className={styles.li} aria-hidden="true">
               <img
-                src="/icons/chevron-arrow-right.svg"
+                src={chevronArrowRight}
                 alt="arrow"
                 className={styles.arrow}
               />

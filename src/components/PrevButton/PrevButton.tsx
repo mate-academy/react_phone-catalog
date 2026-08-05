@@ -1,6 +1,8 @@
 // PrevButton
 
 import styles from './PrevButton.module.scss';
+import arrowLeft from '/icons/arrow-left.svg';
+
 interface PrevButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
@@ -18,7 +20,7 @@ export const PrevButton = ({
       disabled={disabled}
       {...props} // сюди автоматично потрапить onClick та інші події
     >
-      <img className={styles.icon} src="/icons/arrow-left.svg" alt="Previous" />
+      <img className={styles.icon} src={arrowLeft} alt="Previous" />
     </button>
   );
 };

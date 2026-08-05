@@ -3,6 +3,8 @@ import styles from './Hero.module.scss';
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import arrowLeft from '/icons/arrow-left.svg';
+import arrowRight from '/icons/arrow-right.svg';
 import mainBanner1 from '../../../../assets/images/banner-01.png';
 import mainBanner2 from '../../../../assets/images/banner-02.png';
 import mainBanner3 from '../../../../assets/images/banner-03.png';
@@ -14,11 +16,10 @@ export const Hero = () => {
     <section className={styles.hero}>
       <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
 
-      {/* Головна обгортка слайдера (флекс-ряд: кнопка -> слайдер -> кнопка) */}
       <div className={styles.sliderBlock}>
         {/* Кнопка НАЗАД */}
         <div className="swiper-button-prev">
-          <img className="icon" src="/icons/arrow-left.svg" alt="arrow-left" />
+          <img className="icon" src={arrowLeft} alt="arrow-left" />
         </div>
 
         {/* Сам слайдер із картинками */}
@@ -26,14 +27,6 @@ export const Hero = () => {
           modules={[Navigation, Pagination, A11y]}
           spaceBetween={10}
           slidesPerView={1}
-          // 1. ПРИБРАЛИ loop: true
-
-          // 2. Налаштовуємо автоплей на повернення
-          // autoplay={{
-          //   delay: 5000,
-          //   disableOnInteraction: false,
-          //   stopOnLastSlide: false, // Цей рядок змусить його повернутися на перший слайд після останнього
-          // }}
           navigation={{
             prevEl: '.swiper-button-prev',
             nextEl: '.swiper-button-next',
@@ -57,15 +50,10 @@ export const Hero = () => {
 
         {/* Кнопка ВПЕРЕД */}
         <div className="swiper-button-next">
-          <img
-            className="icon"
-            src="/icons/arrow-right.svg"
-            alt="arrow-right"
-          />
+          <img className="icon" src={arrowRight} alt="arrow-right" />
         </div>
       </div>
 
-      {/* ПАГІНАЦІЯ (винесена окремо нижче під усій блок) */}
       <div className="swiper-pagination"></div>
     </section>
   );

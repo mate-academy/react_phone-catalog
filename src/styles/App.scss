@@ -1,4 +1,5 @@
 // .. App.scss
+// App.scss
 
 @import './reset';
 @import './variable';
@@ -35,14 +36,21 @@
   font-style: normal;
 }
 
-/* Застосовуємо шрифт до всього сайту */
+/* Застосовуємо шрифт до всього сайту та блокуємо системну темну тему Bulma */
 :root {
   --bulma-font-family: Mont, sans-serif;
+  --bulma-body-background-color: $color-white;
+  --bulma-body-color: #313237;
+  --bulma-scheme-h: 0;
+  --bulma-scheme-s: 0%;
+  --bulma-scheme-l: 100%;
 }
 
 body,
 html {
   font-family: Mont, sans-serif !important;
+  background-color: $color-white !important; // Жорстко фіксуємо білий фон
+  color: $color-primary;
 }
 
 .no-scroll {

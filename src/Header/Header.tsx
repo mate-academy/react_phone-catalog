@@ -6,6 +6,12 @@ import { NavLink, Link } from 'react-router-dom';
 import { useFavourites } from '../context/FavouritesContext';
 import { useCart } from '../context/CartContext';
 
+import favouriteIcon from '/icons/icon-favourites.svg';
+import shoppingBagIcon from '/icons/icon-shopping-bag.svg';
+import logo from '/icons/logo.svg';
+import burger from '/icons/burger.svg';
+import close from '/icons/close.svg';
+
 export const Header = () => {
   const [isVisibleMenu, setIsVisibleMenu] = useState(false);
   // 2. Витягуємо favouritesCount з контексту
@@ -37,11 +43,7 @@ export const Header = () => {
       <div className={styles.body}>
         <div className={styles.logo}>
           <Link to="/" className={styles.logoLink}>
-            <img
-              src="/icons/logo.svg"
-              alt="Nice gadgets"
-              className={styles.logoImage}
-            />
+            <img src={logo} alt="Nice gadgets" className={styles.logoImage} />
           </Link>
         </div>
         <nav className={styles.navbar}>
@@ -99,7 +101,7 @@ export const Header = () => {
           >
             <div className={styles.wraperIcons}>
               <img
-                src="/icons/icon-favourites.svg"
+                src={favouriteIcon}
                 alt="favourites"
                 className={styles.icons}
               />
@@ -114,7 +116,7 @@ export const Header = () => {
           >
             <div className={styles.wraperIcons}>
               <img
-                src="/icons/icon-shopping-bag.svg"
+                src={shoppingBagIcon}
                 alt="icon-shopping-bag"
                 className={styles.icons}
               />
@@ -125,19 +127,11 @@ export const Header = () => {
 
         {isVisibleMenu ? (
           <button type="button" className={styles.burger} onClick={handleMenu}>
-            <img
-              src="/icons/close.svg"
-              alt="icon-close"
-              className={styles.icons}
-            />
+            <img src={close} alt="icon-close" className={styles.icons} />
           </button>
         ) : (
           <button type="button" className={styles.burger} onClick={handleMenu}>
-            <img
-              src="/icons/burger.svg"
-              alt="icon-burger"
-              className={styles.icons}
-            />
+            <img src={burger} alt="icon-burger" className={styles.icons} />
           </button>
         )}
       </div>

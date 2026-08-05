@@ -73,6 +73,7 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    width: 50%;
   }
 
   .bag {
@@ -82,6 +83,7 @@
     justify-content: center;
     border-left: 1px solid $color-elements;
     flex-shrink: 0;
+    width: 50%;
   }
 
   .icons {

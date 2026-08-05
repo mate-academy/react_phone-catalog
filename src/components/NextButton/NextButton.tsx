@@ -1,6 +1,7 @@
 // NextButton
 
 import styles from './NextButton.module.scss';
+import arrowRight from '/icons/arrow-right.svg';
 interface NextButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
@@ -18,7 +19,7 @@ export const NextButton = ({
       disabled={disabled}
       {...props} // сюди автоматично потрапить onClick та інші події
     >
-      <img className={styles.icon} src="/icons/arrow-right.svg" alt="Next" />
+      <img className={styles.icon} src={arrowRight} alt="Next" />
     </button>
   );
 };

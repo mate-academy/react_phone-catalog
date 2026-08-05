@@ -4,6 +4,9 @@ import { NavLink } from 'react-router-dom';
 import { useFavourites } from '../context/FavouritesContext';
 import { useCart } from '../context/CartContext';
 
+import favouriteIcon from '/icons/icon-favourites.svg';
+import shoppingBagIcon from '/icons/icon-shopping-bag.svg';
+
 interface MobileMenuProps {
   onClose: () => void;
 }
@@ -74,7 +77,7 @@ export const MobileMenu = ({ onClose }: MobileMenuProps) => {
         >
           <div className={styles.wraperIcons}>
             <img
-              src="/icons/icon-favourites.svg"
+              src={favouriteIcon}
               alt="favourites"
               className={styles.icons}
             />
@@ -91,7 +94,7 @@ export const MobileMenu = ({ onClose }: MobileMenuProps) => {
         >
           <div className={styles.wraperIcons}>
             <img
-              src="/icons/icon-shopping-bag.svg"
+              src={shoppingBagIcon}
               alt="icon-shopping-bag"
               className={styles.icons}
             />

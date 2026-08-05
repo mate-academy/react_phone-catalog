@@ -81,12 +81,25 @@
     position: static;
     transform: none;
 
-    width: 32px;
+    width: 32px !important;
+    min-width: 32px !important;
+    flex-shrink: 0 !important;
+
     height: auto;
     margin: 0 !important;
 
     background-color: $color-white;
     border: 1px solid $color-icons;
+
+    .swiper-navigation-icon,
+    svg {
+      display: none !important;
+    }
+
+    &::after {
+      display: none !important;
+      content: '' !important;
+    }
 
     @include tablet {
       display: flex;
@@ -98,10 +111,6 @@
 
     &:hover {
       border-color: $color-primary;
-
-      &::after {
-        color: $color-white;
-      }
     }
   }
 

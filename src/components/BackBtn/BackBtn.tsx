@@ -2,6 +2,8 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './BackBtn.module.scss'; // якщо є файл зі стилями
 
+import arrowLeft from '/icons/arrow-left.svg';
+
 interface BackBtnProps {
   className?: string; // Додаємо опціональний className
 }
@@ -20,7 +22,7 @@ export const BackBtn = ({ className = '' }: BackBtnProps) => {
       onClick={handleGoBack}
       className={`${styles.backBtn} ${className}`.trim()}
     >
-      <img src="/icons/arrow-left.svg" alt="btn back" className={styles.icon} />
+      <img src={arrowLeft} alt="btn back" className={styles.icon} />
       <span>Back</span>
     </button>
   );

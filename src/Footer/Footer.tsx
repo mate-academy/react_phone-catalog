@@ -2,6 +2,9 @@
 import styles from './Footer.module.scss';
 import { Link } from 'react-router-dom';
 
+import arrowLeft from '/icons/chevron.svg';
+import logo from '/icons/logo.svg';
+
 export const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
@@ -16,11 +19,7 @@ export const Footer = () => {
         <div className={styles.body}>
           <div className={styles.logo}>
             <Link to="/" className={styles.logoLink}>
-              <img
-                src="/icons/logo.svg"
-                alt="Nice gadgets"
-                className={styles.logoImage}
-              />
+              <img src={logo} alt="Nice gadgets" className={styles.logoImage} />
             </Link>
           </div>
           <ul className={styles.list}>
@@ -53,11 +52,7 @@ export const Footer = () => {
           <div className={styles.action}>
             <p className={styles.text}>Back to top</p>
             <button type="button" className={styles.btn} onClick={scrollToTop}>
-              <img
-                src="/icons/chevron.svg"
-                alt="button top"
-                className={styles.image}
-              />
+              <img src={arrowLeft} alt="button top" className={styles.image} />
             </button>
           </div>
         </div>

@@ -2,6 +2,9 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from './Dropdown.module.scss';
 
+import chevronTop from '/icons/dropdown-chevron-top.svg';
+import chevronButtom from '/icons/dropdown-chevron-buttom.svg';
+
 interface DropdownProps {
   label: string;
   options: string[];
@@ -62,12 +65,9 @@ export const Dropdown = ({
 
           <span className={`${styles.icon} ${isOpen ? styles.iconActive : ''}`}>
             {isOpen ? (
-              <img src="/icons/dropdown-chevron-top.svg" alt="chevron top" />
+              <img src={chevronTop} alt="chevron top" />
             ) : (
-              <img
-                src="/icons/dropdown-chevron-buttom.svg"
-                alt="chevron bottom"
-              />
+              <img src={chevronButtom} alt="chevron bottom" />
             )}
           </span>
         </button>
