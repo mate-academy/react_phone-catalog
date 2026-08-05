@@ -1,0 +1,17 @@
+// ProductDetailsPage.module.scss
+@import '../../../src/styles/variable';
+@import '../../../src/utils/mixins';
+
+.productDetailsPage {
+  padding-top: 72px;
+  margin-bottom: 24px;
+
+  @include tablet {
+    padding-top: 88px;
+    margin-bottom: 40px;
+  }
+}
+
+.backBtnMargin {
+  margin-bottom: 16px;
+}

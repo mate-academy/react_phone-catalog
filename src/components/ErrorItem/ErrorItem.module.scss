@@ -1,0 +1,12 @@
+// .. Error.module.scss
+@import '../../styles/variable';
+@import '../../utils/mixins';
+
+.error {
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+  color: $color-secondary;
+  margin-top: 150px;
+}

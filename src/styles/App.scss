@@ -1,0 +1,79 @@
+// .. App.scss
+
+@import './reset';
+@import './variable';
+@import '../utils/mixins';
+@import './typography';
+
+// Import Swiper styles
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
+/* Імпорт Bulma */
+@import 'bulma/css/bulma.css';
+
+/* Підключення шрифту Mont з папки public */
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600; /* SemiBold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
+
+/* Застосовуємо шрифт до всього сайту */
+:root {
+  --bulma-font-family: Mont, sans-serif;
+}
+
+body,
+html {
+  font-family: Mont, sans-serif !important;
+}
+
+.no-scroll {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.page {
+  flex: 1 1 auto;
+}
+
+[class*='__container'] {
+  max-width: 1166px;
+  padding: 0 16px;
+  margin: 0 auto;
+}
+
+// Утилітарні класи відступів
+.mb-32-40 {
+  margin-bottom: 32px;
+
+  @include tablet {
+    margin-bottom: 40px;
+  }
+}

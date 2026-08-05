@@ -1,0 +1,76 @@
+// ..ShopByCategory.module.scss
+
+@import '../../../../styles/variable';
+@import '../../../../utils/mixins';
+
+.shopByCategory {
+  padding-bottom: 56px;
+
+  @include tablet {
+    padding-bottom: 64px;
+  }
+
+  @include desktop {
+    padding-bottom: 80px;
+  }
+
+  .body {
+    .title {
+      margin-bottom: 24px;
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+
+      @include tablet {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .li {
+        .link {
+          .imageWrapper {
+            aspect-ratio: 1 / 1;
+
+            overflow: hidden;
+            margin-bottom: 24px;
+
+            .image {
+              width: 100%;
+              transform: scale(1);
+
+              transition: transform $transition-duration $transition-effect;
+            }
+            &:hover .image {
+              transform: scale(1.1);
+            }
+          }
+
+          .description {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+
+            .descriptionTitle {
+              font-size: 20px;
+              line-height: 1;
+              font-weight: $weight-bold;
+            }
+
+            .descriptionModels {
+              font-size: 14px;
+              line-height: 1.5;
+              font-weight: $weight-semibold;
+              color: $color-secondary;
+            }
+          }
+        }
+      }
+    }
+  }
+}

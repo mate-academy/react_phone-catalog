@@ -1,0 +1,56 @@
+// ProductOverview.module.scss
+@import '../../../../../src/styles/variable';
+@import '../../../../../src/utils/mixins';
+
+.productOverviewProps {
+  margin-bottom: 56px;
+
+  @include tablet {
+    margin-bottom: 64px;
+  }
+
+  @include desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.galleryBlock {
+  @include page-grid;
+}
+
+.description {
+  @include page-grid;
+}
+
+// Лівий блок (Галерея)
+.galleryWrapper {
+  margin-bottom: 40px;
+  grid-column: 1 / -1; // На мобілці на всю ширину (4 колонки)
+
+  @include tablet {
+    grid-column: 1 / span 7; // На планшеті 7 колонок
+    margin-bottom: 0;
+  }
+
+  @include desktop {
+    grid-column: 1 / span 12; // На десктопі 12 колонок (560px)
+  }
+}
+
+// Правий блок (Опис)
+.detailsWrapper {
+  grid-column: 1 / -1; // На мобілці падає вниз і стає на всю ширину
+  margin-bottom: 64px;
+
+  @include tablet {
+    grid-column: 8 / span 5; // На планшеті поруч (з 8 по 12)
+    margin-bottom: 0;
+  }
+
+  @include desktop {
+    grid-column: 14 / span 11; // На десктопі з 14 по 24 (512px)
+    // display: flex;
+    // flex-direction: column;
+    // max-width: 320px;
+  }
+}

@@ -1,0 +1,88 @@
+@import '../../../../../src/styles/variable';
+@import '../../../../../src/utils/mixins';
+
+.gallery {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+
+  @include tablet {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  flex-shrink: 0;
+
+  @include tablet {
+    flex-direction: column;
+    overflow-x: visible;
+  }
+
+  @include desktop {
+    gap: 16px;
+  }
+}
+
+.thumbButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 51px;
+  height: 49px;
+  padding: 0;
+
+  background-color: transparent;
+  border: 1px solid $color-elements;
+
+  cursor: pointer;
+  transition: $transition-duration;
+
+  @include desktop {
+    width: 80px;
+    height: 80px;
+  }
+
+  // Активна мініатюра (темна рамка, як на скріншоті)
+  &.active {
+    border-color: $color-primary;
+  }
+
+  &:hover:not(.active) {
+    border-color: color-mix(in srgb, $color-primary 70%, white);
+  }
+}
+
+.thumbImage {
+  max-width: 100%;
+  max-height: 100%;
+  padding: 2px;
+  object-fit: contain;
+}
+
+.mainImageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 274px;
+  margin: 0 auto;
+  aspect-ratio: 1 / 1;
+
+  @include tablet {
+    max-width: 464px;
+    margin: 0;
+  }
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

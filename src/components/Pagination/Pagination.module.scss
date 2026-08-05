@@ -1,0 +1,73 @@
+// Pagination.module.scss
+
+@import '../../styles/variable';
+@import '../../utils/mixins';
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content; // блок стискається під реальний розмір кнопок
+  max-width: 260px; // але не росте більше 248px на мобілці
+  margin: 0 auto;
+  gap: 16px;
+
+  @include tablet {
+    max-width: 540px;
+  }
+}
+
+.ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  font-weight: $weight-semibold;
+  font-size: 14px;
+  line-height: 1.5;
+  color: $color-primary;
+
+  background-color: $color-white;
+  border: 1px solid $color-icons;
+  cursor: pointer;
+  transition: $transition-duration;
+
+  // Стиль для фокусу з клавіатури (доступність)
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+
+  // Hover для неактивних кнопок
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+
+  // СТИЛЬ ДЛЯ АКТИВНОЇ СТОРІНКИ
+  &.active {
+    color: $color-white;
+    background-color: $color-primary;
+    border-color: $color-primary;
+  }
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px; // така ж ширина як у кнопках
+  height: 32px;
+  color: $color-primary; // твій колір тексту
+}

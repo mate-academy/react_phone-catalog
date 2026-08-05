@@ -1,0 +1,22 @@
+// BackBtn.module.scss
+@import '../../styles/variable';
+@import '../../utils/mixins';
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+
+  font-size: 12px;
+  line-height: 1;
+  color: $color-secondary;
+  font-weight: $weight-bold;
+}
+
+.icon {
+  display: flex;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
