@@ -1,13 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import styles from './PicturesSlider.module.scss';
+import { useNavigate } from 'react-router-dom';
 
-const slidesNotebook = ['iphone14pro', 'iphone17Pro', 'iPad', 'watch'];
-const slidesPhone = ['iphone14pro-mobile', 'iPad', 'watch'];
-const slides =
-  640 > window.innerWidth && window.innerWidth > 340
-    ? slidesPhone
-    : slidesNotebook;
+const slidesDevice = ['banner-accessories', 'banner-phones', 'banner-tablets'];
 
 const SWIPE_THRESHOLD = 50;
 
@@ -15,10 +11,13 @@ export const PicturesSlider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
+  const navigate = useNavigate();
 
   const changeSlide = (direction: number) => {
     setSlideIndex(currentIndex => {
-      return (currentIndex + direction + slides.length) % slides.length;
+      return (
+        (currentIndex + direction + slidesDevice.length) % slidesDevice.length
+      );
     });
   };
 
@@ -55,13 +54,13 @@ export const PicturesSlider = () => {
     touchEndX.current = 0;
   };
 
-  const currentSlide = slides[slideIndex];
+  const currentSlide = slidesDevice[slideIndex];
   const currentLink = `${import.meta.env.BASE_URL}/img/${currentSlide}`;
-  const photo = currentLink + '.jpg';
+  const photo = currentLink + '.png';
 
   return (
     <div className={styles.main}>
-      <h1>Welcome to Nice Gadgets store!</h1>
+      <h1>Product Catalog</h1>
 
       <div
         className={styles.info}
@@ -79,6 +78,21 @@ export const PicturesSlider = () => {
         </button>
 
         <div className={styles.infoTitle}>
+          <div className={styles.infoButton}>
+            <div className={styles.block}>
+              <p className={styles.text}>Now avaible in our store!</p>
+              <p className={styles.small}>Be the first!</p>
+
+              <button
+                className={styles.infoOrder}
+                onClick={() => {
+                  navigate(`${currentSlide.split('-').at(-1)}`);
+                }}
+              >
+                ORDER NOW
+              </button>
+            </div>
+          </div>
           <img
             key={currentSlide}
             src={photo}
@@ -98,12 +112,13 @@ export const PicturesSlider = () => {
       </div>
 
       <div className={styles.bar}>
-        {slides.map(slide => (
+        {slidesDevice.map(slide => (
           <button
             key={slide}
-            onClick={() => setSlideIndex(slides.indexOf(slide))}
+            onClick={() => setSlideIndex(slidesDevice.indexOf(slide))}
             className={classNames(styles.barTitle, {
-              [styles.barTitleActive]: slideIndex === slides.indexOf(slide),
+              [styles.barTitleActive]:
+                slideIndex === slidesDevice.indexOf(slide),
             })}
           ></button>
         ))}

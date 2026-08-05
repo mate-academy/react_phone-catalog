@@ -12,6 +12,7 @@ import { ProductsSlider } from '../../../HomePage/components/ProductsSlider';
 import { useFavourites } from '../../contexts/FavouritesContext';
 import { useCart } from '../../contexts/CartContext';
 import { Loader } from '../Loader';
+import { scrollToTop } from '../../utils/functions';
 
 const colorsPrograms: Record<string, string> = {
   midnight: '#191970',
@@ -364,7 +365,7 @@ export const ProductDetailsPage = () => {
         </div>
       </div>
 
-      <div className={styles.catalogCommonProducts}>
+      <div className={styles.catalogCommonProducts} onClick={scrollToTop}>
         <ProductsSlider
           product={shuffledDevices ?? []}
           title="You may also like"

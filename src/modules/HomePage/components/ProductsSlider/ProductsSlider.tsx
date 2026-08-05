@@ -97,14 +97,14 @@ export const ProductsSlider = ({
 
           return (
             <div className={styles.catalog} key={id}>
-              <Link to={`product/${id}`} className={styles.catalogLink}>
+              <Link to={`/product/${id}`} className={styles.catalogLink}>
                 <img
                   src={images[0]}
                   alt="photo"
                   className={styles.catalogPhoto}
                 />
               </Link>
-              <Link to={`product/${id}`} className={styles.catalogLink}>
+              <Link to={`/product/${id}`} className={styles.catalogLink}>
                 <p className={styles.catalogName}>{name}</p>
               </Link>
               <div className={styles.catalogPrice}>
@@ -142,7 +142,6 @@ export const ProductsSlider = ({
                     [styles.selectedPhone]: isInCart(id),
                     [styles.buttonsBuy]: !isInCart(id),
                   })}
-                  disabled={isInCart(id)}
                   onClick={() => {
                     addToCart(id);
                   }}

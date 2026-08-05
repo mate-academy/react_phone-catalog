@@ -36,7 +36,6 @@ export const HomePage = () => {
 
   return (
     <>
-      <h1 className="visually-hidden">Product Catalog</h1>
       <PicturesSlider />
       <ProductsSlider
         product={hotPriceProducts}

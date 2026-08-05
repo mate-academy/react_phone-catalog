@@ -6,7 +6,7 @@
   grid-template-columns: auto 1fr auto;
   grid-template-areas: 'logo menu actions';
   align-items: stretch;
-  height: 85px;
+  height: 64px;
   border-bottom: 1px solid #e2e6e9;
 
   position: sticky;
@@ -32,35 +32,49 @@
   text-decoration: none;
   box-sizing: border-box;
   color: #89939a;
-  margin: 0 20px;
+  margin: 0;
 }
 
 .navbarLogo {
   grid-area: 'logo';
-  margin-left: 20px;
+  margin-inline: 24px 48px;
+
+  @include on-tablet{
+    margin-inline: 16px 32px;
+  }
 }
 
 .navbarStart {
-  gap: auto;
+  gap: 64px;
   grid-area: 'menu';
+
+  @include on-tablet{
+    gap: 32px;
+  }
 }
 
 .navbarEnd {
   grid-area: 'action';
-  padding:20px;
+  align-items: center;
+  height: auto;
   margin: 0;
   border: 0;
   border: 1px solid #e2e6e9;
   position: relative;
 }
 
+.headerIcon{
+  width: 44px;
+  margin: 8px 0;
+}
+
 .badge {
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 13px;
   width: 10px;
-  height: 20px;
-  padding: 0 5px;
+  height: 10px;
+  padding: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,18 +93,13 @@
   border-bottom: 3px solid #313237;
 }
 
-.headerIcon {
-  width: 32px;
-  height: auto;
-}
-
 .activeIcon {
   border-bottom: 3px solid #313237 !important;
 }
 
 .menu {
   display: none;
-  padding: 25px;
+  padding: 23px;
   background: transparent;
   cursor: pointer;
 

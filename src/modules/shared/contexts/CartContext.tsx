@@ -33,7 +33,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const addToCart = (id: Products['id']) => {
     setCartItems(current => {
       if (current.some(item => item.id === id)) {
-        return current;
+        return current.filter(a => a.id !== id);
       }
 
       return [...current, { id, quantity: 1 }];

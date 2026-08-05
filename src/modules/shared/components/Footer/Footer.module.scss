@@ -2,28 +2,25 @@
 @use '../../styles/media' as *;
 
 .footer {
-  height: 60px;
-  padding-block: 20px;
+  height: 96px;
+  padding-inline: 156px;
   display: grid;
   grid-template-areas: 'logo menu tohome';
-  grid-template-columns: auto 1fr auto;
   align-items: center;
   border-top: 1px solid #e2e6e9;
 
-  .footerLogo {
-    padding-left: 20px;
-  }
-
-  .buttonUp {
-    margin-inline-end: 50px;
+  @include on-tablet{
+    padding-inline:32px ;
   }
 
   @include on-mobile {
-    display: block;
+    padding-inline: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
     height: 200px;
 
     .footerNavbar {
-      padding-left: 20px;
       display: flex;
       flex-direction: column;
       align-items: start;
@@ -33,11 +30,6 @@
       margin-block: 8px;
     }
 
-    .buttonUp {
-      display: flex;
-      justify-content: center;
-      padding-block: 30px;
-    }
   }
 }
 
@@ -45,7 +37,7 @@
   grid-area: menu;
   text-align: center;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   gap: auto;
 }
 
@@ -54,15 +46,6 @@
   text-decoration: none;
   box-sizing: border-box;
   color: #89939a;
-}
-
-.footerLogo {
-  padding-left: 20px;
-}
-
-.buttonUp {
-  grid-area: tohome;
-  align-self: center;
 }
 
 .buttonUpLink {
@@ -80,4 +63,14 @@
   text-decoration: none;
   background-color: #fff;
   margin-inline: 10px;
+}
+
+.buttonUp {
+  grid-area: tohome;
+  margin-left: auto;
+
+  @include on-mobile{
+    margin-right: auto;
+    margin-left: 0;
+  }
 }

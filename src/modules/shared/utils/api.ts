@@ -99,7 +99,7 @@ export async function getDetailedProductByCategory(
 }
 
 export async function getSuggestedProducts(
-  count: number = 8,
+  count: number = -1,
 ): Promise<Products[]> {
   const products = await getAllDetailedProducts();
 

@@ -43,17 +43,61 @@
 .infoTitle {
   flex: 1;
   min-width: 0;
+  background-color: black;
   margin-inline: 20px;
-  overflow: hidden;
+  position: relative;
 
   @include on-mobile {
     margin-inline: 0;
   }
+
+  .infoButton{
+    position: absolute;
+    background-color: #313237;
+    width: 40%;
+    margin: 20px;
+    height: 90%;
+    border-radius: 25px;
+
+    .block{
+      margin: 50px;
+
+      .text{
+        margin: 0;
+        font-size: 56px;
+        color: #7952F6;
+      }
+
+      .small{
+        color: #b4bdc3;
+        font-weight: 500;
+        font-size: 20px;
+        margin: 0;
+      }
+
+      .infoOrder{
+        background-color: #313237;
+        margin-top: 100px;
+        height: 60px;
+        border-radius: 50px;
+        width: 40%;
+        color: #fff;
+        border: 1px solid #b4bdc3;
+
+        &:hover{
+          cursor: pointer;
+          border-color: black;
+        }
+      }
+    }
+  }
 }
 
 .infoPhoto {
-  display: block;
-  width: 100%;
+  display: flex;
+  position: absolute;
+  right: 0;
+  width: 55%;
   height: 100%;
   object-fit: cover;
 
