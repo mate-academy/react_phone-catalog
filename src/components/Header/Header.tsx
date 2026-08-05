@@ -46,6 +46,30 @@ export const Header = () => {
   }, [location.pathname, queryFromUrl]);
 
   useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      document.body.style.removeProperty('overflow');
+
+      return undefined;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      if (previousOverflow) {
+        document.body.style.overflow = previousOverflow;
+      } else {
+        document.body.style.removeProperty('overflow');
+      }
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
     if (!isProductsPage) {
       return undefined;
     }

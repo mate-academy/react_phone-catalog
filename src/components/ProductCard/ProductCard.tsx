@@ -12,11 +12,12 @@ import styles from './ProductCard.module.scss';
 
 type Props = {
   product: Product;
+  showDiscount?: boolean;
 };
 
 const FAVORITE_ANIMATION_DURATION = 700;
 
-export const ProductCard = ({ product }: Props) => {
+export const ProductCard = ({ product, showDiscount = true }: Props) => {
   const { addToCart, toggleFavorite, isInCart, isFavorite } = useShop();
 
   const [isFavoritePopping, setIsFavoritePopping] = useState(false);
@@ -74,6 +75,7 @@ export const ProductCard = ({ product }: Props) => {
         <img
           src={image}
           alt={name}
+          loading="lazy"
           className={classNames(styles.image, {
             [styles.imageScaled]:
               image.includes('apple-iphone-14-pro') ||
@@ -93,7 +95,7 @@ export const ProductCard = ({ product }: Props) => {
       <div className={styles.prices}>
         <span className={styles.price}>${price}</span>
 
-        {fullPrice > price && (
+        {showDiscount && fullPrice > price && (
           <span className={styles.fullPrice}>${fullPrice}</span>
         )}
       </div>

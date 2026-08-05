@@ -131,16 +131,34 @@ export const ProductsPage = ({ category, title }: Props) => {
   }, [sortedProducts, perPage, safeCurrentPage, itemsPerPage]);
 
   useEffect(() => {
-    if (currentPage > totalPages && currentPage !== 1) {
-      const nextParams = new URLSearchParams(searchParams);
-
-      nextParams.delete('page');
-
-      setSearchParams(nextParams, {
-        replace: true,
-      });
+    if (isLoading || hasError || sortedProducts.length === 0) {
+      return;
     }
-  }, [currentPage, totalPages, searchParams, setSearchParams]);
+
+    if (currentPage <= totalPages) {
+      return;
+    }
+
+    const nextParams = new URLSearchParams(searchParams);
+
+    if (totalPages === 1) {
+      nextParams.delete('page');
+    } else {
+      nextParams.set('page', String(totalPages));
+    }
+
+    setSearchParams(nextParams, {
+      replace: true,
+    });
+  }, [
+    currentPage,
+    hasError,
+    isLoading,
+    searchParams,
+    setSearchParams,
+    sortedProducts.length,
+    totalPages,
+  ]);
 
   const updateSearchParams = (updates: Record<string, string | null>) => {
     const nextParams = new URLSearchParams(searchParams);

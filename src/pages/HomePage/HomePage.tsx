@@ -87,14 +87,15 @@ export const HomePage = () => {
 
         {!isLoading && !hasError && products.length > 0 && (
           <>
-            <ProductsSlider title="Hot prices" products={hotPriceProducts} />
-
-            <Categories products={products} />
-
             <ProductsSlider
               title="Brand new models"
               products={brandNewProducts}
+              showDiscount={false}
             />
+
+            <Categories products={products} />
+
+            <ProductsSlider title="Hot prices" products={hotPriceProducts} />
           </>
         )}
       </div>
