@@ -4,7 +4,8 @@
 .main {
   height: 100%;
   font-size: 25px;
-
+  font-size: clamp(20px, 2vw, 25px);
+  font-weight: 800;
 }
 
 .info {
@@ -79,8 +80,8 @@
 
       .text{
         margin: 0;
-        font-size: 40px;
         color: #7b4df8;
+        font-size: clamp(20px, 3.2vw, 40px);
 
         &::after{
           content: '👌';
@@ -96,7 +97,7 @@
       .small{
         color: #b4bdc3;
         font-weight: 500;
-        font-size: 20px;
+        font-size: clamp(10px, 1.6vw, 20px);
         margin: 0;
 
       }
@@ -171,15 +172,3 @@
   }
 }
 
-.main {
-  font-size: clamp(20px, 2vw, 25px);
-  font-weight: 800;
-}
-
-.infoTitle .infoButton .block .text {
-  font-size: clamp(20px, 3.2vw, 40px);
-}
-
-.infoTitle .infoButton .block .small {
-  font-size: clamp(10px, 1.6vw, 20px);
-}
