@@ -73,6 +73,7 @@
   display: flex;
   margin-bottom: 20px;
   justify-content: space-around;
+  align-items: center;
 
   @include on-mobile {
     display: grid;
@@ -127,6 +128,7 @@
 .cartPhoto{
   width: 50px;
   height: 70px;
+  object-fit: contain;
 
   margin: auto 0;
 
@@ -263,4 +265,21 @@
   }
 }
 
+.pageLink {
+  text-decoration: none;
+  display: contents;
+  color: #313237;
 
+  div {
+    display: grid;
+    grid-template-columns: 66px 1fr;
+    align-items: center;
+    column-gap: 64px;
+    width: 100%;
+    max-width: 360px;
+
+    @include on-mobile {
+      display: contents;
+    }
+  }
+}

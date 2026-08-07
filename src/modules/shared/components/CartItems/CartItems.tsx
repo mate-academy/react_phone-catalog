@@ -12,6 +12,10 @@ export const CartItems = () => {
   const [loader, setLoader] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
+  const fullLocation =
+    window.location.pathname +
+    window.location.hash.split('/').slice(0, -1).join('/');
+
   const navigate = useNavigate();
 
   const {
@@ -97,12 +101,19 @@ export const CartItems = () => {
                       className={styles.closeIcon}
                       onClick={() => removeFromCart(device.id)}
                     />
-                    <img
-                      src={`${device.images[0]}`}
-                      alt={`${device.images[0]}`}
-                      className={styles.cartPhoto}
-                    />
-                    <p className={styles.devicesName}>{device.name}</p>
+                    <a
+                      href={`${fullLocation}/product/${device.id}`}
+                      className={styles.pageLink}
+                    >
+                      <div>
+                        <img
+                          src={`${device.images[0]}`}
+                          alt={`${device.images[0]}`}
+                          className={styles.cartPhoto}
+                        />
+                        <p className={styles.devicesName}>{device.name}</p>
+                      </div>
+                    </a>
                     <div className={styles.devicesCount}>
                       <button
                         onClick={() => decreaseQuantity(device.id)}

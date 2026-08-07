@@ -37,11 +37,7 @@ export const HomePage = () => {
   return (
     <>
       <PicturesSlider />
-      <ProductsSlider
-        product={hotPriceProducts}
-        isShowDiscount
-        title="Hot prices"
-      />
+      <ProductsSlider product={hotPriceProducts} title="Hot prices" />
       <Category />
       <ProductsSlider product={newestProducts} title="Brand new models" />
     </>
