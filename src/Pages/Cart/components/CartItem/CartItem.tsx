@@ -38,12 +38,14 @@ export const CartItem = ({ product, quantity }: CartItemProps) => {
       <div className={styles.blockPrice}>
         <div className={styles.count}>
           {/* Зменшити кількість (-) */}
-          <span className={styles.countIcon}>
+          <span
+            onClick={() => decreaseQuantity(product.itemId)}
+            className={styles.countIcon}
+          >
             <img
               src={minus}
               alt="Icon minus"
               className={`${styles.iconImage} ${styles.minus}`}
-              onClick={() => decreaseQuantity(product.itemId)}
             />
           </span>
 
@@ -51,13 +53,11 @@ export const CartItem = ({ product, quantity }: CartItemProps) => {
           <span className={styles.countNumber}>{quantity}</span>
 
           {/* Збільшити кількість (+) */}
-          <span className={`${styles.countIcon} ${styles.black}`}>
-            <img
-              src={plus}
-              alt="Icon plus"
-              className={styles.iconImage}
-              onClick={() => increaseQuantity(product.itemId)}
-            />
+          <span
+            onClick={() => increaseQuantity(product.itemId)}
+            className={`${styles.countIcon} ${styles.black}`}
+          >
+            <img src={plus} alt="Icon plus" className={styles.iconImage} />
           </span>
         </div>
 
