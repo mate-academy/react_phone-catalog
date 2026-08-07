@@ -1,0 +1,51 @@
+// PrevButton.module.scss
+
+@import '../../styles/variable';
+@import '../../utils/mixins';
+
+/* stylelint-disable selector-pseudo-class-no-unknown */
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  pointer-events: none;
+  transition: opacity $transition-duration;
+}
+
+.btnPrev {
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  margin: 0 !important;
+
+  background-color: $color-white;
+  border: 1px solid $color-icons;
+
+  flex-shrink: 0;
+  transform: none;
+  cursor: pointer;
+  transition: $transition-duration;
+
+  // Спочатку описуємо стан disabled для дотримання специфічності
+  &:disabled,
+  &:global(.swiper-button-disabled),
+  &[aria-disabled='true'] {
+    border-color: $color-elements !important;
+    cursor: not-allowed !important;
+
+    .icon {
+      opacity: 0.3;
+    }
+  }
+
+  // Потім описуємо hover з об'єднаним селектором :not()
+  &:hover:not(:disabled, :global(.swiper-button-disabled)) {
+    border-color: $color-primary;
+  }
+}

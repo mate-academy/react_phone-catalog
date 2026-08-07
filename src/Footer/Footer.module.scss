@@ -1,0 +1,115 @@
+// .. Futer.module.scss
+
+@import '../styles/variable';
+@import '../utils/mixins';
+
+.footer {
+  border-top: 1px solid $color-elements;
+
+  .container {
+    padding: 0 16px;
+
+    @include tablet {
+      max-width: 1168px;
+
+      margin: 0 auto;
+    }
+  }
+
+  .body {
+    padding: 31px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    justify-content: space-between;
+
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+  }
+
+  .logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding-right: 24px;
+    cursor: pointer;
+
+    .logoLink {
+      display: block;
+      line-height: 0;
+    }
+    .logoImage {
+      display: block;
+      width: auto;
+      max-width: 100%;
+    }
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: clamp(14px, 6vw, 106px);
+    }
+
+    .item {
+      // стилі для елемента списку
+    }
+
+    .link {
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: $extra-bold;
+      line-height: 0.9;
+      color: $color-secondary;
+      letter-spacing: 0.48px;
+      cursor: pointer;
+      transition: color $transition-duration $transition-effect;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+
+  .action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    .text {
+      font-size: 12px;
+      line-height: 1;
+      color: $color-secondary;
+      font-weight: $weight-bold;
+    }
+
+    .btn {
+      cursor: pointer;
+      border: 1px solid $color-elements;
+      padding: 8px;
+      transition: border $transition-duration $transition-effect;
+
+      &:hover {
+        border: 1px solid $color-primary;
+      }
+    }
+
+    .image {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      flex-shrink: 0;
+    }
+  }
+}

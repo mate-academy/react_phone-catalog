@@ -1,0 +1,47 @@
+// .. _mixins.scss
+// Брейкпоінти (перехідні точки)
+$bp-tablet: 640px;
+$bp-tablet-large: 768px;
+$bp-desktop: 1200px;
+
+// Міксин для планшетів (640px і більше)
+@mixin tablet {
+  @media (min-width: #{$bp-tablet}) {
+    @content;
+  }
+}
+
+// Міксин для планшетів (640px і більше)
+@mixin bp-tablet-large {
+  @media (min-width: #{$bp-tablet-large}) {
+    @content;
+  }
+}
+
+// Міксин для десктопів (1200px і більше)
+@mixin desktop {
+  @media (min-width: #{$bp-desktop}) {
+    @content;
+  }
+}
+
+// Універсальний міксин для нашої адаптивної сітки (Page Grid)
+@mixin page-grid {
+  display: grid;
+  column-gap: 16px;
+
+  // 1. Мобільна сітка (від 320px) — за замовчуванням
+  grid-template-columns: repeat(4, 1fr);
+
+  // 2. Планшетна сітка (від 640px)
+  @include tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  // 3. Десктопна сітка (від 1200px)
+  @include desktop {
+    // Робимо фіксовану сітку: 24 колонки по 32px, центровані
+    grid-template-columns: repeat(24, 32px);
+    justify-content: center;
+  }
+}

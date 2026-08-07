@@ -1,0 +1,125 @@
+// .. MobileMenu.module.scss
+
+@import '../styles/variable';
+@import '../utils/mixins';
+
+.body {
+  position: fixed;
+  top: 48px;
+  left: 0;
+  width: 100%;
+  z-index: 90;
+  background-color: white;
+  height: calc(100vh - 48px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+    justify-content: center;
+  }
+
+  .navList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    height: 100%;
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: $color-elements;
+    font-weight: $extra-bold;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 0.9;
+    height: 27px;
+    letter-spacing: 0.48px;
+    border-bottom: 2px solid transparent;
+    transition:
+      border-color $transition-duration $transition-effect,
+      color $transition-duration $transition-effect;
+
+    &:hover {
+      color: $color-primary;
+      border-bottom-color: $color-primary;
+    }
+  }
+
+  .linkActive {
+    color: $color-primary;
+    border-bottom-color: $color-primary;
+  }
+
+  .action {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    border-top: 1px solid $color-elements;
+    flex-shrink: 0;
+  }
+
+  .favourites {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 50%;
+  }
+
+  .bag {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid $color-elements;
+    flex-shrink: 0;
+    width: 50%;
+  }
+
+  .icons {
+    height: 16px;
+    width: 16px;
+  }
+
+  .iconActive {
+    color: $color-primary;
+    border-bottom: 2px solid $color-primary;
+  }
+
+  .wraperIcons {
+    position: relative;
+  }
+
+  .badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    translate: 50% -50%;
+
+    font-size: 9px;
+    line-height: 1;
+    font-weight: $weight-bold;
+    color: $color-white;
+
+    width: 14px;
+    height: 14px;
+    background-color: $color-red;
+    border: 1px solid $color-white; // прибрав зайвий пробіл у 1 px
+    border-radius: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

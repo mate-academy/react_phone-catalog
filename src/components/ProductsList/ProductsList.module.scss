@@ -1,0 +1,24 @@
+// .. ProductsList.module.scss
+@import '../../styles/variable';
+@import '../../utils/mixins';
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1fr);
+  row-gap: 40px;
+  margin-bottom: 24px;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  @include bp-tablet-large {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

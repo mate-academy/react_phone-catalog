@@ -1,0 +1,108 @@
+// CartItem.module.scss
+
+@import '../../../../../src/styles/variable';
+@import '../../../../../src/utils/mixins';
+
+.wraper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid $color-elements;
+
+  @include tablet {
+    padding: 24px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.blockPrice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconImage {
+  width: 16px;
+  height: 16px;
+}
+
+.image {
+  display: block;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.name {
+  font-size: 14px;
+  line-height: 150%; /* 21/14 */
+  font-weight: $weight-regular;
+}
+
+.price {
+  font-size: 22px;
+  line-height: 1.4;
+  font-weight: $extra-bold;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.countIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 32px;
+  width: 32px;
+
+  border: 1px solid $color-elements;
+  cursor: pointer;
+}
+
+.countNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 32px;
+  width: 32px;
+
+  font-size: 14px;
+  line-height: 150%; /* 21/14 */
+  color: #000;
+  font-weight: $weight-semibold;
+}
+
+.black {
+  border: 1px solid $color-icons;
+}
+
+.minus {
+  width: 13px;
+  height: 13px;
+}

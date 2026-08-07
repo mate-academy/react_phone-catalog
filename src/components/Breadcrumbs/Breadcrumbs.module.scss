@@ -1,0 +1,47 @@
+// .. Breadcrumbs.module.scss
+@import '../../styles/variable';
+@import '../../utils/mixins';
+
+.breadcrumbs {
+  .list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-bottom: 24px;
+
+    @include tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  .link {
+    color: $color-primary;
+    font-size: 12px;
+    font-weight: $weight-bold;
+    line-height: 1;
+
+    &:hover {
+      color: $color-secondary;
+    }
+  }
+
+  .iconHome {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+  .current {
+    font-size: 12px;
+    line-height: 1;
+    font-weight: $weight-semibold;
+    color: $color-secondary;
+  }
+}

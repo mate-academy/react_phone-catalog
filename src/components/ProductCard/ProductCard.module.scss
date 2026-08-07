@@ -1,0 +1,109 @@
+// .. ProductCard.module.scss
+@import '../../styles/variable';
+@import '../../utils/mixins';
+
+.product {
+  padding: 32px;
+  border: 1px solid $color-elements;
+  background-color: $color-white;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  height: 100%;
+  box-sizing: border-box;
+  transition: $transition-duration;
+
+  .productLink {
+    display: block;
+    text-align: center;
+    flex-shrink: 0;
+
+    .photo {
+      max-width: 100%;
+      height: auto;
+      aspect-ratio: 208 / 196;
+      object-fit: contain;
+    }
+  }
+
+  .title {
+    font-size: 14px;
+    line-height: 1.5;
+    color: $color-primary;
+    font-weight: $weight-semibold;
+    flex-shrink: 0;
+  }
+
+  .priceBlock {
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+
+    // Магія: відштовхує ціну, лінію та кнопки до нижнього краю, створюючи повітря
+    margin-top: auto;
+
+    .price {
+      font-weight: $extra-bold;
+      color: $color-primary;
+      flex-shrink: 0;
+      line-height: 1.4;
+    }
+
+    .priceOld {
+      color: $color-secondary;
+      font-weight: 500;
+      line-height: 1;
+      text-decoration: line-through;
+    }
+  }
+
+  .line {
+    height: 1px;
+    width: 100%;
+    background-color: $color-elements;
+    flex-shrink: 0;
+  }
+
+  .description {
+    font-size: 12px;
+    line-height: 1;
+    font-weight: $weight-bold;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 8px;
+    padding: 3px 0;
+    flex-shrink: 0;
+
+    .descriptionText {
+      color: $color-secondary;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .descriptionValue {
+        color: $color-primary;
+      }
+    }
+  }
+
+  .blockBtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+}
+
+// Окремий клас для ховеру
+.hasHover {
+  &:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  }
+}

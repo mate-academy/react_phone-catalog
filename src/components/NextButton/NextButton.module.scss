@@ -1,0 +1,50 @@
+// NextButton.module.scss
+
+@import '../../styles/variable';
+@import '../../utils/mixins';
+
+/* stylelint-disable selector-pseudo-class-no-unknown */
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  pointer-events: none;
+  transition: opacity $transition-duration;
+}
+
+.btnNext {
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  margin: 0 !important;
+
+  background-color: $color-white;
+  border: 1px solid $color-icons;
+
+  flex-shrink: 0;
+  transform: none;
+  cursor: pointer;
+  transition: $transition-duration;
+
+  // Спочатку описуємо стан disabled для дотримання правильної специфічності
+  &:disabled,
+  &:global(.swiper-button-disabled) {
+    border-color: $color-elements;
+    cursor: not-allowed;
+
+    .icon {
+      opacity: 0.3;
+    }
+  }
+
+  // Потім описуємо hover
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+}

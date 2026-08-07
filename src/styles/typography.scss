@@ -1,0 +1,35 @@
+// .. typography.scss
+@import '../utils/mixins';
+
+// стилі для заголовків н2 на сторінці хоме та інших
+.section-title-h2 {
+  font-size: 22px;
+  line-height: 1.4;
+  font-weight: $extra-bold;
+  color: $color-primary;
+
+  @include tablet {
+    font-size: 32px;
+  }
+}
+
+.section-title-h1 {
+  font-size: 32px;
+  font-weight: $extra-bold;
+  line-height: 1.28;
+
+  @include tablet {
+    font-size: 48px;
+  }
+}
+
+.section-title-h1-product-detailis {
+  font-size: 22px;
+  line-height: 1.4;
+  color: $color-primary;
+  font-weight: $extra-bold;
+
+  @include tablet {
+    font-size: 32px;
+  }
+}

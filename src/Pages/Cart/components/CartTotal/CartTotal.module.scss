@@ -1,0 +1,48 @@
+// CartTotal.module.scss
+
+@import '../../../../../src/styles/variable';
+@import '../../../../../src/utils/mixins';
+
+.wraper {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 16px;
+
+  grid-column: 1 / -1;
+
+  border: 1px solid $color-elements;
+
+  @include desktop {
+    padding: 24px;
+  }
+
+  @include desktop {
+    grid-column: span 8;
+    height: fit-content;
+  }
+}
+
+.blockInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+  padding-bottom: 16px;
+
+  border-bottom: 1px solid $color-elements;
+}
+
+.price {
+  font-size: 32px;
+  font-weight: $extra-bold;
+  line-height: 128%; /* 41/32 */
+}
+
+.count {
+  font-size: 14px;
+  line-height: 150%; /* 21/14 */
+  color: $color-secondary;
+  font-weight: $weight-semibold;
+}

@@ -1,0 +1,195 @@
+// .. Header.module.scss
+
+@import '../styles/variable';
+@import '../utils/mixins';
+
+.header {
+  height: 48px;
+  border-bottom: 1px solid $color-elements;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.95);
+
+  @include tablet {
+    height: 64px;
+  }
+
+  .body {
+    display: flex;
+    padding-left: 16px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: 48px;
+
+    @include tablet {
+      gap: 24px;
+      height: 64px;
+    }
+
+    @include desktop {
+      padding-left: 24px;
+    }
+  }
+
+  .logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding-right: 24px;
+    cursor: pointer;
+  }
+
+  .logoLink {
+    display: block;
+    line-height: 0;
+  }
+
+  .logoImage {
+    display: block;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .navbar {
+    display: none;
+
+    @include tablet {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      flex-grow: 1;
+      height: 100%;
+    }
+  }
+
+  .navList {
+    display: flex;
+    gap: clamp(15px, 5vw, 65px);
+    align-items: center;
+    height: 100%;
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: $color-secondary;
+    font-weight: $extra-bold;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 0.9;
+    height: 48px;
+    letter-spacing: 0.48px;
+    border-bottom: 3px solid transparent;
+    transition:
+      border-color $transition-duration $transition-effect,
+      color $transition-duration $transition-effect;
+
+    @include tablet {
+      height: 64px;
+    }
+
+    &:hover {
+      color: $color-primary;
+      border-bottom-color: $color-primary;
+    }
+
+    &.linkActive {
+      color: $color-primary;
+      border-bottom-color: $color-primary;
+    }
+  }
+
+  .linkActive {
+    color: $color-primary;
+    border-bottom-color: $color-primary;
+  }
+
+  .action {
+    display: none;
+
+    @include tablet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 64px;
+    }
+  }
+
+  .favourites,
+  .bag {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    border-left: 1px solid $color-elements;
+    flex-shrink: 0;
+
+    border-bottom: 3px solid transparent;
+    transition:
+      border-color $transition-duration $transition-effect,
+      color $transition-duration $transition-effect;
+
+    &:hover {
+      color: $color-primary;
+      border-bottom-color: $color-primary;
+    }
+
+    &.linkActive {
+      color: $color-primary;
+      border-bottom-color: $color-primary;
+    }
+  }
+
+  .icons {
+    height: 16px;
+    width: 16px;
+  }
+
+  .burger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    height: 48px;
+    border-left: 1px solid $color-elements;
+    cursor: pointer;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  .wraperIcons {
+    position: relative;
+  }
+
+  .badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    translate: 50% -50%;
+
+    font-size: 9px;
+    line-height: 1;
+    font-weight: $weight-bold;
+    color: $color-white;
+
+    width: 14px;
+    height: 14px;
+
+    background-color: $color-red;
+    border: 1px solid $color-white;
+    border-radius: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

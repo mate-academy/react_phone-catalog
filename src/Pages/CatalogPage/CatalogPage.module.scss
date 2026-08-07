@@ -1,0 +1,37 @@
+// .. Phones.module.scss
+@import '../../../src/styles/variable';
+@import '../../../src/utils/mixins';
+
+.catalogPage {
+  padding-top: 72px;
+  margin-bottom: 24px;
+
+  @include tablet {
+    padding-top: 88px;
+    margin-bottom: 40px;
+  }
+
+  .title {
+    margin-bottom: 8px;
+  }
+
+  .quantityGoods {
+    margin-bottom: 32px;
+    color: $color-secondary;
+    font-size: 14px;
+    line-height: 150%; /* 21/14 */
+    font-weight: $weight-semibold;
+
+    @include tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  .sortBlock {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+}

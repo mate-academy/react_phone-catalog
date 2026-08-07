@@ -1,0 +1,41 @@
+// .. BtnHeart.module.scss
+
+@import '../../styles/variable';
+@import '../../utils/mixins';
+
+.heart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid $color-icons;
+
+  flex-shrink: 0;
+  cursor: pointer;
+
+  transition: border-color $transition-duration $transition-effect;
+
+  .heartIcon {
+    color: $color-icons;
+
+    transition:
+      color $transition-duration $transition-effect,
+      fill $transition-duration $transition-effect;
+
+    &.active {
+      color: $color-red;
+      fill: $color-red;
+    }
+  }
+
+  &:hover {
+    border: 1px solid $color-primary;
+
+    .heartIcon {
+      color: $color-red;
+    }
+  }
+}

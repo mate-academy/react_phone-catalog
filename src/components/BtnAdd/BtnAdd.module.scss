@@ -1,0 +1,33 @@
+// .. BtnAdd.module.scss
+@import '../../styles/variable';
+@import '../../utils/mixins';
+
+.btnAdd {
+  background-color: $color-primary;
+  font-size: 14px;
+  color: $color-white;
+  line-height: 1.5;
+  font-weight: $weight-bold;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  cursor: pointer;
+  border: none;
+
+  transition:
+    box-shadow $transition-duration $transition-effect,
+    background-color $transition-duration $transition-effect;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+}
+
+.isActive {
+  border: 1px solid $color-elements;
+  color: $color-green;
+  background-color: $color-white;
+}

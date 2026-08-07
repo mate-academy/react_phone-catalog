@@ -1,0 +1,101 @@
+// Dropdown.module.scss
+@import '../../styles/variable';
+@import '../../utils/mixins';
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+// ОКРЕМІ КЛАСИ ДЛЯ МОДИФІКАТОРІВ:
+.sort {
+  @include tablet {
+    width: 176px;
+  }
+}
+
+.pagination {
+  @include tablet {
+    width: 128px;
+  }
+}
+
+.label {
+  font-size: 12px;
+  font-weight: $weight-bold;
+  line-height: 1;
+  color: $color-secondary;
+}
+
+.dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.trigger {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $color-white;
+  border: 1px solid $color-icons;
+  cursor: pointer;
+  font-size: 14px;
+  color: $color-primary;
+  line-height: 150%;
+  font-weight: $weight-bold;
+
+  transition: border-color $transition-duration $transition-effect;
+
+  &:hover {
+    border-color: $color-secondary;
+  }
+}
+
+.icon {
+  margin-top: 1px;
+  display: inline-block;
+  height: 17px;
+  width: 17px;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 8px 0;
+  list-style: none;
+  background-color: $color-white;
+  border: 1px solid $color-elements;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.item {
+  width: 100%;
+  padding: 8px 12px;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #89939a;
+  font-weight: 500;
+
+  &:hover {
+    background-color: $color-hover-bg;
+    color: $color-primary;
+  }
+
+  &Selected {
+    color: $color-primary;
+    font-weight: 600;
+  }
+}

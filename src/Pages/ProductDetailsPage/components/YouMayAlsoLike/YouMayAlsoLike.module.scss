@@ -1,0 +1,118 @@
+// YouMayAlsoLike.module.scss
+
+@import '../../../../../src/styles/variable';
+@import '../../../../../src/utils/mixins';
+
+/* stylelint-disable selector-pseudo-class-no-unknown */
+
+.youMayAlsoLikeProps {
+  padding-bottom: 56px;
+
+  @include tablet {
+    padding-bottom: 64px;
+  }
+
+  @include desktop {
+    padding-bottom: 80px;
+  }
+
+  .body {
+    .sliderControls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 24px;
+
+      .blockArrows {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+
+        // Зв'язуємо внутрішню структуру з глобальними кнопками
+        :global(.brand-prev),
+        :global(.brand-next) {
+          :global(.icon) {
+            display: block;
+          }
+        }
+      }
+    }
+
+    // Головний контейнер слайдера — обов'язково гумовий
+    .swiperContainer {
+      width: 100%;
+      overflow: hidden;
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+
+      // Вирівнюємо слайди за висотою та розтягуємо картки
+      :global {
+        .swiper-wrapper {
+          display: flex;
+          align-items: stretch;
+        }
+
+        .swiper-slide {
+          display: flex;
+          height: auto !important;
+
+          & > article {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ЄДИНИЙ глобальний блок для іконки та кнопок навігації Swiper
+:global {
+  // Базовий клас .icon описуємо першим всередині блока
+  .icon {
+    display: flex;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    transition: opacity $transition-duration;
+  }
+
+  .brand-prev,
+  .brand-next {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+    margin: 0 !important;
+
+    background-color: #fff;
+    border: 1px solid $color-icons;
+
+    transform: none;
+    cursor: pointer;
+    transition: $transition-duration;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    // Стиль, коли слайдер дійшов до кінця/початку
+    &.swiper-button-disabled {
+      border-color: $color-elements;
+      cursor: not-allowed;
+      pointer-events: none;
+
+      :global(.icon) {
+        opacity: 0.3;
+      }
+    }
+  }
+}

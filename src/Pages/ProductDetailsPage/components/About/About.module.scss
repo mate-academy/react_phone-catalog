@@ -1,0 +1,65 @@
+// About.module.scss
+@import '../../../../../src/styles/variable';
+@import '../../../../../src/utils/mixins';
+
+// About
+
+.about {
+  .title {
+    font-size: 20px;
+    line-height: 1;
+    font-weight: $weight-bold;
+    margin-bottom: 16px;
+
+    @include tablet {
+      font-size: 22px;
+      line-height: 1.4;
+      font-weight: $extra-bold;
+    }
+  }
+
+  .line {
+    width: 100%;
+    height: 1px;
+    background-color: $color-elements;
+    margin-bottom: 16px;
+
+    @include tablet {
+      margin-bottom: 25px;
+    }
+  }
+
+  .blockText {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .item {
+    // Окремий блок
+  }
+
+  .titleH4 {
+    font-size: 16px;
+    line-height: 1;
+    font-weight: $weight-bold;
+    margin-bottom: 16px;
+
+    @include tablet {
+      font-size: 20px;
+    }
+  }
+
+  .paragraph {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .text {
+    font-size: 14px;
+    line-height: 150%; /* 21/14 */
+    font-weight: 500;
+    color: $color-secondary;
+  }
+}

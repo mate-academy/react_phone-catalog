@@ -1,0 +1,32 @@
+// Cart.module.scss
+@import '../../../src/styles/variable';
+@import '../../../src/utils/mixins';
+
+.cart {
+  padding-top: 72px;
+  margin-bottom: 24px;
+
+  @include tablet {
+    padding-top: 88px;
+    margin-bottom: 40px;
+  }
+
+  .title {
+    margin-bottom: 8px;
+  }
+
+  .blockCarts {
+    @include page-grid;
+
+    row-gap: 32px;
+
+    @include desktop {
+      gap: 16px;
+    }
+  }
+
+  .element {
+    min-height: 150px;
+    background-color: green;
+  }
+}

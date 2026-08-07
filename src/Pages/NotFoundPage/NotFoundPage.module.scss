@@ -1,0 +1,27 @@
+// NotFoundPage.module.scss
+@import '../../../src/styles/variable';
+@import '../../../src/utils/mixins';
+
+.wraper {
+  margin-top: 85px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+
+  min-height: 50vh;
+
+  @include tablet {
+    margin-top: 150px;
+  }
+}
+
+.text {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.homeLink {
+  color: $color-secondary;
+}
