@@ -38,6 +38,10 @@ export const ProductDetailsPage = () => {
   const [detailedDevice, setDetailedDevice] = useState<Products>();
   const [shuffledDevices, setShuffledDevices] = useState<Products[]>();
 
+  const fullLocation =
+    window.location.pathname +
+    window.location.hash.split('/').slice(0, -1).join('/');
+
   const { favIconsId, toggleFavourite } = useFavourites();
   const { isInCart, addToCart } = useCart();
 
@@ -111,7 +115,18 @@ export const ProductDetailsPage = () => {
   }
 
   if (errorMessage || !detailedDevice) {
-    return <p>{errorMessage || 'Product was not found'}</p>;
+    return (
+      <>
+        <img
+          src="img/product-not-found.png"
+          alt="notFound"
+          className={styles.notFoundPhoto}
+        />
+        <p className={styles.notFoundText}>
+          {errorMessage || 'Product was not found'}
+        </p>
+      </>
+    );
   }
 
   const {
@@ -130,6 +145,10 @@ export const ProductDetailsPage = () => {
   } = detailedDevice;
 
   const cellItems = cell.join(', ');
+
+  const arrayDevices = shuffledDevices?.filter(deviceModel =>
+    deviceModel.namespaceId.includes(phoneWithoutMemory),
+  );
 
   return (
     <div className={styles.productPage}>
@@ -176,7 +195,7 @@ export const ProductDetailsPage = () => {
             {detailedDevice?.images.map(image => {
               return (
                 <img
-                  src={image}
+                  src={image || 'img/product-not-found.png'}
                   alt={image}
                   key={image}
                   className={styles.images}
@@ -191,7 +210,9 @@ export const ProductDetailsPage = () => {
 
         <div className={styles.currentphoto}>
           <img
-            src={detailedDevice?.images[clickedPhoto]}
+            src={
+              detailedDevice.images[clickedPhoto] || 'img/product-not-found.png'
+            }
             alt="currentPhoto"
             className={styles.currentPhoto}
           />
@@ -210,9 +231,22 @@ export const ProductDetailsPage = () => {
                 })}
                 key={availableColor}
                 style={{ backgroundColor: colorsPrograms[availableColor] }}
-                onChange={() =>
-                  navigate(`/product/${phoneWithoutColor}-${availableColor}`)
-                }
+                onChange={() => {
+                  const newDevice = arrayDevices?.find(
+                    device =>
+                      device.id === phoneWithoutColor + '-' + availableColor,
+                  );
+
+                  if (newDevice) {
+                    setDetailedDevice(newDevice);
+
+                    window.history.replaceState(
+                      {},
+                      '',
+                      `${fullLocation}/${newDevice.id}`,
+                    );
+                  }
+                }}
               />
             ))}
           </div>
@@ -232,9 +266,21 @@ export const ProductDetailsPage = () => {
                     name="capacity"
                     checked={memory === capacity}
                     onChange={() => {
-                      navigate(
-                        `/product/${phoneWithoutMemory}-${memory.toLowerCase()}-${color}`,
+                      const newDevice = arrayDevices?.find(
+                        device =>
+                          device.id ===
+                          `${phoneWithoutMemory}-${memory.toLowerCase()}-${color}`,
                       );
+
+                      if (newDevice) {
+                        setDetailedDevice(newDevice);
+
+                        window.history.replaceState(
+                          {},
+                          '',
+                          `${fullLocation}/${newDevice.id}`,
+                        );
+                      }
                     }}
                   />
                   <span>{memory}</span>
@@ -329,7 +375,7 @@ export const ProductDetailsPage = () => {
           <table className={styles.legendTable}>
             <tbody>
               <tr>
-                <td className={styles.legendText}>screen</td>
+                <td className={styles.legendText}>Screen</td>
                 <td className={styles.result}>{screen}</td>
               </tr>
               <tr>

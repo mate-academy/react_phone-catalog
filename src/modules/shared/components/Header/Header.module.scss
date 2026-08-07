@@ -4,7 +4,6 @@
 .header {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  grid-template-areas: 'logo menu actions';
   align-items: stretch;
   height: 64px;
   border-bottom: 1px solid #e2e6e9;
@@ -36,7 +35,6 @@
 }
 
 .navbarLogo {
-  grid-area: 'logo';
   margin-inline: 24px 48px;
 
   @include on-tablet{
@@ -54,24 +52,31 @@
 }
 
 .navbarEnd {
-  grid-area: 'action';
+  display: flex;
   align-items: center;
   height: auto;
   margin: 0;
   border: 0;
-  border: 1px solid #e2e6e9;
   position: relative;
+
+  &:first-child{
+    border-inline: 1px solid #e2e6e9;
+  }
+
+  &:hover {
+    border: 1px solid #313237;
+  }
 }
 
 .headerIcon{
   width: 44px;
-  margin: 8px 0;
+  margin: auto 0;
 }
 
 .badge {
   position: absolute;
-  top: 10px;
-  right: 13px;
+  top: 13px;
+  right: 16px;
   width: 10px;
   height: 10px;
   padding: 3px;

@@ -80,18 +80,21 @@ export const PicturesSlider = () => {
         <div className={styles.infoTitle}>
           <div className={styles.infoButton}>
             <div className={styles.block}>
-              <p className={styles.text}>Now avaible in our store!</p>
+              <h2 className={styles.text}>
+                Now available
+                <br />
+                in our store!
+              </h2>
               <p className={styles.small}>Be the first!</p>
-
-              <button
-                className={styles.infoOrder}
-                onClick={() => {
-                  navigate(`${currentSlide.split('-').at(-1)}`);
-                }}
-              >
-                ORDER NOW
-              </button>
             </div>
+            <button
+              className={styles.infoOrder}
+              onClick={() => {
+                navigate(`${currentSlide.split('-').at(-1)}`);
+              }}
+            >
+              ORDER NOW
+            </button>
           </div>
           <img
             key={currentSlide}

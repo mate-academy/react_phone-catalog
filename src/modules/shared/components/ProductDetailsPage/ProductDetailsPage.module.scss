@@ -172,6 +172,7 @@
 
 .capacityLabel{
   appearance: none;
+  box-sizing: border-box;
 
   display: inline-flex;
   text-align: center;
@@ -301,9 +302,11 @@
   margin-top: 80px;
   display: flex;
   gap: 150px;
+  font-weight: 500;
 
   .legendText{
     color: #89939A;
+    padding-block:7px ;
   }
 
   .legendName{
@@ -315,6 +318,8 @@
 
   .legendTitle{
     font-weight: 600;
+    white-space: nowrap;
+    text-transform: capitalize;
   }
 
   .description{
@@ -348,6 +353,7 @@
   flex: 1;
   .legendTable{
     width: 100%;
+    min-width: 466px;
     .result{
       display: flex;
       justify-content: flex-end;
@@ -355,5 +361,14 @@
       font-weight: 500;
     }
   }
+}
+
+.notFoundPhoto{
+  width: 100%;
+  height: 100vh;
+}
+
+.notFoundText{
+  text-align: center;
 }
 

@@ -5,10 +5,6 @@
   height: 100%;
   font-size: 25px;
 
-  @include on-mobile {
-    font-size: 20px;
-    font-weight: 800;
-  }
 }
 
 .info {
@@ -17,8 +13,13 @@
   height: 500px;
   margin-inline: -16px;
 
+  @include on-tablet{
+    height: 33vw;
+  }
+
   @include on-mobile {
     width: 100vw;
+    height: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
   }
@@ -26,7 +27,7 @@
 
 .infoScroll {
   flex: 0 0 32px;
-  height: 500px;
+  height: 100%;
   background-color: #fff;
   border: 1px solid #b4bdc3;
   cursor: pointer;
@@ -53,19 +54,43 @@
 
   .infoButton{
     position: absolute;
-    background-color: #313237;
+    left: 10px;
+    top: 10px;
+    background: #1b1b1d;
     width: 40%;
-    margin: 20px;
     height: 90%;
     border-radius: 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include on-mobile{
+      display: none;
+    }
 
     .block{
       margin: 50px;
 
+      @include on-tablet{
+        margin: 20px;
+      }
+
+
       .text{
         margin: 0;
-        font-size: 56px;
-        color: #7952F6;
+        font-size: 40px;
+        color: #7b4df8;
+
+        &::after{
+          content: '👌';
+        }
+
+        @include on-mobile{
+          &::after{
+          content: '';
+          }
+        }
       }
 
       .small{
@@ -73,21 +98,28 @@
         font-weight: 500;
         font-size: 20px;
         margin: 0;
+
       }
 
-      .infoOrder{
-        background-color: #313237;
-        margin-top: 100px;
-        height: 60px;
-        border-radius: 50px;
-        width: 40%;
-        color: #fff;
-        border: 1px solid #b4bdc3;
+    }
 
-        &:hover{
-          cursor: pointer;
-          border-color: black;
-        }
+    .infoOrder{
+      margin: 0 0 50px 50px;
+      background: transparent;
+      height: 60px;
+      border-radius: 50px;
+      width: 40%;
+      color: #fff;
+       border: 1px solid #3a3a40;
+
+      &:hover{
+        cursor: pointer;
+        border-color: black;
+      }
+
+      @include on-tablet{
+        height: 40px;
+        margin: 0 0 20px 20px;
       }
     }
   }
@@ -102,6 +134,10 @@
   object-fit: cover;
 
   animation: fade-in 0.2s ease-in-out;
+
+  @include on-mobile{
+    width: 100%;
+  }
 }
 
 .bar {
@@ -133,4 +169,17 @@
   to {
     opacity: 1;
   }
+}
+
+.main {
+  font-size: clamp(20px, 2vw, 25px);
+  font-weight: 800;
+}
+
+.infoTitle .infoButton .block .text {
+  font-size: clamp(20px, 3.2vw, 40px);
+}
+
+.infoTitle .infoButton .block .small {
+  font-size: clamp(10px, 1.6vw, 20px);
 }

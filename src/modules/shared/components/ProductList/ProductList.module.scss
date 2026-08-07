@@ -79,7 +79,7 @@
   grid-template-rows: 190px 48px 36px 1fr 40px;
   gap: 10px;
 
-  transition: transform 0.3s ease-in;
+  transition: transform 0.15s ease-in;
 
   &:hover {
     transform: scale(1.1);
@@ -102,6 +102,7 @@
 
 .catalogPrice {
   display: flex;
+  font-size: 30px;
   gap: 8px;
   margin: 0;
 }
