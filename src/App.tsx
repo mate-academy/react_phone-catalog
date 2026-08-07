@@ -87,99 +87,129 @@ export const App = () => {
             <Header />
 
             <div className="page">
-              {isLoading ? (
-                <Loader />
-              ) : isError ? (
-                <ErrorItem message="Oops. Something went wrong.." />
-              ) : (
-                <Routes>
-                  <Route
-                    path="/"
-                    element={
-                      <Home
-                        newBrandProducts={newBrandProducts}
-                        hotProducts={hotProducts}
-                        products={products}
-                      />
-                    }
-                  />
-                  <Route path="home" element={<Navigate to="/" replace />} />
-                  {/* 1 Сторінка телефонів (URL: /phones) */}
-                  <Route
-                    path="/phones"
-                    element={
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <Home
+                      newBrandProducts={newBrandProducts}
+                      hotProducts={hotProducts}
+                      products={products}
+                    />
+                  }
+                />
+                <Route path="home" element={<Navigate to="/" replace />} />
+                {/* 1 Сторінка телефонів (URL: /phones) */}
+                <Route
+                  path="/phones"
+                  element={
+                    isLoading ? (
+                      <Loader />
+                    ) : isError ? (
+                      <ErrorItem message="Oops. Something went wrong.." />
+                    ) : (
                       <CatalogPage
                         products={products}
                         category="phones"
                         title="Mobile phones"
                       />
-                    }
-                  />
-                  {/* 2. Сторінка планшетів (URL: /tablets) */}
-                  <Route
-                    path="/tablets"
-                    element={
+                    )
+                  }
+                />
+                {/* 2. Сторінка планшетів (URL: /tablets) */}
+                <Route
+                  path="/tablets"
+                  element={
+                    isLoading ? (
+                      <Loader />
+                    ) : isError ? (
+                      <ErrorItem message="Oops. Something went wrong.." />
+                    ) : (
                       <CatalogPage
                         products={products}
                         category="tablets"
                         title="Tablets"
                       />
-                    }
-                  />
-                  {/* 3. Сторінка аксессуарів (URL: /accessories) */}
-                  <Route
-                    path="/accessories"
-                    element={
+                    )
+                  }
+                />
+                {/* 3. Сторінка аксессуарів (URL: /accessories) */}
+                <Route
+                  path="/accessories"
+                  element={
+                    isLoading ? (
+                      <Loader />
+                    ) : isError ? (
+                      <ErrorItem message="Oops. Something went wrong.." />
+                    ) : (
                       <CatalogPage
                         products={products}
                         category="accessories"
                         title="Accessories"
                       />
-                    }
-                  />
-                  {/* 4. Сторінка обраних (URL: /favourites) */}
-                  <Route
-                    path="/favourites"
-                    element={
-                      <Favourites category="favourites" products={products} />
-                    }
-                  />
-                  {/* 5. Сторінка кошик (URL: /cart) */}
-                  <Route
-                    path="/cart"
-                    element={<Cart category="cart" products={products} />}
-                  />
-                  {/* Деталі товарів */}
-                  <Route
-                    path="/phones/:productId"
-                    element={
+                    )
+                  }
+                />
+                {/* 4. Сторінка обраних (URL: /favourites) */}
+                <Route
+                  path="/favourites"
+                  element={
+                    <Favourites category="favourites" products={products} />
+                  }
+                />
+                {/* 5. Сторінка кошик (URL: /cart) */}
+                <Route
+                  path="/cart"
+                  element={<Cart category="cart" products={products} />}
+                />
+                {/* Деталі товарів */}
+                <Route
+                  path="/phones/:productId"
+                  element={
+                    isLoading ? (
+                      <Loader />
+                    ) : isError ? (
+                      <ErrorItem message="Oops. Something went wrong.." />
+                    ) : (
                       <ProductDetailsPage
                         likeProducts={likeProducts}
                         category="Phones"
                       />
-                    }
-                  />
-                  <Route
-                    path="/tablets/:productId"
-                    element={
+                    )
+                  }
+                />
+                <Route
+                  path="/tablets/:productId"
+                  element={
+                    isLoading ? (
+                      <Loader />
+                    ) : isError ? (
+                      <ErrorItem message="Oops. Something went wrong.." />
+                    ) : (
                       <ProductDetailsPage
                         likeProducts={likeProducts}
                         category="Tablets"
                       />
-                    }
-                  />
-                  <Route
-                    path="/accessories/:productId"
-                    element={
+                    )
+                  }
+                />
+                <Route
+                  path="/accessories/:productId"
+                  element={
+                    isLoading ? (
+                      <Loader />
+                    ) : isError ? (
+                      <ErrorItem message="Oops. Something went wrong.." />
+                    ) : (
                       <ProductDetailsPage
                         likeProducts={likeProducts}
                         category="Accessories"
                       />
-                    }
-                  />
-                  <Route path="*" element={<NotFoundPage />} />
-                </Routes>
-              )}
+                    )
+                  }
+                />
+                <Route path="*" element={<NotFoundPage />} />
+              </Routes>
             </div>
 
             <Footer />

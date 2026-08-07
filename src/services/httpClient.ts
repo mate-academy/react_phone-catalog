@@ -1,7 +1,8 @@
 // .. httpClient.ts
 import type { Product } from '../types/Product';
 
-const API_URL = 'api/products.json';
+// import.meta.env.BASE_URL гарантує правильний шлях і на Localhost, і на GitHub Pages
+const API_URL = `${import.meta.env.BASE_URL}api/products.json`;
 
 export function getProducts(): Promise<Product[]> {
   return fetch(API_URL).then(response => {
