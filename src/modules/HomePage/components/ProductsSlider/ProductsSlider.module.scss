@@ -1,0 +1,171 @@
+@use '../../../shared/styles/variables' as *;
+@use '../../../shared/styles/media' as *;
+
+.brandSlider {
+  height: 100%;
+  margin-block: 100px;
+  font-size: 30px;
+}
+
+.sliderInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.sliderInfoTitle {
+  margin: 0;
+  font-size: 32px;
+}
+
+.scroll {
+  height: 30px;
+  width: 30px;
+  text-decoration: none;
+  background-color: #fff;
+  margin-inline: 10px;
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+    border-color: #e2e6e9;
+  }
+}
+
+.products {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+  gap: 16px;
+}
+
+
+.catalog {
+  box-sizing: border-box;
+  width: 250px;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #e2e6e9;
+  display: grid;
+  grid-template-rows: 190px 48px 36px 1fr 40px;
+  gap: 10px;
+  transition:
+  box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba($color: #17203166, $alpha: 0.4);
+  }
+}
+
+.catalogPhoto {
+  width: 170px;
+  height: 190px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.catalogLink{
+  display: flex;
+  flex-direction: column;
+  text-decoration:none;
+  color: #313237;
+  font-size: 14px;
+}
+
+.catalogName {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.catalogPrice {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+}
+
+.catalogCurrentPrice,
+.catalogOldPrice {
+  margin: 0;
+  font-size: 22px;
+}
+
+.catalogOldPrice {
+  color: #89939a;
+  font-weight: 400;
+  text-decoration: line-through;
+}
+
+.catalogSettings {
+  padding-top: 10px;
+  border-top: 1px solid #e2e6e9;
+  font-size: 12px;
+  font-weight: 400;
+
+  .table {
+    width: 100%;
+
+    tr{
+      font-size: 12px;
+    }
+  }
+
+  .title {
+    color: #89939a;
+  }
+
+  .result {
+    text-align: right;
+  }
+
+}
+
+.catalogButtons {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+
+  .button {
+    height: 40px; cursor: pointer;
+    font-size: 14px;
+  }
+
+  .buttonsBuy {
+    flex: 1;
+    background-color: #313237;
+    color: #fff;
+    border: 0;
+    transition:
+    box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba($color: #17203166, $alpha: 0.4);
+    }
+
+  }
+
+  .buttonsLike {
+    flex: 0 0 40px;
+    margin: 0;
+    background-color: #fff;
+  }
+
+}
+
+.selectedPhone {
+  flex: 1;
+  color: #27ae60;
+  border: 1px solid #e2e6e9;
+  background-color: #fff;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba($color: #17203166, $alpha: 0.4);
+  }
+
+}
+
+.sliderNav {
+  display: flex;
+}

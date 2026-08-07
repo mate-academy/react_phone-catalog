@@ -1,0 +1,78 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/media' as *;
+
+.footer {
+  height: 96px;
+  padding-inline: 156px;
+  display: grid;
+  grid-template-areas: 'logo menu tohome';
+  align-items: center;
+  border-top: 1px solid #e2e6e9;
+
+  @include on-tablet{
+    padding-inline:32px ;
+  }
+
+  @include on-mobile {
+    padding-inline: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    height: 200px;
+
+    .footerNavbar {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+
+    .footerTitle {
+      margin-block: 8px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+  }
+}
+
+.footerNavbar {
+  grid-area: menu;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  gap: auto;
+}
+
+.footerTitle {
+  grid-area: logo;
+  text-decoration: none;
+  box-sizing: border-box;
+  color: #89939a;
+}
+
+.buttonUpLink {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  color: #89939a;
+  text-decoration: none;
+}
+
+.scrollButton {
+  height: 30px;
+  width: 30px;
+  text-decoration: none;
+  background-color: #fff;
+  margin-inline: 10px;
+}
+
+.buttonUp {
+  grid-area: tohome;
+  margin-left: auto;
+
+  @include on-mobile{
+    margin-right: auto;
+    margin-left: 0;
+  }
+}

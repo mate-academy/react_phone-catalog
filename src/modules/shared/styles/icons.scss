@@ -1,0 +1,50 @@
+@use './variables' as *;
+@use './media' as *;
+
+.block {
+  width: $cataloge-width-height;
+  height: $cataloge-width-height;
+
+  @include on-tablet {
+    width: $cataloge-width-height-tablet;
+    height: $cataloge-width-height-tablet;
+  }
+
+  @include on-mobile {
+    width: $cataloge-width-height-mobile;
+    height: $cataloge-width-height-mobile;
+  }
+
+  margin-bottom: 20px;
+}
+
+.arrow {
+  display: flex;
+}
+
+.logo{
+  width: 16px;
+  height: 16px;
+}
+
+
+.icons {
+  border: 1px solid #b4bdc3;
+  cursor: pointer;
+  padding: 10px;
+  text-decoration: none;
+
+  &:hover {
+    border: 1px solid #313237;
+    transition: transform, 0.2s ease;
+
+    .logo,
+    .arrow {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.iconArrow {
+  margin-inline: 10px;
+}
