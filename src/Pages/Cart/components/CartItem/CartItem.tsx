@@ -3,6 +3,10 @@ import styles from './CartItem.module.scss';
 import { useCart } from '../../../../context/CartContext'; // Запуши шлях до свого контексту
 import type { Product } from '../../../../types/Product';
 
+import plus from '/icons/plus.svg';
+import minus from '/icons/minus.svg';
+import close from '/icons/close.svg';
+
 interface CartItemProps {
   product: Product;
   quantity: number;
@@ -24,11 +28,7 @@ export const CartItem = ({ product, quantity }: CartItemProps) => {
           className={styles.btn}
           onClick={() => removeFromCart(product.itemId)}
         >
-          <img
-            src="/icons/close-gray.svg"
-            alt="Icon close"
-            className={styles.iconImage}
-          />
+          <img src={close} alt="Icon close" className={styles.iconImage} />
         </button>
 
         <img src={product.image} alt="Product photo" className={styles.image} />
@@ -40,7 +40,7 @@ export const CartItem = ({ product, quantity }: CartItemProps) => {
           {/* Зменшити кількість (-) */}
           <span className={styles.countIcon}>
             <img
-              src="/icons/minus.svg"
+              src={minus}
               alt="Icon minus"
               className={`${styles.iconImage} ${styles.minus}`}
               onClick={() => decreaseQuantity(product.itemId)}
@@ -53,7 +53,7 @@ export const CartItem = ({ product, quantity }: CartItemProps) => {
           {/* Збільшити кількість (+) */}
           <span className={`${styles.countIcon} ${styles.black}`}>
             <img
-              src="/icons/plus.svg"
+              src={plus}
               alt="Icon plus"
               className={styles.iconImage}
               onClick={() => increaseQuantity(product.itemId)}
