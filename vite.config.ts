@@ -13,6 +13,7 @@ export default defineConfig({
       '@modules': path.resolve(__dirname, 'src/modules'),
       '@public': path.resolve(__dirname, 'public'),
       '@api': path.resolve(__dirname, 'src/api'),
+      '@src': path.resolve(__dirname, 'src'),
     },
   },
 });

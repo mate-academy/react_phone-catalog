@@ -1,19 +1,19 @@
 // #regionImport
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 import styles from './FavouritesPage.module.scss';
 import stylesCard from '@shared/ui/ProductCard/ProductCard.module.scss';
-
 import { Container } from '@shared/components/Container';
-import { useFavourites } from '@shared/context/FavouritesContext';
 import { PageHeader } from '@shared/ui/PageHeader';
 import { ProductCard } from '@shared/ui/ProductCard';
 import { Typography } from '@shared/ui/Typography';
 import { FadeIn } from '@shared/ui/FadeIn';
-import { useTranslation } from 'react-i18next';
+import { useAppSelector } from '@src/app/hooks';
 // #endregion
 
 export const FavouritesPage: React.FC = () => {
-  const { items } = useFavourites();
+  const { items } = useAppSelector(state => state.favourites);
   const { t } = useTranslation();
 
   return (

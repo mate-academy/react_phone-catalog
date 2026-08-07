@@ -53,9 +53,9 @@
   "product": {
     "availableColors": "Available colors",
     "selectCapacity": "Select capacity",
-
     "techSpecs": "Tech specs",
-    "youMayAlsoLike": "You may also like"
+    "youMayAlsoLike": "You may also like",
+    "notFound": "Product was not found"
   },
 
   "favourites": {
@@ -99,6 +99,10 @@
 
   "pageNotFound": {
     "message": "Page not found"
+  },
+
+  "suggestedProducts": {
+    "message": "Suggested products was not found"
   },
 
   "footer": {

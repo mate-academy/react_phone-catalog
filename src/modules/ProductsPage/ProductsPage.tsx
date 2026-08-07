@@ -1,12 +1,12 @@
 // #regionImport
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { sortProducts } from '@shared/utils/sortProducts';
+import { useTranslation } from 'react-i18next';
 
 import styles from './ProductsPage.module.scss';
 import stylesCard from '@shared/ui/ProductCard/ProductCard.module.scss';
 
-import { useFilteredProducts } from './hooks/useFilteredProducts';
+import { sortProducts } from '@shared/utils/sortProducts';
 import { usePagination } from '@hooks/usePagination';
 import { Pagination } from './components/Pagination';
 
@@ -22,10 +22,11 @@ import { ErrorMessage } from '@shared/ui/ErrorMessage';
 import { PageHeader } from '@shared/ui/PageHeader';
 import { ProductsSkeleton } from '@shared/ui/Skeletons/ProductsSkeleton';
 import { FadeIn } from '@shared/ui/FadeIn';
-import { useTranslation } from 'react-i18next';
 import { SearchInput } from './components/SearchInput';
 import { useProductSearch } from './hooks/useProductSearch';
 import { Typography } from '@shared/ui/Typography';
+import { useAppSelector } from '@src/app/hooks';
+import { selectProductsByCategory } from '@src/features/products/selectors';
 
 // #endregion
 
@@ -42,11 +43,13 @@ export const ProductsPage: React.FC<Props> = ({
   title,
   breadcrumb,
 }) => {
-  const { products, isLoading, hasError, loadProducts } =
-    useFilteredProducts(currentCategory);
+  const { t } = useTranslation();
+  const { isLoading, hasError } = useAppSelector(state => state.products);
+  const items = useAppSelector(state =>
+    selectProductsByCategory(state, currentCategory),
+  );
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const { t } = useTranslation();
 
   const sort = searchParams.get('sort') || 'age';
   const perPage = searchParams.get('perPage') || 'all';
@@ -71,7 +74,7 @@ export const ProductsPage: React.FC<Props> = ({
     setSearchParams(params);
   };
 
-  const sortedProducts = sortProducts(products, sort);
+  const sortedProducts = sortProducts(items, sort);
 
   const {
     query,
@@ -142,11 +145,11 @@ export const ProductsPage: React.FC<Props> = ({
           </FadeIn>
         )}
 
-        {!isLoading && hasError && <ErrorMessage onReload={loadProducts} />}
+        {!isLoading && hasError && <ErrorMessage />}
 
         {isLoading && <ProductsSkeleton itemsPerPage={itemsPerPage} />}
 
-        {!isLoading && !hasError && !hasNoResults && products.length > 0 && (
+        {!isLoading && !hasError && !hasNoResults && items.length > 0 && (
           <FadeIn key={currentPage} className={styles.productsPageList}>
             {visibleProducts.map(product => (
               <ProductCard

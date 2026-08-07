@@ -1,17 +1,20 @@
 // #regionImport
 import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './ProductCard.module.scss';
+import { useTranslation } from 'react-i18next';
 
-import { useFavourites } from '@shared/context/FavouritesContext';
-import { useCart } from '@shared/context/CartContext';
+import styles from './ProductCard.module.scss';
 import { getShortSpecs } from '@shared/utils/getShortSpecs';
 
 import { Product } from 'src/types/Product';
 import { Button } from '@shared/ui/Button';
 import { FavouriteButton } from '@shared/ui/FavouriteButton';
 import { Divider } from '../Divider';
-import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from '@src/app/hooks';
+import { selectIsFavourite } from '@src/features/favourites/selectors';
+import { actions as favouriteActions } from '@src/features/favourites';
+import { selectIsCart } from '@src/features/cart/selectors';
+import { actions as cartActions } from '@src/features/cart';
 // #endregion
 
 type Props = {
@@ -22,15 +25,20 @@ type Props = {
 
 export const ProductCard = forwardRef<HTMLDivElement, Props>(
   ({ product, showOldPrice = true, className }, ref) => {
-    const { toggle, isFavourite } = useFavourites();
-    const { toggleCartItem: toggleCartItem, isInCart } = useCart();
+    const dispatch = useAppDispatch();
+    const isFavourite = useAppSelector(state =>
+      selectIsFavourite(state, product.itemId),
+    );
+    const isInCart = useAppSelector(state =>
+      selectIsCart(state, product.itemId),
+    );
     const { t } = useTranslation();
 
     const specs = getShortSpecs(product);
 
     return (
       <article ref={ref} className={`${styles.card} ${className || ''}`}>
-        <Link to={`/product/${product.itemId}`}>
+        <Link to={`/product/${product.category}/${product.itemId}`}>
           <div className={styles.cardImageWrapper}>
             <img
               className={styles.cardImage}
@@ -40,7 +48,10 @@ export const ProductCard = forwardRef<HTMLDivElement, Props>(
           </div>
         </Link>
 
-        <Link to={`/product/${product.itemId}`} className={styles.cardTitle}>
+        <Link
+          to={`/product/${product.category}/${product.itemId}`}
+          className={styles.cardTitle}
+        >
           {product.name}
         </Link>
 
@@ -69,20 +80,18 @@ export const ProductCard = forwardRef<HTMLDivElement, Props>(
           <Button
             onClick={e => {
               e.preventDefault();
-              toggleCartItem(product);
+              dispatch(cartActions.toggleCartItem(product));
             }}
-            isActive={isInCart(product.itemId)}
+            isActive={isInCart}
           >
-            {isInCart(product.itemId)
-              ? t('buttons.added')
-              : t('buttons.addToCard')}
+            {isInCart ? t('buttons.added') : t('buttons.addToCard')}
           </Button>
 
           <FavouriteButton
-            isActive={isFavourite(product.itemId)}
+            isActive={isFavourite}
             onClick={e => {
               e.preventDefault();
-              toggle(product);
+              dispatch(favouriteActions.toggleItem(product));
             }}
           />
         </div>

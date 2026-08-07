@@ -10,7 +10,8 @@
       "@hooks/*": ["src/hooks/*"],
       "@modules/*": ["src/modules/*"],
       "@public/*": ["public/*"],
-      "@api/*": ["src/api/*"]
+      "@api/*": ["src/api/*"],
+      "@src/*": ["src/*"]
     }
   }
 }

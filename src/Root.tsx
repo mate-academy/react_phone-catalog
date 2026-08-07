@@ -8,36 +8,31 @@ import { TabletsPage } from '@modules/TabletsPage';
 import { AccessoriesPage } from '@modules/AccessoriesPage';
 import { ProductDetailsPage } from '@modules/ProductDetailsPage';
 import { FavouritesPage } from '@modules/FavouritesPage';
-import { FavouritesProvider } from '@shared/context/FavouritesContext';
-import { CartProvider } from '@shared/context/CartContext';
 import { CartPage } from '@modules/CartPage';
-import { ThemeProvider } from '@shared/context/ThemeContext';
-import { SkeletonProvider } from '@shared/context/SkeletonProvider';
+import { SkeletonProvider } from '@src/providers/SkeletonProvider';
+import { Provider } from 'react-redux';
+import { store } from './app/store';
 
 export const Root = () => (
-  <HashRouter>
-    <ThemeProvider>
+  <Provider store={store}>
+    <HashRouter>
       <SkeletonProvider>
-        <FavouritesProvider>
-          <CartProvider>
-            <Routes>
-              <Route path="/" element={<App />}>
-                <Route index element={<HomePage />} />
-                <Route path="phones" element={<PhonesPage />} />
-                <Route path="tablets" element={<TabletsPage />} />
-                <Route path="accessories" element={<AccessoriesPage />} />
-                <Route
-                  path="product/:productId"
-                  element={<ProductDetailsPage />}
-                />
-                <Route path="favourites" element={<FavouritesPage />} />
-                <Route path="cart" element={<CartPage />} />
-                <Route path="*" element={<NotFoundPage />} />
-              </Route>
-            </Routes>
-          </CartProvider>
-        </FavouritesProvider>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<HomePage />} />
+            <Route path="phones" element={<PhonesPage />} />
+            <Route path="tablets" element={<TabletsPage />} />
+            <Route path="accessories" element={<AccessoriesPage />} />
+            <Route
+              path="product/:category/:productId"
+              element={<ProductDetailsPage />}
+            />
+            <Route path="favourites" element={<FavouritesPage />} />
+            <Route path="cart" element={<CartPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
       </SkeletonProvider>
-    </ThemeProvider>
-  </HashRouter>
+    </HashRouter>
+  </Provider>
 );

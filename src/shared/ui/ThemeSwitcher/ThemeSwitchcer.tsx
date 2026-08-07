@@ -1,16 +1,22 @@
 import classNames from 'classnames';
-
 import React from 'react';
+
 import styles from './ThemeSwitcher.module.scss';
 import IconSun from '@public/img/theme/sun.svg?react';
 import IconMoon from '@public/img/theme/moon.svg?react';
-import { useTheme } from '@shared/context/ThemeContext';
+import { useAppDispatch, useAppSelector } from '@src/app/hooks';
+import { toggleTheme } from '@src/features/theme';
 
 export const ThemeSwitcher: React.FC = () => {
-  const { theme, toggleTheme } = useTheme();
+  const dispatch = useAppDispatch();
+  const theme = useAppSelector(state => state.theme);
 
   return (
-    <button type="button" className={styles.themeSwitch} onClick={toggleTheme}>
+    <button
+      type="button"
+      className={styles.themeSwitch}
+      onClick={() => dispatch(toggleTheme())}
+    >
       <IconSun className={styles.themeSwitchIcon} />
 
       <span

@@ -1,29 +1,33 @@
-import { CartItemType, useCart } from '@shared/context/CartContext';
 import React from 'react';
-import styles from './CartItem.module.scss';
 import { Link } from 'react-router-dom';
+
+import styles from './CartItem.module.scss';
 import IconRemove from '@public/img/icons/remove.svg?react';
 import IconMinus from '@public/img/icons/icon-minus.svg?react';
 import IconPlus from '@public/img/icons/icon-plus.svg?react';
+import { useAppDispatch } from '@src/app/hooks';
+import { actions as cartActions, CartProduct } from '@src/features/cart';
 
 type Props = {
-  item: CartItemType;
+  item: CartProduct;
 };
 
 export const CartItem: React.FC<Props> = ({ item }) => {
-  const { removeFromCart, increaseQuantity, decreaseQuantity } = useCart();
+  const dispatch = useAppDispatch();
 
   return (
     <article className={styles.item}>
       <div className={styles.itemProduct}>
         <button
           className={styles.itemRemove}
-          onClick={() => removeFromCart(item.product.itemId)}
+          onClick={() =>
+            dispatch(cartActions.removeCartItem(item.product.itemId))
+          }
         >
           <IconRemove className={styles.itemIconRemove} />
         </button>
 
-        <Link to={`/product/${item.product.itemId}`}>
+        <Link to={`/product/${item.product.category}/${item.product.itemId}`}>
           <div className={styles.itemProductImg}>
             <img
               src={item.product.image}
@@ -34,7 +38,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         </Link>
 
         <Link
-          to={`/product/${item.product.itemId}`}
+          to={`/product/${item.product.category}/${item.product.itemId}`}
           className={styles.itemTitle}
         >
           {item.product.name}
@@ -45,7 +49,9 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         <div className={styles.itemProductAdded}>
           <button
             className={styles.itemQuantity}
-            onClick={() => decreaseQuantity(item.product.itemId)}
+            onClick={() =>
+              dispatch(cartActions.decrementQuantity(item.product.itemId))
+            }
             disabled={item.quantity === 1}
           >
             <IconMinus className={styles.itemIcon} />
@@ -55,7 +61,9 @@ export const CartItem: React.FC<Props> = ({ item }) => {
 
           <button
             className={styles.itemQuantity}
-            onClick={() => increaseQuantity(item.product.itemId)}
+            onClick={() =>
+              dispatch(cartActions.incrementQuantity(item.product.itemId))
+            }
           >
             <IconPlus className={styles.itemIcon} />
           </button>

@@ -1,12 +1,10 @@
 // #regionImport
 import React from 'react';
-import styles from './Header.module.scss';
-
 import { Link } from 'react-router-dom';
+
+import styles from './Header.module.scss';
 import { Nav } from '../Nav';
 import { HeaderAction } from './HeaderAction';
-import { useFavourites } from '@shared/context/FavouritesContext';
-import { useCart } from '@shared/context/CartContext';
 
 import Logo from '@public/img/logo/logo.svg?react';
 import IconBurgerMenu from '@public/img/icons/burger-menu.svg?react';
@@ -16,6 +14,7 @@ import CartIcon from '@public/img/icons-nav/shopping-cart.svg?react';
 
 import { LanguageSwitcher } from '@shared/ui/LanguageSwitcher';
 import { ThemeSwitcher } from '@shared/ui/ThemeSwitcher';
+import { useAppSelector } from '@src/app/hooks';
 // #endregion
 type Props = {
   isMenuOpen: boolean;
@@ -23,8 +22,8 @@ type Props = {
 };
 
 export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
-  const { items: favourites } = useFavourites();
-  const { items: cart } = useCart();
+  const favourites = useAppSelector(state => state.favourites.items);
+  const cart = useAppSelector(state => state.cart.items);
 
   return (
     <header className={styles.header}>

@@ -1,26 +1,27 @@
 // #regionImport
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 import { Intro } from './components/Intro';
 import { ProductsSlider } from './components/ProductsSlider';
 import { Container } from '@shared/components/Container';
 import { Categories } from './components/Categories';
-import {
-  getDiscountedProducts,
-  getNewestProducts,
-} from '@shared/utils/sortProducts';
 import { ErrorMessage } from '@shared/ui/ErrorMessage';
 import { SliderSkeleton } from '@shared/ui/Skeletons/SliderSkeleton';
 import { FadeIn } from '@shared/ui/FadeIn';
-import { useProducts } from './hooks/useProducts';
-import { useTranslation } from 'react-i18next';
+import { useAppSelector } from '@src/app/hooks';
+import {
+  selectDiscountedProducts,
+  selectNewestProducts,
+} from '@src/features/products/selectors';
 // #endregion
 
 export const HomePage: React.FC = () => {
-  const { products, isLoading, hasError, loadProducts } = useProducts();
+  const { isLoading, hasError } = useAppSelector(state => state.products);
   const { t } = useTranslation();
 
-  const newestProducts = getNewestProducts(products);
-  const hotPrices = getDiscountedProducts(products);
+  const newestProducts = useAppSelector(selectNewestProducts);
+  const hotPrices = useAppSelector(selectDiscountedProducts);
 
   return (
     <>
@@ -30,7 +31,7 @@ export const HomePage: React.FC = () => {
 
       {!isLoading && hasError && (
         <Container>
-          <ErrorMessage onReload={loadProducts} />
+          <ErrorMessage />
         </Container>
       )}
 
@@ -54,7 +55,7 @@ export const HomePage: React.FC = () => {
 
       {!isLoading && hasError && (
         <Container>
-          <ErrorMessage onReload={loadProducts} />
+          <ErrorMessage />
         </Container>
       )}
 

@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 import React from 'react';
-import styles from './LanguageSwitcher.module.scss';
 import { useTranslation } from 'react-i18next';
+
+import styles from './LanguageSwitcher.module.scss';
 
 export const LanguageSwitcher: React.FC = () => {
   const { i18n } = useTranslation();

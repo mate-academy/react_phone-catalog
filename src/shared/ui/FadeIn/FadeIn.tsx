@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-
 import React from 'react';
+
 import styles from './FadeIn.module.scss';
 
 type Props = {

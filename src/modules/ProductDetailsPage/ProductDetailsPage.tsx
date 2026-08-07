@@ -1,23 +1,15 @@
 // #regionImport
-import classNames from 'classnames';
-
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import styles from './ProductDetailsPage.module.scss';
-import { Category, CATEGORY_CONFIG } from '@shared/constants/categoryConfig';
-
-import { useFavourites } from '@shared/context/FavouritesContext';
-import { useCart } from '@shared/context/CartContext';
-
 import { getFullSpecs } from '@shared/utils/getFullSpecs';
 import { getKeySpecs } from '@shared/utils/getKeySpecs';
 
 import { PageHeader } from '@shared/ui/PageHeader';
 import { Typography } from '@shared/ui/Typography';
 import { DetailsSkeleton } from '@shared/ui/Skeletons/DetailsSkeleton';
-import { SliderSkeleton } from '@shared/ui/Skeletons/SliderSkeleton';
 import { FadeIn } from '@shared/ui/FadeIn';
 import { Divider } from '@shared/ui/Divider';
 
@@ -30,32 +22,58 @@ import { ProductSpecs } from './components/ProductSpecs';
 import { ColorPicker } from './components/ColorPicker';
 import { CapacityPicker } from './components/CapacityPicker';
 
-import { useProductDetails } from './hooks/useProductDetails';
-import { useProductVariants } from './hooks/useProductVariants';
-import { useSuggestedProducts } from './hooks/useSuggestedProducts';
-import { useCurrentProduct } from './hooks/useCurrentProduct';
-import { PriveActions } from './components/PriceActions';
-import { useTranslation } from 'react-i18next';
+import { PriceActions } from './components/PriceActions';
+import { useAppDispatch, useAppSelector } from '@src/app/hooks';
+import {
+  selectProductById,
+  selectVariants,
+} from '@src/features/productDetails/selector';
+import { fetchCategoryDetails } from '@src/features/productDetails';
+import { useProductParams } from './hooks/useProductParams';
+import { CATEGORY_CONFIG } from '@shared/constants/categoryConfig';
+import { selectSuggestedProducts } from '@src/features/products/selectors';
+import { ProductDetails } from '@src/types/ProductDetails';
 // #endregion
 
 export const ProductDetailsPage: React.FC = () => {
-  const { productId = '' } = useParams();
+  const { category, productId } = useProductParams();
   const navigate = useNavigate();
-  const { toggle, isFavourite } = useFavourites();
-  const { toggleCartItem: toggleCartItem, isInCart } = useCart();
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
 
-  const { product, isInitialLoading, isChangingVariant, hasError } =
-    useProductDetails(productId);
+  const { items, isLoading, hasError } = useAppSelector(
+    state => state.productDetails,
+  );
 
-  const { variants } = useProductVariants(product);
+  useEffect(() => {
+    if (!category) {
+      return;
+    }
 
-  const { suggested, isSuggestedLoading, hasSuggestedError } =
-    useSuggestedProducts(product);
+    if (!items[category]) {
+      dispatch(fetchCategoryDetails(category));
+    }
+  }, [dispatch, category, items]);
 
-  const { currentProduct } = useCurrentProduct(product);
+  const product = useAppSelector(state =>
+    selectProductById(state, category, productId),
+  );
 
-  if (isInitialLoading) {
+  const suggested = useAppSelector(state =>
+    selectSuggestedProducts(state, category),
+  );
+
+  const EMPTY_VARIANTS: ProductDetails[] = [];
+
+  const variants = useAppSelector(state => {
+    if (!product) {
+      return EMPTY_VARIANTS;
+    }
+
+    return selectVariants(state, category, product.namespaceId);
+  });
+
+  if (isLoading || !items[category]) {
     return (
       <Container>
         <DetailsSkeleton />
@@ -67,13 +85,11 @@ export const ProductDetailsPage: React.FC = () => {
     return (
       <Container>
         <Typography variant="h3" className={styles.productNotFound}>
-          Product was not found
+          {t('product.notFound')}
         </Typography>
       </Container>
     );
   }
-
-  const category = CATEGORY_CONFIG[product.category as Category];
 
   const handleColorChange = (selectedColor: string) => {
     const variant = variants.find(
@@ -82,7 +98,7 @@ export const ProductDetailsPage: React.FC = () => {
     );
 
     if (variant) {
-      navigate(`/product/${variant.id}`);
+      navigate(`/product/${variant.category}/${variant.id}`);
     }
   };
 
@@ -93,28 +109,14 @@ export const ProductDetailsPage: React.FC = () => {
     );
 
     if (variant) {
-      navigate(`/product/${variant.id}`);
-    }
-  };
-
-  const handleToggleFavourite = (e: React.MouseEvent<Element, MouseEvent>) => {
-    e.preventDefault();
-
-    if (currentProduct) {
-      toggle(currentProduct);
-    }
-  };
-
-  const handleAddToCart = (e: React.MouseEvent<Element, MouseEvent>) => {
-    e.preventDefault();
-
-    if (currentProduct) {
-      toggleCartItem(currentProduct);
+      navigate(`/product/${variant.category}/${variant.id}`);
     }
   };
 
   const fullSpecs = getFullSpecs(product);
   const keySpecs = getKeySpecs(product);
+
+  const currentCategory = CATEGORY_CONFIG[category];
 
   return (
     <>
@@ -123,17 +125,16 @@ export const ProductDetailsPage: React.FC = () => {
           <PageHeader
             title={product.name}
             breadcrumbs={[
-              { label: t(category.breadcrumb), href: category.href },
+              {
+                label: t(currentCategory.breadcrumb),
+                href: currentCategory.href,
+              },
               { label: product.name },
             ]}
             showBack
           />
 
-          <div
-            className={classNames(styles.details, {
-              [styles.detailsLoading]: isChangingVariant,
-            })}
-          >
+          <div className={styles.details}>
             <ImageGallery images={product.images} />
 
             <div className={styles.detailsInfoProduct}>
@@ -141,7 +142,6 @@ export const ProductDetailsPage: React.FC = () => {
                 colors={product.colorsAvailable}
                 activeColor={product.color}
                 onChange={handleColorChange}
-                disabled={isChangingVariant}
               />
 
               <div className={styles.detailsProductId}>ID: 802390</div>
@@ -152,19 +152,11 @@ export const ProductDetailsPage: React.FC = () => {
                 capacities={product.capacityAvailable}
                 activeCapacity={product.capacity}
                 onChange={handleCapacityChange}
-                disabled={isChangingVariant}
               />
 
               <Divider />
 
-              <PriveActions
-                priceRegular={product.priceRegular}
-                priceDiscount={product.priceDiscount}
-                isInCart={isInCart(product.id)}
-                isFavourite={isFavourite(product.id)}
-                onAddToCart={handleAddToCart}
-                onToggleFavourite={handleToggleFavourite}
-              />
+              <PriceActions product={product} />
 
               <ProductSpecs keySpecs={keySpecs} />
             </div>
@@ -176,17 +168,12 @@ export const ProductDetailsPage: React.FC = () => {
         </FadeIn>
       </Container>
 
-      {isSuggestedLoading ? (
-        <SliderSkeleton />
-      ) : hasSuggestedError ? (
-        <Container>
-          <Typography variant="h3" className={styles.productNotFound}>
-            Suggested products was not found
-          </Typography>
-        </Container>
-      ) : (
+      {suggested.length > 0 && (
         <FadeIn>
-          <ProductsSlider title="You may also like" products={suggested} />
+          <ProductsSlider
+            title={t('product.youMayAlsoLike')}
+            products={suggested}
+          />
         </FadeIn>
       )}
     </>

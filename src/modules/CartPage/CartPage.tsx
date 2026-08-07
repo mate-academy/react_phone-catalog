@@ -1,19 +1,22 @@
 // #regionImport
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 import styles from './CartPage.module.scss';
 import { Container } from '@shared/components/Container';
-import { useCart } from '@shared/context/CartContext';
 import { PageHeader } from '@shared/ui/PageHeader';
-import { CartItem } from './CartItem';
 import { Button } from '@shared/ui/Button';
 import { Typography } from '@shared/ui/Typography';
 import { Divider } from '@shared/ui/Divider';
 import { FadeIn } from '@shared/ui/FadeIn';
-import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from '@src/app/hooks';
+import { actions as cartActions } from '@src/features/cart';
+import { CartItem } from './CartItem';
 // #endregion
 
 export const CartPage: React.FC = () => {
-  const { items, clearCart } = useCart();
+  const dispatch = useAppDispatch();
+  const { items } = useAppSelector(state => state.cart);
   const { t } = useTranslation();
 
   const totalSum = items.reduce(
@@ -25,7 +28,7 @@ export const CartPage: React.FC = () => {
     const isConfirmed = confirm(t('cart.checkoutConfirm'));
 
     if (isConfirmed) {
-      clearCart();
+      dispatch(cartActions.clearCart());
     }
   };
 

@@ -1,21 +1,19 @@
 import classNames from 'classnames';
-
 import React from 'react';
-import styles from './CapacityPicker.module.scss';
 import { useTranslation } from 'react-i18next';
+
+import styles from './CapacityPicker.module.scss';
 
 type Props = {
   capacities: string[];
   activeCapacity: string;
   onChange: (capacity: string) => void;
-  disabled: boolean;
 };
 
 export const CapacityPicker: React.FC<Props> = ({
   capacities,
   activeCapacity,
   onChange,
-  disabled,
 }) => {
   const { t } = useTranslation();
 
@@ -32,7 +30,6 @@ export const CapacityPicker: React.FC<Props> = ({
               [styles.capacityActive]: capacity === activeCapacity,
             })}
             onClick={() => onChange(capacity)}
-            disabled={disabled}
           >
             {capacity}
           </button>

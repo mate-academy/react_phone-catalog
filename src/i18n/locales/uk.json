@@ -60,9 +60,9 @@
   "product": {
     "availableColors": "Доступні кольори",
     "selectCapacity": "Оберіть обсяг пам'яті",
-
     "techSpecs": "Технічні характеристики",
-    "youMayAlsoLike": "Вам також може сподобатися"
+    "youMayAlsoLike": "Вам також може сподобатися",
+    "notFound": "Товар не знайдено"
   },
 
   "favourites": {
@@ -110,6 +110,10 @@
 
   "pageNotFound": {
     "message": "Сторінку не знайдено"
+  },
+
+  "suggestedProducts": {
+    "message": "Запропоновані товари не знайдено"
   },
 
   "footer": {

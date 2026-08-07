@@ -1,25 +1,23 @@
 import classNames from 'classnames';
-
 import React, { Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import styles from './ColorPicker.module.scss';
 import {
   getColorLabel,
   getColorValue,
 } from '@modules/ProductDetailsPage/constants/colors';
-import { useTranslation } from 'react-i18next';
 
 type Props = {
   colors: string[];
   activeColor: string;
   onChange: (color: string) => void;
-  disabled: boolean;
 };
 
 export const ColorPicker: React.FC<Props> = ({
   colors,
   activeColor,
   onChange,
-  disabled,
 }) => {
   const { t } = useTranslation();
 
@@ -44,7 +42,6 @@ export const ColorPicker: React.FC<Props> = ({
                 checked={color === activeColor}
                 onChange={() => onChange(color)}
                 className={styles.colorsInput}
-                disabled={disabled}
               />
 
               <span
