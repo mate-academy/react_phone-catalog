@@ -3,7 +3,10 @@
 import { ProductDetails } from '../types/ProductDetails';
 
 export function getProductId(productId: string): Promise<ProductDetails> {
-  const BASE = import.meta.env.BASE_URL;
+  // Гарантуємо, що після BASE_URL завжди є слеш
+  const BASE = import.meta.env.BASE_URL.endsWith('/')
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
 
   return Promise.all([
     fetch(`${BASE}api/phones.json`).then(res => res.json()),
