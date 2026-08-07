@@ -83,7 +83,7 @@ export const Header = () => {
           <img
             src={`${import.meta.env.BASE_URL}/img/like.svg`}
             alt="logo"
-            className={classNames('logo', styles.headerIcon)}
+            className={classNames(styles.headerIcon)}
           />
           {favIconsId.length > 0 && (
             <span className={styles.badge}>{favIconsId.length}</span>
@@ -98,7 +98,7 @@ export const Header = () => {
           <img
             src={`${import.meta.env.BASE_URL}/img/buy.svg`}
             alt="logo"
-            className={classNames('logo', styles.headerIcon)}
+            className={classNames(styles.headerIcon)}
           />
           {totalQuantity > 0 && (
             <span className={styles.badge}>{totalQuantity}</span>

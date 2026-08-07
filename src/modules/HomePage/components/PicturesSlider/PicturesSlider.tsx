@@ -60,8 +60,8 @@ export const PicturesSlider = () => {
 
   return (
     <div className={styles.main}>
-      <h1>Product Catalog</h1>
-
+      <h1 className={styles.textHiden}>Product Catalog</h1>
+      <h2>Welcome to Nice Gadgets store!</h2>
       <div
         className={styles.info}
         onTouchStart={handleTouchStart}

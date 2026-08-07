@@ -1,10 +1,26 @@
 @use '../../../shared/styles/variables' as *;
 @use '../../../shared/styles/media' as *;
 
+.textHiden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+h2{
+  font-size: 48px;
+}
+
 .main {
   height: 100%;
   font-size: 25px;
-  font-size: clamp(20px, 2vw, 25px);
+  font-size: clamp(20px, 2vw, 48px);
   font-weight: 800;
 }
 
@@ -58,7 +74,7 @@
     left: 10px;
     top: 10px;
     background: #1b1b1d;
-    width: 40%;
+    width: 47%;
     height: 90%;
     border-radius: 25px;
 
@@ -81,7 +97,7 @@
       .text{
         margin: 0;
         color: #7b4df8;
-        font-size: clamp(20px, 3.2vw, 40px);
+        font-size: clamp(20px, 3.2vw, 48px);
 
         &::after{
           content: '👌';
@@ -97,7 +113,7 @@
       .small{
         color: #b4bdc3;
         font-weight: 500;
-        font-size: clamp(10px, 1.6vw, 20px);
+        font-size: clamp(10px, 1.6vw, 15px);
         margin: 0;
 
       }
@@ -130,7 +146,7 @@
   display: flex;
   position: absolute;
   right: 0;
-  width: 55%;
+  width: 48%;
   height: 100%;
   object-fit: cover;
 

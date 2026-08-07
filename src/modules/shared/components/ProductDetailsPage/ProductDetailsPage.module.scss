@@ -19,13 +19,15 @@
   color: #313237;
   background-color: white;
   border: none;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
 }
 
 .back{
   display: flex;
   margin-bottom: 30px;
-  gap: 15px;
-
+  align-items: center;
   button {
     transition: transform 0.3s ease;
 
@@ -38,12 +40,13 @@
   p{
     color: #89939A;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 12px;
   }
 
   img{
     height: 16px;
     width: 16px;
+    margin: auto 0;
   }
 }
 
@@ -307,6 +310,8 @@
   .legendText{
     color: #89939A;
     padding-block:7px ;
+    font-size: 14px;
+    font-weight: 500;
   }
 
   .legendName{
@@ -317,7 +322,8 @@
   }
 
   .legendTitle{
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 20px;
     white-space: nowrap;
     text-transform: capitalize;
   }
@@ -370,5 +376,16 @@
 
 .notFoundText{
   text-align: center;
+}
+
+.arrrows {
+  filter: brightness(0) saturate(100%) invert(62%) sepia(8%) saturate(284%)
+    hue-rotate(169deg) brightness(92%) contrast(88%);
+}
+
+.detailedDevice{
+  color: #89939A;
+  font-size: 12px;
+  font-weight: 600;
 }
 

@@ -16,6 +16,7 @@
 
 .sliderInfoTitle {
   margin: 0;
+  font-size: 32px;
 }
 
 .scroll {
@@ -49,10 +50,11 @@
   display: grid;
   grid-template-rows: 190px 48px 36px 1fr 40px;
   gap: 10px;
-  transition: transform 0.15s ease-in;
+  transition:
+  box-shadow 0.3s ease;
 
   &:hover {
-    transform: scale(1.1);
+    box-shadow: 0 3px 13px rgba($color: #17203166, $alpha: 0.4);
   }
 }
 
@@ -68,7 +70,7 @@
   flex-direction: column;
   text-decoration:none;
   color: #313237;
-
+  font-size: 14px;
 }
 
 .catalogName {
@@ -86,6 +88,7 @@
 .catalogCurrentPrice,
 .catalogOldPrice {
   margin: 0;
+  font-size: 22px;
 }
 
 .catalogOldPrice {
@@ -102,6 +105,10 @@
 
   .table {
     width: 100%;
+
+    tr{
+      font-size: 12px;
+    }
   }
 
   .title {
@@ -121,6 +128,7 @@
 
   .button {
     height: 40px; cursor: pointer;
+    font-size: 14px;
   }
 
   .buttonsBuy {

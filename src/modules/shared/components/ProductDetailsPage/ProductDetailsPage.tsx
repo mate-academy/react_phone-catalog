@@ -157,12 +157,20 @@ export const ProductDetailsPage = () => {
           <Link to="/">
             <img src="./img/home.svg" alt="homePhoto" />
           </Link>
-          <img src="./img/arrowRight.svg" alt="arrowLeft" />
+          <img
+            src="./img/arrowRight.svg"
+            alt="arrowLeft"
+            className={styles.arrrows}
+          />
           <Link to={`/${detailedDevice?.category}`} className={styles.title}>
             <p>{detailedDevice?.category}</p>
           </Link>
-          <img src="./img/arrowRight.svg" alt="arrowLeft" />
-          <p>{detailedDevice?.name}</p>
+          <img
+            src="./img/arrowRight.svg"
+            alt="arrowLeft"
+            className={styles.arrrows}
+          />
+          <p className={styles.detailedDevice}>{detailedDevice?.name}</p>
         </div>
 
         <div className={styles.back}>

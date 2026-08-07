@@ -32,6 +32,8 @@
   box-sizing: border-box;
   color: #89939a;
   margin: 0;
+  font-size: 12px;
+  font-weight: 800;
 }
 
 .navbarLogo {
@@ -54,23 +56,28 @@
 .navbarEnd {
   display: flex;
   align-items: center;
-  height: auto;
-  margin: 0;
-  border: 0;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
   position: relative;
+  box-sizing: border-box;
 
-  &:first-child{
-    border-inline: 1px solid #e2e6e9;
-  }
+  border-left: 1px solid #e2e6e9;
+  border-right: 1px solid transparent;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+
+  transition: border-color 0.2s ease;
 
   &:hover {
-    border: 1px solid #313237;
+    border-color: #313237;
   }
 }
 
 .headerIcon{
-  width: 44px;
   margin: auto 0;
+  width: 15px;
+  height: 15px;
 }
 
 .badge {

@@ -11,6 +11,10 @@
   }
 }
 
+h2{
+  font-size: 32px;
+}
+
 .category {
   display: flex;
   flex-direction: row;
@@ -91,11 +95,13 @@
 
 .title {
   margin: 0;
+  font-weight: 600;
+  font-size: 20px;
 }
 
 .count {
   margin: 0;
-  font-size: 16px;
-  font-weight: 300;
+  font-size: 14px;
+  font-weight: 500;
   color: #89939a;
 }
