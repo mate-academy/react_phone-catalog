@@ -1,0 +1,105 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  color: var(--primary);
+}
+
+.icon,
+.badge {
+  transition: transform $effectDuration ease;
+}
+
+.badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+
+  min-width: 16px;
+  height: 16px;
+  border: 1px solid var(--badge-border);
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1;
+  color: $white;
+
+  background-color: $red;
+
+  @include on-desktop {
+    top: 16px;
+    right: 16px;
+  }
+}
+
+.headerAction {
+  position: relative;
+
+  display: none;
+
+  padding: 16px;
+  box-shadow: -1px 0 0 0 var(--shadow-color);
+
+  transition: box-shadow $effectDuration ease;
+
+  &:hover {
+    .icon,
+    .badge {
+      transform: scale(1.1);
+    }
+  }
+
+  @include on-tablet {
+    display: block;
+  }
+
+  @include on-desktop {
+    padding: 24px;
+  }
+}
+
+.isActive {
+  position: relative;
+  color: var(--primary);
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    display: block;
+    width: 100%;
+    height: 3px;
+
+    background-color: var(--primary);
+  }
+}
+
+.headerActionMobile {
+  width: 50%;
+
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+
+  box-shadow: 1px 0 0 0 var(--shadow-color);
+
+  &:last-child {
+    box-shadow: none;
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+}

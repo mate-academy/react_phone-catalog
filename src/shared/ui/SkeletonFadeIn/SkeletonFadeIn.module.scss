@@ -1,0 +1,18 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.skeleton {
+  animation: skeleton-enter $effectDuration ease-in-out;
+}
+
+@keyframes skeleton-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

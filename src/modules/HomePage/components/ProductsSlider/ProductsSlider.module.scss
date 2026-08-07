@@ -1,0 +1,46 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.products {
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+
+  &Top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &TitleWidthMobile {
+    width: 100%;
+    max-width: 136px;
+
+    @include on-tablet {
+      max-width: 100%;
+    }
+  }
+
+  &TopButtons {
+    height: 32px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &WrapperViewport {
+    padding-left: 16px;
+
+    @include on-tablet {
+      padding-left: 24px;
+    }
+
+    @include on-desktop {
+      width: 100%;
+      max-width: $container-max;
+      margin: 0 auto;
+      padding-inline: 32px;
+    }
+  }
+}

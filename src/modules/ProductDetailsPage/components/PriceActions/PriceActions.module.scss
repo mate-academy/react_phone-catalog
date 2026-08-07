@@ -1,0 +1,26 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.price {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  color: var(--primary);
+  letter-spacing: -1px;
+}
+
+.productButtons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.addBtn {
+  height: 48px;
+}
+
+.farouriteBtn {
+  width: 48px;
+  height: 48px;
+}

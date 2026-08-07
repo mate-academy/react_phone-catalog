@@ -1,47 +1,5 @@
 [
   {
-    "id": 1,
-    "category": "phones",
-    "itemId": "apple-iphone-7-32gb-black",
-    "name": "Apple iPhone 7 32GB Black",
-    "fullPrice": 400,
-    "price": 375,
-    "screen": "4.7' IPS",
-    "capacity": "32GB",
-    "color": "black",
-    "ram": "2GB",
-    "year": 2016,
-    "image": "img/phones/apple-iphone-7/black/00.webp"
-  },
-  {
-    "id": 2,
-    "category": "phones",
-    "itemId": "apple-iphone-7-plus-32gb-black",
-    "name": "Apple iPhone 7 Plus 32GB Black",
-    "fullPrice": 540,
-    "price": 500,
-    "screen": "5.5' IPS",
-    "capacity": "32GB",
-    "color": "black",
-    "ram": "3GB",
-    "year": 2016,
-    "image": "img/phones/apple-iphone-7-plus/black/00.webp"
-  },
-  {
-    "id": 3,
-    "category": "phones",
-    "itemId": "apple-iphone-8-64gb-gold",
-    "name": "Apple iPhone 8 64GB Gold",
-    "fullPrice": 600,
-    "price": 550,
-    "screen": "4.7' IPS",
-    "capacity": "64GB",
-    "color": "gold",
-    "ram": "2GB",
-    "year": 2017,
-    "image": "img/phones/apple-iphone-8/gold/00.webp"
-  },
-  {
     "id": 4,
     "category": "phones",
     "itemId": "apple-iphone-11-64gb-black",
@@ -236,48 +194,6 @@
     "ram": "4GB",
     "year": 2018,
     "image": "img/phones/apple-iphone-xs-max/silver/00.webp"
-  },
-  {
-    "id": 18,
-    "category": "phones",
-    "itemId": "apple-iphone-7-32gb-gold",
-    "name": "Apple iPhone 7 32GB Gold",
-    "fullPrice": 400,
-    "price": 375,
-    "screen": "4.7' IPS",
-    "capacity": "32GB",
-    "color": "gold",
-    "ram": "2GB",
-    "year": 2016,
-    "image": "img/phones/apple-iphone-7/gold/00.webp"
-  },
-  {
-    "id": 19,
-    "category": "phones",
-    "itemId": "apple-iphone-7-plus-32gb-silver",
-    "name": "Apple iPhone 7 Plus 32GB Silver",
-    "fullPrice": 540,
-    "price": 500,
-    "screen": "5.5' IPS",
-    "capacity": "32GB",
-    "color": "silver",
-    "ram": "3GB",
-    "year": 2016,
-    "image": "img/phones/apple-iphone-7-plus/silver/00.webp"
-  },
-  {
-    "id": 20,
-    "category": "phones",
-    "itemId": "apple-iphone-8-64gb-spacegray",
-    "name": "Apple iPhone 8 64GB Space Gray",
-    "fullPrice": 600,
-    "price": 550,
-    "screen": "4.7' IPS",
-    "capacity": "64GB",
-    "color": "spacegray",
-    "ram": "2GB",
-    "year": 2017,
-    "image": "img/phones/apple-iphone-8/spacegray/00.webp"
   },
   {
     "id": 21,
@@ -476,20 +392,6 @@
     "image": "img/phones/apple-iphone-xs-max/gold/00.webp"
   },
   {
-    "id": 35,
-    "category": "phones",
-    "itemId": "apple-iphone-7-32gb-rosegold",
-    "name": "Apple iPhone 7 32GB Rosegold",
-    "fullPrice": 400,
-    "price": 375,
-    "screen": "4.7' IPS",
-    "capacity": "32GB",
-    "color": "rosegold",
-    "ram": "2GB",
-    "year": 2016,
-    "image": "img/phones/apple-iphone-7/rosegold/00.webp"
-  },
-  {
     "id": 36,
     "category": "phones",
     "itemId": "apple-iphone-11-64gb-purple",
@@ -672,20 +574,6 @@
     "image": "img/phones/apple-iphone-xs-max/spacegray/00.webp"
   },
   {
-    "id": 49,
-    "category": "phones",
-    "itemId": "apple-iphone-7-plus-32gb-rosegold",
-    "name": "Apple iPhone 7 Plus 32GB Rosegold",
-    "fullPrice": 540,
-    "price": 500,
-    "screen": "5.5' IPS",
-    "capacity": "32GB",
-    "color": "rosegold",
-    "ram": "3GB",
-    "year": 2016,
-    "image": "img/phones/apple-iphone-7-plus/rosegold/00.webp"
-  },
-  {
     "id": 50,
     "category": "phones",
     "itemId": "apple-iphone-11-64gb-white",
@@ -840,20 +728,6 @@
     "image": "img/phones/apple-iphone-xr/yellow/00.webp"
   },
   {
-    "id": 61,
-    "category": "phones",
-    "itemId": "apple-iphone-7-32gb-silver",
-    "name": "Apple iPhone 7 32GB Silver",
-    "fullPrice": 400,
-    "price": 375,
-    "screen": "4.7' IPS",
-    "capacity": "32GB",
-    "color": "silver",
-    "ram": "2GB",
-    "year": 2016,
-    "image": "img/phones/apple-iphone-7/silver/00.webp"
-  },
-  {
     "id": 62,
     "category": "phones",
     "itemId": "apple-iphone-11-256gb-purple",
@@ -910,20 +784,6 @@
     "image": "img/phones/apple-iphone-11-pro/spacegray/00.webp"
   },
   {
-    "id": 66,
-    "category": "phones",
-    "itemId": "apple-iphone-8-64gb-silver",
-    "name": "Apple iPhone 8 64GB Silver",
-    "fullPrice": 600,
-    "price": 550,
-    "screen": "4.7' IPS",
-    "capacity": "64GB",
-    "color": "silver",
-    "ram": "2GB",
-    "year": 2017,
-    "image": "img/phones/apple-iphone-8/silver/00.webp"
-  },
-  {
     "id": 67,
     "category": "phones",
     "itemId": "apple-iphone-11-128gb-red",
@@ -950,20 +810,6 @@
     "ram": "4GB",
     "year": 2018,
     "image": "img/phones/apple-iphone-xs-max/spacegray/00.webp"
-  },
-  {
-    "id": 69,
-    "category": "phones",
-    "itemId": "apple-iphone-7-plus-32gb-gold",
-    "name": "Apple iPhone 7 Plus 32GB Gold",
-    "fullPrice": 540,
-    "price": 500,
-    "screen": "5.5' IPS",
-    "capacity": "32GB",
-    "color": "gold",
-    "ram": "3GB",
-    "year": 2016,
-    "image": "img/phones/apple-iphone-7-plus/gold/00.webp"
   },
   {
     "id": 70,
@@ -1354,7 +1200,7 @@
     "capacity": "64GB",
     "color": "blue",
     "ram": "4GB",
-    "year": 2020,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-mini/blue/00.webp"
   },
   {
@@ -1368,7 +1214,7 @@
     "capacity": "128GB",
     "color": "blue",
     "ram": "4GB",
-    "year": 2020,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-mini/blue/00.webp"
   },
   {
@@ -1382,7 +1228,7 @@
     "capacity": "256GB",
     "color": "blue",
     "ram": "4GB",
-    "year": 2020,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-mini/blue/00.webp"
   },
   {
@@ -1396,7 +1242,7 @@
     "capacity": "64GB",
     "color": "white",
     "ram": "4GB",
-    "year": 2020,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-mini/white/00.webp"
   },
   {
@@ -1410,7 +1256,7 @@
     "capacity": "128GB",
     "color": "white",
     "ram": "4GB",
-    "year": 2020,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-mini/white/00.webp"
   },
   {
@@ -1424,7 +1270,7 @@
     "capacity": "256GB",
     "color": "white",
     "ram": "4GB",
-    "year": 2020,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-mini/white/00.webp"
   },
   {
@@ -1438,7 +1284,7 @@
     "capacity": "64GB",
     "color": "pink",
     "ram": "4GB",
-    "year": 2020,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-mini/pink/00.webp"
   },
   {
@@ -1452,7 +1298,7 @@
     "capacity": "128GB",
     "color": "pink",
     "ram": "4GB",
-    "year": 2020,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-mini/pink/00.webp"
   },
   {
@@ -1466,7 +1312,7 @@
     "capacity": "256GB",
     "color": "pink",
     "ram": "4GB",
-    "year": 2020,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-mini/pink/00.webp"
   },
   {
@@ -1480,7 +1326,7 @@
     "capacity": "64GB",
     "color": "midnight",
     "ram": "4GB",
-    "year": 2020,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-mini/midnight/00.webp"
   },
   {
@@ -1494,7 +1340,7 @@
     "capacity": "128GB",
     "color": "midnight",
     "ram": "4GB",
-    "year": 2020,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-mini/midnight/00.webp"
   },
   {
@@ -1508,7 +1354,7 @@
     "capacity": "256GB",
     "color": "midnight",
     "ram": "4GB",
-    "year": 2020,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-mini/midnight/00.webp"
   },
   {
@@ -1522,7 +1368,7 @@
     "capacity": "128GB",
     "color": "sierrablue",
     "ram": "6GB",
-    "year": 2022,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-pro-max/sierrablue/00.webp"
   },
   {
@@ -1536,7 +1382,7 @@
     "capacity": "256GB",
     "color": "sierrablue",
     "ram": "6GB",
-    "year": 2022,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-pro-max/sierrablue/00.webp"
   },
   {
@@ -1550,7 +1396,7 @@
     "capacity": "512GB",
     "color": "sierrablue",
     "ram": "6GB",
-    "year": 2022,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-pro-max/sierrablue/00.webp"
   },
   {
@@ -1564,7 +1410,7 @@
     "capacity": "1TB",
     "color": "sierrablue",
     "ram": "6GB",
-    "year": 2022,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-pro-max/sierrablue/00.webp"
   },
   {
@@ -1578,7 +1424,7 @@
     "capacity": "128GB",
     "color": "gold",
     "ram": "6GB",
-    "year": 2022,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-pro-max/gold/00.webp"
   },
   {
@@ -1592,7 +1438,7 @@
     "capacity": "256GB",
     "color": "gold",
     "ram": "6GB",
-    "year": 2022,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-pro-max/gold/00.webp"
   },
   {
@@ -1606,7 +1452,7 @@
     "capacity": "512GB",
     "color": "gold",
     "ram": "6GB",
-    "year": 2022,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-pro-max/gold/00.webp"
   },
   {
@@ -1620,7 +1466,7 @@
     "capacity": "1TB",
     "color": "gold",
     "ram": "6GB",
-    "year": 2022,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-pro-max/gold/00.webp"
   },
   {
@@ -1634,7 +1480,7 @@
     "capacity": "128GB",
     "color": "graphite",
     "ram": "6GB",
-    "year": 2022,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-pro-max/graphite/00.webp"
   },
   {
@@ -1648,7 +1494,7 @@
     "capacity": "256GB",
     "color": "graphite",
     "ram": "6GB",
-    "year": 2022,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-pro-max/graphite/00.webp"
   },
   {
@@ -1662,7 +1508,7 @@
     "capacity": "512GB",
     "color": "graphite",
     "ram": "6GB",
-    "year": 2022,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-pro-max/graphite/00.webp"
   },
   {
@@ -1676,7 +1522,7 @@
     "capacity": "1TB",
     "color": "graphite",
     "ram": "6GB",
-    "year": 2022,
+    "year": 2021,
     "image": "img/phones/apple-iphone-13-pro-max/graphite/00.webp"
   },
   {

@@ -1,0 +1,70 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.themeSwitch {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 38px;
+  height: 16px;
+  padding: 3px;
+  border: none;
+  border-radius: 999px;
+
+  cursor: pointer;
+
+  background: var(--elements);
+
+  transition: background-color $effectDuration ease;
+
+  @include on-desktop {
+    width: 56px;
+    height: 24px;
+    padding: 5px;
+  }
+
+  &Icon {
+    z-index: 1;
+    width: 11px;
+    height: 11px;
+    display: block;
+    color: var(--primary);
+
+    @include on-desktop {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  &Thumb {
+    position: absolute;
+    left: 2px;
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+    background: var(--theme-color);
+
+    transition:
+      transform $effectDuration ease,
+      background-color $effectDuration ease;
+
+    @include on-desktop {
+      left: 3px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &ThumbActive {
+    transform: translateX(20px);
+
+    @include on-desktop {
+      transform: translateX(30px);
+    }
+  }
+}

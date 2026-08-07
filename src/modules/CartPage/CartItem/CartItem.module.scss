@@ -1,0 +1,148 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--border-card);
+
+  background-color: var(--background-card);
+
+  transition:
+    border-color $effectDuration ease,
+    box-shadow $effectDuration ease,
+    background-color $effectDuration ease;
+
+  &:hover {
+    border-color: var(--border-card-hover);
+    box-shadow: 0 2px 16px 0 var(--shadow-card-hover);
+  }
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 24px;
+    gap: 24px;
+  }
+
+  &Product {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &IconRemove {
+    display: block;
+    width: 16px;
+    height: 16px;
+    color: var(--gray);
+
+    transition:
+      color $effectDuration ease,
+      transform $effectDuration ease;
+
+    &:hover {
+      color: var(--primary);
+      transform: scale(1.1);
+    }
+  }
+
+  &Icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    color: var(--primary);
+  }
+
+  &ProductImg {
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &Title {
+    color: var(--primary);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &Image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+
+    display: block;
+    object-fit: contain;
+  }
+
+  &ProductQuantity {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &ProductAdded {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+
+  &Quantity {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border-element);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--arrow-button-bg);
+
+    transition:
+      border-color $effectDuration ease,
+      background-color $effectDuration ease;
+
+    &:hover {
+      border-color: var(--arrow-button-hover-border);
+      background-color: var(--arrow-button-hover-bg);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      border-color: var(--button-disabled-border);
+      background-color: var(--button-disabled-bg);
+
+      .itemIcon {
+        color: var(--gray);
+      }
+    }
+  }
+
+  &Price {
+    min-width: 80px;
+
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.4;
+    color: var(--primary);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+}

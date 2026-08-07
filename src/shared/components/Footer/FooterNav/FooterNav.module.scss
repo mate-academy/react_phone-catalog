@@ -1,0 +1,42 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.footerNav {
+  &List {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 14px;
+    }
+
+    @include on-desktop {
+      gap: 107px;
+    }
+  }
+
+  &Link {
+    padding-block: 10px;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    color: var(--secondary);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    transition: color $effectDuration ease;
+
+    @include on-desktop {
+      padding-block: 15px;
+    }
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}

@@ -1,0 +1,280 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.pageHeader {
+  padding-top: 24px;
+  padding-bottom: 32px;
+
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
+
+  &Nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 25px;
+    min-width: 0;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.breadcrumbs {
+  width: 200px;
+  height: 16px;
+}
+
+.backLink {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.title {
+  width: 290px;
+  height: 41px;
+
+  @include on-tablet {
+    width: 590px;
+  }
+
+  @include on-desktop {
+    width: 760px;
+  }
+}
+
+.gallery {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    grid-column: 1 / 8;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+
+  &Main {
+    position: relative;
+
+    width: 100%;
+  }
+
+  &MainSkeleton {
+    flex: 1;
+    aspect-ratio: 1 / 1;
+  }
+
+  &Thumbs {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    @include on-tablet {
+      gap: 9px;
+      width: 35px;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+
+    @include on-desktop {
+      gap: 16px;
+      width: 80px;
+    }
+  }
+
+  &Thumb {
+    min-width: 0;
+    flex: 1;
+    aspect-ratio: 1;
+
+    @include on-tablet {
+      width: 35px;
+      height: 35px;
+      flex: none;
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &ThumbSkeleton {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.details {
+  @include page-grid;
+
+  position: relative;
+
+  row-gap: 56px;
+
+  @include on-tablet {
+    row-gap: 64px;
+  }
+
+  &InfoProduct {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      grid-column: 8 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / 21;
+    }
+  }
+
+  &Colors {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &Wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  &Label {
+    width: 98px;
+    height: 15px;
+    margin-bottom: 5px;
+  }
+
+  &ProductId {
+    width: 85px;
+    height: 15px;
+
+    @include on-desktop {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  &Capacity {
+    margin-top: 10px;
+  }
+
+  &Prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 25px;
+  }
+
+  &Buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  &ButtonMain {
+    flex: 1;
+  }
+
+  &ButtonFavourite {
+    width: 48px;
+    flex-shrink: 0;
+  }
+
+  &ProductSpecs {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 25px;
+  }
+
+  &Specs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &SpecLabel {
+    width: 60px;
+    height: 15px;
+  }
+
+  &SpecValue {
+    width: 98px;
+    height: 15px;
+  }
+
+  &About {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &AboutTitle {
+    width: 100px;
+    height: 26px;
+    margin-bottom: 16px;
+  }
+
+  &SectionTitle {
+    width: 100%;
+    height: 20px;
+    margin-bottom: 16px;
+  }
+
+  &SectionText {
+    width: 100%;
+    height: 150px;
+  }
+
+  &TechSpecs {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 14 / -1;
+    }
+  }
+}
+
+.colors {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  &Item {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+}
+
+.capacity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+
+  &Item {
+    width: 64px;
+    height: 32px;
+  }
+}

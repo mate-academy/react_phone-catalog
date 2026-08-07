@@ -1,0 +1,44 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.pagination {
+  width: 100%;
+  max-width: 248px;
+  height: 32px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &List {
+    display: flex;
+    gap: 8px;
+  }
+
+  &Button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--button-pagination-border);
+
+    font-family: inherit;
+    color: var(--primary);
+    text-align: center;
+
+    background-color: var(--button-pagination-bg);
+
+    transition:
+      border-color $effectDuration ease,
+      background-color $effectDuration ease;
+
+    &:hover {
+      border-color: var(--button-pagination-border-hover);
+      background-color: var(--button-pagination-bg-hover);
+    }
+  }
+
+  .isActive {
+    border: none;
+    color: $white;
+    background-color: var(--button-pagination-focus);
+  }
+}

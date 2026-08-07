@@ -1,0 +1,7 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.divider {
+  border-bottom: 1px solid var(--elements);
+  transition: border-bottom $effectDuration ease;
+}

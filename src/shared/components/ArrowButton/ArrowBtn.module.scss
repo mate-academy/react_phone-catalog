@@ -1,0 +1,67 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: 0 auto;
+  color: var(--primary);
+}
+
+.arrowButton {
+  display: none;
+
+  position: absolute;
+  top: 0;
+
+  width: 32px;
+  height: 100%;
+  border: 1px solid var(--border-button);
+
+  background-color: var(--arrow-button-bg);
+
+  transition:
+    border-color $effectDuration ease,
+    background-color $effectDuration ease;
+
+  &:hover {
+    border-color: var(--arrow-button-hover-border);
+    background-color: var(--arrow-button-hover-bg);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    border: 1px solid var(--button-disabled-border);
+    background-color: var(--button-disabled-bg);
+
+    .icon {
+      color: var(--gray);
+    }
+  }
+
+  &Left {
+    left: 0;
+  }
+
+  &Right {
+    right: 0;
+  }
+
+  @include on-tablet {
+    display: block;
+  }
+}
+
+.arrowLeft {
+  transform: rotate(180deg);
+}
+
+.arrowRight {
+  transform: rotate(0);
+}
+
+.mobileArrow {
+  position: static;
+  display: block;
+}

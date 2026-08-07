@@ -1,0 +1,140 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.card {
+  width: 212px;
+  height: auto;
+  padding: 32px;
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 8px;
+
+  border: 1px solid var(--border-card);
+
+  background-color: var(--background-card);
+
+  transition:
+    border-color $effectDuration ease,
+    box-shadow $effectDuration ease,
+    background-color $effectDuration ease;
+
+  &:hover {
+    border-color: var(--border-card-hover);
+    box-shadow: 0 2px 16px 0 var(--shadow-card-hover);
+  }
+
+  @include on-tablet {
+    width: 237px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+  }
+
+  &ImageWrapper {
+    height: 180px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include on-tablet {
+      height: 202px;
+    }
+
+    @include on-desktop {
+      height: 196px;
+    }
+  }
+
+  &Image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+
+    display: block;
+    object-fit: contain;
+
+    transform-origin: center center;
+    backface-visibility: hidden;
+    will-change: transform;
+
+    @include hover(transform, scale(1.1));
+  }
+
+  &Title {
+    margin-top: 16px;
+    color: var(--primary);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &Prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &Price {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.4;
+  }
+
+  &OldPrice {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--secondary);
+    text-decoration: line-through;
+  }
+
+  &Info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    padding-block: 8px;
+  }
+
+  &Spec {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &SpecTitle,
+  &SpecValue {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  &SpecTitle {
+    color: var(--secondary);
+  }
+
+  &SpecValue {
+    color: var(--primary);
+  }
+
+  &Buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    @include on-desktop {
+      max-width: 208px;
+    }
+  }
+}
+
+.cardProductsPage {
+  width: 100%;
+}

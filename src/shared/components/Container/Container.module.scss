@@ -1,0 +1,17 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.container {
+  width: 100%;
+  max-width: $container-max;
+  margin: 0 auto;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}

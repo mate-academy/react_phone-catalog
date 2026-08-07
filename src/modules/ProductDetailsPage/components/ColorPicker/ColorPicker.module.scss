@@ -1,0 +1,54 @@
+@use '/src/styles/variables' as *;
+@use '/src/styles/mixins' as *;
+
+.title {
+  margin-bottom: 10px;
+
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--secondary);
+}
+
+.colors {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &Option {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--elements);
+    border-radius: 50%;
+
+    transition: border-color $effectDuration ease;
+
+    &:hover {
+      border-color: var(--primary);
+    }
+  }
+
+  &Active {
+    border-color: var(--primary);
+  }
+
+  &Input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &Circle {
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--border-circle);
+    border-radius: 50%;
+  }
+}
