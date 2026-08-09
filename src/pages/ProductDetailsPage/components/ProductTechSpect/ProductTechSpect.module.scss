@@ -1,0 +1,57 @@
+@use '../../../../mixins.scss' as *;
+
+.techSpect {
+  padding-top: 56px;
+
+  @include on-tablet {
+    padding-top: 64px;
+  }
+
+  @include on-desktop {
+    padding-top: 80px;
+
+    flex: 1;
+  }
+}
+
+.titleTechSpect {
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  color: #313237;
+  border-bottom: 1px solid #e2e6e9;
+  padding-bottom: 16px;
+}
+
+.specificationList {
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftTechSpect {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+}
+
+.rightTechSpect {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 8px;
+  margin: 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #313237;
+}
+
+.paragraph {
+  margin: 0;
+}
