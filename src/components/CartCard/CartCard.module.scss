@@ -1,0 +1,66 @@
+@use '../../styles/abstract/variables' as *;
+@use '../../styles/abstract/mixins' as *;
+@use '../../styles/base/global' as *;
+
+.CartCard {
+  color: $main-text-color;
+  border: 1px,$elements-color,solid;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+
+  @include on-tablet {
+    padding: 24px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+}
+ 
+.top {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+ 
+  &__img {
+    width: 80px;
+    height: 80px;
+  }
+ 
+  &__title {
+    @include text(14px,21px,600);
+  }
+}
+ 
+.bot {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 56px;
+  &__price {
+    @include text(22px,140%,800);
+  }
+
+  @include on-tablet {
+    margin: 0;
+  }
+}
+ 
+.buttons {
+  display: flex;
+  &__dob {
+    width: 32px;
+    height: 32px;
+    border: 1px, $icons-color, solid;
+    background-color: #fff;
+  }
+ 
+  &__value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+  }
+}

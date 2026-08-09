@@ -1,0 +1,186 @@
+@use '../../styles/abstract/variables' as *;
+@use '../../styles/abstract/mixins' as *;
+@use '../../styles/base/global' as *;
+
+
+.visually_hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.main {
+  color: $main-text-color;
+
+  .welcome {
+    @include on-tablet {
+      @include container($tablet-padding-lr);
+    }
+    
+    &__title {
+      margin-top: 24px;
+      margin-bottom: 24px;
+      font-style: bold;
+      letter-spacing: -1%;
+      padding: 0 $phone-padding-lr;
+
+      @include text(32px, 41px, 800);
+
+      @include on-tablet {
+        margin-top: 32px;
+        margin-bottom: 32px;
+      }
+
+      @include on-desktop {
+        margin-top: 56px;
+        margin-bottom: 56px;
+      }
+    }
+
+    &__swiper {
+      overflow: hidden;
+      display: flex;
+
+      &__pag {
+        display: none;
+        width: 32px;
+        background-color: #fff;
+        border: 1px $icons-color solid;
+        margin-bottom: 32px;
+        margin-left: 16px;
+        margin-right: 16px;
+        cursor: pointer;
+
+        @include on-tablet {
+          display: block;
+        }
+      }
+
+      &__swiper {
+        width: 100%;
+        padding-bottom: 32px !important;
+
+        /* stylelint-disable selector-pseudo-class-no-unknown */
+        :global(.swiper-pagination-bullet) {
+          width: 14px;
+          height: 4px;
+          border-radius: 2px;
+          background: $elements-color;
+          opacity: 1;
+        }
+
+        :global(.swiper-pagination-bullet-active) {
+          background: $main-text-color;
+        }
+        /* stylelint-enable selector-pseudo-class-no-unknown */
+
+        &__imgTablet {
+          width: 100%;
+          cursor: pointer;
+
+          @include on-tablet {
+            display: block;
+          }
+        }
+
+      }
+    }
+  }
+
+  .new {
+    margin-top: 56px !important;
+
+    @include container($phone-padding-lr);
+
+    &__title {
+      max-width: 140px;
+      font-style: bold;
+
+      @include text(22px,140%,800);
+
+      @include on-tablet {
+        max-width: 100%;
+      }
+    }
+
+    &__topblock {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__divider {
+      display: flex;
+      gap: 16px;
+    }
+
+    &__slider {
+      margin-top: 24px;
+      padding-bottom: 16px;
+    }
+
+    &__btn {
+      height: 32px;
+      width: 32px;
+      background-color: #fff;
+      border: 1px, solid, $icons-color;
+    }
+
+    @include on-tablet {
+      @include container($tablet-padding-lr);
+    }
+  }
+
+  .category {
+    margin-top: 56px;
+
+    @include container($phone-padding-lr);
+
+    &__title {
+      font-style: bold;
+
+      @include text(22px,140%,800);
+    }
+
+    &__cards {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns : 1fr;
+      gap: 32px;
+
+      @include on-tablet {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    &__card {
+      &__img {
+        cursor: pointer;
+        width: 100%;
+      }
+
+      &__title {
+        margin-top: 24px;
+
+        @include text(20px,100%,700);
+      }
+
+      &__counter {
+        margin-top: 4px;
+        color: $secondary-text-color;
+
+        @include text(14px,21px,600);
+      }
+    }
+
+    @include on-tablet {
+      @include container($tablet-padding-lr);
+    }
+  }
+}

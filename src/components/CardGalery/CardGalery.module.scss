@@ -1,0 +1,50 @@
+@use '../../styles/abstract/variables' as *;
+@use '../../styles/abstract/mixins' as *;
+@use '../../styles/base/global' as *;
+
+
+.gallery {
+  @include on-tablet {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
+
+.mainSwiper {
+  width: 80%;
+}
+
+.mainWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.mainImg {
+  max-width: 288px;
+  max-height: 288px;
+}
+
+.thumbsSwiper {
+  width: 100%;
+  height: 60px;
+
+  @include on-tablet {
+    width: 60px;
+    height: 288px;
+  }
+}
+
+.thumbSlide {
+  border:1px $elements-color solid ;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  padding: 5px 0;
+}
+
+.thumbImg {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}

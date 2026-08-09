@@ -1,0 +1,342 @@
+@use '../../styles/abstract/variables' as *;
+@use '../../styles/abstract/mixins' as *;
+@use '../../styles/base/global' as *;
+
+
+.main {
+  margin-top: 24px;
+  color: $main-text-color;
+  min-height: 100vh;
+
+  @include container($phone-padding-lr);
+}
+
+.BreadCrumbs {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  overflow: hidden;
+
+  &__link {
+    text-decoration: none;
+    color: $main-text-color;
+    flex-shrink: 1;
+
+    @include text(12px,100%,600);
+  }
+
+  &__last {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    color: $secondary-text-color;
+
+    @include text(12px,100%,700);
+  }
+}
+
+.back {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &__text {
+    color: $secondary-text-color;
+
+    @include text(12px,100%,700);
+  }
+}
+
+// Galery
+
+.galeryBlock {
+  @include on-tablet {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+  }
+}
+
+.galery {
+
+  &__title {
+    margin-top: 16px;
+    margin-bottom: 40px;
+
+    @include text(22px, 140%, 800);
+  }
+
+  @include on-tablet {
+    width: 50%;
+    flex-shrink: 0;
+  }
+}
+
+.description {
+  margin-top: 40px;
+
+  @include on-tablet {
+    flex: 1;
+    margin-top: 0;
+  }
+
+  @include on-desktop {
+    width: 30%;
+    flex: 0 1 auto;
+  }
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+
+  &__title {
+    color: $secondary-text-color;
+
+    @include text(12px,100%,600);
+  }
+
+  &__id {
+    color: $secondary-text-color;
+
+    @include text(12px,100%,700);
+  }
+}
+
+.colors {
+  display: flex;
+  margin-top: 8px;
+  margin-bottom: 24px;
+
+  &__color {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px $elements-color solid;
+    outline-offset: 2px;
+    cursor: pointer;
+
+    &:hover {
+      border: 2px $main-text-color solid;
+    }
+  }
+}
+
+.color {
+  &__bej {
+    background-color: #fcdbc1;
+  }
+
+  &__gr {
+    background-color: #5f7170;
+  }
+
+  &__bl {
+    background-color: #4c4c4c;
+  }
+
+  &__wh {
+    background-color: #f0f0f0;
+  }
+}
+
+.cap {
+  margin-top: 24px;
+
+  &__title {
+    color: $secondary-text-color;
+
+    @include text(12px, 100%, 600);
+  }
+}
+
+.variants {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+
+  &__var {
+    cursor: pointer;
+    background-color: #fff;
+    padding: 6px 8px;
+    border: 1px,solid $main-text-color;
+    &_active {
+      background-color: $main-text-color;
+      color: #fff;
+    }
+  }
+}
+
+.cart {
+  margin-top: 24px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  &__main {
+    letter-spacing: -1px;
+
+    @include text(32px, 41px,800);
+  }
+
+  &__disc {
+    text-decoration: line-through;
+    color: $secondary-text-color;
+
+    @include text(22px, 100%,500);
+  }
+}
+
+.buttons {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+  &__cart {
+    width: 100%;
+    background-color: $main-text-color;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+
+    @include text(14px, 21px, 700);
+  }
+
+  &__fav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: 1px $elements-color solid;
+    padding: 16px;
+    cursor: pointer;
+  }
+}
+
+.desksm {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.params {
+  display: flex;
+  justify-content: space-between;
+  &__label {
+    color: $secondary-text-color;
+  }
+}
+
+// Bot
+
+.bot {
+  margin-top: 56px;
+
+  @include on-desktop {
+    display: flex;
+    gap: 64px;
+  }
+}
+
+.about {
+  @include on-desktop {
+    width: 50%;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+
+    @include text(20px,100%,700);
+  }
+}
+
+.aboutpage {
+  margin-top: 24px;
+}
+
+.aboutBlock {
+  margin-top: 32px;
+  &__title {
+    margin-bottom: 16px;
+
+    @include text(16px,100%,700);
+  }
+
+  &__desk {
+    margin-top: 24px;
+    color: $secondary-text-color;
+
+    @include text(14px,21px,600);
+  }
+}
+
+.specs {
+  margin-top: 56px;
+
+  @include on-desktop {
+    width: 50%;
+    margin: 0;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+
+    @include text(20px,100%,700);
+  }
+}
+
+.specsWrap {
+  margin-top: 24px;
+  margin-bottom: 56px;
+}
+
+.specsBlock {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  &__label {
+    color: $secondary-text-color;
+  }
+}
+
+// Slider
+
+.new {
+
+  &__topblock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  &__title {
+    font-style: bold;
+  
+    @include text(22px,140%,800);
+  }
+
+  &__divider {
+    display: flex;
+    gap: 16px;
+  }
+
+
+  &__btn {
+    height: 32px;
+    width: 32px;
+    background-color: #fff;
+    border: 1px, solid, $icons-color;
+  }
+
+  &__slider {
+    margin-top: 24px;
+  }
+}
