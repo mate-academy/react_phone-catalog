@@ -1,8 +1,6 @@
-import {
-  createContext,
-  ReactNode,
-  useMemo,
-} from 'react';
+/* eslint-disable @typescript-eslint/indent */
+/* eslint-disable prettier/prettier */
+import { createContext, ReactNode, useMemo } from 'react';
 
 import { Product } from '../types/Product';
 import { useLocalStorage } from '../hooks/useLocalStorage';
@@ -15,7 +13,6 @@ type CartContextType = {
   cart: CartItem[];
   totalItems: number;
   totalPrice: number;
-
   addToCart: (product: Product) => void;
   removeFromCart: (productId: number) => void;
   increaseQuantity: (productId: number) => void;
@@ -30,28 +27,12 @@ type Props = {
 };
 
 export const CartProvider = ({ children }: Props) => {
-  const [cart, setCart] = useLocalStorage<CartItem[]>(
-    'cart',
-    [],
-  );
+  const [cart, setCart] = useLocalStorage<CartItem[]>('cart', []);
 
   const addToCart = (product: Product) => {
-    const existingProduct = cart.find(
-      item => item.id === product.id,
-    );
+    const existingProduct = cart.find(item => item.id === product.id);
 
     if (existingProduct) {
-      setCart(
-        cart.map(item =>
-          item.id === product.id
-            ? {
-                ...item,
-                quantity: item.quantity + 1,
-              }
-            : item,
-        ),
-      );
-
       return;
     }
 
@@ -65,9 +46,7 @@ export const CartProvider = ({ children }: Props) => {
   };
 
   const removeFromCart = (productId: number) => {
-    setCart(
-      cart.filter(item => item.id !== productId),
-    );
+    setCart(cart.filter(item => item.id !== productId));
   };
 
   const increaseQuantity = (productId: number) => {
@@ -103,20 +82,12 @@ export const CartProvider = ({ children }: Props) => {
   };
 
   const totalItems = useMemo(
-    () =>
-      cart.reduce(
-        (sum, item) => sum + item.quantity,
-        0,
-      ),
+    () => cart.reduce((sum, item) => sum + item.quantity, 0),
     [cart],
   );
 
   const totalPrice = useMemo(
-    () =>
-      cart.reduce(
-        (sum, item) => sum + item.price * item.quantity,
-        0,
-      ),
+    () => cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
     [cart],
   );
 

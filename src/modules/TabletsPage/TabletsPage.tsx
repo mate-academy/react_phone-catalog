@@ -17,24 +17,18 @@ export const TabletsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
-  const [searchParams, setSearchParams] =
-    useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const query = searchParams.get('query') || '';
 
-  const sort =
-    searchParams.get('sort') || 'newest';
+  const sort = searchParams.get('sort') || 'newest';
 
-  const itemsPerPageParam =
-    searchParams.get('perPage') || '16';
+  const itemsPerPageParam = searchParams.get('perPage') || '16';
 
   const itemsPerPage =
-    itemsPerPageParam === 'all'
-      ? 0
-      : Number(itemsPerPageParam);
+    itemsPerPageParam === 'all' ? 0 : Number(itemsPerPageParam);
 
-  const currentPage =
-    Number(searchParams.get('page')) || 1;
+  const currentPage = Number(searchParams.get('page')) || 1;
 
   useEffect(() => {
     setIsLoading(true);
@@ -42,11 +36,7 @@ export const TabletsPage = () => {
 
     getProducts()
       .then(products => {
-        setTablets(
-          products.filter(
-            product => product.category === 'tablets',
-          ),
-        );
+        setTablets(products.filter(product => product.category === 'tablets'));
       })
       .catch(() => {
         setHasError(true);
@@ -56,61 +46,47 @@ export const TabletsPage = () => {
       });
   }, []);
 
-  const updateParams = (
-    changes: Record<string, string | null>,
-  ) => {
+  const updateParams = (changes: Record<string, string | null>) => {
     const params = new URLSearchParams(searchParams);
 
-    Object.entries(changes).forEach(
-      ([key, value]) => {
-        if (
-          value === null ||
-          value === '' ||
-          (key === 'sort' && value === 'newest') ||
-          (key === 'page' && value === '1') ||
-          (key === 'perPage' && value === 'all')
-        ) {
-          params.delete(key);
-        } else {
-          params.set(key, value);
-        }
-      },
-    );
+    Object.entries(changes).forEach(([key, value]) => {
+      if (
+        value === null ||
+        value === '' ||
+        (key === 'sort' && value === 'newest') ||
+        (key === 'page' && value === '1') ||
+        (key === 'perPage' && value === 'all')
+      ) {
+        params.delete(key);
+      } else {
+        params.set(key, value);
+      }
+    });
 
     setSearchParams(params);
   };
 
   const filteredTablets = tablets.filter(tablet =>
-    tablet.name
-      .toLowerCase()
-      .includes(query.toLowerCase()),
+    tablet.name.toLowerCase().includes(query.toLowerCase()),
   );
 
-  const sortedTablets = [...filteredTablets].sort(
-    (a, b) => {
-      if (sort === 'alphabetically') {
-        return a.name.localeCompare(b.name);
-      }
+  const sortedTablets = [...filteredTablets].sort((a, b) => {
+    if (sort === 'alphabetically') {
+      return a.name.localeCompare(b.name);
+    }
 
-      if (sort === 'cheapest') {
-        return a.price - b.price;
-      }
+    if (sort === 'cheapest') {
+      return a.price - b.price;
+    }
 
-      return b.year - a.year;
-    },
-  );
+    return b.year - a.year;
+  });
 
   const totalPages =
-    itemsPerPage === 0
-      ? 1
-      : Math.ceil(
-          sortedTablets.length / itemsPerPage,
-        );
+    itemsPerPage === 0 ? 1 : Math.ceil(sortedTablets.length / itemsPerPage);
 
   const safePage =
-    currentPage > totalPages && totalPages > 0
-      ? totalPages
-      : currentPage;
+    currentPage > totalPages && totalPages > 0 ? totalPages : currentPage;
 
   const visibleTablets =
     itemsPerPage === 0
@@ -134,12 +110,9 @@ export const TabletsPage = () => {
     });
   };
 
-  const handleItemsPerPageChange = (
-    value: number,
-  ) => {
+  const handleItemsPerPageChange = (value: number) => {
     updateParams({
-      perPage:
-        value === 0 ? 'all' : String(value),
+      perPage: value === 0 ? 'all' : String(value),
       page: '1',
     });
   };
@@ -159,10 +132,7 @@ export const TabletsPage = () => {
       <section className={styles.tabletsPage}>
         <h2>Something went wrong</h2>
 
-        <button
-          type="button"
-          onClick={() => window.location.reload()}
-        >
+        <button type="button" onClick={() => window.location.reload()}>
           Reload
         </button>
       </section>
@@ -172,26 +142,19 @@ export const TabletsPage = () => {
   return (
     <section className={styles.tabletsPage}>
       <Breadcrumbs
-        items={[
-          { label: 'Home', path: '/' },
-          { label: 'Tablets' },
-        ]}
+        items={[{ label: 'Home', path: '/' }, { label: 'Tablets' }]}
       />
 
       <h1 className={styles.title}>Tablets</h1>
 
-      <p className={styles.count}>
-        {filteredTablets.length} models
-      </p>
+      <p className={styles.count}>{filteredTablets.length} models</p>
 
       <CatalogFilters
         sort={sort}
         itemsPerPage={itemsPerPage}
         query={query}
         onSortChange={handleSortChange}
-        onItemsPerPageChange={
-          handleItemsPerPageChange
-        }
+        onItemsPerPageChange={handleItemsPerPageChange}
         onQueryChange={handleQueryChange}
       />
 

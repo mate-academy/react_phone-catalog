@@ -22,25 +22,16 @@ export const FavoritesPage = () => {
         ← Back
       </button>
 
-      <h1 className={styles.title}>
-        Favorites
-      </h1>
+      <h1 className={styles.title}>Favorites</h1>
 
-      <p className={styles.count}>
-        {favorites.length} items
-      </p>
+      <p className={styles.count}>{favorites.length} items</p>
 
       {favorites.length === 0 ? (
-        <p className={styles.empty}>
-          Your favorites is empty
-        </p>
+        <p className={styles.empty}>Your favorites is empty</p>
       ) : (
         <div className={styles.grid}>
           {favorites.map(product => (
-            <ProductCard
-              key={product.id}
-              product={product}
-            />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       )}

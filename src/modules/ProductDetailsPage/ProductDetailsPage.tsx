@@ -3,11 +3,7 @@
 /* eslint-disable prettier/prettier */
 
 import { useEffect, useState } from 'react';
-import {
-  Link,
-  useNavigate,
-  useParams,
-} from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 
 import {
@@ -34,23 +30,15 @@ export const ProductDetailsPage = () => {
 
   const { cart, addToCart } = useCart();
 
-  const {
-    addFavorite,
-    removeFavorite,
-    isFavorite,
-  } = useFavorites();
+  const { addFavorite, removeFavorite, isFavorite } = useFavorites();
 
-  const [product, setProduct] =
-    useState<ProductDetails | null>(null);
+  const [product, setProduct] = useState<ProductDetails | null>(null);
 
-  const [products, setProducts] =
-    useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
-  const [isLoading, setIsLoading] =
-    useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const [selectedImage, setSelectedImage] =
-    useState(0);
+  const [selectedImage, setSelectedImage] = useState(0);
 
   useEffect(() => {
     getProducts()
@@ -84,10 +72,7 @@ export const ProductDetailsPage = () => {
             data = [];
         }
 
-        const currentProduct =
-          data.find(
-            item => item.id === productId,
-          ) || null;
+        const currentProduct = data.find(item => item.id === productId) || null;
 
         setProduct(currentProduct);
         setSelectedImage(0);
@@ -139,71 +124,41 @@ export const ProductDetailsPage = () => {
     );
   }
 
-
-  const currentProduct = products.find(
-    item => item.itemId === product.id,
-  );
+  const currentProduct = products.find(item => item.itemId === product.id);
 
   const isAdded = currentProduct
-    ? cart.some(
-        item => item.id === currentProduct.id,
-      )
+    ? cart.some(item => item.id === currentProduct.id)
     : false;
 
-  const favorite = currentProduct
-    ? isFavorite(currentProduct.id)
-    : false;
+  const favorite = currentProduct ? isFavorite(currentProduct.id) : false;
 
   const suggestedProducts = products
-    .filter(
-      item =>
-        item.category === product.category,
-    )
-    .filter(
-      item => item.itemId !== product.id,
-    )
+    .filter(item => item.category === product.category)
+    .filter(item => item.itemId !== product.id)
     .slice(0, 10);
 
-  const findVariant = (
-    color: string,
-    capacity: string,
-  ) => {
-    const normalizedColor = color
-      .toLowerCase()
-      .replace(/\s+/g, '-');
+  const findVariant = (color: string, capacity: string) => {
+    const normalizedColor = color.toLowerCase().replace(/\s+/g, '-');
 
-    const normalizedCapacity = capacity
-      .toLowerCase()
-      .replace(/\s+/g, '');
+    const normalizedCapacity = capacity.toLowerCase().replace(/\s+/g, '');
 
     return products.find(item => {
-      const sameCategory =
-        item.category === product.category;
+      const sameCategory = item.category === product.category;
 
-      const sameColor =
-        item.color.toLowerCase() ===
-        color.toLowerCase();
+      const sameColor = item.color.toLowerCase() === color.toLowerCase();
 
       const sameCapacity =
-        item.capacity.toLowerCase() ===
-        capacity.toLowerCase();
+        item.capacity.toLowerCase() === capacity.toLowerCase();
 
-      if (
-        sameCategory &&
-        sameColor &&
-        sameCapacity
-      ) {
+      if (sameCategory && sameColor && sameCapacity) {
         return true;
       }
 
-      const itemId =
-        item.itemId.toLowerCase();
+      const itemId = item.itemId.toLowerCase();
 
       return (
         sameCategory &&
-        itemId.includes(
-          product.namespaceId.toLowerCase(),
-        ) &&
+        itemId.includes(product.namespaceId.toLowerCase()) &&
         itemId.includes(normalizedColor) &&
         itemId.includes(normalizedCapacity)
       );
@@ -211,30 +166,18 @@ export const ProductDetailsPage = () => {
   };
 
   const handleColorChange = (color: string) => {
-    const variant = findVariant(
-      color,
-      product.capacity,
-    );
+    const variant = findVariant(color, product.capacity);
 
     if (variant) {
-      navigate(
-        `/${variant.category}/${variant.itemId}`,
-      );
+      navigate(`/${variant.category}/${variant.itemId}`);
     }
   };
 
-  const handleCapacityChange = (
-    capacity: string,
-  ) => {
-    const variant = findVariant(
-      product.color,
-      capacity,
-    );
+  const handleCapacityChange = (capacity: string) => {
+    const variant = findVariant(product.color, capacity);
 
     if (variant) {
-      navigate(
-        `/${variant.category}/${variant.itemId}`,
-      );
+      navigate(`/${variant.category}/${variant.itemId}`);
     }
   };
 
@@ -259,257 +202,195 @@ export const ProductDetailsPage = () => {
   };
 
   return (
-  <section className={styles.productDetails}>
-    <nav className={styles.breadcrumbs}>
-      <Link to="/">Home</Link>
+    <section className={styles.productDetails}>
+      <nav className={styles.breadcrumbs}>
+        <Link to="/">Home</Link>
 
-      <span>/</span>
+        <span>/</span>
 
-      <Link to={`/${category}`}>
-        {category}
-      </Link>
+        <Link to={`/${category}`}>{category}</Link>
 
-      <span>/</span>
+        <span>/</span>
 
-      <span>{product.name}</span>
-    </nav>
+        <span>{product.name}</span>
+      </nav>
 
-    <button
-      type="button"
-      className={styles.backButton}
-      onClick={() => navigate(-1)}
-    >
-      <img
-        src="/img/icons/arrow-left.png"
-        alt="Back"
-      />
+      <button
+        type="button"
+        className={styles.backButton}
+        onClick={() => navigate(-1)}
+      >
+        <img src="/img/icons/arrow-left.png" alt="Back" />
+        Back
+      </button>
 
-      Back
-    </button>
+      <h1 className={styles.title}>{product.name}</h1>
 
-    <h1 className={styles.title}>
-      {product.name}
-    </h1>
-
-    <div className={styles.top}>
-      <div className={styles.gallery}>
-        {product.images.map((image, index) => (
-          <button
-            key={image}
-            type="button"
-            className={classNames({
-              [styles.thumbnail]: index !== selectedImage,
-              [styles.thumbnailActive]:
-                index === selectedImage,
-            })}
-            onClick={() =>
-              setSelectedImage(index)
-            }
-          >
-            <img
-              src={`/${image.replace(/^\/+/, '')}`}
-              alt={product.name}
-            />
-          </button>
-        ))}
-      </div>
-
-      <div className={styles.image}>
-        <img
-          src={`/${product.images[selectedImage].replace(/^\/+/, '')}`}
-          alt={product.name}
-        />
-      </div>
-
-      <div className={styles.info}>
-        <div className={styles.colors}>
-          <p className={styles.label}>
-            Available colors
-          </p>
-
-          <div className={styles.colorsList}>
-            {product.colorsAvailable.map(color => (
-              <button
-                key={color}
-                type="button"
-                onClick={() =>
-                  handleColorChange(color)
-                }
-                className={classNames({
-                  [styles.color]:
-                    color !== product.color,
-                  [styles.colorActive]:
-                    color === product.color,
-                })}
-              >
-                <span
-                  style={{
-                    backgroundColor:
-                      getColor(color),
-                  }}
-                />
-              </button>
-            ))}
-          </div>
+      <div className={styles.top}>
+        <div className={styles.gallery}>
+          {product.images.map((image, index) => (
+            <button
+              key={image}
+              type="button"
+              className={classNames({
+                [styles.thumbnail]: index !== selectedImage,
+                [styles.thumbnailActive]: index === selectedImage,
+              })}
+              onClick={() => setSelectedImage(index)}
+            >
+              <img src={`/${image.replace(/^\/+/, '')}`} alt={product.name} />
+            </button>
+          ))}
         </div>
 
-        <div className={styles.capacity}>
-          <p className={styles.label}>
-            Select capacity
-          </p>
+        <div className={styles.image}>
+          <img
+            src={`/${product.images[selectedImage].replace(/^\/+/, '')}`}
+            alt={product.name}
+          />
+        </div>
 
-          <div className={styles.capacityList}>
-            {product.capacityAvailable.map(
-              capacity => (
+        <div className={styles.info}>
+          <div className={styles.colors}>
+            <p className={styles.label}>Available colors</p>
+
+            <div className={styles.colorsList}>
+              {product.colorsAvailable.map(color => (
+                <button
+                  key={color}
+                  type="button"
+                  onClick={() => handleColorChange(color)}
+                  className={classNames({
+                    [styles.color]: color !== product.color,
+                    [styles.colorActive]: color === product.color,
+                  })}
+                >
+                  <span
+                    style={{
+                      backgroundColor: getColor(color),
+                    }}
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.capacity}>
+            <p className={styles.label}>Select capacity</p>
+
+            <div className={styles.capacityList}>
+              {product.capacityAvailable.map(capacity => (
                 <button
                   key={capacity}
                   type="button"
-                  onClick={() =>
-                    handleCapacityChange(
-                      capacity,
-                    )
-                  }
+                  onClick={() => handleCapacityChange(capacity)}
                   className={classNames({
-                    [styles.capacityButton]:
-                      capacity !==
-                      product.capacity,
+                    [styles.capacityButton]: capacity !== product.capacity,
 
-                    [styles.capacityActive]:
-                      capacity ===
-                      product.capacity,
+                    [styles.capacityActive]: capacity === product.capacity,
                   })}
                 >
                   {capacity}
                 </button>
-              ),
-            )}
+              ))}
+            </div>
           </div>
-        </div>
 
-        <div className={styles.price}>
-          <h2 className={styles.discountPrice}>
-            ${product.priceDiscount}
-          </h2>
+          <div className={styles.price}>
+            <h2 className={styles.discountPrice}>${product.priceDiscount}</h2>
 
-          <p className={styles.regularPrice}>
-            ${product.priceRegular}
-          </p>
-        </div>
+            <p className={styles.regularPrice}>${product.priceRegular}</p>
+          </div>
 
-        <div className={styles.actions}>
-          <button
-            type="button"
-            onClick={handleCart}
-            disabled={isAdded}
-            className={classNames(
-              styles.addToCart,
-              {
+          <div className={styles.actions}>
+            <button
+              type="button"
+              onClick={handleCart}
+              disabled={isAdded}
+              className={classNames(styles.addToCart, {
                 [styles.added]: isAdded,
-              },
-            )}
-          >
-            {isAdded
-              ? 'Added to cart'
-              : 'Add to cart'}
-          </button>
+              })}
+            >
+              {isAdded ? 'Added to cart' : 'Add to cart'}
+            </button>
 
-          <button
-            type="button"
-            onClick={handleFavorite}
-            className={classNames(
-              styles.favorite,
-              {
-                [styles.favoriteActive]:
-                  favorite,
-              },
-            )}
-          >
-            <img
-              src={
-                favorite
-                  ? '/img/icons/heart-filled.png'
-                  : '/img/icons/heart.png'
-              }
-              alt="Favorite"
-              className={
-                styles.favoriteIcon
-              }
-            />
-          </button>
-        </div>
-      </div>
-    </div>
-         <div className={styles.bottom}>
-      <div className={styles.about}>
-        <h2 className={styles.sectionTitle}>
-          About
-        </h2>
-
-        {product.description.map(item => (
-          <div
-            key={item.title}
-            className={styles.description}
-          >
-            <h3>{item.title}</h3>
-
-            {item.text.map(paragraph => (
-              <p key={paragraph}>
-                {paragraph}
-              </p>
-            ))}
+            <button
+              type="button"
+              onClick={handleFavorite}
+              className={classNames(styles.favorite, {
+                [styles.favoriteActive]: favorite,
+              })}
+            >
+              <img
+                src={
+                  favorite
+                    ? '/img/icons/heart-filled.png'
+                    : '/img/icons/heart.png'
+                }
+                alt="Favorite"
+                className={styles.favoriteIcon}
+              />
+            </button>
           </div>
-        ))}
-      </div>
-
-      <div className={styles.specs}>
-        <h2 className={styles.sectionTitle}>
-          Tech specs
-        </h2>
-
-        <div className={styles.spec}>
-          <span>Screen</span>
-          <strong>{product.screen}</strong>
-        </div>
-
-        <div className={styles.spec}>
-          <span>Resolution</span>
-          <strong>{product.resolution}</strong>
-        </div>
-
-        <div className={styles.spec}>
-          <span>Processor</span>
-          <strong>{product.processor}</strong>
-        </div>
-
-        <div className={styles.spec}>
-          <span>RAM</span>
-          <strong>{product.ram}</strong>
-        </div>
-
-        <div className={styles.spec}>
-          <span>Camera</span>
-          <strong>{product.camera}</strong>
-        </div>
-
-        <div className={styles.spec}>
-          <span>Zoom</span>
-          <strong>{product.zoom}</strong>
-        </div>
-
-        <div className={styles.spec}>
-          <span>Cell</span>
-
-          <strong>
-            {product.cell.join(', ')}
-          </strong>
         </div>
       </div>
-    </div>
+      <div className={styles.bottom}>
+        <div className={styles.about}>
+          <h2 className={styles.sectionTitle}>About</h2>
 
-    <ProductsSlider
-      title="You may also like"
-      products={suggestedProducts}
-    />
-  </section>
-);
+          {product.description.map(item => (
+            <div key={item.title} className={styles.description}>
+              <h3>{item.title}</h3>
+
+              {item.text.map(paragraph => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.specs}>
+          <h2 className={styles.sectionTitle}>Tech specs</h2>
+
+          <div className={styles.spec}>
+            <span>Screen</span>
+            <strong>{product.screen}</strong>
+          </div>
+
+          <div className={styles.spec}>
+            <span>Resolution</span>
+            <strong>{product.resolution}</strong>
+          </div>
+
+          <div className={styles.spec}>
+            <span>Processor</span>
+            <strong>{product.processor}</strong>
+          </div>
+
+          <div className={styles.spec}>
+            <span>RAM</span>
+            <strong>{product.ram}</strong>
+          </div>
+
+          <div className={styles.spec}>
+            <span>Camera</span>
+            <strong>{product.camera}</strong>
+          </div>
+
+          <div className={styles.spec}>
+            <span>Zoom</span>
+            <strong>{product.zoom}</strong>
+          </div>
+
+          <div className={styles.spec}>
+            <span>Cell</span>
+
+            <strong>{product.cell.join(', ')}</strong>
+          </div>
+        </div>
+      </div>
+
+      <ProductsSlider title="You may also like" products={suggestedProducts} />
+    </section>
+  );
 };

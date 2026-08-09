@@ -45,15 +45,8 @@ export const PicturesSlider = () => {
 
   return (
     <section className={styles.slider}>
-      <button
-        type="button"
-        className={styles.arrow}
-        onClick={prevSlide}
-      >
-        <img
-          src="/img/icons/arrow-left.png"
-          alt="Previous"
-        />
+      <button type="button" className={styles.arrow} onClick={prevSlide}>
+        <img src="/img/icons/arrow-left.png" alt="Previous" />
       </button>
 
       <div className={styles.banner}>
@@ -63,15 +56,8 @@ export const PicturesSlider = () => {
         />
       </div>
 
-      <button
-        type="button"
-        className={styles.arrow}
-        onClick={nextSlide}
-      >
-        <img
-          src="/img/icons/arrow-right.png"
-          alt="Next"
-        />
+      <button type="button" className={styles.arrow} onClick={nextSlide}>
+        <img src="/img/icons/arrow-right.png" alt="Next" />
       </button>
 
       <div className={styles.dots}>

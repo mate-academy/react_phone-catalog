@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable prettier/prettier */
 import { useNavigate } from 'react-router-dom';
 
@@ -29,13 +30,9 @@ export const CartPage = () => {
           ← Back
         </button>
 
-        <h1 className={styles.title}>
-          Cart
-        </h1>
+        <h1 className={styles.title}>Cart</h1>
 
-        <p className={styles.empty}>
-          Your cart is empty
-        </p>
+        <p className={styles.empty}>Your cart is empty</p>
       </section>
     );
   }
@@ -50,17 +47,12 @@ export const CartPage = () => {
         ← Back
       </button>
 
-      <h1 className={styles.title}>
-        Cart
-      </h1>
+      <h1 className={styles.title}>Cart</h1>
 
       <div className={styles.content}>
         <div className={styles.products}>
           {cart.map(item => (
-            <div
-              key={item.id}
-              className={styles.product}
-            >
+            <div key={item.id} className={styles.product}>
               <button
                 type="button"
                 className={styles.remove}
@@ -69,56 +61,40 @@ export const CartPage = () => {
                 ×
               </button>
 
-              <img
-                src={item.image}
-                alt={item.name}
-                className={styles.image}
-              />
+              <img src={item.image} alt={item.name} className={styles.image} />
 
               <div className={styles.info}>
                 <h3>{item.name}</h3>
               </div>
 
               <div className={styles.quantity}>
-                <button
-                  type="button"
-                  onClick={() => decreaseQuantity(item.id)}
-                >
+                <button type="button" onClick={() => decreaseQuantity(item.id)}>
                   −
                 </button>
 
                 <span>{item.quantity}</span>
 
-                <button
-                  type="button"
-                  onClick={() => increaseQuantity(item.id)}
-                >
+                <button type="button" onClick={() => increaseQuantity(item.id)}>
                   +
                 </button>
               </div>
 
-              <strong className={styles.price}>
-                ${item.price}
-              </strong>
+              <strong className={styles.price}>${item.price}</strong>
             </div>
           ))}
         </div>
 
         <aside className={styles.summary}>
-          <h2>
-            ${totalPrice}
-          </h2>
+          <h2>${totalPrice}</h2>
 
-          <p>
-            Total for {totalItems} items
-          </p>
+          <p>Total for {totalItems} items</p>
 
           <button
             type="button"
             className={styles.checkout}
             onClick={() => {
               const confirmed = window.confirm(
-                'Checkout is not implemented yet. Do you want to clear the Cart?',
+                'Checkout is not implemented yet. Clear the Cart?',
               );
 
               if (confirmed) {

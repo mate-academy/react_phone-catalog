@@ -24,13 +24,13 @@
   cursor: pointer;
 }
 
-.pagination button:hover:not(:disabled) {
-  border-color: #313237;
-}
-
 .pagination button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+  border-color: #313237;
 }
 
 .pagination .active {

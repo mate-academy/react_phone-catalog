@@ -12,6 +12,17 @@
   font-size: 12px;
 }
 
+.breadcrumbs a {
+  color: #89939a;
+  text-decoration: none;
+
+  transition: color 0.3s ease;
+}
+
+.breadcrumbs a:hover {
+  color: #313237;
+}
+
 .backButton {
   display: inline-flex;
   align-items: center;
@@ -27,6 +38,10 @@
   color: #89939a;
   font-size: 12px;
   font-weight: 700;
+}
+
+.backButton:hover {
+  color: #313237;
 }
 
 .title {
@@ -66,11 +81,17 @@
   border: 1px solid #e2e6e9;
   background: #fff;
   cursor: pointer;
+
+  transition: border-color 0.3s ease;
 }
 
 .thumbnailActive {
   border-color: #313237;
   border-width: 2px;
+}
+
+.thumbnail:hover {
+  border-color: #313237;
 }
 
 .thumbnail img,
@@ -92,6 +113,19 @@
   max-width: 460px;
 
   object-fit: contain;
+
+  transition: transform 0.3s ease;
+}
+
+.favorite img {
+  width: 16px;
+  height: 16px;
+
+  object-fit: contain;
+}
+
+.image img:hover {
+  transform: scale(1.05);
 }
 
 .info {
@@ -298,6 +332,9 @@
   justify-content: space-between;
 
   margin-bottom: 16px;
+  padding: 6px 0;
+
+  border-bottom: 1px solid #f1f2f9;
 
   color: #313237;
   font-size: 14px;
@@ -309,6 +346,10 @@
 
 .spec strong {
   font-weight: 600;
+}
+
+.spec:last-child {
+  border-bottom: none;
 }
 
 .added {
@@ -326,68 +367,6 @@
 .favoriteActive {
   border-color: #eb5757;
   background-color: #fff7f7;
-}
-
-.favorite img {
-  width: 16px;
-  height: 16px;
-
-  object-fit: contain;
-}
-
-.favorite img:hover {
-  transform: scale(1.1);
-}
-
-.favorite img,
-.backButton img {
-  transition: transform 0.3s ease;
-}
-
-.backButton:hover img {
-  transform: translateX(-3px);
-}
-
-.backButton:hover {
-  color: #313237;
-}
-
-.breadcrumbs a {
-  color: #89939a;
-  text-decoration: none;
-
-  transition: color 0.3s ease;
-}
-
-.breadcrumbs a:hover {
-  color: #313237;
-}
-
-.image img {
-  transition: transform 0.3s ease;
-}
-
-.image img:hover {
-  transform: scale(1.05);
-}
-
-.thumbnail,
-.thumbnailActive {
-  transition: border-color 0.3s ease;
-}
-
-.thumbnail:hover {
-  border-color: #313237;
-}
-
-.spec {
-  padding: 6px 0;
-
-  border-bottom: 1px solid #f1f2f9;
-}
-
-.spec:last-child {
-  border-bottom: none;
 }
 
 @media (max-width: 1200px) {

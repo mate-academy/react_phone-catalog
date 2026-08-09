@@ -12,9 +12,7 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <p className={styles.copy}>
-          © 2026 Nice Gadgets
-        </p>
+        <p className={styles.copy}>© 2026 Nice Gadgets</p>
 
         <img
           src="/img/logo/logo.png"
@@ -32,17 +30,9 @@ export const Footer = () => {
             GitHub
           </a>
 
-          <button
-            type="button"
-            className={styles.top}
-            onClick={backToTop}
-          >
+          <button type="button" className={styles.top} onClick={backToTop}>
             Back to top
-
-            <img
-              src="/img/icons/arrow-up.png"
-              alt="Top"
-            />
+            <img src="/img/icons/arrow-up.png" alt="Top" />
           </button>
         </div>
       </div>

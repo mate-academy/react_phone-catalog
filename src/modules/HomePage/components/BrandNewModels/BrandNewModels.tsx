@@ -16,10 +16,5 @@ export const BrandNewModels = () => {
     });
   }, []);
 
-  return (
-    <ProductsSlider
-      title="Brand new models"
-      products={products}
-    />
-  );
+  return <ProductsSlider title="Brand new models" products={products} />;
 };

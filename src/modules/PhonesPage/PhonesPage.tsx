@@ -19,24 +19,18 @@ export const PhonesPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
-  const [searchParams, setSearchParams] =
-    useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const query = searchParams.get('query') || '';
 
-  const sort =
-    searchParams.get('sort') || 'newest';
+  const sort = searchParams.get('sort') || 'newest';
 
-  const itemsPerPageParam =
-    searchParams.get('perPage') || '16';
+  const itemsPerPageParam = searchParams.get('perPage') || '16';
 
   const itemsPerPage =
-    itemsPerPageParam === 'all'
-      ? 0
-      : Number(itemsPerPageParam);
+    itemsPerPageParam === 'all' ? 0 : Number(itemsPerPageParam);
 
-  const currentPage =
-    Number(searchParams.get('page')) || 1;
+  const currentPage = Number(searchParams.get('page')) || 1;
 
   useEffect(() => {
     setIsLoading(true);
@@ -44,11 +38,7 @@ export const PhonesPage = () => {
 
     getProducts()
       .then(products => {
-        setPhones(
-          products.filter(
-            product => product.category === 'phones',
-          ),
-        );
+        setPhones(products.filter(product => product.category === 'phones'));
       })
       .catch(() => {
         setHasError(true);
@@ -58,61 +48,47 @@ export const PhonesPage = () => {
       });
   }, []);
 
-  const updateParams = (
-    changes: Record<string, string | null>,
-  ) => {
+  const updateParams = (changes: Record<string, string | null>) => {
     const params = new URLSearchParams(searchParams);
 
-    Object.entries(changes).forEach(
-      ([key, value]) => {
-        if (
-          value === null ||
-          value === '' ||
-          (key === 'sort' && value === 'newest') ||
-          (key === 'page' && value === '1') ||
-          (key === 'perPage' && value === 'all')
-        ) {
-          params.delete(key);
-        } else {
-          params.set(key, value);
-        }
-      },
-    );
+    Object.entries(changes).forEach(([key, value]) => {
+      if (
+        value === null ||
+        value === '' ||
+        (key === 'sort' && value === 'newest') ||
+        (key === 'page' && value === '1') ||
+        (key === 'perPage' && value === 'all')
+      ) {
+        params.delete(key);
+      } else {
+        params.set(key, value);
+      }
+    });
 
     setSearchParams(params);
   };
 
   const filteredPhones = phones.filter(product =>
-    product.name
-      .toLowerCase()
-      .includes(query.toLowerCase()),
+    product.name.toLowerCase().includes(query.toLowerCase()),
   );
 
-  const sortedPhones = [...filteredPhones].sort(
-    (a, b) => {
-      if (sort === 'alphabetically') {
-        return a.name.localeCompare(b.name);
-      }
+  const sortedPhones = [...filteredPhones].sort((a, b) => {
+    if (sort === 'alphabetically') {
+      return a.name.localeCompare(b.name);
+    }
 
-      if (sort === 'cheapest') {
-        return a.price - b.price;
-      }
+    if (sort === 'cheapest') {
+      return a.price - b.price;
+    }
 
-      return b.year - a.year;
-    },
-  );
+    return b.year - a.year;
+  });
 
   const totalPages =
-    itemsPerPage === 0
-      ? 1
-      : Math.ceil(
-          sortedPhones.length / itemsPerPage,
-        );
+    itemsPerPage === 0 ? 1 : Math.ceil(sortedPhones.length / itemsPerPage);
 
   const safePage =
-    currentPage > totalPages && totalPages > 0
-      ? totalPages
-      : currentPage;
+    currentPage > totalPages && totalPages > 0 ? totalPages : currentPage;
 
   const visiblePhones =
     itemsPerPage === 0
@@ -136,12 +112,9 @@ export const PhonesPage = () => {
     });
   };
 
-  const handleItemsPerPageChange = (
-    value: number,
-  ) => {
+  const handleItemsPerPageChange = (value: number) => {
     updateParams({
-      perPage:
-        value === 0 ? 'all' : String(value),
+      perPage: value === 0 ? 'all' : String(value),
       page: '1',
     });
   };
@@ -161,10 +134,7 @@ export const PhonesPage = () => {
       <section className={styles.phonesPage}>
         <h2>Something went wrong</h2>
 
-        <button
-          type="button"
-          onClick={() => window.location.reload()}
-        >
+        <button type="button" onClick={() => window.location.reload()}>
           Reload
         </button>
       </section>
@@ -174,28 +144,19 @@ export const PhonesPage = () => {
   return (
     <section className={styles.phonesPage}>
       <Breadcrumbs
-        items={[
-          { label: 'Home', path: '/' },
-          { label: 'Phones' },
-        ]}
+        items={[{ label: 'Home', path: '/' }, { label: 'Phones' }]}
       />
 
-      <h1 className={styles.title}>
-        Mobile phones
-      </h1>
+      <h1 className={styles.title}>Mobile phones</h1>
 
-      <p className={styles.count}>
-        {filteredPhones.length} models
-      </p>
+      <p className={styles.count}>{filteredPhones.length} models</p>
 
       <CatalogFilters
         sort={sort}
         itemsPerPage={itemsPerPage}
         query={query}
         onSortChange={handleSortChange}
-        onItemsPerPageChange={
-          handleItemsPerPageChange
-        }
+        onItemsPerPageChange={handleItemsPerPageChange}
         onQueryChange={handleQueryChange}
       />
 
@@ -207,7 +168,6 @@ export const PhonesPage = () => {
         </p>
       ) : (
         <>
-
           <ProductsGrid products={visiblePhones} />
 
           <Pagination

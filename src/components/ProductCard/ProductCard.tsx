@@ -16,15 +16,9 @@ type Props = {
 export const ProductCard = ({ product }: Props) => {
   const { cart, addToCart } = useCart();
 
-  const {
-    addFavorite,
-    removeFavorite,
-    isFavorite,
-  } = useFavorites();
+  const { addFavorite, removeFavorite, isFavorite } = useFavorites();
 
-  const isAdded = cart.some(
-    item => item.id === product.id,
-  );
+  const isAdded = cart.some(item => item.id === product.id);
 
   const favorite = isFavorite(product.id);
 
@@ -46,13 +40,9 @@ export const ProductCard = ({ product }: Props) => {
       </Link>
 
       <div className={styles.prices}>
-        <span className={styles.price}>
-          ${product.price}
-        </span>
+        <span className={styles.price}>${product.price}</span>
 
-        <span className={styles.fullPrice}>
-          ${product.fullPrice}
-        </span>
+        <span className={styles.fullPrice}>${product.fullPrice}</span>
       </div>
 
       <hr className={styles.divider} />
@@ -77,28 +67,20 @@ export const ProductCard = ({ product }: Props) => {
       <div className={styles.buttons}>
         <button
           type="button"
-          className={classNames(
-            styles.addButton,
-            {
-              [styles.added]: isAdded,
-            },
-          )}
+          className={classNames(styles.addButton, {
+            [styles.added]: isAdded,
+          })}
           onClick={() => addToCart(product)}
           disabled={isAdded}
         >
-          {isAdded
-            ? 'Added to cart'
-            : 'Add to cart'}
+          {isAdded ? 'Added to cart' : 'Add to cart'}
         </button>
 
         <button
           type="button"
-          className={classNames(
-            styles.favoriteButton,
-            {
-              [styles.favoriteActive]: favorite,
-            },
-          )}
+          className={classNames(styles.favoriteButton, {
+            [styles.favoriteActive]: favorite,
+          })}
           onClick={() => {
             if (favorite) {
               removeFavorite(product.id);
@@ -110,9 +92,7 @@ export const ProductCard = ({ product }: Props) => {
         >
           <img
             src={
-              favorite
-                ? '/img/icons/heart-filled.png'
-                : '/img/icons/heart.png'
+              favorite ? '/img/icons/heart-filled.png' : '/img/icons/heart.png'
             }
             alt="Favorite"
             className={styles.favoriteIcon}

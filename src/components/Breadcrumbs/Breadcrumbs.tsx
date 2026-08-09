@@ -17,17 +17,13 @@ export const Breadcrumbs = ({ items }: Props) => {
       {items.map((item, index) => (
         <span key={item.label}>
           {item.path ? (
-            <Link to={item.path}>
-              {item.label}
-            </Link>
+            <Link to={item.path}>{item.label}</Link>
           ) : (
             <span>{item.label}</span>
           )}
 
           {index < items.length - 1 && (
-            <span className={styles.separator}>
-              /
-            </span>
+            <span className={styles.separator}>/</span>
           )}
         </span>
       ))}

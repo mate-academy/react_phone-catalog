@@ -25,18 +25,11 @@ export const Pagination = ({
         ‹
       </button>
 
-      {Array.from(
-        { length: totalPages },
-        (_, index) => index + 1,
-      ).map(page => (
+      {Array.from({ length: totalPages }, (_, index) => index + 1).map(page => (
         <button
           key={page}
           type="button"
-          className={
-            page === currentPage
-              ? styles.active
-              : ''
-          }
+          className={page === currentPage ? styles.active : ''}
           onClick={() => onPageChange(page)}
         >
           {page}

@@ -17,24 +17,18 @@ export const AccessoriesPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
-  const [searchParams, setSearchParams] =
-    useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const query = searchParams.get('query') || '';
 
-  const sort =
-    searchParams.get('sort') || 'newest';
+  const sort = searchParams.get('sort') || 'newest';
 
-  const itemsPerPageParam =
-    searchParams.get('perPage') || '16';
+  const itemsPerPageParam = searchParams.get('perPage') || '16';
 
   const itemsPerPage =
-    itemsPerPageParam === 'all'
-      ? 0
-      : Number(itemsPerPageParam);
+    itemsPerPageParam === 'all' ? 0 : Number(itemsPerPageParam);
 
-  const currentPage =
-    Number(searchParams.get('page')) || 1;
+  const currentPage = Number(searchParams.get('page')) || 1;
 
   useEffect(() => {
     setIsLoading(true);
@@ -43,9 +37,7 @@ export const AccessoriesPage = () => {
     getProducts()
       .then(products => {
         setAccessories(
-          products.filter(
-            product => product.category === 'accessories',
-          ),
+          products.filter(product => product.category === 'accessories'),
         );
       })
       .catch(() => {
@@ -56,40 +48,31 @@ export const AccessoriesPage = () => {
       });
   }, []);
 
-  const updateParams = (
-    changes: Record<string, string | null>,
-  ) => {
+  const updateParams = (changes: Record<string, string | null>) => {
     const params = new URLSearchParams(searchParams);
 
-    Object.entries(changes).forEach(
-      ([key, value]) => {
-        if (
-          value === null ||
-          value === '' ||
-          (key === 'sort' && value === 'newest') ||
-          (key === 'page' && value === '1') ||
-          (key === 'perPage' && value === 'all')
-        ) {
-          params.delete(key);
-        } else {
-          params.set(key, value);
-        }
-      },
-    );
+    Object.entries(changes).forEach(([key, value]) => {
+      if (
+        value === null ||
+        value === '' ||
+        (key === 'sort' && value === 'newest') ||
+        (key === 'page' && value === '1') ||
+        (key === 'perPage' && value === 'all')
+      ) {
+        params.delete(key);
+      } else {
+        params.set(key, value);
+      }
+    });
 
     setSearchParams(params);
   };
 
-  const filteredAccessories = accessories.filter(
-    accessory =>
-      accessory.name
-        .toLowerCase()
-        .includes(query.toLowerCase()),
+  const filteredAccessories = accessories.filter(accessory =>
+    accessory.name.toLowerCase().includes(query.toLowerCase()),
   );
 
-  const sortedAccessories = [
-    ...filteredAccessories,
-  ].sort((a, b) => {
+  const sortedAccessories = [...filteredAccessories].sort((a, b) => {
     if (sort === 'alphabetically') {
       return a.name.localeCompare(b.name);
     }
@@ -102,16 +85,10 @@ export const AccessoriesPage = () => {
   });
 
   const totalPages =
-    itemsPerPage === 0
-      ? 1
-      : Math.ceil(
-          sortedAccessories.length / itemsPerPage,
-        );
+    itemsPerPage === 0 ? 1 : Math.ceil(sortedAccessories.length / itemsPerPage);
 
   const safePage =
-    currentPage > totalPages && totalPages > 0
-      ? totalPages
-      : currentPage;
+    currentPage > totalPages && totalPages > 0 ? totalPages : currentPage;
 
   const visibleAccessories =
     itemsPerPage === 0
@@ -135,12 +112,9 @@ export const AccessoriesPage = () => {
     });
   };
 
-  const handleItemsPerPageChange = (
-    value: number,
-  ) => {
+  const handleItemsPerPageChange = (value: number) => {
     updateParams({
-      perPage:
-        value === 0 ? 'all' : String(value),
+      perPage: value === 0 ? 'all' : String(value),
       page: '1',
     });
   };
@@ -160,10 +134,7 @@ export const AccessoriesPage = () => {
       <section className={styles.accessoriesPage}>
         <h2>Something went wrong</h2>
 
-        <button
-          type="button"
-          onClick={() => window.location.reload()}
-        >
+        <button type="button" onClick={() => window.location.reload()}>
           Reload
         </button>
       </section>
@@ -173,28 +144,19 @@ export const AccessoriesPage = () => {
   return (
     <section className={styles.accessoriesPage}>
       <Breadcrumbs
-        items={[
-          { label: 'Home', path: '/' },
-          { label: 'Accessories' },
-        ]}
+        items={[{ label: 'Home', path: '/' }, { label: 'Accessories' }]}
       />
 
-      <h1 className={styles.title}>
-        Accessories
-      </h1>
+      <h1 className={styles.title}>Accessories</h1>
 
-      <p className={styles.count}>
-        {filteredAccessories.length} models
-      </p>
+      <p className={styles.count}>{filteredAccessories.length} models</p>
 
       <CatalogFilters
         sort={sort}
         itemsPerPage={itemsPerPage}
         query={query}
         onSortChange={handleSortChange}
-        onItemsPerPageChange={
-          handleItemsPerPageChange
-        }
+        onItemsPerPageChange={handleItemsPerPageChange}
         onQueryChange={handleQueryChange}
       />
 
@@ -206,9 +168,7 @@ export const AccessoriesPage = () => {
         </p>
       ) : (
         <>
-          <ProductsGrid
-            products={visibleAccessories}
-          />
+          <ProductsGrid products={visibleAccessories} />
 
           <Pagination
             currentPage={safePage}

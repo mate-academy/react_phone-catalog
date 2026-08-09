@@ -41,60 +41,40 @@ export const CatalogFilters = ({
   return (
     <div className={styles.filters}>
       <div className={styles.field}>
-        <label htmlFor="search">
-          Search
-        </label>
+        <label htmlFor="search">Search</label>
 
         <input
           id="search"
           type="search"
           value={searchValue}
-          onChange={event =>
-            setSearchValue(event.target.value)
-          }
+          onChange={event => setSearchValue(event.target.value)}
           placeholder="Search..."
         />
       </div>
 
       <div className={styles.field}>
-        <label htmlFor="sort-by">
-          Sort by
-        </label>
+        <label htmlFor="sort-by">Sort by</label>
 
         <select
           id="sort-by"
           value={sort}
-          onChange={event =>
-            onSortChange(event.target.value)
-          }
+          onChange={event => onSortChange(event.target.value)}
         >
-          <option value="newest">
-            Newest
-          </option>
+          <option value="newest">Newest</option>
 
-          <option value="alphabetically">
-            Alphabetically
-          </option>
+          <option value="alphabetically">Alphabetically</option>
 
-          <option value="cheapest">
-            Cheapest
-          </option>
+          <option value="cheapest">Cheapest</option>
         </select>
       </div>
 
       <div className={styles.field}>
-        <label htmlFor="items-per-page">
-          Items on page
-        </label>
+        <label htmlFor="items-per-page">Items on page</label>
 
         <select
           id="items-per-page"
           value={itemsPerPage}
-          onChange={event =>
-            onItemsPerPageChange(
-              Number(event.target.value),
-            )
-          }
+          onChange={event => onItemsPerPageChange(Number(event.target.value))}
         >
           <option value={4}>4</option>
           <option value={8}>8</option>

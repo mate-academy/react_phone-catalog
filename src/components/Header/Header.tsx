@@ -11,62 +11,38 @@ export const Header = () => {
   const { totalItems } = useCart();
   const { favorites } = useFavorites();
 
-  const getLinkClass = ({
-    isActive,
-  }: {
-    isActive: boolean;
-  }) =>
-    `${styles.link} ${
-      isActive ? styles.active : ''
-    }`;
+  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `${styles.link} ${isActive ? styles.active : ''}`;
 
   return (
     <header className={styles.header}>
       <div className={styles.container}>
         <div className={styles.left}>
           <NavLink to="/" className={styles.logo}>
-            <img
-              src="/img/logo/logo.png"
-              alt="Nice Gadgets"
-            />
+            <img src="/img/logo/logo.png" alt="Nice Gadgets" />
           </NavLink>
 
           <nav className={styles.navigation}>
-            <NavLink
-              to="/"
-              className={getLinkClass}
-            >
+            <NavLink to="/" className={getLinkClass}>
               Home
             </NavLink>
 
-            <NavLink
-              to="/phones"
-              className={getLinkClass}
-            >
+            <NavLink to="/phones" className={getLinkClass}>
               Phones
             </NavLink>
 
-            <NavLink
-              to="/tablets"
-              className={getLinkClass}
-            >
+            <NavLink to="/tablets" className={getLinkClass}>
               Tablets
             </NavLink>
 
-            <NavLink
-              to="/accessories"
-              className={getLinkClass}
-            >
+            <NavLink to="/accessories" className={getLinkClass}>
               Accessories
             </NavLink>
           </nav>
         </div>
 
         <div className={styles.actions}>
-          <NavLink
-            to="/favorites"
-            className={styles.action}
-          >
+          <NavLink to="/favorites" className={styles.action}>
             <img
               src={
                 favorites.length > 0
@@ -78,26 +54,15 @@ export const Header = () => {
             />
 
             {favorites.length > 0 && (
-              <span className={styles.badge}>
-                {favorites.length}
-              </span>
+              <span className={styles.badge}>{favorites.length}</span>
             )}
           </NavLink>
 
-          <NavLink
-            to="/cart"
-            className={styles.action}
-          >
-            <img
-              src="/img/icons/cart.png"
-              alt="Cart"
-              className={styles.icon}
-            />
+          <NavLink to="/cart" className={styles.action}>
+            <img src="/img/icons/cart.png" alt="Cart" className={styles.icon} />
 
             {totalItems > 0 && (
-              <span className={styles.badge}>
-                {totalItems}
-              </span>
+              <span className={styles.badge}>{totalItems}</span>
             )}
           </NavLink>
         </div>

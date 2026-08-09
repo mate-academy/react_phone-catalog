@@ -11,10 +11,7 @@ type Props = {
   products: Product[];
 };
 
-export const ProductsSlider: React.FC<Props> = ({
-  title,
-  products,
-}) => {
+export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const visibleCards = 4;
@@ -62,10 +59,7 @@ export const ProductsSlider: React.FC<Props> = ({
           }}
         >
           {products.map(product => (
-            <ProductCard
-              key={product.id}
-              product={product}
-            />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </div>
