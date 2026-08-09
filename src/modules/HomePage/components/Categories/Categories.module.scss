@@ -1,0 +1,65 @@
+.categories {
+  margin-bottom: 80px;
+}
+
+.title {
+  margin-bottom: 24px;
+
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+
+  color: #313237;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+
+  text-decoration: none;
+}
+
+.image {
+  display: block;
+
+  width: 100%;
+  aspect-ratio: 1;
+
+  object-fit: cover;
+
+  transition: transform 0.3s ease;
+}
+
+.category:hover .image {
+  transform: scale(1.03);
+}
+
+.name {
+  margin-top: 24px;
+  margin-bottom: 4px;
+
+  color: #313237;
+
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+
+  transition: color 0.3s ease;
+}
+
+.category:hover .name {
+  color: #0f62fe;
+}
+
+.count {
+  color: #89939a;
+
+  font-size: 14px;
+  line-height: 21px;
+}

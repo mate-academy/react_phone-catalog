@@ -1,0 +1,52 @@
+.filters {
+  display: flex;
+  gap: 16px;
+
+  margin-bottom: 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field label {
+  color: #89939a;
+  font-size: 12px;
+}
+
+.field input,
+.field select {
+  min-width: 136px;
+  height: 40px;
+
+  padding: 0 12px;
+
+  border: 1px solid #b4bdc3;
+  background-color: #fff;
+
+  color: #313237;
+  cursor: pointer;
+}
+
+.field input {
+  min-width: 220px;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: #313237;
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+  }
+
+  .field input,
+  .field select {
+    width: 100%;
+  }
+}

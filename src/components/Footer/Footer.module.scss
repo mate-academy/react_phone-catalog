@@ -1,0 +1,103 @@
+.footer {
+  margin-top: 80px;
+  border-top: 1px solid #e2e6e9;
+  background-color: #fff;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 1136px;
+  height: 96px;
+
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.copy {
+  color: #89939a;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.logo {
+  display: block;
+
+  width: auto;
+  height: 28px;
+
+  transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.github {
+  color: #89939a;
+  text-decoration: none;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  transition: color 0.3s ease;
+}
+
+.github:hover {
+  color: #313237;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+
+  color: #89939a;
+  font-size: 12px;
+  font-weight: 700;
+
+  transition: color 0.3s ease;
+}
+
+.top:hover {
+  color: #313237;
+}
+
+.top img {
+  width: 16px;
+  height: 16px;
+
+  transition: transform 0.3s ease;
+}
+
+.top:hover img {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+
+    height: auto;
+    padding: 32px 16px;
+  }
+
+  .right {
+    gap: 24px;
+  }
+}
