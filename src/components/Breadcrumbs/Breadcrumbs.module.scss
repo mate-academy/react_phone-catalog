@@ -1,0 +1,78 @@
+@use '../../styles/variables' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 16px;
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    margin-left: 8px;
+  }
+}
+
+.homeLink {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+}
+
+.chevronBox {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chevron {
+  width: 16px;
+  height: 16px;
+  opacity: 0.45;
+}
+
+.currentPage {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  color: $secondary;
+}
+
+.categoryLink {
+  color: $white;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $secondary;
+  }
+}
+
+.productName {
+  min-width: 0;
+  overflow: hidden;
+  color: $secondary;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -1,0 +1,73 @@
+@use '../../styles/variables' as *;
+
+.pagination,
+.pages {
+  display: flex;
+  align-items: center;
+}
+
+.pagination {
+  justify-content: center;
+  gap: 16px;
+}
+
+.pages {
+  gap: 8px;
+}
+
+.arrowButton,
+.pageButton {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  color: $white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.arrowButton {
+  border: 1px solid transparent;
+  background-color: $surface-2;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:disabled {
+    border-color: $elements;
+    background-color: transparent;
+    cursor: default;
+
+    img {
+      opacity: 0.25;
+    }
+  }
+
+  &:not(:disabled):hover {
+    background-color: $icons;
+  }
+}
+
+.pageButton {
+  border: 0;
+  background-color: $surface-1;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+
+  &:hover {
+    background-color: $elements;
+  }
+
+  &.isActive,
+  &.isActive:hover {
+    background-color: $accent;
+    color: $on-accent;
+  }
+}

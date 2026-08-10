@@ -1,0 +1,283 @@
+@use 'sass:color';
+@use '../../../../styles/variables' as *;
+
+.options {
+  position: relative;
+  width: 512px;
+}
+
+.productId {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 176px;
+  height: 15px;
+  color: $icons;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  text-align: right;
+}
+
+.controls {
+  width: 320px;
+}
+
+.optionGroup {
+  min-width: 0;
+  margin: 0;
+  padding: 0 0 24px;
+  border: 0;
+  border-bottom: 1px solid $elements;
+
+  & + & {
+    margin-top: 24px;
+  }
+
+  legend {
+    margin: 0 0 8px;
+    padding: 0;
+    height: 15px;
+    color: $secondary;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+  }
+}
+
+.colors,
+.capacities {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.colorOption {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $elements;
+  border-radius: 50%;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &:hover {
+    border-color: $icons;
+  }
+
+  &:has(input:checked) {
+    border-color: $white;
+  }
+
+  &:has(input:focus-visible) {
+    outline: 2px solid $accent;
+    outline-offset: 2px;
+  }
+}
+
+.colorSwatch {
+  position: absolute;
+  inset: 0;
+  border: 2px solid $black;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background-color: var(--product-color);
+}
+
+.capacityLabel {
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid $icons;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  color: $white;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.capacityOption {
+  cursor: pointer;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &:hover .capacityLabel {
+    border-color: $white;
+  }
+
+  input:checked + .capacityLabel {
+    border-color: $white;
+    background-color: $white;
+    color: $black;
+  }
+
+  input:focus-visible + .capacityLabel {
+    outline: 2px solid $accent;
+    outline-offset: 2px;
+  }
+}
+
+.purchase {
+  padding-top: 32px;
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  color: $white;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+.regularPrice {
+  color: $secondary;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 31px;
+  text-decoration: line-through;
+}
+
+.actions {
+  height: 48px;
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.addToCart,
+.favorite {
+  border: 0;
+  border-radius: 0;
+  color: $on-accent;
+  cursor: pointer;
+  font-family: Mont, sans-serif;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.addToCart {
+  flex: 1;
+  background-color: $accent;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+
+  &:hover {
+    background-color: $accent-hover;
+  }
+}
+
+.addToCartSelected {
+  background-color: $surface-2;
+  color: $white;
+
+  &:hover {
+    background-color: $surface-2;
+  }
+}
+
+.favorite {
+  box-sizing: border-box;
+  width: 48px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $surface-2;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    background-color: $icons;
+  }
+}
+
+.favoriteSelected {
+  border: 1px solid $elements;
+  background-color: $black;
+
+  &:hover {
+    background-color: $black;
+  }
+}
+
+.shortSpecs {
+  margin: 32px 0 0;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+
+    & + div {
+      margin-top: 8px;
+    }
+  }
+
+  dt,
+  dd {
+    margin: 0;
+    min-height: 15px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+  }
+
+  dt {
+    color: $secondary;
+  }
+
+  dd {
+    color: $white;
+    text-align: right;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .options,
+  .controls {
+    width: 100%;
+  }
+
+  .productId {
+    width: auto;
+  }
+}
+
+@media (max-width: 639px) {
+  .options,
+  .controls {
+    width: 100%;
+  }
+
+  .productId {
+    width: auto;
+  }
+}

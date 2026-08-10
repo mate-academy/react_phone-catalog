@@ -1,0 +1,119 @@
+@use '../../../../styles/variables' as *;
+
+.information {
+  display: grid;
+  grid-template-columns: 560px 512px;
+  gap: 64px;
+}
+
+.about,
+.techSpecs {
+  min-width: 0;
+
+  > h2 {
+    margin: 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elements;
+    color: $white;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+    letter-spacing: 0;
+  }
+}
+
+.description {
+  margin-top: 32px;
+
+  article + article {
+    margin-top: 32px;
+  }
+
+  h3 {
+    margin: 0 0 16px;
+    color: $white;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0;
+  }
+
+  p {
+    margin: 0;
+    color: $secondary;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0;
+
+    & + p {
+      margin-top: 16px;
+    }
+  }
+}
+
+.techSpecs dl {
+  margin: 25px 0 0;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+
+    & + div {
+      margin-top: 8px;
+    }
+  }
+
+  dt,
+  dd {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0;
+  }
+
+  dt {
+    flex-shrink: 0;
+    color: $secondary;
+  }
+
+  dd {
+    color: $white;
+    text-align: right;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .information {
+    grid-template-columns: 1fr;
+    gap: 64px;
+  }
+}
+
+@media (max-width: 639px) {
+  .information {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .about,
+  .techSpecs {
+    > h2 {
+      min-height: 26px;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 100%;
+    }
+  }
+
+  .description h3 {
+    font-size: 16px;
+    line-height: 100%;
+  }
+
+  .techSpecs dl {
+    margin-top: 29px;
+  }
+}

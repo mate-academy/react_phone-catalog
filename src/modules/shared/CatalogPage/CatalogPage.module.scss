@@ -1,0 +1,110 @@
+@use 'sass:color';
+@use '../../../styles/variables' as *;
+
+.catalogPage {
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @media (min-width: 1200px) {
+    padding-bottom: 80px;
+  }
+}
+
+.title {
+  margin: 24px 0 0;
+  color: $white;
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @media (min-width: 640px) {
+    margin-top: 40px;
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.count {
+  margin: 8px 0 0;
+  color: $secondary;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+.controls {
+  margin-top: 32px;
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+
+  @media (min-width: 640px) {
+    margin-top: 40px;
+  }
+}
+
+.sortControl {
+  width: 136px;
+
+  @media (min-width: 640px) {
+    width: 176px;
+  }
+}
+
+.perPageControl {
+  width: 136px;
+
+  @media (min-width: 640px) {
+    width: 128px;
+  }
+}
+
+.products {
+  margin-top: 24px;
+}
+
+.pagination {
+  margin-top: 24px;
+
+  @media (min-width: 640px) {
+    margin-top: 40px;
+  }
+}
+
+.messageBlock {
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  color: $white;
+  font-family: Mont, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+
+  p {
+    margin: 0;
+  }
+
+  button {
+    height: 40px;
+    padding: 0 24px;
+    border: 0;
+    border-radius: 0;
+    background-color: $accent;
+    color: $on-accent;
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $accent-hover;
+    }
+  }
+}

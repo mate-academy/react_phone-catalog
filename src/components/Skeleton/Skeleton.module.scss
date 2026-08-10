@@ -1,0 +1,47 @@
+@use '../../styles/variables' as *;
+
+.skeleton {
+  display: block;
+  overflow: hidden;
+  position: relative;
+  background-color: $surface-2;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(255 255 255 / 12%),
+      transparent
+    );
+    animation: shimmer 1.4s ease-in-out infinite;
+  }
+}
+
+.text {
+  height: 1em;
+  border-radius: 4px;
+}
+
+.rectangle {
+  border-radius: 2px;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after {
+    animation: none;
+  }
+}

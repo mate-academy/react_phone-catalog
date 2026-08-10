@@ -2509,9 +2509,7 @@
     "images": [
       "img/phones/apple-iphone-xr/coral/00.webp",
       "img/phones/apple-iphone-xr/coral/01.webp",
-      "img/phones/apple-iphone-xr/coral/02.webp",
-      "img/phones/apple-iphone-xr/coral/03.webp",
-      "img/phones/apple-iphone-xr/coral/04.webp"
+      "img/phones/apple-iphone-xr/coral/02.webp"
     ],
     "description": [
       {
@@ -2606,8 +2604,7 @@
       "img/phones/apple-iphone-xr/white/00.webp",
       "img/phones/apple-iphone-xr/white/01.webp",
       "img/phones/apple-iphone-xr/white/02.webp",
-      "img/phones/apple-iphone-xr/white/03.webp",
-      "img/phones/apple-iphone-xr/white/04.webp"
+      "img/phones/apple-iphone-xr/white/03.webp"
     ],
     "description": [
       {
@@ -2796,8 +2793,7 @@
       "img/phones/apple-iphone-xr/white/00.webp",
       "img/phones/apple-iphone-xr/white/01.webp",
       "img/phones/apple-iphone-xr/white/02.webp",
-      "img/phones/apple-iphone-xr/white/03.webp",
-      "img/phones/apple-iphone-xr/white/04.webp"
+      "img/phones/apple-iphone-xr/white/03.webp"
     ],
     "description": [
       {
@@ -4386,7 +4382,6 @@
     "images": [
       "img/phones/apple-iphone-12/white/00.webp",
       "img/phones/apple-iphone-12/white/01.webp",
-      "img/phones/apple-iphone-12/white/02.webp",
       "img/phones/apple-iphone-12/white/03.webp"
     ],
     "description": [
@@ -4431,7 +4426,6 @@
     "images": [
       "img/phones/apple-iphone-12/white/00.webp",
       "img/phones/apple-iphone-12/white/01.webp",
-      "img/phones/apple-iphone-12/white/02.webp",
       "img/phones/apple-iphone-12/white/03.webp"
     ],
     "description": [
@@ -4476,7 +4470,6 @@
     "images": [
       "img/phones/apple-iphone-12/white/00.webp",
       "img/phones/apple-iphone-12/white/01.webp",
-      "img/phones/apple-iphone-12/white/02.webp",
       "img/phones/apple-iphone-12/white/03.webp"
     ],
     "description": [
@@ -5739,7 +5732,7 @@
     "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
-    "id": "apple-iphone-14-pro-512gb",
+    "id": "apple-iphone-14-pro-512gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-14-pro",
     "name": "Apple iPhone 14 Pro 512GB Gold",

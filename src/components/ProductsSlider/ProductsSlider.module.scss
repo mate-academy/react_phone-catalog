@@ -1,0 +1,112 @@
+@import '../../styles/variables';
+
+.section {
+  margin-top: 56px;
+  width: 100%;
+
+  @media (min-width: 640px) {
+    margin-top: 64px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-top: 80px;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  max-width: 136px;
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: -0.01em;
+  color: $white;
+  margin: 0;
+
+  @media (max-width: 639px) {
+    line-height: 140%;
+    letter-spacing: 0;
+  }
+
+  @media (min-width: 640px) {
+    max-width: none;
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.suggestedTitle {
+  @media (max-width: 639px) {
+    max-width: none;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.navButton {
+  width: 32px;
+  height: 32px;
+  background-color: $surface-2;
+  border: 1px solid transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:disabled {
+    background-color: transparent;
+    border-color: $elements;
+    cursor: default;
+
+    img {
+      opacity: 0.25;
+    }
+  }
+
+  &:not(:disabled):hover {
+    background-color: $icons;
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.cardsContainer {
+  display: flex;
+  gap: 16px;
+  width: calc(100% + 16px);
+  margin-top: -4px;
+  padding-top: 4px;
+
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline proximity;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  @media (min-width: 640px) {
+    width: calc(100% + 24px);
+  }
+
+  @media (min-width: 1200px) {
+    width: 100%;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

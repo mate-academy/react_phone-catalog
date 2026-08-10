@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nice Gadgets</title>
+    <script>
+      (() => {
+        const basePath = '/react_phone-catalog/';
+        const currentPath = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+
+        if (currentPath.startsWith(basePath)) {
+          const route = currentPath.slice(basePath.length);
+
+          window.location.replace(
+            `${basePath}?redirect=${encodeURIComponent(route)}`,
+          );
+        } else {
+          window.location.replace(basePath);
+        }
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

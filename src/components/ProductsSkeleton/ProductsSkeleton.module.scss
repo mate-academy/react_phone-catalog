@@ -1,0 +1,95 @@
+@use '../../styles/variables' as *;
+
+.grid,
+.slider {
+  display: grid;
+  gap: 40px 16px;
+}
+
+.grid {
+  grid-template-columns: repeat(auto-fit, minmax(212px, 1fr));
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 272px);
+  }
+}
+
+.slider {
+  grid-auto-flow: column;
+  grid-auto-columns: 212px;
+  gap: 16px;
+  overflow: hidden;
+
+  @media (min-width: 640px) {
+    grid-auto-columns: 237px;
+  }
+
+  @media (min-width: 1200px) {
+    grid-auto-columns: 272px;
+  }
+}
+
+.card {
+  width: 100%;
+  min-width: 0;
+  height: 440px;
+  box-sizing: border-box;
+  padding: 32px;
+  background-color: $surface-1;
+
+  @media (min-width: 640px) {
+    height: 506px;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 129px;
+  margin-bottom: 24px;
+
+  @media (min-width: 640px) {
+    height: 196px;
+  }
+}
+
+.title {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.shortTitle {
+  width: 72%;
+  margin-bottom: 18px;
+}
+
+.price {
+  width: 45%;
+  height: 22px;
+  margin-bottom: 16px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  margin-bottom: 16px;
+}
+
+.specs {
+  display: grid;
+  gap: 8px;
+
+  > * {
+    height: 10px;
+  }
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  gap: 8px;
+  margin-top: 20px;
+
+  > * {
+    height: 40px;
+  }
+}

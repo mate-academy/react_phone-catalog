@@ -1,0 +1,169 @@
+.page {
+  padding-top: 24px;
+  padding-bottom: 80px;
+}
+
+.breadcrumbs {
+  width: 220px;
+  height: 12px;
+}
+
+.back {
+  width: 48px;
+  height: 12px;
+  margin-top: 40px;
+}
+
+.title {
+  width: min(560px, 85%);
+  height: 32px;
+  margin-top: 20px;
+}
+
+.hero {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 560px 1fr;
+  gap: 64px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 16px;
+}
+
+.thumbnails {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+}
+
+.thumbnail {
+  height: 80px;
+}
+
+.mainImage {
+  min-height: 420px;
+}
+
+.options {
+  max-width: 320px;
+}
+
+.optionLabel {
+  width: 120px;
+  height: 12px;
+}
+
+.swatches {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.swatch {
+  width: 32px;
+  height: 32px;
+}
+
+.divider {
+  height: 1px;
+  margin: 24px 0;
+}
+
+.capacities {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  gap: 8px;
+
+  > * {
+    height: 32px;
+  }
+}
+
+.price {
+  width: 120px;
+  height: 32px;
+  margin-top: 32px;
+}
+
+.action {
+  width: 100%;
+  height: 48px;
+  margin-top: 16px;
+}
+
+.information {
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+
+.heading {
+  width: 160px;
+  height: 22px;
+  margin-bottom: 32px;
+}
+
+.paragraph,
+.shortParagraph,
+.spec {
+  height: 14px;
+  margin-top: 12px;
+}
+
+.shortParagraph {
+  width: 72%;
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .mainImage {
+    min-height: 300px;
+  }
+
+  .information {
+    gap: 32px;
+  }
+}
+
+@media (max-width: 639px) {
+  .back {
+    margin-top: 24px;
+  }
+
+  .hero,
+  .information {
+    margin-top: 32px;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .thumbnails {
+    grid-template-columns: repeat(4, 1fr);
+    grid-row: 2;
+  }
+
+  .thumbnail {
+    height: 56px;
+  }
+
+  .mainImage {
+    min-height: 288px;
+  }
+
+  .options {
+    max-width: none;
+  }
+}
