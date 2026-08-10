@@ -11,9 +11,11 @@ interface Props {
 
 const getVisiblePages = (currentPage: number, totalPages: number) => {
   const visibleCount = Math.min(4, totalPages);
+  const currentGroupStart =
+    Math.floor((currentPage - 1) / visibleCount) * visibleCount + 1;
   const firstPage = Math.min(
-    Math.max(currentPage - 1, 1),
-    totalPages - visibleCount + 1,
+    currentGroupStart,
+    Math.max(totalPages - visibleCount + 1, 1),
   );
 
   return Array.from({ length: visibleCount }, (_, index) => firstPage + index);

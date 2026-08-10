@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 import { ProductCategory } from '../../types/Product';
@@ -29,6 +29,8 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const queryParam = searchParams.get('query') ?? '';
   const [searchValue, setSearchValue] = useState(queryParam);
+  const searchValueRef = useRef(queryParam);
+  const previousPathnameRef = useRef(location.pathname);
   const { favoritesCount } = useFavorites();
   const { cartCount } = useCart();
   const { language, t, toggleLanguage } = useLanguage();
@@ -65,7 +67,14 @@ export const Header = () => {
   }, []);
 
   useEffect(() => {
-    setSearchValue(queryParam);
+    const pathnameChanged = previousPathnameRef.current !== location.pathname;
+
+    previousPathnameRef.current = location.pathname;
+
+    if (pathnameChanged || searchValueRef.current.trim() !== queryParam) {
+      searchValueRef.current = queryParam;
+      setSearchValue(queryParam);
+    }
   }, [location.pathname, queryParam]);
 
   useEffect(() => {
@@ -182,7 +191,10 @@ export const Header = () => {
               aria-label={t('header.searchLabel', {
                 section: t(searchPageName),
               })}
-              onChange={event => setSearchValue(event.target.value)}
+              onChange={event => {
+                searchValueRef.current = event.target.value;
+                setSearchValue(event.target.value);
+              }}
             />
           </div>
         )}

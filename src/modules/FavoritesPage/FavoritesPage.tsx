@@ -7,6 +7,7 @@ import { ProductsSkeleton } from '../../components/ProductsSkeleton';
 import { useFavorites } from '../../context/FavoritesContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { Product } from '../../types/Product';
+import { matchesSearchQuery } from '../../utils/matchesSearchQuery';
 import styles from './FavoritesPage.module.scss';
 
 export const FavoritesPage = () => {
@@ -56,7 +57,7 @@ export const FavoritesPage = () => {
   const filteredFavoriteProducts = useMemo(
     () =>
       favoriteProducts.filter(product =>
-        product.name.toLowerCase().includes(query),
+        matchesSearchQuery(product.name, query),
       ),
     [favoriteProducts, query],
   );

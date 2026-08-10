@@ -8,6 +8,7 @@ import { ProductsList } from '../../../components/ProductsList';
 import { ProductsSkeleton } from '../../../components/ProductsSkeleton';
 import { TranslationKey, useLanguage } from '../../../context/LanguageContext';
 import { Product, ProductCategory } from '../../../types/Product';
+import { matchesSearchQuery } from '../../../utils/matchesSearchQuery';
 import styles from './CatalogPage.module.scss';
 
 type SortOption = 'age' | 'title' | 'price';
@@ -117,8 +118,7 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
   }, [category, reloadKey]);
 
   const filteredProducts = useMemo(
-    () =>
-      products.filter(product => product.name.toLowerCase().includes(query)),
+    () => products.filter(product => matchesSearchQuery(product.name, query)),
     [products, query],
   );
 
@@ -201,7 +201,6 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
     }
 
     setSearchParams(nextParams);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (

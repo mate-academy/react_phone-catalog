@@ -156,6 +156,7 @@ export const ProductsSlider: React.FC<Props> = ({
               key={product.id}
               product={product}
               hideOldPrice={sortBy === 'newest'}
+              smoothScrollToTop={sortBy === 'suggested'}
             />
           ))
         )}

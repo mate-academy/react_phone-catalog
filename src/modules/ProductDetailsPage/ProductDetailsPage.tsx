@@ -27,7 +27,9 @@ export const ProductDetailsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [reloadKey, setReloadKey] = useState(0);
-  const shouldPreserveProductView = location.state?.preserveScroll === true;
+  const shouldPreserveProductView =
+    location.state?.preserveScroll === true ||
+    location.state?.preserveProductView === true;
 
   useEffect(() => {
     let isCancelled = false;
@@ -125,7 +127,7 @@ export const ProductDetailsPage = () => {
       <button
         type="button"
         className={styles.back}
-        onClick={() => navigate(-1)}
+        onClick={() => navigate(`/${product.category}`)}
         style={
           {
             '--back-icon': `url("${getPublicPath('img/chevron-left.svg')}")`,

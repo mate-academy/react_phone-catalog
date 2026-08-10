@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 export const ScrollToTop = () => {
   const { pathname, state } = useLocation();
   const shouldPreserveScroll = state?.preserveScroll === true;
+  const scrollBehavior = state?.scrollBehavior === 'smooth' ? 'smooth' : 'auto';
 
   useLayoutEffect(() => {
     if (shouldPreserveScroll) {
@@ -13,9 +14,9 @@ export const ScrollToTop = () => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'auto',
+      behavior: scrollBehavior,
     });
-  }, [pathname, shouldPreserveScroll]);
+  }, [pathname, scrollBehavior, shouldPreserveScroll]);
 
   return null;
 };

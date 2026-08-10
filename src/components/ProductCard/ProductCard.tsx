@@ -10,12 +10,14 @@ interface Props {
   product: Product;
   hideOldPrice?: boolean;
   variant?: 'default' | 'catalog';
+  smoothScrollToTop?: boolean;
 }
 
 export const ProductCard: React.FC<Props> = ({
   product,
   hideOldPrice,
   variant = 'default',
+  smoothScrollToTop = false,
 }) => {
   const { isFavorite, toggleFavorite } = useFavorites();
   const { addToCart, isInCart } = useCart();
@@ -24,6 +26,13 @@ export const ProductCard: React.FC<Props> = ({
     product;
   const isProductFavorite = isFavorite(itemId);
   const isProductInCart = isInCart(itemId);
+  const productLinkState = {
+    category: product.category,
+    ...(smoothScrollToTop && {
+      preserveProductView: true,
+      scrollBehavior: 'smooth',
+    }),
+  };
 
   return (
     <div
@@ -33,7 +42,7 @@ export const ProductCard: React.FC<Props> = ({
     >
       <Link
         to={`/product/${itemId}`}
-        state={{ category: product.category }}
+        state={productLinkState}
         className={styles.imageContainer}
       >
         <img src={getPublicPath(image)} alt={name} />
@@ -41,7 +50,7 @@ export const ProductCard: React.FC<Props> = ({
 
       <Link
         to={`/product/${itemId}`}
-        state={{ category: product.category }}
+        state={productLinkState}
         className={styles.title}
       >
         {name}
