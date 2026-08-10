@@ -1,0 +1,136 @@
+@use '../../styles/variables' as *;
+
+.page {
+  padding-top: 24px;
+  padding-bottom: 80px;
+}
+
+.back {
+  margin-top: 40px;
+  padding: 0;
+  border: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: transparent;
+  color: $white;
+  cursor: pointer;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  transition: color 0.3s ease;
+
+  &::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+    background-color: currentColor;
+    mask: var(--back-icon) center / 16px 16px no-repeat;
+  }
+
+  &:hover {
+    color: $accent;
+  }
+}
+
+.title {
+  margin: 16px 0 0;
+  color: $white;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+.hero {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 560px 512px;
+  gap: 64px;
+}
+
+.details {
+  margin-top: 80px;
+}
+
+.state {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+
+  h1,
+  p {
+    margin: 0;
+    color: $white;
+  }
+
+  p {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+  }
+
+  button {
+    height: 40px;
+    padding: 0 24px;
+    border: 0;
+    border-radius: 0;
+    background-color: $accent;
+    color: $on-accent;
+    cursor: pointer;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $accent-hover;
+    }
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .page {
+    padding-bottom: 64px;
+  }
+
+  .hero {
+    grid-template-columns: 338px minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .details {
+    margin-top: 64px;
+  }
+}
+
+@media (max-width: 639px) {
+  .page {
+    padding-bottom: 56px;
+  }
+
+  .back {
+    margin-top: 24px;
+  }
+
+  .title {
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0;
+  }
+
+  .hero {
+    margin-top: 32px;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .details {
+    margin-top: 56px;
+  }
+}

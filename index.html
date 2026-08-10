@@ -3,7 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
+    <title>Nice Gadgets</title>
+    <script>
+      (() => {
+        const redirect = new URLSearchParams(window.location.search).get(
+          'redirect',
+        );
+
+        if (
+          redirect !== null &&
+          !redirect.startsWith('/') &&
+          !redirect.includes('\\') &&
+          !redirect.includes('://')
+        ) {
+          const basePath = window.location.pathname.endsWith('/')
+            ? window.location.pathname
+            : `${window.location.pathname}/`;
+
+          window.history.replaceState(null, '', `${basePath}${redirect}`);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

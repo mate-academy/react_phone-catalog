@@ -1,0 +1,158 @@
+@import '../../styles/variables';
+
+.footer {
+  width: 100%;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  background-color: $black;
+  box-shadow: inset 0 1px 0 $surface-2;
+  display: flex;
+  justify-content: center;
+
+  @media (min-width: 640px) {
+    height: 96px;
+  }
+}
+
+.container {
+  width: 100%;
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  box-sizing: border-box;
+
+  @media (min-width: 640px) {
+    height: 100%;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+    gap: 0 16px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1136px;
+    padding: 0;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+
+  @media (min-width: 640px) {
+    justify-self: start;
+  }
+}
+
+.logoImg {
+  width: 89px;
+  height: 32px;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover .logoImg {
+  transform: scale(1.1);
+}
+
+.actions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+
+  @media (min-width: 640px) {
+    width: auto;
+    justify-self: end;
+  }
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: center;
+    justify-self: center;
+    gap: 13.5px;
+  }
+
+  @media (min-width: 1200px) {
+    gap: 106px;
+  }
+}
+
+.link {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $white;
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $secondary;
+  }
+}
+
+.backToTopText {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: $secondary;
+  transition: color 0.3s;
+}
+
+.iconContainer {
+  width: 32px;
+  height: 32px;
+  background-color: $surface-2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+  border-radius: 0;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  transform: rotate(-90deg);
+}
+
+.backToTop {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  align-self: center;
+
+  @media (min-width: 640px) {
+    width: auto;
+    place-self: auto end;
+  }
+
+  &:hover .backToTopText {
+    color: $white;
+  }
+
+  &:hover .iconContainer {
+    background-color: $elements;
+  }
+}

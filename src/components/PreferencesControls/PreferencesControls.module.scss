@@ -1,0 +1,105 @@
+@use '../../styles/variables' as *;
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid $elements;
+  border-radius: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $surface-2;
+  color: $white;
+  cursor: pointer;
+  font-family: Mont, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+
+  &:hover {
+    border-color: $icons;
+    background-color: $icons;
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $accent;
+    outline-offset: 2px;
+  }
+}
+
+.language {
+  width: 52px;
+  display: none;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    display: inline-flex;
+  }
+}
+
+.themeIcon {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  display: block;
+  box-sizing: border-box;
+}
+
+.sunIcon {
+  border: 2px solid currentColor;
+  border-radius: 50%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: -5px;
+    width: 22px;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      currentColor 0 2px,
+      transparent 2px 20px,
+      currentColor 20px
+    );
+  }
+
+  &::after {
+    transform: rotate(90deg);
+  }
+}
+
+.moonIcon {
+  border: 2px solid currentColor;
+  border-radius: 50%;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: $surface-2;
+    transition: background-color 0.3s ease;
+  }
+}
+
+.button:hover .moonIcon::after {
+  background-color: $icons;
+}

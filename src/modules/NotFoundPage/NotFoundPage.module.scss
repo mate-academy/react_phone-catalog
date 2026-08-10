@@ -1,0 +1,27 @@
+@use '../../styles/variables' as *;
+
+.page {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+
+  h1 {
+    margin: 0;
+  }
+
+  a {
+    color: $accent;
+    font-family: Mont, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $accent-hover;
+    }
+  }
+}

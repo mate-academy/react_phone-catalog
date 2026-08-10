@@ -1,0 +1,127 @@
+@use '../../styles/variables' as *;
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  color: $secondary;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+}
+
+.selectWrapper {
+  position: relative;
+  width: 100%;
+  height: 40px;
+}
+
+.trigger {
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 0 12px;
+  border: 1px solid transparent;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background-color: $surface-2;
+  color: $white;
+  cursor: pointer;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: $icons;
+  }
+
+  &:focus-visible {
+    border-color: $accent;
+    outline: none;
+  }
+}
+
+.triggerOpen {
+  border-color: $accent;
+
+  &:hover {
+    border-color: $accent;
+  }
+}
+
+.value {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  display: block;
+  opacity: 0.45;
+  transform: rotate(90deg);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.triggerOpen .chevron,
+.trigger:hover .chevron {
+  opacity: 1;
+}
+
+.chevronOpen {
+  transform: rotate(-90deg);
+}
+
+.options {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 20;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 0;
+  border: 1px solid $elements;
+  outline: none;
+  background-color: $black;
+}
+
+.option {
+  width: 100%;
+  height: 32px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  background-color: $black;
+  color: $secondary;
+  cursor: pointer;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.optionHighlighted {
+  background-color: $surface-2;
+  color: $white;
+}

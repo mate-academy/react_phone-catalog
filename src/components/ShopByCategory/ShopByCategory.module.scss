@@ -1,0 +1,108 @@
+@use '../../styles/variables' as *;
+
+.section {
+  margin-top: 56px;
+  width: 100%;
+
+  @media (min-width: 640px) {
+    margin-top: 64px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-top: 80px;
+  }
+}
+
+.title {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: -0.01em;
+  color: $white;
+  margin: 0 0 24px;
+
+  @media (min-width: 640px) {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.imageContainer {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.imgPhones,
+.imgTablets,
+.imgAccessories {
+  position: absolute;
+  display: block;
+  max-width: none;
+  transition: transform 0.3s ease-in-out;
+}
+
+.imgPhones {
+  width: calc(386 / 368 * 100%);
+  height: calc(457 / 368 * 100%);
+  top: calc(65 / 368 * 100%);
+  left: calc(49 / 368 * 100%);
+}
+
+.imgTablets {
+  width: calc(546 / 368 * 100%);
+  height: calc(546 / 368 * 100%);
+  top: calc(20 / 368 * 100%);
+  left: calc(22 / 368 * 100%);
+}
+
+.imgAccessories {
+  width: calc(654 / 368 * 100%);
+  height: calc(316 / 368 * 100%);
+  top: calc(52 / 368 * 100%);
+  left: calc(48 / 368 * 100%);
+}
+
+.card:hover .imgPhones,
+.card:hover .imgTablets,
+.card:hover .imgAccessories {
+  transform: scale(1.1);
+}
+
+.cardTitle {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  color: $white;
+  margin: 0 0 4px;
+}
+
+.cardCount {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $secondary;
+  margin: 0;
+}

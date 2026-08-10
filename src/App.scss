@@ -1,1 +1,167 @@
-// not empty
+@import './styles/variables';
+
+:root,
+:root[data-theme='dark'] {
+  --color-primary: #f1f2f9;
+  --color-accent: #905bff;
+  --color-accent-hover: #a378ff;
+  --color-on-accent: #fff;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --color-secondary: #75767f;
+  --color-icons: #4a4d58;
+  --color-elements: #3b3e4a;
+  --color-surface-2: #323542;
+  --color-surface-1: #161827;
+  --color-card-background: #161827;
+  --color-background: #0f1121;
+  --search-cancel-filter: invert(1);
+}
+
+:root[data-theme='light'] {
+  --color-primary: #313237;
+  --color-accent: #4219d0;
+  --color-accent-hover: #3100a3;
+  --color-on-accent: #fff;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --color-secondary: #5f6b76;
+  --color-icons: #737e87;
+  --color-elements: #e2e6e9;
+  --color-surface-2: #f0f1f2;
+  --color-surface-1: #fff;
+  --color-card-background: #f4f5f6;
+  --color-background: #fafbfc;
+  --search-cancel-filter: none;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('./assets/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('./assets/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('./assets/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('./assets/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $black;
+  color: $white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: left;
+  font-family: Mont, sans-serif;
+  font-synthesis: none;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+button,
+input,
+select,
+a {
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+:root[data-theme='light'] img[src$='/logo.svg'],
+:root[data-theme='light'] img[src$='/heart.svg'],
+:root[data-theme='light'] img[src$='/cart.svg'],
+:root[data-theme='light'] img[src$='/icon-home.svg'],
+:root[data-theme='light'] img[src$='/icon-menu.svg'],
+:root[data-theme='light'] img[src$='/icon-close.svg'],
+:root[data-theme='light'] img[src$='/close.svg'],
+:root[data-theme='light'] img[src$='/icon-minus.svg'],
+:root[data-theme='light'] img[src$='/icon-search.svg'],
+:root[data-theme='light'] img[src$='/chevron-left.svg'],
+:root[data-theme='light'] img[src$='/chevron-right.svg'] {
+  filter: brightness(0) saturate(100%);
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1 0 auto;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  text-align: left;
+  padding-inline: 16px;
+
+  @media (min-width: 640px) {
+    padding-inline: 24px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1136px;
+    padding-inline: 0;
+  }
+}
+
+h1,
+.h1 {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  color: $white;
+  margin: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
