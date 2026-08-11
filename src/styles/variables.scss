@@ -1,0 +1,212 @@
+@import './typography';
+
+// ============================================
+// COLORS - LIGHT THEME
+// ============================================
+
+// Primary Colors
+$primary-accent: #4219D0;
+$white: #FFF;
+$black: #000;
+$red: #EB5757;
+$green: #27AE60;
+
+// Surface Colors
+$surface-primary-light: #FAFBFC;
+$surface-secondary-light: #FFF;
+
+// Text Colors
+$text-primary-light: #313237;
+$text-secondary-light: #89939A;
+
+// Icon Colors
+$icon-color-light: #313237;
+
+// Icon specific colors (for ProductCard)
+$icon-default-light: #313237;
+$icon-default-dark: #F1F2F9;
+$icon-hover-light: #313237;
+$icon-hover-dark: #F1F2F9;
+$icon-disabled-light: #B4BDC3;
+$icon-disabled-dark: #4A4D58;
+
+// Icon backgrounds
+$icon-favourite-light: #EB5757;
+$icon-favourite-dark: #EB5757;
+$icon-cart-light: #4219D0;
+$icon-cart-dark: #905BFF;
+
+// Elements
+$elements-border-light: #E2E6E9;
+$elements-hover-light: #FAFBFC;
+
+// ============================================
+// COLORS - DARK THEME
+// ============================================
+
+// Primary Colors
+$primary-accent-dark: #905BFF;
+
+// Surface Colors
+$surface-primary-dark: #0F1121;
+$surface-secondary-dark: #161827;
+
+// Text Colors
+$text-primary-dark: #F1F2F9;
+$text-secondary-dark: #75767F;
+
+// Icon Colors
+$icon-color-dark: #F1F2F9;
+
+// Elements
+$elements-selected-dark: #323542;
+$elements-hover-dark: #323542;
+
+// ============================================
+// BREAKPOINTS
+// ============================================
+$mobile-breakpoint: 640px;
+$tablet-breakpoint: 1200px;
+
+// ============================================
+// MIXINS FOR RESPONSIVE
+// ============================================
+@mixin mobile {
+  @media (max-width: #{$mobile-breakpoint - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$mobile-breakpoint}) and (max-width: #{$tablet-breakpoint - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$tablet-breakpoint}) {
+    @content;
+  }
+}
+
+// Mobile and up
+@mixin mobile-up {
+  @media (min-width: 0) {
+    @content;
+  }
+}
+
+// Tablet and up
+@mixin tablet-up {
+  @media (min-width: #{$mobile-breakpoint}) {
+    @content;
+  }
+}
+
+// ============================================
+// TRANSITIONS
+// ============================================
+$transition-base: 0.3s ease;
+$transition-fast: 0.15s ease;
+$transition-slow: 0.5s ease;
+
+// ============================================
+// SPACING
+// ============================================
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-2xl: 48px;
+$spacing-3xl: 64px;
+
+// ============================================
+// BORDER RADIUS
+// ============================================
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 16px;
+$border-radius-full: 9999px;
+
+// ============================================
+// SHADOWS
+// ============================================
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+$shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+
+// Card shadows (for ProductCard)
+$shadow-card-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+$shadow-card-dark: 0 2px 8px rgba(0, 0, 0, 0.5);
+$shadow-card-hover-light: 0 4px 16px rgba(0, 0, 0, 0.15);
+$shadow-card-hover-dark: 0 4px 16px rgba(0, 0, 0, 0.6);
+
+// Button shadows
+$shadow-button-hover: 0 3px 13px rgba(23, 32, 49, 0.26);
+
+// ============================================
+// Z-INDEX LAYERS
+// ============================================
+$z-index-dropdown: 100;
+$z-index-sticky: 200;
+$z-index-fixed: 300;
+$z-index-modal-backdrop: 400;
+$z-index-modal: 500;
+$z-index-popover: 600;
+$z-index-tooltip: 700;
+
+// ============================================
+// CONTAINER
+// ============================================
+$container-max-width: 1200px;
+$container-padding-mobile: 16px;
+$container-padding-tablet: 24px;
+$container-padding-desktop: 32px;
+
+// ============================================
+// HEADER & FOOTER
+// ============================================
+$header-height-mobile: 56px;
+$header-height-desktop: 64px;
+$footer-height: auto;
+
+// ============================================
+// PRODUCT CARD
+// ============================================
+$card-border-radius: 8px;
+$card-padding: 32px;
+$card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+// ============================================
+// BUTTONS
+// ============================================
+$button-height: 48px;
+$button-height-small: 40px;
+$button-height-large: 56px;
+$button-border-radius: 8px;
+
+// ============================================
+// INPUTS
+// ============================================
+$input-height: 48px;
+$input-border-radius: 8px;
+$input-padding: 12px 16px;
+
+// ============================================
+// BADGE
+// ============================================
+$badge-size: 14px;
+$badge-bg: $red;
+$badge-color: $white;
+
+// ============================================
+// GRID
+// ============================================
+$grid-gap-mobile: 16px;
+$grid-gap-tablet: 16px;
+$grid-gap-desktop: 16px;
+$grid-columns-mobile: 1;
+$grid-columns-tablet: 2;
+$grid-columns-desktop: 4;

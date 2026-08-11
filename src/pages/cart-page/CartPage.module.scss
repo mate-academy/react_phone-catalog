@@ -1,0 +1,308 @@
+@import '../../styles/variables';
+
+// ============================================
+// PAGE LAYOUT
+// ============================================
+
+.page {
+  min-height: calc(100vh - #{$header-height-desktop} - #{$footer-height});
+  padding: 0;
+  animation: fade-in 0.3s ease-out;
+
+  [data-theme='light'] & {
+    background: $surface-primary-light;
+  }
+
+  [data-theme='dark'] & {
+    background: $surface-primary-dark;
+  }
+
+  @include mobile {
+    min-height: calc(100vh - #{$header-height-mobile} - #{$footer-height});
+  }
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding-desktop;
+
+  @include mobile {
+    padding: 0 $container-padding-mobile;
+  }
+
+  @include tablet {
+    padding: 0 $container-padding-tablet;
+  }
+}
+
+// ============================================
+// BACK BUTTON
+// ============================================
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-xs 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-top: 40px;
+  margin-bottom: $spacing-md;
+  transition: opacity $transition-base;
+
+  @include small-text;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+
+  [data-theme='light'] & {
+    color: $text-secondary-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-secondary-dark;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  @include mobile {
+    margin-top: 32px;
+    margin-bottom: 10px;
+  }
+
+  @include tablet {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+// ============================================
+// TITLE
+// ============================================
+
+.title {
+  @include h1;
+
+  margin: 0 0 $spacing-2xl;
+
+  [data-theme='light'] & {
+    color: $text-primary-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-primary-dark;
+  }
+
+  @include mobile {
+    margin-bottom: $spacing-xl;
+  }
+}
+
+// ============================================
+// CART CONTENT
+// ============================================
+
+.cartContent {
+  display: grid;
+  grid-template-columns: 1fr 368px;
+  gap: $spacing-2xl;
+  align-items: start;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+  }
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+  }
+}
+
+.cartItems {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+
+  @include mobile {
+    gap: $spacing-md;
+  }
+}
+
+.cartTotalContainer {
+  @include mobile {
+    order: 2;
+  }
+
+  @include tablet {
+    order: 2;
+  }
+}
+
+// ============================================
+// EMPTY STATE
+// ============================================
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+
+  @include mobile {
+    min-height: 300px;
+  }
+}
+
+.emptyStateContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  max-width: 500px;
+}
+
+.emptyStateImage {
+  width: 400px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+
+  @include mobile {
+    width: 250px;
+    margin-bottom: $spacing-xl;
+  }
+
+  @include tablet {
+    width: 250px;
+  }
+}
+
+.emptyStateTitle {
+  @include h2;
+
+  margin: 0 0 $spacing-md;
+
+  [data-theme='light'] & {
+    color: $text-primary-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-primary-dark;
+  }
+
+  @include mobile {
+    font-size: $font-size-xl;
+  }
+}
+
+.emptyStateDescription {
+  @include body-text;
+
+  margin: 0 0 $spacing-xl;
+  line-height: $line-height-relaxed;
+
+  [data-theme='light'] & {
+    color: $text-secondary-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-secondary-dark;
+  }
+}
+
+.continueShoppingButton {
+  @include buttons;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  min-width: 180px;
+  border-radius: $border-radius-md;
+  text-decoration: none;
+  transition: all $transition-base;
+  cursor: pointer;
+  border: none;
+  margin-bottom: 24px;
+
+  &:hover {
+    opacity: 0.9;
+    box-shadow: $shadow-button-hover;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  [data-theme='light'] & {
+    background: $primary-accent;
+    color: $white;
+  }
+
+  [data-theme='dark'] & {
+    background: $primary-accent-dark;
+    color: $white;
+
+    &:hover {
+      box-shadow: 0 4px 16px rgba(144, 91, 255, 0.3);
+    }
+  }
+
+  @include mobile {
+    padding: 10px 20px;
+    min-width: 160px;
+    font-size: $font-size-sm;
+    margin-bottom: 54px;
+  }
+}
+
+// ============================================
+// ANIMATION
+// ============================================
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Accessibility improvements
+@media (prefers-reduced-motion: reduce) {
+  .page {
+    animation: none;
+  }
+
+  .continueShoppingButton {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}

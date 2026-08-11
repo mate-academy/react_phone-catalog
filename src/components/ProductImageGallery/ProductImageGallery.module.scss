@@ -1,0 +1,184 @@
+@import '../../styles/variables';
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  width: 100%;
+
+  // Desktop: side-by-side layout
+  @include desktop {
+    flex-direction: row;
+    gap: $spacing-md;
+  }
+}
+
+// Main Image Container
+.mainImageContainer {
+  width: 100%;
+  aspect-ratio: 1; // Square aspect ratio
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-lg;
+  border-radius: 0; // No border radius on mobile for full width
+  overflow: hidden;
+  order: 1; // Main image first on mobile
+
+  @include mobile {
+    padding: $spacing-xl $spacing-md; // More vertical padding on mobile
+    border-radius: 0; // Completely flat edges
+  }
+
+  @include tablet {
+    border-radius: $border-radius-md; // Add border radius on tablet
+  }
+
+  @include desktop {
+    flex: 1;
+    order: 2; // Main image on right on desktop
+    border-radius: $border-radius-md;
+  }
+
+  [data-theme='light'] & {
+    background: $surface-secondary-light;
+  }
+
+  [data-theme='dark'] & {
+    background: $surface-secondary-dark;
+  }
+}
+
+.mainImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+// Thumbnails Container
+.thumbnailsContainer {
+  display: flex;
+  
+  width: 100%;
+  order: 2; // Thumbnails after main image on mobile
+
+  @include mobile {
+    // Add padding on mobile to align with content
+    padding: 0 $container-padding-mobile;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include tablet {
+    padding: 0; // Remove padding on tablet
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include desktop {
+    width: 80px;
+    flex-shrink: 0;
+    order: 1; // Thumbnails on left on desktop
+    padding: 0;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  gap: $spacing-sm;
+  
+  // Mobile: Horizontal scroll
+  @include mobile {
+    overflow: auto hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; // Firefox
+    padding-bottom: $spacing-xs; // Space for scroll gesture
+    
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari
+    }
+  }
+
+  // Tablet: Horizontal scroll
+  @include tablet {
+    overflow: auto hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  // Desktop: Vertical layout
+  @include desktop {
+    flex-direction: column;
+    overflow: visible;
+  }
+}
+
+.thumbnail {
+  flex-shrink: 0;
+  padding: 0;
+  border: 2px solid;
+  border-radius: $border-radius-sm;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color $transition-fast;
+
+  // Mobile: Fixed size for horizontal scroll
+  @include mobile {
+    width: 50px;
+    height: 50px;
+  }
+
+  // Tablet: Slightly larger
+  @include tablet {
+    width: 60px;
+    height: 60px;
+  }
+
+  // Desktop: Full width, maintain aspect ratio
+  @include desktop {
+    width: 80px;
+    height: 80px;
+  }
+
+  [data-theme='light'] & {
+    border-color: $elements-border-light;
+  }
+
+  [data-theme='dark'] & {
+    border-color: $elements-selected-dark;
+  }
+
+  &:hover {
+    [data-theme='light'] & {
+      border-color: $text-primary-light;
+    }
+
+    [data-theme='dark'] & {
+      border-color: $text-primary-dark;
+    }
+  }
+
+  &Active {
+    [data-theme='light'] & {
+      border-color: $text-primary-light;
+    }
+
+    [data-theme='dark'] & {
+      border-color: $text-primary-dark;
+    }
+  }
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 4px;
+}

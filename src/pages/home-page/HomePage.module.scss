@@ -1,0 +1,131 @@
+@import '../../styles/variables';
+
+.homePage {
+  min-height: 100vh;
+  background: $white;
+  animation: fade-in 0.3s ease-out;
+
+  [data-theme='dark'] & {
+    background: #0f1121;
+  }
+}
+
+.welcome {
+  max-width: $container-max-width;
+  margin: 0 auto $spacing-2xl;
+  padding: $spacing-3xl $container-padding-desktop 0;
+
+  @include tablet {
+    padding: $spacing-2xl $container-padding-tablet 0;
+    margin-bottom: $spacing-xl;
+  }
+
+  @include mobile {
+    padding: $spacing-xl $container-padding-mobile 0;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.welcomeTitle {
+  @include h1;
+
+  font-family: $font-family-base;
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-extra-bold;
+  color: #313237;
+  margin: 0;
+  padding: 0;
+  line-height: $line-height-tight;
+  width: 850px;
+
+  [data-theme='dark'] & {
+    color: #f1f2f9;
+  }
+
+  @include tablet {
+    font-size: $font-size-3xl;
+    width: 95vw;
+  }
+
+  @include mobile {
+    width: 95vw;
+    font-size: $font-size-2xl;
+  }
+}
+
+.errorContainer {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: $spacing-2xl $container-padding-desktop;
+
+  @include tablet {
+    padding: $spacing-xl $container-padding-tablet;
+  }
+
+  @include mobile {
+    padding: $spacing-lg $container-padding-mobile;
+  }
+}
+
+// Loading state
+.sliderLoading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: $spacing-2xl 0;
+
+  @include mobile {
+    min-height: 300px;
+    padding: $spacing-xl 0;
+  }
+}
+
+// Section spacing
+.section {
+  margin-bottom: $spacing-3xl;
+
+  @include tablet {
+    margin-bottom: $spacing-2xl;
+  }
+
+  @include mobile {
+    margin-bottom: $spacing-xl;
+  }
+}
+
+// ============================================
+// ANIMATIONS
+// ============================================
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// Accessibility improvements
+@media (prefers-reduced-motion: reduce) {
+  .homePage {
+    animation: none;
+  }
+
+  .loader {
+    animation: none;
+  }
+}

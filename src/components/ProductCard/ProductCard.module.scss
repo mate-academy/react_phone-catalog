@@ -1,0 +1,241 @@
+@import '../../styles/variables';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.card {
+  position: relative;
+  height: fit-content;
+  width: 272px;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  gap: 8px;
+  padding: 32px;
+
+  [data-theme='light'] & {
+    background: $white;
+    border: 1px solid $elements-border-light;
+  }
+
+  [data-theme='dark'] & {
+    background: #161827;
+    border: 1px solid $elements-selected-dark;
+  }
+
+  &:hover {
+    box-shadow: $shadow-card-light;
+
+    [data-theme='dark'] & {
+      box-shadow: $shadow-card-dark;
+    }
+  }
+
+  @include mobile {
+    padding: 24px;
+  }
+}
+
+.imageLink {
+  display: block;
+  text-decoration: none;
+
+  margin-bottom: 20px;
+
+  @include mobile {
+    margin-bottom: 12px;
+  }
+}
+
+.imageContainer {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+
+  .card:hover & {
+    transform: scale(1.05);
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.title {
+  font-family:
+    Mont,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $text-primary-light;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  min-height: 42px;
+  max-height: 42px;
+
+  [data-theme='light'] & {
+    color: $text-primary-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-primary-dark;
+  }
+
+  &:hover {
+    [data-theme='light'] & {
+      color: $green;
+    }
+
+    [data-theme='dark'] & {
+      color: $primary-accent-dark;
+    }
+  }
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.currentPrice {
+  font-family:
+    Mont,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+
+  [data-theme='light'] & {
+    color: $icon-color-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-primary-dark;
+  }
+}
+
+.fullPrice {
+  font-family:
+    Mont,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 140%;
+  text-decoration: line-through;
+
+  [data-theme='light'] & {
+    color: $text-secondary-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-secondary-dark;
+  }
+}
+
+.divider {
+  height: 1px;
+
+  margin-bottom: 8px;
+
+  [data-theme='light'] & {
+    background: $elements-border-light;
+  }
+
+  [data-theme='dark'] & {
+    background: #3b3e4a;
+  }
+
+  @include mobile {
+    margin-bottom: 4px;
+  }
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: space-around;
+  flex: 1;
+
+  margin-bottom: 16px;
+
+  @include mobile {
+    justify-content: space-between;
+  }
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.specLabel {
+  font-family:
+    Mont,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+
+  [data-theme='light'] & {
+    color: $text-secondary-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-secondary-dark;
+  }
+}
+
+.specValue {
+  font-family:
+    Mont,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  text-align: right;
+
+  [data-theme='light'] & {
+    color: $text-primary-light;
+  }
+
+  [data-theme='dark'] & {
+    color: $text-primary-dark;
+  }
+}

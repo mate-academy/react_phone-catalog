@@ -26,7 +26,8 @@ module.exports = {
       jsx: true,
     },
     ecmaVersion: 12,
-    project: './tsconfig.json',
+    project: './tsconfig.eslint.json',
+    tsconfigRootDir: __dirname,
     sourceType: 'module',
   },
   plugins: [
@@ -42,10 +43,16 @@ module.exports = {
     '@typescript-eslint/semi': ['error', 'always'],
     'prefer-const': 2,
     curly: [2, 'all'],
-    'max-len': ['error', {
-      ignoreTemplateLiterals: true,
-      ignoreComments: true,
-    }],
+    'max-len': [
+    'warn',
+      {
+        code: 250,
+        ignoreTemplateLiterals: true,
+        ignoreComments: true,
+        ignoreStrings: true,
+        ignoreUrls: true,
+      },
+    ],
     'no-redeclare': [2, { builtinGlobals: true }],
     'no-console': 2,
     'operator-linebreak': 0,
@@ -61,7 +68,7 @@ module.exports = {
       { blankLine: 'always', prev: 'directive', next: '*' },
       { blankLine: 'always', prev: 'block-like', next: '*' },
     ],
-    'implicit-arrow-linebreak:': 0,
+    'implicit-arrow-linebreak': 0,
 
     // React
     'react/prop-types': 0,
