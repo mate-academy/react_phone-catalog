@@ -1,0 +1,42 @@
+@use '../shared/styles/mixins' as *;
+@use '../shared/styles/constants' as *;
+
+.catalog {
+  margin: $margin-horizontal-small;
+
+  @include for-tablets {
+    margin: $margin-horizontal-medium;
+  }
+
+  @include for-desktops {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: $padding-horizontal-large;
+  }
+
+  &__title {
+    padding: 0;
+    margin: 2.4rem 0 0.8rem;
+
+    @include for-desktops {
+      margin: 4.0rem 0 0.8rem;
+    }
+  }
+
+  &__counter {
+    font-weight: $font-weight-medium;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+    letter-spacing: 0%;
+    color: $secondary-color;
+  }
+
+  &__empty {
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+    letter-spacing: 0%;
+    color: $primary-color;
+
+    margin: $margin-vertical-small;
+  }
+}

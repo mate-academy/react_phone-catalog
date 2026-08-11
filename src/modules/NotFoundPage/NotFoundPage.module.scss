@@ -1,0 +1,56 @@
+@use '../shared/styles/mixins' as *;
+@use '../shared/styles/constants' as *;
+
+.notFoundPage {
+  margin: $margin-horizontal-small;
+
+  @include for-tablets {
+    margin: $margin-horizontal-medium;
+  }
+
+  @include for-desktops {
+    margin: 0 3.2rem;
+  }
+
+  &__title {
+    font-weight: $font-weight-extra-bold;
+    font-size: $font-size-large;
+    line-height: $line-height-large;
+
+    text-align: center;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+
+    display: block;
+    margin: 0 auto;
+
+    @include for-tablets {
+      width: 50%;
+      height: auto;
+      margin: 0 auto 3.2rem;;
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 24.0rem;
+    height: 4.8rem;
+
+    background-color: $primary-color;
+
+    font-weight: $font-weight-bold;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+    text-align: center;
+
+    color: $white;
+
+    margin: 0 auto 1.6rem;
+  }
+}

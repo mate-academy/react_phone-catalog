@@ -1,0 +1,63 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/constants' as *;
+
+.header {
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+
+  grid-area: header;
+
+  background-color: white;
+  border: $border-primary;
+
+  box-sizing: border-box;
+
+    @include for-tablets {
+      display: flex;
+      gap: 1.6rem;
+    }
+
+    @include for-desktops {
+      gap: 2.4rem;
+    }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.4rem 1.6rem;
+
+    @include for-tablets {
+      padding: 1.3rem 1.6rem 1.2rem;
+
+      button {
+        display: none;
+      }
+    }
+
+    @include for-desktops {
+      padding: 1.8rem 2.4rem;
+    }
+  }
+}
+
+.logoIcon {
+  height: 2.1rem;
+  width: 6.4rem;
+
+  @include for-desktops {
+    height: 2.65rem;
+    width: 8rem;
+  }
+}
+
+.icon {
+  height: 1.6rem;
+  width: 1.6rem;
+  color:#313237;
+}
+
+button {
+  border: none;
+  background-color: inherit;
+}

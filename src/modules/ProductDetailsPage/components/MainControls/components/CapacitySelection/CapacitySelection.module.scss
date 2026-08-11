@@ -1,0 +1,59 @@
+@use '../../../../../shared/styles/mixins' as *;
+@use '../../../../../shared/styles/constants' as *;
+
+.capacitySelection {
+  margin: 2.4rem 0;
+
+  @include for-desktops {
+    grid-area: capacity;
+  }
+
+  &__label {
+    font-weight: $font-weight-medium;
+    font-size: 1.2rem;
+    line-height: 100%;
+
+    color: $secondary-color;
+  }
+
+  &__capacityOptions {
+    display: flex;
+    gap: 0.8rem;
+    padding-top: 0.8rem;
+  }
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  &__option {
+    width: 6.3rem;
+    height: 3.2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-sizing: border-box;
+    border: 0.1rem solid $tertiary-color;
+
+    font-weight: 500;
+    font-size: $font-size-small;
+
+    transition: box-shadow 0.2s ease-in-out;
+  }
+
+  &__input:checked + .capacitySelection__option {
+    border-color: $primary-color;
+    background-color: $primary-color;
+    color: $white;
+  }
+
+    &__input:not(:checked) + .capacitySelection__option:hover {
+    box-shadow: 0 0 0 0.1rem $tertiary-color;
+  }
+}

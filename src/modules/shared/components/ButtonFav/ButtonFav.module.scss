@@ -1,0 +1,28 @@
+@use '../../styles/constants' as *;
+
+.buttonFav {
+  width: 4.0rem;
+  height: 4.0rem;
+
+  border: 0.1rem solid $tertiary-color;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: opacity 250ms ease;
+
+  position: relative;
+
+
+  &__icon {
+    width: 1.6rem;
+    height: 1.6rem;
+
+    transition: border-color 500ms ease;
+  }
+
+  &:hover {
+    border-color: rgba(49, 50, 55, 1);
+  }
+}

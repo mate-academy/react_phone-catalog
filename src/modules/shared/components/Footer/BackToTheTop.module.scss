@@ -1,0 +1,46 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/constants' as *;
+
+.backToTheTop {
+  margin-top: 3.2rem;
+
+  @include for-tablets {
+    margin-top: 0;
+  }
+
+  &__text {
+    font-weight: $font-weight-bold;
+    font-size: 1.2rem;
+    color: $secondary-color;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.6rem;
+    width: 100%;
+
+    text-decoration: none;
+  }
+
+  &__iconContainer {
+    height: 3.2rem;
+    width: 3.2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 0.1rem solid $tertiary-color;
+  }
+
+  &__icon {
+    height: 1.6rem;
+    width: 1.6rem;
+
+    color: $primary-color;
+
+    transform: rotate(270deg);
+  }
+}

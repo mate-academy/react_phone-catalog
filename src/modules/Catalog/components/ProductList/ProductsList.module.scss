@@ -1,0 +1,44 @@
+@use '../../../shared/styles/mixins' as *;
+
+.productsList {
+
+  &__dropdownWrapper {
+    display: flex;
+    justify-content: space-between;
+
+    @include for-tablets {
+      justify-content: start;
+      gap: 1.6rem;
+    }
+  }
+
+  &__itemsList {
+    display: flex;
+    flex-direction: column;
+    gap: 4.0rem;
+
+    justify-content: center;
+
+     @include for-tablets {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(28.8rem, 1fr));
+      gap: 1.6rem;
+
+      justify-content: initial;
+    }
+
+    @include for-desktops {
+      grid-template-columns: repeat((auto-fill, minmax(27.2rem, 1fr)));
+    }
+  }
+
+  &__item {
+    width: 100%;
+    align-self: center;
+
+    @include for-tablets {
+      width: auto;
+      min-width: 0;
+    }
+  }
+}

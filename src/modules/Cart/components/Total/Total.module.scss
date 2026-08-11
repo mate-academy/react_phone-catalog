@@ -1,0 +1,102 @@
+@use '../../../shared/styles/mixins' as *;
+@use '../../../shared/styles/constants' as *;
+
+.total {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  padding: 2.4rem;
+  border: $border-primary;
+
+  @include for-desktops {
+    grid-area: checkout;
+  }
+
+  &__price {
+    font-weight: $font-weight-extra-bold;
+    font-size: $font-size-large;
+    line-height: $line-height-large;
+    letter-spacing: -1%;
+    text-align: center;
+  }
+
+  &__amount {
+    font-weight: $font-weight-medium;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+    text-align: center;
+
+    color: $secondary-color;
+  }
+
+  &__checkout {
+    width: 24.0rem;
+    height: 4.8rem;
+
+    background-color: $primary-color;
+
+    font-weight: $font-weight-bold;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+    text-align: center;
+
+    color: $white;
+
+    @include for-tablets {
+      width: 100%;
+    }
+  }
+
+  &__line {
+    margin: $margin-vertical-small;
+  }
+}
+
+.modalContent {
+  text-align: center;
+
+  &__title {
+    font-weight: $font-weight-medium;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+
+    color: $primary-color;
+  }
+
+  &__text {
+    margin-bottom: 2.4rem;
+    color: $secondary-color;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.6rem;
+  }
+
+  &__button {
+    height: 4.0rem;
+    padding: 0 2.4rem;
+    border: $border-primary;
+    background: white;
+    font-weight: $font-weight-medium;
+    cursor: $cursor-pointer;
+    transition: $transition-default;
+
+    &:hover {
+      background-color: #fafbfc;
+    }
+
+    &_danger {
+      background-color: $primary-color;
+      color: white;
+      border-color: $primary-color;
+
+      &:hover {
+        background-color: #000;
+      }
+    }
+  }
+}
