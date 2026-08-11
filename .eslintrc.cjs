@@ -38,16 +38,15 @@ module.exports = {
   ],
   rules: {
     // JS
-        'prettier/prettier': 'error',
-
+    'prettier/prettier': 'error',
     'semi': 'off',
     '@typescript-eslint/semi': ['error', 'always'],
     'prefer-const': 2,
     curly: [2, 'all'],
-    'max-len': ['error', {
-      ignoreTemplateLiterals: true,
-      ignoreComments: true,
-    }],
+    
+   
+    'max-len': 'off',
+    
     'no-redeclare': [2, { builtinGlobals: true }],
     'no-console': 2,
     'operator-linebreak': 0,
@@ -75,9 +74,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 0,
     'react/state-in-constructor': [2, 'never'],
     'react-hooks/rules-of-hooks': 2,
-    'jsx-a11y/label-has-associated-control': ["error", {
-      assert: "either",
-    }],
+    'jsx-a11y/label-has-associated-control': ["error", { assert: "either", }],
     'jsx-a11y/label-has-for': [2, {
       components: ['Label'],
       required: {
@@ -88,18 +85,20 @@ module.exports = {
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
 
-    // Typescript
+   
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
-    '@typescript-eslint/indent': ['error', 2],
+    
+    
+    '@typescript-eslint/indent': 'off',
+    
     '@typescript-eslint/ban-types': ['error', {
-        extendDefaults: true,
-        types: {
-          '{}': false,
-        },
+      extendDefaults: true,
+      types: {
+        '{}': false,
       },
-    ],
+    }],
   },
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'src/vite-env.d.ts', 'cypress'],
   settings: {
