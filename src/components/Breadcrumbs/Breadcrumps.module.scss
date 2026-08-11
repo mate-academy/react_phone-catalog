@@ -1,0 +1,37 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+
+  &__home {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__link {
+    color: #89939a;
+    text-decoration: none;
+    text-transform: capitalize;
+
+    &:hover,
+    &:focus,
+    &:visited,
+    &:active {
+      text-decoration: none;
+      text-transform: capitalize;
+    }
+
+    &--active {
+      color: #0f0f11;
+      cursor: default;
+      text-decoration: none !important;
+      text-transform: capitalize;
+    }
+  }
+}

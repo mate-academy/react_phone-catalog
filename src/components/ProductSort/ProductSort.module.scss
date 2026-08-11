@@ -1,0 +1,66 @@
+@import '../../styles/mixins';
+
+.productSort__filter {
+  width: 136px;
+  height: 40px;
+}
+
+.productSort__filterText {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: #89939a;
+  font-weight: 600;
+}
+
+.productSort__select {
+  position: relative;
+  width: 136px;
+  height: 40px;
+}
+
+.productSort__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #b4bdc3;
+  background-color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.productSort__trigger:hover {
+  border-color: #9ca3af;
+  background-color: #f9fafb;
+}
+
+.productSort__triggerArrow {
+  width: 16px;
+  height: 16px;
+}
+
+.productSort__options {
+  position: absolute;
+  width: 136px;
+  margin-top: 4px;
+  border: 1px solid #e2e6e9;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: white;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.productSort__option {
+  padding: 6px 12px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.productSort__option:hover {
+  background-color: #fafbfc;
+}

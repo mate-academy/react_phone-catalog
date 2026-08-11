@@ -1,0 +1,169 @@
+@import '../../styles/mixins';
+
+.productCart {
+  font-family: Mont, sans-serif;
+  box-sizing: border-box;
+  width: 272px;
+  height: 440px;
+  padding: 32px;
+  border: 1px solid #e2e6e9;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.productCart__imageContainer {
+  height: 129px;
+}
+
+.productCart__img {
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.3s ease;
+}
+
+.productCart__img:hover {
+  transform: scale(1.1);
+}
+
+.productCart__name {
+  font-size: 14px;
+  text-align: center;
+  margin: 16px 0 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.productCart__price {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 8px;
+  display: flex;
+  gap: 8px;
+}
+
+.productCart__priceFull {
+  text-decoration: line-through;
+  color: #89939a;
+  font-weight: 600;
+}
+
+.productCart__separator {
+  height: 1px;
+  background-color: #e2e6e9;
+}
+
+.productCart__specs {
+  font-size: 12px;
+  margin: 8px 0;
+  flex-shrink: 0;
+}
+
+.productCart__spec {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.productCart__spec:last-child {
+  margin-bottom: 0;
+}
+
+.productCart__specTitle {
+  color: #89939a;
+}
+
+.productCart__specValue {
+  font-weight: 700;
+  color: #0f0f11;
+}
+
+.productCart__actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.productCart__button {
+  height: 40px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.productCart__buttonAdd {
+  flex: 1;
+  border-radius: 8px;
+  background-color: #f86800;
+  color: #fff;
+  font-size: 14px;
+  min-width: 120px;
+  padding: 0 16px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.productCart__buttonAdd:hover {
+  box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+}
+
+.productCart__buttonLike {
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid #b4bdc3;
+  background-color: #fff;
+  flex-shrink: 0;
+}
+
+.productCart__buttonLike:hover {
+  border: 1px solid #0f0f11;
+}
+
+.productCart__buttonCart {
+  flex: 1;
+  border-radius: 8px;
+  border: 1px solid #e2e6e9;
+  background-color: #fff;
+  color: #f86800;
+  font-size: 14px;
+  min-width: 120px;
+  padding: 0 16px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.productCart__buttonCart:hover {
+  box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+}
+
+.productCart__buttonHeartIcon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: auto;
+}
+
+/* Медіа-запити */
+@media (min-width: 640px) and (max-width: 1199px) {
+  .productCart {
+    width: 237px;
+    height: 512px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .productCart {
+    width: 272px;
+    height: 506px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .productCart {
+    width: 272px;
+    height: 506px;
+  }
+}

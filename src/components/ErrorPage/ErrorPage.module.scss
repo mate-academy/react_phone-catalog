@@ -1,0 +1,56 @@
+@import '../../styles/mixins';
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; // ← вся висота екрану
+  text-align: center;
+  padding: 40px 20px;
+
+  &__container {
+    max-width: 500px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #313237;
+    margin: 0 8px;
+
+    @include tablet-only {
+      font-size: 48px;
+    }
+
+    @include desktop-only {
+      font-size: 48px;
+    }
+
+    @include desktop-up {
+      font-size: 48px;
+    }
+  }
+
+  &__message {
+    font-size: 16px;
+    color: #89939a;
+    margin: 0 24px;
+  }
+
+  &__button {
+    padding: 12px 32px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f86800;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #e05a00;
+    }
+  }
+}

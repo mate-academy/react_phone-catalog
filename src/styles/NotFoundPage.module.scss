@@ -1,0 +1,52 @@
+@import '../styles/mixins';
+
+.notFound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  padding: 40px 20px;
+  font-family: Mont, sans-serif;
+}
+
+.notFound__container {
+  text-align: center;
+  max-width: 600px;
+}
+
+.notFound__title {
+  font-size: 48px;
+  font-weight: 800;
+  color: #313237;
+  margin: 24px 0 16px;
+
+  @include tablet-only {
+    font-size: 64px;
+  }
+
+  @include desktop-up {
+    font-size: 80px;
+  }
+}
+
+.notFound__text {
+  font-size: 18px;
+  color: #89939a;
+  margin-bottom: 32px;
+}
+
+.notFound__link {
+  display: inline-block;
+  padding: 12px 32px;
+  background-color: #f86800;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #e05a00;
+  }
+}

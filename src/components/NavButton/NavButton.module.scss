@@ -1,0 +1,37 @@
+.navButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background-color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.navButton:disabled {
+  border-color: #e2e6e9;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.navButton:hover:not(:disabled) {
+  border-color: #0f0f11;
+}
+
+.navButton__icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+.navButton--left .navButton__icon {
+  transform: rotate(180deg);
+}
+
+.navButton--right .navButton__icon {
+  transform: rotate(0deg);
+}

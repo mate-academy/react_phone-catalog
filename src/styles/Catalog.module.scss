@@ -1,0 +1,127 @@
+@import './mixins';
+
+.catalog {
+  font-family: Mont, sans-serif;
+}
+
+.catalog__container {
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.catalog__path {
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.catalog__category::first-letter {
+  text-transform: uppercase;
+}
+
+.catalog__img {
+  width: 16px;
+  height: 16px;
+}
+
+.catalog__title {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.catalog__titleText {
+  font-size: 32px;
+  font-weight: 800;
+  display: block;
+}
+
+.catalog__titleNumber {
+  font-size: 14px;
+}
+
+.catalog__filters {
+  display: flex;
+  gap: 16px;
+}
+
+.catalog__products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin-top: 24px;
+}
+
+.catalog__paggination {
+  display: flex;
+  margin: 0 auto;
+  gap: 16px;
+}
+
+/* Медіа-запити */
+@media (min-width: 640px) and (max-width: 1199px) {
+  .catalog__container {
+    padding: 24px 32px;
+    gap: 40px;
+  }
+
+  .catalog__titleText {
+    font-size: 48px;
+  }
+
+  .catalog__products {
+    width: 100%;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 237px);
+    justify-content: flex-start;
+    gap: 40px;
+  }
+}
+
+@media (width: 1200px) {
+  .catalog__container {
+    padding: 24px 32px;
+    gap: 64px;
+  }
+
+  .catalog__titleText {
+    font-size: 48px;
+  }
+
+  .catalog__products {
+    width: 100%;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 272px);
+    justify-content: flex-start;
+    gap: 40px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .catalog__container {
+    padding: 24px 152px;
+    gap: 64px;
+  }
+
+  .catalog__titleText {
+    font-size: 48px;
+  }
+  .catalog__products {
+    width: 100%;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 272px);
+    justify-content: flex-start;
+    gap: 40px;
+  }
+}

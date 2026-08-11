@@ -1,0 +1,142 @@
+@import './mixins';
+
+.homePage {
+  width: 100%;
+  font-family: Mont, sans-serif;
+}
+
+.homePage__container {
+  padding: 72px 16px 0;
+}
+
+.homePage__title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #313237;
+}
+
+.homePage__titleBlock {
+  padding: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.homePage__nav {
+  display: flex;
+  gap: 16px;
+}
+
+.homePage__categories {
+  display: flex;
+  flex-direction: column;
+}
+
+.homePage__category {
+  padding: 16px 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.homePage__categoryIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 16px;
+}
+
+.homePage__categoryIconImg {
+  padding: 16px 0;
+  width: 288px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.homePage__categoryIconImg:hover {
+  transform: scale(1.1);
+}
+
+.homePage__categoryName {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+.homePage__categoryNumber {
+  font-size: 14px;
+  color: #89939a;
+  font-weight: 600;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Медіа-запити */
+@media (min-width: 640px) and (max-width: 1199px) {
+  .homePage__container {
+    padding: 80px 24px 0;
+  }
+
+  .homePage__title {
+    font-size: 48px;
+  }
+
+  .homePage__categories {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .homePage__categoryIconImg {
+    width: 187px;
+    height: 187px;
+  }
+}
+
+@media (width: 1200px) {
+  .homePage__container {
+    padding: 56px 32px 0;
+  }
+
+  .homePage__title {
+    font-size: 48px;
+  }
+
+  .homePage__categories {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .homePage__categoryIconImg {
+    width: 368px;
+    height: 368px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .homePage__container {
+    padding: 56px 152px 0;
+  }
+
+  .homePage__title {
+    font-size: 48px;
+  }
+
+  .homePage__categories {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .homePage__categoryIconImg {
+    width: 368px;
+    height: 368px;
+  }
+}
