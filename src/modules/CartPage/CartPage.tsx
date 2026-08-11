@@ -8,7 +8,7 @@ import { Modal } from '../../components/Modal/Modal';
 
 
 export const CartPage: React.FC = () => {
-   const { cart, clearCart, language } = useApp();
+   const { cart, clearCart, } = useApp();
 
   const navigate = useNavigate();
 
@@ -43,7 +43,7 @@ const handleConfirmCheckout = () => {
         className={styles.cart__back}
       >
 
-        <img src="img/icons/arrow-left.svg" alt="Arrow" className={styles.cart__backIcon} />
+        <img src="/react_phone-catalog/img/icons/arrow-left.svg" alt="Arrow" className={styles.cart__backIcon} />
         <span className={styles.cart__backText}>Back</span>
       </button>
 

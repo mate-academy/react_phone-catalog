@@ -32,7 +32,7 @@ export const Pagination: React.FC<Props> = ({ total, current, onChange }) => {
           disabled={current === 1}
           aria-label="Previous page"
         >
-          <img src="img/icons/arrow-left.svg" alt="Arrow left" />
+          <img src="/react_phone-catalog/img/icons/arrow-left.svg" alt="Arrow left" />
         </button>
       </li>
  {/* Перебір номерків сторінок */}
@@ -57,7 +57,7 @@ export const Pagination: React.FC<Props> = ({ total, current, onChange }) => {
           disabled={current === total}
           aria-label="Next page"
         >
-          <img src="img/icons/arrow-right.svg" alt="Arrow right" />
+          <img src="/react_phone-catalog/img/icons/arrow-right.svg" alt="Arrow right" />
         </button>
       </li>
     </ul>

@@ -24,7 +24,7 @@ export const ShopByCategory: React.FC<Props> = ({ categoriesCount }) => {
         <Link to="/phones" className={styles['category-shop__item']}>
           <div className={styles['category-shop__img-container']}>
             <img 
-              src="img/categories/phones.svg" 
+             src="/react_phone-catalog/img/categories/phones.svg" 
               alt="Mobile phones" 
               className={styles['category-shop__img']} 
             />
@@ -39,7 +39,7 @@ export const ShopByCategory: React.FC<Props> = ({ categoriesCount }) => {
         <Link to="/tablets" className={styles['category-shop__item']}>
           <div className={styles['category-shop__img-container']}>
             <img 
-              src="img/categories/tablets.svg" 
+             src="/react_phone-catalog/img/categories/tablets.svg" 
               alt="Tablets" 
               className={styles['category-shop__img']} 
             />
@@ -54,7 +54,7 @@ export const ShopByCategory: React.FC<Props> = ({ categoriesCount }) => {
         <Link to="/accessories" className={styles['category-shop__item']}>
           <div className={styles['category-shop__img-container']}>
             <img 
-              src="img/categories/watch.jpg" 
+             src="/react_phone-catalog/img/categories/watch.jpg" 
               alt="Accessories" 
               className={styles['category-shop__img']} 
             />

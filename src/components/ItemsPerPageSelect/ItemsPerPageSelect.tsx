@@ -27,7 +27,7 @@ export const ItemsPerPageSelect: React.FC<Props> = ({ value, onChange }) => {
         </select>
 
         <img 
-          src="img/icons/arrow-downs.svg" 
+         src="/react_phone-catalog/img/icons/arrow-downs.svg" 
           alt="Arrow down" 
           className={styles.perPage__arrow}
         />

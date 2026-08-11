@@ -22,7 +22,7 @@ export const CartItemElement:React.FC<Props> = ({item}) => {
             onClick ={()=> removeFromCart(id)}
             aria-label = 'Remove item'
             >
-             <img src="img/icons/cart-item.svg" alt="Remove"  className={styles.item__icon}/>  
+             <img src="/react_phone-catalog/img/icons/cart-item.svg" alt="Remove"  className={styles.item__icon}/>  
             </button>
 
             {/* 2. НОВИЙ БЛОК: Зображення самого телефону */}

@@ -30,7 +30,7 @@ export const SearchInput: React.FC = () => {
       
       <div className={styles.search__wrapper}>
         <img 
-          src="img/icons/icon-search.svg" 
+         src="/react_phone-catalog/img/icons/icon-search.svg" 
           alt="Search icon" 
           className={styles.search__icon} 
         />

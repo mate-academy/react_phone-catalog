@@ -1,1 +1,1 @@
-export const PRODUCTS_URL = './api/products.json';
+export const PRODUCTS_URL = '/react_phone-catalog/api/products.json';
