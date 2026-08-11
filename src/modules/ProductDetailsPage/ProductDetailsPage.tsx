@@ -225,7 +225,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ allProducts }) => {
                     : 'Phones'}
                 </Link>
                 <img
-                  src="/img/icons/arrowIcon.svg"
+                  src="img/icons/arrowIcon.svg"
                   alt="Arrow"
                   className={styles['product-details__crumbs-separator']}
                   aria-hidden="true"
@@ -244,7 +244,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ allProducts }) => {
             className={styles['product-details__back-btn']}
           >
             <img
-              src="/img/icons/arrow-left.svg"
+              src="img/icons/arrow-left.svg"
               alt="Arrow"
               className={styles['product-details__back-icon']}
             />

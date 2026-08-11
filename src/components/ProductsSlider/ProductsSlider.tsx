@@ -50,7 +50,7 @@ export const ProductsSlider :React.FC<Props> =({title ,products}) => {
             onClick={handlePrev}
             disabled={currentIndex === 0} // Кнопка згасне, якщо ми на початку
           >
-            <img src="/img/icons/arrow-left.svg" alt="Previous" className={styles['products-slider__arrow']} />
+            <img src="img/icons/arrow-left.svg" alt="Previous" className={styles['products-slider__arrow']} />
           </button>
           
           <button 
@@ -59,7 +59,7 @@ export const ProductsSlider :React.FC<Props> =({title ,products}) => {
             onClick={handleNext}
             disabled={currentIndex === maxIndex} // Кнопка згасне, якщо дійшли до кінця
           >
-            <img src="/img/icons/arrow-right.svg" alt="Next" className={styles['products-slider__arrow']} />
+            <img src="img/icons/arrow-right.svg" alt="Next" className={styles['products-slider__arrow']} />
           </button>
         </div>
       </div>
