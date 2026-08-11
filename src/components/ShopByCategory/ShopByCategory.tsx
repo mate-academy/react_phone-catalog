@@ -10,23 +10,22 @@ interface Props {
   };
 }
 
-
 export const ShopByCategory: React.FC<Props> = ({ categoriesCount }) => {
   return (
     // Головний Блок секції
     <section className={styles['category-shop']}>
       {/* Елемент: Заголовок */}
       <h2 className={styles['category-shop__title']}>Shop by category</h2>
-      
+
       {/* Елемент: Список-Сітка для трьох карток */}
       <div className={styles['category-shop__list']}>
-                {/* Картка 1: Мобільні телефони */}
+        {/* Картка 1: Мобільні телефони */}
         <Link to="/phones" className={styles['category-shop__item']}>
           <div className={styles['category-shop__img-container']}>
-            <img 
-             src="/react_phone-catalog/img/categories/phones.svg" 
-              alt="Mobile phones" 
-              className={styles['category-shop__img']} 
+            <img
+              src="/react_phone-catalog/img/categories/phones.svg"
+              alt="Mobile phones"
+              className={styles['category-shop__img']}
             />
           </div>
           <h4 className={styles['category-shop__name']}>Mobile phones</h4>
@@ -38,10 +37,10 @@ export const ShopByCategory: React.FC<Props> = ({ categoriesCount }) => {
         {/* Картка 2: Планшети */}
         <Link to="/tablets" className={styles['category-shop__item']}>
           <div className={styles['category-shop__img-container']}>
-            <img 
-             src="/react_phone-catalog/img/categories/tablets.svg" 
-              alt="Tablets" 
-              className={styles['category-shop__img']} 
+            <img
+              src="/react_phone-catalog/img/categories/tablets.svg"
+              alt="Tablets"
+              className={styles['category-shop__img']}
             />
           </div>
           <h4 className={styles['category-shop__name']}>Tablets</h4>
@@ -53,10 +52,10 @@ export const ShopByCategory: React.FC<Props> = ({ categoriesCount }) => {
         {/* Картка 3: Аксесуари */}
         <Link to="/accessories" className={styles['category-shop__item']}>
           <div className={styles['category-shop__img-container']}>
-            <img 
-             src="/react_phone-catalog/img/categories/watch.jpg" 
-              alt="Accessories" 
-              className={styles['category-shop__img']} 
+            <img
+              src="/react_phone-catalog/img/categories/watch.jpg"
+              alt="Accessories"
+              className={styles['category-shop__img']}
             />
           </div>
           <h4 className={styles['category-shop__name']}>Accessories</h4>
@@ -64,7 +63,6 @@ export const ShopByCategory: React.FC<Props> = ({ categoriesCount }) => {
             {categoriesCount.accessories} models
           </p>
         </Link>
-
       </div>
     </section>
   );

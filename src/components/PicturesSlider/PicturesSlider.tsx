@@ -52,7 +52,7 @@ export const PicturesSlider: React.FC = () => {
           className={`${styles['pictures-slider__arrow']} ${styles['pictures-slider__arrow--left']}`}
         >
           <img
-           src="/react_phone-catalog/img/icons/arrow-left.svg"
+            src="/react_phone-catalog/img/icons/arrow-left.svg"
             alt="Previous slide"
             className={styles['pictures-slider__arrow-icon']}
           />
@@ -80,7 +80,7 @@ export const PicturesSlider: React.FC = () => {
           className={`${styles['pictures-slider__arrow']} ${styles['pictures-slider__arrow--right']}`}
         >
           <img
-           src="/react_phone-catalog/img/icons/arrow-right.svg"
+            src="/react_phone-catalog/img/icons/arrow-right.svg"
             alt="Next slide"
             className={styles['pictures-slider__arrow-icon']}
           />

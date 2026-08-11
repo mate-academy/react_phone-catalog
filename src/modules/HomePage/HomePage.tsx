@@ -6,8 +6,6 @@ import { Product } from '../../types/Product';
 import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
 import { ShopByCategory } from '../../components/ShopByCategory/ShopByCategory';
 
-
-
 interface Props {
   products: Product[];
 }
@@ -37,16 +35,14 @@ export const HomePage: React.FC<Props> = ({ products }) => {
     };
   }, [products]);
 
-
-      return (
+  return (
     <div className={styles.home}>
       {/* Прихований заголовок для SEO */}
       <h1 className={styles['visually-hidden']}>Product Catalog</h1>
-      
-      
+
       <div className={styles.container}>
         <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
-        
+
         {/* Головний слайдер з банерами */}
         <div className={styles.section}>
           <PicturesSlider />
@@ -54,7 +50,10 @@ export const HomePage: React.FC<Props> = ({ products }) => {
 
         {/* Слайдер 1: Новинки  */}
         <div className={styles.section}>
-          <ProductsSlider title="Brand new models" products={brandNewProducts} />
+          <ProductsSlider
+            title="Brand new models"
+            products={brandNewProducts}
+          />
         </div>
 
         <div className={styles.section}>
@@ -65,9 +64,7 @@ export const HomePage: React.FC<Props> = ({ products }) => {
         <div className={styles.section}>
           <ProductsSlider title="Hot prices" products={hotPricesProducts} />
         </div>
-      </div> 
+      </div>
     </div>
   );
-
- 
 };

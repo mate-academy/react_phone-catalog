@@ -1,21 +1,20 @@
 // src/modules/CartPage/CartPage.tsx
-import React , { useState }from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
 import styles from './CartPage.module.scss';
 import { CartItemElement } from '../../components/CartItemElement/CartItemElement';
 import { Modal } from '../../components/Modal/Modal';
 
-
 export const CartPage: React.FC = () => {
-   const { cart, clearCart, } = useApp();
+  const { cart, clearCart } = useApp();
 
   const navigate = useNavigate();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-const handleConfirmCheckout = () => {
-    clearCart(); // Очищаємо весь кошик 
+  const handleConfirmCheckout = () => {
+    clearCart(); // Очищаємо весь кошик
     setIsModalOpen(false); // Закриваємо модальне вікно
   };
 
@@ -31,19 +30,18 @@ const handleConfirmCheckout = () => {
     navigate(-1);
   };
 
-  
-
   return (
     <div className={styles.cart}>
-    
-
       <button
         type="button"
         onClick={handleGoBack}
         className={styles.cart__back}
       >
-
-        <img src="/react_phone-catalog/img/icons/arrow-left.svg" alt="Arrow" className={styles.cart__backIcon} />
+        <img
+          src="/react_phone-catalog/img/icons/arrow-left.svg"
+          alt="Arrow"
+          className={styles.cart__backIcon}
+        />
         <span className={styles.cart__backText}>Back</span>
       </button>
 
@@ -58,8 +56,6 @@ const handleConfirmCheckout = () => {
           <div className={styles.cart__list}>
             {cart.map(item => (
               <CartItemElement key={item.id} item={item} />
-                
-              
             ))}
           </div>
 
@@ -74,18 +70,22 @@ const handleConfirmCheckout = () => {
 
             <div className={styles.cart__line} />
 
-            <button type="button" className={styles.cart__checkout} onClick={() => setIsModalOpen(true)}>
+            <button
+              type="button"
+              className={styles.cart__checkout}
+              onClick={() => setIsModalOpen(true)}
+            >
               Checkout
             </button>
 
-             <Modal 
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onConfirm={handleConfirmCheckout}
-      />
+            <Modal
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+              onConfirm={handleConfirmCheckout}
+            />
           </div>
         </div>
       )}
     </div>
   );
-}; 
+};

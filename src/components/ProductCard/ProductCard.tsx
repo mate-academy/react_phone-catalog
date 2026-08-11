@@ -108,9 +108,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           aria-label="Add to favorites"
         >
           <img
-            src={
-              isFavorite ? 'img/icons/heart-red.svg' : 'img/icons/heart.svg'
-            }
+            src={isFavorite ? 'img/icons/heart-red.svg' : 'img/icons/heart.svg'}
             alt="Favorite icon"
             className={styles['product-card__icon-heart']}
           />

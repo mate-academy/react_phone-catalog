@@ -34,10 +34,10 @@
 }
 
 [data-theme='dark'] {
-  --color-primary: #f1f2f9; // Світлий текст
-  --color-secondary: #757e84; // Сірий текст / іконки
-  --color-bg: #0F1121; // Глибокий темно-синій фон сторінки
-  --color-surface: #161a26; // Фон для Хедера, карток та кнопок
+  --color-primary: #f1f2f9; 
+  --color-secondary: #757e84; 
+  --color-bg: #0F1121; 
+  --color-surface: #161a26; 
   --color-border: #3B3E4A;
 }
 
@@ -62,7 +62,7 @@ body,
 .app {
   display: flex;
   flex-direction: column;
-  flex: 1; //
+  flex: 1; 
 }
 
 

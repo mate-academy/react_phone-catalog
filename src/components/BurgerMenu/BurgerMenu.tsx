@@ -20,9 +20,8 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({
   favoritesCount,
   cartCount,
   theme,
-  toggleTheme,
+
   language,
-  changeLanguage,
 }) => {
   // Заморожуємо скрол фону сайту при відкритому бургері
   useEffect(() => {
@@ -46,18 +45,20 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({
     return null;
   }
 
+  // Отримуємо базовий URL проєкту (наприклад, /react_phone-catalog/)
+  const baseUrl = import.meta.env.BASE_URL;
+
   return (
     <div className={styles.burger} data-theme={theme}>
       {/* 1. ХЕДЕР БУРГЕРА: Логотип (змінюється від теми) та Кнопка-хрестик */}
       <div className={styles.burger__header}>
         <Link to="/" className={styles.burger__logo} onClick={onClose}>
           <img
-            src={theme === 'dark' ? 'logo.dark.svg' : 'logo.svg'}
+            src={`${baseUrl}${theme === 'dark' ? 'logo.dark.svg' : 'logo.svg'}`}
             alt="Nice Gadgets Logo"
             className={styles['burger__logo-img']}
           />
         </Link>
-
         <button
           type="button"
           className={styles['burger__close-btn']}
@@ -65,7 +66,8 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({
           aria-label="Close menu"
         >
           <img
-            src="public/img/icons/icon-isopen.svg"
+            src={`${baseUrl}img/icons/icon-isopen.svg`}
+            alt="Close"
             className={styles['burger__close-icon']}
           />
         </button>
@@ -112,7 +114,7 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({
         >
           <div className={styles['burger__icon-container']}>
             <img
-              src="favorites.svg"
+              src={`${baseUrl}favorites.svg`}
               alt="Favorites"
               className={styles.burger__icon}
             />
@@ -121,7 +123,6 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({
             )}
           </div>
         </NavLink>
-
         <NavLink
           to="/cart"
           className={({ isActive }) =>
@@ -130,7 +131,11 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({
           onClick={onClose}
         >
           <div className={styles['burger__icon-container']}>
-            <img src="cart.svg" alt="Cart" className={styles.burger__icon} />
+            <img
+              src={`${baseUrl}cart.svg`}
+              alt="Cart"
+              className={styles.burger__icon}
+            />
             {cartCount > 0 && (
               <span className={styles.burger__counter}>{cartCount}</span>
             )}

@@ -7,6 +7,7 @@ import { useApp } from './context/AppContext';
 
 export const App = () => {
   const { isLoading } = useApp();
+
   return (
     <div className="app">
       <Header />

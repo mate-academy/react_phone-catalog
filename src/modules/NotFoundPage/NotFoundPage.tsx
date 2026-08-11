@@ -9,11 +9,11 @@ export const NotFoundPage: React.FC = () => {
   return (
     <div className={styles.notFound}>
       <h1 className={styles.notFound__title}>404</h1>
-      
+
       <p className={styles.notFound__text}>
         {language === 'eng' ? 'Page not found' : 'Сторінку не знайдено'}
       </p>
-      
+
       <Link to="/" className={styles.notFound__btn}>
         {language === 'eng' ? 'Back to home' : 'На головну'}
       </Link>

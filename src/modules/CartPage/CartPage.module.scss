@@ -1,3 +1,4 @@
+
 .cart {
   padding: 32px;
   max-width: 1200px;
@@ -13,7 +14,6 @@
     margin-bottom: 16px;
     border: none;
     background: none;
-
     padding: 0;
     transition: color 0.3s ease;
 
@@ -21,6 +21,7 @@
       color: var(--color-primary);
     }
   }
+
   &__backText {
     font-weight: 600;
     font-size: 15px;
@@ -28,29 +29,25 @@
   }
 
   &__backIcon {
-    width: 16px;       
+    width: 16px;
     height: 16px;
     display: block;
     object-fit: contain;
 
-    
     :global([data-theme='dark']) & {
       filter: invert(1);
     }
   }
 
-  &__title{
+  &__title {
     font-weight: 800;
     font-size: 48px;
     line-height: 56px;
     letter-spacing: -1%;
     margin-bottom: 32px;
-
-    
     overflow: hidden;
     white-space: nowrap;
     width: 0;
-
     animation: typing 2.5s ease-in-out forwards;
   }
 
@@ -71,28 +68,25 @@
     margin-top: 40px;
   }
 
-  &__container{
+  &__container {
     display: flex;
     flex-direction: column;
     gap: 16px;
 
-    @media(min-width: 1200px){
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 16px;
+    @media (min-width: 1200px) {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
     }
   }
 
-  &__list{
+  &__list {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 16px;
-
   }
-
-    // Дописуємо стилі для Checkout всередину головного .cart { ... }
 
   &__summary {
     width: 100%;
@@ -102,10 +96,10 @@
     box-sizing: border-box;
     background-color: var(--color-bg);
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
 
     @media (min-width: 1200px) {
-      width: 368px; 
+      width: 368px;
     }
   }
 
@@ -132,53 +126,25 @@
   &__line {
     width: 100%;
     height: 1px;
-    background-color: var(--color-elements); // Тонка лінія з макету
+    background-color: var(--color-border);
     margin-bottom: 24px;
+    display: block;
   }
 
   &__checkout {
     width: 100%;
     height: 48px;
-    background-color: var(--color-primary); // Чорна або акцентна кнопка з теми
-    color: var(--color-surface); // Білий текст
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: opacity 0.2s ease;
-
-    &:hover {
-      opacity: 0.9;
-    }
-  }
-  
-
-  &__line {
-    width: 100%;
-    height: 1px;
-    background-color: var(--color-border); 
-    margin-bottom: 24px;
-    display: block; 
-  }
-
-  &__checkout {
-    width: 100%;
-    height: 48px;
-   background-color: #a378ff;;
-    color: #FFF; 
+    background-color: #a378ff;
+    color: #FFF;
     border-radius: 48px;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: opacity 0.2s ease ,transform 0.3s ease;
+    transition: opacity 0.2s ease, transform 0.3s ease;
 
     &:hover {
       opacity: 0.9;
       transform: scale(1.03);
     }
   }
-
-
-
 }

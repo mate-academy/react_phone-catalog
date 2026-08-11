@@ -16,23 +16,18 @@ export const SearchInput: React.FC = () => {
     } else {
       nextParams.set('query', text);
     }
-    
+
     nextParams.delete('page');
     setSearchParams(nextParams);
   };
 
- 
-  
-
   return (
     <div className={styles.search}>
-      
-      
       <div className={styles.search__wrapper}>
-        <img 
-         src="/react_phone-catalog/img/icons/icon-search.svg" 
-          alt="Search icon" 
-          className={styles.search__icon} 
+        <img
+          src="/react_phone-catalog/img/icons/icon-search.svg"
+          alt="Search icon"
+          className={styles.search__icon}
         />
         <input
           type="text"
@@ -42,8 +37,6 @@ export const SearchInput: React.FC = () => {
           value={query}
           onChange={handleSearchChange}
         />
-
-       
       </div>
     </div>
   );

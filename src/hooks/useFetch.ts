@@ -15,6 +15,7 @@ export function useFetch<T>(url: string) {
         if (!response.ok) {
           throw new Error('Не вдалося завантажити дані з сервера');
         }
+
         return response.json();
       })
       .then(fetchedData => {

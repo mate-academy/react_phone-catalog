@@ -62,71 +62,79 @@ export const ProductDetailsPage: React.FC<Props> = ({ allProducts }) => {
     : false;
 
   useEffect(() => {
-  if (!productId) return;
-  
-  // Якщо великий масив товарів нагорі ще вантажиться, просто робимо паузу і чекаємо
-  if (allProducts.length === 0) return;
-  
-  setError(null);
-  
-  // Якщо список товарів прийшов, але саме такого айдішника немає в базі даних
-  if (allProducts.length > 0 && !foundProduct) {
-    setError('Product not found in the global catalog');
-    setLoading(false);
-    return;
-  }
+    if (!productId) {
+      return;
+    }
 
-  // Склеюємо назву потрібного JSON-файлу категорії
-  const categoryFile = `${foundProduct?.category}.json`;
+    // Якщо великий масив товарів нагорі ще вантажиться, просто робимо паузу і чекаємо
+    if (allProducts.length === 0) {
+      return;
+    }
 
-  // Створюємо штучну затримку (паузу) на 1000 мілісекунд (1 секунда)
-  const delay = new Promise((resolve) => setTimeout(resolve, 1000));
+    setError(null);
 
-  // Робимо точковий запит до  локальної бази даних в папці public/api/
-  const fetchData = fetch(`${import.meta.env.BASE_URL}api/${categoryFile}`)
-    .then(response => {
+    // Якщо список товарів прийшов, але саме такого айдішника немає в базі даних
+    if (allProducts.length > 0 && !foundProduct) {
+      setError('Product not found in the global catalog');
+      setLoading(false);
+
+      return;
+    }
+
+    // Склеюємо назву потрібного JSON-файлу категорії
+    const categoryFile = `${foundProduct?.category}.json`;
+
+    // Створюємо штучну затримку (паузу) на 1000 мілісекунд (1 секунда)
+    const delay = new Promise(resolve => setTimeout(resolve, 1000));
+
+    // Робимо точковий запит до  локальної бази даних в папці public/api/
+    const fetchData = fetch(
+      `${import.meta.env.BASE_URL}api/${categoryFile}`,
+    ).then(response => {
       if (!response.ok) {
         throw new Error('Failed to load product specifications');
       }
+
       return response.json();
     });
 
-  // Вмикаємо лоадер безпосередньо перед початком завантаження
-  setLoading(true);
+    // Вмикаємо лоадер безпосередньо перед початком завантаження
+    setLoading(true);
 
-  
-  Promise.all([fetchData, delay])
-    .then(([data]) => {
-      // Шукаємо характеристики конкретно нашого productId всередині завантаженого файлу
-      const specificDetails = data.find((item: ItemDetails) => item.id === productId);
+    Promise.all([fetchData, delay])
+      .then(([data]) => {
+        // Шукаємо характеристики конкретно нашого productId всередині завантаженого файлу
+        const specificDetails = data.find(
+          (item: ItemDetails) => item.id === productId,
+        );
 
-      if (specificDetails) {
-        setDetails(specificDetails);
-        setSelectedImage(specificDetails.images[0]); // Ставимо першу картинку головною за замовчуванням
-      } else {
-        throw new Error('Product specifications are missing');
-      }
-    })
-    .catch(err => {
-      setError(err.message || 'Something went wrong');
-    })
-    .finally(() => {
-      setLoading(false); 
-    });
-
-}, [productId, allProducts, foundProduct]);
-
+        if (specificDetails) {
+          setDetails(specificDetails);
+          setSelectedImage(specificDetails.images[0]); // Ставимо першу картинку головною за замовчуванням
+        } else {
+          throw new Error('Product specifications are missing');
+        }
+      })
+      .catch(err => {
+        setError(err.message || 'Something went wrong');
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [productId, allProducts, foundProduct]);
 
   // Функція для динамічного формування URL при зміні кольору чи пам'яті
   const getNewProductUrl = (newColor?: string, newCapacity?: string) => {
-    if (!details) return '#';
+    if (!details) {
+      return '#';
+    }
 
     // Якщо передали новий параметр — беремо його, інакше залишаємо поточний
     const finalColor = newColor || details.color;
     const finalCapacity = (newCapacity || details.capacity).toLowerCase();
 
     // Склеюємо фінальний шлях на основі константи namespaceId з бази даних
-    
+
     return `/${foundProduct?.category || 'phones'}/${details.namespaceId}-${finalCapacity}-${finalColor}`;
   };
 
@@ -190,7 +198,11 @@ export const ProductDetailsPage: React.FC<Props> = ({ allProducts }) => {
 
     // 2. Перевіряємо, чи знає браузер це слово нативно (для black, green, yellow, red, white, purple)
     const ctx = document.createElement('canvas').getContext('2d');
-    if (!ctx) return colorName;
+
+    if (!ctx) {
+      return colorName;
+    }
+
     ctx.fillStyle = name;
 
     return ctx.fillStyle !== '#000000' || name === 'black' ? name : '#b4bdc3';
@@ -199,9 +211,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ allProducts }) => {
   return (
     <div className={styles['product-details']}>
       {/* 1. ПЕРЕВІРКА ЗАВАНТАЖЕННЯ */}
-      {loading && (
-       <Loader /> 
-      )}
+      {loading && <Loader />}
 
       {/* 2. ПЕРЕВІРКА ПОМИЛКИ */}
       {error && (
@@ -225,7 +235,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ allProducts }) => {
                     : 'Phones'}
                 </Link>
                 <img
-                 src="/react_phone-catalog/img/icons/arrowIcon.svg"
+                  src="/react_phone-catalog/img/icons/arrowIcon.svg"
                   alt="Arrow"
                   className={styles['product-details__crumbs-separator']}
                   aria-hidden="true"
@@ -244,7 +254,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ allProducts }) => {
             className={styles['product-details__back-btn']}
           >
             <img
-             src="/react_phone-catalog/img/icons/arrow-left.svg"
+              src="/react_phone-catalog/img/icons/arrow-left.svg"
               alt="Arrow"
               className={styles['product-details__back-icon']}
             />
@@ -456,7 +466,6 @@ export const ProductDetailsPage: React.FC<Props> = ({ allProducts }) => {
               <div className={styles['product-details__line']} />
 
               <div className={styles['product-details__full-specs']}>
-                
                 {fullSpecs.map(spec => (
                   <div
                     key={spec.label}

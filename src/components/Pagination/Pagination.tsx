@@ -14,6 +14,7 @@ export const Pagination: React.FC<Props> = ({ total, current, onChange }) => {
   for (let i = 1; i <= total; i++) {
     pageNumbers.push(i);
   }
+
   //активна сторінка
   const handlePageClick = (page: number) => {
     if (page >= 1 && page <= total && page !== current) {
@@ -32,10 +33,13 @@ export const Pagination: React.FC<Props> = ({ total, current, onChange }) => {
           disabled={current === 1}
           aria-label="Previous page"
         >
-          <img src="/react_phone-catalog/img/icons/arrow-left.svg" alt="Arrow left" />
+          <img
+            src="/react_phone-catalog/img/icons/arrow-left.svg"
+            alt="Arrow left"
+          />
         </button>
       </li>
- {/* Перебір номерків сторінок */}
+      {/* Перебір номерків сторінок */}
       {pageNumbers.map(page => (
         <li key={page} className={styles.pagination__item}>
           <button
@@ -57,7 +61,10 @@ export const Pagination: React.FC<Props> = ({ total, current, onChange }) => {
           disabled={current === total}
           aria-label="Next page"
         >
-          <img src="/react_phone-catalog/img/icons/arrow-right.svg" alt="Arrow right" />
+          <img
+            src="/react_phone-catalog/img/icons/arrow-right.svg"
+            alt="Arrow right"
+          />
         </button>
       </li>
     </ul>

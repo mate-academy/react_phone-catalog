@@ -1,4 +1,4 @@
-import { Product } from "../types/Product";
+import { Product } from '../types/Product';
 
 export const sortProducts = (goods: Product[], sortField: string) => {
   const goodsCopy = [...goods];

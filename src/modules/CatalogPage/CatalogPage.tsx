@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styles from './CatalogPage.module.scss';
@@ -31,7 +30,7 @@ export const CatalogPage: React.FC<Props> = ({
 
   // 1. Фільтруємо масив за пошуковим запитом з URL (який туди тепер пише Header)
   const searchedProducts = products.filter(product =>
-    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    product.name.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   // 2. Сортуємо вже знайдені товари
@@ -99,7 +98,7 @@ export const CatalogPage: React.FC<Props> = ({
               )}
             </>
           ) : (
-            // Б. Якщо пошук видав 0 результатів 
+            // Б. Якщо пошук видав 0 результатів
             <p className={styles.catalog__empty}>
               There are no {title.toLowerCase()} matching the query.
             </p>

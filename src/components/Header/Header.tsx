@@ -7,11 +7,11 @@ import { translations } from '../../locales';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 
 export const Header: React.FC = () => {
-  const { theme, toggleTheme, language, changeLanguage, cart, favorites } = useApp();
+  const { theme, toggleTheme, language, changeLanguage, cart, favorites } =
+    useApp();
   const { pathname } = useLocation();
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
-  
-  
+
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 
   const handleBurgerToggle = () => setIsBurgerOpen(!isBurgerOpen);
@@ -29,34 +29,57 @@ export const Header: React.FC = () => {
 
   return (
     <header className={styles.header}>
-     
-      <div className={`${styles.container} ${isSearchFocused ? styles['container--search-focused'] : ''}`}>
-        
+      <div
+        className={`${styles.container} ${isSearchFocused ? styles['container--search-focused'] : ''}`}
+      >
         {/* 1. ЛОГОТИП */}
-        <NavLink to="/" className={styles.logo} onClick={() => setIsSearchFocused(false)}>
-          <img src={theme === 'dark' ? 'logo.dark.svg' : 'logo.svg'} alt="Nice Gadgets Logo" />
+        <NavLink
+          to="/"
+          className={styles.logo}
+          onClick={() => setIsSearchFocused(false)}
+        >
+          <img
+            src={theme === 'dark' ? 'logo.dark.svg' : 'logo.svg'}
+            alt="Nice Gadgets Logo"
+          />
         </NavLink>
 
         {/* 2. НАВІГАЦІЯ (Home, Phones...) */}
         <nav className={styles.nav}>
           <ul className={styles.navList}>
             <li className={styles.navItem}>
-              <NavLink to="/" className={styles.navLink} onClick={() => setIsSearchFocused(false)}>
+              <NavLink
+                to="/"
+                className={styles.navLink}
+                onClick={() => setIsSearchFocused(false)}
+              >
                 {translations.header.home[language]}
               </NavLink>
             </li>
             <li className={styles.navItem}>
-              <NavLink to="/phones" className={styles.navLink} onClick={() => setIsSearchFocused(false)}>
+              <NavLink
+                to="/phones"
+                className={styles.navLink}
+                onClick={() => setIsSearchFocused(false)}
+              >
                 {translations.header.phones[language]}
               </NavLink>
             </li>
             <li className={styles.navItem}>
-              <NavLink to="/tablets" className={styles.navLink} onClick={() => setIsSearchFocused(false)}>
+              <NavLink
+                to="/tablets"
+                className={styles.navLink}
+                onClick={() => setIsSearchFocused(false)}
+              >
                 {translations.header.tablets[language]}
               </NavLink>
             </li>
             <li className={styles.navItem}>
-              <NavLink to="/accessories" className={styles.navLink} onClick={() => setIsSearchFocused(false)}>
+              <NavLink
+                to="/accessories"
+                className={styles.navLink}
+                onClick={() => setIsSearchFocused(false)}
+              >
                 {translations.header.accessories[language]}
               </NavLink>
             </li>
@@ -65,11 +88,10 @@ export const Header: React.FC = () => {
 
         {/* 3. ІНПУТ ПОШУКУ В ОБГОРТЦІ З КОЛБЕКАМИ ФОКУСУ */}
         {showSearch && (
-          <div 
+          <div
             className={`${styles.searchWrapper} ${isSearchFocused ? styles['searchWrapper--active'] : ''}`}
             onFocus={() => setIsSearchFocused(true)}
-            onBlur={(e) => {
-              
+            onBlur={e => {
               if (!e.currentTarget.contains(e.relatedTarget)) {
                 setIsSearchFocused(false);
               }
@@ -82,7 +104,12 @@ export const Header: React.FC = () => {
         {/* 4. БЛОК КНОПОК ДІЙ */}
         <div className={styles.actions}>
           <div className={styles.themeToggle} onClick={toggleTheme}>
-            <input type="checkbox" checked={theme === 'dark'} className={styles.themeInput} readOnly />
+            <input
+              type="checkbox"
+              checked={theme === 'dark'}
+              className={styles.themeInput}
+              readOnly
+            />
             <span className={styles.themeSlider}>
               <span className={styles.themeIcon}>
                 {theme === 'light' ? '☀️' : '🌙'}
@@ -90,16 +117,20 @@ export const Header: React.FC = () => {
             </span>
           </div>
 
-          <button 
-            type="button" 
-            className={styles.actionBtn} 
+          <button
+            type="button"
+            className={styles.actionBtn}
             onClick={() => changeLanguage(language === 'eng' ? 'ukr' : 'eng')}
           >
             {language === 'eng' ? 'ENG' : 'UKR'}
           </button>
 
           <NavLink to="/favorites" className={styles.iconLink}>
-            <img src="favorites.svg" alt="Favorites" className={styles.iconImg} />
+            <img
+              src="favorites.svg"
+              alt="Favorites"
+              className={styles.iconImg}
+            />
             {favoritesCount > 0 && (
               <span className={styles.badge}>{favoritesCount}</span>
             )}
@@ -113,21 +144,30 @@ export const Header: React.FC = () => {
 
         {/* Кнопка бургера */}
         {!isBurgerOpen && (
-          <button type="button" className={styles.burgerTrigger} onClick={handleBurgerToggle} aria-label="Open menu">
-            <img src="public/img/icons/icon-open.svg" alt="Open menu" className={styles.burgerIcon} />
+          <button
+            type="button"
+            className={styles.burgerTrigger}
+            onClick={handleBurgerToggle}
+            aria-label="Open menu"
+          >
+            <img
+              src="public/img/icons/icon-open.svg"
+              alt="Open menu"
+              className={styles.burgerIcon}
+            />
           </button>
         )}
       </div>
 
-      <BurgerMenu 
-        isOpen={isBurgerOpen} 
-        onClose={handleBurgerClose} 
-        favoritesCount={favoritesCount} 
-        cartCount={cartCount} 
-        theme={theme} 
-        toggleTheme={toggleTheme} 
-        language={language} 
-        changeLanguage={changeLanguage} 
+      <BurgerMenu
+        isOpen={isBurgerOpen}
+        onClose={handleBurgerClose}
+        favoritesCount={favoritesCount}
+        cartCount={cartCount}
+        theme={theme}
+        toggleTheme={toggleTheme}
+        language={language}
+        changeLanguage={changeLanguage}
       />
     </header>
   );
