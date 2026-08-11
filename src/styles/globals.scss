@@ -1,25 +1,25 @@
-@import './reset.scss';
+@import './reset';
 
 
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/fonts/Mont-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/fonts/Mont-Bold.otf') format('opentype');
-  font-weight: 800; // або 700, якщо зв'язуємо з жирним
+  font-weight: 800; 
   font-style: normal;
 }
 
@@ -27,7 +27,7 @@
 :root {
   --color-primary: #313237;
   --color-secondary: #89939a;
-  --color-bg: #ffffff;
+  --color-bg: #fff;
   --color-surface: #f4f6f8;
   --font-main: 'Mont', sans-serif;
   --color-border: #E2E6E9;
@@ -65,10 +65,18 @@ body,
   flex: 1; //
 }
 
+
 .main-content {
-  flex: 1; //
-  padding-top: 64px;
+  flex: 1;
+  padding-top: 64px; 
 }
+
+body.is-locked {
+  overflow: hidden;
+}
+
+
+
 
 
 

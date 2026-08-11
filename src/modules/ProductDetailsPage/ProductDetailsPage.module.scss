@@ -1,0 +1,599 @@
+@import '../../styles/breakpoints';
+
+.product-details {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  box-sizing: border-box;
+  font-family: var(--font-main);
+  width: 100%;
+   overflow: hidden;
+
+  @include mobile {
+    padding: 0 16px;
+  }
+
+  &__loading {
+    display: flex;
+    margin: 200px auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-secondary);
+  }
+
+  &__error {
+    display: flex;
+    margin: 200px auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+    color: #ea4335;
+  }
+
+  // --- Хлібні крихти ---
+  &__crumbs-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  &__crumbs-link {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 100%;
+    color: var(--color-primary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__crumbs-separator {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  &__crumbs-current {
+    font-family: var(--font-main);
+    font-size: 12px;
+    line-height: 100%;
+    font-weight: 600;
+    color: var(--color-secondary);
+  }
+
+  // --- Кнопка Back ---
+  &__back-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 16px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__back-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__back-text {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 100%;
+    color: var(--color-secondary);
+  }
+
+  // --- Заголовок сторінки ---
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: var(--color-primary);
+    margin: 0 0 40px;
+
+    @include mobile {
+      font-size: 22px;
+      line-height: 140%;
+      margin-bottom: 32px;
+    }
+  }
+
+  // --- Головний блок дій ---
+  &__main-content {
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+    margin-bottom: 80px;
+    align-items: flex-start;
+    width: 100%;
+
+    @include tablet {
+      gap: 17px;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+  }
+
+  &__gallery {
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+     flex-shrink: 1;
+
+    @media (max-width: 640px) {
+      flex-direction: column-reverse;
+      gap: 16px;
+      align-items: center;
+    }
+  }
+
+  &__thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-shrink: 0;
+
+    @include mobile {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+  &__thumb-btn {
+    width: 80px;
+    height: 80px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+
+    @include tablet {
+      width: 35px;
+      height: 35px;
+    }
+
+   @include mobile {
+      width: 50px;
+      height: 50px;
+    }
+    &:hover {
+      border-color: var(--color-secondary);
+    }
+
+    &--active {
+      border-color: var(--color-primary);
+      cursor: default;
+    }
+  }
+
+  &__thumb-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  &__main-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 464px;
+    height: 464px;
+
+    transition: transform 0.3s ease;
+
+    @include tablet {
+      height: 287px;
+      width: 287px;
+      padding: 7px;
+    }
+
+    @include mobile {
+      height: 288px;
+      width: 288px;
+      padding: 7px;
+    }
+  }
+  &__main-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+
+    animation: simpleSlide 0.3s ease-out forwards;
+
+    @include tablet {
+      max-height: 274px;
+    }
+
+    @include mobile {
+      max-height: 275px;
+    }
+
+    @keyframes simpleSlide {
+      0% {
+        opacity: 0;
+        transform: translateY(15px); // Починає трохи нижче
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0); // Стає на своє місце
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    font-family: var(--font-main);
+    box-sizing: border-box;
+
+    @include mobile {
+      max-width: 288px;
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+    width: 100%;
+   
+  }
+
+  &__section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__section-label {
+    font-weight: 600;
+    font-size: 12px;
+    font-family: var(--font-main);
+    line-height: 100%;
+    color: var(--color-secondary);
+    margin-bottom: 8px;
+  }
+
+  &__color-id {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: #b4bdc3;
+  }
+
+  &__color-options {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__color-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #e2e6e9;
+    cursor: pointer;
+
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &--active {
+      border-color: white;
+
+      outline: 1px solid var(--color-secondary);
+
+      outline-offset: 1px;
+    }
+  }
+
+  &__divider {
+    width: 100%;
+     max-width: 320px;
+    height: 1px;
+    background-color: #e2e6e9;
+    border: none;
+    margin-bottom: 24px;
+  }
+
+  &__capacity-options {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__capacity-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    padding: 0 8px;
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: var(--color-primary);
+    background-color: transparent;
+    border: 1px solid var(--color-icons, #b4bdc3);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+
+    &:hover {
+      border-color: var(--color-primary);
+    }
+
+    &--active {
+      color: var(--color-surface);
+      background-color: var(--color-primary);
+      border-color: var(--color-primary);
+      cursor: default;
+    }
+  }
+
+  &__price-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__price-discount {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    color: var(--color-primary);
+    letter-spacing: -1%;
+  }
+
+  &__price-regular {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 100%;
+    color: var(--color-secondary);
+    text-decoration: line-through;
+  }
+
+  &__buttons-row {
+    display: flex;
+   width: 100%;
+    max-width: 320px;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__add-to-cart {
+    height: 48px;
+    flex: 1;
+    background-color: #a378ff;
+    color: var(--color-bg);
+    border-radius: 48px;
+    border: none;
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
+
+    &:hover {
+      opacity: 0.95;
+    }
+
+    &--selected {
+      background-color: transparent;
+      border: 1px solid var(--color-border);
+      color: #27ae60;
+      font-weight: 600;
+      cursor: default;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__favorite-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: var(--color-primary);
+    }
+  }
+
+  &__heart-icon {
+    width: 16px;
+    height: 16px;
+
+    [data-theme='dark'] & {
+      filter: invert(1);
+    }
+
+    [data-theme='dark'] .product-details__favorite-btn--active & {
+      filter: none;
+    }
+  }
+
+  &__short-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    max-width: 320px;
+  }
+  &__spec-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+  }
+
+  &__spec-label {
+    font-size: 12px;
+    font-weight: 600;
+    font-family: var(--font-main);
+    line-height: 100%;
+    color: var(--color-secondary);
+  }
+
+  &__spec-value {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 100%;
+    font-family: var(--font-main);
+    color: var(--color-primary);
+  }
+
+  &__bottom-content {
+    display: flex;
+    gap: 64px;
+    margin-bottom: 80px;
+
+    @include tablet {
+      flex-direction: column;
+      gap: 56px;
+    }
+  }
+
+  &__about,
+  &__tech-specs {
+    flex: 1;
+    width: 100%;
+  }
+
+  &__section-title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+    font-family: var(--font-main);
+
+    @include mobile {
+      font-size: 20px;
+    }
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: #e2e6e9;
+    border: none;
+    margin-bottom: 32px;
+  }
+
+  &__description-block {
+    display: flex;
+    flex-direction:column;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  &__description-title {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: var(--font-main);
+    line-height: 100%;
+    color: var(--color-primary);
+
+
+    @include mobile {
+      font-size: 16px;
+    }
+  }
+
+  &__description-text{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #89939A;
+  }
+
+  &__full-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__full-specs-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 14px;
+    line-height: 21px;
+    width: 100%;
+  }
+
+  &__full-specs-label {
+    color: var(--color-secondary); 
+    font-weight: 500;
+    padding-right: 16px; 
+  }
+
+  &__full-specs-value {
+    color: var(--color-primary); 
+    text-align: right;
+  }
+
+  &__recommended {
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  &__slider-wrapper {
+    width: 100%;
+  }
+}

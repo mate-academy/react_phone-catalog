@@ -1,0 +1,25 @@
+
+$breakpoint-mobile: 639px;
+$breakpoint-tablet: 1200px;
+
+// Міксин для мобільних екранів (від 0 до 639px)
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile}) {
+    @content;
+  }
+}
+
+// Міксин для планшетного режиму (від 640px до 1200px)
+@mixin tablet {
+  @media (max-width: #{$breakpoint-tablet}) {
+    @content;
+  }
+}
+
+// Міксин для специфічного проміжку планшетів 
+
+@mixin tablet-only {
+  @media (min-width: 640px) and (max-width: #{$breakpoint-tablet}) {
+    @content;
+  }
+}

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
 
 interface BreadcrumbsProps {
-  currentPath: string;
+  currentPath: React.ReactNode;
 }
 
 export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ currentPath }) => {

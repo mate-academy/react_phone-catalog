@@ -1,3 +1,7 @@
+
+@import '../../styles/breakpoints';
+@import '../../styles/globals';
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -10,21 +14,34 @@
   border: 0;
 }
 
+
+
 .container {
   margin: 56px auto;
   padding-inline: 32px;
   max-width: 1200px;
   box-sizing: border-box;
+
+  @include tablet{
+    margin: 32px auto;
+    padding-inline: 24px;
+  }
+
+  @include mobile{
+    margin: 24px auto;
+    padding-inline: 16px;
+  }
 }
 
 .title {
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
   font-weight: 800;
   font-size: 48px;
   line-height: 56px;
   letter-spacing: -0.01em;
 
   margin: 0;
+  margin-bottom: 56px;
 
 
   overflow: hidden;
@@ -33,6 +50,22 @@
 
 
   animation: typing 2.5s ease-in-out forwards;
+
+    @include tablet {
+    font-size: 32px;
+    line-height: 41px;
+    margin-bottom: 32px;
+  }
+ 
+
+  @include mobile{
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    width: 100%;
+    animation: none; 
+    white-space: normal;
+  }
 }
 
 
@@ -44,3 +77,8 @@
     width: 100%;
   }
 }
+
+
+
+  
+

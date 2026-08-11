@@ -15,8 +15,12 @@ interface AppContextType {
   favorites: Product[];
   addToCart: (product: Product) => void;
   toggleFavorite: (product: Product) => void;
+  clearCart: () => void;
   removeFromCart: (id: string) => void;
   changeQuantity: (id: string, action: 'increment' | 'decrement') => void;
+
+  isLoading:boolean;
+  setIsLoading:(loading:boolean)=>void;
 }
 
 //Інтерфейс для кошика
@@ -55,6 +59,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     const savedFavorites = localStorage.getItem('favorites');
     return savedFavorites ? JSON.parse(savedFavorites) : [];
   });
+
+  const [isLoading,setIsLoading] =useState(false);
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -111,6 +117,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     setCart(prevCart => prevCart.filter(item => item.id !== id));
   };
 
+  const clearCart = () => {
+  setCart([]); 
+};
+
   // Функція рахування товару
   const changeQuantity = (id: string, action: 'increment' | 'decrement') => {
     setCart(prevCart =>
@@ -142,7 +152,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         addToCart,
         toggleFavorite,
         removeFromCart,
+        clearCart,
         changeQuantity,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}

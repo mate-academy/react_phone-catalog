@@ -1,13 +1,23 @@
 // src/modules/CartPage/CartPage.tsx
-import React from 'react';
+import React , { useState }from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import { useApp } from '../../context/AppContext';
 import styles from './CartPage.module.scss';
 import { CartItemElement } from '../../components/CartItemElement/CartItemElement';
+import { Modal } from '../../components/Modal/Modal';
+
 
 export const CartPage: React.FC = () => {
-  const { cart } = useApp();
+   const { cart, clearCart, language } = useApp();
+
   const navigate = useNavigate();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+const handleConfirmCheckout = () => {
+    clearCart(); // Очищаємо весь кошик 
+    setIsModalOpen(false); // Закриваємо модальне вікно
+  };
 
   const totalAmount = cart.reduce((sum: number, item) => {
     return sum + Number(item.product.price) * item.quantity;
@@ -20,6 +30,8 @@ export const CartPage: React.FC = () => {
   const handleGoBack = () => {
     navigate(-1);
   };
+
+  
 
   return (
     <div className={styles.cart}>
@@ -62,9 +74,15 @@ export const CartPage: React.FC = () => {
 
             <div className={styles.cart__line} />
 
-            <button type="button" className={styles.cart__checkout}>
+            <button type="button" className={styles.cart__checkout} onClick={() => setIsModalOpen(true)}>
               Checkout
             </button>
+
+             <Modal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={handleConfirmCheckout}
+      />
           </div>
         </div>
       )}

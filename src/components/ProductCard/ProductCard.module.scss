@@ -14,7 +14,7 @@
 
   // Ефект виділення картки при наведенні
   &:hover {
-    box-shadow: 0px 2px 4px var(--color-secondary);
+    box-shadow: 0 2px 4px var(--color-secondary);
 
   }
 
@@ -51,12 +51,12 @@
 
   // Назва телефону (Title)
   &__title {
-    font-family: 'Mont', sans-serif;
+    font-family: Mont, sans-serif;
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
     color: var(--color-primary);
-    margin: 24px 0 8px 0;
+    margin: 24px 0 8px;
     height: 42px;
     overflow: hidden;
     letter-spacing: 0%;
@@ -154,7 +154,7 @@
 
     &:hover {
       background-color: #905eff;
-      box-shadow: 0px 4px 12px rgba(163, 120, 255, 0.3);
+      box-shadow: 0 4px 12px rgba(163, 120, 255, 0.3);
       transform: scale(1.03);
     }
 

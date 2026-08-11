@@ -1,20 +1,36 @@
+@import '../../styles/breakpoints';
+
 .list {
   display: grid;
-  grid-template-columns: repeat(1, 287px);
-  row-gap: 40px;
-  column-gap: 16px;
+  
+  // 1. НАЙБІЛЬШИЙ ЕКРАН — ДЕСКТОП (понад 1200px)
+ 
+  grid-template-columns: repeat(4, 272px);
+  gap: 40px 16px;
+  justify-content: space-between;
   width: 100%;
-  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
 
-  @media (min-width:640px){
-    grid-template-columns: repeat(2,288px);
-    row-gap: 40px;
-    column-gap: 16px;
+  // 2. МЕНШИЙ ЕКРАН — ПЛАНШЕТ (max-width: 1200px)
+ 
+  @include tablet {
+    grid-template-columns: repeat(3, 272px);
+    justify-content: center;
+    padding: 0 24px;
+
+
+    @media (max-width: 880px) {
+      grid-template-columns: repeat(2, 272px);
+    }
   }
 
-  @media (min-width:1200px){
-    grid-template-columns: repeat(4,272px);
-    row-gap: 40px;
-    justify-content: space-between;
+  // 3. НАЙМЕНШИЙ ЕКРАН — МОБІЛКА (max-width: 639px)
+  
+  @include mobile {
+    grid-template-columns: repeat(1, 272px); // Суворо 1 колонка
+    row-gap: 32px;
+    padding: 0 16px;
+    
   }
 }

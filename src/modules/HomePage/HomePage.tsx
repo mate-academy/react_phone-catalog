@@ -1,41 +1,73 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styles from './HomePage.module.scss';
 import { PicturesSlider } from '../../components/PicturesSlider/PicturesSlider';
-import { ProductCard } from '../../components/ProductCard';
-// 1. Імпортуємо твій кастомний хук для завантаження даних
-import { useFetch } from '../../hooks/useFetch';
-// 2. Імпортуємо ТІЛЬКИ правильну константу адреси у фігурних дужках
-import { PRODUCTS_URL } from '../../api/productsApi';
 import { Product } from '../../types/Product';
 
-export const HomePage: React.FC = () => {
-  // 3. Викликаємо хук, передаючи йому адресу. Він сам завантажить масив продуктів.
-  const { data: products, loading, error } = useFetch<Product[]>(PRODUCTS_URL);
+import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
+import { ShopByCategory } from '../../components/ShopByCategory/ShopByCategory';
 
-  // 4. Якщо продукти вже завантажилися, безпечно беремо найперший для нашого тесту
-  const firstProduct = products ? products[10] : null;
 
-  return (
+
+interface Props {
+  products: Product[];
+}
+export const HomePage: React.FC<Props> = ({ products }) => {
+  const brandNewProducts = useMemo(() => {
+    return [...products]
+      .sort((a, b) => b.year - a.year)
+      .slice(0, 10)
+      .map(product => ({
+        ...product,
+        fullPrice: product.price,
+      }));
+  }, [products]);
+
+  const hotPricesProducts = useMemo(() => {
+    return [...products]
+      .filter(product => product.fullPrice > product.price)
+      .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
+      .slice(0, 10);
+  }, [products]);
+
+  const categoriesCount = useMemo(() => {
+    return {
+      phones: products.filter(p => p.category === 'phones').length,
+      tablets: products.filter(p => p.category === 'tablets').length,
+      accessories: products.filter(p => p.category === 'accessories').length,
+    };
+  }, [products]);
+
+
+      return (
     <div className={styles.home}>
+      {/* Прихований заголовок для SEO */}
       <h1 className={styles['visually-hidden']}>Product Catalog</h1>
-
+      
+      
       <div className={styles.container}>
         <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
-      </div>
+        
+        {/* Головний слайдер з банерами */}
+        <div className={styles.section}>
+          <PicturesSlider />
+        </div>
 
-      <PicturesSlider />
+        {/* Слайдер 1: Новинки  */}
+        <div className={styles.section}>
+          <ProductsSlider title="Brand new models" products={brandNewProducts} />
+        </div>
 
-      {/* Контейнер для нашої однієї картки */}
-      <div className={styles.container} style={{ marginTop: '40px', display: 'flex', justifyContent: 'center' }}>
-        {/* Показуємо статус завантаження, поки чекаємо дані від сервера */}
-        {loading && <p>Loading product...</p>}
+        <div className={styles.section}>
+          <ShopByCategory categoriesCount={categoriesCount} />
+        </div>
 
-        {/* Повідомлення, якщо щось зламалося */}
-        {error && <p style={{ color: 'red' }}>Error: {error}</p>}
-
-        {/* Коли дані прийшли успішно — малюємо нашу картку товару */}
-        {firstProduct && <ProductCard product={firstProduct} />}
-      </div>
+        {/* Слайдер 2: Гарячі ціни */}
+        <div className={styles.section}>
+          <ProductsSlider title="Hot prices" products={hotPricesProducts} />
+        </div>
+      </div> 
     </div>
   );
+
+ 
 };

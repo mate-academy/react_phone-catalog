@@ -95,7 +95,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           onClick={handleCartClick}
           disabled={isInCart}
         >
-          {isInCart ? 'Added' : 'Add to cart'}
+          {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
 
         {/* Кнопка-Сердечко */}

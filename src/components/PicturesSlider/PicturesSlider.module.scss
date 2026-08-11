@@ -1,3 +1,6 @@
+@import '../../styles/breakpoints';
+
+
 .pictures-slider {
   display: flex;
   flex-direction: column;
@@ -7,7 +10,17 @@
   max-width: 1200px;
   margin: 0 auto 40px;
   padding-inline:  32px;
-  height: 432px;
+  height: auto;
+
+
+  @include mobile{
+    padding-inline:0;
+
+     margin-inline: -16px; 
+    width: calc(100vw); 
+    margin-bottom: 24px;
+  
+  }
 
   &__container {
     display: flex;
@@ -15,6 +28,10 @@
     justify-content: space-between;
     width: 100%;
     gap: 16px;
+
+     @include mobile {
+      gap: 0; 
+    }
   }
   &__arrow {
     border-radius: 48px;
@@ -35,6 +52,8 @@
       background-color: #f4f5f6;
       border-color: #b4bdc4;
       transform: scale(1.01);
+
+     
     }
 
     // ТЕМНА ТЕМА
@@ -47,6 +66,13 @@
         background-color: var(--color-border);
       }
     }
+
+        @include mobile {
+      display: none; 
+    }
+
+
+    
   }
 
   &__arrow-icon {
@@ -64,6 +90,12 @@
   &__window {
     flex-grow: 1;
     height: 400px;
+
+        @include mobile {
+      height: auto; // На мобілці висота підлаштовується під картинку автопропорцією
+      width: 100%;
+    }
+
   }
 
   &__image {
@@ -71,6 +103,11 @@
     height: 100%;
     object-fit: cover;
     display: block;
+
+     @include mobile {
+      height: auto; // Картка-картинка займає природну висоту мобільного банера
+      object-fit: contain; // Запобігає обрізанню країв зображення
+    }
   }
 
   &__dots {
