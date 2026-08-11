@@ -3,17 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    
+    <!-- Ваші метатеги для PNG-фавікона та колірного оформлення -->
+    <link rel="icon" type="image/svg+xml" href="/logo.dark.svg" />
+
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    
+    <title>Nice Gadgets</title>
   </head>
   <body>
+    <!-- Скрипт запобігання спалаху білого екрана при темній темі -->
     <script>
       (function () {
         const savedTheme = localStorage.getItem('theme') || 'light';
         document.body.setAttribute('data-theme', savedTheme);
       })();
     </script>
-
+    
+    <!-- Головний контейнер React -->
     <div id="root"></div>
+    
+    <!-- Точка входу додатка -->
     <script type="module" src="/src/index.tsx"></script>
   </body>
 </html>
