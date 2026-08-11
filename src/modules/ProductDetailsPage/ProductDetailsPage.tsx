@@ -108,7 +108,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ allProducts }) => {
 
         if (specificDetails) {
           setDetails(specificDetails);
-          setSelectedImage(specificDetails.images[0]); // Переконайся, що тут, якщо images це масив рядків
+          setSelectedImage(specificDetails.images[0]); 
         } else {
           throw new Error('Product specifications are missing');
         }
@@ -280,7 +280,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ allProducts }) => {
                     onClick={() => setSelectedImage(img)}
                   >
                     <img
-                      src={`${import.meta.env.BASE_URL}${img}`}
+                      src={`${import.meta.env.BASE_URL}/${img}`}
                       alt={`Thumbnail ${index + 1}`}
                       className={styles['product-details__thumb-img']}
                     />
@@ -292,7 +292,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ allProducts }) => {
               <div className={styles['product-details__main-image-container']}>
                 <img
                   key={selectedImage || (details?.images?.[0] ?? '')}
-                  src={`${import.meta.env.BASE_URL}${selectedImage || (details?.images?.[0] ?? '')}`}
+                  src={`${import.meta.env.BASE_URL}/${selectedImage || (details?.images?.[0] ?? '')}`}
                   alt={details?.name || ''}
                   className={styles['product-details__main-img']}
                 />
