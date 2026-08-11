@@ -265,39 +265,41 @@ export const ProductDetailsPage: React.FC<Props> = ({ allProducts }) => {
           {/* ГОЛОВНИЙ КОНТЕНТ: ЛІВА ТА ПРАВА КОЛОНКИ */}
           <div className={styles['product-details__main-content']}>
             {/* ЛІВА КОЛОНКА: ІНТЕРАКТИВНА ГАЛЕРЕЯ ФОТО */}
-            <div className={styles['product-details__gallery']}>
-              {/* Вертикальний ряд маленьких кнопочок-прев'ю */}
-              <div className={styles['product-details__thumbnails']}>
-                {(details?.images || []).map((img, index) => (
-                  <button
-                    key={img}
-                    type="button"
-                    className={`${styles['product-details__thumb-btn']} ${
-                      selectedImage === img
-                        ? styles['product-details__thumb-btn--active']
-                        : ''
-                    }`}
-                    onClick={() => setSelectedImage(img)}
-                  >
-                    <img
-                      src={`${import.meta.env.BASE_URL}/${img}`}
-                      alt={`Thumbnail ${index + 1}`}
-                      className={styles['product-details__thumb-img']}
-                    />
-                  </button>
-                ))}
-              </div>
+           <div className={styles['product-details__gallery']}>
+  {/* Вертикальний ряд маленьких кнопочок-прев'ю */}
+  <div className={styles['product-details__thumbnails']}>
+    {/* Перевіряємо, що details вже завантажився, щоб не рендерити пусті кнопки з бітими src */}
+    {details && details.images.map((img, index) => (
+      <button
+        key={img}
+        type="button"
+        className={`${styles['product-details__thumb-btn']} ${
+          selectedImage === img ? styles['product-details__thumb-btn--active'] : ''
+        }`}
+        onClick={() => setSelectedImage(img)}
+      >
+        <img
+          src={`${import.meta.env.BASE_URL}/${img}`}
+          alt={`Thumbnail ${index + 1}`}
+          className={styles['product-details__thumb-img']}
+        />
+      </button>
+    ))}
+  </div>
 
-              {/* Великий квадрат з головним вибраним фото по центру */}
-              <div className={styles['product-details__main-image-container']}>
-                <img
-                  key={selectedImage || (details?.images?.[0] ?? '')}
-                  src={`${import.meta.env.BASE_URL}/${selectedImage || (details?.images?.[0] ?? '')}`}
-                  alt={details?.name || ''}
-                  className={styles['product-details__main-img']}
-                />
-              </div>
-            </div>
+  {/* Великий квадрат з головним вибраним фото по центру */}
+  <div className={styles['product-details__main-image-container']}>
+    {/* Рендеримо велику картинку ТІЛЬКИ тоді, коли selectedImage отримав реальний шлях з useEffect */}
+    {selectedImage && (
+      <img
+        key={selectedImage}
+        src={`${import.meta.env.BASE_URL}/${selectedImage}`}
+        alt={details?.name || ''}
+        className={styles['product-details__main-img']}
+      />
+    )}
+  </div>
+</div>
 
             {/* ПРАВА КОЛОНКА: КОНФІГУРАТОР ТА КУПІВЛЯ */}
             <div className={styles['product-details__actions']}>
