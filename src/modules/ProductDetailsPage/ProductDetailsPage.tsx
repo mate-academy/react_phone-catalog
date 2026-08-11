@@ -60,68 +60,70 @@ export const ProductDetailsPage: React.FC<Props> = ({ allProducts }) => {
   const isFavorite = foundProduct
     ? favorites.some(fav => fav.id === foundProduct.id)
     : false;
+useEffect(() => {
+  if (!productId) {
+    return;
+  }
 
-  useEffect(() => {
-    if (!productId) {
-      return;
-    }
+  // Якщо масив товарів ще порожній, чекаємо на його завантаження
+  if (allProducts.length === 0) {
+    return;
+  }
 
-    // Якщо великий масив товарів нагорі ще вантажиться, просто робимо паузу і чекаємо
-    if (allProducts.length === 0) {
-      return;
-    }
+  setError(null);
 
-    setError(null);
+  // Шукаємо продукт безпосередньо всередині ефекту, щоб не тригерувати нескінченний цикл
+  const currentProduct = allProducts.find(item => item.itemId === productId);
 
-    // Якщо список товарів прийшов, але саме такого айдішника немає в базі даних
-    if (allProducts.length > 0 && !foundProduct) {
-      setError('Product not found in the global catalog');
-      setLoading(false);
+  // Якщо список товарів є, але саме такого айдішника немає в базі даних
+  if (!currentProduct) {
+    setError('Product not found in the global catalog');
+    setLoading(false);
+    return;
+  }
 
-      return;
-    }
+  // Склеюємо назву потрібного JSON-файлу категорії
+  const categoryFile = `${currentProduct.category}.json`;
 
-    // Склеюємо назву потрібного JSON-файлу категорії
-    const categoryFile = `${foundProduct?.category}.json`;
+  // Створюємо штучну затримку (паузу) на 1000 мілісекунд (1 секунда)
+  const delay = new Promise(resolve => setTimeout(resolve, 1000));
 
-    // Створюємо штучну затримку (паузу) на 1000 мілісекунд (1 секунда)
-    const delay = new Promise(resolve => setTimeout(resolve, 1000));
-
-    // Робимо точковий запит до  локальної бази даних в папці public/api/
-    const fetchData = fetch(
-      `${import.meta.env.BASE_URL}api/${categoryFile}`,
+  // Робимо  запит 
+ const fetchData = fetch(
+      `${import.meta.env.BASE_URL}/api/${categoryFile}`, // Твій варіант із доданим слешем
     ).then(response => {
       if (!response.ok) {
         throw new Error('Failed to load product specifications');
       }
-
       return response.json();
+});
+  // Вмикаємо лоадер безпосередньо перед початком завантаження
+  setLoading(true);
+
+  Promise.all([fetchData, delay])
+    .then(([data]) => {
+      // Шукаємо характеристики конкретно нашого productId всередині завантаженого файлу
+      const specificDetails = data.find(
+        (item: ItemDetails) => item.id === productId,
+      );
+
+      if (specificDetails) {
+        setDetails(specificDetails);
+        setSelectedImage(specificDetails.images[0]); // Ставимо першу картинку головною за замовчуванням
+      } else {
+        throw new Error('Product specifications are missing');
+      }
+    })
+    .catch(err => {
+      setError(err.message || 'Something went wrong');
+    })
+    .finally(() => {
+      setLoading(false);
     });
 
-    // Вмикаємо лоадер безпосередньо перед початком завантаження
-    setLoading(true);
+// Стежимо лише за примітивами, щоб уникнути циклічних перезавантажень
+}, [productId, allProducts.length]);
 
-    Promise.all([fetchData, delay])
-      .then(([data]) => {
-        // Шукаємо характеристики конкретно нашого productId всередині завантаженого файлу
-        const specificDetails = data.find(
-          (item: ItemDetails) => item.id === productId,
-        );
-
-        if (specificDetails) {
-          setDetails(specificDetails);
-          setSelectedImage(specificDetails.images[0]); // Ставимо першу картинку головною за замовчуванням
-        } else {
-          throw new Error('Product specifications are missing');
-        }
-      })
-      .catch(err => {
-        setError(err.message || 'Something went wrong');
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [productId, allProducts, foundProduct]);
 
   // Функція для динамічного формування URL при зміні кольору чи пам'яті
   const getNewProductUrl = (newColor?: string, newCapacity?: string) => {
