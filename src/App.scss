@@ -1,1 +1,23 @@
-// not empty
+@use './utils/vars' as *;
+
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  color: $primary-color;
+  background-color: $background-color;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark {
+  color-scheme: dark;
+}
+
+.App {
+  margin: 0;
+  font-family: Mont, sans-serif;
+  color: $primary-color;
+  background-color: $background-color;
+}

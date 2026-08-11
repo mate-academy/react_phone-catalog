@@ -1,0 +1,132 @@
+@use '../../../../utils/vars' as *;
+@use '../../../../utils/mixins' as *;
+
+.productsslider {
+  position: relative;
+
+  overflow: hidden;
+  justify-content: center;
+
+  width: 100%;
+
+  // We add padding to show borders/shadows and negative margin to compensate
+  margin: -11px;
+  padding: 11px;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    margin-bottom: 28px;
+  }
+
+  &__title {
+    margin: 0;
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    color: $primary-color;
+
+    @include on-phone {
+      font-size: 22px;
+      line-height: 140%;
+      letter-spacing: 0%;
+    }
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+    }
+  }
+
+  &__viewport {
+    overflow: hidden;
+    width: calc(272px * 4 + 16px * 3); // 4 cards + gaps
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+
+    &_img {
+      width: 16px;
+      height: 16px;
+    }
+
+    &_left,
+    &_right {
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 32px;
+      height: 32px;
+      border: 1px solid $elements-color;
+
+      background-color: $background-color;
+
+      transition: border-color 0.3s;
+
+      &:disabled {
+        cursor: default;
+        opacity: 0.5;
+      }
+
+      &:hover:not(:disabled) {
+        border-color: $primary-color;
+      }
+    }
+  }
+
+  &__track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.3s ease;
+
+    &>* {
+      flex: 0 0 272px;
+    }
+  }
+
+  &__loadmore {
+    cursor: pointer;
+
+    display: flex;
+    flex: 0 0 152px;
+    align-items: center;
+    justify-content: center;
+
+    width: 208px;
+    border: 1px solid $elements-color;
+
+    font-family: Mont, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: $primary-color;
+
+    background-color: transparent;
+
+    &:hover {
+      cursor: pointer;
+      background-image: linear-gradient(to right,
+          $background-color,
+          $background-color 80%,
+          $elements-color 19.65%);
+      box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
+      animation: slidebg 1.3s linear(1.87 -13.24%, -0.1 111.76%) infinite;
+    }
+
+    @keyframes slidebg {
+      to {
+        background-position: 35vw;
+      }
+    }
+  }
+}

@@ -1,0 +1,93 @@
+@use 'vars' as *;
+
+@mixin on-phone {
+  @media (min-width: $phone-min-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin on-big-desktop {
+  @media (min-width: $big-desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 34px;
+  }
+
+  @include on-desktop {
+    margin-inline: auto;
+    padding-inline: 55px;
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 16px;
+  justify-content: center;
+
+  padding: 32px 16px;
+
+  @include on-tablet {
+    --columns: 12;
+
+    padding: 0;
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+
+    grid-template-columns: repeat(var(--columns), 32px);
+    justify-items: stretch;
+  }
+}
+
+@mixin item-grid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 24px;
+  align-items: center;
+}
+
+@mixin hover-scale-shadow(
+  $scale: 1.1,
+  $shadow: 0 10px 25px rgba(0, 0, 0, 0.15),
+  $transition: 0.3s ease
+) {
+  transition: transform $transition, box-shadow $transition;
+
+  @media (hover: hover) {
+    &:hover {
+      transform: scale($scale);
+      box-shadow: $shadow;
+    }
+  }
+}
+
+@mixin media-max-width($w) {
+  @media (max-width: $w) {
+    @content;
+  }
+}
