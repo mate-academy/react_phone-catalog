@@ -1,0 +1,471 @@
+$color-primary: #313237;
+$color-secondary: #89939A;
+$color-elements: #E2E6E9;
+$color-icons: #B4BDC3;
+$color-hover: #323542;
+$color-green: #27ae60;
+
+.Added__to__Cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 40px;
+  padding: 0 16px;
+  box-sizing: border-box;
+
+  background-color: #fff;
+  border: 1px solid $color-elements;
+  color: $color-green;
+
+  font-family: 'Mont', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    border-color: $color-green;
+    background-color: #f7fbf8;
+  }
+}
+
+.Head__List {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.Button__List {
+  display: flex;
+  gap: 16px;
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 32px;
+    height: 32px;
+    padding: 0;
+
+    background-color: #ffffff;
+    border: 1px solid $color-icons;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+
+    background-image: url('/img/arrow.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10px;
+
+    &--prev {
+      transform: rotate(180deg);
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $color-primary;
+    }
+
+    &:disabled {
+      border-color: $color-elements;
+      opacity: 0.4;
+      cursor: default;
+    }
+  }
+}
+
+.Brand__new__title {
+  width: 100%;
+  max-width: 1120px;
+  text-align: left;
+  font-family: "Mont", sans-serif;
+  margin: 0;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1%;
+  color: #313237;
+}
+
+.Brand__new__Phone__List {
+  width: 100%;
+  max-width: 1120px;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.Brand__new__phone {
+  display: flex;
+  flex-direction: column;
+  width: 272px;
+  height: 506px;
+  padding: 32px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 1px solid $color-elements;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  &__image {
+    width: 100%;
+    height: 196px;
+    object-fit: contain;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-family: "Mont", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-primary;
+    margin: 0 0 8px 0;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+.Price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+
+  .this__Price {
+    font-family: "Mont", sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    color: $color-primary;
+  }
+
+  .Price__without__Discount {
+    font-family: "Mont", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-decoration: line-through;
+    color: $color-secondary;
+  }
+}
+
+.phone__Line {
+  width: 100%;
+  height: 1px;
+  background-color: $color-elements;
+  border: none;
+  margin-bottom: 16px;
+}
+
+.charasteristics {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .each {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .part__of__List {
+    font-family: "Mont", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $color-secondary;
+    margin: 0;
+  }
+
+  .part__of__char {
+    font-family: "Mont", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $color-primary;
+    margin: 0;
+  }
+}
+
+.contract__buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+
+  .Add__to__cart {
+    flex: 1;
+    height: 40px;
+    background-color: $color-primary;
+    color: #ffffff;
+    font-family: "Mont", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      background-color: $color-hover;
+      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  .heart {
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    border: 1px solid $color-icons;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+}
+
+.Brand__new__List {
+  display: flex;
+  gap: 20px;
+}
+
+.Shop__by__Category {
+  margin-top: 80px;
+}
+
+.Shop__title {
+  font-family: "Mont", sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  color: #313237;
+  line-height: 41px;
+}
+
+.ShopByCategory {
+  margin-top: 56px;
+  margin-bottom: 56px;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    color: #313237;
+    margin-bottom: 24px;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+
+    @media (max-width: 639px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      .ShopByCategory__image {
+        transform: scale(1.04);
+      }
+    }
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background-color: #6D6474;
+
+    &--phones {
+      background-color: #6D6474;
+    }
+
+    &--tablets {
+      background-color: #8D8D92;
+    }
+
+    &--accessories {
+      background-color: #973456;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    top: 80px;
+    left: 80px;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+
+  &__card-title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    font-family: "Mont", sans-serif;
+    color: #313237;
+    margin: 0 0 4px 0;
+  }
+
+  &__card-subtitle {
+    font-size: 14px;
+    font-weight: 600;
+    font-family: "Mont", sans-serif;
+    line-height: 21px;
+    color: #898698;
+    margin: 0;
+  }
+}
+
+.ShopByCategory__image--added {
+  position: absolute;
+  top: 120px;
+  left: 50px;
+
+  width: 150%;
+  height: auto;
+
+  object-fit: contain;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.04);
+  }
+}
+
+@media (max-width: 1199px) {
+  .Brand__new__title {
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  .Brand__new__Phone__List {
+    margin-top: 56px;
+    margin-bottom: 56px;
+  }
+
+  .Shop__by__Category {
+    margin-top: 56px;
+  }
+
+  .ShopByCategory {
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    &__title {
+      font-size: 28px;
+      line-height: 36px;
+    }
+
+    &__image {
+      top: 25%;
+      left: 25%;
+    }
+  }
+
+  .ShopByCategory__image--added {
+    top: 30%;
+    left: 15%;
+  }
+}
+
+@media (max-width: 639px) {
+  .Head__List {
+    margin-bottom: 16px;
+  }
+
+  .Brand__new__title {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .Brand__new__Phone__List {
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+
+  .Brand__new__List {
+    overflow-x: auto;
+    padding-bottom: 12px;
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .Brand__new__phone {
+    flex-shrink: 0;
+    width: 212px;
+    height: auto;
+    padding: 16px;
+    scroll-snap-align: start;
+
+    &__image {
+      height: 160px;
+      margin-bottom: 16px;
+    }
+  }
+
+  .Shop__by__Category {
+    margin-top: 32px;
+  }
+
+  .ShopByCategory {
+    margin-top: 32px;
+    margin-bottom: 32px;
+
+    &__title {
+      font-size: 22px;
+      line-height: 28px;
+      margin-bottom: 16px;
+    }
+
+    &__image {
+      top: 20%;
+      left: 20%;
+    }
+  }
+
+  .ShopByCategory__image--added {
+    top: 25%;
+    left: 10%;
+  }
+}

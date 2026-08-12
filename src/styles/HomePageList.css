@@ -1,0 +1,409 @@
+.Added__to__Cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid #E2E6E9;
+  color: #27ae60;
+  font-family: "Mont", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.Added__to__Cart:hover {
+  border-color: #27ae60;
+  background-color: #f7fbf8;
+}
+
+.Head__List {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.Button__List {
+  display: flex;
+  gap: 16px;
+}
+.Button__List__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background-color: #ffffff;
+  border: 1px solid #B4BDC3;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  background-image: url("/img/arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px;
+}
+.Button__List__item--prev {
+  transform: rotate(180deg);
+}
+.Button__List__item:hover:not(:disabled) {
+  border-color: #313237;
+}
+.Button__List__item:disabled {
+  border-color: #E2E6E9;
+  opacity: 0.4;
+  cursor: default;
+}
+
+.Brand__new__title {
+  width: 100%;
+  max-width: 1120px;
+  text-align: left;
+  font-family: "Mont", sans-serif;
+  margin: 0;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1%;
+  color: #313237;
+}
+
+.Brand__new__Phone__List {
+  width: 100%;
+  max-width: 1120px;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.Brand__new__phone {
+  display: flex;
+  flex-direction: column;
+  width: 272px;
+  height: 506px;
+  padding: 32px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 1px solid #E2E6E9;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.Brand__new__phone:hover {
+  box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+}
+.Brand__new__phone__image {
+  width: 100%;
+  height: 196px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-bottom: 24px;
+}
+.Brand__new__phone__title {
+  font-family: "Mont", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #313237;
+  margin: 0 0 8px 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.Price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.Price .this__Price {
+  font-family: "Mont", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 140%;
+  color: #313237;
+}
+.Price .Price__without__Discount {
+  font-family: "Mont", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  text-decoration: line-through;
+  color: #89939A;
+}
+
+.phone__Line {
+  width: 100%;
+  height: 1px;
+  background-color: #E2E6E9;
+  border: none;
+  margin-bottom: 16px;
+}
+
+.charasteristics {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.charasteristics .each {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.charasteristics .part__of__List {
+  font-family: "Mont", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939A;
+  margin: 0;
+}
+.charasteristics .part__of__char {
+  font-family: "Mont", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #313237;
+  margin: 0;
+}
+
+.contract__buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+.contract__buttons .Add__to__cart {
+  flex: 1;
+  height: 40px;
+  background-color: #313237;
+  color: #ffffff;
+  font-family: "Mont", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.contract__buttons .Add__to__cart:hover {
+  background-color: #323542;
+  box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
+}
+.contract__buttons .heart {
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
+  border: 1px solid #B4BDC3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease;
+}
+.contract__buttons .heart:hover {
+  border-color: #313237;
+}
+
+.Brand__new__List {
+  display: flex;
+  gap: 20px;
+}
+
+.Shop__by__Category {
+  margin-top: 80px;
+}
+
+.Shop__title {
+  font-family: "Mont", sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  color: #313237;
+  line-height: 41px;
+}
+
+.ShopByCategory {
+  margin-top: 56px;
+  margin-bottom: 56px;
+}
+.ShopByCategory__title {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  color: #313237;
+  margin-bottom: 24px;
+}
+.ShopByCategory__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 639px) {
+  .ShopByCategory__cards {
+    grid-template-columns: 1fr;
+  }
+}
+.ShopByCategory__card {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+.ShopByCategory__card:hover .ShopByCategory__image {
+  transform: scale(1.04);
+}
+.ShopByCategory__image-wrapper {
+  width: 100%;
+  aspect-ratio: 1/1;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background-color: #6D6474;
+}
+.ShopByCategory__image-wrapper--phones {
+  background-color: #6D6474;
+}
+.ShopByCategory__image-wrapper--tablets {
+  background-color: #8D8D92;
+}
+.ShopByCategory__image-wrapper--accessories {
+  background-color: #973456;
+}
+.ShopByCategory__image {
+  position: absolute;
+  top: 80px;
+  left: 80px;
+  width: 100%;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+  transition: transform 0.3s ease;
+}
+.ShopByCategory__card-title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  font-family: "Mont", sans-serif;
+  color: #313237;
+  margin: 0 0 4px 0;
+}
+.ShopByCategory__card-subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Mont", sans-serif;
+  line-height: 21px;
+  color: #898698;
+  margin: 0;
+}
+
+.ShopByCategory__image--added {
+  position: absolute;
+  top: 120px;
+  left: 50px;
+  width: 150%;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+  transition: transform 0.3s ease;
+}
+.ShopByCategory__image--added:hover {
+  transform: scale(1.04);
+}
+
+@media (max-width: 1199px) {
+  .Brand__new__title {
+    font-size: 32px;
+    line-height: 41px;
+  }
+  .Brand__new__Phone__List {
+    margin-top: 56px;
+    margin-bottom: 56px;
+  }
+  .Shop__by__Category {
+    margin-top: 56px;
+  }
+  .ShopByCategory {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  .ShopByCategory__title {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  .ShopByCategory__image {
+    top: 25%;
+    left: 25%;
+  }
+  .ShopByCategory__image--added {
+    top: 30%;
+    left: 15%;
+  }
+}
+@media (max-width: 639px) {
+  .Head__List {
+    margin-bottom: 16px;
+  }
+  .Brand__new__title {
+    font-size: 22px;
+    line-height: 28px;
+  }
+  .Brand__new__Phone__List {
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+  .Brand__new__List {
+    overflow-x: auto;
+    padding-bottom: 12px;
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .Brand__new__List::-webkit-scrollbar {
+    display: none;
+  }
+  .Brand__new__List {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .Brand__new__phone {
+    flex-shrink: 0;
+    width: 212px;
+    height: auto;
+    padding: 16px;
+    scroll-snap-align: start;
+  }
+  .Brand__new__phone__image {
+    height: 160px;
+    margin-bottom: 16px;
+  }
+  .Shop__by__Category {
+    margin-top: 32px;
+  }
+  .ShopByCategory {
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+  .ShopByCategory__title {
+    font-size: 22px;
+    line-height: 28px;
+    margin-bottom: 16px;
+  }
+  .ShopByCategory__image {
+    top: 20%;
+    left: 20%;
+  }
+  .ShopByCategory__image--added {
+    top: 25%;
+    left: 10%;
+  }
+}/*# sourceMappingURL=HomePageList.css.map */

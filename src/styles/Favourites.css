@@ -1,0 +1,33 @@
+.Favourites {
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
+.root__arrow {
+  width: 5.3333334923;
+  height: 9.3333339691;
+  top: 3.33px;
+  left: 5.33px;
+  font-family: "Mont", sans-serif;
+  opacity: 1;
+  font-family: serif;
+}
+
+.Counter__of__things {
+  font-family: "Mont", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #89939A;
+  line-height: 21px;
+  letter-spacing: 0%;
+}
+
+.Favouties__header {
+  font-family: Mont;
+  font-weight: 800;
+  font-style: Bold;
+  font-size: 48px;
+  font-family: "Mont", sans-serif;
+  line-height: 56px;
+  letter-spacing: -1%;
+}/*# sourceMappingURL=Favourites.css.map */
