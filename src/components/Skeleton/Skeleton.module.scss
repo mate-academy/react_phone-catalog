@@ -1,0 +1,26 @@
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: var(--color-elements);
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        color-mix(in srgb, var(--color-white) 35%, transparent),
+        transparent
+    );
+    animation: skeleton-loading 1200ms ease-in-out infinite;
+    content: '';
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes skeleton-loading {
+  100% {
+    transform: translateX(100%);
+  }
+}

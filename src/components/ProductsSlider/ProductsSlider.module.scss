@@ -1,0 +1,44 @@
+@use '../../styles/typography' as typography;
+
+.slider {
+  --gap: 16px;
+
+  width: 100%;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  @include typography.h2;
+
+  margin: 0;
+  color: var(--color-text);
+}
+
+.buttons {
+  display: flex;
+  flex-shrink: 0;
+  gap: 16px;
+}
+
+.viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.list {
+  display: flex;
+  gap: var(--gap);
+  transition: transform 300ms ease;
+}
+
+.item {
+  min-width: 0;
+  flex: 0 0 var(--card-width);
+}

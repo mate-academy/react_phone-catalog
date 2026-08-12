@@ -1,0 +1,74 @@
+@use '../../styles/typography' as typography;
+
+.breadcrumbs {
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 24px;
+}
+
+.list {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+
+  &:first-child {
+    flex-shrink: 0;
+  }
+
+  &:last-child {
+    flex: 1 1 auto;
+  }
+}
+
+.homeLink {
+  display: flex;
+  flex-shrink: 0;
+  color: var(--color-text);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.separator {
+  flex-shrink: 0;
+  color: var(--color-icon);
+}
+
+.link,
+.current {
+  @include typography.small-text;
+
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.link {
+  flex-shrink: 0;
+  color: var(--color-text);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.current {
+  color: var(--color-text-secondary);
+}

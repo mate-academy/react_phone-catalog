@@ -1,0 +1,272 @@
+@use '../../styles/breakpoints' as *;
+
+.page {
+  width: 100%;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.breadcrumbIcon {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.breadcrumbLine {
+  width: 72px;
+  height: 14px;
+}
+
+.breadcrumbLineLong {
+  width: 160px;
+  height: 14px;
+}
+
+.backLink {
+  width: 72px;
+  height: 16px;
+  margin-bottom: 16px;
+}
+
+.title {
+  width: min(100%, 520px);
+  height: 42px;
+  margin-bottom: 40px;
+
+  @include on-tablet {
+    height: 48px;
+  }
+}
+
+.top {
+  display: grid;
+  gap: 40px;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include on-desktop {
+    grid-template-columns: 2fr 1fr;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+}
+
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+
+  @include on-tablet {
+    width: 80px;
+    flex-shrink: 0;
+    grid-template-columns: 1fr;
+  }
+}
+
+.thumb {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  border-radius: var(--icon-button-radius);
+}
+
+.imageWrapper {
+  display: flex;
+  min-height: 288px;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+
+  @include on-tablet {
+    min-height: 360px;
+  }
+
+  @include on-desktop {
+    min-height: 464px;
+  }
+}
+
+.mainImage {
+  width: 70%;
+  max-width: 420px;
+  height: 70%;
+  min-height: 240px;
+
+  @include on-tablet {
+    min-height: 320px;
+  }
+
+  @include on-desktop {
+    min-height: 420px;
+  }
+}
+
+.info {
+  max-width: 320px;
+
+  @include on-tablet {
+    max-width: none;
+  }
+}
+
+.optionBlock {
+  margin-bottom: 24px;
+}
+
+.optionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.optionTitle {
+  width: 120px;
+  height: 14px;
+}
+
+.productId {
+  width: 64px;
+  height: 14px;
+}
+
+.colorList,
+.capacityList {
+  display: flex;
+  gap: 8px;
+}
+
+.colorButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.capacityButton {
+  width: 64px;
+  height: 32px;
+  border-radius: var(--button-radius);
+}
+
+.divider,
+.sectionDivider {
+  height: 1px;
+  margin-bottom: 24px;
+  background-color: var(--color-border);
+}
+
+.price {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.priceDiscount {
+  width: 80px;
+  height: 32px;
+}
+
+.priceRegular {
+  width: 64px;
+  height: 32px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.cartButton {
+  height: 48px;
+  flex: 1;
+  border-radius: var(--button-radius);
+}
+
+.favoriteButton {
+  width: var(--icon-button-favorite-size);
+  height: var(--icon-button-favorite-size);
+  flex-shrink: 0;
+  border-radius: var(--icon-button-radius);
+}
+
+.shortSpecs,
+.techList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.spec,
+.techItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.specName,
+.techName {
+  width: 96px;
+  height: 14px;
+}
+
+.specValue,
+.techValue {
+  width: 140px;
+  height: 14px;
+}
+
+.details {
+  display: grid;
+  gap: 56px;
+
+  @include on-desktop {
+    grid-template-columns: 2fr 1fr;
+    gap: 64px;
+  }
+}
+
+.sectionTitle {
+  width: 160px;
+  height: 32px;
+  margin-bottom: 16px;
+}
+
+.descriptionSection {
+  margin-bottom: 32px;
+}
+
+.descriptionTitle {
+  width: 220px;
+  height: 22px;
+  margin-bottom: 16px;
+}
+
+.descriptionText {
+  width: 100%;
+  height: 16px;
+  margin-bottom: 8px;
+}
+
+.descriptionTextShort {
+  width: 76%;
+  height: 16px;
+}

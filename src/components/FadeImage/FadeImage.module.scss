@@ -1,0 +1,12 @@
+.image {
+  opacity: 0;
+  transform: scale(0.98);
+  transition:
+    opacity 500ms ease,
+    transform 500ms ease;
+}
+
+.imageLoaded {
+  opacity: 1;
+  transform: scale(1);
+}

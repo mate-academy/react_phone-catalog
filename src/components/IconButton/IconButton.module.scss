@@ -1,0 +1,55 @@
+.button {
+  display: flex;
+  width: var(--icon-button-size);
+  height: var(--icon-button-size);
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-icon-button-border);
+  border-radius: var(--icon-button-radius);
+  background-color: var(--color-icon-button-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  transition:
+    border-color 250ms ease,
+    background-color 250ms ease,
+    color 250ms ease;
+
+  &:hover {
+    border-color: var(--color-icon-button-border-hover);
+  }
+
+  &:disabled {
+    border-color: var(--color-icon-button-border-disabled);
+    color: var(--color-icon);
+    cursor: default;
+  }
+
+  &--default {
+    width: var(--icon-button-size);
+    height: var(--icon-button-size);
+    border-radius: var(--icon-button-radius);
+  }
+
+  &--slider {
+    width: var(--icon-button-size);
+    height: var(--icon-button-size);
+    border-radius: var(--icon-button-slider-radius);
+  }
+
+  &--favorite {
+    width: var(--icon-button-favorite-size);
+    height: var(--icon-button-favorite-size);
+    border-radius: var(--icon-button-radius);
+  }
+}
+
+.buttonSelected {
+  border-color: var(--color-icon-button-selected-bg);
+  background-color: var(--color-icon-button-selected-bg);
+  color: var(--color-icon-button-selected-text);
+}
+
+.buttonFavoriteSelected {
+  color: var(--color-favorite-active);
+}

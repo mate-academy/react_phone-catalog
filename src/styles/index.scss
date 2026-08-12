@@ -1,0 +1,85 @@
+@use './fonts';
+@use './colors';
+@use './typography';
+
+html {
+  min-height: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  background-color: var(--color-bg);
+  color-scheme: light;
+  transition: background-color 250ms ease;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: typography.$font-family-main;
+  transition:
+    background-color 250ms ease,
+    color 250ms ease;
+}
+
+html.menu-open,
+body.menu-open {
+  overflow: hidden;
+}
+
+.root {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  transition: background-color 250ms ease;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: typography.$font-family-main;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition:
+    color 250ms ease,
+    background-color 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    color 250ms ease,
+    background-color 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease;
+}
+
+input,
+select,
+textarea {
+  transition:
+    color 250ms ease,
+    background-color 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease;
+}

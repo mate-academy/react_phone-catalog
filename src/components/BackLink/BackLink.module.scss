@@ -1,0 +1,21 @@
+@use '../../styles/typography' as typography;
+
+.backLink {
+  @include typography.small-text;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 16px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 250ms ease;
+
+  &:hover {
+    color: var(--color-text);
+  }
+}

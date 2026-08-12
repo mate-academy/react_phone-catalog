@@ -1,0 +1,131 @@
+:root {
+  // Light theme
+
+  --color-accent: #f86800;
+  --color-secondary-accent: #476df4;
+  --color-primary: #0f0f11;
+  --color-secondary: #89939a;
+  --color-icons: #b4bdc3;
+  --color-elements: #e2e6e9;
+  --color-hover-bg: #fafbfc;
+  --color-white: #fff;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+
+  // Semantic tokens
+
+  --color-bg: var(--color-white);
+  --color-surface: var(--color-white);
+  --color-surface-2: var(--color-hover-bg);
+  --color-text: var(--color-primary);
+  --color-text-secondary: var(--color-secondary);
+  --color-border: var(--color-elements);
+  --color-icon: var(--color-icons);
+  --color-favorite-active: var(--color-secondary-accent);
+
+  // Main buttons
+
+  --color-button-primary-bg: var(--color-accent);
+  --color-button-primary-text: var(--color-white);
+  --color-button-primary-hover: #e75f00;
+  --color-button-secondary-bg: var(--color-white);
+  --color-button-secondary-text: var(--color-accent);
+  --color-button-secondary-border: var(--color-elements);
+
+  // Icon buttons / pagination buttons
+
+  --icon-button-radius: 50%;
+  --icon-button-slider-radius: 48px;
+  --icon-button-size: 32px;
+  --icon-button-favorite-size: 40px;
+  --color-icon-button-bg: var(--color-white);
+  --color-icon-button-border: var(--color-icons);
+  --color-icon-button-border-hover: var(--color-primary);
+  --color-icon-button-border-disabled: var(--color-elements);
+  --color-icon-button-selected-bg: var(--color-primary);
+  --color-icon-button-selected-text: var(--color-white);
+
+  // Color buttons
+
+  --color-button-color-border: var(--color-elements);
+  --color-button-color-border-hover: var(--color-icons);
+  --color-button-color-border-selected: var(--color-primary);
+  --color-button-color-border-disabled: var(--color-elements);
+  --button-radius: 12px;
+  --button-primary-hover-shadow: 0 3px 13px 0 #17203142;
+  --color-button-secondary-border-hover: var(--color-primary);
+  --color-button-selected-bg: var(--color-white);
+  --color-button-selected-text: var(--color-accent);
+  --color-button-selected-border: var(--color-elements);
+  --product-card-radius: 8px;
+  --product-card-hover-shadow: 0 2px 16px 0 #0000001a;
+  --color-card-bg: var(--color-white);
+  --color-card-border: var(--color-elements);
+  --cart-item-radius: 16px;
+}
+
+[data-theme='dark'] {
+  // Dark theme
+
+  --color-secondary: #75767f;
+  --color-icons: #4a4d58;
+  --color-elements: #3b3e4a;
+  --color-surface-2-raw: #323542;
+  --color-surface-1-raw: #161827;
+  --color-black: #0f1121;
+  --color-white: #f1f2f9;
+  --color-accent: #905bff;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+
+  // Semantic tokens
+
+  --color-bg: var(--color-black);
+  --color-surface: var(--color-surface-1-raw);
+  --color-surface-2: var(--color-surface-2-raw);
+  --color-text: var(--color-white);
+  --color-text-secondary: var(--color-secondary);
+  --color-border: var(--color-elements);
+  --color-icon: var(--color-icons);
+  --color-favorite-active: var(--color-red);
+
+  // Main buttons
+
+  --color-button-primary-bg: var(--color-accent);
+  --color-button-primary-text: var(--color-white);
+  --color-button-primary-hover: #a378ff;
+  --color-button-secondary-bg: var(--color-surface-2);
+  --color-button-secondary-text: var(--color-white);
+  --color-button-secondary-border: var(--color-surface-2);
+
+  // Icon buttons / pagination buttons
+
+  --icon-button-radius: 0;
+  --icon-button-slider-radius: 0;
+  --icon-button-size: 32px;
+  --icon-button-favorite-size: 40px;
+  --color-icon-button-bg: var(--color-surface-2);
+  --color-icon-button-border: var(--color-surface-2);
+  --color-icon-button-border-hover: var(--color-icons);
+  --color-icon-button-border-disabled: var(--color-elements);
+  --color-icon-button-selected-bg: var(--color-accent);
+  --color-icon-button-selected-text: var(--color-white);
+
+  // Color buttons
+
+  --color-button-color-border: var(--color-elements);
+  --color-button-color-border-hover: var(--color-icons);
+  --color-button-color-border-selected: var(--color-white);
+  --color-button-color-border-disabled: var(--color-elements);
+  --button-radius: 0;
+  --button-primary-hover-shadow: none;
+  --color-button-secondary-border-hover: var(--color-icons);
+  --color-button-selected-bg: var(--color-surface-2);
+  --color-button-selected-text: var(--color-white);
+  --color-button-selected-border: var(--color-surface-2);
+  --product-card-radius: 0;
+  --product-card-hover-shadow: none;
+  --color-card-bg: var(--color-surface);
+  --color-card-border: var(--color-surface);
+  --cart-item-radius: 0;
+}

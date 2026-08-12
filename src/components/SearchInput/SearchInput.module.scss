@@ -1,0 +1,71 @@
+@use '../../styles/breakpoints' as *;
+@use '../../styles/typography' as typography;
+
+.searchInput {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: var(--color-text);
+}
+
+.input {
+  @include typography.body-text;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0 22px 0 8px;
+  border: 0;
+  outline: none;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  appearance: none;
+  transition:
+    background-color 250ms ease,
+    color 250ms ease;
+
+  &::placeholder {
+    color: var(--color-text-secondary);
+  }
+
+  &:focus {
+    background-color: var(--color-bg);
+  }
+
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  @include on-desktop {
+    padding: 0 48px 0 24px;
+  }
+}
+
+.clearButton {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  display: flex;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-icon);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: color 250ms ease;
+
+  &:hover {
+    color: var(--color-text);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  @include on-desktop {
+    right: 16px;
+  }
+}

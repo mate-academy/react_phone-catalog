@@ -1,0 +1,126 @@
+@use '../../styles/typography' as typography;
+
+.card {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  padding: 32px;
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--product-card-radius);
+  background-color: var(--color-card-bg);
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease;
+
+  &:hover {
+    box-shadow: var(--product-card-hover-shadow);
+  }
+}
+
+.imageLink {
+  display: flex;
+  height: 196px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.image {
+  display: block;
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  transform-origin: center;
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+}
+
+.imageLink:hover .image {
+  transform: scale(1.1);
+}
+
+.title {
+  @include typography.body-text;
+
+  display: block;
+  min-height: 42px;
+  margin-bottom: 8px;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 250ms ease;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.priceDiscount {
+  @include typography.h3;
+
+  color: var(--color-text);
+}
+
+.priceRegular {
+  @include typography.h3;
+
+  color: var(--color-text-secondary);
+  text-decoration: line-through;
+}
+
+.divider {
+  height: 1px;
+  margin-bottom: 16px;
+  background-color: var(--color-border);
+  transition: background-color 250ms ease;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.specName {
+  @include typography.small-text;
+
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.specValue {
+  @include typography.small-text;
+
+  margin: 0;
+  color: var(--color-text);
+  text-align: right;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.cartButton {
+  height: 40px;
+  flex: 1;
+  padding: 0;
+}

@@ -1,0 +1,107 @@
+.card {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  padding: 32px;
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--product-card-radius);
+  background-color: var(--color-card-bg);
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease;
+}
+
+.imageWrapper {
+  display: flex;
+  height: 196px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.image {
+  width: 90%;
+  height: 90%;
+}
+
+.title {
+  min-height: 42px;
+  margin-bottom: 8px;
+}
+
+.titleLine {
+  width: 100%;
+  height: 16px;
+  margin-bottom: 8px;
+}
+
+.titleLineShort {
+  width: 72%;
+  height: 16px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.priceDiscount {
+  width: 56px;
+  height: 22px;
+}
+
+.priceRegular {
+  width: 48px;
+  height: 22px;
+}
+
+.divider {
+  height: 1px;
+  margin-bottom: 16px;
+  background-color: var(--color-border);
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.specName {
+  width: 64px;
+  height: 12px;
+}
+
+.specValue {
+  width: 80px;
+  height: 12px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.cartButton {
+  height: 40px;
+  flex: 1;
+  border-radius: var(--button-radius);
+}
+
+.favoriteButton {
+  width: var(--icon-button-favorite-size);
+  height: var(--icon-button-favorite-size);
+  flex-shrink: 0;
+  border-radius: var(--icon-button-radius);
+}

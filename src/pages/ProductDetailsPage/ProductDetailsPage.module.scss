@@ -1,0 +1,363 @@
+@use '../../styles/breakpoints' as *;
+@use '../../styles/typography' as typography;
+
+.page {
+  width: 100%;
+  padding: 24px 16px 64px;
+
+  @include on-tablet {
+    padding: 24px 24px 64px;
+  }
+
+  @include on-desktop {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 32px 80px;
+  }
+}
+
+.loading {
+  @include typography.body-text;
+
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.title {
+  @include typography.h1;
+
+  margin: 0 0 32px;
+  color: var(--color-text);
+}
+
+.top {
+  display: grid;
+  gap: 40px;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    grid-template-columns: minmax(0, 1fr) 237px;
+    gap: 17px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: 2fr 1fr;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: 35px 1fr;
+  }
+
+  @include on-desktop {
+    grid-template-columns: 80px 1fr;
+  }
+}
+
+.thumbs {
+  display: flex;
+  gap: 8px;
+
+  @include on-tablet {
+    flex-direction: column;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+  }
+}
+
+.thumb {
+  display: flex;
+  width: 51px;
+  height: 51px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  cursor: pointer;
+  transition: border-color 250ms ease;
+
+  @include on-tablet {
+    width: 35px;
+    height: 35px;
+  }
+
+  @include on-desktop {
+    width: 80px;
+    height: 80px;
+  }
+
+  &:hover {
+    border-color: var(--color-text-secondary);
+  }
+}
+
+.thumbActive {
+  border-color: var(--color-text);
+
+  &:hover {
+    border-color: var(--color-text);
+  }
+}
+
+.thumbImage {
+  display: block;
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.imageWrapper {
+  display: flex;
+  height: 288px;
+  align-items: center;
+  justify-content: center;
+
+  @include on-tablet {
+    height: 287px;
+  }
+
+  @include on-desktop {
+    height: 464px;
+  }
+}
+
+.mainImage {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.info {
+  width: 100%;
+}
+
+.optionBlock {
+  margin-bottom: 24px;
+}
+
+.optionHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.optionTitle,
+.productId {
+  @include typography.small-text;
+
+  margin: 0 0 8px;
+  color: var(--color-text-secondary);
+}
+
+.colorList {
+  display: flex;
+  gap: 8px;
+}
+
+.capacityList {
+  display: flex;
+  gap: 8px;
+}
+
+.capacityButton {
+  @include typography.body-text;
+
+  display: flex;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  transition:
+    border-color 250ms ease,
+    background-color 250ms ease,
+    color 250ms ease;
+
+  &:hover {
+    border-color: var(--color-text);
+  }
+}
+
+.capacityButtonActive {
+  border-color: var(--color-text);
+  background-color: var(--color-text);
+  color: var(--color-bg);
+
+  &:hover {
+    border-color: var(--color-text);
+  }
+}
+
+.divider {
+  height: 1px;
+  margin-bottom: 24px;
+  background-color: var(--color-border);
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.priceDiscount {
+  @include typography.h2;
+
+  color: var(--color-text);
+}
+
+.priceRegular {
+  @include typography.h3;
+
+  color: var(--color-text-secondary);
+  text-decoration: line-through;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.cartButton {
+  min-width: 0;
+  height: 40px;
+  flex: 1 1 auto;
+  padding: 0;
+}
+
+.shortSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.specName,
+.specValue {
+  @include typography.small-text;
+
+  margin: 0;
+}
+
+.specName {
+  color: var(--color-text-secondary);
+}
+
+.specValue {
+  color: var(--color-text);
+  text-align: right;
+}
+
+.details {
+  display: grid;
+  gap: 56px;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+}
+
+.sectionTitle {
+  @include typography.h2;
+
+  margin: 0 0 16px;
+  color: var(--color-text);
+}
+
+.sectionDivider {
+  height: 1px;
+  margin-bottom: 32px;
+  background-color: var(--color-border);
+}
+
+.descriptionSection {
+  margin-bottom: 32px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.descriptionTitle {
+  @include typography.h3;
+
+  margin: 0 0 16px;
+  color: var(--color-text);
+}
+
+.descriptionText {
+  @include typography.body-text;
+
+  margin: 0 0 16px;
+  color: var(--color-text-secondary);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.techList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+}
+
+.techItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.techName,
+.techValue {
+  @include typography.body-text;
+
+  margin: 0;
+}
+
+.techName {
+  color: var(--color-text-secondary);
+}
+
+.techValue {
+  color: var(--color-text);
+  text-align: right;
+}
+
+.suggested {
+  margin-top: 56px;
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}

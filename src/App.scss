@@ -1,1 +1,23 @@
-// not empty
+.app {
+  min-height: 100vh;
+  padding: 40px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0 0 32px;
+  }
+
+  &__section {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+}

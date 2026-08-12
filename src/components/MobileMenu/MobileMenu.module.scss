@@ -1,0 +1,174 @@
+@use '../../styles/breakpoints' as *;
+@use '../../styles/typography' as typography;
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  opacity: 0;
+  transform: translateX(100%);
+  pointer-events: none;
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease,
+    background-color 250ms ease,
+    color 250ms ease;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.menuOpen {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.top {
+  display: flex;
+  height: 48px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border);
+  transition: border-color 250ms ease;
+}
+
+.logoWrapper {
+  height: 100%;
+}
+
+.closeButton {
+  display: flex;
+  width: 48px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid var(--color-border);
+  color: var(--color-text);
+  cursor: pointer;
+  transition:
+    color 250ms ease,
+    border-color 250ms ease,
+    background-color 250ms ease;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.nav {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding-top: 32px;
+}
+
+.navLink {
+  @include typography.uppercase;
+
+  position: relative;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 250ms ease;
+
+  &:hover {
+    color: var(--color-text);
+  }
+}
+
+.navLinkActive {
+  color: var(--color-text);
+
+  &::after {
+    position: absolute;
+    right: 0;
+    bottom: -8px;
+    left: 0;
+    height: 2px;
+    background-color: var(--color-text);
+    content: '';
+  }
+}
+
+.actions {
+  display: grid;
+  height: 64px;
+  flex-shrink: 0;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--color-border);
+  transition: border-color 250ms ease;
+}
+
+.actionItem {
+  position: relative;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--color-border);
+  color: var(--color-text);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    color 250ms ease,
+    border-color 250ms ease,
+    background-color 250ms ease;
+
+  &:last-child {
+    border-right: 0;
+  }
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.actionItemActive {
+  color: var(--color-favorite-active);
+
+  &::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background-color: var(--color-favorite-active);
+    content: '';
+  }
+}
+
+.language {
+  @include typography.uppercase;
+
+  color: currentColor;
+}
+
+.badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  min-width: 14px;
+  height: 14px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  border: 1px solid var(--color-surface);
+  border-radius: 999px;
+  background-color: var(--color-favorite-active);
+  color: var(--color-white);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  transform: translate(2px, -14px);
+  pointer-events: none;
+}

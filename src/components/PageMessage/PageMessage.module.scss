@@ -1,0 +1,60 @@
+@use '../../styles/breakpoints' as *;
+@use '../../styles/typography' as typography;
+
+.message {
+  display: flex;
+  width: 100%;
+  max-width: 560px;
+  margin: 16px auto 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  text-align: center;
+
+  @include on-tablet {
+    margin-top: 20px;
+  }
+
+  @include on-desktop {
+    margin-top: 24px;
+  }
+}
+
+.image {
+  display: block;
+  width: min(100%, 180px);
+  max-height: 150px;
+  margin-bottom: 16px;
+  object-fit: contain;
+
+  @include on-tablet {
+    width: min(100%, 220px);
+    max-height: 180px;
+    margin-bottom: 20px;
+  }
+
+  @include on-desktop {
+    width: min(100%, 260px);
+    max-height: 200px;
+  }
+}
+
+.title {
+  @include typography.h1;
+
+  margin: 0 0 8px;
+  color: var(--color-text);
+}
+
+.text {
+  @include typography.body-text;
+
+  max-width: 480px;
+  margin: 0 0 20px;
+  color: var(--color-text-secondary);
+}
+
+.link {
+  text-decoration: none;
+}

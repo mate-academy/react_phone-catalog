@@ -1,0 +1,50 @@
+.themeToggleBtn {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background-color: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    color 250ms ease,
+    background-color 250ms ease;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  color: currentColor;
+  transition:
+    opacity 250ms ease,
+    transform 350ms ease;
+}
+
+.sunIcon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+
+  [data-theme='dark'] & {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0);
+  }
+}
+
+.moonIcon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0);
+
+  [data-theme='dark'] & {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}

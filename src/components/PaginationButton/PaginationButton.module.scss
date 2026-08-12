@@ -1,0 +1,36 @@
+@use '../../styles/typography' as typography;
+
+.button {
+  @include typography.body-text;
+
+  display: flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-icon-button-border);
+  border-radius: var(--icon-button-radius);
+  background-color: var(--color-icon-button-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  transition:
+    border-color 250ms ease,
+    background-color 250ms ease,
+    color 250ms ease;
+
+  &:hover {
+    border-color: var(--color-icon-button-border-hover);
+  }
+
+  &:disabled {
+    border-color: var(--color-icon-button-border-disabled);
+    color: var(--color-icon);
+    cursor: default;
+  }
+}
+
+.buttonSelected {
+  border-color: var(--color-icon-button-selected-bg);
+  background-color: var(--color-icon-button-selected-bg);
+  color: var(--color-icon-button-selected-text);
+}

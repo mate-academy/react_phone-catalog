@@ -1,0 +1,140 @@
+@use './breakpoints' as *;
+
+$font-family-main: 'Mont', sans-serif;
+
+// Desktop / Tablet
+
+@mixin h1-desktop {
+  font-family: $font-family-main;
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+@mixin h2-desktop {
+  font-family: $font-family-main;
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+@mixin h3-desktop {
+  font-family: $font-family-main;
+  font-size: 22px;
+  line-height: 31px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+@mixin h4-desktop {
+  font-family: $font-family-main;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+// Mobile
+
+@mixin h1-mobile {
+  font-family: $font-family-main;
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+@mixin h2-mobile {
+  font-family: $font-family-main;
+  font-size: 22px;
+  line-height: 31px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+@mixin h3-mobile {
+  font-family: $font-family-main;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+@mixin h4-mobile {
+  font-family: $font-family-main;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+// Adaptive mixins
+
+@mixin h1 {
+  @include h1-mobile;
+
+  @include on-tablet {
+    @include h1-desktop;
+  }
+}
+
+@mixin h2 {
+  @include h2-mobile;
+
+  @include on-tablet {
+    @include h2-desktop;
+  }
+}
+
+@mixin h3 {
+  @include h3-mobile;
+
+  @include on-tablet {
+    @include h3-desktop;
+  }
+}
+
+@mixin h4 {
+  @include h4-mobile;
+
+  @include on-tablet {
+    @include h4-desktop;
+  }
+}
+
+// Common text styles
+
+@mixin uppercase {
+  font-family: $font-family-main;
+  font-size: 12px;
+  line-height: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin buttons {
+  font-family: $font-family-main;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+@mixin body-text {
+  font-family: $font-family-main;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@mixin small-text {
+  font-family: $font-family-main;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 600;
+  letter-spacing: 0;
+}

@@ -1,0 +1,70 @@
+@use '../../styles/breakpoints' as *;
+
+.slider {
+  width: 100%;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include on-tablet {
+    grid-template-columns: 32px 1fr 32px;
+    gap: 16px;
+  }
+}
+
+.viewport {
+  overflow: hidden;
+  border-radius: 8px;
+  touch-action: pan-y;
+  background-color: #000;
+}
+
+.track {
+  display: flex;
+  transition: transform 300ms ease;
+}
+
+.slide {
+  display: block;
+  min-width: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 490 / 189;
+  object-fit: cover;
+}
+
+.arrowButton {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    width: 32px;
+    height: 100%;
+  }
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  background-color: var(--color-elements);
+  cursor: pointer;
+  transition: background-color 250ms ease;
+}
+
+.dotActive {
+  background-color: var(--color-text);
+}

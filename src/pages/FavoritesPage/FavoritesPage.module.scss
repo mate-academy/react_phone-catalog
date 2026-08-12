@@ -1,0 +1,65 @@
+@use '../../styles/breakpoints' as *;
+@use '../../styles/typography' as typography;
+
+.page {
+  width: 100%;
+  padding: 24px 16px 64px;
+
+  @include on-tablet {
+    padding: 24px 24px 64px;
+  }
+
+  @include on-desktop {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 32px 80px;
+  }
+}
+
+.title {
+  @include typography.h1;
+
+  margin: 0 0 8px;
+  color: var(--color-text);
+}
+
+.count {
+  @include typography.body-text;
+
+  margin: 0 0 32px;
+  color: var(--color-text-secondary);
+}
+
+.emptyMessage {
+  @include typography.body-text;
+
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.gridItem {
+  will-change: transform, opacity;
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease;
+}
+
+.gridItemRemoving {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(16px) scale(0.96);
+}

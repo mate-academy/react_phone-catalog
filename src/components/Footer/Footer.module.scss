@@ -1,0 +1,118 @@
+@use '../../styles/breakpoints' as *;
+@use '../../styles/typography' as typography;
+
+.footer {
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px 16px;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 32px 24px;
+  }
+
+  @include on-desktop {
+    padding: 32px;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-left: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 64px;
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  @include on-desktop {
+    gap: 96px;
+  }
+}
+
+.navLink {
+  @include typography.uppercase;
+
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 250ms ease;
+
+  &:hover {
+    color: var(--color-text);
+  }
+
+  &:focus-visible {
+    border-radius: 4px;
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+}
+
+.backToTop {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 16px;
+  margin-left: 16px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color 250ms ease;
+
+  &:hover {
+    color: var(--color-text);
+  }
+
+  &:focus-visible {
+    border-radius: 4px;
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+
+  @include on-tablet {
+    justify-self: end;
+    margin-left: 0;
+  }
+}
+
+.backToTopText {
+  @include typography.small-text;
+}
+
+.backToTopIcon {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-icon-button-border);
+  border-radius: var(--icon-button-radius);
+  background-color: var(--color-icon-button-bg);
+  color: var(--color-text);
+  transition:
+    border-color 250ms ease,
+    background-color 250ms ease,
+    color 250ms ease;
+
+  .backToTop:hover & {
+    border-color: var(--color-icon-button-border-hover);
+  }
+}
