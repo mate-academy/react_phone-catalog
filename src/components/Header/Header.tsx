@@ -17,12 +17,7 @@ export const Header: React.FC = () => {
   const handleBurgerToggle = () => setIsBurgerOpen(!isBurgerOpen);
   const handleBurgerClose = () => setIsBurgerOpen(false);
 
-  const showSearch = [
-    '/phones',
-    '/tablets',
-    '/accessories',
-    '/favorites',
-  ].includes(pathname);
+  const showSearch = ['/phones', '/tablets', '/accessories'].includes(pathname);
 
   const favoritesCount = favorites.length;
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);

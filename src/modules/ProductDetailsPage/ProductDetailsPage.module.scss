@@ -319,9 +319,8 @@
     }
 
     &--active {
-      border-color: white;
-
-      outline: 1px solid var(--color-secondary);
+      border-color: var(--color-bg);
+      outline: 2px solid var(--color-primary);
 
       outline-offset: 1px;
     }

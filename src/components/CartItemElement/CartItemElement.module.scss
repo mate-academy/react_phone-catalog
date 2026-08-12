@@ -16,9 +16,7 @@
     border: none;
     cursor: pointer;
     display: flex;
-    transition:
-      opacity 0.2s ease,
-      transform 0.3s ease;
+    transition: opacity 0.2s ease, transform 0.3s ease;
 
     &:hover {
       opacity: 0.7;
@@ -33,6 +31,22 @@
 
     :global([data-theme='dark']) & {
       filter: invert(1);
+    }
+  }
+
+  // СТИЛІ ДЛЯ ПОСИЛАННЯ (Link)
+  &__productLink {
+    display: flex;
+    align-items: center;
+    gap: 16px; 
+    flex: 1;
+    min-width: 220px; 
+    text-decoration: none; 
+    color: inherit; 
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.85; 
     }
   }
 
@@ -55,28 +69,27 @@
     font-size: 14px;
     line-height: 21px;
     color: var(--color-primary);
-    flex: 1; // Дозволяє тексту займати весь вільний простір і розштовхувати кнопки вправо
-    min-width: 120px;
+    
   }
-  &__quantityControl{
+
+  &__quantityControl {
     display: flex;
     align-items: center;
     gap: 12px;
   }
 
-  &__btn{
+  &__btn {
     width: 32px;
     height: 32px;
     background-color: var(--color-bg);
-    border: 1px solid var(--color-border) ;
+    border: 1px solid var(--color-border);
     border-radius: 50%;
     cursor: pointer;
     color: var(--color-primary);
-
     transition: background-color 0.2s ease;
 
     &:hover:not(:disabled) {
-      background-color: var(--color-border); // Колір при наведенні
+      background-color: var(--color-border); 
     }
   }
 
@@ -89,11 +102,9 @@
     line-height: 21px;
   }
 
-  &__price{
+  &__price {
     font-size: 22px;
     font-weight: 800;
     line-height: 140%;
   }
-
-
 }

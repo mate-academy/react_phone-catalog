@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { CartItem, useApp } from '../../context/AppContext';
 import styles from './CartItemElement.module.scss';
 
@@ -8,12 +9,13 @@ interface Props {
 
 export const CartItemElement: React.FC<Props> = ({ item }) => {
   const { removeFromCart, changeQuantity } = useApp();
-
   const { id, product, quantity } = item;
+
+  const productPath = `/${product.category}/${product.itemId || product.id}`;
 
   return (
     <div className={styles.item}>
-      {/* 1. Кнопка видалення  */}
+      {/* 1. Кнопка видалення */}
       <button
         type="button"
         className={styles.item__remove}
@@ -27,19 +29,21 @@ export const CartItemElement: React.FC<Props> = ({ item }) => {
         />
       </button>
 
-      {/* 2. НОВИЙ БЛОК: Зображення самого телефону */}
-      <div className={styles.item__imageWrapper}>
-        <img
-          src={product.image}
-          alt={product.name}
-          className={styles.item__image}
-        />
-      </div>
+      <Link to={productPath} className={styles.item__productLink}>
+        {/* Зображення самого телефону */}
+        <div className={styles.item__imageWrapper}>
+          <img
+            src={product.image}
+            alt={product.name}
+            className={styles.item__image}
+          />
+        </div>
 
-      {/* 3. Текстова назва гаджета (вже готова) */}
-      <span className={styles.item__title}>{product.name}</span>
+        {/* Текстова назва гаджета */}
+        <span className={styles.item__title}>{product.name}</span>
+      </Link>
 
-      {/* 4. НОВИЙ БЛОК: Керування кількістю (- 1 +) */}
+      {/* 4. Керування кількістю (- 1 +) */}
       <div className={styles.item__quantityControl}>
         {/* Кнопка "Мінус" */}
         <button
@@ -63,6 +67,7 @@ export const CartItemElement: React.FC<Props> = ({ item }) => {
           +
         </button>
       </div>
+
       <span className={styles.item__price}>
         ${Number(product.price) * quantity}
       </span>

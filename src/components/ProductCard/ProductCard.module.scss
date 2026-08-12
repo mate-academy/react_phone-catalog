@@ -1,27 +1,30 @@
 // Головний блок універсальної картки
 .product-card {
   width: 272px;
-  height: 506px;
+  min-height: 506px; 
+  height: 100%; 
   border-radius: 8px;
   background-color: var(--color-bg);
   border: 1px solid var(--color-border);
   padding: 32px;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  transition:  box-shadow 0.3s ease, border-color 0.3s ease;
+  
+ 
+  display: grid;
+  grid-template-rows: auto auto max-content max-content auto 1fr;
+  gap: 12px;
+  
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 
-
-  // Ефект виділення картки при наведенні
+ 
   &:hover {
     box-shadow: 0 2px 4px var(--color-secondary);
-
   }
 
-  &__image-link,
-  &__title-link {
+  &__image-link, &__title-link {
     text-decoration: none;
     color: inherit;
+    display: block;
   }
 
   // Контейнер для фото смартфона
@@ -33,10 +36,9 @@
     align-items: center;
     margin-bottom: 8px;
     overflow: hidden;
-     transition: transform 0.3s ease;
-
-
-    &:hover{
+    transition: transform 0.3s ease;
+    
+    &:hover {
       transform: scale(1.09);
     }
   }
@@ -46,7 +48,6 @@
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-
   }
 
   // Назва телефону (Title)
@@ -56,18 +57,19 @@
     font-weight: 600;
     line-height: 21px;
     color: var(--color-primary);
-    margin: 24px 0 8px;
-    height: 42px;
-    overflow: hidden;
+    margin: 8px 0; 
+    
+    
+    min-height: 42px; 
     letter-spacing: 0%;
-
-
+    word-break: break-word; 
   }
 
   // Блок цін (Price)
   &__price-block {
     display: flex;
     align-items: center;
+    flex-wrap: wrap; 
     gap: 8px;
     margin-bottom: 8px;
   }
@@ -98,7 +100,7 @@
     width: 100%;
   }
 
-  // Контейнер для всього блоку характеристик (Specs у Figma)
+  // Контейнер для всього блоку характеристик 
   &__specs {
     display: flex;
     flex-direction: column;
@@ -106,40 +108,50 @@
     margin-bottom: 8px;
   }
 
-  // Один рядок (наприклад, Screen + 4.7" IPS)
+  // Один рядок 
   &__spec-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    
+   
+    align-items: flex-start; 
+    
+    gap: 8px;
     font-family: var(--font-main);
     font-size: 12px;
-    line-height: 100%;
+    line-height: 130%;
     font-weight: 600;
   }
 
-  // Назва характеристики (сірий текст зліва)
+ 
   &__spec-label {
     font-weight: 600;
     color: var(--color-secondary);
+    word-break: break-word; 
   }
 
-  // Значення характеристики (текст справа під тему)
   &__spec-value {
     font-weight: 600;
     color: var(--color-primary);
+    white-space: nowrap; 
+    flex-shrink: 0; 
   }
 
-  // Контейнер-обертка для кнопок (Buttons по Figma)
+  // Контейнер-обертка для кнопок 
   &__buttons {
     display: flex;
     gap: 8px;
-    margin-top: auto;
+    
+    
+    align-self: end; 
+    
     width: 100%;
+    padding-top: 12px;
   }
 
   // Велика кнопка Add to cart
   &__btn-cart {
-    border-radius:  48px;
+    border-radius: 48px;
     flex-grow: 1;
     height: 40px;
     background-color: #a378ff;
@@ -158,17 +170,18 @@
       transform: scale(1.03);
     }
 
-    // Модифікатор для стану Added (повернули назву класу на місце)
+    // Модифікатор для стану Added
     &--selected {
       background-color: transparent;
       color: #27ae60;
       border: 1px solid var(--color-border);
       cursor: default;
       box-shadow: none;
-
+      
       &:hover {
         background-color: transparent;
         box-shadow: none;
+        transform: none; 
       }
     }
   }
@@ -184,7 +197,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: border-color 0.3s ease, background-color 0.3s ease ,transform 0.3s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
 
     &:hover {
       border-color: var(--color-primary);
@@ -203,12 +216,12 @@
     height: 16px;
     object-fit: contain;
 
-    // Робимо звичайне сіре серце білим у темній темі
+   
     [data-theme='dark'] & {
       filter: invert(1);
     }
 
-    // Скасовуємо інверсію для червоного серця, якщо у кнопки є клас активності
+   
     [data-theme='dark'] .product-card__btn-fav--active & {
       filter: none;
     }
