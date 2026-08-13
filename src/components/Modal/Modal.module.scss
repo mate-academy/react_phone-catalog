@@ -1,0 +1,137 @@
+@import '../../styles/breakpoints';
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200; 
+  background-color: rgba(0, 0, 0, 0.6); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+  animation: fadeIn 0.25s ease forwards;
+
+  &__content {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-elements);
+    border-radius: 16px; 
+    padding: 32px;
+    max-width: 440px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+
+    @include mobile {
+      padding: 24px 16px;
+    }
+
+   
+    :global([data-theme='dark']) & {
+      border-color: #52565c; 
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &__text {
+    font-family: var(--font-main);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-primary);
+    margin: 0 0 24px;
+
+    @include mobile {
+      font-size: 16px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+
+    @include mobile {
+      flex-direction: column; 
+      gap: 12px;
+    }
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    height: 48px;
+    border: none;
+    background-color: #313237; 
+    color: #fff;
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 10px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+
+    &:hover {
+      background-color: var(--color-primary);
+      transform: scale(1.02);
+    }
+
+    
+    :global([data-theme='dark']) & {
+      background-color: var(--color-surface);
+      color: var(--color-primary);
+
+      &:hover {
+        background-color: var(--color-primary);
+        color: var(--color-bg);
+      }
+    }
+
+    &--cancel {
+      background-color: transparent;
+      border: 1px solid #b4bdc9;
+      color: var(--color-primary);
+
+      &:hover {
+        background-color: var(--color-surface);
+        border-color: var(--color-primary);
+      }
+
+     
+      :global([data-theme='dark']) & {
+        border-color: #52565c;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.05);
+          border-color: var(--color-primary);
+        }
+      }
+    }
+  }
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+
+
+
+.modal__successAnimation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  animation: fadeIn 0.4s ease forwards;
+}

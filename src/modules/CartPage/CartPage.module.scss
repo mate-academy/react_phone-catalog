@@ -1,0 +1,150 @@
+
+.cart {
+  padding: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--color-secondary);
+    cursor: pointer;
+    margin-bottom: 16px;
+    border: none;
+    background: none;
+    padding: 0;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  &__backText {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 100%;
+  }
+
+  &__backIcon {
+    width: 16px;
+    height: 16px;
+    display: block;
+    object-fit: contain;
+
+    :global([data-theme='dark']) & {
+      filter: invert(1);
+    }
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -1%;
+    margin-bottom: 32px;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typing 2.5s ease-in-out forwards;
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  &__empty {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-secondary);
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @media (min-width: 1200px) {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+  }
+
+  &__list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__summary {
+    width: 100%;
+    padding: 24px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 1200px) {
+      width: 368px;
+    }
+  }
+
+  &__info {
+    text-align: center;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__price {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 41px;
+  }
+
+  &__count {
+    font-size: 14px;
+    color: var(--color-secondary);
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-border);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  &__checkout {
+    width: 100%;
+    height: 48px;
+    background-color: #a378ff;
+    color: #FFF;
+    border-radius: 48px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.3s ease;
+
+    &:hover {
+      opacity: 0.9;
+      transform: scale(1.03);
+    }
+  }
+}

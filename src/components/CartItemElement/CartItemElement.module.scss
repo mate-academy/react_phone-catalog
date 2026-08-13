@@ -1,0 +1,110 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  width: 100%;
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background-color: var(--color-bg);
+  box-sizing: border-box;
+
+  &__remove {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    transition: opacity 0.2s ease, transform 0.3s ease;
+
+    &:hover {
+      opacity: 0.7;
+      transform: scale(1.06);
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+
+    :global([data-theme='dark']) & {
+      filter: invert(1);
+    }
+  }
+
+  // СТИЛІ ДЛЯ ПОСИЛАННЯ (Link)
+  &__productLink {
+    display: flex;
+    align-items: center;
+    gap: 16px; 
+    flex: 1;
+    min-width: 220px; 
+    text-decoration: none; 
+    color: inherit; 
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.85; 
+    }
+  }
+
+  &__imageWrapper {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--color-primary);
+    
+  }
+
+  &__quantityControl {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--color-primary);
+    transition: background-color 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-border); 
+    }
+  }
+
+  &__count {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-primary);
+    min-width: 16px;
+    text-align: center;
+    line-height: 21px;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+  }
+}

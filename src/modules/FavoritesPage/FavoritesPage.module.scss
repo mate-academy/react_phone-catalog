@@ -1,0 +1,50 @@
+.favorites-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 32px;
+  padding-right: 32px; 
+  padding-bottom: 80px;
+
+  &__title {
+    font-weight: 800;
+    font-style: bold;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -1%;
+    color: var(--color-primary);
+    margin-top: 0;
+    margin-bottom: 8px;
+
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+
+    animation: typing 2.5s ease-in-out forwards;
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  &__count {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    margin-top: 0;
+    margin-bottom: 40px;
+    color: var(--color-secondary);
+  }
+
+  &__empty {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-secondary);
+    text-align: center;
+    margin-top: 40px;
+  }
+}

@@ -1,0 +1,70 @@
+.sort {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 200px;
+
+   // фіксована ширина з макету
+
+  &__label {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-secondary);
+    text-align: left;
+  }
+
+  // Обгортка, яка є точкою відліку для абсолютної стрілочки
+  &__select-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+   
+    
+  }
+
+  &__select {
+    width: 100%;
+    font-weight: 600;
+    height: 40px;
+    padding: 0 36px 0 16px; 
+    border: 1px solid #b4bdc9;
+    border-radius: 8px;
+    font-family: var(--font-main);
+    font-size: 14px;
+    line-height: 21px;
+    color:var(--color-primary);
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s;
+    background-color: var(--color-dg);
+
+    
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &:focus {
+      border-color: #313237;
+    }
+  }
+
+  
+  &__arrow {
+    position: absolute;
+    right: 12px; 
+  
+    color: var(--color-primary);
+    width: 16px;
+    height: 16px;
+    pointer-events: none; 
+    opacity: 1;
+  }
+
+  option {
+  color: #313237; 
+  background-color: #fff; 
+}
+
+}
