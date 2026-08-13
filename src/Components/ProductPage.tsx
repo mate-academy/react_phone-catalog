@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import '../styles/ProductPage.scss';
 
 export interface NewModel {
@@ -74,6 +74,15 @@ export const ProductPage: React.FC<ProductPageProps> = ({
   setsmth,
 }) => {
   const [array, setArray] = useState<NewModel[]>([]);
+  const { category } = useParams<{ category: string; productId: string }>();
+
+  const formatCategoryName = (str?: string) => {
+    if (!str) {
+      return '';
+    }
+
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
 
   useEffect(() => {
     fetch('api/products.json')
@@ -173,7 +182,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
       setsmth(product);
     }
 
-    navigate('/product');
+    navigate(`/${product.category}/${product.itemId}`);
   };
 
   const activeImg = selectedImage || chosenobj.images[0];
@@ -187,8 +196,8 @@ export const ProductPage: React.FC<ProductPageProps> = ({
           <img src="/img/Home.svg" alt="Home" />
         </Link>
         <p className="root__arrow"></p>
-        <Link to="/phones" className="root__thing">
-          Phones
+        <Link to={`/${category}`} className="root__thing">
+          {formatCategoryName(category)}
         </Link>
         <p className="root__arrow"></p>
         <p>{chosenobj.name}</p>

@@ -5,9 +5,11 @@ $color-icons: #b4bdc3;
 $color-white: #fff;
 
 .Cart {
-  margin-left: 105px;
-  margin-right: 105px;
-  padding-bottom: 80px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px 80px;
+  box-sizing: border-box;
 
   .rootline {
     display: flex;
@@ -35,9 +37,9 @@ $color-white: #fff;
 
   .Favouties__header {
     font-family: "Mont", sans-serif;
-    font-size: 32px;
+    font-size: 48px;
     font-weight: 800;
-    line-height: 41px;
+    line-height: 56px;
     color: $color-primary;
     margin: 0 0 32px;
   }
@@ -46,10 +48,6 @@ $color-white: #fff;
     display: flex;
     gap: 16px;
     align-items: flex-start;
-
-    @media (max-width: 768px) {
-      flex-direction: column;
-    }
   }
 
   .Count__List {
@@ -57,6 +55,7 @@ $color-white: #fff;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    width: 100%;
   }
 
   .one__model {
@@ -67,6 +66,7 @@ $color-white: #fff;
     border: 1px solid $color-elements;
     box-sizing: border-box;
     gap: 16px;
+    border-radius: 8px;
 
     .crossButton {
       width: 16px;
@@ -114,7 +114,7 @@ $color-white: #fff;
     .obj__title {
       flex: 1;
       margin: 0;
-    font-family: "Mont", sans-serif;
+      font-family: "Mont", sans-serif;
       font-size: 14px;
       font-weight: 600;
       line-height: 21px;
@@ -181,19 +181,18 @@ $color-white: #fff;
         margin: 0;
         min-width: 16px;
         text-align: center;
-    font-family: "Mont", sans-serif;
+        font-family: "Mont", sans-serif;
         font-size: 14px;
         font-weight: 600;
         color: $color-primary;
       }
     }
 
-    /* Ціна товару */
     .price__of__item {
       margin: 0;
       min-width: 80px;
       text-align: right;
-    font-family: "Mont", sans-serif;
+      font-family: "Mont", sans-serif;
       font-size: 22px;
       font-weight: 800;
       color: $color-primary;
@@ -205,6 +204,7 @@ $color-white: #fff;
     padding: 24px;
     background-color: $color-white;
     border: 1px solid $color-elements;
+    border-radius: 8px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -212,20 +212,18 @@ $color-white: #fff;
     text-align: center;
     flex-shrink: 0;
 
-    @media (max-width: 768px) {
-      width: 100%;
-    }
     .Count__dollar {
       margin: 0;
-    font-family: "Mont", sans-serif;
+      font-family: "Mont", sans-serif;
       font-size: 32px;
       font-weight: 800;
       line-height: 41px;
       color: $color-primary;
     }
+
     .Count__items {
       margin: 8px 0 0 0;
-    font-family: "Mont", sans-serif;
+      font-family: "Mont", sans-serif;
       font-size: 14px;
       font-weight: 600;
       color: $color-secondary;
@@ -245,7 +243,7 @@ $color-white: #fff;
       background-color: $color-primary;
       color: $color-white;
       border: none;
-    font-family: "Mont", sans-serif;
+      font-family: "Mont", sans-serif;
       font-size: 14px;
       font-weight: 700;
       cursor: pointer;
@@ -257,6 +255,90 @@ $color-white: #fff;
 
       &:active {
         background-color: lighten($color-primary, 10%);
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+   АДАПТИВНІ СТИЛІ (Планшет та Мобільні)
+   ========================================================================== */
+
+@media (max-width: 1199px) {
+  .Cart {
+    padding: 0 24px 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .Cart {
+    .Count__Box {
+      flex-direction: column;
+    }
+
+    .Count__Total {
+      width: 100%;
+    }
+  }
+}
+
+/* МОБІЛЬНІ ПРИСТРОЇ (<= 480px) */
+@media (max-width: 480px) {
+  .Cart {
+    padding: 0 16px 40px;
+
+    .Favouties__header {
+      font-size: 32px;
+      line-height: 41px;
+      margin-bottom: 24px;
+    }
+
+    /* Адаптація картки товару для вузького екрана */
+    .one__model {
+      flex-wrap: wrap;
+      padding: 16px;
+      gap: 12px;
+
+      /* Верхній рядок: [Хрестик] [Картинка] [Назва] */
+      .crossButton {
+        order: 1;
+      }
+
+      .Count__image {
+        order: 2;
+        width: 66px;
+        height: 66px;
+      }
+
+      .obj__title {
+        order: 3;
+        width: calc(100% - 110px); // Заповнює залишок верхнього рядка
+      }
+
+      /* Нижній рядок: [Лічильник] (ліворуч) та [Ціна] (праворуч) */
+      .Counter {
+        order: 4;
+        margin-left: 0;
+        margin-top: 8px;
+      }
+
+      .price__of__item {
+        order: 5;
+        margin-left: auto;
+        margin-top: 8px;
+        font-size: 22px;
+      }
+    }
+
+    .Count__Total {
+      padding: 16px;
+
+      .Count__dollar {
+        font-size: 32px;
+      }
+
+      .line {
+        margin: 16px 0;
       }
     }
   }

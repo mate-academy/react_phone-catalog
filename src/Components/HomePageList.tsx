@@ -1,6 +1,6 @@
 import '../styles/HomePageList.scss';
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export interface NewModel {
   id: number;
@@ -41,7 +41,6 @@ export const HomePageList: React.FC<Props> = ({
   const sortedToHotArray = [...array].sort(
     (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
   );
-  const navigate = useNavigate();
 
   const phonesCount = sortedToNewArray.filter(
     item => item.category === 'phones',
@@ -71,8 +70,6 @@ export const HomePageList: React.FC<Props> = ({
     if (setsmth) {
       setsmth(product);
     }
-
-    navigate('/product');
   };
 
   return (
@@ -106,9 +103,10 @@ export const HomePageList: React.FC<Props> = ({
           const isChosen = cart?.some(cobj => cobj.id === obj.id);
 
           return (
-            <div
+            <Link
               key={obj.id}
               className="Brand__new__phone"
+              to={`/${obj.category}/${obj.itemId}`}
               onClick={() => handleProductClick(obj)}
             >
               <img
@@ -186,7 +184,7 @@ export const HomePageList: React.FC<Props> = ({
                   )}
                 </button>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>
@@ -266,9 +264,10 @@ export const HomePageList: React.FC<Props> = ({
           const isChosen = cart?.some(cobj => cobj.id === obj.id);
 
           return (
-            <div
+            <Link
               key={obj.id}
               className="Brand__new__phone"
+              to={`/${obj.category}/${obj.itemId}`}
               onClick={() => handleProductClick(obj)}
             >
               <img
@@ -344,7 +343,7 @@ export const HomePageList: React.FC<Props> = ({
                   )}
                 </button>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>

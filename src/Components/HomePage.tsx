@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import cn from 'classnames';
-import '../styles/HomePage.css';
+import '../styles/HomePage.scss';
 import { HomePageList } from './HomePageList';
 import { Link } from 'react-router-dom';
 

@@ -5,6 +5,10 @@ $color-icons: #B4BDC3;
 $color-hover: #323542;
 $color-green: #27ae60;
 
+Link {
+  text-decoration: none;
+}
+
 .Added__to__Cart {
   display: flex;
   align-items: center;
@@ -104,6 +108,7 @@ $color-green: #27ae60;
 .Brand__new__phone {
   display: flex;
   flex-direction: column;
+  text-decoration: none;
   width: 272px;
   height: 506px;
   padding: 32px;
@@ -469,3 +474,5 @@ $color-green: #27ae60;
     left: 10%;
   }
 }
+
+

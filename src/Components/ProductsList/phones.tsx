@@ -1,5 +1,5 @@
 import '../../styles/phones.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 export interface NewModel {
   id: number;
@@ -39,8 +39,6 @@ export const Phones: React.FC<Props> = ({
   const [Chuslo, setChuslo] = useState(0);
 
   const phoneProducts = array.filter(cobj => cobj.category === 'phones');
-
-  const navigate = useNavigate();
 
   const filteredArray = [...phoneProducts].sort((a, b) => {
     switch (sortBy) {
@@ -93,8 +91,6 @@ export const Phones: React.FC<Props> = ({
     if (setsmth) {
       setsmth(product);
     }
-
-    navigate('/product');
   };
 
   return (
@@ -154,9 +150,10 @@ export const Phones: React.FC<Props> = ({
           const inCart = cart.some(cobj => cobj.id === obj.id);
 
           return (
-            <div
+            <Link
               key={obj.id}
               className="Brand__new__phone"
+              to={`/${obj.category}/${obj.itemId}`}
               onClick={() => handleProductClick(obj)}
             >
               <img
@@ -238,7 +235,7 @@ export const Phones: React.FC<Props> = ({
                   )}
                 </button>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>

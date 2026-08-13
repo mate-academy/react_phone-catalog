@@ -3,6 +3,10 @@ body {
   margin: 0;
 }
 
+.burger__menu {
+  display: none;
+}
+
 .navbar {
   position: fixed;
   top: 0;
@@ -110,10 +114,10 @@ body {
   background-color: #313237;
 }
 
-.circle__counter {
+.circle__counter,
+.circle__counter__second {
   position: absolute;
   top: 14px;
-  right: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,26 +136,12 @@ body {
   pointer-events: none;
 }
 
+.circle__counter {
+  right: 14px;
+}
+
 .circle__counter__second {
-  position: absolute;
-  top: 14px;
   right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 14px;
-  height: 14px;
-  padding: 0 2px;
-  box-sizing: border-box;
-  background-color: #EB5757;
-  color: #ffffff;
-  border: 1px solid #ffffff;
-  border-radius: 50%;
-  font-family: "Mont", sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  line-height: 1;
-  pointer-events: none;
 }
 
 .link-right-cart {
@@ -161,4 +151,50 @@ body {
 .link-right-shop {
   background-image: url("/img/Group 17.svg");
   border-right: 1px solid #e2e6e9;
+}
+
+@media (max-width: 480px) {
+  .navbar__menu,
+  .navbar__actions,
+  .link-right-cart,
+  .link-right-shop {
+    display: none;
+  }
+  .navbar__container {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    border-bottom: 1px solid #e2e6e9;
+    padding-right: 0;
+  }
+  .burger__menu {
+    display: block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+    box-sizing: border-box;
+    background-color: #fff;
+    background-image: url("/img/Burger.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+    border: 1px solid #e2e6e9;
+    border-top: none;
+    border-bottom: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+  .burger__menu:hover {
+    background-color: #fafbfc;
+  }
+  .burger__menu.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #313237;
+  }
 }/*# sourceMappingURL=Navbar.css.map */

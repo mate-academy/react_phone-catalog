@@ -68,98 +68,100 @@ export const AppContent: React.FC = () => {
   }, []);
 
   return (
-    <div data-cy="app">
-      <Navbar FavouritesA={FavouritesA} Cart={cart} />
-      <main className="section">
-        <div className="container">
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <HomePage
-                  cart={cart}
-                  addingObjCart={addingObjCart}
-                  array={models}
-                  setsmth={product => setSelectedProduct(product)}
-                  addingObj={addingObj}
-                  FavouritesA={FavouritesA}
-                />
-              }
-            />
-            <Route
-              path="/phones"
-              element={
-                <Phones
-                  cart={cart}
-                  addingObjCart={addingObjCart}
-                  array={models}
-                  setsmth={product => setSelectedProduct(product)}
-                  addingObj={addingObj}
-                  FavouritesA={FavouritesA}
-                />
-              }
-            />
+    <>
+      <div data-cy="app">
+        <Navbar FavouritesA={FavouritesA} Cart={cart} />
+        <main className="section">
+          <div className="container">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <HomePage
+                    cart={cart}
+                    addingObjCart={addingObjCart}
+                    array={models}
+                    setsmth={product => setSelectedProduct(product)}
+                    addingObj={addingObj}
+                    FavouritesA={FavouritesA}
+                  />
+                }
+              />
+              <Route
+                path="/phones"
+                element={
+                  <Phones
+                    cart={cart}
+                    addingObjCart={addingObjCart}
+                    array={models}
+                    setsmth={product => setSelectedProduct(product)}
+                    addingObj={addingObj}
+                    FavouritesA={FavouritesA}
+                  />
+                }
+              />
 
-            <Route
-              path="/tablets"
-              element={
-                <Tablets
-                  cart={cart}
-                  addingObjCart={addingObjCart}
-                  array={models}
-                  setsmth={product => setSelectedProduct(product)}
-                  addingObj={addingObj}
-                  FavouritesA={FavouritesA}
-                />
-              }
-            />
+              <Route
+                path="/tablets"
+                element={
+                  <Tablets
+                    cart={cart}
+                    addingObjCart={addingObjCart}
+                    array={models}
+                    setsmth={product => setSelectedProduct(product)}
+                    addingObj={addingObj}
+                    FavouritesA={FavouritesA}
+                  />
+                }
+              />
 
-            <Route
-              path="/accessories"
-              element={
-                <Accessories
-                  cart={cart}
-                  addingObjCart={addingObjCart}
-                  array={models}
-                  setsmth={product => setSelectedProduct(product)}
-                  addingObj={addingObj}
-                  FavouritesA={FavouritesA}
-                />
-              }
-            />
+              <Route
+                path="/accessories"
+                element={
+                  <Accessories
+                    cart={cart}
+                    addingObjCart={addingObjCart}
+                    array={models}
+                    setsmth={product => setSelectedProduct(product)}
+                    addingObj={addingObj}
+                    FavouritesA={FavouritesA}
+                  />
+                }
+              />
 
-            <Route
-              path="/product"
-              element={
-                <ProductPage
-                  key={selectedProduct?.itemId || 'default'}
-                  cart={cart}
-                  addingObjCart={addingObjCart}
-                  FavouritesA={FavouritesA}
-                  addingObj={addingObj}
-                  selectedProduct={selectedProduct}
-                  setsmth={product => setSelectedProduct(product)}
-                />
-              }
-            />
+              <Route
+                path="/:category/:productId"
+                element={
+                  <ProductPage
+                    key={selectedProduct?.itemId || 'default'}
+                    cart={cart}
+                    addingObjCart={addingObjCart}
+                    FavouritesA={FavouritesA}
+                    addingObj={addingObj}
+                    selectedProduct={selectedProduct}
+                    setsmth={product => setSelectedProduct(product)}
+                  />
+                }
+              />
 
-            <Route
-              path="/favourites"
-              element={
-                <Favourites addingObj={addingObj} FavouritesA={FavouritesA} />
-              }
-            />
-            <Route
-              path="/cart"
-              element={<Cart addingObjCart={addingObjCart} cart={cart} />}
-            />
+              <Route
+                path="/favourites"
+                element={
+                  <Favourites addingObj={addingObj} FavouritesA={FavouritesA} />
+                }
+              />
+              <Route
+                path="/cart"
+                element={<Cart addingObjCart={addingObjCart} cart={cart} />}
+              />
 
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </div>
-      </main>
-      <NavbarFooter />
-    </div>
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </div>
+        </main>
+        <NavbarFooter />
+      </div>
+    </>
   );
 };
 

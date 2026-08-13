@@ -1,50 +1,13 @@
-body {
-  color: #313237;
-}
-
 .navbar__footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 32px 16px;
-  border-top: 1px solid #E2E6E9;
+  padding: 32px;
+  border-top: 1px solid #e2e6e9;
   box-sizing: border-box;
-}
-
-.Box__Button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 32px;
-  height: 32px;
-  padding: 0;
-
-  background-color: #ffffff;
-  border: 1px solid #B4BDC3;
-  cursor: pointer;
-  outline: none;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
-  background-image: url('/img/arrow.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: black;
-  background-size: 8px;
-
-  transform: rotate(-90deg);
-
-
-  &:hover {
-    border-color: #313237;
-    background-color: #fafbfc;
-  }
-
-
-  &:active {
-    background-color: #E2E6E9;
-  }
 }
 
 .navbar__container__footer {
@@ -58,14 +21,20 @@ body {
   align-items: center;
 }
 
+.link-svg {
+  display: block;
+  width: 89px;
+  height: 32px;
+  background-image: url('/img/Logo.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
 .navbar__menu__footer {
   display: flex;
   align-items: center;
   gap: 105px;
-}
-
-.navbar__actions {
-  display: flex;
 }
 
 .link {
@@ -88,20 +57,11 @@ body {
   }
 }
 
-.link-svg {
-  display: block;
-  width: 89px;
-  height: 32px;
-  background-image: url('/img/Logo.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-}
-
 .Back__Box {
   display: flex;
   align-items: center;
   gap: 16px;
+  cursor: pointer;
 }
 
 .Box__title {
@@ -119,14 +79,57 @@ body {
   align-items: center;
   width: 32px;
   height: 32px;
+  padding: 0;
   background-color: #ffffff;
-  border: 1px solid #B4BDC3;
-  color: #313237;
+  border: 1px solid #b4bdc3;
   cursor: pointer;
   outline: none;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  background-image: url('/img/arrow.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 8px;
+  transform: rotate(-90deg);
 
   &:hover {
     border-color: #313237;
+    background-color: #fafbfc;
+  }
+
+  &:active {
+    background-color: #e2e6e9;
+  }
+}
+
+@media (max-width: 1199px) {
+  .navbar__footer {
+    padding: 32px 24px;
+  }
+
+  .navbar__menu__footer {
+    gap: 32px;
+  }
+}
+
+@media (max-width: 639px) {
+  .navbar__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 32px 16px;
+  }
+
+  .navbar__menu__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .Back__Box {
+    align-self: center;
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
   }
 }

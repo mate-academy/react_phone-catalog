@@ -156,9 +156,10 @@ export const Tablets: React.FC<Props> = ({
           const inCart = cart.some(cobj => cobj.id === obj.id);
 
           return (
-            <div
+            <Link
               key={obj.id}
               className="Brand__new__phone"
+              to={`/${obj.category}/${obj.itemId}`}
               onClick={() => handleProductClick(obj)}
             >
               <img
@@ -240,7 +241,7 @@ export const Tablets: React.FC<Props> = ({
                   )}
                 </button>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>

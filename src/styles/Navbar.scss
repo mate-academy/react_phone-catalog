@@ -1,6 +1,14 @@
-body {
+html, body {
   color: #313237;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   margin: 0;
+  padding: 0;
+}
+
+.burger__menu {
+  display: none;
 }
 
 .navbar {
@@ -57,13 +65,11 @@ body {
   }
 }
 
-
 .link {
   position: relative;
   display: flex;
   align-items: center;
   height: 64px;
-
   font-family: 'Mont', sans-serif;
   font-weight: 800;
   font-size: 12px;
@@ -72,7 +78,6 @@ body {
   text-transform: uppercase;
   color: #89939a;
   text-decoration: none;
-
   transition: color 0.2s ease-in-out;
 
   &:hover {
@@ -101,21 +106,97 @@ body {
   width: 64px;
   height: 64px;
   box-sizing: border-box;
-
   border-left: 1px solid #e2e6e9;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 16px 16px;
-
   transition: background-color 0.2s ease, border-color 0.2s ease;
 
   &:hover {
     background-color: #fafbfc;
   }
 
-  &.active {
+  &.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #313237;
+  }
+}
 
-    &::after {
+.circle__counter,
+.circle__counter__second {
+  position: absolute;
+  top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 2px;
+  box-sizing: border-box;
+  background-color: #EB5757;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  font-family: "Mont", sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.circle__counter { right: 14px; }
+.circle__counter__second { right: 10px; }
+
+.link-right-cart {
+  background-image: url('/img/Vector.svg');
+}
+
+.link-right-shop {
+  background-image: url('/img/Group 17.svg');
+  border-right: 1px solid #e2e6e9;
+}
+
+
+
+@media (max-width: 480px) {
+  .navbar__menu,
+  .navbar__actions,
+  .link-right-cart,
+  .link-right-shop {
+    display: none;
+  }
+
+
+  .navbar__container {
+    max-width: 390px;
+    margin: 0;
+  }
+
+
+  .burger__menu {
+    display: block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+    box-sizing: border-box;
+    background-color: #fff;
+    background-image: url('/img/Burger.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+    border: 1px solid #e2e6e9;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      background-color: #fafbfc;
+    }
+
+    &.active::after {
       content: '';
       position: absolute;
       bottom: 0;
@@ -125,67 +206,169 @@ body {
       background-color: #313237;
     }
   }
-}
-
-.circle__counter {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-
+  .burger__list {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background-color: #ffffff;
+  z-index: 1000;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
 
-  min-width: 14px;
-  height: 14px;
-  padding: 0 2px;
+  &__left {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+
+  .burger__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    padding-left: 16px;
+    border-bottom: 1px solid #e2e6e9;
+
+    .cross__header__button {
+      width: 64px;
+      height: 64px;
+      padding: 0;
+      border: none;
+      border-left: 1px solid #e2e6e9;
+      background-color: #ffffff;
+      background-image: url('/img/Union.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 16px 16px;
+      cursor: pointer;
+      outline: none;
+
+      &:hover {
+        background-color: #fafbfc;
+      }
+    }
+  }
+
+
+  .burger__navbar__menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 32px;
+    gap: 24px;
+
+    .link {
+      position: relative;
+      font-family: 'Mont', sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #89939a;
+      text-decoration: none;
+      padding: 8px 0;
+      transition: color 0.2s ease-in-out;
+
+      &:hover {
+        color: #313237;
+      }
+
+      &.active {
+        color: #313237;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: #313237;
+        }
+      }
+    }
+  }
+
+ .burger__navbar__actions {
+  display: flex;
+  width: 100%;
+  height: 64px;
+  border-top: 1px solid #e2e6e9;
   box-sizing: border-box;
 
-  background-color: #EB5757;
-  color: #ffffff;
-  border: 1px solid #ffffff;
-  border-radius: 50%;
+  // Загальні стилі для обох кнопок
+  .burger__link-right-cart,
+  .burger__link__link-right-shop {
+    position: relative;
+    flex: 1; // Кожна кнопка займає строго 50% ширини
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+    transition: background-color 0.2s ease;
 
-  font-family: "Mont", sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  line-height: 1;
+    &:hover {
+      background-color: #fafbfc;
+    }
 
-  pointer-events: none;
-}
+    // Чорна лінія під кнопкою, якщо вона активна
+    &.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: #313237;
+    }
+  }
 
-.circle__counter__second {
+  // Кнопка "Обране" (Ліва)
+  .burger__link-right-cart {
+    background-image: url('/img/Vector.svg'); // Шлях до іконки серця
+    border-right: 1px solid #e2e6e9; // Вертикальна лінія між кнопками
+  }
+
+  // Кнопка "Кошик" (Права)
+  .burger__link__link-right-shop {
+    background-image: url('/img/Group 17.svg'); // Шлях до іконки кошика
+  }
+
+  // Стилі червоних кружечків з кількості товарів
+  .burger__circle__counter,
+  .burger__circle__counter__second {
     position: absolute;
-  top: 14px;
-  right: 10px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  min-width: 14px;
-  height: 14px;
-  padding: 0 2px;
-  box-sizing: border-box;
-
-  background-color: #EB5757;
-  color: #ffffff;
-  border: 1px solid #ffffff;
-  border-radius: 50%;
-
-  font-family: "Mont", sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  line-height: 1;
-
-  pointer-events: none;
+    top: 18px;
+    right: calc(50% - 18px); // Відцентровано відносно іконки
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 14px;
+    height: 14px;
+    padding: 0 2px;
+    background-color: #eb5757;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    font-family: 'Mont', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1;
+    pointer-events: none;
+  }
 }
-
-.link-right-cart {
-  background-image: url('/img/Vector.svg');
 }
-
-.link-right-shop {
-  background-image: url('/img/Group 17.svg');
-  border-right: 1px solid #e2e6e9;
 }

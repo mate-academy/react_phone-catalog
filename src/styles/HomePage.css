@@ -237,6 +237,10 @@
 }
 @media (max-width: 480px) {
   .main__thing {
-    max-width: 350px;
+    max-width: 300px;
+    justify-content: center;
+  }
+  .Welcome__title {
+    margin-left: 900px;
   }
 }/*# sourceMappingURL=HomePage.css.map */
