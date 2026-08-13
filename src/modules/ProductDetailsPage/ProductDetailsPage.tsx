@@ -217,7 +217,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ allProducts }) => {
       )}
 
       {/* 3. ГОЛОВНИЙ ІНТЕРФЕЙС */}
-      {!loading && !error && details && (
+      {!error && details && (
         <>
           {/* Хлібні крихти: категорія стає повноцінним клікабельним посиланням! */}
           <Breadcrumbs

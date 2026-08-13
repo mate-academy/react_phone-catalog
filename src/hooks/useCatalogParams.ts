@@ -1,10 +1,10 @@
 import { useSearchParams } from 'react-router-dom';
 
 export const useCatalogParams = () => {
-  const [searchParams, setUseSearhParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const sortBy = searchParams.get('sort') || 'age';
-  const perPage = searchParams.get('perPage') || 'all';
+  const perPage = searchParams.get('perPage') || '16';
   const page = parseInt(searchParams.get('page') || '1', 10);
 
   const changeParam = (key: string, value: string) => {
@@ -12,8 +12,8 @@ export const useCatalogParams = () => {
 
     params.set(key, value);
 
-    if (key !== 'page') {
-      params.delete('page');
+    if (key === 'perPage') {
+      params.set('page', '1');
     }
 
     if (params.get('page') === '1') {
@@ -24,7 +24,7 @@ export const useCatalogParams = () => {
       params.delete('perPage');
     }
 
-    setUseSearhParams(params);
+    setSearchParams(params);
   };
 
   return { sortBy, perPage, page, changeParam };

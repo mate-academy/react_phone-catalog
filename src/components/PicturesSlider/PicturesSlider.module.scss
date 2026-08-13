@@ -1,6 +1,5 @@
 @import '../../styles/breakpoints';
 
-
 .pictures-slider {
   display: flex;
   flex-direction: column;
@@ -9,17 +8,14 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto 40px;
-  padding-inline:  32px;
+  padding-inline: 32px;
   height: auto;
 
-
-  @include mobile{
-    padding-inline:0;
-
-     margin-inline: -16px; 
+  @include mobile {
+    padding-inline: 0;
+    margin-inline: -16px; 
     width: calc(100vw); 
     margin-bottom: 24px;
-  
   }
 
   &__container {
@@ -29,10 +25,11 @@
     width: 100%;
     gap: 16px;
 
-     @include mobile {
+    @include mobile {
       gap: 0; 
     }
   }
+
   &__arrow {
     border-radius: 48px;
     display: flex;
@@ -41,8 +38,7 @@
     width: 32px;
     height: 400px;
     cursor: pointer;
-    transition:  transform 0.3s ease 0.3s ease;
-
+    transition: transform 0.3s ease; // Виправлено дублювання анімації
 
     background-color: transparent;
     border: 1px solid #B4BDC3;
@@ -52,8 +48,6 @@
       background-color: #f4f5f6;
       border-color: #b4bdc4;
       transform: scale(1.01);
-
-     
     }
 
     // ТЕМНА ТЕМА
@@ -67,12 +61,9 @@
       }
     }
 
-        @include mobile {
+    @include mobile {
       display: none; 
     }
-
-
-    
   }
 
   &__arrow-icon {
@@ -80,33 +71,65 @@
     height: 16px;
     display: block;
 
-
     [data-theme='dark'] & {
       filter: invert(1);
     }
   }
 
-
   &__window {
+    position: relative; 
     flex-grow: 1;
     height: 400px;
+    overflow: hidden;
+    
 
-        @include mobile {
-      height: auto; // На мобілці висота підлаштовується під картинку автопропорцією
+    @include mobile {
+      height: auto; 
       width: 100%;
+      border-radius: 0;
     }
 
+   
+    &--clickable {
+      pointer-events: none; // На ПК весь банер за замовчуванням НЕ клікається
+      cursor: default;
+
+     
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 48px;        
+        left: 56px;          
+        width: 175px;        
+        height: 48px;       
+        border-radius: 24px; 
+        cursor: pointer;
+        pointer-events: auto; 
+        background: transparent;
+        z-index: 5;
+      }
+
+      @include mobile {
+        pointer-events: auto; 
+        cursor: pointer;
+
+        &::after {
+          display: none; 
+        }
+      }
+    }
   }
 
   &__image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     display: block;
+    object-fit: cover; 
+    object-position: center;
 
-     @include mobile {
-      height: auto; // Картка-картинка займає природну висоту мобільного банера
-      object-fit: contain; // Запобігає обрізанню країв зображення
+    @include mobile {
+      height: auto; 
+      object-fit: contain; 
     }
   }
 
@@ -129,3 +152,4 @@
     }
   }
 }
+

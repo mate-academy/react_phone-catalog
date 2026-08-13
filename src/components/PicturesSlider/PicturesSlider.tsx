@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './PicturesSlider.module.scss';
 
 const bannerImages = [
@@ -11,36 +12,33 @@ const bannerImages = [
     mobile: 'img/banner/banner-mobile.svg',
   },
   {
-    mobile: 'img/banner/banner-one-mobile.svg',
-    desktop: 'img/banner/banner-one.svg',
+    mobile: 'img/banner/banner-tablets.png',
+    desktop: 'img/banner/banner-tablets.png',
   },
 ];
 
 export const PicturesSlider: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Ф-ця перемикання вперед (стабільне посилання за допомогою useCallback)
   const handleNext = useCallback(() => {
     setCurrentIndex(prevIndex =>
       prevIndex === bannerImages.length - 1 ? 0 : prevIndex + 1,
     );
   }, []);
 
-  // Ф-ця перемикання назад
   const handlePrev = useCallback(() => {
     setCurrentIndex(prevIndex =>
       prevIndex === 0 ? bannerImages.length - 1 : prevIndex - 1,
     );
   }, []);
 
-  // Таймер для зміни зображення
   useEffect(() => {
     const timer = setInterval(() => {
       handleNext();
     }, 5000);
 
     return () => clearInterval(timer);
-  }, [currentIndex, handleNext]); // Тепер працює коректно, скидаючи таймер при ручних кліках
+  }, [handleNext]);
 
   return (
     <div className={styles['pictures-slider']}>
@@ -58,20 +56,39 @@ export const PicturesSlider: React.FC = () => {
           />
         </button>
 
-        {/* Блок з зображенням адаптований */}
-        <div className={styles['pictures-slider__window']}>
-          <picture>
-            <source
-              media="(max-width: 767px)"
-              srcSet={bannerImages[currentIndex].mobile}
-            />
-            <img
-              src={bannerImages[currentIndex].desktop}
-              alt="Promo banner"
-              className={styles['pictures-slider__image']}
-            />
-          </picture>
-        </div>
+        {/* Якщо перший слайд — рендеримо як Link на телефони, інакше — як звичайний div */}
+        {currentIndex === 0 ? (
+          <Link
+            to="/phones"
+            className={`${styles['pictures-slider__window']} ${styles['pictures-slider__window--clickable']}`}
+          >
+            <picture>
+              <source
+                media="(max-width: 767px)"
+                srcSet={bannerImages[currentIndex].mobile}
+              />
+              <img
+                src={bannerImages[currentIndex].desktop}
+                alt="Promo banner"
+                className={styles['pictures-slider__image']}
+              />
+            </picture>
+          </Link>
+        ) : (
+          <div className={styles['pictures-slider__window']}>
+            <picture>
+              <source
+                media="(max-width: 767px)"
+                srcSet={bannerImages[currentIndex].mobile}
+              />
+              <img
+                src={bannerImages[currentIndex].desktop}
+                alt="Promo banner"
+                className={styles['pictures-slider__image']}
+              />
+            </picture>
+          </div>
+        )}
 
         {/* Кнопка вправо */}
         <button

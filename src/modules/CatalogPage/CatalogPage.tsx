@@ -28,10 +28,15 @@ export const CatalogPage: React.FC<Props> = ({
   const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get('query') || '';
 
-  // 1. Фільтруємо масив за пошуковим запитом з URL (який туди тепер пише Header)
-  const searchedProducts = products.filter(product =>
-    product.name.toLowerCase().includes(searchQuery.toLowerCase()),
-  );
+  const searchedProducts = products.filter(product => {
+    const productName = product.name.toLowerCase();
+
+    // Очищаємо запит від зайвих пробілів та ділимо на масив слів
+    const searchWords = searchQuery.toLowerCase().trim().split(/\s+/);
+
+    // Товар підходить, лише якщо КОЖНЕ слово із пошукового запиту є в його назві
+    return searchWords.every(word => productName.includes(word));
+  });
 
   // 2. Сортуємо вже знайдені товари
   const sortedProducts = sortProducts(searchedProducts, sortBy);
