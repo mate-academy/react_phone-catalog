@@ -1,0 +1,144 @@
+@import '../../../../assets/styles/main';
+
+.productOverview {
+  &__details {
+    grid-column: span 4;
+
+    @include on-tablet {
+      display: flex;
+      grid-column: span 7;
+      flex-direction: row-reverse;
+    }
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
+
+    @include on-desktop-extra {
+      grid-column: span 12;
+    }
+  }
+
+  &__mainImageSwiper {
+    width: 273px;
+
+    @include on-desktop {
+      width: 442px;
+    }
+
+    @include on-desktop-extra {
+      width: 442px;
+    }
+  }
+
+  &__mainImage {
+    display: block;
+    height: 273px;
+    margin: 0 auto;
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+
+    @include on-desktop {
+      height: 464px;
+    }
+
+    @include on-desktop-extra {
+      height: 464px;
+    }
+  }
+
+  &__thumbnails {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: column;
+      justify-content: unset;
+      margin-bottom: 0;
+    }
+  }
+
+  &__imageWrapperSwiper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 49px;
+    margin: 0;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      width: 35px;
+      height: 220px;
+      margin-bottom: 0;
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 464px;
+    }
+
+    @include on-desktop-extra {
+      width: 80px;
+      height: 464px;
+    }
+  }
+
+  &__imageWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 51px;
+    height: 49px;
+    border: 1px solid #c4c4c4;
+
+    @include on-tablet {
+      width: 35px;
+      height: 35px;
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+    }
+
+    @include on-desktop-extra {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__imageWrapper:hover {
+    border: 1px solid $color-primary;
+  }
+
+  &__imageWrapperActive {
+    border: 1px solid $color-primary;
+  }
+
+  &__thumbnail {
+    width: 100%;
+    height: 40px;
+    object-fit: contain;
+
+    @include on-tablet {
+      height: 29px;
+    }
+
+    @include on-desktop {
+      height: 66px;
+    }
+
+    @include on-desktop-extra {
+      height: 66px;
+    }
+  }
+}

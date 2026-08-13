@@ -1,0 +1,51 @@
+import { useContext, useEffect, useState } from 'react';
+import styles from './FavoritesPage.module.scss';
+import { FavoritesStateContext } from '../../shared/store/FavoritesProvider';
+import { ProductCard } from '../../shared/components/ProductCard/ProductCard';
+import { CurrentPage } from '../../shared/components/CurrentPage/CurrentPage';
+import { useLocation } from 'react-router-dom';
+import { SkeletonProduct } from '../../shared/components/SceletonProduct/SceletonProduct';
+
+export const FavoritesPage = () => {
+  const favoritesProduct = useContext(FavoritesStateContext);
+  const [isLoading, setIsLoading] = useState(true);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    scrollTo(0, 0);
+    const timer = new Promise(resolve => setTimeout(resolve, 600));
+
+    timer.then(() => {
+      setIsLoading(false);
+    });
+  }, [pathname]);
+
+  return (
+    <main className={styles.favorites}>
+      <div className={styles.favorites__container}>
+        <CurrentPage showProductsCount={favoritesProduct.length} />
+        {favoritesProduct.length > 0 ? (
+          <div className={styles.favorites__cardWrapper}>
+            {favoritesProduct.map(favoriteProduct => (
+              <div className={styles.favorites__card} key={favoriteProduct.id}>
+                {isLoading ? (
+                  <SkeletonProduct />
+                ) : (
+                  <ProductCard product={favoriteProduct} isHotPrice={true} />
+                )}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className={styles.favorites__cardTitleWrapp}>
+            <h1 className={styles.favorites__cartTitle}>
+              You haven't added any items to your favorites list...
+              <br />
+              Start adding items you like and we will keep them safe right here!
+            </h1>
+          </div>
+        )}
+      </div>
+    </main>
+  );
+};
