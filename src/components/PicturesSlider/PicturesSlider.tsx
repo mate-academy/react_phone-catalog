@@ -4,16 +4,16 @@ import styles from './PicturesSlider.module.scss';
 
 const bannerImages = [
   {
-    desktop: 'img/banner/banner-one.svg',
-    mobile: 'img/banner/banner-one-mobile.svg',
+    desktop: '/react_phone-catalog/img/banner/banner-one.svg',
+    mobile: '/react_phone-catalog/img/banner/banner-one-mobile.svg',
   },
   {
-    desktop: 'img/banner/banner.svg',
-    mobile: 'img/banner/banner-mobile.svg',
+    desktop: '/react_phone-catalog/img/banner/banner.svg',
+    mobile: '/react_phone-catalog/img/banner/banner-mobile.svg',
   },
   {
-    mobile: 'img/banner/banner-tablets.png',
-    desktop: 'img/banner/banner-tablets.png',
+    desktop: '/react_phone-catalog/img/banner/banner-tablets.png',
+    mobile: '/react_phone-catalog/img/banner/banner-tablets.png',
   },
 ];
 
@@ -56,39 +56,29 @@ export const PicturesSlider: React.FC = () => {
           />
         </button>
 
-        {/* Якщо перший слайд — рендеримо як Link на телефони, інакше — як звичайний div */}
-        {currentIndex === 0 ? (
-          <Link
-            to="/phones"
-            className={`${styles['pictures-slider__window']} ${styles['pictures-slider__window--clickable']}`}
-          >
-            <picture>
-              <source
-                media="(max-width: 767px)"
-                srcSet={bannerImages[currentIndex].mobile}
-              />
-              <img
-                src={bannerImages[currentIndex].desktop}
-                alt="Promo banner"
-                className={styles['pictures-slider__image']}
-              />
-            </picture>
-          </Link>
-        ) : (
-          <div className={styles['pictures-slider__window']}>
-            <picture>
-              <source
-                media="(max-width: 767px)"
-                srcSet={bannerImages[currentIndex].mobile}
-              />
-              <img
-                src={bannerImages[currentIndex].desktop}
-                alt="Promo banner"
-                className={styles['pictures-slider__image']}
-              />
-            </picture>
-          </div>
-        )}
+        {/* Вікно слайдера */}
+        <div className={styles['pictures-slider__window']}>
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              srcSet={bannerImages[currentIndex].mobile}
+            />
+            <img
+              src={bannerImages[currentIndex].desktop}
+              alt="Promo banner"
+              className={styles['pictures-slider__image']}
+            />
+          </picture>
+
+          {/* НАКЛАДАЄМО РЕАЛЬНУ КНОПКУ ПОВЕРХ ЗОБРАЖЕННЯ */}
+          {currentIndex === 0 && (
+            <Link
+              to="/phones"
+              className={styles['pictures-slider__order-btn']}
+              aria-label="Order now"
+            />
+          )}
+        </div>
 
         {/* Кнопка вправо */}
         <button
@@ -104,7 +94,7 @@ export const PicturesSlider: React.FC = () => {
         </button>
       </div>
 
-      {/* Пунктирні крапки */}
+      {/* Крапки навігації */}
       <div className={styles['pictures-slider__dots']}>
         {bannerImages.map((_, index) => (
           <button
