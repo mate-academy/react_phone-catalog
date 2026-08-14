@@ -1,0 +1,313 @@
+@use 'src/styles/mixins' as *;
+
+.favoritesIcon {
+  @include icon-mask('/icons/heart.svg', 16px);
+}
+
+.configurator {
+  margin-bottom: 24px;
+}
+
+.configHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.configTitle {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+  color: var(--text-secondary);
+}
+
+.textId {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+  color: var(--color-icons);
+}
+
+.colorsList {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.hiddenRadio {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  clip: rect(0 0 0 0);
+}
+
+.colorLabel {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.colorCircle {
+  display: block;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 2px var(--bg-main),
+    0 0 0 3px var(--color-elements);
+
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow:
+      0 0 0 2px var(--bg-main),
+      0 0 0 3px var(--text-main);
+  }
+}
+
+.hiddenRadio:checked + .colorCircle {
+  box-shadow:
+    0 0 0 2px var(--bg-main),
+    0 0 0 3px var(--text-main);
+}
+
+.divider {
+  height: 1.5px;
+  margin-bottom: 24px;
+  border: none;
+  background-color: var(--color-elements);
+}
+
+.capacityList {
+  display: flex;
+  gap: 8px;
+}
+
+.capacityBox {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: auto;
+  height: 32px;
+  padding: 0 16px;
+  border: 2px solid var(--color-elements);
+  border-radius: 6px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: var(--text-main);
+  white-space: nowrap;
+
+  background-color: transparent;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--text-main);
+  }
+}
+
+.hiddenRadio:checked + .capacityBox {
+  border-color: var(--text-main);
+  color: var(--bg-main);
+  background-color: var(--text-main);
+}
+
+.prices {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 140%;
+}
+
+.fullPrice {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 100%;
+  color: var(--text-secondary);
+  text-decoration: line-through
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  max-width: 360px;
+  margin-bottom: 32px;
+
+  @include on-phone {
+    max-width: 100%;
+  }
+}
+
+.addToCartBtn {
+  flex: 1;
+
+  height: 48px;
+  border-radius: 6px;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: #fff;
+
+  background-color: var(--color-accent);
+  outline: none;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  &.added {
+    border: 2px solid var(--color-accent);
+    color: #27AE60;
+    background-color: var(--bg-surface);
+
+    .textAdded {
+      display: inline;
+    }
+
+    .textRemove {
+      display: none;
+    }
+
+    &:hover {
+      color: #EB5757;
+
+      .textAdded {
+        display: none;
+      }
+
+      .textRemove {
+        display: inline;
+      }
+    }
+  }
+
+  :global(.dark-theme) & {
+    &:hover {
+      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+    }
+
+    &.added {
+      border: transparent;
+      color: #fff;
+      background-color: var(--color-icons);
+
+      &:hover {
+        color: #EB5757;
+      }
+    }
+  }
+}
+
+.favoritesBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--color-icons);
+  border-radius: 6px;
+
+  backface-visibility: hidden;
+  background-color: #fff;
+  outline: none;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--text-main);
+    background-color: var(--bg-hover);
+
+    .favoritesIcon {
+      background-color: #EB5757;
+    }
+  }
+
+  &.active {
+    .favoritesIcon {
+      background-color: #EB5757;
+
+      mask-image: url('/icons/heart-filled.svg');
+    }
+  }
+
+  &:active {
+    transform: translateY(2px);
+  }
+
+  :global(.dark-theme) & {
+    border-color: transparent;
+    background-color: var(--color-icons);
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: var(--text-main);
+      background-color: var(--bg-hover);
+
+      .favoritesIcon {
+        background-color: #EB5757;
+      }
+    }
+  }
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  max-width: 360px;
+  margin-bottom: 16px;
+
+  @include on-phone {
+    max-width: 100%;
+  }
+}
+
+.specItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.specName {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+  color: var(--text-secondary)
+}
+
+.specValue {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+  color: var(--text-main)
+}

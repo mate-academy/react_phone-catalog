@@ -1,0 +1,287 @@
+@use './src/styles/mixins' as *;
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 32px 80px;
+
+  @include on-tablet {
+    padding: 24px 24px 64px;
+  }
+
+  @include on-phone {
+    padding: 16px 16px 64px;
+  }
+}
+
+.leftArrow {
+  @include icon-mask('/icons/leftArrow.svg', 16px);
+
+  transition: background-color 0.3s ease;
+}
+
+.minusIcon {
+  @include icon-mask('/icons/Minus.svg', 16px);
+}
+
+.plusIcon {
+  @include icon-mask('/icons/Plus.svg', 16px);
+}
+
+.closeIcon {
+  @include icon-mask('/icons/Close.svg', 16px);
+
+  background-color: var(--color-icons);
+  transition: all 0.3s ease;
+}
+
+.backButton {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+
+  margin-bottom: 16px;
+
+  color: var(--text-secondary);
+
+  background: transparent;
+
+  transition: color 0.3s ease;
+
+  :global(.dark-theme) & {
+    color: var(--text-main);
+  }
+
+  &:hover {
+    color: var(--color-accent);
+
+    .leftArrow {
+      background-color: var(--color-accent);
+    }
+  }
+}
+
+.backText {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 100%;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 40px;
+
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  letter-spacing: -1%;
+
+  @include on-phone {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.cartContent {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: flex-start;
+
+  @include on-tablet {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 16px;
+}
+
+.checkoutBlock {
+  flex-shrink: 0;
+
+  width: 360px;
+  padding: 24px;
+  border: 2px solid var(--color-elements);
+  border-radius: 8px;
+
+  text-align: center;
+
+  background-color: var(--color-surface);
+
+  @include on-tablet {
+    width: 100%;
+  }
+}
+
+.totalPrice {
+  margin: 0 0 8px;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.totalCount {
+  margin: 0 0 24px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.checkoutDivider {
+  height: 1.5px;
+  margin-bottom: 24px;
+  border: none;
+  background-color: var(--color-elements);
+}
+
+.checkoutBtn {
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+
+  font-weight: 700;
+  color: #fff;
+
+  background-color: var(--color-accent);
+
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.cartItem {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 24px;
+  border: 2px solid var(--color-elements);
+  border-radius: 8px;
+
+  background-color: var(--bg-surface);
+
+  @include on-phone {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.productLink {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  color: inherit;
+  text-decoration: none;
+
+  transition: opacity 0.3s ease;
+}
+
+.deleteBtn {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  border: none;
+
+  background: transparent;
+
+  &:hover {
+    .closeIcon {
+      background-color: var(--text-main);
+    }
+  }
+}
+
+.info {
+  display: flex;
+  flex-grow: 1;
+  gap: 16px;
+  align-items: center;
+}
+
+.productImage {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.itemName {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.controls {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quantityCounter {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  span {
+    min-width: 16px;
+    font-weight: 600;
+    text-align: center;
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--color-icons);
+  border-radius: 6px;
+
+  background-color: #fff;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--text-main);
+    background-color: var(--bg-hover);
+  }
+
+  &:disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  :global(.dark-theme) & {
+    border-color: transparent;
+    background-color: var(--color-icons);
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: var(--text-main);
+      background-color: var(--bg-hover);
+    }
+  }
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-main);
+}

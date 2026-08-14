@@ -1,0 +1,122 @@
+@use '../../styles/mixins' as *;
+
+.homeIcon {
+  @include icon-mask('/icons/Home.svg', 16px);
+
+  &:hover {
+    background-color: var(--color-accent);
+  }
+}
+
+.rightArrowIcon {
+  @include icon-mask('/icons/rightArrow.svg', 16px);
+
+  background-color: var(--color-icons);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px 80px;
+
+  @include on-tablet {
+    padding: 24px 24px 64px;
+  }
+
+  @include on-phone {
+    padding: 16px 16px 64px;
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.categoryLink {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 100%;
+  color: var(--text-main);
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.breadcrumbsTitle {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+  color: var(--text-secondary);
+}
+
+.leftArrow {
+  @include icon-mask('/icons/leftArrow.svg', 16px);
+
+  transition: background-color 0.3s ease;
+}
+
+.backButton {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+
+  margin-bottom: 16px;
+
+  color: var(--text-secondary);
+
+  background: transparent;
+
+  transition: color 0.3s ease;
+
+  :global(.dark-theme) & {
+    color: var(--text-main);
+  }
+
+  &:hover {
+    color: var(--color-accent);
+
+    .leftArrow {
+      background-color: var(--color-accent);
+    }
+  }
+}
+
+.backText {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 100%;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 40px;
+
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  @include on-phone {
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-bottom: 80px;
+
+  @include on-phone {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 56px;
+  }
+}

@@ -1,0 +1,124 @@
+.skeletonBone {
+  border-radius: 16px;
+
+  background-color: var(--color-icons);
+  background-image: linear-gradient(
+  90deg,
+  transparent 0,
+  var(--skeleton-shimmer) 50%,
+  transparent 100%
+);
+  background-size: 200% 100%;
+
+  animation: shimmer 1.5s infinite linear;
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  padding: 32px;
+  border-radius: 8px;
+
+  transition: all 0.3s ease;
+}
+
+.imageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 200px;
+  margin-bottom: 24px;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.title {
+  width: 80%;
+  height: 24px;
+  margin-bottom: 8px;
+}
+
+.prices {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.price {
+  width: 40%;
+  height: 28px;
+}
+
+.fullPrice {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 100%;
+}
+
+.divider {
+  height: 1.5px;
+  margin: 8px 0;
+  border: none;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.specItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.specName {
+  width: 30%;
+  height: 12px;
+}
+
+.specValue {
+  width: 30%;
+  height: 12px;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.addToCartBtn {
+  flex: 1;
+  width: 80%;
+  height: 40px;
+}
+
+.favoritesBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+
+  transition: all 0.3s ease;
+}

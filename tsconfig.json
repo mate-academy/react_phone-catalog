@@ -4,7 +4,9 @@
     "src"
   ],
   "compilerOptions": {
+    "jsx": "react",
     "sourceMap": false,
+    "moduleResolution": "bundler",
     "types": ["node", "cypress"]
   }
 }

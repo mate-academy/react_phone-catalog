@@ -1,0 +1,112 @@
+@use 'src/styles/mixins' as *;
+
+.bottomSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-bottom: 80px;
+
+   @include on-tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.aboutColumn {
+  display: flex;
+  flex-direction: column;
+
+  h2.aboutTitle {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 22px;
+
+    @include on-phone {
+      font-size: 20px;
+    }
+  }
+}
+
+.descriptionWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.descriptionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.paragraphsGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.blockTitle {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.paragraph {
+  margin: 0;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: var(--text-secondary);
+}
+
+.techSpecsColumn {
+  display: flex;
+  flex-direction: column;
+
+  h2.techSpecsTitle {
+    margin-top: 0;
+    margin-bottom: 16px;
+
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-main);
+
+    @include on-phone {
+      font-size: 16px;
+    }
+  }
+}
+
+.specsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.specItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.specLabel {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: var(--text-secondary, #75767f);
+}
+
+.specValue {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: var(--text-main, #f1f2f9);
+  text-align: right;
+}
+
+.divider {
+  height: 1.5px;
+  margin-bottom: 32px;
+  border: none;
+  background-color: var(--color-elements);
+}

@@ -1,0 +1,128 @@
+@use '../../../../styles/mixins' as *;
+
+.selectContainer {
+  position: relative;
+  width: 176px;
+}
+
+.label {
+  margin: 0 0 4px;
+
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+  color: var(--text-secondary);
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  border: 2px solid var(--color-icons);
+  border-radius: 6px;
+
+  color: var(--text-main);
+
+  background-color: var(--bg-surface);
+
+  transition: all 0.3s ease;
+
+  &:hover,
+  &:focus,
+  &.triggerActive {
+    border-color: var(--accent-color);
+    background-color: var(--bg-hover);
+  }
+
+  :global(.dark-theme) & {
+    border-color: transparent;
+    background-color: var(--color-icons);
+
+    &:hover {
+      border-color: var(--text-main);
+      background-color: var(--bg-hover);
+    }
+
+    &:focus,
+    &.triggerActive {
+      border-color: var(--color-accent);
+    }
+  }
+}
+
+.dropdownList {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 4px);
+  left: 0;
+
+  overflow: hidden;
+
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 2px solid var(--color-icons);
+  border-radius: 6px;
+
+  list-style: none;
+
+  background-color: var(--bg-surface);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+  :global(.dark-theme) & {
+    border-color: var(--color-icons);
+    background-color: var(--color-icons);
+  }
+}
+
+.option {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  height: 32px;
+  padding: 0 12px;
+
+  color: var(--text-secondary);
+
+  background-color: var(--bg-surface);
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: var(--text-main);
+    background-color: var(--bg-hover);
+  }
+
+  &.selected {
+    color: var(--text-main);
+  }
+
+  :global(.dark-theme) & {
+    color: var(--text-main);
+    background-color: var(--bg-surface);
+
+    &:hover {
+      background-color: var(--bg-hover);
+    }
+
+    &.selected {
+     color: var(--color-accent);
+  }
+  }
+}
+
+.downArrowIcon {
+  @include icon-mask('/icons/downArrow.svg', 16px);
+
+  transition: transform 0.3s ease;
+
+  &.rotated {
+    transform: rotate(180deg);
+  }
+}

@@ -1,0 +1,37 @@
+@mixin icon-mask($url, $size: 16px) {
+  display: inline-block;
+
+  width: $size;
+  height: $size;
+
+  background-color: var(--text-main);
+
+  transition: background-color 0.3s ease;
+
+  mask-image: url($url);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+$breakpoint-tablet: 1199px;
+$breakpoint-small-tablet: 799px;
+$breakpoint-phone: 639px;
+
+@mixin on-tablet {
+  @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin on-small-tablet {
+  @media (max-width: $breakpoint-small-tablet) {
+    @content;
+  }
+}
+
+@mixin on-phone {
+  @media (max-width: $breakpoint-phone) {
+    @content;
+  }
+}

@@ -1,0 +1,30 @@
+.custom-toast {
+  display: flex !important;
+  gap: 10px !important;
+  align-items: center !important;
+
+  padding: 10px 20px !important;
+  border: 1px solid transparent !important;
+  border-radius: 50px !important;
+
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: var(--text-main) !important;
+  letter-spacing: -0.2px;
+
+  background-color: var(--bg-surface) !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3) !important;
+
+  :global(.go2001692293) {
+    margin: 0;
+  }
+
+  .dark-theme & {
+    box-shadow: 0 8px 12px rgba(255, 255, 255, 0.1) !important;
+  }
+
+  &.imposter-toast {
+    color: #EB5757 !important;
+    box-shadow: 0 0 20px rgba(235, 87, 87, 0.6) !important;
+  }
+}

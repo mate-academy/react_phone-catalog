@@ -1,0 +1,82 @@
+@use '../../../styles/mixins' as *;
+
+.productsSection {
+  margin-top: 80px;
+}
+
+.sectionTitle {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  color: var(--text-main);
+  letter-spacing: -1%;
+
+  @include on-phone {
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.navButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--color-icons);
+  border-radius: 6px;
+
+  background-color: #fff;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--text-main);
+    background-color: var(--bg-hover);
+  }
+
+  &:global(.swiper-button-disabled) {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  :global(.dark-theme) & {
+    border-color: transparent;
+    background-color: var(--color-icons);
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: var(--text-main);
+      background-color: var(--bg-hover);
+    }
+  }
+}
+
+.leftArrow {
+  @include icon-mask('/icons/leftArrow.svg', 16px);
+}
+
+.rightArrow {
+  @include icon-mask('/icons/rightArrow.svg', 16px);
+}
+
+.sliderWrapper {
+  :global(.swiper) {
+    margin: -16px;
+    padding: 16px;
+  }
+}

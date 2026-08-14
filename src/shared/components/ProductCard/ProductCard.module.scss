@@ -1,0 +1,265 @@
+@use '../../../styles/mixins' as *;
+
+.favoritesIcon {
+  @include icon-mask('/icons/heart.svg', 16px);
+}
+
+.card {
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  padding: 32px;
+  border: 2px solid var(--color-elements);
+  border-radius: 8px;
+
+  background-color: var(--bg-surface);
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: var(--text-main);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+
+   :global(.dark-theme) & {
+    border: transparent;
+
+    &:hover {
+      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  &.imposterCard:hover {
+    border-color: #eb5757;
+    box-shadow: 0 0 20px rgba(235, 87, 87, 0.6);
+
+    &::before {
+      pointer-events: none;
+      content: 'SUS ඞ';
+
+      position: absolute;
+      z-index: 2;
+      top: 10px;
+      right: 10px;
+
+      padding: 2px 6px;
+      border-radius: 4px;
+
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+
+      background-color: #eb5757;
+
+      animation: fadeIn 0.2s ease-in-out;
+    }
+  }
+}
+
+.imageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 200px;
+  margin-bottom: 24px;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.title {
+  min-height: 42px;
+  margin-bottom: 8px;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: var(--text-main);
+}
+
+.prices {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 140%;
+}
+
+.fullPrice {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 100%;
+  color: var(--text-secondary);
+  text-decoration: line-through
+}
+
+.divider {
+  height: 1.5px;
+  margin: 8px 0;
+  border: none;
+  background-color: var(--color-elements);
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.specItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.specName {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+  color: var(--text-secondary)
+}
+
+.specValue {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+  color: var(--text-main)
+}
+
+.buttons {
+  cursor: default;
+  display: flex;
+  gap: 8px;
+}
+
+.addToCartBtn {
+  flex: 1;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: #fff;
+
+  background-color: var(--color-accent);
+  outline: none;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  &.added {
+    border: 2px solid var(--color-accent);
+    color: #27AE60;
+    background-color: var(--bg-surface);
+
+    .textAdded {
+      display: inline;
+    }
+
+    .textRemove {
+      display: none;
+    }
+
+    &:hover {
+      color: #EB5757;
+
+      .textAdded {
+        display: none;
+      }
+
+      .textRemove {
+        display: inline;
+      }
+    }
+  }
+
+  :global(.dark-theme) & {
+    &:hover {
+      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+    }
+
+    &.added {
+      border: transparent;
+      color: #fff;
+      background-color: var(--color-icons);
+
+      &:hover {
+        color: #EB5757;
+      }
+    }
+  }
+}
+
+.favoritesBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--color-icons);
+  border-radius: 6px;
+
+  backface-visibility: hidden;
+  background-color: #fff;
+  outline: none;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--text-main);
+    background-color: var(--bg-hover);
+
+    .favoritesIcon {
+      background-color: #EB5757;
+    }
+  }
+
+  &.active {
+    .favoritesIcon {
+      background-color: #EB5757;
+
+      mask-image: url('/icons/heart-filled.svg');
+    }
+  }
+
+  &:active {
+    transform: translateY(2px);
+  }
+
+  :global(.dark-theme) & {
+    border-color: transparent;
+    background-color: var(--color-icons);
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: var(--text-main);
+      background-color: var(--bg-hover);
+
+      .favoritesIcon {
+        background-color: #EB5757;
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+:root {
+  --bg-main: #F5F7F9;
+  --bg-surface: #FAFBFC;
+  --bg-hover: #EDF0F3;
+  --text-main: #313237;
+  --text-secondary: #89939A;
+  --color-icons: #B4BDC3;
+  --color-elements: #E2E6E9;
+  --color-accent: #313237;
+  --skeleton-shimmer: rgba(255, 255, 255, 0.6);
+}
+
+.dark-theme {
+  --bg-main: #0F1121;
+  --bg-surface: #161827;
+  --bg-hover: #4A4D58;
+  --text-main: #F1F2F9;
+  --text-secondary: #75767F;
+  --color-icons: #323542;
+  --color-elements: #3B3E4A;
+  --color-accent: #905BFF;
+   --skeleton-shimmer: rgba(255, 255, 255, 0.05);
+
+  img[src$=".icon"] {
+    filter: invert(1);
+  }
+}
+
