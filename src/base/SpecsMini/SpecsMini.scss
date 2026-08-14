@@ -1,0 +1,25 @@
+.specsMini {
+  font-size: 12px;
+  line-height: 15px;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 6px;
+
+  &-line {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-title {
+    color: $c-secondary;
+    font-weight: 500;
+  }
+
+  &-content {
+    color: $c-primary;
+    text-align: right;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,26 @@
+.button {
+  cursor: pointer;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: $c-primary;
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  color: $c-white;
+  &--cart {
+    width: 263px;
+    &-added {
+      border: 1px solid $c-elements;
+      color: $c-green;
+      background-color: $c-white;
+    }
+  }
+  &--checkout {
+    width: 100%;
+  }
+}

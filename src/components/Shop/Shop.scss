@@ -1,0 +1,48 @@
+.category {
+  grid-column: 1/-1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &__link {
+    text-decoration: none;
+    color: $c-primary;
+
+    &:link, &:visited, &:hover, &:focus, &:active {
+      color: $c-primary;
+    }
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+  &__group {
+    display: flex;
+    flex-direction: column;
+  }
+  &__image-frame {
+    aspect-ratio: 1/1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  &__image {
+    transition: all $transition-duration;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+}

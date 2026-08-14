@@ -1,1 +1,18 @@
 // not empty
+.App {
+  scroll-behavior: smooth;
+  width: 100%;
+  position: relative;
+  max-height: 100vh;
+
+  &:has(.menu-isOpen) {
+    overflow-y: hidden;
+  }
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+

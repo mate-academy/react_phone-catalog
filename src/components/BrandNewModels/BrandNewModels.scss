@@ -1,0 +1,26 @@
+.brandNew {
+  margin-top: 40px;
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 16px;
+    gap: 6px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+  }
+
+  &__image {
+    border-radius: 8px;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

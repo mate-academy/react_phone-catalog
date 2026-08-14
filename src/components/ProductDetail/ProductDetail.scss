@@ -1,0 +1,47 @@
+@import '../../styles/base/mixins';
+
+.productDetailsSpecs {
+  grid-column: 1/-1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-tablet {
+    grid-column: 8 / 13;
+  }
+
+  @include on-desktop {
+    grid-column: 16 / 25;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; // mais espaço entre linhas como no figma
+  }
+
+  &__line {
+    display: grid;
+    grid-template-columns: 1fr auto; // mantém colunas alinhadas
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__key {
+    color: $c-secondary;
+    font-size: 14px;
+  }
+
+  &__value {
+    color: $c-primary;
+    font-size: 14px;
+    text-align: right;
+    white-space: nowrap;
+  }
+}

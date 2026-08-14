@@ -1,0 +1,58 @@
+@import '../../styles/base/mixins.scss';
+
+.productDetails-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-block: 24px;
+
+  @include inline-padding;
+  @include grid-page;
+
+  &__suggested {
+    grid-column: 1/-1;
+    padding-block: 32px;
+  }
+
+  // NOVO: Container para About e Tech Specs
+  &__info {
+    grid-column: 1/-1;
+    display: grid;
+    gap: 16px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 16px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(24, 32px);
+      column-gap: 16px;
+    }
+  }
+}
+
+.title {
+  grid-column: 1/-1;
+}
+
+.productDetailCard {
+  grid-column: 1/-1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 16px;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 16px;
+  }
+
+  @include on-desktop {
+    display: grid;
+    grid-template-columns: repeat(24, 32px);
+    column-gap: 16px;
+  }
+}
