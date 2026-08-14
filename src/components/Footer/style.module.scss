@@ -1,0 +1,107 @@
+@import '../../styles/variables';
+@import '../../styles/mixin';
+
+.footer {
+    margin-top: 56px;
+    padding: 32px 16px;
+    border-top: 1px solid $Elements;
+
+    @include on-tablet {
+        padding: 32px;
+        margin-top: 64px;
+    }
+
+    @include on-desktop {
+        padding: 32px auto;
+        margin-top: 80px;
+    }
+
+    &_blocks {
+        display: flex;
+        gap: 32px;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 1136px;
+        margin: auto;
+
+        @include on-tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            &>nav {
+                flex-grow: 1;
+            }
+
+            &>div {
+                flex-grow: 1;
+            }
+        }
+
+        &_image {
+            text-align: left;
+
+            &>a,
+            img {
+                height: 22px;
+                width: 64px;
+
+                @include on-desktop {
+                    height: 32px;
+                    width: 89px;
+                }
+            }
+        }
+
+        &_info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            @include on-tablet {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            &>a {
+                color: $Secondary;
+
+                &:hover {
+                    color: $Primary;
+                }
+            }
+        }
+
+        &_buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            @include on-tablet {
+                justify-content: flex-end;
+            }
+
+            &>span {
+                color: $Secondary;
+                font-weight: 700;
+            }
+
+            &>button {
+                margin-left: 16px;
+                height: 32px;
+                width: 32px;
+                border: 1px solid $Secondary;
+            }
+
+            &:hover {
+                &>span {
+                    color: $Primary;
+                }
+
+                &>button {
+                    border-color: $Primary;
+                }
+            }
+        }
+    }
+}

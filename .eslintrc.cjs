@@ -37,7 +37,6 @@ module.exports = {
     'prettier'
   ],
   rules: {
-    // JS
     'semi': 'off',
     '@typescript-eslint/semi': ['error', 'always'],
     'prefer-const': 2,
@@ -63,7 +62,6 @@ module.exports = {
     ],
     'implicit-arrow-linebreak:': 0,
 
-    // React
     'react/prop-types': 0,
     'react/require-default-props': 0,
     'import/prefer-default-export': 0,
@@ -86,7 +84,6 @@ module.exports = {
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
 
-    // Typescript
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
