@@ -1,0 +1,29 @@
+@import '../../mixins';
+
+.back {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  grid-column: -1 / 1;
+  margin: 24px 0 ;
+
+  @include on-tablet {
+    margin: 40px 0 16px;
+  }
+
+  &__img {
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    background-image: var(--prev);
+    background-position: center;
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__text {
+    text-align: center;
+    color: var(--text-color-prev-page);
+  }
+}

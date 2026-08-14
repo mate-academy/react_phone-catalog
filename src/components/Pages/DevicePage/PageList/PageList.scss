@@ -1,0 +1,67 @@
+@import '../../../mixins';
+
+.page {
+  &__list {
+    margin: 24px 0 64px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+    list-style: none;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: var(--text-color-page-item);
+
+    &--active {
+      color: var(--text-color-page-item-active);
+    }
+  }
+
+  &__item {
+    cursor: pointer;
+    display: flex;
+    height: 32px;
+    width: 32px;
+    border-radius: var(--border-radius-button-favourite);
+    background-color: var(--background-color-page-item);
+    border: 1px solid var(--border-color-page-item);
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      border: 1px solid var(--border-color-page-item-hover);
+      background-color: var(--background-color-page-item-hover);
+    }
+
+    &--active {
+      border: 1px solid var(--border-color-page-item-hover);
+      background-color: var(--background-color-page-item-active);
+    }
+
+    &--next-prev {
+      border-color: var(--border-color-page-item-next-prev);
+      background-color: var(--background-color-page-item-next-prev);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 16px;
+    }
+
+    &--prev {
+      background-image: var(--prev);
+    }
+    &--next {
+      background-image: var(--next);
+    }
+
+  }
+}

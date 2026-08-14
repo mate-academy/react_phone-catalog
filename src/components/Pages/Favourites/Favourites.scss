@@ -1,0 +1,56 @@
+@import '../../mixins';
+
+.favourites {
+  @include contest-pading-inline;
+
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__path-to-page {
+    margin: 24px 0;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__list {
+    margin-top: 32px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &--no {
+      background-image: url(../../../img/product-not-found.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      height: 30vh;
+      width: 75vw;
+      filter: var(--photo);
+
+      @include on-tablet {
+        height: 55vh;
+        width: 50vw;
+      }
+    }
+  }
+
+  &__items {
+    color: var(--text-color-device-page);
+  }
+}

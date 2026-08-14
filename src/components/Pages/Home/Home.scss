@@ -1,0 +1,79 @@
+@import '../../mixins';
+
+.content {
+  display: grid;
+  gap: 56px;
+  margin-bottom: 64px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+    gap: 80px;
+  }
+}
+
+.home {
+  @include contest-pading-inline;
+
+  &__title {
+    margin: 32px 0;
+
+    @include on-tablet {
+      margin: 56px 0;
+    }
+  }
+}
+
+.category {
+
+  &__content {
+    display: flex;
+    margin-top: 24px;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-decoration: none;
+
+    @include on-tablet {
+      flex: 1;
+    }
+  }
+
+  &__title {
+    color: var(--text-color-home-title);
+    margin: 24px 0 4px;
+
+    @include underline-hover($color:var(--text-color-nav-link-hover), $thickness: 2px);
+  }
+
+  &__info {
+    color: var(--text-color-home-info);
+  }
+
+  &__photo {
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+
+    @include hover(transform, scale(1.05) rotate(4deg));
+
+    @include on-desktop {
+      border-radius: 0;
+    }
+  }
+}

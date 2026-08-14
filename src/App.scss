@@ -1,1 +1,24 @@
-// not empty
+@import '/src/components/mixins';
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-x: hidden
+}
+
+.section {
+  flex-grow: 1;
+  background-color: var(--background-color-page);
+  margin-top: 48px;
+
+  @include on-desktop {
+    margin-top: 64px;
+  }
+}

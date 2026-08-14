@@ -1,0 +1,83 @@
+@import '../../mixins';
+
+.device-page {
+  @include contest-pading-inline;
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &--text {
+      color: var(--text-color-device-page);
+    }
+  }
+
+  &__path-to-page {
+    margin: 24px 0;
+
+    @include on-tablet {
+      margin: 24px 0 40px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  &__input {
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: var(--border-radius-dropaut);
+    border: 1px solid var(--border-color-dropaut);
+    background-color: var(--background-color-dropaut-main);
+    height: 40px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 35px;
+    font-size: 14px;
+    font-weight: '700';
+    color: #0F0F11;
+    font-family: Monte, sans-serif;
+    &:hover {
+      border: 1px solid var(--border-color-dropaut-active);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+      color: var(--text-color-dropaut-main);
+      background-color: var(--background-color-dropaut-hover);
+    }
+
+    &::placeholder {
+      color: var(--text-color-dropaut-main);
+      opacity: 1;
+    }
+  }
+}
+
+.select {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 50%;
+
+    &--left {
+      @include on-tablet {
+        width: 187px;
+      }
+    }
+
+    &--right {
+      @include on-tablet {
+        width: 136px;
+      }
+    }
+  }
+}
