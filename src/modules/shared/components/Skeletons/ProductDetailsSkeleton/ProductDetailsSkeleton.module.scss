@@ -1,0 +1,188 @@
+@use '../../../../../styles/mixins' as *;
+@use '../../../../../styles/variables' as *;
+
+.skeletonDetails {
+  width: 100%;
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 24px 16px 80px;
+  box-sizing: border-box;
+
+  &__box {
+    background: linear-gradient(
+      90deg,
+      #1f2238 25%,
+      #2b2f4c 50%,
+      #1f2238 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 8px;
+  }
+
+  &__breadcrumbs {
+    height: 16px;
+    width: 200px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      width: 240px;
+    }
+  }
+
+  &__backBtn {
+    height: 16px;
+    width: 60px;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    height: 32px;
+    width: 100%;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      height: 40px;
+      width: 60%;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__mainGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      margin-bottom: 56px;
+    }
+  }
+
+  &__gallery {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__thumbnails {
+    display: flex;
+    gap: 8px;
+
+    @include on-tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__thumb {
+    width: 50px;
+    height: 50px;
+
+    @include on-tablet {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__mainImage {
+    flex: 1;
+    height: 320px;
+
+    @include on-tablet {
+      height: 448px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__colorCircle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  &__capacities {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__capacityBox {
+    width: 64px;
+    height: 32px;
+  }
+
+  &__priceRow {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  &__price {
+    height: 36px;
+    width: 100px;
+  }
+
+  &__fullPrice {
+    height: 24px;
+    width: 60px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    height: 48px;
+    margin: 8px 0;
+  }
+
+  &__btnCart {
+    flex: 1;
+    height: 100%;
+  }
+
+  &__btnFav {
+    width: 48px;
+    height: 100%;
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: #323542;
+    margin: 8px 0;
+    width: 100%;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__specRow {
+    height: 16px;
+    width: 100%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

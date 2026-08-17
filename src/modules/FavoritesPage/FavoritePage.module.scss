@@ -1,0 +1,97 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.favoritesPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 24px;
+  padding-bottom: 80px;
+
+  @include page-grid;
+}
+
+.breadcrumbs {
+  grid-column: 1 / -1; 
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+
+  a {
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+
+    &:not([alt="Home"]) {
+      transform: rotate(90deg);
+    }
+  }
+
+  span {
+    font-size: 12px;
+    font-weight: 600;
+    color: $secondary-color;
+  }
+}
+
+.title {
+  grid-column: 1 / -1;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 120%;
+  letter-spacing: -0.01em;
+  color: $text-color;
+  margin: 0 0 8px;
+
+  @include on-tablet {
+    font-size: 48px;
+  }
+}
+
+.count {
+  grid-column: 1 / -1;
+  font-size: 14px;
+  font-weight: 600;
+  color: $secondary-color;
+  margin: 0 0 24px;
+
+  @include on-tablet {
+    margin-bottom: 32px;
+  }
+}
+
+.empty {
+  grid-column: 1 / -1;
+  font-size: 18px;
+  color: $secondary-color;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.grid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
+
+  @media (min-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include on-tablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

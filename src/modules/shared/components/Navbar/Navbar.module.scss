@@ -1,0 +1,300 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *; 
+
+.navbar {
+  padding-left: 16px; 
+  height: 48px;
+  margin: 0;
+  border-bottom: 1px solid #3B3E4A;
+  background-color: $main-accent;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  right: 0;
+
+  @include on-tablet {
+    box-shadow: 0 1px 0 0 #323542;
+  }
+
+  @include on-desktop {
+    padding-left: 24px;
+    height: 64px; 
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 32px; 
+    height: 100%;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    &-link {
+      display: flex;
+      align-items: center;
+    }
+
+    &-img {
+      display: block;
+    }
+
+    @include on-desktop {
+      padding-right: 24px;
+    }
+  }
+
+  &__links {
+    display: none; 
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 32px;
+    height: 100%;
+    align-items: center;
+
+    @include on-tablet {
+      display: flex; 
+    }
+
+    @include on-desktop {
+      gap: 64px; 
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    transition: opacity 0.2s ease, color 0.2s ease;
+    color: $secondary-color;
+    text-transform: uppercase;
+    position: relative;
+
+    &--active {
+      color: $text-color;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background-color: currentColor;
+        bottom: -8px;
+
+        @include on-tablet {
+          bottom: 0;
+        }
+      }
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__right {
+    height: 100%;
+    display: flex;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    height: 100%;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid #3B3E4A;
+    box-sizing: border-box;
+    position: relative;
+
+    @include on-desktop {
+      padding: 0 24px; 
+    }
+
+    &--active {
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background-color: $text-color;
+      }
+    }
+
+    &--burger {
+      display: flex;
+
+      @include on-tablet {
+        display: none; 
+      }
+    }
+
+    &--cart,
+    &--favorites {
+      display: none; 
+
+      @include on-tablet {
+        display: flex; 
+      }
+    }
+  }
+
+  &__icon {
+    display: block;
+  }
+}
+
+.menu {
+  position: fixed;
+  inset: 49px 0 0;
+  background-color: $main-accent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 99;
+
+  &--open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+
+  &__content {
+    padding-top: 24px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__link {
+    text-decoration: none;
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: $secondary-color;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+
+    &--active {
+      color: $text-color;
+      border-bottom-color: $text-color;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    height: 64px;
+    border-top: 1px solid #3B3E4A;
+  }
+
+  &__button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #3B3E4A;
+    box-sizing: border-box;
+    position: relative;
+    text-decoration: none;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &--active {
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background-color: $text-color;
+      }
+    }
+  }
+}
+
+.favoritesWrapper, .cartWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favoritesCount, .cartCount {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 2px;
+  border-radius: 50%;
+  border: 1px solid $main-accent; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #EB5757;
+  color: $text-color;
+  font-family: Mont, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  box-sizing: border-box;
+  pointer-events: none;
+}

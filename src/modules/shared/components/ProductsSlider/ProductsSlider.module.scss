@@ -1,0 +1,88 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.slider {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 56px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+    color: $text-color;
+    font-family: Mont, sans-serif;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #323542;
+    color: #f1f2f9;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    background-color: #323542;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: #905bff;
+      background-color: #323542;
+    }
+  }
+
+  &__iconRight {
+    transform: rotate(180deg);
+  }
+
+  &__viewport {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    display: block; 
+  }
+
+  &__track {
+    display: flex !important; 
+    gap: 16px;
+    width: max-content;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &__slide {
+    display: block;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+    width: 212px;
+
+    @include on-tablet {
+      width: 237px;
+    }
+
+    @include on-desktop {
+      width: 272px;
+    }
+  }
+}

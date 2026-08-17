@@ -1,0 +1,87 @@
+@use '../../../../../styles/mixins' as *;
+
+.skeletonCard {
+  display: flex;
+  flex-direction: column;
+  padding: 32px; 
+  background-color: #161827; 
+  font-family: Mont, sans-serif;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+
+  &__box {
+    background: linear-gradient(
+      90deg,
+      #1f2238 25%,
+      #2b2f4c 50%,
+      #1f2238 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 8px;
+  }
+
+  &__image {
+    height: 196px;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    height: 42px;
+    width: 90%;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    height: 28px;
+    width: 40%;
+    margin-bottom: 16px;
+    margin-top: auto;
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: #323542;
+    margin-bottom: 16px;
+    width: 100%;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__specRow {
+    height: 14px;
+    width: 100%;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    height: 40px;
+  }
+
+  &__btnCart {
+    flex: 1;
+    height: 100%;
+  }
+
+  &__btnFav {
+    width: 40px;
+    height: 100%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

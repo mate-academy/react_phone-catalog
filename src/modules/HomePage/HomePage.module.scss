@@ -1,0 +1,49 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *; 
+
+.home {
+  background-color: $main-accent;
+  margin: 0;
+  min-height: calc(100vh - 48px);
+  width: 100%;
+  min-width: 0;
+
+  @include page-grid; 
+
+  row-gap: 24px !important; 
+  align-content: start; 
+
+  @include on-tablet {
+    row-gap: 32px !important; 
+  }
+
+  @include on-desktop {
+    min-height: calc(100vh - 64px);
+  }
+
+  &-title {
+    grid-column: 1 / -1;
+    margin-top: 24px; 
+
+    @include on-tablet {
+      margin-top: 32px;
+    }
+
+    @include on-desktop {
+      margin-top: 56px;
+    }
+
+    font-size: 48px;
+    line-height: 41px;
+    font-style: bold;
+    margin-bottom: 0;
+    font-family: Mont, sans-serif;
+    color: $text-color;
+  }
+
+  &__slider, &__categories {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
+  }
+}

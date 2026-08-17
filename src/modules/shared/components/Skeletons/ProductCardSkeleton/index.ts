@@ -1,0 +1,1 @@
+export { ProductCardSkeleton } from './ProductCardSkeleton';

@@ -1,0 +1,115 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 32px 16px;
+  background-color: #0f1121;
+  border-top: 1px solid #323542;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 32px 24px;
+    gap: 0;
+  }
+
+  &__logoContainer {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  &__nav {
+    display: flex;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 32px;
+    }
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__link {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    color: #75767f;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #f1f2f9;
+    }
+  }
+
+  &__scrollControl {
+    display: flex;
+    align-items: center;
+  }
+
+  &__scrollTopBtn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  &__scrollTopText {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #75767f;
+    transition: color 0.2s ease;
+
+    .footer__scrollTopBtn:hover & {
+      color: #f1f2f9;
+    }
+  }
+
+  &__scrollTopIcon {
+    width: 32px;
+    height: 32px;
+    background-color: #323542;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+
+    .footer__scrollTopBtn:hover & {
+      background-color: #4a4d5e;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
