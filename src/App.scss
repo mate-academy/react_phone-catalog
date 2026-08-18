@@ -1,1 +1,19 @@
-// not empty
+html, body {
+  color: #313237;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.section {
+  margin-top: 100px;
+  width: 100%;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  flex-grow: 1;
+}
+

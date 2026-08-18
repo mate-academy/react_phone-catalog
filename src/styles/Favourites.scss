@@ -1,0 +1,72 @@
+
+
+.Favourites {
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
+.root__thing {
+  text-decoration: none;
+}
+
+
+.root__arrow {
+  width: 5.3;
+height: 9.3;
+top: 3.33px;
+left: 5.33px;
+font-family: Mont, sans-serif;
+opacity: 1;
+
+}
+
+.Counter__of__things {
+font-family: Mont, sans-serif;
+font-weight: 600;
+font-size: 14px;
+color: #89939A;
+line-height: 21px;
+letter-spacing: 0%;
+
+}
+
+.Favouties__header {
+font-weight: 800;
+font-style: Bold;
+font-size: 48px;
+font-family: Mont, sans-serif;
+line-height: 56px;
+letter-spacing: -1%;
+
+}
+
+@media (max-width: 1199px) {
+  .Favourites {
+    margin-left: 30px;
+    padding-right: 24px;
+
+    &__header {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+}
+
+@media (max-width: 639px) {
+  .Favourites {
+    max-width: 600px;
+    margin-left: 2px;
+    padding-right: 16px;
+
+    &__header {
+      font-size: 32px;
+      line-height: 41px;
+    }
+
+    &__counter {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+

@@ -1,0 +1,343 @@
+$color-primary: #313237;
+$color-secondary: #89939a;
+$color-elements: #e2e6e9;
+$color-icons: #b4bdc3;
+$color-white: #fff;
+
+@use 'sass:color';
+
+/* stylelint-disable no-descending-specificity */
+
+.Cart {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px 80px;
+  box-sizing: border-box;
+
+  .rootline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: $color-primary;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .root__arrow {
+      margin: 0;
+    }
+
+    .root__thing {
+      color: $color-secondary;
+    }
+  }
+
+  .Favouties__header {
+    font-family: Mont, sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    color: $color-primary;
+    margin: 0 0 32px;
+  }
+
+  .Count__Box {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .Count__List {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .one__model {
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    background-color: $color-white;
+    border: 1px solid $color-elements;
+    box-sizing: border-box;
+    gap: 16px;
+    border-radius: 8px;
+
+    .crossButton {
+      width: 16px;
+      height: 16px;
+      padding: 0;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      flex-shrink: 0;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        top: 7px;
+        left: 2px;
+        width: 12px;
+        height: 1.5px;
+        background-color: $color-icons;
+        transition: background-color 0.2s ease;
+      }
+
+      &::before {
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+      }
+
+      &:hover::before,
+      &:hover::after {
+        background-color: $color-primary;
+      }
+    }
+
+    .Count__image {
+      width: 66px;
+      height: 66px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .obj__title {
+      flex: 1;
+      margin: 0;
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      color: $color-primary;
+    }
+
+    .Counter {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-left: auto;
+
+      .minus,
+      .plus {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        background-color: $color-white;
+        border: 1px solid $color-icons;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        transition: border-color 0.2s ease, background-color 0.2s ease;
+
+        &:hover {
+          border-color: $color-primary;
+          background-color: #fafbfc;
+        }
+
+        &:disabled {
+          border-color: $color-elements;
+          opacity: 0.4;
+          cursor: default;
+        }
+      }
+
+      .minus::before {
+        content: '';
+        width: 10px;
+        height: 1.5px;
+        background-color: $color-primary;
+      }
+
+      .plus::before,
+      .plus::after {
+        content: '';
+        position: absolute;
+        background-color: $color-primary;
+      }
+
+      .plus::before {
+        width: 10px;
+        height: 1.5px;
+      }
+
+      .plus::after {
+        width: 1.5px;
+        height: 10px;
+      }
+
+      .Counter__item {
+        margin: 0;
+        min-width: 16px;
+        text-align: center;
+        font-family: Mont, sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: $color-primary;
+      }
+    }
+
+    .price__of__item {
+      margin: 0;
+      min-width: 80px;
+      text-align: right;
+      font-family: Mont, sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: $color-primary;
+    }
+  }
+
+  .Count__Total {
+    width: 368px;
+    padding: 24px;
+    background-color: $color-white;
+    border: 1px solid $color-elements;
+    border-radius: 8px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-shrink: 0;
+
+    .Count__dollar {
+      margin: 0;
+      font-family: Mont, sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      color: $color-primary;
+    }
+
+    .Count__items {
+      margin: 8px 0 0;
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: $color-secondary;
+    }
+
+    .line {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $color-elements;
+      margin: 24px 0;
+    }
+
+    .Count__button {
+      width: 100%;
+      height: 48px;
+      background-color: $color-primary;
+      color: $color-white;
+      border: none;
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.2s ease, opacity 0.2s ease;
+
+      &:hover {
+        opacity: 0.9;
+      }
+
+      &:active {
+        background-color: color.adjust($color-primary, $lightness: 10%);
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1199px) {
+  .Cart {
+    padding: 0 24px 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .Cart {
+    .Count__Box {
+      flex-direction: column;
+    }
+
+    .Count__Total {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .Cart {
+    padding: 0 16px 40px;
+
+    .Favouties__header {
+      font-size: 32px;
+      line-height: 41px;
+      margin-bottom: 24px;
+    }
+
+
+    .one__model {
+      flex-wrap: wrap;
+      padding: 16px;
+      gap: 12px;
+
+      .crossButton {
+        order: 1;
+      }
+
+      .Count__image {
+        order: 2;
+        width: 66px;
+        height: 66px;
+      }
+
+      .obj__title {
+        order: 3;
+        width: calc(100% - 110px);
+      }
+
+      .Counter {
+        order: 4;
+        margin-left: 0;
+        margin-top: 8px;
+      }
+
+      .price__of__item {
+        order: 5;
+        margin-left: auto;
+        margin-top: 8px;
+        font-size: 22px;
+      }
+    }
+
+    .Count__Total {
+      padding: 16px;
+
+      .Count__dollar {
+        font-size: 32px;
+      }
+
+      .line {
+        margin: 16px 0;
+      }
+    }
+  }
+}

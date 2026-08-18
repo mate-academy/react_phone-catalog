@@ -1,0 +1,135 @@
+/* stylelint-disable no-descending-specificity */
+.navbar__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+  border-top: 1px solid #e2e6e9;
+  box-sizing: border-box;
+}
+
+.app {
+    display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.navbar__container__footer {
+  display: flex;
+  align-items: center;
+  width: auto;
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+}
+
+.link-svg {
+  display: block;
+  width: 89px;
+  height: 32px;
+  background-image: url('/img/Logo.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.navbar__menu__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 105px;
+}
+
+.link__footer {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #89939a;
+  padding: 10px 0;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s ease;
+
+}
+
+.Back__Box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.Box__title {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939a;
+  margin: 0;
+}
+
+.Box__Button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background-color: #fff;
+  border: 1px solid #b4bdc3;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  background-image: url('/img/arrow.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 8px;
+  transform: rotate(-90deg);
+
+  &:hover {
+    border-color: #313237;
+    background-color: #fafbfc;
+  }
+
+  &:active {
+    background-color: #e2e6e9;
+  }
+}
+
+@media (max-width: 1199px) {
+  .navbar__footer {
+    padding: 32px 24px;
+  }
+
+  .navbar__menu__footer {
+    gap: 32px;
+  }
+}
+
+@media (max-width: 639px) {
+  .navbar__footer {
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px 16px;
+  }
+
+  .navbar__menu__footer {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .Back__Box {
+    align-self: center;
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+  }
+}
