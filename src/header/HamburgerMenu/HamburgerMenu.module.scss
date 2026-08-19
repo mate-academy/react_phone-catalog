@@ -1,0 +1,83 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  overflow: hidden;
+  background-color: $main-bg;
+
+  @media(min-width: $tablet) {
+    display: none;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 60%;
+  gap: 64px;
+  color: $secondary-color;
+  margin-top: 110px;
+
+  &__link {
+    position: relative;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 11px;
+    letter-spacing: 4%;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      transform-origin: center;
+      width: 100%;
+      height: 2px;
+      background-color: $main-color;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover::after,
+    &.active::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+  }
+}
+
+.active {
+  color: $main-color;
+}
+
+.icons {
+  display: flex;
+  width: 100%;
+  height: 15%;
+
+  &__link {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 1px $secondary-color;
+    font-weight: 800;
+    font-size: 12px;
+
+    @include nav-after-line;
+
+    &:hover {
+      box-shadow: 0 0 2px $secondary-color;
+    }
+  }
+}

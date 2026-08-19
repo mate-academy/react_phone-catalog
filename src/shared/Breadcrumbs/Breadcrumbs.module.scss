@@ -1,0 +1,35 @@
+@use '../../styles/variables.scss' as *;
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconHome {
+  width: 16px;
+}
+
+.iconVector {
+  width: 6px;
+  height: 10px;
+}
+
+.h4 {
+  font-weight: 700;
+  color: $secondary-color;
+
+  &__white {
+    font-weight: 700;
+    color: $main-color;
+    text-transform: capitalize;
+  }
+
+  &__name {
+    font-weight: 700;
+    color: $secondary-color;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

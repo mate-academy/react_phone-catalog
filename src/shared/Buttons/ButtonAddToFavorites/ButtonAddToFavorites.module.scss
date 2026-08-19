@@ -1,0 +1,23 @@
+@use '../../../styles/variables.scss' as *;
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: $btn-default-fav-bg;
+
+  &__img {
+    width: 16px;
+  }
+
+  &:hover {
+    background-color: $btn-hover-fav-bg;
+  }
+}
+
+.selected {
+  background-color: inherit;
+  border: 1px solid $btn-default-fav-bg;
+}
