@@ -1,0 +1,149 @@
+.welcome {
+  margin-bottom: 80px;
+}
+
+.welcomeTitle {
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  margin-bottom: 56px;
+  grid-column: 1 / 18;
+  grid-row: 1;
+}
+
+.welcomeBanner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(16px, 1fr) 32px minmax(0, 1040px) 32px minmax(16px, 1fr);
+  grid-template-rows: 400px auto;
+  column-gap: 16px;
+  margin-bottom: 80px;
+}
+
+.bannerWrapper {
+   grid-column: 3 / 4;
+  grid-row: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.bannerGrid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.3s ease;
+  will-change: opacity, transform;
+  pointer-events: none;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.bannerGrid.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.arrowGrid {
+  height: 400px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #B4BDC3;
+  background: white;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  border-radius: 0;
+  outline: none;
+  position: relative;
+  z-index: 10;
+}
+
+.arrowGrid:active {
+  transform: translateY(1px);
+}
+
+.arrowGrid:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.arrowLeft {
+  grid-column: 2 / 3;
+  grid-row: 1;
+}
+
+.arrowRight {
+  grid-column: 4 / 5;
+  grid-row: 1;
+}
+
+.arrowImg {
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+.dots {
+  grid-column: 3 / 4;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 32px);
+  column-gap: 4px;
+  justify-items: center;
+    justify-self: center;
+}
+
+
+
+@media (max-width: 1199px) {
+  .welcomeBanner {
+    grid-template-columns: 32px 1fr 32px;
+    grid-template-rows: 300px auto;
+    column-gap: 8px;
+    padding: 0 16px;
+  }
+
+  .arrowLeft {
+    grid-column: 1 / 2;
+    grid-row: 1;
+  }
+
+  .bannerWrapper {
+    grid-column: 2 / 3;
+    grid-row: 1;
+  }
+
+  .arrowRight {
+    grid-column: 3 / 4;
+    grid-row: 1;
+  }
+
+  .dots {
+    grid-column: 2 / 3;
+    grid-row: 2;
+    justify-content: center;
+  }
+
+  .arrowGrid {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .arrowGrid {
+    display: none; /* скрываем стрелки */
+  }
+
+  .bannerWrapper {
+    grid-column: 1 / -1; /* растягиваем на всю ширину */
+  }
+}

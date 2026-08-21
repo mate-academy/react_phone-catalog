@@ -1,0 +1,227 @@
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 56px;
+}
+
+.headerImg {
+  padding: 18px 24px;
+}
+
+.headerList {
+  display: flex;
+  align-items: center;
+  column-gap: 64px;
+}
+
+.headerLink {
+  position: relative;
+  text-transform: uppercase;
+  color: #89939A;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  padding-bottom: 8px;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+
+.active::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+}
+
+.headerIcons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerIconSize {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  padding: 24px;
+}
+
+.headerIconSize.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+}
+
+.headerIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.cartBadge {
+  position: absolute;
+  top: 17px;
+  right: 17px;
+  width: 14px;
+  height: 14px;
+  background-color: #eb5757;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.burger {
+  display: none;
+
+  /* скрываем бургер по умолчанию */
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+@media (max-width: 1199px) {
+  .headerRow {
+    margin-bottom: 32px;
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .headerImg {
+    padding: 18px 0;
+  }
+}
+
+@media (max-width: 1199px) {
+  .headerList {
+    column-gap: 32px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .headerIcons {
+    gap: 0;
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  background-color: #fff;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.mobileHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid #e2e6e9;
+}
+
+
+.mobileCloseBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.mobileList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 24px;
+  flex: 1;
+  list-style: none;
+}
+
+.mobileLink {
+  text-transform: uppercase;
+  color: #89939A;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.mobileLink:hover {
+  color: #000;
+}
+
+.mobileActive {
+  color: #000;
+  font-weight: 800;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.mobileBottom {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0;
+  border-top: 1px solid #e2e6e9;
+  gap: 0;
+}
+
+.bottomLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 60px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.bottomLink:hover {
+  background-color: #f1f2f3;
+}
+
+.bottomActive {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 60px;
+  background-color: #f1f2f3;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .burger {
+    display: block;
+  }
+
+  .headerLink {
+    display: none;
+  }
+
+  .headerIcons {
+    display: none;
+  }
+}
