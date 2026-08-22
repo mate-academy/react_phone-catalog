@@ -1,0 +1,71 @@
+@import '../../../../styles/variables';
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  border: 1px solid $color-line;
+  border-radius: $radius-m;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__image {
+    aspect-ratio: 1;
+    margin-bottom: 4px;
+  }
+
+  &__line {
+    height: 12px;
+    width: 100%;
+
+    &--short {
+      width: 60%;
+    }
+  }
+
+  &__price {
+    height: 20px;
+    width: 40%;
+    margin-top: 4px;
+  }
+
+  &__button {
+    height: 36px;
+    width: 100%;
+    margin-top: auto;
+  }
+}
+
+.block {
+  border-radius: $radius-s;
+  background: linear-gradient(
+    90deg,
+    $color-line 25%,
+    $color-paper 37%,
+    $color-line 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}

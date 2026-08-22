@@ -1,0 +1,80 @@
+@import '../../styles/variables';
+
+.page {
+  padding: 32px 16px 64px;
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    color: $color-ink-secondary;
+    font-size: 13px;
+    margin-bottom: 16px;
+    padding: 0;
+
+    &:hover {
+      color: $color-signal;
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: start;
+
+    @media (min-width: $breakpoint-desktop) {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__summary {
+    background: $color-surface;
+    border: 1px solid $color-line;
+    border-radius: $radius-m;
+    padding: 24px;
+  }
+
+  &__total {
+    font-family: $font-mono;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  &__count {
+    font-size: 13px;
+    color: $color-ink-secondary;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $color-line;
+  }
+
+  &__checkout {
+    width: 100%;
+    background: $color-signal;
+    color: $color-surface;
+    border: none;
+    border-radius: $radius-s;
+    padding: 12px;
+    font-weight: 600;
+    transition: background $transition;
+
+    &:hover {
+      background: $color-signal-dark;
+    }
+  }
+}

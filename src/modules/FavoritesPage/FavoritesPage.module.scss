@@ -1,0 +1,10 @@
+@import '../../styles/variables';
+
+.page {
+  padding: 32px 16px 64px;
+
+  &__title {
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
+}

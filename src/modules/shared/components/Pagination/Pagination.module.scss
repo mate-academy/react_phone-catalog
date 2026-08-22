@@ -1,0 +1,50 @@
+@import '../../../../styles/variables';
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+
+  &__info {
+    font-size: 13px;
+    color: $color-ink-secondary;
+    font-family: $font-mono;
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid $color-line;
+    border-radius: $radius-s;
+    font-family: $font-mono;
+    font-size: 13px;
+    transition: border-color $transition, color $transition;
+
+    &:hover {
+      border-color: $color-signal;
+      color: $color-signal;
+    }
+  }
+
+  &__item--active .pagination__link {
+    background: $color-signal;
+    color: $color-surface;
+    border-color: $color-signal;
+  }
+
+  &__item--disabled a {
+    pointer-events: none;
+    opacity: 0.35;
+  }
+}

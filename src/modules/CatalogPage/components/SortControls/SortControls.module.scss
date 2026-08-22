@@ -1,0 +1,32 @@
+@import '../../../../styles/variables';
+
+.controls {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 140px;
+  }
+
+  &__label {
+    font-size: 12px;
+    color: $color-ink-secondary;
+  }
+
+  &__select {
+    padding: 8px 10px;
+    border: 1px solid $color-line;
+    border-radius: $radius-s;
+    background: $color-surface;
+    font-size: 13px;
+
+    &:focus {
+      border-color: $color-signal;
+    }
+  }
+}

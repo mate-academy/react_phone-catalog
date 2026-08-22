@@ -1,0 +1,38 @@
+@import '../../styles/variables';
+
+.page {
+  padding: 96px 16px;
+  text-align: center;
+
+  &__image {
+    max-width: 220px;
+    width: 100%;
+    margin: 0 auto 24px;
+  }
+
+  &__code {
+    font-family: $font-mono;
+    color: $color-signal;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  &__title {
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
+
+  &__link {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid $color-ink;
+    border-radius: $radius-s;
+    transition: background $transition, color $transition;
+
+    &:hover {
+      background: $color-ink;
+      color: $color-surface;
+    }
+  }
+}

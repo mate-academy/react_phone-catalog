@@ -1,0 +1,170 @@
+@import '../../styles/variables';
+
+.page {
+  padding: 32px 16px 64px;
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    color: $color-ink-secondary;
+    font-size: 13px;
+    margin-bottom: 24px;
+    padding: 0;
+
+    &:hover {
+      color: $color-signal;
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 48px;
+
+    @media (min-width: $breakpoint-desktop) {
+      grid-template-columns: 1.2fr 1fr;
+    }
+  }
+
+  &__buy {
+    max-width: 320px;
+  }
+
+  &__id {
+    text-align: right;
+    font-size: 12px;
+    color: $color-ink-secondary;
+    margin-bottom: 12px;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-family: $font-mono;
+  }
+
+  &__price {
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  &__fullPrice {
+    font-size: 18px;
+    color: $color-ink-secondary;
+    text-decoration: line-through;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__addButton {
+    flex: 1;
+    background: $color-signal;
+    color: $color-surface;
+    border: 1px solid $color-signal;
+    border-radius: $radius-s;
+    padding: 12px;
+    font-weight: 600;
+    transition: background $transition, color $transition;
+
+    &:hover {
+      background: $color-signal-dark;
+    }
+
+    &--active {
+      background: $color-line;
+      color: $color-ink;
+      border-color: $color-line;
+    }
+  }
+
+  &__favButton {
+    width: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-surface;
+    border: 1px solid $color-line;
+    border-radius: $radius-s;
+    color: $color-ink-secondary;
+
+    &:hover {
+      border-color: $color-discount;
+      color: $color-discount;
+    }
+
+    &--active {
+      color: $color-discount;
+      border-color: $color-discount;
+    }
+  }
+
+  &__miniSpecs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid $color-line;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+    }
+
+    dt {
+      color: $color-ink-secondary;
+    }
+
+    dd {
+      margin: 0;
+      font-family: $font-mono;
+    }
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-bottom: 64px;
+    padding-top: 32px;
+    border-top: 1px solid $color-line;
+
+    @media (min-width: $breakpoint-desktop) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__sectionTitle {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  &__aboutBlock {
+    margin-bottom: 20px;
+  }
+
+  &__aboutSubtitle {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  &__aboutText {
+    color: $color-ink-secondary;
+    line-height: 1.6;
+  }
+}

@@ -1,0 +1,44 @@
+@import '../../../../styles/variables';
+
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 320px;
+  width: 100%;
+
+  &__icon {
+    position: absolute;
+    left: 10px;
+    color: $color-ink-secondary;
+    pointer-events: none;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 8px 32px;
+    border: 1px solid $color-line;
+    border-radius: $radius-s;
+    font-size: 13px;
+    background: $color-surface;
+
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+
+    &:focus {
+      border-color: $color-signal;
+    }
+  }
+
+  &__clear {
+    position: absolute;
+    right: 8px;
+    display: flex;
+    color: $color-ink-secondary;
+
+    &:hover {
+      color: $color-ink;
+    }
+  }
+}

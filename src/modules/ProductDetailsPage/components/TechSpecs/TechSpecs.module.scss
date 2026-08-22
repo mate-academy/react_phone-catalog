@@ -1,0 +1,23 @@
+@import '../../../../styles/variables';
+
+.specs {
+  margin: 0;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid $color-line;
+    font-family: $font-mono;
+    font-size: 13px;
+  }
+
+  &__label {
+    color: $color-ink-secondary;
+  }
+
+  &__value {
+    margin: 0;
+    text-transform: capitalize;
+  }
+}

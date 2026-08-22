@@ -1,0 +1,125 @@
+@import 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap';
+@import './variables';
+
+// "Original Dark" palette, sampled directly from the Figma export
+// (UI Kit / Header / Footer / Product card / Cart item frames).
+:root {
+  --color-paper: #0f1121; // page background
+  --color-surface: #161827; // card / panel surface
+  --color-ink: #fff; // primary text
+  --color-ink-secondary: #75767f; // secondary/muted text
+  --color-line: #323542; // borders, dividers
+  --color-signal: #905bff; // primary accent (buttons, links, active states)
+  --color-signal-dark: #a378ff; // accent hover
+  --color-signal-pressed: #6341b2; // accent active/pressed
+  --color-discount: #eb5757;
+  --color-success: #27ae60;
+  --color-icon: #b4bdc3;
+}
+
+:root[data-theme='light'] {
+  --color-paper: #f6f5f2;
+  --color-surface: #fff;
+  --color-ink: #14161a;
+  --color-ink-secondary: #6d7078;
+  --color-line: #e1dfda;
+  --color-signal: #905bff;
+  --color-signal-dark: #7c3fff;
+  --color-signal-pressed: #6341b2;
+  --color-discount: #d64d3f;
+  --color-success: #1f9d55;
+  --color-icon: #75767f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $color-paper;
+  color: $color-ink;
+  font-family: $font-body;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color $transition, color $transition;
+}
+
+h1,
+h2,
+h3 {
+  font-family: $font-display;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: $width-content;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+:focus-visible {
+  outline: 2px solid $color-signal;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

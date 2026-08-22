@@ -1,0 +1,65 @@
+@import '../../../../styles/variables';
+
+.footer {
+  border-top: 1px solid $color-line;
+  margin-top: 80px;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    height: 64px;
+  }
+
+  &__logo {
+    font-family: $font-display;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: $color-ink;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__backToTopWrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__backToTopLabel {
+    font-size: 12px;
+    color: $color-ink-secondary;
+  }
+
+  &__link {
+    font-size: 13px;
+    color: $color-ink-secondary;
+    transition: color $transition;
+
+    &:hover {
+      color: $color-signal;
+    }
+  }
+
+  &__backToTop {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-line;
+    border: none;
+    border-radius: $radius-s;
+    color: $color-ink;
+    transition: background $transition, color $transition;
+
+    &:hover {
+      background: $color-signal;
+    }
+  }
+}

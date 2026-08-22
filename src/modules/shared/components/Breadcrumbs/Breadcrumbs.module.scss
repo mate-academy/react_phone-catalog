@@ -1,0 +1,31 @@
+@import '../../../../styles/variables';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: $color-ink-secondary;
+  margin-bottom: 24px;
+  text-transform: capitalize;
+
+  &__link {
+    color: $color-ink-secondary;
+    transition: color $transition;
+
+    &:hover {
+      color: $color-signal;
+    }
+  }
+
+  &__sep {
+    width: 12px;
+    height: 12px;
+    opacity: 0.5;
+  }
+
+  &__current {
+    color: $color-ink;
+    text-transform: none;
+  }
+}

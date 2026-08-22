@@ -1,0 +1,61 @@
+@import '../../../../styles/variables';
+
+.gallery {
+  display: flex;
+  gap: 16px;
+
+  &__thumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__thumb {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: $radius-s;
+    border: 1px solid $color-line;
+    background: $color-paper;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: border-color $transition, transform $transition;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 4px;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &--active {
+      border-color: $color-signal;
+      border-width: 2px;
+    }
+  }
+
+  &__main {
+    flex: 1;
+    aspect-ratio: 1;
+    max-width: 400px;
+    border-radius: $radius-m;
+    background: $color-paper;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 24px;
+    }
+  }
+}

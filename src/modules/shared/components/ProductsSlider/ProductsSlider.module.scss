@@ -1,0 +1,61 @@
+@import '../../../../styles/variables';
+
+.slider {
+  margin-bottom: 64px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $color-line;
+    border-radius: 50%;
+    background: $color-surface;
+    transition: border-color $transition, color $transition;
+
+    &:hover {
+      border-color: $color-signal;
+      color: $color-signal;
+    }
+  }
+
+  &__track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $color-line;
+      border-radius: 2px;
+    }
+  }
+
+  &__item {
+    flex: 0 0 256px;
+    scroll-snap-align: start;
+  }
+}

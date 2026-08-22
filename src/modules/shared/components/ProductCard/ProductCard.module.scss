@@ -1,0 +1,161 @@
+@import '../../../../styles/variables';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: $color-surface;
+  border: 1px solid $color-line;
+  border-radius: $radius-m;
+  padding: 24px;
+  height: 100%;
+  transition: box-shadow $transition, border-color $transition;
+
+  &:hover {
+    border-color: $color-signal;
+    box-shadow: 0 8px 24px rgba(20, 22, 26, 0.06);
+  }
+
+  &__imageLink {
+    display: block;
+    margin-bottom: 16px;
+    overflow: hidden;
+    border-radius: $radius-s;
+  }
+
+  &__image {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-paper;
+    border-radius: $radius-s;
+    overflow: hidden;
+    transition: transform $transition;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 8px;
+    }
+  }
+
+  &__imageLink:hover &__image {
+    transform: scale(1.1);
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    min-height: 40px;
+    transition: color $transition;
+
+    &:hover {
+      color: $color-signal;
+    }
+  }
+
+  &__prices {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 16px;
+    font-family: $font-mono;
+  }
+
+  &__price {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &__fullPrice {
+    font-size: 14px;
+    color: $color-ink-secondary;
+    text-decoration: line-through;
+  }
+
+  &__divider {
+    height: 1px;
+    background: $color-line;
+    margin-bottom: 16px;
+  }
+
+  &__specs {
+    margin: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+
+    dt {
+      color: $color-ink-secondary;
+    }
+
+    dd {
+      margin: 0;
+      font-family: $font-mono;
+    }
+  }
+
+  &__actions {
+    margin-top: auto;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__addButton {
+    flex: 1;
+    background: $color-signal;
+    color: $color-surface;
+    border: 1px solid $color-signal;
+    border-radius: $radius-s;
+    padding: 10px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background $transition, color $transition;
+
+    &:hover {
+      background: $color-signal-dark;
+    }
+
+    &--active {
+      background: $color-line;
+      color: $color-ink;
+      border-color: $color-line;
+
+      &:hover {
+        background: $color-line;
+      }
+    }
+  }
+
+  &__favButton {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-surface;
+    border: 1px solid $color-line;
+    border-radius: $radius-s;
+    color: $color-ink-secondary;
+    transition: color $transition, border-color $transition;
+
+    &:hover {
+      border-color: $color-discount;
+      color: $color-discount;
+    }
+
+    &--active {
+      color: $color-discount;
+      border-color: $color-discount;
+    }
+  }
+}
