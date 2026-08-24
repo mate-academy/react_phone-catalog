@@ -1,0 +1,202 @@
+@use '/src/styles/utils' as *;
+
+.header {
+  @include flex-between;
+
+  height: 48px;
+  border-bottom: 1px solid $elements-color;
+  position: relative;
+  z-index: 1000;
+
+  @include on-tablet {
+    width: 100%;
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    height: 64px;
+    gap: 24px;
+  }
+
+  &__items {
+    @include flex-center;
+
+    @include on-tablet {
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      gap: 24px;
+    }
+  }
+
+  &__container {
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+
+    @include on-tablet {
+      width: 100%;
+    }
+  }
+
+  &__menu_items {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    font-size: 12px;
+    font-family: $font-bold;
+    text-transform: uppercase;
+    color: $secondary-color;
+
+    display: flex;
+    align-items: center;
+    height: 48px;
+
+    &:hover {
+      color: $primary-color;
+    }
+
+    @include on-desktop {
+      height: 64px;
+    }
+  }
+
+  &__logo {
+    padding-inline: 16px;
+    padding-block: 13px;
+
+
+    @include on-desktop {
+      padding-inline: 24px;
+      padding-block: 18px;
+    }
+
+    &__img {
+      width: 64px;
+      height: 22px;
+
+      @include on-desktop {
+        width: 80px;
+        height: 28px;
+      }
+    }
+  }
+
+  &__menu {
+    @include flex-center;
+
+    width: 48px;
+    height: 48px;
+    border-left: 1px solid $elements-color;
+
+    @include on-tablet {
+      display: none;
+    }
+
+    &__img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__icon {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__icons {
+    @include flex-center;
+
+    position: relative;
+
+    width: 48px;
+    height: 48px;
+    border-left: 1px solid $elements-color;
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+
+    &__img {
+      width: 16px;
+      height: 16px;
+
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.3);
+      }
+    }
+  }
+
+  &__length {
+    @include icons-buttons-header;
+
+    top: 8px;
+    right: 8px;
+
+    @include on-desktop {
+      top: 17px;
+      right: 17px;
+    }
+  }
+
+  &__toggle {
+    display: flex;
+  }
+}
+
+.activeLink {
+  border-bottom: 3px solid $primary-color;
+  color: $primary-color;
+}
+
+[data-theme='dark'] {
+  .header {
+    background-color: $black-theme-dark;
+    border-color: $surface2-theme-dark;
+
+    &__length {
+      @include icons-buttons-header-dark;
+    }
+
+    &__item {
+      color: $secondary-theme-dark;
+
+      &:hover {
+        color: $white-theme-dark;
+      }
+    }
+
+    &__menu {
+      border-left: 1px solid $elements-theme-dark;
+    }
+
+    &__icons {
+      border-left: 1px solid $surface2-theme-dark;
+    }
+  }
+
+  .activeLink {
+    border-bottom: 3px solid $white-theme-dark;
+    color: $white-theme-dark;
+  }
+}

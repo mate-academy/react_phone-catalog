@@ -1,0 +1,223 @@
+@mixin on-mobile {
+  @media (min-width: $mobile-min-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet{
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop-v2 {
+  @media (min-width: $desktop-v2-min-width) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  gap: 56px 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+
+    row-gap: 64px;
+    margin-inline: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+
+    margin-inline: 32px;
+    row-gap: 80px;
+  }
+
+  @include on-desktop-v2 {
+    margin-inline: 152px;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin arrows {
+  display: flex;
+  gap: 16px;
+}
+
+@mixin arrow-style {
+  @include flex-center;
+
+  border: 1px solid $icons-color;
+  border-radius: 48px;
+  width: 32px;
+  height: 32px;
+}
+
+@mixin style-buttons {
+  border-radius: 8px;
+
+  background-color: $accent-color;
+  color: $white-color;
+  border: 1px solid $accent-color;
+
+  transition: box-shadow 0.3s ease;
+}
+
+@mixin button-add {
+  width: 100px;
+  height: 40px;
+
+  @include style-buttons;
+
+  @include on-tablet {
+    width: 125px;
+  }
+
+  @include on-desktop {
+    width: 160px;
+  }
+}
+
+@mixin button-like {
+  @include flex-center;
+
+  border: 1px solid $icons-color;
+  border-radius: 48px;
+  width: 40px;
+  height: 40px;
+}
+
+@mixin active-button {
+  border-color: $elements-color;
+  background-color: $white-color;
+  color: $accent-color;
+}
+
+@mixin categories-card {
+  position:  relative;
+  overflow: hidden;
+  display: block;
+  height: 100%;
+  border-radius: 8px;
+}
+
+@mixin styles-navigation-product {
+  grid-column: span 4;
+
+  padding-top: 24px;
+  padding-bottom: 32px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include on-tablet {
+    grid-column: span 12;
+    padding-bottom: 40px;
+    gap: 40px;
+  }
+
+  @include on-desktop {
+    grid-column: span 24;
+  }
+}
+
+@mixin grid-card {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}
+
+@mixin dropdowns-page-products {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 24px;
+}
+
+@mixin hover-items {
+  box-shadow: 0 2px 16px 0 #0000001A;
+}
+
+@mixin icons-buttons-header {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+
+  background-color: $secondary-accent-color;
+  width: 14px;
+  height: 14px;
+
+  border: 1px solid $white-color;
+  border-radius: 48px;
+
+  font-family: $font-semibold;
+  font-size: 9px;
+  color: $white-color;
+}
+
+@mixin arrow-style-dark {
+  border: 0;
+  border-radius: 0;
+  background-color: $surface2-theme-dark;
+
+  &:hover {
+    background-color: $icons-theme-dark;
+  }
+}
+
+@mixin categories-card-dark {
+  border-radius: 0;
+}
+
+@mixin button-like-dark {
+  @include flex-center;
+
+  border-radius: 0;
+  width: 40px;
+  height: 40px;
+}
+
+@mixin style-buttons-dark {
+  border-radius: 0;
+  border: 0;
+
+  background-color: $accent-theme-dark;
+}
+
+@mixin active-button-dark {
+  background-color: $surface2-theme-dark;
+  color: $white-theme-dark;
+}
+
+@mixin icons-buttons-header-dark {
+  background-color: $red-theme-dark;
+}

@@ -1,0 +1,73 @@
+@use '/src/styles/utils' as *;
+@use '/src/styles/shared/models';
+
+.favourites {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
+  @include on-desktop-v2 {
+    padding-inline: 152px;
+  }
+
+  &__navigation {
+    padding-block: 24px 56px;
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 24;
+    }
+  }
+
+  &__header {
+    padding-block: 24px 32px;
+
+    @include on-tablet {
+      padding-block: 40px;
+    }
+  }
+
+  &__title {
+    @include h1;
+
+    margin-bottom: 8px;
+    grid-column: span 24;
+  }
+
+  &__length {
+    font-family: $font-body-text;
+  }
+}
+
+.noFavorite {
+  &__title {
+    @include body-text;
+
+    font-size: 20px;
+  }
+}
+
+.catalog {
+  @include grid-card;
+
+  grid-column: span 24;
+
+  &__item {
+    grid-column: span 6;
+  }
+}
+
+[data-theme="dark"] {
+  .favourites {
+    &__length {
+      color: $secondary-theme-dark;
+    }
+  }
+}

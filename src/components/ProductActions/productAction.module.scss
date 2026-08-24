@@ -1,0 +1,81 @@
+@use '/src/styles/utils' as *;
+
+.buttons {
+  @include buttons;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  &__add {
+    @include style-buttons;
+
+    height: 40px;
+    width: calc(100% - 48px);
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
+  }
+
+  &__like {
+    @include flex-center;
+
+    border: 1px solid $icons-color;
+    border-radius: 48px;
+    width: 40px;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+}
+
+.details {
+  padding-bottom: 24px;
+
+  .buttons__add {
+    height: 48px;
+    width: calc(100% - 56px);
+  }
+
+  .buttons__like {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.activeButton {
+  @include active-button;
+}
+
+[data-theme="dark"] {
+  .buttons {
+    &__add {
+      @include style-buttons-dark;
+
+      &:hover {
+        background-color: $accentHover-theme-dark;
+      }
+    }
+
+    &__like {
+      border-radius: 0;
+      background-color: $surface2-theme-dark;
+      border: 0;
+
+      &:hover {
+        background-color: $icons-theme-dark;
+      }
+    }
+  }
+
+  .activeButton {
+    @include active-button-dark;
+  }
+
+  .activeButtonLike {
+    border: 1px solid $elements-theme-dark;
+    background-color: $surface1-theme-dark;
+  }
+}

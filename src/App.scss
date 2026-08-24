@@ -1,1 +1,43 @@
-// not empty
+@use '/src/styles/utils' as *;
+
+iframe {
+  display: none;
+}
+
+.App {
+  background-color: $hover-bg-color;
+
+  padding-bottom: 64px;
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout {
+  flex: 1;
+  background-color: $hover-bg-color;
+}
+
+main,
+.phones,
+.tablets,
+.accessories {
+  flex: 1;
+}
+
+[data-theme="dark"] {
+  .App {
+    background-color: $black-theme-dark;
+  }
+
+  .layout {
+    background-color: $black-theme-dark;
+  }
+}

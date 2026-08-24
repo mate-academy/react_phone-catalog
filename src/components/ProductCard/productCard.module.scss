@@ -1,0 +1,71 @@
+@use '/src/styles/utils' as *;
+@use '/src/styles/shared/models';
+
+.specs {
+  @include small-text;
+
+  padding-block: 8px;
+  border-top: 1px solid $elements-color;
+
+  &__spec {
+    @include flex-between;
+
+    color: $secondary-color;
+    padding-top: 8px;
+
+    &__data {
+      color: $primary-color;
+    }
+  }
+}
+
+.phone {
+  &__title {
+    @include body-text;
+
+    padding-bottom: 8px;
+    height: 79px;
+    display: flex;
+    align-items: end;
+  }
+
+  &__prices {
+    @include h3;
+
+    padding-bottom: 8px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__fullPrice {
+    color: $secondary-color;
+    font-family: $font-regular;
+    text-decoration: line-through;
+  }
+}
+
+.activeButton {
+  @include active-button;
+}
+
+[data-theme="dark"] {
+  .phone {
+    color: $white-theme-dark;
+
+    &__fullPrice {
+      color: $secondary-theme-dark;
+    }
+  }
+
+  .specs {
+    border-color: $elements-theme-dark;
+
+    &__spec {
+      color: $secondary-theme-dark;
+
+      &__data {
+        color: $white-theme-dark;
+      }
+    }
+  }
+}

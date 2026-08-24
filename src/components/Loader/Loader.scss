@@ -1,0 +1,152 @@
+@use '/src/styles/utils' as *;
+
+@property --skele-pos {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --full-witch {
+  syntax: "<length>";
+  initial-value: 0;
+  inherits: false;
+}
+
+:root {
+  --full-witch: 100vw;
+  --skele-color: #{$white-color};
+  --skele-shine-color: #{$elements-color};
+  --skele-distance: 400;
+  --skele-time: 1;
+  --skele-scaler: 0.7;
+  --skele-size: clamp(100px, 50vw, 500px);
+  --skele-leading-edge-blur: clamp(10px, 5vw, 50px);
+  --skele-angle: 96deg;
+  --skele-ease: cubic-bezier(0.45, 0.3, 0.7, 0.55);
+  --skele-pos: 0;
+  --skele-radius: 0.5rem;
+  --int-width: calc( 10000 * tan(atan2(var(--full-witch), 10000px)) );
+  --scaled-time: calc((1 - (var(--int-width) / 400) * var(--skele-scaler) / 5));
+  --anim-time: calc( ( (var(--int-width) / var(--skele-distance)) * (var(--skele-time) * 1.33) ) * var(--scaled-time) );
+
+  animation:
+    skeleton
+    calc(700ms * var(--anim-time))
+    var(--skele-ease)
+    infinite;
+}
+
+@keyframes skeleton {
+  0% {
+    --skele-pos: 0;
+  }
+  66%,
+  100% {
+    --skele-pos: 1;
+  }
+}
+
+.Loader {
+  padding: 24px;
+  grid-column: span 4;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+
+  @include on-tablet {
+    padding-block: 56px;
+    grid-column: span 12;
+
+    grid-template-columns: repeat(4, 1fr);
+    gap: 60px 30px;
+  }
+
+  @include on-desktop {
+    padding: 56px;
+    grid-column: span 24;
+    gap: 100px 50px;
+  }
+}
+
+.skeleton-card {
+  grid-column: span 2;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.skeleton-card__image {
+  height: 180px;
+  aspect-ratio: 1;
+}
+
+.skeleton-card__title {
+  height: 18px;
+  width: 80%;
+}
+
+.skeleton-card__price {
+  height: 24px;
+  width: 40%;
+}
+
+.skeleton-card__line {
+  height: 12px;
+  width: 100%;
+}
+
+.skeleton-card__buttons {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.skeleton-card__button {
+  flex: 1;
+  height: 40px;
+}
+
+.skeleton-card__heart {
+  width: 40px;
+  height: 40px;
+}
+
+.skeleton {
+  color: transparent;
+  background-color: var(--skele-color);
+  border-radius: var(--skele-radius);
+
+  --anim-pos: calc( var(--skele-pos) * (var(--full-witch) + var(--skele-size) * 2) - var(--skele-size) );
+
+  background-image:
+    linear-gradient(
+      var(--skele-angle, 90deg),
+      hsl(
+        from var(--skele-shine-color)
+        h s l / 0
+      )
+    calc(var(--anim-pos)),
+
+    hsl(
+        from var(--skele-shine-color)
+        h s l / 1
+      )
+      calc(
+        var(--anim-pos) + var(--skele-size)
+      ),
+
+    hsl(
+        from var(--skele-shine-color)
+        h s l / 0
+      )
+    calc(var(--anim-pos) + var(--skele-size) + var(--skele-leading-edge-blur)));
+
+  background-attachment: fixed;
+}
+
+[data-theme="dark"] {
+  --skele-color: #{$surface1-theme-dark};
+  --skele-shine-color: #{$surface2-theme-dark};
+}

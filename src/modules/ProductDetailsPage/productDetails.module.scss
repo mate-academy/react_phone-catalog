@@ -1,0 +1,310 @@
+@use '/src/styles/utils' as *;
+@use '/src/modules/ProductDetailsPage/productDetailsDark.module' as *;
+
+.notFound {
+  @include flex-center;
+
+  flex-direction: column;
+  margin-block: 50px;
+  gap: 30px;
+
+  &__title {
+    @include body-text;
+
+    font-size: 20px;
+  }
+
+  &__image {
+    width: 50%;
+  }
+}
+
+.details {
+  flex: 1;
+  padding-bottom: 24px;
+
+  @include on-desktop {
+    padding-bottom: 40px;
+  }
+
+  @include page-grid;
+
+  &__content {
+    @include styles-navigation-product;
+
+    padding-inline: 16px;
+
+    @include on-tablet {
+      padding-inline: 0;
+    }
+  }
+
+  &__information {
+    @include grid-card;
+
+    &__name {
+      padding-block: 16px 8px;
+      grid-column: span 4;
+
+      @include h2;
+
+      @include on-tablet {
+        padding-block: 16px;
+        grid-column: span 12;
+      }
+
+      @include on-desktop {
+        grid-column: span 24;
+      }
+    }
+  }
+
+  &__id {
+    display: none;
+
+    @include on-desktop {
+      @include small-text;
+
+      display: flex;
+      color: $icons-color;
+      grid-column: 23 / -1;
+    }
+  }
+}
+
+.slider {
+  grid-column: span 4;
+
+  display: flex;
+  flex-direction: column;
+
+  @include on-tablet {
+    grid-column: span 7;
+    display: contents;
+  }
+
+  @include on-desktop {
+    grid-column: span 13;
+  }
+
+  &__thumbnails {
+    padding-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    order: 2;
+
+    @include on-tablet {
+      padding-top: 0;
+      grid-column: span 1;
+
+      justify-content: start;
+      flex-direction: column;
+      order: 0;
+      gap: 8px;
+    }
+
+    @include on-desktop {
+      gap: 16px;
+      grid-column: span 2;
+    }
+  }
+
+  &__thumbnail {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+
+    border: 1px solid $elements-color;
+    border-radius: 4px;
+
+    padding: 5px;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    @include on-tablet {
+      height: 35px;
+      width: 35px;
+    }
+
+    @include on-desktop {
+      height: 80px;
+      width: 80px;
+    }
+  }
+
+  &__main {
+    order: 1;
+    grid-column: span 4;
+    display: flex;
+    justify-content: center;
+
+    @include on-tablet {
+      order: 0;
+      grid-column: 2 / 8;
+    }
+
+    @include on-desktop {
+      @include flex-center;
+
+      grid-column: 3 / 13;
+    }
+  }
+
+  &__image {
+    height: 287px;
+
+    @include on-desktop {
+      height: 464px;
+    }
+  }
+}
+
+.information {
+  @include small-text;
+
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: 8 / -1;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / -5;
+  }
+
+  &__title {
+    justify-content: space-between;
+    color: $secondary-color;
+  }
+
+  &__colors {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 24px;
+  }
+
+  &__capacity {
+    padding-block: 24px;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid $elements-color;
+  }
+
+  &__id {
+    color: $icons-color;
+
+    @include on-desktop {
+      display: none;
+    }
+  }
+}
+
+.items {
+  color: $secondary-color;
+
+  &__price {
+    padding-top: 32px;
+    padding-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    color: $primary-color;
+    border-top: 1px solid $elements-color;
+  }
+
+  &__characteristic {
+    @include flex-between;
+
+    padding-top: 8px;
+    font-size: 12px;
+  }
+}
+
+.description {
+  @include grid-card;
+
+  padding-block: 56px;
+
+  @include on-tablet {
+    padding-block: 64px;
+  }
+
+  @include on-desktop {
+    padding-block: 80px;
+  }
+}
+
+.price {
+  &__discount {
+    @include h2;
+  }
+
+  &__regular {
+    font-family: $font-body-text;
+    font-size: 22px;
+    color: $secondary-color;
+    text-decoration: line-through;
+  }
+}
+
+.characteristic {
+  font-family: $font-semibold;
+  color: $primary-color;
+}
+
+.colors {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  width: 32px;
+  height: 32px;
+
+  &__button {
+    border: 1px solid $elements-color;
+    border-radius: 50%;
+
+    @include flex-center;
+
+    &:hover {
+      border-color: $icons-color;
+    }
+  }
+
+  &__circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid $white-color;
+  }
+}
+
+.capacity {
+  display: flex;
+  gap: 8px;
+  padding-top: 8px;
+  font-size: 14px;
+
+  &__button {
+    padding: 4px;
+    border: 1px solid $icons-color;
+    border-radius: 4px;
+    color: $primary-color;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+}
+
+.active {
+  &__color {
+    border-color: $primary-color;
+  }
+
+  &__button {
+    color: $white-color;
+    background-color: $primary-color;
+  }
+}

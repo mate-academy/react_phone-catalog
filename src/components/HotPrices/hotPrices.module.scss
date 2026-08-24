@@ -1,0 +1,98 @@
+@use '/src/styles/utils' as *;
+@use '/src/styles/shared/models';
+
+.hotPrices {
+  grid-column: span 4;
+  margin-inline: 16px;
+
+  @include on-tablet {
+    margin-inline: 0;
+    grid-column: span 12;
+  }
+
+  @include on-desktop {
+    grid-column: span 24;
+  }
+
+  &__title {
+    @include h2;
+  }
+}
+
+.navigation {
+  @include flex-between;
+
+  padding-bottom: 24px;
+
+  &__arrows {
+    @include arrows;
+
+    &__arrow {
+      @include arrow-style;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+
+      &:disabled {
+        border-color: $elements-color;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.cards {
+  overflow: hidden;
+
+  @include on-desktop {
+    width: 100%;
+  }
+
+  &__track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.5s ease;
+    will-change: transform;
+  }
+
+  &__item {
+    flex: 0 0 212px;
+
+    @include on-tablet {
+      flex: 0 0 237px;
+    }
+
+    @include on-desktop {
+      flex: 0 0 272px;
+    }
+  }
+
+  &__buttons {
+    @include buttons;
+
+    display: flex;
+    justify-content: space-between;
+    padding-top: 8px;
+
+    &__add {
+      @include button-add;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+      }
+    }
+
+    &__like {
+      @include button-like;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+    }
+  }
+}
+
+.active {
+  @include active-button;
+}

@@ -1,0 +1,28 @@
+@use '/src/styles/utils' as *;
+
+.error {
+  @include flex-center;
+
+  flex-direction: column;
+  margin-block: 50px;
+
+  &__message {
+    @include flex-center;
+
+    flex-direction: column;
+  }
+
+  &__title {
+    @include h1;
+  }
+
+  &__item {
+    @include body-text;
+
+    font-size: 20px;
+  }
+
+  &__image {
+    width: 50%;
+  }
+}

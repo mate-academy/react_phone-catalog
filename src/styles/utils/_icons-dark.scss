@@ -1,0 +1,13 @@
+.darkIcon {
+  display: none;
+}
+
+[data-theme='dark'] {
+  .lightIcon {
+    display: none;
+  }
+
+  .darkIcon {
+    display: block;
+  }
+}

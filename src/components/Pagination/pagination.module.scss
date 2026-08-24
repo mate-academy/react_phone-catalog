@@ -1,0 +1,96 @@
+@use '/src/styles/utils' as *;
+
+.pagination {
+  @include flex-center;
+
+  font-family: $font-body-text;
+  gap: 16px;
+  padding-top: 40px;
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elements-color;
+    border-radius: 48px;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+
+  &__arrows {
+    @include flex-center;
+
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons-color;
+    border-radius: 48px;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    &:disabled {
+      cursor: default;
+      border-color: $elements-color;
+    }
+  }
+
+  &__arrow {
+    display: block;
+  }
+
+  &__arrowDark {
+    display: none;
+  }
+}
+
+.activePage {
+  width: 32px;
+  height: 32px;
+  border-color: $white-color;
+  background-color: $primary-color;
+  color: $white-color;
+  border-radius: 48px;
+}
+
+[data-theme="dark"] {
+  .pagination {
+    &__button {
+      border: 0;
+      border-radius: 0;
+      background-color: $surface1-theme-dark;
+    }
+
+    &__arrows {
+      border: 0;
+      background-color: $surface2-theme-dark;
+      border-radius: 0;
+
+      &:disabled {
+        cursor: default;
+        background-color: $black-theme-dark;
+        border: 1px solid $elements-theme-dark;
+      }
+    }
+
+    &__arrow {
+      display: none;
+    }
+
+    &__arrowDark {
+      display: block;
+    }
+  }
+
+  .activePage {
+    background-color: $accent-theme-dark;
+    color: $white-theme-dark;
+    border-radius: 0;
+  }
+}

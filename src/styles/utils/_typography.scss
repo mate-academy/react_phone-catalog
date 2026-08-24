@@ -1,0 +1,62 @@
+@use './mixins' as *;
+
+@mixin h1 {
+  font-family: $font-bold;
+  color: var(--color-title);
+  font-size: 32px;
+
+  @include on-tablet {
+    font-size: 48px;
+  }
+}
+
+@mixin h2 {
+  font-family: $font-bold;
+  color: var(--color-title);
+  font-size: 22px;
+
+  @include on-tablet {
+    font-size: 32px;
+  }
+}
+
+@mixin h3 {
+  font-family: $font-semibold;
+  color: var(--color-title);
+  font-size: 20px;
+
+  @include on-tablet {
+    font-family: $font-bold;
+    font-size: 22px;
+  }
+}
+
+@mixin h4 {
+  font-family: $font-semibold;
+  color: var(--color-title);
+  font-size: 16px;
+
+  @include on-tablet {
+    font-size: 20px;
+  }
+}
+
+@mixin uppercase {
+  font-family: $font-bold;
+  font-size: 12px;
+}
+
+@mixin buttons {
+  font-family: $font-semibold;
+  font-size: 14px;
+}
+
+@mixin body-text {
+  font-family: $font-regular;
+  font-size: 14px;
+}
+
+@mixin small-text {
+  font-family: $font-semibold;
+  font-size: 12px;
+}

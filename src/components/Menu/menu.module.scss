@@ -1,0 +1,139 @@
+@use '/src/styles/utils' as *;
+
+.menu {
+  position: relative;
+  height: calc(100vh - 48px);
+  overflow: hidden;
+  background-color: $white-color;
+
+  &__items {
+    padding-top: 24px;
+    font-family: $font-bold;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item {
+    @include flex-center;
+
+    color: $secondary-color;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid $elements-color;
+
+  &__length {
+    @include icons-buttons-header;
+
+    top: -6px;
+    right: -8px;
+  }
+}
+
+.button {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 64px;
+
+  place-items: center center;
+
+  &__link {
+    @include flex-center;
+
+    position: relative;
+
+    &__img {
+      display: block;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.3);
+      }
+    }
+
+    &__imgDark {
+      display: none;
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: $elements-color;
+  }
+}
+
+.activeLink {
+  color: $primary-color;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+
+.activeButton {
+  @include flex-center;
+
+  width: 100%;
+  height: 100%;
+  border-bottom: 2px solid $primary-color;
+}
+
+[data-theme="dark"] {
+  .menu {
+    background-color: $black-theme-dark;
+
+    &__item {
+      color: $secondary-theme-dark;
+    }
+  }
+
+  .buttons {
+    border-top: 1px solid $surface2-theme-dark;
+
+    &__length {
+      @include icons-buttons-header-dark;
+    }
+  }
+
+  .button {
+    &__link {
+      &__img {
+        display: none;
+      }
+
+      &__imgDark {
+        display: block;
+      }
+    }
+
+    &::before {
+      background: $surface2-theme-dark;
+    }
+  }
+
+  .activeLink {
+    color: $white-theme-dark;
+  }
+
+  .activeButton {
+    border-color: $white-theme-dark;
+  }
+}

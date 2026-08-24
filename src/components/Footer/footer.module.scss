@@ -1,0 +1,154 @@
+@use '/src/styles/utils' as *;
+
+.footer {
+  border-top: 1px solid $elements-color;
+  padding-block: 32px;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 0;
+  }
+
+  &__logo {
+    &__img {
+      height: 32px;
+      width: 89px;
+    }
+
+    &__imgDark {
+      display: none;
+    }
+  }
+
+  &__container {
+    @include page-grid;
+
+    gap: 32px;
+
+    @include on-tablet {
+      grid-column: span 12;
+
+      @include flex-between;
+    }
+
+    @include on-desktop {
+      grid-column: span 24;
+    }
+  }
+
+  &__items {
+    grid-column: span 4;
+
+    font-size: 12px;
+    font-family: $font-bold;
+    text-transform: uppercase;
+
+    display: grid;
+    gap: 16px;
+
+    @include on-tablet {
+      @include flex-between;
+
+      padding-block: 0;
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      gap: 167px;
+    }
+  }
+
+
+  &__item {
+    color: $secondary-color;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__top {
+    grid-column: span 4;
+
+    @include flex-center;
+
+    @include on-tablet {
+      @include flex-between;
+    }
+
+    font-family: $font-semibold;
+    color: $secondary-color;
+    font-size: 12px;
+    gap: 16px;
+  }
+
+  &__arrow {
+    @include flex-center;
+
+    border: 1px solid $icons-color;
+    border-radius: 48px;
+    width: 32px;
+    height: 32px;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    &__img {
+      transform: rotate(270deg);
+    }
+
+    &__imgDark {
+      display: none;
+    }
+  }
+}
+
+[data-theme="dark"] {
+  .footer {
+    border-top: 1px solid $elements-theme-dark;
+    background-color: $black-theme-dark;
+
+    &__logo {
+      &__img {
+        display: none;
+      }
+
+      &__imgDark {
+        display: block;
+      }
+    }
+
+    &__item {
+      color: $white-theme-dark;
+
+      &:hover {
+        color: $accent-theme-dark;
+      }
+    }
+
+    &__arrow {
+      @include flex-center;
+
+      background-color: $surface2-theme-dark;
+      border-radius: 0;
+      border: 0;
+
+      &__img {
+        display: none;
+      }
+
+      &__imgDark {
+        display: block;
+      }
+
+      &:hover {
+        background-color: $icons-theme-dark;
+      }
+    }
+
+    &__backToTop {
+      color: $secondary-theme-dark;
+    }
+  }
+}

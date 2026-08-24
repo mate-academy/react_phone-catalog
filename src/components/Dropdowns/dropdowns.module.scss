@@ -1,0 +1,92 @@
+@use '/src/styles/utils' as *;
+
+.dropdowns {
+  &__title {
+    @include small-text;
+
+    color: $secondary-color;
+  }
+
+  &__arrows {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+  }
+
+  &__arrowDark {
+    display: none;
+  }
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+  &__select {
+    @include buttons;
+
+    width: 136px;
+
+    border: 1px solid $icons-color;
+    color: $primary-color;
+    border-radius: 8px;
+
+    padding-block: 12px;
+    padding-inline: 16px 40px;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &:hover {
+      border-color: $secondary-color;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+    }
+
+    @include on-tablet {
+      width: 175px;
+    }
+  }
+}
+
+[data-theme="dark"] {
+  .dropdowns {
+    &__title {
+      color: $secondary-theme-dark;
+    }
+
+    &__arrow {
+      display: none;
+    }
+
+    &__arrowDark {
+      display: block;
+    }
+  }
+
+  .dropdown {
+    &__select {
+      border: 1px solid $surface2-theme-dark;
+      border-radius: 0;
+      color: $white-theme-dark;
+      background-color: $surface2-theme-dark;
+
+      &:hover {
+        border-color: $icons-theme-dark;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $accent-theme-dark;
+      }
+    }
+  }
+}

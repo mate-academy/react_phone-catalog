@@ -1,0 +1,38 @@
+$mobile-min-width: 320px;
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+$desktop-v2-min-width: 1440px;
+$font-bold: 'Mont-Bold', sans-serif;
+$font-semibold: 'Mont-SemiBold', sans-serif;
+$font-regular: 'Mont-Regular', sans-serif;
+$font-body-text: 'Mont-Body-Text', sans-serif;
+$accent-color: #F86800;
+$secondary-accent-color: #476DF4;
+$primary-color: #0F0F11;
+$secondary-color: #89939A;
+$icons-color: #B4BDC3;
+$elements-color: #E2E6E9;
+$hover-bg-color: #FAFBFC;
+$white-color: #FFF;
+$green-color: #27AE60;
+$red-color: #EB5757;
+$secondary-theme-dark: #75767F;
+$icons-theme-dark: #4A4D58;
+$elements-theme-dark: #3B3E4A;
+$surface2-theme-dark: #323542;
+$surface1-theme-dark: #161827;
+$black-theme-dark: #0F1121;
+$white-theme-dark: #F1F2F9;
+$accent-theme-dark: #905BFF;
+$accentHover-theme-dark: #A378FF;
+$green-theme-dark: #27AE60;
+$red-theme-dark: #EB5757;
+
+:root {
+  --color-title: #0F0F11;
+}
+
+[data-theme="dark"] {
+  --color-title: #F1F2F9;
+}
+

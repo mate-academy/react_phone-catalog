@@ -1,0 +1,82 @@
+@use '/src/styles/utils' as *;
+
+[data-theme="dark"] {
+  .details {
+    &__id {
+      color: $icons-theme-dark;
+    }
+  }
+
+  .slider {
+    &__thumbnail {
+      border: 1px solid $elements-theme-dark;
+      border-radius: 0;
+
+      &:hover {
+        border-color: $secondary-theme-dark;
+      }
+    }
+  }
+
+  .information {
+    &__title {
+      color: $secondary-theme-dark;
+    }
+
+    &__capacity {
+      border-top: 1px solid $elements-theme-dark;
+    }
+  }
+
+  .colors {
+    &__button {
+      border: 1px solid $elements-theme-dark;
+
+      &:hover {
+        border-color: $secondary-theme-dark;
+      }
+    }
+
+    &__circle {
+      border: 2px solid $black-theme-dark;
+    }
+  }
+
+  .capacity {
+    &__button {
+      color: $white-theme-dark;
+      border: 1px solid $icons-theme-dark;
+      border-radius: 0;
+
+      &:hover {
+        border-color: $white-theme-dark;
+      }
+    }
+  }
+
+  .active {
+    &__color {
+      border-color: $white-theme-dark;
+    }
+
+    &__button {
+      color: $black-theme-dark;
+      background-color: $white-theme-dark;
+      border-color: $white-theme-dark;
+    }
+  }
+
+  .items {
+    &__characteristic {
+      color: $secondary-theme-dark;
+    }
+
+    &__price {
+      border-top: 1px solid $elements-theme-dark;
+    }
+  }
+
+  .characteristic {
+    color: $white-theme-dark;
+  }
+}

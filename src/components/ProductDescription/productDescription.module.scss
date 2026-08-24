@@ -1,0 +1,92 @@
+@use '/src/styles/utils' as *;
+
+.description {
+  &__about {
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__title {
+    @include h3;
+
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__characteristics {
+    @include body-text;
+
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / -1;
+    }
+  }
+}
+
+.characteristics {
+  padding-top: 25px;
+
+  &__title {
+    @include flex-between;
+
+    gap: 10px;
+    padding-bottom: 8px;
+    color: $secondary-color;
+  }
+
+  &__value {
+    font-family: $font-regular;
+    color: $primary-color;
+  }
+}
+
+.section {
+  &__title {
+    @include h4;
+
+    padding-top: 32px;
+  }
+
+  &__paragraph {
+    @include body-text;
+
+    padding-top: 16px;
+    color: $secondary-color;
+  }
+}
+
+[data-theme="dark"] {
+  .description {
+    &__title {
+      border-bottom: 1px solid $elements-theme-dark;
+    }
+  }
+
+  .characteristics {
+    &__title {
+      color: $secondary-theme-dark;
+    }
+
+    &__value {
+      color: $white-theme-dark;
+    }
+  }
+
+  .section {
+    &__paragraph {
+      color: $secondary-theme-dark;
+    }
+  }
+}

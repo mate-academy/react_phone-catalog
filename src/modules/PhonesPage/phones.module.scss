@@ -1,0 +1,59 @@
+@use '/src/styles/utils' as *;
+
+.phones {
+  flex: 1;
+
+  @include page-grid;
+
+  &__navigation {
+    @include styles-navigation-product;
+
+    padding-inline: 16px;
+
+    @include on-tablet {
+      padding-inline: 0;
+    }
+  }
+
+  &__title {
+    @include h1;
+  }
+
+  &__length {
+    @include body-text;
+
+    color: $secondary-color;
+  }
+}
+
+.catalog {
+  @include grid-card;
+
+  &__item {
+    grid-column: span 4;
+
+    &:hover {
+      @include hover-items;
+    }
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-desktop {
+      overflow: hidden;
+    }
+  }
+}
+
+.dropdowns {
+  @include dropdowns-page-products;
+}
+
+[data-theme="dark"] {
+  .phones {
+    &__length {
+      color: $secondary-theme-dark;
+    }
+  }
+}

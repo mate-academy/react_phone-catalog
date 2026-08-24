@@ -1,0 +1,51 @@
+@use '/src/styles/utils' as *;
+@use '/src/styles/shared/models';
+
+.back {
+  display: flex;
+  gap: 4px;
+  width: 66px;
+
+  font-family: $font-semibold;
+  color: $secondary-color;
+  font-size: 12px;
+
+  &__images {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__img {
+    display: block;
+  }
+
+  &__imgDark {
+    display: none;
+  }
+
+  &__title {
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+[data-theme="dark"] {
+  .back {
+    color: $white-theme-dark;
+
+    &__img {
+      display: none;
+    }
+
+    &__imgDark {
+      display: block;
+    }
+
+    &__title {
+      &:hover {
+        color: $accent-theme-dark;
+      }
+    }
+  }
+}

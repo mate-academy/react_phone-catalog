@@ -1,0 +1,76 @@
+@use '/src/styles/utils' as *;
+
+[data-theme="dark"] {
+  .cart {
+    &__items {
+      border: 0;
+      border-radius: 0;
+      background-color: $surface1-theme-dark;
+      color: $white-theme-dark;
+    }
+
+    &__checkout {
+      border-radius: 0;
+      border: 1px solid $elements-theme-dark;
+      background-color: $black-theme-dark;
+    }
+  }
+
+  .link {
+    color: $white-theme-dark;
+  }
+
+  .quantity {
+    &__icons {
+      border-radius: 0;
+      border: 0;
+      background-color: $surface2-theme-dark;
+
+      &:disabled {
+        background-color: $surface1-theme-dark;
+        border: 1px solid $elements-theme-dark;
+        cursor: not-allowed;
+      }
+
+      &:hover:not(:disabled) {
+        background-color: $icons-theme-dark;
+      }
+    }
+
+    &__icon {
+      display: none;
+    }
+
+    &__iconDark {
+      display: block;
+    }
+  }
+
+  .icons {
+    &__close {
+      display: none;
+    }
+
+    &__closeDark {
+      display: block;
+    }
+  }
+
+  .checkout {
+    &__info {
+      border-color: $elements-theme-dark;
+
+      &__items {
+        color: $secondary-theme-dark;
+      }
+    }
+
+    &__button {
+      @include style-buttons-dark;
+
+      &:hover {
+        @include active-button-dark;
+      }
+    }
+  }
+}

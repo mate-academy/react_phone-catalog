@@ -1,0 +1,37 @@
+@use '/src/styles/utils' as *;
+
+.Container {
+  @include page-grid;
+}
+
+.home_page {
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 12;
+  }
+
+  @include on-desktop {
+    grid-column: span 24;
+  }
+
+  &__title {
+    @include h1;
+
+    padding-inline: 16px;
+    padding-top: 24px;
+
+    @include on-tablet {
+      padding-inline: 0;
+      padding-top: 32px;
+    }
+
+    @include on-desktop {
+      padding-top: 56px;
+    }
+  }
+}
+
+.title {
+  display: none;
+}

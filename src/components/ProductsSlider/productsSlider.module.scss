@@ -1,0 +1,94 @@
+@use '/src/styles/utils' as *;
+
+.slider {
+  grid-column: span 4;
+  margin-inline: 16px;
+
+  @include on-tablet {
+    margin-inline: 0;
+    grid-column: span 12;
+  }
+
+  @include on-desktop {
+    grid-column: span 24;
+  }
+
+  &__navigation {
+    @include flex-between;
+
+    padding-bottom: 24px;
+
+    @include on-mobile {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+    }
+  }
+
+  &__title {
+    @include h2;
+  }
+
+  &__arrows {
+    display: flex;
+    gap: 16px;
+    justify-content: end;
+
+    &__arrow {
+      @include arrow-style;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+
+      &:disabled {
+        border-color: $elements-color;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.cards {
+  width: calc(100vw - (50vw - 50%));
+  overflow: hidden;
+
+  @include on-desktop {
+    width: 100%;
+  }
+
+  &__track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.5s ease;
+    will-change: transform;
+  }
+
+  &__item {
+    flex: 0 0 212px;
+
+    @include on-tablet {
+      flex: 0 0 237px;
+    }
+
+    @include on-desktop {
+      flex: 0 0 272px;
+    }
+  }
+}
+
+[data-theme="dark"] {
+  .slider {
+    &__arrows {
+      &__arrow {
+        @include arrow-style-dark;
+
+        &:disabled {
+          border: 1px solid $elements-theme-dark;
+          background-color: $black-theme-dark;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+@use '/src/styles/utils' as *;
+
+.navigation {
+  display: flex;
+  gap: 8px;
+  height: 16px;
+
+  &__img {
+    display: block;
+  }
+
+  &__imgDark {
+    display: none;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    @include small-text;
+
+    color: $primary-color;
+  }
+
+  &__product {
+    font-family: $font-regular;
+    font-size: 12px;
+    color: $secondary-color;
+  }
+}
+
+.active {
+  font-family: $font-regular;
+  color: $secondary-color;
+}
+
+[data-theme="dark"] {
+  .navigation {
+    &__img {
+      display: none;
+    }
+
+    &__imgDark {
+      display: block;
+    }
+
+    &__title {
+      color: $white-theme-dark;
+    }
+
+    &__product {
+      color: $secondary-theme-dark;
+    }
+  }
+
+  .active {
+    color: $secondary-theme-dark;
+  }
+}
