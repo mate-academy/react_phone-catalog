@@ -1,0 +1,21 @@
+.ProductsListList {
+  display: grid;
+  grid-template-columns: repeat(4, 272px);  // 4 колонки по 272px, під desktop-ширину картки
+  justify-content: center;                   // центрує саму сітку в контейнері, якщо контейнер ширший за 4×272px+gaps
+  gap: 40px 16px;
+  list-style: none;
+  padding: 0;
+  width: 100%;
+
+  @media (max-width: 1199px) {
+    grid-template-columns: repeat(3, 272px); // під ширину картки на цьому брейкпоінті
+  }
+
+  @media (max-width: 865px) {
+    grid-template-columns: repeat(2, 272px); // на мобільному, ймовірно, 2 картки в ряд
+  }
+
+  @media (max-width: 579px) {
+    grid-template-columns: repeat(1, 287px); // на мобільному, ймовірно, 2 картки в ряд
+  }
+}
