@@ -116,7 +116,7 @@ export const HomePage = () => {
           >
             <img
               className={styles.homePageArrowImg}
-              src="public/img/footer-button-arrow.png"
+              src="img/footer-button-arrow.png"
               alt="123"
             />
           </button>
@@ -143,7 +143,7 @@ export const HomePage = () => {
           >
             <img
               className={`${styles.homePageArrowImg} ${styles.homePageArrowImgRight}`}
-              src="public/img/footer-button-arrow.png"
+              src="img/footer-button-arrow.png"
               alt="123"
             />
           </button>

@@ -9,7 +9,7 @@ export function useProducts() {
   async function getProducts() {
     try {
       setError(false);
-      const response = await fetch('/api/products.json');
+      const response = await fetch('api/products.json');
 
       if (!response.ok) {
         setError(true);

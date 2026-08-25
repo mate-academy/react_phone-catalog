@@ -26,7 +26,7 @@ export function useProductDetails(productId: string | undefined) {
     }
 
     try {
-      const response = await fetch(`/api/${summary.category}.json`);
+      const response = await fetch(`api/${summary.category}.json`);
 
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);

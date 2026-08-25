@@ -88,7 +88,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose, isOpen }) => {
         >
           <div className={styles.burgerMenuUtilContainer}>
             <img
-              src="/img/header-likes.jpg"
+              src="img/header-likes.jpg"
               className={styles.burgerMenuIcon}
               alt="likes"
             />
@@ -108,7 +108,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose, isOpen }) => {
         >
           <div className={styles.burgerMenuUtilContainer}>
             <img
-              src="/img/header-solid.jpg"
+              src="img/header-solid.jpg"
               className={styles.burgerMenuIcon}
               alt="solid"
             />

@@ -65,7 +65,7 @@ export const CartPage: React.FC = () => {
           onClick={() => navigate(-1)}
         >
           <span className={styles.cartBackIcon}>
-            <img src="/img/active-arrow.svg" alt="arrow" />
+            <img src="img/active-arrow.svg" alt="arrow" />
           </span>
           <span className={styles.cartBackText}>Back</span>
         </button>
