@@ -23,12 +23,12 @@ export const FavoritesPage = () => {
       <div className={styles.favoritesPage}>
         <div className={styles.favoritesPageNav}>
           <NavLink to="/" className={styles.favoritesPageIcon}>
-            <img src="img/Home.svg" alt="homeIcon" />
+            <img src="/img/Home.svg" alt="homeIcon" />
           </NavLink>
           <span
             className={`${styles.favoritesPageIcon} ${styles.favoritesPageArrow}`}
           >
-            <img src="img/comon-arrow.svg" alt="arrow" />
+            <img src="/img/comon-arrow.svg" alt="arrow" />
           </span>
           <NavLink to={`/favorites`} className={styles.favoritesPageLink}>
             Favourites

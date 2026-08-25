@@ -31,7 +31,7 @@ export const Header = () => {
         <NavLink to="/" className={styles.headerLogo}>
           <img
             className={styles.headerLogoIcon}
-            src="img/Logo.jpg"
+            src="/img/Logo.jpg"
             alt="Logo"
           />
         </NavLink>
@@ -84,7 +84,7 @@ export const Header = () => {
         <NavLink to="/favorites" className={styles.headerUtil}>
           <div className={styles.headerUtilContainer}>
             <img
-              src="img/header-likes.jpg"
+              src="/img/header-likes.jpg"
               className={styles.headerIcon}
               alt="likes"
             />
@@ -96,7 +96,7 @@ export const Header = () => {
         <NavLink to="/cart" className={styles.headerUtil}>
           <div className={styles.headerUtilContainer}>
             <img
-              src="img/header-solid.jpg"
+              src="/img/header-solid.jpg"
               className={styles.headerIcon}
               alt="solid"
             />

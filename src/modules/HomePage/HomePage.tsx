@@ -116,7 +116,7 @@ export const HomePage = () => {
           >
             <img
               className={styles.homePageArrowImg}
-              src="img/footer-button-arrow.png"
+              src="/img/footer-button-arrow.png"
               alt="123"
             />
           </button>
@@ -143,7 +143,7 @@ export const HomePage = () => {
           >
             <img
               className={`${styles.homePageArrowImg} ${styles.homePageArrowImgRight}`}
-              src="img/footer-button-arrow.png"
+              src="/img/footer-button-arrow.png"
               alt="123"
             />
           </button>
@@ -175,7 +175,7 @@ export const HomePage = () => {
           <NavLink to="/phones" className={styles.homePageShopByCategoryCard}>
             <img
               className={styles.homePageShopByCategoryImg}
-              src="img/category-phones.jpg"
+              src="/img/category-phones.jpg"
               alt=""
             />
             <h3 className={styles.homePageShopByCategoryText}>Mobile phones</h3>
@@ -187,7 +187,7 @@ export const HomePage = () => {
           <NavLink to="/tablets" className={styles.homePageShopByCategoryCard}>
             <img
               className={styles.homePageShopByCategoryImg}
-              src="img/category-tablets.png"
+              src="/img/category-tablets.png"
               alt=""
             />
             <h3 className={styles.homePageShopByCategoryText}>Tablets</h3>
@@ -202,7 +202,7 @@ export const HomePage = () => {
           >
             <img
               className={styles.homePageShopByCategoryImg}
-              src="img/category-accessories.jpg"
+              src="/img/category-accessories.jpg"
               alt=""
             />
             <h3 className={styles.homePageShopByCategoryText}>Accessories</h3>

@@ -48,7 +48,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
             <img
               className={styles.productsSliderButtonImg}
               src={
-                canScrollLeft ? 'img/comon-arrow.svg' : 'img/active-arrow.svg'
+                canScrollLeft ? '/img/comon-arrow.svg' : '/img/active-arrow.svg'
               }
               alt="arrow"
             />
@@ -61,7 +61,9 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
             <img
               className={styles.productsSliderButtonImg}
               src={
-                canScrollRight ? 'img/comon-arrow.svg' : 'img/active-arrow.svg'
+                canScrollRight
+                  ? '/img/comon-arrow.svg'
+                  : '/img/active-arrow.svg'
               }
               alt="arrow"
             />

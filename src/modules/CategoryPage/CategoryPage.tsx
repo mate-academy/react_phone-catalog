@@ -131,7 +131,7 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
       <div className={styles.categoryPage}>
         <div className={styles.categoryPageNav}>
           <NavLink to="/" className={styles.categoryPageIcon}>
-            <img src="img/Home.svg" alt="homeIcon" />
+            <img src="/img/Home.svg" alt="homeIcon" />
           </NavLink>
           <span
             className={`${styles.categoryPageIcon} ${styles.categoryPageArrow}`}
@@ -192,8 +192,8 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
                       className={styles.categoryPageButtonImg}
                       src={
                         currentPage === 1
-                          ? 'img/comon-arrow.svg'
-                          : 'img/active-arrow.svg'
+                          ? '/img/comon-arrow.svg'
+                          : '/img/active-arrow.svg'
                       }
                       alt="arrow"
                     />
@@ -224,8 +224,8 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
                       className={styles.categoryPageButtonImg}
                       src={
                         currentPage === totalPages
-                          ? 'img/comon-arrow.svg'
-                          : 'img/active-arrow.svg'
+                          ? '/img/comon-arrow.svg'
+                          : '/img/active-arrow.svg'
                       }
                       alt="arrow"
                     />
