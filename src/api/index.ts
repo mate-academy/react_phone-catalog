@@ -1,1 +1,1 @@
-export const BASE_URL = '/api';
+export const API_URL = '/react_phone-catalog/api/';

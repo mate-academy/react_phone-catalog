@@ -6,6 +6,7 @@ import { useCart } from '../../hooks/useCart';
 import { useFavorites } from '../../hooks/useFavorites';
 
 import styles from './Header.module.scss';
+import { BASE_URL } from '../../constants/baseUrl';
 
 export const Header = () => {
   const { totalItems } = useCart();
@@ -19,7 +20,7 @@ export const Header = () => {
       <div className={styles.container}>
         <div className={styles.left}>
           <NavLink to="/" className={styles.logo}>
-            <img src="/img/logo/logo.png" alt="Nice Gadgets" />
+            <img src={`${BASE_URL}img/logo/logo.png`} alt="Nice Gadgets" />
           </NavLink>
 
           <nav className={styles.navigation}>
@@ -46,8 +47,8 @@ export const Header = () => {
             <img
               src={
                 favorites.length > 0
-                  ? '/img/icons/heart-filled.png'
-                  : '/img/icons/heart.png'
+                  ? `${BASE_URL}img/icons/heart-filled.png`
+                  : `${BASE_URL}img/icons/heart.png`
               }
               alt="Favorites"
               className={styles.icon}
@@ -59,7 +60,11 @@ export const Header = () => {
           </NavLink>
 
           <NavLink to="/cart" className={styles.action}>
-            <img src="/img/icons/cart.png" alt="Cart" className={styles.icon} />
+            <img
+              src={`${BASE_URL}img/icons/cart.png`}
+              alt="Cart"
+              className={styles.icon}
+            />
 
             {totalItems > 0 && (
               <span className={styles.badge}>{totalItems}</span>

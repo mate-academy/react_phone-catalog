@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 
 import styles from './Categories.module.scss';
+import { BASE_URL } from '../../../../constants/baseUrl';
 
 export const Categories = () => {
   return (
@@ -11,7 +12,7 @@ export const Categories = () => {
       <div className={styles.list}>
         <Link to="/phones" className={styles.category}>
           <img
-            src="/img/category-phones.png"
+            src={`${BASE_URL}img/category-phones.png`}
             alt="Mobile phones"
             className={styles.image}
           />
@@ -23,7 +24,7 @@ export const Categories = () => {
 
         <Link to="/tablets" className={styles.category}>
           <img
-            src="/img/category-tablets.png"
+            src={`${BASE_URL}img/category-tablets.png`}
             alt="Tablets"
             className={styles.image}
           />
@@ -35,7 +36,7 @@ export const Categories = () => {
 
         <Link to="/accessories" className={styles.category}>
           <img
-            src="/img/category-accessories.png"
+            src={`${BASE_URL}img/category-accessories.png`}
             alt="Accessories"
             className={styles.image}
           />

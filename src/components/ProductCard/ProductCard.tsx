@@ -1,8 +1,10 @@
+/* eslint-disable import/extensions */
 /* eslint-disable prettier/prettier */
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
 import styles from './ProductCard.module.scss';
+import { BASE_URL } from '../../constants/baseUrl';
 
 import { Product } from '../../types/Product';
 
@@ -26,7 +28,7 @@ export const ProductCard = ({ product }: Props) => {
     <article className={styles.productCard}>
       <Link to={`/${product.category}/${product.itemId}`}>
         <img
-          src={`/${product.image.replace(/^\/+/, '')}`}
+          src={`${BASE_URL}${product.image.replace(/^\/+/, '')}`}
           alt={product.name}
           className={styles.image}
         />
@@ -92,7 +94,9 @@ export const ProductCard = ({ product }: Props) => {
         >
           <img
             src={
-              favorite ? '/img/icons/heart-filled.png' : '/img/icons/heart.png'
+              favorite
+                ? `${BASE_URL}img/icons/heart-filled.png`
+                : `${BASE_URL}img/icons/heart.png`
             }
             alt="Favorite"
             className={styles.favoriteIcon}

@@ -5,11 +5,13 @@
 
   width: 272px;
   padding: 24px;
+  box-sizing: border-box;
+  flex-shrink: 0;
 
   border: 1px solid #e2e6e9;
   background: #fff;
 
-  transition: box-shadow .3s;
+  transition: box-shadow 0.3s;
 }
 
 .productCard:hover {
@@ -172,3 +174,7 @@
 .favoriteButton:hover .favoriteIcon {
   transform: scale(1.1);
 }
+
+
+
+

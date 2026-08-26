@@ -22,6 +22,7 @@ import { Product } from '../../types/Product';
 import { ProductDetails } from '../../types/ProductDetails';
 
 import styles from './ProductDetailsPage.module.scss';
+import { BASE_URL } from '../../constants/baseUrl';
 
 export const ProductDetailsPage = () => {
   const { category, productId } = useParams();
@@ -220,7 +221,7 @@ export const ProductDetailsPage = () => {
         className={styles.backButton}
         onClick={() => navigate(-1)}
       >
-        <img src="/img/icons/arrow-left.png" alt="Back" />
+        <img src={`${BASE_URL}img/icons/arrow-left.png`} alt="Back" />
         Back
       </button>
 
@@ -238,14 +239,17 @@ export const ProductDetailsPage = () => {
               })}
               onClick={() => setSelectedImage(index)}
             >
-              <img src={`/${image.replace(/^\/+/, '')}`} alt={product.name} />
+              <img
+                src={`${BASE_URL}${image.replace(/^\/+/, '')}`}
+                alt={product.name}
+              />
             </button>
           ))}
         </div>
 
         <div className={styles.image}>
           <img
-            src={`/${product.images[selectedImage].replace(/^\/+/, '')}`}
+            src={`${BASE_URL}${product.images[selectedImage].replace(/^\/+/, '')}`}
             alt={product.name}
           />
         </div>
@@ -324,8 +328,8 @@ export const ProductDetailsPage = () => {
               <img
                 src={
                   favorite
-                    ? '/img/icons/heart-filled.png'
-                    : '/img/icons/heart.png'
+                    ? `${BASE_URL}img/icons/heart-filled.png`
+                    : `${BASE_URL}img/icons/heart.png`
                 }
                 alt="Favorite"
                 className={styles.favoriteIcon}

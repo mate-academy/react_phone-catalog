@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../hooks/useCart';
 
 import styles from './CartPage.module.scss';
+import { BASE_URL } from '../../constants/baseUrl';
 
 export const CartPage = () => {
   const navigate = useNavigate();
@@ -61,7 +62,11 @@ export const CartPage = () => {
                 ×
               </button>
 
-              <img src={item.image} alt={item.name} className={styles.image} />
+              <img
+                src={`${BASE_URL}${item.image.replace(/^\/+/, '')}`}
+                alt={item.name}
+                className={styles.image}
+              />
 
               <div className={styles.info}>
                 <h3>{item.name}</h3>
@@ -94,7 +99,7 @@ export const CartPage = () => {
             className={styles.checkout}
             onClick={() => {
               const confirmed = window.confirm(
-                'Checkout is not implemented yet. Clear the Cart?',
+                'Checkout is not implemented yet. Do you want to clear the Cart?',
               );
 
               if (confirmed) {

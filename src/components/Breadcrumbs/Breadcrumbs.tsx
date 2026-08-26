@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Link } from 'react-router-dom';
 
 import styles from './Breadcrumbs.module.scss';

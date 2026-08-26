@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
 

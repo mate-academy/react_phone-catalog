@@ -31,7 +31,10 @@
   width: 100%;
   aspect-ratio: 1;
 
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+
+  background-color: #f2f2f2;
 
   transition: transform 0.3s ease;
 }

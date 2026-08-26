@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import styles from './Footer.module.scss';
+import { BASE_URL } from '../../constants/baseUrl';
 
 export const Footer = () => {
   const backToTop = () => {
@@ -12,10 +13,10 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <p className={styles.copy}>© 2026 Nice Gadgets</p>
+        <p className={styles.copy}>� 2026 Nice Gadgets</p>
 
         <img
-          src="/img/logo/logo.png"
+          src={`${BASE_URL}img/logo/logo.png`}
           alt="Nice Gadgets"
           className={styles.logo}
         />
@@ -32,7 +33,7 @@ export const Footer = () => {
 
           <button type="button" className={styles.top} onClick={backToTop}>
             Back to top
-            <img src="/img/icons/arrow-up.png" alt="Top" />
+            <img src={`${BASE_URL}img/icons/arrow-up.png`} alt="Top" />
           </button>
         </div>
       </div>

@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface ProductDescription {
   title: string;
   text: string[];
 }
 
 export interface ProductDetails {
+  [x: string]: any;
   id: string;
   category: string;
   namespaceId: string;
