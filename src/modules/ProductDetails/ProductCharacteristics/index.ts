@@ -1,0 +1,1 @@
+export { ProductCharacteristics } from './ProductCharacteristics';

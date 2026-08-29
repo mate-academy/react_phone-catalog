@@ -1,0 +1,60 @@
+@import '../../../styles/utils';
+
+.navbar {
+  display: flex;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    @include desktop {
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    height: 100%;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    color: #75767F;
+    text-transform: uppercase;
+    position: relative;
+    font-size: 12px;
+    font-weight: 800;
+
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: $color-white;
+      bottom: 0;
+      left: 0;
+      transition: transform 0.3s ease-in-out;
+      transform: scale(0);
+    }
+
+    &:hover {
+      color: $color-white;
+
+      &::after {
+        transform: scale(1);
+      }
+    }
+
+    &--active {
+      color: $color-white;
+
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+}

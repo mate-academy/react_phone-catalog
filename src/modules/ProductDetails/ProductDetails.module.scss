@@ -1,0 +1,14 @@
+@import '../../styles/utils';
+
+.product-details {
+  padding-bottom: 56px;
+  padding-top: 24px;
+
+  &__nav {
+    @include padding-inline;
+  }
+
+  &__error-image {
+    width: 100%;
+  }
+}

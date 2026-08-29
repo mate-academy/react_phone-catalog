@@ -1,0 +1,58 @@
+@import '../../../styles/utils';
+
+.pagination {
+  height: 32px;
+  display: flex;
+  justify-content: center;
+
+  &__item {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__page {
+    width: 32px;
+    background-color: #161827;
+    border: none;
+    color: $color-white;
+
+    &:hover {
+      background-color: $color-grey;
+    }
+
+    &--active {
+      background-color: $color-button;
+    }
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: #323542;
+    border: none;
+
+    &:disabled {
+      border: 1px solid #3B3E4A;
+      background-color: $background-color;
+    }
+
+    &--prev,
+    &--next {
+      .product-slider__btn-icon {
+        filter: brightness(1);
+      }
+    }
+
+    &--prev:disabled,
+    &--next:disabled {
+      .product-slider__btn-icon {
+        filter: brightness(0.5);
+      }
+    }
+  }
+}

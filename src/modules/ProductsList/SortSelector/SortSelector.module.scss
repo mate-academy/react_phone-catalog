@@ -1,0 +1,68 @@
+@import '../../../styles/utils';
+
+.selector {
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__title {
+    color: $color-grey;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+
+  &__dropdown {
+    position: relative;
+  }
+
+  &__select {
+    background-color: #323542;
+    border: none;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+
+    &:hover {
+      background-color: $color-grey;
+    }
+  }
+
+  &__text {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  &__menu {
+    border: 1px solid $hover-color;
+    position: absolute;
+    width: 100%;
+    padding-top: 4px;
+    background-color: $background-color;
+    z-index: 1;
+  }
+
+  &__item {
+    color: $color-white;
+    cursor: default;
+    padding: 8px 12px;
+    background-color: inherit;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: none;
+
+    &:hover {
+      background-color: $color-grey;
+    }
+
+    &--active {
+      background-color: $hover-color;
+    }
+  }
+}
