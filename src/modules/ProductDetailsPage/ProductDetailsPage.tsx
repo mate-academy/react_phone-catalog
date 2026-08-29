@@ -125,7 +125,9 @@ export const ProductDetailsPage = () => {
     );
   }
 
-  const currentProduct = products.find(item => item.itemId === product.id);
+  const currentProduct = products.find(
+    item => item.category === category && item.itemId === product.id,
+  );
 
   const isAdded = currentProduct
     ? cart.some(item => item.id === currentProduct.id)
