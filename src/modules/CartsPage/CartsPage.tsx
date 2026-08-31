@@ -100,7 +100,7 @@ export const CartPage: React.FC = () => {
 
                     <div className={styles.cartImageContainer}>
                       <img
-                        src={`/${item.image}`}
+                        src={`${getPublicPath(item.image)}`}
                         alt={item.name}
                         className={styles.cartImage}
                       />
