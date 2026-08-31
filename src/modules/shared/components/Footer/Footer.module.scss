@@ -80,6 +80,10 @@
     align-self: center;
     align-items: center;
 
+    &Text {
+      cursor: pointer;
+    }
+
     &Button {
       cursor: pointer;
       background-color: white;
