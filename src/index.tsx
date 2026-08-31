@@ -11,7 +11,7 @@ import { CartProvider } from './modules/shared/context/CartContext';
 createRoot(document.getElementById('root') as HTMLElement).render(
   <CartProvider>
     <FavoritesProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/react_phone-catalog/">
         <div className="mainContent">
           <Header />
           <App />

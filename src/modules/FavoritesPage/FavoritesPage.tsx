@@ -4,6 +4,7 @@ import { useFavorites } from '../shared/context/FavoriteContext';
 import { useProducts } from '../shared/hooks/useProducts';
 import { ProductsList } from '../shared/components/ProductsList';
 import { Loader } from '../shared/components/Loader';
+import { getPublicPath } from '../shared/utils/getPublicPath';
 
 export const FavoritesPage = () => {
   const { favorites } = useFavorites();
@@ -23,12 +24,12 @@ export const FavoritesPage = () => {
       <div className={styles.favoritesPage}>
         <div className={styles.favoritesPageNav}>
           <NavLink to="/" className={styles.favoritesPageIcon}>
-            <img src="/img/Home.svg" alt="homeIcon" />
+            <img src={getPublicPath('/img/Home.svg')} alt="homeIcon" />
           </NavLink>
           <span
             className={`${styles.favoritesPageIcon} ${styles.favoritesPageArrow}`}
           >
-            <img src="/img/comon-arrow.svg" alt="arrow" />
+            <img src={getPublicPath('/img/comon-arrow.svg')} alt="arrow" />
           </span>
           <NavLink to={`/favorites`} className={styles.favoritesPageLink}>
             Favourites

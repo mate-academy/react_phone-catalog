@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Product } from '../types/Product';
+import { getPublicPath } from '../utils/getPublicPath';
 
 export function useProducts() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -9,7 +10,7 @@ export function useProducts() {
   async function getProducts() {
     try {
       setError(false);
-      const response = await fetch('/api/products.json');
+      const response = await fetch(getPublicPath('/api/products.json'));
 
       if (!response.ok) {
         setError(true);

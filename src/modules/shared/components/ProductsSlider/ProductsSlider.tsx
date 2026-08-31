@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Product } from '../../types/Product';
 import styles from './ProductsSlider.module.scss';
 import { ProductCard } from '../ProductCard';
+import { getPublicPath } from '../../utils/getPublicPath';
 
 type Props = {
   title: string;
@@ -48,7 +49,9 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
             <img
               className={styles.productsSliderButtonImg}
               src={
-                canScrollLeft ? '/img/comon-arrow.svg' : '/img/active-arrow.svg'
+                canScrollLeft
+                  ? getPublicPath('img/comon-arrow.svg')
+                  : getPublicPath('/img/active-arrow.svg')
               }
               alt="arrow"
             />
@@ -62,8 +65,8 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
               className={styles.productsSliderButtonImg}
               src={
                 canScrollRight
-                  ? '/img/comon-arrow.svg'
-                  : '/img/active-arrow.svg'
+                  ? getPublicPath('/img/comon-arrow.svg')
+                  : getPublicPath('/img/active-arrow.svg')
               }
               alt="arrow"
             />

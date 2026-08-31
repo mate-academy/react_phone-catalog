@@ -4,6 +4,7 @@ import { Product } from '../../types/Product';
 import styles from './ProductCard.module.scss';
 import { useFavorites } from '../../context/FavoriteContext';
 import { useCart } from '../../context/CartContext';
+import { getPublicPath } from '../../utils/getPublicPath';
 
 type Props = { product: Product };
 
@@ -35,7 +36,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       >
         <img
           className={styles.productCardImage}
-          src={`/${product.image}`}
+          src={`${getPublicPath(product.image)}`}
           alt={product.name}
         />
         <h3 className={styles.productCardName}>{product.name}</h3>

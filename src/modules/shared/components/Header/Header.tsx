@@ -5,6 +5,7 @@ import { BurgerMenu } from '../BurgerMenu';
 import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoriteContext';
 import { useProducts } from '../../hooks/useProducts';
+import { getPublicPath } from '../../utils/getPublicPath';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,7 +32,7 @@ export const Header = () => {
         <NavLink to="/" className={styles.headerLogo}>
           <img
             className={styles.headerLogoIcon}
-            src="/img/Logo.jpg"
+            src={getPublicPath('img/Logo.jpg')}
             alt="Logo"
           />
         </NavLink>
@@ -84,7 +85,7 @@ export const Header = () => {
         <NavLink to="/favorites" className={styles.headerUtil}>
           <div className={styles.headerUtilContainer}>
             <img
-              src="/img/header-likes.jpg"
+              src={getPublicPath('img/header-likes.jpg')}
               className={styles.headerIcon}
               alt="likes"
             />
@@ -96,7 +97,7 @@ export const Header = () => {
         <NavLink to="/cart" className={styles.headerUtil}>
           <div className={styles.headerUtilContainer}>
             <img
-              src="/img/header-solid.jpg"
+              src={getPublicPath('img/header-solid.jpg')}
               className={styles.headerIcon}
               alt="solid"
             />

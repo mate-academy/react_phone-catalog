@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useProducts } from './useProducts';
 import { ProductDetails } from '../types/ProductDetails';
+import { getPublicPath } from '../utils/getPublicPath';
 
 export function useProductDetails(productId: string | undefined) {
   const [product, setProduct] = useState<ProductDetails | null>(null);
@@ -26,7 +27,9 @@ export function useProductDetails(productId: string | undefined) {
     }
 
     try {
-      const response = await fetch(`/api/${summary.category}.json`);
+      const response = await fetch(
+        getPublicPath(`api/${summary.category}.json`),
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);

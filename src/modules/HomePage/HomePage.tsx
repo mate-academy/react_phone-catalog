@@ -4,22 +4,23 @@ import { useProducts } from '../shared/hooks/useProducts';
 import { ProductsSlider } from '../shared/components/ProductsSlider';
 import { NavLink } from 'react-router-dom';
 import { Loader } from '../shared/components/Loader';
+import { getPublicPath } from '../shared/utils/getPublicPath';
 
 const slides = [
   {
-    image: '/img/banner-phones.jpg',
+    image: getPublicPath('/img/banner-phones.jpg'),
     title: 'Now available in our store!',
     text: 'Be the first!',
     link: '/phones',
   },
   {
-    image: '/img/banner-tablets.png',
+    image: getPublicPath('/img/banner-tablets.png'),
     title: 'Tablets for work and play',
     text: 'Choose your perfect device',
     link: '/tablets',
   },
   {
-    image: '/img/banner-accessories.jpg',
+    image: getPublicPath('/img/banner-accessories.jpg'),
     title: 'Accessories for every day',
     text: 'Complete your setup',
     link: '/accessories',
@@ -116,7 +117,7 @@ export const HomePage = () => {
           >
             <img
               className={styles.homePageArrowImg}
-              src="/img/footer-button-arrow.png"
+              src={getPublicPath('img/footer-button-arrow.png')}
               alt="123"
             />
           </button>
@@ -143,7 +144,7 @@ export const HomePage = () => {
           >
             <img
               className={`${styles.homePageArrowImg} ${styles.homePageArrowImgRight}`}
-              src="/img/footer-button-arrow.png"
+              src={getPublicPath('img/footer-button-arrow.png')}
               alt="123"
             />
           </button>
@@ -175,7 +176,7 @@ export const HomePage = () => {
           <NavLink to="/phones" className={styles.homePageShopByCategoryCard}>
             <img
               className={styles.homePageShopByCategoryImg}
-              src="/img/category-phones.jpg"
+              src={getPublicPath('img/category-phones.jpg')}
               alt=""
             />
             <h3 className={styles.homePageShopByCategoryText}>Mobile phones</h3>
@@ -187,7 +188,7 @@ export const HomePage = () => {
           <NavLink to="/tablets" className={styles.homePageShopByCategoryCard}>
             <img
               className={styles.homePageShopByCategoryImg}
-              src="/img/category-tablets.png"
+              src={getPublicPath('img/category-tablets.png')}
               alt=""
             />
             <h3 className={styles.homePageShopByCategoryText}>Tablets</h3>
@@ -202,7 +203,7 @@ export const HomePage = () => {
           >
             <img
               className={styles.homePageShopByCategoryImg}
-              src="/img/category-accessories.jpg"
+              src={getPublicPath('img/category-accessories.jpg')}
               alt=""
             />
             <h3 className={styles.homePageShopByCategoryText}>Accessories</h3>

@@ -9,6 +9,7 @@ import { getSuggestedProducts } from '../shared/utils/getSuggestedProducts';
 import { useFavorites } from '../shared/context/FavoriteContext';
 import { useCart } from '../shared/context/CartContext';
 import { Loader } from '../shared/components/Loader';
+import { getPublicPath } from '../shared/utils/getPublicPath';
 
 const colorMap: Record<string, string> = {
   black: '#000000',
@@ -144,12 +145,12 @@ export const ProductDetailsPage = () => {
           {/* Breadcrumbs */}
           <div className={styles.productDetailsPageNav}>
             <NavLink to="/" className={styles.productDetailsPageIcon}>
-              <img src="/img/Home.svg" alt="homeIcon" />
+              <img src={getPublicPath('img/Home.svg')} alt="homeIcon" />
             </NavLink>
             <span
               className={`${styles.productDetailsPageIcon} ${styles.productDetailsPageArrow}`}
             >
-              <img src="/img/comon-arrow.svg" alt="arrow" />
+              <img src={getPublicPath('img/comon-arrow.svg')} alt="arrow" />
             </span>
             <NavLink
               to={`/${product.category}`}
@@ -160,7 +161,7 @@ export const ProductDetailsPage = () => {
             <span
               className={`${styles.productDetailsPageIcon} ${styles.productDetailsPageArrow}`}
             >
-              <img src="/img/comon-arrow.svg" alt="arrow" />
+              <img src={getPublicPath('img/comon-arrow.svg')} alt="arrow" />
             </span>
             <div className={styles.productDetailsPageLink}>{product.name}</div>
           </div>
@@ -172,7 +173,7 @@ export const ProductDetailsPage = () => {
             onClick={() => navigate(-1)}
           >
             <span className={styles.productDetailsPageBackIcon}>
-              <img src="/img/active-arrow.svg" alt="arrow" />
+              <img src={getPublicPath('img/active-arrow.svg')} alt="arrow" />
             </span>
             <span className={styles.productDetailsPageBackText}>Back</span>
           </button>
@@ -196,7 +197,7 @@ export const ProductDetailsPage = () => {
                 >
                   <img
                     className={styles.productDetailsPageImg}
-                    src={`/${imgSrc}`}
+                    src={`${getPublicPath(imgSrc)}`}
                     alt={product.name}
                   />
                 </button>
@@ -206,7 +207,7 @@ export const ProductDetailsPage = () => {
             <div>
               <img
                 className={styles.productDetailsPageMainImg}
-                src={`/${activeImg}`}
+                src={`${getPublicPath(activeImg)}`}
                 alt={product.name}
               />
             </div>

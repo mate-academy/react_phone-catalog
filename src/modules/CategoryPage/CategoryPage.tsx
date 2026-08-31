@@ -5,6 +5,7 @@ import { useProducts } from '../shared/hooks/useProducts';
 import { CustomSelect } from '../shared/components/CustomSelect';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import styles from './CategoryPage.module.scss';
+import { getPublicPath } from '../shared/utils/getPublicPath';
 
 type Props = {
   category: 'phones' | 'tablets' | 'accessories';
@@ -131,12 +132,12 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
       <div className={styles.categoryPage}>
         <div className={styles.categoryPageNav}>
           <NavLink to="/" className={styles.categoryPageIcon}>
-            <img src="/img/Home.svg" alt="homeIcon" />
+            <img src={getPublicPath('/img/Home.svg')} alt="homeIcon" />
           </NavLink>
           <span
             className={`${styles.categoryPageIcon} ${styles.categoryPageArrow}`}
           >
-            <img src="img/comon-arrow.svg" alt="arrow" />
+            <img src={getPublicPath('img/comon-arrow.svg')} alt="arrow" />
           </span>
           <NavLink to={`/${category}`} className={styles.categoryPageLink}>
             {firstUL(category)}
@@ -224,8 +225,8 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
                       className={styles.categoryPageButtonImg}
                       src={
                         currentPage === totalPages
-                          ? '/img/comon-arrow.svg'
-                          : '/img/active-arrow.svg'
+                          ? getPublicPath('img/comon-arrow.svg')
+                          : getPublicPath('img/active-arrow.svg')
                       }
                       alt="arrow"
                     />

@@ -4,6 +4,7 @@ import { useCart } from '../shared/context/CartContext';
 import { useProducts } from '../shared/hooks/useProducts';
 import styles from './CartsPage.module.scss';
 import { Loader } from '../shared/components/Loader';
+import { getPublicPath } from '../shared/utils/getPublicPath';
 
 export const CartPage: React.FC = () => {
   const { products, loading, error } = useProducts();
@@ -65,7 +66,7 @@ export const CartPage: React.FC = () => {
           onClick={() => navigate(-1)}
         >
           <span className={styles.cartBackIcon}>
-            <img src="img/active-arrow.svg" alt="arrow" />
+            <img src={getPublicPath('img/active-arrow.svg')} alt="arrow" />
           </span>
           <span className={styles.cartBackText}>Back</span>
         </button>

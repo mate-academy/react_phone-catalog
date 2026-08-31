@@ -3,6 +3,7 @@ import styles from './BurgerMenu.module.scss';
 import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoriteContext';
 import { useProducts } from '../../hooks/useProducts';
+import { getPublicPath } from '../../utils/getPublicPath';
 type Props = { onClose: () => void; isOpen: boolean };
 
 export const BurgerMenu: React.FC<Props> = ({ onClose, isOpen }) => {
@@ -88,7 +89,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose, isOpen }) => {
         >
           <div className={styles.burgerMenuUtilContainer}>
             <img
-              src="/img/header-likes.jpg"
+              src={getPublicPath('img/header-likes.jpg')}
               className={styles.burgerMenuIcon}
               alt="likes"
             />
@@ -108,7 +109,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose, isOpen }) => {
         >
           <div className={styles.burgerMenuUtilContainer}>
             <img
-              src="/img/header-solid.jpg"
+              src={getPublicPath('img/header-solid.jpg')}
               className={styles.burgerMenuIcon}
               alt="solid"
             />
