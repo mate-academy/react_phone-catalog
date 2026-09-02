@@ -50,8 +50,8 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
               className={styles.productsSliderButtonImg}
               src={
                 canScrollLeft
-                  ? getPublicPath('img/comon-arrow.svg')
-                  : getPublicPath('/img/active-arrow.svg')
+                  ? getPublicPath('/img/active-arrow.svg')
+                  : getPublicPath('img/comon-arrow.svg')
               }
               alt="arrow"
             />
@@ -65,8 +65,8 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
               className={styles.productsSliderButtonImg}
               src={
                 canScrollRight
-                  ? getPublicPath('/img/comon-arrow.svg')
-                  : getPublicPath('/img/active-arrow.svg')
+                  ? getPublicPath('/img/active-arrow.svg')
+                  : getPublicPath('/img/comon-arrow.svg')
               }
               alt="arrow"
             />

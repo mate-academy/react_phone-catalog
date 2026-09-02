@@ -285,7 +285,6 @@
     grid-column: 1/-1;
 
     animation: fade-in-up 0.5s ease-out 0.2s both;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     &Text {
       margin: 0;
@@ -312,19 +311,6 @@
       color: #89939a;
 
       transition: color 0.25s ease;
-    }
-
-    &:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
-    }
-
-    &:hover &Text {
-      color: #905bff;
-    }
-
-    &:hover &Count {
-      color: #0f0f11;
     }
 
     @media (max-width: 639px) {
@@ -395,6 +381,7 @@
       text-decoration: none;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
     }
   }
 }

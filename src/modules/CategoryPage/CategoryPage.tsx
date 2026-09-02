@@ -193,8 +193,8 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
                       className={styles.categoryPageButtonImg}
                       src={
                         currentPage === 1
-                          ? '/img/comon-arrow.svg'
-                          : '/img/active-arrow.svg'
+                          ? getPublicPath('/img/comon-arrow.svg')
+                          : getPublicPath('/img/active-arrow.svg')
                       }
                       alt="arrow"
                     />
