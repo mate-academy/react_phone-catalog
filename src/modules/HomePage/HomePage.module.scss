@@ -1,0 +1,163 @@
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 24px 16px 80px;
+
+  @media (min-width: 1200px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 32px;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  color: #313237;
+  letter-spacing: -0.01em;
+}
+
+.section {
+  margin-top: 56px;
+
+  &:first-of-type {
+    margin-top: 40px;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  color: #313237;
+
+  @media (min-width: 640px) {
+    font-size: 32px;
+  }
+}
+
+/* Банер */
+.banner {
+  width: 100%;
+  margin-bottom: 56px;
+}
+
+.bannerSlide {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #0f1121;
+
+  @media (min-width: 640px) {
+    height: 320px;
+  }
+
+  @media (min-width: 1024px) {
+    height: 400px;
+  }
+}
+
+.bannerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.goodsList {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > * {
+    flex: 0 0 212px;
+
+    @media (min-width: 640px) {
+      flex: 0 0 237px;
+    }
+
+    @media (min-width: 1200px) {
+      flex: 0 0 272px;
+    }
+  }
+}
+
+/* Категорії (3 колонки за макетом) */
+.categories {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.categoryCard {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.categoryImgWrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  background-color: #f3f3f3;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.categoryTitle {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  color: #313237;
+}
+
+.categoryCount {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #89939a;
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #89939a;
+}

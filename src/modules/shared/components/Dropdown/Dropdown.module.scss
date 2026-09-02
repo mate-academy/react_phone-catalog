@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #89939a;
+}
+
+.select {
+  height: 40px;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #313237;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #b4bdc3;
+  border-radius: 8px;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    border-color: #313237;
+  }
+}

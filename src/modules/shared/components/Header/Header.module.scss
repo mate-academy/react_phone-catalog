@@ -1,0 +1,109 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 24px;
+  background-color: #fff;
+  border-bottom: 1px solid #e2e6e9;
+}
+
+.left,
+.right {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.left {
+  gap: 48px;
+}
+
+.right {
+  gap: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 32px;
+    width: auto;
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 32px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #89939a;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
+
+  &:hover {
+    color: #313237;
+  }
+
+  &.isActive {
+    color: #313237;
+    border-bottom-color: #313237;
+  }
+}
+
+.iconLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 100%;
+  border-left: 1px solid #e2e6e9;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #f3f4f6;
+  }
+
+  &.isActive {
+    border-bottom: 2px solid #313237;
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  font-size: 9px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #eb5757;
+  border-radius: 50%;
+}

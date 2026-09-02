@@ -1,0 +1,44 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 56px;
+
+  @media (min-width: 640px) {
+    padding: 32px 24px 64px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 40px 32px 80px;
+  }
+}
+
+.title {
+  margin-bottom: 8px;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: #313237;
+}
+
+.count {
+  margin-bottom: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #89939a;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  gap: 16px;
+  justify-items: center;
+}
+
+.empty {
+  padding: 40px 0;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  color: #89939a;
+}
