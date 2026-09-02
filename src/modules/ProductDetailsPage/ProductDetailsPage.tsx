@@ -6,12 +6,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 
-import {
-  getAccessories,
-  getPhones,
-  getProducts,
-  getTablets,
-} from '../../api/products';
+import { getProduct, getProducts } from '../../api/products';
 
 import { ProductsSlider } from '../../components/ProductsSlider';
 
@@ -54,26 +49,10 @@ export const ProductDetailsPage = () => {
       setIsLoading(true);
 
       try {
-        let data: ProductDetails[] = [];
-
-        switch (category) {
-          case 'phones':
-            data = await getPhones();
-            break;
-
-          case 'tablets':
-            data = await getTablets();
-            break;
-
-          case 'accessories':
-            data = await getAccessories();
-            break;
-
-          default:
-            data = [];
-        }
-
-        const currentProduct = data.find(item => item.id === productId) || null;
+        const currentProduct = await getProduct(
+          category || '',
+          productId || '',
+        );
 
         setProduct(currentProduct);
         setSelectedImage(0);
@@ -86,7 +65,6 @@ export const ProductDetailsPage = () => {
 
     loadProduct();
   }, [category, productId]);
-
   const getColor = (color: string) => {
     const colors: Record<string, string> = {
       spacegray: '#4c4c4c',
