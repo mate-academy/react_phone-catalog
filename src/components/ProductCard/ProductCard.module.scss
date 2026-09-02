@@ -1,0 +1,180 @@
+.productCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  width: 272px;
+  padding: 24px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+
+  border: 1px solid #e2e6e9;
+  background: #fff;
+
+  transition: box-shadow 0.3s;
+}
+
+.productCard:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+
+.image {
+  display: block;
+
+  width: 100%;
+  aspect-ratio: 1;
+
+  object-fit: contain;
+
+  transition: transform .3s;
+}
+
+.image:hover {
+  transform: scale(1.05);
+}
+
+.productLink {
+  height: 42px;
+
+  overflow: hidden;
+
+  text-decoration: none;
+
+  color: #313237;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+
+  transition: color .3s;
+}
+
+.productLink:hover {
+  color: #0f62fe;
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 700;
+  color: #313237;
+}
+
+.fullPrice {
+  font-size: 22px;
+  color: #89939a;
+  text-decoration: line-through;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #e2e6e9;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 12px;
+}
+
+.spec span {
+  color: #89939a;
+  font-weight: 600;
+}
+
+.spec strong {
+  color: #313237;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+
+  margin-top: auto;
+}
+
+.addButton {
+  flex: 1;
+
+  height: 40px;
+
+  border: none;
+
+  background: #313237;
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: .3s;
+}
+
+.addButton:hover {
+  background: #000;
+}
+
+.added {
+  background: #fff;
+  color: #27ae60;
+  border: 1px solid #27ae60;
+}
+
+.added:hover {
+  background: #fff;
+}
+
+.favoriteButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 40px;
+  height: 40px;
+
+  border: 1px solid #b4bdc3;
+  background: #fff;
+
+  cursor: pointer;
+
+  transition: .3s;
+}
+
+.favoriteButton:hover {
+  border-color: #313237;
+}
+
+.favoriteActive {
+  border-color: #eb5757;
+  background: #fff7f7;
+}
+
+.favoriteIcon {
+  width: 16px;
+  height: 16px;
+
+  object-fit: contain;
+
+  transition: transform .3s;
+}
+
+.favoriteButton:hover .favoriteIcon {
+  transform: scale(1.1);
+}
+
+
+
+

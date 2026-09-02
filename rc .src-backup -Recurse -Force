@@ -1,0 +1,280 @@
+warning: in the working copy of 'src/api/index.ts', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'src/components/Footer/Footer.tsx', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'src/components/Header/Header.tsx', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'src/components/PicturesSlider/PicturesSlider.tsx', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'src/components/ProductCard/ProductCard.tsx', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'src/modules/CartPage/CartPage.tsx', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'src/modules/ProductDetailsPage/ProductDetailsPage.tsx', CRLF will be replaced by LF the next time Git touches it
+[1mdiff --git a/src/api/index.ts b/src/api/index.ts[m
+[1mindex a15ac46..722b72d 100644[m
+[1m--- a/src/api/index.ts[m
+[1m+++ b/src/api/index.ts[m
+[36m@@ -1 +1,3 @@[m
+[31m-export const BASE_URL = '/api';[m
+[32m+[m[32mimport { BASE_URL } from '../constants/baseUrl';[m
+[32m+[m
+[32m+[m[32mexport { BASE_URL };[m
+[1mdiff --git a/src/components/Footer/Footer.tsx b/src/components/Footer/Footer.tsx[m
+[1mindex bc1611e..d0999eb 100644[m
+[1m--- a/src/components/Footer/Footer.tsx[m
+[1m+++ b/src/components/Footer/Footer.tsx[m
+[36m@@ -1,5 +1,6 @@[m
+ /* eslint-disable prettier/prettier */[m
+ import styles from './Footer.module.scss';[m
+[32m+[m[32mimport { BASE_URL } from '../../constants/baseUrl';[m
+ [m
+ export const Footer = () => {[m
+   const backToTop = () => {[m
+[36m@@ -12,10 +13,10 @@[m [mexport const Footer = () => {[m
+   return ([m
+     <footer className={styles.footer}>[m
+       <div className={styles.container}>[m
+[31m-        <p className={styles.copy}>© 2026 Nice Gadgets</p>[m
+[32m+[m[32m        <p className={styles.copy}>� 2026 Nice Gadgets</p>[m
+ [m
+         <img[m
+[31m-          src="/img/logo/logo.png"[m
+[32m+[m[32m          src={`${BASE_URL}img/logo/logo.png`}[m
+           alt="Nice Gadgets"[m
+           className={styles.logo}[m
+         />[m
+[36m@@ -32,10 +33,14 @@[m [mexport const Footer = () => {[m
+ [m
+           <button type="button" className={styles.top} onClick={backToTop}>[m
+             Back to top[m
+[31m-            <img src="/img/icons/arrow-up.png" alt="Top" />[m
+[32m+[m[32m            <img[m
+[32m+[m[32m              src={`${BASE_URL}img/icons/arrow-up.png`}[m
+[32m+[m[32m              alt="Top"[m
+[32m+[m[32m            />[m
+           </button>[m
+         </div>[m
+       </div>[m
+     </footer>[m
+   );[m
+ };[m
+[41m+[m
+[1mdiff --git a/src/components/Header/Header.tsx b/src/components/Header/Header.tsx[m
+[1mindex 5adaf9d..058db8a 100644[m
+[1m--- a/src/components/Header/Header.tsx[m
+[1m+++ b/src/components/Header/Header.tsx[m
+[36m@@ -6,6 +6,7 @@[m [mimport { useCart } from '../../hooks/useCart';[m
+ import { useFavorites } from '../../hooks/useFavorites';[m
+ [m
+ import styles from './Header.module.scss';[m
+[32m+[m[32mimport { BASE_URL } from '../../constants/baseUrl';[m
+ [m
+ export const Header = () => {[m
+   const { totalItems } = useCart();[m
+[36m@@ -19,7 +20,10 @@[m [mexport const Header = () => {[m
+       <div className={styles.container}>[m
+         <div className={styles.left}>[m
+           <NavLink to="/" className={styles.logo}>[m
+[31m-            <img src="/img/logo/logo.png" alt="Nice Gadgets" />[m
+[32m+[m[32m            <img[m
+[32m+[m[32m              src={`${BASE_URL}img/logo/logo.png`}[m
+[32m+[m[32m              alt="Nice Gadgets"[m
+[32m+[m[32m            />[m
+           </NavLink>[m
+ [m
+           <nav className={styles.navigation}>[m
+[36m@@ -46,8 +50,8 @@[m [mexport const Header = () => {[m
+             <img[m
+               src={[m
+                 favorites.length > 0[m
+[31m-                  ? '/img/icons/heart-filled.png'[m
+[31m-                  : '/img/icons/heart.png'[m
+[32m+[m[32m                  ? `${BASE_URL}img/icons/heart-filled.png`[m
+[32m+[m[32m                  : `${BASE_URL}img/icons/heart.png`[m
+               }[m
+               alt="Favorites"[m
+               className={styles.icon}[m
+[36m@@ -59,7 +63,11 @@[m [mexport const Header = () => {[m
+           </NavLink>[m
+ [m
+           <NavLink to="/cart" className={styles.action}>[m
+[31m-            <img src="/img/icons/cart.png" alt="Cart" className={styles.icon} />[m
+[32m+[m[32m            <img[m
+[32m+[m[32m              src={`${BASE_URL}img/icons/cart.png`}[m
+[32m+[m[32m              alt="Cart"[m
+[32m+[m[32m              className={styles.icon}[m
+[32m+[m[32m            />[m
+ [m
+             {totalItems > 0 && ([m
+               <span className={styles.badge}>{totalItems}</span>[m
+[36m@@ -70,3 +78,4 @@[m [mexport const Header = () => {[m
+     </header>[m
+   );[m
+ };[m
+[41m+[m
+[1mdiff --git a/src/components/PicturesSlider/PicturesSlider.tsx b/src/components/PicturesSlider/PicturesSlider.tsx[m
+[1mindex fb3983c..6b7b39b 100644[m
+[1m--- a/src/components/PicturesSlider/PicturesSlider.tsx[m
+[1m+++ b/src/components/PicturesSlider/PicturesSlider.tsx[m
+[36m@@ -2,22 +2,23 @@[m
+ import { useEffect, useState } from 'react';[m
+ [m
+ import styles from './PicturesSlider.module.scss';[m
+[32m+[m[32mimport { BASE_URL } from '../../constants/baseUrl';[m
+ [m
+ const banners = [[m
+   {[m
+[31m-    image: '/img/banners/banner.png',[m
+[32m+[m[32m    image: `${BASE_URL}img/banners/banner.png`,[m
+     alt: 'Nice Gadgets',[m
+   },[m
+   {[m
+[31m-    image: '/img/banner-phones.png',[m
+[32m+[m[32m    image: `${BASE_URL}img/banner-phones.png`,[m
+     alt: 'Phones',[m
+   },[m
+   {[m
+[31m-    image: '/img/banner-tablets.png',[m
+[32m+[m[32m    image: `${BASE_URL}img/banner-tablets.png`,[m
+     alt: 'Tablets',[m
+   },[m
+   {[m
+[31m-    image: '/img/banner-accessories.png',[m
+[32m+[m[32m    image: `${BASE_URL}img/banner-accessories.png`,[m
+     alt: 'Accessories',[m
+   },[m
+ ];[m
+[36m@@ -46,7 +47,10 @@[m [mexport const PicturesSlider = () => {[m
+   return ([m
+     <section className={styles.slider}>[m
+       <button type="button" className={styles.arrow} onClick={prevSlide}>[m
+[31m-        <img src="/img/icons/arrow-left.png" alt="Previous" />[m
+[32m+[m[32m        <img[m
+[32m+[m[32m          src={`${BASE_URL}img/icons/arrow-left.png`}[m
+[32m+[m[32m          alt="Previous"[m
+[32m+[m[32m        />[m
+       </button>[m
+ [m
+       <div className={styles.banner}>[m
+[36m@@ -57,7 +61,10 @@[m [mexport const PicturesSlider = () => {[m
+       </div>[m
+ [m
+       <button type="button" className={styles.arrow} onClick={nextSlide}>[m
+[31m-        <img src="/img/icons/arrow-right.png" alt="Next" />[m
+[32m+[m[32m        <img[m
+[32m+[m[32m          src={`${BASE_URL}img/icons/arrow-right.png`}[m
+[32m+[m[32m          alt="Next"[m
+[32m+[m[32m        />[m
+       </button>[m
+ [m
+       <div className={styles.dots}>[m
+[36m@@ -77,3 +84,4 @@[m [mexport const PicturesSlider = () => {[m
+     </section>[m
+   );[m
+ };[m
+[41m+[m
+[1mdiff --git a/src/components/ProductCard/ProductCard.tsx b/src/components/ProductCard/ProductCard.tsx[m
+[1mindex 6c84a1c..9be619b 100644[m
+[1m--- a/src/components/ProductCard/ProductCard.tsx[m
+[1m+++ b/src/components/ProductCard/ProductCard.tsx[m
+[36m@@ -3,6 +3,7 @@[m [mimport { Link } from 'react-router-dom';[m
+ import classNames from 'classnames';[m
+ [m
+ import styles from './ProductCard.module.scss';[m
+[32m+[m[32mimport { BASE_URL } from '../../constants/baseUrl';[m
+ [m
+ import { Product } from '../../types/Product';[m
+ [m
+[36m@@ -26,7 +27,7 @@[m [mexport const ProductCard = ({ product }: Props) => {[m
+     <article className={styles.productCard}>[m
+       <Link to={`/${product.category}/${product.itemId}`}>[m
+         <img[m
+[31m-          src={`/${product.image.replace(/^\/+/, '')}`}[m
+[32m+[m[32m          src={`${BASE_URL}${product.image.replace(/^\/+/, '')}`}[m
+           alt={product.name}[m
+           className={styles.image}[m
+         />[m
+[36m@@ -92,7 +93,9 @@[m [mexport const ProductCard = ({ product }: Props) => {[m
+         >[m
+           <img[m
+             src={[m
+[31m-              favorite ? '/img/icons/heart-filled.png' : '/img/icons/heart.png'[m
+[32m+[m[32m              favorite[m
+[32m+[m[32m                ? `${BASE_URL}img/icons/heart-filled.png`[m
+[32m+[m[32m                : `${BASE_URL}img/icons/heart.png`[m
+             }[m
+             alt="Favorite"[m
+             className={styles.favoriteIcon}[m
+[36m@@ -102,3 +105,4 @@[m [mexport const ProductCard = ({ product }: Props) => {[m
+     </article>[m
+   );[m
+ };[m
+[41m+[m
+[1mdiff --git a/src/modules/CartPage/CartPage.tsx b/src/modules/CartPage/CartPage.tsx[m
+[1mindex 093e29e..583cad8 100644[m
+[1m--- a/src/modules/CartPage/CartPage.tsx[m
+[1m+++ b/src/modules/CartPage/CartPage.tsx[m
+[36m@@ -5,6 +5,8 @@[m [mimport { useNavigate } from 'react-router-dom';[m
+ import { useCart } from '../../hooks/useCart';[m
+ [m
+ import styles from './CartPage.module.scss';[m
+[32m+[m[32mimport { BASE_URL } from '../../constants/baseUrl';[m
+[32m+[m[32mimport { BASE_URL } from '../../constants/baseUrl';[m
+ [m
+ export const CartPage = () => {[m
+   const navigate = useNavigate();[m
+[36m@@ -61,7 +63,11 @@[m [mexport const CartPage = () => {[m
+                 ×[m
+               </button>[m
+ [m
+[31m-              <img src={item.image} alt={item.name} className={styles.image} />[m
+[32m+[m[32m              <img[m
+[32m+[m[32m                src={`${BASE_URL}${item.image.replace(/^\/+/, '')}`}[m
+[32m+[m[32m                alt={item.name}[m
+[32m+[m[32m                className={styles.image}[m
+[32m+[m[32m              />[m
+ [m
+               <div className={styles.info}>[m
+                 <h3>{item.name}</h3>[m
+[36m@@ -109,3 +115,5 @@[m [mexport const CartPage = () => {[m
+     </section>[m
+   );[m
+ };[m
+[41m+[m
+[41m+[m
+[1mdiff --git a/src/modules/ProductDetailsPage/ProductDetailsPage.tsx b/src/modules/ProductDetailsPage/ProductDetailsPage.tsx[m
+[1mindex 95ddd8b..6f31cd0 100644[m
+[1m--- a/src/modules/ProductDetailsPage/ProductDetailsPage.tsx[m
+[1m+++ b/src/modules/ProductDetailsPage/ProductDetailsPage.tsx[m
+[36m@@ -22,6 +22,7 @@[m [mimport { Product } from '../../types/Product';[m
+ import { ProductDetails } from '../../types/ProductDetails';[m
+ [m
+ import styles from './ProductDetailsPage.module.scss';[m
+[32m+[m[32mimport { BASE_URL } from '../../constants/baseUrl';[m
+ [m
+ export const ProductDetailsPage = () => {[m
+   const { category, productId } = useParams();[m
+[36m@@ -220,7 +221,10 @@[m [mexport const ProductDetailsPage = () => {[m
+         className={styles.backButton}[m
+         onClick={() => navigate(-1)}[m
+       >[m
+[31m-        <img src="/img/icons/arrow-left.png" alt="Back" />[m
+[32m+[m[32m        <img[m
+[32m+[m[32m          src="${BASE_URL}img/icons/arrow-left.png"[m
+[32m+[m[32m          alt="Back"[m
+[32m+[m[32m        />[m
+         Back[m
+       </button>[m
+ [m
+[36m@@ -324,8 +328,8 @@[m [mexport const ProductDetailsPage = () => {[m
+               <img[m
+                 src={[m
+                   favorite[m
+[31m-                    ? '/img/icons/heart-filled.png'[m
+[31m-                    : '/img/icons/heart.png'[m
+[32m+[m[32m                    ? `${BASE_URL}img/icons/heart-filled.png`[m
+[32m+[m[32m                    : `${BASE_URL}img/icons/heart.png`[m
+                 }[m
+                 alt="Favorite"[m
+                 className={styles.favoriteIcon}[m
+[36m@@ -394,3 +398,5 @@[m [mexport const ProductDetailsPage = () => {[m
+     </section>[m
+   );[m
+ };[m
+[41m+[m
+[41m+[m

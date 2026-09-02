@@ -1,0 +1,49 @@
+.favorites {
+  padding: 24px 0 80px;
+}
+
+.back {
+  margin-bottom: 24px;
+
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+
+  color: #89939a;
+}
+
+.title {
+  margin-bottom: 8px;
+
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.count {
+  margin-bottom: 40px;
+
+  color: #89939a;
+
+  font-size: 14px;
+}
+
+.empty {
+  margin-top: 80px;
+
+  text-align: center;
+
+  color: #89939a;
+
+  font-size: 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  gap: 40px 16px;
+}
+
+
+
+
