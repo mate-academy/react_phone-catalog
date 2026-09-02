@@ -122,10 +122,12 @@ export const HomePage = () => {
             />
           </button>
 
-          <div
-            className={styles.homePagePosters}
-            style={{ backgroundImage: `url(${slide.image})` }}
-          >
+          <div className={styles.homePagePosters}>
+            <img
+              className={styles.homePagePosterImg}
+              src={slide.image}
+              alt=""
+            />
             <div className={styles.homePagePosterContent}>
               <h2 className={styles.homePagePosterTitle}>{slide.title}</h2>
               <p className={styles.homePagePosterText}>{slide.text}</p>

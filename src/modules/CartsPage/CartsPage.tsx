@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useCart } from '../shared/context/CartContext';
 import { useProducts } from '../shared/hooks/useProducts';
 import styles from './CartsPage.module.scss';
@@ -98,15 +98,20 @@ export const CartPage: React.FC = () => {
                       ×
                     </button>
 
-                    <div className={styles.cartImageContainer}>
-                      <img
-                        src={`${getPublicPath(item.image)}`}
-                        alt={item.name}
-                        className={styles.cartImage}
-                      />
-                    </div>
+                    <NavLink
+                      to={`/product/${item.itemId}`}
+                      className={styles.cartProductLink}
+                    >
+                      <div className={styles.cartImageContainer}>
+                        <img
+                          src={`${getPublicPath(item.image)}`}
+                          alt={item.name}
+                          className={styles.cartImage}
+                        />
+                      </div>
 
-                    <p className={styles.cartItemTitle}>{item.name}</p>
+                      <p className={styles.cartItemTitle}>{item.name}</p>
+                    </NavLink>
 
                     <div className={styles.cartQuantityControls}>
                       <button

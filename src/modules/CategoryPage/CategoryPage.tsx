@@ -89,6 +89,19 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
   const totalPages =
     realItemsPerPage > 0 ? Math.ceil(sorted.length / realItemsPerPage) : 1;
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+  let visiblePages = pageNumbers;
+
+  if (totalPages > 5) {
+    const firstVisiblePage = Math.min(
+      Math.max(currentPage - 2, 1),
+      totalPages - 4,
+    );
+
+    visiblePages = Array.from(
+      { length: 5 },
+      (_, index) => firstVisiblePage + index,
+    );
+  }
 
   const startIndex = (currentPage - 1) * realItemsPerPage;
   const currentItems = sorted.slice(startIndex, startIndex + realItemsPerPage);
@@ -201,7 +214,7 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
                   </button>
 
                   <div className={styles.categoryPageButtonsContainer}>
-                    {pageNumbers.map(page => (
+                    {visiblePages.map(page => (
                       <button
                         key={page}
                         className={
