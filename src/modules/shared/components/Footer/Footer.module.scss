@@ -1,0 +1,117 @@
+.footer {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  height: 96px;
+  padding: 32px 152px;
+
+  box-shadow: 0 -1px 0 0 #e2e6e9;
+
+  @media (max-width: 1199px) {
+    padding: 32px;
+  }
+
+  @media (max-width: 639px) {
+    flex-direction: column;
+    height: 257px;
+    align-items: baseline;
+    gap: 32px;
+  }
+
+  &Logo {
+    display: flex;
+    height: 32px;
+    width: 89px;
+    align-items: center;
+    justify-content: center;
+
+    &Icon {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &Links {
+    display: flex;
+    gap: 106.83px;
+
+    @media (max-width: 1199px) {
+      gap: 13px;
+    }
+
+    @media (max-width: 639px) {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &Link {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    color: #89939a;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #0f0f11;
+    }
+  }
+
+  &Text {
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #89939a;
+    transition: color 0.2s ease;
+  }
+
+  &BackToTop {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-self: center;
+    align-items: center;
+
+    &Text {
+      cursor: pointer;
+    }
+
+    &Button {
+      cursor: pointer;
+      background-color: white;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid #b4bdc3;
+      border-radius: 50px;
+      padding: 0;
+      transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+
+      &Arrow {
+        width: 10px;
+        height: 7px;
+      }
+    }
+
+    &:hover {
+      .footerBackToTopText {
+        color: #0f0f11;
+      }
+      .footerBackToTopButton {
+        border-color: #0f0f11;
+      }
+    }
+  }
+}

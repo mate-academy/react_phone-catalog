@@ -1,0 +1,47 @@
+.loader {
+  &Overlay {
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    z-index: 99999;
+  }
+
+  &Gradient {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      transparent,
+      #f86800,
+      #8906e0,
+      transparent
+    );
+    animation: spin 1s linear infinite;
+    mask: radial-gradient(circle, transparent 55%, black 56%);
+    -webkit-mask: radial-gradient(circle, transparent 55%, black 56%);
+  }
+
+  &Text {
+    color: #c0c0d0;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: pulse-text 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-text {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}

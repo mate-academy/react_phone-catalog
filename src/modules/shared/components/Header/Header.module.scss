@@ -1,0 +1,185 @@
+.header {
+  display: flex;
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  background-color: white;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+  height: 64px;
+
+  @media (max-width: 1199px) {
+    height: 48px;
+  }
+
+  box-shadow: 0 1px 0 0 #e2e6e9;
+
+  &Left {
+    display: flex;
+    height: 100%;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &Logo {
+    display: flex;
+    height: 64px;
+    width: 128px;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 1199px) {
+      height: 48px;
+      width: 96px;
+    }
+
+    &Icon {
+      margin: 18px 24px;
+      width: 80px;
+      height: 28px;
+
+      @media (max-width: 1199px) {
+        height: 22px;
+        width: 64px;
+      }
+    }
+  }
+
+  &Nav {
+    display: flex;
+    gap: 64px;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    @media (max-width: 1199px) {
+      gap: 32px;
+    }
+
+    @media (max-width: 639px) {
+      display: none;
+    }
+  }
+
+  &Link {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    color: #89939a;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #0f0f11;
+    }
+  }
+
+  &Right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 639px) {
+      display: none;
+    }
+  }
+
+  &Icon {
+    width: 16px;
+    height: 16px;
+
+    transition: transform 0.2s ease;
+  }
+
+  &Count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    top: 0;
+    right: 0;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background-color: #476df4;
+
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #fff;
+
+    transition: transform 0.2s ease;
+  }
+
+  &Util {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    width: 64px;
+
+    &Container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 28px;
+      height: 28px;
+    }
+
+    &:hover {
+      .headerIcon {
+        transform: scale(1.3);
+      }
+      .headerCount {
+        transform: scale(1.2);
+      }
+    }
+
+    @media (max-width: 1199px) {
+      height: 48px;
+      width: 48px;
+    }
+
+    box-shadow: -1px 0 0 0 #e2e6e9;
+  }
+
+  &BurgerMenu {
+    display: none;
+    box-sizing: border-box;
+    padding: 0;
+    height: 48px;
+    width: 48px;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    border: none;
+    background-color: white;
+
+    box-shadow: -1px #e2e6e9;
+
+    @media (max-width: 639px) {
+      display: flex;
+    }
+  }
+}
+
+.active {
+  color: #0f0f11;
+  box-sizing: border-box;
+
+  border-bottom: 3px solid black;
+}

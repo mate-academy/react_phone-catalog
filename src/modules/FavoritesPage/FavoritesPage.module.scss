@@ -1,0 +1,116 @@
+.container {
+  display: grid;
+  box-sizing: border-box;
+  grid-template-columns: repeat(24, 1fr);
+  padding-top: 24px;
+  max-width: 1136px;
+  margin: 0 auto;
+
+  animation: fadeInUp 0.6s ease-out both;
+
+  @media (max-width: 1199px) {
+    margin: 0 24px;
+  }
+
+  @media (max-width: 639px) {
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0 16px;
+  }
+}
+
+.favoritesPage {
+  grid-column: 1 / -1;
+
+  &Empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 48px 0;
+    color: #89939a;
+    font-size: 18px;
+  }
+
+  &Icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+  }
+
+  &Nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 40px;
+
+    animation: fadeIn 0.5s ease-out 0.1s both;
+  }
+
+  &Arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    rotate: 180deg;
+
+    transition: transform 0.3s ease;
+  }
+
+  &Link:hover + &Arrow,
+  &Arrow:hover {
+    transform: translateX(3px) rotate(180deg);
+  }
+
+  &Link {
+    text-decoration: none;
+    cursor: pointer;
+    text-wrap: nowrap;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0%;
+    color: #89939a;
+
+    &Active {
+      color: #0f0f11;
+    }
+
+    transition:
+      color 0.25s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      color: #0f0f11;
+      transform: translateX(2px);
+    }
+  }
+
+  &Title {
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -1%;
+    color: #0f0f11;
+    margin: 0;
+  }
+
+  &Count {
+    font-weight: 600;
+    margin: 0;
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: #89939A;
+  }
+
+  &List {
+    margin-top: 40px;
+    margin-bottom: 80px;
+  }
+}

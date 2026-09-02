@@ -1,0 +1,434 @@
+.container {
+  display: grid;
+  box-sizing: border-box;
+  grid-template-columns: repeat(24, 1fr);
+  padding-top: 56px;
+  max-width: 1136px;
+  margin: 0 auto;
+
+  @media (max-width: 1200px) {
+    margin: 0 24px;
+  }
+
+  @media (max-width: 639px) {
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0;
+  }
+}
+
+.homePage {
+  &GridContainer {
+    grid-column: 1/-1;
+    width: calc(100% - 16px);
+    margin-left: 16px;
+  }
+
+  &Title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  &Slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    height: clamp(221px, 36vw, 432px);
+    grid-column: 1/-1;
+    margin-bottom: 80px;
+
+    animation: fade-in-up 0.6s ease-out both;
+
+    @media (max-width: 639px) {
+      height: 360px;
+      margin-bottom: 56px;
+    }
+  }
+
+  &Center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    gap: 16px;
+
+    @media (max-width: 1199px) {
+      gap: 19px;
+    }
+
+    @media (max-width: 639px) {
+      height: 320px;
+      justify-content: flex-start;
+    }
+  }
+
+  &Indicators {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 80px;
+    height: 24px;
+  }
+
+  &Arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 100%;
+    background-color: #fafbfc;
+
+    border: 1px solid #b4bdc3;
+    border-radius: 48px;
+
+    &Img {
+      transform: rotate(-90deg);
+      width: 13px;
+      height: 8px;
+
+      &Right {
+        transform: rotate(+90deg);
+      }
+    }
+
+    @media (max-width: 639px) {
+      display: none;
+    }
+  }
+
+  &Posters {
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: minmax(0, 40%) minmax(0, 1fr);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #000;
+
+    border: 1px solid rgb(231, 227, 227);
+
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+    &:hover {
+      transform: scale(1.01);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    @media (max-width: 639px) {
+      display: flex;
+      border: 0;
+      border-radius: 0;
+    }
+  }
+
+  &PosterImg {
+    grid-column: 2/3;
+    grid-row: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    @media (max-width: 639px) {
+      position: absolute;
+      inset: 0;
+      object-position: center;
+    }
+  }
+
+  &PosterContent {
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: clamp(4px, 0.66vw, 8px);
+
+    box-sizing: border-box;
+    grid-column: 1;
+    width: auto;
+    margin: clamp(5px, 0.83vw, 10px);
+
+    padding: clamp(25px, 4.3vw, 52px) clamp(15px, 3vw, 36px);
+
+    background-color: #3a3939;
+    border-radius: 10%;
+
+    animation: fade-in 0.5s ease-out 0.3s both;
+
+    @media (max-width: 639px) {
+      width: 100%;
+      align-items: center;
+      background: none;
+    }
+  }
+
+  &PosterTitle {
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: -1px;
+
+    font-size: clamp(18px, 2.66vw, 32px);
+
+    line-height: clamp(16px, 2.66vw, 32px);
+
+    background: linear-gradient(90deg, #5238eb, #ef7cfa);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    @media (max-width: 639px) {
+      font-size: 17px;
+    }
+  }
+
+  &PosterText {
+    margin: 0;
+    color: #c1c2c9;
+    font-weight: 600;
+
+    font-size: clamp(7px, 1.16vw, 14px);
+
+    line-height: clamp(10px, 1.66vw, 20px);
+
+    @media (max-width: 639px) {
+      display: none;
+    }
+  }
+
+  &PosterButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+    width: clamp(100px, 11.5vw, 138px);
+    height: clamp(32px, 3.66vw, 44px);
+    font-size: clamp(10px, 1vw, 12px);
+
+    margin-top: auto;
+    border: 1px solid #4a4d58;
+    border-radius: 24px;
+    color: #f1f2f9;
+    font-weight: 700;
+
+    text-decoration: none;
+    transition:
+      background-color 0.2s ease-in-out,
+      border-color 0.2s ease-in-out,
+      transform 0.2s ease-in-out;
+
+    &:hover {
+      background-color: #905bff;
+      border-color: #905bff;
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(144, 91, 255, 0.35);
+    }
+
+    &:active {
+      transform: scale(0.97);
+    }
+
+    @media (max-width: 639px) {
+      display: none;
+    }
+  }
+
+  &Indicator {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.25);
+    }
+
+    &::before {
+      display: block;
+      content: '';
+      width: 14px;
+      height: 4px;
+      background-color: #b4bdc3;
+      transition: background-color 0.25s ease, width 0.25s ease;
+    }
+
+    &:hover::before {
+      background-color: #0f0f11;
+      width: 18px;
+    }
+  }
+
+  &IndicatorActive {
+    animation: pulse-indicator 2s ease-in-out infinite;
+    &::before {
+      background-color: #0f0f11;
+    }
+
+    &:hover::before {
+      width: 14px;
+    }
+  }
+
+  &ShopByCategory {
+    width: 100%;
+    margin-bottom: 80px;
+    grid-column: 1/-1;
+
+    animation: fade-in-up 0.5s ease-out 0.2s both;
+
+    &Text {
+      margin: 0;
+      margin-top: 24px;
+
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 100%;
+      letter-spacing: 0%;
+
+      color: #0f0f11;
+
+      transition: color 0.25s ease;
+    }
+
+    &Count {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      margin: 0;
+      margin-top: 4px;
+
+      color: #89939a;
+
+      transition: color 0.25s ease;
+    }
+
+    @media (max-width: 639px) {
+      width: calc(100% - 32px);
+      margin-left: 16px;
+      margin-top: 16px;
+    }
+
+    &Title {
+      font-weight: 800;
+      margin: 0;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01;
+      color: #313237;
+
+      @media (max-width: 639px) {
+        font-size: 22px;
+        line-height: 140%;
+      }
+    }
+
+    &Cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 0;
+      margin-top: 24px;
+
+      animation: fade-in 0.5s ease-out 0.4s both;
+
+      @media (min-width: 640px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media (max-width: 639px) {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    &Img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 0;
+
+      transition: transform 0.2s ease;
+
+      @media (max-width: 1199px) {
+        width: 187px;
+        height: 187px;
+        border-radius: 8px;
+      }
+
+      @media (max-width: 639px) {
+        width: 100%;
+        height: auto;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &Card {
+      width: 100%;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-indicator {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

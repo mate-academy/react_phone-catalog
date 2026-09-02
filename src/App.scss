@@ -1,1 +1,25 @@
-// not empty
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #FAFBFC;
+}
+
+.mainContent {
+  font-family: Mont, sans-serif;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.content {
+  flex: 1;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}

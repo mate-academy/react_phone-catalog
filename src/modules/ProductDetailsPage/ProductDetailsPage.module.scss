@@ -1,0 +1,735 @@
+.container {
+  display: grid;
+  box-sizing: border-box;
+  grid-template-columns: repeat(24, 1fr);
+  padding-top: 24px;
+  max-width: 1136px;
+  margin: 0 auto;
+
+  animation: fade-in-up 0.6s ease-out both;
+
+  @media (max-width: 1199px) {
+    margin: 0 24px;
+  }
+
+  @media (max-width: 639px) {
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0 16px;
+  }
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ff3b30;
+  opacity: 0;
+  pointer-events: none;
+
+  &:nth-child(1) {
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    --tx: 0;
+    --ty: -18px;
+  }
+  &:nth-child(2) {
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    --tx: 0;
+    --ty: 18px;
+  }
+  &:nth-child(3) {
+    left: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    --tx: -18px;
+    --ty: 0;
+  }
+  &:nth-child(4) {
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    --tx: 18px;
+    --ty: 0;
+  }
+  &:nth-child(5) {
+    top: 2px;
+    left: 2px;
+
+    --tx: -14px;
+    --ty: -14px;
+  }
+  &:nth-child(6) {
+    top: 2px;
+    right: 2px;
+
+    --tx: 14px;
+    --ty: -14px;
+  }
+  &:nth-child(7) {
+    bottom: 2px;
+    left: 2px;
+
+    --tx: -14px;
+    --ty: 14px;
+  }
+  &:nth-child(8) {
+    bottom: 2px;
+    right: 2px;
+
+    --tx: 14px;
+    --ty: 14px;
+  }
+}
+
+
+.productDetailsPage {
+  grid-column: 1 / -1;
+
+  &Id {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: right;
+    margin: 0;
+    color: #b4bdc3;
+  }
+
+  &Icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+  }
+
+  &Back {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: center;
+    margin-bottom: 16px;
+    border: 0;
+    background: 0;
+
+    @media (max-width: 639px) {
+      margin-bottom: 24px;
+    }
+
+    &Text {
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: 700;
+      margin: 0;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: #89939a;
+
+      transition:
+        color 0.25s ease,
+        transform 0.2s ease;
+
+      &:hover {
+        color: #0f0f11;
+        transform: translateX(2px);
+      }
+    }
+  }
+
+  &Nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 40px;
+
+    animation: fade-in-up 0.5s ease-out 0.1s both;
+  }
+
+  &Arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    rotate: 180deg;
+
+    transition: transform 0.3s ease;
+  }
+
+  &Link:hover + &Arrow,
+  &Arrow:hover {
+    transform: translateX(3px) rotate(180deg);
+  }
+
+  &Link {
+    text-decoration: none;
+    cursor: pointer;
+    text-wrap: nowrap;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0%;
+    color: #89939a;
+
+    &Active {
+      color: #0f0f11;
+    }
+
+    transition:
+      color 0.25s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      color: #0f0f11;
+      transform: translateX(2px);
+    }
+  }
+
+  &Title {
+    font-weight: 800;
+    text-wrap: nowrap;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: #0f0f11;
+    width: 100%;
+
+    @media (max-width: 639px) {
+      text-wrap: wrap;
+    }
+  }
+
+  &Top {
+    display: flex;
+    flex-direction: row;
+
+    @media (max-width: 639px) {
+      flex-direction: column;
+    }
+  }
+
+  &Images {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-right: 5px;
+
+    @media (max-width: 639px) {
+      flex-direction: row;
+      order: 2;
+      margin: 0;
+      margin-bottom: 40px;
+      gap: 8px;
+      justify-content: space-between;
+    }
+  }
+
+  &Image {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e2e6e9;
+    width: 80px;
+    height: 80px;
+
+    @media (max-width: 1199px) {
+      width: 35px;
+      height: 35px;
+    }
+
+    @media (max-width: 639px) {
+      width: 52px;
+      height: 49px;
+    }
+
+    background-color: white;
+    border-radius: 8px;
+
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.08);
+    }
+
+    &Active {
+      border: 1px solid #0f0f11;
+    }
+  }
+
+  &Img {
+    object-fit: contain;
+    width: 66px;
+    height: 66px;
+
+    @media (max-width: 1199px) {
+      width: 26px;
+      height: 26px;
+    }
+
+    @media (max-width: 639px) {
+      width: 42px;
+      height: 42px;
+    }
+  }
+
+  &MainImg {
+    object-fit: contain;
+    background-color: #fff;
+
+    width: 464px;
+    height: 464px;
+
+    margin: 11px;
+    margin-right: 64px;
+
+    @media (max-width: 1199px) {
+      width: 287px;
+      height: 287px;
+      margin-right: 17px;
+    }
+
+    @media (max-width: 639px) {
+      order: 1;
+      width: 288px;
+      height: 288px;
+      margin: 0;
+      margin-bottom: 16px;
+    }
+  }
+
+  &RightDetails {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @media (max-width: 1199px) {
+      width: 237px;
+    }
+
+    @media (max-width: 639px) {
+      order: 3;
+      width: 100%;
+    }
+  }
+
+  &Colors {
+    display: flex;
+    flex-direction: column;
+
+    &Title {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-wrap: nowrap;
+      margin: 0;
+      margin-bottom: 8px;
+
+      color: #89939a;
+    }
+  }
+
+  &Color {
+    &Container {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
+
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    top: 1px;
+    left: 1px;
+    border-radius: 36px;
+    opacity: 1;
+    padding: 4px;
+
+    border: 2px solid #fff;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &Active {
+      border: 1px solid #0f0f11;
+    }
+  }
+
+  &CustomLine {
+    content: '';
+    margin-top: 24px;
+    margin-bottom: 24px;
+    width: 320px;
+
+    border: 1px solid #e2e6e9;
+
+    @media (max-width: 1199px) {
+      width: 237px;
+    }
+
+    @media (max-width: 639px) {
+      width: 288px;
+    }
+
+    &Pro {
+      width: 100%;
+      grid-column: 1 / -1;
+      margin-top: 16px;
+      margin-bottom: 32px;
+    }
+  }
+
+  &Capacity {
+    cursor: pointer;
+    width: 63px;
+    height: 32px;
+    border-radius: 4px;
+    background-color: white;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #0f0f11;
+
+    border: 1px solid #b4bdc3;
+
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.08);
+      border-color: #0f0f11;
+    }
+
+    &Active {
+      color: #fff;
+      background-color: #0f0f11;
+    }
+  }
+
+  &Price {
+    color: #0f0f11;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+
+  &FullPrice {
+    color: #89939a;
+    text-decoration: line-through;
+    font-weight: 500;
+    font-size: 22px;
+  }
+
+  &Actions {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &Cart {
+    width: 263px;
+    cursor: pointer;
+    height: 48px;
+    border-radius: 8px;
+    background-color: #f86800;
+    border: 0;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #fff;
+    transition:
+      background-color 0.3s ease,
+      transform 0.2s ease,
+      box-shadow 0.3s ease;
+
+    @media (max-width: 1199px) {
+      width: 180px;
+    }
+
+    @media (max-width: 639px) {
+      width: 231px;
+    }
+
+    &:hover {
+      background-color: #8906e0;
+      transform: scale(1.03) translateY(-2px);
+      box-shadow: 0 8px 25px rgba(137, 6, 224, 0.4);
+    }
+
+    &:active {
+      transform: scale(0.96);
+    }
+  }
+
+  &Fav {
+    cursor: pointer;
+    display: flex;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid #b4bdc3;
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.2s ease,
+      background-color 0.3s ease;
+
+    &:hover {
+      border-color: #ff6b6b;
+      box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.15);
+      transform: scale(1.12);
+    }
+
+    &Img {
+      width: 16px;
+      height: 16px;
+      fill: transparent;
+      stroke: #b4bdc3;
+      stroke-width: 2;
+      transition:
+        fill 0.3s ease,
+        stroke 0.3s ease;
+      pointer-events: none;
+    }
+
+    /* Активний стан */
+    &.isLiked {
+      border-color: #ff3b30;
+      background-color: #fff0f0;
+      box-shadow: 0 0 0 6px rgba(255, 59, 48, 0.1);
+      animation: fav-bounce 0.5s ease;
+
+      .productDetailsPageFavImg {
+        fill: #ff3b30;
+        stroke: #ff3b30;
+      }
+
+      .particle {
+        animation: particle-pop 0.6s ease-out forwards;
+      }
+    }
+  }
+
+  &Info {
+    max-width: 320px;
+    margin: 0;
+    margin-top: 32px;
+
+    &Text {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-align: right;
+      color: #0f0f11;
+      margin: 0;
+      margin-bottom: 8px;
+    }
+
+    &Container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0;
+    }
+  }
+
+  &Bottom {
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+
+    @media (max-width: 1199px) {
+      flex-direction: column;
+    }
+
+    @media (max-width: 639px) {
+      gap: 56px;
+    }
+
+    &About {
+      max-width: 560px;
+
+      &Text {
+        font-weight: 800;
+        font-size: 22px;
+        line-height: 140%;
+        letter-spacing: 0%;
+        margin: 0;
+
+        color: #0f0f11;
+
+        @media (max-width: 1199px) {
+          margin-top: 64px;
+        }
+
+        @media (max-width: 639px) {
+          margin-top: 56px;
+        }
+      }
+    }
+
+    &TechSpecs {
+      width: 512px;
+
+      @media (max-width: 1199px) {
+        width: 100%;
+        margin-bottom: 64px;
+      }
+
+      @media (max-width: 639px) {
+        margin: 0;
+        margin-bottom: 56px;
+      }
+
+      &Text {
+        font-weight: 800;
+        font-size: 22px;
+        line-height: 140%;
+        letter-spacing: 0%;
+        margin: 0;
+
+        color: #0f0f11;
+      }
+    }
+  }
+
+  &Description {
+    &Item {
+      margin-bottom: 32px;
+
+      &:last-child {
+        margin-bottom: 80px;
+
+        @media (max-width: 1199px) {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &Title {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      max-width: 560px;
+      margin: 0;
+      margin-bottom: 16px;
+
+      color: #0f0f11;
+    }
+
+    &Text {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: #89939a;
+      margin: 0;
+    }
+  }
+
+  &Information {
+    &Title {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      margin: 0;
+      margin-bottom: 8px;
+
+      color: #89939a;
+    }
+
+    &Text {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      text-align: right;
+
+      color: #0f0f11;
+    }
+  }
+
+  &SliderContainer {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1136px;
+
+    @media (max-width: 1199px) {
+      margin-left: 24px;
+    }
+
+    @media (max-width: 639px) {
+      margin-left: 16px;
+    }
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.productDetailsPageFav:hover .productDetailsPageFavImg {
+  stroke: #ff6b6b;
+}
+
+@keyframes fav-bounce {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.35);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes particle-pop {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0);
+  }
+}
