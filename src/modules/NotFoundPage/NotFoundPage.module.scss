@@ -1,0 +1,19 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  padding: 100px 16px;
+
+  text-align: center;
+}
+
+.link {
+  color: #313237;
+  text-decoration: underline;
+}
+
+.image {
+  max-width: 300px;
+}

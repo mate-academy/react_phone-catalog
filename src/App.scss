@@ -1,1 +1,94 @@
-// not empty
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Arial,
+    sans-serif;
+
+  color: #313237;
+  background-color: #fff;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+
+  min-height: 100vh;
+}
+
+.App__content {
+  display: flex;
+  flex-direction: column;
+
+  width: min(1440px, 100%);
+  min-height: 100vh;
+
+  background-color: #fff;
+}
+
+.visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+
+  border: 0;
+}
+
+main {
+  flex: 1;
+  padding: 60px 16px;
+}
+
+@media (min-width: 640px) {
+  main {
+    padding: 60px 24px;
+  }
+}
+
+@media (min-width: 1200px) {
+  main {
+    padding: 60px 40px;
+  }
+}
