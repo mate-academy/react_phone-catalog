@@ -1,0 +1,96 @@
+@import '../../../../shared/styles/mixins/typography';
+@import '../../../../shared/styles/variables/colors';
+@import '../../../../shared/styles/variables/typography';
+
+.dropdown {
+  width: 180px;
+  position: relative;
+}
+
+.ladel {
+  color: $color-secondary;
+  margin-bottom: 4px;
+
+  @include text-style ($smal-size, $smal-line, $smal-weigth);
+}
+
+.button {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  padding: 0 12px;
+
+  border: 1px solid $color-icons;
+  border-radius: 8px;
+
+  color: $color-primary;
+
+  @include text-style($buttons-size, $buttons-line, $body-weigth);
+
+  &__focus {
+    border-color: $color-primary;
+  }
+
+  &:hover {
+    border-color: $color-secondary;
+  }
+
+
+}
+
+.chevron {
+  width: 8px;
+  height: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+
+  border-left: 2px solid $color-icons;
+  border-bottom: 2px solid $color-icons;
+  transition: transform 0.2s ease;
+  transform: rotate(-45deg);
+
+
+  &__open {
+    transform: rotate(135deg);
+  }
+}
+
+
+.menu {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  border: 1px solid $color-elements;
+  border-radius: 8px;
+
+  box-shadow: 0 2px 15px 0 $color-elements;
+
+  z-index: 999;
+
+}
+
+.items {
+  width: 100%;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  color: $color-secondary;
+  background-color: $color-white;
+  cursor: pointer;
+
+  @include text-style($body-size, $body-line, $body-weigth);
+
+  &:hover {
+    color: $color-primary;
+    background-color: $color-main;
+  }
+}

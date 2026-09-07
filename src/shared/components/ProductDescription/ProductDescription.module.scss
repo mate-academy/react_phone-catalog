@@ -1,0 +1,25 @@
+@import '../../styles/variables/colors';
+@import '../../styles/variables/typography';
+@import '../../styles/mixins/typography';
+
+
+.descriptions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  row-gap: 8px;
+
+  &__name {
+    color: $color-secondary;
+
+    @include text-style ($smal-size, $smal-line, $smal-weigth);
+  }
+
+  &__value {
+    color: $color-primary;
+    justify-self: end;
+
+    @include text-style ($uppercase-size, $uppercase-line, $uppercase-weigth);
+  }
+}

@@ -1,0 +1,19 @@
+.product__illustration {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+
+  @media (max-width: 1199px) {
+    gap: 16px;
+    justify-content: end;
+  }
+
+  @media (max-width: 639px) {
+    flex-direction: column;
+    gap: 60px;
+  }
+}
+
+

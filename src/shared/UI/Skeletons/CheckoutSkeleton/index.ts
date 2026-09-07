@@ -1,0 +1,1 @@
+export { CheckoutSkeleton } from './CheckoutSkeleton';

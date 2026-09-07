@@ -1,0 +1,33 @@
+@import '../../../../shared/styles/variables/colors';
+@import '../../../../shared/styles/variables/typography';
+@import '../../../../shared/styles/mixins/typography';
+
+.card {
+  width: 100%;
+  background-color: $color-white;
+  border: 1px solid $color-elements;
+  border-radius: 8px;
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: 0 2px 16px 0 $color-elements;
+  }
+}
+
+.container {
+  min-width: 100%;
+  min-height: 100%;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: $color-elements;
+}
+
+
+

@@ -1,0 +1,30 @@
+@import '../../styles/variables/colors';
+@import '../../styles/variables/typography';
+@import '../../styles/mixins/typography';
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-self: start;
+  grid-column: 1 / auto;
+  gap: 8px;
+}
+
+.title {
+  color: $color-primary;
+
+  white-space: nowrap;
+
+  @include text-style ($h1-size, $h1-line, $h1-weigth, $h1-leter);
+
+  @media (max-width: 639px) {
+    @include text-style ($h1-size-mobile, $h1-line-mobile, $h1-weigth-mobile, $h1-leter-mobile);
+  }
+}
+
+.description {
+  color: $color-secondary;
+
+  @include text-style ($body-size, $body-line, $body-weigth);
+
+}

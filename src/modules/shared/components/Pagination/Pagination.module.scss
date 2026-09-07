@@ -1,0 +1,18 @@
+@import "../../../../shared/styles/variables/colors";
+
+.pagination {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 16px;
+}
+
+.pagination__buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.ellipsis {
+  display: flex;
+  align-items: end;
+  color: $color-primary;
+}

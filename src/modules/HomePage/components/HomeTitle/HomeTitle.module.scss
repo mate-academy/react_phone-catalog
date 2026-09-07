@@ -1,0 +1,26 @@
+@import '../../../../shared/styles/variables/colors';
+@import '../../../../shared/styles/variables/typography';
+@import '../../../../shared/styles/mixins/typography';
+
+.hiden {
+  display: none;
+}
+
+.title {
+  color: $color-primary;
+
+  @include text-style($h1-size, $h1-line, $h1-weigth, $h1-leter);
+
+  grid-column: 1 / 14;
+
+
+  @media (max-width: 1199px) {
+    grid-column: 1 / 8;
+  }
+
+  @media (max-width: 639px) {
+    grid-column: 1 / 4;
+
+    @include text-style($h1-size-mobile, $h1-line-mobile, $h1-weigth-mobile, $h1-leter-mobile);
+  }
+}

@@ -1,0 +1,14 @@
+@import '../../../styles/variables/colors';
+
+.button {
+  color: $color-icons;
+  min-width: 16px;
+  height: 16px;
+  opacity: 0.5;
+  transition: 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}

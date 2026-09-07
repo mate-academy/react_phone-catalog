@@ -1,0 +1,1 @@
+export { UkrainianFlagIcon } from './UkrainianFlagIcon';

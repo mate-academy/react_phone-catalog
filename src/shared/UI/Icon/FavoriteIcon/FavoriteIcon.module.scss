@@ -1,0 +1,15 @@
+@import '../../../styles/variables/colors';
+
+.svg {
+  height: 16px;
+  width: 16px;
+  display: block;
+  transition: 0.3s ease;
+  color: $color-primary;
+}
+
+.active {
+  color: $color-secondary-accent;
+}
+
+

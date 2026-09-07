@@ -1,0 +1,1 @@
+import { AccessoriesCataloge } from './AccessoriesCataloge';

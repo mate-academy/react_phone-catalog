@@ -1,0 +1,18 @@
+@import '../../../styles/variables/colors';
+
+.dash {
+  width: 14px;
+  height: 4px;
+  background-color: $color-elements;
+  transition: 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-primary;
+  }
+}
+
+.active {
+  background-color: $color-primary;
+}
+

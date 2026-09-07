@@ -1,0 +1,1 @@
+export { UnitedKingdomFlagIcon } from './UnitedKingdomFlagIcon';

@@ -1,0 +1,13 @@
+@import '../../styles/variables/colors';
+@import '../../styles/variables/typography';
+@import '../../styles/mixins/typography';
+
+.name {
+  padding-top: 16px;
+
+  &__link {
+    color: $color-primary;
+
+    @include text-style ($body-size, $body-line, $body-weigth)
+  }
+}

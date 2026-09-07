@@ -1,0 +1,1 @@
+export { PrdctDtailBrdCrbs } from './PrdctDtailBrdCrbs';

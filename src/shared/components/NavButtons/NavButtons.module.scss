@@ -1,0 +1,25 @@
+@import '../../styles/variables/colors';
+
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.descTop {
+  display: flex;
+
+  @media (max-width: 639px) {
+    display: none;
+  }
+}
+
+
+.mobile {
+  display: none;
+
+    @media (max-width: 639px) {
+      display: flex;
+  }
+}
+
+

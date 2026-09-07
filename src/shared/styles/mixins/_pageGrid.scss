@@ -1,0 +1,19 @@
+@mixin page-grid() {
+  width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  justify-items: center;
+
+
+  @media (max-width: 1199px) {
+    width: 100%;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 0 24px;
+  }
+
+  @media (max-width: 639px) {
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0 16px;
+  }
+}

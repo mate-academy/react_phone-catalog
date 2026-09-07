@@ -1,0 +1,3 @@
+import { DEFAULT_ITEM_COUNT } from './DEFAUL_ITEM_COUNT';
+
+export const VALID_PER_PAGE = [4, 8, DEFAULT_ITEM_COUNT];

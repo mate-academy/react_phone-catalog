@@ -1,0 +1,24 @@
+@import '../../shared/styles/variables/colors';
+@import '../../shared/styles/variables/typography';
+@import '../../shared/styles/mixins/typography';
+
+.page {
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+
+  &__title {
+    @include text-style($h2-size, $h2-line, $h2-weigth, $h2-leter);
+
+    color: $color-primary;
+    opacity: 0.8;
+
+    @media (max-width: 639px) {
+      @include text-style($h2-size-mobile, $h2-line-mobile, $h2-weigth-mobile);
+    }
+  }
+}
