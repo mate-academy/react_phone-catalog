@@ -1,0 +1,5 @@
+@use '@styles/extends' as *;
+
+.image-skeleton {
+  @extend %skeleton;
+}

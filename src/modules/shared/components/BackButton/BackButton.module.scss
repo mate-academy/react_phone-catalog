@@ -1,0 +1,37 @@
+@use '@styles/mixins' as *;
+
+.back-button {
+  gap: 4px;
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+  width: fit-content;
+  color: var(--color-secondary);
+
+  @include small-text;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+
+  &__arrow {
+    pointer-events: none;
+  }
+
+  &__text {
+    line-height: 12px;
+  }
+
+  &--dark {
+    color: var(--color-primary);
+
+    &:hover {
+      color: var(--color-accent);
+
+      & :first-child > div {
+        background-color: var(--color-accent);
+      }
+    }
+  }
+}
