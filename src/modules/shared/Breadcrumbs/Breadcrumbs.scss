@@ -1,0 +1,47 @@
+@import '../../../styles/main';
+
+.breadcrumbs {
+  &__item {
+    display: inline-block;
+    overflow: hidden;
+    max-width: 100%;
+
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-gray-secondary);
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+
+    &--dark {
+      color: var(--color-gray-primary);
+      text-decoration: none;
+    }
+  }
+
+  &__link-home,
+  &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__container {
+    display: flex;
+    overflow: hidden;
+    gap: 8px;
+    align-items: center;
+
+    height: 16px;
+    margin-block: 24px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}

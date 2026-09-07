@@ -1,0 +1,137 @@
+@import '../../../../styles/main';
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 16px;
+  border: 1px solid var(--color-gray-elements);
+
+  transition: border-color 0.3s ease;
+
+  @include on-tablet {
+    flex-direction: row;
+    padding: 24px;
+  }
+
+  &:hover {
+    border-color: var(--color-gray-primary);
+    transition: border-color 0.3s ease;
+  }
+
+  &__wrapperTop {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__wrapperBottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__icon-close {
+    cursor: pointer;
+
+    width: 16px;
+    height: 16px;
+    border: none;
+    background-color: var(--color-bg);
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__title {
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: var(--color-gray-primary);
+  }
+
+  &__counter-container {
+    display: flex;
+  }
+
+  &__price {
+    width: 80px;
+
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--color-gray-primary);
+    text-align: right;
+  }
+
+  &__counter {
+    width: 32px;
+
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 32px;
+    text-align: center;
+  }
+
+  &__button {
+    cursor: pointer;
+
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-gray-icons-placeholders);
+    background-color: #fff;
+
+    transition: border 0.3s ease;
+
+    &--disabled {
+      cursor: not-allowed;
+      border: 1px solid var(--color-gray-elements);
+    }
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+body.theme_dark .cartItem__counter {
+  color: var(--color-gray-primary);
+}
+
+body.theme_dark .cartItem__button {
+  border: none;
+  background-color: var(--color-surface-2);
+
+  &--disabled {
+    border: 1px solid var(--color-gray-elements);
+    background-color: var(--color-bg);
+  }
+
+  &:not(.cartItem__button--disabled):hover {
+    border: none;
+    background-color: var(--color-gray-icons-placeholders);
+  }
+}

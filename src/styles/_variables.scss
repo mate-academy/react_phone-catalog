@@ -1,0 +1,33 @@
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+
+body {
+  --color-bg: #fff;
+  --color-gray-primary: #313237;
+  --color-gray-secondary: #89939a;
+  --color-gray-icons-placeholders: #b4bdc3;
+  --color-gray-elements: #e2e6e9;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --color-hover: #fafbfc;
+}
+
+body.theme_dark {
+  --color-gray-primary: #f1f2f9;
+  --color-gray-secondary: #75767f;
+  --color-bg: #0f1121;
+  --color-gray-icons-placeholders: #4a4d58;
+  --color-gray-elements: #3b3e4a;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --color-hover: #1cd97a;
+  --color-surface-1: #161827;
+  --color-surface-2: #323542;
+  --color-accent: #905bff;
+  --color-accent-hover: #a378ff;
+}
+
+* {
+  box-sizing: border-box;
+  transition: all 0.3s;
+}
