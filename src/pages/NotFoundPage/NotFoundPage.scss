@@ -1,0 +1,63 @@
+@import '../../styles/main';
+
+.notFoundPage {
+  width: 100vh;
+
+  @include on-desktop {
+    width: 1136px;
+  }
+
+  &__back_button {
+    padding: 4px;
+    width: 66px;
+    height: 20px;
+    gap: 4px;
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+    border-style: none;
+    background-color: $backgroundColor;
+    cursor: pointer;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+
+    @include on-desktop {
+      margin-top: 80px;
+    }
+
+    &__text {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      color: $whiteColor;
+    }
+  }
+
+  &__empty {
+    margin-top: 50px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+
+    &_title {
+      font-family: Mont, sans-serif;
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 25px;
+      color: $secondaryColor;
+    }
+
+    &_img {
+      padding-top: 50px;
+      width: 350px;
+      height: 350px;
+      display: flex;
+    }
+  }
+}

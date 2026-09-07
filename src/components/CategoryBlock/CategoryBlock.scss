@@ -1,0 +1,91 @@
+@import '../../styles/main';
+
+.categoryBlock {
+  width: 100%;
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: $whiteColor;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+    }
+  }
+
+  &__categories {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      gap: 16px;
+      flex-direction: row;
+    }
+  }
+
+  &__category {
+    width: 100%;
+
+    &_title {
+      padding-top: 24px;
+      font-size: 20px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      font-weight: 700;
+      color: $whiteColor;
+    }
+
+    &_models {
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      font-weight: 600;
+      color: $secondaryColor;
+    }
+  }
+
+
+  &__image {
+    cursor: pointer;
+    border: 1px transparent;
+    border-radius: 10px;
+    width: 100%;
+    height: 288px;
+
+    @include on-tablet {
+      height: 250px;
+    }
+
+    @include on-desktop {
+      height: 368px;
+    }
+
+      &:hover {
+        border-color: $surface2Color;
+        transform: translateY(-3px);
+        box-shadow: 0.5px 8px 70px -34px rgba(107, 49, 131, 1);
+      }
+
+  }
+}
