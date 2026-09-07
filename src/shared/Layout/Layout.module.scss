@@ -1,0 +1,33 @@
+@import '/src/shared/styles/index';
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    padding-top: 64px;
+    box-sizing: border-box;
+}
+
+.layout {
+    box-sizing: border-box;
+    margin: auto;
+    max-width: $content-max-width;
+    min-height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    
+}
+
+main {
+    width: 100%;
+    padding: auto;
+    box-sizing: border-box;
+    margin: auto;
+    max-width: $element-max-width;
+}
+
+footer {
+    bottom: 0;
+}

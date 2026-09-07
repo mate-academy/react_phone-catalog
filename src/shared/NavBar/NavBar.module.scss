@@ -1,0 +1,143 @@
+@import '../styles/index';
+@import 'src/App';
+
+.navBar {
+  @include set-size(100%, 64px);
+
+  max-width: $content-max-width;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1000;
+  background-color: $color-white;
+  box-shadow: 0 1px 4px rgba(226, 230, 233, 0.75);
+
+  @include on-tablet{
+    @include set-size(100%, 48px);
+  
+    gap: 16px;
+  }
+}
+
+.wrapper {
+  margin-left: auto;
+  display: flex;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.logo {
+  @include flex-center;
+  @include set-size(128px, 100%);
+
+  padding: 24px, 18px;
+}
+
+img {
+  margin: auto;
+}
+
+.links {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 64px;
+
+  &__item {
+    @include set-font($font-mont, 16px, 800);
+    @include flex-center;
+    @include set-size(100%, 100%);
+
+    position: relative;
+    transition: all 0.3s;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    color: #000;
+
+   
+  
+    &:hover {
+      background-color: $color-light-grey;
+      text-shadow:
+        -1px -1px 0 $color-modified-grey,
+        1px -1px 0 $color-modified-grey,
+        -1px 1px 0 $color-modified-grey,
+        1px 1px 0 $color-modified-grey,
+    }
+  
+    &--active {
+      color: $color-element-black;
+    }
+  }
+  
+
+  @include on-tablet{
+    gap: calc(10px + (32 - 10) * ((100vw - 320px) / (790 - 320)));
+    font-size: 12px;
+    line-height: 11px;
+  }
+}
+
+.icon {
+  box-shadow: 0 1px 4px rgba(226, 230, 233, 0.75);
+  margin-left: auto;
+
+  @include set-size(64px, 100%);
+  @include flex-center;
+
+  &:hover {
+    border: 1px solid #313237;
+  }
+
+  @include on-tablet{
+    width: 48px;
+  }
+
+}
+
+.rightButton {
+  margin-left: auto;
+  position: relative;
+  background-color: $color-white;
+}
+
+.count {
+  position: absolute;
+  background-color: #476df4;
+  border: 1px solid $color-white;
+  border-radius: 50px;
+
+  @include set-size(14px, 14px);
+  @include set-font($font-mont, 9px, 600);
+
+  color: $color-white;
+  line-height: 14px;
+  text-align: center;
+}
+
+.cartCount {
+  position: absolute;
+  top: 25%;
+  right: -80%;
+
+  @include on-phone{
+    top: 25%;
+    left: 50%;
+  }
+}
+
+.favouritesCount {
+  top: 25%;
+  right: 120%;
+
+  @include on-phone{
+    top: 25%;
+    left: 50%;
+  }
+}

@@ -1,0 +1,98 @@
+@import '../styles/index';
+
+img {
+    margin: 0;
+}
+
+.footer {
+    @include set-size(100%, 96px);
+    @include flex-center;
+
+    max-width: $element-max-width;
+    box-sizing: border-box;
+    box-shadow: 0 1px 4px rgba(226, 230, 233, 0.75);
+    justify-content: space-between;
+    padding-inline: minmax(32px, 152px);
+    margin-inline: auto;
+    margin-top: 200px;
+
+    @include on-phone{
+        height: 40vh;
+        margin: 0;
+        padding: 16px;
+        flex-direction: column;
+        align-items: start;
+        justify-content: space-around;
+
+    }
+
+    &__links {
+        @include flex-center;
+
+        flex-direction: row;
+        width: 35%;
+        justify-content: space-between;
+
+        @include on-phone{
+            flex-direction: column;
+            align-items: start;
+            gap: 16px;
+        }
+    }
+
+    &__link {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: $color-grey;
+    
+        @include set-font($font-mont, 12px, 800);
+    }
+}
+
+.logo {
+    display: inline-block;
+    margin-left: 32px;
+
+    @include on-phone{
+        margin: 0;
+    }
+}
+
+.toTop {
+    @include flex-center;
+
+    gap: 16px;
+    margin-right: 32px;
+
+    @include on-phone{
+        margin-inline: auto;
+    }
+
+    &__title {
+        @include set-font($font-mont, 12px, 700);
+    
+        color: $color-grey;
+    }
+
+    &__button {
+        @include set-size(32px, 32px);
+    
+        border-radius: 50%;
+        border: 1px solid $color-light-grey;
+        color: $color-element-black;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 50%;
+        cursor: pointer;
+
+        &:hover {
+            border-color: $color-element-black;
+        }
+    }
+
+    &__link {
+        display: block;
+    
+        @include set-size(100%, 100%);
+    }
+}
