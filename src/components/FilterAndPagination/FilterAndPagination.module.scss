@@ -1,0 +1,67 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables' as *;
+
+iframe {
+  display: none;
+}
+
+.filterBar {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-start;
+
+  width: 100%;
+  margin-bottom: 16px;
+
+  @include on-tablet {
+    @include grid-tablet;
+  }
+
+  @include on-desktop {
+    @include grid-desktop;
+  }
+
+  &__group {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 4px;
+    align-items: baseline;
+
+    min-width: 0;
+
+    @include on-tablet {
+      grid-column: span 4;
+
+      &:nth-child(2) {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  &__label {
+    @include text-style($small-text);
+
+    color: $color-secondary;
+  }
+
+  &__select {
+    cursor: pointer;
+
+    width: 100%;
+    padding: 4px 8px;
+    border: 1px solid $color-elements;
+    border-radius: 4px;
+
+    font-family: $font-primary;
+    color: $color-primary;
+
+    background-color: $color-white;
+
+    @include text-style($button-text);
+
+    &:hover {
+      border-color: $color-accent;
+    }
+  }
+}

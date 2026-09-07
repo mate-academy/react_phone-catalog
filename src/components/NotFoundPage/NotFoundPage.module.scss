@@ -1,0 +1,50 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+iframe {
+  display: none;
+}
+
+.page404 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  box-sizing: border-box;
+  padding-block-start: 72px;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    @include padding-inline-responsive
+  }
+
+  @include on-desktop {
+    padding-block-start: 88px;
+  }
+
+  span {
+    @include text-style($body-text);
+
+    z-index: 1;
+    color: $color-secondary;
+  }
+  
+  a {
+    @include text-style($body-text);
+
+    z-index: 1;
+    color: $color-secondary;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-accent-secondary;
+    }
+  }
+
+  &__image {
+    align-self: center;
+    width: 300px;
+    height: auto;
+    object-fit: contain;
+  }
+}

@@ -1,0 +1,91 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+@use "sass:map";
+
+iframe {
+  display: none;
+}
+
+.categorySection {
+  &__title {
+    margin: 0;
+
+    @include responsive-text-style($h2-mobile, $h2-desktop);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+}
+
+.categoryCard {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  padding-top: 24px;
+
+  text-decoration: none;
+
+  &__background {
+    position: relative;
+
+    overflow: hidden;
+
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    border-radius: 8px;
+
+    &.background--phones {
+      background-color: #6D6474;
+    }
+
+    &.background--tablets {
+      background-color: #8D8D92;
+    }
+
+    &.background--accessories {
+      background-color: #973D5F;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+
+    width: 120%;
+    height: auto;
+
+    object-fit: fill;
+
+    transition: transform 0.3s ease;
+
+    .categoryCard:hover & {
+      transform: scale(1.05) translate(-5%, -5%);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    padding: 24px 0 4px;
+
+    @include responsive-text-style($h4-mobile, $h4-desktop);
+
+    color: $color-primary;
+  }
+
+  &__count {
+    margin: 0;
+
+    @include text-style($small-text);
+
+    color: $color-secondary;
+  }
+}

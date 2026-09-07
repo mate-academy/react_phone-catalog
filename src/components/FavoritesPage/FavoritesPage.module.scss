@@ -1,0 +1,68 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables' as *;
+
+iframe {
+  display: none;
+}
+
+.favorites {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    @include padding-inline-responsive
+  }
+
+  &__header {
+    margin: 0;
+
+    @include text-style($h1-mobile);
+
+    @include on-tablet {
+      @include text-style($h1-desktop);
+    }
+  }
+
+    &__quantity {
+    padding-block: 8px 32px;
+
+    @include text-style($body-text);
+
+    @include on-tablet {
+      padding-block-end: 40px;
+    }
+  }
+
+  &__main {
+    padding-top: 32px;
+    padding-bottom: 64px;
+
+    @include on-tablet {
+      padding-top: 40px;
+      padding-bottom: 64px;
+    }
+
+    @include on-desktop {
+      padding-bottom: 80px;
+    }
+  }
+
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    span {
+      @include text-style($body-text);
+
+      z-index: 1;
+      color: $color-secondary;
+    }
+
+    &Image {
+      align-self: center;
+      width: 300px;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+}

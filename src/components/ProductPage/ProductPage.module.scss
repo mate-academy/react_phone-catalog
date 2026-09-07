@@ -1,0 +1,113 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+@use 'sass:map';
+
+.productPage {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 16px;
+
+  @include on-desktop {
+    @include padding-inline-responsive;
+  }
+
+  &__loader {
+    padding-top: 72px;
+
+      @include on-desktop {
+        padding-top: 88px;
+      }
+  }
+
+  &__title {
+    @include text-style($h2-mobile);
+
+    @include on-desktop {
+      @include text-style($h2-desktop);
+    }
+  }
+
+  &__gallery {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 16px;
+
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
+
+    @include on-tablet {
+      @include grid-tablet;
+    }
+
+    @include on-desktop {
+      @include grid-desktop;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+
+  &__prices {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+
+    & > .productPage__price {
+      @include text-style($h2-desktop);
+
+      color: $color-primary;
+    }
+
+    & > .productPage__fullPrice {
+      @include text-style($h3-desktop);
+
+      color: $color-secondary;
+      text-decoration: line-through;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+
+    span {
+      @include text-style($small-text);
+
+      color: $color-secondary;
+    }
+  }
+
+  &__description {
+    @include on-tablet {
+      padding-top: 64px;
+    }
+
+    @include on-desktop {
+      padding-top: 80px;
+
+      @include grid-desktop;
+    }
+  }
+
+  &__loading {
+    padding: 64px;
+    color: $color-secondary;
+    text-align: center;
+
+    @include text-style($body-text);
+  }
+}
