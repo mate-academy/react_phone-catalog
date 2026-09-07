@@ -1,7 +1,7 @@
 {
   "extends": "@mate-academy/students-ts-config",
   "include": [
-    "src"
+    "src",
   ],
   "compilerOptions": {
     "sourceMap": false,

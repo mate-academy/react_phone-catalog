@@ -1,0 +1,96 @@
+@use './variables.scss' as *;
+
+@mixin uppercase {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+@mixin buttons {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin small-text {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+@mixin body-text {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  & {
+    transition: #{$property} 0.3s;
+  }
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  & {
+    display: grid;
+
+    --columns: 4;
+
+    column-gap: 16px;
+    grid-template-columns: repeat(var(--columns), 1fr);
+  }
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+
+@mixin content-padding-inline() {
+  & {
+    padding-inline: 16px;
+  }
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin-inline: auto;
+    padding-inline: 32px;
+  }
+}
+
+@mixin menu-close-button {
+  display: flex;
+  height: 48px;
+  width: 48px;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid $border-color;
+  border-right: 0;
+  border-top: 0;
+  border-bottom: 0;
+  background-color: #fff;
+  cursor: pointer;
+}
