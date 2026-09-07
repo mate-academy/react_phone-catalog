@@ -1,0 +1,31 @@
+@use './mixins' as *;
+@use './variables' as *;
+
+.mobile-hidden {
+  display: none;
+
+  @include on-tablet {
+    display: inline-block;
+  }
+}
+
+.container {
+  flex: 1;
+  width: 100%;
+  max-width: 1136px;
+  margin: 0 auto;
+  padding-inline: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 0;
+  }
+}

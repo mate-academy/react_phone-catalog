@@ -1,0 +1,15 @@
+@use '../../../../shared/utils.scss' as *;
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 16px;
+    transition: transform $effectDuration;
+  }
+}

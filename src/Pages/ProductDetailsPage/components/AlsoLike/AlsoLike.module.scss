@@ -1,0 +1,20 @@
+@use '../../../../shared/utils.scss' as *;
+
+.alsolike {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include on-tablet {
+    grid-column: 1 / -1;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / -1;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+}

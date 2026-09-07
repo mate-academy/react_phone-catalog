@@ -1,0 +1,12 @@
+@use '../../../../shared/utils.scss' as *;
+
+.hotprices {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+}
