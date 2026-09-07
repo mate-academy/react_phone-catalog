@@ -1,0 +1,20 @@
+@import '@styles/utils/mixins';
+@import '@styles/utils/vars';
+
+.product_small_specs {
+  &__list {
+    padding-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__property {
+    color: $regent-gray-color;
+  }
+}
