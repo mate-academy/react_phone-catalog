@@ -1,0 +1,27 @@
+.mainWrapper {
+  @include on-desktop {
+    row-gap: 80px;
+    padding-bottom: 80px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 64px;
+  padding-bottom: 64px;
+}
+
+.main__title {
+  @include on-tablet {
+    padding-block: 32px;
+    font-size: 48px;
+  }
+
+  @include on-desktop {
+    padding-block: 56px;
+  }
+
+  max-width: inherit;
+  padding-block: 24px;
+  font-weight: 700;
+  font-size: 32px;
+}

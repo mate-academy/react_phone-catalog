@@ -1,0 +1,68 @@
+.pagination {
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 16px;
+  list-style: none;
+  margin-bottom: 64px;
+}
+
+.numsWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+%page-numbers {
+  text-decoration: none;
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
+  border-radius: 48px;
+  height: 32px;
+  width: 32px;
+  transition: all $transition-duration ease;
+  color: var(--card-text);
+
+  &:hover {
+    background-color: var(--slider-btn-bg);
+    border-color: var(--breadcrumbs-hover);
+  }
+
+  &:active {
+    background-color: var(--breadcrumbs-hover);
+    border-color: var(--breadcrumbs-hover);
+  }
+}
+
+.pageNumbers {
+  @extend %page-numbers;
+}
+
+.activeNumber {
+  @extend %page-numbers;
+
+  color: $color-white;
+  background-color: var(--breadcrumbs-hover);
+  border-color: var(--breadcrumbs-hover);
+}
+
+.numberLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: currentColor;
+  text-decoration: none;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: transparent;
+}

@@ -1,0 +1,43 @@
+.buttonBack {
+  @include on-tablet {
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+
+  display: flex;
+  width: 66px;
+  gap: 4px;
+  align-items: center;
+  color: var(--second-text-color);
+  text-decoration: none;
+  height: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 0;
+  margin-block: 24px;
+  background-color: transparent;
+  border: none;
+  transition: all $transition-duration ease;
+
+  &:hover {
+    color: var(--breadcrumbs-hover);
+
+    .chevron {
+      fill: var(--breadcrumbs-hover);
+      transform: translateX(-2px);
+      transition: all $transition-duration ease-in-out;
+    }
+  }
+}
+
+.text {
+  margin-top: 1px;
+  align-self: last baseline;
+}
+
+.imgContainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

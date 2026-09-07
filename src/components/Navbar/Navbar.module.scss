@@ -1,0 +1,172 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  background-color: var(--background-color);
+}
+
+.navbar {
+  @include on-desktop {
+    height: 64px;
+  }
+
+  justify-content: space-between;
+  display: flex;
+  border-bottom: 1px solid;
+  border-color: var(--border-color);
+  height: 48px;
+  text-transform: uppercase;
+}
+
+.rightBlock {
+  gap: 48px;
+  display: flex;
+}
+
+.logo {
+  @include on-desktop {
+    width: 80px;
+    height: 28px;
+  }
+
+  width: 64px;
+  height: 22px;
+}
+
+.item {
+  display: list-item;
+  list-style: none;
+  height: 100%;
+}
+
+.navbarItem {
+  @include underline-effect;
+  @include underline-hover;
+
+  align-items: center;
+  display: flex;
+  transition: all $transition-duration ease;
+  height: 100%;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  font-weight: 700;
+  color: $secondary-text-color;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--navbar-text-active);
+  }
+}
+
+.navbarItemActive {
+  @include underline-effect;
+
+  align-items: center;
+  display: flex;
+  height: 100%;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  font-weight: 700;
+  color: var(--navbar-text-active);
+  text-decoration: none;
+}
+
+.navbarMenu {
+  display: flex;
+}
+
+.navlist {
+  display: none;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 32px;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin-inline: 16px;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.navLogo {
+  align-items: center;
+  display: flex;
+  padding-inline: 16px;
+  text-decoration: none;
+}
+
+.buttonsRight {
+  display: none;
+
+  @include on-tablet {
+    align-items: center;
+    justify-self: end;
+    display: flex;
+    list-style: none;
+  }
+}
+
+.buttonItem {
+  @include on-tablet {
+    border-left: 1px solid;
+    border-color: var(--border-color);
+  }
+}
+
+.buttonBase {
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+
+  @include underline-effect;
+  @include underline-hover;
+
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 48px;
+  height: 48px;
+  text-decoration: none;
+}
+
+.buttonBaseActive {
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+
+  @include underline-effect;
+
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 48px;
+  height: 48px;
+  text-decoration: none;
+}
+
+.buttonBase:nth-last-child {
+  position: relative;
+}
+
+.burgerMenu {
+  @include on-tablet {
+    display: none;
+  }
+
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border: none;
+  border-left: 1px solid;
+  border-color: var(--border-color);
+  width: 48px;
+  background-color: transparent;
+}

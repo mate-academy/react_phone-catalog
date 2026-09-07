@@ -1,0 +1,53 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.sectionTitle {
+  display: flex;
+  flex-direction: column;
+  font-family: Mont-Bold, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+}
+
+.sectionTitle::after {
+  content: '';
+  border: 1px solid var(--border-color);
+  margin-top: 16px;
+}
+
+.descriptionTitle {
+  font-size: 16px;
+  color: var(--text-color);
+  margin-bottom: 16px;
+}
+
+.description {
+  font-size: 14px;
+  color: $secondary-text-color;
+}
+
+.techSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+
+.productDescription {
+  @include on-tablet {
+    row-gap: 64px;
+  }
+
+  @include on-desktop {
+    flex-direction: row;
+    column-gap: 64px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 56px;
+}
