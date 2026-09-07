@@ -1,0 +1,26 @@
+@import '../../../Scss-variables/Variables.scss';
+
+
+.error {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &__message {
+    color: $active-link-color;
+    font-family: $mont-regular-font;
+    margin-bottom: 20px;
+    font-size: 45px;
+
+  }
+
+  &__button {
+    background-color: #905BFF;
+    width: 150px;
+    height: 70px;
+    border-radius: 10px;
+    color: $active-link-color;
+    font-family: $mont-regular-font;
+  }
+}

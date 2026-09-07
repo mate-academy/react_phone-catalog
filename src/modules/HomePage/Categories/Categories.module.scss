@@ -1,0 +1,135 @@
+@import '../../../Scss-variables/Variables.scss';
+@import '../../Utils/mixins.scss';
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 56px;
+  &--margin {
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__top {
+    width: 100%;
+    margin-bottom: 24px;
+    
+    &__title {
+      font-family: $mont-bold-font;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+      color: $active-link-color;
+      
+      @include onTablet {
+        letter-spacing: -0.01em;
+        font-size: 32px;
+        line-height: 128%;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+
+    @include onTablet {
+      flex-direction: row;
+    }
+    
+    &__category {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      transition: transform 0.3s;
+      
+      &:hover {
+        transform: translateY(-8px);
+      }
+
+      &--image {
+        width: 100%;
+        height: 0;
+        padding-bottom: 100%;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 24px;
+      }
+      
+      &--phones,
+      &--tablets,
+      &--accessories {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      &--phones {
+        background-color: #6D6474;
+         object-position: 50px -50%;
+          @include onTablet {
+            object-position: 45px 25px;
+          }
+
+          @include onDesktop {
+            object-position: 45px 95px;
+            
+          }
+        }
+      
+      &--tablets {
+        background-color: #8D8D92;
+        object-position: 75px 91px;
+
+        @include onTablet {
+          object-position: 45px 25px;
+        }
+
+        @include onDesktop {
+          object-position: 45px 75px;
+        }
+      }
+      
+      &--accessories {
+        background-color: #D53C51;
+        object-position: 5% 10px;
+          @include onTablet {
+            object-position: 45px 25px;
+          }
+
+        @include onDesktop {
+          object-position: 45px 100px;
+        }
+      }
+
+      &__name {
+        font-family: $mont-regular-font;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 140%;
+        color: $active-link-color;
+        margin-bottom: 4px;
+      }
+
+      &__quantity {
+        font-family: $mont-regular-font;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 150%;
+        color: #75767F;
+      }
+    }
+  }
+}

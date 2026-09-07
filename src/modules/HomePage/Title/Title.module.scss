@@ -1,0 +1,35 @@
+@import '../../../Scss-variables/Variables.scss';
+@import '../../Utils/mixins.scss';
+
+.title {
+  color: $active-link-color;
+  font-family: $mont-bold-font;
+	cursor: default;
+	text-align: center;
+	font-size: 32px;
+	line-height: 128%;
+	letter-spacing: -0.01em;
+
+	@include onTablet {
+		font-size: 48px;
+		line-height: 117%;
+	}
+	
+  @include onDesktop {
+		text-align: start;
+  }
+	&--margin {
+  	margin: 24px 0;
+		@include onDesktop {
+	  	margin: 56px 0;
+		}
+	}
+
+	br {
+		display: block;
+		@include onDesktop {
+			display: none;
+		}
+	}
+}
+
