@@ -1,0 +1,31 @@
+@use '@/styles/index' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 32px;
+}
+
+.title {
+  font-size: 80px;
+  font-weight: 800;
+  color: $primary;
+  margin-bottom: 16px;
+}
+
+.text {
+  font-size: 20px;
+  margin-bottom: 32px;
+}
+
+.button {
+  padding: 12px 24px;
+  background-color: $primary;
+  color: $white;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  @include hover(box-shadow, 0 3px 13px rgba(23, 32, 49, 0.4));
+}

@@ -1,0 +1,62 @@
+@use '@/styles/index' as *;
+
+.categories-block {
+  color: $primary;
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desctop {
+    margin-top: 80px;
+  }
+
+  .title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+    }
+  }
+
+  .categories {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .category {
+      @include hover(transform, scale(1.03));
+
+      img {
+        width: 100%;
+        margin-bottom: 24px;
+      }
+
+      &-title {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 100%;
+        margin-bottom: 4px;
+      }
+
+      &-qnt {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 21px;
+        color: $secondary;
+      }
+    }
+  }
+}

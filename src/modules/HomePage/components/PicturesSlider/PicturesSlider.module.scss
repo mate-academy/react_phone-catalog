@@ -1,0 +1,96 @@
+@use '@/styles/index' as *;
+
+.pictureSlider {
+  width: 100%;
+
+  @include on-tablet {
+    box-sizing: border-box;
+    padding: 0 24px;
+    position: relative;
+    margin-top: 0;
+  }
+
+  @include on-desctop {
+    max-width: 1136px;
+    padding: 0 32px;
+    margin: 0 auto;
+  }
+
+  &-image {
+    height: 320px;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    box-sizing:border-box;
+
+    @include on-tablet {
+      height: 189px;
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    @include on-desctop {
+      height: 400px;
+      width: 90%;
+    }
+  }
+
+  &-image img {
+    width: 100%;
+    object-fit: cover;
+    box-sizing: border-box;
+  }
+
+  .navButton {
+    display: none;
+    top: 0;
+    width: 32px;
+    background-color: #fff;
+    position: absolute;
+    border: 1px solid $icons;
+    z-index: 10;
+    cursor: pointer;
+
+    @include on-tablet {
+      display: block;
+      height: 189px;
+    }
+
+    @include on-desctop {
+      height: 400px;
+    }
+  }
+
+  .prevButton {
+    left: 24px;
+  }
+
+  .nextButton {
+    right: 24px;
+  }
+}
+
+.customPagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+  margin-bottom: 10px;
+
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+  :global(.swiper-pagination-bullet) {
+    width: 14px;
+    height: 4px;
+    background: $elements;
+    border-radius: 0;
+    opacity: 0.7;
+    margin: 0 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+  :global(.swiper-pagination-bullet-active) {
+    background: $primary;
+    opacity: 1;
+  }
+}

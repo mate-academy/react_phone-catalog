@@ -1,0 +1,109 @@
+@use '@/styles/index' as *;
+
+.item-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid $elements;
+
+  @include on-tablet {
+    flex-direction: row;
+    padding: 24px;
+    justify-content: space-between;
+
+    .top, .bottom {
+      flex: 1.3;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .bottom {
+      flex: 0.7;
+    }
+  }
+
+  .delete-btn {
+    width: 16px;
+    height: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+
+    a {
+      display: flex;
+    }
+  }
+  img {
+    max-height: 66px;
+    object-fit: contain;
+  }
+
+  .name {
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+    color: $primary;
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .qtyButtons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .qty {
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+  .qtyButton {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: 1px solid $elements;
+    transition: border-color 0.3s ease-in-out;
+    cursor: pointer;
+    outline: none;
+
+    img {
+      pointer-events: none;
+    }
+
+    &:disabled {
+      cursor: default;
+    }
+
+    &:not(:disabled):hover {
+      border-color: $primary;
+    }
+
+    &.isActive {
+      border: 1px solid $icons;
+      img {
+        filter: invert(20%) sepia(11%) saturate(300%) hue-rotate(193deg) brightness(93%) contrast(98%);
+      }
+    }
+  }
+
+  .price {
+    font-size: 22px;
+    line-height: 140%;
+    font-weight: 800;
+  }
+}

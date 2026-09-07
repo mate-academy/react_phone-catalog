@@ -1,0 +1,51 @@
+@use '@/styles/index' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 40px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid $elements;
+  background: transparent;
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 500;
+  color: $primary;
+
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: $primary;
+  }
+  &:disabled {
+    border-color: $elements;
+    color: $icons;
+  }
+}
+
+.page-item {
+  &.disabled .pageLink {
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  &.active .page-link {
+    background-color: $primary;
+    color: #fff;
+    border-color: $primary;
+  }
+}
