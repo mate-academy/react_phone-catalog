@@ -1,0 +1,45 @@
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-top: 32px;
+  }
+
+  @include on-desktop {
+    padding-top: 56px;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 800;
+    font-style: bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__image {
+    padding-top: 24px;
+
+    display: block;
+    width: 288px;
+    height: 288px;
+
+    @include on-tablet {
+      padding-top: 32px;
+    }
+
+    @include on-desktop {
+      padding-top: 56px;
+    }
+  }
+}

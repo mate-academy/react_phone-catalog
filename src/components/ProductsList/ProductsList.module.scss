@@ -1,0 +1,31 @@
+.products-list {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px 16px;
+}
+
+.no-product-yet {
+  margin: 0;
+  padding-top: 24px;
+  font-weight: 800;
+  font-style: bold;
+  font-style: 22px;
+  line-height: 140%;
+  letter-spacing: 0;
+  color: $secondary-color;
+
+  @include content-padding-inline;
+
+  @include on-tablet {
+    padding-top: 32px;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+
+  @include on-desktop {
+    padding-top: 56px;
+  }
+}
