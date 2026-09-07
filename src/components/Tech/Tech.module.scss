@@ -1,0 +1,44 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as mix;
+
+.tech {
+  min-width: 512px;
+  flex-grow: 1;
+
+  @include mix.respond-to(mobile) {
+    min-width: 300px;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__list {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__infoBlock {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  &__infoTitle {
+    @include mix.smallText;
+
+    color: v.$colorSecondary;
+  }
+
+  &__infoText {
+    @include mix.smallText;
+
+    color: v.$colorWhite;
+  }
+
+  &__skeletonInfoText {
+    width: 150px;
+  }
+}

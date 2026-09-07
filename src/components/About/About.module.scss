@@ -1,0 +1,33 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as mix;
+
+.about {
+  min-width: 50%;
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__description {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__texts {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  &__text {
+    @include mix.bodyText;
+
+    color: v.$colorSecondary;
+  }
+
+  &__textSkeleton {
+    height: 80px;
+  }
+}

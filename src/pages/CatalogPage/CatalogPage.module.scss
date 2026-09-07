@@ -1,0 +1,65 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as mix;
+
+.catalogPage {
+  padding-top: 24px;
+  padding-bottom: 80px;
+
+  &__title {
+    text-transform: capitalize;
+    margin-top: 40px;
+  }
+
+  &__modelCount {
+    margin-top: 8px;
+
+    @include mix.bodyText;
+
+    color: v.$colorSecondary;
+  }
+
+  &__sortGroup {
+    margin-top: 40px;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__sort {
+    height: 59px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &--by {
+      width: 176px;
+
+      @include mix.respond-to(tablet) {
+        width: 187px;
+      }
+
+      @include mix.respond-to(mobile) {
+        width: 136px;
+      }
+    }
+
+    &--perPage{
+      width: 128px;
+
+      @include mix.respond-to(tablet) {
+        width: 136px;
+      }
+    }
+  }
+
+  &__selTitle {
+    @include mix.smallText;
+
+    color: v.$colorSecondary;
+    width: 136px;
+
+    &_large {
+      width: 187px;
+    }
+  }
+}
