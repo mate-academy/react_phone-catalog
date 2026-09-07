@@ -1,0 +1,25 @@
+@import '../../../styles/utils/mixins';
+@import '../../../styles/utils/vars';
+
+.add-to-cart-button {
+  width: 100%;
+  flex: 1 1 auto;
+  height: 40px;
+  background-color: #216cff;
+  color: #fff;
+
+  @include hover('box-shadow', 0 3px 13px 0 rgba(23, 32, 49, 0.4));
+
+  @include on-tablet {
+    width: 125px;
+    height: 40px;
+  }
+
+  &.button--selected {
+    border: 1px solid $color_elements;
+    background-color: white;
+    color: $color_accent_primary;
+
+    @include hover('box-shadow', 0 1px 9px 0 $color_hover);
+  }
+}

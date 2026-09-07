@@ -1,0 +1,51 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 16px;
+  font-size: 12px;
+
+  &__link,
+  &__separator {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    font-weight: 600;
+    color: $color_primary;
+    text-decoration: none;
+
+    @include hover(color, $color_accent_secondary);
+
+    svg path {
+      transition: fill 0.3s;
+    }
+
+    &:hover {
+      svg path {
+        fill: $color_accent_secondary;
+      }
+    }
+  }
+
+  &__text {
+    font-weight: 500;
+    color: $color_secondary;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__space {
+    margin-block: 24px;
+  }
+
+  &__back {
+    margin-left: 4px;
+  }
+}

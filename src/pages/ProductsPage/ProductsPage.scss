@@ -1,0 +1,111 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.products-page {
+  max-width: 1136px;
+  width: 100%;
+  margin-inline: auto;
+  margin-bottom: 64px;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__breadcrumbs {
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__total {
+    margin-top: 8px;
+    margin-bottom: 32px;
+    color: $color_secondary;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__selectors {
+    margin-bottom: 24px;
+  }
+
+  &__pagination {
+    margin-top: 24px;
+    margin-bottom: 64px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+}
+
+.selectors {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  @include on-tablet {
+    justify-content: flex-start;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    &:first-child {
+      @include on-tablet {
+        max-width: 187px;
+        width: 100%;
+      }
+
+      @include on-desktop {
+        max-width: 176px;
+        width: 100%;
+      }
+    }
+
+    &:last-child {
+      @include on-tablet {
+        max-width: 136px;
+        width: 100%;
+      }
+
+      @include on-desktop {
+        max-width: 128px;
+        width: 100%;
+      }
+    }
+  }
+
+  &__type {
+    color: $color_secondary;
+    margin-bottom: 4px;
+  }
+
+  &__select {
+    height: 40px;
+    border: 1px solid $color_icons_placeholder;
+    border-radius: 8px;
+    padding: 10px 12px 9px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    @include hover(border-color, $color_secondary);
+  }
+
+  &__option {
+    margin: 0;
+    padding: 0;
+  }
+}

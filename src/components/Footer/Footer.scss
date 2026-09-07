@@ -1,0 +1,110 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.footer {
+  padding-block: 32px;
+  row-gap: 32px;
+
+  @include page-grid;
+  @include content-padding-inline;
+
+  @include on-desktop {
+    margin-inline: auto;
+  }
+
+  &__logo {
+    grid-column: 1 / -1;
+  }
+
+  &__nav {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__nav-item:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+  &__nav-link {
+    color: $color_secondary;
+    grid-column: 1 / 2;
+
+    @include hover(color, $color_primary);
+  }
+
+  &__buttons {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__button {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    border: 1px solid $color_secondary;
+    border-radius: 50%;
+
+    @include hover(border-color, $color_primary);
+  }
+
+  &__buttons-text {
+    color: $color_secondary;
+  }
+
+  @include on-tablet {
+    .footer {
+      margin-inline: auto;
+
+      &__logo {
+        grid-column: 1 / 4;
+      }
+
+      &__nav {
+        grid-column: 5 / 10;
+        flex-direction: row;
+        gap: 13.5px;
+        height: 32px;
+        align-items: center;
+
+        @include on-tablet {
+          justify-content: space-evenly;
+        }
+
+        @include on-desktop {
+          gap: 106px;
+        }
+      }
+
+      &__nav-item {
+        margin-bottom: 0;
+      }
+
+      &__buttons {
+        grid-column: 10 / -1;
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  @include on-desktop {
+    .footer {
+      &__logo {
+        grid-column: 1 / 8;
+      }
+
+      &__nav {
+        grid-column: 8 / 17;
+        justify-content: space-around;
+      }
+
+      &__buttons {
+        grid-column: 17 / -1;
+      }
+    }
+  }
+}

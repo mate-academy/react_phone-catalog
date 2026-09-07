@@ -1,0 +1,50 @@
+@import '../../styles/utils/vars';
+
+.burger-menu {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+
+  &__line {
+    position: absolute;
+    left: 0;
+    height: 1.5px;
+    width: 100%;
+    background-color: $color_primary;
+    transition: all 0.3s ease;
+
+    &--1 {
+      top: 20%;
+    }
+
+    &--2 {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &--3 {
+      bottom: 20%;
+    }
+  }
+
+  &__line--1.burger-menu--open {
+    transform: rotate(45deg);
+    top: 50%;
+  }
+
+  &__line--2.burger-menu--open {
+    opacity: 0;
+  }
+
+  &__line--3.burger-menu--open {
+    transform: rotate(-45deg);
+    top: 50%;
+  }
+}
+
+@media (min-width: 640px) {
+  .burger-menu {
+    display: none;
+  }
+}
