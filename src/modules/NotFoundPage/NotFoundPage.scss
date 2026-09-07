@@ -1,0 +1,14 @@
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-top: 40px;
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--color-gray-primary);
+  font-size: 48px;
+  line-height: 56px;
+}
