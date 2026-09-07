@@ -1,7 +1,16 @@
-import './App.scss';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+import { Header, Footer } from './components';
+
+import styles from './App.module.scss';
+
+export const App = () => {
+  return (
+    <div className={styles.app}>
+      <Header />
+      <Outlet />
+      <Footer />
+    </div>
+  );
+};

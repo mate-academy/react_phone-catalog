@@ -1,0 +1,78 @@
+@import '../../styles/utils';
+
+.home-page {
+  @include page-grid;
+  @include responsive-padding-inline;
+
+  &__message {
+    grid-column: 1 / -1;
+
+    margin-bottom: 56px;
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+      margin-top: 32px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+      margin-top: 56px;
+    }
+  }
+
+  &__hero {
+    grid-column: 1 / -1;
+
+    margin-bottom: 56px;
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+      margin-top: 32px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+      margin-top: 56px;
+    }
+  }
+
+  &__new-models {
+    grid-column: 1 / -1;
+
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__shop-by-category {
+    grid-column: 1 / -1;
+
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__hot-prices {
+    grid-column: 1 / -1;
+
+    margin-bottom: 64px;
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+}

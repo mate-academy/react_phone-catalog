@@ -1,0 +1,89 @@
+@import '../../../../styles/utils';
+
+.gallery {
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  gap: $grid-column-gap 16px;
+  grid-template-columns: repeat($mobile-grid-columns-amount, 1fr);
+  align-items: stretch;
+
+  @include on-tablet {
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(12, $desktop-grid-columns-width);
+  }
+
+  &__slider {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / -1;
+      grid-row: 1;
+    }
+
+    @include on-desktop {
+      grid-column: 3 / -1;
+    }
+  }
+
+  &__previews {
+    height: 100%;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 1;
+      grid-row: 1;
+    }
+
+    @include on-desktop {
+      grid-column: span 2;
+    }
+  }
+}
+
+.photo-slider {
+  height: 100%;
+
+  &__wrapper {
+    height: 100%;
+    overflow: hidden;
+    user-select: none;
+    cursor: grab;
+
+    &--dragging {
+      cursor: grabbing;
+    }
+
+    &--loading {
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+
+  &__list {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &__item {
+    flex: 0 0 100%;
+    height: 100%;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+
+    &--loading {
+      @include skeleton-loader;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import '../../../../../../styles/utils';
+
+.indicators {
+  grid-column: 1 / -1;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 4px;
+  }
+
+  &__button {
+    padding: 10px 5px;
+  }
+
+  &__rectangle {
+    height: 4px;
+    width: 14px;
+
+    background-color: var(--color-element-secondary);
+    transition: background-color $transition-duration-base ease-in-out;
+
+    &--active {
+      background-color: var(--color-element-primary);
+    }
+  }
+}

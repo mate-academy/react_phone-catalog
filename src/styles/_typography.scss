@@ -1,0 +1,57 @@
+h1 {
+  @extend %mont-bold;
+
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: $letter-spacing-tight;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+h2 {
+  @extend %mont-bold;
+
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+h3 {
+  @extend %mont-semi-bold;
+
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+
+  @include on-tablet {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    letter-spacing: $letter-spacing-tight;
+  }
+}
+
+h4 {
+  @extend %mont-semi-bold;
+
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+
+  @include on-tablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+body {
+  @extend %text-body;
+}

@@ -1,0 +1,99 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  & {
+    display: grid;
+    justify-content: center;
+    column-gap: $grid-column-gap;
+    grid-template-columns: repeat($mobile-grid-columns-amount, 1fr);
+    grid-auto-rows: min-content;
+  }
+
+  @include on-tablet {
+    grid-template-columns: repeat($tablet-grid-columns-amount, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(
+      $desktop-grid-columns-amount,
+      $desktop-grid-columns-width
+    );
+  }
+}
+
+@mixin responsive-padding-inline {
+  & {
+    padding-inline: 16px;
+  }
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+@mixin on-hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+
+@mixin underline-base {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    background-color: var(--color-underline);
+    transform: scaleX(0);
+    transition: all $transition-duration-base ease-in-out;
+  }
+}
+
+@mixin underline-hover {
+  @include on-hover{
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+@mixin underline-active {
+  &--active {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+@mixin skeleton-loader($radius: 5px) {
+  background: linear-gradient(
+    110deg,
+    var(--color-skeleton-gradient-start) 35%,
+    var(--color-skeleton-gradient-end) 50%,
+    var(--color-skeleton-gradient-start) 65%
+  );
+  background-size: 200% 100%;
+  animation: shine 1.5s linear infinite;
+  border-radius: $radius;
+}
+

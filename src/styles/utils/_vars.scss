@@ -1,0 +1,44 @@
+// colors
+// light theme
+$c-light-primary: #313237;
+$c-light-secondary: #89939a;
+$c-light-icons: #b4bdc3;
+$c-light-elements: #e2e6e9;
+$c-light-hover-bg: #fafbfc;
+$c-light-white: #fff;
+
+// dark theme
+$c-dark-secondary: #75767f;
+$c-dark-icons: #4a4d58;
+$c-dark-elements: #3b3e4a;
+$c-dark-surface-2: #323542;
+$c-dark-surface-1: #161827;
+$c-dark-black: #0f1121;
+$c-dark-white: #f1f2f9;
+$c-dark-accent: #905bff;
+
+// common
+$c-green: #27ae60;
+$c-red: #eb5757;
+
+// grid
+$mobile-grid-columns-amount: 4;
+$tablet-grid-columns-amount: 12;
+$desktop-grid-columns-amount: 24;
+$grid-column-gap: 16px;
+$desktop-grid-columns-width: 32px;
+
+// breakpoints
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+
+// font
+$letter-spacing-tight: -0.01em;
+$letter-spacing-wide: 0.04em;
+
+// animations
+$transition-duration-base: 0.3s;
+
+// header
+$header-height-mobile: 48px;
+$header-height-desktop: 64px;

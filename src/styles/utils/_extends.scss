@@ -1,0 +1,50 @@
+%mont-bold {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+}
+
+%mont-semi-bold {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+}
+
+%mont-regular {
+  font-family: Mont, sans-serif;
+  font-weight: 400;
+}
+
+%text {
+  &-uppercase {
+    @extend %mont-bold;
+
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: $letter-spacing-wide;
+    text-transform: uppercase;
+  }
+
+  &-button {
+    @extend %mont-semi-bold;
+
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0;
+  }
+
+  &-body {
+    @extend %mont-regular;
+
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+  }
+
+  &-small {
+    @extend %mont-semi-bold;
+
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0;
+  }
+}
+

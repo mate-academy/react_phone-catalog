@@ -1,0 +1,28 @@
+@import '../../styles/utils';
+
+.back-button {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+
+  width: min-content;
+
+  &__text {
+    @extend %text-small;
+
+    color: var(--color-text-secondary);
+    transition: color $transition-duration-base ease-in-out;
+  }
+
+  &__icon {
+    color: var(--color-icon-primary)
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .back-button__text {
+      color: var(--color-text-primary);
+    }
+  }
+}
