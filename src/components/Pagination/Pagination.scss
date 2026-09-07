@@ -1,0 +1,46 @@
+@import '../../GeneralStyles/variables';
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 80px;
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons-color;
+    background-color: #fff;
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    &--prew {
+      margin-right: 8px;
+    }
+
+    &--next {
+      margin-left: 8px;
+
+    }
+
+    &--disabled {
+      opacity: .5;
+
+      &:hover {
+        border: 1px solid $icons-color;
+        cursor: auto;
+      }
+    }
+
+    &--active {
+      border: 1px solid $primary-color;
+      background: $primary-color;
+      color: $white-color;
+    }
+  }
+}
