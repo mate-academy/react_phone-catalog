@@ -1,0 +1,110 @@
+.card-button {
+  background-color: var(--button-color);
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+
+  &.active {
+    background-color: var(--bg-color);
+    border: 1px solid var(--borders-color);
+    color: var(--green-color-light);
+  }
+
+  @include on-desktop {
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.favourites-button {
+  min-width: 40px;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: var(--navigation-buttons);
+  border: 1px solid var(--elements-border-color);
+  cursor: pointer;
+
+  @include on-desktop {
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.arrow-button,
+.card-item-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: var(--arrow-background-color);
+  border: 1px solid var(--arrow-border-color);
+
+  @include on-desktop {
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &.disabled {
+    border: 1px solid var(--borders-color);
+    background-color: var(--bg-color);
+  }
+}
+
+.pagination-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: var(--pagination-background-color);
+  border: 1px solid var(--pagination-border-color);
+  color: var(--main-color);
+
+  &.active {
+    border: 1px solid var(--pagination-active-color);
+    background-color: var(--pagination-active-color);
+    color: var(--pagination-active-text);
+  }
+}
+
+.error-page-button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    transition: all 0.3s ease-out;
+    box-shadow: 10px 5px rgba(35, 185, 90, 0.5);
+  }
+}
+
+.back-button {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 4px;
+}

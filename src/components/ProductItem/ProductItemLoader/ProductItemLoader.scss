@@ -1,0 +1,10 @@
+@import '../../../styles/main.scss';
+
+.product-item-loader {
+  background-color: var(--product-background-color);
+  height: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+}

@@ -1,0 +1,62 @@
+@import '../../styles/main.scss';
+
+.product-item {
+  border: 1px solid var(--product-border-color);
+  background-color: var(--product-background-color);
+  padding: 32px;
+  height: 439px;
+  flex-shrink: 0;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+  }
+
+  @include on-tablet {
+    height: 512px;
+  }
+
+  @include on-desktop {
+    height: 506px;
+  }
+
+  &__top {
+    height: 129px;
+    max-width: 100%;
+
+    &-image {
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    @include on-tablet {
+      height: 173px;
+    }
+
+    @include on-desktop {
+      height: 208px;
+    }
+  }
+
+  &__title {
+    height: 63px;
+    display: flex;
+    align-items: flex-end;
+
+    @include on-tablet {
+      height: 42px;
+    }
+  }
+
+  &__specs {
+    border-top: 1px solid var(--borders-color);
+  }
+
+  &__buttons {
+    height: 40px;
+  }
+}
