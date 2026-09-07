@@ -1,0 +1,21 @@
+a {
+  color: $secondary;
+  text-decoration: none;
+
+  @include font-uppercase;
+}
+
+ul,
+li,
+ol {
+  list-style: none;
+  padding: 0;
+  display: inline-flex;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+  height: 100vh;
+  touch-action: none;
+}
+
