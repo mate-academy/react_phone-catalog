@@ -1,0 +1,34 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.container {
+  @include grid-container;
+}
+
+.title {
+  @include grid-columns;
+
+  padding-block: 24px;
+
+  @include on-tablet {
+    padding-block: 32px;
+  }
+
+  @include on-desktop {
+    padding-block: 56px;
+  }
+}
+
+.pageContent {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+  }
+}

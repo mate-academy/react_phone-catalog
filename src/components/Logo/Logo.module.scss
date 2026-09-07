@@ -1,0 +1,17 @@
+.logoLink {
+  position: relative;
+
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1;
+  background: linear-gradient(90deg, var(--purple), var(--pink));
+  background-clip: content-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logoEmoji {
+  display: inline;
+  height: 1em;
+  margin-left: 4px;
+}

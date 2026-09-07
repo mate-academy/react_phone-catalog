@@ -1,0 +1,130 @@
+@mixin on-tablet {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin square-button {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--icons);
+  transition: $transition-base;
+
+  &:hover:not(:disabled) {
+    border-color: var(--primary);
+  }
+
+  @include on-tablet {
+    display: block;
+  }
+}
+
+@mixin underline-hover($color: var(--primary), $height: 2px) {
+  position: relative;
+
+  &:hover,
+  &:active {
+    color: $color;
+  }
+
+  &:hover::after,
+  &:active::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $height;
+    background-color: $color;
+  }
+}
+
+@mixin hover-scale {
+  transition: $transition-base;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+@mixin grid-container(
+  $columns-mobile: 4,
+  $columns-tablet: 12,
+  $columns-desktop: 24,
+  $gap: 16px,
+  $padding-mobile: 16px,
+  $padding-tablet: 24px
+) {
+  display: grid;
+  gap: $gap;
+  margin: 0;
+  padding: 0 $padding-mobile;
+  grid-template-columns: repeat($columns-mobile, minmax(0, 1fr));
+
+  @include on-tablet {
+    grid-template-columns: repeat($columns-tablet, minmax(0, 1fr));
+    padding-inline: $padding-tablet;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat($columns-desktop, minmax(0, 32px));
+    justify-content: center;
+  }
+}
+
+@mixin grid-columns($cols-mobile: 4, $cols-tablet: 12, $cols-desktop: 24) {
+  grid-column: span $cols-mobile;
+
+  @include on-tablet {
+    grid-column: span $cols-tablet;
+  }
+
+  @include on-desktop {
+    grid-column: span $cols-desktop;
+  }
+}
+
+@mixin page-wrapper($padding-block: 24px, $row-gap: 24px, $tablet-gap: 40px) {
+  @include grid-container;
+
+  padding-block: $padding-block;
+  row-gap: $row-gap;
+
+  @include on-tablet {
+    row-gap: $tablet-gap;
+  }
+
+  * {
+    @include grid-columns;
+  }
+}
+
+@mixin page-min-height {
+  min-height: calc(100vh - $header-height-default - $footer-margin-top-default);
+
+  @include on-tablet {
+    min-height: calc(
+      100vh - $header-height-default - $footer-height-tablet - $footer-margin-top-default
+    );
+  }
+
+  @include on-desktop {
+    min-height: calc(
+      100vh - $header-height-desktop - $footer-height-tablet - $footer-margin-top-desktop
+    );
+  }
+}
+
+@mixin theme($theme-map) {
+  @each $key, $value in $theme-map {
+    --#{$key}: #{$value};
+  }
+}

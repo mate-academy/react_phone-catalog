@@ -1,0 +1,31 @@
+@import '../../../styles/variables';
+
+.buttonWrapper {
+  width: 100%;
+  color: var(--secondary);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.button {
+  height: 32px;
+  width: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--icons);
+
+    filter: var(--icon-filter);
+
+  &:hover {
+    filter: var(--ivon-filter-hover);
+  }
+}

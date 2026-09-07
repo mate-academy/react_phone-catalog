@@ -1,0 +1,101 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.productOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  color: var(--secondary);
+}
+
+.id {
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: right;
+
+  color: var(--icons);
+}
+
+.colorList {
+  display: flex;
+  gap: 8px;
+}
+
+.colorLinkWrapper {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--icons);
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include hover-scale;
+
+  &.active {
+    border: 1px solid var(--primary);
+  }
+}
+
+.colorCircle {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--elements);
+}
+
+.divider {
+  display: block;
+  border: 1px solid var(--icons);
+}
+
+.capacityList {
+  display: flex;
+  gap: 8px;
+}
+
+.capacityLink {
+  height: 32px;
+  padding-inline: 8px;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+
+  display: flex;
+  align-items: center;
+
+  border: 1px solid var(--icons);
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+
+  &.active {
+    color: var(--main-bg);
+    background-color: var(--primary);
+    box-shadow: none;
+  }
+}

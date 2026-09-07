@@ -1,0 +1,92 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+
+  padding: 16px;
+
+  border: 1px solid var(--elements);
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 16px;
+    padding: 24px;
+  }
+}
+
+.product {
+  width: 100%;
+
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.deleteButton {
+  width: 16px;
+  height: 16px;
+  background-image: url(/icons/close.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  @include hover-scale;
+
+  filter: var(--icon-filter);
+
+  &:hover {
+    filter: var(--icon-filter-hover);
+  }
+}
+
+.productImg {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.productName {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+
+  &:hover {
+    color: var(--secondary);
+  }
+}
+
+.bottomSection {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include on-tablet {
+    gap: 24px;
+    justify-content: flex-end;
+  }
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.quantityButton {
+  @include square-button;
+}
+
+.productPrice {
+  width: 80px;
+  text-align: right;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+}

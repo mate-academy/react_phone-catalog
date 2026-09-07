@@ -1,0 +1,50 @@
+$breakpoint-tablet: 640px;
+$breakpoint-desktop: 1200px;
+$transition-base: transform 0.3s ease;
+$header-height-default: 48px;
+$header-height-desktop: 64px;
+$footer-height-tablet: 96px;
+$footer-margin-top-default: 64px;
+$footer-margin-top-desktop: 80px;
+$light-theme: (
+  page-bg: #fff,
+  main-bg: #fff,
+  hover-bg: #fafbfc,
+  elements: #e2e6e9,
+  icons: #b4bdc3,
+  primary: #313237,
+  secondary: #75767f,
+  surface-2: #fff,
+  button-hover: #27ae60,
+  accent: #313237,
+  pink: #f150ae,
+  purple: #9a19f0,
+  dark-grey: #313237,
+  white: #f1f2f9,
+  red: #eb5757,
+  icon-filter: invert(19%) sepia(3%) saturate(0%) hue-rotate(182deg)
+    brightness(88%) contrast(89%),
+  icon-filter-hover: invert(53%) sepia(0%) saturate(0%) hue-rotate(181deg)
+    brightness(74%) contrast(91%),
+);
+$dark-theme: (
+  page-bg: #0f1121,
+  main-bg: #161827,
+  hover-bg: #3b3e4a,
+  elements: #3b3e4a,
+  icons: #4a4d58,
+  primary: #f1f2f9,
+  secondary: #75767f,
+  surface-2: #323542,
+  accent: #905bff,
+  pink: #f150ae,
+  purple: #9a19f0,
+  dark-grey: #313237,
+  white: #f1f2f9,
+  red: #eb5757,
+  button-hover: #f1f2f9,
+  icon-filter: invert(96%) sepia(0%) saturate(0%) hue-rotate(183deg)
+    brightness(102%) contrast(101%),
+  icon-filter-hover: invert(53%) sepia(0%) saturate(0%) hue-rotate(181deg)
+    brightness(74%) contrast(91%),
+);

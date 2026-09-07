@@ -1,0 +1,57 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.section {
+  @include grid-container;
+}
+
+.title {
+  @include grid-columns;
+}
+
+.categoryCard {
+  @include grid-columns($cols-mobile: 4, $cols-tablet: 4, $cols-desktop: 8);
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.categoryLink {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: #6d6474;
+}
+
+.categoryImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50px 50px;
+
+  @include hover-scale;
+}
+
+.categoryInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.categoryName {
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+
+  @include underline-hover($height: 0, $color: var(--secondary));
+}
+
+.categoryModels {
+  font-weight: 500px;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--secondary);
+}

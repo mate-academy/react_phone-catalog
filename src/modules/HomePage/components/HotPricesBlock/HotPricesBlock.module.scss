@@ -1,0 +1,11 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.section {
+  @include on-desktop {
+    @include grid-container;
+    & > * {
+      @include grid-columns;
+    }
+  }
+}

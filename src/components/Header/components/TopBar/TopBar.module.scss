@@ -1,0 +1,33 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.topBar {
+  width: 100%;
+  height: $header-height-default;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--icons);
+
+  @include on-desktop {
+    height: $header-height-desktop;
+  }
+}
+
+.logoWrapper {
+  margin-right: 48px;
+  padding-inline: 16px;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.nav {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    height: 100%;
+    flex: 1;
+  }
+}

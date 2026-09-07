@@ -1,0 +1,21 @@
+@import '../../../styles/variables';
+
+.productFeatures {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+.feature {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+}
+
+.featureName {
+  color: var(--secondary);
+}
+
+.featureValue {
+  text-align: right;
+}
