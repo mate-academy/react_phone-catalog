@@ -1,1 +1,117 @@
 // not empty
+
+@import './StylesBlocks/mixins';
+@import './StylesBlocks/fonts';
+@import './StylesBlocks/variables';
+@import './StylesBlocks/font-styles';
+@import './StylesBlocks/logo';
+@import './StylesBlocks/icons';
+@import './StylesBlocks/buttons';
+@import './StylesBlocks/productColors';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: $primary;
+
+  cursor: pointer;
+}
+
+button {
+  border: none;
+  background-color: unset;
+
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+.App {
+  scroll-behavior: smooth;
+  background-color: #fafbfc;
+}
+
+.topBar {
+  position: sticky;
+
+  top: 0;
+  z-index: 10;
+}
+
+.appContent {
+  @include flex-column;
+
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+
+  animation: appear 0.3s ease-in;
+}
+
+.price {
+  @include flex-row-center;
+
+  gap: 8px;
+
+  margin: 0;
+}
+
+.horizontalLine {
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  background-color: $elements;
+  border: none;
+}
+
+.menuTab {
+  animation: appear 0.3s ease-in;
+}
+
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// swiper styles
+
+.swiper-pagination-bullet {
+  display: block;
+
+  width: 14px;
+  height: 4px;
+
+  border-radius: 0%;
+  margin: 7px;
+
+  background-color: $elements;
+
+  transition: background-color $hover-transition;
+}
+
+.swiper-pagination-bullet:hover {
+  background-color: $icons;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $primary;
+}
+
+.myThumbSwiper .swiper-slide-thumb-active {
+  border: 1px solid $primary;
+}
+

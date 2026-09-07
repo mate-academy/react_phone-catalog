@@ -1,0 +1,35 @@
+@import '../../StylesBlocks/variables';
+
+.iconInnerContainer {
+  position: relative;
+
+  width: 28px;
+  height: 28px;
+
+  align-content: center;
+  justify-items: center;
+}
+
+.counterContainer {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  border-radius: 50%;
+  background-color: $accent;
+  border: 1px solid #fff;
+
+  text-align: center;
+
+  width: 14px;
+  height: 14px;
+}
+
+.counter {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 9px;
+  line-height: 12px;
+
+  color: #fff;
+}

@@ -1,0 +1,23 @@
+@import '../../StylesBlocks/mixins';
+
+.error {
+  @include flex-row-col-center;
+
+  padding: 24px;
+
+  gap: 24px;
+
+  background-color: rgba(235, 87, 87, 0.6);
+  border-radius: 8px;
+}
+
+.errorBtn {
+  height: 40px;
+  width: 100%;
+
+  background-color: rgba(235, 87, 87, 0.9);
+}
+
+.errorBtnText {
+  color: #fff;
+}

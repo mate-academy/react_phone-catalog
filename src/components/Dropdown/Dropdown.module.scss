@@ -1,0 +1,84 @@
+@import '../../StylesBlocks/mixins';
+@import '../../StylesBlocks/variables';
+
+.dropdown {
+  position: relative;
+  margin-top: 4px;
+
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.dropdownMenu {
+  position: relative;
+  margin-top: 4px;
+}
+
+.dropdownForm {
+  @include flex-center-between;
+
+  padding: 10px 12px;
+  height: 40px;
+
+  border: $gray-icon-border;
+  border-radius: 8px;
+
+  transition: border-color $hover-transition;
+}
+
+.dropdownForm:hover {
+  border-color: $secondary;
+}
+
+.focusedForm {
+  border-color: $primary;
+}
+
+.dropdownInput {
+  display: inline-block;
+
+  width: 100%;
+
+  pointer-events: none;
+
+  border: none;
+  background-color: inherit;
+
+  font-family: inherit;
+}
+
+.options {
+  display: none;
+  position: absolute;
+
+  width: 100%;
+
+  margin-top: 4px;
+  padding: 8px 0;
+
+  border: $gray-icon-border;
+  border-radius: 8px;
+
+  z-index: 1;
+
+  background-color: #fff;
+}
+
+.option {
+  padding: 6px 12px;
+  list-style: none;
+}
+
+.option:hover {
+  background-color: $hover-bg;
+  border-radius: 8px;
+
+  color: $primary;
+
+  cursor: pointer;
+}
+
+.activeMenu {
+  display: block;
+}

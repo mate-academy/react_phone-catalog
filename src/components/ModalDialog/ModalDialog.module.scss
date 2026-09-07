@@ -1,0 +1,43 @@
+.modal {
+  position: fixed;
+
+  height: 100vh;
+
+  inset: 0;
+
+  z-index: 10;
+
+  background: rgba(226, 230, 233, 0.8)
+}
+
+.modalContent {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: inline;
+
+  text-align: center;
+}
+
+.modalText {
+  margin-bottom: 24px;
+}
+
+.modalButtons {
+  width: 100%;
+
+  justify-content: space-between;
+}
+
+.modalBtn {
+  height: 40px;
+  background-color: rgba(180, 189, 195, 1);
+
+  flex: 1;
+}
+
+.modalBtn:hover {
+  background-color: rgba(137, 147, 154, 1);
+}
