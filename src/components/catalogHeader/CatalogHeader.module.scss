@@ -1,0 +1,50 @@
+@import '../../shared/global/utils/mixins';
+@import '../../shared/global/globalStyles/globalStyles.scss';
+@import '../../shared/global/utils/vars';
+@import '../../shared/global/utils/fonts';
+
+.catalogHeader {
+  @include page-grid;
+
+  &__top {
+    grid-column: 1 / -1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  &__title {
+    @include header-1;
+  }
+
+  &__info {
+    color: $secondary-text-color;
+  }
+
+  &__filters {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 8;
+    }
+
+    padding-bottom: 24px;
+  }
+
+  &__filter {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+  }
+
+  &__filterText {
+    color: $secondary-text-color;
+  }
+}

@@ -1,0 +1,114 @@
+@import '../../shared/global/utils/mixins';
+@import '../../shared/global/globalStyles/globalStyles.scss';
+@import '../../shared/global/utils/vars';
+@import '../../shared/global/utils/fonts';
+
+.banner {
+  width: 100%;
+
+  &__maincontent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__photoWrapper {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    @include on-tablet {
+      height: 189px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    width: 360px;
+    position: absolute;
+    opacity: 0;
+    object-fit: contain;
+    transform: translateX(100%);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+
+    @include on-tablet {
+      width: 490px;
+    }
+
+    @include on-desktop {
+      width: 1040px;
+    }
+
+    &.banner__photo_active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    &.banner__photo_next {
+      transform: translateX(100%);
+    }
+
+    &.banner__photo_prev {
+      transform: translateX(-100%);
+    }
+  }
+
+  &__button_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    border: 1px solid $btns-border-color;
+    transition: border 0.3s ease;
+
+    &:hover {
+      border: 1px solid $accent-color;
+    }
+
+    &_disabled {
+      opacity: 50%;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    background-color: $elements-border-color;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $btns-border-color;
+    }
+
+    &_active {
+      background-color: $accent-color;
+    }
+  }
+
+  &__button_left {
+    transform: rotate(-180deg);
+  }
+}

@@ -1,0 +1,108 @@
+@import '../../shared/global/utils/mixins';
+@import '../../shared/global/globalStyles/globalStyles.scss';
+@import '../../shared/global/utils/vars';
+@import '../../shared/global/utils/fonts';
+
+.cards {
+  @include page-grid;
+}
+
+.card {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $elements-border-color;
+  background-color: $white;
+  box-sizing: border-box;
+  padding: 32px;
+  width: auto;
+  width: 272px;
+  height: 439px;
+  gap: 8px;
+
+  @include on-tablet {
+    height: 512px;
+  }
+
+  @include on-desktop {
+    height: 506px;
+  }
+
+  &:hover {
+    box-shadow: 0 1px 8px 0 rgba(107, 127, 135, 0.32);
+  }
+
+  &__img_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 129px;
+    width: 100%;
+
+    @include on-tablet {
+      height: 202px;
+    }
+
+    @include on-desktop {
+      height: 196px;
+    }
+  }
+
+  &__img {
+    display: block;
+    object-fit: contain;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid $elements-border-color;
+  }
+
+  &__name {
+    margin: 0;
+    text-decoration: none;
+    color: inherit;
+    margin-top: 16px;
+    max-width: 208px;
+    flex-wrap: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__prices {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__divider {
+    display: block;
+    height: 1px;
+    background-color: $elements-border-color;
+  }
+
+  &__informartion {
+    display: flex;
+    flex-direction: column;
+    padding-block: 8px;
+    gap: 8px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+}
