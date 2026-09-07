@@ -1,0 +1,31 @@
+@import '../../style/variables';
+
+.header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 80px;
+  padding-bottom: 24px;
+  padding-inline: 0;
+  margin-inline: 0;
+}
+
+.products-list {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.arrow {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}

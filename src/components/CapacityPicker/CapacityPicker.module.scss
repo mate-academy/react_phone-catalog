@@ -1,0 +1,34 @@
+@import '../../style/variables';
+
+.capacityPicker {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+
+  &Radio {
+    display: none;
+  }
+
+  &Text {
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  &Container {
+    padding-top: 7px;
+    padding-bottom: 4px;
+    padding-inline: 8px;
+    border: 1px solid $grey-icon-color;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $grey-element-color;
+    }
+  }
+
+  &ContainerSelected {
+    background-color: $text-color;
+    color: $background-color;
+    border: none;
+  }
+}

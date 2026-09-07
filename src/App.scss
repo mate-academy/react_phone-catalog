@@ -1,1 +1,34 @@
-// not empty
+@import './style/variables';
+@import './style/mixins';
+@import './style/reset';
+@import './style/fonts';
+
+.App {
+  font-family: Mont, sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    padding-inline: 152px;
+    flex: 1;
+  }
+
+  @include on-tablet {
+    &__content {
+      padding-inline: 16px;
+    }
+  }
+
+  @include on-desktop {
+    &__content {
+      padding-inline: 24px;
+    }
+  }
+
+}
+
+
+

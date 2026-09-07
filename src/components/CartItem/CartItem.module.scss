@@ -1,0 +1,82 @@
+@import '../../style/variables';
+
+.cart {
+  display: grid;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background-color: $grey-dark-secondary-color;
+  width: 100%;
+  grid-template-areas: 'close image name arrow price';
+  grid-template-columns: auto 80px 1fr 96px 80px;
+
+  &Close {
+    grid-area: close;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: inherit;
+    border: none;
+  }
+
+  &ImgWrapper {
+    grid-area: image;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  &Img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  &Name {
+    grid-area: name;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &Arrow {
+    grid-area: arrow;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 96px;
+    gap: 8px;
+  }
+
+  &quantity {
+    width: 40px;
+  }
+
+  &Price {
+    grid-area: price;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+    justify-self: end;
+  }
+
+  @media (min-width: 1024px) {
+    width: 752px;
+    gap: 24px;
+  }
+
+  @media (max-width: 639px) {
+    grid-template-areas:
+      'close image name'
+      'arrow arrow price';
+    grid-template-columns: auto auto 1fr;
+  }
+}
