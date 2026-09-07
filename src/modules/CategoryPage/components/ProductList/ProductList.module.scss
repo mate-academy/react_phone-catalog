@@ -1,0 +1,16 @@
+@use '../../../../styles/mixins.scss' as *;
+
+.productList {
+  display: grid;
+  row-gap: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  place-items: stretch center;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+}

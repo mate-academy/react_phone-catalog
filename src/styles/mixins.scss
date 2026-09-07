@@ -1,0 +1,153 @@
+@use './variables.scss' as *;
+
+@mixin smooth-transition(
+  $properties: all,
+  $duration: $duration,
+  $timing: ease
+) {
+  transition: $properties $duration $timing;
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop_min_width) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet_min_width) {
+    @content;
+  }
+}
+
+@mixin icon-paddings {
+  padding: $gap-16;
+
+  @include on-desktop {
+    padding: $gap-24;
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  gap: $gap-32 $gap-16;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+
+@mixin button-base {
+  font-family: $fontMontSemiBold;
+  font-size: $font-size-md;
+
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  @include smooth-transition;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background: $icons;
+    border-color: $secondary;
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+
+  & {
+    background: $accent;
+    color: $white;
+  }
+}
+
+@mixin button-accent {
+  @include button-base;
+
+  & {
+    background: $secondaryAccent;
+    color: $white;
+  }
+}
+
+
+@mixin button-secondary {
+  @include button-base;
+
+  & {
+    background: $elements;
+    color: $secondary;
+  }
+}
+
+
+@mixin button-icon {
+  @include button-base;
+
+  & {
+    border: 1px solid $primary;
+    border-radius: 50%;
+    background: none;
+    padding: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background: none;
+    opacity: 0.6;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+    max-width: 1200px;
+  }
+}
+
+@mixin block-margin-bottom{
+  margin-bottom: $gap-56;
+
+  @include on-tablet{
+      margin-bottom: $gap-64;
+  }
+
+  @include on-desktop{
+      margin-bottom: $gap-80;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $duration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}

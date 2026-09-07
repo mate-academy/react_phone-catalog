@@ -1,0 +1,21 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.errorMessage{
+  margin: 24px 0;
+  display: flex;
+  gap: $gap-12;
+  align-items: center;
+  color: $red;
+  font-family: $fontMontBold;
+}
+
+.errorMessageButton{
+  flex: 1 1 auto;
+  border: none;
+  border-radius: 8px;
+  height: 40px;
+  max-width: 100px;
+
+  @include button-accent;
+}

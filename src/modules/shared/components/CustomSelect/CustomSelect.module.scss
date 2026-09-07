@@ -1,0 +1,91 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.customSelectContainer {
+  position: relative;
+  font-family: $fontMontSemiBold;
+}
+
+/* The main button */
+.selectedValue {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 9px 14px;
+
+  background: $white;
+  border: 1px solid $elements;
+  border-radius: 8px;
+  cursor: pointer;
+
+  font-size: 14px;
+  color: $primary;
+
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+
+  &::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid $icons;
+    border-bottom: 2px solid $icons;
+    transform: rotate(45deg);
+    transition: transform 0.2s ease;
+    margin-left: 8px;
+  }
+}
+
+/* Rotate chevron when open */
+.customSelectContainer.open .selectedValue::after {
+  transform: rotate(-135deg);
+}
+
+/* Focus and hover state */
+.selectedValue:hover {
+  border-color: $icons;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.customSelectContainer.open .selectedValue {
+  border-color: $primary;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Dropdown */
+.optionsList {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+
+  padding: 6px 0;
+
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+  list-style: none;
+  margin: 0;
+  z-index: 10;
+}
+
+/* Items */
+.optionsList li {
+  padding: 10px 14px;
+  cursor: pointer;
+
+  font-family: $fontMont;
+  font-size: 14px;
+  color: $secondary;
+
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: $hoverBg;
+    color: $primary;
+  }
+}

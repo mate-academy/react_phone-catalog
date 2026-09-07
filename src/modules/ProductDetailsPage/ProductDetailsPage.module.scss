@@ -1,0 +1,297 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/shared.scss' as *;
+
+.productNotFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $gap-24;
+  padding: $gap-20;
+
+  img {
+    width: 300px;
+  }
+
+  h1 {
+    margin: 0;
+    text-align: center;
+  }
+
+  button {
+    padding: $gap-12 $gap-28;
+    border-radius: 8px;
+
+    @include button-primary;
+  }
+}
+
+.productDetailsH2 {
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.productDetailsContent {
+  @include page-grid;
+}
+
+.productContentLeft {
+  grid-column: 1/-1;
+
+  @include on-tablet {
+    grid-column: 1 / span 7;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / span 13;
+  }
+}
+
+.productContentRight {
+  grid-column: 1/-1;
+
+  @include on-tablet {
+    grid-column: 8 / span 5;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / span 11;
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    align-content: start;
+  }
+}
+
+.productContentBottomLeft {
+  grid-column: 1/-1;
+
+  @include on-desktop {
+    grid-column: 1 / span 12;
+  }
+}
+
+.productContentBottomRight {
+  grid-column: 1/-1;
+
+  @include on-desktop {
+    grid-column: 14 / span 11;
+  }
+}
+
+.productContentRightTop {
+  grid-column: 1/-1;
+
+  @include on-desktop {
+    grid-column: 1 / span 7;
+  }
+}
+
+.productContentBoth {
+  grid-column: 1/-1;
+}
+
+.productContentWide {
+  grid-column: 1/-1;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.productDetailsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-8;
+  padding-top: $gap-8;
+  padding-bottom: $gap-24;
+  border-bottom: 1px solid $elements;
+  margin-bottom: 24px;
+}
+
+.blockTitle {
+  padding-bottom: $gap-24;
+  border-bottom: 1px solid $elements;
+}
+
+.productAbout {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-32;
+  padding-block: $gap-32;
+}
+
+.productAboutText {
+  color: $secondary;
+  padding-top: $gap-16;
+}
+
+.productDetailsLabel {
+  color: $secondary;
+  margin-bottom: 8px;
+}
+
+.productPrice {
+  margin-top: 8px;
+  padding: $gap-8 0 $gap-16;
+  font-family: $fontMontBold;
+  font-size: $font-size-5xl;
+  line-height: $line-height-41;
+
+  display: flex;
+  gap: $gap-8;
+
+  .oldPrice {
+    font-family: $fontMont;
+    font-size: $font-size-3xl;
+    color: $secondary;
+    text-decoration: line-through;
+  }
+}
+
+.productTechShort {
+  font-size: $font-size-base;
+}
+
+.productTechLong {
+  font-size: $font-size-md;
+}
+
+.capacityButton {
+  cursor: pointer;
+
+  font-size: $font-size-md;
+  padding: 8px;
+
+  border: 1px solid $icons;
+  border-radius: 4px;
+  background: none;
+
+  &.selected {
+    border-color: $primary;
+    background-color: $primary;
+    color: $white;
+  }
+}
+
+.optionsList {
+  list-style: none;
+  display: flex;
+  gap: $gap-8;
+}
+
+.colorButton {
+  cursor: pointer;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid $icons;
+  border-radius: 50%;
+  position: relative;
+
+  &:not(.selected):hover {
+    border-color: $secondary;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: 50%;
+    background-color: #fff;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+  }
+}
+
+.selected {
+  border: 1px solid $primary;
+  cursor: default;
+}
+
+/* Modifier classes for each color */
+.black::after {
+  background-color: #000;
+}
+
+.green::after {
+  background-color: #008000;
+}
+
+.yellow::after {
+  background-color: #ff0;
+}
+
+.white::after {
+  background-color: #fff;
+}
+
+.purple::after {
+  background-color: #800080;
+}
+
+.red::after {
+  background-color: #f00;
+}
+
+.spacegray::after::after {
+  background-color: #535150;
+}
+
+.midnightgreen::after {
+  background-color: #4e5851;
+}
+
+.gold::after {
+  background-color: #ffd700;
+}
+
+.silver::after {
+  background-color: #c0c0c0;
+}
+
+.rosegold::after {
+  background-color: #fae7cf;
+}
+
+.coral::after {
+  background-color: #ff7f50;
+}
+
+.midnight::after {
+  background-color: #232a31;
+}
+
+.spaceblack::after {
+  background-color: #000;
+}
+
+.blue::after {
+  background-color: #00f;
+}
+
+.pink::after {
+  background-color: #ffc0cb;
+}
+
+.graphite::after {
+  background-color: #54524f;
+}
+
+.sierrablue::after {
+  background-color: #a7c1d9;
+}
+
+.skyblue::after {
+  background-color: #87ceeb;
+}
+
+.starlight::after {
+  background-color: #faf6f2;
+}

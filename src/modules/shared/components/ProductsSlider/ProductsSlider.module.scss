@@ -1,0 +1,29 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+@use '../../../../styles/shared.scss' as *;
+
+.sliderContent {
+  overflow: hidden;
+  overscroll-behavior-inline: contain;
+}
+
+.sliderRow {
+  display: flex;
+  gap: $gap-16;
+}
+
+.sliderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sliderNavButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: $gap-8;
+}
+
+.sliderNavButton {
+  @include button-icon;
+}

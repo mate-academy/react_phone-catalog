@@ -1,0 +1,27 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/shared.scss' as *;
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $gap-24;
+  padding: $gap-20;
+
+  img{
+    width: 300px;
+  }
+
+  h1 {
+    margin: 0;
+    text-align: center;
+  }
+
+  a {
+    padding: $gap-12 $gap-28;
+    border-radius: 8px;
+
+    @include button-primary;
+  }
+}
