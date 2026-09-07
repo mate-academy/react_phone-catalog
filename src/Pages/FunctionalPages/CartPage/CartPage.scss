@@ -1,0 +1,360 @@
+@use '../../../mixins.scss' as *;
+
+.cart {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+
+  font-family: Inter, sans-serif;
+  color: var(--text-color);
+
+  background-color: var(--background);
+
+  &__title {
+    margin-bottom: 32px;
+    font-size: 36px;
+    font-weight: 700;
+  }
+
+  &__empty {
+    font-size: 24px;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  &__items {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    gap: 24px;
+
+    margin-bottom: 32px;
+  }
+
+  &__item {
+    display: flex;
+    gap: 16px;
+
+    @include card-box;
+
+    padding: 16px;
+  }
+
+  &__item-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+
+  &__item-details {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__item-name {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  &__item-spec {
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  &__item-price {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &__item-quantity {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    & button {
+      width: 32px;
+      height: 32px;
+
+      font-size: 16px;
+      color: var(--text-color);
+
+      background-color: var(--primary-color);
+
+      @include button-base;
+
+    }
+
+    & span {
+      font-size: 16px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @media (min-width: 1200px) {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  &__summary {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 24px;
+
+    text-align: right;
+
+    & h2 {
+      margin-bottom: 16px;
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    @media (min-width: 1200px) {
+      align-self: flex-start;
+      max-width: 300px;
+    }
+
+    @include card-box;
+  }
+
+  &__checkout {
+    width: 100%;
+    padding: 12px 24px;
+
+    font-size: 16px;
+    color: var(--text-color);
+
+    background-color: var(--primary-color);
+
+    @include button-base;
+
+  }
+
+  &__item-remove {
+    align-self: flex-start;
+    padding: 8px 16px;
+    color: var(--text-color);
+    background-color: #ff4d4f;
+
+    @include button-base;
+  }
+}
+
+.section {
+  position: relative;
+}
+
+.brand {
+  @include on-tablet {
+    height: 577px;
+  }
+
+  @include on-desktop {
+    height: 571px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    width: 150px;
+    height: 62px;
+    color: white;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    font-size: 18px;
+    color: white;
+
+    background-color: #323542;
+
+    @include button-base;
+
+    &:hover {
+      background-color: #75767F;
+    }
+  }
+
+  &__card {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    width: 212px;
+    min-height: 443px;
+    padding: 8px;
+
+    text-align: center;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    @include card-box;
+
+    @include on-tablet {
+      max-width: 272px;
+      padding: 20px;
+    }
+
+    @include on-desktop {
+      max-width: 272px;
+    }
+
+    a {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      text-decoration: none;
+    }
+  }
+
+  &__card-title,
+  &__card-prices,
+  &__card-specs {
+    flex-shrink: 0;
+  }
+
+  &__card-image {
+    width: 100%;
+    height: 180px;
+    margin-bottom: 15px;
+    object-fit: contain;
+  }
+
+  &__card-title {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+  }
+
+  &__card-prices {
+    display: flex;
+    gap: 10px;
+    justify-content: left;
+    margin-bottom: 15px;
+  }
+
+  &__card-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+  }
+
+  &__card-old-price {
+    font-size: 18px;
+    color: #888;
+    text-decoration: line-through;
+  }
+
+  &__card-spec {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__card-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    margin-top: auto;
+  }
+
+  &__card-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 40px;
+
+    font-size: 14px;
+    text-align: center;
+
+    @include button-base;
+  }
+
+  &__card-btn--add {
+    flex: 1;
+
+    padding: 0 16px;
+    border: 1px solid #905BFF;
+
+    color: white;
+    text-decoration: none;
+
+    background-color: #a855f7;
+
+    &:hover {
+      background-color: #9333ea;
+    }
+  }
+
+  &__card-btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__card-btn--favorite {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+
+    color: white;
+
+    background-color: #323542;
+
+    &:hover {
+      color: #a855f7;
+    }
+  }
+
+  &__card-spec-label {
+    color: #75767F;
+  }
+
+  &__card-spec-value {
+    color: white;
+  }
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  width: 32px;
+  height: 32px;
+}

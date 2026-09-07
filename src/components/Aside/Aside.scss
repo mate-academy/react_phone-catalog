@@ -1,0 +1,191 @@
+@import '../../mixins';
+
+.menu {
+  pointer-events: none;
+
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+
+  opacity: 0;
+  background-color: #0F1121;
+
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+  &--open {
+    pointer-events: auto;
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+
+  @include on-desktop {
+    display: none;
+  }
+
+  &:target {
+    pointer-events: all;
+    z-index: 3;
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    margin-bottom: 32px;
+    border: none;
+    border-bottom: 1px solid #3B3E4A;
+  }
+
+  &__close-wrapper {
+    display: flex;
+    align-items: center;
+
+    height: 50px;
+    padding-left: 30px;
+    border-left: 1px solid #3B3E4A;
+  }
+
+  &__close {
+    display: flex;
+  }
+
+  &__closes {
+    cursor: pointer;
+
+    width: 20px;
+    height: 20px;
+    margin-right: 30px;
+    padding: 0;
+    border: none;
+
+    background-color: transparent;
+    background-image: url('/figmaLogo/Close.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+
+  &__logo {
+    padding: 10px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+  }
+
+  &__heart,
+  &__packet {
+    cursor: pointer;
+    padding: 20px 100px;
+    border: 1px solid #3B3E4A;
+  }
+
+  &__heart {
+
+    &__top {
+      display: flex;
+
+      width: 24px;
+      height: 24px;
+
+      background-image: url('figmaLogo/HeartLove.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+
+  &__packet {
+
+    &__top {
+      display: flex;
+
+      width: 24px;
+      height: 24px;
+
+      background-image: url('/figmaLogo/Packet.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+}
+
+.nav__link--phone {
+  cursor: pointer;
+
+  position: relative;
+
+  display: inline-block;
+
+  margin: 16px 0;
+  padding-bottom: 4px;
+
+  font-size: 18px;
+  font-weight: 700;
+  color: #75767F;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition: color 0.3s ease-in-out;
+
+  &::after {
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 0;
+    height: 2px;
+
+    background-color: white;
+
+    transition: width 0.3s ease-in-out;
+  }
+
+  &:active,
+  &:focus {
+    color: white;
+  }
+
+  &:active::after,
+  &:focus::after {
+    width: 100%;
+  }
+}

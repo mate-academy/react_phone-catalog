@@ -1,0 +1,12 @@
+.main {
+
+  &__title {
+  display: flex;
+  justify-content: center;
+
+  font-size: 32px;
+  font-weight: 800;
+  color: white;
+  text-align: center;
+  }
+}

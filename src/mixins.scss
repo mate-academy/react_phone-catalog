@@ -1,0 +1,60 @@
+@mixin on-phone {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: 640px) and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+
+
+@mixin padding-inline {
+  padding: 16px;
+
+  @include on-tablet {
+    padding: 50px 24px;
+  }
+
+  @include on-desktop {
+    padding: 50px 120px;
+  }
+}
+
+
+@mixin padding-inline-category {
+  padding: 16px;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 120px;
+  }
+}
+
+@mixin card-box {
+  border-radius: 12px;
+  background-color: #2a2a3e;
+}
+
+@mixin button-base {
+  cursor: pointer;
+
+  border: none;
+  border-radius: 8px;
+
+  font-weight: 600;
+
+  transition: background-color 0.3s ease;
+}
