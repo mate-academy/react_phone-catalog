@@ -1,0 +1,75 @@
+@use '../../styles/utils/mixins' as mixins;
+
+.page {
+  &__hero {
+    padding-top: 56px;
+
+    @include mixins.on-tablet {
+      padding-top: 32px;
+    }
+
+    @include mixins.on-mobile {
+      padding-top: 24px;
+    }
+  }
+
+  &__category {
+    padding-top: 80px;
+
+    @include mixins.on-tablet {
+      padding-top: 64px;
+    }
+
+    @include mixins.on-mobile {
+      padding-top: 55px;
+    }
+  }
+
+  &__product-slider {
+    padding-top: 112px;
+
+    @include mixins.on-tablet {
+      padding-top: 64px;
+    }
+  }
+
+  &__product-list {
+    padding-top: 24px;
+  }
+
+  &__product-details {
+    padding-top: 16px;
+  }
+
+  &__go-to-back {
+    margin-top: 40px;
+
+    @include mixins.on-mobile {
+      margin-top: 24px;
+    }
+  }
+
+  &__pagination {
+    margin-top: 40px;
+
+    @include mixins.on-mobile {
+      margin-top: 24px;
+    }
+  }
+
+  &__shopping-cart {
+    margin-top: 16px;
+
+    @include mixins.on-mobile {
+      margin-top: 24px;
+    }
+  }
+
+  &__breadcrumbs {
+    margin-top: 24px;
+  }
+
+  &__continue {
+    margin-top: 10%;
+  }
+}

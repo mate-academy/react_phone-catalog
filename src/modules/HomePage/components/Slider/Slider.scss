@@ -1,0 +1,76 @@
+@use '/src/styles/utils/vars' as vars;
+@use '/src/styles/utils/mixins' as mixins;
+
+.Slider {
+  &__wrapper {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__navigation {
+    border: 1px solid vars.$minor-color;
+    flex: 0 0 32px;
+    transition: border 0.3s ease;
+
+    @include mixins.on-mobile {
+      display: none;
+    }
+
+    &:hover {
+      border: 1px solid rgb(177, 177, 177);
+    }
+  }
+
+  &__slider {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-height: 400px;
+  }
+
+  &__pagination {
+    display: flex;
+    margin-top: 18px;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  &__bullet {
+    width: 14px;
+    height: 4px;
+    background-color: #e2e6e9;
+
+    &--active {
+      background-color: vars.$main-color;
+    }
+  }
+}
+
+.Slider__slider .swiper-slide {
+  position: relative;
+  padding-bottom: 38.5%;
+  overflow: hidden;
+
+  @include mixins.on-mobile {
+    padding-bottom: 0;
+    height: 320px;
+  }
+}
+
+.Slider__slider .swiper-slide img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide .Slider__right {
+  @include mixins.on-mobile {
+    object-position: right;
+  }
+
+  @media (max-width: 450px) {
+    object-position: 88% 0%;
+  }
+}

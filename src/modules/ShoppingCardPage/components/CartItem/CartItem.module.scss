@@ -1,0 +1,97 @@
+@use '/src/styles/utils/mixins' as mixins;
+@use '/src/styles/utils/vars' as vars;
+
+.cart-item {
+  padding: 24px;
+  display: flex;
+  border: #e2e6e9 solid 1px;
+  align-items: center;
+  gap: 5px;
+  justify-content: space-between;
+
+  @media (max-width: 840px) {
+    row-gap: 23px;
+    flex-wrap: wrap;
+  }
+
+  @include mixins.on-mobile {
+    padding: 16px;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 840px) {
+      flex: 0 1 100%;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 840px) {
+      justify-content: space-between;
+      flex: 0 1 100%;
+    }
+  }
+
+  &__delete {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__image {
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
+    margin-inline: 24px;
+    transition:
+      transform,
+      0.3s ease;
+
+    &:hover {
+      transform: scale(1.04);
+    }
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    flex: 1 1 auto;
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    margin-inline: 24px;
+    position: relative;
+    gap: 13px;
+    width: 96px;
+  }
+
+  &__count {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  &__decrease,
+  &__increase {
+    border: vars.$minor-color 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    flex: 0 0 32px;
+
+    & > img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__price {
+    font-size: 22px;
+  }
+}

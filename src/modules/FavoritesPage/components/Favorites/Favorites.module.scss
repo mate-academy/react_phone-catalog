@@ -1,0 +1,37 @@
+@use '/src/styles/utils/mixins' as mixins;
+@use '/src/styles/utils/vars' as vars;
+
+.favorites {
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    margin-top: 40px;
+  }
+
+  &__items {
+    font-weight: 400;
+    line-height: calc(21 / 14 * 100%);
+    font-size: 14px;
+    color: vars.$minor-color;
+    margin-top: 8px;
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 40px;
+    margin: 0 -7.5px;
+    margin-top: 40px;
+    @media (max-width: 1150px) {
+      justify-content: center;
+    }
+  }
+
+  &__column {
+    flex: 0 1 25%;
+    padding: 0 7.5px;
+  }
+}

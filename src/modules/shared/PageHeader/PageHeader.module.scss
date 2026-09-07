@@ -1,0 +1,40 @@
+@use '/src/styles/utils/vars' as vars;
+@use '/src/styles/utils/mixins' as mixins;
+
+.page-header {
+  &__container {
+    background-color: transparent;
+  }
+
+  &__title {
+    margin-top: 40px;
+
+    @include mixins.on-mobile {
+      margin-top: 24px;
+    }
+  }
+
+  &__quantity {
+    margin-top: 10px;
+    color: #89939a;
+    font-size: 14px;
+    line-height: calc(24 / 14 * 100%);
+  }
+
+  &__selects {
+    margin-top: 40px;
+    display: flex;
+    gap: 16px;
+
+    @include mixins.on-mobile {
+      margin-top: 32px;
+    }
+  }
+
+  &__sort-type {
+    font-size: 12px;
+    color: vars.$minor-color;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+}

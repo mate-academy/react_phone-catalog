@@ -1,0 +1,280 @@
+@use '/src/styles/utils/mixins' as mixins;
+@use '/src/styles/utils/vars' as vars;
+
+.header {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  min-height: 65px;
+  align-items: center;
+
+  @include mixins.on-tablet {
+    min-height: 48px;
+  }
+
+  &__navigations {
+    flex: 1 1 auto;
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    border-bottom: 1px solid vars.$minor-color;
+
+    @include mixins.on-tablet {
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    @include mixins.on-mobile {
+      background-color: #fff;
+    }
+  }
+
+  &__logo {
+    margin-left: 24px;
+
+    @include mixins.on-tablet {
+      margin-left: 16px;
+    }
+
+    & > img {
+      @include mixins.on-tablet {
+        width: 64px;
+      }
+    }
+  }
+
+  &__menu {
+  }
+
+  &__options {
+    display: flex;
+
+    @include mixins.on-mobile {
+      margin-top: 35px;
+    }
+  }
+
+  &__option {
+    width: 64px;
+    height: 64px;
+    border-left: 1px solid vars.$minor-color;
+    transition: background-color 0.3s ease;
+
+    @include mixins.on-tablet {
+      width: 48px;
+      height: 48px;
+    }
+
+    @include mixins.on-mobile {
+      border-top: 1px solid vars.$minor-color;
+      width: 100%;
+      height: 64px;
+    }
+
+    &:first-child {
+      @include mixins.on-mobile {
+        border-left: none;
+      }
+    }
+
+    &:hover {
+      background-color: rgb(250, 250, 250);
+    }
+  }
+
+  &__option-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    &--active {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        background-color: vars.$main-color;
+      }
+    }
+
+    & > img {
+      max-width: 100%;
+    }
+  }
+
+  &__counter {
+    position: absolute;
+    right: inherit;
+    top: inherit;
+    transform: translate(7px, -5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-color: #eb5757;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    font-size: 9px;
+    font-weight: 600;
+    border: #fff 1px solid;
+  }
+}
+
+.menu {
+  flex: 1 1 auto;
+  display: flex;
+
+  &__icon {
+  }
+
+  &__body {
+    display: flex;
+    flex: 1 1 auto;
+    width: 100%;
+
+    @include mixins.on-mobile {
+      overflow: auto;
+      padding-top: 80px;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      z-index: -1;
+      height: 100%;
+      width: 100%;
+      background-color: #fff;
+      transition: right 0.4s ease;
+    }
+
+    .menu-open & {
+      right: 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 64px;
+    text-transform: uppercase;
+    align-items: center;
+    flex: 1 1 auto;
+
+    @include mixins.on-tablet {
+      gap: 32px;
+    }
+
+    @include mixins.on-mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__item {
+    color: vars.$minor-color;
+  }
+
+  &__link {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+
+    @include mixins.on-tablet {
+      height: 48px;
+    }
+
+    &:not(.menu__link--active):hover {
+      color: rgb(177, 177, 177);
+    }
+
+    &--active {
+      color: vars.$main-color;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: vars.$main-color;
+      }
+    }
+  }
+}
+
+.icon-menu {
+  display: none;
+
+  @include mixins.on-mobile {
+    height: 48px;
+    width: 48px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    border-left: solid 1px vars.$minor-color;
+  }
+
+  &__icon {
+    @include mixins.on-mobile {
+      position: relative;
+      height: 10px;
+      width: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .menu-open & {
+        display: block;
+      }
+
+      & span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 20px;
+        display: inline-block;
+        width: 100%;
+        height: 2px;
+        background-color: vars.$main-color;
+        transition: all 0.3s ease;
+
+        &:nth-child(2) {
+          top: 50%;
+        }
+
+        &:last-child {
+          top: 100%;
+        }
+
+        .menu-open &:first-child {
+          top: 50%;
+          transform: rotate(45deg);
+        }
+
+        .menu-open &:nth-child(2) {
+          width: 0px;
+        }
+
+        .menu-open &:last-child {
+          top: 50%;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+}
