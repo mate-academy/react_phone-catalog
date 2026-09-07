@@ -1,0 +1,18 @@
+.image {
+  &__image {
+    height: 230px;
+    object-fit: contain;
+
+    @include on-big-mobile {
+      height: 350px;
+    }
+
+    @include on-tablet {
+      height: 400px;
+    }
+
+    @include on-desktop {
+      height: 500px;
+    }
+  }
+}

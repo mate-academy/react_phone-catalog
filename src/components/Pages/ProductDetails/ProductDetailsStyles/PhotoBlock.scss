@@ -1,0 +1,80 @@
+.photoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    height: 464px;
+    flex-direction: row;
+  }
+
+  &__small-photos {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    order: 1;
+
+    @include on-tablet {
+      flex-direction: column;
+      justify-content: flex-start;
+      order: 0;
+    }
+
+    @include on-desktop {
+      gap: 16px;
+    }
+
+    &--photo {
+      object-fit: contain;
+      box-sizing: border-box;
+      cursor: pointer;
+      border: 1px solid $shadow-color;
+      border-radius: 4px;
+      width: 51px;
+      height: 51px;
+      padding: 5px;
+
+      @include on-big-mobile {
+        width: 60px;
+        height: 60px;
+      }
+
+      @include on-tablet {
+        width: 70px;
+        height: 70px;
+      }
+
+      @include on-desktop {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    &--photo-active {
+      border-color: $text-color;
+    }
+  }
+
+  &__big-photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    &--photo {
+      object-fit: contain;
+      box-sizing: border-box;
+      width: 100%;
+      padding: 7px;
+      height: 288px;
+
+      @include on-tablet {
+        height: 100%;
+      }
+
+      @include on-desktop {
+        padding: 11px;
+      }
+    }
+  }
+}

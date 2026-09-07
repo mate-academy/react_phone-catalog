@@ -1,0 +1,139 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+@import '../../styles/link';
+@import '../../styles/icon';
+
+.nav {
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  height: $nav-height-mobile;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: $bg-button-color;
+  box-shadow: 0 1px 0 0 $shadow-color;
+
+  &__menu {
+    height: 100%;
+    flex-direction: column;
+
+    @include on-tablet {
+      height: $nav-height-mobile;
+      flex-direction: row;
+    }
+  }
+
+  @include on-desktop {
+    height: $nav-height-desktop;
+  }
+
+  &__leftBlock {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+    box-shadow: 0 1px 0 0 $shadow-color;
+
+    @include on-tablet {
+      position: initial;
+      width: min-content;
+    }
+
+    &--search-menu-container {
+      display: flex;
+    }
+
+    @include on-tablet {
+      &--search-menu-container-hidden {
+        display: none;
+      }
+    }
+  }
+
+  &__rightBlock {
+    display: flex;
+    justify-content: space-between;
+
+    @include on-tablet {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    &--menu {
+      flex-direction: column;
+      width: 100%;
+
+      @include on-tablet {
+        flex-direction: row;
+      }
+    }
+
+    &--left {
+      display: none;
+
+      @include on-tablet {
+        margin-left: 16px;
+        display: flex;
+        gap: 32px;
+        height: 48px;
+      }
+
+      @include on-desktop {
+        margin-left: 24px;
+        height: 64px;
+        gap: 64px;
+      }
+    }
+
+    &--left-menu {
+      position: absolute;
+      top: $nav-height-mobile;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 32px;
+      gap: 16px;
+
+      @include on-tablet {
+        position: initial;
+        padding: 0;
+        flex-direction: row;
+        gap: 32px;
+      }
+
+      @include on-desktop {
+        gap: 64px;
+      }
+    }
+
+    &--right {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+      }
+    }
+
+    &--right-menu {
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      width: 100%;
+
+      @include on-tablet {
+        position: initial;
+        width: auto;
+      }
+    }
+
+    &--search-hidden {
+      display: none;
+    }
+  }
+}

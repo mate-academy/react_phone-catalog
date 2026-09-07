@@ -1,0 +1,32 @@
+@import '../../../styles/vars';
+@import '../../../styles/mixins';
+
+.notfound {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 25px;
+  padding-block: calc(24px + $nav-height-mobile) 32px;
+
+  @include on-tablet {
+    gap: 50px;
+    padding-block: calc(24px + $nav-height-desktop) 25px;
+  }
+
+  &__image {
+    height: 250px;
+    object-fit: contain;
+
+    @include on-big-mobile {
+      height: 350px;
+    }
+
+    @include on-tablet {
+      height: 400px;
+    }
+
+    @include on-desktop {
+      height: 500px;
+    }
+  }
+}

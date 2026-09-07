@@ -1,0 +1,48 @@
+$page-min-width: 320px;
+$page-min-height: 500px;
+$mobile-big-min-width: 500px;
+$tablet-min-width: 640px;
+$tablet-big-min-width: 768px;
+$desktop-min-width: 1200px;
+$tablet-banner-img-width: 490px;
+$tablet-banner-height: 189px;
+$desktop-banner-height: 400px;
+$modale-max-width: 600px;
+$modale-width: 85%;
+$nav-height-mobile: 48px;
+$nav-height-desktop: 64px;
+$footer-height-mobile: 257px;
+$footer-height-desktop: 96px;
+$transition-duration: .3s;
+$scroll-behavior: smooth;
+$transition-timing-function: ease;
+$select-box-shadow: #0000000d;
+$shadow-color: #e2e6e9;
+$shadow-cart-color: #17203166;
+$nav-link-color: #89939a;
+$select-border-color: #b4bdc3;
+$text-color: #0f0f11;
+$bg-button-color: #fff;
+$elipse-color: #f447af;
+$bg-selected-button-color: #eb5757;
+$confirm-bg-color: #27ae60;
+$button-color: #216cff;
+$bg-color: #fafbfc;
+$categoty-phones-bg: #6d6474;
+$categoty-tablets-bg: #8d8d92;
+$categoty-accessories-bg: #973d5f;
+
+@font-face {
+  font-family: Mont-Bold;
+  src: url(../fonts/Mont-Bold.otf);
+}
+
+@font-face {
+  font-family: Mont-Regular;
+  src: url(../fonts/Mont-Regular.otf);
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url(../fonts/Mont-SemiBold.otf);
+}

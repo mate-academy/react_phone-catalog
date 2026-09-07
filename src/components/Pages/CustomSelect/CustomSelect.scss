@@ -1,0 +1,84 @@
+@import '../../../styles/vars';
+
+.select {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 176px;
+  gap: 4px;
+
+  &__perPage {
+    width: 128px;
+  }
+
+  &__title {
+    color: $nav-link-color;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    border-radius: 8px;
+    width: 100%;
+    height: 40px;
+    border: 1px solid $select-border-color;
+    background-color: $bg-color;
+    padding-inline: 12px;
+    cursor: pointer;
+
+    &--focus {
+      border-color: $text-color;
+    }
+
+    &--hover:hover {
+      border-color: $nav-link-color;
+    }
+
+    &--arrow {
+      rotate: 90deg;
+      transition: rotate $transition-duration ;
+    }
+
+    &--arrow-open {
+      rotate: -90deg;
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    margin-top: 4px;
+    width: 100%;
+    top: 100%;
+    max-height: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 0 solid $shadow-color;
+    background-color: $bg-button-color;
+    box-shadow: 0 2px 15px 0 $select-box-shadow;
+    z-index: 1;
+    transition:
+      max-height $transition-duration $transition-timing-function,
+      padding-block $transition-duration $transition-timing-function,
+      border $transition-duration $transition-timing-function;
+
+    &--open {
+      border: 1px solid $shadow-color;
+      max-height: 150px;
+      padding-block: 8px;
+    }
+
+    &--item {
+      color: $nav-link-color;
+      padding: 6px 12px;
+      cursor: pointer;
+
+      &:hover {
+        color: $text-color;
+        background-color: $bg-color;
+      }
+    }
+  }
+}

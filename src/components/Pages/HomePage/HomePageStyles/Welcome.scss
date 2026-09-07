@@ -1,0 +1,89 @@
+@import '../../../../styles/vars';
+@import '../../../../styles/mixins';
+@import '../../../../styles/selection-off';
+
+.welcome {
+  &__banner {
+    box-sizing: border-box;
+    margin-top: 24px;
+
+    &--list {
+      display: flex;
+      list-style-type: none;
+      overflow: hidden;
+      padding: 0;
+      margin: 0;
+    }
+
+    &--item {
+      display: grid;
+      place-items: center;
+      min-width: 100%;
+      transition-duration: $transition-duration;
+      transition-timing-function: $transition-timing-function;
+    }
+
+    &--image {
+      display: block;
+      object-fit: cover;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    &--button {
+      height: auto;
+    }
+
+    @include on-tablet {
+      display: flex;
+      gap: 19px;
+      margin-top: 32px;
+      padding-inline: 24px;
+
+      &--leftImg {
+        rotate: 180deg;
+      }
+    }
+
+    @include on-desktop {
+      padding-inline: 32px;
+      max-width: $desktop-min-width;
+      margin-inline: auto;
+      margin-top: 56px;
+      gap: 16px;
+    }
+  }
+
+  &__bunner-bottom {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    gap: 4px;
+
+    &--button {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      border: none;
+      background-color: initial;
+      cursor: pointer;
+      transition: scale 1s $transition-timing-function;
+
+      @include hover(transform, scale(1.5));
+
+      &::after {
+        position: absolute;
+        content: "";
+        width: 14px;
+        height: 4px;
+        background-color: $shadow-color;
+        transform: translate(-50%, -50%);
+        transition: background-color .3s;
+      }
+    }
+
+    &--button-active::after {
+      background-color: $text-color;
+    }
+  }
+}

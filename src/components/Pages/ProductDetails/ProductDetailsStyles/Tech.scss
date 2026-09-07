@@ -1,0 +1,22 @@
+.tech {
+  &__title {
+    box-sizing: border-box;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $shadow-color;
+    margin-bottom: 22px;
+
+    @include on-tablet {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__textBlock {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+
+    &--left {
+      color: $nav-link-color;
+    }
+  }
+}
