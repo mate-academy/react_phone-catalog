@@ -1,0 +1,30 @@
+@import '../../styles/utils';
+
+.Error {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__message {
+    color: $color-red;
+
+    @include h4;
+  }
+
+  &__button {
+    width: 180px;
+    padding: 12px 22px;
+    color: $color-primary;
+
+    @include buttons;
+
+    background: transparent;
+    border: 1px solid;
+    border-color: $color-icons-placeholders;
+    transition: border-color $hover-delay;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+}
