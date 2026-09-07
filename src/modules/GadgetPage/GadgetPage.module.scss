@@ -1,0 +1,68 @@
+@import '../shared/mixins';
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+
+  color: #d32f2f;
+
+  border: 1px solid #d32f2f;
+  background-color: #ffe5e5;
+  border-radius: 8px;
+
+  text-align: center;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.button {
+  cursor: pointer;
+
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+
+  color: #fff;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  background-color: #d32f2f;
+
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #b71c1c;
+}
+
+.skeletonContainer {
+  @include mobile {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @include tablet {
+    gap: 1%;
+    justify-content: center;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
