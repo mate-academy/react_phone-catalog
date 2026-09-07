@@ -1,0 +1,46 @@
+@import '../../styles/mixins.scss';
+
+.swipper {
+  @include content-padding-inline;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+  }
+
+  &__button {
+    border: 1px solid rgba(226, 230, 233, 1);
+    padding: 8px;
+
+    @include hover-black-hover;
+
+    &__img {
+      height: 16px;
+      width: 16px;
+    }
+
+    &--disabled {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: default;
+  }
+  }
+}
+
+.products__list {
+  margin: 0 auto;
+}
