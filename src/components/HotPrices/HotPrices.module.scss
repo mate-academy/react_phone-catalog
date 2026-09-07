@@ -1,0 +1,70 @@
+@font-face {
+  font-family: Mont;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+.hotPrices {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 50px;
+
+  &Header {
+    width: 90%;
+    height: 62px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &Title {
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #313237;
+
+    @media (min-width: 639px) {
+      font-size: 32px;
+    }
+  }
+
+  &Buttons {
+    width: 80px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &Arrow {
+    width: 32px;
+    height: 32px;
+    background: white;
+    border: 2px solid #e2e6e9;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #525252;
+
+    &:hover {
+      background-color: #525252;
+    }
+  }
+
+  &Carousel {
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 16px;
+    max-width: 100%;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

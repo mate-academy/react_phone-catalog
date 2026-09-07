@@ -1,0 +1,114 @@
+@font-face {
+  font-family: Mont;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 110%;  /* escondido */
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  color: rgb(68, 68, 68);
+  padding-top: 60px;
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar.open {
+  left: 0;  /* aparece */
+}
+
+.itensMenu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  margin-top: 30px;
+}
+
+.itens {
+  text-align: center;
+  padding-right: 85px;
+  text-decoration: none;
+  font-family: Mont, sans-serif;
+  color: #89939a;
+}
+
+.itens:hover {
+  text-decoration: underline;
+  color: #313237;
+}
+
+.menuSuperior {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  width: 100%;
+  height: 48px;
+  border: 2px solid #f4f4f4;
+  margin-top: -59.7px;
+  justify-content: space-between;
+}
+
+.containerLogo {
+  width: 96px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 64px;
+  height: 22px;
+  margin-left: 15px;
+}
+
+.containerIconMenu {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #f4f4f4;
+  justify-content: left;
+}
+
+.iconMenu {
+  width: 16px;
+  height: 16px;
+  margin-top: 15px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.menuInferior {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 505px;
+  width: 100%;
+  height: 64px;
+  border-top: 2px solid #f4f4f4;
+  border-bottom: 2px solid #f4f4f4;
+}
+
+.menuFav {
+  width: 50%;
+  height: 100%;
+  border-right: 2px solid #f4f4f4;
+  cursor: pointer;
+}
+
+.menuShop {
+  width: 50%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  margin-left: 50%;
+  margin-top: 25px;
+}
