@@ -1,0 +1,54 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  padding: 10px 0;
+  font-family: Arial, sans-serif;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.home {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-color);
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    background: url(../../../public/img/icons/Home.png) center/contain no-repeat;
+    background-size: contain;
+  }
+
+  &:hover {
+    color: var(--accent-hover);
+
+    &::before {
+      filter: brightness(1.2);
+    }
+  }
+}
+
+.link {
+  margin: 0 5px;
+  text-decoration: none;
+  color: var(--text-color);
+
+  &:hover {
+    color: var(--accent-hover);
+  }
+}
+
+.separator {
+  margin: 0 5px;
+  color: var(--text-secondary);
+}
+
+.current {
+  margin-left: 5px;
+  color: var(--text-color);
+}
