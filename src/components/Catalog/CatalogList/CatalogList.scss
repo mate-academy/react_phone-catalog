@@ -1,0 +1,10 @@
+.catalogList {
+  width: 100%;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+    gap: 16px;
+    width: 100%;
+  }
+}
