@@ -1,0 +1,72 @@
+@import './variables';
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-position: center;
+  color: $icons-color;
+  flex-shrink: 0;
+
+  &--home {
+    background: url(/img/icons/home.svg);
+  }
+
+  &--heart {
+    &-empty {
+      background: url(/img/icons/heart-empty.svg);
+    }
+
+    &-filled {
+      background: url(/img/icons/heart-filled.svg);
+    }
+  }
+
+  &--cart {
+    background: url(/img/icons/cart-empty.svg);
+  }
+
+  &--menu {
+    background: url(/img/icons/menu.svg);
+  }
+
+  &--up {
+    background: url(/img/icons/chevron-up.svg);
+  }
+
+  &--down {
+    background: url(/img/icons/chevron-down.svg);
+  }
+
+  &--left {
+    background: url(/img/icons/chevron-left.svg);
+  }
+
+  &--right {
+    background: url(/img/icons/chevron-right.svg);
+  }
+
+  &--minus {
+    background: url(/img/icons/minus.svg);
+  }
+
+  &--plus {
+    background: url(/img/icons/plus.svg);
+  }
+
+  &--close {
+    background: url(/img/icons/close-gray.svg);
+
+    transition-property: all;
+    transition-duration: $transition-time;
+
+    &:hover {
+      background: url(/img/icons/close.svg);
+    }
+  }
+
+  &--search {
+    background: url(/img/icons/search.svg);
+  }
+}

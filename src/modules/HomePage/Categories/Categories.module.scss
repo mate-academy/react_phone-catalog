@@ -1,0 +1,89 @@
+@import '@/styles/main';
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / -1;
+  gap: 24px;
+
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    @include on-desktop {
+      gap: 16px;
+    }
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-tablet {
+      flex: 1;
+    }
+  }
+
+  &__link {
+    height: 100%;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+    border-radius: 8px;
+
+    transition-property: transform, box-shadow;
+    transition-duration: $transition-time;
+
+    &--phone {
+      background: #fae1be;
+    }
+
+    &--tablet {
+      background: #8d8d92;
+    }
+
+    &--accessory {
+      background: #973d5f;
+    }
+
+    &:hover {
+      transform: scale(0.9);
+    }
+
+    &:active {
+      box-shadow: 1px 1px 3px rgba($shadow-color, 0.1);
+    }
+  }
+
+  &__desc {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &--qty {
+      color: $secondary-color;
+    }
+  }
+}

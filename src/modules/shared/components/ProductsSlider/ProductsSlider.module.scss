@@ -1,0 +1,94 @@
+@import '@/styles/main';
+
+.product_carousel {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-inline: 0;
+
+    &--buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__products {
+    /* Mobile & Tablet: Break out of grid container bounds */
+    margin-inline: -16px;
+    padding-inline: 16px;
+
+    /* Enable horizontal scrolling */
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+
+    /* Hide scrollbar but keep functionality */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+
+    scroll-snap-type: x mandatory;
+
+    > * {
+      flex-shrink: 0;
+      width: calc(100vw - 64px);
+      min-width: 200px;
+      max-width: 220px;
+
+      scroll-snap-type: start;
+    }
+
+    @include on-tablet {
+      /* Tablet: Use tablet padding */
+      margin-inline: -24px;
+      padding-inline: 24px;
+
+      > * {
+        width: calc(50vw - 32px);
+        min-width: 230px;
+        max-width: 240px;
+      }
+    }
+
+    @include on-desktop {
+      /* Desktop: Stay within grid bounds, no breakout */
+      margin-inline: 0;
+      padding-inline: 0;
+      overflow-x: auto;
+
+      /* Keep flex display */
+      display: flex;
+
+      > * {
+        /* Force exactly 4 items: (100% - 3 gaps) / 4 items */
+        width: calc((100% - 48px) / 4);
+        min-width: calc((100% - 48px) / 4);
+        max-width: calc((100% - 48px) / 4);
+        flex-shrink: 0;
+        flex-grow: 0;
+      }
+    }
+  }
+}

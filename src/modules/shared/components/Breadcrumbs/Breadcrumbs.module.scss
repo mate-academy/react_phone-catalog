@@ -1,0 +1,45 @@
+@import '@/styles/main';
+
+.breadcrumbs {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 24px;
+  gap: 8px;
+  overflow: hidden;
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &__text {
+    color: $secondary-color;
+    font-size: 12px;
+    line-height: 100%;
+
+    transition-property: color;
+    transition-duration: $transition-time;
+    cursor: default;
+
+    &:hover {
+      color: $primary-color;
+    }
+
+    &:not(:last-of-type) {
+      flex-shrink: 0;
+    }
+
+    &:last-child {
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      @include on-tablet {
+        max-width: 300px;
+      }
+    }
+  }
+}

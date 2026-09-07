@@ -1,0 +1,90 @@
+@import '@/styles/variables';
+
+.dropdown {
+  position: relative;
+
+  &__label {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  &__select {
+    position: relative;
+    width: 100%;
+  }
+
+  &__placeholder {
+    border: 1px solid $icons-color;
+    border-radius: 8px;
+    padding: 10px 12px;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: border $transition-time;
+    min-height: 40px;
+    box-sizing: border-box;
+
+    &:hover {
+      border-color: $secondary-color;
+    }
+
+    &:focus,
+    &-open {
+      border-color: $primary-color;
+    }
+
+    &--text {
+      flex: 1;
+      text-align: left;
+      color: $primary-color;
+    }
+
+    &--arrow {
+      margin-left: 8px;
+      transition: transform $transition-time;
+      display: flex;
+      align-items: center;
+
+      &-open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__options {
+    position: absolute;
+    top: 104%;
+    left: 0;
+    right: 0;
+    background-color: $white-color;
+    border: 1px solid $elements-color;
+    border-radius: 8px;
+    z-index: 100;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5px);
+    transition: all $transition-time;
+    box-shadow: 0 2px 15px rgba($shadow-color, 0.05);
+
+    &-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    &--option {
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: all $transition-time;
+      color: $secondary-color;
+
+      &:hover {
+        color: $primary-color;
+        background-color: $hover-bg-color;
+      }
+    }
+  }
+}

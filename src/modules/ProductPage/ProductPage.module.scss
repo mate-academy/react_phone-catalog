@@ -1,0 +1,43 @@
+@import '@/styles/main';
+
+.product_page {
+  padding-bottom: 64px;
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
+  &__text {
+    grid-column: 1 / -1;
+    display: grid;
+    row-gap: 8px;
+    margin-top: 24px;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-block: 40px;
+    }
+  }
+
+  &__qty {
+    grid-column: 1 / -1;
+    color: $secondary-color;
+  }
+
+  &__filters {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+
+    @include on-tablet {
+      grid-column: 1 / 7;
+      grid-template-columns: 4fr 3fr;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 9;
+      grid-template-columns: 5fr 4fr;
+    }
+  }
+}
