@@ -1,0 +1,19 @@
+@use '../../assets/styles/variables' as *;
+
+.switcher {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: color 0.3s, background-color 0.3s;
+
+  color: var(--color-secondary);
+
+  &:hover {
+    background-color: var(--color-elements);
+  }
+}

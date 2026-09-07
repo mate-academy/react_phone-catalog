@@ -1,0 +1,72 @@
+@use '../../assets/styles/variables' as *;
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 160px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #89939A;
+  margin-bottom: 4px;
+}
+
+.selector {
+  height: 40px;
+  border: 1px solid var(--color-elements);
+  border-radius: 8px;
+  background-color: var(--color-button);
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.3s;
+
+  &:hover,
+  &.open {
+    border-color: var(--color-text);
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 4px;
+  background-color: var(--color-button);
+  border: 1px solid var(--color-elements);
+  border-radius: 8px;
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.option {
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #89939A;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    border-color: var(--color-text);
+    color: var(--color-text);
+    font-weight: 700;
+  }
+
+  &.active {
+    font-weight: 700;
+    border-color:#B4BDC3;
+  }
+}

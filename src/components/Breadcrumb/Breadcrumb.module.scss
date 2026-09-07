@@ -1,0 +1,27 @@
+@use '../../assets/styles/variables' as *;
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.homeIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.arrowIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.currentPage {
+  font-size: 12px;
+  font-weight: 700;
+  color: #89939A;
+
+  &:hover {
+    color: var(--color-text);
+  }
+}

@@ -1,7 +1,7 @@
 import './App.scss';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './router';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+export const App = () => {
+  return <RouterProvider router={router} />;
+};
