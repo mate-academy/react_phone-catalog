@@ -1,0 +1,68 @@
+@use 'sass:color';
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.not-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  padding: 40px 16px;
+  background-image: url('/react_phone-catalog/img/page-not-found.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  @include on-tablet {
+    min-height: 600px;
+    padding: 60px 32px;
+  }
+
+  @include on-desktop {
+    min-height: 700px;
+  }
+
+  &__content {
+    text-align: center;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 32px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+  }
+
+  &__title {
+    @include h1;
+
+    color: $color-primary;
+    margin: 0;
+  }
+
+  &__description {
+    @include body-text;
+
+    color: $color-secondary;
+    margin: 0;
+  }
+
+  &__button {
+    @include button-text;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background-color: $color-primary;
+    color: $color-white;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: color.adjust($color-primary, $lightness: -10%);
+    }
+  }
+}

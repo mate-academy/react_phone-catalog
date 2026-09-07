@@ -1,0 +1,59 @@
+@use '../../../../styles/abstracts/variables' as *;
+
+.icon {
+  display: inline-block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+
+  // ============ Variants
+  &__arrow-left {
+    mask-image: url('/react_phone-catalog/img/icons/arrow-left.svg');
+  }
+
+  &__arrow-right {
+    mask-image: url('/react_phone-catalog/img/icons/arrow-right.svg');
+  }
+
+  &__arrow-up {
+    mask-image: url('/react_phone-catalog/img/icons/arrow-up.svg');
+  }
+
+  &__close {
+    mask-image: url('/react_phone-catalog/img/icons/close.svg');
+  }
+
+  &__search {
+    mask-image: url('/react_phone-catalog/img/icons/search.svg');
+  }
+
+  &__like {
+    mask-image: url('/react_phone-catalog/img/icons/like.svg');
+  }
+
+  &__menu {
+    mask-image: url('/react_phone-catalog/img/icons/menu.svg');
+  }
+
+  &__cart {
+    mask-image: url('/react_phone-catalog/img/icons/cart.svg');
+  }
+
+  &__minus {
+    mask-image: url('/react_phone-catalog/img/icons/minus.svg');
+  }
+
+  &__plus {
+    mask-image: url('/react_phone-catalog/img/icons/plus.svg');
+  }
+
+  &__home {
+    mask-image: url('/react_phone-catalog/img/icons/home.svg');
+  }
+
+
+}

@@ -1,0 +1,70 @@
+@use '../../../../styles/abstracts/variables' as *;
+
+.badgeRoot {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  font-family: $font-main;
+  font-weight: 600;
+  font-size: 9px;
+  white-space: nowrap;
+  text-align: center;
+  border: 2px solid $color-white;
+  box-sizing: border-box;
+  z-index: 1;
+  transform: scale(1) translate(50%, -50%);
+  transform-origin: 100% 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
+
+  // Color variants
+  &--primary {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+
+  &--secondary {
+    background-color: $color-secondary;
+    color: $color-white;
+  }
+
+  &--error {
+    background-color: $color-red;
+    color: $color-white;
+  }
+
+  &--warning {
+    background-color: #FF9800;
+    color: $color-white;
+  }
+
+  &--success {
+    background-color: $color-green;
+    color: $color-white;
+  }
+
+  // Variants
+  &--dot {
+    min-width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    border-width: 1px;
+    padding: 0;
+  }
+
+  &--standard {
+    padding: 0;
+  }
+}

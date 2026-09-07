@@ -1,0 +1,107 @@
+// ============================================
+// PRODUCT CARD COMPONENT
+// ============================================
+
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
+.product-card {
+  width: 100%;
+  min-width: 212px;
+  padding: 32px;
+  box-sizing: border-box;
+  border: 1px solid $color-elements;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease;
+  gap: 8px;
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 8px;
+  }
+
+  // Картка автоматично адаптується до grid контейнера через CSS змінні
+  // grid-column: span var(--card-columns, var(--columns-count));
+
+  &:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  &__image {
+    width: 100%;
+    object-fit: contain;
+    height: 129px;
+    display: block;
+    transition: transform 0.3s ease;
+    flex-grow: 1;
+  }
+
+  &:hover &__image {
+    transform: scale(1.1);
+  }
+
+  &__title {
+    @include body-text;
+
+    padding-top: 16px;
+    color: $color-primary;
+    flex-grow: 2;
+  }
+
+  &__price {
+    margin-bottom: 8px;
+    display: inline-flex;
+    gap: 8px;
+  }
+
+  &__price-sale {
+    @include h3;
+
+    color: $color-primary;
+  }
+
+  &__price-regular {
+    font-size: 22px;
+    text-decoration: line-through;
+    color: $color-secondary;
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background-color: $color-elements;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+    margin-bottom: 8px;
+    gap: 8px;
+  }
+
+  &__info-row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__info-label {
+    @include small-text;
+
+    color: $color-secondary;
+  }
+
+  &__info-value {
+    @include small-text;
+
+    color: $color-primary;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+}

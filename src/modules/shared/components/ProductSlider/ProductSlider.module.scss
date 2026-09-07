@@ -1,0 +1,73 @@
+// ============================================
+// PRODUCT SLIDER BLOCK
+// ============================================
+
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
+.productSlider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.productSliderHeader {
+  @include page-grid;
+
+  align-items: center;
+}
+
+.productSliderTitle {
+  @include h2;
+
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 10;
+  }
+}
+
+.productSliderControls {
+  grid-column: span 1 / -1;
+  display: flex;
+  gap: 16px;
+}
+
+.productSliderWrapper {
+  position: relative;
+  overflow: hidden;
+  padding-right: -16px;
+}
+
+.productSliderList {
+  width: 100%;
+  overflow: hidden !important;
+
+  // Swiper customization
+  @at-root #{&} .swiper-slide {
+    height: auto;
+    display: flex;
+    align-items: stretch;
+    box-sizing: border-box;
+    width: 212px !important; // Fixed width for cards
+
+    @include on-tablet {
+      width: 237px !important;
+    }
+
+    @include on-desktop {
+      width: 272px !important;
+    }
+  }
+
+  @at-root #{&} .swiper-wrapper {
+    align-items: stretch;
+  }
+
+  // Override any grid styles for Swiper
+  display: block !important;
+  grid-template-columns: none !important;
+}

@@ -1,0 +1,210 @@
+// ============================================
+// HERO & PICTURES SLIDER BLOCKS
+// ============================================
+
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-top: 56px;
+  }
+
+  &__title {
+    @include h1;
+  }
+}
+
+.picturesSlider {
+  &__container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    transition: height 0.3s ease;
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__container-image {
+    position: relative;
+    flex: 1;
+    aspect-ratio: 1/1;
+    width: 100%;
+    transition: min-height 0.3s ease, max-height 0.3s ease;
+
+    @include on-tablet {
+      min-height: 189px;
+      max-height: 190px;
+      aspect-ratio: auto;
+    }
+
+    @include on-desktop {
+      max-height: 400px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    width: 100%;
+    background-color: #000;
+    transition: margin 0.3s ease, padding 0.3s ease;
+
+    @include on-tablet {
+      margin-inline: 16px;
+      padding: 16px;
+    }
+  }
+
+  &__aside {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+    border-radius: 16px;
+    background-color: #222;
+    transition: padding 0.3s ease;
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    @include on-desktop {
+      padding-left: 40px;
+      padding-block: 30px;
+    }
+  }
+
+  &__aside-title {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    line-height: 1;
+    color: #fff;
+    background-image: linear-gradient(90deg, #7c4af4, #d862ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    transition: font-size 0.3s ease;
+
+    @include on-desktop {
+      font-size: 42px;
+    }
+  }
+
+  &__aside-ok {
+    height: 24px;
+
+    @include on-desktop {
+      font-size: 36px;
+    }
+  }
+
+  &__aside-description {
+    margin-top: 10px;
+    font-family: Mont-Regular, sans-serif;
+    font-size: 12px;
+    color: #aeaeae;
+  }
+
+  &__aside-action {
+    width: fit-content;
+    padding: 12px 24px;
+    border: 1px solid #444;
+    border-radius: 22px;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 12px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover {
+      color: #7c4af4;
+      transform: scale(1.05);
+    }
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    object-fit: contain;
+    transition: opacity 0.5s ease-in-out, transform 0.3s ease;
+
+    &--active {
+      opacity: 1;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__button {
+    display: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+
+    @include on-tablet {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      border: 1px solid $color-hover-bg;
+    }
+
+    &:hover {
+      border-color: var(--color-gray-primary);
+      background-color: var(--color-hover);
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    height: 24px;
+    margin: 0 auto;
+  }
+
+  &__dot {
+    cursor: pointer;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 4px;
+      background-color: $color-elements;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    &:hover::after {
+      transform: scale(1.15);
+    }
+
+    &--active::after {
+      background-color: $color-primary;
+      width: 18px;
+    }
+  }
+}
