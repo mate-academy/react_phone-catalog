@@ -1,0 +1,134 @@
+// add styles here
+
+.card-image img {
+  object-fit: contain;
+  height: 196px;
+  display: block;
+  margin: 0 auto;
+}
+// .product__card__img:hover {
+// transform: scale(1.025);
+//   transition-duration: 3ms;
+// }
+
+.product__card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  border: 1px solid #E2E6E9;
+  color: #313237;
+  padding: 32px;
+  // width: 306px;
+  margin-bottom: 8px;
+
+}
+
+.product__card:hover {
+  transform: scale(1.025);
+  transition-duration: 3ms;
+}
+
+.card-content {
+ display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.5em;
+  height: 3em;
+  overflow: hidden;
+}
+
+.new__price {
+font-weight: 800;
+font-size: 22px;
+line-height: 140%;
+}
+
+.old__price {
+color: #89939A;
+font-weight: 600;
+font-size: 22px;
+text-decoration: line-through;
+line-height: 100%;
+}
+
+.product__price {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.product__info {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+text-align: center;
+font-weight: 700;
+font-size: 12px;
+line-height: 100%;
+}
+
+.buttons {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+gap: 2px;
+align-items: center;
+cursor: pointer;
+-webkit-tap-highlight-color: transparent;
+}
+
+.feature {
+color: #89939A;
+}
+
+.addButton {
+  text-decoration: none;
+  display: flex;
+  width: 80%;
+  height: 40px;
+  padding: auto;
+  justify-content: center;
+  align-items: center;
+  background: #313237;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.icon__heart {
+  border: 1px solid #89939A;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #313237;
+  background-color: white;
+  cursor: pointer;
+}
+
+.selected {
+  color:#27AE60 ;
+  background-color: white;
+  border: 1px solid #89939A;
+}
+
+.card__tech__spec{
+  border-top: 1px solid #E2E6E9;
+  display: flex;
+  flex-direction:column;
+  gap: 8px;
+  padding-block: 16px;
+}
+

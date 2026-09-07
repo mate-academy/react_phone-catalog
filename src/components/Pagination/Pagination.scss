@@ -1,0 +1,41 @@
+.select__field {
+cursor: pointer;
+padding: 5px 10px;
+border: 1px solid #89939A;
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 160px;
+height: 40px;
+background-color: white;
+font-size: 14px;
+font-weight: 500;
+color: #313237;
+
+&.changed {
+  border-color: #313237;
+  }
+
+&:hover {
+  border-color: #313237;
+  }
+}
+
+.sort__per__page {
+position: absolute;
+top: 100%;
+left: 0;
+border: 1px solid #89939A;
+background-color: white;
+z-index: 500;
+width: 100%;
+margin-top: 2px;
+
+&__option {
+font-size: 14px;
+font-weight: 500;
+cursor: pointer;
+padding: 10px 10px;
+height: 32px;
+}
+}

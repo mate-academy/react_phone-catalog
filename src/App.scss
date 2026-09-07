@@ -1,1 +1,138 @@
 // not empty
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+iframe {
+  display: none;
+}
+
+.page > *:not(.navbar, .navbar-footer, .menu) {
+
+@media (min-width: 320px) and (max-width: 639px) {
+    padding-inline: 16px;
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+    padding-inline: 32px;
+}
+
+@media (min-width: 1200px) {
+    padding-inline: 152px;
+}
+}
+
+.page {
+  scroll-behavior: smooth;
+  transition-duration: 300ms;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Mont', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.section {
+max-width: 1200px;
+margin-inline: auto;
+margin-top: 10vh;
+min-height: 70vh;
+margin-bottom: 56px;
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  margin-bottom: 64px;
+}
+
+@media (min-width: 1200px){
+  margin-bottom: 80px;
+}
+
+}
+
+section {
+margin-bottom: 56px;
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  margin-bottom: 64px;
+}
+
+@media (min-width: 1200px){
+  margin-bottom: 80px;
+}
+
+}
+
+h1 {
+color: #313237;
+font-weight: 800;
+font-size: 32px;
+
+@media (min-width: 640px){
+  font-size: 48px;
+}
+}
+
+h3 {
+color: #313237;
+font-weight: 700;
+font-size: 20px;
+}
+
+.invisible{
+  visibility: hidden;
+}
+
+.container {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+
+  @media (min-width: 320px) and (max-width: 639px) {
+  align-items: center;
+  }
+}
+
+.under__heading1 {
+font-size: 14px;
+font-weight: 600;
+color: #89939A;
+margin-bottom: 30px;
+ }
+
+ .sort__select {
+font-size: 12px;
+font-weight: 700;
+color: #89939A;
+ }
+
+.select__section {
+display:flex;
+gap: 16px;
+}
+
+
