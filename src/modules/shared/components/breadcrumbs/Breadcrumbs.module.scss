@@ -1,0 +1,49 @@
+@import '../../../../styles/styles';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0;
+
+  @include on-tablet {
+    margin: 24px 0 40px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 100%;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  &__image {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+
+    @include on-image-hover;
+  }
+
+  &__link {
+    color: $white;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+
+    &--last {
+      color: $secondary;
+    }
+
+    @include on-hover(
+      (
+        color: $accent,
+      )
+    );
+  }
+}

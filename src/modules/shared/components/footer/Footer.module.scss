@@ -1,0 +1,97 @@
+@import '../../../../styles/styles';
+
+.footer {
+  background: $black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 32px 16px;
+  border-top: 1px solid $elements;
+
+  cursor: default;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px;
+  }
+
+  @include on-desktop {
+    padding: 32px calc((100vw - 1136px) / 2);
+  }
+
+  &__logo {
+    cursor: pointer;
+
+    @include on-image-hover;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style: none;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 13px;
+    }
+
+    @include on-desktop {
+      gap: 100px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    color: $secondary;
+
+    cursor: pointer;
+
+    @include on-hover(
+      (
+        color: $white,
+      )
+    );
+  }
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+
+  &__text {
+    color: $secondary;
+
+    @include on-hover(
+      (
+        color: $white,
+      )
+    );
+  }
+
+  &__button {
+    border: none;
+    cursor: pointer;
+  }
+
+  &__icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $icons;
+
+    @include on-image-hover;
+  }
+}

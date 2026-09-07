@@ -1,0 +1,81 @@
+@import '../../../../styles/styles';
+
+.group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+}
+
+.group__label {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: $secondary;
+}
+
+.selectControl {
+  background: $surface-2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  user-select: none;
+
+  &--open {
+    border: 1px solid $accent !important;
+  }
+
+  @include on-hover(
+    (
+      border: 1px solid $icons,
+    )
+  );
+}
+
+.selectControl__input {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.selectControl__arrow {
+  height: 16px;
+  width: 16px;
+}
+
+.dropdown {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid $surface-2;
+  background: $surface-1;
+  z-index: 10;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  margin-top: 2px;
+}
+
+.dropdown__item {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  color: $secondary;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  cursor: pointer;
+
+  @include on-hover(
+    (
+      background-color: $surface-2,
+      color: $white,
+    )
+  );
+}

@@ -1,0 +1,19 @@
+@import '../../styles/styles';
+
+.title {
+  padding: 16px 0 40px;
+}
+
+.subtitle {
+  max-width: 136px;
+  margin-top: 56px;
+
+  @include on-tablet {
+    max-width: unset;
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}
