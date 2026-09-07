@@ -1,0 +1,53 @@
+@import '../../../../../../../../../../App';
+
+.title {
+  margin: 0;
+  font-family: Mont-Bold, sans-serif;
+  background: $hover-gradient;
+  color: transparent;
+  background-clip: text;
+  font-size: 22px;
+  line-height: 24px;
+
+  @include on-small-desktop {
+    font-size: 27px;
+    line-height: 29px;
+  }
+
+  @include on-desktop {
+    font-size: 42px;
+    line-height: 42px;
+  }
+
+  &-img {
+    height: 17px;
+    margin-left: 3px;
+
+    @include on-small-desktop {
+      height: 20px;
+      margin-left: 6px;
+    }
+
+    @include on-desktop {
+      height: 32px;
+      margin-left: 10px;
+    }
+  }
+}
+
+.subtitle {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 9px;
+  color: $grey-color;
+  margin-top: 7px;
+
+  @include on-small-desktop {
+    font-size: 11px;
+    margin-top: 10px;
+  }
+
+  @include on-desktop {
+    font-size: 15px;
+    margin-top: 14px;
+  }
+}

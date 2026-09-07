@@ -1,0 +1,30 @@
+@import '../../../../../../../App';
+
+.number {
+  box-sizing: border-box;
+  border: $light-border-value;
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+  line-height: 21px;
+  font-family: Mont-Regular, sans-serif;
+  color: $primary-color;
+  text-decoration: none;
+  transition: border-color $default-trans-dur;
+
+  @include flex-center-center;
+
+  @include on-desktop {
+    &:hover:not(.is-active) {
+      border-color: $primary-color;
+    }
+  }
+}
+
+@include is-active;
+
+.is-active {
+  background-color: $primary-color;
+  color: #fff;
+  border-color: transparent;
+}

@@ -1,0 +1,24 @@
+@import '../../../../../../../App';
+
+.button {
+  cursor: pointer;
+  margin-top: 4px;
+  color: $primary-color;
+  height: 40px;
+  width: 136px;
+  justify-content: space-between;
+  background-color: inherit;
+  font-family: inherit;
+  border: $icons-border-value;
+  transition: all $default-trans-dur;
+
+  @include on-desktop {
+    &:hover {
+      color: $green-color;
+
+      svg path {
+        fill: $light-green-color;
+      }
+    }
+  }
+}

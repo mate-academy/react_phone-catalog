@@ -1,0 +1,44 @@
+@import '/src/App';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  font-family: Mont-SemiBold, sans-serif;
+
+  @include on-tablet {
+    margin-top: 0;
+  }
+
+  @include on-desktop {
+    position: relative;
+  }
+
+  .title,
+  .id {
+    font-size: 12px;
+    line-height: 15.34px;
+  }
+
+  .title {
+    margin: 0;
+    color: $secondary-color;
+  }
+
+  .id {
+    color: $icons-color;
+
+    @include on-desktop {
+      position: absolute;
+      right: -1 * ($dg-column * 4 + $g-gap * 4);
+    }
+  }
+}
+
+.colors-to-pick {
+  height: 32px;
+  display: flex;
+  gap: 9px;
+  width: fit-content;
+  margin-top: 9px;
+}

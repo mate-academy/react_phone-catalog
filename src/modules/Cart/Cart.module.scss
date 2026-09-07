@@ -1,0 +1,23 @@
+@import '/src/App';
+
+.cart {
+  width: var(--container-width);
+  margin-inline: auto;
+
+  .title {
+    @include products-title;
+
+    @include on-tablet {
+      margin-top: 16px;
+    }
+  }
+
+  .wrapper {
+    margin-top: 32px;
+
+    @include on-desktop {
+      @include grid-styles;
+      @include desktop-grid;
+    }
+  }
+}

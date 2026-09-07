@@ -1,1 +1,48 @@
-// not empty
+@import './utils/Mixins';
+@import './utils/Variables.module';
+
+:root {
+  // #region variables
+
+  --categories-mt: 56px;
+  --header-height: 48px;
+  --product-height: 439px;
+  --models-mt: 24px;
+  --container-width: 288px;
+
+  @include on-tablet {
+    --categories-mt: 64px;
+    --container-width: 592px;
+    --product-height: 512px;
+  }
+
+  @include on-small-desktop {
+    --container-width: 719px;
+  }
+
+  @include on-desktop {
+    --categories-mt: 80px;
+    --header-height: 64px;
+    --container-width: 1040px;
+    --product-height: 506px;
+  }
+
+  // #endregion
+
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.hidden-title {
+  position: absolute;
+  visibility: hidden;
+  margin: 0;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}

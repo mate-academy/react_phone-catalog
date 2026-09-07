@@ -1,0 +1,53 @@
+@import '../../App';
+
+.breadcrumbs,
+.home-icon,
+.arrow {
+  display: flex;
+  align-items: center;
+}
+
+.home-icon svg path {
+  transition: fill $default-trans-dur;
+}
+
+.home-icon:hover path {
+  fill: $green-color;
+}
+
+.breadcrumbs {
+  width: var(--container-width);
+  margin-top: 24px;
+  margin-inline: auto;
+  gap: 8px;
+
+  .link {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background: none;
+    font-family: Mont-SemiBold, sans-serif;
+    color: $primary-color;
+    font-size: 12px;
+    line-height: 15.34px;
+    transition: color $default-trans-dur;
+
+    &:hover:not(.phone-link) {
+      color: $green-color;
+    }
+
+  }
+
+  .phone-link,
+  .is-active {
+    cursor: default;
+  }
+
+  .phone-link {
+    color: $secondary-color;
+  }
+
+  .is-active {
+    pointer-events: none;
+  }
+}

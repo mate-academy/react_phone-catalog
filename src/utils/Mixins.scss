@@ -1,0 +1,281 @@
+@import './Variables.module';
+
+// #region media
+
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-small-desktop {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+// #endregion
+
+@mixin flex-center-center {
+  & {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@mixin product-flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@mixin is-active-styles {
+  pointer-events: none;
+  cursor: default;
+}
+
+@mixin is-active {
+  .is-active {
+    @include is-active-styles;
+  }
+}
+
+@mixin bottom-border-on-active {
+  @include is-active;
+
+  .is-active {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background-color: $primary-color;
+      bottom: 0;
+    }
+  }
+}
+
+// #region elements
+
+@mixin nav-elements($is-it-pagination: true) {
+  @if $is-it-pagination {
+    width: 30px;
+    height: 30px;
+  } @else {
+    width: 32px;
+  }
+
+  padding: 0;
+  background-color: #fff;
+  border: 1px solid $icons-color;
+
+  @include flex-center-center;
+
+  @include on-desktop {
+    transition: all $default-trans-dur;
+  }
+
+  &:hover,
+  &:active {
+    border-color: $primary-color;
+  }
+
+  path {
+    transition: fill $default-trans-dur;
+  }
+
+  &:disabled {
+    border-color: $elements-color;
+
+    path {
+      fill: $icons-color;
+    }
+  }
+
+  &:enabled:active {
+    background-color: $elements-color;
+  }
+}
+
+@mixin dark-button {
+  border: none;
+  height: 100%;
+  width: 100%;
+  background-color: $primary-color;
+  color: #fff;
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+
+  @include on-desktop {
+    transition: all $default-trans-dur;
+  }
+
+  &:hover,
+  &:active {
+    box-shadow: 0 3px 13px $box-shadow-color;
+  }
+}
+
+@mixin shop-buttons {
+  .add,
+  .like {
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .add {
+    @include dark-button;
+  }
+
+  .is-added {
+    background-color: $secondary-color;
+
+    @include is-active-styles;
+  }
+
+  .like {
+    border: 1px solid $icons-color;
+    background-color: #fff;
+    min-width: 40px;
+
+    @include flex-center-center;
+
+    @include on-desktop {
+      transition: all $default-trans-dur;
+    }
+
+    &:hover,
+    :active {
+      border-color: $primary-color;
+    }
+
+    path {
+      transition: fill $default-trans-dur;
+    }
+  }
+
+  .is-liked path {
+    fill: $red-color;
+  }
+}
+
+@mixin spec($fz: 12px, $lh: 15.34px, $ff: Mont-SemiBold) {
+  .spec {
+    display: flex;
+    justify-content: space-between;
+
+    &-title,
+    &-value {
+      font-family: $ff;
+      font-size: $fz;
+      line-height: $lh;
+    }
+
+    &-title {
+      color: $secondary-color;
+    }
+
+    &-value {
+      color: $primary-color;
+      text-align: end;
+    }
+  }
+}
+
+@mixin fz14px-lh21px {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: $secondary-color;
+}
+
+@mixin fz22px-lh30-8px {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 30.8px;
+  color: $primary-color;
+}
+
+@mixin pd-title {
+  margin: 0;
+  font-size: 20px;
+  line-height: 25.56px;
+  color: $primary-color;
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: inherit;
+
+  @include on-tablet {
+    @include fz22px-lh30-8px;
+  }
+}
+
+@mixin fz32px-lh41px {
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  color: $primary-color;
+  font-family: Mont-Bold, sans-serif;
+}
+
+@mixin products-title {
+  color: $primary-color;
+  margin: 0;
+  margin-top: 24px;
+  width: 100%;
+  font-family: Mont-Bold, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    margin-top: 40px;
+  }
+}
+
+@mixin products-subtitle {
+  margin: 0;
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 21px;
+  width: 100%;
+  font-family: Mont-Regular, sans-serif;
+  font-weight: inherit;
+  color: $secondary-color;
+}
+
+// #endregion
+// #region grid
+
+@mixin grid-styles {
+  display: grid;
+  column-gap: $g-gap;
+  justify-content: center;
+}
+
+@mixin tablet-grid {
+  grid-template-columns: repeat(12, $tg-column);
+
+  @include grid-styles;
+}
+
+@mixin small-desktop-grid {
+  grid-template-columns: repeat(12, $sdg-column);
+}
+
+@mixin desktop-grid {
+  grid-template-columns: repeat(24, $dg-column);
+}
+
+// #endregion

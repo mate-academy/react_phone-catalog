@@ -1,0 +1,47 @@
+@import '/src/App';
+
+.imgs-wrapper {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+
+  @include on-tablet {
+    margin-top: 0;
+    flex-direction: column;
+    grid-column: span 1;
+  }
+
+  @include on-desktop {
+    grid-column: span 2;
+  }
+
+  .img {
+    box-sizing: border-box;
+    border: $light-border-value;
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+    transition: border-color $default-trans-dur;
+
+    @include on-tablet {
+      width: 100%;
+      height: $tg-column;
+    }
+
+    @include on-small-desktop {
+      height: $sdg-column;
+    }
+
+    @include on-desktop {
+      height: $dg-column * 2 + $g-gap;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+    }
+  }
+
+  .is-active {
+    border-color: $primary-color;
+  }
+}

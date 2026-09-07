@@ -1,0 +1,44 @@
+@import '/src/App';
+
+.total {
+  margin-top: 32px;
+  height: fit-content;
+  box-sizing: border-box;
+  padding: 24px;
+  border: $light-border-value;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-small-desktop {
+    width: 592px;
+    margin-inline: auto;
+  }
+
+  @include on-desktop {
+    margin: 0;
+    width: auto;
+    grid-column: span 8;
+  }
+
+  &-price,
+  &-items {
+    text-align: center;
+  }
+
+  &-price {
+    @include fz32px-lh41px;
+  }
+
+  &-items {
+    @include fz14px-lh21px;
+  }
+
+  .button {
+    padding: 0;
+
+    @include dark-button;
+
+    height: 48px;
+  }
+}

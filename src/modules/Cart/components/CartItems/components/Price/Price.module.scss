@@ -1,0 +1,19 @@
+@import '/src/App';
+
+.price {
+  @include fz22px-lh30-8px;
+
+  @include on-tablet {
+    grid-column: span 2;
+    justify-self: center;
+    width: 70px;
+  }
+
+  @include on-small-desktop {
+    width: auto;
+  }
+
+  @include on-desktop {
+    width: 95px;
+  }
+}

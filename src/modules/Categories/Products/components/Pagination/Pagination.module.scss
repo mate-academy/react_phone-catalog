@@ -1,0 +1,26 @@
+@import '../../../../../App';
+
+.pagination,
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination {
+  gap: 16px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  .wrapper {
+    gap: 8px;
+
+    .dots {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

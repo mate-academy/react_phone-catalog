@@ -1,0 +1,33 @@
+@import '../../../../../App';
+
+.wrapper {
+  position: relative;
+  margin-top: 32px;
+  font-family: Mont-SemiBold, sans-serif;
+
+  .content-wrapper {
+    width: fit-content;
+
+    @include on-tablet {
+      width: 100%;
+    }
+  }
+
+  .title {
+    margin: 0;
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $secondary-color;
+    font-weight: normal;
+  }
+
+  .link {
+    font-size: 14px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    padding-inline: 12px;
+    box-sizing: border-box;
+  }
+}

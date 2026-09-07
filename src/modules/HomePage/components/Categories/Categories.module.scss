@@ -1,0 +1,61 @@
+@import '../../../../App';
+
+.categories {
+  margin-top: calc(
+    var(--product-height) + var(--categories-mt) + var(--models-mt)
+  );
+  width: var(--container-width);
+  margin-inline: auto;
+
+  @include on-tablet {
+    width: 100%;
+
+    @include tablet-grid;
+  }
+
+  @include on-small-desktop {
+    @include small-desktop-grid;
+  }
+
+  @include on-desktop {
+    @include desktop-grid;
+  }
+
+  .title {
+    margin: 0;
+
+    @include fz22px-lh30-8px;
+
+    @include on-tablet {
+      height: 41px;
+      grid-column: span 6;
+
+      @include fz32px-lh41px;
+    }
+
+    @include on-desktop {
+      grid-column: span 7;
+    }
+  }
+
+  .container {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+
+      @include tablet-grid;
+    }
+
+    @include on-small-desktop {
+      @include small-desktop-grid;
+    }
+
+    @include on-desktop {
+      @include desktop-grid;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@import '/src/App';
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-desktop {
+    grid-column: span 16;
+  }
+
+  .item {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 16px;
+    border: $light-border-value;
+
+    @include on-tablet {
+      flex-wrap: nowrap;
+      padding: 24px;
+
+      @include tablet-grid;
+    }
+
+    @include on-small-desktop {
+      @include small-desktop-grid;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(16, $dg-column);
+    }
+  }
+}

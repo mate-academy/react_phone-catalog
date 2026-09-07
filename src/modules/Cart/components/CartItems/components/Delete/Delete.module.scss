@@ -1,0 +1,24 @@
+@import '/src/App';
+
+.wrapper {
+  height: 30px;
+  display: flex;
+  align-items: center;
+
+  @include on-tablet {
+    grid-column: span 1;
+    justify-content: end;
+    width: 40px;
+  }
+
+  path {
+    fill: $icons-color;
+    transition: fill $default-trans-dur;
+  }
+
+  &:hover {
+    path {
+      fill: $primary-color;
+    }
+  }
+}
