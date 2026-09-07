@@ -1,0 +1,25 @@
+@import '../../styles/main';
+
+.favorites {
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    color: $secondary-color;
+    font-size: 14px;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(272px, max-content));
+
+    justify-content: flex-start;
+    gap: 40px 16px;
+  }
+}

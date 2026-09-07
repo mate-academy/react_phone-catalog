@@ -1,0 +1,82 @@
+@import '../../../styles/main';
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid $elements-color;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__remove {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__bottom {
+    display: grid;
+    grid-template-columns: auto 80px;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__amountWrapper {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__minus,
+  &__plus {
+    padding: 8px;
+    border-radius: 50%;
+    border: 1px solid $elements-color;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+      border: 1px solid $primary-color;
+    }
+  }
+
+  &__price {
+    justify-self: end;
+
+    font-weight: 700;
+    font-size: 22px;
+  }
+}

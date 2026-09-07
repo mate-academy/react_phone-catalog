@@ -1,0 +1,55 @@
+@import '../../../../styles/main';
+
+.brandNewModels {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__swiper {
+    border-radius: 8px;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $bg-color;
+    border: 1px solid $icons-color;
+    background-image: url('../../../../assets/icons/arrow-right.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:disabled {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    &:first-child {
+      transform: rotate(180deg);
+    }
+  }
+}

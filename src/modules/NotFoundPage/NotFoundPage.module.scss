@@ -1,0 +1,35 @@
+.notFound {
+  text-align: center;
+  padding: 80px 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.title {
+  font-size: 96px;
+  color: #d9534f;
+  margin: 0;
+}
+
+.message {
+  font-size: 20px;
+  color: #333;
+}
+
+.button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}
