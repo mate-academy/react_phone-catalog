@@ -1,0 +1,10 @@
+@import '../../utils/';
+
+.logo {
+  margin-left: 24px;
+
+  @media (max-width: $tablet) {
+    margin-left: 16px;
+
+  }
+}

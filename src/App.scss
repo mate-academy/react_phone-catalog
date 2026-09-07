@@ -1,1 +1,21 @@
-// not empty
+@import './utils/index';
+@import './layout/container';
+
+.App {
+  min-height: calc(100vh - 64px);
+  padding-top: 64px; // todo should be variable related to header
+  // height: inherit;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-background;
+  scroll-behavior: smooth;
+
+  @media (max-width: $mobile) {
+    padding-top: 49px;
+  }
+}
+
+.main-content {
+  flex-grow: 1;
+}
+

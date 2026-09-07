@@ -1,0 +1,40 @@
+@import '../../utils/';
+
+.catalog {
+  &__container {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    margin: 40px 0 8px;
+
+    @include title-main;
+
+    @media (max-width: $mobile) {
+      margin-left: 0;
+    }
+  }
+
+  &__count {
+    @include body-text;
+  }
+
+  &__products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 16px;
+    margin-top: 24px;
+
+    @media (max-width: 1199px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 1023px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 639px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@import '../../utils/';
+
+.pagination{
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+  margin-bottom: 0;
+  padding: 0;
+
+  &__item{
+    list-style: none;
+  }
+  &__link{
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-icons;
+    background-color: $color-white;
+
+    &:hover:not(.pagination__link--disabled){
+      border-color: $color-primary;
+    }
+
+    &--active{
+      background-color: $color-primary;
+      color: $color-white;
+    }
+
+    &--disabled{
+      border-color: $color-elements;
+      cursor: not-allowed;
+    }
+  }
+}

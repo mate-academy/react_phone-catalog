@@ -1,0 +1,30 @@
+@import '../../utils/';
+
+.favourites {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  border-left: 1px solid $color-elements;
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-bottom: 3px solid transparent;
+
+    transition: all 0.3s;
+
+    &--active,
+    &hover {
+      border-bottom: 3px solid $color-primary;
+    }
+  }
+}
+
+.favourites--mobile {
+  flex-basis: 50%;
+}

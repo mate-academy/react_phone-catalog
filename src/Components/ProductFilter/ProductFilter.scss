@@ -1,0 +1,51 @@
+@import '../../utils/';
+
+.filters {
+  margin-top: 40px;
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.filter {
+  height: 59px;
+
+  &__title {
+    @include small-text;
+
+    color: $color-secondary;
+    margin-bottom: 4px;
+  }
+
+  &__select {
+    padding: 10px 12px;
+    background-color: $color-white;
+    border: 1px solid $color-icons;
+
+
+    &--first {
+      width: 176px;
+      height: 40px;
+
+      @media (max-width: $tablet) {
+        width: 187px;
+      }
+    }
+    &--second {
+      width: 128px;
+      height: 40px;
+
+      @media (max-width: $tablet) {
+        width: 136px;
+      }
+    }
+
+    @media (max-width: $tablet) {
+      width: 136px;
+    }
+
+    &:target{
+      background: url(./img/icons/SliderDown.png) no-repeat right;
+    }
+  }
+}
