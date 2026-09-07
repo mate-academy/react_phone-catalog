@@ -1,0 +1,38 @@
+@import '../../../../styles/styles';
+
+.quantity-counter {
+  display: flex;
+  align-items: center;
+
+  &__button {
+    height: 32px;
+    width: 32px;
+    border: 1px solid $surface-2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: $surface-1;
+
+    @include on-hover(
+      (
+        background-color: $surface-2,
+      )
+    );
+
+    img {
+      display: block;
+    }
+  }
+
+  &__display {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: auto;
+    background: transparent;
+    border: none;
+  }
+}
