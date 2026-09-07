@@ -1,0 +1,9 @@
+@import '/src/style/main';
+
+.BurgerMenu {
+  display: flex;
+  
+  &_darkTheme path {
+    fill: $c-white-dark;
+  }
+}

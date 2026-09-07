@@ -1,0 +1,19 @@
+@import '/src/style/main';
+
+.Close {
+  display: flex;
+
+  &_darkTheme path {
+    fill: $c-white-dark;
+  }
+
+  &_secondary path {
+    fill: $c-secondary;
+  }
+
+  &_secondary {
+    &_darkTheme path {
+      fill: $c-secondary-dark;
+    }
+  }
+}

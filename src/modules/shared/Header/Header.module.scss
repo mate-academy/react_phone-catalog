@@ -1,0 +1,91 @@
+@import '/src/style/main';
+
+.Header {
+  height: 48px;
+  width: 100%;
+  overflow: hidden;
+
+  background-color: inherit;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &_overflowMenu {
+    min-height: 100%;
+  }
+
+  &__contentTop {
+    height: 100%;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding-left: 16px;
+    border-bottom: 1px solid #e2e6e9;
+    box-sizing: border-box;
+  }
+
+  &_darkTheme &__contentTop{
+    border-bottom-color: $c-surface2-dark;
+  }
+
+  &__logo {
+    flex: 1 1 auto;
+    transition: all $transition;
+
+    @include on-tablet {
+      flex: 0 0 auto;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    & > img {
+      min-width: 30px;
+      width: 64px;
+  
+      @include on-tablet {
+        width: 80px;
+      }
+    }
+  }
+
+  &__menu {
+    display: none;
+
+    @include on-tablet {
+      flex: 1 1 auto;
+
+      display: flex;
+      height: 100%;
+      column-gap: 25px;
+      margin-inline: 20px 10px;
+    }
+
+    @include on-desktop {
+      column-gap: 48px;
+      margin-inline: 48px;
+    }
+  }
+
+  &__buttons {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      height: 100%;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+@import '/src/style/main';
+
+.CategoryCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  cursor: pointer;
+
+  &__imgBox {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    overflow: hidden;
+    transition: all $transition;
+
+    & > img {
+      position: absolute;
+      bottom: -15%;
+      right: -25%;
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      transition: all $transition;
+    }
+  }
+
+  &:hover > &__imgBox {
+    border-radius: 45px 0;
+
+    & > img {
+      scale: 1.2;
+    }
+  }
+
+  &__title {
+    margin-top: 24px;
+
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25.56px;
+
+    @include on-desktop {
+      font-weight: 600;
+    }
+  }
+
+  &__count {
+    margin-top: 4px;
+
+    @include body-text;
+
+    color: $c-secondary;
+  }
+}

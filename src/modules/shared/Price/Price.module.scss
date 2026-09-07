@@ -1,0 +1,60 @@
+@import '/src/style/main';
+
+.Price {
+  display: flex;
+  align-items: center;
+
+  color: inherit;
+
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+
+  &_big {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &::before {
+    content: '$';
+  }
+
+  &__fullPrice {
+    position: relative;
+    margin-left: 8px;
+
+    z-index: 1;
+    color: $c-secondary;
+
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 28.12px;
+
+    &_darkTheme {
+      color: $c-secondary-dark;
+
+      &::after {
+        background-color: $c-secondary-dark;
+      }
+    }
+
+    &::before {
+      content: '$';
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      text-align: center;
+      height: 10%;
+      width: 100%;
+      bottom: 46%;
+
+      filter: invert(25%);
+      mix-blend-mode: color-dodge;
+      background-color: $c-secondary;
+    }
+  }
+}

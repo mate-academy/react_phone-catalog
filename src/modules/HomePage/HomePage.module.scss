@@ -1,0 +1,46 @@
+@import '/src/style/main';
+
+.HomePage {
+  margin-top: 24px;
+  margin-bottom: 64px;
+  
+  @include on-tablet {
+    margin-top: 32px;
+  }
+
+  @include on-desktop {
+    margin-top: 56px;
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    @include inline-padding-content;
+    @include h1;
+    
+    color: inherit;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 32px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    gap: 56px;
+
+    @include on-tablet {
+      gap: 64px;
+    }
+
+    @include on-desktop {
+      gap: 80px;
+    }
+  }
+}

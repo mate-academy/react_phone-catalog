@@ -1,0 +1,45 @@
+@import '/src/style/main';
+
+.Menu {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  padding-top: 48px;
+
+  opacity: 0;
+
+  transform: translate(-100%);
+  transition: all 1s;
+
+  &_active {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    transform: translate(0);
+    opacity: 1;
+    transition: all 1s;
+    background-color: inherit;
+  }
+
+  &__list {
+    margin-block: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 16px;
+
+    & > .menuLink {
+      height: 27px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    box-shadow: 0 0 0 1px #e2e6e9;
+  }
+
+  &_darkTheme &__buttons{
+    box-shadow: 0 0 0 1px $c-surface2-dark;
+  }
+}
