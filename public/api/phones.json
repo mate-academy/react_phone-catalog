@@ -5793,7 +5793,6 @@
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "1TB",
     "priceRegular": 1740,
-    "priceDiscount": 1520,
     "colorsAvailable": ["spaceblack", "gold"],
     "color": "gold",
     "images": [

@@ -1,0 +1,10 @@
+@import '../../styles/variables.scss';
+
+.container {
+  padding: $button-navigate 0;
+  .models {
+    @include body-text;
+    color: $secondary-color;
+    margin: $gap-card 0 $button-navigate;
+  }
+}

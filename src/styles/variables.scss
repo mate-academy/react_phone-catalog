@@ -1,0 +1,136 @@
+@font-face {
+  font-family: 'Mont SemiBold';
+  src: url('../../public/fonts/Mont-SemiBold.otf') format('woff2');
+}
+@font-face {
+  font-family: 'Mont Bold';
+  src: url('../../public/fonts/Mont-Bold.otf') format('woff2');
+}
+@font-face {
+  font-family: 'Mont Regular';
+  src: url('../../public/fonts/Mont-Regular.otf') format('woff2');
+}
+
+//Colors
+$primary-color: #313237;
+$secondary-color: #89939a;
+$icons-color: #b4bdc3;
+$elements-color: #e2e6e9;
+$hover-bg: #fafbfc;
+$white-color: #ffffff;
+$green-color: #27ae60;
+$red-color: #eb5757;
+$shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+
+//Sizes
+$navigate-icon: 16px;
+$button-navigate: 32px;
+$gap-card: 10px;
+
+//Product card
+$card-width: 272px;
+$card-height: 506px;
+$button-add-to-cart-height: 40px;
+$button-add-to-cart-width: 160px;
+
+//Typography general
+@mixin uppercase-text {
+  font-family: 'Mont Bold', sans-serif;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $primary-color;
+}
+
+@mixin buttons-text {
+  font-family: 'Mont SemiBold', sans-serif;
+  font-size: 12px;
+  line-height: 21px;
+  letter-spacing: 0.04em;
+  color: $primary-color;
+}
+
+@mixin body-text {
+  font-family: 'Mont Regular', sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $primary-color;
+}
+
+@mixin small-text {
+  font-family: 'Mont SemiBold', sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+  color: $primary-color;
+}
+
+:root {
+  --header-height: 64px;
+  --header-icon-width: calc(var(--header-height) * 2);
+  h1 {
+    font-family: 'Mont SemiBold', sans-serif;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    color: $primary-color;
+  }
+  h2 {
+    font-family: 'Mont SemiBold', sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: 0;
+    color: $primary-color;
+  }
+  h3 {
+    font-family: 'Mont SemiBold', sans-serif;
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: 0;
+    color: $primary-color;
+  }
+  h4 {
+    font-family: 'Mont SemiBold', sans-serif;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0;
+    color: $primary-color;
+  }
+}
+
+@media (max-width: 1199px) {
+  :root {
+    --header-height: 48px;
+  }
+}
+
+@media (max-width: 639px) {
+  :root {
+    h1 {
+      font-family: 'Mont Bold', sans-serif;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+    h2 {
+      font-family: 'Mont SemiBold', sans-serif;
+      font-size: 22px;
+      line-height: 31px;
+      letter-spacing: 0;
+    }
+    h3 {
+      font-family: 'Mont SemiBold', sans-serif;
+      font-size: 20px;
+      line-height: 26px;
+      letter-spacing: 0;
+    }
+    h4 {
+      font-family: 'Mont SemiBold', sans-serif;
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: 0;
+    }
+  }
+}
