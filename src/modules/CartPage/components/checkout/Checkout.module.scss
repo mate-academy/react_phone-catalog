@@ -1,0 +1,53 @@
+.checkout{
+  padding: 24px;
+cursor: pointer;
+
+&__total{
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+&__price{
+  margin: 0;
+  font-family: Mont, sans-serif;;
+font-weight: 800;
+font-size: 32px;
+line-height: 41px;
+letter-spacing: -1%;
+text-align: center;
+color:#0F0F11;
+}
+&__totalCount{
+  margin: 0;
+  font-family: Mont, sans-serif;;
+font-weight: 600;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0%;
+text-align: center;
+color:#89939A
+}
+&__border{
+  border-top: 1px solid #E2E6E9;
+  padding-top: 16px;
+}
+&__button{
+  border-radius: 48px;
+  line-height: 48px;
+  background-color: #4219D0;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: Mont, sans-serif;;
+font-weight: 700;
+font-size: 14px;
+letter-spacing: 0%;
+color:#FFF;
+
+}
+
+
+}

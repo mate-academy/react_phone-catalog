@@ -1,0 +1,75 @@
+@use '/src/components/utils/mixin.module.scss' as mixin;
+
+.slider {
+
+
+ &__title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+font-family: Mont, sans-serif;;
+font-weight: 800;
+font-size: 22px;
+line-height: 140%;
+letter-spacing: 0%;
+
+@include mixin.on-tablet{
+font-size: 32px;
+}}
+&__text{
+  font-family: Mont, sans-serif;;
+font-weight: 800;
+font-size: 32px;
+line-height: 41px;
+letter-spacing: -1%;
+color:#0F0F11;
+}
+  &__navigate {
+display: flex;
+  align-items: center;
+  height: 32px;
+
+
+  }
+
+   &__button {
+      height: 16px;
+      width: 16px;
+      padding: 16px;
+      color: #0F0F11;
+border: 1px solid #B4BDC3;
+border-radius: 100%;
+cursor: pointer;
+
+&--left{
+      margin-right: 16px;
+    }
+    &--disabled{
+   opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+    }
+
+    @include mixin.on-desktop{
+    &:hover{
+    border-color: #0F0F11;
+  }
+  }}
+
+
+
+&__cardList {
+
+  display: flex;
+  gap: 16px;
+  /* stylelint-disable-next-line declaration-block-no-shorthand-property-overrides */
+  overflow-x: auto;
+  overflow-y:hidden;
+@include mixin.on-tablet{
+  overflow: hidden;
+}
+@include mixin.on-desktop{
+  overflow-x: hidden;
+}
+}
+}

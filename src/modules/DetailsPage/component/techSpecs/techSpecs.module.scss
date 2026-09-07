@@ -1,0 +1,42 @@
+
+.tech{
+  margin-bottom: 56px;
+
+  &__box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__title{
+    margin: 0;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom:1px solid #E2E6E9;
+    font-family: Mont,sans-serif;;
+font-weight: 700;
+font-size: 20px;
+line-height: 100%;
+letter-spacing: 0%;
+color:#0F0F11
+  }
+
+&__name{
+  font-family: Mont,sans-serif;;
+font-weight: 500;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0%;
+color:#89939A;
+}
+
+&__description{
+  font-family: Mont,sans-serif;;
+font-weight: 600;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0%;
+text-align: right;
+color:#0F0F11;
+}}

@@ -1,0 +1,66 @@
+@use '../utils/mixin.module.scss' as mixin;
+
+.nav{
+display: none;
+height: 100%;
+
+&--active{
+  display: flex;
+height: 27px;
+align-items: center;
+justify-content: center;
+}
+
+
+@include mixin.on-tablet {
+  display: flex;
+
+
+}
+
+ &__item{
+   height: 100%;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+
+  &--aside{
+    display: flex;
+
+  }
+
+ @include mixin.on-desktop{
+ &:hover{
+transform: scale(1.1);
+  }
+}
+}
+
+   &__list{
+    height: 100%;
+     margin: 0;
+     list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   gap :32px;
+
+@include mixin.on-desktop{
+  gap:64px;
+}
+
+&--aside{
+  display: flex;
+  flex-direction: column;
+padding: 0;
+margin: 0;
+}
+
+  }
+
+
+
+}
+
+
+

@@ -1,0 +1,5 @@
+@use '/src/components/utils/mixin.module.scss';
+
+.favourite__list{
+@include mixin.page-grid;
+}

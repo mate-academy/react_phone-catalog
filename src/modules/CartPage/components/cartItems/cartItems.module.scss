@@ -1,0 +1,120 @@
+@use '/src/components/utils/mixin.module.scss' as mixin;
+
+.cartItem{
+  box-sizing: border-box;
+  border:1px solid #E2E6E9;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+
+@include mixin.on-tablet{
+  display: flex;
+align-items: center;
+justify-content: space-around;
+
+}
+
+  &__info{
+    height: 80px;
+    display: flex;
+align-items: center;
+gap:16px;
+margin-bottom: 16px;
+
+  }
+
+  &__link{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+  }
+
+  &__image{
+height: 100%;
+width: 100%;
+min-width: 80px;
+    object-fit: contain;
+  }
+
+&__title{
+  font-family: Mont, sans-serif;
+font-weight: 600;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0%;
+color: #0F0F11;
+cursor: pointer;
+
+@include mixin.on-tablet{
+  min-width:176px;
+}
+
+@include mixin.on-desktop{
+  min-width :260px;
+}
+
+}
+
+&__quantity{
+  display: flex;
+  align-items: center;
+  height: 32px;
+justify-content: space-between;
+
+@include mixin.on-tablet{
+  display: contents;
+}
+
+
+}
+
+&__box{
+  display: flex;
+  align-items: center;
+
+}
+
+&__icon{
+  margin-right: 13px;
+  padding: 8px;
+  height: 16px;
+  width: 16px;
+  border: 1px solid #B4BDC3;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &--disabled{
+     color: #B4BDC3;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  &--close{
+    border: none;
+    margin: 0;
+  }
+}
+
+&__count{
+  color: #4219D0;
+  margin-right: 13px;
+}
+
+&__price{
+  margin: 0;
+  font-family: Mont, sans-serif;
+font-weight: 800;
+font-size: 22px;
+line-height: 140%;
+letter-spacing: 0%;
+color:#0F0F11;
+
+@include mixin.on-tablet{
+  min-width: 70px;
+  align-items: right;
+}
+}
+}

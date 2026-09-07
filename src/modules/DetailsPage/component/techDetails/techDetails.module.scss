@@ -1,0 +1,41 @@
+@use '/src/components/utils/mixin.module.scss' as mixin;
+
+.tech{
+  margin-bottom: 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include mixin.on-tablet{
+    max-width: 320px;
+  }
+
+@include mixin.on-desktop{
+  max-width: 320px;
+}
+&__box{
+  margin-bottom: 8px;
+  display: flex;
+justify-content: space-between;
+
+}
+&__name{
+  color: #89939A;
+  font-family: Mont,sans-serif;
+font-weight: 600;
+font-size: 12px;
+line-height: 100%;
+letter-spacing: 0%;
+
+}
+&__description{
+  font-family: Mont,sans-serif;
+font-weight: 700;
+font-size: 12px;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: right;
+color: #0F0F11;
+
+}
+}
