@@ -1,0 +1,35 @@
+@import '../../styles/utils';
+
+.product {
+  position: relative;
+  grid-column: 1 / 5;
+
+  @include on-tablet {
+    grid-column: 1 / 13;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 25;
+  }
+
+  &__top {
+    grid-row: 1;
+
+    @include grid;
+
+    padding-inline: 16px;
+    align-items: center;
+
+    @include on-tablet {
+      padding-inline: 0;
+    }
+
+    &-title {
+      grid-column: 1 / 3;
+
+      @include on-tablet {
+        grid-column: 1 / 8;
+      }
+    }
+  }
+}

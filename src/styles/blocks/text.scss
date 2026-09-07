@@ -1,0 +1,71 @@
+.text {
+  margin: 0;
+  font-family: $font-family;
+  color: $color-primary;
+
+  &__body {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0;
+
+    &--small {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+    }
+
+    &--buttons {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+      letter-spacing: 0;
+    }
+
+    &--uppercase {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 11px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+
+    &--basic {
+      font-size: 22px;
+      line-height: 31px;
+      letter-spacing: 0;
+
+      @include on-tablet {
+        font-size: 32px;
+        line-height: 41px;
+      }
+    }
+
+    &--secondary {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 26px;
+      letter-spacing: 0;
+    }
+
+    &--utility {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 20px;
+      letter-spacing: 0;
+    }
+  }
+}

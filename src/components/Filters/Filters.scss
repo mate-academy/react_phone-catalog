@@ -1,0 +1,36 @@
+@import '/src/styles/utils';
+
+.filter {
+  @include grid;
+
+  margin-top: 8px;
+
+  @include on-tablet {
+    padding-inline: 0;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &__variation {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    &--small {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+    }
+
+    &-label {
+      color: $color-secondary;
+    }
+  }
+}

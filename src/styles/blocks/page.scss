@@ -1,0 +1,32 @@
+.page {
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    background-color: $color-background;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 0.3s ease-in, transform 0.3s ease-in;
+    pointer-events: none;
+
+    &--target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+      height: 100vh;
+      background-color: $color-background;
+    }
+  }
+
+  &:has(.page__menu--target) {
+    overflow: hidden;
+  }
+}
