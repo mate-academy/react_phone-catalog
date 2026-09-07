@@ -1,0 +1,33 @@
+.container {
+  position: relative;
+
+  &__selected {
+    box-shadow: inset 0 -3px 0 0 #313237;
+  }
+
+  &__button {
+    position: relative;
+  }
+
+  &__badge {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #EB5757;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #FFF;
+    line-height: 0;
+    z-index: 1;
+
+    span {
+      font-size: 9px;
+      color: #FFF;
+      font-weight: 700;
+    }
+  }
+}

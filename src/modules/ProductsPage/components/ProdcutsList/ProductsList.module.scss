@@ -1,0 +1,24 @@
+@use 'src/styles/mixins' as *;
+
+.container {
+  display: grid;
+  max-width: 1136px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 1rem;
+
+  &__empty {
+    img {
+      max-width: 450px;
+    }
+  }
+
+  @include tablet {
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+    justify-items: stretch;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,51 @@
+@use 'src/styles/mixins' as *;
+
+.container {
+  margin: 5rem auto 0;
+  max-width: 1136px;
+
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    &__title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    &__buttons {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+
+  &__listWrapper {
+    width: 100%;
+  }
+
+  &__list {
+    display: inline-flex;
+    gap: 16px;
+    transition: transform 1.5s ease;
+  }
+
+  &__item {
+    min-width: 0;
+  }
+
+  @include tablet {
+    &__list {
+      display: inline-flex;
+    }
+  }
+
+  @include mobile {
+    &__header {
+      &__title {
+        font-size: 22px;
+      }
+    }
+  }
+}

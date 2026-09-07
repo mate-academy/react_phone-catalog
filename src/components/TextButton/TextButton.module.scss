@@ -1,0 +1,37 @@
+.container {
+  background-color: #313237;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  flex: 1;
+  transition: all 0.2s ease;
+
+  button {
+    all: unset;
+  }
+
+  span {
+    color: #FFF;
+    font-size: 0.88rem;
+    font-weight: 700;
+  }
+
+  &__active {
+    background-color: #fff;
+    border: 1px solid #E2E6E9;
+
+    span {
+      color: #27AE60;
+    }
+  }
+
+  &:hover {
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+
+    span {
+      color: #313237;
+    }
+  }
+}

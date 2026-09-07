@@ -1,0 +1,1 @@
+export { ProductsProvider } from './ProductsContext';

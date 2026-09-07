@@ -1,0 +1,46 @@
+@use 'src/styles/mixins' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 24px auto 0;
+  max-width: 1136px;
+  padding: 0 24px;
+
+  &__title {
+    margin: 40px 0 8px;
+    font-size: 48px;
+    font-weight: 800;
+    color: #313237;
+  }
+
+  &__lenght {
+    color: #89939A;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 40px;
+  }
+
+  &__grid {
+    display: grid;
+    max-width: 1136px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 16px;
+  }
+
+  @include tablet {
+    &__grid {
+      width: 100%;
+      grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+      justify-items: stretch;
+    }
+  }
+
+  @include mobile {
+    padding: 0 16px;
+
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

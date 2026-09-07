@@ -1,0 +1,36 @@
+@use 'src/styles/mixins' as *;
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border: 1px solid #C4C4C4;
+  overflow: hidden;
+  aspect-ratio: 1;
+  padding-bottom: 7px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    transform: translateY(6%);
+  }
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+  }
+
+  &.selected {
+    border: 2px solid #313237;
+  }
+
+  @include tablet {
+    width: 35px;
+    height: 35px;
+  }
+}

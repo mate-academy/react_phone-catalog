@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "img": "img/banner-accessories.png"
+  },
+  {
+    "id": 2,
+    "img": "img/banner-phones.png"
+  },
+  {
+    "id": 3,
+    "img": "img/banner-tablets.png"
+  }
+]
