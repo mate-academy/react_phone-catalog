@@ -1,0 +1,25 @@
+@import '../../../styles/main';
+
+.button {
+  cursor: pointer;
+
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  margin-block: 24px 16px;
+
+  background-color: var(--color-bg);
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &-title {
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 13px;
+    color: var(--color-gray-primary);
+  }
+}
