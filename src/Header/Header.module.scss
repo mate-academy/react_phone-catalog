@@ -1,0 +1,254 @@
+@import '../../src/styles/utils/mixins';
+
+@font-face {
+  font-family: Mont;
+  src: url('../../public/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('../../public/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('../../public/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  background-color: #0f1121;
+  width: 100%;
+  height: 64px;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  @include on-tablet {
+    height: 48px;
+  }
+
+  @include on-phone {
+    height: 48px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 24px;
+    height: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #323542;
+
+    @include on-tablet {
+      padding-left: 16px;
+    }
+
+    @include on-phone {
+      padding-left: 16px;
+    }
+  }
+
+  &__leftBlock {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 16px;
+    }
+  }
+
+  &__rightBlock {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+    &__Navright {
+      display: flex;
+      align-items: stretch;
+      height: 100%;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+    @include on-phone {
+      display: none;
+    }
+
+    li {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      border-left: 1px solid #323542;
+
+      a {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 2px;
+          background-color: #f447af;
+          transform: scaleX(0);
+          transition: transform 0.3s ease;
+          transform-origin: left center;
+        }
+
+        &:hover::after,
+        &.active::after {
+          transform: scaleX(1);
+        }
+
+        &:last-child {
+          border-right: 1px solid #323542;
+        }
+
+        img {
+          width: 16px;
+          height: 16px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &__Navleft {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+
+    @include on-phone {
+      display: none;
+    }
+
+    li {
+      position: relative;
+      height: 100%;
+
+      a {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        color: #75767f;
+        transition: color 0.3s ease;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 2px;
+          background-color: #F1F2F9;
+          transform: scaleX(0);
+          transition: transform 0.3s ease;
+          transform-origin: left center;
+        }
+
+        &:hover,
+        &.active {
+          color: #fff;
+        }
+
+        &:hover::after,
+        &.active::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+
+  /* Logos / icons */
+  &__niceGadgetsLogo {
+    background: url('../../public/img/Logos/Logo.png') no-repeat center / contain;
+    width: 80px;
+    height: 28px;
+
+    @include on-tablet {
+      width: 64px;
+      height: 22px;
+    }
+  }
+
+  &__Favourites {
+    background: url('../../public/img/Logos/Favourites.png');
+    width: 16px;
+    height: 16px;
+  }
+
+  &__Shopping {
+    background: url('../../public/img/Logos/Shopping.png');
+    width: 16px;
+    height: 16px;
+  }
+
+  &__BurgerMenu {
+    background: url('../../public/img/Logos/Menu.png') no-repeat center / contain;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__Menu {
+    display: none;
+
+    @include on-phone {
+      display: block;
+      padding-right: 16px;
+    }
+  }
+}
+
+/* Utility */
+.text__uppercase {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: .04em;
+}
