@@ -1,0 +1,125 @@
+@use '../../../styles/utils/mixins' as *;
+@use '../../../styles/utils/variables' as *;
+
+.dropdown {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+    padding: 0 16px;
+    background-color: var(--background);
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    padding: 0 32px;
+    margin: auto;
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    position: relative;
+
+
+    &--sort {
+      @include on-tablet {
+        width: 187px;
+        flex: none;
+      }
+
+      @include on-desktop {
+        width: 176px;
+      }
+    }
+
+    &--perpage {
+      @include on-tablet {
+        width: 136px;
+        flex: none;
+      }
+
+      @include on-desktop {
+        width: 128px;
+      }
+    }
+  }
+
+  &__label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--elements);
+
+  }
+
+
+  &__trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 12px;
+    height: 40px;
+    border-radius: 8px;
+
+    border: 1px solid var(--border-hover);
+    cursor: pointer;
+
+    background-color: var(--main);
+     transition: transform $effect-duration ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+
+    &--text {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+  }
+
+  &__list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+
+    background: var(--background);
+    border-radius: 8px;
+    border: 1px solid var(--border-hover);
+
+    list-style: none;
+    padding: 8px 0;
+    margin: 0;
+
+    z-index: 50;
+
+    &--active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+
+    }
+  }
+
+
+  &__item {
+    padding: 0 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--elements);
+    cursor: pointer;
+
+    &--selected {
+      background-color: var(--main);
+      color: var(--primary);
+      font-weight: 700;
+    }
+  }
+}

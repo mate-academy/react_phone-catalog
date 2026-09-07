@@ -1,0 +1,72 @@
+@use '../../../styles/utils/mixins' as *;
+@use '../../../styles/utils/variables' as *;
+
+.modal {
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+  }
+
+  &__success {
+    background: var(--main);
+    width: 90%;
+    max-width: 360px;
+
+    border-radius: 16px;
+    padding: 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      max-width: 380px;
+    }
+    &--title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary);
+      text-align: center;
+    }
+    &--text {
+      font-size: 14px;
+      color: var(--elements);
+      text-align: center;
+    }
+  }
+  &__confirm {
+    height: 44px;
+    width: 100%;
+    max-width: 240px;
+
+    background-color: var(--accent);
+    color: var(--main);
+
+    border-radius: 44px;
+    border: none;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: transform $effect-duration ease;
+    &:hover {
+      transform: scale(1.05);
+      background-color: var(--accent);
+      box-shadow: 0 6px 18px var(--shadow);
+    }
+  }
+}

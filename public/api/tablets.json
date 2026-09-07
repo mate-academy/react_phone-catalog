@@ -478,8 +478,8 @@
     "capacity": "256GB",
     "priceRegular": 749,
     "priceDiscount": 699,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
-    "color": "rose gold",
+    "colorsAvailable": ["rosegold", "silver", "green", "skyblue"],
+    "color": "rosegold",
     "images": [
       "img/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
       "img/tablets/apple-ipad-air-4th-gen/rose-gold/01.webp",
@@ -526,8 +526,8 @@
     "capacity": "64GB",
     "priceRegular": 599,
     "priceDiscount": 549,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
-    "color": "rose gold",
+    "colorsAvailable": ["rosegold", "silver", "green", "skyblue"],
+    "color": "rosegold",
     "images": [
       "img/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
       "img/tablets/apple-ipad-air-4th-gen/rose-gold/01.webp",
@@ -574,7 +574,7 @@
     "capacity": "64GB",
     "priceRegular": 599,
     "priceDiscount": 549,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
+    "colorsAvailable": ["rosegold", "silver", "green", "skyblue"],
     "color": "silver",
     "images": [
       "img/tablets/apple-ipad-air-4th-gen/silver/00.webp",
@@ -622,7 +622,7 @@
     "capacity": "256GB",
     "priceRegular": 749,
     "priceDiscount": 699,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
+    "colorsAvailable": ["rosegold", "silver", "green", "skyblue"],
     "color": "silver",
     "images": [
       "img/tablets/apple-ipad-air-4th-gen/silver/00.webp",
@@ -670,7 +670,7 @@
     "capacity": "256GB",
     "priceRegular": 749,
     "priceDiscount": 699,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
+    "colorsAvailable": ["rosegold", "silver", "green", "skyblue"],
     "color": "green",
     "images": [
       "img/tablets/apple-ipad-air-4th-gen/green/00.webp",
@@ -718,7 +718,7 @@
     "capacity": "64GB",
     "priceRegular": 599,
     "priceDiscount": 549,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
+    "colorsAvailable": ["rosegold", "silver", "green", "skyblue"],
     "color": "green",
     "images": [
       "img/tablets/apple-ipad-air-4th-gen/green/00.webp",
@@ -766,8 +766,8 @@
     "capacity": "64GB",
     "priceRegular": 599,
     "priceDiscount": 549,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
-    "color": "sky blue",
+    "colorsAvailable": ["rosegold", "silver", "green", "skyblue"],
+    "color": "skyblue",
     "images": [
       "img/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
       "img/tablets/apple-ipad-air-4th-gen/sky-blue/01.webp",
@@ -814,8 +814,8 @@
     "capacity": "256GB",
     "priceRegular": 749,
     "priceDiscount": 699,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
-    "color": "sky blue",
+    "colorsAvailable": ["rosegold", "silver", "green", "skyblue"],
+    "color": "skyblue",
     "images": [
       "img/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
       "img/tablets/apple-ipad-air-4th-gen/sky-blue/01.webp",

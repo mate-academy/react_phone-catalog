@@ -1,0 +1,159 @@
+@use '../../../styles/utils/mixins' as *;
+@use '../../../styles/utils/variables' as *;
+
+.banner {
+  &__slider {
+    &--container {
+      display: flex;
+      align-items: center;
+      padding: 0;
+      margin-bottom: 8px;
+
+      @include on-tablet {
+        padding: 0 24px;
+      }
+
+      @include on-desktop {
+        padding: 0 32px;
+        justify-content: center;
+      }
+    }
+  }
+
+  &__swiper {
+    width: 100%;
+    height: 320px;
+
+    @include on-tablet {
+      height: 189px;
+      margin: 0 19px;
+    }
+
+    @include on-desktop {
+      max-width: 1040px;
+      height: 400px;
+      justify-content: center;
+      margin: 0 16px;
+    }
+
+    &--card {
+      width: 100%;
+      height: 100%;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: black;
+
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: transform $effect-duration ease;
+
+      &:hover {
+        transform: scale(1.03);
+        box-shadow: 0 6px 18px var(--shadow);
+      }
+    }
+  }
+  .swiper-slide-active .banner__swiper--card {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.button {
+  &__arrow {
+    &--arrowLeft {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+        width: 32px;
+        height: 189px;
+        align-items: center;
+        border: 1px solid var(--border);
+        border-radius: 48px;
+        background-color: var(--background);
+        cursor: pointer;
+        transition: transform $effect-duration ease;
+
+        &:hover {
+          transform: scale(1.03);
+          box-shadow: 0 6px 18px var(--shadow);
+          border: 1px solid var(--border-hover);
+        }
+      }
+
+      @include on-desktop {
+        height: 400px;
+      }
+    }
+
+    &--arrowRight {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+        width: 32px;
+        height: 189px;
+        align-items: center;
+        border: 1px solid var(--border);
+        border-radius: 48px;
+        background-color: var(--background);
+        cursor: pointer;
+        transition: transform $effect-duration ease;
+
+        &:hover {
+          transform: scale(1.03);
+          box-shadow: 0 6px 18px var(--shadow);
+          border: 1px solid var(--border-hover);
+        }
+      }
+
+      @include on-desktop {
+        height: 400px;
+      }
+    }
+  }
+}
+
+.pagination-container {
+  height: 24px;
+
+  .swiper-pagination {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    gap: 4px;
+    bottom: 0;
+    z-index: 1;
+
+    .custom-bullet {
+      width: 24px;
+      height: 24px;
+      position: relative;
+      cursor: pointer;
+      transition: transform $effect-duration ease;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 14px;
+        height: 4px;
+        background-color: var(--border-hover);
+        transform: translate(-50%, -50%);
+        transition: transform $effect-duration ease;
+      }
+
+      &:hover::before {
+        background-color: var(--elements);
+      }
+
+      &.custom-bullet-active::before {
+        background-color: var(--primary);
+      }
+    }
+  }
+}
