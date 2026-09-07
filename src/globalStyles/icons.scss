@@ -1,0 +1,97 @@
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+
+  &--minus {
+    background: url('./globalStyles/icons/Minus.svg') center
+    no-repeat;
+  }
+
+  &--plus {
+    background: url('./globalStyles/icons/Plus.svg') center
+    no-repeat;
+  }
+
+  &--fovourites {
+    background: url('./globalStyles/icons/fovourites-icon.svg') center no-repeat;
+
+    &--is-active {
+      background: url('./globalStyles/icons/fovourites-red-icon.svg') center
+        no-repeat;
+    }
+  }
+
+  &--cart {
+    background: url('./globalStyles/icons/cart-icon.svg') center no-repeat;
+  }
+
+  &--close {
+    background: url('./globalStyles/icons/close-icon.svg') center no-repeat;
+
+    &--dark {
+      background: url('./globalStyles/icons/close-icon-dark.svg') center
+        no-repeat;
+    }
+  }
+
+  &--menu {
+    background: url('./globalStyles/icons/menu-icon.svg') center no-repeat;
+  }
+
+  &--home {
+    background: url('./globalStyles/icons/home-icon.svg') center no-repeat;
+  }
+
+  &--array {
+    &--left {
+      &--light {
+        background: url('./globalStyles/icons/arrow-left-light-icon.svg') center
+          no-repeat;
+      }
+
+      &--purple {
+        background: url('./globalStyles/icons/arrow-left-purple-icon.svg')
+          center no-repeat;
+      }
+
+      &--dark {
+        background: url('./globalStyles/icons/arrow-left-dark-icon.svg') center
+          no-repeat;
+      }
+    }
+
+    &--right {
+      &--light {
+        background: url('./globalStyles/icons/arrow-right-light-icon.svg')
+          center no-repeat;
+      }
+
+      &--dark {
+        background: url('./globalStyles/icons/arrow-right-dark-icon.svg') center
+          no-repeat;
+      }
+    }
+
+    &--up {
+      background: url('./globalStyles/icons/arrow-up-dark-icon.svg') center
+        no-repeat;
+
+      &--grey {
+        background: url('./globalStyles/icons/arrow-up-grey-icon.svg') center
+          no-repeat;
+      }
+    }
+
+    &--down {
+      background: url('./globalStyles/icons/arrow-down-dark-icon.svg') center
+        no-repeat;
+
+      &--grey {
+        background: url('./globalStyles/icons/arrow-down-grey-icon.svg') center
+          no-repeat;
+      }
+    }
+  }
+}
