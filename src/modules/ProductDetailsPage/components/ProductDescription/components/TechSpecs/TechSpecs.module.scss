@@ -1,0 +1,32 @@
+@import '../../../../../../shared/styles/variable';
+@import '../../../../../../shared/styles/mixins';
+
+.tech {
+  @include on-tablet-large {
+    flex: 1 1 450px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  };
+
+  &__title {
+    font-weight: 700;
+    font-size: 20px;
+    color: $text-color-black;
+    position: relative;
+    line-height: 100%;
+    padding-bottom: 16px;
+
+    &::before {
+      @include pseudo-line;
+    }
+
+    @include on-tablet {
+      font-size: 22px;
+    }
+  }
+
+}

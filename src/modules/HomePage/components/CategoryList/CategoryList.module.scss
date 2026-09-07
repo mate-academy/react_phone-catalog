@@ -1,0 +1,15 @@
+@import '../../../../shared/styles/mixins';
+
+.category-selector {
+  @include component-margin-bottom;
+
+  &__items {
+    @include grid-layout;
+
+    justify-self: center;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+}

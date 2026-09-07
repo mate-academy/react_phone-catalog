@@ -1,0 +1,104 @@
+@import '../../shared/styles/variable';
+@import '../../shared/styles/mixins';
+
+.cart {
+  margin-top: 24px;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+
+     @include on-desktop {
+      flex-direction: row;
+      align-items: start;
+      gap: 16px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+
+    @include on-desktop {
+      flex: 1 1 auto;
+    }
+  }
+
+  &__title {
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: $text-color-black;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+}
+
+
+.checkout {
+  @include component-margin-bottom;
+
+  border: 1px solid $elements-color-gray;
+  padding: 24px;
+
+  @include on-desktop {
+    flex: 1 1 360px;
+    max-width: 368px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__total {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    text-align: center;
+    color: $text-color-black;
+  }
+
+  &__subtitle {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    position: relative;
+
+    &::before {
+      @include pseudo-line;
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+    color: #FFF;
+    background-color: $text-color-black;
+    padding-block: 13.5px;
+    width: 100%;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+    border: none;
+    transition: box-shadow $effect-duration;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+}

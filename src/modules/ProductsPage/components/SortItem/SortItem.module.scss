@@ -1,0 +1,51 @@
+@import '../../../../shared/styles/variable';
+
+.products-page {
+  &__sort {
+    flex: 1 1 auto;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__customselect {
+    padding: 12px;
+    border: 1px solid $elements-color-gray;
+    color: $text-color-black;
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__customul {
+    background-color: #FFF;
+    position: absolute;
+    left: 0;
+    top: 110%;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    border: 1px solid $elements-color-gray;
+    z-index: 10;
+    width: calc(100% + 1.6px);
+  }
+
+  &__customoption {
+    color: $text-color-gray;
+    transition: all $effect-duration;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    cursor: pointer;
+    padding: 6px 0 6px 12px;
+
+    &:hover {
+      color: $text-color-black;
+      background-color: #FAFBFC;
+    }
+  }
+
+
+}

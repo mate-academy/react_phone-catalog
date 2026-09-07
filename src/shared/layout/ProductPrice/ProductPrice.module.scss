@@ -1,0 +1,33 @@
+@import '../../../shared/styles/variable';
+@import '../../../shared/styles/mixins';
+
+.product {
+  &__prices {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    padding-bottom: 8px;
+
+    &.withPseudo::before {
+      @include pseudo-line;
+   }
+  }
+
+  &__fullprice {
+    color: $text-color-gray;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 100%;
+    text-decoration: line-through;
+  }
+
+  &__price {
+    color: $text-color-black;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
+
