@@ -1,0 +1,15 @@
+.accessoriesPage {
+  padding-block: 24px 80px;
+
+  @media (max-width: 1199px) {
+    padding-bottom: 64px;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+
+    @media (max-width: 639px) {
+      margin-bottom: 24px;
+    }
+  }
+}

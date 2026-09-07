@@ -1,0 +1,44 @@
+@use '../../../styles/mixins' as *;
+
+.sliderSection {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 24px 16px;
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @media (max-width: 639px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__title {
+    @include h2-title;
+
+    grid-column: 1/24;
+
+    @media (max-width: 1199px) {
+      grid-column: 1/12;
+    }
+
+    @media (max-width: 639px) {
+      @include h2-title-mobile;
+
+      grid-column: 1/4;
+    }
+  }
+
+  &__controls {
+    margin-left: auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 32px);
+    column-gap: 16px;
+  }
+
+  &__slider {
+    grid-column: 1/-1;
+  }
+}

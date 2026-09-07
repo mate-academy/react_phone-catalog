@@ -1,0 +1,55 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.breadcrumbs {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+
+  &__item {
+    @include small-text;
+
+    list-style: none;
+
+    &--endpoint,
+    &--category {
+      display: flex;
+      position: relative;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background-image: url('/img/icons/arrow-right-disabled.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        left: -24px;
+
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    &--endpoint {
+      color: var(--secondary-color);
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: var(--primary-color);
+    text-transform: capitalize;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__icon {
+    display: block;
+
+    @include img-hover;
+  }
+}

@@ -1,0 +1,147 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.button {
+  @include btn-common;
+}
+
+.pagination {
+  background-color: $main-bg;
+  height: 32px;
+  width: 32px;
+
+  border: 1px solid var(--elements-color);
+  color: inherit;
+  font-weight: 500;
+
+  transition: border-color 0.3s ease;
+
+  &--active {
+    background-color: var(--primary-color);
+    border: none;
+    color: $main-bg;
+    cursor: auto;
+  }
+
+  &:hover {
+    border-color: var(--primary-color);
+  }
+}
+
+.arrow {
+  @include btn-hover;
+
+  background-image: url('/public/img/icons/arrow-left-active.svg');
+  height: 32px;
+  width: 32px;
+
+  border: 1px solid var(--icons-color);
+
+  &--disabled {
+    background-image: url('/public/img/icons/arrow-left-disabled.svg');
+    border-color: var(--elements-color);
+    cursor: not-allowed;
+  }
+
+  &--right {
+    transform: rotate(-180deg);
+  }
+}
+
+.cartSmall {
+  @include btn-cart;
+
+  width: 100%;
+  height: 40px;
+}
+
+.cartBig {
+  @include btn-cart;
+
+  width: 100%;
+  height: 48px;
+}
+
+.checkoutButton {
+  @include btn-cart;
+
+  width: 100%;
+  height: 48px;
+}
+
+%fav-small {
+  @include btn-hover;
+
+  width: 40px;
+  height: 40px;
+
+  border-color: var(--icons-color);
+
+  background-image: url('/public/img/icons/favs.svg');
+}
+
+.favSmall {
+  @extend %fav-small;
+
+  &--active {
+    background-image: url('/public/img/icons/favs-filled.svg');
+    border-color: var(--elements-color);
+  }
+}
+
+.favBig {
+  @extend %fav-small;
+
+  width: 48px;
+  height: 48px;
+
+  &--active {
+    background-image: url('/public/img/icons/favs-filled.svg');
+    border-color: var(--elements-color);
+  }
+}
+
+.delete {
+  background-image: url('/public/img/icons/close-disabled.svg');
+
+  height: 16px;
+  width: 16px;
+
+  border: none;
+
+  &:hover {
+    background-image: url('/public/img/icons/close-active.svg');
+  }
+}
+
+.increment,
+.decrement {
+  height: 32px;
+  width: 32px;
+
+  border-color: var(--icons-color);
+
+  @include btn-hover;
+}
+
+.decrement {
+  background-image: url('/public/img/icons/minus-active.svg');
+
+  &--disabled {
+    background-image: url('/public/img/icons/minus-disabled.svg');
+    border-color: var(--elements-color);
+    cursor: not-allowed;
+  }
+}
+
+.increment {
+  background-image: url('/public/img/icons/plus-active.svg');
+}
+
+.pictureSlider {
+  height: 100%;
+
+   @media (max-width: 639px) {
+      display: none;
+    }
+}
