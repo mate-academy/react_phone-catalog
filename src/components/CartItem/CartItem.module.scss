@@ -1,0 +1,116 @@
+@import '../../styles/variables';
+
+.card {
+  background-color: $color-surface1;
+  color: $color-white;
+  box-sizing: border-box;
+  justify-content: space-between;
+
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+
+  @media (max-width: $size-mobile) {
+    padding: 16px;
+    gap: 16px;
+    flex-direction: column;
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  justify-content: space-between;
+
+  @media (max-width: $size-mobile) {
+    gap: 16px;
+
+    &:first-child {
+      justify-content: flex-start;
+    }
+  }
+}
+
+.deleteButton {
+  background-color: $color-surface1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-icons;
+  }
+}
+
+.productPhoto {
+  padding: 7px;
+  height: 80px;
+  box-sizing: border-box;
+
+  &_img {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+  }
+}
+
+.productTitle {
+  font-family: $font-regular;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.productPrice {
+  font-family: $font-bold;
+  font-size: 22px;
+  line-height: 140%;
+  display: inline-block;
+  width: 80px;
+  text-align: end;
+}
+
+.countButtons {
+  display: flex;
+  color: $color-white;
+}
+
+.countButton {
+  background-color: $color-surface2;
+  height: 32px;
+  width: 32px;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: $color-icons;
+  }
+}
+
+.disabled {
+  background-color: $color-surface1;
+  border: 1px solid $color-elements;
+  cursor: default;
+
+  &:hover {
+    background-color: $color-surface1;
+  }
+}
+
+.productCounter {
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-regular;
+  font-size: 14px;
+  line-height: 21px;
+}
