@@ -1,0 +1,37 @@
+[
+  {
+    "id": "banner-phones",
+    "image": [
+      "img/banner-images/banner-phones.png",
+      "img/banner-images/banner-phones-mobile.png"
+    ],
+    "title": "Now available in our stores",
+    "description": "Be the first",
+    "buttonText": "Order now",
+    "buttonLink": "/phones/apple-iphone-14-pro-128gb-spaceblack"
+  },
+
+  {
+    "id": "banner-accessories",
+    "image": [
+      "img/banner-images/banner-accessories.png",
+      "img/banner-images/banner-accessories-mobile.png"
+    ],
+    "title": "Mix. Match. MagSafe.",
+    "description": "Snap on a case, wallet, or wireless charger.",
+    "buttonText": "Discover",
+    "buttonLink": "/accessories"
+  },
+
+  {
+    "id": "banner-tablets",
+    "image": [
+      "img/banner-images/banner-tablets.png",
+      "img/banner-images/banner-tablets-mobile.png"
+    ],
+    "title": "Touch, draw, and type on one magical device",
+    "description": "Explore the lineup",
+    "buttonText": "Learn more",
+    "buttonLink": "/tablets?perPage=8"
+  }
+]

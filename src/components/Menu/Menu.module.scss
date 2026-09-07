@@ -1,0 +1,136 @@
+@import '../src/utils/scss/variables';
+@import '../src/utils/scss/mixin';
+
+.menu {
+  box-sizing: border-box;
+  height: calc(100vh - $header-height);
+  background-color: $white-color;
+  overflow: auto;
+
+  position: fixed;
+  top: $header-height;
+  left: 0;
+  right: 0;
+
+  transition: all 0.3s;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+  z-index: 9;
+
+  &__linksContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    margin-top: 24px;
+  }
+
+  &__link {
+    position: relative;
+    padding: 8px 0;
+
+    font-family: Mont-Bold, sans-serif;
+
+    color: $secondary-color;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    @include hover(color, $primary-color);
+    @include underline-animation;
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
+  &__buttonsContainer {
+    width: 100%;
+    height: 64px;
+
+    display: flex;
+
+    border-top: 1px solid rgba(226, 230, 233, 1);
+  }
+
+  &__button {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    width: 50%;
+
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include hover(color, $primary-color);
+    @include underline-animation;
+
+    &:hover::after {
+      transform: scale(1);
+    }
+
+    @include on-desktop {
+      line-height: $header-height-desktop;
+    }
+  }
+
+  &__favourites {
+    background-image: url('#{$base-url}/img/icons/heart-like.png');
+  }
+
+  &__cart {
+    box-shadow: -1px 0 0 0 rgba(226, 230, 233, 1);
+
+    background-image: url('#{$base-url}/img/icons/cart-icon.png');
+  }
+
+  &:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+    z-index: 9;
+  }
+
+  &__linkActive {
+    color: $primary-color;
+
+    @include underline-animation;
+
+    &::after {
+      transform: scale(1);
+    }
+  }
+
+  &__count {
+    width: 14px;
+    height: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 15px;
+    margin-bottom: 15px;
+
+    font-size: 9px;
+    color: $white-color;
+
+    background-color: $red-color;
+
+    border-radius: 50%;
+    border: 1px solid $white-color;
+  }
+}

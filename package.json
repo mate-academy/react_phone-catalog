@@ -7,16 +7,20 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
+    "@headlessui/react": "^2.2.0",
     "bulma": "^1.0.1",
     "classnames": "^2.5.1",
+    "embla-carousel-autoplay": "^8.5.2",
+    "embla-carousel-react": "^8.5.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-responsive": "^10.0.0",
     "react-router-dom": "^6.25.1",
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
     "@cypress/react18": "^2.0.1",
-    "@mate-academy/scripts": "^1.8.5",
+    "@mate-academy/scripts": "^1.9.12",
     "@mate-academy/students-ts-config": "*",
     "@mate-academy/stylelint-config": "*",
     "@types/node": "^20.14.10",
