@@ -1,0 +1,25 @@
+@mixin responsive-grid {
+  display: grid;
+
+  // Mobile (<640px): 4 columns, 1fr, 16px gap, 16px horizontal margins
+  @media (max-width: 639px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 0 16px;
+  }
+
+  // Tablet (<1200px): 12 columns, 1fr, 16px gap, 24px horizontal margins
+  @media (min-width: 640px) and (max-width: 1199px) {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+    margin: 0 24px;
+  }
+
+  // Desktop (>=1200px): 24 columns, 32 px, wide, 16px gap, auto horizontal margins
+  @media (min-width: 1200px) {
+    max-width: 1136px;
+    grid-template-columns: repeat(24, 32px);
+    gap: 16px;
+    margin: 0 auto;
+  }
+}

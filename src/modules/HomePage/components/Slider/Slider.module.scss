@@ -1,0 +1,151 @@
+@import '../../../../shared/mixins';
+@import '../../../../shared/colors';
+
+.Slider {
+  height: 100%;
+
+  &__gallery {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__container {
+    width: 100vw;
+    height: 100vw;
+    overflow: hidden;
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    background-color: $primary;
+  }
+
+  &__leftButton {
+    display: none;
+  }
+
+  &__rightButton {
+    display: none;
+  }
+
+  &__image {
+    width: auto;
+    height: auto;
+    object-fit: cover;
+  }
+
+  &__imageLink {
+    all: unset;
+
+    width: 1040px;
+    height: 400px;
+    cursor: pointer;
+  }
+
+  &__buttons {
+    margin-top: 8px;
+    padding: 10px 5px;
+    display: flex;
+    gap: 14px;
+  }
+
+  &__galleryButton {
+    all: unset;
+    width: 14px;
+    height: 4px;
+
+    background-color: $secondary;
+    cursor: pointer;
+    opacity: 0.5;
+
+    &Active {
+      opacity: 1;
+      background-color: $primary;
+    }
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .Slider {
+    &__gallery {
+      @include responsive-grid;
+    }
+
+    &__image {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    &__leftButton {
+      width: auto;
+      height: 100%;
+      display: block;
+
+      grid-row: 1 / 2;
+      grid-column: 1 / 2;
+
+      cursor: pointer;
+      border: none;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: $hover-bg;
+      background-image: url('img/buttons/slider-button-left.svg');
+    }
+
+    &__container {
+      width: 100%;
+      height: auto;
+      grid-row: 1 / 2;
+      grid-column: 2 / 12;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__rightButton {
+      width: auto;
+      height: 100%;
+      display: block;
+
+      grid-row: 1 / 2;
+      grid-column: 12 / 13;
+
+      cursor: pointer;
+      border: none;
+      background-color: $hover-bg;
+      background-image: url('img/buttons/slider-button-right.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    &__buttons {
+      grid-row: 2 / 3;
+      grid-column: 6 / 8;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .Slider {
+    &__leftButton {
+      grid-column: 1 / 2;
+      background-image: url('img/buttons/slider-button-left-1200.svg');
+    }
+
+    &__container {
+      grid-column: 2 / 24;
+    }
+
+    &__rightButton {
+      grid-column: 24 / 25;
+      background-image: url('img/buttons/slider-button-right-1200.svg');
+    }
+
+    &__buttons {
+      grid-column: 12 / 14;
+    }
+  }
+}

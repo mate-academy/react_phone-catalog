@@ -1,0 +1,165 @@
+@import '../../shared/mixins';
+@import '../../shared/colors';
+
+.ProductsList {
+  background-color: $hover-bg;
+  width: 100%;
+  padding-bottom: 64px;
+
+  &__content {
+    @include responsive-grid;
+  }
+
+  &__top {
+    grid-column: 1 / 5;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+
+    @media screen and (min-width: 640px) {
+      grid-column: 1 / 13;
+    }
+
+    @media screen and (min-width: 1200px) {
+      grid-column: 1 / 25;
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__counter {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $secondary;
+  }
+
+  &__filters {
+    grid-column: 1 / 5;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    @media screen and (min-width: 640px) {
+      grid-column: 1 / 13;
+    }
+
+    @media screen and (min-width: 1200px) {
+      grid-column: 1 / 25;
+    }
+  }
+
+  &__sortBy {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__elementsAmount {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__filtersText {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $secondary;
+
+    margin-bottom: 4px;
+  }
+
+  &__select {
+    all: unset;
+    height: 40px;
+
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    border: 1.5px solid $icons;
+    border-radius: 8px;
+    background-image: url('img/buttons/arrow-down-disabled.svg');
+    background-repeat: no-repeat;
+    background-position: 90% center;
+    cursor: pointer;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+
+    &Sort {
+      width: 136px;
+
+      @media screen and (min-width: 640px) {
+        width: 187px;
+      }
+
+      @media screen and (min-width: 1200px) {
+        width: 176px;
+      }
+    }
+
+    &Amount {
+      width: 136px;
+
+      @media screen and (min-width: 1200px) {
+        width: 128px;
+      }
+    }
+  }
+
+  &__container {
+    grid-column: 1 / 5;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @media screen and (min-width: 640px) {
+      grid-column: 1 / 13;
+    }
+
+    @media screen and (min-width: 1200px) {
+      grid-column: 1 / 25;
+    }
+  }
+
+  &__cardsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @media screen and (min-width: 640px) {
+      flex-flow: row wrap;
+    }
+  }
+
+  &__ProductCard {
+    @media screen and (min-width: 640px) {
+      flex: 0 0 calc((100% - 40px) / 2);
+    }
+
+    @media screen and (min-width: 768px) {
+      flex: 0 0 calc((100% - 80px) / 3);
+    }
+
+    @media screen and (min-width: 1200px) {
+      flex: 0 0 calc((100% - 120px) / 4);
+    }
+  }
+}
+
+.ProductsList__select.ProductsList__alphabetically {
+  font-size: 12px;
+
+  @media screen and (min-width: 640px) {
+    font-size: 14px;
+  }
+}

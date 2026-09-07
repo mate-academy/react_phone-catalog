@@ -1,0 +1,84 @@
+@import '../../shared/mixins';
+@import '../../shared/colors';
+
+.Pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid $elements;
+    border-radius: 50%;
+    background-color: $hover-bg;
+    color: $primary;
+
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    user-select: none;
+
+    &Active {
+      background-color: $primary;
+      color: $white;
+      border: none;
+    }
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+  }
+
+  &__arrow {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid $icons;
+    background-color: $hover-bg;
+    color: $secondary;
+    cursor: pointer;
+    margin: 0 4px;
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+
+    &Left {
+      background-image: url('img/buttons/arrow-left.svg');
+
+      &Disabled,
+      &Disabled:hover {
+        background-image: url('img/buttons/arrow-left-disabled.svg');
+        border: 1px solid $icons;
+      }
+    }
+
+    &Right {
+      background-image: url('img/buttons/arrow-right.svg');
+
+      &Disabled,
+      &Disabled:hover {
+        background-image: url('img/buttons/arrow-right-disabled.svg');
+        border: 1px solid $icons;
+      }
+    }
+  }
+}
