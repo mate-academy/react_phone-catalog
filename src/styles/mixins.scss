@@ -1,0 +1,40 @@
+/* ===== MIXINS (SCSS) ===== */
+$bp-mobile-max: 639px;
+$bp-tablet-min: 640px;
+$bp-tablet-max: 1199px;
+$bp-desktop-min: 1200px;
+
+/* mobile: ≤ 639 */
+@mixin mobile {
+  @media (max-width: #{$bp-mobile-max}) {
+    @content;
+  }
+}
+
+/* tablet: 640–1199 */
+@mixin tablet {
+  @media (min-width: #{$bp-tablet-min}) and (max-width: #{$bp-tablet-max}) {
+    @content;
+  }
+}
+
+/* desktop: ≥ 1200 */
+@mixin desktop {
+  @media (min-width: #{$bp-desktop-min}) {
+    @content;
+  }
+}
+
+@mixin grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0 16px;
+
+  @include tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}

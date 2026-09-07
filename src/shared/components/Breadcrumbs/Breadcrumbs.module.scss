@@ -1,0 +1,96 @@
+@use '../../../styles/tokens.scss' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  appearance: none;
+  text-decoration: none;
+  transition: color 0.2s;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid rgba(0, 0, 0, 0.5);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+.backIcon {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  flex: 0 0 auto;
+}
+
+.backText {
+  color: $muted;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  cursor: default;
+}
+
+.link {
+  color: $text;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.current {
+  color: $muted;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+  cursor: default;
+}
+
+.segment {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+
+  &:last-child {
+    .current,
+    .link {
+      display: block;
+      max-width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.homeIcon {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  flex: 0 0 auto;
+}
+
+.arrowIcon {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  flex: 0 0 auto;
+}

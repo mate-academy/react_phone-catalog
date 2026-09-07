@@ -1,0 +1,16 @@
+@use '../../../styles/tokens.scss' as *;
+@use '../../../styles/mixins.scss' as *;
+
+.root {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 40px 16px;
+
+  @include tablet {
+    grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+}
