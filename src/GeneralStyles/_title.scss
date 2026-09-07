@@ -1,0 +1,9 @@
+@import './variables';
+
+.title {
+  color: $primary-color;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.32px;
+  margin-bottom: 24px;
+}
