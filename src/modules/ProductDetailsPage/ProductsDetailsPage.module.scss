@@ -1,0 +1,543 @@
+@import "../../utils/mixins";
+
+.product-details-page {
+  margin-top: 24px;
+  padding: 0 16px;
+  font-family: 'Mont';
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 30px;
+  }
+
+  &__navi {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__logo {
+      width: 16px;
+      height: 16px;
+  }
+
+  &__arrow {
+      width: 6px;
+      height: 10px;
+  }
+
+  &__page {
+    margin: 0;
+    padding-top: 4px;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    color: $main-grey;
+    letter-spacing: 0%;
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__content {
+    &__first {
+      @include on-tablet {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &__first {
+        @include on-tablet {
+          display: flex;
+          flex-direction: row-reverse;
+        }
+      }
+
+      &__second {
+        min-width: 0;
+
+
+        @include on-desktop {
+          width: 100%;
+        }
+      }
+    }
+
+    &__second {
+      @include on-desktop {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    &__title {
+      margin-top: 16px;
+      margin-bottom: 0;
+    }
+
+    &__photo-block {
+      display: flex;
+      justify-content: center;
+
+      width: 287px;
+      height: 287px;
+      margin: 32px auto 0;
+
+      @include on-tablet {
+        margin: 40px 16px 0;
+      }
+
+      @include on-desktop {
+        width: 464px;
+        height: 464px;
+        margin: 40px 64px 0 16px;
+      }
+
+      &__photo {
+        width: 274px;
+        height: 274px;
+        object-fit: contain;
+
+        @include on-desktop {
+          width: 442px;
+          height: 442px;
+        }
+      }
+    }
+
+    &__photo-slider {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+
+      @include on-tablet {
+        flex-direction: column;
+        margin-top: 40px;
+      }
+
+      &__button {
+        cursor: pointer;
+
+        width: 49px;
+        height: 51px;
+        padding: 0;
+        border: 1px solid $main-lightgrey;
+
+        background-color: $main-white;
+        outline: none;
+
+        &:hover {
+          box-shadow: 0px 2px 16px 0px #0000001A;
+        }
+
+        &--active {
+          border: 1px solid $main-black;
+          background-color: $main-white;
+        }
+
+        @include on-tablet {
+          width: 35px;
+          height: 35px;
+        }
+
+        @include on-desktop {
+          width: 80px;
+          height: 80px
+        }
+      }
+
+      &__photo {
+        width: 40px;
+        height: 42px;
+
+        @include on-tablet {
+          width: 28px;
+          height: 28px;
+        }
+
+        @include on-desktop {
+          width: 66px;
+          height: 66px;
+        }
+      }
+    }
+
+    &__colors {
+    margin-top: 40px;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 100%;
+    color: $main-grey;
+    letter-spacing: 0%;
+
+    @include on-tablet{
+      margin-top: 40px;
+    }
+
+    &::after {
+      content: "";
+
+      display: block;
+
+      max-width: 100%;
+      height: 1px;
+      margin-top: 24px;
+
+      background-color: $main-lightgrey;
+
+      @include on-tablet {
+        max-width: 320px;
+      }
+    }
+
+     &__title {
+      display: flex;
+      justify-content: space-between;
+
+      &__name {
+        margin:0 0 8px;
+      }
+     }
+
+     &__available {
+      display: flex;
+      gap: 8px;
+
+      &__block {
+        cursor: pointer;
+
+        width: 32px;
+        height: 32px;
+        border: 1px solid $main-lightgrey;
+        border-radius: 50%;
+
+        &--active {
+          border: 1px solid $main-black;
+        }
+      }
+    }
+    }
+
+    &__capacity {
+      &::after {
+        content: '';
+
+        display: block;
+
+        max-width: 100%;
+        height: 1px;
+        margin-top: 24px;
+
+        background-color: $main-lightgrey;
+
+        @include on-tablet {
+          max-width: 320px;
+        }
+      }
+      &__title {
+        margin: 24px 0 8px;
+
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 100%;
+        color: $main-grey;
+        letter-spacing: 0%;
+      }
+
+      &__block {
+        display: flex;
+        gap: 8px;
+
+        @include on-tablet {
+          gap: 4px;
+        }
+
+
+        &__option {
+          cursor: pointer;
+          border: 1px solid $icon-grey;
+          background-color: $main-white;
+
+          &__title {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 21px;
+            color: $main-black;
+            letter-spacing: 0%;
+          }
+
+          &--active {
+            border: 1px solid $main-black;
+            background-color: $main-black;
+            .product-details-page__content__capacity__block__option__title {
+              color: $main-white;
+            }
+          }
+        }
+      }
+    }
+
+    &__cart-price {
+      &__price {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+
+        &--discount {
+          font-size: 32px;
+          font-weight: 800;
+          color: $main-black;
+
+        }
+
+        &--regular {
+          font-size: 22px;
+          font-weight: 500;
+          color: $main-grey;
+          text-decoration: line-through;
+        }
+      }
+
+      &__cart {
+        display: flex;
+        justify-content: space-between;
+
+        @include on-tablet {
+          justify-content: flex-start;
+        }
+
+        &__buttons {
+          width: 100%;
+          padding-top: 8px;
+
+          &--add {
+            cursor: pointer;
+
+            width: 231px;
+            height: 48px;
+            padding: 0;
+            border: none;
+            border-radius: 0;
+
+            font-family: Mont;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 21px;
+            color: $main-white;
+            text-align: center;
+            letter-spacing: 0%;
+
+            background-color: $main-black;
+
+            transition: font-size $transition-time ease, box-shadow $transition-time ease;
+
+            @include on-tablet {
+              width: 264px;
+              margin-right: 8px;
+            }
+
+            &:hover {
+              font-size: 15px;
+              box-shadow: 0 3px 13px 0 #17203166;
+            }
+
+            &--selected {
+              border: 1px $main-lightgrey solid;
+              color: #27AE60;
+              background-color: $main-white;
+            }
+          }
+
+          &--like {
+            cursor: pointer;
+
+            width: 48px;
+            height: 48px;
+            border: 1px solid $icon-grey;
+            border-radius: 0;
+
+            background-color: $main-white;
+
+            transition: border $transition-time;
+
+            &:hover {
+              border: 1px solid $main-black;
+            }
+
+            &--selected {
+              border: 1px solid $main-lightgrey;
+            }
+          }
+
+          &__logo {
+            width: 16px;
+            height: 16px;
+            color: $main-black;
+          }
+        }
+      }
+    }
+
+    &__specs {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 24px;
+
+      @include on-tablet {
+        max-width: 320px;
+      }
+
+      &__name {
+        padding: 0;
+
+        font-size: 12px;
+        font-weight: 600;
+        color: $main-grey;
+        text-align: left;
+        list-style-type: none;
+
+        li {
+          margin-top: 8px;
+        }
+      }
+
+      &__value {
+        padding: 0;
+
+        font-size: 12px;
+        font-weight: 600;
+        color: $main-black;
+        text-align: right;
+        list-style-type: none;
+
+        li {
+          margin-top: 8px;
+        }
+      }
+    }
+
+    &__about {
+      @include on-desktop {
+        max-width: 560px;
+      }
+
+      &__title {
+        margin-top: 56px;
+        font-size: 20px;
+        font-weight: 700;
+
+        &::after {
+          content: '';
+
+          display: block;
+
+          width: 100%;
+          height: 1px;
+          margin-top: 16px;
+
+          background-color: $main-lightgrey;
+        }
+
+        @include on-tablet {
+          font-size: 22px;
+          font-weight: 800;
+        }
+      }
+
+      &__block {
+        margin-top: 32px;
+
+        &__title {
+          font-size: 16px;
+          font-weight: 600;
+          color: $main-black;
+
+          @include on-tablet {
+            font-size: 20px;
+          }
+        }
+
+        &__text {
+          font-size: 14px;
+          font-weight: 600;
+          color: $main-grey;
+        }
+      }
+    }
+
+    &__tech-specs {
+      @include on-desktop {
+        width: 512px;
+      }
+
+      &__title {
+        margin-top: 56px;
+        font-size: 20px;
+        font-weight: 700;
+
+        &::after {
+          content: '';
+
+          display: block;
+
+          width: 100%;
+          height: 1px;
+          margin-top: 16px;
+
+          background-color: $main-lightgrey;
+        }
+
+        @include on-tablet {
+          font-size: 22px;
+          font-weight: 800;
+        }
+      }
+      &__options {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 22px;
+
+        &__list-l {
+          padding: 0;
+
+          font-size: 14px;
+          font-weight: 500;
+          color: $main-grey;
+          text-align: left;
+          list-style-type: none;
+
+          li {
+            margin-top: 8px;
+          }
+        }
+
+        &__list-r {
+          padding: 0;
+
+          font-size: 14px;
+          font-weight: 500;
+          color: $main-black;
+          text-align: right;
+          list-style-type: none;
+
+          li {
+            margin-top: 8px;
+          }
+        }
+      }
+    }
+
+    &__slider {
+      margin-bottom: 64px;
+    }
+  }
+}
+

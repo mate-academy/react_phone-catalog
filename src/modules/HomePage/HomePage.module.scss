@@ -1,0 +1,121 @@
+@import "../../utils/mixins";
+
+.home-page {
+  font-family: Mont;
+
+  &__slider {
+    margin: 0 16px;
+
+    @include on-tablet {
+      margin: 0 24px;
+    }
+  }
+
+  &__swiper-block {
+
+    @include on-tablet {
+      display: flex;
+      align-items: stretch;
+    }
+
+    &__button {
+      display: none;
+
+      width: 32px;
+      height: 189px;
+      border: 1px solid $icon-grey;
+      cursor: pointer;
+
+      background-color: $main-white;
+
+      &--lb {
+        margin: 0 0 0 24px;
+      }
+
+      &--rb {
+        margin: 0 24px 0 0;
+      }
+
+      @include on-tablet {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      @include on-desktop {
+        height: 400px;
+      }
+
+      &__left {
+        transform: rotate(180deg);
+        width: 16px;
+        height: 16px;
+      }
+
+      &__right {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}
+
+.swiper {
+  padding-bottom: 32px;
+
+  @include on-tablet {
+    margin: 0 24px;
+  }
+
+  &__title {
+    margin: 24px 16px;
+    font-size: 32px;
+    font-weight: 800;
+    color: $main-black;
+
+    @include on-tablet {
+      margin: 32px 24px;
+      font-size: 48px;
+    }
+
+    @include on-desktop {
+      margin: 56px 32px;
+    }
+  }
+
+  &__slide {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    &__img{
+      width: 100%;
+      height: 352px;
+
+      @include on-tablet {
+        min-width: 490px;
+        height: 189px;
+      }
+
+      @include on-desktop {
+        height: 400px;
+      }
+    }
+  }
+}
+
+:global(.swiper-pagination-bullet) {
+  width: 20px;
+  height: 4px;
+  margin: 6px;
+  border-radius: 2px;
+
+  opacity: 1;
+  background-color: #ccc;
+
+  transition: background-color 0.3s;
+}
+
+:global(.swiper-pagination-bullet-active) {
+  background-color: #000;
+}

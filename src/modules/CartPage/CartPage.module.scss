@@ -1,0 +1,58 @@
+@import "../../utils/mixins";
+
+.cart-page {
+  margin-top: 24px;
+  padding: 0 16px;
+  font-family: 'Mont';
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 30px;
+  }
+
+  &__title {
+    margin: 24px 0 32px;
+    font-size: 32px;
+    font-weight: 800;
+    color: $main-black;
+
+    @include on-tablet {
+      margin: 16px 0 32px;
+      font-size: 48px;
+    }
+  }
+
+  &__content {
+    @include on-desktop {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    &__items {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      @include on-desktop {
+        width: 100%;
+        margin-right: 16px;
+      }
+    }
+
+    &__message {
+      position: relative;
+      &__text {
+        position: absolute;
+        font-family: 'Mont';
+        font-size: 24px;
+        font-weight: 600;
+        margin: 0;
+        white-space: nowrap;
+      }
+    }
+  }
+}
