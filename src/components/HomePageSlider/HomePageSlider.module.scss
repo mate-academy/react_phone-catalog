@@ -1,0 +1,83 @@
+@use '../../styles/mixins.scss' as *;
+
+.slider {
+  margin-inline: -16px;
+  position: relative;
+
+  @include onTablet {
+    margin: 0;
+  }
+}
+
+.container {
+  position: relative;
+  display: flex;
+  gap: 19px;
+
+  @include onDesktop {
+    gap: 16px;
+  }
+}
+
+:global(.swiper) {
+  // padding: 0 0 40px 0 !important;
+  padding-bottom: 40px !important;
+}
+
+:global(.prev),
+:global(.next) {
+  display: none;
+
+  @include onTablet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    border: 1px solid #b4bdc3;
+    border-radius: 50px;
+    flex-shrink: 0;
+    background-color: #fff;
+    margin-bottom: 40px !important;
+  }
+}
+
+:global(.swiper-pagination) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+}
+
+:global(.swiper-pagination-bullet) {
+  width: 16px !important;
+  height: 4px !important;
+  background-color: #e2e6e9 !important;
+  border-radius: 0 !important;
+  margin: 0 4px !important;
+  opacity: 1 !important;
+}
+
+:global(.swiper-pagination-bullet-active) {
+  width: 16px !important;
+  height: 4px !important;
+  background-color: #0f0f11 !important;
+  border-radius: 0 !important;
+  opacity: 1 !important;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.arrowNext {
+  height: 16px;
+  width: 16px;
+}
+
+.arrowPrev {
+  height: 16px;
+  width: 16px;
+  transform: rotateY(180deg);
+}
