@@ -1,0 +1,393 @@
+.detailsPage {
+  padding-bottom: 0;
+  position: relative;
+  transition: opacity 0.3s ease;
+}
+
+.contentLoading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 12px;
+  color: #89939a;
+
+  .homeIcon {
+    color: #313237;
+  }
+
+  .categoryLink {
+    text-transform: capitalize;
+    color: #313237;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .productName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #89939a;
+  font-size: 14px;
+  margin-bottom: 16px;
+  padding: 0;
+
+  &:hover {
+    color: #313237;
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #313237;
+  margin-bottom: 40px;
+}
+
+.mainContent {
+  display: grid;
+  margin-bottom: 80px;
+
+  // Mobile First: Base styles
+  grid-template-columns: 1fr;
+  gap: 40px;
+
+  // Tablet and up
+  @media (min-width: 640px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+}
+
+.imageGallery {
+  display: grid;
+  gap: 16px;
+
+  // Mobile First: Base styles
+  grid-template-columns: 1fr;
+
+  // Tablet
+  @media (min-width: 640px) {
+    grid-template-columns: 35px 1fr; // Ajustado para o tamanho do thumbnail do tablet
+  }
+
+  // Desktop
+  @media (min-width: 1200px) {
+    grid-template-columns: 80px 1fr;
+  }
+}
+
+.thumbnails {
+  display: flex;
+
+  // Mobile First: Base styles
+  gap: 8px;
+  order: 2;
+  flex-direction: row;
+  justify-content: center;
+
+  // Tablet and up
+  @media (min-width: 640px) {
+    order: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  // Desktop
+  @media (min-width: 1200px) {
+    gap: 10px;
+  }
+}
+
+.thumbnailButton {
+  border: 1px solid #e2e6e9;
+  border-radius: 8px;
+  padding: 4px;
+  cursor: pointer;
+  background-color: #fff;
+  transition: border-color 0.3s;
+
+  // Mobile First: Base styles
+  width: 50px;
+  height: 50px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  &:hover {
+    border-color: #89939a;
+  }
+
+  &.active {
+    border-color: #313237;
+  }
+
+  // Tablet
+  @media (min-width: 640px) {
+    width: 35px;
+    height: 35px;
+  }
+
+  // Desktop
+  @media (min-width: 1200px) {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.mainImageContainer {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+.mainImage {
+  max-width: 100%;
+  max-height: 460px;
+  object-fit: contain;
+}
+
+.productActions {
+  display: flex;
+  flex-direction: column;
+}
+
+.priceSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+
+  .currentPrice {
+    font-size: 32px;
+    font-weight: 800;
+    color: #313237;
+  }
+
+  .fullPrice {
+    font-size: 22px;
+    color: #89939a;
+    text-decoration: line-through;
+  }
+}
+
+
+.selectors {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e2e6e9;
+}
+
+.selectorBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.selectorLabel {
+  font-size: 12px;
+  color: #89939a;
+}
+
+.colorSelector, .capacitySelector {
+  display: flex;
+  gap: 8px;
+}
+
+.colorOption {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #bbc3c9;
+  padding: 2px;
+  cursor: pointer;
+  background-color: transparent;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: #89939a;
+  }
+
+  &.active {
+    border-color: #0F0F11;
+  }
+
+  .colorSwatch {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid #f0f0f0; // Borda interna para cores claras como branco
+  }
+}
+
+.capacityOption {
+  padding: 7px 8px; // padding vertical de 7px para altura total de 32px
+  border: 1px solid #b4bdc4;
+  background-color: #fff;
+  color: #313237;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  height: 32px;
+
+  &:hover {
+    border-color: #313237;
+  }
+
+  &.active {
+    background-color: #313237;
+    color: #fff;
+    border-color: #313237;
+  }
+}
+
+
+.actionButtons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+
+  .addToCartButton, .addToFavoritesButton {
+    height: 48px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .addToCartButton {
+    flex-grow: 1;
+    background-color: #216CFF;
+    color: #fff;
+    border: none;
+
+    &:disabled {
+      background-color: #fff;
+      color: #27AE60; // Um verde de sucesso
+      border: 1px solid #27AE60;
+      cursor: default;
+    }
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+  }
+
+  .addToFavoritesButton {
+    width: 48px;
+    background-color: #fff;
+    border: 1px solid #b4bdc4;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      font-size: 16px; // Ajuste o tamanho do ícone aqui
+      color: #313237; // Cor inicial do ícone
+      transition: color 0.3s ease;
+    }
+
+    &:hover {
+      border-color: #313237;
+
+      svg {
+        color: #EB5757; // Opcional: muda a cor do ícone no hover
+      }
+    }
+  }
+}
+
+.shortSpecs, .techSpecsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e6e9;
+}
+
+.specItem {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+
+  span {
+    color: #89939a;
+  }
+
+  strong {
+    color: #313237;
+    font-weight: 600;
+  }
+}
+
+.detailedContent {
+  display: grid;
+  margin-bottom: 40px;
+
+  // Mobile First: Base styles
+  grid-template-columns: 1fr;
+  gap: 40px; // Tornando consistente com o .mainContent
+
+  // Tablet and up
+  @media (min-width: 640px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+}
+
+.sectionTitle {
+  font-size: 22px;
+  font-weight: 800;
+  color: #313237;
+  margin-bottom: 16px;
+}
+
+.separator {
+  border: none;
+  border-top: 1px solid #e2e6e9;
+  margin-bottom: 24px;
+}
+
+.aboutArticle {
+  margin-bottom: 32px;
+}
+
+.aboutTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #313237;
+  margin-bottom: 16px;
+}
+
+.aboutText {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #89939a;
+}

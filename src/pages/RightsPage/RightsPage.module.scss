@@ -1,0 +1,80 @@
+.rightsPage {
+  padding: 24px 0;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  color: #0f0f11;
+  margin-bottom: 32px;
+}
+
+.content {
+  max-width: 800px;
+}
+
+.section {
+  margin-bottom: 40px;
+
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #0f0f11;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 24px 0 12px;
+    color: #0f0f11;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+    margin-bottom: 16px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 16px;
+
+    li {
+      font-size: 14px;
+      line-height: 21px;
+      color: #89939a;
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 16px;
+
+      &::before {
+        content: '•';
+        color: #905bff;
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 639px) {
+  .title {
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  .section {
+    h2 {
+      font-size: 24px;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+  }
+}
