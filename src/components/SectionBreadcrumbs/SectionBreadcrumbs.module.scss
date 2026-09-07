@@ -1,0 +1,42 @@
+@use '../../mixins/mixins' as *;
+
+.sectionBreadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 24px;
+
+  @include tablet {
+    margin-bottom: 40px;
+  }
+
+  &__linkHome {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url('../../../public/img/icons/home.svg');
+
+    &--lightTheme{
+      background-image: url('../../../public/img/icons/home-light.svg');
+    }
+  }
+
+  &__arrowRight {
+    display: block;
+
+    width: 16px;
+    height: 16px;
+    padding-top: 6px;
+
+    background-image: url('../../../public/img/icons/arrow-right-gray.svg');
+
+    &--lightTheme{
+      background-image: url('../../../public/img/icons/arrow-right-lightTheme.svg');
+    }
+  }
+
+  &__currentLink {
+    padding-top: 3px;
+    color: var(--text-color);
+  }
+}

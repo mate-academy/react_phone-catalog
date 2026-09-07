@@ -1,0 +1,24 @@
+@use '../../mixins/mixins' as *;
+
+.header{
+  @include omitFixedTopBar;
+
+  @include tablet{
+    @include padding-inline;
+  }
+
+  &__title{
+    @include titleStyle;
+
+    margin: 0;
+    padding: 24px 16px;
+
+    @include tablet{
+      padding: 32px 0;
+    }
+
+    @include desktop{
+      padding-block: 56px;
+    }
+  }
+}

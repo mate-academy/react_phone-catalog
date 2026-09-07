@@ -1,0 +1,167 @@
+@use '../../mixins/mixins' as *;
+
+.pagination {
+  display: flex;
+  gap: 7px;
+  justify-content: center;
+  list-style: none;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    background-color: var(--dark-gray);
+
+    @media (min-width: 450px) {
+      width: 32px;
+      height: 32px;
+    }
+
+    &:hover {
+      background-color: var(--items-hover);
+    }
+
+    &--disabled {
+      border: 1px solid var(--items-disabled);
+      background-color: var(--app-background);
+
+      &:hover {
+        background-color: var(--app-background);
+      }
+
+      &--lightTheme {
+        &:hover {
+          border-color: var(--items-disabled);
+        }
+      }
+    }
+
+    &--lightTheme {
+      border: 1px solid var(--border-color);
+      background-color: var(--app-background);
+
+      &:hover {
+        border: 1px solid var(--header-color);
+        background-color: var(--app-background);
+      }
+    }
+
+    &--disabled-lightTheme {
+      background-color: var(--app-background);
+      border-color: var(--items-disabled);
+
+      &:hover {
+        border-color: var(--items-disabled);
+      }
+    }
+  }
+
+  &__arrowLink {
+    display: block;
+    width: 16px;
+    height: 16px;
+
+    &--left {
+      background-image: url('../../../public/img/icons/arrow-left.svg');
+
+      &-disabled {
+        background-image: url('../../../public/img/icons/disabled-arrow-left.svg');
+      }
+
+      &-lightTheme {
+        background-image: url('../../../public/img/icons/arrow-left-lightTheme.svg');
+
+        &-disabled {
+          background-image: url('../../../public/img/icons/arrow-left-lightTheme-white.svg');
+        }
+      }
+    }
+
+    &--right {
+      background-image: url('../../../public/img/icons/arrow-right.svg');
+
+      &-disabled {
+        background-image: url('../../../public/img/icons/disabled-arrow-right.svg');
+      }
+
+      &-lightTheme {
+        background-image: url('../../../public/img/icons/arrow-right-lightTheme-dark.svg');
+
+        &-disabled {
+          background-image: url('../../../public/img/icons/arrow-right-lightTheme.svg');
+        }
+      }
+    }
+  }
+
+  &__itemList {
+    display: flex;
+    gap: 4px;
+    list-style: none;
+
+    @media (min-width: 450px) {
+      gap: 8px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+
+    @media (min-width: 450px) {
+      width: 32px;
+      height: 32px;
+    }
+
+    background-color: var(--card-background);
+
+    &:hover {
+      background-color: var(--items-disabled);
+    }
+
+    &--lightTheme {
+      border: 1px solid var(--items-disabled);
+      background-color: var(--app-background);
+
+      &:hover {
+        border-color: var(--header-color);
+        background-color: var(--app-background);
+      }
+    }
+
+    &--active{
+      background-color: var(--purple-main);
+
+      &:hover {
+        background-color: var(--purple-main);
+      }
+
+      &-lightTheme {
+        background-color: var(--header-color);
+
+        &:hover {
+          background-color: var(--header-color);
+        }
+      }
+    }
+  }
+
+  &__link {
+    color: var(--header-color);
+    text-align: center;
+    text-decoration: none;
+
+    &--active-lightTheme {
+      color: var(--app-background);
+    }
+  }
+
+  @media (min-width: 450px) {
+    gap: 16px;
+  }
+}

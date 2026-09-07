@@ -1,0 +1,45 @@
+@use '../../mixins/mixins' as *;
+
+.notFound{
+  @include omitFixedTopBar;
+
+  flex: 1;
+
+  &__content{
+    margin-top: 100px;
+    text-align: center;
+  }
+
+  &__title{
+    font-size: 30px;
+    text-align: center;
+
+    @include tablet{
+      font-size: 40px;
+    }
+  }
+
+  &__photo{
+    width: 200px;
+    height: 200px;
+    margin-top: 40px;
+
+    @include tablet{
+      width: 300px;
+      height: 300px;
+    }
+  }
+
+  &__link{
+    @include scaleOnHover;
+
+    display: block;
+    margin-top: 30px;
+    color: var(--header-color);
+    text-decoration: none;
+
+    &:hover{
+      color: var(--text-color);
+    }
+  }
+}
