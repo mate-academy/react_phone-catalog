@@ -1,0 +1,24 @@
+@import '../../shared/styles/mixins';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+
+  padding-top: 20px;
+}
+
+.text {
+  text-align: center;
+
+  @include on-mobile {
+    p {
+      max-width: 255px;
+    }
+  }
+}
+
+.img {
+  width: 400px;
+}
