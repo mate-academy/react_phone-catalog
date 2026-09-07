@@ -1,0 +1,96 @@
+@font-face {
+  font-family: SemiFont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: SmallFont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+}
+
+.footerSection {
+  height: 257px;
+  box-shadow: 0 -1px 0 0 rgba(226, 230, 233, 1);
+  margin-top: 64px;
+  padding-left: 16px;
+
+  @media (min-width: 640px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding-left: 32px;
+  }
+}
+
+.logotype {
+  padding-top: 32px;
+  margin-bottom: 32px;
+}
+
+.footerWords {
+  margin-bottom: 16px;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  font-family: SemiFont, sans-serif;
+  color: rgba(137, 147, 154, 1);
+  text-decoration: none;
+
+  @media (min-width: 640px) {
+    display: flex;
+    margin-right: 13.5px;
+    margin-top: 19px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-right: 106px;
+  }
+}
+
+.backToTopWords {
+  font-weight: 700;
+  font-family: SmallFont, sans-serif;
+  font-size: 12px;
+  line-height: 100%;
+  color: rgba(137, 147, 154, 1);
+
+}
+
+.backToTopButton {
+  width: 32px;
+  border: 1px solid rgba(180, 189, 195, 1);
+  background-color: rgba(255, 255, 255, 1);
+  height: 32px;
+  display: inline-block;
+  transform: rotate(-90deg);
+  margin-left: 16px;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid rgba(49, 50, 55, 1);
+  }
+}
+
+.backToTop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  @media (min-width: 640px) {
+    padding-right: 32px;
+  }
+}
+
+.footerLinks {
+  @media (min-width: 640px) {
+    display: flex;
+  }
+}
+
+.textToLeft {
+  @media (min-width: 1200px) {
+    margin-left: 130px;
+  }
+}

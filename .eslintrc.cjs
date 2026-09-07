@@ -11,6 +11,10 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'plugin:cypress/recommended',
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "prettier" // ADDED HERE
   ],
   overrides: [
     {
@@ -34,7 +38,11 @@ module.exports = {
     'import',
     'react-hooks',
     '@typescript-eslint',
-    'prettier'
+    'prettier',
+    "react",
+    "react-hooks",
+    "@typescript-eslint",
+    "prettier" // ADDED HERE
   ],
   rules: {
     // JS

@@ -1,0 +1,67 @@
+@font-face {
+  font-family: SmallFont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+}
+
+.selectWrapper {
+  position: relative;
+  width: 136px;
+
+  @media (min-width: 640px) {
+    width: 187px;;
+  }
+}
+
+.selected {
+  padding: 10px 12px;
+  font-family: SmallFont, sans-serif;
+  border: 1px solid rgba(180, 189, 195, 1);
+  background-color: white;
+  cursor: pointer;
+  font-size: 12px;
+  color: rgba(49, 50, 55, 1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &:hover {
+    border: 1px solid rgba(137, 147, 154, 1);
+  }
+
+  &:focus {
+    border: 1px solid rgba(49, 50, 55, 1);
+  }
+}
+
+.arrow {
+  margin-left: 8px;
+  font-size: 10px;
+  color: rgba(137, 147, 154, 1);
+}
+
+.options {
+  position: absolute;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid rgba(226, 230, 233, 1);
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  background-color: white;
+  z-index: 10;
+  margin-top: 4px;
+}
+
+.option {
+  padding: 10px 16px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: SmallFont, sans-serif;
+  color: rgba(137, 147, 154, 1);
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgba(250, 251, 252, 1);
+    color: rgba(49, 50, 55, 1);
+  }
+}
