@@ -1,0 +1,111 @@
+@use './variables' as *;
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin on-small-tablet {
+  @media (min-width: $tablet-small-min-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-small-desktop {
+  @media (min-width: $desktop-small-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 39px;
+  }
+
+  @include on-desktop {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-inline: 55px;
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+
+  @include on-tablet {
+    --columns: 12;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin font-ibm-plex-sans-light {
+  font-family: 'IBM Plex Sans', serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+@mixin font-ibm-plex-sans-regular {
+  font-family: 'IBM Plex Sans', serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin font-ibm-plex-sans-medium {
+  font-family: 'IBM Plex Sans', serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@mixin font-ibm-plex-sans-semibold {
+  font-family: 'IBM Plex Sans', serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+@mixin font-ibm-plex-sans-bold {
+  font-family: 'IBM Plex Sans', serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@mixin font-montserrat-regular {
+  font-family: Montserrat, serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin font-montserrat-bold {
+  font-family: Montserrat, serif;
+  font-weight: 700;
+  font-style: normal;
+}
