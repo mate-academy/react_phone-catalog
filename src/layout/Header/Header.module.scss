@@ -1,0 +1,199 @@
+@use '../../styles/utils' as g;
+
+
+.header {
+  position: fixed;
+  z-index: 3;
+
+  width: 100%;
+  height: g.$header-height-mobile;
+
+  background-color: g.$main-white;
+  box-shadow: 0 1px 0 g.$elements-color;
+
+  @include g.on-desktop {
+    height: g.$header-height-desktop;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: 1440px;
+    height: 100%;
+    margin: 0 auto;
+
+    @include g.on-desktop {
+      padding-left: 24px;
+    }
+  }
+
+  &__logo{
+    width: 64px;
+    height: 22px;
+    margin-left: 16px;
+
+    @include g.on-desktop {
+      width: 80px;
+      height: 28px;
+      margin-left: 24px;
+    }
+
+    &-img{
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+  }
+
+  &__nav{
+    @include g.on-tablet{
+      height: 100%;
+    }
+
+    @include g.on-desktop{
+      width: 425px;
+    }
+  }
+
+  &__content {
+    position: fixed;
+    z-index: 1;
+    top: -100vh;
+
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: calc(100vh - g.$header-height-mobile);
+    height: calc(100dvh - g.$header-height-mobile);
+
+    background-color: g.$main-white;
+
+
+    &.is-active {
+      top: g.$header-height-mobile;
+      box-shadow: 0 -1px 0 g.$elements-color;
+    }
+
+    @include g.on-tablet {
+      position: relative;
+      top: 0;
+
+      display: flex;
+      flex-direction: row;
+
+      width: auto;
+      height: 100%;
+      margin-left: 32px;
+
+      &.is-active {
+      top: 0;
+      box-shadow: none;
+    }
+    }
+
+    @include g.on-desktop {
+      margin-left: 48px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    width: 100%;
+
+    box-shadow: 1px 0 0 g.$elements-color;
+
+
+
+    &--item {
+      position: relative;
+
+      flex-grow: 1;
+      flex-shrink: 0;
+
+      height:  g.$header-height-tablet;
+      width: g.$header-height-tablet;
+
+      box-shadow: -1px -1px 0 g.$elements-color;
+
+      @include g.under-line;
+
+      &.active {
+        position: relative;
+        color: g.$main-grey;
+
+        &::before {
+          content: '';
+
+          position: absolute;
+          display: block;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+
+          background-color: g.$main-grey;
+        }
+      }
+
+      &--count {
+        position: absolute;
+        top: calc(50% - 14px);
+        right: calc(50% - 14px);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 14px;
+        height: 14px;
+        border: 1.5px solid g.$main-white;
+        border-radius: 50%;
+
+        font-family: g.$font-semi;
+        font-size: 9px;
+        line-height: 9px;
+        color: g.$main-white;
+
+        background-color: g.$red;
+
+        & span {
+          transform: translateY(0.4px);
+          display: inline-block;
+        }
+      }
+
+      @include g.on-tablet {
+        margin-right: 1px;
+      }
+
+      @include g.on-desktop {
+          width: g.$header-height-desktop;
+          height: g.$header-height-desktop;;
+      }
+    }
+
+    @include g.on-tablet {
+      justify-content: end;
+      width: auto;
+    }
+
+  }
+
+  &__burger {
+    @include g.on-tablet{
+      display: none;
+    }
+  }
+}

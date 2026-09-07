@@ -1,0 +1,35 @@
+.loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__spinner {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 6px solid transparent;
+  background:
+    conic-gradient(
+      from 0deg,
+      #f0f0f0,
+      #d0d0d0,
+      #b0b0b0,
+      #909090,
+      #b0b0b0,
+      #d0d0d0,
+      #f0f0f0
+    ) border-box;
+  mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  animation: spin 1.2s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

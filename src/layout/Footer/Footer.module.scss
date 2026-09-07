@@ -1,0 +1,110 @@
+@use '../../styles/utils' as utils;
+
+
+.footer {
+  height: auto;
+  box-shadow: 0 -1px 0 utils.$elements-color;
+
+  &__container{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    max-width: 1440px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 32px 16px;
+
+    @include utils.on-tablet {
+      flex-direction: row;
+      gap: 0;
+      align-items: center;
+      padding: 32px;
+    }
+  }
+
+  @include utils.on-tablet {
+    height: 96px;
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+
+    &-img{
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      object-position: center;
+    }
+  }
+
+  &__content {
+    @include utils.on-tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+  }
+
+  &__nav {
+    @include utils.on-tablet {
+      width: 192px;
+    }
+
+    @include utils.on-desktop {
+      width: 380px;
+    }
+  }
+
+    &__up{
+      align-self: center;
+
+      &-link{
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        font-family: utils.$font-semi;
+        font-size: 12px;
+        line-height: 12px;
+      }
+
+      &-text{
+        margin-right: 16px;
+        color: utils.$second-grey;
+        transition: color utils.$transition-duration linear;
+      }
+
+      &-icon{
+        width: 32px;
+        height: 32px;
+        border: 1px solid utils.$icons-color;
+        border-radius: 50%;
+
+        background-image: url('/img/icons/arrow_up.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 9.33px 5.33px;
+
+        transition: border-color utils.$transition-duration linear;
+      }
+
+      &:hover{
+        .footer__up-text{
+          color: utils.$main-grey;
+        }
+        .footer__up-icon{
+          border-color: utils.$main-grey;
+        }
+      }
+    }
+}
+
+
+

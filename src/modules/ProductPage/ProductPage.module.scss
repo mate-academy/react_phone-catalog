@@ -1,0 +1,77 @@
+@use '../../styles/utils' as g;
+
+.item {
+  &__back {
+    margin-top: 24px;
+
+    @include g.on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__title {
+    margin-top: 16px;
+    text-align: left;
+
+    @include g.h2-title;
+
+    @include g.on-tablet {
+      letter-spacing: 99%;
+    }
+
+    @include g.on-desktop {
+      margin-top: 24px;
+    }
+  }
+
+  &__content{
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+    margin-top: 32px;
+
+    @include g.on-tablet {
+      grid-template-columns: 1fr 237px;
+      grid-template-rows: auto auto auto;
+      gap: 64px 17px;
+      margin-top: 40px;
+    }
+
+    @include g.on-desktop {
+      grid-template-columns: auto 512px;
+      grid-template-rows: auto auto;
+      gap: 80px 64px;
+    }
+  }
+
+
+  &__about{
+    margin-top: 14px;
+
+    @include g.on-tablet {
+      grid-column: 1/3;
+      margin: 0;
+    }
+
+    @include g.on-desktop {
+      grid-column: auto;
+    }
+  }
+
+  &__tech{
+    margin-top: 14px;
+
+    @include g.on-tablet {
+      grid-column: 1/3;
+      margin: 0;
+    }
+
+    @include g.on-desktop {
+      grid-column: auto;
+    }
+  }
+
+  &__recomendations{
+    width: 100%;
+  }
+}
