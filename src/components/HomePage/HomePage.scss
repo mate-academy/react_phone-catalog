@@ -1,0 +1,72 @@
+@use '../../utils/core' as *;
+
+.main__homepage {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page__title {
+  @include h1;
+
+  width: 82%;
+  margin: 24px 16px;
+  padding: 0 20px;
+  color: var(--color-text);
+
+  @include on-tablet {
+    width: 88%;
+    margin: 32px 24px;
+  }
+
+  @include on-desktop {
+    width: 100%;
+    margin: 56px 0;
+  }
+}
+
+.category__wrapper {
+  margin-top: 56px;
+  max-width: 1200px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}
+
+.category__title {
+  @include h2;
+
+  width: 100%;
+  margin: 0 0 24px;
+  color: var(--color-text);
+}
+
+.homepage__product,
+.homepage__category,
+.homepage__hotproduct {
+  margin: 0 16px;
+
+  @include on-tablet {
+    margin: 0 24px;
+  }
+
+  @include on-desktop {
+    margin: 0 32px;
+  }
+}
+
+.hotproduct__wrapper {
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}

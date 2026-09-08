@@ -1,0 +1,68 @@
+@use '../../utils/core' as *;
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  right: 0;
+}
+
+.toggleBtnSection {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid var(--color-surface-2);
+  border-radius: 24px;
+  padding: 2px 4px;
+  background: var(--color-header-footer);
+}
+
+.toggleBtnInput {
+  display: none;
+}
+
+.toggleCheckbox {
+  display: flex;
+  align-items: center;
+
+  .toggleBtnInput {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+  }
+
+  .toggleBtnLabel {
+    cursor: pointer;
+    width: 36px;
+    height: 18px;
+    display: block;
+    border-radius: 23px;
+    position: relative;
+    background-color: var(--color-secondary);
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      transition: 0.3s;
+      background-color: var(--color-white);
+    }
+  }
+
+  .toggleBtnInput:checked ~ .toggleBtnLabel::after {
+    left: calc(100% - 2px);
+    transform: translateX(-100%);
+  }
+}
+
+html[data-theme='light'] {
+  .toggleBtnSection {
+    border: 1px solid var(--color-secondary);
+  }
+}
+

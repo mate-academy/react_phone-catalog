@@ -1,0 +1,179 @@
+@use '../../utils/core' as *;
+
+.header {
+  background-color: var(--color-header-footer);
+  border-bottom: 1px solid var(--color-border-hf);
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  height: 48px;
+
+  @include on-desktop {
+    height: 64px;
+  }
+}
+
+.wrapper__navbar {
+  display: flex;
+  gap: 24px;
+
+  @include on-tablet {
+    gap: 16px;
+  }
+}
+
+.navbar-brand {
+  display: none;
+  gap: 64px;
+
+  @include on-tablet {
+    display: flex;
+    gap: 32px;
+  }
+
+  @include on-desktop {
+    display: flex;
+    gap: 64px;
+  }
+}
+
+.navbar-item {
+  display: flex;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  align-items: center;
+  position: relative;
+
+  @include text-uppercase;
+
+  &:active {
+    color: var(--color-text);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-text);
+    transform: scale(0);
+    transition: transform 0.4s ease;
+    z-index: 1;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+
+  &--active {
+    color: var(--color-text);
+
+    &::after {
+      transform: scale(1);
+      background-color: var(--color-text);
+    }
+  }
+}
+
+.logo {
+  display: flex;
+  padding: 18px 24px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttons__menu {
+  display: flex;
+}
+
+.likes {
+  display: none;
+  margin-left: auto;
+  position: relative;
+  border: 1px solid var(--color-border-hf);
+  border-top: none;
+  border-bottom: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  @include on-desktop {
+    display: flex;
+  }
+}
+
+.shopping {
+  display: none;
+  position: relative;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  @include on-desktop {
+    display: flex;
+  }
+}
+
+.menu {
+  display: flex;
+  border-left: 1px solid var(--color-border-hf);
+
+  @include on-tablet {
+    display: none;
+  }
+
+  @include on-desktop {
+    display: none;
+  }
+}
+
+.close {
+  display: flex;
+  border-left: 1px solid var(--color-border-hf);;
+
+  @include on-desktop {
+    display: none;
+  }
+}
+
+.badge,
+.badge2 {
+  display: flex;
+  position: absolute;
+  top: 17px;
+  left: 80px;
+  background-color: var(--color-red);
+  color: var(--color-white);
+  font-size: 10px;
+  font-weight: bold;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--color-black);
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+
+  @include on-tablet {
+    top: 11px;
+    left: 35px;
+  }
+
+  @include on-desktop {
+    top: 17px;
+    left: 34px;
+  }
+}

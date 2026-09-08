@@ -1,0 +1,461 @@
+@use '../../utils/core' as *;
+
+.productInfo {
+  margin: 0 16px;
+
+  &__wrapper {
+    display: block;
+    width: 100%;
+    gap: 40px;
+    margin-top: 40px;
+
+    @include on-tablet {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      display: flex;
+      gap: 64px;
+    }
+  }
+
+  &__wrapperDetails {
+    @include on-mobile {
+      display: flex;
+      flex-direction: column;
+      width: $mob-width;
+      height: 435px;
+      margin-top: 40px;
+    }
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: column;
+      width: $tab-width;
+      height: 435px;
+      margin-top: 0;
+    }
+
+    @include on-desktop {
+      width: 320px;
+      height: 464px;
+      margin-top: 0;
+    }
+  }
+
+  &__wrapperPhone {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-direction: column;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__Image {
+    display: block;
+    box-sizing: border-box;
+    height: 49px;
+    width: 51px;
+    object-fit: contain;
+    border: 1px solid var(--color-elements);
+    cursor: pointer;
+
+    &:hover {
+      border-color: rgba(96, 11, 133, 0.78);
+    }
+
+    &.active {
+      border-color: #4721c5d8;
+      transform: scale(1.05);
+      box-shadow: 0 0 8px rgba(120, 64, 204, 0.92);
+    }
+
+    @include on-tablet {
+      height: 35px;
+      width: 35px;
+    }
+
+    @include on-desktop {
+      height: 80px;
+      width: 80px;
+    }
+  }
+
+  &__mainImage {
+    width: 288px;
+    height: 288px;
+    object-fit: contain;
+
+    @include on-desktop {
+      width: 464px;
+      height: 464px;
+    }
+  }
+
+  &__colors {
+    margin-bottom: 24px;
+  }
+
+  &__contentTitle {
+    @include text-small;
+
+    color: var(--color-secondary);
+    margin: 0 0 8px;
+  }
+
+  &__color {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid var(--color-elements);
+    margin: 0 8px 0 0;
+
+    &:hover {
+      border: 2px solid var(--color-secondary);
+    }
+
+    &.selected {
+      border: 2px solid rgba(96, 11, 133, 0.78);
+    }
+  }
+
+  &__line {
+    border: 1px solid var(--color-elements);
+    width: $mob-width;
+    margin-bottom: 15px;
+
+    @include on-tablet {
+      width: $tab-width;
+      margin-bottom: 15px;
+    }
+
+    @include on-desktop {
+      width: $desk-width;
+      margin-bottom: 22px;
+    }
+  }
+
+  &__memory {
+    margin-top: 24px;
+    width: $mob-width;
+
+    @include on-tablet {
+      width: $tab-width;
+    }
+
+    @include on-desktop {
+      width: $desk-width;
+    }
+  }
+
+  &__price {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    height: 41px;
+    margin-bottom: 16px;
+    margin-top: 32px;
+  }
+
+  &__priceOld {
+    color: var(--color-secondary);
+    text-decoration: line-through;
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0;
+  }
+
+  &__priceNew {
+    @include h2;
+
+    color: var(--color-text);
+  }
+
+  &__btn {
+    display: flex;
+    gap: 8px;
+    width: $tab-width;
+    align-items: center;
+
+    @include on-desktop {
+      width: $desk-width;
+    }
+  }
+
+  &__btnCart {
+    @include text-buttons;
+
+    text-decoration: none;
+    border: 1px solid var(--color-accent-primary);
+    background-color: var(--color-accent-primary);
+    color: var(--color-white);
+    cursor: pointer;
+    text-align: center;
+    width: 231px;
+    height: 48px;
+
+    @include on-tablet {
+      width: 180px;
+    }
+
+    @include on-desktop {
+      width: 263px;
+    }
+
+    &:hover {
+      background-color: var(--color-accent-hover);
+      border: 1px solid var(--color-accent-hover);
+    }
+  }
+
+  &__btnLike {
+    display: flex;
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-icon-active);
+    border: 1px solid var(--color-icon-active);
+    cursor: pointer;
+    color: var(--color-white);
+
+    &:hover {
+      background-color: var(--color-icon-hover);
+    }
+  }
+
+  &__info {
+    margin-top: 24px;
+    width: $mob-width;
+    height: 84px;
+
+    @include on-tablet {
+      width: $tab-width;
+    }
+
+    @include on-desktop {
+      width: $desk-width;
+    }
+  }
+
+  &__infoAll {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__screenTitle,
+  &__techScreenTitle {
+    @include text-small;
+
+    color: var(--color-secondary);
+    margin: 8px 0 0;
+  }
+
+  &__screenDescription,
+  &__techScreenDescription {
+    @include text-small;
+
+    color: var(--color-text);
+    margin: 8px 0 0;
+  }
+
+  &__wrapperAboutTech {
+    margin-top: 80px;
+    display: block;
+    gap: 64px;
+
+    @include on-tablet {
+      gap: 64px;
+    }
+
+    @include on-desktop {
+      display: flex;
+      margin-bottom: 70px;
+    }
+  }
+
+  &__paragraph,
+  &__wrapperTech {
+    width: 100%;
+
+    @include on-desktop {
+      width: 50%;
+    }
+  }
+
+  &__wrapperTech {
+    margin-top: 56px;
+
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-desktop {
+      margin-top: 0;
+    }
+  }
+
+  &__about {
+    @include h3;
+
+    color: var(--color-text);
+    margin: 0 0 16px;
+  }
+
+  &__content {
+    margin: 32px 0 0;
+  }
+
+  &__itemTitle {
+    @include h4;
+
+    color: var(--color-text);
+  }
+
+  &__description {
+    @include text-body;
+
+    color: var(--color-secondary);
+  }
+
+  &__techInfoAll {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__memories {
+    margin: 0 8px 24px 0;
+    height: 32px;
+    background-color: transparent;
+    border: 1px solid var(--color-elements);
+    color: var(--color-text);
+    cursor: pointer;
+
+    &.selected {
+      background: var(--color-text);
+      color: var(--color-header-footer);
+    }
+
+    &:hover,
+    &:focus {
+      background-color: #2a2c36;
+      border: 1px solid var(--color-secondary);
+      color: var(--color-white);
+    }
+
+    &:active {
+      background-color: #1e2028;
+      border: 1px solid var(--color-header-footer);
+      color: var(--color-white);
+    }
+  }
+
+  &__back {
+    display: flex;
+    gap: 4px;
+  }
+}
+
+.productInfolink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0 40px;
+
+  &__title,
+  &__backTitle {
+    @include text-small;
+
+    color: var(--color-text);
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__title-id {
+    color: var(--color-secondary);
+  }
+}
+
+.Image {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  gap: 16px;
+  justify-content: center;
+  width: 35px;
+  order: 2;
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex-shrink: 0;
+    order: 1;
+  }
+
+  @include on-desktop {
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex-shrink: 0;
+    order: 1;
+  }
+}
+
+.Main__Image {
+  display: block;
+  flex-direction: column;
+  flex-grow: 0;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-start;
+  margin: 0 auto;
+  order: 1;
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    order: 2;
+  }
+
+  @include on-desktop {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    order: 2;
+  }
+}
+
+.category__title {
+  @include h2;
+
+  color: var(--color-text);
+}
+
+
+html[data-theme='light'] {
+  .productInfo__btnLike {
+    border: 1px solid var(--color-elements);
+    &:hover {
+      border: 1px solid var(--color-black);
+    }
+  }
+
+  .productInfolink__backTitle {
+    color: var(--color-secondary);
+  }
+}
