@@ -1,0 +1,78 @@
+@import '../../styles/utils';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 80px;
+
+  @media (max-width: 1199px) {
+    margin-bottom: 64px;
+  }
+
+  &__item-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background-color: $btn-color;
+
+    @include hover(background-color, $hover-btn-color);
+  }
+
+  &__item-btn--prev {
+    margin-right: 8px;
+  }
+
+  &__item-btn--next {
+    margin-left: 8px;
+  }
+
+  &__link-arrows {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  &__item-btn--disabled {
+    background-color: transparent;
+    border: 1px solid #3B3E4A;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &__img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__item {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background-color: $card-color;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $accent-color;
+    }
+  }
+
+  &__item--active {
+    background-color: $accent-color
+  }
+
+  &__link {
+    @extend %mont-600;
+
+    color: $main-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+}

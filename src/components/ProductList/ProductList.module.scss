@@ -1,0 +1,63 @@
+@import '../../styles/utils';
+
+.product-list {
+
+  .container {
+    @include on-desktop {
+      margin: 0;
+    }
+  }
+
+  &__title {
+    @extend %mont-800;
+
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+
+    @include on-phone {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+
+  &__text {
+    @extend %mont-600;
+
+    font-size: 14px;
+    line-height: 21px;
+    color: $nav-color;
+    margin-bottom: 40px;
+
+    @include on-phone {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__filters {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 16px;
+    margin-bottom: 40px;
+
+    @media (max-width: 1199px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 915px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include on-phone {
+      grid-template-columns: repeat(1, 1fr);
+      margin-bottom: 24px;
+    }
+  }
+}

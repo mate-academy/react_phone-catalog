@@ -1,0 +1,269 @@
+@import '../../styles/utils';
+
+.cart {
+  &__back-btn {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: $main-color;
+    font-size: 12px;
+    line-height: 100%;
+    padding-left: 20px;
+    margin: 40px 0 16px;
+
+    @include hover(color, $accent-color);
+
+    @include on-phone {
+      margin: 24px 0;
+    }
+
+    &::before {
+      position: absolute;
+      content: '';
+      background-image: url('../img/icons/arrow-left.svg');
+      width: 16px;
+      height: 16px;
+      left: 0;
+      bottom: 0;
+      transition: all .3s;
+    }
+
+    &:hover::before {
+      background-image: url('../img/icons/arrow-left-hover.svg');
+    }
+  }
+
+  &__title {
+    @extend %mont-800;
+
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+
+    @include on-phone {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+
+  &__empty-text {
+    font-size: 22px;
+    line-height: 140%;
+  }
+
+  &__empty-img {
+    max-width: 50%;
+    height: 50%;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 80px;
+
+    @media (max-width: 1199px) {
+      flex-direction: column;
+      gap: 32px;
+      margin-bottom: 64px;
+    }
+
+    @include on-phone {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__product-info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include on-phone {
+      gap: 16px;
+    }
+  }
+
+  &__quantity-price {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include on-phone {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  &__box-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item {
+    width: 752px;
+    height: 128px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding-inline: 24px;
+    background-color: $card-color;
+
+    @media (max-width: 1199px) {
+      width: 100%;
+    }
+
+    @include on-phone {
+      height: 160px;
+      flex-direction: column;
+      gap: 16px;
+      align-items: start;
+      padding: 16px;
+    }
+  }
+
+  &__cancel-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    background-image: url('../img/icons/cancel.svg');
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    transition: all .3s;
+
+    &:hover {
+      background-image: url('../img/icons/cancel-hover.svg');
+    }
+  }
+
+  &__img {
+    height: 80px;
+
+    @include on-phone {
+      width: 66px;
+      height: 66px;
+    }
+  }
+
+  &__name {
+    @extend %mont-600;
+
+    width: 336px;
+    color: $main-color;
+
+    @media (max-width: 1199px) {
+      width: 176px;
+    }
+
+    @include on-phone {
+      width: 128px;
+    }
+  }
+
+  &__box-btns {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 96px;
+  }
+
+  &__remove-btn {
+    width: 32px;
+    height: 32px;
+    background-color: $btn-color;
+    border: none;
+    cursor: pointer;
+    background-image: url('../img/icons/remove.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include hover(background-color, $hover-btn-color);
+  }
+
+  &__remove-btn--disabled {
+    background-color: transparent;
+    border: 1px solid #3B3E4A;
+    background-image: url('../img/icons/remove-disabled.svg');
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &__add-btn {
+    width: 32px;
+    height: 32px;
+    background-color: $btn-color;
+    border: none;
+    cursor: pointer;
+    background-image: url('../img/icons/add.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include hover(background-color, $hover-btn-color);
+  }
+
+  &__number {
+    @extend %mont-600;
+  }
+
+  &__price {
+    @extend %mont-800;
+
+    font-size: 22px;
+    line-height: 140%;
+    width: 80px;
+  }
+
+  &__checkout {
+    border: 1px solid #3B3E4A;
+    width: 368px;
+    height: 206px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    @media (max-width: 1199px) {
+      width: 100%;
+    }
+  }
+
+  &__checkout-price {
+    @extend %mont-800;
+
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &__checkout-text {
+    @extend %mont-600;
+
+    color: $nav-color;
+    margin-bottom: 25px;
+  }
+
+  &__checkout-divider {
+    border: 1px solid #3B3E4A;
+    margin-bottom: 24px;
+  }
+
+  &__checkout-btn {
+    border: none;
+    cursor: pointer;
+    background-color: $accent-color;
+    color: $main-color;
+    padding-block: 14px;
+
+    @include hover(background-color, $hover-main-btn-color);
+  }
+}
