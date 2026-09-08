@@ -1,0 +1,136 @@
+.products {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-tablet {
+    gap: 40px;
+  }
+
+  @include page-margins;
+  @include bottom-margin;
+
+  &__nav {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__home {
+    display: flex;
+  }
+
+  &__pathname {
+    color: $color-secondary;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__h1 {
+    @include h1;
+  }
+
+  &__subtitle {
+    @include body-text;
+
+    color: $color-secondary;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__sort-fields {
+    @include page-grid;
+  }
+
+  &__sort-field {
+    position: relative;
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 5;
+    }
+
+    &-text {
+      color: $color-secondary;
+    }
+  }
+
+  &__catalog {
+    @include page-grid;
+
+    row-gap: 40px;
+  }
+
+  &__dropdown {
+    padding: 0 12px;
+    width: 100%;
+    height: 40px;
+    border: 1px solid $color-elements;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-icons;
+    }
+
+    &-active {
+      border-color: $color-primary;
+    }
+
+    &-text {
+      @include buttons;
+    }
+  }
+
+  &__dropdown-menu {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $color-elements;
+    background-color: $color-white;
+    margin-top: 4px;
+    box-shadow: 0 2px 15px 0 #0000000D;
+    padding: 8px 0;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    color: $color-secondary;
+    height: 32px;
+
+    @include body-text;
+
+    &:hover {
+      background-color: $color-hover-bg;
+      color: $color-primary;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+
+
+  &__page-buttons {
+    display: flex;
+    gap: 8px;
+  }
+}
