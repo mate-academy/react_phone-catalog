@@ -1,1 +1,70 @@
-// not empty
+@import './styles/utils/utils';
+@import './styles/blocks/typography';
+
+p,
+h1,
+h2 {
+  margin: 0;
+}
+
+.page {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 1.3em;
+  box-sizing: border-box;
+  background-color: var(--bg-color);
+
+  --bg-color: #fff;
+  --text-color: #0f1121;
+  --border-color: #e2e6e9;
+  --disabled-color: #e2e6e9;
+  --grey-secondary: #89939a;
+  --disabled-icon-color: #b4bdc3;
+}
+
+.container {
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
+  background-color: var(--bg-color);
+  display: grid;
+
+  grid-template-rows: 48px 1fr 180px;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+
+  @include on-tablet {
+    grid-template-rows: 48px 1fr 95px;
+  }
+
+  @include on-desktop {
+    grid-template-rows: 64px 1fr 95px;
+  }
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.body {
+  grid-area: main;
+  overflow: hidden;
+
+  scroll-behavior: smooth;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__container {
+    width: 100%;
+    overflow: hidden;
+
+    @include on-desktop {
+      max-width: 1200px;
+    }
+  }
+}

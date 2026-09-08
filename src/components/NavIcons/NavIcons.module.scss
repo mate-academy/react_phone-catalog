@@ -1,0 +1,43 @@
+@import '../../styles/utils/utils';
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  background-color: inherit;
+  border-left: solid 1px var(--border-color);
+  padding-inline: 16px;
+
+  @include on-desktop {
+    padding-inline: 24px;
+  }
+
+  &__count {
+    position: absolute;
+    top: 30%;
+    right: 43%;
+    height: 14px;
+    width: 14px;
+    box-sizing: border-box;
+    background-color: $red;
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    border: 1px solid $white;
+    border-radius: 50%;
+
+    @include on-tablet {
+      top: 22%;
+      right: 20%;
+    }
+
+    @include on-desktop {
+      top: 27%;
+      right: 27%;
+    }
+  }
+}
