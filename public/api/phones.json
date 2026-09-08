@@ -44,7 +44,7 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"] 
   },
 
   {
