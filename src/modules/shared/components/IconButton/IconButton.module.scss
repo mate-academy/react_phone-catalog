@@ -1,0 +1,74 @@
+@import '../../../../styles/global';
+
+.button {
+  box-sizing: border-box;
+  width: 32px;
+  height: 100%;
+  border-radius: 48px;
+  border: 1px solid $icons-color;
+  background-color: transparent;
+  cursor: pointer;
+  color: $primary-color;
+
+  @include flex-center;
+  @include hover(border-color, $primary-color);
+
+  &--disabled {
+    border-color: $elements-color;
+    cursor: default;
+    color: $elements-color;
+
+    @include hover(border-color, $elements-color);
+  }
+
+  &--heart {
+    width: auto;
+    aspect-ratio: 1 / 1;
+
+    &-selected {
+      color: $secondary-accent-color;
+      border-color: $elements-color;
+    }
+  }
+
+  &--pagination {
+    border-color: $elements-color;
+    transition: all $effectDuration;
+
+    @include body-text;
+
+    &-selected {
+      color: $white-color;
+      background-color: $primary-color;
+      border-color: $primary-color;
+    }
+  }
+
+  &--selector {
+    border-color: $elements-color;
+
+    @include hover(border-color, $icons-color);
+
+    &-selected {
+      border-color: $primary-color;
+
+      @include hover(border-color, $primary-color);
+    }
+  }
+
+  &--right {
+    transform: rotate(0);
+  }
+
+  &--left {
+    transform: rotate(180deg);
+  }
+
+  &--up {
+    transform: rotate(-90deg);
+  }
+
+  &--down {
+    transform: rotate(90deg);
+  }
+}

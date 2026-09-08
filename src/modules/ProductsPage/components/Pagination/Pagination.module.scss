@@ -1,0 +1,12 @@
+@import '../../../../styles/global';
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  height: 32px;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+}

@@ -1,0 +1,39 @@
+@import '../../../../styles/global';
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  height: 16px;
+  margin-bottom: 24px;
+  color: $icons-color;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+
+  &__home {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url('/img/icons/icon-home.svg');
+
+    @include square(16px);
+  }
+
+  &__text {
+    @include small-text;
+
+    &--primary {
+      font-weight: 700;
+      color: $primary-color;
+    }
+
+    &--product {
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

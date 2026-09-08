@@ -1,0 +1,50 @@
+@import '../../../../styles/global';
+
+.product-card {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr repeat(5, auto);
+  box-sizing: border-box;
+  gap: 8px;
+  padding: 32px;
+  border-radius: 8px;
+  border: 1px solid $elements-color;
+  background-color: $white-color;
+  overflow: hidden;
+
+  &__image-wrapper {
+    position: relative;
+  }
+
+  &__image {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+
+    @include hover(transform, translateX(-50%) scale(1.1));
+  }
+
+  &__title {
+    padding-top: 16px;
+    color: $secondary-color;
+
+    @include body-text;
+    @include hover(color, $secondary-accent-color);
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__full-price {
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 28.12px;
+    text-decoration-line: line-through;
+    color: $secondary-color;
+  }
+}
