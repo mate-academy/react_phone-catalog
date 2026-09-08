@@ -1,0 +1,49 @@
+@import '../../../../styles/index';
+
+.productsList {
+  &__title {
+    text-transform: capitalize;
+  }
+
+  &__quantity {
+    color: $secondary-text-color;
+    margin-top: 8px;
+  }
+
+  &__products {
+    display: flex;
+    gap: 40px 16px;
+    flex-wrap: wrap;
+    margin: 24px 0 40px;
+
+    @media (max-width: 1199px) {
+      column-gap: 19px;
+    }
+
+    @media (max-width: 991px) {
+      justify-content: space-between;
+    }
+  }
+
+  &__withoutProducts {
+    margin: 40px 0 30px;
+    text-align: center;
+
+    img {
+      width: 700px;
+      margin: 25px auto 0;
+      display: block;
+
+      @media (max-width: 991px) {
+        width: 100%;
+      }
+    }
+  }
+
+  &__dropdowns {
+    display: flex;
+    gap: 16px;
+
+    margin-top: 40px;
+  }
+}

@@ -1,0 +1,83 @@
+@import '../../../../styles/index';
+
+.cartItem {
+  @include flex;
+
+  align-items: center;
+  gap: 24px;
+  border-radius: 16px;
+  background-color: $white-color;
+  border: 1px solid $elements-color;
+  padding: 24px;
+  margin-bottom: 16px;
+
+  @media (max-width: 575px) {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  &__block {
+    flex-grow: 1;
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+
+    @media (max-width: 575px) {
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+
+  &__close {
+    fill: $grey-color;
+    cursor: pointer;
+  }
+
+  &__imgLink {
+    height: 80px;
+    width: 80px;
+    text-align: center;
+  }
+
+  &__img {
+    height: 100%;
+
+    @include hover((transform, scale(1.1)));
+  }
+
+  &__text {
+    @include hover((color, $secondary-text-color));
+  }
+
+  &__price {
+    min-width: 55px;
+    text-align: right;
+  }
+
+  &__quantity {
+    @include flex;
+
+    align-items: center;
+    width: 100px;
+    user-select: none;
+  }
+
+  &__quantityBtn {
+    @include slider-button;
+    @include button;
+
+    &:not(:disabled) {
+      @include hover((border-color, $main-text-color));
+    }
+  }
+
+  &__disabled {
+    pointer-events: none;
+    svg path {
+      fill: $grey-color;
+    }
+  }
+}

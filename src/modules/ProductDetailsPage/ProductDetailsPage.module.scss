@@ -1,0 +1,16 @@
+.productDetails {
+  &__error {
+    margin: 40px 0 30px;
+    text-align: center;
+  }
+
+  &__errorImg {
+    width: 700px;
+    margin: 0 auto;
+    display: block;
+
+    @media (max-width: 991px) {
+      width: 100%;
+    }
+  }
+}

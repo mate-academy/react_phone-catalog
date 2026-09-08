@@ -1,0 +1,19 @@
+@import '../../styles/index';
+
+.catalog {
+  &__error {
+    margin-top: 40px;
+  }
+
+  &__button {
+    @include button;
+    @include button-main;
+
+    margin-top: 30px;
+    max-width: 160px;
+  }
+
+  &__text {
+    margin-top: 40px;
+  }
+}

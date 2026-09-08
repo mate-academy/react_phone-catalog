@@ -1,0 +1,19 @@
+@import '../../styles/index';
+
+.sliderProducts {
+  position: relative;
+
+  &__title {
+    @include flex;
+
+    margin-bottom: 24px;
+
+    @media (max-width: 575px) {
+      gap: 70px;
+    }
+  }
+
+  &__slide {
+    width: 272px;
+  }
+}
