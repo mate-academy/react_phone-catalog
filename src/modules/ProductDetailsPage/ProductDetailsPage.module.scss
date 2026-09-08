@@ -1,0 +1,63 @@
+@use '../../styles/variables';
+@use '../../styles/mixins';
+
+.page {
+  @include mixins.container;
+
+  padding-top: 40px;
+}
+
+.title {
+  @include mixins.section-title;
+
+  margin-bottom: 24px;
+}
+
+.mainSection {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 32px;
+  justify-content: space-between;
+
+  @include mixins.on-small {
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.detailsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 40px;
+
+  @include mixins.on-desktop {
+    flex-direction: row;
+    gap: 64px;
+  }
+}
+
+.sliderSection {
+  margin-top: 56px;
+
+  .sliderTitle {
+    @include mixins.section-title;
+
+    margin-bottom: 24px;
+  }
+}
+
+.loader {
+  @include mixins.text(variables.$fs-large, variables.$fw-medium, var(--secondary-text));
+
+  padding: 60px 0;
+  text-align: center;
+}
+
+.notFound {
+  @include mixins.text(variables.$fs-large, variables.$fw-medium, var(--color-red));
+
+  padding: 60px 0;
+  text-align: center;
+}

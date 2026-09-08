@@ -1,0 +1,128 @@
+@use '../../styles/mixins';
+@use '../../styles/variables';
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--elements);
+
+  @include mixins.on-mobile {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
+.removeButton {
+  cursor: pointer;
+  margin-right: 24px;
+  border: none;
+  background: none;
+}
+
+.imageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 80px;
+  height: 80px;
+  margin-right: 24px;
+}
+
+.name {
+  flex: 1;
+
+  margin-right: 24px;
+
+  font-size: variables.$fs-medium;
+  font-weight: variables.$fw-regular;
+  color: var(--main-text);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  @include mixins.on-mobile {
+    flex-basis: 100%;
+    margin-right: 0;
+  }
+}
+
+.quantityControls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-right: 24px;
+
+  @include mixins.on-mobile {
+    margin-right: 0;
+  }
+}
+
+.controlButton {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--elements);
+
+  background-color: transparent;
+  color: var(--main-text);
+
+  transition: border-color variables.$transition-main;
+
+  &:hover {
+    border-color: var(--main-text);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+}
+
+.quantity {
+  width: 24px;
+  font-size: variables.$fs-medium;
+  font-weight: variables.$fw-medium;
+  text-align: center;
+  color: var(--main-text);
+}
+
+.price {
+  width: 80px;
+
+  font-size: variables.$fs-medium;
+  font-weight: variables.$fw-bold;
+  color: var(--main-text);
+  text-align: right;
+}
+
+.controlButton svg {
+  width: 12px;
+  height: 12px;
+  fill: var(--main-text);
+}
+
+.removeButton svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--icons);
+  transition: fill variables.$transition-main;
+}
+
+.removeButton svg:hover {
+  fill: variables.$color-red;
+}
+
+.imageWrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}

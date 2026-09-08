@@ -1,0 +1,64 @@
+@use '../../styles/variables';
+@use '../../styles/mixins';
+
+.footer {
+  padding: 32px 0;
+  background-color: var(--main-bg);
+}
+
+.content {
+  @include mixins.container;
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+
+  @include mixins.on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.logo {
+  display: block;
+
+  img {
+    width: 80px;
+    height: auto;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+
+  @include mixins.on-tablet {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  a {
+    @include mixins.text(variables.$fs-normal, variables.$fw-medium, var(--secondary-text));
+
+    text-decoration: none;
+    transition: color variables.$transition-main;
+
+    &:hover {
+      color: var(--main-text);
+    }
+  }
+}
+
+.backToTop {
+  @include mixins.text(variables.$fs-small, variables.$fw-regular, var(--secondary-text));
+
+  cursor: pointer;
+  transition: color variables.$transition-main;
+
+  &:hover {
+    color: var(--main-text);
+  }
+}

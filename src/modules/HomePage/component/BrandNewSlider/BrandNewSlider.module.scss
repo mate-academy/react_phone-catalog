@@ -1,0 +1,13 @@
+@use '../../../../styles/mixins';
+@import '../../../../styles/variables';
+
+.section {
+  margin-top: 56px;
+}
+
+.title {
+  margin-bottom: 24px;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--main-text);
+}
