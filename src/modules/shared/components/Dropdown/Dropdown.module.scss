@@ -1,0 +1,117 @@
+@use '../../../../styles/resources' as *;
+
+.label {
+  color: $secondary-color;
+  margin-bottom: 4px;
+
+  @include small-text;
+
+  font-weight: 600;
+
+  @include transition(color, $color-transition);
+}
+
+.activeValueWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.activeValue {
+  width: 100%;
+  text-align: left;
+  height: 40px;
+  background: transparent;
+  border-radius: $radius;
+  border: 1px solid $icons-color;
+  color: $primary-color;
+  padding-inline: 12px;
+  z-index: 1;
+  cursor: pointer;
+
+  @include button-text;
+  @include transition((color, border-color), $color-transition);
+
+  &:focus {
+    border-color: $primary-color;
+  }
+}
+
+.arrow {
+  transform-origin: center;
+  display: block;
+  height: 100%;
+  position: absolute;
+  right: 12px;
+  color: $icons-color;
+  align-items: center;
+  top: 0;
+  z-index: -1;
+
+  @include flex-center;
+  @include transition(transform);
+}
+
+.options {
+  padding-block: 8px;
+  position: absolute;
+  border: 1px solid $elements-color;
+  z-index: 100;
+  background-color: $main-bg;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  border-radius: $radius;
+  transform-origin: top;
+  opacity: 0;
+  transform: scaleY(0) translateY(-100px);
+  pointer-events: none;
+
+  @include transition((opacity, transform));
+}
+
+.option {
+  padding: 6px 12px;
+  color: $secondary-color;
+  cursor: pointer;
+
+  @include hover {
+    color: $primary-color;
+    background-color: var(--option-click-bg);
+  }
+}
+
+.activeOption {
+  color: $primary-color;
+  background-color: var(--option-click-bg);
+}
+
+.dropdown {
+  --option-click-bg: #fafbfc;
+
+  position: relative;
+  max-width: 200px;
+
+  &.active {
+    .arrow {
+      transform: rotate(180deg);
+    }
+
+    .options {
+      opacity: 1;
+      transform: scaleY(1) translateY(0);
+      pointer-events: all;
+    }
+  }
+
+  &.disabled {
+    .activeValue {
+      border-color: $icons-color;
+      color: $icons-color;
+      pointer-events: none;
+    }
+  }
+}
+
+[data-theme='dark'] .dropdown {
+  --option-click-bg: #161827;
+}

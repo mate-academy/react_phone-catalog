@@ -1,0 +1,54 @@
+@use '@/styles/resources' as *;
+
+.wrapper {
+  padding: 24px;
+  border-radius: 16px;
+  background-color: $card-bg;
+  border: 1px solid $elements-color;
+
+  @include transition((background-color, border-color), $color-transition);
+}
+
+.topBar {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $elements-color;
+  align-items: center;
+
+  @include transition(border-bottom-color, $color-transition);
+  @include flex-column;
+
+  @include on-desktop {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+  }
+}
+
+.price {
+  color: $primary-color;
+
+  @include transition(color, $color-transition);
+}
+
+.items {
+  color: $secondary-color;
+}
+
+.checkoutBtn {
+  width: 100%;
+  border-radius: $radius;
+}
+
+.priceSkeleton {
+  width: 100px;
+  height: 41px;
+}
+
+.totalItemsSkeleton {
+  width: 150px;
+  height: 21px;
+}
+
+.loaders {
+  gap: 8px;
+}

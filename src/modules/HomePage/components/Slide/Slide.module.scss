@@ -1,0 +1,169 @@
+@use '@/styles/resources' as *;
+
+$gap: 16px;
+$order-btn-color: #0f1121;
+
+.slide {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  display: block;
+  cursor: pointer;
+  position: relative;
+}
+
+.productLink {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.wrapper {
+  text-align: center;
+  height: 100%;
+  gap: $gap;
+  padding-inline: $gap;
+
+  @include flex-column;
+
+  @include on-mobile {
+    padding: $gap;
+  }
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+}
+
+.content {
+  gap: $gap * 2;
+  height: 25%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  @include flex-column;
+
+  @include on-tablet {
+    flex-basis: 50%;
+    height: 100%;
+    flex-shrink: 0;
+    justify-content: center;
+    padding: $gap;
+
+    @include flex-column;
+
+    &::before {
+      inset: 16px 0;
+      content: '';
+      position: absolute;
+      background-color: $banner-content-color;
+      z-index: 0;
+      border-radius: $radius;
+    }
+  }
+}
+
+.title {
+  color: $white-color;
+  background-image: linear-gradient(
+    90deg,
+    $secondary-accent-color 0%,
+    #8947f4 70%
+  );
+  text-transform: capitalize;
+  font-size: 28px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: 1;
+}
+
+.productContent {
+  position: relative;
+  height: 75%;
+
+  @include on-tablet {
+    height: 100%;
+    flex-basis: 50%;
+
+    @include flex-column;
+  }
+}
+
+.productPreview {
+  display: block;
+  margin-top: 32px;
+
+  img {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+  @include on-tablet {
+    height: 50%;
+    margin-top: 0;
+  }
+
+  @include on-small-desktop {
+    height: 60%;
+  }
+}
+
+.productTextWrapper {
+  @include on-tablet {
+    flex: 1;
+    justify-content: center;
+
+    @include flex-column;
+  }
+}
+
+.productTitle {
+  font-size: 32px;
+  color: $white-color;
+}
+
+.productDesc {
+  margin-top: 16px;
+  font-size: 16px;
+  color: $secondary-color;
+}
+
+.orderBtn {
+  color: $white-color;
+  padding: 8px 36px;
+  border-radius: $radius;
+  background-color: transparent;
+  z-index: 100;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    background-color: $white-color;
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    z-index: -1;
+
+    @include transition(transform);
+  }
+
+  @include hover {
+    border-color: $white-color;
+    color: $order-btn-color;
+
+    &::before {
+      transform: translateX(0);
+    }
+  }
+
+  @include on-mobile {
+    display: none;
+  }
+}

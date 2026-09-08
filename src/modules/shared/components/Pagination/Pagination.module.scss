@@ -1,0 +1,35 @@
+@use '@/styles/resources' as *;
+
+.wrapper {
+  gap: 16px;
+
+  @include flex-center;
+}
+
+.arrowBtn {
+  border-radius: 50%;
+}
+
+.pages {
+  gap: 8px;
+  align-items: center;
+  overflow: auto;
+  display: flex;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.page {
+  display: inline-block;
+}
+
+.pageBtn {
+  border-radius: 50%;
+}
+
+.pageSplitter {
+  color: $primary-color;
+  margin-inline: 8px;
+}

@@ -1,0 +1,19 @@
+@use '@/styles/resources' as *;
+
+.logo {
+  display: block;
+
+  img {
+    width: 64px;
+
+    @include transition(transform, $transition);
+
+    @include on-desktop {
+      width: 80px;
+    }
+
+    @include hover {
+      transform: scale($hover-scale);
+    }
+  }
+}

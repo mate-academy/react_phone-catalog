@@ -1,0 +1,56 @@
+@use '@/styles/resources' as *;
+
+.productTitle {
+  margin-top: 16px;
+  color: $primary-color;
+
+  @include transition(color, $color-transition);
+}
+
+.hero {
+  margin-top: 32px;
+  position: relative;
+
+  @include page-grid;
+}
+
+.slider {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: span 7;
+  }
+
+  @include on-desktop {
+    grid-column: span 12;
+  }
+}
+
+.productDetails {
+  margin-top: 56px;
+  row-gap: 56px;
+
+  @include page-grid;
+
+  @include on-tablet {
+    margin-top: 64px;
+    row-gap: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+    row-gap: 80px;
+  }
+}
+
+.productsSlider {
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}

@@ -1,0 +1,119 @@
+@use '@/styles/resources' as *;
+
+.productCard {
+  padding: 32px;
+  background-color: $card-bg;
+  border: 1px solid $card-border-color;
+  border-radius: $radius;
+  gap: 8px;
+  position: relative;
+  transition:
+    transform $transition ease-in-out,
+    background-color $color-transition ease-in-out,
+    border-color $color-transition ease-in-out;
+
+  @include flex-column;
+}
+
+.productPreviewWrapper {
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  text-align: center;
+  max-height: 130px;
+  align-self: center;
+  display: block;
+
+  img {
+    height: 100%;
+
+    @include transition(transform);
+
+    @include hover {
+      & {
+        transform: scale($hover-scale);
+      }
+    }
+  }
+
+  @include on-tablet {
+    max-height: 196px;
+  }
+}
+
+.productTitle {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  color: $primary-color;
+
+  @include body-text;
+  @include transition(color, $color-transition);
+
+  @include hover {
+    color: $accent-color;
+  }
+}
+
+.productPrices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid $elements-color;
+
+  @include transition(border-bottom-color, $color-transition);
+}
+
+.productCurPrice {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  color: $primary-color;
+
+  @include transition(color, $color-transition);
+}
+
+.productOldPrice {
+  font-weight: 600;
+  line-height: 1;
+  font-size: 22px;
+  letter-spacing: 0;
+  color: $secondary-color;
+  text-decoration: line-through;
+
+  @include transition(color, $color-transition);
+}
+
+.productSpecs {
+  padding-block: 8px;
+}
+
+.productSpecOption {
+  font-weight: 600 !important;
+
+  @include small-text;
+}
+
+.productSpecValue {
+  font-weight: 600 !important;
+
+  @include small-text;
+}
+
+.productActions {
+  gap: 8px;
+  height: 40px;
+  position: relative;
+
+  @include flex-center;
+}
+
+.cartBtn {
+  width: 100%;
+  border-radius: $radius;
+}
+
+.likeBtn {
+  border-radius: 50%;
+}

@@ -1,0 +1,13 @@
+@use '@/styles/resources' as *;
+
+.title {
+  color: $secondary-color;
+
+  @include small-text;
+}
+
+.variants {
+  display: flex;
+  margin-top: 8px;
+  gap: 8px;
+}

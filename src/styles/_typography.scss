@@ -1,0 +1,34 @@
+@use './extend' as *;
+@use './mixins' as *;
+
+h1 {
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+
+  @include on-mobile {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+h2 {
+  @extend %heading-h2;
+}
+
+h3 {
+  @extend %heading-h3;
+}
+
+h4 {
+  @extend %heading-h4;
+}
+
+p {
+  @extend %body-text;
+}
+
+button {
+  @extend %button;
+}

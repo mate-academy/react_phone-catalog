@@ -1,0 +1,151 @@
+@use '@/styles/resources' as *;
+
+.menu {
+  height: 100%;
+  gap: 16px;
+
+  @include flex-column;
+
+  @include on-small-desktop {
+    flex-direction: row;
+  }
+}
+
+.menuNavigation {
+  flex: 1;
+
+  ul {
+    gap: 16px;
+    align-items: center;
+
+    @include flex-column;
+
+    @include on-small-desktop {
+      flex-direction: row;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+}
+
+.menuNavLink {
+  @include uppercase;
+
+  display: block;
+  color: $secondary-color;
+  line-height: 25px;
+
+  @include transition(color, $color-transition);
+  @include animated-underline;
+
+  @include on-small-desktop {
+    line-height: $header-height;
+  }
+
+  @include hover {
+    color: $primary-color;
+  }
+}
+
+.menuNavLinkActive {
+  color: $primary-color;
+
+  @include animated-underline-active;
+}
+
+.themeSwitcher {
+  align-self: center;
+}
+
+.menuActions {
+  @include flex-between-center;
+
+  .searchBtn {
+    display: none;
+
+    @include on-small-desktop {
+      display: flex;
+    }
+  }
+}
+
+.menuActionLink {
+  width: 100%;
+  display: block;
+  text-align: center;
+  padding-block: 24px;
+  border-width: 1px 0 0 1px;
+  border-color: $elements-color;
+  border-style: solid;
+  position: relative;
+  color: $primary-color;
+
+  @include transition(
+    (border-top-color, border-left-color, color),
+    $color-transition
+  );
+  @include animated-underline;
+
+  @include on-small-desktop {
+    padding-block: 0;
+    width: $header-height;
+    aspect-ratio: 1 / 1;
+    border-width: 0 0 0 1px;
+
+    @include flex-center;
+  }
+
+  @include on-mobile {
+    .menuActionLink:first-child {
+      border-left: 0;
+    }
+  }
+
+  @include hover {
+    @include animated-underline-active;
+  }
+}
+
+.actionLinkCount {
+  --border-color: #fff;
+
+  position: absolute;
+  top: 17px;
+  left: 50%;
+  display: block;
+  width: 14px;
+  height: 14px;
+  background-color: $secondary-accent-color;
+  border-radius: 50%;
+  color: $white-color;
+  line-height: 14px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  font-size: 9px;
+  font-weight: 600;
+
+  @include transition((border-color, background-color), $color-transition);
+
+  @include on-small-desktop {
+    & {
+      top: 10px;
+    }
+  }
+
+  @include on-desktop {
+    & {
+      top: 18px;
+    }
+  }
+}
+
+[data-theme='dark'] .actionLinkCount {
+  --border-color: #0f1121;
+}
+
+.menuActionLinkActive {
+  @include animated-underline-active;
+}

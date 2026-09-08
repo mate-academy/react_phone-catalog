@@ -1,0 +1,60 @@
+@use '@/styles/resources' as *;
+
+.card {
+  background-color: $card-bg;
+  padding: 16px;
+  border: 1px solid $elements-color;
+  gap: 16px;
+  justify-content: space-between;
+  border-radius: 16px;
+
+  @include flex-column;
+  @include transition((background-color, border-color), $color-transition);
+
+  @include on-tablet {
+    gap: 24px;
+    flex-direction: row;
+    padding: 24px;
+  }
+}
+
+.mainContent {
+  gap: 16px;
+
+  @include flex-between-center;
+}
+
+.removeBtn {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+}
+
+.preview {
+  width: 80px;
+  height: 80px;
+  color: $icons-color;
+
+  @include flex-center;
+}
+
+.title {
+  height: 80px;
+  flex: 1;
+}
+
+.actions {
+  gap: 16px;
+
+  @include flex-between-center;
+}
+
+.price {
+  width: 64px;
+  height: 31px;
+}
+
+.counter {
+  width: 96px;
+  height: 32px;
+}

@@ -1,0 +1,13 @@
+@use '@/styles/resources' as *;
+
+.searchBtn {
+  cursor: pointer;
+  color: $primary-color;
+
+  @include header-square-btn;
+  @include animated-underline;
+
+  @include hover {
+    @include animated-underline-active;
+  }
+}

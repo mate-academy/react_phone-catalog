@@ -1,0 +1,29 @@
+@use './mixins' as *;
+
+%body-text {
+  @include body-text;
+}
+
+%small-text {
+  @include small-text;
+}
+
+%uppercase {
+  @include uppercase;
+}
+
+%button {
+  @include button-text;
+}
+
+%heading-h2 {
+  @include heading-h2;
+}
+
+%heading-h3 {
+  @include heading-h3;
+}
+
+%heading-h4 {
+  @include heading-h4;
+}

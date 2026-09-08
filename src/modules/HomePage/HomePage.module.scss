@@ -1,0 +1,53 @@
+@use '@/styles/resources' as *;
+
+.wrapper {
+  padding-block: 24px 64px;
+
+  @include flex-column;
+
+  @include on-tablet {
+    padding-block: 32px 64px;
+  }
+
+  @include on-desktop {
+    padding-block: 56px 80px;
+  }
+}
+
+.content {
+  margin-top: 56px;
+  gap: 56px;
+
+  @include flex-column;
+
+  @include on-tablet {
+    gap: 64px;
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+    margin-top: 80px;
+  }
+}
+
+.title {
+  margin-bottom: 24px;
+  color: $primary-color;
+
+  @include transition(color, $color-transition);
+
+  @include on-tablet {
+    margin-bottom: 32px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 56px;
+  }
+}
+
+.sliderWrapper {
+  @include on-mobile {
+    padding-inline: 0 !important;
+  }
+}
