@@ -1,0 +1,23 @@
+@import '../../../styles/main';
+
+.products-list {
+@include page-grid;
+
+gap: 40px 16px;
+
+&__item {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+   @media (min-width: 800px) {
+      grid-column: span 4;
+    }
+
+  @include on-desktop {
+    grid-column: span 6;
+  }
+}
+}

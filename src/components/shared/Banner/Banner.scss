@@ -1,0 +1,266 @@
+@import '../../../styles/main';
+
+.banner {
+  --banner-padding-inside-box: 30px;
+  --banner-title-font-size: 5vw;
+  --banner-text-font-size: 2.5vw;
+
+  display: flex;
+  flex-direction: column;
+
+  @include on-tablet {
+    --banner-padding-inside-box: 30px;
+    --banner-title-font-size: 3.5vw;
+    --banner-text-font-size: 1.8vw;
+
+    @include container;
+  }
+
+  @include on-desktop {
+    --banner-padding-inside-box: 50px;
+    --banner-title-font-size: 40px;
+    --banner-text-font-size: 16px;
+  }
+
+  &__container {
+    display: flex;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  &__box {
+    display: flex;
+
+    box-sizing: border-box;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+
+    background-color: $color-text-main;
+
+    @include on-tablet {
+      aspect-ratio: 400 / 189;
+      min-width: 400px;
+      min-height: 189px;
+      max-height: 400px;
+      border-radius: 8px;
+    }
+
+    @include on-desktop {
+      aspect-ratio: auto;
+      width: 1080px;
+      height: 400px;
+    }
+  }
+
+  &__aside {
+    display: none;
+
+    @include on-tablet {
+      position: relative;
+
+      display: block;
+      flex: 0.75;
+
+      box-sizing: border-box;
+      margin: 15px;
+      padding: var(--banner-padding-inside-box);
+      border-radius: calc(var(--banner-padding-inside-box) / 2);
+
+      background-color: $color-banner-background;
+    }
+
+    @include on-desktop {
+      box-sizing: border-box;
+      background-color: $color-banner-background;
+    }
+
+    &-intro {
+      margin: 0 0 calc(var(--banner-title-font-size) / 2);
+
+      font-family: Mont, sans-serif;
+      font-size: var(--banner-title-font-size);
+      font-weight: 800;
+      line-height: var(--banner-title-font-size);
+      color: transparent;
+      letter-spacing: 0.01em;
+
+      background-image: linear-gradient(
+        to right,
+        $color-banner-accent,
+        $color-banner-second-accent
+      );
+      background-clip: text;
+    }
+
+    &-icon {
+      width: calc(var(--banner-title-font-size) / 1.2);
+      height: calc(var(--banner-title-font-size) / 1.2);
+    }
+
+    &-text {
+      margin: 0;
+
+      font-family: Mont, sans-serif;
+      font-size: var(--banner-text-font-size);
+      font-weight: 700;
+      line-height: var(--banner-text-font-size);
+      color: $color-banner-text;
+      letter-spacing: 0.03em;
+    }
+
+    &-link {
+      --aside-link-font-size: 1.8vw;
+
+      position: absolute;
+      bottom: 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      box-sizing: border-box;
+      padding: calc(var(--aside-link-font-size) * 1)
+        calc(var(--aside-link-font-size) * 2.5);
+      border: 1px solid $color-banner-button;
+      border-radius: calc(var(--aside-link-font-size) * 3);
+
+      font-family: Mont, sans-serif;
+      font-size: var(--aside-link-font-size);
+      font-weight: 600;
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+
+      @include on-desktop {
+        --aside-link-font-size: 16px;
+
+        bottom: 50px;
+      }
+    }
+  }
+
+  &__main {
+    position: relative;
+
+    overflow: hidden;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+
+    box-sizing: border-box;
+    padding: var(--banner-padding-inside-box);
+
+    &-intro {
+      margin: 0 0 calc(var(--banner-title-font-size) / 2);
+
+      font-family: Mont, sans-serif;
+      font-size: var(--banner-title-font-size);
+      font-weight: 800;
+      line-height: var(--banner-title-font-size);
+      color: transparent;
+      text-align: center;
+      letter-spacing: 0.01em;
+
+      background-image: linear-gradient(
+        to right,
+        $color-banner-accent,
+        $color-banner-second-accent
+      );
+      background-clip: text;
+
+      @include on-tablet {
+        display: none;
+      }
+    }
+
+    &-title {
+      margin: 0 0 calc(var(--banner-title-font-size) / 2);
+
+      font-family: Mont, sans-serif;
+      font-size: var(--banner-title-font-size);
+      font-weight: 700;
+      line-height: var(--banner-title-font-size);
+      color: $color-white;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+
+    &-text {
+      margin-bottom: 10px;
+
+      font-family: Mont, sans-serif;
+      font-size: var(--banner-text-font-size);
+      font-weight: 600;
+      line-height: var(--banner-text-font-size);
+      color: $color-banner-text;
+      letter-spacing: 0.03em;
+    }
+
+    &-image {
+      position: absolute;
+
+      width: 100%;
+
+      opacity: 0;
+      object-fit: contain;
+
+      transition: opacity 0.5s ease-in-out;
+
+      &--active {
+        opacity: 1;
+      }
+
+      &-box {
+        position: relative;
+        flex: 1;
+        width: 100%;
+      }
+    }
+  }
+
+  &__button {
+    --width-button: 32px;
+
+    display: none;
+    transition: border-color 0.3s ease;
+
+    &:hover {
+      border: 1px solid $color-text-main;
+    }
+
+    @include on-tablet {
+      display: block;
+
+      width: var(--width-button);
+      border: 1px solid $color-icon;
+      border-radius: 16px;
+
+      background-color: $color-white;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    gap: 9px;
+    align-self: center;
+    margin-top: 18px;
+  }
+
+  &__dot {
+    cursor: pointer;
+    content: '';
+
+    display: block;
+
+    width: 14px;
+    height: 4px;
+
+    background-color: $color-element;
+
+    &--active {
+      background-color: $color-text-main;
+    }
+  }
+}

@@ -1,0 +1,81 @@
+@import '../../../styles/main';
+
+.footer {
+  display: flex;
+  grid-area: footer;
+  justify-content: space-between;
+
+  margin: 0;
+  padding: 32px 16px;
+  border-top: 1px solid $color-element;
+
+  background-color: $color-white;
+
+  @include on-tablet {
+    padding: 32px;
+  }
+
+  @include on-desktop {
+    padding: 32px 152px;
+  }
+
+  &__logo {
+    height: 32px;
+
+    &-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 13.5px;
+    }
+
+    @include on-desktop {
+      gap: 106.83px;
+    }
+  }
+
+  &__link {
+    @include text-uppercase;
+
+    color: $color-text-secondary;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $color-text-main;
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+
+    &-text {
+      @include text-small;
+
+      color: $color-text-secondary;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $color-text-main;
+      }
+    }
+  }
+}

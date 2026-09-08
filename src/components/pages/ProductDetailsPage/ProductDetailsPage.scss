@@ -1,0 +1,58 @@
+@import '../../../styles/main';
+
+.product-details {
+  @include container;
+
+  padding-block: 24px 56px;
+
+  @include on-tablet {
+    padding-block: 24px 80px;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &____button-back {
+    margin: 24px 0 0;
+
+    @include on-tablet {
+      margin: 40px 0 0;
+    }
+  }
+
+  &__title {
+    @include title-2;
+
+    margin: 16px 0 32px;
+    color: $color-text-main;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__error,
+  &__loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    margin-top: 80px;
+
+    &-text {
+      margin: 0 0 20px;
+
+      font-family: Mont-Bold, sans-serif;
+      font-size: 22px;
+      line-height: 1.4;
+      color: $color-text-main;
+    }
+  }
+}

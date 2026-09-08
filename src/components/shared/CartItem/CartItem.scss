@@ -1,0 +1,88 @@
+@import '../../../styles/main';
+
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding: 24px;
+  border: 1px solid $color-element;
+  border-radius: 16px;
+
+  background-color: $color-white;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 24px;
+    justify-content: space-between;
+  }
+
+  &__top {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  &__icon-close {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__link {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    transition: transform $animation-timing $animation-rule;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__title {
+    @include text-normal;
+
+    color: $color-text-main;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+
+    &-text {
+      @include text-normal;
+
+      width: 32px;
+      margin: 0;
+
+      line-height: normal;
+      color: $color-text-main;
+      text-align: center;
+    }
+  }
+
+  &__price {
+    @include text-price-discount;
+    
+    width: 80px;
+    text-align: right;
+  }
+}
