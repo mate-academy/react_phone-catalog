@@ -1,0 +1,106 @@
+@import '../../style/main';
+
+.footer {
+  background-color: $header-footer-bg-color;
+  height: $footer-height-desktop-tablet;
+  box-shadow: 0 -1px 0 0 $shadow-color;
+
+  @include on-mobile {
+    height: $footer-height-mobile;
+  }
+
+  &__content {
+    @include page-grid;
+
+    height: $footer-height-desktop-tablet;
+    align-content: center;
+
+    @include on-mobile {
+      height: $footer-height-mobile;
+      row-gap: 32px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    background-image: url(/img/header/logo.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    height: 32px;
+    width: 89px;
+
+    &__container {
+      align-items: center;
+    }
+  }
+
+  &__to-top {
+    font-family: inherit;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-self: end;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 4%;
+    text-decoration: none;
+    color: $secondary-color;
+    width: 118px;
+    height: 32px;
+    line-height: 32px;
+
+    background-image: url(/img/footer/slider-button-default.svg);
+    background-size: 32px;
+    background-position: right;
+    background-repeat: no-repeat;
+
+    @include on-mobile {
+      justify-self: center;
+    }
+  }
+
+  &__logo__container,
+  &__nav,
+  &__to-top {
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    grid-column: span 8;
+    align-self: center;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+  }
+}
+
+.nav {
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+
+    @include on-mobile {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $secondary-color;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    justify-self: end;
+  }
+}
