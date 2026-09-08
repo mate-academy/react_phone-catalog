@@ -1,0 +1,31 @@
+.paginationNew {
+  padding-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: inherit;
+    border: 1px solid $icons-color;
+    cursor: pointer;
+    transition: all $effect-duration ease;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: auto;
+
+      &:hover {
+        border: 1px solid $icons-color;
+      }
+    }
+  }
+}
