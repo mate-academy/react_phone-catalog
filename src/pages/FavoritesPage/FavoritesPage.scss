@@ -1,0 +1,42 @@
+@import '../../styles/utils/mixins';
+
+.favorites {
+  margin-top: 24px;
+
+  &__title {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  &__amount {
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+    gap: 40px 16px;
+    margin-bottom: 80px;
+
+    &:has(.favorites__empty) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50vh;
+    }
+  }
+
+  &__empty {
+    display: flex;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 40px;
+    color: #89939a;
+  }
+}

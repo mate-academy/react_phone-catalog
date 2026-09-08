@@ -1,0 +1,19 @@
+.nav-way {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0 40px;
+
+  &__category-link {
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+    color: #313237;
+    text-decoration: none;
+  }
+
+  &__product {
+    color: #89939a;
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+  }
+}

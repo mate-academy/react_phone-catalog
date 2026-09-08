@@ -1,0 +1,14 @@
+.back-button {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  margin-top: 40px;
+  cursor: pointer;
+
+  &__text {
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+    line-height: 15.5px;
+    color:  #89939A;
+  }
+}

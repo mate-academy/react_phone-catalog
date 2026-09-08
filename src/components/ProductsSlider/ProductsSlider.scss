@@ -1,0 +1,43 @@
+@import '../../styles//utils/mixins.scss';
+
+.products-slider {
+  overflow: hidden;
+
+  &:last-child {
+    margin-bottom: 80px;
+  }
+
+  &__managment {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.5px;
+    margin-bottom: 24px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    height: 32px;
+    width: 32px;
+    border: 1px solid #b4bdc3;
+    cursor: pointer;
+  }
+
+  &__items {
+    display: flex;
+    gap: 16px;
+  }
+}

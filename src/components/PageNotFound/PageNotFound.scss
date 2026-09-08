@@ -1,0 +1,31 @@
+@import '../../styles/utils/mixins';
+
+.page-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  &__title {
+    margin-top: 20px;
+  }
+
+  &__link {
+    padding-inline: 10px;
+    margin-top: 20px;
+    font-size: 40px;
+    text-decoration: none;
+    color: #313237;
+    border: 3px solid #e2e6e9;
+    text-align: center;
+  }
+
+  &__icon {
+    height: 25px;
+  }
+
+  &__image {
+    width: 50%;
+    margin-bottom: 20px;
+  }
+}
