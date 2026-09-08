@@ -1,0 +1,77 @@
+@import '../../styles/main';
+
+.slider {
+  &__top {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    color: $color-primary;
+    
+    @extend %font-h2-mobile;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    background-color: $color-white;
+    border: 1px solid $color-icons;
+    transition:
+      border-color $effect-duration,
+      background-color $effect-duration;
+
+    @include hover(border-color, $color-primary);
+
+    &--disabled {
+      border-color: $color-elements;
+      pointer-events: none;
+
+      @include hover(border-color, $color-elements);
+    }
+  }
+
+  &__slides {
+    overflow: hidden;
+    margin-inline: -$mobile-horizontal-indents;
+
+    @include on-tablet {
+      margin-inline: -$tablet-horizontal-indents;
+    }
+
+    @include on-desktop {
+      margin-inline: 0;
+    }
+  }
+
+  &__wrapper {
+    padding-left: $mobile-horizontal-indents;
+    display: flex;
+    gap: $cards-gap;
+    transition: transform $effect-duration;
+
+    @include on-tablet {
+      padding-left: $tablet-horizontal-indents;
+    }
+
+    @include on-desktop {
+      padding-left: 0;
+    }
+  }
+}

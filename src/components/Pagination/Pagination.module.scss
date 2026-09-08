@@ -1,0 +1,69 @@
+@import '../../styles/main';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 64px;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $color-icons;
+    background-color: $color-white;
+    cursor: pointer;
+    transition:
+      border-color $effect-duration ease,
+      color $effect-duration ease;
+
+    @include hover(border-color, $color-primary);
+
+    &--disabled {
+      border-color: $color-elements;
+      color: $color-elements;
+      cursor: not-allowed;
+
+      @include hover(border-color, $color-elements);
+    }
+  }
+
+  &__item {
+    height: 32px;
+    width: 32px;
+    color: $color-primary;
+    background-color: $color-white;
+    border: 1px solid $color-elements;
+
+    @extend %font-body-text;
+
+    transition:
+      border-color $effect-duration ease,
+      background-color $effect-duration ease;
+
+    &--active {
+      color: $color-white;
+      background-color: $color-primary;
+      border: none;
+    }
+
+    @include hover(border-color, $color-primary);
+
+    &:focus,
+    &:hover {
+      border-color: $color-primary;
+      outline: none;
+    }
+  }
+
+  &__items {
+    display: flex;
+    gap: 8px;
+  }
+}
