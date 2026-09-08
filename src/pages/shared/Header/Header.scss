@@ -1,0 +1,104 @@
+@use '../../utils/mixins.scss' as *;
+
+.header {
+    background-color: white;
+    height: 48px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid #E2E6E9;
+    margin-bottom:  24px;
+
+
+    @include on-tablet {
+        margin-bottom: 32px;
+    }
+
+    @include on-desktop {
+        gap: 24px;
+        height: 64px;
+        margin-bottom: 56px;
+    }
+
+
+
+    &_menu {
+        display: flex;
+    }
+
+    &_logo-conteiner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 96px;
+
+        @include on-desktop {
+            height: 128px;
+        }
+        
+    }
+
+    &_logo {
+        width: 64px;
+        height: 22px;
+
+
+        @include on-desktop {
+            width: 80px;
+            height: 28px;
+        }
+    }
+
+    &_list {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+        
+
+        @include on-desktop {
+            gap: 64px;
+        }
+    }
+
+    &_item {
+        text-decoration: none;
+        color: #89939A;
+        font-family: Mont-Bold, sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 11px;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+
+    }
+
+    &_buttons-right {
+        display: flex;
+        justify-content: flex-end;
+        flex-grow: 1;
+        align-items: center;
+    }
+
+    &_icon {
+        display: flex;
+        width: 48px;
+        height: 48px;
+        align-items: center;
+        justify-content: center;
+        box-shadow:  -1px 0 0 0 #E2E6E9;
+
+        @include on-desktop {
+            width: 64px;
+            height: 64px;
+        }
+    }
+
+    &_icon-wrapper {
+        display: flex;
+        height: 16px;
+        width: 16px;
+    }
+}
