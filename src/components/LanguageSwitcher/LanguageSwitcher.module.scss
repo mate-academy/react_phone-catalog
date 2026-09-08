@@ -1,0 +1,73 @@
+@import '../../assets/fonts/variables';
+
+.switcher {
+  position: fixed;
+  z-index: 1000;
+  top: 70px;
+  right: 10px;
+
+  display: flex;
+  gap: 6px;
+  align-items: center;
+
+
+  button {
+    cursor: pointer;
+
+    padding: 6px 12px;
+    border: none;
+    border-radius: 12px;
+
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-white);
+
+    background: var(--color-surface2);
+
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      background: #50536a;
+    }
+
+    &:active {
+      transform: translateY(0);
+      background: #1f212d;
+    }
+
+    &.active {
+      cursor: default;
+      transform: none;
+      color: #fff;
+      background: var(--color-accent);
+    }
+  }
+}
+
+@media (max-width: 1199px) and (min-width: 640px) {
+  .switcher {
+    top: 54px;
+    gap: 4px;
+
+    button {
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 8px;
+    }
+  }
+}
+
+@media (max-width: 639px) {
+  .switcher {
+    top: 54px;
+    gap: 4px;
+
+
+    button {
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 6px;
+    }
+  }
+}

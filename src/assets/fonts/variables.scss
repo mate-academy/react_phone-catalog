@@ -1,0 +1,172 @@
+@font-face {
+  font-family: Mont;
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+}
+
+:root {
+  --color-secondary: #75767f;
+  --color-icons: #4a4d58;
+  --color-elements: #3b3e4a;
+  --color-surface2: #323542;
+  --color-surface1: #161827;
+  --color-black: #0f1121;
+  --color-white: #f1f2f9;
+  --color-accent: #905bff;
+  --color-buy: #a378ff;
+}
+
+.dark-theme {
+  --color-secondary: #89939a;
+  --color-icons: #4a4d58;
+  --color-elements: #3b3e4a;
+  --color-surface2: #b4bdc3;
+  --color-surface1: #e2e6e9;
+  --color-black: #e2e6e9;
+  --color-white: #313237;
+  --color-accent: #313237;
+  --color-buy: #4a4d58;
+}
+
+$font-main: 'Mont';
+
+@mixin desktop-tablet-h1-style {
+  font-family: $font-main;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+}
+
+@mixin desktop-tablet-h2-style {
+  font-family: $font-main;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin desktop-tablet-h3-style {
+  font-family: $font-main;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+@mixin desktop-tablet-h4-style {
+  font-family: $font-main;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+@mixin uppercase-style {
+  font-family: $font-main;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+@mixin buttons-style {
+  font-family: $font-main;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin body-text-style {
+  font-family: $font-main;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin small-text-style {
+  font-family: $font-main;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+// Mobile
+@mixin mobile-h1-style {
+  font-family: $font-main;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin mobile-h2-style {
+  font-family: $font-main;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+@mixin mobile-h3-style {
+  font-family: $font-main;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+@mixin mobile-h4-style {
+  font-family: $font-main;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+@mixin grid-24($gap: 16px) {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: $gap;
+}
+
+@mixin grid-24-mw($gap: 16px) {
+  max-width: calc(24 * 32px + 23 * #{$gap});
+}
+
+@mixin grid-12($gap: 16px) {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: $gap;
+}
+
+@mixin grid-4($gap: 16px) {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $gap;
+}
+
+@mixin grid-4-mw($gap: 16px) {
+  max-width: calc(4 * 1fr + 3 * #{$gap});
+}
