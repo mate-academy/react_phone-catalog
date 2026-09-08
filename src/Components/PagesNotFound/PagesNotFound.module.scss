@@ -1,0 +1,32 @@
+@import '../styles/main';
+
+.page {
+  height: 100%;
+  &ONDARK {
+    background-color: black;
+  }
+
+.image {
+      width: 100%;
+      &container {
+        margin: 0 auto;
+        width: 80%;
+        @include on-tablet {
+          width: 50%;
+        }
+      }
+    }
+
+    .title {
+      padding-top: 50px;
+      width: 100%;
+      color: var(--primary-font-color);
+      background-color: var(--background-color);
+font-family: Mont-bold, sans-serif;
+font-size: 48px;
+font-weight: 800;
+line-height: 56px;
+letter-spacing: -0.01em;
+
+    }
+  }

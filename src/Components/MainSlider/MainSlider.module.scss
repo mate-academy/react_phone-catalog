@@ -1,0 +1,32 @@
+@import '../styles/main';
+
+.MainSlider {
+  display: flex;
+  align-items: end;
+
+  @include slider-on-tablet {
+    justify-content: center;
+  }
+  &__image {
+    width: 100%;
+    margin: 0 auto;
+    &ONTABLET {
+      display: none;
+      
+      @include slider-on-tablet {
+        margin: 0 auto;
+        width: 80%;
+      display: inline-block;
+      flex-direction: column;
+
+      }
+
+    }
+
+    @include slider-on-tablet {
+      display: none;
+
+    }
+
+  }
+}

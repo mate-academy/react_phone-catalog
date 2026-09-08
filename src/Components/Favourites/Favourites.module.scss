@@ -1,0 +1,154 @@
+@import '../styles/main';
+
+.emptycard {
+  background-color: var(--favourite-background);
+  height: 80vh;
+  &ONDARK {
+    background-color: rgb(28, 27, 27);
+  }
+  &image {
+    background-image: url('../../../public/img/product-not-found.png');
+    background-repeat: no-repeat;
+    background-size: 100% 250px;
+    background-position: 50%;
+    height: 90%;
+    width: 100%;
+    @include on-desktop {
+      height: 80%;
+      background-size: 100% 450px;
+    }
+    &ONDARK {
+      background-color: rgb(28, 27, 27);
+      padding-top: 100px;
+      background-image: url('../../../public/img/product-not-found.png');
+      background-repeat: no-repeat;
+      background-position: 50%;
+      background-size: 100% 250px;
+      height: 90%;
+      width: 100%;
+          @include on-desktop {
+      height: 80%;
+      background-size: 100% 450px;
+    }
+    }
+  }
+
+  &title {
+    background-color: var(--favourite-background);
+    color: var(--primary-font-color);
+    font-family: Mont-bold, sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 80px;
+    height: 110px;
+    letter-spacing: -0.01em;
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 110px;
+    }
+  }
+  &container {
+    width: 350px;
+    height: 100%;
+    margin: 0 auto;
+    @include on-tablet {
+    width: 550px;
+    }
+    @include on-desktop {
+    width: 800px;
+    }
+  }
+}
+
+.favourites {
+  background-color: var(--background-color);
+}
+
+.breadcrumbs {
+  display: flex;
+  margin-left: 16px;
+  padding-top: 25px;
+  &__home {
+    &ONDARK {
+      background-image: url('../../../public/img/Home-white.svg');
+      background-repeat: no-repeat;
+      background-position: 0% 1%;
+      background-size: 16px 16px;
+      width: 26px;
+      height: 32px;
+      transform: scale(1);
+      transition: 0.3s ease-in transform;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1);
+        transition: 0.3s ease-in transform;
+      }
+    }
+
+    background-image: url('../../../public/img/Home.svg');
+    background-repeat: no-repeat;
+    background-position: 0% 1%;
+    background-size: 16px 16px;
+    width: 26px;
+    height: 32px;
+    transform: scale(1);
+    transition: 0.3s ease-in transform;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+      transition: 0.3s ease-in transform;
+    }
+  }
+  &__text {
+    color: var(--primary-font-color);
+    margin-top: 2px;
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    text-align: left;
+    transform: scale(1);
+    transition: 0.3s ease-in transform;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+      transition: 0.3s ease-in transform;
+      color: var(--breadcrumbs-hover);
+    }
+  }
+}
+
+.title {
+  color: var(--primary-font-color);
+  font-family: Mont-bold, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  margin-left: 16px;
+}
+
+.amountofitems {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  color: var(--secondary-font-color);
+  margin-left: 16px;
+}
+
+.content {
+  display: flex;
+  flex-flow: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 40px;
+  padding-bottom: 40px;
+
+  @include on-desktop {
+    width: 1200px;
+    margin: 50px auto 0;
+  }
+}
