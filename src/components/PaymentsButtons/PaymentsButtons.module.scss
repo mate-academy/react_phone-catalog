@@ -1,0 +1,14 @@
+.payments__buttons {
+  display: flex;
+  height: 40px;
+  width: 100%;
+  gap: 8px;
+
+  &.page {
+    height: 48px;
+  }
+
+  &-add {
+    flex: 1;
+  }
+}

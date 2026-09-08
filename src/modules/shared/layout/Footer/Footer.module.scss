@@ -1,0 +1,72 @@
+@use '../../../../styles/utils.scss' as utils;
+
+.footer {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: utils.$color-elements;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+    padding-block: 32px;
+
+    @include utils.on-tablet {
+      align-items: center;
+      height: 32px;
+      flex-direction: row;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    flex: 1;
+
+    &-img {
+      height: 32px;
+      width: 89px;
+
+      @include utils.on-tablet {
+        height: auto;
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    justify-content: space-between;
+    flex: 1;
+
+    @include utils.on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__button-top {
+    align-self: center;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    column-gap: 16px;
+    height: 32px;
+
+    @include utils.on-tablet {
+      height: 100%;
+      flex: 1;
+    }
+
+    &-text {
+      color: utils.$color-secondary;
+    }
+  }
+}

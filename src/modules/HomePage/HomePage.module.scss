@@ -1,0 +1,17 @@
+@use '../../styles/utils' as utils;
+
+.welcome {
+  display: block;
+}
+
+.welcome__title {
+  padding-block: 24px;
+
+  @include utils.on-tablet {
+    padding-block: 32px;
+  }
+
+  @include utils.on-desktop {
+    padding-block: 56px;
+  }
+}

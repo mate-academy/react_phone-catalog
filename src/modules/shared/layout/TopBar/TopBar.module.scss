@@ -1,0 +1,76 @@
+@use '../../../../styles/utils.scss' as utils;
+
+.top-bar {
+  width: 100%;
+  height: 48px;
+  position: relative;
+
+  @include utils.on-desktop {
+    height: 64px;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 100vw;
+    background-color: utils.$color-elements;
+    position: absolute;
+    bottom: 0;
+  }
+
+  @include utils.on-tablet {
+    width: auto;
+  }
+
+  &__wrapper {
+    padding-inline: 16px;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    display: flex;
+
+    @include utils.on-desktop {
+      padding-inline: 24px;
+    }
+  }
+
+  &__navigation {
+    display: none;
+
+    @include utils.on-tablet {
+      display: flex;
+    }
+  }
+
+  &__left-block {
+    display: flex;
+    align-items: center;
+  }
+
+  &__right-block {
+    border-left: 1px solid utils.$color-elements;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+
+    @include utils.on-tablet {
+      display: none;
+    }
+  }
+
+  &__logo {
+    display: flex;
+
+    @include utils.on-desktop {
+      height: 28px;
+    }
+
+    img {
+      @include utils.on-desktop {
+        width: 80px;
+      }
+    }
+  }
+}

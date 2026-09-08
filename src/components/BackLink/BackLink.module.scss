@@ -1,0 +1,7 @@
+@use '../../styles/utils' as utils;
+
+.back-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

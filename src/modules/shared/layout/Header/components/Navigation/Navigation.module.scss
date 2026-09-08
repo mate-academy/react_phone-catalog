@@ -1,0 +1,159 @@
+@use '../../../../../../styles/utils.scss' as utils;
+
+.nav {
+  width: 100%;
+
+  @include utils.on-tablet {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  &__links {
+    text-align: center;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    @include utils.on-tablet {
+      gap: 32px;
+      flex-direction: row;
+      text-align: center;
+      align-items: center;
+      margin-top: 0;
+    }
+
+    @include utils.on-desktop {
+      gap: 64px;
+    }
+
+    &--item {
+      height: 100%;
+    }
+
+    &--link {
+      color: utils.$color-secondary;
+      padding-block: 8px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: fit-content;
+      transition: color 0.3s ease-in-out;
+
+      @include utils.on-tablet {
+        padding-block: 0;
+      }
+
+      &::after {
+        @include utils.link-underline;
+
+        width: 0;
+      }
+
+      &:hover {
+        color: utils.$color-white;
+
+        &::after {
+          // transform: scaleX(1);
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &__buttons {
+    border-top: 1px solid utils.$color-elements;
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    left: 0;
+    height: 64px;
+
+    width: 100%;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      width: 1px;
+      height: 100%;
+      background-color: utils.$color-elements;
+
+      @include utils.on-tablet {
+        display: none;
+      }
+    }
+
+    @include utils.on-tablet {
+      position: relative;
+      border-top: none;
+      justify-content: start;
+      width: auto;
+      height: 100%;
+    }
+
+    &--item {
+      flex: 1;
+
+      @include utils.on-tablet {
+        width: 48px;
+        border-left: 1px solid utils.$color-elements;
+      }
+
+      @include utils.on-desktop {
+        width: 64px;
+      }
+    }
+
+    &--link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      position: relative;
+
+      &::after {
+        @include utils.link-underline;
+
+        transform: scaleX(0);
+      }
+
+      &:hover {
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+
+    &--count {
+      position: absolute;
+      left: 50%;
+      bottom: 50%;
+      border-radius: 100%;
+      background-color: utils.$color-red;
+      border: 1px solid utils.$color-black;
+      aspect-ratio: 1 / 1;
+      width: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-weight: 700;
+      font-size: 9px;
+    }
+  }
+}
+
+.active {
+  color: utils.$color-white;
+  position: relative;
+
+  &::after {
+    @include utils.link-underline;
+  }
+}
