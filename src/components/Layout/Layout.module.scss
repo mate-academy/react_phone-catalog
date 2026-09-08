@@ -1,0 +1,42 @@
+@import '../../styles/mixins' ;
+@import '../../styles/variables';
+
+.content {
+display: grid;
+  gap: 16px;
+  justify-content: center;
+  min-height: 100vh;
+ 
+  @include respond-to('mobile') {
+    grid-template-columns: repeat(4, 1fr);
+  max-width: 639px;
+margin: 0 16px;
+
+  }
+
+  @include respond-to('tablet') {
+    grid-template-columns: repeat(12, 1fr);
+  max-width: 1199px;
+margin: 0 24px;
+
+  }
+
+  @include respond-to('desktop') {
+    grid-template-columns: repeat(24, 1fr);
+max-width: 1200px;
+margin: 0 auto;
+
+  
+
+  }
+  
+
+
+ 
+
+
+
+
+}
+
+

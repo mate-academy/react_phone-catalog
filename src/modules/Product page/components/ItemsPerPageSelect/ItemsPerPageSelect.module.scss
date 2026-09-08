@@ -1,0 +1,91 @@
+@import '../../../../styles//mixins';
+
+.ItemsPerPageSelect {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  &__selected {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    width: 130px;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid #b4bdc3;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    background-color: #fff;
+
+
+  @include respond-to('mobile') {
+    width: 136px;
+  }
+
+
+
+  @include respond-to('desktop') {
+    width: 128px;
+  }
+  }
+
+  &__arrow {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+    &_open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__options {
+    position: absolute;
+    z-index: 10;
+    top: calc(100% + 4px);
+    left: 0;
+    transform-origin: top;
+    transform: scaleY(0);
+
+    width: 100%;
+    max-height: 200px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #b4bdc3;
+    border-radius: 8px;
+
+    list-style: none;
+
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); ;
+
+    transition: transform 0.3s ease;
+
+    &_open {
+      transform: scaleY(1);
+    }
+  }
+
+  &__option {
+    cursor: pointer;
+    padding: 8px 12px;
+    font-weight: 500;
+    color: #89939a;
+
+    &:hover {
+      color: #0f0f11;
+      background-color: #fafbfc;
+    }
+  }
+
+  &__label {
+    font-size: 12px;
+    font-weight: 600;
+color: #89939A;
+  }
+}

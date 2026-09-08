@@ -1,0 +1,179 @@
+@import '../../../../styles/mixins';
+@import '../../../../styles/variables';
+
+body {
+  overflow-x: hidden;
+}
+
+.full-width-wrapper {
+  margin-right: calc(-1 * 16px);
+  margin-left: calc(-1 * 16px);
+
+  @include respond-to('mobile') {
+    margin-right: -24px;
+    margin-left: -24px;
+  }
+
+  @include respond-to('tablet') {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.Carousel {
+  position: relative;
+
+  display: flex;
+  grid-column: span 12;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 100vw;
+  margin-bottom: 80px;
+  
+
+  // Задаємо співвідношення сторін
+  @include respond-to('mobile') {
+    aspect-ratio: 1 / 1;
+  }
+
+  @include respond-to('tablet') {
+    aspect-ratio: 3 / 1;
+  }
+
+  @include respond-to('desktop') {
+    aspect-ratio: 3 / 1;
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__dots {
+    position: absolute;
+    z-index: 10;
+    bottom: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: 10px;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    border: none;
+    background-color: #e2e6e9;
+
+    &_container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 24px;
+      height: 24px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &_active {
+      background-color: #0f0f11;
+    }
+  }
+
+  &__viewport {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__list {
+    display: flex;
+
+    width: 100%;
+    max-width: 100%;
+    height: 100%; // щоб уніфікувати висоту
+    padding: 0;
+
+    list-style: none;
+
+    transition: transform var(--transition-duration, 300ms) ease;
+  }
+
+  &__item {
+    flex-shrink: 0;
+    height: 100%; // обов’язково
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    &:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+
+    @include respond-to('mobile') {
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+
+    @include respond-to('tablet') {
+      aspect-ratio: 3 / 1;
+      border-radius: 8px;
+    }
+
+    @include respond-to('desktop') {
+      object-fit: contain;
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 100%; // ⬅️ тепер буде як зображення
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+
+    background-color: #fff;
+
+    transition: background-color 0.3s ease;
+
+    @include respond-to('mobile') {
+      display: none;
+    }
+
+    @include respond-to('tablet') {
+      display: flex;
+    }
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+
+    &:disabled,
+    &.disabled {
+      cursor: not-allowed;
+      background-color: #e0e0e0;
+    }
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}

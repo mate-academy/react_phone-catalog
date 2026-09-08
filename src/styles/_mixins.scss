@@ -1,0 +1,21 @@
+/* stylelint-disable scss/no-global-function-names */
+/* stylelint-disable scss/at-if-closing-brace-newline-after, scss/at-if-closing-brace-space-after, scss/at-else-empty-line-before */
+
+@import './variables';
+
+@mixin respond-to($breakpoint) {
+
+    @if map-has-key($breakpoints , $breakpoint ) {
+        $value: map-get($breakpoints, $breakpoint);
+
+        @media (min-width: $value) {
+            @content;
+        }
+    }
+
+ @else {
+        @warn "Breakpoint `#{$breakpoint}` not found in \$breakpoints map.";
+
+    }
+}
+/* stylelint-enable */
