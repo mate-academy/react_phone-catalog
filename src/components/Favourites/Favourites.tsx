@@ -1,0 +1,37 @@
+import React, { FC, useContext } from 'react';
+import './Favourites.scss';
+import classNames from 'classnames';
+import { NavLink } from 'react-router-dom';
+import { ProductsContext } from '../context/ProductsContext';
+import { ItemsCount } from '../ItemsCount';
+import { getLinkClass } from '../Menu';
+
+export const Favourites: FC<{ isMobile?: boolean; onClose?: () => void }> = ({
+  isMobile,
+  onClose,
+}) => {
+  const { favourites } = useContext(ProductsContext);
+
+  return (
+    <div
+      className={classNames('favourites', {
+        'favourites--mobile': isMobile,
+      })}
+    >
+      <NavLink
+        to="favourites"
+        className={({ isActive }) =>
+          getLinkClass({ isActive, className: 'favourites__link' })
+        }
+        onClick={onClose}
+      >
+        <img
+          src="./img/favourites.svg"
+          alt="Fvourites items"
+          className="favourites__image"
+        />
+        {favourites.length > 0 && <ItemsCount count={favourites.length} />}
+      </NavLink>
+    </div>
+  );
+};

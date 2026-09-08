@@ -1,0 +1,16 @@
+@import '../../utils';
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: $secondary;
+  border: none;
+  background-color: #fafbfc;
+
+  font-family: $font-family;
+  font-weight: 700;
+  font-size: 12px;
+
+  cursor: pointer;
+}
