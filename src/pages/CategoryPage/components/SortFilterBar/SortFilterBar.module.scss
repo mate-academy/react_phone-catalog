@@ -1,0 +1,30 @@
+@import '../../../../styles/utils';
+
+.sort-filter-bar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.sort-filter-bar__item label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.sort-filter-bar__sort-by {
+  width: 160px;
+
+  @include on-tablet {
+    width: 187px;
+  }
+}
+
+.sort-filter-bar__page {
+  width: 122px;
+
+  @include on-tablet {
+    width: 128px;
+  }
+}

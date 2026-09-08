@@ -1,0 +1,345 @@
+@import '../../../../styles/utils';
+
+.bannerSlider {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0;
+  margin: 0 auto;
+
+  @include on-tablet {
+    gap: 19px;
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    gap: 16px;
+  }
+}
+
+.swiperOuter {
+  grid-column: 2 / 3;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+}
+
+.swiperWrapper {
+  // border-radius: var(--select-border-radius);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  @include on-tablet {
+    aspect-ratio: auto;
+    height: 189px;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}
+
+.swiperSlide {
+}
+
+.slide {
+  background-color: #000;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  text-decoration: none; // Прибираємо підкреслення тексту
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  overflow: hidden;
+  gap: 7vw;
+
+  @include on-tablet {
+    grid-template-rows: initial;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    aspect-ratio: auto;
+    height: 189px;
+    border-radius: var(--select-border-radius); // Загальне заокруглення банера
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}
+
+.slideLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 5vw;
+  padding-top: 8vw;
+  padding-inline: 5px;
+
+  @include on-tablet {
+    gap: 0;
+    background-color: #1a1a1a;
+    border-radius: 20px;
+    margin: 14px;
+    padding: 0;
+    padding-inline: 16px;
+    padding-top: 16px;
+    flex-direction: column;
+    justify-content: initial;
+    align-items: flex-start;
+    text-align: initial;
+  }
+
+  @include on-desktop {
+    margin: 20px;
+    padding-inline: 20px;
+    padding-top: 40px;
+  }
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  @include on-tablet {
+    gap: 7px;
+  }
+
+  @include on-desktop {
+    gap: 12px;
+  }
+}
+
+.slideRigth {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // Назва зверху, фото знизу
+  align-items: center;
+  padding-bottom: 0; // Зображення має торкатися низу
+
+  @include on-tablet {
+    gap: 5px;
+  }
+}
+
+.slideTitle {
+  @extend %h1;
+
+  color: var(--white);
+  text-align: center;
+  line-height: 1.1;
+  font-weight: 600;
+
+  @include on-tablet {
+    font-size: 26px;
+    line-height: 26px;
+    margin-top: 24px;
+  }
+
+  @include on-desktop {
+    font-size: 38px;
+    line-height: 38px;
+    margin-top: 90px;
+
+    &.watchImage {
+      margin-top: 50px;
+    }
+  }
+}
+
+.slideSubtitle {
+  @extend %h3;
+
+  // Градієнтний текст
+  background: linear-gradient(95.06deg, #5d41b2 28.05%, #d662fe 98.89%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+
+  // line-height: 1.1;
+  // font-size: 22px;
+
+  @include on-tablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  @include on-desktop {
+    font-size: 43px;
+    line-height: 47px;
+  }
+}
+
+.slideExtra {
+  @extend %small_text;
+
+  color: #89939a;
+  font-size: 11px;
+  font-weight: 600;
+
+  @include on-tablet {
+    font-size: 12px;
+  }
+
+  @include on-desktop {
+    font-size: 16px;
+  }
+}
+
+// щоб назви не ставали синіми як посилання
+.slideTitle,
+.slideSubtitle,
+.slideExtra {
+  user-select: none; // Щоб текст не виділявся випадково при кліку
+}
+
+.slideImg {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin-top: auto; // Притискає картинку до низу
+  transition: transform 0.3s ease;
+  will-change: transform;
+
+  @include on-tablet {
+    width: 90%;
+    max-height: 115px;
+  }
+
+  @include on-desktop {
+    max-height: none;
+    width: 100%;
+  }
+}
+
+// Специфічний стиль для годинника
+.watchImage {
+  padding-bottom: 5vw; // Піднімаємо картинку від низу
+  width: 84%;
+  // max-width: 90%;       // Можна трохи зменшити, щоб виглядав гармонійно
+
+  @include on-tablet {
+    padding-bottom: 8px; // Більший відступ на десктопі
+    width: 65%;
+    max-height: 118px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 14px; // Більший відступ на десктопі
+    width: 90%;
+    padding-right: 10px;
+    max-height: none;
+  }
+}
+
+.linkButton {
+  @extend %buttons_text;
+
+  color: #fff;
+  background: #313237;
+  border-radius: 48px;
+  padding: 14px 32px;
+  display: none; // Сховано на мобільних за замовчуванням
+  text-transform: uppercase;
+  transition: background 0.3s;
+
+  @include on-tablet {
+    display: inline-flex; // З'являється на планшетах та десктопах
+    padding: 8px 22px;
+    margin-top: auto;
+    margin-bottom: 14px;
+  }
+
+  @include on-desktop {
+    padding: 20px 40px;
+    margin-bottom: 40px;
+  }
+
+  &:hover {
+    background: #4a4b51;
+  }
+}
+
+// Ефект при наведенні на ВЕСЬ слайд (оскільки це Link)
+.slide:hover {
+  .slideImg {
+    transform: scale(1.03); // Легке збільшення при наведенні
+  }
+}
+
+/* Кнопки навігації */
+.prevBtn {
+  grid-column: 1 / 2;
+}
+.nextBtn {
+  grid-column: 3 / 4;
+}
+
+.navBtn {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: auto;
+    background-color: var(--button-bg-color-default);
+    cursor: pointer;
+    border-radius: var(--button-round-square-radius);
+    border: 1px solid var(--button-border-color-default);
+    color: var(--primary);
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  &:hover {
+    border-color: var(--button-border-color-hover);
+    background-color: var(--button-bg-color-hover);
+  }
+}
+
+.customPagination {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.customBullet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  transition: background-color 0.3s;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 4px;
+    background-color: var(--elements); /* Неактивний колір */
+    transition: background-color 0.3s ease;
+  }
+
+  &:hover::after {
+    background-color: var(--primary);
+  }
+}
+
+.activeBullet {
+  &::after {
+    background-color: var(--primary); /* Активний колір */
+  }
+}

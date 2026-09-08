@@ -1,0 +1,40 @@
+@import '../../styles/utils';
+
+.price-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  color: var(--primary);
+}
+
+.price--small {
+  @extend %h3; // Стиль для картки (менший)
+}
+
+.price--large {
+  @extend %h2; // Стиль для сторінки деталей (більший)
+}
+
+.price--full {
+  position: relative;
+  z-index: 1;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 100%;
+  color: var(--secondary);
+}
+
+.price--full::after {
+  position: absolute;
+  background-color: var(--secondary);
+  bottom: 46%;
+  content: "";
+  display: block;
+  height: 10%;
+  mix-blend-mode: var(--price-full-mix-blend-mode);
+  text-align: center;
+  width: 100%;
+}

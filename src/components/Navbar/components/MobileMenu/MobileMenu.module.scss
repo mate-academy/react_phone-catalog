@@ -1,0 +1,136 @@
+@import '../../../../styles/utils';
+
+.mobileMenu {
+  position: fixed;
+  top: 48px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  visibility: hidden;
+  background-color: var(--background-color);
+  border-top: solid 1px var(--elements);
+  z-index: 9;
+  min-width: 320px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out, visibility 0.3s;
+
+  @include on-desktop {
+    top: 64px;
+  }
+
+  &.open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+}
+
+.menuNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.menuNav-item {
+  @extend %uppercase;
+  @extend %underline;
+
+  text-decoration: none;
+  color: var(--secondary);
+  padding-block: 8px;
+  box-sizing: border-box;
+
+  &::after {
+    height: 2px;
+  }
+
+  @include hover(color, var(--primary));
+}
+
+.menuNav-item-active {
+  color: var(--primary);
+
+  &::after {
+    transform: scaleX(1);
+  }
+}
+
+.selects {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.buttons {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  gap: 1px;
+  border-top: 1px solid var(--elements);
+  z-index: 10;
+}
+
+.icon__button {
+  flex-grow: 1;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  @extend %underline;
+
+  &::after {
+    height: 2px;
+  }
+}
+
+.icon__button__active {
+  &::after {
+    transform: scaleX(1);
+  }
+}
+
+.icon__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 64px;
+  box-shadow: -1px 0px 0px 0px var(--elements);
+}
+
+.icon__item__content {
+  position: relative;
+}
+
+.icon__button:first-child .icon__item {
+  box-shadow: none;
+}
+
+.icon {
+  display: flex;
+  width: 16px;
+  height: 16px;
+}
+
+.notification-badge {
+  box-sizing: border-box;
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  background-color: var(--heart-liked);
+  color: var(--heart-text-color);
+  border-radius: 50%;
+  border: 1px solid var(--heart-border-color);
+  width: 14px;
+  height: 14px;
+  font-weight: 700;
+  font-size: 9px;
+  text-align: center;
+}

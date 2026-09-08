@@ -1698,5 +1698,281 @@
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
+  },
+  {
+    "id": "apple-ipad-pro-13-m4-2024-2tb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-pro-13-m4-2024",
+    "name": "Apple iPad Pro 13 (2024) 2TB Silver",
+    "capacityAvailable": ["512GB", "1TB", "2TB"],
+    "capacity": "2TB",
+    "priceRegular": 3388,
+    "priceDiscount": 3058,
+    "colorsAvailable": ["silver", "space-black"],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-pro-13-m4-2024/silver/00.webp",
+      "img/tablets/apple-ipad-pro-13-m4-2024/silver/01.webp",
+      "img/tablets/apple-ipad-pro-13-m4-2024/silver/02.webp"
+    ],
+    "description": [
+      {
+        "title": "M5. Creator. Accelerator.",
+        "text": [
+          "The M5 chip pushes the limits of what’s possible on iPad Pro to deliver performance and efficiency like never before. A next-generation 10‑core GPU with powerful new Neural Accelerators dramatically speeds up AI tasks — from large language model (LLM) token generation to generative imagery. And the multi‑threaded CPU performance and faster memory deliver breakthrough speed for your workflows."
+        ]
+      },
+      {
+        "title": "iPadOS and apps. A tour de workforce.",
+        "text": [
+          "iPadOS 26 introduces a stunning new design with Liquid Glass and game-changing enhancements that put iPad Pro productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games and take on creative projects of any size with an intuitive touch-first experience.",
+          "Next-level productivity. Open more windows at once, resize and rearrange them your way, and split your screen into thirds or quarters."
+        ]
+      },
+      {
+        "title": "Apple Pencil Pro. Engineered for limitless creativity.",
+        "text": [
+          "Apple Pencil sets the standard for how drawing, painting, handwriting and note-taking should feel — intuitive, precise and magical. All with pixel‑perfect precision, low latency, tilt sensitivity and support for palm rejection.",
+          "And Apple Pencil Pro adds even more capabilities to bring your ideas to life like never before."
+        ]
+      }
+    ],
+    "screen": "13' Ultra Retina",
+    "resolution": "2752x2064",
+    "processor": "Apple M4",
+    "ram": "16GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": ["Wi-Fi", "Bluetooth"]
+  },
+  {
+    "id": "apple-ipad-pro-13-m4-2024-2tb-space-black",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-pro-13-m4-2024",
+    "name": "Apple iPad Pro 13 (2024) 2TB Space Black",
+    "capacityAvailable": ["512GB", "1TB", "2TB"],
+    "capacity": "2TB",
+    "priceRegular": 3388,
+    "priceDiscount": 3058,
+    "colorsAvailable": ["silver", "space-black"],
+    "color": "space-black",
+    "images": [
+      "img/tablets/apple-ipad-pro-13-m4-2024/spaceblack/00.webp",
+      "img/tablets/apple-ipad-pro-13-m4-2024/spaceblack/01.webp",
+      "img/tablets/apple-ipad-pro-13-m4-2024/spaceblack/02.webp"
+    ],
+    "description": [
+      {
+        "title": "M5. Creator. Accelerator.",
+        "text": [
+          "The M5 chip pushes the limits of what’s possible on iPad Pro to deliver performance and efficiency like never before. A next-generation 10‑core GPU with powerful new Neural Accelerators dramatically speeds up AI tasks — from large language model (LLM) token generation to generative imagery. And the multi‑threaded CPU performance and faster memory deliver breakthrough speed for your workflows."
+        ]
+      },
+      {
+        "title": "iPadOS and apps. A tour de workforce.",
+        "text": [
+          "iPadOS 26 introduces a stunning new design with Liquid Glass and game-changing enhancements that put iPad Pro productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games and take on creative projects of any size with an intuitive touch-first experience.",
+          "Next-level productivity. Open more windows at once, resize and rearrange them your way, and split your screen into thirds or quarters."
+        ]
+      },
+      {
+        "title": "Apple Pencil Pro. Engineered for limitless creativity.",
+        "text": [
+          "Apple Pencil sets the standard for how drawing, painting, handwriting and note-taking should feel — intuitive, precise and magical. All with pixel‑perfect precision, low latency, tilt sensitivity and support for palm rejection.",
+          "And Apple Pencil Pro adds even more capabilities to bring your ideas to life like never before."
+        ]
+      }
+    ],
+    "screen": "13' Ultra Retina",
+    "resolution": "2752x2064",
+    "processor": "Apple M4",
+    "ram": "16GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": ["Wi-Fi", "Bluetooth"]
+  },
+  {
+    "id": "apple-ipad-pro-13-m4-2024-1tb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-pro-13-m4-2024",
+    "name": "Apple iPad Pro 13 (2024) 1TB Silver",
+    "capacityAvailable": ["512GB", "1TB", "2TB"],
+    "capacity": "1TB",
+    "priceRegular": 2799,
+    "priceDiscount": 2529,
+    "colorsAvailable": ["silver", "space-black"],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-pro-13-m4-2024/silver/00.webp",
+      "img/tablets/apple-ipad-pro-13-m4-2024/silver/01.webp",
+      "img/tablets/apple-ipad-pro-13-m4-2024/silver/02.webp"
+    ],
+    "description": [
+      {
+        "title": "M5. Creator. Accelerator.",
+        "text": [
+          "The M5 chip pushes the limits of what’s possible on iPad Pro to deliver performance and efficiency like never before. A next-generation 10‑core GPU with powerful new Neural Accelerators dramatically speeds up AI tasks — from large language model (LLM) token generation to generative imagery. And the multi‑threaded CPU performance and faster memory deliver breakthrough speed for your workflows."
+        ]
+      },
+      {
+        "title": "iPadOS and apps. A tour de workforce.",
+        "text": [
+          "iPadOS 26 introduces a stunning new design with Liquid Glass and game-changing enhancements that put iPad Pro productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games and take on creative projects of any size with an intuitive touch-first experience.",
+          "Next-level productivity. Open more windows at once, resize and rearrange them your way, and split your screen into thirds or quarters."
+        ]
+      },
+      {
+        "title": "Apple Pencil Pro. Engineered for limitless creativity.",
+        "text": [
+          "Apple Pencil sets the standard for how drawing, painting, handwriting and note-taking should feel — intuitive, precise and magical. All with pixel‑perfect precision, low latency, tilt sensitivity and support for palm rejection.",
+          "And Apple Pencil Pro adds even more capabilities to bring your ideas to life like never before."
+        ]
+      }
+    ],
+    "screen": "13' Ultra Retina",
+    "resolution": "2752x2064",
+    "processor": "Apple M4",
+    "ram": "16GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": ["Wi-Fi", "Bluetooth"]
+  },
+  {
+    "id": "apple-ipad-pro-13-m4-2024-1tb-space-black",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-pro-13-m4-2024",
+    "name": "Apple iPad Pro 13 (2024) 1TB Space Black",
+    "capacityAvailable": ["512GB", "1TB", "2TB"],
+    "capacity": "1TB",
+    "priceRegular": 2799,
+    "priceDiscount": 2529,
+    "colorsAvailable": ["silver", "space-black"],
+    "color": "space-black",
+    "images": [
+      "img/tablets/apple-ipad-pro-13-m4-2024/spaceblack/00.webp",
+      "img/tablets/apple-ipad-pro-13-m4-2024/spaceblack/01.webp",
+      "img/tablets/apple-ipad-pro-13-m4-2024/spaceblack/02.webp"
+    ],
+    "description": [
+      {
+        "title": "M5. Creator. Accelerator.",
+        "text": [
+          "The M5 chip pushes the limits of what’s possible on iPad Pro to deliver performance and efficiency like never before. A next-generation 10‑core GPU with powerful new Neural Accelerators dramatically speeds up AI tasks — from large language model (LLM) token generation to generative imagery. And the multi‑threaded CPU performance and faster memory deliver breakthrough speed for your workflows."
+        ]
+      },
+      {
+        "title": "iPadOS and apps. A tour de workforce.",
+        "text": [
+          "iPadOS 26 introduces a stunning new design with Liquid Glass and game-changing enhancements that put iPad Pro productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games and take on creative projects of any size with an intuitive touch-first experience.",
+          "Next-level productivity. Open more windows at once, resize and rearrange them your way, and split your screen into thirds or quarters."
+        ]
+      },
+      {
+        "title": "Apple Pencil Pro. Engineered for limitless creativity.",
+        "text": [
+          "Apple Pencil sets the standard for how drawing, painting, handwriting and note-taking should feel — intuitive, precise and magical. All with pixel‑perfect precision, low latency, tilt sensitivity and support for palm rejection.",
+          "And Apple Pencil Pro adds even more capabilities to bring your ideas to life like never before."
+        ]
+      }
+    ],
+    "screen": "13' Ultra Retina",
+    "resolution": "2752x2064",
+    "processor": "Apple M4",
+    "ram": "16GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": ["Wi-Fi", "Bluetooth"]
+  },
+  {
+    "id": "apple-ipad-pro-13-m4-2024-512gb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-pro-13-m4-2024",
+    "name": "Apple iPad Pro 13 (2024) 512GB Silver",
+    "capacityAvailable": ["512GB", "1TB", "2TB"],
+    "capacity": "512GB",
+    "priceRegular": 2211,
+    "priceDiscount": 1999,
+    "colorsAvailable": ["silver", "space-black"],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-pro-13-m4-2024/silver/00.webp",
+      "img/tablets/apple-ipad-pro-13-m4-2024/silver/01.webp",
+      "img/tablets/apple-ipad-pro-13-m4-2024/silver/02.webp"
+    ],
+    "description": [
+      {
+        "title": "M5. Creator. Accelerator.",
+        "text": [
+          "The M5 chip pushes the limits of what’s possible on iPad Pro to deliver performance and efficiency like never before. A next-generation 10‑core GPU with powerful new Neural Accelerators dramatically speeds up AI tasks — from large language model (LLM) token generation to generative imagery. And the multi‑threaded CPU performance and faster memory deliver breakthrough speed for your workflows."
+        ]
+      },
+      {
+        "title": "iPadOS and apps. A tour de workforce.",
+        "text": [
+          "iPadOS 26 introduces a stunning new design with Liquid Glass and game-changing enhancements that put iPad Pro productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games and take on creative projects of any size with an intuitive touch-first experience.",
+          "Next-level productivity. Open more windows at once, resize and rearrange them your way, and split your screen into thirds or quarters."
+        ]
+      },
+      {
+        "title": "Apple Pencil Pro. Engineered for limitless creativity.",
+        "text": [
+          "Apple Pencil sets the standard for how drawing, painting, handwriting and note-taking should feel — intuitive, precise and magical. All with pixel‑perfect precision, low latency, tilt sensitivity and support for palm rejection.",
+          "And Apple Pencil Pro adds even more capabilities to bring your ideas to life like never before."
+        ]
+      }
+    ],
+    "screen": "13' Ultra Retina",
+    "resolution": "2752x2064",
+    "processor": "Apple M4",
+    "ram": "8GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": ["Wi-Fi", "Bluetooth"]
+  },
+  {
+    "id": "apple-ipad-pro-13-m4-2024-512gb-space-black",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-pro-13-m4-2024",
+    "name": "Apple iPad Pro 13 (2024) 512GB Space Black",
+    "capacityAvailable": ["512GB", "1TB", "2TB"],
+    "capacity": "512GB",
+    "priceRegular": 2211,
+    "priceDiscount": 1999,
+    "colorsAvailable": ["silver", "space-black"],
+    "color": "space-black",
+    "images": [
+      "img/tablets/apple-ipad-pro-13-m4-2024/spaceblack/00.webp",
+      "img/tablets/apple-ipad-pro-13-m4-2024/spaceblack/01.webp",
+      "img/tablets/apple-ipad-pro-13-m4-2024/spaceblack/02.webp"
+    ],
+    "description": [
+      {
+        "title": "M5. Creator. Accelerator.",
+        "text": [
+          "The M5 chip pushes the limits of what’s possible on iPad Pro to deliver performance and efficiency like never before. A next-generation 10‑core GPU with powerful new Neural Accelerators dramatically speeds up AI tasks — from large language model (LLM) token generation to generative imagery. And the multi‑threaded CPU performance and faster memory deliver breakthrough speed for your workflows."
+        ]
+      },
+      {
+        "title": "iPadOS and apps. A tour de workforce.",
+        "text": [
+          "iPadOS 26 introduces a stunning new design with Liquid Glass and game-changing enhancements that put iPad Pro productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games and take on creative projects of any size with an intuitive touch-first experience.",
+          "Next-level productivity. Open more windows at once, resize and rearrange them your way, and split your screen into thirds or quarters."
+        ]
+      },
+      {
+        "title": "Apple Pencil Pro. Engineered for limitless creativity.",
+        "text": [
+          "Apple Pencil sets the standard for how drawing, painting, handwriting and note-taking should feel — intuitive, precise and magical. All with pixel‑perfect precision, low latency, tilt sensitivity and support for palm rejection.",
+          "And Apple Pencil Pro adds even more capabilities to bring your ideas to life like never before."
+        ]
+      }
+    ],
+    "screen": "13' Ultra Retina",
+    "resolution": "2752x2064",
+    "processor": "Apple M4",
+    "ram": "8GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": ["Wi-Fi", "Bluetooth"]
   }
 ]

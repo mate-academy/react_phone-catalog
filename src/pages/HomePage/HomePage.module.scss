@@ -1,0 +1,74 @@
+@import '../../styles/utils';
+
+.skeleton {
+  @extend %skeleton;
+}
+
+.loadingHomePage {
+  @extend %container;
+  @extend %max_width;
+}
+
+.homePageGrid {
+  display: grid;
+
+  row-gap: 56px;
+
+  @include on-tablet {
+    row-gap: 64px;
+  }
+
+  @include on-desktop {
+    row-gap: 80px;
+  }
+}
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  min-width: 320px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+  }
+}
+
+.heroSection {
+  margin: 0 auto;
+}
+
+.container {
+  @extend %container;
+  @extend %max_width;
+}
+
+.homePage__title {
+  @extend %h1;
+
+  margin-block: 24px;
+
+  @include on-tablet {
+    margin-block: 32px;
+  }
+
+  @include on-desktop {
+    margin-block: 56px;
+  }
+
+  &.skeleton {
+    width: 250px;
+    height: 44px;
+  }
+}
+
+.loading_grid {
+  @extend %product_grid;
+
+  margin: 0 auto;
+  width: 100%;
+}

@@ -1,0 +1,39 @@
+.theme-item {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 4px;
+
+  &--light {
+    background-color: #e2e6e9;
+    color: #fff;
+  }
+
+  &--dark {
+    background-color: #0F1121;
+    color: #F1F2F9;
+  }
+}
+
+.theme-button {
+  width: 40px;
+  height: 14px;
+
+  &--orange { background-color: #F86800; border-radius: 4px; }
+  &--black { background-color: #313237; border-radius: 0; }
+  &--blue { background-color: #216CFF; border-radius: 4px; }
+  &--purple { background-color: #4219D0; border-radius: 48px; }
+  &--dark { background-color: #905BFF; border-radius: 0; }
+}
+
+.theme-heart {
+  width: 14px;
+  height: 14px;
+  border-radius: 48px;
+
+  &--orange { background-color: #216CFF; }
+  &--black { background-color: #EB5757; }
+  &--blue { background-color: #F447AF; }
+  &--purple { background-color: #F4BA47; }
+  &--dark { background-color: #EB5757; }
+}

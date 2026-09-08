@@ -1426,5 +1426,87 @@
     "processor": "Apple S5",
     "ram": "1GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+  },
+  {
+    "id": "apple-watch-ultra-3-49mm-black",
+    "category": "accessories",
+    "namespaceId": "apple-watch-ultra-3",
+    "name": "Apple Watch Ultra 3 49mm Black",
+    "capacityAvailable": ["49mm"],
+    "capacity": "49mm",
+    "priceRegular": 1124,
+    "priceDiscount": 1012,
+    "colorsAvailable": ["black", "blue-ocean"],
+    "color": "black",
+    "images": [
+      "img/accessories/apple-watch-ultra-3/black/00.webp",
+      "img/accessories/apple-watch-ultra-3/black/01.webp"
+    ],
+    "description": [
+      {
+        "title": "Know your body by heart.",
+        "text": [
+          "The more insights you have, the more empowered you are to take action. From the ECG app to the Vitals app and more, Apple Watch Ultra 3 provides a bigger picture of your health, so you can stay informed. And now Ultra 3 takes the next big step in heart health with a pioneering feature — hypertension notifications."
+        ]
+      },
+      {
+        "title": "Satellite communications. Up and running.",
+        "text": [
+          "Now when you’re off the grid without cellular or Wi‑Fi, Ultra 3 can help you stay connected using built‑in satellite communications. And if you need critical help, you can contact emergency services via satellite — right from your wrist."
+        ]
+      },
+      {
+        "title": "Workout media that tunes in to you.",
+        "text": [
+          "Let Apple Music choose the best playlist based on the workout you’re doing and the music you love. Or simply select a playlist or podcast that’s suggested for you."
+        ]
+      }
+    ],
+    "screen": "1.92' OLED",
+    "resolution": "422x514",
+    "processor": "Apple S10",
+    "ram": "1GB",
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+  },
+  {
+    "id": "apple-watch-ultra-3-49mm-blue-ocean",
+    "category": "accessories",
+    "namespaceId": "apple-watch-ultra-3",
+    "name": "Apple Watch Ultra 3 49mm Blue Ocean",
+    "capacityAvailable": ["49mm"],
+    "capacity": "49mm",
+    "priceRegular": 1124,
+    "priceDiscount": 1012,
+    "colorsAvailable": ["black", "blue-ocean"],
+    "color": "blue-ocean",
+    "images": [
+      "img/accessories/apple-watch-ultra-3/blueocean/00.webp",
+      "img/accessories/apple-watch-ultra-3/blueocean/01.webp"
+    ],
+    "description": [
+      {
+        "title": "Know your body by heart.",
+        "text": [
+          "The more insights you have, the more empowered you are to take action. From the ECG app to the Vitals app and more, Apple Watch Ultra 3 provides a bigger picture of your health, so you can stay informed. And now Ultra 3 takes the next big step in heart health with a pioneering feature — hypertension notifications."
+        ]
+      },
+      {
+        "title": "Satellite communications. Up and running.",
+        "text": [
+          "Now when you’re off the grid without cellular or Wi‑Fi, Ultra 3 can help you stay connected using built‑in satellite communications. And if you need critical help, you can contact emergency services via satellite — right from your wrist."
+        ]
+      },
+      {
+        "title": "Workout media that tunes in to you.",
+        "text": [
+          "Let Apple Music choose the best playlist based on the workout you’re doing and the music you love. Or simply select a playlist or podcast that’s suggested for you."
+        ]
+      }
+    ],
+    "screen": "1.92' OLED",
+    "resolution": "422x514",
+    "processor": "Apple S10",
+    "ram": "1GB",
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   }
 ]
