@@ -1,0 +1,11 @@
+export { BurgerIcon } from './burgerIcon';
+export { CloseIcon } from './closeIcon';
+export { CartIcon } from './cartIcon';
+export { HeartIcon } from './heartIcon';
+export { HomeIcon } from './homeIcon';
+export { MinusIcon } from './decreaseIcon';
+export { PlusIcon } from './plusIcon';
+export { ChevronIcon } from './chevronIcon';
+export { SearchIcon } from './searchIcon';
+export { SunIcon } from './sunIcon';
+export { MoonIcon } from './moonIcon';

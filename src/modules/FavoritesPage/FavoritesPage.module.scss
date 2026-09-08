@@ -1,0 +1,24 @@
+@use '../../styles' as s;
+
+.favoritesPage {
+  padding-bottom: 40px;
+
+  &__title {
+    color: var(--text-main-color);
+  }
+
+  &__count {
+    margin-bottom: 32px;
+    color: var(--text-color-secondary);
+
+    @include s.on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__empty {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color-secondary);
+  }
+}

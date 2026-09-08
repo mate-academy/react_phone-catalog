@@ -1,0 +1,139 @@
+@use '../../styles/index' as s;
+
+.product-list-page {
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 32px;
+
+    @include s.on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    font-size: 48px;
+    color: var(--text-main-color);
+  }
+
+  &__meta {
+    justify-content: left;
+    line-height: 21px;
+    color: var(--text-color-secondary);
+  }
+
+  &__controls {
+    margin-bottom: 24px;
+  }
+
+  &__form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__field {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 160px;
+  }
+
+  &__label {
+    font-size: 12px;
+    color: var(--text-color-secondary);
+  }
+
+  &__input {
+    cursor: pointer;
+
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid var(--icons-hover);
+
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-main-color);
+
+    background: var(--added-button);
+  }
+
+  &__select-wrap {
+    position: relative;
+    display: block;
+    color: var(--text-main-color);
+  }
+
+  &__select {
+    cursor: pointer;
+
+    width: 100%;
+    height: 40px;
+    padding: 0 40px 0 12px;
+    border: 1px solid var(--pagination-border-color);
+    
+    font-family: s.$font-family;
+    font-size: 14px;
+    color: var(--text-main-color);
+
+    appearance: none;
+    background: var(--added-button);
+  }
+
+  &__select-icon {
+    pointer-events: none;
+
+    position: absolute;
+    top: 30%;
+    right: 16px;
+
+    color: var(--text-color-secondary);
+  }
+
+  &__pagination {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+
+    margin: 28px 0;
+  }
+
+  &__page-btn {
+    cursor: pointer;
+
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+
+    background: transparent;
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+
+  &__pages {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    color: var(--text-color-secondary);
+  }
+
+  &__page-current {
+    font-weight: 800;
+    color: var(--text-main-color);
+  }
+
+  &__error {
+    padding: 16px 0;
+    color: s.$red;
+  }
+
+  &__empty {
+    color: var(--text-main-color);
+  }
+}

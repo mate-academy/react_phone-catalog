@@ -1,0 +1,64 @@
+@use '../../styles' as s;
+
+.confirmModal {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: s.$black;
+
+  &__content {
+    width: 100%;
+    max-width: 320px;
+    padding: 24px;
+    border: 1px solid var(--border-color);
+
+    color: var(--text-main-color);
+
+    background: var(--bg-card-color);
+  }
+
+  &__message {
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+
+  &__confirm,
+  &__cancel {
+    cursor: pointer;
+    padding: 8px 16px;
+    border: 1px solid var(--border-color);
+    transition:
+      background s.$effect-duration ease,
+      color s.$effect-duration ease,
+      border-color s.$effect-duration ease;
+  }
+
+  &__confirm {
+    color: var(--button-text-color);
+    background: var(--button-main-color);
+
+    &:hover {
+      background: var(--button-main-color-hover);
+    }
+  }
+
+  &__cancel {
+    color: var(--text-main-color);
+    background: transparent;
+
+    &:hover {
+      border-color: var(--text-main-color);
+    }
+  }
+}

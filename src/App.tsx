@@ -1,7 +1,6 @@
-import './App.scss';
+import React from 'react';
+import { AppRoutes } from './routes/AppRoutes';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+export const App: React.FC = () => {
+  return <AppRoutes />;
+};
