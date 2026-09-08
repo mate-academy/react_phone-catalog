@@ -1,0 +1,147 @@
+@import '../../../assets/styles/main';
+
+.menu {
+  position: fixed;
+  z-index: 10001;
+  top: 48px;
+  right: 0;
+  left: 0;
+
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  max-height: 0;
+
+  background-color: $color-white;
+
+  transition: max-height 0.6s ease-in-out;
+
+  &__open {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 100vh;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    padding-block: 24px 276px;
+  }
+
+  &__list {
+    text-align: center;
+  }
+
+  &__item:not(&__item:last-child) {
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    color: $color-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.48px;
+
+    transition: color 0.3s linear;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    &::before {
+      content: '';
+
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: 0;
+      height: 2px;
+
+      line-height: 64px;
+
+      background-color: #000;
+
+      transition: width 0.3s ease;
+    }
+  }
+
+  &__linkHover {
+    color: $color-primary;
+
+    &::before {
+      width: 100%;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #e2e6e9;
+  }
+
+  &__favorites {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50%;
+    padding-block: 24px;
+  }
+
+  &__favoritesIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__cart {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50%;
+    padding-block: 24px;
+
+    box-shadow: -1px 0 0 0 #e2e6e9;
+  }
+
+  &__cartIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__cartBadge {
+    position: absolute;
+    top: 17px;
+    transform: translateX(50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 15px;
+    height: 15px;
+    border: 1px solid $color-white;
+    border-radius: 50%;
+
+    font-size: 9px;
+    font-weight: 400;
+    color: $color-white;
+    text-align: center;
+
+    background-color: #eb5757;
+  }
+}
