@@ -1,0 +1,116 @@
+@import '../../styles/main';
+
+.productCard {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    padding: 32px;
+    gap: 8px;
+    background-color: $white;
+    height: auto;
+    border: 1px solid $elements;
+    border-radius: 8px;
+    min-width:212px;
+
+    @include on-tablet {
+      min-width: 272px;
+    }
+
+    @include on-desktop {
+      min-width: 277px;
+    }
+
+    @include hover {
+      box-shadow: 0 2px 16px $elements;
+  }
+}
+
+.picture {
+  display: flex;
+}
+
+.image {
+  height: 148px;
+  width: 129px;
+  margin: auto;
+  cursor: pointer;
+  object-fit: contain;
+
+  @include on-tablet {
+    height: 202px;
+    width: 173px;
+  }
+
+  @include on-desktop {
+    height: 208px;
+    width: 196px;
+  }
+
+@include hover {
+  transform: scale(1.1);
+}
+}
+
+.name{
+  @include font-set($body-text);
+
+  display: flex;
+  align-items: end;
+  height: 58px;
+  cursor: pointer;
+}
+
+.price {
+display: flex;
+align-items: center;
+gap: 8px;
+
+&__actual {
+  @include font-set($mobile-h2);
+}
+
+&__old {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 28.12px;
+  color: $secondary;
+  text-decoration: line-through;
+}
+}
+
+.separator {
+  border: 1px solid $elements;
+}
+
+.details {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 15.34px;
+  font-weight: 700;
+}
+
+.itemName {
+  color: $secondary;
+text-align: left;
+}
+
+.itemParam {
+color: $primary;
+text-align: right;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+};
+
+

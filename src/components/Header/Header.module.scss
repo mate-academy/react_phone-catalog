@@ -1,0 +1,259 @@
+@import '../../styles/main';
+
+.header {
+  padding-left: 16px;
+  display: flex;
+  background: rgba(255, 255, 255, 1);
+  height: 48px;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 1px 0 0 #E2E6E9;
+  z-index: 40;
+
+  @include on-desktop {
+    height: 64px;
+    padding-left: 24px;
+  }
+
+  &__container {
+    position: relative;
+    width: 100%;
+
+    @include on-tablet {
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    @include on-tablet {
+      width: auto;
+    }
+  }
+
+  &__burger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 48px;
+    box-shadow: -1px 1px 0 0 #E2E6E9;
+    margin-left: auto;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__link{
+    display: flex;
+
+  }
+  &__logo {
+    width: 64px;
+    cursor: pointer;
+    transition: transform $hover-transition ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include on-tablet {
+      margin-right: 16px;
+    }
+
+     @include on-desktop {
+      width: 80px;
+      margin-right: 24px;
+    }
+  }
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  flex-basis: 100%;
+  position: fixed;
+  top: 49px;
+  left: 0;
+  background: $white;
+  min-height: 0;
+  max-height: 0;
+  transition: min-height $hover-transition ease, opacity $hover-transition ease;
+  overflow: hidden;
+  opacity: 0;
+  z-index: 10;
+
+  @include on-tablet {
+    flex-direction: row;
+    position: static;
+    bottom: unset;
+    left: unset;
+    display: flex;
+    height: 100%;
+    background: unset;
+    min-height: unset;
+    max-height: unset;
+    overflow: unset;
+    opacity: unset;
+  }
+
+  &--active {
+    opacity: 1;
+    min-height: calc(100vh - 49px);
+    max-height: calc(100vh - 49px);
+
+    @include on-tablet {
+      min-height: unset;
+      max-height: unset;
+      opacity: unset;
+    }
+  }
+
+  &__item {
+    text-transform: uppercase;
+    position: relative;
+    height: 27px;
+    display: flex;
+    align-items: center;
+
+    @include on-tablet {
+      height: 100%;
+    }
+
+    &:has(:first-child.navigation__link--active) {
+      &::after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 3px;
+        bottom: 0;
+        left: 0;
+        background: $primary;
+
+        @include on-tablet {
+          height: 4px;
+        }
+      }
+    }
+  }
+
+&__icon {
+  position: relative;
+}
+
+&__icons {
+  display: flex;
+  width: 100%;
+
+
+  @include on-tablet {
+    height: 100%;
+    width: auto;
+  }
+
+  &__item {
+    position: relative;
+    width: 50%;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -1px -1px 0 0 #E2E6E9;
+
+    @include on-tablet {
+      width: 48px;
+      height: 48px;
+    }
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+
+    &:has(.navigation__link--active)::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $primary;
+
+      @include on-tablet {
+        height: 4px;
+      }
+    }
+  }
+}
+
+&__link {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: $secondary;
+  font-size: 12px;
+  line-height: 11px;
+  font-weight: 800;
+  transition: transform $hover-transition ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &--active {
+    color:$primary;
+  }
+}
+
+&__list {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  align-items: center;
+  margin-top: 24px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 32px;
+      margin-top: 0;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+}
+
+.badge-items {
+  position: relative;
+}
+
+.badgeItemCount {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid $white;
+  background-color: $accent;
+  color: $white;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 11.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+

@@ -1,0 +1,93 @@
+@import '../../styles/main';
+
+.productSlider {
+  @include page-grid;
+}
+
+.header {
+  @include page-container;
+
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  margin-bottom: $icons-margin-mobile;
+  grid-column: 1 / -1;
+
+    @include on-tablet {
+      padding-inline: 0;
+    }
+}
+
+.title {
+  @include font-set($mobile-h2);
+
+  grid-column: 1 / span 2;
+
+  @include on-tablet {
+    @include font-set($tablet-h2);
+
+      grid-column: 1 / span 7;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: end;
+  gap: 16px;
+  grid-column: 3 / span 2;
+
+  @include on-tablet {
+    grid-column: 11 / span 2;
+  }
+
+  @include on-desktop {
+    grid-column: 23 / span 2;
+  }
+}
+
+.prevBtn,
+.nextBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background-color: $hover-and-bg;
+  border: 1px solid $icons;
+  border-radius: 48px;
+  cursor: pointer;
+
+  @include hover {
+    border-color: $primary;
+  };
+
+    &:disabled {
+      background-color: transparent;
+      border: 1px solid $elements;
+      opacity: 0.3;
+    }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.swiper {
+  @include page-container;
+
+  @include on-tablet {
+    padding-inline: 0;
+  }
+
+  grid-column: 1 / -1;
+  width: 100%;
+  height: auto;
+
+  .swiperSlide {
+    width: 100%; // Кожен слайд заповнює доступний простір
+    display: flex;
+    justify-content: center; // Дозволяє Swiper самому визначати ширину
+  }
+}

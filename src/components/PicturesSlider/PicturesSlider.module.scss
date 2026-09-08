@@ -1,0 +1,70 @@
+@import '../../styles/main';
+
+.img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-position: center;
+  object-fit: cover;
+
+  @include on-tablet {
+    max-height: 189px;
+    object-fit:contain;
+    padding-inline: 51px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+  }
+
+  @include on-desktop {
+    padding-inline: 48px;
+    max-height: 400px;
+  }
+}
+
+.paginationContainer {
+  margin-top: 36px;
+}
+
+.swiperButtonNext,
+.swiperButtonPrev {
+  background-color: $hover-and-bg;
+  border: 1px solid $icons;
+  width: 32px;
+  height: 189px;
+  border-radius: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: absolute;
+  top: 0;
+  margin-bottom: 0;
+  margin-top: 0;
+  z-index: 10;
+
+  @include hover {
+    background-color: rgba(66, 25, 208, 0.8);
+  }
+
+@include on-desktop {
+    height: 400px;
+  }
+}
+
+.swiperButtonNext {
+  right: 0;
+  background-image: url(../../assets/img/icons/arrow-right.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  color: $primary;
+}
+
+.swiperButtonPrev {
+  background-image: url(../../assets/img/icons/arrow-left.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  color: $primary;
+  left: 0;
+}
