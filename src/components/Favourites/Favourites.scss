@@ -1,0 +1,30 @@
+@import '../../utils/mixins';
+
+.favourites{
+  margin: 0 16px 0 16px;
+
+  @include onTablet{
+    margin: 0 24px 0 24px;
+  }
+
+  @include onDesktop{
+    margin: 0 32px 0 32px;
+  }
+}
+
+
+.favourites__card{
+  display: grid;
+  gap: 40px;
+  justify-content: center;
+  margin-top: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+  @include onTablet {
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(4, minmax(250px, 1fr));
+  }
+}
