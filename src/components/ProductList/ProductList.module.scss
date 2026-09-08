@@ -1,0 +1,9 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.list {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+}

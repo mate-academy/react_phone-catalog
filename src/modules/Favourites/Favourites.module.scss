@@ -1,0 +1,12 @@
+@import './../../styles/utils/vars';
+@import './../../styles/utils/mixins';
+
+.quantity {
+  color: $secondary-color;
+  margin-top: 8px;
+}
+
+.list {
+  margin: 24px 0;
+  display: grid;
+}

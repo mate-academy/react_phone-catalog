@@ -1,0 +1,33 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.back {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  color: $secondary-color;
+  margin-bottom: 16px;
+  cursor: pointer;
+
+  &__arrow {
+    filter: brightness(0.1);
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+.name {
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.carousel {
+  overflow: hidden;
+}

@@ -1,0 +1,95 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.footer {
+  border-top: 1px solid $element-color;
+  margin-top: 64px;
+  padding-bottom: 32px;
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+  &__content {
+    grid-column: 1 / -1;
+    align-items: center;
+  }
+
+  &__part {
+    grid-column: 1 / -1;
+    margin-top: 32px;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__home {
+    width: 89px;
+    height: 32px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__link {
+    color: $secondary-color;
+    transition: all $duration $type;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__upper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  &__text {
+    color: $secondary-color;
+    font-weight: 700;
+    transition: all $duration $type;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $white-color;
+    border: 1px solid $icon-color;
+    transition: all $duration $type;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+
+  &__arrow {
+    filter: brightness(0.1);
+  }
+}
