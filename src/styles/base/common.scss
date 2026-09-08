@@ -1,0 +1,50 @@
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+}
+
+.slick-track {
+  height: 189px;
+}
+
+main {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.swiper {
+  display: flex !important;
+}
+
+.swiper-pagination {
+  bottom: -27px !important;
+}
+
+.swiper-pagination-bullet {
+  width: 14px !important;
+  height: 4px !important;
+  border-radius: 0 !important;
+}
+
+.swiper-pagination-bullet:hover {
+  cursor: pointer;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #313237 !important;
+}
