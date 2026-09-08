@@ -1,0 +1,76 @@
+@import '../../../utils/mixins';
+
+.topNavWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.topNav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @include on-tablet {
+    margin-bottom: 16px;
+  }
+
+  &__homeIcon {
+    background-image: url('../../../icons/Home.png');
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &__arrRight {
+    background-image: url('../../../icons/Next.svg');
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &__link {
+    font-size: 12px;
+    color: $color-text-gray;
+    text-decoration: none;
+  }
+
+  &__product {
+    font-size: 12px;
+    color: $color-text-gray;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__backWrapper {
+    margin-top: 8px;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: $color-text;
+    text-decoration: none;
+    gap: 4px;
+  }
+
+  &__arrLeft {
+    background-image: url('../../../icons/Prev-white.svg');
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+

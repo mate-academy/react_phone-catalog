@@ -1,0 +1,45 @@
+@import '../../../utils/mixins';
+@import '../../../utils/vars';
+
+.favoritesPage {
+  @include pageGrid;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-bottom: 24px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  &__length {
+    font-size: 14px;
+    color: $color-text-gray;
+    margin-top: 8px;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(212px, 1fr));
+    gap: 16px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+  }
+}
+
+h3 {
+  padding-top: 48px;
+}

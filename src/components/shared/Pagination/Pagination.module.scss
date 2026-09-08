@@ -1,0 +1,50 @@
+@import '../../../utils/vars';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  &__item {
+    width: 32px;
+    height: 32px;
+    background-color: #161827;
+    color: $color-text;
+    margin: 24px 0;
+
+    &:hover {
+      background-color: $color-accent-hover;
+    }
+
+    &--active {
+      background-color: $color-accent-hover;
+    }
+
+    &--firstPage,
+    &--lastPage {
+      background-color: $color-text-gray;
+    }
+
+    &--disabled {
+      background-color: #161827;
+      border: 1px solid $color-text-gray;
+
+      &:hover {
+        background-color: #161827;
+        cursor: not-allowed;
+      }
+    }
+
+  }
+
+  &__link {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+

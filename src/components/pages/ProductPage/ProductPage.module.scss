@@ -1,0 +1,266 @@
+@import '../../../App';
+@import '../../../utils/mixins';
+@import '../../../utils/vars';
+
+.productPage {
+  color: $color-text-gray;
+
+  &__title {
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__product,
+  &__info,
+  &__recomendation {
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 64px;
+    font-size: 14px;
+
+    @include on-desktop {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__infoTitle,
+  &__techSpecsTitle {
+    position: relative;
+    margin-bottom: 32px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -8px;
+      border: 1px solid $color-text-gray;
+    }
+  }
+
+  &__subTitle {
+    margin-bottom: 16px;
+  }
+
+  &__text  {
+    margin-bottom: 32px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  &__property {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+    line-height: 100%;
+  }
+
+  &__propertyName {
+    justify-self: start;
+    color: $color-text-gray;
+  }
+
+  &__propertyValue {
+    justify-self: end;
+    text-align: right;
+    color: $color-text;
+  }
+}
+
+.product {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1fr;
+
+  @include on-tablet {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 64px;
+  }
+
+  &__images {
+    width: 100%;
+    display: grid;
+    gap: 16px;
+
+    grid-template-areas:
+      "main"
+      "thumbs";
+
+    @include on-tablet {
+      grid-template-areas: "thumbs main";
+      grid-template-columns: 80px 1fr;
+      align-items: start;
+    }
+  }
+
+  &__mainImage {
+    grid-area: main;
+    width: 288px;
+    height: 288px;
+    margin: 16px;
+    margin: auto;
+
+    @include on-tablet {
+      width: 464px;
+      height: 464px;
+    }
+
+    img {
+      margin:  0 auto;
+      object-fit: contain;
+      height: 100%;
+      width: 100%;
+      display: block;
+    }
+  }
+
+  &__additionalImages {
+    grid-area: thumbs;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    @include on-tablet {
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+
+    }
+
+  }
+
+  &__additionalImage {
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    border: 1px solid $background-color;
+
+    &--active {
+      border: 1px solid $color-text;
+    }
+
+    img {
+      height: 100%;
+      object-fit: cover;
+      margin: 0 auto;
+    }
+
+    @include on-tablet {
+      width: 80px;
+      height: 80px;
+    }
+
+  }
+
+  &__settings {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__container{
+    @include on-tablet {
+      max-width: 320px;
+    }
+  }
+
+  &__colorList {
+    display: flex;
+    gap: 8px;
+    padding: 8px 0 24px;
+    border-bottom: 1px solid $color-text-gray;
+  }
+
+  &__colorItem {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid $background-color;
+
+    &--active {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $color-text;
+    }
+  }
+
+  &__capacity {
+    display: block;
+    padding: 24px 0;
+    border-bottom: 1px solid $color-text-gray;
+
+  }
+
+  &__capacityItem {
+    padding: 8px;
+    margin-right: 8px;
+    border: 1px solid $color-text-gray;
+
+    &--active {
+      background: $color-text;
+    }
+  }
+
+  &__price {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+    color: $color-text;
+    text-align: left;
+
+    margin-top: 32px;
+    margin-bottom: 16px;
+
+  }
+  
+  &__priceGray{
+    font-family: Mont, sans-serif;
+    color: $color-text-gray;
+    text-decoration: line-through;
+  }
+
+  &__properties {
+    font-size: 14px;
+    margin-top: 32px;
+
+  }
+
+  &__property {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+    line-height: 100%;
+  }
+
+  &__propertyName {
+    justify-self: start;
+    color: $color-text-gray;
+  }
+
+  &__propertyValue {
+    justify-self: end;
+    text-align: right;
+    color: $color-text;
+  }
+
+}

@@ -1,0 +1,27 @@
+@import '../../../App';
+@import '../../../utils/mixins';
+@import '../../../utils/vars';
+
+.home {
+  &__section {
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+  &__content {
+    display: grid;
+  }
+
+  &__title {
+    color: $color-text;
+    padding-block: 32px;
+  }
+}
+
+

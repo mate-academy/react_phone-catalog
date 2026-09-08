@@ -1,1 +1,121 @@
-// not empty
+@import './utils/mixins';
+@import './utils/vars';
+@import './utils/fonts';
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* stylelint-disable selector-max-id */
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  background-color: $primary-color;
+}
+
+.App {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+h1 {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $color-text;
+}
+
+h2 {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  color: $color-text;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  font-family: Mont-SemiBold, sans-serif;
+  color: $color-text;
+}
+
+h4 {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: $color-text;
+}
+
+@include on-tablet {
+  h1 {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+  }
+
+  h2 {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: 0;
+  }
+
+  h4 {
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0;
+  }
+}
+
+button {
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: inherit;
+  letter-spacing: 0;
+  background-color: transparent;
+}
+
+img {
+  display: block;
+}
+
+
+

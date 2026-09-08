@@ -1,0 +1,102 @@
+@import '../../../../utils/vars';
+@import '../../../../utils/mixins';
+@import '../../../../App';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  font-family: Mont, sans-serif;
+  border: 1px solid $color-text-gray;
+  background-color: #161827;
+  color: $color-text;
+  padding: 16px;
+  margin-bottom: 16px;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 24px;
+  }
+
+  &__left {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include on-tablet {
+      width: 50%;
+    }
+  }
+
+  &__right {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    @include on-tablet {
+      width: 50%;
+      justify-content: flex-end;
+
+    }
+  }
+
+  &__delete {
+    width: 16px;
+    height: 16px;
+    background-image: url('../../../../icons/Close-gray.png');
+    color: $color-text-gray;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+  }
+
+  &__image {
+    height: 80px;
+    margin: 0;
+
+    img {
+      object-fit: contain;
+    }
+  }
+
+  a {
+    color: $color-text;
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 96px;
+
+    button {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $color-text-gray;
+      color: $color-text-gray;
+      cursor: pointer;
+
+      &:hover {
+       background-color: $color-text-gray;
+       color: $color-text;
+
+      }
+    }
+  }
+  &__value {
+    font-size: 16px;
+  }
+
+  &__price {
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 22px;
+  }
+}
+
+

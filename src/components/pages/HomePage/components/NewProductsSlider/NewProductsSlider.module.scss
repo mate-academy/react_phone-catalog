@@ -1,0 +1,36 @@
+@import '../../../../../App';
+@import '../../../../../utils/mixins';
+@import '../../../../../utils/vars';
+@import '../../../../../utils/fonts';
+
+.productCart {
+  display: grid;
+
+  @include pageGrid;
+
+  &__content {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    display: block;
+    font-size: 22px;
+    flex: 1;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__loader {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+}

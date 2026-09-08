@@ -1,0 +1,100 @@
+@import '../../App';
+@import '../../utils/mixins';
+@import '../../utils/fonts';
+@import '../../utils/vars';
+
+.footer {
+  border-top: 1px solid #89939a;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0;
+    padding-top: 32px;
+
+    @include padding-content-inline;
+
+    @include on-tablet {
+      height: 96px;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  &__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 32px 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 16px;
+
+  @include on-tablet {
+    gap: 40px;
+    flex-direction: row;
+    margin: 0;
+  }
+
+  &__item {
+    flex: 1;
+    text-align: center;
+  }
+
+  &__link {
+    color: $color-text;
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+
+    &:hover {
+      border-bottom: 2px solid $color-text;
+    }
+  }
+}
+
+  .backToTop {
+    display: flex;
+    align-self: center;
+    margin: 32px 0;
+
+
+    @include on-tablet {
+      text-align: center;
+      justify-self: end;
+    }
+
+    &__text {
+      color: $color-text-gray;
+      font-family: Mont-SemiBold, sans-serif;
+      font-size: 12px;
+      line-height: 40px;
+      margin-right: 16px;
+    }
+
+    &__btn {
+      background-image: url('../../icons/Up.png');
+      background-repeat: no-repeat;
+      background-size: 32px 32px;
+      background-position: center;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+
+      &:hover {
+        transform: scale(1.1);
+        transition: $effectDuration;
+      }
+    }
+  }
