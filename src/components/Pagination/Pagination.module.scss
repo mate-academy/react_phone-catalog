@@ -1,0 +1,150 @@
+@use '../../styles/utils' as utils;
+
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+
+  &__link {
+    cursor: pointer;
+
+    display: inline-flex;
+
+    min-width: 32px;
+    padding: 8px 12px;
+    border: utils.$default-border;
+
+    font-family: utils.$font-main;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 16px;
+    color: #f1f2f9;
+    text-align: center;
+    text-decoration: none;
+
+    transition: background-color utils.$animation-duration;
+  }
+
+  &__item {
+    background-color: utils.$color-surface-1;
+
+    &--active .pagination__link {
+      color: white;
+      background-color: utils.$color-accent;
+    }
+
+    &--disabled .pagination__link {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    &:hover .pagination__link {
+      color: white;
+      background-color: utils.$color-accent;
+    }
+
+    &--prev .pagination__link::after {
+      content: '';
+
+      display: block;
+
+      width: 16px;
+      height: 16px;
+
+      background: url('/img/icons/arrow-left.svg') no-repeat center;
+      background-size: contain;
+    }
+
+    &--next .pagination__link::after {
+      content: '';
+
+      display: block;
+
+      width: 16px;
+      height: 16px;
+
+      background: url('/img/icons/arrow-right.svg') no-repeat center;
+      background-size: contain;
+    }
+  }
+}
+
+/* Mobile version */
+.pagination__mobile {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .paginationWrapper {
+    display: none;
+  }
+
+  .pagination__mobile {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 32px;
+  }
+
+  .pagination__navBtn {
+    cursor: pointer;
+
+    padding: 8px 12px;
+    border: utils.$default-border;
+
+    font-size: 16px;
+    color: white;
+
+    background: none;
+
+    &--disabled {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    &--next {
+      &::after {
+        content: '';
+
+        display: block;
+
+        width: 16px;
+        height: 16px;
+
+        background: url('/img/icons/arrow-right.svg') no-repeat center;
+        background-size: contain;
+      }
+    }
+
+    &--prev {
+      &::after {
+        content: '';
+
+        display: block;
+
+        width: 16px;
+        height: 16px;
+
+        background: url('/img/icons/arrow-left.svg') no-repeat center;
+        background-size: contain;
+      }
+    }
+  }
+
+  .pagination__mobileText {
+    font-family: utils.$font-main;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+  }
+}

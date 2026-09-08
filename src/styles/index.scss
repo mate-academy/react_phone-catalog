@@ -1,0 +1,40 @@
+@use './utils' as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $color-black;
+}
+
+main {
+  flex-grow: 1;
+  padding-top: 47px;
+
+  @include on-tablet {
+    padding-top: 49px;
+  }
+
+  @include on-desktop {
+    padding-top: 65px;
+  }
+}
+
+.lock-scroll {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  overflow-y: scroll;
+}

@@ -1,0 +1,115 @@
+@use '../../styles/utils' as utils;
+
+.productDetails {
+  padding: 24px 0 56px;
+
+  &__btn {
+    cursor: pointer;
+
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    margin-bottom: 16px;
+    border: none;
+
+    font-family: utils.$font-main;
+    font-size: 12px;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 15px;
+    color: utils.$color-white;
+
+    background: transparent;
+
+    &::before {
+      @extend %background-cover;
+
+      content: '';
+
+      display: block;
+
+      width: 16px;
+      height: 16px;
+
+      color: utils.$color-white;
+
+      background-image: url('/img/icons/arrow-left.svg');
+    }
+  }
+
+  &__product {
+    @extend %flex-column;
+
+    gap: 40px;
+
+    @include utils.on-tablet {
+      gap: 64px;
+    }
+
+    @include utils.on-desktop {
+      gap: 80px;
+    }
+  }
+
+  &__wrapper {
+    @extend %flex-column;
+
+    gap: 32px;
+
+    @include utils.on-tablet {
+      flex-direction: row;
+      gap: 17px;
+      align-items: flex-start;
+    }
+
+    @include utils.on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__title {
+    font-family: utils.$font-main;
+    font-size: 22px;
+    font-weight: 800;
+    font-style: normal;
+    line-height: 140%;
+    color: utils.$color-white;
+
+    @include utils.on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+
+  &__subtitle {
+    margin-bottom: 32px;
+    padding-bottom: 18px;
+    border-bottom: utils.$default-border;
+
+    font-family: utils.$font-main;
+    font-size: 20px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 26px;
+    color: utils.$color-white;
+  }
+
+  &__description {
+    @extend %flex-column;
+
+    gap: 64px;
+
+    @include utils.on-desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__tech {
+    width: 100%;
+
+    @include utils.on-desktop {
+      width: 50%;
+    }
+  }
+}

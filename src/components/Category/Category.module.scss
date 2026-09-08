@@ -1,0 +1,125 @@
+@use '../../styles/utils' as utils;
+
+.category {
+  padding: 28px 0;
+
+  @include utils.on-tablet {
+    padding: 32px 0;
+  }
+
+  @include utils.on-desktop {
+    padding: 40px 0;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+
+    font-family: utils.$font-main;
+    font-size: 24px;
+    font-weight: 800;
+    font-style: normal;
+    line-height: 140%;
+    color: utils.$color-white;
+
+    @include utils.on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include utils.on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__img {
+    position: relative;
+    bottom: -70px;
+    left: 23%;
+
+    display: block;
+
+    width: 100%;
+
+    object-fit: cover;
+
+    transition: transform utils.$animation-duration;
+  }
+
+  &__imgWrapper {
+    overflow: hidden;
+    height: 300px;
+
+    @include utils.on-tablet {
+      height: auto;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      .category__img {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    width: 100%;
+
+    text-decoration: none;
+
+    &:nth-child(1) {
+      .category__imgWrapper {
+        background-color: #6d6474;
+      }
+    }
+
+    &:nth-child(2) {
+      .category__imgWrapper {
+        background-color: #8d8d92;
+      }
+    }
+
+    &:nth-child(3) {
+      .category__imgWrapper {
+        background-color: #973d5f;
+      }
+    }
+  }
+
+  &__info {
+    .category__subtitle {
+      margin-bottom: 4px;
+
+      font-family: utils.$font-main;
+      font-size: 20px;
+      font-weight: 700;
+      font-style: normal;
+      line-height: 26px;
+      color: utils.$color-white;
+    }
+
+    .category__text {
+      font-family: utils.$font-main;
+      font-size: 14px;
+      font-weight: 600;
+      font-style: normal;
+      line-height: 21px;
+      color: utils.$color-secondary;
+    }
+  }
+
+  &__item:last-child .category__img {
+    width: 216%;
+  }
+}

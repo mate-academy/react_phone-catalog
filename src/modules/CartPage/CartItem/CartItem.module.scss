@@ -1,0 +1,179 @@
+@use '../../../styles/utils' as utils;
+
+.product {
+  @extend %flex-column;
+
+  gap: 16px;
+
+  width: 100%;
+  padding: 16px;
+  border: 1px solid transparent;
+
+  background-color: utils.$color-surface-1;
+
+  transition: border utils.$animation-duration ease;
+
+  &:hover {
+    border: utils.$default-border;
+  }
+
+  &__preview {
+    @extend %flex-between-center;
+
+    gap: 5px;
+
+    @include utils.on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__previewMedia {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    @include utils.on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__removeButton {
+    cursor: pointer;
+
+    padding: 2px;
+    border: none;
+    border: 1px solid transparent;
+    border-radius: 50%;
+
+    background-color: transparent;
+
+    transition: all utils.$animation-duration;
+
+    &::after {
+      content: '';
+
+      display: block;
+
+      width: 16px;
+      height: 16px;
+
+      background-image: url('/img/icons/close.svg');
+      background-size: cover;
+    }
+
+    &:hover {
+      border: utils.$default-border;
+      background-color: utils.$color-red;
+    }
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    transition: transform utils.$animation-duration ease-in-out;
+  }
+
+  &__link {
+    text-decoration: none;
+
+    &:hover {
+      .product__image {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__title {
+    font-family: utils.$font-main;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 21px;
+    color: utils.$color-white;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include utils.on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  &__quantityIncrement,
+  &__quantityDecrement {
+    cursor: pointer;
+
+    padding: 8px;
+    border: utils.$default-border;
+
+    background-color: transparent;
+
+    transition: background-color utils.$animation-duration;
+
+    &::after {
+      content: '';
+
+      display: block;
+
+      width: 16px;
+      height: 16px;
+
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    &:hover {
+      background-color: utils.$color-surface-2;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      border: utils.$default-border;
+      opacity: 0.6;
+    }
+  }
+
+  &__quantityIncrement::after {
+    background-image: url('/img/icons/plus.svg');
+  }
+
+  &__quantityDecrement::after {
+    background-image: url('/img/icons/minus.svg');
+  }
+
+  &__quantityValue {
+    font-family: utils.$font-main;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 21px;
+    color: utils.$color-white;
+    text-align: center;
+  }
+
+  &__price {
+    font-family: utils.$font-main;
+    font-size: 22px;
+    font-weight: 800;
+    font-style: normal;
+    line-height: 140%;
+    color: utils.$color-white;
+  }
+
+  @include utils.on-tablet {
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
