@@ -1,0 +1,30 @@
+@import '../../styles/utils';
+
+.round-button {
+  width: 100%;
+  background-color: inherit;
+  border-radius: 50%;
+  border: 1px solid var(--icon-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+  color: inherit;
+
+  @include transition;
+
+  &:hover {
+    border-color: var(--round-btn-hover-border);
+    background-color: var(--round-btn-hover);
+  }
+
+  &:disabled {
+    border-color: var(--elements);
+    background-color: inherit;
+  }
+
+  svg path {
+    fill: var(--icon-primary);
+  }
+}
