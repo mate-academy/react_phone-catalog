@@ -1,0 +1,129 @@
+@import '/src/styles/media';
+
+$slider-button-hover-bg: #89939a63;
+$dot-active-color: #89939a;
+
+.new-brands {
+  &__swiper {
+    margin-bottom: 80px;
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.shake {
+  animation: shake 0.3s ease-in-out;
+}
+
+.slider-cards {
+  position: relative;
+  max-width: 100%;
+
+  &__track {
+    display: flex;
+    gap: 12px;
+    transition: transform 0.5s ease-in-out;
+
+    @media (min-width: 640px) {
+      will-change: transform;
+    }
+  }
+
+  &__buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__item {
+    display: flex;
+    flex: 0 0 calc(25% - 12px);
+    width: calc(25% - 12px);
+
+    @media (max-width: 1199px) {
+      flex: 0 0 calc(100% / 3 - 12px);
+     width: calc(100% / 3 - 12px);
+     
+    }
+
+    @media (max-width: 850px) {
+      flex: 0 0 calc(40% - 12px);
+      width: calc(40% - 12px);
+    }
+
+    @include mobile {
+      flex: 0 0 calc(100% / 1.5 - 12px);
+     width: calc(100% / 1.5 - 12px);
+    }
+  }
+
+  &__box {
+    overflow: hidden;
+    padding-block: 7px;
+    min-width: 100%;
+    
+
+    @include tablet {
+     overflow: hidden;
+     margin: 0 2px;
+    }
+    
+    @include mobile {
+      padding-inline: 4px;
+    }
+  }
+
+  &__button {
+    border: 1px solid $dot-active-color;
+    padding: 12px 19px;
+    border-radius: 50%;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: $slider-button-hover-bg;
+    }
+
+    &--disabled {
+      border: 1px solid #E2E6E9;
+      color: #E2E6E9;
+
+      &:hover {
+        cursor: not-allowed;
+        background-color:white;
+      }
+    }
+
+    &:first-child {
+      margin-right: 10px;
+    }
+
+    @include mobile {
+      padding: 6px 14px;
+    }
+  }
+}
+
+.swiper-button--disabled {
+  opacity: 0.5;
+  cursor: default;
+
+  &:hover {
+    background-color: transparent;
+  }
+}

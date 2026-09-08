@@ -1,0 +1,39 @@
+@import '/src/styles/media';
+
+.home-page {
+  &__title {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 56px;
+    line-height: 56px;
+    letter-spacing: -1%;
+
+    @include tablet {
+      max-width: 592px;
+      margin-bottom: 32px;
+    }
+
+    @include mobile {
+      font-size: 32px;
+      line-height: 41px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.new-models {
+  margin: 80px 0;
+
+  @include tablet {
+    margin: 64px 0;
+  }
+
+  @include mobile {
+    margin: 56px 0;
+  }
+}
+
+.hot-prices {
+  margin-top: 80px;
+}
