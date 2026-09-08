@@ -1,0 +1,37 @@
+@import '../..//styles/main';
+
+.homePage {
+  &__title {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    padding-inline: 16px;
+
+    @include on-tablet {
+      margin-top: 32px;
+      padding-inline: 24px;
+      justify-content: left;
+    }
+
+    @include on-desktop {
+      margin-top: 56px;
+      padding-inline: 32px;
+      max-width: 1200px;
+      margin-inline: auto;
+    }
+
+    &--text {
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+      color: var(--text-color);
+
+      @include on-tablet {
+        font-size: 48px;
+        line-height: 56px;
+      }
+    }
+  }
+}

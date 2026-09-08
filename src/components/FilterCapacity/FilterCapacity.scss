@@ -1,0 +1,49 @@
+@import '../../styles/main';
+
+.filterCapacity {
+  width: 100%;
+  margin-top: 40px;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+
+    &-title {
+      font-family: Mont, sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15.34px;
+      color: var(--secondary-color);
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-flow: wrap;
+    flex-direction: row;
+    margin-top: 8px;
+    gap: 8px;
+
+    &-item {
+      height: 32px;
+      border: 1px solid var(--icons-color);
+      cursor: pointer;
+      padding: 7px 8px 4px;
+      font-family: Mont, sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: var(--text-color);
+
+      &:hover {
+        background-color: var(--filter-capacity-hover);
+      }
+    }
+  }
+}
+
+.is-active {
+  background-color: var(--text-color);
+  color: var(--filter-capacity-btn-text-active);
+  pointer-events: none;
+}

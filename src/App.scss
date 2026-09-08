@@ -1,1 +1,30 @@
-// not empty
+@import './styles/main';
+
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    display: none;
+  }
+}
+
+.dark {
+  $primaryColor: #f1f2f9;
+  $secondaryColor: #75767f;
+  $iconsColor: #4a4d58;
+  $elementsColor: #3b3e4a;
+  $backgroundColor: #0f1121;
+  $whiteColor: #fff;
+  $greenColor: #27ae60;
+  $redColor: #eb5757;
+}
+
+.main {
+  margin-bottom: 64px;
+
+  @include on-tablet {
+    margin-bottom: 80px;
+  }
+}
