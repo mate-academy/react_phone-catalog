@@ -1,0 +1,60 @@
+@import './colors';
+@import './fonts';
+@import './mixins';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.hidden {
+  display: none;
+}
+
+.no-scroll {
+  overflow: hidden;
+  
+  @include on-tablet{
+    overflow: visible;
+  }
+}
+
+body {
+  background: $black;
+  color: $white;
+  font-family: Mont, sans-serif;
+
+  > :first-child {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+
+    main {
+      flex-grow: 1;
+    }
+  }
+}
+
+.divider {
+  border: none;
+  height: 1px;
+  background: $elements;
+}
+
+.container {
+  padding: 0 16px 16px;
+
+  @include on-tablet {
+    padding: 0 24px 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px 32px;
+  }
+
+  @include on-tv {
+    padding: 0 calc((100dvw - 1136px) / 2) 32px;
+  }
+}
+
