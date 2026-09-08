@@ -1,0 +1,74 @@
+@use "./vars" as vars;
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin on-tablette {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablette {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+@mixin padding-left {
+  padding-left: 16px;
+
+  @include on-tablette {
+    padding-left: 24px;
+  }
+
+  @include on-desktop {
+    padding-left: 32px;
+  }
+}
+
+@mixin padding-right {
+  padding-right: 16px;
+
+  @include on-tablette {
+    padding-right: 24px;
+  }
+
+  @include on-desktop {
+    padding-right: 32px;
+  }
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} vars.$transitionDuration;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin photo {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+@mixin photo-container {
+  height: max-content;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: transform vars.$transitionDuration;
+
+  &:hover {
+    transform: scale(vars.$hoverScaleSize);
+  }
+}
