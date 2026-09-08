@@ -1,1 +1,134 @@
 // not empty
+@import '/src/styles/mixins';
+
+
+.App{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main{
+  flex-grow: 1;
+  background-color: rgba(250, 251, 252, 1);
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+}
+
+h1{
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  margin: 0;
+
+  @include on-tablet{
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+h2{
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  margin: 0;
+
+  @include on-tablet{
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+h3{
+  font-family: Mont, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25.56px;
+  margin: 0;
+
+  @include on-tablet{
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+h4{
+  font-family: Mont, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20.45px;
+  margin: 0;
+
+  @include on-tablet{
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+.uppercase{
+  font-family: Mont, sans-serif;;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.bodyText{
+  font-family: Mont, sans-serif;;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  margin: 0;
+}
+
+.smallText{
+  font-family: Mont, sans-serif;;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.buttons{
+  font-family: Mont, sans-serif;;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.icon {
+  font-family: Mont, sans-serif;;
+  font-weight: 700;
+  font-size: 9px;
+}

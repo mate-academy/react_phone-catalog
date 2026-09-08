@@ -1,0 +1,315 @@
+@import '/src/styles/mixins';
+
+.header {
+  position: relative;
+  box-shadow: 0 1px 0 0 rgba(226, 230, 233, 1);
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__left{
+    display: flex;
+    gap: 16px;
+    height: 100%;
+    padding-left: 16px;
+
+    @include on-desktop {
+      gap: 24px;
+    }
+
+    .nav{
+      display:  none;
+
+      @include on-tablet{
+        display: flex;
+      }
+
+      &__list{
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 32px;
+        list-style: none;
+        justify-items: center;
+
+        @include on-desktop {
+          gap: 64px;
+        }
+      }
+
+
+      &__item{
+        display: flex;
+        border-bottom: 3px solid white;
+      }
+
+      &__link{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-family: Mont, sans-serif;
+        font-size: 12px;
+        font-weight: 800;
+        line-height: 11px;
+        letter-spacing: 0.04em;
+        color: rgba(137, 147, 154, 1);
+
+        &:hover{
+          border-bottom: 3px solid rgba(49, 50, 55, 1);
+          color: black;
+        }
+      }
+
+      &__link__active{
+        border-bottom: 3px solid rgba(49, 50, 55, 1);
+          color: black;
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+
+    ul{
+      display: flex;
+      margin: 0;
+    }
+
+    .icon {
+      box-sizing: border-box;
+      text-decoration: none;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      flex-direction: column;
+      background-position: center;
+      box-shadow: -1px 0 0 0 rgba(226, 230, 233, 1);
+      border-bottom: 3px solid white;
+      border-top: 3px solid white;
+      cursor: pointer;
+
+      &:hover{
+        border-bottom: 3px solid rgba(49, 50, 55, 1);
+      }
+
+      @include on-desktop {
+        height: 64px;
+        width: 64px;
+      }
+
+      &:first-child{
+        @include on-tablet{
+          display: none;
+        }
+      }
+
+      &:nth-child(2), &:nth-child(3){
+        display: none;
+
+        @include on-tablet{
+          display: flex;
+        }
+      }
+
+      &__menu {
+        background-color: inherit;
+        border: none;
+        outline: none;
+        height: 100%;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url('/icons/menu.png');
+
+        &:hover {
+          cursor: pointer;
+          transition-duration: 0.5s;
+          background-image: url('/icons/menu-hover.png');
+        }
+      }
+
+      &__wrapper {
+        position: relative;
+      }
+
+      &__badge {
+        position: absolute;
+        border: 1px solid white;
+        top: -8px;
+        right: -8px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background-color: rgba(244, 71, 175, 1);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .icon__active{
+      border-bottom: 3px solid rgba(49, 50, 55, 1);
+    }
+  }
+
+  .aside {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 20;
+    transition: left 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__open {
+      left: 0;
+    }
+
+    &__header {
+      height: 48px;
+      padding-left: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 0 0 rgba(226, 230, 233, 1);
+
+      .icon {
+        text-decoration: none;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        flex-direction: column;
+        background-position: center;
+        box-shadow: -1px 0 0 0 rgba(226, 230, 233, 1);
+
+        &__close {
+          padding: 0;
+          background-color: inherit;
+          background-repeat: no-repeat;
+          border: none;
+          outline: none;
+          height: 100%;
+          width: 100%;
+          background-position: center;
+          cursor: pointer;
+          background-image: url('/icons/menu-close.png');
+          border-bottom: 3px solid white;
+          border-top: 3px solid white;
+
+          &:hover{
+            border-bottom: 3px solid black;
+            transition-duration: 0.5s;
+          }
+        }
+      }
+    }
+
+    .nav{
+      display: flex;
+      padding: 24px 16px;
+      justify-content: center;
+
+      &__list{
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 16px;
+        list-style: none;
+        justify-items: center;
+      }
+
+
+      &__item{
+        border-bottom: 2px solid white;
+
+        &:hover{
+          border-bottom: 2px solid rgba(49, 50, 55, 1)
+        }
+      }
+
+      &__link{
+        text-decoration: none;
+        font-family: Mont, sans-serif;
+        font-size: 12px;
+        font-weight: 800;
+        line-height: 11px;
+        letter-spacing: 0.04em;
+        color: rgba(137, 147, 154, 1);
+
+        &:hover{
+          color: black;
+        }
+      }
+    }
+
+    &__bottom{
+      height: 64px;
+      display: flex;
+      border-top: 1px solid rgba(226, 230, 233, 1);
+
+      .icon {
+        text-decoration: none;
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-position: center;
+        box-shadow: -1px 0 0 0 rgba(226, 230, 233, 1);
+        background-size: auto;
+        background-repeat: no-repeat;
+        border-bottom: 3px solid white;
+        border-top: 3px solid white;
+
+        &:hover{
+          border-bottom: 3px solid black;
+          transition-duration: 0.5s;
+        }
+
+        &__favorite{
+          background-image: url('/icons/heart.png');
+        }
+
+        &__cart{
+          background-image: url('/icons/cart.png');
+        }
+      }
+    }
+
+    @include on-tablet{
+      display: none;
+    }
+  }
+
+  .menuOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+
+    @include on-tablet{
+      display: none;
+    }
+  }
+}
+
