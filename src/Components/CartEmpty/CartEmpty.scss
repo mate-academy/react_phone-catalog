@@ -1,0 +1,19 @@
+.cart-empty {
+  color: #75767f;
+  width: 300px;
+}
+
+.cart-empty-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  margin-bottom: 130px;
+}
+
+.cart-empty-photo-wrapper {
+  align-self: center;
+}
+
+.cart-empty-photo {
+  width: 300px;
+}
