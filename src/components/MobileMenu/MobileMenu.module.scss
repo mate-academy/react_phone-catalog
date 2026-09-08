@@ -1,0 +1,146 @@
+@import '../../styles/common';
+
+.noScroll {
+  overflow: hidden;
+}
+
+.MobileMenu {
+  @include page-grid;
+
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: $main-color;
+  transform: translateX(-110%);
+  transition: transform 0.2s ease-in-out;
+  z-index: 5;
+
+  &.open {
+    transform: translateX(0);
+  }
+
+  &__header {
+    display: flex;
+    width: 100vw;
+    justify-content: space-between;
+    border-bottom: 1px solid $dark-grey-color;
+
+    .headerMenu {
+      &__logo {
+        width: 96px;
+        padding: 13px 16px;
+
+        grid-column: 1 / span 2;
+
+        @include on-desktop-small {
+          width: 128px;
+          padding: 18px 24px;
+        }
+
+        &--pict {
+          width: 80px;
+        }
+      }
+
+      &__button {
+        display: flex;
+        justify-self: end;
+        border-left: 1px solid $dark-grey-color;
+        grid-column: 4 / span 1;
+
+        @include on-tablet {
+          display: none;
+        }
+
+        &--icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 48px;
+          height: 48px;
+          background-color: transparent;
+          border: none;
+        }
+      }
+    }
+  }
+
+  &__body {
+    margin-top: 32px;
+
+    .bodyMenu {
+      &__nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+
+        &--link {
+          // position: relative;
+          text-decoration: none;
+          text-transform: uppercase;
+          color: $light-grey-color;
+          font-size: 12px;
+          font-weight: 800;
+          line-height: 11px;
+          letter-spacing: 0.04em;
+        }
+      }
+    }
+  }
+
+  &__user {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+
+    .icon--favourites {
+      border-right: 1px solid $dark-grey-color;
+    }
+
+    &--icon {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: calc(100vw / 2);
+      height: 64px;
+      border-top: 1px solid $dark-grey-color;
+
+      &::after {
+        content: attr(data-count);
+        position: absolute;
+        background-color: #EB5757;
+        border: 1px solid $main-color;
+        color: $main-white-color;
+        font-size: 10px;
+        font-weight: 700;
+        line-height: 1.28;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        visibility: hidden;
+      }
+
+      &[data-count]:not([data-count=''])::after {
+        top: 28%;
+        right: 41%;
+        visibility: visible;
+      }
+
+      @include on-tablet {
+        &[data-count]:not([data-count=''])::after {
+          visibility: hidden;
+        }
+      }
+    }
+  }
+}
