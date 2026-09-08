@@ -1,0 +1,149 @@
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+
+.cartItem {
+  padding-block: 16px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #161827;
+  padding-inline: 16px;
+  width: 100%;
+  height: auto;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  @media (min-width: $tablet-min-width) {
+    padding: 0;
+    flex-direction: row;
+    padding-inline: 24px;
+    width: 100%;
+    height: 128px;
+  }
+
+  @media (min-width: $desktop-min-width) {
+    width: 752px;
+  }
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (min-width: $tablet-min-width) {
+    width: auto;
+  }
+}
+
+.image {
+  margin-right: 24px;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.info {
+  flex: 1;
+  color: #F1F2F9;
+}
+
+.count {
+  color: #F1F2F9;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0%;
+}
+
+.controls {
+  min-width: 200px;
+  justify-content: space-between;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  @media (min-width: $tablet-min-width) {
+    width: auto;
+  }
+}
+
+.controlsBtn {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.btnMin {
+  border: none;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  background-image: url(/public/img/btnMin.svg);
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.btnPlus {
+  margin-right: 24px;
+  border: none;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  background-image: url(/public/img/btnPlus.svg);
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 800;
+  color: #F1F2F9;
+  letter-spacing: 0%;
+  line-height: 140%
+}
+
+.removeBtn {
+  cursor: pointer;
+  margin-right: 24px;
+  background: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  background-image: url(/public/img/removeBut.svg);
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
