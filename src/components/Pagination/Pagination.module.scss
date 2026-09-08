@@ -1,0 +1,74 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.block {
+  user-select: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 24px;
+
+  @include respond-to(tablet) {
+    margin-top: 40px;
+  }
+}
+
+.list {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.item {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 32px;
+  min-height: 32px;
+  border: 1px solid color(elements);
+
+  font-weight: 500;
+  line-height: 1;
+
+  background-color: color(white);
+
+  transition: all $duration-default $easing-default;
+
+  @include button-text;
+
+  &:hover {
+    border-color: color(primary);
+  }
+
+  &.active {
+    cursor: default;
+    border-color: color(primary);
+    color: color(white);
+    background-color: color(primary);
+  }
+}
+
+.dots {
+  pointer-events: none;
+  cursor: default;
+}
+
+.arrow {
+  border: 1px solid color(icons);
+  transition: all $duration-default $easing-default;
+
+  &:hover {
+    border-color: color(primary);
+  }
+
+  &.disabled {
+    cursor: default;
+    border-color: color(elements);
+  }
+}

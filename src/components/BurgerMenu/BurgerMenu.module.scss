@@ -1,0 +1,109 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.top {
+  height: 48px;
+}
+
+.nav {
+  margin-top: 24px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+
+  display: flex;
+  gap: 0;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 64px;
+}
+
+.button {
+  cursor: pointer;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 50%;
+  height: 100%;
+  border-top: 1px solid color(elements);
+
+  transition: color $duration-default $easing-default;
+
+  &::after {
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform-origin: left;
+    transform: scaleX(0);
+
+    display: block;
+
+    width: 100%;
+    height: 2px;
+
+    background-color: color(primary);
+
+    transition: transform $duration-default $easing-default;
+  }
+
+  &:first-child {
+    border-right: 1px solid color(elements);
+  }
+
+  &:hover,
+  &.active {
+    color: color(primary);
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.countContainer {
+  position: absolute;
+  top: 18px;
+  left: calc(50% + 1px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 14px;
+  height: 14px;
+  border: 1px solid color(white);
+  border-radius: 50%;
+
+  background-color: color(red);
+}
+
+.countBadge {
+  @include small-text;
+
+  margin-top: 2px;
+  font-size: 9px;
+  color: color(white);
+}

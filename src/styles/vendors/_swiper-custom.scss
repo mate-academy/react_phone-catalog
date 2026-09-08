@@ -1,0 +1,66 @@
+@use '../vars' as *;
+@use './swiper-vars' as *;
+@use '../utils/functions' as *;
+@use 'sass:map';
+
+.swiper-container {
+  .swiper {
+    overflow: visible !important;
+    margin-inline: 0 !important;
+    padding-block: 0 !important;
+    padding-inline: 0 !important;
+
+    .swiper-wrapper {
+      z-index: z(banner-wrapper);
+    }
+
+    .swiper-pagination {
+      bottom: -($pagination-height + $pagination-offset) !important;
+
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      justify-content: center;
+
+      height: $pagination-height;
+
+      .swiper-pagination-bullet {
+        position: relative;
+
+        flex: 0 0 auto;
+
+        width: 24px;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border-radius: 0%;
+
+        opacity: 1;
+        background: transparent;
+
+        &::before {
+          content: '';
+
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+
+          display: block;
+
+          width: 14px;
+          height: 4px;
+          border-radius: 0%;
+
+          background-color: color(elements);
+
+          transition: all $duration-default $easing-default;
+        }
+      }
+
+      .swiper-pagination-bullet-active::before {
+        background-color: color(primary);
+      }
+    }
+  }
+}

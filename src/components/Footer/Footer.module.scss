@@ -1,0 +1,131 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-top: 1px solid color(elements);
+}
+
+.footerContainer {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  width: 100%;
+  max-width: $max-screen-width;
+  padding-block: 32px;
+  padding-inline: page-padding(mobile);
+
+  background: color(white);
+
+  @include respond-to(tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-inline: page-padding(tablet);
+  }
+
+  @include respond-to(desktop) {
+    padding-inline: page-padding(desktop);
+  }
+}
+
+.footerLogo {
+  display: flex;
+
+  width: 89px;
+  height: 32px;
+
+  color: color(primary);
+
+  transition: transform $duration-default $easing-default;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.footerNav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include respond-to(tablet) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    flex-direction: row;
+    gap: 13.5px;
+  }
+
+  @include respond-to(desktop) {
+    gap: 106px;
+  }
+}
+
+.footerLink {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  height: auto;
+
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  color: color(secondary);
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition: color $duration-default $easing-default;
+
+  @include respond-to(tablet) {
+    height: 32px;
+  }
+
+  &:hover {
+    color: color(primary);
+  }
+}
+
+.footerBackToTop {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerBackToTopTitle {
+  @include small-text;
+
+  cursor: default;
+  font-weight: 600;
+  color: color(secondary);
+}
+
+.footerBackToTopBtn {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid color(icons);
+
+  background-color: color(white);
+
+  transition: border $duration-default $easing-default;
+
+  &:hover {
+    border: 1px solid color(primary);
+  }
+}

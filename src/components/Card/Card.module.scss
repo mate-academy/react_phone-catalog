@@ -1,0 +1,192 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: flex-start;
+
+  height: 440px;
+  padding: 32px;
+  border: 1px solid color(elements);
+
+  transition: all $duration-default $easing-default;
+
+  @include respond-to(tablet) {
+    height: 512px;
+  }
+
+  @include respond-to(desktop) {
+    height: 506px;
+  }
+
+  &:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.cardImage {
+  cursor: pointer;
+
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 0;
+
+  transition: all $duration-default $easing-default;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.cardTitle {
+  margin-top: 24px;
+}
+
+.title {
+  @include body-text;
+
+  color: color(primary);
+  text-align: left;
+  transition: all $duration-default $easing-default;
+
+  &:hover {
+    color: color(secondary);
+  }
+}
+
+.price {
+  @include h3;
+
+  width: 100%;
+  margin-top: 8px;
+  line-height: 140%;
+  color: color(primary);
+}
+
+.fullPrice {
+  isolation: isolate;
+  position: relative;
+
+  display: inline-block;
+
+  margin-left: 8px;
+
+  font-weight: 600;
+  color: color(secondary);
+
+  &::after {
+    content: "";
+
+    position: absolute;
+    z-index: 1;
+    top: 45%;
+    left: 0;
+    transform: translateY(-50%);
+
+    width: 100%;
+    height: 1px;
+
+    background-color: color(secondary);
+    mix-blend-mode: color-dodge;
+  }
+}
+
+.specifications {
+  position: relative;
+  margin-top: 8px;
+  padding-block: 8px;
+  border-top: solid 1px color(elements);
+}
+
+.row {
+  @include small-text;
+
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.specification {
+  margin-right: 5px;
+  color: color(secondary);
+}
+
+.value {
+  color: color(primary);
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.addToCartButton {
+  @include button;
+
+  flex-grow: 1;
+  height: 40px;
+
+  &.addedToCart {
+    pointer-events: none;
+    cursor: default;
+
+    border: 1px solid color(elements);
+
+    color: color(green);
+
+    background-color: color(white);
+  }
+}
+
+.heartIcon {
+  cursor: pointer;
+
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  border: 1px solid color(icons);
+
+  background-color: color(white);
+
+  transition: border $duration-default $easing-default;
+
+  path {
+    fill: none;
+    stroke: color(primary);
+    stroke-width: 1.5;
+    transition: fill $duration-default $easing-default;
+  }
+
+  &:hover {
+    border: 1px solid color(primary);
+  }
+}
+
+.favoritedButton {
+  border: 1px solid color(elements);
+
+  path {
+    fill: color(red);
+    stroke: color(red);
+  }
+}

@@ -1,0 +1,16 @@
+@use './base/reset';
+@use './base/fonts';
+
+@use './vars' as *;
+@use './utils' as *;
+@use './mixins' as *;
+
+@use './vendors/swiper-vars';
+@use './vendors/swiper-custom';
+@use 'sass:map';
+
+html {
+  font-family: Mont, sans-serif;
+  color: color(primary);
+  background-color: color(white);
+}

@@ -1,0 +1,41 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.countContainer {
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 14px;
+  height: 14px;
+  border: 1px solid color(white);
+  border-radius: 50%;
+
+  background-color: color(red);
+}
+
+.countBadge {
+  @include small-text;
+
+  margin-top: 2px;
+  font-size: 9px;
+  color: color(white);
+}
+
+.headerCount {
+  top: 9px;
+  right: 9px;
+
+  @include respond-to(desktop) {
+    top: 17px;
+    right: 17px;
+  }
+}
+
+.burgerMenuCount {
+  top: 18px;
+  left: calc(50% + 1px);
+}

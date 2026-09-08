@@ -1,0 +1,141 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 16px;
+  border: 1px solid color(elements);
+
+  @include respond-to(tablet) {
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+    padding: 24px;
+  }
+}
+
+.cartItemContent {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  @include respond-to(tablet) {
+    gap: 24px;
+  }
+}
+
+.buttonClose {
+  cursor: pointer;
+  border: none;
+  background-color: inherit;
+}
+
+.changeIcon path {
+  fill: color(primary);
+  transition: fill $duration-default $easing-default;
+}
+
+.closeIcon path {
+  fill: color(icons);
+  transition: fill $duration-default $easing-default;
+}
+
+.changeIcon.disabled path {
+  fill: color(icons);
+}
+
+.closeIcon:hover path {
+  fill: color(primary);
+}
+
+
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 80px;
+  height: 80px;
+  padding: 7px;
+  object-fit: contain;
+}
+
+.productTitle {
+  @include body-text;
+
+  min-width: 128px;
+  transition: all $duration-default $easing-default;
+
+  &:hover {
+    color: color(secondary);
+  }
+}
+
+.counterBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  @include respond-to(tablet) {
+    gap: 24px;
+    width: auto;
+  }
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+}
+
+.count {
+  @include body-text;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  margin-top: 2px;
+}
+
+.changeButton {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid color(icons);
+
+  background-color: inherit;
+
+  transition: all $duration-default $easing-default;
+
+  &:hover {
+    border-color: color(primary);
+  }
+
+  &.disabled {
+    cursor: default;
+    border-color: color(elements);
+  }
+}
+
+.price {
+  @include h3;
+
+  width: 80px;
+  text-align: right;
+}

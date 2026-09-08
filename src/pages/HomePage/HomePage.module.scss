@@ -1,0 +1,25 @@
+@use '../../styles/mixins' as *;
+
+.block {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 24px;
+
+  @include respond-to(tablet) {
+    margin-top: 32px;
+  }
+
+  @include respond-to(desktop) {
+    margin-top: 56px;
+  }
+}
+
+.title {
+  @include h1;
+
+  position: relative;
+
+  @include respond-to(tablet) {
+    font-size: 48px;
+  }
+}

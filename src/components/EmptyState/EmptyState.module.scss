@@ -1,0 +1,58 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/utils' as *;
+
+.emptyState {
+  display: flex;
+  grid-column: 1 / -1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  text-align: center;
+}
+
+.imgContainer {
+  max-width: 220px;
+}
+
+.image {
+  width: 100%;
+  object-fit: contain;
+}
+
+.title {
+  @include h1;
+
+  margin-top: 24px;
+
+  @include respond-to(tablet) {
+    margin-top: 40px;
+  }
+
+  span {
+    white-space: nowrap;
+  }
+}
+
+.description {
+  @include body-text;
+
+  margin-top: 8px;
+  color: color(secondary);
+
+  @include respond-to(tablet) {
+    font-size: 20px;
+  }
+}
+
+.homeLink {
+  @include button;
+
+  width: 100%;
+  max-width: 420px;
+  height: 48px;
+  margin-top: 32px;
+}
