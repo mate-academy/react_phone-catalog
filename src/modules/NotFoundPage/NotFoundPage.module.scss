@@ -1,0 +1,17 @@
+@import '../../main';
+
+.pageNotFound {
+  grid-column: 1 / -1;
+  justify-content: center;
+
+  &__text {
+    text-align: center;
+    font-size: 32px;
+    line-height: 41px;
+    margin-top: 50px;
+  }
+
+  &__img {
+    width: 100%;
+  }
+}

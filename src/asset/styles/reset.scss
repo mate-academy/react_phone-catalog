@@ -1,0 +1,33 @@
+body,
+div,
+nav,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+button {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
