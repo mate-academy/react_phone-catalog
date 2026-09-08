@@ -1,0 +1,29 @@
+@import '@styles/utils/mixins';
+@import '@styles/utils/vars';
+
+.pagination {
+  @include flex(row, center, center);
+
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+
+  &__prev,
+  &__next {
+    padding: 8px;
+  }
+
+  &__item {
+    @include set-size(34px, 34px);
+
+    padding: 8px;
+    border: 1px solid $submarine-color;
+    background-color: $white-color;
+    border-radius: 50%;
+
+    &.active {
+      background-color: $woodsmoke-color;
+      color: $white-color;
+    }
+  }
+}

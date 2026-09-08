@@ -1,0 +1,88 @@
+@import '@styles/utils/mixins';
+@import '@styles/utils/vars';
+
+.card {
+  @include flex(column, space-between, center);
+
+  gap: 8px;
+  border-radius: $radius-medium;
+  background-color: $white-color;
+  border: 1px solid $porcelain-color;
+  padding: 32px;
+  width: 272px;
+
+  @include hover(box-shadow, rgba(149, 157, 165, 0.2) 0 8px 24px);
+
+  &__image {
+    @include set-size(208px, 196px);
+
+    img {
+      @include set-size(100%, 100%);
+
+      object-fit: contain;
+    }
+  }
+  &__title {
+    width: 100%;
+    font-weight: 400;
+    color: $woodsmoke-color;
+  }
+
+  &__price {
+    @include flex(row, start, center);
+
+    gap: 8px;
+    width: 100%;
+
+    &_old {
+      @include font(500, 22px, 100%, 0);
+
+      color: $regent-gray-color;
+      text-decoration: line-through;
+      position: relative;
+    }
+  }
+
+  &__decor_line {
+    @include set-size(100%, 1px);
+
+    background-color: $porcelain-color;
+  }
+
+  &__details {
+    @include flex($direction: column);
+    @include font(400, 12px, 100%, 0);
+
+    gap: 8px;
+    padding: 8px 0;
+
+    width: 100%;
+
+    &_item {
+      @include flex(row, space-between, center);
+
+      &__name {
+        color: $regent-gray-color;
+      }
+    }
+  }
+
+  &__buttons {
+    @include flex(row, space-between, center);
+
+    width: 100%;
+    gap: 8px;
+
+    &_heart {
+      padding: 12px;
+    }
+  }
+
+  @include on-tablet {
+    width: 237px;
+  }
+
+  @include on-mobile {
+    width: 212px;
+  }
+}

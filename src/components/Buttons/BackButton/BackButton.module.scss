@@ -1,0 +1,12 @@
+@import '@styles/utils/vars';
+@import '@styles/utils/mixins';
+
+.back_btn {
+  @include flex(row, space-between, center);
+
+  margin-bottom: 16px;
+  color: $regent-gray-color;
+  gap: 4px;
+
+  @include hover(color, $woodsmoke-color);
+}

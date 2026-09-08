@@ -5,6 +5,21 @@
   ],
   "compilerOptions": {
     "sourceMap": false,
-    "types": ["node", "cypress"]
+    "types": ["node", "cypress"],
+    "baseUrl": "src",
+    "paths": {
+      "@assets/*": ["assets/*"],
+      "@components/*": ["components/*"],
+      "@utils/*": ["utils/*"],
+      "@styles/*": ["styles/*"],
+      "@data/*": ["data/*"],
+      "@pages/*": ["pages/*"],
+      "@types/*": ["types/*"],
+      "@routes/*": ["routes/*"],
+      "@api/*": ["api/*"],
+      "@enums/*": ["enums/*"],
+      "@hooks/*": ["hooks/*"],
+      "@context/*": ["context/*"]
+    }
   }
 }

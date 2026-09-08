@@ -1,0 +1,33 @@
+@import '@styles/utils/mixins';
+@import '@styles/utils/vars';
+
+.product_capacity {
+  &__title {
+    color: $regent-gray-color;
+    margin-bottom: 8px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    padding: 0 0 24px;
+    border-bottom: 1px solid $porcelain-color;
+  }
+
+  &__button {
+    padding: 8px;
+    border: 1px solid $submarine-color;
+    border-radius: $radius-medium;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: $white-color;
+      background-color: $woodsmoke-color;
+    }
+
+    &.selected {
+      color: $white-color;
+      background-color: $woodsmoke-color;
+    }
+  }
+}
