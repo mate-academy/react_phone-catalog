@@ -1,0 +1,247 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/fonts';
+
+@keyframes main-photo-animation {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-choice {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  gap: 40px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 50px;
+    padding-top: 40px;
+  }
+
+  &__photos {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 16px;
+    justify-content: space-between;
+    align-self: center;
+    flex-grow: 1;
+
+    @include on-tablet {
+      align-self: flex-start;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+    }
+  }
+
+  &__main-photo {
+    max-height: 288px;
+    object-fit: contain;
+    padding-inline: 50px;
+    width: 100%;
+    transform: translateY(50%);
+    transition: all 0.3s ease-in-out;
+    opacity: 0; 
+    animation: main-photo-animation 0.5s ease-out forwards;
+
+    @include on-tablet {
+      padding-inline: 0;
+      width: 75%;
+      max-height: 464px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    @include on-tablet {
+      justify-content: flex-start;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &-photo {
+      box-sizing: border-box;
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      cursor: pointer;
+      border: 1px solid $color-elements;
+      border-radius: 8px;
+      transition: all 0.3s ease-in-out;
+      padding: 6px;
+
+      @include on-desktop {
+        width: 80px;
+        height: 80px;
+      }
+
+      &:hover {
+        transform: scale(1.05);
+        border-color: $color-icons;
+      }
+
+      &--active {
+        border-color: $color-primary;
+        transform: scale(1.05);
+
+        &:hover {
+          border-color: $color-primary;
+        }
+      }
+    }
+  }
+
+  &__details {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-self: flex-start;
+    gap: 24px;
+    flex-grow: 1;
+
+    &-top {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 50px;
+
+      &-colors {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      &-title {
+        @include typography-small-text;
+
+        color: $color-secondary;
+      }
+      &-list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+      }
+
+      &-id {
+        @include typography-small-text;
+
+        color: $color-icons;
+      }
+    }
+
+    &-order {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &-capacity {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border-top: 1px solid $color-elements;
+      border-bottom: 1px solid $color-elements;
+      padding: 24px 0;
+
+      &-title {
+        @include typography-small-text;
+
+        color: $color-secondary;
+      }
+
+      &-buttons {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 8px;
+      }
+
+      &-button {
+        background-color: transparent;
+        border: 1px solid $color-elements;
+        border-radius: 4px;
+        padding: 7px 8px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        text-decoration: none;
+        color: $color-primary;
+
+        &:hover {
+          border-color: $color-icons;
+        }
+
+        &--active {
+          background-color: $color-primary;
+          border-color: $color-primary;
+          color: $color-white;
+        }
+      }
+    }
+
+    &-price {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+
+      &-old {
+        @include typography-h3;
+
+        color: $color-secondary;
+        text-decoration: line-through;
+        font-weight: 500;
+      }
+    }
+
+    &-info {
+      display: flex;
+      gap: 8px;
+      flex-direction: column;
+      padding-block: 8px;
+
+      &-row {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &-title {
+        @include typography-small-text;
+
+        color: $color-secondary;
+      }
+
+      &-description {
+        font-family: Mont, sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 15.34px;
+        letter-spacing: 0%;
+        text-align: right;
+        color: $color-primary;
+      }
+    }
+
+    &-buttons {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+}
