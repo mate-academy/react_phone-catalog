@@ -1,0 +1,20 @@
+@import '../../utils/mixins';
+
+.cartIsEmpty {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  &__image {
+    width: 100px;
+    height: 100px;
+
+    @include on-tablet {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}

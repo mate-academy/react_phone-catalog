@@ -1,0 +1,109 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+
+.header {
+  height: $header-height-mobile;
+  display: none;
+  background-color: var(--color-header-footer);
+  border-bottom: 1px solid var(--color-grey-third);
+
+  @include on-tablet {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include on-desktop {
+    height: $header-height-desktop;
+  }
+
+  &--mobile {
+    display: flex;
+    justify-content: space-between;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__menuButton {
+    display: block;
+    width: 48px;
+    height: 48px;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: -1px 0 0 0 var(--color-grey-third);
+    border: none;
+    border-bottom: 1px solid var(--color-grey-third);
+    background-color: #fff;
+    background-image: url(../../img/icons/menu.png);
+
+    &--dark {
+      background-color: #0f1121;
+      background-image: url(../../img/icons/menu-white.png);
+    }
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  &__left {
+    display: flex;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__right {
+    display: flex;
+  }
+
+  &__logo {
+    display: flex;
+    margin: 13px 16px;
+    width: 64px;
+    height: 22px;
+
+    @include on-desktop {
+      margin: 18px 24px;
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  &__nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    &_list {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 32px;
+    }
+
+    &_link {
+      @include nav-link-styles;
+
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      &:hover {
+        color: var(--color-black);
+      }
+    }
+
+    &_item {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

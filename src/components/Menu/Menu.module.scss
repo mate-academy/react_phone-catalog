@@ -1,0 +1,84 @@
+@import '../../utils/variables';
+@import '../../utils/mixins';
+
+.menu {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-page-background);
+
+  @include on-tablet {
+    display: none;
+  }
+
+  &__closeButton {
+    display: block;
+    width: 48px;
+    height: 48px;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: -1px 0 0 0 var(--color-grey-third);
+    border: none;
+    background-color: var(--color-page-background);
+    background-image: url(../../img/icons/close.png);
+
+    &--dark {
+      background-image: url(../../img/icons/close-white.png);
+    }
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  &__top-bar {
+    display: flex;
+    margin-bottom: 24px;
+    justify-content: space-between;
+    box-shadow: 0 1px 0 0 var(--color-grey-third);
+    background-color: var(--color-page-background);
+  }
+
+  &__bottom {
+    display: flex;
+    border: 1px solid var(--color-grey-second);
+  }
+
+  &__logo {
+    display: flex;
+    margin: 13px 16px;
+    width: 64px;
+    height: 22px;
+  }
+
+  &__nav_list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    list-style: none;
+  }
+
+  &__nav_link {
+    @include nav-link-styles;
+
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      color: var(--color-black);
+    }
+  }
+
+  &__nav_item {
+    height: 27px;
+
+    &:hover {
+      border-bottom: 2px solid var(--color-black);
+    }
+  }
+}
