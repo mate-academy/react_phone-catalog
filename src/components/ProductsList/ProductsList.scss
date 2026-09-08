@@ -1,0 +1,28 @@
+@import '/src/utils/variables';
+@import '/src/utils/mixins';
+
+.products-list {
+  --columns: 4; 
+  column-gap: 16px;
+  row-gap: 40px;
+
+  @include page-grid;
+}
+
+.products-list__item {
+  @media (max-width: 640px) {
+    grid-column: 1 / -1;
+  }
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+  @media (min-width: 768px) and (max-width: 1199px) { 
+    grid-column: span 4; 
+  }
+
+  @include on-desktop {
+    grid-column: span 6;
+  }
+}

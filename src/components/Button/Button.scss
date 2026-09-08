@@ -1,0 +1,73 @@
+@import '../../utils/variables.scss';
+@import '../../utils/mixins.scss';
+
+.button {
+  display: block;
+  height: 32px;
+  width: 32px;
+  padding: 0;
+  border: 1px solid var(--color-gray-icons-placeholders);
+  border-radius: 50%;
+  background-color: inherit;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all .3s ease;
+
+  &:hover {
+    cursor: pointer;
+    border-color: var(--color-gray-primary);
+  }
+
+  &-prev {
+    background-image: url(../../assets/icons/arrow-right--default.svg);
+    transform: rotate(180deg);
+
+    &:hover {
+      border-color: var(--color-gray-primary);
+    }
+
+    &--disabled {
+      background-image: url(../../assets/icons/arrow-right--disabled.svg);
+      border-color: var(--color-gray-elements);
+      
+      &:hover {
+        border-color: var(--color-gray-elements);
+      }
+    }
+  }
+  
+  &-next {
+    background-image: url(../../assets/icons/arrow-right--default.svg);
+    
+    &:hover {
+      border-color: var(--color-gray-primary);
+    }
+
+    &--disabled {
+      background-image: url(../../assets/icons/arrow-right--disabled.svg);
+      border-color: var(--color-gray-elements);
+    
+      &:hover {
+        border-color: var(--color-gray-elements);
+      }
+    }
+  }
+}
+
+.theme-dark {
+  .button-prev {
+    background-image: url(../../assets/icons/arrow-right-dark--default.svg);
+  }
+
+  .button-prev--disabled {
+    background-image: url(../../assets/icons/arrow-right-dark--disabled.svg);
+  }
+
+  .button-next {
+    background-image: url(../../assets/icons/arrow-right-dark--default.svg);
+  }
+
+  .button-next--disabled {
+    background-image: url(../../assets/icons/arrow-right-dark--disabled.svg);
+  }
+}

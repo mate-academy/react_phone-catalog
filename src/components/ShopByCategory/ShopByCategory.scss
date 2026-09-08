@@ -1,0 +1,98 @@
+@import '/src/utils/variables';
+@import '/src/utils/mixins';
+
+.shop {
+  &__content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__title {
+    display: block;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+    color: var(--color-gray-primary);
+    @include adaptiv-value(font-size, 22, 32, 1);
+    @include adaptiv-value(width, 200, 800, 1);
+  }
+
+  &__blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+  }
+
+  &__block {
+    flex: 1 1 200px;
+    text-decoration: none;
+
+    &-title {
+      display: block;
+      margin-top: 24px;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 21px;
+      color: var(--color-gray-primary);
+    }
+
+    &-desc {
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 140%;
+      color: var( --color-gray-secondary);
+    }
+
+    &-pic {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 8px;
+
+      &--1 {
+        background-color: #898989;
+      }
+
+      &--2 {
+        background-color: #5e5d5e;
+      }
+
+      &--3 {
+        background-color: #e3e0e3fb;
+      }
+    }
+  }
+
+  &__image {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 100%;
+    transition: all .3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    &--last {
+      top: 11%;
+      transform: scale(0.8);
+
+      &:hover {
+        transform: scale(0.83);
+      }
+    }
+  }
+}
