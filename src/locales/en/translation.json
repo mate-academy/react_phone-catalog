@@ -1,0 +1,158 @@
+{
+    "nav": {
+    "home": "Home",
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "favorites": "Favorites",
+    "cart": "Cart"
+  },
+  "back": "Back",
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty",
+    "checkout": "Checkout",
+    "totalForItems": "Total for {{count}} items",
+    "remove": "Remove item",
+    "increase": "Increase quantity",
+    "decrease": "Decrease quantity",
+    "checkoutConfirm": "Checkout is not implemented yet. Do you want to clear the Cart?"
+  },
+"home": {
+  "heroTitle": "Welcome to Nice Gadgets store!",
+  "brandNewModels": "Brand new models",
+  "hotPrices": "Hot prices",
+  "shopByCategory": "Shop by category",
+  "categories": {
+    "phones": "Mobile phones",
+    "phonesSubtitle": "{{count}} models",
+    "tablets": "Tablets",
+    "tabletsSubtitle": "{{count}} models",
+    "accessories": "Accessories",
+    "accessoriesSubtitle": "{{count}} models"
+  }
+  },
+  "product": {
+    "inCart": "In cart",
+    "addToCart": "Add to cart",
+    "toggleFavorite": "Toggle favorite",
+    "favorite": "Favorite"
+  },
+  "productSpecs": {
+    "Screen": "Screen",
+    "Capacity": "Capacity",
+    "RAM": "RAM"
+  },
+    "phonesPage": {
+    "title": "Mobile phones",
+    "modelsCount": "{{count}} models"
+  },
+  "filters": {
+    "sort": {
+      "title": "Sort by",
+      "newest": "Newest",
+      "alphabetically": "Alphabetically",
+      "cheapest": "Cheapest",
+      "order": "Order"
+    },
+    "itemsPerPage": {
+      "title": "Items on page",
+      "all": "All"
+    }
+  },
+    "product": {
+"idLabel": "ID",
+    "about": {
+      "title": "About",
+      "proTitle": "And then there was Pro",
+      "proText": "A transformative triple‑camera system that adds tons of capability without complexity. An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro.",
+      "cameraTitle": "Camera",
+      "cameraText": "Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it.",
+      "shootTitle": "Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.",
+      "shootText": "iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with."
+    },
+    "techSpecs": {
+      "title": "Tech specs",
+      "builtInMemory": "Built in memory",
+      "camera": "Camera",
+      "zoom": "Zoom",
+      "cell": "Cell"
+    },
+    "specsLabels": {
+      "screen": "Screen",
+      "capacity": "Capacity",
+      "ram": "RAM",
+      "resolution": "Resolution",
+      "processor": "Processor"
+    },
+    "recommended": "You may also like"
+  },
+  "product": {
+    "notFound": "Product was not found",
+    "availableColors": "Available colors",
+    "selectCapacity": "Select capacity",
+    "addToCart": "Add to cart",
+    "addToFavorites": "Add to favorites",
+    "addedToCart": "Added to cart",
+    "addedToFavorites": "Added to favorites",
+    "about": "About",
+    "techSpecs": "Tech specs",
+    "youMayAlsoLike": "You may also like",
+    "memory": "Built in memory",
+    "camera": "Camera",
+    "zoom": "Zoom",
+    "cell": "Cell",
+    "aboutProTitle": "And then there was Pro",
+    "aboutProText": "A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro.",
+    "cameraTitle": "Camera",
+    "cameraText": "Meet the first triple-camera system to combine cutting-edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest-quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it.",
+    "shootTitle": "Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.",
+    "shootText": "iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with."
+  },
+  "specs": {
+  "screen": "Screen",
+  "capacity": "Capacity",
+  "ram": "RAM",
+  "resolution": "Resolution",
+  "processor": "Processor",
+  "builtInMemory": "Built in memory",
+  "camera": "Camera",
+  "zoom": "Zoom",
+  "cell": "Cell"
+},
+  "favoritesPage": {
+    "title": "Favourites",
+    "item": "item",
+    "items": "items",
+    "empty": "No favourites yet"
+  },
+    "footer": {
+    "logoAlt": "Nice Gadgets Logo",
+    "github": "GitHub",
+    "contacts": "Contacts",
+    "rights": "Rights",
+    "backToTop": "Back to top"
+  },
+
+  "notFound": {
+    "defaultMessage": "Page not found"
+  },
+  "contactsPage": {
+    "message": "Contacts page (in progress)"
+  },
+  "rightsPage": {
+    "message": "Rights page (in progress)"
+  },
+  "error": {
+  "somethingWentWrong": "Something went wrong",
+  "retry": "Reload"
+  },
+    "tabletsPage": {
+    "title": "Tablets",
+    "modelsCount": "{{count}} models"
+  },
+    "accessoriesPage": {
+    "title": "Accessories",
+    "modelsCount": "{{count}} models"
+  }
+}
