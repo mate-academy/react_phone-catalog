@@ -1,0 +1,32 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include margin-top-responsive;
+}
+
+.product_message {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: Mont-Regular, sans-serif;
+  font-size: 22px;
+  line-height: 21px;
+  color: $gray-white;
+}
+
+.product_link {
+  text-decoration: none;
+  color: $purple;
+}
+
+.product_img {
+  margin-top: 50px;
+  
+  @include img;
+}

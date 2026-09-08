@@ -1,0 +1,49 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.product_title {
+  margin-top: 80px;
+  margin-bottom: 24px;
+
+  @include header-h2;
+
+  @include respond-to(phone) {
+    font-size: 22px;
+  }
+}
+
+.product_buttons_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.product_buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.product_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  background-color: $gray-surface;
+  color: $gray-white;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $gray-elements;
+    transition: transform 0.6s ease;
+  }
+}
+
+.product_button[aria-disabled='true'],
+.product_button[disabled] {
+  background-color: $background;
+  border: 1px solid $gray-surface;
+  opacity: 0.6;
+  cursor: not-allowed;
+}

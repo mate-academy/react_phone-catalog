@@ -1,0 +1,89 @@
+@use '../../../styles/variables.scss' as *;
+@use '../../../styles/mixins.scss' as *;
+
+.description_container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 80px;
+
+  @include respond-to(phone) {
+    flex-direction: column;
+    margin-top: 56px;
+  }
+
+  @include respond-to(tablet) {
+    flex-direction: column;
+    margin-top: 64px;
+  }
+}
+
+.description_about {
+  flex: 2;
+  margin-right: 0;
+
+  @include respond-to(desktop) {
+    margin-right: 64px;
+  }
+
+  @include respond-to(wide) {
+    margin-right: 64px;
+  }
+}
+
+.description_content {
+  width: 100%;
+}
+
+.section_title {
+  @include header-4;
+}
+
+.section_paragraph {
+  @include body-text;
+
+  color: $gray-secondary;
+}
+
+.description_tech {
+  flex: 1;
+}
+
+.description__specs {
+  @include respond-to(phone) {
+    gap: 8px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.description_title {
+  @include header-3;
+
+  margin-bottom: 16px;
+}
+
+.description_divide_line {
+  height: 1px;
+  background-color: $gray-elements;
+  width: 100%;
+}
+
+.description__specs dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 8px 20px;
+
+  @include body-text;
+
+  @include respond-to(phone) {
+    gap: 8px;
+  }
+}
+
+.description__specs dt {
+  color: $gray-secondary;
+}
+
+.description__specs dd {
+  text-align: right;
+  margin-left: 0;
+}

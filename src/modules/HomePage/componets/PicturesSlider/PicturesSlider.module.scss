@@ -1,0 +1,81 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.slider {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  margin-top: 56px;
+}
+
+.slider_button {
+  width: 52px;
+  height: 400px;
+  background-color: $gray-surface;
+  color: $gray-white;
+  border: none;
+  cursor: pointer;
+
+  @include respond-to(tablet) {
+    height: 189px;
+  }
+
+  @include respond-to(phone) {
+    display: none;
+  }
+
+  &:hover {
+    background-color: $gray-elements;
+    transition: transform 0.6s ease;
+  }
+}
+
+.slider_container {
+  height: 400px;
+  margin-left: 16px;
+  margin-right: 16px;
+
+  @include respond-to(tablet) {
+    height: 189px;
+  }
+
+  @include respond-to(phone) {
+    width: 320px;
+    height: 320px;
+    padding-inline: 0;
+    margin-inline: 0;
+  }
+}
+
+.banner_image {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1040px;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+:global(.my-pagination) {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+:global(.swiper-pagination-bullet) {
+  width: 15px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: $gray-elements;
+  opacity: 1;
+  transition: background 0.3s;
+}
+
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+:global(.swiper-pagination-bullet-active) {
+  background-color: $gray-white;
+}
