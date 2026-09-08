@@ -1,0 +1,89 @@
+@import '../../shared/Utills/variables';
+
+.pagination{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+
+
+
+
+  & > div {
+    display: flex;
+    gap: 8px;
+  }
+
+
+  &  > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $gray;
+    background: #fff;
+    min-width: 32px;
+    min-height: 32px;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.2s;
+    aspect-ratio: 1/1;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      border-top: 2px solid $gray_primary;
+        border-right: 2px solid $gray_primary;
+      transition: border-color 0.2s;
+    }
+
+    &:hover {
+      border: 1px solid $gray_primary;
+    }
+
+
+
+     
+}
+
+}
+
+
+.button__left::before{
+   transform: translate(-50%, -50%) rotate(225deg);
+}
+
+.button__rigth::before{
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+
+
+.element{
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  min-height: 32px;
+  min-width: 32px;
+  border: 2px solid $gray_elements;
+  aspect-ratio: 1/1;
+}
+
+
+.element__active{
+  background-color: $gray_primary;
+  color: #fff;
+  border: 2px solid $gray_primary;
+}
+
+
+.elements__container{
+  overflow: hidden;
+}

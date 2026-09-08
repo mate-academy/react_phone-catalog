@@ -1,0 +1,115 @@
+@import '../../../shared/Utills/variables';
+
+
+.category{
+  display: block;
+}
+
+
+.title{
+  font-size: 22px;
+  line-height: 31px;
+
+  @media (min-width:$mobile_width) {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.links__container{
+  display: flex;
+  flex-direction: column;
+
+
+  @media (min-width:$mobile_width) {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+
+
+
+}
+
+
+
+.pos{
+  position: relative;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+
+
+}
+
+.link{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  text-decoration: none;
+
+  > h4 {
+    margin: 0;
+    margin-top: 24px;
+    color: $gray_primary;
+
+  }
+
+
+  > p {
+    margin: 0;
+    margin-top: 4px;
+    color: $gray_secondary;
+  }
+
+
+}
+
+.img__phone{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 70px;
+  left: 60px;
+
+}
+
+
+.img__tablets{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 40px;
+  left: 60px;
+}
+
+.img__accesories{
+  position: absolute;
+  object-fit: cover;
+  object-position: left;
+  height: 100%;
+  width: 100%;
+  top: 50px;
+  left: 60px;
+}
+
+
+
+
+
+
+
+
+ .link:nth-child(1) .pos {
+    background-color: #6D6474;
+  }
+
+
+  .link:nth-child(2) .pos {
+    background-color: #8D8D92;
+  }
+
+
+  .link:nth-child(3) .pos {
+    background-color: #973D5F;
+  }

@@ -1,0 +1,25 @@
+@import '../../../shared/Utills/variables';
+
+.back__btn{
+  font-family: MontRegular,sans-serif;
+  font-size: 12px;
+  align-items: start;
+  width: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color:$gray_secondary ;
+
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-right: 2px solid $gray_primary;
+    border-bottom: 2px solid $gray_primary;
+    transform: rotate(136deg);
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+}

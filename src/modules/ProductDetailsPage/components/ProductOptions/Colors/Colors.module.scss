@@ -1,0 +1,96 @@
+@import '../../../../shared/Utills/variables';
+
+
+.colors{
+
+
+  & > p{
+    margin: 0;
+    color: $gray_secondary;
+    margin-bottom: 8px;
+  }
+}
+
+
+.container {
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+}
+
+
+.icons{
+  display: flex;
+  width: 32px;
+  height: 32px;
+  border: 2px solid $gray_elements;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+
+  & > span {
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+}
+
+
+.active{
+  border: 2px solid $gray_primary;
+}
+
+
+.midnightgreen { background-color: #4e5850; }
+
+.spacegray { background-color: #52514f; }
+
+.silver { background-color: #ebebe3; }
+
+.gold { background-color: #fbd7bd; }
+
+.black { background-color: #202020; }
+
+.white { background-color: #f9f6ef; }
+
+.purple { background-color: #d1cddb; }
+
+.green { background-color: #ade1cd; }
+
+.yellow { background-color: #ffe680; }
+
+.productred { background-color: #ba0c2f; }
+
+.blue { background-color: #48aee6; }
+
+.coral { background-color: #ff6e5a; }
+
+.pink { background-color: #faddd7; }
+
+.teal { background-color: #5ac8fa; }
+
+.lighttaupe { background-color: #ac8c74; }
+
+.deepmossgreen { background-color: #2f5c46; }
+
+.seafoamgreen { background-color: #a1f2c3; }
+
+.eucalyptus { background-color: #41de95; }
+
+.deepblue { background-color: #32374a; }
+
+.cosmicorange { background-color: #f77e2d; }
+
+.ashgray { background-color: #b2b9ba; }
+
+.gray { background-color: #444; }
+
+.oldsilver { background-color: #848484; }
+
+.Rose_gold { background-color: #b76e79; }
+
+
+
+

@@ -1,0 +1,52 @@
+
+@import '../../Utills/variables';
+
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  width: 100%;
+
+  border-bottom: #E2E6E9 2px solid;
+  justify-content: space-between;
+
+
+
+
+
+  @media (min-width: $desctop_width) {
+    height: 64px;
+
+   }
+
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 96px;
+    height: 100%;
+    margin-right: 16px;
+
+
+    @media(min-width : $desctop_width) {
+        width: 128px;
+        margin-right: 24px;
+    }
+
+
+
+    &__logo{
+      height: 22px;
+      width: 64px;
+
+      @media(min-width : $desctop_width) {
+        width: 80px;
+        height: 28px;
+    }
+
+    }
+  }
+
+}

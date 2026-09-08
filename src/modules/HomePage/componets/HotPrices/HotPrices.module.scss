@@ -1,0 +1,112 @@
+@import '../../../shared/Utills/variables';
+
+
+.hot__prices{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 24px;
+
+
+
+
+}
+
+
+.title{
+  color: $gray_primary;
+}
+
+
+.container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.button__container{
+  display: flex;
+  gap: 16px;
+
+
+
+
+
+  >button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $gray;
+    background: #fff;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.2s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      border-top: 2px solid $gray;
+      border-right: 2px solid $gray;
+      transition: border-color 0.2s;
+    }
+
+    &:hover {
+      border: 1px solid $gray_primary;
+    }
+
+    &:active {
+      border: 1px solid $gray;
+
+      &::before {
+        border-top: 2px solid $gray;
+        border-right: 2px solid $gray;
+      }
+    }
+}
+
+
+
+
+
+
+}
+
+
+.button__left::before{
+   transform: translate(-50%, -50%) rotate(225deg);
+}
+
+.button__rigth::before{
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+
+
+
+
+
+.slider {
+  overflow: hidden auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+   scroll-behavior: smooth;
+
+}
+
+.cards {
+  display: grid;
+  overflow: hidden;
+  grid-auto-flow: column;
+  gap: 16px;
+  scroll-snap-align: start;
+}
+
+.cards > * {
+  scroll-snap-align: start;
+}
+

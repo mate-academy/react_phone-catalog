@@ -1,0 +1,42 @@
+@import '../../Utills/variables';
+
+
+.layout{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+
+}
+
+
+main{
+  flex: 1;
+}
+
+
+
+.outlet{
+  padding: 24px 16px;
+  padding-bottom: 64px;
+
+
+
+
+
+
+
+  @media(min-width :$mobile_width) {
+    padding-inline: 24px;
+
+  }
+
+
+
+
+  @media(min-width :$desctop_width) {
+    padding-inline: 152px;
+
+
+  }
+}
