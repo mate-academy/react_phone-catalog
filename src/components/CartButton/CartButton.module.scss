@@ -1,0 +1,13 @@
+.add-to-cart {
+  outline: none;
+  border: none;
+  min-height: 100%;
+
+  &--disabled {
+    background-color: $gray-surface2;
+
+    &:hover {
+      background-color: $gray-surface2;
+    }
+  }
+}

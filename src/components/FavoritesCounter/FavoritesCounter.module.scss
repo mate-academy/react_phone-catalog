@@ -1,0 +1,20 @@
+.header-counter {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #eb5757;
+  position: absolute;
+  font-family: 'Mont-SemiBold', serif;
+  font-size: 9px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: $gray-white;
+  text-decoration: none;
+  border: 2px solid $gray-black;
+  left: 30px;
+  top: 22px;
+}

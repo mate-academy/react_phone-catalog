@@ -1,0 +1,38 @@
+.go-back {
+  margin-bottom: 16px;
+  margin-top: 24px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  box-sizing: border-box;
+  height: 16px;
+  max-height: 16px;
+  cursor: pointer;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &_arrow {
+    width: 16px;
+    height: 16px;
+    transition: $t-300ms;
+
+    &:hover {
+      scale: 1.2;
+    }
+  }
+
+  &_text {
+    font-family: 'Mont-SemiBold', serif;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: 0%;
+    color: $gray-white;
+    transition: $t-300ms;
+
+    &:hover {
+      scale: 1.2;
+    }
+  }
+}
