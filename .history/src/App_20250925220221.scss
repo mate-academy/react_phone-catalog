@@ -1,0 +1,46 @@
+// not empty
+@font-face {
+  font-family: Mont-Regular;
+  src: url('/fonts/Mont-Regular.otf');
+}
+
+@font-face {
+  font-family: Mont-Bold;
+  src: url('/fonts/Mont-Bold.otf');
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url('/fonts/Mont-SemiBold.otf');
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var;
+}
+
+.App {
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  column-gap: 16px;
+  width: calc(24 * 32px + 24 * 16px);
+  margin: 0 auto;
+  flex: 1;
+}
+
+.AppWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App > * {
+  grid-column: 1 / -1;
+}

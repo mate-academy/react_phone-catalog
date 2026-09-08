@@ -1,0 +1,75 @@
+.title {
+  font-size: 12px;
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.themeswitcher {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #b4bdc3;
+  border-radius: 8px;
+  background: none;
+  height: 40px;
+  font-size: 14px;
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  color: #0f0f11;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #89939a;
+    transition: 0.3s ease;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #0f0f11;
+  }
+}
+
+li {
+  color: #b4bdc3;
+  cursor: pointer;
+
+  &:hover {
+    color: #0f0f11;
+    transition: 0.3s ease;
+  }
+}
+
+.select {
+  margin: 0;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+  list-style: none;
+
+  border: 1px solid #b4bdc3;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 1000;
+
+  /* маленький відступ між кнопкою і списком */
+  margin-bottom: 8px;
+}
+
