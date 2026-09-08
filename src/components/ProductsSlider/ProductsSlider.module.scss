@@ -1,0 +1,61 @@
+@import '/src/utils/global';
+
+.ProductsSlider {
+  position: relative;
+
+  &__wrapper {
+    width: calc(100% + $mobile-padding);
+
+    @include on-tablet {
+      width: calc(100% + $tablet-padding);
+    }
+
+    @include on-desktop {
+      width: 100%;
+    }
+  }
+
+  &__navigation {
+    position: absolute;
+    display: flex;
+
+    top: -60px;
+    gap: 16px;
+    z-index: 1000;
+    right: 0;
+  }
+}
+
+.swiper {
+  overflow: hidden;
+
+  &-slide {
+    & article {
+      width: 100%;
+    }
+  }
+}
+
+
+
+.prev,
+.next {
+  width: 32px;
+  height: 32px;
+  background-color: $gray;
+
+  border: 1px solid #3b3e4a;
+  transition: all 0.3s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:disabled {
+    background-color: transparent;
+  }
+
+  &:hover {
+    border: 1px solid $white;
+  }
+}

@@ -1,0 +1,90 @@
+@import '/src/utils/global';
+
+.Pagination {
+  grid-column: 1 / -1;
+
+  &__control {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__optionGroup {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__sort {
+    width: 136px;
+
+    @include on-tablet {
+      width: 187px;
+    }
+
+    @include on-desktop {
+      width: 176px;
+    }
+  }
+
+  &__pageSelector {
+    width: 136px;
+  }
+
+  &__label {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0;
+    color: $ligth-gray;
+    margin-bottom: 4px;
+  }
+
+  &__select {
+    box-sizing: border-box;
+    height: 40px;
+    padding-inline: 12px;
+    background-color: $gray;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    border: 1px solid transparent;
+  }
+
+  &__buttons {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  &__btn {
+    box-sizing: border-box;
+    height: 32px;
+    width: 32px;
+    background-color: $dark-blue-gray;
+    border: 1px solid transparent;
+    transition: all .3s;
+
+    &:hover {
+      border: 1px solid $white;
+    }
+
+    &:disabled {
+      background-color: transparent;
+      border: 1px solid $dark-gray;
+    }
+
+    &_active {
+      background-color: $accent;
+    }
+  }
+
+  &__navBtn {
+    margin-inline: 8px;
+    background-color: $gray;
+  }
+
+
+}

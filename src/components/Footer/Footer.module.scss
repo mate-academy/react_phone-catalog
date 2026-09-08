@@ -1,0 +1,98 @@
+@import '/src/utils/global';
+
+.footer {
+  // position: absolute;
+  // width: 100%;
+  // bottom: 0;
+  margin-top: 64px;
+  padding-block: 32px;
+  border-top: 1px solid $gray;
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+    padding-inline: 0;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 13.5px;
+    }
+
+    @include on-desktop {
+      gap: 107px;
+    }
+  }
+
+  &__link {
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    @include hover(color, $ligth-gray);
+  }
+
+  &__upside {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    gap: 16px;
+
+    & > p {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0;
+      text-align: right;
+      color: $ligth-gray;
+      transition: color 0.3s;
+    }
+
+    & > div {
+      display: flex;
+      padding: 9px;
+      background-color: $gray;
+      border: 1px solid transparent;
+      transition: border 0.3s;
+    }
+
+    &:hover > div {
+      border: 1px solid $white;
+    }
+
+    &:hover > p {
+      color: $white;
+    }
+
+    &_hiden {
+      opacity: 0;
+    }
+  }
+}

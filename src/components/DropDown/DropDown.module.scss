@@ -1,0 +1,80 @@
+@import '/src/utils/global';
+
+.isActive {
+  transform: rotate(180deg);
+}
+
+.DropDown {
+  position: relative;
+
+  &__title {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0;
+    color: $ligth-gray;
+    margin-bottom: 4px;
+  }
+
+  &__selector {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    padding-inline: 12px;
+    background-color: $gray;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    margin-bottom: 5px;
+    border: 1px solid transparent;
+    transition: all .3s;
+
+    &:hover {
+      border: 1px solid $white;
+    }
+  }
+
+  &__list {
+    pointer-events: none;
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    opacity: 0;
+    transform: scaleY(90%);
+    transform-origin: top;
+    transition: all .3s;
+    padding: 12px;
+    background-color: $gray;
+    z-index: 1000;
+    border: 1px solid $white;
+    box-shadow: 0 3px 5px rgba(255, 255, 255, 0.5) ;
+
+    &_active {
+      pointer-events: all;
+      opacity: 1;
+      transform: scaleY(100%);
+    }
+  }
+
+  &__item {
+    margin-bottom: 12px;
+    color: $ligth-gray;
+    transition: all .3s;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    &_active {
+      color: $white;
+    }
+
+    &:hover {
+      color: $white;
+    }
+  }
+}

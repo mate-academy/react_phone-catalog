@@ -1,0 +1,16 @@
+@import '/src/utils/global';
+
+.main {
+  &__count {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    color: $ligth-gray;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}

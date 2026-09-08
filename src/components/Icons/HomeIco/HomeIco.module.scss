@@ -1,0 +1,14 @@
+@import '/src/utils/global';
+
+.HomeIco {
+  display: flex;
+
+  & svg {
+    width: 16px;
+    height: 16px;
+
+    & path {
+      fill: $white;
+    }
+  }
+}

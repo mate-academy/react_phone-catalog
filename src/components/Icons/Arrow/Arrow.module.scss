@@ -1,0 +1,13 @@
+@import '/src/utils/global';
+
+.arrow {
+  display: flex;
+
+  & svg {
+    stroke: $white;
+    width: 16px;
+    height: 16px;
+    transform-origin: center center;
+    transition: all .3s;
+  }
+}
