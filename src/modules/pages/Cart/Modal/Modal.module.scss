@@ -1,0 +1,54 @@
+@use '../../../../utils/mixins';
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__box {
+    z-index: 0;
+    width: 500px;
+    height: 250px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+
+  &__confirm {
+    cursor: pointer;
+    background-color: #313237;
+    border: 0;
+    color: #FFF;
+    width: 75%;
+  }
+
+  &__cancel {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    height: 48px;
+    border: 1px solid #B4BDC3;
+    background-color: white;
+
+    @include mixins.hover(background-color, #f44336);
+
+  }
+}
+

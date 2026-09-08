@@ -1,0 +1,27 @@
+@use '../../../../utils/mixins' as mixin;
+
+.logo {
+  width: 96px;
+  display: flex;
+
+  @include mixin.on-desktop {
+    width: 128px;
+  }
+
+  &__img {
+    @include mixin.hover(transform, scale(1.1));
+
+    height: 22px;
+    width: 64px;
+    margin: 13px 16px;
+
+    @include mixin.on-desktop {
+      height: 28px;
+      width: 80px;
+      margin: 18px 24px;
+
+    }
+  }
+}
+
+

@@ -1,0 +1,100 @@
+@use '../../../utils/mixins';
+
+.info {
+  @include mixins.page-grid;
+}
+
+.return {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+  margin-bottom: 16px;
+
+  a {
+    text-decoration: none;
+    color: #89939A;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+  }
+}
+
+.detailsPage {
+  @include mixins.page-grid;
+}
+
+.about {
+  grid-column: 1 / -1;
+
+  @include mixins.on-desktop {
+    grid-column: 1 / 12;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939A;
+    margin-top: 16px;
+  }
+}
+
+.specs {
+  grid-column: 1 / -1;
+
+  @include mixins.on-mobile {
+    margin-top: 56px;
+  }
+
+  @include mixins.on-tablet {
+    margin-top: 64px;
+  }
+
+  @include mixins.on-desktop {
+    grid-column: -11 / -1;
+    margin-top: 0;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__description {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+    gap: 8px;
+
+    &--specsText {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: right;
+    }
+
+    &--label {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: #89939A;
+    }
+
+    &--item {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+
