@@ -1,0 +1,103 @@
+@use 'mixins' as *;
+
+@font-face {
+  font-family: Mont-Regular;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont-Bold;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+}
+
+h2 {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+h3 {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  letter-spacing: 0;
+
+  @include on-tablet {
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+}
+
+h4 {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  letter-spacing: 0;
+}
+
+h5 {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+.cardValuesText {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  color: var(--color-primary);
+  text-align: right;
+  letter-spacing: 0;
+}
+
+.bodyText {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+.smallText {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+.uppercaseText {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  text-transform: uppercase;
+  letter-spacing: 4%;
+}
+
+.buttonText {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0;
+}

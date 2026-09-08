@@ -1,0 +1,23 @@
+.button {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 40px;
+  min-height: 40px;
+  border: 1px solid var(--small-button-default-border);
+
+  background-color: var(--small-button-default-bg);
+
+  &:hover {
+    border-color: var(--small-button-hover-border);
+    background-color: var(--small-button-hover-bg);
+  }
+}
+
+.isSelected {
+  border-color: var(--small-button-active-border);
+  background-color: var(--small-button-active-bg);
+}

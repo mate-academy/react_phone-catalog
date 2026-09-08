@@ -1,0 +1,105 @@
+{
+  "homePage": {
+    "welcomeMessage": "Welcome to Nice Gadgets store!",
+    "sliderProduct": {
+      "titles": ["Smart meets style", "Beyond Pro", "Create anywhere"],
+      "buttonContent": ["Order now", "View details"]
+    },
+    "newModelsTitle": "Brand new models",
+    "hotPricesTitle": "Hot prices"
+  },
+  "categories": {
+    "title": "Shop by categoty",
+    "phones": "Mobile phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "models": "models"
+  },
+  "productsPage": {
+    "noPhones": "No phones found with this filter",
+    "noTablets": "No tablets found with this filter",
+    "noAccessories": "No accessories found with this filter",
+    "filterPlaceholder": "Search",
+    "sortBy": "Sort by",
+    "itemsOnPage": "Items on page",
+    "newest": "Newest",
+    "alphabetically": "Alphabetically",
+    "cheapest": "Chepest",
+    "all": "All",
+    "somethingWentWrong": "Something went wrong",
+    "noProducts": "There are no phones/tablets/accessories yet",
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories"
+  },
+  "cartPage": {
+    "title": "Cart",
+    "totalFor": "Total for",
+    "item": "item",
+    "items_2_4": "items",
+    "items": "items",
+    "checkout": "Checkout",
+    "cartIsEmpty": "Cart is empty"
+  },
+  "modal": {
+    "checkoutNotImplemented": "Checkout is not implemented yet. Do you want to clear the Cart?",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  },
+  "favoritesPage": {
+    "title": "Favourites",
+    "item": "item",
+    "items": "items"
+  },
+  "productDetailsPage": {
+    "availableColors": "Available colors",
+    "selectCapacity": "Select capacity",
+    "addToCart": "Add to cart",
+    "addedToCart": "Added to cart",
+    "about": "About",
+    "techSpecs": "Tech specs",
+    "screen": "Screen",
+    "resolution": "Resolution",
+    "processor": "Processor",
+    "ram": "RAM",
+    "builtInMemory": "Built in memory",
+    "camera": "Camera",
+    "zoom": "Zoom",
+    "cell": "Cell",
+    "youMayAlsoLike": "You may also like",
+    "productNotFound": "Product not found"
+  },
+  "card": {
+    "screen": "Screen",
+    "capacity": "Capacity",
+    "ram": "RAM"
+  },
+  "navbar": {
+    "favorites": "Favorites",
+    "cart": "Cart",
+    "home": "Home",
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories"
+  },
+  "burgerMenu": {
+    "cross": "Close menu",
+    "heart": "Favorites",
+    "cart": "Cart"
+  },
+  "breadcrumb": {
+    "home": "Home"
+  },
+  "back": {
+    "back": "Back"
+  },
+  "footer": {
+    "github": "github",
+    "contacts": "contacts",
+    "rights": "rights",
+    "backToTop": "Back to top"
+  },
+  "notFoundPage": {
+    "pageNotFound": "Page not found"
+  }
+}

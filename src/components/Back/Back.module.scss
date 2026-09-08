@@ -1,0 +1,25 @@
+.back {
+  cursor: pointer;
+
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  width: fit-content;
+  height: 16px;
+  margin-bottom: 16px;
+  padding: 0;
+  border: none;
+
+  color: var(--back-button-default-text-color);
+
+  background-color: inherit;
+
+  &Text {
+    margin-top: 2px;
+  }
+
+  &:hover {
+    color: var(--back-button-hover-color);
+  }
+}
