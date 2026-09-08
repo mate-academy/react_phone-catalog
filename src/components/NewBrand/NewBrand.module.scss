@@ -1,0 +1,103 @@
+@import '../../styles/mixins.module';
+
+@font-face {
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-family: Mont, sans-serif;
+}
+
+@import 'src/styles/vars';
+
+.swiper-wrapper {
+  width: 10%;
+  margin-right: 16px;
+  position: fixed;
+}
+
+.brand {
+  font-family: Mont, sans-serif;
+  margin-inline: 16px;
+
+  @include on-tablet {
+    width: auto;
+    margin-inline: 24px;
+  }
+
+  @include on-big-screen {
+    width: 1136px;
+    margin: auto;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 24px;
+    padding-top: 56px;
+
+    @include on-tablet {
+      padding-top: 64px;
+    }
+
+    @include on-big-screen {
+      padding-top: 80px;
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__vectors {
+    width: 32px;
+    height: 32px;
+    background-color: $White;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+    border: 1px solid $Elements;
+    border-radius: 50%;
+  }
+
+  &__left {
+    background-image: url('./img/chevron-arrow_left.svg');
+    margin-right: 16px;
+  }
+
+  &__right {
+    background-image: url('./img/chevron-arrow-right.svg');
+
+  }
+
+  &__card{
+    display: flex;
+    width: min-content;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+.swiper-button-disabled {
+  background-image: url('./img/chevron-(arrow-down).svg');
+}
+
+button:disabled.brand__left {
+  background-image: url('./img/chevron-(arrow-down).svg');
+  transform: rotate(90deg);
+}
+
+button:disabled.brand__right {
+  background-image: url('./img/chevron-(arrow-down).svg');
+  transform: rotate(-90deg);
+}

@@ -1,0 +1,29 @@
+@import '../../styles/mixins.module';
+@import 'src/styles/vars';
+
+.swiper-custom-pagination-bullet {
+  cursor: pointer;
+  height: 4px;
+  width: 14px;
+  display: block;
+  color: $Elements;
+  background-color: $Primary;
+}
+
+.swiper-custom-pagination-bullet--active {
+  height: 4px;
+  width: 14px;
+  display: block;
+  background-color: $Elements;
+}
+
+.pagination {
+  gap: 14px;
+  width: 60px;
+  height: 4px;
+  flex-direction: row;
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

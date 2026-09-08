@@ -1,0 +1,54 @@
+@import '../../styles/mixins.module';
+
+@font-face {
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-family: Mont, sans-serif;
+}
+
+@import 'src/styles/vars';
+
+.pagination {
+  font-family: Mont, sans-serif;
+  padding-top: 24px;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  @include on-tablet {
+    padding-top: 40px;
+  }
+
+  @include content-margin-inline;
+
+  @include on-big-screen {
+    padding-top: 40px;
+    width: 1136px;
+    margin: auto;
+  }
+
+  &__button-simple {
+    cursor: pointer;
+    border: 1px solid $Elements;
+    background-color: $White;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &-current {
+      background-color: $Primary;
+      color: $White;
+    }
+  }
+
+  &__button-left {
+    background-image: url('./../img/chevron-arrow_left.svg');
+  }
+
+  &__button-right {
+    background-image: url('./../img/chevron-arrow-right.svg');
+  }
+}

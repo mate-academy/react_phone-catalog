@@ -1,0 +1,108 @@
+@import '../../styles/mixins.module';
+
+@font-face {
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-family: Mont, sans-serif;
+}
+
+@import 'src/styles/vars';
+
+.footer__wrapper {
+  border-top: 1px solid $Elements;
+  position: relative;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin-top: 64px;
+  margin-bottom: 0;
+
+  @include on-tablet {
+    margin-top: 80px;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  color: $Secondary;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0%;
+  line-height: 100%;
+  padding-block: 32px;
+  font-family: Mont, sans-serif;
+
+  @include content-margin-inline;
+
+  @include on-tablet {
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  @include on-big-screen {
+    width: 1136px;
+    margin-inline: auto;
+  }
+
+  &__navigation__wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__list {
+    margin-block: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-inline-start: 0;
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: row;
+    }
+
+    @include on-big-screen {
+      padding-inline-start: 48px;
+    }
+  }
+
+  &__item {
+    list-style: none;
+    margin-right: 32px;
+  }
+
+  &__link {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    color:$Secondary;
+
+    text-decoration: none;
+  }
+
+
+  &__backToTopContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: auto;
+
+    @include on-tablet {
+      margin: 0;
+    }
+  }
+
+  &__logo {
+    height: 22px;
+  }
+
+  &__logo-img {
+    width: 64px;
+    height: 22px;
+  }
+}

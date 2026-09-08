@@ -1,0 +1,171 @@
+@import '../../styles/mixins.module';
+
+@font-face {
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-family: Mont, sans-serif;
+}
+
+@import 'src/styles/vars';
+
+select,
+::picker(select) {
+  appearance: base-select;
+  border-radius: 8px;
+  color: $Secondary;
+  margin-top: 4px;
+}
+
+option:checked {
+  color: $Primary;
+}
+
+option::checkmark {
+  content: "";
+}
+
+.mobile-page {
+  margin-inline: 16px;
+  font-family: Mont, sans-serif;
+  display: flex;
+  flex-direction: column;
+
+  @include content-margin-inline;
+
+  @include on-big-screen {
+    width: 1136px;
+    margin: auto;
+  }
+
+  &__go-home {
+    background-image: url('./../img/home.svg');
+    display: block;
+    background-position: center;
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__direction {
+    background-image: url('./../img/chevron-arrow-right.svg');
+    background-position: center;
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+
+  &__current-page {
+    text-decoration: none;
+    color: $Secondary;
+  }
+
+  &__title {
+    text-transform: capitalize;
+  }
+
+  &__path-of-user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 24px;
+    margin-top: 78px;
+  }
+
+  &__quantity-mobils {
+    font-size: 14px;
+    font-weight: 600;
+    color: $Secondary;
+    line-height: 21px;
+    letter-spacing: 0;
+  }
+
+  &__select-wrapper {
+    margin-top: 32px;
+    display: flex;
+    justify-content: space-between;
+
+    @include on-tablet {
+      justify-content: left;
+    }
+  }
+
+  &__input-wrapper {
+    @include on-tablet {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  &__input {
+    margin-top: 4px;
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+    width: 136px;
+    height: 40px;
+    border-radius: 8px;
+    color: $Primary;
+    border: 1px solid $Icons;
+
+    font-weight: 700;
+    font-size: 14px;
+    padding-left: 8px;
+
+    &:hover {
+      background-color: #e7e7e7;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $Primary;
+    }
+
+    @media (min-width: 640px) {
+      width: 187px;
+    }
+  }
+
+  &__sort-wrapper {
+    margin-top: 5px;
+
+    @include on-tablet {
+      margin-top: 0;
+    }
+  }
+
+  &__items-sort {
+    color: $Secondary;
+  }
+
+  &__items-options {
+    &::picker-icon{
+      color: $NoneBackground;
+      background-image: url("./../img/chevron-(arrow-down).svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 16px;
+      height: 16px;
+      font-size: 14px;
+    }
+
+    &:checked {
+      background-color: $Primary;
+    }
+
+    margin-top: 4px;
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+    width: 136px;
+    height: 40px;
+    border-radius: 8px;
+    border-color: $Icons;
+    color: $Primary;
+
+    &--hot {
+      @include on-tablet {
+        width: 187px;
+      }
+    }
+  }
+}
