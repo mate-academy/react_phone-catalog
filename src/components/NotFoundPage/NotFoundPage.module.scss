@@ -1,0 +1,63 @@
+@import '/src/utils/styles/colors';
+@import '/src/utils/styles/typography';
+
+.notFoundPage {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  gap: 24px;
+
+  &__title {
+    @include text-h1;
+
+    color: var(--white);
+  }
+
+  &__image {
+    background-color: var(--surface2-bg);
+    border-radius: 10%;
+
+    width: 300px;
+    height: 300px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+    }
+  }
+
+  &__button {
+    text-decoration: none;
+    color: var(--white);
+
+    @include text-button;
+
+    background-color: var(--accent);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    width: 200px;
+    height: 50px;
+
+    &:hover {
+      background-color: #a378ff;
+    }
+
+    &:active {
+      background-color: var(--surface2-bg);
+    }
+  }
+}
