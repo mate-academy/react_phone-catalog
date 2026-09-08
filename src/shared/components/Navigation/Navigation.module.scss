@@ -1,0 +1,37 @@
+@import '../../styles/variables';
+
+.NavigationField {
+  display: flex;
+  align-items: center;
+
+  .NavigationLink {
+    display: inline-block;
+    background-image: url('../../../images/Home.svg');
+    width: 16px;
+    height: 16px;
+    background-position: center;
+    transform: scale(1);
+    transition: transform $transition;
+
+    &:hover,
+    &:focus {
+      transform: scale(1.05);
+    }
+  }
+
+  .Arrow {
+    margin: 0 8px;
+    width: 16px;
+    height: 16px;
+
+    background-image: url('../../../images/arrow-right.svg');
+    background-position: center;
+    opacity: 0.5;
+  }
+    .CurrentPage {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 16px;
+      color: $secondary-color;
+    }
+    }

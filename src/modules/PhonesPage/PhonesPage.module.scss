@@ -1,0 +1,93 @@
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixin';
+
+.PhonePage {
+  padding-top: 24px;
+}
+
+.PageContent {
+  grid-column: 1 / -1;
+}
+
+.NavigationField {
+  display: flex;
+  align-items:center;
+
+  .NavigationLink {
+    position: relative;
+    display: inline-block;
+    background-image: url('../../images/Home.svg');
+    width: 16px;
+    height: 16px;
+    background-position: center;
+    transform: scale(1);
+    transition: transform $transition;
+
+    &:hover, &:focus {
+      transform: scale(1.05);
+    }
+
+    &:hover::after, &:focus::after {
+      transform: scale(1);
+    }
+  }
+
+      .Arrow {
+      margin: 0 8px;
+      width: 16px;
+      height: 16px;
+
+      background-image: url('../../images/arrow-right.svg');
+      background-position: center;
+      opacity: 0.5;
+    }
+
+  .CurrentPage {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 16px;
+  }
+}
+
+.PageTitle {
+  margin-top: 40px;
+  font-size: 48px;
+  line-height: 56px;
+
+  @include respond-to(mobile) {
+    margin-top: 24px;
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.PageText {
+  margin-top: 8px;
+  color: $secondary-color;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+.PhoneCatalog {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 16px;
+
+  @include respond-to(tablet) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 16px;
+  }
+
+  @include respond-to(mobile) {
+    grid-template-columns: 1fr;
+      gap: 40px;
+  }
+}
+
+.DropdownField {
+  margin-top: 40px;
+  display: flex;
+  gap: 16px;
+}
