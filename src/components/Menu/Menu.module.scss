@@ -1,0 +1,35 @@
+@import '/src/styles/styles';
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background-color: #fff;
+  overflow-y: hidden;
+  padding-top: $header-height-mobile + 24px;;
+  box-sizing: border-box;
+  height: 100vh;
+  transform: translate(-100%);
+  opacity: 0;
+  transition: all $effectDuration ease-in-out;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &--open{
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0);
+  }
+
+  &--closed {
+    pointer-events: none;
+  }
+
+  @include tablet {
+    display: none;
+  }
+}
+

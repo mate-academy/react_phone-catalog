@@ -1,0 +1,55 @@
+@import '/src/styles/styles';
+
+.categoryPage {
+  &__container {
+    padding-top: 24px;
+    padding-bottom: 64px;
+
+    @include container;
+  }
+
+  &__heading {
+    @include headline-1;
+
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    @include text-body;
+
+    color: $secondary-color;
+    margin-bottom: 32px;
+
+    @include tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__beadcrumbs {
+    margin-bottom: 24px;
+
+    @include tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__dropboxContainer {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__sortSelect {
+    min-width: 136px;
+    width: 187px;
+  }
+
+  &__perPageSelect {
+    min-width: 136px;
+    width: 136px;
+  }
+
+  &__noQuery {
+    @include headline-3;
+  }
+}

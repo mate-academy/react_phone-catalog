@@ -1,0 +1,51 @@
+@import '/src/styles/styles';
+
+.breadcrumbs {
+  @include text-small;
+
+  display: flex;
+  align-items: center;
+  gap: 3px;
+
+  &__home {
+    width: 16px;
+    height: 16px;
+    transition: $effectDuration;
+    padding: 5px;
+
+    &:hover {
+      background: $elements-color;
+      border-radius: 100%;
+    }
+  }
+
+  &__current {
+    gap: 8px;
+  }
+
+  &__link {
+    gap: 3px;
+  }
+
+  &__current,
+  &__link {
+    display: flex;
+    align-items: center;
+  }
+
+  &__linkText {
+    color: $primary-color;
+    transition: $effectDuration;
+    padding: 2px 5px;
+    gap: 8px;
+
+    &:hover {
+      background: $elements-color;
+      border-radius: 1000px;
+    }
+  }
+
+  &__currenText {
+    color: $secondary-color;
+  }
+}

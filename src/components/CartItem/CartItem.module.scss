@@ -1,0 +1,131 @@
+@import '/src/styles/styles';
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid $elements-color;
+  border-radius: 16px;
+  background-color: #fff;
+
+  @include tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  &__main {
+    display: flex;
+    align-items: center;
+    gap: 23px;
+  }
+
+  &__remove {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    filter: invert(65%) sepia(11%) saturate(350%) hue-rotate(167deg) brightness(90%) contrast(85%);
+    transition: filter $effectDuration ease;
+
+    @include hover ( filter, none);
+
+    &__removeImg{
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__imageNameLink {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 23px;
+    cursor: pointer;
+
+    @include hover(transform, scale(1.1), '.cartItem__image');
+  }
+
+  &__imageWrapper {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform $effectDuration;
+  }
+
+  &__name {
+    @include text-body;
+
+    max-height: 42px;
+    overflow: hidden;
+
+    @include tablet {
+      max-height: unset;
+    }
+  }
+
+  &__details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+
+    @include tablet {
+      gap: 50px;
+    }
+  }
+
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+  }
+
+  &__quantityValue {
+    @include text-body;
+
+    width: 32px;
+    text-align: center;
+  }
+
+  &__quantityButton {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons-color;
+    border-radius: 50%;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color $effectDuration;
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: auto;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $primary-color;
+    }
+
+  }
+
+  &__price {
+    @include headline-3;
+    
+    text-align: right;
+  }
+}
+

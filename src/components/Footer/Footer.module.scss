@@ -1,0 +1,75 @@
+@import '/src/styles/styles';
+
+.footer {
+  background-color: #fff;
+  box-shadow: 0 -1px 0 0 $elements-color;
+
+  &__container {
+    padding-block: 32px;
+    
+    @include container;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    @include tablet {
+      flex-direction: row;
+      gap: 14px;
+    }
+
+    @include desktop {
+      flex-direction: row;
+      gap: 105px;
+    }
+  }
+
+  &__link {
+    @include text-uppercase;
+
+    color: $secondary-color;
+
+    @include hover (color, $primary-color)
+  }
+
+  &__toTop {
+   display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+
+    @include hover(color, $primary-color, '.footer__toTopText');
+    @include hover(border-color, $primary-color, '.footer__toTopButton');
+  }
+
+  &__toTopText {
+    @include text-small;
+
+    color: $secondary-color;
+    transform: color $effectDuration;
+  }
+
+  &__toTopButton {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons-color;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

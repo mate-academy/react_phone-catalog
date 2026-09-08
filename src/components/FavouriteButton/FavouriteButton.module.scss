@@ -1,0 +1,40 @@
+@import '/src/styles/styles';
+
+.buttonFavourites {
+    height: 40px;
+    width: 40px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: 1px solid $icons-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: border $effectDuration;
+
+    @include hover(border, 1px solid $primary-color);
+
+    &__icoWrapper {
+      position: relative;
+      width: 16px;
+      height: 16px;
+    }
+
+    &__icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity $effectDuration;
+    }
+
+    &__icon--visible {
+      opacity: 1;
+    }
+  }
+
+
+
+

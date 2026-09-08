@@ -1,0 +1,19 @@
+@import '/src/styles/styles';
+
+.backButton {
+  display: flex;
+  align-items: center;
+  height: 16px;
+  width: 16px;
+  gap: 4px;
+  cursor: pointer;
+
+  @include hover(color, $primary-color, '.backButton__text');
+
+  &__text {
+    @include text-small;
+
+    color: $secondary-color;
+    transition: color $effectDuration;
+  }
+}
