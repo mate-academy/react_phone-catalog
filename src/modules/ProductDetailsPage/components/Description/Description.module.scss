@@ -1,0 +1,19 @@
+@import '@styles/main';
+
+.description {
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+  }
+
+  &__text {
+    @include body-text;
+
+    color: $secondary-color;
+  }
+}

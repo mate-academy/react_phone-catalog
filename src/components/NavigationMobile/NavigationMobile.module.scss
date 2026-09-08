@@ -1,0 +1,17 @@
+@import '@styles/main';
+
+.nav {
+  color: $secondary-color;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item {
+    height: 27px;
+    display: flex;
+    justify-content: center;
+  }
+}

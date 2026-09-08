@@ -1,0 +1,73 @@
+@import '@styles/main';
+
+.header {
+  width: 100%;
+  height: $header-height--small;
+  background-color: $page-caps-bg;
+  box-shadow: 0 1px 0 0 $elements-color;
+
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  column-gap: 24px;
+
+  @include on-desktop {
+    height: $header-height;
+  }
+
+  @include on-tablet {
+    column-gap: 16px;
+  }
+
+  @include on-mobile {
+    grid-template-columns: auto 1fr;
+  }
+
+  &__logo {
+    padding-inline: $padding-inline--m;
+
+    @include on-tablet {
+      padding-inline: $padding-inline--s;
+    }
+  }
+
+  &__nav {
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &__items {
+    justify-self: end;
+    display: flex;
+  }
+
+  &__item {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    box-shadow: -1px 0 0 0 $elements-color;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    transition: background-color $hover-duration ease-out;
+
+    &--link {
+      cursor: pointer;
+  
+      @include on-mobile {
+        display: none;
+      }
+    }
+
+    &--btn {
+      cursor: pointer;
+      display: none;
+
+      @include on-mobile {
+        display: flex;
+      }
+    }
+  }
+}

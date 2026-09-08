@@ -1,0 +1,21 @@
+@import '@styles/main';
+
+.categories {
+  @include content-limitation;
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 16px;
+    margin-bottom: 5px;
+
+    @include on-mobile {
+      grid-template-columns: 1fr;
+      gap: 32px 0;
+    }
+  }
+}
