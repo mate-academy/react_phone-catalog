@@ -1,0 +1,264 @@
+.skeleton-product-page {
+  padding: 24px 16px;
+
+  @include tablet {
+    padding: 32px 24px;
+  }
+
+  @include desktop {
+    padding: 56px 32px;
+  }
+
+  // Хлібні крошки
+  &__crumbs {
+    width: 100%;
+    height: 20px;
+    margin-bottom: 24px;
+    border-radius: 4px;
+  }
+
+  // Кнопка "назад"
+  &__backbutton {
+    width: 100px; // орієнтовна ширина
+    height: 20px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+  }
+
+  // Заголовок
+  &__title {
+    width: 70%;
+    height: 40px;
+    margin-bottom: 32px;
+    border-radius: 8px;
+  }
+
+  // Контейнер секцій
+  &__sections {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    @include tablet {
+      gap: 64px;
+    }
+
+    @include desktop {
+      gap: 80px;
+    }
+  }
+
+  // Секції (дизайн та інформація)
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+
+    &--design {
+      padding-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+
+      @include tablet {
+        flex-direction: row;
+        gap: 40px;
+      }
+    }
+
+    &--info {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+
+      @include desktop {
+        flex-direction: row;
+        gap: 64px;
+      }
+    }
+  }
+
+  // Скелетон для блоку зображення продукту (CustomSwiper)
+  &__product-design {
+    width: 100%;
+    max-width: 530px;
+    height: 339px;
+    border-radius: 16px;
+    background-color: #e0e0e0;
+
+    @include tablet {
+      height: 287px;
+    }
+
+    @include desktop {
+      height: 464px;
+    }
+  }
+
+  // Бічна панель
+  .skeleton-product-page__sidebar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include tablet {
+      max-width: 320px;
+    }
+  }
+
+  // Опції sidebar (кольори, місткість)
+  .skeleton-product-page__options {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &__block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      // Секція вибору місткості – з розділюючими лініями
+      &--capacity {
+        padding: 24px 0;
+        border-top: 1px solid #e0e0e0;
+        border-bottom: 1px solid #e0e0e0;
+      }
+    }
+
+    &__title {
+      width: 50%;
+      height: 16px;
+      border-radius: 4px;
+    }
+
+    &__wrap {
+      display: flex;
+      gap: 8px;
+    }
+
+    &__color-wrap {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #e0e0e0;
+      padding: 2px;
+      border-radius: 50%;
+    }
+
+    &__capacity {
+      width: 56px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+    }
+  }
+
+  // Блок дій (ціна та кнопки)
+  .skeleton-product-page__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .skeleton-product-page__price {
+    width: 60%;
+    height: 24px;
+    border-radius: 4px;
+  }
+
+  .skeleton-product-page__buttons {
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+  }
+
+  // Технічні характеристики (короткі)
+  .skeleton-product-page__tech-specs {
+    width: 100%;
+    height: 80px;
+    border-radius: 4px;
+  }
+
+  // Інформаційна секція "about"
+  &__article {
+    width: 100%;
+    max-width: 569px;
+  }
+
+  &__article__title {
+    width: 50%;
+    height: 32px;
+    border-radius: 8px;
+  }
+
+  &__article__paragraphs {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__article__paragraph {
+    width: 100%;
+    height: 64px;
+    border-radius: 8px;
+  }
+
+  // Блок розширених технічних специфікацій
+  .skeleton-product-page__tech-specs-info {
+    width: 100%;
+
+    &__title {
+      width: 50%;
+      height: 32px;
+      border-radius: 8px;
+    }
+
+    &__content {
+      margin-top: 25px;
+      height: 100px;
+      border-radius: 8px;
+    }
+  }
+
+  // Слайдер рекомендацій
+  &__slider {
+    margin-top: 56px;
+    height: 200px;
+    border-radius: 16px;
+
+    @include tablet {
+      margin-top: 64px;
+    }
+
+    @include desktop {
+      margin-top: 80px;
+    }
+  }
+}
+
+/* Анімація shimmer, як у skeleton-home */
+.shimmer {
+  background: linear-gradient(
+    to right,
+    #e0e0e0 0%,
+    #f5f5f5 20%,
+    #e0e0e0 40%,
+    #e0e0e0 100%
+  );
+  background-size: 1200px 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1200px 0;
+  }
+  100% {
+    background-position: 1200px 0;
+  }
+}

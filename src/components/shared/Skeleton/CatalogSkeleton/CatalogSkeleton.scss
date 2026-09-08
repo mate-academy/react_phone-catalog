@@ -1,0 +1,109 @@
+%shimmer {
+  background: linear-gradient(
+    to right,
+    #e0e0e0 0%,
+    #f5f5f5 20%,
+    #e0e0e0 40%,
+    #e0e0e0 100%
+  );
+  background-size: 1200px 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1200px 0;
+  }
+  100% {
+    background-position: 1200px 0;
+  }
+}
+
+.catalog-skeleton {
+  padding: 24px 16px;
+
+  @include tablet {
+    padding: 32px 24px;
+  }
+
+  @include desktop {
+    padding: 56px 32px;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__breadcrumbs {
+    width: 200px;
+    height: 20px;
+    border-radius: 4px;
+    @extend %shimmer;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  &__select,
+  &__back-button {
+    height: 36px;
+    border-radius: 8px;
+    @extend %shimmer;
+  }
+
+  &__select {
+    width: 160px;
+  }
+
+  &__back-button {
+    width: 120px;
+  }
+
+  &__cards {
+    display: grid;
+    gap: 24px;
+    margin-bottom: 32px;
+
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__card {
+    height: 300px;
+    border-radius: 16px;
+    @extend %shimmer;
+  }
+
+  &__pagination {
+    width: 240px;
+    height: 32px;
+    margin: 0 auto;
+    border-radius: 8px;
+    @extend %shimmer;
+  }
+}

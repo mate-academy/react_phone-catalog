@@ -1,0 +1,29 @@
+.catalog {
+  @include paddings-page;
+
+  &__title {
+    padding-block: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+
+    @include tablet {
+      padding-block: 40px;
+    }
+
+    @include desktop {
+      padding-block: 40px;
+    }
+
+    &__heading {
+      @include h1;
+      color: $gray-primary;
+    }
+
+    &__subtitle {
+      @include text14;
+      color: $gray-secondary;
+    }
+  }
+}
