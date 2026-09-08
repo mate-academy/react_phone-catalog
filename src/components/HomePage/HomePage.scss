@@ -1,0 +1,64 @@
+@import '../../utils/core';
+
+.main__homepage {
+  margin: 0 auto;
+  max-width: 1200px;
+  margin-top: 56px; // attention!
+}
+
+.page__title {
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1px;
+  width: 100%;
+  margin: 56px 0;
+  padding: 0 20px;
+  color: $color-white;
+
+  @include on-tablet {
+    width: 80%;
+    margin: 32px 24px;
+  }
+
+  @include on-mobile {
+    width: 82%;
+    font-size: 32px;
+    margin: 24px 0;
+  }
+
+  @include themy($themes) {
+    color: themed('colorText');
+  }
+}
+
+.category__wrapper {
+  margin: 0 20px;
+  max-width: 1200px;
+  margin-top: 56px; // attention!
+}
+
+.category__title {
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1px;
+  width: 100%;
+  margin: 56px 0 40px;
+
+  @include themy($themes) {
+    color: themed('colorText');
+  }
+}
+
+.homepage__product,
+.homepage__category,
+.homepage__hotproduct {
+  margin: 0 16px;
+
+  @include on-tablet {
+    margin: 0 32px;
+  }
+}

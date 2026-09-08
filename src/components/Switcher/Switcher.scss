@@ -1,0 +1,90 @@
+@import '../../utils/core';
+
+.header-content {
+  display: flex;
+  max-width: 1200px;
+  .logo-section {
+    height: 50px;
+    text-decoration: none;
+    display: flex; // is it really needed here?
+    width: 430px;
+
+    @include themy($themes) {
+      color: themed('textColor');
+    }
+
+    font-weight: 600;
+    text-transform: uppercase;
+    img {
+      width: 50px;
+      height: 50px;
+    }
+    span {
+      display: inline-block;
+      font-size: 30px;
+      margin: auto;
+    }
+  }
+  .toggle-btn-section {
+    margin: auto 0 auto auto;
+    .toggle-checkbox {
+      justify-content: center;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+
+      .toggle-btn__input {
+        height: 0;
+        width: 0;
+        visibility: hidden;
+      }
+
+      .toggle-btn__input-label {
+        cursor: pointer;
+        text-indent: -9999px;
+        width: 46px;
+        height: 20px;
+        display: block;
+        border: none;
+        border-radius: 23px;
+        position: relative;
+        margin-top: 2px;
+        background-color: $color-after;
+
+        @include themy($themes) {
+          background-color: themed('colorPaginHover');
+        }
+
+        &::after {
+          content: '?';
+          position: absolute;
+          top: 3px;
+          left: 3px;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          transition: 0.3s;
+          box-shadow: 0 5px 10px rgba(123, 76, 224, 0.4);
+          background-color: $color-white;
+        }
+      }
+
+      .toggle-btn__input:checked ~ .toggle-btn__input-label {
+        background-color: $color-after;
+        &::after {
+          background: $color-white;
+          left: calc(100% - 3px);
+          transform: translateX(-100%);
+        }
+      }
+
+      .toggle-btn__input:checked ~ .toggle-btn__theme {
+        &::after {
+          background: $color-white;
+          left: calc(100% - 3px);
+          transform: translateX(-100%);
+        }
+      }
+    }
+  }
+}

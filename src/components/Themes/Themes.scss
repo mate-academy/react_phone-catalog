@@ -1,0 +1,51 @@
+/* stylelint-disable scss/no-global-function-names */
+@import '../../utils/mixins';
+@import '../../utils//variables';
+
+$themes: (
+  dark: (
+    colorSwiperBG: $color-surf-2,
+    colorSwiperText: $color-white,
+    colorCart: $color-surf-1,
+    colorHeaderFooter: $color-black,
+    colorText: $color-white,
+    colorBG: $color-black,
+    colorPaginActiv: $color-white,
+    colorPagination: $color-elem-text,
+    colorViolet: $color-accent,
+    colorVioletHover: $color-accent-hover,
+  ),
+  light: (
+    colorSwiperBG: $color-white,
+    colorSwiperText: $color-surf-2,
+    colorCart: $color-white,
+    colorHeaderFooter: $color-white,
+    colorText: $color-black,
+    colorBG: $color-white,
+    colorPaginActiv: $color-black,
+    colorPagination: $color-white,
+    colorViolet: $color-surf-2,
+    colorVioletHover: $color-icon-btn,
+  ),
+);
+
+@mixin themy($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+      @content;
+
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+/* stylelint-enable scss/no-global-function-names */

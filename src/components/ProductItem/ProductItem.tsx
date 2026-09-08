@@ -1,0 +1,107 @@
+import React, { useContext } from 'react';
+import { Product } from '../../types/ProductTipes';
+import { useNavigate } from 'react-router-dom';
+import heart from '../../img/heart.svg';
+import liked from '../../img/heartRed.svg';
+import heartLight from '../../img/heartLight.svg';
+import './ProductItem.scss';
+import { useFavourites } from '../Favourites/FavouritesContext';
+import { useCart } from '../BoughtCard/CartContext';
+import { ThemeContext } from '../Themes';
+
+interface Props {
+  product: Product;
+  AdditionalPrice?: boolean;
+  onClick?: () => void;
+}
+
+export const ProductItem: React.FC<Props> = ({
+  product,
+  AdditionalPrice: additionalPrice = false,
+}) => {
+  const { favourites, toggleFavourite } = useFavourites();
+  const { cart, toggleCart } = useCart();
+  const isFavourite = favourites.some(f => f.itemId === product.itemId);
+  const isInCart = cart.some(item => item.id === product.id);
+  const productPath = `/${product.category}/${product.itemId}`;
+  const navigate = useNavigate();
+
+  const { theme } = useContext(ThemeContext);
+  const isBasicDark = theme === 'dark';
+
+  const getLikeIcon = (isDark: boolean, isFav: boolean) => {
+    if (isDark) {
+      return isFav ? liked : heart;
+    }
+
+    return isFav ? liked : heartLight;
+  };
+
+  const handleToggleCart = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    toggleCart(product);
+  };
+
+  const handleToggleFavourite = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    toggleFavourite(product);
+  };
+
+  return (
+    <div className="product__elements" onClick={() => navigate(productPath)}>
+      <div className="product__container">
+        <img
+          src={product.image}
+          alt={`${product.category} image`}
+          className="product__image"
+        />
+      </div>
+
+      <h3 className="product__name">{product.name}</h3>
+      <div className="product__discount">
+        <h3 className="product__price">{`${product.price}`}</h3>
+        {additionalPrice && (
+          <h3 className="product__fullprice">{`${product.fullPrice}`}</h3>
+        )}
+      </div>
+
+      <div className="product__row"></div>
+
+      <div className="product__information">
+        <div className="product__informationFull">
+          <h3 className="screenTitle">Screen</h3>
+          <h3 className="product__screenDescription">{product.screen}</h3>
+        </div>
+
+        <div className="product__informationFull">
+          <h3 className="screenTitle">Capacity</h3>
+          <h3 className="product__screenDescription">{product.capacity}</h3>
+        </div>
+
+        <div className="product__informationFull">
+          <h3 className="screenTitle">RAM</h3>
+          <h3 className="product__screenDescription">{product.ram}</h3>
+        </div>
+      </div>
+
+      <div className="buttons">
+        <button
+          className="button__add"
+          onClick={handleToggleCart}
+          style={{
+            backgroundColor: isInCart
+              ? isBasicDark
+                ? '#4A4D58'
+                : '#75767F'
+              : undefined,
+          }}
+        >
+          {isInCart ? 'Remove from cart' : 'Add to cart'}
+        </button>
+        <button className="button__like" onClick={handleToggleFavourite}>
+          <img src={getLikeIcon(isBasicDark, isFavourite)} alt="like" />
+        </button>
+      </div>
+    </div>
+  );
+};
