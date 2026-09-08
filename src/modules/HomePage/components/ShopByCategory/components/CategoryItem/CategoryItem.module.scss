@@ -1,0 +1,56 @@
+@import '../../../../../shared/utils/main';
+
+.item {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__link {
+    text-decoration: none;
+    color: var(--gray-primary-color);
+  }
+
+  &__image {
+    display: block;
+    object-fit: contain;
+    object-position: 100% 100%;
+    height: 100%;
+    width: 100%;
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__header {
+    padding-top: 24px;
+    margin: 0;
+
+    font-family: $main-font;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: var(--gray-primary-color);
+  }
+
+  &__count {
+    padding-top: 4px;
+
+    @extend %body-text-14;
+
+    color: var(--gray-secondary-color);
+
+    @include on-desktop {
+      font-weight: 500;
+    }
+  }
+}

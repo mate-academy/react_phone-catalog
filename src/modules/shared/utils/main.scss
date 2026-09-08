@@ -1,0 +1,10 @@
+@import './reset';
+@import './variables';
+@import './mixins';
+@import './extends';
+@import './fonts';
+
+body {
+  background-color: var(--bg-color);
+  font-family: $main-font;
+}
