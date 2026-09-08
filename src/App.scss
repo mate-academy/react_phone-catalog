@@ -1,1 +1,30 @@
-// not empty
+@import './styles/utils/reset';
+@import './styles/utils/variables';
+@import './styles/utils/mixins';
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap';
+
+/* Add body background color to ensure full coverage */
+body {
+  background: rgb(15, 17, 33);
+}
+
+.App {
+  font-family: Montserrat, sans-serif;
+
+  /* Gray/Black */
+  background: rgb(15, 17, 33);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__main {
+    flex: 1;
+    padding: 20px 0;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}

@@ -43,6 +43,7 @@ module.exports = {
     'prefer-const': 2,
     curly: [2, 'all'],
     'max-len': ['error', {
+      code: 100,
       ignoreTemplateLiterals: true,
       ignoreComments: true,
     }],
@@ -67,6 +68,7 @@ module.exports = {
     'react/prop-types': 0,
     'react/require-default-props': 0,
     'import/prefer-default-export': 0,
+    'import/extensions': 0,
     'standard/no-callback-literal': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
     'react/destructuring-assignment': 0,
@@ -98,6 +100,7 @@ module.exports = {
         },
       },
     ],
+    '@typescript-eslint/ban-ts-comment': 0,
   },
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'src/vite-env.d.ts', 'cypress'],
   settings: {

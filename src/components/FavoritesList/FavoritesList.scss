@@ -1,0 +1,57 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.favorites-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $background-color;
+}
+
+.favorites-list {
+  flex-grow: 1;
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  color: $text-color;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 24px 0;
+    color: #fff;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &--empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+  }
+
+  &__empty-message {
+    font-size: 18px;
+    color: $text-secondary-color;
+    margin-top: 16px;
+  }
+}

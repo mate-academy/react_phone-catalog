@@ -1,0 +1,99 @@
+@import './variables';
+
+// Flexbox helpers
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Typography
+@mixin heading-1 {
+  font-size: $font-size-xlarge;
+  font-weight: 700;
+  margin-bottom: $spacing-medium;
+}
+
+@mixin heading-2 {
+  font-size: $font-size-large;
+  font-weight: 700;
+  margin-bottom: $spacing-medium;
+}
+
+@mixin body-text {
+  font-size: $font-size-base;
+  line-height: 1.5;
+}
+
+@mixin small-text {
+  font-size: $font-size-small;
+  color: $text-secondary-color;
+}
+
+// Media queries
+@mixin mobile {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+// Button styles
+@mixin button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $primary-color;
+  color: $text-color;
+  border: none;
+  padding: $spacing-medium $spacing-large;
+  font-size: $font-size-base;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color $transition-duration;
+
+  &:hover {
+    background-color: $primary-dark-color;
+  }
+}
+
+@mixin button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $background-light-color;
+  color: $text-color;
+  border: none;
+  border-radius: $border-radius;
+  padding: $spacing-medium $spacing-large;
+  font-size: $font-size-base;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color $transition-duration;
+
+  &:hover {
+    background-color: $background-hover-color;
+  }
+}
