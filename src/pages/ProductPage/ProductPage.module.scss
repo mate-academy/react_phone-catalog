@@ -1,0 +1,9 @@
+@use '../../styles/utils/mixins.scss' as *;
+
+.product-page__product-overview-wrapper {
+  margin-bottom: 54px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+}

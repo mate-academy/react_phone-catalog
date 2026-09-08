@@ -1,0 +1,105 @@
+@use '../../styles/utils/mixins' as *;
+@import '../../styles/variables/variables.scss';
+
+.product-card {
+  box-sizing: border-box;
+  border: 1px solid $light-gray;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding: 32px;
+  gap: 8px;
+
+  transition: $animation-duration;
+
+  &:hover {
+    box-shadow: -1px 1px 14px -3px rgba(0, 0, 0, 0.20);
+  }
+
+  & *:hover {
+    cursor: pointer;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+.product-card__image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.product-card__image {
+  width: 100%;
+  height: 196px;
+  object-fit: contain;
+
+  transition: $animation-duration;
+
+  &--cart {
+    height: auto;
+  }
+}
+
+.product-card__description {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-card__buttons-wrapper {
+  display: flex;
+  gap: 8px;
+}
+
+// variant: 'cart'
+
+.product-card--cart {
+  width: 100%;
+  max-width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: 9fr 4fr;
+  }
+}
+
+.product-card__delete-button--cart {
+  border: none !important;
+}
+
+.product-card__image-wrapper--cart {
+  display: flex;
+  width: 66px;
+}
+
+.product-card__price-details-wrapper--cart {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+}
+
+.product-card__price-details--cart {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product-card__price-details-amount-wrapper--cart {
+  display: flex;
+  align-items: center;
+}
+
+.product-card__price-details-amount {
+  width: $button-size;
+  text-align: center;
+}

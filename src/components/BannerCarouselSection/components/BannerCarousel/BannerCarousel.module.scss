@@ -1,0 +1,58 @@
+@use '../../../../styles/utils/mixins' as *;
+@import '../../../../styles/variables/variables.scss';
+
+.banner-carousel-wrapper {
+  display: grid;
+  gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: $button-size--sm 1fr $button-size--sm;
+  }
+}
+
+.banner-carousel {
+  width: 100%;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: $animation-duration;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.banner-carousel__btn-prev {
+  display: block;
+}
+
+.banner-carousel__btn-next {
+  display: block;
+}
+
+.banner-carousel__pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+  gap: 10px;
+
+  & :global(.swiper-pagination-bullet) {
+    width: 14px;
+    height: 4px;
+    border-radius: 0%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  & :global(.swiper-pagination-bullet-active) {
+    width: 14px;
+    height: 4px;
+    background-color: $primary;
+    border-radius: 0%;
+  }
+}

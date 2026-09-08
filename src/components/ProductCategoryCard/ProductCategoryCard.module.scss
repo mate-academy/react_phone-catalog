@@ -1,0 +1,68 @@
+@use '../../styles/utils/mixins' as *;
+@import '../../styles/variables/variables.scss';
+
+.product-category__card-banner {
+  display: block;
+  width: 100%;
+  padding-top: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+
+  transition: $animation-duration;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6);
+    transform: scale(1.01);
+  }
+
+  &--phone {
+    background-image: url('../../img/category-phones.webp');
+    background-color: #454342;
+    background-position: left 65px top -85%;
+  }
+
+  &--tablet {
+    background-image: url('../../img/category-tablets.png');
+    background-color: #8d8d92;
+    background-position: left 40px top 50px;
+  }
+
+  &--accessories {
+    background-image: url('../../img/category-accessories.png');
+    background-color: #973d5f;
+    background-position: left 40px top 60px;
+  }
+}
+
+@include on-tablet {
+  .product-category__card-banner {
+    &--tablet {
+      background-position: left 40px top 30px;
+    }
+
+    &--accessories {
+      background-position: left 40px top 35px;
+    }
+  }
+}
+
+@include on-desktop {
+  .product-category__card-banner {
+    &--tablet {
+      background-position: left 40px top 50px;
+    }
+
+    &--accessories {
+      background-position: left 40px top 60px;
+    }
+  }
+}
+
+.product-category__card-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 24px;
+}

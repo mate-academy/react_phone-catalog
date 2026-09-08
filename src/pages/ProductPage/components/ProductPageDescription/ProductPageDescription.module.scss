@@ -1,0 +1,27 @@
+@use '../../../../styles/utils/mixins.scss' as *;
+
+.product-page__description-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+}
+
+.product-page__description-topic-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.product-page__description-topic-title-wrapper {
+  margin-bottom: 16px;
+}
+
+.product-page__description-divider {
+  margin-top: 16px;
+}

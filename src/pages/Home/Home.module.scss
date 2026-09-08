@@ -1,0 +1,25 @@
+@use '../../styles/utils/mixins' as *;
+
+.home-page__title-visualy-hidden {
+  position: absolute;
+  top: 1;
+  height: 1px;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.home-page__title-wrapper {
+  margin-bottom: 24px;
+}
+
+@include on-tablet {
+  .home-page__title-wrapper {
+    margin-bottom: 32px;
+  }
+}
+
+@include on-desktop {
+  .home-page__title-wrapper {
+    margin-bottom: 56px;
+  }
+}
