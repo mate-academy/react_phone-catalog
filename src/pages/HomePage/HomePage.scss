@@ -1,0 +1,143 @@
+.grid {
+  justify-content: center;
+}
+
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
+
+  @media (max-width: 1199px) {
+    padding: 0 24px;
+  }
+
+  @media (max-width: 639px) {
+    padding: 0 16px;
+  }
+}
+
+.home__title {
+  grid-column: 1/-1;
+  margin: 32px 0;
+  font-size: 48px;
+  line-height: 56px;
+  font-style: bold;
+  letter-spacing: -0.01em;
+  font-weight: 800;
+
+  @media (max-width: 640px) {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.home__section{
+grid-column: 1/-1;
+
+/* max-width: 1136px; */
+  margin-bottom: 64px;
+
+ /* gap: 56px;
+  font-family: Mont, sans-serif;
+   position: relative; */
+
+   @media (max-width: 1199px) {
+    /* grid-column: 1/-1;
+padding: 24px;
+max-width: 1135px; */
+}
+
+ /* @media (max-width: 640px) {
+margin: 0 16px;
+} */
+}
+
+.home__grid {
+display: flex;
+width: 100%;
+justify-content: space-between;
+}
+
+
+
+.product-list__arrow {
+  display: flex;
+  margin-right: 0;
+  flex-direction: row;
+
+  /* cursor: pointer;
+  transition: 0.3s; */
+  gap: 16px;
+  align-items: end;
+  justify-content: end;
+}
+
+
+.product-list__arrow-left,
+.product-list__arrow-right {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #b4bdc3;
+  background: #fff;
+  cursor: pointer;
+
+
+  img {
+    width: 16px;
+    height: 16px;
+    transition: filter 0.3s;
+  }
+
+  &:hover {
+    border-color: #313237;
+
+    img {
+      filter: invert(1);
+    }
+  }
+
+  @media (max-width: 1199px) {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.category-grid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+gap: 16px;
+
+  @media (max-width: 1199px) {
+grid-template-columns: repeat(3, 1fr);
+max-width: 100%;
+  }
+
+
+
+  @media (max-width: 639px) {
+grid-template-columns:  1fr;
+
+  /* box-sizing: border-box;
+  flex-direction: column;
+  max-width: 100%; */
+  gap: 32px;
+  }
+}
+
+.home__subtitle {
+ font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  font-weight: 800;
+  margin-bottom: 24px;
+
+  @media (max-width: 640px) {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
