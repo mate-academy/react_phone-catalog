@@ -1,0 +1,114 @@
+@import '../../styles/colors';
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--btn-width);
+  height: var(--btn-height);
+  line-height: 21px;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+
+  &__primary {
+    width: 100%;
+    min-height: 40px;
+    background-color: $Primary;
+    color: $White;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+
+    &--selected {
+      background-color: $White;
+      color: $Green;
+    }
+  }
+
+  &__back {
+    width: auto;
+    font-size: 12px;
+    background-color: $White;
+    color: $Secondary;
+
+    &:hover {
+      color: $Primary;
+    }
+  }
+
+  &__number,
+  &__icon {
+    aspect-ratio: 1 / 1;
+    background-color: $White;
+    border: 1px solid;
+  }
+
+  &__number {
+    border-color: $Elements;
+
+    &:hover {
+      border-color: $Primary;
+    }
+
+    &--selected {
+      background-color: $Primary;
+      color: $White;
+    }
+  }
+
+  &__icon {
+    border-color: $Icons;
+
+    &:hover {
+      border-color: $Primary;
+    }
+
+    &--selected {
+      border-color: $Elements;
+    }
+
+    &--disabled {
+      opacity: 0.3;
+    }
+  }
+
+  &__radio {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    position: relative;
+    background-color: $Elements;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid $White;
+      background-color: var(--radio-color);
+    }
+
+    &:not(.btn__radio--selected):hover {
+      background-color: $Icons;
+
+      &::before {
+        background-color: var(--radio-hover-color);
+      }
+    }
+
+    &--selected {
+      background-color: $Primary;
+    }
+  }
+}
+
+.arrowLeft {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
