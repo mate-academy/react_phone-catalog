@@ -1,0 +1,34 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+
+.tech{
+  grid-column: 1 / -1;
+  margin-bottom: 64px;
+
+  @include on-desktop{
+    grid-column: span 12;
+  }
+
+  &__title{
+    font-size: 22px;
+    line-height: 30px;
+    font-weight: 700;
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__details{
+    display: flex;
+    justify-content: space-between;
+    
+    @include small-text;
+
+    span:first-child{
+      color: $secondary-color;
+    }
+
+    &:not(:last-child){
+      margin-bottom: 8px;
+    }
+  }
+}
