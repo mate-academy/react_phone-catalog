@@ -1,0 +1,32 @@
+.modal {
+  background-color: $hover_and_BG;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  padding: 20px;
+  width: 80%;
+
+  @include on-tablet {
+    width: initial;
+  }
+
+  &--dark {
+    background-color: $black-main;
+
+    & > h2, h3, p {
+      color: $white-for-dark;
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 1000;
+}

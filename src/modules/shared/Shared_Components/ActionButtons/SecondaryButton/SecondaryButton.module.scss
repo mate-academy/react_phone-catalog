@@ -1,0 +1,61 @@
+.secondary {
+  width: 32px;
+  height: 32px;
+  background-color: $white;
+  border: 1px solid $elements-color;
+  position: relative;
+  transition: all $primary-transition-duration;
+  background-image: url(/icons/chevron_arrow_right_disabled.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  color: $primary-color;
+
+  @include on-desktop {
+    &:hover {
+      cursor: pointer;
+      border-color: $primary-color
+    }
+  }
+
+  &:disabled{
+    pointer-events: none;
+  }
+
+  &--active {
+    background-image: url(/icons/Chevron-Arrow-Right.svg);
+  }
+
+  &--right {
+    transform: rotate(180deg);
+  }
+
+  &--top {
+    transform: rotate(90deg);
+  }
+
+  &--is-Dark {
+    border-color: transparent;
+    background-color: $gray-surface-secondary;
+    background-image: url(/icons/chevron_arrow_right_disabled.svg);
+    color: $white-for-dark;
+
+    &:hover {
+      border-color: transparent;
+      background-color: $gray-elements-secondary;
+    }
+  }
+
+  &--is-Dark-Disabled {
+    background-color: $black-main;
+    border-color: $gray-elements;
+    background-image: url(/icons/Chevron-Arrow-Right.svg);
+  }
+
+  &--closed {
+    background-image: url(/icons/close_menu_icon.svg);
+  }
+
+  &--closed-dark {
+    background-image: url(/icons/CloseWhite.svg);
+  }
+}

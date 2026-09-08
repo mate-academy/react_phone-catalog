@@ -1,0 +1,31 @@
+.plain-input {
+  display: flex;
+  flex-direction: column;
+
+  &__field {
+    height: 43px;
+    border: 1px solid $icons-color;
+    font-family: "Mont SemiBold";
+    font-size: 14px;
+    color: $primary-color;
+    padding-left: 15px;
+
+    @include on-tablet {
+      width: 100%;
+    }
+
+    &--dark {
+      background-color: $gray-surface-secondary;
+      border-color: $gray-elements-secondary;
+      color: $white-for-dark;
+
+      &::placeholder {
+        color: $white-for-dark;
+      }
+
+      &:focus {
+        outline: $gray-elements-secondary;
+      }
+    }
+  }
+}

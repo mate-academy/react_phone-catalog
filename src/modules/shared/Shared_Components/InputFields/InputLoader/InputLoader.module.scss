@@ -1,0 +1,37 @@
+.input-loader {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+
+    @include on-tablet {
+      align-self: center;
+    }
+
+  &__text {
+    font-family: $font-Mont_SemiBold;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    color: $secondary-color;
+    margin-bottom: 0;
+  }
+
+  &__options {
+    height: 43px;
+    border: 1px solid $icons-color;
+    font-family: $font-Mont_SemiBold;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    color: $primary-color;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    justify-content: space-between;
+    transition: all $primary-transition-duration;
+
+    @include skeleton;
+    @include skeletonBoxShadow;
+  }
+}
