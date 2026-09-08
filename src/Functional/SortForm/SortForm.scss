@@ -1,0 +1,86 @@
+@use '../../mixins.scss' as *;
+
+.sort-form {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 24px;
+
+  @include on-phone {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  &__top {
+    @include on-phone {
+      display: block;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    gap: 24px;
+    align-items: flex-end;
+
+    @include on-phone {
+      width: 100%;
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &__label {
+    font-size: 14px;
+    color: #89939a;
+    margin-bottom: 8px;
+    min-height: 20px;
+  }
+
+    &__select {
+      color: white;
+      background-color: #323542;
+      padding: 16px 30px;
+      font-size: 16px;
+      border: 1px solid #b4bdc3;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23FFFFFF' stroke-width='2'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      background-size: 12px 8px;
+
+      &:focus {
+        border-color: #313237;
+      }
+    }
+
+  &__input {
+    color: white;
+    background-color: #323542;
+    padding: 16px 20px;
+    font-size: 10px;
+    border: 1px solid #b4bdc3;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s;
+
+    @include on-tablet {
+      font-size: 16px;
+    }
+
+    @include on-desktop {
+      font-size: 16px;
+    }
+
+    &:focus {
+      border-color: #313237;
+    }
+  }
+}

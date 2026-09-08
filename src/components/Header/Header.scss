@@ -1,0 +1,245 @@
+@use '../../mixins.scss' as *;
+
+.header {
+  box-sizing: border-box;
+  height: auto;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+  background-color: #0F1121;
+
+
+&__burger-wrapper{
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid #3B3E4A;
+  padding-left: 30px;
+
+  @include on-tablet {
+    display: none;
+  }
+
+  @include on-desktop {
+    display: none;
+  }
+}
+
+  &__burger-menu {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 30px;
+
+    span {
+      width: 24px;
+      height: 2px;
+      background-color: white;
+      transition: all 0.3s ease;
+    }
+
+    &:hover span {
+      background-color: #75767F;
+    }
+
+    @include on-tablet {
+      display: none;
+    }
+
+    @include on-desktop {
+      display: none;
+    }
+  }
+
+
+  &__top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    border-bottom: 1px solid #3B3E4A;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+
+  &__nav {
+    display: flex;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: center;
+      flex: 1;
+    }
+
+    @include on-phone {
+      display: none;
+    }
+
+    @include on-desktop {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+
+  &__head--logo {
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+    }
+
+    @include on-desktop {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+    }
+  }
+
+  &__heart,
+  &__packet {
+    position: relative;
+    border-left: 1px solid #3B3E4A;
+    cursor: pointer;
+    padding: 30px;
+    transition: color 0.3s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background-color: #fff;
+      transition: width 0.6s ease-in-out;
+    }
+
+    &:hover::after,
+    &.is-active::after {
+      width: 100%;
+    }
+
+    @include on-phone {
+      display: none;
+    }
+
+    @include on-tablet {
+      padding: 20px;
+    }
+  }
+
+
+
+  &__heart {
+    &__top {
+      display: flex;
+      width: 24px;
+      height: 24px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+
+
+
+&__packet {
+  position: relative;
+
+  &__top {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('/figmaLogo/Packet.svg');
+  }
+}
+
+
+
+}
+
+.navbar-item {
+  color: #75767F;
+  margin: 0 12px;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-bottom: 4px;
+  transition: color 0.2s ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.5s ease-in-out;
+  }
+
+  &:hover {
+    color: #fff;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+.is-active {
+  color: #fff;
+
+  &::after {
+    width: 100%;
+  }
+}
+
+.cart-count {
+  position: absolute;
+  top: 16px;
+  right: 15px;
+  width: 12px;
+  height: 12px;
+  background-color: #eb5757;
+  color: white;
+  font-size: 8px;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  pointer-events: none;
+
+  @include on-desktop {
+    width: 17px;
+    height: 17px;
+    top: 25px;
+    right: 20px;
+  }
+}

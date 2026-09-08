@@ -1,0 +1,196 @@
+@use '../../mixins.scss' as *;
+
+.shop {
+  margin-top: 56px;
+
+  @include padding-inline;
+
+  &__header {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    @include on-phone {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  &__title {
+    margin: 10px 0;
+    color: white;
+    font-size: 24px;
+    flex-shrink: 0;
+    display: block;
+
+    @include on-phone {
+      font-size: 20px;
+    }
+  }
+
+  &__main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  }
+
+  &__container {
+    width: 100%;
+    max-width: 368px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include on-tablet {
+      max-width: 250px;
+    }
+
+    @include on-phone {
+      text-align: center;
+    }
+  }
+
+  &__phone {
+    background-color: #6D6474;
+    overflow: hidden;
+    position: relative;
+    width: 288px;
+    height: 288px;
+
+    @media (min-width: 829px) and (max-width: 1375px) {
+      width: 240px;
+      height: 240px;
+    }
+
+    @include on-desktop {
+      width: 368px;
+      height: 368px;
+    }
+
+    &--img {
+      width: 302px;
+      height: 357px;
+      object-fit: contain;
+      position: absolute;
+      top: 70px;
+      right: -50px;
+      transition: transform 0.5s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      @media (min-width: 829px) and (max-width: 1375px) {
+        top: 45px;
+        width: 210px;
+        height: 200px;
+      }
+
+      @include on-desktop {
+        top: 80px;
+        width: 302px;
+        height: 357px;
+      }
+    }
+  }
+
+  &__tablet {
+    background-color: #A9A9A9;
+    width: 288px;
+    height: 288px;
+    position: relative;
+    overflow: hidden;
+
+    @media (min-width: 829px) and (max-width: 1375px) {
+      width: 240px;
+      height: 240px;
+    }
+
+    @include on-desktop {
+      width: 368px;
+      height: 368px;
+    }
+
+    &--img {
+      width: 302px;
+      height: 357px;
+      object-fit: contain;
+      position: absolute;
+      top: 20px;
+      right: -40px;
+      transition: transform 0.5s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      @media (min-width: 829px) and (max-width: 1375px) {
+        top: 30px;
+        width: 210px;
+        height: 200px;
+      }
+
+      @include on-desktop {
+        top: 45px;
+        width: 402px;
+        height: 400px;
+        right: -100px;
+      }
+    }
+  }
+
+  &__accessories {
+    background-color: #AE0062;
+    width: 288px;
+    height: 288px;
+    position: relative;
+    overflow: hidden;
+
+    @media (min-width: 829px) and (max-width: 1375px) {
+      width: 240px;
+      height: 240px;
+    }
+
+    @include on-desktop {
+      width: 368px;
+      height: 368px;
+    }
+
+    &--img {
+      width: 480px;
+      height: 430px;
+      object-fit: contain;
+      position: absolute;
+      top: -30px;
+      right: -230px;
+      transition: transform 0.5s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      @media (min-width: 829px) and (max-width: 1375px) {
+        top: 40px;
+        width: 550px;
+        height: 150px;
+        right: -270px;
+      }
+
+      @include on-desktop {
+        width: 670px;
+        height: 430px;
+        top: 0;
+        right: -330px;
+      }
+    }
+  }
+
+  &__models--title {
+    margin: 0;
+    color: #89939A;
+  }
+}

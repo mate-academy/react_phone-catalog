@@ -1,1 +1,30 @@
-// not empty
+
+body {
+  background-color: #0F1121;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Montserrat, sans-serif;
+}
+
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  white-space: nowrap;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex-grow: 1;
+}
