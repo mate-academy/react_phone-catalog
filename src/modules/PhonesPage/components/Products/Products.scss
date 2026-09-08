@@ -1,0 +1,87 @@
+@import './../../../../mixins';
+
+.products {
+  margin-top: 40px;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .product {
+    flex: 1 1 calc(25% - 16px);
+
+    &__link {
+      width: 100%;
+    }
+  }
+
+  &__row {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    height: 40px;
+    width: 100%;
+    padding: 10px 12px;
+    color: #F1F2F9;
+    background-color: #323542;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    border: none;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+    @include on-tablet {
+      width: 176px;
+    }
+  }
+
+  &__select-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin-bottom: 24px;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      background-image: url('../../../../img/down-arrow.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 16px;
+      height: 16px;
+      pointer-events: none;
+    }
+
+    &:last-child {
+      .products__select {
+        @include on-tablet {
+          width: 128px;
+        }
+      }
+    }
+  }
+
+  &__label {
+    color: #75767F;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+}

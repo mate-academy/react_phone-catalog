@@ -1,0 +1,49 @@
+@import '../../mixins';
+
+.navbar {
+  height: 100%;
+
+  &__list {
+    height: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    gap: 32px;
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    @include on-dekstop {
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    height: 100%;
+  }
+
+  &__link {
+    height: 100%;
+    color: #75767F;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.09;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+
+    &:hover {
+      color: #F1F2F9;
+    }
+  }
+}
+
+.is-active {
+  color: #F1F2F9!important;
+  border-bottom: 3px solid #F1F2F9;
+}

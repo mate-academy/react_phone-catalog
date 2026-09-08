@@ -1,0 +1,104 @@
+@import './../../mixins';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 17;
+  background-color: #0F1121;
+  border-bottom: 1px solid #3b3e4a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 16px;
+  margin-bottom: 56px;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    height: 48px;
+  }
+
+  @include on-dekstop {
+    height: 64px;
+    padding-left: 24px;
+  }
+
+  &__dekstop-logo {
+    display: none;
+
+    @include on-dekstop {
+      display: block;
+    }
+  }
+
+  &__mobile-logo {
+    display: block;
+
+    @include on-dekstop {
+      display: none;
+    }
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 100%;
+
+    @include on-dekstop {
+      gap: 48px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+  }
+
+  &__icon {
+    position: relative;
+    border-left: 1px solid #3b3e4a;
+    transition: 0.3s;
+    padding: 16px;
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    @include on-dekstop {
+      padding: 24px;
+    }
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+  }
+
+  &__icon-quantity {
+    position: absolute;
+    color: #F1F2F9;
+    font-size: 9px;
+    font-weight: 700;
+    background: #EB5757;
+    border: 1px solid #0F1121;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 15px;
+    right: 17px;
+  }
+
+  &__menu-icon {
+    display: flex;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
