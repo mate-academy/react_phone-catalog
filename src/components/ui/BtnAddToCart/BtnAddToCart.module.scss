@@ -1,0 +1,16 @@
+@use "../../../shared/mixins/mixins.scss" as *;
+
+.buttons__addToCart {
+  width: 160px;
+  height: 40px;
+
+  @include big-button;
+}
+
+.active {
+  background-color: rgba(50, 53, 66, 1);
+
+  &:hover {
+    background-color: rgb(72, 73, 78);
+  }
+}

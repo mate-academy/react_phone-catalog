@@ -1,0 +1,51 @@
+@use "../../../../shared/mixins/mixins" as *;
+
+.counterAndPrice {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 639px) {
+    width: 100%;
+  }
+}
+
+.counter {
+  @include flex-center;
+}
+
+.counter__item {
+  border: 1px solid rgba(59, 62, 74, 1);
+  background: rgba(50, 53, 66, 1);
+
+  @include icon-size(32px);
+  @include flex-center;
+}
+
+.counter__minus {
+  background: none;
+}
+
+.counter__countValue {
+  display: inline-block;
+
+  @include icon-size(32px);
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  text-align: center;
+
+  @include flex-center;
+}
+
+.item__price {
+  width: 80px;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  text-align: right;
+}

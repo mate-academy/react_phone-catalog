@@ -1,0 +1,42 @@
+@use "../../../../shared/mixins/mixins.scss" as *;
+@use "../../../../shared/variables/variables" as *;
+
+.Cart__total {
+  width: 368px;
+  height: max-content;
+  padding: 24px;
+  border: 1px solid rgba(59, 62, 74, 1);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: 1199px) {
+    width: 100%;
+  }
+}
+
+.total__price {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.32px;
+  color: $white-color;
+}
+
+.total__text {
+  margin-bottom: 25px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $gray-color;
+}
+
+.total__button {
+  width: 100%;
+  height: 48px;
+  margin-top: 24px;
+
+  @include big-button;
+}

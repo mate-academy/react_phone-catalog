@@ -1,0 +1,20 @@
+@use "../../shared/variables/variables" as *;
+@use "../../shared/mixins/mixins" as *;
+
+.back {
+  margin-top: 40px;
+  gap: 4px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+}
+
+.back__icon {
+  @include icon-size(16px);
+  @include flex-center;
+}
+
+.back__text {
+  color: $white-color;
+}

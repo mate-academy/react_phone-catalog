@@ -1,0 +1,30 @@
+@use "../../../shared/mixins/mixins" as *;
+@use "../../../shared/variables/variables" as *;
+
+.button__container {
+  width: max-content;
+  height: max-content;
+  position: relative;
+}
+
+.count__items {
+  position: absolute;
+  padding: 0;
+  bottom: 8px;
+  left: 8px;
+
+  width: 14px;
+  height: 14px;
+
+  font-weight: 700;
+  font-size: 9px;
+  line-height: 9px;
+  letter-spacing: 0;
+
+  background-color: rgba(255, 0, 0, 1);
+  color: $white-color;
+  border: 1px solid rgba(15, 17, 33, 1);
+  border-radius: 50%;
+
+  @include flex-center;
+}

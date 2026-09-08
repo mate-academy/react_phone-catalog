@@ -1,0 +1,80 @@
+@use "../../../../shared/mixins/mixins" as *;
+@use "../../../../shared/variables/variables" as *;
+
+.slider {
+  margin-top: 56px;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  gap: 16px;
+}
+
+.slides {
+  flex: 1 1 auto;
+  width: 100%;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 13 / 5;
+
+    @media (max-width: 639px) {
+      aspect-ratio: 1 / 1;
+    }
+  }
+}
+
+.arrowLeft,
+.arrowRight {
+  flex: 0 0 32px;
+  background: #323542;
+  cursor: pointer;
+
+  @include flex-center;
+
+  img {
+    @include icon-size(16px);
+
+    display: block;
+    object-fit: contain;
+  }
+
+  &:hover {
+    background: rgba(59, 62, 74, 1);
+  }
+
+  @media (max-width: 639px) {
+    display: none;
+  }
+}
+
+.dots {
+  @include flex-center;
+
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.dot_container {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+
+  @include flex-center;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  background: rgba(59, 62, 74, 1);
+  transition: background 0.3s ease;
+
+  &.activeDot {
+    background: $white-color;
+  }
+}

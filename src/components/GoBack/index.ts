@@ -1,0 +1,1 @@
+export { GoBack } from './GoBack';

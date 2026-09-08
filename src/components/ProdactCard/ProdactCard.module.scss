@@ -1,0 +1,94 @@
+@use "../../shared/variables/variables" as *;
+@use "../../shared/mixins/mixins" as *;
+
+.product__card {
+  width: 272px;
+  padding: 32px;
+  background: rgba(22, 24, 39, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+  transform-origin: center;
+  will-change: transform;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.card__img {
+  box-sizing: border-box;
+  width: 208px;
+  height: 196px;
+
+  @include flex-center;
+
+  img {
+    height: inherit;
+  }
+}
+
+.card__title {
+  padding-top: 15px;
+  height: 58px;
+  color: $white-color;
+
+  @include subtitle-text;
+}
+
+.card__price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  color: $white-color;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+.price__withoutDiscount {
+  color: $gray-color;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 0;
+  text-decoration: line-through;
+}
+
+.card__characteristics {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  gap: 8px;
+}
+
+.characteristic__item {
+  height: 15px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.characteristic__label {
+  color: $gray-color;
+}
+
+.characteristic__value {
+  color: $white-color;
+}
+
+.card__buttons {
+  display: flex;
+  gap: 8px;
+}
