@@ -1,0 +1,63 @@
+@import '../../main';
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  .arrow {
+    background-image: url(../../assets/img/icons/arrow-right-active.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: $icons-size;
+    height: $icons-size;
+    padding: 16px;
+    border: 1px solid $icons;
+    border-radius: 48px;
+    background-color: inherit;
+    cursor: pointer;
+
+    @include hover {
+      border: 1px solid $primary;
+    }
+
+    &:disabled {
+      border: 1px solid $elements;
+      background-image: url(../../assets/img/icons/arrow-right.svg);
+      cursor: default;
+    }
+
+    &--left {
+      transform: rotateY(180deg);
+    }
+  }
+
+  .numbers {
+    display: flex;
+    gap: 8px;
+
+    .number {
+      font-size: 14px;
+      width: 34px;
+      height: 34px;
+      line-height: 34px;
+      text-align: center;
+      border: 1px solid $elements;
+      border-radius: 16px;
+      background-color: inherit;
+      cursor: pointer;
+
+      &--notEmpty {
+        @include hover {
+          border: 1px solid $primary;
+        }
+      }
+
+      &--active {
+        background-color: $primary;
+        color: $white;
+      }
+    }
+  }
+}

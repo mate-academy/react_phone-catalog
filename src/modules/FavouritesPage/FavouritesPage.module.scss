@@ -1,0 +1,29 @@
+@import '../../main';
+
+.favouritesPage {
+  @include page-container;
+
+  .title {
+    @include font-set($mobile-h1);
+
+    margin-bottom: 8px;
+
+    @include on-tablet {
+      @include font-set($tablet-h1);
+    }
+  }
+
+  .countItems {
+    @include font-set($body-text);
+
+    color: $secondary;
+    margin-bottom: 32px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(212px, 272px));
+    justify-content: center;
+    gap: 40px 16px;
+  }
+}

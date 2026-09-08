@@ -1,0 +1,151 @@
+@import '../../main';
+
+.card {
+  padding: 32px;
+  border: 1px solid $elements;
+  border-radius: 8px;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 232px;
+
+  @include on-tablet {
+    min-width: 245px;
+  }
+
+  @include on-desktop {
+    min-width: 277px;
+  }
+
+  @include hover {
+    box-shadow: 0 2px 16px 0 #0000001a;
+  }
+
+  .img {
+    height: 148px;
+    width: 129px;
+    margin: auto;
+    cursor: pointer;
+    object-fit: contain;
+
+    &__link {
+      display: flex;
+    }
+
+    @include on-tablet {
+      height: 202px;
+      width: 173px;
+    }
+
+    @include on-desktop {
+      height: 208px;
+      width: 196px;
+    }
+
+    @include hover {
+      transform: scale(1.03);
+      z-index: 5;
+    }
+  }
+
+  .title {
+    @include font-set($body-text);
+
+    padding-top: 16px;
+    height: 60px;
+    cursor: pointer;
+
+    @include hover {
+      color: #78787a;
+    }
+  }
+
+  .price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &__actual {
+      @include font-set($tablet-h3);
+    }
+
+    &__old {
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 28.12px;
+      color: $secondary;
+      text-decoration: line-through;
+    }
+  }
+
+  .divider {
+    border: 1px solid $elements;
+  }
+
+  .specs {
+    padding-block: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &__item {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__key {
+      font-weight: 700;
+      color: $secondary;
+    }
+
+    &__value {
+      font-weight: 700;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+
+    &__add {
+      color: $white;
+      background-color: $accent;
+      border-radius: 48px;
+      padding: 9.5px 0;
+      width: 75%;
+      cursor: pointer;
+
+      @include hover {
+        box-shadow: 0 3px 13px 0 #17203166;
+      }
+
+      &--active {
+        border: 1px solid $elements;
+        color: $accent;
+        background-color: $hover-and-bg;
+      }
+    }
+
+    &__like {
+      border: 1px solid $icons;
+      border-radius: 48px;
+      cursor: pointer;
+      background-image: url(../../assets/img/icons/like.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 16px;
+      width: 40px;
+      height: 40px;
+
+      @include hover {
+        border: 1px solid $primary;
+      }
+
+      &--active {
+        background-image: url(../../assets/img/icons/like-active.svg);
+      }
+    }
+  }
+}

@@ -1,0 +1,214 @@
+@import '../../main';
+
+.topbar {
+  height: $topbar-height-mobile;
+
+  @include on-desktop {
+    height: $topbar-height-desktop;
+  }
+
+  z-index: 100;
+  width: 100%;
+  background-color: $white;
+  box-shadow: 0 1px 0 0 $elements;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+
+  &__left {
+    display: flex;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      gap: 24px;
+    }
+
+    .logo {
+      height: 22px;
+      width: 64px;
+
+      @include on-desktop {
+        height: 28px;
+        width: 80px;
+      }
+
+      margin: 13px 16px;
+
+      @include on-desktop {
+        margin: 18px 24px;
+      }
+
+      @include hover {
+        transform: scale(1.07);
+      }
+
+      &__link {
+        display: flex;
+      }
+    }
+
+    .nav {
+      display: none;
+
+      @include on-tablet {
+        display: block;
+      }
+
+      &__list {
+        display: flex;
+
+        @include on-tablet {
+          gap: 32px;
+        }
+
+        @include on-desktop {
+          gap: 64px;
+        }
+
+        align-items: center;
+      }
+
+      &__item {
+        display: flex;
+        height: $topbar-height-mobile;
+
+        @include on-desktop {
+          height: $topbar-height-desktop;
+        }
+
+        align-items: center;
+      }
+
+      &__link {
+        @include font-set($uppercase);
+
+        display: flex;
+        color: $secondary;
+        align-items: center;
+        height: 100%;
+        position: relative;
+
+        &:not(.nav__link--active)::after {
+          content: '';
+          height: 3px;
+          background-color: $primary;
+          position: absolute;
+          bottom: 0;
+          width: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          transition: width 0.3s ease;
+        }
+
+        @include hover {
+          transform: scale(1.06);
+          &::after {
+            width: 100%;
+          }
+        }
+
+        &--active {
+          color: $primary;
+          border-bottom: 3px solid $primary;
+        }
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__iconContainer {
+    position: relative;
+    box-shadow: -1px 0 0 0 $elements;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    &:not(.topbar__iconContainer--active)::after {
+      content: '';
+      height: 2.5px;
+      background-color: $primary;
+      width: 0;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: width 0.3s ease;
+    }
+
+    @include hover {
+      &:not(.topbar__burgerMenu)::after {
+        width: 100%;
+      }
+    }
+
+    &--active {
+      bottom: 1px;
+      border-bottom: 3px solid $primary;
+    }
+  }
+
+  &__icon {
+    position: relative;
+    display: flex;
+    height: $icons-size;
+    width: $icons-size;
+    margin: $icons-margin-mobile;
+
+    @include on-desktop {
+      margin: $icons-margin-desktop;
+    }
+
+    @include hover {
+      transform: scale(1.06);
+    }
+  }
+
+  &__count {
+    position: absolute;
+    right: 9px;
+    top: 10px;
+    width: 14px;
+    height: 14px;
+    background-color: $accent;
+    border: solid 1px $white;
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    font-size: 9px;
+    line-height: 13px;
+
+    @include on-desktop {
+      right: 17px;
+      top: 18px;
+    }
+  }
+
+  &__iconLike,
+  &__iconCart {
+    display: none;
+
+    @include on-tablet {
+      position: relative;
+      display: block;
+    }
+  }
+
+  &__burgerMenu {
+    @include on-tablet {
+      display: none;
+    }
+  }
+}
