@@ -1,0 +1,113 @@
+@use 'helpers' as *;
+
+body {
+  overflow-x: hidden;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  color: var(--color-primary);
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  font-family: Mont, serif;
+  font-weight: 700;
+}
+
+p {
+  font-family: Mont, serif;
+  font-size: 12px;
+}
+
+.uppercase {
+  font-family: Mont, serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  color: var(--color-secondary);
+}
+
+.bodytext {
+  font-family: Mont, serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+h1, .h1 {
+  @include fluid-text(48, 32);
+
+  @include tablet-above {
+    line-height: 56px;
+  }
+
+  line-height: 41px;
+}
+
+h2, .h2 {
+  @include fluid-text(32, 22);
+
+  @include tablet-above {
+    line-height: 41px;
+  }
+
+  line-height: 31px;
+}
+
+h3, .h3 {
+  @include fluid-text(22, 20);
+
+  @include tablet-above {
+    line-height: 31px;
+  }
+
+  line-height: 26px;
+}
+
+h4, .h4 {
+  font-family: Mont, serif;
+  font-weight: 500;
+  color: var(--color-primary);
+  line-height: 20px;
+
+  @include fluid-text(20, 16);
+
+  @include tablet-above {
+    line-height: 26px;
+  }
+}
+
+a,
+button,
+input,
+textarea,
+label,
+select,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+.container {
+  padding: 24px 16px 80px;
+  width: 100%;
+
+  @include tablet-above {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  @include desktop-above {
+    max-width: 1136px;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

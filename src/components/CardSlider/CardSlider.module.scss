@@ -1,0 +1,58 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.sliderWrapper {
+  width: 100%;
+}
+
+.slider {
+  display: flex;
+  gap: 16px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  margin-bottom: -42px;
+  padding-inline: 0;
+  overflow: auto hidden;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.cardWrapper {
+  flex: 0 0 272px ;
+  box-sizing: border-box;
+}
+
+.button {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: var(--border);
+
+  &:hover {
+    border: var(--border-hover);
+  }
+}
