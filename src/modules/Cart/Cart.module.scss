@@ -1,0 +1,64 @@
+@use '../../styles/mixins' as *;
+
+.cart {
+  @include grid-layout;
+
+  justify-content: center;
+  padding: 24px 16px 64px;
+
+  @include on-tablet {
+    padding: 24px 24px 64px;
+  }
+
+  @include on-full-screen {
+    padding: 24px 0 80px;
+  }
+
+  &__back {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    grid-column: 1/-1;
+    margin-bottom: 16px;
+    cursor: pointer;
+
+    &__arrow {
+      width: 16px;
+      height: 16px;
+      background-image: var(--arrow-left);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+
+    &__text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--back-button-text-color);
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  &__title {
+    @include heading-h1;
+
+    grid-column: 1 / -1;
+    margin-bottom: 32px;
+    color: var(--primary-color);
+  }
+
+  &__empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: 1 / -1;
+    height: 45vh;
+    background-image: url('../../../public/img/cart-is-empty.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    text-align: center;
+  }
+}
