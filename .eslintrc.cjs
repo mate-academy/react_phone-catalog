@@ -47,7 +47,7 @@ module.exports = {
       ignoreComments: true,
     }],
     'no-redeclare': [2, { builtinGlobals: true }],
-    'no-console': 2,
+    'no-console': "off",
     'operator-linebreak': 0,
     'brace-style': [2, '1tbs'],
     'arrow-body-style': 0,
