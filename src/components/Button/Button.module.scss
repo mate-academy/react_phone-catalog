@@ -1,0 +1,20 @@
+@use '/src/utils' as *;
+
+.Button {
+  @extend %buttons-icon-style;
+
+  padding: 8px;
+
+  &:disabled {
+    cursor: default;
+    border-color: var(--border-light-color);
+
+     path {
+      fill: var(--border-light-color);
+    }
+  }
+
+  &__heart {
+    width: 40px;
+  }
+}

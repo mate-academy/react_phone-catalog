@@ -1,0 +1,64 @@
+@use '/src/utils' as *;
+
+.AddTo {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+
+  &__addToCard {
+    position: relative;
+
+    flex-grow: 1;
+    background-color: var(--add-bg);
+    color: white;
+    border: 0;
+    cursor: pointer;
+
+    @include hover(box-shadow, var(--box-shadow));
+    @extend %buttons;
+  }
+
+  &__selected {
+    color: var(--card-add);
+    background-color: var(--button-bg);
+    border: 1px solid var(--card-border);
+  }
+
+  &__message {
+    box-sizing: border-box;
+    position: absolute;
+    background-color: $gray-primary;
+    border: 1px solid $gray-border;
+    width: 200px;
+    left: 50%;
+    bottom: 115%;
+    border-radius: 5%;
+    color: #fff;
+    padding: 5px;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  &__heartButton {
+    padding: 8px;
+    border: 1px solid var(--card-border);
+    display: flex;
+    background: var(--button-bg);
+
+    @include hover(border-color, var(--text-main));
+  }
+
+  &__heartIcon {
+    fill: white;
+    stroke: (var(--text-main));
+
+    transition:
+      fill var(--transition),
+      stroke var(--transition);
+
+    &Filled {
+      fill: $red;
+      stroke: $red;
+    }
+  }
+}

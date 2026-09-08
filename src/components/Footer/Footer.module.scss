@@ -1,0 +1,57 @@
+@use '/src/utils' as *;
+
+.Footer {
+  padding-block: 32px;
+  border-top: 1px solid var(--border-light-color);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include centered;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 100px;
+    }
+  }
+
+  &__link {
+    @extend %uppercase;
+
+    color: $gray-secondary;
+
+    @include hover(color, var(--text-main ));
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  &__backTo {
+    @extend %small-text;
+
+    color: $gray-secondary;
+  }
+
+  &__logo{
+    height: 50%;
+  }
+}

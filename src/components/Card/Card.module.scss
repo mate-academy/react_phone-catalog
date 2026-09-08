@@ -1,0 +1,157 @@
+@use '/src/utils' as *;
+
+.Card {
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--card-border);
+  padding: 32px;
+  background-color: var(--card-bg);
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+
+  &__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__link {
+    display: block;
+    height: 100%;
+  }
+
+  &__img {
+    object-fit: contain;
+    max-height: 196px;
+    transition: transform var(--transition);
+  }
+
+  &__phoneName {
+    @extend %body-text;
+
+    color: var(--card-name);
+  }
+
+  &__line {
+    background-color: var(--line);
+    height: 1px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__prop {
+    @extend %small-text;
+
+    color: $gray-secondary;
+  }
+
+  &__value {
+    @extend %value-text;
+
+    color: var(--card-price);
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__price {
+    color: var(--card-price);
+  }
+
+  &__fullPrice {
+    margin-left: 5px;
+    color: $gray-secondary;
+    font-weight: 300;
+    font-size: 20px;
+    text-decoration: line-through;
+  }
+
+  &:hover {
+    border-color: var(--text-main);
+    box-shadow: inset 0 -10px 5px var(--text-main);
+
+    .Card__img {
+      transform: scale(1.08);
+    }
+  }
+
+  &__imgSkeleton,
+  &__nameSkeleton,
+  &__priceSkeleton,
+  &__propSkeleton,
+  &__valueSkeleton,
+  &__buttonSkeleton {
+    background: linear-gradient(
+      90deg,
+      var(--skeleton-color-one) 25%,
+      var(--skeleton-color-two) 50%,
+      var(--skeleton-color-three) 75%
+    );
+    background-size: 400% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+
+  &__imgSkeleton {
+    width: 100%;
+    height: 200px;
+  }
+
+  &__nameSkeleton {
+    width: 80%;
+    height: 20px;
+    margin: 10px 0;
+  }
+
+  &__priceSkeleton {
+    width: 50%;
+    height: 20px;
+  }
+
+  &__propSkeleton {
+    width: 30%;
+    height: 15px;
+  }
+
+  &__valueSkeleton {
+    width: 50%;
+    height: 15px;
+  }
+
+  &__buttonSkeleton {
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}

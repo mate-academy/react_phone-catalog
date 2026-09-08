@@ -1,0 +1,140 @@
+@use '/src/utils' as *;
+
+.Nav {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 26px;
+  border-bottom: 1px solid var(--border-light-color);
+  background-color: var(--bg-color);
+
+  @include on-tablet {
+    justify-content: space-between;
+  }
+
+  @include on-desktop {
+    gap: 36px;
+    padding-left: 24px;
+  }
+
+  &__link {
+    @extend %uppercase;
+
+    color: $gray-secondary;
+
+    @include hover(color, var(--text-main));
+
+    &Active {
+      color: var(--text-main);
+
+      &::before {
+        display: block;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background-color: var(--text-main);
+        position: absolute;
+        bottom: 0;
+      }
+    }
+  }
+
+  &__list {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+
+    &Menu {
+      width: 100%;
+      display: flex;
+      gap: 26px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-block: 24px;
+      max-height: 100px;
+
+      .Nav__link {
+        font-size: 8px;
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    position: relative;
+  }
+
+  &__switchTheme {
+    align-self: center;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-light-color);
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 10px;
+    margin-right: 40px;
+
+    svg {
+      z-index: 1;
+
+      &:nth-child(1) {
+        path {
+          fill: var(--border-light-color);
+        }
+      }
+
+      &:nth-child(2) {
+        path {
+          fill: white;
+        }
+      }
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      width: 35%;
+      aspect-ratio: 1;
+      background-color: #0029ff;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(124%, -50%);
+
+      transition: transform 0.3s;
+    }
+
+    &Dark {
+      svg {
+        &:nth-child(1) {
+          path {
+            fill: white;
+          }
+        }
+
+        &:nth-child(2) {
+          path {
+            fill: gray;
+          }
+        }
+      }
+
+      &::before {
+        transform: translate(-20%, -50%);
+      }
+    }
+  }
+}

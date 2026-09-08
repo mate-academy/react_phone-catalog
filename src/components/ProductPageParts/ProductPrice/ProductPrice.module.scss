@@ -1,0 +1,19 @@
+@use '/src/utils' as *;
+
+$gap: 8px;
+
+.ProductPrice {
+  display: flex;
+  align-items: center;
+  gap: $gap;
+
+  &__discount {
+    color: var(--text-main);
+    font-size: 31px;
+  }
+  &__regular {
+    font-size: 22px;
+    color: $gray-secondary;
+    text-decoration: line-through;
+  }
+}
