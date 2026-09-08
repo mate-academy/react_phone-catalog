@@ -1,0 +1,65 @@
+@use "../Main-css/Mixins" as mixin;
+
+.page-navigation__item {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 80px;
+}
+
+.list-of-buttons__item {
+  margin: 0;
+  display: flex;
+  padding: 0;
+  gap: 8px;
+}
+
+.list-item {
+  list-style: none;
+}
+
+.button__move-catalog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  background: #323542;
+
+  &:hover {
+    background: #4A4D58;
+  }
+}
+
+.page-button {
+  padding: 0;
+  background: #161827;
+  border: none;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  @include mixin.text-default(14px, #F1F2F9, 600,);
+
+  &:hover {
+    background-color: #3B3E4A;
+  }
+}
+
+.button__left {
+  rotate: 180deg;
+}
+
+.active {
+  background: #905BFF;
+}
+
+.is-disabled {
+  cursor: default;
+  background-color: transparent;
+  border: 1px solid #3B3E4A;
+}

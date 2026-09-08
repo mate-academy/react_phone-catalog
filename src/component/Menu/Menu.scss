@@ -1,0 +1,52 @@
+@use "../Main-css/Mixins" as mixin;
+@use "../Main-css/Variables" as vars;
+
+.content-phone__menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.text-phone-menu {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.link-in-phone {
+  padding: 8px 0;
+}
+
+.is-active__phone {
+  color: vars.$color-text-main;
+  border-bottom: 2px vars.$color-text-main solid;
+}
+
+.icon-navigation {
+  display: flex;
+  flex-direction: row;
+}
+
+.phone__icon-container {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  border-top: 2px solid vars.$shadow;
+}
+
+.favorites__count-phone {
+  position: relative;
+  top: -6px;
+  right: -22px;
+}
+
+.count-in-phone {
+  position: relative;
+  top: -6px;
+  right: -22px;
+}
