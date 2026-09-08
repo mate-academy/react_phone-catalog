@@ -1,0 +1,43 @@
+@use '../../styles/index' as *;
+
+.menu {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+
+  box-sizing: border-box;
+
+  width: 100%;
+  background-color: $color-black;
+  height: 100vh;
+
+  overflow: auto;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  transition: all 0.3s;
+  visibility: hidden;
+  opacity: 0;
+
+  &--show {
+    visibility: visible;
+    opacity: 1;
+    left: 0;
+  }
+
+  &__actions {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    height: 68px;
+    border-top: 1px solid $border;
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+}

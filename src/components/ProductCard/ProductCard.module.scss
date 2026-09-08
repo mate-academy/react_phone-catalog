@@ -1,0 +1,73 @@
+@use '../../styles/index' as *;
+
+.product-card {
+  box-sizing: border-box;
+  padding: 32px;
+  background-color: $color-surface-1;
+
+  &__img {
+    height: 100%;
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__title {
+    color: $color-white;
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: 600;
+    padding-top: 16px;
+    overflow: hidden;
+    transition: color 0.3s;
+
+    &:hover {
+      color: rgba(255,255,255,0.85);
+    }
+  }
+
+  &__price {
+    font-size: 22px;
+    line-height: 31px;
+    margin-block: 8px;
+    font-weight: 800;
+
+    & span {
+      color: $color-secondary;
+      font-weight: 600;
+      text-decoration: line-through;
+    }
+  }
+
+  &__info {
+    margin-bottom: 8px;
+  }
+}
+
+.image-wrapper {
+  display: flex;
+  width: 100%;
+  aspect-ratio: 148 / 129;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-block: 8px;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    line-height: 15px;
+    font-size: 12px;
+    font-weight: 700;
+
+    &__title {
+      color: $color-secondary;
+      line-height: 15px;
+      font-size: 12px;
+    }
+  }
+}

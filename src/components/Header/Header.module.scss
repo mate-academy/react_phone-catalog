@@ -1,0 +1,29 @@
+@use '../../styles/index' as *;
+
+.header {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: $color-black;
+
+  @include on-tablet {
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    gap: 24px;
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
