@@ -1,0 +1,101 @@
+@import '../../../styles/main';
+
+.banner {
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+
+    @include on-tablet {
+      font-size: 48px;
+    }
+  }
+
+  &__slider {
+    display: flex;
+    justify-content: center;
+    margin-inline: -24px;
+
+    @include on-tablet {
+      margin-inline: 0;
+    }
+  }
+
+  &__sliderImage {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+
+    @include on-tablet {
+      max-width: calc(100% - 96px);
+    }
+  }
+
+  &__sliderButton {
+    position: absolute;
+    bottom: 10%;
+    left: 7%;
+    z-index: 3;
+    display: none;
+    border-radius: 27px;
+    text-transform: uppercase;
+    font-size: 12px;
+    border: 1px solid $textNotActiveColor;
+    background-color: transparent;
+    color: $textMainColor;
+    transition: all, 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $hoverPurpleButtonColor;
+    }
+
+    @include on-tablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+      width: 150px;
+    }
+  }
+}
+
+.button_prev {
+  position: fixed;
+  left: 0;
+  display: none;
+  background-color: $mainIconButtonColor;
+  width: 32px;
+  height: 100%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: $hoverIconButtonColor;
+  }
+
+  @include on-tablet {
+    display: block;
+  }
+
+}
+
+.button_next {
+  position: fixed;
+  right: 0;
+  display: none;
+  background-color: $mainIconButtonColor;
+  width: 32px;
+  height: 100%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: $hoverIconButtonColor;
+  }
+
+  @include on-tablet {
+    display: block;
+  }
+}
