@@ -1,6 +1,6 @@
 {
   "name": "react_phone-catalog",
-  "homepage": "react_phone-catalog",
+  "homepage": "./",
   "version": "0.1.0",
   "keywords": [],
   "author": "Mate Academy",
@@ -12,17 +12,19 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.25.1",
+    "react-toastify": "^11.0.5",
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
     "@cypress/react18": "^2.0.1",
-    "@mate-academy/scripts": "^1.8.5",
+    "@mate-academy/scripts": "^2.1.1",
     "@mate-academy/students-ts-config": "*",
     "@mate-academy/stylelint-config": "*",
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/react-transition-group": "^4.4.10",
+    "@typescript-eslint/eslint-plugin": "^8.36.0",
     "@typescript-eslint/parser": "^7.16.0",
     "@vitejs/plugin-react": "^4.3.1",
     "cypress": "^13.13.0",
@@ -43,7 +45,8 @@
     "sass": "^1.77.8",
     "stylelint": "^16.7.0",
     "typescript": "^5.2.2",
-    "vite": "^5.3.1"
+    "vite": "^5.3.1",
+    "vite-plugin-svgr": "^4.3.0"
   },
   "scripts": {
     "start": "mate-scripts start -l",

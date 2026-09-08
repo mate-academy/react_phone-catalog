@@ -1,0 +1,18 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+.addBtn {
+  @include button;
+  height: 100%;
+}
+
+.favorite {
+  @include grey-button;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &_selected {
+    background-color: transparent;
+  }
+}

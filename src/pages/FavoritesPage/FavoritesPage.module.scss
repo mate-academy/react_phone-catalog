@@ -1,0 +1,30 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins.scss' as *;
+
+.favorites {
+  min-height: 70vh;
+  h1 {
+    @include h1;
+    color: $text;
+    margin-top: 40px;
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    @include body-text;
+    color: $secondary;
+    margin-bottom: 40px;
+  }
+
+  &__products {
+     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+
+    @include for-phone {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+}
