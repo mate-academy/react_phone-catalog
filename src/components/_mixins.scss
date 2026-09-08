@@ -1,0 +1,805 @@
+@import './variables';
+
+@mixin onScreen640 {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin onScreen1200 {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin onScreen1201 {
+  @media (min-width: 1201px) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+// #region topBar //
+@mixin topBar {
+  @include onScreen640 {
+    justify-content: flex-start;
+  }
+
+  @include onScreen1200 {
+    height: 64px;
+    gap: 24px;
+  }
+}
+
+@mixin logo {
+  @include onScreen1200 {
+    height: 64px;
+    width: 128px;
+  }
+}
+
+@mixin logoHeader {
+  @include onScreen1200 {
+    height: 28px;
+    width: 80px;
+  }
+}
+
+@mixin nav {
+  @include onScreen640 {
+    justify-content: space-between;
+    height: 48px;
+    gap: 16px;
+    width: 100%;
+  }
+
+  @include onScreen1200 {
+    height: 64px;
+    gap: 24px;
+  }
+}
+
+@mixin navList {
+  @include onScreen1200 {
+    height: 64px;
+  }
+}
+
+@mixin navBlockItem {
+  @include onScreen1200 {
+    height: 64px;
+  }
+}
+
+@mixin navIcon {
+  @include onScreen1200 {
+    height: 64px;
+    width: 64px;
+  }
+}
+
+@mixin navMenuList {
+  @include onScreen1200 {
+    gap: 64px;
+  }
+}
+
+@mixin headerMarginBottom {
+  @include onScreen640 {
+    margin-bottom: 64px;
+  }
+
+  @include onScreen1200 {
+    margin-bottom: 80px;
+  }
+}
+// #endregion //
+
+// #region mainHeader //
+
+@mixin headerTitle {
+  @include onScreen640 {
+    height: 112px;
+    margin: 32px 24px;
+  }
+
+  @include onScreen1200 {
+    height: 56px;
+    margin: 56px 32px;
+  }
+
+  @include onScreen1201 {
+    margin: 56px 152px;
+  }
+}
+
+@mixin headerTitleContent {
+  @include onScreen640 {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin headerBanner {
+  @include onScreen1200 {
+    gap: 16px;
+    margin-inline: 32px;
+  }
+
+  @include onScreen1201 {
+    margin-inline: 152px;
+  }
+}
+// #endregion
+
+// #region mainSection //
+@mixin main {
+  @include onScreen1200 {
+    margin-bottom: 80px;
+  }
+}
+
+@mixin mainSection {
+  @include onScreen640 {
+    margin-top: 64px;
+    margin-left: 24px;
+    row-gap: 64px;
+    font-size: 32px;
+    line-height: 41%;
+    letter-spacing: -1%;
+  }
+
+  @include onScreen1200 {
+    margin-top: 80px;
+    margin-inline: 32px;
+    row-gap: 80px;
+  }
+
+  @include onScreen1201 {
+    margin-inline: 152px;
+    row-gap: 80px;
+  }
+}
+
+@mixin categoriesContainer {
+  @include onScreen640 {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    width: 100%;
+  }
+
+  @include onScreen1200 {
+    gap: 16px;
+  }
+}
+
+@mixin categoriesTitle {
+  @include onScreen640 {
+    height: 41px;
+    line-height: 41px;
+  }
+}
+
+@mixin onScreen640MarginLeft {
+  @include onScreen640 {
+    margin-left: 24px;
+  }
+}
+
+@mixin newModelsHotPricesContainer {
+  @include onScreen640 {
+    height: 41px;
+    margin-right: 24px;
+  }
+
+  @include onScreen1200 {
+    margin: 0;
+  }
+}
+
+@mixin categories {
+  @include onScreen640 {
+    margin-right: 24px;
+  }
+
+  @include onScreen1200 {
+    margin: 0;
+  }
+}
+
+//  #endregion //
+
+// #region productCard //
+@mixin productCard {
+  @include onScreen640 {
+    width: 237px;
+    height: 512px;
+  }
+
+  @include onScreen1200 {
+    width: 272px;
+    height: 506px;
+  }
+}
+
+@mixin productCardPhones {
+  @include onScreen640 {
+    width: 288px;
+    height: 506px;
+  }
+
+  @include onScreen1200 {
+    width: 272px;
+  }
+}
+
+@mixin productCardPhotoPhones {
+  @include onScreen640 {
+    width: 224px;
+    height: 196px;
+  }
+
+  @include onScreen1200 {
+    width: 208px;
+  }
+}
+
+@mixin product-card-item {
+  @include onScreen640 {
+    width: 237px;
+  }
+
+  @include onScreen640 {
+    width: 272px;
+  }
+}
+
+@mixin product-card-item-photo {
+  @include onScreen640 {
+    width: 173px;
+    height: 181px;
+  }
+
+  @include onScreen1200 {
+    width: 208px;
+    height: 196px;
+  }
+}
+
+@mixin product-card-item-content {
+  @include onScreen640 {
+    width: 173px;
+  }
+
+  @include onScreen1200 {
+    width: 208px;
+  }
+}
+
+@mixin characteristicsWidth {
+  @include onScreen640 {
+    width: 224px;
+  }
+
+  @include onScreen1200 {
+    width: 208px;
+  }
+}
+
+@mixin addressMarginInline {
+  @include onScreen640 {
+    margin-inline: 32px;
+  }
+
+  @include onScreen1201 {
+    margin-inline: 152px;
+  }
+}
+
+@mixin phonesTitle {
+  @include onScreen640 {
+    margin: 40px 24px 8px;
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  @include onScreen1200 {
+    margin: 40px 32px 8px;
+  }
+
+  @include onScreen1201 {
+    margin-inline: 152px;
+  }
+}
+
+@mixin sortByItemsOnPage {
+  @include onScreen640 {
+    margin-top: 40px;
+    margin-inline: 24px;
+  }
+
+  @include onScreen1200 {
+    margin-inline: 32px;
+  }
+
+  @include onScreen1200 {
+    margin-inline: 152px;
+  }
+}
+
+@mixin sortBy {
+  @include onScreen640 {
+    width: 187px;
+  }
+
+  @include onScreen1200 {
+    width: 176px;
+  }
+}
+
+@mixin itemsOnPage {
+  @include onScreen640 {
+    width: 136px;
+  }
+
+  @include onScreen1200 {
+    width: 128px;
+  }
+}
+
+@mixin marginInline {
+  @include onScreen640 {
+    margin-inline: 24px;
+  }
+
+  @include onScreen1200 {
+    margin-inline: 32px;
+  }
+
+  @include onScreen1201 {
+    margin-inline: 152px;
+  }
+}
+
+@mixin phonesAddToCart {
+  @include onScreen640 {
+    width: 175px;
+  }
+
+  @include onScreen1200 {
+    width: 160px;
+  }
+}
+
+@mixin goods {
+  @include onScreen640 {
+    margin-inline: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 40px;
+    column-gap: 16px;
+
+    justify-self: center;
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+
+  @include onScreen1200 {
+    margin-inline: 32px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include onScreen1201 {
+    margin-inline: 152px;
+  }
+}
+
+@mixin pagination {
+  @include onScreen640 {
+    margin: 40px 196px 64px;
+  }
+
+  @include onScreen1200 {
+    margin: 40px 476px 80px;
+  }
+
+  @include onScreen1201 {
+    margin-inline: 596px;
+  }
+}
+
+@mixin contentWidth {
+  @include onScreen640 {
+    width: 173px;
+  }
+
+  @include onScreen1200 {
+    width: 208px;
+  }
+}
+
+@mixin modelImage {
+  @include onScreen640 {
+    width: 173px;
+    height: 202px;
+  }
+
+  @include onScreen1200 {
+    width: 208px;
+    height: 196px;
+  }
+}
+
+@mixin buttonAddToCart {
+  @include onScreen640 {
+    width: 125px;
+  }
+
+  @include onScreen1200 {
+    width: 160px;
+  }
+}
+// #endregion //
+
+// #region Item //
+@mixin itemCardMarginInline {
+  @include onScreen640 {
+    margin-inline: 24px;
+  }
+
+  @include onScreen1200 {
+    margin-inline: 32px;
+  }
+
+  @include onScreen1201 {
+    margin-inline: 152px;
+  }
+}
+
+@mixin adress {
+  @include onScreen640 {
+    margin-bottom: 40px;
+  }
+}
+
+@mixin favourites {
+  @include onScreen640 {
+    margin-inline: 24px;
+  }
+
+  @include onScreen1200 {
+    margin-inline: 32px;
+  }
+
+  @include onScreen1201 {
+    margin-inline: 152px;
+  }
+}
+
+@mixin favourites-title {
+  @include onScreen640 {
+    height: 56px;
+    font-size: 48px;
+  }
+}
+
+@mixin favourites-block-items {
+  @include onScreen640 {
+    margin-top: 40px;
+    margin-bottom: 64px;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 16px;
+    row-gap: 40px;
+  }
+
+  @include onScreen1200 {
+    margin-bottom: 80px;
+  }
+}
+
+@mixin favourites-product-card {
+  @include onScreen640 {
+    width: 288px;
+  }
+
+  @include onScreen1200 {
+    width: 272px;
+  }
+}
+
+@mixin favourites-product-card-photo {
+  @include onScreen640 {
+    width: 224px;
+    height: 196px;
+  }
+
+  @include onScreen1200 {
+    width: 208px;
+  }
+}
+
+@mixin favourites-product-width-content {
+  @include onScreen640 {
+    width: 224px;
+  }
+
+  @include onScreen1200 {
+    width: 208px;
+  }
+}
+
+@mixin title {
+  @include onScreen640 {
+    margin-bottom: 40px;
+    height: 82px;
+    font-size: 32px;
+  }
+
+  @include onScreen1200 {
+    height: 41px;
+  }
+}
+
+@mixin item-card-container {
+  @include onScreen640 {
+    margin-bottom: 64px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  @include onScreen1200 {
+    margin-bottom: 80px;
+  }
+}
+
+@mixin item-card-image {
+  @include onScreen640 {
+    width: 287px;
+    height: 287px;
+  }
+
+  @include onScreen1200 {
+    width: 484px;
+    height: 484px;
+  }
+}
+
+@mixin photo-previews {
+  @include onScreen640 {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: fit-content;
+  }
+
+  @include onScreen1200 {
+    gap: 16px;
+    width: fit-content;
+  }
+}
+
+@mixin photo-preview-image {
+  @include onScreen1200 {
+    height: 80px;
+    width: 80px;
+  }
+}
+
+@mixin tech-specs-container {
+  @include onScreen640 {
+    margin: 0;
+    padding: 0;
+    width: 237px;
+  }
+
+  @include onScreen1200 {
+    margin-left: 64px;
+    width: 320px;
+  }
+}
+
+@mixin product-information {
+  @include onScreen1200 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@mixin tech-specs {
+  @include onScreen640 {
+    margin-bottom: 64px;
+  }
+
+  @include onScreen1200 {
+    width: 512px;
+  }
+}
+
+@mixin tech-specs-title {
+  @include onScreen640 {
+    height: 31px;
+    font-weight: 800;
+    font-size: 22px;
+  }
+}
+
+@mixin tech-specs-border {
+  @include onScreen640 {
+    margin-bottom: 25px;
+  }
+}
+
+@mixin add-to-cart {
+  width: 263px;
+}
+
+@mixin about {
+  @include onScreen640 {
+    margin-bottom: 64px;
+  }
+
+  @include onScreen1200 {
+    width: 560px;
+    margin-bottom: 80px;
+  }
+}
+
+@mixin about-title {
+  @include onScreen640 {
+    margin-bottom: 16px;
+    height: 31px;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
+
+@mixin about-info-title {
+  @include onScreen640 {
+    height: 26px;
+    font-size: 20px;
+  }
+}
+
+@mixin you-may-like-title {
+  @include onScreen640 {
+    height: 41px;
+  }
+}
+
+@mixin similar-products {
+  @include onScreen640 {
+    margin-bottom: 64px;
+  }
+
+  @include onScreen1200 {
+    margin-bottom: 80px;
+  }
+}
+// #endregion //
+
+// #region footer //
+@mixin footer {
+  @include onScreen640 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 96px;
+    gap: 0;
+    padding: 32px;
+  }
+
+  @include onScreen1201 {
+    padding: 32px 152px;
+  }
+}
+
+@mixin footerMenu {
+  @include onScreen640 {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+@mixin footerBackToTopButton {
+  @include onScreen640 {
+    justify-content: flex-end;
+  }
+}
+// #endregion //
+
+// #region Cart //
+@mixin cart {
+  @include onScreen640 {
+    margin-inline: 24px;
+  }
+
+  @include onScreen1200 {
+    margin-inline: 32px;
+  }
+
+  @include onScreen1201 {
+    margin-inline: 152px;
+  }
+}
+
+@mixin cart-buttons-back {
+  @include onScreen640 {
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+}
+
+@mixin cart-title {
+  @include onScreen640 {
+    height: 56px;
+    font-size: 48px;
+  }
+}
+
+@mixin item {
+  @include onScreen640 {
+    height: 128px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
+}
+
+@mixin item-info {
+  @include onScreen640 {
+    margin: 0;
+    gap: 24px;
+  }
+}
+
+@mixin item-title {
+  @include onScreen640 {
+    height: 42px;
+  }
+}
+
+@mixin item-counter-price {
+  @include onScreen640 {
+    margin: 0;
+    gap: 24px;
+  }
+}
+
+@mixin cart-total {
+  @include onScreen1200 {
+    width: 368px;
+    height: 206px;
+  }
+}
+
+@mixin item-container {
+  @include onScreen1200 {
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: start;
+    width: 100%;
+  }
+}
+// #endregion //
