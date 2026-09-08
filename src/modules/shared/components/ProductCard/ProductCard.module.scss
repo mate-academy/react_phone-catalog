@@ -1,0 +1,151 @@
+@import '../../styles/main';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  gap: 8px;
+
+  @include hover(box-shadow, 0 3px 13px 0 #17203166);
+
+  &__title {
+    font-family: Mont-Regular, sans-serif;
+    color: var(--color-gray-primary);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    min-height: 42px;
+    padding-top: 8px;
+  }
+
+  &__price {
+    &-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &-regular {
+      font-family: Mont-Bold, sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+    }
+
+    &-discount {
+      font-family: Mont-Regular, sans-serif;
+      color: var(--color-gray-secondary);
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 100%;
+      text-decoration: line-through;
+    }
+  }
+
+  &__decor {
+    border: 1px solid var(--color-gray-elements);
+  }
+
+  &__info {
+    @include flex($direction: column);
+
+    gap: 8px;
+    padding: 8px 0;
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    width: 100%;
+
+    &-container {
+      @include flex(row, space-between, center);
+
+      &__name {
+        color: var(--color-gray-secondary);
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    padding: 8.5px 0;
+    cursor: pointer;
+    border: none;
+    font-family: Mont-Regular, sans-serif;
+    color: var(--color-bg);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+
+    &-cart {
+      width: 100%;
+      background-color: var(--color-gray-primary);
+      border: 1px solid transparent;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 #17203166;
+      }
+
+      &--active {
+        background-color: var(--color-gray-bg);
+        border-color: var(--color-gray-icons-placeholders);
+        color: var(--color-gray-primary);
+      }
+    }
+
+
+    &-favorites {
+      background-color: var(--color-bg);
+      width: 40px;
+      flex-shrink: 0;
+      border: 1px solid var(--color-gray-icons-placeholders);
+      transition: all 0.3s ease;
+
+      @include hover(border-color, var(--color-gray-primary));
+
+      &--active {
+        border: 1px solid var(--color-gray-elements);
+      }
+
+      & img {
+        display: flex;
+        justify-self: center;
+      }
+    }
+  }
+
+  &__image {
+    display: flex;
+    align-self: center;
+
+    @include set-size(148px, 129px);
+
+    @include on-tablet {
+      @include set-size(173px, 202px)
+    }
+
+    @include on-desktop {
+      @include set-size(208px, 196px)
+    }
+
+    img {
+      @include set-size(100%, 100%);
+
+      object-fit: contain;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+}

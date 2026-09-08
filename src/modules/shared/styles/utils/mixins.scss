@@ -1,0 +1,76 @@
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s ease;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 16px;
+  max-width: 1136px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 0;
+    margin-inline: auto;
+  }
+}
+
+@mixin set-size($width: auto, $height: auto) {
+  height: $height;
+  width: $width;
+}
+
+@mixin flex($direction: row, $content: flex-start, $items: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $content;
+  align-items: $items;
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+
+@mixin responsive-padding($desktop, $tablet, $mobile) {
+  padding-top: $mobile;
+  padding-left: $mobile;
+
+  @include on-tablet {
+    padding-top: $tablet;
+    padding-left: $tablet;
+  }
+
+  @include on-desktop {
+    padding-top: $desktop;
+    padding-left: $desktop;
+  }
+}

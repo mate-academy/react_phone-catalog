@@ -1,0 +1,72 @@
+@import '../../shared/styles/main';
+
+.slider {
+  @include flex(column-reverse, flex-start, center);
+
+  gap: 16px;
+  grid-column: span 4;
+  margin-bottom: 40px;
+
+  &__list {
+    @include flex(row, space-between, center);
+
+    gap: 16px;
+
+    &-item {
+      border: 1px solid #C4C4C4;
+      cursor: pointer;
+      transition: border-color 1s ease;
+
+      &.selected {
+        border-color: var(--color-gray-primary);
+      }
+    }
+
+    &-img {
+      @include set-size(50px, 50px);
+
+      object-fit: contain;
+
+      @include on-tablet {
+        @include set-size(35px, 35px);
+      }
+
+      @include on-desktop {
+        @include set-size(80px, 80px);
+      }
+    }
+
+    @include on-tablet {
+      @include flex(column);
+    }
+  }
+
+  &__content {
+    @include set-size(288px, 288px);
+
+    img {
+      @include set-size(100%, 100%);
+
+      object-fit: contain;
+    }
+
+    @include on-tablet {
+      @include set-size(273px, 273px);
+    }
+
+    @include on-desktop {
+      @include set-size(464px, 464px);
+    }
+  }
+
+  @include on-tablet {
+    @include flex(row, center, center);
+    
+    grid-column: span 7;
+     margin-bottom: 0;
+  }
+
+  @include on-desktop {
+    grid-column: span 11;
+  }
+}

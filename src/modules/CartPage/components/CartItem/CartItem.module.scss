@@ -1,0 +1,118 @@
+@import '../../../shared/styles/main';
+
+.cartItem {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid var(--color-gray-elements);
+  justify-content: space-between;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    &-close {
+      border: none;
+      background-color: var(--color-bg);
+      cursor: pointer;
+
+      @include set-size(16px, 16px);
+
+      background-image: url(../../../../../public/icons/close__disabled.svg);
+
+      &:hover {
+        background-image: url(../../../../../public/icons/Close.svg);
+      }
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    text-decoration: none;
+  }
+
+  &__title {
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: var(--color-gray-primary);
+  }
+
+  &__bottom {
+    @include flex(row, space-between, center);
+  }
+
+  &__image {
+    @include set-size(80px, 80px);
+
+    object-fit: contain;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__counter {
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    min-width: 24px;
+    text-align: center;
+
+    &-container {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--color-gray-icons-placeholders);
+
+    @include set-size(32px, 32px);
+
+    cursor: pointer;
+    transition: border 0.3 ease;
+
+    &--disabled {
+      border: 1px solid var(--color-gray-elements);
+      cursor: not-allowed;
+    }
+
+    &:not(.cartItem__button--disabled):hover {
+      background-color: var(--color-gray-icons-placeholders);
+      border: 1px solid transparent;
+    }
+  }
+
+  &__price {
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    min-width: 100px;
+    text-align: right;
+
+    color: var(--color-gray-primary);
+  }
+}
