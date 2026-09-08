@@ -1,0 +1,172 @@
+@import '../../styles/common';
+
+.cartPageItem {
+  @include page-grid;
+
+  display: flex;
+  flex-direction: column;
+  background-color: $main-card-color;
+  min-width: 288px;
+  min-height: 160px;
+
+  @include on-tablet {
+    min-width: 592px;
+    min-height: 128px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @include on-desktop-small {
+    min-width: 752px;
+    min-height: 128px;
+  }
+
+  &__top {
+    display: flex;
+    gap: 23px;
+    padding: 16px;
+
+    @include on-tablet {
+      padding: 24px 0 24px 24px;
+      gap: 31px;
+    }
+
+    &--delete {
+      margin: auto 0;
+      width: 16px;
+      height: 16px;
+      background-image: url('/img/delete.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      cursor: pointer;
+      transition: background-image 0.5s ease;
+
+      &:hover {
+        background-image: url('/img/delete-hover.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+
+    &--image {
+      box-sizing: border-box;
+      height: 80px;
+      width: auto;
+    }
+
+    &--title {
+      color: $main-white-color;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 21px;
+      letter-spacing: 0;
+      overflow-wrap: break-word;
+
+      @include on-tablet {
+        margin: auto 0;
+      }
+    }
+  }
+
+  &__bottom {
+    padding: 0 16px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      padding: 0 24px 0 0;
+      gap: 24px;
+    }
+
+    &--changeQuantity {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  &__price {
+    color: $main-white-color;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    letter-spacing: 0;
+  }
+}
+
+.card__increaseQuantity {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-image: url('/img/IncreaseQuantity.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  transition:
+    box-shadow 0.5s ease,
+    border-radius 0.5s ease;
+
+  &:hover {
+    border-radius: 50%;
+    box-shadow: 0 0 10px $main-purple-color;
+  }
+}
+
+.card__decreaseQuantity {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-image: url('/img/decreaseQuantity.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+    transition:
+    box-shadow 0.5s ease,
+    border-radius 0.5s ease;
+
+  &:hover {
+    border-radius: 50%;
+    box-shadow: 0 0 10px $main-purple-color;
+  }
+
+  &--active {
+    background-image: url('/img/decreaseQuantity_active.svg');
+  }
+
+  &--disabled {
+    pointer-events: none;
+  }
+}
+
+.card__currentQuantity {
+  width: 32px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $main-white-color;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+.card__changeCurrentQuantity {
+  &--input {
+    width: 32px;
+    height: 32px;
+    outline: none;
+    color: $main-white-color;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0;
+    text-align: center;
+    background-color: $main-card-color;
+    border: 1px solid $main-purple-color;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}

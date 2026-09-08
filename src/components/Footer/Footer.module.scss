@@ -1,0 +1,130 @@
+@import '../../styles/common';
+
+.footer__line {
+  border-top: 1px solid $dark-grey-color;
+  border-width: 100%;
+}
+
+.footer {
+  @include page-grid;
+
+  height: 257px;
+  width: 100%;
+  display: flex;
+  background-color: $main-color;
+  justify-content: space-between;
+  opacity: 0.9;
+  flex-direction: column;
+  gap: 32px;
+  padding: 0 16px;
+
+  @include on-tablet {
+    height: 96px;
+    max-height: 96px;
+    flex-direction: row;
+    padding: 0 24px;
+  }
+
+  @include on-desktop-small {
+    padding: 0 32px;
+  }
+
+  @include on-desktop {
+    padding: 0 152px;
+  }
+
+  &__logo {
+    width: 96px;
+    margin-left: 16px;
+    padding: 32px 0 0;
+    grid-column: 1 / span 2;
+    transition: transform 0.5s ease-in-out;
+
+    @include on-tablet {
+      width: 128px;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &--pict {
+      width: 80px;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-transform: uppercase;
+    padding-left: 16px;
+
+    @include on-tablet {
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      gap: 13.5px;
+    }
+
+    @include on-desktop-small {
+      gap: 106.83px;
+    }
+
+    @include on-desktop {
+      // padding: 42.5px 0 42.5px 152px;
+      gap: 201.5px;
+    }
+
+    &--link {
+      color: $main-white-color;
+      font-size: 12px;
+      line-height: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04rem;
+      transition: color 0.5s ease-in-out;
+
+      &:hover {
+        color: $light-grey-color;
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+
+    @include on-desktop {
+      // padding: 42.5px 152px 42.5px 0;
+    }
+
+    &--title {
+      font-size: 12px;
+      font-weight: 600;
+      color: $light-grey-color;
+      line-height: 15px;
+      letter-spacing: 0;
+    }
+
+    &--btn {
+      background-color: $button-grey-color;
+      width: 32px;
+      height: 32px;
+      border: 0;
+      transition: background-image 0.5s ease-in-out;
+      background-image: url('/img/arrowRightDefault.svg');
+      transform: rotate(270deg);
+
+      &:hover {
+        background-image: url('/img/arrowRightHover.svg');
+      }
+    }
+  }
+}

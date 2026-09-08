@@ -1,0 +1,51 @@
+@import '../../styles/common';
+
+.goBackButton {
+  cursor: pointer;
+  display: flex;
+  gap: 4px;
+  max-width: 1136px;
+  margin: 0 16px;
+  padding-top: 24px;
+  color: $main-white-color;
+  transition: 0.25s ease-in-out;
+
+  &__arrow {
+    background-image: url('/img/goBackBttn.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 16px;
+    height: 16px;
+    transition: 0.25s ease-in-out;
+  }
+
+  &:hover {
+    color: $main-purple-color;
+
+    .goBackButton__arrow {
+      background-image: url('/img/goBackBttnHover.svg');
+    }
+  }
+
+  @include on-tablet {
+    padding-top: 40px;
+    margin: 0 24px;
+  }
+
+  @include on-desktop-small {
+    margin: 0 32px;
+  }
+
+  @include on-desktop {
+    margin: 0 auto;
+  }
+
+  &__title{
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
