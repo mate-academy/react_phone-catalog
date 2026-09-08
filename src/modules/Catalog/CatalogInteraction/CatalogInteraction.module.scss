@@ -1,0 +1,67 @@
+@use 'styles/variables' as v;
+
+.catalogNavigation {
+  &__Container {
+    display: flex;
+    flex-direction: row;
+    gap: v.$gap-lg;
+    padding-top: v.$gap-xxl;
+    padding-bottom: v.$gap-lg;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  &__SelectionFields {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    gap: v.$gap-md;
+  }
+
+  &__Label {
+    text-wrap: nowrap;
+    font-size: clamp(4px, 6vw, 12px);
+  }
+
+  &__Sort {
+    display: flex;
+    flex-direction: column;
+    gap: v.$gap-xs;
+
+    label {
+      font-size: 12px;
+    }
+  }
+
+  &__ItemsNumber {
+    display: flex;
+    flex-direction: column;
+    gap: v.$gap-xs;
+
+    label {
+      font-size: 12px;
+    }
+  }
+
+  &__SearchField {
+    height: 100%;
+  }
+}
+
+@media (max-width: v.$bp-540) {
+  .catalogNavigation__Container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: v.$bp-320) {
+  .catalogNavigation__SelectionFields {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .catalogNavigation__SearchField {
+    width: 100%;
+  }
+}

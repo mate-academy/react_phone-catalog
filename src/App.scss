@@ -1,1 +1,71 @@
-// not empty
+/* stylelint-disable font-family-name-quotes */
+@use 'styles/variables' as v;
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: v.$font-base;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  padding-left: v.$content-margin-max;
+  padding-right: v.$content-margin-max;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mont-Bold";
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mont-SemiBold";
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@media (max-width: v.$bp-1200) {
+  .content {
+    padding-left: v.$content-margin-mid;
+    padding-right: v.$content-margin-mid;
+  }
+}
+
+@media (max-width: v.$bp-640) {
+  .content {
+    padding-left: v.$content-margin-small;
+    padding-right: v.$content-margin-small;
+  }
+}

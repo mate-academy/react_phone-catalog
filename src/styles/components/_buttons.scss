@@ -1,0 +1,32 @@
+@use 'styles/variables' as v;
+
+.btnPrimary {
+  width: 100%;
+  height: 100%;
+  min-height: v.$height-btn;
+  background-color: v.$color-primary;
+  color: v.$color-white;
+  cursor: pointer;
+  font-family: v.$font-base;
+  border: none;
+  transition:
+    transform v.$transition-fast,
+    background-color v.$transition-fast,
+    border v.$transition-fast,
+    border-radius v.$transition-fast;
+
+  &:hover {
+    transform: scale(1.01);
+    background-color: v.$color-bg-hover;
+  }
+
+  &Active {
+    color: v.$color-success;
+    background-color: v.$color-white;
+    border: 1px solid v.$color-border-light;
+
+    &:hover {
+      background-color: v.$color-white;
+    }
+  }
+}

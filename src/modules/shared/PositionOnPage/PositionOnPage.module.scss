@@ -1,0 +1,33 @@
+@use 'styles/variables' as v;
+
+.positionOnPage {
+  &__Container {
+    display: flex;
+    flex-direction: row;
+    font-size: clamp(1px, 12px, 12px);
+    align-items: center;
+    padding-top: v.$gap-lg;
+  }
+
+  &__Icon {
+    color: v.$color-bg-dark;
+  }
+
+  &__Section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__Location {
+    cursor: pointer;
+    color: v.$color-muted;
+    transition: color 0.2s ease-in,
+      transform 0.2s ease-in;
+    
+    &:hover {
+      transform: scale(1.01);
+      color: v.$color-bg-dark;
+    }
+  }
+}

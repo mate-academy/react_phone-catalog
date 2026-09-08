@@ -1,0 +1,11 @@
+@use 'styles/variables' as v;
+
+.selectionField {
+  &__Container {
+    box-sizing: border-box;
+    max-height: 36px;
+    padding: v.$gap-sm;
+    flex-grow: 1;
+    border: 1px solid v.$color-border-light;
+  }
+}

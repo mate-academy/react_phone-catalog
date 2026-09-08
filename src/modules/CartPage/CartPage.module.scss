@@ -1,0 +1,125 @@
+@use 'styles/variables' as v;
+
+.cartPage {
+  &__Overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  &__Popup {
+    background-color: v.$color-white;
+    width: 50%;
+    max-width: 600px;
+    min-height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+
+    &Header {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    &Close {
+      cursor: pointer;
+    }
+
+    &Image {
+      display: flex;
+      align-self: center;
+      width: 40%;
+      height: 40%;
+      object-fit: fill;
+    }
+
+    &Content {
+      text-align: center;
+      font-family: v.$font-bold;
+    }
+  }
+
+  &__Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    margin-bottom: v.$gap-section;
+    gap: v.$gap-md;
+
+    > h1 {
+      font-family: v.$font-bold;
+      font-size: 48px;
+    }
+  }
+
+  &__Body {
+    display: flex;
+    flex-direction: row;
+    gap: v.$gap-md;
+  }
+
+  &__Info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: v.$gap-lg;
+    height: 40%;
+    width: 320px;
+    border: 1px solid v.$color-border-light;
+
+    &Header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid v.$color-border-light;
+      padding-bottom: v.$gap-lg;
+      margin-bottom: v.$gap-lg;
+      width: 100%;
+
+      > h1 {
+        font-family: v.$font-bold;
+      }
+
+      > p {
+        font-size: 14px;
+        color: v.$color-gray;
+      }
+    }
+  }
+
+  &__ItemList {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    gap: v.$gap-md;
+  }
+}
+
+.cartButton {
+  box-sizing: border-box;
+  height: v.$height-btn-lg;
+}
+
+@media (max-width: v.$bp-890) {
+  .cartPage__Body {
+    flex-direction: column;
+  }
+
+  .cartPage__Info {
+    width: 100%;
+    flex-grow: 1;
+  }
+}

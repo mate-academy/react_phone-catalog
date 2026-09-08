@@ -1,0 +1,121 @@
+@use 'styles/variables' as v;
+
+.productCard {
+  &__Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: v.$gap-xl;
+    max-width: 100%;
+    min-width: 230px;
+    height: 520px;
+    overflow: hidden;
+    border: 1px solid v.$color-border-light;
+    background-color: v.$color-white;
+    cursor: default;
+  }
+
+  &__Upper {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: v.$color-primary-alt;
+    gap: v.$gap-sm;
+    flex-grow: 1;
+    border-bottom: 1px solid v.$color-border-light;
+    padding-bottom: v.$gap-sm;
+  }
+
+  &__Image {
+    width: 100%;
+    height: 200px;
+    object-fit: scale-down;
+    align-self: center;
+    transition: transform v.$transition-fast-in;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__Title {
+    padding-top: v.$gap-md;
+    font-family: v.$font-base;
+    font-size: clamp(14px, 1vw, 14px);
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: v.$gap-xxl;
+  }
+
+  &__PriceContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 9px;
+    color: v.$color-primary-alt;
+    font-family: v.$font-bold;
+
+    > :nth-child(2) {
+      color: v.$color-gray;
+      text-decoration: line-through;
+      font-family: v.$font-base;
+    }
+  }
+
+  &__Bottom {
+    margin-top: auto;
+    padding-top: v.$gap-sm;
+  }
+
+  &__Specs {
+    display: flex;
+    flex-direction: column;
+    gap: v.$gap-sm;
+    padding-bottom: v.$gap-sm;
+
+    &Section {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      font-size: 12px;
+
+      > :nth-child(odd) {
+        color: v.$color-gray;
+      }
+    }
+  }
+
+  &__InteractionArea {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: v.$gap-sm;
+
+    &Button {
+      width: 100%;
+      background-color: v.$color-bg-dark;
+      color: v.$color-white;
+      cursor: pointer;
+      font-family: v.$font-base;
+      border: none;
+      transition:
+        transform v.$transition-fast,
+        background-color v.$transition-fast,
+        border-radius v.$transition-fast;
+
+      &:hover {
+        transform: scale(1.05);
+        background-color: v.$color-bg-hover;
+        border-radius: v.$radius-sm;
+      }
+    }
+  }
+}
+
+.favoritesButton {
+  width: v.$gap-xxl;
+  height: v.$gap-xxl;
+  min-width: v.$gap-xxl;
+}

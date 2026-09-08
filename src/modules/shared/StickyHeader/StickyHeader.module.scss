@@ -1,0 +1,184 @@
+@use 'styles/variables' as v;
+
+.stickyHeader {
+  &__Container {
+    background-color: v.$color-primary;
+    position: sticky;
+    top: 0;
+    z-index: v.$z-top;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: v.$height-header-desktop;
+    gap: v.$gap-header-desktop;
+    font-family: v.$font-base;
+  }
+
+  &__Logo {
+    padding: v.$logo-padding-desktop;
+    transition: transform 0.2s ease-in;
+
+    &:hover {
+      transform: scale(1.04);
+    }
+  }
+
+  &__Body {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    flex-shrink: 1;
+    min-width: 0;
+    gap: v.$gap-body-desktop;
+  }
+
+  &__Bottom {
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    justify-content: flex-end;
+    box-sizing: border-box;
+  }
+
+  &__Icon {
+    width: v.$icon-size-desktop;
+    height: v.$icon-size-desktop;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -1px 0 0 0 v.$color-border;
+  }
+
+  &__Link {
+    color: v.$color-muted;
+    text-decoration: none;
+    white-space: nowrap;
+    font-family: v.$font-semibold;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: v.$height-header-desktop;
+    position: relative;
+    border-bottom: v.$underline-height solid v.$color-transparent;
+
+    &Content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    &Active {
+      color: v.$color-text;
+      border-bottom: v.$underline-height solid v.$color-text;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      font-family: v.$font-semibold;
+      box-sizing: border-box;
+    }
+  }
+
+  &__IconWithBadge {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__Badge {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    width: v.$size-icon-sm;
+    height: v.$size-icon-sm;
+    border-radius: v.$radius-circle;
+    border: 1px solid v.$color-secondary;
+    background-color: v.$color-badge;
+    color: v.$color-white;
+    font-size: 10px;
+    font-family: v.$font-base;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__Lang {
+    display: flex;
+    align-items: center;
+    padding: v.$logo-padding-desktop;
+    gap: v.$gap-xs;
+  }
+
+  &__LangBtn {
+    background: none;
+    border: none;
+    color: v.$color-muted;
+    cursor: pointer;
+    font-family: v.$font-base;
+    font-size: 14px;
+    padding: v.$gap-xs v.$gap-sm;
+
+    &[data-active="true"] {
+      color: v.$color-text;
+      font-family: v.$font-semibold;
+    }
+  }
+}
+
+.menu {
+  display: none;
+}
+
+@media (max-width: v.$bp-750) {
+  .stickyHeader {
+    &__Container {
+      width: 100%;
+      height: v.$height-header-mobile;
+      gap: v.$gap-mobile;
+    }
+
+    &__Logo {
+      padding: v.$logo-padding-mobile;
+    }
+
+    &__Body {
+      gap: v.$gap-body-mobile;
+    }
+
+    &__Icon {
+      width: v.$icon-size-mobile;
+      height: v.$icon-size-mobile;
+    }
+
+    &__Link {
+      height: v.$height-header-mobile;
+    }
+  }
+}
+
+@media (max-width: v.$bp-850) {
+  .stickyHeader {
+    &__Body {
+      display: none;
+    }
+
+    &__Menu {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .full {
+    display: none;
+  }
+
+  .menu {
+    display: flex;
+    background-color: v.$color-transparent;
+    border: none;
+  }
+}

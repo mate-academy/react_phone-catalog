@@ -1,0 +1,30 @@
+@use 'styles/variables' as v;
+
+.iconHeart {
+  color: v.$color-heart-default;
+  fill: transparent;
+  transition: color 0.1s ease-in, fill 0.1s ease-in, transform v.$transition-fast;
+
+  &Active {
+    color: v.$color-badge;
+    fill: v.$color-badge;
+    transform: rotate(360deg);
+  }
+}
+
+.btnFavorites {
+  background-color: v.$color-white;
+  border: 1px solid v.$color-border-muted;
+  cursor: pointer;
+  transition: background-color v.$transition-fast, transform v.$transition-fast;
+
+  > :first-child {
+    width: v.$size-icon-md;
+    height: v.$size-icon-md;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: v.$color-bg-hover-light-alt;
+  }
+}

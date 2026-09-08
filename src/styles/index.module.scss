@@ -1,0 +1,13 @@
+@forward 'variables';
+@use 'variables' as v;
+@use 'components/buttons' as *;
+@use 'icons/icons' as *;
+
+.emptyStateImage {
+  width: 100%;
+  max-width: 400px;
+  margin: 15vh;
+  height: auto;
+  object-fit: contain;
+  align-self: center;
+}
