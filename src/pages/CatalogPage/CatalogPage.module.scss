@@ -1,0 +1,65 @@
+@use '../../styles/utils' as utils;
+
+.catalog {
+  &__breadcrumbs {
+    grid-column: 1 / -1;
+    margin-top: 24px;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+  }
+
+  &__filters-block {
+    grid-column: 1 / -1;
+    margin-bottom: 24px;
+
+    @include utils.page-grid;
+  }
+
+  &__block-items {
+    grid-column: 1 / -1;
+  }
+
+  &__pagination {
+    margin-top: 40px;
+  }
+}
+
+.count-models {
+  grid-column: 1 / -1;
+
+  margin-bottom: 32px;
+
+  font-size: 14px;
+  line-height: 21px;
+  color: utils.$secondary;
+
+  @include utils.on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.block-items {
+  row-gap: 40px;
+
+  @include utils.page-grid;
+
+  &__item {
+    grid-column: 1 / -1;
+
+    @include utils.on-tablet {
+      grid-column: span 6;
+    }
+  }
+}
+
+.product-not-found {
+  grid-column: 1 / -1;
+
+  margin-top: 50px;
+
+  font-size: 32px;
+  line-height: 40px;
+  text-align: center;
+}

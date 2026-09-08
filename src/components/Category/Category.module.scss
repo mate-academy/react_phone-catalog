@@ -1,0 +1,76 @@
+@use '../../styles/utils' as utils;
+
+.category {
+  box-sizing: border-box;
+  width: 100%;
+
+  &__link {
+    position: relative;
+
+    overflow: hidden;
+    display: block;
+
+    aspect-ratio: 1 / 1;
+    width: 100%;
+
+    transition: all .3s;
+
+    &--phones {
+      background-color: utils.$secondary;
+    }
+
+    &--tablets {
+      background-color: utils.$icons;
+    }
+
+    &--accessories {
+      background-color: rgba(213, 60, 81, 1);
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+
+      img {
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    transition: all .3s;
+
+    &--phones {
+      width: 100%;
+    }
+
+    &--tablets {
+      left: 15%;
+      height: 120%;
+    }
+
+    &--accessories {
+      top: auto;
+      bottom: 0;
+      left: 15%;
+      height: 80%;
+    }
+
+  }
+
+  &__title {
+    margin-top: 24px;
+    font-size: 20px;
+    line-height: 26px;
+    color: utils.$primary;
+  }
+
+  &__text {
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 21px;
+    color: utils.$secondary;
+  }
+}

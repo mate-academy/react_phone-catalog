@@ -1,0 +1,54 @@
+@use '../../styles/utils' as utils;
+
+.favorites {
+  &__breadcrumbs {
+    grid-column: 1 / -1;
+    margin-top: 24px;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+  }
+
+  &__text {
+    grid-column: 1 / -1;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  &__block-items {
+    grid-column: 1 / -1;
+  }
+
+  &__pagination {
+    margin-top: 40px;
+  }
+}
+
+.count-models {
+  grid-column: 1 / -1;
+
+  margin-bottom: 32px;
+
+  font-size: 14px;
+  line-height: 21px;
+  color: utils.$secondary;
+
+  @include utils.on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.block-items {
+  row-gap: 40px;
+
+  @include utils.page-grid;
+
+  &__item {
+    grid-column: 1 / -1;
+
+    @include utils.on-tablet {
+      grid-column: span 6;
+    }
+  }
+}

@@ -1,0 +1,79 @@
+@use '../../styles/utils' as utils;
+
+.productCard {
+  box-sizing: border-box;
+  padding: 32px;
+  border: 1px solid utils.$elements;
+  transition: border-color .3s;
+
+  &__price {
+    margin-block: 8px;
+    font-size: 22px;
+    line-height: 31px;
+  }
+
+  &__title {
+    overflow: hidden;
+
+    padding-top: 16px;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: utils.$primary;
+
+    transition: color .3s;
+
+    &:hover {
+      color: utils.$secondary;
+    }
+  }
+
+  &__info {
+    margin-bottom: 8px;
+  }
+
+  &:hover {
+    border-color: utils.$secondary;
+  }
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+
+  box-sizing: border-box;
+  aspect-ratio: 148 / 129;
+  width: 100%;
+}
+
+.img {
+  height: 100%;
+  transition: transform .3s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-block: 8px;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+
+  &__itemTitle {
+    font-size: 12px;
+    line-height: 15px;
+    color: utils.$secondary;
+  }
+}

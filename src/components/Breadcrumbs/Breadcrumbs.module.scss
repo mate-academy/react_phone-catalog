@@ -1,0 +1,33 @@
+@use '../../styles/utils' as utils;
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+
+  font-size: 12px;
+  line-height: 15px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    &--link {
+      transition: all .3s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    &--last {
+      color: utils.$secondary;
+    }
+  }
+}
+
+.icon {
+  &__arrow {
+    cursor: default;
+  }
+}

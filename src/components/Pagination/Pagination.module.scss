@@ -1,0 +1,43 @@
+@use '../../styles/utils' as utils;
+
+.pagination {
+  display: flex;
+  grid-column: 1 / -1;
+  gap: 16px;
+  justify-content: center;
+
+  &__button {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+    border: 1px solid utils.$elements;
+
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+
+    transition: all .3s;
+
+    &--arrow {
+      border-color: utils.$icons;
+    }
+
+    &--active {
+      color: #fff;
+      background-color: utils.$primary;
+    }
+
+    &:hover {
+      border-color: utils.$primary;
+    }
+
+    &:disabled {
+      border-color: utils.$elements;
+    }
+  }
+}
