@@ -1,0 +1,28 @@
+@import '../../assets/global';
+
+.phone {
+  box-sizing: border-box;
+  padding-top: 70px;
+
+  @include padding-inline;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 40px;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 24px;
+
+  @include on-tablet {
+    column-gap: 16px;
+  }
+
+  @include on-large-desctop {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+}
+

@@ -1,0 +1,76 @@
+@import '../../../../assets/global';
+
+.modal {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  position: absolute;
+  top: calc(50% - 65px);
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+.hidden {
+  display: none;
+}
+
+
+.modalWindow {
+  background-color: $light-color;
+  padding: 20px;
+  width: 400px;
+  height: 300px;
+  color: $background-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include on-tablet {
+    width: 600px;
+    height: 300px;
+  }
+
+  @include on-desctop {
+    width: 700px;
+    height: 300px;
+  }
+}
+
+.title {
+  text-align: center;
+
+}
+
+.btnOptions {
+  margin-top: auto;
+
+  display: flex;
+  gap: 40px;
+}
+
+.btn {
+  border: 0;
+  outline: none;
+
+  font-family: Mont-Bold, sans-serif;
+  font-size: 30px;
+
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .3s;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+}
+
+.confirm {
+  background-color: $accent-color;
+  color: $light-color;
+}
+
+.cancel {
+  background-color: #f75a5a;
+  color: $light-color;
+}

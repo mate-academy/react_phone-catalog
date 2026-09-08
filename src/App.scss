@@ -1,1 +1,27 @@
 // not empty
+@import './assets/global';
+
+.page {
+  background-color: $background-color;
+}
+
+iframe {
+  display: none;
+}
+
+.App {
+  background-color: $background-color;
+  min-height: calc(100vh - 260px);
+
+  @include on-tablet {
+    min-height: calc(100vh - 100px);
+  }
+
+  @include on-desctop {
+    min-height: calc(100vh - 99px);
+  }
+}
+
+.title {
+  position: absolute;
+}

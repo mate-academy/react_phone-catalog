@@ -1,0 +1,45 @@
+@import '../../../../assets/global';
+
+.aboutProduct {
+  padding-top: 56px;
+
+  @include on-desctop {
+    width: 50%;
+  }
+}
+
+.sectionTitle {
+  font-family: Mont-SemitBold, sans-serif;
+  font-size: 20px;
+  color: $light-color;
+
+  padding-bottom: 16px;
+  border-bottom: 1px solid $midle-gray-color;
+
+  @include on-tablet {
+    font-size: 22px;
+  }
+}
+
+.phoneDescription {
+  padding-top: 32px;
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.phoneProperties {
+  display: flex;
+  justify-content: space-between;
+}
+
+.propertieTitle {
+  color: $light-gray-color;
+}
+
+.propertieDescription {
+  color: $light-color;
+}
