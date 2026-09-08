@@ -1,0 +1,35 @@
+@import '../../styles/main';
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}
+
+.paginationNum {
+  display: flex;
+  gap: 8px;
+}
+
+.button-img {
+  @include button-img;
+
+}
+
+.active {
+  background: #0f0f11;
+  color: #e2e6e9;
+}
+
+.disable {
+  border-color: #e2e6e9;
+
+  &:hover {
+    border-color: #e2e6e9;
+  }
+}

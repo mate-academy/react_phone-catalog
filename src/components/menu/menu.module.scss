@@ -1,0 +1,25 @@
+@import '../../styles/main';
+
+.container {
+  @include content-padding-inline;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-top: 24px;
+  background: #fafbfc;
+  height: calc(var(--vh, 1vh) * 100 - 48px);
+}
+
+.menuBottom {
+  display: grid;
+  height: 64px;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid #e2e6e9;
+}
+
+.button {
+  @include button;
+}

@@ -1,0 +1,74 @@
+@import '../../styles/main';
+
+.dropdown {
+  position: relative;
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: 5 / 8;
+  }
+
+  &--position {
+    @include on-tablet {
+      grid-column: 1 / 5;
+    }
+  }
+}
+
+.dropdownToggle {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+  width: 100%;
+  padding: 10px;
+  background: #fafbfc;
+  border: 1px solid #b4bdc3;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+
+  &:hover {
+    border: 1px solid #0f0f11;
+  }
+
+  &:focus {
+    border: 1px solid #0f0f11;
+  }
+}
+
+.arrow {
+  position: absolute;
+  right: 10px;
+}
+
+.dropdownMenu {
+  position: absolute;
+  width: 100%;
+  background: #fafbfc;
+  border: 1px solid #b4bdc3;
+  margin-top: 4px;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 0 12px;
+}
+
+.dropdownItem {
+  padding-block: 6px;
+  cursor: pointer;
+  color: #89939a;
+  list-style: none;
+  font-size: 14px;
+
+  &:hover {
+    color: #0f0f11;
+  }
+}
+
+.dropdownLabel {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: #89939a;
+  margin-bottom: 4px;
+}

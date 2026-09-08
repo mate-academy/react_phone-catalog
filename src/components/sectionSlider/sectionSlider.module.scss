@@ -1,0 +1,39 @@
+@import '../../styles/main';
+
+.container {
+  @include content-padding-inline;
+}
+
+.sectionSlider {
+  display: flex;
+  flex-direction: column;
+  max-width: 100vw;
+}
+
+.sectionTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.section-title {
+  @include section-title;
+}
+
+.buttons {
+  display: flex;
+  column-gap: 16px;
+}
+
+.button-img {
+  @include button-img;
+}
+
+.disabled {
+  border-color: #e2e6e9;
+
+  &:hover {
+    border-color: #e2e6e9;
+  }
+}
