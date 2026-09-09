@@ -1,0 +1,33 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px 80px;
+}
+
+.breadcrumbs {
+  margin-bottom: 40px;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  color: var(--c-text);
+}
+
+.count {
+  margin: 0 0 40px;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--c-text-muted);
+}
+
+.empty {
+  margin: 40px 0 0;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+  color: var(--c-text);
+}

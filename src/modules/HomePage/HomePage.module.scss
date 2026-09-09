@@ -1,0 +1,38 @@
+// сетка макета: от 1200px контент фиксирован 1136px (24 колонки по 32 + зазоры 16)
+// max-width = 1136 + свои поля 32*2; ниже 1200 колонка сжимается
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 80px; // расстояние между секциями из макета
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 32px 80px;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.title {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  color: var(--c-text);
+}
+
+// прячет элемент визуально, но оставляет его для скринридеров
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

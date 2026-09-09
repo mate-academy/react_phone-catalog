@@ -1,0 +1,123 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px;
+  background-color: var(--c-surface);
+  border: 1px solid var(--c-surface);
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-width: 0;
+}
+
+.remove {
+  display: flex;
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.imageLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.imageLink:hover .image {
+  transform: scale(1.1);
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: var(--c-text);
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--c-accent);
+  }
+}
+
+.side {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-shrink: 0;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+}
+
+.counterButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background-color: var(--c-elements);
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:disabled {
+    background-color: transparent;
+    border: 1px solid var(--c-border);
+    cursor: default;
+
+    img {
+      opacity: 0.3;
+    }
+  }
+
+  &:hover:not(:disabled) {
+    background-color: var(--c-hover);
+  }
+}
+
+.quantity {
+  width: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: center;
+  color: var(--c-text);
+}
+
+.price {
+  min-width: 80px;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+  text-align: right;
+  color: var(--c-text);
+}

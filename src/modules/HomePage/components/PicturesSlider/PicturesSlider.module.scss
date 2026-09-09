@@ -1,0 +1,81 @@
+.slider {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 16px;
+}
+
+// в макете кнопка слайдера — сплошная заливка без рамки и скруглений
+.arrow {
+  flex-shrink: 0;
+  width: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  border: none;
+  background-color: var(--c-elements);
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: var(--c-hover);
+  }
+}
+
+.viewport {
+  flex: 1;
+  overflow: hidden; // прячет все слайды кроме текущего
+}
+
+.track {
+  display: flex;
+  height: 400px;
+  transition: transform 0.5s ease; // плавный сдвиг между слайдами
+}
+
+.slide {
+  min-width: 100%; // каждый слайд = вся ширина viewport
+  height: 100%;
+  object-fit: cover;
+}
+
+.dots {
+  flex-basis: 100%; // переносит точки на отдельную строку под слайдером
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+// кнопка 24x24 (удобно попадать), видимая чёрточка 14x4 — через ::after
+.dot,
+.dotActive {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    width: 14px;
+    height: 4px;
+    transition: background-color 0.3s;
+  }
+}
+
+.dot::after {
+  background-color: var(--c-border);
+}
+
+.dotActive::after {
+  background-color: var(--c-text);
+}

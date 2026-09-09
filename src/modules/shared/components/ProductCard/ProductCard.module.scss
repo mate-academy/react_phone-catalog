@@ -1,0 +1,154 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 272px;
+  padding: 32px;
+  background-color: var(--c-surface);
+  border: 1px solid var(--c-surface);
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: var(--c-border);
+  }
+}
+
+// ссылка-картинка: обрезает увеличенную картинку по своим границам
+.imageLink {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.image {
+  max-width: 100%;
+  height: 196px;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+// README App.7: картинки-ссылки увеличиваются на 10% при hover
+.imageLink:hover .image {
+  transform: scale(1.1);
+}
+
+.name {
+  // flex-grow прижимает всё, что ниже, к низу карточки:
+  // при коротком названии цены и кнопки соседних карточек остаются на одном уровне
+  flex-grow: 1;
+  margin: 0 0 8px;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+}
+
+.nameLink {
+  color: var(--c-text);
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--c-accent);
+  }
+}
+
+.price {
+  margin: 0 0 8px;
+  font-size: 22px;
+  line-height: 31px;
+  font-weight: 800;
+  color: var(--c-text);
+}
+
+.fullPrice {
+  margin-left: 8px;
+  font-weight: 400;
+  color: var(--c-text-muted);
+  text-decoration: line-through;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 16px;
+  margin-bottom: 16px;
+  border-top: 1px solid var(--c-border);
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.specLabel {
+  color: var(--c-text-muted);
+}
+
+.specValue {
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.addToCart {
+  flex: 1;
+  height: 40px;
+  border: 1px solid var(--c-accent);
+  background-color: var(--c-accent);
+  color: var(--c-text);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    color 0.3s;
+
+  &:hover {
+    background-color: var(--c-accent-hover);
+    border-color: var(--c-accent-hover);
+  }
+}
+
+// уже в корзине: прозрачная кнопка с рамкой и зелёным текстом, повторный клик ничего не делает
+.addToCartAdded,
+.addToCartAdded:hover {
+  background-color: transparent;
+  border-color: var(--c-elements);
+  color: var(--c-green);
+  cursor: default;
+}
+
+.favorite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--c-elements);
+  background-color: var(--c-elements);
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+
+  &:hover {
+    background-color: var(--c-hover);
+    border-color: var(--c-hover);
+  }
+
+  // выбранное: тёмный фон с рамкой, чтобы красное сердце читалось
+  &[aria-pressed='true'] {
+    background-color: var(--c-surface);
+    border-color: var(--c-elements);
+  }
+}

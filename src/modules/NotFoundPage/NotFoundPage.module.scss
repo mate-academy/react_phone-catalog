@@ -1,0 +1,39 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 32px;
+}
+
+.title {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  color: var(--c-text);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 32px;
+  background-color: var(--c-accent);
+  color: var(--c-text);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: var(--c-accent-hover);
+  }
+}
+
+.image {
+  max-width: 400px;
+}

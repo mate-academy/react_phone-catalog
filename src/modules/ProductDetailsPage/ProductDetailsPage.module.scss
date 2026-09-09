@@ -1,0 +1,375 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px 80px;
+}
+
+.breadcrumbs {
+  margin-bottom: 40px;
+}
+
+.back {
+  margin-bottom: 16px;
+}
+
+.title {
+  margin: 0 0 40px;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: var(--c-text);
+}
+
+.message {
+  margin: 40px 0 0;
+  font-size: 22px;
+  line-height: 31px;
+  font-weight: 700;
+  color: var(--c-text);
+}
+
+.notFoundImage {
+  display: block;
+  max-width: 400px;
+  margin-top: 24px;
+}
+
+// верх: галерея слева, панель выбора справа
+.top {
+  display: flex;
+  gap: 64px;
+  margin-bottom: 80px;
+}
+
+.gallery {
+  display: flex;
+  gap: 16px;
+  flex: 1;
+}
+
+.thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  padding: 4px;
+  border: 1px solid var(--c-elements);
+  background-color: var(--c-surface);
+  cursor: pointer;
+  transition: border-color 0.3s;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &:hover {
+    border-color: var(--c-hover);
+  }
+}
+
+.thumbActive {
+  border-color: var(--c-text);
+}
+
+.mainImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 464px;
+  height: 464px;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+.controls {
+  width: 320px;
+  flex-shrink: 0;
+}
+
+.option {
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.optionHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.optionLabel {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  color: var(--c-text-muted);
+}
+
+.productId {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--c-text-muted);
+}
+
+// настоящий radio прячем, а видимая часть — label вокруг него
+.radio,
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  opacity: 0;
+}
+
+.colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+// кружок 32px: цветная сердцевина + зазор 2px + рамка
+.color {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--c-elements);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: var(--c-hover);
+  }
+}
+
+.colorActive {
+  border-color: var(--c-text);
+}
+
+.colorDot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+}
+
+.capacities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.capacity {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid var(--c-elements);
+  color: var(--c-text);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    border-color 0.3s,
+    background-color 0.3s,
+    color 0.3s;
+
+  &:hover {
+    border-color: var(--c-text);
+  }
+}
+
+.capacityActive {
+  background-color: var(--c-text);
+  border-color: var(--c-text);
+  color: var(--c-bg);
+}
+
+.price {
+  margin: 0 0 16px;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: var(--c-text);
+}
+
+.fullPrice {
+  margin-left: 8px;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--c-text-muted);
+  text-decoration: line-through;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.addToCart {
+  flex: 1;
+  height: 48px;
+  border: 1px solid var(--c-accent);
+  background-color: var(--c-accent);
+  color: var(--c-text);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    color 0.3s;
+
+  &:hover {
+    background-color: var(--c-accent-hover);
+    border-color: var(--c-accent-hover);
+  }
+}
+
+.addToCartAdded,
+.addToCartAdded:hover {
+  background-color: transparent;
+  border-color: var(--c-elements);
+  color: var(--c-green);
+  cursor: default;
+}
+
+.favorite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--c-elements);
+  background-color: var(--c-elements);
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+
+  &:hover {
+    background-color: var(--c-hover);
+    border-color: var(--c-hover);
+  }
+
+  &[aria-pressed='true'] {
+    background-color: var(--c-surface);
+  }
+}
+
+.shortSpecs,
+.specsList {
+  margin: 0;
+
+  dt {
+    color: var(--c-text-muted);
+  }
+
+  dd {
+    margin: 0;
+    font-weight: 600;
+    color: var(--c-text);
+    text-align: right;
+  }
+}
+
+.shortSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.shortSpec,
+.specsRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+// низ: описание слева, характеристики справа
+.bottom {
+  display: flex;
+  gap: 64px;
+  margin-bottom: 80px;
+}
+
+.about {
+  flex: 1;
+  min-width: 0;
+}
+
+.specs {
+  width: 512px;
+  flex-shrink: 0;
+}
+
+.sectionTitle {
+  margin: 0 0 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--c-border);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+  color: var(--c-text);
+}
+
+.aboutSection {
+  margin-bottom: 32px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.aboutTitle {
+  margin: 0 0 16px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  color: var(--c-text);
+}
+
+.aboutText {
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--c-text-muted);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.specsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 21px;
+}

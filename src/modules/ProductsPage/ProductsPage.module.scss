@@ -1,0 +1,110 @@
+// та же сетка, что у Home: контент 1136 фиксирован от 1200px
+.page {
+  display: flex;
+  flex-direction: column;
+  flex: 1; // растягивается на всю высоту main → пагинация уходит вниз
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px 80px; // 24 = зазор шапка → крошки из макета
+}
+
+.breadcrumbs {
+  margin-bottom: 40px;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  color: var(--c-text);
+}
+
+.count {
+  margin: 0 0 40px;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--c-text-muted);
+}
+
+.message {
+  margin: 40px 0 0;
+  font-size: 22px;
+  line-height: 31px;
+  font-weight: 700;
+  color: var(--c-text);
+}
+
+.reload {
+  display: block;
+  height: 40px;
+  margin-top: 16px;
+  padding: 0 24px;
+  border: none;
+  background-color: var(--c-accent);
+  color: var(--c-text);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: var(--c-accent-hover);
+  }
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 176px;
+}
+
+.controlSmall {
+  width: 128px;
+}
+
+.controlLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--c-text-muted);
+}
+
+.select {
+  height: 40px;
+  padding: 0 12px;
+  border: none;
+  background-color: var(--c-elements);
+  color: var(--c-text);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  // прячем системную стрелку, рисуем шеврон из макета
+  appearance: none;
+  background-image: url('../shared/assets/icons/chevron-down.svg');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+
+  &:hover {
+    background-color: var(--c-hover);
+  }
+}
+
+.pagination {
+  margin-top: auto; // прижата к низу страницы, когда товаров мало
+  padding-top: 40px;
+}

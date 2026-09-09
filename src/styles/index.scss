@@ -1,0 +1,47 @@
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+// Дизайн-токены Figma "Original Dark" — единственное место, где живут цвета.
+// В компонентах только var(--...), хексы руками больше не пишем.
+:root {
+  --c-bg: #0f1121; // фон страницы
+  --c-surface: #161827; // фон карточек и плашек
+  --c-elements: #323542; // рамки/иконки-кнопки
+  --c-border: #3b3e4a; // разделители
+  --c-hover: #4a4d58; // ховер серых элементов
+  --c-text: #f1f2f9; // основной текст
+  --c-text-muted: #75767f; // вторичный текст
+  --c-accent: #905bff; // фиолетовый акцент
+  --c-accent-hover: #a378ff;
+  --c-green: #27ae60;
+  --c-red: #eb5757; // сердце в избранном, счётчики в шапке
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Mont, sans-serif;
+  background-color: var(--c-bg);
+  color: var(--c-text);
+}

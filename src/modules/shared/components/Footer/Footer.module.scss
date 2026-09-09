@@ -1,0 +1,78 @@
+.footer {
+  border-top: 1px solid var(--c-border);
+}
+
+// содержимое ограничено той же колонкой, что и контент страниц (README App.4)
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 1136px;
+  height: 96px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 28px;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 64px;
+}
+
+.link {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--c-text-muted);
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--c-text);
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  padding: 0;
+  border: none;
+  background: transparent;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--c-text-muted);
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--c-text);
+  }
+}
+
+.backToTopIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--c-hover);
+  transition: border-color 0.3s;
+
+  .backToTop:hover & {
+    border-color: var(--c-text);
+  }
+}

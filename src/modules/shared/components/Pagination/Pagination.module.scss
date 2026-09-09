@@ -1,0 +1,78 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px; // зазор стрелка ↔ блок номеров из макета
+}
+
+.pages {
+  display: flex;
+  gap: 8px; // зазор между номерами
+}
+
+// стрелки — тот же компонент дизайн-системы, что у слайдеров
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background-color: var(--c-elements);
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:disabled {
+    background-color: transparent;
+    border: 1px solid var(--c-border);
+    cursor: default;
+
+    img {
+      opacity: 0.3;
+    }
+  }
+
+  &:hover:not(:disabled) {
+    background-color: var(--c-hover);
+  }
+}
+
+// номер страницы: тёмная плашка, выбранный — акцентная заливка
+.page,
+.pageActive {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--c-text);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.page {
+  background-color: var(--c-surface);
+
+  &:hover {
+    background-color: var(--c-hover);
+  }
+}
+
+.pageActive {
+  background-color: var(--c-accent);
+}
+
+// разрыв между группами страниц
+.ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--c-text-muted);
+}

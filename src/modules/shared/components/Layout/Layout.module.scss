@@ -1,0 +1,11 @@
+.layout {
+    display: flex;
+    flex-direction: column; // Header / main / Footer стопкой сверху вниз       
+    min-height: 100vh;      // контейнер минимум на весь экран
+  }
+
+  .main {
+    flex: 1; // забирает всё свободное место → толкает Footer к низу
+    display: flex; // чтобы страница внутри могла растянуться на всю высоту main
+    flex-direction: column;
+  }

@@ -1,0 +1,117 @@
+.header {
+  position: sticky; // прилипает к верху при скролле
+  top: 0;
+  z-index: 100; // поверх контента
+
+  display: flex;
+  align-items: center;
+
+  height: 64px;
+  padding-left: 24px;
+
+  background-color: var(--c-bg); // без фона контент просвечивал бы при скролле
+  border-bottom: 1px solid var(--c-border);
+}
+
+.logo {
+  display: flex; // убирает лишний отступ под img
+  align-items: center;
+  height: 100%;
+  margin-right: 48px;
+
+  img {
+    height: 28px;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+  height: 100%;
+}
+
+.link,
+.active {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--c-text-muted); // неактивный — серый
+  transition: color 0.3s; // плавный hover (README App.6)
+}
+
+.link:hover {
+  color: var(--c-text);
+}
+
+.active {
+  color: var(--c-text);
+  position: relative;
+}
+
+.active::after {
+  content: ''; // полоска-подчёркивание активного пункта
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--c-text);
+}
+
+.icons {
+  display: flex;
+  height: 100%;
+  margin-left: auto; // прижимает иконки к правому краю
+}
+
+// квадратная кнопка-иконка на всю высоту шапки, с разделителем слева
+.icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 100%;
+  border-left: 1px solid var(--c-elements);
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: var(--c-surface);
+  }
+}
+
+.iconActive::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--c-text);
+}
+
+// красный кружок-счётчик в правом верхнем углу иконки
+.badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  border: 1px solid var(--c-bg);
+  border-radius: 7px;
+  background-color: var(--c-red);
+  color: var(--c-text);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+}

@@ -1,0 +1,64 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  margin: 0;
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--c-text);
+}
+
+.arrows {
+  display: flex;
+  gap: 16px;
+}
+
+// в макете активная кнопка — сплошная заливка, задизейбленная — только рамка
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background-color: var(--c-elements);
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:disabled {
+    background-color: transparent;
+    border: 1px solid var(--c-border);
+    cursor: default;
+
+    img {
+      opacity: 0.3; // приглушённая стрелка на неактивной кнопке
+    }
+  }
+
+  &:hover:not(:disabled) {
+    background-color: var(--c-hover);
+  }
+}
+
+// окно: показывает 4 карточки, остальное отрезает
+.viewport {
+  overflow: hidden;
+}
+
+// лента: все карточки в ряд, сдвигается через transform
+.track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.3s;
+
+  > * {
+    flex-shrink: 0;
+  }
+}

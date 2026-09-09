@@ -1,0 +1,56 @@
+.title {
+  margin: 0 0 24px;
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--c-text);
+}
+
+.tiles {
+  display: flex;
+  gap: 16px;
+}
+
+.tile {
+  flex: 1;
+  text-decoration: none;
+}
+
+// квадратная плашка с фоном; картинка внутри с отступами, целиком (contain),
+// чтобы все три категории выглядели одинаково независимо от пропорций файла
+.imageWrapper {
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  padding: 32px;
+  margin-bottom: 24px;
+  background-color: var(--c-surface);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+// scale по README п.7: картинки-ссылки увеличиваются на 10% при hover
+.tile:hover .image {
+  transform: scale(1.1);
+}
+
+.name {
+  margin: 0 0 4px;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+.count {
+  margin: 0;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--c-text-muted);
+}

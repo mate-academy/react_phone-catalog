@@ -1,0 +1,33 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+.home {
+  display: flex; // убирает строчный зазор под img
+}
+
+.arrow {
+  opacity: 0.5; // в макете шеврон приглушён
+}
+
+.link {
+  color: var(--c-text);
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--c-accent);
+  }
+}
+
+.current {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--c-text-muted);
+}

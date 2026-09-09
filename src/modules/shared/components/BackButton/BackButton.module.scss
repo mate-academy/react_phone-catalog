@@ -1,0 +1,19 @@
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--c-text-muted);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--c-text);
+  }
+}
