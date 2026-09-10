@@ -1,0 +1,17 @@
+// SCSS mixins for reuse
+// Responsive breakpoints according to Figma
+$mobile: 320px;
+$tablet: 640px;
+$desktop: 1200px;
+
+@mixin on-tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}

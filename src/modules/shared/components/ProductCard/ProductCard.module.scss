@@ -1,0 +1,159 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  background-color: $color-white;
+  border: 1px solid $color-elements;
+  border-radius: 8px;
+  font-family: $font-family-main;
+  transition: box-shadow $effect-duration $effect-timing;
+
+  &:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  &__imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 196px;
+    margin-bottom: 24px;
+  }
+
+  &__image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $color-primary;
+    margin-bottom: 8px;
+    height: 42px;
+    overflow: hidden;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 31px;
+    color: $color-primary;
+
+    &Regular {
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 31px;
+      text-decoration: line-through;
+      color: $color-secondary;
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: $color-elements;
+    border: none;
+    margin-bottom: 8px;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__specRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__specLabel {
+    font-weight: 600; 
+    color: $color-secondary;
+  }
+
+  &__specValue {
+    font-weight: 700; 
+    color: $color-primary;
+    text-align: right;
+  }
+
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  &__cartBtn {
+    flex: 1;
+    height: 40px;
+    background-color: $color-primary;
+    color: $color-white;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all $effect-duration $effect-timing;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &Selected {
+      background-color: $color-white;
+      color: $color-green;
+      border-color: $color-elements;
+
+      &:hover {
+        box-shadow: none;
+        border-color: $color-primary;
+      }
+    }
+  }
+
+  &__favBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $color-icons;
+    border-radius: 4px;
+    background-color: $color-white;
+    cursor: pointer;
+    transition: border-color $effect-duration $effect-timing;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &Active {
+      border-color: $color-elements;
+    }
+  }
+
+  &__favIcon {
+    width: 16px;
+    height: 16px;
+  }
+}

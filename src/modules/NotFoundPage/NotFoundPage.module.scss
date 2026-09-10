@@ -1,0 +1,46 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  padding: 40px 16px;
+
+  &__title {
+    font-size: 64px;
+    font-weight: 800;
+    color: $color-primary;
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      font-size: 96px;
+    }
+  }
+
+  &__subtitle {
+    font-size: 20px;
+    font-weight: 700;
+    color: $color-secondary;
+    margin-bottom: 32px;
+  }
+
+  &__btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: $color-primary;
+    color: $color-white;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: box-shadow $effect-duration $effect-timing;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+}

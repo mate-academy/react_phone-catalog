@@ -1,0 +1,86 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.picturesSlider {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 80px;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 100%;
+    border: 1px solid $color-icons;
+    border-radius: 4px;
+    background-color: $color-white;
+    transition: border-color $effect-duration $effect-timing;
+
+    @include on-tablet {
+      display: flex;
+      height: 400px;
+    }
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+
+  &__wrapper {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+    height: 320px;
+
+    @include on-tablet {
+      height: 400px;
+    }
+  }
+
+  &__slides {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  &__slide {
+    min-width: 100%;
+    height: 100%;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    background-color: $color-elements;
+    border: none;
+    padding: 0;
+    transition: background-color $effect-duration $effect-timing;
+
+    &Active {
+      background-color: $color-primary;
+    }
+  }
+}

@@ -1,0 +1,100 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid $color-elements;
+  border-radius: 8px;
+  background-color: $color-white;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__main {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__removeBtn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  &__img {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-primary;
+    text-decoration: none;
+    max-width: 170px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    @include on-tablet {
+      width: auto;
+      gap: 32px;
+    }
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__countBtn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-icons;
+    background-color: $color-white;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:disabled {
+      border-color: $color-elements;
+      color: $color-elements;
+      cursor: not-allowed;
+    }
+  }
+
+  &__count {
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-primary;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 800;
+    color: $color-primary;
+  }
+}

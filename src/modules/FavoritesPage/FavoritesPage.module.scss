@@ -1,0 +1,71 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.favorites {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 56px;
+
+  @include on-tablet {
+    padding: 24px 24px 80px;
+  }
+
+  @include on-desktop {
+    padding: 24px 32px 80px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    color: $color-primary;
+    margin-top: 16px;
+    margin-bottom: 8px;
+
+    @include on-tablet {
+      font-size: 48px;
+    }
+  }
+
+  &__count {
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-secondary;
+    margin-bottom: 32px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+    gap: 16px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(auto-fill, minmax(237px, 1fr));
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+    }
+  }
+
+  &__empty {
+    text-align: center;
+    padding: 60px 0;
+
+    h2 {
+      font-size: 24px;
+      color: $color-primary;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: $color-primary;
+    color: $color-white;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+}

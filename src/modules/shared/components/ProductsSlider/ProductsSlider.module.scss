@@ -1,0 +1,82 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+.slider {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 80px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+    color: $color-primary;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-icons;
+    background-color: $color-white;
+    transition: border-color $effect-duration $effect-timing;
+
+    &:disabled {
+      border-color: $color-elements;
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $color-primary;
+    }
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__item {
+    min-width: 212px;
+    max-width: 212px;
+
+    @include on-tablet {
+      min-width: 237px;
+      max-width: 237px;
+    }
+
+    @include on-desktop {
+      min-width: 272px;
+      max-width: 272px;
+    }
+  }
+}

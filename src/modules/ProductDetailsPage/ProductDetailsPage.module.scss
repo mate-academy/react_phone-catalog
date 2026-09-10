@@ -1,0 +1,312 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.details {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 56px;
+
+  @include on-tablet {
+    padding: 24px 24px 80px;
+  }
+
+  @include on-desktop {
+    padding: 24px 32px 80px;
+  }
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    color: $color-secondary;
+    text-decoration: none;
+    margin-bottom: 16px;
+    transition: color $effect-duration $effect-timing;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__title {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 120%;
+    color: $color-primary;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 64px;
+    }
+  }
+
+  /* Gallery Section */
+  &__gallery {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__thumbnails {
+    display: flex;
+    gap: 8px;
+
+    @include on-tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__thumb {
+    width: 50px;
+    height: 50px;
+    border: 1px solid $color-elements;
+    border-radius: 4px;
+    padding: 4px;
+    background: $color-white;
+    cursor: pointer;
+    transition: border-color $effect-duration $effect-timing;
+
+    &Active {
+      border-color: $color-primary;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__mainImage {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+
+    @include on-tablet {
+      height: 400px;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  /* Actions & Specs Sidebar */
+  &__actions {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__sectionTitle {
+    font-size: 12px;
+    font-weight: 600;
+    color: $color-secondary;
+    margin-bottom: 8px;
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__colorBtn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid $color-elements;
+    padding: 2px;
+
+    &Active {
+      border-color: $color-primary;
+    }
+
+    span {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+  }
+
+  &__divider {
+    border: none;
+    height: 1px;
+    background-color: $color-elements;
+    margin-bottom: 24px;
+  }
+
+  &__capacities {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__capacityBtn {
+    padding: 8px 12px;
+    border: 1px solid $color-icons;
+    border-radius: 4px;
+    background-color: $color-white;
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-primary;
+    text-decoration: none;
+    transition: all $effect-duration $effect-timing;
+
+    &Active {
+      background-color: $color-primary;
+      color: $color-white;
+      border-color: $color-primary;
+    }
+  }
+
+  &__priceRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    font-size: 32px;
+    font-weight: 800;
+    color: $color-primary;
+
+    &Regular {
+      font-size: 22px;
+      font-weight: 500;
+      text-decoration: line-through;
+      color: $color-secondary;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__cartBtn {
+    flex: 1;
+    height: 48px;
+    background-color: $color-primary; // Тіло кнопки має бути темним ($color-accent або $color-primary)
+    color: $color-white;              // Білий текст на темному тлі
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 4px;
+    border: 1px solid $color-primary;
+    cursor: pointer;
+    transition: all $effect-duration $effect-timing;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &Selected {
+      background-color: $color-white;
+      color: $color-green;
+      border: 1px solid $color-elements;
+    }
+  }
+
+  &__favBtn {
+    width: 48px;
+    height: 48px;
+    border: 1px solid $color-icons;
+    border-radius: 4px;
+    background-color: $color-white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color $effect-duration $effect-timing;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__specRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+
+  &__specLabel {
+    color: $color-secondary;
+    font-weight: 600;
+  }
+
+  &__specValue {
+    color: $color-primary;
+    font-weight: 600;
+  }
+
+  /* Bottom Description & Tech Specs */
+  &__bottom {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 56px;
+    margin-bottom: 80px;
+
+    @include on-desktop {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__description {
+    h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: $color-primary;
+      margin-bottom: 16px;
+    }
+
+    h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: $color-primary;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 21px;
+      color: $color-secondary;
+      margin-bottom: 24px;
+    }
+  }
+}

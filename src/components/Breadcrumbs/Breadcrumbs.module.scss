@@ -1,0 +1,33 @@
+@use '../../styles/variables' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 12px;
+  font-weight: 600;
+
+  &__homeIcon {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  &__link {
+    color: $color-primary;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__arrow {
+    color: $color-secondary;
+  }
+
+  &__current {
+    color: $color-secondary;
+  }
+}

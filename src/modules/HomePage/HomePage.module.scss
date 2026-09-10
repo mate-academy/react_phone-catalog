@@ -1,0 +1,29 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.homePage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 56px;
+
+  @include on-tablet {
+    padding: 32px 24px 80px;
+  }
+
+  @include on-desktop {
+    padding: 56px 32px 80px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 100%;
+    color: $color-primary;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      font-size: 48px;
+      margin-bottom: 56px;
+    }
+  }
+}

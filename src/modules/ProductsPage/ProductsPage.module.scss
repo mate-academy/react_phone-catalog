@@ -1,0 +1,156 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.productsPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 56px;
+  font-family: $font-family-main;
+
+  @include on-tablet {
+    padding: 24px 24px 80px;
+  }
+
+  @include on-desktop {
+    padding: 24px 32px 80px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $color-primary;
+    margin-bottom: 8px;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__count {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $color-secondary;
+    margin-bottom: 32px;
+  }
+
+  &__filters {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &:first-child {
+      width: 176px;
+    }
+
+    &:last-child {
+      width: 128px;
+    }
+  }
+
+  &__label {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $color-secondary;
+  }
+
+  &__select {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    background-image: url("data:image/svg+xml;utf8,<svg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' clip-rule='evenodd' d='M3.64645 5.64645C3.84171 5.45118 4.15829 5.45118 4.35355 5.64645L8 9.29289L11.6464 5.64645C11.8417 5.45118 12.1583 5.45118 12.3536 5.64645C12.5488 5.84171 12.5488 6.15829 12.3536 6.35355L8.35355 10.3536C8.15829 10.5488 7.84171 10.5488 7.64645 10.3536L3.64645 6.35355C3.45118 6.15829 3.45118 5.84171 3.64645 5.64645Z' fill='%2389939A'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+
+    border: 1px solid $color-icons;
+    border-radius: 4px;
+    background-color: $color-white;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    color: $color-primary;
+    cursor: pointer;
+    outline: none;
+    transition: border-color $effect-duration $effect-timing;
+
+    &:hover {
+      border-color: $color-secondary;
+    }
+
+    &:focus {
+      border-color: $color-primary;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__pageBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-icons;
+    border-radius: 4px;
+    background-color: $color-white;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    color: $color-primary;
+    cursor: pointer;
+    transition: all $effect-duration $effect-timing;
+
+    &:disabled {
+      border-color: $color-elements;
+      color: $color-elements;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $color-primary;
+    }
+
+    &Active {
+      background-color: $color-primary;
+      color: $color-white;
+      border-color: $color-primary;
+    }
+  }
+}
