@@ -1,0 +1,36 @@
+@use '/src/styles/color.scss' as *;
+
+.color-balls {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.color-ball__contour {
+  width: 32px;
+  height: 32px;
+  border-radius: 36px;
+  border: 1px solid $elements-color;
+}
+
+.color-ball__contour:hover {
+  cursor: pointer;
+}
+
+.color-ball__contour--active {
+  width: 32px;
+  height: 32px;
+  border-radius: 36px;
+
+  border: 1px solid $primary-color;
+}
+
+.color-ball__fill {
+  width: 30px;
+  height: 30px;
+  top: 1px;
+  left: 1px;
+  border-radius: 36px;
+
+  border: 2px solid #fff;
+}

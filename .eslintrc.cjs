@@ -48,6 +48,8 @@ module.exports = {
     }],
     'no-redeclare': [2, { builtinGlobals: true }],
     'no-console': 2,
+    'no-trailing-spaces': 2,
+    'no-multiple-empty-lines': [2, { max: 1, maxEOF: 0, maxBOF: 0 }],
     'operator-linebreak': 0,
     'brace-style': [2, '1tbs'],
     'arrow-body-style': 0,

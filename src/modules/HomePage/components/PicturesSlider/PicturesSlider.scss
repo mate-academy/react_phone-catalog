@@ -1,0 +1,88 @@
+@use '/src/styles/text' as *;
+@use '/src/styles/color' as *;
+@use '/src/styles/index' as *;
+
+.pictures-slider {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pictures-slider__up {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+  gap: 16px;
+}
+
+.pictures-slider__content {
+  display: flex;
+}
+
+.icon-large {
+  flex-shrink: 0;
+  width: 32px;
+  border: 1px solid $icons-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include down(phone) {
+    display: none;
+  }
+}
+
+.pictures-slider__pictures {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+
+  @include down(phone) {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper {
+    width: 100%;
+  }
+}
+
+.pictures-slider__picture {
+  width: 100%;
+  max-width: 1040px;
+  object-fit: cover;
+  display: block;
+
+  @include down(phone) {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+.pictures-slider__dots {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+  gap: 14px;
+}
+
+.pictures-slider__dot--active {
+  background-image: url('/serviceImg/icons/tech/rectangle.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 14px;
+  height: 4px;
+  cursor: pointer;
+}
+
+.pictures-slider__dot--disactive {
+  background-image: url('/serviceImg/icons/tech/rectangle.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 14px;
+  height: 4px;
+  cursor: pointer;
+
+  opacity: 0.25;
+}

@@ -1,0 +1,144 @@
+@use '/src/styles/color' as *;
+@use '/src/styles/text' as *;
+@use '/src/styles/icons' as *;
+@use '/src/styles/index' as *;
+@use '/src/styles/mixins' as *;
+
+html {
+  overflow-x: hidden;
+}
+
+.disabled {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.content {
+  max-width: 1136px;
+  margin: auto;
+
+  @include down(tablet) {
+    margin: 0 24px;
+  }
+
+  @include down(phone) {
+    margin: 0 16px;
+  }
+}
+
+.content__title {
+  grid-column: 1 / -1;
+  margin: 56px 0;
+
+  @include down(tablet) {
+    margin: 32px 0;
+  }
+
+  @include down(phone) {
+    margin: 24px 0;
+  }
+}
+
+.bg-category {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  max-width: 368px;
+  max-height: 368px;
+  overflow: hidden;
+  position: relative;
+
+  @include down(phone) {
+    aspect-ratio: 1 / 1;
+    max-width: none;
+    max-height: none;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.bg-category--phones {
+  background-color: #6d6474;
+}
+
+.bg-category--tablets {
+  background-color: #8d8d92;
+}
+
+.bg-category--accessories {
+  background-color: #973d5f;
+}
+
+.number-models {
+  color: $secondary-color;
+}
+
+.categoty-photo {
+  position: absolute;
+  right: -30px;
+  bottom: -40px;
+  width: auto;
+  height: 100%;
+  max-height: none;
+  object-fit: contain;
+
+  transition: transform 0.3s ease;
+
+  @include down(phone) {
+    width: 150%;
+    right: -250px;
+    bottom: -80px;
+  }
+}
+
+.categoty-photo:hover {
+  transform: scale(1.1);
+}
+
+.shop-by-category {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 80px;
+  text-decoration: none;
+}
+
+.shop-by-category a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.shop-by-category__content {
+  grid-column: 1 / -1;
+  display: flex;
+  width: 100%;
+  margin-top: 24px;
+  gap: 16px;
+
+  > a {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  @include down(phone) {
+    flex-direction: column;
+    gap: 32px;
+
+    > a {
+      flex: none;
+    }
+  }
+}
+
+.shop-by-category__title {
+  margin-top: 24px;
+}
+
+.shop-by-category__quentity {
+  margin-top: 4px;
+}

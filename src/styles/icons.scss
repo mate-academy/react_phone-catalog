@@ -1,0 +1,187 @@
+@use '/src/styles/color.scss' as *;
+
+.icon {
+  box-sizing: border-box;
+  border: 1px solid $icons-color;
+  background-color: $white-color;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.1s ease;
+}
+
+.icon:hover {
+  border-color: $primary-color;
+}
+
+.icon:active {
+  background-color: $primary-color;
+}
+
+.icon-deactivate {
+  border-color: $elements-color;
+}
+
+.icon-deactivate:hover {
+  border-color: $elements-color;
+}
+
+.icon-deactivate:active {
+  box-sizing: border-box;
+  border: 1px solid $elements-color;
+  background-color: $white-color;
+}
+
+.icon-selected {
+  background-color: $primary-color;
+}
+
+.icon-16 {
+  width: 16px;
+  height: 16px;
+}
+
+.icon-32 {
+  width: 32px;
+  height: 32px;
+}
+
+.icon-40 {
+  min-width: 40px;
+  height: 40px;
+}
+
+.icon-48 {
+  width: 48px;
+  height: 48px;
+}
+
+.icon-group {
+  display: flex;
+  gap: 16px;
+}
+
+.icon--arrow-left {
+  background-image: url('/public/serviceImg/icons/arrow/arrow-left.svg');
+  width: 16px;
+  height: 16px;
+
+  opacity: 1;
+}
+
+.icon--arrow-left-deactivate {
+  background-image: url('/public/serviceImg/icons/arrow/arrow-left.svg');
+  width: 16px;
+  height: 16px;
+
+  opacity: 0.5;
+}
+
+.icon--arrow-right {
+  background-image: url('/public/serviceImg/icons/arrow/arrow-right.svg');
+  width: 16px;
+  height: 16px;
+
+  opacity: 1;
+}
+
+.icon--arrow-right-deactivate {
+  background-image: url('/public/serviceImg/icons/arrow/arrow-right.svg');
+  width: 16px;
+  height: 16px;
+
+  opacity: 0.5;
+}
+
+.icon--arrow-down {
+  background-image: url('/public/serviceImg/icons/arrow/arrow-down.svg');
+  width: 16px;
+  height: 16px;
+
+  opacity: 1;
+}
+
+.icon--arrow-up {
+  background-image: url('/public/serviceImg/icons/arrow/arrow-up.svg');
+  width: 16px;
+  height: 16px;
+
+  opacity: 1;
+}
+
+.icon--home {
+  background-image: url('/public/serviceImg/icons/tech/home.svg');
+  width: 16px;
+  height: 16px;
+
+  opacity: 1;
+}
+
+.icon--menu {
+  background-image: url('/public/serviceImg/icons/tech/menu.svg');
+  width: 16px;
+  height: 16px;
+
+  opacity: 1;
+}
+
+.icon--close {
+  background-image: url('/public/serviceImg/icons/tech/close.svg');
+  width: 16px;
+  height: 16px;
+
+  opacity: 1;
+}
+
+.icon--minus {
+  background-image: url('/public/serviceImg/icons/tech/minus.svg');
+  width: 16px;
+  height: 16px;
+
+  opacity: 1;
+}
+
+.icon--plus {
+  background-image: url('/public/serviceImg/icons/tech/plus.svg');
+  width: 16px;
+  height: 16px;
+
+  opacity: 1;
+}
+
+.icon--heart-empty {
+  background-image: url('/public/serviceImg/icons/heart/heart-empty.svg');
+  width: 16px;
+  height: 16px;
+
+  opacity: 1;
+}
+
+.icon--heart-empty:hover {
+  cursor: pointer;
+}
+
+.icon--heart-fill {
+  background-image: url('/public/serviceImg/icons/heart/heart-fill.svg');
+  width: 16px;
+  height: 16px;
+
+  opacity: 1;
+}
+
+.icon--heart-fill:hover {
+  cursor: pointer;
+}
+
+.icon:active .icon--arrow-left,
+.icon:active .icon--arrow-right,
+.icon:active .icon--arrow-up,
+.icon:active .icon--arrow-down,
+.icon:active .icon--heart-empty {
+  filter: brightness(0) invert(1);
+}

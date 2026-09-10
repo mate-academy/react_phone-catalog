@@ -1,1 +1,23 @@
-// not empty
+@use '/src/styles/fonts.scss' as *;
+@use '/src/styles/color.scss' as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app > .navbar,
+.app > .footer {
+  flex-shrink: 0;
+}
+
+.app > *:nth-child(2) {
+  flex: 1;
+}

@@ -1,0 +1,21 @@
+@use '/src/styles/mixins' as *;
+
+.nav-to-back {
+  width: 66px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 40px;
+  margin-bottom: 16px;
+
+  @include down(phone) {
+    margin-top: 24px;
+  }
+}
+
+.nav-to-back__text {
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+}

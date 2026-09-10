@@ -1,0 +1,31 @@
+@use '/src/styles/index' as *;
+
+.bar-navigation {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.bar-navigation__icon {
+  opacity: 0.5;
+}
+
+.bar-navigation__name-category {
+  position: relative;
+  top: 1px; /* додано ; */
+}
+
+.bar-navigation__name-category-selected {
+  display: inline-block;
+  text-decoration: none;
+  color: $primary-color;
+}
+
+.bar-navigation-name {
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+  justify-content: center;
+  gap: 8px;
+}

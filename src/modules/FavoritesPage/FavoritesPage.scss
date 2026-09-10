@@ -1,0 +1,28 @@
+@use '/src/styles/mixins' as *;
+
+.favorite-content {
+  margin: 0 48px;
+
+  @include down(desktop) {
+    margin: 0 32px;
+  }
+
+  @include down(tablet) {
+    margin: 0 24px;
+  }
+
+  @include down(phone) {
+    margin: 0 16px;
+  }
+}
+
+.favorite__list {
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: 4fr;
+  gap: 16px;
+}
+
+.favorite__product-card {
+  margin: 10px 0;
+}

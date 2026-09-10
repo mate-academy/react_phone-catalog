@@ -1,0 +1,19 @@
+@use 'sass:map';
+
+$breakpoints: (
+  phone: 639px,
+  narrow-tablet: 768px,
+  tablet: 1199px,
+  desktop: 1200px,
+  large: 1440px,
+);
+
+@mixin down($device) {
+  @media (max-width: map.get($breakpoints, $device)) {
+    @content;
+  }
+}
+
+@mixin transition($properties: all, $duration: 0.3s, $timing: ease) {
+  transition: $properties $duration $timing;
+}

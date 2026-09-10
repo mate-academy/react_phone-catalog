@@ -1,0 +1,259 @@
+@use '/src/styles/color.scss' as *;
+@use '/src/styles/index' as *;
+@use '/src/styles/mixins' as *;
+
+.card-page {
+  margin: 0 48px;
+
+  @include down(desktop) {
+    margin: 0 32px;
+  }
+
+  @include down(tablet) {
+    margin: 0 24px;
+  }
+
+  @include down(phone) {
+    margin: 0 16px;
+  }
+}
+
+.card-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.cart__content {
+  display: flex;
+  gap: 16px;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 56px;
+
+  @include down(tablet) {
+    flex-direction: column;
+  }
+}
+
+.cart__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cart__card {
+  width: 752px;
+  height: 128px;
+  padding: 24px;
+  gap: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+
+  border: 1px solid #e2e6e9;
+
+  @include down(tablet) {
+    width: 100%;
+    padding: 16px;
+  }
+
+  @include down(phone) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+}
+
+.cart__card--top {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+
+  @include down(phone) {
+    gap: 16px;
+  }
+}
+
+.cart__card--bottom {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: flex-end;
+
+  @include down(phone) {
+    justify-content: space-between;
+  }
+}
+
+.cart__card-image {
+  width: 80px;
+  height: 80px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart__card-image--photo {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+}
+
+.cart__card-quantity-button {
+  display: flex;
+  flex-direction: row;
+}
+
+.cart__card-price {
+  width: 80px;
+}
+
+.cart__card-price-price {
+  text-align: right;
+}
+
+.cart__card-name {
+  width: 100%;
+}
+
+.cart__card-quantity-text {
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart__amount {
+  width: 368px;
+  height: 206px;
+
+  border: 1px solid #e2e6e9;
+
+  @include down(tablet) {
+    width: 100%;
+    height: 190px;
+    margin-top: 24px;
+  }
+}
+
+.cart__amount-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.cart__line {
+  border: 1px solid #e2e6e9;
+  margin: 24px 0;
+  width: 320px;
+
+  @include down(tablet) {
+    width: 100%;
+  }
+}
+
+.cart__button {
+  width: 320px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white-color;
+
+  background: $primary-color;
+
+  @include down(tablet) {
+    width: 100%;
+  }
+}
+
+.cart__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 40px 0;
+
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.cart__empty-photo {
+  background-image: url('/img/cart-is-empty.png');
+  background-size: cover;
+
+  width: 440px;
+  height: 400px;
+}
+
+.cart__message-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.cart__message {
+  background-color: $white-color;
+  color: $primary-color;
+  padding: 32px;
+  margin: 32px;
+  border-radius: 8px;
+  box-shadow: 0 3px 13px 0 $primary-color;
+  text-align: center;
+  max-width: 700px;
+  min-width: 300px;
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 24px;
+  }
+
+  &-buttons {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 16px 16px 0;
+
+    @include down(phone) {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  &-button {
+    width: 150px;
+
+    @include down(phone) {
+      width: 100%;
+    }
+
+    &--confirm {
+      background-color: $primary-color;
+      color: $white-color;
+    }
+
+    &--cancel {
+      background-color: $white-color;
+      border: 1px solid $icons-color;
+    }
+  }
+}

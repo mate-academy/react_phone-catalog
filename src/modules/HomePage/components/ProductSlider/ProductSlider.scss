@@ -1,0 +1,45 @@
+@use '/src/styles/mixins' as *;
+
+.product-slider {
+  margin: 80px 0;
+  overflow: hidden;
+
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+
+  @include down(tablet) {
+    margin: 64px 0 80px;
+  }
+
+  @include down(phone) {
+    margin: 56px 0 64px;
+  }
+}
+
+.product-slider__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-slider__list {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  user-select: none;
+  cursor: grab;
+  will-change: transform;
+}
+
+.product-slider__list:active {
+  cursor: grabbing;
+}
+
+.product-slider__list.dragging {
+  transition: none;
+}
+
+.product-slider__list:not(.dragging) {
+  transition: transform 0.3s ease;
+}

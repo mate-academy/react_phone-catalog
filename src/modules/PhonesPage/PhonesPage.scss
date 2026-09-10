@@ -1,0 +1,160 @@
+@use '/src/styles/index' as *;
+@use '/src/styles/mixins' as *;
+
+.phones-page__title {
+  margin-top: 40px;
+
+  @include down(phone) {
+    margin-top: 24px;
+  }
+}
+
+.phones-page__content {
+  max-width: 1136px;
+  margin: auto;
+
+  @include down(tablet) {
+    margin: 0 24px;
+  }
+
+  @include down(phone) {
+    margin: 0 16px;
+  }
+}
+
+.phones-page__number-phones {
+  margin-top: 8px;
+}
+
+.product-list {
+  display: flex;
+  flex-direction: row;
+  margin-top: 40px;
+
+  > * {
+    flex: 1;
+    min-width: 0;
+  }
+
+  @include down(tablet) {
+    width: 100%;
+  }
+
+  @include down(phone) {
+    width: 100%;
+    margin-top: 32px;
+  }
+}
+
+.product-list__header {
+  display: flex;
+  gap: 16px;
+  z-index: 10;
+}
+
+.product-list__main {
+  display: grid;
+  margin-top: 24px;
+  margin-bottom: 40px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+
+  justify-content: center;
+  align-items: center;
+
+  @include down(desktop) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include down(tablet) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include down(narrow-tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include down(phone) {
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+    gap: 40px;
+  }
+}
+
+.select {
+  position: relative;
+}
+
+.select__content {
+  display: flex;
+}
+
+.select__header {
+  display: flex;
+  width: 176px;
+  height: 40px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border: 1px solid $icons-color;
+
+  @include transition(all, 0.5s);
+
+  @include down(phone) {
+    max-width: 176px;
+    width: 136px;
+  }
+}
+
+.select__header:hover {
+  border: 1px solid $secondary-color;
+}
+
+.select__header--active {
+  border: 1px solid $secondary-color;
+}
+
+.select__active-bar {
+  z-index: 10;
+  position: absolute;
+  padding: 8px 1px;
+  top: 44px;
+  border: 1px solid $elements-color;
+  background-color: $white-color;
+
+  left: 0;
+}
+
+.select__active-bar-option {
+  width: 174px;
+  height: 32px;
+
+  display: flex;
+  padding: 12px;
+  align-items: center;
+  color: $secondary-color;
+
+  @include transition(all, 0.3s);
+}
+
+.select__active-bar-option:hover {
+  background-color: $hover_bg-color;
+  color: $primary-color;
+}
+
+.select__icon {
+  transition: transform 0.3s ease;
+}
+
+.select__icon--rotate {
+  transform: rotate(180deg);
+}
+
+.button-next-prev {
+  margin-top: 16px;
+  margin-bottom: 80px;
+  gap: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

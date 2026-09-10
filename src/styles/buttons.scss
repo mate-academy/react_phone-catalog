@@ -1,0 +1,17 @@
+@use '/src/styles/index' as *;
+
+.button {
+  width: 40px;
+  height: 40px;
+}
+
+button {
+  @include transition(all, 0.5s);
+}
+
+button:hover {
+  cursor: pointer;
+  box-shadow: 0 3px 13px 0 #17203166;
+
+  transform: scale(1.03);
+}
