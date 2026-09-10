@@ -1,0 +1,75 @@
+@use '@/styles/functions' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+@use 'sass:map';
+
+.productGallery {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(16);
+
+  @include respond-to('screen-m') {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+.activeImgContainer {
+  aspect-ratio: 1 / 1;
+  position: relative;
+
+  @include respond-to('screen-m') {
+    flex: 10;
+  }
+}
+
+.imgsList {
+  display: flex;
+  gap: to-rem(8);
+
+  @include respond-to('screen-m') {
+    flex: 1;
+    flex-direction: column;
+    order: -1;
+  }
+
+  @include respond-to('screen-l') {
+    flex: 0 0 to-rem(80);
+    gap: to-rem(16);
+  }
+}
+
+.activeImg {
+  position: absolute;
+  opacity: 0;
+  z-index: map.get($z-indexes, 'slide');
+  transition: opacity $animation-duration;
+
+  &.isActive {
+    z-index: map.get($z-indexes, 'slide-active');
+    opacity: 1;
+  }
+}
+
+.imgButton {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: none;
+  padding: 0;
+  border: 1px solid $color-elements;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $color-icons;
+  }
+
+  &.isActive {
+    border-color: $color-primary;
+  }
+}

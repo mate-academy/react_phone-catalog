@@ -1,0 +1,87 @@
+@use '@/styles/functions' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(32);
+
+  @include respond-to('screen-l') {
+    flex-direction: row;
+  }
+}
+
+.list {
+  display: flex;
+  gap: to-rem(16);
+  flex-direction: column;
+
+  @include respond-to('screen-l') {
+    flex-grow: 1;
+  }
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(16);
+  padding: to-rem(24);
+  border: 1px solid $color-elements;
+
+  @include respond-to('screen-l') {
+    width: to-rem(368);
+    align-self: flex-start;
+  }
+}
+
+.priceDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.totalPrice {
+  @include h2-base;
+  @include h2-desktop;
+}
+
+.itemsCount {
+  @include body-text;
+
+  color: $color-secondary;
+}
+
+.emptyMessageContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: to-rem(40);
+}
+
+.emptyMessage {
+  @include h2;
+}
+
+.emptyMessageImg {
+  max-width: to-rem(300);
+  width: 100%;
+}
+
+.checkoutModalContent {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(16);
+}
+
+.checkoutModalMessage {
+  @include h4;
+
+  white-space: pre-line;
+  text-align: center;
+}
+
+.checkoutModalButtons {
+  display: flex;
+  gap: to-rem(16)
+}

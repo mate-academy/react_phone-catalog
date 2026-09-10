@@ -1,0 +1,85 @@
+@use '@/styles/variables' as *;
+@use '@/styles/functions' as *;
+@use '@/styles/mixins' as *;
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(56);
+  padding: to-rem(24) 0 to-rem(64);
+
+  @include respond-to('screen-m') {
+    padding-top: to-rem(32);
+    gap: to-rem(64);
+  }
+
+  @include respond-to('screen-l') {
+    max-width: $page-max-width-screen-l;
+    margin: 0 auto;
+    padding: to-rem(56) 0 to-rem(80);
+    gap: to-rem(80);
+  }
+}
+
+.heroSection {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(24);
+
+  @include respond-to('screen-m') {
+    padding: 0 $page-padding-screen-m;
+    gap: to-rem(32);
+  }
+
+  @include respond-to('screen-l') {
+    gap: to-rem(56);
+    padding: 0;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(56);
+  padding: 0 $page-padding-screen-s;
+
+  @include respond-to('screen-m') {
+    padding: 0 $page-padding-screen-m;
+    gap: to-rem(64);
+  }
+
+  @include respond-to('screen-l') {
+    gap: to-rem(80);
+    padding: 0;
+  }
+}
+
+.titleWrapper {
+  padding: 0 $page-padding-screen-s;
+
+  @include respond-to('screen-m') {
+    padding: 0;
+  }
+}
+
+.title {
+  @include h1;
+
+  white-space: pre-line;
+
+  @include respond-to('screen-l') {
+    white-space: normal;
+  }
+}
+
+.hiddenTitle {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  padding: 0;
+  margin: -1px;
+  border: 0;
+}

@@ -1,0 +1,20 @@
+@use '@/styles/functions' as *;
+@use '@/styles/mixins' as *;
+@use '@/styles/variables' as *;
+
+.productPrice {
+  @include h3-base;
+  @include h3-desktop;
+
+  display: flex;
+  align-items: center;
+  gap: to-rem(8);
+}
+
+.fullPrice {
+  position: relative;
+  color: $color-secondary;
+  font-weight: 600;
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}

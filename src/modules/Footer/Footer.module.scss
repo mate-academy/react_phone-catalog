@@ -1,0 +1,94 @@
+@use '@/styles/functions' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.footer {
+  padding: to-rem(32) $page-padding-screen-s;
+  box-shadow: 0 -1px 0 0 $color-elements;
+
+  @include respond-to('screen-m') {
+    padding-inline: to-rem(32);
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(32);
+
+  @include respond-to('screen-m') {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: to-rem(85);
+  }
+
+  @include respond-to('screen-l') {
+    max-width: $page-max-width-screen-l;
+    margin: 0 auto;
+  }
+}
+
+.logo {
+  flex-shrink: 0;
+  width: to-rem(89);
+  height: to-rem(32);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+
+  @include respond-to('screen-m') {
+    width: to-rem(378);
+  }
+}
+
+.navList {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(16);
+  line-height: normal;
+
+  @include respond-to('screen-m') {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+  }
+}
+
+.navLink {
+  @include uppercase;
+
+  width: fit-content;
+  display: block;
+  color: $color-secondary;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.toTopButton {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: to-rem(16);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  align-self: center;
+  cursor: pointer;
+
+  &:hover * {
+    color: $color-primary;
+    border-color: $color-primary;
+  }
+}
+
+.toTopButtonName {
+  @include small-text;
+
+  color: $color-secondary;
+}

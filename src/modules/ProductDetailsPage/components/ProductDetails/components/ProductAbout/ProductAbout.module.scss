@@ -1,0 +1,43 @@
+@use '@/styles/functions' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.productAbout {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(32);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(16);
+}
+
+.title {
+  @include h3;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(16);
+}
+
+.textBlockTitle {
+  @include h4;
+
+  text-wrap: wrap;
+}
+
+.textBlockContent {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(32);
+}
+
+.textBlockText {
+  @include body-text;
+
+  color: $color-secondary;
+}

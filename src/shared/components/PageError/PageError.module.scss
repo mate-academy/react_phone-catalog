@@ -1,0 +1,17 @@
+@use '@/styles/mixins' as *;
+@use '@/styles/functions' as *;
+
+.pageError {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: to-rem(16);
+}
+
+.errorMessage {
+  @include h2;
+}
+
+.reloadButton {
+  max-width: to-rem(400);
+}

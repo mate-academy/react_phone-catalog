@@ -1,0 +1,30 @@
+@use '@/styles/variables' as *;
+@use '@/styles/functions' as *;
+@use '@/styles/mixins' as *;
+
+.capacityButton {
+  padding: 0 to-rem(8);
+  height: to-rem(32);
+  border: 1px solid $color-icons;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    border-color: $color-secondary;
+  }
+
+  &.active {
+    background-color: $color-primary;
+    border-color: $color-primary;
+  }
+}
+
+.value {
+  @include body-text;
+
+  line-height: 1;
+
+  .capacityButton.active & {
+    color: $color-white;
+  }
+}

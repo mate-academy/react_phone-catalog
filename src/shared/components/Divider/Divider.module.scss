@@ -1,0 +1,6 @@
+@use '@/styles/variables' as *;
+
+.divider {
+  height: 1px;
+  background-color: $color-elements;
+}

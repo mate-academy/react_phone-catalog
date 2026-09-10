@@ -1,0 +1,119 @@
+@use '@/styles/functions' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.baseButton {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+
+  &.hasBorder {
+    border: 1px solid $color-icons;
+  }
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &.pagination {
+    display: block;
+  }
+
+  &.pagination,
+  &.arrow,
+  &.minus,
+  &.plus {
+    width: to-rem(32);
+    height: to-rem(32);
+  }
+
+  &.favorite {
+    &.s {
+      width: to-rem(40);
+      height: to-rem(40);
+    }
+
+    &.m {
+      width: to-rem(48);
+      height: to-rem(48);
+    }
+  }
+
+  &.pagination.selected {
+    background-color: $color-primary;
+    border-color: $color-primary;
+  }
+
+  &.favorite.selected {
+    border-color: $color-elements;
+  }
+
+  &.arrow:disabled {
+    border-color: $color-elements;
+  }
+
+  &.minus:disabled {
+    border-color: $color-elements;
+  }
+}
+
+.number {
+  @include body-text;
+
+  line-height: 1;
+
+  .baseButton.pagination.selected & {
+    color: $color-white;
+  }
+}
+
+.icon {
+  display: block;
+  width: to-rem(16);
+  height: to-rem(16);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  &.arrow {
+    background-image: url('/img/icons/arrow-up.svg');
+  }
+
+  .baseButton.arrow:disabled & {
+    background-image: url('/img/icons/arrow-up-light.svg');
+  }
+
+  &.favorite {
+    background-image: url('/img/icons/favourites.svg');
+  }
+
+  .baseButton.favorite.selected & {
+    background-image: url('/img/icons/favourites-filled.svg');
+  }
+
+  &.close {
+    background-image: url('/img/icons/close-light.svg');
+  }
+
+  .baseButton.close:hover & {
+    background-image: url('/img/icons/close.svg');
+  }
+
+  &.minus {
+    background-image: url('/img/icons/minus.svg');
+  }
+
+  .baseButton.minus:disabled & {
+    background-image: url('/img/icons/minus-light.svg');
+  }
+
+  &.plus {
+    background-image: url('/img/icons/plus.svg');
+  }
+}

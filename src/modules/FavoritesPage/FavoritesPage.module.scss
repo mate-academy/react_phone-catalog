@@ -1,0 +1,12 @@
+@use '@/styles/mixins' as *;
+
+.emptyMessageContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: to-rem(40);
+}
+
+.emptyMessage {
+  @include h2;
+}

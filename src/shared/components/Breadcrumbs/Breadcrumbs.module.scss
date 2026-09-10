@@ -1,0 +1,42 @@
+@use '@/styles/functions' as *;
+@use '@/styles/mixins' as *;
+@use '@/styles/variables' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: to-rem(8);
+}
+
+.homeLink {
+  width: to-rem(16);
+  height: to-rem(16);
+  background: url('/img/icons/home.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.separator {
+  width: to-rem(16);
+  height: to-rem(16);
+  background: url('/img/icons/arrow-up-light.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: rotate(90deg);
+}
+
+.crumb {
+  @include small-text;
+
+  line-height: 1;
+
+  &:last-child {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &.active {
+    color: $color-secondary;
+  }
+}

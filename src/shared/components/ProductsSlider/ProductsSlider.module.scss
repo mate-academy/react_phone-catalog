@@ -1,0 +1,93 @@
+@use '@/styles/functions' as *;
+@use '@/styles/mixins' as *;
+@use '@/styles/variables' as *;
+
+.productsSlider {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(24);
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sliderTitle {
+  @include h2;
+
+  white-space: pre-line;
+
+  @include respond-to('screen-m') {
+    white-space: normal;
+  }
+}
+
+.controls {
+  display: flex;
+  gap: to-rem(16);
+}
+
+.content {
+  display: grid;
+  grid-auto-columns: to-rem(60);
+  grid-auto-flow: column;
+  gap: to-rem(16);
+  padding: 0 $page-padding-screen-s;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  margin: 0 (-$page-padding-screen-s);
+
+  @include respond-to('screen-m') {
+    grid-auto-columns: to-rem(34.7);
+    padding: 0 $page-padding-screen-m;
+    margin: 0 (-$page-padding-screen-m);
+  }
+
+  @include respond-to('screen-l') {
+    grid-auto-columns: to-rem(32);
+    padding: 0;
+    margin: 0;
+  }
+
+  & > * {
+    grid-column: span 3;
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+    overscroll-behavior: none;
+
+    @include respond-to('screen-m') {
+      grid-column: span 5;
+    }
+
+    @include respond-to('screen-l') {
+      grid-column: span 6;
+    }
+  }
+
+  & > :first-child {
+    scroll-margin-left: $page-padding-screen-s;
+
+    @include respond-to('screen-m') {
+      scroll-margin-left: $page-padding-screen-m;
+    }
+
+    @include respond-to('screen-l') {
+      scroll-margin-left: 0;
+    }
+  }
+
+  & > :last-child {
+    scroll-margin-right: $page-padding-screen-s;
+
+    @include respond-to('screen-m') {
+      scroll-margin-right: $page-padding-screen-m;
+    }
+
+    @include respond-to('screen-l') {
+      scroll-margin-right: 0;
+    }
+  }
+}

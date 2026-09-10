@@ -1,0 +1,8 @@
+@use '@/styles/mixins' as *;
+@use '@/styles/variables' as *;
+
+.emptyMessage {
+  @include h4;
+
+  color: $color-secondary;
+}

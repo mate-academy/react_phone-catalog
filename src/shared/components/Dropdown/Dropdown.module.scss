@@ -1,0 +1,78 @@
+@use '@/styles/functions' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(4);
+  position: relative;
+}
+
+.descr {
+  @include small-text;
+
+  color: $color-secondary;
+}
+
+.button {
+  display: flex;
+  background: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: to-rem(10) to-rem(12);
+  border: 1px solid $color-icons;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $color-secondary;
+  }
+
+  &.active {
+    border-color: $color-primary;
+  }
+}
+
+.buttonText {
+  @include buttons;
+
+  transform: translateY(1px);
+}
+
+.buttonIcon {
+  width: to-rem(16);
+  height: to-rem(16);
+  display: block;
+  background: url('/img/icons/arrow-up-light.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(180deg);
+
+  &.active {
+    transform: rotate(0);
+  }
+}
+
+.list {
+  position: absolute;
+  width: 100%;
+  bottom: -4px;
+  transform: translateY(100%);
+  background: $color-white;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  padding: to-rem(8) 0;
+  border: 1px solid $color-elements;
+}
+
+.listItem {
+  @include body-text;
+
+  color: $color-secondary;
+  padding: to-rem(6) to-rem(12);
+  cursor: pointer;
+
+  &:hover, &.selected {
+    color: $color-primary;
+    background-color: $color-hover;
+  }
+}

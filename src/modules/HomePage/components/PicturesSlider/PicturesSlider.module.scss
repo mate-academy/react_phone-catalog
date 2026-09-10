@@ -1,0 +1,255 @@
+@use 'sass:map';
+@use '@/styles/functions' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.picturesSlider {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(8);
+}
+
+.container {
+  display: flex;
+  gap: to-rem(20);
+
+  @include respond-to('screen-l') {
+    gap: to-rem(16);
+  }
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  touch-action: pan-y pinch-zoom;
+
+  @include respond-to('screen-m') {
+    aspect-ratio: 490 / 189;
+  }
+}
+
+.slide {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: map.get($z-indexes, 'slide');
+  opacity: 0;
+  transition: opacity 0ms $animation-duration-slider;
+  background-color: #000;
+  container-type: inline-size;
+
+  &.active {
+    z-index: map.get($z-indexes, 'slide-active');
+    opacity: 1;
+    transition: opacity $animation-duration-slider;
+  }
+}
+
+.desktopInfoContainer {
+  width: 100%;
+  display: none;
+  padding: 0.21em 0 0.21em 0.21em;
+  container-type: inline-size;
+  font-size: 5cqi;
+
+  @include respond-to('screen-m') {
+    display: flex;
+  }
+}
+
+.desktopInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 0.53em;
+  padding: 0.75em;
+  background-color: #222;
+  font-size: 14cqi;
+}
+
+.infoText {
+  color: #aeaeae;
+  font-family: Mont, sans-serif;
+  font-size: 0.28em;
+  font-weight: 600;
+  line-height: 2.4em;
+  margin-top: 4px;
+}
+
+.infoButton {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 0.34em 0.78em;
+  background: transparent;
+  border-radius: 1000px;
+  display: flex;
+  border: 0.03em solid #444;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #444;
+  }
+}
+
+.infoButtonText {
+  color: #fff;
+  font-family: Mont, sans-serif;
+  font-size: 0.25em;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transform: translateY(1px);
+}
+
+.imgContainer {
+  position: relative;
+  width: 100%;
+  flex-shrink: 0;
+  container-type: inline-size;
+
+  @include respond-to('screen-m') {
+    width: 54%;
+  }
+}
+
+.pictureContainer {
+  height: 100%;
+}
+
+.slideImg {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.slideText {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  top: 1.6em;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 5cqi;
+}
+
+.title {
+  color: #fff;
+  font-family: Mont, sans-serif;
+  margin-top: 1.5em;
+  font-weight: 600;
+  font-size: 1.69em;
+  line-height: 1.15em;
+
+  @include respond-to('screen-m') {
+    font-size: 1.18em;
+    margin-top: 0;
+  }
+}
+
+.badge {
+  color: transparent;
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 1.38em;
+  margin-top: 0.36em;
+  line-height: 1em;
+  background: linear-gradient(90deg, #4608ff, #d744ff);
+  background-clip: text;
+  white-space: pre-line;
+
+  .desktopInfo & {
+    font-size: 0.75em;
+  }
+
+  .slideText & {
+    @include respond-to('screen-m') {
+      display: none;
+    }
+  }
+
+  @include respond-to('screen-m') {
+    margin-top: 0;
+  }
+}
+
+.descr {
+  color: #9b9b9b;
+  font-family: Mont, sans-serif;
+  font-weight: 400;
+  margin-top: 0.09em;
+  font-size: 0.69em;
+  line-height: 1.9em;
+
+  @include respond-to('screen-m') {
+    font-size: 0.49em;
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: to-rem(14);
+  padding-block: to-rem(10);
+}
+
+.control {
+  position: relative;
+  width: to-rem(14);
+  height: to-rem(4);
+  background-color: $color-elements;
+  transition: background-color $animation-duration-slider;
+  cursor: pointer;
+
+  &:not(.active):hover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    display: block;
+    background-color: $color-icons;
+  }
+
+  &.active {
+    background-color: $color-primary;
+  }
+}
+
+.sliderButton {
+  display: none;
+  width: to-rem(32);
+  padding: to-rem(8);
+  border: 1px solid $color-icons;
+  background: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-hover;
+  }
+
+  @include respond-to('screen-m') {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.sliderButtonIcon {
+  display: block;
+  width: to-rem(16);
+  height: to-rem(16);
+  background: url('/img/icons/arrow-up.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  .sliderButton.left & {
+    transform: rotate(270deg);
+  }
+
+  .sliderButton.right & {
+    transform: rotate(90deg);
+  }
+}

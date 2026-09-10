@@ -1,0 +1,35 @@
+@use '@/styles/variables' as *;
+@use '@/styles/functions' as *;
+@use '@/styles/mixins' as *;
+@use 'sass:map';
+
+.burgerMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  inset: 0;
+  z-index: map.get($z-indexes, 'burger-menu');
+  padding-top: $header-height-screen-s + to-rem(24);
+  background-color: $color-white;
+  visibility: hidden;
+  pointer-events: none;
+
+  &.isOpen {
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  @include respond-to('screen-m') {
+    display: none;
+  }
+}
+
+.buttons {
+  display: flex;
+  box-shadow: 0 -1px 0 0 $color-elements;
+}
+
+.link {
+  flex-grow: 1;
+}

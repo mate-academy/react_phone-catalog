@@ -1,0 +1,24 @@
+@use '@/styles/functions' as *;
+@use '@/styles/mixins' as *;
+
+.productDetailsHeader {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(16);
+}
+
+.title {
+  @include h2;
+
+  text-wrap: wrap;
+}
+
+.titleSkeleton {
+  width: 85%;
+  height: to-rem(62);
+
+  @include respond-to('screen-m') {
+    width: to-rem(500);
+    height: to-rem(41);
+  }
+}

@@ -1,0 +1,60 @@
+@use '@/styles/functions' as *;
+@use '@/styles/mixins' as *;
+@use '@/styles/variables' as *;
+
+.controls {
+  display: flex;
+  gap: to-rem(16);
+}
+
+.dropdown {
+  width: 0;
+  flex-grow: 1;
+
+  @include respond-to('screen-m') {
+    flex-grow: 0;
+  }
+}
+
+.sortBy {
+  @include respond-to('screen-m') {
+    width: to-rem(187);
+  }
+}
+
+.itemsPerPage {
+  @include respond-to('screen-m') {
+    width: to-rem(136);
+  }
+}
+
+.productsList {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(24);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(24);
+
+  @include respond-to('screen-m') {
+    gap: to-rem(40);
+  }
+}
+
+.list {
+  @include products-list-grid;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: to-rem(16);
+}
+
+.pages {
+  display: flex;
+  gap: to-rem(8);
+}

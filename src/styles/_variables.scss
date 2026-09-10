@@ -1,0 +1,54 @@
+@use '@/styles/functions' as *;
+
+$color-primary: #313237;
+$color-secondary: #89939a;
+$color-icons: #b4bdc3;
+$color-elements: #e2e6e9;
+$color-hover: #fafbfc;
+$color-white: #fff;
+$color-green: #27ae60;
+$color-red: #eb5757;
+$color-skeleton-base: #e8e8e8;
+$page-max-width-screen-l: to-rem(1136);
+$page-padding-screen-s: to-rem(16);
+$page-padding-screen-m: to-rem(24);
+$header-height-screen-s: to-rem(48);
+$header-height-screen-l: to-rem(64);
+$animation-duration: 200ms;
+$animation-duration-slider: 500ms;
+$animation-duration-backdrop: 200ms;
+$animation-duration-modal: 300ms;
+$screen-breakpoints: (
+  'screen-m': to-rem(640),
+  'screen-l': to-rem(1200),
+);
+$z-indexes: (
+  'modal': 1000,
+  'backdrop': 999,
+  'header': 100,
+  'burger-menu': 99,
+  'slide': 1,
+  'slide-active': 2,
+);
+$product-colors: (
+  'black': #000,
+  'spacegray': #535150,
+  'midnightgreen': #4e5851,
+  'silver': #e2e4e1,
+  'gold': #fad7bd,
+  'rosegold': #b76e79,
+  'yellow': #f3d060,
+  'white': #f9f6ef,
+  'purple': #d1cdda,
+  'red': #ba0c2e,
+  'coral': #ee7762,
+  'midnight': #171e27,
+  'spaceblack': #323233,
+  'blue': #215e7c,
+  'pink': #fad2d4,
+  'starlight': #f9f4f0,
+  'skyblue': #87a8c6,
+  'graphite': #5c5b57,
+  'sierrablue': #a4b2be,
+  'green': #aee1cd,
+);

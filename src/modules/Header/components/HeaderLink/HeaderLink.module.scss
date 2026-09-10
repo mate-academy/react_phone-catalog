@@ -1,0 +1,73 @@
+@use '@/styles/functions' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.headerLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -1px 0 0 0 $color-elements;
+  padding: to-rem(24);
+
+  &.isActive,
+  &:hover {
+    background-color: $color-hover;
+  }
+
+  &.isActive::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: to-rem(2);
+    background-color: $color-primary;
+
+    @include respond-to('screen-m') {
+      height: to-rem(3);
+    }
+  }
+
+  @include respond-to('screen-m') {
+    padding: to-rem(16);
+  }
+
+  @include respond-to('screen-l') {
+    padding: to-rem(24);
+  }
+}
+
+.icon {
+  position: relative;
+  display: block;
+  width: to-rem(16);
+  height: to-rem(16);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.amount {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-100%);
+  width: to-rem(14);
+  height: to-rem(14);
+  background-color: $color-red;
+  border: 1px solid $color-white;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.amountValue {
+  color: $color-white;
+  font-family: Mont, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1;
+  transform: translateY(0.5px);
+}

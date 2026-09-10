@@ -1,0 +1,31 @@
+@use '@/styles/functions' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.pageLayout {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(24);
+  padding: to-rem(24) $page-padding-screen-s to-rem(64);
+
+  @include respond-to('screen-m') {
+    gap: to-rem(40);
+    padding: to-rem(24) $page-padding-screen-m to-rem(64);
+  }
+
+  @include respond-to('screen-l') {
+    max-width: $page-max-width-screen-l;
+    padding: to-rem(24) 0 to-rem(80);
+    margin: 0 auto;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(32);
+
+  @include respond-to('screen-m') {
+    gap: to-rem(40);
+  }
+}

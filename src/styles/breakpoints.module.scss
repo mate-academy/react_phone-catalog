@@ -1,0 +1,6 @@
+@use 'sass:map';
+@use '@/styles/variables' as *;
+
+:export {
+  screenM: map.get($screen-breakpoints, 'screen-m');
+}

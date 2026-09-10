@@ -1,0 +1,61 @@
+@use '@/styles/functions' as *;
+@use '@/styles/mixins' as *;
+
+.productsListSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(24);
+}
+
+.controls {
+  display: flex;
+  gap: to-rem(16);
+}
+
+.dropdown {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(4);
+}
+
+.sortBy {
+  width: 100%;
+
+  @include respond-to('screen-m') {
+    width: to-rem(187);
+  }
+}
+
+.itemsPerPage {
+  width: 100%;
+
+  @include respond-to('screen-m') {
+    width: to-rem(136);
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(24);
+
+  @include respond-to('screen-l') {
+    gap: to-rem(40);
+  }
+}
+
+.list {
+  @include products-list-grid;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: to-rem(16);
+}
+
+.pages {
+  display: flex;
+  gap: to-rem(8);
+}

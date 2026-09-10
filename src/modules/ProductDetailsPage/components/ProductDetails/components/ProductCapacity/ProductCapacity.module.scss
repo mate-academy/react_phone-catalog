@@ -1,0 +1,6 @@
+@use '@/styles/functions' as *;
+
+.productCapacity {
+  display: flex;
+  gap: to-rem(8);
+}

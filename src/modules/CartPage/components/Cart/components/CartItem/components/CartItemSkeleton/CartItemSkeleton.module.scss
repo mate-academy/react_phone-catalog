@@ -1,0 +1,85 @@
+@use '@/styles/variables' as *;
+@use '@/styles/functions' as *;
+@use '@/styles/mixins' as *;
+
+.cartItemSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(16);
+  padding: to-rem(16);
+  border: 1px solid $color-skeleton-base;
+
+  @include respond-to('screen-m') {
+    flex-direction: row;
+    gap: to-rem(24);
+    padding: to-rem(24);
+  }
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  gap: to-rem(16);
+
+  @include respond-to('screen-m') {
+    gap: to-rem(24);
+    flex-grow: 1;
+  }
+}
+
+.IconButton {
+  flex-shrink: 0;
+}
+
+.img {
+  width: to-rem(80);
+  height: to-rem(80);
+  padding: to-rem(7);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(4);
+  flex-grow: 1;
+
+  @include respond-to('screen-m') {
+    & :not(:first-child) {
+      display: none;
+    }
+
+    & * {
+      max-width: to-rem(260);
+    }
+  }
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include respond-to('screen-m') {
+    gap: to-rem(24);
+  }
+}
+
+.price {
+  @include respond-to('screen-m') {
+    min-width: to-rem(80);
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.amountBlock {
+  display: flex;
+}
+
+.number {
+  width: to-rem(32);
+  height: to-rem(32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

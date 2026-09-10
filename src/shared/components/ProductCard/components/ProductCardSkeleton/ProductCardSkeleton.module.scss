@@ -1,0 +1,43 @@
+@use '@/styles/functions' as *;
+@use '@/styles/variables' as *;
+
+.productCardSkeleton {
+  padding: to-rem(32);
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(8);
+  border: 1px solid $color-skeleton-base;
+}
+
+.img {
+  width: 100%;
+  aspect-ratio: 208 / 196;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(4);
+  padding-top: to-rem(16);
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(8);
+  padding-block: to-rem(8);
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons {
+  display: flex;
+  gap: to-rem(8);
+}
+
+.favoriteButton {
+  flex-shrink: 0;
+}

@@ -1,0 +1,32 @@
+@use '@/styles/functions' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.productSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(8);
+  padding-block: to-rem(8);
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+  gap: 20%;
+
+  &.s {
+    @include small-text;
+  }
+
+  &.m {
+    @include body-text;
+  }
+}
+
+.specTitle {
+  color: $color-secondary;
+}
+
+.specValue {
+  text-align: right;
+}

@@ -1,0 +1,26 @@
+@use '@/styles/functions' as *;
+@use '@/styles/mixins' as *;
+@use '@/styles/variables' as *;
+
+.categoryCard {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(24);
+}
+
+.descr {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(4);
+}
+
+.title {
+  @include h4-base;
+  @include h4-desktop;
+}
+
+.modelsCount {
+  @include body-text;
+
+  color: $color-secondary;
+}

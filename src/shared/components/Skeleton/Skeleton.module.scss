@@ -1,0 +1,18 @@
+@use '@/styles/variables' as *;
+
+.skeleton {
+  background: linear-gradient(115deg, $color-skeleton-base 25%, #fbfbfb 50%, $color-skeleton-base 75%);
+  background-size: 200% 100%;
+  animation: skeleton-animation 1.5s linear infinite;
+  background-attachment: fixed;
+}
+
+@keyframes skeleton-animation {
+  0% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: -100% 0;
+  }
+}

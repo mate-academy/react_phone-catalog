@@ -1,0 +1,63 @@
+@use '@/styles/functions' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+@use 'sass:map';
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: map.get($z-indexes, 'backdrop');
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity $animation-duration-backdrop,
+    visibility $animation-duration-backdrop;
+
+  &.isOpen {
+    visibility: visible;
+    pointer-events: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 1;
+  }
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0 $page-padding-screen-s;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: map.get($z-indexes, 'modal');
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity $animation-duration-modal,
+    visibility $animation-duration-modal;
+
+  &.isOpen {
+    visibility: visible;
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  @include respond-to('screen-m') {
+    padding: to-rem(24);
+  }
+}
+
+.modalContent {
+  width: to-rem(350);
+  background-color: $color-white;
+  padding: to-rem(16);
+  border: 1px solid $color-elements;
+
+  @include respond-to('screen-m') {
+    width: to-rem(400);
+  }
+}

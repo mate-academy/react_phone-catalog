@@ -1,0 +1,45 @@
+@use '@/styles/functions' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.button {
+  width: 100%;
+  margin: 0;
+  background: $color-primary;
+  cursor: pointer;
+  border: 1px solid $color-primary;
+  transition: box-shadow $animation-duration;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+
+  &.s {
+    padding: to-rem(9.5);
+  }
+
+  &.m {
+    padding: to-rem(13.5);
+  }
+
+  &.isSelected {
+    background-color: $color-white;
+    border-color: $color-elements;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
+
+.text {
+  @include buttons;
+
+  color: $color-white;
+  line-height: 1;
+  white-space: nowrap;
+
+  .button.isSelected & {
+    color: $color-green;
+  }
+}

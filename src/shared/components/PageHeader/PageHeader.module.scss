@@ -1,0 +1,19 @@
+@use '@/styles/functions' as *;
+@use '@/styles/mixins' as *;
+@use '@/styles/variables' as *;
+
+.pageHeader {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(8);
+}
+
+.title {
+  @include h1;
+}
+
+.modelsCount {
+  @include body-text;
+
+  color: $color-secondary;
+}

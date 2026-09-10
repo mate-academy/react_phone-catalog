@@ -1,0 +1,24 @@
+@use '@/styles/functions' as *;
+@use '@/styles/mixins' as *;
+@use '@/styles/variables' as *;
+
+.shopByCategory {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(24);
+}
+
+.title {
+  @include h2;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(32);
+
+  @include respond-to('screen-m') {
+    flex-direction: row;
+    gap: to-rem(16);
+  }
+}

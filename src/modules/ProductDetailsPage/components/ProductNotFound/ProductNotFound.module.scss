@@ -1,0 +1,26 @@
+@use '@/styles/mixins' as *;
+@use '@/styles/functions' as *;
+@use '@/styles/variables' as *;
+
+.productNotFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: to-rem(16);
+}
+
+.message {
+  @include h1;
+
+  text-align: center;
+}
+
+.img {
+  width: 100%;
+  max-width: to-rem(350);
+  object-fit: contain;
+
+  @include respond-to('screen-m') {
+    max-width: to-rem(500);
+  }
+}

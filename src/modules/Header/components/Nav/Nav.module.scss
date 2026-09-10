@@ -1,0 +1,65 @@
+@use '@/styles/variables' as *;
+@use '@/styles/functions' as *;
+@use '@/styles/mixins' as *;
+
+.nav {
+  display: flex;
+  justify-content: center;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: to-rem(16);
+
+  &.row {
+    flex-direction: row;
+    align-items: stretch;
+    gap: to-rem(32);
+
+    @include respond-to('screen-l') {
+      gap: to-rem(64);
+    }
+  }
+}
+
+.navItem {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  line-height: normal;
+}
+
+.navLink {
+  @include uppercase;
+
+  display: flex;
+  align-items: center;
+  padding-block: to-rem(8);
+  position: relative;
+  color: $color-secondary;
+
+  &.isActive,
+  &:hover {
+    color: $color-primary;
+  }
+
+  &.isActive::after,
+  &:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: to-rem(2);
+    background-color: $color-primary;
+  }
+
+  .navList.row & {
+    &.isActive::after,
+    &:hover::after {
+      height: to-rem(3);
+    }
+  }
+}

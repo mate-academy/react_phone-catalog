@@ -1,0 +1,140 @@
+@use 'sass:map';
+@use '@/styles/variables' as *;
+@use '@/styles/functions' as *;
+
+@mixin respond-to($breakpoint) {
+  @media (min-width: map.get($screen-breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin products-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(to-rem(229), 1fr));
+  gap: to-rem(40) to-rem(16);
+}
+
+@mixin h1 {
+  color: $color-primary;
+  font-family: Mont, sans-serif;
+  font-size: to-rem(32);
+  font-weight: 700;
+  line-height: to-rem(41);
+  letter-spacing: -0.01em;
+
+  @include respond-to('screen-m') {
+    font-size: to-rem(48);
+    line-height: to-rem(56);
+  }
+}
+
+@mixin h2-base {
+  color: $color-primary;
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+}
+
+@mixin h2-mobile {
+  font-size: to-rem(22);
+  line-height: to-rem(31);
+}
+
+@mixin h2-desktop {
+  font-size: to-rem(32);
+  line-height: to-rem(41);
+  letter-spacing: -0.01em;
+}
+
+@mixin h2 {
+  @include h2-base;
+  @include h2-mobile;
+
+  @include respond-to('screen-m') {
+    @include h2-desktop;
+  }
+}
+
+@mixin h3-base {
+  color: $color-primary;
+  font-family: Mont, sans-serif;
+}
+
+@mixin h3-mobile {
+  font-size: to-rem(20);
+  font-weight: 600;
+  line-height: to-rem(26);
+}
+
+@mixin h3-desktop {
+  font-size: to-rem(22);
+  font-weight: 700;
+  line-height: to-rem(31);
+}
+
+@mixin h3 {
+  @include h3-base;
+  @include h3-mobile;
+
+  @include respond-to('screen-m') {
+    @include h3-desktop;
+  }
+}
+
+@mixin h4-base {
+  color: $color-primary;
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+}
+
+@mixin h4-mobile {
+  font-size: to-rem(16);
+  line-height: to-rem(20);
+}
+
+@mixin h4-desktop {
+  font-size: to-rem(20);
+  line-height: to-rem(26);
+}
+
+@mixin h4 {
+  @include h4-base;
+  @include h4-mobile;
+
+  @include respond-to('screen-m') {
+    @include h4-desktop;
+  }
+}
+
+@mixin uppercase {
+  color: $color-primary;
+  font-family: Mont, sans-serif;
+  font-size: to-rem(12);
+  font-weight: 700;
+  line-height: to-rem(11);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin buttons {
+  color: $color-primary;
+  font-family: Mont, sans-serif;
+  font-size: to-rem(14);
+  font-weight: 600;
+  line-height: to-rem(21);
+}
+
+@mixin body-text {
+  color: $color-primary;
+  font-family: Mont, sans-serif;
+  font-size: to-rem(14);
+  font-weight: 400;
+  line-height: to-rem(21);
+}
+
+@mixin small-text {
+  color: $color-primary;
+  font-family: Mont, sans-serif;
+  font-size: to-rem(12);
+  font-weight: 600;
+  line-height: to-rem(15);
+}

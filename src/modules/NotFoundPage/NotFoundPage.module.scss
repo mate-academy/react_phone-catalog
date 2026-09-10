@@ -1,0 +1,29 @@
+@use '@/styles/mixins' as *;
+@use '@/styles/functions' as *;
+@use '@/styles/variables' as *;
+
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: to-rem(16);
+  padding: to-rem(16) $page-padding-screen-s;
+
+  @include respond-to('screen-m') {
+    padding-block: to-rem(32);
+  }
+}
+
+.title {
+  @include h1;
+}
+
+.img {
+  width: 100%;
+  max-width: to-rem(350);
+  object-fit: contain;
+
+  @include respond-to('screen-m') {
+    max-width: to-rem(500);
+  }
+}
