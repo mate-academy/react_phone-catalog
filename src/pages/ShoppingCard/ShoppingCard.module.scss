@@ -1,0 +1,161 @@
+@use '../../styles/utils/variables.scss' as *;
+@use '../../styles/utils/mixins.scss' as *;
+@use '../../styles/utils/fonts.scss' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.shopping {
+  padding: 24px 16px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex: 1 0 auto;
+  width: 100%;
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 24px;
+  }
+  &__button {
+    border: none;
+    cursor: pointer;
+  }
+  &__backIcon {
+    width: 16px;
+    height: 16px;
+    color: #313237;
+  }
+  &__headerText {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    color: #89939a;
+    font-weight: 600;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    color: #313237;
+    font-weight: 800;
+    margin-bottom: 32px;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    justify-content: center;
+    align-items: center;
+  }
+  &__products {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  &__checkoutPrice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 24px;
+    width: 288px;
+    height: 190px;
+    border: 1px solid #e2e6e9;
+  }
+  &__pricesText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &::after {
+      content: '';
+      width: 240px;
+      height: 1px;
+      background-color: #e2e6e9;
+      margin-top: 16px;
+    }
+  }
+  &__allPrice {
+    color: #313237;
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+  }
+  &__total {
+    color: #89939a;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  &__buttonCheckout {
+    border: none;
+    width: 240px;
+    height: 48px;
+    background-color: #313237;
+    color: #fff;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+}
+
+@include on-tablet {
+  .shopping {
+    padding: 40px 24px 0;
+    &__header {
+      margin-bottom: 16px;
+    }
+    &__title {
+      font-size: 48px;
+    }
+
+    &__checkoutPrice {
+      width: 592px;
+      height: 190px;
+    }
+    &__pricesText {
+      &::after {
+        content: '';
+        width: 544px;
+      }
+    }
+    &__buttonCheckout {
+      width: 544px;
+      height: 48px;
+    }
+  }
+}
+
+@include on-desktop {
+  .shopping {
+    padding: 40px 32px 0;
+    &__main {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    &__checkoutPrice {
+      width: 368px;
+      height: 206px;
+      gap: 24px;
+    }
+    &__pricesText {
+      &::after {
+        content: '';
+        width: 321px;
+        margin-top: 24px;
+      }
+    }
+    &__buttonCheckout {
+      width: 320px;
+      height: 48px;
+    }
+  }
+}

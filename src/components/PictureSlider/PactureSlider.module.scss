@@ -1,0 +1,75 @@
+@use '../../styles/utils/variables.scss' as *;
+@use '../../styles/utils/mixins.scss' as *;
+@use '../../styles/utils/fonts.scss' as *;
+
+.slider {
+  &__imageContainer {
+    width: 100%;
+    height: 320px;
+  }
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top right;
+  }
+  &__dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 18px;
+    gap: 10px;
+  }
+  &__dot {
+    width: 14px;
+    height: 4px;
+    border: none;
+    background-color: #E2E6E9;
+    &--active {
+      background-color: #313237;
+    }
+  }
+  &__button {
+    display: none;
+  }
+}
+
+@include on-tablet {
+  .slider {
+    display: flex;
+    gap: 19px;
+    align-items: center;
+    justify-content: center;
+    &__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      width: 32px;
+      height: 189px;
+      border: 1px solid #b4bdc3;
+    }
+    &__icon {
+      width: 16px;
+      height: 16px;
+      color: #313237;
+    }
+    &__imageContainer {
+      width: 490px;
+      height: 189px;
+    }
+  }
+}
+
+@include on-desktop {
+  .slider {
+    gap: 16px;
+    &__button {
+      height: 400px;
+    }
+    &__imageContainer {
+      width: 1040px;
+      height: 400px;
+    }
+  }
+}

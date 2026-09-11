@@ -1,0 +1,84 @@
+@use '../../styles/utils/variables.scss' as *;
+@use '../../styles/utils/mixins.scss' as *;
+@use '../../styles/utils/fonts.scss' as *;
+
+.link {
+  text-decoration: none;
+}
+
+.footer {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  height: 267px;
+  max-width: 1200px;
+  margin: 64px 0 0 16px;
+  &__logo {
+    width: 89px;
+    height: 32px;
+  }
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  &__text {
+    font-family: Mont, sans-serif;
+    color: #89939a;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+  }
+}
+
+.button-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  &__text {
+    font-family: Mont, sans-serif;
+    color: #89939a;
+    font-weight: 600;
+    font-size: 12px;
+  }
+  &__btn {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc3;
+  }
+}
+
+@include on-tablet {
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 96px;
+    padding: 32px;
+    margin-bottom: 0;
+    margin-top: 64px;
+  }
+  .information {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+    min-width: 192px;
+  }
+}
+
+@include on-desktop {
+  .footer {
+    margin: 0 auto;
+    margin-bottom: 0;
+    margin-top: 80px;
+  }
+  .information {
+    min-width: 278px;
+  }
+}

@@ -1,0 +1,98 @@
+@use '../../styles/utils/variables.scss' as *;
+@use '../../styles/utils/mixins.scss' as *;
+@use '../../styles/utils/fonts.scss' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.favourites {
+  padding: 24px 16px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex: 1 0 auto;
+  width: 100%;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  &__title {
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    color: #313237;
+    font-weight: 800;
+  }
+  &__amount {
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    color: #89939a;
+    font-weight: 600;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  &__homeIcon {
+    width: 16px;
+    height: 16px;
+  }
+  &__arrowIcon {
+    width: 16px;
+    height: 16px;
+    color: #b4bdc3;
+  }
+  &__headerText {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    color: #89939a;
+    font-weight: 600;
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    width: 100%;
+    justify-items: center;
+    margin-bottom: 56px;
+  }
+}
+
+@include on-tablet {
+  .favourites {
+    padding: 24px 24px 0;
+
+    &__info {
+      margin-bottom: 40px;
+    }
+
+    &__title {
+      font-size: 48px;
+    }
+    &__header {
+      margin-bottom: 40px;
+    }
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 16px;
+      margin-bottom: 64px;
+    }
+  }
+}
+
+@include on-desktop {
+  .favourites {
+    padding: 24px 32px 0;
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
