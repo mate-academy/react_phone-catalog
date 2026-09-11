@@ -1,0 +1,493 @@
+@use '../../../style/breakpoints.scss' as *;
+
+main {
+  padding: 0 152px;
+
+  @include tablet {
+    padding: 0 24px;
+  }
+
+  @include mobile {
+    padding: 0 16px;
+  }
+}
+
+.home {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  margin-top: 88px;
+  margin-bottom: 40px;
+
+  @include mobile {
+    gap: 8px;
+    margin-top: 80px;
+    margin-bottom: 24px;
+  }
+}
+
+.linkText {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  line-height: 100%;
+  color: #4a4d58;
+  letter-spacing: 0%;
+}
+
+.phonesTitle {
+  margin-bottom: 16px;
+
+  font-family: Mont, sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  font-style: Bold;
+  line-height: 56px;
+  color: #f1f2f9;
+  letter-spacing: -1%;
+
+  @include tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  @include mobile {
+    margin-bottom: 8px;
+    font-size: 24px;
+    line-height: 31px;
+  }
+}
+
+.phonesModel {
+  margin-bottom: 40px;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #75767f;
+  letter-spacing: 0%;
+
+  @include mobile {
+    margin-bottom: 24px;
+  }
+}
+
+.phoneSort {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 24px;
+
+  @include mobile {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+}
+
+.sortName {
+  margin-bottom: 4px;
+
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  color: #75767f;
+  letter-spacing: 0%;
+}
+
+.selectForm {
+  width: 176px;
+  background-color: #75767f;
+
+  @include mobile {
+    width: 136px;
+  }
+}
+
+.selectFormPage {
+  width: 128px;
+
+  @include mobile {
+    width: 100px;
+  }
+}
+
+.selectOption {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  color: #75767f;
+
+  background-color: #75767f;
+
+  &:hover {
+    color: #f1f2f9;
+    background-color: #323542;
+  }
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+
+  margin: 0;
+  margin-bottom: 80px;
+  padding: 0;
+
+  list-style: none;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 8px;
+  }
+}
+
+.item {
+  display: flex;
+  flex: 0 0 calc((100% - 2 * 16px) / 4);
+  flex-direction: column;
+
+  height: 100%;
+  padding: 32px;
+  border: 1px solid #161827;
+
+  background-color: #161827;
+
+  @include tablet {
+    padding: 20px;
+  }
+
+  @include mobile {
+    padding: 12px;
+  }
+}
+
+.imgPhone {
+  width: 230px;
+  height: 340px;
+  margin-bottom: 24px;
+
+  background-color: #161827;
+
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @include tablet {
+    width: 100%;
+    height: auto;
+    max-height: 260px;
+    margin-bottom: 16px;
+
+    object-fit: contain;
+  }
+
+  @include mobile {
+    width: 100%;
+    height: auto;
+    max-height: 180px;
+    margin-bottom: 12px;
+
+    object-fit: contain;
+  }
+}
+
+.Link {
+  margin: auto;
+  padding: 0;
+  text-decoration: none;
+  background-color: #161827;
+}
+
+.LinkName {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  background-color: #161827;
+}
+
+.name {
+  width: 208px;
+  margin-bottom: 8px;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #f1f2f9;
+  letter-spacing: 0%;
+
+  background-color: #161827;
+
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @include tablet {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  @include mobile {
+    width: 100%;
+    font-size: 12px;
+  }
+}
+
+.price {
+  margin-bottom: 16px;
+
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  color: #f1f2f9;
+  letter-spacing: 0%;
+
+  background-color: #161827;
+
+  @include mobile {
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+}
+
+.fullprice {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 100%;
+  color: #75767f;
+  text-decoration: line-through;
+
+  background-color: #161827;
+
+  @include mobile {
+    font-size: 14px;
+  }
+}
+
+.characteristics {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #3b3e4a;
+
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  color: #75767f;
+  letter-spacing: 0%;
+
+  background-color: #161827;
+
+  @include mobile {
+    margin-bottom: 10px;
+    padding-top: 10px;
+    font-size: 10px;
+  }
+}
+
+.characteristic {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: #161827;
+
+  @include mobile {
+    gap: 6px;
+  }
+}
+
+.characteristicText {
+  background-color: #161827;
+}
+
+.characteristicItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: #161827;
+
+  @include mobile {
+    gap: 6px;
+  }
+}
+
+.characteristicItemText {
+  color: #f1f2f9;
+  background-color: #161827;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+
+  @include mobile {
+    gap: 6px;
+  }
+}
+
+.addButton {
+  cursor: pointer;
+
+  flex: 1;
+
+  padding: 8px;
+  border: none;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  color: #f1f2f9;
+  text-align: center;
+  letter-spacing: 0%;
+
+  background: #905bff;
+
+  &:hover {
+    background-color: #a378ff;
+  }
+
+  @include mobile {
+    padding: 6px;
+    font-size: 11px;
+  }
+}
+
+.addButtonClick {
+  background-color: #323542;
+
+  &:hover {
+    background-color: #4a4d58;
+  }
+}
+
+.likeButton {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  border: 1px solid #323542;
+
+  background: #323542;
+
+  &:hover {
+    background-color: #4a4d58;
+  }
+
+  @include mobile {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.likeButtonClick {
+  border: 1px solid #323542;
+  background-color: transparent;
+}
+
+.imgLike {
+  background: transparent;
+
+  @include mobile {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+
+  margin: 40px 0;
+  padding: 0;
+
+  list-style: none;
+
+  @include mobile {
+    gap: 6px;
+    margin: 24px 0;
+  }
+}
+
+.pageButton {
+  cursor: pointer;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid #3b3e4a;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #f1f2f9;
+
+  background-color: #161827;
+
+  &:hover {
+    border-color: #905bff;
+    background-color: #3b3e4a;
+  }
+
+  @include mobile {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+}
+
+.pageButtonActive {
+  border-color: #905bff;
+  color: #fff;
+  background-color: #905bff;
+}
+
+.arrowButton {
+  cursor: pointer;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid #3b3e4a;
+
+  font-size: 16px;
+  color: #f1f2f9;
+
+  background-color: #323542;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: #905bff;
+  }
+
+  @include mobile {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+}

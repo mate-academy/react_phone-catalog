@@ -1,0 +1,84 @@
+@use '../../style/breakpoints.scss' as *;
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include mobile {
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+  }
+}
+
+.footerlist {
+  display: flex;
+  gap: 106px;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 280px;
+
+  @include tablet {
+    gap: 40px;
+    padding: 0 103px;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+  }
+}
+
+.footerListItem {
+  list-style: none;
+}
+
+.footerLink {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  color: #f1f2f9;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 4%;
+}
+
+.backToTop {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.backToTopText {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  color: #75767f;
+  letter-spacing: 0%;
+}
+
+.buttonbackToTop {
+  cursor: pointer;
+
+  width: 32px;
+  height: 32px;
+  border: none;
+
+  font-size: 16px;
+  color: #f1f2f9;
+  text-align: center;
+
+  background-color: #323542;
+
+  &:hover {
+    background-color: #4a4d58;
+  }
+}

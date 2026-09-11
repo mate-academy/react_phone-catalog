@@ -1,0 +1,126 @@
+@use '../../../../../style/breakpoints.scss' as *;
+
+.carousel {
+  position: relative;
+
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  height: 400px;
+
+  @include tablet {
+    gap: 12px;
+    height: 300px;
+  }
+
+  @include mobile {
+    @include mobile {
+      gap: 0;
+      aspect-ratio: 4 / 3;
+      height: auto;
+    }
+  }
+}
+
+.carouselContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+
+  width: 100%;
+}
+
+.pagination {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.dot {
+  cursor: pointer;
+
+  width: 14px;
+  height: 4px;
+  padding: 0;
+  border: none;
+
+  background-color: #3b3e4a;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #75767d;
+  }
+}
+
+.dotActive {
+  background-color: #f1f2f9;
+}
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.list {
+  display: flex;
+
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  transition-timing-function: ease-in-out;
+  transition-property: transform;
+}
+
+.item {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  height: 100%;
+
+  img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.button {
+  cursor: pointer;
+
+  flex-shrink: 0;
+
+  width: 32px;
+  height: 100%;
+  border: 1px solid #323542;
+
+  font-size: 18px;
+  color: #f1f2f9;
+
+  background: #323542;
+
+  &:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  @include mobile {
+    display: none;
+  }
+}

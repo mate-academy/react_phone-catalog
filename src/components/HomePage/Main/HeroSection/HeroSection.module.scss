@@ -1,0 +1,54 @@
+@use '../../../../style/breakpoints.scss' as *;
+
+.pageWrapper {
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 80px;
+  padding: 0 16px;
+
+  @include mobile {
+    margin-bottom: 40px;
+  }
+
+  @include tablet {
+    margin-bottom: 64px;
+  }
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  max-width: 1136px;
+  margin: 0 auto;
+  margin-top: 88px;
+
+  @include mobile {
+    margin-top: 80px;
+  }
+}
+
+.heroTitle {
+  margin-bottom: 56px;
+
+  font-family: Mont, sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  font-style: Bold;
+  line-height: 56px;
+  color: #f1f2f9;
+  letter-spacing: -1%;
+
+  @include tablet {
+    margin-bottom: 32px;
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  @include mobile {
+    margin-bottom: 24px;
+    font-size: 24px;
+    line-height: 31px;
+  }
+}

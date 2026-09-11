@@ -1,0 +1,83 @@
+@use '../../../../style/breakpoints.scss' as *;
+
+.categoriesTitle {
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  color: #f1f2f9;
+  letter-spacing: -1%;
+
+  @include mobile {
+    font-size: 22px;
+    line-height: 28px;
+  }
+}
+
+.categoriesLinks {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 80px;
+
+  @include tablet {
+    gap: 16px;
+    margin-bottom: 64px;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+}
+
+.categoriesLink {
+  text-decoration: none;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @include tablet {
+    flex: 0 0 calc((100% - 16px) / 3);
+  }
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.categoriesimg {
+  width: 100%;
+  margin-bottom: 24px;
+
+  @include mobile {
+    margin-bottom: 12px;
+  }
+}
+
+.categoriesText {
+  font-family: Mont, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 100%;
+  color: #f1f2f9;
+
+  @include mobile {
+    font-size: 16px;
+  }
+}
+
+.categoriesModels {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #89939a;
+
+  @include mobile {
+    font-size: 12px;
+  }
+}

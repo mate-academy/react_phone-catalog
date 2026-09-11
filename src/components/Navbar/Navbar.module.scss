@@ -1,0 +1,303 @@
+@use '../../style/breakpoints.scss' as *;
+
+.navbar {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 100%;
+  padding-left: 24px;
+  border-bottom: 1px solid #323542;
+
+  @include mobile {
+    padding-left: 16px;
+  }
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.burger {
+  cursor: pointer;
+
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+  margin-right: 16px;
+  padding: 0;
+  border: none;
+
+  background: transparent;
+
+  @include mobile {
+    display: flex;
+  }
+}
+
+.burgerIcon {
+  position: absolute;
+  right: 20px;
+
+  width: 16px;
+  height: 16px;
+  border-left: 1px solid #323542;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-right: 48px;
+
+  img {
+    height: 28px;
+  }
+
+  @include tablet {
+    margin-right: 16px;
+  }
+
+  @include mobile {
+    margin-right: 0;
+
+    img {
+      height: 20px;
+    }
+  }
+}
+
+.list {
+  display: flex;
+  gap: 64px;
+  align-items: center;
+
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  @include tablet {
+    gap: 24px;
+  }
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.item {
+  height: 100%;
+}
+
+.link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  height: 100%;
+
+  font-size: 12px;
+  font-weight: 800;
+  color: #75767f;
+  text-decoration: none;
+  letter-spacing: 4%;
+
+  &:hover {
+    color: #f1f2f9;
+  }
+}
+
+.active {
+  color: #f1f2f9;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    height: 2px;
+
+    background-color: #f1f2f9;
+  }
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.iconButton {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 64px;
+  height: 100%;
+  border-left: 1px solid #323542;
+
+  text-decoration: none;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  @include mobile {
+    width: 48px;
+  }
+}
+
+.count {
+  position: absolute;
+  top: 18px;
+  right: 19px;
+
+  width: 13px;
+  height: 13px;
+  border: 1px solid #0f1121;
+  border-radius: 50%;
+
+  font-family: Mont, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+  color: #f1f2f9;
+  text-align: center;
+
+  background-color: #eb5757;
+}
+
+.mobileMenu {
+  display: none;
+
+  @include mobile {
+    position: fixed;
+    z-index: 99;
+    inset: 64px 0 0;
+
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 24px;
+
+    background-color: #0f1121;
+  }
+}
+
+.mobileList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+.mobileLink {
+  display: block;
+
+  padding: 8px 0;
+
+  font-family: Mont, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #75767f;
+  text-decoration: none;
+  letter-spacing: 1px;
+
+  &.active {
+    position: relative;
+    color: #f1f2f9;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      right: 0;
+      left: 0;
+
+      height: 2px;
+
+      background-color: #f1f2f9;
+    }
+  }
+}
+
+.mobileIcons {
+  display: flex;
+  margin-top: auto;
+}
+
+.mobileIconButton {
+  position: relative;
+
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 64px;
+  border: 1px solid #323542;
+
+  text-decoration: none;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .iconWrapper {
+    position: relative;
+    width: 20px;
+    height: 20px;
+  }
+
+  .count {
+    position: absolute;
+    top: -5px;
+    right: -4px;
+
+    width: 13px;
+    height: 13px;
+    border: 1px solid #0f1121;
+    border-radius: 50%;
+
+    font-family: Mont, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 14px;
+    color: #f1f2f9;
+    text-align: center;
+
+    background-color: #eb5757;
+  }
+}
